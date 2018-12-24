@@ -10,45 +10,45 @@
 
 
 	SPI (Script program interface):
-	Получение данных от карты
-	(const) поля только для прочтения
-	(var) поля только для записи и прочтения, запись в них приводит к обновления остальных полей,
-	      принадлежащих этой группе
+	пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	(const) пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	(var) пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ,
+	      пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
-	Шторма
-	worldMap.storm.num - текущие количество штормов в карте (const)
-	worldMap.storm.cur - индекс текущего шторма 0..num-1, надо перезаписывать для обновления полей (var)
-	worldMap.storm.x - позиция шторма по x (const)
-	worldMap.storm.z - позиция шторма по z (const)
-	worldMap.storm.time - оставшееся время жизни в секундах (const)
+	пїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.storm.num - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ (const)
+	worldMap.storm.cur - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 0..num-1, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (var)
+	worldMap.storm.x - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ x (const)
+	worldMap.storm.z - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ z (const)
+	worldMap.storm.time - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (const)
 
-	Кораблики событий
-	worldMap.encounter.num - текущие количество корабликов в карте (const)
-	worldMap.encounter.cur - индекс текущего кораблика в карте (var)
-	worldMap.encounter.x - позиция кораблика по x (const)
-	worldMap.encounter.z - позиция кораблика по z (const)
-	worldMap.encounter.time - оставшееся время жизни в секундах (const)
-	worldMap.encounter.type - тип события, обозначаемый этим корабликом (define в таблице типов энкоунтеров)
-	worldMap.encounter.attack - индекс кораблика, который атакуем (стоя на месте)
-	worldMap.encounter.id - название описания энкоунтера: worldMap.encounters.(worldMap.encounter.id)...
+	пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.encounter.num - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ (const)
+	worldMap.encounter.cur - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ (var)
+	worldMap.encounter.x - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ x (const)
+	worldMap.encounter.z - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ z (const)
+	worldMap.encounter.time - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (const)
+	worldMap.encounter.type - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (define пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
+	worldMap.encounter.attack - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ)
+	worldMap.encounter.id - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: worldMap.encounters.(worldMap.encounter.id)...
 
-	Разная информация
-	worldMap.info.playerInStorm - если 1 то плеер находиться в шторме
-	worldMap.info.updateinfo - апдейт информации
+	пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.info.playerInStorm - пїЅпїЅпїЅпїЅ 1 пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.info.updateinfo - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 
-	//Внутреняя информация - !!!Осторожно, ни каких проверок!!!
-	worldMap.enemyshipViewDistMin;		//Растояние на котором корабль начинает исчезать
-	worldMap.enemyshipViewDistMax;		//Растояние на котором корабль исчезает полностью
-	worldMap.enemyshipDistKill;			//Расстояние на котором убиваем корабль
-	worldMap.enemyshipBrnDistMin;		//Минимальное растояние на котором рожается корабль
-	worldMap.enemyshipBrnDistMax;		//Максимальное растояние на котором рожается корабль
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - !!!пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!!!
+	worldMap.enemyshipViewDistMin;		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.enemyshipViewDistMax;		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.enemyshipDistKill;			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.enemyshipBrnDistMin;		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.enemyshipBrnDistMax;		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
-	worldMap.stormViewDistMin;			//Растояние на котором шторм начинает исчезать
-	worldMap.stormViewDistMax;			//Растояние на котором шторм исчезает полностью
-	worldMap.stormDistKill;				//Расстояние на котором убиваем шторм
-	worldMap.stormBrnDistMin;			//Минимальное растояние на котором рожается шторм
-	worldMap.stormBrnDistMax;			//Максимальное растояние на котором рожается шторм
+	worldMap.stormViewDistMin;			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.stormViewDistMax;			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.stormDistKill;				//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	worldMap.stormBrnDistMin;			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	worldMap.stormBrnDistMax;			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
 */
 
@@ -79,11 +79,11 @@
 
 void wdmCreateMap(float x, float z, float ay)
 {
-	//Координаты острова с которого уплыли
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	float zeroX = MakeFloat(worldMap.zeroX);
 	float zeroZ = MakeFloat(worldMap.zeroZ);
 	float ShipX, ShipZ;
-	//Находим новыве координаты на карте
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	int scale = WDM_MAP_TO_SEA_SCALE;
 	if (worldMap.island == "Cuba1" || worldMap.island == "Cuba2" || worldMap.island == "Beliz" || worldMap.island == "SantaCatalina" 
 		|| worldMap.island == "PortoBello" || worldMap.island == "Cartahena" || worldMap.island == "Maracaibo"
@@ -97,7 +97,7 @@ void wdmCreateMap(float x, float z, float ay)
 	worldMap.playerShipZ = (z/scale) + zeroZ;
 	worldMap.playerShipAY = ay;
 //	trace(" X :" + x + " Z :" + z + " scale :" + scale + " ZeroX :" + zeroX + " ZeroZ:" + zeroZ + " WDMShipX:"+worldMap.playerShipX + " WDMShipZ:" + worldMap.playerShipZ + " ShipX:" + ShipX + " ShipZ:" + ShipZ);
-	//Загружаем карту
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	wdmCreateWorldMap();
 }
 
@@ -112,12 +112,16 @@ void wdmTimeUpdate()
 
 void wdmCreateWorldMap()
 {
+	// LDH 29Jan17 set worldmap ship apparent speed
+    // reset to default 1.5 when saving game
+	worldMap.date.hourPerSec = 1.5 / 1.5;
+
 	wdmLockReload = false;
-	//Уберём все сообщения для игрока
+	//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	ClearAllLogStrings();
 	//
 	ReloadProgressStart();
-	//Настраиваем имена месяцев
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	worldMap.date.monthnames.m01 = XI_ConvertString("target_month_1");
 	worldMap.date.monthnames.m02 = XI_ConvertString("target_month_2");
 	worldMap.date.monthnames.m03 = XI_ConvertString("target_month_3");
@@ -132,33 +136,33 @@ void wdmCreateWorldMap()
 	worldMap.date.monthnames.m12 = XI_ConvertString("target_month_12");
 	worldMap.date.font = "normal";
 	worldMap.date.coordinate = XI_ConvertString("Coordinates");
-	//Удалим все устаревшие энкаунтеры
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	wdmRemoveOldEncounters();
 //	Trace("Save check ---------------================--------------")
 //	DumpAttributes(&worldMap);
 //	Trace("Save check ###########----================--------------")
 	worldMap.playerInStorm = "0";
-	//Сбросим счётчики генерации энкоунтеров
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	wdmReset();
-	//Создаём карту
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	CreateEntity(&worldMap,"worldmap");
 	worldMap.isLoaded = "true";
-	//Обновляем параметры
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	worldMap.update = "";
-	//Фейдер
+	//пїЅпїЅпїЅпїЅпїЅпїЅ
 	CreateEntity(&wdm_fader, "fader");
 	if(IsEntity(wdm_fader) == 0) Trace("Fader not created!!!");	
 	float fadeInTime = 0.5;
 	SendMessage(&wdm_fader, "lfl", FADER_IN, fadeInTime, true);
 	SendMessage(&wdm_fader, "ls", FADER_PICTURE0, "loading\ImgBack.tga");
 	SendMessage(&wdm_fader, "ls",FADER_PICTURE,"loading\sea_0" + rand(2) + ".tga");	
-	//Установим звуковую схему
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	SetSchemeForMap();
-	//Сообщим, что загрузились
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	PostEvent("EventWorldMapInit", 830); //fix boal
 	ReloadProgressEnd();
 	PostEvent("EventTimeUpdate", 1000);	
-	//Создаём накопившиеся квестовые энкоунтеры
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	worldMap.addQuestEncounters = "updateQuest";
 	wdmSetNationFlag(sti(pchar.nation));
 	InitWmInterface();
@@ -166,15 +170,15 @@ void wdmCreateWorldMap()
 
 void wdmLoadSavedMap()
 {
-	//Загружаем карту
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	wdmCreateWorldMap();
 }
 
 void wdmRemoveOldEncounters()
 {
-	//Пометим протухшие энкаунтеры
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	wdmMarkDeleteEncounters();
-	//Собираем всех желающих
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	aref encs;
 	makearef(encs, worldMap.encounters);
 	int num = GetAttributesNum(encs);
@@ -201,16 +205,16 @@ void wdmRemoveOldEncounters()
 
 float wdmGetDays(int year, int month, int day, int hour)
 {
-	//Считаем дни по годам
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	if(year < 0) year = 0;
 	if(year > 3000) year = 3000;
 	year = year*365;
-	//Считаем целые дни
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	for(int i = 1; i < month; i++)
 	{
 		day = day + GetMonthDays(i);
 	}
-	//Считаем полные дни
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	float days = year + day + (hour/24.0);
 	return days;
 }
@@ -234,14 +238,14 @@ void wdmSetNationFlag(int iNation)
 
 void wdmMarkDeleteEncounters()
 {
-	//Получаем дату
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	int year = sti(worldMap.date.year);
 	int month = sti(worldMap.date.month);
 	int day = sti(worldMap.date.day);
 	int hour = sti(worldMap.date.hour);
 	float days = wdmGetDays(year, month, day, hour);
 	int encYear, encMonth, encDay, encHour;
-	//Перебираем все энкоунтеры, помечая на удаление
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	aref encs;
 	makearef(encs, worldMap.encounters);
 	int num = GetAttributesNum(encs);

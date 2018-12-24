@@ -1,3 +1,5 @@
+// espkk quicksaveload mod 1.2
+
 #include "interface\messages.h"
 #include "interface\utils\interface.c"
 #include "interface\utils\MessageBox.c"
@@ -79,7 +81,7 @@ bool bPlayVideoNow = false;
 bool bMainMenuLaunchAfterVideo = false;
 
 // Warship -->
-void LaunchBestMapScreen()	// Интерфейс отличной карты
+void LaunchBestMapScreen()	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 {
 	if(procInterfacePrepare(INTERFACE_BEST_MAP))
 	{
@@ -89,7 +91,7 @@ void LaunchBestMapScreen()	// Интерфейс отличной карты
 	}
 }
 
-void LaunchTavernWaitScreen() // Интерфейс отдыха
+void LaunchTavernWaitScreen() // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	if(procInterfacePrepare(INTERFACE_TAVERN_WAIT))
 	{
@@ -99,7 +101,7 @@ void LaunchTavernWaitScreen() // Интерфейс отдыха
 	}
 }
 
-void LaunchTransferGoodsScreen() // Интерфейс закупки товара казначеем
+void LaunchTransferGoodsScreen() // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	if(procInterfacePrepare(INTERFACE_GOODS_TRANSFER))
 	{
@@ -111,7 +113,7 @@ void LaunchTransferGoodsScreen() // Интерфейс закупки товара казначеем
 // <-- Warship
 
 // ugeen -->
-void LaunchMapViewScreen()	// Интерфейс атласа карт
+void LaunchMapViewScreen()	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 {
 	if(procInterfacePrepare(INTERFACE_MAPVIEW))
 	{
@@ -121,7 +123,7 @@ void LaunchMapViewScreen()	// Интерфейс атласа карт
 	}
 }
 
-void LaunchStorage(int storageNum) // интерфейс склада
+void LaunchStorage(int storageNum) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	if(storageNum < 0)	return;
 	if(storageNum > STORE_QUANTITY - 1)	return;
@@ -134,7 +136,7 @@ void LaunchStorage(int storageNum) // интерфейс склада
 	}
 }
 
-void LaunchAlchemyScreen() // Интерфейс мультиобъектов
+void LaunchAlchemyScreen() // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	if(procInterfacePrepare(INTERFACE_ALCHEMY))
 	{
@@ -407,7 +409,7 @@ void LaunchColonyInfoScreen()
 	}
 }
 
-// Дележ добычи
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 void LaunchSailsGeraldScreen(ref chref)
 {
 	if(procInterfacePrepare(INTERFACE_SAILSGERALD))
@@ -691,7 +693,7 @@ void LaunchMainMenu_afterVideo()
 	InterfaceStates.Launched = false;
 	ResetSound();   // fix
 	LaunchMainMenu();*/
-	LaunchNewMainMenu(); // Переделка
+	LaunchNewMainMenu(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 }
 
 void LaunchNewMainMenu()
@@ -734,7 +736,7 @@ void LaunchMainMenu()
 	SetTimeScale(1.0);
 	// fix
 	TimeScaleCounter = 0;
-    DelPerkFromActiveList("TimeSpeed");
+пїЅ пїЅ DelPerkFromActiveList("TimeSpeed");
 }
 
 void LaunchSaveGame()
@@ -829,9 +831,9 @@ void LaunchRansackMain(ref _refMy,ref _refEnemy,string captureState)
 	{
 		nPrevInterface = -1;
 		CurrentInterface = INTERFACE_RANSACK_MAIN;
-		InitInterface_RS(Interfaces[CurrentInterface].IniFile,_refEnemy,captureState); // что характерно, _refMy не при делах вообще :) Забавно, право слово. Ну да, совместимости для.
+		InitInterface_RS(Interfaces[CurrentInterface].IniFile,_refEnemy,captureState); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, _refMy пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ :) пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅ пїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ.
 	}
-	// Это по сути вызов LaunchTransferMain(_refMy, _refEnemy, captureState); , но нужна проверка на	INTERFACE_RANSACK_MAIN 
+	// пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ LaunchTransferMain(_refMy, _refEnemy, captureState); , пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ	INTERFACE_RANSACK_MAIN 
 }
 
 void LaunchTransferMain(ref _refMy,ref _refEnemy, string newCurNod)
@@ -982,7 +984,7 @@ void EndOkInterface()
 			DeleteAttribute(&GameInterface,"");
 			CurrentInterface = INTERFACE_STORE;
 			LoadSegment(Interfaces[CurrentInterface].SectionName);
-			InitInterface_RR(Interfaces[CurrentInterface].IniFile,GetCharacter(cn),&stores[gStoreNum]);  // to_do рудимент?
+			InitInterface_RR(Interfaces[CurrentInterface].IniFile,GetCharacter(cn),&stores[gStoreNum]);  // to_do пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ?
 		}
 		else
 		{
@@ -1126,7 +1128,7 @@ void EndCancelInterface(bool bYesRelease)
 	if(bYesRelease)	PostEvent("evntQuestsCheck",1);
 }
 
-// стек для вложенных интерфейсов
+// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 object InterfaceStack;
 void ClearInterfaceStack()
 {
@@ -1194,8 +1196,8 @@ void IDoSoundEvent()
 	int comCode = GetEventData();
 	switch( comCode )
 	{
-	case 1: PlaySound("interface\ok.wav"); break; // любая клавиша
-	case 2: PlaySound("interface\menu_select_01.wav"); break; // выбор элемента
+	case 1: PlaySound("interface\ok.wav"); break; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	case 2: PlaySound("interface\menu_select_01.wav"); break; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	}
 }
 
@@ -1535,12 +1537,12 @@ void ReloadAfterFortCapture()
 	
 	int fortChr = sti(pchar.from_interface.fortCharacterIdx);
 	// boal -->
-	AfterTownBattle();//трем неоконченый захват
+	AfterTownBattle();//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
-    // перезапомним
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     pchar.GenQuestFort.fortCharacterIdx = fortChr;
 
-    bool ExitToSea = CheckAttribute(pchar, "from_interface.Exit_to_Sea"); // выход в море to_do
+    bool ExitToSea = CheckAttribute(pchar, "from_interface.Exit_to_Sea"); // пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ to_do
 	// boal <--
 	ref chref = GetCharacter(fortChr);
 
@@ -1571,18 +1573,18 @@ void ReloadAfterFortCapture()
 	chref.Fort.DieTime.Day = GetDataDay();
 	chref.Fort.DieTime.Time = GetTime();
 
-    pchar.GenQuest.Hunter2Pause = true;  // boal бойня в форте
-	// опыт
+    pchar.GenQuest.Hunter2Pause = true;  // boal пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
+	// пїЅпїЅпїЅпїЅ
 	// boal -->
-    AddCharacterExpToSkillSquadron(GetMainCharacter(), "Leadership", 500);//добавка в городе, если  бой непрерывен
+    AddCharacterExpToSkillSquadron(GetMainCharacter(), "Leadership", 500);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ  пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     AddCharacterExpToSkillSquadron(GetMainCharacter(), "Sailing", 500);
     AddCharacterExpToSkillSquadron(GetMainCharacter(), "Sneak", 300);
 
     Statistic_AddValue(GetMainCharacter(), "Fort", 1);
     Statistic_AddValue(GetMainCharacter(), NationShortName(sti(chref.nation)) + "_KillFort", 1);
 	
-	Achievment_SetStat(GetMainCharacter(), 22, 1);
-    fOldMaxSeaHeight = 0.6; // fix потоп в порту ФФ boal 03.01.05
+	Achievment_SetStat(GetMainCharacter(), 22, 5);
+    fOldMaxSeaHeight = 0.6; // fix пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ boal 03.01.05
     // boal <--
 	if(sToLocation != "")
 	{
@@ -1647,7 +1649,7 @@ void IProcEventSetGameTime()
 }
 
 //==============================================================
-//	Секция Показывающая какую либо инфо на экране
+//	пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 //==============================================================
 #event_handler("DoInfoShower", "procInfoShow");
 object objInfoList[10];
@@ -2173,15 +2175,18 @@ int GetAlphaFromSkill(int nskill)
 //==============================
 void MakeQuickLoad()
 {
-	// boal лишнее if( InterfaceStates.Launched != 0 ) {return;}
+	// boal пїЅпїЅпїЅпїЅпїЅпїЅ if( InterfaceStates.Launched != 0 ) {return;}
 	if( bPlayVideoNow ) {return;}
-	// ugeen 2017 -->
-	int QuickSaveIndex = 1;
-	if( CheckAttribute(&PlayerProfile,"QuickSaveIndex") ) {
-		QuickSaveIndex = sti(PlayerProfile.QuickSaveIndex);
-	}	
-	string curSave = PlayerProfile.name + " QuickSave " + QuickSaveIndex;
-	// <-- ugeen 2017
+	
+// espkk # quick save/load # 28/Jan/2017 -->
+	//string curSave = PlayerProfile.name + " QuickSave";
+	GameInterface.SavePath = "SAVE\" + PlayerProfile.name;
+	string saveName;
+	int nSaveSize;
+	SendMessage(&GameInterface,"llee",MSG_INTERFACE_SAVE_FILE_FIND,0,&saveName,&nSaveSize);
+	string curSave = saveName;
+// espkk # quick save/load # 28/Jan/2017 <--
+
 	SetEventHandler("evntLoad","LoadGame",0);
 	PostEvent("evntLoad",0,"s", "SAVE\"+PlayerProfile.name+"\"+curSave);
 }
@@ -2201,7 +2206,7 @@ void MakeQuickSave()
 	// boal 09.07.06 -->
 	if (!QuickSaveGameEnabledHardcore())
 	{
-        Log_Info("In his game mode you can save only in churches");
+        Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
 		return;
 	}
 	
@@ -2222,25 +2227,28 @@ void MakeQuickSave()
 void QuickSaveContinue()
 {
 	DelEventHandler("makescrshot","QuickSaveContinue");
-
 	LaunchQuickSaveMenu();
-	//ugeen 2017 -->
-	int QuickSaveIndex = 1;
-	if( CheckAttribute(&PlayerProfile,"QuickSaveIndex") ) {
-		QuickSaveIndex = sti(PlayerProfile.QuickSaveIndex);
-		if(QuickSaveIndex == 3) {
-			QuickSaveIndex = 1;
-		}	
-		else {
-			QuickSaveIndex++;
-		}	
-	}
-	PlayerProfile.QuickSaveIndex = QuickSaveIndex;
 	
-	string curSave = PlayerProfile.name + " QuickSave " + QuickSaveIndex;
-	// <-- ugeen 2017
-	SendMessage(&GameInterface,"ls",MSG_INTERFACE_DELETE_SAVE_FILE,curSave);
-	string sSaveDescriber = GetSaveDataString(GetCurLocationName());
+// espkk # quick save/load # 28/Jan/2017 -->
+	//string curSave = PlayerProfile.name + " QuickSave";
+	//SendMessage(&GameInterface,"ls",MSG_INTERFACE_DELETE_SAVE_FILE,curSave);
+	//string sSaveDescriber = GetSaveDataString(GetCurLocationName());
+	GameInterface.SavePath = "SAVE\" + PlayerProfile.name;
+	string curLocName = GetCurLocationName();
+	
+	// espkk. unnamed location fix. 19/Apr/2017
+	if (curLocName == "") 
+		curLocName = "Unknown location";
+	
+	string curSave = curLocName;
+	int idx = 1;
+	while(SendMessage(&GameInterface,"ls", MSG_INTERFACE_NEW_SAVE_FILE_NAME, curSave) == 1)
+	{
+		curSave = curLocName + " " + idx;
+		idx++;
+	}
+	string sSaveDescriber = GetSaveDataString(curSave);
+// espkk # quick save/load # 28/Jan/2017 <--
 
 	SetEventHandler("evntSave","SaveGame",1);
 	PostEvent("evntSave",0,"ss", "SAVE\"+PlayerProfile.name+"\"+curSave, sSaveDescriber);
@@ -2380,11 +2388,11 @@ string GetPlayTime()
 	return sPlayTime;
 }
 
-int GetPlayTimeHours() // ugeen 2016 - нужно для ачивки
+int GetPlayTimeHours() // ugeen 2016 - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	int hours = sti( InterfaceStates.GameTime.hour );
-//	int days = hours / 24;
-//	hours = hours - days*24;
+	//int days = hours / 24; 
+	//hours = hours - days*24;
 	
 	return hours;
 }

@@ -19,14 +19,14 @@
 #define BI_ICONS_TEXTURE_SHIP1		1
 #define BI_ICONS_TEXTURE_ABILITY	2
 
-#define FLAG_CMN		0	// общие флаги
-#define FLAG_SHP		1	// адмиральские флаги
-#define FLAG_FRT		2	// флаги для фортов и городских администраций
-#define FLAG_MER		3	// торговые флаги
-#define FLAG_WHT		4	// белые флаги
-#define FLAG_QST		5	// квестовые флаги
-#define FLAG_PER		6	// персональные флаги
-#define	FLAG_PIR		7	// пиратские флаги
+#define FLAG_CMN		0	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+#define FLAG_SHP		1	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+#define FLAG_FRT		2	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+#define FLAG_MER		3	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+#define FLAG_WHT		4	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+#define FLAG_QST		5	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+#define FLAG_PER		6	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+#define	FLAG_PIR		7	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
 int bi_icons_ShowType;
 int bi_icons_CommandMode;
@@ -133,7 +133,7 @@ void InitBattleInterface()
 	SetEventHandler("DoSailHole","ProcessSailDamage",0);
 	SetEventHandler("evntBISelectShip","procBISelectShip",0);
 
-	procLoadIntoNew(); // Проинитим таблицу активных перков
+	procLoadIntoNew(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	SetEventHandler("Control Activation","BI_ProcessControlPress",0);
 	
 	CreateILogAndActions(LOG_FOR_SEA);
@@ -347,7 +347,7 @@ void DeleteBattleInterface()
 	DelEventHandler("DoSailHole","ProcessSailDamage");
 	DelEventHandler("evntBISelectShip","procBISelectShip");
 
-	// был сброс времени, выше поднял
+	// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
 	//DeleteClass(&BattleInterface);
 	//DeleteClass(&objShipPointer);
@@ -360,11 +360,11 @@ ref BI_CommandEndChecking()
 
 	switch(comName)
 	{
-	// каюта
+	// пїЅпїЅпїЅпїЅпїЅ
     case "BI_Cabin":
 		BI_retComValue = 0;
 		break;
-	// выслать шлюпку для разговора --
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ --
 	case "BI_Boat":
 		BI_retComValue = BI_COMMODE_NEUTRAL_SHIP_SELECT+BI_COMMODE_FRIEND_SHIP_SELECT;
         BattleInterface.Commands.Boat.EffectRadius = DistanceToShipTalk;
@@ -405,7 +405,7 @@ ref BI_CommandEndChecking()
 				if(sSpyGlass != "")
 				{
 					ref rItm = ItemsFromID(sSpyGlass);
-					BattleInterface.Commands.SailTo.EffectRadius	= 5000 + sti(rItm.radius);
+					BattleInterface.Commands.SailTo.EffectRadius	= 5000 + 10 * sti(rItm.radius);
 				}
 				else BattleInterface.Commands.SailTo.EffectRadius	= 5000; //boal
 			}	
@@ -520,8 +520,8 @@ void BI_LaunchCommand()
         Sea_CabinStartNow();
 		break;
 	case "BI_Boat":
-		// Warship 09.07.09 Мэри Селест
-		// Второй раз на нее выслать шлюпку низя
+		// Warship 09.07.09 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		if(Characters[targetNum].id != "MaryCelesteCapitan" || PChar.QuestTemp.MaryCeleste != "OnDeck")
 		{
 			Sea_DeckBoatLoad(targetNum);
@@ -563,11 +563,11 @@ void BI_LaunchCommand()
 			break;
 		}
 		Ship_ChangeCharge(chRef, chargeType);
-		// исходим из того, что приказы через команды дают токо ГГ и его офам, офы выбирают какой снаряд, поэтому команду запоминаем для них
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ
 		chRef.ShipCannonChargeType = chargeType;
 		break;
 	case "BI_Map":
-		if (bMapEnter)  // boal не помню уже зачем, в ВМЛ было
+		if (bMapEnter)  // boal пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         {
             //pchar.location = "";
 			Sea_MapLoad();
@@ -593,7 +593,7 @@ void BI_LaunchCommand()
 		}
 		else
 		{
-			Ship_SetTaskRunAway(SECONDARY_TASK, charIdx, GetMainCharacterIndex()); // boal fix если вдруг нет, то от ГГ удаляться
+			Ship_SetTaskRunAway(SECONDARY_TASK, charIdx, GetMainCharacterIndex()); // boal fix пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		}
 	break;
 	case "BI_HeaveToDrift":
@@ -601,11 +601,11 @@ void BI_LaunchCommand()
 		break;
 	case "BI_Defend":
 		Ship_SetTaskDefend(SECONDARY_TASK,charIdx,GetTargChrIndex(targetNum,locName));
-		DeleteAttribute(chRef, "ShipCannonChargeType"); // флаг офов, чем пулять постоянно, ставится игроком командами, до след приказа Атака или конца снарядов
+		DeleteAttribute(chRef, "ShipCannonChargeType"); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 	case "BI_Attack":
 		Ship_SetTaskAttack(SECONDARY_TASK,charIdx,GetTargChrIndex(targetNum,locName));
-		DeleteAttribute(chRef, "ShipCannonChargeType"); // флаг офов, чем пулять постоянно, ставится игроком командами, до след приказа Атака или конца снарядов
+		DeleteAttribute(chRef, "ShipCannonChargeType"); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	break;
 	case "BI_Abordage":
 		Ship_SetTaskAbordage(SECONDARY_TASK,charIdx,GetTargChrIndex(targetNum,locName));
@@ -618,11 +618,11 @@ void BI_LaunchCommand()
 		break;
 	case "BI_SailTo":
 		/*if(targetNum==-1)
-		{ // приплыть в локатор с именем locName
+		{ // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ locName
 			if( !IsEntity(&SailToFader) ) {SeaAI_SailToLocator(locName);}
 		}
 		else
-		{ // догнать перса с индексом targetNum
+		{ // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ targetNum
 			if( !IsEntity(&SailToFader) ) {SeaAI_SailToCharacter(targetNum);}
 		} */
 		// boal 09.02.2004 -->
@@ -631,14 +631,14 @@ void BI_LaunchCommand()
            PlaySound("interface\knock.wav");
 	       break;
 	    }
-	    if (!CheckEnemyCompanionDistance2GoAway(false) && !bBettaTestMode)  // компаньон в беде
+	    if (!CheckEnemyCompanionDistance2GoAway(false) && !bBettaTestMode)  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 	    {
            PlaySound("interface\knock.wav");
 	       break;
 	    }
 	    // boal 09.02.2004 <--
 		if (targetNum == -1)
-		{ // приплыть в локатор с именем locName
+		{ // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ locName
             bOk = true;
 
 			if (MOD_SKILL_ENEMY_RATE >= 2 && !bBettaTestMode)
@@ -646,7 +646,7 @@ void BI_LaunchCommand()
                 targetNum = Fort_FindCharacter(AISea.Island,"reload",locName);
                 if (targetNum == -1)
                 {
-                    // тут нужна проверка на город-враг ищем форт по порту
+                    // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
                     targetNum = Fort_FindCharacterByPort(AISea.Island, locName);
                 }
             }
@@ -670,8 +670,8 @@ void BI_LaunchCommand()
 			}
 		}
 		else
-		{ // догнать перса с индексом targetNum
-		    // boal плывем только к друзьям или спец персам (потопить пирата) -->
+		{ // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ targetNum
+		    // boal пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ) -->
             if (GetRelation(sti(pchar.index), targetNum) != RELATION_ENEMY || CheckAttribute(&Characters[targetNum], "CanBeSailTo") || bBettaTestMode)
             {
 			    if( !IsEntity(&SailToFader) ) {SeaAI_SailToCharacter(targetNum); }
@@ -680,7 +680,7 @@ void BI_LaunchCommand()
 			{
                 PlaySound("interface\knock.wav");
 			}
-			// boal плывем только к друзьям или спец персам (потопить пирата) <--
+			// boal пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ) <--
 		}
 		break;
 	case "BI_Speed":
@@ -703,7 +703,7 @@ void BI_LaunchCommand()
 		break;
 	case "BI_ImmDeath":
 		if(targetNum==-1)
-		{ // смерть форта
+		{ // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			targetNum = Fort_FindCharacter(AISea.Island,"reload",locName);
 			if(targetNum>=0)
 			{
@@ -729,7 +729,7 @@ void BI_LaunchCommand()
 		break;
 
 	case "BI_Brander":
-		//ActivateCharacterPerk(pchar,"Brander"); - многоразовый приказ
+		//ActivateCharacterPerk(pchar,"Brander"); - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		Ship_SetTaskBrander(SECONDARY_TASK, charIdx, targetNum);
 		break;
 	case "BI_ImmediateReload":
@@ -838,11 +838,11 @@ void AddShipToInterface(int charIndex)
 	{
 		bCanSpeak = true;
 	}*/
-	//заглушка, убирающая интерфейс разговоров в море.
-	//кому из аддонщиков будет интересно привести систему разговоров в норм - раскоментарьте
-	//а у нас поставили сроки жесткие, програмеры в отпуске, и я банально не успеваю все оттестить
-	//и поправить, ибо некоторые баги програмерские
-	//для изьятия заглушки удалите нах следующую строчку
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ.
+	//пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	//пїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	//пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	//bCanSpeak = false;
 
 	SendMessage(&BattleInterface,"llaall",BI_IN_CREATE_SHIP,charIndex,chRef,shipRef,myShip,shipRelation);
@@ -911,7 +911,7 @@ void BI_SetPossibleCommands()
 		return;
 	}
 
-	// для главного персонажа
+	// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if(mainIdx==chIdx)
 	{
 		//speak interface
@@ -939,14 +939,14 @@ void BI_SetPossibleCommands()
 		BattleInterface.Commands.Speed.enable			= false;//true;
 		//BattleInterface.Commands.CCommand.enable		= GetCompanionQuantity(pchar)>1;
 		//BattleInterface.Commands.Ability.enable			= true;
-		//  проверка на 7 класс
+		//  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 7 пїЅпїЅпїЅпїЅпїЅ
 		if (sti(RealShips[sti(pchar.Ship.Type)].BaseType) > SHIP_WAR_TARTANE)
         {
             BattleInterface.Commands.Cabin.enable		= true;
         }
         BattleInterface.Commands.Boat.enable           = true;
 	}
-	// для спутников
+	// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	else
 	{
 		BattleInterface.Commands.Moor.enable			= false;
@@ -1116,7 +1116,7 @@ void BI_InitializeCommands()
 	BattleInterface.Commands.Bomb.note	    = "Drop a mine";
 	
 	BattleInterface.Commands.ImmediateDeath.enable	= false;
-	BattleInterface.Commands.ImmediateDeath.picNum	= 43;    // это чит
+	BattleInterface.Commands.ImmediateDeath.picNum	= 43;    // пїЅпїЅпїЅ пїЅпїЅпїЅ
 	BattleInterface.Commands.ImmediateDeath.selPicNum	= 43;
 	BattleInterface.Commands.ImmediateDeath.texNum	= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.ImmediateDeath.event	= "BI_ImmDeath";
@@ -1137,7 +1137,7 @@ void BI_InitializeCommands()
     BattleInterface.Commands.ImmediateReload.note	= GetConvertStr("ImmediateReload", "AbilityDescribe.txt");
     
 	BattleInterface.Commands.InstantBoarding.enable			= false;
-	BattleInterface.Commands.InstantBoarding.picNum			= 30;   // это чит
+	BattleInterface.Commands.InstantBoarding.picNum			= 30;   // пїЅпїЅпїЅ пїЅпїЅпїЅ
 	BattleInterface.Commands.InstantBoarding.selPicNum		= 14;
 	BattleInterface.Commands.InstantBoarding.texNum			= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.InstantBoarding.event			= "BI_InstantBoarding";
@@ -1248,242 +1248,242 @@ void BI_SetSeaState()
 	bEnableIslandSailTo = bMapEnter;
 	if(bDisableMapEnter)	bMapEnter = false;
 
-	// boal хрен вам убираем - нужное это делов в игре bReloadCanBe = 0;//убираем перегруз товара кроме как через меню.
+	// boal пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ bReloadCanBe = 0;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.
 }
 
 void SetShipPictureDataByShipTypeName(string sType)
 {
 	switch(sType)
 	{
-		case "tartane": 		// баркас
+		case "tartane": 		// пїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 0+0*16;
 			BI_intNRetValue[1] = 0+0*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "WarTartane":  	// тартана
+		case "WarTartane":  	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 2+0*16;
 			BI_intNRetValue[1] = 2+0*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "barque":			// барк
+		case "barque":			// пїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 4+0*16;
 			BI_intNRetValue[1] = 4+0*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "schooner":		// торговая шхуна
+		case "schooner":		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 6+0*16;
 			BI_intNRetValue[1] = 6+0*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "barkentine":		// баркентина
+		case "barkentine":		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 8+0*16;
 			BI_intNRetValue[1] = 8+0*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "shnyava":			// шнява
+		case "shnyava":			// пїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 10+0*16;
 			BI_intNRetValue[1] = 10+0*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "fleut":			// флейт
+		case "fleut":			// пїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 12+0*16;
 			BI_intNRetValue[1] = 12+0*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "caravel":			// каравелла
+		case "caravel":			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 14+0*16;
 			BI_intNRetValue[1] = 14+0*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "pinnace":			// пинасс
+		case "pinnace":			// пїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 0+1*16;
 			BI_intNRetValue[1] = 0+1*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "caracca":			// каракка
+		case "caracca":			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 2+1*16;
 			BI_intNRetValue[1] = 2+1*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "Navio":			// Навио
+		case "Navio":			// пїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 4+1*16;
 			BI_intNRetValue[1] = 4+1*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "EastIndiaMan":	// Ост-индец
+		case "EastIndiaMan":	// пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 6+1*16;
 			BI_intNRetValue[1] = 6+1*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 				
-		case "LuggerQuest":	// курьерский люггер
+		case "LuggerQuest":	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 8+1*16;
 			BI_intNRetValue[1] = 8+1*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "lugger":			// люггер
+		case "lugger":			// пїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 10+1*16;
 			BI_intNRetValue[1] = 10+1*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "sloop":			// шлюп
+		case "sloop":			// пїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 12+1*16;
 			BI_intNRetValue[1] = 12+1*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "brigantine":		// бригантина
+		case "brigantine":		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 14+1*16;
 			BI_intNRetValue[1] = 14+1*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "brig":			// бриг
+		case "brig":			// пїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 0+2*16;
 			BI_intNRetValue[1] = 0+2*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "schooner_w":		// военная шхуна
+		case "schooner_w":		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 2+2*16;
 			BI_intNRetValue[1] = 2+2*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "galeon_l":		// галеон
+		case "galeon_l":		// пїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 4+2*16;
 			BI_intNRetValue[1] = 4+2*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "corvette":		// корвет
+		case "corvette":		// пїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 6+2*16;
 			BI_intNRetValue[1] = 6+2*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "XebekVML":		// шебека
+		case "XebekVML":		// пїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 8+2*16;
 			BI_intNRetValue[1] = 8+2*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "Polacre":			// Полакр
+		case "Polacre":			// пїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 10+2*16;
 			BI_intNRetValue[1] = 10+2*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 				
-		case "Galeon_h":		// Тяжелый галеон
+		case "Galeon_h":		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 12+2*16;
 			BI_intNRetValue[1] = 12+2*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "frigate":			// Фрегат
+		case "frigate":			// пїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 14+2*16;
 			BI_intNRetValue[1] = 14+2*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "frigate_h":		// Тяжелый Фрегат
+		case "frigate_h":		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 0+3*16;
 			BI_intNRetValue[1] = 0+3*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "lineship":		// Военный корабль
+		case "lineship":		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 2+3*16;
 			BI_intNRetValue[1] = 2+3*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "warship":			// Французский военный корабль
+		case "warship":			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 4+3*16;
 			BI_intNRetValue[1] = 4+3*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "battleship":		// Голландский военный корабль
+		case "battleship":		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 6+3*16;
 			BI_intNRetValue[1] = 6+3*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "manowar":			// Испанский военный корабль
+		case "manowar":			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 8+3*16;
 			BI_intNRetValue[1] = 8+3*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "manowar_e":		// Английский военный корабль
+		case "manowar_e":		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 10+3*16;
 			BI_intNRetValue[1] = 10+3*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "Mayfang":			// легкая шебека "Мэйфэнг"
+		case "Mayfang":			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 			BI_intNRetValue[0] = 12+3*16;
 			BI_intNRetValue[1] = 12+3*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "Mirage":			// приватирский кеч "Мираж"
+		case "Mirage":			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅ"
 			BI_intNRetValue[0] = 14+3*16;
 			BI_intNRetValue[1] = 14+3*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "Valciria":		// патрульный бриг "Валькирия"
+		case "Valciria":		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 			BI_intNRetValue[0] = 0+4*16;
 			BI_intNRetValue[1] = 0+4*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "Corvette_quest":	// малый фрегат "Гриффондор"
+		case "Corvette_quest":	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 			BI_intNRetValue[0] = 2+4*16;
 			BI_intNRetValue[1] = 2+4*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "ArabellaShip":	// быстрый фрегат "Акула"
+		case "ArabellaShip":	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅ"
 			BI_intNRetValue[0] = 4+4*16;
 			BI_intNRetValue[1] = 4+4*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "Flyingdutchman":	// проклятый "Калеуче"
+		case "Flyingdutchman":	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 			BI_intNRetValue[0] = 6+4*16;
 			BI_intNRetValue[1] = 6+4*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "Flyingdutchman_l":// копия "Калеуче"
+		case "Flyingdutchman_l":// пїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 			BI_intNRetValue[0] = 8+4*16;
 			BI_intNRetValue[1] = 8+4*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "Santisima":		// Линейный корабль "Реус де Сан-Педро"
+		case "Santisima":		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅ"
 			BI_intNRetValue[0] = 10+4*16;
 			BI_intNRetValue[1] = 10+4*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "Polacre_q":			// Полакр "Тореро" // Addon 2016-1 Jason пиратская линейка
+		case "Polacre_q":			// пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅ" // Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[0] = 12+4*16;
 			BI_intNRetValue[1] = 12+4*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
@@ -1509,19 +1509,19 @@ ref BI_GetData()
 
 	switch(dataType)
 	{
-	// Получаем номер картинки корабля
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	case BIDT_SHIPPICTURE:
 		chRef = GetCharacter(GetEventData());
 		if( CharacterIsDead(chRef) )
 		{
 			BI_intNRetValue[0] = 65;
-			BI_intNRetValue[1] = 64; // выбранная черепушка
+			BI_intNRetValue[1] = 64; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_COMMAND;
 			BI_intNRetValue[3] = true;
 			break;
 		}
 		int st = sti(chRef.Ship.Type);
-		if (!CheckAttribute(&RealShips[st], "basetype")) Log_TestInfo("BIDT_SHIPPICTURE нет basetype у корабля НПС ID=" + chRef.id);
+		if (!CheckAttribute(&RealShips[st], "basetype")) Log_TestInfo("BIDT_SHIPPICTURE пїЅпїЅпїЅ basetype пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ ID=" + chRef.id);
 		st = sti(RealShips[st].basetype);
 		SetShipPictureDataByShipType( st );
 		break;
@@ -1838,7 +1838,7 @@ void SetParameterData()
 	BattleInterface.ShipIcon.shipclassuv			= "0.0,0.0,1.0,1.0";
 	BattleInterface.ShipIcon.shipclassoffset		= "-14,-52";
 	BattleInterface.ShipIcon.shipclassiconsize		= "64,16";
-	BattleInterface.ShipIcon.gunchargeprogress		= "0.0625, 0.211, 0.359, 0.5, 0.633, 0.781, 0.983"; //Tymofei: подогнал под точную обрезку, в игре не видно, на скринах при скалинге - легко!
+	BattleInterface.ShipIcon.gunchargeprogress		= "0.0625, 0.211, 0.359, 0.5, 0.633, 0.781, 0.983"; //Tymofei: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ!
 
 	BattleInterface.ShipIcon.shiptexturename		= "battle_interface\ship_icons2.tga";
 	BattleInterface.ShipIcon.shipcolor				= argb(255,128,128,128);
@@ -1916,20 +1916,20 @@ void SetParameterData()
 
 ref ProcessSailDamage()
 {
-	// от кого удар
+	// пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	int shootIdx = GetEventData();
-	// перс
+	// пїЅпїЅпїЅпїЅ
 	int chrIdx = GetEventData();
 
 	string sMastName = GetEventData();
-	// координаты паруса
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	string reyName = GetEventData();
 	int groupNum = GetEventData();
-	// данные о дырках
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	int holeCount = GetEventData();
 	int holeData = GetEventData();
 	int maxHoleCount = GetEventData();
-	// мощность паруса
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	float sailPower = GetEventData();
 
 	ref chref = GetCharacter(chrIdx);
@@ -1982,14 +1982,14 @@ ref ProcessSailDamage()
 	return &BI_g_fRetVal;
 }
 
-// ugeen -> учет безвозвратной убыли корпуса
+// ugeen -> пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 void ProcessHullDecrease()
 {
 	int i, cn, hp;
 	ref chref;
 	ref mchar = GetMainCharacter();
 	
-	if (!bSeaActive || mchar.location == mchar.SystemInfo.CabinType) // спим в каюте
+	if (!bSeaActive || mchar.location == mchar.SystemInfo.CabinType) // пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 	{
 		for (i=0; i<COMPANION_MAX; i++)
 		{
@@ -1999,7 +1999,7 @@ void ProcessHullDecrease()
 	
 			if(CheckAttribute(chref, "Ship.HP_penalty"))
 			{
-				hp = sti(RealShips[sti(chref.ship.type)].HP);	// текущий максимум
+				hp = sti(RealShips[sti(chref.ship.type)].HP);	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				if(hp > makeint(stf(chref.Ship.HP_penalty)) ) RealShips[sti(chref.ship.type)].HP = hp - makeint(stf(chref.Ship.HP_penalty)); 
 				else RealShips[sti(chref.ship.type)].HP = 1;
 				if( GetCurrentShipHP(chref) > sti(RealShips[sti(chref.ship.type)].HP) )
@@ -2022,16 +2022,16 @@ bool CheckRepairPerks(ref chref)
 	return false;	
 }
 
-// перенес из ВМЛ 25/09/06
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ 25/09/06
 void ProcessDayRepair()
 {
 	int i, cn;
 	float matQ, tmpf, repPercent;
 	ref chref;
 	ref mchar = GetMainCharacter();
-	// boal 21.01.2004 на лету в море не чиним, тк идут дни прям в море -->
-	//if (bSeaActive == false || mchar.location == mchar.SystemInfo.CabinType) // спим в каюте
-	if (!bSeaActive || mchar.location != mchar.SystemInfo.CabinType) // при отдыхе в каюте не чинимся
+	// boal 21.01.2004 пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ -->
+	//if (bSeaActive == false || mchar.location == mchar.SystemInfo.CabinType) // пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
+	if (!bSeaActive || mchar.location != mchar.SystemInfo.CabinType) // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	{		
 		for (i=0; i<COMPANION_MAX; i++)
 		{
@@ -2040,7 +2040,7 @@ void ProcessDayRepair()
 			chref = GetCharacter(cn);
 			if(CheckRepairPerks(chref))
 			{	
-				// расчет починки корпуса
+				// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				if (GetHullPercent(chref) < 100.0 )
 				{
 					repPercent = GetHullRPD(chref);
@@ -2058,7 +2058,7 @@ void ProcessDayRepair()
 					}
 				}
 				
-				// расчет починки парусов
+				// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				if (GetSailPercent(chref) < GetAllSailsDamagePercent(chref) )
 				{
 					repPercent = GetSailRPD(chref);
@@ -2115,7 +2115,7 @@ ref procGetSailTextureData()
 					sUpgrade = "silk";
 				break;
 			}*/
-			// Jason: новые типы парусов, унифицируем в одно целое
+			// Jason: пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			switch(iUpgrade)
 			{
 				case 1:
@@ -2134,28 +2134,28 @@ ref procGetSailTextureData()
 					sUpgrade = "usual4";
 				break;
 				case 6:
-					sUpgrade = "wing"; // белый
+					sUpgrade = "wing"; // пїЅпїЅпїЅпїЅпїЅ
 				break;
 				case 7:
-					sUpgrade = "win0"; // синие полоски
+					sUpgrade = "win0"; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				break;
 				case 8:
-					sUpgrade = "win1"; // красные полоски
+					sUpgrade = "win1"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				break;
 				case 9:
-					sUpgrade = "win2"; // сине-красный крест
+					sUpgrade = "win2"; // пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				break;
 				case 10:
-					sUpgrade = "win3"; // трехцветные
+					sUpgrade = "win3"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				break;
 				case 11:
-					sUpgrade = "win4"; // красные ромбы
+					sUpgrade = "win4"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				break;
 				case 12:
-					sUpgrade = "torn"; // рванина
+					sUpgrade = "torn"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				break;
 				case 13:
-					sUpgrade = "silk"; // шелк
+					sUpgrade = "silk"; // пїЅпїЅпїЅпїЅ
 				break;
 			}
 		
@@ -2164,22 +2164,22 @@ ref procGetSailTextureData()
 		
 			BI_objRetValue.normalTex = nationFileName;
 			BI_objRetValue.geraldTex = "";//"ships\gerald\chuckskull.tga";
-			BI_objRetValue.sailscolor = argb(255,255,255,255);  // белый парус
+			BI_objRetValue.sailscolor = argb(255,255,255,255);  // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		
 			//BI_objRetValue.geraldTexPointer = 0; // (IDirect3DTexture8*)
 			
 			//if (CheckAttribute(&characters[chrIdx], "ShipSails.SailsColor"))
-			if (CheckAttribute(shref, "ShipSails.SailsColor")) // 1.2.3 цвет теперь атрибут корабля, а не НПС
+			if (CheckAttribute(shref, "ShipSails.SailsColor")) // 1.2.3 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅпїЅпїЅ
 			{
 				BI_objRetValue.sailscolor = sti(shref.ShipSails.SailsColor);
 			}
-			//if( CheckAttribute(&characters[chrIdx],"ShipSails.gerald_name") ) // не наследуется при обмене кораблей, потому не в  ship.
-			if( CheckAttribute(shref,"ShipSails.gerald_name") ) // 1.2.3 герб теперь атрибут корабля, а не НПС
+			//if( CheckAttribute(&characters[chrIdx],"ShipSails.gerald_name") ) // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ  ship.
+			if( CheckAttribute(shref,"ShipSails.gerald_name") ) // 1.2.3 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅпїЅпїЅ
 			{
 				BI_objRetValue.geraldTex = "Ships\Gerald\" + shref.ShipSails.gerald_name + ".tga";
 			}
 			/*
-			switch(sti(Characters[chrIdx].nation))  // Не работает это :(
+			switch(sti(Characters[chrIdx].nation))  // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ :(
 			{
 				case ENGLAND:	
 					nationFileName = "ships\parus_" + sUpgrade + "_england.tga";		
@@ -2202,7 +2202,7 @@ ref procGetSailTextureData()
 			
 			BI_objRetValue.maxSP = shref.sp;
 			// boal -->
-			if (CheckAttribute(shref, "EmblemedSails.normalTex")) // заднанный в типе парус
+			if (CheckAttribute(shref, "EmblemedSails.normalTex")) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		    {
 		        BI_objRetValue.normalTex = shref.EmblemedSails.normalTex;
 		        nationFileName           = shref.EmblemedSails.normalTex;
@@ -2235,9 +2235,9 @@ ref procGetSailTextureData()
 				} else {
 					BI_objRetValue.(attrName).Gerald = tmpStr;
 				}
-				//BI_objRetValue.(attrName).Gerald = "ships\chuckskull.tga"; // текстура герба (если не указана, то берется BI_objRetValue.geraldTex или BI_objRetValue.geraldTexPointer)
-				//BI_objRetValue.(attrName).hscale = 0.5; // масштаб в размере паруса (0.5 - герб занимает половину паруса)
-				//BI_objRetValue.(attrName).vscale = 0.5; // если нет vscale, то используется = scale
+				//BI_objRetValue.(attrName).Gerald = "ships\chuckskull.tga"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ BI_objRetValue.geraldTex пїЅпїЅпїЅ BI_objRetValue.geraldTexPointer)
+				//BI_objRetValue.(attrName).hscale = 0.5; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (0.5 - пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ)
+				//BI_objRetValue.(attrName).vscale = 0.5; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ vscale, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ = scale
 			}
 			//}
 		}
@@ -2294,7 +2294,7 @@ ref procGetRiggingData()
 		if(n != PIRATE)
 		{	
 			if(s == 1) BI_intNRetValue[1] = FLAG_FRT; 
-			else	   BI_intNRetValue[1] = FLAG_FRT; 	// приходится вот так вот изгаляться, тк не все модели тулом читаются :( 
+			else	   BI_intNRetValue[1] = FLAG_FRT; 	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ :( 
 		}				
 	}	
 	return &BI_intNRetValue;
@@ -2370,24 +2370,24 @@ int GetShipFlagTextureNum(ref chr)
 	if(iNation == PIRATE) return FLAG_PIR;
 	else
 	{		
-		//если сдался - выбрасывает белый флаг
+		//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		if(CheckAttribute(chr,"surrendered")) return FLAG_WHT;			
 		else
 		{		
-			if(IsCompanion(chr) || IsMainCharacter(chr) || chr.id == "BoatChar") // ГГ , компаньоны, шлюпка у берега
+			if(IsCompanion(chr) || IsMainCharacter(chr) || chr.id == "BoatChar") // пїЅпїЅ , пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				if(iNation != PIRATE) return FLAG_PER;								
 				else				  return FLAG_PIR; 	
 			}			
 			else
 			{			
-				// командующие эскадрами
+				// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				if(IsShipCommander(chr)) return FLAG_SHP;								
 				else
 				{
-					// купчишки
+					// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					if(IsShipMerchant(chr)) return FLAG_MER;								
-					// все прочие .. военные патрули, эскорты и т.п.
+					// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ .. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅ.пїЅ.
 					else 					return FLAG_FRT;									
 				}				
 			}			
@@ -2458,8 +2458,8 @@ bool CheckInstantRepairCondition(ref chref)
 {
 //boal -->
 	if(MOD_SKILL_ENEMY_RATE > 5) return false;
-    if (CheckOfficersPerk(chref,"InstantRepair")) return false;  // уже в деле
-    if (!GetOfficersPerkUsing(chref,"InstantRepair")) return false;  // можно включить?
+    if (CheckOfficersPerk(chref,"InstantRepair")) return false;  // пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
+    if (!GetOfficersPerkUsing(chref,"InstantRepair")) return false;  // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ?
 //boal <--
 
 	float chrShipHP = GetHullPercent(chref);
@@ -2486,7 +2486,7 @@ float GetRepairGoods(bool bIsHull, ref chref)
 	if( bIsHull )
 	{
 		fGoodsQ = GetCargoGoods(chref,GOOD_PLANKS);
-		if( CheckAttribute(chref,"RepairMaterials.forHull") )   // погрешность округления списания колва досок за процент
+		if( CheckAttribute(chref,"RepairMaterials.forHull") )   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		{	
 			fGoodsQ += stf(chref.RepairMaterials.forHull);
 		}
@@ -2561,7 +2561,7 @@ float GetRigDamage(int shootIdx, int iBallType, ref damage_chr)
 	
 	fDmgRig = isEquippedAmuletUse(shoot_chr, "indian_8", fDmgRig, 1.05 );
 	fDmgRig = isEquippedAmuletUse(damage_chr, "amulet_9", fDmgRig, 0.95 );
-	// Addon 2016-1 Jason Пиратская линейка
+	// Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (CheckAttribute(damage_chr, "SeaBoss")) { fDmgRig *= 0.1; }
 		
 	return fDmgRig;
@@ -2579,7 +2579,7 @@ void MakeSailDmg(int chrIdx, float dmg)
 	{
 		characters[chrIdx].upgrades.sails = 1;
 	}
-	//убираем 1 вариант апгрейда (паруса по умолчанию))
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ))
 	iSailsUpgrade = sti(characters[chrIdx].upgrades.sails) - 1;
 	dmg = dmg + ((dmg/100)*iSailsUpgrade*5);
 	SendMessage(&objSail,"lslf", MSG_SAIL_SCRIPT_PROCESSING,"RandomSailsDmg", chrIdx,dmg);
@@ -2699,7 +2699,7 @@ void procSetUsingAbility()
 		return;
 	}
 
-	// для главного персонажа
+	// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if(mainIdx==chIdx)
 	{
 		
@@ -2846,7 +2846,7 @@ void BI_ProcessControlPress()
 		break;
 		
 		case "BICommandsActivate": 
-			PlaySound("interface\ok.wav"); // boal даешь звуки!
+			PlaySound("interface\ok.wav"); // boal пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!
 		break;
 	}
 }
@@ -2858,7 +2858,7 @@ ref procGetSRollSpeed()
 	if(chrIdx>=0) BI_g_fRetVal = GetRSRollSpeed(GetCharacter(chrIdx));
 	return &BI_g_fRetVal;
 }
-// скорость подъема паруса
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 float GetRSRollSpeed(ref chref)
 {
 	int iShip = sti(chref.ship.type);
@@ -2869,24 +2869,24 @@ float GetRSRollSpeed(ref chref)
 	//int crewMin = sti(RealShips[iShip].MinCrew);
 	if (!CheckAttribute(&RealShips[iShip], "MaxCrew"))
 	{
-		Log_TestInfo("GetRSRollSpeed нет MaxCrew у корабля НПС ID=" + chref.id);
+		Log_TestInfo("GetRSRollSpeed пїЅпїЅпїЅ MaxCrew пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ ID=" + chref.id);
 		return 0.0;
 	}
  	int crewMax = sti(RealShips[iShip].MaxCrew);
  	int crewOpt = sti(RealShips[iShip].OptCrew);//boal
  	if (crewMax < crewQ) crewQ  = crewMax; // boal
 	//if(crewQ < crewMin) fRollSpeed *= makefloat(crewQ)/makefloat(2*crewMin);
-	//fRollSpeed = fRollSpeed * (0.5 + makefloat(crewQ)/makefloat(2*crewMax)); // уменьшение скорости разворота от команды
+	//fRollSpeed = fRollSpeed * (0.5 + makefloat(crewQ)/makefloat(2*crewMax)); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	//fRollSpeed = fRollSpeed * makefloat(crewQ)/makefloat(crewMax);
-	// опыт матросов 
+	// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
 	float  fExp;
 	
-	if (crewOpt <= 0) crewOpt = 0; // fix для профилактики деления на ноль
+	if (crewOpt <= 0) crewOpt = 0; // fix пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 	
 	fExp = 0.05 + stf(GetCrewExp(chref, "Sailors") * crewQ) / stf(crewOpt * GetCrewExpRate());
 	if (fExp > 1) fExp = 1;
 	fRollSpeed = fRollSpeed * fExp;
-	// мораль
+	// пїЅпїЅпїЅпїЅпїЅпїЅ
 	float  fMorale = stf(stf(GetCharacterCrewMorale(chref)) / MORALE_MAX);
 	fRollSpeed = fRollSpeed * (0.7 + fMorale / 2.0);
 
@@ -2918,7 +2918,7 @@ ref BI_GetLandData()
 
 	if( CheckAttribute(arLoc,"fort.model") )
 	{
-		BI_intNRetValue[0] = 1; // тип форт
+		BI_intNRetValue[0] = 1; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		int chrIdx = Fort_FindCharacter(AISea.Island,"reload",arLoc.name);
 		if(chrIdx>=0)
 		{
@@ -2939,7 +2939,7 @@ ref BI_GetLandData()
 			if( iTmp>=0 ) {
 				iTmp = FindColony( Locations[iTmp].fastreload );
 				if( iTmp>=0 ) {
-					BI_intNRetValue[0] = 2; // тип город
+					BI_intNRetValue[0] = 2; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 					switch( GetNationRelation2MainCharacter(sti(Colonies[iTmp].nation)) )
 					{
 					case RELATION_FRIEND:	BI_intNRetValue[1] = BI_RELATION_FRIEND; break;
@@ -2951,8 +2951,8 @@ ref BI_GetLandData()
 			}
 		}
 		else
-		{// не форт, не город - бухта!
-			BI_intNRetValue[0] = 3; // тип бухта
+		{// пїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ!
+			BI_intNRetValue[0] = 3; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		}
 	}
 	/*if( CheckAttribute(arLoc,"tex") && CheckAttribute(arLoc,"pic") )
@@ -2981,15 +2981,15 @@ ref BI_GetLandData()
 		BI_intNRetValue[2] = 0;//AddTextureToList( &BattleInterface, "battle_interface\cicons_locators.tga", 8, 1 );
 		switch (BI_intNRetValue[0])
 		{
-			case 1: // форт
+			case 1: // пїЅпїЅпїЅпїЅ
 				BI_intNRetValue[3] = 62;
 				BI_intNRetValue[4] = 46;
 			break;
-			case 2: // город
+			case 2: // пїЅпїЅпїЅпїЅпїЅ
 				BI_intNRetValue[3] = 63;
 				BI_intNRetValue[4] = 47;
             break;
-            case 3: // бухта
+            case 3: // пїЅпїЅпїЅпїЅпїЅ
 				BI_intNRetValue[3] = 31;
 				BI_intNRetValue[4] = 15;
             break;
@@ -3022,15 +3022,15 @@ bool CheckSuccesfullBoard(ref rBoarderChr, ref rSieger)
 	return false;
 }
 
-// НОВОЕ ГПК патч 1.2.3
-// рандомный герб на парус
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 1.2.3
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 void SetRandGeraldSail(ref chr, int nation)
 {
 	string ret = "";
 	int    st = GetCharacterShipType(chr);
 	ref    shref;
 	
-	// 1.2.3 переделка на герб привязан к кораблю, то есть при обмене сохранится
+	// 1.2.3 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (st != SHIP_NOTUSED)
 	{
 		shref = GetRealShip(st); 
@@ -3074,15 +3074,15 @@ void SetSailsColor(ref chr, int col)
 	}		
 }
 
-// Warship 04.06.09 Проверка, можно ли на паруса корабля персонажа поставить герб
+// Warship 04.06.09 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 bool CanSetSailsGerald(ref _char)
 {
-	int shipClass = GetCharacterShipClass(_char); // Если корабля нет, вернет 7 (лодка)
+	int shipClass = GetCharacterShipClass(_char); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ 7 (пїЅпїЅпїЅпїЅпїЅ)
 	
-	if(shipClass > 4) // Проверка на класс корабля > 4
-	{
-		return false;
-	}
+	// if(shipClass > 4) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ > 4
+	// {
+	// 	return false;
+	// }
 
 	return true;
 }

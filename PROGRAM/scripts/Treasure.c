@@ -1,6 +1,6 @@
-// клады из ВМЛ
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ
 
-//  Карты сокровищ  ГЕНЕРАТОР -->
+//  пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
 string GetIslandForTreasure()
 {
 	int iNum, m;
@@ -13,7 +13,7 @@ string GetIslandForTreasure()
 	makearef(arDest, NullCharacter.TravelMap.Islands);
 	iNum = GetAttributesNum(arDest);
 	
-	string sArray[50]; // динамические массивы в Шторме не организуешь :(
+	string sArray[50]; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ :(
 	for (int i = 0; i<iNum; i++)
 	{
 		arImt = GetAttributeN(arDest, i);
@@ -74,7 +74,7 @@ string GetBoxForTreasure(string island, string location)
     iNum = rand(iNum-1);
     
     arImt = GetAttributeN(arDest, iNum);
-	return GetAttributeValue(arImt);  // тут не атрибут, а значеие
+	return GetAttributeValue(arImt);  // пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 }
 
 void GenerateMapsTreasure(ref item, int iProbability1, int iProbability2)
@@ -106,7 +106,7 @@ void GenerateMapsTreasure(ref item, int iProbability1, int iProbability2)
 	if(rand(iProbability1) == 1 && !CheckMainHeroMap("map_cumana")) 	item.BoxTreasure.map_cumana 	= 1;
 }
 
-void GenerateAdmiralMapsTreasure(ref item, int abl) // Jason, адмиральские карты по 1 шт 240912
+void GenerateAdmiralMapsTreasure(ref item, int abl) // Jason, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 1 пїЅпїЅ 240912
 {
 	if (!CheckAttribute(pchar, "questTemp.AdmiralMap")) return;
 	if (rand(abl) == 1)
@@ -124,7 +124,7 @@ void FillMapForTreasure(ref item)
     item.MapBoxId   = GetBoxForTreasure(item.MapIslId, item.MapLocId);
     item.MapTypeIdx = rand(2);
 
-    // генерим клад
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     DeleteAttribute(item, "BoxTreasure");
     FillBoxForTreasure(item, rand(3));
     FillBoxForTreasureAddition(item);
@@ -137,7 +137,7 @@ void FillMapForTreasure(ref item)
     {
        FillBoxForTreasureSuper(item);
     }
-    DeleteAttribute(Pchar, "GenQuest.TreasureBuild"); //сборный
+    DeleteAttribute(Pchar, "GenQuest.TreasureBuild"); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
     if (sti(item.MapTypeIdx) != -1)
     {
@@ -145,13 +145,13 @@ void FillMapForTreasure(ref item)
         Pchar.quest.SetTreasureFromMap.win_condition.l1.location = item.MapLocId;
         Pchar.quest.SetTreasureFromMap.win_condition             = "SetTreasureFromMap";
 		
-		pchar.GenQuest.Treasure.Vario = rand(5); // определяем событие
-		locations[FindLocation(item.MapLocId)].DisableEncounters = true; //энкаутеры закрыть
+		pchar.GenQuest.Treasure.Vario = rand(5); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		locations[FindLocation(item.MapLocId)].DisableEncounters = true; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     }
 }
 void FillBoxForTreasure(ref item, int i)
 {
-	// определяем тип
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	switch (i)
 	{
 		// good
@@ -376,7 +376,7 @@ void FillBoxForTreasureAddition(ref item)
 		    }
 	    }
 	}
-	// +1 вещи
+	// +1 пїЅпїЅпїЅпїЅ
 	switch (rand(40))
 	{
 		case 1:
@@ -474,7 +474,7 @@ void FillBoxForTreasureSuper(ref item)
 	int     i;
 	string  itmName;
 
-    if (3*nLuck > rand(21))// еще поди найди 2 куска
+    if (3*nLuck > rand(21))// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅпїЅпїЅ
     {
 		i = 0;
 		itmName = "";
@@ -564,8 +564,8 @@ void SetTreasureBoxFromMap()
         Log_Info("The treasures must be somewhere nearby!");
         PlaySound("interface\notebook.wav");
 		Statistic_AddValue(Pchar, "Treasure", 1);
-		Achievment_SetStat(Pchar, 8, 1);
-        // немного веселой жизни
+		Achievment_SetStat(Pchar, 8, 10);
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         if (rand(1) == 0) TraderHunterOnMap();
 		else CoolTraderHunterOnMap();
         if( CheckAttribute(Pchar,"location.from_sea") )
@@ -591,18 +591,18 @@ void SetTreasureBoxFromMap()
         CopyAttributes(arToBox, arFromBox);
 
         loc.(box) = Items_MakeTime(GetTime(), GetDataDay(), GetDataMonth(), GetDataYear());
-        loc.(box).Treasure =  true; // признак сокровища в сундуке
+        loc.(box).Treasure =  true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
         DeleteAttribute(item, "MapIslId");
         TakeNItems(Pchar, "map_full", -1);
     }
 }
-//  Карты сокровищ  ГЕНЕРАТОР <--
+//  пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ <--
 
-// погодня за ГГ на карте
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 void  TraderHunterOnMap()
 {
-    // немного веселой жизни
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     ref  sld;
     int  i;
 
@@ -615,7 +615,7 @@ void  TraderHunterOnMap()
     {
         sld = GetCharacter(NPC_GenerateCharacter(sCapId + i, "off_hol_2", "man", "man", sti(PChar.rank) + 5, PIRATE, 15, true, "hunter"));
         SetShipHunter(sld);
-        SetFantomParamHunter(sld); //крутые парни
+        SetFantomParamHunter(sld); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         SetCaptanModelByEncType(sld, "war");
         sld.AlwaysEnemy = true;
         sld.DontRansackCaptain = true;
@@ -631,7 +631,7 @@ void  TraderHunterOnMap()
     Map_CreateWarrior("", sCapId + "1", 8);
 }
 
-void CoolTraderHunterOnMap()//Jason, быстрые ДУ
+void CoolTraderHunterOnMap()//Jason, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
 {
     ref  sld;
     int  i;
@@ -645,7 +645,7 @@ void CoolTraderHunterOnMap()//Jason, быстрые ДУ
     {
         sld = GetCharacter(NPC_GenerateCharacter(sCapId + i, "off_hol_2", "man", "man", sti(PChar.rank) + 8, PIRATE, 15, true, "hunter"));
         SetShipHunter(sld);
-        SetFantomParamHunter(sld); //крутые парни
+        SetFantomParamHunter(sld); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         SetCaptanModelByEncType(sld, "war");
         sld.AlwaysEnemy = true;
         sld.DontRansackCaptain = true;
@@ -668,7 +668,7 @@ void SetTreasureHunter(string temp)
 	ref    sld;
 	bool   ok;
 
-	if (chrDisableReloadToLocation) return; // идет некий другой квест с запретом выхода
+	if (chrDisableReloadToLocation) return; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	
     Pchar.GenQuest.Hunter2Pause            = true;
     
@@ -681,11 +681,11 @@ void SetTreasureHunter(string temp)
     for (i = 1; i <= j; i++)
     {
         sld = GetCharacter(NPC_GenerateCharacter(sCapId + i, "off_hol_2", "man", "man", sti(PChar.rank) + 5, PIRATE, 0, true, "hunter"));
-        SetFantomParamHunter(sld); //крутые парни
+        SetFantomParamHunter(sld); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         sld.Dialog.CurrentNode = "TreasureHunter";
         sld.dialog.filename = "Hunter_dialog.c";
         sld.greeting = "hunter";
-        sld.location = "none"; // вот где порылась собака!!!!!!!!!!!
+        sld.location = "none"; // пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ!!!!!!!!!!!
 
         SetModelPirate(sld);
         k = 0;
@@ -699,13 +699,13 @@ void SetTreasureHunter(string temp)
 		
         LAi_SetActorTypeNoGroup(sld);
         LAi_SetCheckMinHP(sld, (LAi_GetCharacterHP(sld) - 1), false, "Battle_Hunters_Land");
-        if (PlaceCharacter(sld, "goto", "random_must_be_near") == "" && i == 1) // fix если вдруг нет в локации
+        if (PlaceCharacter(sld, "goto", "random_must_be_near") == "" && i == 1) // fix пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         {
             ok = false;
             break;
         }
         LAi_ActorFollow(sld, pchar, "", 8.0);
-        //LAi_Actor2WaitDialog(sld, pchar); // ждать диалог, но бежать
+        //LAi_Actor2WaitDialog(sld, pchar); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         LAi_group_MoveCharacter(sld, sTemp);
     }
 
@@ -716,7 +716,7 @@ void SetTreasureHunter(string temp)
 	LAi_SetFightModeForOfficers(false);
 	if (ok)
     {
-        PChar.HunterCost = makeint(sti(Pchar.money) / 5) + rand(20)*1000; //сразу генерим
+        PChar.HunterCost = makeint(sti(Pchar.money) / 5) + rand(20)*1000; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         PChar.HunterCost.Qty = i;
         PChar.HunterCost.TempHunterType = "";
         sld = characterFromID(sCapId + "1");
@@ -749,11 +749,11 @@ ref SetFantomSkeletForts(string group, string locator, string enemygroup, string
 		}
 		LAi_SetWarriorType(Cr);
 	    LAi_group_MoveCharacter(Cr, enemygroup);
-	    LAi_NoRebirthEnable(Cr); //не показывать убитых при входе в локацию
-	    LAi_LoginInCaptureTown(Cr, true); // для записи игры
+	    LAi_NoRebirthEnable(Cr); //пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	    LAi_LoginInCaptureTown(Cr, true); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	    if (_type == "GhostShipCrew")
 	    {
-		    // возможно дает вылеты от многих трупов Cr.DontClearDead = true;
+		    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ Cr.DontClearDead = true;
 		    Cr.GhostShipCrew = true;
 	    }
     }

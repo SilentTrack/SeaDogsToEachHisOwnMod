@@ -242,7 +242,7 @@ void BLI_ExecuteCommand()
 	break;
 	case "BI_ItemsChange":
 		tmpi = SendMessage(pchar,"ls",MSG_CHARACTER_EX_MSG,"FindDialogCharacter");
-		if(tmpi>=0 && isOfficerInShip(GetCharacter(tmpi), true))//fix вот дыра для обмена с матросом
+		if(tmpi>=0 && isOfficerInShip(GetCharacter(tmpi), true))//fix пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         {
             LaunchCharacterItemChange(GetCharacter(tmpi));
         }
@@ -255,7 +255,7 @@ void BLI_ExecuteCommand()
 			}
 			else
 			{
-				// обмен с офицером всегда и везде (в абордаже нет диалога!)
+				// пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!)
 			    tmpi = LAi_FindNearestVisCharacter(GetMainCharacter(), 1);
 			    if( tmpi>0 && IsOfficer(GetCharacter(tmpi)) && IsCharacterPerkOn(pchar,"SharedExperience") )
 				{
@@ -355,9 +355,9 @@ void BLI_SetObjectData()
 	DeleteAttribute(&objLandInterface,"");
 
 	objLandInterface.parameters.DoShowCommandos = InterfaceStates.BattleShow.Command;
-	objLandInterface.data.Alarm = 0; // нет тревоги
+	objLandInterface.data.Alarm = 0; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
-	// персы вместе с нами
+	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 	aref ar;
 	int i,cn;
 	ref curCh;
@@ -375,7 +375,7 @@ void BLI_SetObjectData()
 		//ar.charge = 0.0;
 	}
 	BLI_SetMessageParameters();
-	// текстуры
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	int idLngFile = LanguageOpenFile("commands_name.txt");
 	objLandInterface.CommandTextures.list.t0.name = "battle_interface\LandCommands.tga";
 	objLandInterface.CommandTextures.list.t0.xsize = 16;
@@ -402,7 +402,7 @@ void BLI_SetObjectData()
 	objIconsNote.1x10 = LanguageConvertString(idLngFile, "go_port");
 	objIconsNote.1x8 = LanguageConvertString(idLngFile, "go_portman");
 	objIconsNote.1x5 = LanguageConvertString(idLngFile, "go_prison");
-	// список команд
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	objLandInterface.Commands.Cancel.enable		= false;
 	objLandInterface.Commands.Cancel.picNum		= 1;
 	objLandInterface.Commands.Cancel.selPicNum	= 0;
@@ -473,38 +473,38 @@ void BLI_SetObjectData()
 	objLandInterface.Commands.DeadBox.texNum		= 0;
 	objLandInterface.Commands.DeadBox.event			= "BI_DeadBox";
 	objLandInterface.Commands.DeadBox.note			= "Search body";
-	// диалог сам с собой -->
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ -->
 	objLandInterface.Commands.TalkSelf.enable	= true;
  	objLandInterface.Commands.TalkSelf.picNum	 	= 18;
 	objLandInterface.Commands.TalkSelf.selPicNum	= 2;
 	objLandInterface.Commands.TalkSelf.texNum		= 0;
 	objLandInterface.Commands.TalkSelf.event		= "BI_TalkSelf";
 	objLandInterface.Commands.TalkSelf.note		= "Thinking out loud";
-	// диалог сам с собой <--
-	// починка -->
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ <--
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
 	objLandInterface.Commands.SelfRepair.enable	= true;
  	objLandInterface.Commands.SelfRepair.picNum	 	= 48;
 	objLandInterface.Commands.SelfRepair.selPicNum	= 32;
 	objLandInterface.Commands.SelfRepair.texNum		= 0;
 	objLandInterface.Commands.SelfRepair.event		= "BI_SelfRepair";
 	objLandInterface.Commands.SelfRepair.note		= LanguageConvertString(idLngFile, "land_SelfRepair");
-	// починка <--
-	// алхимия -->	
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ <--
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->	
 	objLandInterface.Commands.Alchemy.enable		= true;
  	objLandInterface.Commands.Alchemy.picNum	 	= 49;
 	objLandInterface.Commands.Alchemy.selPicNum	 	= 33;
 	objLandInterface.Commands.Alchemy.texNum		= 0;
 	objLandInterface.Commands.Alchemy.event			= "BI_Alchemy";
 	objLandInterface.Commands.Alchemy.note			= LanguageConvertString(idLngFile, "land_Alchemy");
-	// алхимия <--
-	// атлас -->	
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ <--
+	// пїЅпїЅпїЅпїЅпїЅ -->	
 	objLandInterface.Commands.MapAtlas.enable		= true;
  	objLandInterface.Commands.MapAtlas.picNum	 	= 50;
 	objLandInterface.Commands.MapAtlas.selPicNum	= 34;
 	objLandInterface.Commands.MapAtlas.texNum		= 0;
 	objLandInterface.Commands.MapAtlas.event		= "BI_MapAtlas";
 	objLandInterface.Commands.MapAtlas.note			= LanguageConvertString(idLngFile, "land_MapAtlas");
-	// атлас <--
+	// пїЅпїЅпїЅпїЅпїЅ <--
 	objLandInterface.Commands.ActivateRush.enable	= true;
 	objLandInterface.Commands.ActivateRush.picNum	= 28;
 	objLandInterface.Commands.ActivateRush.selPicNum		= 12;
@@ -519,12 +519,12 @@ void BLI_SetObjectData()
 	objLandInterface.Commands.Exit_Deck.event		= "BI_Exit_Deck";
 	objLandInterface.Commands.Exit_Deck.note		= LanguageConvertString(idLngFile, "land_Exit");
 	// boal <--
-	// список пользовательских картинок
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	LanguageCloseFile(idLngFile);
 	// go to icons
 	int idxloc = FindLoadedLocation();
 	string outGroupName = "";
-	RecalculateHireCrew(idxloc);  // to_do убрать на таймер
+	RecalculateHireCrew(idxloc);  // to_do пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	if(idxloc>=0 && CheckAttribute(&Locations[idxloc],"fastreload"))
 	{
 		outGroupName = Locations[idxloc].fastreload;
@@ -651,7 +651,7 @@ void BLI_SetObjectData()
 		RecalculateVIcon(128);
 		*/
 	//
-	/*времени в игре нет
+	/*пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	objLandInterface.textinfo.timetext.font = "interface_normal";
 	objLandInterface.textinfo.timetext.scale = 1.0;
 	objLandInterface.textinfo.timetext.pos.x = RecalculateHIcon(940);
@@ -659,7 +659,7 @@ void BLI_SetObjectData()
 	objLandInterface.textinfo.timetext.text = makeint(GetHour())+":"+makeint(GetMinute());
     */
     
-    // Это у вас нет, у меня все есть ;) - boal
+    // пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ ;) - boal
 	objLandInterface.CommandList.CommandMaxIconQuantity = 10;
 	objLandInterface.CommandList.CommandIconSpace = 1;
 	objLandInterface.CommandList.CommandIconLeft = 108;//157;
@@ -678,7 +678,7 @@ void BLI_SetObjectData()
 	objLandInterface.CommandList.UDArrow_Offset_Up = RecalculateHIcon(-41) + "," + RecalculateVIcon(-30);
 	objLandInterface.CommandList.UDArrow_Offset_Down = RecalculateHIcon(-41) + "," + RecalculateVIcon(46);
 	
-	// дебилы все равно играть не будут, а нормальным лишнее не нужно boal
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ boal
 	/*objLandInterface.CommandList.ActiveIcon_Texture = "battle_interface\enter_list.tga";
 	objLandInterface.CommandList.ActiveIcon_Offset = RecalculateHIcon(-49) + ",0";
 	objLandInterface.CommandList.ActiveIcon_Size = RecalculateHIcon(48) + "," + RecalculateVIcon(48);
@@ -778,26 +778,26 @@ void BLI_SetPossibleCommands()
 		if(!LAi_IsCharacterControl(pchar)) bTmpBool = false;
 		if(bDisableFastReload)	bTmpBool = false;
 		if(!IsEnableFastTravel()) bTmpBool = false;
-		// boal запрет всех переходов
+		// boal пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if (chrDisableReloadToLocation) bTmpBool = false;
-		if (!CheckAttribute(loadedLocation,"fastreload")) bTmpBool = false;  // в каюте некуда переходить
-		if (bTmpBool) // все еще можно переходить, проверяем город враг
-		{
-		    string sNation = Colonies[FindColony(loadedLocation.fastreload)].nation;
-			if (sNation != "none")
-			{
-				i = sti(sNation);
-				bTmpBool = (GetNationRelation2MainCharacter(i) == RELATION_ENEMY) || GetRelation2BaseNation(i) == RELATION_ENEMY;
-				if (bTmpBool && (i != PIRATE))// && !CheckAttribute(pchar, "CheckStateOk"))
-				{
-					bTmpBool = false;
-				}
-				else
-				{
-		    		bTmpBool = true;
-				}
-			}
-		}
+		if (!CheckAttribute(loadedLocation,"fastreload")) bTmpBool = false;  // пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		// if (bTmpBool) // пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+		// {
+		//     string sNation = Colonies[FindColony(loadedLocation.fastreload)].nation;
+		// 	if (sNation != "none")
+		// 	{
+		// 		i = sti(sNation);
+		// 		bTmpBool = (GetNationRelation2MainCharacter(i) == RELATION_ENEMY) || GetRelation2BaseNation(i) == RELATION_ENEMY;
+		// 		if (bTmpBool && (i != PIRATE))// && !CheckAttribute(pchar, "CheckStateOk"))
+		// 		{
+		// 			bTmpBool = false;
+		// 		}
+		// 		else
+		// 		{
+		//     		bTmpBool = true;
+		// 		}
+		// 	}
+		// }
 		objLandInterface.Commands.FastReload.enable	= bTmpBool;
 		///// boal -->
 		i = -1;
@@ -809,7 +809,7 @@ void BLI_SetPossibleCommands()
 			{
 				objLandInterface.Commands.ItemsChange.enable = true;
 			}
-			// грабеж
+			// пїЅпїЅпїЅпїЅпїЅпїЅ
 			/*
 			else
 			{
@@ -822,7 +822,7 @@ void BLI_SetPossibleCommands()
 		}
 		// boal 22.01.2004 -->
 		else
-		// обмен с офицером всегда и везде (в абордаже нет диалога!)
+		// пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!)
 		{
 		    i = LAi_FindNearestVisCharacter(pchar, 1);
 		    if( i>0 && IsOfficer(GetCharacter(i)) && IsCharacterPerkOn(pchar, "SharedExperience"))
@@ -835,7 +835,7 @@ void BLI_SetPossibleCommands()
 	}
 	if (objLandInterface.Commands.DialogStart.enable == false && LAi_IsCharacterControl(pchar) && !LAi_IsFightMode(pchar) && !LAi_grp_alarmactive && !chrDisableReloadToLocation)
 	{
-    	objLandInterface.Commands.TalkSelf.enable = true;//boal разговор с каюте сам с собой
+    	objLandInterface.Commands.TalkSelf.enable = true;//boal пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
     	bUseCommand = true;
     }
 	if(GetCharacterPerkUsing(pchar, "Rush") && CheckCharacterItem(pchar, "berserker_potion"))
@@ -867,7 +867,7 @@ void BLI_SetPossibleCommands()
 		bUseCommand = true;
 		if( CheckAttribute(pchar,"activeItem.pick") && pchar.activeItem.pick=="1" )
 		{
-			//objLandInterface.Commands.TakeItem.enable = true; // Jason: баг с двойным взятием через быструю команду+интерфейс
+			//objLandInterface.Commands.TakeItem.enable = true; // Jason: пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ+пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		}
 		else
 		{
@@ -912,7 +912,7 @@ void BLI_SetPossibleCommands()
 		}
 	}	
 	
-	// ugeen  --> отслеживаем ситуацию взрыва или эпидемии на захваченном корабле --> покидание каюты минуя интерфейс грабежа
+	// ugeen  --> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ --> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if(CheckAttribute(loadedLocation, "CabinType") && !chrDisableReloadToLocation) 
 	{
 		if(CheckShipSituation_GenQuest())
@@ -1155,7 +1155,7 @@ void BLI_UpdateOfficers()
 	//Log_TestInfo("BLI_UpdateOfficers");
 	BLI_UpdateObjectData();
 	LI_CareUpdateCommandList();
-	SendMessage(&objLandInterface,"ls",MSG_BATTLE_LAND_MAKE_COMMAND,"cancel");  // фикс иконок офов (рефреш) boal
+	SendMessage(&objLandInterface,"ls",MSG_BATTLE_LAND_MAKE_COMMAND,"cancel");  // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅ) boal
 }
 
 int GetPotionPicture(aref arItm)
@@ -1176,7 +1176,7 @@ int GetPotionTexture(aref arItm)
 	return sti(arItm.potion.tex);
 }
 
-// можем ли юзать хоть что то
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ
 bool CanBeUseItem(ref chref)
 {
 	for(int i=0; i<ITEMS_QUANTITY; i++)
@@ -1202,7 +1202,7 @@ void LI_ProcessControlPress()
 
 	switch(ControlName)
 	{
-		case "hk_Cure": // TO_DO не работет - у меня в др месте
+		case "hk_Cure": // TO_DO пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			if( LAi_GetCharacterRelHP(pchar) < 1.0 )
 			{
 				float dhlt = LAi_GetCharacterMaxHP(pchar) - LAi_GetCharacterHP(pchar);
@@ -1212,7 +1212,7 @@ void LI_ProcessControlPress()
 		break;
 		
 		case "LICommandsActivate": 
-			PlaySound("interface\ok.wav"); // boal даешь звуки!
+			PlaySound("interface\ok.wav"); // boal пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!
 		break;
 	}
 }

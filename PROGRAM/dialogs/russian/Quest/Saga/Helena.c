@@ -1,4 +1,4 @@
-// Элен Мак Артур - сомнительная любовь и офицер
+// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 void ProcessDialogEvent()
 {
 	ref NPChar, sld, rItm, rItem;
@@ -16,7 +16,7 @@ void ProcessDialogEvent()
 	if (findsubstr(sAttr, "SetGunBullets1_" , 0) != -1)
  	{
         i = findsubstr(sAttr, "_" , 0);
-	 	NPChar.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); // индекс в конце
+	 	NPChar.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
  	    Dialog.CurrentNode = "SetGunBullets2";
  	}
 	
@@ -61,8 +61,8 @@ void ProcessDialogEvent()
 			npchar.greeting = "helena_2";
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "", 10.0);
 			pchar.questTemp.Saga = "returntoblueveld";
-			Island_SetReloadEnableGlobal("Antigua", true);//на остров можно
-			bQuestDisableMapEnter = false;//открыть карту
+			Island_SetReloadEnableGlobal("Antigua", true);//пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			bQuestDisableMapEnter = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			AddQuestRecord("Saga", "11");
 			pchar.quest.Saga_returnBlueveld.win_condition.l1 = "location";
 			pchar.quest.Saga_returnBlueveld.win_condition.l1.location = "Santacatalina_town";
@@ -84,15 +84,15 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "houseSp3", "SantaCatalina_houseSp3_bedroom", "goto", "goto1", "OpenTheDoors", -1);
 			AddQuestRecord("Saga", "13");
-			LocatorReloadEnterDisable("SantaCatalina_houseS1", "reload2", false); // открыть кабинет Свенсона
-			pchar.questTemp.Saga = "svenson";//идем к Свенсону
+			LocatorReloadEnterDisable("SantaCatalina_houseS1", "reload2", false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			pchar.questTemp.Saga = "svenson";//пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("JS_girl");
 			sld.dialog.currentnode = "js_girl";
 			npchar.dialog.currentnode = "Helena_wait";
 			sld = characterFromId("Gladis");
 			sld.dialog.currentnode = "Gladis_regard";
-			LocatorReloadEnterDisable("SantaCatalina_houseSp3", "reload2", true);//закрыть спальню Элен
-			// закрыть город до беседы с Глэдис
+			LocatorReloadEnterDisable("SantaCatalina_houseSp3", "reload2", true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LocatorReloadEnterDisable("SantaCatalina_town", "reload1_back", true);
 			LocatorReloadEnterDisable("SantaCatalina_town", "reload2_back", true);
 			LocatorReloadEnterDisable("SantaCatalina_town", "gate_back", true);
@@ -167,20 +167,20 @@ void ProcessDialogEvent()
 		
 		case "Helena_hire_add":
 			LAi_SetImmortal(npchar, false);
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "Saga_HireHelena", -1);
 			LocatorReloadEnterDisable("SantaCatalina_town", "reload1_back", false);
 			LocatorReloadEnterDisable("SantaCatalina_town", "reload2_back", false);
-			LocatorReloadEnterDisable("SantaCatalina_town", "gate_back", false);//открыть выходы из города
+			LocatorReloadEnterDisable("SantaCatalina_town", "gate_back", false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.questTemp.Saga = "svenson_wait";
 			AddQuestRecord("Saga", "24");
 			SetFunctionTimerCondition("Saga_BaronsQuestsGo", 0, 0, 2+rand(2), false);
 			AddCharacterExpToSkill(pchar, "Leadership", 100);
 		break;
 		
-		//-->  консультации по морским сражениям в искушении барбазона
+		//-->  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "sea_bomb":
 			dialog.text = ""+pchar.name+"! I have got an idea...";
 			link.l1 = ""+npchar.name+"? It's not safe here and I have ordered you to stay on the ship...";
@@ -263,11 +263,11 @@ void ProcessDialogEvent()
 			AddQuestRecord("BarbTemptation", "21");
 			DeleteAttribute(npchar, "quest.fugas");
 		break;
-		//<--  консультации по морским сражениям
+		//<--  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		
-	// --> разговор по итогам Саги
+	// --> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		case "result":
-			if (!CheckAttribute(pchar, "questTemp.Saga.Helena_friend")) // не друзья
+			if (!CheckAttribute(pchar, "questTemp.Saga.Helena_friend")) // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				dialog.text = "Well, my captain... It is time for us to say goodbye to each other. My service is ended and it's time to get used to a role of the mistress of Isla Tesoro. I hope that I will be a worthy successor of my uncle. Thank you for your help.";
 				link.l1 = "Sure, it's a pity to part with you, but there is nothing I can do. You have got more important things to do than to serve on my ship.";
@@ -327,17 +327,17 @@ void ProcessDialogEvent()
 			link.l1.go = "result_8";
 		break;
 		
-		case "result_8": // Элен уходит, но ее не затираем
+		case "result_8": // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DialogExit();
 			RemovePassenger(pchar, npchar);
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload3_back", "none", "", "", "OpenTheDoors", 15.0);
 			AddQuestRecord("Testament", "11");
 			CloseQuestHeader("Testament");
 		break;
 		
-		case "result_9": // вот тут - ключевой момент, если игрок нашел Мэри - выбирай, какая девушка милее
+		case "result_9": // пїЅпїЅпїЅ пїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			dialog.text = "I am sure. "+pchar.name+", I'd like to stay on your ship if you let me. To stay with you...";
 			if (CheckAttribute(pchar, "questTemp.LSC.Mary") && pchar.questTemp.LSC.Mary == "alive")
 			{
@@ -377,16 +377,16 @@ void ProcessDialogEvent()
 			link.l1.go = "result_14";
 		break;
 		
-		case "result_14": // прощальный поцелуй
+		case "result_14": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DialogExit();
 			SetMusic("music_romantic");
 			SetLaunchFrameFormParam("", "", 0, 12);
 			SetLaunchFrameFormPic("loading\inside\kiss.tga");
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 0, 20); //крутим время
+			WaitDate("", 0, 0, 0, 0, 20); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			DoQuestCheckDelay("Saga_HelenaBye", 12.0);
-			pchar.questTemp.LSC.Mary = "return"; // к Мэри
+			pchar.questTemp.LSC.Mary = "return"; // пїЅ пїЅпїЅпїЅпїЅ
 		break;
 		
 		case "result_15":
@@ -403,7 +403,7 @@ void ProcessDialogEvent()
 		
 		case "result_17":
 			dialog.text = ""+pchar.name+", I have always wanted to tell you that you are incredible, you are the best! You have done so much to me that I will never be able to repay you. I want to stay with you. Forever. I will marry you if you want... I love you.";
-			link.l1 = "We shall be together. I promise!"; // а куда же ты теперь денешься :)
+			link.l1 = "We shall be together. I promise!"; // пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ :)
 			link.l1.go = "result_18";
 		break;
 		
@@ -413,19 +413,20 @@ void ProcessDialogEvent()
 			link.l1.go = "result_19";
 		break;
 		
-		case "result_19": // романтик-сцена
+		case "result_19": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅ
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_SetActorType(pchar);
 			StartQuestMovie(true, true, true);
 			PlayStereoOGG("music_romantic");
-			bDisableCharacterMenu = true;//лоченые интерфейсы
-			InterfaceStates.Buttons.Save.enable = false;//запретить сохраняться
+			bDisableCharacterMenu = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			InterfaceStates.Buttons.Save.enable = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			locCameraRotateAroundHero(0.0, 2.0, 0.0, 0.01, 0.0, 2.0, 0.0, 580);
 			DoQuestCheckDelay("Saga_HelenaRomantic", 20.0);
 			pchar.GenQuest.MusicContinue = true;
 			AddCharacterExpToSkill(pchar, "Leadership", 100);
-			DeleteAttribute(pchar, "questTemp.LSC.MaryWait");
+			// DeleteAttribute(pchar, "questTemp.LSC.MaryWait");
+			pchar.questTemp.LSC.Mary = "return";
 		break;
 		
 		case "happy":
@@ -440,10 +441,10 @@ void ProcessDialogEvent()
 			SetLaunchFrameFormParam("Next morning...", "", 0, 4);
 			LaunchFrameForm();
 			DoQuestCheckDelay("Saga_HelenaRomantic_5", 4.0);
-			pchar.questTemp.Saga.Helena_officer = "true"; // показатель, что Элен - наша навсегда
+			pchar.questTemp.Saga.Helena_officer = "true"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 		
-	// -------------------------------------------- провалы саги ------------------------------------
+	// -------------------------------------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ ------------------------------------
 		case "failcenturion":
 			dialog.text = "Captain! Jackman is eliminated... So it seems that my family is safe, isn't it?";
 			link.l1 = "Yes, Helen, it is safe. But 'Centurion' was sunk and so were all documents and things which could help us to find your mother's grave and prove your rights to claim Isla Tesoro... Eh... Now I will have to storm Tortuga for my own...";
@@ -469,7 +470,7 @@ void ProcessDialogEvent()
 			LAi_ActorRunToLocation(npchar, "reload", "reload1_back", "none", "", "", "OpenTheDoors", 5.0);
 			if (CheckAttribute(pchar, "questTemp.LSC.Mary") && GetCharacterIndex("Mary") != -1 && !CheckAttribute(pchar, "questTemp.LSC.Mary_officer")) // patch-6
 			{
-				pchar.questTemp.LSC.Mary = "return"; // к Мэри
+				pchar.questTemp.LSC.Mary = "return"; // пїЅ пїЅпїЅпїЅпїЅ
 			}
 		break;
 		
@@ -490,11 +491,11 @@ void ProcessDialogEvent()
 			link.l1 = "Eh! I have lost too much time and Isla Tesoro is now the English colony. You were left without any inheritance, so I'll have to storm Tortuga myself...";
 			link.l1.go = "failcenturion_1";
 		break;
-	// <-- провалы Саги
+	// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		
-		// секс - Элен соглашается не всегда (голова болит, а что вы хотели? :)) и сама не требует секса
+		// пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ? :)) пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		case "cabin_sex":
-			if (drand(4) == 0) // вероятность отказа 20%
+			if (drand(4) == 0) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 20%
 			{
 				dialog.text = RandPhraseSimple(""+pchar.name+", I am not feeling well today. Don't feel bad, please. Let's don't do it today...",""+pchar.name+", darling, I have been so tired for the last few days. To be honest, I only want to sleep. Forgive me. Let's do it another time.");
 				link.l1 = RandPhraseSimple("Fine...","I am fine. Whatever you say...");
@@ -516,7 +517,7 @@ void ProcessDialogEvent()
 		
 		case "cabin_sex_go":
 			DialogExit();
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestCheckDelay("Helena_LoveSex", 1.0);
 			NextDiag.CurrentNode = "sex_after";
 		break;
@@ -526,7 +527,7 @@ void ProcessDialogEvent()
 			link.l1 = RandPhraseSimple("I am glad that you were satisfied...","It is always good to be with you, Helen...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Helena_officer";
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			npchar.quest.daily_sex = true;
 			SetFunctionTimerCondition("Helena_SexReady", 0, 0, 1, false);
 		break;
@@ -539,7 +540,7 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				break;
 			}
-			if (drand(4) == 0) // вероятность отказа 20%
+			if (drand(4) == 0) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 20%
 			{
 				dialog.text = RandPhraseSimple(""+pchar.name+", I am not feeling well today. Don't feel hurt, please. Let's don't do it today...",""+pchar.name+", darling, I have been so tired for the last few days. To be honest, I only want to sleep. Forgive me. Let's do it another time.");
 				link.l1 = RandPhraseSimple("Fine...","I am fine. Whatever you say...");
@@ -562,7 +563,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = "sex_after";
 		break;
 		
-		//--> ----------------------------------- офицерский блок ------------------------------------------
+		//--> ----------------------------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ ------------------------------------------
 		case "Helena_officer":
 			ref rLoc = &Locations[FindLocation(pchar.location)];
 			dialog.text = LinkRandPhrase("Yes, "+pchar.name+"?","Yes, my captain?","I am listening, "+pchar.name+"...");
@@ -655,9 +656,9 @@ void ProcessDialogEvent()
             Link.l1 = "...";
             Link.l1.go = "Exit";
         break;
-		//<-- ----------------------------------- офицерский блок ----------------------------------------
+		//<-- ----------------------------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ ----------------------------------------
 		
-		// --> суп из черепахи
+		// --> пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "terrapin_grot":
 			dialog.text = "There you are! I have barely found you... That was something, my captain! I have never seen such a roof run and a jump from such a breathtaking height! My heart was ready to explode! One day you will kill me with these tricks of yours, dear... Oh, ain't you alone here? Who is that girl?";
 			link.l1 = "This is Catherine Fox, a daughter of colonel Fox, commander of 'sea foxes' marines. We will be taking her to Antigua.";
@@ -677,9 +678,9 @@ void ProcessDialogEvent()
 			LAi_group_MoveCharacter(npchar, LAI_GROUP_PLAYER);
 			Terrapin_GotoShip();
 		break;
-		// <-- суп из черепахи
+		// <-- пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		
-		// --> калеуче
+		// --> пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "on_coast":
 			dialog.text = "Finally you woke up, darling. How do you feel? You have really scared me";
 			link.l1 = "Helen, what happened? My head is splitting...";
@@ -723,7 +724,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "on_coast_7":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			dialog.text = "I love you too, my darling...";
 			link.l1 = "...";
 			link.l1.go = "on_coast_8";
@@ -736,9 +737,9 @@ void ProcessDialogEvent()
 			LAi_group_MoveCharacter(npchar, LAI_GROUP_PLAYER);
 			AddQuestRecord("Caleuche", "5");
 		break;
-		// <-- калеуче
+		// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		
-		// на Тайясаль
+		// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "tieyasal":
 			dialog.text = ""+pchar.name+", I have told you once that we share our fates together now. Your fate is my fate. When are we going to go there?";
 			link.l1 = "You said yes, my dear... I am very glad. I will tell you a bit later when we are going to go there. We need to prepare ourselves.";
@@ -757,7 +758,7 @@ void ProcessDialogEvent()
 			npchar.quest.Tieyasal = "teleport";
 		break;
 		
-		// на Исла Тесоро
+		// пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		case "islatesoro":
 			dialog.text = "Oh, "+pchar.name+"! Glad to see you! What are you doing here, on Isla Tesoro?";
 			link.l1 = "Same as always - business matters. And of course I wanted to check on you, Helen...";

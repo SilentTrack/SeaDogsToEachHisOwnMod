@@ -1,48 +1,48 @@
-// Генераторы. Отдельный файл
-// ситуации на захваченном корабле - "Взрыв" или "Эпидемия"
-#define ShipSituation_0				0 	// "Взрыв на корабле" или "Эпидемия" - обшарили каюту или труп
-#define ShipSituation_1				1	// "Взрыв на корабле" или "Эпидемия" - любое использовование интерфейса "грабежа" --> перегрузка отдельных товаров или нажатие кнопки "Взять все" - после этого корабль взрывается или его сами топим
-#define ShipSituation_2				2	// "Эпидемия" - сажаем компаньона с командой на инфицированный корабль
-#define ShipSituation_3				3	// "Эпидемия" - ГГ пересаживается на инфицированный корабль
-#define ShipSituation_4				4	// ничего не обшаривали
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - "пїЅпїЅпїЅпїЅпїЅ" пїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
+#define ShipSituation_0				0 	// "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" пїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+#define ShipSituation_1				1	// "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" пїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" --> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+#define ShipSituation_2				2	// "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+#define ShipSituation_3				3	// "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+#define ShipSituation_4				4	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 int iGenRank;
 string sGenLocation, sGenlocator, sGenBlade, sGenGun, sQuestTitle;
 
 void Rat_GenerateRat()
 {
-	/* Скопировать файл Rat.gm (модель) в Resource/Models/Characters
-	Файл Rat.tx (текстуру) в Resource/Textures/Characters
-	Настроить дебагер - В файле Engine.ini поменять debugwindow = 0 на debugwindow = 1
-	Потом по F5 в игре в левой части набрать Rat_GenerateRat();
-	Модельки маленькие - с первого раза можно не заметить.
-	Остальные коменты по ходу...*/
+	/* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ Rat.gm (пїЅпїЅпїЅпїЅпїЅпїЅ) пїЅ Resource/Models/Characters
+	пїЅпїЅпїЅпїЅ Rat.tx (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ) пїЅ Resource/Textures/Characters
+	пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅ пїЅпїЅпїЅпїЅпїЅ Engine.ini пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ debugwindow = 0 пїЅпїЅ debugwindow = 1
+	пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ F5 пїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Rat_GenerateRat();
+	пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+	пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ...*/
 	
 	ref rChar;
-	int iRatCount = 1; // Скока крыс будем генерить?
+	int iRatCount = 1; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ?
 	for(int i=1; i<=iRatCount; i++)
 	{
 		rChar = GetCharacter(NPC_GenerateCharacter("Test_Rat_"+i, "rat", "man", "rat", sti(PChar.rank)*5, PIRATE, -1, false, "citizen"));
-		SetFantomParamFromRank(rChar, sti(PChar.rank)*5, true); // Крутая крыса!
+		SetFantomParamFromRank(rChar, sti(PChar.rank)*5, true); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!
 		rChar.Dialog.FileName = "GenQuests_Dialog.c";
-		LAi_SetStayType(rChar); // ТИП ! От этого анимация и зависит как-раз.
-		ChangeCharacterAddressGroup(rChar, PChar.location, "reload", FindNearestFreeLocator("reload")); // Перенесем в локу к ГГ
+		LAi_SetStayType(rChar); // пїЅпїЅпїЅ ! пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅпїЅ.
+		ChangeCharacterAddressGroup(rChar, PChar.location, "reload", FindNearestFreeLocator("reload")); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ
 	}
 }
 
 //=====================================================================================================================================
-// Генератор контрабандистов. Доставка письма -->
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ -->
 //=====================================================================================================================================
-void ContraDeliverQuest_EnterToTavernRoom(string sQuest) // Зашли в комнату наверху
+void ContraDeliverQuest_EnterToTavernRoom(string sQuest) // пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	sGenLocation = PChar.GenQuest.ContraDeliver.ToColony;
-	LocatorReloadEnterDisable(sGenLocation + "_Tavern", "reload2_back", true); // Закроем сразу
+	LocatorReloadEnterDisable(sGenLocation + "_Tavern", "reload2_back", true); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	chrDisableReloadToLocation = true;
 	bDisableFastReload         = true;
-	DoQuestFunctionDelay("ContraDeliverQuest_ReloadConterToRoom", 3.0); // Ждем 3 сек.
+	DoQuestFunctionDelay("ContraDeliverQuest_ReloadConterToRoom", 3.0); // пїЅпїЅпїЅпїЅ 3 пїЅпїЅпїЅ.
 }
 
-void ContraDeliverQuest_ReloadConterToRoom(string sQuest) // генерим клона контрабандиста
+void ContraDeliverQuest_ReloadConterToRoom(string sQuest) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	ref rChar = GetCharacter(NPC_GenerateCharacter("ContraDeliverQuest_Contra_1", PChar.GenQuest.ContraDeliver.Model, "man", PChar.GenQuest.ContraDeliver.Model.Animation, sti(PChar.rank)*2, PIRATE, 0, true, "marginal"));
 	rChar.DontClearDead = true;
@@ -60,7 +60,7 @@ void ContraDeliverQuest_ReloadConterToRoom(string sQuest) // генерим клона контр
 void ContraDeliverQuest_ContraIsDead(string sQuest)
 {
 	ref rChar = &characters[GetCharacterIndex(sGenLocation + "_Smuggler")];
-	rChar.model    = "citiz_" + (rand(9)+41); // Меняем модель (типо, туда уже другой пришел)
+	rChar.model    = "citiz_" + (rand(9)+41); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ)
 	FaceMaker(rChar);
 	CirassMaker(rChar);
 	chrDisableReloadToLocation = false;
@@ -79,7 +79,7 @@ void ContraDeliverQuest_GeneratePatrolToRoom()
 	ref rChar;
 	sGenLocation = PChar.GenQuest.ContraDeliver.ToColony;
 	int iNation = sti(characters[GetCharacterIndex(sGenLocation + " Fort Commander")].nation);
-	string sShortNation = NationShortName(iNation); // Для модельки
+	string sShortNation = NationShortName(iNation); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	string sModel[3];
 	sModel[0] = "off_" + sShortNation + "_1";
 	sModel[1] = "sold_" + sShortNation + "_1";
@@ -135,35 +135,35 @@ void ContraDeliverQuest_AfterSoldiersOut()
 	DeleteAttribute(PChar, "GenQuest.ContraDeliver");
 }
 //=====================================================================================================================================
-// <-- Генератор контрабандистов. Доставка письма
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 //=====================================================================================================================================
 
 //=====================================================================================================================================
-// Генератор контрабандистов. Встреча в бухте -->
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ -->
 //=====================================================================================================================================
-void ContraMeetManQuest_InitStartParam() // Инициализация стартовых параметров
+void ContraMeetManQuest_InitStartParam() // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	if(rand(1) == 0)
 	{
-		Log_TestInfo("В бухте будут ждать солдаты.");
+		Log_TestInfo("пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
 		PChar.GenQuest.ContraMeetMan.SoldiersInShore = true;
 	}
 	else
 	{
-		Log_TestInfo("В бухте солдат не будет.");
+		Log_TestInfo("пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.");
 		if(rand(1) == 0)
 		{
-			Log_TestInfo("Человек окажется предателем.");
+			Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
 			PChar.GenQuest.ContraMeetMan.ManIsTraitor = true;
 		}
-		else Log_TestInfo("В ходе квеста не выясниться, что человек - предатель.");
+		else Log_TestInfo("пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
 	}
 }
 
-void ContraMeetManQuest_EnterToShore(string sQuest) // Вошли в бухту
+void ContraMeetManQuest_EnterToShore(string sQuest) // пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 {
 	ref rChar;
-	if(!CheckAttribute(PChar, "GenQuest.ContraMeetMan.SoldiersInShore")) //Встречаем чела
+	if(!CheckAttribute(PChar, "GenQuest.ContraMeetMan.SoldiersInShore")) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	{
 		rChar = GetCharacter(NPC_GenerateCharacter("ContraMeetManQuest_QuestMan", "citiz_"+(rand(9)+21), "man", "man", sti(PChar.rank)*2, PIRATE, -1, true, "citizen"));
 		SetFantomParamFromRank(rChar, sti(PChar.rank)*2, true);
@@ -171,27 +171,27 @@ void ContraMeetManQuest_EnterToShore(string sQuest) // Вошли в бухту
 		LAi_SetCitizenType(rChar);
 		rChar.Dialog.FileName = "GenQuests_Dialog.c";
 		rChar.DontClearDead = true;
-		LAi_SetImmortal(rChar, true); // До поры нельзя завалить
+		LAi_SetImmortal(rChar, true); // пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		ChangeCharacterAddressGroup(rChar, PChar.location, "goto", "goto1");
 	}
-	else // Солдеры
+	else // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	{
 		sGenLocation = PChar.GenQuest.ContraMeetMan.QuestTown;
 		int iNation = sti(characters[GetCharacterIndex(sGenLocation + " Fort Commander")].nation);
-		string sShortNation = NationShortName(iNation); // Для модельки
+		string sShortNation = NationShortName(iNation); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		int iSoldCount = 4+rand(2);
-		PChar.GenQuest.ContraMeetMan.SoldCount = iSoldCount; // Запомнит, т.к. потом их нужно удалять
+		PChar.GenQuest.ContraMeetMan.SoldCount = iSoldCount; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ.пїЅ. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		for(int i=0; i<=iSoldCount; i++)
 		{
 			sGenlocator = LAi_FindRandomLocator("goto");
-			if(i==0) // Офицер
+			if(i==0) // пїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				rChar = GetCharacter(NPC_GenerateCharacter("ContraMeetManQuest_Officer_" + i, "off_"+sShortNation+"_1", "man", "man", sti(PChar.rank)*2, iNation, -1, true, "officer"));
 				SetFantomParamFromRank(rChar, sti(PChar.rank)*2, true);
 				rChar.Name = "Officer";
 				rChar.LastName = "";
 			}
-			else // Солдаты
+			else // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				rChar = GetCharacter(NPC_GenerateCharacter("ContraMeetManQuest_Soldier_" + i, "sold_"+sShortNation+"_1", "man", "man", sti(PChar.rank), iNation, -1, true, "soldier"));
 				SetFantomParamFromRank(rChar, sti(PChar.rank), true);
@@ -221,9 +221,9 @@ void ContraMeetManQuest_DeletePatrolFromShore()
 	}
 }
 
-void ContraMeetManQuest_TimeIsLeft(string sQuest) // Вышло время
+void ContraMeetManQuest_TimeIsLeft(string sQuest) // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 {
-	DeleteQuestCondition("ContraMeetManQuest_EnterToShore"); // Завершим прерывание на вход в бухту
+	DeleteQuestCondition("ContraMeetManQuest_EnterToShore"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 	if(GetCharacterIndex("ContraMeetManQuest_QuestMan") != -1)
 	{
 		ref rChar = CharacterFromID("ContraMeetManQuest_QuestMan");
@@ -233,7 +233,7 @@ void ContraMeetManQuest_TimeIsLeft(string sQuest) // Вышло время
 	
 	if(CheckAttribute(PChar, "Quest.ContraMeetManQuest_EnterToTavernRoom"))
 	{
-		LocatorReloadEnterDisable(PChar.GenQuest.ContraMeetMan.QuestTown + "_tavern", "reload2_back", true); // Закроем комнату
+		LocatorReloadEnterDisable(PChar.GenQuest.ContraMeetMan.QuestTown + "_tavern", "reload2_back", true); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		DeleteQuestCondition("ContraMeetManQuest_EnterToTavernRoom");
 	}
 	
@@ -248,8 +248,8 @@ void ContraMeetManQuest_TimeIsLeft(string sQuest) // Вышло время
 void ContraMeetManQuest_EnterToTavernRoom(string sQuest)
 {
 	sGenLocation = PChar.GenQuest.ContraMeetMan.QuestTown;
-	DeleteQuestCondition("ContraMeetManQuest_TimeIsLeft"); // Завершаем прерывание на таймер
-	LocatorReloadEnterDisable(sGenLocation + "_Tavern", "reload2_back", true); // Закроем комнату
+	DeleteQuestCondition("ContraMeetManQuest_TimeIsLeft"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	LocatorReloadEnterDisable(sGenLocation + "_Tavern", "reload2_back", true); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	DisableAllExits(true);
 	DoQuestFunctionDelay("ContraMeetManQuest_ReloadConterToRoom", 3.0);
 }
@@ -273,17 +273,17 @@ void ContraMeetManQuest_ReloadConterToRoom(string sQuest)
 		LAi_SetActorType(rChar);
 		rChar.Dialog.FileName = "GenQuests_Dialog.c";
 		LAi_SetImmortal(rChar, true);
-		rChar.SuperShooter  = true; // даный НПС будет чаще юзать пистоль (вероятность от сложности, но в разы выше, чем у обычных, близка офам)
+		rChar.SuperShooter  = true; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ)
 		ChangeCharacterAddressGroup(rChar, PChar.location, sGenGroup[i], sGenLocatorArroy[i]);
 		if(i != 0) LAi_CharacterDisableDialog(rChar);
 		else LAi_ActorDialog(rChar, PChar, "", -1, 5);
 	}
 	
-	rChar = CharacterFromID("ContraMeetManQuest_QuestMan"); // Отправляем чела в дальний локатор, чтоб не мешал
+	rChar = CharacterFromID("ContraMeetManQuest_QuestMan"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	LAi_ActorGoToLocator(rChar, "goto", "goto2", "", 3);
 }
 
-void ContraMeetManQuest_ContersGoQut() // Контрики сваливают из комнаты вместе с челом
+void ContraMeetManQuest_ContersGoQut() // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 {
 	ref rChar;
 	for(int i=0; i<=1; i++)
@@ -304,16 +304,16 @@ void ContraMeetManQuest_ContersGoQut() // Контрики сваливают из комнаты вместе с
 
 void ContraMeetManQuest_AfterContersOut()
 {
-	DisableAllExits(false); // Откроем выходы
+	DisableAllExits(false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	ref rChar = &Characters[GetCharacterIndex(Locations[FindLocation(PChar.location)].townsack + "_Smuggler")];
 	SaveCurrentNpcQuestDateParam(rChar, "work_date");
 }
 
-void ContraMeetManQuest_ContraBeatMan() // Контрики начинают мочить чела
+void ContraMeetManQuest_ContraBeatMan() // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 {
-	LAi_Group_Delete("ContraMeetManQuest_Group1"); // Потрем прежние группы
+	LAi_Group_Delete("ContraMeetManQuest_Group1"); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	LAi_Group_Delete("ContraMeetManQuest_Group2");
-	DisableAllExits(false); // Откроем выходы
+	DisableAllExits(false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	ref rChar = CharacterFromID("ContraMeetManQuest_QuestMan");
 	rChar.LifeDay = 0;
 	LAi_SetImmortal(rChar, false);
@@ -330,7 +330,7 @@ void ContraMeetManQuest_ContraBeatMan() // Контрики начинают мочить чела
 
 void ContraMeetManQuest_ContraBeatMan_Complete(string sQuest)
 {
-	// Их может уже не быть
+	// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 	if(GetCharacterIndex("ContraMeetManQuest_Contrick_0") == -1 || GetCharacterIndex("ContraMeetManQuest_Contrick_1") == -1) return;
 		
 	ref rChar;
@@ -344,7 +344,7 @@ void ContraMeetManQuest_ContraBeatMan_Complete(string sQuest)
 
 void ContraMeetManQuest_PlayerBeatContra()
 {
-	LAi_Group_Delete("ContraMeetManQuest_Group1"); // Потрем прежние группы
+	LAi_Group_Delete("ContraMeetManQuest_Group1"); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	ref rChar = CharacterFromID("ContraMeetManQuest_QuestMan");
 	rChar.LifeDay = 0;
 	LAi_Group_MoveCharacter(rChar, LAI_GROUP_PLAYER);
@@ -357,7 +357,7 @@ void ContraMeetManQuest_PlayerBeatContra()
 	LAi_Group_SetRelation("ContraMeetManQuest_Group1", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 	LAi_Group_FightGroups("ContraMeetManQuest_Group1", LAI_GROUP_PLAYER, true);
 	LAi_SetFightMode(PChar, true);
-	ChangeContrabandRelation(PChar, -15); // Хотим рубнуть контров - отношение в минус
+	ChangeContrabandRelation(PChar, -15); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 	SetGameModeCondition("ContraMeetManQuest_CheckContraDead");
 }
 
@@ -366,7 +366,7 @@ void ContraMeetManQuest_CheckContraDead()
 	if(LAi_isDead(CharacterFromID("ContraMeetManQuest_Contrick_0")) && LAi_isDead(CharacterFromID("ContraMeetManQuest_Contrick_1")))
 	{
 		DeleteGameModeCondition("ContraMeetManQuest_CheckContraDead");
-		Log_TestInfo("Контрабандистов убили.");
+		Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.");
 		LAi_SetFightMode(PChar, false);
 		LAi_LocationFightDisable(LoadedLocation, true);
 		ref rChar = CharacterFromID("ContraMeetManQuest_QuestMan");
@@ -376,18 +376,18 @@ void ContraMeetManQuest_CheckContraDead()
 	}
 }
 //=====================================================================================================================================
-// <-- Генератор контрабандистов. Встреча в бухте
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 //=====================================================================================================================================
 
 //=====================================================================================================================================
-// Миниквест жителей. Поиск обручального кольца -->
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ -->
 //=====================================================================================================================================
 void CitizenFindItemMiniQuest_CheckItem()
 {
-	if(CheckCharacterItem(PChar, "DOjeronRing")) // Проверка незначительная - тормозов не будет
+	if(CheckCharacterItem(PChar, "DOjeronRing")) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	{
 		DeleteGameModeCondition("CitizenFindItemMiniQuest_CheckItem");
-		PChar.GenQuest.CitizenFindItem.GiveItem = true; // Флаг - взяли предмет
+		PChar.GenQuest.CitizenFindItem.GiveItem = true; // пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		string sCity = XI_ConvertString("Colony" + PChar.GenQuest.CitizenFindItem.City + "Gen");
 		Log_Info("I found the girl's ring from " + sCity + ".");
 	}
@@ -396,7 +396,7 @@ void CitizenFindItemMiniQuest_CheckItem()
 void CitizenFindItemMiniQuest_Timer(string sQuest)
 {
 	DeleteGameModeCondition("CitizenFindItemMiniQuest_CheckItem");
-	if(CheckAttribute(PChar, "GenQuest.CitizenFindItem.GiveItem")) // Если взяли предмет
+	if(CheckAttribute(PChar, "GenQuest.CitizenFindItem.GiveItem")) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	{
 		RemoveItems(PChar, "DOjeronRing", 1);
 		BackItemDescribe("DOjeronRing");
@@ -414,23 +414,23 @@ void CitizenFindItemMiniQuest_Timer(string sQuest)
 	}
 }
 //=====================================================================================================================================
-// <-- Миниквест жителей. Поиск обручального кольца 
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 
 //=====================================================================================================================================
 
 //=====================================================================================================================================
-// Warship. ЦЕРКОВНЫЙ ГЕНЕРАТОР КВЕСТ № 1 -->
+// Warship. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ 1 -->
 //=====================================================================================================================================
 void Church_GenQuest1_Timer(string sQuest)
 {
-	if(GetCharacterIndex("ChurchGenQuest1_Cap") != -1) // Если генерили
+	if(GetCharacterIndex("ChurchGenQuest1_Cap") != -1) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	{
 		ref sld = CharacterFromID("ChurchGenQuest1_Cap");
-		ChangeCharacterAddressGroup(sld, "none", "", ""); // Уберем кэпа
+		ChangeCharacterAddressGroup(sld, "none", "", ""); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	}
-	items[FindItem("Bible")].Name = "itmname_bible"; // Вернет аттрибуты
+	items[FindItem("Bible")].Name = "itmname_bible"; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	BackItemDescribe("Bible");
 	DeleteAttribute(items[FindItem("Bible")], "City");
-	Group_DeleteGroup("ChurchGenQuest1_CapGroup"); // Потрем шип
+	Group_DeleteGroup("ChurchGenQuest1_CapGroup"); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	PChar.Quest.Church_GenQuest1_ChangeCapitanLocation.over = "yes";
 	PChar.GenQuest.ChurchQuest_1.Complete.Timer = true;
 	AddQuestRecordEx(sQuestTitle, "ChurchGenQuest1", "14");
@@ -439,9 +439,9 @@ void Church_GenQuest1_Timer(string sQuest)
 
 void Church_GenQuest1_ChangeCapitanLocation(string sQuest)
 {
-	if(GetCharacterIndex("ChurchGenQuest1_Cap") == -1) return; // Может не быть	
+	if(GetCharacterIndex("ChurchGenQuest1_Cap") == -1) return; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ	
 	ref sld = CharacterFromID("ChurchGenQuest1_Cap");
-	if(!CheckAttribute(PChar, "GenQuest.ChurchQuest_1.CapWaitOnTavern")) // Кэп на судне
+	if(!CheckAttribute(PChar, "GenQuest.ChurchQuest_1.CapWaitOnTavern")) // пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	{
 		PChar.Quest.Church_GenQuest1_ChangeCapitanLocation.over = "yes";
 		sld.DeckDialogNode = "ChurchGenQuest_1_DeckDialog_1";
@@ -464,15 +464,15 @@ void Church_GenQuest1_DeleteCapitan(string sQuest)
 	sld.LifeDay = 0;
 }
 //=====================================================================================================================================
-// <-- ЦЕРКОВНЫЙ ГЕНЕРАТОР. КВЕСТ № 1
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ пїЅ 1
 //=====================================================================================================================================
 
 //=====================================================================================================================================
-// Warship. ЦЕРКОВНЫЙ ГЕНЕРАТОР КВЕСТ № 2 -->
+// Warship. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ 2 -->
 //=====================================================================================================================================
 void Church_GenQuest2_GenerateBandits(string sQuest)
 {
-	Log_TestInfo("Зашли в локацию с бандюгами");
+	Log_TestInfo("пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 
 	ref location = &locations[reload_location_index];
 	LAi_LocationFightDisable(location, true);
@@ -482,9 +482,9 @@ void Church_GenQuest2_GenerateBandits(string sQuest)
 	aref arGenAll;
 	makearef(arGenAll, location.(sGenTemp));
 	
-	int iBanditsCount = GetAttributesNum(arGenAll); //кол-во человек в банде
+	int iBanditsCount = GetAttributesNum(arGenAll); //пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 	if (iBanditsCount <= 0) iBanditsCount = 1;
-	if (iBanditsCount >= 4) iBanditsCount = 3 + rand(1);	// Чаще всего так и бывает
+	if (iBanditsCount >= 4) iBanditsCount = 3 + rand(1);	// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	
 	iGenRank = GetCoffDiff(sti(PChar.rank), 1000);
 	if (iGenRank < MOD_SKILL_ENEMY_RATE) iGenRank = MOD_SKILL_ENEMY_RATE;
@@ -496,9 +496,9 @@ void Church_GenQuest2_GenerateBandits(string sQuest)
 	for(int i=0; i<iBanditsCount; i++)
 	{
 		ref rChar = GetCharacter(NPC_GenerateCharacter("Church_GenQuest2_Bandit_" + i, "citiz_" + (rand(9)+41), "man", "man", iGenRank, PIRATE, -1, true, "marginal"));
-		if(i == 0) // Главарь банды
+		if(i == 0) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		{
-			rChar.SaveItemsForDead = true; // сохранять на трупе вещи
+			rChar.SaveItemsForDead = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			rChar.DontClearDead = true;
 		}
 		SetFantomParamFromRank(rChar, iGenRank, true);
@@ -537,7 +537,7 @@ void Church_GenQuest2_Dialog_With_Bandits(string sQuest)
 		
 	}
 	
-	// Завершаем прерывания на время
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	PChar.Quest.Church_GenQuest2_TimeIsLeft.over = "yes";
 	chrDisableReloadToLocation = true;
 }
@@ -547,21 +547,21 @@ void Church_GenQuest2_DeadBandits(string sQuest)
 	if(CheckAttribute(PChar, "GenQuest.ChurchQuest_2.WayOfShortVariant"))
 	{
 		sQuestTitle = PChar.GenQuest.ChurchQuest_2.QuestTown + "ChurchGenQuest2";
-		PChar.GenQuest.ChurchQuest_2.Complete.Short_With_Mon = true;	// Квест выполнен по упрощенному варианту
+		PChar.GenQuest.ChurchQuest_2.Complete.Short_With_Mon = true;	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		Delay_DeleteGroup("Church_GenQuest2_Bandits_Group");
 		AddQuestRecordEx(sQuestTitle, "ChurchGenQuest2", "3");
-		Log_TestInfo("Бандитов замочили. Нужно обыскать трупики и найти украденное (квест пройден по короткому варианту).");
+		Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ).");
 	}
 	
 	DeleteAttribute(LoadedLocation, "DisableEncounters");
 	chrDisableReloadToLocation = false;
 }
 
-void Church_GenQuest2_TimeIsLeft(string sQuest) // Не нашли бандюков в джунглях за 1 день
+void Church_GenQuest2_TimeIsLeft(string sQuest) // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 1 пїЅпїЅпїЅпїЅ
 {
-	Log_TestInfo("Время вышло, Вы не смогли отыскать грабителей - квест провален.");
+	Log_TestInfo("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
 	
-	// Если прерывание отработало, значит бандюки сгенерились, а значит не будет еррора, когда мы будем получать ссылку на них
+	// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ
 	if(!CheckAttribute(PChar, "Quest.Church_GenQuest2_GenerateBandits"))
 	{
 		int iBanditsCount = PChar.GenQuest.ChurchQuest_2.BanditsCount;
@@ -579,21 +579,21 @@ void Church_GenQuest2_TimeIsLeft(string sQuest) // Не нашли бандюков в джунглях 
 	ChangeCharacterComplexReputation(PChar,"nobility", -3);
 	sQuestTitle = PChar.GenQuest.ChurchQuest_2.QuestTown + "ChurchGenQuest2";
 	AddQuestRecordEx(sQuestTitle, "ChurchGenQuest2", "13");
-	AddQuestUserData(sQuestTitle, "sSex", GetSexPhrase("","ла"));
+	AddQuestUserData(sQuestTitle, "sSex", GetSexPhrase("","пїЅпїЅ"));
 	AddQuestUserData(sQuestTitle, "sName", PChar.GenQuest.ChurchQuest_2.QuestTown.PriestName);
 	CloseQuestHeader(sQuestTitle);
-	if(CheckAttribute(PChar, "GenQuest.ChurchQuest_2.QuestGangJungle")) // Потрем аттрибуты джунглей (короткий вариант прохождения)
+	if(CheckAttribute(PChar, "GenQuest.ChurchQuest_2.QuestGangJungle")) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
 	{
 		LAi_LocationFightDisable(&locations[FindLocation(PChar.GenQuest.ChurchQuest_2.QuestGangJungle)], false);
 		DeleteAttribute(&locations[FindLocation(PChar.GenQuest.ChurchQuest_2.QuestGangJungle)], "DisableEncounters");
 	}
 	
-	if(CheckAttribute(PChar, "GenQuest.ChurchQuest_2.QuestGangShore")) // Потрем аттрибуты бухты, если есть
+	if(CheckAttribute(PChar, "GenQuest.ChurchQuest_2.QuestGangShore")) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	{
 		LAi_LocationFightDisable(&locations[FindLocation(PChar.GenQuest.ChurchQuest_2.QuestGangShore)], false);
 		DeleteAttribute(&locations[FindLocation(PChar.GenQuest.ChurchQuest_2.QuestGangShore)], "DisableEncounters");
 	}
-	DeleteAttribute(PCHar, "GenQuest.ChurchQuest_2");	// Трем все аттрибуты по церковному квесту
+	DeleteAttribute(PCHar, "GenQuest.ChurchQuest_2");	// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 }
 
 void Church_GenQuest2_BanditsIsEnemies_2_Clear(string sQuest)
@@ -601,11 +601,11 @@ void Church_GenQuest2_BanditsIsEnemies_2_Clear(string sQuest)
 	Delay_DeleteGroup("Church_GenQuest2_Bandits_Group");
 }
 //=====================================================================================================================================
-// <-- ЦЕРКОВНЫЙ ГЕНЕРАТОР. КВЕСТ № 2
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ пїЅ 2
 //=====================================================================================================================================
 
 //=====================================================================================================================================
-// Ugeen. ГЕНЕРАТОР "ПОВОД ДЛЯ СПЕШКИ "
+// Ugeen. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "
 //=====================================================================================================================================
 void ReasonToFast_CheckHorse(string qName)
 {
@@ -615,7 +615,7 @@ void ReasonToFast_CheckHorse(string qName)
 	}	
 }
 
-void ReasonToFast_MeetPatrolShore(string qName) // генерация патруля
+void ReasonToFast_MeetPatrolShore(string qName) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	aref grp;
 	ref chr, rCharacter;
@@ -629,12 +629,12 @@ void ReasonToFast_MeetPatrolShore(string qName) // генерация патруля
 	encGroup = LAi_FindRandomLocator("encdetector");
 	str = "locators." + encGroup;
 	makearef(grp, pLoc.(str));
-	iNation = sti(pchar.questTemp.ReasonToFast.GuardNation); // нация патруля
-	num = GetAttributesNum(grp); //кол-во человек в патруле
+	iNation = sti(pchar.questTemp.ReasonToFast.GuardNation); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	num = GetAttributesNum(grp); //пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (num <= 0) num = 1;
 	
 	str = "Patrol"+ pLoc.index + "_";
-	string sGroup = "PatrolGroup_" + pLoc.index; //имя группы
+	string sGroup = "PatrolGroup_" + pLoc.index; //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	LAi_group_SetLookRadius(sGroup, 30);
 	LAi_group_SetHearRadius(sGroup, 30);	
 
@@ -690,14 +690,14 @@ void ReasonToFast_MeetPatrolShore(string qName) // генерация патруля
 		LAi_group_MoveCharacter(chr, sGroup);
 		pchar.questTemp.ReasonToFast.LocIdx = pLoc.index; 
 		pchar.questTemp.ReasonToFast.PatrolNum = num;
-		//Получим локатор для логина
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		locator = GetAttributeName(GetAttributeN(grp, i));
 		ChangeCharacterAddressGroup(chr, pLoc.id, encGroup, locator);
 		LAi_SetActorType(chr);
 		if (i == 0) LAi_ActorDialog(chr, pchar, "", -1, 0); 
 		else LAi_ActorFollow(chr, &characters[iPatrolOfficer], "", -1);
 	}
-	if(bOk) // если это правильный патруль
+	if(bOk) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	{
 		LAi_LocationFightDisable(pLoc, true);	
 		LAi_SetFightMode(pchar, false);
@@ -705,7 +705,7 @@ void ReasonToFast_MeetPatrolShore(string qName) // генерация патруля
 	}
 }
 
-void ReasonToFast_DeletePatrolFromShore(string qName) //  прибъем патруль на берегу после разговора
+void ReasonToFast_DeletePatrolFromShore(string qName) //  пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	ref pLoc, rChar;
 	
@@ -728,13 +728,13 @@ void ReasonToFast_SpeakMayor(string qName)
 	if(CheckAttribute(pchar,"questTemp.ReasonToFast.speakAfterPatrolDied") && pchar.questTemp.ReasonToFast.speakAfterPatrolDied == false)
 	{
 		AddQuestRecord("ReasonToFast", "13");			
-		AddQuestUserData("ReasonToFast", "sSex", GetSexPhrase("ся","ась"));			
+		AddQuestUserData("ReasonToFast", "sSex", GetSexPhrase("пїЅпїЅ","пїЅпїЅпїЅ"));			
 		CloseQuestHeader("ReasonToFast");
 		DeleteAttribute(pchar, "questTemp.ReasonToFast");
 	}
 }
 
-void ReasonToFast_GenerateHunter() // генерация ОЗГ
+void ReasonToFast_GenerateHunter() // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 {
 	ref chr;
 		
@@ -820,7 +820,7 @@ int ReasonToFast_GetVictimShipGoods()
 	return iGoodIdx;
 }
 
-void ReasonToFast_GenerateVictimShip(int iShipType, int iShipGoods) // генерация призового корабля
+void ReasonToFast_GenerateVictimShip(int iShipType, int iShipGoods) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	int hcrew;
 	int iNation = sti(pchar.questTemp.ReasonToFast.GuardNation);
@@ -867,7 +867,7 @@ void ReasonToFast_GenerateVictimShip(int iShipType, int iShipGoods) // генерация
     SetTimerCondition("ReasonToFast_ClearVictim", 0, 0, 1, false);
 }
 
-// кэп пинаса утоп вместе с кораблем или ГГ уплыл на глобалку
+// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 void ReasonToFast_KillVictim(string qName)
 {
 	ref sld = characterFromId("VictimCap_1");
@@ -882,14 +882,14 @@ void ReasonToFast_KillVictim(string qName)
 	DeleteAttribute(pchar,"questTemp.ReasonToFast");
 }
 
-// кэп пинаса захвачен или прибит на абордаже
+// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 void ReasonToFast_CaptureVictim(string qName)
 {
 	ref sld = characterFromId("VictimCap_1");
 	sld.lifeDay = 0;
 	AddQuestRecord("ReasonToFast","18");
 	Group_DeleteGroup("Sea_Victim_1");
-	pchar.questTemp.ReasonToFast.SpeakOther = true; // допрыгался, к губеру или призонбоссу теперь низзя !!!!
+	pchar.questTemp.ReasonToFast.SpeakOther = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ !!!!
 	pchar.quest.ReasonToFast_ClearVictim.over = "yes";
 	pchar.quest.ReasonToFast_SetShip_1.over = "yes";
 	pchar.quest.ReasonToFast_SetShip_2.over = "yes";
@@ -902,14 +902,14 @@ void ReasonToFast_RemoveVictim()
 {
 	ref sld = characterFromId("VictimCap_1");
 	sld.lifeDay = 0;
-	Group_DeleteGroup("Sea_Victim_1"); // прибъем пинас
+	Group_DeleteGroup("Sea_Victim_1"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	pchar.quest.ReasonToFast_ClearVictim.over = "yes";	
 	pchar.quest.ReasonToFast_SetShip_1.over = "yes";
 	pchar.quest.ReasonToFast_SetShip_2.over = "yes";
 	DeleteAttribute(pchar, "GenQuest.CannotWait");
 }
 
-void ReasonToFast_PreparePirateShip(string qName) // генерация пиратского корабля
+void ReasonToFast_PreparePirateShip(string qName) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	ref sld;
 	int iRank = sti(pchar.rank) + 5 + rand(MOD_SKILL_ENEMY_RATE);
@@ -948,19 +948,19 @@ void ReasonToFast_PreparePirateShip(string qName) // генерация пиратского корабл
 		break;  	
 	}
 		
-	Log_QuestInfo("Генерим пиратский корабль на глобалке.");
+	Log_QuestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
 	
 	sld = GetCharacter(NPC_GenerateCharacter("PirateCapt", "mercen_"+(rand(14)+14), "man", "man", iRank, PIRATE, 30, true, "quest"));	
 	sld.dialog.filename      = "GenQuests_Dialog.c";
 	sld.dialog.currentnode   = "ReasonToFast_FightCap";
 	sTemp = GenerateRandomNameToShip(PIRATE);
 	FantomMakeCoolSailor(sld, iShipType, sTemp, CANNON_TYPE_CULVERINE_LBS18, 50+rand(40), 50+rand(40), 50 + rand(40));
-	sld.cirassId = Items_FindItemIdx("cirass1");  // предмета нет, но влияение есть
+	sld.cirassId = Items_FindItemIdx("cirass1");  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     FantomMakeCoolFighter(sld, makeint(pchar.rank) + rand(10) + 5, 60 + rand(30), 50, "blade_06", "pistol3","grapeshot", 80);
 		
     sld.SuperShooter  = true;
 	SetCharacterPerk(sld, "MusketsShoot");
-	SetCharacterPerk(sld, "Energaiser"); 					// скрытый перк дает 1.5 к приросту энергии, дается ГГ и боссам уровней
+	SetCharacterPerk(sld, "Energaiser"); 					// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 1.5 пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	
 	LAi_SetHP(sld, 100 + makeint(pchar.rank) * 2, 100 + makeint(pchar.rank) * 2);
 
@@ -1055,20 +1055,20 @@ void ReasonToFast_SetTreasureHunter(string qName)
         sld = GetCharacter(NPC_GenerateCharacter(sCapId + i, "off_hol_2", "man", "man", 5, PIRATE, 1, true, "hunter"));
         SetFantomParamHunter(sld); 
         sld.dialog.filename = "Hunter_dialog.c";
-		if(pchar.questTemp.ReasonToFast == "GetMap" || pchar.questTemp.ReasonToFast == "LakeyExitSuccess") // получена карта или сокровища от лакея
+		if(pchar.questTemp.ReasonToFast == "GetMap" || pchar.questTemp.ReasonToFast == "LakeyExitSuccess") // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		{
 			sld.Dialog.CurrentNode = "ReasonToFast_HunterShore1";
 		}
-		if(pchar.questTemp.ReasonToFast == "LakeyExitFail") // лакей сбежал
+		if(pchar.questTemp.ReasonToFast == "LakeyExitFail") // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		{
 			sld.Dialog.CurrentNode = "ReasonToFast_HunterShore2";
 		}
-		if(pchar.questTemp.ReasonToFast == "GetTreasure") // ГГ взял сокровища из клада
+		if(pchar.questTemp.ReasonToFast == "GetTreasure") // пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		{
 			sld.Dialog.CurrentNode = "ReasonToFast_THunter_1";
 		}	
         sld.greeting = "hunter";
-        sld.location = "none"; // вот где порылась собака!!!!!!!!!!!
+        sld.location = "none"; // пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ!!!!!!!!!!!
 		
 		SetModelPirate(sld);
         k = 0;
@@ -1085,7 +1085,7 @@ void ReasonToFast_SetTreasureHunter(string qName)
 		if(LAi_GetLocatorNum("goto") > 0) 	sLocGroup = "goto";
 		else								sLocGroup = "encdetector";
 		
-		if (PlaceCharacter(sld, sLocGroup, "random_must_be_near") == "" && i == 1) // fix если вдруг нет в локации
+		if (PlaceCharacter(sld, sLocGroup, "random_must_be_near") == "" && i == 1) // fix пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         {
             ok = false;
             break;
@@ -1129,7 +1129,7 @@ void ReasonToFast_GenerateTreasureMap(ref item)
 
 void ReasonToFast_ExitFromTownFight(string qName)
 {
-	Log_QuestInfo("Блокируем выход на глобалку, ожидаем встречи с матросом");
+	Log_QuestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 	bQuestDisableMapEnter = true;
 	QuestCloseSeaExit();
     DoQuestCheckDelay("ReasonToFast_MeetWithSailor", 1);
@@ -1148,9 +1148,9 @@ void ReasonToFast_SetTreasureBoxFromMap(string qName)
         Log_Info("The treasures must be somewhere nearby!");
         PlaySound("interface\notebook.wav");
 		Statistic_AddValue(pchar, "Treasure", 1);
-		Achievment_SetStat(pchar, 8, 1);
+		Achievment_SetStat(pchar, 8, 10);
 		
-        // немного веселой жизни
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         pchar.quest.ReasonToFast_SetTreasureHunter.win_condition.l1          = "ExitFromLocation";
         pchar.quest.ReasonToFast_SetTreasureHunter.win_condition.l1.location = pchar.location;
         pchar.quest.ReasonToFast_SetTreasureHunter.function    				= "ReasonToFast_SetTreasureHunter";   
@@ -1158,16 +1158,16 @@ void ReasonToFast_SetTreasureBoxFromMap(string qName)
 
         Items_FindItem("mapQuest", &item);
 		
-		itmName = "icollection"; // генерим сокровища
+		itmName = "icollection"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		item.BoxTreasure.(itmName) = sti(pchar.questTemp.ReasonToFast.p8); 
 		
-		itmName = "Chest"; // генерим сундуки
+		itmName = "Chest"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		item.BoxTreasure.(itmName) = sti(pchar.questTemp.ReasonToFast.p7); 
 
-		itmName = "mineral5"; // генерим ведра
+		itmName = "mineral5"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		item.BoxTreasure.(itmName) = rand(5) + 2;
 		
-		itmName = "mineral8"; // генерим  башмаки
+		itmName = "mineral8"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ  пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		item.BoxTreasure.(itmName) = rand(7) + 4;
 		
         box = item.MapBoxId;
@@ -1180,7 +1180,7 @@ void ReasonToFast_SetTreasureBoxFromMap(string qName)
         CopyAttributes(arToBox, arFromBox);
 
         loc.(box) = Items_MakeTime(GetTime(), GetDataDay(), GetDataMonth(), GetDataYear());
-        loc.(box).Treasure =  true; // признак сокровища в сундуке
+        loc.(box).Treasure =  true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
         DeleteAttribute(item, "MapIslId");
         TakeNItems(pchar, "mapQuest", -1);
@@ -1268,7 +1268,7 @@ void ReasonToFast_GetTreasure(string ItmName, int ReqQty)
 	int iPassenger, cn;
 	ref sld;
 	
-	// отберем предметы сначала у ГГ
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ
 	iQty = GetCharacterItem(pchar, ItmName);
 	if(iQty > 0) 
 	{
@@ -1276,7 +1276,7 @@ void ReasonToFast_GetTreasure(string ItmName, int ReqQty)
 		if(iQty == ReqQty) return;
 		ReqQty = ReqQty - iQty;
 	}	
-	// теперь у офицеров и пассажиров
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	for (int io = 0; io < GetPassengersQuantity(pchar); io++)
 	{
 		iPassenger = GetPassenger(pchar, io);
@@ -1292,7 +1292,7 @@ void ReasonToFast_GetTreasure(string ItmName, int ReqQty)
 			}
 		}
 	}
-	// у компаньонов
+	// пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	for (int i=1; i<COMPANION_MAX; i++)
 	{
 		cn = GetCompanionIndex(pchar, i);
@@ -1322,13 +1322,13 @@ bool ReasonToFast_CreateResidenceNPC(aref loc)
 	{	
 		string slai_group = GetNationNameByType(iNation) + "_citizens";		
 	
-		if (GetCharacterIndex("ReasonToFastLakey_1") > 0) return false; //если есть
-		Log_QuestInfo("Генерим лакея");		
+		if (GetCharacterIndex("ReasonToFastLakey_1") > 0) return false; //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+		Log_QuestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");		
 		chr = GetCharacter(NPC_GenerateCharacter("ReasonToFastLakey_1", "barmen_"+(rand(15)+1), "man", "man", 5, iNation, 1, true, "citizen"));
 		chr.dialog.Filename = "GenQuests_Dialog.c"; 
 		chr.dialog.currentnode = "ReasonToFast_Lakey";
 		chr.CityType = "citizen";
-		chr.city = loc.fastreload; //НЗГ
+		chr.city = loc.fastreload; //пїЅпїЅпїЅ
 		chr.greeting = "worker";
 		ChangeCharacterAddressGroup(chr, loc.id, "goto", "goto1");
 		LAi_SetOwnerType(chr);
@@ -1343,7 +1343,7 @@ void ReasonToFast_ClearLakey(string qName)
 {
 	AddQuestRecord("ReasonToFast","19");
 	CloseQuestHeader("ReasonToFast");
-	if (GetCharacterIndex("ReasonToFastLakey_1") > 0) // прибъем лакея если он есть
+	if (GetCharacterIndex("ReasonToFastLakey_1") > 0) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 	{
 		ref sld = CharacterFromID("ReasonToFastLakey_1");
 		sld.LifeDay = 0;
@@ -1357,10 +1357,10 @@ void ReasonToFast_InitVariables()
 
 	pchar.questTemp.ReasonToFast.p1 = rand(100);
 	pchar.questTemp.ReasonToFast.p2 = rand(100);
-	pchar.questTemp.ReasonToFast.p3 = "l" + rand(GetNamesCount(NAMETYPE_MAIN) - 1); 	// id пиратского атамана
-	pchar.questTemp.ReasonToFast.p4 = rand(3) + 1; 	// id камня (1-4) 
+	pchar.questTemp.ReasonToFast.p3 = "l" + rand(GetNamesCount(NAMETYPE_MAIN) - 1); 	// id пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	pchar.questTemp.ReasonToFast.p4 = rand(3) + 1; 	// id пїЅпїЅпїЅпїЅпїЅ (1-4) 
 	pchar.questTemp.ReasonToFast.p5 = (110 - GetSummonSkillFromName(pchar, SKILL_FORTUNE)) * MOD_SKILL_ENEMY_RATE * 1000;	
-	pchar.questTemp.ReasonToFast.p6 = GenQuest_GenerateGoodBlade(); // генерация клинка
+	pchar.questTemp.ReasonToFast.p6 = GenQuest_GenerateGoodBlade(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	s1 = GetCharacterSPECIAL(pchar,"Charisma");
 	s1 = s1 - rand(makeint(s1/2));
 	s2 = GetCharacterSPECIAL(pchar,"Intellect");
@@ -1382,16 +1382,16 @@ void ReasonToFast_InitVariables()
 		pchar.questTemp.ReasonToFast.map = "l" + rand(GetNamesCount(NAMETYPE_VIP) - 1);
 		pchar.questTemp.ReasonToFast.mapIdx = NAMETYPE_VIP;
 	}
-	// ручками трем этот атрибут :( , если квест взят во второй раз
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ :( , пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	if(CheckAttribute(pchar,"questTemp.ReasonToFast.speakOther")) DeleteAttribute(pchar,"questTemp.ReasonToFast.speakOther");
 	if(CheckAttribute(pchar,"questTemp.ReasonToFast.speakAfterPatrolDied")) DeleteAttribute(pchar,"questTemp.ReasonToFast.speakAfterPatrolDied");
 }
 //=====================================================================================================================================
-// <-- ГЕНЕРАТОР "ПОВОД ДЛЯ СПЕШКИ "
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "
 //=====================================================================================================================================
 
 //=====================================================================================================================================
-// Warship. ГЕНЕРАТОР "СГОРЕВШЕЕ СУДНО" -->
+// Warship. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ" -->
 //=====================================================================================================================================
 void BurntShipQuest_TimeIsOver(String _quest)
 {
@@ -1403,11 +1403,11 @@ void BurntShipQuest_TimeIsOver(String _quest)
 	character.Quest.BurntShip.TimeIsOver = true;
 }
 //=====================================================================================================================================
-// <-- ГЕНЕРАТОР "СГОРЕВШЕЕ СУДНО"
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ"
 //=====================================================================================================================================
 
 //=====================================================================================================================================
-// Warship. ГЕНЕРАТОР "ПИРАТЫ НА НЕОБИТАЕМОМ ОСТРОВЕ" -->
+// Warship. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" -->
 //=====================================================================================================================================
 void PiratesOnUninhabited_LocationExit(String _quest)
 {
@@ -1452,7 +1452,7 @@ void PiratesOnUninhabited_OnShore(String _quest)
 			{
 				if(!CheckAttribute(PChar, "GenQuest.PiratesOnUninhabited.TreasureMap"))
 				{
-					if(!CheckAttribute(PChar, "GenQuest.PiratesOnUninhabited.ClearShip")) // Признак варианта, когда нужно захватить корабль
+					if(!CheckAttribute(PChar, "GenQuest.PiratesOnUninhabited.ClearShip")) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					{
 						character.dialog.currentnode = "PiratesOnUninhabited_12";
 					}
@@ -1474,7 +1474,7 @@ void PiratesOnUninhabited_OnShore(String _quest)
 			}
 		}
 		
-		// Затрем второе прерывание
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		PChar.Quest.PiratesOnUninhabited_OnShore.over = "yes";
 		PChar.Quest.PiratesOnUninhabited_OnMayak.over = "yes";
 	}
@@ -1511,7 +1511,7 @@ void PiratesOnUninhabited_InTreasureLoc(String _quest)
 	
 	Log_Info("The treasures must be somewhere nearby!");
 	Statistic_AddValue(Pchar, "Treasure", 1);
-	Achievment_SetStat(Pchar, 8, 1);
+	Achievment_SetStat(Pchar, 8, 10);
 	
 	PChar.Quest.PiratesOnUninhabited_TreasureLose.over = "yes";
 	
@@ -1529,7 +1529,7 @@ void PiratesOnUninhabited_InTreasureLoc(String _quest)
 			
 			if(model[temp] != "")
 			{
-				if(!CheckAttribute(location, "locators.goto.goto" + (i + 1))) // Нет больше локаторов
+				if(!CheckAttribute(location, "locators.goto.goto" + (i + 1))) // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				{
 					PChar.GenQuest.PiratesOnUninhabited.ShorePiratesQty = i;
 					break;
@@ -1563,7 +1563,7 @@ void PiratesOnUninhabited_InTreasureLoc(String _quest)
 		PChar.Quest.PiratesOnUninhabited_ShoreTreasureLose.win_condition.l1.date.year = GetAddingDataYear(0, 0, 1);
 		PChar.Quest.PiratesOnUninhabited_ShoreTreasureLose.win_condition = "PiratesOnUninhabited_ShoreTreasureLose";
 		
-		// Серебро да золото
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		if(rand(2) == 1)
 		{
 			boxItems.chest = 1 + rand(14);
@@ -1602,7 +1602,7 @@ void PiratesOnUninhabited_InTreasureLoc(String _quest)
 		{
 			boxItems.cirass3 = 1;
 		}
-		if (drand(7) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+		if (drand(7) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // пїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅ
 		{
 			string amap = SelectAdmiralMaps();
 			if (amap != "") boxItems.(amap)	= 1;
@@ -1610,34 +1610,34 @@ void PiratesOnUninhabited_InTreasureLoc(String _quest)
 		
 		location.(boxId) = Items_MakeTime(GetTime(), GetDataDay(), GetDataMonth(), GetDataYear());
 		location.(boxId).QuestClosed = true;
-		location.(boxId).Treasure = true; // Признак сокровища в сундуке
+		location.(boxId).Treasure = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		location.(boxId).PiratesOnUninhabitedTreasure = true;
 		
-		Log_TestInfo("Пираты на необитайке: сгенерились стражи клада");
+		Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");
 	}
 	else
 	{
-		// Тут ничего вообще - не успели
+		// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		
 		PChar.Quest.PiratesOnUninhabited_ClearQuest.win_condition.l1 = "ExitFromLocation";;
 		PChar.Quest.PiratesOnUninhabited_ClearQuest.win_condition.l1.Location = PChar.GenQuest.PiratesOnUninhabited.TreasureShore;
 		PChar.Quest.PiratesOnUninhabited_ClearQuest.function = "PiratesOnUninhabited_ClearQuest";
 		
-		Log_TestInfo("Пираты на необитайке: пришли поздно, ничего не найдем");
+		Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
 	}
 	
-	TraderHunterOnMap(); // Немного веселой жизни
+	TraderHunterOnMap(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 }
 
-// Зарубили пиратов, можно лезть в сундук
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 void PiratesOnUninhabited_OpenChest(String _quest)
 {
 	DeleteAttribute(&Locations[FindLocation(PChar.GenQuest.PiratesOnUninhabited.TreasureShore)], PChar.GenQuest.PiratesOnUninhabited.TreasureBox + ".QuestClosed");
 	
-	Log_TestInfo("Пираты на необитайке: зарубили пиратов, можно лезть в сундук");
+	Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
 }
 
-// После входа в локу прошел день - чистим сундуки и убираем пиратов
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 void PiratesOnUninhabited_ShoreTreasureLose(String _quest)
 {
 	ref location = &Locations[FindLocation(PChar.GenQuest.PiratesOnUninhabited.TreasureShore)];
@@ -1658,16 +1658,16 @@ void PiratesOnUninhabited_ShoreTreasureLose(String _quest)
 	DeleteAttribute(location, boxId + ".Treasure");
 	DeleteAttribute(location, boxId + ".PiratesOnUninhabitedTreasure");
 	
-	PiratesOnUninhabited_ClearQuest(""); // Для записи в СЖ
+	PiratesOnUninhabited_ClearQuest(""); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ
 }
 
-// Выход из локации, в случае, если пришли позже 10 дней
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 10 пїЅпїЅпїЅпїЅ
 void PiratesOnUninhabited_ClearQuest(String _quest)
 {
 	String title = "PiratesOnUninhabited" + PChar.GenQuest.PiratesOnUninhabited.StartShore;
 	
 	AddQuestRecordEx(title, "PiratesOnUninhabited", "8");
-	AddQuestUserData(title, "sSex", GetSexPhrase("ся","ась"));
+	AddQuestUserData(title, "sSex", GetSexPhrase("пїЅпїЅ","пїЅпїЅпїЅ"));
 	AddQuestUserData(title, "shore", LowerFirst(XI_ConvertString(PChar.location + "Dat")));
 	CloseQuestHeader(title);
 	
@@ -1677,7 +1677,7 @@ void PiratesOnUninhabited_ClearQuest(String _quest)
 void PiratesOnUninhabited_ShipSink(String _quest)
 {
 	PChar.GenQuest.PiratesOnUninhabited.ClearShip = true;
-	Map_ReleaseQuestEncounter("PiratesOnUninhabited_BadPirate"); // Убираем с глобалки
+	Map_ReleaseQuestEncounter("PiratesOnUninhabited_BadPirate"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	
 	PChar.Quest.PiratesOnUninhabited_OnShore.win_condition.l1 = "Location_Type";
 	PChar.Quest.PiratesOnUninhabited_OnShore.win_condition.l1.location_type = "seashore";
@@ -1707,11 +1707,11 @@ void PiratesOnUninhabited_CapDeath(String _quest)
 	Log_TestInfo("PiratesOnUninhabited_CapDeath");
 }
 //=====================================================================================================================================
-// <-- ГЕНЕРАТОР "ПИРАТЫ НА НЕОБИТАЕМОМ ОСТРОВЕ"
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 //=====================================================================================================================================
 
 //=====================================================================================================================================
-// Ugeen. МИНИ-ГЕНЕРАТОРЫ  "ВЗРЫВ ИЛИ ЭПИДЕМИЯ НА ВРАЖЕСКОМ КОРАБЛЕ"
+// Ugeen. пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 //=====================================================================================================================================
 bool CheckShipSituation_GenQuest()
 {
@@ -1783,7 +1783,7 @@ int CheckShipSituationDaily_GenQuest(ref refChar)
 	return cn;
 }
 
-// освобождаем квесты и устанавливаем таймер на повторную генерацию ситуаций
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 void SetFreeQuestAboardShipSituation(string qName)
 {
 	if(CheckShipSituation_GenQuest()) 
@@ -1795,14 +1795,14 @@ void SetFreeQuestAboardShipSituation(string qName)
 	SetFunctionTimerCondition("CanGenerateQuestAboardShipSituation", 0, 0, rand(15) + 30, false);
 }
 
-// можем генерировать ситуацию еще раз до упора, пока на нее не напорется геймер 
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 
 void CanGenerateQuestAboardShipSituation(string qName)
 {
 	bSeaCanGenerateShipSituation = true;
 	pchar.CanGenerateShipSituation = true;	
 }
 
-// проверка квестовой ситуации перед выходом из каюты поверженного кэпа в режим "море"
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅ"
 void CheckCaptainFreeQuestAboardSituation()
 {
 	ref sld;
@@ -1818,12 +1818,12 @@ void CheckCaptainFreeQuestAboardSituation()
 			sld = CharacterFromID(pchar.GenQuest.ShipSituation.Epidemy.CapId);			
 			pchar.GenQuest.ShipSituation.Epidemy.ShipName = sld.Ship.Name;
 			pchar.GenQuest.ShipSituation.Epidemy.ShipType = sti(sld.Ship.Type);
-			if(pchar.GenQuest.ShipSituation.Epidemy.CapState == "Died") // кэп помер - вот бедолага
+			if(pchar.GenQuest.ShipSituation.Epidemy.CapState == "Died") // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				SetCaptainDiedQuestAboardSituation(sld);
 				ShipSituation_SetConsequence(sti(pchar.GenQuest.ShipSituation.Epidemy));
 			}
-			if(pchar.GenQuest.ShipSituation.Epidemy.CapState == "Live") // кэп остался жить - недолго ему осталось
+			if(pchar.GenQuest.ShipSituation.Epidemy.CapState == "Live") // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				SetCaptainFreeQuestAboardSituation(sld);
 				ShipSituation_SetConsequence(sti(pchar.GenQuest.ShipSituation.Epidemy));
@@ -1832,30 +1832,30 @@ void CheckCaptainFreeQuestAboardSituation()
 	}	
 }
 
-// установка последствий или их отсутствий
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 void ShipSituation_SetConsequence(int iSituation)
 {
-	if(GetCharacterSPECIAL(pchar,"LUCK") * 10 > rand(120)) // шутник блин
+	if(GetCharacterSPECIAL(pchar,"LUCK") * 10 > rand(120)) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	{
 		DoQuestFunctionDelay("SetFreeQuestAboardShipSituation", 1.0); 
 	}
-	else // кэп не шутил
+	else // пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	{
 		switch (iSituation)
 		{
-			case ShipSituation_0: // обшарили каюту или труп
+			case ShipSituation_0: // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 				pchar.GenQuest.ShipSituation.Epidemy.Days = 3;
 			break;
-			case ShipSituation_1: // что-то делали в интерфейсе грабежа
+			case ShipSituation_1: // пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				pchar.GenQuest.ShipSituation.Epidemy.Days = 7 + rand(4);
 			break;
-			case ShipSituation_2: // сажаем компаньона с командой на инфицированный корабль
+			case ShipSituation_2: // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				pchar.GenQuest.ShipSituation.Epidemy.Days = 15 + rand(5);
 			break;
-			case ShipSituation_3: // ГГ пересаживается на инфицированный корабль
+			case ShipSituation_3: // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				pchar.GenQuest.ShipSituation.Epidemy.Days = 15 + rand(5);
 			break;
-			case ShipSituation_4: // ничего не обшаривали
+			case ShipSituation_4: // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				pchar.GenQuest.ShipSituation.Epidemy.Days = 1;
 			break;
 		}
@@ -1880,7 +1880,7 @@ void ShipSituation_CheckConsequence(int iSituation)
 				{
 					pchar.Health.Damg = stf(pchar.chr_ai.hp_max)*10; 
 					AddQuestRecord("ShipEpidemy","1");
-					AddQuestUserData("ShipEpidemy", "sSex", GetSexPhrase("","а"));
+					AddQuestUserData("ShipEpidemy", "sSex", GetSexPhrase("","пїЅ"));
 					AddQuestUserData("ShipEpidemy", "sShipName", pchar.GenQuest.ShipSituation.Epidemy.ShipName);					
 				}
 				else
@@ -1963,17 +1963,17 @@ void ShipSituation_CheckConsequence(int iSituation)
 	}
 }
 
-// вражеский кэп помер от стали и свинца - выходим сразу в режим "море"
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅ"
 void SetCaptainDiedQuestAboardSituation(ref chr)
 {
 	ShipDead(sti(chr.index), KILL_BY_ABORDAGE, sti(pchar.index));
 }
 
-// отпустили кэпа при переходе из вражеской каюты в режим "море" 
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅ" 
 void SetCaptainFreeQuestAboardSituation(ref chr)
 {
 	aref    arTo, arFrom;	
-	ref sld = GetCharacter(NPC_GenerateCharacter(chr.id + "_free", "off_hol_2", "man", "man", 60, sti(chr.nation), 0, true, "citizen")); // фантом, на время 
+	ref sld = GetCharacter(NPC_GenerateCharacter(chr.id + "_free", "off_hol_2", "man", "man", 60, sti(chr.nation), 0, true, "citizen")); // пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 
 	ChangeAttributesFromCharacter(sld, chr, false);
 	DeleteAttribute(sld, "ship");
 	sld.ship = "";
@@ -1982,7 +1982,7 @@ void SetCaptainFreeQuestAboardSituation(ref chr)
 	makearef(arFrom, chr.Ship);
 	CopyAttributes(arTo, arFrom);
 	sld.AlwaysFriend = true;
-	sld.Abordage.Enable = false; // запрет абордажа
+	sld.Abordage.Enable = false; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		    			
 	SeaAI_SetCaptainFree(sld, chr);
 	chr.location = "none"; 
@@ -1990,7 +1990,7 @@ void SetCaptainFreeQuestAboardSituation(ref chr)
 	if (bSeaActive)
 	{			
 		PostEvent("evntQuestsCheck", 400);
-		ShipTakenFree(sti(chr.index), KILL_BY_ABORDAGE, sti(pchar.index)); // тут умер реальный кэп, апдайтим еще
+		ShipTakenFree(sti(chr.index), KILL_BY_ABORDAGE, sti(pchar.index)); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 		SetCharacterRelationBoth(sti(sld.index), GetMainCharacterIndex(), RELATION_FRIEND);
 		UpdateRelations();
 		RefreshBattleInterface();
@@ -2011,10 +2011,10 @@ void ShipSituation_SetQuestSituation(int iSituation)
 	}	
 }
 
-// делаем большой "бум" на вражеском корабле --> превращаем его в брандер
+// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅ" пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ --> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 void ShipSituation_MakeDetonate(string qName)
 {
-	Log_TestInfo("Добро пожаловать в преисподнюю !!");
+	Log_TestInfo("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ !!");
 	ref sld = CharacterFromID(pchar.GenQuest.ShipSituation.Explosion.CapId + "_free");
 	ref rBaseShip = GetRealShip(sti(sld.Ship.Type));
 	Event(SHIP_BRANDER_DETONATE,"l", sti(sld.index));
@@ -2074,11 +2074,11 @@ void CheckQuestAboardCabinSituation(ref echar)
 	}	
 }
 //=====================================================================================================================================
-// <-- МИНИ-ГЕНЕРАТОРЫ "ВЗРЫВ ИЛИ ЭПИДЕМИЯ  НА ВРАЖЕСКОМ КОРАБЛЕ"
+// <-- пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 //=====================================================================================================================================
 
 //=====================================================================================================================================
-// Ugeen. ГЕНЕРАТОР  "ДЕВИЦА В ДЖУНГЛЯХ"
+// Ugeen. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 //=====================================================================================================================================
 void EncGirl_Saved()
 {
@@ -2087,11 +2087,11 @@ void EncGirl_Saved()
 	sld.dialog.filename = "Enc_RapersGirl_dialog.c";
 	if(pchar.GenQuest.EncGirl == "toParents")
 	{
-		sld.dialog.currentnode = "Node_250"; // ушли без боевки 
+		sld.dialog.currentnode = "Node_250"; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 
 	}
 	else
 	{
-		sld.dialog.currentnode = "ThanksForSave"; // грохнули бандюков
+		sld.dialog.currentnode = "ThanksForSave"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	}	
 	LAi_SetActorTypeNoGroup(sld);
 	LAi_ActorDialog(sld, pchar, "", -1, 0);
@@ -2120,10 +2120,10 @@ void EncGirl_GenQuest_GetCoins(string qName)
 	ref sld = CharacterFromID("CangGirl");
 	ChangeCharacterAddress(sld, "None", ""); 
 	sld.lifeDay = 0; 
-	//AddSimpleRumour("Вы слышали, что служанку " + pchar.GenQuest.EncGirl.name + " хозяйка выгнала только за то, что та не смогла собрать в джунглях её рассыпавшиеся жемчужины? Совсем народ стыд потерял!.. а совести и не имел никогда.", sti(sld.nation), 5, 1);
+	//AddSimpleRumour("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + pchar.GenQuest.EncGirl.name + " пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ? пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!.. пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.", sti(sld.nation), 5, 1);
 	ChangeCharacterComplexReputation(pchar,"nobility", -10);
 	AddQuestRecord("JungleGirl", "3");
-	AddQuestUserData("JungleGirl", "sSex", GetSexPhrase("","а"));
+	AddQuestUserData("JungleGirl", "sSex", GetSexPhrase("","пїЅ"));
 	AddQuestUserData("JungleGirl", "sName", pchar.GenQuest.EncGirl.name); 
 	CloseQuestHeader("JungleGirl");
 	DeleteAttribute(pchar, "GenQuest.EncGirl");
@@ -2236,18 +2236,18 @@ void EncGirl_DialogAtShore(string qName)
 void EncGirl_EnterToSea(string qName)
 {
 	ref sld = characterFromId("CangGirl");
-	if(pchar.GenQuest.EncGirl == "ChestGetted") // забрали клад
+	if(pchar.GenQuest.EncGirl == "ChestGetted") // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	{
 		LAi_type_actor_Reset(sld); 
 	}
-	else // кинули тетку на острове, клад не стали брать
+	else // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	{
-		pchar.quest.EncGirl_DeliveBack.over = "yes"; // снимаем ненужные прерывания
+		pchar.quest.EncGirl_DeliveBack.over = "yes"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		pchar.quest.EncGirl_DeathAgain.over = "yes";
 		pchar.quest.EncGirl_FindChest.over = "yes";
 		ChangeCharacterComplexReputation(pchar,"nobility", -5);
 		AddQuestRecord("JungleGirl", "5_1");
-		AddQuestUserData("JungleGirl", "sSex", GetSexPhrase("","а"));
+		AddQuestUserData("JungleGirl", "sSex", GetSexPhrase("","пїЅ"));
 		AddQuestUserData("JungleGirl", "sName", pchar.GenQuest.EncGirl.name);
 		CloseQuestHeader("JungleGirl");
 		RemovePassenger(pchar, sld);
@@ -2383,7 +2383,7 @@ void EncGirl_GenerateLeatherBag(string qName)
 	string boxId = "box1";
 	aref boxItems;
 	
-	if(pchar.GenQuest.EncGirl == "Bag_BrothelRoomUp") // верхняя комната
+	if(pchar.GenQuest.EncGirl == "Bag_BrothelRoomUp") // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	{
 		location = &Locations[FindLocation(pchar.GenQuest.EncGirl.city + "_Brothel_room")];
 	}
@@ -2396,7 +2396,7 @@ void EncGirl_GenerateLeatherBag(string qName)
 		
 	boxItems.leather_bag = 1;
 	location.(boxId) = Items_MakeTime(GetTime(), GetDataDay(), GetDataMonth(), GetDataYear());
-	Log_TestInfo("Генерируем саквояж");
+	Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 }
 
 void EncGirl_RapersChest(string qName)
@@ -2429,14 +2429,14 @@ void EncGirl_RapersChest(string qName)
 	{ 
 		boxItems.jewelry47 = 22 + rand(12);	
 	}
-	if (drand(6) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+	if (drand(6) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // пїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅ
 	{
 		string amap = SelectAdmiralMaps();
 		if (amap != "") boxItems.(amap)	= 1;
 	}
 		
 	location.(boxId) = Items_MakeTime(GetTime(), GetDataDay(), GetDataMonth(), GetDataYear());
-	location.(boxId).Treasure = true; // Признак сокровища в сундуке
+	location.(boxId).Treasure = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 }
 
 void EncGirl_TreasureLose(string qName)
@@ -2511,7 +2511,7 @@ void EncGirlFack_outRoom()
 
 void EncGirlFack_outRoomRaped()
 {
-	// ==> Забираем клинки, пистоли и деньги.
+	// ==> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 	RemoveCharacterEquip(pchar, BLADE_ITEM_TYPE);
 	RemoveCharacterEquip(pchar, GUN_ITEM_TYPE);
     while (FindCharacterItemByGroup(pchar, BLADE_ITEM_TYPE) != "")
@@ -2523,7 +2523,7 @@ void EncGirlFack_outRoomRaped()
         TakeItemFromCharacter(pchar, FindCharacterItemByGroup(pchar, GUN_ITEM_TYPE));
     }
     pchar.money = 0;
-    // <== Забираем клинки, пистоли и деньги.
+    // <== пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 	pchar.GenQuest.EncGirl = "EncGirlFack_fighted";
 	AddCharacterExpToSkill(pchar, "Pistol", 100); 
 	sld = characterFromId("Berglar_EncGirl");
@@ -2556,8 +2556,8 @@ void EncGirl_GenQuest_GetBag(string qName)
 {
 	ref sld = CharacterFromID("CangGirl");
 	sld.lifeDay = 0; 
-	//AddSimpleRumour(RandPhraseSimple("Вы слышали, какая-то шлюха пыталась без документов проникнуть на корабль? Её поймали и отвели назад в бордель. Говорят она задолжала хозяйке кругленькую сумму.",  
-	//			"Слыхали? у нас в порту поймали какую-то шлюху без документов. Говорят, из борделя сбежала, предварительно почистив сундуки тамошней хозяйки. Давно бы следовало прикрыть этот разносчик заразы и воровства. Ведь наши дети всё это видят, чему они могут научиться?"), 
+	//AddSimpleRumour(RandPhraseSimple("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ? Её пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.",  
+	//			"пїЅпїЅпїЅпїЅпїЅпїЅпїЅ? пїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ?"), 
 	//			sti(pchar.GenQuest.EncGirl.nation), 3, 1);
 	ChangeCharacterComplexReputation(pchar,"nobility", -8);
 	pchar.quest.EncGirl_GenerateBag.over = "yes";
@@ -2629,7 +2629,7 @@ void EncGirl_LoverExit()
 	string sTemp;
 	pchar.quest.EncGirl_DeathSimple.over = "yes";
 	AddQuestRecord("JungleGirl", "14");
-	AddQuestUserData("JungleGirl", "sSex", GetSexPhrase("","а"));
+	AddQuestUserData("JungleGirl", "sSex", GetSexPhrase("","пїЅ"));
 	CloseQuestHeader("JungleGirl");		
 	ChangeCharacterComplexReputation(pchar,"nobility", -3);	
 	sTemp = LAi_FindNearestFreeLocator2Pchar("reload");
@@ -2652,7 +2652,7 @@ void EncGirl_ToLoverParents()
 	string sTemp;
 	pchar.quest.EncGirl_DeathSimple.over = "yes";
 	AddQuestRecord("JungleGirl", "15");
-	AddQuestUserData("JungleGirl", "sSex", GetSexPhrase("ся","ась"));
+	AddQuestUserData("JungleGirl", "sSex", GetSexPhrase("пїЅпїЅ","пїЅпїЅпїЅ"));
 	AddQuestUserData("JungleGirl", "sCity", XI_ConvertString("Colony" + pchar.GenQuest.EncGirl.LoverCity));
 	ChangeCharacterComplexReputation(pchar,"nobility", 1);
 	sTemp = LAi_FindNearestFreeLocator2Pchar("reload");
@@ -2678,7 +2678,7 @@ void EncGirl_ToLoverParentsExit()
 	ChangeCharacterComplexReputation(pchar,"nobility", -3);
 	AddMoneyToCharacter(pchar, 500 * (sti(pchar.rank) + 10) + drand(5000));
 	AddQuestRecord("JungleGirl", "13");
-	AddQuestUserData("JungleGirl", "sSex", GetSexPhrase("","а"));
+	AddQuestUserData("JungleGirl", "sSex", GetSexPhrase("","пїЅ"));
 	CloseQuestHeader("JungleGirl");
 	ref sld = CharacterFromID("CangGirl");
 	string sTemp = LAi_FindNearestFreeLocator2Pchar("reload");
@@ -2710,16 +2710,16 @@ void EncGirl_DeliveToLoverParents(string qName)
 void EncGirl_GenQuest_GetLoverFather(string qName)
 {
 	AddQuestRecord("JungleGirl", "17");
-	AddQuestUserData("JungleGirl", "sSex", GetSexPhrase("","а"));
+	AddQuestUserData("JungleGirl", "sSex", GetSexPhrase("","пїЅ"));
 	CloseQuestHeader("JungleGirl");
 	DeleteAttribute(pchar, "GenQuest.EncGirl");
 }
 //=====================================================================================================================================
-// <-- ГЕНЕРАТОР  "ДЕВИЦА В ДЖУНГЛЯХ"
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 //=====================================================================================================================================
 
 //=====================================================================================================================================
-// Ugeen. ГЕНЕРАТОР  "Специальный энкаунтер - бочка"
+// Ugeen. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ"
 //=====================================================================================================================================
 void Set_TreasureBarrel()
 {
@@ -2802,7 +2802,7 @@ void Set_TreasureBarrel()
 				if (GetCharacterItem(pchar, "map_part2") == 0) trBarrel.items.map_part2 = 1;
 			}			
 		}
-		if (drand(30) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+		if (drand(30) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // пїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅ
 		{
 			string amap = SelectAdmiralMaps();
 			if (amap != "") trBarrel.items.(amap) = 1;
@@ -2824,11 +2824,11 @@ void Set_TreasureBarrel()
 	LaunchItemsBarrel(&trBarrel);
 }
 //=====================================================================================================================================
-// Ugeen. ГЕНЕРАТОР  "Специальный энкаунтер - бочка"
+// Ugeen. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ"
 //=====================================================================================================================================
 
 //=====================================================================================================================================
-// Ugeen. ГЕНЕРАТОР  "ПОРУЧЕНИЕ КАПИТАНА - ВЫКУП"
+// Ugeen. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ"
 //=====================================================================================================================================
 void CaptainComission_GenerateSituation(ref chref)
 {
@@ -2838,7 +2838,7 @@ void CaptainComission_GenerateSituation(ref chref)
 		makearef(chrShip, chref.Back.Ship);
 		if (CheckAttribute(chrShip, "Mode") && chrShip.Mode == "trade")
 		{
-			if(rand(4) == 1 || bBettaTestMode) // временно, для бетатеста 
+			if(rand(4) == 1 || bBettaTestMode) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
 			{
 				pchar.GenQuest.CaptainComission = "Begin";
 				pchar.GenQuest.CaptainComission.CapId = chref.CaptanId;
@@ -2866,7 +2866,7 @@ void CaptainComission_Speak(string qName)
 	if(pchar.GenQuest.CaptainComission == "Begin_1" || pchar.GenQuest.CaptainComission == "Begin_2")
 	{
 		AddQuestRecord("CaptainComission1", "2");
-		AddQuestUserData("CaptainComission1", "sSex", GetSexPhrase("","а"));
+		AddQuestUserData("CaptainComission1", "sSex", GetSexPhrase("","пїЅ"));
 		CloseQuestHeader("CaptainComission1");
 		DeleteAttribute(pchar,"GenQuest.CaptainComission");
 	}
@@ -2897,13 +2897,13 @@ void CaptainComission_GenerateChar(string qName)
 	FantomMakeCoolFighter(sld, 10, 30, 35, LinkRandPhrase("blade_05","blade_04","blade_07"), "pistol1", "bullet", 10);	
 	sld.name = pchar.GenQuest.CaptainComission.Name;
 	sld.lastname = "";
-	sld.SaveItemsForDead = true; // сохранять на трупе вещи
-	sld.DontClearDead = true; // не убирать труп через 200с
+	sld.SaveItemsForDead = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+	sld.DontClearDead = true; // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 200пїЅ
 	sld.dialog.FileName = "GenQuests_Dialog.c";
 	sld.dialog.currentnode = "CaptainComission_3";
 	sld.greeting = "cit_quest";
 	LAi_SetSitType(sld);
-	LAi_SetImmortal(sld, true);	// До поры нельзя убить
+	LAi_SetImmortal(sld, true);	// пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	string sLoc = pchar.GenQuest.CaptainComission.City + "_tavern"; 
 	FreeSitLocator(sLoc, "sit2");
 	ChangeCharacterAddressGroup(sld, sLoc, "sit", "sit2");
@@ -2916,12 +2916,12 @@ void CaptainComission_GetPirateIsland()
 	switch (rand(1))
 	{
 		case 0:
-			CityId = "PuertoPrincipe"; // Пуэрто-Принсипе, Куба 250912
+			CityId = "PuertoPrincipe"; // пїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ 250912
 			PirateId = "Marlow";
 			sld = CharacterFromID("Marlow");
 		break;
 		case 1:
-			CityId = "LeFransua"; // Ле-Франсуа на Мартинике
+			CityId = "LeFransua"; // пїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			PirateId = "Barbazon";
 			sld = CharacterFromID("Barbazon");
 		break;
@@ -2936,7 +2936,7 @@ void CaptainComission_GetFamilyType()
 	pchar.GenQuest.CaptainComission.FamilyType = drand(4) + 1;
 }
 
-void CaptainComission_30DaysIsLeft(string qName) // прошло 30 дней после разговора в таверне
+void CaptainComission_30DaysIsLeft(string qName) // пїЅпїЅпїЅпїЅпїЅпїЅ 30 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	ref sld;
 	if(pchar.GenQuest.CaptainComission.GetSlave == "NoSlave")
@@ -2954,9 +2954,9 @@ void CaptainComission_30DaysIsLeft(string qName) // прошло 30 дней после разгово
 		{
 			ChangeCharacterComplexReputation(pchar,"nobility", -5);
 			AddQuestRecord("CaptainComission1", "6");
-			AddQuestUserData("CaptainComission1", "sSex", GetSexPhrase("не по-джентльменски","некрасиво"));
-			AddQuestUserData("CaptainComission1", "sSex1", GetSexPhrase("","а"));
-			AddQuestUserData("CaptainComission1", "sSex2", GetSexPhrase("","ла"));
+			AddQuestUserData("CaptainComission1", "sSex", GetSexPhrase("пїЅпїЅ пїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ","пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"));
+			AddQuestUserData("CaptainComission1", "sSex1", GetSexPhrase("","пїЅ"));
+			AddQuestUserData("CaptainComission1", "sSex2", GetSexPhrase("","пїЅпїЅ"));
 			AddQuestUserData("CaptainComission1", "sCharName", pchar.GenQuest.CaptainComission.Name);
 			AddQuestUserData("CaptainComission1", "sCapName", pchar.GenQuest.CaptainComission.CapName);
 		}
@@ -2976,7 +2976,7 @@ void CaptainComission_PirateShipsOver(string qName)
 {
 	pchar.quest.CapComission_PirateAttack.over = "yes";
 	AddQuestRecord("CaptainComission1", "26");
-	AddQuestUserData("CaptainComission1", "sSex", GetSexPhrase("","а"));
+	AddQuestUserData("CaptainComission1", "sSex", GetSexPhrase("","пїЅ"));
 	AddQuestUserData("CaptainComission1", "sPirateName", ChangeNameCase(NAMETYPE_MAIN, pchar.GenQuest.CaptainComission.PirateName, NAME_DAT));
 	pchar.GenQuest.CaptainComission.PirateShips = "goaway";
 	ChangeOfficersLoyality("bad_all", 1);
@@ -3022,7 +3022,7 @@ void CaptainComission_GenerateManager()
 		break;
 	}
 	
-	Log_TestInfo("Генерим управляющего");	
+	Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");	
    	sld = GetCharacter(NPC_GenerateCharacter("Bishop_manager", sModel, "man", "man", 1, GetCityNation("Bridgetown"), -1, false, "citizen"));
     sld.name = sName;
     sld.lastname = sLastName;
@@ -3040,7 +3040,7 @@ void CaptainComission_GenerateManager()
 	LAi_LocationDisableOfficersGen("BridgeTown_Plantation", true);
 	
 	idx = GetCharacterIndex("Bishop");
-	if(idx != -1) // убираем полковника с плантации
+	if(idx != -1) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	{
 		sld = &characters[idx];
 		ChangeCharacterAddress(sld, "None", ""); 
@@ -3072,11 +3072,11 @@ void CaptainComission_GenerateSlave(string qName)
 	GiveItem2Character(sld, "unarmed");
 	EquipCharacterbyItem(sld, "unarmed"); 
 	sld.dialog.filename = "GenQuests_Dialog.c";
-	LAi_SetHP(sld, 50.0, 60.0); // делаем раба задохликом
+	LAi_SetHP(sld, 50.0, 60.0); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 	if(pchar.GenQuest.CaptainComission.GetSlave == "GetSlave")	
 	{
-		Log_QuestInfo("Выкупили раба");
+		Log_QuestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ");
 		sld.dialog.currentnode = "CaptainComission_20";	
 		PlaceCharacter(sld, "goto", "random_must_be_near");
 		LAi_SetActorType(sld);
@@ -3084,7 +3084,7 @@ void CaptainComission_GenerateSlave(string qName)
 	}	
 	if(pchar.GenQuest.CaptainComission.GetSlave == "NoSlave")	
 	{
-		Log_QuestInfo("Идем освобождать раба");
+		Log_QuestInfo("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ");
 		LAi_LocationFightDisable(&Locations[FindLocation("BridgeTown_Plantation")], true);
 		LAi_SetFightMode(pchar, false);
 		LAi_LockFightMode(pchar, true);
@@ -3094,11 +3094,11 @@ void CaptainComission_GenerateSlave(string qName)
 		LAi_ActorSetLayMode(sld);
 		LAi_SetGroundSitTypeNoGroup(sld); 
 		
-		// генерим стражу
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		for (int i = 0; i < 3; i++)
 		{		
 			sld = GetCharacter(NPC_GenerateCharacter("SlaveGuard_"+i, "sold_eng_"+(rand(7)+1), "man", "man", 10, ENGLAND, 1, true,"soldier"));
-			SetFantomParamFromRank(sld, sti(pchar.rank) + MOD_SKILL_ENEMY_RATE, true); // бравые орлы
+			SetFantomParamFromRank(sld, sti(pchar.rank) + MOD_SKILL_ENEMY_RATE, true); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
             LAi_SetActorType(sld);
             LAi_SetStayType(sld); 
             LAi_group_MoveCharacter(sld, sTemp);
@@ -3111,7 +3111,7 @@ void CaptainComission_GenerateSlave(string qName)
 			sld.dialog.filename = "GenQuests_Dialog.c";
 			sld.dialog.currentnode = "CaptainComission_80";							
         }				
-		SetFunctionTimerConditionParam("CaptainComission_SlaveIsOver", 0, 0, 1, MakeInt(24 - GetHour()), false); // прерывание на исчезновение раба  в течение суток
+		SetFunctionTimerConditionParam("CaptainComission_SlaveIsOver", 0, 0, 1, MakeInt(24 - GetHour()), false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ  пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		pchar.quest.CapComission_SlaveDeath.win_condition.l1 = "NPC_Death";
 		pchar.quest.CapComission_SlaveDeath.win_condition.l1.character = "CapComission_Slave";
 		pchar.quest.CapComission_SlaveDeath.function = "CaptainComission_SlaveDeath";		
@@ -3166,7 +3166,7 @@ void CaptainComission_GuardsAfter(string qName)
 
 }
 
-void CaptainComission_SlaveDeathJungles(string qName) // если не пришел на маяк в течение 2-х суток - раб заблудился в джунглях и помер
+void CaptainComission_SlaveDeathJungles(string qName) // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2-пїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 {
 	pchar.GenQuest.CaptainComission.GetSlave = "SlaveDied";
 	pchar.quest.CaptainComission_SlaveOnMayak.over = "yes";
@@ -3203,7 +3203,7 @@ void CaptainComission_OnMayak(string qName)
 	sld.dialog.filename = "GenQuests_Dialog.c";
 	sld.dialog.currentnode = "CaptainComission_90";	
 		
-	string sEquipItem = "slave_02"; // вооружим кинжалом, он его где-то стащил :)
+	string sEquipItem = "slave_02"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ :)
 	AddItems(sld, sEquipItem, 1);
 	EquipCharacterByItem(sld, sEquipItem);
 		
@@ -3240,7 +3240,7 @@ void CaptainComission_GeneratePatrol()
 	pLoc = &locations[FindLocation("Mayak2")];
 	
 	str = "Patrol"+ pLoc.index + "_";
-	string sGroup = "PatrolGroup_" + pLoc.index; //имя группы
+	string sGroup = "PatrolGroup_" + pLoc.index; //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	iRank = sti(pchar.rank);
 	if(MOD_SKILL_ENEMY_RATE > 5) num = 5;
 	else						 num = 3;	
@@ -3345,11 +3345,11 @@ void CaptainComission_GeneratePirateShips(string qName)
 	ref sld;
 	string Blade, sTemp;
 			
-	Log_QuestInfo("Пиратские корабли установлены, будет крутое рубилово.");
+	Log_QuestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
     Island_SetReloadEnableGlobal(pchar.GenQuest.CaptainComission.Island, false);
     Group_FindOrCreateGroup("Pirate_Attack");
 	Group_SetType("Pirate_Attack", "war");
-	// ==> Пиратские кэпы
+	// ==> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	for (i=1; i<=2; i++)
 	{
 		Rank = sti(pchar.rank) + rand(MOD_SKILL_ENEMY_RATE);
@@ -3414,14 +3414,14 @@ void CaptainComission_GeneratePirateShips(string qName)
 		ChangeCrewExp(sld, "Cannoners", 70 + rand(10));
 		ChangeCrewExp(sld, "Soldiers", 70 + rand(10));
     }
-    // ==> стравливание
+    // ==> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	Group_SetGroupCommander("Pirate_Attack", "CaptainAttack_1");
 	Group_SetTaskAttack("Pirate_Attack", PLAYER_GROUP);
 	Group_SetPursuitGroup("Pirate_Attack", PLAYER_GROUP);
 	Group_SetAddress("Pirate_Attack", pchar.GenQuest.CaptainComission.Island, "", "");
 	Group_LockTask("Pirate_Attack");
 			
-    // ==> прерывание на убиение эскадры
+    // ==> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     pchar.quest.CapComission_AfterBattle.win_condition.l1 = "Group_Death";
 	pchar.quest.CapComission_AfterBattle.win_condition.l1.group = "Pirate_Attack";
 	pchar.quest.CapComission_AfterBattle.function = "CaptainComission_PirateAttack_AfterBattle";
@@ -3431,7 +3431,7 @@ void CaptainComission_GeneratePirateShips(string qName)
 
 void CaptainComission_PirateAttack_AfterBattle(string qName)
 {
-	Log_QuestInfo("Пиратская эскадра разбита.");
+	Log_QuestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
 	Group_DeleteGroup("Pirate_Attack");
 	Island_SetReloadEnableGlobal(pchar.GenQuest.CaptainComission.Island, true);
     pchar.quest.CapComission_DieHard.over = "yes";
@@ -3448,13 +3448,13 @@ void CaptainComission_PirateAttack_AfterBattle(string qName)
 
 void CaptainComission_PirateAttack_DieHard(string qName)
 {
-	Log_QuestInfo("Свалил с поля боя, очень плохо.");
+	Log_QuestInfo("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.");
 	Group_DeleteGroup("Pirate_Attack");
     Island_SetReloadEnableGlobal(pchar.GenQuest.CaptainComission.Island, true);
     pchar.quest.CapComission_AfterBattle.over = "yes";
 	pchar.quest.CaptainComission_PirateShipsOver.over = "yes";
 	AddQuestRecord("CaptainComission1", "33");
-	AddQuestUserData("CaptainComission1", "sSex", GetSexPhrase("","ла"));
+	AddQuestUserData("CaptainComission1", "sSex", GetSexPhrase("","пїЅпїЅ"));
 	AddQuestUserData("CaptainComission1", "sShipName1", pchar.GenQuest.CaptainComission.ShipName1);
 	AddQuestUserData("CaptainComission1", "sShipName2", pchar.GenQuest.CaptainComission.ShipName2);
 	AddQuestUserData("CaptainComission1", "sName", ChangeNameCase(NAMETYPE_MAIN, pchar.GenQuest.CaptainComission.PirateName, NAME_DAT));
@@ -3462,11 +3462,11 @@ void CaptainComission_PirateAttack_DieHard(string qName)
 	ChangeOfficersLoyality("bad_all",1);
 }
 //=====================================================================================================================================
-// <-- ГЕНЕРАТОР  "ПОРУЧЕНИЕ КАПИТАНА - ВЫКУП"
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ"
 //=====================================================================================================================================
 
 //=====================================================================================================================================
-// Ugeen. ГЕНЕРАТОР  "ПОРУЧЕНИЕ КАПИТАНА - ОПЕРАЦИЯ 'ГАЛЕОН'"
+// Ugeen. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 'пїЅпїЅпїЅпїЅпїЅпїЅ'"
 //=====================================================================================================================================
 void CaptainComission_GaleonInit(ref chref)
 {
@@ -3519,7 +3519,7 @@ void CaptainComission_GenerateShips()
 	pchar.GenQuest.CaptainComission.VictimShipName = GenerateRandomNameToShip(rand(3));
 }
 
-// не успели за 15 дней - закрываем квест
+// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 15 пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 void CaptainComission_TimeIsOver(string qName)
 {
 	ref sld;
@@ -3532,7 +3532,7 @@ void CaptainComission_TimeIsOver(string qName)
 			sld = CharacterFromID("CapComission_1");
 			sld.LifeDay = 0;	
 			AddQuestRecord("CaptainComission2", "8");
-			AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","а"));
+			AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","пїЅ"));
 			AddQuestUserData("CaptainComission2", "sName", pchar.GenQuest.CaptainComission.Name);
 			CloseQuestHeader("CaptainComission2");
 			DeleteAttribute(pchar, "GenQuest.CaptainComission");
@@ -3541,7 +3541,7 @@ void CaptainComission_TimeIsOver(string qName)
 		if(pchar.GenQuest.CaptainComission.variant == "A2")
 		{
 			AddQuestRecord("CaptainComission2", "8");
-			AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","а"));
+			AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","пїЅ"));
 			AddQuestUserData("CaptainComission2", "sName", pchar.GenQuest.CaptainComission.Name);
 			CloseQuestHeader("CaptainComission2");
 			DeleteAttribute(pchar, "GenQuest.CaptainComission");
@@ -3553,7 +3553,7 @@ void CaptainComission_TimeIsOver(string qName)
 			sld = CharacterFromID("CapComission_Canoneer");
 			sld.LifeDay = 0;
 			AddQuestRecord("CaptainComission2", "44");
-			AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","а"));
+			AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","пїЅ"));
 			AddQuestUserData("CaptainComission2", "sName", pchar.GenQuest.CaptainComission.Name);
 			AddQuestUserData("CaptainComission2", "sCharName", GetName( NAMETYPE_ORIG, pchar.GenQuest.CaptainComission.CanoneerName, NAME_NOM));
 			CloseQuestHeader("CaptainComission2");
@@ -3569,24 +3569,24 @@ void CaptainComission_TimeIsOver(string qName)
 	DeleteAttribute(pchar, "GenQuest.CaptainComission");
 }
 
-// генерим продолжение квеста в зависимости от срока прибытия к заданному острову
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 void CaptainComission_GenerateQuestContinuation(string qName)
 {
 	int DaysIsLeft = GetQuestPastDayParam("GenQuest.CaptainComission");
 	
-	pchar.quest.CaptainComission_TimeIsOver.over = "yes"; // снимаем таймер на опоздание
-	if(DaysIsLeft <= 5) // вариант A1 - 100%
+	pchar.quest.CaptainComission_TimeIsOver.over = "yes"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	if(DaysIsLeft <= 5) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ A1 - 100%
 	{
 		pchar.GenQuest.CaptainComission.variant = "A1";
 	}
 	else
 	{
-		if(DaysIsLeft <= 10) // вариант A1 - 50 %  && A2 - 50%
+		if(DaysIsLeft <= 10) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ A1 - 50 %  && A2 - 50%
 		{
 			if(rand(1) == 0) 	pchar.GenQuest.CaptainComission.variant = "A1";
 			else				pchar.GenQuest.CaptainComission.variant = "A2";
 		}
-		else // вариант A1 - 30 %, A2 - 30 %, A3 - 40 %
+		else // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ A1 - 30 %, A2 - 30 %, A3 - 40 %
 		{
 			int iRnd = rand(9); 
 			if(iRnd < 3) pchar.GenQuest.CaptainComission.variant = "A1";
@@ -3605,15 +3605,15 @@ void CaptainComission_GenerateQuestVariant()
 	switch(pchar.GenQuest.CaptainComission.variant)
 	{
 		case "A1":
-			Log_QuestInfo("вариант 1");
+			Log_QuestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1");
 			CaptainComission_GenerateShip();
 		break;
 		case "A2":
-			Log_QuestInfo("вариант 2");
+			Log_QuestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2");
 			CaptainComission_GenerateRumourCaptainPrison();
 		break;
 		case "A3":
-			Log_QuestInfo("вариант 3");
+			Log_QuestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 3");
 			CaptainComission_GenerateRumourCaptainDeath();
 		break;
 	}
@@ -3647,7 +3647,7 @@ void CaptainComission_GenerateShip()
 	ChangeCrewExp(chref, "Soldiers", 100);
    		
 	chref.AlwaysFriend = true;
-	chref.Abordage.Enable = false; //нельзя брать на абордаж
+	chref.Abordage.Enable = false; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	
 	string sGroup = "Sea_CapComission_1";
 	Group_DeleteGroup(sGroup);
@@ -3678,10 +3678,10 @@ void CaptainComission_ExitFromLoc(string qName)
 		if(pchar.GenQuest.CaptainComission.variant == "A1")
 		{
 			sld = CharacterFromID("CapComission_1");
-			sld.Dialog.Filename = "Capitans_dialog.c"; // при повторном диалоге
+			sld.Dialog.Filename = "Capitans_dialog.c"; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld.greeting        = "Gr_Commander";
 			sld.DeckDialogNode  = "Go_away";
-			sld.LifeDay = 2;					// сам помрет через 2 дня
+			sld.LifeDay = 2;					// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅ
 		}
 		if(pchar.GenQuest.CaptainComission.variant == "A3")
 		{
@@ -3722,7 +3722,7 @@ int CaptainComission_GetVictimShipGoods()
 	return iGoodIdx;
 }
 
-void CaptainComission_CapIsOut(string qName) // свалили из боя
+void CaptainComission_CapIsOut(string qName) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ
 {
 	ref sld;
 	pchar.GenQuest.CaptainComission = "CaptainIsOut"; 
@@ -3732,7 +3732,7 @@ void CaptainComission_CapIsOut(string qName) // свалили из боя
 	sld.LifeDay = 0;	
 	
 	AddQuestRecord("CaptainComission2", "6");
-	AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("ся","ась"));
+	AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("пїЅпїЅ","пїЅпїЅпїЅ"));
 	AddQuestUserData("CaptainComission2", "sName", pchar.GenQuest.CaptainComission.Name);
 	AddQuestUserData("CaptainComission2", "sGoods", GetStrSmallRegister(XI_ConvertString(Goods[sti(pchar.GenQuest.CaptainComission.Goods)].Name + "Gen")));
 	AddQuestUserData("CaptainComission2", "sShoreName", XI_ConvertString(pchar.GenQuest.CaptainComission.ShoreLocation + "Gen"));
@@ -3744,7 +3744,7 @@ void CaptainComission_CapIsDead(string qName)
 {
 	pchar.quest.CaptainComission_CapIsOut.over = "yes";	
 	AddQuestRecord("CaptainComission2", "5");
-	AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("ся","ась"));
+	AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("пїЅпїЅ","пїЅпїЅпїЅ"));
 	AddQuestUserData("CaptainComission2", "sName", pchar.GenQuest.CaptainComission.Name);
 	AddQuestUserData("CaptainComission2", "sGoods", GetStrSmallRegister(XI_ConvertString(Goods[sti(pchar.GenQuest.CaptainComission.Goods)].Name + "Gen")));
 	AddQuestUserData("CaptainComission2", "sShoreName", XI_ConvertString(pchar.GenQuest.CaptainComission.ShoreLocation + "Gen"));
@@ -3752,14 +3752,14 @@ void CaptainComission_CapIsDead(string qName)
 	DeleteAttribute(pchar, "GenQuest.CaptainComission");
 }
 
-void CaptainComission_toShore() // вышвыриваем в бухту без штанов
+void CaptainComission_toShore() // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	ref sld;
 	Group_DeleteGroup("Sea_CapComission_1");
 	sld = CharacterFromID("CapComission_1");
 	sld.LifeDay = 0;
 	
-	DeleteAttribute(pchar, "ship"); // допрыгался 
+	DeleteAttribute(pchar, "ship"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
 	pchar.ship.name = "";
 	pchar.ship.type = SHIP_NOTUSED;
 	
@@ -3769,19 +3769,19 @@ void CaptainComission_toShore() // вышвыриваем в бухту без штанов
 	RemoveAllPassengersAndCompanions();
 	CleanAllCabinBoxes();
 	
-	//AddSimpleRumour(RandPhraseSimple("Капитан, как вам путешествие на пиратском корабле? Нормально? Вас там не обижали? Ха-ха-ха!!", 
-	//			"О-о-о, капитан, я слышал вам здорово досталось недавно.... Вы, батенька, теперь голодранец! Ха-ха-ха!!"), sti(pchar.GenQuest.CaptainComission.Nation), 5, 1);
+	//AddSimpleRumour(RandPhraseSimple("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ? пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ? пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ? пїЅпїЅ-пїЅпїЅ-пїЅпїЅ!!", 
+	//			"пїЅ-пїЅ-пїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.... пїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅ-пїЅпїЅ-пїЅпїЅ!!"), sti(pchar.GenQuest.CaptainComission.Nation), 5, 1);
 	pchar.quest.Munity = "Deads";
 	pchar.location.from_sea = pchar.GenQuest.CaptainComission.City + "_town";
 	
 	AddQuestRecord("CaptainComission2", "4");
-	AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","а"));
+	AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","пїЅ"));
 	AddQuestUserData("CaptainComission2", "sName", pchar.GenQuest.CaptainComission.Name);
 	AddQuestUserData("CaptainComission2", "sGoods", GetStrSmallRegister(XI_ConvertString(Goods[sti(pchar.GenQuest.CaptainComission.Goods)].Name + "Gen")));
 	AddQuestUserData("CaptainComission2", "sShoreName", XI_ConvertString(pchar.GenQuest.CaptainComission.ShoreLocation + "Gen"));
 	CloseQuestHeader("CaptainComission2");
 	
-	if(bDisableMapEnter) bDisableMapEnter = false; //  если был бой
+	if(bDisableMapEnter) bDisableMapEnter = false; //  пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ
 	
 	DoReloadFromDeckToLocation(pchar.GenQuest.CaptainComission.ShoreLocation, "reload", "sea");
 	DeleteAttribute(pchar, "GenQuest.CaptainComission");
@@ -3789,13 +3789,13 @@ void CaptainComission_toShore() // вышвыриваем в бухту без штанов
 
 void CaptainComission_SailToShore(string qName)
 {
-	Log_QuestInfo("Отработало прерывание на постановку корабля в бухту");
+	Log_QuestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ");
 	ref sld = characterFromId("CapComission_1");
 	SetCharacterShipLocation(sld, pchar.GenQuest.CaptainComission.ShoreLocation);
 	SetFunctionLocationCondition("CaptainComission_MeetInShore", pchar.GenQuest.CaptainComission.ShoreLocation, false); 
 }
 
-// встречаемся на берегу
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 void CaptainComission_MeetInShore(string qName)
 {
 	chrDisableReloadToLocation = true;
@@ -3825,7 +3825,7 @@ void CaptainComission_GenerateShorePatrol()
 
 	LAi_SetFightMode(pchar, false);
 	LAi_LockFightMode(pchar, true);
-	int iTemp = sti(pchar.GenQuest.CaptainComission.Nation);// Нация патруля
+	int iTemp = sti(pchar.GenQuest.CaptainComission.Nation);// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	pchar.GenQuest.CaptainComission.SoldierQty = makeint(2 * GetOfficersQuantity(pchar) + 3);
 	for (int i = 2; i <= sti(pchar.GenQuest.CaptainComission.SoldierQty); i++)
 	{
@@ -3872,13 +3872,13 @@ void CaptainComission_GenerateCoastalPatrol()
 {
 	ref CoastGuard;
 	int i;
-	int iNation = sti(pchar.GenQuest.CaptainComission.Nation);// Нация патруля
+	int iNation = sti(pchar.GenQuest.CaptainComission.Nation);// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	string Model;
 	
 	for (i = 1; i <= 3; i++)
     {
         Model = "off_" + NationShortName(iNation) + "_" + (rand(1) + 1);
-		CoastGuard = GetCharacter(NPC_GenerateCharacter("Coastal_Captain0" + i, Model, "man", "man", sti(pchar.rank) + rand(MOD_SKILL_ENEMY_RATE), iNation, 3, true, "officer")); // 3 дня, потом сами пропадут
+		CoastGuard = GetCharacter(NPC_GenerateCharacter("Coastal_Captain0" + i, Model, "man", "man", sti(pchar.rank) + rand(MOD_SKILL_ENEMY_RATE), iNation, 3, true, "officer")); // 3 пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		SetFantomParam(CoastGuard);
 		SelectCoastalGuardShip(CoastGuard);
 		CoastGuard.AlwaysEnemy = true;
@@ -3955,11 +3955,11 @@ void CaptainComission_GenerateGangInShore()
 	encGroup = "smugglers";
 	str = "locators." + encGroup;
 	makearef(grp, pLoc.(str));
-	num = GetAttributesNum(grp); //кол-во человек в банде
+	num = GetAttributesNum(grp); //пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 	if (num <= 0) num = 1;
 	
 	str = "Gang" + "_";
-	string sGroup = "GangGroup_0"; //имя группы
+	string sGroup = "GangGroup_0"; //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	LAi_LocationFightDisable(pLoc, true);	
 	LAi_SetFightMode(pchar, false);
 	LAi_LockFightMode(pchar, true);
@@ -4128,7 +4128,7 @@ void CaptainComission_ChangeCaptain()
 	SetCharacterPerk(chref, "MusketsShoot");
 	SetCharacterPerk(chref, "Energaiser"); 	
 	FantomMakeCoolFighter(chref, makeint(pchar.rank) + rand(10) + 5, 90, 50, "blade_06", "pistol3", "grapeshot", 80);
-	chref.cirassId = Items_FindItemIdx("cirass1");  // предмета нет, но влияение есть
+	chref.cirassId = Items_FindItemIdx("cirass1");  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	LAi_SetHP(chref, 200 + makeint(pchar.rank) * 5, 200 + makeint(pchar.rank) * 5);
 	
 	DeleteAttribute(chref, "ship"); 
@@ -4158,7 +4158,7 @@ void CaptainComission_ChangeCaptain()
 	
 	chref.nation = PIRATE;
 	Ship_NationAgressivePatent(chref);
-	Ship_FlagRefresh(chref); //флаг на лету	
+	Ship_FlagRefresh(chref); //пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ	
 	
 	SetCharacterRelationBoth(sti(chref.index), GetMainCharacterIndex(), RELATION_ENEMY);
 	DeleteAttribute(chref, "AlwaysFriend"); 
@@ -4182,7 +4182,7 @@ void CaptainComission_GangDied(string qName)
 	if(pchar.GenQuest.CaptainComission.variant == "A2")
 	{
 		ref sld = CharacterFromId("CapComission_1");	
-		if (LAi_IsDead(sld)) // погиб
+		if (LAi_IsDead(sld)) // пїЅпїЅпїЅпїЅпїЅ
 		{
 			AddQuestRecord("CaptainComission2", "33");
 			AddQuestUserData("CaptainComission2", "sName", pchar.GenQuest.CaptainComission.Name);
@@ -4227,14 +4227,14 @@ void CaptainComission_Ship_Sink(string qName)
 	DeleteAttribute(pchar, "GenQuest.CaptainComission");
 }
 
-// ветка №2
+// пїЅпїЅпїЅпїЅпїЅ пїЅ2
 void CaptainComission_GenerateRumourCaptainPrison()
 {
 	string sShipType = GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(pchar.GenQuest.CaptainComission.ShipType),"Name") + "Acc"));
-	//AddSimpleRumourCity(LinkRandPhrase("Вы слышали, " + GetAddress_Form(pchar) + ", недавно арестовали капитана патрульного " + sShipType + " " + pchar.GenQuest.CaptainComission.Name + ". Оказывается, он подрабатывал контрабандой. Подумать только, до чего довёл колонию нынешний губернатор! Те, кто должен ловить пиратов, сами же нас и обворовывают!.. Поговаривают, что через неделю он будет казнён. Вот и поделом ему.",
-	//	"Поговаривают, что капитан патрульного " + sShipType + " " + pchar.GenQuest.CaptainComission.Name + " оказался организатором шайки контрабандистов. Его поймали и скоро повесят. Похоже, " + GetAddress_Form(pchar) + ", наш губернатор всерьёз взялся за наведение порядка в колонии.",
-	//	RandPhraseSimple("Вы представляете! Начальник форта разоблачил тайную организацию контрабандистов, которой удалось завербовать в свои ряды даже офицеров флота. Одного из них, " + pchar.GenQuest.CaptainComission.Name + ", уже поймали и вскоре повесят. О, " + GetAddress_Form(pchar) + ", я всегда говорил, что наш губернатор рано или поздно наведёт порядок в поселении.",
-	//	"Вы уже знаете, что капитана патрульного " + sShipType + " " + pchar.GenQuest.CaptainComission.Name + " арестовали? Властям стало известно, что он укрыл крупную партию товара, который конфисковывал у проходящих в акватории судов. Похоже, виселицы ему не избежать. А ведь, скажу я вам, он был одним из лучших в патрульной эскадре. Кто бы мог подумать...")),
+	//AddSimpleRumourCity(LinkRandPhrase("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, " + GetAddress_Form(pchar) + ", пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + sShipType + " " + pchar.GenQuest.CaptainComission.Name + ". пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!.. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ.",
+	//	"пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + sShipType + " " + pchar.GenQuest.CaptainComission.Name + " пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ, " + GetAddress_Form(pchar) + ", пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.",
+	//	RandPhraseSimple("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ, " + pchar.GenQuest.CaptainComission.Name + ", пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅ, " + GetAddress_Form(pchar) + ", пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.",
+	//	"пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + sShipType + " " + pchar.GenQuest.CaptainComission.Name + " пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ? пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...")),
 	//	pchar.GenQuest.CaptainComission.City, 5, 3, "CaptainComission_rumourCapPrison");
 }
 
@@ -4285,7 +4285,7 @@ void CaptainComission_ExitFromTown(string qName)
 
 void CaptainComission_CapEscapeTimer(string qName)
 {
-	Log_QuestInfo("Отработало прерывание на бегство капитана");
+	Log_QuestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 	ref sld = characterFromId("CapComission_1");
 	RemovePassenger(pchar, sld);
 	ChangeCharacterAddress(sld, "none", "");
@@ -4312,16 +4312,16 @@ void CaptainComission_GangDialogGetGoods()
 void CaptainComission_CheckCaptainAfterBattle(string qName)
 {
 	ref sld = characterFromId("CapComission_1");	
-	if (LAi_IsDead(sld)) // погиб
+	if (LAi_IsDead(sld)) // пїЅпїЅпїЅпїЅпїЅ
 	{
 		AddQuestRecord("CaptainComission2", "22");
 		AddQuestUserData("CaptainComission2", "sName", pchar.GenQuest.CaptainComission.Name);
 		CloseQuestHeader("CaptainComission2");	
 		DeleteAttribute(pchar, "GenQuest.CaptainComission");	
 	}
-	else // кэп выжил
+	else // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	{
-		if(GetCharacterEquipByGroup(sld, BLADE_ITEM_TYPE) == "") // снял клинок с трупа
+		if(GetCharacterEquipByGroup(sld, BLADE_ITEM_TYPE) == "") // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 		{
 			string sEquipItem = GenQuest_GenerateGoodBlade();
 			AddItems(sld, sEquipItem, 1);
@@ -4347,14 +4347,14 @@ void CaptainComission_CheckCaptainDied(string qName)
 	else
 	{
 		AddQuestRecord("CaptainComission2", "27");
-		AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","а"));
+		AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","пїЅ"));
 		AddQuestUserData("CaptainComission2", "sName", pchar.GenQuest.CaptainComission.Name);
 		AddQuestUserData("CaptainComission2", "sGoodsQuantity", pchar.GenQuest.CaptainComission.MaxGoodsQty);
 		AddQuestUserData("CaptainComission2", "sGoods", GetStrSmallRegister(XI_ConvertString(Goods[sti(pchar.GenQuest.CaptainComission.Goods)].Name + "Gen")));
 		CloseQuestHeader("CaptainComission2");
 		int iGoods = GetSquadronFreeSpace(pchar, sti(pchar.GenQuest.CaptainComission.Goods)); 
 		if(iGoods < sti(pchar.GenQuest.CaptainComission.GoodsQty)) pchar.GenQuest.CaptainComission.GoodsQty = iGoods;
-		SetCharacterGoods(pchar, sti(pchar.GenQuest.CaptainComission.Goods), GetCargoGoods(pchar, sti(pchar.GenQuest.CaptainComission.Goods)) + sti(pchar.GenQuest.CaptainComission.GoodsQty));// перегруз
+		SetCharacterGoods(pchar, sti(pchar.GenQuest.CaptainComission.Goods), GetCargoGoods(pchar, sti(pchar.GenQuest.CaptainComission.Goods)) + sti(pchar.GenQuest.CaptainComission.GoodsQty));// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		OfficersReaction("bad");
 		ChangeCharacterComplexReputation(pchar,"nobility", -5);
 		CaptainComission_GenerateCoastalPatrol();
@@ -4366,7 +4366,7 @@ void CaptainComission_CheckCaptainDied(string qName)
 void CaptainComission_SpeakMayorGoods(string qName)
 {
 	AddQuestRecord("CaptainComission2", "29");
-	AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","а"));
+	AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","пїЅ"));
 	AddQuestUserData("CaptainComission2", "sName", pchar.GenQuest.CaptainComission.Name);
 	pchar.GenQuest.CaptainComission = "GetGoods";
 }
@@ -4465,14 +4465,14 @@ bool CaptainComission_CheckAllPassengersHired()
 	return false;
 } 
 
-// ветка №3
+// пїЅпїЅпїЅпїЅпїЅ пїЅ3
 void CaptainComission_GenerateRumourCaptainDeath()
 {
 	string sShipType = GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(pchar.GenQuest.CaptainComission.ShipType),"Name") + "Acc"));
-	//AddSimpleRumourCity(LinkRandPhrase("Вы слышали, " + GetAddress_Form(pchar) + ", недавно повесили бывшего капитана патрульного " + sShipType +" " + pchar.GenQuest.CaptainComission.Name + ". Говорят, он ограбил какого-то купца. Вот ведь, как бывает, никому верить нельзя... И всю команду с ним за одно казнили. Сговор значит...",
-	//	"Вы уже знаете, " + GetAddress_Form(pchar) + ", что бывший капитан патрульного " + sShipType + " " + pchar.GenQuest.CaptainComission.Name + " казнён? Поговаривают, что он пустил ко дну какое-то важное судно, а товар спрятал. И ведь никто из команды не признался где тайник. Так их всех и повесили...",
-	//	RandPhraseSimple("Вы представляете, " + GetAddress_Form(pchar) + "? Один из капитанов патрульной эскадры занимался морским разбоем. Так его недавно казнили вместе со всей командой. Говорят, что они грабили и пускали ко дну торговые суда.",
-	//	"Недавно казнили бывшего капитана " + pchar.GenQuest.CaptainComission.Name + " вместе с командой его патрульного " + sShipType + ". Поговаривают, что они укрыли крупную партию товара, который конфисковывали у проходящих в акватории судов. А ведь это был один из лучших патрульных экипажей. Я думаю, " + GetAddress_Form(pchar) +", что их намеренно оклеветали. Ведь товар так и не нашли..")), 
+	//AddSimpleRumourCity(LinkRandPhrase("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, " + GetAddress_Form(pchar) + ", пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + sShipType +" " + pchar.GenQuest.CaptainComission.Name + ". пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ... пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ...",
+	//	"пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, " + GetAddress_Form(pchar) + ", пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + sShipType + " " + pchar.GenQuest.CaptainComission.Name + " пїЅпїЅпїЅпїЅпїЅ? пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...",
+	//	RandPhraseSimple("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, " + GetAddress_Form(pchar) + "? пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.",
+	//	"пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + pchar.GenQuest.CaptainComission.Name + " пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + sShipType + ". пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅ пїЅпїЅпїЅпїЅпїЅ, " + GetAddress_Form(pchar) +", пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ..")), 
 	//pchar.GenQuest.CaptainComission.City, 5, 3, "CaptainComission_rumourCapDeath");
 }
 
@@ -4481,7 +4481,7 @@ void CaptainComission_RumourCaptainDeath()
 	if(!CheckAttribute(pchar,"GenQuest.CaptainComission.GetRumour"))
 	{
 		AddQuestRecord("CaptainComission2", "37");
-		AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","а"));
+		AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","пїЅ"));
 		AddQuestUserData("CaptainComission2", "sShipType", GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(pchar.GenQuest.CaptainComission.ShipType),"Name") + "Acc"))); 
 		AddQuestUserData("CaptainComission2", "sName", pchar.GenQuest.CaptainComission.Name);		
 		pchar.GenQuest.CaptainComission.GetRumour = true;
@@ -4501,7 +4501,7 @@ void CaptainComission_GenerateCanoneer(string qName)
 	sld.greeting = "cit_quest";
 	sld.CityType = "citizen";
 	sld.City = pchar.GenQuest.CaptainComission.City;
-	LAi_SetImmortal(sld, true);	// До поры нельзя убить
+	LAi_SetImmortal(sld, true);	// пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	string sLoc = pchar.GenQuest.CaptainComission.City + "_tavern"; 
 	ref pLoc = &locations[FindLocation(sLoc)];
 	if (!LAi_CheckLocatorFree("sit", "sit_front2")) FreeSitLocator(sLoc, "sit_front2");
@@ -4510,7 +4510,7 @@ void CaptainComission_GenerateCanoneer(string qName)
 	LAi_SetSitType(sld);
 }
 
-// канонир ждет деньги до конца суток .. если бабла нет, то закрываем квест с записью в СЖ
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ .. пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ
 void CaptainComission_CanoneerWaitMoney(string qName)
 {
 	ref sld = characterFromId("CapComission_Canoneer");
@@ -4518,7 +4518,7 @@ void CaptainComission_CanoneerWaitMoney(string qName)
 	sld.LifeDay = 0;
 	ChangeOfficersLoyality("bad_all", 1);
 	AddQuestRecord("CaptainComission2", "42");
-	AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","а"));
+	AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","пїЅ"));
 	AddQuestUserData("CaptainComission2", "sName", pchar.GenQuest.CaptainComission.Name);
 	AddQuestUserData("CaptainComission2", "sCharName", GetName( NAMETYPE_ORIG, pchar.GenQuest.CaptainComission.CanoneerName, NAME_NOM));
 	CloseQuestHeader("CaptainComission2");
@@ -4546,12 +4546,12 @@ void CaptainComission_MeetCanoneerInShore(string qName)
 		LAi_SetActorTypeNoGroup(sld);
 		LAi_ActorDialog(sld, pchar, "", -1, 0);	
 	}
-	else // нефик тупить
+	else // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	{ 
 		sld = CharacterFromID("CapComission_Canoneer");
 		sld.LifeDay = 0;
 		AddQuestRecord("CaptainComission2", "44");
-		AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","а"));
+		AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","пїЅ"));
 		AddQuestUserData("CaptainComission2", "sName", pchar.GenQuest.CaptainComission.Name);
 		AddQuestUserData("CaptainComission2", "sCharName", GetName( NAMETYPE_ORIG, pchar.GenQuest.CaptainComission.CanoneerName, NAME_NOM));
 		CloseQuestHeader("CaptainComission2");
@@ -4596,8 +4596,8 @@ void CaptainComission_CheckGangAfterBattle(string qName)
 	ref sld;
 	int iGoods = GetSquadronFreeSpace(pchar, sti(pchar.GenQuest.CaptainComission.Goods)); 
 	if(iGoods < sti(pchar.GenQuest.CaptainComission.GoodsQty)) pchar.GenQuest.CaptainComission.GoodsQty = iGoods;	
-	SetCharacterGoods(pchar, sti(pchar.GenQuest.CaptainComission.Goods), GetCargoGoods(pchar, sti(pchar.GenQuest.CaptainComission.Goods)) + sti(pchar.GenQuest.CaptainComission.GoodsQty));// перегруз	
-	if (GetCharacterIndex("CapComission_Canoneer") > 0) // канонир остался жив
+	SetCharacterGoods(pchar, sti(pchar.GenQuest.CaptainComission.Goods), GetCargoGoods(pchar, sti(pchar.GenQuest.CaptainComission.Goods)) + sti(pchar.GenQuest.CaptainComission.GoodsQty));// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ	
+	if (GetCharacterIndex("CapComission_Canoneer") > 0) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	{
 		sld = CharacterFromId("CapComission_Canoneer");
 		AddPassenger(pchar, sld, false);
@@ -4606,7 +4606,7 @@ void CaptainComission_CheckGangAfterBattle(string qName)
 		LAi_SetActorTypeNoGroup(sld);
 		LAi_ActorDialog(sld, pchar, "", -1, 0);			
 		AddQuestRecord("CaptainComission2", "47");
-		AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","а"));
+		AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","пїЅ"));
 		AddQuestUserData("CaptainComission2", "sName", pchar.GenQuest.CaptainComission.Name);
 		AddQuestUserData("CaptainComission2", "sSum", iGoods);
 		AddQuestUserData("CaptainComission2", "sGoods", GetStrSmallRegister(XI_ConvertString(Goods[sti(pchar.GenQuest.CaptainComission.Goods)].Name + "Gen")));
@@ -4614,10 +4614,10 @@ void CaptainComission_CheckGangAfterBattle(string qName)
 		AddQuestUserData("CaptainComission2", "sCity", XI_ConvertString("Colony" + pchar.GenQuest.CaptainComission.CanoneerCity));
 		SetFunctionLocationCondition("CaptainComission_DeleiveCanoneer", pchar.GenQuest.CaptainComission.CanoneerCity + "_town", false);
 	}
-	else // помер .. вот бедолага
+	else // пїЅпїЅпїЅпїЅпїЅ .. пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	{
 		AddQuestRecord("CaptainComission2", "46");
-		AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","а"));
+		AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","пїЅ"));
 		AddQuestUserData("CaptainComission2", "sName", pchar.GenQuest.CaptainComission.Name);
 		AddQuestUserData("CaptainComission2", "sCharName", GetName( NAMETYPE_ORIG, pchar.GenQuest.CaptainComission.CanoneerName, NAME_NOM));
 		AddQuestUserData("CaptainComission2", "sShipType", GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(pchar.GenQuest.CaptainComission.ShipType),"Name") + "Acc")));
@@ -4668,10 +4668,10 @@ void CaptainComission_EnterToSeaAfterShoreBattle()
 	Group_LockTask("Pirate_Guards");
 }
 //=====================================================================================================================================
-// <-- ГЕНЕРАТОР  "ПОРУЧЕНИЕ КАПИТАНА - ОПЕРАЦИЯ 'ГАЛЕОН'"
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 'пїЅпїЅпїЅпїЅпїЅпїЅ'"
 //=====================================================================================================================================
 //=====================================================================================================================================
-// Ugeen. ГЕНЕРАТОР  "КАТОРЖАНЕ"
+// Ugeen. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 //=====================================================================================================================================
 void Convict_LocExit(string qName)
 {
@@ -4708,20 +4708,20 @@ void Convict_LocExit(string qName)
 		if(pchar.GenQuest.Convict == "FightInShore")
 		{
 			AddQuestRecord("Convict", "6");
-			AddQuestUserData("Convict", "sSex", GetSexPhrase("слово джентльмена","'держать свое слово'"));
-			AddQuestUserData("Convict", "sSex1", GetSexPhrase("","а"));
+			AddQuestUserData("Convict", "sSex", GetSexPhrase("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ","'пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ'"));
+			AddQuestUserData("Convict", "sSex1", GetSexPhrase("","пїЅ"));
 			AddQuestUserData("Convict", "sShoreName", XI_ConvertString("Shore" + pchar.GenQuest.Convict.ShoreLocation + "Acc"));
 		}
 		if(pchar.GenQuest.Convict == "ShoreFight")
 		{
 			AddQuestRecord("Convict", "9");
-			AddQuestUserData("Convict", "sSex", GetSexPhrase("ся","ась"));
+			AddQuestUserData("Convict", "sSex", GetSexPhrase("пїЅпїЅ","пїЅпїЅпїЅ"));
 		}	
 		if(pchar.GenQuest.Convict == "MayakFight")
 		{
 			AddQuestRecord("Convict", "13");
-			AddQuestUserData("Convict", "sSex", GetSexPhrase("слово джентльмена","'держать свое слово'"));
-			AddQuestUserData("Convict", "sSex1", GetSexPhrase("","а"));
+			AddQuestUserData("Convict", "sSex", GetSexPhrase("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ","'пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ'"));
+			AddQuestUserData("Convict", "sSex1", GetSexPhrase("","пїЅ"));
 			AddQuestUserData("Convict", "sMayak", XI_ConvertString(pchar.GenQuest.Convict.Mayak + "Abl"));
 		}	
 		
@@ -4746,7 +4746,7 @@ void Convict_MeetInShore(string qName)
 	
 	DeleteAttribute(&Locations[FindLocation(pchar.GenQuest.Convict.ShoreLocation)], "DisableEncounters");
 		
-	if(pchar.Location == pchar.location.from_sea) // пришел с моря
+	if(pchar.Location == pchar.location.from_sea) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 	{
 		chrDisableReloadToLocation = true;
 		bDisableFastReload = true;	
@@ -4774,10 +4774,10 @@ void Convict_MeetInShore(string qName)
 			}
 		}	
 	}
-	else // пришел с суши --> закрываем квест
+	else // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ --> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	{
 		AddQuestRecord("Convict", "3");
-		AddQuestUserData("Convict", "sSex", GetSexPhrase("","а"));
+		AddQuestUserData("Convict", "sSex", GetSexPhrase("","пїЅ"));
 		CloseQuestHeader("Convict");
 		for(i = 0; i < sti(pchar.GenQuest.Convict.ConvictQty); i++)
 		{
@@ -4794,7 +4794,7 @@ void Convict_SetTimer(string qName)
 	pchar.quest.Convict_ToShore.over = "yes";
 	pchar.quest.Convict_MapEnter.over = "yes";
 	AddQuestRecord("Convict", "3");
-	AddQuestUserData("Convict", "sSex", GetSexPhrase("","а"));
+	AddQuestUserData("Convict", "sSex", GetSexPhrase("","пїЅ"));
 	CloseQuestHeader("Convict");
 	for(int i = 0; i < sti(pchar.GenQuest.Convict.ConvictQty); i++)
 	{
@@ -4821,7 +4821,7 @@ void Convict_MapEnter(string qName)
 	pchar.quest.Convict_SetTimer.over = "yes";
 	pchar.quest.Convict_ToShore.over = "yes";
 	AddQuestRecord("Convict", "3");
-	AddQuestUserData("Convict", "sSex", GetSexPhrase("","а"));
+	AddQuestUserData("Convict", "sSex", GetSexPhrase("","пїЅ"));
 	CloseQuestHeader("Convict");
 	for(int i = 0; i < sti(pchar.GenQuest.Convict.ConvictQty); i++)
 	{
@@ -4863,9 +4863,9 @@ int Convict_GetShipPrice(int iShipType)
 void Convict_OnMayak(string qName)
 {
 	ref sld;
-	if(pchar.location == pchar.location.from_sea) // пришел с моря
+	if(pchar.location == pchar.location.from_sea) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 	{
-		pchar.quest.Convict_OnMayak.over = "yes"; // затираем прерывание
+		pchar.quest.Convict_OnMayak.over = "yes"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		DeleteAttribute(&Locations[FindLocation(pchar.GenQuest.Convict.Mayak)], "DisableEncounters");
 		
 		for(int i = 0; i < sti(pchar.GenQuest.Convict.ConvictQty); i++)
@@ -4927,7 +4927,7 @@ void Convict_SetConvictToShip()
 		CopyAttributes(arTo, arFrom);
 
 		SeaAI_SetOfficer2ShipAfterAbordage(sld, chr); 			
-		DeleteAttribute(chr,"ship"); // трем корабль
+		DeleteAttribute(chr,"ship"); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		chr.ship.type = SHIP_NOTUSED;
 		
 		RemoveCharacterCompanion(pchar, chr);
@@ -4942,11 +4942,11 @@ void Convict_SetConvictToShip()
 	}	
 }
 //=====================================================================================================================================
-// <--. ГЕНЕРАТОР  "КАТОРЖАНЕ"
+// <--. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 //=====================================================================================================================================
 
 //=====================================================================================================================================
-// Ugeen. ГЕНЕРАТОР "ПОТЕРПЕВШИЕ КОРАБЛЕКРУШЕНИЕ" -->
+// Ugeen. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" -->
 //=====================================================================================================================================
 void ShipWreck_LocationExit(string _quest)
 {
@@ -5021,8 +5021,8 @@ void ShipWreck_SetCapToMap()
 	DeleteAttribute(character, "SinkTenPercent");
 	
 	character.AlwaysSandbankManeuver = true;
-	character.AnalizeShips = true;  //анализировать вражеские корабли при выборе таска
-	character.DontRansackCaptain = true; //не сдаваться
+	character.AnalizeShips = true;  //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	character.DontRansackCaptain = true; //пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	
 	SelAllPerksToChar(character, false);
 	
@@ -5033,9 +5033,9 @@ void ShipWreck_SetCapToMap()
 	Group_SetGroupCommander(group, character.id);
 	SetRandGeraldSail(character, PIRATE);
 	
-	character.fromCity = SelectAnyColony(""); // Колония, из бухты которой выйдет
+	character.fromCity = SelectAnyColony(""); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	character.fromShore = GetIslandRandomShoreId(GetArealByCityName(character.fromCity));
-	character.toCity = SelectAnyColony(character.fromCity); // Колония, в бухту которой придет
+	character.toCity = SelectAnyColony(character.fromCity); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	character.toShore = GetIslandRandomShoreId(GetArealByCityName(character.toCity));
 	
 	character.mapEnc.type = "trade";
@@ -5044,14 +5044,14 @@ void ShipWreck_SetCapToMap()
 	
 	Map_CreateTrader(character.fromShore, character.toShore, "ShipWreck_BadPirate", GetMaxDaysFromIsland2Island(GetArealByCityName(character.toCity), GetArealByCityName(character.fromCity)) + 15);
 	
-	temp = GetCharacterFreeSpace(character, GOOD_SLAVES); // Сколько влезет рабов
+	temp = GetCharacterFreeSpace(character, GOOD_SLAVES); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	AddCharacterGoodsSimple(character, GOOD_SLAVES, makeint(temp / 2 + dRand(temp / 2)) - 1);
 	
 	pchar.quest.ShipWreck_ShipSink.win_condition.l1 = "Character_sink";
 	pchar.quest.ShipWreck_ShipSink.win_condition.l1.character = "ShipWreck_BadPirate";
 	pchar.quest.ShipWreck_ShipSink.function = "ShipWreck_ShipSink";
 	
-	Log_TestInfo("Кораблекрушенцы: кэп вышел из " + character.fromCity + " и направился в: " + character.toShore);
+	Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ " + character.fromCity + " пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ: " + character.toShore);
 }
 
 void ShipWreck_DeliveToCity(string qName)
@@ -5067,7 +5067,7 @@ void ShipWreck_DeliveToCity(string qName)
 			PlaceCharacter(sld, "goto", "random_must_be_near");
 			if(i == 0)
 			{
-				if(CheckAttribute(pchar,"GenQuest.ShipWreck.Crazy")) // разговор с психом
+				if(CheckAttribute(pchar,"GenQuest.ShipWreck.Crazy")) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 				{
 					sld.dialog.currentnode = "ShipWreck_34";	
 				}
@@ -5171,13 +5171,13 @@ void ShipWreck_MeetInShore(string qName)
 	for(int i = 0; i < sti(pchar.GenQuest.ShipWreck.Qty); i++)
 	{
 		sld = CharacterFromID("ShipWreck_" + i);
-		if(GetFreeCrewQuantity(pchar) < sti(pchar.GenQuest.ShipWreck.Qty)) // нет места
+		if(GetFreeCrewQuantity(pchar) < sti(pchar.GenQuest.ShipWreck.Qty)) // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		{
 			ChangeCharacterAddress(sld, "None", ""); 
 		}
-		else // ура, место есть
+		else // пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		{
-			pchar.quest.ShipWreck_MeetInShore.over = "yes"; // снимаем прерывание на повторный заход в бухту
+			pchar.quest.ShipWreck_MeetInShore.over = "yes"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			if(LAi_GetLocatorNum("encdetector") > 0) 	sLocGroup = "encdetector";
 			else										sLocGroup = "goto";
 			PlaceCharacter(sld, sLocGroup, pchar.GenQuest.ShipWreck.Shore);
@@ -5227,14 +5227,14 @@ void ShipWreck_SetShipNew()
 
 	SeaAI_SetOfficer2ShipAfterAbordage(sld, chr); 			
 
-	//DeleteAttribute(chr, "ship"); // трем корабль
+	//DeleteAttribute(chr, "ship"); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	//chr.ship = "";
 	//chr.ship.type = SHIP_NOTUSED;
 	chr.LifeDay = 0;
 	
 	RemovePassenger(pchar, sld);
 	sld.AlwaysFriend = true;
-	sld.Abordage.Enable = false; //нельзя брать на абордаж
+	sld.Abordage.Enable = false; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	SetCrewQuantity(sld, 15 + rand(10));
 	
 	SetCharacterRelationBoth(sti(sld.index), GetMainCharacterIndex(), RELATION_FRIEND);
@@ -5243,7 +5243,7 @@ void ShipWreck_SetShipNew()
 	pchar.quest.ShipWreck_MapEnter.function = "ShipWreck_LocationExit"; 			
 
 	AddQuestRecord("ShipWrecked", "18");
-	AddQuestUserData("ShipWrecked", "sSex", GetSexPhrase("","а"));
+	AddQuestUserData("ShipWrecked", "sSex", GetSexPhrase("","пїЅ"));
 	AddQuestUserData("ShipWrecked", "ShipType", GetStrSmallRegister(XI_ConvertString(ShipsTypes[sti(pchar.GenQuest.ShipWreck.StartShipType)].Name + "Acc")));
 	AddQuestUserData("ShipWrecked", "ShipName", pchar.GenQuest.ShipWreck.ShipTypeName);	
 	AddQuestUserData("ShipWrecked", "sName", pchar.GenQuest.ShipWreck.Name);
@@ -5270,10 +5270,10 @@ void ShipWreck_ShipSink(string qName)
 	DeleteAttribute(pchar, "GenQuest.ShipWreck");	
 }
 //=====================================================================================================================================
-// <-- ГЕНЕРАТОР "ПОТЕРПЕВШИЕ КОРАБЛЕКРУШЕНИЕ" 
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" 
 //=====================================================================================================================================
 //=====================================================================================================================================
-// Ugeen. ГЕНЕРАТОР "СИТУАЦИИ В ТРЮМЕ" -->
+// Ugeen. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ" -->
 //=====================================================================================================================================
 void Hold_GenQuest_Init(ref chref)
 {
@@ -5297,7 +5297,7 @@ void Hold_GenQuest_Init(ref chref)
 
 	switch(sti(chref.Hold_GenQuest.variant))	
 	{
-		case 0: // "наводка"
+		case 0: // "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 			chref.Hold_GenQuest.Goods = Hold_GenQuest_GetVictimShipGoods();
 			chref.Hold_GenQuest.Nation = FindEnemyNation2NationWithoutPirates(GetBaseHeroNation()); 
 			if(sti(chref.Hold_GenQuest.Nation) < 0) 
@@ -5321,14 +5321,14 @@ void Hold_GenQuest_Init(ref chref)
 			else 				chref.Hold_GenQuest.City = chref.Hold_GenQuest.FromCity;
 		break;
 
-		case 1: // "подельник"
+		case 1: // "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 			chref.Hold_GenQuest.Nation = rand(3);
 			chref.Hold_GenQuest.City = GetQuestNationsCity(sti(chref.Hold_GenQuest.Nation));
 			chref.Hold_GenQuest.Name = GenerateRandomName_Generator(sti(chref.Hold_GenQuest.Nation), "man");
 			chref.Hold_GenQuest.PirateName = "l" + rand(GetNamesCount(NAMETYPE_VIP) - 1);
 		break;
 		
-		case 2: // "выкуп"			
+		case 2: // "пїЅпїЅпїЅпїЅпїЅ"			
 			chref.Hold_GenQuest.City = GetQuestNationsCity(rand(3));							
 			rColony = GetColonyByIndex(FindColony(chref.Hold_GenQuest.City));
 			chref.Hold_GenQuest.Nation = sti(rColony.nation);
@@ -5393,7 +5393,7 @@ void Hold_GenQuest_SetMerchant(string qName)
 	makeref(chref, Characters[iChar]);
 	int iRank = SetShipTypeMerchant(chref); 
 	chref.Ship.Name = pchar.GenQuest.Hold_GenQuest.ShipName;
-	SetFantomParamHunter(chref); //крутые парни
+	SetFantomParamHunter(chref); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	
 	SetCaptanModelByEncType(chref, "trade");	
 	int iSpace = GetCharacterFreeSpace(chref, sti(pchar.GenQuest.Hold_GenQuest.Goods));
@@ -5401,7 +5401,7 @@ void Hold_GenQuest_SetMerchant(string qName)
     float del = makefloat(7 - iRank + rand(1))/10; 
     if (del > 1.0 ) del = 1;
     Log_TestInfo("goods load = "+iSpace+"/"+makeint(iSpace*del));
-    iSpace = makeint(iSpace * del); // чтоб не так жирно было
+    iSpace = makeint(iSpace * del); // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     Fantom_SetCharacterGoods(chref, sti(pchar.GenQuest.Hold_GenQuest.Goods), iSpace, 1);
 	
 	string sGroup = "Sea_" + chref.id
@@ -5436,12 +5436,12 @@ void Hold_GenQuest_SetMerchant(string qName)
 	int gcount = rand(3)-1;
     if (gcount < 0 || makeint(pchar.rank) < 5) gcount = 0;
     
-    for (int i = 0; i < gcount; i++) // генерим эскорт
+    for (int i = 0; i < gcount; i++) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     {
         iChar = NPC_GenerateCharacter("Hold_QuestMerchantGuard_"+i, "off_spa_2", "man", "man", 5, sti(pchar.GenQuest.Hold_GenQuest.Nation), 3, true, "hunter"));
         makeref(sld, Characters[iChar]);
         SetShipHunter(sld);
-        SetFantomParamHunter(sld); //крутые парни
+        SetFantomParamHunter(sld); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         SetCaptanModelByEncType(sld, "war");
         sld.Ship.Mode = "war";
 		sld.DontRansackCaptain = true;
@@ -5450,7 +5450,7 @@ void Hold_GenQuest_SetMerchant(string qName)
     chref.gcount = gcount;    	
 }
 
-void Hold_GenQuest_MerchantOver(string qName) // время вышло
+void Hold_GenQuest_MerchantOver(string qName) // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 {
 	pchar.quest.Hold_GenQuest_SetMerchant.over = "yes";
 	AddQuestRecord("HoldQuest", "3");
@@ -5489,7 +5489,7 @@ void Hold_GenQuest_TimeIsOver(string qName)
 	ref sld = characterFromId("Hold_QuestMerchant");
 	Group_DeleteGroup("Sea_" + sld.id); 
 	AddQuestRecord("HoldQuest", "2");
-	AddQuestUserData("HoldQuest", "sSex", GetSexPhrase("","а"));
+	AddQuestUserData("HoldQuest", "sSex", GetSexPhrase("","пїЅ"));
 	AddQuestUserData("HoldQuest", "sShipName", pchar.GenQuest.Hold_GenQuest.ShipName);
 	CloseQuestHeader("HoldQuest");
 	DeleteAttribute(pchar,"GenQuest.Hold_GenQuest");
@@ -5507,7 +5507,7 @@ void Hold_GenQuest_GenerateChar()
 	sld.greeting = "cit_quest";
 	sld.CityType = "citizen";
 	sld.City = pchar.GenQuest.Hold_GenQuest.City;
-	LAi_SetImmortal(sld, true);	// До поры нельзя убить		
+	LAi_SetImmortal(sld, true);	// пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ		
 	string sTemp = pchar.GenQuest.Hold_GenQuest.City + "_" + pchar.GenQuest.Hold_GenQuest.found;
 	LAi_SetStayType(sld);
 	ChangeCharacterAddressGroup(sld, sTemp, "goto", "goto2");
@@ -5524,7 +5524,7 @@ void Hold_GenQuest_FindCharTimeIsOver(string qName)
 	ref sld = characterFromId("Hold_QuestChar");
 	sld.LifeDay = 0;
 	AddQuestRecord("HoldQuest", "9");
-	AddQuestUserData("HoldQuest", "sSex", GetSexPhrase("","а"));
+	AddQuestUserData("HoldQuest", "sSex", GetSexPhrase("","пїЅ"));
 	AddQuestUserData("HoldQuest", "sName", pchar.GenQuest.Hold_GenQuest.Name);
 	pchar.GenQuest.Hold_GenQuest = "prisoner_escaped";
 }
@@ -5539,7 +5539,7 @@ void Hold_GenQuest_PrisonerEscaped()
 
 void Hold_GenQuest_ExitFromTownFight(string qName)
 {
-	Log_QuestInfo("Блокируем выход на глобалку, ожидаем встречи с матросом");
+	Log_QuestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 	bQuestDisableMapEnter = true;
 	QuestCloseSeaExit();
     DoQuestFunctionDelay("Hold_GenQuest_MeetWithSailor", 1);
@@ -5556,7 +5556,7 @@ void Hold_GenQuest_GetMapTimeIsOver(string qName)
 	ref sld = characterFromId("Hold_QuestChar");
 	sld.LifeDay = 0;
 	AddQuestRecord("HoldQuest", "14");
-	AddQuestUserData("HoldQuest", "sSex", GetSexPhrase("","а"));
+	AddQuestUserData("HoldQuest", "sSex", GetSexPhrase("","пїЅ"));
 	AddQuestUserData("HoldQuest", "sName", pchar.GenQuest.Hold_GenQuest.Name);
 	CloseQuestHeader("HoldQuest");
 	DeleteAttribute(pchar,"GenQuest.Hold_GenQuest");				
@@ -5613,7 +5613,7 @@ void Hold_GenQuest_SetTreasureBoxFromMap(string qName)
         Log_Info("The treasures must be somewhere nearby!");
         PlaySound("interface\notebook.wav");
 		Statistic_AddValue(Pchar, "Treasure", 1);
-		Achievment_SetStat(Pchar, 8, 1);
+		Achievment_SetStat(Pchar, 8, 10);
 
 		Items_FindItem("mapQuest", &item);
 		
@@ -5628,7 +5628,7 @@ void Hold_GenQuest_SetTreasureBoxFromMap(string qName)
 				item.BoxTreasure.(itmName) = 1;
 			}	
 			
-			itmName = "icollection"; // генерим сокровища
+			itmName = "icollection"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			item.BoxTreasure.(itmName) = 1 + makeint(sti(pchar.rank)/6); 
 			
 			itmName = "jewelry2";
@@ -5644,10 +5644,10 @@ void Hold_GenQuest_SetTreasureBoxFromMap(string qName)
 			itmName = GetGeneratedItem("slave_02");
 			item.BoxTreasure.(itmName) = rand(8) + 4;
 		
-			itmName = "mineral5"; // генерим ведра
+			itmName = "mineral5"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			item.BoxTreasure.(itmName) = rand(5) + 2;
 		
-			itmName = "mineral8"; // генерим  башмаки
+			itmName = "mineral8"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ  пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			item.BoxTreasure.(itmName) = rand(7) + 4;		
 			
 			if (rand(2) == 1)
@@ -5695,7 +5695,7 @@ void Hold_GenQuest_SetTreasureBoxFromMap(string qName)
         CopyAttributes(arToBox, arFromBox);
 
         loc.(box) = Items_MakeTime(GetTime(), GetDataDay(), GetDataMonth(), GetDataYear());
-        loc.(box).Treasure = true; // признак сокровища в сундуке
+        loc.(box).Treasure = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		loc.(box).Hold_GenQuest_Treasure = true;
 
         DeleteAttribute(item, "MapIslId");
@@ -5705,11 +5705,11 @@ void Hold_GenQuest_SetTreasureBoxFromMap(string qName)
 	}
 }
 //=====================================================================================================================================
-// <-- ГЕНЕРАТОР "СИТУАЦИИ В ТРЮМЕ"
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ"
 //=====================================================================================================================================
 
 //=====================================================================================================================================
-// Ugeen. разрешаем генерацию монстров в пещерах для главного персонажа -->
+// Ugeen. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
 //=====================================================================================================================================
 void GenQuest_EnableMonstersGen(string qName)
 {
@@ -5725,17 +5725,17 @@ bool GenQuest_CheckMonstersGen()
 	else return true;
 }
 //=====================================================================================================================================
-// <-- разрешаем генерацию монстров в пещерах для главного персонажа
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 //=====================================================================================================================================
 
 //=====================================================================================================================================
-// Warship, 15.05.11. Генератор "Правосудие на продажу" -->
+// Warship, 15.05.11. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" -->
 //=====================================================================================================================================
 
-// Выход из локации получения квеста.
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 void JusticeOnSale_LocationExit(string _quest)
 {
-	// Квест не взят, можно затереть.
+	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 	if(!CheckAttribute(PChar, "GenQuest.JusticeOnSale.MayorWait"))
 	{
 		DeleteAttribute(PChar, "GenQuest.JusticeOnSale");
@@ -5747,7 +5747,7 @@ void JusticeOnSale_LocationExit(string _quest)
 	}
 }
 
-// Выход на карту при работающем квесте.
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 void JusticeOnSale_MapEnter(string _quest)
 {
 	ref sld;
@@ -5772,7 +5772,7 @@ void JusticeOnSale_MapEnter(string _quest)
 	DeleteAttribute(PChar, "GenQuest.JusticeOnSale");
 }
 
-// Попадание в локацию нужной бухты вместе с освобожденным контриком.
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 void JusticeOnSale_ShoreEnterWithSmuggler(string _quest)
 {
 	int curModel, i = 0;
@@ -5842,7 +5842,7 @@ void JusticeOnSale_ShoreEnterWithSmuggler(string _quest)
 	PChar.Quest.JusticeOnSale_LocationExit.function = "JusticeOnSale_ClearShore";
 }
 
-// Попадание в локацию нужной бухты после мэра.
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.
 void JusticeOnSale_ShoreEnterFromMayor(string _quest)
 {
 	int i = 0;
@@ -5883,7 +5883,7 @@ void JusticeOnSale_ClearShore(string _quest)
 	DeleteAttribute(PChar, "GenQuest.JusticeOnSale");
 }
 
-// Выход из локации бухты после посещения мэра.
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.
 void JusticeOnSale_LocExitAfterMayor(string _quest)
 {
 	DeleteAttribute(&Locations[FindLocation(PChar.GenQuest.JusticeOnSale.ShoreId)], "DisableEncounters");
@@ -5891,15 +5891,15 @@ void JusticeOnSale_LocExitAfterMayor(string _quest)
 	
 	DeleteQuestCondition("JusticeOnSale_KillSmugglers");
 	
-	Group_DeleteGroup("JusticeOnSaleGroup"); // Потрем шип.
+	Group_DeleteGroup("JusticeOnSaleGroup"); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ.
 	
 	AddQuestRecord("JusticeOnSale", "6");
 	CloseQuestHeader("JusticeOnSale");
 	
-	Log_TestInfo("Вышли из локации, а зря.");
+	Log_TestInfo("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅ.");
 }
 
-// Потопили корабль контриков.
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 void JusticeOnSale_PirateShip_Sink(string _quest)
 {
 	PChar.GenQuest.JusticeOnSale.ShipSink = true;
@@ -5908,18 +5908,18 @@ void JusticeOnSale_PirateShip_Sink(string _quest)
 	
 	if(CheckAttribute(PChar, "GenQuest.JusticeOnSale.KillSmugglers"))
 	{
-		// Сделали все правильно.
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 		AddQuestRecord("JusticeOnSale", "7");
 		CloseQuestHeader("JusticeOnSale");
 	}
 	else
 	{
-		// Не убив контриков в бухте, сразу стали мочить шип. Неверный алгоритм.
+		// пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 		DeleteAttribute(PChar, "GenQuest.JusticeOnSale");
 		
 		DeleteQuestCondition("JusticeOnSale_ShoreEnterFromMayor");
 		
-		Group_DeleteGroup("JusticeOnSaleGroup"); // Потрем шип.
+		Group_DeleteGroup("JusticeOnSaleGroup"); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ.
 		
 		AddQuestRecord("JusticeOnSale", "6");
 		CloseQuestHeader("JusticeOnSale");
@@ -5928,7 +5928,7 @@ void JusticeOnSale_PirateShip_Sink(string _quest)
 	DeleteQuestCondition("JusticeOnSale_MapEnter");
 }
 
-// Завалили всех контриков в бухте.
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ.
 void JusticeOnSale_KillSmugglers(string _quest)
 {
 	ref character;
@@ -5937,22 +5937,22 @@ void JusticeOnSale_KillSmugglers(string _quest)
 	
 	if(GetCharacterShipLocation(PChar) == PChar.GenQuest.JusticeOnSale.ShoreId && !CheckAttribute(PChar, "GenQuest.JusticeOnSale.ShipSink"))
 	{
-		// Сделали все правильно.
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 		DeleteQuestCondition("JusticeOnSale_LocExitAfterMayor");
 		
 		character = CharacterFromID("JusticeOnSale_ShipPirate");
 		DeleteAttribute(character, "AlwaysFriend");
 		SetCharacterRelationBoth(sti(character.index), GetMainCharacterIndex(), RELATION_ENEMY);
 		
-		Log_TestInfo("Квест идет по правильному варианту.");
+		Log_TestInfo("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
 	}
 	else
 	{
-		// Неверный алгоритм.
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 		DeleteAttribute(&Locations[FindLocation(PChar.GenQuest.JusticeOnSale.ShoreId)], "DisableEncounters");
 		DeleteAttribute(PChar, "GenQuest.JusticeOnSale");
 		
-		Group_DeleteGroup("JusticeOnSaleGroup"); // Потрем шип.
+		Group_DeleteGroup("JusticeOnSaleGroup"); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ.
 		
 		DeleteQuestCondition("JusticeOnSale_PirateShip_Sink");
 		
@@ -5960,9 +5960,9 @@ void JusticeOnSale_KillSmugglers(string _quest)
 		CloseQuestHeader("JusticeOnSale");
 	}
 	
-	Log_TestInfo("Завалили всех контриков, выходим в море!");
+	Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ!");
 }
 
 //=====================================================================================================================================
-// <-- Генератор "Правосудие на продажу".
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ".
 //=====================================================================================================================================

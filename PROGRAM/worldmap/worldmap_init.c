@@ -60,7 +60,7 @@ void wdmInitWorldMap()
 	//=========================================================================
 	//Island BugFix
 	//=========================================================================
-	worldMap.labels.BugFix.type = "Island";       // без этой хрени первые метки идут левым шрифтом или не видны
+	worldMap.labels.BugFix.type = "Island";       // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	worldMap.labels.BugFix.id = "Island BugFix";
 	worldMap.labels.BugFix.locator = "Barbados";//"BugFix";
 	worldMap.labels.BugFix.text = "";//CheckingTranslate(idLngFile,"Antigua");
@@ -151,7 +151,7 @@ void wdmInitWorldMap()
 	worldMap.labels.Hispaniola1.locator = "Hispaniola1";
 	worldMap.labels.Hispaniola1.text = CheckingTranslate(idLngFile,"Hispaniola1");
 
-	/* Для Испаньолы хватит и одной метки на остров
+	/* пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	worldMap.labels.Hispaniola2.type = "Island";
 	worldMap.labels.Hispaniola2.id = "Hispaniola2";
 	worldMap.labels.Hispaniola2.locator = "Hispaniola2";
@@ -228,7 +228,7 @@ void wdmInitWorldMap()
 	worldMap.labels.Tenotchitlan.locator = "Tenotchitlan";
 	worldMap.labels.Tenotchitlan.text = CheckingTranslate(idLngFile,"Tenotchitlan");
 
-	// ugeen --> временно для тестов
+	// ugeen --> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 /*	
 	worldMap.labels.RockIsland.type = "Island";
 	worldMap.labels.RockIsland.id = "RockIsland";
@@ -269,7 +269,7 @@ void wdmInitWorldMap()
 	worldMap.labels.IslaDeCoche.id = "IslaDeCoche";
 	worldMap.labels.IslaDeCoche.locator = "IslaDeCoche";
 	worldMap.labels.IslaDeCoche.text = CheckingTranslate(idLngFile,"IslaDeCoche");
-	// ugeen <-- временно для тестов
+	// ugeen <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 */		
 	//-------  TOWN ----------------------------------------------------
 	
@@ -874,11 +874,11 @@ void wdmInitWorldMap()
 	worldMap.labels.Mayak11.text = CheckingTranslate(idLngFile,"Mayak11");
 
 	//=========================================================================
-	//Внутреняя информация - !!!Осторожно, ни каких проверок!!!
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - !!!пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!!!
 	//=========================================================================
-	//Прараметры влияния ветра на скорость коробля (относительная скорость)
-	worldMap.shipSpeedOppositeWind = 0.3;
-	worldMap.shipSpeedOverWind = 0.8;
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
+	worldMap.shipSpeedOppositeWind = 0.6;
+	worldMap.shipSpeedOverWind = 1.2;
 
 	//Player ship
 	worldMap.playerShipActionRadius = 20.0;
@@ -886,23 +886,23 @@ void wdmInitWorldMap()
 	worldMap.playerShipZ = -300.0;
 	worldMap.playerShipAy = 0.0;
 	//Camera
-	worldMap.wdmCameraAY = 10.0;					//Угол поворота камеры
-	worldMap.wdmCameraY = 130.0;				//Высота камеры
-	worldMap.wdmCameraRotLock = 1;				//Заблокировать вращение камеры
+	worldMap.wdmCameraAY = 10.0;					//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.wdmCameraY = 130.0;				//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.wdmCameraRotLock = 1;				//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	//Enemy ship	
-	worldMap.enemyshipViewDistMin = 60.0;		//Растояние на котором корабль начинает исчезать
-	worldMap.enemyshipViewDistMax = 120.0;		//Растояние на котором корабль исчезает полностью
+	worldMap.enemyshipViewDistMin = 60.0;		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.enemyshipViewDistMax = 120.0;		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     worldMap.enemyshipDistKill = 3000;          // homo 07/10/06
-    //worldMap.enemyshipDistKill = 150.0;			//Расстояние на котором убиваем корабль
-	worldMap.enemyshipBrnDistMin = 80.0;		//Минимальное растояние на котором рожается корабль
-	worldMap.enemyshipBrnDistMax = 130.0;		//Максимальное растояние на котором рожается корабль
+    //worldMap.enemyshipDistKill = 150.0;			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.enemyshipBrnDistMin = 80.0;		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.enemyshipBrnDistMax = 130.0;		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	//storm
-	worldMap.stormViewDistMin = 90.0;			//Растояние на котором шторм начинает исчезать
-	worldMap.stormViewDistMax = 180.0;			//Растояние на котором шторм исчезает полностью
-	worldMap.stormDistKill = 190.0;				//Расстояние на котором убиваем шторм
-	worldMap.stormBrnDistMin = 100.0;			//Минимальное растояние на котором рожается шторм
-	worldMap.stormBrnDistMax = 140.0;			//Максимальное растояние на котором рожается шторм
-	worldMap.stormZone = 90.0;// 120					//Общий радиус действия шторма
+	worldMap.stormViewDistMin = 90.0;			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.stormViewDistMax = 180.0;			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.stormDistKill = 190.0;				//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	worldMap.stormBrnDistMin = 100.0;			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	worldMap.stormBrnDistMax = 140.0;			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	worldMap.stormZone = 90.0;// 120					//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
 	//=========================================================================
 	//Storm interface
@@ -944,9 +944,9 @@ void wdmInitWorldMap()
 	//=========================================================================
 	//Wind (read only)
 	//=========================================================================
-	worldMap.WindX = 0.0;//Нормализованное направление
-	worldMap.WindZ = 1.0;//ветра
-	worldMap.WindF = 0.5;//Нормализованая сила ветра 0..1
+	worldMap.WindX = 0.0;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	worldMap.WindZ = 1.0;//пїЅпїЅпїЅпїЅпїЅ
+	worldMap.WindF = 0.5;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 0..1
 	//=========================================================================
 	//Old internal GUI params
 	//=========================================================================
@@ -961,7 +961,7 @@ void wdmInitWorldMap()
 	InitializationLabels();
 	DeleteAttribute(&worldMap, "labeltype");
 	//==========================================================================
-	// координаты для начала игры, городов на бумажной карте и телепортов
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	worldMap.islands.Barbados.position.x = 946.0062;
 	worldMap.islands.Barbados.position.z = -486.9014;
 	worldMap.islands.Barbados.Bridgetown_town.position.x = 903.6217;
@@ -995,7 +995,7 @@ void wdmInitWorldMap()
 	
 	//worldMap.islands.SentMartin.position.x = 926.4412;
 	//worldMap.islands.SentMartin.position.z = 478.7172;
-	//у меня по другому. Что правильно??
+	//пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ??
 	worldMap.islands.SentMartin.position.x = 921.559;
 	worldMap.islands.SentMartin.position.z = 523.596;
 	worldMap.islands.SentMartin.Marigo_town.position.x = 900.0994;
@@ -1071,7 +1071,7 @@ void wdmInitWorldMap()
 	worldMap.islands.Beliz.Shore9.position.z = -33.7293;
 	worldMap.islands.Beliz.Shore10.position.x = -818.198;
 	worldMap.islands.Beliz.Shore10.position.z = -177.208;
-	//  не сделано -->
+	//  пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
 	worldMap.islands.Jamaica.position.x = -298.0;
 	worldMap.islands.Jamaica.position.z = -128.0;
 	worldMap.islands.Jamaica.PortRoyal_town.position.x = -250.157;
@@ -1293,7 +1293,7 @@ void wdmInitWorldMap()
 	worldMap.islands.IslaDeCoche.position.z = -640.0;
 	worldMap.islands.IslaDeCoche.Shore78.position.x = 640.0;
 	worldMap.islands.IslaDeCoche.Shore78.position.z = -640.0;
-// Не знаю- нужно или пока нет.
+// пїЅпїЅ пїЅпїЅпїЅпїЅ- пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ.
 	//worldMap.islands.Tenotchitlan.position.x = -966.062;
 	//worldMap.islands.Tenotchitlan.position.z = -294.232;
 	//worldMap.islands.Tenotchitlan.Tenotchitlan_town.position.x = -969.194;
@@ -1310,29 +1310,29 @@ void wdmInitWorldMap()
 
 void InitializationLabels()
 {
-	//Переберём все острова
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	aref arrayLabels;
 	makearef(arrayLabels, worldMap.labels);
 	int num = GetAttributesNum(arrayLabels);
 	for(int i = 0; i < num; i++)
 	{
-		//Ссылка на описание метки
+		//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		aref label = GetAttributeN(arrayLabels, i);
-		//Получаем тип метки
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		if(!CheckAttribute(label, "type")) continue;
 		string typeName = label.type;
-		//Параметры типа метки
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		aref typeParams;
 		makearef(typeParams, worldMap.labeltype.(typeName));
-		//Перебераем параметры типа метки и добавляем к метке
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 		int numParams = GetAttributesNum(typeParams);
 		for(int j = 0; j < numParams; j++)
 		{
-			//Имя параметра
+			//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			string param = GetAttributeName(GetAttributeN(typeParams, j));
-			//Проверяем наличие в метке
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			if(CheckAttribute(label, param) != 0) continue;
-			//Копируем параметр
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			label.(param) = typeParams.(param);
 		}
 	}

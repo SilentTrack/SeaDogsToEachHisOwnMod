@@ -58,7 +58,7 @@ void SetNextWeather(string sWeatherID)
 			if (bBettaTestMode)
 			{
 				Trace("iNextWeatherNum = " + iNextWeatherNum);
-				Log_SetStringToLog("ПОГОДА: " + Weathers[i].Lighting);
+				Log_SetStringToLog("пїЅпїЅпїЅпїЅпїЅпїЅ: " + Weathers[i].Lighting);
 			}
 			return;
 		}
@@ -129,25 +129,25 @@ void CreateWeatherEnvironment()
 	if (CheckAttribute(&WeatherParams,"Rain")) { bRain = sti(WeatherParams.Rain); } 
 	if (!CheckAttribute(&WeatherParams, "Rain.ThisDay")) WeatherParams.Rain.ThisDay = false;
 
-    //Время проверяется, т.к. нет ночной погоды для дождя!!! Ее в ГПК дорисовали??
+    //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ.пїЅ. пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!!! пїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ??
 	if (iHour >= 5 && iHour <= 15 && !sti(WeatherParams.Rain.ThisDay))
 	{
-		//шанс.
+		//пїЅпїЅпїЅпїЅ.
 		iChance = 0;
-		//Ха... эта строчка сезон дождей!!!! ифсЁ! Собственно 50/50 шансы, надо будет посмотреть - добавить/убрать
+		//пїЅпїЅ... пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ!!!! пїЅпїЅпїЅ! пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 50/50 пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅ
 		if (iMonth > 4 && iMonth < 9) iChance = 30;
-		//вот эта строчка ОТВЕЧАЕТ ЗА ДОЖДЬ! НЕ ТРОГАТЬ.
+		//пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ! пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 		bRain = ((rand(50) + rand(50)) < (5 + iChance));
 		
 		bRain = bRain && bRains;				// ugeen
 
-        //второй параметр, аттрибут ГГ, ставится через дебаггер, чтобы тестить дождь.
+        //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
 		if (bRain || CheckAttribute(pchar, "questTemp.StartRain"))
 		{
-			//час начала...
+			//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ...
 			WeatherParams.Rain.ThisDay   = true;
 			WeatherParams.Rain.StartTime = iHour + 2 + rand(2);
-			//продолжительность в минутах //1 час мин, иначе небо не успеет.
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ //1 пїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 			WeatherParams.Rain.Duration  = 60 + rand(120);
 
 			iTmp = sti(WeatherParams.Rain.StartTime);
@@ -174,7 +174,7 @@ void CreateWeatherEnvironment()
 		}
 	}
 
-	//принудительно убираем дождь, если время просрочено
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (bRain)
 	{
 		iTmp = sti(WeatherParams.Rain.StartTime) + (sti(WeatherParams.Rain.Duration)/60 + 0.5);
@@ -203,8 +203,8 @@ void CreateWeatherEnvironment()
 		// search weather for hour
 		for (int i=0;i<MAX_WEATHERS;i++)
 		{
-			//navy --> чистим текущую погоду от остатков предыдущего дождя... иначе сохранненный дождь пойдет...
-			//или нужно всю погоду инитить заново... но лучше наверно так.
+			//navy --> пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ... пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ...
+			//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ... пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ.
 			if (!bRain && sti(Weathers[i].Rain.NumDrops) > 0 && sti(Weathers[i].Rain.NumDrops) < 5100) 
 			{
 				Weathers[i].Rain.NumDrops = 0;
@@ -284,7 +284,7 @@ void CreateWeatherEnvironment()
 			{
 				bWhrTornado = 1;
 			}
-			//малый шторм в локациях
+			//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(CheckAttribute(&locations[iCurLocation], "alwaysStorm"))
 			{
 				if (GetTime() >= 6.0 && GetTime() < 10.0) locations[iCurLocation].QuestlockWeather = "Storm01_add";
@@ -292,9 +292,9 @@ void CreateWeatherEnvironment()
 				if (GetTime() >= 18.0 && GetTime() < 22.0) locations[iCurLocation].QuestlockWeather = "Storm03_add";
 				if (GetTime() >= 22.0 && GetTime() <= 23.99) locations[iCurLocation].QuestlockWeather = "Storm04_add";
 				if (GetTime() >= 0 && GetTime() < 6.0) locations[iCurLocation].QuestlockWeather = "Storm04_add";
-				if (CheckAttribute(&locations[iCurLocation], "alwaysStorm.WaveHeigh")) locations[iCurLocation].MaxWaveHeigh = 2.5; //установим уровень воды
+				if (CheckAttribute(&locations[iCurLocation], "alwaysStorm.WaveHeigh")) locations[iCurLocation].MaxWaveHeigh = 2.5; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			}
-			//большой шторм в локациях
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(CheckAttribute(&locations[iCurLocation], "alwaysStorm_2"))
 			{
 				if (GetTime() >= 6.0 && GetTime() < 10.0) locations[iCurLocation].QuestlockWeather = "Storm01";
@@ -302,7 +302,7 @@ void CreateWeatherEnvironment()
 				if (GetTime() >= 18.0 && GetTime() < 22.0) locations[iCurLocation].QuestlockWeather = "Storm03";
 				if (GetTime() >= 22.0 && GetTime() <= 23.99) locations[iCurLocation].QuestlockWeather = "Storm04";
 				if (GetTime() >= 0 && GetTime() < 6.0) locations[iCurLocation].QuestlockWeather = "Storm04";
-				if (CheckAttribute(&locations[iCurLocation], "alwaysStorm_2.WaveHeigh")) locations[iCurLocation].MaxWaveHeigh = 40.0; //установим уровень воды
+				if (CheckAttribute(&locations[iCurLocation], "alwaysStorm_2.WaveHeigh")) locations[iCurLocation].MaxWaveHeigh = 40.0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			}
 			if(CheckAttribute(&locations[iCurLocation], "QuestlockWeather"))
 			{
@@ -313,7 +313,7 @@ void CreateWeatherEnvironment()
 					bQuestlockWeather = true;
 					if (CheckAttribute(&locations[iCurLocation], "lockWeather") && locations[iCurLocation].lockWeather == "Inside")
 					{
-						sunIsShine = false; //выключить солнце
+						sunIsShine = false; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 					}
 				}
 			}
@@ -360,10 +360,10 @@ void CreateWeatherEnvironment()
 	}
 	else
 	{
-		iBlendWeatherNum = -1; // залоченная погода
+		iBlendWeatherNum = -1; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	}
 
-	//ставим погоду, сгенеренную в главном меню
+	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	if (bMainMenu)
 	{
 		iTestWeather = sti(InterfaceStates.mainmenuweather);
@@ -406,7 +406,7 @@ void CreateWeatherEnvironment()
 	}
 	else
 	{
-		Weather.Wind.Angle = frand(PIm2);//  Блин!!! это не градусы!!!!! frand(180.0);//Whr_GetFloat(aCurWeather,"Wind.Angle");
+		Weather.Wind.Angle = frand(PIm2);//  пїЅпїЅпїЅпїЅ!!! пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!!!!! frand(180.0);//Whr_GetFloat(aCurWeather,"Wind.Angle");
 		pchar.wind.angle = Weather.Wind.Angle;
 	}
 
@@ -427,7 +427,7 @@ void CreateWeatherEnvironment()
 		trace("Whr_GetWindAngle() " + Whr_GetWindAngle() + "     ship(y)= " + pchar.Ship.Ang.y);
 	}
 	
-	if(CheckAttribute(pchar,"WorldMap.WindAngle")) //если идем с глобы на локальное море
+	if(CheckAttribute(pchar,"WorldMap.WindAngle")) //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	{
 		trace("WorldMap.WindAngle = " + pchar.WorldMap.WindAngle);
 //		if(stf(pchar.WorldMap.WindAngle) < 0.0) 
@@ -469,24 +469,24 @@ void CreateWeatherEnvironment()
 	if (iBlendWeatherNum < 0 || bQuestlockWeather) 
 	{
 		Weather.Time.time = GetTime();
-		Weather.Time.speed = 350.0; // количество секунд на смену погоды
-		Weather.Time.updatefrequence = 12; // количество обновлений на смену погоды
+		Weather.Time.speed = 350.0; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		Weather.Time.updatefrequence = 12; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	} else {
 		Weather.Time.time = GetTime();
 		Weather.Time.speed = 450;
-		Weather.Time.updatefrequence = 15; // количество обновлений на смену погоды
+		Weather.Time.updatefrequence = 15; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		if (bSeaActive && !bAbordageStarted)
 		{
-			if (iArcadeSails == 1)  // скорости в аркаде больше, время быстрее
+			if (iArcadeSails == 1)  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
-				Weather.Time.speed = 250; // количество секунд на смену погоды
+				Weather.Time.speed = 250; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 				Weather.Time.updatefrequence = 10;
 			}
 		}
 		else
-		{ // суша
+		{ // пїЅпїЅпїЅпїЅ
 			Weather.Time.speed = 350;
-			Weather.Time.updatefrequence = 12; // количество обновлений на смену погоды
+			Weather.Time.updatefrequence = 12; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		}
 	}
 
@@ -503,7 +503,7 @@ void CreateWeatherEnvironment()
 	fWeatherSpeed = stf(Weather.Wind.Speed);
 	
     // boal -->
-	bRain = true; // тут не работает Whr_isRainEnable(); из-за гл меню :(
+	bRain = true; // пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Whr_isRainEnable(); пїЅпїЅ-пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ :(
 	
 	bRain = bRain && bRains;    // ugeen
 	
@@ -518,15 +518,15 @@ void CreateWeatherEnvironment()
 		{
 			bRain = false;
 		}
-		//хз зачем тут закомментированно, если везде проставили аттрибут environment.weather.rain,
-		//то оно и не нужно, но оно НЕ ПРОСТАВЛЕНО
-		//Кто и зачем, вообще, трогал дожди????
+		//пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ environment.weather.rain,
+		//пїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		//пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ????
 		//navy
 		else
 		{
 			if (CheckAttribute(rLoc, "type"))
 			{
-				// тип помещение
+				// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				if(rLoc.type == "residence"
 					|| rLoc.type == "tavern"
 					|| rLoc.type == "house"
@@ -535,19 +535,19 @@ void CreateWeatherEnvironment()
 					|| rLoc.type == "church" 
 					|| rLoc.type == "cave" )
 				{
-					//нет дождя
+					//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 					bRain = false;
 				}
 			}
 		}
 	}
 	
-	//итак, если может быть дождь, создаем окружение
+	//пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (bRain)
 	{
 		WhrCreateRainEnvironment();
 	}
-	//если не может, удаляем.
+	//пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 	else
 	{
 		ClearRainEnvironment();
@@ -589,7 +589,7 @@ void Whr_UpdateWeather()
 {
 	if (!isEntity(&Weather)) { return; }
 
-//слишком много инитов
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 //	WeatherInit();
 
 	CreateWeatherEnvironment();
@@ -599,7 +599,7 @@ void Whr_UpdateWeather()
 void Whr_LoadNextWeather(int nPlus)
 {
 	if (!isEntity(&Weather)) { return; }
-	//WeatherInit();  //слишком много инитов
+	//WeatherInit();  //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
 	iCurWeatherHour = MakeInt(GetHour());
 	iCurWeatherNum = iCurWeatherNum + nPlus;
@@ -621,7 +621,7 @@ void Whr_LoadNextWeather(int nPlus)
 			return;
 		}
 	}
-	Log_TestInfo("ПОГОДА: " + Weathers[iCurWeatherNum].id + " ОСВЕЩЕНИЕ: " + Weathers[iCurWeatherNum].Lighting);
+	Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅ: " + Weathers[iCurWeatherNum].id + " пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + Weathers[iCurWeatherNum].Lighting);
 	Log_TestInfo("Sun: HeightAngle: " + Weathers[iCurWeatherNum].Sun.HeightAngle);
 
 	iNextWeatherNum = iCurWeatherNum;
@@ -724,11 +724,11 @@ void Whr_TimeUpdate()
 	Environment.date.sec = nNewSec;
 	worldMap.date.hour = nNewHour;
 	worldMap.date.min  = nNewMin;
-	if( nNewHour < nOldHour ) // обновление дня переход с 23 в 0
+	if( nNewHour < nOldHour ) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ 23 пїЅ 0
 	{
 		AddDataToCurrent(0,0,1);
 		Weather.Time.time = GetTime();
-	} // to_do время идет в CalcLocalTime
+	} // to_do пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ CalcLocalTime
     
 	if( iBlendWeatherNum < 0 ) {return;}
 	//navy --> Rain
@@ -740,7 +740,7 @@ void Whr_TimeUpdate()
 	iCurWeatherNum = FindWeatherByHour( makeint(fTime) );
 	iBlendWeatherNum = FindBlendWeather( iCurWeatherNum );
 
-	//zagolski. динамическая смена тумана на островах и на море
+	//zagolski. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 	if (bSeaActive)
 	{
 		Island.LightingPath = GetLightingPath();
@@ -751,48 +751,48 @@ void Whr_TimeUpdate()
 	//navy --> Rain
 	bool  bIsRainEnable = Whr_isRainEnable();
 	
-	if (bIsRainEnable) // не для локаций, где низя дождить
+	if (bIsRainEnable) // пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	{
-		//это собственно генератор дождя...
-		//стадии нумеруются с нуля.
+		//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ...
+		//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ.
 		if (bRain)
 		{
-			//по-умолчанию четвертая стадия.
+			//пїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 			iTmp = 3;
 
-			//получаем время прошедшее с начала дождя
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			iTime = GetQuestPastMinutesParam("Rain.Duration");
-			//если времени прошло больше чем длительность, убираем дождь.
+			//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
 			if (iTime > sti(WeatherParams.Rain.Duration))
 			{
 				iTmp = 3;
 				bRain = false;
 			}
-			//третья стадия.
+			//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 			if (iTime < (4*sti(WeatherParams.Rain.Duration)/5))
 			{
 				iTmp = 2;
 			}
-			//вторая стадия.
+			//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 			if (iTime < (2*sti(WeatherParams.Rain.Duration)/3))
 			{
 				iTmp = 1;
 			}
-			//первая стадия.
+			//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 			if (iTime < (sti(WeatherParams.Rain.Duration)/3))
 			{
 				iTmp = 0;
 			}
 			Log_TestInfo("Is Raining: " + iTime + " minutes, stage: " + iTmp);
-			//в зависимости от заданной стадия моделируем дождь.
+			//пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
 			switch (iTmp)
 			{
 				case 0:
-					//ноль
+					//пїЅпїЅпїЅпїЅ
 					WeatherParams.Rain.Sound = true;
 					break;
 				case 1:
-					//следующая стадия, начало мелкого дождя...
+					//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ...
 					if (rand(100) < 40)
 					{
 						Log_TestInfo("Starting the Lightning...");
@@ -805,17 +805,17 @@ void Whr_TimeUpdate()
 					}
 					break;
 				case 2:
-					//3 стадия...
+					//3 пїЅпїЅпїЅпїЅпїЅпїЅ...
 					break;
 				case 3:
-					//заканчиваем...
+					//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...
 					if (CheckAttribute(&WeatherParams, "Rain.Sound") && sti(WeatherParams.Rain.Sound))
 					{
 						WeatherParams.Rain = false;
 						WeatherParams.Rain.Sound = false;
 						Whr_SetRainSound(false, sti(Weathers[iCurWeatherNum].Night));
 						Weathers[iCurWeatherNum].Lightning.Enable = false;
-						if (nNewHour > 5 && nNewHour < 20) //navy -- радуга по ночам. 5.03.07
+						if (nNewHour > 5 && nNewHour < 20) //navy -- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. 5.03.07
 						{
 							Weathers[iCurWeatherNum].Rainbow.Enable = true;
 						}
@@ -861,13 +861,13 @@ void Whr_TimeUpdate()
 				Weathers[iBlendWeatherNum].Sun.Overflow.Enable = false;
 			}
 		}
-		//начало дождя... если генератор не запущен...
+		//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ... пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ...
 		else
 		{
-			//начинаем...
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...
 			if (CheckAttribute(&WeatherParams, "Rain.ThisDay") && sti(WeatherParams.Rain.ThisDay) && sti(WeatherParams.Rain.StartTime) <= nOldHour)
 			{
-				//интенсивность.
+				//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 				Weathers[iBlendWeatherNum].Rain.NumDrops = 2000 + rand(3000);
 				Weathers[iBlendWeatherNum].Rain.DropLength = 2 + rand(10);
 				Weathers[iBlendWeatherNum].Rain.Color = argb(0,23,23,23);
@@ -892,11 +892,11 @@ void Whr_TimeUpdate()
 				Weathers[iBlendWeatherNum].Sun.Glow.Enable = false;
 				Weathers[iBlendWeatherNum].Sun.Overflow.Enable = false;
 
-				//сохраняем время начала дождя.
+				//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
 				SaveCurrentQuestDateParam("Rain.Duration");
-				//флаг "дождь"
+				//пїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅ"
 				WeatherParams.Rain = true;
-				//звук
+				//пїЅпїЅпїЅпїЅ
 				Whr_SetRainSound(true, sti(Weathers[iCurWeatherNum].Night));
 				Log_TestInfo("Rain Strated. Duration: " + WeatherParams.Rain.Duration + " minutes");
 			}
@@ -914,7 +914,7 @@ void Whr_TimeUpdate()
 	Weather.isDone = "";
 
 	//update rain: rain drops, rain colors, rain size, rainbow
-	//navy -- попрбуем такую проверку, есть подозрение, что это оно. 5.03.07
+	//navy -- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ. 5.03.07
 	if (bIsRainEnable) 
 	{
 		FillRainData(iCurWeatherNum, iBlendWeatherNum);
@@ -943,21 +943,26 @@ void Whr_UpdateWeatherHour()
 	Astronomy.TimeUpdate = 1;
 
 	if( Whr_IsDay() != bOldIsDay )
-	{ // меняем источники освещения
+	{ // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		Whr_ChangeDayNight();
 		Event("eChangeDayNight");
  	}
  	if (bSeaActive && !bAbordageStarted)
 	{
-        Whr_WindChange(); // диамическая смена ветра boal
+        Whr_WindChange(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ boal
 		i = FindIsland(pchar.location)
         if ( i != -1)
         {
 			if (stf(Sea.MaxSeaHeight) != SetMaxSeaHeight(i))
 			{
-	 			WhrCreateSeaEnvironment(); // boal смена волн на лету
+	 			WhrCreateSeaEnvironment(); // boal пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 	 		}
  		}
+		
+		// player gets experience for sailing
+ 		// about 2% at beginner difficulty, 1% at normal, then 0.6%, 0.4%, 0.286%
+ 		// MOD_EXP_RATE = 15, 30, 50, 75, 105
+		AddCharacterExpToSkill(pchar, "Sailing", stf(pchar.skill.sailing)/22.66667);
  	}
 }
 
@@ -1025,7 +1030,7 @@ int FindWeatherByHour(int nHour)
 
 int FindBlendWeather(int iWeatherNum)
 {
-	// чтоб вырубить return -1;
+	// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ return -1;
 	if( iWeatherNum<0 || iWeatherNum>=MAX_WEATHERS ) {return -1;}
 
 	if( !CheckAttribute(&Weathers[iWeatherNum], "hour") ) {return -1;}
@@ -1145,15 +1150,15 @@ int FindWeather(string sWeatherID)
 	return -1;
 }
 
-//navy --> Rain вернул
+//navy --> Rain пїЅпїЅпїЅпїЅпїЅпїЅ
 void Whr_SetRainSound(bool _set, bool _isNight)
 {
 //	return;
-	// пока закрыл, тк работает метод CalcLocalTime, нужно понять где лучше и оставть один
+	// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ CalcLocalTime, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 
 	string scheme = "land";
-	//ищем локацию ГГ, три схемы: land, sea, town
-	//можно и больше...
+	//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ: land, sea, town
+	//пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ...
 	if (!bSeaActive || bAbordageStarted)
 	{
 		if (IsEntity(loadedLocation) && CheckAttribute(loadedLocation, "type"))
@@ -1177,7 +1182,7 @@ void Whr_SetRainSound(bool _set, bool _isNight)
 		scheme = "sea";
 	}
 
-	//проверка - день/ночь
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅ
 	if (_isNight)
     {
 		scheme = scheme+"_night";
@@ -1187,7 +1192,7 @@ void Whr_SetRainSound(bool _set, bool _isNight)
 		scheme = scheme+"_day";
 	}
 
-	//если устанавливаем звук дождя
+	//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	if (_set)
 	{
 		scheme = scheme + "_rain";
@@ -1235,8 +1240,8 @@ void Whr_WindChange()
 bool Whr_isRainEnable()
 {
 	bool bRain  = true;
-	//ГГ в локации
-    if (CheckAttribute(GetMainCharacter(), "HeroParam") && IsEntity(loadedLocation)) // pchar проверяется для гл меню
+	//пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    if (CheckAttribute(GetMainCharacter(), "HeroParam") && IsEntity(loadedLocation)) // pchar пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 	{
         if (CheckAttribute(loadedLocation, "environment.weather.rain") && !sti(loadedLocation.environment.weather.rain))
 		{
@@ -1246,7 +1251,7 @@ bool Whr_isRainEnable()
 		{
 			if (CheckAttribute(loadedLocation, "type"))
 			{
-				// тип помещение
+				// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				if(loadedLocation.type == "residence"
 					|| loadedLocation.type == "tavern"
 					|| loadedLocation.type == "house"
@@ -1254,16 +1259,16 @@ bool Whr_isRainEnable()
 					|| loadedLocation.type == "shipyard"
 					|| loadedLocation.type == "church" )
 				{
-					//нет дождя
+					//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 					bRain = false;
 				}
 			}
 		}*/
-		//в других можно включать дождь
+		//пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	}
 	else
 	{
-		if (bSeaActive && bAbordageStarted ) // в море не срабатывает bLandInterfaceStart
+		if (bSeaActive && bAbordageStarted ) // пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ bLandInterfaceStart
 		{
 			if (IsEntity(loadedLocation) && CheckAttribute(loadedLocation, "environment.weather.rain") && !sti(loadedLocation.environment.weather.rain))
 			{
@@ -1303,13 +1308,13 @@ bool Whr_isRainEnable()
 		return;
 	}
 	sTemp = GetRandomIslandId();
-	log_testinfo("Штормит регион "+XI_ConvertString(sTemp)+"");
-	// шторм на остров
+	log_testinfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "+XI_ConvertString(sTemp)+"");
+	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	island = &Islands[FindIsland(sTemp)];
 	Island.alwaysStorm = true;
 	Island.storm = true;
 	Island.tornado = true; 
-	// шторм на локации
+	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	for(i=0; i<MAX_LOCATIONS; i++)
 	{	
 		if (CheckAttribute(Locations[i], "islandId") && findsubstr(Locations[i].islandId, sTemp, 0) != -1)

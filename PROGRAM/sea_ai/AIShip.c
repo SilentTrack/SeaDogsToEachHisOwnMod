@@ -75,7 +75,7 @@ void DeleteShipEnvironment()
 {
 	DeleteRiggingEnvironment();
 
-	DelEventHandler(SHIP_CHANGE_CHARGE, "Ship_ChangeChargeEvent");  // нигде не используется???
+	DelEventHandler(SHIP_CHANGE_CHARGE, "Ship_ChangeChargeEvent");  // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ???
 	DelEventHandler(SHIP_DROP_GOOD, "DropGoodsToSea");
 	DelEventHandler(SHIP_HULL_HIT, "Ship_HullHitEvent");
 	DelEventHandler(SHIP_CHECK_RELOAD_ENABLE, "Ship_CheckMainCharacter");
@@ -120,7 +120,7 @@ void ClearAllFire() // boal new
 		SendMessage(&Characters[Ships[i]], "l", MSG_SHIP_SAFE_DELETE);
 	}
 }
-// boal new сбросить всем в море проверку смотрения на флаг.
+// boal new пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ.
 void Sea_ClearCheckFlag() 
 {
     if (bSeaActive)
@@ -131,19 +131,19 @@ void Sea_ClearCheckFlag()
 		{
 			if (!CheckAttribute(&Characters[Ships[i]], "DontCheckFlag"))
 			{
-			    DeleteAttribute(&Characters[Ships[i]], "CheckFlagYet"); // флаг распознования врага
+			    DeleteAttribute(&Characters[Ships[i]], "CheckFlagYet"); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			    DeleteAttribute(&Characters[Ships[i]], "CheckFlagDate");
 			}
 			
 		}
-		// фортам трем
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		for (i=0; i<MAX_COLONIES; i++)
 		{
 			if (CheckAttribute(&colonies[i], "commanderIdx"))
 			{
 				if (!CheckAttribute(&Characters[sti(colonies[i].commanderIdx)], "DontCheckFlag"))
 				{
-					DeleteAttribute(&Characters[sti(colonies[i].commanderIdx)], "CheckFlagYet"); // флаг распознования врага
+					DeleteAttribute(&Characters[sti(colonies[i].commanderIdx)], "CheckFlagYet"); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				    DeleteAttribute(&Characters[sti(colonies[i].commanderIdx)], "CheckFlagDate");
 			    }
 			}
@@ -201,7 +201,7 @@ void CreateShipEnvironment()
 
 	SetEventHandler(SHIP_BRANDER_DETONATE, "Ship_BranderDetonate", 0);
 	SetEventHandler(SHIP_MAST_DAMAGE, "Ship_MastDamage", 0);	
-	SetEventHandler(SHIP_HULL_DAMAGE, "Ship_HullDamage", 0); // ugeen 15.11.10 - обработка событий повреждений отделяемых элементов корпуса
+	SetEventHandler(SHIP_HULL_DAMAGE, "Ship_HullDamage", 0); // ugeen 15.11.10 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	SetEventHandler("eSwitchPerks", "Ship_UpdatePerks", 0);
 	SetEventHandler("frame", "Ship_VicSoundTime", 0);
 	SetEventHandler("Ship_SailsMoveSound", "Ship_SailsMoveSound", 0);
@@ -258,7 +258,7 @@ string Ship_GetGroupID(ref rCharacter)
 // boal 030804 -->
 void Ship_NationAgressivePatent(ref rCharacter)
 {
-	// патент отнимаем всегда, когда палим по другу патента
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     ref rMainCharacter = GetMainCharacter();
 
     if (isMainCharacterPatented())
@@ -267,15 +267,15 @@ void Ship_NationAgressivePatent(ref rCharacter)
         {
         	TakeItemFromCharacter(rMainCharacter, "patent_" + NationShortName(sti(Items[sti(rMainCharacter.EquipedPatentId)].Nation)));
         	ChangeCharacterHunterScore(rMainCharacter, NationShortName(sti(Items[sti(rMainCharacter.EquipedPatentId)].Nation)) + "hunter", 40);
-        	Items[sti(rMainCharacter.EquipedPatentId)].TitulCur = 1; // текущ звание сбросим
-        	Items[sti(rMainCharacter.EquipedPatentId)].TitulCurNext = 0; // счетчик звание сбросим
-        	RemoveCharacterEquip(rMainCharacter, "patent");// Удаляем патент из экипировки
+        	Items[sti(rMainCharacter.EquipedPatentId)].TitulCur = 1; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        	Items[sti(rMainCharacter.EquipedPatentId)].TitulCurNext = 0; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        	RemoveCharacterEquip(rMainCharacter, "patent");// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         	rCharacter.CheckNationBounty = true;
         }
     }
     else
-    {// без патента
-    	if (sti(rCharacter.nation) != PIRATE && !CheckAttribute(rCharacter, "CheckNationBounty"))   // еще не наказывал
+    {// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    	if (sti(rCharacter.nation) != PIRATE && !CheckAttribute(rCharacter, "CheckNationBounty"))   // пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     	{
     		if (GetNationRelation(GetBaseHeroNation(), sti(rCharacter.nation)) != RELATION_ENEMY)
     		{
@@ -285,38 +285,38 @@ void Ship_NationAgressivePatent(ref rCharacter)
     	}
     }
 }
-void Ship_NationAgressive(ref rMainGroupCharacter, ref rCharacter)// ком группы и в кого попали
-{    // используется на суше при атаке города
+void Ship_NationAgressive(ref rMainGroupCharacter, ref rCharacter)// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+{    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     ref rMainCharacter = GetMainCharacter();
     
-    if (CheckAttribute(rCharacter, "Coastal_Captain")) return;  // есть флаг есть, то нет ругани, это таможенник и квестовый
+    if (CheckAttribute(rCharacter, "Coastal_Captain")) return;  // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
-	//--> eddy. квест мэра на пирата
+	//--> eddy. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	if (rCharacter.id == "MQPirate" && sti(rCharacter.nation) != PIRATE)
 	{
 		rCharacter.nation = PIRATE;
-		Ship_FlagRefresh(characterFromId("MQPirate")); //флаг на лету
-		//Ship_SetTaskRunaway(SECONDARY_TASK, sti(rCharacter.index), nMainCharacterIndex); //сваливает
+		Ship_FlagRefresh(characterFromId("MQPirate")); //пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
+		//Ship_SetTaskRunaway(SECONDARY_TASK, sti(rCharacter.index), nMainCharacterIndex); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
       	Pchar.quest.DestroyPirate_PirateIsOut.win_condition.l1 = "ExitFromSea";
 		Pchar.quest.DestroyPirate_PirateIsOut.win_condition = "DestroyPirate_PirateIsOut";
 	}
-	//<-- eddy. квест мэра на пирата
+	//<-- eddy. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	else
 	{
-		if (CheckAttribute(rCharacter, "ShipEnemyDisable") || CheckAttribute(rCharacter, "AlwaysFriend"))  return; // флаг не обижаться на выстрелы
+		if (CheckAttribute(rCharacter, "ShipEnemyDisable") || CheckAttribute(rCharacter, "AlwaysFriend"))  return; // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	    if( sti(rMainCharacter.nation) == sti(rCharacter.nation) && sti(rMainCharacter.nation) != PIRATE)
 	    {
             SetCharacterRelationBoth(sti(rCharacter.index), GetMainCharacterIndex(), RELATION_ENEMY);
             rMainCharacter.nation = PIRATE;
-			DoQuestCheckDelay(NationShortName(PIRATE) + "_flag_rise", 0.1); // применение нац отношений флага
+			DoQuestCheckDelay(NationShortName(PIRATE) + "_flag_rise", 0.1); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	        ChangeCharacterComplexReputation(rMainCharacter,"nobility", -10);
 			ChangeCharacterComplexReputation(rMainCharacter,"authority", -2);
 			ChangeCharacterComplexReputation(rMainCharacter,"fame", 0.5);
 	    }
-	    Ship_NationAgressivePatent(rCharacter); // патент отнимаем всегда, когда палим по другу патента
+	    Ship_NationAgressivePatent(rCharacter); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		
 	    // clear group temporary task status
-		for (int i=0; i<MAX_SHIP_GROUPS; i++) { AIGroups[i].TempTask = false; } // новая хрень к3
+		for (int i=0; i<MAX_SHIP_GROUPS; i++) { AIGroups[i].TempTask = false; } // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ3
 
 	    SetNationRelation2MainCharacter(sti(rMainGroupCharacter.nation), RELATION_ENEMY);
 	    SetCharacterRelationBoth(sti(rMainGroupCharacter.index), GetMainCharacterIndex(), RELATION_ENEMY);
@@ -335,7 +335,7 @@ void Ship_FireAction()
 	aref rMainGroupCharacter = GetEventData();		// commander character for rCharacter
 	int iRelation = GetEventData();
 	
-	if (LAi_IsDead(rCharacter)) return; // fix - нефиг палить в труп!
+	if (LAi_IsDead(rCharacter)) return; // fix - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ!
 	
 	// if companion - decrease reputation
 	if (IsCompanion(rCharacter))
@@ -349,21 +349,21 @@ void Ship_FireAction()
 	}
 	else
 	{
-	    if (CheckAttribute(rCharacter, "ShipEnemyDisable") )  return; // флаг не обижаться на выстрелы
-	    // убрал || CheckAttribute(rCharacter, "AlwaysFriend") тк если по отпущенному торговцу палить, то должен обижаться
+	    if (CheckAttribute(rCharacter, "ShipEnemyDisable") )  return; // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	    // пїЅпїЅпїЅпїЅпїЅ || CheckAttribute(rCharacter, "AlwaysFriend") пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	    DeleteAttribute(rCharacter, "AlwaysFriend");
 	}
 			
 	if (iRelation != RELATION_ENEMY)
 	{
-		Ship_NationAgressive(rMainGroupCharacter, rCharacter);// boal 030804 в один метод
+		Ship_NationAgressive(rMainGroupCharacter, rCharacter);// boal 030804 пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
 		// making whole group as enemy to us
 		if (CheckAttribute(rMainGroupCharacter, "SeaAI.Group.Name"))
 		{
 			Group_SetEnemyToCharacter(rMainGroupCharacter.SeaAI.Group.Name, nMainCharacterIndex);
 		}
-		/* // наследие К3, в ВМЛ только мешает
+		/* // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ3, пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		if (CheckAttribute(&rCharacter, "relation.UseOtherCharacter"))
 		{
 			if (sti(rCharacter.relation.UseOtherCharacter) >= 0)
@@ -374,14 +374,14 @@ void Ship_FireAction()
 	}
 	else
 	{
-	    // патент нужно отнять даже если враг
-    	Ship_NationAgressivePatent(rCharacter);// патент отнимаем всегда, когда палим по другу патента
+	    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+    	Ship_NationAgressivePatent(rCharacter);// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	}
 	DoQuestCheckDelay("NationUpdate", 0.3);
 	//UpdateRelations();
 	RefreshBattleInterface();
 	
-	//eddy. корабли с залоченным таском не менять
+	//eddy. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	if (CheckAttribute(rCharacter, "ShipTaskLock")) return;
 	//eddy
 	int i;
@@ -404,7 +404,7 @@ void Ship_FireAction()
 
 		float fDistance = Ship_GetDistance2D(GetMainCharacter(), rShipCharacter);
 
-		//вообще неясно, для чего это, если ниже все одно атака групп
+		//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		/*if (!sti(rGroup.TempTask) && fDistance < 2000.0)	// if distance < 2 km
 		{
 			switch (sGroupType)
@@ -462,8 +462,8 @@ float Ship_MastDamage()
 		break;
 		case SHIP_MAST_TOUCH_BALL:
 			int iBallOwnerIndex 	= GetEventData();
-			ref	rBallCharacter 		= GetCharacter(iBallOwnerIndex);	// кто пуляет
-			int	iBallType = sti(AIBalls.CurrentBallType);   			// спорно, тк это не ядра, того кто стрелял, а скорее ядра ГГ
+			ref	rBallCharacter 		= GetCharacter(iBallOwnerIndex);	// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			int	iBallType = sti(AIBalls.CurrentBallType);   			// пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ
 			switch (iBallType)
 			{
 				case GOOD_BALLS:
@@ -491,7 +491,7 @@ float Ship_MastDamage()
 	if (fDamage >= 1.0)
 	{
 		Play3DSound("mast_fall", x, y, z);	// if mast fall - play sound
-		rCharacter.Tmp.SpeedRecall = 0; 	// чтоб пересчитался маневр
+		rCharacter.Tmp.SpeedRecall = 0; 	// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		RefreshBattleInterface();
 	}
 	
@@ -504,7 +504,7 @@ float Ship_MastDamage()
 		{
 			if (!IsCompanion(rCharacter) && !CheckAttribute(rCharacter, "Coastal_Captain")) 
 			{
-				Ship_NationAgressive(rCharacter, rCharacter);// boal 030804 в один метод
+				Ship_NationAgressive(rCharacter, rCharacter);// boal 030804 пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				DoQuestCheckDelay("NationUpdate", 0.7);
 			}
 		}		
@@ -515,19 +515,19 @@ float Ship_MastDamage()
 float Ship_HullDamage()
 {
 	int iDamageType = GetEventData();
-	int iHullNum = GetEventData(); // номер ноды в которую прилетело
+	int iHullNum = GetEventData(); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	float x = GetEventData();
 	float y = GetEventData();
 	float z = GetEventData();
 	float fDamage = GetEventData();
-	aref rCharacter = GetEventData(); // в кого прилетело
-	aref aCharacter = GetEventData(); // владелец ядра (от кого прилетело)
-	string HullName = GetEventData(); // имя ноды в которую прилетело
+	aref rCharacter = GetEventData(); // пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	aref aCharacter = GetEventData(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
+	string HullName = GetEventData(); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	
 	switch (iDamageType)
 	{
 		case SHIP_HULL_TOUCH_BALL:
-			int	iBallType = sti(AIBalls.CurrentBallType);   //спорно, тк это не ядра, того кто стрелял, а скорее ядра ГГ
+			int	iBallType = sti(AIBalls.CurrentBallType);   //пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ
 			switch (iBallType)
 			{
 				case GOOD_BALLS:
@@ -554,9 +554,9 @@ float Ship_HullDamage()
 		Play3DSound("cannon_explosion", x, y, z); 	
 		RefreshBattleInterface();
 		
-		if(HasSubStr(HullName, "baller")) // потеряли перо руля
+		if(HasSubStr(HullName, "baller")) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		{
-			rCharacter.Ship.hulls.baller_destroyed = true; // признак поломки руля
+			rCharacter.Ship.hulls.baller_destroyed = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			string sDamagedString = "They damaged a helm of '" + rCharacter.Ship.Name + "', she is out of control now.";
 			Log_SetStringToLog(sDamagedString);
 		}
@@ -582,7 +582,7 @@ void Ship_SetExplosion(ref rCharacter, ref	rShipObject)
 	//{
 		//PostEvent(SHIP_ACTIVATE_FIRE_PLACE, rand(300), "ialsfl", rShipObject, rCharacter, i, "ship_onfire", 3, -1);
 	//}
-	//PostEvent(SHIP_ACTIVATE_FIRE_PLACE, 100, "ialsfl", rShipObject, rCharacter, i, "ship_onfire", 3, -1);  // дает вылет
+	//PostEvent(SHIP_ACTIVATE_FIRE_PLACE, 100, "ialsfl", rShipObject, rCharacter, i, "ship_onfire", 3, -1);  // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	PostEvent(SHIP_BRANDER_DETONATE, 800, "l", sti(rCharacter.index));
     PlaySound("Sea Battles\Vzriv_fort_001.wav");
 	Ship_SetTaskNone(SECONDARY_TASK, sti(rCharacter.index));
@@ -745,7 +745,7 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType, bool
 {
 	ref		rCharacter = GetCharacter(iCharacterIndex);
 
-	DeleteAttribute(rCharacter, "ship.cannons.chance_for_explode"); //to_do у нас не юзается
+	DeleteAttribute(rCharacter, "ship.cannons.chance_for_explode"); //to_do пїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 	aref	arCharacter; makearef(arCharacter, Characters[sti(rCharacter.index)]);
 	
@@ -770,8 +770,8 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType, bool
 		return;
 	}
 	// boal -->
-	// 22.04.05 сброс всех отношений
-    if (!CheckAttribute(rCharacter, "AlwaysEnemy") && !CheckAttribute(rCharacter, "AlwaysFriend")) // у врагов не трем
+	// 22.04.05 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    if (!CheckAttribute(rCharacter, "AlwaysEnemy") && !CheckAttribute(rCharacter, "AlwaysFriend")) // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
     {
     	DelCharacterRelation(iCharacterIndex);
     }
@@ -788,18 +788,18 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType, bool
     }
     DeleteAttribute(rCharacter, "Ship_SetTaskAbordage"); // boal
     DeleteAttribute(rCharacter, "Killer.status"); // boal 09.06.05 SUPER FIX
-    DeleteAttribute(rCharacter, "CheckFlagYet"); // флаг распознования врага
-    DeleteAttribute(rCharacter, "CheckNationBounty"); // Проверка НЗГ за нацию друга базе
-    DeleteAttribute(rCharacter, "ShipCannonChargeType"); // флаг офов, чем пулять постоянно, ставится игроком командами, до след приказа Атака или конца снарядов
+    DeleteAttribute(rCharacter, "CheckFlagYet"); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    DeleteAttribute(rCharacter, "CheckNationBounty"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+    DeleteAttribute(rCharacter, "ShipCannonChargeType"); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     
 	if (CheckAttribute(rCharacter, "DontCheckFlag"))
 	{
 	    rCharacter.CheckFlagYet = true;
 	}
-    rCharacter.TmpSkillRecall = "0"; //boal 25.05.04 оптимизация расчета, когда == 0 считаем скилы
-    rCharacter.Tmp.SpeedRecall = 0; // оптимизация скорости и маневра
-    rCharacter.Tmp.fShipSpeed  = 1; // начальная инициация
-	rCharacter.Tmp.fWatchFort  = rand(15); // оптимизация оглядок на форт
+    rCharacter.TmpSkillRecall = "0"; //boal 25.05.04 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ == 0 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    rCharacter.Tmp.SpeedRecall = 0; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    rCharacter.Tmp.fShipSpeed  = 1; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	rCharacter.Tmp.fWatchFort  = rand(15); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 	rCharacter.Tmp.fWatchFort.Qty = 15;
     // boal <--
 	if (iCharacterIndex >= FANTOM_CHARACTERS)
@@ -810,9 +810,9 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType, bool
         Fantom_SetCannons(rCharacter, sFantomType);
 		Fantom_SetBalls(rCharacter, sFantomType);
 		Fantom_SetGoods(rCharacter, sFantomType);
-		SaveCurrentNpcQuestDateParam(rCharacter, "Add2SeaTime"); //фантомы помнят время входа в море
+		SaveCurrentNpcQuestDateParam(rCharacter, "Add2SeaTime"); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 	}
-    AcceptWindCatcherPerk(rCharacter); // применение перка ловец ветра, тут работает, а не где был в к3 boal 02/08/06
+    AcceptWindCatcherPerk(rCharacter); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅ3 boal 02/08/06
 	//rCharacter.TmpPerks.Turn = false;
 
 	CharacterUpdateShipFromBaseShip(iCharacterIndex);
@@ -833,7 +833,7 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType, bool
 	rCharacter.Tmp.BortsReloaded.Event = false;
 	rCharacter.Tmp.BortsReloaded.cannonl = false;
 	rCharacter.Tmp.BortsReloaded.cannonr = false;
-    rCharacter.BOAL_ReadyCharge = "1"; // в начале всегда заряжен ядрами, пусть и палит ими
+    rCharacter.BOAL_ReadyCharge = "1"; // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
     
 	rCharacter.Features.GeraldSails = true;
 	rCharacter.Ship.LastBallCharacter = -1;
@@ -842,8 +842,8 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType, bool
 	rCharacter.Ship.Speed.y = 0.0;
 	rCharacter.Ship.Speed.x = 0.0;
 	
-	//  убрать это, когда будет в ядре работать
-	rCharacter.Ship.BoxSize.x = 1.0;  // должно считаться в ядре :( не работает
+	//  пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	rCharacter.Ship.BoxSize.x = 1.0;  // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ :( пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	rCharacter.Ship.BoxSize.y = 1.0;
 	rCharacter.Ship.BoxSize.z = 2.0;
 	
@@ -856,10 +856,10 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType, bool
 	ref	rCannon = GetCannonByType(sti(rCharacter.Ship.Cannons.Type));
 	float range = 550;
 	if (CheckAttribute(rCannon, "FireRange")) range = stf(rCannon.FireRange);
-	rCharacter.Ship.SeaAI.Init.AttackDistance = range  / (1.4 + frandSmall(2.0)); // это очень важный параметр, он определяет дистанцию АИ, на которой будет стараться держаться корабль
-	rCharacter.Ship.SeaAI.Init.AttackDistance.qtyTryChangeCannon = 0; //счетчик попыток смены боеприпасов при полном боезапаса, для фикса неубегаек
+	rCharacter.Ship.SeaAI.Init.AttackDistance = range  / (1.4 + frandSmall(2.0)); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	rCharacter.Ship.SeaAI.Init.AttackDistance.qtyTryChangeCannon = 0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	// boal <--
-	rCharacter.Ship.SeaAI.Init.FollowDistance = makefloat(180.0 + rand(120)); // было 300, делаю рандом для разнообразия поведения компаньонов и следования в группе
+	rCharacter.Ship.SeaAI.Init.FollowDistance = makefloat(180.0 + rand(120)); // пїЅпїЅпїЅпїЅ 300, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
 	rCharacter.Ship.Sounds = "";
 
@@ -874,12 +874,12 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType, bool
 	Event("eSwitchPerks", "l", iCharacterIndex);											// Perks
 	//Event(SHIP_UPDATE_PARAMETERS, "lf", iCharacterIndex, stf(rCharacter.Ship.Speed.z));		// Parameters
 	
-	//ugeen --> жесть !! у энкаунтеров не снят атрибут Ship.Sink <-- 3 часа трахался из-за этой ошибки :(  <-- из-за нее некорректно работал мод флагов
+	//ugeen --> пїЅпїЅпїЅпїЅпїЅ !! пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Ship.Sink <-- 3 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ :(  <-- пїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	if(CheckAttribute(rCharacter,"Ship.Sink")) {trace("ShipSink rCharacter.id = " + rCharacter.id); DeleteAttribute(rCharacter,"Ship.Sink");}
 	
 	CreateEntity(&Characters[iCharacterIndex], "Ship");
 	
-    Event(SHIP_UPDATE_PARAMETERS, "lf", iCharacterIndex, stf(rCharacter.Ship.Speed.z));		// Parameters      после создания корабля
+    Event(SHIP_UPDATE_PARAMETERS, "lf", iCharacterIndex, stf(rCharacter.Ship.Speed.z));		// Parameters      пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     		
 	aref arChar, arShip;
 	makearef(arChar, characters[iCharacterIndex]);
@@ -893,18 +893,18 @@ void Ship_Add2Sea(int iCharacterIndex, bool bFromCoast, string sFantomType, bool
 	float ax = 0.0;
 	float az = 0.0;	
 /*	
-	if(SetHeel_XZ(rCharacter,  &ax, &az)) // крен
+	if(SetHeel_XZ(rCharacter,  &ax, &az)) // пїЅпїЅпїЅпїЅ
 	{
 		SendMessage(rCharacter, "lff", MSG_SHIP_SET_HEEL_XZ, ax, az); 
 	}	
 */	
-	// Только для примера - освободить все паруса одного корабля от эффекта надувания
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	//SendMessage(&Sail,"li", MSG_SAIL_FREE_GROUP, &Characters[iCharacterIndex]);
 	
     /* if (!CheckAttribute(rCharacter, "Ship.BoxSize.x"))
 	{
 		trace("No Ship.BoxSize id=" + rCharacter.id);
-		rCharacter.Ship.BoxSize.x = 1.0;  // должно считаться в ядре
+		rCharacter.Ship.BoxSize.x = 1.0;  // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 		rCharacter.Ship.BoxSize.y = 1.0;
 		rCharacter.Ship.BoxSize.z = 2.0;
 	} */
@@ -922,7 +922,7 @@ void Ship_RecreateStaticSounds()
 void Ship_CreateStaticSounds(ref rCharacter)
 {
     if (!CheckAttribute(rCharacter, "Ship.Pos.x")) return; // fix
-	if (GetCharacterShipType(rCharacter) == SHIP_NOTUSED) return; // может уже не быть
+	if (GetCharacterShipType(rCharacter) == SHIP_NOTUSED) return; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 	
     ref refBaseShip = GetRealShip(GetCharacterShipType(rCharacter));
 	// create water sound
@@ -962,7 +962,7 @@ void Ship_PlaySound3DComplex(ref rCharacter, string sSoundID, float fVolume, flo
 
 	float aY = stf(rCharacter.Ship.Ang.y);
 
-    if (!CheckAttribute(rCharacter, "Ship.BoxSize.x")) return; // fix габаритов
+    if (!CheckAttribute(rCharacter, "Ship.BoxSize.x")) return; // fix пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
      
 	float x1 = fX * stf(rCharacter.Ship.BoxSize.x) / 2.0;
 	float z1 = fZ * stf(rCharacter.Ship.BoxSize.z) / 2.0;
@@ -988,7 +988,7 @@ void Ship_OnBortReloaded()
 	string sBort = GetEventData();
 
 	if (!bSeaLoaded || bAbordageStarted) { return; }  // fix
-	// далее по коду была глупость, тк прерывание шло по всем НПС, звуков таких не было вовсе в ресурсах, те мина была в игре. "Сапер boal"
+	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ. "пїЅпїЅпїЅпїЅпїЅ boal"
 	if (sti(aCharacter.index) != nMainCharacterIndex) { return; } // fix
 	/*{
 		if (sBort == "cannonl" || sBort == "cannonr") { Ship_PlaySound3D(aCharacter, "bortreloaded_" + sBort, 1.0);	}
@@ -1016,7 +1016,7 @@ void Ship_BortReloadEvent()
 		if (bLeft && bRight)
 		{
 			//Ship_PlaySound3D(aCharacter, "bortreloaded_all", 1.0);
-			// типа перезарядка двух бортов PlaySound("interface\_GunReady.wav");
+			// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ PlaySound("interface\_GunReady.wav");
 		}
 		else
 		{
@@ -1035,7 +1035,7 @@ void Ship_ClearBortsReloadedEvent(aref aCharacter)
 	aCharacter.Tmp.BortsReloaded.cannonr = false; 
 }
 
-void Ship_ChangeChargeEvent() // нигде не используется???
+void Ship_ChangeChargeEvent() // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ???
 {
 	string	sBallName;
 	
@@ -1060,7 +1060,7 @@ void Ship_ChangeCharge(ref rCharacter, int iNewChargeType)
 	rCharacter.Ship.Cannons.Charge.Type = iNewChargeType;
 
 	Cannon_RecalculateParameters(sti(rCharacter.index));
-	rCharacter.BOAL_ReadyCharge = "1"; // чтоб пока не стрельнул не выпендривал (нужно для приказа компаньону)
+	rCharacter.BOAL_ReadyCharge = "1"; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
 	
 	//fix Ship_PlaySound3D(rCharacter, "reloadstart_" + rGood.name, 1.0);
 
@@ -1083,7 +1083,7 @@ void Ship_SetSurrendered(ref rCharacter)
 	
 	ref rBaseShip = GetRealShip(sti(rCharacter.Ship.Type));
 	rCharacter.surrendered = true;	
-	Ship_FlagRefresh(rCharacter); //флаг на лету
+	Ship_FlagRefresh(rCharacter); //пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 	
 	string sSurrenderString;
 	string sSurrenderShipType = XI_ConvertString(rBaseShip.BaseName);
@@ -1093,7 +1093,7 @@ void Ship_SetSurrendered(ref rCharacter)
 	Ship_SetTaskRunaway(SECONDARY_TASK, sti(rCharacter.index), GetMainCharacterIndex());
 	
 	SetCharacterRelationBoth(sti(rCharacter.index), GetMainCharacterIndex(), RELATION_FRIEND);
-	rCharacter.AlwaysFriend = true; // флаг - не обижаться на выстрелы, абордировать нельзя, можно только выслать шлюпку
+	rCharacter.AlwaysFriend = true; // пїЅпїЅпїЅпїЅ - пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	UpdateRelations();
 	RefreshBattleInterface();
 	DoQuestCheckDelay("NationUpdate", 1.5);
@@ -1111,7 +1111,7 @@ bool Ship_CheckSurrendered(ref echr)
 	
 	if(CheckAttribute(echr,"DontSurrender")) return false;
 	
-	if (sti(echr.Nation) == PIRATE || CheckAttribute(echr, "DontRansackCaptain")) return false; // квестовые и пираты не выбрасывают белый флаг
+	if (sti(echr.Nation) == PIRATE || CheckAttribute(echr, "DontRansackCaptain")) return false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	
 	ref mchr = GetMainCharacter();
 	
@@ -1141,20 +1141,20 @@ bool Ship_CheckSurrendered(ref echr)
 			break;
 		}
 	}
-	float mcrew = stf(GetWeaponCrew(mchr, GetCrewQuantity(mchr))); // честный учет с оружием
+	float mcrew = stf(GetWeaponCrew(mchr, GetCrewQuantity(mchr))); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	float ecrew = stf(GetCrewQuantity(echr));
 	
-	float fRep    = abs(REPUTATION_NEUTRAL - sti(mchr.reputation.nobility)) / 50.0; // приведение к 0..1
-	float emorale = stf(echr.ship.crew.morale) / MORALE_MAX; // 0..1  это рандом
+	float fRep    = abs(REPUTATION_NEUTRAL - sti(mchr.reputation.nobility)) / 50.0; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ 0..1
+	float emorale = stf(echr.ship.crew.morale) / MORALE_MAX; // 0..1  пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	float mmorale = stf(mchr.ship.crew.morale) / MORALE_MAX; // 0..1
 	float mskill  = (GetSummonSkillFromNameToOld(mchr, "Leadership") + GetSummonSkillFromNameToOld(mchr, "Grappling")) / 20.0;  // 0..10
 	float eskill  = (GetCharacterSkillToOld(echr, "Leadership") + GetCharacterSkillToOld(echr, "Defence")) / 20.0;    // 0..10
 	
 	mcrew = mcrew * (mcrew * GetCrewExp(mchr, "Soldiers")) / (GetOptCrewQuantity(mchr) * GetCrewExpRate()); 
-    ecrew = ecrew * (ecrew * GetCrewExp(echr, "Soldiers")) / (GetOptCrewQuantity(echr) * GetCrewExpRate());  // это рандом, а значит случайность
+    ecrew = ecrew * (ecrew * GetCrewExp(echr, "Soldiers")) / (GetOptCrewQuantity(echr) * GetCrewExpRate());  // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	
     mcrew = mcrew *(0.5 + mmorale);
-    ecrew = ecrew *(0.5 + emorale); // рандом в  emorale - она ранд
+    ecrew = ecrew *(0.5 + emorale); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ  emorale - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     
     mcrew = mcrew * (0.2 + mskill)*(0.05 + fRep)*fCrewRate;
     ecrew = ecrew * (0.2 + eskill);
@@ -1165,18 +1165,18 @@ bool Ship_CheckSurrendered(ref echr)
     if (sGroupID != "") eShip = Group_GetLiveCharactersNum(sGroupID);
     else				eShip = 1;
 
-	mcrew = mcrew * (1.0 + mclass / 20.0); // влияние класса минимально, тк есть в экипаже
-    ecrew = ecrew * (1.0 + eclass / 20.0);  // класс также влияет наоборот, дает бонус мелким
+	mcrew = mcrew * (1.0 + mclass / 20.0); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    ecrew = ecrew * (1.0 + eclass / 20.0);  // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     
     mcrew = mcrew * (1.0 + (mShip-1) / 5.0);
     ecrew = ecrew * (1.0 + (eShip-1) / 5.0);
 
     if (mcrew > ecrew)
 	{
-		// проверка на мин HP && SP		
-		if (GetSailPercent(echr) < 25.0 || GetHullPercent(echr) < 25.0) return true; // выбросил белый флаг			
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ HP && SP		
+		if (GetSailPercent(echr) < 25.0 || GetHullPercent(echr) < 25.0) return true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ			
 	}
-	return false; // не сдался
+	return false; // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 }
 
 void Ship_CheckSituation()
@@ -1203,7 +1203,7 @@ void Ship_CheckSituation()
 
 	float	fMinEnemyDistance = stf(rSituation.MinEnemyDistance);
 	float	fDistance;
-	// boal fix AI fMinEnemyDistance - не сбрасывается :( 23.05.05
+	// boal fix AI fMinEnemyDistance - пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ :( 23.05.05
 	if (sti(rCharacter.Ship.LastBallCharacter) != -1 && LAi_IsDead(GetCharacter(sti(rCharacter.Ship.LastBallCharacter))))
 	{
         rCharacter.Ship.LastBallCharacter = -1;
@@ -1216,23 +1216,23 @@ void Ship_CheckSituation()
 	    }
 	    /*if (rCharacter.SeaAI.Task == AITASK_ABORDAGE && rCharacter.SeaAI.Task.Target == "")
 	    {
-	        Ship_SetTaskRunaway(SECONDARY_TASK, sti(rCharacter.index), nMainCharacterIndex);  // это фикс зависшего абордажа
+	        Ship_SetTaskRunaway(SECONDARY_TASK, sti(rCharacter.index), nMainCharacterIndex);  // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	    } */
     }
 	// <--
-	// boal проверка на абордаж не главного героя 27.01.2004 -->
+	// boal пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 27.01.2004 -->
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // check ships for abordage
     if (Ship_AutoAbordage(rCharacter, fMinEnemyDistance)) { return; }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-	// ugeen ->  проверка на возможность выбросить белый флаг
+	// ugeen ->  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	if(!CheckAttribute(rCharacter,"surrendered") && Ship_CheckSurrendered(rCharacter)) Ship_SetSurrendered(rCharacter);
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	// Warship 08.07.09 Запрет спуска парусов
-	if(CheckAttribute(rCharacter, "CanDropSails") && !sti(rCharacter.CanDropSails)) //  && Ship_GetSailState(rCharacter) < 1.0 // Так работает через раз
+	// Warship 08.07.09 пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	if(CheckAttribute(rCharacter, "CanDropSails") && !sti(rCharacter.CanDropSails)) //  && Ship_GetSailState(rCharacter) < 1.0 // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	{
 		Ship_SetSailState(sti(rCharacter.index), 1.0);
 	}
@@ -1243,11 +1243,11 @@ void Ship_CheckSituation()
 	bool bBalls, bKnippels, bBombs, bGrapes;
 	bBalls = true; bKnippels = true; bBombs = true; bGrapes = true;
 	// boal -->
-	if (CheckAttribute(rCharacter, "ShipCannonChargeType")) // офам приказ, чем палить все время
+	if (CheckAttribute(rCharacter, "ShipCannonChargeType")) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	{
 	    if (GetCargoGoods(rCharacter, sti(rCharacter.ShipCannonChargeType))    < iShipCannonsNum)
 	    {
-	        DeleteAttribute(rCharacter, "ShipCannonChargeType"); // следующий проход решит на что менять заряд
+	        DeleteAttribute(rCharacter, "ShipCannonChargeType"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	    }
 	}
 	else
@@ -1275,7 +1275,7 @@ void Ship_CheckSituation()
 	    {
 	        ref rCannon = GetCannonByType(sti(rCharacter.Ship.Cannons.Type));
 		    float range = stf(rCannon.FireRange);
-		    if ((fMinEnemyDistance > (range*0.9)) && bBalls) // из зоны ушли
+		    if ((fMinEnemyDistance > (range*0.9)) && bBalls) // пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	        {
 	           iNewBallType = GOOD_BALLS;
 	           if (iNewBallType != iCurrentBallType)
@@ -1285,8 +1285,8 @@ void Ship_CheckSituation()
 	        }
 	    }
     }
-    // выбор снаряда <--
-    // сбособ второй, модифицированный от к3, но по тестам старый вмл милее и оптимальнее
+    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ <--
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ3, пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	/*if(CheckAttribute(rCharacter, "Ship.Cannons.borts.cannonr.ChargeRatio"))
 	{
 		float fRightChargeRatio = stf(rCharacter.Ship.Cannons.borts.cannonr.ChargeRatio);
@@ -1311,14 +1311,14 @@ void Ship_CheckSituation()
 		}
 		else
 		{
-			// делаем проверку на хрень типа:
-			// корабль сделал выстрел
-			// зарядился
-			// но ситуация изменилась, и он не может достать выстрелом никого
-			// причем эта проверка не позволит персу 
-			// постоянно перезаряжать пушки
-			// ибо при анализе ситуации 
-			// заряд может и не измениться
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ:
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
+			// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(!CheckAttribute(rCharacter, "Sea_AI.cannon.charge.lasttime"))
 			{
 				rCharacter.Sea_AI.cannon.charge.lasttime = 0;
@@ -1350,7 +1350,7 @@ void Ship_CheckSituation()
 			case AITASK_BRANDER:
 				ref rCharacter2Brander = GetCharacter(sti(rCharacter.SeaAI.Task.Target));
 				ref rBaseShip = GetRealShip(sti(rCharacter.Ship.Type));
-				float fBranderDistance = 45.0 + (7.0 - stf(rBaseShip.Class)) * 15.0; // просьба масс
+				float fBranderDistance = 45.0 + (7.0 - stf(rBaseShip.Class)) * 15.0; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 				fDistance = Ship_GetDistance2D(rCharacter, rCharacter2Brander); // boal 21.01.2004
 				if (fBranderDistance > fDistance)
 				{
@@ -1363,14 +1363,14 @@ void Ship_CheckSituation()
 			break;
 			case AITASK_ATTACK:
 				//to_del log
-				//Log_SetStringToLog("Дистанция: " + Ship_GetDistance2D(rCharacter, &characters[sti(rCharacter.SeaAI.Task.Target)]) + "   Атаки: " + rCharacter.Ship.SeaAI.Init.AttackDistance);
-				//-->> если есть цель для Атаки, то оптимизируем оптимальное расстояние для стрельбы	
-				//только при полном боекомплекте на первом такте ожидания
+				//Log_SetStringToLog("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + Ship_GetDistance2D(rCharacter, &characters[sti(rCharacter.SeaAI.Task.Target)]) + "   пїЅпїЅпїЅпїЅпїЅ: " + rCharacter.Ship.SeaAI.Init.AttackDistance);
+				//-->> пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ	
+				//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				if (CheckAttribute(rCharacter, "Sea_AI.cannon.charge.lasttime") && sti(rCharacter.Sea_AI.cannon.charge.lasttime) == 1) 
 				{
 					if (sti(rCharacter.Ship.SeaAI.Init.AttackDistance.qtyTryChangeCannon) == 2 || sti(rCharacter.Ship.SeaAI.Init.AttackDistance.qtyTryChangeCannon) == 5)
 					{
-						rCharacter.Ship.SeaAI.Init.AttackDistance = 50; //отрезаем неубегаек
+						rCharacter.Ship.SeaAI.Init.AttackDistance = 50; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 						Ship_SetTaskAttack(SECONDARY_TASK, sti(rCharacter.index), sti(rCharacter.SeaAI.Task.Target));
 					}
 					else
@@ -1384,11 +1384,11 @@ void Ship_CheckSituation()
 					}
 				}
 			break;
-            // абордаж сам отработает
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		}
 	}
-	// boal AI компа -->
-    if (!bIsCompanion) //fix 171204 boal Не нужно наших с толку сбивать
+	// boal AI пїЅпїЅпїЅпїЅпїЅ -->
+    if (!bIsCompanion) //fix 171204 boal пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     {
         string sGroupID = Ship_GetGroupID(rCharacter);
         
@@ -1401,7 +1401,7 @@ void Ship_CheckSituation()
 				return;
 			}
 		}
-		if (GetNationRelation2MainCharacter(sti(rCharacter.nation)) == RELATION_ENEMY) // враг Гл героя
+		if (GetNationRelation2MainCharacter(sti(rCharacter.nation)) == RELATION_ENEMY) // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	    {
             if (CheckAttribute(rCharacter, "AlwaysFriend"))
 	        {
@@ -1409,18 +1409,18 @@ void Ship_CheckSituation()
 	        }
 	        else
 	        {
-				//--> eddy. анализим форт. проверяем наличие форта, враждебность и залоченный таск
+				//--> eddy. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 				if (CheckAttribute(rCharacter, "WatchFort") && bIsFortAtIsland && GetRelation(sti(rCharacter.index), iFortCommander) == RELATION_ENEMY && !CheckAttribute(rCharacter, "ShipTaskLock"))
 				{
 					if (sti(rCharacter.Tmp.fWatchFort) >= sti(rCharacter.Tmp.fWatchFort.Qty))
 					{					
-						rCharacter.Tmp.fWatchFort = 0; //сброс счетчика оптимизации
-						//проверяем расстояние до форта и наличие флага 'следить за фортом'
+						rCharacter.Tmp.fWatchFort = 0; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+						//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ'
 						if (GetDistance2D(stf(rCharacter.Ship.Pos.x), stf(rCharacter.Ship.Pos.z), fFort_x, fFort_z) < 1000)
 						{
 							Ship_SetTaskRunaway(SECONDARY_TASK, sti(rCharacter.index), iFortCommander);
-							rCharacter.Tmp.fWatchFort.Qty = 200; //не лочим таск, но увеличиваем паузу срабатывания
-							//Log_SetStringToLog("Я ("+rCharacter.id+") ухожу от форта."); 
+							rCharacter.Tmp.fWatchFort.Qty = 200; //пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+							//Log_SetStringToLog("пїЅ ("+rCharacter.id+") пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ."); 
 						}
 					}
 					else
@@ -1428,8 +1428,8 @@ void Ship_CheckSituation()
 						rCharacter.Tmp.fWatchFort = sti(rCharacter.Tmp.fWatchFort) + 1;
 					}
 				}
-				//<-- анализим форт
-				if (!CheckAttribute(rCharacter, "SinkTenPercent")) // это не ЧЖ и не идущие на абордаж пираты
+				//<-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+				if (!CheckAttribute(rCharacter, "SinkTenPercent")) // пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	            {
 					int   SailsPercent    = sti(rCharacter.Ship.SP);
 			        float HPPercent       = GetHullPercent(rCharacter);
@@ -1444,14 +1444,14 @@ void Ship_CheckSituation()
 				        UpdateRelations();
 				        DoQuestCheckDelay("NationUpdate", 0.9);
 			        }
-                    if (sti(rCharacter.Ship.LastBallCharacter) != -1 && !CheckAttribute(rCharacter, "Ship_SetTaskAbordage") && !CheckAttribute(rCharacter, "ShipTaskLock")) // нет приказа на абордаж
+                    if (sti(rCharacter.Ship.LastBallCharacter) != -1 && !CheckAttribute(rCharacter, "Ship_SetTaskAbordage") && !CheckAttribute(rCharacter, "ShipTaskLock")) // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                     {
 						if (!CheckAttribute(rCharacter, "SeaAI.Task") || sti(rCharacter.SeaAI.Task) == AITASK_NONE)
 				        {
-							//кэп без таска, такое маловероятно. но тем не менее...
+							//пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ...
 							if (CheckAttribute(rCharacter, "AnalizeShips"))
 							{									
-								//проверим, стоит ли атаковать
+								//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 								if (stf(rCharacter.ship.hp) < (stf(characters[sti(rCharacter.Ship.LastBallCharacter)].ship.hp) / 2))
 								{
 									Ship_SetTaskRunaway(SECONDARY_TASK, sti(rCharacter.index), sti(rCharacter.Ship.LastBallCharacter));
@@ -1462,18 +1462,18 @@ void Ship_CheckSituation()
 								}							
 							}
 							else
-							{	//кэп без атрибута проверки кораблей - всегда в атаке
+							{	//пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 								Ship_SetTaskAttack(SECONDARY_TASK, sti(rCharacter.index), sti(rCharacter.Ship.LastBallCharacter));
 							}									        
 						}
 				        else
 				        {
-							if ((SailsPercent > 50) && (HPPercent > 30) && sti(rCharacter.SeaAI.Task) != AITASK_RUNAWAY) // не убегает уже
+							if ((SailsPercent > 50) && (HPPercent > 30) && sti(rCharacter.SeaAI.Task) != AITASK_RUNAWAY) // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 					        {
-								//корабль в хорошем состоянии, таск не ранэвей. здесь тоже проверим при наличии атрибута анализа кораблей
+								//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 								if (CheckAttribute(rCharacter, "AnalizeShips"))
 								{									
-									// Warship fix Должно быть здесь
+									// Warship fix пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 										iCharactersNum1 =  Group_GetLiveCharactersNum(rCharacter.SeaAI.Group.Name);
 										iCharactersNum2 =  Group_GetLiveCharactersNum(characters[sti(rCharacter.Ship.LastBallCharacter)].SeaAI.Group.Name);	
 									
@@ -1489,7 +1489,7 @@ void Ship_CheckSituation()
 										}
 									}
 									else
-									{	//если есть шанс победить, то проверяем еще и количественное соотношение групп. не лезть на крупные эскадры
+									{	//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 										if((iCharactersNum2 / iCharactersNum1) >= 2.0 && sti(RealShips[sti(rCharacter.ship.type)].Class) > sti(RealShips[sti(characters[sti(rCharacter.Ship.LastBallCharacter)].ship.type)].Class))
 										{
 											Ship_SetTaskRunaway(SECONDARY_TASK, sti(rCharacter.index), sti(rCharacter.Ship.LastBallCharacter));
@@ -1501,38 +1501,38 @@ void Ship_CheckSituation()
 									}
 								}
 								else
-								{	//кэп без атрибута проверки кораблей - всегда в атаке
+								{	//пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 									Ship_SetTaskAttack(SECONDARY_TASK, sti(rCharacter.index), sti(rCharacter.Ship.LastBallCharacter));
 								}
 					        }  
 					        else
 					        {
-						        // смертники!!!
+						        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!!!
 						        if (HPPercent < 15)
 						        {
-						            if (rand(20) == 1)// очень часто плохо - убивает все вокруг
+						            if (rand(20) == 1)// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 						            {
 						                Ship_SetTaskBrander(SECONDARY_TASK, sti(rCharacter.index), sti(rCharacter.Ship.LastBallCharacter));
 						            }
 						        }
 						        else
 						        {
-						        	if ((HPPercent < 30) || (CrewQuantity <= (2*MinCrewQuantity)))// убрано, по тестам Дира || SailsPercent < 35)
+						        	if ((HPPercent < 30) || (CrewQuantity <= (2*MinCrewQuantity)))// пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ || SailsPercent < 35)
 							        {
 							            Ship_SetTaskRunaway(SECONDARY_TASK, sti(rCharacter.index), sti(rCharacter.Ship.LastBallCharacter));
 							        }
 									else
-									{	//eddy. здесь смотрим Runaway. проверяем атрибут анализа шипов и анализим, стоит ли атаковать
+									{	//eddy. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Runaway. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 										if (CheckAttribute(rCharacter, "AnalizeShips") && stf(rCharacter.ship.hp) > (stf(characters[sti(rCharacter.Ship.LastBallCharacter)].ship.hp) / 2))
 										{
-											//может только что ушел от форта? 
+											//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ? 
 											if (sti(rCharacter.Tmp.fWatchFort.Qty) == 200)
 											{
-												//тогда Runaway меняем за один такт до проверки форта
+												//пїЅпїЅпїЅпїЅпїЅ Runaway пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 												if (sti(rCharacter.Tmp.fWatchFort) >= 199)
 												{
 													if (sti(rCharacter.Ship.LastBallCharacter) == iFortCommander)
-													{	//только не на форткоммандера, комикадзе не делаем
+													{	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 														Ship_SetTaskAttack(SECONDARY_TASK, sti(rCharacter.index), GetMainCharacterIndex());
 													}
 													else
@@ -1542,9 +1542,9 @@ void Ship_CheckSituation()
 												}
 											}
 											else
-											{	//форт тут ни при чем
+											{	//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ
 												if (sti(rCharacter.Ship.LastBallCharacter) == iFortCommander)
-												{	//только не на форткоммандера, комикадзе не делаем
+												{	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 													Ship_SetTaskAttack(SECONDARY_TASK, sti(rCharacter.index), GetMainCharacterIndex());
 												}
 												else
@@ -1569,14 +1569,14 @@ void Ship_CheckSituation()
 			        }
 			        else
 			        {   
-						// если плывет мимо и нет rCharacter.Ship.LastBallCharacter (никто по нему не стрелял)
+						// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ rCharacter.Ship.LastBallCharacter (пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
                         if (!CheckAttribute(rCharacter, "ShipTaskLock"))
 						{
 				            if (!CheckAttribute(rCharacter, "SeaAI.Task.Target") || sti(rCharacter.SeaAI.Task.Target) == -1)
 					        {
 								if (CheckAttribute(rCharacter, "SeaAI.Task") && sti(rCharacter.SeaAI.Task) != AITASK_RUNAWAY)
 								{
-									//праздношатающийся кэп, проверяем атрибут анализа шипов. если атрибут есть и противник крут - валим.
+									//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ.
 									if (CheckAttribute(rCharacter, "AnalizeShips") && stf(rCharacter.ship.hp) < (stf(pchar.ship.hp) / 2))
 							        {									
 										iCharactersNum1 =  Group_GetLiveCharactersNum(rCharacter.SeaAI.Group.Name);
@@ -1591,7 +1591,7 @@ void Ship_CheckSituation()
 										}		
 									}
 									else
-									{	//если есть шанс победить - атакуем
+									{	//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 										Ship_SetTaskAttack(SECONDARY_TASK, sti(rCharacter.index), GetMainCharacterIndex());
 										{
 											Ship_SetTaskRunaway(SECONDARY_TASK, sti(rCharacter.index), GetMainCharacterIndex());
@@ -1603,7 +1603,7 @@ void Ship_CheckSituation()
 									}
 								}
 								else
-								{	//eddy. а то ранэвей у нас как залоченный таск
+								{	//eddy. пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 						        	if (CheckAttribute(rCharacter, "AnalizeShips") && (HPPercent > 60) && (SailsPercent > 70) && stf(rCharacter.ship.hp) > (stf(pchar.ship.hp) / 2))
 							        {
 							            Ship_SetTaskAttack(SECONDARY_TASK, sti(rCharacter.index), GetMainCharacterIndex());
@@ -1615,10 +1615,10 @@ void Ship_CheckSituation()
 		        }
 		        else
 		        {
-					// --> Калеуче
+					// --> пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					if (findsubstr(rCharacter.id, "Caleuche" , 0) != -1)
 					{	
-						if (rCharacter.id == "Caleuche_seacap") // у Доминики
+						if (rCharacter.id == "Caleuche_seacap") // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 						{
 							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 500)
 							{
@@ -1626,10 +1626,10 @@ void Ship_CheckSituation()
 							}
 							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 150)
 							{
-								Caleuche_GhostshipBoarding(); // активизация квестового абордажа
+								Caleuche_GhostshipBoarding(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 							}
 						}
-						else // на карте
+						else // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 						{
 							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 900)
 							{
@@ -1641,7 +1641,7 @@ void Ship_CheckSituation()
 							}
 							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 150)
 							{
-								Caleuche_MapGhostshipBoarding(); // активизация квестового абордажа
+								Caleuche_MapGhostshipBoarding(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 							}
 						}
 					}
@@ -1653,7 +1653,7 @@ void Ship_CheckSituation()
 							{
 								PlaySound("interface\important_item.wav");
 								int SmallPearlQty,BigPearlQty;
-								if (CheckAttribute(rCharacter, "JewelryGulf")) // Addon 2016-1 Jason пиратская линейка
+								if (CheckAttribute(rCharacter, "JewelryGulf")) // Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 								{
 									SmallPearlQty = rand(25) + 20;
 									BigPearlQty = rand(20) + 15;
@@ -1668,10 +1668,10 @@ void Ship_CheckSituation()
 									BigPearlQty = rand(150) + 50;
 									TakeNItems(pchar, "jewelry53", SmallPearlQty);
 									TakeNItems(pchar, "jewelry52", BigPearlQty);
-									Log_SetStringToLog("Ловцы жемчуга на тартане " + rCharacter.ship.name + " отдали вам " + SmallPearlQty + " малых и " + BigPearlQty + " больших жемчужин.");
+									Log_SetStringToLog("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + rCharacter.ship.name + " пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ " + SmallPearlQty + " пїЅпїЅпїЅпїЅпїЅ пїЅ " + BigPearlQty + " пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
 								}
-								rCharacter.PearlTartane = false; //уже ограбили
-								pchar.questTemp.GrabbingTartane = "success"; //флаг успешное нападение
+								rCharacter.PearlTartane = false; //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+								pchar.questTemp.GrabbingTartane = "success"; //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 							}
 						}
 						else
@@ -1680,7 +1680,7 @@ void Ship_CheckSituation()
 							{
 								Ship_SetTaskAttack(SECONDARY_TASK, sti(rCharacter.index), GetMainCharacterIndex());
 							}
-							// Addon-2016-1 Jason, пиратская линейка
+							// Addon-2016-1 Jason, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 							if (rCharacter.id == "Losada_Seacap_1")
 							{
 								if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) > 3000 && CheckAttribute(pchar, "questTemp.Mtraxx.LosadaEscape")) Mtraxx_IgnasioOpenMap();		
@@ -1692,8 +1692,8 @@ void Ship_CheckSituation()
 	    }
 	    else
 	    {
-	        // далее насильственное установление враждебности для определенных НПС
-	        // boal 030804 узнал на днях, что можно это все делать оин раз и оно ПОМНИТ!!!  но тогда нужно ИД проверять, тк перекрываем выше
+	        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
+	        // boal 030804 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ!!!  пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	        if (CheckAttribute(rCharacter, "AlwaysEnemy"))
 	        {
 	            SetCharacterRelationBoth(sti(rCharacter.index), GetMainCharacterIndex(), RELATION_ENEMY);
@@ -1707,26 +1707,26 @@ void Ship_CheckSituation()
 		        }
 		        else
 		        {
-					// фикс отношений
-			        if (sti(rCharacter.nation) != PIRATE || bBettaTestMode)//boal 030804 нужно чтоб при тесте флаг с пиратами мирил
+					// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			        if (sti(rCharacter.nation) != PIRATE || bBettaTestMode)//boal 030804 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			        {
 	                    SetCharacterRelationBoth(sti(rCharacter.index), GetMainCharacterIndex(), GetNationRelation2MainCharacter(sti(rCharacter.nation)));
-						// проверка на ложный флаг -->
+						// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ -->
 						if (!CheckAttribute(rCharacter, "CheckFlagYet"))
 						{
 	                        if (!CheckAttribute(rCharacter, "CheckFlagDate") || GetNpcQuestPastDayParam(rCharacter, "CheckFlagDate") > 1)
 	                        {
 								if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < MIN_ENEMY_DISTANCE_TO_DISABLE_MAP_ENTER)
 							    {
-							        rCharacter.CheckFlagYet = true; // все, проверил
+							        rCharacter.CheckFlagYet = true; // пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 							        Ship_CheckFlagEnemy(rCharacter);
 							        SaveCurrentNpcQuestDateParam(rCharacter, "CheckFlagDate");
 							    }
 						    }
 						}
-						// проверка на ложный флаг <--
-						// Jason: корабли проверяют расстояние
-						// --> Таможенный патруль
+						// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ <--
+						// Jason: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+						// --> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 						if (rCharacter.id == "ContraCureerCap")
 						{
 							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 150)
@@ -1744,7 +1744,7 @@ void Ship_CheckSituation()
 								RefreshBattleInterface();
 							}
 						}
-						// --> Полакр Марлин
+						// --> пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 						if (rCharacter.id == "Cap_Marlin")
 						{
 							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 200)
@@ -1756,46 +1756,46 @@ void Ship_CheckSituation()
 								RefreshBattleInterface();
 							}
 						}
-						// --> фрегат Беспощадный
+						// --> пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 						if (rCharacter.id == "Saga_vampire")
 						{
 							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 200)
 							{
-								Saga_CheckVensanEnemyes(); // пытается распознать
+								Saga_CheckVensanEnemyes(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 							}
 							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 25)
 							{
 								if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Bomb")) Saga_HitSeaBomb();
 							}
 						}
-						// --> Джекман, Центурион
+						// --> пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 						if (rCharacter.id == "Jackman")
 						{
 							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 200)
 							{
-								Saga_CheckJackmanFrigate(); // пытается распознать
+								Saga_CheckJackmanFrigate(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 							}
 							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 25)
 							{
 								if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Fugas")) Saga_HitSeaFugas();
 							}
 						}
-						// --> Моллиган, Устрица
+						// --> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 						if (rCharacter.id == "Molligan")
 						{
-							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 500 && CheckAttribute(pchar, "questTemp.Saga.Molligan.enemy")) Saga_MolliganAttack(); // атакует		
+							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 500 && CheckAttribute(pchar, "questTemp.Saga.Molligan.enemy")) Saga_MolliganAttack(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ		
 						}
-						// --> Бейкер, лодка
+						// --> пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ
 						if (rCharacter.id == "Baker_Cap" && CheckAttribute(pchar, "questTemp.Saga.Shadows.Baker"))
 						{
-							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 20) Saga_BakerToCabin(); // принимаем на борт		
+							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 20) Saga_BakerToCabin(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ		
 						}
-						// --> люггер Диего 030712
+						// --> пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 030712
 						if (rCharacter.id == "GOT_camicadze")
 						{
-							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 200) GuardOT_CamicadzeBoom(); // атакует		
+							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 200) GuardOT_CamicadzeBoom(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ		
 						}
-						// --> // Addon-2016 Jason, французские миниквесты (ФМК) Мартиника
+						// --> // Addon-2016 Jason, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 						if (rCharacter.id == "FMQM_Tartane_Cap")
 						{
 							if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) < 500 && !CheckAttribute(rCharacter, "quest.seaattack")) FMQM_TartanaAlarm(); // 		
@@ -1803,22 +1803,22 @@ void Ship_CheckSituation()
 			        }
 			        else
 			        {
-			            SetCharacterRelationBoth(sti(rCharacter.index), GetMainCharacterIndex(), RELATION_ENEMY);//на море пираты нападают всегда
+			            SetCharacterRelationBoth(sti(rCharacter.index), GetMainCharacterIndex(), RELATION_ENEMY);//пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			        }
 		        }
 	        }
-	        // fix на нападение при условии, что нация дружеская, а с НПС мы все равно враждуем <--
+	        // fix пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ <--
 
 	        if (GetRelation(GetMainCharacterIndex(), sti(rCharacter.index)) == RELATION_ENEMY)
 	        {
 	            Group_SetTaskAttack(sGroupID, PLAYER_GROUP);
-	            UpdateRelations(); // перенес от ниже, тк исходим из того, что изначально все друзья все равно
+	            UpdateRelations(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	        }
-	        //UpdateRelations();  // to_do это тонкое место, это тормоз, но рефрешить нужно
+	        //UpdateRelations();  // to_do пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	    }
-	    // AI компа <--
+	    // AI пїЅпїЅпїЅпїЅпїЅ <--
     }
-    /*else // наши компаньоны
+    /*else // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     {
         // boal fix 23.05.05
     	if (rMyCharacter.SystemInfo.NoneOfEnimy == true)
@@ -1827,10 +1827,10 @@ void Ship_CheckSituation()
     	}
         rCharacter.SystemInfo.GlobalMinEnemyDistance    = fMinEnemyDistance;  
     } */
-    // boal фикс выхода на карту
+    // boal пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 }
 
-// проверка флага НПС у ГГ, мож он пират?
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ?
 void Ship_CheckFlagEnemy(ref rCharacter)
 {
 	ref     mChar = GetMainCharacter();
@@ -1840,12 +1840,12 @@ void Ship_CheckFlagEnemy(ref rCharacter)
 	int     i, cn;
 	ref     chref;
 	bool    bViewFlag = false;
-	int     iNationToChange = sti(mChar.nation);  // было
+	int     iNationToChange = sti(mChar.nation);  // пїЅпїЅпїЅпїЅ
 
 	if (sti(rCharacter.nation) == PIRATE) return;
     iCompan = GetCompanionQuantity(mChar);
     iClass  = 6;
-	// поиск мин.  те старшего класса
+	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ.  пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	for (i=0; i<COMPANION_MAX; i++)
 	{
 		cn = GetCompanionIndex(GetMainCharacter(), i);
@@ -1855,9 +1855,9 @@ void Ship_CheckFlagEnemy(ref rCharacter)
             if (GetCharacterShipClass(chref) < iClass) iClass = GetCharacterShipClass(chref);
 		}
 	}
-    if (GetNationRelation(GetBaseHeroNation(), sti(rCharacter.nation)) == RELATION_ENEMY && GetDaysContinueNationLicence(HOLLAND) == -1) // проверка грамот
+    if (GetNationRelation(GetBaseHeroNation(), sti(rCharacter.nation)) == RELATION_ENEMY && GetDaysContinueNationLicence(HOLLAND) == -1) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     {
-        // to_do ch.CheckLicence    = true; // Проверять наличие торговой лицензии при распознании,нужно фортам и сторожевикам
+        // to_do ch.CheckLicence    = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ,пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		iNationToChange = GetBaseHeroNation();
         bViewFlag       = true;
     }
@@ -1870,23 +1870,23 @@ void Ship_CheckFlagEnemy(ref rCharacter)
         }
     }
     if (bViewFlag)
-    {  // смотрим флаг у ГГ и узнаем в нем...
-		if(CheckAttribute(pchar, "questTemp.Guardoftruth") && CheckCharacterItem(pchar, "VerifyPaper") && pchar.location == "cuba1") return; // грамота отца Винсенто
-		if(CheckAttribute(pchar, "questTemp.Guardoftruth.Trinidad") && CheckCharacterItem(pchar, "VerifyPaper") && pchar.location == "Trinidad") return; // грамота отца Винсенто
+    {  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ...
+		if(CheckAttribute(pchar, "questTemp.Guardoftruth") && CheckCharacterItem(pchar, "VerifyPaper") && pchar.location == "cuba1") return; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		if(CheckAttribute(pchar, "questTemp.Guardoftruth.Trinidad") && CheckCharacterItem(pchar, "VerifyPaper") && pchar.location == "Trinidad") return; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 		fSneak  = stf(mChar.TmpSkill.Sneak); // 0.01..1.0
 		int rep = sti(abs(REPUTATION_NEUTRAL - sti(mChar.reputation.nobility)) * 0.75);
 		if(CheckCharacterPerk(mChar, "HT2")) fPerkInfl = 2.0;
 		if ((rand(100) + rand(20) + rand(rep)) > (fPerkInfl*fSneak * 10 * iClass * (6-iCompan) * isEquippedArtefactUse(mChar, "indian_11", 1.0, 1.15)))
 		{
-			/*mChar.nation = iNationToChange;  // to_do ролик флага сделать
-			Ship_FlagRefresh(PChar); //флаг на лету
+			/*mChar.nation = iNationToChange;  // to_do пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			Ship_FlagRefresh(PChar); //пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 	        SetNationToOfficers(iNationToChange);
 	        SetNationRelation2MainCharacter(sti(rCharacter.nation), RELATION_ENEMY);
 	        */
 			Log_Info("You failed to be taken for a friend - "+ NationNamePeople(sti(rCharacter.nation)) + " recognized you as an enemy.");
 			SetCharacterRelationBoth(sti(rCharacter.index), GetMainCharacterIndex(), RELATION_ENEMY);
-			DoQuestCheckDelay(NationShortName(iNationToChange) + "_flag_rise", 0.1); // применение нац отношений флага
+			DoQuestCheckDelay(NationShortName(iNationToChange) + "_flag_rise", 0.1); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			if (sti(pchar.questTemp.stels.sea) != GetDataDay())
 			{
 				AddCharacterExpToSkill(mChar, SKILL_SNEAK, 50);
@@ -1894,7 +1894,7 @@ void Ship_CheckFlagEnemy(ref rCharacter)
 			}
 		}
 		else
-		{ // не узнал
+		{ // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			if (sti(pchar.questTemp.stels.sea) != GetDataDay())
 			{
 				AddCharacterExpToSkill(mChar, SKILL_SNEAK, (iCompan * 200 / iClass));
@@ -1903,7 +1903,7 @@ void Ship_CheckFlagEnemy(ref rCharacter)
 			}
 		}
 	}
-	if(sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_MIRAGE && sti(rCharacter.nation) == ENGLAND && CheckAttribute(pchar, "questTemp.HWIC.Holl"))//Мираж для англичан враг
+	if(sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_MIRAGE && sti(rCharacter.nation) == ENGLAND && CheckAttribute(pchar, "questTemp.HWIC.Holl"))//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	{
 		Log_Info("Englishmen have recognized 'Mirage', they believe that we are their enemies!");
 		SetNationRelation2MainCharacter(ENGLAND, RELATION_ENEMY);
@@ -1912,16 +1912,16 @@ void Ship_CheckFlagEnemy(ref rCharacter)
 		UpdateRelations();
 	    RefreshBattleInterface();
 	}
-	if (LineShips_CheckAndIdentify(sti(rCharacter.nation))) // если пришел на линейнике этой нации
-	{
-		Log_Info("Alarm, "+ NationNamePeople(sti(rCharacter.nation)) + " recognized their ship of the line which you captured from them!");
-		SetNationRelation2MainCharacter(sti(rCharacter.nation), RELATION_ENEMY);
-		LAi_group_ClearAllTargets();
-		DoQuestCheckDelay("NationUpdate", 3.0);
-		UpdateRelations();
-	    RefreshBattleInterface();
-		ChangeCharacterNationReputation(pchar, sti(rCharacter.nation), -3);
-	}
+	// if (LineShips_CheckAndIdentify(sti(rCharacter.nation))) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	// {
+	// 	Log_Info("Alarm, "+ NationNamePeople(sti(rCharacter.nation)) + " recognized their ship of the line which you captured from them!");
+	// 	SetNationRelation2MainCharacter(sti(rCharacter.nation), RELATION_ENEMY);
+	// 	LAi_group_ClearAllTargets();
+	// 	DoQuestCheckDelay("NationUpdate", 3.0);
+	// 	UpdateRelations();
+	//     RefreshBattleInterface();
+	// 	ChangeCharacterNationReputation(pchar, sti(rCharacter.nation), -3);
+	// }
 }
 
 void Ship_ActivateFirePlace()
@@ -1951,7 +1951,7 @@ void Ship_BranderDetonate()
 	aref	arShipObjects[64];
 	int		iBranderNumShips = 1;
 	
-	if(CheckAttribute(rCharacter,"Situation") && rCharacter.situation == "Explosion" ) // ситуация со взрывом
+	if(CheckAttribute(rCharacter,"Situation") && rCharacter.situation == "Explosion" ) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	{
 		fMaxDamage = 1000.0 + MakeFloat(GetCargoGoods(rCharacter, GOOD_POWDER)) * 3;
 		if(GetCargoGoods(rCharacter, GOOD_POWDER) < 300) { fMaxDamage += 400.0; }	
@@ -2014,7 +2014,7 @@ int Ship_FindOtherBallType(ref rCharacter, float fMinEnemyDistance, bool bBalls,
 
 		int iType = -1;
 		float fRangeModifier = 1.0;
-		// оптимизация float fDistance = Ship_GetDistance2D(rCharacter, &characters[enemy]);
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ float fDistance = Ship_GetDistance2D(rCharacter, &characters[enemy]);
 
 		/*if (sti(rCharacter.SeaAI.Task) == AITASK_RUNAWAY)
 		{
@@ -2032,14 +2032,14 @@ int Ship_FindOtherBallType(ref rCharacter, float fMinEnemyDistance, bool bBalls,
 			}
 		}*/
 
-		if ( bBalls) //(fMinEnemyDistance <= range) && //если дистанция больше, то тем более на ядра
+		if ( bBalls) //(fMinEnemyDistance <= range) && //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 		{
 			iType = GOOD_BALLS;
 		}
 
 		if ( (fMinEnemyDistance <= (range * 0.8)) && bKnippels) 
 		{
-			if (sti(characters[enemy].ship.sp) > 30 && ShipSailState(enemy) >= 0.5)  // супер баг акелловцев  ShipSailState - 0 нет паруса 1 боевой 2 - полный
+			if (sti(characters[enemy].ship.sp) > 30 && ShipSailState(enemy) >= 0.5)  // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  ShipSailState - 0 пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅпїЅпїЅ 2 - пїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				iType = GOOD_KNIPPELS;
 			}
@@ -2110,8 +2110,8 @@ void Ship_SailDamage()
 	y = GetEventData();
 	z = GetEventData();
 
-	ref	rBallCharacter 	= GetCharacter(iBallCharacterIndex);	// кто пуляет
-	ref	rOurCharacter 	= GetCharacter(iCharacterIndex);   		// по кому
+	ref	rBallCharacter 	= GetCharacter(iBallCharacterIndex);	// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	ref	rOurCharacter 	= GetCharacter(iCharacterIndex);   		// пїЅпїЅ пїЅпїЅпїЅпїЅ
 	
 //	Log_Info(" Ship_SailDamage : rOurCharacter.id = " + rOurCharacter.id + " rBallCharacter.id = " + rBallCharacter.id);
 	
@@ -2135,7 +2135,7 @@ void Ship_SailDamage()
 	if (sti(rOurCharacter.Ship.LastBallCharacter) == GetMainCharacterIndex() 
 	        && GetNationRelation2MainCharacter(sti(rOurCharacter.nation)) != RELATION_ENEMY)
     {	
-        if (!IsCompanion(rOurCharacter) && !CheckAttribute(rOurCharacter, "Coastal_Captain")) // по своим можно палить таможня пофиг
+        if (!IsCompanion(rOurCharacter) && !CheckAttribute(rOurCharacter, "Coastal_Captain")) // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         {
             Ship_NationAgressive(rOurCharacter, rOurCharacter);
             DoQuestCheckDelay("NationUpdate", 0.7);
@@ -2188,8 +2188,8 @@ void Ship_Ship2ShipCollision()
 	int		iOurCharacterIndex, iEnemyCharacterIndex, iTouchPoint;
 	float	fPower, fSlide, x, y, z;
 	
-	iOurCharacterIndex = GetEventData();   // кого
-	iEnemyCharacterIndex = GetEventData();  // кто
+	iOurCharacterIndex = GetEventData();   // пїЅпїЅпїЅпїЅ
+	iEnemyCharacterIndex = GetEventData();  // пїЅпїЅпїЅ
 	fPower = abs(GetEventData());
 	fSlide = abs(GetEventData());
 	iTouchPoint = GetEventData();
@@ -2202,7 +2202,7 @@ void Ship_Ship2ShipCollision()
 	float fHP = (1.0 - fSlide) * fPower * 10.0;
 	//Trace("Ship->Ship touch: idx = " + iOurCharacterIndex + ", fpower = " + fPower + ", fHP = " + fHP + ", fSlide = " + fSlide);
 	Ship_ApplyHullHitpoints(rOurCharacter, fHP, KILL_BY_TOUCH, iEnemyCharacterIndex);
-	// зашита от потопления тараном -->
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
 	if (iEnemyCharacterIndex == GetMainCharacterIndex() && GetHullPercent(rOurCharacter) <= 14  && !LAi_IsDead(rOurCharacter))
 	{
 		if (!IsCompanion(rOurCharacter) && GetRelation(sti(rOurCharacter.index), GetMainCharacterIndex()) != RELATION_ENEMY)
@@ -2211,20 +2211,20 @@ void Ship_Ship2ShipCollision()
 	    	DoQuestCheckDelay("NationUpdate", 0.9);
     	}
 	}
-	// зашита от потопления тараном <--
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ <--
 
 	if (fPower>1.0) { Play3DSound("coll_ship2ship", x, y, z); }
 }
 
 void Ship_ApplyCrewHitpoints(ref rOurCharacter, float fCrewHP)
-{         // че-то распук метод "неподецки" - переделал 29.07.06 boal
+{         // пїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 29.07.06 boal
 	if (LAi_IsImmortal(rOurCharacter)) 
 	{ 
 		return; 
 	}
 
 	ref rBaseShip = GetRealShip(GetCharacterShipType(rOurCharacter));
-	float fMultiply = 1.0 - (0.75 * stf(rOurCharacter.TmpSkill.Defence)); // было 0.05 - что полная хрень, тк скил 0..1
+	float fMultiply = 1.0 - (0.75 * stf(rOurCharacter.TmpSkill.Defence)); // пїЅпїЅпїЅпїЅ 0.05 - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅ 0..1
 
 	if(CheckOfficersPerk(rOurCharacter, "Doctor2"))
 	{
@@ -2243,12 +2243,12 @@ void Ship_ApplyCrewHitpoints(ref rOurCharacter, float fCrewHP)
 	float fDamage = fCrewHP * fMultiply; 
 
 	float fNewCrewQuantity = stf(rOurCharacter.Ship.Crew.Quantity) - fDamage;
-	float f5Percent = stf(rBaseShip.MinCrew) * 0.25; // boal fix неубиваемые 25% команды- было 0.05;
+	float f5Percent = stf(rBaseShip.MinCrew) * 0.25; // boal fix пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 25% пїЅпїЅпїЅпїЅпїЅпїЅпїЅ- пїЅпїЅпїЅпїЅ 0.05;
 	// boal  check skill -->
 	if (fNewCrewQuantity >= f5Percent && IsCompanion(rOurCharacter))
 	{
        AddCharacterExpToSkill(rOurCharacter, "Defence", makefloat(fCrewHP / 2 + 0.5));
-       ChangeCrewExp(rOurCharacter, "Soldiers",  (fCrewHP / stf(rBaseShip.OptCrew))); // to_do может быть много
+       ChangeCrewExp(rOurCharacter, "Soldiers",  (fCrewHP / stf(rBaseShip.OptCrew))); // to_do пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     }
     // boal <--
 	
@@ -2256,21 +2256,21 @@ void Ship_ApplyCrewHitpoints(ref rOurCharacter, float fCrewHP)
 	if (fNewCrewQuantity < 0.0) { fNewCrewQuantity = 0.0; }
 	
 	if (sti(rOurCharacter.index) == GetMainCharacterIndex() && stf(rBaseShip.MinCrew) > fNewCrewQuantity && stf(rBaseShip.MinCrew) <= stf(rOurCharacter.Ship.Crew.Quantity))
-    {  // переход на мин команду
+    {  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         PlaySound("OBJECTS\SHIPCHARGE\_Damage1.wav");
     }
-	// boal fix утопленников   -->
+	// boal fix пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ   -->
 	if (stf(rOurCharacter.Ship.Crew.Quantity) > fNewCrewQuantity)
-	{   // на случай косяков со знаком fCrewHP
+	{   // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ fCrewHP
 		if (sti(rOurCharacter.index) == GetMainCharacterIndex() || IsCompanion(rOurCharacter))
 		{
 			Statistic_AddValue(GetMainCharacter(), "Sailors_dead", stf(rOurCharacter.Ship.Crew.Quantity) - fNewCrewQuantity);
-			Achievment_SetStat(GetMainCharacter(), 21, makeint(sti(rOurCharacter.Ship.Crew.Quantity) - fNewCrewQuantity));
+			Achievment_SetStat(GetMainCharacter(), 21, makeint(sti(rOurCharacter.Ship.Crew.Quantity) - fNewCrewQuantity) * 10);
 		}
 		rOurCharacter.Ship.Crew.Quantity = fNewCrewQuantity;
 	}
 	if (stf(rOurCharacter.Ship.Crew.Quantity) < 0.0) { rOurCharacter.Ship.Crew.Quantity = 0.0; }
-	// boal fix утопленников   <--
+	// boal fix пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ   <--
 }
 
 void Ship_ApplyHullHitpoints(ref rOurCharacter, float fHP, int iKillStatus, int iKillerCharacterIndex)
@@ -2298,13 +2298,13 @@ void Ship_ApplyHullHitpoints(ref rOurCharacter, float fHP, int iKillStatus, int 
 	if (sti(rOurCharacter.TmpPerks.AdvancedBattleState))		fMinus = 0.25;
 	if (sti(rOurCharacter.TmpPerks.ShipDefenseProfessional))	fMinus = 0.35;
 	
-	if(IsCharacterEquippedArtefact(rOurCharacter, "amulet_8")) fMinus = fMinus * 1.05; // Jason: фикс! Амулет работал в обратную сторону
+	if(IsCharacterEquippedArtefact(rOurCharacter, "amulet_8")) fMinus = fMinus * 1.05; // Jason: пїЅпїЅпїЅпїЅ! пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	
-	if (CheckAttribute(rOurCharacter, "SeaBoss")) fMinus = fPlus + stf(rOurCharacter.SeaBoss); // Addon 2016-1 Jason Пиратская линейка
+	if (CheckAttribute(rOurCharacter, "SeaBoss")) fMinus = fPlus + stf(rOurCharacter.SeaBoss); // Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 	fCurHP = stf(rOurCharacter.Ship.HP) - fHP * (1.0 + fPlus - fMinus);
 	
-	if (CheckAttribute(rOurCharacter, "ShipHideImmortal")) // Addon 2016-1 Jason Пиратская линейка
+	if (CheckAttribute(rOurCharacter, "ShipHideImmortal")) // Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	{
 		if (fCurHP <= sti(rOurCharacter.ShipHideImmortal)) LAi_SetImmortal(rOurCharacter, true);
 	}
@@ -2328,7 +2328,7 @@ void Ship_ApplyHullHitpoints(ref rOurCharacter, float fHP, int iKillStatus, int 
 	}
 	rOurCharacter.Ship.HP = fCurHP;
 	
-	// расчет пенальти в корпус для последующего учета при ремонте
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if(CheckAttribute(RealShips[sti(rOurCharacter.ship.type)],"QuestShip")) fPercent = 1.0;
 	else fPercent = 1.0 + (makefloat(MOD_SKILL_ENEMY_RATE)/4.0);
 	
@@ -2359,7 +2359,7 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 	rDead = GetCharacter(iDeadCharacterIndex);
 	if (!CheckAttribute(rDead, "Ship.Type")) // fix
     {
-        if (MOD_BETTATESTMODE == "On") Log_Info("Error: ShipDead Нет корабля у iDeadCharacterIndex = "+iDeadCharacterIndex);
+        if (MOD_BETTATESTMODE == "On") Log_Info("Error: ShipDead пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ iDeadCharacterIndex = "+iDeadCharacterIndex);
         return;
     }
     bool bDeadCompanion = IsCompanion(rDead);
@@ -2379,8 +2379,8 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 	                ChangeCrewExp(rKillerCharacter, "Sailors", 1);
 	                // boal statistic info 17.12.2003 -->
 	                Statistic_AddValue(rKillerCharacter, "KillShip_" + rBaseShip.Class, 1);
-					Achievment_SetStat(rKillerCharacter, 3, 1);
-					if(sti(rKillerCharacter.nation) == PIRATE) Achievment_SetStat(rKillerCharacter, 50, 1);
+					Achievment_SetStat(rKillerCharacter, 3, 10);
+					if(sti(rKillerCharacter.nation) == PIRATE) Achievment_SetStat(rKillerCharacter, 50, 10);
 	                // boal statistic info 17.12.2003 <--
 			    break;
 			    case KILL_BY_BALL:
@@ -2391,14 +2391,14 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 			        ChangeCrewExp(rKillerCharacter, "Cannoners", 2);
 			        // boal statistic info 17.12.2003 -->
 	                Statistic_AddValue(rKillerCharacter, "KillShip_" + rBaseShip.Class, 1);
-					Achievment_SetStat(rKillerCharacter, 3, 1);
-					if(sti(rKillerCharacter.nation) == PIRATE) Achievment_SetStat(rKillerCharacter, 50, 1);
+					Achievment_SetStat(rKillerCharacter, 3, 10);
+					if(sti(rKillerCharacter.nation) == PIRATE) Achievment_SetStat(rKillerCharacter, 50, 10);
 	                // boal statistic info 17.12.2003 <--
-	                //homo 25/06/07 только враг и 1/4
+	                //homo 25/06/07 пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ 1/4
         			if (rand(4) == 2 && GetRelation(sti(rDead.Index), sti(Pchar.Index))== RELATION_ENEMY)
                     {
-                        //обычный
-                        if(!CheckAttribute(rDead, "DontRansackCaptain") || rDead.DontRansackCaptain == false) AISeaGoods_AddGood(rDead, "enemy_boat", "lo_boat", 1000.0, 1); //homo 25/06/07 спасается на шлюпке
+                        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                        if(!CheckAttribute(rDead, "DontRansackCaptain") || rDead.DontRansackCaptain == false) AISeaGoods_AddGood(rDead, "enemy_boat", "lo_boat", 1000.0, 1); //homo 25/06/07 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
                     }
                     //homo
 			    break;
@@ -2408,7 +2408,7 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 			        AddCharacterExpToSkill(rKillerCharacter, SKILL_FORTUNE, stf(rKillerBaseShip.Class) / stf(rBaseShip.Class) * 10);
 			        AddCharacterExpToSkill(rKillerCharacter, "Defence", stf(rKillerBaseShip.Class) / stf(rBaseShip.Class) * 60);
 			        ChangeCrewExp(rKillerCharacter, "Sailors", 0.5);
-					// в лаи_бординг ChangeCrewExp(rKillerCharacter, "Soldiers", 4);
+					// пїЅ пїЅпїЅпїЅ_пїЅпїЅпїЅпїЅпїЅпїЅпїЅ ChangeCrewExp(rKillerCharacter, "Soldiers", 4);
 			        // boal statistic info 17.12.2003 -->
 	                Statistic_AddValue(rKillerCharacter, "KillAbordShip_" + rBaseShip.Class, 1);
 	                // boal statistic info 17.12.2003 <--
@@ -2419,9 +2419,9 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 		        AddCharacterExpToSkill(rKillerCharacter, SKILL_FORTUNE, stf(rKillerBaseShip.Class) / stf(rBaseShip.Class) * 20);
 		        AddCharacterExpToSkill(rKillerCharacter, "Leadership", stf(rKillerBaseShip.Class) / stf(rBaseShip.Class) * 25);
 
-	            // статистка по нации
+	            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		    	Statistic_AddValue(rKillerCharacter, NationShortName(sti(rDead.nation))+"_KillShip", 1);
-		    	if (rand(8) < 3 && sti(rDead.nation) != PIRATE)  // 30% повышаем награду
+		    	if (rand(8) < 3 && sti(rDead.nation) != PIRATE)  // 30% пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		    	{
 					ChangeCharacterHunterScore(rKillerCharacter, NationShortName(sti(rDead.nation)) + "hunter", 1+rand(1));
 				}
@@ -2509,7 +2509,7 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 		Log_SetStringToLog(sSunkString);
 	}
 
- 	if (rand(10) >= 6) // глупое условие... это все классы :)  && sti(rBaseShip.Class) <= 6)
+ 	if (rand(10) >= 6) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ... пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ :)  && sti(rBaseShip.Class) <= 6)
 	{ 
 		bool bDetonate = false;
 		switch (iKillStatus)
@@ -2519,7 +2519,7 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 			break;
 			/*case KILL_BY_SPY:	
 				bDetonate = true; 
-			break;  */ // идет вылет, если второй раз рекурсию Ship_Detonate делать
+			break;  */ // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Ship_Detonate пїЅпїЅпїЅпїЅпїЅпїЅ
 		}
 		if (bDetonate) 
 		{ 
@@ -2536,7 +2536,7 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 	aSink.Speed.x = 0.017 * (frnd() * 2.0 - 1.0);	// speed sink angle rotate around x
 	aSink.Speed.z = 0.017 * (frnd() * 2.0 - 1.0);	// speed sink angle rotate around z
 */
-	// корабль тонет  - немного добавим драматизьму :-)
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ  - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ :-)
 	aSink.Speed.y = 0.25 + (frnd() * 0.05);	// speed of sink y
 	aSink.Speed.x = 0.021 * (frnd() * 2.0 - 1.0);	// speed sink angle rotate around x
 	aSink.Speed.z = 0.04 * (frnd() * 2.0 - 1.0);	// speed sink angle rotate around z
@@ -2546,7 +2546,7 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 		SeaCameras_SetDieCamera();
 		FadeOutMusic(2);
 		//PlayStereoOGG("music_ship_dead");
-		// убил ЛГ
+		// пїЅпїЅпїЅпїЅ пїЅпїЅ
 		if (iKillerCharacterIndex != -1 && rKillerCharacter.id == "GhostCapt")
 		{
 		    DoQuestCheckDelay("Survive_In_Sea", 9.0);
@@ -2557,10 +2557,10 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 			PostEvent(GAME_OVER_EVENT, 15000);
 		}
 	}
-    // спасем офицеров boal 07/02/05
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ boal 07/02/05
 	else
 	{
-        if (bDeadCompanion && CheckOfficersPerk(rDead, "ShipEscape") && GetRemovable(rDead)) // выживаем
+        if (bDeadCompanion && CheckOfficersPerk(rDead, "ShipEscape") && GetRemovable(rDead)) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         {
             //homo 22/06/07
             AISeaGoods_AddGood(rDead, "boat", "lo_boat", 1000.0, 1);
@@ -2568,7 +2568,7 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
             Log_Info(GetFullName(rDead) + " used a rowboat.");
         }
 	}
-	// спасем офицеров boal 07/02/05
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ boal 07/02/05
 	Play3DSound("ship_sink", fX, fY, fZ);
 
 	// Message to AI
@@ -2591,7 +2591,7 @@ void ShipTaken(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInd
 	bool bCompanion = false;
 	bool bDeadCompanion = IsCompanion(rDead);
 
-    LAi_SetCurHP(rDead, 0.0); // умер
+    LAi_SetCurHP(rDead, 0.0); // пїЅпїЅпїЅпїЅ
 	rDead.Killer.Status = iKillStatus;
 	rDead.Killer.Index = iKillerCharacterIndex;
     if (iKillerCharacterIndex != -1 && !bDeadCompanion)
@@ -2611,11 +2611,11 @@ void ShipTaken(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInd
         // boal statistic info 17.12.2003 -->
         Statistic_AddValue(rKillerCharacter, "AbordShip_" + rBaseShip.Class, 1);
         Statistic_AddValue(rKillerCharacter, NationShortName(sti(rDead.nation))+"_AbordShip", 1);
-		Achievment_SetStat(rKillerCharacter, 2, 1);
+		Achievment_SetStat(rKillerCharacter, 2, 10);
         // boal statistic info 17.12.2003 <--
         
         ChangeCrewExp(rKillerCharacter, "Sailors", 0.5);
-		// в лаи_бординг ChangeCrewExp(rKillerCharacter, "Soldiers", 5); // to_do перенести на форму захвата
+		// пїЅ пїЅпїЅпїЅ_пїЅпїЅпїЅпїЅпїЅпїЅпїЅ ChangeCrewExp(rKillerCharacter, "Soldiers", 5); // to_do пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	}
 	if (iDeadCharacterIndex != GetMainCharacterIndex())
 	{
@@ -2627,12 +2627,12 @@ void ShipTaken(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInd
             Log_SetStringToLog(sSunkShipType + " '" + rDead.Ship.Name + "' " + "was captured!");
         }
 	}
-    if (rand(8) < 3 && !bDeadCompanion && sti(rDead.nation) != PIRATE)  // 30% повышаем награду
+    if (rand(8) < 3 && !bDeadCompanion && sti(rDead.nation) != PIRATE)  // 30% пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     {
         ChangeCharacterHunterScore(rKillerCharacter, NationShortName(sti(rDead.nation)) + "hunter", 1+rand(1));
     }
 }
-// захваченный корабль, отпущен
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 void ShipTakenFree(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterIndex)
 {
 	ref rDead, rKillerCharacter, rMainCharacter, rBaseShip, rKillerBaseShip;
@@ -2642,7 +2642,7 @@ void ShipTakenFree(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacte
 	rBaseShip = GetRealShip(sti(rDead.Ship.Type));
 	rMainCharacter = GetMainCharacter();
 
-    LAi_SetCurHP(rDead, 0.0); // умер
+    LAi_SetCurHP(rDead, 0.0); // пїЅпїЅпїЅпїЅ
 	rDead.Killer.Status = iKillStatus;
 	rDead.Killer.Index = iKillerCharacterIndex;
     if (iKillerCharacterIndex != -1)
@@ -2657,12 +2657,12 @@ void ShipTakenFree(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacte
 		AddCharacterExpToSkill(rKillerCharacter, "Repair", stf(rKillerBaseShip.Class) / stf(rBaseShip.Class) * 10);
 		AddCharacterExpToSkill(rKillerCharacter, "Defence", stf(rKillerBaseShip.Class) / stf(rBaseShip.Class) * 10);
         
-		Statistic_AddValue(rKillerCharacter, "AbordShipFree_" + rBaseShip.Class, 1);  // эту статистику пока нигде не видно to_do
+		Statistic_AddValue(rKillerCharacter, "AbordShipFree_" + rBaseShip.Class, 1);  // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ to_do
         Statistic_AddValue(rKillerCharacter, NationShortName(sti(rDead.nation))+"_AbordShipFree", 1);
-        Statistic_AddValue(rKillerCharacter, "AbordShipFree", 1); // отпущено
+        Statistic_AddValue(rKillerCharacter, "AbordShipFree", 1); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         
         ChangeCrewExp(rKillerCharacter, "Sailors", 0.5);
-		// в лаи_бординг ChangeCrewExp(rKillerCharacter, "Soldiers", 5); // to_do перенести на форму захвата
+		// пїЅ пїЅпїЅпїЅ_пїЅпїЅпїЅпїЅпїЅпїЅпїЅ ChangeCrewExp(rKillerCharacter, "Soldiers", 5); // to_do пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if(!CheckAttribute(rDead,"Situation"))
 		{
 			ChangeCharacterComplexReputation(rKillerCharacter,"nobility", 2); 
@@ -2683,7 +2683,7 @@ void ShipTakenFree(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacte
 			DeleteAttribute(pchar, "GenQuest.Detonation");
 		}
 	}
-    if (rand(20) < 3 && sti(rDead.nation) != PIRATE)  // 14% повышаем награду
+    if (rand(20) < 3 && sti(rDead.nation) != PIRATE)  // 14% пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     {
         ChangeCharacterHunterScore(rKillerCharacter, NationShortName(sti(rDead.nation)) + "hunter", 1+rand(1));
     }
@@ -2697,7 +2697,7 @@ void Ship_PlayVictory(string sSound, int iSoundTime)
 
 	iVicSoundTime = iSoundTime;
 }
-  /// странные методы ??? не было их в ПКМ и все было гут
+  /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ ??? пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 void Ship_VicSoundTime()
 {
 	if (bAbordageStarted || sti(InterfaceStates.Launched)) { return; }
@@ -2727,8 +2727,8 @@ void Ship_HullHitEvent()
 	int		iBallCharacterIndex = GetEventData();
 	int		iOurCharacterIndex = GetEventData();
 
-	ref		rBallCharacter = GetCharacter(iBallCharacterIndex);	// кто пуляет
-	ref		rOurCharacter = GetCharacter(iOurCharacterIndex);   // по кому
+	ref		rBallCharacter = GetCharacter(iBallCharacterIndex);	// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	ref		rOurCharacter = GetCharacter(iOurCharacterIndex);   // пїЅпїЅ пїЅпїЅпїЅпїЅ
 
 	rOurCharacter.Ship.LastBallCharacter = iBallCharacterIndex;
 
@@ -2748,7 +2748,7 @@ void Ship_HullHitEvent()
     bool    isOurCompanion   = IsCompanion(rOurCharacter);
     float   fTmpCannonDamage = 0;
     
-    if (bDead) return; // фикс, не нужно обсчитывать труп
+    if (bDead) return; // пїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	// Cannon damage multiply
 	ref rCannon = GetCannonByType(sti(rBallCharacter.Ship.Cannons.Type));
 	float fCannonDamageMultiply = stf(rCannon.DamageMultiply);
@@ -2861,8 +2861,8 @@ void Ship_HullHitEvent()
 		}
 		//boal 27.09.05 <--
 	}
-    SendMessage(&AISea, "laffff", AI_MESSAGE_CANNONS_BOOM_CHECK, rOurCharacter, fTmpCannonDamage, x, y, z);  // fix перенес с проверкой на труп
-	// boal 290704 раз в минуту проверяем обиду на гл героя, если жухлит через желтый прицел -->
+    SendMessage(&AISea, "laffff", AI_MESSAGE_CANNONS_BOOM_CHECK, rOurCharacter, fTmpCannonDamage, x, y, z);  // fix пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
+	// boal 290704 пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ -->
 	//Log_Info(rOurCharacter.id);
 	
 /*	
@@ -2873,13 +2873,13 @@ void Ship_HullHitEvent()
 	
 	if (sti(rOurCharacter.Ship.LastBallCharacter) == GetMainCharacterIndex() && GetNationRelation2MainCharacter(sti(rOurCharacter.nation)) != RELATION_ENEMY)
     {
-        if (!isOurCompanion && !CheckAttribute(rOurCharacter, "Coastal_Captain")) // по своим можно палить таможня пофиг
+        if (!isOurCompanion && !CheckAttribute(rOurCharacter, "Coastal_Captain")) // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         {
-            Ship_NationAgressive(rOurCharacter, rOurCharacter);// boal 030804 в один метод
+            Ship_NationAgressive(rOurCharacter, rOurCharacter);// boal 030804 пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             DoQuestCheckDelay("NationUpdate", 0.7);
         }
     }
-	// Jason: изъятие лицензии
+	// Jason: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	bool btrade = (sti(rOurCharacter.Ship.LastBallCharacter) == GetMainCharacterIndex()) && (CheckAttribute(rOurCharacter, "Ship.Mode")) && (rOurCharacter.Ship.Mode == "trade");
 	bool bhol = (sti(rOurCharacter.Ship.LastBallCharacter) == GetMainCharacterIndex()) && (sti(rOurCharacter.nation) == HOLLAND)
 	if (CheckCharacterItem(pchar, "HolTradeLicence"))
@@ -2890,41 +2890,41 @@ void Ship_HullHitEvent()
 			log_info("A trade license was annulled!");
 		}
 	}
-	/* if (rOurCharacter.id == "TortugaBranderCap_2" || rOurCharacter.id == "TortugaBranderCap_3") //Jason: атака брандеров у Тортуги
+	/* if (rOurCharacter.id == "TortugaBranderCap_2" || rOurCharacter.id == "TortugaBranderCap_3") //Jason: пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	{
 		if (sti(rOurCharacter.Ship.LastBallCharacter) == GetMainCharacterIndex() && CheckAttribute(rOurCharacter, "checkattack")) Tortuga_ShipGuardAttack();
 	} */
-	if (rOurCharacter.id == "WorldMarchCap1" || rOurCharacter.id == "WorldMarchCap2" || rOurCharacter.id == "WorldMarchCap3") //Jason: горячий рейд
+	if (rOurCharacter.id == "WorldMarchCap1" || rOurCharacter.id == "WorldMarchCap2" || rOurCharacter.id == "WorldMarchCap3") //Jason: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	{
 		if (!CheckAttribute(pchar, "GenQuest.MarchCap.Battlestart")) DoQuestFunctionDelay("MarchCap2_CheckBattle", 0.5);
 	}
-	if (rOurCharacter.id == "Cap_Vensan") //Jason: сага, бригантина венсана
+	if (rOurCharacter.id == "Cap_Vensan") //Jason: пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	{
 		if (!CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Vensan_free")) DoQuestFunctionDelay("Saga_BrigantineDetonate", 0.5);
 	}
-	if (rOurCharacter.id == "Saga_Vagrant" || rOurCharacter.id == "Saga_vampire") //Jason: сага - Бродяга и Упырь
+	if (rOurCharacter.id == "Saga_Vagrant" || rOurCharacter.id == "Saga_vampire") //Jason: пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 	{
 		Saga_VagrantVampireAttack();
 	}
-	if (rOurCharacter.id == "Jackman") //Jason: сага - Джекман
+	if (rOurCharacter.id == "Jackman") //Jason: пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	{
 		Saga_CenturionAttack();
 	}
-	if (rOurCharacter.id == "Molligan" && CheckAttribute(pchar, "questTemp.Saga.Molligan.friend") && sti(AIBalls.CurrentBallType) == GOOD_GRAPES) //Jason: сага - Моллиган 
+	if (rOurCharacter.id == "Molligan" && CheckAttribute(pchar, "questTemp.Saga.Molligan.friend") && sti(AIBalls.CurrentBallType) == GOOD_GRAPES) //Jason: пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
 	{
 		Saga_MolliganCriticalAttack();
 	}
-	if (rOurCharacter.id == "Rozencraft" && CheckAttribute(pchar, "GenQuest.Bakaut")) //Jason: генератор бакаута 
+	if (rOurCharacter.id == "Rozencraft" && CheckAttribute(pchar, "GenQuest.Bakaut")) //Jason: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
 	{
-		DeleteAttribute(pchar, "GenQuest.Bakaut"); // конец генератора
+		DeleteAttribute(pchar, "GenQuest.Bakaut"); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	}
-	if (rOurCharacter.id == "Cap_Utreht" && !CheckAttribute(pchar, "questTemp.Mtraxx.check")) // Addon 2016-1 Jason пиратская линейка 
+	if (rOurCharacter.id == "Cap_Utreht" && !CheckAttribute(pchar, "questTemp.Mtraxx.check")) // Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
 	{
-		pchar.questTemp.Mtraxx.watcher = "true"; // ГГ вступил в бой и может быть замечен
+		pchar.questTemp.Mtraxx.watcher = "true"; // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		pchar.questTemp.Mtraxx.check = "true";
-		//log_info("Проверка на Утрехт установлена!");
+		//log_info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
 	}
-    // boal 290704 раз в минуту проверяем обиду на гл героя, если жухлит через желтый прицел <--sti(AIBalls.CurrentBallType)
+    // boal 290704 пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ <--sti(AIBalls.CurrentBallType)
 }
 
 float Ship_GetTotalFireTime(ref rCharacter)
@@ -2982,7 +2982,7 @@ void Ship_SetFantomData(ref rFantom)
 	int iBaseHP = sti(rBaseShip.HP);
 	int iCapacity = sti(rBaseShip.Capacity);
 
-	rFantom.ship.Crew.Quantity = iOptCrew - rand(makeint(iOptCrew / 3)) + makeint(iOptCrew / 5); //отп команды +-20%
+	rFantom.ship.Crew.Quantity = iOptCrew - rand(makeint(iOptCrew / 3)) + makeint(iOptCrew / 5); //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ +-20%
 	
 	rFantom.Ship.HP = iBaseHP;
 	if (rand(3) == 2) 
@@ -3067,8 +3067,8 @@ void Ship_CheckMainCharacter()
 	int		i, iRelation;
 	float	x, z, fBestDistance, fDistance;
 	float	fMinEnemyDistance = 1000000.0;
-	float	fMinFortAbordDistance = 1000000.0; // для работы доплыть до при разбитом форте
-	float	fortDistance = 1000000.0; //для разделения дистанций выхода на карту кораблей и фортов
+	float	fMinFortAbordDistance = 1000000.0; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	float	fortDistance = 1000000.0; //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	bool	bAbordageStartNow = false;
 	int		iAbordageStartNowCharacter = -1;
 
@@ -3099,8 +3099,8 @@ void Ship_CheckMainCharacter()
 
 	if (!CheckAttribute(arUpdate, "Ships")) { return; }
 	if (!CheckAttribute(arUpdate, "Forts")) { return; }
-    // boal время в море идет!!! -->
-    locTmpTime = locTmpTime + 0.5;  // можно засунуть проверку locDisableUpdateTime, если нужно выключить
+    // boal пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ!!! -->
+    locTmpTime = locTmpTime + 0.5;  // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ locDisableUpdateTime, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     if (locTmpTime > 9)
 	{
 		/*if (bDisableMapEnter)
@@ -3117,7 +3117,7 @@ void Ship_CheckMainCharacter()
       		BattleInterface.textinfo.Date.text = XI_convertString("Date:")+GetQuestBookData();
 		//}
 	}
-	// boal время в море идет!!! <--
+	// boal пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ!!! <--
 	
 	x = stf(rCharacter.Ship.Pos.x);
 	z = stf(rCharacter.Ship.Pos.z);
@@ -3176,23 +3176,23 @@ void Ship_CheckMainCharacter()
 				}
 				else
 				{
-					// единоразовое узнавание врага
-					// проверка на ложный флаг -->
+					// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+					// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ -->
 					if (!CheckAttribute(rFortCharacter, "CheckFlagYet"))
 					{
                         if (!CheckAttribute(rFortCharacter, "CheckFlagDate") || GetNpcQuestPastDayParam(rFortCharacter, "CheckFlagDate") > 1)
-                        { // второй раз подряд уже не смотрим, на выход их порта
+                        { // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 							if (fDistance < (MIN_ENEMY_DISTANCE_TO_DISABLE_MAP_ENTER_FORT * 1.5))
 						    {
-						        rFortCharacter.CheckFlagYet = true; // все, проверил
+						        rFortCharacter.CheckFlagYet = true; // пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 						        Ship_CheckFlagEnemy(rFortCharacter);
 						        SaveCurrentNpcQuestDateParam(rFortCharacter, "CheckFlagDate");
 						    }
 					    }
 					}
-					// проверка на ложный флаг <--
+					// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ <--
 				}
-				// Addon 2016-1 Jason пиратская линейка
+				// Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				if (fDistance < 3000 && CheckAttribute(pchar, "questTemp.Mtraxx.check"))
 				{
 					DeleteAttribute(pchar, "questTemp.Mtraxx.check");
@@ -3223,7 +3223,7 @@ void Ship_CheckMainCharacter()
 					AddQuestRecord("Roger_8", "13");
 					Mtraxx_CorridaIgnasioFail();
 				}
-				// Jason НСО
+				// Jason пїЅпїЅпїЅ
 				if (fDistance < 1000 && pchar.location == "SentMartin" && CheckAttribute(pchar, "questTemp.Patria.SanMartinFort") && ChangeCharacterHunterScore(pchar, "holhunter", 0) > 10)
 				{
 					bQuestDisableMapEnter = true;
@@ -3258,10 +3258,10 @@ void Ship_CheckMainCharacter()
 				if (iRelation == RELATION_ENEMY)
 				{
 					//if (fMinEnemyDistance > fDistance) { fMinEnemyDistance = fDistance; }
-					if (fMinFortAbordDistance > fDistance) { fMinFortAbordDistance = fDistance; } //fix входа в порт
+					if (fMinFortAbordDistance > fDistance) { fMinFortAbordDistance = fDistance; } //fix пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 				}
 				if (fDistance > fRadius) { continue; }
-				if (!Character_IsAbordageEnable(rFortCharacter) || bDisableMapEnter)  { continue; } // bDisableMapEnter - значит враги рядом, нефиг брать форт под пушками кораблей boal
+				if (!Character_IsAbordageEnable(rFortCharacter) || bDisableMapEnter)  { continue; } // bDisableMapEnter - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ boal
 				
 				if (fBestDistance > fDistance)
 				{
@@ -3346,7 +3346,7 @@ void Ship_CheckMainCharacter()
 				{ 
 					fRatio = fRatio * 1.6; 
 				}
-				if (fRatio > 1.2 && !CheckAttribute(rShipCharacter, "Abordage.MakeDisable")) // Jason НСО
+				if (fRatio > 1.2 && !CheckAttribute(rShipCharacter, "Abordage.MakeDisable")) // Jason пїЅпїЅпїЅ
 				{
 					iAbordageStartNowCharacter = sti(rShipCharacter.index);
 					bAbordageStartNow = true;
@@ -3423,7 +3423,7 @@ void Ship_CheckMainCharacter()
 		bDisableMapEnter = true;
 		rCharacter.Ship.POS.Mode = SHIP_WAR;
 	}
-    // boal fix входа в порт -->
+    // boal fix пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ -->
     if (fMinFortAbordDistance < MIN_ENEMY_DISTANCE_TO_DISABLE_ENTER_2_LOCATION)
     {
         bCanEnterToLand = false;
@@ -3585,7 +3585,7 @@ void Ship_Turn180(ref rCharacter)
 {
 	//rCharacter.TmpPerks.Turn = true;
 	//rCharacter.TmpPerks.Turn.Angle = PI;
-	rCharacter.Tmp.SpeedRecall = 0; // чтоб пересчитался маневр
+	rCharacter.Tmp.SpeedRecall = 0; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 }
 
 // Big Boom on ship
@@ -3654,7 +3654,7 @@ void Ship_UpdateParameters()
 	{
 		return;
 	}
-    // рудимент bool	bStrand = sti(rCharacter.Ship.Strand);
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ bool	bStrand = sti(rCharacter.Ship.Strand);
 	aref	arTmpPerks; makearef(arTmpPerks, rCharacter.TmpPerks);
 
 	// update temporary skill storage
@@ -3668,7 +3668,7 @@ void Ship_UpdateParameters()
 
     float fShipSpeed, fShipTurnRate;
     
-	// boal кэш оптимизация -->
+	// boal пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
 	if (!CheckAttribute(rCharacter, "Tmp.SpeedRecall") || sti(rCharacter.Tmp.SpeedRecall) <= 0)
 	{
 		fShipSpeed    = FindShipSpeed(rCharacter);
@@ -3685,21 +3685,21 @@ void Ship_UpdateParameters()
 		
 		rCharacter.Tmp.SpeedRecall   = sti(rCharacter.Tmp.SpeedRecall) - 1;
 	}
-    // boal кэш оптимизация <--
+    // boal пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ <--
     
 	// wind power
 	float	fWindPower = Whr_GetWindSpeed() / WIND_NORMAL_POWER;	
 	float	fWindDotShip = GetDotProduct(Whr_GetWindAngle(), stf(arCharShip.Ang.y));		// Wind.ay | Ship.ay
 	float   fKint = 1.0 + (0.5 - makefloat(sti(RealShips[sti(rCharacter.ship.type)].Class))/6.0) * ((Whr_GetWindSpeed() - 8.0)/10.0);
     // boal -->
-	fShipSpeed = (fShipSpeed * fWindPower * fKint);  // boal крейсерская скорость до уменьшений при данном ветре.
+	fShipSpeed = (fShipSpeed * fWindPower * fKint);  // boal пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
 	arCharShip.MaxSpeedZ = fShipSpeed; 
 	//Log_info("1 = " + arCharShip.MaxSpeedZ);
-	arCharShip.MaxSpeedZ = Sea_ApplyMaxSpeedZ(arCharShip, fWindDotShip, rCharacter); // учет парусов в др месте
+	arCharShip.MaxSpeedZ = Sea_ApplyMaxSpeedZ(arCharShip, fWindDotShip, rCharacter); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	
 	//Log_info("2 = " + arCharShip.MaxSpeedZ);
 	// boal <--
-	//  поднимем выше и закэшируем float fShipTurnRate = FindShipTurnRate(rCharacter);
+	//  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ float fShipTurnRate = FindShipTurnRate(rCharacter);
 	
 	float fMaxSpeedY = stf(rShip.TurnRate) / Sea_TurnRateMagicNumber(); //boal
 
@@ -3710,12 +3710,12 @@ void Ship_UpdateParameters()
 		case 1: fTRFromSailState = 1.0; break;
 		case 2: fTRFromSailState = 0.68; break;
 	}
-	// boal зависимость от скорости на маневр -->
+	// boal пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ -->
     float	fTRFromSpeed = 1.0;
     float fCurrentSpeedZ = stf(rCharacter.Ship.Speed.z);
 	if (iCharacterIndex == GetMainCharacterIndex())
 	{
-        if (MOD_SKILL_ENEMY_RATE > 2) // халява и юнга - послабление)
+        if (MOD_SKILL_ENEMY_RATE > 2) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
         {
             if (iArcadeSails == 1)
         	{
@@ -3738,10 +3738,10 @@ void Ship_UpdateParameters()
 		    fTRFromSpeed = 1.0 - (0.87 - MOD_SKILL_ENEMY_RATE*0.01) * (1.0 - Clampf(fCurrentSpeedZ / fShipSpeed));
 		}
 	}
-	// boal зависимость от скорости на маневр <--
+	// boal пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ <--
 	float fTRResult = fMaxSpeedY * fShipTurnRate * fTRFromSailState * fTRFromSpeed;
 	// ===============
-	// boal далее я все закоментил, тк мешало работать коду от скорости, да и вообще сомнительно это для маневра.
+	// boal пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 	// VANO :: update fTRResult using rotate with wind direction
 	//float fRotateSide = stf(arCharShip.speed.y);
 	/*float fPrevWindDotShip = stf(arCharShip.WindDotShip);
@@ -3776,7 +3776,7 @@ void Ship_UpdateParameters()
 	//Log_Info("MaxSpeedY = "  + arCharShip.MaxSpeedY);
 	// calculate immersion
 	float	fLoad = Clampf(GetCargoLoad(rCharacter) / stf(rShip.Capacity));
-	arCharShip.Immersion = (stf(rShip.SubSeaDependWeight) * fLoad); // это уровень погружения от веса
+	arCharShip.Immersion = (stf(rShip.SubSeaDependWeight) * fLoad); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 
 	// do damage if ship hull < 10%, sinking
 	float fBaseSailHP = stf(rShip.SP);
@@ -3789,7 +3789,7 @@ void Ship_UpdateParameters()
 	if (bSeaActive && (fCurHP / fBaseShipHP < 0.09999))
 	{
         float fLightRepair = AIShip_isPerksUse(arTmpPerks.LightRepair, 1.0, 0.0);
-        // это спец атрибут по убиванию этой функции
+        // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (CheckAttribute(rCharacter, "SinkTenPercent") && !sti(rCharacter.SinkTenPercent)) { fLightRepair = 0.0; }
 		float fSinkDamage = fLightRepair * (fBaseShipHP / 100.0) * 0.08;
 		if (CheckAttribute(rCharacter, "Ship.LastBallCharacter")) 
@@ -3810,7 +3810,7 @@ void Ship_UpdateParameters()
 		{ 
             // boal -->
 			if(!IsPerkIntoList("sink"))
-        	{
+пїЅ пїЅ пїЅ пїЅ 	{
 				if (rand(1) == 0)
 				{
 					PlaySound("Interface\_Abandon1.wav");
@@ -3857,7 +3857,7 @@ void Ship_UpdateParameters()
 		}
 
 		// experience
-		float fExp = (1.0 - fWindAttack) * fDamageHP / (8 - GetCharacterShipClass(rCharacter)); // fDamageHP - это процент корпуса, для мановара слишком жирно
+		float fExp = (1.0 - fWindAttack) * fDamageHP / (8 - GetCharacterShipClass(rCharacter)); // fDamageHP - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		fExp = fExp / 10;
   		if (!bDead)
         {
@@ -3928,13 +3928,13 @@ void Ship_UpdateParameters()
 	// Recalculate Cargo Load if need
 	if (CheckAttribute(rCharacter, "Ship.Cargo.RecalculateCargoLoad") && sti(rCharacter.Ship.Cargo.RecalculateCargoLoad))
 	{
-		if (rand(5) == 1)  // оптимизация, сильные тормоза
+		if (rand(5) == 1)  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		{
 			RecalculateCargoLoad(rCharacter);
 			rCharacter.Ship.Cargo.RecalculateCargoLoad = 0;
 		}
 	}
-    //  to_do не было в ПКМ -->
+    //  to_do пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ -->
 	if (bSeaLoaded && CheckAttribute(rCharacter, "SeaAI.Task.Target"))
 	{
 		if(sti(rCharacter.SeaAI.Task.Target) > 0)
@@ -3978,7 +3978,7 @@ void Ship_UpdateParameters()
 					if(GetRelation(sti(rCharacter.index), sti(rTargetCharacter.index)) == RELATION_ENEMY)
 					{
 						Ship_SetTaskAbordage(SECONDARY_TASK, sti(rCharacter.index), sti(rTargetCharacter.index)); // fix PRIMARY_TASK
-						rCharacter.Ship_SetTaskAbordage = true; // запомним, чтоб не сбивать
+						rCharacter.Ship_SetTaskAbordage = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					}
 				}
 				else
@@ -3990,12 +3990,12 @@ void Ship_UpdateParameters()
 				{
 					/*Ship_SetSailState(sti(rCharacter.index), 1);
 
-					//проверяем дистанцию и дальность стрельбы орудий противника
-					//проверяем нашу скорость и скорость противника
-					//делаем чек на лидершип
-					//проверяем мораль команды
-					//если набираем 2 или больше очков - выкидываем груз за борт.
-					//выключаем фонари.
+					//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+					//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+					//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+					//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+					//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ.
+					//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 					Ship_SetLightsOff(rCharacter, 15.0, true, true, false);
 
 					ref rCannon = GetCannonByType(sti(rTargetCharacter.Ship.Cannons.Type));
@@ -4028,23 +4028,23 @@ void Ship_UpdateParameters()
 
 					if(isDropGoods > 2)
 					*/
-					// бешенная оптимизация, если кто-то убегает -->
-					Ship_SetSailState(sti(rCharacter.index), 1);  // to_do нужно проверять, может довольно одного раза или в ядре будет дурить
+					// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
+					Ship_SetSailState(sti(rCharacter.index), 1);  // to_do пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 					if (sti(rCharacter.Ship.Lights) == 1)
 					{
 						Ship_SetLightsOff(rCharacter, 15.0, true, true, false);
 					}
-					if (sti(rCharacter.Ship.SP) > 50 && rand(100) > 80)  // не выкидывать, если не убежать, а то нет смысла брать приз
+					if (sti(rCharacter.Ship.SP) > 50 && rand(100) > 80)  // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 					{
 						PostEvent(SHIP_DROP_GOOD, 1000, "a", rCharacter);
 					}
-					// сброс мины 09.07.07 boal -->
+					// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 09.07.07 boal -->
 					if (sti(rCharacter.Ship.SP) < 60 && GetCargoGoods(rCharacter, GOOD_POWDER) >= MINE_POWDER*2 && rand(39) == 5)
 					{
 						SetMineFree(rCharacter, 1); 
 					}
-					// сброс мины <--
-					// бешенная оптимизация, если кто-то убегает <--
+					// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ <--
+					// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ <--
 				}
 		        else
 		        {
@@ -4090,7 +4090,7 @@ void Ship_UpdateParameters()
 										{
 											CalculateAbordage(rCharacter);
 										}
-										else  */ // код К3 пошел лесом, тк иначе случаи захвата очень редки
+										else  */ // пїЅпїЅпїЅ пїЅ3 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 										//if (sti(rTargetCharacter.index) == nMainCharacterIndex)
 										//{
 										if (fRatio > 1.2)
@@ -4111,7 +4111,7 @@ void Ship_UpdateParameters()
 										}
 										//}
 									}
-								} // if ГГ
+								} // if пїЅпїЅ
 							}
 						}
 					}
@@ -4160,7 +4160,7 @@ void Ship_TornadoDamage()
 
 void Ship_UpdateTmpSkills(ref rCharacter)
 {
-	///// с оптимизацией
+	///// пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (!CheckAttribute(rCharacter, "TmpSkillRecall") || sti(rCharacter.TmpSkillRecall) <= 0)
     {
         rCharacter.TmpSkill = "";
@@ -4183,19 +4183,19 @@ void Ship_UpdateTmpSkills(ref rCharacter)
         {
             if (SeaCameras.Camera == "SeaDeckCamera")
         	{
-        		aTmpSkill.Accuracy = Clampf(stf(aTmpSkill.Accuracy) + 0.15); // было 0.4
+        		aTmpSkill.Accuracy = Clampf(stf(aTmpSkill.Accuracy) + 0.15); // пїЅпїЅпїЅпїЅ 0.4
         	}
-        	//rCharacter.SystemInfo.GlobalMinEnemyDistance = stf(rCharacter.SystemInfo.LastMainMinEnemyDistance); // fix выхода на карту
-        	if (rand(10) == 3)//boal fix отношений, редко обновляется дял профилактики
+        	//rCharacter.SystemInfo.GlobalMinEnemyDistance = stf(rCharacter.SystemInfo.LastMainMinEnemyDistance); // fix пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+        	if (rand(10) == 3)//boal fix пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         	{
         	    DoQuestCheckDelay("NationUpdate", 1.0);
         	}
     	}
-    	rCharacter.TmpSkillRecall = 25 + rand(49); // разное время - размазанный пересчет, а то все скопом все равно //"60"; // считаем раз в минуту
-    	// анализ погони
-		if (GetNpcQuestPastTimeParam(rCharacter, "Add2SeaTime") > 55) // 2 дня Только у фантомов есть признак, остальные 0
+    	rCharacter.TmpSkillRecall = 25 + rand(49); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ //"60"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+    	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		if (GetNpcQuestPastTimeParam(rCharacter, "Add2SeaTime") > 55) // 2 пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 0
 		{
-		    if (CheckAttribute(rCharacter, "SeaAI.Task") && rCharacter.SeaAI.Task != AITASK_RUNAWAY) // че б не было, все равно может гнать за ГГ
+		    if (CheckAttribute(rCharacter, "SeaAI.Task") && rCharacter.SeaAI.Task != AITASK_RUNAWAY) // пїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ
 	        {
 	        	Ship_SetTaskRunaway(SECONDARY_TASK, sti(rCharacter.index), sti(pchar.index));
 	        }
@@ -4222,7 +4222,7 @@ void Ship_UpdatePerks()
 	ref rCharacter = GetCharacter(iCharacterIndex);
 
 	//Trace("Ship_UpdatePerks: rCharacter.id = " + rCharacter.id);
-	if (sti(rCharacter.ship.type) == SHIP_NOTUSED) return; // fix для смены корабля
+	if (sti(rCharacter.ship.type) == SHIP_NOTUSED) return; // fix пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	rCharacter.TmpPerks = "";
 	aref aTmpPerks; makearef(aTmpPerks, rCharacter.TmpPerks);
 
@@ -4246,7 +4246,7 @@ void Ship_UpdatePerks()
 	aTmpPerks.ShipTurnRateUp			= CheckOfficersPerk(rCharacter, "ShipTurnRateUp");
 	aTmpPerks.SailingProfessional		= CheckOfficersPerk(rCharacter, "SailingProfessional");
 	aTmpPerks.LightRepair				= CheckOfficersPerk(rCharacter, "LightRepair");
-	// update main character if rCharacter is companion   - это было, но зачем?? (boal)
+	// update main character if rCharacter is companion   - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ?? (boal)
 	if (iCharacterIndex != nMainCharacterIndex && IsCompanion(rCharacter))
 	{
 		Event("eSwitchPerks", "l", nMainCharacterIndex);
@@ -4314,7 +4314,7 @@ void Ship_Lightning()
 	}
 }
 
-// Create a new ship for character  to_do del нигде не юзается
+// Create a new ship for character  to_do del пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 void Ship_CreateForCharacter(ref rCharacter, int iShipType, string sShipName)
 {
 	DeleteAttribute(rCharacter, "Ship");
@@ -4350,7 +4350,7 @@ void Ship_PrepareShipForLocation(ref rCharacter)
 {
 	Ship_ClearImpulseStrength(rCharacter);
 }
-//  далее новые методы, не было в ПКМ
+//  пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ
 void Ship_LoadShip()
 {
 	int iCharacterIndex = GetEventData();
@@ -4364,7 +4364,7 @@ void Ship_LoadShip()
 	{
 		Event("eSwitchPerks", "l", iCharacterIndex);
 		Ships[iNumShips] = iCharacterIndex;
-		Event(SHIP_UPDATE_PARAMETERS, "lf", iCharacterIndex, stf(rCharacter.Ship.Speed.z));		// Parameters      после создания корабля
+		Event(SHIP_UPDATE_PARAMETERS, "lf", iCharacterIndex, stf(rCharacter.Ship.Speed.z));		// Parameters      пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		iNumShips++;
 	}
 }
@@ -4393,7 +4393,7 @@ void SetTextureForShip(aref refBaseShip, aref rCharacter)
 
 	string sPath = "ships\" + refBaseShip.name + "\";
 	
-	if(CheckAttribute(refBaseShip, "ship.Upgrades.hull"))  // boal 16/07/06 просто разные корпуса, без НПС
+	if(CheckAttribute(refBaseShip, "ship.Upgrades.hull"))  // boal 16/07/06 пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ
 	{
 		sPath = sPath + "hull" + refBaseShip.ship.upgrades.hull + "\";
 	}
@@ -4417,10 +4417,10 @@ void DropGoodsToSea()
 		{
 			int	iQuantity = sti(rCharacter.Ship.Cargo.Goods.(sGood));
 			
-			if(CheckAttribute(rCharacter, "Ship.Cargo.Goods."+sGood+".Lock")) continue; // залоченные товары не выкидывать !!!!! <-- ugeen fix
+			if(CheckAttribute(rCharacter, "Ship.Cargo.Goods."+sGood+".Lock")) continue; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ !!!!! <-- ugeen fix
 			
 			if (iQuantity < 1 && rand(1) == 1) continue; 
-			iQuantity = makeint(iQuantity/2 + rand(makeint(iQuantity/3)));   // выкидываем не все и не всегда, а то под ноль
+			iQuantity = makeint(iQuantity/2 + rand(makeint(iQuantity/3)));   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			
 			if (iQuantity < 1) continue; 
 			
@@ -4434,9 +4434,9 @@ void DropGoodsToSea()
 			}
 
 			rCharacter.Ship.Cargo.Goods.(sGood) = 0;
-            rCharacter.Ship.Cargo.RecalculateCargoLoad = true; // boal fix оптимизация
+            rCharacter.Ship.Cargo.RecalculateCargoLoad = true; // boal fix пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			//RecalculateCargoLoad(rCharacter);
-            rCharacter.Tmp.SpeedRecall = 0; // чтоб пересчитались скорость и маневр
+            rCharacter.Tmp.SpeedRecall = 0; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             
 			if (CheckAttribute(&Goods[i], "Swim")) 
 			{ 
@@ -4495,7 +4495,7 @@ string GetShipSexWord(string _type, string _man, string _woman)
         return _man;
     }
 }
-// boal 08.08.06 метод пересчета орудий на корабле  - доработал ядро
+// boal 08.08.06 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ  - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 void Ship_ResearchCannons(ref aCharacter)
 {
 	if (bSeaLoaded)
@@ -4505,7 +4505,7 @@ void Ship_ResearchCannons(ref aCharacter)
 		Ship_ChangeCharge(aCharacter, sti(aCharacter.Ship.Cannons.Charge.Type));
 	}
 }
-// boal 20.08.06 перерисовка флага -->
+// boal 20.08.06 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ -->
 void Ship_FlagRefresh(ref rCharacter)
 {
     if (bSeaLoaded)
@@ -4522,9 +4522,9 @@ void EmptyFantom_DropGoodsToSea(ref rChar, int iFantomType)
 	if(iFantomType == ENCOUNTER_TYPE_BARREL)
 	{	
 		int irand = drand(100);
-		if(irand > 92) // делаем бум
+		if(irand > 92) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 		{
-			AISeaGoods_AddGood_Special(rChar, "powder1", "barrel_treasure", 1500.0, 1); // нарвались на беспризорную мину
+			AISeaGoods_AddGood_Special(rChar, "powder1", "barrel_treasure", 1500.0, 1); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		}
 		else
 		{

@@ -4,9 +4,9 @@ void QuestComplete(string sQuestName, string qname)
 	// boal -->
 	ref sld, chr, npchar;
 	aref arOldMapPos, arAll, arPass;
-	int     iTemp, i, n, ShipType, Rank; // нужно для вычислений любых целых (нации)
+	int     iTemp, i, n, ShipType, Rank; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ)
     float locx, locy, locz, fTemp;
-	string  attrName, Model, Blade, Gun, sTemp, sQuestTown, sQuestTitle; // любые строки для вычислений
+	string  attrName, Model, Blade, Gun, sTemp, sQuestTown, sQuestTitle; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	bool   bOk;
 	int iChurchGenBanditsCount;
 	if (bQuestLogShow)
@@ -25,23 +25,23 @@ void QuestComplete(string sQuestName, string qname)
 	switch(sQuestName)
 	{	
 		// boal -->
-		// смена отношений от времени
-        // boal все теперь проверяется 15-25 день при расчете состояния мира = изменение в 5% - ранд(100) > 95
+		// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        // boal пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 15-25 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ = пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ 5% - пїЅпїЅпїЅпїЅ(100) > 95
         case "Nation_Legend":
             SetTimerCondition("Nation_Legend", 0, 0, 15+rand(10), true);
-			// тут чиним стророжевики -->
+			// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
 			if (!bSeaActive && !bAbordageStarted)
             {
               //  RepairAllDefenderFortShips();
             }
-            // тут чиним стророжевики <--
+            // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ <--
             if (rand(100) > 93 && !bWorldAlivePause)
             {
                 if(IsEntity(worldMap))
                 {
                     LaunchNationLegend();
                 }else{
-                    if (!bQuestCheckProcessFreeze) // можно показать
+                    if (!bQuestCheckProcessFreeze) // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					{
 					    DoQuestCheckDelay("Nation_Legend_Map", 1.5);
 					}
@@ -55,7 +55,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
 
         case "Nation_Legend_Map":
-            if (!bQuestCheckProcessFreeze) // можно показать
+            if (!bQuestCheckProcessFreeze) // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
                 LaunchNationLegend();
             }else{
@@ -68,7 +68,7 @@ void QuestComplete(string sQuestName, string qname)
 			TeleportCharacterToPos(pchar, stf(pchar.locx), stf(pchar.locy), stf(pchar.locz)); 
 		break;
 		
-		// начало игры, туториал
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "Tut_StartGame_CheckMinHP_1":
 			if (!CheckAttribute(pchar, "HeroParam.Teach_beat"))
 			{
@@ -88,7 +88,7 @@ void QuestComplete(string sQuestName, string qname)
 				if (sti(pchar.HeroParam.Teach_beat) == 2 && sti(pchar.HeroParam.Teach_battle) == 2)
 				{
 					bOk = true;
-					pchar.HeroParam.Teach_beat = 3; // признак, что выиграл
+					pchar.HeroParam.Teach_beat = 3; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				}
 			}
 			if (bOk)
@@ -110,13 +110,13 @@ void QuestComplete(string sQuestName, string qname)
 			{
 				sld = characterFromID("Sailor_1");
 				LAi_SetActorTypeNoGroup(sld);
-				pchar.HeroParam.Teach_beat = 3; // признак, что выиграл
+				pchar.HeroParam.Teach_beat = 3; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				DoQuestCheckDelay("Tut_StartGame_CheckMinHP_Hero", 0.3);
 			}
         break;
         
         case "Tut_StartGame_CheckMinHP_Hero":
-        	// запуск диалога
+        	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         	LAi_SetActorTypeNoGroup(pchar);
         	sld = characterFromID("Sailor_2");
 			LAi_SetActorTypeNoGroup(sld);
@@ -125,16 +125,16 @@ void QuestComplete(string sQuestName, string qname)
             PChar.GenQuest.CallFunctionParam = "Tut_StartDialog";
 			DoQuestCheckDelay("CallFunctionParam", 2.0);
         break;
-		//  Карты сокровищ  ГЕНЕРАТОР -->
+		//  пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
         case "SetTreasureFromMap":
             SetTreasureBoxFromMap();
         break;
-        //  Карты сокровищ  ГЕНЕРАТОР <--
+        //  пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ <--
         
 		case "ArestInResidenceEnd":
-		    LAi_LockFightMode(Pchar, false); // ножками убежал
+		    LAi_LockFightMode(Pchar, false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         break;
-        // ОЗГи
+        // пїЅпїЅпїЅпїЅ
         case "Battle_Hunters_Land":
             Lai_SetPlayerType(pchar);
             LAi_SetFightMode(Pchar, true);
@@ -161,30 +161,30 @@ void QuestComplete(string sQuestName, string qname)
 			}
         break;
         
-		// офицеры выживают!
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!
         case "Survive_In_SeaOfficer":
 			sld = GetCharacter(sti(Pchar.GenQuest.Survive_In_SeaOfficerIdx));
-            iTemp = NPC_GeneratePhantomCharacter("citizen", sti(sld.Nation), MAN, -1);  // создать клон
+            iTemp = NPC_GeneratePhantomCharacter("citizen", sti(sld.Nation), MAN, -1);  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			if (iTemp != -1)
 			{
                 npchar = &Characters[iTemp];
                 if (CheckAttribute(sld, "PGGAi"))
 	            {
-	            	sTemp = npchar.id; // новый рандомный ИД
-					DeleteAttribute(npchar, "");// все трем, а там и перки!
+	            	sTemp = npchar.id; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
+					DeleteAttribute(npchar, "");// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ!
 					CopyAttributes(npchar, sld);
 	
 					npchar.index = iTemp;
-					// меняемся ИД, старый новому, новый трупу
-					sld.id = sTemp; //navy (ПГГ fix) 26.12.06
-					// тут трем накопивщиеся сабли и корабли 290704 BOAL -->
+					// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+					sld.id = sTemp; //navy (пїЅпїЅпїЅ fix) 26.12.06
+					// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 290704 BOAL -->
 					DeleteAttribute(npchar, "Ship");
 					npchar.ship.type = SHIP_NOTUSED;
                     npchar.location = "none";
                     npchar.location.from_sea = "";
 					
-					DeleteAttribute(npchar, "Fellows"); // его офицеры
-					// пгг в рядового НПС
+					DeleteAttribute(npchar, "Fellows"); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+					// пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 					sld.LifeDay = 0;
                     DeleteAttribute(sld, "PGGAi");
 	            }
@@ -206,7 +206,7 @@ void QuestComplete(string sQuestName, string qname)
 			Set_TreasureBarrel();
 		break;
 		
-        // враги спасшиеся на шлюпках homo
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ homo
         case "Survive_In_SeaPrisoner":  //homo 22/06/07
             sld = GetCharacter(sti(Pchar.GenQuest.Survive_In_SeaPrisonerIdx));
             iTemp = SetCharToPrisoner(sld);
@@ -214,7 +214,7 @@ void QuestComplete(string sQuestName, string qname)
 			{
                 npchar = &Characters[iTemp];
                 PlaySound("interface\_EvShip1.wav");
-                // лишнее, помер ПГГ и все тут if (findsubstr(sld.id, "PsHero_" , 0) != -1) npchar = sld.id; //homo for navy (ПГГ fix)
+                // пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ if (findsubstr(sld.id, "PsHero_" , 0) != -1) npchar = sld.id; //homo for navy (пїЅпїЅпїЅ fix)
                 LAi_SetCurHPMax(npchar);
     			sld.location = "none";
     			sld.location.from_sea = "";
@@ -222,7 +222,7 @@ void QuestComplete(string sQuestName, string qname)
             }
         break;
         
-		/////////////////////////Квест награда за голову//////////////////////////////////////
+		/////////////////////////пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ//////////////////////////////////////
         case "SeaHunterCheck":
             SeaHunterCheck();
         break;
@@ -232,11 +232,11 @@ void QuestComplete(string sQuestName, string qname)
             SetNewDayHealthMax();
         break;
         
-		case "My_Deck_Battle_End":  // запрет битв в трюме -после казни пленных
+		case "My_Deck_Battle_End":  // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ -пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             LAi_LocationFightDisable(&Locations[FindLocation("My_Deck")], true);
             LAi_SetFightMode(Pchar, false);
         break;
-		//  boal 290804 наказание битьем морды -->
+		//  boal 290804 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ -->
         case "PunishmentAction":
             LAi_SetActorTypeNoGroup(PChar);
             sld = &Characters[makeint(Pchar.GenQuest.FreeRandomOfficerIdx)];
@@ -265,8 +265,8 @@ void QuestComplete(string sQuestName, string qname)
                     break;
             }
 		break;
-		//  boal 290804 наказание битьем морды <--
-		// индульгенция -->
+		//  boal 290804 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ <--
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
 		case "donation":
 			int iDonation = makeint(pchar.questTemp.donate);
 			int iRep      = makeint(pchar.reputation.nobility);
@@ -353,21 +353,21 @@ void QuestComplete(string sQuestName, string qname)
 				}
 			}
 		break;
-	    // индульгенция <--
-		case "SetNPCInShipDeck":  // народ внутри нашего корабля
+	    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ <--
+		case "SetNPCInShipDeck":  // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             if (Pchar.location == Get_My_Cabin())//"My_Cabin" || Pchar.location == "My_Cabin_Small")
 	        {
                 SetOfficersInCabin();
             }
             else
             {
-                if (Pchar.location == "My_Deck")// трюм
+                if (Pchar.location == "My_Deck")// пїЅпїЅпїЅпїЅ
                 {
                     SetPrisonerInHold();
                 }
                 else
                 {
-	                if (Pchar.location == "My_Campus")// кают-компания
+	                if (Pchar.location == "My_Campus")// пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	                {
 	                    SetOfficersInCampus();
 	                }
@@ -376,7 +376,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
         
 		case "SetQuestHoldBox":
-			if (Pchar.location == "My_Deck")// трюм
+			if (Pchar.location == "My_Deck")// пїЅпїЅпїЅпїЅ
             {
                 FillQuestHoldBox(&Locations[FindLocation(Pchar.location)]);
             }
@@ -405,8 +405,8 @@ void QuestComplete(string sQuestName, string qname)
                     RemoveCharacterCrew(PChar, (8-GetCharacterShipClass(PChar))*8);
                 }
                 PChar.Ship.Crew.Morale = 25;
-                ChangeCrewExp(PChar, "Soldiers", 2); // бонус на подавление
-				// Addon-2016 Jason ФМК-Гваделупа
+                ChangeCrewExp(PChar, "Soldiers", 2); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+				// Addon-2016 Jason пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				if (CheckAttribute(pchar, "questTemp.FMQG") && pchar.questTemp.FMQG == "mutiny")
 				{
 					for (i=1; i<=3; i++)
@@ -417,10 +417,10 @@ void QuestComplete(string sQuestName, string qname)
 						ChangeCharacterAddressGroup(sld, pchar.location, "goto", LAi_FindNearestLocator("goto", locx, locy, locz));
 						LAi_SetWarriorType(sld);
 						LAi_group_MoveCharacter(sld, LAI_GROUP_TmpEnemy);
-						sld = SetFantomDefenceForts("goto", "", PIRATE, LAI_GROUP_TmpEnemy); // добавим еще +3 тела
+						sld = SetFantomDefenceForts("goto", "", PIRATE, LAI_GROUP_TmpEnemy); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ +3 пїЅпїЅпїЅпїЅ
 					}
 				}
-				if (CheckAttribute(pchar, "questTemp.FMQN") && pchar.questTemp.FMQN == "mutiny") // ФМК-Сент-Кристофер
+				if (CheckAttribute(pchar, "questTemp.FMQN") && pchar.questTemp.FMQN == "mutiny") // пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				{
 					for (i=1; i<=5; i++)
 					{
@@ -442,7 +442,7 @@ void QuestComplete(string sQuestName, string qname)
                     RemoveCharacterGoodsSelf(PChar, GOOD_SLAVES, (8-GetCharacterShipClass(PChar))*8);
                 }
                 DeleteAttribute(pchar, "GenQuest.SlavesMunity");
-                ChangeCrewExp(PChar, "Soldiers", 3); // бонус на подавление
+                ChangeCrewExp(PChar, "Soldiers", 3); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             }
             LAi_group_SetHearRadius(LAI_GROUP_TmpEnemy, 100.0);
             LAi_group_FightGroups(LAI_GROUP_TmpEnemy, LAI_GROUP_PLAYER, true);
@@ -463,14 +463,14 @@ void QuestComplete(string sQuestName, string qname)
             pchar.quest.Munity = "Deads";
             LAi_SetFightMode(Pchar, false);
             DeleteAttribute(pchar, "GenQuest.MunityStart");
-			// Addon-2016 Jason ФМК-Гваделупа
+			// Addon-2016 Jason пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if (CheckAttribute(pchar, "questTemp.FMQG") && pchar.questTemp.FMQG == "mutiny")
 			{
 				AddQuestRecord("FMQ_Guadeloupe", "5");
 				CloseQuestHeader("FMQ_Guadeloupe");
 				pchar.questTemp.FMQG = "fail";
 			}
-			// Addon-2016 Jason ФМК-Сент-Кристофер
+			// Addon-2016 Jason пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if (CheckAttribute(pchar, "questTemp.FMQN") && pchar.questTemp.FMQN == "mutiny")
 			{
 				AddQuestRecord("FMQ_Nevis", "2");
@@ -479,11 +479,11 @@ void QuestComplete(string sQuestName, string qname)
 			}
         break;
         
-		///  захват форта - город
-        case "FreeCaptureForts": // уберем солдат, откроем входы (на всяк случай) при выходе на карту
+		///  пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ
+        case "FreeCaptureForts": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ) пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             TWN_FreeCaptureForts();
         break;
-        // захват с суши по диалогу мэра (телепорт)
+        // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
         case "Town_Capture_Land":
             sld = GetCharacter(sti(Pchar.GenQuestFort.fortCharacterIdx));
             DeleteQuestAttribute("Union_with_Escadra");
@@ -494,7 +494,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
         
         case "Capture_Town_Siege":
-            PrepareTownBattle(); // тут только джунгли для этого случая
+            PrepareTownBattle(); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
 			if (!CheckAttribute(Pchar, "GenQuestFort.SoundOff"))
 			{
@@ -507,7 +507,7 @@ void QuestComplete(string sQuestName, string qname)
                 DeleteAttribute(Pchar, "GenQuestFort.SoundOff");
             }
         break;
-        // Возвращение губернаторам родные диалоги // boal переделал 251204
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ // boal пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 251204
         case "Return_Gover_Dialog":
             Characters[sti(PChar.GenQuest.GoverIdx)].dialog.CurrentNode = "First time";
         break;
@@ -515,7 +515,7 @@ void QuestComplete(string sQuestName, string qname)
         case "Return_Gover_Dialog_Exit":
             DoQuestCheckDelay("Return_Gover_Dialog", 0.5);
         break;
-        // после битвы в форте сюда
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         case "Capture_Forts":
             TWN_Capture_Forts();
         break;
@@ -529,15 +529,15 @@ void QuestComplete(string sQuestName, string qname)
         break;
 
         case "FightInTown_Finish":
-            LAi_grp_alarmactive = false; // конец тревоги
+            LAi_grp_alarmactive = false; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_LockFightMode(pchar, false);
             LAi_SetFightMode(Pchar, false);
         break;
 
-        //Два пути захвата форта
-        // 1 уходим с добычей - в диалоге мэра
+        //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+        // 1 пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 
-        // 2 Если оставляем форт себе
+        // 2 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         case "Residence_Captured_Any":
             TWN_Residence_Captured_Any();
         break;
@@ -554,22 +554,22 @@ void QuestComplete(string sQuestName, string qname)
 			PlayStereoOGG("music_ship_victory");
 			sld = GetCharacter(sti(Pchar.GenQuestFort.fortCharacterIdx));
             Log_Info("" + GetCityName(sld.City) + " is ours!");
-			// убрать контрабандиста
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sTemp = sld.City + "_Smuggler";
-			if (GetCharacterIndex(sTemp) >= 0) // не везде есть
+			if (GetCharacterIndex(sTemp) >= 0) // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			{
-				ChangeCharacterAddress(characterFromID(sTemp), "None", ""); // вся логика теперь в рассидки таверны
+				ChangeCharacterAddress(characterFromID(sTemp), "None", ""); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			}
             SetCaptureTownByHero(sld.City);
-            LaunchColonyInfoScreen(); // табличка   to_do дает вылет :(
-			// отсчет для отбития
+            LaunchColonyInfoScreen(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ   to_do пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ :(
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sTemp = "Attack_Fort_" + sld.City;
             SetTimerCondition(sTemp, 0, 0, 25 + rand(70), false);
             PChar.Quest.(sTemp).CityId   = sld.City;
 			PChar.Quest.(sTemp).function = "TWN_Siege_Any";
         break;
-		///////////////////////////////// захват города <--
-		//  системные фичи
+		///////////////////////////////// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ <--
+		//  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		case "PostVideo_Start":
             bMainMenuLaunchAfterVideo = true;
 			PostVideoAndQuest(PChar.GenQuest.VideoAVI, 100, "PostVideo_After");
@@ -593,28 +593,28 @@ void QuestComplete(string sQuestName, string qname)
             call attrName();
         break;
         
-		// Warship. CallFunctionParam не хочет работать с диалогами, поэтому испльзовать можно эту...
+		// Warship. CallFunctionParam пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ...
 		case "NextFunction":
 			DoQuestFunctionDelay(PChar.QuestTemp.NextFunction, 0.1);
 		break;
         
-        // вызов табличкм А в это время..
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ..
         case "LaunchFrameForm":
             PChar.GenQuest.CallFunctionParam = "LaunchFrameForm";
 			DoQuestCheckDelay("CallFunctionParam", stf(pchar.AutoQuest.FrameDelay));
         break;
         
-        case "Move_Govenour":  // переместим губернатора в другой город
+        case "Move_Govenour":  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             SetTimerCondition("Move_Govenour", 0, 0, 25+rand(10), true);
             Move_Govenour();
         break;
 		
-		// музыка виктори
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "sea_victory":
 			SetMusicOnce("music_ship_victory");
 		break;
 		
-		// вижу парус
+		// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		case "see_sails":
 			PlaySound("interface\_EvEnemy1.wav");
 			PlaySound("interface\notebook.wav");
@@ -628,7 +628,7 @@ void QuestComplete(string sQuestName, string qname)
 			bDisableFastReload = true;
 		break;
 
-        case "God_hit_us": // это такой прикол - задействовать в ловушки для сундуков(boal)
+        case "God_hit_us": // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ(boal)
 			iTemp = 10+rand(15);
 			if ((MakeInt(pchar.chr_ai.hp)-iTemp) > 0)
             {
@@ -639,15 +639,15 @@ void QuestComplete(string sQuestName, string qname)
 			if(bDrawBars) SendMessage(pchar, "lfff", MSG_CHARACTER_VIEWDAMAGE, iTemp, MakeFloat(MakeInt(pchar.chr_ai.hp)), MakeFloat(MakeInt(pchar.chr_ai.hp_max)));
 			LAi_CheckKillCharacter(pchar);
 		break;
-		// диалог с ГГ генератор
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         case "TalkSelf_Start":
             StartActorSelfDialog("TalkSelf_Main");
         break;
-        // диалог с ГГ квестовые реплики
+        // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         case "TalkSelf_Quest":
             StartActorSelfDialog("First time");
         break;
-        /////  сидим за столом в таверне ->
+        /////  пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ ->
         case "alc":
 			LAi_Fade("alc_2_prepare", "alc2");
 			if(CheckAttribute(pchar, "IsMushketer"))
@@ -662,7 +662,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorSetSitMode(characterFromID(pchar.questTemp.friend_in_tavern));
 
             sld = characterFromID(pchar.questTemp.friend_in_tavern);
-            FreeSitLocator(sld.Default, sld.Default.ToLocator);  // очистим стул
+            FreeSitLocator(sld.Default, sld.Default.ToLocator);  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			ChangeCharacterAddressGroup(pchar, sld.Default, sld.Default.group, sld.Default.ToLocator);
 		break;
 
@@ -690,9 +690,9 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetSitType(sld);
 			LAi_SetPlayerType(pchar);
 			//ChangeCharacterAddress(pchar, sld.Default, sld.Default.ToGo);
-			PlaceCharacter(pchar, "tables", pchar.location); // ближний к столу
+			PlaceCharacter(pchar, "tables", pchar.location); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 		break;
-		// реплика таверншика о запрете драк -->
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ -->
 		case "tavern_keeper":
 			attrName = GetCharIDByParam("TavernMan", "location", pchar.location);
             sld = characterFromID(attrName);
@@ -708,7 +708,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld.dialog.currentnode = "First time";
 			LAi_SetBarmanType(sld);
 		break;
-		// реплика таверншика о запрете драк <--
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ <--
  		case "without_memory":
 			LAi_Fade("exit_sit_2", "saved_by_off");
 			bQuestCheckProcessFreeze = true;
@@ -732,7 +732,7 @@ void QuestComplete(string sQuestName, string qname)
 
    			sld = characterFromID(loadedLocation.fastreload + "_waitress");
    			pchar.questTemp.officiantLocator = sld.location.locator;
-   			pchar.questTemp.officiantGroup   = sld.location.group;   // запомнить, где была
+   			pchar.questTemp.officiantGroup   = sld.location.group;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			PlaceCharacter(sld, "goto", pchar.location);
 			sld.dialog.currentnode = "without_money";
 			LAi_SetActorType(sld);
@@ -748,7 +748,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld.location.group   = pchar.questTemp.officiantGroup;
 		break;
 		
-		//  агенты стран в таверне -->
+		//  пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
         case "NationUpdate":
             UpdateRelations();
             if(bSeaActive)
@@ -760,7 +760,7 @@ void QuestComplete(string sQuestName, string qname)
         case "pir_flag_rise":
 			Flag_PIRATE();
 		break;
-		// агенты в тавернах -->
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
         case "any_patent_take":
             AddMoneyToCharacter(pchar, -sti(pchar.PatentPrice));
 
@@ -769,8 +769,8 @@ void QuestComplete(string sQuestName, string qname)
 			GiveItem2Character(pchar, "patent_" + pchar.PatentNation);
             EquipCharacterbyItem(pchar, "patent_" + pchar.PatentNation);
 
-            Items[sti(pchar.EquipedPatentId)].TitulCur = 1; // текущ звание сбросим
-        	Items[sti(pchar.EquipedPatentId)].TitulCurNext = 0; // счетчик звание сбросим
+            Items[sti(pchar.EquipedPatentId)].TitulCur = 1; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        	Items[sti(pchar.EquipedPatentId)].TitulCurNext = 0; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 
         case "fra_flag_rise":
@@ -789,15 +789,15 @@ void QuestComplete(string sQuestName, string qname)
             Flag_HOLLAND();
         break;
 
-        case "QuestAboardCabinDialog":  // диалог в абордаже, в каюте при достижении минНР
-			sld = &Characters[sti(pchar.GenQuest.QuestAboardCabinDialogIdx)]; // фантом, тень отца капитана
+        case "QuestAboardCabinDialog":  // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			sld = &Characters[sti(pchar.GenQuest.QuestAboardCabinDialogIdx)]; // пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetActorType(pchar);
             LAi_SetActorType(sld);
             SetActorDialogAny2Pchar(sld.id, "", 0.0, 0.0);
 		    LAi_ActorFollow(pchar, sld, "ActorDialog_Any2Pchar", 0.5);
 		break;
 		
-		case "LAi_ReloadBoarding": // задержка нужна
+		case "LAi_ReloadBoarding": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			LAi_EnableReload();
 		    DelEventHandler("Control Activation", "LAi_ActivateReload");
 			Log_SetActiveAction("Nothing");
@@ -805,34 +805,34 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 		// boal <---
 		
-		case "Map_SetNationHanters": // запустить перехватчиков на карте
+		case "Map_SetNationHanters": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			EnemyNationHunterOnMap(false);
         break;
 		
-		case "Map_SetNationCoolHanters": // запустить скоростных перехватчиков
+		case "Map_SetNationCoolHanters": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			EnemyNationHunterOnMap(true);
         break;
 		
         ////////////////////////////////////////////////////////////////////////
-		//  Служебный квест контрабандистов - ограничение по времени
+		//  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		////////////////////////////////////////////////////////////////////////
 		case "Rand_Smuggling":
-			//слишком падает ChangeContrabandRelation(pchar, -10); // boal
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ ChangeContrabandRelation(pchar, -10); // boal
 			pchar.quest.KillSmugglers_after.over = "yes";  
 			RemoveSmugglersFromShore();
 		break;
 
-		//Постановка стражников в локацию передачи контрабандистов
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "Rand_ContrabandInterruption":
 			chrDisableReloadToLocation = true;
 			LAi_SetFightMode(pchar, false);
 			LAi_LockFightMode(pchar, true);
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//запретить драться 130313
-			// солдаты в начале
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 130313
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			iTemp = GetCityNation(GetCityNameByIsland(GiveArealByLocation(loadedLocation)));
 			if(iTemp == -1) 
 			{
-				iTemp = sti(pchar.GenQuest.Contraband.GuardNation);// Нация патруля
+				iTemp = sti(pchar.GenQuest.Contraband.GuardNation);// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			}	
 			Pchar.quest.contraband.SoldierQty = makeint(2*GetOfficersQuantity(Pchar) + 3);
 			for (i = 2; i <= sti(Pchar.quest.contraband.SoldierQty); i++)
@@ -846,9 +846,9 @@ void QuestComplete(string sQuestName, string qname)
 				sld.Dialog.CurrentNode = "First time";
 				sld.greeting = "patrol";
             }
-			// вызовем независимо!!!! не тут :) SetCoastalGuardPursuit();
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!!!! пїЅпїЅ пїЅпїЅпїЅ :) SetCoastalGuardPursuit();
 
-			// офицер в конце
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
             sld = SetFantomOfficer("", "", iTemp, "CoastalGuards");
 			Pchar.quest.contraband.SoldierIDX1 = sld.index;
 			LAi_SetActorType(sld);
@@ -856,7 +856,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld.Dialog.CurrentNode = "First time";
 			sld.greeting = "patrol";
 
-			LAi_ActorDialog(&Characters[makeint(Pchar.quest.contraband.SoldierIDX1)], Pchar, "", 35, 1); // boal 120c - озвереть ждать!!!
+			LAi_ActorDialog(&Characters[makeint(Pchar.quest.contraband.SoldierIDX1)], Pchar, "", 35, 1); // boal 120c - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!!!
 			LAi_group_SetCheck("CoastalGuards", "CoastalGuardsAllDead");
 		break;
 
@@ -880,33 +880,33 @@ void QuestComplete(string sQuestName, string qname)
 				sTemp = "Rand_Smug0" + i;
 				LAi_SetGuardianTypeNoGroup(CharacterFromID(sTemp));
 			}
-			LAi_grp_alarmactive = false; // конец тревоги
+			LAi_grp_alarmactive = false; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
-		//  контрабанды <--
+		//  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ <--
 		
 		/////////////////////////////////////////////////////////////////////////////////
-		// НАЧАЛО КВЕСТА - УДАЛЕНИЕ ТЕКУЩЕГО НАПРАВЛЕНИЯ И СИЛЫ ВЕТРА
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		/////////////////////////////////////////////////////////////////////////////////
 		case "EraseWind":
 			DeleteAttribute(pchar, "wind");
 		break;
 		/////////////////////////////////////////////////////////////////////////////////
-		// КОНЕЦ КВЕСТА - УДАЛЕНИЕ ТЕКУЩЕГО НАПРАВЛЕНИЯ И СИЛЫ ВЕТРА
+		// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		/////////////////////////////////////////////////////////////////////////////////
 
 		/////////////////////////////////////////////////////////////////////////////////
-		// СБРОС СЧЕТЧИКА ДУЭЛЕЙ В ТАВЕРНЕ
+		// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		/////////////////////////////////////////////////////////////////////////////////		
 		case "HabitueSpeakDisable_End":
 			DeleteAttribute(pchar,"questTemp.HabitueSpeakDisable");
 			DeleteAttribute(pchar,"questTemp.duelQty");
 		break;
 		/////////////////////////////////////////////////////////////////////////////////
-		// СБРОС СЧЕТЧИКА ДУЭЛЕЙ В ТАВЕРНЕ
+		// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		/////////////////////////////////////////////////////////////////////////////////				
 		
 		/////////////////////////////////////////////////////////////////////////////////
-		//	СЛУЖЕБНЫЕ ФИЧИ
+		//	пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		/////////////////////////////////////////////////////////////////////////////////
 		case "hide_weapon":
 			LAi_SetFightMode(pchar, false);
@@ -929,11 +929,11 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestReloadToLocation(PChar.AutoQuest.idLocation, PChar.AutoQuest.idGroup, PChar.AutoQuest.idLocator, PChar.AutoQuest.questName);
 			break;
 		/////////////////////////////////////////////////////////////////////////////////
-		//	СЛУЖЕБНЫЕ ФИЧИ
+		//	пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		/////////////////////////////////////////////////////////////////////////////////
 
 		/////////////////////////////////////////////////////////////////////////////////
-		//	START OF ПГГ
+		//	START OF пїЅпїЅпїЅ
 		/////////////////////////////////////////////////////////////////////////////////
 		case "PGG_Companion_Leave":
 			chrDisableReloadToLocation = true;
@@ -959,11 +959,11 @@ void QuestComplete(string sQuestName, string qname)
 			PGG_Q1AfterDeckFight();
 			break;
 		/////////////////////////////////////////////////////////////////////////////////
-		//	END OF ПГГ
+		//	END OF пїЅпїЅпїЅ
 		/////////////////////////////////////////////////////////////////////////////////
 
 		/////////////////////////////////////////////////////////////////////////////////
-		//	Корсарское метро
+		//	пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		/////////////////////////////////////////////////////////////////////////////////
 		case "RemoveTravelSmugglers":
 			if (!CheckAttribute(PChar, "GenQuest.contraTravel.PatrolFight")) ChangeContrabandRelation(PChar, -10);
@@ -982,13 +982,13 @@ void QuestComplete(string sQuestName, string qname)
 			break;
 
 		case "Travel_talkOnDeck":
-			//убираем контрабандистов
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			RemoveSmugglersFromShore();
-			//кинозвезда Абрахам Грей :)
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ :)
 			sld = CharacterFromID("Abracham_Gray");
-			//параметры..
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ..
 			sld.nation = PIRATE;
-			Ship_FlagRefresh(PChar); //флаг на лету
+			Ship_FlagRefresh(PChar); //пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 			sld.location.from_sea = "";
 
 			LAi_group_MoveCharacter(sld, "TmpEnemy");
@@ -998,7 +998,7 @@ void QuestComplete(string sQuestName, string qname)
 			SetActorDialogAny2Pchar("Abracham_Gray", "", 2.0, 0.0);
 			LAi_ActorFollow(sld, pchar, "ActorDialog_Any2Pchar", 2.0);
 			LAi_ActorFollow(pchar, sld, "", 1.0);
-			//компания....
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ....
 			iTemp = 3 + rand(3);
 			for(i = 0; i < iTemp; i++)
 			{
@@ -1017,11 +1017,11 @@ void QuestComplete(string sQuestName, string qname)
 			StartActorSelfDialog("GenTravel_Main");
 			break;
 		/////////////////////////////////////////////////////////////////////////////////
-		//	END OF Корсарское метро
+		//	END OF пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		/////////////////////////////////////////////////////////////////////////////////
 
 		/////////////////////////////////////////////////////////////////////////////////
-		// НАЧАЛО КВЕСТА - ДОСТАВКА ГРУЗА
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		/////////////////////////////////////////////////////////////////////////////////
 		case "trade_quest_open":
 			int iTradeGoods    = sti(pchar.CargoQuest.iTradeGoods);
@@ -1029,7 +1029,7 @@ void QuestComplete(string sQuestName, string qname)
 			int iTradeNation   = sti(pchar.CargoQuest.iTradeNation);
 			int iMoney         = sti(pchar.CargoQuest.iMoney);
             AddCharacterGoods(pchar, iTradeGoods, iQuantityGoods);
-			//задаем квест
+			//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			SetTimerCondition("generate_trade_quest", 0, 0, sti(pchar.CargoQuest.iDaysExpired), false);
 
 			pchar.quest.generate_trade_quest_progress = "begin";
@@ -1051,7 +1051,7 @@ void QuestComplete(string sQuestName, string qname)
             AddQuestUserData("DELIVERY_TRADE_QUEST", "island", attrName);
     		AddQuestUserData("DELIVERY_TRADE_QUEST", "sTermsDelivery", FindRussianDaysString(makeint(pchar.CargoQuest.iDaysExpired)));
     		AddQuestUserData("DELIVERY_TRADE_QUEST", "sMoney", FindRussianMoneyString(iMoney));
-            // немного веселой жизни
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             TraderHunterOnMap();
 		break;
 		
@@ -1069,18 +1069,18 @@ void QuestComplete(string sQuestName, string qname)
 			}
 		break;
 		/////////////////////////////////////////////////////////////////////////////////
-		// КОНЕЦ КВЕСТА - ДОСТАВКА ГРУЗА
+		// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		/////////////////////////////////////////////////////////////////////////////////
 		
 		/////////////////////////////////////////////////////////////////////////////////
-		// НАЧАЛО КВЕСТА - СПИМ В ТАВЕРНЕ
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		/////////////////////////////////////////////////////////////////////////////////
 		case "sleep_in_tavern":
 			Statistic_AddValue(pchar, "TavernSleep", 1);
 			Achievment_SetStat(pchar, 24, 1);
-			// Jason: сниманием штормление от пьянки
+			// Jason: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			if (CheckAttribute(pchar, "GenQuest.CamShuttle")) DeleteAttribute(pchar, "GenQuest.CamShuttle");
-			// Jason: если Мэри или Элен в подругах и абордажниках - ночуем вместе
+			// Jason: пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			if (GetCharacterIndex("Helena") != -1 && IsOfficer(characterFromId("Helena")) && CheckAttribute(pchar, "questTemp.Saga.Helena_officer"))
 			{
 				sld = characterFromId("Helena");
@@ -1091,7 +1091,7 @@ void QuestComplete(string sQuestName, string qname)
 				sld = characterFromId("Mary");
 				ChangeCharacterAddressGroup(sld, pchar.location + "_upstairs", "goto", "goto3");
 			}
-			if (CheckAttribute(pchar, "GenQuest.LigaAttack.Go")) DoQuestReloadToLocation(pchar.location + "_upstairs", "goto", "goto1", "LigaAttack_LoginKillers"); //лига ночных убийц атакует
+			if (CheckAttribute(pchar, "GenQuest.LigaAttack.Go")) DoQuestReloadToLocation(pchar.location + "_upstairs", "goto", "goto1", "LigaAttack_LoginKillers"); //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			else DoQuestReloadToLocation(pchar.location + "_upstairs", "goto", "goto1", "restore_hp");
 		break;
 		
@@ -1109,11 +1109,11 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 		
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-//											Киллеры Лиги в таверне
+//											пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 		case "LigaAttack_LoginKillers":
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//запретить драться
-			chrDisableReloadToLocation = true;//закрыть локацию
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			int iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+10;
 			if (iRank > 50) iRank = 50;
 			int iScl = 30 + 3*sti(pchar.rank);
@@ -1149,29 +1149,29 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 
  		////////////////////////////////////////////////////////////////////////
-		//  Начало    LOAN - ОГРАНИЧЕНИЕ ПО ВРЕМЕНИ
+		//  пїЅпїЅпїЅпїЅпїЅпїЅ    LOAN - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		////////////////////////////////////////////////////////////////////////
-		case "LoansForAll":		// Addon 2016-1 Jason Пиратская линейка	
+		case "LoansForAll":		// Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ	
 			sTemp = pchar.quest.(qname).CityId;
 			LoansMoneyAvenger(&Characters[GetCharacterIndex(sTemp + "_usurer")]);
 			Characters[GetCharacterIndex(sTemp + "_usurer")].Dialog.CurrentNode = "DeadMotherfucker";
 		break;
  		////////////////////////////////////////////////////////////////////////
-		//  Конец    LOAN - ОГРАНИЧЕНИЕ ПО ВРЕМЕНИ
+		//  пїЅпїЅпїЅпїЅпїЅ    LOAN - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		////////////////////////////////////////////////////////////////////////				
 		
  		////////////////////////////////////////////////////////////////////////
-		//  НАЧАЛО	ЦЕРКОВНЫЕ КВЕСТЫ
+		//  пїЅпїЅпїЅпїЅпїЅпїЅ	пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		////////////////////////////////////////////////////////////////////////
 		
-		// Остальное на функциях
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "Church_GenQuest2_AskedBand":
 			sQuestTown = PChar.GenQuest.ChurchQuest_2.QuestTown;
 			PChar.GenQuest.ChurchQuest_2.AskContra_1 = true;
 			sQuestTitle = PChar.GenQuest.ChurchQuest_2.QuestTown + "ChurchGenQuest2";
 			AddQuestRecordEx(sQuestTitle, "ChurchGenQuest2", "7");
 			AddQuestUserData(sQuestTitle, "sSex", GetSexPhrase("",""));
-			Log_TestInfo("ГГ думает, что на этом острове нужной банды нету.");
+			Log_TestInfo("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.");
 			break;
 			
 		case "Church_GenQuest2_BanditsIsEnemies":
@@ -1192,11 +1192,11 @@ void QuestComplete(string sQuestName, string qname)
 			break;
         
 		////////////////////////////////////////////////////////////////////////
-		//  КОНЕЦ	ЦЕРКОВНЫЕ КВЕСТЫ
+		//  пїЅпїЅпїЅпїЅпїЅ	пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		////////////////////////////////////////////////////////////////////////	
 		
  		////////////////////////////////////////////////////////////////////////
-		//  Начало    Сопровождение торговца
+		//  пїЅпїЅпїЅпїЅпїЅпїЅ    пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		////////////////////////////////////////////////////////////////////////
 		case "prepare_for_convoy_quest":
 			iTemp = sti(colonies[FindColony(pchar.quest.destination)].nation);
@@ -1212,7 +1212,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_LoginInCaptureTown(sld, true);
 			ChangeCharacterAddressGroup(sld, pchar.location, "reload", "reload1");			
 			pchar.quest.generate_convoy_quest_progress = "begin";
-			Pchar.GenQuest.Hunter2Pause = true; // ОЗГи на паузу.
+			Pchar.GenQuest.Hunter2Pause = true; // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
 			chrDisableReloadToLocation = true;
 			LAi_SetActorType(sld);
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
@@ -1245,7 +1245,7 @@ void QuestComplete(string sQuestName, string qname)
             AddQuestRecord("convoy_quest", "2");
 			CloseQuestHeader("convoy_quest");            
             sld = characterFromID("QuestTrader");
-            ChangeCharacterHunterScore(pchar, NationShortName(sti(sld.BakNation)) + "hunter", 5+rand(10));// награда
+            ChangeCharacterHunterScore(pchar, NationShortName(sti(sld.BakNation)) + "hunter", 5+rand(10));// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			RemoveCharacterCompanion(Pchar, sld);
 			OfficersReaction("bad");
 			ChangeCharacterComplexReputation(pchar,"nobility", -10);
@@ -1254,7 +1254,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.generate_convoy_quest_completed.over = "yes";
 		break;
 		
-		case "generate_convoy_quest_failed": // торговец умер
+		case "generate_convoy_quest_failed": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			ChangeCharacterComplexReputation(pchar,"nobility", -5);
 			OfficersReaction("bad");
             RemoveCharacterCompanion(Pchar, characterFromID("QuestTrader"));
@@ -1272,7 +1272,7 @@ void QuestComplete(string sQuestName, string qname)
 			{
 				sld.dialog.currentnode = "complete_convoy_quest";
 				PlaceCharacter(sld, "goto", pchar.location);			
-				Pchar.GenQuest.Hunter2Pause = true; // ОЗГи на паузу.			
+				Pchar.GenQuest.Hunter2Pause = true; // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.			
 				chrDisableReloadToLocation = true;
 				LAi_SetActorType(sld);
 				LAi_ActorDialog(sld, pchar, "", -1, 0);
@@ -1280,7 +1280,7 @@ void QuestComplete(string sQuestName, string qname)
 			else
 			{
 				ChangeCharacterComplexReputation(pchar,"nobility", -5);
-				ChangeCharacterHunterScore(pchar, NationShortName(sti(sld.BakNation)) + "hunter", 10+rand(10));// награда
+				ChangeCharacterHunterScore(pchar, NationShortName(sti(sld.BakNation)) + "hunter", 10+rand(10));// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				OfficersReaction("bad");
 				pchar.quest.generate_convoy_quest_progress = "";				
 				pchar.quest.generate_convoy_quest_failed.over = "yes";
@@ -1301,7 +1301,7 @@ void QuestComplete(string sQuestName, string qname)
 			AddQuestUserData("convoy_quest", "sCity", sTemp);
 			AddQuestUserData("convoy_quest", "sDay", FindRussianDaysString(sti(pchar.ConvoyQuest.iDay)));
             AddQuestUserData("convoy_quest", "sMoney", FindRussianMoneyString(sti(pchar.ConvoyQuest.convoymoney)));
-			// по городу вернем его порт
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
             attrName = GetPortByCityName(pchar.quest.destination);            
 			pchar.quest.generate_convoy_quest_completed.win_condition.l1 = "Location";
 			pchar.quest.generate_convoy_quest_completed.win_condition.l1.location = attrName;
@@ -1309,17 +1309,17 @@ void QuestComplete(string sQuestName, string qname)
 			if (rand(2) == 1) TraderHunterOnMap();
 		break;
  		////////////////////////////////////////////////////////////////////////
-		//  Конец    Сопровождение торговца
+		//  пїЅпїЅпїЅпїЅпїЅ    пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		////////////////////////////////////////////////////////////////////////
 
  		////////////////////////////////////////////////////////////////////////
-		//  Начало    Доставка пассажира
+		//  пїЅпїЅпїЅпїЅпїЅпїЅ    пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		////////////////////////////////////////////////////////////////////////
 		case "prepare_for_passenger_quest":
 			iTemp = sti(colonies[FindColony(sGlobalTemp)].nation);
             Rank = NPC_GenerateCharacter("QuestPassanger", "", "man", "man", makeint((sti(pchar.rank)+60)/4), iTemp, -1, true, "citizen");
 			sld = &characters[Rank];
-			sld.id = sld.id + "_" + sld.index; //меняем ID на оригинальный
+			sld.id = sld.id + "_" + sld.index; //пїЅпїЅпїЅпїЅпїЅпїЅ ID пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld.reputation = (1 + rand(44) + rand(44));
 			SetCaptanModelByEncType(sld, "trade");
 			SetRandomNameToCharacter(sld);
@@ -1327,13 +1327,13 @@ void QuestComplete(string sQuestName, string qname)
 			sld.dialog.currentnode = "prepare_convoy_quest";
 			LAi_LoginInCaptureTown(sld, true);
 			ChangeCharacterAddressGroup(sld, pchar.location, "reload", "reload1");			
-			Pchar.GenQuest.Hunter2Pause = true; // ОЗГи на паузу.
+			Pchar.GenQuest.Hunter2Pause = true; // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
 			chrDisableReloadToLocation = true;
 			LAi_SetActorType(sld);
 			LAi_ActorDialog(sld, pchar, "", -1, 0);            
 		break;
 
-		case "AllPassangersDead": // торговец умер
+		case "AllPassangersDead": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			sld = &characters[sti(pchar.quest.(qname).Idx)];
 			ChangeCharacterComplexReputation(pchar,"nobility", -5);
             RemovePassenger(PChar, sld);
@@ -1341,11 +1341,11 @@ void QuestComplete(string sQuestName, string qname)
             pchar.quest.(sTemp).over = "yes";
 			sTemp = sld.id + "_TimeOver";
 			pchar.quest.(sTemp).over = "yes";
-			DeleteAttribute(pchar, "GenQuest.ConvoyPassenger." + sld.id); //извлекаем из структуры недовольных
-			//--> смотрим Deck
+			DeleteAttribute(pchar, "GenQuest.ConvoyPassenger." + sld.id); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			//--> пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Deck
     		makearef(arAll, pchar.GenQuest.ConvoyPassenger);
 			if (GetAttributesNum(arAll) == 0) pchar.quest.ConvoyMapPassenger.over = "yes";
-			//<-- смотрим Deck
+			//<-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Deck
 			attrName = sld.index + "convoy_passenger";
 			AddQuestRecordEx(attrName, "Gen_convoy_passenger", "3");
             CloseQuestHeader(attrName);
@@ -1354,7 +1354,7 @@ void QuestComplete(string sQuestName, string qname)
 		case "AllPassangersTimeOver":
 			sld = &characters[sti(pchar.quest.(qname).Idx)];
 			sTemp = sld.id;
-			Pchar.GenQuest.ConvoyPassenger.(sTemp) = sld.index; //в структуру недовольных
+			Pchar.GenQuest.ConvoyPassenger.(sTemp) = sld.index; //пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if (!CheckAttribute(Pchar, "quest.ConvoyMapPassenger"))
 			{
 				Pchar.quest.ConvoyMapPassenger.win_condition.l1 = "MapEnter";
@@ -1362,8 +1362,8 @@ void QuestComplete(string sQuestName, string qname)
 			}
 		break;
 		
-		case "AllPassengerDeck": // разговор на палубе			
-            MakeCloneShipDeck(pchar, true); // подмена палубы
+		case "AllPassengerDeck": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ			
+            MakeCloneShipDeck(pchar, true); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			makearef(arAll, pchar.GenQuest.ConvoyPassenger);
     		iTemp = GetAttributesNum(arAll);
     		for (i=0; i<iTemp; i++)
@@ -1378,7 +1378,7 @@ void QuestComplete(string sQuestName, string qname)
 			WdmPrepareMapForAbordage(arOldMapPos);
 			DoReloadFromWorldMapToLocation("Ship_deck", "goto", "goto5");
 			ReloadFromWMtoL_complete();
-            pchar.quest.Munity = "";  // признак выхода с палубы
+            pchar.quest.Munity = "";  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             LAi_LockFightMode(Pchar, true);
         break;
         
@@ -1388,7 +1388,7 @@ void QuestComplete(string sQuestName, string qname)
             pchar.quest.(sTemp).over = "yes";
 			sTemp = sld.id + "_dead";
 			pchar.quest.(sTemp).over = "yes";
-			Pchar.GenQuest.Hunter2Pause = true; // ОЗГи на паузу.
+			Pchar.GenQuest.Hunter2Pause = true; // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
 			chrDisableReloadToLocation = true;
 			sld.dialog.currentnode = "complete_convoy_quest";
 			PlaceCharacter(sld, "goto", "random_must_be");
@@ -1396,13 +1396,13 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0);     
 		break;
  		////////////////////////////////////////////////////////////////////////
-		//  Конец    Доставка пассажира
+		//  пїЅпїЅпїЅпїЅпїЅ    пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		////////////////////////////////////////////////////////////////////////
 
  		////////////////////////////////////////////////////////////////////////
-		//  Начало   Ланд энкаунтеры
+		//  пїЅпїЅпїЅпїЅпїЅпїЅ   пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		//////////////////////////////////////////////////////////////////////// 
-		//------------------- банда грабителей -------------------------
+		//------------------- пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -------------------------
 		case "LandEnc_RaidersBegin":
 			LAi_SetFightMode(pchar, false);
 			LAi_LockFightMode(pchar, true);
@@ -1423,11 +1423,11 @@ void QuestComplete(string sQuestName, string qname)
 			}
 		break;
 
-		case "LandEnc_RaidersBeforeDialog": //если выстрел до диалога
+		case "LandEnc_RaidersBeforeDialog": //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			attrName = locations[reload_location_index].index;
 			sTemp = "EncRaiders_" + attrName;
 			pchar.quest.(sTemp).over = "yes";
-			Model = "RaidersGroup_" + attrName; //имя группы
+			Model = "RaidersGroup_" + attrName; //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sTemp = "Gang"+ attrName + "_";
 			for(i = 0; i < 4; i++)
 			{				
@@ -1443,7 +1443,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_SetCheck(Model, "LandEnc_RaidersAfrer");
 		break;
 
-		case "LandEnc_RaidersAfrer": //чистим за собой		
+		case "LandEnc_RaidersAfrer": //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ		
 			attrName = locations[reload_location_index].index;
 			sTemp = "TimeRaiders_" + attrName;
 			pchar.quest.(sTemp).over = "yes";
@@ -1451,13 +1451,13 @@ void QuestComplete(string sQuestName, string qname)
 			Delay_DeleteGroup(sTemp);
 			Gun = "Raiders_" + attrName; 			
 			AddSimpleRumour(LinkRandPhrase("Hear, hear, captain " + GetFullName(pchar) + " had fight with a bandit called " + pchar.GenQuest.(Gun).name + ". They tried to rob him, but he wasn't willing to pay. Brave man, this captain, he just slayed the scum.", 
-				"There was a fight in the jungles not long ago - bandits attacked captain " + GetFullName(pchar) + ", wanted to get the man's gold… A-ha, it was you who got rid of " + pchar.GenQuest.(Gun).name + "! I say nicely done...", 
+				"There was a fight in the jungles not long ago - bandits attacked captain " + GetFullName(pchar) + ", wanted to get the man's goldпїЅ A-ha, it was you who got rid of " + pchar.GenQuest.(Gun).name + "! I say nicely done...", 
 				"Did you hear how local gang of " + pchar.GenQuest.(Gun).name + " tried to rob captain named " + GetFullName(pchar) + "? He refused to pay and slaughtered them all."), sti(pchar.GenQuest.(Gun).nation), 5, 1);				
-			DeleteAttribute(pchar, "GenQuest." + Gun); //трем нацию и имя			
+			DeleteAttribute(pchar, "GenQuest." + Gun); //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ			
 			DeleteAttribute(&locations[FindLocation(pchar.GenQuest.LandEnc.LocId)], "fire");
 		break;
 
-		case "LandEnc_RaidersOver": //чистим за собой
+		case "LandEnc_RaidersOver": //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			sTemp = "EncRaiders_" + pchar.quest.(qname).LocIdx;
 			iTemp = sti(pchar.quest.(sTemp).EncQty);
 			sTemp = "Gang" + pchar.quest.(qname).LocIdx + "_";
@@ -1473,11 +1473,11 @@ void QuestComplete(string sQuestName, string qname)
 			sTemp = "EncRaiders_" + pchar.quest.(qname).LocIdx;
 			pchar.quest.(sTemp).over = "yes";
 			sTemp = pchar.quest.(qname).LocIdx;
-			DeleteAttribute(pchar, "GenQuest." + sTemp); //трем нацию и имя
+			DeleteAttribute(pchar, "GenQuest." + sTemp); //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ
 			DeleteAttribute(&locations[FindLocation(pchar.GenQuest.LandEnc.LocId)], "fire");
 		break;
 		
-		//------------------- злые карибы -------------------------
+		//------------------- пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ -------------------------
 		case "LandEnc_CaribBegin":
 			LAi_SetFightMode(pchar, false);
 			LAi_LockFightMode(pchar, true);
@@ -1498,11 +1498,11 @@ void QuestComplete(string sQuestName, string qname)
 			}
 		break;
 
-		case "LandEnc_CaribBeforeDialog": //если выстрел до диалога - нападение
+		case "LandEnc_CaribBeforeDialog": //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			attrName = locations[reload_location_index].index;
 			sTemp = "EncCarib_" + attrName;
 			pchar.quest.(sTemp).over = "yes";
-			Model = "CaribGroup_" + attrName; //имя группы
+			Model = "CaribGroup_" + attrName; //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sTemp = "Carib"+ attrName + "_";
 			for(i = 0; i < 4; i++)
 			{				
@@ -1518,11 +1518,11 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_SetCheck(Model, "LandEnc_CaribAfrer");
 		break;
 		
-		case "LandEnc_MiskitoBeforeDialog": //если выстрел до диалога - бегство
+		case "LandEnc_MiskitoBeforeDialog": //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			attrName = locations[reload_location_index].index;
 			sTemp = "EncCarib_" + attrName;
 			pchar.quest.(sTemp).over = "yes";
-			Model = "CaribGroup_" + attrName; //имя группы
+			Model = "CaribGroup_" + attrName; //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sTemp = "Carib"+ attrName + "_";
 			for(i = 0; i < 4; i++)
 			{				
@@ -1536,7 +1536,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("LandEnc_CaribAfrer", 10.0);
 		break;
 
-		case "LandEnc_CaribAfrer": //чистим за собой		
+		case "LandEnc_CaribAfrer": //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ		
 			attrName = locations[reload_location_index].index;
 			sTemp = "TimeCarib_" + attrName;
 			pchar.quest.(sTemp).over = "yes";
@@ -1547,7 +1547,7 @@ void QuestComplete(string sQuestName, string qname)
 			rItm.shown = false;
 		break;
 
-		case "LandEnc_CaribOver": //чистим за собой
+		case "LandEnc_CaribOver": //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			sTemp = "EncCarib_" + pchar.quest.(qname).LocIdx;
 			iTemp = sti(pchar.quest.(sTemp).EncQty);
 			sTemp = "Carib" + pchar.quest.(qname).LocIdx + "_";
@@ -1567,12 +1567,12 @@ void QuestComplete(string sQuestName, string qname)
 			rItm.shown = false;
 		break;
 		
-		// пещерные энкаунтеры
-		case "CaveEnc_RaidersBeforeDialog": //если выстрел до диалога
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		case "CaveEnc_RaidersBeforeDialog": //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			attrName = locations[reload_location_index].index;
 			sTemp = "TimeCaveRaiders_" + attrName;
 			pchar.quest.(sTemp).over = "yes";
-			Model = "CaveGroup_" + attrName; //имя группы
+			Model = "CaveGroup_" + attrName; //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sTemp = "CaveBandos"+ attrName + "_";
 			for(i=0; i<4; i++)
 			{				
@@ -1587,7 +1587,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_SetCheck(Model, "CaveEnc_RaidersAfrer");
 		break;
 		
-		case "CaveEnc_RaidersAfrer": //чистим за собой	
+		case "CaveEnc_RaidersAfrer": //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ	
 			chrDisableReloadToLocation = false;
 			attrName = locations[reload_location_index].index;
 			sTemp = "CaveGroup_" + attrName;			
@@ -1595,7 +1595,7 @@ void QuestComplete(string sQuestName, string qname)
 			DeleteAttribute(&locations[FindLocation(pchar.GenQuest.LandEnc.LocId)], "fire");
 		break;
 		
-		case "CaveEnc_RaidersOver": //чистим за собой
+		case "CaveEnc_RaidersOver": //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			sTemp = "CaveBandos" + pchar.quest.(qname).LocIdx + "_";
 			for(i=0; i<4; i++)
 			{
@@ -1617,7 +1617,7 @@ void QuestComplete(string sQuestName, string qname)
 			}
 		break;
 		
-		//------------------- девка в джунлях -------------------------
+		//------------------- пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -------------------------
 		case "LandEnc_RapersTalk":
 			for(i = 1; i <= 3; i++)
 			{
@@ -1630,7 +1630,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_LockFightMode(pchar, true);
 		break;
 
-		case "LandEnc_RapersBeforeDialog": //если выстрел до диалога
+		case "LandEnc_RapersBeforeDialog": //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if (GetCharacterIndex("CangGirl") != -1) LAi_RemoveCheckMinHP(CharacterFromID("CangGirl"));			
 			for(i = 1; i <= 3; i++)
 			{				
@@ -1648,7 +1648,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorAfraid(sld, pchar, true);
 		break;
 
-		case "LandEnc_RapersAfrer": // грохнули бандюков
+		case "LandEnc_RapersAfrer": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sGlobalTemp = "Saved_CangGirl";
 			sld = CharacterFromID("CangGirl");
 			sld.greeting = "rapers_girl_2";
@@ -1658,7 +1658,7 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 
 		case "LandEnc_RapersBadExit":
-			if (GetCharacterIndex("CangGirl") == -1) // если ГГ собственноручно прибил тетку
+			if (GetCharacterIndex("CangGirl") == -1) // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			{
 				ChangeCharacterComplexReputation(pchar,"nobility", -3);
 				AddSimpleRumour(LinkRandPhrase("Did you hear about a murder of " + pchar.GenQuest.EncGirl.name + "? Poor girl, she was killed in the jungles recently. They should find the murderer and hang him!", 
@@ -1674,9 +1674,9 @@ void QuestComplete(string sQuestName, string qname)
 			}
 			else
 			{
-				if (sGlobalTemp == "Saved_CangGirl") // спасли тетку
+				if (sGlobalTemp == "Saved_CangGirl") // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				{
-					if(pchar.GenQuest.EncGirl == "close") // .. и послали ее куда подальше
+					if(pchar.GenQuest.EncGirl == "close") // .. пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					{
 						characters[GetCharacterIndex("CangGirl")].lifeDay = 0;
 						DeleteAttribute(pchar, "GenQuest.EncGirl");
@@ -1686,13 +1686,13 @@ void QuestComplete(string sQuestName, string qname)
 						if(!CheckAttribute(pchar, "GenQuest.EncGirl.Ransom")) 
 						{
 							ChangeCharacterComplexReputation(pchar,"nobility", 5);
-							//AddSimpleRumour(LinkRandPhrase("Вы слышали, "+ GetSexPhrase("какой-то капитан","какая-то морячка") +" спас"+ GetSexPhrase("","ла") +" девушку по имени " + pchar.GenQuest.EncGirl.name + " от бандитов, буквально вытащил ее из их лап!"+ GetSexPhrase(" Какой прекрасный человек и настоящий мужчина.","") +"", 
-							//	"Вы знаете, капитан " + GetFullName(pchar) + " спас"+ GetSexPhrase("","ла") +" девушку по имени " + pchar.GenQuest.EncGirl.name + " от насильников в джунглях... А-а, так это же вы!! Я вами восхищаюсь...", 
-							//	"Девушке по имени " + pchar.GenQuest.EncGirl.name + " здорово повезло - недавно на нее напали бандиты в джунглях, хотели изнасиловать, видать. Но ничего у них не вышло, хе-хе, и благодарить она должна капитана " + GetMainCharacterNameGen() + "!"), sti(pchar.GenQuest.EncGirl.nation), 3, 1);	
+							//AddSimpleRumour(LinkRandPhrase("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, "+ GetSexPhrase("пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ","пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ") +" пїЅпїЅпїЅпїЅ"+ GetSexPhrase("","пїЅпїЅ") +" пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ " + pchar.GenQuest.EncGirl.name + " пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ!"+ GetSexPhrase(" пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.","") +"", 
+							//	"пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + GetFullName(pchar) + " пїЅпїЅпїЅпїЅ"+ GetSexPhrase("","пїЅпїЅ") +" пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ " + pchar.GenQuest.EncGirl.name + " пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ... пїЅ-пїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ!! пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...", 
+							//	"пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ " + pchar.GenQuest.EncGirl.name + " пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ-пїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + GetMainCharacterNameGen() + "!"), sti(pchar.GenQuest.EncGirl.nation), 3, 1);	
 						}		
 					}	
 				}
-				else // оставил на растерзание бандитам
+				else // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				{	
 					for(i = 1; i <= 3; i++)
 					{
@@ -1716,12 +1716,12 @@ void QuestComplete(string sQuestName, string qname)
 					}
 					AddSimpleRumour(RandPhraseSimple("Well, captain " + GetFullName(pchar) + ", nobody could ever think that you would leave a helpless woman in the hands of bandits to be their plaything. Poor " + pchar.GenQuest.EncGirl.name + ", if only I had words...", 
 						"You know, captain, you are a real bastard. How could turn away from a helpless girl in the jungles? Do you have any idea what they did to her? Poor " + pchar.GenQuest.EncGirl.name + ", no one is going to marry her ever..."), sti(pchar.GenQuest.EncGirl.nation), 5, 1);
-					DeleteAttribute(pchar, "GenQuest.EncGirl"); //трем нацию и имя	
+					DeleteAttribute(pchar, "GenQuest.EncGirl"); //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ	
 				}
 			}			
 		break;		
-		//------------------- девка просит помочь подруге -------------------------
-		case "Enc_FriendGirl_after": //если выстрел до диалога
+		//------------------- пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -------------------------
+		case "Enc_FriendGirl_after": //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			ChangeCharacterComplexReputation(pchar,"nobility", -(rand(4)+1));
 			if (rand(1))
 			{
@@ -1730,7 +1730,7 @@ void QuestComplete(string sQuestName, string qname)
 					"Her name was " + pchar.GenQuest.EncGirl.name  + ", and she died in the jungles. Nothing striking, I'll tell ya, it is not safe out there..."), sti(pchar.GenQuest.EncGirlF.nation), 5, 1);
 			}
 		break;
-		//------------------- патруль в джунглях -------------------------
+		//------------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -------------------------
 		case "LandEnc_PatrolBegin":
 			LAi_SetFightMode(pchar, false);
 			LAi_LockFightMode(pchar, true);
@@ -1748,11 +1748,11 @@ void QuestComplete(string sQuestName, string qname)
 			}
 		break;
 
-		case "LandEnc_PatrolBeforeDialog": //если выстрел до диалога
+		case "LandEnc_PatrolBeforeDialog": //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			attrName = locations[reload_location_index].index;
 			sTemp = "EncPatrol_" + attrName;
 			pchar.quest.(sTemp).over = "yes";
-			Model = "PatrolGroup_" + attrName; //имя группы
+			Model = "PatrolGroup_" + attrName; //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sTemp = "Patrol"+ attrName + "_";
 			for(i = 0; i < 4; i++)
 			{				
@@ -1766,27 +1766,27 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_SetCheck(Model, "LandEnc_PatrolAfrer");
 		break;
 
-		case "LandEnc_PatrolAfrer": //чистим за собой
+		case "LandEnc_PatrolAfrer": //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			attrName = locations[reload_location_index].index;
 			sTemp = "TimePatrol_" + attrName;
 			pchar.quest.(sTemp).over = "yes";
 			sTemp = "PatrolGroup_" + attrName;
 			Delay_DeleteGroup(sTemp);
-			//слухи
+			//пїЅпїЅпїЅпїЅпїЅ
 			AddSimpleRumour(LinkRandPhrase("Recently they had found our officer and his whole unit dead. Who could kill them? And why?", 
 				"Our commandant regularly sends patrols in the jungles, but I have no clue what he is going to do now. Soldiers were found dead there not long ago...", 
 				"Damn it, someone had slaughtered a whole unit of our soldiers  outside the city..."), sti(pchar.GenQuest.(attrName).nation), 5, 1);
 			AddSimpleRumour("They say that captain " + GetFullName(pchar) + "  run against soldiers of " + NationNameGenitive(sti(pchar.GenQuest.(attrName).nation)) + " in the jungles and eliminated all of them. Ha, " + NationNamePeople(sti(pchar.GenQuest.(attrName).nation)) + " are worthless fighters...", sti(pchar.GenQuest.(attrName).nation)+10, 5, 1);
-			DeleteAttribute(pchar, "GenQuest." + attrName); //трем нацию патруля, если есть
+			DeleteAttribute(pchar, "GenQuest." + attrName); //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		break;
 
-		case "LandEnc_PatrolOver": //чистим за собой
+		case "LandEnc_PatrolOver": //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			sTemp = pchar.quest.(qname).LocIdx;
-			//слухи
+			//пїЅпїЅпїЅпїЅпїЅ
 			AddSimpleRumour(LinkRandPhrase("I must had heard that some captain was inspected outside the city by a patrol...", 
 				"Hm, as far as I know, you had been inspected by our patrol outside the city. I don't know how effective it was...", 
 				"Our commandant will enforce patrolling the jungles. You must know that already, you were inspected not long ago..."), sti(pchar.GenQuest.(sTemp).nation), 5, 1);
-			DeleteAttribute(pchar, "GenQuest." + sTemp); //трем нацию патруля, если есть
+			DeleteAttribute(pchar, "GenQuest." + sTemp); //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			sTemp = "PatrolGroup_" + pchar.quest.(qname).LocIdx;
 			LAi_group_RemoveCheck(sTemp);
 			LAi_group_Delete(sTemp);
@@ -1795,22 +1795,22 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.(sTemp).over = "yes";
 		break;
 
-		case "DeleteGroupOnExitLocation": //группу нулим
+		case "DeleteGroupOnExitLocation": //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			sTemp = pchar.quest.DeleteGroupOnExitLocation.GroupName;
 			LAi_group_Delete(sTemp);
 		break;
 
  		////////////////////////////////////////////////////////////////////////
-		//  Конец   Ланд энкаунтеры
+		//  пїЅпїЅпїЅпїЅпїЅ   пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		//////////////////////////////////////////////////////////////////////// 
 
  		////////////////////////////////////////////////////////////////////////
-		//  Начало    Уничтожение банды
+		//  пїЅпїЅпїЅпїЅпїЅпїЅ    пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		////////////////////////////////////////////////////////////////////////  
-		case "AllMayorsQuests_Late": //провальное прерывание на все квесты мэра
+		case "AllMayorsQuests_Late": //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			sTemp = pchar.GenQuest.questName;
-			pchar.quest.(sTemp).over = "yes"; //снимаем прерывание на квест
-			pchar.GenQuest.(sTemp) = "Late"; //флаг опоздал
+			pchar.quest.(sTemp).over = "yes"; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			pchar.GenQuest.(sTemp) = "Late"; //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			npchar = characterFromId(pchar.GenQuest.(sTemp).MayorId);
 			AddQuestRecord("MayorsQuestsList", "20");
 			AddQuestUserData("MayorsQuestsList", "ColonyName", XI_ConvertString("Colony"+npchar.city+"Gen"));
@@ -1821,25 +1821,25 @@ void QuestComplete(string sQuestName, string qname)
 			if (rand(1))
 			{
 				chrDisableReloadToLocation = true;
-				Pchar.GenQuest.Hunter2Pause = true; // ОЗГи на паузу.			
+				Pchar.GenQuest.Hunter2Pause = true; // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.			
 				LAi_group_Delete("EnemyFight");
 				sTemp = pchar.GenQuest.questName;
-				pchar.quest.(sTemp).over = "yes"; //снимаем текущее многоразовое прерывание					
+				pchar.quest.(sTemp).over = "yes"; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ					
 				ref location = &locations[reload_location_index];
-				LAi_LocationFightDisable(location, true);      //лочим возможность начать драку до диалог, это лишнее
+				LAi_LocationFightDisable(location, true);      //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 				string encGroup = LAi_FindRandomLocator("encdetector");
 				sTemp = "locators." + encGroup;
 				makearef(arAll, location.(sTemp));
-				iTemp = GetAttributesNum(arAll); //кол-во человек в банде
-				if (iTemp <= 0 ) iTemp = 1; //если локаторов меньше четырех
-				//--> генерим ранг 
+				iTemp = GetAttributesNum(arAll); //пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
+				if (iTemp <= 0 ) iTemp = 1; //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+				//--> пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 
 				if (sti(pchar.rank) > 6) 
 				{
 					if (sti(pchar.rank) > 20) Rank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*4/iTemp);
 					else Rank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*2.5/iTemp);
 				}
 				else  
-				{	//казуалам зеленый свет на начало игры
+				{	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 					if (sti(pchar.rank) > 3) Rank = sti(pchar.rank);
 					else 
 					{
@@ -1847,7 +1847,7 @@ void QuestComplete(string sQuestName, string qname)
 						iTemp = 1;
 					}
 				}	
-				//<-- генерим ранг 
+				//<-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 
 				string iModel[10];
 				iModel[0] = "citiz_41";
 				iModel[1] = "citiz_42";
@@ -1866,21 +1866,21 @@ void QuestComplete(string sQuestName, string qname)
 					if (iModel[ShipType] != "")
 					{
 						if (i == 0) 
-						{   //главарь банды
+						{   //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 							int iMainGang = NPC_GenerateCharacter("MayorQuestGang_" + i, iModel[ShipType], "man", "man", Rank, PIRATE, 0, true, "hunter");
 							sld = &characters[iMainGang];
-							sld.name = pchar.GenQuest.DestroyGang.name;  //имя главаря
+							sld.name = pchar.GenQuest.DestroyGang.name;  //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 							sld.lastname = pchar.GenQuest.DestroyGang.lastname;
 							sld.dialog.filename = "MayorQuests_dialog.c";
 							sld.dialog.currentnode = "DestroyGang_begin";
 							sld.greeting = "banditos"; 
-							sld.SaveItemsForDead   = true; // сохранять на трупе вещи
-							sld.DontClearDead = true;  // не убирать труп через 200с
+							sld.SaveItemsForDead   = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+							sld.DontClearDead = true;  // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 200пїЅ
 						}
 						else sld = GetCharacter(NPC_GenerateCharacter("MayorQuestGang_" + i, iModel[ShipType], "man", "man", Rank, PIRATE, 0, true, "marginal"));
 						LAi_SetActorType(sld);
 						SetFantomParamFromRank(sld, Rank, true);
-						//Получим локатор для логина
+						//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 						attrName = GetAttributeName(GetAttributeN(arAll, i));
 						ChangeCharacterAddressGroup(sld, location.id, encGroup, attrName);					
 						LAi_SetActorType(sld);
@@ -1908,30 +1908,30 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 
 		case "DestroyGang_Afrer":
-			pchar.quest.AllMayorsQuests_Late.over = "yes"; //снимаем общий таймер
+			pchar.quest.AllMayorsQuests_Late.over = "yes"; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			Delay_DeleteGroup("EnemyFight");
 			makearef(arAll, pchar.GenQuest.DestroyGang);
-			pchar.GenQuest.DestroyGang = "Execute"; //флаг выполнил успешно
+			pchar.GenQuest.DestroyGang = "Execute"; //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sTemp = GetFullName(&characters[GetCharacterIndex(arAll.MayorId)]);
-			// судовой журнал
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			AddQuestRecord("MayorsQuestsList", "2");
 			AddQuestUserData("MayorsQuestsList", "ColonyName", XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.DestroyGang.MayorId)].city+"Gen"));
 			AddQuestUserData("MayorsQuestsList", "MayorName", sTemp);
 			AddQuestUserData("MayorsQuestsList", "GangName", GetFullName(arAll));
-			// слухи
-			//AddSimpleRumour(LinkRandPhrase("Вы знаете, губернатор " + sTemp + " поручил неко"+ GetSexPhrase("ему капитану","й морячке") +" " + GetMainCharacterNameDat() + " уничтожить известного бандита по имени " + GetFullName(arAll) + ". И, кажется, что "+ GetSexPhrase("капитан выполнил","она выполнила") +" задание губернатора...", 
-			//	""+ GetSexPhrase("Какой-то смелый капитан вызвался","Какая-то смелая девушка вызвалась") +" найти и уничтожить местного бандита по имени " + GetFullName(arAll) + ". И, похоже, он"+ GetSexPhrase("","а") +" сделал"+ GetSexPhrase("","а") +" это!", 
-			//	"Ха, наконец-то наш губернатор взялся за наведение порядка в джунглях - он поручил капитану " + GetMainCharacterNameDat() + " разыскать в джунглях и убить наиболее известного бандита. И вы знате, этот бандит, " + GetFullName(arAll) + " - мертв!"), sti(characters[GetCharacterIndex(arAll.MayorId)].nation), 5, 1);
+			// пїЅпїЅпїЅпїЅпїЅ
+			//AddSimpleRumour(LinkRandPhrase("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + sTemp + " пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ"+ GetSexPhrase("пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ","пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ") +" " + GetMainCharacterNameDat() + " пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ " + GetFullName(arAll) + ". пїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ "+ GetSexPhrase("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ","пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ") +" пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...", 
+			//	""+ GetSexPhrase("пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ","пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ") +" пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ " + GetFullName(arAll) + ". пїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ"+ GetSexPhrase("","пїЅ") +" пїЅпїЅпїЅпїЅпїЅпїЅ"+ GetSexPhrase("","пїЅ") +" пїЅпїЅпїЅ!", 
+			//	"пїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + GetMainCharacterNameDat() + " пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, " + GetFullName(arAll) + " - пїЅпїЅпїЅпїЅпїЅ!"), sti(characters[GetCharacterIndex(arAll.MayorId)].nation), 5, 1);
 		break;
  		////////////////////////////////////////////////////////////////////////
-		//  Конец    Уничтожение банды
+		//  пїЅпїЅпїЅпїЅпїЅ    пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		////////////////////////////////////////////////////////////////////////
 
  		////////////////////////////////////////////////////////////////////////
-		//  ОЗГ - пассажир
+		//  пїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		//////////////////////////////////////////////////////////////////////// 
 		case "ContraPass_GivePrisoner":
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = GetCharacter(NPC_GenerateCharacter("ContraPassTempsailor", "citiz_36", "man", "man", 10, sti(pchar.Mation), 0, true, "quest"));
 			sld.Dialog.Filename = "MayorQuests_dialog.c";
 			sld.dialog.currentnode = "Tempsailor";
@@ -1943,11 +1943,11 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
  		////////////////////////////////////////////////////////////////////////
-		//  дезертир
+		//  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		//////////////////////////////////////////////////////////////////////// 
 		case "Fugitive_afterfight":
-			chrDisableReloadToLocation = false;//открыть локацию
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.GenQuest.FindFugitive.City+"_tavern")], true);//запретить драться - для таверны, для остальных пройдет без последствий
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.GenQuest.FindFugitive.City+"_tavern")], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			sld = characterFromId("Fugitive");
 			LAi_SetActorType(sld);
@@ -1956,7 +1956,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
  		////////////////////////////////////////////////////////////////////////
-		//  Начало    Повод для спешки
+		//  пїЅпїЅпїЅпїЅпїЅпїЅ    пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		//////////////////////////////////////////////////////////////////////// 		
 		
 		case "ReasonToFast_PatrolDied":
@@ -1966,7 +1966,7 @@ void QuestComplete(string sQuestName, string qname)
 			if(pchar.questTemp.ReasonToFast == "PatrolAfterHunter") 
 			{
 				AddQuestRecord("ReasonToFast", "6");
-				AddQuestUserData("ReasonToFast", "sSex", GetSexPhrase("","а"));
+				AddQuestUserData("ReasonToFast", "sSex", GetSexPhrase("","пїЅ"));
 			}			
 			if(pchar.questTemp.ReasonToFast == "PatrolAfter")
 			{				
@@ -1976,7 +1976,7 @@ void QuestComplete(string sQuestName, string qname)
 			{
 				AddQuestRecord("ReasonToFast", "4");
 			}
-			DeleteAttribute(pchar, "questTemp.ReasonToFast.cantSpeakOther"); //можем говорить с губером	
+			DeleteAttribute(pchar, "questTemp.ReasonToFast.cantSpeakOther"); //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ	
 
 			pchar.quest.ReasonToFast_SpeakMayor.win_condition.l1 = "Timer";
 			pchar.quest.ReasonToFast_SpeakMayor.win_condition.l1.date.day = GetAddingDataDay(0, 0, 1);
@@ -1988,8 +1988,8 @@ void QuestComplete(string sQuestName, string qname)
 			SetNationRelation2MainCharacter(sti(pchar.questTemp.ReasonToFast.GuardNation), sti(pchar.questTemp.ReasonToFast.relation));
 			pchar.questTemp.ReasonToFast = "PatrolDied";
 			pchar.questTemp.ReasonToFast.speakAfterPatrolDied = false;
-			DeleteAttribute(pchar, "GenQuest.HunterScore2Pause"); //вертаем начисление нзг
-			DeleteAttribute(pchar, "GenQuest.ReputationNotChange"); //вертаем смену репы 
+			DeleteAttribute(pchar, "GenQuest.HunterScore2Pause"); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
+			DeleteAttribute(pchar, "GenQuest.ReputationNotChange"); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 
 		break;
 				
 		case "ReasonToFast_MeetHunter":
@@ -2100,11 +2100,11 @@ void QuestComplete(string sQuestName, string qname)
         break;
 
  		////////////////////////////////////////////////////////////////////////
-		//  Конец    Повод для спешки
+		//  пїЅпїЅпїЅпїЅпїЅ    пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		//////////////////////////////////////////////////////////////////////// 		
 
  		////////////////////////////////////////////////////////////////////////
-		//  Начало   Генератор - Поручение капитана "Операция 'Галеон'"
+		//  пїЅпїЅпїЅпїЅпїЅпїЅ   пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 'пїЅпїЅпїЅпїЅпїЅпїЅ'"
 		//////////////////////////////////////////////////////////////////////// 
 
 		case "CaptainComission_FightInDeck":
@@ -2132,7 +2132,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.CaptainComission_CapIsDead.function = "CaptainComission_CapIsDead";
 			LAi_SetFightMode(pchar, false);
 			LAi_LocationFightDisable(loadedLocation, true);
-			DoQuestCheckDelay("TalkSelf_Quest", 0.4); //диалог сам-на-сам
+			DoQuestCheckDelay("TalkSelf_Quest", 0.4); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅ-пїЅпїЅпїЅ
 		break;
 
 		case "CaptainComission_TalkCanoneer":
@@ -2162,7 +2162,7 @@ void QuestComplete(string sQuestName, string qname)
    			sld = characterFromID("CapComission_Canoneer");
 			LAi_SetSitType(sld);
 			LAi_SetPlayerType(pchar);
-			PlaceCharacter(pchar, "tables", pchar.location); // ближний к столу
+			PlaceCharacter(pchar, "tables", pchar.location); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 		break;
 
 		case "CaptainComission_GangDialog_1":
@@ -2238,11 +2238,11 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestFunctionDelay("CaptainComission_BattleInShore", 8.0); 
 		break;
  		////////////////////////////////////////////////////////////////////////
-		//  Конец   Генератор - Поручение капитана "Операция 'Галеон'"
+		//  пїЅпїЅпїЅпїЅпїЅ   пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 'пїЅпїЅпїЅпїЅпїЅпїЅ'"
 		//////////////////////////////////////////////////////////////////////// 
 
 		////////////////////////////////////////////////////////////////////////
-		//  Начало   Генератор - "Кораблекрушенцы"
+		//  пїЅпїЅпїЅпїЅпїЅпїЅ   пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 		//////////////////////////////////////////////////////////////////////// 		
 		
 		case "ShipWreck_RemoveSailorsFromShore":
@@ -2258,21 +2258,21 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 		
 		////////////////////////////////////////////////////////////////////////
-		//  Конец   Генератор - "Кораблекрушенцы"
+		//  пїЅпїЅпїЅпїЅпїЅ   пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 		//////////////////////////////////////////////////////////////////////// 				
 		
    		////////////////////////////////////////////////////////////////////////
-		//  Начало   Бордель
+		//  пїЅпїЅпїЅпїЅпїЅпїЅ   пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		//////////////////////////////////////////////////////////////////////// 
         case "Brothel_checkVisitTime":
-			LocatorReloadEnterDisable(qname + "_Brothel", "reload2_back", true); //закрываем комнату
+			LocatorReloadEnterDisable(qname + "_Brothel", "reload2_back", true); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId(pchar.quest.(qname).HorseId);
 			sld.location = qname+"_Brothel";
 			sld.location.group = "goto";
 			sld.location.locator = pchar.quest.(qname).locator;
 			//ChangeCharacterAddressGroup(sld, qname+"_Brothel", "goto", pchar.quest.(qname).locator);
-			DeleteAttribute(&characters[GetCharacterIndex(qname + "_Hostess")], "quest.selected"); //снимаем флаг у хозяйки
-			//==> ноду девкам
+			DeleteAttribute(&characters[GetCharacterIndex(qname + "_Hostess")], "quest.selected"); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			//==> пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			for(i=0; i<MAX_CHARACTERS; i++)
 			{
 				makeref(sld, Characters[i]);
@@ -2283,11 +2283,11 @@ void QuestComplete(string sQuestName, string qname)
 			}
         break;	
 		////////////////////////////////////////////////////////////////////////
-		//  Конец    Бордель
+		//  пїЅпїЅпїЅпїЅпїЅ    пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		//////////////////////////////////////////////////////////////////////// 
 
 		////////////////////////////////////////////////////////////////////////
-		//  Начало Тюремные квесты
+		//  пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		//////////////////////////////////////////////////////////////////////// 
         case "GivePrisonFree":
 			chrDisableReloadToLocation = true;
@@ -2401,10 +2401,10 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_Delete("DeliveQuest_Prison");
 		break;
 		////////////////////////////////////////////////////////////////////////
-		//  Конец  Тюремные квесты
+		//  пїЅпїЅпїЅпїЅпїЅ  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		//////////////////////////////////////////////////////////////////////// 
 
-		// универсальный диалогостартер (см метод  SetActorDialogAny2Pchar)
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ  SetActorDialogAny2Pchar)
         case "ActorDialog_Any2Pchar":
             LAi_SetActorType(PChar);
             LAi_ActorWaitDialog(Pchar, characterFromID(Pchar.AutoQuest.NPCharId));
@@ -2458,7 +2458,7 @@ void QuestComplete(string sQuestName, string qname)
 			TavernWaitDate("wait_day");
 		break;
 		
-		case "MayorSitBack": //посадить мэра обратно
+		case "MayorSitBack": //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			iTemp = GetCharacterIndex(Pchar.quest.MayorSitBack.mayorId)
 			if (iTemp > 0)
 			{
@@ -2509,7 +2509,7 @@ void QuestComplete(string sQuestName, string qname)
 			    QuestSetCurrentNode("Isabella", "NewLife_afterSex");
 			    LAi_SetStayType(CharacterFromID("Isabella"));
 			}
-			//квест официантки
+			//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if (pchar.questTemp.different == "FackWaitress_facking")
 			{
 				sld = characterFromId("WairessQuest");
@@ -2528,7 +2528,7 @@ void QuestComplete(string sQuestName, string qname)
 				pchar.money = sti(pchar.money) / sti(pchar.questTemp.different.FackWaitress.Kick);
 				chrDisableReloadToLocation = false;
 			}
-			//квест развода хозяйки борделя
+			//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if (pchar.questTemp.different == "HostessSex" && CheckAttribute(pchar, "questTemp.different.HostessSex.city"))
 			{
 				sld = characterFromId(pchar.questTemp.different.HostessSex.city + "_Hostess");
@@ -2552,11 +2552,11 @@ void QuestComplete(string sQuestName, string qname)
 				chrDisableReloadToLocation = false;
 				SetFunctionTimerCondition("EncGirl_SpeakTavernKeeper", 0, 0, 1, false);
 			}
-			if (CheckAttribute(pchar, "questTemp.Consumption.Sex"))//Jason, цена чахотки
+			if (CheckAttribute(pchar, "questTemp.Consumption.Sex"))//Jason, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
-				LocatorReloadEnterDisable("PortSpein_tavern", "reload1_back", false); //открыть таверну
-				LocatorReloadEnterDisable("PortSpein_tavern", "reload2_back", true); //закрыть комнату
-				bDisableFastReload = false;//открыть переход
+				LocatorReloadEnterDisable("PortSpein_tavern", "reload1_back", false); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+				LocatorReloadEnterDisable("PortSpein_tavern", "reload2_back", true); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+				bDisableFastReload = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				AddCharacterHealth(pchar, 7);
 				ChangeCharacterComplexReputation(pchar, "nobility", -3);
 				sld = characterFromId("PortSpein_waitress");
@@ -2566,9 +2566,9 @@ void QuestComplete(string sQuestName, string qname)
 			}
 			if (pchar.location == "Minentown_tavern_upstairs")//Jason
 			{
-				LocatorReloadEnterDisable("Minentown_tavern", "reload1_back", false); //открыть таверну
-				LocatorReloadEnterDisable("Minentown_tavern", "reload2_back", true); //закрыть комнату
-				bDisableFastReload = false;//открыть переход
+				LocatorReloadEnterDisable("Minentown_tavern", "reload1_back", false); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+				LocatorReloadEnterDisable("Minentown_tavern", "reload2_back", true); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+				bDisableFastReload = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				DeleteAttribute(pchar, "GenQuest.CannotWait");
 				DeleteAttribute(pchar, "GenQuest.MinentownSex");
 				if(IsEquipCharacterByArtefact(pchar, "totem_03")) AddCharacterHealth(pchar, 10);
@@ -2579,15 +2579,15 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_ActorGoToLocation(sld, "reload", "reload1_back", "none", "", "", "", 4.0);
 				DoQuestCheckDelay("Minentown_waittime", 7.0);
 			}
-			if (CheckAttribute(pchar, "questTemp.FMQT") && pchar.location == "CommonBedroom")// Addon-2016 Jason, французские миниквесты (ФМК) Тортуга
+			if (CheckAttribute(pchar, "questTemp.FMQT") && pchar.location == "CommonBedroom")// Addon-2016 Jason, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ) пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				FMQT_FinalWithSex();
 			}
-			if (pchar.location == "SantoDomingo_Brothel_room" && CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "jewelry_2")// Addon 2016-1 Jason пиратская линейка
+			if (pchar.location == "SantoDomingo_Brothel_room" && CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "jewelry_2")// Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				AddQuestRecord("Roger_1", "3");
 				pchar.questTemp.Mtraxx = "jewelry_3";
-				SetFunctionTimerCondition("Mtraxx_JewelryHavanaOver", 0, 0, 7, false); // таймер
+				SetFunctionTimerCondition("Mtraxx_JewelryHavanaOver", 0, 0, 7, false); // пїЅпїЅпїЅпїЅпїЅпїЅ
 				sld = characterFromId(sTotalTemp);
 				ChangeCharacterAddressGroup(sld, "none", "", "");
 				pchar.quest.mtr_jewelry_havana.win_condition.l1 = "location";
@@ -2601,7 +2601,7 @@ void QuestComplete(string sQuestName, string qname)
 			TavernWaitDate(sTotalTemp);
 		break;
 
-		//поисковый генератор
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "CitizSeekCap_afterCabinFight":
 			sld = GetCharacter(NPC_GenerateCharacter(pchar.GenQuest.CitizSeekCap.label + "_" + pchar.GenQuest.CitizSeekCap.WifeCity, pchar.GenQuest.CitizSeekCap.model, pchar.GenQuest.CitizSeekCap.sex, pchar.GenQuest.CitizSeekCap.ani, 5, pchar.GenQuest.CitizSeekCap.nation, -1, false, "citizen"));
 			sld.name = pchar.GenQuest.CitizSeekCap.WifeName;
@@ -2626,22 +2626,22 @@ void QuestComplete(string sQuestName, string qname)
 			sld.lastname = pchar.GenQuest.CitizSeekCap.PrisonerLastname;
 			//pchar.GenQuest.LastQuestPrisonerIdx = SetCharToPrisoner(sld);
 			//SetCharacterRemovable(&characters[sti(pchar.GenQuest.LastQuestPrisonerIdx)], false);
-			AddPassenger(pchar, sld, false);//добавить пассажира
+			AddPassenger(pchar, sld, false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			SetCharacterRemovable(sld, false);
-			//log_info(sld.name+" помещен на ваш корабль под стражу"); // 170712
+			//log_info(sld.name+" пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ"); // 170712
 			PlaySound("interface\notebook.wav");
 			DeleteAttribute(pchar, "GenQuest.CitizSeekCap");
 		break;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Jason----------------------------------------------работорговец---------------------------------------
+//Jason----------------------------------------------пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ---------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-		case "Slavetrader_findTortugaRat"://охрана Гонтьера
-            chrDisableReloadToLocation = true; // закрыть выход из локации.
+		case "Slavetrader_findTortugaRat"://пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            chrDisableReloadToLocation = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 			sld = GetCharacter(NPC_GenerateCharacter("Ratlover", "women_14", "woman", "towngirl", 10, FRANCE, -1, false, "citizen"));
             ChangeCharacterAddressGroup(sld, "Tortuga_HouseHut", "barmen",  "bar2");
            	sld.Dialog.Filename = "Quest\Other_quests_NPC.c";
-			sld.dialog.currentnode = "Rat_lover"; // диалоговый узел
+			sld.dialog.currentnode = "Rat_lover"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			sld.name 	= "Janna";
 			sld.lastname 	= "Mollery";            
 			LAi_SetImmortal(sld, true);
@@ -2662,7 +2662,7 @@ void QuestComplete(string sQuestName, string qname)
 		    LAi_ActorFollow(pchar, sld, "ActorDialog_Any2Pchar", 0.3);
        break;
 
-       case "Slavetrader_findTortugaRat1"://охрана Гонтьера
+       case "Slavetrader_findTortugaRat1"://пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             for (i=3; i<=5; i++)
             {
                 sld = GetCharacter(NPC_GenerateCharacter("SVBandit"+i, "citiz_"+(40+i), "man", "man", 25, PIRATE, 0, true, "quest"));
@@ -2704,9 +2704,9 @@ void QuestComplete(string sQuestName, string qname)
 		    LAi_ActorFollow(pchar, sld, "ActorDialog_Any2Pchar", -1);
 			
         break;
-//<--работорговец конец
+//<--пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		
-//--> Jason ТТГ, почта 2 уровень, агент в таверне
+//--> Jason пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "PostAgent_inTavern_Room":
 			DoQuestReloadToLocation(pchar.questTemp.WPU.Postcureer.StartCity +"_tavern_upstairs", "goto", "goto4", "");			
 			sld = characterFromID("PostAgent");        
@@ -2717,13 +2717,13 @@ void QuestComplete(string sQuestName, string qname)
 		case "PostAgent_inTavern_Room_end":
 			SetLaunchFrameFormParam("An hour passed...", "", 0, 4);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 1, 10); //крутим время
+			WaitDate("", 0, 0, 0, 1, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			sld = characterFromID("PostAgent");        
 			LAi_SetActorType(sld);
 			LAi_ActorDialogDelay(sld, pchar, "", 4.5);
         break;
-		// <-- почтовый генер 2 уровня, агент в таверне
+		// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "DisasterShipIndian_Win":
 			chrDisableReloadToLocation = false;
 			sld = characterFromId("WMCaptain");
@@ -2732,17 +2732,17 @@ void QuestComplete(string sQuestName, string qname)
 			sld.dialog.currentnode = "DisasterCap_8";
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
         break;
-//<-- ТТГ, почта 2 уровень, конец
+//<-- пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ
 		
-//--> Jason, действия горожан по мини-квестам
-		//отпускание рабов через монаха
+//--> Jason, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		case "Monk_RemoveSlaves":
 			RemoveCharacterGoods(pchar, GOOD_SLAVES, GetSquadronGoods(pchar, GOOD_SLAVES));
 			OfficersReaction("good");
 			ChangeCharacterComplexReputation(pchar, "nobility", 1);
         break;
 		
-		//освящение кораблей через монаха
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		case "Monk_Shipshine":
 			OfficersReaction("good");
 			ChangeCharacterComplexReputation(pchar, "nobility", 1);
@@ -2756,32 +2756,32 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.Shipshine.function = "Monkshipshine_Over";
         break;
 		
-		//установка капеллана в кают-компанию
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "Monk_Capellan":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId(pchar.questTemp.ShipCapellan.id);
 			sld.dialog.currentnode = "capellan_4";
 			LAi_SetStayType(sld);
         break;
 
-		//установка дворянина с реликвией в таверну
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "Nobleman_lombardTavern":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId(pchar.GenQuest.Noblelombard.id);
 			sld.dialog.currentnode = "lombard_4";
 			LAi_SetSitType(sld);
         break;
 		
-		//установка дворянина в церковь
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "Nobleslaves_Place":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId(sGlobalTemp);
 			sld.dialog.currentnode = "slaves_3";
 			LAi_SetSitType(sld);
 			LAi_SetLoginTime(sld, 11.0, 13.0);
         break;
 		
-		//выдача пассажира после абордажа
+		//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "Marginpassenger_GivePrisoner":
 			sld = GetCharacter(NPC_GenerateCharacter("MarginPass", pchar.GenQuest.Marginpassenger.model, pchar.GenQuest.Marginpassenger.sex, pchar.GenQuest.Marginpassenger.ani, 2, sti(pchar.GenQuest.Marginpassenger.Nation), -1, true, "quest"));
 			sld.Dialog.Filename = "Quest\Marginpassenger.c";
@@ -2796,7 +2796,7 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(60, 60, 60, 60);
         break;
 		
-		//после боя в бухте
+		//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 		case "Marginpassenger_Afterbattle":
 			LAi_group_Delete("EnemyFight");
 			chrDisableReloadToLocation = false;
@@ -2812,10 +2812,10 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Jason----------------------------------------------Бесчестный конкурент-----------------------------------
+//Jason----------------------------------------------пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-----------------------------------
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		case "Shadow_inRoom":
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromID("ShadowAgent_1");   
 			sld.LSC_clan = true; // 110912 fix
 			LAi_SetImmortal(sld, false);
@@ -2860,7 +2860,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld.greeting = "ransack"; // 240912
         break;
 		
-		case "ShadowTrader_killed_end"://убили Паскаля
+		case "ShadowTrader_killed_end"://пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		sld = characterFromID("ShadowTrader"); 
 		LAi_SetActorType(sld);
 		LAi_KillCharacter(sld);
@@ -2870,13 +2870,13 @@ void QuestComplete(string sQuestName, string qname)
 		AddQuestRecord("Shadowtrader", "10");
 		ChangeCharacterComplexReputation(pchar,"nobility", -3); 
 		AddComplexSelfExpToScill(70, 70, 70, 70);
-		AddCharacterExpToSkill(pchar, "Leadership", 100);//авторитет
-		AddCharacterExpToSkill(pchar, "Fortune", 100);//везение
+		AddCharacterExpToSkill(pchar, "Leadership", 100);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		AddCharacterExpToSkill(pchar, "Fortune", 100);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
-//<-- Бесчестный конкурент конец
+//<-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Jason---------------------------------------Заносчивый аристократ------------------------------------------
+//Jason---------------------------------------пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ------------------------------------------
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		case "Badboy_capture":
 			sld = characterFromId("Badboy");
@@ -2908,14 +2908,14 @@ void QuestComplete(string sQuestName, string qname)
 			if (CheckAttribute(PChar, "quest.BadboyDuelTimer")) Pchar.quest.BadboyDuelTimer.over = "yes";
 			DoQuestCheckDelay("hide_weapon", 1.0);
 			chrDisableReloadToLocation = false;
-			LAi_LocationDisableOfficersGen(pchar.GenQuest.Badboy.Brothel.City + "_ExitTown", false); //офицеров пускать
-			locations[FindLocation(pchar.GenQuest.Badboy.Brothel.City + "_ExitTown")].DisableEncounters = false; //энкаутеры откроем
+			LAi_LocationDisableOfficersGen(pchar.GenQuest.Badboy.Brothel.City + "_ExitTown", false); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			locations[FindLocation(pchar.GenQuest.Badboy.Brothel.City + "_ExitTown")].DisableEncounters = false; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.GenQuest.Badboy.Complete = "true";
 		break;
-// <-- Заносчивый аристократ конец
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-///  Jason  								Бремя гасконца
+///  Jason  								пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 //////////////////////////////////////////////////////////////////////////////////////////////////
 	case "Sharlie_Start":
 		LoadMainCharacterInFirstLocationGroup("My_Campus", "rld", "loc2");
@@ -2929,28 +2929,28 @@ void QuestComplete(string sQuestName, string qname)
 		ChangeCharacterAddressGroup(sld, "My_Campus", "rld", "aloc2");
 		LAi_SetActorType(sld);
 		LAi_ActorDialogNow(sld, pchar, "", -1);
-		chrDisableReloadToLocation = true;//закрыть локацию на всякий
+		chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	break;
 	
-	case "Sharlie_onLand"://старт линейки
-		LocatorReloadEnterDisable("Fortfrance_town", "reload5_back", true);//закроем верфь
-		LocatorReloadEnterDisable("Fortfrance_town", "basement1", true);//закроем подземелье
-		LocatorReloadEnterDisable("Fortfrance_town", "reloadPr1", true);//закроем базу
-		bDisableFastReload = true;//закрыть переход
-		pchar.GenQuest.CannotWait = true;//запрет ожидания
-		bQuestDisableMapEnter = true;//закрыть карту
+	case "Sharlie_onLand"://пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		LocatorReloadEnterDisable("Fortfrance_town", "reload5_back", true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+		LocatorReloadEnterDisable("Fortfrance_town", "basement1", true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		LocatorReloadEnterDisable("Fortfrance_town", "reloadPr1", true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+		bDisableFastReload = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		pchar.GenQuest.CannotWait = true;//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		bQuestDisableMapEnter = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		i = FindColony("Fortfrance");
-		colonies[i].DontSetShipInPort = true;//не ставить в порту корабли
+		colonies[i].DontSetShipInPort = true;//пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		AddQuestRecord("Sharlie", "1");
 		AddQuestRecordInfo("Sharlie_Father", "1");
 		AddQuestRecordInfo("Sharlie_Shevallie", "1");
 		AddQuestRecordInfo("Sharlie_Lover", "1");
 		pchar.questTemp.Sharlie = "Start";
 		pchar.questTemp.Sharlie.Lock = "true";
-		pchar.NoNavyPenalty = true; // не штрафовать за нехватку навигации
-		pchar.questTemp.Sharlie.Citcount = 0;//туповато, но пусть хоть поспрашивает числом
-		LocatorReloadEnterDisable("Charles_townhall", "reload3", true);//закроем вход к Пуанси
-		// закрываем все острова, кроме Гваделупы и Мартиники
+		pchar.NoNavyPenalty = true; // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		pchar.questTemp.Sharlie.Citcount = 0;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		LocatorReloadEnterDisable("Charles_townhall", "reload3", true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		for (i=0; i<MAX_ISLANDS; i++)
 		{				
 			if (Islands[i].id != "Guadeloupe" && Islands[i].id != "Martinique")
@@ -2958,9 +2958,9 @@ void QuestComplete(string sQuestName, string qname)
 				Island_SetReloadEnableGlobal(Islands[i].id, false);
 			}
 		}
-		// 170712 закроем склад магазина
+		// 170712 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		LocatorReloadEnterDisable("FortFrance_store", "reload2", true);
-		// ставим гида
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		sld = GetCharacter(NPC_GenerateCharacter("Guide", "Guide_1", "man", "man", 10, FRANCE, -1, true, "officer"));
 		SetFantomParamFromRank(sld, 10, true);
 		RemoveAllCharacterItems(sld, true);
@@ -2978,17 +2978,17 @@ void QuestComplete(string sQuestName, string qname)
 		LAi_SetGuardianType(sld);
 		sld.protector.CheckAlways = true; 
 		LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
-		// не ставить корабли на Тортуге
+		// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		i = FindColony("Tortuga");
-		colonies[i].DontSetShipInPort = true;//не ставить в порту корабли
+		colonies[i].DontSetShipInPort = true;//пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		pchar.GenQuest.MapClosedNoBattle = true;
 	break;
 	
-	case "Sharlie_GoFromPrison"://выпускаем из тюрьмы и ставим Мишеля
+	case "Sharlie_GoFromPrison"://пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		AddQuestRecord("Sharlie", "2");
-		pchar.questTemp.jailCanMove = true; //разрешить пройти мимо стражи
+		pchar.questTemp.jailCanMove = true; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		DoQuestReloadToLocation(pchar.location, "goto", "goto23", "");
-		LocatorReloadEnterDisable("Fortfrance_town", "reloadPr1", false);//откроем базу
+		LocatorReloadEnterDisable("Fortfrance_town", "reloadPr1", false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		sld = characterFromId("Mishelle");
 		sld.dialog.currentnode = "Mishelle_prisoner";
 		LAi_SetStayType(sld);
@@ -2999,7 +2999,7 @@ void QuestComplete(string sQuestName, string qname)
 		DeleteAttribute(pchar, "questTemp.Sharlie.Citcount");
 	break;
 	
-	case "Sharlie_SetBenua": //ноду аббату Бенуа
+	case "Sharlie_SetBenua": //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		sld = characterFromId("Benua");
 		sld.dialog.currentnode = "Benua_meeting";
 		AddQuestRecord("Sharlie", "3");
@@ -3007,15 +3007,15 @@ void QuestComplete(string sQuestName, string qname)
 	break;
 	
 	case "Maltie_GoTown"://
-		chrDisableReloadToLocation = false;//открыть локацию
-		LocatorReloadEnterDisable("FortFrance_town", "reload4_back", true);//таверну закрыть
-		LocatorReloadEnterDisable("FortFrance_town", "gate_back", true);//ворота закрыть
+		chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		LocatorReloadEnterDisable("FortFrance_town", "reload4_back", true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		LocatorReloadEnterDisable("FortFrance_town", "gate_back", true);//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		Pchar.quest.Sharlie_Maltie.win_condition.l1 = "location";
 		Pchar.quest.Sharlie_Maltie.win_condition.l1.location = "FortFrance_town";
 		Pchar.quest.Sharlie_Maltie.win_condition = "Maltie_GoBasement";
 	break;
 	
-	case "Maltie_GoBasement"://идем по городу
+	case "Maltie_GoBasement"://пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		sld = characterFromId("Sh_Maltie");
 		LAi_ActorGoToLocation(sld, "reload", "reloadPr1", "FortFrance_Dungeon", "reload", "reload1", "Maltie_OpenBasement", -1);
 		Pchar.quest.Sharlie_Maltie1.win_condition.l1 = "location";
@@ -3023,8 +3023,8 @@ void QuestComplete(string sQuestName, string qname)
 		Pchar.quest.Sharlie_Maltie1.win_condition = "Maltie_InBasement";
 	break;
 	
-	case "Maltie_OpenBasement"://ставим Мишеля
-		LocatorReloadEnterDisable("Fortfrance_town", "reloadPr1", false);//откроем базу
+	case "Maltie_OpenBasement"://пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		LocatorReloadEnterDisable("Fortfrance_town", "reloadPr1", false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		sld = characterFromId("Mishelle");
 		sld.dialog.currentnode = "Mishelle_prisoner";
 		LAi_SetStayType(sld);
@@ -3032,17 +3032,17 @@ void QuestComplete(string sQuestName, string qname)
 		pchar.questTemp.Sharlie = "basement";
 	break;
 
-	case "Maltie_InBasement"://идем по городу
-		chrDisableReloadToLocation = true;//закрыть локацию
-		LocatorReloadEnterDisable("FortFrance_town", "reload4_back", false);//таверну открыть
-		LocatorReloadEnterDisable("FortFrance_town", "gate_back", false);//ворота открыть
+	case "Maltie_InBasement"://пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		LocatorReloadEnterDisable("FortFrance_town", "reload4_back", false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		LocatorReloadEnterDisable("FortFrance_town", "gate_back", false);//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		sld = characterFromId("Sh_Maltie");
 		sld.dialog.currentnode = "Sharlie_maltie_3";
 		LAi_SetActorType(sld);
 		LAi_ActorDialog(sld, pchar, "", 1.0, -1);
 	break;
 	
-	//------------------------------------------ гид - знакомство с игрой ---------------------------------------
+	//------------------------------------------ пїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ ---------------------------------------
 	case "Guide_tavern":
 		sld = characterFromId("Guide");
 		sld.dialog.currentnode = "guide_4";
@@ -3152,7 +3152,7 @@ void QuestComplete(string sQuestName, string qname)
 	break;
 	
 	case "Guide_ExitTown":
-		chrDisableReloadToLocation = true;//закрыть локацию
+		chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		sld = characterFromId("Guide");
 		sld.dialog.currentnode = "guide_49";
 		ChangeCharacterAddressGroup(sld, "FortFrance_ExitTown", "goto", "goto7");
@@ -3162,35 +3162,35 @@ void QuestComplete(string sQuestName, string qname)
 		LAi_ActorDialogDelay(sld, pchar, "", 1.0);
 	break;
 	
-	case "Guide_HeroWin": // ГГ выиграл фехт
+	case "Guide_HeroWin": // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		LAi_group_Delete("EnemyFight");
 		DoQuestCheckDelay("hide_weapon", 1.2);
-		LAi_RemoveCheckMinHP(pchar); // вот где собака порылась 251116
+		LAi_RemoveCheckMinHP(pchar); // пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 251116
 		sld = characterFromId("Guide");
-		if (sti(sld.quest.guide_win == 0)) sld.dialog.currentnode = "guide_57"; // с первого раза побил
+		if (sti(sld.quest.guide_win == 0)) sld.dialog.currentnode = "guide_57"; // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		else sld.dialog.currentnode = "guide_58"; 
 		LAi_SetActorType(sld);
 		LAi_ActorTurnToCharacter(sld, pchar);
 		LAi_ActorDialogDelay(sld, pchar, "", 1.0);
 	break;
 	
-	case "Guide_HeroFail": // ГГ проиграл фехт
+	case "Guide_HeroFail": // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		LAi_group_Delete("EnemyFight");
 		DoQuestCheckDelay("hide_weapon", 0.5);
 		sld = characterFromId("Guide");
 		sld.quest.guide_win = sti(sld.quest.guide_win)+1;
-		if (sti(sld.quest.guide_win == 1)) sld.dialog.currentnode = "guide_59"; // один раз побили
+		if (sti(sld.quest.guide_win == 1)) sld.dialog.currentnode = "guide_59"; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		else 
 		{
-			if (sti(sld.quest.guide_win == 2)) sld.dialog.currentnode = "guide_60"; // два раза побили
-			else sld.dialog.currentnode = "guide_61"; //три раза побили
+			if (sti(sld.quest.guide_win == 2)) sld.dialog.currentnode = "guide_60"; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			else sld.dialog.currentnode = "guide_61"; //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		}
 		LAi_SetActorType(sld);
 		LAi_ActorTurnToCharacter(sld, pchar);
 		LAi_ActorDialogDelay(sld, pchar, "", 1.0);
 		LAi_SetImmortal(pchar, false);
 	break;
-	// <-- гид
+	// <-- пїЅпїЅпїЅ
 	
 	case "Rum_CapGoodbye":
 		sld = characterFromId("Rum_Cap");
@@ -3223,8 +3223,8 @@ void QuestComplete(string sQuestName, string qname)
 	case "GigoloGirl_Remove":
 		sld = characterFromId("GigoloGirl");
 		sld.lifeday = 0;
-		AddCharacterExpToSkill(pchar, "Leadership", 50);//авторитет
-		AddCharacterExpToSkill(pchar, "Fortune", 80);//везение
+		AddCharacterExpToSkill(pchar, "Leadership", 50);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		AddCharacterExpToSkill(pchar, "Fortune", 80);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		DeleteAttribute(pchar, "questTemp.Sharlie.Gigolo");
 		AddQuestRecord("SharlieC", "3");
 		CloseQuestHeader("SharlieC");
@@ -3263,8 +3263,8 @@ void QuestComplete(string sQuestName, string qname)
 	break;
 	
 	case "Seabattle_pirate_open":
-		LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
-		chrDisableReloadToLocation = false;//открыть локацию
+		LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	break;
 	
 	case "TichingituFree":
@@ -3355,12 +3355,12 @@ void QuestComplete(string sQuestName, string qname)
 		}
 	break;
 	
-	// выпивка с Фадеем
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	case "Sharlie_DrinkWithFadey":
 		LAi_SetActorType(pchar);
 		LAi_ActorSetSitMode(pchar);
 		InterfaceStates.Buttons.Save.enable = false;
-		bDisableCharacterMenu = true;//лоченые интерфейсы
+		bDisableCharacterMenu = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		DoQuestCheckDelay("Sharlie_DrinkWithFadey_music", 0.8);
 		DoQuestCheckDelay("Sharlie_DrinkWithFadey_1", 33.0);
 	break;
@@ -3372,7 +3372,7 @@ void QuestComplete(string sQuestName, string qname)
 	case "Sharlie_DrinkWithFadey_1":
 		LAi_SetPlayerType(pchar);
 		InterfaceStates.Buttons.Save.enable = true;
-		bDisableCharacterMenu = false;//лоченые интерфейсы
+		bDisableCharacterMenu = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		pchar.GenQuest.CamShuttle = 3;
 		WaitDate("",0,0,0,5,5);
 		DoQuestReloadToLocation("BasTer_houseSp1", "goto", "goto1", "Sharlie_DrinkWithFadey_2");
@@ -3386,16 +3386,16 @@ void QuestComplete(string sQuestName, string qname)
 	break;
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
-///Jason------------------------------------- Карибские нравы ----------------------------------------
+///Jason------------------------------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ ----------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	case "Trial_AfterTavernFight":
-		chrDisableReloadToLocation = false;//открыть локацию
+		chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);
 		AddQuestRecord("Trial", "13");
 	break;
 	
 	case "Trial_ReturnPoormanNorm":
-		chrDisableReloadToLocation = false;//открыть локацию
+		chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		sld = characterFromId("PortoBello_Poorman");
 		sld.dialog.currentnode = "First time";
 		LAi_SetLoginTime(sld, 9.0, 21.99);
@@ -3404,9 +3404,9 @@ void QuestComplete(string sQuestName, string qname)
 		LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");
 	break;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-///  Jason  								Голландский гамбит
+///  Jason  								пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 //////////////////////////////////////////////////////////////////////////////////////////////////
-//-------------------------------------общие функции-----------------------------------------------
+//-------------------------------------пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ-----------------------------------------------
 		case "ReturnTalkerToOfficer":
 			chrDisableReloadToLocation = false;
 			pchar.quest.HWIC_ReturnOfficer.win_condition.l1 = "location";
@@ -3415,19 +3415,19 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 		
 		case "PrepareToBoom":
-			pchar.GenQuest.ShipSituation.Explosion = ShipSituation_4;//ба-бах!
+			pchar.GenQuest.ShipSituation.Explosion = ShipSituation_4;//пїЅпїЅ-пїЅпїЅпїЅ!
 			pchar.GenQuest.ShipSituation.Explosion.CapId = "Fleetwood";
 			AddComplexSelfExpToScill(100, 100, 100, 100);
 		break;
 		
 		case "PrepareToBoom1":
-			pchar.GenQuest.ShipSituation.Explosion = ShipSituation_4;//ба-бах!
+			pchar.GenQuest.ShipSituation.Explosion = ShipSituation_4;//пїЅпїЅ-пїЅпїЅпїЅ!
 			pchar.GenQuest.ShipSituation.Explosion.CapId = "Lucas";
 			AddComplexSelfExpToScill(150, 150, 150, 150);
 		break;
 		
 		case "PrepareToBoom2":
-			pchar.GenQuest.ShipSituation.Explosion = ShipSituation_4;//ба-бах!
+			pchar.GenQuest.ShipSituation.Explosion = ShipSituation_4;//пїЅпїЅ-пїЅпїЅпїЅ!
 			pchar.GenQuest.ShipSituation.Explosion.CapId = "JacobBerg";
 			AddComplexSelfExpToScill(200, 200, 200, 200);
 		break;
@@ -3438,7 +3438,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.Joakim_InRoom.function = "JoakimTalk";
 		break;
 		
-//------------------------------------за Голландию-------------------------------------------
+//------------------------------------пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-------------------------------------------
 		case "SantiagoTripTalkToMC":
 			sld = characterFromId("SantiagoEnemy1");
 			sld.dialog.currentnode = "Santiago_Trip_2";
@@ -3446,12 +3446,12 @@ void QuestComplete(string sQuestName, string qname)
 			ChangeCharacterAddressGroup(sld, "Santiago_HouseSp2_Room", "barmen", "stay");
 			LAi_SetActorType(sld);
 			LAi_ActorDialogDelay(sld, pchar, "", 2.0);
-			AddCharacterExpToSkill(pchar, "Fortune", 50);//везение
+			AddCharacterExpToSkill(pchar, "Fortune", 50);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 		
 		case "SantiagoTripExitFromRoom":
-			LocatorReloadEnterDisable("Santiago_HouseSp2_Room", "reload1", false);//открыть выход
-			LAi_LocationFightDisable(&Locations[FindLocation("Santiago_HouseSp2")], true);//запретить драться // patch-2
+			LocatorReloadEnterDisable("Santiago_HouseSp2_Room", "reload1", false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			LAi_LocationFightDisable(&Locations[FindLocation("Santiago_HouseSp2")], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ // patch-2
 			pchar.quest.Santiago_Trip2.win_condition.l1 = "locator";
 			pchar.quest.Santiago_Trip2.win_condition.l1.location = "Santiago_HouseSp2";
 			pchar.quest.Santiago_Trip2.win_condition.l1.locator_group = "reload";
@@ -3460,7 +3460,7 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 		
 		case "SantiagoTripExitHouse":
-			InterfaceStates.Buttons.Save.enable = true;//разрешить сохраняться
+			InterfaceStates.Buttons.Save.enable = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			AddQuestRecord("Holl_Gambit", "1-45");
 			pchar.questTemp.HWIC.Holl = "SantiagoTripReturn";
@@ -3473,7 +3473,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.Holl_Jacob.win_condition.l1.item = "JacobJournal";
 			pchar.quest.Holl_Jacob.function = "Jacob_Journal";
 			AddComplexSelfExpToScill(50, 50, 50, 50);
-			AddCharacterExpToSkill(pchar, "Fortune", 100);//везение
+			AddCharacterExpToSkill(pchar, "Fortune", 100);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 		
 		case "BekSitDown":
@@ -3495,15 +3495,15 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 		
 		case "Merdok_AfterBattle": 
-			LAi_LocationDisableOfficersGen("SentJons_TownCave", false);//офицеров пускать
+			LAi_LocationDisableOfficersGen("SentJons_TownCave", false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Merdok_Book.win_condition.l1 = "item";
 			pchar.quest.Merdok_Book.win_condition.l1.item = "MerdokArchive";
-			pchar.quest.Merdok_Book.function = "FindMerdokBook";//прерывание на архив
+			pchar.quest.Merdok_Book.function = "FindMerdokBook";//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Merdok_Key.win_condition.l1 = "item";
 			pchar.quest.Merdok_Key.win_condition.l1.item = "Drugstore_keys";
-			pchar.quest.Merdok_Key.function = "FindMerdokKey";//прерывание на ключ
+			pchar.quest.Merdok_Key.function = "FindMerdokKey";//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 			pchar.questTemp.HWIC.Holl = "MerdokDie";
-			//а теперь проверим китайца
+			//пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Longway");
 			sld.greeting = "";
 			if (CheckAttribute(pchar, "questTemp.HWIC.Holl.LongwayFriend") && GetCharacterIndex("Longway") != -1)
@@ -3513,7 +3513,7 @@ void QuestComplete(string sQuestName, string qname)
 			}
 		break;
 		
-//-----------------------------------------за Англию--------------------------------------------
+//-----------------------------------------пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ--------------------------------------------
 		case "OpenFleetwoodDoor":
 			LocatorReloadEnterDisable("SentJons_town", "houseSP3", false);
 		break;
@@ -3546,27 +3546,27 @@ void QuestComplete(string sQuestName, string qname)
 		case "GrotAfterBattle":
 			pchar.quest.Abby_IslandHeadBarmen.win_condition.l1 = "item";
 			pchar.quest.Abby_IslandHeadBarmen.win_condition.l1.item = "GastonHead";
-			pchar.quest.Abby_IslandHeadBarmen.function = "HeadBarmen_Find";//на нахождение бошки бармена
+			pchar.quest.Abby_IslandHeadBarmen.function = "HeadBarmen_Find";//пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			AddComplexSelfExpToScill(200, 200, 200, 200);
 		break;
 		
 		case "Merdok_AfterBattleEng":
-			LocatorReloadEnterDisable("SentJons_TownCave", "reload2", false);//выход откроем
-			LAi_LocationDisableOfficersGen("SentJons_TownCave", false);//офицеров пускать
+			LocatorReloadEnterDisable("SentJons_TownCave", "reload2", false);//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LAi_LocationDisableOfficersGen("SentJons_TownCave", false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Merdok_Book.win_condition.l1 = "item";
 			pchar.quest.Merdok_Book.win_condition.l1.item = "MerdokArchive";
-			pchar.quest.Merdok_Book.function = "FindMerdokBook";//прерывание на архив
+			pchar.quest.Merdok_Book.function = "FindMerdokBook";//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Merdok_Map.win_condition.l1 = "item";
 			pchar.quest.Merdok_Map.win_condition.l1.item = "NPC_Letter";
-			pchar.quest.Merdok_Map.function = "CreateLucasBonanza";//прерывание на карту клада
+			pchar.quest.Merdok_Map.function = "CreateLucasBonanza";//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.questTemp.HWIC.Eng = "MerdokDie";
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.GenQuest.NoDelBody = true;
 		break;
 		
-//-------------------------------------------против всех-----------------------------------------------------
+//-------------------------------------------пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ-----------------------------------------------------
 		case "Fernando_FightInPort":
-			chrDisableReloadToLocation = true;//выходы закроем
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			iTemp = GetCharacterIndex("HWICFernando");
 			if (iTemp != -1)
 			{			
@@ -3599,15 +3599,15 @@ void QuestComplete(string sQuestName, string qname)
 		case "Without_consciousness":
 			SetLaunchFrameFormParam("You have fainted of wounds...", "", 0, 5);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 5, 9, 10); //крутим время
+			WaitDate("", 0, 0, 5, 9, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			DoQuestFunctionDelay("InMerdokHouse", 5.0);
 			if (2-sti(RealShips[sti(pchar.ship.type)].basetype) < 0) pchar.Ship.Type = SHIP_NOTUSED;
-			LocatorReloadEnterDisable("SentJons_town", "houseSP3", true);//дом Флитвуда закроем
+			LocatorReloadEnterDisable("SentJons_town", "houseSP3", true);//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 		
 		case "MerdokTalkToMC":
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			sld = characterFromId("Merdok");
 			sld.dialog.currentnode = "MC_InHouse";
@@ -3617,7 +3617,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld = characterFromId("Tonzag");
 			ChangeCharacterAddressGroup(sld, "none", "", "");
 			AddComplexSelfExpToScill(100, 100, 100, 100);
-			AddCharacterExpToSkill(pchar, "Fortune", 100);//везение
+			AddCharacterExpToSkill(pchar, "Fortune", 100);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 		
 		case "Kill_Knippel":
@@ -3643,7 +3643,7 @@ void QuestComplete(string sQuestName, string qname)
 		case "Abigile_Stay":
 			sld = characterFromId("Abigile");
 			LAi_SetOwnerType(sld);
-			LocatorReloadEnterDisable("Villemstad_houseSP2", "reload2", false);//откроем комнату Аби
+			LocatorReloadEnterDisable("Villemstad_houseSP2", "reload2", false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 		break;
 		
 		case "SetAbigileToCabin":
@@ -3675,12 +3675,12 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 		
 		case "DrunkardGoTown":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Drunkard");
 			LAi_SetActorType(sld);
 			LAi_ActorGoToLocation(sld, "reload", "houseSP3", "SentJons_houseSP3", "reload", "reload1", "DrunkardInHouse", -1);	
-			bDisableFastReload = true;//закроем быстрый переход
-			pchar.GenQuest.CannotWait = true;//не мотать время
+			bDisableFastReload = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			pchar.GenQuest.CannotWait = true;//пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		break;
 		
 		case "DrunkardInHouse":
@@ -3696,9 +3696,9 @@ void QuestComplete(string sQuestName, string qname)
 			LocatorReloadEnterDisable("SentJons_town", "reload1_back", false);
 			LocatorReloadEnterDisable("SentJons_town", "reload2_back", false);
 			LocatorReloadEnterDisable("SentJons_town", "gate_back", false);
-			bDisableFastReload = false;//открыть переход
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
-			SetFunctionTimerCondition("Fleetwood_meetingOver", 0, 0, 15, false);//таймер сюда поставим
+			bDisableFastReload = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			DeleteAttribute(pchar, "GenQuest.CannotWait");//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			SetFunctionTimerCondition("Fleetwood_meetingOver", 0, 0, 15, false);//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 		
 		case "FleetwoodDiedInShore":
@@ -3713,12 +3713,12 @@ void QuestComplete(string sQuestName, string qname)
 		case "ReturnShoreToNormal":
 			chrDisableReloadToLocation = false;
 			LAi_LocationFightDisable(&Locations[FindLocation("Shore31")], false);
-			locations[FindLocation("Shore31")].DisableEncounters = false; //локацию в норму
+			locations[FindLocation("Shore31")].DisableEncounters = false; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 		break;
 		
 		case "OpenVillemstadResidence":
-			LocatorReloadEnterDisable("Villemstad_town", "reload3_back", false);//открыть вход в резиденцию
-			LocatorReloadEnterDisable("Villemstad_town", "reloadR1", false);//открыть боковой вход в резиденцию
+			LocatorReloadEnterDisable("Villemstad_town", "reload3_back", false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LocatorReloadEnterDisable("Villemstad_town", "reloadR1", false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=1; i<=5; i++)
 			{
 			chr = characterFromId("StivesantGuard_"+i);
@@ -3756,7 +3756,7 @@ void QuestComplete(string sQuestName, string qname)
 		
 		case "LucasGoToPrison":	
 			sld = characterFromId("Lucas");
-			sld.greeting = ""; // озвучка напрямую
+			sld.greeting = ""; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			ChangeCharacterAddressGroup(sld, "Villemstad_prison", "goto", "goto9");
 			sld = characterFromId("Merdok");
 			sld.greeting = "merdok_5";
@@ -3808,15 +3808,15 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.vanberg_SeaBattle.win_condition.l1.location = "IslaDeCoche";
 			pchar.quest.vanberg_SeaBattle.function = "CreateVanbergInSea";
 			AddComplexSelfExpToScill(100, 100, 100, 100);
-			AddCharacterExpToSkill(pchar, "Fortune", 100);//везение
+			AddCharacterExpToSkill(pchar, "Fortune", 100);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
-//<--Голландский Гамбит конец
+//<--пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-///Jason---------------------------------------Пиратская Сага--------------------------------------------
+///Jason---------------------------------------пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ--------------------------------------------
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ---------------------------------поведение бандитов у рудника-----------------------------------------
-		case "Saga_MineBanditsTalk": // инициализация разговора
+	// ---------------------------------пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ-----------------------------------------
+		case "Saga_MineBanditsTalk": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestCheckDelay("hide_weapon", 0.5);
 			if (pchar.location == "mine_exit") sld = characterFromId("Mine_bandit_3");
 			else sld = characterFromId("Mine_banditx_1");
@@ -3824,13 +3824,13 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialogNow(sld, pchar, "", -1);
 		break;
 		
-		case "Saga_MineBanditsFire": // стреляют из пушки
+		case "Saga_MineBanditsFire": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			CreateLocationParticles("blast_inv", "quest", "gun1", 1.15, 0, 0, "cannon_fire_1");
 			CreateLocationParticles("blast_inv", "quest", "gun2", 1.15, 0, 0, "cannon_fire_1");
 			LAi_KillCharacter(pchar);
 		break;
 		
-		case "Saga_MineBanditsxFire": // стреляют из мушкетов // 250812
+		case "Saga_MineBanditsxFire": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ // 250812
 			for (i=1; i<=2; i++)
 			{
 				sld = characterFromId("Mine_banditx_"+i);
@@ -3843,7 +3843,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_KillCharacter(pchar);
 		break;
 		
-	// -------------------------------------штурм рудника----------------------------------------------------
+	// -------------------------------------пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ----------------------------------------------------
 		case "Saga_MineBanditxDie":
 			n = Findlocation("mine_01");
 			DeleteAttribute(&locations[n], "mine_bandits");
@@ -3869,7 +3869,7 @@ void QuestComplete(string sQuestName, string qname)
 		
 		case "Saga_BanditsxDestroyed":
 			LAi_group_Delete("EnemyFight");
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Svensons_sold_12");
 			if (LAi_GetCharacterHP(sld) > 0)
 			{
@@ -3920,12 +3920,12 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(50, 50, 50, 50);
 		break;
 		
-	// канонада
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "Saga_MineSetMusic":
 			SetMusic("music_military");
 		break;
 		
-		case "Saga_Gunfire": // выстрел
+		case "Saga_Gunfire": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			float ftime = 1.5;
 			CreateLocationParticles("Ship_cannon_fire", "goto", "fire", 1.0, 40, 40, "cannon_fire_1");
 			sld = characterFromId("Svensons_off_1");
@@ -3933,7 +3933,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Saga_Gunexplode_0"+sld.quest.canonada, ftime);
 		break;
 		
-		case "Saga_GunTalk": // базар
+		case "Saga_GunTalk": // пїЅпїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			sld = characterFromId("Svensons_off_1");
 			sld.dialog.currentnode = "gunner_"+sld.quest.canonada;
@@ -3941,14 +3941,14 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialogNow(sld, pchar, "", -1);
 		break;
 		
-		case "Saga_Gunexplode_01": // взрыв первый
+		case "Saga_Gunexplode_01": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			CreateLocationParticles("ShipExplode", "goto", "burn11", 1.0, 0, 0, "boom");
 			CreateLocationParticles("blast_dirt", "goto", "burn11", 1.0, 0, 0, "");
 			CreateLocationParticles("blast_inv", "goto", "burn11", 1.0, 0, 0, "");
 			DoQuestCheckDelay("Saga_GunTalk", 3.0);
 		break;
 		
-		case "Saga_Gunexplode_02": // взрыв второй
+		case "Saga_Gunexplode_02": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			CreateLocationParticles("ShipExplode", "goto", "burn12", 1.0, 0, 0, "boom");
 			CreateLocationParticles("blast_dirt", "goto", "burn12", 1.0, 0, 0, "");
 			CreateLocationParticles("shipfire", "goto", "burn12", 0, 0, 0, "");
@@ -3957,7 +3957,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Saga_GunTalk", 6.0);
 		break;
 		
-		case "Saga_LoginBandos_01": // бандюки-1
+		case "Saga_LoginBandos_01": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ-1
 			for (i=1; i<=3; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("Mine_Bandos_01_"+i, "citiz_"+(rand(9)+51), "man", "man", 30, PIRATE, 0, true, "soldier"));
@@ -3971,7 +3971,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Saga_Gunfire", 5.5);
 		break;
 		
-		case "Saga_Gunexplode_03": // взрыв третий
+		case "Saga_Gunexplode_03": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			CreateLocationParticles("ShipExplode", "goto", "boom2", 1.0, 0, 0, "boom");
 			CreateLocationParticles("blast_dirt", "goto", "boom2", 1.0, 0, 0, "");
 			CreateLocationParticles("blast_inv", "goto", "boom2", 1.0, 0, 0, "");
@@ -3983,7 +3983,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Saga_GunTalk", 2.5);
 		break;
 		
-		case "Saga_LoginBandos_02": // бандюки-2
+		case "Saga_LoginBandos_02": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ-2
 			for (i=1; i<=3; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("Mine_Bandos_02_"+i, "mush_ctz_"+(rand(2)+10), "man", "mushketer", 35, PIRATE, 0, true, "soldier"));
@@ -3995,7 +3995,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Saga_Gunfire", 3.0);
 		break;
 		
-		case "Saga_Gunexplode_04": // взрыв четвертый
+		case "Saga_Gunexplode_04": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			CreateLocationParticles("ShipExplode", "goto", "boom1", 1.0, 0, 0, "boom");
 			CreateLocationParticles("blast_dirt", "goto", "boom1", 1.0, 0, 0, "");
 			CreateLocationParticles("blast_inv", "goto", "boom1", 1.0, 0, 0, "");
@@ -4009,7 +4009,7 @@ void QuestComplete(string sQuestName, string qname)
 			PlaySound("interface\_bombs_npc.wav");
 		break;
 		
-		case "Saga_LoginBandos_03": // бандюки-3
+		case "Saga_LoginBandos_03": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ-3
 			sld = characterFromId("Svensons_off_1");
 			sld.quest.canonada = "5";
 			for (i=1; i<=2; i++)
@@ -4023,7 +4023,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Saga_Gunfire", 3.5);
 		break;
 		
-		case "Saga_Gunexplode_05": // взрыв пятый
+		case "Saga_Gunexplode_05": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			CreateLocationParticles("ShipExplode", "goto", "boom3", 1.0, 0, 0, "boom");
 			CreateLocationParticles("blast_dirt", "goto", "boom3", 1.0, 0, 0, "");
 			CreateLocationParticles("blast_inv", "goto", "boom3", 1.0, 0, 0, "");
@@ -4037,7 +4037,7 @@ void QuestComplete(string sQuestName, string qname)
 			PlaySound("interface\_grapes_npc.wav");
 		break;
 		
-		case "Saga_LoginBandos_04": // бандюки-4
+		case "Saga_LoginBandos_04": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ-4
 			for (i=1; i<=7; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("Mine_Bandos_04_"+i, "citiz_"+(rand(9)+51), "man", "man", 35, PIRATE, 0, true, "soldier"));
@@ -4061,14 +4061,14 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Saga_GunfireGrape", 6.0);
 		break;
 		
-		case "Saga_GunfireGrape": // выстрел
+		case "Saga_GunfireGrape": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			CreateLocationParticles("Bombard", "goto", "fire", 1.0, 90, 90, "cannon_fire_2");
 			CreateLocationParticles("blast_dirt", "goto", "fire", 1.0, 90, 90, "");
 			CreateLocationParticles("blast_dirt", "goto", "fire", 1.0, 90, 90, "");
 			DoQuestCheckDelay("Saga_Gunexplode_06", 0.5);
 		break;
 		
-		case "Saga_Gunexplode_06": // выстрел картечью
+		case "Saga_Gunexplode_06": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=3; i<=7; i++)
 			{
 				sld = characterFromId("Mine_Bandos_04_"+i);
@@ -4084,8 +4084,8 @@ void QuestComplete(string sQuestName, string qname)
 			PlaySound("interface\abordage_wining.wav");
 		break;
 		
-		// автоканонада
-		case "Saga_GunAutoFire": // выстрел
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		case "Saga_GunAutoFire": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if (iTotalTemp <= 10)
 			{
 				CreateLocationParticles("Ship_cannon_fire", "goto", "fire", 1.0, 90, 90, "cannon_fire_1");
@@ -4094,7 +4094,7 @@ void QuestComplete(string sQuestName, string qname)
 			}
 		break;
 		
-		case "Saga_GunAutoExplode": // взрыв
+		case "Saga_GunAutoExplode": // пїЅпїЅпїЅпїЅпїЅ
 			CreateLocationParticles("ShipExplode", "goto", "burn"+iTotalTemp, 0, 0, 0, "boom");
 			CreateLocationParticles("blast_dirt", "goto", "burn"+iTotalTemp, 0, 0, 0, "");
 			CreateLocationParticles("blast_inv", "goto", "burn"+iTotalTemp, 0, 0, 0, "");
@@ -4115,7 +4115,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Saga_GunAutoFire", 4.0+iTotalTemp*2);
 		break;
 		
-		case "Saga_MineBandos_05Die": // генерим партию бандюков в шесть рыл
+		case "Saga_MineBandos_05Die": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			PlaySound("interface\abordage_wining.wav");
 			iRank = 20+MOD_SKILL_ENEMY_RATE+5;
 			iScl = 65;
@@ -4127,7 +4127,7 @@ void QuestComplete(string sQuestName, string qname)
 				ChangeCharacterAddressGroup(sld, "mine", "rld", "attack1");
 				LAi_SetWarriorType(sld);
 				LAi_group_MoveCharacter(sld, "EnemyFight");
-				if (MOD_SKILL_ENEMY_RATE > 4) sld.MultiFighter = 0.5+fMft; // мультифайтер
+				if (MOD_SKILL_ENEMY_RATE > 4) sld.MultiFighter = 0.5+fMft; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			}
 			LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 			LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
@@ -4135,16 +4135,16 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.Saga_MineFightLock1.win_condition.l1 = "locator";
 			pchar.quest.Saga_MineFightLock1.win_condition.l1.location = "mine";
 			pchar.quest.Saga_MineFightLock1.win_condition.l1.locator_group = "rld";
-			pchar.quest.Saga_MineFightLock1.win_condition.l1.locator = "attack1"; // закрываем доступ в лагерь
+			pchar.quest.Saga_MineFightLock1.win_condition.l1.locator = "attack1"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Saga_MineFightLock1.function = "Saga_MineFightLock";
 			pchar.quest.Saga_MineFightLock.win_condition.l1 = "locator";
 			pchar.quest.Saga_MineFightLock.win_condition.l1.location = "mine";
 			pchar.quest.Saga_MineFightLock.win_condition.l1.locator_group = "rld";
 			pchar.quest.Saga_MineFightLock.win_condition.l1.locator = "warrior";
-			pchar.quest.Saga_MineFightLock.function = "Saga_MineFightLock"; // закрываем доступ назад
+			pchar.quest.Saga_MineFightLock.function = "Saga_MineFightLock"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		break;
 		
-		case "Saga_MineBandos_06Die": // генерим партию бандюков в восемь рыл
+		case "Saga_MineBandos_06Die": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			PlaySound("interface\abordage_wining.wav");
 			iRank = 20+MOD_SKILL_ENEMY_RATE+5;
 			iScl = 70;
@@ -4163,10 +4163,10 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(100, 100, 100, 100);
 		break;
 		
-		case "Saga_MineBandos_SvensonHelp": // Свенсон идет на помощь
+		case "Saga_MineBandos_SvensonHelp": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			PlaySound("interface\abordage_wining.wav");
-			pchar.quest.Saga_MineFightLock.over = "yes"; //снять прерывание
-			pchar.quest.Saga_MineFightLock1.over = "yes"; //снять прерывание
+			pchar.quest.Saga_MineFightLock.over = "yes"; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			pchar.quest.Saga_MineFightLock1.over = "yes"; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Svenson");
 			ChangeCharacterAddressGroup(sld, "mine", "reload", "reload6");
 			LAi_SetWarriorType(sld);
@@ -4197,7 +4197,7 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 		
 		case "Saga_MineAttackMinesLock": // 
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Svenson");
 			sld.dialog.currentnode = "mine_attack_32a";
 			ChangeCharacterAddressGroup(sld, "mine_mines", "officers", "reload1_3");
@@ -4218,7 +4218,7 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 		
 		case "Saga_MineWaitTime": // 
-			//чистим всю солдатню
+			//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=1; i<=8; i++)
 			{
 				if (GetCharacterIndex("Ourmine_sold_"+i) != -1)
@@ -4254,7 +4254,7 @@ void QuestComplete(string sQuestName, string qname)
 			RefreshLandTime();
 			RecalculateJumpTable();
 			Whr_UpdateWeather();
-			SetCharacterGoods(pchar, GOOD_SILVER, GetCargoGoods(pchar, GOOD_SILVER) + 2000+drand(100)); // кладем серебро
+			SetCharacterGoods(pchar, GOOD_SILVER, GetCargoGoods(pchar, GOOD_SILVER) + 2000+drand(100)); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			sld = characterFromId("Svenson");
 			sld.dialog.currentnode = "mine_attack_47";
@@ -4262,9 +4262,9 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 		break;
 		
-	// -----------------------начальная часть - пропавшая амазонка и наследница------------------------------
+	// -----------------------пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ------------------------------
 		case "Saga_KillJimmy":	
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			pchar.questTemp.Saga = "jackman";
 			if (CheckAttribute(pchar, "questTemp.Saga.Jimmysecret"))
@@ -4286,24 +4286,24 @@ void QuestComplete(string sQuestName, string qname)
         break;
 	
 		case "Saga_KillGonsalesA":	
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			AddQuestRecord("Saga", "16");
 		break;
 		
 		case "Saga_KillGonsalesB":	
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			AddQuestRecord("Saga", "18");
 		break;
 		
 		case "Saga_HireHelena":	
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Helena");
 			sld.quest.OfficerPrice = sti(pchar.rank)*500;
-			sld.OfficerWantToGo.DontGo = true; //не пытаться уйти
-			sld.CompanionDisable = true; //нельзя в компаньоны - чтобы не утонула
-			sld.HalfImmortal = true; //чтобы не убили в сухопутном бою
+			sld.OfficerWantToGo.DontGo = true; //пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+			sld.CompanionDisable = true; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			sld.HalfImmortal = true; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			sld.loyality = MAX_LOYALITY;
 			AddPassenger(pchar, sld, false);
 			SetCharacterRemovable(sld, true);
@@ -4313,18 +4313,18 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			SaveCurrentNpcQuestDateParam(sld, "HiredDate");
 		break;
-	// <-- начальная часть
+	// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	
-	//------------------------------------- возвращение барона ------------------------------------------
+	//------------------------------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ ------------------------------------------
 	
-		case "Saga_ShowDolly":	// Даниэль показывает истукана
+		case "Saga_ShowDolly":	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Danielle");
 			LAi_SetActorType(sld);
 			sld.dialog.currentnode = "Dolly_2";
 			LAi_ActorDialogNow(sld, pchar, "", -1);
 		break;
 
-	//--------------------------------------история Натана - видеоролики-----------------------
+	//--------------------------------------пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-----------------------
 	case "Video_story": // 
 		switch(pchar.questTemp.LSC.Natanstory)
 		{
@@ -4344,22 +4344,22 @@ void QuestComplete(string sQuestName, string qname)
 		LAi_SetActorType(sld);
 		LAi_ActorDialogNow(sld, pchar, "", -1);
 	break;
-	// <-- история Натана - видеоролики
+	// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	
-	// прибытие на Доминику через телепорт
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	case "Dominica_TeleportArrive":
 		Dolly_TeleportConsequences();
 		LAi_SetActorType(pchar);
 		LAi_ActorAnimation(pchar, "Ground_sitting", "LSC_TeleportArrive_1", 3.0);
-			LocatorReloadEnterDisable("SanGabrielMechanic", "reload3", false); // откроем дверь у Механика
+			LocatorReloadEnterDisable("SanGabrielMechanic", "reload3", false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		sld = characterFromId("Mechanic");
 		sld.dialog.currentnode = "First time"; // patch-6
-		LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//запретить драться
-		LAi_LocationFightDisable(&Locations[FindLocation("Dominica_jungle_02")], true);//запретить драться
-		chrDisableReloadToLocation = true;//закрыть локацию
-		pchar.GenQuest.CirassExchangeDisable = true; // чтобы не снял скафандр
-		LAi_LocationDisableOfficersGen("Indian_town", true); // не пускать офицеров в деревню
-		LAi_LocationDisableOfficersGen("Dominica_jungle_02", true); // не пускать офицеров в локу телепорта
+		LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		LAi_LocationFightDisable(&Locations[FindLocation("Dominica_jungle_02")], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		pchar.GenQuest.CirassExchangeDisable = true; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		LAi_LocationDisableOfficersGen("Indian_town", true); // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		LAi_LocationDisableOfficersGen("Dominica_jungle_02", true); // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		for (i=1; i<=10; i++)
 		{
 			if (i == 1)
@@ -4436,68 +4436,68 @@ void QuestComplete(string sQuestName, string qname)
 			ChangeCharacterAddressGroup(sld, "Dominica_jungle_02", "quest", "quest1");
 		break;
 		
-		// прибытие назад к деревне мискито через телепорт
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "Pearl_TeleportArrive":
 			Dolly_TeleportConsequences();
 			LAi_SetActorType(pchar);
 			LAi_ActorAnimation(pchar, "Ground_sitting", "LSC_TeleportArrive_1", 3.0);
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//запретить драться
-			// снимаем старые запреты
-			LAi_LocationDisableOfficersGen("Indian_town", false); // пускать офицеров в деревню
-			LAi_LocationDisableOfficersGen("Dominica_jungle_02", false); // пускать офицеров в локу телепорта
-			LAi_LocationFightDisable(&Locations[FindLocation("Indian_town")], false);//разрешить драться
-			LAi_LocationFightDisable(&Locations[FindLocation("Dominica_jungle_02")], false);//разрешить драться
-			// Даниэль бежит к нам
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LAi_LocationDisableOfficersGen("Indian_town", false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LAi_LocationDisableOfficersGen("Dominica_jungle_02", false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LAi_LocationFightDisable(&Locations[FindLocation("Indian_town")], false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LAi_LocationFightDisable(&Locations[FindLocation("Dominica_jungle_02")], false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ
 			sld = characterFromId("Danielle");
 			LAi_SetActorType(sld);
 			sld.dialog.currentnode = "arrive";
 			ChangeCharacterAddressGroup(sld, "Pearl_jungle_03", "item", "torch1");
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
-			pchar.questTemp.NotTeleportation = true; // нет телепортации более до поры
+			pchar.questTemp.NotTeleportation = true; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 		break;
 		
 		case "Pearl_TeleportArrive_1":
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//снимаем перманентный запрет перемотки в LSC
-			DeleteAttribute(pchar, "GenQuest.CirassExchangeDisable"); // кирасы можно одевать
-			bDisableFastReload = false;//открыть переход
+			DeleteAttribute(pchar, "GenQuest.CannotWait");//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ LSC
+			DeleteAttribute(pchar, "GenQuest.CirassExchangeDisable"); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			bDisableFastReload = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Danielle");
 			LAi_SetActorType(sld);
 			sld.dialog.currentnode = "arrive_4";
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 		break;
 	
-//---------------------------------------нахождение в LSC--------------------------------------------------
+//---------------------------------------пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ LSC--------------------------------------------------
 		
-		//--> прибытие через телепорт
+		//--> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "LSC_TeleportArrive":	
 			Dolly_TeleportConsequences();
 			chrDisableReloadToLocation = false;
-			bDisableFastReload = true;//закрыть переход
-			pchar.GenQuest.CannotWait = true;//запрет ожидания
+			bDisableFastReload = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			pchar.GenQuest.CannotWait = true;//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetActorType(pchar);
 			LAi_ActorAnimation(pchar, "Ground_sitting", "LSC_TeleportArrive_1", 3.0);
 			if (CheckAttribute(pchar, "questTemp.Saga.BaronReturn") && pchar.questTemp.Saga.BaronReturn == "first_teleport")
 			{
 				pchar.questTemp.Saga.BaronReturn = "LSC";
-				pchar.questTemp.LSC = "begin"; // флаг - мы в LSC
-				bNoEatNoRats  = true; // отменяем еду и крыс
-				LSC_CreateCrabGuard(); // ставим краба
-				LSC_CreateStateCitizens(); // ставим горожан-статиков
-				// определяем пароли кланов
+				pchar.questTemp.LSC = "begin"; // пїЅпїЅпїЅпїЅ - пїЅпїЅ пїЅ LSC
+				bNoEatNoRats  = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
+				LSC_CreateCrabGuard(); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+				LSC_CreateStateCitizens(); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+				// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 				sNrvParol = UpdateLSCClanParol();
 				sRvdParol = UpdateLSCClanParol(); 
 				log_Testinfo(sNrvParol);
 				log_Testinfo(sRvdParol);
-				// ставим прерывание на вход в кладовку
+				// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				pchar.quest.LSC_entry_pantry.win_condition.l1 = "location";
 				pchar.quest.LSC_entry_pantry.win_condition.l1.location = "SanAugustineResidence";
 				pchar.quest.LSC_entry_pantry.function = "LSC_CreatePantryGuard";
-				// ставим прерывание на вход к Мэри
+				// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 				pchar.quest.LSC_findMary.win_condition.l1 = "location";
 				pchar.quest.LSC_findMary.win_condition.l1.location = "CeresSmithy";
 				pchar.quest.LSC_findMary.function = "LSC_FindMary";
 				AddQuestRecord("BaronReturn", "5");
-				//пускаем слухи
+				//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				AddSimpleRumourCityTip("They say that our admiral has killed Alan Milrow, a head of Narwals. They are very angry with the pirates now...", "LostShipsCity", 2, 2, "LSC", "");
 				AddSimpleRumourCityTip("Red Mary completely gave up after the tragic death of her boyfriend Alan Milrow. She's sitting in her cabin of 'Ceres Smithy' and crying every night... Poor girl.", "LostShipsCity", 2, 2, "LSC", "");
 				AddSimpleRumourCityTip("They have murdered a head of Narwals right in the prison. Creepy act, I'll tell ya. To kill a helpless man just like that...", "LostShipsCity", 2, 2, "LSC", "");
@@ -4508,65 +4508,65 @@ void QuestComplete(string sQuestName, string qname)
 		case "LSC_TeleportArrive_1":	
 			LAi_ActorAnimation(Pchar, "Ground_StandUp", "pchar_back_to_player", 3.5);
 		break;
-		//<-- прибытие через телепорт
+		//<-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		
-		case "LSC_CrabGuardDie": // прибили краба	
+		case "LSC_CrabGuardDie": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ	
 			//LAi_group_Delete("EnemyFight");
 		break;
 		
-	// --> ---------------------здесь регистрируем обиды групп LSC на ГГ-------------------------------
-		case "LSC_NarvalConflict": // конфликт с нарвалами
+	// --> ---------------------пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ LSC пїЅпїЅ пїЅпїЅ-------------------------------
+		case "LSC_NarvalConflict": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if (!CheckAttribute(pchar, "GenQuest.NarvalConflict")) pchar.GenQuest.NarvalConflict = 1;
 			else pchar.GenQuest.NarvalConflict = sti(pchar.GenQuest.NarvalConflict)+1;
-			LocatorReloadEnterDisable("LostShipsCity_town", "reload48", true);//закрыть вход к Дональду
-			log_Testinfo("Конфликт с нарвалами достиг "+sti(pchar.GenQuest.NarvalConflict)+" ступени")
+			LocatorReloadEnterDisable("LostShipsCity_town", "reload48", true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			log_Testinfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "+sti(pchar.GenQuest.NarvalConflict)+" пїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
 		break;
 		
-		case "LSC_RivadosConflict": // конфликт с ривадос
+		case "LSC_RivadosConflict": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if (!CheckAttribute(pchar, "GenQuest.RivadosConflict")) pchar.GenQuest.RivadosConflict = 1;
 			else pchar.GenQuest.RivadosConflict = sti(pchar.GenQuest.RivadosConflict)+1;
-			LocatorReloadEnterDisable("LostShipsCity_town", "reload33", true);//закрыть вход к Эдди
-			log_Testinfo("Конфликт с ривадос достиг "+sti(pchar.GenQuest.RivadosConflict)+" ступени")
+			LocatorReloadEnterDisable("LostShipsCity_town", "reload33", true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
+			log_Testinfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "+sti(pchar.GenQuest.RivadosConflict)+" пїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
 		break;
 		
-		case "LSC_SharkConflict": // конфликт с пиратами
+		case "LSC_SharkConflict": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if (!CheckAttribute(pchar, "GenQuest.SharkConflict")) pchar.GenQuest.SharkConflict = 1;
 			else pchar.GenQuest.SharkConflict = sti(pchar.GenQuest.SharkConflict)+1;
-			LSC_CloseSanAvgustinDoors(); // закрыть сан-августин
-			LSC_CloseTartarusDoors(); // закрыть Тартарус
-			log_Testinfo("Конфликт с пиратами достиг "+sti(pchar.GenQuest.SharkConflict)+" ступени")
+			LSC_CloseSanAvgustinDoors(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LSC_CloseTartarusDoors(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			log_Testinfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "+sti(pchar.GenQuest.SharkConflict)+" пїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
 		break;
 		
-		case "LSC_CitizenConflict": // избиение горожан строго наказуемо, вплоть до геймовера
+		case "LSC_CitizenConflict": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if (!CheckAttribute(pchar, "GenQuest.CitizenConflict")) pchar.GenQuest.CitizenConflict = 1;
 			else
 			{
 				pchar.GenQuest.CitizenConflict = sti(pchar.GenQuest.CitizenConflict)+1;
 				if (sti(pchar.GenQuest.CitizenConflict) == 5)
 				{
-					log_Testinfo("Ты - не геймер, ты - отморозок, и место твоему ГГ в тюрьме!");
+					log_Testinfo("пїЅпїЅ - пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ!");
 					pchar.quest.LSC_GameOverPrison.win_condition.l1 = "location";
 					pchar.quest.LSC_GameOverPrison.win_condition.l1.location = "LostShipsCity_town";
 					pchar.quest.LSC_GameOverPrison.function = "LSC_GameOverPrison";
 				}
 			}
-			log_Testinfo("Конфликт с горожанами достиг "+sti(pchar.GenQuest.CitizenConflict)+" ступени");
+			log_Testinfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "+sti(pchar.GenQuest.CitizenConflict)+" пїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 		break;
 		
-		case "LSC_GameOverInPrison": // геймовер в тюрьме на Тартарусе
+		case "LSC_GameOverInPrison": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			RemoveAllCharacterItems(pchar, true);
 			DoQuestCheckDelay("LSC_GameOverPrisonEnd", 7.0);
-			log_Testinfo("Довыделывался?");
+			log_Testinfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ?");
 		break;
 		
-		case "LSC_GameOverPrisonEnd": // геймовер в тюрьме на Тартарусе
+		case "LSC_GameOverPrisonEnd": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			GameOver("mutiny");
 		break;
-		// <-- обиды групп LSC на ГГ
+		// <-- пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ LSC пїЅпїЅ пїЅпїЅ
 		
-	// ---------------------------- прочие функции, не относящиеся к квестам ---------------------------
+	// ---------------------------- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ ---------------------------
 		
-		case "LSC_DrinkSit": // бухалово в одиночку в таверне
+		case "LSC_DrinkSit": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetSitType(pchar);
 			DoQuestCheckDelay("LSC_DrinkSitGo", 0.6);
         break;
@@ -4589,10 +4589,10 @@ void QuestComplete(string sQuestName, string qname)
 			sld.shown = false;
 			DoQuestReloadToLocation("FleuronTavern", "goto", "goto1", "");
 		break;
-		// <-- прочие функции, не относящиеся к квестам
+		// <-- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		
-	//-------------------------------- охота на Акулу - вариант R -----------------------------------
-		case "LSC_ChadGuardAttack_Fail": //атака не по сюжету, либо если завалил колдуна
+	//-------------------------------- пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ R -----------------------------------
+		case "LSC_ChadGuardAttack_Fail": //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for(i = 1; i <= 3; i++)
 			{				
 				sld = CharacterFromID("ChadGuard_"+i);
@@ -4603,14 +4603,14 @@ void QuestComplete(string sQuestName, string qname)
 			}
 			sld = characterFromId("Capper");
 			LAi_SetWarriorType(sld);
-			LAi_SetImmortal(sld, true); // ГГ - однозначный капут
+			LAi_SetImmortal(sld, true); // пїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			ChangeCharacterAddressGroup(sld, "Tartarusprison", "goto", "goto8");
 			LAi_group_MoveCharacter(sld, "EnemyFight");
 			LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 			LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
 		break;
 		
-		case "LSC_Chimiset_ActivateDialog":	// активация диалога при нападении на колдуна
+		case "LSC_Chimiset_ActivateDialog":	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestCheckDelay("hide_weapon", 0.1);
 			sld = characterFromId("Chimiset");
 			LAi_RemoveCheckMinHP(sld);
@@ -4618,9 +4618,9 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialogNow(sld, pchar, "", -1);
 		break;
 		
-		case "LSC_ChadGuard_Die": // перебили охрану Чада и его самого
-			InterfaceStates.Buttons.Save.enable = true; //разрешим сохраняться
-			DoQuestCheckDelay("hide_weapon", 1.0);//убрать оружие
+		case "LSC_ChadGuard_Die": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			InterfaceStates.Buttons.Save.enable = true; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			DoQuestCheckDelay("hide_weapon", 1.0);//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			sld = characterFromId("Chimiset");
 			sld.dialog.currentnode = "Chad_die";
@@ -4629,18 +4629,18 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(100, 100, 100, 100);
 		break;
 		
-		case "LSC_EddyStay": // вертаем Эдди возможность разговора
-			chrDisableReloadToLocation = false;//открыть локацию
+		case "LSC_EddyStay": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Eddy");
 			sld.dialog.currentnode = "Total_info";
 			LAi_SetOwnerType(sld);
 		break;
 		
-		case "LSC_AdolfDie": // прибили Адольфа
-			DoQuestCheckDelay("hide_weapon", 1.0);//убрать оружие
+		case "LSC_AdolfDie": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			DoQuestCheckDelay("hide_weapon", 1.0);//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
-			chrDisableReloadToLocation = false;//открыть локацию
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//запретить драться
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.LSC_AdolfDie.win_condition.l1 = "item";
 			pchar.quest.LSC_AdolfDie.win_condition.l1.item = "letter_chad";
 			pchar.quest.LSC_AdolfDie.function = "LSC_AdolfLetter";
@@ -4650,9 +4650,9 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(50, 50, 50, 50);
 		break;
 		
-		case "LSC_CyclopNMaryDie": // убили Мэри и Циклопа
-			DoQuestCheckDelay("hide_weapon", 1.0);//убрать оружие
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//запретить драться
+		case "LSC_CyclopNMaryDie": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			DoQuestCheckDelay("hide_weapon", 1.0);//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			pchar.quest.LSC_MaryDie.win_condition.l1 = "item";
 			pchar.quest.LSC_MaryDie.win_condition.l1.item = "letter_chad_1";
@@ -4661,14 +4661,14 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(100, 100, 100, 100);
 		break;
 	
-		case "LSC_EnterAevaWithMary": // следуем за Мэри на Эву
+		case "LSC_EnterAevaWithMary": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ
 			DoQuestReloadToLocation("AvaShipInside3", "reload", "reload1", "LSC_AevaWithMary");
 		break;
 		
-		case "LSC_AevaWithMary": // внутри Эвы
+		case "LSC_AevaWithMary": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			iRank = 30+MOD_SKILL_ENEMY_RATE;
 			iScl = 80;
-			// нарвалы
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=1; i<=3; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("CyclopGuard_"+i, "citiz_58", "man", "man", iRank, PIRATE, -1, true, "soldier"));
@@ -4678,14 +4678,14 @@ void QuestComplete(string sQuestName, string qname)
 				ChangeCharacterAddressGroup(sld, "AvaShipInside3", "quest", "quest"+i);
 				LAi_CharacterDisableDialog(sld);
 			}
-			// Марчелло
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Marchello");
 			FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_21", "pistol6", "bullet", iScl*2+100);
 			sld.cirassId = Items_FindItemIdx("cirass1");
 			LAi_CharacterDisableDialog(sld);
 			ChangeCharacterAddressGroup(sld, "AvaShipInside3", "quest", "quest4");
 			LAi_SetActorType(sld);
-			// идем в ловушку
+			// пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mary");
 			ChangeCharacterAddressGroup(sld, "AvaShipInside3", "reload", "reload1");
 			LAi_SetActorType(pchar);
@@ -4694,7 +4694,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorFollow(pchar, sld, "", -1);
 		break;
 		
-		case "LSC_AevaMaryDialog": // пришли в трюм
+		case "LSC_AevaMaryDialog": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			for (i=1; i<=3; i++)
 			{
@@ -4711,57 +4711,57 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 		break;
 	
-	//--------------------------------охота на Акулу - вар N ---------------------------------------
-		case "LSC_SharkDie": // убили Акулу - ставим Декстера
+	//--------------------------------пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅ N ---------------------------------------
+		case "LSC_SharkDie": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Dodson");
 			sld.lifeday = 0;
-			pchar.questTemp.Saga.DodsonDie = "true"; // атрибут Саге что Акула погиб
+			pchar.questTemp.Saga.DodsonDie = "true"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Dexter");
 			sld.dialog.currentnode = "admiral";
 			sld.greeting = "dexter_2";
 			ChangeCharacterAddressGroup(sld, "SanAugustineResidence", "sit", "sit1");
 			LAi_SetHuberType(sld);
 			LAi_group_MoveCharacter(sld, "LSC_SHARK");
-			SetFunctionTimerCondition("LSC_FacioReturn", 0, 0, 1, false); // вертаем на место Фацио через сутки
+			SetFunctionTimerCondition("LSC_FacioReturn", 0, 0, 1, false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			LocatorReloadEnterDisable("LostShipsCity_town", "reload25", true);
 		break;
 		
-		case "LSC_CarolineOpen": // открываем Каролину
+		case "LSC_CarolineOpen": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LocatorReloadEnterDisable("LostShipsCity_town", "reload25", false);
 			pchar.quest.LSC_CarolineEnter.win_condition.l1 = "location";
 			pchar.quest.LSC_CarolineEnter.win_condition.l1.location = "CarolineBank";
 			pchar.quest.LSC_CarolineEnter.function = "LSC_CarolineEnter";
 		break;
 		
-		case "LSC_MarynChadDie": // прибили Мэри и Чада - ищем Акулу
+		case "LSC_MarynChadDie": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//запретить драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Dodson");
-			if (LAi_GetCharacterHP(sld) > 0) // жив
+			if (LAi_GetCharacterHP(sld) > 0) // пїЅпїЅпїЅ
 			{
 				LAi_SetActorType(sld);
 				sld.dialog.currentnode = "caroline_5";
 				LAi_ActorDialog(sld, pchar, "", -1, 0);
-				AddCharacterExpToSkill(pchar, "Fortune", 200);//везение
+				AddCharacterExpToSkill(pchar, "Fortune", 200);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			}
 			else
 			{
-				chrDisableReloadToLocation = false;//открыть локацию
+				chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				DoQuestCheckDelay("LSC_SharkDie", 1.0);
 				AddQuestRecord("SharkHunt", "23");
 			}
 			AddComplexSelfExpToScill(150, 150, 150, 150);
 		break;
 		
-		case "LSC_SharkReturnSit": // Акулу на свое место
-			chrDisableReloadToLocation = false;//открыть локацию
+		case "LSC_SharkReturnSit": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Dodson");
 			LAi_SetHuberType(sld);
 			sld.dialog.currentnode = "Total_wait";
 			ref rloc = &Locations[FindLocation("CarolineBank")];
 			rloc.private1.key = "key_facio";
 			rloc.private1.key.delItem = true;
-			// ставим прерывание на письмо Фацио
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.LSC_letterFacio.win_condition.l1 = "item";
 			pchar.quest.LSC_letterFacio.win_condition.l1.item = "letter_chad_1";
 			pchar.quest.LSC_letterFacio.function = "LSC_FindLetterFacio";
@@ -4770,79 +4770,79 @@ void QuestComplete(string sQuestName, string qname)
 			AddSimpleRumourCityTip("They say that odd noises were coming from 'Caroline' last night, someone was fighting there and they heard a woman's pre-death cry. I believe that this explains the disappearance of May Casper. Poor girl! I am sure, that we shall never see her again...", "LostShipsCity", 1, 2, "LSC", "");
 		break;
 		
-	//-------------------------------- охота на Акулу - вариант M -----------------------------------
-		case "LSC_EnemiesMaryDie": // перебили негодяев на церес смити - ищем Мэри
-			DoQuestCheckDelay("hide_weapon", 1.0);//убрать оружие
+	//-------------------------------- пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ M -----------------------------------
+		case "LSC_EnemiesMaryDie": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+			DoQuestCheckDelay("hide_weapon", 1.0);//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			PlayStereoOGG("music_LostShipsCity");
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//запретить драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mary");
-			if (LAi_GetCharacterHP(sld) > 0) // жива
+			if (LAi_GetCharacterHP(sld) > 0) // пїЅпїЅпїЅпїЅ
 			{
 				LAi_SetActorType(sld);
 				sld.dialog.currentnode = "mary";
 				LAi_ActorDialog(sld, pchar, "", -1, 0);
-				pchar.questTemp.LSC.Mary = "alive"; // Мэри найдена и жива - теперь она наша! Почти...
-				AddCharacterExpToSkill(pchar, "Fortune", 100);//везение
+				pchar.questTemp.LSC.Mary = "alive"; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ! пїЅпїЅпїЅпїЅпїЅ...
+				AddCharacterExpToSkill(pchar, "Fortune", 100);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				AddCharacterExpToSkill(pchar, "Leadership", 100);
 			}
 			else
 			{
-				LAi_group_Delete("TMP_FRIEND"); // опаньки! если не потереть группу - то имеем вылет!
+				LAi_group_Delete("TMP_FRIEND"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!
 				pchar.quest.LSC_Maryletter.win_condition.l1 = "item";
 				pchar.quest.LSC_Maryletter.win_condition.l1.item = "letter_chad_1";
 				pchar.quest.LSC_Maryletter.function = "LSC_DieMaryletter";
 				AddQuestRecord("SharkHunt", "29");
-				pchar.questTemp.LSC.Mary = "die"; // Мэри мертва
+				pchar.questTemp.LSC.Mary = "die"; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			}
 			AddComplexSelfExpToScill(50, 50, 50, 50);
 		break;
 		
-		case "LSC_ZikomoNearDoor": // Зикомо у дверей
+		case "LSC_ZikomoNearDoor": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Zikomo");
             LAi_SetActorType(sld);
 			LAi_ActorGoToLocator(sld, "reload", "reload1", "LSC_ZikomoTurn", -1);
 			DoQuestCheckDelay("LSC_RivadosPrisonAttack", 12.0);
         break;
 		
-		case "LSC_ZikomoTurn": // поворот Зикомо
+		case "LSC_ZikomoTurn": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Zikomo");
             LAi_SetActorType(sld);
 			LAi_ActorTurnToCharacter(sld, pchar);
         break;
 		
-		case "LSC_ChimisetSit": // усадка Чимисета
+		case "LSC_ChimisetSit": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Chimiset");
             LAi_SetHuberType(sld);
 			sld.dialog.currentnode = "freedom";
         break;
 		
-		case "LSC_RivadosPrisonAttack": // мотаем время
+		case "LSC_RivadosPrisonAttack": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			SetLaunchFrameFormParam("Three hours passed...", "", 0, 5);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 3, 10); //крутим время
+			WaitDate("", 0, 0, 0, 3, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			DoQuestCheckDelay("LSC_RivadosFreeChimiset", 5.0);
         break;
 		
-		case "LSC_RivadosFreeChimiset": // ривадос вернулись с Чимисетом
-			sld = CharacterFromID("Zikomo"); // Зикомо на место
+		case "LSC_RivadosFreeChimiset": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			sld = CharacterFromID("Zikomo"); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             LAi_SetActorType(sld);
 			LAi_ActorGoToLocator(sld, "goto", "goto4", "LSC_ZikomoTurn", 10.0);
-			sld = CharacterFromID("Chimiset"); // Чимисета на стул
+			sld = CharacterFromID("Chimiset"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
             LAi_SetActorType(sld);
 			ChangeCharacterAddressGroup(sld, "ProtectorFisher", "reload", "reload1");
 			LAi_ActorGoToLocator(sld, "sit", "sit1", "LSC_ChimisetSit", 10.0);
-			sld = CharacterFromID("Eddy"); // Эдди к разговору
+			sld = CharacterFromID("Eddy"); // пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             LAi_SetActorType(sld);
 			ChangeCharacterAddressGroup(sld, "ProtectorFisher", "reload", "reload1");
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
-			AddCharacterExpToSkill(pchar, "Leadership", 100);//авторитет
-			AddCharacterExpToSkill(pchar, "Fortune", 100);//везение
+			AddCharacterExpToSkill(pchar, "Leadership", 100);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			AddCharacterExpToSkill(pchar, "Fortune", 100);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         break;
 		
-		case "LSC_AdolfKillerDie": // прибили нарвала на Флорентине
-			DoQuestCheckDelay("hide_weapon", 1.0);//убрать оружие
+		case "LSC_AdolfKillerDie": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			DoQuestCheckDelay("hide_weapon", 1.0);//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);
 			pchar.quest.LSC_letterAdolf.win_condition.l1 = "item";
@@ -4851,22 +4851,22 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(70, 70, 70, 70);
         break;
 		
-		case "LSC_CapperDieAeva": // Каппер капут на Эве
-			DoQuestCheckDelay("hide_weapon", 1.0);//убрать оружие
+		case "LSC_CapperDieAeva": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ
+			DoQuestCheckDelay("hide_weapon", 1.0);//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);
-			pchar.questTemp.LSC.CapperDie_Aeva = "true"; // атрибут - Каппер уничтожен
-			LSC_OpenTartarusDoors(); // открыть Тартарус
-			if (!CheckAttribute(pchar, "questTemp.LSC.Dodson_poison")) // не было разговора
+			pchar.questTemp.LSC.CapperDie_Aeva = "true"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LSC_OpenTartarusDoors(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			if (!CheckAttribute(pchar, "questTemp.LSC.Dodson_poison")) // пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				sld = CharacterFromID("Dodson");
 				sld.dialog.currentnode = "poison";
 			}
-			if (CheckAttribute(pchar, "questTemp.LSC.Whiskey_clear")) // виски не отравлен
+			if (CheckAttribute(pchar, "questTemp.LSC.Whiskey_clear")) // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				AddQuestRecord("SharkHunt", "44");
 				sld = CharacterFromID("Dodson");
-				sld.dialog.currentnode = "clear"; // ноду Акуле
+				sld.dialog.currentnode = "clear"; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			}
 			else
 			{
@@ -4882,14 +4882,14 @@ void QuestComplete(string sQuestName, string qname)
 				else
 				{
 					if (CheckAttribute(pchar, "questTemp.LSC.Dodson_warning"))
-					{ // Акула был предупрежден - снова к нему
+					{ // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 						AddQuestRecord("SharkHunt", "39_2");
 						sld = CharacterFromID("Facio");
 						LAi_SetStayType(sld);
 						sld.dialog.currentnode = "whiskey";
 						sld.greeting = "facio_2";
 						sld.quest.poisonnode = 3;
-						LAi_CharacterDisableDialog(sld);//запрещаем диалог
+						LAi_CharacterDisableDialog(sld);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 						ChangeCharacterAddressGroup(sld, "SanAugustineResidence", "goto", "goto10");
 						sld = CharacterFromID("Dodson");
 						sld.dialog.currentnode = "whiskey_7";
@@ -4901,36 +4901,36 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(200, 200, 200, 200);
         break;
 		
-		case "LSC_CyclopInMaryCabin": // у Мэри - спасаем ее от Циклопа
+		case "LSC_CyclopInMaryCabin": // пїЅ пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			iRank = 25+MOD_SKILL_ENEMY_RATE*2;
 			iScl = 80;
 			DeleteAttribute(pchar, "questTemp.LSC.RescueMary");
-			DeleteAttribute(pchar, "questTemp.NoFast"); // убираем запрет ускорения
-			// Мэри
+			DeleteAttribute(pchar, "questTemp.NoFast"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Mary");
 			sld.greeting = "mary_2"; 
-			if (!CheckAttribute(pchar, "questTemp.LSC.FailMary")) // успел
+			if (!CheckAttribute(pchar, "questTemp.LSC.FailMary")) // пїЅпїЅпїЅпїЅпїЅ
 			{
 				ChangeCharacterAddressGroup(sld, "CeresSmithy", "sit", "sit3");
 				LAi_SetSitType(sld);
-				LAi_CharacterDisableDialog(sld);//запрет диалога
+				LAi_CharacterDisableDialog(sld);//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				LAi_group_MoveCharacter(sld, "TMP_FRIEND");
 			}
 			else
 			{
 				LAi_KillCharacter(sld);
 			}
-			// ставим Циклопуса и утолщаем его
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			sld = characterFromId("Marchello");
 			FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_21", "pistol4", "bullet", iScl+100);
 				sld.cirassId = Items_FindItemIdx("cirass1");
 			sld.MultiFighter = 1.4;
-			if (MOD_SKILL_ENEMY_RATE > 7) sld.MultiFighter = 1.8; // мультифайтер
+			if (MOD_SKILL_ENEMY_RATE > 7) sld.MultiFighter = 1.8; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			SetSelfSkill(sld, iScl, iScl, iScl, iScl, iScl);
-			if (!CheckAttribute(pchar, "questTemp.LSC.FailMary")) // успел
+			if (!CheckAttribute(pchar, "questTemp.LSC.FailMary")) // пїЅпїЅпїЅпїЅпїЅ
 			{
 				sld.dialog.currentnode = "mary";
-				ChangeCharacterAddressGroup(sld, "CeresSmithy", "quest", "quest2"); // затаился, гад
+				ChangeCharacterAddressGroup(sld, "CeresSmithy", "quest", "quest2"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ
 				LAi_SetCheckMinHP(sld, 100, true, "LSC_MaryRunHelp_CS");
 				LAi_SetActorType(sld);
 				LAi_SetActorType(pchar);
@@ -4939,7 +4939,7 @@ void QuestComplete(string sQuestName, string qname)
 			else
 			{
 				ChangeCharacterAddressGroup(sld, "CeresSmithy", "goto", "goto10");
-				LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
+				LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				LAi_SetWarriorType(sld);
 				LAi_group_MoveCharacter(sld, "EnemyFight");
 				LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
@@ -4948,44 +4948,44 @@ void QuestComplete(string sQuestName, string qname)
 			}
         break;
 		
-		case "LSC_CyclopDiag_CS": // нашли Циклопа
+		case "LSC_CyclopDiag_CS": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			sld = CharacterFromID("Marchello");
 			LAi_SetActorType(sld);
 			LAi_ActorDialogNow(sld, pchar, "", -1);
         break;
 		
-		case "LSC_MaryRunHelp_CS": // Мэри вступает в драку - помогает
+		case "LSC_MaryRunHelp_CS": // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Mary");
 			LAi_SetWarriorType(sld);
 			ChangeCharacterAddressGroup(sld, "CeresSmithy", "barmen", "stay");
-			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER); // в нашу группу
+			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER); // пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Marchello");
 			LAi_SetImmortal(sld, false);
         break;
 		
-		case "LSC_KillCyclop_CS": // одолели Циклопа
-			DoQuestCheckDelay("hide_weapon", 1.0);//убрать оружие
+		case "LSC_KillCyclop_CS": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			DoQuestCheckDelay("hide_weapon", 1.0);//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			PlayStereoOGG("music_LostShipsCity");
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//запретить драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.questTemp.LSC.CyclopDie = "true";
-			if (!CheckAttribute(pchar, "questTemp.LSC.FailMary")) // успел
+			if (!CheckAttribute(pchar, "questTemp.LSC.FailMary")) // пїЅпїЅпїЅпїЅпїЅ
 			{
 				sld = characterFromId("Mary");
-				if (LAi_GetCharacterHP(sld) > 0) // жива
+				if (LAi_GetCharacterHP(sld) > 0) // пїЅпїЅпїЅпїЅ
 				{
-					LAi_CharacterEnableDialog(sld);//разрешение диалога
+					LAi_CharacterEnableDialog(sld);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					sld.dialog.currentnode = "happy";
 					LAi_SetActorType(sld);
-					LAi_ActorDialog(sld, pchar, "", -1, 0); // Мэри жива - теперь она наша! Совсем!
+					LAi_ActorDialog(sld, pchar, "", -1, 0); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ! пїЅпїЅпїЅпїЅпїЅпїЅ!
 					AddCharacterExpToSkill(pchar, "Leadership", 500);
-					AddCharacterExpToSkill(pchar, "Fortune", 300);//везение
+					AddCharacterExpToSkill(pchar, "Fortune", 300);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				}
 				else
 				{
 					AddQuestRecord("SharkHunt", "48");
-					pchar.questTemp.LSC.Mary = "die"; // Мэри мертва - но такое навряд ли получится
+					pchar.questTemp.LSC.Mary = "die"; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					pchar.quest.LSC_marydienextstage.win_condition.l1 = "location";
 					pchar.quest.LSC_marydienextstage.win_condition.l1.location = "LostShipsCity_town";
 					pchar.quest.LSC_marydienextstage.win_condition = "LSC_MarydieNextstage";
@@ -4994,7 +4994,7 @@ void QuestComplete(string sQuestName, string qname)
 			else
 			{
 				AddQuestRecord("SharkHunt", "50");
-				pchar.questTemp.LSC.Mary = "die"; // Мэри мертва 
+				pchar.questTemp.LSC.Mary = "die"; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 
 				pchar.quest.LSC_marydienextstage.win_condition.l1 = "location";
 				pchar.quest.LSC_marydienextstage.win_condition.l1.location = "LostShipsCity_town";
 				pchar.quest.LSC_marydienextstage.win_condition = "LSC_MarydieNextstage";
@@ -5014,17 +5014,17 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 		case "LSC_MarydieNextstageReload": 
-			LSC_ContinueAfterMaryCabin(); // завершающая функция
+			LSC_ContinueAfterMaryCabin(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("LostShipsCity_town", "goto", "goto09_4", "");
         break;
 		
-		case "LSC_MaryRomantic_1": // кино романтик-с...
+		case "LSC_MaryRomantic_1": // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅ...
 			pchar.GenQuest.FrameLockEsc = true;
 			pchar.GenQuest.MusicContinue = true;
 			SetLaunchFrameFormParam("", "", 0, 7);
 			SetLaunchFrameFormPic("loading\inside\kiss.tga");
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 3, 10); //крутим время
+			WaitDate("", 0, 0, 0, 3, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			sld = characterFromId("Mary");
 			LAi_SetActorType(sld);
@@ -5033,23 +5033,23 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("LSC_MaryRomantic_2", 7.0);
         break;
 		
-		case "LSC_MaryRomantic_2": // второй эпизод...
+		case "LSC_MaryRomantic_2": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ...
 			locCameraRotateAroundHero(0.0, 1.5, 0.0, 0.005, 0.0, 1.5, 0.0, 700);
 			DoQuestCheckDelay("LSC_MaryRomantic_3", 15.0);
         break;
 		
-		case "LSC_MaryRomantic_3": // третий... Теперь ГГ как честный человек обязан жениться
+		case "LSC_MaryRomantic_3": // пїЅпїЅпїЅпїЅпїЅпїЅ... пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.GenQuest.FrameLockEsc = true;
 			SetLaunchFrameFormParam("", "", 0, 14);
 			SetLaunchFrameFormPic("loading\inside\censored1.tga");
 			PlayStereoSound("sex\sex6.wav");
             LaunchFrameForm();
 			DoQuestCheckDelay("LSC_MaryRomantic_4", 14.0);
-			AddCharacterHealth(pchar, 12); // Мэри восстанавливает здоровье лучше всех и без бальзама
+			AddCharacterHealth(pchar, 12); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetCurHPMax(pchar);
         break;
 		
-		case "LSC_MaryRomantic_4": // четвертый...
+		case "LSC_MaryRomantic_4": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...
 			locCameraResetState();
 			EndQuestMovie();
 			LAi_SetPlayerType(pchar);
@@ -5059,35 +5059,35 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
         break;
 		
-		case "LSC_MaryRomantic_5": // пятый - на улицы
-			// здесь снять все установленные запреты
-			bDisableCharacterMenu = false;//лоченые интерфейсы
-			InterfaceStates.Buttons.Save.enable = true;//разрешить сохраняться
-			LSC_ContinueAfterMaryCabin(); // завершающая функция
+		case "LSC_MaryRomantic_5": // пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			bDisableCharacterMenu = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			InterfaceStates.Buttons.Save.enable = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LSC_ContinueAfterMaryCabin(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("LostShipsCity_town", "goto", "goto09_4", "LSC_MaryReturnNormal");
 			AddQuestRecord("SharkHunt", "47");
         break;
 		
-		case "LSC_MaryReturnNormal": // вертаем Мэри в норму
+		case "LSC_MaryReturnNormal": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mary");
 			if (CheckAttribute(pchar, "questTemp.LSC.MaryBye")) sld.dialog.currentnode = "LSC_love";
 			else sld.dialog.currentnode = "LSC_love_3";
 			LAi_SetOwnerType(sld);
-			chrDisableReloadToLocation = false;//открыть локацию 
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
         break;
 		
-		case "LSC_MaryReturnNormal_1": // вертаем Мэри в норму
+		case "LSC_MaryReturnNormal_1": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mary");
 			LAi_SetOwnerType(sld);
 			if (CheckAttribute(pchar, "questTemp.LSC.Mary_officer")) LAi_SetOfficerType(sld); // patch-10
         break;
 		
-		case "LSC_CyclopDie_Fl": // одолели Циклопа на Флероне
-			DoQuestCheckDelay("hide_weapon", 1.0);//убрать оружие
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//запретить драться
+		case "LSC_CyclopDie_Fl": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			DoQuestCheckDelay("hide_weapon", 1.0);//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			PlayStereoOGG("music_LostShipsCity");
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			AddQuestRecord("SharkHunt", "52");
 			pchar.questTemp.LSC.CyclopDie = "true";
 			if (!CheckAttribute(pchar, "questTemp.LSC.Whiskey_clear"))
@@ -5102,7 +5102,7 @@ void QuestComplete(string sQuestName, string qname)
 				pchar.quest.LSC_WhiskeyStoryFinal.function = "LSC_WhiskeyStoryFinal";
 			}
 			AddComplexSelfExpToScill(150, 150, 150, 150);
-			pchar.questTemp.Saga.SharkHunt = "whiskey_final"; // меняем флаг
+			pchar.questTemp.Saga.SharkHunt = "whiskey_final"; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Facio");
 			sld.dialog.currentnode = "First time";
 			sld.greeting = "facio_1";
@@ -5127,23 +5127,23 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetPlayerType(pchar);
 			ChangeCharacterAddressGroup(sld, "CeresSmithy", "goto", "goto11");
 			ChangeCharacterAddressGroup(pchar, "CeresSmithy", "goto", "goto10");
-			AddCharacterHealth(pchar, 5); // ночь бухали - восстановление меньше
+			AddCharacterHealth(pchar, 5); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetCurHPMax(pchar);
 			DoQuestFunctionDelay("LSC_MaryLoveMorning", 1.0);
 			sld = ItemsFromID("potionrum");
 			sld.shown = false;
         break;
 		
-		 case "LSC_EnterPresentMary": // входим с Мэри в каюту Юргену
+		 case "LSC_EnterPresentMary": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mary");
 			sld.dialog.currentnode = "narval_3";
 			ChangeCharacterAddressGroup(sld, "CeresSmithy", "goto", "goto12");
 			DoQuestReloadToLocation("CeresSmithy", "reload", "reload1", "LSC_PresentMary");
         break;
 		 
-		 case "LSC_PresentMary": // в каюте Юргена
+		 case "LSC_PresentMary": // пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			StartQuestMovie(true, true, true);
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			sld = characterFromId("Schmidt");
 			LAi_SetActorType(sld);
@@ -5153,32 +5153,32 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialogDelay(sld, pchar, "", 0.7);
         break;
 		
-	// ---------------------------------- возвращение на Остров ------------------------------------
-		case "LSC_SetOlePassenger": // Оле - в пассажиры
+	// ---------------------------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ ------------------------------------
+		case "LSC_SetOlePassenger": // пїЅпїЅпїЅ - пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Ole");
 			AddPassenger(pchar, sld, false);
 			SetCharacterRemovable(sld, false);
-			pchar.GenQuest.Ole = true; // аналог крысобога
+			pchar.GenQuest.Ole = true; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			SaveCurrentNpcQuestDateParam(sld, "pearl_date");
-			sld.quest.pearlqty = 0; // счет жемчужин
-			if (GetCharacterIndex("Mary") != -1) // Мэри
+			sld.quest.pearlqty = 0; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			if (GetCharacterIndex("Mary") != -1) // пїЅпїЅпїЅпїЅ
 			{
 				sld = characterFromId("Mary");
 				LAi_SetActorType(sld);
 				LAi_ActorDialog(sld, pchar, "", -1, 0);
 			}
-			else // иначе завершение
+			else // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				chrDisableReloadToLocation = false;
 				LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			}
         break;
 		
-		 case "LSC_MaryWaitInCabin": // Мэри ждет
+		 case "LSC_MaryWaitInCabin": // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mary");
 			LAi_SetOwnerType(sld);
 			sld.dialog.currentnode = "adversary"; 
-			// до сдачи Даниэль Натаниэлю - закрываем вход к Мэри
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 			for (i=0; i<=3; i++)
 			{
 				LocatorReloadEnterDisable("LostShipsCity_town", "reload6"+i, true);
@@ -5187,18 +5187,18 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
         break;
 		
-		case "LSC_DanielleRomantic": // Даниэль и Натаниэль
+		case "LSC_DanielleRomantic": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.GenQuest.FrameLockEsc = true;
 			pchar.GenQuest.MusicContinue = true;
 			SetLaunchFrameFormParam("", "", 0, 8);
 			SetLaunchFrameFormPic("loading\inside\kiss.tga");
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 0, 20); //крутим время
+			WaitDate("", 0, 0, 0, 0, 20); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			DoQuestCheckDelay("LSC_DanielleRomantic_1", 8.0);
         break;
 		
-		case "LSC_DanielleRomantic_1": // второй эпизод...
+		case "LSC_DanielleRomantic_1": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ...
 			LocCameraResetState();
 			LAi_SetPlayerType(PChar);
 			sld = characterFromId("Danielle");
@@ -5207,32 +5207,32 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
         break;
 		
-		case "LSC_LastNight_CS": // последняя ночь на Церес Смити
+		case "LSC_LastNight_CS": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			LSC_MaryLove();
         break;
 		
-		case "LSC_Mary_hire": //найм Мэри: в отличие от всех прочих, ее HP будет подбираться автолевеллингом
+		case "LSC_Mary_hire": //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ: пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ HP пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.questTemp.LSC.Mary_officer = "true";
 			iTemp = 250+sti(pchar.rank)*5;
 			sld = characterFromId("Mary");
 			LAi_SetHP(sld, iTemp, iTemp); 
 			sld.quest.OfficerPrice = sti(pchar.rank)*500;
-			sld.OfficerWantToGo.DontGo = true; //не пытаться уйти
-			sld.CompanionDisable = true; //Мэри подруга, а не компаньон
+			sld.OfficerWantToGo.DontGo = true; //пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+			sld.CompanionDisable = true; //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld.loyality = MAX_LOYALITY;
 			AddPassenger(pchar, sld, false);
 			SetCharacterRemovable(sld, true);
 			sld.Payment = true;
-			DeleteAttribute(sld, "SaveItemsForDead"); // а вот сохранение вещей - фигушки, потеряете Мэри - нифига не получите
-			sld.HoldEquip = true; //не отдавать оружие
+			DeleteAttribute(sld, "SaveItemsForDead"); // пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			sld.HoldEquip = true; //пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld.location = "none";
 			LAi_SetOfficerType(sld);
 			sld.dialog.currentnode = "Mary_officer";
 			sld.greeting = "mary_hire"; 
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			SaveCurrentNpcQuestDateParam(sld, "HiredDate");
-			// Мэри упакована сама по-полной
+			// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅ
 			TakeNItems(sld, "potion2", 8);
 			TakeNItems(sld, "potion3", 3);
 			TakeNItems(sld, "potion4", 3);
@@ -5247,25 +5247,25 @@ void QuestComplete(string sQuestName, string qname)
 				EquipOfficerByArtefact(sld, "indian_1");
 				EquipOfficerByArtefact(sld, "amulet_4");
 			}
-			// активируем поведение Мэри
-			// если две недели не заниматься с ней любовью - будет требовать
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Mary_giveme_sex.win_condition.l1 = "Timer";
 			pchar.quest.Mary_giveme_sex.win_condition.l1.date.hour  = sti(GetTime());
 			pchar.quest.Mary_giveme_sex.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 14);
 			pchar.quest.Mary_giveme_sex.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 14);
 			pchar.quest.Mary_giveme_sex.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 14);
 			pchar.quest.Mary_giveme_sex.function = "Mary_GiveMeSex";
-			pchar.GenQuest.BrothelCount = 0; // нулим бордельный счетчик
-			RemoveItems(pchar, "key_mary", 1); // удалить ключ Мэри - он уже не нужен
+			pchar.GenQuest.BrothelCount = 0; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			RemoveItems(pchar, "key_mary", 1); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ - пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         break;
 		
-		case "LSC_SetDodsonPassenger": // Акулу - в пассажиры
+		case "LSC_SetDodsonPassenger": // пїЅпїЅпїЅпїЅпїЅ - пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Dodson");
 			sld.greeting = "dodson_2"; 
 			AddPassenger(pchar, sld, false);
 			SetCharacterRemovable(sld, false);
 			LAi_SetImmortal(sld, true);
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Svenson");
 			sld.quest.shark = "true";
 			pchar.quest.LSC_Dodson_SC.win_condition.l1 = "location";
@@ -5273,17 +5273,17 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.LSC_Dodson_SC.function = "LSC_DodsonSC";
         break;
 		
-		case "LSC_FinalDiosStory": // Диос - завершение рассказа 270912
+		case "LSC_FinalDiosStory": // пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 270912
 			sld = characterFromId("Dios");
 			sld.dialog.currentnode = "LSC_4";
 			LAi_SetActorType(sld);
 			LAi_ActorDialogNow(sld, pchar, "", -1);
         break;
 		
-	// --------------------------------------мини-квесты LSC -----------------------------------------
-		// --> пей до дна
-		case "LSC_DrinkLeonardTalk": // Леонард подходит
-			chrDisableReloadToLocation = true;//закрыть локацию
+	// --------------------------------------пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅ LSC -----------------------------------------
+		// --> пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ
+		case "LSC_DrinkLeonardTalk": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("LSC_Leonard");
 			LAi_RemoveLoginTime(sld);
 			LAi_SetActorType(sld);
@@ -5292,12 +5292,12 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
         break;
 		
-		case "LSC_DrinkGotoCarolina": // выводим на улицы
+		case "LSC_DrinkGotoCarolina": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("LostShipsCity_town", "reload", "reload39", "LSC_DrinkGotoCarolina_1");
         break;
 		
-		case "LSC_DrinkGotoCarolina_1": // идем к 'Каролине'
-			chrDisableReloadToLocation = false;//открыть локацию
+		case "LSC_DrinkGotoCarolina_1": // пїЅпїЅпїЅпїЅ пїЅ 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ'
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("LSC_Leonard");
 			LAi_SetActorType(sld);
 			LAi_ActorGoToLocator(sld, "reload", "reload24", "LSC_DrinkGotoCarolina_2", -1);
@@ -5310,30 +5310,30 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.LSC_Drink1.function = "LSC_DrinkDelete";
         break;
 		
-		case "LSC_DrinkGotoCarolina_2": // стоит, ждет
+		case "LSC_DrinkGotoCarolina_2": // пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ
 			sld = characterFromId("LSC_Leonard");
 			LAi_SetStayType(sld);
         break;
 		
-		case "LSC_DrinkGotoCarolina_3": // телепорт внутрь каролины
+		case "LSC_DrinkGotoCarolina_3": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("CarolineBank", "reload", "reload3", "pchar_back_to_player");
 			chrDisableReloadToLocation = true;
-			// считаем деньги и дублоны ГГ
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
 			pchar.questTemp.LSC.Drink.Money = sti(pchar.money);
 			pchar.questTemp.LSC.Drink.Dublon = GetCharacterItem(pchar, "gold_dublon");
         break;
 		
-		case "LSC_DrinkInCarolina": // внутри каролины
+		case "LSC_DrinkInCarolina": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			pchar.questTemp.LSC.Drink = "grabbing";
-			LocatorReloadEnterDisable("CarolineBank", "reload1", true); // на галерею
+			LocatorReloadEnterDisable("CarolineBank", "reload1", true); // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.LSC_Drink2.win_condition.l1 = "ExitFromLocation";
 			pchar.quest.LSC_Drink2.win_condition.l1.location = pchar.location;
 			pchar.quest.LSC_Drink2.win_condition = "LSC_DrinkLeonardTalk";
         break;
 		
-		case "LSC_DrinkClear": // вертаем всех на места через три часа
-			chrDisableReloadToLocation = false;//открыть локацию
+		case "LSC_DrinkClear": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("LSC_Leonard");
 			LAi_SetImmortal(sld, false);
 			pchar.quest.LSC_Drink3.win_condition.l1 = "Timer";
@@ -5343,18 +5343,18 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.LSC_Drink3.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 0);
 			pchar.quest.LSC_Drink3.function = "LSC_DrinkDelete";
         break;
-	// <-- пей до дна
+	// <-- пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ
 	
-	// --> тайна Санта-Люсии
-		case "LSC_RingTalkLook": // смотрим на кольцо
+	// --> пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅ
+		case "LSC_RingTalkLook": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			LSC_RingRishardTalk("ring_13");
         break;
 		
-		case "LSC_RingEnterInside": // входим в трюм разбитого корабля
-			chrDisableReloadToLocation = true;//закрыть локацию
+		case "LSC_RingEnterInside": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LocatorReloadEnterDisable("ExternalRingInside", "reload1", true);
-			// ставим крабикусов
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			iRank = 25+MOD_SKILL_ENEMY_RATE*2;
 			iTemp = 150+MOD_SKILL_ENEMY_RATE*30+sti(pchar.rank)*5;
 			LAi_group_Register("EnemyCrab");
@@ -5373,7 +5373,7 @@ void QuestComplete(string sQuestName, string qname)
 				SetCharacterPerk(sld, "AdvancedDefense");
 				SetCharacterPerk(sld, "CriticalHit");
 				LAi_SetWarriorType(sld);
-				if (bPincers()) TakeNItems(sld, "crab_pincers", 2); // клешни
+				if (bPincers()) TakeNItems(sld, "crab_pincers", 2); // пїЅпїЅпїЅпїЅпїЅпїЅ
 				ChangeCharacterAddressGroup(sld, "ExternalRingInside", "goto", "goto"+i);
 				LAi_warrior_SetStay(sld, true);
 				LAi_warrior_DialogEnable(sld, false);
@@ -5387,7 +5387,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetFightMode(pchar, true);
         break;
 		
-		case "LSC_RingInsideCrabsDead": // перебили крабов
+		case "LSC_RingInsideCrabsDead": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			PlayStereoOGG("music_LostShipsCity");
 			LAi_group_Delete("EnemyCrab");
 			sld = characterFromId("LSC_Rishard");
@@ -5396,14 +5396,14 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(150, 150, 150, 150);
         break;
 		
-		case "LSC_RingDialog": // активатор диалогов
+		case "LSC_RingDialog": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("LSC_Rishard");
 			LSC_RingRishardTalk(sld.quest.diagnode);
         break;
 		
-		case "LSC_RingEnterDeck": // входим на палубу разбитого корабля
-			chrDisableReloadToLocation = true;//закрыть локацию
-			// ставим крабикусов
+		case "LSC_RingEnterDeck": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			iRank = 25+MOD_SKILL_ENEMY_RATE*2;
 			iTemp = 150+MOD_SKILL_ENEMY_RATE*30+sti(pchar.rank)*5;
 			for (i=1; i<=6; i++)
@@ -5434,7 +5434,7 @@ void QuestComplete(string sQuestName, string qname)
 			LSC_RingRishardTalk("ring_22");
         break;
 		
-		case "LSC_RingDeckCrabsDead": // перебили крабов
+		case "LSC_RingDeckCrabsDead": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			PlayStereoOGG("music_LostShipsCity");
 			chrDisableReloadToLocation = false;
 			LocatorReloadEnterDisable("ExternalRingDeck", "reload2", true);
@@ -5443,7 +5443,7 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(150, 150, 150, 150);
         break;
 		
-		case "LSC_RingEnterCabin": // вошли в каюту
+		case "LSC_RingEnterCabin": // пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = true;
 			sld = characterFromId("LSC_Rishard");
 			sld.quest.diagnode = "ring_31";
@@ -5462,28 +5462,28 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetActorType(sld);
 			LAi_SetImmortal(sld, false);
 			LAi_ActorRunToLocator(sld, "reload", "reload1", "", 7.0);
-			DoQuestFunctionDelay("LSC_RingOver", 7.0); // закрываем квест
-			SetFunctionTimerCondition("LSC_RingDeleteItemsBoxes", 0, 0, 2, false); // через 2 дня боксы опустеют
+			DoQuestFunctionDelay("LSC_RingOver", 7.0); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			SetFunctionTimerCondition("LSC_RingDeleteItemsBoxes", 0, 0, 2, false); // пїЅпїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         break;
 		
-		case "LSC_RingFindGold": // нашли золото 
+		case "LSC_RingFindGold": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 
 			PlaySound("Ambient\LAND\door_001.wav");
 			PlaySound("Ambient\LAND\door_004.wav");
 			PlaySound("Types\warrior03.wav");
 			PlaySound("Types\warrior04.wav");
-			SetLaunchFrameFormParam("You have found the right crate"+ NewStr() +"The captain's gold was discovered!", "", 0, 6);//табличка
+			SetLaunchFrameFormParam("You have found the right crate"+ NewStr() +"The captain's gold was discovered!", "", 0, 6);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 2, 10); //крутим время
+			WaitDate("", 0, 0, 0, 2, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			sld = characterFromId("LSC_Rishard");
 			sld.quest.diagnode = "ring_46";
 			DoQuestCheckDelay("LSC_RingDialog", 6.0);
         break;
-		// <-- тайна Санта-Люсии
-		// <-- нахождение в LSC
+		// <-- пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅ
+		// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ LSC
 	
-	//-------------------------------------- искушение Барбазона--------------------------------------
-		case "Saga_ValetDie": // прибили Валета
+	//-------------------------------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ--------------------------------------
+		case "Saga_ValetDie": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			pchar.quest.Saga_Valet_letter.win_condition.l1 = "item";
 			pchar.quest.Saga_Valet_letter.win_condition.l1.item = "letter_chad";
@@ -5492,10 +5492,10 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(100, 100, 100, 100);
         break;
 		
-		case "Saga_VensanTrapDestroyed": // изничтожили засаду на Терксе
+		case "Saga_VensanTrapDestroyed": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			LAi_group_Delete("EnemyFight");
-			pchar.questTemp.Saga.BarbTemptation.Vensan_canfree = "true"; // можно говорить с венсаном
+			pchar.questTemp.Saga.BarbTemptation.Vensan_canfree = "true"; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Saga_Vensan_brigantine.win_condition.l1 = "location";
 			pchar.quest.Saga_Vensan_brigantine.win_condition.l1.location = "Terks";
 			pchar.quest.Saga_Vensan_brigantine.function = "Saga_CreateVensanEnemyes";
@@ -5503,33 +5503,33 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(100, 100, 100, 100);
         break;
 		
-		case "Saga_DannyHurryHelp": // Даниэль помогает
+		case "Saga_DannyHurryHelp": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Danielle");
 			LAi_SetWarriorType(sld);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			ChangeCharacterAddressGroup(sld, pchar.location, "reload", "reload1");
-			LAi_SetHP(sld, 500, 500); // увеличиваем ей НР
+			LAi_SetHP(sld, 500, 500); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ
 			sld.cirassId = Items_FindItemIdx("cirass1");
 			TakeNItems(sld, "potion2", 5);
-			LAi_SetCheckMinHP(sld, 10, true, ""); // скрытое бессмертие
+			LAi_SetCheckMinHP(sld, 10, true, ""); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Saga_JackmanCabinHelper");
 			LAi_SetImmortal(sld, false);
         break;
 		
-		case "Saga_AfterJackmanBoarding": // прибили Джекмана
-			pchar.questTemp.Saga.BarbTemptation = "after_boarding"; // меняем флаг
+		case "Saga_AfterJackmanBoarding": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			pchar.questTemp.Saga.BarbTemptation = "after_boarding"; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			sld = characterFromId("Danielle");
 			sld.dialog.currentnode = "after_boarding";
 			GetCharacterPos(pchar, &locx, &locy, &locz);
 			ChangeCharacterAddressGroup(sld, pchar.location, "rld", LAi_FindNearestFreeLocator("loc", locx, locy, locz));
-			pchar.GenQuest.CannotReloadBoarding = true; // нельзя перегружаться
+			pchar.GenQuest.CannotReloadBoarding = true; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetActorType(sld);
 			LAi_ActorDialogNow(sld, pchar, "", -1);
 			AddComplexSelfExpToScill(150, 150, 150, 150);
 			AddComplexSeaExpToScill(220, 220, 220, 220, 220, 220, 0);
         break;
 		
-		case "Saga_StormingGroupTurn": // поворот матросов
+		case "Saga_StormingGroupTurn": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=1; i<=5; i++)
 			{
 				sld = characterFromId("Saga_SGM_"+i);
@@ -5537,10 +5537,10 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_ActorTurnToLocator(sld, "reload", "reload6");
 			}
         break;
-		// <-- искушение Барбазона
+		// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		
-	//---------------------------------------Тени прошлого-------------------------------------------
-		case "Saga_FinalLedbitterStory": // завершение рассказа
+	//---------------------------------------пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-------------------------------------------
+		case "Saga_FinalLedbitterStory": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if (!CheckAttribute(pchar, "questTemp.Saga.DodsonDie")) sld = characterFromId("Dodson");
 			else sld = characterFromId("Terrax");
 			sld.dialog.currentnode = "shadows_6";
@@ -5563,8 +5563,8 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
         break;
 		
-	// бой с Джессикой
-		case "Saga_JessikaFirstKick": // фокус первый - хватка тяжести + 5 скелетов
+	// пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		case "Saga_JessikaFirstKick": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ + 5 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Jessika");
 			sld.dialog.currentnode = "stage_1";
 			DoQuestCheckDelay("Saga_JessikaFirstKick_1", 0.5);
@@ -5577,7 +5577,7 @@ void QuestComplete(string sQuestName, string qname)
 			CreateLocationParticles("item", "quest", "top", 1.0, 0, 0, "");
 			sld = characterFromId("Jessika");
 			ChangeCharacterAddressGroup(sld, "shore67", "quest", "top");
-			pchar.questTemp.Saga.Attack = true; // обработка в АИ
+			pchar.questTemp.Saga.Attack = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ
 			pchar.questTemp.Saga.Jess_Fightstage = "next";
 			sTotalTemp = "top";
 			iTotalTemp = 12;
@@ -5594,7 +5594,7 @@ void QuestComplete(string sQuestName, string qname)
 			CreateLocationParticles("blood_big", "goto", sTemp, 1.3, 0, 0, "");
 			PlaySound("People Fight\Death_NPC_08.wav");
 			PlaySound("Interface\boom.wav");
-			Pchar.chr_ai.hp = stf(Pchar.chr_ai.hp)/1.5; // 1/3 жизни сносим 
+			Pchar.chr_ai.hp = stf(Pchar.chr_ai.hp)/1.5; // 1/3 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 
 			Log_Info("Jessica has taken away your ability to run!");
 			pchar.GenQuest.CantRun = true;
         break;
@@ -5606,7 +5606,7 @@ void QuestComplete(string sQuestName, string qname)
 			for (i=1; i<=6; i++)
 			{
 				sld = characterFromId("Reef_skeleton_"+i);
-				sld.monster = true; // признак нежити
+				sld.monster = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 				LAi_SetImmortal(sld, false);
 				LAi_SetWarriorType(sld);
 				LAi_group_MoveCharacter(sld, "EnemyFight");
@@ -5617,14 +5617,14 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
 				LAi_group_SetCheck("EnemyFight", "Saga_JessikaFirstKick_4");
 				LAi_SetFightMode(pchar, true);
-			// поджигаем угол у скалы
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Saga_JessFire3.win_condition.l1 = "locator";
 			pchar.quest.Saga_JessFire3.win_condition.l1.location = "shore67";
 			pchar.quest.Saga_JessFire3.win_condition.l1.locator_group = "quest";
 			pchar.quest.Saga_JessFire3.win_condition.l1.locator = "fire3";
 			pchar.quest.Saga_JessFire3.function = "Saga_JessFireStep";
 			CreateLocationParticles("shipfire", "quest", "fire3", 0.5, 0, 0, "");
-			// зажигаем огоньки
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			chr = &Locations[FindLocation(pchar.location)];
 			chr.hell_fire_1 = true;
 			for (i=1; i<=25; i++)
@@ -5637,7 +5637,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld = characterFromId("Jessika");
 			LAi_SetImmortal(sld, false);
 			LAi_SetCurHPMax(sld);
-			LAi_SetCheckMinHP(sld, 10, true, "Saga_JessikaSecondKick"); // второй фокус
+			LAi_SetCheckMinHP(sld, 10, true, "Saga_JessikaSecondKick"); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			CreateLocationParticles("blast_inv", "quest", "skeleton1", 1.3, 0, 0, "");
 			PlaySound("Ambient\Teno_inside\teleporter.wav");
 			ChangeCharacterAddressGroup(sld, "shore67", "quest", "skeleton1");
@@ -5647,7 +5647,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
         break;
 		
-		case "Saga_JessikaSecondKick": // фокус второй - уменьшение владением ХО + 5 скелетов
+		case "Saga_JessikaSecondKick": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ + 5 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Jessika");
 			sld.dialog.currentnode = "stage_2";
 			DoQuestCheckDelay("Saga_JessikaSecondKick_1", 0.5);
@@ -5660,7 +5660,7 @@ void QuestComplete(string sQuestName, string qname)
 			PlaySound("Ambient\Teno_inside\teleporter.wav");
 			sld = characterFromId("Jessika");
 			ChangeCharacterAddressGroup(sld, "shore67", "quest", "rock");
-			pchar.questTemp.Saga.Attack = true; // обработка в АИ
+			pchar.questTemp.Saga.Attack = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ
 			sTotalTemp = "rock";
 			iTotalTemp = 5;
         break;
@@ -5676,14 +5676,14 @@ void QuestComplete(string sQuestName, string qname)
 			CreateLocationParticles("blood_big", "goto", sTemp, 1.3, 0, 0, "");
 			PlaySound("People Fight\Death_NPC_08.wav");
 			PlaySound("Interface\boom.wav");
-			Pchar.chr_ai.hp = stf(Pchar.chr_ai.hp)/2; // 1/2 жизни сносим 
+			Pchar.chr_ai.hp = stf(Pchar.chr_ai.hp)/2; // 1/2 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 
 			Log_Info("Jessica has absorbed your strengths - all weapon skills were dropped by 30 points!");
         break;
 		
 		case "Saga_JessikaSecondKick_3":
 			LAi_SetPlayerType(Pchar);
 			PlaySound("Interface\boom.wav");
-			// скелетоны
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			iRank = 20+MOD_SKILL_ENEMY_RATE*2;
 			iScl = 60;
 			for (i=5; i<=9; i++)
@@ -5697,10 +5697,10 @@ void QuestComplete(string sQuestName, string qname)
 					if (MOD_SKILL_ENEMY_RATE > 4)
 					{
 						fMft = MOD_SKILL_ENEMY_RATE/10;
-						sld.MultiFighter = 0.8+fMft; // мультифайтер
+						sld.MultiFighter = 0.8+fMft; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					}
 				}
-				sld.monster = true; // признак нежити
+				sld.monster = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 				ChangeCharacterAddressGroup(sld, "shore67", "quest", "skeleton"+i);
 				LAi_SetWarriorType(sld);
 				LAi_group_MoveCharacter(sld, "EnemyFight");
@@ -5711,14 +5711,14 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
 				LAi_group_SetCheck("EnemyFight", "Saga_JessikaSecondKick_4");
 				LAi_SetFightMode(pchar, true);
-			// закрываем доступ на крыльцо
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Saga_JessFire.win_condition.l1 = "locator";
 			pchar.quest.Saga_JessFire.win_condition.l1.location = "shore67";
 			pchar.quest.Saga_JessFire.win_condition.l1.locator_group = "quest";
 			pchar.quest.Saga_JessFire.win_condition.l1.locator = "entrance";
 			pchar.quest.Saga_JessFire.function = "Saga_JessFireStep";
 			CreateLocationParticles("shipfire", "quest", "entrance", 0.5, 0, 0, "");
-			// зажигаем огоньки
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			chr = &Locations[FindLocation(pchar.location)];
 			chr.hell_fire_2 = true;
 			for (i=26; i<=40; i++)
@@ -5731,7 +5731,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld = characterFromId("Jessika");
 			LAi_SetImmortal(sld, false);
 			LAi_SetCurHPMax(sld);
-			LAi_SetCheckMinHP(sld, 10, true, "Saga_JessikaThirdKick"); // третий фокус
+			LAi_SetCheckMinHP(sld, 10, true, "Saga_JessikaThirdKick"); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			CreateLocationParticles("blast_inv", "quest", "skeleton8", 1.3, 0, 0, "");
 			PlaySound("Ambient\Teno_inside\teleporter.wav");
 			ChangeCharacterAddressGroup(sld, "shore67", "quest", "skeleton8");
@@ -5741,7 +5741,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
         break;
 		
-		case "Saga_JessikaThirdKick": // фокус третий - уменьшение энергии + отравленный клинок
+		case "Saga_JessikaThirdKick": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ + пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Jessika");
 			sld.dialog.currentnode = "stage_3";
 			DoQuestCheckDelay("Saga_JessikaThirdKick_1", 0.5);
@@ -5754,7 +5754,7 @@ void QuestComplete(string sQuestName, string qname)
 			PlaySound("Ambient\Teno_inside\teleporter.wav");
 			sld = characterFromId("Jessika");
 			ChangeCharacterAddressGroup(sld, "shore67", "quest", "wall");
-			pchar.questTemp.Saga.Attack = true; // обработка в АИ
+			pchar.questTemp.Saga.Attack = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ
 			sTotalTemp = "wall";
 			iTotalTemp = 4;
         break;
@@ -5764,7 +5764,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorAnimation(Pchar, "Ground_StandUp", "", 3.5);
 			DoQuestCheckDelay("Saga_JessikaThirdKick_3", 3.5);
 			CreateLocationParticles("Splash", "quest", "bridge2", 0, 0, 0, "");
-			Pchar.chr_ai.hp = stf(Pchar.chr_ai.hp)/3; // 2/3 жизни сносим
+			Pchar.chr_ai.hp = stf(Pchar.chr_ai.hp)/3; // 2/3 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			Log_Info("Jessica has absorbed your agility - the energy is now 20 points lower!");
 			PlaySound("People Fight\Death_NPC_08.wav");
 			CreateLocationParticles("blood_big", "quest", "bridge2", 1.3, 0, 0, "");
@@ -5780,7 +5780,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld = characterFromId("Jessika");
 			LAi_SetImmortal(sld, false);
 			LAi_SetCurHPMax(sld);
-			LAi_SetCheckMinHP(sld, 10, true, "Saga_JessikaBattleTalk"); // разговор
+			LAi_SetCheckMinHP(sld, 10, true, "Saga_JessikaBattleTalk"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			ChangeCharacterAddressGroup(sld, "shore67", "quest", "bridge1");
 			CreateLocationParticles("blast_inv", "quest", "bridge1", 1.3, 0, 0, "");
 			LAi_SetWarriorType(sld);
@@ -5788,7 +5788,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 			LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
 			LAi_SetFightMode(pchar, true);
-			// закрываем выход c моста
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ c пїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Saga_JessFire1.win_condition.l1 = "locator";
 			pchar.quest.Saga_JessFire1.win_condition.l1.location = "shore67";
 			pchar.quest.Saga_JessFire1.win_condition.l1.locator_group = "quest";
@@ -5805,8 +5805,8 @@ void QuestComplete(string sQuestName, string qname)
 			chr.hell_fire_3 = true;
         break;
 		
-		case "Saga_JessikaBattleTalk": // разговор после последней стадии боя
-			DoQuestCheckDelay("hide_weapon", 0.5);//убрать оружие
+		case "Saga_JessikaBattleTalk": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
+			DoQuestCheckDelay("hide_weapon", 0.5);//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Jessika");
 			sld.dialog.currentnode = "stage_4";
 			LAi_SetActorType(sld);
@@ -5815,11 +5815,11 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_Delete("EnemyFight");
         break;
 		
-		case "Saga_JessikaDie": // убили Джесс
+		case "Saga_JessikaDie": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			pchar.quest.Saga_JessFire.over = "yes"; 
 			pchar.quest.Saga_JessFire1.over = "yes"; 
-			pchar.quest.Saga_JessFire2.over = "yes"; // снимаем реакцию на огонь
+			pchar.quest.Saga_JessFire2.over = "yes"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			chr = &Locations[FindLocation(pchar.location)];
 			DeleteAttribute(chr, "hell_fire_1");
 			DeleteAttribute(chr, "hell_fire_2");
@@ -5829,13 +5829,13 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.Saga_FindBeatriss_Letter.function = "Saga_FindBeatrissLetter";
         break;
 		
-		case "Video_Jess": // видео о Джесс
+		case "Video_Jess": // пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			PChar.GenQuest.VideoAVI = "Jessika";
 			PChar.GenQuest.VideoAfterQuest = "Video_continueSvensonStory";
 			DoQuestCheckDelay("PostVideo_Start", 0.2);
 		break;
 		
-		case "Video_continueSvensonStory": // завершение рассказа
+		case "Video_continueSvensonStory": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Svenson");
 			sld.dialog.currentnode = "saga_66a";
 			LAi_SetActorType(sld);
@@ -5843,7 +5843,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialogNow(sld, pchar, "", -1);
         break;
 		
-		case "Video_Reef": // видео о рифе
+		case "Video_Reef": // пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 			PChar.GenQuest.VideoAVI = "Reef";
 			PChar.GenQuest.VideoAfterQuest = "Video_continueJessStory";
 			DoQuestCheckDelay("PostVideo_Start", 0.2);
@@ -5856,27 +5856,27 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialogNow(sld, pchar, "", -1);
 		break;
 		
-		case "Saga_BarbadosTreatment": // начинаем молитвы
+		case "Saga_BarbadosTreatment": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetActorType(pchar);
 			LAi_ActorGoToLocator(pchar, "barmen", "bar1", "Saga_BarbadosBead", -1);
-			bDisableCharacterMenu = true;//лоченые интерфейсы
-			InterfaceStates.Buttons.Save.enable = false;//запретить сохраняться
+			bDisableCharacterMenu = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			InterfaceStates.Buttons.Save.enable = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         break;
 		
-		case "Saga_BarbadosBead": // молимся
+		case "Saga_BarbadosBead": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetActorType(pchar);
 			LAi_ActorAnimation(pchar, "Bead", "OpenTheDoors", -1);
 			DoQuestCheckDelay("Saga_BarbadosTreatmentStart", 10.0);
         break;
 		
-		case "Saga_BarbadosTreatmentStart": // рамка
+		case "Saga_BarbadosTreatmentStart": // пїЅпїЅпїЅпїЅпїЅ
 			SetLaunchFrameFormParam("You have spent hours praying..."+ NewStr() +"Candles died out...", "Saga_JessikaSoul", 0, 6);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 9, 10); //крутим время
+			WaitDate("", 0, 0, 0, 9, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
         break;
 		
-		case "Saga_JessikaSoul": // телепортируем в спецлокацию
+		case "Saga_JessikaSoul": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("Terrain", "reload", "reload2", "Saga_JessikaSoul_1");
         break;
 		
@@ -5902,7 +5902,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Saga_JessikaSoul_2_2", 3.0);
         break;
 		
-		case "Saga_JessikaSoul_2_2": // встреча с очищенной душой Джесс
+		case "Saga_JessikaSoul_2_2": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			sld = GetCharacter(NPC_GenerateCharacter("Jessika_soul", "Jessika", "woman", "jess", 1, PIRATE, 0, false, "quest"));
 			sld.name = "Jessica";
 			sld.lastname = "Rose";
@@ -5915,7 +5915,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Saga_JessikaSoul_3", 18.5);
         break;
 		
-		case "Saga_JessikaSoul_3": // Джесс начинает разговор
+		case "Saga_JessikaSoul_3": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			sld = characterFromId("Jessika_soul");
 			LAi_SetActorType(sld);
@@ -5923,11 +5923,11 @@ void QuestComplete(string sQuestName, string qname)
 			SetMusic("music_romantic");
         break;
 		
-		case "Saga_JessikaSoul_4": // перекидываем назад в церковь
+		case "Saga_JessikaSoul_4": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("bridgetown_church", "barmen", "bar1", "Saga_JessikaSoul_5");
         break;
 		
-		case "Saga_JessikaSoul_5": // снимаем отрицательные атрибуты
+		case "Saga_JessikaSoul_5": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			DeleteAttribute(pchar, "GenQuest.CantRun");
 			CheckAndSetOverloadMode(GetMainCharacter());
@@ -5935,26 +5935,26 @@ void QuestComplete(string sQuestName, string qname)
 			DeleteAttribute(pchar, "GenQuest.EnergyPenalty");
 			AddCharacterHealth(pchar, 50);
 			AddCharacterMaxHealth(pchar, 5);
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			bDisableCharacterMenu = false;
 			InterfaceStates.Buttons.Save.enable = true;
 			AddQuestRecord("Shadows", "12");
 			CloseQuestHeader("Shadows");
-			// вертаем в норму священника
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Bridgetown_Priest");
 			LAi_SetLoginTime(sld, 6.0, 21.99);
 			LAi_SetPriestType(sld);
 			ChangeCharacterAddressGroup(sld, "bridgetown_church", "barmen", "stay");
-			AddCharacterExpToSkill(pchar, "Leadership", 200);//авторитет
+			AddCharacterExpToSkill(pchar, "Leadership", 200);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         break;
-	//<-- Тени прошлого
+	//<-- пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		
-	//---------------------------------------Завещание Шарпа-------------------------------------------
-		case "Saga_CourtGo": // выводим на улицу
+	//---------------------------------------пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ-------------------------------------------
+		case "Saga_CourtGo": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("PortRoyal_town", "reload", "houseSp4", "Saga_CourtGo_1");
         break;
 		
-		case "Saga_CourtGo_1": // идем в резиденцию
+		case "Saga_CourtGo_1": // пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			ChangeShowIntarface();
 			sld = characterFromId("Helena");
 			LAi_SetActorType(sld);
@@ -5967,29 +5967,29 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorFollow(sld, chr, "", -1);
         break;
 		
-		case "Saga_CourtGo_2": // входим в резиденцию
+		case "Saga_CourtGo_2": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("PortRoyal_townhall", "reload", "reload1", "Saga_CourtGo_3");
         break;
 		
-		case "Saga_CourtGo_3": // запускаем ролик суда
+		case "Saga_CourtGo_3": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			PChar.GenQuest.VideoAVI = "court";
 			PChar.GenQuest.VideoAfterQuest = "Saga_CourtGo_4";
 			DoQuestCheckDelay("PostVideo_Start", 0.2);
 		break;
 		
-		case "Saga_CourtGo_4": // суд прошел
+		case "Saga_CourtGo_4": // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			SetLaunchFrameFormParam("The trial went through!", "", 0, 5);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 5, 10); //крутим время
+			WaitDate("", 0, 0, 0, 5, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			DoQuestCheckDelay("Saga_CourtReload", 4.5);
         break;
 		
-		case "Saga_CourtReload": // перекидываем в дом адвоката
+		case "Saga_CourtReload": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("PortRoyal_houseSp4", "quest", "quest1", "Saga_CourtFinish");
         break;
 		
-		case "Saga_CourtFinish": // расставим всех по локаторам
+		case "Saga_CourtFinish": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			sld = characterFromId("Helena");
 			LAi_SetActorType(sld);
@@ -6000,7 +6000,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialogNow(sld, pchar, "", -1);
         break;
 		
-		case "Saga_HelenaIslaTesoro": // Элен с ГГ на улице - подводим итоги Саги
+		case "Saga_HelenaIslaTesoro": // пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			sld = characterFromId("Loxly");
 			LAi_SetHuberType(sld);
 			ChangeCharacterAddressGroup(sld, "PortRoyal_houseSp4", "sit", "sit1");
@@ -6011,8 +6011,8 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialogNow(sld, pchar, "", -1);
         break;
 		
-		case "Saga_HelenaBye": // расстаемся с Элен по собственному решению, не стираем
-			chrDisableReloadToLocation = true;//закрыть локацию
+		case "Saga_HelenaBye": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Helena");
 			RemovePassenger(pchar, sld);
 			LAi_SetActorType(sld);
@@ -6023,38 +6023,38 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Saga_HelenaOnIsland", 12.0);
         break;
 		
-		case "Saga_HelenaOnIsland": // Элен на Исла Тесоро
+		case "Saga_HelenaOnIsland": // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Helena");
 			ChangeCharacterAddressGroup(sld, "Pirates_townhall", "goto", "goto1");
 			LAi_SetOwnerType(sld);
 			sld.dialog.currentnode = "islatesoro";
         break;
 		
-		case "Saga_HelenaRomantic": // романтик-сцена
+		case "Saga_HelenaRomantic": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅ
 			pchar.GenQuest.FrameLockEsc = true;
 			SetLaunchFrameFormParam("", "", 0, 10);
 			SetLaunchFrameFormPic("loading\inside\kiss.tga");
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 3, 10); //крутим время
+			WaitDate("", 0, 0, 0, 3, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			DoQuestCheckDelay("Saga_HelenaRomantic_1", 10.0);
         break;
 		
-		case "Saga_HelenaRomantic_1": // в таверне
+		case "Saga_HelenaRomantic_1": // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("PortRoyal_tavern_upstairs", "quest", "quest4", "");
 			sld = characterFromId("Helena");
 			ChangeCharacterAddressGroup(sld, "PortRoyal_tavern_upstairs", "quest", "quest3");
 			DoQuestCheckDelay("Saga_HelenaRomantic_2", 1.3);
         break;
 		
-		case "Saga_HelenaRomantic_2": // акт второй
+		case "Saga_HelenaRomantic_2": // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			SetMusic("music_romantic");
 			ChangeShowIntarface();
 			locCameraRotateAroundHero(0.0, 1.5, 0.0, 0.005, 0.0, 1.5, 0.0, 850);
 			DoQuestCheckDelay("Saga_HelenaRomantic_3", 14.0);
         break;
 		
-		case "Saga_HelenaRomantic_3": // третий... теперь ГГ как честный человек обязан жениться
+		case "Saga_HelenaRomantic_3": // пїЅпїЅпїЅпїЅпїЅпїЅ... пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.GenQuest.FrameLockEsc = true;
 			SetLaunchFrameFormParam("", "", 0, 16);
 			SetLaunchFrameFormPic("loading\inside\censored1.tga");
@@ -6065,7 +6065,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetCurHPMax(pchar);
         break;
 		
-		case "Saga_HelenaRomantic_4": // четвертый...
+		case "Saga_HelenaRomantic_4": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...
 			locCameraResetState();
 			EndQuestMovie();
 			LAi_SetPlayerType(pchar);
@@ -6075,35 +6075,35 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
         break;
 		
-		case "Saga_HelenaRomantic_5": // пятый - на улицы
-			bDisableCharacterMenu = false;//лоченые интерфейсы
-			InterfaceStates.Buttons.Save.enable = true;//разрешить сохраняться
+		case "Saga_HelenaRomantic_5": // пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			bDisableCharacterMenu = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			InterfaceStates.Buttons.Save.enable = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "GenQuest.MusicContinue");
 			sld = characterFromId("Helena");
 			sld.dialog.currentnode = "Helena_officer";
-			DeleteAttribute(sld, "HalfImmortal"); // халява закончилась
+			DeleteAttribute(sld, "HalfImmortal"); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(sld, "CompanionDisable");
 			LAi_SetOfficerType(sld);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			DoQuestReloadToLocation("PortRoyal_town", "reload", "reload1", "");
 			AddQuestRecord("Testament", "13");
 			CloseQuestHeader("Testament");
-			// если выбрал не Мэри - закрываем к ней доступ
-			if (pchar.questTemp.LSC.Mary == "alive")
-			{
-				for (i=0; i<=3; i++)
-				{
-					LocatorReloadEnterDisable("LostShipsCity_town", "reload6"+i, true); // закрываем вход к Мэри
-				}
-				pchar.questTemp.LSC.Mary = "fail";
-				RemoveItems(pchar, "key_mary", 1); // удалить ключ Мэри
-				DeleteAttribute(pchar, "questTemp.LSC.MaryWait"); // стираем атрибут общения с Мэри
-			}
+			// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			// if (pchar.questTemp.LSC.Mary == "alive")
+			// {
+			// 	for (i=0; i<=3; i++)
+			// 	{
+			// 		LocatorReloadEnterDisable("LostShipsCity_town", "reload6"+i, true); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
+			// 	}
+			// 	pchar.questTemp.LSC.Mary = "fail";
+			// 	RemoveItems(pchar, "key_mary", 1); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+			// 	DeleteAttribute(pchar, "questTemp.LSC.MaryWait"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
+			// }
         break;
 		
-	// ------------------------------------ провалы Саги -------------------------------------------------
-		case "Saga_FailCenturion": // утопили Центурион - Данни и Натана в Марун-Таун
-			chrDisableReloadToLocation = false;//открыть локацию
+	// ------------------------------------ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ -------------------------------------------------
+		case "Saga_FailCenturion": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Danielle");
 			sld.dialog.currentnode = "marun_town";
 			sld.greeting = "danny_2";
@@ -6111,15 +6111,15 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetStayType(sld);
 			sld = characterFromId("Nathaniel");
 			sld.model = "Hawk_2";
-			Characters_RefreshModel(sld); // наверно не нужно
+			Characters_RefreshModel(sld); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			sld.greeting = "nathaniel_2";
 			sld.dialog.currentnode = "marun_town";
 			ChangeCharacterAddressGroup(sld, "FortOrange_townhall", "sit", "sit1");
 			LAi_SetHuberType(sld);
-			LocatorReloadEnterDisable("FortOrange_town", "reload6", false); // открыть резиденцию Хоука
+			LocatorReloadEnterDisable("FortOrange_town", "reload6", false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         break;
 		
-	//--------------------------- встроенный мини-квест Корабль главы братства ---------------------------
+	//--------------------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ---------------------------
 		case "AlexClock_BandosDie":
 			LAi_group_Delete("EnemyFight");
 			if (CheckCharacterItem(pchar, "alexs_chest")) DoQuestFunctionDelay("AlexClock_FindChest", 0.5);
@@ -6131,52 +6131,52 @@ void QuestComplete(string sQuestName, string qname)
 			}
         break;
 		
-	// ------------------------------- отношения с девушками-героинями Саги ------------------------------
-		// секс с Элен
+	// ------------------------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ ------------------------------
+		// пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 		case "Helena_LoveSex":
 			SetMusic("music_romantic");
 			SetLaunchFrameFormParam("", "", 0, 15);
 			SetLaunchFrameFormPic("loading\inside\censored1.tga");
 			PlayStereoSound("sex\sex"+(rand(9)+1)+".wav");
             LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 3, 10); //крутим время
+			WaitDate("", 0, 0, 0, 3, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			AddCharacterHealth(pchar, 6); 
 			LAi_SetCurHPMax(pchar);
         break;
 		
-	// --> поведение Мэри вне LSC
-		case "Mary_LoveSex": // секс с Мэри
+	// --> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ LSC
+		case "Mary_LoveSex": // пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 			SetMusic("music_romantic");
 			SetLaunchFrameFormParam("", "", 0, 15);
 			SetLaunchFrameFormPic("loading\inside\censored1.tga");
 			PlayStereoSound("sex\sex"+(rand(9)+1)+".wav");
             LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 3, 10); //крутим время
+			WaitDate("", 0, 0, 0, 3, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			AddCharacterHealth(pchar, 12); 
 			LAi_SetCurHPMax(pchar);
-			pchar.quest.Mary_giveme_sex.over = "yes"; //снять прерывание
+			pchar.quest.Mary_giveme_sex.over = "yes"; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         break;
 		
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Jason------------------------------------ Суп из черепахи --------------------------------------------
+//Jason------------------------------------ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ --------------------------------------------
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 		case "Terrapin_LevasserCaveDied":
 			LAi_group_Delete("EnemyFight");
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			AddQuestRecord("Terrapin", "10");
 			pchar.questTemp.Terrapin = "done";
 			sld = characterFromId("Tortuga_Mayor");
-			LAi_NoRebirthEnable(sld); // респавнился, гад 
-			pchar.questTemp.Sharlie.DelTerGuard = "true"; // убираем пиратскую эскадру
+			LAi_NoRebirthEnable(sld); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ 
+			pchar.questTemp.Sharlie.DelTerGuard = "true"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			ChangeCharacterComplexReputation(pchar, "authority", 10);
 			ChangeOfficersLoyality("good_all", 2);
 			AddCrewMorale(pchar, 10);
 			AddComplexSelfExpToScill(200, 200, 200, 200);
-			AddCharacterExpToSkill(pchar, "Fortune", 400);//везение
-			AddCharacterExpToSkill(pchar, "Sneak", 500);//скрытность
-			SetFunctionTimerCondition("Terrapin_ReturnFox", 0, 0, 3, false); // Фокса на место fix 160912
+			AddCharacterExpToSkill(pchar, "Fortune", 400);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			AddCharacterExpToSkill(pchar, "Sneak", 500);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			SetFunctionTimerCondition("Terrapin_ReturnFox", 0, 0, 3, false); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ fix 160912
         break;
 		
 		case "Terrapin_LevasserRoomEnter":
@@ -6185,7 +6185,7 @@ void QuestComplete(string sQuestName, string qname)
 			PlaySound("Ambient\LAND\door_004.wav");
 			iRank = 25+MOD_SKILL_ENEMY_RATE*2;
 			iScl = 65;
-			// сам Левассер
+			// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Tortuga_Mayor");
 			sld.dialog.FileName = "Quest\Sharlie\Terrapin.c";
 			sld.dialog.currentnode = "levasser_room";
@@ -6196,7 +6196,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld.DontClearDead = true;
 			LAi_SetActorType(sld);
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
-			// гарды
+			// пїЅпїЅпїЅпїЅпїЅ
 			for (i=1; i<=2; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("TerrapinGuard"+i, "sold_fra_"+i, "man", "man", iRank, FRANCE, -1, true, "quest"));
@@ -6206,7 +6206,7 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_warrior_SetStay(sld, true);
 				LAi_warrior_DialogEnable(sld, false);
 			}
-			// заполним сундук в гроте
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.GenQuestBox.Tortuga_town = true;
 			pchar.GenQuestBox.Tortuga_town.box1.items.totem_03 = 1;
 			pchar.GenQuestBox.Tortuga_town.box1.items.cannabis7 = 1;
@@ -6228,26 +6228,26 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 		case "Terrapin_LevasserRoomDied":
-			chrDisableReloadToLocation = false;//открыть локацию
-			LocatorReloadEnterDisable("Tortuga_tavern", "reload2_back", true); // закроем комнату снаружи
-			LocatorReloadEnterDisable("Tortuga_tavern_upstairs", "reload1_back", true);//закрыть выход
-			pchar.GenQuest.CannotWait = true;//запрет ожидания
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LocatorReloadEnterDisable("Tortuga_tavern", "reload2_back", true); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LocatorReloadEnterDisable("Tortuga_tavern_upstairs", "reload1_back", true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			pchar.GenQuest.CannotWait = true;//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			n = Findlocation("Tortuga_town");
 			locations[n].models.day.charactersPatch = "Margarita_patch_roof"; 
-			locations[n].models.night.charactersPatch = "Margarita_patch_roof"; // подменяем патч для персонажа
-			LAi_LocationDisableOfficersGen("Tortuga_Town", true);//офицеров не пускать
+			locations[n].models.night.charactersPatch = "Margarita_patch_roof"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LAi_LocationDisableOfficersGen("Tortuga_Town", true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.questTemp.Terrapin = "roof";
-			DoQuestCheckDelay("hide_weapon", 1.0);//убрать оружие
+			DoQuestCheckDelay("hide_weapon", 1.0);//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestCheckDelay("TalkSelf_Quest", 1.0);
 			sld = characterFromId("Tortuga_Mayor");
-			LAi_NoRebirthEnable(sld); // респавнился, гад 
-			pchar.questTemp.Sharlie.DelTerGuard = "true"; // убираем пиратскую эскадру
+			LAi_NoRebirthEnable(sld); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ 
+			pchar.questTemp.Sharlie.DelTerGuard = "true"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			ChangeCharacterComplexReputation(pchar, "authority", 10);
 			ChangeOfficersLoyality("good_all", 2);
 			AddCrewMorale(pchar, 10);
 			AddComplexSelfExpToScill(250, 250, 250, 250);
-			AddCharacterExpToSkill(pchar, "Fortune", 500);//везение
-			AddCharacterExpToSkill(pchar, "Sneak", 400);//скрытность
+			AddCharacterExpToSkill(pchar, "Fortune", 500);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			AddCharacterExpToSkill(pchar, "Sneak", 400);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         break;
 		
 		case "Terrapin_GoWindow":
@@ -6259,13 +6259,13 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.questTemp.Terrapin = "roofgo"; // 021012
         break;
 		
-		case "Terrapin_FirstShot": // мушкетер стреляет
+		case "Terrapin_FirstShot": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("TerrapinMush"+sTotalTemp);
             LAi_SetActorType(sld);
 			LAi_ActorAnimation(sld, "shot", "Terrapin_FirstShot_1", 1.0);
         break;
 		
-		case "Terrapin_FirstShot_1": // мушкетер попал в ГГ
+		case "Terrapin_FirstShot_1": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ
 			sld = CharacterFromID("TerrapinMush1");
 			LAi_SetWarriorType(sld);
 			LAi_warrior_SetStay(sld, true);
@@ -6276,7 +6276,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_CheckKillCharacter(pchar);
         break;
 		
-		case "Terrapin_GirlShot": // застрелили девушку
+		case "Terrapin_GirlShot": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			CreateLocationParticles("blood_big", "quest", "roof", 2.0, 0, 0, "");
 			CreateLocationParticles("blood_big", "quest", "roof", 1.8, 0, 0, "");
 			sld = CharacterFromID("TerrapinRoofGirl");
@@ -6292,7 +6292,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorAnimation(sld, "shot", "Terrapin_SecondShot", 1.0);
         break;
 		
-		case "Terrapin_SecondShot": // мушкетер попал в ГГ
+		case "Terrapin_SecondShot": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ
 			sld = CharacterFromID("TerrapinMush2");
 			LAi_SetWarriorType(sld);
 			LAi_warrior_SetStay(sld, true);
@@ -6301,7 +6301,7 @@ void QuestComplete(string sQuestName, string qname)
 			CreateLocationParticles("blood_big", "quest", "roof", 2.0, 0, 0, "");
 			LAi_ApplyCharacterDamage(pchar, 150, "fire");
 			LAi_CheckKillCharacter(pchar);
-			// ставим горожанина
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = GetCharacter(NPC_GenerateCharacter("TerrapinRoofMan", "citiz_15", "man", "man", 25, FRANCE, -1, true, "quest"));
 			FantomMakeCoolFighter(sld, 25, 65, 65, "blade_10", "pistol1", "bullet", 100);
 			LAi_SetWarriorType(sld);
@@ -6312,9 +6312,9 @@ void QuestComplete(string sQuestName, string qname)
 			sTotalTemp = "3";
         break;
 		
-		case "Terrapin_TiboDied": // убили Тибо
+		case "Terrapin_TiboDied": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
-			pchar.GenQuest.Notsearchbody = true; // не обыскивать до разговора с Кати
+			pchar.GenQuest.Notsearchbody = true; // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 			sld = characterFromId("Kathy");
 			LAi_CharacterEnableDialog(sld);
 			LAi_SetActorType(sld);
@@ -6325,12 +6325,12 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(100, 100, 100, 100);
         break;
 		
-		case "LevasserDiedResidence": // убили Левассера в резиденции при штурме города
+		case "LevasserDiedResidence": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Tortuga_Mayor");
-			LAi_NoRebirthEnable(sld); // респавнился, гад 
-			pchar.questTemp.Sharlie.DelTerGuard = "true"; // убираем пиратскую эскадру
+			LAi_NoRebirthEnable(sld); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ 
+			pchar.questTemp.Sharlie.DelTerGuard = "true"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			ChangeCharacterComplexReputation(pchar, "authority", 5);
 			ChangeOfficersLoyality("good_all", 1);
 			AddCrewMorale(pchar, 5);
@@ -6339,8 +6339,8 @@ void QuestComplete(string sQuestName, string qname)
 			AddQuestRecord("Sharlie", "32");
         break;
 		
-		//----------------------------------------- защита Сен-Пьера -------------------------------------------
-		case "DefendSP_VideoSiege": // ролик
+		//----------------------------------------- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅ -------------------------------------------
+		case "DefendSP_VideoSiege": // пїЅпїЅпїЅпїЅпїЅ
 			PChar.GenQuest.VideoAVI = "Siege";
 			PChar.GenQuest.VideoAfterQuest = "DefendSP_continueSiege";
 			DoQuestCheckDelay("PostVideo_Start", 0.2);
@@ -6349,14 +6349,14 @@ void QuestComplete(string sQuestName, string qname)
 		case "DefendSP_continueSiege": 
 			DoQuestReloadToLocation("Shore38", "reload", "sea", "DefendSP_SetInJungle");
 			setCharacterShipLocation(pchar, "Shore38"));
-			setWDMPointXZ("Shore38"); // корабль в бухту Ламантен
+			setWDMPointXZ("Shore38"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         break;
 
-		case "DefendSP_SetInJungle": // ставим ГГ и его солдат в бухту
-			LocatorReloadEnterDisable("Shore38", "boat", true); // закрыть выход в море
-			pchar.GenQuest.Hunter2Pause = true; // ОЗГи на паузу
-			pchar.GenQuest.CannotWait = true;//запрет ожидания
-			// устанавливаем солдат ГГ, 12 рыл+офицер
+		case "DefendSP_SetInJungle": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
+			LocatorReloadEnterDisable("Shore38", "boat", true); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
+			pchar.GenQuest.Hunter2Pause = true; // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			pchar.GenQuest.CannotWait = true;//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ, 12 пїЅпїЅпїЅ+пїЅпїЅпїЅпїЅпїЅпїЅ
 			iRank = 25+MOD_SKILL_ENEMY_RATE*2;
 			iScl = 60;
 			for (i=0; i<=12; i++)
@@ -6403,14 +6403,14 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialogDelay(sld, pchar, "", 0.5);
         break;
 		
-		case "DefendSP_GateAlarm": // тревога поднята
+		case "DefendSP_GateAlarm": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.questTemp.Sharlie.DefendSP.GateAlarm = true;
         break;
 		
 		case "DefendSP_SpaPatrolDie":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
-			// прерывание на выход из города
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.DefendSP_jungle2.win_condition.l1 = "location";
 			pchar.quest.DefendSP_jungle2.win_condition.l1.location = "FortFrance_ExitTown";
 			pchar.quest.DefendSP_jungle2.function = "DefendSP_SpainAvanpost";
@@ -6425,13 +6425,13 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 		case "DefendSP_SpaAvanpostDie":
-			chrDisableReloadToLocation = false;//открыть локацию
-			LocatorReloadEnterDisable("FortFrance_ExitTown", "reload2_back", true); // закрыть форт
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LocatorReloadEnterDisable("FortFrance_ExitTown", "reload2_back", true); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			locations[FindLocation("FortFrance_Town")].QuestCapture = true;
 			locations[FindLocation("FortFrance_Town")].hidden_fire = true;
 			locations[FindLocation("FortFrance_Town")].hidden_sound = true;
 			LAi_group_Delete("EnemyFight");
-			// прерывание на город
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.DefendSP_jungle3.win_condition.l1 = "location";
 			pchar.quest.DefendSP_jungle3.win_condition.l1.location = "FortFrance_Town";
 			pchar.quest.DefendSP_jungle3.function = "DefendSP_TownBattle";
@@ -6455,7 +6455,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld = ItemsFromID("MaltieBase_keys");
             sld.shown = true;
 			sld.startLocation = "FortFrance_Dungeon";
-			sld.startLocator = "item"+(rand(4)+1); // ключ от камеры Мишеля
+			sld.startLocator = "item"+(rand(4)+1); // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			DefendSP_CatchOurSoldiers();
 			AddComplexSelfExpToScill(400, 400, 400, 400);
         break;
@@ -6470,7 +6470,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 		case "DefendSP_PrepareFortAttack":
-			// ставим мальтийцев
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			iRank = 25+MOD_SKILL_ENEMY_RATE*2;
 			iScl = 60;
 			for (i=1; i<=7; i++)
@@ -6482,7 +6482,7 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 				ChangeCharacterAddressGroup(sld, "FortFrance_Exittown", "rld", "aloc"+i);
 			}
-			// ставим Мишеля
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mishelle");
 			sld.dialog.currentnode = "Fort_attack";
 			ChangeCharacterAddressGroup(sld, "FortFrance_Exittown", "rld", "aloc10");
@@ -6516,7 +6516,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-//Jason--------------------------------------- В поисках Стража Истины ------------------------------------
+//Jason--------------------------------------- пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ ------------------------------------
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		case "GuardOT_MCthink":
 			LAi_SetPlayerType(pchar);
@@ -6531,7 +6531,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 		case "GuardOT_ArriveGaleon":
-			// для умников :)
+			// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ :)
 			if (sti(environment.time) < 21 && sti(environment.time) > 3)
 			{
 				int iTime = sti(environment.time);
@@ -6546,23 +6546,23 @@ void QuestComplete(string sQuestName, string qname)
 			}
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			pchar.GenQuest.CantRun = true;
-			CheckAndSetOverloadMode(GetMainCharacter()); // бег запрещаем
-			InterfaceStates.Buttons.Save.enable = false;//запретить сохраняться
+			CheckAndSetOverloadMode(GetMainCharacter()); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			InterfaceStates.Buttons.Save.enable = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.questTemp.Guardoftruth = "galeon";
 			pchar.questTemp.Guardoftruth.Attack = "true";
 			pchar.GenQuest.Notsearchbody = true;
 			LAi_LockFightMode(pchar, true);
 			DoQuestCheckDelay("GuardOT_ArriveGaleonSetMusic", 1.0);
-			// ставим Марше
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("GOT_Marshe");
 			sld.dialog.currentnode = "marshe_lay";
-			LAi_CharacterDisableDialog(sld);//запрет диалога
+			LAi_CharacterDisableDialog(sld);//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetImmortal(sld, false);
 			ChangeCharacterAddressGroup(sld, "Deck_Galeon_Ship", "quest", "lay");
 			LAi_SetLayType(sld);
 			LAi_SetCheckMinHP(sld, LAi_GetCharacterHP(sld)-1, true, "GuardOT_MarsheEscape");
 			RemoveAllCharacterItems(sld, true);
-			// ставим вахтенных
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			iRank = 25+MOD_SKILL_ENEMY_RATE*2;
 			iScl = 65;
 			for (i=1; i<=8; i++)
@@ -6605,7 +6605,7 @@ void QuestComplete(string sQuestName, string qname)
 			DeleteAttribute(pchar, "questTemp.Guardoftruth.Attack");
 			GuardOT_GaleonGuardFightAdd();
 			sld = characterFromId("GOT_Marshe");
-			if (sld.location.locator == "lay") // если спит
+			if (sld.location.locator == "lay") // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			{
 				LAi_RemoveCheckMinHP(sld);
 				LAi_SetImmortal(sld, true);
@@ -6638,7 +6638,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_Delete("GaleonFight");
 			DoQuestCheckDelay("hide_weapon", 1.0);
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);
-			if (CheckAttribute(pchar, "questTemp.Guardoftruth.Attack")) // все тихо
+			if (CheckAttribute(pchar, "questTemp.Guardoftruth.Attack")) // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			{
 				DeleteAttribute(pchar, "questTemp.Guardoftruth.Attack");
 				DeleteAttribute(pchar, "GenQuest.CantRun");
@@ -6660,7 +6660,7 @@ void QuestComplete(string sQuestName, string qname)
 		
 		case "GuardOT_HuntersDie":
 			LAi_group_Delete("EnemyFight");
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			AddQuestRecord("Guardoftruth", "26");
 			AddComplexSelfExpToScill(180, 180, 180, 180);
         break;
@@ -6687,7 +6687,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetActorType(sld);
 			RemoveCharacterEquip(sld, BLADE_ITEM_TYPE);
 			RemoveCharacterEquip(sld, GUN_ITEM_TYPE);
-			if (n < 5) // остались живые враги
+			if (n < 5) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			{
 				LAi_ActorAnimation(sld, "afraid", "GuardOT_BartyEscape1", -1);
 			}
@@ -6711,10 +6711,10 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 		case "GuardOT_ClearMayakPatrol":
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
-			chrDisableReloadToLocation = false;//открыть локацию
-			Map_NationQuestHunter(SPAIN); // немного развлечений
-			SetTimerCondition("Map_SetNationCoolHanters", 0, 0, 4, false); // еще немного развлечений
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			Map_NationQuestHunter(SPAIN); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			SetTimerCondition("Map_SetNationCoolHanters", 0, 0, 4, false); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         break;
 		
 		case "GuardOT_SpaOfficerInTavern":
@@ -6732,18 +6732,18 @@ void QuestComplete(string sQuestName, string qname)
 		
 		case "GuardOT_SpaOfficerOutTavern":
 			chrDisableReloadToLocation = false;
-			LAi_LocationFightDisable(&Locations[FindLocation("Santiago_town")], false);//разрешить драться
+			LAi_LocationFightDisable(&Locations[FindLocation("Santiago_town")], false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAI_SetPlayerType(pchar);           
             DoQuestReloadToLocation("Santiago_tavern", "tables", "stay5", "");
             sld = CharacterFromID("spa_baseprisoner");
             ChangeCharacterAddressGroup(sld, "none", "", "");
 			AddQuestRecord("Guardoftruth", "44");
-			pchar.GenQuest.Hunter2Pause = true; // ОЗГи на паузу
-			// гопота, чтобы весело жилось
+			pchar.GenQuest.Hunter2Pause = true; // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.GuardOT_setbandos.win_condition.l1 = "ExitFromLocation";
 			pchar.quest.GuardOT_setbandos.win_condition.l1.location = pchar.location;
 			pchar.quest.GuardOT_setbandos.function = "GuardOT_SetBandosInTown"; 
-			// на Гавану
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.GuardOT_Cuba2.win_condition.l1 = "location";
 			pchar.quest.GuardOT_Cuba2.win_condition.l1.location = "Cuba2";
 			pchar.quest.GuardOT_Cuba2.function = "GuardOT_Cuba2Arrive";
@@ -6855,13 +6855,13 @@ void QuestComplete(string sQuestName, string qname)
 		case "GuardOT_OpenCatocheDoor":
 			chrDisableReloadToLocation = false;
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
-			LocatorReloadEnterDisable("Jungle_fort_exit", "reload1_back", true); // закроем форт
+			LocatorReloadEnterDisable("Jungle_fort_exit", "reload1_back", true); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         break;
 			
 		case "GuardOT_CabinBandosDie":
 			LAi_group_Delete("EnemyFight");
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//запретить драться
-			chrDisableReloadToLocation = false;//открыть локацию
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "GenQuest.DontSetCabinOfficer");
 			bQuestDisableMapEnter = false;
 			Island_SetReloadEnableGlobal("Bermudes", true);
@@ -6909,7 +6909,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.GenQuest.CamShuttle = 3;
 			WaitDate("",0,0,0,9,5);
 			chrDisableReloadToLocation = false;
-			LAi_LocationFightDisable(&Locations[FindLocation("Portroyal_town")], false);//разрешить драться
+			LAi_LocationFightDisable(&Locations[FindLocation("Portroyal_town")], false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAI_SetPlayerType(pchar);           
             DoQuestReloadToLocation("Portroyal_town", "reload", "reload6", "");
 			sld = ItemsFromID("lcheer");
@@ -6920,7 +6920,7 @@ void QuestComplete(string sQuestName, string qname)
             sld = characterFromId("Archy");
             ChangeCharacterAddressGroup(sld, "none", "", "");
 			LocatorReloadEnterDisable("PortRoyal_store", "reload2", true);
-			LocatorReloadEnterDisable("PortRoyal_town", "reload", true); // дом рядом закрываем
+			LocatorReloadEnterDisable("PortRoyal_town", "reload", true); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			AddQuestRecord("Guardoftruth", "64");
 			pchar.quest.GuardOT_squadrongo.win_condition.l1 = "Timer";
 			pchar.quest.GuardOT_squadrongo.win_condition.l1.date.hour  = sti(GetTime()+rand(12));
@@ -6953,9 +6953,9 @@ void QuestComplete(string sQuestName, string qname)
 		
 		case "GuardOT_HouseMercenDie":
 			LAi_group_Delete("EnemyFight");
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "GenQuest.CantRun");
-			CheckAndSetOverloadMode(GetMainCharacter()); // бег разрешаем
+			CheckAndSetOverloadMode(GetMainCharacter()); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			AddQuestRecord("Guardoftruth", "69");
 			pchar.quest.GuardOT_setwillyjungle.win_condition.l1 = "ExitFromLocation";
 			pchar.quest.GuardOT_setwillyjungle.win_condition.l1.location = pchar.location;
@@ -6981,7 +6981,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetWarriorType(sld);
 			LAi_SetImmortal(sld, false);
 			LAi_group_MoveCharacter(sld, "EnemyFight");
-			LAi_SetCheckMinHP(sld, 10, true, "GuardOT_WillyEscape"); // скрытое бессмертие
+			LAi_SetCheckMinHP(sld, 10, true, "GuardOT_WillyEscape"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestFunctionDelay("GuardOT_WillyMushketerFree", 3.0);
         break;
 		
@@ -7003,7 +7003,7 @@ void QuestComplete(string sQuestName, string qname)
 		
 		case "GuardOT_WillyMushketerDie":
 			LAi_group_Delete("EnemyFight");
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			AddQuestRecord("Guardoftruth", "70");
 			pchar.quest.GuardOT_willyescape.win_condition.l1 = "location";
 			pchar.quest.GuardOT_willyescape.win_condition.l1.location = "IslaDeVieques_Jungle_01";
@@ -7016,7 +7016,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetWarriorType(sld);
 			LAi_SetImmortal(sld, false);
 			LAi_group_MoveCharacter(sld, "EnemyFight");
-			LAi_SetCheckMinHP(sld, 10, true, "GuardOT_WillyEscapeNext"); // скрытое бессмертие
+			LAi_SetCheckMinHP(sld, 10, true, "GuardOT_WillyEscapeNext"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 			LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
         break;
@@ -7031,7 +7031,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.GuardOT_crabShore.win_condition.l1 = "location";
 			pchar.quest.GuardOT_crabShore.win_condition.l1.location = "shore74";
 			pchar.quest.GuardOT_crabShore.function = "GuardOT_ArchyInCrabShore";
-			// эскадру Патерсона - на Крабовый остров
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			Group_SetAddress("Willy_group", "IslaDeVieques", "quest_ships", "quest_ship_1");
 			AddCharacterExpToSkill(pchar, "Pistol", 200);
         break;
@@ -7048,7 +7048,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-//Jason-------------------------------------- Коварный остров Ксочитэм ------------------------------------
+//Jason-------------------------------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ------------------------------------
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		case "Ksochitam_SitTable":
@@ -7063,7 +7063,7 @@ void QuestComplete(string sQuestName, string qname)
 		
 		case "Ksochitam_SitTableWaitTime":
 			SetLaunchFrameFormParam("It took half an hour"+ NewStr() +"You have established the right course", "Ksochitam_RoomStandUp", 0, 5);
-			WaitDate("", 0, 0, 0, 0, 30); //крутим время
+			WaitDate("", 0, 0, 0, 0, 30); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			LaunchFrameForm();
 			RefreshLandTime();
 			RecalculateJumpTable();
@@ -7091,7 +7091,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.Ksochitam_jinotalk1.win_condition.l1 = "location";
 			pchar.quest.Ksochitam_jinotalk1.win_condition.l1.location = pchar.location.from_sea;
 			pchar.quest.Ksochitam_jinotalk1.function = "Ksochitam_JinoDollyTalk";
-			locations[FindLocation(pchar.location.from_sea)].DisableEncounters = true; //энкаутеры закрыть
+			locations[FindLocation(pchar.location.from_sea)].DisableEncounters = true; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         break;
 		
 		case "Ksochitam_FindSecondWay":
@@ -7103,7 +7103,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.Ksochitam_jinotalk2.win_condition.l1 = "location";
 			pchar.quest.Ksochitam_jinotalk2.win_condition.l1.location = pchar.location.from_sea;
 			pchar.quest.Ksochitam_jinotalk2.function = "Ksochitam_JinoDollyTalk";
-			locations[FindLocation(pchar.location.from_sea)].DisableEncounters = true; //энкаутеры закрыть
+			locations[FindLocation(pchar.location.from_sea)].DisableEncounters = true; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         break;
 		
 		case "Ksochitam_FindFullWay":
@@ -7115,22 +7115,22 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.Ksochitam_jinotalk3.win_condition.l1 = "location";
 			pchar.quest.Ksochitam_jinotalk3.win_condition.l1.location = pchar.location.from_sea;
 			pchar.quest.Ksochitam_jinotalk3.function = "Ksochitam_JinoDollyTalk";
-			locations[FindLocation(pchar.location.from_sea)].DisableEncounters = true; //энкаутеры закрыть
+			locations[FindLocation(pchar.location.from_sea)].DisableEncounters = true; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "questTemp.Ksochitam_Dolly");
 			pchar.questTemp.Ksochitam = "findway";
-			// открываем Ксочитэм
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			i = FindIsland("Ksochitam");
 			Islands[i].visible = true;
 			Islands[i].reload_enable = true;
-			Islands[i].alwaysStorm = true; //живем в штормах
+			Islands[i].alwaysStorm = true; //пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			Islands[i].storm = true;
 			Islands[i].tornado = true; 
-			SetTimerCondition("Map_SetNationCoolHanters", 0, 0, 2, false); // немного развлечений
-			// прерывание на выход к Ксочитэму
+			SetTimerCondition("Map_SetNationCoolHanters", 0, 0, 2, false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Ksochitam_island.win_condition.l1 = "location";
 			pchar.quest.Ksochitam_island.win_condition.l1.location = "Ksochitam";
 			pchar.quest.Ksochitam_island.function = "Ksochitam_ArriveIsland";
-			// прерывание на высадку на Ксочитэм
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Ksochitam_rockshore.win_condition.l1 = "location";
 			pchar.quest.Ksochitam_rockshore.win_condition.l1.location = "shore65";
 			pchar.quest.Ksochitam_rockshore.function = "Ksochitam_ArriveRockshore";
@@ -7139,53 +7139,53 @@ void QuestComplete(string sQuestName, string qname)
 		case "Ksochitam_JinoStay":
 			sld = characterFromId("Jino");
 			LAi_SetStayType(sld);
-			// кладем Молот Тора в пещеру
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = ItemsFromID("talisman3");
 			sld.model = "torus";
 			pchar.GenQuestRandItem.Ksochitam_Cave = true;
 			pchar.GenQuestRandItem.Ksochitam_Cave.randitem1 = "talisman3";
-			// здесь ставим все прерывания на Ксочитэм, возможные на данный момент:
-			// на первую локацию джунглей
+			// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ:
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Ksochitam_adversary1.win_condition.l1 = "location";
 			pchar.quest.Ksochitam_adversary1.win_condition.l1.location = "Ksochitam_Jungle_01";
 			pchar.quest.Ksochitam_adversary1.win_condition = "Ksochitam_adversary1";
-			// на локацию пещеры к сокровищам
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Ksochitam_adversary2.win_condition.l1 = "location";
 			pchar.quest.Ksochitam_adversary2.win_condition.l1.location = "Ksochitam_Grot";
 			pchar.quest.Ksochitam_adversary2.win_condition = "Ksochitam_adversary2";
-			// на локацию затопленной пещеры к сокровищам
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Ksochitam_adversary3.win_condition.l1 = "location";
 			pchar.quest.Ksochitam_adversary3.win_condition.l1.location = "Ksochitam_WaterCave";
 			pchar.quest.Ksochitam_adversary3.win_condition = "Ksochitam_adversary3";
-			// на локацию пещеры к маске
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Ksochitam_adversary4.win_condition.l1 = "location";
 			pchar.quest.Ksochitam_adversary4.win_condition.l1.location = "Ksochitam_Cave";
 			pchar.quest.Ksochitam_adversary4.win_condition = "Ksochitam_adversary4";
-			// на локацию затопленной пещеры к маске
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Ksochitam_adversary5.win_condition.l1 = "location";
 			pchar.quest.Ksochitam_adversary5.win_condition.l1.location = "Ksochitam_FloodedCave";
 			pchar.quest.Ksochitam_adversary5.win_condition = "Ksochitam_adversary5";
-			// на локацию тупиковой затопленной пещеры к маске
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Ksochitam_adversary5_1.win_condition.l1 = "location";
 			pchar.quest.Ksochitam_adversary5_1.win_condition.l1.location = "Ksochitam_FloodedCaveLock";
 			pchar.quest.Ksochitam_adversary5_1.win_condition = "Ksochitam_adversary5";
-			// на локацию с разбитым кораблем
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Ksochitam_shoreship.win_condition.l1 = "location";
 			pchar.quest.Ksochitam_shoreship.win_condition.l1.location = "Shore_ship4";
 			pchar.quest.Ksochitam_shoreship.function = "Ksochitam_shoreship";
-			// на локацию с Санта-Квитерией
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Ksochitam_SQ.win_condition.l1 = "location";
 			pchar.quest.Ksochitam_SQ.win_condition.l1.location = "Shore66";
 			pchar.quest.Ksochitam_SQ.function = "Ksochitam_SQOutside";
-			// на локацию со Стражем маски
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Ksochitam_MaskGuard.win_condition.l1 = "location";
 			pchar.quest.Ksochitam_MaskGuard.win_condition.l1.location = "Shore_mask";
 			pchar.quest.Ksochitam_MaskGuard.function = "Ksochitam_MaskGuard";
-			// на фальшивую маску
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Ksochitam_MaskFalse.win_condition.l1 = "item";
 			pchar.quest.Ksochitam_MaskFalse.win_condition.l1.item = "mask_false";
 			pchar.quest.Ksochitam_MaskFalse.win_condition = "Ksochitam_FindMaskFalse";
-			// на настоящую маску
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Ksochitam_MaskTrue.win_condition.l1 = "item";
 			pchar.quest.Ksochitam_MaskTrue.win_condition.l1.item = "mask_true";
 			pchar.quest.Ksochitam_MaskTrue.win_condition = "Ksochitam_FindMaskTrue";
@@ -7213,7 +7213,7 @@ void QuestComplete(string sQuestName, string qname)
 		
 		case "Ksochitam_SQMonstersDie":
 			DeleteAttribute(pchar, "questTemp.Ksochitam.ShoreShip");
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			AddQuestRecord("Ksochitam", "8");
 			LocatorReloadEnterDisable("shore66", "reload2_back", true);
 			pchar.quest.Ksochitam_SQInside.win_condition.l1 = "location";
@@ -7239,27 +7239,27 @@ void QuestComplete(string sQuestName, string qname)
 			AddQuestRecord("Ksochitam", "9");
 			if (CheckCharacterItem(pchar, "mask_true"))
 			{
-				chrDisableReloadToLocation = false;//открыть локацию
+				chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				LocatorReloadEnterDisable("shore66", "reload2_back", false);
 			}
 			else
 			{
 				pchar.GenQuest.NoDelBody = true;
 			}
-			// на ключ
+			// пїЅпїЅ пїЅпїЅпїЅпїЅ
 			ChangeItemDescribe("key_archy", "itmdescr_key_mask");
 			pchar.quest.Ksochitam_MaskKey.win_condition.l1 = "item";
 			pchar.quest.Ksochitam_MaskKey.win_condition.l1.item = "key_archy";
 			pchar.quest.Ksochitam_MaskKey.win_condition = "Ksochitam_FindMaskKey";
-			// на журнал
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Ksochitam_SQBook.win_condition.l1 = "item";
 			pchar.quest.Ksochitam_SQBook.win_condition.l1.item = "SQCapBook";
 			pchar.quest.Ksochitam_SQBook.win_condition = "Ksochitam_FindSQCapBook";
-			// на скалистую бухту
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Ksochitam_ReturnShip.win_condition.l1 = "location";
 			pchar.quest.Ksochitam_ReturnShip.win_condition.l1.location = "Shore65";
 			pchar.quest.Ksochitam_ReturnShip.function = "Ksochitam_CreateDeMaldonado";
-			// делаем бухту 66 доступной для причаливания
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 66 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			Island_SetReloadEnableLocal("Ksochitam", "reload_1", true);
 			i = Findlocation("Shore66");
 			locations[i].models.day.charactersPatch = "sandshore_patch3";
@@ -7273,13 +7273,13 @@ void QuestComplete(string sQuestName, string qname)
 			Islands[n].reload.l2.pic = 0;
 			Islands[n].reload.l2.tex = "t1";
 			LAi_LocationDisableOfficersGen("Shore66", false);
-			// запрещаем генерацию скелетов в Скалистой бухте
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			i = Findlocation("Shore65");
 			DeleteAttribute(&locations[i], "KsochitamSkeletons");
         break;
 		
 		case "Ksochitam_FindMaskKey":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "GenQuest.NoDelBody");
         break;
 		
@@ -7300,7 +7300,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 		case "Ksochitam_MaldonadoDie":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LocatorReloadEnterDisable("Shore65", "reload2_back", true);
 			AddQuestRecord("Ksochitam", "14");
 			DeleteAttribute(pchar, "questTemp.Ksochitam.Adversary");
@@ -7342,9 +7342,9 @@ void QuestComplete(string sQuestName, string qname)
 			SetSPECIAL(sld, 10, 10, 10, 10, 10, 10, 10);
 			SelAllPerksToChar(sld, false);
 			LAi_SetHP(sld, iTemp, iTemp);
-			sld.MultiFighter = fMft; // мультифайтер
+			sld.MultiFighter = fMft; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld.GuardMask = true;
-			sld.PoisonResistent = true; // Addon 2016-1 Jason пиратская линейка патч 17/1
+			sld.PoisonResistent = true; // Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 17/1
 			TakeNItems(sld, "icollection", 5);
 			LAi_SetCheckMinHP(sld, sti(LAi_GetCharacterHP(sld)/2), true, "Ksochitam_GuardMaskAddSkeletonsFirst");
 			LAi_SetActorType(sld);
@@ -7376,7 +7376,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 		case "Ksochitam_GuardMaskAddSkeletonsFirst":
-			log_testinfo("Первый фокус!");
+			log_testinfo("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!");
 			PlaySound("Ambient\Teno_inside\big_ring.wav");
 			iTotalTemp = 2;
 			iGlobalTemp = 0;
@@ -7392,19 +7392,19 @@ void QuestComplete(string sQuestName, string qname)
 		
 		case "Ksochitam_ShoreMaskAddSkeletons":
 			if (CheckAttribute(pchar, "questTemp.Ksochitam.GuardMaskBeat")) break;
-			log_testinfo("Скелеты создаются!!");
+			log_testinfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!!");
 			PlaySound("Ambient\Teno_inside\teleporter.wav");
 			if (MOD_SKILL_ENEMY_RATE < 6) iTotalTemp = iTotalTemp-1;
 			iRank = 25+MOD_SKILL_ENEMY_RATE*2;
 			iScl = 70;
-			log_testinfo("Число скелетов: "+iTotalTemp+"");
+			log_testinfo("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: "+iTotalTemp+"");
 			for (i=1; i<=iTotalTemp; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("guardmask_skelet_"+i+iGlobalTemp, "skel"+i, "skeleton", "skeleton", iRank, PIRATE, -1, true, "soldier"));
 				FantomMakeCoolFighter(sld, iRank, iScl, iScl, RandPhraseSimple("blade_13","blade_10"), "pistol5", "bullet", iScl*2+100);
 				GetCharacterPos(pchar, &locx, &locy, &locz);
 				string locator = LAi_FindNearestFreeLocator("monsters", locx, locy, locz);
-				log_testinfo("Локатор: "+locator+"");
+				log_testinfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: "+locator+"");
 				ChangeCharacterAddressGroup(sld, "shore_mask", "monsters", locator);
 				LAi_SetWarriorType(sld);
 				LAi_group_MoveCharacter(sld, "KSOCHITAM_MONSTERS");
@@ -7429,7 +7429,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 		case "Ksochitam_GuardMaskAddSkeletonsSecond":
-			log_testinfo("Второй фокус!");
+			log_testinfo("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!");
 			PlaySound("Ambient\Teno_inside\big_ring.wav");
 			if (MOD_SKILL_ENEMY_RATE > 2) iTotalTemp = 3;
 			sld = characterFromId("GuardMask");
@@ -7443,7 +7443,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 		case "Ksochitam_GuardMaskAddSkeletonsThird":
-			log_testinfo("Третий фокус!");
+			log_testinfo("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!");
 			PlaySound("Ambient\Teno_inside\big_ring.wav");
 			sld = characterFromId("GuardMask");
 			LAi_SetImmortal(sld, false);
@@ -7470,7 +7470,7 @@ void QuestComplete(string sQuestName, string qname)
 			log_info("The Guardian has recovered completely!");
 			LAi_SetActorType(sld);
 			DoQuestCheckDelay("hide_weapon", 1.0);
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//запретить драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_ActorDialogDelay(sld, pchar, "", 2.0);
 			DoQuestFunctionDelay("Ksochitam_SetMusic", 1.2);
         break;
@@ -7525,7 +7525,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld = characterFromId("GuardMask");
 			ChangeCharacterAddressGroup(sld, "none", "", "");
 			PlaySound("Ambient\Teno_inside\teleporter.wav");
-			// увеличиваем локатор с маской и вертаем тип локации
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			n = Findlocation("Shore_mask");
 			locations[n].type = "x_seashore";
 			locations[n].locators_radius.item.item1 = 1.2;
@@ -7549,7 +7549,7 @@ void QuestComplete(string sQuestName, string qname)
 			{
 				AddQuestRecord("Ksochitam", "13");
 			}
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         break;
 		
 		case "Ksochitam_JinoNormal":
@@ -7558,24 +7558,24 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-//Jason----------------------------------- Древний город майя --------------------------------------------
+//Jason----------------------------------- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ --------------------------------------------
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
-		case "Tieyasal_VinsentoGo": // запускаем квест
+		case "Tieyasal_VinsentoGo": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Vincento");
 			LAi_SetHuberType(sld);
 			ChangeCharacterAddressGroup(sld, "Santiago_Incquisitio", "sit", "armchair1");
 			LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");
-			chrDisableReloadToLocation = false;//открыть локацию
-			SetFunctionTimerCondition("Tieyasal_TotalOver", 0, 0, 120, false); // глобальный таймер квеста - 120 дней на выполнение - потом геймовер
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			SetFunctionTimerCondition("Tieyasal_TotalOver", 0, 0, 120, false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - 120 пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			SetFunctionTimerCondition("Tieyasal_SetAdrianInChapel", 0, 0, 5, false);
-			LAi_LocationDisableOfficersGen("Pearl_jungle_03", false); // пускать офицеров в локу телепорта
-			pchar.questTemp.Tieyasal = "begin"; // далее - на Исла Тесоро
+			LAi_LocationDisableOfficersGen("Pearl_jungle_03", false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			pchar.questTemp.Tieyasal = "begin"; // пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			AddQuestRecord("Tieyasal", "1");
         break;
 		
 		case "Tieyasal_MCSoldiersReset": // 160912
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for(i=1; i<=iTotalTemp; i++)
 			{
 				if (GetCharacterIndex("Tieyasal_Oursoldier_"+i) != -1)
@@ -7594,7 +7594,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.Tieyasal_Dichososhore.win_condition.l1 = "location";
 			pchar.quest.Tieyasal_Dichososhore.win_condition.l1.location = "Shore42";
 			pchar.quest.Tieyasal_Dichososhore.function = "Tieyasal_ArriveToNevis";
-			locations[FindLocation("Shore42")].DisableEncounters = true; //энкаутеры закрыть
+			locations[FindLocation("Shore42")].DisableEncounters = true; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         break;
 		
 		case "Tieyasal_CryptBattleComplete":
@@ -7605,7 +7605,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 		case "Tieyasal_GraveyardBattleComplete":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			locations[FindLocation("Shore42")].DisableEncounters = false; 
 			locations[FindLocation("Charles_exittown")].DisableEncounters = false; 
 			locations[FindLocation("Charles_CaveEntrance")].DisableEncounters = false; 
@@ -7634,7 +7634,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 		case "Tieyasal_AfterCabinTalk":
-			// снимаем все запреты
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			bQuestDisableMapEnter = false;
 			Island_SetReloadEnableGlobal("Nevis", true);
@@ -7657,17 +7657,17 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.Tieyasal_Landway.win_condition.l1 = "location";
 			pchar.quest.Tieyasal_Landway.win_condition.l1.location = "Tenochtitlan";
 			pchar.quest.Tieyasal_Landway.function = "Tieyasal_SetUrakanItzaWarrior";
-			LocatorReloadEnterDisable("Tayasal_jungle_09", "reload3_back", false); // открываем проход в Тайясаль
+			LocatorReloadEnterDisable("Tayasal_jungle_09", "reload3_back", false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LocatorReloadEnterDisable("Tayasal_jungle_07", "reload2_back", false); // patch-5
 			DeleteAttribute(pchar, "questTemp.Tieyasal_CabinTalk");
         break;
 		
 		case "Tieyasal_TeleportArrive":
-			Dolly_TeleportConsequences(); // последствия
+			Dolly_TeleportConsequences(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetActorType(pchar);
 			LAi_ActorAnimation(pchar, "Ground_sitting", "LSC_TeleportArrive_1", 3.0);
 			pchar.questTemp.Tieyasal.Teleport = "true";
-			// ставим офицеров, если такие были
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			for(i=1; i<=3; i++)
 			{
 				int idx = GetOfficersIndex(pchar, i);
@@ -7679,14 +7679,14 @@ void QuestComplete(string sQuestName, string qname)
 					if (CheckCharacterItem(sld, "Ultimate_potion"))
 					{
 						sTemp = "";
-						if (sld.sex == "woman") sTemp = "а";
+						if (sld.sex == "woman") sTemp = "пїЅ";
 						RemoveItems(sld, "Ultimate_potion", 1);
 						Log_Info("Boarding officer "+GetFullName(sld)+" has used "+sTemp+" a Comanche potion");
 					}
 					else
 					{
 						sTemp = "";
-						if (sld.sex == "woman") sTemp = "ла";
+						if (sld.sex == "woman") sTemp = "пїЅпїЅ";
 						LAi_KillCharacter(sld);
 						Log_Info("Boarding officer "+GetFullName(sld)+" died because of an absence of a Comanche potion");
 					}
@@ -7749,7 +7749,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 		case "Tieyasal_ItzaWarriorDie":
-			pchar.quest.Tieyasal_mushketfire.over = "yes"; //снять прерывание
+			pchar.quest.Tieyasal_mushketfire.over = "yes"; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);
 			DoQuestCheckDelay("hide_weapon", 0.8);
 			sld = characterFromId("Urakan");
@@ -7764,7 +7764,7 @@ void QuestComplete(string sQuestName, string qname)
 				sld = characterFromId("Itza_3Group_"+i);
 				ChangeCharacterAddressGroup(sld, "none", "", "");
 			}
-			// закрываем все храмовые локаторы кроме низа большого храма, чтобы не лез раньше времени
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for(i=1; i<=37; i++)
 			{
 				LocatorReloadEnterDisable("Tenochtitlan", "reloadTemple"+i, true);
@@ -7783,7 +7783,7 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_SetActorType(sld);
 			}
 			LAi_group_Delete("TMP_FRIEND");
-			// ставим ица-горожан
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for(i=1; i<=12; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("Itza_ctz_"+i, "itza_"+(rand(7)+1), "man", "man", 30, PIRATE, -1, false, "native"));
@@ -7822,13 +7822,13 @@ void QuestComplete(string sQuestName, string qname)
 		case "Tieyasal_RunSecondFloor":
 			PlaySound("Ambient\Teno_inside\big_ring.wav");
 			pchar.GenQuest.CantRun = true;
-			CheckAndSetOverloadMode(GetMainCharacter()); // бег запрещаем
+			CheckAndSetOverloadMode(GetMainCharacter()); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mishelle");
 			LAi_SetFightMode(sld, false);
 			LAi_SetActorType(sld);
 			LAi_ActorRunToLocation(sld, "quest", "detector1", "none", "", "", "", 20);
 			DoQuestCheckDelay("Tieyasal_RunSecondFloor1", 2.0);
-			// прерывание
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Tieyasal_2floor.win_condition.l1 = "locator";
 			pchar.quest.Tieyasal_2floor.win_condition.l1.location = "Temple_great";
 			pchar.quest.Tieyasal_2floor.win_condition.l1.locator_group = "quest";
@@ -7844,9 +7844,9 @@ void QuestComplete(string sQuestName, string qname)
 		
 		case "Tieyasal_SecondFloorAttack":
 			DeleteAttribute(pchar, "GenQuest.CantRun");
-			CheckAndSetOverloadMode(GetMainCharacter()); // бег разрешаем
-			DeleteAttribute(pchar, "questTemp.Tieyasal.LockLadder"); // открываем лестницу
-			// ставим клона-мушкетера Мишеля
+			CheckAndSetOverloadMode(GetMainCharacter()); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			DeleteAttribute(pchar, "questTemp.Tieyasal.LockLadder"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = GetCharacter(NPC_GenerateCharacter("Mishelle_mushketer", "Migel_2_mush", "man", "mushketer", 60, PIRATE, -1, false, "quest"));
 			FantomMakeCoolFighter(sld, 60, 100, 100, "", "mushket2x2", "cartridge", 150);
 			LAi_SetHP(sld, 1000+MOD_SKILL_ENEMY_RATE*200, 1000+MOD_SKILL_ENEMY_RATE*200);
@@ -7856,7 +7856,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetImmortal(sld, false);
 			ChangeCharacterAddressGroup(sld, "Temple_great", "quest", "mushketer");
 			sld.MusketerDistance = 0;
-			sld.PoisonResistent = true; // Addon 2016-1 Jason пиратская линейка патч 17/1
+			sld.PoisonResistent = true; // Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 17/1
 			LAi_SetWarriorType(sld);
 			LAi_warrior_SetStay(sld, true);
 			LAi_warrior_DialogEnable(sld, false);
@@ -7866,8 +7866,8 @@ void QuestComplete(string sQuestName, string qname)
 			TakeNItems(sld, "bullet", 50);
 			TakeNItems(sld, "gunpowder", 50);
 			LAi_SetCheckMinHP(sld, 150, true, "Tieyasal_RunThirdFloor");
-			pchar.questTemp.Tieyasal.Shooter = "true"; // устанавливаем защиту
-			// ставим мушкетеров ица
+			pchar.questTemp.Tieyasal.Shooter = "true"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			iRank = 30+MOD_SKILL_ENEMY_RATE*2;
 			for(i=5; i<=6; i++)
 			{
@@ -7879,7 +7879,7 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_warrior_SetStay(sld, true);
 				LAi_warrior_DialogEnable(sld, false);
 			}
-			// ставим воинов ица
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			iTotalTemp = 5+makeint(MOD_SKILL_ENEMY_RATE/3);
 			for(i=1; i<=iTotalTemp; i++)
 			{
@@ -7890,7 +7890,7 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_warrior_SetStay(sld, true);
 				LAi_warrior_DialogEnable(sld, false);
 			}
-			// добавочная группа ица
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			for(i=11; i<=14; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("Warrior_itza_"+i, "itza_"+(i-7), "man", "man", iRank, PIRATE, -1, false, "native"));
@@ -7905,7 +7905,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 		case "Tieyasal_AddingGroupActivate": // 160912
-			pchar.quest.Tieyasal_2floor_add.over = "yes"; //снять прерывание
+			pchar.quest.Tieyasal_2floor_add.over = "yes"; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for(i=11; i<=14; i++)
 			{
 				sld = characterFromId("Warrior_itza_"+i);
@@ -7982,7 +7982,7 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_warrior_SetStay(sld, true);
 				LAi_warrior_DialogEnable(sld, false);
 			}
-			// прерывание
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.Tieyasal_3floor.win_condition.l1 = "locator";
 			pchar.quest.Tieyasal_3floor.win_condition.l1.location = "Temple_great";
 			pchar.quest.Tieyasal_3floor.win_condition.l1.locator_group = "quest";
@@ -7992,7 +7992,7 @@ void QuestComplete(string sQuestName, string qname)
 		
 		case "Tieyasal_TopAddWarrior":
 			PlaySound("interface\abordage_wining.wav");
-			// добавочная группа ица
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			iRank = 32+MOD_SKILL_ENEMY_RATE*2;
 			n = 2+makeint(MOD_SKILL_ENEMY_RATE/5);
 			n = n+10;
@@ -8009,7 +8009,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 		case "Tieyasal_TempleFinalTalk":
-			// деактивируем оставшихся в живых индеев
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			for(i=1; i<=5; i++)
 			{
 				sld = characterFromId("Top_itza_"+i);
@@ -8059,12 +8059,12 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorAnimation(pchar, "Ground_sitting", "", 2.5);
 			DoQuestFunctionDelay("Tieyasal_StandUpInTemple", 2.5);
 			LaunchBlood(pchar, 1.0, true, "fight");
-			// запрещаем сохранение и интерфейсы, снимаем оружие
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			bDisableCharacterMenu = true;
 			InterfaceStates.Buttons.Save.enable = false;
 			RemoveCharacterEquip(pchar, BLADE_ITEM_TYPE);
 			RemoveCharacterEquip(pchar, GUN_ITEM_TYPE);
-			// ставим Мишеля, Канека и Уракана
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mishelle");
 			LAi_ActorGoToLocator(sld, "goto", "stay1", "", -1);
 			sld = characterFromId("Urakan");
@@ -8073,7 +8073,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld = characterFromId("Kanek");
 			ChangeCharacterAddressGroup(sld, "Temple_great", "quest", "detector3");
 			LAi_ActorRunToLocator(sld, "goto", "stay3", "", -1);
-			// убираем офицеров
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			i = Findlocation("Tenochtitlan");
 			DeleteAttribute(&locations[i], "setquestofficers");
         break;
@@ -8241,21 +8241,21 @@ void QuestComplete(string sQuestName, string qname)
 			SetLaunchFrameFormParam("Kukulcan managed to get in the past"+ NewStr() +"You failed to stop him...", "", 0, 10);
 			LaunchFrameForm();
 			DoQuestCheckDelay("Tieyasal_Fail_TeleportContinue_7", 10.0);
-			// меняем обличье Шарля
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			ChangeShowIntarface();
 			pchar.model = "Dragoon_1"; 
 			pchar.model.animation = "man";
 			Characters_RefreshModel(PChar);
 			pchar.FaceId = 555; 
-			pchar.name = "капитан";
-			pchar.lastname = "Гобарт";
+			pchar.name = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
+			pchar.lastname = "пїЅпїЅпїЅпїЅпїЅпїЅ";
         break;
 		
 		case "Tieyasal_Fail_TeleportContinue_7":
 			DoQuestReloadToLocation("Estate", "quest", "hero", "Europe_SharlieFinal");
         break;
 		
-		case "Europe_SharlieFinal": // фэйловый финал
+		case "Europe_SharlieFinal": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);
 			LAi_SetPlayerType(pchar);
 			LAi_SetCurHPMax(pchar);
@@ -8292,7 +8292,7 @@ void QuestComplete(string sQuestName, string qname)
 		
 		case "Europe_SharlieFinal_1":
 			SetMusic("music_MainMenu");
-			pchar.questTemp.NoFast = true; // запрет ускорения
+			pchar.questTemp.NoFast = true; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.questTemp.Europe = true;
 			pchar.questTemp.Tieyasal_FailEnd = true; // patch
 			LAi_SetPlayerType(pchar);
@@ -8364,7 +8364,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("TalkSelf_Quest", 0.1);
         break;
 		
-		case "Final_ReturnToEurope": // финал - во Францию
+		case "Final_ReturnToEurope": // пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			EndQuestMovie();
 			Achievment_SetStat(pchar, 48, 1);
 			pchar.GenQuest.VideoAVI = "Outro_home";
@@ -8372,7 +8372,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("PostVideo_Start", 0.2);
         break;
 		
-		case "Final_StayInCarribean": // финал - остаемся
+		case "Final_StayInCarribean": // пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "questTemp.Tieyasal_final");
 			EndQuestMovie();
 			InterfaceStates.Buttons.Save.enable = true;
@@ -8396,7 +8396,7 @@ void QuestComplete(string sQuestName, string qname)
         break;
 		
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-//Jason---------------------------------------Вождь краснокожих-------------------------------------
+//Jason---------------------------------------пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-------------------------------------
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		case "RedChieftainStay":
 			sld = CharacterFromID("RedChieftain");
@@ -8407,26 +8407,26 @@ void QuestComplete(string sQuestName, string qname)
 		case "RedChieftain_AfterFight":
 			LAi_group_Delete("EnemyFight");
 			DoQuestCheckDelay("hide_weapon", 1.3);
-			InterfaceStates.Buttons.Save.enable = false;//запретить сохраняться
-			DoQuestCheckDelay("RedChieftain_EnterIndian", 20.0);//время на сбор жемчуга с трупа
+			InterfaceStates.Buttons.Save.enable = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			DoQuestCheckDelay("RedChieftain_EnterIndian", 20.0);//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			AddComplexSelfExpToScill(150, 150, 150, 150);
         break;
 		
 		case "RedChieftain_EnterIndian":
 			n = sti(pchar.questTemp.RedChieftain.OurCrew);
-			//считаем живых солдат
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			iTemp = 0;
 			for (i=1; i<=n; i++)
 			{
 				sld = characterFromId("RSOur_crew_"+i);
 				if (LAi_GetCharacterHP(sld) > 0) iTemp++;
 			}
-			if (iTemp != n)//если есть потери - пересчитаем команду на корабле
+			if (iTemp != n)//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				iTemp = (n-iTemp)*10;
 				SetCrewQuantityOverMax(pchar, sti(PChar.Ship.Crew.Quantity)-iTemp); 
 			}
-			//ставим индейцев по числу живых тартан
+			//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			n = sti(pchar.questTemp.RedChieftain.Tartane);
 			ChangeIndianRelation(n+4.0);
 			for (i=1; i <=n; i++)
@@ -8439,7 +8439,7 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_warrior_DialogEnable(sld, false);
 				LAi_SetImmortal(sld, true);
 			}
-			//ставим вождя
+			//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("RedChieftain");
             LAi_SetActorType(sld);
 			sld.dialog.currentnode = "RedChieftain_pearl";
@@ -8466,10 +8466,10 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 			}
         break;
-//<-- Вождь краснокожих конец	
+//<-- пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ	
 		
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Jason--------------------------------------------------Ложный след----------------------------------------
+//Jason--------------------------------------------------пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ----------------------------------------
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		case "FalseTrace_AfterFight":
 			sld = GetCharacter(NPC_GenerateCharacter("FalseTraceWife", "CatRainer", "woman", "towngirl", 2, sti(pchar.questTemp.FalseTrace.Mation), -1, true, "quest"));
@@ -8485,7 +8485,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 			AddComplexSelfExpToScill(50, 50, 50, 50);
 			AddComplexSeaExpToScill(150, 130, 130, 170, 150, 150, 0);
-			pchar.GenQuest.DontSetCabinOfficer = true; // не пускать офицеров в каюту ГГ
+			pchar.GenQuest.DontSetCabinOfficer = true; // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
         break;
 		
 		case "SetFalseTraceCharToCabin":
@@ -8544,7 +8544,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld.dialog.currentnode = "FalseTrace_wife_25";
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 			AddComplexSelfExpToScill(100, 100, 100, 100);
-			locations[FindLocation(pchar.questTemp.FalseTrace.QuestShore)].DisableEncounters = false; //энкаутеры открыть
+			locations[FindLocation(pchar.questTemp.FalseTrace.QuestShore)].DisableEncounters = false; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         break;
 		
 		case "FalseTrace_BanditsAfterFight":
@@ -8568,16 +8568,16 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_KillCharacter(sld);
 			LAi_SetPlayerType(pchar);
 			chrDisableReloadToLocation = false;
-			LAi_LocationDisableOfficersGen("Mayak7", false);//офицеров пускать
-			locations[FindLocation("Mayak7")].DisableEncounters = false;//энкаунтеры открыть
+			LAi_LocationDisableOfficersGen("Mayak7", false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			locations[FindLocation("Mayak7")].DisableEncounters = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			AddQuestRecord("FalseTrace", "24");
 			ChangeCharacterComplexReputation(pchar, "nobility", -5);
 			OfficersReaction("bad");
         break;
-//<-- Ложный след конец
+//<-- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////		
-//Jason------------------------------------------------регата-------------------------------------------
+//Jason------------------------------------------------пїЅпїЅпїЅпїЅпїЅпїЅ-------------------------------------------
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 		case "RegataCitPR_norm":	
 			for (i=1; i <=9; i++)
@@ -8648,11 +8648,11 @@ void QuestComplete(string sQuestName, string qname)
 			bDisableFastReload = false;
 			LocatorReloadEnterDisable("Bridgetown_town", "reload1_back", false);
 			LocatorReloadEnterDisable("Bridgetown_town", "reload2_back", false);
-			bQuestDisableMapEnter = true;//глобу закрыть
-			//установить радиус доплыть до на остров, чтобы ручками порулил корабликом
+			bQuestDisableMapEnter = true;//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			n = FindIsland("Barbados");
 			Islands[n].EffectRadius = 500;
-			//запоминаем и снижаем скорость и маневренность
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			shTo = &RealShips[sti(Pchar.Ship.Type)];
 			pchar.questTemp.Regata.Shipspeed = shTo.SpeedRate;
 			pchar.questTemp.Regata.Shipturnrate = shTo.TurnRate;
@@ -8667,7 +8667,7 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 		
 		case "RegataShoreAfterBattle":	
-			//вертаем корабль и остров в норму
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			shTo = &RealShips[sti(Pchar.Ship.Type)];
 			shTo.SpeedRate = (stf(pchar.questTemp.Regata.Shipspeed));
 			shTo.TurnRate = (stf(pchar.questTemp.Regata.Shipturnrate));
@@ -8696,10 +8696,10 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_ActorDialog(sld, pchar, "", -1, 0);
 			}
 		break;
-//<-- Регата конец
+//<-- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////		
-//Jason-------------------------------------------------Португалец---------------------------------------
+//Jason-------------------------------------------------пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ---------------------------------------
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 		case "PortugalOutResidence":	
 			pchar.questTemp.Portugal = "Findcloves";
@@ -8736,7 +8736,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("hide_weapon", 1.3);
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);
 			chrDisableReloadToLocation = false;
-			LAi_LocationDisableOfficersGen("LeFransua_tavern", false);//офицеров пускать
+			LAi_LocationDisableOfficersGen("LeFransua_tavern", false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LocatorReloadEnterDisable("LeFransua_tavern", "reload2_back", false);
 			pchar.quest.Portugal_Franz.win_condition.l1 = "location";
 			pchar.quest.Portugal_Franz.win_condition.l1.location = "LeFransua_tavern_upstairs";
@@ -8807,7 +8807,7 @@ void QuestComplete(string sQuestName, string qname)
 		case "FindPortugalGems":
 			SetLaunchFrameFormParam("Two hours passed...", "GivePortugalGems", 0, 4);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 2, 10); //крутим время
+			WaitDate("", 0, 0, 0, 2, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 		break;
 		
@@ -8822,7 +8822,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.Portugal_Terks.win_condition.l1.location = "Terks";
 			pchar.quest.Portugal_Terks.function = "CreatePortugalHollShip";
 			pchar.questTemp.Portugal = "GiveGems"; // 021012
-			AddCharacterExpToSkill(pchar, "Fortune", 500);//везение
+			AddCharacterExpToSkill(pchar, "Fortune", 500);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 		
 		case "VaskezFight":
@@ -8850,10 +8850,10 @@ void QuestComplete(string sQuestName, string qname)
          	ChangeCharacterAddressGroup(sld, "Villemstad_Exittown", "rld", "loc16");
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 		break;
-//<-- Португалец конец
+//<-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Jason ----------------------------------------Цена чахотки--------------------------------------------
+// Jason ----------------------------------------пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ--------------------------------------------
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 		case "Consumption_AfterHouseFight":
 			LAi_group_Delete("EnemyFight");
@@ -8865,8 +8865,8 @@ void QuestComplete(string sQuestName, string qname)
 		case "Conbandit_AfterFight":
 			DoQuestCheckDelay("hide_weapon", 1.3);
 			LAi_group_Delete("EnemyFight");
-			locations[FindLocation("PortSpein_Exittown")].DisableEncounters = false; //энкаутеры открыть
-			LAi_LocationDisableOfficersGen("PortSpein_Exittown", false);//офицеров пускать
+			locations[FindLocation("PortSpein_Exittown")].DisableEncounters = false; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LAi_LocationDisableOfficersGen("PortSpein_Exittown", false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Sergio");
 			if (LAi_GetCharacterHP(sld) > 0)
 			{
@@ -8880,7 +8880,7 @@ void QuestComplete(string sQuestName, string qname)
 				chrDisableReloadToLocation = false;
 				sld = characterFromId("PortSpein_waitress");
 				sld.dialog.filename = "Waitress_dialog.c";
-				sld.dialog.currentnode = "First time";//вертаем ноду официантке
+				sld.dialog.currentnode = "First time";//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				AddQuestRecord("Consumption", "10");
 				CloseQuestHeader("Consumption");
 				DeleteAttribute(pchar, "questTemp.Consumption");
@@ -8890,7 +8890,7 @@ void QuestComplete(string sQuestName, string qname)
 		case "ConJuan_AfterFight_1":
 			Log_Info("The ship is going to blow up in a minutes. You should leave at once!");
 			chrDisableReloadToLocation = false;
-			pchar.GenQuest.ShipSituation.Explosion = ShipSituation_4;//ба-бах!
+			pchar.GenQuest.ShipSituation.Explosion = ShipSituation_4;//пїЅпїЅ-пїЅпїЅпїЅ!
 			pchar.GenQuest.ShipSituation.Explosion.CapId = "ConJuan";
 			AddComplexSelfExpToScill(100, 100, 100, 100);
 			pchar.questTemp.Consumption.Abordage = "true";
@@ -8898,13 +8898,13 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 
 		case "ConJuan_AfterFight_2":
-			pchar.GenQuest.ShipSituation.Explosion = ShipSituation_0;//ба-бах!
+			pchar.GenQuest.ShipSituation.Explosion = ShipSituation_0;//пїЅпїЅ-пїЅпїЅпїЅ!
 			pchar.GenQuest.ShipSituation.Explosion.CapId = "ConJuan";
 			AddComplexSelfExpToScill(150, 150, 150, 150);
 			pchar.questTemp.Consumption.Abordage = "true";
 			ChangeCharacterComplexReputation(pchar, "nobility", 5);
 			ChangeCharacterComplexReputation(pchar, "authority", 3);
-			OfficersReaction("good");//еще раз повысим репутацию
+			OfficersReaction("good");//пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			Log_Info("The ship is going to blow up in a minutes. You should leave at once!");
 		break;
 		
@@ -8913,12 +8913,12 @@ void QuestComplete(string sQuestName, string qname)
 			sld.dialog.currentnode = "Waitress_sex";
 			LAi_SetStayType(sld);
 		break;
-//<-- Цена чахотки конец
+//<-- пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//------------------------------------------------ Калеуче ---------------------------------------------------
+//------------------------------------------------ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ ---------------------------------------------------
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////		
-		case "Caleuche_Video": // ролик
+		case "Caleuche_Video": // пїЅпїЅпїЅпїЅпїЅ
 			PChar.GenQuest.VideoAVI = "BlackPearl";
 			PChar.GenQuest.VideoAfterQuest = "Caleuche_GhostAttack";
 			DoQuestCheckDelay("PostVideo_Start", 0.2);
@@ -8930,14 +8930,14 @@ void QuestComplete(string sQuestName, string qname)
 			SetMusicAlarm("music_storm");
 		break;
 		 
-		case "Caleuche_GhostshipBoardingDeck": // расстановка абордажных групп
+		case "Caleuche_GhostshipBoardingDeck": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			PlaySound("interface\_GTBoard2.wav");
 			PlaySound("interface\abordage_wining.wav");
 			DoQuestFunctionDelay("Terrapin_SetMusic", 1.2);
 			LAi_group_Delete("EnemyFight");
-			bDisableCharacterMenu = true;//лочим F2
-			InterfaceStates.Buttons.Save.enable = false;//запретить сохраняться
-			// делаем расчет сил
+			bDisableCharacterMenu = true;//пїЅпїЅпїЅпїЅпїЅ F2
+			InterfaceStates.Buttons.Save.enable = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			int pCrew = sti(pchar.Ship.Crew.Quantity); 
 			int eRank = 20+MOD_SKILL_ENEMY_RATE;
 			int pRank = makeint(pCrew*30/666);
@@ -8946,7 +8946,7 @@ void QuestComplete(string sQuestName, string qname)
 			if (pScl < 10) pScl = 10;
 			n = 20;
 			if (pCrew < 20) n = pCrew;
-			// наши 
+			// пїЅпїЅпїЅпїЅ 
 			for (i=1; i<=n; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("caleuche_pcrew_"+i, "citiz_"+(rand(9)+31), "man", "man", pRank, FRANCE, 2, true, "soldier"));
@@ -8957,7 +8957,7 @@ void QuestComplete(string sQuestName, string qname)
 				else ChangeCharacterAddressGroup(sld, "Deck_Galeon_Ship", "quest", "quest2");
 				LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			}
-			// враги
+			// пїЅпїЅпїЅпїЅпїЅ
 			for (i=1; i<=20; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("caleuche_ecrew_"+i, "skel"+(rand(3)+1), "man", "man", eRank, PIRATE, -1, true, "soldier"));
@@ -8981,24 +8981,24 @@ void QuestComplete(string sQuestName, string qname)
 			}
 		break;
 		 
-		case "Caleuche_GhostshipSkelDie": // перебили скелетов на палубе
+		case "Caleuche_GhostshipSkelDie": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestCheckDelay("Caleuche_GhostshipCabinReload", 5.0);
 			LAi_SetFightMode(pchar, false);
 			AddComplexSelfExpToScill(100, 100, 100, 100);
 		break;
 		 
-		case "Caleuche_GhostshipCabinReload": // в каюту
+		case "Caleuche_GhostshipCabinReload": // пїЅ пїЅпїЅпїЅпїЅпїЅ
 			SetLaunchFrameFormParam("", "", 0, 4);
 			SetLaunchFrameFormPic("loading\Capdeck_1.tga");
 			LaunchFrameForm();
 			DoQuestCheckDelay("Caleuche_GhostshipCabinReloadGo", 4.0);
 		break;
 		
-		case "Caleuche_GhostshipCabinReloadGo": // в каюту
+		case "Caleuche_GhostshipCabinReloadGo": // пїЅ пїЅпїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("CabineFDM", "rld", "loc0", "Caleuche_GhostshipBoardingCabin");
 		break;
 		
-		case "Caleuche_GhostshipBoardingCabin": // в каюте
+		case "Caleuche_GhostshipBoardingCabin": // пїЅ пїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			sld = characterFromId("Caleuche_seacap");
 			ChangeCharacterAddressGroup(sld, "CabineFDM", "rld", "aloc2");
@@ -9009,27 +9009,27 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Caleuche_GhostshipCapitan", 15.0);
 		break;
 		 
-		case "Caleuche_GhostshipCapitan": // разговор
+		case "Caleuche_GhostshipCapitan": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetFightMode(pchar, false);
 			sld = characterFromId("Caleuche_seacap");
 			LAi_SetActorType(sld);
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 		break;
 		 
-		case "Caleuche_GhostshipGetOut": // вырубили ГГ
+		case "Caleuche_GhostshipGetOut": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
 			PlaySound("People Fight\Death_NPC_05.wav");
 			SetLaunchFrameFormParam("You have fainted of wounds...", "", 0, 5);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 1, 5, 10); //крутим время
+			WaitDate("", 0, 0, 1, 5, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			DoQuestCheckDelay("Caleuche_ReloadCoast", 5.0);
 			RemoveItems(pchar, "kaleuche_amulet1", 1);
-			locations[FindLocation("shore27")].DisableEncounters = true; //энкаутеры закрыть
+			locations[FindLocation("shore27")].DisableEncounters = true; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 		
-		case "Caleuche_ReloadCoast": // на берег
+		case "Caleuche_ReloadCoast": // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			Group_DeleteGroup("Caleuche_Attack");
-			// вычищаем все шторма и прочее
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=0; i<MAX_ISLANDS;i++)
 			{				
 				if (Islands[i].id == "Dominica")
@@ -9049,28 +9049,28 @@ void QuestComplete(string sQuestName, string qname)
 				}
 			}
 			sld = characterFromId("Caleuche_seacap");
-			sld.lifeday = 0; // убираем ненужного НПС
-			LAi_LocationFightDisable(&Locations[FindLocation("Deck_Galeon_Ship")], true);//запретить драться
+			sld.lifeday = 0; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
+			LAi_LocationFightDisable(&Locations[FindLocation("Deck_Galeon_Ship")], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetImmortal(pchar, false);
-			Island_SetReloadEnableGlobal("Dominica", true);//на остров можно			
+			Island_SetReloadEnableGlobal("Dominica", true);//пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ			
 			bQuestDisableMapEnter = false;
-			bDisableCharacterMenu = false;//разлочим F2
-			InterfaceStates.Buttons.Save.enable = true;//разрешим сохраняться
+			bDisableCharacterMenu = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ F2
+			InterfaceStates.Buttons.Save.enable = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			setCharacterShipLocation(pchar, "Shore27"));
-			setWDMPointXZ("Shore27"); // корабль в бухту
+			setWDMPointXZ("Shore27"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.Ship.Type = GenerateShipExt(SHIP_TARTANE, true, pchar);
 			pchar.Ship.name = "Boat";
-			SetBaseShipData(pchar); // на баркас
+			SetBaseShipData(pchar); // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			NullCharacterGoods(pchar);
 			SetCrewQuantityOverMax(pchar, 12);
 			SetCharacterGoods(pchar, GOOD_FOOD, 20);
 			AddCharacterGoods(pchar, GOOD_MEDICAMENT, 5);
 			AddCharacterGoods(pchar, GOOD_RUM, 3);
 			DoQuestReloadToLocation("Shore27", "goto", "goto1", "");
-			LocatorReloadEnterDisable("Shore27", "boat", true); // в море не пускаем
-			chrDisableReloadToLocation = true;//закрыть локацию
+			LocatorReloadEnterDisable("Shore27", "boat", true); // пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Tuttuat");
-			sld.dialog.currentnode = "Tuttuat_11"; // ноду шаману
+			sld.dialog.currentnode = "Tuttuat_11"; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			if (CheckAttribute(pchar, "questTemp.LSC.Mary_officer") && GetCharacterIndex("Mary") != -1) sld = characterFromId("Mary");
 			else
 			{
@@ -9090,7 +9090,7 @@ void QuestComplete(string sQuestName, string qname)
 			AddQuestRecord("Caleuche", "4");
 		break;
 		 
-		case "Caleuche_BelizTownbandosDie": // прибили бандюка в доме
+		case "Caleuche_BelizTownbandosDie": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 			AddQuestRecord("Caleuche", "11");
 			LAi_LocationDisableOfficersGen("Beliz_ExitTown", true);
 			LAi_LocationDisableOfficersGen("Beliz_Jungle_01", true);
@@ -9103,8 +9103,8 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(50, 50, 50, 50);
 		break;
 		 
-		case "Caleuche_ForestMerchantDie": // перебили конвой купца
-			// собираем бандюков
+		case "Caleuche_ForestMerchantDie": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=2; i<=6; i++)
 			{
 				if (GetCharacterIndex("Beliz_forestbandos_"+i) != -1)
@@ -9116,7 +9116,7 @@ void QuestComplete(string sQuestName, string qname)
 				}
 			}
 			sld = characterFromId("Beliz_forestbandos_1");
-			sld.lifeday = 0; // если будет дополнение - то это убрать
+			sld.lifeday = 0; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetActorType(sld);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			sld.dialog.currentnode = "Beliz_forestbandos_7";
@@ -9124,24 +9124,24 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(80, 80, 80, 80);
 		break;
 		
-		case "Caleuche_HeadBandosEscape": // главнюк почти прибит
+		case "Caleuche_HeadBandosEscape": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Beliz_forestbandos_1");
 			LAi_SetActorType(sld);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			LAi_ActorRunToLocation(sld, "reload", "reload1_back", "Beliz_ExitTown", "rld", "aloc10", "", -1);
 		break;
 		 
-		case "Caleuche_CaveBandosDie": // перебили бандюков в пещере
+		case "Caleuche_CaveBandosDie": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			AddQuestRecord("Caleuche", "14");
 			AddComplexSelfExpToScill(70, 70, 70, 70);
 		break;
 		
-		case "Caleuche_GhostshipGameOver": // калеуче настиг ГГ - геймовер
+		case "Caleuche_GhostshipGameOver": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			GameOver("sea");
 		break;
 		 
-		case "Caleuche_LandLedySkelDie": // прибили скелет хозяйки дома
+		case "Caleuche_LandLedySkelDie": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			SetMusicAlarm("");
 			chrDisableReloadToLocation = false;
@@ -9151,7 +9151,7 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(100, 100, 100, 100);
 		break;
 		
-		case "Caleuche_CubaCaveEntSkelDie": // прибили скелетов у пещеры
+		case "Caleuche_CubaCaveEntSkelDie": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			chrDisableReloadToLocation = false;
 			LocatorReloadEnterDisable("Cuba_CaveEntrance", "reload2_back", true);
@@ -9161,7 +9161,7 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(50, 50, 50, 50);
 		break;
 		 
-		case "Caleuche_CubaGrotSkel1Die": // прибили 1 партию
+		case "Caleuche_CubaGrotSkel1Die": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅпїЅпїЅ
 			iRank = 20+MOD_SKILL_ENEMY_RATE*2;
 			sTemp = "pistol1";
 			if (MOD_SKILL_ENEMY_RATE > 4) sTemp = "pistol5";
@@ -9183,27 +9183,27 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_SetCheck("EnemyFight", "Caleuche_CubaGrotSkel2Die");
 		break;
 		
-		case "Caleuche_CubaGrotSkel2Die": // прибили 2 партию
+		case "Caleuche_CubaGrotSkel2Die": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			LAi_SetActorType(pchar);
 			LAi_ActorGoToLocator(pchar, "goto", "goto2", "Caleuche_CubaGrotLook", -1);
 			CreateLocationParticles("large_smoke", "item", "item2", 0.5, 0, 0, "");
 		break;
 		
-		case "Caleuche_CubaGrotLook": // смотрим на дым
+		case "Caleuche_CubaGrotLook": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ
 			LAi_SetActorType(pchar);
 			LAi_ActorTurnToLocator(pchar, "randitem", "randitem1");
 			DoQuestFunctionDelay("Caleuche_CubaGrotChavinavy", 3.0);
 		break;
 		
-		case "Caleuche_MonsterStandUp": // чавинави
+		case "Caleuche_MonsterStandUp": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("CubaChavinavi");
 			LAi_SetActorType(sld);
 			LAi_ActorAnimation(sld, "Ground_StandUp", "Caleuche_MonsterFight", 3.5);
 			PlaySound("VOICE\Russian\hambit\Chavinavy.wav");
         break;
 		
-		case "Caleuche_MonsterFight": // чавинави атакует
+		case "Caleuche_MonsterFight": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			PlaySound("ambient\horror\horror2.wav");
 			PlaySound("types\skel.wav");
 			LAi_SetPlayerType(Pchar);
@@ -9216,7 +9216,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetFightMode(pchar, true);
         break;
 		
-		case "Caleuche_CubaGrotAfterBattle": // прибили чавинави
+		case "Caleuche_CubaGrotAfterBattle": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			if (GetCharacterIndex("cavehunter") != -1)
 			{
@@ -9236,7 +9236,7 @@ void QuestComplete(string sQuestName, string qname)
 			ChangeCharacterComplexReputation(pchar, "fame", 1);
 		break;
 		
-		case "Caleuche_MerrimanTeleport": // телепортируем Мерримана
+		case "Caleuche_MerrimanTeleport": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Joakim");
 			ChangeCharacterAddressGroup(sld, "Havana_CryptDungeon", "goto", "goto3");
 			LAi_SetImmortal(sld, false);
@@ -9263,7 +9263,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestFunctionDelay("Terrapin_SetMusic", 0.5);
 		break;
 		
-		case "Caleuche_MerrimanRecallMonster": // повторные вызовы чавинави
+		case "Caleuche_MerrimanRecallMonster": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if (CheckAttribute(pchar, "questTemp.Caleuche.Merriman_hide"))
 			{
 				DeleteAttribute(pchar, "questTemp.Caleuche.Merriman_hide");
@@ -9280,20 +9280,20 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestFunctionDelay("Caleuche_MerrimanCallMonster", 5.0);
 		break;
 		
-		case "Caleuche_MerrimanDie": // прибили Мерримана
-			InterfaceStates.Buttons.Save.enable = false;//запретить сохраняться
-			pchar.GenQuest.CannotWait = true;//запрет ожидания
+		case "Caleuche_MerrimanDie": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			InterfaceStates.Buttons.Save.enable = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			pchar.GenQuest.CannotWait = true;//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=1; i<=11; i++)
 			{
 				if (GetCharacterIndex("merriman_skel_"+i) != -1)
 				{
 					sld = characterFromId("merriman_skel_"+i);
-					if (LAi_GetCharacterHP(sld) > 0) LAi_KillCharacter(sld); // прибьем скелетов
+					if (LAi_GetCharacterHP(sld) > 0) LAi_KillCharacter(sld); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				}
 			}
 			sld = characterFromId("MerrimanChavinavi"+iGlobalTemp);
-			if (LAi_GetCharacterHP(sld) > 0) LAi_KillCharacter(sld); // прибьем чавинави
-			// на нефритовый череп
+			if (LAi_GetCharacterHP(sld) > 0) LAi_KillCharacter(sld); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.GenQuest.NoDelBody = true;
 			pchar.quest.Caleuche_find_skull.win_condition.l1 = "item";
 			pchar.quest.Caleuche_find_skull.win_condition.l1.item = "SkullAztec";
@@ -9317,13 +9317,13 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestFunctionDelay("Caleuche_SixLeverTurn", 2.0);
 		break;
 		
-		case "Video_Door": // открывается дверь в альков
+		case "Video_Door": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			PChar.GenQuest.VideoAVI = "Door";
 			PChar.GenQuest.VideoAfterQuest = "Caleuche_LabirintReload";
 			DoQuestCheckDelay("PostVideo_Start", 0.2);
 		break;
 		
-		case "Caleuche_LabirintReload": // перегрузка локации
+		case "Caleuche_LabirintReload": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			n = Findlocation("Labirint_3");
 			DeleteAttribute(&locations[n], "models.always.door");
 			Locations[n].reload.l28.name = "reload30_back";
@@ -9334,7 +9334,7 @@ void QuestComplete(string sQuestName, string qname)
 			iGlobalTemp = 0;
 		break;
 		
-		case "Caleuche_LeverFightOver": // прибили чавинави у рычагов
+		case "Caleuche_LeverFightOver": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			chrDisableReloadToLocation = false;
 			if (sti(pchar.questTemp.Caleuche.LeverType) == 0) pchar.questTemp.Caleuche.LeverL = "true";
@@ -9343,13 +9343,13 @@ void QuestComplete(string sQuestName, string qname)
 			iGlobalTemp++;
 		break;
 		
-		case "Caleuche_TeleportTrapOver": // прибили чавинави у телепорта-ловушки
+		case "Caleuche_TeleportTrapOver": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			DeleteAttribute(pchar, "questTemp.Caleuche.LockTeleport");
 			iGlobalTemp++;
 		break;
 		
-		case "Caleuche_TopChavinaviDie": // прибили чавинави в святилище
+		case "Caleuche_TopChavinaviDie": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			sld = ItemsFromID("SkullAztec");
 			sld.shown = "0";
@@ -9357,12 +9357,12 @@ void QuestComplete(string sQuestName, string qname)
 			sld.useLocator = "button01";
 		break;
 		
-		case "Caleuche_RotatePause": // крутим камеру
+		case "Caleuche_RotatePause": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			locCameraRotateAroundHero(0.0, 2.0, 0.0, 0.005, 0.0, 2.0, 0.0, 1700);
 			DoQuestCheckDelay("Caleuche_RotatePauseOver", 25.0);
 		break;
 		
-		case "Caleuche_RotatePauseOver": // идем к вождю чавинави
+		case "Caleuche_RotatePauseOver": // пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			locCameraResetState();
 			bDisableCharacterMenu = false;
 			InterfaceStates.Buttons.Save.enable = true;
@@ -9374,24 +9374,24 @@ void QuestComplete(string sQuestName, string qname)
 			SetActorDialogAny2Pchar(sld.id, "", 0.0, 0.0);
 		break;
 		
-		case "Caleuche_ChangeShip": // меняем харки калеуче
+		case "Caleuche_ChangeShip": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Kaleuche_khaelroacap");
 			shTo = &RealShips[sti(sld.Ship.Type)];
 			shTo.SpeedRate = 15.2;
 			shTo.TurnRate = 32.0;
 		break;
-	// <-- Калеуче
+	// <-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	
-	// Addon-2016 Jason, французские миниквесты (ФМК)
-	// ФМК-Гваделупа
+	// Addon-2016 Jason, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ)
+	// пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "FMQG_OnBoard": // 
 			sld = characterFromId("FMQG_pass_1");
-			AddPassenger(pchar, sld, false);//добавить пассажира
+			AddPassenger(pchar, sld, false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			SetCharacterRemovable(sld, false);
 			for (i=2; i<=3; i++)
 			{
 				sld = characterFromId("FMQG_pass_"+i);
-				AddPassenger(pchar, sld, false);//добавить пассажира
+				AddPassenger(pchar, sld, false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				SetCharacterRemovable(sld, false);
 			}
 			chrDisableReloadToLocation = false;
@@ -9401,10 +9401,10 @@ void QuestComplete(string sQuestName, string qname)
 			DeleteAttribute(pchar, "questTemp.FMQG.Info");
 		break;
 	
-		case "FMQG_KidnappingAttack": // атака на Пинетта
+		case "FMQG_KidnappingAttack": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("FMQG_pass_1");
 			LAi_RemoveCheckMinHP(sld);
-			LAi_SetCheckMinHP(sld, 10, true, ""); // скрытое бессмертие
+			LAi_SetCheckMinHP(sld, 10, true, ""); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetWarriorType(sld);
 			LAi_group_MoveCharacter(sld, "TmpEnemy");
 			LAi_group_SetRelation("TmpEnemy", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
@@ -9422,7 +9422,7 @@ void QuestComplete(string sQuestName, string qname)
 			SetNationRelation2MainCharacter(ENGLAND, RELATION_ENEMY);
 		break;
 		
-		case "FMQG_KidnappingAfterFight": // после боя
+		case "FMQG_KidnappingAfterFight": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			sld = characterFromId("FMQG_pass_1");
 			sld.Dialog.currentnode = "citizen_23";
@@ -9434,7 +9434,7 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(30, 30, 30, 30);
 		break;
 		
-		case "FMQG_KidnappingFail": // упустил
+		case "FMQG_KidnappingFail": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			sld = characterFromId("FMQG_pass_1");
 			sld.lifeday = 0;
@@ -9452,7 +9452,7 @@ void QuestComplete(string sQuestName, string qname)
 			ChangeCharacterNationReputation(pchar, ENGLAND, -5);
 		break;
 		
-		case "FMQG_OnLighthouse": // на маяке
+		case "FMQG_OnLighthouse": // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			LocatorReloadEnterDisable("Mayak2", "reload1_back", true);
 			sld = characterFromId("FMQG_pass_1");
 			LAi_SetActorType(sld);
@@ -9463,22 +9463,22 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.FMQG_Mayak1.function = "FMQG_KidnappingSucsess";
 		break;
 		
-		case "FMQG_KillersDestroy": // прибил наймитов
+		case "FMQG_KillersDestroy": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			pchar.questTemp.FMQG = "killers";
 			AddQuestRecord("FMQ_Guadeloupe", "26");
 			AddComplexSelfExpToScill(50, 50, 50, 50);
 		break;
 		
-		// ФМК-Мартиника
-		case "FMQM_Looking": // ковыряется в ящике
+		// пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		case "FMQM_Looking": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("FortFrance_shipyarder");
 			LAi_SetActorType(sld);
 			LAi_ActorAnimation(sld, "Barman_idle", "FMQM_Arest", 5.0);
 		break;
 		
-		case "FMQM_Arest": // якобы арест
-			iRank = MOD_SKILL_ENEMY_RATE+7;// Addon 2016-1 Jason пиратская линейка
+		case "FMQM_Arest": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			iRank = MOD_SKILL_ENEMY_RATE+7;// Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			iScl = 25 + 2*sti(pchar.rank);
 			LAi_SetPlayerType(pchar);
 			sld = GetCharacter(NPC_GenerateCharacter("FMQM_officer", "off_fra_2", "man", "man", iRank, FRANCE, -1, false, "soldier"));
@@ -9512,21 +9512,21 @@ void QuestComplete(string sQuestName, string qname)
 			InterfaceStates.Buttons.Save.enable = false;
 		break;
 		
-		case "FMQM_ArestReload": // в город
+		case "FMQM_ArestReload": // пїЅ пїЅпїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			DoQuestReloadToLocation("FortFrance_town", "reload", "reload5", "FMQM_ArestFinal");
 		break;
 		
-		case "FMQM_ArestFinal": // Грегуар Валинье подходит
+		case "FMQM_ArestFinal": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("FMQM_officer");
 			LAi_SetActorType(sld);
 			LAi_ActorGoToLocation(sld, "reload", "reload_jail", "none", "", "", "", 10);
 			sld = characterFromId("FortFrance_shipyarder");
 			LAi_SetActorType(sld);
 			LAi_ActorGoToLocation(sld, "reload", "reload_jail", "none", "", "", "", 10);
-			LocatorReloadEnterDisable("FortFrance_town", "reload5_back", true); // запираем верфь
+			LocatorReloadEnterDisable("FortFrance_town", "reload5_back", true); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			LAi_LocationFightDisable(&Locations[FindLocation("FortFrance_Shipyard")], false);
-			// гид
+			// пїЅпїЅпїЅ
 			sld = GetCharacter(NPC_GenerateCharacter("Guide_x", "Guide_1", "man", "man", 10, FRANCE, -1, true, "officer"));
 			SetFantomParamFromRank(sld, 10, true);
 			RemoveAllCharacterItems(sld, true);
@@ -9545,7 +9545,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 		break;
 		
-		case "FMQM_InTavern": // в таверне
+		case "FMQM_InTavern": // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(CheckAttribute(pchar, "IsMushketer"))
 			{
 				SetMainCharacterToMushketer("", false);
@@ -9574,13 +9574,13 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.FMQM_ShipyardOpen.function = "FMQM_ShipyardOpen";
 			LocatorReloadEnterDisable("FortFrance_town", "reload1_back", true);
 			LocatorReloadEnterDisable("FortFrance_town", "reload2_back", true);
-			LocatorReloadEnterDisable("FortFrance_town", "gate_back", true);//закрыть выходы из города
+			LocatorReloadEnterDisable("FortFrance_town", "gate_back", true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			WaitDate("",0,0,0,2,5);
 			RecalculateJumpTable();
 			InterfaceStates.Buttons.Save.enable = true;
         break;
 		
-		case "FMQM_HurryToSea": // торопимся в море
+		case "FMQM_HurryToSea": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
             sld = CharacterFromID("Guide_x");
 			LAi_SetActorType(sld);
@@ -9593,17 +9593,17 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.FMQM_hurry.win_condition.l1.location = "Guadeloupe";
 			pchar.quest.FMQM_hurry.function = "FMQM_ArriveGuadeloupe";
 			SetFunctionTimerCondition("FMQM_HurryLate", 0, 0, 5, false);
-			pchar.worldmapencountersoff = "1"; // отключить энкаунтеры
+			pchar.worldmapencountersoff = "1"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 		
-		case "FMQM_ShoreAfterFight": // прибили контру
+		case "FMQM_ShoreAfterFight": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			LAi_SetFightMode(pchar, false);
-			LAi_LocationFightDisable(&Locations[FindLocation("Shore28")], true);//запретить драться
+			LAi_LocationFightDisable(&Locations[FindLocation("Shore28")], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestCheckDelay("FMQM_ShoreSetOfficer", 8.0);
 		break;
 		
-		case "FMQM_ShoreSetOfficer": // явился француз
+		case "FMQM_ShoreSetOfficer": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.questTemp.FMQ.Attack = true;
 			iRank = MOD_SKILL_ENEMY_RATE+6;
 			iScl = 25 + 2*sti(pchar.rank);
@@ -9658,7 +9658,7 @@ void QuestComplete(string sQuestName, string qname)
 			}
 		break;
 		
-		case "FMQM_AfterBattleExit": // прибили кодлу француза
+		case "FMQM_AfterBattleExit": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			chrDisableReloadToLocation = false;
 			AddQuestRecord("FMQ_Martinique", "20");
@@ -9667,11 +9667,11 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.FMQM_seabattle.function = "FMQM_SeaBattleTartane";
 		break;
 		
-		// ФМК-Сент-Кристофер
-		case "FMQN_SailMaarten": // англичане на борт
+		// пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		case "FMQN_SailMaarten": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			sld = CharacterFromID("FMQN_seafox_1");
-			AddPassenger(pchar, sld, false);//добавить пассажира
+			AddPassenger(pchar, sld, false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			SetCharacterRemovable(sld, false);
 			pchar.quest.FMQN_sailing.win_condition.l1 = "location";
 			pchar.quest.FMQN_sailing.win_condition.l1.location = "Shore40";
@@ -9691,7 +9691,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld.QuestlockWeather = "23 Hour";
 		break;
 		
-		case "FMQN_HollandBattleRun": // ставим голландский отряд за городом
+		case "FMQN_HollandBattleRun": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE;
 			iScl = 30 + 2*sti(pchar.rank);
 			sld = GetCharacter(NPC_GenerateCharacter("FMQN_holland_0", "off_hol_5", "man", "man", iRank+5, HOLLAND, -1, false, "soldier"));
@@ -9743,7 +9743,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.FMQN_holl_cave.function = "FMQN_HollandBattlePlan";
 		break;
 		
-		case "FMQN_HollandBattlePosition": // голландцы - к колодцу
+		case "FMQN_HollandBattlePosition": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=0; i<=7; i++)
 			{
 				sld = CharacterFromID("FMQN_holland_"+i);
@@ -9762,7 +9762,7 @@ void QuestComplete(string sQuestName, string qname)
 			}
 		break;
 		
-		case "FMQN_HollandBattleToCave": // в пещеру
+		case "FMQN_HollandBattleToCave": // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LocatorReloadEnterDisable("Marigo_jungle_01", "reload3_back", false);
 			sld = CharacterFromID("FMQN_seafox_1");
 			sld.Dialog.currentnode = "seafox_20";
@@ -9770,7 +9770,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld.talker = 9;
 		break;
 		
-		case "FMQN_HollandBattleFight": // бой в пещере - начало
+		case "FMQN_HollandBattleFight": // пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ
 			bDisableCharacterMenu = true;
 			pchar.GenQuest.FrameLockEsc = true;
 			LAi_LocationFightDisable(&Locations[FindLocation("Marigo_Cave")], false);
@@ -9789,7 +9789,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("FMQN_HollandBattleFightAdd", 30.0);
 		break;
 		
-		case "FMQN_HollandBattleFightAdd": // голландцы спешат на помощь
+		case "FMQN_HollandBattleFightAdd": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			bDisableCharacterMenu = false;
 			DeleteAttribute(pchar, "GenQuest.FrameLockEsc");
 			for (i=0; i<=7; i++)
@@ -9799,13 +9799,13 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_SetWarriorType(sld);
 				LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 				if (i == 6 || i == 7) ChangeCharacterAddressGroup(sld, "Marigo_Cave", "reload", "reload1");
-				else Log_TestInfo(i+"-й солдат ждет");
+				else Log_TestInfo(i+"-пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ");
 			}
 			DoQuestFunctionDelay("FMQN_HollandBattleAdding", 1.5);
 			iTotalTemp = 0;
 		break;
 		
-		case "FMQN_HollandBattleAdding2": // китайская рекурсия
+		case "FMQN_HollandBattleAdding2": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("FMQN_holland_"+iTotalTemp);
 			ChangeCharacterAddressGroup(sld, "Marigo_Cave", "reload", "reload2");
 			iTotalTemp++;
@@ -9813,7 +9813,7 @@ void QuestComplete(string sQuestName, string qname)
 			else DoQuestFunctionDelay("FMQN_HollandBattleAdding", 10.0);
 		break;
 		
-		case "FMQN_HollandBattleAfterFight": // после боя
+		case "FMQN_HollandBattleAfterFight": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			sld = CharacterFromID("FMQN_holland_0");
 			sld.Dialog.currentnode = "hol_officer_5";
@@ -9821,7 +9821,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 		break;
 		
-		case "FMQN_HollandBattleRest": // в город возвращаемся
+		case "FMQN_HollandBattleRest": // пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			sld = CharacterFromID("FMQN_holland_0");
 			LAi_CharacterDisableDialog(sld);
@@ -9831,7 +9831,7 @@ void QuestComplete(string sQuestName, string qname)
 				if (GetCharacterIndex("FMQN_holland_"+i) != -1)
 				{
 					sld = CharacterFromID("FMQN_holland_"+i);
-					sld.lifeday = 0; // Addon 2016-1 Jason пиратская линейка
+					sld.lifeday = 0; // Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				}
 			}
 			pchar.quest.FMQN_hol_complete.win_condition.l1 = "Timer";
@@ -9847,17 +9847,17 @@ void QuestComplete(string sQuestName, string qname)
 			AddQuestRecord("FMQ_Nevis", "16");
 		break;
 		
-		case "FMQN_GetRumoursDay": // узнали днем
+		case "FMQN_GetRumoursDay": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			AddQuestRecord("FMQ_Nevis", "7");
 		break;
 		
-		case "FMQN_GetRumoursNight": // узнали ночью
+		case "FMQN_GetRumoursNight": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			DoQuestCheckDelay("sleep_in_tavern", 1.0);
 			TavernWaitDate("wait_day");
 			AddQuestRecord("FMQ_Nevis", "7");
 		break;
 		
-		case "FMQN_EnglandSnake": // скрытное проникновение
+		case "FMQN_EnglandSnake": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			SetNationRelation2MainCharacter(HOLLAND, RELATION_ENEMY);
 			chrDisableReloadToLocation = true;
 			pchar.GenQuest.CannotWait = true;
@@ -9873,7 +9873,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.FMQN_fail3.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 1);
 			pchar.quest.FMQN_fail3.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 1);
 			pchar.quest.FMQN_fail3.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
-			pchar.quest.FMQN_fail3.function = "FMQN_EnglandBattleFail"; // 4 часа на ходьбу к тюрьме и назад
+			pchar.quest.FMQN_fail3.function = "FMQN_EnglandBattleFail"; // 4 пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.FMQN_jail.win_condition.l1 = "locator";
 			pchar.quest.FMQN_jail.win_condition.l1.location = "Marigo_town";
 			pchar.quest.FMQN_jail.win_condition.l1.locator_group = "reload";
@@ -9886,17 +9886,17 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.questTemp.FMQN = "way_eng_6";
 		break;
 		
-		case "FMQN_EnglandInJail": // зашли в тюрьму
+		case "FMQN_EnglandInJail": // пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			SetNationRelation2MainCharacter(HOLLAND, RELATION_NEUTRAL);
 			DoQuestCheckDelay("FMQN_EnglandOutJail", 45.0);
 		break;
 		
-		case "FMQN_EnglandJailTurn": // поворот ГГ
+		case "FMQN_EnglandJailTurn": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
 			LAi_SetActorType(pchar);
 			LAi_ActorTurnToLocator(pchar, "reload", "reload_jail");
 		break;
 		
-		case "FMQN_EnglandOutJail": // вышли из тюрьмы
+		case "FMQN_EnglandOutJail": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			for (i=1; i<=5; i++)
 			{
@@ -9922,7 +9922,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.questTemp.FMQN = "way_eng_7";
 		break;
 		
-		case "FMQN_EnglandRunToJungle": // уходим в джунгли
+		case "FMQN_EnglandRunToJungle": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			SetNationRelation2MainCharacter(HOLLAND, RELATION_ENEMY);
 			for (i=1; i<=5; i++)
 			{
@@ -9937,7 +9937,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.FMQN_jail1.function = "FMQN_EnglandReloadJungle";
 		break;
 		
-		case "FMQN_EnglandEscape": // за воротами
+		case "FMQN_EnglandEscape": // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.FMQN_fail3.over = "yes";
 			pchar.quest.FMQN_Alarm.over = "yes";
 			SetNationRelation2MainCharacter(HOLLAND, RELATION_NEUTRAL);
@@ -9963,7 +9963,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.questTemp.FMQN = "way_eng_8";
 		break;
 		
-		case "FMQN_EnglandRunToShore": // идем к бухте
+		case "FMQN_EnglandRunToShore": // пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			for (i=1; i<=5; i++)
 			{
 				sld = CharacterFromID("FMQN_seafox_"+i);
@@ -9982,10 +9982,10 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.FMQN_ShoreAttack.win_condition.l1.location = "shore40";
 			pchar.quest.FMQN_ShoreAttack.function = "FMQN_EnglandInShoreAttack";
 			AddQuestRecord("FMQ_Nevis", "25");
-			Group_DeleteGroup("FMQN_shipgroup"); // удаляем Зеепард
+			Group_DeleteGroup("FMQN_shipgroup"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 		
-		case "FMQN_AfterShoreAttack": // после боя в бухте
+		case "FMQN_AfterShoreAttack": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			AddQuestRecord("FMQ_Nevis", "26");
 			LAi_group_Delete("EnemyFight");
 			chrDisableReloadToLocation = false;
@@ -9995,14 +9995,14 @@ void QuestComplete(string sQuestName, string qname)
 				sld = CharacterFromID("FMQN_prisoner_"+i);
 				LAi_SetActorType(sld);
 				LAi_ActorFollow(sld, pchar, "", -1);
-				AddPassenger(pchar, sld, false);//добавить пассажира
+				AddPassenger(pchar, sld, false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				SetCharacterRemovable(sld, false);
 			}
 			sld = CharacterFromID("FMQN_seafox_1");
 			if (LAi_GetCharacterHP(sld) > 0)
 			{
 				pchar.questTemp.FMQN = "caspar_alive";
-				AddPassenger(pchar, sld, false);//добавить пассажира
+				AddPassenger(pchar, sld, false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				SetCharacterRemovable(sld, false);
 			}
 			else pchar.questTemp.FMQN = "caspar_dead";
@@ -10016,11 +10016,11 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.FMQN_sea_attack.function = "FMQN_EnglandSeaAttack";
 		break;
 		
-		// --> ФМК-Тортуга
-		case "FMQT_PirateInTavern": // пирата с ключом - в таверну
+		// --> пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		case "FMQT_PirateInTavern": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			iRank = MOD_SKILL_ENEMY_RATE+sti(pchar.rank);
-			iScl = 15 + 2*sti(pchar.rank);// Addon 2016-1 Jason пиратская линейка
+			iScl = 15 + 2*sti(pchar.rank);// Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = GetCharacter(NPC_GenerateCharacter("FMQT_pirate", "quest_pirat_2", "man", "man", iRank, FRANCE, 1, false, "soldier"));
 			FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_04", "pistol1", "bullet", iScl*2);
 			sld.Dialog.Filename = "Quest\LineMiniQuests\FMQ_Tortuga.c";
@@ -10088,9 +10088,9 @@ void QuestComplete(string sQuestName, string qname)
 			CloseQuestHeader("FMQ_Tortuga");
 		break;
 		
-		// --> ФМК-Порт Пренс
-		case "FMQP_InRoom": // ставим дворянчика и двух балбесов
-			iRank = MOD_SKILL_ENEMY_RATE+sti(pchar.rank)-2;// Addon 2016-1 Jason пиратская линейка
+		// --> пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+		case "FMQP_InRoom": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			iRank = MOD_SKILL_ENEMY_RATE+sti(pchar.rank)-2;// Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			iScl = 20 + 2*sti(pchar.rank);
 			LAi_group_Delete("EnemyFight");
 			sld = GetCharacter(NPC_GenerateCharacter("FMQP_noble", "Spain_Major", "man", "man", 15, SPAIN, -1, false, "soldier"));
@@ -10187,7 +10187,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetPlayerType(pchar);
 			sld = CharacterFromID("FMQP_noble");
 			ChangeCharacterAddressGroup(sld, "none", "", "");
-			AddPassenger(pchar, sld, false);//добавить пассажира
+			AddPassenger(pchar, sld, false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			SetCharacterRemovable(sld, false);
 			SetFunctionTimerCondition("FMQP_PortobelloTimeOver", 0, 0, 20, false); 
 			pchar.questTemp.FMQP = "sail";
@@ -10275,8 +10275,8 @@ void QuestComplete(string sQuestName, string qname)
 			CloseQuestHeader("FMQ_Portpax");
 		break;
 		
-		// --> ФМК-Последний урок
-		case "FMQL_FirstBattleEnd": // перебили 1 партию индеев
+		// --> пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+		case "FMQL_FirstBattleEnd": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Guide_y");
 			if (LAi_GetCharacterHP(sld) <= 0)
 			{
@@ -10290,7 +10290,7 @@ void QuestComplete(string sQuestName, string qname)
 			}
 		break;
 		
-		case "FMQL_SecondBattleEnd": // перебили 2 партию индеев
+		case "FMQL_SecondBattleEnd": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			InterfaceStates.Buttons.Save.enable = true;
 			sld = CharacterFromID("Guide_y");
 			if (LAi_GetCharacterHP(sld) <= 0)
@@ -10310,7 +10310,7 @@ void QuestComplete(string sQuestName, string qname)
 			chrDisableReloadToLocation = false;
 			LocatorReloadEnterDisable("shore18", "boat", false);
 			DeleteAttribute(pchar, "GenQuest.CannotWait");
-			bQuestDisableMapEnter = false;//открыть карту
+			bQuestDisableMapEnter = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
 			if (pchar.questTemp.FMQL == "shore") AddQuestRecord("FMQ_Lesson", "3");
 			else 
@@ -10322,16 +10322,16 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.questTemp.FMQL = "fail";
 		break;
 		
-		case "FMQL_AfterCaribAttack": // после боя в джунглях
+		case "FMQL_AfterCaribAttack": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			sld = CharacterFromID("Guide_y");
-			if (LAi_GetCharacterHP(sld) <= 0) // гид дал дуба
+			if (LAi_GetCharacterHP(sld) <= 0) // пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			{
 				DoQuestCheckDelay("FMQL_JungleExit", 0.5);
 			}
 			else
 			{
-				// считаем выживших вояк
+				// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 				iTotalTemp = 0;
 				for (i=1; i<=10; i++)
 				{
@@ -10344,7 +10344,7 @@ void QuestComplete(string sQuestName, string qname)
 				sld = CharacterFromID("Guide_y");
 				if (iTotalTemp < 3)
 				{
-					sld.dialog.currentnode = "greguar_11"; // проиграли
+					sld.dialog.currentnode = "greguar_11"; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					pchar.questTemp.FMQL = "poor";
 				}
 				else sld.dialog.currentnode = "greguar_13";
@@ -10353,7 +10353,7 @@ void QuestComplete(string sQuestName, string qname)
 			}
 		break;
 		
-		case "FMQL_RunToGrabbing": // бегут типа в деревню
+		case "FMQL_RunToGrabbing": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Guide_y");
 			LAi_SetActorType(sld);
 			LAi_ActorRunToLocation(sld, "quest", "quest1", "none", "", "", "", 5.0);
@@ -10389,21 +10389,21 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.GenQuest.FrameLockEsc = true;
 			SetLaunchFrameFormParam("Several hours later..."+ NewStr() +"The goods were delivered to the shore", "FMQL_GrabbingFinish", 0, 5);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 5, 10); //крутим время
+			WaitDate("", 0, 0, 0, 5, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 		break;
 		
 		case "FMQL_GrabbingFinish": // 
 			DeleteAttribute(pchar, "GenQuest.FrameLockEsc");
 			DoQuestReloadToLocation("shore18", "reload", "reload1", "FMQL_BattleAgainstNations");
-			// укладываем товары
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			int iSanl, iSilk, iRope, iOil;
-			iSanl = iTotalTemp*(4+drand(MOD_SKILL_ENEMY_RATE));// Addon 2016-1 Jason пиратская линейка
+			iSanl = iTotalTemp*(4+drand(MOD_SKILL_ENEMY_RATE));// Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			iSilk = iTotalTemp*(5+drand(MOD_SKILL_ENEMY_RATE));
 			iRope = iTotalTemp*(6+drand(MOD_SKILL_ENEMY_RATE));
 			iOil = iTotalTemp*(7+drand(MOD_SKILL_ENEMY_RATE));
 			sld = CharacterFromID("Guide_y");
-			sld.ShipHideImmortal = 500; // непотопляемый корабль // правки прогона 3
+			sld.ShipHideImmortal = 500; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 3
 			SetCharacterGoods(sld, GOOD_SANDAL, GetCargoGoods(sld, GOOD_SANDAL) + iSanl);
 			pchar.questTemp.FMQL.Sanl = iSanl;
 			SetCharacterGoods(sld, GOOD_SHIPSILK, GetCargoGoods(sld, GOOD_SHIPSILK) + iSilk);
@@ -10414,13 +10414,13 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.questTemp.FMQL.Oil = iOil;
 		break;
 		
-		case "FMQL_BattleAgainstNations": // между англами и голландцами
-			iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+2;// Addon 2016-1 Jason пиратская линейка
+		case "FMQL_BattleAgainstNations": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+2;// Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			iScl = 30 + 2*sti(pchar.rank);
-			// наши
+			// пїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Guide_y");
 			ChangeCharacterAddressGroup(sld, "shore18", "goto", "goto1");
-			LAi_SetCheckMinHP(sld, 10, true, ""); // скрытое бессмертие
+			LAi_SetCheckMinHP(sld, 10, true, ""); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetWarriorType(sld);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			if (GetCharacterIndex("FMQL_Prosper") != -1)
@@ -10447,7 +10447,7 @@ void QuestComplete(string sQuestName, string qname)
 					LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 				}
 			}
-			// англы
+			// пїЅпїЅпїЅпїЅпїЅ
 			sld = GetCharacter(NPC_GenerateCharacter("FMQL_england_6", "off_eng_1", "man", "man", iRank+3, ENGLAND, -1, false, "soldier"));
 			FantomMakeCoolFighter(sld, iRank+3, iScl+5, iScl+5, "blade_13", "pistol1", "bullet", iScl*3);
 			ChangeCharacterAddressGroup(sld, "shore18", "goto", "goto8");
@@ -10465,7 +10465,7 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_SetWarriorType(sld);
 				LAi_group_MoveCharacter(sld, "TmpEnemy");
 			}
-			// голландцы
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = GetCharacter(NPC_GenerateCharacter("FMQL_holland_6", "off_hol_1", "man", "man", iRank+3, ENGLAND, -1, false, "soldier"));
 			FantomMakeCoolFighter(sld, iRank+3, iScl+5, iScl+5, "blade_10", "pistol1", "bullet", iScl*3);
 			ChangeCharacterAddressGroup(sld, "shore18", "goto", "goto7");
@@ -10503,11 +10503,11 @@ void QuestComplete(string sQuestName, string qname)
 			if (CheckAttribute(pchar, "questTemp.FMQL.EngDestroy")) DoQuestCheckDelay("FMQL_CoastClear", 1.0);
 		break;
 		
-		case "FMQL_CoastClear": // всех перебили
+		case "FMQL_CoastClear": // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			LAi_group_Delete("TmpEnemy");
 			chrDisableReloadToLocation = false;
-			bQuestDisableMapEnter = false;//открыть карту
+			bQuestDisableMapEnter = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
 			DeleteAttribute(pchar, "GenQuest.CannotWait");
 			LocatorReloadEnterDisable("shore18", "boat", false);
@@ -10515,16 +10515,16 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_RemoveCheckMinHP(sld);
 			LAi_SetImmortal(sld, false);
 			SetCharacterRemovable(sld, false);
-			sld.CompanionEnemyEnable = false; //всегда друзья
+			sld.CompanionEnemyEnable = false; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			SetCompanionIndex(pchar, -1, sti(sld.index));
 			sld.loyality = MAX_LOYALITY;
-			pchar.quest.FMQL_shipfail_1.win_condition.l1 = "NPC_Death";//прерывание на потопление 
+			pchar.quest.FMQL_shipfail_1.win_condition.l1 = "NPC_Death";//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
 			pchar.quest.FMQL_shipfail_1.win_condition.l1.character = "Guide_y";
 			pchar.quest.FMQL_shipfail_1.function = "FMQL_ShipFailReturn";
 			if (GetCharacterIndex("FMQL_Prosper") != -1)
 			{
 				sld = CharacterFromID("FMQL_Prosper");
-				AddPassenger(pchar, sld, false);//добавить пассажира
+				AddPassenger(pchar, sld, false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				SetCharacterRemovable(sld, false);
 			}
 			for (i=1; i<=2; i++)
@@ -10551,30 +10551,30 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.FMQL_return.function = "FMQL_ReturnMartinique";
 			SetFunctionTimerCondition("FMQL_ReturnTimeOver", 0, 0, 10, false);
 			AddComplexSelfExpToScill(60, 60, 60, 60);
-			AddCharacterExpToSkill(pchar, "Leadership", 200);// Addon 2016-1 Jason пиратская линейка
+			AddCharacterExpToSkill(pchar, "Leadership", 200);// Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			AddCharacterExpToSkill(pchar, "Fortune", 150);
 		break;
 		
-		case "FMQL_LookOnGuards": // смотрим на гарда
+		case "FMQL_LookOnGuards": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			LAi_SetActorType(pchar);
 			LAi_ActorTurnToCharacter(pchar, characterFromID("FMQL_guard_1"));
 			DoQuestCheckDelay("FMQL_LookOnJohnny", 2.0);
 		break;
 		
-		case "FMQL_LookOnJohnny": // смотрим на Джонни
+		case "FMQL_LookOnJohnny": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetActorType(pchar);
 			LAi_ActorTurnToCharacter(pchar, characterFromID("FMQL_Johnny"));
 			DoQuestCheckDelay("FMQL_JohnnyFire", 2.0);
 		break;
 		
-		case "FMQL_JohnnyFire": // Джонни стреляет в контру
+		case "FMQL_JohnnyFire": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("FMQL_Johnny");
 			LAi_SetActorType(sld);
 			LAi_ActorAnimation(sld, "shot", "FMQL_KillSmugglers", 1.0);
 			LAi_SetPlayerType(pchar);
 		break;
 		
-		case "FMQL_KillSmugglers": // прибили контриков
+		case "FMQL_KillSmugglers": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("FMQL_contra_2");
 			LaunchBlastGrenade(sld);
 			for (i=1; i<=3; i++)
@@ -10588,7 +10588,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialogDelay(sld, pchar, "", 2.0);
 		break;
 		
-		case "FMQL_PeaceFinal": // разошлись миром
+		case "FMQL_PeaceFinal": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Guide_y");
 			sld.lifeday = 0;
 			LAi_SetActorType(sld);
@@ -10609,14 +10609,14 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("FMQL_ClearBeach", 11.0);
 		break;
 		
-		case "FMQL_ClearBeach": // чистка квеста
+		case "FMQL_ClearBeach": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			DeleteAttribute(pchar, "GenQuest.CannotWait");
 			LAi_LocationFightDisable(&Locations[FindLocation("Shore38")], false);
 			LAi_LocationDisableOfficersGen("Shore38", false);
 			locations[FindLocation("Shore38")].DisableEncounters = false; // may-16
 			RemoveGeometryFromLocation("Shore28", "smg");
-			bQuestDisableMapEnter = false;//открыть карту
+			bQuestDisableMapEnter = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
 			AddQuestRecord("FMQ_Lesson", "8");
 			CloseQuestHeader("FMQ_Lesson");
@@ -10626,10 +10626,10 @@ void QuestComplete(string sQuestName, string qname)
 			AddCharacterExpToSkill(pchar, "Fortune", 300);
 		break;
 		
-		// Addon 2016-1 Jason пиратская линейка - это отключаю
-		case "FMQL_BattleOnBeach": // решили повоевать
+		// Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		case "FMQL_BattleOnBeach": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestFunctionDelay("Terrapin_SetMusic", 0.2);
-			InterfaceStates.Buttons.Save.enable = false;//запретить сохраняться
+			InterfaceStates.Buttons.Save.enable = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_LocationFightDisable(&Locations[FindLocation("Shore38")], false);
 			LAi_group_Delete("EnemyFight");
 			sld = CharacterFromID("Guide_y");
@@ -10665,7 +10665,7 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 		
 		case "FMQL_JohnnyChangePosition": // may-16
-			if (pchar.questTemp.FMQL == "end") break; // патч 17/1
+			if (pchar.questTemp.FMQL == "end") break; // пїЅпїЅпїЅпїЅ 17/1
 			sld = CharacterFromID("FMQL_Johnny");
 			sld.MusketerDistance = 20;
 			DoQuestCheckDelay("FMQL_JohnnyChangePosition1", 3.0);
@@ -10677,7 +10677,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("FMQL_JohnnyChangePosition", 25.0);
 		break;
 		
-		case "FMQL_BattleOnBeachHelp": // прибежали Проспер и пиратус
+		case "FMQL_BattleOnBeachHelp": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("FMQL_Prosper");
 			sld.Dialog.currentnode = "prosper_11";
 			LAi_SetCheckMinHP(sld, 10, true, "FMQL_ProsperDead");
@@ -10714,8 +10714,8 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 		break;
 		
-		case "FMQL_AfterBattleOnBeach": // закончили бой с кодлой Валинье
-			InterfaceStates.Buttons.Save.enable = true; // разрешим сохраняться
+		case "FMQL_AfterBattleOnBeach": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			InterfaceStates.Buttons.Save.enable = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			RemoveGeometryFromLocation("Shore38", "smg");
 			LAi_group_Delete("EnemyFight");
 			SetCharacterGoods(pchar, GOOD_SANDAL, GetCargoGoods(sld, GOOD_SANDAL) + sti(pchar.questTemp.FMQL.Sanl));
@@ -10726,13 +10726,13 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_LocationDisableOfficersGen("Shore38", false);
 			locations[FindLocation("Shore38")].DisableEncounters = false;
 			RemoveGeometryFromLocation("Shore28", "smg");
-			bQuestDisableMapEnter = false;//открыть карту
+			bQuestDisableMapEnter = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
 			if (CheckAttribute(pchar, "questTemp.FMQL.Cpy"))
 			{
 				DeleteAttribute(pchar, "GenQuest.FrameLockEsc");
 				DeleteAttribute(pchar, "questTemp.FMQL.Cpy");
-				if (!CheckAttribute(pchar, "questTemp.FMQL.PirateDead")) // пират жив
+				if (!CheckAttribute(pchar, "questTemp.FMQL.PirateDead")) // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 				{
 					sld = CharacterFromID("FMQT_mercen");
 					sld.dialog.FileName = "Quest\LineMiniQuests\FMQ_Lesson.c";
@@ -10742,7 +10742,7 @@ void QuestComplete(string sQuestName, string qname)
 				}
 				else
 				{
-					if (!CheckAttribute(pchar, "questTemp.FMQL.ProsperDead")) // Проспер жив
+					if (!CheckAttribute(pchar, "questTemp.FMQL.ProsperDead")) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 					{
 						sld = CharacterFromID("FMQL_Prosper");
 						sld.Dialog.currentnode = "prosper_11";
@@ -10750,7 +10750,7 @@ void QuestComplete(string sQuestName, string qname)
 						LAi_SetActorType(sld);
 						LAi_ActorDialog(sld, pchar, "", -1, 0); 
 					}
-					else // никого не осталось
+					else // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					{
 						if (sti(pchar.money) >= 20000) DoQuestFunctionDelay("FMQL_MoneyForSelina", 0.5);
 						else
@@ -10802,22 +10802,22 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 		
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/// Addon 2016-1 Jason Пиратская линейка
+	/// Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// эпизод 2
-		case "Mtraxx_SilkWrongTalk": // неверный вариант диалога с приемщиками шелка
+		// пїЅпїЅпїЅпїЅпїЅпїЅ 2
+		case "Mtraxx_SilkWrongTalk": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			AddQuestRecord("Roger_2", "14");
 			DeleteAttribute(pchar, "questTemp.Mtraxx.Silkfail");
 			Mtraxx_TerraxReset(2);
 		break;
 		
-		// эпизод 3
-		case "Mtraxx_PlantChestReady": // подготовить сундук
+		// пїЅпїЅпїЅпїЅпїЅпїЅ 3
+		case "Mtraxx_PlantChestReady": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestCheckDelay("TalkSelf_Quest", 1.5);
 		break;
 		
-		case "Mtraxx_PlantChestReadyExit": // сундук готов
+		case "Mtraxx_PlantChestReadyExit": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "questTemp.Mtraxx.Chest");
 			pchar.questTemp.Mtraxx.Ammo = "true";
 		break;
@@ -10826,8 +10826,8 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestReloadToLocation("Maracaibo_Plantation", "goto", "goto18", "Mtraxx_PlantTrading");
 		break;
 		
-		case "Mtraxx_PlantTrading": // торгуем - обмен товарами
-			if (GetSquadronGoods(pchar, sti(pchar.questTemp.Mtraxx.PlantGood.Cargo)) < 500) // не хватило товара на торговлю - провал
+		case "Mtraxx_PlantTrading": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			if (GetSquadronGoods(pchar, sti(pchar.questTemp.Mtraxx.PlantGood.Cargo)) < 500) // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				chrDisableReloadToLocation = false;
 				DeleteAttribute(pchar, "questTemp.Mtraxx.PlantGood");
@@ -10857,12 +10857,12 @@ void QuestComplete(string sQuestName, string qname)
 			n = Findlocation("Shore37");
 			DeleteAttribute(&locations[n], "models.always.chest");
 			Locations[n].models.always.locators = "shore03_locators";
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
+			DeleteAttribute(pchar, "GenQuest.CannotWait");//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			AddCharacterExpToSkill(pchar, "Leadership", 200);
 			AddCharacterExpToSkill(pchar, "Sneak", 300);
 		break;
 		
-		case "Mtraxx_PlantPrepareMarch": // готовим к ночному маршу
+		case "Mtraxx_PlantPrepareMarch": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("shore37", "goto", "goto3", "Mtraxx_PlantGotoMarch");
 			sld = &Locations[FindLocation("shore37")];
 			sld.DisableEncounters = false;
@@ -10880,8 +10880,8 @@ void QuestComplete(string sQuestName, string qname)
 			}
 		break;
 		
-		case "Mtraxx_PlantGotoMarch": // собираем пиратов для похода к плантации
-			// ставим наших пиратов
+		case "Mtraxx_PlantGotoMarch": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = true;
 			sld = characterFromId("Pelly");
 			sld.dialog.currentnode = "Pelly_12";
@@ -10914,12 +10914,12 @@ void QuestComplete(string sQuestName, string qname)
 			}
 		break;
 		
-		case "Mtraxx_PlantJanReady": // снять бессмертие с Пикара
+		case "Mtraxx_PlantJanReady": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mrt_Rocur");
 			LAi_SetImmortal(sld, false);
 		break;
 		
-		case "Mtraxx_PlantMutinyAfterFight": // перебили охрану на плантации
+		case "Mtraxx_PlantMutinyAfterFight": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.quest.mtraxx_plant_exitopen.win_condition.l1 = "locator";
 			pchar.quest.mtraxx_plant_exitopen.win_condition.l1.location = "Maracaibo_Plantation";
 			pchar.quest.mtraxx_plant_exitopen.win_condition.l1.locator_group = "reload";
@@ -10927,7 +10927,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.mtraxx_plant_exitopen.function = "Mtraxx_PlantExitopen";
 		break;
 		
-		case "Mtraxx_PlantEscape": // сбежали с плантации
+		case "Mtraxx_PlantEscape": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			chrDisableReloadToLocation = false;
 			DeleteAttribute(pchar, "GenQuest.FrameLockEsc");
@@ -10936,7 +10936,7 @@ void QuestComplete(string sQuestName, string qname)
 			LocatorReloadEnterDisable("Maracaibo_ExitTown", "reload2_back", true);
 			LocatorReloadEnterDisable("Maracaibo_ExitTown", "reload3_back", true);
 			LocatorReloadEnterDisable("Maracaibo_ExitTown", "reload4", true);
-			// собираем всех, кто выжил, кроме пиратов Пикара - дают вылет
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Pelly");
 			LAi_SetImmortal(sld, false); 
 			ChangeCharacterAddressGroup(sld, "Maracaibo_ExitTown", "rld", "loc17");
@@ -10968,7 +10968,7 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(80, 80, 80, 80);
 		break;
 		
-		case "Mtraxx_PlantMutinyAfterFortFight": // после боя с подкреплением
+		case "Mtraxx_PlantMutinyAfterFortFight": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "questTemp.Mtraxx.PlantFort");
 			pchar.quest.mtraxx_plant_exitopen1.win_condition.l1 = "locator";
 			pchar.quest.mtraxx_plant_exitopen1.win_condition.l1.location = "Maracaibo_Plantation";
@@ -10977,8 +10977,8 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.mtraxx_plant_exitopen1.function = "Mtraxx_PlantExitopen";
 		break;
 		
-		// эпизод 4
-		case "Mtraxx_PasqualeNightTalk": // в заливе - старт похода в Ла Вегу
+		// пїЅпїЅпїЅпїЅпїЅпїЅ 4
+		case "Mtraxx_PasqualeNightTalk": // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mrt_Rocur");
 			sld.dialog.currentnode = "rocur_71";
 			ChangeCharacterAddressGroup(sld, "Shore34", "goto", "goto1");
@@ -10986,31 +10986,31 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 		break;
 		
-		case "Mtraxx_PasqualeNightToHouse": // релоад в дом
+		case "Mtraxx_PasqualeNightToHouse": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ
 			DoQuestReloadToLocation("LaVega_TwoFloorHouse", "reload", "reload1", "Mtraxx_PasqualeNightInHouse");
 		break;
 		
-		case "Mtraxx_PasqualeNightInHouse": // в доме
+		case "Mtraxx_PasqualeNightInHouse": // пїЅ пїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mrt_Rocur");
 			sld.dialog.currentnode = "rocur_73";
 			LAi_SetActorType(sld);
 			LAi_ActorDialogDelay(sld, pchar, "", 2.0);
 		break;
 		
-		case "Mtraxx_PasqualeJanAni": // Жан ковыряется в сундуках
+		case "Mtraxx_PasqualeJanAni": // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mrt_Rocur");
 			LAi_SetActorType(sld);
 			LAi_ActorAnimation(sld, "Barman_idle", "", 90.0);
 			DoQuestFunctionDelay("Mtraxx_PasqualeJanTreasure", 90.0);
 		break;
 		
-		case "Mtraxx_PasqualeJanSeeGirl": // Жан видит Мирабель
+		case "Mtraxx_PasqualeJanSeeGirl": // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mrt_Rocur");
 			LAi_SetActorType(sld);
 			LAi_ActorDialogDelay(sld, pchar, "", 1.0);
 		break;
 		
-		case "Mtraxx_PasqualeJanKillGirl": // Жан убивает Мирабель
+		case "Mtraxx_PasqualeJanKillGirl": // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mirabella");
 			LAi_KillCharacter(sld);
 			sld = characterFromId("Mrt_Rocur");
@@ -11018,7 +11018,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorGoToLocator(sld, "goto", "goto9", "Mtraxx_PasqualeJanGotcha", -1);
 		break;
 		
-		case "Mtraxx_PasqualeJanGotcha": // Жан делится добычей
+		case "Mtraxx_PasqualeJanGotcha": // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			sld = characterFromId("Mrt_Rocur");
 			sld.dialog.currentnode = "rocur_83";
@@ -11026,21 +11026,21 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialogDelay(sld, pchar, "", 0.5);
 		break;
 		
-		case "Mtraxx_PasqualeNightOutHouse": // релоад из дома
+		case "Mtraxx_PasqualeNightOutHouse": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("LaVega_town", "reload", "reload10", "Mtraxx_PasqualeNightOutLaVega");
 		break;
 		
-		case "Mtraxx_PasqualeNightOutLaVega": // релоад из Ла Веги
+		case "Mtraxx_PasqualeNightOutLaVega": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mrt_Rocur");
 			LAi_SetActorType(sld);
 			LAi_ActorRunToLocation(sld, "reload", "reload1", "LaVega_Exittown", "reload", "reload3", "Mtraxx_PasqualeNightSuccess", -1);
 		break;
 		
-		case "Mtraxx_PasqualeNightSuccess": // завершили поход к Паскуале
+		case "Mtraxx_PasqualeNightSuccess": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("LaVega_Exittown", "reload", "reload3", "Mtraxx_PasqualeNightReturn");
 		break;
 		
-		case "Mtraxx_PasqualeNightReturn": // идем назад в залив Гонаив
+		case "Mtraxx_PasqualeNightReturn": // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LocatorReloadEnterDisable("LaVega_Exittown", "reload3", true);
 			sld = characterFromId("Mrt_Rocur");
 			sld.dialog.currentnode = "rocur_89";
@@ -11048,21 +11048,21 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 		break;
 		
-		case "Mtraxx_MirabellaSex": // секс с Мирабель
+		case "Mtraxx_MirabellaSex": // пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mirabella");
 			ChangeCharacterAddressGroup(sld, "IslaMona_TwoFloorRoom", "goto", "goto4");
 			DoQuestFunctionDelay("Mtraxx_MirabellaSex", 1.5);
 		break;
 		
-		// эпизод 5
-		case "Mtraxx_MeridaAddPicar": // Пикара в пассажиры
+		// пїЅпїЅпїЅпїЅпїЅпїЅ 5
+		case "Mtraxx_MeridaAddPicar": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			sld = characterFromId("Mrt_Rocur");
-			AddPassenger(pchar, sld, false);//добавить пассажира
+			AddPassenger(pchar, sld, false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			SetCharacterRemovable(sld, false);
 		break;
 		
-		case "Mtraxx_MeridaGotoRiver": // открываем путь к реке
+		case "Mtraxx_MeridaGotoRiver": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			pchar.quest.mtraxx_merida_gotoriver.win_condition.l1 = "location";
 			pchar.quest.mtraxx_merida_gotoriver.win_condition.l1.location = "Locono_village";
@@ -11071,7 +11071,7 @@ void QuestComplete(string sQuestName, string qname)
 			locations[n].locators_radius.reload.reload2_back = 2.0;
 		break;
 		
-		case "Mtraxx_MeridaGotoRiver_1": // Тагофа ведет нас к реке
+		case "Mtraxx_MeridaGotoRiver_1": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = true;
 			sld = characterFromId("Tagofa");
 			ChangeCharacterAddressGroup(sld, "Locono_village", "quest", "teleport1");
@@ -11086,7 +11086,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.mtraxx_merida_gotoriver1.win_condition = "Mtraxx_MeridaGotoRiver_2";
 		break;
 		
-		case "Mtraxx_MeridaGotoRiver_2": // Тагофа ведет нас к реке
+		case "Mtraxx_MeridaGotoRiver_2": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = true;
 			sld = characterFromId("Tagofa");
 			ChangeCharacterAddressGroup(sld, "Maracaibo_jungle_03", "reload", "reload2_back");
@@ -11098,7 +11098,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.mtraxx_merida_gotoriver2.win_condition = "Mtraxx_MeridaGotoRiver_3";
 		break;
 		
-		case "Mtraxx_MeridaGotoRiver_3": // Тагофа ведет нас к реке
+		case "Mtraxx_MeridaGotoRiver_3": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = true;
 			sld = characterFromId("Tagofa");
 			ChangeCharacterAddressGroup(sld, "Maracaibo_jungle_04", "reload", "reload1_back");
@@ -11110,7 +11110,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.mtraxx_merida_gotoriver3.win_condition = "Mtraxx_MeridaGotoRiver_4";
 		break;
 		
-		case "Mtraxx_MeridaGotoRiver_4": // Тагофа ведет нас к реке
+		case "Mtraxx_MeridaGotoRiver_4": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = true;
 			sld = characterFromId("Tagofa");
 			ChangeCharacterAddressGroup(sld, "Maracaibo_river", "reload", "reload1_back");
@@ -11119,24 +11119,24 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorGoToLocator(sld, "goto", "goto10", "Mtraxx_MeridaGotoRiver_5", -1);
 		break;
 		
-		case "Mtraxx_MeridaGotoRiver_5": // Тагофа ведет нас к реке
+		case "Mtraxx_MeridaGotoRiver_5": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 			sld = characterFromId("Tagofa");
 			LAi_SetStayType(sld);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 		break;
 		
-		case "Mtraxx_MeridaBuildBoats": // лодки построены
+		case "Mtraxx_MeridaBuildBoats": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			bDisableCharacterMenu = false;
 			DeleteAttribute(pchar, "GenQuest.FrameLockEsc");
 			n = makeint(sti(pchar.questTemp.Mtraxx.Merida.Antidote)/6);
-			for (i=5; i<=9; i++) // ребята Леприкона
+			for (i=5; i<=9; i++) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				sld = characterFromId("Lepricons_pirate_"+i);
 				ChangeCharacterAddressGroup(sld, "Maracaibo_river", "goto", "goto"+i);
 				LAi_SetWarriorType(sld);
 				LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			}
-			for (i=1; i<=8; i++) // наши красавцы
+			for (i=1; i<=8; i++) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				if (i > 6)
 				{
@@ -11159,24 +11159,24 @@ void QuestComplete(string sQuestName, string qname)
 			AddQuestRecord("Roger_5", "14");
 		break;
 		
-		case "Mtraxx_MeridaRiverTrip": // плывем по реке на лодках
+		case "Mtraxx_MeridaRiverTrip": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			bDisableCharacterMenu = true;
 			pchar.GenQuest.FrameLockEsc = true;
 			SetMusic("music_map");
 			SetLaunchFrameFormParam("", "", 0, 15);
 			SetLaunchFrameFormPic("loading\River_1.tga");
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 2, 2, 20); //крутим время
+			WaitDate("", 0, 0, 2, 2, 20); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			StoreDayUpdate();
 			RefreshWeather();
 			RefreshLandTime();
 			DoQuestCheckDelay("Mtraxx_MeridaRiverTripEnd", 15.0);
 			DeleteAttribute(pchar, "questTemp.Mtraxx.Merida.Potion");
-			LocatorReloadEnterDisable("Shore_ship3", "boat", false); // выпустим в море
+			LocatorReloadEnterDisable("Shore_ship3", "boat", false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 		break;
 		
-		case "Mtraxx_MeridaRiverTripEnd": // приплыли
+		case "Mtraxx_MeridaRiverTripEnd": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			n = Findlocation("Serpentine1");
 			for (i=1; i<=6; i++)
 			{
@@ -11194,7 +11194,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestReloadToLocation("Serpentine1", "reload", "reload3", "Mtraxx_MeridaSerpentine");
 		break;
 		
-		case "Mtraxx_MeridaSerpentine": // прибыли в точку высадки
+		case "Mtraxx_MeridaSerpentine": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			bDisableCharacterMenu = false;
 			DeleteAttribute(pchar, "GenQuest.FrameLockEsc");
 			for (i=1; i<=3; i++)
@@ -11204,7 +11204,7 @@ void QuestComplete(string sQuestName, string qname)
 				sld = &Characters[idx];
 				ChangeCharacterAddressGroup(sld, "Serpentine1", "officers", "reload2_"+i);
 			}
-			for (i=5; i<=9; i++) // ребята Леприкона
+			for (i=5; i<=9; i++) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				sld = characterFromId("Lepricons_pirate_"+i);
 				ChangeCharacterAddressGroup(sld, "Serpentine1", "goto", "goto11");
@@ -11212,7 +11212,7 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 				LAi_ActorFollowEverywhere(sld, "", -1);
 			}
-			for (i=1; i<=8; i++) // наши красавцы
+			for (i=1; i<=8; i++) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				sld = characterFromId("Merida_pirate_"+i);
 				ChangeCharacterAddressGroup(sld, "Serpentine1", "goto", "goto12");
@@ -11233,7 +11233,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 		break;
 		
-		case "Mtraxx_MeridaWarning": // знак капонгов на тропе
+		case "Mtraxx_MeridaWarning": // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			sld = characterFromId("Tagofa");
 			sld.dialog.currentnode = "tagofa_15";
@@ -11242,7 +11242,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialogDelay(sld, pchar, "", 1.5);
 		break;
 		
-		case "Mtraxx_MeridaCapongAfterFight": // после боя с капонгами
+		case "Mtraxx_MeridaCapongAfterFight": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			sld = characterFromId("Tagofa");
 			sld.dialog.currentnode = "tagofa_18";
@@ -11253,7 +11253,7 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(50, 50, 50, 50);
 		break;
 		
-		case "Mtraxx_MeridaGateAfterBattle": // после боя у ворот
+		case "Mtraxx_MeridaGateAfterBattle": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			sld = characterFromId("Mrt_Rocur");
 			sld.dialog.currentnode = "rocur_38";
@@ -11263,7 +11263,7 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(50, 50, 50, 50);
 		break;
 		
-		case "Mtraxx_MeridaAfterBattle": // после боя в городе
+		case "Mtraxx_MeridaAfterBattle": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			sld = characterFromId("Mrt_Rocur");
 			sld.dialog.currentnode = "rocur_40";
@@ -11273,21 +11273,21 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(20, 20, 20, 20);
 		break;
 		
-		case "Mtraxx_MeridaOpenChest": // губер открывает свой сундук
+		case "Mtraxx_MeridaOpenChest": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			PlaySound("interface\key.wav");
 			sld = characterFromId("Merida_head");
 			LAi_SetActorType(sld);
 			LAi_ActorGoToLocator(sld, "goto", "goto1", "Mtraxx_MeridaOpenChest1", -1);
 		break;
 		
-		case "Mtraxx_MeridaOpenChest1": // губер открывает свой сундук
+		case "Mtraxx_MeridaOpenChest1": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Merida_head");
 			sld.dialog.currentnode = "merida_head_9";
 			LAi_SetActorType(sld);
 			LAi_ActorDialogDelay(sld, pchar, "", 1.0);
 		break;
 		
-		case "Mtraxx_MeridaGiveJewelry": // Пикар забирает камни
+		case "Mtraxx_MeridaGiveJewelry": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			PlaySound("interface\important_item.wav");
 			sld = characterFromId("Mrt_Rocur");
 			sld.dialog.currentnode = "rocur_42";
@@ -11296,7 +11296,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialogDelay(sld, pchar, "", 2.0);
 		break;
 		
-		case "Mtraxx_MeridaCaveAfterFight": // после боя в пещере с капонгами
+		case "Mtraxx_MeridaCaveAfterFight": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			AddQuestRecord("Roger_5", "13");
 			Mtraxx_MeridaCheckOurWarriors();
 			chrDisableReloadToLocation = false;
@@ -11313,7 +11313,7 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(30, 30, 30, 30);
 		break;
 		
-		case "Mtraxx_MeridaReturnEnd": // вернулись к Маракайбо
+		case "Mtraxx_MeridaReturnEnd": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			bDisableCharacterMenu = false;
 			DeleteAttribute(pchar, "GenQuest.FrameLockEsc");
 			chrDisableReloadToLocation = true;
@@ -11324,7 +11324,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 		break;
 		
-		// эпизод 6
+		// пїЅпїЅпїЅпїЅпїЅпїЅ 6
 		case "Mtraxx_IgnasioInTavern": // 
 			if(CheckAttribute(pchar, "IsMushketer"))
 			{
@@ -11350,8 +11350,8 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 		break;
 		
-		// эпизод 7
-		case "Mtraxx_WolfreekGrotAfterFight": // перебили карибов
+		// пїЅпїЅпїЅпїЅпїЅпїЅ 7
+		case "Mtraxx_WolfreekGrotAfterFight": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			LAi_group_Delete("EnemyFight");
 			AddQuestRecord("Roger_7", "3");
@@ -11359,7 +11359,7 @@ void QuestComplete(string sQuestName, string qname)
 			AddComplexSelfExpToScill(30, 30, 30, 30);
 		break;
 		
-		case "Mtraxx_WolfreekCaveAfterFight": // перебили босяков
+		case "Mtraxx_WolfreekCaveAfterFight": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			LAi_group_Delete("EnemyFight");
 			AddQuestRecord("Roger_7", "6");
@@ -11375,8 +11375,8 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 		
 		case "Mtraxx_WolfreekJewellerWait": // 
-			SetLaunchFrameFormParam("Three hours later...", "", 0, 5);//табличка
-			WaitDate("", 0, 0, 0, 3, 20); //крутим время
+			SetLaunchFrameFormParam("Three hours later...", "", 0, 5);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			WaitDate("", 0, 0, 0, 3, 20); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			LaunchFrameForm();
 			RefreshLandTime();
 			RecalculateJumpTable();
@@ -11388,7 +11388,7 @@ void QuestComplete(string sQuestName, string qname)
 			chrDisableReloadToLocation = false;
 			AddQuestRecord("Roger_7", "17");
 			AddComplexSelfExpToScill(30, 30, 30, 30);
-			// ставим троих в форте
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			sld = GetCharacter(NPC_GenerateCharacter("Islamona_carpenter", "mercen_30", "man", "man", 25, PIRATE, -1, true, "quest"));
 			FantomMakeCoolFighter(sld, 25, 60, 60, "topor_02", "pistol1", "bullet", 100);
 			sld.Dialog.Filename = "Quest\Roger.c";
@@ -11426,7 +11426,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.questTemp.Mtraxx.WolfreekBox = "true";
 		break;
 		
-		case "Mtraxx_WolfreekRepairShore": // // прогона 3
+		case "Mtraxx_WolfreekRepairShore": // // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 3
 			DoQuestCheckDelay("Mtraxx_WolfreekRepairActivate", 2.0);
 		break;
 		
@@ -11435,10 +11435,10 @@ void QuestComplete(string sQuestName, string qname)
 			chrDisableReloadToLocation = false;
 		break;
 		
-		// эпизод 8
+		// пїЅпїЅпїЅпїЅпїЅпїЅ 8
 		case "Mtraxx_CorridaSenPierre": // 
-			InterfaceStates.Buttons.Save.enable = true; // разрешим сохраняться
-			bDisableCharacterMenu = false; // разлочим F2
+			InterfaceStates.Buttons.Save.enable = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			bDisableCharacterMenu = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ F2
 			bQuestDisableMapEnter = false;
 			setCharacterShipLocation(pchar, "FortFrance_town");
 			setWDMPointXZ("FortFrance_town");
@@ -11473,7 +11473,7 @@ void QuestComplete(string sQuestName, string qname)
 		case "Mtraxx_CorridaWaitMarkoFrame": // 
 			SetLaunchFrameFormParam("2 hours passed..."+ NewStr() +"", "Mtraxx_CorridaMarkoExit", 0, 5);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 2, 10); //крутим время
+			WaitDate("", 0, 0, 0, 2, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			StoreDayUpdate();
 			RefreshWeather();
@@ -11511,21 +11511,21 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.mtraxx_corrida_martinique1.win_condition.l1 = "location";
 			pchar.quest.mtraxx_corrida_martinique1.win_condition.l1.location = "Martinique";
 			pchar.quest.mtraxx_corrida_martinique1.function = "Mtraxx_CorridaContinue";
-			AddCharacterExpToSkill(pchar, "Fortune", 200);//везение
+			AddCharacterExpToSkill(pchar, "Fortune", 200);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			AddCharacterExpToSkill(pchar, "Sneak", 200);
 		break;
 			
-		// эпизод 9
-		case "Mtraxx_CartahenaReloadInTavern": // телепорт в таверну
+		// пїЅпїЅпїЅпїЅпїЅпїЅ 9
+		case "Mtraxx_CartahenaReloadInTavern": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			iTime = sti(environment.time);
 			if (iTime >= 21) iAddTime = 24 - iTime;
 			if (iTime < 7) iAddTime = 21 - iTime;
 			if (iTime >= 7 && iTime < 21) iAddTime = 21 - iTime;
-			WaitDate("", 0, 0, 0, iAddTime, 5); //крутим время
+			WaitDate("", 0, 0, 0, iAddTime, 5); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RefreshWeather();
 			RefreshLandTime();
 			pchar.questTemp.Mtraxx.InTavern = "true";
-			// чистим все места, если уже был заход в таверну
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=1; i<=4; i++)
 			{
 				FreeSitLocator("LaVega_tavern", "sit_front"+i);
@@ -11540,12 +11540,12 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestReloadToLocation("LaVega_tavern", "reload", "reload1_back", "Mtraxx_CartahenaInTavern");
 		break;
 		
-		case "Mtraxx_CartahenaInTavern": // братва в таверне
-			pchar.questTemp.NoFast = true; // запрет ускорения
-			// ГГ - пират на весь эпизод
+		case "Mtraxx_CartahenaInTavern": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			pchar.questTemp.NoFast = true; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			PChar.nation	= PIRATE;
 			pchar.DisableChangeFlagMode = true;
-			// установим клон Бернара Венсана
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = GetCharacter(NPC_GenerateCharacter("Mtr_Vensan", "Vensan", "man", "man", 20, PIRATE, -1, true, "quest"));
 			FantomMakeCoolSailor(sld, SHIP_BRIGANTINE, "Separator", CANNON_TYPE_CANNON_LBS16, 50, 50, 50);
 			FantomMakeCoolFighter(sld, 20, 50, 50, "blade_16", "pistol5", "bullet", 100);
@@ -11584,7 +11584,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld = characterFromId("Lepricon");
 			ChangeCharacterAddressGroup(sld, "LaVega_tavern", "sit", "sit_front2");
 			LAi_SetSitType(sld);
-			// девочки
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=2; i<=5; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("Mtr_Taverngirl_"+i, "women_2"+i, "woman", "towngirl", 1, PIRATE, 1, true, "quest"));
@@ -11600,7 +11600,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Mtraxx_CartahenaTavernSit", 0.5);
 		break;
 		
-		case "Mtraxx_CartahenaTavernSit": // как здорово, что все мы здесь сегодня собрались
+		case "Mtraxx_CartahenaTavernSit": // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetSitType(pchar);
 			sld = characterFromId("Terrax");
 			sld.dialog.currentnode = "mtraxx_97";
@@ -11609,7 +11609,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialogDelay(sld, pchar, "", 1.0);
 		break;
 		
-		case "Mtraxx_CartahenaTavernSong": // а теперь... песня!
+		case "Mtraxx_CartahenaTavernSong": // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ... пїЅпїЅпїЅпїЅпїЅ!
 			ChangeShowIntarface();
 			ResetSound();
 			SetMusic("music_piratesong");
@@ -11619,23 +11619,23 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Mtraxx_CartahenaTavernExit", 60.0);
 		break;
 		
-		case "Mtraxx_CartahenaTavernExit": // закончили пьянку
+		case "Mtraxx_CartahenaTavernExit": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			bDisableCharacterMenu = false;
 			InterfaceStates.Buttons.Save.enable = true;
 			locCameraResetState();
 			iTime = sti(environment.time);
-			WaitDate("", 0, 0, 0, 8, 5); //крутим время
+			WaitDate("", 0, 0, 0, 8, 5); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			StoreDayUpdate();
 			RefreshWeather();
 			RefreshLandTime();
 			LAi_SetPlayerType(pchar);
 			setCharacterShipLocation(pchar, "Lavega_port");
-			setWDMPointXZ("Lavega_port"); // на всякий
+			setWDMPointXZ("Lavega_port"); // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("LaVega_port", "reload", "reload1", "Mtraxx_CartahenaToSea");
 		break;
 		
-		case "Mtraxx_CartahenaToSea": // формируем эскадру // 3 прогона
+		case "Mtraxx_CartahenaToSea": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ // 3 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.GenQuest.HunterLongPause = true;
 			DeleteAttribute(pchar, "questTemp.NoFast");
 			sld = ItemsFromID("lcheer");
@@ -11644,7 +11644,7 @@ void QuestComplete(string sQuestName, string qname)
 			DeleteAttribute(pchar, "questTemp.Mtraxx.InTavern");
 			LAi_LocationDisableOfficersGen("LaVega_tavern", false);
 			LocatorReloadEnterDisable("LaVega_port", "reload1_back", true);
-			// присоединяем эскадру к ГГ. Тиракс
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Terrax");
 			FantomMakeCoolSailor(sld, SHIP_LINESHIP, "Red Dragon", CANNON_TYPE_CULVERINE_LBS36, 110, 110, 110);
 			Mtraxx_MarkusSetShipParameter();
@@ -11664,21 +11664,21 @@ void QuestComplete(string sQuestName, string qname)
 			SetCharacterPerk(sld, "Carpenter");
 			SetCharacterPerk(sld, "Builder"); 
 			LAi_SetImmortal(sld, false);
-			sld.ShipHideImmortal = 1000; // непотопляемый корабль
+			sld.ShipHideImmortal = 1000; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld.SeaBoss = 0.8;
-			Character_SetAbordageEnable(sld, false); // нельзя абордировать
-			sld.Tasks.CanBoarding = false; // запрет идти на абордаж - дубль
-			sld.Tasks.CanChangeShipAfterBoarding = false; // запрет меняться кораблями - дубль
-			LAi_SetCheckMinHP(sld, 10, true, ""); // скрытое бессмертие
+			Character_SetAbordageEnable(sld, false); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			sld.Tasks.CanBoarding = false; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ
+			sld.Tasks.CanChangeShipAfterBoarding = false; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ
+			LAi_SetCheckMinHP(sld, 10, true, ""); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld.DontDeskTalk = true;
 			SetCharacterRemovable(sld, false);
-			sld.CompanionEnemyEnable = false; //всегда друзья
+			sld.CompanionEnemyEnable = false; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			SetCompanionIndex(pchar, -1, sti(sld.index));
 			sld.loyality = MAX_LOYALITY;
 			pchar.quest.mtraxx_ship_fail1.win_condition.l1 = "NPC_Death";
 			pchar.quest.mtraxx_ship_fail1.win_condition.l1.character = "Terrax";
-			pchar.quest.mtraxx_ship_fail1.function = "Mtraxx_MarkusGameOver"; // для шибко грамотных
-			// Лысый Джеффри
+			pchar.quest.mtraxx_ship_fail1.function = "Mtraxx_MarkusGameOver"; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Jeffry");
 			SetCharacterGoods(sld, GOOD_BALLS, 1000);
 			SetCharacterGoods(sld, GOOD_GRAPES, 800);
@@ -11700,18 +11700,18 @@ void QuestComplete(string sQuestName, string qname)
 			sld.Ship.Crew.Exp.Cannoners = 90;
 			sld.Ship.Crew.Exp.Soldiers = 90;
 			LAi_SetImmortal(sld, false);
-			sld.ShipHideImmortal = 800; // непотопляемый корабль
+			sld.ShipHideImmortal = 800; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld.SeaBoss = 0.8;
-			LAi_SetCheckMinHP(sld, 10, true, ""); // скрытое бессмертие
-			Character_SetAbordageEnable(sld, false); // нельзя абордировать
-			sld.Tasks.CanBoarding = false; // запрет идти на абордаж - дубль
-			sld.Tasks.CanChangeShipAfterBoarding = false; // запрет меняться кораблями - дубль
+			LAi_SetCheckMinHP(sld, 10, true, ""); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			Character_SetAbordageEnable(sld, false); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			sld.Tasks.CanBoarding = false; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ
+			sld.Tasks.CanChangeShipAfterBoarding = false; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ
 			sld.DontDeskTalk = true;
 			SetCharacterRemovable(sld, false);
-			sld.CompanionEnemyEnable = false; //всегда друзья
+			sld.CompanionEnemyEnable = false; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			SetCompanionIndex(pchar, -1, sti(sld.index));
 			sld.loyality = MAX_LOYALITY;
-			// Тесак Пелли
+			// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Pelly");
 			SetCharacterGoods(sld, GOOD_BALLS, 500);
 			SetCharacterGoods(sld, GOOD_GRAPES, 700);
@@ -11733,41 +11733,41 @@ void QuestComplete(string sQuestName, string qname)
 			sld.Ship.Crew.Exp.Cannoners = 90;
 			sld.Ship.Crew.Exp.Soldiers = 90;
 			LAi_SetImmortal(sld, false);
-			sld.ShipHideImmortal = 500; // непотопляемый корабль
+			sld.ShipHideImmortal = 500; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld.SeaBoss = 0.8;
-			LAi_SetCheckMinHP(sld, 10, true, ""); // скрытое бессмертие
-			Character_SetAbordageEnable(sld, false); // нельзя абордировать
-			sld.Tasks.CanBoarding = false; // запрет идти на абордаж - дубль
-			sld.Tasks.CanChangeShipAfterBoarding = false; // запрет меняться кораблями - дубль
+			LAi_SetCheckMinHP(sld, 10, true, ""); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			Character_SetAbordageEnable(sld, false); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			sld.Tasks.CanBoarding = false; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ
+			sld.Tasks.CanChangeShipAfterBoarding = false; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ
 			sld.DontDeskTalk = true;
 			SetCharacterRemovable(sld, false);
-			sld.CompanionEnemyEnable = false; //всегда друзья
+			sld.CompanionEnemyEnable = false; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			SetCompanionIndex(pchar, -1, sti(sld.index));
 			sld.loyality = MAX_LOYALITY;
-			// Бернар Венсан
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Mtr_Vensan");
 			sld.Ship.Crew.Morale = 100;
 			sld.Ship.Crew.Exp.Sailors = 70;
 			sld.Ship.Crew.Exp.Cannoners = 70;
 			sld.Ship.Crew.Exp.Soldiers = 70;
 			LAi_SetImmortal(sld, false);
-			sld.ShipHideImmortal = 400; // непотопляемый корабль
+			sld.ShipHideImmortal = 400; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld.SeaBoss = 0.8;
-			LAi_SetCheckMinHP(sld, 10, true, ""); // скрытое бессмертие
-			Character_SetAbordageEnable(sld, false); // нельзя абордировать
-			sld.Tasks.CanBoarding = false; // запрет идти на абордаж - дубль
-			sld.Tasks.CanChangeShipAfterBoarding = false; // запрет меняться кораблями - дубль
+			LAi_SetCheckMinHP(sld, 10, true, ""); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			Character_SetAbordageEnable(sld, false); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			sld.Tasks.CanBoarding = false; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ
+			sld.Tasks.CanChangeShipAfterBoarding = false; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ
 			sld.DontDeskTalk = true;
 			SetCharacterRemovable(sld, false);
-			sld.CompanionEnemyEnable = false; //всегда друзья
+			sld.CompanionEnemyEnable = false; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			SetCompanionIndex(pchar, -1, sti(sld.index));
 			sld.loyality = MAX_LOYALITY;
 			sld = characterFromId("Lepricon");
-			ChangeCharacterAddressGroup(sld, "none", "", ""); // прячем Леприкона
-			// подготовим Картахену
+			ChangeCharacterAddressGroup(sld, "none", "", ""); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			i = FindColony("Cartahena");
 			colonies[i].DontSetShipInPort = true;
-			// прерывания на доплыть и таймер 20 дней
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 20 пїЅпїЅпїЅпїЅ
 			pchar.quest.mtraxx_cartahena_sail.win_condition.l1 = "location";
 			pchar.quest.mtraxx_cartahena_sail.win_condition.l1.location = "Cartahena";
 			pchar.quest.mtraxx_cartahena_sail.function = "Mtraxx_CartahenaArrive";
@@ -11775,9 +11775,9 @@ void QuestComplete(string sQuestName, string qname)
 			AddQuestRecord("Roger_9", "1");
 		break;
 		
-		case "Mtraxx_CartahenaAbandon": // в бухте Ковеньяс
+		case "Mtraxx_CartahenaAbandon": // пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = true;
-			LAi_LocationDisableOfficersGen("shore25", true);//офицеров не пускать
+			LAi_LocationDisableOfficersGen("shore25", true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LocatorReloadEnterDisable("shore25", "reload1_back", true);
 			sld = CharacterFromID("Terrax");
 			ChangeCharacterAddressGroup(sld, "shore25", "rld", "loc0");
@@ -11795,7 +11795,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetActorType(sld);
 			sld.viper = true;
 			ChangeCharacterAddressGroup(sld, "shore25", "rld", "loc9");
-			for (i=5; i<=10; i++) // буканьеры Леприкона
+			for (i=5; i<=10; i++) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("Lepricons_bukaneers_"+i, "mercen_"+i, "man", "man", 25, PIRATE, -1, true, "quest"));
 				FantomMakeCoolFighter(sld, 25, 65, 65, LinkRandPhrase("blade_04","blade_06","topor_04"), "pistol3", "grapeshot", 200);
@@ -11807,7 +11807,7 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_SetWarriorType(sld);
 				LAi_CharacterDisableDialog(sld);
 			}
-			// выводим из компаньонов всех, кроме Тесака
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Terrax");
 			RemoveCharacterCompanion(pchar, sld);
 			sld.AlwaysFriend = true;
@@ -11820,7 +11820,7 @@ void QuestComplete(string sQuestName, string qname)
 			RemoveCharacterCompanion(pchar, sld);
 			sld.AlwaysFriend = true;
 			sld.ShipEnemyDisable = true; 
-			// в группу пиратов
+			// пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			Group_FindOrCreateGroup("Terrax_SeaGroup");
 			Group_AddCharacter("Terrax_SeaGroup", "Terrax");
 			Group_AddCharacter("Terrax_SeaGroup", "Jeffry");
@@ -11831,34 +11831,34 @@ void QuestComplete(string sQuestName, string qname)
 			Group_LockTask("Terrax_SeaGroup");
 		break;
 		
-		case "Mtraxx_CartahenaFortFirstBattle": // бой в цитадели форта // патч 17/1
+		case "Mtraxx_CartahenaFortFirstBattle": // пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ // пїЅпїЅпїЅпїЅ 17/1
 			PlaySound("interface\_GTBoard2.wav");
 			iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+5;
-			bDisableCharacterMenu = true;//лочим F2
-			InterfaceStates.Buttons.Save.enable = false;//запретить сохраняться
+			bDisableCharacterMenu = true;//пїЅпїЅпїЅпїЅпїЅ F2
+			InterfaceStates.Buttons.Save.enable = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			locations[FindLocation("Cartahena_Town")].QuestCapture = true;
 			locations[FindLocation("Cartahena_Fort")].QuestCapture = true;
-			// наши
-			sld = CharacterFromID("Terrax"); // Тиракс
+			// пїЅпїЅпїЅпїЅ
+			sld = CharacterFromID("Terrax"); // пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_CharacterDisableDialog(sld);
 			LAi_SetWarriorType(sld);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			ChangeCharacterAddressGroup(sld, "BOARDING_FORT", "rld", "loc0");
-			for (i=1; i<=3; i++) // офицеры ГГ
+			for (i=1; i<=3; i++) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
 			{
 				idx = GetOfficersIndex(pchar, i);
 				if (idx < 1) continue;
 				sld = &Characters[idx];
 				ChangeCharacterAddressGroup(sld, "BOARDING_FORT", "rld", "loc"+(i+3));
 			}
-			// расчет количества десанта, 45% от общего числа
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 45% пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			iTotalTemp = makeint((sti(pchar.questTemp.Mtraxx.Cartahena.Crew)/40)*0.45);
 			if (iTotalTemp < 1) iTotalTemp = 1;
 			if (iTotalTemp > 25) iTotalTemp = 25;
-			log_Testinfo("Наших с оружием - "+iTotalTemp+" бойцов");
+			log_Testinfo("пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - "+iTotalTemp+" пїЅпїЅпїЅпїЅпїЅпїЅ");
 			for (i=1; i<=iTotalTemp; i++)
 			{
-				if (i < 3) // мушкетеры, 2 шт
+				if (i < 3) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 2 пїЅпїЅ
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("Mtr_CartahenaFort1Pirate_"+i, "mush_ctz_"+(i+6), "man", "mushketer", iRank, PIRATE, -1, false, "soldier"));
 					FantomMakeCoolFighter(sld, iRank, 60, 60, "", "mushket3", "grapeshot", 170);
@@ -11878,11 +11878,11 @@ void QuestComplete(string sQuestName, string qname)
 				DeleteAttribute(sld, "DontClearDead");
 				LAi_CharacterDisableDialog(sld);
 			}
-			// испанцы
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			for (i=1; i<=25; i++)
 			{
-				if (i == 1 || i == 5 || i == 8 || i == 9 || i == 11 || i == 12) // мушкетеры, 6 шт
+				if (i == 1 || i == 5 || i == 8 || i == 9 || i == 11 || i == 12) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 6 пїЅпїЅ
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("Mtr_CartahenaFort1Guard_"+i, "mush_spa_"+(rand(2)+1), "man", "mushketer", iRank, SPAIN, -1, false, "soldier"));
 					if (i < 9) 
@@ -11900,7 +11900,7 @@ void QuestComplete(string sQuestName, string qname)
 				}
 				else
 				{
-					if (i == 14) // офицер
+					if (i == 14) // пїЅпїЅпїЅпїЅпїЅпїЅ
 					{
 						sld = GetCharacter(NPC_GenerateCharacter("Mtr_CartahenaFort1Guard_"+i, "off_spa_4", "man", "man", iRank+5, SPAIN, -1, false, "soldier"));
 						FantomMakeCoolFighter(sld, iRank+5, 70, 70, "topor_04", "pistol4", "cartridge", 200);
@@ -11928,46 +11928,46 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetFightMode(pchar, true);
 		break;
 		
-		case "Mtraxx_CartahenaFortFirstBattleEnd": // завершили бой в цитадели
+		case "Mtraxx_CartahenaFortFirstBattleEnd": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetFightMode(pchar, false);
 			PlaySound("interface\abordage_wining.wav");
-			// считаем выживших
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			n = 0;
 			for (i=1; i<=iTotalTemp; i++)
 			{
 				sld = CharacterFromID("Mtr_CartahenaFort1Pirate_"+i);
 				if (LAi_GetCharacterHP(sld) > 0) n++;
-				sld.lifeday = 0; // патч 17/1
+				sld.lifeday = 0; // пїЅпїЅпїЅпїЅ 17/1
 			}
-			log_Testinfo("В бою выжило - "+n+" наших бойцов");
-			pchar.questTemp.Mtraxx.Cartahena.Fort1Crew = n; // запоминаем
+			log_Testinfo("пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - "+n+" пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
+			pchar.questTemp.Mtraxx.Cartahena.Fort1Crew = n; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestFunctionDelay("Mtraxx_CartahenaFortReloadNext", 5.0);
 		break;
 		
-		case "Mtraxx_CartahenaFortSecondBattle": // бой в бастионе
+		case "Mtraxx_CartahenaFortSecondBattle": // пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			PlaySound("interface\_GTBoard2.wav");
 			iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+5;
-			// наши
-			sld = CharacterFromID("Jeffry"); // Лысый
+			// пїЅпїЅпїЅпїЅ
+			sld = CharacterFromID("Jeffry"); // пїЅпїЅпїЅпїЅпїЅ
 			LAi_CharacterDisableDialog(sld);
 			LAi_SetWarriorType(sld);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			ChangeCharacterAddressGroup(sld, "Boarding_bastion1", "rld", "loc8");
-			for (i=1; i<=3; i++) // офицеры ГГ
+			for (i=1; i<=3; i++) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
 			{
 				idx = GetOfficersIndex(pchar, i);
 				if (idx < 1) continue;
 				sld = &Characters[idx];
 				ChangeCharacterAddressGroup(sld, "Boarding_bastion1", "rld", "loc"+i);
 			}
-			// расчет количества десанта, 28% от общего числа
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 28% пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			iTotalTemp = makeint((sti(pchar.questTemp.Mtraxx.Cartahena.Crew)/40)*0.28);
 			if (iTotalTemp < 1) iTotalTemp = 1;
 			if (iTotalTemp > 15) iTotalTemp = 15;
-			log_Testinfo("Наших с оружием - "+iTotalTemp+" бойцов");
+			log_Testinfo("пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - "+iTotalTemp+" пїЅпїЅпїЅпїЅпїЅпїЅ");
 			for (i=1; i<=iTotalTemp; i++)
 			{
-				if (i < 3) // мушкетеры, 2 шт
+				if (i < 3) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 2 пїЅпїЅ
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("Mtr_CartahenaFort2Pirate_"+i, "mush_ctz_"+(i+6), "man", "mushketer", iRank, PIRATE, -1, false, "soldier"));
 					FantomMakeCoolFighter(sld, iRank, 60, 60, "", "mushket3", "grapeshot", 170);
@@ -11987,11 +11987,11 @@ void QuestComplete(string sQuestName, string qname)
 				DeleteAttribute(sld, "DontClearDead");
 				LAi_CharacterDisableDialog(sld);
 			}
-			// испанцы
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			for (i=1; i<=15; i++)
 			{
-				if (i == 7 || i == 13 || i == 15) // мушкетеры, 3 шт
+				if (i == 7 || i == 13 || i == 15) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 3 пїЅпїЅ
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("Mtr_CartahenaFort2Guard_"+i, "mush_spa_"+(rand(2)+1), "man", "mushketer", iRank, SPAIN, -1, false, "soldier"));
 					FantomMakeCoolFighter(sld, iRank, 65, 65, "", "mushket3", "grapeshot", 200);
@@ -12001,7 +12001,7 @@ void QuestComplete(string sQuestName, string qname)
 				}
 				else
 				{
-					if (i == 14) // офицер
+					if (i == 14) // пїЅпїЅпїЅпїЅпїЅпїЅ
 					{
 						sld = GetCharacter(NPC_GenerateCharacter("Mtr_CartahenaFort2Guard_"+i, "off_spa_5", "man", "man", iRank+5, SPAIN, -1, false, "soldier"));
 						FantomMakeCoolFighter(sld, iRank+5, 75, 75, "topor_04", "pistol4", "cartridge", 250);
@@ -12029,43 +12029,43 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetFightMode(pchar, true);
 		break;
 		
-		case "Mtraxx_CartahenaFortSecondBattleEnd": // завершили бой в бастионе
+		case "Mtraxx_CartahenaFortSecondBattleEnd": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetFightMode(pchar, false);
 			PlaySound("interface\abordage_wining.wav");
-			// считаем выживших
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			n = 0;
 			for (i=1; i<=iTotalTemp; i++)
 			{
 				sld = CharacterFromID("Mtr_CartahenaFort2Pirate_"+i);
 				if (LAi_GetCharacterHP(sld) > 0) n++;
-				sld.lifeday = 0; // патч 17/1
+				sld.lifeday = 0; // пїЅпїЅпїЅпїЅ 17/1
 			}
-			log_Testinfo("В бою выжило - "+n+" наших бойцов");
-			pchar.questTemp.Mtraxx.Cartahena.Fort2Crew = n; // запоминаем
+			log_Testinfo("пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - "+n+" пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
+			pchar.questTemp.Mtraxx.Cartahena.Fort2Crew = n; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestFunctionDelay("Mtraxx_CartahenaFortReloadEnd", 5.0);
 		break;
 		
-		case "Mtraxx_CartahenaFortThirdBattle": // бой во дворе
+		case "Mtraxx_CartahenaFortThirdBattle": // пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			PlaySound("interface\_GTBoard2.wav");
 			iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+5;
-			// наши
-			sld = CharacterFromID("Pelly"); // Тесак
+			// пїЅпїЅпїЅпїЅ
+			sld = CharacterFromID("Pelly"); // пїЅпїЅпїЅпїЅпїЅ
 			LAi_CharacterDisableDialog(sld);
 			LAi_SetWarriorType(sld);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			ChangeCharacterAddressGroup(sld, "Boarding_fortyard", "rld", "loc8");
-			for (i=1; i<=3; i++) // офицеры ГГ
+			for (i=1; i<=3; i++) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
 			{
 				idx = GetOfficersIndex(pchar, i);
 				if (idx < 1) continue;
 				sld = &Characters[idx];
 				ChangeCharacterAddressGroup(sld, "Boarding_fortyard", "rld", "loc"+i);
 			}
-			// расчет количества десанта, 27% от общего числа
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 27% пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			iTotalTemp = makeint((sti(pchar.questTemp.Mtraxx.Cartahena.Crew)/40)*0.27);
 			if (iTotalTemp < 1) iTotalTemp = 1;
 			if (iTotalTemp > 15) iTotalTemp = 15;
-			log_Testinfo("Наших с оружием - "+iTotalTemp+" бойцов");
+			log_Testinfo("пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - "+iTotalTemp+" пїЅпїЅпїЅпїЅпїЅпїЅ");
 			for (i=1; i<=iTotalTemp; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("Mtr_CartahenaFort3Pirate_"+i, "citiz_"+(rand(9)+41), "man", "man", iRank, PIRATE, -1, false, "soldier"));
@@ -12078,11 +12078,11 @@ void QuestComplete(string sQuestName, string qname)
 				DeleteAttribute(sld, "DontClearDead");
 				LAi_CharacterDisableDialog(sld);
 			}
-			// испанцы
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			for (i=1; i<=15; i++)
 			{
-					if (i == 14) // офицер
+					if (i == 14) // пїЅпїЅпїЅпїЅпїЅпїЅ
 					{
 						sld = GetCharacter(NPC_GenerateCharacter("Mtr_CartahenaFort3Guard_"+i, "off_spa_3", "man", "man", iRank+5, SPAIN, -1, false, "soldier"));
 						FantomMakeCoolFighter(sld, iRank+5, 75, 75, "topor_04", "pistol4", "cartridge", 250);
@@ -12109,40 +12109,40 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetFightMode(pchar, true);
 		break;
 		
-		case "Mtraxx_CartahenaFortThirdBattleEnd": // завершили бой во дворе
+		case "Mtraxx_CartahenaFortThirdBattleEnd": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			LAi_SetFightMode(pchar, false);
 			PlaySound("interface\abordage_wining.wav");
-			// считаем выживших
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			n = 0;
 			for (i=1; i<=iTotalTemp; i++)
 			{
 				sld = CharacterFromID("Mtr_CartahenaFort2Pirate_"+i);
 				if (LAi_GetCharacterHP(sld) > 0) n++;
-				sld.lifeday = 0; // патч 17/1
+				sld.lifeday = 0; // пїЅпїЅпїЅпїЅ 17/1
 			}
-			log_Testinfo("В бою выжило - "+n+" наших бойцов");
-			pchar.questTemp.Mtraxx.Cartahena.Fort3Crew = n; // запоминаем
+			log_Testinfo("пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - "+n+" пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
+			pchar.questTemp.Mtraxx.Cartahena.Fort3Crew = n; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestFunctionDelay("Mtraxx_CartahenaExittownReload", 5.0);
 		break;
 		
-		case "Mtraxx_CartahenaExittownBattle": // бой на выходе из города
+		case "Mtraxx_CartahenaExittownBattle": // пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			PlaySound("interface\_GTBoard2.wav");
 			iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+5;
 			chrDisableReloadToLocation = true;
-			// наши
-			for (i=1; i<=3; i++) // офицеры ГГ
+			// пїЅпїЅпїЅпїЅ
+			for (i=1; i<=3; i++) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
 			{
 				idx = GetOfficersIndex(pchar, i);
 				if (idx < 1) continue;
 				sld = &Characters[idx];
 				ChangeCharacterAddressGroup(sld, "Cartahena_ExitTown", "officers", "reload3_"+i);
 			}
-			sld = CharacterFromID("Lepricon"); // Леприкон
+			sld = CharacterFromID("Lepricon"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_CharacterDisableDialog(sld);
 			LAi_SetWarriorType(sld);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			ChangeCharacterAddressGroup(sld, "Cartahena_ExitTown", "rld", "aloc12");
-			for (i=5; i<=10; i++) // буканьеры Леприкона
+			for (i=5; i<=10; i++) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				sld = CharacterFromID("Lepricons_bukaneers_"+i);
 				if (i < 10) ChangeCharacterAddressGroup(sld, "Cartahena_ExitTown", "rld", "aloc"+(i-4));
@@ -12152,11 +12152,11 @@ void QuestComplete(string sQuestName, string qname)
 				LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 				sld.lifeday = 3;
 			}
-			// испанцы
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			for (i=1; i<=12; i++)
 			{
-				if (i < 3) // мушкетеры, 2 шт
+				if (i < 3) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 2 пїЅпїЅ
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("Mtr_CartahenaExittownGuard_"+i, "mush_spa_"+(rand(2)+1), "man", "mushketer", iRank, SPAIN, -1, false, "soldier"));
 					FantomMakeCoolFighter(sld, iRank, 65, 65, "", "mushket1", "cartridge", 200);
@@ -12166,7 +12166,7 @@ void QuestComplete(string sQuestName, string qname)
 				}
 				else
 				{
-					if (i == 12) // офицер
+					if (i == 12) // пїЅпїЅпїЅпїЅпїЅпїЅ
 					{
 						sld = GetCharacter(NPC_GenerateCharacter("Mtr_CartahenaExittownGuard_"+i, "off_spa_5", "man", "man", iRank+5, SPAIN, -1, false, "soldier"));
 						FantomMakeCoolFighter(sld, iRank+5, 75, 75, "topor_04", "pistol4", "cartridge", 250);
@@ -12196,7 +12196,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetFightMode(pchar, true);
 		break;
 		
-		case "Mtraxx_CartahenaExittownBattleEnd": // завершили бой у ворот
+		case "Mtraxx_CartahenaExittownBattleEnd": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			LAi_SetFightMode(pchar, false);
 			PlaySound("interface\abordage_wining.wav");
 			setCharacterShipLocation(pchar, "Cartahena_Town");
@@ -12204,59 +12204,59 @@ void QuestComplete(string sQuestName, string qname)
 			locations[FindLocation("Cartahena_Town")].QuestCapture = true;
 			locations[FindLocation("Cartahena_Townhall")].QuestCapture = true;
 			DoQuestFunctionDelay("Mtraxx_CartahenaTownReload", 5.0);
-			for (i=5; i<=10; i++) // патч 17/1
+			for (i=5; i<=10; i++) // пїЅпїЅпїЅпїЅ 17/1
 			{
 				sld = CharacterFromID("Lepricons_bukaneers_"+i);
 				sld.lifeday = 0; 
 			}
-			// суммируем всех оставшихся бойцов
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			iTotalTemp = sti(pchar.questTemp.Mtraxx.Cartahena.Fort1Crew)+sti(pchar.questTemp.Mtraxx.Cartahena.Fort2Crew)+sti(pchar.questTemp.Mtraxx.Cartahena.Fort3Crew);
-			pchar.questTemp.Mtraxx.Cartahena.FortAliveCrew = iTotalTemp; // выживший десант в форте, из него идут на город
+			pchar.questTemp.Mtraxx.Cartahena.FortAliveCrew = iTotalTemp; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		break;
 		
-		case "Mtraxx_CartahenaTownBattle": // бой в городе
-			// прячем нищеброда
+		case "Mtraxx_CartahenaTownBattle": // пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Cartahena_Poorman");
 			ChangeCharacterAddressGroup(sld, "none", "", "");
 			PlaySound("interface\_GTBoard2.wav");
 			iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+5;
-			// считаем выживших бойцов. Участвует только 20 рыл. Их запоминаем.
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 20 пїЅпїЅпїЅ. пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 			if (iTotalTemp > 20) n = 20;
 			else n = iTotalTemp;
-			iTotalTemp = n; // запомнили в глобальную переменную
+			iTotalTemp = n; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.questTemp.Mtraxx.Cartahena.TownCrew = n;
-			// наши
-			for (i=1; i<=3; i++) // офицеры ГГ
+			// пїЅпїЅпїЅпїЅ
+			for (i=1; i<=3; i++) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
 			{
 				idx = GetOfficersIndex(pchar, i);
 				if (idx < 1) continue;
 				sld = &Characters[idx];
 				ChangeCharacterAddressGroup(sld, "Cartahena_Town", "officers", "gate_back_"+i);
 			}
-			sld = CharacterFromID("Terrax"); // Тиракс
+			sld = CharacterFromID("Terrax"); // пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_CharacterDisableDialog(sld);
 			LAi_SetWarriorType(sld);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			ChangeCharacterAddressGroup(sld, "Cartahena_Town", "reload", "houseSp2");
-			sld = CharacterFromID("Jeffry"); // Лысый
+			sld = CharacterFromID("Jeffry"); // пїЅпїЅпїЅпїЅпїЅ
 			LAi_CharacterDisableDialog(sld);
 			LAi_SetWarriorType(sld);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			ChangeCharacterAddressGroup(sld, "Cartahena_Town", "reload", "houseSp1");
-			sld = CharacterFromID("Pelly"); // Тесак
+			sld = CharacterFromID("Pelly"); // пїЅпїЅпїЅпїЅпїЅ
 			LAi_CharacterDisableDialog(sld);
 			LAi_SetWarriorType(sld);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			ChangeCharacterAddressGroup(sld, "Cartahena_Town", "reload", "houseF2");
-			sld = CharacterFromID("Lepricon"); // Леприкон
+			sld = CharacterFromID("Lepricon"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_CharacterDisableDialog(sld);
 			LAi_SetWarriorType(sld);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			ChangeCharacterAddressGroup(sld, "Cartahena_Town", "reload", "houseS2");
-			log_Testinfo("Наших с оружием - "+iTotalTemp+" бойцов");
+			log_Testinfo("пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - "+iTotalTemp+" пїЅпїЅпїЅпїЅпїЅпїЅ");
 			for (i=1; i<=iTotalTemp; i++)
 			{
-				if (i < 3) // мушкетеры, 2 шт
+				if (i < 3) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 2 пїЅпїЅ
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("Mtr_CartahenaTownPirate_"+i, "mush_ctz_"+(i+6), "man", "mushketer", iRank, PIRATE, -1, false, "soldier"));
 					FantomMakeCoolFighter(sld, iRank, 60, 60, "", "mushket3", "grapeshot", 170);
@@ -12276,9 +12276,9 @@ void QuestComplete(string sQuestName, string qname)
 				DeleteAttribute(sld, "DontClearDead");
 				LAi_CharacterDisableDialog(sld);
 			}
-			// испанцы
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
-			// офицер
+			// пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = GetCharacter(NPC_GenerateCharacter("Mtr_CartahenaTownOfficer_"+i, "off_spa_5", "man", "man", iRank+7, SPAIN, -1, false, "soldier"));
 			FantomMakeCoolFighter(sld, iRank+7, 85, 85, "topor_04", "pistol4", "cartridge", 250);
 			SetCharacterPerk(sld, "SwordplayProfessional");
@@ -12290,7 +12290,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_MoveCharacter(sld, "EnemyFight");
 			DeleteAttribute(sld, "SaveItemsForDead");
 			DeleteAttribute(sld, "DontClearDead");
-			// мушкетеры
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=3; i<=8; i++)
 			{
 				
@@ -12320,7 +12320,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
 			LAi_group_SetCheck("EnemyFight", "Mtraxx_CartahenaTownBattleEnd");
 			LAi_SetFightMode(pchar, true);
-			// огонь и дым
+			// пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ
 			CreateLocationParticles("Bomb_Smoke", "reload", "houseF1", 3, 0, 0, "torch_deck");
 			CreateLocationParticles("shipfire", "reload", "houseF1", 0, 0, 0, "fortfire");
 			CreateLocationParticles("Bomb_Smoke", "reload", "houseS4", 3, 0, 0, "torch_deck");
@@ -12333,11 +12333,11 @@ void QuestComplete(string sQuestName, string qname)
 			CreateLocationParticles("shipfire", "reload", "houseH1", 0, 0, 0, "fortfire");
 		break;
 		
-		case "Mtraxx_CartahenaTownBattleEnd": // закончили бой в городе
+		case "Mtraxx_CartahenaTownBattleEnd": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetFightMode(pchar, false);
 			PlaySound("interface\abordage_wining.wav");
-			InterfaceStates.Buttons.Save.enable = true;//разрешить сохраняться
-			// считаем выживших
+			InterfaceStates.Buttons.Save.enable = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			n = 0;
 			for (i=1; i<=iTotalTemp; i++)
 			{
@@ -12345,15 +12345,15 @@ void QuestComplete(string sQuestName, string qname)
 				if (LAi_GetCharacterHP(sld) > 0) n++;
 				sld.lifeday = 3;
 			}
-			log_Testinfo("В бою выжило - "+n+" наших бойцов");
-			int DeadCrew = iTotalTemp - n; // погибшие в городской боевке
-			// бои окончены, считаем всех выживших бойцов по итогу
-			int AliveCrew = sti(pchar.questTemp.Mtraxx.Cartahena.FortAliveCrew)-DeadCrew; // выжившие
-			pchar.questTemp.Mtraxx.Cartahena.AliveCrew1 = makeint(AliveCrew*40*sti(pchar.questTemp.Mtraxx.Cartahena.Crewpercent1)/100)+1; // команда ГГ
-			pchar.questTemp.Mtraxx.Cartahena.AliveCrew2 = makeint(AliveCrew*40*sti(pchar.questTemp.Mtraxx.Cartahena.Crewpercent2)/100)+1; // команда Тиракса
-			pchar.questTemp.Mtraxx.Cartahena.AliveCrew3 = makeint(AliveCrew*40*sti(pchar.questTemp.Mtraxx.Cartahena.Crewpercent3)/100)+1; // команда Лысого
-			pchar.questTemp.Mtraxx.Cartahena.AliveCrew4 = makeint(AliveCrew*40*sti(pchar.questTemp.Mtraxx.Cartahena.Crewpercent4)/100)+1; // команда Тесака
-			// главарей - в кучу, Тиракса позже, во избежание сбоя
+			log_Testinfo("пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - "+n+" пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
+			int DeadCrew = iTotalTemp - n; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			int AliveCrew = sti(pchar.questTemp.Mtraxx.Cartahena.FortAliveCrew)-DeadCrew; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			pchar.questTemp.Mtraxx.Cartahena.AliveCrew1 = makeint(AliveCrew*40*sti(pchar.questTemp.Mtraxx.Cartahena.Crewpercent1)/100)+1; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
+			pchar.questTemp.Mtraxx.Cartahena.AliveCrew2 = makeint(AliveCrew*40*sti(pchar.questTemp.Mtraxx.Cartahena.Crewpercent2)/100)+1; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			pchar.questTemp.Mtraxx.Cartahena.AliveCrew3 = makeint(AliveCrew*40*sti(pchar.questTemp.Mtraxx.Cartahena.Crewpercent3)/100)+1; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			pchar.questTemp.Mtraxx.Cartahena.AliveCrew4 = makeint(AliveCrew*40*sti(pchar.questTemp.Mtraxx.Cartahena.Crewpercent4)/100)+1; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Jeffry");
 			LAi_SetActorType(sld);
 			LAi_ActorFollow(sld, pchar, "", 8.0);
@@ -12366,7 +12366,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Mtraxx_CartahenaToGovernor", 8.0);
 		break;
 		
-		case "Mtraxx_CartahenaToGovernor": // к губеру
+		case "Mtraxx_CartahenaToGovernor": // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Terrax");
 			LAi_CharacterEnableDialog(sld);
 			sld.dialog.currentnode = "mtraxx_104";
@@ -12374,8 +12374,8 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0); 
 		break;
 		
-		case "Mtraxx_CartahenaResidence": // в резиденции Картахены
-			// прячем настоящего губера и ставим его клон
+		case "Mtraxx_CartahenaResidence": // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Cartahena_Mayor");
 			ChangeCharacterAddressGroup(sld, "none", "", "");
 			sld = GetCharacter(NPC_GenerateCharacter("Mtr_CartahenaMayorClone", "huber_22", "man", "man", 30, SPAIN, -1, false, "officer"));
@@ -12389,13 +12389,13 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetStayType(sld);
 		break;
 		
-		case "Mtraxx_CartahenaResidenceWait": // ждем выкупа от губернатора
+		case "Mtraxx_CartahenaResidenceWait": // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestCheckDelay("Mtraxx_CartahenaResidenceWait1", 5.0);
 		break;
 		
-		case "Mtraxx_CartahenaResidenceWait1": // ждем выкупа от губернатора
-			SetLaunchFrameFormParam("One day later..."+ NewStr() +"The ransom for Cartagena was collected", "Mtraxx_CartahenaResidenceMayor", 0, 5);//табличка
-			WaitDate("", 0, 0, 1, 1, 10); //крутим время
+		case "Mtraxx_CartahenaResidenceWait1": // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			SetLaunchFrameFormParam("One day later..."+ NewStr() +"The ransom for Cartagena was collected", "Mtraxx_CartahenaResidenceMayor", 0, 5);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			WaitDate("", 0, 0, 1, 1, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			LaunchFrameForm();
 			RefreshLandTime();
 			RecalculateJumpTable();
@@ -12412,8 +12412,8 @@ void QuestComplete(string sQuestName, string qname)
 			OfficersReaction("bad");
 		break;
 		
-		case "Mtraxx_CartahenaStreet": // антураж захваченной Картахены
-			// огонь и дым
+		case "Mtraxx_CartahenaStreet": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ
 			for (i=4; i<=10; i++)
 			{
 				if (i == 9) continue;
@@ -12430,7 +12430,7 @@ void QuestComplete(string sQuestName, string qname)
 			CreateLocationParticles("shipfire", "reload", "houseS3", 0, 0, 0, "fortfire");
 			CreateLocationParticles("Bomb_Smoke", "reload", "houseH1", 0, 0, 0, "torch_deck");
 			CreateLocationParticles("shipfire", "reload", "houseH1", 0, 0, 0, "fortfire");
-			for (i=1; i<=19; i++) // жертвы нападения
+			for (i=1; i<=19; i++) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				if (i < 10)
 				{
@@ -12452,7 +12452,7 @@ void QuestComplete(string sQuestName, string qname)
 			OfficersReaction("bad");
 		break;
 		
-		case "Mtraxx_CartahenaTerraxInFort": // пираты в форте
+		case "Mtraxx_CartahenaTerraxInFort": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Terrax");
 			sld.dialog.currentnode = "mtraxx_106";
 			LAi_SetStayType(sld);
@@ -12466,17 +12466,17 @@ void QuestComplete(string sQuestName, string qname)
 			sld = CharacterFromID("Mtr_Vensan");
 			LAi_SetActorType(sld);
 			ChangeCharacterAddressGroup(sld, "Cartahena_fort", "goto", "goto31");
-			// тут делаем расчет команд кораблей для дележа добычи. Тиракс забирает 50%, остальные 4 корабля - в пропорции от числа команд
+			// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 50%, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 4 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			int iCrew1 = GetCrewQuantity(pchar);
 			int iCrew2 = GetCrewQuantity(characterFromId("Jeffry"));
 			int iCrew3 = GetCrewQuantity(characterFromId("Pelly"));
 			int iCrew4 = GetCrewQuantity(characterFromId("Mtr_Vensan"));
 			int iCrewT = iCrew1+iCrew2+iCrew3+iCrew4;
-			pchar.questTemp.Mtraxx.Cartahena.Gold = makeint(iCrew1*100/iCrewT)*25; // золото ГГ
-			pchar.questTemp.Mtraxx.Cartahena.Money = makeint(iCrew1*100/iCrewT)*1500; // деньги ГГ
+			pchar.questTemp.Mtraxx.Cartahena.Gold = makeint(iCrew1*100/iCrewT)*25; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
+			pchar.questTemp.Mtraxx.Cartahena.Money = makeint(iCrew1*100/iCrewT)*1500; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
 		break;
 		
-		case "Mtraxx_CartahenaComplete": // в городе перед отплытием
+		case "Mtraxx_CartahenaComplete": // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			bDisableCharacterMenu = false;
 			AddQuestRecord("Roger_9", "8");
 			AddQuestUserData("Roger_9", "sGold", sti(pchar.questTemp.Mtraxx.Cartahena.Gold));
@@ -12490,7 +12490,7 @@ void QuestComplete(string sQuestName, string qname)
 			LocatorReloadEnterDisable("Cartahena_town", "reload_jail", true);
 			AddMoneyToCharacter(pchar, sti(pchar.questTemp.Mtraxx.Cartahena.Money));
 			SetCharacterGoods(pchar, GOOD_GOLD, GetCargoGoods(pchar, GOOD_GOLD) + sti(pchar.questTemp.Mtraxx.Cartahena.Gold));
-			bQuestDisableMapEnter = false;//открыть карту
+			bQuestDisableMapEnter = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
 			for (i=4; i<=10; i++)
 			{
@@ -12513,16 +12513,16 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.mtraxx_cartahena_complete.function = "Mtraxx_CartahenaShipsGoAway";
 		break;
 		
-		// эпизод 10
-		case "Mtraxx_RetributionStart": // телепорт к бордельмаман
+		// пїЅпїЅпїЅпїЅпїЅпїЅ 10
+		case "Mtraxx_RetributionStart": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("Tortuga_SecBrRoom", "reload", "reload1", "");
 			pchar.questTemp.Mtraxx.Retribution = "brothel";
-			bQuestDisableMapEnter = true;//закрыть карту
+			bQuestDisableMapEnter = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.GenQuest.MapClosedNoBattle = true;
 			LAi_SetPlayerType(pchar);
 		break;
 		
-		case "Mtraxx_RetributionInBrothel": // в комнате с девочками
+		case "Mtraxx_RetributionInBrothel": // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetSitType(pchar);
 			for (i=1; i<=6; i++)
 			{
@@ -12536,7 +12536,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Mtraxx_RetributionRestInBrothel", 1.3);
 		break;
 		
-		case "Mtraxx_RetributionRestInBrothel": // отдых в борделе
+		case "Mtraxx_RetributionRestInBrothel": // пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			ChangeShowIntarface();
 			ResetSound();
 			SetMusic("music_piratemusic");
@@ -12550,32 +12550,32 @@ void QuestComplete(string sQuestName, string qname)
 			}
 		break;
 		
-		case "Mtraxx_RetributionVoiceInBrothel_1": // голоса
+		case "Mtraxx_RetributionVoiceInBrothel_1": // пїЅпїЅпїЅпїЅпїЅпїЅ
 			PlaySound("VOICE\Russian\brothel\Shluhi-11.wav");
 			PlaySound("ambient\tavern\krujki_003.wav");
 			PlaySound("ambient\tavern\naliv_001.wav");
 		break;
 		
-		case "Mtraxx_RetributionVoiceInBrothel_2": // голоса
+		case "Mtraxx_RetributionVoiceInBrothel_2": // пїЅпїЅпїЅпїЅпїЅпїЅ
 			PlaySound("VOICE\Russian\brothel\Shluhi-12.wav");
 			PlaySound("ambient\tavern\krujki_004.wav");
 			PlaySound("ambient\tavern\naliv_002.wav");
 		break;
 		
-		case "Mtraxx_RetributionVoiceInBrothel_3": // голоса
+		case "Mtraxx_RetributionVoiceInBrothel_3": // пїЅпїЅпїЅпїЅпїЅпїЅ
 			PlaySound("VOICE\Russian\brothel\Shluhi-13.wav");
 			PlaySound("ambient\tavern\krujki_005.wav");
 			PlaySound("ambient\tavern\naliv_003.wav");
 		break;
 		
-		case "Mtraxx_RetributionFrameInBrothel": // нагулялся
+		case "Mtraxx_RetributionFrameInBrothel": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			PlaySound("ambient\tavern\orijka_003.wav");
 			bDisableCharacterMenu = false;
 			InterfaceStates.Buttons.Save.enable = true;
 			locCameraResetState();
 			iTime = sti(environment.time);
 			SetLaunchFrameFormParam("Two days have passed swiftly "+ NewStr() +" in partying and amorous pleasures...", "Mtraxx_RetributionTortugaReload", 0, 5);
-			WaitDate("", 0, 0, 2, 6, 5); //крутим время
+			WaitDate("", 0, 0, 2, 6, 5); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			AddCharacterHealth(pchar, 8);
 			LaunchFrameForm();
 			RecalculateJumpTable();
@@ -12586,11 +12586,11 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.GenQuest.CamShuttle = 2;
 		break;
 		
-		case "Mtraxx_RetributionTortugaReload": // релоад на улицы
+		case "Mtraxx_RetributionTortugaReload": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			DoQuestReloadToLocation("Tortuga_town", "reload", "reload9", "Mtraxx_RetributionTortugaStreets");
 		break;
 		
-		case "Mtraxx_RetributionTortugaStreets": // ставим Камиллу
+		case "Mtraxx_RetributionTortugaStreets": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.questTemp.Mtraxx.Retribution = "tavern";
 			PlaySound("ambient\tavern\orijka_002.wav");
 			sld = GetCharacter(NPC_GenerateCharacter("Kamilla", "women_16", "woman", "towngirl", 15, FRANCE, -1, true, "quest"));
@@ -12605,7 +12605,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 		break;
 		
-		case "Mtraxx_RetributionToRoom": // в комнате таверны
+		case "Mtraxx_RetributionToRoom": // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Kamilla");
 			sld.dialog.currentnode = "camilla_7";
 			ChangeCharacterAddressGroup(sld, "Tortuga_tavern_upstairs", "quest", "quest3");
@@ -12613,7 +12613,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialogDelay(sld, pchar, "", 2.0);
 		break;
 		
-		case "Mtraxx_RetributionRoomSex": // после секса с Камиллой
+		case "Mtraxx_RetributionRoomSex": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			bDisableCharacterMenu = false;
 			DeleteAttribute(pchar, "GenQuest.FrameLockEsc");
 			sld = characterFromId("Kamilla");
@@ -12622,7 +12622,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorDialogDelay(sld, pchar, "", 1.0);
 		break;
 		
-		case "Mtraxx_RetributionKamilla": // Камиллу - в церковь
+		case "Mtraxx_RetributionKamilla": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Kamilla");
 			LAi_SetStayType(sld);
 			chrDisableReloadToLocation = false;
@@ -12632,7 +12632,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestReloadToLocation("Carataska_jungle_02", "goto", "goto5", "Mtraxx_RetributionFire");
 		break;
 		
-		case "Mtraxx_RetributionFire": // осталось только поджечь
+		case "Mtraxx_RetributionFire": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=1; i<=3; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("Mtr_FirePirate_"+i, "citiz_4"+i, "man", "man", 10, PIRATE, 1, false, "soldier"));
@@ -12651,7 +12651,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestFunctionDelay("Mtraxx_RetributionJungleBoom", 5.0);
 		break;
 		
-		case "Mtraxx_RetributionGotoRuins": // прерывание на вход в подземелья
+		case "Mtraxx_RetributionGotoRuins": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			CreateLocationParticles("smoke", "quest", "deadfall", 0, 0, 0, "");
 			CreateLocationParticles("smoke", "reload", "reload2_back", 0, 0, 0, "");
 			AddQuestRecord("Roger_10", "5-1");
@@ -12660,7 +12660,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.mtraxx_retribution_ruins.function = "Mtraxx_RetributionRuins";
 		break;
 		
-		case "Mtraxx_RetributionPellyAfterFight": // окончили бой с Тесаком
+		case "Mtraxx_RetributionPellyAfterFight": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			chrDisableReloadToLocation = false;
 			AddQuestRecord("Roger_10", "7");
@@ -12669,7 +12669,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.mtraxx_retribution_ruins1.function = "Mtraxx_RetributionSetJeffry";
 		break;
 		
-		case "Mtraxx_RetributionJeffryTreasure": // с Джеффри у сокровищ - любуется
+		case "Mtraxx_RetributionJeffryTreasure": // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Jeffry");
 			LAi_SetActorType(sld);
 			LAi_ActorTurnToLocator(sld, "monster", "monster3");
@@ -12679,56 +12679,56 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorTurnToLocator(sld, "quest", "quest4");
 		break;
 		
-		case "Mtraxx_RetributionJeffryTreasure1": // с Джеффри у сокровищ - идет в позицию
+		case "Mtraxx_RetributionJeffryTreasure1": // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Jeffry");
 			LAi_SetActorType(sld);
 			LAi_ActorGoToLocator(sld, "quest", "quest5", "Mtraxx_RetributionJeffryTreasure2", -1);
 		break;
 		
-		case "Mtraxx_RetributionJeffryTreasure2": // с Джеффри у сокровищ
+		case "Mtraxx_RetributionJeffryTreasure2": // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			sld = characterFromId("Jeffry");
 			LAi_SetActorType(sld);
 			LAi_ActorDialogDelay(sld, pchar, "", 1.0);
 		break;
 		
-		case "Mtraxx_RetributionJeffryMushketer": // выстрел в ГГ
+		case "Mtraxx_RetributionJeffryMushketer": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ
 			sld = characterFromId("Jeffry_PirateDung_4");
 			LAi_SetActorType(sld);
 			LAi_ActorAnimation(sld, "shot", "Mtraxx_RetributionJeffryShot", 1.0);
 		break;
 		
-		case "Mtraxx_RetributionJeffryShot": // выстрел в ГГ - реакция
+		case "Mtraxx_RetributionJeffryShot": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetActorType(pchar);
 			LAi_ActorAnimation(pchar, "hit_fire", "pchar_back_to_player", 0.8);
 			CreateLocationParticles("blood_big", "quest", "quest4", 2.0, 0, 0, "");
 			PlaySound("People Fight\Damage_NPC_03.wav");
-			i = makeint(LAi_GetCharacterHP(pchar)/2); // 3 прогона
+			i = makeint(LAi_GetCharacterHP(pchar)/2); // 3 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_ApplyCharacterDamage(pchar, i, "fire");
-			n = MOD_SKILL_ENEMY_RATE; // 3 прогона
+			n = MOD_SKILL_ENEMY_RATE; // 3 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			AddCharacterHealth(pchar, -n);
 			DoQuestCheckDelay("Mtraxx_RetributionJeffryAngry", 1.0);
 		break;
 		
-		case "Mtraxx_RetributionJeffryAngry": // Джеффри перед боем
+		case "Mtraxx_RetributionJeffryAngry": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			sld = characterFromId("Jeffry");
 			sld.dialog.currentnode = "Jeffry_35";
 			LAi_SetActorType(sld);
 			LAi_ActorDialogDelay(sld, pchar, "", 0.2);
 		break;
 		
-		case "Mtraxx_RetributionJeffryAfterFight": // окончили бой с Джеффри
+		case "Mtraxx_RetributionJeffryAfterFight": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			chrDisableReloadToLocation = false;
 			AddQuestRecord("Roger_10", "8");
 			pchar.quest.mtraxx_retribution_ruins2.win_condition.l1 = "location";
 			pchar.quest.mtraxx_retribution_ruins2.win_condition.l1.location = "Judgement_dungeon_04";
 			pchar.quest.mtraxx_retribution_ruins2.function = "Mtraxx_RetributionMushketers";
-			n = MOD_SKILL_ENEMY_RATE; // 3 прогона
+			n = MOD_SKILL_ENEMY_RATE; // 3 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			AddCharacterHealth(pchar, -n);
 		break;
 		
-		case "Mtraxx_RetributionMushAfterFight": // окончили бой с 1-мушкетерами
+		case "Mtraxx_RetributionMushAfterFight": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ 1-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			chrDisableReloadToLocation = false;
 			pchar.quest.mtraxx_retribution_ruins3.win_condition.l1 = "location";
@@ -12736,7 +12736,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.mtraxx_retribution_ruins3.function = "Mtraxx_RetributionNextMushketers";
 		break;
 		
-		case "Mtraxx_RetributionNextMushAfterFight": // окончили бой с 2-мушкетерами
+		case "Mtraxx_RetributionNextMushAfterFight": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ 2-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			chrDisableReloadToLocation = false;
 			pchar.quest.mtraxx_retribution_ruins4.win_condition.l1 = "location";
@@ -12744,7 +12744,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.mtraxx_retribution_ruins4.function = "Mtraxx_RetributionLastMushketers";
 		break;
 		
-		case "Mtraxx_RetributionLastMushAfterFight": // окончили бой с 3-мушкетерами
+		case "Mtraxx_RetributionLastMushAfterFight": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ 3-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			chrDisableReloadToLocation = false;
 			pchar.quest.mtraxx_retribution_ruins5.win_condition.l1 = "location";
@@ -12752,7 +12752,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.mtraxx_retribution_ruins5.function = "Mtraxx_RetributionSetLepricon";
 		break;
 		
-		case "Mtraxx_RetributionLepriconAfterFight": // окончили бой с Леприконом 3 прогона
+		case "Mtraxx_RetributionLepriconAfterFight": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 3 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_group_Delete("EnemyFight");
 			bNoEatNoRats = true;
 			chrDisableReloadToLocation = false;
@@ -12763,7 +12763,7 @@ void QuestComplete(string sQuestName, string qname)
 			Locations[n].models.always.blockade.tech = "DLightModel";
 			Locations[n].models.day.charactersPatch = "ruins1_qpatch";
 			Locations[n].models.night.charactersPatch = "ruins1_qpatch";
-			LAi_LocationDisableOfficersGen("Ruins", true);//офицеров не пускать
+			LAi_LocationDisableOfficersGen("Ruins", true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_LocationDisableOfficersGen("Carataska_jungle_03", true);
 			LAi_LocationDisableOfficersGen("Carataska_jungle_02", true);
 			LAi_LocationDisableOfficersGen("Carataska_Cave", true);
@@ -12779,7 +12779,7 @@ void QuestComplete(string sQuestName, string qname)
 			AddQuestRecord("Roger_10", "9");
 		break;
 		
-		case "Mtraxx_RetributionCreateEnrico": // ставим Энрико
+		case "Mtraxx_RetributionCreateEnrico": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetActorType(pchar);
 			LAi_ActorTurnToLocator(pchar, "quest", "door");
 			sld = GetCharacter(NPC_GenerateCharacter("Zorro", "Enrique_1", "man", "man", 40, SPAIN, -1, false, "quest"));
@@ -12794,7 +12794,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_ActorGoToLocator(sld, "quest", "zorro", "Mtraxx_RetributionEnrico", -1);
 		break;
 		
-		case "Mtraxx_RetributionEnrico": // разговор с Энрико
+		case "Mtraxx_RetributionEnrico": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetPlayerType(pchar);
 			sld = characterFromId("Zorro");
 			LAi_SetActorType(sld);
@@ -12803,7 +12803,7 @@ void QuestComplete(string sQuestName, string qname)
 			SetMusic("music_teleport");
 		break;
 		
-		case "Mtraxx_RetributionEnricoGo": // Энрико ушел
+		case "Mtraxx_RetributionEnricoGo": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			PlaySound("ambient\jail\jail_door2.wav");
 			LAi_SetPlayerType(pchar);
 			ResetSound();
@@ -12822,28 +12822,28 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.questTemp.Mtraxx.Retribution.DoorOpen = "true";
 		break;
 		
-		case "Mtraxx_RetributionDoorOpen": // открыли дверь вниз
+		case "Mtraxx_RetributionDoorOpen": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			AddQuestRecord("Roger_10", "11");
 		break;
 		
-		case "Mtraxx_RetributionChurchLock": // сцена закрытых дверей
+		case "Mtraxx_RetributionChurchLock": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			PlaySound("interface\knock.wav");
 			LAi_ActorGoToLocator(pchar, "quest", "LLquest3", "Mtraxx_RetributionChurchLock1", -1);
 		break;
 		
-		case "Mtraxx_RetributionChurchLock1": // сцена закрытых дверей
+		case "Mtraxx_RetributionChurchLock1": // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			PlaySound("interface\knock.wav");
 			LAi_ActorGoToLocator(pchar, "quest", "LLquest1", "Mtraxx_RetributionChurchLock2", -1);
 		break;
 		
-		case "Mtraxx_RetributionChurchLock2": // беседа самого с собой
+		case "Mtraxx_RetributionChurchLock2": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.questTemp.Mtraxx.Retribution.Bead = "true";
 			LAi_SetPlayerType(pchar);
 			DoQuestCheckDelay("TalkSelf_Quest", 1.0);
 		break;
 		
-		case "Mtraxx_RetributionBead": // молитва
-			bDisableCharacterMenu = true;//лочим F2
+		case "Mtraxx_RetributionBead": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			bDisableCharacterMenu = true;//пїЅпїЅпїЅпїЅпїЅ F2
 			InterfaceStates.Buttons.Save.enable = false;
 			pchar.questTemp.NoFast = true;
 			ResetSound();
@@ -12853,36 +12853,36 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Mtraxx_RetributionGotoSleep", 45.0);
 		break;
 		
-		case "Mtraxx_RetributionGotoSleep": // ложится спать
+		case "Mtraxx_RetributionGotoSleep": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			LAi_SetActorType(pchar);
 			LAi_ActorAnimation(pchar, "Ground_SitDown", "Mtraxx_RetributionGotoSleep1", 3.0);
 		break;
 		
-		case "Mtraxx_RetributionGotoSleep1": // ложится спать
+		case "Mtraxx_RetributionGotoSleep1": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			LAi_SetActorType(pchar);
 			LAi_ActorSetLayMode(pchar);
 			DoQuestFunctionDelay("Mtraxx_RetributionSleep", 5.0);
 		break;
 		
-		case "Mtraxx_RetributionSleep": // снится Мерида
+		case "Mtraxx_RetributionSleep": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetActorType(pchar);
 			PlaySound("ambient\church\zvon.wav");
 			DoQuestFunctionDelay("Mtraxx_RetributionSetMusic", 1.2);
-			for (i=1; i<=18; i++) // дым
+			for (i=1; i<=18; i++) // пїЅпїЅпїЅ
 			{
 				if (i == 3) continue;
 				CreateLocationParticles("Bomb_Smoke", "reload", "reload"+i, 0, 0, 0, "torch_deck");
 			}
-			for (i=1; i<=18; i++) // огонь
+			for (i=1; i<=18; i++) // пїЅпїЅпїЅпїЅпїЅ
 			{
 				if (i == 3) continue;
 				CreateLocationParticles("shipfire", "reload", "reload"+i, 0, 0, 0, "fortfire");
 			}
-			for (i=1; i<=15; i++) // дым
+			for (i=1; i<=15; i++) // пїЅпїЅпїЅ
 			{
 				CreateLocationParticles("smoke", "goto", "goto"+i, 0, 0, 0, "");
 			}
-			for (i=1; i<=8; i++) // жертвы
+			for (i=1; i<=8; i++) // пїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				if (i < 5) sld = GetCharacter(NPC_GenerateCharacter("Sleep_Meridavictim_"+i, "women_"+(9+i), "woman", "towngirl", 1, SPAIN, 1, true, "quest"));
 				else sld = GetCharacter(NPC_GenerateCharacter("Sleep_Meridavictim_"+i, "citiz_1"+i, "man", "man", 1, SPAIN, 1, true, "quest"));
@@ -12993,7 +12993,7 @@ void QuestComplete(string sQuestName, string qname)
 			ChangeCharacterAddressGroup(sld, "none", "", "");
 			sld = characterFromId("Sleep_Lepricon");	
 			ChangeCharacterAddressGroup(sld, "none", "", "");
-			if (GetCharacterIndex("Mirabella") != -1) // спасли Мирабель
+			if (GetCharacterIndex("Mirabella") != -1) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("Sleep_Mirabella", "Mirabelle", "woman", "towngirl", 1, SPAIN, 1, true, "quest"));
 				sld.name = "Mirabelle";
@@ -13036,14 +13036,14 @@ void QuestComplete(string sQuestName, string qname)
 		
 		case "Mtraxx_RetributionSleep8": // 
 			PlaySound("ambient\church\zvon.wav");
-			WaitDate("", 0, 0, 0, 18, rand(30)); //крутим время
+			WaitDate("", 0, 0, 0, 18, rand(30)); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RefreshLandTime();
 			RecalculateJumpTable();
 			Whr_UpdateWeather();
 			DoQuestReloadToLocation("Judgement_church", "quest", "LLquest9", "Mtraxx_RetributionAwake");
 		break;
 		
-		case "Mtraxx_RetributionAwake": // просыпается
+		case "Mtraxx_RetributionAwake": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = false;
 			AddCharacterHealth(pchar, -10);
 			bDisableCharacterMenu = false;
@@ -13057,7 +13057,7 @@ void QuestComplete(string sQuestName, string qname)
 			sld.startLocator = "item"+(rand(4)+1);
 		break;
 		
-		case "Mtraxx_RetributionFreedom": // молится за спасение
+		case "Mtraxx_RetributionFreedom": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_SetActorType(pchar);
 			LAi_ActorAnimation(pchar, "Bead", "", -1);
 			InterfaceStates.Buttons.Save.enable = false;
@@ -13115,7 +13115,7 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("Mtraxx_RetributionFinal", 6.0);
 		break;
 		
-		case "Mtraxx_RetributionFinal": // завершение линейки квестов
+		case "Mtraxx_RetributionFinal": // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			locCameraResetState();
 			PlaySound("ambient\church\zvon.wav");
 			InterfaceStates.Buttons.Save.enable = true;
@@ -13123,7 +13123,7 @@ void QuestComplete(string sQuestName, string qname)
 			bNoEatNoRats = false;
 			LAi_SetPlayerType(pchar);
 			AddQuestRecord("Roger_10", "17");
-			bQuestDisableMapEnter = false;//открыть карту
+			bQuestDisableMapEnter = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
 			DeleteAttribute(pchar, "GenQuest.CannotWait");
 			if (GetCharacterIndex("Mirabella") != -1)
@@ -13136,7 +13136,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.mtraxx_line_complete.function = "Mtraxx_RetributionComplete";
 		break;
 		
-		/// Jason ----------------------------------------------------------- На службе Отечеству ------------------------------------------------------------------
+		/// Jason ----------------------------------------------------------- пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ------------------------------------------------------------------
 		case "Patria_VisiterTortuga": //
 			sld = characterFromId("Noel");
 			RemovePassenger(pchar, sld);
@@ -13166,7 +13166,7 @@ void QuestComplete(string sQuestName, string qname)
 		case "Patria_StivesantWait": //
 			SetLaunchFrameFormParam("Two hours later..."+ NewStr() +"", "", 0, 5);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 2, 10); //крутим время
+			WaitDate("", 0, 0, 0, 2, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			StoreDayUpdate();
 			RefreshWeather();
@@ -13188,21 +13188,21 @@ void QuestComplete(string sQuestName, string qname)
 		
 		case "Patria_SanMartinBaron": //
 			chrDisableReloadToLocation = false;
-			bQuestDisableMapEnter = false;//открыть карту
+			bQuestDisableMapEnter = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
 			AddQuestRecord("Patria", "26");
-			SetFunctionTimerCondition("Patria_SanMartinBaronOver", 0, 0, 7, false); // таймер
+			SetFunctionTimerCondition("Patria_SanMartinBaronOver", 0, 0, 7, false); // пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Noel");
 			AddPassenger(pchar, sld, false);
 			SetCharacterRemovable(sld, false);
-			// атрибуты на Синт-Маартен
-			pchar.questTemp.Patria.SanMartinFort = "true"; // атака
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			pchar.questTemp.Patria.SanMartinFort = "true"; // пїЅпїЅпїЅпїЅпїЅ
 			n = FindIsland("SentMartin");
-			Islands[n].reload.l1.radius = 0.0; // закрыть высадку в порту
-			LocatorReloadEnterDisable("Marigo_ExitTown", "reload3", true); // закрыть городские ворота
+			Islands[n].reload.l1.radius = 0.0; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
+			LocatorReloadEnterDisable("Marigo_ExitTown", "reload3", true); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = CharacterFromID("Marigo Fort Commander");
 			LAi_SetImmortal(sld, true);
-			Character_SetAbordageEnable(sld, false); // неабордируемый форт Синт-Маартена
+			Character_SetAbordageEnable(sld, false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 		
 		case "Patria_SanMartinBack": //
@@ -13212,7 +13212,7 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.Patria_SanMartin_Back.win_condition.l1 = "location";
 			pchar.quest.Patria_SanMartin_Back.win_condition.l1.location = "Nevis";
 			pchar.quest.Patria_SanMartin_Back.function = "Patria_SanMartinBack";
-			SetFunctionTimerCondition("Patria_SanMartinBaronOver", 0, 0, 7, false); // таймер
+			SetFunctionTimerCondition("Patria_SanMartinBaronOver", 0, 0, 7, false); // пїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 		
 		case "Patria_SanMartinBaronTurn": //
@@ -13250,20 +13250,20 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestCheckDelay("hide_weapon", 1.3);
 			DoQuestCheckDelay("sea_victory", 1.3);
 			DeleteAttribute(pchar, "GenQuest.CannotWait");
-			chrDisableReloadToLocation = false;//открыть локацию
-			LocatorReloadEnterDisable("Location_reserve_01", "reload2_back", false); // открыть выход назад
-			bQuestDisableMapEnter = false;//открыть карту
+			chrDisableReloadToLocation = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LocatorReloadEnterDisable("Location_reserve_01", "reload2_back", false); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			bQuestDisableMapEnter = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
 			sld = characterFromId("Marigo_Mayor");
-			ChangeCharacterAddressGroup(sld, "none", "", ""); // прячем губера
-			LocatorReloadEnterDisable("Marigo_town", "gate_back", false);//открыть выход из города
-			SetFunctionTimerCondition("Patria_BastionNewHuber", 0, 0, 10, false); // через 10 дней обновим губера на нового и обновим рудник
-			// меняем нацию Синт-Маартена
+			ChangeCharacterAddressGroup(sld, "none", "", ""); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			LocatorReloadEnterDisable("Marigo_town", "gate_back", false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			SetFunctionTimerCondition("Patria_BastionNewHuber", 0, 0, 10, false); // пїЅпїЅпїЅпїЅпїЅ 10 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			i = FindColony("Marigo");
 			colonies[i].nation = FRANCE;
 			string sColony = "Marigo_town";
 			worldMap.labels.(sColony).icon = FRANCE;
-			// ручками пропишем смену нации статикам
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = characterFromId("Marigo_Priest");
 			sld.nation = FRANCE;
 			LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
@@ -13291,17 +13291,17 @@ void QuestComplete(string sQuestName, string qname)
 			sld = characterFromId("Marigo_Hostess");
 			sld.nation = FRANCE;
 			LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
-			// заставка форта
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			n = Findlocation("Marigo_fort");
 			Locations[n].image = "loading\fort_fra_" + rand(1) + ".tga";
-			// чистим за собой
-			DeleteAttribute(pchar, "TempPerks.QuestTroopers"); // убрать квестовый десант
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			DeleteAttribute(pchar, "TempPerks.QuestTroopers"); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=1; i<=15; i++)
 			{
 				sld = CharacterFromID("Bastion_soldier_"+i);
 				sld.lifeday = 0;
 			}
-			// выводим фрегаты из эскадры, если таковые были и живы
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 			if (GetCharacterIndex("Patria_GlpCap") != -1)
 			{
 				sld = characterFromId("Patria_GlpCap");
@@ -13312,7 +13312,7 @@ void QuestComplete(string sQuestName, string qname)
 				sld = characterFromId("Patria_MrtCap");
 				RemoveCharacterCompanion(pchar, sld);
 			}
-			// начальника рудника - в пленники
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			sld = GetCharacter(NPC_GenerateCharacter("Bastion_spanish_boss", "Boss_2", "man", "man", 15, SPAIN, -1, false, "soldier"));
 			FantomMakeCoolFighter(sld, 15, 20, 20, LinkRandPhrase("blade_18","blade_19","blade_21"), "pistol5", "bullet", 50);
 			pchar.GenQuest.LastQuestPrisonerIdx = SetCharToPrisoner(sld);
@@ -13326,9 +13326,9 @@ void QuestComplete(string sQuestName, string qname)
 		break;
 		
 		case "Patria_CuracaoTrooperLand": //
-			Island_SetReloadEnableGlobal("Curacao", true); //открыть остров
+			Island_SetReloadEnableGlobal("Curacao", true); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.GenQuest.MapClosedNoBattle = true;
-			DeleteAttribute(pchar, "DisableChangeFlagMode"); // разблокировать флаг
+			DeleteAttribute(pchar, "DisableChangeFlagMode"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			chrDisableReloadToLocation = true;
 			sld = characterFromId("Doily_land");
 			LAi_SetImmortal(sld, true);
@@ -13337,10 +13337,10 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetActorType(sld);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
-			// отряд Дойли с пушками
+			// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=1; i<=15; i++)
 			{
-				if (i < 7) // мушкетеры, 6 шт
+				if (i < 7) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 6 пїЅпїЅ
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("Curacao_eng_soldier_"+i, "mush_eng_"+i, "man", "mushketer", 35, ENGLAND, -1, false, "soldier"));
 					FantomMakeCoolFighter(sld, 35, 70, 70, "", "mushket2", "cartridge", 200);
@@ -13368,7 +13368,7 @@ void QuestComplete(string sQuestName, string qname)
 			chrDisableReloadToLocation = false;
 			pchar.quest.Patria_CuracaoMarch1.win_condition.l1 = "location";
 			pchar.quest.Patria_CuracaoMarch1.win_condition.l1.location = "Curacao_jungle_01";
-			pchar.quest.Patria_CuracaoMarch1.function = "Patria_CuracaoJungleBattle"; // второй отряд голландцев
+			pchar.quest.Patria_CuracaoMarch1.function = "Patria_CuracaoJungleBattle"; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 		
 		case "Patria_CuracaoAfterJungleBattle": //
@@ -13376,7 +13376,7 @@ void QuestComplete(string sQuestName, string qname)
 			chrDisableReloadToLocation = false;
 			pchar.quest.Patria_CuracaoMarch2.win_condition.l1 = "location";
 			pchar.quest.Patria_CuracaoMarch2.win_condition.l1.location = "Villemstad_ExitTown";
-			pchar.quest.Patria_CuracaoMarch2.function = "Patria_CuracaoGateBattle"; // у ворот
+			pchar.quest.Patria_CuracaoMarch2.function = "Patria_CuracaoGateBattle"; // пїЅ пїЅпїЅпїЅпїЅпїЅ
 		break;
 		
 		case "Patria_CuracaoGateBattle1": //
@@ -13405,7 +13405,7 @@ void QuestComplete(string sQuestName, string qname)
 				}
 				LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			}
-			// на всякий случай сброс шаблона, если вдруг где-то безобразничают
+			// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=1; i<=15; i++)
 			{
 				if (GetCharacterIndex("Curacao_fra_soldier_"+i) != -1)
@@ -13431,7 +13431,7 @@ void QuestComplete(string sQuestName, string qname)
 		case "Patria_CuracaoStivesantWait": //
 			SetLaunchFrameFormParam("Twenty three hours later..."+ NewStr() +" Peter Stuyvesant has shown himself at the gates", "", 0, 5);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 23, 10); //крутим время
+			WaitDate("", 0, 0, 0, 23, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			StoreDayUpdate();
 			RefreshWeather();
@@ -13464,23 +13464,23 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetPlayerType(pchar);
 			sld = CharacterFromID("Noel");
 			ChangeCharacterAddressGroup(sld, "none", "", "");
-			SetFunctionTimerCondition("Patria_CondotierTimeOver", 0, 0, 15, false); // две недели на разговор с Акулой/Тираксом 
-			if (CheckAttribute(pchar, "questTemp.Saga") && pchar.questTemp.Saga == "end" && colonies[FindColony("Pirates")].nation == PIRATE) // пройдена Сага до конца
+			SetFunctionTimerCondition("Patria_CondotierTimeOver", 0, 0, 15, false); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
+			if (CheckAttribute(pchar, "questTemp.Saga") && pchar.questTemp.Saga == "end" && colonies[FindColony("Pirates")].nation == PIRATE) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			{
 				if (!CheckAttribute(pchar, "questTemp.Saga.DodsonDie")) 
 				{
-					pchar.questTemp.Patria.Saga.Shark = "true"; // Додсон жив
+					pchar.questTemp.Patria.Saga.Shark = "true"; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 					AddQuestRecord("Patria", "68_1");
 				}
 				else 
 				{
-					pchar.questTemp.Patria.Saga.Terrax = "true"; // Додсон погиб, вместо него Тиракс
+					pchar.questTemp.Patria.Saga.Terrax = "true"; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 					AddQuestRecord("Patria", "68_2");
 				}
 			}
 			else 
 			{
-				pchar.questTemp.Patria.Pirate.Terrax = "true"; // Сага не пройдена, к Тираксу в Ла Вегу
+				pchar.questTemp.Patria.Pirate.Terrax = "true"; // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 				AddQuestRecord("Patria", "68_3");
 			}
 		break;
@@ -13532,7 +13532,7 @@ void QuestComplete(string sQuestName, string qname)
 			LAi_SetActorType(sld);
 			LAi_ActorFollowEverywhere(sld, "", -1);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
-			bQuestDisableMapEnter = true;//закрыть карту
+			bQuestDisableMapEnter = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			pchar.GenQuest.MapClosedNoBattle = true;
 			pchar.quest.Patria_Condotier_inCabin.win_condition.l1 = "location";
 			pchar.quest.Patria_Condotier_inCabin.win_condition.l1.location = Get_My_Cabin();
@@ -13541,13 +13541,13 @@ void QuestComplete(string sQuestName, string qname)
 		
 		case "Patria_CondotierToSMartin": //
 			chrDisableReloadToLocation = false;
-			bQuestDisableMapEnter = false;//открыть карту
+			bQuestDisableMapEnter = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
 			sld = CharacterFromID("Noel");
-			AddPassenger(pchar, sld, false);//добавить пассажира
+			AddPassenger(pchar, sld, false);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			SetCharacterRemovable(sld, false);
 			AddQuestRecord("Patria", "79");
-			LocatorReloadEnterDisable("Shore40", "reload2_back", true);//закрыть локатор на рудник
+			LocatorReloadEnterDisable("Shore40", "reload2_back", true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			LAi_LocationDisableOfficersGen("shore40", true);
 			LAi_LocationDisableOfficersGen("Location_reserve_01", true);
 			LAi_LocationDisableOfficersGen("Location_reserve_03", true);
@@ -13555,8 +13555,8 @@ void QuestComplete(string sQuestName, string qname)
 			pchar.quest.Patria_Condotier_sail.win_condition.l1.location = "shore40";
 			pchar.quest.Patria_Condotier_sail.win_condition.l2 = "Night";
 			pchar.quest.Patria_Condotier_sail.function = "Patria_CondotierToMine";
-			// 2 месяца до Стайвесанта, иначе барон даст дуба
-			SetFunctionTimerCondition("Patria_CondotierBaronFail", 0, 0, 60, false); // таймер
+			// 2 пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+			SetFunctionTimerCondition("Patria_CondotierBaronFail", 0, 0, 60, false); // пїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 		
 		case "Patria_CondotierInMine": //
@@ -13571,14 +13571,14 @@ void QuestComplete(string sQuestName, string qname)
 			DoQuestReloadToLocation("Location_reserve_01", "reload", "reload1_back", "Patria_CondotierOnBeach");
 		break;
 		
-		case "Patria_CondotierOnBeach": // охрана пришла
+		case "Patria_CondotierOnBeach": // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			pchar.GenQuest.Hunter2Pause = true;
 			LAi_SetPlayerType(pchar);
-			chrDisableReloadToLocation = true;//закрыть локацию
-			LAi_LocationFightDisable(&Locations[FindLocation("Location_reserve_01")], true);//запретить драться
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			LAi_LocationFightDisable(&Locations[FindLocation("Location_reserve_01")], true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for (i=1; i<=5; i++)
 			{
-				if (i < 3) // мушкетеры, 2 шт
+				if (i < 3) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 2 пїЅпїЅ
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("Marigo_eng_soldier_"+i, "mush_eng_"+i, "man", "mushketer", 25, ENGLAND, -1, false, "soldier"));
 					FantomMakeCoolFighter(sld, 25, 50, 50, "", "mushket1", "cartridge", 150);
@@ -13614,10 +13614,10 @@ void QuestComplete(string sQuestName, string qname)
 		case "Patria_CondotierBeachAfterFight": //
 			chrDisableReloadToLocation = false;
 			LAi_group_Delete("EnemyFight");
-			LocatorReloadEnterDisable("Location_reserve_01", "reload1_back", true);//закрыть локатор на рудник
-			if (CheckAttribute(pchar, "questTemp.Patria.Condotier.BaronKilled")) // барон помер
+			LocatorReloadEnterDisable("Location_reserve_01", "reload1_back", true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			if (CheckAttribute(pchar, "questTemp.Patria.Condotier.BaronKilled")) // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			{
-				pchar.quest.Patria_CondotierBaronFail.over = "yes"; //снять прерывание
+				pchar.quest.Patria_CondotierBaronFail.over = "yes"; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				DeleteAttribute(pchar, "GenQuest.CannotWait");
 				AddQuestRecord("Patria", "75");
 				pchar.questTemp.Patria = "epizode_12_baronkilled";
@@ -13629,7 +13629,7 @@ void QuestComplete(string sQuestName, string qname)
 			}
 			else
 			{
-				pchar.quest.Patria_Baron_killed.over = "yes"; //снять прерывание
+				pchar.quest.Patria_Baron_killed.over = "yes"; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				sld = CharacterFromID("Noel");
 				LAi_SetImmortal(sld, true);
 				LAi_SetActorType(sld);
@@ -13645,7 +13645,7 @@ void QuestComplete(string sQuestName, string qname)
 		case "Patria_CondotierOnCuracaoWait": //
 			SetLaunchFrameFormParam("One day later..."+ NewStr() +"", "", 0, 5);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 1, 0, 10); //крутим время
+			WaitDate("", 0, 0, 1, 0, 10); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			RecalculateJumpTable();
 			StoreDayUpdate();
 			RefreshWeather();
@@ -13664,7 +13664,7 @@ void QuestComplete(string sQuestName, string qname)
 		case "Patria_EuropePuancieInPrison": //
 			DoQuestFunctionDelay("Patria_EuropeMusic", 1.5); // 7-add
 			pchar.questTemp.jailCanMove = true;
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			LocatorReloadEnterDisable("Charles_town", "reload_jail", false);
 		break;
 	}	
@@ -13672,7 +13672,7 @@ void QuestComplete(string sQuestName, string qname)
 
 
 // boal -->
-////////////////////////   общие методы //////////////////////////
+////////////////////////   пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ //////////////////////////
 void SetActorDialogAny2Pchar(string _charId, string _doQuest, float time1, float time2)
 {
     Pchar.AutoQuest.NPCharId = _charId;
@@ -13681,9 +13681,9 @@ void SetActorDialogAny2Pchar(string _charId, string _doQuest, float time1, float
     Pchar.AutoQuest.Time2    = time2;
 }
 
-//для универсализации (navy 17.10.05)
-//уcтановки для телепорта ГГ в любую локацию с задержкой или без. 
-//Для отложенного вызова напр. AddDialogExitQuest()
+//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (navy 17.10.05)
+//пїЅcпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ. 
+//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ. AddDialogExitQuest()
 void SetAnyReloadToLocation(string idLocation, string idGroup, string idLocator, string questName, int delayMonth, int delayDay, int delayHour, int delayMin)
 {
     ref PChar = GetMainCharacter();
@@ -13699,12 +13699,12 @@ void SetAnyReloadToLocation(string idLocation, string idGroup, string idLocator,
 	PChar.AutoQuest.questName	= questName;
 }
 
-// Инициация таблички В это время на Беде  -->
-// _FrameText - текст  Перенос строки делать "текст"+ NewStr() +"текст"
-// _FrameQuest - квест после завершения таблички, если == "Reload_To_Location" см. SetLaunchFrameReloadLocationParam
-// если же будет == "Run_Function" см. SetLaunchFrameRunFunctionParam
-// _delay - время в с. отложения вызова таблички (нужно для неконфликта с заставкой загрузки локаций, где-то 0.1-1.5с)
-// _autoEnd - время в с. автозавершения показа таблички, 4-6с на фразу
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ  -->
+// _FrameText - пїЅпїЅпїЅпїЅпїЅ  пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅ"+ NewStr() +"пїЅпїЅпїЅпїЅпїЅ"
+// _FrameQuest - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ == "Reload_To_Location" пїЅпїЅ. SetLaunchFrameReloadLocationParam
+// пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ == "Run_Function" пїЅпїЅ. SetLaunchFrameRunFunctionParam
+// _delay - пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ-пїЅпїЅ 0.1-1.5пїЅ)
+// _autoEnd - пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 4-6пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 void SetLaunchFrameFormParam(string _FrameText, string _FrameQuest, float _delay, float _autoEnd)
 {
     pchar.AutoQuest.FrameText    = _FrameText;
@@ -13717,7 +13717,7 @@ void SetLaunchFrameFormPic(string _FramePic)
 {
     pchar.AutoQuest.FramePic    = _FramePic;
 }
-// метод для инициации перехода после таблички
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 void SetLaunchFrameReloadLocationParam(string idLocation, string idGroup, string idLocator, string questName)
 {
     pchar.AutoQuest.FrameLocation      = idLocation;
@@ -13725,13 +13725,13 @@ void SetLaunchFrameReloadLocationParam(string idLocation, string idGroup, string
     pchar.AutoQuest.FrameLocator       = idLocator;
     pchar.AutoQuest.FrameLocationQuest = questName;
 }
-// метод для вызова метода из кода после таблички _func - метод, _delay - задержка вызова метода после таблички в с.
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ _func - пїЅпїЅпїЅпїЅпїЅ, _delay - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅ.
 void SetLaunchFrameRunFunctionParam(string _func, float _delay)
 {
     pchar.AutoQuest.FrameFunction      = _func;
     pchar.AutoQuest.FrameFunctionDelay = _delay;
 }
-// Инициация таблички В это время на Беде  <--
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ  <--
 
 void WaitNextHours(string qName)
 {
@@ -13804,11 +13804,11 @@ void StartActorSelfDialog(string _CurrentNode)
     LAi_ActorSelfDialog(pchar, "pchar_back_to_player");
 }
 
-// подъем флагов
+// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 void Flag_PIRATE()
 {
 	PChar.nation	= PIRATE;
-	Ship_FlagRefresh(PChar); //флаг на лету
+	Ship_FlagRefresh(PChar); //пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 	SetNationToOfficers(PIRATE);
 	
 	SetNationRelation2MainCharacter(ENGLAND, RELATION_ENEMY);
@@ -13820,11 +13820,11 @@ void Flag_PIRATE()
 	
 	LAi_group_SetRelation("PIRATE_CITIZENS", LAI_GROUP_PLAYER, LAI_GROUP_NEITRAL);
 	//Relation_PIRATE_SOLDIERS();
-	// сторожевики Тортуги
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (pchar.location == "Tortuga" && !CheckAttribute(pchar, "questTemp.Sharlie.DelTerGuard")) Tortuga_ShipGuardAttack();
-	// капеллан
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (CheckAttribute(pchar, "questTemp.ShipCapellan.Yes")) ShipCapellan_Remove();
-	// Addon 2016-1 Jason Пиратская линейка
+	// Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (CheckAttribute(pchar, "questTemp.Mtraxx.Ignasio.Flag"))
 	{
 		DeleteAttribute(pchar, "questTemp.Mtraxx.Ignasio.Signal");
@@ -13844,7 +13844,7 @@ void Flag_PIRATE()
 void Flag_FRANCE()
 {
 	PChar.nation	= FRANCE;
-    Ship_FlagRefresh(PChar); //флаг на лету
+    Ship_FlagRefresh(PChar); //пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
     SetNationToOfficers(FRANCE);
 
     SetNationRelation2MainCharacter(ENGLAND, GetNationRelation(ENGLAND, FRANCE));
@@ -13856,7 +13856,7 @@ void Flag_FRANCE()
 
     LAi_group_SetRelation("FRANCE_CITIZENS", LAI_GROUP_PLAYER, LAI_GROUP_NEITRAL); //LAI_GROUP_FRIEND);
     //Relation_FRANCE_SOLDIERS();
-	// Addon 2016-1 Jason Пиратская линейка
+	// Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (CheckAttribute(pchar, "questTemp.Mtraxx.Ignasio.Flag"))
 	{
 		DeleteAttribute(pchar, "questTemp.Mtraxx.Ignasio.Signal");
@@ -13876,7 +13876,7 @@ void Flag_FRANCE()
 void Flag_ENGLAND()
 {
 	PChar.nation	= ENGLAND;
-    Ship_FlagRefresh(PChar); //флаг на лету
+    Ship_FlagRefresh(PChar); //пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
     SetNationToOfficers(ENGLAND);
 
 	SetNationRelation2MainCharacter(ENGLAND, RELATION_FRIEND);
@@ -13900,7 +13900,7 @@ void Flag_ENGLAND()
 void Flag_SPAIN()
 {
 	PChar.nation = SPAIN;
-    Ship_FlagRefresh(PChar); //флаг на лету
+    Ship_FlagRefresh(PChar); //пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
     SetNationToOfficers(SPAIN);
 
 	SetNationRelation2MainCharacter(ENGLAND, GetNationRelation(ENGLAND, SPAIN));
@@ -13912,7 +13912,7 @@ void Flag_SPAIN()
     LAi_group_SetRelation("SPAIN_CITIZENS", LAI_GROUP_PLAYER, LAI_GROUP_NEITRAL);
     //Relation_SPAIN_SOLDIERS();
 	if (pchar.location == "Tortuga" && !CheckAttribute(pchar, "questTemp.Sharlie.DelTerGuard")) Tortuga_ShipGuardAttack();
-	// Addon 2016-1 Jason Пиратская линейка
+	// Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	if (CheckAttribute(pchar, "questTemp.Mtraxx.Ignasio.Flag"))
 	{
 		DeleteAttribute(pchar, "questTemp.Mtraxx.Ignasio.Signal");
@@ -13932,7 +13932,7 @@ void Flag_SPAIN()
 void Flag_HOLLAND()
 {
 	PChar.nation	= HOLLAND;
-    Ship_FlagRefresh(PChar); //флаг на лету
+    Ship_FlagRefresh(PChar); //пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
     SetNationToOfficers(HOLLAND);
 
     SetNationRelation2MainCharacter(ENGLAND, GetNationRelation(ENGLAND, HOLLAND));

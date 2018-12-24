@@ -16,7 +16,7 @@ int iTurnGame; // count for time
 object  DiceState;
 
 bool  bLockClick;
-bool  bSetRandDice; // жухло компа
+bool  bSetRandDice; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
 string ResultStr;
 
@@ -40,15 +40,15 @@ void InitInterface(string iniName)
 	screen: -40..680 x -30..510  (720x540)
 	cup: 219x178
 	dice: 92x84
-	таблица (в прорядке убывания значимости)
-	1) Покер - 5 одинаковых
-	2) Стрит Бол.стрит - 2,3,4,5,6 Мал.стрит - 1,2,3,4,5
-	3) Каре - 4 одинаковых
-	4) Фул - 3 + 2
-	5) триада - 3 одинаковых
-	6) две пары 2 + 2
-	7) одна пара 2- одинаковых
-	8) ничего нет
+	пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
+	1) пїЅпїЅпїЅпїЅпїЅ - 5 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	2) пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅ - 2,3,4,5,6 пїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅ - 1,2,3,4,5
+	3) пїЅпїЅпїЅпїЅ - 4 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	4) пїЅпїЅпїЅ - 3 + 2
+	5) пїЅпїЅпїЅпїЅпїЅпїЅ - 3 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	6) пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 2 + 2
+	7) пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 2- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	8) пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	*/
 	
     sgxy = 50;
@@ -60,11 +60,11 @@ void InitInterface(string iniName)
     spx = 274;
     spy = 222;
     
-    openExit = false;  // можно ли прервать игру
+    openExit = false;  // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     
     pchar = GetMainCharacter();
     
-    iRate  = sti(pchar.GenQuest.Dice.iRate); // ставки золотых
+    iRate  = sti(pchar.GenQuest.Dice.iRate); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     
     npchar = GetCharacter(sti(pchar.GenQuest.Dice.npcharIdx));
     
@@ -100,7 +100,7 @@ void InitInterface(string iniName)
     {
         smxy = ssxy;
     }
-	CreateImage("DiceCup","DICE","cup", 460, 40, 460 + spx, 40 + spy); // выше всех
+	CreateImage("DiceCup","DICE","cup", 460, 40, 460 + spx, 40 + spy); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	
 	CreateImage("GOLD","GOLD","GOLD", 482,444,524,486);
 	
@@ -111,13 +111,13 @@ void InitInterface(string iniName)
     
     if (rand(1) == 1)
     {
-        dir_i  = -1;  // кто ходит - комп
+        dir_i  = -1;  // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅ
     }
     else
     {
-        dir_i  = 1;  // кто ходит - ГГ
+        dir_i  = 1;  // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅ
     }
-    dir_i_start = dir_i; // запомним кто начал
+    dir_i_start = dir_i; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     
     CreateString(true,"Beta_MoneyN", "", "INTERFACE_ULTRASMALL",COLOR_NORMAL, 530, 250, SCRIPT_ALIGN_LEFT,1.0);
     CreateString(true,"Beta_DiceN", "", "INTERFACE_ULTRASMALL",COLOR_NORMAL, 80, 170, SCRIPT_ALIGN_LEFT,1.0);
@@ -127,7 +127,7 @@ void InitInterface(string iniName)
     iHeroLose = 0;
     iHeroWin  = 0;
     iTurnGame = 1;
-    // новая игра
+    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     NewGameBegin(true);
 }
 
@@ -162,12 +162,12 @@ void Exit()
         interfaceResultCommand = RC_INTERFACE_SALARY_EXIT;
 
     	Statistic_AddValue(Pchar, "GameDice_Win", iHeroWin);
-		Achievment_SetStat(pchar, 25, iHeroWin);
+		Achievment_SetStat(pchar, 25, iHeroWin * 50);
     	AddCharacterExpToSkill(Pchar, SKILL_FORTUNE, iExpRate*4*iHeroWin);
     	AddCharacterExpToSkill(Pchar, SKILL_FORTUNE, iExpRate*2*iHeroLose);
     	Statistic_AddValue(Pchar, "GameDice_Lose", iHeroLose);
-		Achievment_SetStat(pchar, 26, iHeroLose);
-		NPChar.Quest.HeroLose = (iHeroWin < iHeroLose); //navy -- в итоге проиграл или выйграл. (не по деньгам.)
+		Achievment_SetStat(pchar, 26, iHeroLose * 50);
+		NPChar.Quest.HeroLose = (iHeroWin < iHeroLose); //navy -- пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. (пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.)
 
     	bQuestCheckProcessFreeze = true;
     	WaitDate("",0,0,0, 0, iTurnGame*15);
@@ -197,7 +197,7 @@ void ProcessCommandExecute()
     		if(comName=="activate" || comName=="click")
     		{
                 if (openExit == true)
-                {   // еще одна игра
+                {   // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
                 	dir_i = -dir_i_start;
                 	dir_i_start = dir_i;
                     ClearDiceOnTable();
@@ -206,8 +206,8 @@ void ProcessCommandExecute()
                 }
                 else
                 {
-					// ГГ перебрасывает часть кубиков
-					// ГГ брасает кубики первый раз кубиков
+					// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+					// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					if (dir_i == 1 && CheckCupForDice())
 					{
                         bLockClick = true;
@@ -226,12 +226,12 @@ void ProcessCommandExecute()
     	case "B_ICON_1":
     		if(comName=="activate" || comName=="click")
     		{
-				if (dir_i_start == 1 && bStartGame == 2)  // пропуск хода
+				if (dir_i_start == 1 && bStartGame == 2)  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 				{
 				    CheckGame();
 				    break;
 				}
-				if (dir_i_start == -1 && bStartGame == 3)  // пропуск хода
+				if (dir_i_start == -1 && bStartGame == 3)  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 				{
 				    CheckGame();
 				    break;
@@ -295,7 +295,7 @@ void MoveImg()
         {
             CreateImage("DiceCup","DICE","cup", 460 - (20 - move_i)*25, 40 + (20 - move_i)*15, 460 - (20 - move_i)*15 + spx, 40 +(20 - move_i)*25 + spy);
             
-            if (move_i == 20) // все - собрать кубики в линеку
+            if (move_i == 20) // пїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			{
             	PostEvent("My_eventMoveImg", 2000);
             }
@@ -304,13 +304,13 @@ void MoveImg()
             	PostEvent("My_eventMoveImg", 100);
             }
         }
-        // сброс
+        // пїЅпїЅпїЅпїЅпїЅ
         if (move_i == 12)
         {
             PlaySound("interface\dice_end.wav");
 			if (bSetRandDice)
 			{
-            	SetDiceForTableRand(); // случайно, 2й ход компа будем жухлить!!!
+            	SetDiceForTableRand(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 2пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!!!
             }
             else
             {
@@ -318,7 +318,7 @@ void MoveImg()
             }
             PutDiceOnTable();
         }
-		// все - собрать кубики в линеку
+		// пїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         if (move_i == 21)
         {
             SetLineAfterDeck();
@@ -337,7 +337,7 @@ void PutNextCoinOp()
 
 void RedrawDeck(bool _newGame, bool _clearDice)
 {
-    // монетки с запасом
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     int i;
     if (_newGame)
     {
@@ -345,11 +345,11 @@ void RedrawDeck(bool _newGame, bool _clearDice)
 		{
 	        CreateImage("Money_"+i,"","", 0, 0, 0, 0);
 		}
-		money_i = 0; // индекс монетки
+		money_i = 0; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	    moneyOp_i = 0;
-	    iChest = 0; // на кону
+	    iChest = 0; // пїЅпїЅ пїЅпїЅпїЅпїЅ
     }
-	// место под кубики
+	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	if (_clearDice)
 	{
 		CreateImage("HeroDice1","DICE","", 60, 486, 60 + scx, 486 + scy);
@@ -395,14 +395,14 @@ void BetaInfo()
     }
 }
 
-// сдать карту
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 void StartGame()
 {
 	int i;
 	move_i = 0;
 
     PlaySound("interface\took_item.wav");
-	if (dir_i == -1) // комп первый
+	if (dir_i == -1) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	{
         PlaySound("interface\dice_mix.wav");
 		SetFormatedText("INFO_TEXT","I start.");
@@ -413,7 +413,7 @@ void StartGame()
 	    SetFormatedText("INFO_TEXT","You first. Roll dammit!");
 	    bLockClick = false;
 	}
-	// оба ставят
+	// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	for (i=0; i<5; i++)
 	{
 		PutNextCoin();
@@ -440,7 +440,7 @@ void ShowMoney()
 void NewGameBegin(bool _newGame)
 {
     InitDiceState();
-	RedrawDeck(_newGame, true); // новая игра
+	RedrawDeck(_newGame, true); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     bStartGame = 0;
     if (_newGame)
     {
@@ -456,11 +456,11 @@ void NewGameBegin(bool _newGame)
     openExit = false;
     BetaInfo();
 }
-// деньги в карман
+// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 void EndGameCount(int who)
 {
     //openExit = true;
-    if (who == 1) // ГГ
+    if (who == 1) // пїЅпїЅ
     {
         AddMoneyToCharacter(pchar, iChest - (sti(pchar.Money) - iMoneyP));
         AddMoneyToCharacter(npchar,  -(sti(npchar.Money) - iMoneyN));
@@ -470,7 +470,7 @@ void EndGameCount(int who)
         AddMoneyToCharacter(pchar, -(sti(pchar.Money) - iMoneyP));
         AddMoneyToCharacter(npchar, iChest - (sti(npchar.Money) - iMoneyN));
     }
-    if (who == 0)// ничья
+    if (who == 0)// пїЅпїЅпїЅпїЅпїЅ
     {
         AddMoneyToCharacter(pchar, -(sti(pchar.Money) - iMoneyP));
         AddMoneyToCharacter(npchar, -(sti(npchar.Money) - iMoneyN));
@@ -479,7 +479,7 @@ void EndGameCount(int who)
     iMoneyN = sti(npchar.Money);
 }
 
-// проверить деньги для след игры
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 bool CheckNextGame()
 {
     bool ret = true;
@@ -543,7 +543,7 @@ void InitDiceState()
     DiceState.Desk.d4 = "";
     DiceState.Desk.d5 = "";
     
-    DiceState.Desk.d1.Mix = true; //сброс
+    DiceState.Desk.d1.Mix = true; //пїЅпїЅпїЅпїЅпїЅ
     DiceState.Desk.d2.Mix = true;
     DiceState.Desk.d3.Mix = true;
     DiceState.Desk.d4.Mix = true;
@@ -554,8 +554,8 @@ void InitDiceState()
     DiceState.Hero.d3 = "";
     DiceState.Hero.d4 = "";
     DiceState.Hero.d5 = "";
-    DiceState.Hero.Result.Type  = ""; // тип комбинации
-    DiceState.Hero.Result.Rate1 = ""; // значение старшей пары
+    DiceState.Hero.Result.Type  = ""; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    DiceState.Hero.Result.Rate1 = ""; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     DiceState.Hero.Result.Rate2 = "";
     
     DiceState.Hero.d1.Mix = false;
@@ -569,10 +569,10 @@ void InitDiceState()
     DiceState.Comp.d3 = "";
     DiceState.Comp.d4 = "";
     DiceState.Comp.d5 = "";
-    DiceState.Comp.Result.Type  = ""; // тип комбинации
-    DiceState.Comp.Result.Rate1 = ""; // значение старшей пары
-    DiceState.Comp.Result.Rate2 = ""; // значение младшей пары (если есть, для сравнения фул и две пары, когда старшие равны)
-    DiceState.Comp.Result.d1 = ""; // 1-6 колво фишек
+    DiceState.Comp.Result.Type  = ""; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    DiceState.Comp.Result.Rate1 = ""; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+    DiceState.Comp.Result.Rate2 = ""; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ)
+    DiceState.Comp.Result.d1 = ""; // 1-6 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     
     DiceState.Comp.d1.Mix = false;
     DiceState.Comp.d2.Mix = false;
@@ -609,7 +609,7 @@ void SetLineAfterDeck()
     int i;
     ClearDiceOnTable();
 
-	if (dir_i == -1) // комп первый
+	if (dir_i == -1) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	{
         for (i = 1; i<=5; i++)
 		{
@@ -651,11 +651,11 @@ bool CheckGame()
 {
     int i;
 
-	if (dir_i == -1) // комп первый
+	if (dir_i == -1) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	{
 		dir_i = 1;
 		bLockClick = false;
-		if (bStartGame <1 )// первый заход
+		if (bStartGame <1 )// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		{
 			SetFormatedText("INFO_TEXT","Your turn. ");
 		}
@@ -668,7 +668,7 @@ bool CheckGame()
 	{
         dir_i = -1;
         bLockClick = true;
-		if (bStartGame <1 )// первый заход
+		if (bStartGame <1 )// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		{
 			SetFormatedText("INFO_TEXT","My turn.");
 			move_i = 0;
@@ -679,7 +679,7 @@ bool CheckGame()
         {
 			if (bStartGame <3)
 			{
-				// решаем ходить ли вообще
+				// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	            SetFormatedText("INFO_TEXT","Hm... I'll re-roll these...");
 	            PostEvent("My_eCompTurn", 800);
             }
@@ -688,7 +688,7 @@ bool CheckGame()
 	bStartGame++;
 	if (bStartGame > 3)
 	{
-		// подвод итога
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		openExit = false;
 		bLockClick = true;
 		if (EndTurnGame())
@@ -743,13 +743,13 @@ bool CheckCupForDice()
 	}
 	return false;
 }
-// посчитать комбинацию
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 void RecalcDiceOnHand(string _whom)
 {
 	int    i, k, iOk;
 	string sTemp;
 	bool   ok;
-	// 1) Покер - 5 одинаковых
+	// 1) пїЅпїЅпїЅпїЅпїЅ - 5 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	ok = true;
 	for (i = 2; i<=5; i++)
 	{
@@ -767,7 +767,7 @@ void RecalcDiceOnHand(string _whom)
         DiceState.(_whom).Result.Rate2  = sti(DiceState.(_whom).d1);
 		return;
 	}
-    // 2) Стрит Бол.стрит - 2,3,4,5,6 Мал.стрит - 1,2,3,4,5
+    // 2) пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅ - 2,3,4,5,6 пїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅ - 1,2,3,4,5
 	ok = true;
 	for (i = 1; i<=4; i++)
 	{
@@ -786,7 +786,7 @@ void RecalcDiceOnHand(string _whom)
         DiceState.(_whom).Result.Rate2  = sti(DiceState.(_whom).d5);
 		return;
 	}
-	// 3) Каре - 4 одинаковых
+	// 3) пїЅпїЅпїЅпїЅ - 4 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	ok = true;
     for (k = 1; k<=5; k++)
 	{
@@ -808,7 +808,7 @@ void RecalcDiceOnHand(string _whom)
 			return;
 		}
 	}
-	// 4) Фул - 3 + 2
+	// 4) пїЅпїЅпїЅ - 3 + 2
 	ok = false;
     for (k = 1; k<=5; k++)
 	{
@@ -859,7 +859,7 @@ void RecalcDiceOnHand(string _whom)
         DiceState.(_whom).Result.Type  = 4;
 		return;
 	}
-	// 5) триада - 3 одинаковых
+	// 5) пїЅпїЅпїЅпїЅпїЅпїЅ - 3 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	ok = false;
     for (k = 1; k<=5; k++)
 	{
@@ -886,7 +886,7 @@ void RecalcDiceOnHand(string _whom)
         DiceState.(_whom).Result.Rate2 = DiceState.(_whom).Result.Rate1;
 		return;
 	}
-	// 6) две пары 2 + 2
+	// 6) пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 2 + 2
 	ok = false;
     for (k = 1; k<=5; k++)
 	{
@@ -902,7 +902,7 @@ void RecalcDiceOnHand(string _whom)
 		}
 	 	if (iOk >= 2)
 		{
-	        DiceState.(_whom).Result.Rate2  = sti(DiceState.(_whom).(sTemp)); // младшая
+	        DiceState.(_whom).Result.Rate2  = sti(DiceState.(_whom).(sTemp)); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	        ok = true;
 	        break;
 		}
@@ -926,7 +926,7 @@ void RecalcDiceOnHand(string _whom)
 			}
 		 	if (iOk >= 2)
 			{
-		        DiceState.(_whom).Result.Rate1  = sti(DiceState.(_whom).(sTemp)); // старшая
+		        DiceState.(_whom).Result.Rate1  = sti(DiceState.(_whom).(sTemp)); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		        ok = true;
 		        break;
 			}
@@ -937,7 +937,7 @@ void RecalcDiceOnHand(string _whom)
         DiceState.(_whom).Result.Type  = 6;
 		return;
 	}
-	// 7) одна пара 2- одинаковых
+	// 7) пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 2- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	ok = false;
     for (k = 1; k<=5; k++)
 	{
@@ -964,21 +964,21 @@ void RecalcDiceOnHand(string _whom)
         DiceState.(_whom).Result.Rate2 = DiceState.(_whom).Result.Rate1;
 		return;
 	}
-	// 8) ничего нет
+	// 8) пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 	DiceState.(_whom).Result.Type  = 8;
     DiceState.(_whom).Result.Rate1 = 0;
 	DiceState.(_whom).Result.Rate2 = 0;
 }
-// сортирова по возрастанию, нужно для визуализации и аглоритма вычисления комбинаций
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 void SortDiceOnHand(string _whom)
 {
     int  j,k,w,m;
     string sTemp;
     /*
-	Поиск наименьшего (простой выбор).
+	пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ).
 
-  При первом проходе находим наименьший элемент и ставим его на первое место,
-потом наименьший из оставшихся...
+  пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ,
+пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...
 	*/
 	
 	for (k = 1; k<=4; k++)
@@ -1001,7 +1001,7 @@ void SortDiceOnHand(string _whom)
 		DiceState.(_whom).(sTemp) = w;
 	}
 }
-// сравнение результата
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 int GetResult()
 {
 	if (sti(DiceState.Hero.Result.Type) < sti(DiceState.Comp.Result.Type))
@@ -1028,7 +1028,7 @@ int GetResult()
 	{
 	    return -1;
 	}
-	return 0; // ничья
+	return 0; // пїЅпїЅпїЅпїЅпїЅ
 }
 
 
@@ -1095,7 +1095,7 @@ void NewNextGame()
 {
     RedrawDeck(true, false);
     openExit = true;
-	if (CheckNextGame() && rand(10) < 10) // есть деньги на игру
+	if (CheckNextGame() && rand(10) < 10) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
     {
         ResultStr += NewStr() + "One more roll?";
 		bLockClick = false;
@@ -1164,9 +1164,9 @@ void CompTurn()
     int i, d, j;
     bool ok, ok2, ok3, b;
     
-	// если комп ходит последним и у него уже больше, то нафиг ему бросать???
+	// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ???
 	ok = true;
-	if (GetResult() == -1 && dir_i_start == 1 && bStartGame == 3) // пропуск хода
+	if (GetResult() == -1 && dir_i_start == 1 && bStartGame == 3) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	{
         ok = false;
 	}
@@ -1174,7 +1174,7 @@ void CompTurn()
 	{
     	if (sti(DiceState.Comp.Result.Type) == 8 && sti(DiceState.Hero.Result.Type) >= 2)
     	{
-            //перебросим всегда первую фишку (это 100% 1)
+            //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ 100% 1)
             SetFormatedText("INFO_TEXT","I transferred one die...");
     		// for test
     		ClickCompDice(1);
@@ -1184,14 +1184,14 @@ void CompTurn()
             return;
     	}
 
-    	// две пары бросаем на фул (один кубик)
+    	// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ (пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ)
         ok3 = (sti(DiceState.Comp.Result.Type) == 6) && (sti(DiceState.Hero.Result.Type) >= 5);
         ok  = (sti(DiceState.Comp.Result.Type) == 6) && (sti(DiceState.Hero.Result.Type) == 4) && (sti(DiceState.Hero.Result.Rate1) <= sti(DiceState.Comp.Result.Rate2));
         ok3 = ok3 || ok;
-        // пара бросаем триаду, каре или две пары, а может фулл??
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ??
         ok = (sti(DiceState.Comp.Result.Type) == 7) || (sti(DiceState.Comp.Result.Type) == 5);
         ok = ok && (sti(DiceState.Hero.Result.Type) >= 3);
-        // каре, но у ГГ больше
+        // пїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         ok2 = (sti(DiceState.Hero.Result.Type) == 3) && (sti(DiceState.Hero.Result.Rate1) > sti(DiceState.Comp.Result.Rate1));
         b   = (sti(DiceState.Hero.Result.Type) == 1) && (sti(DiceState.Hero.Result.Rate1) <= sti(DiceState.Comp.Result.Rate1));
         ok2 = ok2 || b;
@@ -1205,7 +1205,7 @@ void CompTurn()
     	        sGlobalTemp = "d"+i;
     	        if (sti(DiceState.Comp.Result.(sGlobalTemp)) == 1)
     	        {
-                    d = i; // че за фишка
+                    d = i; // пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
                     for (j = 1; j<=5; j++)
             		{
             	        sGlobalTemp = "d"+j;
@@ -1228,10 +1228,10 @@ void CompTurn()
     		}
         }
 
-        // супер жухло!!!!! -->
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!!!!! -->
         if (sti(DiceState.Comp.Result.Type) > sti(DiceState.Hero.Result.Type) && GetCharacterSkillToOld(pchar, SKILL_FORTUNE) < rand(12) && rand(4) > 1)
         {
-			//navy --> счетчик жульничеств
+			//navy --> пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if (!CheckAttribute(npchar, "Quest.DiceCheats")) npchar.Quest.DiceCheats = 0;
 			npchar.Quest.DiceCheats = sti(npchar.Quest.DiceCheats) + 1;
 			//navy <--
@@ -1265,9 +1265,9 @@ void CompTurn()
                 return;
             }
         }
-        // жухло!!!!! <--
+        // пїЅпїЅпїЅпїЅпїЅ!!!!! <--
     }
-	// решаем не перебрасывать
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	SetFormatedText("INFO_TEXT","I am good.");
 	PostEvent("My_eCheckGame", 800);
 }
@@ -1292,7 +1292,7 @@ bool ClickCompDice(int d)
     }
     return false;
 }
-// заполнить колвом атрибуты фишек
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 void RecalcAIDice(string _whom)
 {
     int    i;

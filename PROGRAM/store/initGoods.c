@@ -2,7 +2,7 @@ void InitGoods()
 {
 	int i;
 	
-	// боеприпасы
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	Goods[GOOD_BALLS].Name					= "Balls";
 	Goods[GOOD_BALLS].Cost					= 40;
 	Goods[GOOD_BALLS].Weight				= 2;
@@ -11,7 +11,7 @@ void InitGoods()
 	Goods[GOOD_BALLS].DamageHull			= 8.0;
 	Goods[GOOD_BALLS].DamageRig				= 0.5;
 	Goods[GOOD_BALLS].DamageCrew			= 0.2;
-	Goods[GOOD_BALLS].AfraidWater 			= 0;    // рудимент от к3
+	Goods[GOOD_BALLS].AfraidWater 			= 0;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ3
 	Goods[GOOD_BALLS].DontDrop				= 1;	
 	Goods[GOOD_BALLS].type					= T_TYPE_AMMUNITION;
 	Goods[GOOD_BALLS].trade_type			= T_TYPE_AMMUNITION;
@@ -67,7 +67,7 @@ void InitGoods()
 	Goods[GOOD_BOMBS].MediumNorm			= 1.0;
 	Goods[GOOD_BOMBS].SmallNorm				= 0.5;	
 
-	// товары повседневного спроса	
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ	
 	Goods[GOOD_FOOD].Name		    		= "Food";
 	Goods[GOOD_FOOD].Weight	        		= 1;
 	Goods[GOOD_FOOD].Cost	        		= 20;
@@ -154,7 +154,7 @@ void InitGoods()
 	Goods[GOOD_FRUITS].MediumNorm			= 0.5;
 	Goods[GOOD_FRUITS].SmallNorm			= 0.5;	
 	
-	// колониальные (экспортные) товары
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ) пїЅпїЅпїЅпїЅпїЅпїЅ
 	Goods[GOOD_COFFEE].Name		    		= "Coffee";
 	Goods[GOOD_COFFEE].Weight	    		= 2;
 	Goods[GOOD_COFFEE].Cost		    		= 80;
@@ -285,7 +285,7 @@ void InitGoods()
 	Goods[GOOD_PAPRIKA].MediumNorm			= 0.75;
 	Goods[GOOD_PAPRIKA].SmallNorm			= 0.5;		
 
-	// привозные товары из Европы
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	Goods[GOOD_POWDER].Name		    		= "Powder";
 	Goods[GOOD_POWDER].Weight	    		= 1;
 	Goods[GOOD_POWDER].Cost	        		= 60;
@@ -359,7 +359,7 @@ void InitGoods()
 	Goods[GOOD_ALE].MediumNorm				= 1.0;
 	Goods[GOOD_ALE].SmallNorm				= 0.5;		
 	
-	// уникальные товары
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	Goods[GOOD_SHIPSILK].Name		    	= "Shipsilk";
 	Goods[GOOD_SHIPSILK].Weight	    		= 2;
 	Goods[GOOD_SHIPSILK].Cost		    	= 160;
@@ -411,7 +411,7 @@ void InitGoods()
 	Goods[GOOD_OIL].MediumNorm				= 0.5;
 	Goods[GOOD_OIL].SmallNorm				= 0.25;		
 	
-	// коронные товары
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	Goods[GOOD_SLAVES].Name		    		= "Slaves";
 	Goods[GOOD_SLAVES].Weight	    		= 1;
 	Goods[GOOD_SLAVES].Cost		    		= 100;
@@ -448,7 +448,7 @@ void InitGoods()
 	Goods[GOOD_SILVER].SmallNorm			= 0.25;		
 	Goods[GOOD_SILVER].NotSale				= 1;
 		
-	////////////////////////////////////////////////////// пушки это товар - boal 27/07/06	
+	////////////////////////////////////////////////////// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - boal 27/07/06	
 	Goods[GOOD_CANNON_3].Name				= "Cannon_3";
 	Goods[GOOD_CANNON_3].CannonIdx			= CANNON_TYPE_CANNON_LBS3;
 	Goods[GOOD_CANNON_3].Cost				= Cannon[CANNON_TYPE_CANNON_LBS3].Cost;
@@ -592,6 +592,22 @@ void InitGoods()
 	Goods[GOOD_CANNON_42].Norm          	= 10; 
 	Goods[GOOD_CANNON_42].MediumNorm		= 1.0;
 	Goods[GOOD_CANNON_42].SmallNorm			= 1.0;
+
+	Goods[GOOD_CANNON_42].Name				= "Cannon_48";
+	Goods[GOOD_CANNON_42].CannonIdx			= CANNON_TYPE_CANNON_LBS42;
+	Goods[GOOD_CANNON_42].Cost				= Cannon[CANNON_TYPE_CANNON_LBS42].Cost;
+	Goods[GOOD_CANNON_42].Weight			= Cannon[CANNON_TYPE_CANNON_LBS42].Weight;
+	Goods[GOOD_CANNON_42].Units				= 1;
+	Goods[GOOD_CANNON_42].AfraidWater		= 0;
+	Goods[GOOD_CANNON_42].type				= T_TYPE_CANNONS;
+	Goods[GOOD_CANNON_42].trade_type		= T_TYPE_CANNONS;
+	Goods[GOOD_CANNON_42].NotSale			= 1;
+	Goods[GOOD_CANNON_42].FireRange		    = Cannon[CANNON_TYPE_CANNON_LBS42].FireRange;
+	Goods[GOOD_CANNON_42].DamageMultiply	= Cannon[CANNON_TYPE_CANNON_LBS42].DamageMultiply;
+	Goods[GOOD_CANNON_42].ReloadTime		= sti(GetCannonReloadTime(&Cannon[CANNON_TYPE_CANNON_LBS42]));
+	Goods[GOOD_CANNON_42].Norm          	= 10; 
+	Goods[GOOD_CANNON_42].MediumNorm		= 1.0;
+	Goods[GOOD_CANNON_42].SmallNorm			= 1.0;
 	
     Goods[GOOD_CULVERINE_8].Name			= "Culverine_8";
 	Goods[GOOD_CULVERINE_8].CannonIdx	 	= CANNON_TYPE_CULVERINE_LBS8;
@@ -641,7 +657,7 @@ void InitGoods()
 	Goods[GOOD_CULVERINE_36].MediumNorm		= 1.0;
 	Goods[GOOD_CULVERINE_36].SmallNorm		= 1.0;
 	
-	// boal 24/01/08 Норма товара в магазине (режим Экспорта), то есть максимум, ниже установлены исключения
+	// boal 24/01/08 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ), пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	for (i = 0; i< GOODS_QUANTITY; i++)
 	{
 		if (!CheckAttribute(&Goods[i], "Norm"))

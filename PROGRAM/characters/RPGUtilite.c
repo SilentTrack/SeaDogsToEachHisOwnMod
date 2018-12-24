@@ -1,9 +1,9 @@
-// 11.08.05 Boal Модуль для новой РПГ системы S.P.E.C.I.A.L
-// метод для совместимости с .ИНИ файлом (секция SKILLCHANGER)
+// 11.08.05 Boal пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ S.P.E.C.I.A.L
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ .пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅ SKILLCHANGER)
 
 #define MAX_ACHIEVMENTS		70
 
-// порог ранга
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 int GetCharacterRankRate(ref _refCharacter)
 {
     return 35 - GetCharacterSPECIALSimple(_refCharacter, SPECIAL_I);
@@ -16,16 +16,16 @@ int GetCharacterRankRateCur(ref _refCharacter)
 	}
     return sti(_refCharacter.rank_exp);
 }
-// прирост НР
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
 int GetCharacterAddHPValue(ref _refCharacter)
 {
-	// --> убрать влияние кирас
+	// --> пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	int Ers = GetCharacterSPECIALSimple(_refCharacter, SPECIAL_E);
 	if (GetCharacterEquipByGroup(_refCharacter, CIRASS_ITEM_TYPE) == "underwater") Ers = Ers+2;
 	if (GetCharacterEquipByGroup(_refCharacter, CIRASS_ITEM_TYPE) == "cirass1") Ers = Ers+1;
 	if (GetCharacterEquipByGroup(_refCharacter, CIRASS_ITEM_TYPE) == "cirass2") Ers = Ers+1;
 	if (GetCharacterEquipByGroup(_refCharacter, CIRASS_ITEM_TYPE) == "cirass4") Ers = Ers+1;
-	// <-- убрать влияние кирас
+	// <-- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
 	int ret = makeint(2 + Ers * 0.55 + 0.5);
   //  int ret = makeint(2 + GetCharacterSPECIALSimple(_refCharacter, SPECIAL_E) * 0.55 + 0.5);
@@ -70,7 +70,7 @@ float GetCharacterMaxEnergyValue(ref _refCharacter)
 
 float GetCharacterMaxEnergyABSValue(ref _refCharacter)
 {
-    // проверки перков to_do
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ to_do
 	float ret = (30.0 + GetCharacterSPECIALSimple(_refCharacter, SPECIAL_A)*10);
 	if (CheckAttribute(_refCharacter, "PerkValue.EnergyPlus"))
 	{
@@ -171,13 +171,13 @@ void SetRandSPECIAL(ref _refCharacter)
                (2 + rand(8)));
 }
 
-/// влияет только на СПЕЦИАЛ
+/// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 int ApplayNavyPenalty(ref _refCharacter, string skillName, int sumSkill)
 {
-    if (IsCompanion(_refCharacter) && GetRemovable(_refCharacter))//пусть будет для компаньонов тоже sti(_refCharacter.index) == GetMainCharacterIndex()) // только для главного, чтоб не тормозить всю игру
+    if (IsCompanion(_refCharacter) && GetRemovable(_refCharacter))//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ sti(_refCharacter.index) == GetMainCharacterIndex()) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     {
         int sailSkill;
-        // общее умение навигации
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         sailSkill = GetSummonSkillFromNameSimple(_refCharacter, SKILL_SAILING);
         
         int shipClass = GetCharacterShipClass(_refCharacter);
@@ -186,21 +186,21 @@ int ApplayNavyPenalty(ref _refCharacter, string skillName, int sumSkill)
 
         if (sailSkill < needSkill)
         {
-			sailSkill = makeint((needSkill - sailSkill)/10.0 + 0.9); // округление до мах всегда
+			sailSkill = makeint((needSkill - sailSkill)/10.0 + 0.9); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			sumSkill = sumSkill - sailSkill;
 	        if (sumSkill < 1) sumSkill = 1;
         }
     }
     return  sumSkill;
 }
-// пенальти в скилы
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 int ApplayNavyPenaltyToSkill(ref _refCharacter, string skillName, int sumSkill)
 {
-    if (IsCompanion(_refCharacter) && GetRemovable(_refCharacter))//пусть будет для компаньонов тоже sti(_refCharacter.index) == GetMainCharacterIndex()) // только для главного, чтоб не тормозить всю игру
+    if (IsCompanion(_refCharacter) && GetRemovable(_refCharacter))//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ sti(_refCharacter.index) == GetMainCharacterIndex()) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     {
         int sailSkill;
 
-        // общее умение навигации
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         sailSkill = GetSummonSkillFromNameSimple(_refCharacter, SKILL_SAILING);
         int shipClass = GetCharacterShipClass(_refCharacter);
         int needSkill = GetShipClassNavySkill(shipClass);
@@ -215,7 +215,7 @@ int ApplayNavyPenaltyToSkill(ref _refCharacter, string skillName, int sumSkill)
     }
     return  sumSkill;
 }
-// с пенальти и вещами +1
+// пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ +1
 int GetCharacterSPECIAL(ref _refCharacter, string skillName)
 {
     int skillN;
@@ -235,7 +235,7 @@ int GetCharacterSPECIALSimple(ref _refCharacter, string skillName)
     }
 	int skillN = sti(_refCharacter.SPECIAL.(skillName));
     // Health
-    if (sti(_refCharacter.index) == GetMainCharacterIndex() && MOD_SKILL_ENEMY_RATE > 1) // не халява
+    if (sti(_refCharacter.index) == GetMainCharacterIndex() && MOD_SKILL_ENEMY_RATE > 1) // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     {
         skillN = skillN + GetHealthNum(_refCharacter) - 6; // max -5
     }
@@ -272,7 +272,7 @@ void InitRPGType()
     NullCharacter.SelfType.Pistol = true;
     NullCharacter.SelfType.Fortune = true;
     NullCharacter.SelfType.Sneak = true;
-    // остальные корабельные
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     NullCharacter.ShipType.Commerce = true;
     NullCharacter.ShipType.Accuracy = true;
     NullCharacter.ShipType.Cannons = true;
@@ -389,7 +389,7 @@ string GetSkillNameByTRIdx(string _type, int idx)
     }
     return ret;
 }
-// по имени скила вернуть значение
+// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 int GetSkillValue(ref _refCharacter, string _type, string _skillName)
 {
     if (CheckAttribute(_refCharacter, _type + "." + _skillName))
@@ -482,10 +482,10 @@ void AddCharacterSkillDontClearExp(ref _chref, string _skill, int _addValue)
 
 void ApplayNewSkill(ref _chref, string _skill, int _addValue)
 {
-    // трем кэш
+    // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
     CheckAttribute(_chref, "BakSkill." + _skill);
     
-	// boal 05.05.04 разделение по группам -->
+	// boal 05.05.04 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
     if (isSelfTypeSkill(_skill))
     {
        if(CheckAttribute(_chref,"perks.FreePoints_self_exp"))
@@ -536,7 +536,7 @@ void ApplayNewSkill(ref _chref, string _skill, int _addValue)
            }
        }
     }
-    // boal 05.05.04 разделение по группам <--
+    // boal 05.05.04 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ <--
 
 
     if(!CheckAttribute(_chref, "rank_exp"))
@@ -562,7 +562,7 @@ void ApplayNewSkill(ref _chref, string _skill, int _addValue)
 			SetEnergyToCharacter(_chref);
 		}
 
-        // сообщение в лог
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ
         if(IsOfficer(_chref) || IsCompanion(_chref))
         {
             AddMsgToCharacter(_chref,MSGICON_LEVELUP);
@@ -571,7 +571,7 @@ void ApplayNewSkill(ref _chref, string _skill, int _addValue)
         }
     }
 }
-// по специал распередить скилы
+// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 void InitStartParam(ref _chref)
 {
     int i;
@@ -586,7 +586,7 @@ void InitStartParam(ref _chref)
     }
     LAi_SetHP(_chref, GetCharacterBaseHPValue(_chref), GetCharacterBaseHPValue(_chref));
 }
-// порог следующего скила (множетель)
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
 float GetCharacterExpRate(ref _chref, string _skill)
 {
     string  skill_rate = _skill + "_rate";
@@ -779,7 +779,7 @@ string GetLoyalityName(int iLoyality)
 	return "";
 }
 
-// boal 15/01/04 учет вещей выношу в спец метод для простоты работы далее -->
+// boal 15/01/04 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ -->
 int SetCharacterSkillByItem(ref _refCharacter, string _skillName, string _itemSkillName, string _item, int _addValue)
 {
 	int iRetValue = 0;
@@ -869,10 +869,10 @@ int ApplySPECIALCirassPenalty(ref rChar, String sSkillName)
 		break;
 		
 		case "suit4"	:
-			if(sSkillName == SPECIAL_P)			iValue = -1; // калеуче
+			if(sSkillName == SPECIAL_P)			iValue = -1; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		break;
 		
-		case "underwater"	: //Jason: водолаз
+		case "underwater"	: //Jason: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(sSkillName == SPECIAL_P)			iValue = -2;
 			if(sSkillName == SPECIAL_E)			iValue = -2;
 			if(sSkillName == SPECIAL_A)			iValue = -1;
@@ -891,7 +891,7 @@ int GetCharacterSuitType(ref rChar)
 
 	switch(sSuit)
 	{	
-		// тяжелые доспехи
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "cirass1"	:
 			iValue = 2;
 		break;		
@@ -905,7 +905,7 @@ int GetCharacterSuitType(ref rChar)
 			iValue = 2;
 		break;
 		
-		// легкие доспехи
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		case "cirass5"	:
 			iValue = 1;
 		break;				
@@ -919,7 +919,7 @@ int GetCharacterSuitType(ref rChar)
 			iValue = 1;
 		break;		
 		
-		// прочее
+		// пїЅпїЅпїЅпїЅпїЅпїЅ
 		case "underwater":
 			iValue = 0;
 		break;						
@@ -937,7 +937,7 @@ int GetCharacterSuitType(ref rChar)
 	return iValue;
 }
 
-// Warship 25.10.08 Учет одежды
+// Warship 25.10.08 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 int SetCharacterSkillBySuit(ref rChar, String sSkillName)
 {
 	int iValue = 0;
@@ -980,27 +980,27 @@ int SetCharacterSkillBySuit(ref rChar, String sSkillName)
 			if(sSkillName == SKILL_SNEAK)		iValue = 15;
 		break;
 		
-		case "suit1"	: // Французский офицерский мундир
+		case "suit1"	: // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			if(sSkillName == SKILL_LEADERSHIP)	iValue = 15;
 			if(sSkillName == SKILL_SNEAK)		iValue = -15;
 		break;
 		
-		case "suit2"	: // Английский офицерский мундир
+		case "suit2"	: // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			if(sSkillName == SKILL_LEADERSHIP)	iValue = 15;
 			if(sSkillName == SKILL_SNEAK)		iValue = -15;
 		break;
 		
-		case "suit3"	: // Испанский офицерский мундир
+		case "suit3"	: // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			if(sSkillName == SKILL_LEADERSHIP)	iValue = 15;
 			if(sSkillName == SKILL_SNEAK)		iValue = -15;
 		break;
 		
-		case "suit4"	: // костюм Лампорта (Калеуче)
+		case "suit4"	: // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
 			if(sSkillName == SKILL_LEADERSHIP)	iValue = -25;
 			if(sSkillName == SKILL_SNEAK)		iValue = 30;
 		break;
 		
-		case "underwater"	: // Jason: водолаз
+		case "underwater"	: // Jason: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(sSkillName == SKILL_LEADERSHIP)	iValue = -20;
 			if(sSkillName == SKILL_SNEAK)		iValue = -100;
 			if(sSkillName == SKILL_F_LIGHT)		iValue = -15;
@@ -1012,7 +1012,7 @@ int SetCharacterSkillBySuit(ref rChar, String sSkillName)
 	
 	return iValue;
 }
-// Jason: учет негенерируемых клинков
+// Jason: пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 int SetCharacterSkillByQuestBlade(ref rChar, String sSkillName)
 {
 	int iValue = 0;
@@ -1048,7 +1048,7 @@ int SetCharacterSkillByQuestBlade(ref rChar, String sSkillName)
 			if(sSkillName == SKILL_F_HEAVY)		iValue = 12;
 		break;
 		
-		case "topor_06"	: // Addon 2016-1 Jason Пиратская линейка
+		case "topor_06"	: // Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(sSkillName == SKILL_F_HEAVY)		iValue = 5;
 		break;
 	}
@@ -1056,7 +1056,7 @@ int SetCharacterSkillByQuestBlade(ref rChar, String sSkillName)
 	return iValue;
 }
 
-// Jason: спец.атрибут
+// Jason: пїЅпїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 int SetCharacterSkillByPenalty(ref rChar, String sSkillName)
 {
 	int iValue = 0;
@@ -1069,7 +1069,7 @@ int SetCharacterSkillByPenalty(ref rChar, String sSkillName)
 	return iValue;
 }
 
-// Jason: спец.атрибут
+// Jason: пїЅпїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 int ApplySPECIALQuestPenalty(ref rChar, String sSkillName)
 {
 	int iValue = 0;
@@ -1080,7 +1080,7 @@ int ApplySPECIALQuestPenalty(ref rChar, String sSkillName)
 	return iValue;
 }
 
-// Jason: зелья мангаросы
+// Jason: пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 int ApplySPECIALMangarosaPotion(ref rChar, String sSkillName) // 280313
 {
 	int iValue = 0;
@@ -1137,7 +1137,7 @@ int SetCharacterSkillByMangarosa(ref rChar, String sSkillName) // 280313
 	return iValue;
 }
 
-// Jason: Калеуче - амулеты Туттуатхапака
+// Jason: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 int SetCharacterSkillByTuttuat(ref rChar, String sSkillName)
 {
 	int iValue = 0;
@@ -1150,7 +1150,7 @@ int SetCharacterSkillByTuttuat(ref rChar, String sSkillName)
 	return iValue;
 }
 
-// boal 15/01/04 учет вещей выношу в спец метод для простоты работы далее <--
+// boal 15/01/04 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ <--
 float GetCharacterSkillToOld(ref _refCharacter, string skillName)
 {
     return makefloat(GetCharacterSkill(_refCharacter, skillName) / SKILL_TO_OLD);
@@ -1159,7 +1159,7 @@ int GetCharacterSkill(ref _refCharacter, string skillName)
 {
     int skillN;
 
-    // boal 051104 метод тормозит страшно - проверка +1 вещей, будет опрос раз в 10
+    // boal 051104 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ +1 пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ 10
     if (CheckAttribute(_refCharacter, "BakSkill." + skillName))
     {
         if (sti(_refCharacter.BakSkillCount.(skillName)) < 20 )
@@ -1172,12 +1172,12 @@ int GetCharacterSkill(ref _refCharacter, string skillName)
 	skillN = GetCharacterSkillSimple(_refCharacter, skillName);
 
 
-    // 14.03.05 пенальти от класса корабля -->
+    // 14.03.05 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
  	skillN = ApplayNavyPenaltyToSkill(_refCharacter, skillName, skillN);
-	// 14.03.05 пенальти от класса корабля <--
+	// 14.03.05 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ <--
 
-	_refCharacter.BakSkill.(skillName)      =  skillN; // значение
-    _refCharacter.BakSkillCount.(skillName) = rand(5); // счетчик немного размажем пересчет
+	_refCharacter.BakSkill.(skillName)      =  skillN; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    _refCharacter.BakSkillCount.(skillName) = rand(5); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
     return skillN;
 }
@@ -1189,11 +1189,11 @@ int GetCharacterSkillSimple(ref _refCharacter, string skillName)
 
 	bool   bHero = (sti(_refCharacter.index) == GetMainCharacterIndex());
 	
-    // boal учет вещей -->
+    // boal пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ -->
     if (bHero || CheckAttribute(_refCharacter, "Payment")) //IsCompanion(_refCharacter) || IsOfficer(_refCharacter))
     {
         // Health
-        if (bHero && MOD_SKILL_ENEMY_RATE > 1) // не халява
+        if (bHero && MOD_SKILL_ENEMY_RATE > 1) // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         {
             if (isSelfTypeSkill(skillName))
             {
@@ -1216,30 +1216,30 @@ int GetCharacterSkillSimple(ref _refCharacter, string skillName)
 		
 		skillN += SetCharacterSkillByEquippedItem(_refCharacter, skillName, SKILL_SAILING, "obereg_7", 10);
 
-		// Warship 25.10.08 Новый учет одежды
+		// Warship 25.10.08 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		skillN += SetCharacterSkillBySuit(_refCharacter, skillName);
 	
-		//Jason: учет негенерируемых клинков
+		//Jason: пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		skillN += SetCharacterSkillByQuestBlade(_refCharacter, skillName);
 		skillN += SetCharacterSkillByMangarosa(_refCharacter, skillName);
 	
-		//Jason: учет специальных атрибутов
+		//Jason: пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if(CheckAttribute(_refCharacter, "GenQuest.BladePenalty")) 
 			{
 				skillN += SetCharacterSkillByPenalty(_refCharacter, skillName);
 			}
-		//Jason: Калеуче
+		//Jason: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if(IsCharacterEquippedArtefact(_refCharacter, "kaleuche_amulet2"))
 		{
 			skillN += SetCharacterSkillByTuttuat(_refCharacter, skillName);
 		}
-		//navy --> действие алкоголя
+		//navy --> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if (CheckAttribute(_refCharacter, "chr_ai.drunk.skill." + skillName))
 		{
 			skillN += sti(_refCharacter.chr_ai.drunk.skill.(skillName));
 		}
 		//<--
-		// ugeen - должно быть в конце, множители к скиллам по наличию артефактов
+		// ugeen - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		skillN = makeint(skillN * AddMultiplySkillByEquippedItem(_refCharacter, skillName,   SKILL_ACCURACY, "indian_9", 1.10));
 		skillN = makeint(skillN * AddMultiplySkillByEquippedItem(_refCharacter, skillName,      SKILL_SNEAK, "obereg_4", 1.15));
 		skillN = makeint(skillN * AddMultiplySkillByEquippedItem(_refCharacter, skillName,    SKILL_FORTUNE, "obereg_5", 1.15));
@@ -1252,16 +1252,16 @@ int GetCharacterSkillSimple(ref _refCharacter, string skillName)
 		{
 			if(IsCharacterEquippedArtefact(_refCharacter, "totem_12") && skillName == SKILL_ACCURACY) 
 			{
-				skillN = skillN * 2; // получи фашист гранату по ночам !!!!
+				skillN = skillN * 2; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ !!!!
 			}
 		}
 		
-    	// boal учет перегруза 19.01.2004 -->
+    	// boal пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 19.01.2004 -->
     	if ( GetItemsWeight(_refCharacter) > GetMaxItemsWeight(_refCharacter) && !IsEquipCharacterByArtefact(_refCharacter, "totem_06"))
     	{
    	        skillN -= 20;
     	}
-    	// boal учет перегруза 19.01.2004 <--
+    	// boal пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 19.01.2004 <--
 	}
 	// boal <--
 	if (skillN <= 1) skillN = 1;
@@ -1286,12 +1286,12 @@ int GetShipClassNavySkill(int shipClass)
     return needSkill;
 }
 // boal 20.03.2004 <--
-void DelBakSkillAttr(ref _refCharacter) // boal оптимизация скилов
+void DelBakSkillAttr(ref _refCharacter) // boal пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 {
     DeleteAttribute(_refCharacter, "BakSkill");
     DeleteAttribute(_refCharacter, "BakSkillCount");
 }
-// сброс всех порогов (буфер расчета, пересчитывается от вещей +1)
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ +1)
 void ClearCharacterExpRate(ref _chref)
 {
     int    i;
@@ -1303,7 +1303,7 @@ void ClearCharacterExpRate(ref _chref)
         DeleteAttribute(_chref, "skill." + name + "_rate");
     }
 }
-// когда меняется порог кача, нужно сбросить очки, иначе будет по 120%
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 120%
 void RefreshCharacterSkillExpRate(ref _chref)
 {
     int    i;
@@ -1313,7 +1313,7 @@ void RefreshCharacterSkillExpRate(ref _chref)
     {
         name = GetSkillNameByIdx(i);
         AddCharacterExpToSkill(_chref, name, 0.0);
-        ApplayNewSkill(_chref, name, 0); // иначе перки  будут 23/22
+        ApplayNewSkill(_chref, name, 0); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ  пїЅпїЅпїЅпїЅпїЅ 23/22
     }
 }
 
@@ -1325,7 +1325,7 @@ int GetSummonSkillFromName(ref _refCharacter, string skillName)
 {
     int sumSkill;
 
-    // boal 051104 метод тормозит страшно - проверка +1 вещей, будет опрос раз в 10
+    // boal 051104 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ +1 пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ 10
     if (CheckAttribute(_refCharacter, "BakSkill." + skillName))
     {
         if (sti(_refCharacter.BakSkillCount.(skillName)) < 25 )
@@ -1337,12 +1337,12 @@ int GetSummonSkillFromName(ref _refCharacter, string skillName)
 
     sumSkill = GetSummonSkillFromNameSimple(_refCharacter, skillName);
 
-    // boal 27.01.2004 пенальти за крутой корабль -->
+    // boal 27.01.2004 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
  	sumSkill = ApplayNavyPenaltyToSkill(_refCharacter, skillName, sumSkill);
     // boal 27.01.2004 <--
 
-    _refCharacter.BakSkill.(skillName)      =  sumSkill; // значение
-    _refCharacter.BakSkillCount.(skillName) = rand(5); // счетчик немного размажем пересчет
+    _refCharacter.BakSkill.(skillName)      =  sumSkill; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    _refCharacter.BakSkillCount.(skillName) = rand(5); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
     return sumSkill;
 }
@@ -1434,7 +1434,7 @@ void AddCharacterExpToSkillSquadron(ref _refCharacter, string _skill, float _add
 	{
 		cn = GetCompanionIndex(_refCharacter,i);
 		if(cn!=-1)
-		{    // и квестовым тоже
+		{    // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			AddCharacterExpToSkill(GetCharacter(cn), _skill, _addValue);
 		}
 	}
@@ -1452,7 +1452,7 @@ void AddCharacterExpToSkill(ref _chref, string _skill, float _addValue)
     {
 	   if (IsOfficer(_chref))  Log_Info(_chref.id + " take " + FloatToString(_addValue, 2) + " exp to " + _skill);
     }
-    // boal 300804 падение экспы -->
+    // boal 300804 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ -->
     if (_addValue < 0)
     {
         if(CheckAttribute(_chref, "skill." + _skill_exp))
@@ -1465,7 +1465,7 @@ void AddCharacterExpToSkill(ref _chref, string _skill, float _addValue)
         }
         return;
     }
-    // boal 300804 падение экспы <--
+    // boal 300804 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ <--
     if (CheckAttribute(_chref, "skill." + _skill) && sti(_chref.skill.(_skill)) < SKILL_MAX)// && sti(_chref.skill.(_skill)) > 0)
     { // if skill = 0 then it is great loser
         _chref.skill.(_skill_exp) = stf(_chref.skill.(_skill_exp)) + _addValue;
@@ -1479,16 +1479,16 @@ void AddCharacterExpToSkill(ref _chref, string _skill, float _addValue)
                Log_SetStringToLog(XI_ConvertString(_skill)+" UP");
             } */
             AddCharacterSkillDontClearExp(_chref, _skill, 1);
-            // оптимизация скилов
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             DeleteAttribute(_chref, "BakSkill." + _skill);
             DeleteAttribute(_chref, "BakSkillCount." + _skill);
         }
     }
     /// officers
-    if (_addValue > 0 && sti(_chref.index) == GetMainCharacterIndex()) // только для ГГ
+    if (_addValue > 0 && sti(_chref.index) == GetMainCharacterIndex()) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ
     {
 		int cn, i, iPas;
-		iPas = GetPassengersQuantity(_chref); // оптимиация
+		iPas = GetPassengersQuantity(_chref); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if (CheckCharacterPerk(_chref, "SharedExperience"))
 		{
 			for(i=0; i<iPas; i++)
@@ -1553,7 +1553,7 @@ string GetPerkListText(ref _chref, string _type)
 	aref   arPerksRoot;
 
     lngFilePerkID = LanguageOpenFile("AbilityDescribe.txt");
-	// Варианты перков, которые можно добавить
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	makearef(arPerksRoot, _chref.perks.list);
 	perksQ = GetAttributesNum(arPerksRoot);
 	ret = "";
@@ -1572,7 +1572,7 @@ string GetPerkListText(ref _chref, string _type)
 	LanguageCloseFile(lngFilePerkID);
 	return ret;
 }
-// boal Вес предметов 19.01.2004 -->
+// boal пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 19.01.2004 -->
 float GetItemsWeight(ref _chref)
 {
     float   Amount = 0;
@@ -1589,13 +1589,13 @@ float GetItemsWeight(ref _chref)
 			if(CheckAttribute(itm, "ID"))
 			{
 				itemID = itm.id;
-				if (CheckAttribute(_chref, "items."+itemID) && itemID != "MapsAtlas")      // ugeen - атлас карт не учитываем !!
+				if (CheckAttribute(_chref, "items."+itemID) && itemID != "MapsAtlas")      // ugeen - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ !!
 				{
 					Amount += sti(_chref.items.(itemID))*stf(itm.Weight);
 				}
 			}
         }
-        _chref.ItemsWeight = Amount; // оптимицация тормозов в бою на море
+        _chref.ItemsWeight = Amount; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
     }
     else
     {
@@ -1608,8 +1608,8 @@ int GetMaxItemsWeight(ref _chref)
 	if (CheckAttribute(_chref, "Skill.FencingS"))
     {
         int iBonus = 0;
-        if (IsCharacterPerkOn(_chref, "Grus")) iBonus = 30;
-                                  //опасная рекурсия  если писать GetCharacterSPECIAL
+        if (IsCharacterPerkOn(_chref, "Grus")) iBonus = 5000;
+                                  //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ GetCharacterSPECIAL
         iBonus = iBonus + CHAR_ITEMS_WEIGHT + GetCharacterSPECIALSimple(_chref, SPECIAL_S)*(GetCharacterSPECIALSimple(_chref, SPECIAL_E) + 12 - MOD_SKILL_ENEMY_RATE);
 		if(IsEquipCharacterByArtefact(_chref, "obereg_3")) iBonus = makeint(iBonus * 1.15);
 		if(IsEquipCharacterByArtefact(_chref, "indian_7")) iBonus = makeint(iBonus * 0.9);
@@ -1617,7 +1617,7 @@ int GetMaxItemsWeight(ref _chref)
     }
     else
     {
-        return 10000; // сундук или труп не имееют скила и ограничения
+        return 10000; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     }
 }
 // boal 19.01.2004 <--
@@ -1636,7 +1636,7 @@ int Statistic_AddValue(ref _chref, string _attrName, int _add) // set and get(_a
 	
 	if(!CheckAttribute(_chref, "index")) return 0;
 	
-    if (sti(_chref.index) != GetMainCharacterIndex()) return 0; // оптимизация
+    if (sti(_chref.index) != GetMainCharacterIndex()) return 0; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     
     if( !CheckAttribute(_chref,"Statistic." + _attrName) )
     {
@@ -1652,7 +1652,7 @@ int Statistic_AddValue(ref _chref, string _attrName, int _add) // set and get(_a
 }
 void Statistic_KillChar(aref _attack, aref _enemy, string _attrName)
 {
-	if (sti(_attack.index) != GetMainCharacterIndex()) return; // оптимизация
+	if (sti(_attack.index) != GetMainCharacterIndex()) return; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	string  name = GetCharType(_enemy);
 
 	switch (name)
@@ -1685,8 +1685,8 @@ void Statistic_KillChar(aref _attack, aref _enemy, string _attrName)
 	Statistic_AddValue(_attack, name, 1);
 }
 
-// --> ачивки 
-// -->> сервисные функции
+// --> пїЅпїЅпїЅпїЅпїЅпїЅ 
+// -->> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 string Achievment_GetID(int achievNum)
 {
 	string id = "";
@@ -1850,7 +1850,7 @@ string Stat_GetID(int achievNum)
 	}
 	return id;
 }
-// <<-- сервисные функции
+// <<-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 #event_handler("NextDay","AchievmentsDayUpdateStart");
 #event_handler("EvAchievmentsDayUpdate","AchievmentsDayUpdate");
 int AchievmentsDayUpdateCnt = 0;
@@ -1887,106 +1887,106 @@ void CheckAchievments(ref _chref, int achievNum)
 
 	if(!CheckAttribute(_chref, "index")) return;
 	
-    if (sti(_chref.index) != GetMainCharacterIndex()) return; // оптимизация, выходим если не ГГ
+    if (sti(_chref.index) != GetMainCharacterIndex()) return; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ
 	
 	if(!bSteamAchievements) return;
 	
 	switch (achievNum)
 	{		
-		case 5 :	// Легендарный :  уровень >= 40
+		case 5 :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ :  пїЅпїЅпїЅпїЅпїЅпїЅпїЅ >= 40
 			if(sti(_chref.rank) >= 40) Achievment_SetStat(_chref, 5, 1);
 		break;
-		case 11 : 	// Баловень судьбы : (удача = 100%)
+		case 11 : 	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅпїЅ = 100%)
 			if(GetSkillValue(_chref, SKILL_TYPE, SKILL_FORTUNE) >= 100)	Achievment_SetStat(_chref, 11, 1);
 		break;
-		case 12 : 	// Фехтовальщик : (фехт в ЛО = 100%)
+		case 12 : 	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ = 100%)
 			if(GetSkillValue(_chref, SKILL_TYPE, SKILL_F_LIGHT) >= 100)	Achievment_SetStat(_chref, 12, 1);
 		break;
-		case 13 : 	// Гусар : (фехт в СО = 100%)
+		case 13 : 	// пїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ = 100%)
 			if(GetSkillValue(_chref, SKILL_TYPE, SKILL_FENCING) >= 100)	Achievment_SetStat(_chref, 13, 1);
 		break;
-		case 14 : 	// Драгун : (фехт в ТО = 100%)
+		case 14 : 	// пїЅпїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ = 100%)
 			if(GetSkillValue(_chref, SKILL_TYPE, SKILL_F_HEAVY) >= 100)	Achievment_SetStat(_chref, 14, 1);
 		break;		
-		case 15 : 	// Шпион : (скрытность = 100%)
+		case 15 : 	// пїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ = 100%)
 			if(GetSkillValue(_chref, SKILL_TYPE, SKILL_SNEAK) >= 100)	Achievment_SetStat(_chref, 15, 1);
 		break;
-		case 16 : 	// Крепкий орешек : (защита = 100%)
+		case 16 : 	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅпїЅпїЅ = 100%)
 			if(GetSkillValue(_chref, SKILL_TYPE, SKILL_DEFENCE) >= 100)	Achievment_SetStat(_chref, 16, 1);
 		break;
-		case 17 : 	// Адмирал : (навигация = 100%)
+		case 17 : 	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ = 100%)
 			if(GetSkillValue(_chref, SKILL_TYPE, SKILL_SAILING) >= 100)	Achievment_SetStat(_chref, 17, 1);
 		break;
-		case 18 : 	// Негоциант : (торговля = 100%)
+		case 18 : 	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ = 100%)
 			if(GetSkillValue(_chref, SKILL_TYPE, SKILL_COMMERCE) >= 100)	Achievment_SetStat(_chref, 18, 1);
 		break;						
-		case 19  :	// Джедай :  достичь максимальной репутации
+		case 19  :	// пїЅпїЅпїЅпїЅпїЅпїЅ :  пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(sti(_chref.reputation.nobility) > 95) Achievment_SetStat(_chref, 19, 1);
 		break;
-		case 20  :	// Ситх : достичь минимальной репутации
+		case 20  :	// пїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(sti(_chref.reputation.nobility) < 5) Achievment_SetStat(_chref, 20, 1);
 		break;
-		case 28  :	// Скряга : сколотить капитал >= 10 000 000
+		case 28  :	// пїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ >= 10 000 000
 			if(sti(_chref.money) >= 10000000) Achievment_SetStat(_chref, 28, 1);
 		break;
-		case 30  :	// Флотоводец : собрать максимальную эскадру
+		case 30  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(GetRemovableCompanionsNumber(_chref) == COMPANION_MAX) Achievment_SetStat(_chref, 30, 1);
 		break;
-		case 32  :	// Болезненный : уронить здоровье до минимума
+		case 32  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(GetHealthNum(_chref) <= 5) Achievment_SetStat(_chref, 32, 1);
 		break;
-		case 33  :	// Коллекционер : собрать коллекцию из 100 сокровищ
+		case 33  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 100 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(CheckItemMyCabin("icollection") >= 100) Achievment_SetStat(_chref, 33, 1);
 		break;
-		case 42  :	// Ростовщик :  вклады у ростовщиков на 5000000 песо
+		case 42  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ :  пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 5000000 пїЅпїЅпїЅпїЅ
 			if(CheckTotalDepositsSum(_chref, 5000000)) Achievment_SetStat(_chref, 42, 1);
 		break;
-		case 44  :	// Ветер Перемен -  прохождение за Голландию
+		case 44  :	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(CheckAttribute(_chref,"questTemp.HWIC.Detector") && (_chref.questTemp.HWIC.Detector == "holl_win")) Achievment_SetStat(_chref, 44, 1);
 		break;
-		case 45  :	// На службе Империи -  прохождение за Англию
+		case 45  :	// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			if(CheckAttribute(_chref,"questTemp.HWIC.Detector") && (_chref.questTemp.HWIC.Detector == "eng_win")) Achievment_SetStat(_chref, 45, 1);
 		break;
-		case 46  :	// Не зная страха - прохождение "Против всех"
+		case 46  :	// пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ"
 			if(CheckAttribute(_chref,"questTemp.HWIC.Detector") && (_chref.questTemp.HWIC.Detector == "self_win")) Achievment_SetStat(_chref, 46, 1);
 		break;
-		case 47  :	// Простодушный -  провальный финад
+		case 47  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			if(CheckAttribute(_chref, "questTemp.Tieyasal_FailEnd")) Achievment_SetStat(_chref, 47, 1);
 		break;
-		case 48  :	// Усердный -  настоящий финал
+		case 48  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			if(CheckAttribute(_chref, "questTemp.Tieyasal_WinEnd")) Achievment_SetStat(_chref, 48, 1);
 		break;
-		case 49  :  // Морской дьявол -  стать капитаном Калеуче
+		case 49  :  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ -  пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(CheckAttribute(_chref, "questTemp.Caleuche.Abordage") && (RealShips[sti(_chref.Ship.Type)].BaseType == SHIP_CURSED_FDM)) Achievment_SetStat(_chref, 49, 1);
 		break;
-		// новые
-		case 54  :  // "Путешественник" - посетить все колонии (таверны) 
+		// пїЅпїЅпїЅпїЅпїЅ
+		case 54  :  // "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ) 
 			if(sti(pchar.questTemp.TavernVisit.counter) == 28) Achievment_SetStat(_chref, 54, 1);
 		break;
-		case 55  :  // "Команда профессионалов" - нанять офицеров на все должности
+		case 55  :  // "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		    if(CheckForAllOfficers()) Achievment_SetStat(_chref, 55, 1);
 		break;
 /*		
-		case 56  :  // "Долгожитель" - проведено в игре 100 часов
+		case 56  :  // "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ 100 пїЅпїЅпїЅпїЅпїЅ
 		    if(GetPlayTimeHours() >= 100) Achievment_SetStat(_chref, 56, 1);
 		break;
 */		
-		case 62  :  // за три приготовленных зелья из Мангаросы
+		case 62  :  // пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(CheckAttribute(_chref, "Mangarosa.Alchemy.MP") && CheckAttribute(_chref, "Mangarosa.Alchemy.MF") && CheckAttribute(_chref, "Mangarosa.Alchemy.MT")) Achievment_SetStat(_chref, 62, 1);
 		break;
-		case 63  :  // за ремонт на всех верфях архипелага
+		case 63  :  // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(sti(pchar.questTemp.ShipyardVisit.counter) == 23) Achievment_SetStat(_chref, 63, 1);
 		break;
-		case 66  :  // за полный апгрейд корабля
+		case 66  :  // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(CheckAttribute(_chref, "achievment.Tuning.stage1") && CheckAttribute(_chref, "achievment.Tuning.stage2") && CheckAttribute(_chref, "achievment.Tuning.stage3") && CheckAttribute(_chref, "achievment.Tuning.stage4")) Achievment_SetStat(_chref, 66, 1);
 		break;	
-		case 69  :  // "найм" монаха-капеллана
+		case 69  :  // "пїЅпїЅпїЅпїЅ" пїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(CheckAttribute(_chref,"questTemp.ShipCapellan.Yes") && (_chref.questTemp.ShipCapellan.Yes == "true")) Achievment_SetStat(_chref, 69, 1);
 		break;
-//		case 72  :  // "Опытный" - проведено в игре 500 часов
+//		case 72  :  // "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ 500 пїЅпїЅпїЅпїЅпїЅ
 //		    if(GetPlayTimeHours() >= 500) Achievment_SetStat(_chref, 72, 1);
 //		break;
-//		case 73  :  // "Матерый" - проведено в игре 1000 часов
+//		case 73  :  // "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ 1000 пїЅпїЅпїЅпїЅпїЅ
 //		    if(GetPlayTimeHours() >= 1000) Achievment_SetStat(_chref, 73, 1);
 //		break;
 	}	
@@ -2013,406 +2013,408 @@ void Achievment_SetStat(ref _chref, int achievNum, int _add)
 	sAchiev = Achievment_GetID(achievNum);
 	achState = GetAchievement(sAchiev);
 	trace("Check Achievment :" + achievNum + " state :" + achState);
+	//Log_SetStringToLog("Check Achievment :" + achievNum + " state :" + achState);
 	if(achState == 1) 
 	{
-		return;  // ачива уже получена, ничего не делаем, всем спасибо - все свободны
+		return;  // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	}
 
 	sStat = Stat_GetID(achievNum);
-	curState = GetStat(sStat);			// получаем текущее значение статистики для текущей незакрытой ачивы achievNum
+	curState = GetStat(sStat);			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ achievNum
 
-	SetStat(sStat, curState + _add); 	// добавляем в статистику значение
+	SetStat(sStat, curState + _add); 	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	curState = curState + _add;
 	
-	bSuccess = StoreStats();			// записываем в стим!!
+	bSuccess = StoreStats();			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ!!
 	if(bSuccess) 	trace("StoreStats() ok !!");
 	else
 	{	
 		trace("StoreStats() error !!");
+		Log_SetStringToLog("StoreStats() error !!");
 		return;
 	}	
 	
 	switch (achievNum)
 	{
-		case 1  :	// Боевое крещение : первая морская победа в игре
+		case 1  :	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 			if(curState >= 1)
 			{
 				aName = "Baptism of fire";
 				bOk = true;
 			}
 		break;
-		case 2  :	// Абордажник - абордаж кораблей (250)
+		case 2  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (250)
 			if(curState >= 250)
 			{
 				aName = "Fighter";
 				bOk = true;
 			}
 		break;
-		case 3  :	// Морской волк - уничтожение кораблей (500)
+		case 3  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (500)
 			if(curState >= 500)
 			{
 				aName = "Sea wolf";
 				bOk = true;
 			}
 		break;		
-		case 4  :	// Джентльмен удачи : полностью уничтожен Золотой Флот
+		case 4  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			if(curState >= 1)
 			{
 				aName = "Gentleman of fortune";
 				bOk = true;
 			}
 		break;		
-		case 5 :	// Легендарный :  уровень >= 40
+		case 5 :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ :  пїЅпїЅпїЅпїЅпїЅпїЅпїЅ >= 40
 			if(curState >= 1)			
 			{
 				aName = "Legendary";
 				bOk = true;
 			}
 		break;	
-		case 6 :	// Покрытый шрамами : потрачено здоровья >= 10000
+		case 6 :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ >= 10000
 			if(curState >= 10000)			
 			{
 				aName = "Scarred";
 				bOk = true;
 			}		
 		break;
-		case 7 :	// Алхимик : кол-во актов алхимии >= 200
+		case 7 :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ >= 200
 			if(curState >= 200)
 			{	
 				aName = "Alchemist";
 				bOk = true;			
 			}
 		break;	
-		case 8	:	// Кладоискатель : (>= 100 вырытых кладов)
+		case 8	:	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : (>= 100 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ)
 			if(CurState >= 100)
 			{	
 				aName = "Treasure hunter";
 				bOk = true;			
 			}		
 		break;		
-		case 9  :	// Врунгель : победа в регате
+		case 9  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)
 			{
 				aName = "Yachtsman";
 				bOk = true;
 			}
 		break;				
-		case 10 :	// Home sweet home : обладатель своего дома
+		case 10 :	// Home sweet home : пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Home sweet home";
 				bOk = true;
 			}
 		break;		
-		case 11 : 	// Баловень судьбы : (удача = 100%)
+		case 11 : 	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅпїЅ = 100%)
 			if(curState >= 1)			
 			{
 				aName = "Darling of fortune";
 				bOk = true;
 			}
 		break;
-		case 12 : 	// Фехтовальщик : (фехт в ЛО = 100%)			
+		case 12 : 	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ = 100%)			
 			if(curState >= 1)			
 			{
 				aName = "Swordsman";
 				bOk = true;
 			}
 		break;
-		case 13 : 	// Гусар : (фехт в СО = 100%)
+		case 13 : 	// пїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ = 100%)
 			if(curState >= 1)			
 			{
 				aName = "Hussar";
 				bOk = true;
 			}
 		break;
-		case 14 : 	// Драгун : (фехт в ТО = 100%)
+		case 14 : 	// пїЅпїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ = 100%)
 			if(curState >= 1)			
 			{
 				aName		= "Dragoon";
 				bOk = true;
 			}			
 		break;		
-		case 15 : 	// Шпион : (скрытность = 100%)
+		case 15 : 	// пїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ = 100%)
 			if(curState >= 1)			
 			{
 				aName = "Spy";
 				bOk = true;
 			}			
 		break;
-		case 16 : 	// Крепкий орешек : (защита = 100%)			
+		case 16 : 	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅпїЅпїЅ = 100%)			
 			if(curState >= 1)			
 			{
 				aName = "Die hard";
 				bOk = true;
 			}
 		break;
-		case 17 : 	// Адмирал : (навигация = 100%)
+		case 17 : 	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ = 100%)
 			if(curState >= 1)			
 			{
 				aName = "Navigator";
 				bOk = true;
 			}
 		break;
-		case 18 : 	// Негоциант : (торговля = 100%)
+		case 18 : 	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ = 100%)
 			if(curState >= 1)			
 			{
 				aName = "Trader";
 				bOk = true;
 			}
 		break;						
-		case 19  :	// Джедай :  достичь максимальной репутации
+		case 19  :	// пїЅпїЅпїЅпїЅпїЅпїЅ :  пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Hero";
 				bOk = true;
 			}
 		break;
-		case 20  :	// Ситх : достичь минимальной репутации
+		case 20  :	// пїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Scoundrel";
 				bOk = true;
 			}
 		break;		
-		case 21  :	// Душегуб : 9999 погибших матросов в экипаже ГГ
+		case 21  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ : 9999 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
 			if(curState >= 9999)
 			{
 				aName = "Murderer";
 				bOk = true;
 			}
 		break;
-		case 22  :	// Ветеран : разгромить >= 15 фортов
+		case 22  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ >= 15 пїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 15)
 			{
 				aName = "Veteran";
 				bOk = true;
 			}		
 		break;
-		case 23  :	// Ветреный " посетить бордель 100 раз
+		case 23  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 100 пїЅпїЅпїЅ
 			if(curState >= 100)
 			{
 				aName = "Light-headed";
 				bOk = true;
 			}
 		break;
-		case 24  :	// Постоялец : заночевать в таверне >=50 раз
+		case 24  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ >=50 пїЅпїЅпїЅ
 			if(curState >= 50)
 			{
 				aName = "Guest";
 				bOk = true;
 			}
 		break;
-		case 25  :	// Азартный игрок : (выигрыш в карты/кости >= 500 )	
+		case 25  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅ >= 500 )	
 			if(curState >= 500)
 			{
 				aName = "Gambler";
 				bOk = true;
 			}
 		break;
-		case 26  :	// Транжира : (проигрыш в карты/кости >= 500 )		
+		case 26  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅ >= 500 )		
 			if(curState >= 500)
 			{
 				aName = "Spender";
 				bOk = true;
 			}		
 		break;
-		case 27  :	// снайпер : убийство из пистолета >= 500
+		case 27  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ >= 500
 			if(curState >= 500)
 			{
 				aName = "Sniper";
 				bOk = true;
 			}		
 		break;		
-		case 28  :	// Скряга : сколотить капитал >= 10 000 000
+		case 28  :	// пїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ >= 10 000 000
 			if(curState >= 1)			
 			{
 				aName = "Miser";
 				bOk = true;
 			}		
 		break;
-		case 29  :	// Доброе сердце : взять в команду кораблекрушенцев (>= 100)
+		case 29  :	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (>= 100)
 			if(curState >= 100)
 			{
 				aName = "Good-hearted";
 				bOk = true;
 			}		
 		break;		
-		case 30  :	// Флотоводец : собрать максимальную эскадру
+		case 30  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Admiral";
 				bOk = true;
 			}
 		break;		
-		case 31  :	// Контрабандист : >=50 удачных сделок с контрабандистами
+		case 31  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : >=50 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 50)
 			{
 				aName = "Smuggler";
 				bOk = true;
 			}		
 		break;		
-		case 32  :	// Болезненный : уронить здоровье до минимума
+		case 32  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Unhealthy";
 				bOk = true;
 			}		
 		break;
-		case 33  :	// Коллекционер : собрать коллекцию из 100 сокровищ
+		case 33  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 100 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(CurState >= 1)			
 			{
 				aName = "Collector";
 				bOk = true;
 			}		
 		break;		
-		case 34  :	// Гибель врагам : убийство военных (>=500)
+		case 34  :	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (>=500)
 			if(curState >= 500)
 			{
 				aName = "The death of enemies";
 				bOk = true;
 			}		
 		break;
-		case 35  :	// Безжалостный : убийство гражданских (>= 500)
+		case 35  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (>= 500)
 			if(curState >= 500)
 			{
 				aName = "Ruthless";
 				bOk = true;
 			}		
 		break;
-		case 36  :	// Конкистадор :  убийство индейцев (>=250)
+		case 36  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ :  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (>=250)
 			if(curState >= 250)
 			{
 				aName = "Conquistador";
 				bOk = true;
 			}				
 		break;
-		case 37  :	// Экзорцист :  убийство нечисти (>=100)
+		case 37  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ :  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (>=100)
 			if(CurState >= 100)
 			{
 				aName = "Holy warrior";
 				bOk = true;
 			}				
 		break;
-		case 38  :	// Красная книга : убийство крабов (>=35)
+		case 38  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (>=35)
 			if(curState >= 35)
 			{
 				aName = "Fisher";
 				bOk = true;
 			}				
 		break;
-		case 39  :	// Торговец : Заработать торговлей/перепродажей 10000000
+		case 39  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 10000000
 			if(CurState >= 10000000)
 			{
 				aName = "Negotiant";
 				bOk = true;
 			}						
 		break;		
-		case 40  :	// Исследователь : исследовать данжи (>=50)
+		case 40  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (>=50)
 			if(CurState >= 50)
 			{
 				aName = "Researcher";
 				bOk = true;
 			}						
 		break;
-		case 41  :	// Щедрый : раздать милостыню 200 раз
+		case 41  :	// пїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 200 пїЅпїЅпїЅ
 			if(curState >= 200)
 			{
 				aName = "Generous";
 				bOk = true;
 			}						
 		break;		
-		case 42  :	// Ростовщик :  вклады у ростовщиков на 5000000 песо
+		case 42  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ :  пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 5000000 пїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName		= "Usurer";
 				bOk = true;
 			}						
 		break;		
-		case 43  :	// Работорговец : продажа >= 5000 рабов
+		case 43  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅ >= 5000 пїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 5000)			
 			{
 				aName = "Slaver";
 				bOk = true;
 			}				
 		break;		
-		case 44  :	// Ветер Перемен -  прохождение за Голландию
+		case 44  :	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "The wind of change";
 				bOk = true;
 			}
 		break;
-		case 45  :	// На службе Империи -  прохождение за Англию
+		case 45  :	// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "In the service of the empire";
 				bOk = true;
 			}
 		break;
-		case 46  :	// Не зная страха - прохождение "Против всех"			
+		case 46  :	// пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ"			
 			if(curState >= 1)			
 			{
 				aName = "No fear";
 				bOk = true;
 			}
 		break;
-		case 47  :	// Простодушный -  провальный финал
+		case 47  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Simple-minded";
 				bOk = true;
 			}
 		break;
-		case 48  :	// Усердный -  настоящий финал
+		case 48  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Diligent";
 				bOk = true;
 			}
 		break;
-		case 49  :  // Морской дьявол -  стать капитаном Калеуче
+		case 49  :  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ -  пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Sea Devil";
 				bOk = true;
 			}
 		break;
-		case 50  :	// Морской разбойник -  утопить под пиратским флагом >=100 кораблей
+		case 50  :	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -  пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ >=100 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 100)
 			{
 				aName = "Pirat";
 				bOk = true;
 			}
 		break;	
-		case 51  :  // Урок усвоен - пройдена линейка ФМК
+		case 51  :  // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			if(curState >= 1)
 			{
 				aName = "Lesson Learnt";
 				bOk = true;
 			}
 		break;
-		case 52  :  // "Законник" - убийство бандитов >= 250
+		case 52  :  // "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ >= 250
 			if(curState >= 250)			
 			{
 				aName = "Vigilante";
 				bOk = true;
 			}		
 		break;
-		case 53  : // "Гроза Архипелага" - убийство пиратов >= 500
+		case 53  : // "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ >= 500
 			if(curState >= 500)			
 			{
 				aName = "Caribbean Menace";
 				bOk = true;
 			}		
 		break;
-		case 54  :  // "Путешественник" - посетить все колонии (таверны)
+		case 54  :  // "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
 			if(curState >= 1)			
 			{
 				aName = "Travaler";
 				bOk = true;
 			}		
 		break;
-		case 55  :  // "Команда профессионалов" - нанять офицеров на все должности
+		case 55  :  // "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Crew of Pro's";
@@ -2420,7 +2422,7 @@ void Achievment_SetStat(ref _chref, int achievNum, int _add)
 			}		
 		break;
 /*		
-		case 56  :  // "Долгожитель" - проведено в игре 100 часов
+		case 56  :  // "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ 100 пїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Long-Liver";
@@ -2428,105 +2430,105 @@ void Achievment_SetStat(ref _chref, int achievNum, int _add)
 			}				
 		break;
 */		
-		case 57  :  // "На скользком пути" - спецачива DLC #3
+		case 57  :  // "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ DLC #3
 			if(curState >= 1)			
 			{
 				aName = "On a Slippery Track";
 				bOk = true;
 			}						
 		break;
-		case 58  :  // "Под черным флагом" - спецачива DLC #3
+		case 58  :  // "пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ DLC #3
 			if(curState >= 1)			
 			{
 				aName = "Flying the Jolly Roger";
 				bOk = true;
 			}								
 		break;
-		case 59  :  // за 50 поднятых бочёнков (энкаунтер на глобальной карте)
+		case 59  :  // пїЅпїЅ 50 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ)
 			if(curState >= 50)			
 			{
 				aName = "Fisher";
 				bOk = true;
 			}
 		break;
-		case 60  :  // за 20 спасённых капитанов (энкаунтер на глобальной карте)
+		case 60  :  // пїЅпїЅ 20 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ)
 			if(curState >= 20)			
 			{
 				aName = "Good-hearted";
 				bOk = true;
 			}				
 		break;
-		case 61  :  // за 200 сброшенных/установленных в бою мин
+		case 61  :  // пїЅпїЅ 200 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ
 			if(curState >= 200)			
 			{
 				aName = "Miner";
 				bOk = true;
 			}						
 		break;
-		case 62  :  // за три приготовленных зелья из Мангаросы
+		case 62  :  // пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Herbalist";
 				bOk = true;
 			}		
 		break;
-		case 63  :  // за ремонт на всех верфях архипелага
+		case 63  :  // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Profitable Customer";
 				bOk = true;
 			}		
 		break;
-		case 64  :  // за самостоятельный ремонт в бухте
+		case 64  :  // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 5)			
 			{
 				aName = "Handy";
 				bOk = true;
 			}				
 		break;
-		case 65  :  // за возвращение Фадею его персидской коллекции;
+		case 65  :  // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ;
 			if(curState >= 1)			
 			{
 				aName = "Antiquarian";
 				bOk = true;
 			}		
 		break;
-		case 66  :  // за апгрейд корабля
+		case 66  :  // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Construct";
 				bOk = true;
 			}				
 		break;
-		case 67  :  // за аренду склада
+		case 67  :  // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Renter";
 				bOk = true;
 			}		
 		break;
-		case 68  :  // за несколько купленных фальшивых карт кладов  (5)
+		case 68  :  // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ  (5)
 			if(curState >= 5)			
 			{
 				aName = "Sea Calf";
 				bOk = true;
 			}		
 		break;
-		case 69  :  // "найм" монаха-капеллана
+		case 69  :  // "пїЅпїЅпїЅпїЅ" пїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Spiritual Defence";
 				bOk = true;			
 			}
 		break;				
-		case 70  :  // за победу в конкурсе "Пей до дна" ))
+		case 70  :  // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ" ))
 			if(curState >= 1)			
 			{
 				aName = "Blue Nose";
 				bOk = true;
 			}				
 		break;
-		case 71  :  // "Карибский отравитель" - спецачива DLC #3
+		case 71  :  // "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ DLC #3
 			if(curState >= 1)			
 			{
 				aName = "Caribbean Poisoner";
@@ -2534,14 +2536,14 @@ void Achievment_SetStat(ref _chref, int achievNum, int _add)
 			}				
 		break;
 /*		
-		case 72  :  // "Опытный" - провести в игре 500 часов
+		case 72  :  // "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ 500 пїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Experienced";
 				bOk = true;
 			}				
 		break;
-		case 73  :  // "Матерый" - провести в игре 1000 часов
+		case 73  :  // "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ 1000 пїЅпїЅпїЅпїЅпїЅ
 			if(curState >= 1)			
 			{
 				aName = "Double-dyed";
@@ -2550,10 +2552,12 @@ void Achievment_SetStat(ref _chref, int achievNum, int _add)
 		break;
 */
 	}
+
+	Log_SetStringToLog("Added to " + sAchiev + "!");
 		
 	if(bOk)
 	{	
-		achState = SetAchievement(sAchiev); // устанавливаем ачивку в стим
+		achState = SetAchievement(sAchiev); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 		if(achState == 1) 
 		{
 			Log_SetStringToLog("A new achievement - '" + aName + "'!!");
@@ -2561,9 +2565,9 @@ void Achievment_SetStat(ref _chref, int achievNum, int _add)
 	}			
 	return;		
 }
-// <-- ачивки 
+// <-- пїЅпїЅпїЅпїЅпїЅпїЅ 
 
-string GetCharType(aref _enemy)  //TO_DO переделать на тип в НПС
+string GetCharType(aref _enemy)  //TO_DO пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ
 {
     string  name  = "Warrior"; // define
     string  model = _enemy.model;
@@ -2618,7 +2622,7 @@ string GetCharType(aref _enemy)  //TO_DO переделать на тип в НПС
 		    name = "Citizen";
 		break;
 
-		case LAI_TYPE_WARRIOR : // to_do преверить тип
+		case LAI_TYPE_WARRIOR : // to_do пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 			if (findsubstr(model, "canib_" , 0) != -1 || findsubstr(model, "itza_" , 0) != -1 || findsubstr(model, "miskito_" , 0) != -1)
 			{
 				name = "Indian";
@@ -2674,7 +2678,7 @@ string GetCharType(aref _enemy)  //TO_DO переделать на тип в НПС
 }
 // boal statistic info 17.12.2003 <--
 
-// boal Блок здоровье ГГ -->
+// boal пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ -->
 int GetHealthNum(ref ch)
 {
     if (!CheckAttribute(ch, "Health"))
@@ -2683,7 +2687,7 @@ int GetHealthNum(ref ch)
 	}
     int i;
 
-    i = makeint((stf(ch.Health.HP) + 9) / 10.0); // до целого
+    i = makeint((stf(ch.Health.HP) + 9) / 10.0); // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
     return i;
 }
@@ -2696,7 +2700,7 @@ int GetHealthMaxNum(ref ch)
 	}
     int i;
 
-    i = makeint((stf(ch.Health.maxHP) + 9) / 10.0); // до целого
+    i = makeint((stf(ch.Health.maxHP) + 9) / 10.0); // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
     return i;
 }
@@ -2784,7 +2788,7 @@ void SetNewDayHealth()
     }
     else
     {
-        if (!IsEntity(worldMap)) // не на карте
+        if (!IsEntity(worldMap)) // пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         {
             AddCharacterHealth(mainChr, 1 + add);
         }
@@ -2857,12 +2861,12 @@ void AddCharacterMaxHealth(ref mainChr, float add)
         mainChr.Health.HP = stf(mainChr.Health.maxHP);
     }
 }
-// boal Блок здоровье ГГ <--
+// boal пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ <--
 
-// увеличение счетчика награды за голову -->
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ -->
 int ChangeCharacterHunterScore(ref chref, string _huntName, int incr)
 {
-	int prevVal = -5; // мин набор
+	int prevVal = -5; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
 	if (_huntName == "pirhunter") return 0;
 	if (CheckAttribute(chref, "GenQuest.HunterScore2Pause")) incr = 0;
@@ -2892,7 +2896,7 @@ int ChangeCharacterHunterScore(ref chref, string _huntName, int incr)
 	else
 	{
 		int iNation = 0;
-		switch (_huntName) // код для совместимости со старым
+		switch (_huntName) // пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		{
 		    case "enghunter":  iNation = ENGLAND; break;
 		    case "frahunter":  iNation = FRANCE; break;
@@ -2915,7 +2919,7 @@ int ChangeCharacterHunterScore(ref chref, string _huntName, int incr)
 
 int ChangeCharacterNationReputation(ref chref, int _Nation, int incr)
 {
-	return -ChangeCharacterHunterScore(chref, NationShortName(_Nation) + "hunter", -incr); // все наоборот, - это хорошо, + есть НЗГ
+	return -ChangeCharacterHunterScore(chref, NationShortName(_Nation) + "hunter", -incr); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, + пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 }
 
 string GetNationReputation(ref chref, int _Nation)
@@ -2957,12 +2961,12 @@ string NationShortName(int iNation)
 	}
 	return "eng";
 }
-// увеличение счетчика награды за голову <--
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ <--
 
 
 void setWDMPointXZ(string _location)
 {
-    // координаты на гловал карте -->
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ -->
     int n;
 	string sTemp;
 
@@ -2983,17 +2987,17 @@ void setWDMPointXZ(string _location)
 				//trace(sTemp + "." + _location);
 			}
 			else
-			{// для бухт с незаданными координатами
+			{// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			    worldMap.playerShipX = worldMap.zeroX;
 				worldMap.playerShipZ = worldMap.zeroZ;
 			}
 		}
 	}
-	// координаты на гловал карте <--
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ <--
 }
 
 
-// нужно не перекрывать еще и признаки фантома
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 void ChangeAttributesFromCharacter(ref CopyChref, ref PastChref, bool _dialogCopy)
 {
     aref arToChar;
@@ -3012,7 +3016,7 @@ void ChangeAttributesFromCharacter(ref CopyChref, ref PastChref, bool _dialogCop
     CopyChref.rank             = PastChref.rank;
     CopyChref.reputation       = makeint(PastChref.reputation);
 	
-	CopyChref.baseCapIdx       = PastChref.index; //Id оригинального в структуру клона
+	CopyChref.baseCapIdx       = PastChref.index; //Id пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
     if (CheckAttribute(PastChref, "loyality"))
     {
@@ -3033,7 +3037,7 @@ void ChangeAttributesFromCharacter(ref CopyChref, ref PastChref, bool _dialogCop
     LAi_SetHP(CopyChref, makeint(PastChref.chr_ai.hp_max), makeint(PastChref.chr_ai.hp_max));
 	LAi_SetCurHPMax(CopyChref);
 	
-	//копируем структуру quest от оригинального кэпа, очень нужно по квестам :)
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ quest пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ :)
 	if (CheckAttribute(PastChref, "quest"))
     {
 	    aref arToCharQuest, arFromCharQuest;
@@ -3054,7 +3058,7 @@ void ChangeAttributesFromCharacter(ref CopyChref, ref PastChref, bool _dialogCop
 
     if (CheckAttribute(PastChref, "Payment"))
     {
-        CopyChref.Payment     =   PastChref.Payment; // платить ЗП
+        CopyChref.Payment     =   PastChref.Payment; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
     }
     else
     {
@@ -3062,7 +3066,7 @@ void ChangeAttributesFromCharacter(ref CopyChref, ref PastChref, bool _dialogCop
     }
     if (CheckAttribute(PastChref, "HoldEquip"))
     {
-        CopyChref.HoldEquip   =   PastChref.HoldEquip; // не отдавать саблю и пистоль
+        CopyChref.HoldEquip   =   PastChref.HoldEquip; // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     }
 	else
     {
@@ -3168,8 +3172,8 @@ void ChangeAttributesFromCharacter(ref CopyChref, ref PastChref, bool _dialogCop
 		CopyChref.PerkValue.EnergyPlus =   PastChref.PerkValue.EnergyPlus;
 	}
 
-	// ugeen --> нужно для генерации различных ситуации в каюте абордированного кэпа
-	if (CheckAttribute(PastChref,"Situation")) // если в каюте кэпа возникла ситуация 
+	// ugeen --> пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+	if (CheckAttribute(PastChref,"Situation")) // пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
 	{
 		CopyChref.Situation = PastChref.Situation;
 		CopyChref.Situation.type = PastChref.Situation.type;
@@ -3197,14 +3201,14 @@ void ChangeAttributesFromCharacter(ref CopyChref, ref PastChref, bool _dialogCop
 	{
 	    CopyChref.Dialog.Filename    = PastChref.Dialog.Filename;
 	    CopyChref.Dialog.CurrentNode = PastChref.Dialog.CurrentNode;
-	    if (CheckAttribute(PastChref, "greeting")) CopyChref.greeting = PastChref.greeting; //eddy.нет логам!
+	    if (CheckAttribute(PastChref, "greeting")) CopyChref.greeting = PastChref.greeting; //eddy.пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!
 		else
 		{
 			DeleteAttribute(CopyChref, "greeting");
 		}
 	}
 	SetEnergyToCharacter(CopyChref);
-	//SetNewModelToChar(CopyChref);  // чтоб сабли были правильные
+	//SetNewModelToChar(CopyChref);  // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 }
 
 int GetCharacterLoyality(ref chr)
@@ -3223,7 +3227,7 @@ int GetCharacterLoyality(ref chr)
     }
     else
     {
-        return  0; // для пленных и гг
+        return  0; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ
     }
 }
 
@@ -3232,7 +3236,7 @@ void CCS_SetNewMainCharacter(ref ch, int num)
 	if(num < 1) num = 1;
 	switch (num)
 	{
-		case 1: //Шарль де Мор
+		case 1: //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ
 			ch.FaceId 				= 201;
 			ch.HeroModel 			= "Sharle_1,Sharle_2,Sharle_3,Sharle_4,Sharle_5,protocusto,Sharle_6,Sharle_8";
 			ch.name 				= "Charles";
@@ -3253,43 +3257,43 @@ void CCS_SetNewMainCharacter(ref ch, int num)
 									  "What activities did he find most interesting and promising? ";
 									  
 		break;
-		case 2: // Диего  де Монтойя
+		case 2: // пїЅпїЅпїЅпїЅпїЅ  пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			return;			
 /*			
 			ch.FaceId 				= 203;
 			ch.HeroModel 			= "Diego_1,Diego_1,Diego_1,Diego_1,Diego_1,protocusto,Diego_6";
-			ch.name 				= "Диего";
-			ch.lastname				= "де Монтойя";
-			ch.nameGen				= "Диего";
-			ch.lastnameGen			= "де Монтойя";
-			ch.nameDat				= "Диего";
-			ch.lastnameDat			= "де Монтойя";
+			ch.name 				= "пїЅпїЅпїЅпїЅпїЅ";
+			ch.lastname				= "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
+			ch.nameGen				= "пїЅпїЅпїЅпїЅпїЅ";
+			ch.lastnameGen			= "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
+			ch.nameDat				= "пїЅпїЅпїЅпїЅпїЅ";
+			ch.lastnameDat			= "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
 			ch.sex					= "man";
 			ch.model.animation 		= "man_A";
 			ch.HeroParam.HeroType 	= "HeroType_1";
 			ch.nation				= SPAIN;
 			ch.BaseNation			= SPAIN;
-			ch.info					= "Здесь будет описание Главного Героя Диего де Монтойя.";									
+			ch.info					= "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.";									
 */			
 		break;		
-		case 3: // Паттерсон
+		case 3: // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			return;
 /*			
 			ch.FaceId 				= 202;
 			ch.HeroModel 			= "Willy_1,Willy_1,Willy_1,Willy_1,Willy_1,protocusto,Willy_6";
-			ch.name 				= "Вильям";
-			ch.lastname				= "Патерсон";
-			ch.nameGen				= "Вильяма";
-			ch.lastnameGen			= "Патерсона";
-			ch.nameDat				= "Вильяму";
-			ch.lastnameDat			= "Патерсону";
+			ch.name 				= "пїЅпїЅпїЅпїЅпїЅпїЅ";
+			ch.lastname				= "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
+			ch.nameGen				= "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
+			ch.lastnameGen			= "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
+			ch.nameDat				= "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
+			ch.lastnameDat			= "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
 			ch.sex					= "man";
 			ch.model.animation 		= "man_A";
 			ch.HeroParam.HeroType 	= "HeroType_3";
 			ch.nation				= ENGLAND;
 			ch.BaseNation			= ENGLAND;
-			ch.info 				= "Благородные намерения этого молодого дворянина о честной торговле на благо нации и собственного кошелька разбились о реалии жестокой действительности." + 
-			                          " Пришлось обзаводиться каперским патентом и прокладывать себе путь к благосостоянию пушками и клинком, забыв о чванливых манерах Старого Света...";
+			ch.info 				= "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ." + 
+			                          " пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ...";
 */									  
 		break;
 	}	
@@ -3312,8 +3316,8 @@ int CCS_GetNewMainCharacterFace(ref ch)
     return sti(ch.FaceId);
 }
 
-// boal 091004 много героев  -->
-// boal 23.01.2004 выбор персонажа-->
+// boal 091004 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ  -->
+// boal 23.01.2004 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-->
 void setNewMainCharacter(ref ch, int num)
 {
 	string heroModel, heroFaceId;
@@ -3353,7 +3357,7 @@ void setNewMainCharacter(ref ch, int num)
 	}
 
     LanguageCloseFile(idLngFile);
-    // для НПС
+    // пїЅпїЅпїЅ пїЅпїЅпїЅ
     ch.HeroParam.HeroType = GetNewMainCharacterType(num);
     ch.nation             = GetNewMainCharacterNation(num);
 }
@@ -3380,59 +3384,59 @@ string GetNewMainCharacterType(int _startHeroType)
 }
 
 
-void initNewMainCharacter()//инициализация главного героя
+void initNewMainCharacter()//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 {
 	ref ch = GetMainCharacter();
 	string sTemp;
 	int    iTmp, i;
 
     CCS_SetNewMainCharacter(ch, startHeroType);
-    // контроль версий -->
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ -->
     ch.VersionNumber              = GetVerNum();
     ch.VersionNumberCompatibility = VERSION_NUM;
-    // контроль версий <--
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ <--
     	
-    MOD_EXP_RATE =  makeint(MOD_EXP_RATE + MOD_SKILL_ENEMY_RATE * MOD_EXP_RATE / 1.666666666); // разные уровни для всех
-    if (MOD_EXP_RATE < 10) MOD_EXP_RATE = 10; // иначе будет развал целостности данных, порог релиховой версии бля всех сложностей.
+    MOD_EXP_RATE =  makeint(MOD_EXP_RATE + MOD_SKILL_ENEMY_RATE * MOD_EXP_RATE / 1.666666666); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+    if (MOD_EXP_RATE < 10) MOD_EXP_RATE = 10; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
     
-	// куда плывем	
+	// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ	
 	ch.HeroParam.ToCityId     = FindAlliedColonyForNation(sti(ch.nation), true);
 
-	// откуда плывем
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     ch.HeroParam.FromCityId  = Colonies[FindNonEnemyColonyForAdventure(sti(ch.nation), ch.HeroParam.ToCityId, true)].id;
 
-	// где появимся	
+	// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ	
 	ch.HeroParam.Location = ch.HeroParam.ToCityId + "_town";
 	ch.HeroParam.Group    = "reload";
 	ch.HeroParam.Locator  = "reload1";
 	
 	setCharacterShipLocation(ch, ch.HeroParam.Location);
-    setWDMPointXZ(ch.HeroParam.Location);  // коорд на карте
+    setWDMPointXZ(ch.HeroParam.Location);  // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     
-	// а надо ли нам это ?
-	SetTimerCondition("Move_Govenour", 0, 0, 25 + rand(10), true); // to_do перенести в один метод инициации
+	// пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ ?
+	SetTimerCondition("Move_Govenour", 0, 0, 25 + rand(10), true); // to_do пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	
-	//Запускаем проверку на падение здоровья раз в 5 дней
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ 5 пїЅпїЅпїЅпїЅ
     SetTimerCondition("CheckMaxHealthQuest", 0, 0, 5, true);
     
     SetTimerCondition("Nation_Legend", 0, 0, 25 + rand(10), true);
 
-	// Jason: новая усадка генерал-губернаторов. На постоянке - Пуанси, Виндзор, Фокс, де Кордова
+	// Jason: пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	SetGovenoursToResidence();
 
 	ReloadProgressUpdate();
 
  	SetNationRelations();
- 	// от кого драпаем
+ 	// пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	ch.HeroParam.EnemyNation  = FindEnemyNation2Nation(sti(ch.nation));
 	
-    // boal вешаем прерывание на охотников навечно (для моря и земли) -->
+    // boal пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ) -->
     SetTimerCondition("SeaHunterCheck", 0, 0, 6, true);
     SaveCurrentQuestDateParam("Land_HunterTimerEng");
     SaveCurrentQuestDateParam("Land_HunterTimerFra");
     SaveCurrentQuestDateParam("Land_HunterTimerSpa");
     SaveCurrentQuestDateParam("Land_HunterTimerHol");
-    // boal вешаем прерывание на охотников навечно (для моря и земли) <--
+    // boal пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ) <--
     LAi_SetHP(ch, LAI_DEFAULT_HP, LAI_DEFAULT_HP);
 
     ch.HeroParam.HeroType = NullCharacter.HeroParam.HeroType;
@@ -3476,11 +3480,11 @@ void initNewMainCharacter()//инициализация главного героя
 	ch.skill.freeskill   = 0;
 	ch.Skill.FreeSPECIAL = 0;
 	sGlobalTemp   = "Flag" + NationShortName(sti(ch.nation));
-	SetCharacterPerk(ch, sGlobalTemp); // перк флага нации
+	SetCharacterPerk(ch, sGlobalTemp); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	SetCharacterPerk(ch, "FlagPir");
-	SetCharacterPerk(ch, "Energaiser"); // скрытый перк дает 1.5 к приросту энергии, дается ГГ и боссам уровней
+	SetCharacterPerk(ch, "Energaiser"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 1.5 пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	SetCharacterPerk(ch, "Rush");
-	// начальные скилы задать
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     //InitStartParam(ch); // Jason - fix
 	LAi_SetHP(ch, GetCharacterBaseHPValue(ch), GetCharacterBaseHPValue(ch));
     SetEnergyToCharacter(ch);
@@ -3489,7 +3493,7 @@ void initNewMainCharacter()//инициализация главного героя
 	ReloadProgressUpdate();	
     DeleteAttribute(ch, "Ship");
     
-	if (startHeroType == 1)	// Шарль
+	if (startHeroType == 1)	// пїЅпїЅпїЅпїЅпїЅ
 	{
 		ch.Ship.Type = SHIP_NOTUSED;
 		Ch.GenQuest.VideoAVI = "intro_Sharle";
@@ -3502,20 +3506,20 @@ void initNewMainCharacter()//инициализация главного героя
 		SetBaseShipData(ch);
 		ch.Ship.Name = "Quicksilver";
 		SetCrewQuantity(ch, GetMinCrewQuantity(ch));
-		// коцаем корабль
-		// ch.ship.SP = sti(ch.ship.SP) - 10; <-- этот код не имеет смысла
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		// ch.ship.SP = sti(ch.ship.SP) - 10; <-- пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		ch.ship.HP = sti(ch.ship.HP) - makeint(sti(ch.ship.HP)/2);
-		//Tutorial - НАЧАЛО ИГРЫ
+		//Tutorial - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	    ch.quest.Tut_start.win_condition.l1          = "location";
 	    ch.quest.Tut_start.win_condition.l1.location = "Ship_deck_Low";
 	    ch.quest.Tut_start.function                  = "Tut_StartGame";
 	}	
-	// Warship Для разных квестов
-	// Важно: функция MaryCelesteInit() должна быть тут, а не в initStartState2Character()
-	// т.к. в ней идет выборка колоний, которые в функции initStartState2Character() еще не инитились
-	OtherQuestCharactersInit(); // Инициализация прочих квестов
-	MaryCelesteInit(); // Warship 07.07.09 Пасхалка "Мэри Селест"
-	// Установим начальный дневной рандом
+	// Warship пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	// пїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ MaryCelesteInit() пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅ initStartState2Character()
+	// пїЅ.пїЅ. пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ initStartState2Character() пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	OtherQuestCharactersInit(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	MaryCelesteInit(); // Warship 07.07.09 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ"
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	ch.DayRandom = Random();
 }
 
@@ -3527,7 +3531,7 @@ void initMainCharacterItem()
 	switch (ch.HeroParam.HeroType)
 	{
 		case "HeroType_1":
-			itemID = GetGeneratedItem("blade_09");	// карцолетта
+			itemID = GetGeneratedItem("blade_09");	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             GiveItem2Character(ch, itemID);
             EquipCharacterbyItem(ch, itemID);
 			TakenItems(ch, "jewelry3", 1);
@@ -3538,7 +3542,7 @@ void initMainCharacterItem()
 		break;
 		
 		case "HeroType_2":
-			itemID = GetGeneratedItem("blade_12");	// полусабля
+			itemID = GetGeneratedItem("blade_12");	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             GiveItem2Character(ch, itemID);
             EquipCharacterbyItem(ch, itemID);
 			TakenItems(ch, "jewelry3", 1);
@@ -3549,7 +3553,7 @@ void initMainCharacterItem()
 		break;
 		
 		case "HeroType_3":
-			itemID = GetGeneratedItem("blade_14");	// валлонская шпага
+			itemID = GetGeneratedItem("blade_14");	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             GiveItem2Character(ch, itemID);
             EquipCharacterbyItem(ch, itemID);
 			TakenItems(ch, "jewelry3", 1);
@@ -3560,7 +3564,7 @@ void initMainCharacterItem()
 		break;
 		
 		case "HeroType_4":
-			itemID = GetGeneratedItem("blade_08");	// бильбо
+			itemID = GetGeneratedItem("blade_08");	// пїЅпїЅпїЅпїЅпїЅпїЅ
             GiveItem2Character(ch, itemID);
             EquipCharacterbyItem(ch, itemID);			
 			AddItems(ch, "pistol3", 1);
@@ -3587,12 +3591,12 @@ string GetNewMainCharacterName()
     return GetHeroName(startHeroType);
 }
 
-string GetMainCharacterNameGen()  // ==> eddy. родительный падеж полного имени ГГ
+string GetMainCharacterNameGen()  // ==> eddy. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
 {
     return GetHeroNameGen(startHeroType);
 }
 
-string GetMainCharacterNameDat()  // ==> eddy. дательный падеж полного имени ГГ
+string GetMainCharacterNameDat()  // ==> eddy. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
 {
     return GetHeroNameDat(startHeroType);
 }
@@ -3638,19 +3642,19 @@ int GetNewMainCharacterNation(int _startHeroType)
 
     switch(totalInfo)
 	{
-		case "Англия":
+		case "пїЅпїЅпїЅпїЅпїЅпїЅ":
             return ENGLAND;
 		break;
-		case "Франция":
+		case "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ":
             return FRANCE;
 		break;
-		case "Испания":
+		case "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ":
             return SPAIN;
 		break;
-		case "Голландия":
+		case "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ":
 			return HOLLAND;
 		break;
-		case "Береговое братство":
+		case "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ":
 			return PIRATE;
 		break;
 
@@ -3685,7 +3689,7 @@ string GetNewMainCharacterParam(string _param)
     return totalInfo;
 }
 
-// вернуть базовую нацию ГГ или патент
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 int GetBaseHeroNation()
 {
 	if (isMainCharacterPatented())
