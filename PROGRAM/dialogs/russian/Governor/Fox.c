@@ -15,59 +15,59 @@ void ProcessDialogEvent()
 		case "First time":
 			if (CheckAttribute(pchar, "questTemp.Terrapin_KathyReward"))
 			{
-				dialog.text = "What do you want, sir? Hm... wait! Now I see, you are that French captain who has saved my daughter from the dirty hands of servants of that damn bastard Levasseur!";
-				link.l1 = "I take it that Katherine has already told you about me...";
+				dialog.text = "Что вы хотели, сударь? Хм... Постойте! Кажется, я понимаю: вы тот самый французский капитан, который вытащил мою дочь из лап прихвостней проклятого мерзавца Левассера!";
+				link.l1 = "Вижу, Кэтрин уже всё рассказала обо мне...";
 				link.l1.go = "terrapin";
 				break;
 			}
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth.Usurer") && !CheckAttribute(npchar, "quest.utensil"))
 			{
-				dialog.text = "What do you want, sir?";
-				link.l1 = "Good day, colonel. I came to you because of the quite an uncommon business. Would you spare some time for me?";
+				dialog.text = "Что вы хотели, сударь?";
+				link.l1 = "Добрый день, полковник. Я к вам по несколько необычному делу. Уделите пару минут?";
 				link.l1.go = "guardoftruth";
 				break;
 			}
 			// Addon-2016 Jason, французские миниквесты (ФМК) Сент-Кристофер
 			if (CheckAttribute(pchar, "questTemp.FMQN") && pchar.questTemp.FMQN == "eng_reward")
 			{
-				dialog.text = "As far as I understand, you are the French captain who had been assisting my men in their mission on Sint-Maarten? "+TimeGreeting()+"!";
-				link.l1 = TimeGreeting()+", colonel. Yes, that's is me.";
+				dialog.text = "Как я понимаю, вы - тот самый французский капитан, который помог моим людям выполнить задание на Синт-Маартене? "+TimeGreeting()+"!";
+				link.l1 = TimeGreeting()+", полковник. Да, это именно я.";
 				link.l1.go = "FMQN";
 				break;
 			}
-			dialog.text = "What do you want, sir?";
-			link.l1 = "Nothing. I am already leaving.";
+			dialog.text = "Что вам угодно, сударь?";
+			link.l1 = "Ничего. Я уже ухожу.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "Speak your business if you has came here...";
-			link.l1 = "You have recently boarded a schooner under the command of Rollie the Cap, the Holland pirate, and brought the captain here, to St. John's.";
+			dialog.text = "Выкладывайте, что у вас там, раз уж пришли...";
+			link.l1 = "Недавно вы захватили шхуну голландского пирата, Ролли Колпака, и доставили капитана в Сент-Джонс...";
 			link.l1.go = "guardoftruth_1";
 		break;
 		
 		case "guardoftruth_1":
-			dialog.text = "Captain? Oh, no! The head of criminal scum has no rights to be called by this honorable rank. I have captured a damn pirate, head of wolf's herd, who has been robbing and murdering English traders. And I have made sure that he and his degenerates got just their deserts - the whole St. John's was watching their hanging on the pier!";
-			link.l1 = "I see that I won't be able to have a chat with this scoundrel... Colonel, perhaps you could help me? The pirate could have a thing which doesn't belong to him - the golden censer. Have you found it?";
+			dialog.text = "Капитана? О нет! Главарь преступного отребья не может называться этим почетным званием. Я захватил проклятого пирата, вожака волчьей стаи, грабившей и убивавшей английских торговцев. И воздал мерзавцу и его выродкам по заслугам - весь Сент-Джонс наблюдал за тем, как их вздернули на пирсе!";
+			link.l1 = "Ясно. Значит, побеседовать с этим прохвостом мне не удасться... Полковник, быть может, вы сможете мне помочь? У этого пирата была вещь, которая ему не принадлежала: золотое кадило. Вы не находили его при обыске?";
 			link.l1.go = "guardoftruth_2";
 		break;
 		
 		case "guardoftruth_2":
-			dialog.text = "There were no things belonging to this rascal, all of them were taken from honest traders! And what about your concern... no we have not found it. And what could censer possibly do on the pirate vessel? Do you really think that there was a priest among them?";
-			link.l1 = "I don't. Rollie the Cap has bought it from the usurer in Willemstad, who got it from another pirate before. The thing is fine and expensive. I suppose that Rollie had his eye on it like a magpie.";
+			dialog.text = "У этого скота не было ни одной вещи, принадлежавшей ему. Все они были отняты у добропорядочных негоциантов! Но касательно вашего вопроса: нет, не находили. И что могло делать кадило на пиратской посудине? Уж неужели вы считаете, что в команде был капеллан?";
+			link.l1 = "Я так не считаю. Ролли Колпак купил это кадило у ростовщика в Виллемстаде, которое тому, в свою очередь, продал другой пират. Вещь красивая, дорогая. Думаю, Ролли просто позарился на нее, как сорока на блестящее...";
 			link.l1.go = "guardoftruth_3";
 		break;
 		
 		case "guardoftruth_3":
-			dialog.text = "Truth to be told, Rollie had empty holds and a few doubloons in chests. Rubbish. No valuables, and of course no golden censer. I'd noted such an inappropriate item for a pirate\nI have a supposition that damn Cap has hidden his savings at Dominica. We even landed there and raided the area but found nothing. We didn't stay at the island or explored it's depths due to a large amount of savages there.";
-			link.l1 = "Hm... The Cap could stash the censer with the rest of his stolen things somewhere at Dominica... Too bad. Have you interrogated the pirate before an execution?";
+			dialog.text = "На самом деле, когда мы захватили шхуну Ролли у берегов Доминики, у него были пустые трюмы, а в сундуках - мешочек с песо да горсть дублонов. И всякий хлам. Никаких ценностей, и уж тем более золотого кадила. Я бы сразу обратил внимание на столь неподходящую пирату вещь\nУ меня есть предположение, что проклятый Колпак прятал свои сбережения где-то на Доминике. Мы даже высадились на берег и провели рейд по окрестностям, но ничего не нашли. Задерживаться на острове, а также отправляться вглубь мы не стали - там полно дикарей.";
+			link.l1 = "Хм. Значит, Колпак мог схоронить кадило вместе с прочим награбленным где-то на Доминике... Печально. Вы не допрашивали пирата перед казнью?";
 			link.l1.go = "guardoftruth_4";
 		break;
 		
 		case "guardoftruth_4":
-			dialog.text = "I have but he was just laughing in my face. But I don't really care about his stashes. Rollie the Cap was hanged and that's the most important thing.";
-			link.l1 = "I see. Thanks for your story and your time. Farewell...";
+			dialog.text = "Допрашивал, но он только смеялся мне в лицо. Однако меня, честно говоря, его схроны не интересуют. Ролли Колпак вздернут на виселице - и это главное.";
+			link.l1 = "Понятно. Спасибо за рассказ и за то, что уделили время! До свидания...";
 			link.l1.go = "guardoftruth_5";
 		break;
 		
@@ -96,49 +96,49 @@ void ProcessDialogEvent()
 		break;
 		
 		case "terrapin":
-			dialog.text = "Several times, captain! You have done such a deed which was hardly to expect from the French. I really appreciate you as a soldier and as a father. There is no such a valuable thing for me in this world as my daughter...";
-			link.l1 = "I am glad that this story had a good ending. I hope that you'll change your mind about French now.";
+			dialog.text = "И не один раз, капитан! Вы совершили поступок, который трудно было ожидать от француза. Я действительно вам крайне признателен, и как солдат, и как отец. Дороже дочери для меня нет ничего на свете...";
+			link.l1 = "Я рад, что все закончилось хорошо. Надеюсь, вы теперь измените свое мнение о французах.";
 			link.l1.go = "terrapin_1";
 		break;
 		
 		case "terrapin_1":
-			dialog.text = "The presence of such a honorable and unselfish gentleman like you, who has risked his life for saving an unfamiliar with him English girl, will cause an essential warming of my relation to your compatriots!";
-			link.l1 = "There are honest people among with rats in any nation, colonel...";
+			dialog.text = "Одно то, что среди них есть такой благородный джентльмен, как вы, рискнувший жизнью ради спасения совершенно незнакомой вам английской девушки, и не искавший корыстных целей в этом, вызовет существенное потепление в моем отношении к вашим соотечественникам!";
+			link.l1 = "Хорошие люди, как и мерзавцы, есть среди любой нации, полковник...";
 			link.l1.go = "terrapin_2";
 		break;
 		
 		case "terrapin_2":
-			dialog.text = "And you have proven that! Reward is waiting for you, captain. Surely, the life of daughter is priceless, but Jonathan Fix always pays his debts, I swear it! You are a real soldier, therefore, my gift for you is a soldier gift. Here, take a look\nThis is a blunderbuss, an excellent navy musket, can be used one hand. You can load it with special arrows which will always pierce even the most durable cuirass. It also shoots grape shots and it's solid construction allows to load it with charges of nails. Here, take it, it's yours now.";
-			link.l1 = "An excellent gift for a soldier, I agree with you!";
+			dialog.text = "И вы это доказали! Вас ждет награда, капитан. Безусловно, жизнь моей дочери - бесценна, но Джонатан Фокс никогда не остается в долгу, клянусь честью! Вы настоящий солдат, поэтому и подарок у меня для вас что ни на есть солдатский. Вот, посмотрите\nЭто бландербуз, великолепный флотский мушкетон, пригодный для стрельбы одной рукой. Его можно заряжать специальными стрелами, которые гарантированно пробьют даже самую прочную кирасу. Также он стреляет картечью, а крепкая конструкция позволяет использовать также и жеребья. Держите, он ваш.";
+			link.l1 = "Действительно, отличный подарок для солдата!";
 			link.l1.go = "terrapin_3";
 		break;
 		
 		case "terrapin_3":
-			Log_Info("You have received a blunderbuss");
-			Log_Info("You have received 10 arrows");
-			Log_Info("You have received 10 charges of nails");
-			Log_Info("You have received an instruction for creating the harpoon arrow");
-			Log_Info("You have received an instruction for creating the charge of nails");
+			Log_Info("Вы получили бландербуз");
+			Log_Info("Вы получили 10 стрел");
+			Log_Info("Вы получили 10 ежовых зарядов");
+			Log_Info("Вы получили инструкцию по изготовлению гарпунной стрелы");
+			Log_Info("Вы получили инструкцию по изготовлению ежового заряда");
 			GiveItem2Character(pchar, "pistol8");
 			TakeNItems(pchar, "harpoon", 10);
 			TakeNItems(pchar, "GunEchin", 10);
 			GiveItem2Character(pchar, "recipe_harpoon"); 
 			GiveItem2Character(pchar, "recipe_GunEchin"); 
 			PlaySound("interface\important_item.wav");
-			dialog.text = "I also present you a small bunch of ammo and instructions for creating it. It would be sad if won't use it's power on maximum!";
-			link.l1 = "Thank you, colonel. I won't reject such a present but I want you to know that I have been saving Katherine from those bastards not for a reward. I just could not left the unprotected girl to them.";
+			dialog.text = "Также к нему я прилагаю небольшой комплект боеприпасов и инстукции по изготовлению зарядов к нему. Негоже, чтобы вы не смогли реализовать его мощь на полную катушку!";
+			link.l1 = "Спасибо, полковник. От такого презента я не откажусь, ни в коем случае, но хочу, чтобы вы знали: я вытаскивал Кэтрин из рук захвативших ее негодяев не рассчитывая ни на какие выгоды. Я просто не мог оставить беззащитную девушку на растерзание этим ублюдкам.";
 			link.l1.go = "terrapin_4";
 		break;
 		
 		case "terrapin_4":
-			dialog.text = "I know that, captain. And it honors you in double. Katherine was really ravished by you and it's not an easy task to make a positive impression on her. And again receive our gratitudes for her saving.";
-			link.l1 = "Thank you for you present, colonel. Send Katherine my best regards and wish that she would listen her father next time.";
+			dialog.text = "Я знаю, капитан. И это делает вам честь вдвойне. Кэтти была просто восхищена вами, а на нее не так-то просто произвести благоприятное впечатление. Еще раз примите благодарности от нее и от меня за ее вызволение.";
+			link.l1 = "И вам спасибо за ваш подарок, полковник. Передайте Кэтрин мой поклон и пожелание впредь всегда строго слушаться своего отца.";
 			link.l1.go = "terrapin_5";
 		break;
 		
 		case "terrapin_5":
-			dialog.text = "I will, captain! Goodbye!";
-			link.l1 = "Goodbye, colonel.";
+			dialog.text = "Обязательно передам, капитан! Всего доброго!";
+			link.l1 = "До свидания, полковник.";
 			link.l1.go = "exit";
 			DeleteAttribute(pchar, "questTemp.Terrapin_KathyReward");
 			ChangeCharacterComplexReputation(pchar, "nobility", 5);
@@ -148,20 +148,20 @@ void ProcessDialogEvent()
 		
 		// Addon-2016 Jason, французские миниквесты (ФМК) Сент-Кристофер
 		case "FMQN":
-			dialog.text = "I read the report. Your actions were highly evaluated, therefore you must be rewarded. It's thirty thousand pesos for expedition services and weapons for heroism in soldiery. Accept this blade and this arquebus. There are all yours now!";
-			link.l1 = "Thank you, sir.";
+			dialog.text = "Я прочитал доклад. Ваши действия оценены весьма высоко, и вы должны получить награду. Таким образом, вам полагается тридцать тысяч песо наличными за экседиционные услуги, и хорошее оружие - за проявленный солдатский героизм. Вот этот клинок и аркебуза теперь ваши. Получите!";
+			link.l1 = "Спасибо, сэр.";
 			link.l1.go = "FMQN_1";
 		break;
 		
 		case "FMQN_1":
-			dialog.text = "By all means, you are also rewarded with love and respect of British colonists, authorities and myself personally. Thank you for not abandoning my men and helping them in their mission!";
-			link.l1 = "Always a pleasure, colonel...";
+			dialog.text = "Само собой, попутной наградой вам явится почет и уважение английских колонистов, властей и мое лично. Выражаю вам свою благодарность за то, что не бросили моих людей и помогли им!";
+			link.l1 = "Всегда рад, полковник...";
 			link.l1.go = "FMQN_2";
 		break;
 		
 		case "FMQN_2":
-			dialog.text = "Now, please, excuse me - I have other business to attend to. Godspeed, captain.";
-			link.l1 = "Farewell, sir.";
+			dialog.text = "А теперь прошу меня простить - дела ждут. Попутного ветра, капитан.";
+			link.l1 = "До свидания, сэр.";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("FMQN_EnglandComplete");
 		break;

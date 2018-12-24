@@ -591,7 +591,8 @@ void Buy_SetCannon(int iDirection)
 
 			iCurrentCannonType = iNextType;
 			iCurrentCredit = iCurrentCredit - iOldPrice + iNewPrice;
-			Picture_SetGroupPicture("PICTURE_CANNON", "CANNONS_UPGRADE_1", rCannon.picture);
+//			Picture_SetGroupPicture("PICTURE_CANNON", "CANNONS_UPGRADE_1", rCannon.picture);
+			Picture_SetGroupPicture("PICTURE_CANNON", "GOODS", rCannon.picture);
 			
 			// set price of ship
 			StringCollection_SetTextValue("STRINGS_SHIPCANNONS_MONEY", 2, iNewPrice);
@@ -606,10 +607,15 @@ void Buy_SetCannon(int iDirection)
 			
 			// set new cannon upgrade = Copper
 			Buy_SetCannonUpgrade(0, true);
+/*			
 			Picture_SetGroupPicture("PICTURE_CANNON_UPGRADE_COPPER", "CANNONS_UPGRADE_1", rCannon.picture);
 			Picture_SetGroupPicture("PICTURE_CANNON_UPGRADE_BRONZE", "CANNONS_UPGRADE_2", rCannon.picture);
 			Picture_SetGroupPicture("PICTURE_CANNON_UPGRADE_IRON", "CANNONS_UPGRADE_3", rCannon.picture);
-
+*/
+			Picture_SetGroupPicture("PICTURE_CANNON_UPGRADE_COPPER", "GOODS", rCannon.picture);
+			Picture_SetGroupPicture("PICTURE_CANNON_UPGRADE_BRONZE", "GOODS", rCannon.picture);
+			Picture_SetGroupPicture("PICTURE_CANNON_UPGRADE_IRON", "GOODS", rCannon.picture);
+			
 			Buy_UpdateCredit();
 			break;
 		}

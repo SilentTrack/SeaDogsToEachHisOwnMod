@@ -4,51 +4,51 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What do you want? Ask away.", "I am listening to you, what's the question?"), "It is the second time you are trying to ask...", "It is the third time you are again trying to ask...",
-                          "When is it going to end?! I am a busy man, working on the colony's matters and you are still trying to ask something!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Not now. There is no time."), "True... But later, not now...",
-                      "I'll ask, I'll ask... a bit later though...", "I am sorry, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);			  
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Что вы хотели? Спрашивайте.", "Я слушаю вас, что за вопрос?"), "Второй раз за день вы пытаетесь задать ворпос...", "В третий раз за день вы опять пытаетесь задать вопрос...",
+                          "Да когда же это кончится?! У меня дел полно по управлению делами города, а ты все вопросы пытаешься задать!", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал"+ GetSexPhrase("","а") +"...", "Не сейчас, не место и не время..."), "Да, верно... Но не сейчас, позже...",
+                      "Задам, задам... Только позже...", "Извините, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			//Португалец
 			if (CheckAttribute(pchar, "questTemp.Portugal.Villemstad"))
 			{
-				link.l1 = "I know that the Dutch West India Company has assigned a good price for the head of the one pirate - Bartolomeo the Portuguese. I was able to capture him. He is currently in my ship's cargo and I am ready to hand him over to the authorities.";
+				link.l1 = "Я знаю, что Голландская Вест-Индская торговая Компания назначила хорошую цену за голову одного пирата, а именно - Бартоломео Португальца. Мне удалось схватить его. Сейчас он находится в трюме моего корабля и я готов выдать его властям.";
                 link.l1.go = "Portugeze";
 			}
 		break;
 
 		case "Cupture_after":
-            dialog.text = RandPhraseSimple("You have already taken everything. What else do you want?", "Haven't you taken already everything?");
-            link.l1 = RandPhraseSimple("Just a final search for the loot...", "Just checking, I may have forgotten to take something...");
+            dialog.text = RandPhraseSimple("Вы уже все забрали. Что вам еще нужно?", "Неужели осталось еще что-то, что вы не прихватили?");
+            link.l1 = RandPhraseSimple("Осматриваюсь напоследок...", "Проверяю, может забыл"+ GetSexPhrase("","а") +" что забрать...");
             link.l1.go = "exit";
             NextDiag.TempNode = "Cupture_after";
 		break;
 		
 		//Португалец
 		case "Portugeze":
-			dialog.text = "Bart the Portuguese?! Do you have him? Alive?";
-			link.l1 = "I know that you doesn't need him dead. He is alive. And, damn, I have had to put a lot of effort to keep him that way!";
+			dialog.text = "Барт Португалец?! Он у вас? Живой?";
+			link.l1 = "Я в курсе, что мертвым он вам не нужен. Живой. И мне пришлось приложить немало усилий, черт побери, чтобы он дожил до этого дня!";
 			link.l1.go = "Portugeze_1";
 		break;
 		
 		case "Portugeze_1":
-			dialog.text = "Most excellent! Now he will tell us everything... Mynheer, prepare the prisoner for a transfer. We will send a military barque to your ship immediately. ";
-			link.l1 = "I'd like to talk about my reward first, mynheer...If you don't mind.";
+			dialog.text = "Великолепно! Теперь он всё расскажет... Минхер, распорядитесь подготовить пленника к перевозке на берег. Мы немедленно подадим военную барку к борту вашего судна.";
+			link.l1 = "Я бы хотел сначала обсудить вопрос моей награды, минхер... Если вы не возражаете.";
 			link.l1.go = "Portugeze_2";
 		break;
 		
 		case "Portugeze_2":
-			dialog.text = "Don't worry about your reward, sir. You will get it. We have assigned a price for Bartolomeo the Portuguese's head - one thousand and five hundred doubloons. Lieutenant! Bring to the captain his reward!";
-			link.l1 = "Hm... Hugo has lied to me about two thousand doubloons... Fine then.";
+			dialog.text = "Сударь, вы можете не сомневаться - награду вы получите. За голову Бартоломео Португальца мы установили награду - полторы тысячи золотых дублонов. Лейтенант! Принести господину капитану его вознаграждение!";
+			link.l1 = "Хм... Значит, Хьюго соврал мне о двух тысячах дублонов... Ладно, полторы - значит, полторы.";
 			link.l1.go = "Portugeze_3";
 		break;
 		
 		case "Portugeze_3":
 			TakeNItems(pchar, "gold_dublon", 1500);
-			Log_Info("You have received 1500 doubloons");
+			Log_Info("Вы получили 1500 дублонов");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "And now, sir, would you be so kindly to transfer the Portuguese to the Company. We are so eager to have a talk with him.";
-			link.l1 = "Sure, mynheer, send the barque to my ship.";
+			dialog.text = "А теперь будьте так любезны, капитан, передать Компании Португальца. Нам просто не терпится начать с ним беседу.";
+			link.l1 = "Конечно, минхер. Отправляйте барку с солдатами к моему кораблю.";
 			link.l1.go = "Portugeze_4";
 		break;
 		

@@ -69,6 +69,7 @@ native int SetTexturePath(int iLevel, string sPath);
 native int SetGlowParams(float fBlurBrushSize, int Intensivity, int BlurPasses);
 native int RPrint(int x, int y, string sPrint);
 
+
 #libriary "script_libriary_test"
 #libriary "dx8render_script_libriary"
 
@@ -460,7 +461,7 @@ void LoadGame()
 	SetEventHandler("frame","LoadGame_continue",1);
 	
 	iCalculateSaveLoadCount("Load");
-	//isLoaded = true;
+//	isLoaded = true;
 }
 
 void LoadGame_continue()
@@ -848,7 +849,7 @@ void OnLoad()
 			Log_TestInfo("Обновлен партикл огня");
 		}
 	}
-	//isLoaded = true;
+//	isLoaded = true;
 }
 
 void NewGame()
@@ -928,7 +929,7 @@ void NewGame_continue()
 	UpdateCrewInColonies(); // пересчет наемников в городах
 	
 	ReloadProgressEnd();
-	//isLoaded = false;
+//	isLoaded = false;
 }
 
 void InitGame()
@@ -1014,10 +1015,15 @@ void InitGame()
 
 	ReloadProgressUpdate();
 	InfoShowSetting();
-
+	
 	bAddonContent = GetDLCenabled(DLC_APPID_1);
 	//bAddonContent = true;
 	trace("bAddonContent1 " + bAddonContent);
+/*	
+	bAddon2 = GetDLCenabled(DLC_APPID_2);
+	//bAddon2 = true;
+	trace("bAddonContent2 " + bAddon2);
+*/	
 }
 
 int counter = 0;
@@ -1369,12 +1375,12 @@ void ProcessControls()
 					if (CheckAttribute(pchar, "questTemp.NotTeleportation")) DoQuestCheckDelay("TalkSelf_Quest", 0.1);
 					else
 					{
-						if (IsCharacterInLocator(pchar, "item", "dolly1")) sGlobalTemp = "dolly1";
-						if (IsCharacterInLocator(pchar, "item", "dolly2")) sGlobalTemp = "dolly2";
-						if (IsCharacterInLocator(pchar, "item", "dolly3")) sGlobalTemp = "dolly3";
-						Dolly_TeleportStart();
-					}
+					if (IsCharacterInLocator(pchar, "item", "dolly1")) sGlobalTemp = "dolly1";
+					if (IsCharacterInLocator(pchar, "item", "dolly2")) sGlobalTemp = "dolly2";
+					if (IsCharacterInLocator(pchar, "item", "dolly3")) sGlobalTemp = "dolly3";
+					Dolly_TeleportStart();
 				}
+			}
 			}
 			if (CheckAttribute(location, "id") && location.id == "Treasure_Alcove") // калеуче
 			{
@@ -1420,6 +1426,14 @@ void ProcessControls()
 */			
 		break;
 		
+		case "Test_MastFall":
+			if (bSeaActive && !bAbordageStarted)
+			{
+				Log_SetStringToLog("Test_MastFall");
+				SendMessage(pchar, "ll", MSG_SHIP_TEST_MAST_FALL, 0);
+			}	
+		break;
+		
         case "BOAL_ActivateRush":  // boal KEY_F
 			if (bLandInterfaceStart && GetCharacterPerkUsing(pchar, "Rush") && CheckCharacterItem(pchar, "berserker_potion"))
             {
@@ -1445,7 +1459,7 @@ void ProcessControls()
 				}
 				else
 				{
-                    Log_Info("Nobody to search");
+                    Log_Info("Некого обыскивать");
 				}
 		    }
 	    break;

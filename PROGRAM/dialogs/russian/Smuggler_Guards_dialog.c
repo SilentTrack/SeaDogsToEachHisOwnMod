@@ -27,9 +27,9 @@ void ProcessDialogEvent()
 		case "First time":			
 			chrDisableReloadToLocation = false;
    			LAi_LockFightMode(pchar, false);
-			dialog.text = RandPhraseSimple("It looks that you are committing something illegal here.",
-                                     "In the name of "+NationKingsName(npchar)+ ", I command you to stop that!");
-			Link.l1 = "No-no, officer. Me and my fellows are just sunbathing here.";
+			dialog.text = RandPhraseSimple("Кажется, здесь происходит что-то незаконное.",
+                                     "Именем "+NationKingsName(npchar)+ ", прекратить творить беззаконие!!!");
+			Link.l1 = "Нет-нет, офицер. Мы с друзьями просто отдыхаем у моря.";
 			if (makeint(Pchar.reputation) >= 70 && GetSummonSkillFromNameToOld(Pchar, SKILL_LEADERSHIP) >= 5)
 			{
 				Link.l1.go = "ThisTimeFree";
@@ -38,7 +38,7 @@ void ProcessDialogEvent()
 			{
 				Link.l1.go = "IDontBelieveYou";
 			}
-			Link.l2 = "I do charity. Is that really illegal?";
+			Link.l2 = "Я раздаю деньги. Это можно считать незаконным занятием?";
 			if(makeint(Pchar.rank) >= 4 && GetSummonSkillFromNameToOld(Pchar, SKILL_COMMERCE) >= 5)
 			{
 				Link.l2.go = "GiveMeSomeMoneyToo";
@@ -47,7 +47,7 @@ void ProcessDialogEvent()
 			{
 				Link.l2.go = "TryingToGiveBribe";
 			}
-			Link.l3 = "Get away from here, soldier. It's non of your business!";
+			Link.l3 = "Проваливай, солдафон. Это тебя не касается!";
 			if(makeint(Pchar.reputation) <= 25 && GetSummonSkillFromNameToOld(Pchar, SKILL_FENCING) >= 8)
 			{
 				Link.l3.go = "GettingLostFromHere";
@@ -61,17 +61,17 @@ void ProcessDialogEvent()
 
 		case "ThisTimeFree":
 			dialog.snd = "Voice\COGU\COGU002";		
-			dialog.text = "Don't make a fool of us, captain " + Pchar.name + "! No one would ever expect that such a positive and respectable man like you will go smuggling.";
-			Link.l1 = "Nobody is perfect. But I already regret!";
+			dialog.text = "Не морочьте нам голову, капитан " + Pchar.name + "! И кто мог подумать, что такой положительный и уважаемый всеми человек, как вы, займется контрабандой!";
+			Link.l1 = "Увы, все совершают ошибки. Но я уже раскаиваюсь!";
 			Link.l1.go = "ThisTimeFree_1";
-			Link.l2 = "I'll cut off your head right now.";
+			Link.l2 = "Сейчас я отрежу тебе голову!";
 			Link.l2.go = "ThisTimeFree_fight";				
 		break;
 
 		case "ThisTimeFree_1":	
 			dialog.snd = "Voice\COGU\COGU003";	
-			dialog.text = "I've heard about you only positive things so I'll let you go this time. Can't say the same about this fellows though!";
-			Link.l1 = "My thanks, officer. Have a nice day!My thanks, officer. Have a nice day!";
+			dialog.text = "Поскольку я слышал о вас только хорошее, в этот раз я отпускаю вас. А этих мерзавцев мы прихватим!";
+			Link.l1 = "Благодарю вас, офицер. Всего вам хорошего!";
 			Link.l1.go = "ThisTimeFree_exit";
 		break;
 
@@ -120,15 +120,15 @@ void ProcessDialogEvent()
 
 		case "IDontBelieveYou":
 			dialog.snd = "Voice\COGU\COGU004";
-			dialog.text = "You don't say!? I am not blind! Follow us, you are arrested and your goods are confiscated.";
-			Link.l1 = "I'd better rip yours guts out!";
+			dialog.text = "Что вы мне рассказываете! Я не слепой! Следуйте за нами - вы арестованы, а товар конфискован!";
+			Link.l1 = "Скорее, я выпущу вам кишки!";
 			Link.l1.go = "ThisTimeFree_fight";
 		break;
 
 		case "GiveMeSomeMoneyToo":	
 			dialog.snd = "Voice\COGU\COGU005";		
-			dialog.text = "Really? Well, this activity is completely legal... if we'll get our cut of course. And how big is your charity?";
-			Link.l1 = "I think that" + makeint(sti(Pchar.money)/10) + " pesos will be enough.";
+			dialog.text = "Вот как? Нет, конечно, это занятие совершенно правомочно... Если нам, конечно, тоже достанется. А по сколько вы раздаете?";
+			Link.l1 = "Думаю, что " + makeint(sti(Pchar.money)/10) + " песо будет достаточно.";
 			if(makeint(Pchar.rank)*1000 <= makeint(sti(Pchar.money)/10))
 			{
 				Link.l1.go = "MoneyAccepted10";
@@ -138,7 +138,7 @@ void ProcessDialogEvent()
 				Link.l1.go = "TryingToGiveBribe";
 			}
 
-			Link.l2 = "How about " + makeint(sti(Pchar.money)/5) + " pesos?";
+			Link.l2 = "Как насчет " + makeint(sti(Pchar.money)/5) + " песо?";
 			if(makeint(Pchar.rank)*1000 <= makeint(sti(Pchar.money)/5))
 			{
 				Link.l2.go = "MoneyAccepted5";
@@ -148,7 +148,7 @@ void ProcessDialogEvent()
 				Link.l2.go = "TryingToGiveBribe";
 			}
 
-			Link.l3 = "For you, officer, I've got For you, officer, I've got " + makeint(sti(Pchar.money)/2) + " pesos!";
+			Link.l3 = "Вам, офицер, я готов отдать " + makeint(sti(Pchar.money)/2) + " песо!";
 			if(makeint(Pchar.rank)*1000 <= makeint(sti(Pchar.money)/2))
 			{
 				Link.l3.go = "MoneyAccepted2";
@@ -161,46 +161,46 @@ void ProcessDialogEvent()
 
 		case "TryingToGiveBribe":
 			dialog.snd = "Voice\COGU\COGU006";
-			dialog.text = "A bribe? No, I care about my honor! Follow us would be kindly!";
-			Link.l1 = "Damn it! Sorry to disappoint you, but you ain't go anywhere!";
+			dialog.text = "Ага, предлагаете взятку? Нет уж, мне честь мундира дороже! Извольте следовать за нами!";
+			Link.l1 = "Проклятье! Жаль вас разочаровывать, но вряд ли вы куда-либо сейчас пойдете!";
 			Link.l1.go = "ThisTimeFree_fight";
 		break;
 
 		case "MoneyAccepted10":
 			dialog.snd = "Voice\COGU\COGU007";
-			dialog.text = "My gratitude for your charity.";
-			Link.l1 = "Always at your service.";
+			dialog.text = "С радостью приму ваше пожертвование. Раз уж вы занимаетесь благотворительностью.";
+			Link.l1 = "Всегда к вашим услугам.";
 			Link.l1.go = "GettingLostFromHere_exit";
 			AddMoneyToCharacter(pchar, -makeint(sti(Pchar.money)/10));
 		break;
 		
 		case "MoneyAccepted5":
 			dialog.snd = "Voice\COGU\COGU007";
-			dialog.text = "My gratitude for your charity..";
-			Link.l1 = "Always at your service.";
+			dialog.text = "С радостью приму ваше пожертвование. Раз уж вы занимаетесь благотворительностью.";
+			Link.l1 = "Всегда к вашим услугам.";
 			Link.l1.go = "GettingLostFromHere_exit";
 			AddMoneyToCharacter(pchar, -makeint(sti(Pchar.money)/5));
 		break;
 		
 		case "MoneyAccepted2":
 			dialog.snd = "Voice\COGU\COGU007";
-			dialog.text = "My gratitude for your charity.";
-			Link.l1 = "Always at your service.";
+			dialog.text = "С радостью приму ваше пожертвование. Раз уж вы занимаетесь благотворительностью.";
+			Link.l1 = "Всегда к вашим услугам.";
 			Link.l1.go = "GettingLostFromHere_exit";
 			AddMoneyToCharacter(pchar, -makeint(sti(Pchar.money)/2));
 		break;
 
 		case "GettingLostFromHere":
 			dialog.snd = "Voice\COGU\COGU008";
-			dialog.text = "But... damn it! I have to arrest you!";
-			Link.l1 = "What? You are still here? Too tired of life?";
+			dialog.text = "Но... Дьявол... Я же должен вас арестовать!";
+			Link.l1 = "Арргх! Ты еще здесь? Жить надоело?";
 			Link.l1.go = "GettingLostFromHere_1";
 		break;
 
 		case "GettingLostFromHere_1":
 			dialog.snd = "Voice\COGU\COGU009";
-			dialog.text = "I... I will complain! I won't let it go just like that....";
-			Link.l1 = "Huh!";
+			dialog.text = "Я... Я буду жаловаться! Я этого так не оставлю...";
+			Link.l1 = "Пфф!";
 			Link.l1.go = "GettingLostFromHere_exit";
 		break;
 
@@ -224,8 +224,8 @@ void ProcessDialogEvent()
 
 		case "howDareYou":
 			dialog.snd = "Voice\COGU\COGU010";
-			dialog.text = "Son of..! You are screwed. This bay will become your grave!";
-			Link.l1 = "Talk is cheap!";
+			dialog.text = "Ах ты, собака! Теперь тебе точно не отвертеться. Ты на этом берегу сдохнешь!";
+			Link.l1 = "Попробуй воплотить слова в жизнь, пустозвон!";
 			Link.l1.go = "ThisTimeFree_fight";
 		break;
 	}

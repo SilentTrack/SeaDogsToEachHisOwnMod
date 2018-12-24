@@ -16,41 +16,41 @@ void ProcessDialogEvent()
 		case "First time":
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "santiago")
 			{
-				dialog.text = "Pax vobiscum! So, at last I see in my abode the French captain, a brave soldier and, I hope, a loyal and trustful servant of the Holy Roman Catholic Church. Come in, my son, take a sit.";
-				link.l1 = "Greetings, Your Eminence. My path to here was long and difficult. Per astera at astra...";
+				dialog.text = "Pax vobiscum! Итак, я наконец узрел в своей обители французского капитана, храброго солдата и, как  надеюсь, верного и преданного слугу Священной Римской Католической церкви. Проходи, сын мой, располагайся.";
+				link.l1 = "Здравствуйте, Ваше Преосвященство. Долог и тернист был мой путь сюда. Per astera at astra...";
 				link.l1.go = "utensil";
 				break;
 			}
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "twoitems" && !CheckAttribute(npchar, "quest.skinmap"))
 			{
-				dialog.text = "So, my son. I can see in your eyes that you have news for me. Tell me. You've got my full attention.";
-				link.l1 = "I've found your old assistant, Your Grace...";
+				dialog.text = "Итак, сын мой, я вижу по твоим глазам, что ты несешь мне новости. Рассказывай, я весь внимание.";
+				link.l1 = "Я нашел вашего бывшего секретаря, Ваше Преосвященство...";
 				link.l1.go = "guardoftruth";
 				break;
 			}
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth.Trinidad") && pchar.questTemp.Guardoftruth.Trinidad == "mayak")
 			{
-				dialog.text = "Have you brought me some news from San Jose, my son?";
-				link.l1 = "Yes, Your Grace. I have dug up something concerning the fate of Miguel Dichoso's frigate. As soon as the ship approached embankment, she was immediately captured by storm and taken back to the Caribbean sea...";
+				dialog.text = "Ты несешь какие-нибудь новости из Сан-Хосе, сын мой?";
+				link.l1 = "Да, Ваше Преосвященство. Я раскопал кое-что касательно судьбы фрегата Мигеля Дичозо. Как только корабль приблизился к выходу в океан, он немедленно был захвачен внезапно налетевшим штормом и унесен назад в Карибское море...";
 				link.l1.go = "guardoftruth_10";
 				break;
 			}
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth.Archy") && pchar.questTemp.Guardoftruth.Archy == "begin")
 			{
-				dialog.text = "God bless your deeds, my son... What can I do for you?";
-				link.l1 = TimeGreeting()+", Your Grace. Do you have any news pertaining to our affair?"
+				dialog.text = "Да благословит Господь дела твои, сын мой... Что тебе угодно?";
+				link.l1 = TimeGreeting()+", Ваше Преосвященство. Есть какие-нибудь новости по нашему делу?"
 				link.l1.go = "guardoftruth_17";
 				break;
 			}
-			dialog.text = "Is there something you wanted, my son?";
-			link.l1 = "No, nothing, father.";
+			dialog.text = "Ты что-то хотел, сын мой?";
+			link.l1 = "Да нет, ничего, отче.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "utensil":
-			dialog.text = "A path of virtue is always difficult and thorny, my son. But the aim that is achieved fully rewards a righteous man for his works...";
-			link.l1 = "I agree, reverend father. I have fully completely your errand: the privateer, who abducted the precious item from you, I now return to the parish of Santiago along with everything else that was stolen: the ostensory, the cross, and the censer. Here, take them.";
+			dialog.text = "Путь добродетели всегда труден и тернист, сын мой. Но достигнутая цель сполна вознаграждает праведника за труды его...";
+			link.l1 = "Согласен, святой отец. Я выполнил ваше поручение полностью: капер, похитивший драгоценную утварь уже у вас, а теперь я возвращаю приходу Сантьяго и украденное: остензорий, крест и кадило. Вот, возьмите их.";
 			link.l1.go = "utensil_1";
 		break;
 		
@@ -58,115 +58,115 @@ void ProcessDialogEvent()
 			RemoveItems(pchar, "jewelry33", 1);
 			RemoveItems(pchar, "jewelry34", 1);
 			RemoveItems(pchar, "jewelry35", 1);
-			dialog.text = "I truly thank you for your faithful service to the church and your successful aid to the perish of Santiago, my son. Your works mustn't be left unrewarded. The parishioners have collected an offering for a benign, courageous warrior and I gladly give them to you. Here you are.";
-			link.l1 = "Thank you, your reverence... What a surprise.";
+			dialog.text = "Благодарю тебя за верную службу церкви и успешную помощь приходу Сантьяго, сын мой. Твои труды не должны остаться без награды. Прихожане собрали пожертвования отважному воину добра, и я с радостью передаю их тебе. Держи.";
+			link.l1 = "Спасибо, ваше преподобие... Не ожидал.";
 			link.l1.go = "utensil_2";
 		break;
 		
 		case "utensil_2":
 			GiveItem2Character(pchar, "chest");
-			Log_Info("You've received a chest of doubloons");
+			Log_Info("Вы получили сундучок с дублонами");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Faithful service to the church is always encouraged on my part, "+pchar.name+". I hope that I've received a dedicated warrior on your side for the good and the protection of faith in Christ, for there is a serious threat looming above us...";
-			link.l1 = "What are you speaking of, holy father?";
+			dialog.text = "Верная служба церкви всегда поощряется с моей стороны, "+pchar.name+". Надеюсь, что я получил в твоем лице преданного воина во благо и защиту веры во Христа, ибо серьезная угроза нависла над нами...";
+			link.l1 = "О чем вы сейчас, святой отец?";
 			link.l1.go = "utensil_3";
 		break;
 		
 		case "utensil_3":
-			dialog.text = "My son, maybe it will be you who stands out in the struggle against evil for many precursors have indicated that.";
-			link.l1 = "What precursors?";
+			dialog.text = "Сын мой, возможно, именно ты выступишь орудием в борьбе против зла, ибо многие знамения указывают на это.";
+			link.l1 = "Какие знамения?";
 			link.l1.go = "utensil_4";
 		break;
 		
 		case "utensil_4":
-			dialog.text = "Many, my son... And one of them is your desire to help in searching for the gold of the Indian pagans of Tayasal, for that which is conserved in those treasure chests is exactly what represents danger to the whole Christian world.";
-			link.l1 = "Would you be able to enlighten me a little on this gold, reverend father? The history of it's disappearance I've already heard about, but the details... and what kind of a threat do you speak of?";
+			dialog.text = "Многие, сын мой... И одно из них - твое желание помочь в розысках золота индейских язычников из Тайясаля, ибо то, что содержится в этих сокровищах, и несет в себе опасность для всего христианского мира.";
+			link.l1 = "Не могли бы вы немного просветить меня насчет этого золота, святой отец? Историю его исчезновения я уже знаю, а вот подробности... и что за угроза?";
 			link.l1.go = "utensil_5";
 		break;
 		
 		case "utensil_5":
-			dialog.text = "Listen to me, my son, yet know that everything you are about to hear here is only for your hears. Long before Miguel Dichoso took pagan treasures out the ancient Indian city, I had a captive Indian of Itza people interrogated according to my mission in the Caribbean. The Itza people are offsprings of the Mayans\nHe was the source we had learnt from about Tayasal and about the terrible blow evil powers are going to deliver to the Christian world. Consequences would be horrible. I have done everything I could to stop the catastrophe, I informed Escorial and Vatican\nThey had listened and sent here don Ramon de Mendoza y Riba, who has established his base at Providence and started to search Tayasal. Though this cabaliero had different motivations rather than preventing the catastrophe\nThat is why God turned aside from him, all his actions were futile and lead only to pointless deaths of Spanish soldiers. I wrote to Escorial asking to discharge de Mendoza due to his incompetence and it was satisfied, but...";
-			link.l1 = "Miguel Dichoso has come.";
+			dialog.text = "Слушай и внимай, сын мой, однако помни, что все услышанное тобой не предназначается ни для чьих ушей, кроме твоих... Еще задолго до того, как небезызвестный тебе Мигель Дичозо вывез сокровища язычников из старого индейского города, мною в рамках моей миссии на архипелаге был схвачен и допрошен индеец племени ица, потомок языческой цивилизации майя\nОт него-то мы узнали и о Тайясале, и о том, что силы зла уже готовятся нанести страшный удар по всему христианскому миру. Последствия будут ужасны. Я приложил все усилия, дабы предотвратить катастрофу, сообщил в Эскориал и в Ватикан\nК моему гласу прислушались, и на Карибы был командирован дон Рамон де Мендоса-и-Риба, который основал свою ставку на острове Провиденсия и приступил к поискам Тайясаля. Однако сей кабальеро был движим отнюдь не стремлением предотвратить катастрофу, а жаждой личного обогащения\nПоэтому Господь отвернулся от него - все его усилия были тщетны и привели лишь к бессмысленной гибели испанских солдат. Я написал прошение в Эскориал об отстранении де Мендосы от этого дела ввиду некомпетентности, и оно было удовлетворено, но тут...";
+			link.l1 = "Повился Мигель Дичозо.";
 			link.l1.go = "utensil_6";
 		break;
 		
 		case "utensil_6":
-			if (CheckAttribute(pchar, "questTemp.Dolly")) sTemp = "Kukulcan?! Oh, Mother of God! Kukulcan again... ";
-			else sTemp = "Hm... ";
-			dialog.text = "Exactly, my son! It was with the help of this venturer, a mercenary, that Tayasal was found along with the treasures of the ancient Mayans. However, the baron's joy was brief - the treasures disappeared along with Dichoso. It's likely that along with all the gold ingots and ornaments, Miguel took with him an ancient source of evil in our world, an artifact of an esteemed ancient Mayan pagan deity called the Kukulcan mask...";
-			link.l1 = sTemp+"But what evil do you speak of, Your Grace? How do you know about it?";
+			if (CheckAttribute(pchar, "questTemp.Dolly")) sTemp = "Кукулькана?! О, Пресвятая Дева! Опять Кукулькан... ";
+			else sTemp = "Хм... ";
+			dialog.text = "Именно, сын мой! При помощи этого авантюриста, в прошлом - наемника, был найден Тайясаль и сокровищница древних майя. Однако недолгой была радость барона - сокровища сгинули вместе с Дичозо. Вероятно, вместе с золотыми слитками и украшениями, Мигель прихватил с собой древний источник зла в нашем мире, артефакт почитаемого майя языческого божества, называемый Маской Кукулькана...";
+			link.l1 = sTemp+" Но о каком зле вы говорите, ваше преосвященство? Откуда вы про него знаете?";
 			link.l1.go = "utensil_7";
 		break;
 		
 		case "utensil_7":
-			dialog.text = "It's an evil bearing death to all Christians of the Caribbean, the New World, and possibly the Old World as well. The end may be  quite sudden and no one will even realize what happened. And there are prognosticators of this ending everywhere already!";
-			link.l1 = "What prognosticators? I don't understand...";
+			dialog.text = "Зло, несущее погибель всем христианам на Карибах, Новом Свете и, возможно, даже в Старом. Конец может быть скорым и внезапным, и никто даже не осознает того, что произошло. И предвестники этого конца уже повсюду!";
+			link.l1 = "Какие предвестники? Я не понимаю...";
 			link.l1.go = "utensil_8";
 		break;
 		
 		case "utensil_8":
-			dialog.text = "My son, are you really that blind that you don't even notice them? They've come about a quarter century ago already...";
-			link.l1 = "I would like to meekly mention, Your Grace, that the course of my life is enumerated at exactly this length of time, so my ignorance is fully justified... ";
+			dialog.text = "Сын мой, неужели ты настолько слеп, что не замечаешь их? Они появились уже как четверть века назад...";
+			link.l1 = "Хочу смиренно заметить, ваше преосвященство, что продолжительность моей жизни исчисляется ровно этим сроком, так что мое неведение вполне оправдано...";
 			link.l1.go = "utensil_9";
 		break;
 		
 		case "utensil_9":
-			dialog.text = "I understand, "+pchar.name+". Didn't you notice strange things happening across the archipelago as soon as you had arrived here from Europe? Don't you find it strange that witchcraft, black magic and other rituals have much bigger strength here than in the other parts of the world? Pagan amulets, enchanted by Indian shamans possess a real power any man can experience\nChristian alchemists have mastered art of crafting enchanted items, they don't realize that they are serving the darkness by doing so. Don't you feel this unnatural, godless existence of something... obscure?";
-			link.l1 = "You're right, father. I was surprised by that at first, but now I suppose I've just gotten used to it... It's the New World!";
+			dialog.text = "Я понял тебя, "+pchar.name+". Но разве не обратил ты внимание на странные вещи, творящиеся на архипелаге, когда прибыл сюда из Европы? Разве не кажется тебе странным, что колдовство, черная магия и прочие нечистые обряды здесь имеют куда большую силу, нежели в других краях? Языческие амулеты, заговоренные индейскими шаманами, приобрели реальную мощь, ощутить которую на себе может каждый\nХристиане-алхимики овладели искусством создания заговоренных предметов, не понимая того, что тем самым они служат злу. Разве ты не чувствуешь это неестественное, богомерзкое присутствие чего-то... непознанного?";
+			link.l1 = "Вы правы, отче. Меня это удивило сначала, но теперь я, пожалуй, к этому даже как-то привык... Новый Свет же!";
 			link.l1.go = "utensil_10";
 		break;
 		
 		case "utensil_10":
-			dialog.text = "But it wasn't always like that. The darkness I am speaking of came here about twenty five years ago and with every day it gains more and more power. That means only one thing: it has already come, it is among us, and it is at work...";
-			link.l1 = "Who are you talking about? Who is this mysterious 'it'?";
+			dialog.text = "Так было не всегда и в Новом Свете. То, о чем я тебе рассказываю, появилось тут всего двадцать пять лет назад, и оно с каждым днем все более и более набирает силу. Это означает лишь одно: он уже пришел сюда, он среди нас, и он действует...";
+			link.l1 = "О ком вы говорите? Кто этот таинственный 'Он'?";
 			link.l1.go = "utensil_11";
 		break;
 		
 		case "utensil_11":
-			dialog.text = "The sworn enemy of all Christians Basically a demon desiring the destruction of all the principles of the Christian world.";
-			link.l1 = "Are you speaking of the Antichrist?";
+			dialog.text = "Заклятый враг всех христиан. Можно сказать - демон, желающий разрушить все устои существующего мира...";
+			link.l1 = "Вы говорите об Антихристе?";
 			link.l1.go = "utensil_12";
 		break;
 		
 		case "utensil_12":
-			dialog.text = "Maybe. But it doesn't matter what name the beast bears. The important is what it is going to do. I am here to stop it. But we've gotten a bit carried away. You, as a man of action, would probably prefer to get to the knitty gritty and skip the extensive discourse?";
-			link.l1 = "I've found out a lot of new and important things from you, Your Grace. I'm ready to listen on.";
+			dialog.text = "Возможно. Но неважно, какое имя он носит. Важно, что он собирается сделать. Для того, чтобы этого не произошло, я и нахожусь здесь. Но мы увлеклись, сын мой, а ты, как человек дела, вероятно, хочешь конкретики, а не пространных рассуждений?";
+			link.l1 = "Я узнал от вас сейчас много нового и важного, ваше преосвященство. И готов слушать дальше.";
 			link.l1.go = "utensil_13";
 		break;
 		
 		case "utensil_13":
-			dialog.text = "You're courteous and well brought up, my son. That's a good thing. Now back to reason you conferred with me for. Our collective goal is to find the treasures of Tayasal taken by Dichoso, for it is amongst them - we will likely be able to find a weapon which will allow us to resist in the battle against evil.";
-			link.l1 = "But can it be that Dichoso has already left the Archipelago and is sitting right now in the Old World with all the gold?";
+			dialog.text = "Ты воспитан и учтив, сын мой. Это хорошо. Теперь ближе к вопросу, по которому ты пожаловал ко мне. Найти вывезенные Дичозо из Тайясаля сокровища - вот наша с тобой совместная цель, ибо именно среди них мы сможем, вероятно, найти то, что позволит нам противостоять в борьбе против зла.";
+			link.l1 = "Но быть может Дичозо уже покинул Архипелаг и находится сейчас вместе с этим золотом в Старом Свете?";
 			link.l1.go = "utensil_14";
 		break;
 		
 		case "utensil_14":
-			dialog.text = "No. I have a proof that these treasures are still here in the Caribbean. You don't need to know about it yet, you should just trust me. Besides, I think that Dichoso was lying to the baron\nHis story about ruined Tayasal doesn't match the results of interrogation of the Indian. I also find the fact that Dichoso was the only survivor a very suspicious.";
-			link.l1 = "I take it that Don Mendosa believes that as well, since he organized the attack on Saint-Pierre trying to find Dichoso?";
+			dialog.text = "Нет, это не так. У меня есть косвенные доказательства того, что эти сокровища остались на Карибах. Какие - это пока тебе знать не нужно, ты должен просто доверять мне. Кроме того, я полагаю, что Дичозо лгал барону\nЕго рассказ о том, что Тайясаль - это руины среди джунглей, не соответствуют показаниям допрошенного индейца ица. Также очень настораживает тот факт, что из всей экспедиции выжил один Дичозо.";
+			link.l1 = "Я так понимаю, дон Мендоса тоже так считает, раз организовал нападение на Сен-Пьер с целью отыскать Дичозо?";
 			link.l1.go = "utensil_15";
 		break;
 		
 		case "utensil_15":
-			dialog.text = "The baron's actions should not concern you, my son. He is motivated by the greed of gold and personal gain and that serves as a terrible companion when things come down to a battle with evil and saving the world...";
-			link.l1 = "Do you have any leads on where we should search for the treasure and Dichoso himself?";
+			dialog.text = "Действия барона не должны тебя беспокоить, сын мой. Им движет жажда золота и наживы, а она - плохой попутчик, когда дело касается борьбы со злом и спасения мира...";
+			link.l1 = "У вас есть какие-то подозрения, где нам искать сокровища и самого Дичозо?";
 			link.l1.go = "utensil_16";
 		break;
 		
 		case "utensil_16":
-			dialog.text = "I think about it every minute, my son, but I don't have anything specific to tell you. But there is a man, who will help us, a man of science from Genoa, I brought him here with me. He witnessed an interrogation of the Indian Itza and, most likely, things he had heard shocked him\nThe evil captured him. The Lord had granted him a talent of physician, but he used it in the dark way of black magic. He had talked to the captive Indian several times without my permission and then disappeared. We must save this lost soul...";
-			link.l1 = "Am I supposed to find this man?";
+			dialog.text = "Я думаю об этом ежеминутно, сын мой, но пока ничего точного сообщить тебе не могу. Но есть человек, который поможет нам приблизится к нашей общей цели. Это мой бывший секретарь, ученый, которого я привез с собой из Генуи. Он присутствовал при допросе индейца ица, и, вероятно, слишком сильно проникся услышанным\nЗло овладело им. Он употребил данный ему Создателем талант лекаря в темных целях - стал заниматься чернокнижием. Он самовольно провел несколько бесед с индейцем, без моего ведома, после чего исчез. Мы должны спасти эту заблудшую душу...";
+			link.l1 = "Я должен найти этого человека?";
 			link.l1.go = "utensil_17";
 		break;
 		
 		case "utensil_17":
-			dialog.text = "Yes, my son. It is the first step to finding the treasure and the weapon against evil. He can inform us of a lot.";
-			link.l1 = "Who is this man?";
+			dialog.text = "Да, сын мой. Это первый шаг к тому, чтобы отыскать сокровища и оружие против зла. Он может многое сообщить нам.";
+			link.l1 = "Кто этот человек?";
 			link.l1.go = "utensil_18";
 		break;
 		
 		case "utensil_18":
-			dialog.text = "His name is Gino Gvineili. A young man aged thirty. A talented physician and an alchemist. As I said, he studies a black magic and the magic in general. According to my most actual information, he is hiding somewhere in English colonies\nUse this knowledge, my son, and find alchemist and physician Gino. If you managed to find a sea bandit who had stolen church utensils, then you will also manage to find my runaway secretary and bring him here. Do it, my son! I bless you.";
-			link.l1 = "I see, Your Grace. I won't waste another minute. See you later!";
+			dialog.text = "Его зовут Джино Гвинейли. Молодой человек тридцати лет. Способный лекарь и алхимик. Как я уже говорил, занялся чернокнижием и исследованием магичеких сил. По моим последним сведениям, он скрывается где-то у англичан\nВооружись полученным знанием, сын мой, и найди алхимика и лекаря Джино. Если ты смог найти морского разбойника, похитившего драгоценную утварь, то сможешь отыскать и моего беглого секретаря и доставить его сюда. Действуй же, сын мой! Благословляю тебя.";
+			link.l1 = "Я понял, ваше преосвященство. Не буду терять ни минуты. До встречи!";
 			link.l1.go = "utensil_19";
 		break;
 		
@@ -177,76 +177,76 @@ void ProcessDialogEvent()
 			if (CheckAttribute(pchar, "questTemp.HWIC.Detector") && bOk)
 			{
 				pchar.questTemp.Guardoftruth = "jino";
-				AddQuestUserData("Guardoftruth", "sText", "I had almost betrayed myself by a shout of surprise. Father Vincento ordered me to find and bring him a physician and an alchemist Gino Gvineili. The Gino who occupies a room at the second floor of my house in St.John's!");
+				AddQuestUserData("Guardoftruth", "sText", "Я едва не выдал себя возгласом удивления. Отец Винсенто поручил мне найти и доставить к нему лекаря и ахимика Джино Гвинейли. Того самого Джино, который живет в комнате на втором этаже моего дома в Сент-Джонсе!");
 			}
 			else
 			{
 				pchar.questTemp.Guardoftruth = "merdok";
-				AddQuestUserData("Guardoftruth", "sText", "I must find some Gino Gvineili, who hides somewhere in English colonies. He is a physician and an alchemist. Where a man like him can hide?");
+				AddQuestUserData("Guardoftruth", "sText", "Мне нужно найти некого Джино Гвинейли, который скрывается где-то в английских поселениях. Будем искать, учитывая то, что Джино - алхимик и лекарь. Где же такой человек может прятаться?");
 			}
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "I didn't doubt that I would hear you say exactly that, "+pchar.name+". Now my confidence is further strengthened that you have been sent to me by the agency of Providence itself. Where is that wretched, wanton son?";
-			link.l1 = "I'm afraid you're not going to like what you're about to hear, but I don't have a choice. Your assistant is dead.";
+			dialog.text = "Я не сомневался в том, что услышу от тебя именно эти слова, "+pchar.name+". Я все более укрепляюсь в том, что тебя прислало мне само Провидение. Где этот несчастный блудный сын?";
+			link.l1 = "Я боюсь, что вам не понравится то, что вы услышите, но выбора у меня нет. Ваш секретарь мертв.";
 			link.l1.go = "guardoftruth_1";
 		break;
 		
 		case "guardoftruth_1":
-			dialog.text = "God save his soul and forgive him for his heavy sins... How did it happen, my son?";
-			link.l1 = "I've found Gino on Antigua. He was hiding out there in one of the old buildings that was constructed under the laboratory. He didn't submit to my persuasion to depart on his own good will. After hearing your name and having seen that I was prepare to use force, he took some vial of transparent liquid out of the folds of his long garment and depleted it in an instant...";
+			dialog.text = "Да спасет Господь его душу и да простит грехи его тяжкие... Как это случилось, сын мой?";
+			link.l1 = "Я нашел Джино на Антигуа. Он там скрывался в одном из старых домов, который обустроил под лабораторию. На мои уговоры отправиться в путь по доброй воле он не поддался. Услышав же ваше имя и увидев, что я готов применить силу, он вытащил из складок своего длинного балахона какой-то пузырек с прозрачной жидкостью и мигом осушил его...";
 			link.l1.go = "guardoftruth_2";
 		break;
 		
 		case "guardoftruth_2":
 			dialog.text = "";
-			link.l1 = "And then something horrible happened: he turned red, then he turned dark blue, he fell on the floor, started jerking around in a spasm and in one minute let his spirit free, and the strong smell of almonds filled the room.";
+			link.l1 = "Дальше творилось что-то страшное: он покраснел, затем посинел, упал на пол, начал корчиться в судорогах и через минуту испустил дух, а по комнате расплылся сильный запах миндаля. Ваш секретарь выпил какой-то яд - настолько он не желал встречи с вами.";
 			link.l1.go = "guardoftruth_3";
 		break;
 		
 		case "guardoftruth_3":
-			dialog.text = "Gino... Poor slave of God... He even spent the last minute of his life in sin the committed suicide. I will pray for his soul...";
-			link.l1 = "After your assistant stopped shaking around, I searched his habitation and found this folio there. Could it possibly be of interest to you or maybe help us in our searches? There are some futuristic notes of some kind here...";
+			dialog.text = "Бедный раб Божий Джино... даже свою последнюю минуту жизни он провел во грехе - совершил самоубийство. Я буду молиться за его душу...";
+			link.l1 = "После того, как ваш секретарь перестал шевелиться, я обыскал его обиталище и нашел вот этот фолиант. Быть может, он вас заинтересует, или поможет в наших розысках? Здесь какие-то ученые записи...";
 			link.l1.go = "guardoftruth_4";
 		break;
 		
 		case "guardoftruth_4":
 			RemoveItems(pchar, "Almanac", 1);
-			Log_Info("You've given the almanac");
+			Log_Info("Вы отдали альманах");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "This an almanac of poor Gino. He had been writing there notes about all of his explorations. Give it to me, my son, I will study what is written in it. Perhaps, we will find a clue\nThough you didn't deliver Gino Gvineili to my abode, I am satisfied of your efforts, my son. Now let me tell you some news.";
-			link.l1 = "You have my attention, Father Vincento.";
+			dialog.text = "Это альманах несчастного Джино. В нем он вел записи всех своих изысканий. Дай мне его, сын мой, я изучу то, что там написано. Возможно, что-то натолкнет нас на правильный путь\nХоть ты и не доставил в мою обитель Джино Гвинейли живым, я все равно доволен твоей работой и проявленным усердием, сын мой. А сейчас у меня есть для тебя некоторые новости.";
+			link.l1 = "Слушаю вас, отец Винсенто.";
 			link.l1.go = "guardoftruth_5";
 		break;
 		
 		case "guardoftruth_5":
-			dialog.text = "I have acquired an information that Trinidad island was the last place where they saw Dichoso's frigate. I also know an approximate time - first half of April 1654\nGo to Trinidad and try to learn anything about the frigate's fate: where was she heading, what plans did captain have, anything. I understand that it has been too long and people's memory has limits, but... a drowning man catches at a straw.";
-			link.l1 = "I'll do everything in my power.";
+			dialog.text = "Я добыл сведения о том, что последнее место, где видели фрегат Дичозо с сокровищами на борту - остров Тринидад. Известно мне и приблизительное время - первая половина апреля месяца 1654 года от рождества Христова\nОтправляйся на Тринидад и попытайся узнать хоть что-нибудь о дальнейшей судьбе фрегата: куда он направлялся, какие были планы у капитана, любую мелочь. Я понимаю, прошло уже много дней с того момента, а память людская коротка, но... утопающий цепляется за соломинку.";
+			link.l1 = "Я сделаю все для того, чтобы эта соломинка стала не меньше, чем бревном.";
 			link.l1.go = "guardoftruth_6";
 		break;
 		
 		case "guardoftruth_6":
-			dialog.text = "Let me see your credentials. I'll enter in permission to visit the colony of San Jose.";
-			link.l1 = "Here.";
+			dialog.text = "Дай мне свою верительную грамоту, я впишу туда разрешение на посещение колонии Сан-Хосе.";
+			link.l1 = "Возьмите.";
 			link.l1.go = "guardoftruth_6a";
 		break;
 		
 		case "guardoftruth_6a":
 			RemoveItems(pchar, "VerifyPaper", 1);
-			dialog.text = "There... That will be all. Don't forget to hoist the Spanish flag on your ship. Step forward and take my blessings, my son!";
-			link.l1 = "One moment, Your Grace. Might I ask you a question?";
+			dialog.text = "Вот... теперь все. Не забывай поднимать флаг Испании на своем корабле. Ступай же с моим благословением, сын мой!";
+			link.l1 = "Погодите, Ваше Преосвященство. Вы позволите вопрос?";
 			link.l1.go = "guardoftruth_7";
 		break;
 		
 		case "guardoftruth_7":
-			dialog.text = "Yes, of course. What would you like to know?";
-			link.l1 = "During our last meeting, you spoke of an Indian that had informed you about Tayasal. I've thought a lot about it... Tell me, did that pagan have anything on him? Objects of some kind, writings, or anything of the sort? This may prove to be useful.";
+			dialog.text = "Да, конечно. Что ты хотел узнать?";
+			link.l1 = "В нашу прошлую встречу вы рассказывали об индейце, который поведал вам о Тайясале. Я долго думал об этом... Скажите, у этого язычника было что-нибудь при себе? Какие-то предметы, записи, что-то иное? Это могло бы оказаться полезным.";
 			link.l1.go = "guardoftruth_8";
 		break;
 		
 		case "guardoftruth_8":
-			dialog.text = "No special items, my son. A loincloth, primitive jewellery, a bamboo pipe with some herbs and a piece of rough leather used as a gag\nAll of those were sent to baron Ramon de Mendoza y Riba. But I assure you, there were nothing worth of interest.";
-			link.l1 = "I see, Father Vincento. Thank you for your input. Til next time!";
+			dialog.text = "При том индейце не было никаких значимых вещей, сын мой. Набедренная повязка, примитивные украшения, бамбуковая трубка с травами да кусок грубой кожи, который был использован в качестве кляпа\nВсе вещи индейца были переданы прибывшему по распоряжению Эскориала уже известному вам барону Рамону де-Мендосе-и-Риба. Но уверяю, ничего интересного там не было.";
+			link.l1 = "Все ясно, отец Винсенто. Спасибо за ответ. До встречи!";
 			link.l1.go = "guardoftruth_9";
 		break;
 		
@@ -260,38 +260,38 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guardoftruth_10":
-			dialog.text = "May the Almighty give us his blessings... What ended up happening to Miguel Dichoso? Did you find out?";
-			link.l1 = "Alas, I did not. The last thing the witness informed me of was that the Santa Quiteria was taken by storm in the direction of the Martinique. It is not known for sure whether the ship was salvaged or it perished. But I have suspicions that Miguel Dichoso did make it out alive.";
+			dialog.text = "Да смилуется над нами Всевышний... Что стало дальше с Мигелем Дичозо? Ты узнал?";
+			link.l1 = "Увы, нет. Последнее, что сообщил очевидец - 'Санта-Квитерию' понесло штормом в сторону Мартиники. Погиб корабль, или спасся - доподлинно неизвестно. Но у меня есть подозрения, что Мигель Дичозо все-таки остался жив.";
 			link.l1.go = "guardoftruth_11";
 		break;
 		
 		case "guardoftruth_11":
-			dialog.text = "What made you decide that, my son?";
-			link.l1 = "The key is that the frigate was hidden somewhere in the direction of Martinique. And very recently a gallant caballero by the name of Diego de Montoya, one of Don Ramon de Mendosa's himself, attacked Saint-Pierre with the goal of finding Miguel Dichoso who was supposedly hiding there.";
+			dialog.text = "Почему ты так решил, сын мой?";
+			link.l1 = "Ключ именно в том, что фрегат скрылся в направлении Мартиники. А совсем недавно славный кабальеро по имени Диего де Монтойя, человек самого дона Рамона де Мендосы, атаковал Сен-Пьер, и целью его было найти Мигеля Дичозо, якобы скрывающегося там.";
 			link.l1.go = "guardoftruth_12";
 		break;
 		
 		case "guardoftruth_12":
-			dialog.text = "So, the baron thinks Dichoso went into hiding with the French...";
-			link.l1 = "I know well Sent-Pierre and governor Jacques Dyel du Parquet, Your Excellency. Nobody knew a Spanish named Miguel Dichoso there. Can you tell me how to find Diego de Montoya? I'd like to speak with him about Dichoso.";
+			dialog.text = "Значит, барон считает, что Дичозо укрылся у французов...";
+			link.l1 = "Я неплохо знаю Сен-Пьер и губернатора Жак дил ду Парке, Ваше Преосвященство. И ни про какого испанца по имени Мигель Дичозо в Сен-Пьере не слышали. Скажите, как мне найти Диего де Монтойю? Я бы хотел побеседовать с ним по поводу Дичозо.";
 			link.l1.go = "guardoftruth_13";
 		break;
 		
 		case "guardoftruth_13":
-			dialog.text = "Are you sure he'd be willing to speak with you, my son? I don't think he would. Unless you want talk swords and pistols.";
-			link.l1 = "May it be that your name might loosen his lips?";
+			dialog.text = "Ты уверен, что он станет разговаривать с тобой, сын мой? Не думаю. Разве что на языке шпаг и пистолетов.";
+			link.l1 = "Может, ваше имя смогло бы развязать ему уста?";
 			link.l1.go = "guardoftruth_14";
 		break;
 		
 		case "guardoftruth_14":
-			dialog.text = "Oh, "+pchar.name+". I doubt that the baron's henchman would be willing to make an agreement with you. Giving him an order to arrive in San Diego for a hearing with me might be an option, but I'm not so sure Diego would be perfectly sincere with me.";
-			link.l1 = "What action shall we fortake now, father?";
+			dialog.text = "Ох,  "+pchar.name+". Навряд ли подручный барона пойдет тебе навстречу. Отдать ему приказ прибыть в Сантьяго на аудиенцию ко мне - это возможно, но я не уверен, что Диего будет со мной искренним.";
+			link.l1 = "Какие же будут наши дальнейшие действия, отче?";
 			link.l1.go = "guardoftruth_15";
 		break;
 		
 		case "guardoftruth_15":
-			dialog.text = "Leave me for a little while, my son. I need to process what you've told me and also put together all the facts that I'm already aware of. At that point, I'll tell you what our next move is. Drop by later on.";
-			link.l1 = "Yes, Your Grace. Will do. I'll check up on periodically...";
+			dialog.text = "Оставь меня на какое-то время, сын мой. Я должен проанализировать сказанное тобой, а также сопоставить все факты, которые мне известны, в единое целое. И тогда я скажу, что мы предпримем дальше. Зайди ко мне позже.";
+			link.l1 = "Хорошо, Ваше Преосвященство. Так и поступим. Буду заглядывать периодически...";
 			link.l1.go = "guardoftruth_16";
 		break;
 		
@@ -306,45 +306,45 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guardoftruth_wait":
-			dialog.text = "God bless your deeds, my son... What can I do for you?";
-			link.l1 = "Do you have any news, Your Grace?";
+			dialog.text = "Да благословит Господь дела твои... Что ты хотел, сын мой?";
+			link.l1 = "Есть какие-нибудь новости, Ваше Преосвященство?";
 			link.l1.go = "guardoftruth_wait_1";
 		break;
 		
 		case "guardoftruth_wait_1":
-			dialog.text = "Not at the moment, my son. Don't despair though. My people and I are working on in. Drop by later.";
+			dialog.text = "Пока нет, сын мой. Но не отчаивайся, я и мои люди работаем над этим. Заходи позже.";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "guardoftruth_wait";
 		break;
 		
 		case "guardoftruth_17":
-			dialog.text = "Yes, my son. I have some information on Miguel Dichoso. It wasn't in vain that I believed Dichoso to be still alive and on the archipelago. And Don Diego de Montoya was right. We've received a proof from a man who knew Miguel Dichoso by his face that this caballero was seen in the pirate settlement Le Francois on Martinique right in April 1654 after the disappearance of the Santa Quiteria...";
-			link.l1 = "So, the frigate did crash at the shores of this island?";
+			dialog.text = "Да, сын мой, есть некоторая информация о Мигеле Дичозо. Я недаром считал, что Дичозо все еще на архипелаге и жив. И дон Диего де Монтойя был прав. Получено свидетельство от человека, знавшего Мигеля Дичозо в лицо, в том, что этого кабальеро видели в пиратском поселке Ле Франсуа на Мартинике, как раз в апреле 1654 года, после исчезновения 'Санта-Квитерии'...";
+			link.l1 = "Значит, фрегат все же разбился у берегов этого острова?";
 			link.l1.go = "guardoftruth_18";
 		break;
 		
 		case "guardoftruth_18":
-			dialog.text = "Slow down, my son. We don't have any information about any ship wrecking at that time by Martinique yet. And the frigate is not a lugger. It's destruction surely would have attracted some attention.";
-			link.l1 = "May it be worth searching the shore waters and the beaches in order to find what is left of the ship?";
+			dialog.text = "Не торопись, сын мой. Вот как раз о крушении какого бы то ни было корабля в то время у Мартиники сведений нет. А фрегат - не люггер, и его гибель наверняка привлекла бы внимание.";
+			link.l1 = "Может, имеет смысл обыскать прибрежные воды и пляжи на предмет останков корабля?";
 			link.l1.go = "guardoftruth_19";
 		break;
 		
 		case "guardoftruth_19":
-			dialog.text = "My son, don Diego de Montoya has already done all of this with no result. But you listen. My sources at Providence report that the baron is sure that the Santa Quiteria is still sailing across the Caribbean sea though under a different name\nThat is why he is hunting Miguel Dichoso that desperately. According to his words, the Santa Quiteria was seen not far from Isla Tesoro and she has been recently seen under the English flag escorted by a military squadron.";
-			link.l1 = "This is all so strange. They claimed that withstanding a storm of such scale would be impossible... And now the ship is sailing under the English flag. The two facts don't fit. What made the baron decide that it was Santa Quiteria? Is she really so unique?";
+			dialog.text = "Сын мой, это все уже давно проделал небезысвестный тебе дон Диего де Монтойя, и - безрезультатно. Но ты слушай дальше... Мои источники на Провиденсии сообщают, что барон Рамон де Мендоса уверен, что 'Санта-Квитерия' до сих пор бороздит Карибское море, но под другим названием\nИменно поэтому он устроил на Мигеля Дичозо охоту. По словам барона, 'Санта-Квитерию' часто видели у берегов острова Исла-Тесоро, а в последнее время ее неоднократно замечали в составе военной эскадры под английским флагом.";
+			link.l1 = "Странно всё это. Смотритель маяка Тринидада утверждал, что выстоять в такой шторм кораблю было невозможно... А теперь ее видят под английским флагом. Не вяжется одно с другим никак. Почему барон решил, что это именно 'Санта-Квитерия'? Она что, настолько уникальна?";
 			link.l1.go = "guardoftruth_20";
 		break;
 		
 		case "guardoftruth_20":
-			dialog.text = "Yes, she is. This frigate was built using the latest technology in Europe, she has an extraordinary exterior, and her speed characteristics are most excellent. That's what my source told me.";
-			link.l1 = "And she is called Santa Quiteria now?";
+			dialog.text = "Именно так. Этот фрегат строился по усовершенствованной технологии в Европе, имеет неординарный внешний вид и выдающиеся ходовые характеристики. Так сообщил мой источник.";
+			link.l1 = "И как теперь назвается 'Санта-Квитерия'?";
 			link.l1.go = "guardoftruth_21";
 		break;
 		
 		case "guardoftruth_21":
-			dialog.text = "That, unfortunately, I do not know... Go head off to Isla Tesoro, "+pchar.name+", and try to find something out about Dichoso's frigate. We might manage to find her former captain that way as well.";
-			link.l1 = "Consider it done, Your Grace!";
+			dialog.text = "А вот это мне к сожалению не известно... Отправляйся на Исла Тесоро, "+pchar.name+", и попробуй узнать что-нибудь про фрегат Дичозо. Быть может, так мы сумеем найти и его бывшего капитана.";
+			link.l1 = "Будет сделано, Ваше Преосвященство!";
 			link.l1.go = "guardoftruth_22";
 		break;
 		
@@ -363,68 +363,68 @@ void ProcessDialogEvent()
 		break;
 		
 		case "tieyasal":
-			dialog.text = "I'm glad you decided to meet me, my son...";
-			link.l1 = "Hello, Your Grace. After meeting with Don Alonso de Maldonado I didn't even think I'd see you again.";
+			dialog.text = "Рад, что ты все же решился прийти на встречу, сын мой...";
+			link.l1 = "Здравствуйте, Ваше Преосвященство. После встречи с доном Алонсо де Мальдонадо, я уже и не думал, что когда-либо встречусь с вами.";
 			link.l1.go = "tieyasal_1";
 		break;
 		
 		case "tieyasal_1":
-			dialog.text = "Don Alonso de Maldonado had broken my direct orders. I had strictly forbidden him from confronting you, my son, I knew how it would end up for him. His mission was to escort you to Tayasal, he had been there before\nBesides, his squadron and a unit of Spanish soldiers were supposed to act as an assault force against Itza pagans. Driven by a self-will and a desire for revenge, Alonso acted unworthily\nHe had not only failed an expedition to Tayasal and doomed soldiers and ships entrusted him, but also planted the seeds of distrust and anger towards me in your heart. I assure you, my son, I am completely at your side.";
-			link.l1 = "I'd like to believe that.";
+			dialog.text = "Дон Алонсо де Мальдонадо нарушил приказ. Я строжайше запретил ему вступать в конфликт с тобой, сын мой, ибо прекрасно знал, чем это для него закончится. В задачу де Мальдонадо входило сопровождение тебя в Тайясаль - Алонсо уже бывал там\nКроме того, приданный ему отряд испанских солдат и эскадра должны были выступить ударной групировкой в боях против краснокожих безбожников ица. Движимый своенравием и необузданной жаждой мести, Алонсо повел себя недостойно\nОн не только сорвал поход в индейский город и погубил вверенные ему войсковые части и эскадру, но также посеял вражду и недоверие в твоем сердце в отношении меня. Смею тебя заверить, сын мой - я полностью и всецело на твоей стороне.";
+			link.l1 = "Хотелось бы в это верить.";
 			link.l1.go = "tieyasal_2";
 		break;
 		
 		case "tieyasal_2":
-			dialog.text = "Rest assured, "+pchar.name+". I, a loyal and dedicated servant to our lord Jesus Christ and a representative of his church, am motivated by one thing: stopping the end of the world from coming, which lies in the hands of a demon embodied in an Indian. I suspected it right away and only now I have become completely sure: you have been chosen by the Lord as His weapon in the battle against evil!";
-			link.l1 = "But what makes you decide that, father Vincento?";
+			dialog.text = "Не сомневайся, "+pchar.name+". Мною, как верным и преданным слугой Христа и представителем его церкви, движет лишь одно: остановить конец света, который несет воплощение индейского демона. Я сразу подозревал, а теперь уверен окончательно: именно тебя Господь избрал Своим орудием в борьбе против зла!";
+			link.l1 = "Но почему вы так решили, отец Винсенто? Я просто военный капитан...";
 			link.l1.go = "tieyasal_3";
 		break;
 		
 		case "tieyasal_3":
-			dialog.text = "You've managed to do something that not I with the help of my assistants, not Baron Mendosa and Don Diego, not anybody else has been able to do. You've managed to find the damned island and seek out Kukulcan's artefact on it. Haven't you?";
-			link.l1 = "Yes, I truly have taken Kukulcan's mask.";
+			dialog.text = "Ты сумел сделать то, что не смогли ни я со своими помощниками, ни барон Мендоса с доном Диего, ни кто-либо другой. Ты сумел найти проклятый остров и найти на нем артефакт Кукулькана. Разве нет?";
+			link.l1 = "Да, я действительно завладел маской Кукулькана.";
 			link.l1.go = "tieyasal_4";
 		break;
 		
 		case "tieyasal_4":
-			dialog.text = "And would you truly affirm that it happened as an accident? My son, the Almighty has led you onto this path! He has fortified you hand in battles, directed your feet onto the correct path, and protected you during times of danger! You are the penetrating sword that will save the Christian world!";
-			link.l1 = "Ehem... Father Vincento, but the mission has basically already been accomplished. I have the mask and that means that Kukulcan's vessel cannot enter into the past...";
+			dialog.text = "И разве сможешь ты утверждать, что это произошло случайно? Сын мой, сам Всевышний вел тебя по этому пути! Он укрепил твою руку в сражениях, направил твои ноги по верной дороге и оберегал в час опасности! Ты - его разящий меч, который спасет христианский мир!";
+			link.l1 = "Кхм... Отец Винсенто, но ведь миссия по сути уже выполнена. Маска у меня, а, значит, воплощение Кукулькана не сможет пройти в прошлое...";
 			link.l1.go = "tieyasal_5";
 		break;
 		
 		case "tieyasal_5":
-			dialog.text = "You're mistaken, my son. The demon may cross that gates, no matter if he has this mask or not. It will be easier for him to carry out his dark deeds with this artefact during this passing time. The only thing that can stop him is the destruction of the gates.";
-			link.l1 = "Don Alonso has told me the same thing...";
+			dialog.text = "Ты заблуждаешься, сын мой. Демон сможет пройти через врата независимо от того, есть у него эта маска, или нет. С этим артефактом ему будет проще осуществить свои черные дела в нашем минувшем времени. Единственное, что сможет его остановить - это уничтожение врат.";
+			link.l1 = "Дон Алонсо сказал мне то же самое...";
 			link.l1.go = "tieyasal_6";
 		break;
 		
 		case "tieyasal_6":
-			dialog.text = "And correct he was! In the name of our Lord Jesus Christ, I call you to the battle against evil, my son! You cannot refused the great mission that has been set before you. We are all now depending on you, my son.";
-			link.l1 = "Your Grace, I really feel...kind of awkward...";
+			dialog.text = "И он был прав! Именем Господа нашего, Иисуса Христа, я призываю тебя на битву против зла, сын мой! Ты не можешь отказаться от возложенной на тебя великой задачи. Мы все теперь зависим от тебя, сын мой.";
+			link.l1 = "Ваше Преосвященство, мне, право, даже неловко...";
 			link.l1.go = "tieyasal_7";
 		break;
 		
 		case "tieyasal_7":
-			dialog.text = "Your modesty always does suit you well, my son. Enter into this battle for the sake of your loved ones, for the sake of all Christians... and for your own sake, for if the demon emerges victorious, you will perish along with everyone else.";
-			link.l1 = "I suppose you've convinced me, Father Vincento. I had hesitated on my situation to crusade into Tayasal, but now I no longer have doubts. What can you help me with?";
+			dialog.text = "Скромность всегда была твоим украшением, сын мой. Выступи на эту битву ради своих близких, ради всех христиан... и ради самого себя, ибо если демон победит, ты погибнешь вместе со всеми.";
+			link.l1 = "Пожалуй, вы меня убедили, отец Винсенто. Я колебался с принятием решения о походе в Тайясаль, но теперь у меня не осталось сомнений. Чем вы можете помочь мне?";
 			link.l1.go = "tieyasal_8";
 		break;
 		
 		case "tieyasal_8":
-			dialog.text = "Only two men knew how to get to Tayasal: Alonso de Maldonado and Miguel Dichoso. Don Alonso is dead. And Dichoso... They told me that he was recently seen in Sharptown of Isla Tesoro. Perhaps, he is still there. You should find Dichoso and persuade him to be your guide\nThrough gold or through force, but you must make this man to bring you to Tayasal. There you will find the gates of evil and there you will seal them.";
-			link.l1 = "And what about the shock troops?";
+			dialog.text = "Дорогу в Тайясаль знали два человека: Алонсо де Мальдонадо и Мигель Дичозо. Дон Алонсо мертв. А вот Дичозо... Мне доложили, что его совсем недавно видели в поселении Шарптаун, что на Исла Тесоро. Возможно, он и сейчас там. Ты должен найти Дичозо и убедить выступить твоим проводником в Тайясаль\nЗолотом или силой, но ты должен заставить этого человека провести тебя в индейский город. Там ты найдешь врата, через которые зло проникло в наш мир, и запечатаешь их при помощи маски навеки.";
+			link.l1 = "А что насчет боевой ударной группировки?";
 			link.l1.go = "tieyasal_9";
 		break;
 		
 		case "tieyasal_9":
-			dialog.text = "These shock troops were under the command of Alonso de Maldonado. Alas! I don't have the chance to assemble another troop of Spanish soldiers. You'll have to do it with the help of your men, my son. But I will give you whatever help I can.";
-			link.l1 = "What help?";
+			dialog.text = "Эта группировка была под командованием Алонсо де Мальдонадо. Увы! У меня нет возможности собрать еще один отряд испанских солдат. Тебе придется сделать это при помощи своих людей, сын мой. Но я все же окажу тебе возможную помощь.";
+			link.l1 = "Какую?";
 			link.l1.go = "tieyasal_10";
 		break;
 		
 		case "tieyasal_10":
-			dialog.text = "Father Adrian will come to this chapel in five days. He will bring you holy amulets which help warriors of Christ in fight. He will also provide you with all kinds of potions. As for me, accept this blade, my son\nThis is a sword of the Temple Knights, a formidable weapon of our ancestors. Only the best warriors had an honour of owning it. Take it, possess it with a pride, and crush enemies of our faith with a name of God on your lips!";
-			link.l1 = "Thank you! The sword is absolutely amazing. I'm speechless...";
+			dialog.text = "Через пять дней сюда, в эту часовню, прибудет отец Адриан. Он привезет с собой освященные обереги, которые помогают воинам Христа в бою. Кроме того, он обеспечит тебя в достаточном количестве лечебными и прочими эликсирами. А сейчас я преподношу тебе, сын мой, вот этот клинок\nЭто меч рыцарей Храма, грозное оружие наших предков, овеянное славой. Чести носить его удостаивались только лучшие воины. Возьми, владей им с гордостью, и сокруши врагов нашей веры с именем Господа на устах!";
+			link.l1 = "Спасибо! Меч просто изумителен, нет слов...";
 			link.l1.go = "tieyasal_11";
 		break;
 		
@@ -434,16 +434,16 @@ void ProcessDialogEvent()
 			sld = ItemsFromID(sTemp);
 			sld.Balance = 2.0;
 			sld.Weight = 4.5;
-			Log_Info("You've received the Tanath");
+			Log_Info("Вы получили рыцарский меч 'Танат'");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "God bless you, "+GetFullName(pchar)+", in the sacred battle. I embower you with the holy cross. May God watch over you and may he never leave you, not in your searches, not on your path, and not in your battle. Amen.";
-			link.l1 = "Amen!";
+			dialog.text = "Благословляю тебя, "+GetFullName(pchar)+", на священный бой. Осеняю тебя святым крестом. И да хранит тебя Бог, и да не оставит он тебя ни в поисках, ни в пути, ни в бою. Аминь.";
+			link.l1 = "Аминь!";
 			link.l1.go = "tieyasal_12";
 		break;
 		
 		case "tieyasal_12":
-			dialog.text = "And now be gone, my son. Seek out Miguel Dichoso and make your way to the pagan city with his aid. Do not forget about Father Adrian, he will equip you with charms and remedies. And now it's time for me to return back to Santiago. Goodbye, my son.";
-			link.l1 = "Goodbye, Father Vincento...";
+			dialog.text = "А теперь ступай, сын мой. Отыщи Мигеля Дичозо, и с его помощью пробейся в город язычников. Не забудь про отца Адриана - он снабдит тебя оберегами и лекарствами. А мне пора в обратный путь, в Сантьяго. До свидания, сын мой.";
+			link.l1 = "До свидания, отец Винсенто...";
 			link.l1.go = "tieyasal_13";
 		break;
 		

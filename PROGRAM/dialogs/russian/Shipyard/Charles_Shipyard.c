@@ -4,29 +4,29 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me a question a little while ago...", "At his dock, and you know what–I've never seen such flat, curious people before in town.",
-                          "What's with all the questions? My job is to build ships. Let's take care about that.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where did my memory go...",
-                      "Hm, well...", "Go ahead...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно?"), "Совсем недавно вы пытались задать мне вопрос...", "У себя на верфи, а и вообще в городе, я таких однообразно любознательных не видал.",
+                          "Ну что за вопросы? Мое дело - корабли строить, давайте этим и займемся.", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить."), "Хм, что-то с памятью моей стало...",
+                      "Хм, однако...", "Давайте...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			// Addon 2016-1 Jason пиратскаЯ линейка
+			// Addon 2016-1 Jason пиратская линейка
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "silk_2")
             {
-                link.l1 = "Listen, master, you're building ships here, right?.. And changing sails as well... have you ever thought of... some better sailcloth fabric?";
+                link.l1 = "Послушайте, мастер, вот вы строите корабли... и устанавливаете и заменяете паруса... а хорошим материалом для парусов... никогда не интересовались?";
                 link.l1.go = "mtraxx";
 			}
 		break;
 		
-		// Addon 2016-1 Jason пиратскаЯ линейка
+		// Addon 2016-1 Jason пиратская линейка
 		case "mtraxx":
-            dialog.text = "You are talking in riddles, sir... Speak frankly - what brought you here? Nothing to worry, I am no pen pusher and this here ain't customs.";
-			link.l1 = "Ah, I'm glad we're on the same page! Silk sailcloth, sir. As I understand, there is no better material for the sails if speed is your concern.";
+            dialog.text = "Какими-то загадками вы говорите, сударь... Давайте-ка начистоту и прямо - что у вас ко мне за предложение? И не бойтесь, я не портовый чинуша и не таможенная служба.";
+			link.l1 = "Я вижу, с вами можно иметь дело! Речь идет о корабельном шелке. Из него, как мне известно, изготавливают самые лучшие паруса, которые повышают скорость судна...";
 			link.l1.go = "mtraxx_1";
 		break;
 		
 		case "mtraxx_1":
-            dialog.text = "Not only speed, but also her ability to sail by the wind. You are offering ship silk for purchase? It's a valuable cargo, indeed. But there is an obstacle: I simply don't know how to use it in production. Do you follow? A material like this requires very special abilities and skills which I lack. To be honest, my shipyard has a very different specialization - had you offered me some ropes from Russia, I'd gladly buy them all. We are in a constant need of ropes, however ship silk is not in demand here, I am sorry!";
-			link.l1 = "Hm. I see. Thank you for your time, master. Good luck!";
+            dialog.text = "И не только скорость, но и ход в бейдевинд, если уж на то пошло. Вы хотели предложить мне приобрести у вас корабельный шелк? Безусловно, товар очень ценный. Но дело вот в чем: чтобы изготавливать из него паруса соответствующего качества, нужно уметь с ним работать. Вы понимаете, о чем я? Это не пеньковая парусина, и не имея нужных навыков, можно попросту испортить дорогостоящий товар. Я с ним не работаю и никогда не работал. Вообще, моя верфь имеет другой профиль, и, предложи вы мне канаты из Московии, я бы наверняка заключил с вами сделку. Мое производство постоянно нуждается в них. А шелк мне не нужен, увы!";
+			link.l1 = "Хм. Ясно. Ну, спасибо что хоть выслушали, мастер. Удачи!";
 			link.l1.go = "mtraxx_2";
 		break;
 		

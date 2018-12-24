@@ -544,7 +544,7 @@ void SetSailorDeck_Ships(ref Chref)
 	{
 		model = LAi_GetBoardingModel(PChar, &ani);
 		sld = GetCharacter(NPC_GenerateCharacter("saylor_0" + i, model, "man", ani, Rank, sti(PChar.nation), 0, true, "soldier"));
-	    sld.name = "Sailor";
+	    sld.name = "Матрос";
 	    sld.lastname = "";
         sld.Dialog.Filename = "Quest\sailors_dialog.c";
     	sld.Dialog.CurrentNode = "On_MaryCeleste_Deck";
@@ -730,7 +730,7 @@ void SetSailorDeck_Ships(ref Chref)
 		sld = &Characters[cn];
         LAi_SetWarriorType(sld); // участвуют в расстреле - переинитим тип
     	LAi_warrior_DialogEnable(sld, true);
-	    sld.name    = "Sailor";
+	    sld.name    = "Матрос";
 	    sld.lastname = "";
         sld.Dialog.Filename = "Quest\sailors_dialog.c";
     	sld.Dialog.CurrentNode = "On_Deck";

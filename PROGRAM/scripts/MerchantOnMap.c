@@ -33,7 +33,7 @@ string CreateMerchant(int ination)
     Group_SetGroupCommander(sGroup, chref.id);
 
     chref.mapEnc.type = "trade";
-    chref.mapEnc.Name = "trader";
+    chref.mapEnc.Name = "торговец";
     //chref.mapEnc.Task = AITASK_MOVE; // ?
 
     Map_CreateTrader(MerPrm.sColony, MerPrm.sNextColony, chref.id, 5);
@@ -363,10 +363,10 @@ void CaptureMerchant(string temp)
     {
         qind = 6;
         Log_TestInfo("TRADER_TRAP!!!");
-        //string stext1 = "ѕрошел слух, что лих"+ GetSexPhrase("ой пират","а€ морска€ разбойница") +" - "+GetFullName(pchar)+", угодил"+ GetSexPhrase("","а") +" в западню, в которую е"+ GetSexPhrase("го","е") +" заманили "+NationNameSK(sti(MerPrm.ination))+"ие власти. ќни подослали к не"+ GetSexPhrase("му","й") +" ''торговое'' судно, в трюме которого спр€тались вооруженные до зубов "+NationNameSK(sti(MerPrm.ination))+"ие  солдаты. Ќо "+pchar.name+" не растер€л"+ GetSexPhrase("с€","ась") +", он"+ GetSexPhrase("","а") +" их попросту перебил"+ GetSexPhrase("","а") +" - всех до единого! ¬от как"+ GetSexPhrase("ой","а€") +" удал"+ GetSexPhrase("ой пират наш","а€ деваха наша") +" "+GetFullName(pchar)+".";
-        //string stext2 = "Ћюди говор€т, что дерзк"+ GetSexPhrase("ий пират","а€ морска€ разбойница") +" - "+GetFullName(pchar)+", повадил"+ GetSexPhrase("с€","ась") +" грабить "+NationNameSK(sti(MerPrm.ination))+"ие торговые корабли. » тогда наш √енерал-губернатор решил покончить с ним. ќн снар€дил  корабль, замаскированный под торговца с несколькими дес€тками хорошо обученных солдат, из ≈вропы, и подослал к нему. Ќо "+ GetSexPhrase("кровожадный пират перебил","эта отча€нна€ деваха перебила") +" их всех и вновь улизнул"+ GetSexPhrase("","а") +" от правосуди€!";
-        //AddSimpleRumour(stext1, sti(MerPrm.ination)+10, 30, 3);
-        //AddSimpleRumour(stext2, sti(MerPrm.ination), 30, 3);
+        string stext1 = "ѕрошел слух, что лих"+ GetSexPhrase("ой пират","а€ морска€ разбойница") +" - "+GetFullName(pchar)+", угодил"+ GetSexPhrase("","а") +" в западню, в которую е"+ GetSexPhrase("го","е") +" заманили "+NationNameSK(sti(MerPrm.ination))+"ие власти. ќни подослали к не"+ GetSexPhrase("му","й") +" ''торговое'' судно, в трюме которого спр€тались вооруженные до зубов "+NationNameSK(sti(MerPrm.ination))+"ие  солдаты. Ќо "+pchar.name+" не растер€л"+ GetSexPhrase("с€","ась") +", он"+ GetSexPhrase("","а") +" их попросту перебил"+ GetSexPhrase("","а") +" - всех до единого! ¬от как"+ GetSexPhrase("ой","а€") +" удал"+ GetSexPhrase("ой пират наш","а€ деваха наша") +" "+GetFullName(pchar)+".";
+        string stext2 = "Ћюди говор€т, что дерзк"+ GetSexPhrase("ий пират","а€ морска€ разбойница") +" - "+GetFullName(pchar)+", повадил"+ GetSexPhrase("с€","ась") +" грабить "+NationNameSK(sti(MerPrm.ination))+"ие торговые корабли. » тогда наш √енерал-губернатор решил покончить с ним. ќн снар€дил  корабль, замаскированный под торговца с несколькими дес€тками хорошо обученных солдат, из ≈вропы, и подослал к нему. Ќо "+ GetSexPhrase("кровожадный пират перебил","эта отча€нна€ деваха перебила") +" их всех и вновь улизнул"+ GetSexPhrase("","а") +" от правосуди€!";
+        AddSimpleRumour(stext1, sti(MerPrm.ination)+10, 30, 3);
+        AddSimpleRumour(stext2, sti(MerPrm.ination), 30, 3);
 
     }
     else

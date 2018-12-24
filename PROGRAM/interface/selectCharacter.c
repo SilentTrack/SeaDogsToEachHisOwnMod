@@ -14,6 +14,9 @@ string CurTable, CurRow, CurCol = 0;
 int iSelected, iSelectedCol;
 ref	nulChr;
 
+int iBackPistol = -1;
+int iBackPartition = -1;
+
 void InitInterface(string iniName)
 {
 	nulChr = &NullCharacter;
@@ -82,6 +85,7 @@ void InitInterface(string iniName)
 	}
 	TmpI_ShowLevelComplexity();
 	SetByDefault();
+	DisableEnable_CheckProcess();
 	
 	SendMessage(&GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"TABLE_SMALLSKILL", 0 );
 }
@@ -96,6 +100,7 @@ void SetByDefault()
     {
         CheckButton_SetState("CHECK_ARCADESAIL", 2, true);
     }
+	
     if (bRechargePistolOnLine)// 1 0
     {
     	CheckButton_SetState("CHECK_PISTOL", 1, true);
@@ -104,6 +109,7 @@ void SetByDefault()
     {
         CheckButton_SetState("CHECK_PISTOL", 1, false);
     }
+	
     if (bHardcoreGame)// 1 0
     {
     	CheckButton_SetState("CHECK_HARDCORE", 1, true);
@@ -291,6 +297,60 @@ void procNoteOk()
 	ShowNoteText(false);
 }
 
+void DisableEnable_CheckProcess() // ugeen 2016
+{
+	if (MOD_SKILL_ENEMY_RATE == 10)
+	{
+		if(SendMessage(&GameInterface,"lsll",MSG_INTERFACE_MSG_TO_NODE, "CHECK_PISTOL", 3, 1)) // если перезарядка включена
+		{
+			iBackPistol = 1; // сохраняем предыдущее значение
+			SendMessage(&GameInterface,"lslll",MSG_INTERFACE_MSG_TO_NODE,"CHECK_PISTOL", 2, 1, 0 ); // отключаем
+		}
+		else
+		{
+			iBackPistol = 0; // сохраняем предыдущее значение
+		}
+		
+		if(!SendMessage(&GameInterface,"lsll",MSG_INTERFACE_MSG_TO_NODE, "CHECK_PARTITION", 3, 1)) // если раздел добычи отключен
+		{
+			iBackPartition = 0; // сохраняем предыдущее значение
+			SendMessage(&GameInterface,"lslll",MSG_INTERFACE_MSG_TO_NODE,"CHECK_PARTITION", 2, 1, 1 ); // включаем
+		}
+		else
+		{
+			iBackPartition = 1; // сохраняем предыдущее значение
+		}
+	
+		SetClickable("CHECK_PISTOL", false);
+		SetClickable("CHECK_PARTITION", false);	
+		
+		Button_SetEnable("CHECK_PISTOL", false);
+		Button_SetEnable("CHECK_PARTITION", false);	
+
+				
+	}
+	else
+	{
+		if( iBackPistol > -1 ) // восстанавливаем предыдущее значение
+		{
+			SendMessage(&GameInterface,"lslll",MSG_INTERFACE_MSG_TO_NODE,"CHECK_PISTOL", 2, 1, iBackPistol );
+			iBackPistol = -1;
+		}
+		
+		if( iBackPartition > -1 )
+		{
+			SendMessage(&GameInterface,"lslll",MSG_INTERFACE_MSG_TO_NODE,"CHECK_PARTITION", 2, 1, iBackPartition );
+			iBackPartition = -1;
+		}
+		
+		SetClickable("CHECK_PISTOL", true);
+		SetClickable("CHECK_PARTITION", true);
+
+		Button_SetEnable("CHECK_PISTOL", true);
+		Button_SetEnable("CHECK_PARTITION", true);	
+	}
+}
+
 void ProcessCommandExecute()
 {
 	string comName = GetEventData();
@@ -306,6 +366,7 @@ void ProcessCommandExecute()
 					MOD_SKILL_ENEMY_RATE -= 2;
 				}
 				TmpI_ShowLevelComplexity();
+				DisableEnable_CheckProcess();
 			}
 		break;
 
@@ -317,6 +378,7 @@ void ProcessCommandExecute()
 	               MOD_SKILL_ENEMY_RATE += 2;
 	            }
 	            TmpI_ShowLevelComplexity();
+				DisableEnable_CheckProcess();
 			}
 		break;
 		
@@ -345,7 +407,6 @@ void ProcessCommandExecute()
 
 			if (comName == "deactivate")
 			{
-
 				ShowConfirmWindow(false);
 			}
 
@@ -744,20 +805,20 @@ string SetSetupInfo(string type)
 	switch (type)
 	{
 		case "HeroType_1":
-			setupInfo = "Light armor is 20% more effective." + NewStr() +
-						"Received damage doesn't make you loose energy, you also have a better skill for rapiers from the start.";
+			setupInfo = "Развитые ловкость и гибкость помогают наиболее эффективно использовать лёгкую броню: персонаж получает, в среднем, на 20% меньший урон, нежели прочие." + NewStr() +
+						"А знания и отработка фехтовальных стоек и приёмов позволяют исключить потерю энергии при получении урона, неизбежную для большинства противников. Да и рапира уже пускай не родная дочь, но и не падчерица.";
 		break;
 		case "HeroType_2":
-			setupInfo = "Discounts and mark-ups are increased by 15%, rats spoil twice less goods. " + NewStr() +
-						"Stealth operations are more effective, you also have a better skill for sabres from the start.";
+			setupInfo = "Понимание принципов ведения хозяйственного учёта, торговых операций и товарных перевозок увеличивает на 15% действующие скидки или надбавки, и помогает уменьшить вред, наносимый поклаже крысами и прочими вредителями, вдвое. " + NewStr() +
+						"Светское красноречие и артистизм позволяют легко обвести недруга вокруг пальца и чаще остаться не узнанным. Правильную реакцию на выпады оппонента в жарких спорах учитель предлагал оттачивать в сабельных поединках. А они случаются Карибах гораздо чаще, чем планируешь...";
 		break;
 		case "HeroType_3":
-			setupInfo = "Energy regeneration is 15% faster. " + NewStr() +
-						"Heavy armour is 15% more effective, you also have a better skill for broadswords and axes from the start.";
+			setupInfo = "Регулярные тренировки и правильные физические нагрузки научили организм быстрее побеждать усталость: на 15% увеличилась скорость восстановления энергии." + NewStr() +
+						"Учебные схватки в тренировочном доспехе привили навыки правильно распределять нагрузку и эффективно отражать или блокировать удары: урон, нанесённый персонажу любым оружием при экипированной кирасе, снижается на 15%. А меч, палаш или топор стали, практически, друзьями на всю жизнь.";
 		break;
 		case "HeroType_4":
-			setupInfo = "You reload your firearms 40% faster." + NewStr() +
-						"Cannons in your disposal explode much less often, you have a better skill for firearms from the start and your fire suppresses the enemy.";
+			setupInfo = "Постоянные состязания на скорость подготовки к бою в кромешной тьме кладбищенского склепа не прошли даром: персонаж расходует на 40% меньше времени на перезарядку личного оружия." + NewStr() +
+						"Эксперименты с пороховыми смесями и различными снарядами тоже оставили свой след: находящиеся в распоряжении корабельные орудия служат много дольше и взрываются гораздо реже, а негодные в глазах всех остальных пули или картечь шокируют жертву, понуждая её расходовать драгоценную энергию. ";
 		break;
 	}
 	return setupInfo;

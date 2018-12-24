@@ -36,20 +36,20 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-            dialog.text = NPCStringReactionRepeat("Do you have got something to tell me? No? Then get away from here! Don't bother me then.",
-                         "I trust that I have made myself clear.", "Although I've made myself clear, you keep annoying me!",
-                         "Right, I am getting tired of this rudeness.", "repeat", 3, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("I am leaving already.",
-                                               "Of course, Pastor.",
-                                               "I am sorry, Pastor.",
-                                               "Oups...", npchar, Dialog.CurrentNode);
+            dialog.text = NPCStringReactionRepeat(""+ GetSexPhrase("У тебя дело ко мне? Нет? Тогда вали отсюда!","Ха, " + pchar.name + "! У тебя дело ко мне? Нет? Тогда не отвлекай меня.") +"",
+                         "Я кажется ясно выразился.", "Хотя я выразился и ясно, но ты продолжаешь отвлекать меня!",
+                         "Та-а-ак, это уже похоже на грубость, меня это утомило.", "repeat", 3, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Уже ухожу.",
+                                               "Конечно, Пастор...",
+                                               "Извини, Пастор...",
+                                               "Ой...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 			
 			if (sti(pchar.GenQuest.Piratekill) > 20)
 			{
-				dialog.text = RandPhraseSimple("Are you insane? Wanted to play a butcher? All pirates are angry with you, pal, so you better leave this place.", "It seems, pal, that you got mad. Wanted to stretch your hands a bit? No offence, but you have nothing to do here. Get lost!");
-				link.l1 = RandPhraseSimple("Listen, I want to fix the situation...", "Help me to solve the problem...");
+				dialog.text = RandPhraseSimple("У тебя крыша поехала? Вообразил себя мясником? Все пираты злы на тебя, приятель, так что лучше тебе убраться отсюда побыстрее.", "Ты, приятель, похоже, из ума выжил. Руки чесались сильно? Теперь не обессудь - здесь тебе делать нечего. Вали отсюда побыстрее!");
+				link.l1 = RandPhraseSimple("Послушай, я хочу исправить ситуацию...", "Помоги мне решить эту проблему...");
 				link.l1.go = "pirate_town";
 				break;
 			}
@@ -57,12 +57,12 @@ void ProcessDialogEvent()
 			//--> Сага
 			if(CheckAttribute(pchar, "questTemp.Saga.SharkHunt") && !CheckAttribute(npchar, "quest.sharkbegin"))
 			{
-				link.l1 = "I am trying to find Shark Dodson. They say that you are the last man who saw him. Can you help me with that?";
+				link.l1 = "Я пытаюсь разыскать Акулу Додсона. Говорят, ты последний, кто видел его. Можешь как-то помочь мне в этом деле?";
 				link.l1.go = "Shark";
 			}
 			if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation") && pchar.questTemp.Saga.BarbTemptation == "terrax" && CheckCharacterItem(pchar, "witches_hammer"))
 			{
-				link.l1 = "Why are you so rude if you are interested in getting your desired book from me?";
+				link.l1 = "Тебе не интересно получить от меня заветную книгу, что ты так резок?";
 				link.l1.go = "book";
 			}
 			//<-- Сага
@@ -71,74 +71,74 @@ void ProcessDialogEvent()
 			{
 				if(CheckAttribute(pchar,"GenQuest.CaptainComission.toMayor"))
 				{
-					link.l1 = "I want to talk about your prisoner.";
+					link.l1 = "Я по поводу твоего пленника.";
 					link.l1.go = "CapComission1";
 					DeleteAttribute(pchar,"GenQuest.CaptainComission.toMayor");
 				}	
 				if(CheckAttribute(pchar,"GenQuest.CaptainComission.PirateShips"))
 				{
-					link.l1 = "Hello, Pastor. I want to talk about your mission.";
+					link.l1 = "Здравствуй, Пастор, я по поводу твоего поручения.";
 					link.l1.go = "CapComission3";
 				}
 				if(CheckAttribute(pchar,"GenQuest.CaptainComission.RepeatSpeak"))
 				{
-					link.l1 = "I want to talk about your prisoner.";
+					link.l1 = "Я по поводу твоего пленника.";
 					link.l1.go = "CapComission6";
 				}
 			}
 		break;
 		
 		case "shark":
-			dialog.text = "Steven Dodson? Don't know how my story would help you because Shark has been missing for the last few months and no one has seen him. It is not a surprise though, he has killed Blaze Sharp and discredited his own name by this foolish action. He has made a few powerful corsairs his enemies.";
-			link.l1 = "I have all reasons to think that Shark is innocent of Sharp's death. I can't prove it, perhaps Shark can do it himself. Are you going to tell me anything about him?";
+			dialog.text = "Стивен Додсон? Не знаю, поможет ли тебе то, что я расскажу, поскольку Акула бесследно сгинул уже как несколько месяцев, и от него нет ни слуху, ни духу. Что и неудивительно - ведь он прикончил Блейза Шарпа, дискредитировав этим нелепым поступком свое имя и настроив против себя ряд влиятельных корсаров.";
+			link.l1 = "У меня есть основания полагать, что Акула невиновен в гибели Шарпа. Доказать я этого не могу, но, возможно, сам Акула сможет это прояснить. Так ты скажешь мне про него хоть что-нибудь?";
 			link.l1.go = "shark_1";
 		break;
 		
 		case "shark_1":
-			dialog.text = "A few months ago, Steven came to me and offered a very odd deal: he left his frigate Fortune in gage for a month in exchange for a brig loaded with provisions. Then he either return me the brig and money for provisions or I keep his frigate. A month passed - no sign of neither Shark, nor my brig, nor money\nBesides, I heard rumors that Blaze is murdered and Shark is suspected. What could I think? Correct! I thought that Steven had escaped from the worst. I sold his frigate to some Englishman named William Patterson, he was very pleased and paid a great pile of doubloons for the ship\nTherefore, I have completely compensated my expenses and hold no grudge against him. I don't care about Sharp's death, I have my own problems to worry about.";
-			link.l1 = "Don't you think that if he has wanted to escape he wouldn't need your brig? He had his own ship hundred times better then any brig. It looks like Shark had a plan but it hasn't turned well so he got too late.";
+			dialog.text = "Несколько месяцев назад Стивен явился ко мне и предложил очень странную сделку: он оставил мне в залог свой фрегат 'Фортуна' взамен на бриг с трюмами, полными продовольствия, на один месяц. Потом или бриг с деньгами за провиант, или фрегат остается у меня. Прошел месяц - ни Акулы, ни моего брига, ни денег за товар\nКроме того, пришло известие о смерти Блейза, и то, что Акула подозревается в его убийстве. Ну и что я мог решить? Правильно! Что Стив попросту слинял от греха подальше. Его фрегат я продал какому-то англичанину по имени Вильям Патерсон, он был очень доволен покупкой и отвалил кучу дублонов\nТак что я полностью компенсировал свои потери и зла на Стива не держу. А что касается убийства Шарпа, так меня это особо и не касается, у меня своих забот полон рот.";
+			link.l1 = "А ты не считаешь, что если бы он задумал слинять, то ему не нужен был бы твой бриг? У него же свой корабль был в сто раз лучше брига. По-моему, Акула что-то задумал, но, видимо, дела пошли не так как надо, раз не вернулся в срок.";
 			link.l1.go = "shark_2";
 		break;
 		
 		case "shark_2":
-			dialog.text = "As I have already told you, I don't care about Dodson's problems. I have fulfilled my part of the bargain and you'd better ask him why he had a such need in my brig. I haven't forced him to take it.";
-			link.l1 = "Fine, whatever. You are right, of course. Tell me, are you aware about where Steven was heading on your brig?";
+			dialog.text = "Как я тебе уже сказал, меня мало волнуют проблемы Додсона. Я все сделал по уговору, а зачем ему понадобился мой бриг - это надо у него спросить, я его не принуждал к этому обмену.";
+			link.l1 = "Ладно, оставим это. Ты, конечно, прав. Скажи, а куда Стивен направился на твоем бриге, ты не в курсе?";
 			link.l1.go = "shark_3";
 		break;
 		
 		case "shark_3":
-			dialog.text = "Who knows for sure. But I have got some guesses. He sailed North West towards Main. So it's either Bay of Peril which is known for it's hostile Indians or New Spain which is known for it's Papists and inquisition\nI doubt that he would go there. But they say that there is a strange place called Justice Island North West of Cuba. A lot of people consider this a myth but not me. Not because I am such a romantic person, but because there are real people who sail there on their longboats. Or they used to.";
-			link.l1 = "And who are they?";
+			dialog.text = "А кто же его знает... Но есть у меня кое-какие догадки. Отбыв из нашей бухты, он взял курс на северо-запад, в сторону Мэйна. Там находится либо залив Гибели, печально известный тем, что окрестные джунгли бувально кишат дикими воинственными индейцами, либо, через Мексиканский залив - Новая Испания, с папистами и инквизицией\nЧто-то не верится, что он решился бы отправиться в эти места. Однако там, на северо-запад от Кубы, говорят, есть некое загадочное место, именуемое островом Справедливости. Многие считают это выдумкой, а вот я тебе скажу - я в это верю. И не потому, что я такой романтик, а потому что есть самые настоящие реальные люди, которые туда плавают на своих баркасах. Во всяком случае, раньше плавали.";
+			link.l1 = "И что же это за люди?";
 			link.l1.go = "shark_4";
 		break;
 		
 		case "shark_4":
-			dialog.text = "Buccaneers from Cuba. They were loading there barques with bull's carcasses and sailing to north - west. They were always returning a bit later with their pockets filled with coins or with rare and valuable goods.";
-			link.l1 = "Intriguing! Where can I find those buccaneers?";
+			dialog.text = "Буканьеры с Кубы. Грузили полные баркасы разделанных бычьих туш, брали курс на северо-запад, а спустя какое-то время возвращались назад, либо с карманами, полными денег, либо с редкими и ценными товарами.";
+			link.l1 = "Очень интересно! И где же найти их, этих буканьеров?";
 			link.l1.go = "shark_5";
 		break;
 		
 		case "shark_5":
-			dialog.text = "Why ask me? Search Cuba's woods. Even if you will find them, they won't tell you anything, why should they expose the source of their good living? So don't waste your time, no one has seen them doing it again since a long time\nI heard of some notes written by Spanish sailor Alvarado who visited the island himself. So I am curious, perhaps Steven did sail there after all.";
-			link.l1 = "The unknown isle which is not on maps... Well. That is not promising information.";
+			dialog.text = "Ты у меня спрашиваешь? Поищи в лесах по всей Кубе. А если и найдешь, то навряд ли они тебе вот так возьмут и расскажут - не станут они раскрывать свой источник заработка. Так что не трать время по-пустому, тем более, что их уже давно за этим занятием никто не видел\nКроме них, слыхал я про некие заметки, написанные испанским мореплавателем по фамилии Альворадо, который лично бывал на этом острове. Вот я и думаю: а не направился ли Стивен именно туда?";
+			link.l1 = "Остров, про который никто не знает, который не обозначен на картах... Да уж. Неутешительные сведения.";
 			link.l1.go = "shark_6";
 		break;
 		
 		case "shark_6":
-			dialog.text = "I have told you in the beginning that my story won't help you. And why do you need Dodson?";
-			link.l1 = "Me and the Wood Devil want to elect him as leader of the Brethren of the Coast. As I have told you already there are some serious reasons to suggest that Blaze was murdered by someone else.";
+			dialog.text = "Я сразу сказал, что мой рассказ тебе навряд ли чем поможет. А зачем тебе вдруг понадобился Додсон?";
+			link.l1 = "Мы с Лесным Дьяволом хотим предложить его кандидатуру на пост лидера Берегового братства. Как я уже сказал, есть серьезные основания полагать, что Блейза убил кто-то другой.";
 			link.l1.go = "shark_7";
 		break;
 		
 		case "shark_7":
-			dialog.text = "Heh! I take it that Jan is standing for him? Well, you know the law - Dodson will have to get a vote from the each baron.";
-			link.l1 = "I do know the law. My second question then. Will you vote for Dodson on the election?";
+			dialog.text = "Хех! Значит, Ян за него? Ну, ты знаешь законы: для избрания лидера Додсон должен получить голоса всех баронов.";
+			link.l1 = "Знаю. Отсюда мой второй вопрос: ты проголосуешь за Стивена Додсона на выборах?";
 			link.l1.go = "shark_8";
 		break;
 		
 		case "shark_8":
-			dialog.text = "Well, he should return first. Actually, I don't care who will lead the Brethren as long as he does his business well and doesn't bother me. As I said, I have problems of my own. Do you know how many witches and mages are on our island? No? I will tell you: a legion! Besides, there are also a lot of Papists in Santiago and Havana\nSpeaking of mages. There is a book called 'Hammer for the Witches'. I really want to get it, but only in English, I don't need Latin, German or Spanish translations, I don't know these languages. Bring me the book and I will vote for Dodson\nBe aware that Jackman promised me to find it too, so if he succeeds first... don't blame me then.";
-			link.l1 = "Fine, I will consider that. Thanks for your time. See you.";
+			dialog.text = "Пускай он сначала вернется... А вообще, мне все равно, кто будет возглавлять Братство, лишь бы делал это толково и не лез в мои дела. Как я тебе уже говорил, у меня своих проблем по горло. Ты знаешь, сколько на нашем острове ведьм и колдунов? Нет? А я тебе скажу: легион! И кроме того, полно папистов из Сантьяго и Гаваны\nВот, кстати, о колдунах. Есть такая книга, трактат, называется 'Молот ведьм'. Я очень хочу получить эту книгу, но обязательно на английском языке, потому что то, что я встречал - латинский, немецкий и испанский переводы, не годятся, так как я не знаю этих языков. Привезешь мне книгу - отдам свой голос за Додсона\nНо учти, что достать этот трактат для меня также взялся и Джекман, в обмен на голос в его пользу, и если он тебя опередит - то не обессудь.";
+			link.l1 = "Хорошо, я это учту. Спасибо за то, что уделил время. До встречи!";
 			link.l1.go = "shark_9";
 		break;
 		
@@ -150,27 +150,27 @@ void ProcessDialogEvent()
 		break;
 		
 		case "book":
-			dialog.text = "The book? I take it that you are talking about the 'Hammer for the Witches'?";
-			link.l1 = "Of course. I was able to find it for you. It is on English as you have asked.";
+			dialog.text = "Книгу? Я так понимаю, речь идет о 'Молоте ведьм'?";
+			link.l1 = "Ну конечно. Мне удалось разыскать ее для тебя. Она на английском, как ты и просил.";
 			link.l1.go = "book_1";
 		break;
 		
 		case "book_1":
-			dialog.text = "Ha, sorry for such a rough welcome, pal. Won't happen again... Let me see that wonder!";
-			link.l1 = "Sure, take a look.";
+			dialog.text = "Хех, дружище, извини за грубый прием. Более не повторится... Дай мне взглянуть на это чудо!";
+			link.l1 = "Конечно, пожалуйста.";
 			link.l1.go = "book_2";
 		break;
 		
 		case "book_2":
 			RemoveItems(pchar, "witches_hammer", 1); // удалить трактат
-			dialog.text = "Finally! Tremble now, servants of hell! I won't leave you alone until my hand is able to hand...";
-			link.l1 = "I am glad for you, Pastor. So what about your vote?";
+			dialog.text = "Наконец-то! Трепещите, слуги ада! Я не оставлю вас в покое, пока эта рука способна держать...";
+			link.l1 = "Я рад за тебя, Пастор. Так что насчет твоего голоса в Совете?";
 			link.l1.go = "book_3";
 		break;
 		
 		case "book_3":
-			dialog.text = "As I've said you before - I don't care about who will become the head. I am sure that Svensson won't choose an unworthy man. So take my vote. Do whatever you want with it. Here is my shard.";
-			link.l1 = "Thank you, Zechariah. See you there!";
+			dialog.text = "Как я тебе уже говорил - мне все равно, кто станет главой. Уверен, Свенсон не выберет на эту роль никудышного кандидата. Так что свой голос я отдаю тебе. Делай с ним, что сочтешь нужным. Вот мой осколок.";
+			link.l1 = "Спасибо, Захария. Еще увидимся!";
 			link.l1.go = "book_4";
 		break;
 		
@@ -189,46 +189,46 @@ void ProcessDialogEvent()
 		break;
 
         case "I_know_you_good":
-            dialog.text = NPCStringReactionRepeat(GetFullName(pchar) + ", I am glad to see you! What do you wish?",
-                         "What do you want?", "Again? Don't bother people if you have got nothing to do!",
-                         "And "+ GetSexPhrase("good privateer","good girl") +", , you can live for now. But I don't want to talk to you anymore.", "repeat", 10, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("I am just paying a visit.",
-                                               "Nothing...",
-                                               "Fine, Pastor, I am sorry...",
-                                               "Damn it, caught it at last!", npchar, Dialog.CurrentNode);
+            dialog.text = NPCStringReactionRepeat(GetFullName(pchar) + ", рад тебя видеть! Зачем пожаловал"+ GetSexPhrase("","а") +" на этот раз?",
+                         "Ну что тебе еще?", "Долго это будет продолжаться? Если тебе делать нечего, не отвлекай других!",
+                         "Ты "+ GetSexPhrase("хороший капер","хорошая девушка") +", поэтому живи пока. Но общаться и разговаривать с тобой я больше не желаю.", "repeat", 10, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Да, собственно, просто так заглянул"+ GetSexPhrase("","а") +", проведать. Ничего по делу нет.",
+                                               "Ничего, просто так...",
+                                               "Хорошо, Пастор, извини...",
+                                               "Вот черт возьми, доиграл"+ GetSexPhrase("ся","ась") +"!!!", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			NextDiag.TempNode = "I_know_you_good";
 			
 			if (sti(pchar.GenQuest.Piratekill) > 20)
 			{
-				dialog.text = RandPhraseSimple("Are you insane? Wanted to play a butcher? All pirates are angry with you, pal, so you better leave this place…", "It seems, pal, that you got mad. Wanted to stretch your hands a bit? No offence, but you have nothing to do here. Get lost!");
-				link.l1 = RandPhraseSimple("Listen, I want to fix the situation…", "Help me to solve the problem…");
+				dialog.text = RandPhraseSimple("У тебя крыша поехала? Вообразил себя мясником? Все пираты злы на тебя, приятель, так что лучше тебе убраться отсюда побыстрее.", "Ты, приятель, похоже, из ума выжил. Руки чесались сильно? Теперь не обессудь - здесь тебе делать нечего. Вали отсюда побыстрее!");
+				link.l1 = RandPhraseSimple("Послушай, я хочу исправить ситуацию...", "Помоги мне решить эту проблему...");
 				link.l1.go = "pirate_town";
 				break;
 			}
 			//поручение капитана - выкуп
 			if (CheckAttribute(pchar, "GenQuest.CaptainComission") && CheckAttribute(pchar,"GenQuest.CaptainComission.toMayor"))
 			{
-				link.l1 = "It's about your prisoner.";
+				link.l1 = "Я по поводу твоего пленника.";
 				link.l1.go = "CapComission1";
 				DeleteAttribute(pchar,"GenQuest.CaptainComission.toMayor");
 			}		
 			if(CheckAttribute(pchar,"GenQuest.CaptainComission.PirateShips"))
 			{
-				link.l1 = "Good day, Pastor, it is about your prisoner.";
+				link.l1 = "Здравствуй, Пастор, я по поводу твоего поручения.";
 				link.l1.go = "CapComission3";
 			}
 			if(CheckAttribute(pchar,"GenQuest.CaptainComission.RepeatSpeak"))
 			{
-				link.l1 = "It's about your prisoner.";
+				link.l1 = "Я по поводу твоего пленника.";
 				link.l1.go = "CapComission6";
 			}
 		break;
 		
 	//-----------------------------------Поручение капитана - Выкуп-------------------------------------------------
 		case "CapComission1":
-			dialog.text = "Ha-ha. Do you think that I have got only one prisoner here? Name him.";
-			link.l1 = pchar.GenQuest.CaptainComission.SlaveName + ". Is he here?";
+			dialog.text = "Хо-хо. Ты думаешь, у меня только один пленник? Называй, кого конкретно имеешь в виду?";
+			link.l1 = pchar.GenQuest.CaptainComission.SlaveName + ". Есть такой?";
 			link.l1.go = "CapComission2";
 			DeleteAttribute(pchar,"GenQuest.CaptainComission.toMayor");
 		break;
@@ -236,38 +236,38 @@ void ProcessDialogEvent()
 		case "CapComission2":
 			if(CheckAttribute(pchar,"GenQuest.CaptainComission.DaysLeft"))
 			{
-				dialog.text = "He was. I have sold him away to this plantation owner from Barbados - colonel Bishop, when he was here a week ago.";
-				link.l1 = "Damn...Damn...";
+				dialog.text = "Был. Я его продал к чёртовой матери этому плантатору с Барбадоса - полковнику Бишопу, он заезжал на прошлой неделе.";
+				link.l1 = "Вот чёрт...";
 				link.l1.go = "CapComission2_1";
 			}
 			else
 			{
-				dialog.text = "Ah, at last. I was thinking to sell him away to that plantation owner from Barbados, he will be here in a week or two... Do you have a ransom?";
-				link.l1 = "Look, there is a small problem... Actually, I don't have so much money. But I am ready to work.";
+				dialog.text = "А-а, ну наконец-то. Я уж было подумывал продать его к чёртовой матери этому плантатору с Барбадоса, он должен появиться у меня через неделю-другую... Ты выкуп привез"+ GetSexPhrase("","ла") +"?";
+				link.l1 = "Слушай, тут такое дело... В общем, у меня нет таких денег. Но я готов"+ GetSexPhrase("","а") +" отработать.";
 				link.l1.go = "CapComission2_2";
 				if(makeint(pchar.money) > 150000)
 				{
-					link.l2 = "It's good that you haven't sold him. Here are your coins - 150000 pesos. Where can I get him?"
+					link.l2 = "Хорошо, что не продал. Вот деньги - 150000 песо. Где я могу его забрать?"
 					link.l2.go = "CapComission2_3";
 				}	
 			}
 		break;
 		
 		case "CapComission2_1":
-			dialog.text = "You were too  slow... And why do you care about him? I has been negotiating with his relatives only.";
-			link.l1 = "The have asked me to come here.";
+			dialog.text = "Долго ты телил"+ GetSexPhrase("ся","ась") +"... А кстати, этот невольник к тебе каким боком? Я, помнится, его родственникам выкуп назначал.";
+			link.l1 = "Да я по поручению этих родственников и приехал"+ GetSexPhrase("","а") +".";
 			link.l1.go = "CapComission2_11";
 		break;
 		
 		case "CapComission2_11":
-			dialog.text = "Well, I am late..";
-			link.l1 = "Listen for how much have you sold him if it's not a secret?"; 
+			dialog.text = "Ну, опоздал"+ GetSexPhrase("","а") +" ты - что я могу поделать?";
+			link.l1 = "Слушай, а за сколько продал, если не секрет?"; 
 			link.l1.go = "CapComission2_12";
 		break;
 		
 		case "CapComission2_12":
-			dialog.text = "Eh, it's not. But I won't tell you, you would laugh if I will. Ha-ha! Farewell.";
-			link.l1 = "See you.";
+			dialog.text = "Э-э, не секрет, конечно, но я тебе не скажу. А то смеяться будешь, ха-ха-ха-ха... Ну, бывай.";
+			link.l1 = "Счастливо.";
 			link.l1.go = "exit";
 			AddQuestRecord("CaptainComission1", "10");
 			AddQuestUserData("CaptainComission1", "sName", ChangeNameCase(NAMETYPE_MAIN, pchar.GenQuest.CaptainComission.PirateName, NAME_NOM));
@@ -277,21 +277,21 @@ void ProcessDialogEvent()
 		case "CapComission2_2":
 			if(rand(1) == 0)
 			{
-				dialog.text = "Well, well.. I have got a one business... Don't even know how to start. I need to sink one pirate who has went too far.";
-				link.l1 = "Can't he simply die in the jungles?";
+				dialog.text = "Гхм-гхм... Есть у меня одно дело... Даже не знаю, как начать... В общем, нужно пустить ко дну одного зарвавшегося пирата.";
+				link.l1 = "А разве нельзя убрать его в джунглях?";
 				link.l1.go = "CapComission2_2_1";
 			}
 			else
 			{
-				dialog.text = "Well, " + pchar.name + ", you know, it won't work like that. Come back with money and you'll get you weakling, ha-ha.";
-				link.l1 = "Fine. See you.";
+				dialog.text = "Ну, " + pchar.name + ", ты же знаешь, что так дела не делаются. Приходи с деньгами и получишь своего заморыша, хе-хе.";
+				link.l1 = "Ну ладно, до встречи.";
 				link.l1.go = "CapComission2_4";
 			}
 		break;
 
 		case "CapComission2_2_1":
-			dialog.text = "It's not the way how business works, you know... I don't need his death, I need to teach some people to avoid taking my part of a loot. But I won't regret his death.";
-			link.l1 = "Why don't you send your own people for him?";
+			dialog.text = "Ну, понимаешь ли, так серьёзные дела не делаются... Мне не смерть его нужна, мне нужно отбить охоту у слишком ретивых разевать рот на мою часть добычи. Хотя, если он отправится к осьминогам - я не огорчусь.";
+			link.l1 = "А почему тебе не послать за ним своих людей?";
 			link.l1.go = "CapComission2_2_2";
 		break;
 		
@@ -301,14 +301,14 @@ void ProcessDialogEvent()
 			pchar.GenQuest.CaptainComission.ShipName2 = GenerateRandomNameToShip(sti(NPChar.nation));
 			pchar.GenQuest.CaptainComission.UnknownPirateName = "l" + rand(GetNamesCount(NAMETYPE_ORIG) - 1);
 			sLoc = XI_ConvertString(pchar.GenQuest.CaptainComission.Island + "Abl");
-			dialog.text = "Hm.. Well" + GetName( NAMETYPE_ORIG, pchar.GenQuest.CaptainComission.UnknownPirateName, NAME_NOM) + " has convinced a part of pirates that in our stash not far from " + XI_ConvertString(pchar.GenQuest.CaptainComission.Island.Shore + "Gen") + ". Their two ships raised anchor not long ago and sailed to " + sLoc + ". Now you see why I can't trust my men to do that job?";
-			link.l1 = "I do. How much time do I have?";
+			dialog.text = "Хм... В общем некий " + GetName( NAMETYPE_ORIG, pchar.GenQuest.CaptainComission.UnknownPirateName, NAME_NOM) + " убедил часть пиратов, что в нашем тайнике близ " + XI_ConvertString(pchar.GenQuest.CaptainComission.Island.Shore + "Gen") + " есть и их доля. Недавно они снялись с якоря и на двух судах '" + pchar.GenQuest.CaptainComission.ShipName1 + "' и '" + pchar.GenQuest.CaptainComission.ShipName2 + "' ушли к " + sLoc + ". Понимаешь теперь, почему я не могу поручить это дело своим людям?";
+			link.l1 = "Понятно. И сколько у меня есть времени?";
 			link.l1.go = "CapComission2_2_3";
 		break;
 		
 		case "CapComission2_2_3":
-			dialog.text = "12-15 days not more, I suppose. I don't want them to get to the stash, there is no meaning to sink them with a valuable cargo. At least, they could it get here...";
-			link.l1 = "Fine, I am in. I'll try to catch them.";
+			dialog.text = "Думаю, дней 12-15, не больше. Мне важно, чтоб они не успели добраться до тайника, иначе топить их с ценным грузом на борту не будет смысла. Уж лучше пусть везут его сюда.";
+			link.l1 = "Хорошо, я берусь за это дело. Постараюсь успеть.";
 			link.l1.go = "CapComission2_2_4";
 		break;
 		
@@ -328,14 +328,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "CapComission2_3":
-			dialog.text = "Don't worry. My men will deliver him to your ship. And why do you care about him?";
-			link.l1 = "I don't. His relatives asked me to deliver him.";
+			dialog.text = "Не переживай. Мои люди доставят его к тебе на борт. А он тебе кто?";
+			link.l1 = "Никто. Я выполняю поручение его родственника.";
 			link.l1.go = "CapComission2_31";
 		break;
 		
 		case "CapComission2_31":
-			dialog.text = "Ah, that's fine. I was almost sorry for giving such a low price for your man. Ha-ha. Farewell.";
-			link.l1 = "See you.";
+			dialog.text = "А-а, это хорошо. А то я уж было расстроился, что продешевил, назначив такую низкую цену за твоего человека. Ха-ха-ха-ха... Ну, бывай.";
+			link.l1 = "Счастливо.";
 			link.l1.go = "CapComission2_32";
 		break;
 		
@@ -360,41 +360,41 @@ void ProcessDialogEvent()
 		break;
 		
 		case "CapComission3":
-			dialog.text = "So, , " + GetFullName(pchar) + ", did you sink my buddy?.. He-he-he...";
+			dialog.text = "Ну что, " + GetFullName(pchar) + ", пустил"+ GetSexPhrase("","а") +" на дно моего приятеля?.. хе-хе-хе...";
 			if(pchar.GenQuest.CaptainComission.PirateShips == "goaway")
 			{
-				link.l1 = "No. I failed to catch them. And I didn't meet them on return.";
+				link.l1 = "Нет. Я не успел"+ GetSexPhrase("","а") +" их догнать. И на обратном пути они мне не попадались.";
 				link.l1.go = "CapComission4";
 			}
 			if(pchar.GenQuest.CaptainComission.PirateShips == "died")	
 			{
-				link.l1 = "I have sunk them as you have told me.";
+				link.l1 = "Да, как и договаривались - отправил"+ GetSexPhrase("","а") +" кормить акул.";
 				link.l1.go = "CapComission5";
 			}
 			DeleteAttribute(pchar,"GenQuest.CaptainComission.PirateShips");
 		break;
 		
 		case "CapComission4":
-			dialog.text = "Damn! It doesn't matter now, right?.. And what will be your next suggest?";
-			link.l1 = "Maybe you have got an easer job for me?";
+			dialog.text = "Чёрт! Попадались - не попадались, какая теперь разница?.. Ну, и что ты предложишь дальше?";
+			link.l1 = "Может, у тебя есть какое-нибудь поручение попроще?";
 			link.l1.go = "CapComission4_1";
-			link.l2 = "Listen, "+ NPChar.name +", bring down the price for the prisoner...";
+			link.l2 = "Слушай, "+ NPChar.name +", уступи мне этого пленника подешевле...";
 			link.l2.go = "CapComission4_2";
 		break;
 		
 		case "CapComission4_1":
-			dialog.text = "No.";
-			link.l1 = "..Farewell then...";
+			dialog.text = "Нет.";
+			link.l1 = "...Ну, тогда счастливо оставаться...";
 			link.l1.go = "CapComission4_3";
 		break;
 		
 		case "CapComission4_2":
-			dialog.text = "Bring down the price? I have just lost my stash because of your sluggishness! And now I can rise up the price! You can take him for 200000 pesos if you want.";
-			link.l1 = "It's way too expensive... Farewell...";
+			dialog.text = "Подешевле?!! Только что из-за твоей нерасторопности я лишился своего тайника! И теперь я могу уступить его подороже! Забирай за 200000, если хочешь.";
+			link.l1 = "Дорого это... Прощай...";
 			link.l1.go = "CapComission4_4";
 			if(sti(pchar.money) >= 200000)
 			{
-				link.l2 = "Damn, take your coins.";
+				link.l2 = "А чёрт, держи свои деньги.";
 				link.l2.go = "CapComission4_5";
 			}	
 		break;
@@ -422,8 +422,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "CapComission4_5":
-			dialog.text = "You can take this weakling...";
-			link.l1 = "Farewell.";
+			dialog.text = "Можешь забрать заморыша...";
+			link.l1 = "Счастливо оставаться.";
 			link.l1.go = "CapComission4_6";
 		break;
 		
@@ -440,8 +440,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "CapComission5":
-			dialog.text = "Ho-ho! Well done! Take your weakling and good luck.";
-			link.l1 = "Thanks. Farewell.";
+			dialog.text = "Хо-хо! Вот это работа! Забирай своего заморыша и бывай здоров"+ GetSexPhrase("","а") +".";
+			link.l1 = "Спасибо. Счастливо оставаться.";
 			link.l1.go = "CapComission5_1";
 		break;
 		
@@ -456,34 +456,34 @@ void ProcessDialogEvent()
 		break;
 		
 		case "CapComission6":
-			dialog.text = "Do you have a ransom? I wasn't kidding about selling the man to planters.";			
-			link.l1 = "Listen, "+ NPChar.name +", there is a problem... I don't have that much money. But I am ready to work.";
+			dialog.text = "Ты выкуп привез"+ GetSexPhrase("","ла") +"? Ведь я не шутил, когда сказал, что продам его плантаторам.";			
+			link.l1 = "Слушай, "+ NPChar.name +", тут такое дело... В общем, у меня нет таких денег. Но я готов"+ GetSexPhrase("","а") +" отработать.";
 			link.l1.go = "CapComission2_2";
 			if(makeint(pchar.money) > 150000)
 			{
-				link.l2 = "It's good that you haven't sold him. Here are your coins - 150000 pesos. Where can I get him?"
+				link.l2 = "Хорошо, что не продал. Вот деньги - 150000 песо. Где я могу его забрать?"
 				link.l2.go = "CapComission2_3";
 			}			
 		break;
 
 		// ============== Грабеж среди бела дня, попытка залезть в сундуки =========================
 		case "Man_FackYou":
-			dialog.text = LinkRandPhrase("Robbery!!! That is unacceptable! Prepare yourself, "+ GetSexPhrase("pal","girl") +"...", "Thought that you could rob me? You are done...", "Wait, what the hell? Turns out that you are a thief! End of the line, good man...");
-			link.l1 = LinkRandPhrase("Damn!", "Carramba!!", "Damn it!!");
+			dialog.text = LinkRandPhrase("Грабеж среди бела дня!!! Это что же такое делается?! Ну, погоди, "+ GetSexPhrase("приятель","подруга") +"...", "Эй, ты чего это там копаешься?! Никак, вздумал"+ GetSexPhrase("","а") +" ограбить меня? Ну, тогда тебе конец...", "Постой, ты куда это полез"+ GetSexPhrase("","ла") +"? Да ты вор"+ GetSexPhrase("","овка") +", оказывается! Ну, считай, что ты приплыл"+ GetSexPhrase("","а") +", родн"+ GetSexPhrase("ой","ая") +"...");
+			link.l1 = LinkRandPhrase("Дьявол!!", "Каррамба!!", "А-ать, черт!");
 			link.l1.go = "PL_Q3_fight";
 		break;
 					
 		// ======================== блок нод angry ===============>>>>>>>>>>>>>>>
 		case "AngryRepeat_1":
-            dialog.text = RandPhraseSimple(""+ GetSexPhrase("Get away ","Get away") +" from here!", "Get out of my home!");
-			link.l1 = "Oups...";
+            dialog.text = RandPhraseSimple(""+ GetSexPhrase("Пошел вон","Убирайся") +" отсюда!", "Вон из моего дома!");
+			link.l1 = "Ай...";
 		    link.l1.go = "AngryExitAgainWithOut";
             if (CheckAttribute(npchar, "angry.terms")) //примиряемся через 10 дней.
             {
                 if (GetNpcQuestPastDayParam(npchar, "angry.terms") > sti(npchar.angry.terms))
                 {
-         			dialog.text = "Don't bother me with your cheap promises. Next time you might won't like the result...";
-        			link.l1 = "I got it.";
+         			dialog.text = "Тебе не стоит отвлекать меня от дела пустыми обращениями. Впредь результат может быть более плачевным...";
+        			link.l1 = "Я понял"+ GetSexPhrase("","а") +".";
         			link.l1.go = NextDiag.TempNode;
         			CharacterDelAngry(npchar);
                 }
@@ -491,15 +491,15 @@ void ProcessDialogEvent()
     	break;
 		
 		case "AngryRepeat_2":
-            dialog.text = "It's over, no talking.";
-			link.l1 = RandPhraseSimple("I hope that you will show more respect to me as well and will stop barking?", "You can be sure, Jaques, I won't.");
+            dialog.text = RandPhraseSimple("Ты меня изрядно утомил"+ GetSexPhrase("","а") +", никакого общения.", "Я не хочу с тобой общаться, так что тебе лучше меня не беспокоить.");
+			link.l1 = RandPhraseSimple("Ну как знаешь...", "Хм, ну что же...");
 		    link.l1.go = "AngryExitAgain";
             if (CheckAttribute(npchar, "angry.terms")) //примиряемся через 10 дней.
             {
                 if (GetNpcQuestPastDayParam(npchar, "angry.terms") > sti(npchar.angry.terms))
                 {
-         			dialog.text = "I hope that you will show more respect to me as well and will stop barking?";
-        			link.l1 = "You can be sure, Pastor, I won't.";
+         			dialog.text = "Надеюсь, впредь ты не будешь утомлять меня пустыми разговорами, иначе мне придется тебя убить. Признаюсь, мне это будет очень неприятно.";
+        			link.l1 = "Пастор, ты можешь быть уверен - не буду...";
         			link.l1.go = NextDiag.TempNode;
         			CharacterDelAngry(npchar);
                 }
@@ -518,13 +518,13 @@ void ProcessDialogEvent()
 		break;
 		// <<<<<<<<<<<<============= блок нод angry =============================
 		case "pirate_town":
-            dialog.text = "Solve the problem? Do you have any clue what you have done? Anyway, bring me a million pesos and I will persuade lads to forget your deed. If don't like the idea then you may go to hell.";
+            dialog.text = "Решить проблему? Да ты сам понимаешь, чего ты наворотил? В общем, принесешь мне миллион песо - я уговорю ребят, чтобы они забыли твои 'подвиги'. Нет - можешь катиться на все четыре стороны.";
 			if (sti(Pchar.money) >= 1000000)
 			{
-				link.l1 = "Fine, I am ready to pay.";
+				link.l1 = "Хорошо, я готов заплатить.";
 				link.l1.go = "pirate_town_pay";
 			}
-			link.l2 = "Got it. I am leaving.";
+			link.l2 = "Я всё понял. Ухожу.";
 			link.l2.go = "pirate_town_exit";
 		break;
 		
@@ -537,8 +537,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "pirate_town_pay":
-            dialog.text = "Good! Consider yourself clean again. But I hope that you will not do such disgusting things again.";
-			link.l1 = "I won't. Way too expensive for me. Farewell...";
+            dialog.text = "Вот и славно! Считай, что свою репутацию ты восстановил. Но впредь, я надеюсь, ты больше не будешь делать таких мерзостей.";
+			link.l1 = "Не буду. Уж очень дорого они обходятся. Прощай...";
 			link.l1.go = "exit";
 			AddMoneyToCharacter(pchar, -1000000);
 			pchar.GenQuest.Piratekill = 0;

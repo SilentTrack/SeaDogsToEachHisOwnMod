@@ -4,118 +4,118 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me that question not long ago...", "Yup, let me guess... Once again going around in circles?",
-                          "Listen, I do the finances here, I don't answer questions...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
-                      "You've guessed it, I'm sorry...", "I understand...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно?"), "Совсем недавно вы пытались задать мне вопрос...", "М-да, позвольте угадаю... Опять ничего существенного?",
+                          "Послушайте, я финансами оперирую, а не на вопросы отвечаю...", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Вы угадали, простите...", "Я понимаю...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			// Addon-2016 Jason ФМК-Гваделупа
 			if (CheckAttribute(pchar, "questTemp.FMQG") && pchar.questTemp.FMQG == "continue")
             {
-                link.l1 = "I am captain "+GetFullName(pchar)+".. Your man told me you want to see me. I am all ears.";
+                link.l1 = "Я - капитан "+GetFullName(pchar)+". Ваш человек встретил меня в порту и сообщил, что вы желаете меня видеть. Слушаю вас внимательно.";
                 link.l1.go = "FMQG";
             }
 			if (CheckAttribute(pchar, "questTemp.FMQG") && pchar.questTemp.FMQG == "sucsess")
             {
-                link.l1 = "Me again, monseniour "+GetFullName(pchar)+". I brought you Bertrand Pinette. He is in my cargo hold.";
+                link.l1 = "Это снова я, месье "+GetFullName(npchar)+". Я привез Бертрана Пинетта. Он у меня в трюме.";
                 link.l1.go = "FMQG_14";
             }
 			if (CheckAttribute(pchar, "questTemp.FMQG") && pchar.questTemp.FMQG == "letter")
             {
-                link.l1 = "Me again, monseniour "+GetFullName(pchar)+". Let's have a talk.";
+                link.l1 = "Это снова я, месье "+GetFullName(npchar)+". Давайте поговорим.";
                 link.l1.go = "FMQG_17";
             }
 			if (CheckAttribute(pchar, "questTemp.FMQG") && pchar.questTemp.FMQG == "killers")
             {
-                link.l1 = "Me again, monseniour "+GetFullName(pchar)+". Let's have a talk.";
+                link.l1 = "Это снова я, месье "+GetFullName(npchar)+". Давайте поговорим.";
                 link.l1.go = "FMQG_17";
             }
 			if (CheckAttribute(pchar, "questTemp.FMQG.Letter"))
             {
-                link.l1 = "Me again, monseniour "+GetFullName(pchar)+". I assume you didn't expect to see me again.";
+                link.l1 = "Это снова я, месье "+GetFullName(npchar)+". Вы, видимо, уже и не ждали меня увидеть.";
                 link.l1.go = "FMQG_23";
             }
 		break;
 		
 		// Addon-2016 Jason ФМК-Гваделупа
 		case "FMQG":
-			dialog.text = "A-ah, captain "+GetFullName(pchar)+"! Pleasure to meet you. I've been waiting for you for quite a while... Good. I have a question to ask. Some time ago, a man called Bertrand Pinette approached you in the port in order to get onboard of your vessel. Wealthy looking fellow in a wig. Does it ring a bell?";
-			link.l1 = "Yes, it does. He really did approached me with a very exact purpose.";
+			dialog.text = "А-а, капитан "+GetFullName(pchar)+"! Очень рад вас видеть. Совсем заждался, уже и отчаиваться начал... Хорошо. У меня к вам такое дело: некоторое время назад к вам в порту подходил человек по имени Бертран Пинетт с целью подняться на борт вашего судна. Такой состоятельный на вид господин, в роскошном парике. Ведь я прав?";
+			link.l1 = "Да, припоминаю такого господина. Он действительно обращался ко мне с целью нанять мое судно.";
 			link.l1.go = "FMQG_1";
 		break;
 		
 		case "FMQG_1":
-			Log_Info("You have received a heavy purse");
+			Log_Info("Вы получили тяжелый кошель");
 			PlaySound("interface\important_item.wav");
 			GiveItem2Character(pchar, "purse3");
-			dialog.text = "His purpose was to hire you and your ship? Captain, you'd do me a great favor by telling me all details about this case. I'll make it worth you while. Here, take this purse filled with coin. It's yours, now please tell me about Bertrand Pinette.";
-			link.l1 = "Very well. Monsieur Pinette hired my vessel to deliver him and two of his friends from Guadeloupe to the Spanish Maine. More specifically, Mosquitoes Bay of Portobello. I did the job, they left my ship and walked to the jungles.";
+			dialog.text = "Нанять ваше судно? Капитан, вы меня очень обяжете, если сообщите мне подробности этого дела. В долгу я не останусь. Вот - этот туго набитый золотом кошель теперь ваш. Держите и поведайте мне все, что касается Бертрана Пинетта.";
+			link.l1 = "Хорошо. Месье Пинетт зафрахтовал мое судно для того, чтобы я доставил его и двух его друзей с Гваделупы на испанский Мэйн, а именно - в залив Москитос, что у Порто-Белло. Я выполнил его заказ и перевез Бертрана и его товарищей в указанное место, где они покинули мой корабль и ушли в джунгли.";
 			link.l1.go = "FMQG_2";
 		break;
 		
 		case "FMQG_2":
-			dialog.text = "I see. And did monsieur Pinette mention his final destination? And what about his companions?";
-			link.l1 = "According to the man's own words, they were heading to Panama. His friends were quite intriguing: two officers, a Spanish and a French. I wasn't paid to ask questions.";
+			dialog.text = "Ясно. А месье Пинетт не говорил, куда он дальше намерен отправиться? И что за спутники были у него?";
+			link.l1 = "По словам месье Пинетта, они собирались в Панаму. А друзья у него были достаточно интересные: два офицера - один испанец, второй - француз. Уж не знаю, что их связывало, но мне платили не за то, чтобы я задавал им вопросы.";
 			link.l1.go = "FMQG_3";
 		break;
 		
 		case "FMQG_3":
-			dialog.text = "A Spanish officer? And a French officer? Oh! Isn't that something! Nice one, monsieur Pinette! What a sly dog! And the money! Panama, you said?";
-			link.l1 = "Yeah, and I already told you everything I know. May I take my leave?";
+			dialog.text = "Испанский офицер? И французский? О! Вот это да! Ай да месье Пинетт! Такого прохиндея еще поискать надо! Еще и тут денежек ухватил, и наверняка немало! В Панаму, говорите...";
+			link.l1 = "Да. Это все, что я знаю о Бертране Пинетте. Что-нибудь еще, месье, или я могу откланяться?";
 			link.l1.go = "FMQG_4";
 		break;
 		
 		case "FMQG_4":
-			dialog.text = "Wait, captain. I have a business proposal for you. Do you mind making some coins? But, first, let me tell you something about your passengers.";
-			link.l1 = "Well, let's hear it.";
+			dialog.text = "Постойте, капитан. У меня к вам будет деловое предложение. Вы же не против заработать немного денег? Но сначала позвольте мне вкратце объяснить вам ситуацию относительно месье Пинетта. Это касается дела, которое я хочу вам поручить.";
+			link.l1 = "Ну, давайте послушаем.";
 			link.l1.go = "FMQG_5";
 		break;
 		
 		case "FMQG_5":
-			dialog.text = "Monsieur Bertrand Pinette showed up in our colony two years ago and immediately started doing business with captains. Business, get it? They were delivering him goods of great shortage in here, valuables, slaves... He was systematically taking up loans for his illegal operations in my office, but always paid back with all the interest\nBefore leaving the island with your good help, he took up a great loan, much greater than usual. He is... was a trusted client with an impeccable credit history, that's why I had provided him with a loan. Big mistake. Monsieur Pinette is a runway now and obviously he is not going to pay my coins back.";
-			link.l1 = "How big is the sum, if I may?";
+			dialog.text = "Месье Бертран Пинетт появился в нашей колонии года два назад, и весьма успешно занялся бизнесом с капитанами кораблей. Проще говоря - он обтяпывал самые разные дела и... делишки. Ему привозили товар, который был в дефиците в нашей колонии, для продажи, он договаривался о перевозках и доставках ценных вещей, не гнушался и работорговлей, как я слышал. Он систематически брал у меня в банке кредиты для своих махинаций, но всегда расплачивался точно, в срок и с процентами\nИ вот, незадолго до своего исчезновения с вашей помощью, он взял у меня очередной кредит для... одной операции. Причем этот кредит превышал любой из тех, что я выдавал ему ранее. Но поскольку клиент старый, с безупречной кредитной историей, то я и поверил ему. Как оказалось - зря. Месье Пинетт сбежал, и возвращать займ, очевидно, не собирается.";
+			link.l1 = "И как велика сумма, которую он вам должен, позвольте поинтересоваться?";
 			link.l1.go = "FMQG_6";
 		break;
 		
 		case "FMQG_6":
-			dialog.text = "It's big. Around one hundred and fifty thousand pesos in doubloons. Ten chests, each with one hundred fifty pieces. And not to mention all the interest.";
-			link.l1 = "Hm... He'd been paying' you for two years, made you get used to it, took up a substantial loan and then went rogue. Smart.";
+			dialog.text = "Велика. Примерно сто пятьдесят тысяч песо, не считая процентов. Кредит был выдан в золотых дублонах, десять сундуков по сто пятьдесят штук.";
+			link.l1 = "Кхм... Два года примерно расплачивался по счетам, приучил вас, а потом взял огромную сумму и скрылся.";
 			link.l1.go = "FMQG_7";
 		break;
 		
 		case "FMQG_7":
-			dialog.text = "Precisely, captain. That is why I'd like to hire you for a job: find the scum and bring him here. Me, the governor and the commandant will find a way to make him to wipe away his debt. You've seen the man, he was your passenger, that means you have better chances to find monsieur Pinette than anyone else. Sure, I'll also hire a professional bounty hunter for his sorry ass, but I have a feeling that your help will turn more effective.";
-			link.l1 = "What about a reward?";
+			dialog.text = "Именно так, капитан. Поэтому я бы хотел поручить вам работу: отыскать этого негодяя и привезти ко мне в Бас-Тер. А тут уж мы с губернатором и комендантом подумаем, как заставить его раскошелиться. Вы видели его в лицо, вы его отвозили - у вас больше шансов найти месье Пинетта, чем у кого-либо еще. Я, конечно, направлю по его следу профессионального охотника за головами, но мне кажется, что ваша помощь может оказаться эффективнее.";
+			link.l1 = "И что насчет награды?";
 			link.l1.go = "FMQG_8";
 		break;
 		
 		case "FMQG_8":
-			dialog.text = "For doing the job, I'll give you a chest full of doubloons, one hundred and fifty pieces.";
-			link.l1 = "I say this would be quite a pathetic reward for kidnapping a living soul in the Spanish town.";
+			dialog.text = "Я дам вам за успешную работу сундучок с дублонами, сто пятьдесят штук.";
+			link.l1 = "Мне кажется, что за поиски и, по сути, похищение человека, да еще в испанском городе, награда как-то невелика.";
 			link.l1.go = "FMQG_9";
 		break;
 		
 		case "FMQG_9":
-			dialog.text = "Captain, I assume that monsieur Pinette had paid you well with my money since you evaluate my proposal so cheap. I assure you that it's worth the effort. Of course, you have every right to refuse... but I have something to tell you and it will surely make you change your mind.";
-			link.l1 = "Which is?";
+			dialog.text = "Капитан, я полагаю, что месье Пинетт не скупился с оплатой... моими деньгами, раз вы так низко цените предложенную награду. Я смею вас уверить, что это вознаграждение достойное. Вы, безусловно, вправе отказаться, но... я хочу сообщить вам еще кое-что, и вы наверняка измените свое мнение.";
+			link.l1 = "И что же это может быть?";
 			link.l1.go = "FMQG_10";
 		break;
 		
 		case "FMQG_10":
-			dialog.text = "A few days prior the Pinette's escape from Guadeloupe, a man run away from the prison of Basse-Terre. His name is don Carlos de Milyar, a Spanish grandee and an officer. He made it thanks to a treason of a French officer, a lieutenant of the Marines... Do you follow?";
-			link.l1 = "Hm... And that concerns me how? I was just doing a passenger job...";
+			dialog.text = "За пару дней до того, как Пинетт сбежал с Гваделупы, из казематов форта Бас-Тер сбежал военнопленный, испанский гранд, офицер, дон Карлос де Мильяр. Этот побег стал возможен благодаря предательству французского офицера, лейтенанта морской пехоты... Капитан, а теперь сопоставьте события и пораскиньте мозгами: кто уплыл на вашем корабле из Гваделупы вместе с месье Бертраном Пинеттом?";
+			link.l1 = "Гм... А какое я имею к этому делу отношение? Я просто отвез пассажиров по найму...";
 			link.l1.go = "FMQG_11";
 		break;
 		
 		case "FMQG_11":
-			dialog.text = "Sure, you were! Personally, I have no doubt that you have nothing to do with organizing the escape of don de Milyar. But that is not how our governor along with our commandant might think of it. A charge of complicity if you are lucky and if you are not... I don't want to continue really. See for yourself, you took a runaway Spanish officer onboard, most likely at some hidden cove... am I right, Captain?";
-			link.l1 = "I get it. You are blackmailing me. I made a mistake coming here...";
+			dialog.text = "Да, конечно! Лично у меня нет сомнений в том, что вы не принимали участие в организации побега дона де Мильяра. Но ведь наш губернатор, и комендант, и командующий гарнизоном вполне могут рассудить иначе. Тут как минимум - соучастие, а как максимум... боюсь подумать. Сами посудите - вы взяли на борт испанца, наверняка в какой-то потайной бухте, вывезли его с острова... я прав, капитан?";
+			link.l1 = "Мне все понятно. Вы меня шантажируете. Зря я к вам зашел...";
 			link.l1.go = "FMQG_12";
 		break;
 		
 		case "FMQG_12":
-			dialog.text = "I say, captain! I am not blackmailing you! All I ask is to help me out for a good coin. Would you be kindly to find monsieur Pinette and to deliver him to Basse-Terre? I will be waiting for your return. I believe that two months is enough to sail to Panama and back.";
-			link.l1 = "You leave me no choice. Though I doubt that such business approach will do any good for making us friends. Farewell, monsieur.";
+			dialog.text = "Что вы, капитан! Какой шантаж! Я всего лишь прошу вас помочь мне, и предлагаю хорошую оплату за эту помощь. Будьте так любезны - отыщите месье Пинетта и привезите в Бас-Тер. Я буду ждать. Думаю, двух месяцев вам вполне будет достаточно для путешествия к Панаме и назад.";
+			link.l1 = "Вы не оставили мне выбора. Однако я не думаю, что такой способ ведения дел послужит установлению между нами дружеских отношений. До свидания, месье.";
 			link.l1.go = "FMQG_13";
 		break;
 		
@@ -131,19 +131,19 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "FMQG_14":
-			dialog.text = "Excellent news, captain! I will send my men to pick up the cargo from your ship at once. This birdie isn't going to fly away from me this time... You deserved your reward - take this chest. Please don't feel angry about me, here is an amulet for you. It's a gift.";
-			link.l1 = "Gratitude. I assume that your silence is also a part of my reward?";
+			dialog.text = "Прекрасные новости, капитан "+GetFullName(pchar)+"! Я сейчас же отправлю своих подручных на ваш корабль. Теперь эта птичка от меня никуда не улетит... Ну, а вы заслужили свое вознаграждение - получите. Вот ваш сундук. И еще, чтобы вы поменьше на меня обижались, небольшой подарок - амулет.";
+			link.l1 = "Благодарю. Полагаю, ваше молчание об этой истории также входит в вознаграждение?";
 			link.l1.go = "FMQG_15";
 		break;
 		
 		case "FMQG_15":
-			Log_Info("You have received a chest full of doubloons");
-			Log_Info("You have received a 'Fisherman' amulet");
+			Log_Info("Вы получили сундучок с дублонами");
+			Log_Info("Вы получили амулет 'Рыбак'");
 			PlaySound("interface\important_item.wav");
 			GiveItem2Character(pchar, "chest");
 			GiveItem2Character(pchar, "obereg_7");
-			dialog.text = "Silence? About what? I'd be glad to see you among my clients. You know what they say about silence and gold?";
-			link.l1 = "It worth much more than gold sometimes, monsieur. Lesson learnt. Farewell!";
+			dialog.text = "О какой истории, капитан? Я что-то не припоминаю никакой истории, связанной с вами. Буду рад видеть вас среди моих клиентов. Ну а молчание... вы же знаете - оно как золото.";
+			link.l1 = "Иногда даже дороже золота, месье. Я ваш урок усвоил прочно. Всего доброго!";
 			link.l1.go = "FMQG_16";
 		break;
 		
@@ -165,35 +165,35 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "FMQG_17":
-			dialog.text = "I am listening. Bertrand Pinette is on your ship, I assume?";
-			link.l1 = "No. Though I have something much better for you. Read this.";
+			dialog.text = "Давайте. Бертран Пинетт, полагаю, у вас на корабле?";
+			link.l1 = "Нет. Зато у меня есть кое-что другое для вас. Возьмите и прочтите это.";
 			link.l1.go = "FMQG_18";
 		break;
 		
 		case "FMQG_18":
 			RemoveItems(pchar, "letter_baker", 1);
-			dialog.text = "What is this?";
-			link.l1 = "Keep reading, monsieur. We shall continue later.";
+			dialog.text = "Что это?";
+			link.l1 = "Читайте, читайте, месье. Потом продолжим.";
 			link.l1.go = "FMQG_19";
 		break;
 		
 		case "FMQG_19":
 			LAi_Fade("", "");
-			dialog.text = "(reading) Hm... What manner of nonsense is this?";
-			link.l1 = "Are you serious? Fine, I'll take this 'nonsense' to the governor. I believe that he will show a great interest in learning the truth about the disappearance of the Courage and her diamonds. Why so pale?";
+			dialog.text = "(читает) Кхм... Что это за бред лихорадочного больного?";
+			link.l1 = "Вы серьезно? Ну ладно, я отнесу этот 'бред' месье Клоду Франсуа де Лиону. Думаю, ему будет крайне интересно узнать, кто есть истинный организатор исчезновения судна 'Куражю' и партии алмазов. Что вы так побледнели?";
 			if (CheckAttribute(pchar, "questTemp.FMQG.Letter")) link.l1.go = "FMQG_24";
 			else link.l1.go = "FMQG_20";
 		break;
 		
 		case "FMQG_20":
-			dialog.text = "So, you did find Pinette after all...";
-			link.l1 = "Yes. So I propose a deal to you. Forget about Carlos de Milyar, Jean Deno and other good gentlemen, do that and I will forget about this letter.";
+			dialog.text = "Значит, вы все-таки нашли Пинетта...";
+			link.l1 = "Да. Так что я предлагаю вам сделку: вы забываете про Карлоса де Мильяра, Жана Дено и прочих лиц, а я забываю про содержимое этого письма.";
 			link.l1.go = "FMQG_21";
 		break;
 		
 		case "FMQG_21":
-			dialog.text = "Very well, captain... I agree to your terms.";
-			link.l1 = "Lovely. I hope you are not angry with me, we are even now, I believe. Farewell.";
+			dialog.text = "Хорошо, капитан... я согласен.";
+			link.l1 = "Вот и славно. Надеюсь, вы не держите на меня зла - мне кажется, что мы в расчете. Всего доброго.";
 			link.l1.go = "FMQG_22";
 		break;
 		
@@ -222,23 +222,25 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "FMQG_23":
-			dialog.text = "Ha... You are right, captain.";
-			link.l1 = "I have something for you. Take this and read.";
+			dialog.text = "Кхе-кхе... Вы правы, капитан...";
+			link.l1 = "У меня для вас кое-что припасено. Возьмите и прочтите это.";
 			link.l1.go = "FMQG_18";
 		break;
 		
 		case "FMQG_24":
-			dialog.text = "So, you did find Pinette after all...";
-			link.l1 = "Yes. So I propose a deal to you. Restore my good name within French colonies and I will forget about this letter.";
+			dialog.text = "Значит, вы все-таки нашли Пинетта...";
+			link.l1 = "Да. Так что я предлагаю вам сделку: вы восстанавливаете мое доброе имя перед французскими властями, и немедленно, а я забываю про содержимое этого письма.";
 			link.l1.go = "FMQG_25";
 		break;
 		
 		case "FMQG_25":
-			dialog.text = "But...";
-			link.l1 = "I don't give a damn about how you do it. If the hunt after my head won't end tomorrow, the governor will learn about everything.";
+			dialog.text = "Но...";
+			link.l1 = "Меня не волнует, как вы это сделате. Если завтра же преследования не прекратятся, я изыщу способ уведомить месье Клода Франсуа де Лиона о том, о чем вы сейчас только что прочли.";
 			link.l1.go = "FMQG_21";
 		break;
 	}
 	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
 }
+
+
 

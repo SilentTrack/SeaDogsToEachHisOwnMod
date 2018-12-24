@@ -13,21 +13,21 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "What do you need on Rivados' territories, white man?";
-			link.l1 = "Just getting to know the local people. Sorry if I had bothered you.";
+			dialog.text = "Что тебе нужно на территории ривадос, белый человек?";
+			link.l1 = "Я просто знакомлюсь с людьми. Извини, если помешал.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "Friend":
-			dialog.text = "I am glad to greet a friend of Rivados and a good man also! Chimiset told me what you have done for him. All Rivados, including me, are in your debt now. Allow me to introduce myself - Edward Black, also known as Black Eddie, head of Rivados clan.";
-			link.l1 = ""+GetFullName(pchar)+". Though I think that Chimiset has already told you about me. He promised to...";
+			dialog.text = "Рад приветствовать друга ривадос и просто хорошего человека! Чимисет рассказал о том, что ты для него сделал. Все ривадос, в том числе и я, в неоплатном долгу перед тобой. Разреши представиться: Эдвард Блэк, он же Черный Эдди, глава клана ривадос.";
+			link.l1 = ""+GetFullName(pchar)+". Хотя, думаю, Чимисет уже называл мое имя. Он обещал подробно рассказать обо мне...";
 			link.l1.go = "Friend_1";
 		break;
 		
 		case "Friend_1":
-			dialog.text = "And he has. Now you can visit our ships freely. Guards won't stop you and we will always be glad to see you. Be careful with Narwhals, they must have already found out that you saved Chimiset, and they won't like it, since we are enemies.";
-			link.l1 = "I will consider that. Thanks for the warm welcome, Eddie! Now please allow me to talk with Chimiset.";
+			dialog.text = "И он это сделал. Теперь ты можешь свободно посещать все корабли ривадос без каких-либо ограничений. Охрана не будет препятствовать, и мы будем рады видеть тебя в гостях. Но будь острожен с нарвалами: они уже наверняка знают, что это именно ты спас Чимисета, и им это весьма не понравится, потому как они наши враги.";
+			link.l1 = "Учту. Спасибо за теплый прием, Эдди! А теперь позволь мне поговорить с Чимисетом.";
 			link.l1.go = "Friend_2";
 		break;
 		
@@ -35,47 +35,47 @@ void ProcessDialogEvent()
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocator(npchar, "goto", "goto1", "LSC_EddyStay", -1);
-			AddSimpleRumourCityTip("They say that you are a close friend of Black Eddie, the head of Rivados. And how did you do this?", "LostShipsCity", 10, 1, "LSC", "");
-			AddSimpleRumourCityTip("Rivados claim you are their friend. Is that so, mister?", "LostShipsCity", 10, 1, "LSC", "");
-			AddSimpleRumourCityTip("They say that Narwhals don't like you due to your close relations with Rivados. Is that troubling you?", "LostShipsCity", 10, 1, "LSC", "");
+			AddSimpleRumourCityTip("Говорят, что вы дружны с самим Черным Эдди, главой ривадос. И как это вы умудрились?", "LostShipsCity", 10, 1, "LSC", "");
+			AddSimpleRumourCityTip("Ривадос утверждают, что вы их друг. Это так, сударь?", "LostShipsCity", 10, 1, "LSC", "");
+			AddSimpleRumourCityTip("Говорят, нарвалы косо посматривают на вас из-за ваших тесных взаимоотношений с ривадос. Вас это не беспокоит?", "LostShipsCity", 10, 1, "LSC", "");
 		break;
 		
 		// --> информационный блок
 		case "Total_info": // стал другом
 			if (pchar.questTemp.LSC == "return" && !CheckAttribute(npchar, "quest.return_isl"))
 			{
-				dialog.text = "White brother? Alive? I am glad! So, Narwhals lied when they told everyone that you had drowned...";
-				link.l1 = "I am also glad to see you, Eddie. And Narwhals were a bit wrong, I didn't plan to get drowned at all.";
+				dialog.text = "Белый брат? Ты жив? Я очень рад этому! Значит, нарвалы солгали, говоря всем, что ты утонул...";
+				link.l1 = "Я тоже рад тебя видеть, Эдди. А нарвалы слегка преувеличили - я тонуть и не собирался.";
 				link.l1.go = "exit";
 				npchar.quest.return_isl = "true";
 				break;
 			}
-			dialog.text = "Glad to see you, "+pchar.name+"? Any news?";
+			dialog.text = "Рад тебя видеть, "+pchar.name+"? Какие новости?";
 			if (!CheckAttribute(npchar, "quest.natan"))
 			{
-				link.l1 = "Eddie, do you know a man by the name of Nathaniel Hawk? He must be here, as far as I know.";
+				link.l1 = "Эдди, ты не знаешь, есть ли на острове такой человек - Натаниэль Хоук? По моим сведениям, он должен быть тут.";
 				link.l1.go = "natan";
 			}
 			if (!CheckAttribute(npchar, "quest.rivados"))
 			{
-				link.l2 = "Tell me more about Rivados clan.";
+				link.l2 = "Расскажи мне подробнее о клане ривадос.";
 				link.l2.go = "rivados";
 			}
-			link.l9 = "Nothing special, really. Just wanted to greet you.";
+			link.l9 = "Да никаких особых новостей нет. просто зашел тебя поприветствовать.";
 			link.l9.go = "exit";
 		break;
 		
 		case "natan":
-			dialog.text = "Nathaniel Hawk? No, I don't know the man. He is neither on the Rivados ships, nor within neutral territories. I can't say the same about Narwhal clan, we don't visit them.";
-			link.l1 = "I see...";
+			dialog.text = "Натаниэль Хоук? Нет, такого я не знаю. Ни на кораблях ривадос, ни в нейтральной зоне его нет и никогда не было. Только если у нарвалов, но тут я сказать ничего не могу, поскольку на их территорию мы не заходим.";
+			link.l1 = "Понятно...";
 			link.l1.go = "exit";
 			npchar.quest.natan = "true";
 			NextDiag.TempNode = "Total_info";
 		break;
 		
 		case "rivados":
-			dialog.text = "Rivados clan was founded years ago and it was the very first clan of the Island. More than a fifty years ago, admiral Betancourt's expedition sailed across the Caribbean sea on a several large ships. Holds of the Tartarus were filled with hundreds of black slaves, captured back at Africa, their homeland. There was a man named Pedro Rivados\nHe managed to free a few dozens from their shackles and raised a mutiny. Alas, the rest of slaves failed to join him and his crew. A riot was finished. Spanish dealt with Rivados in the most cruel manner - they tied him and left him to die from hunger and thirst. The weather went bad that evening and Betancourt's squadron was captured by a whole gale.\nDays later, the San Augustine and the Tartarus, the only two ships stayed intact, were stuck in the middle of the Island. A lot of black and white men have died during those events, but much more managed to survive. Ex slaves have started a new life together and called themselves Rivados in honour of Pedro Rivados, the liberator.";
-			link.l1 = "A very interesting story... Thank you!";
+			dialog.text = "Клан ривадос появился очень давно, и был первым кланом на Острове. Более полувека назад экспедиция адмирала де Бетанкура пересекала море, именуемое Карибским, на нескольких больших кораблях. Трюмы одного из них, 'Тартаруса', были наполнены несколькими сотнями чернокожих невольников, захваченных на их родине в Африке, и обращенных в рабов. Среди них был один человек по имени Педро Ривадос\nОн сумел освободить от кандалов несколько десятков рабов и поднял восстание. К сожалению, остальные невольники не смогли в должном количестве примкнуть к его отряду, и бунт захлебнулся. Испанцы жестоко расправились с Ривадосом - привязали его в трюме к переборке и оставили умирать от жажды и голода. В тот же вечер погода испортилась, и эскадру захватил мощный шторм\nПосле нескольких дней борьбы со стихией, два уцелевших корабля - 'Сан-Августин' и 'Тартарус' сели на дно в центральной части Острова. Во время всей этой кутерьмы погибло много как белых, так и чернокожих, но еще больше осталось в живых. Бывшие невольники стали жить большой дружной семьей и назвали свой новый род 'ривадос', в честь казненного борца за свободу Педро Ривадоса.";
+			link.l1 = "Очень интересная история... Спасибо!";
 			link.l1.go = "exit";
 			npchar.quest.rivados = "true";
 			NextDiag.TempNode = "Total_info";
@@ -83,51 +83,51 @@ void ProcessDialogEvent()
 		// <-- информационный блок
 		
 		case "capper":
-			dialog.text = "What do you need on Rivados' territories, white man?";
-			link.l1 = "My name is "+GetFullName(pchar)+" and I am here by order of admiral Dodson. I must talk to Black Eddie. I take it that it is you.";
+			dialog.text = "Что нужно тебе, белый человек, на территории ривадос?";
+			link.l1 = "Меня зовут "+GetFullName(pchar)+", и я пришел с официальным визитом от адмирала Додсона. Мне нужно поговорить с Черным Эдди. Как я понимаю, это ты.";
 			link.l1.go = "capper_1";
 		break;
 		
 		case "capper_1":
-			dialog.text = "Yes, I am Edward Black also known as Black Eddie. Tell what does the admiral need from me.";
-			link.l1 = "There is a man on the Tartarus named Chimiset. Admiral is willing to free him.";
+			dialog.text = "Да, я Эдвард Блэк, или Черный Эдди. Говори, что адмиралу нужно от меня.";
+			link.l1 = "В тюрьме на 'Тартарусе' находится ваш человек по имени Чимисет. Адмирал хочет его освободить.";
 			link.l1.go = "capper_2";
 		break;
 		
 		case "capper_2":
-			dialog.text = "This is a very good news. Chimiset is our spiritual leader, and all Rivados miss him. But I understand that the admiral wants something in exchange for his freedom, right?";
-			link.l1 = "Nothing. He just wants to free him as a gesture of good will. But there is a problem...";
+			dialog.text = "Это очень хорошая новость. Чимисет - наш духовный лидер, все ривадос огорчены его пленением. Но как я понимаю, адмирал что-то хочет за его свободу?";
+			link.l1 = "Ничего. Он просто желает его освободить в качестве... жеста доброй воли. Однако с этим возникли непредвиденные трудности...";
 			link.l1.go = "capper_3";
 		break;
 		
 		case "capper_3":
-			dialog.text = "Go on, white man.";
-			link.l1 = "The ex boatswain of the admiral, the current jailer Chad Kapper joined Narwhals, turned rogue and now he is out of admiral's control. We know that Chad is planning to kill Chimiset. Admiral doesn't want it to happen. We offer you a combined operation in order to eliminate the traitor and to free your man.";
+			dialog.text = "Продолжай, белый человек.";
+			link.l1 = "Бывший боцман адмирала, а ныне - тюремщик Чад Каппер, перешел на сторону нарвалов и вышел из-под контроля адмирала. Мы узнали, что Чад готовит убийство Чимисета. Адмирал не желает этого допустить. Мы предлагаем вам провести совместную операцию по ликвидации предателя и освобождению вашего человека.";
 			link.l1.go = "capper_4";
 		break;
 		
 		case "capper_4":
-			dialog.text = "You words sound a bit odd, but go on. Is Chimiset in trouble?";
-			link.l1 = "Yes. Chad is planning to kill him. Kapper is going to use Narwhals in order to seize control of the Island. We have to act quickly if we want to save Chimiset, since Chad doesn't suspect anything for now. Admiral has taken all guards from the Tartarus, the passage is free. Here is the key which opens the door inside the prison. Take it.";
+			dialog.text = "Твои слова звучат странно, но продолжай. Чимисет в опасности?";
+			link.l1 = "Да. Чад собирается его убить. Каппер намерен при помощи нарвалов захватить власть на Острове. Чтобы спасти Чимисета, нужно немедленно действовать, пока Чад ничего не подозревает. Адмирал снял всю палубную охрану с 'Тартаруса' - вход на него свободен. Вот ключ, который открывает двери в тюрьму. Держи.";
 			link.l1.go = "capper_5";
 		break;
 		
 		case "capper_5":
 			RemoveItems(pchar, "key_capper", 1);
 			dialog.text = "";
-			link.l1 = "Gather your men, go to the Tartarus and free Chimiset. All aces are yours.";
+			link.l1 = "Собери своих бойцов, отправляйся на 'Тартарус' и освободи Чимисета. У тебя для этого есть все возможности.";
 			link.l1.go = "capper_6";
 		break;
 		
 		case "capper_6":
-			dialog.text = "It smells like a trap... And what if there is an ambush? What if admiral decided to strike Rivados down? Why won't he deal with Kapper himself?";
-			link.l1 = "Dodson said that you care about Chimiset's life... He did enough: there is a key and guards are off. You only need to get inside, deal with Chad and free your man. You have my word that there is no trap. Yeah, and one last thing: admiral wants Chad's head in exchange for Chimiset's life and freedom. Do we have an agreement?";
+			dialog.text = "Это похоже на ловушку... А если там ждет засада? Если адмирал решил таким способом нанести удар по ривадос? Почему он сам не ликвидирует Каппера?";
+			link.l1 = "Додсон считал, что жизнь Чимисета вам дорога... Со своей стороны он сделал достаточно - передал тебе ключ и снял охрану. Вам осталось только войти, расправиться с Чадом и освободить своего человека. Даю тебе честное слово, что никакого подвоха нет. Да, и еще: адмирал хочет в обмен на Чимисета получить голову Каппера. Мы поняли друг друга?";
 			link.l1.go = "capper_7";
 		break;
 		
 		case "capper_7":
-			dialog.text = "Chimiset's life is valued by Rivados beyond measure. We shall move to the Tartarus immediately. You will stay here as our hostage. And if there is an admiral's ambush - you will face the wraith of Rivados!\nZikomo! Stay near the door and watch our guest. Don't let him out. I will lead the attack on the Tartarus!";
-			link.l1 = "Good luck, Eddie. And remember: I need the head of Chad Kapper!";
+			dialog.text = "Жизнь Чимисета важна для ривадос, как никакая другая. Мы отправимся на 'Тартарус' немедленно. Ты останешься здесь в качестве заложника. Если нас в тюрьме будет подстерегать засада адмирала - ты узнаешь на своей шкуре, что такое гнев ривадос\nЗикомо! Встань у двери и следи за нашим гостем, чтобы он не покинул пределов каюты. А я возглавлю наступление на 'Тартарус'!";
+			link.l1 = "Удачи, Эдди. И помни: мне нужна голова Чада Каппера!";
 			link.l1.go = "capper_8";
 		break;
 		
@@ -140,38 +140,38 @@ void ProcessDialogEvent()
 		break;
 		
 		case "chimiset":
-			dialog.text = "Chimiset is set free! You weren't lying, white man, I am ready to call you a friend of Rivados!";
-			link.l1 = "I am glad. Is Chad Kapper dead?";
+			dialog.text = "Чимисет свободен! Ты не солгал, белый человек, и за свободу и жизнь Чимисета я готов назвать тебя другом ривадос!";
+			link.l1 = "Я очень рад. Чад Каппер мертв?";
 			link.l1.go = "chimiset_1";
 		break;
 		
 		case "chimiset_1":
-			dialog.text = "I have to ask for your forgiveness, white friend: you did what you could, but we have failed you... I have failed you! Damn Kapper escaped. There were two Narwhals with him. We have destroyed them, but the filthy jailer swam away through the lower door to Narwhal territories.";
-			link.l1 = "Damn... Didn't you know that there were two exits from the Tartarus?";
+			dialog.text = "Я вынужден просить извинения, белый друг: ты сделал все со своей стороны, а мы подвели... я подвел! Проклятый Каппер сбежал. Вместе с ним в тюрьме были два нарвала. Мы их уничтожили, но гнусный тюремщик, отстреливаясь, выскочил через дверь внизу и ушел от нас вплавь на территорию нарвалов.";
+			link.l1 = "Эх... Неужели ты не знал, что у 'Тартаруса' два выхода?";
 			link.l1.go = "chimiset_2";
 		break;
 		
 		case "chimiset_2":
-			dialog.text = "We didn't think about it. We attacked from the main entrance...";
-			link.l1 = "Pity. I was counting on his head. Too bad. Now he will continue to act against us.";
+			dialog.text = "Мы не подумали об этом. Мы атаковали со стороны палубы...";
+			link.l1 = "Жаль. Я рассчитывал получить голову Чада. Очень, очень плохо! Теперь он будет и дальше нам вредить.";
 			link.l1.go = "chimiset_3";
 		break;
 		
 		case "chimiset_3":
-			dialog.text = "I admit my guilt. But we couldn't follow him to hostile ships. You will have our friendship and respect instead of Chad's head. From now on you are allowed to visit our territory freely. Chimiset's wisdom will serve you well too. Talk to him if you need. Assure admiral that I have appreciated his actions.";
-			link.l1 = "Good.";
+			dialog.text = "Я признаю свою вину. Но мы не могли последовать за ним на корабли вражеского клана... Вместо головы Чада ты получишь дружбу и уважение ривадос. Отныне ты можешь всегда рассчитывать на нашу поддержку\nНаши корабли теперь открыты тебе для свободного прохода. Мудрость Чимисета, освобожденного с твоей помощью, тоже тебе пригодится. Поговори с ним, если у тебя в чем есть нужда. Также передай адмиралу мои заверения, что я оценил его поступок.";
+			link.l1 = "Хорошо.";
 			link.l1.go = "chimiset_4";
 		break;
 		
 		case "chimiset_4":
-			dialog.text = "Wait! We have lost Chad, but I have found a few papers on his desk, which he was studying when we arrived. Here they are. You might find them useful, white brother.";
-			link.l1 = "Ha! Perhaps... Chad puts a great trust in paper...";
+			dialog.text = "Погоди! Мы упустили Чада, но я нашел у него на столе несколько бумаг, которые он изучал, когда мы ворвались. Он бросил их, а я собрал. Вот они. Может, написанное там окажется для тебя полезным, белый друг.";
+			link.l1 = "Ха! Возможно, и окажется - Чад слишком многое доверяет бумаге...";
 			link.l1.go = "chimiset_5";
 		break;
 		
 		case "chimiset_5":
-			dialog.text = "You are always a welcome guest here, white friend. All Rivados will be informed about it. Good luck!";
-			link.l1 = "Same to you, Eddie...";
+			dialog.text = "Ты всегда желанный гость у нас, белый друг. Все ривадос будут оповещены об этом. Удачи тебе!";
+			link.l1 = "И тебе тоже, Эдди...";
 			link.l1.go = "chimiset_6";
 		break;
 		
@@ -192,9 +192,9 @@ void ProcessDialogEvent()
 			sld.dialog.currentnode = "Chad_escape"; // ноду Акуле
 			AddQuestRecord("SharkHunt", "33");
 			LocatorReloadEnterDisable("LostShipsCity_town", "reload48", true); // закрыть вход к Дональду Гринспи
-			AddSimpleRumourCityTip("Have you heard the last news? Rivados insolence is off limits now, they have attacked admiral's prison and released their wizard!", "LostShipsCity", 3, 2, "LSC", "");
-			AddSimpleRumourCityTip("Just think about it - Rivados dared to attack the Tartarus! They say that the jailer, Chad Kapper, has escaped to Narwhals...", "LostShipsCity", 3, 2, "LSC", "");
-			AddSimpleRumourCityTip("This is the height of impudence, isn't it? Attacking a military facility of the admiral! Yeah, looks like Black Eddie is getting stronger...", "LostShipsCity", 3, 2, "LSC", "");
+			AddSimpleRumourCityTip("Слыхали? Наглость ривадос превзошла все ожидания: напали посреди бела дня на тюрьму адмирала и освободили своего колдуна!", "LostShipsCity", 3, 2, "LSC", "");
+			AddSimpleRumourCityTip("Подумать только - ривадос осмелились напасть на 'Тартарус'! Говорят, что тюремщик, Чад Каппер, бежал и скрылся у нарвалов...", "LostShipsCity", 3, 2, "LSC", "");
+			AddSimpleRumourCityTip("Наглость - второе счастье, не правда ли? Напасть на военный объект адмирала! Да, Черный Эдди, похоже, набирает силу...", "LostShipsCity", 3, 2, "LSC", "");
 		break;
 		
 		case "Exit":

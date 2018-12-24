@@ -404,27 +404,27 @@ void Sea_MapLoad()
             if (GetCargoLoad(chref) > GetCargoMaxSpace(chref))
             {
                 ok = false;
-                Log_SetStringToLog("" +  chref.Ship.Name + "' is overloaded.");
+                Log_SetStringToLog("Корабль '" +  chref.Ship.Name + "' перегружен.");
             }
             if (MOD_SKILL_ENEMY_RATE > 2) // халява и юнга - послабление
     		{
 	            if (i > 0 && GetMinCrewQuantity(chref) > GetCrewQuantity(chref))
 	            {
 	                ok = false;
-	                Log_SetStringToLog("" +  chref.Ship.Name + "' doesn't have enough crew.");
+	                Log_SetStringToLog("На корабле '" +  chref.Ship.Name + "' нет минимального экипажа.");
 	            }
 			}
 			
             if (GetMaxCrewQuantity(chref) < GetCrewQuantity(chref))
             {
                 ok = false;
-                Log_SetStringToLog("" +  chref.Ship.Name + "' is overloaded with crewmen.");
+                Log_SetStringToLog("На корабле '" +  chref.Ship.Name + "' перегруз экипажа больше допустимого.");
             }  
         }
     }
     if (!ok)
     {
-        Log_Info("You can't leave to the world map.");
+        Log_Info("Выход на карту невозможен.");
         PlaySound("interface\knock.wav");
         return;
     }
@@ -617,7 +617,7 @@ void SeaLogin(ref Login)
 		pchar.sneak.success = 1;
 	}*/
 	Group_SetXZ_AY(PLAYER_GROUP, stf(Login.PlayerGroup.x), stf(Login.PlayerGroup.z), stf(Login.PlayerGroup.ay) );
-	Trace("Set player group : " + PLAYER_GROUP + ", PLAYER x = " + Login.PlayerGroup.x + ", PLAYER z = " + Login.PlayerGroup.z + ", PLAYER ay = " + Login.PlayerGroup.ay);
+	//Trace("Set player group : " + PLAYER_GROUP + ", PLAYER x = " + Login.PlayerGroup.x + ", PLAYER z = " + Login.PlayerGroup.z + ", PLAYER ay = " + Login.PlayerGroup.ay);
 	// boal -->
 	NullCharacter.Login.PlayerGroup.x  = Login.PlayerGroup.x;  // 1.2.3 попытка записать коорд ГГ для размещения Group_SetPursuitGroup в кильватерную линию
 	NullCharacter.Login.PlayerGroup.z  = Login.PlayerGroup.z;
@@ -625,7 +625,7 @@ void SeaLogin(ref Login)
 	
     pchar.Ship.Pos.x = stf(Login.PlayerGroup.x);
     pchar.Ship.Pos.z = stf(Login.PlayerGroup.z);
-    trace("pchar.Ship.Pos.x = " + pchar.Ship.Pos.x + " pchar.Ship.Pos.z = " + pchar.Ship.Pos.z);
+    //trace("pchar.Ship.Pos.x = " + pchar.Ship.Pos.x + " pchar.Ship.Pos.z = " + pchar.Ship.Pos.z);
     // boal <--
 	Sea.MaxSeaHeight = 200;
 
@@ -779,7 +779,7 @@ void SeaLogin(ref Login)
 		z = stf(rRawGroup.z);
 		ay = stf(rRawGroup.ay);
 
-		Trace("Set raw group : x = " + x + ", z = " + z + ", ay = " + ay);
+		//Trace("Set raw group : x = " + x + ", z = " + z + ", ay = " + ay);
 		
 		ReloadProgressUpdate();
 
@@ -829,7 +829,7 @@ void SeaLogin(ref Login)
 		// check for Quest fantom
 		if (CheckAttribute(rEncounter, "qID"))
 		{
-			Trace("SEA: Login quest encounter " + rEncounter.qID);
+			//Trace("SEA: Login quest encounter " + rEncounter.qID);
 			Group_SetAddressNone(rEncounter.qID);
 			Group_SetXZ_AY(rEncounter.qID, x, z, ay);						
 			Sea_LoginGroup(rEncounter.qID);			
@@ -938,7 +938,7 @@ void SeaLogin(ref Login)
 		}
 		// <-- Ugeen
 		
-		Trace("Set group coords : " + sGName + ", x = " + x + ", z = " + z + ", ay = " + ay);		
+		//Trace("Set group coords : " + sGName + ", x = " + x + ", z = " + z + ", ay = " + ay);		
 
         //navy --> 28.12.2009 изменение алгоритам загрузки кораблей случаек в море, чтобы ГГ мордой в центр экскадры не грузился.
         float b, x_mc, z_mc, ay_mc, ay_res, ay_e, z1;
@@ -956,7 +956,7 @@ void SeaLogin(ref Login)
         //угол результирующего вектора между случайкой и ГГ на карте
         ay_res = atan(-((z_mc-z)/(x-x_mc)));
 
-		Trace("ay_res = " + ay_res);		
+		//Trace("ay_res = " + ay_res);		
 		
         //т.к. арктангенс дает только острые углы, то считаем тупые
         if (ay_res < 0 && z > z_mc)
@@ -969,8 +969,8 @@ void SeaLogin(ref Login)
             ay_res += PI;
         }
 
-		Trace("1. Set player group coords :  x = " + x_mc + ", z = " + z_mc + ", ay = " + ay_mc + ", ay_res = " + ay_res);		
-		Trace("2. Set enemy group coords :  x = " + x + ", z = " + z +", ay = " + ay + ", ay_e = " + ay_e);		
+		//Trace("1. Set player group coords :  x = " + x_mc + ", z = " + z_mc + ", ay = " + ay_mc + ", ay_res = " + ay_res);		
+		//Trace("2. Set enemy group coords :  x = " + x + ", z = " + z +", ay = " + ay + ", ay_e = " + ay_e);		
 		
         //если угол между вектором ГГ и результирующим вектором острый,
         //то считаем, что атакует ГГ
@@ -994,7 +994,7 @@ void SeaLogin(ref Login)
 			//z1 = k * x * ay + b;
 			
 //            		Group_SetXZ_AY(sGName, x, z, ay);
-			Trace("Set group new coords : " + sGName + ", x = " + x + ", z = " + z + ", ay_e = " + ay_e + ", b = " + b + ", k = " + k);		
+			//Trace("Set group new coords : " + sGName + ", x = " + x + ", z = " + z + ", ay_e = " + ay_e + ", b = " + b + ", k = " + k);		
 			
         }
 		

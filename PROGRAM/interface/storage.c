@@ -26,15 +26,15 @@ void InitInterface_R(string iniName, ref pStore)
 
 	GameInterface.TABLE_LIST.hr.td1.str = XI_ConvertString("In the hold");
 	GameInterface.TABLE_LIST.hr.td1.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td2.str = "Wgt";
+	GameInterface.TABLE_LIST.hr.td2.str = "Вес";
 	GameInterface.TABLE_LIST.hr.td2.scale = 0.9;
 	GameInterface.TABLE_LIST.hr.td3.str = XI_ConvertString("Good name");
 	GameInterface.TABLE_LIST.hr.td3.scale = 0.9;
 	GameInterface.TABLE_LIST.hr.td4.str = XI_ConvertString("In the storage");
 	GameInterface.TABLE_LIST.hr.td4.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td5.str = "Pack";
+	GameInterface.TABLE_LIST.hr.td5.str = "Пачка";
 	GameInterface.TABLE_LIST.hr.td5.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td6.str = "Wgt";
+	GameInterface.TABLE_LIST.hr.td6.str = "Вес";
 	GameInterface.TABLE_LIST.hr.td6.scale = 0.9;
 
     FillShipsScroll();
@@ -369,7 +369,7 @@ void SetVariable()
 
 	SetFormatedText("STORE_CAPACITY", sMaxGoodsStore);
 	
-	sText = "Total workload warehouse : " + GetStorageUsedWeight(refStore) + " / " + iTotalSpace + " cent.";
+	sText = "Общая загруженность склада : " + GetStorageUsedWeight(refStore) + " / " + iTotalSpace + " ц.";
 	SetFormatedText("STORAGE_INFO", sText);
 
 	if (CheckAttribute(refCharacter, "ship.name"))
@@ -441,7 +441,7 @@ void ShowGoodsInfo(int iGoodIndex)
 
 	goodsDescr += GetAssembledString( LanguageConvertString(lngFileID,goodName+"_descr"), &Goods[iGoodIndex]);
     goodsDescr += newStr() + XI_ConvertString("weight") + " " + Goods[iGoodIndex].weight + " " + XI_ConvertString("cwt") +
-	              ", packet " + Goods[iGoodIndex].Units + " " + XI_ConvertString("units");
+	              ", пачка " + Goods[iGoodIndex].Units + " " + XI_ConvertString("units");
 
 	iUnits  = sti(Goods[iGoodIndex].Units);
 	fWeight = stf(Goods[iGoodIndex].weight);
@@ -567,7 +567,7 @@ void ChangeQTY_EDIT()
 		        GameInterface.qty_edit.str = makeint(iWeight / fWeight * iUnits ); // округление
 		    }
 		    // проверка на колво доступное <--
-		    SetFormatedText("QTY_TypeOperation", "Unload warehouse");
+		    SetFormatedText("QTY_TypeOperation", "Выгрузить на склад");
 		}
 		else
 		{
@@ -587,7 +587,7 @@ void ChangeQTY_EDIT()
 		        GameInterface.qty_edit.str = makeint(iWeight / fWeight * iUnits ); // округление
 		    }
 		    // проверка на колво доступное <--
-			SetFormatedText("QTY_TypeOperation", "Download to hold");
+			SetFormatedText("QTY_TypeOperation", "Загрузить в трюм");
 		}
 	}
 	// если получили ноль

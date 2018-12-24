@@ -84,11 +84,11 @@ void ProcessDialogEvent()
 			if (LAi_grp_playeralarm > 0)
 			{
        			dialog.text = NPCharRepPhrase(pchar, 
-					LinkRandPhrase("Alarm is raised in the town, and everyone is looking for you. If I were you, I wouldn't stay there.", "All the city guards are scouring the town looking for you. I am not a fool and I will not talk to you!", "Run, "+ GetSexPhrase("buddy","lass") +", before the soldiers turned you into a sieve..."), 
-					LinkRandPhrase("What do you need, "+ GetSexPhrase("scoundrel","stinker") +"?! The city guards have already hit your scent, you won't get far filthy pirate!", "murderer, leave my house at once! Guards!!!", "I am not afraid of you, "+ GetSexPhrase("scoundrel","rat") +"! Soon you will be hanged in our fort, you won't get far..."));
+					LinkRandPhrase("В городе поднята тревога, тебя всюду ищут! На твоем месте я бы не стал здесь задерживаться.", "Вся городская стража рыщет по городу в поисках тебя. Я не идиот и разговаривать с тобой не буду!", "Беги, "+ GetSexPhrase("приятель","подруга") +", пока солдаты не сделали из тебя решето..."), 
+					LinkRandPhrase("Что тебе нужно, "+ GetSexPhrase("негодяй","мерзавка") +"?! Городская стража уже взяла твой след, далеко тебе не уйти"+ GetSexPhrase(", грязный пират","") +"!", "Грязн"+ GetSexPhrase("ый","ая") +" убийца, вон из моего дома! Стража!!", "Я не боюсь тебя, мерзав"+ GetSexPhrase("ец","ка") +"! Скоро тебя повесят в нашем форте, далеко тебе не уйти..."));
 				link.l1 = NPCharRepPhrase(pchar,
-					RandPhraseSimple("Heh, an alarm is never a problem for me...", "They will never get me."), 
-					RandPhraseSimple("Shut your mouth, " + GetWorkTypeOfMan(npchar, "") + ", and not rip your filthy tongue!", "Heh, " + GetWorkTypeOfMan(npchar, "") + ", and all there - catch pirates! That's what I tell you, buddy: be quiet and you will live..."));
+					RandPhraseSimple("Хех, тревога для меня не проблема...", "Им меня ни за что не поймать."), 
+					RandPhraseSimple("Заткни свою пасть, " + GetWorkTypeOfMan(npchar, "") + ", а не то вырву твой поганый язык!", "Хех, " + GetWorkTypeOfMan(npchar, "") + ", а все туда же - пиратов ловить! Вот что я тебе скажу, приятель: сиди тихо и будешь жить..."));
 				link.l1.go = "fight";
 				break;
 			}
@@ -97,8 +97,8 @@ void ProcessDialogEvent()
 			{
 				if (pchar.questTemp.WPU.Fraht == "fail" && pchar.questTemp.WPU.Fraht.Nation == npchar.nation)
 				{
-					dialog.text = "Oh, I know, who you are. You contracted to deliver the cargo, but you stole it! Guards, guards!";
-					Link.l1 = "Aaargh!";
+					dialog.text = "А-а, я знаю, кто вы. Вы подрядились доставить груз и украли его! Стража, сюда!";
+					Link.l1 = "А-а-ть!";
 					Link.l1.go = "exit";
 					LAi_group_Attack(NPChar, Pchar);
 					break;
@@ -108,10 +108,10 @@ void ProcessDialogEvent()
 			//--> Jason Бремя гасконца
 			if (CheckAttribute(pchar, "questTemp.Sharlie.Lock"))
 			{
-				dialog.text = "What can I do for you, monsieur?";
-				Link.l1 = "I have business with you...";
+				dialog.text = "Чем могу быть полезен, месье?";
+				Link.l1 = "У меня к вам одно дело...";
 				Link.l1.go = "quests";
-				Link.l2 = "I am sorry, but I've got to go.";
+				Link.l2 = "Прошу прощения, но мне надо идти.";
 				Link.l2.go = "exit";
 				NPChar.quest.meeting = "1"; // patch-6
 				break;
@@ -120,15 +120,15 @@ void ProcessDialogEvent()
 			if(NPChar.quest.meeting == "0")
 			{
 				NPChar.quest.meeting = "1";
-				dialog.text = "Greetings, " + GetAddress_Form(NPChar) + ". I don't think we've met before. I am "  + GetFullName(npchar)+ " - the harbor master.";
-				Link.l1 = "Hello, " + GetFullName(NPChar) + ". I am " + GetFullName(PChar) + ", captain of ship '" + PChar.ship.name + "'.";
+				dialog.text = "Приветствую вас, " + GetAddress_Form(NPChar) + ". Мы, кажется, не знакомы. Я "  + GetFullName(npchar)+ " - начальник порта.";
+				Link.l1 = "Здравствуйте, " + GetFullName(NPChar) + ". Я " + GetFullName(PChar) + ", капитан корабля '" + PChar.ship.name + "'.";
 			}
 			else
 			{
-				dialog.text = LinkRandPhrase("Greetings, " + GetAddress_Form(NPChar) + ". Do you have business with me?",
-                                    "Hello, " + GetFullName(Pchar) + ". I've seen your ship coming to our port, and I was sure that you'd come to see me.",
-                                    "Oh, captain " + GetFullName(Pchar) + ". What brings you to me?");
-				Link.l1 = "Hello, " + GetFullName(NPChar) + ". I wanted to talk to you.";
+				dialog.text = LinkRandPhrase("Приветствую вас, " + GetAddress_Form(NPChar) + ". Вы ко мне по делу?",
+                                    "Здравствуйте, " + GetFullName(Pchar) + ". Я видел, как ваш корабль вошел в порт, и был уверен, что вы ко мне зайдете.",
+                                    "А, капитан " + GetFullName(Pchar) + ". Что привело вас ко мне?");
+				Link.l1 = "Здравствуйте, " + GetFullName(NPChar) + ". Я хочу с вами поговорить.";
 			}
 			Link.l1.go = "node_2";
 		break;
@@ -137,32 +137,32 @@ void ProcessDialogEvent()
 			// Церковный генератор 1
 			if(CheckAttribute(PChar, "GenQuest.ChurchQuest_1.AskPortMan") && PChar.GenQuest.ChurchQuest_1.AskPortMan_InColony == NPChar.city)
 			{
-				dialog.text = "Excellent. I am at your service, " + GetFullName(PChar) + ".";
+				dialog.text = "Прекрасно. Я к вашим услугам, " + GetFullName(PChar) + ".";
 				if(!CheckAttribute(PChar, "GenQuest.ChurchQuest_1.CapFullInfo"))	// Получаем полную инфу
 				{
 					if(CheckAttribute(PChar, "GenQuest.ChurchQuest_1.NoMoneyToPortMan"))
 					{
-						dialog.text = "So, what's the deal with the money? Have you brought me at least a thousand pesos?";
+						dialog.text = "Так, что там с деньгами? Вы принесли мне хотя бы тысячу песо?";
 						if(sti(PChar.Money) >= 1000)
 						{
-							link.l1 = "Yes, I have"+ GetSexPhrase("","") +". That's exactly thousand pesos. Now the information!";
+							link.l1 = "Да, принес"+ GetSexPhrase("","ла") +". Вот ровно тысяча песо. Теперь информация!";
 							link.l1.go = "Church_GenQuest1_Node_FillFullInfo_3";
 						}
 						else
 						{
-							link.l1 = LinkRandPhrase("No, not yet brought...", "it is not yet...", "yet, but will be soon...");
+							link.l1 = LinkRandPhrase("Нет, еще не принес"+ GetSexPhrase("","ла") +"...", "Еще нет...", "Еще не принес"+ GetSexPhrase("","ла") +", но скоро принесу...");
 							link.l1.go = "exit";
 						}
 					}
 					else
 					{
-						link.l1 = "Please allow me to explain the heart of the problem. Me and my old friend, captain  " + PChar.GenQuest.ChurchQuest_1.CapFullName + ", missed each other just by a couple of hours, and I had urgent business with him. Now I'll have to catch up with him, but I am not aware"+ GetSexPhrase("","") +", where he departed.";
+						link.l1 = "Позвольте изложить вам суть вопроса. Я разминул"+ GetSexPhrase("ся","ась") +" со своим старым другом, капитаном " + PChar.GenQuest.ChurchQuest_1.CapFullName + ", всего на несколько часов, а у меня к нему срочное дело. Теперь придётся его догонять, но я, к сожалению, не осведомлен"+ GetSexPhrase("","а") +", в каком направлении он отбыл.";
 						link.l1.go = "Church_GenQuest1_Node_FillFullInfo";
 					}
 				}
 				else	// Полная инфа уже есть
 				{
-					link.l1 = "Mister harbor master, I need information about ship '" + PChar.GenQuest.ChurchQuest_1.CapShipName + "', belonging to captain " + PChar.GenQuest.ChurchQuest_1.CapFullName + ".";
+					link.l1 = "Господин начальник порта, мне нужна информация о судне '" + PChar.GenQuest.ChurchQuest_1.CapShipName + "', капитана " + PChar.GenQuest.ChurchQuest_1.CapFullName + ".";
 					if(CheckAttribute(PChar, "GenQuest.ChurchQuest_1.NextColonyIsLast")) // Он здесь, в этой колонии!		
 						link.l1.go = "Church_GenQuest1_Node_CapOnThisColony_1";
 					else // Отправляет в рандомную колонию
@@ -173,15 +173,15 @@ void ProcessDialogEvent()
 //-------------------------------------------//Jason, фрахт---------------------------------------------------
 				if (CheckAttribute(PChar, "questTemp.WPU.Fraht.TargetPortmanID") && CheckAttribute(PChar, "questTemp.WPU.Fraht.LevelUp") && pchar.questTemp.WPU.Fraht.TargetPortmanID == npchar.id)
 				{
-					dialog.text = "Excellent. I am at your service, " + GetFullName(PChar) + ".";
-					Link.l1 = "The cargo for your colony is in the hold of my ship.";
+					dialog.text = "Прекрасно. Я к вашим услугам, " + GetFullName(PChar) + ".";
+					Link.l1 = "В трюме моего корабля груз для вашей колонии.";
 					Link.l1.go = "Fraht_completeLevelUp";
 					break;
 				}
 				if (CheckAttribute(PChar, "questTemp.WPU.Fraht.TargetPortmanID") && pchar.questTemp.WPU.Fraht != "lost" && pchar.questTemp.WPU.Fraht.TargetPortmanID == npchar.id)
 				{
-					dialog.text = "Excellent. I am at your service, " + GetFullName(PChar) + ".";
-					Link.l1 = "The cargo for your colony is in the hold of my ship.";
+					dialog.text = "Прекрасно. Я к вашим услугам, " + GetFullName(PChar) + ".";
+					Link.l1 = "В трюме моего корабля груз для вашей колонии.";
 					Link.l1.go = "Fraht_complete";
 					break;
 				}
@@ -190,14 +190,14 @@ void ProcessDialogEvent()
 				{
 					if (pchar.questTemp.WPU.Fraht.TargetPortmanID == npchar.id)
 					{
-						dialog.text = "Oh, so you've come at last. Frankly, I didn't expect you to come back. We have already petitioned the authorities to mark you as a wanted person. So, what do you have to say?";
-						Link.l1 = "I failed to deliver the cargo in time due to unforeseen circumstances. But I want to settle this conflict in a peaceful manner. I have brought your cargo and I hope that we'd be able to come to an agreement.";
+						dialog.text = "А, вот вы все-таки и явились. Право, не думал, что вы придете - мы уже подали властям петицию на объявление вас в розыск. Ну, что скажете?";
+						Link.l1 = "Мне помешали обстоятельства доставить груз вовремя. Но я хочу урегулировать ситуацию мирным путем. Я привез ваш груз и надеюсь на разрешение конфликта.";
 						Link.l1.go = "Fraht_complete_bad";
 					}
 					else
 					{
-						dialog.text = "Oh, I know, who you are. You contracted to deliver the cargo, but you stole it! Guards, guards!";
-						Link.l1 = "Aaargh!";
+						dialog.text = "А-а, я знаю, кто вы. Вы подрядились доставить груз и украли его! Стража, сюда!";
+						Link.l1 = "А-а-ть!";
 						Link.l1.go = "exit";
 						LAi_group_Attack(NPChar, Pchar);
 					}
@@ -207,24 +207,24 @@ void ProcessDialogEvent()
 		
 				if (CheckAttribute(PChar, "questTemp.WPU.Postcureer.TargetPortmanID") && pchar.questTemp.WPU.Postcureer != "lost" && pchar.questTemp.WPU.Postcureer.TargetPortmanID == npchar.id)
 				{
-					dialog.text = "Excellent. I am at your service, " + GetFullName(PChar) + ".";
-					Link.l1 = "I delivered the mail for your colony.";
+					dialog.text = "Прекрасно. Я к вашим услугам, " + GetFullName(PChar) + ".";
+					Link.l1 = "Я доставил почту для вашей колонии.";
 					Link.l1.go = "Postcureer_complete";
 					break;
 				}
 			
 				if (CheckAttribute(PChar, "questTemp.WPU.Postcureer.TargetPortmanID") && pchar.questTemp.WPU.Postcureer == "lost" && pchar.questTemp.WPU.Postcureer.TargetPortmanID == npchar.id)
 				{
-					dialog.text = "Oh, so you've come at last. Frankly, we already thought you dead... Well, it's a good thing you were just a dunderhead, but still not a dead man.";
-					Link.l1 = "I failed to deliver the mail in time due to unforeseen circumstances. But here it is.";
+					dialog.text = "Гм, вы все-таки появились... А мы, право, решили, что вас уже нет в живых... Ну да ладно, я рад, что вы оказались просто растяпой, а не мертвецом.";
+					Link.l1 = "Мне помешали обстоятельства доставить почту вовремя. Вот она, возьмите.";
 					Link.l1.go = "Postcureer_complete_bad";
 					break;
 				}
 			
 				if (CheckAttribute(PChar, "questTemp.WPU.Postcureer.fail") && pchar.questTemp.WPU.Postcureer.StartCity == npchar.city)
 				{
-					dialog.text = "What's happened? You look like death warmed up.";
-					Link.l1 = "" + GetAddress_FormToNPC(NPChar) + ", you were right when you'd warned me about the danger. Right at the exit from the port authority office I was attacked by two men in black, and... well, they took the package away from me.";
+					dialog.text = "Что случилось? На вас лица нет...";
+					Link.l1 = "" + GetAddress_FormToNPC(NPChar) + ", вы были правы, предупреждая об опасности. Прямо на выходе из портового управления на меня напали двое в черном... ну, в общем, они отобрали у меня пакет.";
 					Link.l1.go = "Postcureer_complete_fail";
 					break;
 				}
@@ -232,103 +232,103 @@ void ProcessDialogEvent()
 //-------------------------------------------//Jason, эскорт---------------------------------------------------	
 				if(CheckAttribute(PChar, "questTemp.WPU.Escort.TargetPortmanID") && CheckAttribute(pchar, "questTemp.WPU.Escort.LevelUp_0") && pchar.questTemp.WPU.Escort.TargetPortmanID == npchar.id)
 				{
-					dialog.text = "Excellent. I am at your service, " + GetFullName(PChar) + ".";
-					Link.l1 = "I was sent here by harbor master "+XI_ConvertString("Colony"+pchar.questTemp.WPU.Escort.StartCity+"Gen")+". I have to escort a ship with a cargo of arms and ammunition worth at you on the roads. Here are my papers.";
+					dialog.text = "Прекрасно. Я к вашим услугам, " + GetFullName(PChar) + ".";
+					Link.l1 = "Меня прислал начальник порта "+XI_ConvertString("Colony"+pchar.questTemp.WPU.Escort.StartCity+"Gen")+". Я должен сопроводить корабль с грузом оружия и боеприпасов, стоящий у вас на рейде. Вот мои бумаги.";
 					Link.l1.go = "Escort_LUGo_0";
 					break;
 				}
 				if(CheckAttribute(PChar, "questTemp.WPU.Escort.TargetPortmanID") && CheckAttribute(pchar, "questTemp.WPU.Escort.LevelUpGo_0") && npchar.location == pchar.questTemp.WPU.Escort.StartCity +"_portoffice")
 				{
-					dialog.text = "Excellent. I am at your service, " + GetFullName(PChar) + ".";
-					Link.l1 = "I escorted the ship with the weapons, just as we agreed.";
+					dialog.text = "Прекрасно. Я к вашим услугам, " + GetFullName(PChar) + ".";
+					Link.l1 = "Я сопроводил судно с оружием, как мы и договаривались.";
 					Link.l1.go = "Escort_LUGo_complete";
 					break;
 				}
 				if(CheckAttribute(PChar, "questTemp.WPU.Escort.TargetPortmanID") && CheckAttribute(pchar, "questTemp.WPU.Escort.LevelUp_1WM") && pchar.questTemp.WPU.Escort == "current" && npchar.location == pchar.questTemp.WPU.Escort.StartCity +"_portoffice")
 				{
-					dialog.text = "Excellent. I am at your service, " + GetFullName(PChar) + ".";
-					Link.l1 = "I have found the missing vessel and brought it to your port. Its captain should have already reported that to you.";
+					dialog.text = "Прекрасно. Я к вашим услугам, " + GetFullName(PChar) + ".";
+					Link.l1 = "Я нашел пропавшее судно и доставил его в ваш порт. Думаю, его капитан уже доложил вам об этом.";
 					Link.l1.go = "Escort_LU1WM_complete";
 					break;
 				}
 				if(CheckAttribute(PChar, "questTemp.WPU.Escort.TargetPortmanID") && CheckAttribute(pchar, "questTemp.WPU.Escort.LevelUp_1VSP") && pchar.questTemp.WPU.Escort == "win" && npchar.location == pchar.questTemp.WPU.Escort.StartCity +"_portoffice")
 				{
-					dialog.text = "Excellent. I am at your service, " + GetFullName(PChar) + ".";
-					Link.l1 = "I have found the missing vessel and brought it to your port. Its captain should have already reported that to you.";
+					dialog.text = "Прекрасно. Я к вашим услугам, " + GetFullName(PChar) + ".";
+					Link.l1 = "Я нашел пропавшее судно и доставил его в ваш порт. Думаю, его капитан уже доложил вам об этом.";
 					Link.l1.go = "Escort_LU1VSP_complete";
 					break;
 				}
 				if(CheckAttribute(PChar, "questTemp.WPU.Escort.TargetPortmanID") && CheckAttribute(pchar, "questTemp.WPU.Escort.LevelUp_1VSP") && pchar.questTemp.WPU.Escort == "sink" && npchar.location == pchar.questTemp.WPU.Escort.StartCity +"_portoffice")
 				{
-					dialog.text = "Excellent. I am at your service, " + GetFullName(PChar) + ".";
-					Link.l1 = "I have found the missing vessel at the shores of the island of "+XI_ConvertString(pchar.questTemp.WPU.Current.TargetIslandID)+". Its captain was engaged in unequal combat with a superior pirate force. I helped you in any way I could, but all my efforts were in vain: damn scoundrels have sunk the ship. All I could do at that point was to avenge it.";
+					dialog.text = "Прекрасно. Я к вашим услугам, " + GetFullName(PChar) + ".";
+					Link.l1 = "Я нашел пропавшее судно у берегов острова "+XI_ConvertString(pchar.questTemp.WPU.Current.TargetIslandID)+". Его капитан вел неравный бой с превосходящими силами пиратов. Я оказал ему всю возможную помощь, но мои усилия оказались тщетны: проклятые негодяи потопили корабль. Я только смог отомстить им за него.";
 					Link.l1.go = "Escort_LU1VSP_completeSink";
 					break;
 				}
 				if(CheckAttribute(PChar, "questTemp.WPU.Escort.TargetPortmanID") && CheckAttribute(pchar, "questTemp.WPU.Escort.LevelUp_1S") && pchar.questTemp.WPU.Escort == "win" && npchar.location == pchar.questTemp.WPU.Escort.StartCity +"_portoffice")
 				{
-					dialog.text = "Excellent. I am at your service, " + GetFullName(PChar) + ".";
-					Link.l1 = "I have found the missing vessel at the shores of the island of "+XI_ConvertString(pchar.questTemp.WPU.Current.TargetIslandID)+". Well, not the ship itself, actually, but rather about half a hundred men of its crew and the captain. They are safe now - the crew is on my ship, and the captain is in your town now - I take it he had already paid you a visit.";
+					dialog.text = "Прекрасно. Я к вашим услугам, " + GetFullName(PChar) + ".";
+					Link.l1 = "Я нашел пропавшее судно у берегов острова "+XI_ConvertString(pchar.questTemp.WPU.Current.TargetIslandID)+". Точнее, не само судно, а только полсотни человек его команды и капитана. Все они в безопасности - команда у меня на корабле, а капитан в вашем городе - наверное, он уже заходил к вам.";
 					Link.l1.go = "Escort_LU1S_complete";
 					break;
 				}
 				if(CheckAttribute(PChar, "questTemp.WPU.Escort.TargetPortmanID") && CheckAttribute(pchar, "questTemp.WPU.Escort.LevelUp_2") && pchar.questTemp.WPU.Escort == "win" && npchar.location == pchar.questTemp.WPU.Escort.StartCity +"_portoffice")
 				{
-					dialog.text = "Excellent. I am at your service, " + GetFullName(PChar) + ".";
-					Link.l1 = "I have fulfilled your assignment. Pirate squadron, which attacked the trading convoy, has been destroyed.";
+					dialog.text = "Прекрасно. Я к вашим услугам, " + GetFullName(PChar) + ".";
+					Link.l1 = "Я выполнил ваше поручение. Пиратская эскадра, атаковавшая торговый караван, уничтожена.";
 					Link.l1.go = "Escort_LU2_complete";
 					break;
 				}
 				if (CheckAttribute(PChar, "questTemp.WPU.Escort.TargetPortmanID") && CheckAttribute(pchar, "questTemp.WPU.Escort.Bonus") && pchar.questTemp.WPU.Escort.Bonus != "fail" && pchar.questTemp.WPU.Escort.TargetPortmanID == npchar.id)
 				{
-					dialog.text = "Excellent. I am at your service, " + GetFullName(PChar) + ".";
-					Link.l1 = "I am the captain of the escort vessel. I brought the trading ships to the port and want to make a report about it.";
+					dialog.text = "Прекрасно. Я к вашим услугам, " + GetFullName(PChar) + ".";
+					Link.l1 = "Я капитан судна сопровождения. Я доставил в порт торговые корабли и хочу отчитаться.";
 					Link.l1.go = "Escort_complete";
 					break;
 				}
 				if (CheckAttribute(PChar, "questTemp.WPU.Escort.TargetPortmanID") && CheckAttribute(pchar, "questTemp.WPU.Escort.Bonus") && pchar.questTemp.WPU.Escort.Bonus == "fail" && pchar.questTemp.WPU.Escort.TargetPortmanID == npchar.id)
 				{
-					dialog.text = "Excellent. I am at your service, " + GetFullName(PChar) + ".";
-					Link.l1 = "I am the captain of the escort vessel. I was to bring two trading ships and cargo to the port, but, unfortunately, both escorted ships went down after a battle with an enemy convoy. But I still managed to deliver the cargo.";
+					dialog.text = "Прекрасно. Я к вашим услугам, " + GetFullName(PChar) + ".";
+					Link.l1 = "Я капитан судна сопровождения. Я должен был доставить в порт два торговых судна и груз, но, к сожалению, оба сопровождаемых корабля утонули в бою с вражеским караваном. Мне очень жаль. Но груз я доставил.";
 					Link.l1.go = "Escort_fail";
 					break;
 				}
 				if (CheckAttribute(PChar, "questTemp.WPU.Escort.TargetPortmanID") && pchar.questTemp.WPU.Escort.TargetPortmanID == npchar.id && !CheckAttribute(PChar, "questTemp.WPU.Escort.LevelUp"))
 				{
-					dialog.text = "Excellent. I am at your service, " + GetFullName(PChar) + ".";
-					Link.l1 = "I am the captain of the escort vessel. I brought the trading ships to the port and want to make a report about it.";
+					dialog.text = "Прекрасно. Я к вашим услугам, " + GetFullName(PChar) + ".";
+					Link.l1 = "Я капитан судна сопровождения. Я доставил в порт торговые корабли и хочу отчитаться.";
 					Link.l1.go = "Escort_complete";
 					break;
 				}
 // <-- эскорт
 		
-			dialog.text = "Excellent. I am at your service, " + GetFullName(PChar) + ".";
-			Link.l2 = "Can I find any job here? Or a contract, perhaps?";
+			dialog.text = "Прекрасно. Я к вашим услугам, " + GetFullName(PChar) + ".";
+			Link.l2 = "Здесь можно подыскать работу? Или контракт?";
 			Link.l2.go = "Work_check"; //фрахты-почта-эскорт
-			Link.l14 = "Maybe there's a job which requires foreign help? I could offer my services.";
+			Link.l14 = "Может, у вас есть дело, требующее сторонней помощи? Могу предложить свои услуги.";
 			Link.l14.go = "node_4"; //на мини-квесты
-			Link.l3 = "Can I leave one of my ships there for some time?";
+			Link.l3 = "Могу я оставить один из своих кораблей на время?";
 			Link.l3.go = "ShipStock_1";
 			if (sti(NPChar.Portman) > 0)
 			{
-                Link.l4 = "I want to take my ship back.";
+                Link.l4 = "Я хочу забрать свой корабль обратно.";
     			Link.l4.go = "ShipStockReturn_1";
 			}
 			if (CheckAttribute(pchar, "GenQuest.LoanChest.TakeChest") && sti(pchar.GenQuest.LoanChest.TargetIdx) == sti(NPChar.index))
 			{
-				link.l5 = "I came to discuss financial business.";
+				link.l5 = "Я к вам по финансовым делам.";
 				link.l5.go = "LoanForAll";//(перессылка в кредитный генератор)	
 			}
   			if (CheckAttribute(pchar, "GenQuest.Intelligence") && pchar.GenQuest.Intelligence.SpyId == npchar.id && pchar.GenQuest.Intelligence == "") //квест мэра - на связь с нашим шпионом
 			{
-				link.l7 = RandPhraseSimple("I am here on request of one certain man. His name is governor " + GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + ".", 
-					GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + " sent me to you. I am supposed to pick up something...");
+				link.l7 = RandPhraseSimple("Я здесь по поручению одного человека. Его зовут губернатор " + GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + ".", 
+					GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + " прислал меня к вам. Я долж"+ GetSexPhrase("ен","на") +" кое-что забрать...");
 				link.l7.go = "IntelligenceForAll";
 			}
-			link.l6 = "I would like to know about captains, who registered at your port authority.";
+			link.l6 = "Меня интересуют капитаны, которые отмечались в вашем портовом управлении.";
 			link.l6.go = "CapitainList";
 			
-			link.l8 = "I'm on another matter.";
+			link.l8 = "Я по другому вопросу.";
 			// Warship 26.07.09 Генер "Сгоревшее судно"
 			if(CheckAttribute(NPChar, "Quest.BurntShip") && !CheckAttribute(NPChar, "Quest.BurntShip.LastQuestDate"))
 			{
@@ -363,7 +363,7 @@ void ProcessDialogEvent()
 			{
 				if(pchar.GenQuest.EncGirl == "toLoverFather" && pchar.GenQuest.EncGirl.LoverFather == "portman_keeper" && pchar.GenQuest.EncGirl.LoverCity == npchar.city)
 				{
-					link.l9 = "Hello, I came by your son's invitation."; 
+					link.l9 = "Здравствуйте, я приш"+ GetSexPhrase("ел","ла") +" по приглашению вашего сына."; 
 					link.l9.go = "EncGirl_4";
 					pchar.quest.EncGirl_GetLoverFather.over = "yes";
 				}	
@@ -371,7 +371,7 @@ void ProcessDialogEvent()
 				{
 					if(pchar.GenQuest.EncGirl.Father == "portman_keeper" && npchar.city == pchar.GenQuest.EncGirl.city)
 					{
-						link.l9 = "This is about your daughter...";
+						link.l9 = "Я по поводу вашей дочери ...";
 						link.l9.go = "EncGirl_1";
 					}
 				}
@@ -380,14 +380,14 @@ void ProcessDialogEvent()
 			{
 				if(pchar.questTemp.different == "free")
 				{
-					link.l10 = "I have found by chance this package of ship documents.";
+					link.l10 = "Я по случайности наш"+ GetSexPhrase("ел","ла") +" вот этот пакет судовых документов.";
 					link.l10.go = "ShipLetters_out1";				
 				}
 				else
 				{
 					if(pchar.questTemp.different.GiveShipLetters.city == npchar.city)
 					{
-						link.l10 = "I have found by chance this package of ship documents, which must have been lost by someone.";
+						link.l10 = "Я по случайности наш"+ GetSexPhrase("ел","ла") +" вот этот, наверняка кем-то позабытый, пакет судовых документов.";
 						if(!CheckAttribute(pchar, "questTemp.different.GiveShipLetters.speakPortman"))
 						{
 							link.l10.go = "ShipLetters_Portman1_1";						
@@ -399,27 +399,27 @@ void ProcessDialogEvent()
 					}
 				}		
 			}												
-			Link.l15 = "Thank you. Goodbye.";
+			Link.l15 = "Благодарю. До свидания.";
 			Link.l15.go = "exit";
 		break;
 
 		case "Church_GenQuest1_Node_FillFullInfo":
-			dialog.text = "Your problem can be easily solved. You can see any official of the navigation service, and he will provide you with all information regarding the route of your friend's ship.";
-			link.l1 = "Unfortunately, it's not all that easy. My friend has renamed his ship in your port... for religious reasons.";
+			dialog.text = "Ваша проблема легко разрешима. Вы можете обратиться к любому чиновнику службы навигации, и получить всю имеющуюся информацию о маршруте судна вашего друга.";
+			link.l1 = "К сожалению, не всё так просто. Именно в вашем порту мой друг сменил название судна... из религиозных побуждений.";
 			link.l1.go = "Church_GenQuest1_Node_FillFullInfo_2";
 		break;
 			
 		case "Church_GenQuest1_Node_FillFullInfo_2":
-			dialog.text = "I see. That makes thinks a bit more difficult. I need to rummage through the records in the ship's register, and that will take some time. And time is money, as you should know.";
+			dialog.text = "Так. Это уже сложнее. Мне нужно поднять записи в судовом реестре, это потребует времени. А в наши дни, как известно, время - деньги...";
 			if(sti(pchar.money) >= 1000)
 			{
-				link.l1 = "I perfectly realize it, mister " + GetFullName(NPChar) + ", and adequately prepared to evaluate your time ... in the amount of, say, 1,000 pesos.";
+				link.l1 = "Я это прекрасно понимаю, г-н " + GetFullName(NPChar) + ", и готов"+ GetSexPhrase("","а") +" достойно оценить ваше время... в размере, скажем, 1000 песо.";
 				link.l1.go = "Church_GenQuest1_Node_FillFullInfo_3";
 			}
 			else
 			{
 				DeleteAttribute(pchar, "GenQuest.ChurchQuest_1.CurPortManColony"); // Можно будет спросить.
-				link.l1 = "That's too bad, since I don't have any money on myself at the moment... I'll come back later...";
+				link.l1 = "М-да... А денег-то у меня и нету... Вернусь позже...";
 				link.l1.go = "exit";
 			}
 		break;
@@ -429,12 +429,12 @@ void ProcessDialogEvent()
 			PChar.GenQuest.ChurchQuest_1.CapGoToColony = sColony;
 			if(CheckAttribute(pchar, "GenQuest.ChurchQuest_1.NoMoneyToPortMan"))
 			{
-				dialog.text = "Perfect! Let's see now... just a minute... here... right. The renaming of the ship was registered, and the ship, which from now on shall be known as '" + PChar.GenQuest.ChurchQuest_1.CapShipName + "' commanded by captain " + PChar.GenQuest.ChurchQuest_1.CapFullName + " has set sail today towards " + XI_ConvertString("Colony" + sColony + "Gen") + ".";
+				dialog.text = "Отлично! Сейчас посмотрим, что там у нас... минуту... так... вот, пожалуйста. В судовом реестре отмечено переименование, и судно, называемое отныне '" + PChar.GenQuest.ChurchQuest_1.CapShipName + "' под управлением капитана " + PChar.GenQuest.ChurchQuest_1.CapFullName + " отправилось сегодня в сторону " + XI_ConvertString("Colony" + sColony + "Gen") + ".";
 				DeleteAttribute(pchar, "GenQuest.ChurchQuest_1.NoMoneyToPortMan");
 			}
 			else
-				dialog.text = "Oh! You really understand that I am a very busy man, and I am glad that you appreciated it! Let's see now... just a minute... here... right. The renaming of the ship was registered, and the ship, which from now on shall be known as '" + PChar.GenQuest.ChurchQuest_1.CapShipName + "' commanded by captain " + PChar.GenQuest.ChurchQuest_1.CapFullName + " has set sail today towards " + XI_ConvertString("Colony" + sColony + "Gen") + ".";			
-				link.l1 = "Thank you, sir, you gave me a really big favor.";
+				dialog.text = "О-о-о!... То есть, да, вы оценили по достоинству, так как я очень, очень занятой человек. Минуту... так... вот, пожалуйста. В судовом реестре отмечено переименование. Судно, называемое отныне '" + PChar.GenQuest.ChurchQuest_1.CapShipName + "' под управлением капитана " + PChar.GenQuest.ChurchQuest_1.CapFullName + " отбыло сегодня в сторону " + XI_ConvertString("Colony" + sColony + "Gen") + ".";			
+				link.l1 = "Благодарю вас, сударь, вы оказали мне действительно большую услугу.";
 				link.l1.go = "Church_GenQuest1_Node_FillFullInfo_4";
 				AddMoneyToCharacter(pchar, -1000);
 		break;
@@ -444,7 +444,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			sQuestTitle = PChar.GenQuest.ChurchQuest_1.QuestTown + "ChurchGenQuest1";
 			AddQuestRecordEx(sQuestTitle, "ChurchGenQuest1", "4");
-			AddQuestUserData(sQuestTitle, "sSex", GetSexPhrase("",""));
+			AddQuestUserData(sQuestTitle, "sSex", GetSexPhrase("ен","на"));
 			AddQuestUserData(sQuestTitle, "sColony", XI_ConvertString("Colony" + PChar.GenQuest.ChurchQuest_1.CapGoToColony + "Gen"));
 			AddQuestUserData(sQuestTitle, "sShipName", PChar.GenQuest.ChurchQuest_1.CapShipName);	
 			PChar.GenQuest.ChurchQuest_1.AskPortMan_InColony = PChar.GenQuest.ChurchQuest_1.CapGoToColony;
@@ -452,21 +452,21 @@ void ProcessDialogEvent()
 		break;
 			
 		case "Church_GenQuest1_Node_FillInfoOfCapColony_1":
-			dialog.text = "What exactly did you want to know?";
-			link.l1 = "Can you tell me, if that captain's ship called at your port?";
+			dialog.text = "Что именно вы хотите узнать?";
+			link.l1 = "Скажите, не заходило ли судно этого капитана в ваш порт?";
 			link.l1.go = "Church_GenQuest1_Node_FillInfoOfCapColony_2";
 		break;
 						
 		case "Church_GenQuest1_Node_FillInfoOfCapColony_2":
 			PChar.GenQuest.ChurchQuest_1.CapGoToColony = GetColonyExpect2Colonies(NPChar.city, PChar.GenQuest.ChurchQuest_1.QuestTown);
-			dialog.text = "Hmm... And might I know, why are you asking?";
-			link.l1 = "I have business with him. But if he didn't call at your port or you don't...";
+			dialog.text = "Хм... Позвольте узнать, с какой целью вы его разыскиваете?";
+			link.l1 = "У меня к нему дело. Если он не был в вашем порту или вы не...";
 			link.l1.go = "Church_GenQuest1_Node_FillInfoOfCapColony_3";
 		break;
 			
 		case "Church_GenQuest1_Node_FillInfoOfCapColony_3":
-			dialog.text = "He did. But praise to all the Saints, just this morning hу rid us of his company and headed to " + XI_ConvertString("Colony" + PChar.GenQuest.ChurchQuest_1.CapGoToColony + "Acc") + ". And I confess sincerely sorry anyone who will have to deal with him.";
-			link.l1 = "In that case wish me luck - and thank you for your help.";
+			dialog.text = "Он был. Но - слава Святым Угодникам - не далее как сегодня утром, наконец милосердно избавил нас, грешных, от своего общества и направился в " + XI_ConvertString("Colony" + PChar.GenQuest.ChurchQuest_1.CapGoToColony + "Acc") + ". И мне, признаться, искренне жаль любого, кому предстоит иметь с ним дело.";
+			link.l1 = "В таком случае пожелайте мне удачи, и благодарю за помощь.";
 			link.l1.go = "Church_GenQuest1_Node_FillInfoOfCapColony_4";
 		break;
 			
@@ -480,26 +480,26 @@ void ProcessDialogEvent()
 			PChar.GenQuest.ChurchQuest_1.AskPortMan_InColony = PChar.GenQuest.ChurchQuest_1.CapGoToColony; // Спрашиваем портмана в колонии, куда отправился кэп.
 			if(rand(2) == 1) 
 			{
-				Log_TestInfo("The next colony is the last");
+				Log_TestInfo("Следующая колония - последняя");
 				PChar.GenQuest.ChurchQuest_1.NextColonyIsLast = true; // Флаг - следующая колония будет последней
 			}
 		break;
 			
 		case "Church_GenQuest1_Node_CapOnThisColony_1":
-			dialog.text = "What do you want to know, "+ GetSexPhrase("mister","miss") +" " + GetFullName(PChar) + "?";
-			link.l1 = "Could you tell we whether this captain called at your port or not?";
+			dialog.text = "Что именно вас интересует, госпо"+ GetSexPhrase("дин","жа") +" " + GetFullName(PChar) + "?";
+			link.l1 = "Скажите, не заходил ли в ваш порт этот капитан?";
 			link.l1.go = "Church_GenQuest1_Node_CapOnThisColony_2";
 		break;
 			
 		case "Church_GenQuest1_Node_CapOnThisColony_2":
-			dialog.text = "Hmm, he sure did. And I must say that I am impatiently waiting for that blessed moment when he finally leaves this long-suffered port.";
-			link.l1 = "You mean to say that his ship is still there?";
+			dialog.text = "Хм, заходил... Так зашёл, что я с нетерпением ожидаю, когда он покинет мой многострадальный порт.";
+			link.l1 = "То есть, это судно всё ещё находится здесь?";
 			link.l1.go = "Church_GenQuest1_Node_CapOnThisColony_3";
 		break;
 			
 		case "Church_GenQuest1_Node_CapOnThisColony_3":
-			dialog.text = "Yes, gracious "+ GetSexPhrase("sir","lady") +". The entire port, starting with the worst of the loaders and ending with the head of the pilot service, is praying for his swift departure. His ship just left the dry dock, where it was promptly repaired, but by that time its gallant captain already fell out with every carpenter and rejected three batches of selected planks for the ship's skin. But tomorrow our most gracious and all-seeing Lord shall rid us of that... of that plague, of that sore in the aspect of man!";
-			link.l1 = "Now, calm down, mister " + NPChar.Name + ", and think that someone's going to have a harder time now. You have already passed this trial, while I have yet to meet that captain of yours. And now, if you excuse me...";
+			dialog.text = "Да, милостив"+ GetSexPhrase("ый господин","ая госпожа") +". Весь порт, от последнего грузчика до главы лоцманской службы, молится о его скорейшем благополучном отбытии. Судно только что вышло из сухого дока, где получило необходимый ремонт, а его доблестный капитан успел перессориться с каждым плотником, и забраковать три партии отборных досок для наружной обшивки. Но уже завтра всевидящий и всеблагой Господь избавит нас от этой... от этой чумы, от этой язвы в человеческом обличии!";
+			link.l1 = "Успокойтесь, господин " + NPChar.Name + ", и подумайте о том, что кому-то сейчас придётся тяжелее, чем вам. Вы уже прошли через это испытание, а мне только предстоит встретиться с этим капитаном... Позвольте откланяться.";
 			link.l1.go = "Church_GenQuest1_Node_CapOnThisColony_4";
 		break;
 			
@@ -522,8 +522,8 @@ void ProcessDialogEvent()
 		break;
 						
 		case "ShipLetters_out1":
-			dialog.text = "Let me take a look! Yes, indeed, in my documents this set is labeled as void. It's very kind of you that you've found a moment to come see me and hand me these papers. Off the wind, captain!";
-			link.l1 = "Thanks!";
+			dialog.text = "Дайте-ка взглянуть! Да, в моих документах этот комплект значится недействительным. Вы весьма добры, раз нашли время заглянуть ко мне и передать бумаги. Попутного ветра, капитан!";
+			link.l1 = "Благодарю!";
 			link.l1.go = "exit";
 			TakeItemFromCharacter(pchar, "CaptainBook"); 			
 			pchar.questTemp.different = "free";
@@ -537,12 +537,12 @@ void ProcessDialogEvent()
 				
 		case "ShipLetters_Portman1_1":
 			pchar.questTemp.different.GiveShipLetters.speakPortman = true;
-			s1 = "Let me take a look! Yes, this vessel and its captain are both registered in my documents. ";
-			s1 = s1 + "Your consciousness, captain, reflects credit upon yourself! Of course, your efforts must not go without a reward.  ";
-			dialog.text = s1 + "Say, will you consider a sum of " + sti(pchar.questTemp.different.GiveShipLetters.price1) + " pesos a deserving reward?";
-			link.l1 = "Of course, not!";
+			s1 = "Дайте-ка взглянуть! Да, в моих документах значатся и это судно, и его владелец. ";
+			s1 = s1 + "Ваша сознательность, капитан, делает Вам честь! Разумеется, Ваши труды должны быть вознаграждены. ";
+			dialog.text = s1 + "Скажем, " + sti(pchar.questTemp.different.GiveShipLetters.price1) + " песо Вы сочтете достойной оплатой?";
+			link.l1 = "Разумеется нет!";
 			link.l1.go = "exit";
-			link.l2 = "Well, a modest sum, but then again it was no big deal, either. Yes, I accept your offer, "  + npchar.name +" .";
+			link.l2 = "Что же, весьма скромная сумма, но и услуга не велика. Да, я принимаю Ваше предложение, "  + npchar.name +" .";
 			link.l2.go = "ShipLetters_Portman1_2";
 		break;
 		
@@ -559,10 +559,10 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ShipLetters_Portman2":
-			dialog.text = "Will you accept my offer?";
-			link.l1 = "Of course, not!";
+			dialog.text = "Вы согласны принять мое предложение?";
+			link.l1 = "Разумеется, нет!";
 			link.l1.go = "exit";
-			link.l2 = "Perhaps. Although I'm sure that these papers are more expensive.";
+			link.l2 = "Пожалуй. Хотя уверен"+ GetSexPhrase("","а") +", что эти бумаги стоят дороже.";
 			link.l2.go = "ShipLetters_Portman2_1";
 		break;
 		
@@ -579,20 +579,20 @@ void ProcessDialogEvent()
 		break;
 
 		case "EncGirl_1":
-			dialog.text = "I am all ears.";
-			link.l1 = "I brought you a fugitive.";
+			dialog.text = "Слушаю вас внимательно.";
+			link.l1 = "Я привел"+ GetSexPhrase("","а") +" вашу беглянку.";
 			link.l1.go = "EncGirl_2";
 		break;
 		
 		case "EncGirl_2":
-			dialog.text = "Oh, captain, thank you so much! How is she? Is she hurt? Why? Why?\nDoesn't she understand? The groom is a wealthy and important man! Youth is naive and foolish... cruel even. Remember that!";
-			link.l1 = "Well, you are her father and the final decision is yours, but I would not hurry with the wedding...";
+			dialog.text = "Ах, капитан, спасибо вам большое! Как она? здорова, не пострадала? Уж скоро сутки, как убежала, негодница. Разве ж я ей плохого желаю? Замуж отдать собрался... Жених богатый, молодой, а что собою не пригож, так ведь с лица воду не пить. Нет! она всё по-своему норовит - вся в мать, чтоб её\nХотя, и она бы на свет не появилась, если бы её мамаша в своё время не сбежала с одним предприимчивым оболтусом... ну да что вспоминать... Молодость наивна, глупа... и жестока.";
+			link.l1 = "Конечно, вы отец и решать вам, но я бы не торопил"+ GetSexPhrase("ся","ась") +" со свадьбой...";
 			link.l1.go = "EncGirl_3";
 		break;
 		
 		case "EncGirl_3":
-			dialog.text = "What do you know?.. You have your children? No? Figures.\nI promised a reward to anyone who take her back to the family.";
-			link.l1 = "Thanks. You watch her. I have a hunch that she wouldn't stop at that.";
+			dialog.text = "Да что вы понимаете?.. У вас свои дети есть? Нету? Вот, когда будут - заходите, тогда и поговорим...\nДа... я обещал вознаграждение тому, кто её вернёт - примите, пожалуйста.";
+			link.l1 = "Спасибо. И держите её покрепче. Что-то мне подсказывает, что она на этом не остановится.";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("EncGirl_ToLoverParentsExit");
 		break;
@@ -600,27 +600,27 @@ void ProcessDialogEvent()
 		case "EncGirl_4":
 			if(sti(pchar.GenQuest.EncGirl.LoverFatherAngry) == 0)
 			{
-				dialog.text = "Oh, you're that "+ GetSexPhrase("captain who brought","young lady, who brought") +" my prodigal son with a young bride?";
-				link.l1 = "Yes, I helped their escape.";
+				dialog.text = "А, так вы и есть т"+ GetSexPhrase("от капитан, который привёз","а девушка, которая привезла") +" моего блудного сына с молодой невестой?";
+				link.l1 = "Да, это я помог"+ GetSexPhrase("","ла") +" им сбежать.";
 				link.l1.go = "EncGirl_5";
 			}
 			else
 			{
-				dialog.text = "Oh, come, benefactor. Likely rewards waiting for?";
-				link.l1 = "Well, I'm fine without a reward, but just your thanks would do.";
+				dialog.text = "А-а, явил"+ GetSexPhrase("ся, благодетель","ась, благодетельница") +". Небось награды ждёшь?";
+				link.l1 = "Ну, не то, чтобы награды, но благодарность услышать не мешало бы.";
 				link.l1.go = "EncGirl_6";			
 			}
 		break;
 		
 		case "EncGirl_5":
-			dialog.text = "I am very grateful to you that you haven't abandoned my child in dire straits and helped him to find a way out of a delicate situation. Allow me to thank you and please accept this modest sum and a gift from me personally.";
-			link.l1 = "Thanks. Helping out this young couple was my pleasure.";
+			dialog.text = "Я очень вам благодарен, что не оставили моё чадо в затруднительном положении и помогли ему с честью выйти из столь щекотливой ситуации. Разрешите отблагодарить вас, как могу. Примите эту скромную сумму и подарок от меня лично.";
+			link.l1 = "Благодарю вас, мне было приятно помогать этим молодым людям.";
 			link.l1.go = "EncGirl_5_1";
 		break;
 		
 		case "EncGirl_6":
-			dialog.text = "Thanks? What thanks?! It's been a half a year since that blockhead was hanging around without a job - and look at him, he's got enough time for love affairs! When I was his age, I was already running my own business! Pfft! A governor has a marriageable daughter - and that dunce has brought a slut without kith or kin to my house and dared to ask for my blessing!";
-			link.l1 = "Hmm... Apparently, you don't believe in sincere feelings?";
+			dialog.text = "Какая благодарность?! за что благодарность?! Мало того, что этот оболтус уже полгода слоняется без работы, так ещё и любезничать время нашёл! Да я в его годы уже своё дело держал. А он, ишь, разохотился! У губернатора, вон, дочка на выданье, а этот приволок какую-то шалаву безродную, прости Господи, и благословения родительского испрашивает!";
+			link.l1 = "Хм, значит вы не верите в искренние чувства?";
 			link.l1.go = "EncGirl_6_1";		
 		break;
 		
@@ -635,16 +635,16 @@ void ProcessDialogEvent()
 		break;
 		
 		case "EncGirl_6_1":
-			dialog.text = "What feelings? What kind of feelings are you talking about? Feelings... how can one be so light-minded at your age?! Shame on you to indulge the young in their caprices and act as a procurer! Not only have you taken a girl from her home, but you also ruined my greenhorn's life. There will be no thanks to you. Farewell.";
-			link.l1 = "Alright, and all the same to you...";
+			dialog.text = "Какие такие чувства?! О каких чувствах вы говорите? Взрослый, вроде человек, а туда же... чувства! Стыдно вам должно быть молодёжи в таких делах потакать, да в сводни подряжаться. Девчонку из родительского гнезда вырвали и моему молокососу жизнь сломали. Не будет вам никакой благодарности. Прощайте.";
+			link.l1 = "Что ж, и вам не хворать...";
 			link.l1.go = "EncGirl_6_2";
 		break;
 		
 		case "EncGirl_6_2":
 			ChangeCharacterComplexReputation(pchar,"nobility", -1);
 			AddQuestRecord("JungleGirl", "19");
-			AddQuestUserData("JungleGirl", "sSex", GetSexPhrase("",""));
-			AddQuestUserData("JungleGirl", "sSex1", GetSexPhrase("",""));
+			AddQuestUserData("JungleGirl", "sSex", GetSexPhrase("ел","ла"));
+			AddQuestUserData("JungleGirl", "sSex1", GetSexPhrase("","а"));
 			CloseQuestHeader("JungleGirl");
 			DeleteAttribute(pchar, "GenQuest.EncGirl");
 			NextDiag.CurrentNode = NextDiag.TempNode;
@@ -655,23 +655,23 @@ void ProcessDialogEvent()
 			//--> проверка миниквестов начальника порта. 
 			if (npchar.quest == "PortmansJornal") //взят квест на судовой журнал
 			{
-				dialog.text = "You were supposed to locate captain " + npchar.quest.PortmansJornal.capName + " and return his ship's log to him. Have you done it?";
-				link.l1 = "No, I haven't yet...";
+				dialog.text = "Вы должны были найти капитана по имени " + npchar.quest.PortmansJornal.capName + " и вернуть ему судовой журнал. Вы сделали это?";
+				link.l1 = "Нет, не получилось пока...";
 				link.l1.go = "PortmanQuest_NF";
 				break;
 			}
 			if (npchar.quest == "PortmansSeekShip" || npchar.quest == "SeekShip_sink") //взят квест на поиски украденного корабля
 			{
-				dialog.text = "You committed yourself to seeking out a stolen " + GetStrSmallRegister(XI_ConvertString(npchar.quest.PortmansSeekShip.shipTapeName)) + " '" + npchar.quest.PortmansSeekShip.shipName + "'. There will be no other assignments for you until you're done with that one.";
-				link.l1 = "I will continue my search, you just wait.";
+				dialog.text = "Вы подвязались разыскать украденный " + GetStrSmallRegister(XI_ConvertString(npchar.quest.PortmansSeekShip.shipTapeName)) + " '" + npchar.quest.PortmansSeekShip.shipName + "'. Пока вы не выполните это задание, ни о какие других поручениях не может быть и речи.";
+				link.l1 = "Я продолжу поиски, ждите.";
 				link.l1.go = "exit";
-				link.l2 = "I want to give up your assignment.";
+				link.l2 = "Хочу отказаться от выполнения вашего поручения.";
 				link.l2.go = "SeekShip_break";
 				break;
 			}
 			if (npchar.quest == "SeekShip_success") //украденный корабль взят на абордаж
 			{
-				dialog.text = "You promised me to seek out stolen " + GetStrSmallRegister(XI_ConvertString(npchar.quest.PortmansSeekShip.shipTapeName)) + " '" + npchar.quest.PortmansSeekShip.shipName + "'. Have you done it?";
+				dialog.text = "Вы обещали мне разыскать украденный " + GetStrSmallRegister(XI_ConvertString(npchar.quest.PortmansSeekShip.shipTapeName)) + " '" + npchar.quest.PortmansSeekShip.shipName + "'. Вы сделали это?";
 				bool bOk = false;
 				for (i=0; i<=COMPANION_MAX; i++)
 				{
@@ -700,15 +700,15 @@ void ProcessDialogEvent()
 				}				
 				if (bOk)
 				{
-					link.l1 = "Yes, I found him, he is now in port. You can take it.";
+					link.l1 = "Да, я наш"+ GetSexPhrase("ел","ла") +" его, стоит в порту на рейде. Можете забирать.";
 					link.l1.go = "SeekShip_good";
 				}
 				else
 				{
-					link.l1 = "I will continue my search, you just wait.";
+					link.l1 = "Я продолжу поиски, ждите.";
 					link.l1.go = "exit";
 				}
-				link.l2 = "I want to give up your assignment.";
+				link.l2 = "Хочу отказаться от выполнения вашего поручения.";
 				link.l2.go = "SeekShip_break";
 				break;
 			}
@@ -717,10 +717,10 @@ void ProcessDialogEvent()
 			//--> дача миниквестов начальника порта. 
 			if (rand(2) < 2 && pchar.questTemp.different == "free" && GetNpcQuestPastDayWOInit(npchar, "quest.meeting") > 7)
 			{
-				dialog.text = LinkRandPhrase("Yes, goddammit! I have a job for you!", 
-					"Ha! You're just in time! I have an issue to be resolved.", 
-					"But of course! Of course I have work for you! You know, I am just overrun with problems lately...");
-				link.l1 = "Then please get to the point, " + GetAddress_FormToNPC(NPChar) + ".";
+				dialog.text = LinkRandPhrase("Да, черт возьми! У меня есть для вас работа!", 
+					"Ха! Вы как нельзя вовремя! У меня есть одна проблема, требующая разрешения.", 
+					"Еще бы! Конечно, у меня есть работа! Проблемы, знаете ли, просто задавили...");
+				link.l1 = "Излагайте суть дела, " + GetAddress_FormToNPC(NPChar) + ".";
 				link.l1.go = "PortmanQuest";
 				SaveCurrentNpcQuestDateParam(npchar, "quest.meeting");
 				break;
@@ -729,19 +729,20 @@ void ProcessDialogEvent()
 			// Warship 25.07.09 Генер "Сгоревшее судно"
 			if(dRand(4) == 2 && !CheckAttribute(NPChar, "Quest.BurntShip"))
 			{
-				dialog.text = "God! Captain " + GetFullName(PChar) + ", you're just in time! Such a misfortune happened, such a calamity... We have to raid the ship burned, left in the care of the Port Authority! Inadvertently security team fired... for the most waterline...\n" + "Lord, what am I such a punishment, then? After so many years faithfully served.";
-				link.l1 = "So, what's the big deal? A ship burned down? And what are insurance contracts for? Or you decided not to insure it to save your money and now you're eating your heart out?";
+				dialog.text = "Боже! Капитан " + GetFullName(PChar) + ", вы как нельзя вовремя! Приключилось такое несчастье, такое несчастье... У нас на рейде сгорело судно, оставленное на попечение портового управления! По недосмотру охранной команды сгорело... по самую ватерлинию...\n" +
+					"Господи, за что же мне такое наказание-то? Ведь столько лет верой и правдой...";
+				link.l1 = "Хм, эка невидаль - судно сгорело. А страховые договора на что? Или вы его не застраховали, в целях экономии? А теперь рады бы локоток укусить, да...";
 				link.l1.go = "BurntShip4";
-				link.l2 = "With such questions help you need at the shipyard, but not me. A couple of months old though you are reinstated, though the new erected. I do not shipbuilder, so sorry, not at...";
+				link.l2 = "С такими вопросами вам за помощью на верфь нужно, а не ко мне. За пару месяцев вам хоть старое восстановят, хоть новое соорудят. Я не судостроитель"+ GetSexPhrase("","ница") +", так что извините, не по адресу...";
 				link.l2.go = "BurntShip2";
 				break;
 			}
 			//<-- дача миниквестов начальника порта.
 
-			dialog.text = "The governor cares for the well-being of his city, so he always has jobs. There can be interested merchants at the tavern, and the store is freighting captains as well.";
-			Link.l1 = "I have one more question.";
+			dialog.text = "Губернатор радеет за благополучие города - у него всегда есть работа. Потом, в таверне могут быть заинтересованные купцы, ну и магазин иногда фрахтует капитанов.";
+			Link.l1 = "Еще один вопрос.";
 			Link.l1.go = "node_2";
-			Link.l2 = "Thank you. Goodbye.";
+			Link.l2 = "Благодарю. До свидания.";
 			Link.l2.go = "exit";
 		break;
 
@@ -755,42 +756,42 @@ void ProcessDialogEvent()
 				{
 					if (sti(NPChar.nation) != PIRATE && GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY)//проверка межнациональных отношений
 					{
-						dialog.text = RandPhraseSimple("There are no jobs for those who sail under the flag of " + NationNameGenitive(sti(pchar.nation)) + "! Leave my office at once!", "I will not collaborate with " + NationNameAblative(sti(pchar.nation)) + ". Begone!");
-						link.l1 = RandPhraseSimple("Well, as you wish...", "Well, as you like...");
+						dialog.text = RandPhraseSimple("Здесь нет работы для тех, кто ходит под флагом " + NationNameGenitive(sti(pchar.nation)) + "! Покиньте мой кабинет немедленно!", "Я не намерен сотрудничать с " + NationNameAblative(sti(pchar.nation)) + ". Вон отсюда!");
+						link.l1 = RandPhraseSimple("Хм, ваше право...", "Ну, как знаешь...");
 						link.l1.go = "exit";
 						break;
 					}
 					if (makeint(PChar.reputation.nobility) < 41) // проверка репутации ГГ
 					{
-						dialog.text = "Your reputation leaves much do be desired. I am not going to collaborate with you. Farewell.";
-						link.l1 = "What! It's all lies.";
+						dialog.text = "Ваша репутация не внушает мне доверия. Я не намерен с вами сотрудничать. Всего доброго.";
+						link.l1 = "Чего-о?! Да врут всё люди.";
 						link.l1.go = "exit";
 						break;
 					}
 					if (GetSummonSkillFromName(pchar, SKILL_LEADERSHIP) < 5)//при низком авторитете не даем
 					{
-						dialog.text = "I don't want to insult you, captain, but... I am afraid you would not be able to fulfill my assignment - you simply have too little experience. I cannot sign a contract with you.";
-						link.l1 = "I see. Well, as you say.";
+						dialog.text = "Не хочу вас обидеть, капитан, но... я опасаюсь, что вы не сможете выполнить мое поручение - у вас слишком мало опыта. Я не могу заключить с вами контракт.";
+						link.l1 = "Понятно. Как скажете.";
 						link.l1.go = "exit";
 						break;
 					}
-					dialog.Text = "Hmm... Well, that depends on the jobs you're interested in.";
-					link.l1 = "I could offer you to charter my vessel for shipping cargo.";
+					dialog.Text = "Хм... Ну, это смотря какого рода работа вас интересует.";
+					link.l1 = "Я бы хотел предложить вам зафрахтовать мое судно для перевозки грузов.";
 					Link.l1.go = "Fraht_begin";
-					link.l2 = "Well, perhaps you could offer something?";
+					link.l2 = "Ну, может вы что-нибудь сами предложите?";
 					Link.l2.go = "Check_other";
 				}
 				else
 				{
-					dialog.Text = "There's nothing left for today. Come another day.";
-					link.l1 = "Fine.";
+					dialog.Text = "Сегодня уже ничего нет. Зайдите в другой день.";
+					link.l1 = "Хорошо.";
 					Link.l1.go = "exit";
 				}
 			}
 			else
 			{
-				dialog.text = "I don't see your ship in the port. Lie off and then come see me again - we'll try to find something for you.";
-				link.l1 = "Alright, I'll do just that.";
+				dialog.text = "Что-то я не вижу в порту вашего корабля. Встаньте на рейд и приходите ко мне снова - попробуем что-нибудь подобрать для вас.";
+				link.l1 = "Хорошо, я так и сделаю.";
 				link.l1.go = "exit";
 			}
 		break;
@@ -800,8 +801,8 @@ void ProcessDialogEvent()
 			{
 			if (pchar.questTemp.WPU.Postcureer == "begin" || pchar.questTemp.WPU.Postcureer == "late" || pchar.questTemp.WPU.Postcureer == "lost" || pchar.questTemp.WPU.Postcureer == "fail" || CheckAttribute(pchar, "questTemp.WPU.Postcureer.LevelUp"))//если заняты
 				{
-				dialog.text = "Unfortunately, I can't offer you anything of that kind. Come in again n a couple of days.";
-				link.l1 = "Alright, I'll do just that.";
+				dialog.text = "К сожалению, ничего такого вам предложить сегодня не могу. Зайдите через пару дней.";
+				link.l1 = "Хорошо, я так и сделаю.";
 				link.l1.go = "exit";
 				SaveCurrentNpcQuestDateParam(npchar, "work_date");
 			}
@@ -809,16 +810,16 @@ void ProcessDialogEvent()
 			{
 				if (sti(pchar.questTemp.WPU.Postcureer.count) > 3 && drand(1) == 1)//если 2 уровень
 					{
-						dialog.text = "So... You have already taken several jobs as a courier and were quite successful at it, to the best of my knowledge. Probably you would manage the task I am going to assign to you.";
-						link.l1 = "I am all ears, " + GetAddress_FormToNPC(NPChar) + ".";
+						dialog.text = "Так-так... Вы уже неоднократно и успешно выполняли работу почтового курьера, как мне известно. Пожалуй, задание, которое я предложу, будет вполне вам по силам.";
+						link.l1 = "Слушаю вас внимательно, " + GetAddress_FormToNPC(NPChar) + ".";
 						link.l1.go = "Postcureer_LevelUp";
 					}
 				else //первый уровень
 					{
-						dialog.text = "I see you have a fast ship. I can offer you a courier job - delivering mail and commercial papers.";
-						link.l1 = "This is interesting. I agree. Where do I need to go?";
+						dialog.text = "Я вижу, у вас быстрый корабль. Могу предложить работу в качестве почтового курьера - доставить корреспонденцию и деловые бумаги.";
+						link.l1 = "Это интересно. Пожалуй, я согласен. Куда нужно отправиться?";
 						link.l1.go = "Postcureer";
-						link.l2 = "Thank you, but that's just not my kind of work.";
+						link.l2 = "Спасибо, но такое занятие мне не по душе.";
 						link.l2.go = "exit";
 					SaveCurrentNpcQuestDateParam(npchar, "work_date");
 				}
@@ -829,8 +830,8 @@ void ProcessDialogEvent()
 		{
 			if (pchar.questTemp.WPU.Escort == "begin" || pchar.questTemp.WPU.Escort == "late" || pchar.questTemp.WPU.Escort == "win" || CheckAttribute(pchar, "questTemp.WPU.Escort.LevelUp"))//если заняты
 			{
-				dialog.text = "Unfortunately, I can't offer you anything of that kind. Come in again n a couple of days.";
-				link.l1 = "Alright, I'll do just that.";
+				dialog.text = "К сожалению, ничего такого вам предложить сегодня не могу. Зайдите через пару дней.";
+				link.l1 = "Хорошо, я так и сделаю.";
 				link.l1.go = "exit";
 				SaveCurrentNpcQuestDateParam(npchar, "work_date");
 			}
@@ -838,26 +839,26 @@ void ProcessDialogEvent()
 			{
 				if (sti(pchar.questTemp.WPU.Escort.count) > 3 && drand(1) == 1)//2 уровень
 					{
-						dialog.text = "You have already successfully escorted merchant vessels several times. I guess I have an assignment specifically for you.";
-						link.l1 = "I am all ears.";
+						dialog.text = "Вы уже неоднократно и успешно выполняли работу по конвоированию торговых судов. У меня есть задание, которое я хотел бы поручить именно вам.";
+						link.l1 = "Слушаю вас внимательно.";
 						link.l1.go = "Escort_LevelUp";
 				}
 				else //1 уровень
 				{
 					if (sti(RealShips[sti(pchar.Ship.Type)].BaseType) == SHIP_GALEON_H && 2500 - makeint(GetCharacterFreeSpace(pchar, GOOD_RUM)) < 0 && !CheckAttribute(pchar, "questTemp.WPU.Fraht.TargetPortmanID"))
 					{//если на ТГ
-						dialog.text = "I have a job, just for you. In our raid on the port are two merchant ships. They have long had already hit the road, but consort still stands at the docks and mend not soon\nYour ship is ideal for escort these ships, as I still need to place additional consignment in your hold. Payment will certainly be a double - for freight and for support.";
-						link.l1 = "An interesting offer! I'll take it!";
+						dialog.text = "У меня есть работа, как раз для вас. В нашем порту стоят на рейде два торговых судна. Они давно должны были уже отправиться в путь, но корабль сопровождения до сих пор стоит в доках и починится еще не скоро\nВаш корабль идеально подходит для эскорта этих судов, так как мне необходимо разместить еще дополнительную партию груза в вашем трюме. Оплата, безусловно, будет двойной - за фрахт и за сопровождение.";
+						link.l1 = "Интересное предложение. Берусь!";
 						link.l1.go = "escort_bonus";
-					link.l2 = "Thank you, but that's just not my kind of work.";
+					link.l2 = "Спасибо, но такое занятие мне не по душе.";
 					link.l2.go = "exit";
 					}
 					else
 					{//просто эскорт
-						dialog.text = "I have a job just for you. Two merchant ships are lying off in our port at the moment - they need escort. I am offering you to escort these ships to their destination. Will you do that?";
-						link.l1 = "An interesting offer! I'll take it!";
+						dialog.text = "У меня есть работа, как раз для вас. В нашем порту стоят на рейде два торговых судна - они нуждаются в корабле охранения. Я предлагаю вам осуществить их эскорт. Возьметесь?";
+						link.l1 = "Интересное предложение. Берусь!";
 						link.l1.go = "escort";
-					link.l2 = "Thank you, but that's just not my kind of work.";
+					link.l2 = "Спасибо, но такое занятие мне не по душе.";
 					link.l2.go = "exit";
 					SaveCurrentNpcQuestDateParam(npchar, "work_date");
 				}
@@ -866,8 +867,8 @@ void ProcessDialogEvent()
 		break;
 		}
 		//ничего не подошло
-		dialog.text = "Unfortunately, I can't offer you anything of that kind. Come in again n a couple of days.";
-		link.l1 = "Alright, I'll do just that.";
+		dialog.text = "К сожалению, ничего такого вам предложить сегодня не могу. Зайдите через пару дней.";
+		link.l1 = "Хорошо, я так и сделаю.";
 		link.l1.go = "exit";
 		SaveCurrentNpcQuestDateParam(npchar, "work_date");
 		break;
@@ -879,33 +880,33 @@ void ProcessDialogEvent()
 			{
 				if (pchar.questTemp.WPU.Fraht == "begin" || pchar.questTemp.WPU.Fraht == "late" || pchar.questTemp.WPU.Fraht == "lost" || CheckAttribute(pchar, "questTemp.WPU.Escort.Bonus"))//проверка на занятость
 				{
-					dialog.Text = "But I have heard that your ship was already chartered. I cannot give you any more freights. Fulfill the commitments you have already taken.";
-					link.l1 = "Yes, you're probably right.";
+					dialog.Text = "Но мне известно, что ваше судно уже зафрахтовано. Я не могу дать вам более фрахтов. Выполняйте взятые обязательства.";
+					link.l1 = "Да, пожалуй, вы правы.";
 					Link.l1.go = "exit";
 					break;
 				}
 				if (1500 - makeint(GetCharacterFreeSpace(pchar, GOOD_RUM)) > 0)//мало места - не даем
 				{
-					dialog.text = "You have too little space in your hold. I need a more capacious ship for a freight. I suggest you check at the store - the local merchant is frequently chartering vessels to deliver small batches of cargo.";
-					link.l1 = "I see. Well, as you say.";
+					dialog.text = "У вас слишком мало места в трюмах. Для фрахта мне нужен более вместительный корабль, чем ваш. Обратитесь в магазин - местный купец частенько нанимает капитанов для перевозки небольших партий грузов.";
+					link.l1 = "Понятно. Как скажете.";
 					link.l1.go = "exit";
 					break;
 				}
 				if (pchar.questTemp.WPU.Fraht.count > 3 && rand(1) == 0)
 				{
-					dialog.text = "I don't have anything suitable at the moment. But you have already done several successful deliveries. I have a certain job which I'd like to assign specifically to you.";
-					link.l1 = "I am listening. What kind of job?";
+					dialog.text = "Сейчас ничего подходящего нет. Но вы уже неоднократно и успешно выполняли задания по перевозке грузов. У меня есть определенная работа, которую я бы хотел поручить именно вам.";
+					link.l1 = "Слушаю вас внимательно. Что за работа?";
 					link.l1.go = "Fraht_LevelUp";
 					break;
 				}
-				dialog.Text = "Well, I can offer you several chartering opportunities.";
-				link.l1 = "Let's see, then...";
+				dialog.Text = "Ну что же, могу предложить несколько вариантов фрахта.";
+				link.l1 = "Давайте посмотрим.";
 				Link.l1.go = "Fraht_choise";
 			}
 			else
 			{
-				dialog.Text = "There are no more freights left for today. Come another day.";
-				link.l1 = "Oh well.";
+				dialog.Text = "Сегодня уже ничего по фрахтам нет. Зайдите в другой день.";
+				link.l1 = "Хорошо.";
 				Link.l1.go = "exit";
 			}
 		break;
@@ -949,32 +950,32 @@ void ProcessDialogEvent()
 			pchar.questTemp.WPU.Fraht.Money3 = (makeint((sti(iFrahtGoodsQty3) * sti(Goods[iFrahtGoods3].Weight) / sti(Goods[iFrahtGoods3].Units))))*(sti(daysQty3)*2)*sti(daysQty3)/sti(pchar.questTemp.WPU.Fraht.DaysQty3);
 			if (drand(5) < 4)//три варианта
 			{
-				dialog.text = "There are such variants:\n" +
-					"cargo " + GetGoodsNameAlt(iFrahtGoods1)+ " in amount of " + FindRussianQtyString(iFrahtGoodsQty1) + " to the town of " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City1) + ", in " +  FindRussianDaysString(pchar.questTemp.WPU.Fraht.DaysQty1) + ". Payment - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money1)) + "\ncargo " + GetGoodsNameAlt(iFrahtGoods2)+ " in amount of " + FindRussianQtyString(iFrahtGoodsQty2) + " to the town of " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City2) + ", in " +  FindRussianDaysString(pchar.questTemp.WPU.Fraht.DaysQty2) + ". Payment - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money2)) + "\ncargo " + GetGoodsNameAlt(iFrahtGoods3)+ " in amount of " + FindRussianQtyString(iFrahtGoodsQty3) + " to the town of " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City3) + ", in " +  FindRussianDaysString(pchar.questTemp.WPU.Fraht.DaysQty3) + ". Payment - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money3)) + "\nWhat is your choice?";
-				Link.l1 = "I will pick the second variant - charter to the town of " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City1) + " loaded with " + GetGoodsNameAlt(iFrahtGoods1)+ ".";
+				dialog.text = "Есть следующие варинты:\n" +
+					"груз " + GetGoodsNameAlt(iFrahtGoods1)+ " в количестве " + FindRussianQtyString(iFrahtGoodsQty1) + " в город " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City1) + ", за " +  FindRussianDaysString(pchar.questTemp.WPU.Fraht.DaysQty1) + ". Оплата - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money1)) + "\nгруз " + GetGoodsNameAlt(iFrahtGoods2)+ " в количестве " + FindRussianQtyString(iFrahtGoodsQty2) + " в город " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City2) + ", за " +  FindRussianDaysString(pchar.questTemp.WPU.Fraht.DaysQty2) + ". Оплата - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money2)) + "\nгруз " + GetGoodsNameAlt(iFrahtGoods3)+ " в количестве " + FindRussianQtyString(iFrahtGoodsQty3) + " в город " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City3) + ", за " +  FindRussianDaysString(pchar.questTemp.WPU.Fraht.DaysQty3) + ". Оплата - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money3)) + "\nЧто выбираете?";
+				Link.l1 = "Я выбираю первый вариант - фрахт до города " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City1) + " с грузом " + GetGoodsNameAlt(iFrahtGoods1)+ ".";
 				Link.l1.go = "Fraht_Choise_1";
-				Link.l2 = "I will pick the third variant - charter to the town of " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City2) + " loaded with " + GetGoodsNameAlt(iFrahtGoods2)+ ".";
+				Link.l2 = "Я выбираю второй вариант - фрахт до города " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City2) + " с грузом " + GetGoodsNameAlt(iFrahtGoods2)+ ".";
 				Link.l2.go = "Fraht_Choise_2";
-				Link.l3 = "I will pick the third variant - charter to the town of " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City3) + " loaded with " + GetGoodsNameAlt(iFrahtGoods3)+ ".";
+				Link.l3 = "Я выбираю третий вариант - фрахт до города " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City3) + " с грузом " + GetGoodsNameAlt(iFrahtGoods3)+ ".";
 				Link.l3.go = "Fraht_Choise_3";
 			}
 			else //два варианта
 			{
-				dialog.text = "There are such variants:\n" +
-					"cargo " + GetGoodsNameAlt(iFrahtGoods1)+ " in amount of " + FindRussianQtyString(iFrahtGoodsQty1) + " to the town of " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City1) + ", in " +  FindRussianDaysString(pchar.questTemp.WPU.Fraht.DaysQty1) + ". Payment - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money1)) + "\ncargo " + GetGoodsNameAlt(iFrahtGoods2)+ " in amount of " + FindRussianQtyString(iFrahtGoodsQty2) + " to the town of " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City2) + ", in " +  FindRussianDaysString(pchar.questTemp.WPU.Fraht.DaysQty2) + ". Payment - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money2)) + "\nWhat is your choice?";
-				Link.l1 = "I will pick the first variant - charter to the town of " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City1) + " loaded with " + GetGoodsNameAlt(iFrahtGoods1)+ ".";
+				dialog.text = "Есть следующие варинты:\n" +
+					"груз " + GetGoodsNameAlt(iFrahtGoods1)+ " в количестве " + FindRussianQtyString(iFrahtGoodsQty1) + " в город " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City1) + ", за " +  FindRussianDaysString(pchar.questTemp.WPU.Fraht.DaysQty1) + ". Оплата - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money1)) + "\nгруз " + GetGoodsNameAlt(iFrahtGoods2)+ " в количестве " + FindRussianQtyString(iFrahtGoodsQty2) + " в город " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City2) + ", за " +  FindRussianDaysString(pchar.questTemp.WPU.Fraht.DaysQty2) + ". Оплата - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money2)) + "\nЧто выбираете?";
+				Link.l1 = "Я выбираю первый вариант - фрахт до города " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City1) + " с грузом " + GetGoodsNameAlt(iFrahtGoods1)+ ".";
 				Link.l1.go = "Fraht_Choise_1";
-				Link.l2 = "I will pick the second variant - charter to the town of " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City2) + " loaded with " + GetGoodsNameAlt(iFrahtGoods2)+ ".";
+				Link.l2 = "Я выбираю второй вариант - фрахт до города " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Fraht.City2) + " с грузом " + GetGoodsNameAlt(iFrahtGoods2)+ ".";
 				Link.l2.go = "Fraht_Choise_2";
 			}
-			Link.l4 = "Unfortunately, there's nothing suitable for me.";
+			Link.l4 = "К сожалению, мне ничего не подходит.";
 			Link.l4.go = "exit";
 			SaveCurrentNpcQuestDateParam(npchar, "work_date");
 		break;
 	
 		case "Fraht_Choise_1":
-			dialog.text = "Well, great! I'll process the necessary documents, and you can prepare your ship for loading.";
-			link.l1 = "I will do my best!";
+			dialog.text = "Ну что же, замечательно. Сейчас оформим документы. Готовьте судно под погрузку.";
+			link.l1 = "Все будет сделано в лучшем виде!";
 			link.l1.go = "Fraht_Forcemajor";
 			AddCharacterGoods(pchar, sti(pchar.questTemp.WPU.Fraht.Goods1), sti(pchar.questTemp.WPU.Fraht.GoodsQty1));
 			iFrahtGoods1 = pchar.questTemp.WPU.Fraht.Goods1;
@@ -996,8 +997,8 @@ void ProcessDialogEvent()
 		break;
 	
 		case "Fraht_Choise_2":
-			dialog.text = "Well, great! I'll process the necessary documents, and you can prepare your ship for loading.";
-			link.l1 = "I will do my best!";
+			dialog.text = "Ну что же, замечательно. Сейчас оформим документы. Готовьте судно под погрузку.";
+			link.l1 = "Все будет сделано в лучшем виде!";
 			link.l1.go = "Fraht_Forcemajor";
 			AddCharacterGoods(pchar, sti(pchar.questTemp.WPU.Fraht.Goods2), sti(pchar.questTemp.WPU.Fraht.GoodsQty2));
 			iFrahtGoods2 = pchar.questTemp.WPU.Fraht.Goods2;
@@ -1019,8 +1020,8 @@ void ProcessDialogEvent()
 		break;
 	
 		case "Fraht_Choise_3":
-			dialog.text = "Well, great! I'll process the necessary documents, and you can prepare your ship for loading.";
-			link.l1 = "I will do my best!";
+			dialog.text = "Ну что же, замечательно. Сейчас оформим документы. Готовьте судно под погрузку.";
+			link.l1 = "Все будет сделано в лучшем виде!";
 			link.l1.go = "Fraht_Forcemajor";
 			AddCharacterGoods(pchar, sti(pchar.questTemp.WPU.Fraht.Goods3), sti(pchar.questTemp.WPU.Fraht.GoodsQty3));
 			iFrahtGoods3 = pchar.questTemp.WPU.Fraht.Goods3;
@@ -1061,19 +1062,19 @@ void ProcessDialogEvent()
 			amount = sti(pchar.questTemp.WPU.Fraht.GoodsQty) - GetSquadronGoods(pchar, sti(pchar.questTemp.WPU.Fraht.Goods));
 			if (amount > 0)
 			{
-				dialog.text = "Let's see, then. You were supposed to deliver a load of " + GetGoodsNameAlt(iFrahtGoods)+ " in amount of " + FindRussianQtyString(pchar.questTemp.WPU.Fraht.GoodsQty) + ". But I see that you've delivered not the entire shipment - you are " + FindRussianQtyString(sti(amount)) + " short.";
-				link.l1 = "A thousand sharks! It must be those cursed rats! But don't you worry, " + GetAddress_FormToNPC(NPChar) + ", I will purchase the missing amount and turn in the entire batch.";
+				dialog.text = "Давайте посмотрим. Вы должны были привезти груз " + GetGoodsNameAlt(iFrahtGoods)+ " в количестве " + FindRussianQtyString(pchar.questTemp.WPU.Fraht.GoodsQty) + ". Но я вижу, что вы привезли не весь груз -  не хватает " + FindRussianQtyString(sti(amount)) + " товара.";
+				link.l1 = "Тысяча акул! Проклятые крысы сожрали! Не беспокойтесь, " + GetAddress_FormToNPC(NPChar) + ", я докуплю недостающее количество и сдам груз в полном комплекте.";
 				link.l1.go = "Fraht_complete_3";
 				break;
 			}
-			dialog.text = "Let's see, then. You were supposed to deliver a load of " + GetGoodsNameAlt(iFrahtGoods)+ " in amount of " + FindRussianQtyString(pchar.questTemp.WPU.Fraht.GoodsQty) + ". Correct?";
-			link.l1 = "Absolutely correct, " + GetAddress_FormToNPC(NPChar) + ".";
+			dialog.text = "Давайте посмотрим. Вы должны были привезти груз " + GetGoodsNameAlt(iFrahtGoods)+ " в количестве " + FindRussianQtyString(pchar.questTemp.WPU.Fraht.GoodsQty) + ". Так?";
+			link.l1 = "Совершенно верно, " + GetAddress_FormToNPC(NPChar) + ".";
 			link.l1.go = "Fraht_complete_1";
 		}
 		else
 		{
-			dialog.text = "I don't see your ship in the port. Lie off and then come see me again - then we will talk.";
-			link.l1 = "Alright, I'll do just that.";
+			dialog.text = "Что-то я не вижу в порту вашего корабля. Встаньте на рейд и приходите ко мне снова - тогда и поговорим.";
+			link.l1 = "Хорошо, я так и сделаю.";
 			link.l1.go = "exit";
 		}
 		break;
@@ -1085,13 +1086,13 @@ void ProcessDialogEvent()
 				pchar.questTemp.WPU.Fraht.DayLate = iTime;
 				pchar.questTemp.WPU.Fraht.PercentLate = iTime/0.2;
 				pchar.questTemp.WPU.Fraht.Money = makeint(sti(pchar.questTemp.WPU.Fraht.Money) - sti(pchar.questTemp.WPU.Fraht.Money)*sti(pchar.questTemp.WPU.Fraht.PercentLate)/100);//снижаем оплату согласно числа дней опоздания
-				dialog.text = "Hm... But you were " + FindRussianDaysString(iTime)+ " late. Therefore I must cut your payment for the freight. According to the contract, your fine is five percent of the entire some per each day of delay. Now please take your " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money)) + ", and try to stick to the contract in the future.";
-				link.l1 = "Well, it's something at least.";
+				dialog.text = "Хм... Но вы опоздали на " + FindRussianDaysString(iTime)+ ". Поэтому я вынужден снизить размер оплаты за фрахт. Согласно договору, штраф составляет 5 процентов от суммы за каждый день просрочки. Получите, пожалуйста, ваши " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money)) + ", и впредь постарайтесь выполнять условия договора в точности.";
+				link.l1 = "Спасибо и на этом.";
 				link.l1.go = "Fraht_complete_2";
 				break;
 			}
-			dialog.text = "Thanks for your work. Please take your payment - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money)) + ".";
-			link.l1 = "Thanks!";
+			dialog.text = "Спасибо за проделанную работу. Получите вашу оплату - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money)) + ".";
+			link.l1 = "Спасибо!";
 			link.l1.go = "Fraht_complete_2";
 		break;
 	
@@ -1127,27 +1128,27 @@ void ProcessDialogEvent()
 		break;
 	
 		case "Fraht_complete_bad":
-			dialog.text = "You have delivered the cargo? Actually, we had to purchase it by ourselves to turn in to the recipient. And it was quite costly, mind you. So, if you want to re-establish your goodwill, you will have to compensate our expenses and also pay the penalty. As for the cargo, you can keep it - we have no need of it anymore.";
-			link.l1 = "Yes, sure. How much?";
+			dialog.text = "Привезли груз? Да нам пришлось его самим закупать и отдавать получателю. И, знаете, нам это недешево обошлось. Если хотите восстановить свою деловую репутацию - вы будете должны компенсировать наши убытки и оплатить неустойку. Груз можете оставить себе, он нам уже не нужен.";
+			link.l1 = "Да, безусловно. Назовите сумму.";
 			link.l1.go = "Fraht_complete_bad_1";
 		break;
 	
 		case "Fraht_complete_bad_1":
 			pchar.questTemp.WPU.Fraht.GoodsAverigeCost = sti(pchar.questTemp.WPU.Fraht.GoodsAverigeCost)*3;
-			dialog.text = "Three times the cost of the goods. This amounts to " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigeCost)) + ".";
+			dialog.text = "Стоимость товара в трехкратном размере. Это составит " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigeCost)) + ".";
 			if (sti(Pchar.money) >= sti(pchar.questTemp.WPU.Fraht.GoodsAverigeCost))
 			{
-				link.l1 = "That's quite a bit. But business is business. Fine, here's your money.";
+				link.l1 = "Недешево. Но я понимаю, бизнес есть бизнес. Вот ваши деньги.";
 				link.l1.go = "Fraht_complete_pay";
 			}
-			link.l2 = "Are you crazy? Demanding such an outrageous sum is the limit of greed! You won't get anything from me!";
+			link.l2 = "Да вы с ума сошли! Требовать такую кучу денег - это верх жадности! Ничего вы от меня не получите!";
 			link.l2.go = "Fraht_complete_fail";
 		break;
 	
 		case "Fraht_complete_pay":
 			AddMoneyToCharacter(pchar, -sti(pchar.questTemp.WPU.Fraht.GoodsAverigeCost));
-			dialog.text = "A wise decision. Now I can see that you're indeed a serious person. I guess we can still work together in the future.";
-			link.l1 = "Thanks, and now I've got to go.";
+			dialog.text = "Ну что же, разумное решение. Теперь я вижу, что имею дело с серьезным человеком. Думаю, что мы сможем с вами работать и дальше.";
+			link.l1 = "Спасибо. Мне пора идти.";
 			link.l1.go = "exit";
 			ChangeCharacterComplexReputation(pchar,"nobility", 12);
 			ChangeCharacterNationReputation(pchar, sti(pchar.questTemp.WPU.Fraht.Nation), 30);
@@ -1177,8 +1178,8 @@ void ProcessDialogEvent()
 		break;
 	
 		case "Fraht_complete_fail":
-			dialog.text = "Oh, I see... Well, in that case you should never show your face again at any port authority " + NationNameGenitive(sti(pchar.questTemp.WPU.Fraht.Nation)) + "! Get lost!";
-			link.l1 = "I surely didn't miss much...";
+			dialog.text = "Значит, вот так... Ну что же, тогда более даже не смейте обращаться ни по каким вопросам в портовые управления " + NationNameGenitive(sti(pchar.questTemp.WPU.Fraht.Nation)) + "! Убирайтесь!";
+			link.l1 = "Невелика потеря...";
 			link.l1.go = "exit";
 			if (CheckAttribute(pchar, "questTemp.WPU.Escort.Bonus"))
 			{
@@ -1201,8 +1202,8 @@ void ProcessDialogEvent()
 		break;
 	
 		case "Fraht_complete_3":
-			dialog.text = "Hurry up, the recipient already knows that your ship has arrived and he worries about his cargo.";
-			link.l1 = "In that case I will not waste any more time!";
+			dialog.text = "Поторопитесь, получатель уже знает, что ваше судно прибыло, и переживает за свой товар.";
+			link.l1 = "Тогда не буду терять времени!";
 			link.l1.go = "exit";
 		break;
 	//фрахт <--
@@ -1217,16 +1218,16 @@ void ProcessDialogEvent()
 			pchar.questTemp.WPU.Postcureer.DaysQty = makeint(sti(idaysQty)*(frand(0.3)+0.7)); 
 			if (sti(pchar.questTemp.WPU.Postcureer.DaysQty) == 1) pchar.questTemp.WPU.Postcureer.DaysQty = 2;
 			pchar.questTemp.WPU.Postcureer.Money = (sti(idaysQty)*1000)*sti(idaysQty)/sti(pchar.questTemp.WPU.Postcureer.DaysQty)*(1+frand(0.2));
-			dialog.text = "This package must be delivered to the port authority in the city of " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Postcureer.City) + ", for " +  FindRussianDaysString(pchar.questTemp.WPU.Postcureer.DaysQty) + ", and as soon as possible. Payment - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money))".";
-			link.l1 = "I agree!";
+			dialog.text = "Необходимо доставить вот этот пакет в портовое управление города " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Postcureer.City) + ", за " +  FindRussianDaysString(pchar.questTemp.WPU.Postcureer.DaysQty) + ", и как можно быстрее. Оплата - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money))".";
+			link.l1 = "Я согласен!";
 			link.l1.go = "Postcureer_1";
-			link.l2 = "Hmm... But I'm not going that way. Sorry, but I have to refuse.";
+			link.l2 = "Гм... но мне совсем в другую сторону. Вынужден отказаться.";
 			link.l2.go = "exit";
 		break;
 	
 		case "Postcureer_1":
-			dialog.text = "Excellent! I am counting on you. Here's the package.";
-			link.l1 = "I will set sail at once!";
+			dialog.text = "Замечательно! Очень на вас рассчитываю. Получите, пожалуйста, пакет.";
+			link.l1 = "Уже выхожу в море!";
 			link.l1.go = "exit";
 			GiveItem2Character(pchar, "PostLetters");
 			pchar.questTemp.WPU.Postcureer = "begin";
@@ -1269,13 +1270,13 @@ void ProcessDialogEvent()
 				pchar.questTemp.WPU.Postcureer.DayLate = iTime;
 				pchar.questTemp.WPU.Postcureer.PercentLate = iTime/0.1;
 				pchar.questTemp.WPU.Postcureer.Money = makeint(sti(pchar.questTemp.WPU.Postcureer.Money) - sti(pchar.questTemp.WPU.Postcureer.Money)*sti(pchar.questTemp.WPU.Postcureer.PercentLate)/100);//снижаем оплату согласно числа дней опоздания
-				dialog.text = "Hm... But you were " + FindRussianDaysString(iTime)+ " late. Therefore I must cut your payment for the job. According to the contract, your fine is ten percent of the entire some per each day of delay. Now please take your " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money)) + ", and try to stick to the contract in the future.";
-				link.l1 = "Well, it's something at least.";
+				dialog.text = "Хм... Но вы опоздали на " + FindRussianDaysString(iTime)+ ". Поэтому я вынужден снизить размер оплаты за работу. Согласно договору, штраф составляет 10 процентов от суммы за каждый день просрочки. Получите, пожалуйста, ваши " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money)) + ", и впредь постарайтесь выполнять условия договора в точности.";
+				link.l1 = "Спасибо и на этом.";
 				link.l1.go = "Postcureer_complete_1";
 				break;
 			}
-			dialog.text = "Thanks for your work. Please take your payment - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money)) + ".";
-			link.l1 = "Thanks!";
+			dialog.text = "Спасибо за проделанную работу. Получите вашу оплату - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money)) + ".";
+			link.l1 = "Спасибо!";
 			link.l1.go = "Postcureer_complete_1";
 		break;
 	
@@ -1311,8 +1312,8 @@ void ProcessDialogEvent()
 		break;
 	
 		case "Postcureer_complete_bad":
-			dialog.text = "And what shall we do with it now? People were waiting for it god knows when, and you've brought it just today. Alright, give it to me - perhaps, there will yet be some use out of it. And I hope you understand that no payment at all is due now.";
-			link.l1 = "Of course, I do. Take your bundle. Farewell.";
+			dialog.text = "Ну и зачем она теперь нам? Люди ее ждали черти когда, а вы привезли только сегодня. Ладно, давайте ее сюда, может, на что еще и сгодится. Как вы понимаете, ни о какой оплате не может быть и речи.";
+			link.l1 = "Понимаю, конечно. Заберите вашу связку. Прощайте.";
 			link.l1.go = "exit";
 			RemoveItems(PChar, "PostLetters", 1);
 			CloseQuestHeader("Postcureer");
@@ -1335,16 +1336,16 @@ void ProcessDialogEvent()
 			idaysQty = GetMaxDaysFromIsland2Island(GetArealByCityName(pchar.questTemp.WPU.Escort.StartCity), GetArealByCityName(pchar.questTemp.WPU.Escort.City));
 			pchar.questTemp.WPU.Escort.DaysQty = makeint(sti(idaysQty)*(frand(0.5)+1)); 
 			pchar.questTemp.WPU.Escort.Money = (sti(idaysQty)*2000)*sti(idaysQty)/sti(pchar.questTemp.WPU.Escort.DaysQty)*(1+frand(0.2));
-			dialog.text = "So, you will need to escort ships '" + pchar.questTemp.WPU.Escort.ShipName1 + "' and '" + pchar.questTemp.WPU.Escort.ShipName2 + "' to the city of " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Escort.City) + ", in " +  FindRussianDaysString(pchar.questTemp.WPU.Escort.DaysQty) + ". Payment - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money))". Both ships must reach their destination safe and sound. You will turn in the ships to the official of the local port authority. He will also be the one to pay you for the job.";
-			link.l1 = "Everything seems clear. Shall I proceed?";
+			dialog.text = "Итак, необходимо сопроводить корабли '" + pchar.questTemp.WPU.Escort.ShipName1 + "' и '" + pchar.questTemp.WPU.Escort.ShipName2 + "' до города " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Escort.City) + ", за " +  FindRussianDaysString(pchar.questTemp.WPU.Escort.DaysQty) + ". Оплата - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money))". Оба корабля должны достичь пункта назначения в целости и сохранности. Корабли сдадите тамошнему служащему портового управления, оплату получите у него же.";
+			link.l1 = "Задача ясна. Приступаю к выполнению?";
 			link.l1.go = "escort_1";
-			link.l2 = "Hmm... But I'm not going that way. Sorry, but I have to refuse.";
+			link.l2 = "Гм... но мне совсем в другую сторону. Вынужден отказаться.";
 			link.l2.go = "exit";
 		break;
 	
 		case "escort_1":
-			dialog.text = "Go ahead. Those ships are at your command at this point.";
-			link.l1 = "I am setting sail, then!";
+			dialog.text = "Приступайте. Корабли передаются под ваше командование.";
+			link.l1 = "Отправляюсь в путь!";
 			link.l1.go = "escort_add_ships";
 			pchar.questTemp.WPU.Escort = "begin";
 			pchar.questTemp.WPU.Escort.ShipNation = npchar.nation;//нация отправителя
@@ -1434,8 +1435,8 @@ void ProcessDialogEvent()
 			//проверяем, все ли корабли
 			if (GetCharacterIndex("EscortCaptain_1") == -1 || GetCharacterIndex("EscortCaptain_2") == -1)
 			{
-				dialog.text = "Hmm... I only see one ship in your escort. Is this correct?";
-				link.l1 = "Yes, " + GetAddress_FormToNPC(NPChar) + ". Another one was sunk in a battle with an enemy squadron.";
+				dialog.text = "Гм... Я вижу, у вас в составе эскорта только один корабль. Это так?";
+				link.l1 = "Да, " + GetAddress_FormToNPC(NPChar) + ". Второй утонул в бою с неприятельской эскадрой.";
 				if (CheckAttribute(pchar, "questTemp.WPU.Escort.Bonus")) 
 				{
 					link.l1.go = "EscortBonus_complete_fail";
@@ -1454,8 +1455,8 @@ void ProcessDialogEvent()
 				amount = sti(pchar.questTemp.WPU.Escort.GoodsQty) - GetSquadronGoods(pchar, sti(pchar.questTemp.WPU.Escort.Goods));
 				if (amount > 0)
 				{
-					dialog.text = "Alright, then. You were supposed to escort ships and deliver the cargo of " + GetGoodsNameAlt(iGoods)+ " in amount of " + FindRussianQtyString(sti(pchar.questTemp.WPU.Escort.GoodsQty)) + ". But I see that you've delivered not the entire shipment - you are " + FindRussianQtyString(sti(amount)) + " short.";
-					link.l1 = "A thousand sharks! It must be those cursed rats! But don't you worry, " + GetAddress_FormToNPC(NPChar) + ", I will purchase the missing amount and turn in the entire batch.";
+					dialog.text = "Так, замечательно. Вы должны были сопроводить корабли и привезти груз " + GetGoodsNameAlt(iGoods)+ " в количестве " + FindRussianQtyString(sti(pchar.questTemp.WPU.Escort.GoodsQty)) + ". Но я вижу, что вы привезли не весь груз -  не хватает " + FindRussianQtyString(sti(amount)) + " товара.";
+					link.l1 = "Тысяча акул! Проклятые крысы сожрали! Не беспокойтесь, " + GetAddress_FormToNPC(NPChar) + ", я докуплю недостающее количество и сдам груз в полном комплекте.";
 					link.l1.go = "Fraht_complete_3";
 					break;
 				}
@@ -1466,26 +1467,26 @@ void ProcessDialogEvent()
 				pchar.questTemp.WPU.Escort.DayLate = iTime;
 				pchar.questTemp.WPU.Escort.PercentLate = iTime/0.1;
 				pchar.questTemp.WPU.Escort.Money = makeint(sti(pchar.questTemp.WPU.Escort.Money) - sti(pchar.questTemp.WPU.Escort.Money)*sti(pchar.questTemp.WPU.Escort.PercentLate)/100);//снижаем оплату согласно числа дней опоздания
-				dialog.text = "Hm... But you were " + FindRussianDaysString(iTime)+ " late. Therefore I must cut your payment for the job. According to the contract, your fine is ten percent of the entire some per each day of delay. Now please take your " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money)) + ", and try to stick to the contract in the future.";
-				link.l1 = "Well, it's something at least.";
+				dialog.text = "Хм... Но вы опоздали на " + FindRussianDaysString(iTime)+ ". Поэтому я вынужден снизить размер оплаты за работу. Согласно договору, штраф составляет 10 процентов от суммы за каждый день просрочки. Получите, пожалуйста, ваши " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money)) + ", и впредь постарайтесь выполнять условия договора в точности.";
+				link.l1 = "Спасибо и на этом.";
 				link.l1.go = "Escort_complete_1";
 				break;
 			}
 			if (CheckAttribute(pchar, "questTemp.WPU.Escort.Bonus")) 
 			{
-				dialog.text = "Alright, then. You were supposed to escort ships and deliver the cargo of " + GetGoodsNameAlt(iGoods)+ " in amount of " + FindRussianQtyString(sti(pchar.questTemp.WPU.Escort.GoodsQty)) + ". Thanks for your work. Please take your payment - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money)) + ".";
+				dialog.text = "Так, замечательно. Вы должны были сопроводить корабли и привезти груз " + GetGoodsNameAlt(iGoods)+ " в количестве " + FindRussianQtyString(sti(pchar.questTemp.WPU.Escort.GoodsQty)) + ". Спасибо за проделанную работу. Получите вашу оплату - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money)) + ".";
 			}
 			else
 			{
-				dialog.text = "Thanks for your work. Please take your payment - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money)) + ".";
+				dialog.text = "Спасибо за проделанную работу. Получите вашу оплату - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money)) + ".";
 			}
-			link.l1 = "Thanks!";
+			link.l1 = "Спасибо!";
 			link.l1.go = "Escort_complete_1";
 		}
 		else
 		{
-			dialog.text = "I don't see your ship in the port. Lie off and then come see me again - then we will talk.";
-			link.l1 = "Alright, I'll do just that.";
+			dialog.text = "Что-то я не вижу в порту вашего корабля. Встаньте на рейд и приходите ко мне снова - тогда и поговорим.";
+			link.l1 = "Хорошо, я так и сделаю.";
 			link.l1.go = "exit";
 		}
 		break;
@@ -1546,16 +1547,16 @@ void ProcessDialogEvent()
 			pchar.questTemp.WPU.Escort.Money = (sti(idaysQty)*2000)*sti(idaysQty)/sti(pchar.questTemp.WPU.Escort.DaysQty)*(1+frand(0.2));//оплата за сопровождение
 			pchar.questTemp.WPU.Escort.BonusMoney = (makeint((sti(iGoodsQty) * sti(Goods[iGoods].Weight) / sti(Goods[iGoods].Units))))*(sti(idaysQty)*2)*sti(idaysQty)/sti(pchar.questTemp.WPU.Escort.DaysQty);//оплата за фрахт
 			pchar.questTemp.WPU.Escort.TotalMoney = sti(pchar.questTemp.WPU.Escort.Money)+sti(pchar.questTemp.WPU.Escort.BonusMoney); // общая сумма
-			dialog.text = "So, you will need to escort ships '" + pchar.questTemp.WPU.Escort.ShipName1 + "' and '" + pchar.questTemp.WPU.Escort.ShipName2 + "' to the city of " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Escort.City) + ", in " +  FindRussianDaysString(pchar.questTemp.WPU.Escort.DaysQty) + ". Payment - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money))+ "\nAlso on your ship, I place the load " + GetGoodsNameAlt(iGoods)+ " in amount of " + FindRussianQtyString(iGoodsQty) + ". Payment for the delivery - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.BonusMoney))+".";
-			link.l1 = "Everything seems clear. Shall I proceed?";
+			dialog.text = "Итак, необходимо сопроводить корабли '" + pchar.questTemp.WPU.Escort.ShipName1 + "' и '" + pchar.questTemp.WPU.Escort.ShipName2 + "' до города " + XI_ConvertString("Colony" + pchar.questTemp.WPU.Escort.City) + ", за " +  FindRussianDaysString(pchar.questTemp.WPU.Escort.DaysQty) + ". Оплата - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money))+ "\nТакже на вашем корабле я размещаю груз " + GetGoodsNameAlt(iGoods)+ " в количестве " + FindRussianQtyString(iGoodsQty) + ". Оплата за его доставку - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.BonusMoney))+".";
+			link.l1 = "Задача ясна. Приступаю к выполнению?";
 			link.l1.go = "escort_bonus_1";
-			link.l2 = "Hmm... But I'm not going that way. Sorry, but I have to refuse.";
+			link.l2 = "Гм... но мне совсем в другую сторону. Вынужден отказаться.";
 			link.l2.go = "exit";
 		break;
 	
 		case "escort_bonus_1":
-			dialog.text = "Excellent! Take command of the squadron.";
-			link.l1 = "I am setting sail, then!";
+			dialog.text = "Очень хорошо! Принимайте командование эскадрой.";
+			link.l1 = "Отправляюсь в путь!";
 			link.l1.go = "escort_add_ships";
 			iGoods = pchar.questTemp.WPU.Escort.Goods;
 			AddCharacterGoods(pchar, sti(pchar.questTemp.WPU.Escort.Goods), sti(pchar.questTemp.WPU.Escort.GoodsQty));
@@ -1591,8 +1592,8 @@ void ProcessDialogEvent()
 		break;
 	
 		case "Escort_complete_fail":
-			dialog.text = "Unbelievable! And what did we need you for? How could you allow this to happen?! I hope you understand that a reward is now out of question.";
-			link.l1 = "Of course, I do... Well, best regards.";
+			dialog.text = "Невероятно! А зачем же тогда нужны были вы? Как вы допустили такое?! Я думаю, вам понятно, что ни о каком вознаграждении речи быть не может. Прощайте.";
+			link.l1 = "Какое уж там вознаграждение... Всего доброго.";
 			link.l1.go = "exit";
 			pchar.quest.Escort_fail.over = "yes";//снять прерывание
 			pchar.quest.EscortTime_Over.over = "yes";//снять прерывание // patch-2
@@ -1625,25 +1626,25 @@ void ProcessDialogEvent()
 				if (amount > 0 && amount <= 100)
 				{
 					pchar.questTemp.WPU.Escort.BonusMoney = sti(pchar.questTemp.WPU.Escort.MinusMoney);
-					dialog.text = "Unbelievable! And what did we need you for? How could you allow this to happen?! I hope you understand that a reward for the escort is now out of question... Not only that, but you're short of cargo as well - " + FindRussianQtyString(sti(amount)) + "\nIn general, I pay you a fee only for the freight, less the value of the missing items, for what you have ever taken the goods in acceptable condition. Get your " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.BonusMoney))+ " and you can go wherever you like.";
-					link.l1 = "Well, it's something at least.";
+					dialog.text = "Невероятно! А зачем же тогда нужны были вы? Как вы допустили такое?! Я думаю, вам понятно, что ни о каком вознаграждении за сопровождение речи быть не может... Да еще и груза у вас недостача - " + FindRussianQtyString(sti(amount)) + "\nВ общем, я плачу вам вознаграждение только за фрахт, за вычетом стоимости недостающего товара, за то, что вы хоть груз доставили в приемлемом виде. Получите ваши " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.BonusMoney))+ " и можете быть свободны.";
+					link.l1 = "Спасибо и на этом.";
 					link.l1.go = "EscortBonus_complete_fail_1";
 					break;
 				}
 				if (amount > 100)
 				{
-					dialog.text = "Incredible! Why, then you needed? How do you make this? I think you understand that about any remuneration for maintenance can be no question ... Yes, and you load a huge loss\nI do not have time to wait until you are acquiring the missing amount. So you have to offset the cost of shipping the money in full - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigeCost))+ ". Cargo itself leave yourself.";
+					dialog.text = "Невероятно! А зачем же тогда нужны были вы? Как вы допустили такое?! Я думаю, вам понятно, что ни о каком вознаграждении за сопровождение речи быть не может... Да еще и груза у вас огромная недостача\nУ меня нет возможности ждать, пока вы докупите недостающее количество. Поэтому вам придется компенсировать стоимость груза деньгами в полном объеме - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigeCost))+ ". Сам же груз оставьте себе.";
 					if (sti(pchar.money) >= sti(pchar.questTemp.WPU.Fraht.GoodsAverigeCost))
 					{
-						link.l1 = "Alright, don't get too steamed up. Here's your money.";
+						link.l1 = "Хорошо-хорошо, не кипятитесь, вот ваши деньги.";
 						link.l1.go = "EscortBonus_complete_fail_2";
 					}
-					link.l2 = "Have you all gone crazy? This is literal extortion! I won't give you anything!";
+					link.l2 = "Да вы тут с ума посходили! Это же самое настоящее вымогательство! Ничего я вам не дам!";
 					link.l2.go = "EscortBonus_complete_fail_3";
 					break;
 				}
-				dialog.text = "Incredible! Why, then you needed? How do you make this? I think you understand that about any remuneration for maintenance can be no question\nIn general, I pay you a fee only for the freight for the goods that you have ever taken. Get your " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.BonusMoney))+ " and you can go wherever you like.";
-				link.l1 = "Well, it's something at least.";
+				dialog.text = "Невероятно! А зачем же тогда нужны были вы? Как вы допустили такое?! Я думаю, вам понятно, что ни о каком вознаграждении за сопровождение речи быть не может\nВ общем, я плачу вам вознаграждение только за фрахт, за то, что вы хоть груз доставили. Получите ваши " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.BonusMoney))+ " и можете быть свободны.";
+				link.l1 = "Спасибо и на этом.";
 				link.l1.go = "EscortBonus_complete_fail_1";
 				break;
 			}
@@ -1656,18 +1657,18 @@ void ProcessDialogEvent()
 				pchar.questTemp.WPU.Escort.BonusMoney = makeint(sti(pchar.questTemp.WPU.Escort.BonusMoney) - sti(pchar.questTemp.WPU.Escort.BonusMoney)*sti(pchar.questTemp.WPU.Escort.PercentLate)/100);//снижаем оплату согласно числа дней опоздания
 				if (amount > 0)
 				{
-					dialog.text = "Unbelievable! And what did we need you for? How could you allow this to happen?! I hope you understand that a reward for the escort is now out of question... You've lost a ship, you arrived " + FindRussianDaysString(iTime)+ ", late, and not only that, but you're short of cargo as well - " + FindRussianQtyString(sti(amount)) + "\nI do not have time to wait until you are acquiring the missing amount. So you have to offset the cost of shipping the money in full " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigeCost))+ ". As for the cargo, you can keep it.";
+					dialog.text = "Невероятно! А зачем же тогда нужны были вы? Как вы допустили такое?! Я думаю, вам понятно, что ни о каком вознаграждении за сопровождение речи быть не может... Корабль потеряли, опоздали на " + FindRussianDaysString(iTime)+ ", да еще и груза у вас недостача - " + FindRussianQtyString(sti(amount)) + "\nУ меня нет возможности ждать, пока вы докупите недостающее количество. Поэтому вам придется компенсировать стоимость груза деньгами в полном объеме - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigeCost))+ ". Сам же груз оставьте себе.";
 					if (sti(pchar.money) >= sti(pchar.questTemp.WPU.Fraht.GoodsAverigeCost))
 					{
-						link.l1 = "Alright, don't get too steamed up. Here's your money.";
+						link.l1 = "Хорошо-хорошо, не кипятитесь, вот ваши деньги.";
 						link.l1.go = "EscortBonus_complete_fail_2";
 					}
-					link.l2 = "Have you all gone crazy? This is literal extortion! I won't give you anything!";
+					link.l2 = "Да вы тут с ума посходили! Это же самое настоящее вымогательство! Ничего я вам не дам!";
 					link.l2.go = "EscortBonus_complete_fail_3";
 					break;
 				}
-				dialog.text = "Unbelievable! And what did we need you for? How could you allow this to happen?! I hope you understand that a reward for the escort is now out of question... Besides, you delayed by " + FindRussianDaysString(iTime)+ "\nSo I had to reduce the amount of payment for the freight. Under the agreement, the penalty is 10 percent of the amount for each day of delay. Now, please, your " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.BonusMoney)) + ", and you can go.";
-				link.l1 = "Well, it's something at least.";
+				dialog.text = "Невероятно! А зачем же тогда нужны были вы? Как вы допустили такое?! Я думаю, вам понятно, что ни о каком вознаграждении за сопровождение речи быть не может... Да еще и опоздали на " + FindRussianDaysString(iTime)+ "\nПоэтому я вынужден снизить размер оплаты за фрахт. Согласно договору, штраф составляет 10 процентов от суммы за каждый день просрочки. Получите, пожалуйста, ваши " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.BonusMoney)) + ", и можете быть свободны.";
+				link.l1 = "Спасибо и на этом.";
 				link.l1.go = "EscortBonus_complete_fail_1";
 				break;
 			}
@@ -1714,8 +1715,8 @@ void ProcessDialogEvent()
 		break;
 	
 		case "EscortBonus_complete_fail_3"://потеряли корабль и груз, время норма или нет, война
-			dialog.text = "Oh, I see... Well, in that case you should never show your face again at any port authority " + NationNameGenitive(sti(pchar.questTemp.WPU.Escort.Nation)) + "! Get lost!";
-			link.l1 = "I surely didn't miss much...";
+			dialog.text = "Значит, вот так... Ну что же, тогда более даже не смейте обращаться ни по каким вопросам в портовые управления " + NationNameGenitive(sti(pchar.questTemp.WPU.Escort.Nation)) + "! Убирайтесь!";
+			link.l1 = "Невелика потеря...";
 			link.l1.go = "exit";
 			AddQuestRecord("Escort", "14");
 			AddQuestUserData("Escort", "sMoney", FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigeCost)));
@@ -1735,8 +1736,8 @@ void ProcessDialogEvent()
 		break;
 	
 		case "Escort_fail"://потеряли 2 корабля
-			dialog.text = "This is very, very bad! What have we hired you for, can you tell me? To guard the ships? Or just to hang around?";
-			link.l1 = "I understand. The enemy was simply too strong, and... but what's the point of arguing - what had happened, had already happened. But the cargo - the cargo is still there! So let's sort it out.";
+			dialog.text = "Это очень и очень плохо! А для чего, скажите, вас тогда нанимали, а? Для охраны, или просто так?";
+			link.l1 = "Я все понимаю. Противник был очень силен, и... ну, к чему слова - дело-то уже сделано... Но груз-то, груз я привез! Давайте с ним разбираться.";
 			link.l1.go = "Escort_fail_complete";
 		break;
 	
@@ -1745,13 +1746,13 @@ void ProcessDialogEvent()
 			amount = sti(pchar.questTemp.WPU.Escort.GoodsQty) - GetSquadronGoods(pchar, sti(pchar.questTemp.WPU.Escort.Goods));
 			if (amount > 0)
 			{
-				dialog.text = "Let's see, then. You were supposed to deliver a load of " + GetGoodsNameAlt(iFrahtGoods)+ " in amount of " + FindRussianQtyString(pchar.questTemp.WPU.Escort.GoodsQty) + ". But I see that you've delivered not the entire shipment - you are " + FindRussianQtyString(sti(amount)) + " short.";
-				link.l1 = "A thousand sharks! It must be those cursed rats! But don't you worry, " + GetAddress_FormToNPC(NPChar) + ", I will purchase the missing amount and turn in the entire batch.";
+				dialog.text = "Давайте посмотрим. Вы должны были привезти груз " + GetGoodsNameAlt(iFrahtGoods)+ " в количестве " + FindRussianQtyString(pchar.questTemp.WPU.Escort.GoodsQty) + ". Но я вижу, что вы привезли не весь груз - не хватает " + FindRussianQtyString(sti(amount)) + " товара.";
+				link.l1 = "Тысяча акул! Проклятые крысы сожрали! Не беспокойтесь, " + GetAddress_FormToNPC(NPChar) + ", я докуплю недостающее количество и сдам груз в полном комплекте.";
 				link.l1.go = "Fraht_complete_3";
 				break;
 			}
-			dialog.text = "Let's see, then. You were supposed to deliver a load of " + GetGoodsNameAlt(iFrahtGoods)+ " in amount of " + FindRussianQtyString(pchar.questTemp.WPU.Escort.GoodsQty) + ". Correct?";
-			link.l1 = "Absolutely correct, " + GetAddress_FormToNPC(NPChar) + ".";
+			dialog.text = "Давайте посмотрим. Вы должны были привезти груз " + GetGoodsNameAlt(iFrahtGoods)+ " в количестве " + FindRussianQtyString(pchar.questTemp.WPU.Escort.GoodsQty) + ". Так?";
+			link.l1 = "Совершенно верно, " + GetAddress_FormToNPC(NPChar) + ".";
 			link.l1.go = "Escort_fail_complete_1";
 		break;
 	
@@ -1764,13 +1765,13 @@ void ProcessDialogEvent()
 				pchar.questTemp.WPU.Escort.DayLate = iTime;
 				pchar.questTemp.WPU.Escort.PercentLate = iTime/0.1;
 				pchar.questTemp.WPU.Escort.Money = makeint(sti(pchar.questTemp.WPU.Escort.Money) - sti(pchar.questTemp.WPU.Escort.Money)*sti(pchar.questTemp.WPU.Escort.PercentLate)/100);//снижаем оплату согласно числа дней опоздания
-				dialog.text = "Hmm... Not only you lost the ships which were entrusted to you, but you also delayed by " + FindRussianDaysString(iTime)+ ". So I had to reduce the amount of payment for the freight. Since you were not able to save the caravan pay for the freight I halved, and this is the most that I can pay you\nIn addition, according to the contract, the penalty is 10 percent of the amount for each day of delay. Now, please, your " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money)) + ", and you can go.";
-				link.l1 = "Well, it's something at least.";
+				dialog.text = "Хм... Мало того, что вы потеряли вверенные корабли, вы еще и опоздали на " + FindRussianDaysString(iTime)+ ". Поэтому я вынужден снизить размер оплаты за фрахт. Так как вы не смогли сохранить караван, оплату за фрахт я уменьшаю вдвое, и это самое большее, что я могу вам заплатить\nКроме того, согласно договору, штраф составляет 10 процентов от суммы за каждый день просрочки. Получите, пожалуйста, ваши " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money)) + ", и можете быть свободны.";
+				link.l1 = "Спасибо и на этом.";
 				link.l1.go = "Escort_fail_complete_2";
 				break;
 			}
-			dialog.text = "Well, even though I am extremely upset that you could not protect entrusted ships, at least you delivered the goods. Since you were not able to save the caravan pay for the freight I halved, and this is the most that I can pay you\nGet your payment - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money)) + " and you can go wherever you like.";
-			link.l1 = "Well, it's something at least.";
+			dialog.text = "Ну что же, хоть я и невероятно расстроен, что вы не смогли защитить вверенные корабли, по крайней мере груз вы доставили. Так как вы не смогли сохранить караван, оплату за фрахт я уменьшаю вдвое, и это самое большее, что я могу вам заплатить\nПолучите вашу оплату - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money)) + " и можете быть свободны.";
+			link.l1 = "Спасибо и на этом.";
 			link.l1.go = "Escort_fail_complete_2";
 		break;
 	
@@ -1825,52 +1826,50 @@ void ProcessDialogEvent()
 			switch (rand(3))
 			{
 				case 0:
-					dialog.text = "You will need to deliver an urgent official dispatch for the governor of the town of "+XI_ConvertString("Colony"+pchar.questTemp.WPU.Postcureer.City+"Gen")+" not later than "+FindRussianDaysString(sti(pchar.questTemp.WPU.Postcureer.DaysQty))+". Be very careful - our enemies might be hunting that dispatch as well. Payment for the delivery - "+FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money))+".";
-					link.l1 = "I agree!";
+					dialog.text = "Необходимо срочно доставить важную государственную депешу для губернатора города "+XI_ConvertString("Colony"+pchar.questTemp.WPU.Postcureer.City+"Gen")+" не позже, чем за "+FindRussianDaysString(sti(pchar.questTemp.WPU.Postcureer.DaysQty))+". Соблюдайте меры предосторожности - за этой депешей может вестись охота. Оплата за доставку - "+FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money))+".";
+					link.l1 = "Я согласен!";
 					link.l1.go = "Postcureer_LevelUp_Go";
-					link.l2 = "No, I guess I'll pass.";
+					link.l2 = "Нет, откажусь, пожалуй.";
 					link.l2.go = "Postcureer_LevelDown";
 					pchar.questTemp.WPU.Postcureer.TargetPortmanID = pchar.questTemp.WPU.Postcureer.City +"_Mayor";//ИД губера
 					if (pchar.questTemp.WPU.Postcureer.TargetPortmanID == "Villemstad_Mayor") pchar.questTemp.WPU.Postcureer.TargetPortmanID = "hol_guber"; // фикс Матиаса Бека #717
-					pchar.questTemp.WPU.Current.Add = "a dispatch for the governor";
+					pchar.questTemp.WPU.Current.Add = "депешу для губернатора";
 					pchar.questTemp.WPU.Current.Item = "letter_2";//предмет
 					pchar.questTemp.WPU.Current.Itemdescr = "itmdescr_letter_2_PortmanLevelUp1";//описание
 				break;
 			
 				case 1:
-					dialog.text = "You will need to deliver these papers for the store owner "+XI_ConvertString("Colony"+pchar.questTemp.WPU.Postcureer.City+"Gen")+" not later than "+FindRussianDaysString(sti(pchar.questTemp.WPU.Postcureer.DaysQty))+". This is the latest summary of the prices in stores all over the archipelago - a valuable commercial document. Care should be taken - competitors may well arrange a hunt. Payment on delivery - "+FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money))+".";
-					link.l1 = "I agree!";
+					dialog.text = "Необходимо доставить эти бумаги для хозяина магазина "+XI_ConvertString("Colony"+pchar.questTemp.WPU.Postcureer.City+"Gen")+" не позже, чем за "+FindRussianDaysString(sti(pchar.questTemp.WPU.Postcureer.DaysQty))+". Это последняя сводка цен в магазинах всего архипелага - ценнейший коммерческий документ. Следует проявить осторожность - конкуренты вполне могут устроить охоту. Оплата за доставку - "+FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money))+".";
+					link.l1 = "Я согласен!";
 					link.l1.go = "Postcureer_LevelUp_Go";
-					link.l2 = "No, I guess I'll pass.";
+					link.l2 = "Нет, откажусь, пожалуй.";
 					link.l2.go = "Postcureer_LevelDown";
 					pchar.questTemp.WPU.Postcureer.TargetPortmanID = pchar.questTemp.WPU.Postcureer.City +"_trader";//ИД торговца
-//					pchar.questTemp.WPU.Current.Add = "сводку цен для хозяина магазина";
-					pchar.questTemp.WPU.Current.Add = "a price list for the store owner";     // LDH 23Jan17 translated
+					pchar.questTemp.WPU.Current.Add = "сводку цен для хозяина магазина";
 					pchar.questTemp.WPU.Current.Item = "letter_2";//предмет
 					pchar.questTemp.WPU.Current.Itemdescr = "itmdescr_letter_2_PortmanLevelUp2";//описание
 				break;
 			
 				case 2:
-					dialog.text = "You will need to deliver this bundle of documents for the usurer in the town of "+XI_ConvertString("Colony"+pchar.questTemp.WPU.Postcureer.City+"Gen")+" no later than "+FindRussianDaysString(sti(pchar.questTemp.WPU.Postcureer.DaysQty))+". Here is a very important information about currency exchange rates and stock prices. Be very careful - this package is already interested in some shady characters. Payment on delivery - "+FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money))+".";
-					link.l1 = "I agree!";
+					dialog.text = "Необходимо доставить этот пакет документов для ростовщика города "+XI_ConvertString("Colony"+pchar.questTemp.WPU.Postcureer.City+"Gen")+" не позже, чем за "+FindRussianDaysString(sti(pchar.questTemp.WPU.Postcureer.DaysQty))+". Здесь очень важная деловая информация о курсах валют и ценных бумаг. Будьте начеку - этим пакетом уже интересовались какие-то темные личности. Оплата за доставку - "+FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money))+".";
+					link.l1 = "Я согласен!";
 					link.l1.go = "Postcureer_LevelUp_Go";
-					link.l2 = "No, I guess I'll pass.";
+					link.l2 = "Нет, откажусь, пожалуй.";
 					link.l2.go = "Postcureer_LevelDown";
 					pchar.questTemp.WPU.Postcureer.TargetPortmanID = pchar.questTemp.WPU.Postcureer.City +"_usurer";//ИД ростовщика
-//					pchar.questTemp.WPU.Current.Add = "пакет с деловой информацией для ростовщика";
-					pchar.questTemp.WPU.Current.Add = "a packet of information for the moneylender";   // LDH 23Jan17 translated
+					pchar.questTemp.WPU.Current.Add = "пакет с деловой информацией для ростовщика";
 					pchar.questTemp.WPU.Current.Item = "letter_2";//предмет
 					pchar.questTemp.WPU.Current.Itemdescr = "itmdescr_letter_2_PortmanLevelUp3";//описание
 				break;
 			
 				case 3:
-					dialog.text = "You should deliver this bundle to the dock master in the town of "+XI_ConvertString("Colony"+pchar.questTemp.WPU.Postcureer.City+"Gen")+" no later than "+FindRussianDaysString(sti(pchar.questTemp.WPU.Postcureer.DaysQty))+". It contains blueprints for the new "+RandPhraseSimple(LinkRandPhrase("brig","corvette","frigate"), LinkRandPhrase("flute","pinnace","galleon"))+", employing unique technological designs. I hope you do understand that there are other... interested parties, so you'll have to act discreetly. Payment for the delivery - "+FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money))+".";
-					link.l1 = "I agree!";
+					dialog.text = "Необходимо доставить этот сверток хозяину верфи города "+XI_ConvertString("Colony"+pchar.questTemp.WPU.Postcureer.City+"Gen")+" не позже, чем за "+FindRussianDaysString(sti(pchar.questTemp.WPU.Postcureer.DaysQty))+". В нем находится строительный чертеж нового "+RandPhraseSimple(LinkRandPhrase("брига","корвета","фрегата"), LinkRandPhrase("флейта","пинаса","галеона"))+", содержащий уникальные технические разработки. Думаю, понятно, что этим чертежом могут интересоваться и другие... заинтересованные лица, так что учтите это. Оплата за доставку - "+FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money))+".";
+					link.l1 = "Я согласен!";
 					link.l1.go = "Postcureer_LevelUp_Go";
-					link.l2 = "No, I guess I'll pass.";
+					link.l2 = "Нет, откажусь, пожалуй.";
 					link.l2.go = "Postcureer_LevelDown";
 					pchar.questTemp.WPU.Postcureer.TargetPortmanID = pchar.questTemp.WPU.Postcureer.City +"_shipyarder";//ИД верфиста
-					pchar.questTemp.WPU.Current.Add = "the draft of a new ship for the owner of the shipyard";
+					pchar.questTemp.WPU.Current.Add = "чертеж нового корабля для хозяина верфи";
 					pchar.questTemp.WPU.Current.Item = "ShipyardsMap";//предмет
 					pchar.questTemp.WPU.Current.Itemdescr = "itmdescr_ShipyardsMap_PortmanLevelUp4";//описание
 				break;
@@ -1878,8 +1877,8 @@ void ProcessDialogEvent()
 		break;
 	
 		case "Postcureer_LevelUp_Go":
-			dialog.text = "Then take the documents and set sail. Best of luck... and may the Almighty be watching over you.";
-			link.l1 = "Thanks!";
+			dialog.text = "Тогда держите документы и отправляйтесь в путь. Желаю удачи и... да хранит вас Господь.";
+			link.l1 = "Спасибо!";
 			link.l1.go = "Forsmajor_choose";
 			pchar.questTemp.WPU.Postcureer = "begin";
 			pchar.questTemp.WPU.Postcureer.LevelUp = "true";
@@ -1908,8 +1907,8 @@ void ProcessDialogEvent()
 		break;
 	
 		case "Postcureer_LevelDown":
-			dialog.text = "Pity, indeed... Actually, offers of that kind are usually not tossed up. But it's your call, anyway.";
-			link.l1 = "Yes, that's my call, " + GetAddress_FormToNPC(NPChar) + ".";
+			dialog.text = "Жаль, очень жаль... Вообще-то, такими предложениями не разбрасываются. Но это ваше дело, конечно.";
+			link.l1 = "Вот именно - мое дело. До свидания, " + GetAddress_FormToNPC(NPChar) + ".";
 			link.l1.go = "exit";
 			pchar.questTemp.WPU.Postcureer.count = sti(pchar.questTemp.WPU.Postcureer.count) - 1;//за отказ от спецзадания счетчик скрутим
 		break;
@@ -1949,14 +1948,14 @@ void ProcessDialogEvent()
 		break;
 
 		case "Postcureer_complete_fail":
-			dialog.text = "Damn it! So they've tracked you, after all. A pity you're not a soldier, captain - in that case things might have turned out differently... What did they look like?";
-			link.l1 = "Two strong stout men in black with half-masks on their faces, armed with poleaxes and double-barreled guns...";
+			dialog.text = "Проклятие! Значит, они все-таки выследили... Эх, жаль, капитан, что вы не солдат - так может все по-другому бы вышло... Как они выглядели?";
+			link.l1 = "Два крепких здоровых типа, в черной одежде, в полумасках на лицах, вооружены секирами и двустволками...";
 			link.l1.go = "Postcureer_complete_fail_1";
 		break;
 
 		case "Postcureer_complete_fail_1":
-			dialog.text = "I will notify the governor immediately to start looking for them. Alright, see you, " + GetAddress_Form(NPChar) + ". Again, it's a pity you're not a soldier...";
-			link.l1 = "I am really sorry, " + GetAddress_FormToNPC(NPChar) + ", for what's happened. Well, farewell.";
+			dialog.text = "Я немедленно сообщу губернатору, чтобы начали поиск. Ну, всего доброго, " + GetAddress_Form(NPChar) + ". Повторюсь - очень жаль, что вы не солдат...";
+			link.l1 = "Мне тоже очень жаль, " + GetAddress_FormToNPC(NPChar) + ", что так вышло. До свидания.";
 			link.l1.go = "exit";
 			if (pchar.questTemp.WPU.Postcureer == "begin") pchar.quest.PostcureerTime_Over.over = "yes";//снять таймер
 			if (pchar.questTemp.WPU.Postcureer == "late") pchar.quest.PostcureerTime_FullOver.over = "yes";//снять второй таймер
@@ -1981,16 +1980,16 @@ void ProcessDialogEvent()
 			case 0:
 				pchar.questTemp.WPU.Fraht.Goods = GOOD_CHOCOLATE + drand(makeint(GOOD_TOBACCO - GOOD_CHOCOLATE));
 				iGoods = pchar.questTemp.WPU.Fraht.Goods;
-				iGoodsQty = 3000 + sti(pchar.rank)*30*(drand(9)+1);
+				//iGoodsQty = 3000 + sti(pchar.rank)*30*(drand(9)+1);
+				iGoodsQty = 1000+sti(pchar.rank)*10*(drand(9)+1); // min 1100 max 5000
 				pchar.questTemp.WPU.Fraht.GoodsQty = iGoodsQty;
 				pchar.questTemp.WPU.Fraht.GoodsAverigePrice = sti(Goods[iGoods].Cost)*2;//двойная цена единицы товара
 				pchar.questTemp.WPU.Fraht.Money = sti(Goods[iGoods].Cost)*sti(pchar.questTemp.WPU.Fraht.GoodsQty)*2;//двойная стоимость товара
-				pchar.questTemp.WPU.Current.Add = "double";
-				// 08Mar17 "month" was "moths"
-				dialog.text = "A demand for a certain merchandise has recently dramatically increased in or colony. It's not in the stores anymore. I would like to ask you to deliver to me " + GetGoodsNameAlt(iGoods)+ " in amount of " + FindRussianQtyString(iGoodsQty) + ", and I am willing to pay double - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigePrice)) + " per item. This will amount to " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money)) + ". Oh, and try to meet the deadline of one month - I won't be able to wait for it any longer.";
-				link.l1 = "Alright, I'll accept this mission.";
+				pchar.questTemp.WPU.Current.Add = "двойную";
+				dialog.text = "В нашей колонии резко возрос спрос на один товар. В магазине его уже не достать. Я бы хотел попросить вас привезти мне " + GetGoodsNameAlt(iGoods)+ " в количестве " + FindRussianQtyString(iGoodsQty) + ", и готов заплатить за него двойную цену - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigePrice)) + " за единицу. В сумме это составит " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money)) + ". Да, и постарайтесь уложиться за месяц - дольше ждать я не могу.";
+				link.l1 = "Хорошо, я берусь за это дело.";
 				link.l1.go = "Fraht_LevelUp_Go";
-				link.l2 = "I am sorry to disappoint you, but I cannot do it at this moment.";
+				link.l2 = "Мне жаль разочаровывать вас, но сейчас я заняться этим не могу.";
 				link.l2.go = "Fraht_LevelDown";
 				SetNull2StoreGood(rColony, sti(pchar.questTemp.WPU.Fraht.Goods));
 			break;
@@ -1998,33 +1997,34 @@ void ProcessDialogEvent()
 			case 1:
 				pchar.questTemp.WPU.Fraht.Goods = GOOD_EBONY + drand(makeint(GOOD_CINNAMON - GOOD_EBONY));
 				iGoods = pchar.questTemp.WPU.Fraht.Goods;
-				iGoodsQty = 1500 + sti(pchar.rank)*20*(drand(9)+1);
+				//iGoodsQty = 1500 + sti(pchar.rank)*20*(drand(9)+1);
+				iGoodsQty = 600+sti(pchar.rank)*5*(drand(6)+1); // min 630 max 2000
 				pchar.questTemp.WPU.Fraht.GoodsQty = iGoodsQty;
 				pchar.questTemp.WPU.Fraht.GoodsAverigePrice = sti(Goods[iGoods].Cost)*2;//двойная цена единицы товара
 				pchar.questTemp.WPU.Fraht.Money = sti(Goods[iGoods].Cost)*sti(pchar.questTemp.WPU.Fraht.GoodsQty)*2;//двойная стоимость товара
-				pchar.questTemp.WPU.Current.Add = "double";
-				// 08Mar17 "month" was "moths"
-				dialog.text = "A demand for a certain merchandise has recently dramatically increased in or colony. It's not in the stores anymore. I would like to ask you to deliver to me " + GetGoodsNameAlt(iGoods)+ " in amount of " + FindRussianQtyString(iGoodsQty) + ", and I am willing to pay double - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigePrice)) + " per item. This will amount to " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money)) + ". Oh, and try to meet the deadline of one month - I won't be able to wait for it any longer.";
-				link.l1 = "Alright, I'll accept this mission.";
+				pchar.questTemp.WPU.Current.Add = "двойную";
+				dialog.text = "В нашей колонии резко возрос спрос на один товар. В магазине его уже не достать. Я бы хотел попросить вас привезти мне " + GetGoodsNameAlt(iGoods)+ " в количестве " + FindRussianQtyString(iGoodsQty) + ", и готов заплатить за него двойную цену - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigePrice)) + " за единицу. В сумме это составит " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money)) + ". Да, и постарайтесь уложиться за месяц - дольше ждать я не могу.";
+				link.l1 = "Хорошо, я берусь за это дело.";
 				link.l1.go = "Fraht_LevelUp_Go";
-				link.l2 = "I am sorry to disappoint you, but I cannot do it at this moment.";
+				link.l2 = "Мне жаль разочаровывать вас, но сейчас я заняться этим не могу.";
 				link.l2.go = "Fraht_LevelDown";
 				SetNull2StoreGood(rColony, sti(pchar.questTemp.WPU.Fraht.Goods));
 			break;
 		
 			case 2:
-				pchar.questTemp.WPU.Fraht.Goods = GOOD_BOMBS + drand(makeint(GOOD_POWDER - GOOD_BOMBS));
+				//pchar.questTemp.WPU.Fraht.Goods = GOOD_BOMBS + drand(makeint(GOOD_POWDER - GOOD_BOMBS));
+				pchar.questTemp.WPU.Fraht.Goods = GOOD_BOMBS;
 				iGoods = pchar.questTemp.WPU.Fraht.Goods;
-				iGoodsQty = 15000 + sti(pchar.rank)*300*(drand(9)+1);
+				//iGoodsQty = 15000 + sti(pchar.rank)*300*(drand(9)+1);
+				iGoodsQty = 5000+sti(pchar.rank)*10*(drand(9)+1); // min 5100 max 9000
 				pchar.questTemp.WPU.Fraht.GoodsQty = iGoodsQty;
 				pchar.questTemp.WPU.Fraht.GoodsAverigePrice = sti(Goods[iGoods].Cost)*3;//тройная цена единицы товара
 				pchar.questTemp.WPU.Fraht.Money = makeint((sti(Goods[iGoods].Cost)*sti(pchar.questTemp.WPU.Fraht.GoodsQty)*3)/20);//тройная стоимость товара
-				pchar.questTemp.WPU.Current.Add = "triple";
-				// 08Mar17 "month" was "moths"
-				dialog.text = "The arsenal of our colony drastically lacks " + GetGoodsNameAlt(iGoods)+ ". It's not in the stores anymore. I would like to ask you to deliver to me " + GetGoodsNameAlt(iGoods)+ " in amount of " + FindRussianQtyString(iGoodsQty) + ", and I am willing to pay triple - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigePrice)) + " per item. This will amount to " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money)) + ". Oh, and try to meet the deadline of one month - I won't be able to wait for it any longer.";
-				link.l1 = "Alright, I'll accept this mission.";
+				pchar.questTemp.WPU.Current.Add = "тройную";
+				dialog.text = "В арсенале нашей колонии катастрофически не хватает " + GetGoodsNameAlt(iGoods)+ ". В магазине этого товара уже не достать. Я бы хотел попросить вас привезти мне " + GetGoodsNameAlt(iGoods)+ " в количестве " + FindRussianQtyString(iGoodsQty) + ", и готов заплатить тройную цену - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigePrice)) + " за единицу. В сумме это составит " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money)) + ". Да, и постарайтесь уложиться за месяц - дольше ждать я не могу.";
+				link.l1 = "Хорошо, я берусь за это дело.";
 				link.l1.go = "Fraht_LevelUp_Go";
-				link.l2 = "I am sorry to disappoint you, but I cannot do it at this moment.";
+				link.l2 = "Мне жаль разочаровывать вас, но сейчас я заняться этим не могу.";
 				link.l2.go = "Fraht_LevelDown";
 				SetNull2StoreGood(rColony, sti(pchar.questTemp.WPU.Fraht.Goods));
 			break;
@@ -2036,12 +2036,11 @@ void ProcessDialogEvent()
 				pchar.questTemp.WPU.Fraht.GoodsQty = iGoodsQty;
 				pchar.questTemp.WPU.Fraht.GoodsAverigePrice = sti(Goods[iGoods].Cost)*3;//тройная цена единицы товара
 				pchar.questTemp.WPU.Fraht.Money = makeint((sti(Goods[iGoods].Cost)*sti(pchar.questTemp.WPU.Fraht.GoodsQty)*3)/30);//тройная стоимость товара
-				pchar.questTemp.WPU.Current.Add = "triple";
-				// 08Mar17 "month" was "moths"
-				dialog.text = "After the recent outbreak of fever in our colony we are lacking medicinal supplies - and there are already none even at the stores. The governor fears for the safety of the town. I would like to ask you to deliver to me " + GetGoodsNameAlt(iGoods)+ " in amount of " + FindRussianQtyString(iGoodsQty) + ", and I am willing to pay triple - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigePrice)) + " per pack. This will amount to " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money)) + ". Oh, and try to meet the deadline of one month - I won't be able to wait for it any longer.";
-				link.l1 = "Alright, I'll accept this mission.";
+				pchar.questTemp.WPU.Current.Add = "тройную";
+				dialog.text = "После недавней вспышки эпидемии лихорадки в нашей колонии, мы испытываем острый недостаток в лекарствах - их нет даже в магазине. Губернатор обеспокоен безопасностью города. Я хочу попросить вас привезти мне " + GetGoodsNameAlt(iGoods)+ " в количестве " + FindRussianQtyString(iGoodsQty) + ", и готов заплатить тройную цену - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigePrice)) + " за пачку. В сумме это составит " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money)) + ". Да, и постарайтесь уложиться за месяц - дольше ждать я не могу.";
+				link.l1 = "Хорошо, я берусь за это дело.";
 				link.l1.go = "Fraht_LevelUp_Go";
-				link.l2 = "I am sorry to disappoint you, but I cannot do it at this moment.";
+				link.l2 = "Мне жаль разочаровывать вас, но сейчас я заняться этим не могу.";
 				link.l2.go = "Fraht_LevelDown";
 				SetNull2StoreGood(rColony, sti(pchar.questTemp.WPU.Fraht.Goods));
 			break;
@@ -2053,12 +2052,11 @@ void ProcessDialogEvent()
 				pchar.questTemp.WPU.Fraht.GoodsQty = iGoodsQty;
 				pchar.questTemp.WPU.Fraht.GoodsAverigePrice = sti(Goods[iGoods].Cost)*2;//двойная цена единицы товара
 				pchar.questTemp.WPU.Fraht.Money = makeint((sti(Goods[iGoods].Cost)*sti(pchar.questTemp.WPU.Fraht.GoodsQty)*2)/10);//двойная стоимость товара
-				pchar.questTemp.WPU.Current.Add = "double";
-				// 08Mar17 "month" was "moths"
-				dialog.text = "After a bad harvest our colony is in constant need of imported food. At this time our stock is almost empty, and everything has been wiped from the shelves of the stores quite some time ago. I would like to ask you to deliver to me " + GetGoodsNameAlt(iGoods)+ " in amount of " + FindRussianQtyString(iGoodsQty) + ", and I am willing to pay double - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigePrice)) + " per pack. This will amount to " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money)) + ". Oh, and try to meet the deadline of one month - I won't be able to wait for it any longer.";
-				link.l1 = "Alright, I'll accept this mission.";
+				pchar.questTemp.WPU.Current.Add = "двойную";
+				dialog.text = "После неурожая наша колония постоянно нуждается в привозном продовольствии. На данный момент запасы уже на исходе - даже в магазине раскуплены последние запасы. Я хочу попросить вас привезти мне " + GetGoodsNameAlt(iGoods)+ " в количестве " + FindRussianQtyString(iGoodsQty) + ", и готов заплатить двойную цену - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.GoodsAverigePrice)) + " за пачку. В сумме это составит " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money)) + ". Да, и постарайтесь уложиться за месяц - дольше ждать я не могу.";
+				link.l1 = "Хорошо, я берусь за это дело.";
 				link.l1.go = "Fraht_LevelUp_Go";
-				link.l2 = "I am sorry to disappoint you, but I cannot do it at this moment.";
+				link.l2 = "Мне жаль разочаровывать вас, но сейчас я заняться этим не могу.";
 				link.l2.go = "Fraht_LevelDown";
 				SetNull2StoreGood(rColony, sti(pchar.questTemp.WPU.Fraht.Goods));
 			break;
@@ -2071,8 +2069,8 @@ void ProcessDialogEvent()
 	break;
 		
 	case "Fraht_LevelUp_Go":
-		dialog.text = "Excellent! I am very glad that you agreed. I hope to see you again soon.";
-		link.l1 = "Of course, " + GetAddress_FormToNPC(NPChar) + ".";
+		dialog.text = "Отлично! Я рад, что вы согласились. Надеюсь увидеть вас в скором времени снова.";
+		link.l1 = "Безусловно, " + GetAddress_FormToNPC(NPChar) + ".";
 		link.l1.go = "exit";
 		pchar.questTemp.WPU.Fraht = "begin";
 		pchar.questTemp.WPU.Fraht.LevelUp = "true";
@@ -2097,21 +2095,21 @@ void ProcessDialogEvent()
 		amount = sti(pchar.questTemp.WPU.Fraht.GoodsQty) - GetSquadronGoods(pchar, sti(pchar.questTemp.WPU.Fraht.Goods));
 		if (amount > 0)
 		{
-			dialog.text = "Are you joking? You don't have the full amount of goods I'd ordered!";
-			link.l1 = "I am sorry, my bad...";
+			dialog.text = "Шутить изволите? У вас же нет необходимого количества заказанного мной товара!";
+			link.l1 = "Прошу прощения, ошибочка вышла...";
 			link.l1.go = "exit";
 		}
 		else
 		{
-			dialog.text = "Alright, you were supposed to deliver a cargo of " + GetGoodsNameAlt(iGoods)+ " in amount of " + FindRussianQtyString(pchar.questTemp.WPU.Fraht.GoodsQty) + ". Excellent, thank you very much. Here is your payment - "+FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money))+".";
-			link.l1 = "Pleasure doing business with you, " + GetAddress_FormToNPC(NPChar) + "!";
+			dialog.text = "Так, вы должны были привезти груз " + GetGoodsNameAlt(iGoods)+ " в количестве " + FindRussianQtyString(pchar.questTemp.WPU.Fraht.GoodsQty) + ". Замечательно! Благодарю вас. Получите вашу оплату - "+FindRussianMoneyString(sti(pchar.questTemp.WPU.Fraht.Money))+".";
+			link.l1 = "Приятно с вами работать, " + GetAddress_FormToNPC(NPChar) + "!";
 			link.l1.go = "Fraht_completeLevelUp_1";
 		}
 	}
 	else
 	{
-		dialog.text = "I don't see your ship in the port. Lie off and then come see me again - then we will talk.";
-		link.l1 = "Alright, I'll do just that.";
+		dialog.text = "Что-то я не вижу в порту вашего корабля. Встаньте на рейд и приходите ко мне снова - тогда и поговорим.";
+		link.l1 = "Хорошо, я так и сделаю.";
 		link.l1.go = "exit";
 	}
 	break;
@@ -2155,19 +2153,19 @@ void ProcessDialogEvent()
 				pchar.questTemp.WPU.Escort.ShipName = GenerateRandomNameToShip(sti(pchar.nation));//имя корабля
 				pchar.questTemp.WPU.Escort.TargetPortmanID = pchar.questTemp.WPU.Escort.StartCity +"_portman";//ИД портмана
 				pchar.questTemp.WPU.Escort.ShipBaseName = GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(pchar.questTemp.WPU.Escort.ShipType), "Name") + "Gen"));
-				dialog.text = "This calamity occurred ten days ago... trade caravan bound for our colony was attacked by pirates. Gust storm forced the pirates to retreat, but the ships were dispersed caravan where and who lost each other. In the future, all the ships arrived at different ports, except one\n"+pchar.questTemp.WPU.Escort.ShipBaseName+" '"+pchar.questTemp.WPU.Escort.ShipName+"' had disappeared, his fate remained unknown. Presumably the ship disappeared near the uninhabited island of "+XI_ConvertString(pchar.questTemp.WPU.Current.TargetIslandID)+". I ask you to go there to find said ship and bring it into our port. or have proof of his death. Define the size of your payment after work, but I can say that the payment will be big enough.";
-				link.l1 = "Of course, I agree!";
+				dialog.text = "Эта беда случилась десять дней назад... Торговый караван, направлявшийся в нашу колонию, был атакован пиратами. Налетевший шторм вынудил пиратов отступить, но корабли каравана были разметаны кто куда и потеряли друг друга. В дальнейшем все суда прибыли в разные порты, кроме одного\n"+pchar.questTemp.WPU.Escort.ShipBaseName+" '"+pchar.questTemp.WPU.Escort.ShipName+"' бесследно пропал, его судьба так и осталась неизвестной. Предположительно корабль исчез в районе необитаемого острова "+XI_ConvertString(pchar.questTemp.WPU.Current.TargetIslandID)+". Я прошу вас отправиться туда, разыскать указанное судно и привести его в наш порт. Либо получить доказательства его гибели. Размер вашего гонорара определим после выполнения работы, но могу сказать, что он будет достаточно большим.";
+				link.l1 = "Конечно же я согласен!";
 				link.l1.go = "Escort_LevelUp_1";
-				link.l2 = "I am sorry, but this work isn't suitable for me. Sorry, but I'll pass.";
+				link.l2 = "Сожалею, но мне это не подходит. Вынужден отказаться.";
 				link.l2.go = "Escort_LevelUp_exit";
 			break;
 			case 1://защитить конвой вблизи текущего острова от пиратов
 				pchar.questTemp.WPU.Current.TargetIslandID = Islands[GetCharacterCurrentIsland(PChar)].id;//текущий остров
 				pchar.questTemp.WPU.Escort.TargetPortmanID = pchar.questTemp.WPU.Escort.StartCity +"_portman";//ИД портмана
-				dialog.text = "A trade caravan was supposed to arrive to our colony, but just at the very port it had been attacked by daring pirates. The battle is currently taking place far from the reach of the fort's cannons, and I don't have any escort ships available at the moment, so I cannot provide any help to poor merchants stick in these dire straits. You're a gallant captain, so I am asking you to interfere and help the merchants to repel the attack! Will you do that?";
-				link.l1 = "Of course! It's a matter of honor!";
+				dialog.text = "В нашу колонию должен был прибыть торговый караван. Но на самом подходе к порту караван был атакован дерзкими пиратами. Бой идет вдали от форта, кораблей охранения у меня на данный момент нет - мы ничем не можем помочь попавшим в беду купцам. Вы отважный капитан, прошу вас - вмешайтесь в это сражение, помогите расправиться с пиратами! Вы сделаете это?";
+				link.l1 = "Конечно же! Это дело чести!";
 				link.l1.go = "Escort_LevelUp_2";
-				link.l2 = "I am sorry, but this work isn't suitable for me. Sorry, but I'll pass.";
+				link.l2 = "Сожалею, но мне это не подходит. Вынужден отказаться.";
 				link.l2.go = "Escort_LevelUp_exit";
 			break;
 			case 2://встретить и довести
@@ -2181,10 +2179,10 @@ void ProcessDialogEvent()
 				pchar.questTemp.WPU.Escort.DaysQty = GetMaxDaysFromIsland2Island(GetArealByCityName(pchar.questTemp.WPU.Escort.StartCity), GetArealByCityName(pchar.questTemp.WPU.Escort.City));//расстояние в днях
 				pchar.questTemp.WPU.Escort.Money = sti(pchar.questTemp.WPU.Escort.DaysQty)*2000+20000;
 				pchar.questTemp.WPU.Escort.Chance = rand(1);
-				dialog.text = "Arrived in "+XI_ConvertString(pchar.questTemp.WPU.Escort.City)+" ship with weapons and ammunition for our colony. Escort ship hit the reef, was badly damaged and out to sea may not be soon. We can not risk sending a ship with an arsenal alone\nI suggest you implement it to escort our colony. Payment for the work set at "+FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money))+".";
-				link.l1 = "Of course, I agree!";
+				dialog.text = "В колонию "+XI_ConvertString(pchar.questTemp.WPU.Escort.City)+" прибыло судно с оружием и боеприпасами для нашей колонии. Судно сопровождения село на прибрежные рифы, получило очень сильные повреждения и выйти в море сможет еще не скоро. Мы не можем позволить себе рисковать, отправляя корабль с арсеналом в одиночку\nЯ предлагаю вам осуществить его эскорт до нашей колонии. Оплата за работу установлена в размере "+FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money))+".";
+				link.l1 = "Конечно же я согласен!";
 				link.l1.go = "Escort_LevelUp_0";
-				link.l2 = "I am sorry, but this work isn't suitable for me. Sorry, but I'll pass.";
+				link.l2 = "Сожалею, но мне это не подходит. Вынужден отказаться.";
 				link.l2.go = "Escort_LevelUp_exit";
 			break;
 		}
@@ -2192,8 +2190,8 @@ void ProcessDialogEvent()
 	break;
 	
 	case "Escort_LevelUp_exit":
-		dialog.text = "A pity, indeed. I was actually counting on you...";
-		link.l1 = "I am sorry, too. Well, until we meet again, " + GetAddress_FormToNPC(NPChar) + ".";
+		dialog.text = "Жаль, очень жаль. А я так на вас надеялся...";
+		link.l1 = "Мне тоже жаль. До свидания, " + GetAddress_FormToNPC(NPChar) + ".";
 		link.l1.go = "exit";
 		pchar.questTemp.WPU.Escort.count = sti(pchar.questTemp.WPU.Escort.count)-1;//скрутим счетчик
 		DeleteAttribute(pchar, "questTemp.WPU.Escort.LevelUp");
@@ -2201,8 +2199,8 @@ void ProcessDialogEvent()
 	break;
 	
 	case "Escort_LevelUp_0":
-		dialog.text = "Excellent! I knew I could count on you. Please try to be as quick as possible I think, "+FindRussianDaysString(pchar.questTemp.WPU.Escort.DaysQty)+" will be enough to get to "+XI_ConvertString("Colony"+pchar.questTemp.WPU.Escort.City+"Gen")+". Here, take this credentials to verify your identity. Tailwind, Captain!";
-		link.l1 = "Don't worry, I shall not let you down.";
+		dialog.text = "Замечательно! Я знал, что могу на вас рассчитывать. Постарайтесь не задерживаться - думаю, "+FindRussianDaysString(pchar.questTemp.WPU.Escort.DaysQty)+" будет вполне достаточно, чтобы добраться до "+XI_ConvertString("Colony"+pchar.questTemp.WPU.Escort.City+"Gen")+". Вот, возьмите эту верительную грамоту для удостоверения вашей личности. Попутного ветра, капитан!";
+		link.l1 = "Спасибо! Не беспокойтесь, я вас не подведу.";
 		link.l1.go = "Escort_LevelUp_0_go";
 	break;
 	
@@ -2225,14 +2223,14 @@ void ProcessDialogEvent()
 	if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)//проверка на наличие корабля в порту
 	{
 		pchar.quest.EscortArsenalShip_Over.over = "yes";
-		dialog.text = "Finally! That ship had long been an eyesore to me. Take command, then. The name of the ship is "+pchar.questTemp.WPU.Escort.ShipName+", and its captain will be immediately notified of your arrival.";
-		link.l1 = "Tell him to get his ship ready to sail - I am going to leave at the earliest opportunity.";
+		dialog.text = "Ну наконец-то! Мне этот корабль уже все глаза намозолил. Принимайте командование. Судно называется "+pchar.questTemp.WPU.Escort.ShipName+", его капитан будет немедленно извещен о вашем прибытии.";
+		link.l1 = "Спасибо. Пусть готовит свой корабль к отплытию - я намерен отправиться в путь как можно быстрее.";
 		link.l1.go = "Escort_LUGo_01";
 	}
 	else
 	{
-		dialog.text = "I don't see your ship in the port. Lie off and then come see me again - then we will talk.";
-		link.l1 = "I'll do just that.";
+		dialog.text = "Что-то я не вижу в порту вашего корабля. Встаньте на рейд и приходите ко мне снова, тогда и поговорим.";
+		link.l1 = "Хорошо, я так и сделаю.";
 		link.l1.go = "exit";
 	}
 	break;
@@ -2276,14 +2274,14 @@ void ProcessDialogEvent()
 	{
 		pchar.quest.Escort_fail.over = "yes";
 		pchar.quest.EscortArsenalShipGo_Over.over = "yes";
-		dialog.text = "Excellent! Once again, you've demonstrated that you can be relied upon. Thank you  for a job well done. Please accept your payment - "+FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money))+". And don't forget to visit me occasionally - there's always a job or two for a captain like yourself.";
-		link.l1 = "Nice to hear that, " + GetAddress_FormToNPC(NPChar) + "! Of course, our collaboration shall continue. Best regards!";
+		dialog.text = "Отлично! Вы уже в который раз доказываете, что на вас можно положиться. Спасибо за проделанную работу. Получите ваше вознаграждение - "+FindRussianMoneyString(sti(pchar.questTemp.WPU.Escort.Money))+". Не забывайте периодически навещать меня - работа для такого капитана, как вы, есть практически всегда.";
+		link.l1 = "Приятно это слышать, " + GetAddress_FormToNPC(NPChar) + "! Безусловно, мы будем сотрудничать и дальше. Всего доброго!";
 		link.l1.go = "Escort_LUGo_complete_1";
 	}
 	else
 	{
-		dialog.text = "I don't see your ship in the port. Lie off and then come see me again - then we will talk.";
-		link.l1 = "Alright, I'll do just that.";
+		dialog.text = "Что-то я не вижу в порту вашего корабля. Встаньте на рейд и приходите ко мне снова, тогда и поговорим.";
+		link.l1 = "Хорошо, я так и сделаю.";
 		link.l1.go = "exit";
 	}
 	break;
@@ -2310,8 +2308,8 @@ void ProcessDialogEvent()
 	break;
 	
 	case "Escort_LevelUp_1":
-		dialog.text = "Then I wish you safe journey. And please don't delay with your search! The sailors of that vessel might be in need of immediate help.";
-		link.l1 = "I got it. I shall set sail today!";
+		dialog.text = "Тогда я пожелаю вам счастливого пути. И не затягивайте с поисками, прошу вас! Возможно, моряки с этого судна нуждаются в немедленной помощи.";
+		link.l1 = "Я понял. Отправляюсь в путь сегодня же!";
 		link.l1.go = "Escort_LevelUp_1_select";
 	break;
 	
@@ -2363,14 +2361,14 @@ void ProcessDialogEvent()
 	ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
 	if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)//проверка на наличие корабля в порту
 	{
-		dialog.text = "Yes, I was already notified. Excellent job, " + GetAddress_Form(NPChar) + "! You have once again proves that you can rely on. Get your reward - 30,000 pesos\nDo not forget to look up to me - people like you, can be considered the essential and I always find a job for you.";
-		link.l1 = "Glad to hear that, " + GetAddress_FormToNPC(NPChar) + "! Of course, we will cooperate further. All the best!";
+		dialog.text = "Да, мне уже сообщили. Великолепная работа, " + GetAddress_Form(NPChar) + "! Вы уже в который раз доказываете, что на вас можно положиться. Получите ваше вознаграждение - 30 000 песо\nНе забывайте периодически заглядывать ко мне - такие люди как вы, по праву могут считаться незаменимыми, и у меня обязательно найдется для вас работа.";
+		link.l1 = "Приятно это слышать, " + GetAddress_FormToNPC(NPChar) + "! Безусловно, мы будем сотрудничать и дальше. Всего доброго!";
 		link.l1.go = "Escort_LU1WM_complete_1";
 	}
 	else
 	{
-		dialog.text = "I don't see your ship in the port. Lie off and then come see me again - then we will talk.";
-		link.l1 = "Alright, I'll do just that.";
+		dialog.text = "Что-то я не вижу в порту вашего корабля. Встаньте на рейд и приходите ко мне снова, тогда и поговорим.";
+		link.l1 = "Хорошо, я так и сделаю.";
 		link.l1.go = "exit";
 	}
 	break;
@@ -2402,14 +2400,14 @@ void ProcessDialogEvent()
 	ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
 	if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)//проверка на наличие корабля в порту
 	{
-		dialog.text = "Yeah, he already told me that you had been defending his vessel in that battle with the pirates, like a hero. Excellent job, " + GetAddress_Form(NPChar) + "! You have once again proves that you can rely on. Get your reward - 50,000 pesos\nDo not forget to look up to me - people like you, can be considered the essential and I always find a job for you.";
-		link.l1 = "Nice to hear that, " + GetAddress_FormToNPC(NPChar) + "! Of course, our collaboration shall continue. Best regards!";
+		dialog.text = "Да, он мне уже все рассказал - как вы героически защищали его судно в бою с пиратами. Отличная работа, " + GetAddress_Form(NPChar) + "! Вы уже в который раз доказываете, что на вас можно положиться. Получите ваше вознаграждение - 50 000 песо\nНе забывайте периодически заглядывать ко мне - такие люди как вы, по праву могут считаться незаменимыми, и у меня обязательно найдется для вас работа.";
+		link.l1 = "Приятно это слышать, " + GetAddress_FormToNPC(NPChar) + "! Безусловно, мы будем сотрудничать и дальше. Всего доброго!";
 		link.l1.go = "Escort_LU1VSP_complete_1";
 	}
 	else
 	{
-		dialog.text = "I don't see your ship in the port. Lie off and then come see me again - then we will talk.";
-		link.l1 = "Alright, I'll do just that.";
+		dialog.text = "Что-то я не вижу в порту вашего корабля. Встаньте на рейд и приходите ко мне снова, тогда и поговорим.";
+		link.l1 = "Хорошо, я так и сделаю.";
 		link.l1.go = "exit";
 	}
 	break;
@@ -2437,14 +2435,14 @@ void ProcessDialogEvent()
 	break;
 	
 	case "Escort_LU1VSP_completeSink":
-		dialog.text = "What a tragic end... God rest their souls.";
-		link.l1 = "I've done everything I could, " + GetAddress_FormToNPC(NPChar) + ". The situation was made even worse by the storm.";
+		dialog.text = "Какой трагический конец... упокой, Господи, их души.";
+		link.l1 = "Я сделал все, что было в моих силах, " + GetAddress_FormToNPC(NPChar) + ". Ситуацию осложнило то, что бой пришлось вести в шторм.";
 		link.l1.go = "Escort_LU1VSP_completeSink_1";
 	break;
 	
 	case "Escort_LU1VSP_completeSink_1":
-		dialog.text = "I do believe, " + GetAddress_Form(NPChar) + ", that you had undertaken everything you could to save the ship and those unfortunate sailors. But alas... Well, please take your reward - 10000 pesos - and thank you for your service.";
-		link.l1 = "Nothing to thank me for, " + GetAddress_FormToNPC(NPChar) + ". I am really sorry. Well, goodbye.";
+		dialog.text = "Я верю, " + GetAddress_Form(NPChar) + ", что вы предприняли все возможное, чтобы спасти корабль и несчастных моряков. Увы... Возьмите ваше вознаграждение - 10 000 песо, и спасибо за службу.";
+		link.l1 = "Не за что, " + GetAddress_FormToNPC(NPChar) + ". Мне тоже очень жаль. До свидания.";
 		link.l1.go = "Escort_LU1VSP_completeSink_2";
 	break;
 	
@@ -2466,8 +2464,8 @@ void ProcessDialogEvent()
 	break;
 	
 	case "Escort_LU1S_complete":
-		dialog.text = "Yeah, he already told me that you had been fighting with the red-skinned pagans and then with a pirate ship, like a hero. Excellent job, " + GetAddress_Form(NPChar) + "! You have once again proves that you can rely on\nGet your reward - 40,000 pesos. Do not forget to look up to me - people like you, can be considered the essential and I always find a job for you..";
-		link.l1 = "Nice to hear that, " + GetAddress_FormToNPC(NPChar) + "! Of course, our collaboration shall continue. Best regards!";
+		dialog.text = "Да, он мне уже все рассказал - как вы героически сражались с краснокожими язычниками, а затем с пиратским кораблем. Отличная работа, " + GetAddress_Form(NPChar) + "! Вы уже в который раз доказываете, что на вас можно положиться\nПолучите ваше вознаграждение - 40 000 песо. Не забывайте периодически заглядывать ко мне - такие люди как вы, по праву могут считаться незаменимыми, и у меня обязательно найдется для вас работа.";
+		link.l1 = "Приятно это слышать, " + GetAddress_FormToNPC(NPChar) + "! Безусловно, мы будем сотрудничать и дальше. Всего доброго!";
 		link.l1.go = "Escort_LU1S_complete_1";
 	break;
 	
@@ -2494,8 +2492,8 @@ void ProcessDialogEvent()
 	break;
 	
 	case "Escort_LevelUp_2":
-		dialog.text = "I knew that I could count on you. Best of luck to you, captain! The entire colony wishes you a sound victory!";
-		link.l1 = "I will try to live up to your expectations. Now I shall set sail, and may God help us!";
+		dialog.text = "Я знал, что могу на вас рассчитывать. Удачи, капитан! Вся колония желает вам победы!";
+		link.l1 = "Постараюсь оправдать ваши надежды. Выхожу в море, и да поможет нам Бог!";
 		link.l1.go = "Escort_LevelUp_2_go";
 	break;
 	
@@ -2518,20 +2516,20 @@ void ProcessDialogEvent()
 		{
 			case 1:
 				pchar.questTemp.WPU.Escort.LevelUp_2.Money = 10000;
-				dialog.text = "Yes, the entire city was watching your battle. Poor merchants, I do feel sorry for them. Well, at least you managed to save one ship, so your reward of 10000 pesos is well deserved. Please accept it - and thank you for your aid.";
-				link.l1 = "Nothing to thank me for... It is unfortunate that haven't won that combat decisively, but I've done everything I could. Farewell, " + GetAddress_FormToNPC(NPChar) + ".";
+				dialog.text = "Да, весь город наблюдал за сражением. Жаль купцов, конечно, очень жаль. Но один корабль вы все же спасли. Поэтому награда в 10 000 песо вами честно заслужена. Возьмите эти деньги и большое спасибо за оказанную помощь.";
+				link.l1 = "Не за что... Досадно, что бой прошел не лучшим образом, но я сделал все, что мог. До свидания, " + GetAddress_FormToNPC(NPChar) + ".";
 				link.l1.go = "Escort_LU2_complete_1";
 			break;
 			case 2:
 				pchar.questTemp.WPU.Escort.LevelUp_2.Money = 25000;
-				dialog.text = "Yes, the entire city was watching the battle you waged - and you did it very skillfully, I must say. That poor merchant, I feel so sorry for him... But if not for you, none of them would escape alive, so your reward of 25000 pesos is very well deserved. Please accept it - and thank you for your aid.";
-				link.l1 = "Well, thanks for a complimentary assessment of my actions, but I don't think that was my best battle - I still lost one ship. Well, fate is fate, and there's nothing to do about it. Goodbye, " + GetAddress_FormToNPC(NPChar) + ".";
+				dialog.text = "Да, весь город наблюдал за сражением. Вы очень грамотно вели бой. Жаль погибшего купца, конечно, очень жаль. Но если бы не вы, никто из них мог бы не уйти живым. Поэтому награда в 25 000 песо вами полностью заслужена. Возьмите эти деньги и большое спасибо за оказанную помощь.";
+				link.l1 = "Благодарю за лестную оценку моих действий, но я не считаю, что провел сражение хорошо - один корабль потерян. Ну что же... такова судьба. До свидания, " + GetAddress_FormToNPC(NPChar) + ".";
 				link.l1.go = "Escort_LU2_complete_1";
 			break;
 			case 3:
 				pchar.questTemp.WPU.Escort.LevelUp_2.Money = 50000;
-				dialog.text = "Yes, the entire city was watching the battle you waged - you were absolutely magnificent! You just trashed the entire squadron of those filthy pirates! Now they've learned their lesson - pity that they will not come in handy for them anymore. Your reward constitutes 50000 pesos -please accept it.";
-				link.l1 = "Thanks for a complimentary assessment of my actions! Always a pleasure to help. And now, " + GetAddress_FormToNPC(NPChar) + " please allow me to take my leave.";
+				dialog.text = "Да, весь город наблюдал за сражением. Вы были великолепны! Как лихо вы разгромили эскадру грязных пиратов! Они убедились на своей шкуре, каково это - противостоять морскому военному офицеру, а не беззащитному торговцу. Жаль, эта наука им уже не пригодится... Ваше вознаграждение составляет 50 000 песо - получите, пожалуйста.";
+				link.l1 = "Благодарю за лестную оценку моих действий! Всегда рад помочь. А теперь, " + GetAddress_FormToNPC(NPChar) + " позвольте откланяться.";
 				link.l1.go = "Escort_LU2_complete_1";
 			break;
 		}
@@ -2566,32 +2564,32 @@ void ProcessDialogEvent()
 	break;
 	
 		case "PortmanQuest_NF":
-			dialog.text = "Hmm, that's bad. In that case your further work for me is out of question.";
-			link.l1 = "Understood. Here is what I wanted to say...";
+			dialog.text = "Хм, это плохо. В таком случае, ни о какой новой работе у меня не может быть и речи.";
+			link.l1 = "Понятно. Вот еще что хотел"+ GetSexPhrase("","а") +" сказать...";
 			link.l1.go = "node_2";
 		break;
 		
 		//сгоревшее судно
 		case "BurntShip2":
-			dialog.text = "A pity, captain... It's a pity that you are not willing to help me.";
-			link.l1 = "That's not a matter of my will, my good man. You must understand. Farewell.";
+			dialog.text = "Очень жаль, капитан... очень жаль, что вы не хотите мне помочь.";
+			link.l1 = "Тут не в желании дело, уважаемый. Вы же сами понимаете... До свидания...";
 			link.l1.go = "exit";
 			NPChar.Quest.BurntShip.LastQuestDate = sLastSpeakDate;
 		break;
 		
 		case "BurntShip4":
-			dialog.text = "What's up with you, captain?! Aren't you ashamed?!.. How could I?! I know my shit, I've been on service for many years. There are insurance contracts, and the insurance company is willing to pay, and I assure you that the sum insured is quite decent.";
-			link.l1 = "What's your problem, mister? A kruit-kamer detonated of fire, and there were casualties, and now you have to stand trial for your negligence?";
+			dialog.text = "Да что вы, капитан?! Побойтесь Бога!.. Как можно?! Я своё дело твёрдо знаю, чай столько лет служу. И страховые договора есть, и страховая контора выплату готова произвести, и сумма страховая немалая, уверяю вас.";
+			link.l1 = "Уважаемый, так в чём же ваша проблема? От пожара взорвалась крюйт-камера, и пострадали люди, а  вас привлекают к суду за халатность?";
 			link.l1.go = "BurntShip5";
 		break;
 		
 		case "BurntShip5":
 			sCapitainId = GenerateRandomName(sti(NPChar.nation), "man");
 			
-			dialog.text = "Well, I was not there, it was not - the Lord spared me, otherwise I would not have to endure the head. Pustehonek hold was like there was empty, thank you Lord, the Blessed Virgin Mary!\n" +
-				"And the problem is that the ship belongs to something... or rather belonged known to all Caribbean Mr. " + sCapitainId + ". And it was built in Europe by special order, with extraordinary settings. " +
-				"And this ship owner was very proud and boasted everywhere, a kind of blockhead, God forgive me... What do I tell him now? Though in the loop climb, I swear...";
-			link.l1 = "Oh, now I see that's a problem, indeed. And what was so special about it? What specialties did that ship have that its owner was so proud of?";
+			dialog.text = "Ну уж чего не было, того не было, - Господь миловал, иначе бы не сносить мне головы. Пустёхонек трюм был, как есть пуст был, слава тебе Господи, Пресвятая Дева Мария!\n" +
+				"А вся проблема в том, что судно-то принадлежит... вернее принадлежало, известному на все Карибы господину " + sCapitainId + ". И строилось оно в Европе по спецзаказу, с неординарными характеристиками. " +
+				"И этим судном владелец очень гордился и хвастался где ни попадя, болван эдакий, прости Господи... Что я теперь ему скажу? Хоть в петлю лезь, ей-богу...";
+			link.l1 = "О-о, вижу, вы здорово влипли. А что у него не так было, как у всех судов? То есть, чем в своём кораблике этот господин так гордился?";
 			link.l1.go = "BurntShip6";
 			
 			NPChar.Quest.BurntShip.ShipOwnerName = sCapitainId;
@@ -2606,41 +2604,41 @@ void ProcessDialogEvent()
 			switch(attrL)
 			{
 				case "speedrate":
-					attrL = "His " + GetStrSmallRegister(XI_ConvertString(ShipsTypes[iTest].Name + "Acc")) + " wind speed was more than " + NPChar.Quest.BurntShip.ShipNeededValue + " knots. That was the privateer's pride... And now he'd just tell his boys to hang me on a yard. What devil has brought him to our harbor together with that pirate tub...";
+					attrL = "У его " + GetStrSmallRegister(XI_ConvertString(ShipsTypes[iTest].Name + "Acc")) + " скорость по ветру была более " + NPChar.Quest.BurntShip.ShipNeededValue + " узлов. Для капера это первейшая гордость была... Он просто велит своим молодчикам повесить меня на рее! Чёрт принёс его в нашу гавань вместе с его пиратской лоханкой...";
 				break;
 				
 				case "turnrate":
-					attrL = "His agility " + GetStrSmallRegister(XI_ConvertString(ShipsTypes[iTest].Name + "Acc")) + " was more than " + NPChar.Quest.BurntShip.ShipNeededValue + " units. That was the soldier's pride... And now he'd just have me flogged to death. What devil advised him to leave his tub there...";
+					attrL = "У его " + GetStrSmallRegister(XI_ConvertString(ShipsTypes[iTest].Name + "Acc")) + " манёвренность была более " + NPChar.Quest.BurntShip.ShipNeededValue + " единиц. Это для вояки первейшая гордость была... Он велит засечь меня шпицрутенами! Чёрт его надоумил оставить у меня свою посудину...";
 				break;
 				
 				case "capacity":
-					attrL = "His " + GetStrSmallRegister(XI_ConvertString(ShipsTypes[iTest].Name + "Acc")) + " had a deadweight of over " + NPChar.Quest.BurntShip.ShipNeededValue + " units. Greed is bad, I'll tell ya. And now he'd just have me quartered in court. What devil advised him to leave his tub there...";
+					attrL = "У его " + GetStrSmallRegister(XI_ConvertString(ShipsTypes[iTest].Name + "Acc")) + " дедвейт был более " + NPChar.Quest.BurntShip.ShipNeededValue + " единиц водоизмещения. Для купца это первейшая гордость была... Он меня без суда четвертует. Чёрт его дёрнул именно у меня своё корыто оставить!";
 				break;
 			}
 			
 			dialog.text = attrL;
-			link.l1 = "And what do people at the docks say? Is it really impossible to build another one there?";
+			link.l1 = "А что на верфи говорят? Неужели здесь такое соорудить невозможно?";
 			link.l1.go = "BurntShip7";
 		break;
 		
 		case "BurntShip7":
-			dialog.text = "No one can. I went to a nearby island for the request. They say that there is a notable Sharptaune master. But where we are - and where Isla Tesoro. It remains only to help free captains such as you expect. After you drown these tens pelvis. Maybe you will not be difficult to find such craft for me. And we are here to tint, we modify to master in the claim was not\n" +
-				"I thanked profusely, and the insurance company is not stingy. The point is extraordinary, you know. Who wants to disgrace to get such a powerful man?";
-			link.l1 = "Yeah, that's not going to be easy. And how much time do I have?";
+			dialog.text = "Никто не берётся. Я уж и на соседний остров ходил с поклоном. Говорят, что в Шарптауне мастер есть знатный. Но где мы, - а где Исла Тесоро. Осталось только на помощь таких свободных капитанов, как вы рассчитывать. Ведь вы топите эти лоханки десятками. Может вам не составит труда подыскать подобное судёнышко для меня. А мы его здесь подкрасим, подправим, чтоб хозяин не в претензии был\n" +
+				"Я щедро отблагодарю, и страховая компания не поскупится. Дело-то неординарное, сами понимаете. Кому охота в немилость к такому влиятельному господину попасть?";
+			link.l1 = "Да, дело не простое. А сколько у меня есть времени?";
 			link.l1.go = "BurntShip8";
-			link.l2 = "No, pal, I cannot be involved in such an affair. Not to mention that there are no warranties that a vessels with such parameters exists at all. No hard feelings...";
+			link.l2 = "Нет, милейший, не возьмусь я за это. Да и гарантий никто не даст, что судно с подобными характеристиками существует. Не обессудь...";
 			link.l2.go = "BurntShip2";
 		break;
 		
 		case "BurntShip8":
-			dialog.text = "God be thanked, there is still time. The owner sailed off to Europe and will be back no sooner than in half a year.";
-			link.l1 = "Well, guess I'll manage it. I'll bring you a similar vessel. But keep in mind - if you choose to be too scant, I'll burn it right about your ears!";
+			dialog.text = "Время, слава Богу, есть. Хозяин отбыл в Европу и ранее полугода не обернётся.";
+			link.l1 = "Что ж, берусь. Доставлю я вам подобное судно. Но учтите, если начнёте скупиться и выкраивать - сожгу его прямо у вас на глазах!";
 			link.l1.go = "BurntShip9";
 		break;
 		
 		case "BurntShip9":
-			dialog.text = "What are you saying, captain? Surely, I understand that you would need time - just any tub will not do... You just bring us the vessel, and we'll do our best, you can be sure of it...";
-			link.l1 = "I hope so... Well, wait for me and for the good news. Farewell.";
+			dialog.text = "Да что вы, капитан? Как можно? Я же понимаю, что это не лоханку из первой лужи выловить, тут время потребуется... Вы только приведите судно, а мы уж расстараемся. Будьте уверены...";
+			link.l1 = "Надеюсь... Ждите меня с хорошими вестями. До свидания.";
 			link.l1.go = "BurntShip9_exit";
 		break;
 		
@@ -2660,15 +2658,15 @@ void ProcessDialogEvent()
 			switch(attrL)
 			{
 				case "speedrate":
-					attrL = "speed. At the wind speed of the " + GetStrSmallRegister(XI_ConvertString(ShipsTypes[iTest].name + "Gen")) + " must be at least " + NPChar.Quest.BurntShip.ShipNeededValue;
+					attrL = "скорости. У " + GetStrSmallRegister(XI_ConvertString(ShipsTypes[iTest].name + "Gen")) + " скорость по ветру должна быть не менее " + NPChar.Quest.BurntShip.ShipNeededValue;
 				break;
 				
 				case "turnrate":
-					attrL = "manoeuvrability. At a " + GetStrSmallRegister(XI_ConvertString(ShipsTypes[iTest].name + "Gen")) + " manoeuvrability must be no less than " + NPChar.Quest.BurntShip.ShipNeededValue;
+					attrL = "манёвренности. У " + GetStrSmallRegister(XI_ConvertString(ShipsTypes[iTest].name + "Gen")) + " манёвренность должна быть не менее " + NPChar.Quest.BurntShip.ShipNeededValue;
 				break;
 				
 				case "capacity":
-					attrL = "hold. Do " + GetStrSmallRegister(XI_ConvertString(ShipsTypes[iTest].name + "Gen")) + " hold shall not be less than " + NPChar.Quest.BurntShip.ShipNeededValue;
+					attrL = "трюма. У " + GetStrSmallRegister(XI_ConvertString(ShipsTypes[iTest].name + "Gen")) + " трюм должен быть не менее " + NPChar.Quest.BurntShip.ShipNeededValue;
 				break;
 			}
 			
@@ -2687,14 +2685,14 @@ void ProcessDialogEvent()
 		
 		// Вариант, когда не уложились в сроки
 		case "BurntShip10":
-			dialog.text = "What you were going to talk about?";
-			link.l1 = "And where is the former harbour master, mister " + NPChar.Quest.BurntShip.LastPortmanName + "? I have business with him.";
+			dialog.text = "О чём вы хотели поговорить?";
+			link.l1 = "А где прежний начальник портового управления, господин " + NPChar.Quest.BurntShip.LastPortmanName + "? У меня к нему дело.";
 			link.l1.go = "BurntShip11";
 		break;
 		
 		case "BurntShip11":
-			dialog.text = "He's no longer around. Imagine - he burnt down a vessel belonging to one well-known person and pocketed the insurance money. While the authorities were sorting this all out, he resigned and slipped away to Europe. Quite a swindler, isn't he?";
-			link.l1 = "Yeah, I've heard that story. I am sorry, but I've got to go.";
+			dialog.text = "А его нет... Представляете? он сжёг судно одного известного господина и прикарманил страховую сумму. Пока власти разобрались что к чему, он уже подал в отставку и улизнул в Европу. Каков плут, а?..";
+			link.l1 = "Да, мне известна эта история. Извините, мне пора...";
 			link.l1.go = "BurntShip11_exit";
 		break;
 		
@@ -2714,16 +2712,16 @@ void ProcessDialogEvent()
 		
 		// Не просрочено - проверяем корабль
 		case "BurntShip12":
-			dialog.text = "What you were going to talk about?";
-			link.l1 = "I brought you a ship with an extraordinary response. Waiting for the promised reward.";
+			dialog.text = "О чём вы хотели поговорить?";
+			link.l1 = "Я привел"+ GetSexPhrase("","а") +" вам судно с неординарной характеристикой. Жду обещанного вознаграждения.";
 			link.l1.go = "BurntShip14";
-			link.l2 = "You know, " + GetFullName(NPChar) + ", I still haven't found a single ship similar to what you need. I guess I'll abandon this job. Sorry if I let you down...";
+			link.l2 = "Знаете, " + GetFullName(NPChar) + ", никак мне не попадаются суда с заказанной вами характеристикой. Пожалуй я откажусь от этого поручения. Извините, если подвел"+ GetSexPhrase("","а") +"...";
 			link.l2.go = "BurntShip13";
 		break;
 		
 		case "BurntShip13":
-			dialog.text = "A pity, captain... It's a pity that you are not willing to help me.";
-			link.l1 = "That's not a matter of my will, my good man. You must understand. Farewell.";
+			dialog.text = "Очень жаль, капитан... очень жаль, что вы не хотите мне помочь.";
+			link.l1 = "Тут не в желании дело, уважаемый. Вы же сами понимаете... До свидания...";
 			link.l1.go = "BurntShip13_exit";
 		break;
 		
@@ -2739,7 +2737,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "BurntShip14":
-			dialog.text = "Oh, really! And what's the name of our new ship?";
+			dialog.text = "Вот как! И как же называется наше новое судно?";
 			
 			sTitle = NPChar.Quest.BurntShip.ShipAttribute;
 			ok = (sFrom_sea == "") || (Pchar.location.from_sea == sFrom_sea);
@@ -2767,7 +2765,7 @@ void ProcessDialogEvent()
 				}
 			}
 			
-			link.l99 = "Excuse me, I'll come again later.";
+			link.l99 = "Извините, я зайду позже.";
 			link.l99.go = "exit";
 		break;
 		
@@ -2775,14 +2773,14 @@ void ProcessDialogEvent()
 			AddCharacterExpToSkill(pchar, "Leadership", 100);
 			AddCharacterExpToSkill(pchar, "Sailing", 100);
 			AddCharacterExpToSkill(pchar, "Fortune", 100);
-			dialog.text = "Oh, captain, I am so happy that you didn't let me down! What a "+ GetSexPhrase("fine young man","fine young lady") +" you are, you literally saved my life... Please, could you come to collect your money in a couple of days? You know, I'll need to settle the formalities with the insurance... And meanwhile you could make minor repairs of the ship - you know, renew the sails, patch up the holes, careening wouldn't hurt, either...";
-			link.l99 = "You have not forgotten what I promised, if the wire will begin with the payment?";
+			dialog.text = "Ах, капитан, я рад, что не ошибся в вас! Как"+ GetSexPhrase("ой","ая") +" вы всё-таки молодец, просто спасли меня от смерти... Я вас очень попрошу, зайдите за деньгами дня через два. Формальности, знаете ли, с получением страховой суммы нужно уладить... А вы пока приведите судно в порядок. Ну, паруса обновить, пробоины подлатать, кренгование, опять же, не помешает...";
+			link.l99 = "Вы не забыли, что я обещал"+ GetSexPhrase("","а") +", если начнутся проволочки с выплатой?";
 			link.l99.go = "BurntShip16";
 		break;
 		
 		case "BurntShip16":
-			dialog.text = "No, no, of course, not! I will stay true to my word, don't you worry. You see, due to the upcoming expenses with the disuising of the ship I had lent the insurance money on interest. I hope you understand...";
-			link.l1 = "I'll understand it when the money is in my chest. Until we meet again.";
+			dialog.text = "Нет-нет, Боже упаси! Я своё слово сдержу, не волнуйтесь. Просто, зная, что предстоят ещё траты по, так сказать, маскировке корабля, я положил страховую сумму в рост. Вы уж поймите меня правильно...";
+			link.l1 = "Я вас пойму, когда песо будут лежать в моём сундуке. До встречи.";
 			link.l1.go = "BurntShip16_exit";
 		break;
 		
@@ -2800,13 +2798,13 @@ void ProcessDialogEvent()
 		break;
 		
 		case "BurntShip17":
-			dialog.text = "What you were going to talk about?";
-			link.l1 = "I came to collect my reward. I still have the vessel you need.";
+			dialog.text = "О чём вы хотели поговорить?";
+			link.l1 = "Я приш"+ GetSexPhrase("ел","ла") +" за вознаграждением. Нужное вам судно по-прежнему у меня.";
 			link.l1.go = "BurntShip18";
 		break;
 		
 		case "BurntShip18":
-			dialog.text = "Would you please remind me its name? My memory is not like it used to be - you know, all that hassle...";
+			dialog.text = "Напомните, пожалуйста, его название. А то с этими нервотрёпками памяти, знаете ли, совсем не осталось.";
 			
 			sTitle = NPChar.Quest.BurntShip.ShipAttribute;
 			ok = (sFrom_sea == "") || (Pchar.location.from_sea == sFrom_sea);
@@ -2834,7 +2832,7 @@ void ProcessDialogEvent()
 				}
 			}
 			
-			link.l99 = "Excuse me, I'll come again later.";
+			link.l99 = "Извините, я зайду позже.";
 			link.l99.go = "exit";
 		break;
 		
@@ -2844,17 +2842,17 @@ void ProcessDialogEvent()
 			rRealShip = GetRealShip(GetCharacterShipType(sld));
 			if (sti(rRealShip.Stolen)) cn *= 3;
 			
-			dialog.text = "Yes, perfect. I am ready to hand you your reward, " + FindRussianMoneyString(cn) + ". That's how the insurance company appraised the burned vessel. The insurance sum is paid in credit chests - no money in cash, sorry.";
-			link.l1 = "Oh no, such sum doesn't suit me. I am sure that this ship is much more expensive.";
+			dialog.text = "Да, великолепно! Я готов выдать ваше вознаграждение, " + FindRussianMoneyString(cn) + ". Именно так страховая контора оценила сгоревшее судно. Страховка выплачена кредитными сундуками - наличных денег нет, извините.";
+			link.l1 = "Э нет, такая сумма меня не устроит. Я уверен"+ GetSexPhrase("","а") +", что это судно стоит гораздо дороже.";
 			link.l1.go = "BurntShip21";
-			link.l2 = "That is another matter altogether. I'm glad I could help you. Before the meeting.";
+			link.l2 = "Вот это совсем другое дело. Я рад"+ GetSexPhrase("","а") +", что смог"+ GetSexPhrase("","ла") +" вам помочь. До встречи.";
 			link.l2.go = "BurntShip20_exit";
 			NPChar.Quest.BurntShip.Money = cn;
 		break;
 		
 		case "BurntShip20_exit":
 			TakeNItems(pchar, "chest", makeint(sti(NPChar.Quest.BurntShip.Money)/12000));
-			Log_Info("You have received credit chests");
+			Log_Info("Вы получили кредитные сундуки");
 			PlaySound("interface\important_item.wav");
 			sTitle = "BurntShipQuest" + NPChar.location;
 			AddQuestRecordEx(sTitle, "BurntShipQuest", "4");
@@ -2875,8 +2873,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "BurntShip21":
-			dialog.text = "What are you saying, captain?! Trust me, I know what I am talking about. You could have bought two such ships for that money!";
-			link.l1 = "I guess I will keep it. You know, I just took a liking in it... Farewell.";
+			dialog.text = "Ну что вы, капитан?! Поверьте мне, я знаю, что говорю. За такие деньги вы могли бы купить два подобных судна!";
+			link.l1 = "Лучше я оставлю его себе. Уж очень оно мне приглянулось... Прощайте.";
 			link.l1.go = "BurntShip21_exit";
 		break;
 		
@@ -2899,25 +2897,25 @@ void ProcessDialogEvent()
 		case "PortmanQuest":
 			if (cRand(5) == 2)
 			{	//квест догнать и передать судовой журнал
-				dialog.text = "One captain has forgotten his ship's log at my office. What a scatterbrain! So, I need you to catch up with him and return it to him.";
-				link.l1 = "Oh, that's gonna be easy... I'll take that!";
+				dialog.text = "У меня забыл судовой журнал один капитан. Это же надо быть таким разиней!.. В общем, нужно его догнать и вернуть пропажу.";
+				link.l1 = "Ну, это можно... За эту работу я берусь!";
 				link.l1.go = "PortmanQuest_1";
-				link.l2 = "No, I will not take it up. It's his own problem, actually.";
+				link.l2 = "Нет, не хочу этим заниматься. Это его проблемы, собственно...";
 				link.l2.go = "node_2";
 			}
 			else
 			{	//квест разыскать украденный корабль
-				dialog.text = "A ship was stolen from the mooring there. I want you to seek out the stolen vessel and bring it back.";
-				link.l1 = "Hmm, well, I'm ready to take up the investigation.";
+				dialog.text = "У меня со стоянки кораблей был украден корабль. Я хочу, чтобы вы разыскали и вернули его мне.";
+				link.l1 = "Хм, ну что же, я готов"+ GetSexPhrase("","а") +" взяться за розыски.";
 				link.l1.go = "SeekShip_1";
-				link.l2 = "I am sorry, but I do not engage in searching for stolen ships.";
+				link.l2 = "Простите, но розыском кораблей я не занимаюсь.";
 				link.l2.go = "node_2";
 			}
 		break;
 //-------------------------------- квест доставки судового журнала до рассеяного кэпа ---------------------
 		case "PortmanQuest_1":
-			dialog.text = "Excellent, here's his ship's log... You've really taken a weight off my mind! The loss of a ship's log is a very nasty thing. I always felt sorry for those captains...";
-			link.l1 = "Well, that's really something to be worry about! Now, tell me more of that absent-minded captain.";
+			dialog.text = "Отлично, вот его журнал... Уф-ф, прямо груз с плеч долой! Потеря судового журнала - штука неприятная, переживаю я за таких капитанов.";
+			link.l1 = "Это точно, переживать стоит! Ну, а теперь расскажите мне подробней об этом рассеянном капитане.";
 			link.l1.go = "PortmanQuest_2";
 			pchar.questTemp.different = "PortmansJornal";
 			SetTimerFunction("SmallQuests_free", 0, 0, 1); //освобождаем разрешалку на миниквесты
@@ -2926,13 +2924,13 @@ void ProcessDialogEvent()
 			pchar.questTemp.PortmansJornal.gem = GenQuestPortman_GenerateGem();
 		break;
 		case "PortmanQuest_2":
-			dialog.text = "Yes, sure! His name is " + npchar.quest.PortmansJornal.capName + ", he's captain of " + GetStrSmallRegister(XI_ConvertString(npchar.quest.PortmansJornal.shipTapeName + "Gen")) + " named '" + npchar.quest.PortmansJornal.shipName + "'. He set sail not long ago and went to " + XI_ConvertString("Colony" + npchar.quest.PortmansJornal.city + "Acc") + ".";
-			link.l1 = "I see. Alright, I shall find him. Now what about payment?";
+			dialog.text = "Да, конечно! Его зовут " + npchar.quest.PortmansJornal.capName + ", он капитан " + GetStrSmallRegister(XI_ConvertString(npchar.quest.PortmansJornal.shipTapeName + "Gen")) + " с именем '" + npchar.quest.PortmansJornal.shipName + "'. Вышел он в море недавно, а направился в " + XI_ConvertString("Colony" + npchar.quest.PortmansJornal.city + "Acc") + ".";
+			link.l1 = "Понятно. Ну что же, я его обязательно найду. Как быть с оплатой?";
 			link.l1.go = "PortmanQuest_3";
 		break;
 		case "PortmanQuest_3":
-			dialog.text = npchar.quest.PortmansJornal.capName + " himself will pay you, it's in his best interest. You just try to find him as soon as you can, and everything will be fine.";
-			link.l1 = "I see. We'll, I'll go, then...";
+			dialog.text = npchar.quest.PortmansJornal.capName + " сам с вами рассчитается, это в его интересах. Только постарайтесь найти его быстрей, и все будет нормально.";
+			link.l1 = "Ясно. Ну, я пош"+ GetSexPhrase("ел","ла") +"...";
 			link.l1.go = "exit";
 			sTitle = npchar.id + "PortmansBook_Delivery";
 			ReOpenQuestHeader(sTitle);
@@ -2947,26 +2945,26 @@ void ProcessDialogEvent()
 			AddQuestUserData(sTitle, "sTargetCity", XI_ConvertString("Colony" + npchar.quest.PortmansJornal.city + "Acc"));
 			if (GetIslandByCityName(npchar.quest.PortmansJornal.city) != npchar.quest.PortmansJornal.city)
 			{
-				AddQuestUserData(sTitle, "sAreal", ", which is on " + XI_ConvertString(GetIslandByCityName(npchar.quest.PortmansJornal.city) + "Dat"));
+				AddQuestUserData(sTitle, "sAreal", ", что находится на " + XI_ConvertString(GetIslandByCityName(npchar.quest.PortmansJornal.city) + "Dat"));
 			}			
 		break;
 		// -------------------------------- квест розыска украденного корабля ----------------------------------
 		case "SeekShip_1":
-			dialog.text = "Excellent! You know, the stolen ship belongs to an influential person, so this is very important to me. I will pay you handsomely for this job...";
-			link.l1 = "I see. Tell me more about the ship and in what circumstances it has been stolen.";
+			dialog.text = "Прекрасно! Вы знаете, украденный корабль принадлежит не последнему человеку, так что он очень важен для меня. Я неплохо заплачу за работу...";
+			link.l1 = "Понятно. Расскажите подробней, что за корабль, при каких обстоятельствах был украден.";
 			link.l1.go = "SeekShip_2";
 			pchar.questTemp.different = "PortmansSeekShip";
 			SetTimerFunction("SmallQuests_free", 0, 0, 1); //освобождаем разрешалку на миниквесты
 			SetSeekShipCapParam(npchar);
 		break;
 		case "SeekShip_2":
-			dialog.text = XI_ConvertString(npchar.quest.PortmansSeekShip.shipTapeName) + " by the name of '" + npchar.quest.PortmansSeekShip.shipName + "'. Was stolen in the night " + FindRussianDaysString(rand(5)+10) + " ago. The watchman was slain.";
-			link.l1 = "Hmm... They must have gone far by now. No way we catch them on a hot scent.";
+			dialog.text = XI_ConvertString(npchar.quest.PortmansSeekShip.shipTapeName) + " с именем '" + npchar.quest.PortmansSeekShip.shipName + "'. Украден был ночью " + FindRussianDaysString(rand(5)+10) + " назад. Вахтенный убит.";
+			link.l1 = "Хм, они уже успели уйти, небось, прилично. В общем, о горячих следах говорить не приходится...";
 			link.l1.go = "SeekShip_3";
 		break;
 		case "SeekShip_3":
-			dialog.text = "True, but I still saw no point in raising alarm right away. The brass might have caught up with them, but they'd just blow the ship to pieces - and that's not exactly the thing I needed.";
-			link.l1 = "I see. Well, I am starting my search. Hop I get lucky.";
+			dialog.text = "Да, верно. Но и смысла мне сразу панику поднимать не было. Военные если и догонят, то разнесут корабль в щепки, а это не совсем то, что мне нужно.";
+			link.l1 = "Понятно. Ну что же, приступаю к поискам. Надеюсь, мне повезет.";
 			link.l1.go = "exit";
 			sTitle = npchar.id + "Portmans_SeekShip";
 			ReOpenQuestHeader(sTitle);
@@ -2978,13 +2976,13 @@ void ProcessDialogEvent()
 		break;
 
 		case "SeekShip_break":
-			dialog.text = "A pity - but we could hardly count on success.";
-			link.l1 = "Yes, it's been too long since the ship was stolen.";
+			dialog.text = "Хм, ну что же, очень жаль. Хотя, на успех сложно было рассчитывать...";
+			link.l1 = "Да, слишком много времени прошло с момента кражи.";
 			link.l1.go = "SeekShip_break_1";
 		break;
 		case "SeekShip_break_1":
-			dialog.text = "Well, thank you for your help anyway, even though your efforts were not as fruitful as we could hope.";
-			link.l1 = "I did everything I could...";
+			dialog.text = "Ну что же, спасибо за оказанную помощь, хоть она и не увенчалась успехом.";
+			link.l1 = "Не за что...";
 			link.l1.go = "exit";
 			sTemp = "SeekShip_checkAbordage" + npchar.index;
 			pchar.quest.(sTemp).over = "yes"; //снимаем прерывание на абордаж
@@ -3007,8 +3005,8 @@ void ProcessDialogEvent()
 		case "SeekShip_good":
 			if (npchar.quest == "SeekShip_sink")
 			{
-				dialog.text = "Excellent! Although I suspect that this is not exactly the ship which had been stolen... Oh, who cares! I'm taking it.";
-				link.l1 = "Yes, indeed...";
+				dialog.text = "Отлично! Однако, полагаю, что это не совсем тот корабль, что был украден... Хотя, собственно, все равно! Я беру его у вас.";
+				link.l1 = "Да, действительно...";
 				//npchar.quest.money = makeint(sti(npchar.quest.money) / 4); //снижаем оплату
 				ChangeCharacterComplexReputation(pchar,"nobility", 5);
 				ChangeCharacterNationReputation(pchar, sti(NPChar.nation), 10);
@@ -3019,8 +3017,8 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				dialog.text = "Excellent! You've helped me out a lot. I can imagine how hard it was.";
-				link.l1 = "Yes, indeed...";
+				dialog.text = "Превосходно! Вы мне очень помогли. Представляю, насколько это было сложно.";
+				link.l1 = "Да, действительно...";
 				ChangeCharacterComplexReputation(pchar,"nobility", 10);
 				ChangeCharacterNationReputation(pchar, sti(NPChar.nation), 20);
                 AddCharacterExpToSkill(GetMainCharacter(), "Leadership", 100);
@@ -3030,8 +3028,8 @@ void ProcessDialogEvent()
 			link.l1.go = "SeekShip_good_1";
 		break;
 		case "SeekShip_good_1":
-			dialog.text = "I am ready to pay you your fee. In constitutes " + FindRussianMoneyString(makeint(sti(npchar.quest.chest)*15000)) + " in chests. Unfortunately I cannot pay you more than that.";
-			link.l1 = "Well, that shall do. Thank you and warm regards.";
+			dialog.text = "Я готов выплатить вам вознаграждение. Оно составляет " + FindRussianMoneyString(makeint(sti(npchar.quest.chest)*15000)) + " в сундуках. Больше я заплатить не могу, к сожалению.";
+			link.l1 = "Ну что же, этого тоже достаточно. Спасибо и всего хорошего.";
 			link.l1.go = "exit";
 			TakeNItems(pchar, "chest", sti(npchar.quest.chest));
 			sTitle = npchar.id + "Portmans_SeekShip";
@@ -3048,7 +3046,7 @@ void ProcessDialogEvent()
 		case "CapitainList":
 			if (sti(npchar.quest.qty) > 0)
 			{
-				dialog.text = "There are several registered captains. Are you interested in someone in particular?";
+				dialog.text = "Есть отметившиеся капитаны. Кто конкретно вас интересует?";
 				makearef(arCapBase, npchar.quest.capitainsList); 
 				for (i=0; i<sti(npchar.quest.qty); i++)
 				{
@@ -3056,14 +3054,14 @@ void ProcessDialogEvent()
 					sCapitainId = GetAttributeName(arCapLocal);
 					sld = characterFromId(sCapitainId);
 					attrL = "l" + i;
-					link.(attrL) = GetFullName(sld) + ", captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "'.";
+					link.(attrL) = GetFullName(sld) + ", капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "'.";
 					link.(attrL).go = "CapList_"+attrL;
 				}
 			}
 			else
 			{
-				dialog.text = "I have no captains on my list that could be of interest to you.";
-				link.l1 = "I see. Well, thanks for the information.";
+				dialog.text = "У меня в списках нет капитанов, способных вас заинтересовать.";
+				link.l1 = "Понятно. Спасибо за информацию.";
 				link.l1.go = "node_2";
 			}
 		break;
@@ -3072,11 +3070,11 @@ void ProcessDialogEvent()
     		arCapLocal = GetAttributeN(arCapBase,  0);
 			sCapitainId = GetAttributeName(arCapLocal);
 			sld = characterFromId(sCapitainId);
-			dialog.text = LinkRandPhrase("Well, let's see... A-ha! There! ", "Ah-ha... A-ha! There! ", "Alright, then. ") +
-				"Captain " + GetFullName(sld) + " " + arCapLocal.date + " year left our port and sailed to " + XI_ConvertString("Colony" + arCapLocal + "Acc") + ".";
-			link.l1 = "Thank you. I'd like to look further through the list...";
+			dialog.text = LinkRandPhrase("Та-а-ак, давайте посмотрим... Ага, есть! ", "Так-так... Ага, нашел! ", "Значит, так. ") +
+				"Капитан " + GetFullName(sld) + " " + arCapLocal.date + " года ушел из нашего порта в " + XI_ConvertString("Colony" + arCapLocal + "Acc") + ".";
+			link.l1 = "Спасибо. Хотелось бы посмотреть список дальше...";
 			link.l1.go = "CapitainList";
-			link.l2 = "Okay, that's all. I am not interested in any more captains.";
+			link.l2 = "Все, капитаны меня более не интересуют.";
 			link.l2.go = "node_2";
 			//заносим запись в СЖ
 			AddQuestRecordEx(arCapLocal.QBString1, arCapLocal.QBString2, arCapLocal.QBQty);
@@ -3088,7 +3086,7 @@ void ProcessDialogEvent()
 			AddQuestUserData(arCapLocal.QBString1, "sTargetCity", XI_ConvertString("Colony" + arCapLocal + "Acc"));
 			if (GetIslandByCityName(arCapBase.(sCapitainId)) != arCapBase.(sCapitainId))
 			{
-				AddQuestUserData(arCapLocal.QBString1, "sAreal", " that is in " + XI_ConvertString(GetIslandByCityName(arCapBase.(sCapitainId)) + "Dat"));
+				AddQuestUserData(arCapLocal.QBString1, "sAreal", ", что находится на " + XI_ConvertString(GetIslandByCityName(arCapBase.(sCapitainId)) + "Dat"));
 			}
 			//убираем из списка
 			DeleteAttribute(arCapBase, sCapitainId); 
@@ -3098,11 +3096,11 @@ void ProcessDialogEvent()
     		arCapLocal = GetAttributeN(arCapBase,  1);
 			sCapitainId = GetAttributeName(arCapLocal);
 			sld = characterFromId(sCapitainId);
-			dialog.text = LinkRandPhrase("Well, let's see... A-ha! There! ", "Ah-ha... A-ha! There! ", "Alright, then. ") +
-				"Captain " + GetFullName(sld) + " " + arCapLocal.date + " year left our port and sailed to " + XI_ConvertString("Colony" + arCapLocal + "Acc") + ".";
-			link.l1 = "Thank you. I'd like to look further through the list...";
+			dialog.text = LinkRandPhrase("Та-а-ак, давайте посмотрим... Ага, есть! ", "Так-так... Ага, нашел! ", "Значит, так. ") +
+				"Капитан " + GetFullName(sld) + " " + arCapLocal.date + " года ушел из нашего порта в " + XI_ConvertString("Colony" + arCapLocal + "Acc") + ".";
+			link.l1 = "Спасибо. Хотелось бы посмотреть список дальше...";
 			link.l1.go = "CapitainList";
-			link.l2 = "Okay, that's all. I am not interested in any more captains.";
+			link.l2 = "Все, капитаны меня более не интересуют.";
 			link.l2.go = "node_2";
 			//заносим запись в СЖ
 			AddQuestRecordEx(arCapLocal.QBString1, arCapLocal.QBString2, arCapLocal.QBQty);
@@ -3114,7 +3112,7 @@ void ProcessDialogEvent()
 			AddQuestUserData(arCapLocal.QBString1, "sTargetCity", XI_ConvertString("Colony" + arCapLocal + "Acc"));
 			if (GetIslandByCityName(arCapBase.(sCapitainId)) != arCapBase.(sCapitainId))
 			{
-				AddQuestUserData(arCapLocal.QBString1, "sAreal", " that is in " + XI_ConvertString(GetIslandByCityName(arCapBase.(sCapitainId)) + "Dat"));
+				AddQuestUserData(arCapLocal.QBString1, "sAreal", ", что находится на " + XI_ConvertString(GetIslandByCityName(arCapBase.(sCapitainId)) + "Dat"));
 			}
 			//убираем из списка
 			DeleteAttribute(arCapBase, sCapitainId); 
@@ -3124,11 +3122,11 @@ void ProcessDialogEvent()
     		arCapLocal = GetAttributeN(arCapBase,  2);
 			sCapitainId = GetAttributeName(arCapLocal);
 			sld = characterFromId(sCapitainId);
-			dialog.text = LinkRandPhrase("Well, let's see... A-ha! There! ", "Ah-ha... A-ha! There! ", "Alright, then. ") +
-				"Captain " + GetFullName(sld) + " " + arCapLocal.date + " year left our port and sailed to " + XI_ConvertString("Colony" + arCapLocal + "Acc") + ".";
-			link.l1 = "Thank you. I'd like to look further through the list...";
+			dialog.text = LinkRandPhrase("Та-а-ак, давайте посмотрим... Ага, есть! ", "Так-так... Ага, нашел! ", "Значит, так. ") +
+				"Капитан " + GetFullName(sld) + " " + arCapLocal.date + " года ушел из нашего порта в " + XI_ConvertString("Colony" + arCapLocal + "Acc") + ".";
+			link.l1 = "Спасибо. Хотелось бы посмотреть список дальше...";
 			link.l1.go = "CapitainList";
-			link.l2 = "Okay, that's all. I am not interested in any more captains.";
+			link.l2 = "Все, капитаны меня более не интересуют.";
 			link.l2.go = "node_2";
 			//заносим запись в СЖ
 			AddQuestRecordEx(arCapLocal.QBString1, arCapLocal.QBString2, arCapLocal.QBQty);
@@ -3140,7 +3138,7 @@ void ProcessDialogEvent()
 			AddQuestUserData(arCapLocal.QBString1, "sTargetCity", XI_ConvertString("Colony" + arCapLocal + "Acc"));
 			if (GetIslandByCityName(arCapBase.(sCapitainId)) != arCapBase.(sCapitainId))
 			{
-				AddQuestUserData(arCapLocal.QBString1, "sAreal", " that is in " + XI_ConvertString(GetIslandByCityName(arCapBase.(sCapitainId)) + "Dat"));
+				AddQuestUserData(arCapLocal.QBString1, "sAreal", ", что находится на " + XI_ConvertString(GetIslandByCityName(arCapBase.(sCapitainId)) + "Dat"));
 			}
 			//убираем из списка
 			DeleteAttribute(arCapBase, sCapitainId); 
@@ -3150,11 +3148,11 @@ void ProcessDialogEvent()
     		arCapLocal = GetAttributeN(arCapBase,  3);
 			sCapitainId = GetAttributeName(arCapLocal);
 			sld = characterFromId(sCapitainId);
-			dialog.text = LinkRandPhrase("Well, let's see... A-ha! There! ", "Ah-ha... A-ha! There! ", "Alright, then. ") +
-				"Captain " + GetFullName(sld) + " " + arCapLocal.date + " year left our port and sailed to " + XI_ConvertString("Colony" + arCapLocal + "Acc") + ".";
-			link.l1 = "Thank you. I'd like to look further through the list...";
+			dialog.text = LinkRandPhrase("Та-а-ак, давайте посмотрим... Ага, есть! ", "Так-так... Ага, нашел! ", "Значит, так. ") +
+				"Капитан " + GetFullName(sld) + " " + arCapLocal.date + " года ушел из нашего порта в " + XI_ConvertString("Colony" + arCapLocal + "Acc") + ".";
+			link.l1 = "Спасибо. Хотелось бы посмотреть список дальше...";
 			link.l1.go = "CapitainList";
-			link.l2 = "Okay, that's all. I am not interested in any more captains.";
+			link.l2 = "Все, капитаны меня более не интересуют.";
 			link.l2.go = "node_2";
 			//заносим запись в СЖ
 			AddQuestRecordEx(arCapLocal.QBString1, arCapLocal.QBString2, arCapLocal.QBQty);
@@ -3166,7 +3164,7 @@ void ProcessDialogEvent()
 			AddQuestUserData(arCapLocal.QBString1, "sTargetCity", XI_ConvertString("Colony" + arCapLocal + "Acc"));
 			if (GetIslandByCityName(arCapBase.(sCapitainId)) != arCapBase.(sCapitainId))
 			{
-				AddQuestUserData(arCapLocal.QBString1, "sAreal", " that is in " + XI_ConvertString(GetIslandByCityName(arCapBase.(sCapitainId)) + "Dat"));
+				AddQuestUserData(arCapLocal.QBString1, "sAreal", ", что находится на " + XI_ConvertString(GetIslandByCityName(arCapBase.(sCapitainId)) + "Dat"));
 			}
 			//убираем из списка
 			DeleteAttribute(arCapBase, sCapitainId); 
@@ -3176,11 +3174,11 @@ void ProcessDialogEvent()
     		arCapLocal = GetAttributeN(arCapBase,  4);
 			sCapitainId = GetAttributeName(arCapLocal);
 			sld = characterFromId(sCapitainId);
-			dialog.text = LinkRandPhrase("Well, let's see... A-ha! There! ", "Ah-ha... A-ha! There! ", "Alright, then. ") +
-				"Captain " + GetFullName(sld) + " " + arCapLocal.date + " year left our port and sailed to " + XI_ConvertString("Colony" + arCapLocal + "Acc") + ".";
-			link.l1 = "Thank you. I'd like to look further through the list...";
+			dialog.text = LinkRandPhrase("Та-а-ак, давайте посмотрим... Ага, есть! ", "Так-так... Ага, нашел! ", "Значит, так. ") +
+				"Капитан " + GetFullName(sld) + " " + arCapLocal.date + " года ушел из нашего порта в " + XI_ConvertString("Colony" + arCapLocal + "Acc") + ".";
+			link.l1 = "Спасибо. Хотелось бы посмотреть список дальше...";
 			link.l1.go = "CapitainList";
-			link.l2 = "Okay, that's all. I am not interested in any more captains.";
+			link.l2 = "Все, капитаны меня более не интересуют.";
 			link.l2.go = "node_2";
 			//заносим запись в СЖ
 			AddQuestRecordEx(arCapLocal.QBString1, arCapLocal.QBString2, arCapLocal.QBQty);
@@ -3192,7 +3190,7 @@ void ProcessDialogEvent()
 			AddQuestUserData(arCapLocal.QBString1, "sTargetCity", XI_ConvertString("Colony" + arCapLocal + "Acc"));
 			if (GetIslandByCityName(arCapBase.(sCapitainId)) != arCapBase.(sCapitainId))
 			{
-				AddQuestUserData(arCapLocal.QBString1, "sAreal", " that is in " + XI_ConvertString(GetIslandByCityName(arCapBase.(sCapitainId)) + "Dat"));
+				AddQuestUserData(arCapLocal.QBString1, "sAreal", ", что находится на " + XI_ConvertString(GetIslandByCityName(arCapBase.(sCapitainId)) + "Dat"));
 			}
 			//убираем из списка
 			DeleteAttribute(arCapBase, sCapitainId); 
@@ -3202,22 +3200,22 @@ void ProcessDialogEvent()
 		case "ShipStock_1":
 			if (CheckAttribute(pchar, "questTemp.HWIC.Holl") && pchar.questTemp.HWIC.Holl == "JacobTakeShip" && !CheckAttribute(npchar, "quest.HWICHoll"))
 			{
-			dialog.text = "I am listening - which ship, for what term?";
-    		Link.l1 = "Lucas Rodenburg sent me. He said that I can moor my ship there for free.";
+			dialog.text = "Слушаю вас - какой корабль, на какой срок?";
+    		Link.l1 = "Я от Лукаса Роденбурга. Он сказал, что стоянка для моего корабля будет бесплатной.";
     		Link.l1.go = "ShipStock_HWICHoll";
 			break;
 			}
 			if (CheckAttribute(pchar, "questTemp.HWIC.Eng") && pchar.questTemp.HWIC.Eng == "GotoPortoffice" && !CheckAttribute(npchar, "quest.HWICEng"))
 			{
-			dialog.text = "I am listening - which ship, for what term?";
-    		Link.l1 = "Richard Fleetwood sent me. He said that I can moor my flagship there for 10000 pesos.";
+			dialog.text = "Слушаю вас - какой корабль, на какой срок?";
+    		Link.l1 = "Я от Ричарда Флитвуда. Он сказал, что я могу поставить свой флагман на стоянку за 10 000 песо.";
     		Link.l1.go = "ShipStock_HWICEng";
 			break;
 			}
             if (sti(NPChar.Portman) >= 3 || CheckAttribute(pchar, "questTemp.HWIC.TakeQuestShip"))
 			{
-                dialog.text = "Well, that is correct. But unfortunately, I cannot accept your ship at the moment. No dock space available.";
-    			Link.l1 = "That's a pity.";
+                dialog.text = "Вообще-то, да. Но сейчас я не могу принять корабль. Нет мест в доках.";
+    			Link.l1 = "Очень жаль.";
     			Link.l1.go = "exit";
 			}
             else
@@ -3225,7 +3223,7 @@ void ProcessDialogEvent()
     			ok = (sFrom_sea == "") || (Pchar.location.from_sea == sFrom_sea);
 			    if (sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)
 				{
-					dialog.text = "And which particular ship are you going to leave there?";
+					dialog.text = "Какой именно корабль вы хотите оставить?";
 	    			for(i=1; i<COMPANION_MAX; i++)
 	                {
 	        	        cn = GetCompanionIndex(PChar, i);
@@ -3239,13 +3237,13 @@ void ProcessDialogEvent()
 	        		        Link.(attrL).go = "ShipStockMan_" + i;
 	        		    }
 	        	    }
-	    			Link.l9 = "Nevermind, thank you.";
+	    			Link.l9 = "Спасибо, не нужно.";
 	    			Link.l9.go = "exit";
     			}
     			else
     			{
-					dialog.text = "Hmm... I don't see any of your ships.";
-	    			Link.l1 = "I just wanted to know about the possibility of parking.";
+					dialog.text = "Хм. Я не вижу ваших кораблей в порту.";
+	    			Link.l1 = "Да, я просто хотел"+ GetSexPhrase("","а") +" узнать о возможности стоянки.";
 	    			Link.l1.go = "exit";
 				}
 			}
@@ -3253,46 +3251,46 @@ void ProcessDialogEvent()
 
 		case "ShipStockMan_1":
             NPChar.ShipToStoreIdx = GetCompanionIndex(PChar, 1);
-			dialog.text = "Let's take a look at that ship.";
-			Link.l1 = "Fine.";
+			dialog.text = "Посмотрим, что это за корабль.";
+			Link.l1 = "Хорошо.";
 			Link.l1.go = "ShipStock_2";
-			Link.l2 = "No, I've changed my mind.";
+			Link.l2 = "Нет, я передумал"+ GetSexPhrase("","а") +".";
 			Link.l2.go = "exit";
 		break;
 
 		case "ShipStockMan_2":
             NPChar.ShipToStoreIdx = GetCompanionIndex(PChar, 2);
-			dialog.text = "Let's take a look at that ship.";
-			Link.l1 = "Fine.";
+			dialog.text = "Посмотрим, что это за корабль.";
+			Link.l1 = "Хорошо.";
 			Link.l1.go = "ShipStock_2";
-			Link.l2 = "No, I've changed my mind.";
+			Link.l2 = "Нет, я передумал"+ GetSexPhrase("","а") +".";
 			Link.l2.go = "exit";
 		break;
 
 		case "ShipStockMan_3":
             NPChar.ShipToStoreIdx = GetCompanionIndex(PChar, 3);
-			dialog.text = "Let's take a look at that ship.";
-			Link.l1 = "Fine.";
+			dialog.text = "Посмотрим, что это за корабль.";
+			Link.l1 = "Хорошо.";
 			Link.l1.go = "ShipStock_2";
-			Link.l2 = "No, I've changed my mind.";
+			Link.l2 = "Нет, я передумал"+ GetSexPhrase("","а") +".";
 			Link.l2.go = "exit";
 		break;
 		
 		case "ShipStockMan_4":
             NPChar.ShipToStoreIdx = GetCompanionIndex(PChar, 4);
-			dialog.text = "Let's take a look at that ship.";
-			Link.l1 = "Fine.";
+			dialog.text = "Посмотрим что это за корабль.";
+			Link.l1 = "Хорошо.";
 			Link.l1.go = "ShipStock_2";
-			Link.l2 = "No, I've changed my mind.";
+			Link.l2 = "Нет, я передумал"+ GetSexPhrase("","а") +".";
 			Link.l2.go = "exit";
 		break;
 
 		case "ShipStock_2":
             chref = GetCharacter(sti(NPChar.ShipToStoreIdx));
 			NPChar.MoneyForShip = GetPortManPriceExt(NPChar, chref);
-			dialog.Text = XI_ConvertString(RealShips[sti(chref.Ship.Type)].BaseName) + " '" + chref.Ship.Name + "', class " + RealShips[sti(chref.Ship.Type)].Class +
-                     ", mooring cost " + FindRussianMoneyString(sti(NPChar.MoneyForShip)) + " a moth, payment one month ahead.";
-			Link.l1 = "Yes, that suits me.";
+			dialog.Text = XI_ConvertString(RealShips[sti(chref.Ship.Type)].BaseName) + " '" + chref.Ship.Name + "', класс " + RealShips[sti(chref.Ship.Type)].Class +
+                     ", стоимость стоянки " + FindRussianMoneyString(sti(NPChar.MoneyForShip)) + " в месяц, оплата за месяц вперед.";
+			Link.l1 = "Да. Это меня устраивает.";
 			if (sti(Pchar.Money) >= sti(NPChar.MoneyForShip))
 			{
 			    Link.l1.go = "ShipStock_3";
@@ -3301,13 +3299,13 @@ void ProcessDialogEvent()
 			{
                 Link.l1.go = "ShipStock_NoMoney";
 			}
-			Link.l2 = "No, I've changed my mind.";
+			Link.l2 = "Нет, я передумал"+ GetSexPhrase("","а") +".";
 			Link.l2.go = "exit";
 		break;
 
 		case "ShipStock_NoMoney":
-			dialog.text = "And it will suit me, too, as soon as you raise the necessary sum.";
-			Link.l1 = "Oops... I'll come back later.";
+			dialog.text = "Меня тоже все устроит, если у вас будет нужная сумма.";
+			Link.l1 = "Упс... зайду позже.";
 			Link.l1.go = "exit";
 		break;
 
@@ -3328,8 +3326,8 @@ void ProcessDialogEvent()
             NPChar.Portman    = sti(NPChar.Portman) + 1;
             pchar.ShipInStock = sti(pchar.ShipInStock) + 1;
 
-			dialog.text = "Alright. You can take your ship back anytime you need.";
-			Link.l1 = "Thanks.";
+			dialog.text = "Хорошо. Заберете, когда будет нужно.";
+			Link.l1 = "Спасибо.";
 			Link.l1.go = "exit";
 		break;
 
@@ -3339,7 +3337,7 @@ void ProcessDialogEvent()
 			{
 				if (GetCompanionQuantity(pchar) < COMPANION_MAX)
 	            {
-	                dialog.text = "Which particular ship are you going to take?";
+	                dialog.text = "Какой именно корабль вы заберете?";
 	                cn = 1;
 	                for(i=1; i<MAX_CHARACTERS; i++)
 	            	{
@@ -3356,20 +3354,20 @@ void ProcessDialogEvent()
 	            		}
 	                }
 	
-	    			Link.l9 = "No, I've changed my mind.";
+	    			Link.l9 = "Нет, я передумал"+ GetSexPhrase("","а") +".";
 	    			Link.l9.go = "exit";
 				}
 				else
 				{
-	                dialog.text = "Do you have space for another ship?";
-	    			Link.l1 = "Oh, right. Thank you.";
+	                dialog.text = "Нет ли у вас места для еще одного корабля?";
+	    			Link.l1 = "Да, точно. Спасибо.";
 	    			Link.l1.go = "exit";
 				}
 			}
 			else
 			{
-				dialog.text = "Hmm. I don't see your flagship in the port. And you can only take your ships back here.";
-    			Link.l1 = "Alright, I'll come for them later.";
+				dialog.text = "Хм. Я не вижу вашего флагмана в порту. А забрать свои корабли вы можете только здесь.";
+    			Link.l1 = "Хорошо, я прибуду за ними позднее.";
     			Link.l1.go = "exit";
 			}
 		break;
@@ -3379,18 +3377,18 @@ void ProcessDialogEvent()
             NPChar.MoneyForShip =  GetNpcQuestPastMonthParam(chref, "ShipInStockMan.Date") * sti(chref.ShipInStockMan.MoneyForShip);
 			if (sti(NPChar.MoneyForShip) > 0)
 			{
-			    dialog.Text = "Wanna pick your ship up? For the mooring, you still owe " + FindRussianMoneyString(sti(NPChar.MoneyForShip)) + ".";
+			    dialog.Text = "Забираете? С вас за хранение еще " + FindRussianMoneyString(sti(NPChar.MoneyForShip)) + ".";
 			}
 			else
 			{
-				dialog.Text = "Picking up?";
+				dialog.Text = "Забираете?";
 			}
 			if (sti(NPChar.MoneyForShip) <= sti(pchar.Money))
 			{
-				Link.l1 = "Yes.";
+				Link.l1 = "Да.";
 				Link.l1.go = "ShipStockManBack2";
 			}
-			Link.l2 = "No, I've changed my mind.";
+			Link.l2 = "Нет, я передумал"+ GetSexPhrase("","а") +".";
 			Link.l2.go = "exit";
 		break;
 		
@@ -3409,21 +3407,21 @@ void ProcessDialogEvent()
 		case "ShipStock_HWICHoll":
 			if (GetCompanionQuantity(pchar) > 1)
 			{
-				dialog.text = "Yes, yes, I know. But I can only take one ship for the free mooring. So, please sort out the things with your squadron and then come back again.";
-				link.l1 = "Alright, I'll bring just the flagship.";
+				dialog.text = "Да-да, я в курсе. Но я могу принять на бесплатную стоянку от вас только один корабль. Пожалуйста, разберитесь со своей эскадрой, а затем вновь возвращайтесь ко мне.";
+				link.l1 = "Хорошо, я приведу на стоянку только флагман.";
 				link.l1.go = "exit";	
 			}
 			else
 			{
-				dialog.text = "Yes, yes, I know. By the order of mynheer Rodenburg we accept your vessel for storage and we shall provide an officer of the watch for the entire time your ships stays there. Please sign here... and here...";
-				link.l1 = "Alright... I believe, all formalities are now settled?";
+				dialog.text = "Да-да, я в курсе. По приказу минхера Роденберга мы принимаем на хранение ваше судно и обеспечиваем его вахтенным офицером на все время стоянки. Пожалуйста, подпишите вот тут и вот тут...";
+				link.l1 = "Хорошо... Все, теперь все формальности улажены?";
 				link.l1.go = "ShipStock_HWICHoll_1";	
 			}
 		break;
 		
 		case "ShipStock_HWICHoll_1":
-			dialog.text = "Yes. Now there's no need for you to worry about your ship - we'll take care of it. You can return to mynheer Rodenburg.";
-			link.l1 = "Thank you. Goodbye.";
+			dialog.text = "Да. О своем корабле не беспокойтесь - мы о нем позаботимся. Можете спокойно отправляться к минхеру Роденбергу.";
+			link.l1 = "Благодарю. До свидания.";
 			link.l1.go = "exit";	
 			npchar.quest.HWICHoll = "done";
 			pchar.Ship.Type = SHIP_NOTUSED;//все одно сгорит
@@ -3432,29 +3430,29 @@ void ProcessDialogEvent()
 		case "ShipStock_HWICEng":
 			if (GetCompanionQuantity(pchar) > 1)
 			{
-				dialog.text = "Yes, yes, I know. But I can only take one ship for the free mooring. So, please sort out the things with your squadron and then come back again.";
-				link.l1 = "Alright, I'll bring just the flagship.";
+				dialog.text = "Да-да, я в курсе. Но я могу принять стоянку от вас только один корабль. Пожалуйста, разберитесь со своей эскадрой, а затем вновь возвращайтесь ко мне.";
+				link.l1 = "Хорошо, я приведу на стоянку только флагман.";
 				link.l1.go = "exit";	
 			}
 			else
 			{
-				dialog.text = "Yes, of course. Do you have the money on you?";
+				dialog.text = "Да, конечно. Деньги при вас?";
 				if(makeint(Pchar.money) >= 10000)
 				{
-					link.l1 = "Sure. Here you go.";
+					link.l1 = "Да, при мне. Возьмите.";
 					link.l1.go = "ShipStock_HWICEng_1";	
 				}
 				else
 				{
-					link.l1 = "No. I'll be back in a moment.";
+					link.l1 = "Нет. Сейчас принесу.";
 					link.l1.go = "exit";	
 				}
 			}
 		break;
 		
 		case "ShipStock_HWICEng_1":
-			dialog.text = "Alright. We shall take care of your vessel and provide an officer of the watch for the entire time your ships stays there.";
-			link.l1 = "Thanks!";
+			dialog.text = "Хорошо. Мы позаботимся о вашем судне и обеспечим его вахтенным офицером на время стоянки.";
+			link.l1 = "Спасибо!";
 			link.l1.go = "exit";
 			AddMoneyToCharacter(pchar, -10000);
 			npchar.quest.HWICEng = "done";
@@ -3462,8 +3460,8 @@ void ProcessDialogEvent()
 		break;
 		//<-- Голландский гамбит
 		case "Escort_companion":
-			dialog.text = "Did you want anything, cap?";
-			link.l1 = "No, nothing.";
+			dialog.text = "Вы что-то хотели, кэп?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Escort_companion";
 		break;
@@ -3488,7 +3486,7 @@ float BurntShipQuest_GetMaxNeededValue(int iShipType, string _param)
 	return NeededValue;
 }
 
-// Warship 25.07.09 Генер "A burnt vessel". Начальные иниты для портмана - тип разыскиваемого судна, выдающаяся характеристика и т.д.
+// Warship 25.07.09 Генер "Сгоревшее судно". Начальные иниты для портмана - тип разыскиваемого судна, выдающаяся характеристика и т.д.
 void BurntShipQuest_FillStartParams(ref _npchar)
 {
 	int rank = sti(PChar.rank);
@@ -3722,7 +3720,7 @@ void SetJornalCapParam(ref npchar)
 	sld.quest.firstCity = npchar.city; //капитану знать откуда вышел в самом начале
 	sld.quest.stepsQty = 1; //количество выходов в море
 	sld.quest.money = ((sti(RealShips[sti(sld.Ship.Type)].basetype)+1) * 150) + (sti(pchar.rank)*150); //вознаграждение
-	Log_TestInfo("The absent-minded cap " + sld.id + " went to: " + sld.quest.targetCity);
+	Log_TestInfo("Рассеянный кэп " + sld.id + " направился в: " + sld.quest.targetCity);
 	//определим бухту, куда ставить энкаунтер. чтобы сразу не генерился перед ГГ у города
 	string sTemp = GetArealByCityName(npchar.city);
 	sld.quest.baseShore = GetIslandRandomShoreId(sTemp);
@@ -3830,7 +3828,7 @@ void SetSeekShipCapParam(ref npchar)
 	sld.quest = "InMap"; //личный флаг кэпа-вора
 	sld.city = SelectAnyColony(npchar.city); //определим колонию, откуда кэп-вор выйдет
 	sld.quest.targetCity = SelectAnyColony2(npchar.city, sld.city); //определим колонию, куда он придет
-	//Log_TestInfo("Thieving cap " + sld.id + " sailed out of: " + sld.city + " and went to: " + sld.quest.targetCity);
+	//Log_TestInfo("Кэп-вор " + sld.id + " вышел из: " + sld.city + " и направился в: " + sld.quest.targetCity);
 	sld.quest.cribCity = npchar.city; //город, откуда кэп-вор спер корабль
 	//на карту
 	sld.mapEnc.type = "trade";

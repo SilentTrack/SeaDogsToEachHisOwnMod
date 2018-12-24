@@ -4,51 +4,51 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you, " + GetAddress_Form(NPChar) + "?"), "You tried to ask me some question not long ago, " + GetAddress_Form(NPChar) + "...", "Over this whole day, this is the third time you're talking about some question...",
-                          "More questions, I presume?", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
-                      "Yes, it really is the third time...", "No, what questions?...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно, " + GetAddress_Form(NPChar) + "?"), "Совсем недавно вы пытались задать мне вопрос, " + GetAddress_Form(NPChar) + "...", "В течение этого дня вы уже третий раз говорите о каком-то вопросе...",
+                          "Опять вопросы будем задавать?", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Да уж, действительно в третий раз...", "Да нет, какие вопросы...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			//Голландский гамбит /за Англию/
 			if (CheckAttribute(pchar, "questTemp.HWIC.Eng") && pchar.questTemp.HWIC.Eng == "GotoBridgetown" && !CheckAttribute(npchar, "quest.HWICTalked"))
             {
-                link.l1 = "I'd like a drink. Poor me some of the best rum you have.";
+                link.l1 = "Я хочу выпить. Налей мне самого лучшего рома, который у тебя есть.";
                 link.l1.go = "TavernDone";
             }
 			if (CheckAttribute(pchar, "questTemp.HWIC.Eng") && pchar.questTemp.HWIC.Eng == "toBarbados")
             {
-                link.l1 = "Listen, where is Callow Gaston?";
+                link.l1 = "Послушай, а где Плешивый Гастон?";
                 link.l1.go = "Tonzag_Letter";
             }
 			//Голландский гамбит /против всех/
 			if (!CheckAttribute(npchar, "quest.HWICTake") && CheckAttribute(pchar, "questTemp.HWIC.CanTake") && !CheckAttribute(pchar, "questTemp.HWIC.CanTake.Self") && !CheckAttribute(pchar, "questTemp.HWIC.Eng") && !CheckAttribute(pchar, "questTemp.HWIC.Holl"))
 			{
-                link.l1 = "Do you happen to have any kind of work? Or maybe you'd be able to suggest something?";
+                link.l1 = "Нет ли у тебя какой-нибудь работы? Или, может, что-нибудь посоветуешь?";
                 link.l1.go = "Tonzag_check";
             }
 			if (CheckAttribute(pchar, "questTemp.HWIC.Self") && pchar.questTemp.HWIC.Self == "FernandoDie")
 			{
-                link.l1 = "I've finished the job. Fernando Rodriguez is dead.";
+                link.l1 = "Я выполнил работу. Фернандо Родригес мертв.";
                 link.l1.go = "Task_check";
             }
 			// Страж Истины
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "merdok" && !CheckAttribute(npchar, "quest.jino"))
 			{
-				link.l1 = "Listen, has there been an alchemist that arrived here in this town, a physician? He's Italian, about thirty years old, his name is Gino Gvineili. Have you heard anything about that?";
+				link.l1 = "Послушай, не появлялся ли у вас в городе ученый-алхимик, лекарь? Он итальянец, лет тридцати, зовут Джино Гвинейли. Не слыхал о таком?";
 				link.l1.go = "guardoftruth";
 			}
 		break;
 		
 		//Голландский гамбит /за Англию/
 		case "TavernDone":
-			dialog.text = "Here's your drink. The very best rum for our dear guest! Is this a special occasion or have you just dropped by to rinse your throat?";
-			link.l1 = "You can say it's a special occasion. I'm taking some slaves into Blueweld. I've recently redone his new brig specifically for this purpose. So, I stopped by a plantation and spoke with the overseer –he ordered a decent batch of 'black wood' from me. So you can expect me back visiting soon. I'll take some merchandise to Blueweld  –I'll be taking it to Barbados, he he...";
+			dialog.text = "Выпивка - да пожалуйста, самый лучший ром для дорогого гостя! У вас праздник какой, или просто горло промочить зашли?";
+			link.l1 = "Можно сказать, и праздник. Я везу рабов в Блювельд - недавно переделал свой новый бриг специально под эти цели - а тут зашел на плантацию, поболтал с управляющим - он заказал мне приличную партию 'черного дерева'. Так что скоро жди меня опять в гости. Отвезу товар в Блювельд - буду возить на Барбадос, хе-хе...";
 			link.l1.go = "TavernDone_1";
 		break;
 		
 		case "TavernDone_1":
-			dialog.text = "You don't say? Well, there's no shame in drinking to a good deal! So you say you're going to take the 'merchandise' to Barbados, haha?! That's great...";
-			link.l1 = "All right... I'll go look for a place I can sit down.";
+			dialog.text = "Вот как? Ну, за хорошую сделку не грех и выпить! Говорите, будете 'товар' на Барбадос возить, ха-ха?! Здорово...";
+			link.l1 = "Ладно... Пойду поищу место, где присесть.";
 			link.l1.go = "exit";	
 			npchar.quest.HWICTalked = "true";
 			pchar.questTemp.HWIC.Eng.BridgeCounter = sti(pchar.questTemp.HWIC.Eng.BridgeCounter)+1;
@@ -64,8 +64,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "Tonzag_Letter":
-			dialog.text = "Gaston has left the city two day after that 'trader' performance of yours. Your deception was exposed quickly, this town is small and gossips travel fast. This made Gaston to take leave. No one has seen him again here since then. He has left a letter for you, though\nAsked to give it personally to you in case you show up here before him. Actually, you are not the first man looking for Gaston. There was some narrow-eyed big man and an old one. Spanish or Portuguese, I can't tell for sure. But I can't forget his face, something with him was very wrong...";
-			link.l1 = "Give me that letter... Thanks!";
+			dialog.text = "Гастон исчез из города через пару дней после того, как вы устроили тут цирк, разыгрывая из себя торговца не-пойми-чем. Ваш обман быстро распознали, поскольку городок маленький и слухи расходятся быстро. Вот тут-то Гастон и засобирался куда-то. Больше его никто не видел. А вам, сударь, он оставил письмо. Просил передать лично, если вы появитесь на Барбадосе раньше него\nКстати, Гастона уже искали: какой-то узкоглазый здоровяк и пожилой, то ли испанец, то ли португалец. Все они на одно лицо. Но лицо этого старика я долго не смогу забыть. Было в нем что-то такое... словами не скажешь.";
+			link.l1 = "Давай сюда письмо... Спасибо!";
 			link.l1.go = "Tonzag_Letter_1";
 		break;
 		
@@ -87,54 +87,54 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			if(sti(pchar.reputation.nobility) > 41)//высокая репа
 			{
 				PlaySound("VOICE\Russian\hambit\Ercule Tongzag-03.wav");
-				dialog.text = "I don't need the services of some shirkers. I don't have any advice I can offer you.";
-				link.l1 = "Hey, hey. Easy with the language, buddy!";
+				dialog.text = "Я не нуждаюсь в услугах белоручек. Я ничего не могу вам посоветовать.";
+				link.l1 = "Эй-эй, полегче, приятель, с выражениями!";
 				link.l1.go = "exit";
 				break;
 			}
 			if(GetSummonSkillFromName(pchar, SKILL_F_LIGHT) < 25 || GetSummonSkillFromName(pchar, SKILL_FENCING) < 25 || GetSummonSkillFromName(pchar, SKILL_F_HEAVY) < 25 || GetSummonSkillFromName(pchar, SKILL_PISTOL) < 25)//слабое фехтование
 			{
-				dialog.text = "Captain, I need a warrior a little more vicious than you. Come back when you learn how to handle that iron dangling on your belt. And a little adroitness wouldn't hurt either.";
-				link.l1 = "I see. Then I'll pay you a visit later.";
+				dialog.text = "Капитан, для работы мне нужен боец посноровистее, чем вы. Приходите, когда научитесь лучше махать железкой, что у вас на поясе болтается. Да и меткости тоже подучиться не мешает.";
+				link.l1 = "Понятно. Тогда я навещу вас позже.";
 				link.l1.go = "exit";
 				break;
 			}
 			if(sti(Pchar.rank) > 15)//высокий ранг
 			{
-				dialog.text = "You're too well-known on the Archipelago, cap. I don't think you'd be interested in my assignments.";
-				link.l1 = "All right, if you don't think I'd be interested, then what can I do. Farewell.";
+				dialog.text = "Вы слишком известны на Архипелаге, кэп. Не думаю, что вам будут интересны мои задания.";
+				link.l1 = "Ладно, раз неинтересны - значит, неинтересны. Прощайте.";
 				link.l1.go = "exit";
 				break;
 			}
 			PlaySound("VOICE\Russian\hambit\Ercule Tongzag-02.wav");
-			dialog.text = "Hm... You're actually on time. I've got one errand that must be fulfilled right away. If you show yourself in good light, I'll introduce you to some influential people. Now listen, here's what you've got to do.";
-			link.l1 = "I'm all ears.";
+			dialog.text = "Хм... Вообще-то вы вовремя, у меня как раз есть одно дело, которое требует незамедлительного выполнения. Если хорошо себя покажете - познакомлю вас с очень влиятельными людьми. Теперь слушайте, что от вас требуется.";
+			link.l1 = "Я весь внимание.";
 			link.l1.go = "Tonzag_task";
 		break;
 		
 		case "Tonzag_task":
 			pchar.questTemp.HWIC.Self.SpainCity = FindSpainCity();
 			log_Testinfo(pchar.questTemp.HWIC.Self.SpainCity);
-			dialog.text = "One hidalgo has recently arrived from Castilia with intentions to avoid unwanted consequences of… a duel in Europe. But vengeance has no limits and one Spanish noble family wishes this hidalgo dead. Fulfill their request by any means necessary\nBring the target's finger with a ring on it as a proof. Also, bring all items you'll find on his corpse. Are you ready to take the job?";
-			link.l1 = "If the payment is dignified, then I'm in.";
+			dialog.text = "На Карибы прибыл из Кастилии один идальго, в расчете переждать последствия одной... дуэли в Европе. Однако жажда мести границ не имеет - влиятельная испанская семья желает, чтобы этот идальго умер. Выполните их волю любым способом\nВ качестве доказательства вы должны отрезать его палец с фамильным перстнем и доставить мне. Кроме того, принесите мне все, что найдете при нем, все вещи. Вы готовы взяться за эту работу?";
+			link.l1 = "Если оплата будет достойной, то конечно возьмусь.";
 			link.l1.go = "Tonzag_task_1";
-			link.l2 = "Work as a hit man? No way!";
+			link.l2 = "Работать наемным убийцей? Да ни за что!";
 			link.l2.go = "Tonzag_exit";
 			npchar.quest.HWICTake = "true";
 			pchar.questTemp.HWIC.CanTake.Self = "true";//признак, что против всех уже бралась
 		break;
 		
 		case "Tonzag_exit":
-			dialog.text = "Then get lost and forget what we talked about.";
-			link.l1 = "Have a nice stay.";
+			dialog.text = "Тогда проваливайте, и забудьте о нашем разговоре.";
+			link.l1 = "Счастливо оставаться.";
 			link.l1.go = "exit";	
 			DeleteAttribute(pchar, "questTemp.HWIC.Self");//откат к двум другим вариантам
 			pchar.questTemp.HWIC.Fail3 = "true";
 		break;
 		
 		case "Tonzag_task_1":
-			dialog.text = "Your reward will be 30 000 pesos, good money. Besides, you may take every coin you shall find on his body. Now let's talk details. Name's don Fernando Rodriguez\n35 years, tall, swarthy, dressed like a military. Good sailor and experienced fencer. Can't tell where to find him, all I know that he is somewhere in the Caribbean\nSearch every Spanish city until you got him. You have two months. One last thing: I am aware what he is carrying with him, so don't even think to hide any item from me. Questions?";
-			link.l1 = "I don't have any questions. Off I go!";
+			dialog.text = "Награда определена в размере 30 000 песо - в накладе вы не останетесь. Кроме того, можете забрать себе с трупа все деньги, какие найдете. Теперь подробности: вашего клиента зовут дон Фернандо Родригес. Его приметы: на вид 35 лет, высокий, смуглый, одевается как военный. Хороший моряк и опытный фехтовальщик\nГде его найти - сказать точно не могу, но достоверно известно, что он сейчас в одном из испанских поселений архипелага и не собирается никуда выдвигаться еще два месяца. Обойдите все испанские города, расспросите людей - кто-нибудь обязательно его видел\nИ еще: я достоверно знаю, с какими вещами он никогда не расстается, так что не вздумайте что-либо от меня утаить. Вопросы есть?";
+			link.l1 = "Вопросов нет. Отправляюсь в путь!";
 			link.l1.go = "Tonzag_task_2";	
 		break;
 		
@@ -147,22 +147,22 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "Task_check":
-			dialog.text = "Do you have the finger with the ring on it with you? Let me see it.";
+			dialog.text = "Палец с перстнем у тебя? Покажи.";
 			if (CheckCharacterItem(pchar, "Finger"))
 			{
-				link.l1 = "Yes, of course. Here it is.";
+				link.l1 = "Да, конечно. Вот он.";
 				link.l1.go = "Task_check_1";	
 			}
 			else
 			{
-				link.l1 = "No. Fernando sank in the water along with his ship and the finger sank with Fernando.";
+				link.l1 = "Нет. Фернандо утонул вместе со своим кораблем, и палец утонул вместе с Фернандо.";
 				link.l1.go = "Task_fail";	
 			}
 		break;
 		
 		case "Task_fail":
-			dialog.text = "The finger with the ring was an obligatory condition in the contract. It was supposed to serve as confirmation of the client's death. Who knows if Rodriquez swam to the shore from out of the sunken ship? Did you check? No. You've basically failed the assignment, so our agreement is over. All the best.";
-			link.l1 = "But I did away with him. He's gone! Oh, forget you... There's plenty of other stuff to do on the archipelago. Bye.";
+			dialog.text = "Палец с кольцом был обязательным условием контракта. Это подтверждение гибели клиента. Кто знает, не выплыл ли Родригес на берег со своего затонувшего корабля? Ты проверил? Нет. В общем, с задачей ты не справился, так что на этом наше сотрудничество окончено. Всего доброго.";
+			link.l1 = "Но я же его уничтожил! А, пес с тобой... На архипелаге и других занятий хватает. Бывай.";
 			link.l1.go = "exit";
 			pchar.questTemp.HWIC.Fail3 = "true";
 			AddQuestRecord("Holl_Gambit", "3-8");
@@ -172,22 +172,22 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "Task_check_1":
 			RemoveItems(PChar, "Finger", 1);
-			dialog.text = "Wonderful! I'll keep the finger myself. Now for the contents of his pockets. Let's have a look what you've brought.";
-			link.l1 = "Go ahead, have a look...";
+			dialog.text = "Великолепно! Палец я оставляю себе. Теперь по содержимому его карманов. Давай посмотрим, что ты привез.";
+			link.l1 = "Пожалуйста, смотри...";
 			link.l1.go = "Task_check_2";	
 		break;
 		
 		case "Task_check_2":
 			if (CheckCharacterItem(pchar, "jewelry7") && CheckCharacterItem(pchar, "totem_05") && CheckCharacterItem(pchar, "amulet_1"))
 			{
-				dialog.text = "Aha, that's all I need. Well done! You've done a good job. I'm very pleased with you.";
-				link.l1 = "Thank you! It's always nice to get praised on a job well done.";
+				dialog.text = "Ага, всё, что мне нужно. Молодец! Ты отлично выполнил работу. Я доволен тобой.";
+				link.l1 = "Спасибо! Слышать похвалу всегда приятно.";
 				link.l1.go = "Task_complete";	
 			}
 			else
 			{
-				dialog.text = "Hm... I warned you I know what Rodriguez would never do without. And I don't see what I need here. Have you pocketed those things? Did you lose them? It doesn't matter anyway. I have no desire to be involved with you anymore. Get out of here.";
-				link.l1 = "Oh, forget you...";
+				dialog.text = "Хм... Я же тебя предупреждал - я знаю, с чем Родригес никогда не расстается. И я не вижу здесь того, что мне надо. Ты прикарманил эти вещи? Или потерял? Неважно. Я более не желаю иметь с тобой дело. Проваливай.";
+				link.l1 = "Ну и пес с тобой...";
 				link.l1.go = "exit";
 				pchar.questTemp.HWIC.Fail3 = "true";
 				AddQuestRecord("Holl_Gambit", "3-9");
@@ -201,29 +201,29 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			RemoveItems(PChar, "totem_05", 1);
 			RemoveItems(PChar, "amulet_1", 1);
 			AddMoneyToCharacter(pchar, 30000);
-			dialog.text = "Here is your reward as promised, thirty thousand. And I also have an additional, high-responsibility, high-risk assignment, but the pay will rise accordingly, –40,000 pesos.";
-			link.l1 = "I'm all ears. Who's the next client?";
+			dialog.text = "Вот твое вознаграждение, как и было обещано - тридцать тысяч. И у меня сразу есть для тебя очередное, очень ответственное задание, связанное со значительным риском, но и оплата будет соответствующей - 40 000 песо.";
+			link.l1 = "Слушаю внимательно. Кто очередной клиент?";
 			link.l1.go = "Fleetwood_house";	
 		break;
 		
 		//2 задание
 		case "Fleetwood_house":
 			PlaySound("VOICE\Russian\hambit\Ercule Tongzag-05.wav");
-			dialog.text = "This time you are going to hunt not a man, but an item. You must sneak into Richard Fleetwood's house and his log. He is an English captain. The place is being guarded and Richard himself rarely visits the place\nThe plan is simple. The governor of St. Jones will be organizing a private party in ten days, Fleetwood will attend. You must get inside the house at night between one and three o'clock. There will be only one soldier inside\nGet rid of him. Search for a journal inside Richard's apartment. Take this key.";
-			link.l1 = "Hm... Interesting. I've got the assignment. I'm ready to get going!";
+			dialog.text = "В этот раз охотиться нужно не за человеком, а за вещью. Тебе нужно проникнуть в дом английского капитана, Ричарда Флитвуда, проживающего на Антигуа, и выкрасть его судовой журнал. Дом этот охраняется изнутри, да и сам Ричард со своим журналом нечасто в нем бывает\nПлан таков: ровно через 10 дней губернатор Сент-Джонса дает у себя во дворце званый ужин, куда будет приглашен и капитан Флитвуд. Тебе нужно проникнуть в дом ночью, между часом и тремя часами - тогда не будет опасности твоего обнаружения. Внутри будет всего один солдат - когда Ричарда нет дома, то и охраны немного. Охранника ликвидируешь. Журнал следует искать в апартаментах Ричарда на втором этаже\nВозьми этот ключ - с помощью него ты откроешь запертую дверь дома.";
+			link.l1 = "Хм... Интересно. Задачу понял, готов отправиться в путь!";
 			link.l1.go = "Fleetwood_house_1";	
 		break;
 		
 		case "Fleetwood_house_1":
 			GiveItem2Character(pchar, "key3");
-			dialog.text = "Be careful. Don't sneak into the house before the date I've indicated to you. Otherwise, the best case scenario is they'll just kick you out of there or in the worst case, you'll end up behind bars. Repeat to me the date and time.";
-			link.l1 = "In exactly ten days, between one and three a.m.";
+			dialog.text = "Будь осторожен. Не суйся в дом раньше указанной мной даты, иначе тебя в лучшем случае просто оттуда выпроводят, а в худшем - окажешься за решеткой. Повтори дату и время.";
+			link.l1 = "Ровно через десять дней, с часу до трех ночи.";
 			link.l1.go = "Fleetwood_house_2";	
 		break;
 		
 		case "Fleetwood_house_2":
-			dialog.text = "Okay. Now off you go. Good luck!";
-			link.l1 = "Thank you, Gaston.";
+			dialog.text = "Хорошо. Теперь отправляйся. Удачи!";
+			link.l1 = "Спасибо, Гастон.";
 			link.l1.go = "Fleetwood_house_3";
 		break;
 		
@@ -257,8 +257,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "guardoftruth":
-			dialog.text = LinkRandPhrase("No, I haven't. We have herbalists and physicians, but none of them with such a name.","This is the first time I've heard such a weird name. No, we've never had a visit from the man you speak of.","We don't have any kind of alchemists at all. We've got physicians, but none with such a weird name.");
-			link.l1 = "I see. That's too bad. I'll keep looking!";
+			dialog.text = LinkRandPhrase("Нет, не слыхал. Есть у нас травники, и лекари - но ни одного с таким именем.","Впервые такое чудное имя слышу. Нет, таких у нас отродясь не водилось.","Да у нас и вовсе никаких алхимиков нет. Лекари есть, но ни одного с таким чудным именем.");
+			link.l1 = "Ясно. Жаль. Буду искать дальше!";
 			link.l1.go = "exit";
 			npchar.quest.jino = "true";
 		break;

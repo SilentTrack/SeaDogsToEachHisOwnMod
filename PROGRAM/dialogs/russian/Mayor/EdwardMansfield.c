@@ -41,27 +41,27 @@ void ProcessDialogEvent()
             {
             	if (NPChar.quest.meeting == "0")
 				{
-					dialog.Text = TimeGreeting() + "! I am "+ GetFullName(NPChar) + ", the new governor of this pit. It won't be easy to call the locals to order but there is no threat from them to the Spanish colonies anymore.";
-					Link.l1 = "I am glad to meet you. I'm captain " + GetFullName(Pchar) + ". I have to go.";
+					dialog.Text = TimeGreeting() + "! Я "+ GetFullName(NPChar) + ", новый наместник в этой дыре. К сожалению, призвать к порядку местный сброд довольно трудно, но угрозы от них для Испанских колоний больше не будет.";
+					Link.l1 = "Рад"+ GetSexPhrase("","а") +" знакомству. Я капитан " + GetFullName(Pchar) + ". Мне уже пора.";
 					Link.l1.go = "exit";
 					NPChar.quest.meeting = "1";
 				}
 				else
 				{
-					dialog.Text = TimeGreeting() + ". I am busy, really busy, I need to control the locals to prevent any threat to the Spanish colonies.";
-					Link.l1 = "I won't bother you then.";
+					dialog.Text = TimeGreeting() + ". Я занят, очень много дел, нужно контролировать настроение местных жителей, дабы пресечь угрозу колониям Испании.";
+					Link.l1 = "Не буду мешать.";
 					Link.l1.go = "exit";
 				}
             }
             else
             {
-				dialog.text = NPCStringReactionRepeat("Do you have got something to tell me? No? Then "+ GetSexPhrase("get away from here!","I ask to don't disturb me.") +"",
-	                         "I trust that I have made myself clear...", "Although I've made myself clear, you keep annoying me!",
-	                         "Well, you are beyond measure "+ GetSexPhrase("you are too rude, mon cheryou are too rude, mon cher","such a discourtesy, girl") +"...", "repeat", 30, npchar, Dialog.CurrentNode);
-				link.l1 = HeroStringReactionRepeat("I am leaving.",
-	                                               "Yes, " + npchar.name + ", I see that.",
-	                                               "Sorry, " + npchar.name + "...",
-	                                               "Ouch...", npchar, Dialog.CurrentNode);
+				dialog.text = NPCStringReactionRepeat("У тебя ко мне дело? Нет? Тогда "+ GetSexPhrase("выметайся отсюда!","попрошу не отвлекать меня.") +"",
+	                         "Я, кажется, ясно выразился...", "Хотя я выразился и ясно, но ты продолжаешь отвлекать меня!",
+	                         "Хм, да ты не в меру "+ GetSexPhrase("хамовит, мон шер","нагла, деваха") +"...", "repeat", 30, npchar, Dialog.CurrentNode);
+				link.l1 = HeroStringReactionRepeat("Уже ухожу.",
+	                                               "Да, " + npchar.name + ", совершенно ясно.",
+	                                               "Извини, " + npchar.name + "...",
+	                                               "Ай, ай...", npchar, Dialog.CurrentNode);
 				link.l1.go = "exit";
 			}
 
@@ -70,24 +70,24 @@ void ProcessDialogEvent()
 					{
 						if(!CheckAttribute(PChar, "questTemp.pirateStartQuest"))
 						{
-							link.l2 = "Got any work for me?";
+							link.l2 = "Может какая работенка для меня найдется?";
 							link.l2.go = "pirateStartQuest";
 						}
 						else
 						{
 							if(pchar.questTemp.pirateStartQuest == "3" && !CheckAttribute(PChar, "questTemp.pirateStartQuest.many"))
 							{
-								link.l2 = "I have got on the trail but I need some coins - 30000 pesos to lure the rat from his hole.";
+								link.l2 = "Я выш"+ GetSexPhrase("ел","ла") +" на след, но мне нужны деньги - 30 000 песо, чтобы выманить крысу из норы.";
 								link.l2.go = "pirateStartQuest_many";	
 							}
 							if(pchar.questTemp.pirateStartQuest == "3" && GetCharacterItem(pchar, "letter_open") > 0)
 							{
-								link.l2 = "Take I look at this letter which I have found on the smuggler's corpse";
+								link.l2 = "Посмотри, что за письмо я наш"+ GetSexPhrase("ел","ла") +" на трупе одного из контрабандистов.";
 								link.l2.go = "pirateStartQuest_info_1";	
 							}
 							if(pchar.questTemp.pirateStartQuest == "5")
 							{
-								link.l2 = "It's done. Norman Vigo and his ship are gone to the sea devil.";
+								link.l2 = "Дело сделано. Норман Виго вместе со своей лоханкой отправился к морскому дьяволу.";
 								link.l2.go = "pirateStartQuest_final";	
 							}
 						}
@@ -101,28 +101,28 @@ void ProcessDialogEvent()
 		
 		//zagolski. начальный квест за пирата ===================================
 		case "pirateStartQuest":
-			dialog.text = "Hm.. A work, you've said? Actually it's good that you have asked me. I need a man from aside. I want to find out something in the nearest town but my men are known there. Can't promise you a lot but you will get something.";
-			link.l1 = "Nice. What's the mission?";
+			dialog.text = "Хм... работенка, говоришь? А это даже очень хорошо, что ты ко мне обратил"+ GetSexPhrase("ся","ась") +". Мне как раз нужен человек со стороны. Необходимо кое-что разузнать в соседнем поселении, а моих ребят там знают, как облупленных. Много денег не обещаю, но кое-что перепадет.";
+			link.l1 = "Вот и славно. А что за дело?";
 			link.l1.go = "pirateStartQuest_1";
-			link.l2 = "Sorry but I won't risk for a few scraps. Farewell.";
+			link.l2 = "Извини, за копейки я рисковать не буду. Прощай...";
 			link.l2.go = "exit";
 			pchar.questTemp.pirateStartQuest = "0";
 		break;
 		case "pirateStartQuest_1":
-			dialog.text = "Now listen, I had a deal for delivering 200 slaves a month ago with the captain of the schooner 'Saintblue'. I wanted to sell them to the local plantation owner. The time has passed and the client has started to worry, but I yesterday I was told that they have seen the schooner not far from the island. But the captain has not showed up. Today the client has demanded from me to return his advance and said that he was offered to buy slaves from another seller. The whole bunch of slaves and at once.";
-			link.l1 = "And? I have to find 200 slaves in a few days to save you from loosing an advance? For a few coins?";
+			dialog.text = "А дело в следующем - с месяц назад сговорился я с капитаном шхуны 'Сентблу' о доставке 200 рабов, чтобы продать их одному плантатору из соседнего поселения. Уже и сроки поджимать стали, и заказчик нервничать, и вот вчера мне сообщают, что эту шхуну видели в акватории острова. Но!.. капитан у меня не появился. А сегодня плантатор потребовал вернуть задаток и сказал, что рабов ему предложили в другом месте - хоть и дороже, но всю партию и сразу.";
+			link.l1 = "И что? Я долж"+ GetSexPhrase("ен","на") +" в считанные дни раздобыть 200 рабов, чтоб ты не потерял задаток? И все это за копейки?";
 			link.l1.go = "pirateStartQuest_2";
 		break;
 		case "pirateStartQuest_2":
-			dialog.text = "Sure not. Do I look like an idiot? I won't return him an advance anyway. But I need a proof that those slaves which were offered to him are mine. Find those who has offered him a new deal and you will get your 10000 pesos. Deal?";
-			link.l1 = "Sure. Do you have any suspicions? Who could do that?";
+			dialog.text = "Нет, конечно. Разве я похож на идиота? Задаток я не верну в любом случае. Но мне нужны доказательства, что рабы, которых ему подсовывают - это и есть моя партия. А ты просто найдешь тех, кто предложил ему новую сделку, и получишь свои 10 000 песо. Остальное моя забота. Ну что, берешься?";
+			link.l1 = "Берусь! А кто это может быть? Есть какие-то соображения?";
 			link.l1.go = "pirateStartQuest_3";
-			link.l2 = "Not a chance. To search for someone, somewhere and only for 10000? Sorry but it won't work.";
+			link.l2 = "Нет. Искать непонятно кого, непонятно где и всего за 10 000 - извини, не возьмусь.";
 			link.l2.go = "exit";
 		break;
 		case "pirateStartQuest_3":
-			dialog.text = "If I have had any ideas then I would never use your services. Those men would be dead already. But I am eager to know how they have found out about the 'Saintblue's' cargo and my client. It looks like that it was quite easy for them. See now?";
-			link.l1 = "Yes, someone has sold you out.";
+			dialog.text = "Если бы у меня был хоть намек, я обошелся бы и без твоих услуг. Они бы уже к ночи ловили кальмаров на живца. Но меня больше интересует другое - как они узнали о грузе 'Сентблу' и о моем заказчике? Уж очень все быстро у них срослось. Смекаешь?";
+			link.l1 = "Да, явно кто-то приторговывает сведениями.";
 			link.l1.go = "pirateStartQuest_4";
 
 			pchar.questTemp.pirateStartQuest = "1";
@@ -135,19 +135,19 @@ void ProcessDialogEvent()
 			AddQuestUserData("pSQ", "sName", pchar.questTemp.pirateStartQuest.Name);
 		break;
 		case "pirateStartQuest_4":
-			dialog.text = "Exactly! I am looking for him. Killing my competitors and returning my slaves are not your priority. I need the rat's head on a skewer. See now why my men must not know a thing about your mission? I will suspect everyone until I'll find out who sells the an information. And I don't really want that...";
-			link.l1 = "I see. Than I'll keep a low profile. I am on my way.";
+			dialog.text = "Вот! Вот его и ищу. Поэтому тихо прирезать конкурентов и вернуть рабов - в этом деле не главное. Мне нужен информатор, а вернее - его голова на вертеле. Теперь ты понимаешь, почему никто из моих об этом задании знать не должен? Пока я не выясню, кто продает информацию - подозревать буду каждого. А мне этого очень не хочется...";
+			link.l1 = "Понятно... Значит, будем действовать тихо и не поднимать волну. Отправляюсь на поиски.";
 			link.l1.go = "exit";
 		break;
 
 		case "pirateStartQuest_many":
-			dialog.text = "Thirty thousands you say? That is a large sum... I can only give you 5000 pesos, that's all I have now. Don't try to escape with them or I'll find you and hang you! You won't be able to trick me.";
-			link.l1 = "Give me five thousands then...";
+			dialog.text = "Тридцать тысяч, говоришь? Это большая сумма... Могу дать только 5000 песо, больше у меня сейчас нет. Но если вздумаешь сбежать с ними - найду и повешу на ближайшем заборе! Со мной такие шутки не пройдут.";
+			link.l1 = "Давай пять тысяч...";
 			link.l1.go = "pirateStartQuest_many_1";
 		break;
 		case "pirateStartQuest_many_1":
-			dialog.text = "Take them. I am waiting for the result of you search.";
-			link.l1 = "It all will be fine.";
+			dialog.text = "Вот, держи. Жду результаты поиска.";
+			link.l1 = "Все будет в порядке.";
 			link.l1.go = "exit";
 			AddMoneyToCharacter(pchar, 5000);
 			pchar.questTemp.pirateStartQuest.many = "";
@@ -155,16 +155,16 @@ void ProcessDialogEvent()
 
 		//------------------------------------
 		case "pirateStartQuest_info_1":
-			dialog.text = "Ha! An excellent news! I was sure that you'll make it. I have got some intriguing information.";
-			link.l1 = "I have done my work. I want to have my ten thousands.";
+			dialog.text = "Ха! Отличная новость! Я был уверен, что ты с этим справишься. Ко мне попала весьма любопытная информация.";
+			link.l1 = "Я работу свою выполнил"+ GetSexPhrase("","а") +". Хочу получить свои десять тысяч.";
 			link.l1.go = "pirateStartQuest_info_2";
 			TakeItemFromCharacter(pchar, "letter_open");
 		break;
 		case "pirateStartQuest_info_2":
-			dialog.text = "Sure, here is you reward. But don't run away, I have one more assignment for you\nPfaifer is a crewman of Norman Vigo of lugger Septima. I am sure that Norman Vigo is the rat, though he is one of ours. He was recently seen in the waters of the island. You job is to send the rat to the sea devil. You didn't fail me for the first time, therefore I want to ask you to deal with this matter too. I will pay you 15 000 pesos. Deal?";
-			link.l1 = "I am on it! Consider that traitor Norman Vigo is dead.";
+			dialog.text = "Конечно, вот обещанная награда. Но ты не спеши, я хочу поручить тебе еще одно дело\nПфайфер - это человек из команды Нормана Виго, который ходит на люггере 'Септима'. Я уверен, что Норман Виго и есть информатор, хотя он и из наших. Его недавно видели в акватории острова, твоя работа - отправить крысу к морскому дьяволу. В первый раз ты меня не подвел"+ GetSexPhrase("","а") +", поэтому и сейчас хочу поручить это дело тебе. Заплачу 15 000 песо. Соглас"+ GetSexPhrase("ен","на") +"?";
+			link.l1 = "Берусь! Считай, что предатель Норман Виго уже покойник.";
 			link.l1.go = "pirateStartQuest_info_3";
-			link.l2 = "You know, I don't want to take part in it... I have no time anyway. Sorry, but I am off.";
+			link.l2 = "Знаешь что, неохота мне в это ввязываться... Да и некогда. Извини, но я пас.";
 			link.l2.go = "pirateStartQuest_info_noex";
 			AddMoneyToCharacter(pchar, 10000);
 		break;
@@ -188,8 +188,8 @@ void ProcessDialogEvent()
 		break;
 
 		case "pirateStartQuest_final":
-			dialog.text = "I know, I know. My men were watching the fight and have already reported to me about your flawless victory.Fine, you've done your job well. Here is 15 000 I promised. And thank you, you have helped me a great deal.";
-			link.l1 = "It's fine, I was glad to help! I have to go now. Farewell!";
+			dialog.text = "Знаем-знаем. Мои люди наблюдали бой и уже доложили мне, как ты здорово управил"+ GetSexPhrase("ся","ась") +". Ну что ж, дело свое ты исправно сделал"+ GetSexPhrase("","а") +", вот обещанная награда в 15 000 песо. И спасибо тебе, здорово ты мне помог"+ GetSexPhrase("","ла") +".";
+			link.l1 = "Все в порядке, рад"+ GetSexPhrase(" был","а была") +" помочь! А теперь меня ждут дела, я и так здесь задержал"+ GetSexPhrase("ся","ась") +". До встречи!";
 			link.l1.go = "exit";
 			AddMoneyToCharacter(pchar, 15000);
 			pchar.questTemp.pirateStartQuest = "0";
@@ -198,29 +198,29 @@ void ProcessDialogEvent()
 		break;
 				
  		case "No_Mansfield_first_time":
-			dialog.text = "Good day, my name is Alistair Good. I was elected as a head of buccaneers after Mansfield's death.";
-			link.l1 = "Nice to meet you, Alistair.";
+			dialog.text = "Добрый день, меня зовут Алистер Гуд. После гибели Мансфилда я выбран главой буканьеров.";
+			link.l1 = "Будем знакомы, Алистер.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "No_Mansfield";
   		break;
  		case "No_Mansfield":
-			dialog.text = "I have no time to talk with you. Visit me later.";
-			link.l1 = "I am already leaving.";
+			dialog.text = "Мне сейчас некогда с тобой разговаривать. Зайди позже.";
+			link.l1 = "Я уже ухожу.";
 			link.l1.go = "exit";
   		break;
 		
 
 // ======================== блок нод angry ===============>>>>>>>>>>>>>>>
 		case "AngryRepeat_1":
-            dialog.text = RandPhraseSimple(""+ GetSexPhrase("Get away","Get") +" out!", "Go away from my home!");
-			link.l1 = "Oups..";
+            dialog.text = RandPhraseSimple(""+ GetSexPhrase("Пошел вон","Убирайся") +" отсюда!", "Вон из моего дома!");
+			link.l1 = "Ой-ой-ой...";
 		    link.l1.go = "AngryExitAgainWithOut";
             if (CheckAttribute(npchar, "angry.terms")) //примиряемся с Мэнсфилдом через 30 дней.
             {
                 if (GetNpcQuestPastDayParam(npchar, "angry.terms") > sti(npchar.angry.terms))
                 {
-         			dialog.text = "Don't bother me, remember that.";
-        			link.l1 = "I got it.";
+         			dialog.text = "Тебе не стоит доставать меня, запомни это.";
+        			link.l1 = "Я понял"+ GetSexPhrase("","а") +", Эдвард, больше не буду.";
         			link.l1.go = NextDiag.TempNode;
         			CharacterDelAngry(npchar);
                 }

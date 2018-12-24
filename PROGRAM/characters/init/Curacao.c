@@ -11,8 +11,8 @@ int CreateCuracaoCharacters(int n)
 	ch.id		= "hol_guber";
 	ch.model	= "huber_25";
 	ch.sex = "man";
-	ch.name 	= "Matthias";
-    ch.lastname = "Beck";
+	ch.name 	= "Матиас";
+    ch.lastname = "Бек";
 	ch.City = "Villemstad";
 	ch.location	= "Villemstad_townhall";
 	ch.location.group = "sit";
@@ -169,7 +169,7 @@ int CreateCuracaoCharacters(int n)
 	n = n + 1;
 	
 	makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "Villemstad_Smuggler";
 	ch.model    = "citiz_28";

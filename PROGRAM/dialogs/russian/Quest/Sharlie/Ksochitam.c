@@ -14,8 +14,8 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "Is there something you want?";
-			link.l1 = "No, nothing.";
+			dialog.text = "Ты что-то хотел?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
@@ -23,15 +23,15 @@ void ProcessDialogEvent()
 		// капитан-нежить Санта-Квитерии
 		case "SQC_skeletcap":
 			PlaySound("Types\skel.wav");
-			dialog.text = "You... will still.... Have... to die. He will come... and kill you... as he has killed all of us... as he killed everyone here...";
-			link.l1 = "What? Who are you? Who are talking about?";
+			dialog.text = "Тебе... все равно... придется... умереть. Он придет... и убьет тебя... как убил всех нас... как убил всех тут...";
+			link.l1 = "Что? Кто ты? Кто убьет?";
 			link.l1.go = "SQC_skeletcap_1";
 		break;
 		
 		case "SQC_skeletcap_1":
 			PlaySound("Types\skel.wav");
-			dialog.text = "He is huge... he's invulnerable... he kill... he will kill you. I must kill you... if I kill you, you won't become like us... you don't understand... you'll still die by his sword... you'll turn into what we are... Like everyone on Santa Quiteria...";
-			link.l1 = "No way!";
+			dialog.text = "Он огромен... он неуязвим... он убивать... он убить тебя. Я должен убить тебя... если я убью тебя - ты не станешь, как мы... ты не понимаешь... ты все равно умрешь от его меча... превратишься в такого, как мы... Как все на Санта-Квитерии...";
+			link.l1 = "Ну уж нет!";
 			link.l1.go = "SQC_skeletcap_2";
 		break;
 		
@@ -57,19 +57,19 @@ void ProcessDialogEvent()
 		// Страж маски Кукулькана
 		case "guardmask":
 			PlaySound("VOICE\Russian\sharlie\Hranitel Maski Kukulkana.wav");
-			dialog.text = "I've been waiting for you for so long!..";
-			link.l1 = "Erm!.. Stunning!... That's quite a skeleton!";
+			dialog.text = "Как долго я тебя ждал!..";
+			link.l1 = "Э!.. С ума сойти... вот это скелетище!";
 			link.l1.go = "guardmask_1";
 		break;
 		
 		case "guardmask_1":
-			dialog.text = "I see it... I feel it... You've brought me... my freedom...";
-			link.l1 = "What are you talking about? What are you?!";
+			dialog.text = "Я вижу ее... Я чувствую ее... Ты принес мне... мое освобождение...";
+			link.l1 = "О чем ты сейчас говоришь? Кто ты?!";
 			link.l1.go = "guardmask_2";
 		break;
 		
 		case "guardmask_2":
-			dialog.text = "I am the Guardian of Ksocheatem, the Keeper of the mask of Kukulcan... and your eminent death!..";
+			dialog.text = "Я - Страж Ксочитэма, Хранитель маски Кукулькана... и твоя неминуемая смерть!..";
 			link.l1 = "...";
 			link.l1.go = "guardmask_3";
 		break;
@@ -95,53 +95,53 @@ void ProcessDialogEvent()
 		
 		case "guardmask_4":
 			PlaySound("VOICE\Russian\sharlie\Hranitel Maski Kukulkana.wav");
-			dialog.text = "Stop...";
-			link.l1 = "And why would I do that, huh? Are you out of breath, bonebag?";
+			dialog.text = "Остановись...";
+			link.l1 = "И зачем же мне это делать, а? Ты на последнем издыхании, мешок костей?";
 			link.l1.go = "guardmask_5";
 		break;
 		
 		case "guardmask_5":
-			dialog.text = "No. You won't be able to kill me, not ever. Not even with that magical dagger. Our duel may last a long, long time until you completely run out of strength and die.";
-			link.l1 = "Is that so? And why is it that you can't strike me?";
+			dialog.text = "Нет. Ты не сможешь меня уничтожить, никогда. Даже этим магическим кинжалом. Наш поединок может длится очень долго, пока ты не потеряешь все силы и не умрешь.";
+			link.l1 = "Да ну? И почему же тогда ты никак не можешь меня добить?";
 			link.l1.go = "guardmask_6";
 		break;
 		
 		case "guardmask_6":
-			dialog.text = "You're a courageous, strong warrior and you wield the Chief's Claw. I'm obliged to let you live, for he or she who possesses this dagger, who dares to stand against me in battle receives what he comes for.";
-			link.l1 = "Who are you? Who are you really, Guardian?";
+			dialog.text = "Ты отважный и сильный воин, и ты носишь дагу 'Коготь вождя'. Я обязан сохранить тебе жизнь, ибо владеющий сей дагой и сумевший выстоять против меня в бою получает то, за чем пришел.";
+			link.l1 = "Кто ты? Кто ты на самом деле, Страж?";
 			link.l1.go = "guardmask_7";
 		break;
 		
 		case "guardmask_7":
-			dialog.text = "They used to call me Alberto Cascos. I was a soldier in Alonso de Maldonado's squad. We had found the ancient Tayasal, but they caught us and sacrificed us. Because of my hight and my strength pagan Kanek turned me into the Guardian of Ksocheatem, the keeper of Kukulcan's mask. Everyone who ever stood on Ksocheatem were found by me and slaughtered by my hand and then turned into undead\nChief's claw dagger was used to carve a map of this place from my flesh. I will watch for the mask's safety forever and restless, until I hold the dagger in my hands.";
-			link.l1 = "Do you need the Chief's Claw?";
+			dialog.text = "Когда-то меня звали Альберто Каскос. Я был солдатом в отряде Алонсо де Мальдонадо. Мы нашли древний Тайясаль, но были схвачены и принесены в жертву. Меня, за мой рост и силу, язычник Канек преобразил в Стража Ксочитэма, Хранителя маски Кукулькана. Все, кто ступил на Ксочитэм, были найдены и убиты мной, а затем превращены в нежить\nИз моей плоти при помощи даги 'Коготь вождя' была создана карта, по которой владелец даги смог бы отыскать Ксочитэм. До тех пор, пока я не получу в свои руки дагу, я буду вечно хранить безопасность маски, не находя упокоения.";
+			link.l1 = "Тебе нужен 'Коготь вождя'?";
 			link.l1.go = "guardmask_8";
 		break;
 		
 		case "guardmask_8":
-			dialog.text = "Yes. Since you need the mask. Give me the dagger. I'll find my long-awaited peace and you'll receive the mask. I swear to you that you'll be able to take it with you and leave Ksocheatem alive.";
-			link.l1 = "I accept your offer, Guardian. I've seen the mask on that pedestal behind the baptistry fountain. Is that it?";
+			dialog.text = "Да. Так же как тебе нужна маска. Отдай мне дагу, и я найду долгожданное упокоение, а ты получишь маску. Я клянусь тебе, что ты сможешь ее забрать и покинуть Ксочитэм живым.";
+			link.l1 = "Я принимаю твое предложение, Страж. Я видел маску на пьедестале за купелью с фонтаном. Это она?";
 			link.l1.go = "guardmask_9";
 		break;
 		
 		case "guardmask_9":
-			dialog.text = "It is. This is the mighty artefact of Kukulcan himself, the flying snake. After we finish the conversation, you can walk over and take it.";
-			link.l1 = "Well, I hope you hold to your word, Guardian...";
+			dialog.text = "Да, это она. Это могущественный артефакт самого Крылатого Змея, Кукулькана. После того, как мы закончим разговор, ты сможешь пойти и забрать ее.";
+			link.l1 = "Ну что же, я надеюсь, ты сдержишь слово, Страж...";
 			link.l1.go = "guardmask_10";
 		break;
 		
 		case "guardmask_10":
-			dialog.text = "I've sworn...";
-			link.l1 = "Then take the Chief's Claw. I hope it will bring tranquillity to your soul.";
+			dialog.text = "Я дал клятву...";
+			link.l1 = "Тогда возьми 'Коготь вождя'. надеюсь, он принесет покой твоей душе.";
 			link.l1.go = "guardmask_11";
 		break;
 		
 		case "guardmask_11":
 			RemoveItems(pchar, "knife_01", 1);
 			PlaySound("interface\important_item.wav");
-			Log_Info("You've given the Chief's Claw");
+			Log_Info("Вы отдали дагу 'Коготь вождя'");
 			RemoveCharacterEquip(pchar, BLADE_ITEM_TYPE);
-			dialog.text = "Oh, how long have I waited for this moment! Now I can finally leave... But as a farewell gift, I would like to pass on a particle of my powers to you. This will be the last present that Alberto Cascos will ever give.";
+			dialog.text = "Как долго я ждал этого момента! Теперь я могу уходить... Но на прощание я хочу передать тебе частицу своей силы. Это будет последний подарок, который когда-либо делал Альберто Каскос.";
 			link.l1 = "...";
 			link.l1.go = "guardmask_12";
 		break;
@@ -153,43 +153,43 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guardmask_13":
-			dialog.text = "Now it's time for me to leave. Don't take your time, without its Guardian and the Kukulcan mask, the island will soon disappear forever.";
-			link.l1 = "There's nothing to regret. One hellhole less in the world... But wait, Guardian! You've been in Tayasal! Please, tell me what that place is.";
+			dialog.text = "А теперь мне пора уходить. Ты тоже не задерживайся на Ксочитэме - без своего Стража и маски Кукулькана остров вскоре исчезнет навеки.";
+			link.l1 = "Жалеть не о чем. Одним кошмарным местом на земле станет меньше... Но постой, Страж! Ты был в Тайясале! Расскажи - что это за место?";
 			link.l1.go = "guardmask_14";
 		break;
 		
 		case "guardmask_14":
-			dialog.text = "It's an old Mayan city. It's appearance has been conserved since the time the people used to still reside there. Majestic temples, high pyramids... Now, the Itza tribe live there, claiming to be the direct descendants of the Mayans. They try to mimic them in every way in religion, culture, and their way of life.";
-			link.l1 = "How do I get there?";
+			dialog.text = "Это старый город индейцев майя. Он сохранил свое обличие с тех времен, когда там еще проживал этот народ. Величественные храмы, высокие пирамиды... Теперь его населяют ица, считающие себя прямыми потомками майя. Они стараются во всем следовать им - в религии, культуре и быту.";
+			link.l1 = "Как мне попасть в него?";
 			link.l1.go = "guardmask_15";
 		break;
 		
 		case "guardmask_15":
-			dialog.text = "Our commander knew the way, Alonso de Maldonado. We just followed him through the jungle. I only remember that we disembarked at Mosquito bay, north of Cape Perlas, and moved deep into the selva to the West.";
-			link.l1 = "What's noteworthy in Tayasal?";
+			dialog.text = "Путь знал наш командир, Алонсо де Мальдонадо. Мы просто следовали за ним через джугли. Я помню лишь то, что мы высадились на берегу Москитос, это севернее мыса Перлас, и двинулись в глубь сельвы на запад.";
+			link.l1 = "Что примечательного есть в Тайясале?";
 			link.l1.go = "guardmask_16";
 		break;
 		
 		case "guardmask_16":
-			dialog.text = "Everything is noteworthy there. Absolutely everything. But we were interested in nothing, but the Mayan treasures. And we found them. And we paid for them, especially me. But now, I'm finally free!";
-			link.l1 = "What do I need to know before heading to Tayasal?";
+			dialog.text = "Там примечательно все. Абсолютно все. Но нас интересовали лишь сокровища майя. И мы нашли их. Но поплатились за это, и я лично - в особенности. Но теперь я наконец-то свободен!";
+			link.l1 = "Что нужно знать, отправляясь в Тайясаль?";
 			link.l1.go = "guardmask_17";
 		break;
 		
 		case "guardmask_17":
-			dialog.text = "Itza people possess great strength and wit. They hate white people no matter what their nationality and opt to destroy any outsider invading their territory. Simple Itza warriors will not engage in any sort of communication, but Kanek or his son Urakan, if they see the mask... they might. If you manage to get to Tayasal alive, you'll see for yourself. But will you be able to leave it...";
-			link.l1 = "Does Kanek offer up all white people coming to Tayasal as a sacrifice?";
+			dialog.text = "Ица сильны и коварны. Они ненавидят белых людей, независимо от их национальности, и стремятся уничтожить любого чужака, вторгшегося на их территоррию. Простые воины ица не будут вступать ни в какие переговоры, а вот Канек или его сын Уракан, увидев маску... возможно. Если ты живым сумеешь добраться до Тайясаля - все поймешь сам. Но вот сможешь ли ты оттуда уйти...";
+			link.l1 = "Канек приносит в жертву всех белых людей, попавших в Тайясаль?";
 			link.l1.go = "guardmask_18";
 		break;
 		
 		case "guardmask_18":
-			dialog.text = "I would suppose so. But that might not include the man who bears the Kukulcan mask.";
-			link.l1 = "All right. I'll be counting on that.";
+			dialog.text = "Я полагаю - да. Но возможно, владельца маски Кукулькана это не коснется.";
+			link.l1 = "Ясно. Буду на это рассчитывать.";
 			link.l1.go = "guardmask_19";
 		break;
 		
 		case "guardmask_19":
-			dialog.text = "Farewell, soldier. I hope you use the power of the mask for the right purpose.";
+			dialog.text = "Прощай, солдат. Надеюсь, ты используешь силу маски в правильных целях.";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			AddDialogExitQuest("Ksochitam_GuardMaskGoAway");

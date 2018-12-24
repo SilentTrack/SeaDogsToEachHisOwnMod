@@ -16,7 +16,7 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "We have nothing to talk about!";
+			dialog.text = "Не о чем говорить!";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
@@ -30,53 +30,53 @@ void ProcessDialogEvent()
 		// ==> индейцы в поселении
 		case "IndianMan":
 			NextDiag.TempNode = "IndianMan";
-			dialog.text = NPCStringReactionRepeat(""+ GetSexPhrase("Paleface","White squaw") +" wants to talk?", 
-				"You again, "+ GetSexPhrase("Paleface","White squaw") +".", 
-				""+ GetSexPhrase("Paleface likes talk. He look like squaw.","White squaw likes talk.") +"",
-                "Spirits brought my paleface "+ GetSexPhrase("brother","sister") +" to me.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Yes.", 
-				"Yea, me again.",
-                "Very poetic.", 
-				"I am also happy to see you.", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(""+ GetSexPhrase("Бледнолицый","Белая скво") +" хочет говорить?", 
+				"Снова ты, "+ GetSexPhrase("бледнолицый","белая скво") +".", 
+				""+ GetSexPhrase("Бледнолицый любит говорить. Он похож на скво.","Белая скво любит говорить.") +"",
+                "Духи привели ко мне бледнолиц"+ GetSexPhrase("его брата","ую сестру") +".", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Да.", 
+				"Да, снова я.",
+                "Очень поэтично.", 
+				"Я тоже рад"+ GetSexPhrase("","а") +" тебя видеть.", npchar, Dialog.CurrentNode);
 			link.l1.go = "IndPearlMan_1";
 		break;
 		
 		case "IndPearlMan_1":
-			dialog.text = "Now tell me, why have you come.";
-			link.l1 = "Oh, nothing in particular, just wanted to listen to what you have to say...";
+			dialog.text = "Говори, зачем приш"+ GetSexPhrase("ел","ла") +".";
+			link.l1 = "Да ничего особенного, послушать тебя хотел"+ GetSexPhrase("","а") +"...";
 			link.l1.go = "exit";
 		break;
 		
 		case "IndianWoman":
 			NextDiag.TempNode = "IndianWoman";
-			dialog.text = NPCStringReactionRepeat("White man want talk?", 
-				"You again, paleface?", 
-				"Paleface likes talk.",
-                "Spirits brought my paleface brother to me.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Yes.", 
-				"Yea, me again.",
-                "Very poetic.", 
-				"I am glad to see you too.", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat("Белый человек хочет говорить?", 
+				"Снова ты, яланауи?", 
+				"Бледнолицый любит говорить.",
+                "Духи привели ко мне бледнолицего брата...", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Да.", 
+				"Да, снова я.",
+                "Очень поэтично.", 
+				"Я тоже рад тебя видеть.", npchar, Dialog.CurrentNode);
 			link.l1.go = "IndianWoman_1";
 		break;
 		
 		case "IndianWoman_1":
-			dialog.text = LinkRandPhrase(""+npchar.name+" listen to you, son of the sea.","What do you want from "+npchar.name+", paleface?","My ears are open for your words, stranger.");
+			dialog.text = LinkRandPhrase(""+npchar.name+" слушать тебя, сын моря.","Что ты хотеть от "+npchar.name+", бледнолицый?","Мои уши открыты для твоих слов, чужеземец.");
 			if (CheckIndianGift() && !CheckAttribute(npchar, "quest.gift"))
 			{
-				link.l1 = LinkRandPhrase("I have something for you. Wanna take a look?","Wanna take a look at something really interesting? You'll surely like it...","I have something which will please you, child of the jungle. Wanna take a look?");
+				link.l1 = LinkRandPhrase("У меня есть кое-что для тебя. Хочешь посмотреть?","Хочешь, покажу тебе кое-что интересное? Тебе понравится...","У меня есть кое-что, что порадует тебя, дитя джунглей... Хочешь глянуть?");
 				link.l1.go = "gift";
 			}
-			link.l9 = "Oh, nothing in particular, just wanted to listen to what you have to say...";
+			link.l9 = "Да ничего особенного, просто послушать тебя хотел...";
 			link.l9.go = "exit";
 		break;
 		
 		case "gift":
 			iTemp = 2;
-			dialog.text = RandPhraseSimple(""+npchar.name+" want to look. Show it.", ""+npchar.name+" interested. Show me.");
+			dialog.text = RandPhraseSimple(""+npchar.name+" хотеть посмотреть. Показывать.", ""+npchar.name+" интересно. Показать мне.");
 			if (CheckCharacterItem(pchar, "mineral6"))
 			{
-				link.l1 = "Give mirror.";
+				link.l1 = "Подарить зеркальце.";
 				link.l1.go = "gift_1";
 			}
 			for (i=50; i>=47; i--)
@@ -84,7 +84,7 @@ void ProcessDialogEvent()
 				if (CheckCharacterItem(pchar, "jewelry"+i))
 				{
 					sTemp = "l"+iTemp;
-					link.(sTemp) = "Give"+XI_ConvertString("jewelry"+i)+".";
+					link.(sTemp) = "Подарить "+XI_ConvertString("jewelry"+i)+".";
 					link.(sTemp).go = "gift_"+i;
 					iTemp++;				
 				}
@@ -94,48 +94,48 @@ void ProcessDialogEvent()
 		case "gift_1":
 			RemoveItems(pchar, "mineral6", 1);
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Oh! Now "+npchar.name+" can look at himself not only in river water! Thank you, kind stranger!";
-			link.l1 = "Sure, now you can admire your face as much as you like...";
+			dialog.text = "Ах! Теперь "+npchar.name+" суметь смотреть на себя не только в речной вода! Спасибо, добрый чужеземец!";
+			link.l1 = "Да пожалуйста, рассматривай свое личико вдоволь...";
 			link.l1.go = "gift_exit";
 		break;
 		
 		case "gift_47":
 			RemoveItems(pchar, "jewelry47", 1);
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Oh! So beautiful! This bracelet for "+npchar.name+"? Thank you, kind stranger!";
-			link.l1 = "Put it on your swarthy hand, beauty - you'll look terrific...";
+			dialog.text = "Ах! Какой красота! Этот браслет для "+npchar.name+"? Спасибо, добрый чужеземец!";
+			link.l1 = "Надень на свою смуглую ручку, красотка, тебе это пойдет...";
 			link.l1.go = "gift_exit";
 		break;
 		
 		case "gift_48":
 			RemoveItems(pchar, "jewelry48", 1);
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Oh! What beautiful ring? It's for "+npchar.name+", yes? Thank you, kind stranger!, yes? Thank you, kind stranger!";
-			link.l1 = "Put it on your finger, and all you friends will be jealous...";
+			dialog.text = "Ах! Какой красивый узорчатый колечко! Это для "+npchar.name+", да? Спасибо, добрый чужеземец!";
+			link.l1 = "Надень его на свой пальчик, пусть подружки обзавидуются...";
 			link.l1.go = "gift_exit";
 		break;
 		
 		case "gift_49":
 			RemoveItems(pchar, "jewelry49", 1);
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Oh! Those wonderful green beads - for "+npchar.name+"? So beautiful! Thank you, kind stranger!";
-			link.l1 = "Adorn your neck with them, daughter of the selva. Everyone will admire you...";
+			dialog.text = "Ах! Этот изумительный зеленый бусы - для "+npchar.name+"? Какой красота! Спасибо, добрый чужеземец!";
+			link.l1 = "Укрась ими свою грудь, дочь сельвы, пусть все восхищаются...";
 			link.l1.go = "gift_exit";
 		break;
 		
 		case "gift_50":
 			RemoveItems(pchar, "jewelry50", 1);
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Oh, what beautiful green ring! This a gift for "+npchar.name+"? Thank you, kind stranger!";
-			link.l1 = "It will look great on your hand, babe...";
+			dialog.text = "Ах! Какой замечательный зеленый кольцо! Это подарок для "+npchar.name+"? Спасибо, добрый чужеземец!";
+			link.l1 = "На твоей ручке оно будет смотреться просто прелестно, малышка...";
 			link.l1.go = "gift_exit";
 		break;
 		
 		case "gift_exit":
 			if (CheckAttribute(pchar, "questTemp.Mtraxx.Merida.Women")) // Addon 2016-1 Jason Пиратская линейка
 			{
-				dialog.text = "Wanted to ask "+npchar.name+" something, son of the sea?";
-				link.l1 = "You are right, pretty one. Me and my fearsome warriors are going to selva, to the Spanish settlement among the mountains and we are looking for a guide. I will be generous to the man himself and also to his wife. I have many riches: beautiful guns, magic glasses, mirrors, necklaces, bracelets and rings. Perhaps your husband can be the guide we are looking for?";
+				dialog.text = "Ты хотеть что-то спросить у "+npchar.name+", сын моря?";
+				link.l1 = "Да, красавица. Я и мои отважные воины собираемся в сельву, к поселению испанцев среди гор и ищем проводника. Я щедро одарю того, кто пойдет со мной: как самого храброго воина, так и его жену. У меня много богатств: красивые пистолеты, магические увеличивающие трубы, зеркальца, ожерелья, браслеты, кольца. Может, твой муж покажет нам дорогу?";
 				link.l1.go = "hayamee";
 			}
 			else
@@ -149,28 +149,28 @@ void ProcessDialogEvent()
 		// Addon 2016-1 Jason Пиратская линейка
 		// Кумвана, вождь деревни араваков
 		case "cumvana":
-			dialog.text = "Greetings, son of the sea. Me is Kumwana, chief of the Turtle clan of Locono people. What business brings you my village?";
+			dialog.text = "Приветствовать тебя, сын моря. Я - Кумвана, вождь рода Черепаха племени локоно. Какой дело привело тебя в наша деревня?";
 			if (GetCharacterFreeItem(pchar, "pistol5") > 0 || CheckCharacterItem(pchar, "compass1") || GetCharacterFreeItem(pchar, "spyglass1") > 0 || GetCharacterFreeItem(pchar, "spyglass2") > 0 || GetCharacterFreeItem(pchar, "spyglass3") > 0)
 			{
-				link.l1 = "I brought you a gift, chief. Take a look, you are going to like it.";
+				link.l1 = "Я принес тебе подарок, вождь. Взгляни, тебе понравится.";
 				link.l1.go = "cumvana_2";
 			}
 			else 
 			{
-				link.l1 = "Chief, I've come to ask for your assistance. I want to reach a Spanish settlement called Merida, it's located among the mountains in your selva, problem is -I don't know how to get there.";
+				link.l1 = "Вождь, я пришел просить тебя о помощи. Мне нужно пройти в поселение испанцев под названием Мерида - оно находится в вашей сельве среди гор, но я не знаю дороги...";
 				link.l1.go = "cumvana_no";
 			}
 		break;
 		
 		case "cumvana_no":
-			dialog.text = "Which is very good for you, son of the sea, not knowing the road there. It leads through a forest, a land of fearsome tribe of Capong. True jaguars, they are, oh-ey! Me never go that Spanish place. My people - peaceful people, we not go to land of Capong. Kumwana can not give you an advice.";
-			link.l1 = "But the Spanish did find a way there! And those Capongs don't strike me with fear...";
+			dialog.text = "И это очень хорошо для тебя, сын моря, что ты не знать дороги туда. Путь лежать через лес, земля индейцев свирепый племя капонг. Это настоящий ягуары, о-ей! Я никогда не ходить к тот испанский поселение. Мой народ - мирный народ, и мы не лезть на земля племени капонг. Кумвана не может дать совет тебе.";
+			link.l1 = "Но испанцы же как-то прошли туда! Да и я не боюсь этих капонгов...";
 			link.l1.go = "cumvana_no_1";
 		break;
 		
 		case "cumvana_no_1":
-			dialog.text = "But they should. Mean, treacherous people they are. They kill my people in woods. Kumwana said it all.";
-			link.l1 = "Well, shit...";
+			dialog.text = "А надо их бояться. Это жестокий коварный народ, они убивать моих людей в лесу. Кумвана все сказал.";
+			link.l1 = "Вот незадача...";
 			link.l1.go = "cumvana_no_2";
 		break;
 		
@@ -181,15 +181,15 @@ void ProcessDialogEvent()
 		break;
 		
 		case "cumvana_1":
-			dialog.text = "Oh-ey! You again, son of the sea. What say you to Kumwana?";
+			dialog.text = "О-ей! Это снова ты, сын моря. Что ты хотеть сказать Кумвана?";
 			if (GetCharacterFreeItem(pchar, "pistol5") > 0 || CheckCharacterItem(pchar, "compass1") || GetCharacterFreeItem(pchar, "spyglass1") > 0 || GetCharacterFreeItem(pchar, "spyglass2") > 0 || GetCharacterFreeItem(pchar, "spyglass3") > 0)
 			{
-				link.l1 = "I brought you a gift, chief. Take a look, you are going to like it.";
+				link.l1 = "Я принес тебе подарок, вождь. Взгляни, тебе понравится.";
 				link.l1.go = "cumvana_2";
 			}
 			else 
 			{
-				link.l1 = "A hope to find Merida is still with me...";
+				link.l1 = "Надежда найти Мериду не оставляет меня...";
 				link.l1.go = "cumvana_1_1";
 			}
 		break;
@@ -200,114 +200,114 @@ void ProcessDialogEvent()
 		break;
 		
 		case "cumvana_2":
-			dialog.text = "Locono are always glad to see good friends.";
+			dialog.text = "Локоно всегда рады добрым друзьям.";
 			if (GetCharacterFreeItem(pchar, "pistol5") > 0)
 			{
-				link.l1 = "Gift a handgun."; // 5
+				link.l1 = "Подарить дуэльный пистоль."; // 5
 				link.l1.go = "cumvana_2_1";
 			}
 			if (CheckCharacterItem(pchar, "compass1")) // 3
 			{
-				link.l2 = "Gift a compass.";
+				link.l2 = "Подарить компас.";
 				link.l2.go = "cumvana_2_2";
 			}
 			if (GetCharacterFreeItem(pchar, "spyglass1") > 0)
 			{
-				link.l3 = "Gift a cheap spy glass.";
+				link.l3 = "Подарить дешевую подзорную трубу.";
 				link.l3.go = "cumvana_2_3";
 			}
 			if (GetCharacterFreeItem(pchar, "spyglass2") > 0)
 			{
-				link.l4 = "Gift a common spy glass."; // 2
+				link.l4 = "Подарить обычную подзорную трубу."; // 2
 				link.l4.go = "cumvana_2_4";
 			}
 			if (GetCharacterFreeItem(pchar, "spyglass3") > 0)
 			{
-				link.l5 = "Gift a decent spy glass."; // 4
+				link.l5 = "Подарить хорошую подзорную трубу."; // 4
 				link.l5.go = "cumvana_2_5";
 			}
 		break;
 		
 		case "cumvana_2_1":
-			Log_Info("You have given a handgun");
-			Log_Info("You have received amulets");
+			Log_Info("Вы отдали дуэльный пистоль");
+			Log_Info("Вы получили амулеты");
 			PlaySound("interface\important_item.wav");
 			RemoveItems(pchar, "pistol5", 1);
 			GiveItem2Character(pchar, "obereg_9");
 			GiveItem2Character(pchar, "indian_7");
 			GiveItem2Character(pchar, "obereg_3");
-			dialog.text = "Oh-ey! What a pretty pale face weapon! Kumwana accept your gift! You too, son of the sea, accept a gift from Kumwana and Locono people.";
-			link.l1 = "Gratitude, chief!..";
+			dialog.text = "О-ей! Какой красивый оружие бледнолицых! Кумвана принять твой подарок. И ты, сын моря, прими подарок от Кумвана и племя локоно.";
+			link.l1 = "Спасибо, вождь!..";
 			link.l1.go = "cumvana_3";
 		break;
 		
 		case "cumvana_2_2":
-			Log_Info("You have given a compass");
-			Log_Info("You have received amulets");
+			Log_Info("Вы отдали компас");
+			Log_Info("Вы получили амулеты");
 			PlaySound("interface\important_item.wav");
 			RemoveItems(pchar, "compass1", 1);
 			GiveItem2Character(pchar, "indian_10");
 			GiveItem2Character(pchar, "indian_6");
 			GiveItem2Character(pchar, "obereg_1");
-			dialog.text = "Oh-ey! An enchanted amulet of pale faces! Kumwana accept your gift! You too, son of the sea, accept a gift from Kumwana and Locono people.";
-			link.l1 = "Gratitude, chief!..";
+			dialog.text = "О-ей! Зачарованный амулет бледнолицых! Кумвана принять твой подарок. И ты, сын моря, прими подарок от Кумвана и племя локоно.";
+			link.l1 = "Спасибо, вождь!..";
 			link.l1.go = "cumvana_3";
 		break;
 		
 		case "cumvana_2_3":
-			Log_Info("You have given a cheap spy glass");
-			Log_Info("You have received amulets");
+			Log_Info("Вы отдали дешевую подзорную трубу");
+			Log_Info("Вы получили амулеты");
 			PlaySound("interface\important_item.wav");
 			RemoveItems(pchar, "spyglass1", 1);
 			GiveItem2Character(pchar, "obereg_2");
 			GiveItem2Character(pchar, "indian_5");
 			GiveItem2Character(pchar, "obereg_1");
-			dialog.text = "Oh-ey! Magic tube of pale faces! Kumwana accept your gift! You too, son of the sea, accept a gift from Kumwana and Locono people.";
-			link.l1 = "Gratitude, chief!..";
+			dialog.text = "О-ей! Колдовской труба бледнолицых! Кумвана принять твой подарок. И ты, сын моря, прими подарок от Кумвана и племя локоно.";
+			link.l1 = "Спасибо, вождь!..";
 			link.l1.go = "cumvana_3";
 		break;
 		
 		case "cumvana_2_4":
-			Log_Info("You have given a common spy glass");
-			Log_Info("You have received amulets");
+			Log_Info("Вы отдали обычную подзорную трубу");
+			Log_Info("Вы получили амулеты");
 			PlaySound("interface\important_item.wav");
 			RemoveItems(pchar, "spyglass2", 1);
 			GiveItem2Character(pchar, "obereg_6");
 			GiveItem2Character(pchar, "indian_6");
 			GiveItem2Character(pchar, "obereg_1");
-			dialog.text = "Oh-ey! Magic tube of pale faces! Kumwana accept your gift! You too, son of the sea, accept a gift from Kumwana and Locono people.";
-			link.l1 = "Gratitude, chief!..";
+			dialog.text = "О-ей! Колдовской труба бледнолицых! Кумвана принять твой подарок. И ты, сын моря, прими подарок от Кумвана и племя локоно.";
+			link.l1 = "Спасибо, вождь!..";
 			link.l1.go = "cumvana_3";
 		break;
 		
 		case "cumvana_2_5":
-			Log_Info("You have given a decent spy glass");
-			Log_Info("You have received amulets");
+			Log_Info("Вы отдали хорошую подзорную трубу");
+			Log_Info("Вы получили амулеты");
 			PlaySound("interface\important_item.wav");
 			RemoveItems(pchar, "spyglass3", 1);
 			GiveItem2Character(pchar, "obereg_9");
 			GiveItem2Character(pchar, "indian_7");
 			GiveItem2Character(pchar, "obereg_5");
-			dialog.text = "Oh-ey! Magic tube of pale faces! Kumwana accept your gift! You too, son of the sea, accept a gift from Kumwana and Locono people.";
-			link.l1 = "Gratitude, chief!..";
+			dialog.text = "О-ей! Колдовской труба бледнолицых! Кумвана принять твой подарок. И ты, сын моря, прими подарок от Кумвана и племя локоно.";
+			link.l1 = "Спасибо, вождь!..";
 			link.l1.go = "cumvana_3";
 		break;
 		
 		case "cumvana_3":
-			dialog.text = "What brings you to our village, son of the sea?";
-			link.l1 = "Chief, I've come to ask for your assistance. I want to reach a Spanish settlement called Merida, it's located among the mountains in your selva, problem is - I don't know how to get there. Perhaps you could provide me with a guide who would show us the way there?";
+			dialog.text = "Какой дело привело тебя в нашу деревню, сын моря?";
+			link.l1 = "Вождь, я пришел просить тебя о помощи. Мне нужно пройти в поселение испанцев под названием Мерида - оно находится в вашей сельве среди гор, но я не знаю дороги. Мог ли бы ты найти отважного воина среди своего племени, который взялся бы провести меня туда?";
 			link.l1.go = "cumvana_4";
 		break;
 		
 		case "cumvana_4":
-			dialog.text = "Oh-ey! Dangerous road, dangerous. The way there leads through a forest, a land of fearsome tribe of Capong. True jaguars, they are, oh-ey! Me never go that Spanish place. My people - peaceful people, we not go to land of Capong.";
-			link.l1 = "I really have to get to Merida. Kumwana, ask you men - perhaps someone will agree to join my unit? My warriors are experienced, well-armed and tough. We shall protect the guide and reward him generously when this is over.";
+			dialog.text = "О-ей! Дорога туда полна опасность. Путь лежать через лес, земля индейцев свирепый племя капонг. Это настоящий ягуары! Мой народ - мирный народ, и мы избегать земля племя капонг.";
+			link.l1 = "Мне очень надо попасть в Мериду. Кумвана, спроси своих людей - согласится ли кто присоединиться к моему отряду? Мои люди опытные, хорошо вооружены и мы никого не боимся. Проводник будет под надежной защитой, а за помощь получит хорошую награду.";
 			link.l1.go = "cumvana_5";
 		break;
 		
 		case "cumvana_5":
-			dialog.text = "Very well, son of the sea. I assemble a circle of warriors and tell them about your wishes. See me after dawn tomorrow.";
-			link.l1 = "Gratitude, chief!";
+			dialog.text = "Хорошо, сын моря. Я соберу совет воинов и передам им твоя просьба. Приходи завтра после восход солнца, я дать ответ.";
+			link.l1 = "Спасибо, вождь!";
 			link.l1.go = "cumvana_6";
 		break;
 		
@@ -325,8 +325,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "cumvana_7":
-			dialog.text = "Oh-ey! You again, son of the sea. What say you to Kumwana?";
-			link.l1 = "Nothing yet, chief.";
+			dialog.text = "О-ей! Это снова ты, сын моря. Что ты хотеть сказать Кумвана?";
+			link.l1 = "Пока ничего, вождь...";
 			link.l1.go = "cumvana_7x";
 		break;
 		
@@ -336,32 +336,32 @@ void ProcessDialogEvent()
 		break;
 		
 		case "cumvana_8":
-			dialog.text = "Son of the sea, it's you. Kumwana talked with warriors of the Locono.";
-			link.l1 = "And? Do you have a volunteer?";
+			dialog.text = "Вот и ты, сын моря. Кумвана говорил с воины локоно.";
+			link.l1 = "И каков результат? Есть доброволец?";
 			link.l1.go = "cumvana_9";
 		break;
 		
 		case "cumvana_9":
-			dialog.text = "We have a few hunters around who been there. But they fear Capongs - the jaguars are on warpath. They not go - they say Capong slay your unit. They fear not pale faces.";
-			link.l1 = "My warriors are tougher than any of them! Part of my unit has spent a lifetime in the jungles! We are not some powder monkeys!";
+			dialog.text = "В наш племя есть несколько охотники, которые ходить туда. Но они бояться капонг - ягуары выйти на тропа войны. Идти не хотят - сказать, капонг перебить ваш отряд. Капонг не боятся белых.";
+			link.l1 = "Мои воины сильнее любых капонгов! Часть моего отряда всю жизнь провела в джунглях - мы не зеленые юнцы!";
 			link.l1.go = "cumvana_10";
 		break;
 		
 		case "cumvana_10":
-			dialog.text = "I am sorry, son of the sea. My hunters fear, Capongs are dangerous, very very.";
-			link.l1 = "Fine, then perhaps they can explain how to get there? In details?";
+			dialog.text = "Мне жаль, сын моря. Мои охотники боятся. Капонг опасный, очень опасный воин. Никто не захотел рисковать своя жизнь.";
+			link.l1 = "Хорошо, тогда может они расскажут дорогу? Подробно?";
 			link.l1.go = "cumvana_11";
 		break;
 		
 		case "cumvana_11":
-			dialog.text = "To get there you should sail on river and then disembark at the very certain place. If it is wrong place - you get into swamp and die. Our selva is full of danger. You won't find the place on your own, son of the sea.";
-			link.l1 = RandSwear()+"And what should I do then? How to persuade your hunters?";
+			dialog.text = "Чтобы попасть туда, надо сначала плыть по река, потом высадиться в определенный место. Выйти не там - угодить в болото и погибнуть. Наша сельва полна опасность. Ты сам не найти, сын моря.";
+			link.l1 = RandSwear()+"Что же мне делать? Как мне уговорить твоих охотников?";
 			link.l1.go = "cumvana_12";
 		break;
 		
 		case "cumvana_12":
-			dialog.text = "Kumwana say no more, son of the sea.";
-			link.l1 = "Whatever...";
+			dialog.text = "Кумвана больше нечего сказать, сын моря.";
+			link.l1 = "Ладно...";
 			link.l1.go = "cumvana_13";
 		break;
 		
@@ -376,26 +376,26 @@ void ProcessDialogEvent()
 		case "hayamee":
 			if (npchar.id == "Hayamee")
 			{
-				dialog.text = "My husband Tagofa best hunter of tribe. Oh-ey! "+npchar.name+" is proud of her husband. "+npchar.name+" often go with Tagofa in Selva. Go far away. Tagofa know where Spanish settlement.";
-				link.l1 = ""+npchar.name+", I will give a lot of gifts to you and Tagofa if he show us the way there. Where can I find him?";
+				dialog.text = "Мой муж Тагофа лучший охотник племя. О-ей! "+npchar.name+" гордиться свой муж. "+npchar.name+" часто ходить в сельва вместе с Тагофа. Далеко ходить. Тагофа знать, где испанский селение.";
+				link.l1 = ""+npchar.name+", я дам много подарков тебе и Тагофе, если он проведет нас туда. Как поговорить с твоим мужем?";
 				link.l1.go = "hayamee_1";
 			}
 			else
 			{
-				dialog.text = RandPhraseSimple(RandPhraseSimple("My husband not go selva, son of the sea. He fish. Good fisher, oh-ey! ","My husband good hunter, oh-ey, but he now go deep jungle."), RandPhraseSimple("Jaguar wound my husband on hunt. Now he sit in village make arrows, oh-ey!","Six moons ago three Capongs attack my husband. Now he not go hunt far from village. Never! oh-ey!"));
-				link.l1 = LinkRandPhrase("Pity...","Too bad...","What a shame..."));
+				dialog.text = RandPhraseSimple(RandPhraseSimple("Мой муж не ходить в сельва, сын моря. Он ловить и бить рыба. Хороший рыбак, о-ей!","Мой муж хороший охотник, о-ей, но он не ходить так глубоко в джунгли."), RandPhraseSimple("Ягуар ранить мой муж на охота. Теперь он сидеть деревня и делать стрелы, копья и лук, о-ей!","Шесть лун назад на мой муж в сельва напасть три воина капонг. Теперь он не ходить на охота далеко от селение, никогда! О-ей!"));
+				link.l1 = LinkRandPhrase("Очень жаль...","Вот незадача...","Какая досада..."));
 				link.l1.go = "exit";
 			}
 		break;
 		
 		case "hayamee_1":
-			dialog.text = "Tagofa go hunt week ago. Promise come back tomorrow when sun is down. Son of the sea, I be with Tagofa in that hut. I ask him he go or not go.";
-			link.l1 = "Tell Tagofa that I will gift him with a prettiest handgun. And you, I will gift you with a lot of jewels.";
+			dialog.text = "Тагофа уйти на охота день назад. Обещать вернуться завтра к закат солнца. Приходить завтра после закат, сын моря. Я быть вместе с Тагофа в той хижина. Я спросить его, пойти он с вами, или нет.";
+			link.l1 = "Передай Тагофе, что я дам ему мой самый красивый пистолет. А тебе много украшений.";
 			link.l1.go = "hayamee_2";
 		break;
 		
 		case "hayamee_2":
-			dialog.text = "Oh-ey!";
+			dialog.text = "О-ей!";
 			link.l1 = "...";
 			link.l1.go = "hayamee_3";
 		break;
@@ -415,56 +415,56 @@ void ProcessDialogEvent()
 		
 		case "hayamee_4":
 			pchar.quest.Mtraxx_MeridaPotionLate.over = "yes";
-			dialog.text = ""+npchar.name+" glad see son of the sea. Tagofa come back. But he drink too much kasheeri and sleep. Not wake up him, Tagofa rest. I will talk.";
-			link.l1 = "Very well, "+npchar.name+". Will your husband guide us to Merida?";
+			dialog.text = ""+npchar.name+" рада видеть сына моря. Тагофа вернуться. Но он выпить слишком много кашири и крепко уснуть. Не будить его, Тагофа отдыхать. Я буду говорить.";
+			link.l1 = "Хорошо, "+npchar.name+". Твой муж проведет нас к Мериде?";
 			link.l1.go = "hayamee_5";
 		break;
 		
 		case "hayamee_5":
-			dialog.text = "Tagofa agree to guide your warriors through selva to Spanish village. But there several terms...";
-			link.l1 = "Which are?..";
+			dialog.text = "Тагофа согласиться провести твой воины через сельва к испанский деревня. Но есть несколько условия...";
+			link.l1 = "Какие?";
 			link.l1.go = "hayamee_6";
 		break;
 		
 		case "hayamee_6":
-			dialog.text = "You protect Tagofa from Capong warrior. Tagofa not fight no Spanish, no Capong. If he face danger - he run away and no one find him, he best Locono hunter.";
-			link.l1 = "I see. You worry about your man, this is understandable. I promise you that we shall deal with those Capongs of yours on our own.";
+			dialog.text = "Ты защищать Тагофа от воин-капонг. Тагофа не вступать в драки ни с капонг, ни с испанцы. Если ему грозить опасность, он просто скрыться в джунгли, и его никто не найти - он лучший охотник локоно.";
+			link.l1 = "Понимаю. Ты беспокоишься о своем муже, это справедливо. Обещаю, со всеми вашими капонгами мы разберемся сами.";
 			link.l1.go = "hayamee_7";
 		break;
 		
 		case "hayamee_7":
-			dialog.text = "Oh-ey! Tagofa want gifts from son of the sea: one pretty shoot bullets and one big shoot small stones. Also enough charge each gun: as many as fingers both hands three times.";
-			link.l1 = "Whoa! Your man knows something about guns, huh? Very well. What else?";
+			dialog.text = "О-ей! Тагофа хотеть получить от сын моря два пистоль: один красивый, стрелять пули, второй большой, стрелять мелкие камешки, и заряд, столько, сколько пальцы на две рука три раза, к каждый пистоль.";
+			link.l1 = "Ого! Да твой муж разбирается в оружии, я смотрю... Хорошо. Что еще?";
 			link.l1.go = "hayamee_8";
 		break;
 		
 		case "hayamee_8":
-			dialog.text = "Tagofa want magic eye of pale faces.";
-			link.l1 = "A spy glass? Fine. Anything else?";
+			dialog.text = "Тагофа хотеть волшебный глаз белых.";
+			link.l1 = "Подзорную трубу? Ладно. Это все?";
 			link.l1.go = "hayamee_9";
 		break;
 		
 		case "hayamee_9":
-			dialog.text = "No more for Tagofa. "+npchar.name+" want pretty things. Gold ring with big red stone and beads of many many green stone. "+npchar.name+" see this on white Mary in Maracaibo.";
-			link.l1 = "A golden ring with ruby and jade beads?";
+			dialog.text = "Для Тагофа все. А "+npchar.name+" хотеть красивый вещи. Желтое кольцо с большой красный камень и бусы из много-много зеленый блестящий камень. "+npchar.name+" видеть такое у белой Мери в Маракайбо.";
+			link.l1 = "Золотое кольцо с рубином и нефритовые бусы?";
 			link.l1.go = "hayamee_10";
 		break;
 		
 		case "hayamee_10":
-			dialog.text = "Not jade. It's shiny and white men value it.";
-			link.l1 = "Emerald? Emerald beads?";
+			dialog.text = "Этот камень звать не нефрит. Он блестящий, и белый люди его ценить.";
+			link.l1 = "Изумруд? Изумрудное ожерелье?";
 			link.l1.go = "hayamee_11";
 		break;
 		
 		case "hayamee_11":
-			dialog.text = "Oh-ey!";
-			link.l1 = "Heh, "+npchar.name+" knows something about jewels! Very well, you got it.";
+			dialog.text = "О-ей!";
+			link.l1 = "Хех, "+npchar.name+" знает толк в украшениях! Хорошо, будет тебе и кольцо рубиновое, и бусы изумрудные.";
 			link.l1.go = "hayamee_12";
 		break;
 		
 		case "hayamee_12":
-			dialog.text = "Bring all things to "+npchar.name+" together, son of the sea. Then Tagofa guide you and your warriors. Not waste time, in a half of moon Tagofa and me go to neighbor village. For high day. No go, "+npchar.name+" want sleep.";
-			link.l1 = "I won't make you wait for too long. See you.";
+			dialog.text = "Принести сразу все вещи "+npchar.name+", сын моря. И тогда Тагофа повести тебя и твои воины. Но не терять время - через половину луны мы с Тагофа хотеть пойти в соседний деревня на праздник. А сейчас идти, "+npchar.name+" хотеть спать.";
+			link.l1 = "Я не заставлю тебя ждать долго. До встречи.";
 			link.l1.go = "hayamee_13";
 		break;
 		
@@ -484,15 +484,15 @@ void ProcessDialogEvent()
 		
 		case "hayamee_14":
 			bOk = GetCharacterFreeItem(pchar, "spyglass1") > 0 || GetCharacterFreeItem(pchar, "spyglass2") > 0 || GetCharacterFreeItem(pchar, "spyglass3") > 0;
-			dialog.text = "You bring what "+npchar.name+" and Tagofa ask?";
+			dialog.text = "Ты принести то, что просить "+npchar.name+" и Тагофа?";
 			if (bOk && GetCharacterFreeItem(pchar, "pistol3") > 0 && GetCharacterFreeItem(pchar, "pistol5") > 0 && GetCharacterItem(pchar, "bullet") >= 30 && GetCharacterItem(pchar, "grapeshot") >= 30 && GetCharacterItem(pchar, "gunpowder") >= 60 && CheckCharacterItem(pchar, "jewelry41") && CheckCharacterItem(pchar, "jewelry42"))
 			{
-				link.l1 = "Yes. Everything according to your list.";
+				link.l1 = "Да. Все, как вы заказывали.";
 				link.l1.go = "hayamee_15";
 			}
 			else
 			{
-				link.l1 = "No, I am still on it.";
+				link.l1 = "Нет, я еще работаю над этим.";
 				link.l1.go = "hayamee_14x";
 			}
 		break;
@@ -505,8 +505,8 @@ void ProcessDialogEvent()
 		case "hayamee_15":
 			pchar.quest.Mtraxx_MeridaHayameeLate.over = "yes";
 			Mtraxx_MeridaRemoveGifts();
-			dialog.text = ""+npchar.name+" is happy, son of the sea. I now call husband. He go with you. But remember what you promise "+npchar.name+"!";
-			link.l1 = "Yes-yes, I remember everything.";
+			dialog.text = ""+npchar.name+" рада, сын моря. Сейчас я позвать мужа. Он пойти с тобой в поход. Но помнить, что ты обещать "+npchar.name+"!";
+			link.l1 = "Да-да, я ничего не забываю.";
 			link.l1.go = "hayamee_16";
 		break;
 		
@@ -520,8 +520,8 @@ void ProcessDialogEvent()
 		break;
 			
 		case "CitizenNotBlade":
-			dialog.text = "Put away your weapon, paleface, or we force you to do it!";
-			link.l1 = LinkRandPhrase("Fine.", "Okay.", "Don't worry, I am putting it away...");
+			dialog.text = "Убирать оружие, яланауи, пока мы не заставить тебя это сделать!";
+			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Не переживай, уже убираю...");
 			link.l1.go = "exit";
 		break;  
 

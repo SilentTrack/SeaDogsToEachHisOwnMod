@@ -26,7 +26,7 @@ void InitInterface_RR(string iniName, ref ContraTrader , ref pStore)
 	
 	GameInterface.TABLE_LIST.hr.td1.str = XI_ConvertString("In the hold");
 	GameInterface.TABLE_LIST.hr.td1.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td2.str = "Wgt";
+	GameInterface.TABLE_LIST.hr.td2.str = "Вес";
 	GameInterface.TABLE_LIST.hr.td2.scale = 0.9;
 	GameInterface.TABLE_LIST.hr.td3.str = XI_ConvertString("Price sell");
 	GameInterface.TABLE_LIST.hr.td3.scale = 0.9;
@@ -36,9 +36,9 @@ void InitInterface_RR(string iniName, ref ContraTrader , ref pStore)
 	GameInterface.TABLE_LIST.hr.td5.scale = 0.9;	
 	GameInterface.TABLE_LIST.hr.td6.str = XI_ConvertString("In the contra");
 	GameInterface.TABLE_LIST.hr.td6.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td7.str = "Pack";
+	GameInterface.TABLE_LIST.hr.td7.str = "Пачка";
 	GameInterface.TABLE_LIST.hr.td7.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td8.str = "Pack wgt";
+	GameInterface.TABLE_LIST.hr.td8.str = "Вес пачки";
 	GameInterface.TABLE_LIST.hr.td8.scale = 0.9;
 
     FillShipsScroll();
@@ -200,7 +200,7 @@ void ShowGoodsInfo(int iGoodIndex)
 	}
 	goodsDescr += GetAssembledString( LanguageConvertString(lngFileID,goodName+"_descr"), &Goods[iGoodIndex]);
     goodsDescr += newStr() + XI_ConvertString("weight") + " " + Goods[iGoodIndex].weight + " " + XI_ConvertString("cwt") +
-	              ", packet " + Goods[iGoodIndex].Units + " " + XI_ConvertString("units");
+	              ", пачка " + Goods[iGoodIndex].Units + " " + XI_ConvertString("units");
 
 	iUnits  = sti(Goods[iGoodIndex].Units);
 	fWeight = stf(Goods[iGoodIndex].weight);
@@ -325,24 +325,23 @@ void SetVariable()
 void ShowHelpHint()
 {
     string sHeader;
-	string sText1, sText2, sText3, sPicture, sGroup, sGroupPicture;
+	string sText1, sText2, sPicture, sGroup, sGroupPicture;
 	sPicture = "none";
 	sGroup = "none";
 	sGroupPicture = "none";
 	
 	if (!bShowChangeWin)
 	{// покажем помощь по работе с формой
-        sHeader = "Trading";
-		sText1 = "";
+        sHeader = "Интерфейс торговли";
+		sText1 = "Двойной клик мыши или Enter по строкам таблицы вызывает форму покупки/продажи товара. "+ newStr() +
+		         "Shift + лево/право на строках таблицы автоматически вызывают форму с предустановленным количеством покупки/продажи на максимальное. "+ newStr() +
+				 "Ввод положительного количества с клавиатуры устанавливает покупку товара, а отрицательного (с минусом) продажу."+ newStr() +
+				 "Стрелки лево/право изменяют количество по пачкам, а Shift + лево/право на максимально доступное. Нажатие Enter на форме равносильно ОК, а Esc - Отмена." + newStr() +
+				 "Находясь в режиме формы и мотая список в таблице стрелкам вверх/вниз, можно просматривать описание товара под курсором таблицы.";
 				 
-        sText2 = "";
-		sText3 = "Good's colors explanation:" + newStr() + 
-				 "- green: local production" + newStr() + 
-				 "- blue: imports" + newStr() + 
-				 "- red: smuggles" + newStr() + 
-				 "- peach-coloured: goods of great demand";
+        sText2 = "Быстрая продажа всего: стрелками вверх/вниз по списку, Shift + право, Enter";
                 
-		CreateTooltip("#" + sHeader, sText1, argb(255,255,255,255), sText2, argb(255,192,192,192), sText3, argb(255,255,255,255), "", argb(255,255,255,255), sPicture, sGroup, sGroupPicture, 64, 64);
+		CreateTooltip("#" + sHeader, sText1, argb(255,255,255,255), sText2, argb(255,192,192,192), "", argb(255,255,255,255), "", argb(255,255,255,255), sPicture, sGroup, sGroupPicture, 64, 64);
 	}
 }
 
@@ -655,9 +654,9 @@ void ChangeQTY_EDIT()
 		        GameInterface.qty_edit.str = makeint(iWeight / fWeight * iUnits ); // округдение
 		    }
 		    // проверка на колво доступное <--
-		    SetFormatedText("QTY_TypeOperation", "Sell");
-		    SetFormatedText("QTY_Result", "Money " + makeint(iStorePrice*stf(GameInterface.qty_edit.str) / iUnits + 0.5) +
-			                ", weight " + iWeight + " cent.");
+		    SetFormatedText("QTY_TypeOperation", "Продать");
+		    SetFormatedText("QTY_Result", "Деньги " + makeint(iStorePrice*stf(GameInterface.qty_edit.str) / iUnits + 0.5) +
+			                ", вес " + iWeight + " ц");
 		}
 		else
 		{
@@ -683,9 +682,9 @@ void ChangeQTY_EDIT()
 		    }
 		    // проверка на колво доступное <--
 
-			SetFormatedText("QTY_TypeOperation", "Buy");
-			SetFormatedText("QTY_Result", "Money " + makeint(iShipPrice*stf(GameInterface.qty_edit.str) / iUnits + 0.5) +
-			                ", weight " + iWeight + " cent.");
+			SetFormatedText("QTY_TypeOperation", "Купить");
+			SetFormatedText("QTY_Result", "Деньги " + makeint(iShipPrice*stf(GameInterface.qty_edit.str) / iUnits + 0.5) +
+			                ", вес " + iWeight + " ц");
 		}
 	}
 	// если получили ноль Jason: или особо хитрожопые ввели минус

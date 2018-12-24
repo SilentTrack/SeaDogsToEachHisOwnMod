@@ -546,7 +546,7 @@ void Fantom_SetGoods(ref rFantom, string sFantomType)
 					// уникальные и коронные товары
 					if(iGoodName >= GOOD_SHIPSILK && iGoodName <= GOOD_SILVER)
 					{
-						iGoodQuantity = makeint(rand(25) + rand(25) +  7.5 * (10 - MOD_SKILL_ENEMY_RATE) + 15 * (7 - iShipClass) );
+						iGoodQuantity = makeint(rand(25) + rand(15) +  1.5 * (10 - MOD_SKILL_ENEMY_RATE) + 15 * (7 - iShipClass) );
 						if(iGoodQuantity < 1) iGoodQuantity = 1;
 						isLock = 1; 
 						Fantom_SetCharacterGoods(rFantom, iGoodName, iGoodQuantity, isLock);			

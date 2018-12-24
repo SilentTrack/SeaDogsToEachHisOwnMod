@@ -4,26 +4,27 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What kind of questions?", "What do you want, " + GetAddress_Form(NPChar) + "?"), "You've already tried to ask me a question " + GetAddress_Form(NPChar) + "...", "You have been talking about some question for the third time today...",
-                          "Look, if you have nothing to tell me about the port's matters then don't bother me with your questions.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind.", "Sorry!"), "Sorry!", "Sorry!", "Sorry!", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно, " + GetAddress_Form(NPChar) + "?"), "Совсем недавно вы пытались задать мне вопрос " + GetAddress_Form(NPChar) + "...", "В течение этого дня вы уже третий раз говорите о каком-то вопросе...",
+                          "Послушайте, если вы не по делам порта, то не стоит меня вопросами донимать.", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал"+ GetSexPhrase("","а") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Да уж, действительно в третий раз...", "Извините, но портовые дела меня сейчас не интересуют.", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "maarten1")
 			{
-				link.l1 = "There was a galleon named 'Admirable' under the French flag. It's captain name was Gaius Marchais. Can you tell me where has he sailed to next? Perhaps he has registered himself here?";
+				link.l1 = "В ваш порт не так давно прибывал галеон 'Восхитительный' под французским флагом. Капитан - Гай Марше. Не подскажете, куда он отправился далее? Может, отметился как-то у вас?";
                 link.l1.go = "guardoftruth";
 			}
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "'Admirable'? Galleon? I remember it. We have  freighted  it to deliver paprika to Bridgetown at Barbados. Something happened?";
-			link.l1 = "No, but Gaius is my friend and I am looking forward to meet him.";
+			dialog.text = "Галеон 'Восхитительный'? Как же, помню. Он заключил с нами договор на доставку партии паприки в Бриджтаун, что на Барбадосе. А что-то случилось?";
+			link.l1 = "Нет, просто Гай - мой друг, и мне очень хочется его увидеть.";
 			link.l1.go = "guardoftruth_1";
 		break;
 		
 		case "guardoftruth_1":
-			dialog.text = "Then sail to Barbados. But I doubt that you will find him there, it has been too long. At least you can ask the local harbor master to help you.";
-			link.l1 = "Thanks! You've helped me a lot.";
+			dialog.text = "Тогда отправляйтесь на Барбадос. Хотя навряд ли вы там его застанете - прошло уже много времени. Но хотя бы справитесь в тамошнем портовом управлении о нем.";
+			link.l1 = "Спасибо! Вы мне очень помогли.";
 			link.l1.go = "guardoftruth_2";
 		break;
 		

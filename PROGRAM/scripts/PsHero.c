@@ -1272,7 +1272,7 @@ void PGG_BecomeHiredOfficer()
 	AddPassenger(pchar, chr, false);
 
 	chr.location = "None";
-	chr.PGGAi.location.town = "Officer";
+	chr.PGGAi.location.town = "ќфицер";
 	chr.PGGAi.IsPGG = false;
 	chr.Dialog.CurrentNode = "hired";
 	chr.Dialog.FileName = "Enc_Officer_dialog.c";

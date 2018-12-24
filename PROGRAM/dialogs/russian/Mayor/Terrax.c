@@ -44,8 +44,8 @@ void ProcessDialogEvent()
 			{
 				if (pchar.questTemp.Mtraxx == "full_complete_end" || pchar.questTemp.Mtraxx == "full_complete")
 				{
-					dialog.text = "Ah Prince, finally you are here. At least one of you was bothered to come to me! There is business to be done and all of you have disappeared! Where the hell the rest are?";
-					link.l1 = "No a clue... Marcus I am out. I had enough. Too much blood was spilled recently.";
+					dialog.text = "А, Принц, неужели явился? Хоть один из вас, наконец, удосужился показаться мне! Дела ждут, а ни тебя, ни Лысого, ни Тесака, ни Лепрекона найти не могу! Где этих охламонов носит, ты не в курсе, случайно?";
+					link.l1 = "Нет, не в курсе... Маркус, я пришел сказать, что выхожу из игры. С меня довольно. Мертвецы снятся мне по ночам, и черти с раскаленными жаровнями мерещатся... Слишком много крови пролилось в последнее время.";
 					link.l1.go = "mtraxx_113";
 					break;
 				}
@@ -54,53 +54,53 @@ void ProcessDialogEvent()
 			// если Сага завалена, то у Маркуса ноды в двух местах и оплата вперед
 			if(CheckAttribute(pchar, "questTemp.Patria.Pirate.Terrax") && pchar.questTemp.Patria == "epizode_12_pirates")
 			{
-				dialog.text = "Got any business for me?";
-				link.l1 = "Greetings, Marcus. Yes, an affair. Financial and related to pirates.";
+				dialog.text = "У тебя ко мне дело?";
+				link.l1 = "Приветствую, Маркус. Да, дело. Денежное и пиратское.";
 				link.l1.go = "patria_x";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Patria.Condotier.NeedMoney") && pchar.questTemp.Patria == "epizode_12_pirates" && sti(pchar.money) >= 100000)
 			{
-				dialog.text = "Did you bring the money?";
-				link.l1 = "Yes.";
+				dialog.text = "Принес деньги?";
+				link.l1 = "Да.";
 				link.l1.go = "patria_x8";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Patria.Pirate.Terrax") && pchar.questTemp.Patria == "epizode_12_talk")
 			{
-				dialog.text = "That's our customer! The job is done, your baron is sitting in a well-guarded dungeon. Perhaps you'd like to take a look, he-he?!";
-				link.l1 = "I will have plenty of time to do that, haha. Is he well-treated?";
+				dialog.text = "А вот и заказчик пожаловал! Дело сделано, твой барон сидит в подвале под надежным замком. Не хочешь пойти посмотреть, ха-ха?!";
+				link.l1 = "Еще успею, хе-хе. Его обрабатывают?";
 				link.l1.go = "patria_10";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Patria.Pirate.Terrax") && CheckAttribute(pchar, "questTemp.Patria.DodsonFail"))
 			{
-				dialog.text = "Charles, what the hell!..";
-				link.l1 = "Markus, there was an overlap. I could neither come nor inform you about my abscence...";
+				dialog.text = "Какого дьявола!..";
+				link.l1 = "Маркус, накладка вышла. Не смог я придти, и тебе не сумел сообщить никак...";
 				link.l1.go = "patria_x33";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Patria.Pirate.Terrax") && CheckAttribute(pchar, "questTemp.Patria.DodsonAgain"))
 			{
-				dialog.text = "Here's our puppeteer!";
-				link.l1 = "Ha-ha! The spectacle was perfect";
+				dialog.text = "А вот и наш кукловод пожаловал!";
+				link.l1 = "Ха-ха! Спектакль был отличным!";
 				link.l1.go = "patria_x29";
 				break;
 			}
             dialog.text = NPCStringReactionRepeat(""+ GetSexPhrase("У тебя дело ко мне? Нет? Тогда вали отсюда!","Ха, " + pchar.name + "! У тебя дело ко мне? Нет? Тогда не отвлекай меня.") +"",
-                         "I trust that I have made myself clear... Although I've made myself clear, you keep annoying me!",
-                         "Right, I am getting tired of this rudeness.", "repeat", 3, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("I am leaving already.",
-                                               "Sure, Marcus...",
-                                               "Sorry, Marcus...",
-                                               "Oups...", npchar, Dialog.CurrentNode);
+                         "Я кажется ясно выразился.", "Хотя я выразился и ясно, но ты продолжаешь отвлекать меня!",
+                         "Та-а-ак, это уже похоже на грубость, меня это утомило.", "repeat", 3, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Уже ухожу.",
+                                               "Конечно, Маркус...",
+                                               "Извини, Маркус...",
+                                               "Ой...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 			
 			if (sti(pchar.GenQuest.Piratekill) > 20)
 			{
-				dialog.text = RandPhraseSimple("Are you insane? Wanted to play a butcher? All pirates are angry with you, pal, so you better leave this place…Are you insane? Wanted to play a butcher? All pirates are angry with you, pal, so you better leave this place.", "It seems, pal, that you got mad. Wanted to stretch your hands a bit? No offence, but you have nothing to do here. Get lost!");
-				link.l1 = RandPhraseSimple("Listen, I want to fix the situation.", "Help me to solve the problem.");
+				dialog.text = RandPhraseSimple("У тебя крыша поехала? Вообразил себя мясником? Все пираты злы на тебя, приятель, так что лучше тебе убраться отсюда побыстрее.", "Ты, приятель, похоже, из ума выжил. Руки чесались сильно? Теперь не обессудь - здесь тебе делать нечего. Вали отсюда побыстрее!");
+				link.l1 = RandPhraseSimple("Послушай, я хочу исправить ситуацию...", "Помоги мне решить эту проблему...");
 				link.l1.go = "pirate_town";
 				break;
 			}
@@ -110,24 +110,24 @@ void ProcessDialogEvent()
 				// Addon 2016-1 Jason пиратская линейка патч 17/1
 				if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "full_complete_end")
 				{
-					link.l1 = "Marcus will you ever stop being mad with me? I have saved your friend Vincent who once accompanied us in our raid on Cartagena, by the way I also saved your ass too! Or didn't Bernard even tell you?";
+					link.l1 = "Маркус, сколько ты будешь злиться на меня? Я вытащил твоего друга Венсана, с которым мы когда-то ходили на Картахену, из лап смерти, да и от тебя беду отвел, кстати! Или Бернар тебе ничего не рассказывал?";
 					link.l1.go = "Temptation_13";
 				}
 				else
 				{
-					link.l1 = "Why are you so rude, Marcus? Or haven't Bernard told you about me?";
+					link.l1 = "Можно было и помягче, Маркус. Или Бернар тебе ничего не рассказывал про меня?";
 					link.l1.go = "Temptation";
 				}
 			}
 			// Addon 2016-1 Jason пиратская линейка
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "to_lavega")
 			{
-				link.l2 = "I want a job... Have anything profitable on your mind?";
+				link.l2 = "Я ищу работу... Нет ли у тебя на примете какого-нибудь выгодного дельца?";
 				link.l2.go = "Mtraxx";
 			}
 			if (CheckAttribute(pchar, "questTemp.Mtraxx.SilkTrade") && GetSquadronGoods(pchar, GOOD_SHIPSILK) >= 20)
 			{
-				link.l2 = "I have a silk to sell.";
+				link.l2 = "Я привез тебе шелк на продажу.";
 				link.l2.go = "Mtraxx_silktrade";
 			}
 		break;
@@ -140,141 +140,141 @@ void ProcessDialogEvent()
         case "I_know_you_good":
 			if (sti(pchar.GenQuest.Piratekill) > 20)
 			{
-				dialog.text = RandPhraseSimple("Are you insane? Wanted to play a butcher? All pirates are angry with you, pal, so you better leave this place...", "It seems, pal, that you got mad. Wanted to stretch your hands a bit? No offence, but you have nothing to do here. Get lost!");
-				link.l1 = RandPhraseSimple("Listen, I want to fix the situation...", "Help me to solve the problem...");
+				dialog.text = RandPhraseSimple("У тебя крыша поехала? Вообразил себя мясником? Все пираты злы на тебя, приятель, так что лучше тебе убраться отсюда побыстрее.", "Ты, приятель, похоже, из ума выжил. Руки чесались сильно? Теперь не обессудь - здесь тебе делать нечего. Вали отсюда побыстрее!");
+				link.l1 = RandPhraseSimple("Послушай, я хочу исправить ситуацию...", "Помоги мне решить эту проблему...");
 				link.l1.go = "pirate_town";
 				break;
 			}
 			// Jason НСО
 			if(!CheckAttribute(pchar, "questTemp.Patria.Pirate.Terrax") && CheckAttribute(pchar, "questTemp.Patria.DodsonFail"))
 			{
-				dialog.text = "Charles, what the hell!..";
-				link.l1 = "Markus, there was an overlap. I could neither come nor inform you about my abscence...";
+				dialog.text = "Шарль, какого дьявола!..";
+				link.l1 = "Маркус, накладка вышла. Не смог я придти, и тебе не сумел сообщить никак...";
 				link.l1.go = "patria_33";
 				break;
 			}
 			if(!CheckAttribute(pchar, "questTemp.Patria.Pirate.Terrax") && CheckAttribute(pchar, "questTemp.Patria.DodsonAgain"))
 			{
-				dialog.text = "Glad to see you, friend!";
-				link.l1 = "Glad to see you too. Thank you for the perfect spectacle!";
+				dialog.text = "Рад тебя видеть, приятель!";
+				link.l1 = "И я тебя. Спасибо за отлично организованный спектакль!";
 				link.l1.go = "patria_29";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Patria.Saga.Terrax") && pchar.questTemp.Patria == "epizode_12_pirates")
 			{
-				dialog.text = "Glad to see you, pal! How can I help you?";
-				link.l1 = "I have a proposal for you. Pirate stuff, you know!";
+				dialog.text = "Здорово, приятель! Какими судьбами?";
+				link.l1 = "Дело к тебе, Маркус. Пиратское!";
 				link.l1.go = "patria";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Patria.Saga.Terrax") && pchar.questTemp.Patria == "epizode_12_talk")
 			{
-				dialog.text = "That's our customer! The job is done, your baron is sitting in a well-guarded dungeon. Perhaps you'd like to take a look, he-he?!";
-				link.l1 = "I will have plenty of time to do that, haha. Is he well-treated?";
+				dialog.text = "А вот и заказчик пожаловал! Дело сделано, твой барон сидит в подвале под надежным замком. Не хочешь пойти посмотреть, ха-ха?!";
+				link.l1 = "Еще успею, хе-хе. Его обрабатывают?";
 				link.l1.go = "patria_10";
 				break;
 			}
 			// если Сага завалена, то у Маркуса ноды в двух местах и оплата вперед
 			if(CheckAttribute(pchar, "questTemp.Patria.Pirate.Terrax") && pchar.questTemp.Patria == "epizode_12_pirates")
 			{
-				dialog.text = "Got any business for me?";
-				link.l1 = "Greetings, Marcus. Yes, an affair. Financial and related to pirates.";
+				dialog.text = "У тебя ко мне дело?";
+				link.l1 = "Приветствую, Маркус. Да, дело. Денежное и пиратское.";
 				link.l1.go = "patria_x";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Patria.Condotier.NeedMoney") && pchar.questTemp.Patria == "epizode_12_pirates" && sti(pchar.money) >= 100000)
 			{
-				dialog.text = "Did you bring the money?";
-				link.l1 = "Yes.";
+				dialog.text = "Принес деньги?";
+				link.l1 = "Да.";
 				link.l1.go = "patria_x8";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Patria.Pirate.Terrax") && pchar.questTemp.Patria == "epizode_12_talk")
 			{
-				dialog.text = "That's our customer! The job is done, your baron is sitting in a well-guarded dungeon. Perhaps you'd like to take a look, he-he?!";
-				link.l1 = "I will have plenty of time to do that, haha. Is he well-treated?";
+				dialog.text = "А вот и заказчик пожаловал! Дело сделано, твой барон сидит в подвале под надежным замком. Не хочешь пойти посмотреть, ха-ха?!";
+				link.l1 = "Еще успею, хе-хе. Его обрабатывают?";
 				link.l1.go = "patria_10";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Patria.Pirate.Terrax") && CheckAttribute(pchar, "questTemp.Patria.DodsonFail"))
 			{
 				dialog.text = "Какого дьявола!..";
-				link.l1 = "Marcus, there was an overlap. I could neither come nor inform you about my abscence...";
+				link.l1 = "Маркус, накладка вышла. Не смог я придти, и тебе не сумел сообщить никак...";
 				link.l1.go = "patria_x33";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Patria.Pirate.Terrax") && CheckAttribute(pchar, "questTemp.Patria.DodsonAgain"))
 			{
-				dialog.text = "Here's our puppeteer!";
-				link.l1 = "Ha-ha! The spectacle was perfect!";
+				dialog.text = "А вот и наш кукловод пожаловал!";
+				link.l1 = "Ха-ха! Спектакль был отличным!";
 				link.l1.go = "patria_x29";
 				break;
 			}
 			// Тени прошлого
 			if(CheckAttribute(pchar, "questTemp.Saga.Shadows") && pchar.questTemp.Saga.Shadows == "islatesoro" && npchar.location == "Pirates_townhall")
 			{
-				dialog.text = "Glad to see you, pal! How can I help you?";
-				link.l1 = "Marcus, I have to talk to you. I am not sure that you'll like it but I need your help anyway.";
+				dialog.text = "Рад тебя видеть, приятель! Чем я могу тебе помочь?";
+				link.l1 = "Маркус, у меня к тебе есть разговор. Не знаю, насколько он будет тебе приятен, но мне так или иначе нужна твоя помощь.";
 				link.l1.go = "shadows";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Terrapin") && pchar.questTemp.Terrapin == "islatesoro" && npchar.location == "Pirates_townhall")
 			{
-				dialog.text = "Ha, here you are, "+pchar.name+". I was expecting your arrival. The Wood Devil has puzzled me with you Tortuga's matter...";
-				link.l1 = "He has also told me that you have found a solution to it. Am I right?";
+				dialog.text = "Ха, вот и ты, "+pchar.name+". Я ожидал твоего прибытия. Лесной Дьявол озадачил меня твоей проблемой с Тортугой...";
+				link.l1 = "Он также сказал мне, что ты, или вы, уже отыскали решение проблемы. Это так?";
 				link.l1.go = "terrapin";
 				break;
 			}
 			// Addon 2016-1 Jason пиратская линейка
 			if (CheckAttribute(pchar, "questTemp.Mtraxx.SilkTrade") && GetSquadronGoods(pchar, GOOD_SHIPSILK) >= 20)
 			{
-				link.l2 = "I have a silk to sell.";
+				link.l2 = "Я привез тебе шелк на продажу.";
 				link.l2.go = "Mtraxx_silktrade";
 			}
-            dialog.text = NPCStringReactionRepeat(GetFullName(pchar) + ", Glad to you! What do you want?",
-                         "What do you want?", "Again? Don't bother people if you have got nothing to do!",
-                         "And "+ GetSexPhrase("good privateer","good girl") +", you can live for now. But I don't want to talk to you anymore.", "repeat", 10, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Just wanted to see you.",
-                                               "Nothing.",
-                                               "Fine, Marcus, I am sorry.",
-                                               "Damn it, caught it at last!", npchar, Dialog.CurrentNode);
+            dialog.text = NPCStringReactionRepeat(GetFullName(pchar) + ", рад тебя видеть! Зачем пожаловал"+ GetSexPhrase("","а") +" на этот раз?",
+                         "Ну что тебе еще?", "Долго это будет продолжаться? Если тебе делать нечего, не отвлекай других!",
+                         "Ты "+ GetSexPhrase("хороший капер","хорошая девушка") +", поэтому живи пока. Но общаться и разговаривать с тобой я больше не желаю.", "repeat", 10, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Да, собственно, просто так заглянул"+ GetSexPhrase("","а") +", проведать. Ничего по делу нет.",
+                                               "Ничего, просто так...",
+                                               "Хорошо, Маркус, извини...",
+                                               "Вот черт возьми, доиграл"+ GetSexPhrase("ся","ась") +"!!!", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			NextDiag.TempNode = "I_know_you_good";
 		break;
 
 		// ============== Грабеж среди бела дня, попытка залезть в сундуки =========================
 		case "Man_FackYou":
-			dialog.text = LinkRandPhrase("Robbery!!! That is unacceptable! Prepare yourself, rat...", "Hey, what are you doing there?! Thought that you could rob me? You are done...", "Wait, what the hell? Turns out that you are a thief! End of the line, good man...");
-			link.l1 = LinkRandPhrase("Damn!", "Carramba!", "Ah, damn it!");
+			dialog.text = LinkRandPhrase("Грабеж среди бела дня!!! Это что же такое делается?! Ну, погоди, "+ GetSexPhrase("приятель","подруга") +"...", "Эй, ты чего это там копаешься?! Никак, вздумал"+ GetSexPhrase("","а") +" ограбить меня? Ну, тогда тебе конец...", "Постой, ты куда это полез"+ GetSexPhrase("","ла") +"? Да ты вор"+ GetSexPhrase("","овка") +", оказывается! Ну, считай, что ты приплыл"+ GetSexPhrase("","а") +", родн"+ GetSexPhrase("ой","ая") +"...");
+			link.l1 = LinkRandPhrase("Дьявол!!", "Каррамба!!", "А-ать, черт!");
 			link.l1.go = "PL_Q3_fight";
 		break;
 					
 		// ======================== блок нод angry ===============>>>>>>>>>>>>>>>
 		case "AngryRepeat_1":
-            dialog.text = RandPhraseSimple(""+ GetSexPhrase("Go away","Get away") +" from here!", "Get away from my home!");
-			link.l1 = "Oups...";
+            dialog.text = RandPhraseSimple(""+ GetSexPhrase("Пошел вон","Убирайся") +" отсюда!", "Вон из моего дома!");
+			link.l1 = "Ай...";
 		    link.l1.go = "AngryExitAgainWithOut";
             if (CheckAttribute(npchar, "angry.terms")) //примиряемся через 10 дней.
             {
                 if (GetNpcQuestPastDayParam(npchar, "angry.terms") > sti(npchar.angry.terms))
                 {
-         			dialog.text = "Don't bother me from my work by your worthless promises. Next time it won't end that good for you...";
-        			link.l1 = "I get it.";
+         			dialog.text = "Тебе не стоит отвлекать меня от дела пустыми обращениями. Впредь результат может быть более плачевным...";
+        			link.l1 = "Я понял"+ GetSexPhrase("","а") +".";
         			link.l1.go = NextDiag.TempNode;
         			CharacterDelAngry(npchar);
                 }
             }
     	break;
 		case "AngryRepeat_2":
-            dialog.text = RandPhraseSimple("I am tired of you.", "I don't want to talk with you, so you better keep distance from me.");
-			link.l1 = RandPhraseSimple("Whatever...", "Hm, fine then...");
+            dialog.text = RandPhraseSimple("Ты меня изрядно утомил"+ GetSexPhrase("","а") +", никакого общения.", "Я не хочу с тобой общаться, так что тебе лучше меня не беспокоить.");
+			link.l1 = RandPhraseSimple("Ну как знаешь...", "Хм, ну что же...");
 		    link.l1.go = "AngryExitAgain";
             if (CheckAttribute(npchar, "angry.terms")) //примиряемся через 10 дней.
             {
                 if (GetNpcQuestPastDayParam(npchar, "angry.terms") > sti(npchar.angry.terms))
                 {
-         			dialog.text = "I hope that you won't bother me with your bubble talk anymore or I'll have to kill you. I say, that I won't be glad to do so.";
-        			link.l1 = "You can be sure in that, Marcus, I won't...";
+         			dialog.text = "Надеюсь, впредь ты не будешь утомлять меня пустыми разговорами, иначе мне придется тебя убить. Признаюсь, мне это будет очень неприятно.";
+        			link.l1 = "Маркус, ты можешь быть уверен - не буду...";
         			link.l1.go = NextDiag.TempNode;
         			CharacterDelAngry(npchar);
                 }
@@ -293,98 +293,98 @@ void ProcessDialogEvent()
 		
 //--> -----------------------------Сага - Искушение Барбазона завершающие этапы---------------------------
 		case "Temptation":
-			dialog.text = "Ha! The hero of Turks? Sorry for the rough greeting, pal. Bernard has already told me about your wonderful involvement and said something about a trap for me. I'd like to hear the details...";
-			link.l1 = "It was a trap. They were after you not Bernard.";
+			dialog.text = "Ха! Так это ты - герой Теркса? Прости за грубый прием, дружище. Бернар мне все рассказал о твоем чудесном вмешательстве, и что-то там говорил про ловушку для меня. Хотелось бы услышать подробности...";
+			link.l1 = "Это и впрямь была западня. Охота была не на Бернара. Охотились за тобой. А Венсан был просто приманкой...";
 			link.l1.go = "Temptation_1";
 		break;
 		
 		case "Temptation_1":
 			dialog.text = "";
-			link.l1 = "The plan was simple. It was supposed that you'd run to save your pal and would be the first on the board of 'Separator'. And right then they had to shoot it and blow it sky high. The brigantine was loaded by gunpowder like a hell.";
+			link.l1 = "Расчет был прост. Предполагалось, что ты сломя голову бросишься спасать своего друга и первым будешь на палубе 'Разлучницы'. В этот момент ее должны были взорвать прицельными выстрелами с берега. Бригантину начинили порохом, как булку маком.";
 			link.l1.go = "Temptation_2";
 		break;
 		
 		case "Temptation_2":
-			dialog.text = "Damn! Whose idea was this meanness?! And how could I know where they were hiding Bernard?!";
-			link.l1 = "The authors of this plan were Jackman and his brother David. A messenger would make you know that the 'Separator' is waiting for your help in the Southern bay of Turks. They have chosen me as that messenger and it was their mistake.";
+			dialog.text = "Тысяча чертей! Кто удумал такую подлость?! И как бы я узнал, где они прячут Бернара?!";
+			link.l1 = "Автор затеи - Джекман и его брат Давид. А сведения о том, что 'Разлучница' ждет твоей помощи в Южном заливе Теркса, сообщил бы тебе посланник. Этим посланником они выбрали меня, на свою голову.";
 			link.l1.go = "Temptation_3";
 		break;
 		
 		case "Temptation_3":
-			dialog.text = "I don't get it! What's your role in all of this?";
-			link.l1 = "I've been watching that bastard Jackman for a long time.  I work with Jan Svensson if you don't know. Me and the Wood Devil have decided to expose him. Jan is sure that he is responsible for Blaze's death and Steven was accused for nothing.";
+			dialog.text = "Ничего не понимаю! Ты-то тут каким боком оказался замешан?";
+			link.l1 = "Я давно присматривался к прохвосту Джекману. Я работаю с Яном Свенсоном, если ты не в курсе. Мы с Лесным Дьяволом решили вывести Джекмана на чистую воду. Ян уверен, что в смерти Блейза виновен именно он, а Стивена оклеветали напрасно.";
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "full_complete_end") link.l1.go = "Temptation_14";
 			else link.l1.go = "Temptation_4"; //патч 17/1
 		break;
 		
 		case "Temptation_4":
-			dialog.text = "Heh! But there was a shark's tooth with his initials - S.D. This thing belongs to Steven, everyone knows that...";
-			link.l1 = "It was planted. Jackman played with a high stake. He has gotten rid of Nathaniel Hawk and took his place in Maroon Town, then he murdered Sharp and made Shark responsible for the murder. I have enough proofs of his crimes. I have found them in Jacob's chest. There was the second part of the Sharp's map and the Hawk's shard.";
+			dialog.text = "Хех! Но на трупе Блейза был найден акулий зуб с инициалами С.Д. - известная штука, принадлежавшая Стивену...";
+			link.l1 = "Его подбросили. Джекман играл по-крупному. Он избавился от Натаниэля Хоука и занял его место в Марун-Тауне, одним ходом устранил и Шарпа, и Акулу. У меня есть неопровержимые доказательства этих злодеяний - в сундуке Якоба я обнаружил половинку карты, принадлежавшую Шарпу, и осколок с орнаментом Натаниэля Хоука.";
 			link.l1.go = "Temptation_5";
 		break;
 		
 		case "Temptation_5":
-			dialog.text = "Damn! So Steven is innocent? And why has Jacob done all of this?";
-			link.l1 = "He was counting to become the head of the Brotherhood and getting Isla Tesoro. He couldn't get yours and Svensson's support so he has decided to get rid of you both. You was the first in the list. Jan is a tough one so he was the second.";
+			dialog.text = "Черт возьми! Так Стивен невиновен? А зачем Якобу все это понадобилось?";
+			link.l1 = "Он рассчитывал встать во главе Берегового братства. И на кое-что еще, связанное с Исла Тесоро. Ну, а на тебя, как и на Свенсона, он рассчитывать не мог, поэтому решил убрать. Сначала тебя. Яна, как самого крепкого орешка, он оставил 'на потом'.";
 			link.l1.go = "Temptation_6";
 		break;
 		
 		case "Temptation_6":
-			dialog.text = "Where is this bastard?! I will torn him apart!";
+			dialog.text = "Где эта сволочь?! Я разорву его на куски!";
 			if (!CheckAttribute(pchar, "questTemp.Saga.DodsonDie")) // Акула жив
 			{
-				link.l1 = "Jackman and his brother are dead as well as the rest of hunters. I have personally dealt with them. The bastard won't harm anyone anymore. Marcus, would you vote for Steven Dodson? This is my personal ask.";
+				link.l1 = "Джекман мертв, как и его брат, и остальные охотники тоже. Я лично позаботился об этом. Больше этот мерзавец никому не угрожает. Маркус, ты отдашь свой голос на Совете за Стивена Додсона? Это моя личная просьба.";
 				link.l1.go = "Temptation_7";
 			}
 			else
 			{
-				link.l1 = "Jackman and his brother are dead as well as the rest of hunters. I have personally dealt with them. The bastard won't harm anyone anymore. Unfortunately Steven is dead...";
+				link.l1 = "Джекман мертв, как и его брат, как и остальные охотники тоже. Я лично позаботился об этом. Больше этот мерзавец никому не угрожает. Но, к сожалению, Стивен был убит...";
 				link.l1.go = "Temptation_10";
 			}
 		break;
 		
 		case "Temptation_7":
-			dialog.text = "Sure I'll vote! I was always considering the Shark the most worthy of all of us. And I've almost believed in his guilt. We all have! Here, take my shard.";
-			link.l1 = "Nice! Now you can breath freely.";
+			dialog.text = "Конечно отдам! Я всегда считал Акулу самым достойным из нас после Блейза... А ведь я почти поверил в его виновность! Все мы поверили! Вот, возьми мой осколок.";
+			link.l1 = "Вот и славно! Теперь ты можешь снять камень с души.";
 			link.l1.go = "Temptation_8";
 		break;
 		
 		case "Temptation_8":
 			GiveItem2Character(pchar, "splinter_mt"); // дать осколок
-			dialog.text = "True... I understand, that you represent the Shark's interests?";
-			link.l1 = "Yes. Me and Jan Svensson. Fine, Marcus, see you there!";
+			dialog.text = "Это точно...  Я так понимаю, ты представляешь интересы Акулы?";
+			link.l1 = "Да. Я и Ян Свенсон. Ладно, Маркус, до встречи!";
 			link.l1.go = "Temptation_9";
 		break;
 		
 		case "Temptation_10":
-			dialog.text = "Dead?! How? Jackman's work too?";
-			link.l1 = "No. His own boatswain did it, Chad Kapper was his name. He has already got what he deserves... Marcus, Svensson thinks that you are the worthiest to be the new president of the Brotherhood. The rest of barons will support this decision. Do you accept this?";
+			dialog.text = "Убит?! Как это случилось? Тоже Джекман постарался?";
+			link.l1 = "Нет. В смерти Акулы виновен его боцман, Чад Каппер. Но он свое уже получил... Маркус, Свенсон считает, что ты больше других достоин стать новым президентом Братства. Остальные бароны поддержат это решение. Согласен ли ты занять этот пост?";
 			link.l1.go = "Temptation_11";
 		break;
 		
 		case "Temptation_11":
-			dialog.text = "Heh! You don't need to ask me twice. It's a great honor to be the Head of the Brotherhood! Don't hope that I'll disagree.";
-			link.l1 = "Splendid. I am glad that you have accepted this.";
+			dialog.text = "Хех! Ты еще спрашиваешь? Быть главой Братства - большая честь! Даже не думай, что я откажусь.";
+			link.l1 = "Очень хорошо. Я рад, что ты согласился.";
 			link.l1.go = "Temptation_12";
 		break;
 		
 		case "Temptation_12":
 			GiveItem2Character(pchar, "splinter_mt"); // дать осколок
-			dialog.text = "Here, take my shard. Deliver it to Svensson. I take it that he is in charge?";
-			link.l1 = "Yes, he is. Fine, Marcus, see you there!";
+			dialog.text = "Вот, держи мой осколок. Передай его Свенсону. Как я понимаю, он всем этим занимается?";
+			link.l1 = "Да. Именно он. Ладно, Маркус, до встречи!";
 			link.l1.go = "Temptation_9";
 		break;
 		
 		case "Temptation_9":
-			dialog.text = "Yes, and I want to thank you for saving my friend Bernard. Here, take this purse with gold.";
-			link.l1 = "Thanks! Farewell!";
+			dialog.text = "Да, а за спасение моего друга Бернара я хочу тебя отблагодарить. Вот, возьми этот кошель с золотом.";
+			link.l1 = "Не откажусь! Всего доброго!";
 			link.l1.go = "Temptation_exit";
 		break;
 		
 		case "Temptation_exit":
 			DialogExit();
 			TakeNItems(pchar, "gold_dublon", 300);
-			Log_Info("You have received 300 doubloons");
+			Log_Info("Вы получили 300 дублонов");
 			PlaySound("interface\important_item.wav");
 			NextDiag.CurrentNode = "I_know_you_good";
 			AddQuestRecord("BarbTemptation", "25");
@@ -394,58 +394,58 @@ void ProcessDialogEvent()
 		
 		// Addon 2016-1 Jason пиратская линейка патч 17/1
 		case "Temptation_13":
-			dialog.text = "Yeah, he told me about a magnificent arrival of Charlie Prince at Turks... Saved my ass you say? How? Bernard told me something about a trap...";
-			link.l1 = "It was a trap. You was the target, Bernard was a bait...";
+			dialog.text = "Да, он мне рассказал про чудесное явление Чарли Принца на Терксе... Говоришь, отвел от меня беду? И как же, позволь поинтересоваться? Бернар что-то там говорил про ловушку...";
+			link.l1 = "Это и впрямь была западня. Охота была не на Бернара. Охотились за тобой. А Венсан был просто приманкой...";
 			link.l1.go = "Temptation_1";
 		break;
 		
 		case "Temptation_14":
-			dialog.text = "Ha-ha, working for the Forest Devil, huh Prince? What, did you make better coin with him that you did with me? Tell me in all honesty!";
-			link.l1 = "Marcus let's set aside the past for good. We have a common goal now and it's much more vital than plundering caravans.";
+			dialog.text = "Ха-ха-ха, ты переметнулся к Лесному Дьяволу, Принц? И как, с его помощью ты заработал больше дублонов и песо, нежели со мной? Ну, признайся честно!";
+			link.l1 = "Маркус, давай, наконец, оставим обиды в прошлом. Сейчас у нас общие цели, и они куда более важные, нежели грабежи караванов. На кону стоит судьба всего Берегового братства!";
 			link.l1.go = "Temptation_15";
 		break;
 		
 		case "Temptation_15":
-			dialog.text = "Fine Prince let's do that! You are a freelancer after all, working for the Forest Devil was a right thing to do... Steven then... You said they slandered him?";
-			link.l1 = "Yeah.";
+			dialog.text = "Ладно, Принц, заметано! В конце-концов, ты свободный корсар: решил работать с Лесным Дьяволом - твое дело, и выбор твой - достойный... Вернемся к Стивену. Ты сказал - его оклеветали, я не ослышался?";
+			link.l1 = "Все верно.";
 			link.l1.go = "Temptation_4";
 		break;
 		
 		// Тени прошлого
 		case "shadows":
-			dialog.text = "Sure, I'll help you as I can! Go on.";
-			link.l1 = "Take a look, Marcus... Here is a shark's tooth. What can you tell me about it?";
+			dialog.text = "Ну конечно, чем смогу - тем помогу! Выкладывай, что там у тебя?";
+			link.l1 = "Маркус, смотри... Вот акулий зуб. Что ты можешь о нем сказать?";
 			link.l1.go = "shadows_1";
 		break;
 		
 		case "shadows_1":
 			RemoveItems(pchar, "shark_teeth", 1);
-			dialog.text = "Ha! It is a tooth of white shark which was killed by late Steven Dodson hoping to make an impression on one girl. They have started to call him the Shark since then. A very few could do that under water using just a simple sword. But he was young and stupid and Beatrice Sharp was the most beautiful girl in all of Caribbean... How have you got it?";
-			link.l1 = "It was given to me by the ex-hangman of St. John's. This tooth was used to slay one man. His name was... Joshua Leadbeater.";
+			dialog.text = "Ха! Это зуб белой акулы, которую убил покойный Стивен Додсон, пытаясь понравиться одной красотке. С тех пор его и прозвали Акулой. Мало кому это удавалось сделать под водой при помощи простой сабли. Но он был молод и глуп, а Беатрисс Шарп была самой красивой девушкой на Карибах... Как он у тебя оказался?";
+			link.l1 = "Мне отдал его бывший палач Сент-Джонса. Этим зубом зарезали одного человека. Его звали... Джошуа Ледбиттер.";
 			link.l1.go = "shadows_2";
 		break;
 		
 		case "shadows_2":
-			dialog.text = "That is an old story. Steven did kill that man. He was shocked by the death of Beatrice and he thought that Leadbeater is the only living person responsible for her death. Though later he had found some papers on his corpse, studied them and repented his deed\nThe Mask wasn't to be blamed for Beatrice's death, he was only for Butcher. Butcher's jealous ex girlfriend Jessica had set up the whole thing.";
-			link.l1 = "Have you read those papers?";
+			dialog.text = "Это старая история. Того человека действительно убил Стивен. Он был потрясен смертью Беатрисс и полагал Ледбиттера единственным оставшимся в живых виновником ее смерти. Однако потом он нашел на его трупе какие-то бумаги, изучил их и раскаялся в содеянном\nМаска не был виноват в смерти Беатрисс - ему нужен был только капитан Бучер. На самом деле все подстроила ревнивая подруга Бучера, Джессика.";
+			link.l1 = "Ты читал эти бумаги?";
 			link.l1.go = "shadows_3";
 		break;
 		
 		case "shadows_3":
-			dialog.text = "Why should I? Of course not. I don't need them. But I can tell you the Mask was pursuing Butcher if you've got some spare time. Drunken Steven has been telling me this story for a few times.";
-			link.l1 = "I have got time. Trust me, my interest has got purpose. I can even pay you for it.";
+			dialog.text = "Что за глупости? Конечно, нет. Зачем они мне были нужны? Но если у тебя есть время, я поведаю тебе, почему Маска преследовал Бучера. Стивен, подвыпив, неоднократно рассказывал мне эту историю.";
+			link.l1 = "Время есть. Пойми мой интерес правильно - это не праздное любопытство. Я даже готов записать твой рассказ.";
 			link.l1.go = "shadows_4";
 		break;
 		
 		case "shadows_4":
-			dialog.text = "I know, that you never waste your time. Listen then. Joshua Leadbeater was the English naval captain and the famous 'Neptune' was under his command...";
+			dialog.text = "Я знаю, ты напрасно время терять не станешь. Тогда слушай. Джошуа Ледбиттер был английским военным капитаном, и командовал ставшим впоследствии легендарным фрегатом 'Нептун'...";
 			link.l1 = "...";
 			link.l1.go = "shadows_5";
 		break;
 		
 		case "shadows_5":
 			DialogExit();
-			SetLaunchFrameFormParam("One hour later", "Saga_FinalLedbitterStory", 0, 4);
+			SetLaunchFrameFormParam("Прошел час...", "Saga_FinalLedbitterStory", 0, 4);
 			LaunchFrameForm();
 			WaitDate("", 0, 0, 0, 1, 10); //крутим время
 			RecalculateJumpTable();
@@ -453,74 +453,74 @@ void ProcessDialogEvent()
 		
 		case "shadows_6":
 			AddQuestRecordInfo("Mask", "1");
-			dialog.text = "... Leadbeater has made it though and was picked up by some ship. His wound has defaced him and since then he was wearing a mask. They called him the Mask. His life's meaning has become to revenge and to punish the culprit of all of his hardships.";
-			link.l1 = "I see... I have written all of it. I think that I must to re-read it. A sad story though. Have you seen Jessica?";
+			dialog.text = "... Ледбиттер же, однако, выжил, и был подобран проходящим судном. Ранение обезобразило его, и отныне он появлялся на людях только в маске на пол-лица - так за ним укрепилось прозвище 'Маска'. Найти и покарать виновника своих бед стало для него единственным смыслом жизни.";
+			link.l1 = "Так... Я все записал. Думаю, что мне потребуется перечитать написанное, чтобы сопоставить с тем, что у меня уже имеется. Действительно, грустная история. А ты видел эту Джессику?";
 			link.l1.go = "shadows_7";
 		break;
 		
 		case "shadows_7":
-			dialog.text = "Sure! She accompanied Butcher in all his voyages until he dumped her for Beatrice. Jess couldn't forgive him that. They called her the Butcher's talisman, because he always had luck while she was there with him\nBelieve it or not, but as soon as he got rid of her at Barbados, his business went bad, booty got poor and Neptune became an often guest at the shipyard of Isla Tesoro. Though it can be explained by the fact that Butcher had been spending most of his time with Beatrice in the cabin rather then at the quarterdeck\nBeatrice was not like Jessica, she wasn't addicted to adventures and war, although Nicolas taught her fencing and seamanship. Yes, she was fond of sea romance but she didn't have enough hardness of character. Butcher's Neptune wasn't the right place for her. In the end, it killed her.";
-			link.l1 = "And what about Jessica?";
+			dialog.text = "А как же! Она сопровождала Бучера во всех его походах, до тех пор, пока он не бросил ее, увлекшись Беатрисс. Этого Джесс ему не простила. Ее считали талисманом капитана Бучера, потому как пока она была с ним, удача от Бучера не отвернулась ни разу\nХочешь верь, хочешь нет - но как только он ее сплавил домой на Барбадос, его дела стали идти все хуже и хуже - добыча стала скудной, а 'Нептун' буквально прописался на верфи Исла Тесоро. Хотя, это можно объяснить и тем, что Бучер проводил больше времени в каюте с Беатрисс, нежели на шканцах\nВ отличие от Джессики, Беатрисс не имела выраженной склонности к авантюрам и боевым похождениям, хотя Николас обучил ее искусству кораблевождения и фехтованию. Конечно, романтика моря ее манила, но она не обладала достаточной жесткостью характера. У Бучера на 'Нептуне' сестра Шарпа была явно не на своем месте. Это в итоге ее и погубило.";
+			link.l1 = "А Джессика?";
 			link.l1.go = "shadows_8";
 		break;
 		
 		case "shadows_8":
-			dialog.text = "Oh, she was something Every sailor of Neptune obeyed her orders and not just because she was a captain's girlfriend. Jess had mastered fencing and seamanship, Butcher's efforts were not wasted. She was tough and reckless, and also was gifted with a good look\nA lot of men wanted to share a bed with her, but she wanted Butcher only, bothering her was really risky - many tested the results on their own backs literally, and for the most persistent her fencing lessons turned to be the last\nJess owned a very special sword, the only of it's kind in the Caribbean, I have no clue where did she get. Flame-bladed sword. One can't grab it's blade and even the slightest touch leaves a terrible wound\nJess was an adventurer not by birth, but by vocation. By the way, if you need to learn more about her, you can talk to an acquaintance of yours. He can tell you about her much more than I can.";
-			link.l1 = "Really? And who is this man?";
+			dialog.text = "О-о, это была штучка еще та... Ее слушались все матросы на 'Нептуне', и не потому, что она была подругой капитана. Джесс мастерски владела шпагой и прекрасно управлялась с кораблем - школа Бучера не прошла даром. Нрав у нее был крутой и решительный, да и внешностью Бог не обделил\nЖелающих разделить с ней постель было предостаточно, но она никого, кроме Бучера, и знать не хотела, а докучать ей было более, чем рискованно - многие познали это на своей шкуре в буквальном смысле, а для нескольких особо ретивых ее урок фехтования оказался последним в жизни\nУ Джесс была особенная шпага, единственная в своем роде на Карибах - уж не знаю, где она такую достала: шпага-фламберж. Ее нельзя схватить рукой за лезвие, а даже легкое прикосновение оставляет жуткую рану\nДжесс была авантюристкой не по рождению, а по призванию. Кстати, если тебе нужно подробнее узнать о Джессике, ты можешь спросить об этом у одного очень хорошо знакомого тебе человека. Он сможет рассказать о ней побольше, чем я.";
+			link.l1 = "Вот как? И кто же этот человек?";
 			link.l1.go = "shadows_9";
 		break;
 		
 		case "shadows_9":
-			dialog.text = "Jan Svensson. Forest Devil will never admit it, but he had plans about Jessica. That was the time when he had already taken Western Main for himself and his fame was something to envy for, so the tigress was as good as him\nAfter Butcher got rid of Jess, Jan started to visit Barbados suspiciously often giving a shake to English garrison. As you know, Jessica was a daughter of Bridgetown's planter\nAll in all, his plans were well known in private circles, yet no one dared to speak one's mind about it, Jan may sit on his backsides in Blueweld now days, but back then any wrong word in his address could result badly\nIn the end, it didn't work out for them. Jess couldn't live with the way Butcher treated her and she had her revenge a year later with a help of the Mask. This vengeance ended terrible for everyone: for Butcher, for Beatrice, for the Mask and for herself. They all died.";
-			link.l1 = "Nope. Butcher is alive.";
+			dialog.text = "Ян Свенсон. Лесной Дьявол, конечно, не признается в этом, но то, что он имел в свое время виды на Джессику - это факт. Он уже тогда прибрал к рукам Западный Мейн, и слава у него была - закачаешься, так что эта тигрица была вполне ему под стать\nКогда Бучер вышвырнул Джесс со своего корабля, Ян подозрительно часто стал появляться на Барбадосе, и так часто, что вызвал немалое беспокойство английского гарнизона. Как ты уже знаешь, Джессика - дочь бриджтаунского плантатора\nВ общем, его планы на нее были хорошо известны в узких кругах, однако высказываться по этому поводу никто бы не рискнул - это сейчас Ян в Блювельде сиднем сидит, а тогда любое неосторожное слово в его адрес могло закончиться плачевно\nНо в итоге у него с ней ничего так и не вышло. Джесс не смогла смириться с тем, как с ней обошелся Бучер, и спустя год, связавшись с Маской, таки отомстила ему. Эта месть обернулась трагедией для всех: и для Бучера, и для Беатрисс, и для Маски, и для нее самой. Погибли все.";
+			link.l1 = "Не все. Бучер жив.";
 			link.l1.go = "shadows_10";
 		break;
 		
 		case "shadows_10":
-			dialog.text = "What?! Have I heard you wrong? Is he?!";
-			link.l1 = "Yes. Captain Butcher wasn't hanged. He was actually but thanks to Jacob Jackman and Henry the Hangman, who have scared the hanger, he has made it alive. The hang was only a performance. I have got proofs.";
+			dialog.text = "Что?! Я не ослышался? Он жив?!";
+			link.l1 = "Да. Капитан Бучер не был казнен. Точнее, был, но благодаря Якобу Джекману и Генри Висельнику, которые запугали палача, остался жив. Казнь была инсценирована. У меня есть доказательства.";
 			link.l1.go = "shadows_11";
 		break;
 		
 		case "shadows_11":
-			dialog.text = "Incredible! And where is he now?";
-			link.l1 = "He is know as Lawrence Beltrop and he lives in Port-Royal. But it looks like that he hasn't changed and he is still that dangerous. Jackman who has made so many troubles inside the Brotherhood was following his orders.";
+			dialog.text = "Невероятно! И где же Мясник сейчас?";
+			link.l1 = "Он известен как Лоуренс Белтроп, и живет себе спокойно в Порт-Рояле. Однако, похоже, с годами он не стал менее опасен. Джекман, наделавший в последние месяцы столько бед внутри Берегового братства, действовал по его приказам.";
 			link.l1.go = "shadows_12";
 		break;
 		
 		case "shadows_12":
-			dialog.text = "Damn! Quartermaster has found his captain after all! After so many years... Beltrop you say... wait! Now I see why in Blaze's papers was that strange protocol of the interrogation... It seems that Blaze has found out something about Butcher-Beltrop...";
-			link.l1 = "What are talking about?";
+			dialog.text = "Черт побери! Квартирмейстер нашел своего капитана через столько лет! Белтроп, говоришь... постой-ка! Теперь понятно, почему в бумагах Блейза оказался этот странный протокол допроса... Видать, Блейз тоже разузнал о Бучере-Белтропе...";
+			link.l1 = "Ты это сейчас о чем?";
 			link.l1.go = "shadows_13";
 		break;
 		
 		case "shadows_13":
-			dialog.text = "When I have taken this residence I have afforded myself to take a look at Blaze's papers. I have found a protocol of interrogation of someone called Samuel Brooks. There was a lot of details about adventures of Thomas Beltrope, a famous pirate and a closest friend of Nicolas Sharp. It seems that he is a father of Butcher.";
-			link.l1 = "Interesting. Looks like Beltrop's and Sharp's kids has carried their fathers job...";
+			dialog.text = "Когда я занял эту резиденцию, я позволил себе дерзость покопаться в старых бумагах Блейза. Там я нашел протокол допроса некого Сэмюэля Брукса. Там достаточно подробно описаны похождения Томаса Белтропа - в прошлом известного пирата и близкого друга самого Николаса Шарпа. Очевидно, он и был отцом Бучера.";
+			link.l1 = "Очень интересно. Значит, дети Белтропа и Шарпа продолжили дело своих родителей...";
 			link.l1.go = "shadows_14";
 		break;
 		
 		case "shadows_14":
-			dialog.text = "It seems so... Tell me, friend, why are you so interested in the past of people who have been dead for a long time already? What's this all about?";
-			link.l1 = "I need papers which could prove that Ellen McArthur is a daughter of Beatrice Sharp and a granddaughter of Nicolas Sharp and has all rights to carry this surname. I don't care that her surname could be Beltrop.";
+			dialog.text = "Выходит, так... Скажи, дружище, а для чего ты вообще начал копаться в прошлом уже давно умерших людей? К чему весь этот сыр-бор?";
+			link.l1 = "Мне нужны бумаги, подтверждающие, что Элен Мак Артур – дочь Беатрисс Шарп, внучка Николаса Шарпа, и имеет право носить эту фамилию. То, что она может носить и фамилию Белтроп, в данном случае меня мало интересует.";
 			link.l1.go = "shadows_15";
 		break;
 		
 		case "shadows_15":
-			dialog.text = "I have found nothing about Ellen McArthur in the Blaze's archives. It is strange that Beatrice hasn't told Blaze about his niece birth. It's not her style.";
-			link.l1 = "Listen, maybe there is something more in Sharp's papers about this story? I need every detail I can get!";
+			dialog.text = "На счет Элен Мак Артур в архивах Блейза ничего не было. Все-таки странно, что Беатрисс ничего не сказала Блейзу о рождении племянницы. Это на нее не похоже.";
+			link.l1 = "Послушай, может, в бумагах Шарпа было что-то еще, относящееся к этой истории? Мне важна буквально каждая мелочь!";
 			link.l1.go = "shadows_16";
 		break;
 		
 		case "shadows_16":
-			dialog.text = "Hm… I guess. According to Blaze's notes, he had been trying to find the island where his sister died. There are papers concerning Leadbeater's punitive expedition. Nothing interesting, except for a few numbers of latitude\nThis parallel crosses Caribbean sea in it's Northern part. But there is no sign of longitude. Obviously, Blaze's searches failed, you can not even imaging how many small islands at that latitude.";
-			link.l1 = "And what's the latitude?";
+			dialog.text = "Хм... Возможно, да. Судя по записям Блейза, он пытался разыскать остров, где погибла его сестра. Есть бумаги, являющие собой копии архивных документов, в которых упоминалась карательная экспедиция Ледбиттера. Там все пустое, за исключением нескольких цифр, обозначающих географическую широту\nЭта параллель пересекает Карибское море в его северной части. Долготы нет. Очевидно, поиски Блейза успехом не увенчались - ты не представляешь, сколько на этой широте мелких островов.";
+			link.l1 = "И что это за широта?";
 			link.l1.go = "shadows_17";
 		break;
 		
 		case "shadows_17":
-			dialog.text = "Let's see... Here: 21 32' North. I don't know how it can help you.";
-			link.l1 = "It can. Thanks you, Marcus, for your confident story. See you!";
+			dialog.text = "Сейчас посмотрим... вот: 21 гр. 32' северной широты. Не знаю, чем тебе это поможет.";
+			link.l1 = "Поможет. Ладно, Маркус, огромное спасибо за откровенный рассказ. Еще увидимся!";
 			link.l1.go = "shadows_18";
 		break;
 		
@@ -548,20 +548,20 @@ void ProcessDialogEvent()
 		
 		// суп из черепахи
 		case "terrapin":
-			dialog.text = "Well, I can do something for you. As you know, Tortuga's security is not only provided by fort La Roche but also by a pirate squadron constantly guarding the shores of the island. The port of Tortuga is safe, these lads know their business and they have powerful ships. Levasseur has been buttering the captains for a long time\nThey are capable of fighting even against a line squadron and they will be serious opponents. So, being the keeper of the Code and also the leader of Brethren of the Coast I can make these watch dogs leave Tortuga's shores.";
-			link.l1 = "And that's it?";
+			dialog.text = "Ну, кое-что я могу для тебя сделать. Как известно, безопасность Тортуги обеспечивает не только форт Ля-Рош, но и постоянно дежурящая у берегов эскадра флибустьеров. Порт Тортуги под надежной охраной - эти ребята знают свое дело, да и корабли у них мощные. Левассер долго прикармливал этих капитанов\nОни способны противостоять даже линейной эскадре и будут серьезными противниками при лобовом штурме. Так вот, я, пользуясь своим положением хранителя Kодекса, а теперь - и главы Берегового братсва, сумею увести от берегов Тортуги этих сторожевых псов.";
+			link.l1 = "И это все?";
 			link.l1.go = "terrapin_1";
 		break;
 		
 		case "terrapin_1":
-			dialog.text = "Is that not enough? I can help you more anyway. You have to storm the fort but at least you don't need to fight those guard ships now. Trust me, there are far too more dangerous than the Fort so my help will make it all easier.";
-			link.l1 = "Well if I have to attack it anyway, the leaving of pirate's squadron will really help. Thanks, Marcus! When can I attack Tortuga?";
+			dialog.text = "А разве мало? В любом случае, большего я сделать не могу. Так что штурма форта тебе не избежать, но хоть со сторожевиками не придется схлестываться. Уверяю тебя - они еще опаснее форта, так что моя помощь придется тебе очень кстати.";
+			link.l1 = "Ну что же, раз мне так или иначе предстоит прямая атака - то уход эскадры пиратов будет очень на руку. Спасибо, Маркус! Когда я могу штурмовать Тортугу?";
 			link.l1.go = "terrapin_2";
 		break;
 		
 		case "terrapin_2":
-			dialog.text = "Whenever you want. The guard ships will leave on my signal.";
-			link.l1 = "Fine. I have to go then to prepare myself.";
+			dialog.text = "Да когда хочешь. Корабли охранения уйдут по первому моему сигналу.";
+			link.l1 = "Ясно. Тогда пойду готовиться к сражению!";
 			link.l1.go = "terrapin_3";
 		break;
 		
@@ -576,13 +576,13 @@ void ProcessDialogEvent()
 		break;
 		
 		case "pirate_town":
-            dialog.text = "Solve the problem? Do you have any clue what you have done? Anyway, bring me a million pesos and I will persuade lads to forget your deed. If don't like the idea then you may go to hell.";
+            dialog.text = "Решить проблему? Да ты сам понимаешь, чего ты наворотил? В общем, принесешь мне миллион песо - я уговорю ребят, чтобы они забыли твои 'подвиги'. Нет - можешь катиться на все четыре стороны.";
 			if (sti(Pchar.money) >= 1000000)
 			{
-				link.l1 = "Fine, I am ready to pay.";
+				link.l1 = "Хорошо, я готов заплатить.";
 				link.l1.go = "pirate_town_pay";
 			}
-			link.l2 = "Farewell...";
+			link.l2 = "Я все понял. Ухожу.";
 			link.l2.go = "pirate_town_exit";
 		break;
 		
@@ -595,8 +595,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "pirate_town_pay":
-            dialog.text = "Good! Consider yourself clean again. But I hope that you will not do such disgusting things again.";
-			link.l1 = "I won't. Way too expensive for me. Farewell...";
+            dialog.text = "Вот и славно! Считай, что свою репутацию ты восстановил. Но впредь, я надеюсь, ты больше не будешь делать таких мерзостей.";
+			link.l1 = "Не буду. Уж очень дорого они обходятся. Прощай...";
 			link.l1.go = "exit";
 			AddMoneyToCharacter(pchar, -1000000);
 			pchar.GenQuest.Piratekill = 0;
@@ -606,15 +606,15 @@ void ProcessDialogEvent()
 		case "Mtraxx":
 			if (pchar.Ship.Type == SHIP_NOTUSED)
 			{
-				dialog.text = "First get a ship for yourself, then ask for a job. A land rubber has nothing to do here. Get lost!";
-				link.l1 = "K-hm... I see.";
+				dialog.text = "Сначала кораблем обзаведись, потом о работе спрашивай. Сухопутной крысе у меня делать нечего. Проваливай!";
+				link.l1 = "Кхм... Понятно.";
 				link.l1.go = "exit";
 				break;
 			}
-            dialog.text = "Want some action, huh? Ha! Good... Though I warn you, pal, you won't find any peace with me. If you are afraid of a smell of gunpowder or you can't spill blood - the door is behind you. I can't stand sissies. Also you won't last long enough with me if you are a snitch or a rat who fancy stealing a partner's share of plunder. So what? Are you in?";
-			link.l1 = "I am in, Marcus. No dog can blame me of being either a coward or a rat.";
+            dialog.text = "Ручки чешутся? Ха-ха! Хорошо... Но предупреждаю тебя, приятель, что спокойной жизни со мной не будет. Если не готов нюхать порох и пускать ручейки красного цвета - лучше проваливай сразу, я на дух не переношу чистоплюев. И также если ты из парней крысиной породы, что любят играть втихую за спиной других и прикарманивать чужую долю - то тебе со мной не по пути, ибо долго ты не проживешь. Ну так что?";
+			link.l1 = "Я готов с тобой работать, Маркус. Звон сабель и пушечные выстрелы меня не страшат, а в отсутствии порядочности ни одна собака упрекнуть не может.";
 			link.l1.go = "Mtraxx_1";
-			link.l2 = "Whoa, that's a tough interview! Beg pardon, Marcus, but I better take my leave...";
+			link.l2 = "Ого, какой суровый прием! Извини, Маркус, пожалуй, пойду я отсюда...";
 			link.l2.go = "Mtraxx_exit";
 		break;
 		
@@ -624,38 +624,38 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_wait":
-            dialog.text = "What, are you still here?";
+            dialog.text = "Я что-то не понял: ты еще здесь?";
 			link.l1 = "...";
 			link.l1.go = "exit";
 		break;
 		
 		case "Mtraxx_1":
-            dialog.text = "Ha-ha, well-well, my brave little pirate, let's talk business then. My source in Santo Domingo informed me about some Spanish captain who is so rich with blue amber that he is gifting whores with it. Have you heard about blue amber?";
-			link.l1 = "I have. A rare and valuable stone.";
+            dialog.text = "Ха-ха, ну что же, бравый пират, тогда к делу. Мой источник в Санто-Доминго сообщил мне, что некий испанский капитан хорошо разжился голубым янтарем, да так хорошо, что по пьяни дарит его портовым шлюхам. Ты знаешь, что это такое - голубой янтарь?";
+			link.l1 = "Слыхал. Редкий и дорогой камешек.";
 			link.l1.go = "mtraxx_2";
 		break;
 		
 		case "mtraxx_2":
-            dialog.text = "Precisely. Even here, bankers and jewelers are paying a good coin for it and in old good Europe you can get ten times more. Amber is not a rare stone in the Caribbean but the blue one is a rarity. And now we have some Castilian sly dog bragging about having tons of it.";
-			link.l1 = "Can the stories of some drunk Spanish be trusted?";
+            dialog.text = "В точку, приятель. Даже здесь за него ювелиры да ростовщики отваливают немалые деньги, а в старушке Европе можно выручить в десять раз больше. Янтарь не редкость на Карибах, но вот именно голубой крайне трудно найти. И тут какой-то кастильский проходимец бахвалится, что у него скоро голубого янтаря будет больше, чем желтого у всех ростовщиков Кубы и Эспаньолы, вместе взятых.";
+			link.l1 = "Стоит ли верить пьяным россказням испанских краснобаев? Нашел три дублона - а заявил, что отыскал сокровищницу Али Бабы...";
 			link.l1.go = "mtraxx_3";
 		break;
 		
 		case "mtraxx_3":
-            dialog.text = "I wouldn't had bought that but he was actually gifting whores with blue amber. Something in his bragging must be trustworthy. Go to Santo Domingo and investigate. If you find the blue amber deposit that would be even better. Do this and I can guarantee you a reward and respect in La Vega.";
-			link.l1 = "What if your information is worthless?";
+            dialog.text = "Я бы не верил, если бы он не раздаривал янтарь потаскухам. Так что, как минимум, зерно правды в этой информации есть, а то и целая мерка зерен. Вот ты и займешься этим делом. Отправляйся в Санто-Доминго и распутай историю с этим янтарным идальго, а еще лучше найди его хваленую россыпь. Будет достойный результат - будет тебе награда, почет и уважение в Ла Веге.";
+			link.l1 = "А если вся эта информация окажется не стоящей и гроша?";
 			link.l1.go = "mtraxx_4";
 		break;
 		
 		case "mtraxx_4":
-            dialog.text = "Then prove to me that the Spanish is a liar.";
-			link.l1 = "Very well. Who is you source in Santo Domingo?";
+            dialog.text = "Тогда принеси мне доказательства того, что этот испанец - лгун и хвастун.";
+			link.l1 = "Хорошо. От кого в Санто-Доминго получена эта информация?";
 			link.l1.go = "mtraxx_5";
 		break;
 		
 		case "mtraxx_5":
-            dialog.text = "You need to find a whore called Gabriela Chapada. Mention my name a tell her a password - 'An amber necklace'. She will give you the details. Make haste, you have only a few days.";
-			link.l1 = "Got it, Marcus. Heading to Santo-Domingo.";
+            dialog.text = "Тебе нужна бордельная девка по имени Габриэла Чападо. Назовешь мое имя и пароль - 'янтарное ожерелье'. Она сообщит подробности. И не теряй времени - информация пока свежая, а вот через день-другой-третий может и устареть.";
+			link.l1 = "Все понял, Маркус. Выдвигаюсь в Санто-Доминго.";
 			link.l1.go = "mtraxx_6";
 		break;
 		
@@ -670,8 +670,8 @@ void ProcessDialogEvent()
 		
 		case "mtraxx_7":
 			i = GetCharacterItem(pchar, "jewelry7");
-            dialog.text = "I was already informed about your arrival. Give me a report!";
-			link.l1 = "I've dealt with that blue amber lover although it wasn't easy. I have managed to find his deposits and plunder them. I have brought you "+FindRussianQtyString(i)+" pieces of blue amber.";
+            dialog.text = "Мне уже рассказали о твоем прибытии. Докладывай!";
+			link.l1 = "Разобрался я с этим любителем голубого янтаря, хоть это было и непросто. Удалось разыскать его 'прииск' и неплохо поживиться. Вот добыча: "+FindRussianQtyString(i)+" голубого янтаря.";
 			link.l1.go = "mtraxx_8";
 		break;
 		
@@ -679,10 +679,10 @@ void ProcessDialogEvent()
 			if (sti(pchar.questTemp.Mtraxx.JewQty) > GetCharacterItem(pchar, "jewelry7"))
 			{
 				PlaySound("interface\important_item.wav");
-				Log_Info("You have given "+FindRussianQtyString(GetCharacterItem(pchar, "jewelry7"))+" pieces of blue amber");
+				Log_Info("Вы отдали "+FindRussianQtyString(GetCharacterItem(pchar, "jewelry7"))+" голубого янтаря");
 				RemoveItems(pchar, "jewelry7", GetCharacterItem(pchar, "jewelry7"));
-				dialog.text = "Well-well... Son, you remember my warning about dangers of being a rat? What did you say to me then? No dog can blame you for that? You think I am stupid, kid? I am perfectly aware that you have plundered "+FindRussianQtyString(sti(pchar.questTemp.Mtraxx.JewQty))+" pieces of blue amber at Mosquitoes Coast. Now run, little rat, run, and pray we never meet again!";
-				link.l1 = "Damn it!..";
+				dialog.text = "Так-так... Сынок, я же тебя предупреждал насчет крысятничества, ты помнишь? Что ты мне сказал в ответ? В отсутствии порядочности ни одна собака тебя упрекнуть не может? Ты что, малыш, думаешь, я ничего не проверяю? Да я прекрасно знаю о том, что ты добыл у берега Москитов "+FindRussianQtyString(sti(pchar.questTemp.Mtraxx.JewQty))+" голубого янтаря. Теперь беги, крысеныш, беги со всех ног, и лучше не попадайся мне!";
+				link.l1 = "Проклятье!..";
 				link.l1.go = "AngryExitAgainWithOut";
 				pchar.questTemp.Mtraxx = "fail";
 				npchar.Dialog.currentnode = "First time";
@@ -691,10 +691,10 @@ void ProcessDialogEvent()
 			else
 			{
 				PlaySound("interface\important_item.wav");
-				Log_Info("You have given "+FindRussianQtyString(GetCharacterItem(pchar, "jewelry7"))+" pieces of blue amber");
+				Log_Info("Вы отдали "+FindRussianQtyString(sti(pchar.questTemp.Mtraxx.JewQty))+" голубого янтаря");
 				RemoveItems(pchar, "jewelry7", sti(pchar.questTemp.Mtraxx.JewQty));
-				dialog.text = "Nicely done, pal! Your results do you credits. I am glad I wasn't wrong about you.";
-				link.l1 = "What about my cut, Marcus?";
+				dialog.text = "Отличная работа, приятель! Ты показал себя с лучшей стороны: распутал сложное дело и честно принес все награбленное. Молодец! Рад, что не ошибся в тебе.";
+				link.l1 = "Что насчет моей доли, Маркус?";
 				link.l1.go = "mtraxx_9";
 			}
 		break;
@@ -702,10 +702,10 @@ void ProcessDialogEvent()
 		case "mtraxx_9":
 			i = sti(pchar.questTemp.Mtraxx.JewQty)/2;
 			PlaySound("interface\important_item.wav");
-			Log_Info("You have received "+FindRussianQtyString(i)+" pieces of blue amber");
+			Log_Info("Вы получили "+FindRussianQtyString(i)+" голубого янтаря");
 			TakeNItems(pchar, "jewelry7", i);
-            dialog.text = "Spoken by a true pirate, ha-ha! Half of plunder is yours. Take it.";
-			link.l1 = "Thanks, captain. Got anything else to assign to me and my brave men?";
+            dialog.text = "Да ты настоящий пират, ха-ха-ха! Половина добычи твоя. Забирай.";
+			link.l1 = "Спасибо, кэп. Есть еще работенка для меня и моих бравых корсаров?";
 			link.l1.go = "mtraxx_10";
 			DeleteAttribute(pchar, "questTemp.Mtraxx.JewQty");
 			CloseQuestHeader("Roger_1");
@@ -713,8 +713,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_10":
-            dialog.text = "I always have tasks for capable lads. There is a delicate business I want you to deal with. There is a ship stationed in Capsterville, called the Snake under command of Geffrey Brooke also known as Bald Geffrey. He works for me. An excellent fighter, knows everything about guns and blades yet a complete idiot in every other aspect of life. But let's not be rough with Baldy - you can't be good at everything, ha-ha!\nSo. This tough guy had hit hard a Dutch convoy and captured a bark filled with sacks of wheat. Thing is, he managed to find hidden ship silk among the sacks. A great deal of ship silk. This merchandise is extremely valuable and rare, the Dutch bring it from Europe for the needs of their military only. This silk is used for very special sails which increase ship's speed and ability to sail by the wind\nIt is almost impossible to buy, selling it is not a problem yet it is hard to find the right price. I am aware that there are people who are ready to pay a great deal in doubloons for this silk and your goal is to find such people\nWhat? Any fool can plunder caravans but trade is only for people with at least a sign of brains' existence in a skull. I am planning to sell ship silk on a monthly basis so your goal is to find a regular buyer who will pay at least twenty golden doubloons for a roll. You have two months to do that, I can not keep Bald Geffrey in Capsterville forever\nThat'll be all. Set sail to Capsterville and talk to Geffrey before he sells the cargo to smugglers for a penny. I've already told you that he is a bit simple.";
-			link.l1 = "Hm... Got it. Already on my way.";
+            dialog.text = "Для толковых ребят у меня всегда есть работа. И как раз такому сообразительному парню, как ты, я хочу поручить одно щепетильное дело. В порту Капстервиля уже должен был отдать якорь галеон 'Снэйк' под командованием капитана по имени Джеффри Брук, он же Лысый Джеффри. Это мой человек. Отважный рубака, но в части, что не касается пушек и сабель, тупой, как банник. Впрочем, не будем столь строги к Лысому - нельзя же быть докой во всем, ха-ха!\nТак вот. Этот суровый парень потрепал севернее Синт-Маартена голландский конвой и отбил барк, в котором среди мешков с пшеницей был укрыт солидный груз корабельного шелка. Это чрезвычайно редкий и дорогой товар на Карибах, голландцы привозят его из Европы ограниченными партиями для нужд своего военного флота. Собственно, на него-то и охотился Лысый Джеффри по моему указанию. Если ты не в курсе, из этого шелка производят специальные паруса, способные недурственно улучшать ходовые качества судов, поэтому-то на него такой спрос\nКупить его нигде нельзя, а вот продать - можно, да только цена меня не устраивает. Пройдохи-торгаши безбожно занижают его реальную стоимость. Также мне хорошо известно, что есть на Карибах люди, готовые платить за этот товар огромные деньги, причем полновесными золотыми дублонами, однако я до сих пор не удосужился отыскать их. Вот эту задачу я и хочу поручить тебе\nЧто ты так на меня уставился? Грабить караваны любой дурак может, а вот выгодно продать награбленное дано не каждому. Никогда не задумывался, почему работники ножа и топора вечно без гроша в кармане, а скупщики краденого как сыр в масле катаются, а? Если нет, то подумай хорошенько... Впрочем, хватит разглагольствований. Отправляйся в Капстервиль, найди Лысого Джеффри и передай ему, что я приказываю стоять и ждать до тех пор, пока ты не разыщешь покупателя на шелк. Пусть отправляется в бухту и делает своему корыту кренгование и ремонтирует его\nТы же делай порученное тебе. Ищи покупателя, причем не разового, а с прицелом на будущее - я планирую добывать партии шелка ежемесячно. И с ценой не прогадай - меньше чем за два десятка дублонов за рулон не торгуйся. Время на поиски у тебя есть, но не бесконечное: держать на суше команду Лысого дольше двух месяцев вряд ли удасться. Все, бери курс на Сент-Кристофер, да побыстрее, а то не ровен час, Лысый сам продаст шелк контрабандистам, чем меня очень огорчит.";
+			link.l1 = "Кхм... Задачу понял, отправляюсь в путь...";
 			link.l1.go = "mtraxx_11";
 		break;
 		
@@ -727,27 +727,27 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_12":
-            dialog.text = "Ha! "+GetFullName(pchar)+", a brave captain! What about the buyer?";
+            dialog.text = "Ха, а вот и "+GetFullName(pchar)+" собственной персоной! Докладывай - что с покупателем?";
 			if (CheckAttribute(pchar, "questTemp.Mtraxx.SilkLate"))
 			{
-				link.l1 = "I've found you a buyer. That's a shipbuilder of Port Royal. He needs ship silk for his production and he will be buying batches of one hundred rolls every month with a price of 25 doubloons for a roll. His men will be receiving the goods from 10th to 15th, at night, Negril Cape. The password - 'A merchant of Lyons'. It took me more than two months to find such buyer, Geffrey must had already sold the silk to smugglers. I am sorry, Marcus.";
+				link.l1 = "Нашел я покупателя. Это корабел с верфи Порт-Ройяля. Он занимается улучшением ходовых характеристик кораблей и готов покупать его ежемесячно партиями по сто рулонов по цене 25 дублонов за рулон. Товар будут принимать его люди с 10 по 15 число, ночью, на мысе Негрил. Пароль - 'Лионский купец'. Но поиски продлились дольше, чем я предполагал - я не уложлся в отведенные два месяца, и Лысый Джеффри уже наверняка продал шелк контрабандистам. Уж не взыщи за это строго, Маркус.";
 				link.l1.go = "mtraxx_15";
 			}
 			else
 			{
-				link.l1 = "I've found you a buyer. That's a shipbuilder of Port Royal. He needs ship silk for his production and he will be buying batches of one hundred rolls every month with a price of 25 doubloons for a roll. His men will be receiving the goods from 10th to 15th, at night, Negril Cape. The password - 'A merchant of Lyons'. Bald Geffrey already has the first batch delivered to Jamaica.";
+				link.l1 = "Нашел я покупателя. Это корабел с верфи Порт-Ройяля. Он занимается улучшением ходовых характеристик кораблей и готов покупать его ежемесячно партиями по сто рулонов по цене 25 дублонов за рулон. Товар будут принимать его люди с 10 по 15 число, ночью, на мысе Негрил. Пароль - 'Лионский купец'. Лысый Джеффри уже повез первую партию на Ямайку.";
 				link.l1.go = "mtraxx_13";
 			}
 		break;
 		
 		case "mtraxx_13":
-            dialog.text = "That's great, my friend! Nicely done. It is hard to find a man capable of using both hands and a head. See me in 20 days to collect you reward."; // правки прогона 3
-			link.l1 = "Very well, Marcus. See you soon. Hope you shall have another job for by then.";
+            dialog.text = "Отлично сработано, дружище! Ты меня порадовал. Не так просто найти среди пиратов человека, умеющего работать и головой, а не только руками. Зайди ко мне через двадцать дней - Лысый должен будет привезти деньги за товар, и ты получишь свою долю."; // правки прогона 3
+			link.l1 = "Хорошо, Маркус. Скоро увидимся. И подготовь мне еще какое-нибудь дельце...";
 			link.l1.go = "mtraxx_14";
 		break;
 		
 		case "mtraxx_14":
-            dialog.text = "I will. See you later.";
+            dialog.text = "Дело для тебя будет. Все, до встречи.";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "I_know_you_good";
@@ -767,37 +767,37 @@ void ProcessDialogEvent()
 		
 		case "mtraxx_15":
 			pchar.quest.Mtraxx_SilkTimeLateAll.over = "yes";
-            dialog.text = "Pity, but it is still a huge success. You did a good job and you shall have your reward although absent your cut from Geffrey's batch. See me in a month after I sell the first batch to your buyer, then we shall talk.";
-			link.l1 = "Very well, Marcus. See you soon. Hope you shall have another job for by then.";
+            dialog.text = "Жаль шелка, конечно, но победителей не судят. Ты проделал хорошую работу, ну а что до шелка Лысого Джеффри, так ты просто не получишь свою долю от этой сделки, которая тебе причиталась. Но награда все равно будет - зайди ко мне через месяц, я уже сдам первую партию товара твоему покупателю, тогда и поговорим.";
+			link.l1 = "Хорошо, Маркус. Скоро увидимся. И подготовь мне еще какое-нибудь дельце...";
 			link.l1.go = "mtraxx_14";
 		break;
 		
 		case "mtraxx_16":
 			pchar.quest.Mtraxx_SilkPayLate.over = "yes";
-            dialog.text = "There you are, "+pchar.name+". Let's talk your reward.";
-			link.l1 = "I like where this is going, ha-ha! I am all ears.";
+            dialog.text = "Вот и ты, "+pchar.name+". Поговорим о твоей награде.";
+			link.l1 = "Такие беседы мне по душе, ха-ха! Внимательно тебя слушаю.";
 			if (CheckAttribute(pchar, "questTemp.Mtraxx.SilkLate")) link.l1.go = "mtraxx_19";
 			else link.l1.go = "mtraxx_17";
 		break;
 		
 		case "mtraxx_17":
-            dialog.text = "Bald Geffrey has sold to your buyer the first batch of 105 rolls of ship silk. Since I was expecting to sell it for twenty doubloons for a roll, I think it would be fair to give you the difference. That's my decision. Your share is 525 doubloons plus a bonus - a doubloon for a roll. It is 630 doubloons in total. Here, take them.";
-			link.l1 = "Gratitude, Marcus!";
+            dialog.text = "Лысый Джеффри продал твоему покупателю первую партию - 105 рулонов шелка. Поскольку я рассчитывал на 20 дублонов за рулон, было бы справедливо разницу с цены за первую партию отдать тебе. Так я и решил. Твоя доля составляет 525 дублонов. Также я думаю, что ты заслужил премиальные - еще по 1 дублону с рулона. Всего ты получаешь 630 дублонов. Держи.";
+			link.l1 = "Благодарствую, Маркус!";
 			link.l1.go = "mtraxx_18";
 		break;
 		
 		case "mtraxx_18":
 			TakeNItems(pchar, "gold_dublon", 630);
-			Log_Info("You have received 630 doubloons");
+			Log_Info("Вы получили 630 дублонов");
 			PlaySound("interface\important_item.wav");
-            dialog.text = "One more thing. You can get an extra profit of this.";
-			link.l1 = "Interesting... Go on.";
+            dialog.text = "Это еще не все. Ты можешь получить дополнительную награду с этого дела.";
+			link.l1 = "Интересно... продолжай.";
 			link.l1.go = "mtraxx_19";
 		break;
 		
 		case "mtraxx_19":
-            dialog.text = "Your buyer wants more than 100 rolls of silk to be delivered for the next two months. If you'll have any then bring from 20 to 100 rolls for a price of 24 doubloons. The offer will stand for two months.";
-			link.l1 = "Fine! I will bring more if I have any.";
+            dialog.text = "Твой покупатель хочет в ближайшее время взять немного больше, чем по 100 рулонов в месяц, посему если у тебя есть или будет лишний шелк, можешь привезти его мне. Количество - от 20 до 100 рулонов, срок - в течение двух месяцев, оплата - 24 дублона за рулон.";
+			link.l1 = "Хорошо! Если будет, что продать - привезу.";
 			link.l1.go = "mtraxx_20";
 			pchar.questTemp.Mtraxx.SilkTrade = "true";
 			SetFunctionTimerCondition("Mtraxx_SilkTradeOver", 0, 0, 60, false);
@@ -806,7 +806,7 @@ void ProcessDialogEvent()
 		// торговля шелком
 		case "mtraxx_silktrade":
 			iTotalTemp = GetSquadronGoods(pchar, GOOD_SHIPSILK);
-            dialog.text = "How much do you have?";
+            dialog.text = "Сколько у тебя товара?";
 			link.l1 = ""+FindRussianQtyString(iTotalTemp)+".";
 			if (iTotalTemp > 100) link.l1.go = "mtraxx_silktrade_2";
 			else link.l1.go = "mtraxx_silktrade_1";
@@ -815,16 +815,16 @@ void ProcessDialogEvent()
 		case "mtraxx_silktrade_1":
 			RemoveCharacterGoods(pchar, GOOD_SHIPSILK, iTotalTemp);
 			TakeNItems(pchar, "gold_dublon", iTotalTemp*24);
-            dialog.text = "ЋVery good. Take the gold - 24 doubloons for a roll as we agreed on.";
-			link.l1 = "Gratitude!";
+            dialog.text = "Очень хорошо. Держи золото, как договаривались - по 24 дублона за рулон.";
+			link.l1 = "Благодарствую!";
 			link.l1.go = "mtraxx_silktrade_3";
 		break;
 		
 		case "mtraxx_silktrade_2":
 			RemoveCharacterGoods(pchar, GOOD_SHIPSILK, 100);
 			TakeNItems(pchar, "gold_dublon", 2400);
-            dialog.text = "I'll tale a hundred roll. Take the gold - 24 doubloons for a roll as we agreed on.";
-			link.l1 = "Gratitude!";
+            dialog.text = "Я беру 100 рулонов. Держи золото, как договаривались - по 24 дублона за рулон.";
+			link.l1 = "Благодарствую!";
 			link.l1.go = "mtraxx_silktrade_3";
 		break;
 		
@@ -835,14 +835,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_20":
-            dialog.text = "Let's talk something more urgent, shall we?";
-			link.l1 = "Sure! Me and my men are ready to set sail immediately.";
+            dialog.text = "Вот и славно. Ну, а теперь перейдем к делам насущным. Рвешься в бой?";
+			link.l1 = "А как же! Я и мои ребята готовы к немедленному выходу в море.";
 			link.l1.go = "mtraxx_24";
 		break;
 		
 		case "mtraxx_22":
-            dialog.text = "For fucks sake, "+pchar.name+", where the hell have you been? Remember when I told you to come see me? I had a job for you and now it's wasted thanks to your excellent sense of time. You've made me really upset, pal. Get lost, I don't work with people who I can not rely on.";
-			link.l1 = "Well, shit...";
+            dialog.text = "Разрази тебя гром, "+pchar.name+", где ты шлялся столько времени? Я когда велел тебе явиться ко мне? Дело, которое я подготовил для тебя, сорвалось из-за твоей непунктуальности. Ты меня очень огорчил, приятель. Проваливай, я не хочу связываться с людьми, на которых нельзя положиться.";
+			link.l1 = "Вот это номер...";
 			link.l1.go = "mtraxx_23";
 		break;
 		
@@ -855,17 +855,17 @@ void ProcessDialogEvent()
 		
 		case "mtraxx_24":
 			if (CheckCharacterItem(pchar, "HolTradeLicence") && GetDaysContinueNationLicence(HOLLAND) >= 40) sTemp = ".";
-			else sTemp = " and also a trading license for 40 days";
-            dialog.text = "Then pay attention. Two months ago I had an appointment with a captain by the name of Jean Picard. He didn't show up to the meeting and since I was going to discuss serious matters with him, I did some investigation regarding his whereabouts. Turned out our good brave privateer and his brigantine had managed to engage into a fight with a Spanish heavy galleon under command of don Eduardo de Losad and he is a tough son of a bitch. As a result, Jean and what's left of his crew was taken to Maracaibo and sold to a plantation. This is where he is, busy with honest labor, at the moment\nYour goal is get him out of there alive and also to investigate the details of his misfortunes. I need details of this story. I am assigning a captain of the Moray barquentine to assist you this. Name's Paul Chant also known as Pelly the Cutlass. Remember Geffrey? He is almost as dumb as him, hell of fighter too though\nHe will be waiting for you at Barbados. Get him and his Moray to Maracaibo and do the job. Cutlass will follow your orders without asking stupid questions. Actually, he won't be asking questions at all. Here is ten thousand pesos for future expenses"+sTemp+". Got anything to ask?";
-			link.l1 = "Nope. Everything's clear. Heading to Barbados.";
+			else sTemp = ", а также торговую лицензию сроком на 40 дней.";
+            dialog.text = "Тогда слушай внимательно. Два месяца назад ко мне должен был явиться капитан Жан Пикар, известный у нас как Жан Красавчик. Был должен, но не явился. Поскольку связанный с ним вопрос для меня весьма важен, я выяснил, по какой причине это произошло. Так вот, наш бравый капер умудрился на своей бригантине налететь на испанский тяжелый галеон под командованием дона Эдуардо де Лосада, а с этим кастильцем шутки плохи. В итоге Красавчик с остатками команды был отвезен в Маракайбо и продан в рабство на местную плантацию. Там он сейчас и гнет спину\nТвоя задача: прояснить подробности истории, в результате которой Пикар угодил испанцам прямиком в лапы - раз, вытащить его с испанской плантации в живом виде и доставить ко мне - два. В помощь тебе выделяю Пола Чанта, он же Тесак Пелли, вместе с его баркентиной 'Мурена' и всем экипажем. Тесак будет ждать тебя у мыса Раггед-Пойнт, что на Барбадосе. Умом он ушел недалеко от Лысого Джеффри, но зато весьма сноровист в вопросах сабель и мушкетов. Он будет делать все, что ты ему прикажешь, не задавая вопросов\nЗаберешь Пелли с его 'Муреной' с Барбадоса и выдвинешься в Маракайбо, а дальше - по обстоятельствам, учить тебя не надо. Держи десять тысяч песо на дорожные расходы и прочие издержки"+sTemp+". Вопросы есть?";
+			link.l1 = "Вопросов нет. Отправляюсь на Барбадос.";
 			link.l1.go = "mtraxx_25";
 		break;
 		
 		case "mtraxx_25":
 			AddMoneyToCharacter(pchar, 10000);
 			if (!CheckCharacterItem(pchar, "HolTradeLicence") || GetDaysContinueNationLicence(HOLLAND) < 40) GiveNationLicence(HOLLAND, 40);
-            dialog.text = "I wish you luck then. Be swift, don't make Cutlass and poor Jean waiting.";
-			link.l1 = "Sure thing, boss! On my way.";
+            dialog.text = "Тогда желаю удачи. И не теряй времени, не заставляй Тесака и беднягу Жана ждать.";
+			link.l1 = "Конечно, босс! Выхожу в море немедленно.";
 			link.l1.go = "mtraxx_26";
 		break;
 		
@@ -879,20 +879,20 @@ void ProcessDialogEvent()
 		
 		case "mtraxx_27":
 			pchar.quest.Mtraxx_PlantGoHomeOver.over = "yes"; 
-            dialog.text = "Welcome back, my brave corsair, ha-ha! Did you take down a Spanish squadron? Picard has already told me. Nicely done!";
-			link.l1 = "Yeah, my boys kicked them hard when we were leaving from Maracaibo.";
+            dialog.text = "С прибытием, бравый корсар, ха-ха! Расправился с эскадрой кастильцев? Пикар уже обо всем рассказал. Отличная работа!";
+			link.l1 = "Да, мои ребята утерли нос испанцам на выходе из Маракайбо.";
 			link.l1.go = "mtraxx_28";
 		break;
 		
 		case "mtraxx_28":
-            dialog.text = "I can see you expecting a reward. Fair enough. Jan will pay you all your costs - it was his skin we were trying to save there. Send him a bill although take your time - the boy doesn't have a crew and a ship. Yet. A smart kid just like you, so his current state won't last long.";
-			link.l1 = "Hm.. Well.. Okay. I'll take my time. Any work for me Marcus? Without saving and/or searching for anyone?";
+            dialog.text = "По глазам вижу - ждешь награды. Это справедливо. И оплатит тебе все издержки сам Жан Красавчик - его шкуру спасали. Выставишь ему счет, какой посчитаешь нужным, но немного позже: сейчас парень без корабля и без денег. Пикар парень мозговитый, вроде тебя, в долгу не останется, я гарантирую.";
+			link.l1 = "Кхм... Ладно... подожду. Есть еще работа для меня, Маркус? И так, чтобы никого не искать и не спасать?..";
 			link.l1.go = "mtraxx_29";
 		break;
 		
 		case "mtraxx_29":
-            dialog.text = "Tired to be the brightest candle? Have to disappoint you there: I have enough brutes like Cutlass, your talents I will use accordingly. I'll have a job for you in a month, now you should sail to Isla Tesoro and lend a hand to Pasquale Lavoisier, he is a merchant of Sharptown\nYou have a week to show yourself to him. And be polite, this man is respected among the Brethren, so don't even think to fuck with him. Now go and see me in a month. Don't be late!";
-			link.l1 = "Fine Marcus. See you!";
+            dialog.text = "Устал быть умником, парень? Я тебя огорчу: тупых головорезов, вроде Тесака, у меня и так хватает, а твои таланты я буду использовать по назначению... Дело для тебя намечается через месяц, а пока отправляйся на Исла-Тесоро к Паскуале Вуазье, купцу в Шарптауне. Это наш человек. Он просил поскорее прислать ему сурового пирата для серьезного дела - скорее всего, для такого, какого ты хочешь: мало думать и много стрелять\nВремени не теряй - через неделю ты Вуазье будешь уже не нужен. И смотри там, не обижай Паскуале - в Береговом братстве его уважают. Все, ступай, и не опоздай ко мне через месяц, а то я расстроюсь.";
+			link.l1 = "Хорошо, Маркус. До встречи!";
 			link.l1.go = "mtraxx_30";
 		break;
 		
@@ -908,14 +908,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_31":
-            dialog.text = "Whoa! A dead man has returned! We have already buried you pal!";
-			link.l1 = "Oh you shouldn't...";
+            dialog.text = "Ну дела! Покойник всплыл со дна моря! Тебя уже похоронили, приятель, а ты, оказывается, жив!";
+			link.l1 = "Как видишь, Маркус...";
 			link.l1.go = "mtraxx_32";
 		break;
 		
 		case "mtraxx_32":
-            dialog.text = "Then why it took you so long to get to Hispaniola from Maracaibo? You are out of my organization now pal. I am really glad to see you alive, but there is no job for you here.";
-			link.l1 = "Eh!.. What a shame...";
+            dialog.text = "Тогда что же ты так долго от Маракайбо до Эспаньолы добирался? Я тебя уже со счетов сбросил. Так что извини, дружище: для тебя больше никакой работы нет. Рад видеть тебя в добром здравии, но - бывай!";
+			link.l1 = "Эх!.. Как жаль...";
 			link.l1.go = "mtraxx_33";
 		break;
 		
@@ -933,22 +933,22 @@ void ProcessDialogEvent()
 		case "mtraxx_34":
 			if (GetNpcQuestPastDayParam(npchar, "task_date") >= 35) // опоздал
 			{
-				dialog.text = "Damn it  "+pchar.name+", where have you been?! I told you to see me in a month! It's not a military here but some discipline is fucking expected! Get lost, I will not work with you anymore!";
-				link.l1 = "Well now...";
+				dialog.text = "Черт тебя дери, "+pchar.name+", где ты шлялся?! Я же сказал - явиться ко мне через месяц! Для тебя было дело на пару с Пикаром, в итоге он отправился в одиночку - не удивлюсь, если из этого похода он не вернется. Как я могу рассчитывать на тебя в дальнейшем, если ты даже простейших сроков соблюсти не можешь? У меня не армия, но дисциплина должна быть везде! Все, свободен, нет для тебя больше дел.";
+				link.l1 = "Ну и дела...";
 				link.l1.go = "mtraxx_33";
 				break;
 			}
 			if (GetNpcQuestPastDayParam(npchar, "task_date") < 28) // рано пришел
 			{
-				dialog.text = ""+pchar.name+", I told you - see me in a month. I have no time to spare on you right now.";
-				link.l1 = "Fine...";
+				dialog.text = ""+pchar.name+", я же сказал - явиться через месяц. Давай, гуляй пока, у меня нет на тебя времени сейчас.";
+				link.l1 = "Хорошо...";
 				link.l1.go = "mtraxx_34x";
 				break;
 			}
 			if (pchar.questTemp.Mtraxx == "pasq_angry")
 			{
-				dialog.text = "An agent of Lavoisier told me that you had fucked him with his iron wood. I warned you twice about not being a rat and being fair to Pasquale. You have broken both of my rules. You are a smart kid but this is unacceptable. Get the hell out of here and forget the road to this place.";
-				link.l1 = "Khm...";
+				dialog.text = "Человек Вуазье сообщил мне, что ты его 'кинул' на черное дерево. Я предупреждал тебя дважды: не обижать Паскуале - раз, и не жульничать с добычей - два. Ты нарушил оба моих правила. Ты сообразительный малый, но с теми, кто обманывает своих товарищей и плюет на мои указания, мне не по пути. Убирайся к черту и забудь дорогу сюда.";
+				link.l1 = "Гхм...";
 				link.l1.go = "AngryExitAgainWithOut";
 				pchar.questTemp.Mtraxx = "fail";
 				npchar.dialog.currentnode = "First time";
@@ -957,8 +957,8 @@ void ProcessDialogEvent()
 			}
 			if (pchar.questTemp.Mtraxx == "pasq_fail")
 			{
-				dialog.text = "An agent of Lavoisier told me that you had fucked him with his iron wood - didn't bring the whole batch. I warned you twice about not being a rat and being fair to Pasquale. You have broken both of my rules. You are a smart kid but this is unacceptable. Get the hell out of here and forget the road to this place!";
-				link.l1 = "Your Lavoisier is rat himself!..";
+				dialog.text = "Человек Вуазье сообщил мне, что ты его 'кинул' на черное дерево - привез не весь товар. Если бы это был безмозглый Тесак или Лысый - возможно, я бы и поверил в то, что они и правда захватили не весь груз, но такой умник, как ты... Решил обдурить Паскуале? Я же просил тебя - не обижай его! Нет у меня больше к тебе доверия, и дел у меня с тобой больше тоже нет. Никаких. Проваливай!";
+				link.l1 = "Да твой Вуазье сам жулик, каких свет не видывал!.. ";
 				link.l1.go = "AngryExitAgainWithOut";
 				pchar.questTemp.Mtraxx = "fail";
 				npchar.dialog.currentnode = "First time";
@@ -968,25 +968,25 @@ void ProcessDialogEvent()
 			if (pchar.questTemp.Mtraxx == "pasq_late" || pchar.questTemp.Mtraxx == "pasq_sink" || pchar.questTemp.Mtraxx == "pasq_esc")
 			{
 				pchar.questTemp.Mtraxx.CharleePrince = "true"; // атрибут - ГГ известный пират // правки прогона 3
-				dialog.text = "Ha! Charlie Prince, a brave captain! It's your new name in La Vega in case you didn't knowЙ So, did you enjoy being a brute? No? Figures. This is how my brainless agents like Cutlass live: today he parties in a brothel, wasting all he made, next day he is at my doorsteps begging a couple of thousands to pay his crew filled with idiots, just like he is. Whatever. Ready to hear it?";
-				link.l1 = "Sure!";
+				dialog.text = "Ха, а вот и бравый капитан Чарли Принц! Если не в курсе - это твое новое имя в Ла Веге... Ну что, братец, убедился, каково это быть работником ножа и топора? Удача отвернулась от тебя на этот раз, не так ли? То-то же. Вот так и живут мои безмозглые порученцы, вроде Тесака: сегодня кутит в борделе и сыпет дублонами направо и налево, а через неделю клянчит у меня пару тысяч песо на жалование команде таких же безмозглых неудачников. Ладно. Перейдем к делу. Готов?";
+				link.l1 = "Конечно!";
 				link.l1.go = "mtraxx_36";
 				break;
 			}
-            dialog.text = "Ha! Charlie Prince, a brave captain! Ha-ha! An agent of Lavoisier told me you did well. I am glad you managed to show some respect to our profiteer.";
-			link.l1 = "It's wouldn't hurt for him to have some more generosity...";
+            dialog.text = "А вот и наш бравый капитан Чарли Принц, ха-ха! Человек Вуазье уже побывал у меня. Паскуале тобой доволен. Рад, что ты смог уважить нашего купчину.";
+			link.l1 = "Скуповат только наш друг Вуазье оказался...";
 			link.l1.go = "mtraxx_35";
 		break;
 		
 		case "mtraxx_35":
 			pchar.questTemp.Mtraxx.Pasquale.Continue = "true"; // правки прогона 3
-            dialog.text = "Remember what I said about brainless brutes and buyers of stolen goods? Right. Never take a job like this in the future. Leave it to Cutlass and people like him. Whatever. Ready to hear it?";
-			link.l1 = "Sure!";
+            dialog.text = "Ты помнишь мои слова по поводу скупщиков краденого и работников ножа и топора? То-то же. Поэтому нечего тебе мараться об работу, достойную разве что Тесака. Надеюсь, ты учтешь это на будущее. Ладно. Перейдем к делу. Готов?";
+			link.l1 = "Конечно!";
 			link.l1.go = "mtraxx_36";
 		break;
 		
 		case "mtraxx_36":
-            dialog.text = "Great! Jan Picard is coming here - he will tell you more. It's his lead and you will work together on it. Plus it's his chance to pay his debt to you... There he is!";
+            dialog.text = "Отлично. С минуты на минуту сюда подойдет Жан Пикар - он и изложит подробности. На дело пойдете вместе - как раз Красавчику предоставится возможность вернуть тебе должок... А вот и он!";
 			link.l1 = "...";
 			link.l1.go = "mtraxx_37";
 		break;
@@ -1022,7 +1022,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_38":
-            dialog.text = "My guy will join your raid. Names' Luka Bayard, mostly known as Luke Leprechaun. He and his men are buccaneers - hunters who spent most of their lives hunting in the forests of Hispaniola. Add to them your fighters and consider Merida to be yours. You'll take a third. The rest will be taken by Jan\nJan you will this brave captain what your own him from you share then bring what's left to me. We'll sort this out between us then. Questions?.. Splendid! Leprechaun will be waiting for you in our harbor. Godspeed corsairs, ha-ha!";
+            dialog.text = "В поход с вами пойдет мой человек - Люка Байярд, более известный в Ла Веге как Люк Лепрекон. Он всю жизнь провел в лесах Эспаньолы, и джунгли для него - что дом родной. Также к тебе на борт поднимется отряд буканьеров - незаменимые люди в походе через сельву. Дополнишь группу своими лихими рубаками - и Мерида ваша. Себе возьмешь третью часть добычи, прочее отдашь Жану\nКрасавчик, долг сему бравому капитану за плантацию выплатишь из своей доли на месте, остальное принесешь мне, дальше разберемся. Еще вопросы у кого-нибудь есть?.. Вижу, что нет. Отлично. Лепрекон с буканьерами скоро подойдет в бухту Ла Веги. Удачи, корсары! Ха-ха!..";
 			link.l1 = "...";
 			link.l1.go = "mtraxx_39";
 		break;
@@ -1042,44 +1042,44 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_40":
-            dialog.text = "Welcome back, my brave cutthroat! Rumors of your raid has already reached us.";
-			link.l1 = "Can't say I like hearing it. Such things are better stay unknown...";
+            dialog.text = "C возвращением, бравый головорез! Слухи о вашем с Красавчиком Жаном налете на испанский поселок достигли Эспаньолы раньше тебя.";
+			link.l1 = "Не могу сказать, что сильно рад этому. Лучше сохранять в безвестности такие дела...";
 			link.l1.go = "mtraxx_41";
 		break;
 		
 		case "mtraxx_41":
-            dialog.text = "Trust me, they never are, my friend. Whatever. Has Picard wiped away his debt to you?";
-			link.l1 = "Yes.";
+            dialog.text = "Такие дела затихарить не получится, дружище. Ладно. Пикар рассчитался с тобой?";
+			link.l1 = "Да.";
 			link.l1.go = "mtraxx_42";
 		break;
 		
 		case "mtraxx_42":
-            dialog.text = "Very good. Did Luke Leprechaun made a good impression on you?";
-			link.l1 = "He did.";
+            dialog.text = "Очень хорошо. Люком Лепреконом ты остался доволен?";
+			link.l1 = "Вполне.";
 			link.l1.go = "mtraxx_43";
 		break;
 		
 		case "mtraxx_43":
-            dialog.text = "Perfect then. Everyone is happy, everyone is paid.";
-			link.l1 = "Do you have a job for me Marcus?";
+            dialog.text = "Тогда все отлично. Все довольны, все при деньгах.";
+			link.l1 = "Что еще для меня есть, Маркус?";
 			link.l1.go = "mtraxx_44";
 		break;
 		
 		case "mtraxx_44":
-            dialog.text = "No real job yet. Although I have a personal favor to ask. Interested?";
-			link.l1 = "Sure boss. What favor?";
+            dialog.text = "Пока ничего. Почти. Достойного тебя дельца, увы, не подвернулось, но имеется моя личная просьба. Выполнишь?";
+			link.l1 = "Нет проблем, босс. Какая просьба?";
 			link.l1.go = "mtraxx_45";
 		break;
 		
 		case "mtraxx_45":
-            dialog.text = "There is a pinnace the Kittie near the shores of La Vega. Been there for days waiting for an escort  to Bridgetown. No way I am letting her to sail there alone for obvious reasons. Would you be kindly to accompany her? I'll have a real job for you when you return. And, of course, the coin to pay you for this escort.";
-			link.l1 = "Deal.";
+            dialog.text = "Уже который день у берегов Ла Веги стоит пинас 'Китти'. Это судно с моим товаром, и ему нужно попасть в Бриджтаун. Пускать в плавание 'Китти' без сопровождения я не хочу - сам понимаешь, почему. Будь так любезен, доведи пинас до Барбадоса в целости и сохранности. Когда вернешься - думаю, для тебя уже созреет работа. Ну и за сопровождение денег отстегну, конечно.";
+			link.l1 = "Договорились.";
 			link.l1.go = "mtraxx_46";
 		break;
 		
 		case "mtraxx_46":
-            dialog.text = "Neat. Good sailing.";
-			link.l1 = "Thanks!";
+            dialog.text = "Вот и славно. Счастливого плавания.";
+			link.l1 = "Спасибо!";
 			link.l1.go = "mtraxx_47";
 		break;
 		
@@ -1102,83 +1102,83 @@ void ProcessDialogEvent()
 		
 		case "mtraxx_48":
 			AddMoneyToCharacter(pchar, 10000);
-            dialog.text = "Ah, there you are... Been waiting for you already. Here is 10000 for an escort of the Kittie.";
-			link.l1 = "Thanks... I have something to discuss with you Marcus.";
+            dialog.text = "А, вот и ты наконец явился... Уже жду тебя. Держи десять тысяч песо за сопровождение 'Китти'.";
+			link.l1 = "Спасибо... У меня к тебе разговор, Маркус.";
 			link.l1.go = "mtraxx_49";
 		break;
 		
 		case "mtraxx_49":
-            dialog.text = "Do you?! Ha-ha! Shoot!..";
-			link.l1 = "Remember how Jan Picard got enslaved? First he plundered a Dutch caravan along with a British privateer and then the same was done to him by a Spanish heavy galleon.";
+            dialog.text = "Да неужели?! Ха-ха! Выкладывай!..";
+			link.l1 = "Помнишь историю Жана Пикара, как он попал в рабство? Сначала пощипал голландский караван вместе с английским капером, а после дележа добычи сам стал жертвой испанского тяжелого галеона.";
 			link.l1.go = "mtraxx_50";
 		break;
 		
 		case "mtraxx_50":
-            dialog.text = "Yeah. Why?";
-			link.l1 = "I was approached in Bridgetown by Ignacio Marco. The privateer I mentioned. He offered me to plunder a Dutch caravan near the shores of inhabited island between Curacao and Trinidad.";
+            dialog.text = "Помню. И?";
+			link.l1 = "В Бриджтауне ко мне подошел Игнасио Марко. Это тот самый португалец, капер на службе Англии. Пригласил в таверну и предложил совместно ограбить голландский караван у берегов необитаемого острова, что находится между Кюрасао и Тринидадом.";
 			link.l1.go = "mtraxx_51";
 		break;
 		
 		case "mtraxx_51":
-            dialog.text = "Well-well... Did you agree?";
-			link.l1 = "I did. First, it was a good lead. Second, I recalled Picard's story and decided to investigate...";
+            dialog.text = "Так-так... И что ты ему ответил?";
+			link.l1 = "Согласился. Во-первых, добыча была заманчивой, а во-вторых, я сразу вспомнил про Пикара и решил разнюхать...";
 			link.l1.go = "mtraxx_52";
 		break;
 		
 		case "mtraxx_52":
-            dialog.text = "I bet you did it.";
-			link.l1 = "Yeah. There was a caravan, we did the job nice and clean. Then we split the spoils of it on a shoreЙ but first I put a watchman with a spyglass on a hill. And it paid off since a Spanish squadron had appeared shortly lead by a heavy galleon.";
+            dialog.text = "Вижу, что разнюхал.";
+			link.l1 = "Точно. Караван был, и мы его взяли - голландцы меняли мачту на своем флагмане, застали их за ремонтом. Потом высадились на берег и приступили к дележке... но я незаметно отправил на холм дозорного с трубой. И правильно сделал. Потому что вскоре на горизонте появилась испанская эскадра во главе с тяжелым галеоном.";
 			link.l1.go = "mtraxx_53";
 		break;
 		
 		case "mtraxx_53":
-            dialog.text = "You partner fled so the Spanish chased you?";
+            dialog.text = "И твой компаньон, конечно, успешно слинял, а испанцы погнались за тобой.";
 			if (CheckAttribute(pchar, "questTemp.Mtraxx.LosadaSink")) 
 			{
-				link.l1 = "Yep. They didn't even pay attention to him. Too bad for then: we did them a good beating to remember. They were good fighters but we managed to take down the whole squadron.";
+				link.l1 = "Угу. Они на него даже не обращали внимания, все три корабля эскадры нацелились на меня. Однако зря они это сделали: мы преподали испанцам такой урок, что они его надолго запомнят. Хоть кастильцы оказались на редкость умелыми вояками, мы затопили всю их эскадру.";
 				link.l1.go = "mtraxx_53x";
 			}
 			else
 			{
-				link.l1 = "Yep. They didn't even pay attention to him. Although I managed to flee. If it wasn't for my watchman...";
+				link.l1 = "Угу. Они на него даже не обращали внимания, все три корабля эскадры нацелились на меня. Однако мне удалось уйти от них. Но если бы не мой дозорный...";
 				link.l1.go = "mtraxx_53y";
 			}
 		break;
 		
 		case "mtraxx_53x":
 			DeleteAttribute(pchar, "questTemp.Mtraxx.LosadaSink");
-            dialog.text = "Heh! Taking down a squadron of Eduardo de Losad! You are a sea devil, Prince! I bet the Spanish have already sent hunters for your ass.";
-			link.l1 = "Good for them... Nevertheless we should deal with this scum Ignacio. If you know what I mean.";
+            dialog.text = "Хех! Одолеть эскадру Эдуардо де Лосада! Да ты просто морской дьявол, Принц! Бьюсь об заклад, испанцы развесили объявление о награде за твою голову в каждой казарме.";
+			link.l1 = "Бумага стерпит... А вот с этим шакалом Игнасио надо что-то сделать. Ты понимаешь, о чем я.";
 			link.l1.go = "mtraxx_54";
 		break;
 		
 		case "mtraxx_53y":
-            dialog.text = "Heh! I imagine the shitstorm occurred when Castilians realized you've slipped from them! Nicely done!";
-			link.l1 = "Their problems not mine.";
+            dialog.text = "Хех! Представляю, как бушевали кастильцы, когда поняли, что упустили тебя! Молодец!";
+			link.l1 = "Пусть лопнут от злости. А вот с этим шакалом Игнасио надо что-то сделать. Ты понимаешь, о чем я.";
 			link.l1.go = "mtraxx_54";
 		break;
 		
 		case "mtraxx_54":
-            dialog.text = "I'll take care of it. We should learn more about Ignacio Marco. He might be working for someoneЙ His 'interest' in my men is suspicious. What ship he flies?";
-			link.l1 = "A polacre, the Torero. A unique vessel, must be an original design.";
+            dialog.text = "Я займусь этим вопросом. Надо выяснить побольше об этом Игнасио Марко. Действует он сам, или за ним кто-то стоит... Наводит на подозрения его 'внимание' к моим людям. Что за судно у него?";
+			link.l1 = "Полакр под названием 'Тореро'. Кораблик необычный, видать, по штучному заказу строился.";
 			link.l1.go = "mtraxx_55";
 		break;
 		
 		case "mtraxx_55":
-            dialog.text = "Good, easier to track her then... I got it. And for you, Prince, I have a job. Ready for it?";
-			link.l1 = RandSwear()+"By all means, chief!";
+            dialog.text = "Тем лучше, проще отследить будет... Хорошо. Я понял. А для тебя, Принц, у меня есть задание. Готов?";
+			link.l1 = RandSwear()+"Конечно, босс!";
 			link.l1.go = "mtraxx_56";
 		break;
 		
 		case "mtraxx_56":
-            dialog.text = "Listen thenЙ Very recently we had a curious pirate in our region. Name's Wulfric Iogansen also known as Red Wolf. A very colorful character. He came here from the North of Europe a couple of years ago. This Viking were paying Levasseur a protection fee, didn't make friends and stayed on his own. A very secretive type, no one had ever left his crew alive\nUnlike most of our kind, Wulfric never wasted money on whores and drinks. Never sold his plunder for pennies. Never trusted bankers. He had a fine corvette, the Freyja and a loyal crew he paid well to. I believe he was planning to stash as much gold as possible and then return to Europe and live there like a king.\nIt didn't work out for him thanks to the Spanish hunters. The man had inflicted a colossal damage and losses to Spain, they sank the Freyja and killed the whole crew along with Wolf.\nThing is, they never found his treasures. He must had a huge one stashed somewhere. Now the interesting part comes: I have his log. It has no obvious leads to the treasure but you may try to find them between words. If you succeed - two thirds are yours. Are you in?";
-			link.l1 = "Hm... it's is like looking for a black cat in a dark room. Where's the log?";
+            dialog.text = "Тогда принимай вводную. Еще совсем недавно был у нас Карибах пират по имени Вульфрик Иогансен, по прозвищу Рыжий Вульф. Явился сюда года два назад с севера Европы. Держался этот викинг особняком, ни с кем дружбы не водил, отстегивал иногда Левассеру с Тортуги за протекцию, но... в общем, пират-одиночка. Скрытный был до крайности: любой моряк, что попадал на его судно, иначе, как вперед ногами, оттуда не уходил. Поговаривали, что паре матросов-болтунов, растрепавших в таверне подробности одного похода, Рыжий Вульф лично урезал языки\nВ отличие от большинства пиратов, Иогансен отличался на редкость деловой хваткой: за бесценок награбленное не сдавал, песо и дублоны не спускал в кабаках и борделях. В то же время ростовщикам не доверял и денег у них не хранил. Кораблей не менял, ходил на своем любимом корвете 'Фрейя'. Команде платил очень хорошо, и за службу, и за молчание - спаянный намертво у него был коллектив. Думаю, что намеревался Рыжий Вульф сколотить большое состояние, а затем вернуться в Европу и зажить, как король\nНо, как известно, человек предполагает, а Бог располагает. Попался корвет нашего викинга в лапы испанской карательной экспедиции у берегов Эспаньолы - много крови попортил Вульф кастильцам, крепко злы они на него были. Зажали в бухте на мелководье и разнесли корабль в щепки из дальнобойных орудий, шлюпки спасательные постигла та же судьба, кто из команды не утонул - добили на месте, даже не стали брать в плен, чтобы потом вздернуть на виселице в Санто-Доминго. Таким образом, погиб и Рыжий Вульф, и все его люди\nПоскольку ходили слухи, что свои накопленные богатства Иогансен хранил в корабельном сундуке, то мои молодчики из Ла Веги, охочие до даровой добычи, вдоль и поперек исследовали место гибели 'Фрейи'. Затонувший остов корабля нашли, ныряли, и сами, и нанятые индейцы - никаких сокровищ нет и в помине. Собственно, я в этом и не сомневался - вряд ли Рыжий Вульф мог оказаться таким простачком. Зато удалось добыть хорошо сохранившийся в плотно запертом сундучке судовой журнал викинга\nИогансен был дотошным во всем и вел записи подробно и последовательно, вплоть до самого дня своей гибели. И вот теперь мы подходим к сути твоего дела: Вульф несомненно имел приличные богатства - это раз, и их не было на корабле - это два. Значит, он хранил их в каком-то месте, известном только ему и его команде. Увы, у мертвецов не спросишь, но у нас есть журнал. Я почитал его, однако никаких прямых указаний в нем не содержится\nПоскольку ты у нас семи пядей во лбу, то бери этот журнал и постарайся выяснить, где викинг запрятал свои сокровища, награбленные за два года разбоя на Карибах. Так как дело непростое и зацепок, кроме записей в журнале, нет вообще никаких, то в случае успеха тебе достанется две трети найденного.";
+			link.l1 = "Гм... Действительно, поиски черной кошки в темной комнате. Где журнал?";
 			link.l1.go = "mtraxx_57";
 		break;
 		
 		case "mtraxx_57":
-            dialog.text = "Here, take it. Good luck!";
-			link.l1 = "Thanks, I am gonna need it...";
+            dialog.text = "Вот. Держи. Желаю удачи!";
+			link.l1 = "Спасибо, она мне понадобится...";
 			link.l1.go = "mtraxx_58";
 		break;
 		
@@ -1196,20 +1196,20 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_59":
-            dialog.text = "Ah, there is our brave captain. What of Red Wolf's treasures?";
-			link.l1 = "I am on it. Need you help in this.";
+            dialog.text = "А, наш бравый капитан пожаловал. Что там с сокровищами Рыжего Вульфа?";
+			link.l1 = "Работаю над этим. Нужна твоя помощь в этом деле.";
 			link.l1.go = "mtraxx_60";
 		break;
 		
 		case "mtraxx_60":
-            dialog.text = "I am all ears.";
-			link.l1 = "There is an unknown word written several times in Wulfric's log - ' Gord'. I must know it's meaning to move ahead in my investigation.";
+            dialog.text = "Слушаю.";
+			link.l1 = "В судовом журнале Вульфрика часто встречается непонятное мне слово 'горд'. Надо выяснить, что оно означает. Тогда, возможно, мое расследование продвинется дальше.";
 			link.l1.go = "mtraxx_61";
 		break;
 		
 		case "mtraxx_61":
-            dialog.text = "Hm... Gord you say... Never heard it before too. Very well, see me in a week: I will consult with some big brainers who serve as pursers on ships. At least they know how to count and read. They might give us some idea.";
-			link.l1 = "Fine Marcus. See you in a week then.";
+            dialog.text = "Хм... Горд, говоришь... Я тоже впервые слышу такое слово. Вот что: зайди ко мне через неделю - я поспрашиваю у парочки ученых сухарей, что служат на кораблях счетоводами. Глядишь, что и подскажут.";
+			link.l1 = "Хорошо, Маркус. Через неделю.";
 			link.l1.go = "mtraxx_62";
 		break;
 		
@@ -1220,14 +1220,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_63":
-            dialog.text = "I have an answer for you. One smart ass had enlightened me. Gord is a fortified settlement of a free jarl.";
-			link.l1 = "A free jarl? Who is this?";
+            dialog.text = "Выяснил я твой вопрос. Один книжный червь просветил. Горд - это укрепленный поселок свободного ярла.";
+			link.l1 = "Свободного ярла? Кто это?";
 			link.l1.go = "mtraxx_64";
 		break;
 		
 		case "mtraxx_64":
-            dialog.text = "Some sort of a pirate admiral of Vikings. Me is a free jarl and La Vega is my gord. Seems like Red Wolf enjoyed his ancestors history, ha-ha! Did this information help you?";
-			link.l1 = "Don't know yet. I should compare the notes first. Gord means settlement then... Thank you Marcus!";
+            dialog.text = "Это вроде пиратского главы у викингов. Вот я - свободный ярл, а Ла Вега - мой горд. Видать, Рыжий Вульф увлекался историей своих предков, ха-ха! Ну что, помогло тебе это?";
+			link.l1 = "Пока не знаю, надо сопоставить записи. Значит, горд - это поселок... Спасибо, Маркус!";
 			link.l1.go = "mtraxx_65";
 		break;
 		
@@ -1238,27 +1238,27 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_66":
-            dialog.text = "So? You smug face is telling me that you had success.";
-			link.l1 = "Yeah. Red Wolf's treasure was found. It wasn't easy though.";
+            dialog.text = "Ну? По твоей торжествующей физиономии вижу, что дело увенчалось успехом.";
+			link.l1 = "Да. Клад Рыжего Вульфа найден. Хоть и пришлось прилично попотеть для этого.";
 			link.l1.go = "mtraxx_67";
 		break;
 		
 		case "mtraxx_67":
-            dialog.text = "How much did our Viking stashed?";
-			link.l1 = "750 000 pesos and 900 doubloons.";
+            dialog.text = "И сколько наш викинг насобирал?";
+			link.l1 = "Семьсот пятьдесят тысяч песо и девятьсот дублонов.";
 			link.l1.go = "mtraxx_68";
 		break;
 		
 		case "mtraxx_68":
-            dialog.text = "Ho-ho! You did good Prince. What of my cut?";
+            dialog.text = "Хо-хо! Ты недаром старался, Принц. Что там насчет моей доли?";
 			if (sti(pchar.money) >= 250000 && GetCharacterItem(pchar, "gold_dublon") >= 300)
 			{
-				link.l1 = "Here, take this. According to our agreement: 250 000 pesos and 300 doubloons.";
+				link.l1 = "Вот, держи: двести пятьдесят тысяч и триста золотых, все по уговору.";
 				link.l1.go = "mtraxx_69";
 			}
 			else
 			{
-				link.l1 = "All the money are in my cabin. Give me an hour to get them here!";
+				link.l1 = "Все деньги и дублоны у меня в сундуке на корабле. Сейчас принесу!";
 				link.l1.go = "mtraxx_68_1";
 			}
 		break;
@@ -1269,15 +1269,15 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_68_2":
-            dialog.text = "Do you have it?";
+            dialog.text = "Принес?";
 			if (sti(pchar.money) >= 250000 && GetCharacterItem(pchar, "gold_dublon") >= 300)
 			{
-				link.l1 = "Here, take this. According to our agreement: 250 000 pesos and 300 doubloons.";
+				link.l1 = "Вот, держи: двести пятьдесят тысяч и триста золотых, все по уговору.";
 				link.l1.go = "mtraxx_69";
 			}
 			else
 			{
-				link.l1 = "Yes-yes, I an on my way!";
+				link.l1 = "Да-да, уже несу!";
 				link.l1.go = "mtraxx_68_1";
 			}
 		break;
@@ -1285,22 +1285,22 @@ void ProcessDialogEvent()
 		case "mtraxx_69":
 			AddMoneyToCharacter(pchar, -250000);
 			RemoveItems(pchar, "gold_dublon", 300);
-			Log_Info("You have given 300 doubloons");
+			Log_Info("Вы отдали 300 дублонов");
 			PlaySound("interface\important_item.wav");
-            dialog.text = "Very good. You did great again. Well done!";
-			link.l1 = "Marcus did you dig up anything about Ignacio Marco?";
+            dialog.text = "Очень хорошо. Ты вообще молодец. Голова!";
+			link.l1 = "Маркус, ты выяснил что-нибудь по поводу Игнасио Марко?";
 			link.l1.go = "mtraxx_70";
 		break;
 		
 		case "mtraxx_70":
-            dialog.text = "Yes but I need to verify it first...";
-			link.l1 = "What?";
+            dialog.text = "Да. Но мне нужно подтверждение или опровержение...";
+			link.l1 = "Чего-чего?";
 			link.l1.go = "mtraxx_71";
 		break;
 		
 		case "mtraxx_71":
-            dialog.text = "I have a suspicion that Marco is connected to someone... And you are to find it out. Sail to Martinique. Leave your ship in St. Pierre and get to Le Francois through the jungles. I was told that our guy is seen there. Don't ask pirates around, just watch and observe. Once you find the guy, follow him and see who is he meeting with. Do not attack him or his ship - by doing so you'd ruin a plan I am developing right now! I have warned you\nFollow and watch him, head back to me once you learn enough. I understand your hands are willing to strangle the bastard but keep your head cool. Now go. You have three weeks. Good luck.";
-			link.l1 = "On my way boss.";
+            dialog.text = "Есть у меня подозрение, что Марко связан кое с кем... И ты это выяснишь. Отправляйся сейчас на Мартинику. Корабль оставь в Сен-Пьере, а сам через джунгли топай в поселок Ле Франсуа. Мне донесли, что наш тип там ошивается. К пиратам с расспросами не приставай, высматривай сам. Найдешь - проследи за ним: куда пойдет, с кем встретится. И сразу предупреждаю: не вздумай напасть на него самого или его корабль - испортишь мне весь план, который я разрабатываю\nТолько понаблюдай за ним, а потом - сразу сюда, в Ла Вегу. Все понял? Никакой самодеятельности. Я понимаю, что у тебя руки чешутся, но будь добр - сдержись. А теперь вперед. Трех недель тебе должно хватить. Удачи.";
+			link.l1 = "Уже в пути, босс.";
 			link.l1.go = "mtraxx_72";
 		break;
 		
@@ -1324,13 +1324,13 @@ void ProcessDialogEvent()
 		case "mtraxx_73":
 			if (GetNpcQuestPastDayParam(npchar, "task_date") >= 22) // опоздал
 			{
-				dialog.text = "Damn it Prince! You could have a revenge and helluva lot of money if you weren't so slow! Didn't expect this from you but since you are a good kid I forgive you. You'll have a chance to regain your reputation in my eyes in a month. I am gathering everyone for a raid!\nGet to me in a month on a single but powerful ship. Luke, Cutlass, Geffrey and Jan will take part in this too. Don't be late even for day!";
-				link.l1 = "I understand Marcus. Won't happen again!";
+				dialog.text = "Черт тебя дери, Принц, неужели нельзя было пошустрее? А ведь можно было и расквитаться с твоим должничком, и очень, очень хорошо заработать! Не ожидал такой непунктуальности от тебя! Ладно, поскольку ты славный парень, я тебя прощаю. У тебя будет шанс реабилитироваться: приходи ко мне через месяц, и желательно на корабле посильнее, но только на одном - и так будет целая эскадра. Я собираю всех своих людей в поход!\nПод моим началом пойдешь ты, Жан Красавчик, Лысый Джеффри, Тесак Пелли, Люк Лепрекон. Все, пока свободен, жду ровно через месяц, и не вздумай опоздать хоть на день!";
+				link.l1 = "Ясно, Маркус. Так уж вышло, но больше не подведу!";
 				link.l1.go = "mtraxx_73x";
 				break;
 			}
-			dialog.text = "Good timing! Report to me, now.";
-			link.l1 = "I've tracked my obligor in Le Francois. His polacre was a part of a squadron of corvette and frigate. Marco himself was paying a visit to Barbason, they had a meeting in his place for two hours, other visitors had been sent away by his guards. Then he went out of the house with two gloomy bastards: one was red and beardy in a ritter's cuirass, the other had moustaches and was wearing a heavy trench armor. All went to a port and sailed away before I reached St. Pierre.";
+			dialog.text = "Вовремя явился! Докладывай, что удалось разнюхать?";
+			link.l1 = "Выследил я в Ле Франсуа своего должничка. Его полакр был в составе эскадры, кроме него - корвет и фрегат. Сам Марко заходил к Жаку Барбазону, сидел там долго, часа два, причем в это время охрана никого к Добряку не пускала - всех прогоняли. Затем вышел вместе с двумя угрюмыми типами: один рыжий, бородатый, в рейтарской кирасе и берете, второй усатый, в траншейном доспехе и цветном платке. Все трое пошли в порт, эскадра вышла в море и скрылась прежде, чем я успел добраться до Сен-Пьера.";
 			link.l1.go = "mtraxx_74";
 		break;
 		
@@ -1345,75 +1345,75 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_74":
-            dialog.text = "It's fine. Now I see the whole picture. These two devils you saw are working for Barbason and Jackman. They are almost just like my Luke and Cutlass although they fight better. The red is called Prowler, he is a captain of the ‘cuttlefish, a corvette, and the guy with moustaches is Ghoul, he sails the Merciless, a frigate. As for our friend Ignacio - he is working not only for the Brits and a Spanish don Losad but also for Barbason. This is why he tried to fuck you and Picard.";
-			link.l1 = "Why?";
+            dialog.text = "Это неважно. Теперь все встало на свои места. Эти двое, которых ты видел, люди не то Барбазона, не то Джекмана: работают и у того, и у другого. Такие же умники, как мои Лысый с Тесаком, но вояки наторевшие. У рыжего кличка Бродяга - он капитан корвета 'Каракатица', а усатого прозвали Упырем, он командует фрегатом 'Беспощадный'. Ну а наш друг Игнасио Марко мало того, что подвизался у англичан и испанца дона де Лосада, так еще и на третью сторону работает - на Барбазона. Поэтому он и подставил Пикара и пытался подставить тебя.";
+			link.l1 = "Но зачем ему это было надо?";
 			link.l1.go = "mtraxx_75";
 		break;
 		
 		case "mtraxx_75":
-            dialog.text = "Barbason's order. You didn't know but the Good Jacques never misses a chance to piss in my porridge. He would never openly oppose me for obvious reasons, so he crosses me secretly. He knew that Picard and you are my men. Sending after you his mercenary was in his style. And didn't send an idiot.";
-			link.l1 = "I'll pay Barbason a visit as soon as I take care of Marco...";
+            dialog.text = "Заказ Барбазона. Ты не в курсе: Жак Добряк постоянно мелко пакостит мне. На советах Берегового братства все время лезет на рожон. Открыто враждовать со мной трусит - знает, чем это может для него закончиться, а вот гадить исподтишка - это делает. Он знал, что Красавчик и ты - мои люди, вот и подослал к вам своего наперсника, кстати, совсем не дурака, как ты мог убедиться.";
+			link.l1 = "Разберусь с Марко - навещу Барбазона...";
 			link.l1.go = "mtraxx_76";
 		break;
 		
 		case "mtraxx_76":
-            dialog.text = "Get this crap out your head! You are no match to Barbason. He will screw you sideways with ease. We will repay him with his own trickery - by hitting his associates. Ready to do that? It's a messy business.";
-			link.l1 = "Sound my kind of business!";
+            dialog.text = "Уймись! Ты до Барбазона еще ростом не вышел. Он тебя перекусит и выплюнет, как акула весло. Мы отплатим ему той же монетой - ударим по его порученцам. И счеты сведем, и Жаку на хвост наступим, и золотом разживемся, если не напортачим. Готов слушать? Тебя ждет жаркое дело.";
+			link.l1 = "Не впервой!";
 			link.l1.go = "mtraxx_77";
 		break;
 		
 		case "mtraxx_77":
-            dialog.text = "Ignacio Marco, Prowler, Goul and another Barbason's guys called Joker Jim have a plan to capture one of Spanish ships of the Golden Fleet. The whole operation was designed by Barbason himself and I've managed to learn the most of it. Marco has a task to obtain a sailing schedule of a Spanish galleon which is currently under repairmen on Cuba and is supposed to catch up with the rest of the Fleet later. He has connection within the Spanish so this task won't be a problem for him\nThe rest of Barbason's band is waiting for Marco at Sint Maarten which is an optimal place to start hunting this prize. Since Marco and the Dutch are not very fond of each other - he will have to send them a message with a sailing schedule...";
-			link.l1 = "I guess I know what I am supposed to do here...";
+            dialog.text = "Игнасио Марко, Бродяга, Упырь и еще один сподвижник Барбазона, Джокер Джим, под руководством Жака Добряка разработали план, как захватить корабль из золотого флота испанцев, что не так давно прибыл на Кубу из Порто Белло. Мне удалось узнать большую часть этого плана через своих наушников. Один тяжелый галеон золотого флота задержался в Гаване на верфи, в то время как вся эскадра отбыла в Испанию. Галеон починился и тоже направляется в Европу, вместе с еще двумя кораблями\nЭскадра пойдет с Кубы на северо-восток, но вот каким маршрутом - пока неясно. Частично... Мне стало известно, что испанские корабли собирались заходить в Санто-Доминго, потом вдоль берегов Пуэрто-Рико и - в океан. Это же знает и Барбазон\nОднако поскольку Эспаньолу можно обогнуть не только с юга, но и с севера, изменив маршрут, и уйти в океан через Теркс, или Исла-Тесоро, не заходя в Санто-Доминго, Жак решил подстраховаться и отправил хитрого лиса Игнасио в разведку на Кубу, пользуясь тем, что Марко вхож к испанцам\nОстальные трое - Джокер, Бродяга и Упырь, стоят в ожидании у Синт-Маартена, чтобы можно было пойти на перехват как на запад, к Пуэрто-Рико, так и на север, к Терксу и Исла-Тесоро. Марко должен выяснить маршрут следования испанской эскадры и передать информацию на Синт-Маартен. Так как у голландцев с Игнасио свои счеты, а его полакр они знают, как облупленный, заходить в Филипсбург твой друг не станет, а отдаст издалека какие-то сигналы эскадре Барбазона...";
+			link.l1 = "Кажется, я уже знаю, что мне предстоит...";
 			link.l1.go = "mtraxx_78";
 		break;
 		
 		case "mtraxx_78":
-            dialog.text = "It strikes me that you are so bright but I am not finished yet. I have interfered this place with a help from Gabriela Chapada. You know her. She made sure the Spanish are believing that the pirate ambush will be set not far from Puerto Rico. No way the galleon will be sailing through that area, they had secretly send pirate hunters there instead. You have a number of tasks. First would be finding and capturing the Torero. I guess you know what to do with her captain.";
-			link.l1 = "Sure!";
+            dialog.text = "Меня радует, что ты такой умный, но все же слушай дальше. Я вмешался в этот план. При помощи уже известной тебе Габриэлы Чападо из борделя Санто-Доминго, я донес испанским воякам информацию, что, мол, эскадра пиратов намерена захватить караван из Гаваны у берегов Пуэрто-Рико. Естественно, туда золотой галеон уже не пойдет, зато пришла и скрытно разместилась мощная карательная экспедиция... Перед тобой стоит целый ряд задач. Первая: найти и захватить полакр 'Тореро'. Что делать с его капитаном - думаю, ясно.";
+			link.l1 = "Еще бы!";
 			link.l1.go = "mtraxx_79";
 		break;
 		
 		case "mtraxx_79":
-            dialog.text = "Second, find out the real course of the Spanish golden galleon. Marco must have her schedule. Get it and send it to me.";
-			link.l1 = "How?";
+            dialog.text = "Вторая: выяснить, каким маршрутом пойдет испанский золотой галеон, где его удобнее атаковать. Это ты наверняка узнаешь либо из журнала Игнасио Марко, либо от него самого. Полученную информацию ты отправишь мне.";
+			link.l1 = "Не понял? Каким образом?";
 			link.l1.go = "mtraxx_80";
 		break;
 		
 		case "mtraxx_80":
 			GiveItem2Character(pchar, "Dove"); 
-            dialog.text = "By air. Take a cage... This is Spyke, a post pigeon born in La Vega. He will always find a way here. Once you obtain the schedule, write a note, stick it to his leg and release him. Spyke will fly to me in a few hours. Take care of him!";
-			link.l1 = "Whoa... Well boss!..";
+            dialog.text = "По воздуху. Держи клетку... Это Спайк, почтовый голубь. Он вылупился и вырос в Ла Веге, и вернется сюда даже с Тринидада. Напишешь записку, привяжешь аккуратно к его лапке и выпустишь. Через несколько часов Спайк будет у меня. Береги этого голубя пуще зеницы ока.";
+			link.l1 = "Хех! Ну, босс!..";
 			link.l1.go = "mtraxx_81";
 		break;
 		
 		case "mtraxx_81":
-            dialog.text = "Third, sail to Sint Maarten on the Torero. Only on her alone! Otherwise they will get suspicious too soon. Send them a signal to sail to Puerto Rico where the Spanish await. Their signal codes must be in Marco's papers. Or you can learn them from the man himself.";
-			link.l1 = "I see. A smart move sending Barbason's men to the Spanish, ha-ha!";
+            dialog.text = "Задача третья: отправиться на 'Тореро' к Синт-Маартену. Подчеркиваю: на одном полакре! Иначе люди Барбазона сразу заподозрят неладное. У Синт-Маартена ты отдашь сигнал эскадре Жака Добряка, чтобы они шли к Пуэрто-Рико. Систему сигналов ты тоже должен узнать из бумаг Марко, либо от него лично.";
+			link.l1 = "Ясно - ты хочешь отправить Джокера, Бродягу и Упыря прямо в лапы испанским карателям! Хо-хо!";
 			link.l1.go = "mtraxx_82";
 		break;
 		
 		case "mtraxx_82":
-            dialog.text = "Exactly! I will deliver him a blow from the shadow. Just like he did. And one last thing: once you send them a signal, immediately sail to intercept the Spanish galleon and her escort. No time will be left to waste.";
-			link.l1 = "On a polacre? They will tear me apart!";
+            dialog.text = "Именно! Так я нанесу удар Барбазону, а сам в стороне останусь. Совсем как он. И последняя, четвертая задача: после передачи сигнала сразу отправишься на перехват эскадры испанцев, и не упусти ее! Времени у тебя будет в обрез.";
+			link.l1 = "На одном полакре? Против тяжелого галеона и еще двух кораблей, причем наверняка не шхун? Да меня разнесут в щепки!";
 			link.l1.go = "mtraxx_83";
 		break;
 		
 		case "mtraxx_83":
-            dialog.text = "I am sorry, did you say something? Spyke will save your sorry ass. You won't be left without reinforcements. Just don't let the caravan to flee, do not let them get to the ocean. Got it?";
-			link.l1 = "Yes, boss.";
+            dialog.text = "Чего раскудахтался? Даром, что ли, ты мне записку Спайком доставишь? К тебе придет подмога. Главное - не упусти караван, не дай им удрать в Атлантический океан. Понял?";
+			link.l1 = "Понял, босс.";
 			link.l1.go = "mtraxx_84";
 		break;
 		
 		case "mtraxx_84":
-            dialog.text = "Your reward will be a heavy load of gold plus Marco's polacre. They say she is a damn good ship. Any questions? Do you understand your mission?";
-			link.l1 = "I am not Cutlass, I know what to do. Where should I intercept the Torero?";
+            dialog.text = "Наградой тебе будет куча золота, да и полакр Марко оставишь себе. Говорят, весьма недурен этот кораблик. Итак, все ясно, или повторить?";
+			link.l1 = "Я не Тесак, понимаю с первого раза. Где перехватывать 'Тореро' - знаешь?";
 			link.l1.go = "mtraxx_85";
 		break;
 		
 		case "mtraxx_85":
-            dialog.text = "While we are having this chit chat, she is swiftly sailing right to Philipsburg from Cuba. Must be around Tortuga now or a bit to the East from it. Catch them not far from Sint Maarten just don't let their friends to see the fight otherwise my plan is ruined.";
-			link.l1 = "Getting underway right now!";
+            dialog.text = "Пока мы тут с тобой распинаемся, он уже летит на всех парусах к Филипсбургу с Кубы. Сейчас должен быть где-то около Тортуги или дальше на восток. Так что не теряй ни минуты - выбирай якоря и дуй со всей силы к Синт-Маартену - лови его на подходе к острову, но не слишком близко! Если люди Барбазона увидят, что ты напал на 'Тореро' - сам понимаешь, плакал мой хитрый план.";
+			link.l1 = "Все ясно. Выхожу в море!";
 			link.l1.go = "mtraxx_86";
 		break;
 		
@@ -1442,14 +1442,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_87":
-            dialog.text = "So Prince did you screw everything up? Huh?";
-			link.l1 = "I did. This mission was a much bigger challenge than I thought. You can give me an enraging speech and show me the door.";
+            dialog.text = "Ну что, Принц, завалил все дело, так? А?";
+			link.l1 = "Да, завалил. Все оказалось сложнее, чем я себе представлял. Можешь вычитать меня, можешь выставить за дверь.";
 			link.l1.go = "mtraxx_88";
 		break;
 		
 		case "mtraxx_88":
-            dialog.text = "Come on, quit it. It happens. You are good corsair and we all fail sometimes. Pity we didn't get that gold but if we didn't get it in one place, we should get from another, ha-ha! You'll have a chance to regain your reputation in my eyes in a month. I am gathering everyone for a raid!\nGet to me in three weeks on a single but powerful ship. Luke, Cutlass, Geffrey and Jan will take part in this too. Don't be late!";
-			link.l1 = "I won't boss!";
+            dialog.text = "Ладно, не шуми. Бывает. Ты толковый корсар, но неудачи случаются со всеми. Жаль, конечно, испанского золота, но мы его еще возьмем, не здесь - так в другом месте, ха-ха! У тебя будет шанс реабилитироваться: приходи ко мне через три недели, и желательно на корабле посильнее, но только на одном - и так будет целая эскадра. Я собираю всех своих людей в поход!\nПод моим началом пойдешь ты, Жан Красавчик, Лысый Джеффри, Тесак Пелли, Люк Лепрекон. Все, пока свободен, жду в указанный срок, и не вздумай опоздать!";
+			link.l1 = "Буду как штык, босс!..";
 			link.l1.go = "mtraxx_89";
 		break;
 		
@@ -1465,48 +1465,48 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_board":
-            dialog.text = "Ho-ho, greetings to brave corsair! Didn't expect to see me here, right? Ha-ha-ha! We've found the Spanish caravan after all...";
+            dialog.text = "Хо-хо, приветствую бравого корсара! Не ожидал меня увидеть здесь, да? Ха-ха-ха! Разыскали мы все-таки испанский караван...";
 			if (CheckAttribute(pchar, "questTemp.Mtraxx.Corrida.Gold")) // был абордаж
 			{
-				link.l1 = "Yes boss we did, although it wasn't easy.";
+				link.l1 = "Так точно, босс, разыскали, хотя было это непросто.";
 				link.l1.go = "mtraxx_board_1";
 			}
 			else
 			{
-				link.l1 = "Yeah although the golden galleon was sunken with all her gold.";
+				link.l1 = "Да, вот только испанский золотой галеон затонул вместе со всем грузом.";
 				link.l1.go = "mtraxx_board_7";
 			}
 		break;
 		
 		case "mtraxx_board_1":
 			iTotalTemp = GetSquadronGoods(pchar, GOOD_GOLD);
-            dialog.text = "How much gold did we get, Prince?";
-			if (iTotalTemp < 1) link.l1 = "Ќeh... Nothing.";
-			else link.l1 = "Heh... "+iTotalTemp+"...";
+            dialog.text = "Сколько золота мы добыли, Принц?";
+			if (iTotalTemp < 1) link.l1 = "Хех... Ничего мы не добыли, босс.";
+			else link.l1 = "Хех... "+iTotalTemp+" в весовых мерах...";
 			link.l1.go = "mtraxx_board_2";
 		break;
 		
 		case "mtraxx_board_2":
 			if (iTotalTemp < 20)
 			{
-				dialog.text = "Damn it! Spanish must had thrown it to the sea so we wouldn't get it. At least they paid for it. As well as Barbason's men which is also a result.";
-				link.l1 = "Shame about the gold... What next Marcus? Are we going to La Vega?";
+				dialog.text = "Вот незадача! Испанцы выбросили груз за борт, лишь бы нам не достался. Ладно, они свое уже получили, как, впрочем, и люди Барбазона, а это тоже результат.";
+				link.l1 = "Жаль золота, конечно... Что дальше, Маркус? В Ла Вегу?";
 				link.l1.go = "mtraxx_board_4";
 				AddQuestRecord("Roger_8", "18");
 				break;
 			}
 			if (iTotalTemp >= 20 && iTotalTemp < 300)
 			{
-				dialog.text = "Pathetic. It doesn't even compensate my tour here. Obviously the Spanish must had thrown it to the sea so we wouldn't get it. At least they paid for it. As well as Barbason's men which is also a result.";
-				link.l1 = "Shame about the gold... Let's split it anyway.";
+				dialog.text = "Ерунда какая-то. Ради этого не стоило даже гнать сюда мой корабль с Ла Веги. Очевидно, испанцы выбросили почти весь груз за борт, лишь бы нам не достался. Ладно, они свое уже получили, как, впрочем, и люди Барбазона, а это тоже результат.";
+				link.l1 = "Жаль золота, конечно... Но поделим хоть это.";
 				link.l1.go = "mtraxx_board_3";
 				AddQuestRecord("Roger_8", "19");
 				break;
 			}
 			if (iTotalTemp >= 300 && iTotalTemp < 700)
 			{
-				dialog.text = "This is a poor prize. Just above of the costs. Obviously the Spanish must had thrown it to the sea so we wouldn't get it. At least they paid for it. As well as Barbason's men which is also a result.";
-				link.l1 = "Shame about the gold... Let's split it anyway.";
+				dialog.text = "Бедненько, конечно. Едва оправдает расходы на экспедицию. Очевидно, испанцы выбросили часть груза за борт, лишь бы нам не достался. Ладно, они свое уже получили, как, впрочем, и люди Барбазона, а это тоже результат.";
+				link.l1 = "Жаль золота, конечно... Но поделим хоть это.";
 				link.l1.go = "mtraxx_board_3";
 				AddQuestRecord("Roger_8", "19");
 				AddCharacterExpToSkill(pchar, "Fortune", 100);
@@ -1514,15 +1514,15 @@ void ProcessDialogEvent()
 			}
 			if (iTotalTemp >= 700 && iTotalTemp < 1000)
 			{
-				dialog.text = "Not bad, although I expected better. Obviously the Spanish must had thrown it to the sea so we wouldn't get it. At least they paid for it. As well as Barbason's men which is also a result.";
-				link.l1 = "Let's split the prize!";
+				dialog.text = "Неплохо, хотя я ожидал большего. Очевидно, испанцы все-таки успели выбросить немного золота за борт, лишь бы нам не достался. Ладно, они свое уже получили, как, впрочем, и люди Барбазона, а это тоже результат.";
+				link.l1 = "Делим добычу!";
 				link.l1.go = "mtraxx_board_3";
 				AddQuestRecord("Roger_8", "20");
 				AddCharacterExpToSkill(pchar, "Fortune", 200);
 				break;
 			}
-			dialog.text = "Nice. We did good friend. And Barbason's men got what we had for them, ha-ha!";
-			link.l1 = "Heh, that's a load of gold! Let's split it!";
+			dialog.text = "Отлично. Мы превосходно сработали, приятель. И люди Барбазона свое получили, ха-ха!";
+			link.l1 = "Хех! У нас куча золота! Делим добычу!";
 			link.l1.go = "mtraxx_board_3";
 			AddQuestRecord("Roger_8", "21");
 			AddCharacterExpToSkill(pchar, "Fortune", 300);
@@ -1532,19 +1532,19 @@ void ProcessDialogEvent()
 			RemoveCharacterGoods(pchar, GOOD_GOLD, makeint(iTotalTemp/2));
 			WaitDate("", 0, 0, 0, 3, 10);
 			LAi_Fade("", "");
-            dialog.text = "... like we always do in the Brethren - a fair cut to each. You can keep the Torero, she is your prize.";
-			link.l1 = "What next Marcus? Are we going to La Vega?";
+            dialog.text = "... все как положено в Береговом братстве - пополам. А полакр 'Тореро' - твоя добыча.";
+			link.l1 = "Что дальше, Маркус? В Ла Вегу?";
 			link.l1.go = "mtraxx_board_4";
 		break;
 		
 		case "mtraxx_board_4":
-            dialog.text = "I am. You should come to me in three weeks on a single but powerful ship. Luke, Cutlass, Geffrey and Jan will take part in this too. You will learn more later!";
-			link.l1 = "Fine boss! See you in La Vega in three weeks.";
+            dialog.text = "Я так точно в Ла Вегу, а вот тебя жду у себя через три недели. Желательно на корабле посильнее, но только на одном - и так будет целая эскадра. Я собираю всех своих людей в поход. Под моим началом пойдешь ты, Жан Красавчик, Лысый Джеффри, Тесак Пелли, Люк Лепрекон. Готовься. Нас ждет серьезная экспедиция и немаленькая добыча. Все подробности узнаешь позже.";
+			link.l1 = "Хорошо, босс! Буду через три недели в Ла Веге.";
 			link.l1.go = "mtraxx_board_5";
 		break;
 		
 		case "mtraxx_board_5":
-            dialog.text = "Farewell cutthroat! Ha-ha!";
+            dialog.text = "А сейчас бывай, головорез! Ха-ха!";
 			link.l1 = "...";
 			link.l1.go = "mtraxx_board_6";
 		break;
@@ -1563,8 +1563,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_board_6x":
-            dialog.text = "Anything else?";
-			link.l1 = "No, I don't think so. Getting underway already.";
+            dialog.text = "Что-то еще хочешь сказать?";
+			link.l1 = "Нет, пожалуй. Уже отправляюсь на свое судно.";
 			link.l1.go = "mtraxx_board_6y";
 		break;
 		
@@ -1574,14 +1574,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_board_7":
-            dialog.text = "Heh! And whose fault is that Prince? Was it yours?";
-			link.l1 = "I am sorry boss, I am truly am, but you too did an excellent job shooting with your giant couleurins. Nice aiming by the way...";
+            dialog.text = "Хех! И кто же в этом виноват, Принц? Не ты ли, часом? Куда ты смотрел?";
+			link.l1 = "Босс, извини, конечно, но ты тоже лупил без разбора из своих гигантских кулеврин. Мог бы и поаккуратнее с испанцем...";
 			link.l1.go = "mtraxx_board_8";
 		break;
 		
 		case "mtraxx_board_8":
-            dialog.text = "Whatever. The fault is on both of us. We are not empty handed though - Barbason's men got we had for them which is also a result.";
-			link.l1 = "Shame about the gold... What next Marcus? Are we going to La Vega?";
+            dialog.text = "Ладно. Оба гуся хороши... Одно радует в этой истории - что люди Барбазона свое получили, а это тоже результат.";
+			link.l1 = "Жаль золота, конечно... Что дальше, Маркус? В Ла Вегу?";
 			link.l1.go = "mtraxx_board_4";
 		break;
 		
@@ -1594,65 +1594,65 @@ void ProcessDialogEvent()
 			pchar.quest.Mtraxx_CartahenaLate.over = "yes";
 			if (GetCompanionQuantity(pchar) > 1)
 			{
-				dialog.text = "Prince did you loose your brain? I told you to bring only one ship! Go get rid of the extra and come back as soon as possible! Now!";
-				link.l1 = "Hm...";
+				dialog.text = "Принц, ты что, стал туго понимать? Я же сказал - явиться только на одном корабле, и так эскадра будет состоять из пяти судов. Живо иди избавляйся от балласта, и назад ко мне! Бегом!";
+				link.l1 = "Гм...";
 				link.l1.go = "mtraxx_90x";
 				break;
 			}
 			if (RealShips[sti(pchar.Ship.Type)].Type.Merchant) // торговые
 			{
-				dialog.text = "Prince have you decided to be my second Cutlass? Why did you bring a trade vessel to me? I was counting on you! Go bring here a decent warship! Now!";
-				link.l1 = "Hm...";
+				dialog.text = "Принц, ты что, с Тесака стал пример брать? Зачем ты мне нужен на торговой лоханке? Я рассчитывал на тебя, а ты меня подводишь! Живо беги менять корабль на нормальный, если успеешь до моего отправления - молодец, нет - твои проблемы, ждать никого не намерен.";
+				link.l1 = "Гм...";
 				link.l1.go = "mtraxx_90x";
 				break;
 			}
 			if (sti(RealShips[sti(pchar.ship.type)].Class) > 3)
 			{
-				dialog.text = "Prince did you loose your brain? I told you to bring a warship! Come back here on third of second rank vessel! Now! I am not gonna be waiting for anyone.";
-				link.l1 = "Hm...";
+				dialog.text = "Принц, ты меня удивил. Я же говорил - явиться на корабле помощнее. Чем ты сможешь мне помочь на этой скорлупе? Я рассчитывал на тебя, а ты меня подводишь! Живо беги менять корабль на больший, не ниже третьего класса, если успеешь до моего отправления - молодец, нет - твои проблемы, ждать никого не намерен.";
+				link.l1 = "Гм...";
 				link.l1.go = "mtraxx_90x";
 				break;
 			}
 			if (sti(RealShips[sti(pchar.ship.type)].Class) < 2)
 			{
-				dialog.text = "Prince, why not bring here the Sovereign of the Seas? When I told you to bring a warship, I didn't mean to bring a fucking ship of the line! Come back here on third of second rank vessel! Now! I am not gonna be waiting for anyone.";
-				link.l1 = "Hm...";
+				dialog.text = "Принц, ты бы еще на королевском 'Повелителе морей' явился. Помощнее - это не значит на линейном корабле. Мы что, против Непобедимой Армады воевать пойдем? У нас в эскадре уже есть один корабль первого класса - мой 'Красный дракон', второй будет только мешать. Живо беги менять корабль на меньший, второй-третий класс, если успеешь до моего отправления - молодец, нет - твои проблемы, ждать никого не намерен.";
+				link.l1 = "Гм...";
 				link.l1.go = "mtraxx_90x";
 				break;
 			}
-            dialog.text = "Good timing, corsair! Glad to see you in one piece! Ready for a voyage?";
-			link.l1 = "Sure thing, chief. Always ready.";
+            dialog.text = "Рад видеть тебя в добром здравии и вовремя, корсар! Готов к дальнему походу?";
+			link.l1 = "Конечно, босс. Как обычно.";
 			if (CheckAttribute(pchar, "questTemp.Mtraxx.Corrida.Barbazon")) link.l1.go = "mtraxx_91";
 			else link.l1.go = "mtraxx_94";
 		break;
 		
 		case "mtraxx_91":
-            dialog.text = "By the way, do want to know about Barbason's squadron you'd sent to Puerto-Rico?";
-			link.l1 = "They have completely slipped from my mind. Sure, I want. Did they find their doom?";
+            dialog.text = "Кстати, тебе не интересно узнать, что стало с эскадрой Барбазона, которую мы отправили к Пуэрто-Рико?";
+			link.l1 = "Я как-то совсем забыл о них... Конечно, интересно. Нашли они свою добычу - испанских карателей?";
 			link.l1.go = "mtraxx_92";
 		break;
 		
 		case "mtraxx_92":
-            dialog.text = "They did. Joker Jim was burnt along with his ship. The other two got a heavy beating too yet they managed to flee. To be honest, the Spanish have disappointed me.";
-			link.l1 = "Heh. Whatever. We still pissed in Barbason's boots. Gave him a message.";
+            dialog.text = "Нашли. Флагман - фрегат Джокера Джима 'Филин', сгорел дотла. Сам Джокер Джим бесследно сгинул. Бродягу и Упыря крепко потрепали, но они ухитрились сбежать: Бродяга - на Тортугу, под защиту пушек Ля Роша, Упырь - на Исла Тесоро. Паскуале мне рассказал, что Упырь вдобавок усадил на рифы свой корабль недалеко от Шарптауна и еле снялся с них. Мастеру Алексусу теперь предстоит много работы, хе-хе. В общем, немного огорчили меня испанцы. Я думал, что они всех порешат.";
+			link.l1 = "Хех. Ничего. Все равно наступили Барбазону на мозоль. Будет знать, как подсылать своих наперсников.";
 			link.l1.go = "mtraxx_93";
 		break;
 		
 		case "mtraxx_93":
-            dialog.text = "True. Let's talk business.";
-			link.l1 = "I am all ears.";
+            dialog.text = "Это точно. Ладно, теперь к делу.";
+			link.l1 = "Слушаю внимательно.";
 			link.l1.go = "mtraxx_94";
 		break;
 		
 		case "mtraxx_94":
-            dialog.text = "My intelligence in the person of my good friend Bernard Vensan reported me about a huge pile of golden ingots the Spanish stored in Cartagena. Below it's fort, to be more specific. Normally it would had been attributed to the Golden Fleet of Spain but this time it is ours to take. We are heading to South Main to storm Cartagena.";
-			link.l1 = "Argh! Did I hear it right? Are we to plunder a fucking colony with a fort?";
+            dialog.text = "Как доложила разведка в лице моего бравого боевого товарища Бернара Венсана, испанцы переправили с рудников в глубине Мэйна на побережье огромную партию золотой руды. Там ее переплавили в слитки и отскладировали в подвалы форта Картахены, где они ждут очередного 'Золотого каравана' до Европы. Однако золото дождется не испанских кораблей, а лихих корсаров в нашем лице. Мы идем на Южный Мэйн - штурмовать Картахену.";
+			link.l1 = "Аргх! Я не ослышался? Мы будем брать целую испанскую колонию, с фортом?";
 			link.l1.go = "mtraxx_95";
 		break;
 		
 		case "mtraxx_95":
-            dialog.text = "You heard right. My warship will deal with the fort with your help of course. Bold Jeffrey will be carrying ground troops on his ost-indian. Pelly got a decent corvetteЙ not without my financial aid. Paul Chant and you are responsible for taking out patrol fleet.\nJan Picard didn't show up which is odd since his vessel was seen in Port Royal. His problems, so fuck him. Instead of him, my friend will join the raid, Bernard Vensan. Plus, Leprechaun with his buccaneers will assist our troops. We will take the gold from the fort and ransom from the city. They won't forget it, ha-ha!\nCome join me and other captains in the tavern this evening! We should drink for our cause!";
-			link.l1 = "Aye, aye, chief!..";
+            dialog.text = "Со слухом у тебя все в порядке. Именно это мы и будем делать. Основную ударную силу составит мой военный корабль 'Красный дракон'. Ему по плечу справиться с фортом Картахены. Корабль Лысого Джеффри, ост-индец 'Снэйк' - сменял Лысый свой галеон в бою с голландскими торгашами, напав на них врасплох - повезет десант. Тесак Пелли наконец избавился от своей позорной баркентины и уселся на подобающее корсару судно - корвет... впрочем, не без моей финансовой поддержки\nПол Чант и ты обеспечите прикрытие от возможных мелких кораблей противника по пути и у самой Картахены. Также ваши команды примут участие в штурме, а такой суровый головорез, как ты, еще и поможет мне бомбить форт. Жан Пикар, к моему удивлению, не явился, хотя я знаю, что с ним все в порядке - его корвет 'Грифон' стоит на рейде Порт-Ройяля. Ну, если у Красавчика есть дела важнее испанского золота - это его проблемы, я ждать никого не намерен\nВместо Пикара пятым кораблем в эскадру пойдет Бернар Венсан на бригантине. К нему на борт поднимется Люк Лепрекон с отрядом буканьеров. Этих сил будет достаточно, чтобы сломить сопротивление испанцев и стать хозяевами в Картахене на пару-тройку дней. Мы заберем все золото из форта и заодно затребуем выкуп с горожан и губернатора. Испанцы надолго нас запомнят, ха-ха-ха!\nА сейчас пока отдыхай, но вечером чтобы был в нашей таверне: прибудут остальные капитаны, и мы все вместе хорошенько выпьем за успех нашего дела. Я прикажу бармену разогнать всю шантрапу - в заведении будем только мы вшестером и девочки. Погуляеешь со своими боевыми товарищами, а завтра с утра - в путь. Встанешь во главе эскадры - будешь прокладывать курс. И постарайся сделать это так, чтобы мы прибыли к Картахене как можно скорее. Все понятно?";
+			link.l1 = "Так точно, босс!..";
 			link.l1.go = "mtraxx_96";
 		break;
 		
@@ -1669,7 +1669,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_97":
-            dialog.text = "Prince, where the hell have you been? Sit down! Already? Well done. Let's begin!\nMy brave corsairs, tonight the best rum and the best women are all yours! The gold of Cartagena is waiting for us, so let's drink for our mutual success! To the dregs!..";
+            dialog.text = "Принц, где ты шляешься, одного тебя ждем! Садись! Уже сидишь? Ну молодец, дружище. Значит, мы можем начинать!\nИтак, бравые корсары! Нас ждет золото Картахены, ха-ха! И мы его получим, клянусь громом! Но тот, кто умеет хорошо работать, должен хорошо отдыхать! Поэтому сегодня мы чудно проведем время в этом прекрасном заведении. Налейте себе рому, да побольше! Кружки наполнить до краев! За ветер добычи, за ветер удачи! Пьем до дна!\nБерни, Принц, Тесак, Лысый, Лепрекон! Для вас самое лучшее пойло из погребов нашей таверны, и эти самые прекрасные дамы на острове, ха-ха-ха!.. Корсары, запевай песню! Нашу, любимую!..";
 			link.l1 = "";
 			link.l1.go = "mtraxx_98";
 		break;
@@ -1682,26 +1682,26 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_99":
-            dialog.text = "Time to show them who we are, corsairs. Leprechaun! Take your men and take control of the city gates. We don't want them to send reinforcements to the fort! Hit them hard when we will push through soldiers of the fort!";
+            dialog.text = "Итак, корсары, пришло время показать испанцам, кто тут хозяин. Лепрекон! Бери своих людей и отправляйся через джунгли к городским воротам. Городской гарнизон Картахены не должен прийти на помощь защитникам форта. Увидев вас, комендант будет крепить оборону города и не рискнет отправить подмогу. Когда мы вытесним солдат из форта, ударишь им в спину. Все понятно?";
 			link.l1 = "";
 			link.l1.go = "mtraxx_100";
 		break;
 		
 		case "mtraxx_100":
-            dialog.text = "Prince and Paul! You saw the military squadron, get rid of them. Stay away from the fort and do no board their vessels. We have neither time, nor position to deal with prizes. Everything's clear?! Great, ha-ha! Charge!";
+            dialog.text = ""+pchar.name+" и Пол! Как вы видели, у берегов Картахены что-то забыла военная испанская эскадра из трех судов. Отправляйтесь и уничтожьте ее. Мне свой корабль надо придержать для бомбежки форта - не хватало еще, чтобы эта мелюзга попортила мне книппелями паруса, а Джеффри надо беречь десант. К форту не лезьте, выманите испанцев от берега подальше. Ясно? Принц, тебя это особенно касается - знаю я твою склонность погеройтствовать. Она у тебя будет, но позже, со мной на пару\nЯ, Лысый и Бернар ложимся в дрейф и ждем. Как ликвидируете испанские корабли - немедленно возвращайтесь назад. Тут, у бухты Ковеньяс, Тесаку лечь в дрейф, Принцу ко мне на 'Красный дракон.' И еще: захватывать себе суда испанцев запрещаю - некогда возиться с призовыми лоханками. Только топить. Всем все понятно? Вижу, что да. Тогда вперед, корсары, ха-ха-ха!";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("Mtraxx_CartahenaSquadronAttack");
 		break;
 		
 		case "mtraxx_101":
-            dialog.text = "So, the Spanish squadron is gone for good. Now it's time for the Red Dragon to play her part. We will turn the fort of Cartagena into a pile of rubble. Are you with me?";
-			link.l1 = "Sure!";
+            dialog.text = "Так, с испанской эскадрой покончено. Теперь в дело вступает 'Красный дракон' - пора превратить форт Картахены в груду дымящихся развалин. Готов идти со мной?";
+			link.l1 = "Конечно!";
 			link.l1.go = "mtraxx_102";
 		break;
 		
 		case "mtraxx_102":
-            dialog.text = "The Red Dragon is very sturdy ship with a powerful artillery, yours is not a match to her. So be careful, don't play a hero and stay away from my guns!";
+            dialog.text = "'Красный дракон' очень крепкий корабль с мощной артиллерией, с твоим не сравнится, поэтому на рожон не лезь, приближайся к форту аккуратно и не путайся у меня под орудиями. Вперед!";
 			link.l1 = "...";
 			link.l1.go = "mtraxx_103";
 		break;
@@ -1729,8 +1729,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_104":
-            dialog.text = RandSwear()+"Helluva fight! This is it, my brave corsairs! Cartagena is ours! Resistance is down! Bold, Leprechaun! Come with me to the fort - Bernie must had already found the gold. Prince, take Cutlass and negotiate the governor to pay us a ransom of 250000. They have the money, so be persistent. I know you can.";
-			link.l1 = "Heh! Will be a pleasure, boss!";
+            dialog.text = RandSwear()+"Жаркая была схватка! Все, бравые корсары, Картахена наша. Больше некому сопротивляться, ха-ха-ха! Лысый, Лепрекон! Идете вместе со мной в форт - Берни должен был уже отыскать хранилища с золотом, поможем ему. Принц, бери Тесака и отправляйся на переговоры к губернатору - ты это умеешь, я знаю. Затребуешь выкуп в двести пятьдесят тысяч песо\nГорожане должны собрать откупные - ничего вывезти из города они не могли, буканьеры Лепрекона караулили у ворот. Пускай купцы и прочие богачи раскошеливаются. Будет упорствовать - ты знаешь, что делать, учить не нужно.";
+			link.l1 = "Хех! С удовольствием, босс!";
 			link.l1.go = "mtraxx_105";
 		break;
 		
@@ -1761,22 +1761,22 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_106":
-            dialog.text = "How are you doing, Prince?";
-			link.l1 = "Everything is splendid. I forced the Cartagena's richest to pay 350 000.";
+            dialog.text = "Как успехи, Принц?";
+			link.l1 = "Все отлично. Я заставил раскошелиться богачей Картахены на триста пятьдесят тысяч песо.";
 			link.l1.go = "mtraxx_107";
 		break;
 		
 		case "mtraxx_107":
             if (sti(Pchar.money) < 350000)
 			{
-				dialog.text = "Ho-ho, that's my boy! But where is the money?";
-				link.l1 = RandSwear()+"I will bring them in no time!";
+				dialog.text = "Хо-хо, вот это молодец! Но где же деньги?";
+				link.l1 = RandSwear()+"Сейчас принесу!";
 				link.l1.go = "mtraxx_107x";
 			}
 			else
 			{
-				dialog.text = "Ho-ho, that's my boy! You and the Cutlass can keep 25 000 each as a bonus for speed and resourcefulness. The rest will be split between all of us later.";
-				link.l1 = "Here you go!";
+				dialog.text = "Хо-хо, вот это молодец! Двадцать пять тысяч песо оставишь себе, двадцать пять отдаем Тесаку - это вам обоим премия за смекалку и сноровистость, а три сотни давай мне - пойдет в общий котел.";
+				link.l1 = "Держи!";
 				link.l1.go = "mtraxx_109";
 			}
 		break;
@@ -1789,39 +1789,39 @@ void ProcessDialogEvent()
 		case "mtraxx_108":
             if (sti(Pchar.money) < 350000)
 			{
-				dialog.text = "So? Stop playing around and bring the coin here!";
-				link.l1 = "On my way!";
+				dialog.text = "Ну? Прекрати паясничать, тащи монеты!";
+				link.l1 = "Уже несу!";
 				link.l1.go = "mtraxx_107x";
 			}
 			else
 			{
-				dialog.text = "Great! You and the Cutlass can keep 25 000 each as a bonus for speed and resourcefulness. The rest will be split between all of us later.";
-				link.l1 = "Here you go!";
+				dialog.text = "Отлично! Двадцать пять тысяч песо оставишь себе, двадцать пять отдаем Тесаку - это вам обоим премия за смекалку и сноровистость, а три сотни тысяч давай мне - пойдет в общий котел.";
+				link.l1 = "Держи!";
 				link.l1.go = "mtraxx_109";
 			}
 		break;
 		
 		case "mtraxx_109":
 			AddMoneyToCharacter(pchar, -325000);
-            dialog.text = "You must be concerned about our gold? It is found - 5000 units and it's already being transported to our ships. The split was done already, men agreed with it, we hope that Cutlass and you will not object too.";
-			link.l1 = "What is my share?";
+            dialog.text = "Тебя, вероятно, беспокоит вопрос, что с нашим золотом? Золото найдено - 5000 весовых мер, и грузится в трюмы наших кораблей. Дележ уже произведен, с ним согласились Лысый, Лепрекон и Берни, надеюсь, что тебя с Тесаком тоже все устроит.";
+			link.l1 = "И какова моя доля?";
 			link.l1.go = "mtraxx_110";
 		break;
 		
 		case "mtraxx_110":
-            dialog.text = "Since the whole operation was planned by me, plus the Red Dragon did the toughest job of dealing with a fort, me and my men will receive a half of plunder. The other half will be shared between captains of other four ships according to the number of their crews. You have "+GetCrewQuantity(pchar)+" men in disposal, your share is "+sti(pchar.questTemp.Mtraxx.Cartahena.Gold)+" units of gold and "+sti(pchar.questTemp.Mtraxx.Cartahena.Money)+" pesos.";
-			link.l1 = "Well, since everyone is fine with this then me too!..";
+            dialog.text = "Поскольку операция задумана и разработана мной, а также поскольку 'Красный дракон' выполнил наиболее важную задачу - разрушение форта, то мне и команде 'Красного дракона' положена половина добычи. Остальное делится между капитанами остальных четырех кораблей, согласно количества их команды. На твоих "+GetCrewQuantity(pchar)+" человек приходится "+sti(pchar.questTemp.Mtraxx.Cartahena.Gold)+" мер золота и "+sti(pchar.questTemp.Mtraxx.Cartahena.Money)+" песо.";
+			link.l1 = "Ну, раз все согласны - чего же я буду возражать? Принято!..";
 			link.l1.go = "mtraxx_111";
 		break;
 		
 		case "mtraxx_111":
-            dialog.text = "Splendid. Congratulations for this successful voyage, corsairs! Nothing is left to do for us here, time to go home. All of us including myself are receiving a vacation for a month. Not you, Prince, though, I have another task for you. See, Janette, a Madame of Tortuga's brothel, had a complain about you: she said that Charley Prince doesn't give much attention and love to her establishment. Therefore, I command you to sail to Tortuga, go to Janette's and waste your bonuses there. You have deserved it. Make the Madame and her girls happy. I don't want to see you before you get rested on Tortuga, ha-ha-ha!";
-			link.l1 = "Got it, boss. This is the most pleasant assignment I ever received. Will do!";
+            dialog.text = "Прекрасно. Поздравляю, корсары, с успешным походом! Больше нам здесь делать нечего - пора убираться восвояси. Даю всем, в том числе и себе, месяц на отдых от дел. Принц, однако вот тебе будет задание: Жанетта, хозяйка борделя на Тортуге, пожаловалась, что бравый корсар Чарли Принц совсем не балует ее заведение своим вниманием. Посему отправляйся на Тортугу, иди к Жанетте и спусти у нее свою премию. Ты это заслужил. Порадуй даму и ее девочек. И чтобы без отдыха на Тортуге ко мне не приходил, ха-ха-ха!";
+			link.l1 = "Понял, босс. Это самое приятное поручение, которое я когда-либо получал. Будет сделано!";
 			link.l1.go = "mtraxx_112";
 		break;
 		
 		case "mtraxx_112":
-            dialog.text = "Farewell, gentlemen! Get on your ships and set sails! See you all in La Vega!";
+            dialog.text = "Расходимся, джентльмены! Все на борт своих кораблей и выбираем якоря! Увидимся в Ла Веге!";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("Mtraxx_CartahenaFinal");
@@ -1829,13 +1829,13 @@ void ProcessDialogEvent()
 		
 		// Addon 2016-1 Jason пиратская линейка патч 17/1
 		case "mtraxx_113":
-            dialog.text = "What?! Jan is now a bitch of the Englishmen, Bold and Cutlass have disappeared, Leprechaun and his men are nowhere to be found!! And now you?!";
-			link.l1 = "Marcus I've made a decision. I made a good coin, you made quite a fortune on me  too. Time to part our ways. I am leaving.";
+            dialog.text = "Что?!! Жан Красавчик ушел прислуживать англичанам, два моих придурка - Лысый и Тесак - пропали бесследно, Лепрекон со своими клевретами тоже как сквозь землю провалился, теперь еще и ты решил деру дать?!";
+			link.l1 = "Маркус, я принял решение. Я хорошо заработал на твоих поручениях, ты тоже с моей помощью получил немало звонких песо и дублонов, но на этом все. Я ухожу.";
 			link.l1.go = "mtraxx_114";
 		break;
 		
 		case "mtraxx_114":
-            dialog.text = "You, just like Picard, thought that you can have a better cut on your own? Yeah? Thought that you can do without me? Ha-ha-ha! Get the hell out of here Prince, I am not keeping you. Soon, very soon you'll see how wrong you are and then you will come back begging me to take your sorry ass back. And you know what? I won't! Ha-ha! Get out of my sight!";
+            dialog.text = "Ты, как и Пикар, решил, что в одиночку тебе больше достанется? Да? Решил, что сможешь все делать сам, без меня? Поэтому и придумал эту сказку про кровавых мальчиков? Ха-ха-ха! Вали отсюда, Принц, я не собираюсь удерживать тебя. Скоро, очень скоро ты убедишься в ошибочности своего поступка и прибежишь проситься ко мне назад, но я тебя не возьму! Ха-ха! А теперь убирайся с глаз моих!";
 			link.l1 = "...";
 			link.l1.go = "mtraxx_115";
 		break;
@@ -1847,76 +1847,76 @@ void ProcessDialogEvent()
 		
 		// Jason НСО
 		case "patria":
-			dialog.text = "Ho-ho! You've come to the right place! Spit it out!";
-			link.l1 = "There is a fella that has no fear of pirates. He doesn't take them seriously. He needs to be taught a lesson om respect. Remember, don't kill him.";
+			dialog.text = "Хо-хо, тогда ты по адресу! Выкладывай!";
+			link.l1 = "Есть один фрукт, который не боится пиратов. Всерьез их не воспринимает. Надо его поучить уму-разуму. Но не убивать.";
 			link.l1.go = "patria_1";
 		break;
 		
 		case "patria_1":
-			dialog.text = "Huh! It's noone else than the old man Charles! I bet you got yourself into some affair again! Let's get to the details, who's the target this time and what shall we teach him";
-			link.l1 = "A guest from Europe, an inspector of the French Ministry of Finance - baron Noel Forget. He wants to establish a French Trading Company here, but me and a close friend of mine object against it. We tried to convince the baron, that trading here would be very risky because of the Dutch, English and especially pirates after Levasseur was defeated, but he won't listen. We need to strike fear into him, to make him feel it on his own skin.";
+			dialog.text = "Хех! Узнаю старину Шарля! Опять что-то затеял! Ну, давай подробнее, что за фрукт, как учить будем?";
+			link.l1 = "Гость из Европы, инспектор министерства финансов барон Ноэль Форже. Хочет организовать тут Французскую торговую Компанию, а я и мой большой друг этого не хотим. Мы пытались убедить барона, что торговать тут весьма опасно из-за голландцев, испанцев, англичан и особенно пиратов, после разгрома Левассера, но он и ухом не ведет. Надо внушить ему страх, и дать прочувствовать его на своей собственной шкуре.";
 			link.l1.go = "patria_2";
 		break;
 		
 		case "patria_x":
-			dialog.text = "Ho-ho! You've come to the right place! Spit it out!";
-			link.l1 = "There is a fella that has no fear of pirates. He doesn't take them seriously. He needs to be taught a lesson om respect. Remember, don't kill him.";
+			dialog.text = "Хо-хо, тогда ты по адресу! Выкладывай!";
+			link.l1 = "Есть один фрукт, который не боится пиратов. Всерьез их не воспринимает. Надо его поучить уму-разуму. Но не убивать.";
 			link.l1.go = "patria_x1";
 		break;
 		
 		case "patria_x1":
-			dialog.text = "Huh! Why did you decide to harness pirates all of a sudden? Fine, I don't care as long as you pay me. Let's get to the details, who's the target this time and what shall we teach him";
-			link.l1 = "A guest from Europe, an inspector of the French Ministry of Finance - baron Noel Forget. He wants to establish a French Trading Company here, but me and a close friend of mine object against it. We tried to convince the baron, that trading here would be very risky because of the Dutch, English and especially pirates after Levasseur was defeated, but he won't listen. We need to strike fear into him, to make him feel it on his own skin.";
+			dialog.text = "Хех! Чего это ты решил впрячься за пиратов? Ладно, если деньги заплатишь, мне все равно. Давай подробнее, что за фрукт, как учить будем?";
+			link.l1 = "Гость из Европы, инспектор министерства финансов барон Ноэль Форже. Хочет организовать тут Французскую торговую Компанию, а я и мой большой друг этого не хотим. Мы пытались убедить барона, что торговать тут весьма опасно из-за голландцев, испанцев, англичан и особенно пиратов, после разгрома Левассера, но он и ухом не ведет. Надо внушить ему страх, и дать прочувствовать его на своей собственной шкуре.";
 			link.l1.go = "patria_2";
 		break;
 		
 		case "patria_2":
-			dialog.text = "Yes-yes... An actual baron!.. Shall we assault his ship?";
-			link.l1 = "Here's the plan: his vessel will depart to Capsterville from Port-au-Prince soon. He must be intercepted by Saint Kitts and take the baron as a hostage. It would be better if you didn't sink the ship and avoided killing men. The French are our friends, after all. Will you be able handle that?";
+			dialog.text = "Так-так... Неужто барон!.. Напасть на его корабль?";
+			link.l1 = "План таков: его судно отправляется к Капстервилю из Порт-о-Пренса. Уже скоро. Надо перехватить его у Сент-Кристофера и взять барона в плен. Корабль лучше бы не топить и людей не губить, все-таки свои, французы... Сможешь?";
 			link.l1.go = "patria_3";
 		break;
 		
 		case "patria_3":
-			dialog.text = "Well, I can't promise anything. But I'll try. What ship is it?";
-			link.l1 = "A brig called 'Favory'.";
+			dialog.text = "Это уж как пойдет, сам знаешь. Но постараюсь. Что за корабль?";
+			link.l1 = "Бриг под названием 'Фавори'.";
 			link.l1.go = "patria_4";
 		break;
 		
 		case "patria_4":
-			dialog.text = "A brig is no match for my 'Red dragon'.We'll easily deal with them. If it surrenders, I'll let everyone live.";
-			link.l1 = "Perfect. Strike fear and offer them to yield. Afterwards, send the baron to the rat-infested hold. Try to find the filthiest place you can, but keep him there no longer than a day, or else he could get sick and die. Then accomodate him in the cabin, go to the Isla Tesoro, and lock in some secluded place. Dress some of your men as captured French merchants and make them to act like ones. For three days straight, they should tell him all about how the ruthless pirates chase them, rob them, demand ransoms, torture them... with all the details required.";
+			dialog.text = "Бриг моему 'Красному дракону' не противник. Легко разделаемся. Если сдастся, отпущу всех целыми.";
+			link.l1 = "Отлично. Нагони страху и предложи капитулировать. Барона отправишь в трюм к крысам, где пострашнее и погрязнее, но только на день, а то еще заболеет и умрет. Потом посели в каюте, доставь в укромное местечко и запри надежно. К нему надо отправить подсадных уток - твоих людей, которые будут играть роль пленных французских купцов. Пусть они ему дня три рассказывают, как пираты нещадно гоняют торговцев, грабят их и пытают... выкуп требуют... во всех красках.";
 			link.l1.go = "patria_5";
 		break;
 		
 		case "patria_5":
-			dialog.text = "Ha-ha-ha! This must be the funniest job I've ever taken on since a very long time! Well then, I will find such actors, pal. Have no doubt, after their stories your baron will crap his pants! They will show him scars from cutlasses and heated ramrods...";
-			link.l1 = "Nailed it. Then you will force him to write a letter to Poincy, asking for ransom. Thirty five hundred thousand for such a big shot is not that much.";
+			dialog.text = "Ха-ха-ха! Такого веселого дела у меня давно не было! Ну что же, найду таких клоунов. Не сомневайся, после их рассказов твой барон в штаны наложит. Они ему и шрамы от сабель и шомполов раскаленных покажут...";
+			link.l1 = "То, что надо. Потом заставишь написать его письмо на имя Пуанси с просьбой о выкупе. Тысяч триста пятьдесят за такую важную птицу много не будет.";
 			link.l1.go = "patria_6";
 		break;
 		
 		case "patria_6":
-			dialog.text = "Good. What shall we do next?";
-			link.l1 = "And then you'll bring the baron to Terrax. There you will take the ransom, and you will give me the baron. And additionally you should tell them, that they will answer for Tortuga and Levasseur.";
+			dialog.text = "Хорошо. Что дальше?";
+			link.l1 = "А потом ты привезешь барона на Теркс. На Терксе передадим выкуп, а ты мне отдашь барона. Плюс скажешь, что за Тортугу и Левассера французы еще ответят не раз.";
 			if (CheckAttribute(pchar, "questTemp.Patria.Pirate.Terrax")) link.l1.go = "patria_x7";
 			else link.l1.go = "patria_7";
 		break;
 		
 		case "patria_7":
-			dialog.text = "Ha-ha-ha! That one hell of a trick! We personally, well, you know what we did to Levasseur, and now... ha-ha-ha!.. Fine, pal. It will be done! You believe that the ship will arrive soon?";
-			link.l1 = "Soon. We need to be on lookout.";
+			dialog.text = "Ха-ха-ха! Вот это умора! Сами Левассера - того, а теперь... Ха-ха-ха!.. Хорошо, сделаю! Говоришь, скоро кораблик придет?";
+			link.l1 = "Скоро. Но надо уже караулить.";
 			link.l1.go = "patria_8";
 		break;
 		
 		case "patria_x7":
-			dialog.text = "Ha-ha-ha! That one hell of a trick! How much should I charge you for this farce? Fine, hundred thousand will seal the deal. Hand in the money.";
+			dialog.text = "Ха-ха-ха! Вот это умора! Сколько же с тебя запросить за эту комедию, а? Ладно, сто тысяч на бочку - и все сделаю. Деньги вперед.";
 			if (sti(pchar.money) >= 100000) 
 			{
-				link.l1 = "Take it.";
+				link.l1 = "Держи.";
 				link.l1.go = "patria_x8";
 			}
 			else
 			{
-				link.l1 = "Alright, I'll bring it.";
+				link.l1 = "Хорошо, я принесу.";
 				link.l1.go = "patria_xwait";
 			}
 		break;
@@ -1928,14 +1928,14 @@ void ProcessDialogEvent()
 		
 		case "patria_x8":
 			AddMoneyToCharacter(pchar, -100000);
-			dialog.text = "Perfect! You believe that the ship will arrive soon?";
-			link.l1 = "Soon. We need to be on lookout.";
+			dialog.text = "Отлично! Говоришь, скоро кораблик придет?";
+			link.l1 = "Скоро. Но надо уже караулить.";
 			link.l1.go = "patria_8";
 		break;
 		
 		case "patria_8":
-			dialog.text = "Don't be bothered , I won't let you down. I will handle this personally. When you hear rumor that the baron was captured, come to me.";
-			link.l1 = "Good. My thanks, Marcus.";
+			dialog.text = "Не дрейфь, не подведу. Лично займусь этим. Как пройдет слух, что захватили барона, дуй ко мне.";
+			link.l1 = "Хорошо. Спасибо, Маркус.";
 			link.l1.go = "patria_9";
 		break;
 		
@@ -1949,26 +1949,26 @@ void ProcessDialogEvent()
 		break;
 		
 		case "patria_10":
-			dialog.text = "Of course, pal. As agreed. Scary tales about evil pirates, slaughtering innocent French merchants, The sounds of a whip, moans and screams. Brazier with coal and scorched handcuffs. Just like it should be.";
-			link.l1 = "Well now! Hold your horses. I need him alive";
+			dialog.text = "Конечно, приятель, как договаривались. Страшные истории о злых пиратах, потрошащих невинных французских торговцев. Щелкание плеткой, вопли и крики. Жаровня с углями и раскаленные наручники. Все в лучших традициях.";
+			link.l1 = "Но-но! Только не переусердствуйте. Он мне живой нужен.";
 			link.l1.go = "patria_11";
 		break;
 		
 		case "patria_11":
-			dialog.text = "Worry not, he will live. He wrote that letter with a shaky hand. Here it is.";
-			link.l1 = "What is written there? He's begging Poincy to get him out of this?";
+			dialog.text = "Не дрейфь, жив будет. Письмо он уже дрожащей рукой накалякал. Держи.";
+			link.l1 = "Что там написано? Умоляет Пуанси забрать его отсюда?";
 			link.l1.go = "patria_12";
 		break;
 		
 		case "patria_12":
-			dialog.text = "Spot on, pal! He's begging!";
-			link.l1 = "Throw this letter away, or better - burn it. We'll meet on Terks in a week. It must look as if we need time to collect the ransom.";
+			dialog.text = "В точку - умоляет!";
+			link.l1 = "Выброси это письмо, а лучше сожги. Через неделю встречаемся на Терксе. Надо же время типа для сбора выкупа.";
 			link.l1.go = "patria_13";
 		break;
 		
 		case "patria_13":
-			dialog.text = "Got it. In a week time, Northern gulf. Don't forget to take the money: this must look pretty. Afterwards, come to me, well settle this.";
-			link.l1 = "Of course, I bet even the echinus would have figured that out. See you later!";
+			dialog.text = "Договорились. В заливе Северный через неделю. Деньги не забудь взять: надо, чтобы все красиво выглядело. Потом ко мне зайдешь - разберемся.";
+			link.l1 = "Это ясно. До встречи, Маркус!";
 			link.l1.go = "patria_14";
 		break;
 		
@@ -1982,35 +1982,35 @@ void ProcessDialogEvent()
 		
 		case "patria_15":
 			pchar.quest.Patria_CondotierTerksOver.over = "yes"; //снять таймер
-			dialog.text = "Hey, frog! Halt!";
-			link.l1 = "I'm not moving";
+			dialog.text = "Эй, лягушатник! А ну, стоять!";
+			link.l1 = "Стою.";
 			link.l1.go = "patria_16";
 		break;
 		
 		case "patria_16":
-			dialog.text = "Here's your baron. A bit worn, but in one piece. Is it him?";
-			link.l1 = "Yes.";
+			dialog.text = "Вот твой барон, немного потрепанный, но целый. Он?";
+			link.l1 = "Да.";
 			link.l1.go = "patria_17";
 		break;
 		
 		case "patria_17":
-			dialog.text = "Perfect. Now hand over the money or he is done for! And don't try to trick us, we've got you in the sights!";
+			dialog.text = "Отлично. А теперь гони деньги, иначе кончим твоего барона прямо тут! И не вздумай хитрить, ты у нас под прицелом!";
 			if (sti(pchar.money) >= 350000)
 			{
-				link.l1 = "Here.";
+				link.l1 = "Держи.";
 				link.l1.go = "patria_18";
 			}
 			else
 			{
-				link.l1 = "Damn! I forot it on the ship...";
+				link.l1 = "Вот черт! На корабле забыл...";
 				link.l1.go = "patria_22";
 			}
 		break;
 		
 		case "patria_18":
 			AddMoneyToCharacter(pchar, -350000);
-			dialog.text = "Ha-ha-ha! You're a smart kid, frenchie. Take thine holiness. And tell Poincy that he should prepare the money: you'll have to pay up for what you did to Levasseur and Tortuga. And your hagglers shall pay us with their, goods and ships. Ha-ha-ha! Don't forget to bring us some more barons to the archipelago, they bring us a lot of profit! Ha-ha-ha!";
-			link.l1 = "Please go to my boat, baron.";
+			dialog.text = "Ха-ха-ха! А ты молодец, французик. Забирай свое высокопреосвященство. И передай Пуанси, пусть готовит денежки: вы будете теперь долго и дорого платить за то, что сделали с Левассером и Тортугой. И ваши торгаши будут нам платить, товарами и кораблями. Ха-ха-ха! Привозите нам на Архипелаг еще баронов, за них хорошо платят! Ха-ха-ха!";
+			link.l1 = "Барон, идите к моей шлюпке.";
 			link.l1.go = "patria_19";
 		break;
 		
@@ -2018,13 +2018,13 @@ void ProcessDialogEvent()
 			sld = CharacterFromID("Noel");
 			LAi_SetActorType(sld);
 			LAi_ActorRunToLocation(sld, "reload", "reload1_back", "none", "", "", "", 10.0);
-			dialog.text = "And don't even think about chasing us, captain. You know who I am. I hold the more frogs captive, and if I don't return home in time, they all be done for. Got it?";
-			link.l1 = "The time will come and we shall deal with you, cursed blasphemers!";
+			dialog.text = "И не вздумай преследовать нас, капитан. Ты знаешь, кто я. У меня в плену еще три лягушатника, и если я не вернусь домой к сроку - их всех кончат. Понял?";
+			link.l1 = "Придет время, и мы займемся вами вплотную, проклятые безбожники!";
 			link.l1.go = "patria_20";
 		break;
 		
 		case "patria_20":
-			dialog.text = "Ha-ha-ha-ha!";
+			dialog.text = "А-ха-ха-ха!";
 			link.l1 = "...";
 			link.l1.go = "patria_21";
 		break;
@@ -2057,8 +2057,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "patria_22":
-			dialog.text = "Are you messing with me?";
-			link.l1 = "One minute, I'll bring it...";
+			dialog.text = "Ты что, шутить со мной вздумал?";
+			link.l1 = "Сейчас принесу...";
 			link.l1.go = "patria_23";
 		break;
 		
@@ -2072,38 +2072,38 @@ void ProcessDialogEvent()
 		
 		case "patria_24":
 			dialog.text = "";
-			link.l1 = "Argh, Marcus, what has your dullard done!";
+			link.l1 = "А-ать, Маркус, что твой олух наделал!";
 			if (CheckAttribute(pchar, "questTemp.Patria.Saga.Terrax")) link.l1.go = "patria_25";
 			else link.l1.go = "patria_x25";
 		break;
 		
 		case "patria_25":
-			dialog.text = "Charles, what were you doing? Where's the money? I didn't tell my boys that this wasn't real... and so this idiot decided that you wanted to trick them...";
-			link.l1 = "What a shame! Baron is dead... What will Poincy do now?";
+			dialog.text = "Шарль, а ты куда смотрел? Где деньги? Я же перед своими дураками все за чистую монету выдал... этот дурень и решил, что ты хочешь надуть...";
+			link.l1 = "Вот неудача! Барон мертв... Что теперь Пуанси скажет?";
 			link.l1.go = "patria_26";
 		break;
 		
 		case "patria_x25":
-			dialog.text = "Charles, what were you doing? Where's the money? I didn't tell my boys that this wasn't real... and so this idiot decided that you wanted to trick them...";
-			link.l1 = "What a shame! Baron is dead... What will Poincy do now?";
+			dialog.text = "А ты куда смотрел? Где деньги? Я же перед своими дураками все за чистую монету выдал... этот дурень и решил, что ты хочешь надуть...";
+			link.l1 = "Вот неудача! Барон мертв... Что теперь делать?";
 			link.l1.go = "patria_x26";
 		break;
 		
 		case "patria_x26":
-			dialog.text = "Well, pal, It's your fault, I hope you understand that. Perhaps it will be all the better for you, a dead man can't cause any harm.";
-			link.l1 = "What an idiot I am! Messed everything up. Fine, I'll go to Poincy... Forgive me for being a fool, Marcus, see you.";
+			dialog.text = "Ну, тут ты сам напорол, понимаешь, надеюсь. А может, так и лучше для тебя повернется - нет человека, нет проблемы.";
+			link.l1 = "Да, ну и растяпа же я! Все испортил. Ладно... Бывай, Маркус.";
 			link.l1.go = "patria_28";
 		break;
 		
 		case "patria_26":
-			dialog.text = "Well, pal, It's your fault, I hope you understand that. Perhaps it will be all the better for you.";
-			link.l1 = "What an idiot I am! Messed everything up. Fine, I'll go to Poincy... Forgive me for being a fool, Marcus, see you.";
+			dialog.text = "Ну, дружище, тут ты сам напорол, понимаешь, надеюсь. А может, так и лучше для вас повернется.";
+			link.l1 = "Да, ну и растяпа же я! Все испортил. Ладно, пойду к Пуанси... Бывай, Маркус, и прости дурака.";
 			link.l1.go = "patria_27";
 		break;
 		
 		case "patria_27":
-			dialog.text = "You need to rest, you're losing your touch. Come to me sometime, I'll get you some rum and fine maidens.";
-			link.l1 = "Thank you, I'll play you a visit when I can.";
+			dialog.text = "Тебе надо отдохнуть - ты теряешь хватку. Заходи в гости, я тебе девок и рому организую.";
+			link.l1 = "Спасибо, загляну как-нибудь.";
 			link.l1.go = "patria_28";
 		break;
 		
@@ -2123,29 +2123,29 @@ void ProcessDialogEvent()
 		break;
 		
 		case "patria_29":
-			dialog.text = "You're welcome, pal. For me this was the most fun I've had this year! We laughed so much, me and my lads!.. So I'd like to thank you for this. Here's your money.";
-			link.l1 = "You should keep yourself a share.";
+			dialog.text = "Не за что, дружище. Для меня это было лучшим развлечением за последний год! Мы тут с ребятами так нагоготались!.. Так что это тебе спасибо, повеселил на славу. Держи свои деньги.";
+			link.l1 = "Думаю, что тебе должна причитаться их часть.";
 			link.l1.go = "patria_30";
 		break;
 		
 		case "patria_x29":
 			AddMoneyToCharacter(pchar, 350000);
-			dialog.text = "Take your money, 'plotter'. Ha-ha! This was fun.";
-			link.l1 = "Thank you for your help, Marcus. Good luck!";
+			dialog.text = "Держи свои деньги, интриган. Ха-ха! Забавное было дельце.";
+			link.l1 = "Спасибо за помощь, Маркус. Удачи!";
 			link.l1.go = "patria_32";
 		break;
 		
 		case "patria_30":
 			AddMoneyToCharacter(pchar, 350000);
-			dialog.text = "Forget it. I did this for the sake of our friendship. The Brotherhood of the Coast owes you much more, yet you didn't ask for a single dubloon.";
-			link.l1 = "Still, take at least fifty thousand for the services and compensation. Thank you, Steven! I'm glad that I once met you on that strange island of the lost ships.";
+			dialog.text = "Брось. Это по дружбе. Ты сделал для Берегового братства в разы больше, и не попросил ни дублона.";
+			link.l1 = "И все же возьми пятьдесят тысяч компенсации за издержки. Спасибо, Маркус";
 			link.l1.go = "patria_31";
 		break;
 		
 		case "patria_31":
 			AddMoneyToCharacter(pchar, -50000);
-			dialog.text = "And so am I. Charles, pay me a visit whenever you have some time!";
-			link.l1 = "With pleasure!";
+			dialog.text = "Не за что. Заходи в гости, как время будет!";
+			link.l1 = "Обязательно!";
 			link.l1.go = "patria_32";
 		break;
 		
@@ -2155,32 +2155,32 @@ void ProcessDialogEvent()
 		break;
 		
 		case "patria_33":
-			dialog.text = "You're late by a week! I didn't tell my boys that this wasn't real... ! They refused to wait any longer, and decided to end your baron!";
-			link.l1 = "What an idiot I am! Messed everything up! What am I going to tell Poincy?";
+			dialog.text = "Мы тебя ждали неделю! А я своим дуракам все за чистую монету выдал! И в один прекрасный момент они просто кончили твоего барона!";
+			link.l1 = "А-ать! Что же я теперь Пуанси скажу? Вот растяпа я!";
 			link.l1.go = "patria_34";
 		break;
 		
 		case "patria_x33":
-			dialog.text = "You're late by a week! I didn't tell my boys that this wasn't real... ! They refused to wait any longer, and decided to end your baron!";
-			link.l1 = "What an idiot I am! Messed everything up! What am I going to tell Poincy?";
+			dialog.text = "Тебя ждали неделю! А я своим дуракам все за чистую монету выдал! И в один прекрасный момент они просто кончили твоего барона!";
+			link.l1 = "А-ать! Что же я теперь Пуанси скажу?";
 			link.l1.go = "patria_x34";
 		break;
 		
 		case "patria_34":
-			dialog.text = "Well, pal, It's your fault, I hope you understand that. Perhaps it will be all the better for you.";
-			link.l1 = "Fine, I'll go to Poincy... Forgive me for being a fool, Marcus, see you..";
+			dialog.text = "Ну, дружище, тут ты сам напорол, понимаешь, надеюсь. А может, так и лучше для вас повернется.";
+			link.l1 = "Ладно, пойду к Пуанси... Бывай, Маркус, и прости дурака.";
 			link.l1.go = "patria_35";
 		break;
 		
 		case "patria_x34":
-			dialog.text = "You've gotten yourself into this mess, it's your fault.";
-			link.l1 = "See you later, I guess...";
+			dialog.text = "Это твои проблемы, сам напорол. Надо было делать все по уговору.";
+			link.l1 = "Ладно... Бывай, Маркус.";
 			link.l1.go = "patria_36";
 		break;
 		
 		case "patria_35":
-			dialog.text = "You need to rest, you're losing your touch. Come to me sometime, I'll get you some rum and fine maidens.";
-			link.l1 = "Thank you, I'll play you a visit when I can.";
+			dialog.text = "Тебе надо отдохнуть - ты теряешь хватку. Заходи в гости, я тебе девок и рому организую.";
+			link.l1 = "Спасибо, загляну как-нибудь.";
 			link.l1.go = "patria_36";
 		break;
 		

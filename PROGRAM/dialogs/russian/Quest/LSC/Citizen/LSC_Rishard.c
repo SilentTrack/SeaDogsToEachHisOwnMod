@@ -19,142 +19,142 @@ void ProcessDialogEvent()
 		case "First time":
 			if (CheckAttribute(pchar, "GenQuest.CitizenConflict") && sti(pchar.GenQuest.CitizenConflict) > 3)
 			{
-				dialog.text = "I don't want to talk with you. You attack peaceful civilians with no reasons and provoke them. Get lost!";
-				link.l1 = "Hm...";
+				dialog.text = "Я не желаю с тобой общаться. Ты нападаешь без причины на мирных граждан, провоцируешь их на драку. Уходи прочь!";
+				link.l1 = "Гм...";
 				link.l1.go = "exit";
 				break;
 			}
 			// --> кольцо
 			if (CheckAttribute(pchar, "questTemp.Saga.SharkHunt") && pchar.questTemp.Saga.SharkHunt == "find" && CheckAttribute(npchar, "quest.answer_2") && GetNpcQuestPastDayParam(npchar, "quest_date") >= 3 && !CheckAttribute(npchar, "quest.ring"))
 			{
-				dialog.text = "Oh! Here you are, pal. And I was thinking about finding you myself. I need you, friend.";
-				link.l1 = "You are suspiciously friendly today, Richard. Well, I am listening.";
+				dialog.text = "О! Вот и ты, парень. А я уже было решил сам тебя разыскать. Ты мне нужен, дружище.";
+				link.l1 = "Что-то ты сегодня подозрительно дружелюбен, Ришард. Ну, слушаю тебя.";
 				link.l1.go = "ring";
 				break;
 			}
 			// <-- кольцо
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = "What do you want? To be honest, I am not in a good mood today. Actually I have forgotten when I was in it last time.";
-				link.l1 = "Is it really that bad, pal?";
+				dialog.text = "Ну, чего тебе? Сказать честно - я не в настроении. Да и вообще я забыл, когда последний раз оно у меня было.";
+				link.l1 = "Что, все так плохо, приятель?";
 				link.l1.go = "meeting";
 				npchar.quest.meeting = "1";
 			}
 			else
 			{
-				dialog.text = "Аh, "+GetFullName(pchar)+"! "+TimeGreeting()+"! Want something?";
-				link.l1 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
+				dialog.text = "А, "+GetFullName(pchar)+"! "+TimeGreeting()+"! Ты что-то хотел?";
+				link.l1 = LinkRandPhrase("Что-нибудь интересное мне расскажешь?", "Что нового произошло на острове в последнее время?", "Не расскажешь ли последние сплетни?");
 				link.l1.go = "rumours_LSC";
-				link.l2 = "I want to ask you a few questions about the island.";
+				link.l2 = "Я хочу задать тебе пару вопросов об острове.";
 				link.l2.go = "int_quests"; //информационный блок
-				link.l5 = "Just wanted to know how are you doing. See you!";
+				link.l5 = "Да просто решил узнать как у тебя дела. Еще увидимся!";
 				link.l5.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "meeting": // первая встреча
-			dialog.text = "Bad? No, it is not bad. I am just not in a right mood. So what did you want?";
-			link.l1 = "Just wanted to know you. I am a newcomer here, so I am just walking around the Island and getting to know people.";
+			dialog.text = "Плохо? Нет, не плохо. Просто я не в духе малость. Так чего ты хотел?";
+			link.l1 = "Да просто познакомиться. Я тут недавно, вот, хожу по Острову, беседую с людьми.";
 			link.l1.go = "meeting_1";
 		break;
 		
 		case "meeting_1":
-			dialog.text = "Really? Fine then. I am Richard Shambon. A long time ago I traded some valuable good and some of them were illegal, but I have been scavenging ship's wrecks, searching for scraps and exchanging them for food and gold for the last nine years.";
-			link.l1 = "And I am "+GetFullName(pchar)+", a captain...";
+			dialog.text = "Да? Ну ладно. Я - Ришард Шамбон. Когда-то я занимался торговлей всякими ценными товарами, в том числе и запрещенными, но последние десять лет я только и делаю, что ковыряюсь во внутренностях корабельных остовов, разыскивая всякий хлам и обменивая его на еду и золото.";
+			link.l1 = "А я - "+GetFullName(pchar)+", капитан собственного корабля...";
 			link.l1.go = "meeting_2";
 		break;
 		
 		case "meeting_2":
-			dialog.text = "You mean the ex captain, ha-ha?";
-			link.l1 = "Well, actually, my ship is at Blueweld now. And I have sailed here on a tartane.";
+			dialog.text = "Ты наверное хотел сказать - бывший капитан, хе-хе?";
+			link.l1 = "Ну, вообще-то мой корабль сейчас в Блювельде. А сюда я добрался на тартане.";
 			link.l1.go = "meeting_3";
 		break;
 		
 		case "meeting_3":
-			dialog.text = "Really? Impossible! And where is your tartane now?";
-			link.l1 = "Hm... at the bottom.";
+			dialog.text = "Да ну? Не может быть! И где же твоя тартана сейчас?";
+			link.l1 = "Гм... На дне.";
 			link.l1.go = "meeting_4";
 		break;
 		
 		case "meeting_4":
-			dialog.text = "A-ah... And I thought... Whatever, pal, I'd better drink some rum...";
-			link.l1 = "Good luck with that. It was nice to talk with you. See you!";
+			dialog.text = "А-а... А я-то уже подумал... Ладно, приятель, лучше я выпью рому...";
+			link.l1 = "Удачи. Приятно было поболтать. Еще увидимся!";
 			link.l1.go = "exit";
-			link.l2 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
+			link.l2 = LinkRandPhrase("Что-нибудь интересное мне расскажешь?", "Что нового произошло на острове в последнее время?", "Не расскажешь ли последние сплетни?");
 			link.l2.go = "rumours_LSC";
-			link.l3 = "I want to ask you a few questions about the island.";
+			link.l3 = "Я хочу задать тебе пару вопросов об острове.";
 			link.l3.go = "int_quests"; //информационный блок
 			NextDiag.TempNode = "First time";
 		break;
 		
 		// Кольцо
 		case "ring":
-			dialog.text = "And was I different before? Come on, I had bad days, everybody sometimes have them! Tell me, there are gossips among the Island that you are an excellent fighter. Is it true?";
-			link.l1 = "I don't know what they say, but I know how to handle a sword if that is what you are asking.";
+			dialog.text = "А что, разве я раньше был каким-то другим? Да ладно тебе, бывали у меня дни без настроения - у кого же их нет! Скажи мне лучше: ходят тут по Острову слухи, что ты выдающийся боец. Это так?";
+			link.l1 = "Не знаю, кто там и что рассказывает про то, какой я боец. Однако я знаю, с какого конца держать шпагу, если ты об этом спрашиваешь.";
 			link.l1.go = "ring_1";
 			npchar.quest.ring = "true";
 		break;
 		
 		case "ring_1":
-			dialog.text = "Got it. I see that those gossips were true... Listen, "+pchar.name+", remember me telling you about the outer ring? And about the valuable stuff you can find there?";
-			link.l1 = "You all like to talk about that ring... And you all say the same.";
+			dialog.text = "Ясно. Вижу, слухи не лгут... Послушай, "+pchar.name+", помнишь, я как-то тебе рассказывал про внешнее кольцо? Про то, что там можно пошариться и разыскать ценные вещички?";
+			link.l1 = "Да вы тут все об этом внешнем кольце говорите... Причем одно и то же.";
 			link.l1.go = "ring_2";
 		break;
 		
 		case "ring_2":
-			dialog.text = "And else can be said, ha-ha! Fine. I'll get to the point. (lowering his voice) I have found an untouched ship at the outer ring, she is in good condition, which is quite rare\nThe ship is large, a pinnace. She was driven here not long ago, two months, not earlier. Others have not found her yet, so there is a chance to make some good money by looting her holds and cabins.";
-			link.l1 = "Nice, I am glad for you. But how does it concern me? Do you want to ask me to go there with you?";
+			dialog.text = "А что же другое о нем говорить-то, ха-ха! Ладно. Довольно предисловий, перехожу к делу. (понижая голос) Мне удалось отыскать у внешнего кольца один хорошо сохранившийся корабль. Он стоит отдельно от других среди рифов, причем ровненько-ровненько, что редкость немалая\nКорабль большой - пинас. Прибило его к нам недавно, месяца два тому или немного больше. Пока никто из других жителей его не обнаружил, так что есть шанс неплохо поживиться, покопавшись в его трюме и каютах.";
+			link.l1 = "Прекрасно, я рад за тебя. Ну а я-то тут причем? Или ты хочешь позвать меня с собой за компанию?";
 			link.l1.go = "ring_3";
 		break;
 		
 		case "ring_3":
-			dialog.text = "Exactly! Listen. The pinnace's bow is damaged. Those damned crabs used a hole to get inside and they built a blasted nest inside. Sneaking inside while they are there isn't an option and I have no idea how to climb up to the upper deck\nI have never been a good fighter and I haven't touched a blade for years, so I won't be able to kill the creatures on my own. That's why I came to you.";
-			link.l1 = "So do you propose me to kill all crabs inside that ship, right?";
+			dialog.text = "Именно! Слушай дальше. У этого пинаса раздроблена носовая часть. Через пролом в корпусе в трюм забрались эти чертовы крабы и устроили там настоящее гнездо. Пока они внутри - пробраться на корабль не получится, ибо как забраться на палубу из воды по гладкому борту - я не представляю\nСам я с крабами не справлюсь - признаюсь, я никогда не отличался талантами в фехтовании, а за последние годы и вовсе не притрагивался к оружию - нужды не было. Поэтому я и пришел к тебе.";
+			link.l1 = "То есть ты предлагаешь мне перебить крабов внутри этого корабля, так?";
 			link.l1.go = "ring_4";
 		break;
 		
 		case "ring_4":
-			dialog.text = "Yes. We will have a deal. I will show they way to the ship and you will eliminate crabs. We will share all loot we find there. It's a fair deal - I have found the ship and you will clear it.";
-			link.l1 = "No, pal, I am not interested. It not my style to fight crabs inside a half sunken ship for some doubtful trophies. Find yourself another risky lad who will pull chestnuts out of the fire for you.";
+			dialog.text = "Ну да. Мы заключаем с тобой соглашение: я показываю дорогу на корабль, а ты - ликвидируешь крабов. Все найденное на корабле достанется нам двоим. Так будет справедливо - я нашел судно, ты пробил дорогу.";
+			link.l1 = "Нет, приятель, не заинтересовало меня твое предложение. Драться в трюме полузатопленного корабля со стаей крабов ради сомнительных трофеев - это не по мне. Поищи другого рискового парня, который будет таскать для тебя каштаны из огня.";
 			link.l1.go = "ring_exit";
-			link.l2 = "Interesting... I have been thinking to check the outer ring for a long time. Deal! I will kill crabs.";
+			link.l2 = "Интересно... Я давно хотел побывать на внешнем кольце. По рукам! С крабами я разберусь.";
 			link.l2.go = "ring_5";
 		break;
 		
 		case "ring_exit":
-			dialog.text = "Too bad... There are a lot of juicy stuff in ships of the outer ring... And no one have been at that ship before. Fine, it's you call. Farewell...";
-			link.l1 = "Bye, pal...";
+			dialog.text = "Напрасно ты так... На кораблях внешнего кольца полно всякой всячины... Тем более, на этом судне еще никто не был. Ладно, дело твое. Бывай...";
+			link.l1 = "Пока, приятель...";
 			link.l1.go = "exit";
 		break;
 		
 		case "ring_5":
-			dialog.text = "I am glad that I was right about you, friend. I have got a feeling that we will find a lot of interesting things inside her...";
-			link.l1 = "We will see. Do you know how many crabs there?";
+			dialog.text = "Я рад, что не ошибся в тебе, дружище. У меня предчувствие, что мы найдем там много чего интересного...";
+			link.l1 = "Посмотрим. Сколько в трюме крабов, ты не знаешь?";
 			link.l1.go = "ring_6";
 		break;
 		
 		case "ring_6":
-			dialog.text = "I think about four of five of them... Well, in average.";
-			link.l1 = "Works for me. When will we go?";
+			dialog.text = "Мне показалось, четыре, или пять... Ну, где-то так.";
+			link.l1 = "Управимся. Когда отправимся?";
 			link.l1.go = "ring_7";
 		break;
 		
 		case "ring_7":
-			dialog.text = "Let's go there tomorrow, we have to prepare ourselves. Get some antidotes from brother Julian, crab's jaws are poisonous. Caution is welcome. Let's meet tomorrow at eight o'clock in the morning on the 'oblique deck'. Do you know where is it?";
-			link.l1 = "I don't. Explain.";
+			dialog.text = "Давай завтра - сначала следует подготовиться, и тебе, и мне. Запасись лечебными микстурами у брата Юлиана - в челюстях крабов содержится яд. Осторожность не помешает. Встречаемся в восемь утра на 'косой палубе'. Знаешь, где это?";
+			link.l1 = "Нет. Объясни.";
 			link.l1.go = "ring_8";
 		break;
 		
 		case "ring_8":
-			dialog.text = "There is a wreck of an old ship behind the San Augustine. Her bow is underwater and her rear is lifted up high. That is why she is called the 'oblique deck'. You can get there only by swimming. Just start swimming from the place under the bridge and turn around from any side of the San Augustine. We will swim together from there.";
-			link.l1 = "Fine. See you tomorrow!";
+			dialog.text = "За 'Сан-Августином' из воды торчит обломок старого корабля. Его нос ушел под воду, а корма задрана вверх - поэтому и называется 'косой палубой'. Добраться туда можно только вплавь. Удобнее всего войти в воду с 'Сан-Августина' под висячим мостиком, и обогнуть корабль с любой стороны. Оттуда и поплывем на внешнее кольцо.";
+			link.l1 = "Хорошо. До встречи завтра!";
 			link.l1.go = "ring_9";
 		break;
 		
 		case "ring_repeat":
-			dialog.text = "8 o'clock, 'oblique deck'...";
-			link.l1 = "Yes, yes, I remember that...";
+			dialog.text = "В восемь часов на 'косой палубе'...";
+			link.l1 = "Да-да, я помню...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "ring_repeat";
 		break;
@@ -178,19 +178,19 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ring_10":
-			dialog.text = "Aha, there you are, pal. Ready to make some crab salad?";
-			link.l1 = "Sure!";
+			dialog.text = "Ага, вот и ты, дружище. Готов шинковать крабовый салат?";
+			link.l1 = "Конечно!";
 			link.l1.go = "ring_11";
 		break;
 		
 		case "ring_11":
-			dialog.text = "Very well. Now turn your head to the outer ring and look. See there two ship wrecks stick up from the water?";
-			link.l1 = "Hm... Yes, I do.";
+			dialog.text = "Очень хорошо. Теперь поверни голову в сторону внешнего кольца и смотри: видишь эти два корабельных обломка, торчащие из воды?";
+			link.l1 = "Гм... Да, вижу.";
 			link.l1.go = "ring_12";
 		break;
 		
 		case "ring_12":
-			dialog.text = "Now look between them to the outer ring. See the galleon with a bow pulled up? It's just towards us. Look carefully.";
+			dialog.text = "Теперь гляди между ними на внешнее кольцо. Видишь галеон в кольце с задранной носовой частью? Смотрит прямо на нас. Приглядись внимательнее.";
 			link.l1 = "...";
 			link.l1.go = "ring_look";
 		break;
@@ -204,18 +204,18 @@ void ProcessDialogEvent()
 		
 		case "ring_13":
 			dialog.text = "";
-			link.l1 = "I think, I see it... Yes!";
+			link.l1 = "Так, кажется, вижу... Да, нашел!";
 			link.l1.go = "ring_13a";
 		break;
 		
 		case "ring_13a":
-			dialog.text = "It is our target. Swim straight and don't turn. I will show you the way back when we will reach the outer ring. The entrance to the cargo hold is the hole in ship's bow. Know that I won't enter there until won't deal with crabs.";
-			link.l1 = "We had a deal yesterday, I remember. You will show the ship and I will kill crabs. Let's swim?";
+			dialog.text = "Нам туда. Плывем прямо, никуда не сворачивая, в направлении этого галеона. Как достигнем кольца - дальше я покажу дорогу, нужно будет пробраться на обратную сторону. Вход в трюм моего корабля - через пролом в носовой части. Скажу сразу: я туда не полезу, пока ты не почикаешь всех крабов.";
+			link.l1 = "Мы с тобой уже об этом договорились вчера, я помню. Ты - показываешь корабль, я - уничтожаю крабов. Поплыли?";
 			link.l1.go = "ring_14";
 		break;
 		
 		case "ring_14":
-			dialog.text = "Sure! I will follow you.";
+			dialog.text = "Поплыли! Ты вперед, я за тобой!";
 			link.l1 = "...";
 			link.l1.go = "ring_swim";
 		break;
@@ -235,20 +235,20 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ring_15":
-			dialog.text = "Heh, well done! You have killed all of this filth!";
-			link.l1 = "I remember that someone told me about 'four or five' crabs... Remind me, who did that?";
+			dialog.text = "Хех, ты молодец! Ловко разделался со всей этой пакостью!";
+			link.l1 = "Кто-то говорил мне о 'четырех-пяти' крабах... Не напомнишь, кто это был?";
 			link.l1.go = "ring_16";
 		break;
 		
 		case "ring_16":
-			dialog.text = "Pal, I never entered the cargo hold to count them properly. I just looked through the hole. I had no intentions to lie to you.";
-			link.l1 = "Whatever. Let's check the cargo hold...";
+			dialog.text = "Дружище, я же не лазил в трюм их пересчитывать. Я смотрел снаружи, в пролом, и насчитал именно столько. Так что у меня и в мыслях не было тебе лгать.";
+			link.l1 = "Ладно. Давай осматривать трюм, что ли...";
 			link.l1.go = "ring_17";
 		break;
 		
 		case "ring_17":
-			dialog.text = "Sure! That is why we are here, right?";
-			link.l1 = "Exactly! Let's not waste our time...";
+			dialog.text = "А как же! Ведь именно за этим мы сюда явились, не правда ли?";
+			link.l1 = "Точно! Не будем терять времени...";
 			link.l1.go = "ring_18";
 		break;
 		
@@ -264,21 +264,21 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ring_wait":
-			dialog.text = "Wait a bit, pal, I haven't checked all places I wanted yet. Search better, perhaps you will find more valuables.";
-			link.l1 = "Fine...";
+			dialog.text = "Погоди, дружище, я еще не все осмотрел, что хотел. Поройся получше, может, еще что найдешь.";
+			link.l1 = "Хорошо...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "ring_wait";
 		break;
 		
 		case "ring_19":
-			dialog.text = "Nothing special. It is a pity that there are no valuable goods here. There are provisions in barrels and copra in boxes. I have also found a box with expensive wine though. And what do you have?";
-			link.l1 = "Nothing interesting too. A few boxes are quite valuable, but the rest is corned beef and copra as you've said.";
+			dialog.text = "Пока ничего особенного. Жаль, особо ценных товаров нет: в бочках - провиант, в ящиках - копра. Хотя нашелся ящик с бутылками дорогого вина. А у тебя что?";
+			link.l1 = "Тоже ничего особенного. Несколько ящиков представляли интерес, остальное - как ты и сказал, солонина да копра.";
 			link.l1.go = "ring_20";
 		break;
 		
 		case "ring_20":
-			dialog.text = "Not enough... Let's go upstairs and check the upper deck and cabins.";
-			link.l1 = "Let's go.";
+			dialog.text = "Маловато будет... Поднимаемся наверх, обыщем палубу и каюты.";
+			link.l1 = "Пойдем.";
 			link.l1.go = "ring_21";
 		break;
 		
@@ -301,8 +301,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ring_22":
-			dialog.text = "Damn it! Just look at that! Damn crab filth got to the deck! And how have they managed to do such a trick?!";
-			link.l1 = "Don't be a coward! Stay here, don't move and don't draw their attention. I will deal with those creatures at once...";
+			dialog.text = "Черт возьми! Ты только посмотри на это! Проклятая крабовая погань заползла и на палубу! Как они ухитрились?!";
+			link.l1 = "Не трусь! Стой здесь и не шевелись, не привлекай их внимание. Сейчас я с этими тварями разберусь...";
 			link.l1.go = "ring_23";
 		break;
 		
@@ -313,20 +313,20 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ring_24":
-			dialog.text = "Huh! So the tales of your skill in fencing were true! If I would be here alone, I'd jump overboard...";
-			link.l1 = "Listen, and how did you become a smuggler in past, huh? Or were you running away from everybody?";
+			dialog.text = "Ух! Недаром про тебя рассказывали, что ты великолепно владеешь оружием. Был бы я один - уже давно сиганул бы за борт...";
+			link.l1 = "Слушай, и как ты только контрабандистом заделался в прошлом, а? Или ты всегда и от всех бегал?";
 			link.l1.go = "ring_25";
 		break;
 		
 		case "ring_25":
-			dialog.text = "Pal, first, I was younger, stronger and more reckless. Second, I am not a mercenary to fight wars - I am a smuggler and we always try to avoid a bloodshed. Third, I always was for sails and the tiller, not for blades and pistols. And finally, years of living here made me soft\nSo don't blame me. Let's check the upper deck. It looks like the ship had been in a serious fight - look at the damage...";
-			link.l1 = "You are right. The ship definitely was under the heavy fire. Fine, let's search for something interesting.";
+			dialog.text = "Дружище, во-первых, тогда я был моложе, сильнее и отчаяннее. Во-вторых, я же не наемник, чтобы участвовать в войнах - я контрабандист, а мы всегда старались уклониться от стычек с солдатами. В третьих, я был больше по части парусов и румпеля, нежели шпаги и пистолета. Ну и в-четвертых, за десять лет тихой жизни на Острове я совсем размяк\nТак что не суди меня строго. Давай лучше осмотрим палубу. Похоже, перед тем как попасть сюда, этот корабль побывал в серьезном бою - смотри - проломы от ядер в бортах и палубе, бочки с порохом у пушек...";
+			link.l1 = "Ты прав. Корабль был под обстрелом, это очевидно. Ладно, давай искать что-нибудь интересное.";
 			link.l1.go = "ring_26";
 		break;
 		
 		case "ring_26":
-			dialog.text = "Yeah. And we need to find entrances to the inner rooms.";
-			link.l1 = "Deal, let's not waste time. Call me if you see a crab.";
+			dialog.text = "Угу. И надо поискать входы во внутренние помещения.";
+			link.l1 = "Все, не теряем времени. Встретишь краба - зови на помощь.";
 			link.l1.go = "ring_27";
 		break;
 		
@@ -342,14 +342,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ring_28":
-			dialog.text = "Nothing valuable again... I have found a few interesting little things and that's all. But it is alright, there are usually no valuable goodies on the decks. The very best must be in cabins. There is an entrance to captain's quarters over there. Let's check it out.";
-			link.l1 = "Be careful, who knows what can be waiting for us there. Perhaps, I'd better enter there first?";
+			dialog.text = "И снова ничего значительного... Нашел пару интересных мелочей, и все. Но это нормально - на палубах ценностей обычно не бывает. Все самое лучшее лежит в каютах. Вон там - вход в каюту капитана. Пойдем, пороемся там...";
+			link.l1 = "Смотри аккуратнее - черт его знает, что там может скрываться. Может, лучше я пойду первым?";
 			link.l1.go = "ring_29";
 		break;
 		
 		case "ring_29":
-			dialog.text = "Let's go, "+pchar.name+". I won't hide behind your back any more. It is a shame that's for sure...";
-			link.l1 = "Go on then...";
+			dialog.text = "Пойдем, "+pchar.name+". Не все же мне у тебя за спиной прятаться. И в самом деле - стыдно...";
+			link.l1 = "Ну, пошли...";
 			link.l1.go = "ring_30";
 		break;
 		
@@ -369,8 +369,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ring_31":
-			dialog.text = "It looks like I got lucky - neither crabs nor other filth here. And now we will topsy-turvy this cabin, god damn it, I swear that I am starting to get angry. I have found only two dozens of doubloons and a few sundries!";
-			link.l1 = "Calm down. You were right, all valuables are always stashed in captain's cabin. Let's see what we've got!";
+			dialog.text = "Кажется, мне повезло - не оказалось ни крабов, ни какой-либо прочей погани. А теперь перевернем всю эту каюту вверх дном - клянусь честью, я уже начинаю злиться: кроме двух десятков дублонов и всякой никчемной мелочевки я пока ничего не нашел!";
+			link.l1 = "Не заводись. Ты правильно сказал - все ценности хранятся в капитанской каюте. Ищем!";
 			link.l1.go = "ring_32";
 		break;
 		
@@ -384,14 +384,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ring_33":
-			dialog.text = "Ha-ha! Just as I thought! I know habits of merchants, they like to make secret stashes and hide there the ship's treasury! Captain of this pinnace was a cunning rogue, but I won't be that easily cheated! Look what I have found! You would never be able to find it without me!";
-			link.l1 = "Show me!";
+			dialog.text = "Ха-ха! Как я и думал! Знаю я замашки этих торгашей - устраивать тайники и прятать там корабельную казну! Капитан этого пинаса был хитрый пройдоха, но меня не проведешь! Смотри, что мне удалось добыть! Сам бы ты в жизни не нашел этого схрона!";
+			link.l1 = "Ну-ка, покажи!";
 			link.l1.go = "ring_34";
 		break;
 		
 		case "ring_34":
-			dialog.text = "Forty thousand pesos, two chests filled with doubloons, packet of emerald and a bunch of jewels! The owner was quite rich... Fine, at least it will repay our effort, though I was counting to get more stuff. Lets share it fairly.";
-			link.l1 = "Excellent, Richard. At least we have made some coins!";
+			dialog.text = "Сорок тысяч песо, два сундука с дублонами, мешочек изумрудов и куча драгоценностей! Богатенький был владелец... Ладно, это хотя бы окупит наши с тобой труды, хотя я рассчитывал на большее. Делим по-братски, напополам, как договаривались.";
+			link.l1 = "Отлично, Ришард. Хоть что-то мы с тобой заработали!";
 			link.l1.go = "ring_35";
 		break;
 		
@@ -400,52 +400,52 @@ void ProcessDialogEvent()
 			TakeNItems(pchar, "chest", 1);
 			TakeNItems(pchar, "icollection", 1);
 			AddMoneyToCharacter(pchar, 20000);
-			Log_Info("You have received a chest with doubloons");
-			Log_Info("You have received 25 emeralds");
-			Log_Info("You have received  a collection of jewels");
+			Log_Info("Вы получили сундук с дублонами");
+			Log_Info("Вы получили 25 изумрудов");
+			Log_Info("Вы получили коллекцию драгоценностей");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Well, and let's keep what each of us have found at the decks for ourselves. Are you okay with that? Have you found anything useful in chests and in cabinets?";
-			link.l1 = "A few Indian things, amulets, papers and so on.";
+			dialog.text = "Ну, а то, что каждый из нас нашел в трюме и на палубе - оставим себе. Лады? В сундуках и шкафах что-нибудь полезное было?";
+			link.l1 = "Несколько индейских побрякушек, амулетов, бумаги, прочая мелочь.";
 			link.l1.go = "ring_36";
 		break;
 		
 		case "ring_36":
-			dialog.text = "Keep it for yourself. You have done the most risky job after all.";
+			dialog.text = "Забери это себе. В конце-концов, ты выполнил самую опасную работу.";
 			if (CheckAttribute(pchar, "questTemp.LSC.Ring.ReadCapBook")) // прочел журнал
 			{
-				link.l1 = "Fine. And I have found something else which such a treasure hunter like yourself might find useful. Here, there were a captain's log lying on the desk. The story which is written there is very sad... but it concerns us in a some way. There is a box hidden in the cargo hold and it is filled with gold! Read it!";
+				link.l1 = "Хорошо. Но я нашел кое-что еще, по твоей части, искатель тайников. Вот, на столе лежал судовой журнал. История, содержащаяся в нем, очень печальная... но кое-чем она теперь касается и нас: где-то в трюме спрятан целый ящик золота! Прочти сам!";
 				link.l1.go = "ring_41";
 			}
 			else
 			{
 				if (CheckCharacterItem(pchar, "RingCapBook")) // взял журнал
 				{
-					link.l1 = "Fine. But I have found one more thing - captain's log.";
+					link.l1 = "Хорошо. Но я нашел кое-что еще - судовой журнал капитана этого корабля.";
 					link.l1.go = "ring_38";
 				}
 				else
 				{
-					link.l1 = "Fine, I agree with such terms, ha-ha. So what, is it time to return?";
+					link.l1 = "Хорошо, я не возражаю против такого расклада, хе-хе. Ну что, пора возвращаться?";
 					link.l1.go = "ring_37";
 				}
 			}
 		break;
 		
 		case "ring_37":
-			dialog.text = "Yes. Don't tell anyone else about the ship, it will be our secret. Sure, we don't need copra, but provision will be useful for us. We won't have to buy it from admiral anymore.";
-			link.l1 = "Fine, I agree. I hope, that others won't find the ship soon. Let's go!";
+			dialog.text = "Да. Про корабль никому не рассказывай - пусть будет нашей тайной. Копра, конечно, никому тут не нужна, а вот провиант пригодится нам самим. Не надо будет покупать у адмирала.";
+			link.l1 = "Хорошо, так и сделаем. Надеюсь, другие найдут этот корабль не скоро. Уходим!";
 			link.l1.go = "ring_cabin_exit";
 		break;
 		
 		case "ring_38":
-			dialog.text = "Did you read it?";
-			link.l1 = "Not yet...";
+			dialog.text = "Ты его прочел?";
+			link.l1 = "Пока нет...";
 			link.l1.go = "ring_39";
 		break;
 		
 		case "ring_39":
-			dialog.text = "So let's read it! We can learn an important information from it. Also it will be interesting to know how did she end up here. Read it!";
-			link.l1 = "Hm. Fine, I will read it now...";
+			dialog.text = "Тогда давай читать! Там могут содержаться важные сведения. Да и просто интересно узанть, почему этот корабль оказался тут. Читай!";
+			link.l1 = "Хм. Хорошо, сейчас почитаем...";
 			link.l1.go = "ring_40";
 		break;
 		
@@ -458,47 +458,47 @@ void ProcessDialogEvent()
 		break;
 		
 		case "book_wait":
-			dialog.text = "Did you read it? What is there?";
+			dialog.text = "Прочел? Что там написано?";
 			if (CheckAttribute(pchar, "questTemp.LSC.Ring.ReadCapBook")) // прочел журнал
 			{
-				link.l1 = "Well, listen then... The story is very sad... but it concerns us now in a some way. Your treasure hunting skills might be able to help us. There is a hidden box filled with gold in the cargo hold! Read it!";
+				link.l1 = "Тут написано такое... История очень печальная... но кое-чем она теперь касается и нас. В общем, это по твоей части, искатель тайников: где-то в трюме спрятан целый ящик золота! Прочти сам!";
 				link.l1.go = "ring_41";
 			}
 			else
 			{
-				link.l1 = "Wait a second. I will read and tell you...";
+				link.l1 = "Погоди. Сейчас прочту и расскажу...";
 				link.l1.go = "exit";
 				NextDiag.TempNode = "book_wait";
 			}
 		break;
 		
 		case "ring_41":
-			dialog.text = "Really? "+pchar.name+", I am... well, I don't read that good. Tell me what is written there in details, huh?";
-			link.l1 = "Short version: this pinnace was crossing the Caribbean Sea from the South Main to the New Spain. Captain got married to the Indian princess of a lower Orinoco tribe. She told him where her people were doing sacrifices...";
+			dialog.text = "Да ты что?! "+pchar.name+", я это... плохо читаю. Лучше расскажи мне в подробностях, что там написано, а?";
+			link.l1 = "Вкратце: этот пинас пересекал Карибское море от Южного Мэйна в сторону Новой Испании. Капитан взял себе в жены принцессу-индианку из племен нижнего Ориноко, а она показала ему, где их люди делали жертвоприношения богам...";
 			link.l1.go = "ring_42";
 		break;
 		
 		case "ring_42":
 			dialog.text = "";
-			link.l1 = "The gold nuggets were their sacrifices. Sure, our brave captain has robbed this gold stash with a help of his first mate and quartermaster. They have put it in the cargo hold, in one of boxes and covered it with copra...";
+			link.l1 = "Жертвоприношения были в виде золотых самородков. Наш отважный капитан, безусловно, разграбил этот золотой запас, и вместе со старпомом и квартирместером перенес тайком от команды в трюм корабля, сложил в один из ящиков и присыпал копрой...";
 			link.l1.go = "ring_43";
 		break;
 		
 		case "ring_43":
 			dialog.text = "";
-			link.l1 = "But it seems that the robbery of sacred Indian place was punished. The ship got in dead calm, water supplies were running low, an epidemic of fever started and pirates attacked the ship. Seamen have blamed the Indian girl, a captain's wife, and demanded to throw here overboard. Of course captain refused and a crew started mutiny...";
+			link.l1 = "Но, видно, грабеж священного индейского места не прошел бесследно: корабль попал в мертвый штиль, начала заканчиваться пресная вода, на корабле вспыхнула эпидемия лихорадки, напали пираты. Матросы обвинили во всем индианку, жену капитана, и потребовали выбросить ее за борт. Кэп, конечно, отказался, и команда подняла бунт...";
 			link.l1.go = "ring_44";
 		break;
 		
 		case "ring_44":
 			dialog.text = "";
-			link.l1 = "Captain lost that fight. According to the last notes - he has locked himself with Indian girl in the cabin and tried to shoot enraged sailors who were breaking the door. And there was a storm coming at them... it seems that it has brought the ship here. The end of the story is clear: the girl was shot and the captain was surely killed by rebels.";
+			link.l1 = "Капитан проиграл этот бой. Последние записи - он заперся вместе с индианкой в каюте, отстреливаясь, а разъяренные матросы ломали дверь. На горизонте надвигался шторм... видимо, он-то и принес пинас сюда. Как закончилась трагедия - ясно: девушку застрелили, а капитан, безусловно, был убит бунтовщиками.";
 			link.l1.go = "ring_45";
 		break;
 		
 		case "ring_45":
-			dialog.text = "Hm. It is really a sad story. But aren't you joking at me? Is there a box with gold in the cargo hold? I don't believe my ears! Which one? Let's go there! I will check every bale, every  barrel!";
-			link.l1 = "Let's go. I am eager to start searching too.";
+			dialog.text = "Хм. Действительно печально. Но ты не шутишь? В трюме спрятан целый ящик золота? Я не верю своим ушам! Но который из них? Пошли скорее в трюм! Я перерою каждый тюк, каждую бочку!";
+			link.l1 = "Пойдем. Мне тоже не терпится приступить к поискам.";
 			link.l1.go = "ring_seek_gold";
 		break;
 		
@@ -531,26 +531,26 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ring_46":
-			dialog.text = "Ha-ha! We have found it! It exists for real! Just look at that huge pile! The whole box! There are five thousand nuggets, not less! I have never seen so much gold!";
-			link.l1 = "Congratulations, partner. It seems that our undertaking is successfully ended... What will we do with all of that gold?";
+			dialog.text = "Ха-ха! Мы нашли его! Оно действительно есть! Ты только посмотри, какая огромная куча! Целый ящик! Да тут не меньше пяти тысяч слитков! Никогда не видел такую груду золота!";
+			link.l1 = "Поздравляю, компаньон. Наше предприятие, похоже, завершилось феноменальным успехом... Что делать с золотом будем?";
 			link.l1.go = "ring_47";
 		break;
 		
 		case "ring_47":
-			dialog.text = "What do you mean? We will divide in half!";
-			link.l1 = "Sure we will. Where do you want to keep it? Will you leave it here?";
+			dialog.text = "Как что? Поделим напополам!";
+			link.l1 = "Это понятно. Где ты его хранить собираешься? Здесь оставишь, или перетаскивать куда будешь?";
 			link.l1.go = "ring_48";
 		break;
 		
 		case "ring_48":
-			dialog.text = "Ha! Surely, I will hide the gold in my stashes and no one will ever find them. Hiding is the thing I know well! Let's move a half of the gold in this barrel, that would be my share. I will take it away before the sunset.\nYou may do whatever you want with you share. But you'd better move it to your own stashes too. Don't blame me if you'll find your gold missing. I am an honest man, in my way of honesty and I won't dare to take you cut. But others, those who will come here later... they might find it.";
-			link.l1 = "Fine. I will decide what to do with my gold. Let's put your share in a barrel...";
+			dialog.text = "Ха! Конечно, все спрячу по своим тайникам, которые никто и никогда не найдет. Я-то умею прятать! Давай сейчас половину золота переложим в бочку - это будет моя доля. И еще до восхода солнца я ее унесу с этого корабля\nА ты - делай со своей долей, что сочтешь нужным. Но лучше тоже перепрячь, а то вдруг пропадет - обвинишь меня в этом. Но сразу скажу: я - человек по-своему честный, и на твою долю даже не посмею покуситься. А вот другие, кто сюда придет... могут и найти случайно.";
+			link.l1 = "Хорошо. Я решу, что мне сделать со своим золотом. Давай перекладывать твою долю в бочку...";
 			link.l1.go = "ring_49";
 		break;
 		
 		case "ring_49":
 			DialogExit();
-			SetLaunchFrameFormParam("Two hours later..."+ NewStr() +"The gold was shared!", "", 0, 5);//табличка
+			SetLaunchFrameFormParam("Прошло два часа..."+ NewStr() +"Золото поделено!", "", 0, 5);//табличка
 			WaitDate("", 0, 0, 0, 2, 10);
 			LaunchFrameForm();
 			RecalculateJumpTable();
@@ -560,8 +560,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ring_50":
-			dialog.text = "Done… Thank you, "+pchar.name+", for coming with me. I couldn't do this without you. Now I should consider building a tartan... ah, whatever. I'll think about it later\nI have got a work to do - moving the gold to safe places. Farewell, friend, I wish you use your cut wisely!";
-			link.l1 = "Bye, Richard. It was a very nice day today. See you!";
+			dialog.text = "Вот и все... Спасибо, "+pchar.name+", что согласился пойти со мной на дело. Без тебя бы ничего не вышло. Теперь можно озадачиться постройкой тартаны, чтобы уплыть на архипелаг... а, ладно. Не буду думать об этом сегодня\nУ меня еще очень много работы - перетаскать свое золото по безопасным местам. Пока, дружище, желаю удачно распорядиться своей долей!";
+			link.l1 = "Пока, Ришард. Славный сегодня день выдался. Увидимся!";
 			link.l1.go = "ring_51";
 		break;
 		
@@ -575,56 +575,56 @@ void ProcessDialogEvent()
 		break;
 //--------------------------------------- блок вопросов и ответов ---------------------------------------------
 		case "int_quests":
-			dialog.text = "Questions? Oh, fine, if you really need that...";
+			dialog.text = "Вопросы? Ох, ну давай, раз тебе это так необходимо...";
 			if (!CheckAttribute(npchar, "quest.answer_1"))
 			{
-				link.l1 = "How did you get here?";
+				link.l1 = "Как ты попал сюда?";
 				link.l1.go = "ansewer_1";
 			}
 			if (!CheckAttribute(npchar, "quest.answer_2"))
 			{
-				link.l2 = "Do you want to leave the Island?";
+				link.l2 = "Ты бы хотел выбраться отсюда?";
 				link.l2.go = "ansewer_2";
 			}
 			if (!CheckAttribute(npchar, "quest.answer_3"))
 			{
-				link.l3 = "Have you ever been considering to join one of the clans? Narwhals for example?";
+				link.l3 = "А ты никогда не хотел примкнуть к одному из кланов? Например, к нарвалам?";
 				link.l3.go = "ansewer_3";
 			}
 			if (!CheckAttribute(npchar, "quest.answer_4"))
 			{
-				link.l4 = "Is it true that you can find a lot of interesting stuff at the outer ring?";
+				link.l4 = "Так что, на кораблях внешнего кольца можно найти много чего интересного?";
 				link.l4.go = "ansewer_4";
 			}
-			link.l10 = "No questions. Pardon...";
+			link.l10 = "Нет вопросов. Извините...";
 			link.l10.go = "exit";
 		break;
 		
 		case "ansewer_1":
-			dialog.text = "For ten years me and my comrades had been sailing from Cuba to the Island on a well equipped tartane. We kept the location of the Island in secret - we were transporting bull carcasses and selling fresh meat for goods and gold from the local ship's holds\nGood times! Provision was always a problem here, biscuits and salted beef mostly, so they paid us for juicy meat with spicery, which costs a fortune back in Europe! Every single voyage I was making enough money to buy every whore of Tortuga\nBut everything has an end, so had our satisfied life. The weather gone bad - storms got stronger, so sailing to the Island became much more dangerous. Some of my companions have left the business, but not me and a dozen of brave men\nFinally, we were thrown on a reef two miles away from the Island. I still don't get how I managed to swim through the storming sea. That's how I became one of those who I was trading with in past.";
-			link.l1 = "Interesting story...";
+			dialog.text = "Десять лет назад я с товарищами постоянно совершал переходы между Островом и Кубой на хорошо оснащенной тартане. Мы держали в тайне местонахождение Острова - сюда мы привозили туши быков и обменивали свежее мясо на товары из трюмов погибших кораблей и золото\nВот это было времечко! С провиантом здесь всегда было не ах - в основном сухари да солонина, поэтому за сочное мясо платили пряностями, стоящими в Европе целое состояние! За один рейс я зарабатывал столько, что мог скупить всех шлюх Тортуги в вечное пользование\nНо всему приходит конец, пришел конец и нашей сытой жизни. В этих краях изменилась погода - штормы стали чаще и суровее, и все опаснее было добираться до Острова. Некоторые мои соратники вышли из дела, но я и десяток храбрецов продолжали путешествия\nДо тех пор, пока нас в конце концов не разбило о рифы в двух милях от Острова. Как я сюда добрался вплавь по бурному морю - я и сам понять не могу до сих пор. Таким образом я и стал одним из тех, с кем раньше торговал.";
+			link.l1 = "Интересная история...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_1 = "true";
 		break;
 		
 		case "ansewer_2":
-			dialog.text = "Ha! I will get out of here, damn it! But later. What would I do at Cuba? I have got no friends left and my pocket is empty. I will start to build a boat right after I will find a ship with a valuable cargo at the outer ring or a pile of doubloons.";
-			link.l1 = "I see...";
+			dialog.text = "Ха! Я выберусь отсюда, черт побери! Но не сейчас. Что мне делать на Кубе? Друзей у меня не осталось, денег тоже не густо. Вот как только найду на внешнем кольце корабль с богатым грузом, или кучу золотых дублонов - сразу же начну строить лодку.";
+			link.l1 = "Понятно...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_2 = "true";
 			SaveCurrentNpcQuestDateParam(npchar, "quest_date");
 		break;
 		
 		case "ansewer_3":
-			dialog.text = "And why should I? To stand guard like an idiot for every third day and keep people off the San Gabriel? And they don't like to hire new people. They are local natives... And Negros are the same. No, I'd better be on my own.";
-			link.l1 = "I see...";
+			dialog.text = "А зачем? Чтобы потом как дураку сутки через двое стоять в карауле навытяжку, гоняя всех, кто надумает сунуться на 'Сан-Габриэль'? Да и не горят они желанием посторонних к себе брать. Они же - потомственные островитяне, что ты... И негритосы ничем не лучше их. Нет, уж лучше я буду сам по себе.";
+			link.l1 = "Ясно...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_3 = "true";
 		break;
 		
 		case "ansewer_4":
-			dialog.text = "Sure! That is what makes the Island and the locals still living. Do you know when parties happen here? When a new ship arrives. But anyways, there are a lot of untouched ships filled with gold and goods at the outer ring\nProblem is that the outer ring is almost impossible to explore, things are messy out there, if you get entangled, slip or fell down badly - you may find yourself in the hole you can't not leave on your own. Then you are finished. A lot of people died that way.";
-			link.l1 = "Hm... Interesting.";
+			dialog.text = "А как же! Островитяне только с этого и живут. Знаешь, когда на Острове праздник? Когда к нам прибивает новый корабль. Но в любом случае, во внешнем кольце еще очень много необследованных и невыпотрошенных лоханок, в трюмах которых можно найти ценные товары и золото\nНо сложность в том, что по внешнему кольцу практически невозможно ходить - все стоит вкривь и вкось, а если запутаешься или подскользнешься и неудачно упадешь - можешь свалиться в такое место, откуда самостоятельно не выбраться. И тогда тебе конец. Уже много людей так пропало.";
+			link.l1 = "Хм... Занятно.";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_4 = "true";
 		break;
@@ -633,14 +633,14 @@ void ProcessDialogEvent()
 //----------------------------------------- специальные реакции -----------------------------------------------
 		//обнаружение ГГ в сундуках
 		case "Man_FackYou":
-			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
-			link.l1 = "Damn it!";
+			dialog.text = LinkRandPhrase("Что ты там копаешься, а? Да ты вор!", "Вот это да! Чуть я загляделся, а ты сразу в сундук с головой!", "По сундукам шарить вздумал?! Тебе это даром не пройдет!");
+			link.l1 = "А-ать, дьявол!!!";
 			link.l1.go = "fight";
 		break;
 		
 		case "Woman_FackYou":
-			dialog.text = "What?! Decided to check my chests? You won't get away with it!";
-			link.l1 = "Foolish girl!...";
+			dialog.text = "Ах, вот, значит, как?! По сундукам шарить вздумал?! Тебе это даром не пройдет!";
+			link.l1 = "Вот дура!..";
 			link.l1.go = "exit_setOwner";
 			LAi_group_Attack(NPChar, Pchar);
 		break;
@@ -661,8 +661,8 @@ void ProcessDialogEvent()
 		
 		//замечание по обнаженному оружию
 		case "LSCNotBlade":
-			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
-			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
+			dialog.text = LinkRandPhrase("Слушай, ты бы убрал оружие. А то нервируешь немного...", "Знаешь, у нас тут не принято сабелькой размахивать. Убери оружие.", "Слушай, что ты, как д'Артаньян, бегаешь тут, шпагой машешь? Убери оружие, не к лицу это серьезному мужчине...");
+			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;	
@@ -670,13 +670,13 @@ void ProcessDialogEvent()
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{
-				dialog.text = NPCharSexPhrase(NPChar, "Listen, I am the citizen of the city and I'd ask you to hold down your blade.", "Listen, I am the citizen of the city and I'd ask you to hold down your blade.");
-				link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
+				dialog.text = NPCharSexPhrase(NPChar, "Послушайте, я, как гражданин этого города, прошу вас не ходить у нас с обнаженным клинком.", "Знаете, я, как гражданка этого города, прошу вас не ходить у нас с обнаженным клинком.");
+				link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажете...");
 			}
 			else
 			{
-				dialog.text = NPCharSexPhrase(NPChar, "Be careful, pal, while running with a weapon. I can get nervous...", "I don't like when men walking in front of me with their weapon ready. It scares me...");
-				link.l1 = RandPhraseSimple("Got it.", "I am taking it away.");
+				dialog.text = NPCharSexPhrase(NPChar, "Острожней на поворотах, приятель, когда бежишь с оружием в руках. Я ведь могу и занервничать...", "Мне не нравится, когда мужчины ходят передо мной с оружием на изготовку. Это меня пугает...");
+				link.l1 = RandPhraseSimple("Понял.", "Убираю.");
 			}
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";

@@ -18,34 +18,34 @@ void ProcessDialogEvent()
 			{
 				if (pchar.questTemp.HWIC.Holl == "AbbyFather")
 				{
-					dialog.text = "What do you want from the old Jew, young man?";
-					link.l1 = "Solomon, I need you to recall a location of the island. You have a stash there. I've talked with your daughter. My boss Lucas Rodenburg gives me a carte blanche to act for the good of your family. As I see it, the most important thing for you at this moment is retrieving your family capital. But I will hardly be able to do this without your help...";
+					dialog.text = "Молодой человек, ну что вы хотите от старого бедного еврея?";
+					link.l1 = "Соломон, я хочу, чтобы вы постарались вспомнить, что это за остров, на котором вы спрятали свои сбережения. Я говорил с вашей дочерью. Мой командир - Лукас Роденбург - дает мне полную свободу действий на благо вашей семьи. А сейчас самое важное для вас, как я понял - вернуть семейный капитал. Но без вашей помощи мне будет трудно это сделать...";
 					link.l1.go = "SolomonBonanza";
 					break;
 				}
 				if (pchar.questTemp.HWIC.Holl == "AbbyFindScull" && makeint(Pchar.money) >= 200000)
 				{
-					dialog.text = "Oh, my young man, is that you? Can you tell me anything good? Or are you going to torment this poor old Jew with questions again?";
+					dialog.text = "Ох, это опять вы, молодой человек? Расскажете мне что-нибудь хорошее? Или опять будете мучать старого бедного еврея вопросами?";
 					if (CheckCharacterItem(pchar, "SkullAztec"))
 					{
-						link.l1 = "I have found the island, though it was quite difficult. I have also found your chest with the money and this skull. I take it this is the skull of your grandfather that you'd been talking about.";
+						link.l1 = "Я нашел остров, хотя это было достаточно сложной задачей. Отыскал я также и ваш сундук с деньгами, и вот этот артефакт в виде черепа. Как я понял, это и есть тот череп деда, про который вы говорили.";
 						link.l1.go = "SolomonBonanza_2";
 					}
-					link.l2 = "I have found the island, though it was quite difficult. I have also found your chest with the money. But there were no skulls in the cache, though.";
+					link.l2 = "Я нашел остров, хотя это было достаточно сложной задачей. Отыскал я также и ваш сундук с деньгами. А вот черепов никаких в схроне не оказалось.";
 					link.l2.go = "SolomonBonanza_3";
-					link.l3 = "No, there will be no tidings or questions this time.";
+					link.l3 = "Да нет, пока ничего не расскажу и вопросов задавать тоже не буду.";
 					link.l3.go = "exit";
 					break;
 				}
 				if (pchar.questTemp.HWIC.Holl == "GiveLucasMoney" && GetQuestPastDayParam("questTemp.HWIC.Holl.LucasMoney") > 7)
 				{
-					dialog.text = "Oh, my young man, is that you? Can you tell me anything good? Or are you going to torment this poor old Jew with questions again?";
-					link.l1 = "I have found the island, though it was quite difficult. I have also found your chest with the money. Here you are.";
+					dialog.text = "Ох, это опять вы, молодой человек? Расскажете мне что-нибудь хорошее? Или опять будете мучать старого бедного еврея вопросами?";
+					link.l1 = "Я нашел остров, хотя это было достаточно сложной задачей. Отыскал я также и ваши деньги. Вот, возьмите, пожалуйста.";
 					link.l1.go = "SolomonBonanza_5";
 					break;
 				}
-				dialog.text = "Hello, young man. Now, what do you want from this poor old Jew?";
-				link.l1 = "Good afternoon. No, nothing, I've just come to say hello.";
+				dialog.text = "Здравствуйте, молодой человек. Ну что вы хотите от бедного старого еврея?";
+				link.l1 = "Добрый день. Да нет, ничего, просто поздороваться решил.";
 				link.l1.go = "exit";
 				break;
 			}
@@ -54,13 +54,13 @@ void ProcessDialogEvent()
 			{
 				if (pchar.questTemp.HWIC.Eng == "toAbigile")
 				{
-					dialog.text = "Good afternoon, young man. I see you've come for a purpose... What do you want? Am I getting something out of this or did I miss anything?";
-					link.l1 = "Good afternoon. I would like to talk to Abigail.";
+					dialog.text = "День добрый, молодой человек. Я вижу, что вы пришли неспроста... Вам что-то надо? Я что-то буду с этого иметь, или я что-то плохо не понял?";
+					link.l1 = "Добрый день. Мне нужно поговорить с Абигайль.";
 					link.l1.go = "Solomon_treasure";
 					break;
 				}
-				dialog.text = "Hello, young man. Now, what do you want from this poor old Jew?";
-				link.l1 = "Good afternoon. No, nothing, I've just come to say hello.";
+				dialog.text = "Здравствуйте, молодой человек. Ну что вы хотите от бедного старого еврея?";
+				link.l1 = "Добрый день. Да нет, ничего, просто поздороваться решил.";
 				link.l1.go = "exit";
 				break;
 			}
@@ -69,40 +69,40 @@ void ProcessDialogEvent()
 			{
 				if (pchar.questTemp.HWIC.Self == "toVillemstad")
 				{
-					dialog.text = "Good afternoon, young man. I see you've come for a purpose... What do you want? Am I getting something out of this or did I miss anything?";
-					link.l1 = "I need to talk to Abigail. I've got a letter for her.";
+					dialog.text = "День добрый, молодой человек. Я вижу, что вы пришли неспроста... Вам что-то надо? Я что-то буду с этого иметь, или я что-то плохо не понял?";
+					link.l1 = "Мне нужно поговорить с Абигайль. У меня для нее письмо.";
 					link.l1.go = "Abigile_kidnap";
 					break;
 				}
 				if (pchar.questTemp.HWIC.Self == "AbigileNextDayOver")
 				{
-					dialog.text = "Hello young man. What do you want? Another letter for my daughter?";
-					link.l1 = "Hm... No. Where is Abigail?";
+					dialog.text = "День добрый, молодой человек. Что вам нужно? Еще одно письмо для моей дочери?";
+					link.l1 = "Хм... нет. А где Абигайль?";
 					link.l1.go = "Abigile_GoOver";
 					break;
 				}
 				if (pchar.questTemp.HWIC.Self == "SolomonHistory")
 				{
-					dialog.text = "Hmm... Are you talking about my money, young man?";
-					link.l1 = "Yes, mynheer. About the money you hid on some island and neither you nor Abigail remember it's location and how it looks like.";
+					dialog.text = "Кхм... Молодой человек! Вы сейчас, кажется, ведете речь о моих деньгах?";
+					link.l1 = "Да, минхер. О деньгах, которые вы спрятали на неком острове, о котором ни вы, ни Абигайль даже не помните - ни где он, ни каков он.";
 					link.l1.go = "Solomon_history";
 					break;
 				}
 				if (pchar.questTemp.HWIC.Self == "SolomonHistoryAfter")
 				{
-					dialog.text = "Alright. I do remember the flute and its captain. I had even seen him once in our port. The flute's name was Leiden and the captain's name was Toff Keller, I guess.";
-					link.l1 = "That's a start! I've got a lead now.";
+					dialog.text = "Хорошо. Я действительно помню и этот флейт, и его капитана. Я даже как-то видел его в порту нашего города. Флейт называется 'Лейден', капитана звали... кажется, Тофф Келлер.";
+					link.l1 = "Отлично! Зацепка есть, теперь главное - отыскать этого капитана.";
 					link.l1.go = "Solomon_history_3";
 					pchar.questTemp.HWIC.Self = "SolomonHistoryEnd";
 					break;
 				}
-				dialog.text = "What do you want from this poor old Jew this time?";
-				link.l1 = "Good afternoon. No, nothing, I've just come to say hello.";
+				dialog.text = "Ну что вы опять хотите от бедного старого еврея?";
+				link.l1 = "Добрый день. Да нет, ничего, просто поздороваться решил.";
 				link.l1.go = "exit";
 				break;
 			}
-			dialog.text = "What do you want from this poor old Jew this time?";
-			link.l1 = "Good afternoon. No, nothing, I've just come to say hello.";
+			dialog.text = "Здравствуйте, молодой человек. Ну что вы хотите от бедного старого еврея?";
+			link.l1 = "Добрый день. Да нет, ничего, просто поздороваться решил.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
@@ -110,8 +110,8 @@ void ProcessDialogEvent()
 //-----------------------------------------------За Голландию-----------------------------------
 		case "SolomonBonanza":
 			PlaySound("VOICE\Russian\hambit\Solomon Shneur-03.wav");
-			dialog.text = "And what do you want from me? Do I look like a man who knows something extra? How could I know on that scary-scary day that some piece of ground among the waves has fooditude and other goldinates? Or how those, who want to look smarter than an old Jew, call it?\nIsland. Not a single decent man there, except Abi and me. Not a single. No one at all. There was a grotto in the middle of it. I put my chest there to save it from that pirate fucker. Everything I had earned with a hard work is there. Plus, my granddad's skull... Trust me, that thingy saved us, yes-yes\nOh-ho-ho, an ancient thingy! God save us! It is difficult to start over in this age! I wish you knew, young man! Oh, I wish you knew!";
-			link.l1 = "What. No help from you, huh? Bye!";
+			dialog.text = "И что вы из-под меня хочете? Разве я похож на человека, который знает больше, чем на самом деле? Разве я мог подумать в тот страшный для меня день, что у клочка земли среди волн есть свои полнота и долговязость? Или как это называют те, кто хочет казаться умнее старого еврея?\nОстров как остров, не считая меня с Аби, ни одного приличного человека. То есть вообще никого. Посредине грот. Вот в нем я свой сундук спрятал, чтобы он не достался этому извергу. А в сундуке том все, что нажито непосильными трудами. И наша семейная реликвия – драгоценный череп деда... Вы мне можете не поверить, но спаслись мы исключительно благодаря ему\nО-о-о, это древняя штучка. Боже ж ты мой! Как трудно на склоне лет начинать все сначала! Если б вы знали, молодой человек! Если б в только могли себе на минуточку это представить!";
+			link.l1 = "Ох... Ладно. Как я понял, большего, чем я уже знаю, я от вас не добьюсь. Придется действовать самому. До свидания!";
 			link.l1.go = "SolomonBonanza_1";
 		break;
 		
@@ -124,8 +124,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "SolomonBonanza_2"://отдаем всё
-			dialog.text = "Oh, gratitude, young man! Not only you have brought back my money - you have cleansed the Shneur's name! Mynheer Rodenburg can be rightfully proud that he has captains like you under his command. I will give the skull to mynheer Rodenburg - he promised to pay a significant sum for it. And I also would like to thank you personally - please accept this amulet as a memento.";
-			link.l1 = "I am happy for you. Thank you for the gift!";
+			dialog.text = "О, молодой человек, огромное вам спасибо! Вы не просто вернули деньги - вы восстановили доброе имя семьи Шнеуров! Минхер Роденбург по праву может гордиться, что у него на службе такие капитаны, как вы. Череп я передам минхеру Роденбургу - он обещал заплатить за него приличную сумму... А вас я хочу лично отблагодарить - примите на память этот оберег.";
+			link.l1 = "Я рад за вас. Спасибо вам за подарок!";
 			link.l1.go = "SolomonBonanza_4";
 			RemoveItems(PChar, "SkullAztec", 1);
 			AddMoneyToCharacter(pchar, -200000);
@@ -136,8 +136,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "SolomonBonanza_3":
-			dialog.text = "Oh, gratitude, young man! Not only you have brought back my money - you have cleansed the Shneur's name! As for the skull - oh, well, never mind! Mynheer Rodenburg can be rightfully proud that he has captains like you under his command. I would like to thank you personally - please accept this amulet as a memento.";
-			link.l1 = "I am happy for you. Thank you for the gift!";
+			dialog.text = "О, молодой человек, огромное вам спасибо! Вы не просто вернули деньги - вы восстановили доброе имя семьи Шнеуров! А череп... да и Бог с ним! Лукас по праву может гордиться, что у него на службе такие капитаны, как вы. Я хочу вас отблагодарить - примите на память этот амулет.";
+			link.l1 = "Я рад за вас. Спасибо вам за подарок!";
 			link.l1.go = "SolomonBonanza_4";
 			AddMoneyToCharacter(pchar, -200000);
 			GiveItem2Character(pchar, "obereg_10");
@@ -152,16 +152,16 @@ void ProcessDialogEvent()
 		break;
 		
 		case "SolomonBonanza_5":
-			dialog.text = "What? What are you saying, young man? Is this true? Let me have a look... ";
-			link.l1 = "Here is your money. They belong to you and Abigail. But alas, I haven't found the skull of your grandfather.";
+			dialog.text = "Да вы что? Что вы такое говорите, молодой человек? Это правда? Ну-ка, дайте мне на них взглянуть...";
+			link.l1 = "Пожалуйста. Вот ваши деньги. Они вновь принадлежит вам и Абигайль. Правда, никакого черепа вашего деда я не нашел.";
 			link.l1.go = "SolomonBonanza_6";
 		break;
 		
 		case "SolomonBonanza_6":
 			AddMoneyToCharacter(pchar, -200000);
 			GiveItem2Character(pchar, "amulet_7"); 
-			dialog.text = "Oh, money, yes, money... It does not look like my money, though... Does not smell like my shiny coins. But then again - moneys are all the same, young man, aren't they? Do not bother to answer - I know. Thank you so much for returning my savings. I would like to thank you too - please accept this amulet. Now go and tell Abi the good news!";
-			link.l1 = "Thank you, Solomon.";
+			dialog.text = "Ох, денежки... да-да, денежки-денежки... На мои монеты совсем не похожи... Но какая разница, не правда ли, молодой человек? Не отвечайте, я знаю, что правда... Большое вам спасибо, что вернули мои сбережения. Я хочу вас отблагодарить - примите этот оберег. И идите, обрадуйте Аби!";
+			link.l1 = "Спасибо, Соломон.";
 			link.l1.go = "SolomonBonanza_4";
 			pchar.questTemp.HWIC.Holl.LucasMoney = "true";//признак для Лукаса
 			ChangeCharacterComplexReputation(pchar, "nobility", 1);
@@ -170,14 +170,14 @@ void ProcessDialogEvent()
 //-------------------------------------------за Англию------------------------------------------------
 		
 		case "Solomon_treasure":
-			dialog.text = "Oh, don't tell me! Mynheer Rodenburg is a step away from being my son-in-law. Blow! I like him! All soldiers from the garrison will be here in a second, should I cry for help!";
-			link.l1 = "Who are you, for fuck's sake?";
+			dialog.text = "Ой, я вас умоляю! Минхер Роденбург без пяти минут мой зять. Чтоб он сдох, как он мне нравится! Стоит мне закричать караул и сюда сбегутся все солдаты гарнизона!";
+			link.l1 = "Да кто ты такой, черт побери?!";
 			link.l1.go = "Solomon_treasure_1";
 		break;
 		
 		case "Solomon_treasure_1":
-			dialog.text = "Listen, captain. I am her natural father Solomon. Do a shiny thing, bring me my coins and a skull of her grandpa. Old Jew is surely not as smart as you are, but even he knows that you want something from his daughter\nMaybe you were sent by someone, by some captain, I will tell Abi everything, don't you worry. She is not at home now, she is praying for sinners like yourself.";
-			link.l1 = "Boy how can Mother Earth bear people like you... Farewell, old miser.";
+			dialog.text = "Слушайте сюда, капитан, я ее родный папа Соломон. Сделайте мне красиво, верните мне мои деньги и череп ее деда. Старый еврей, конечно, не такой умный, как вы, но даже он понимает, что вы чего-то хочете от его дочери\nВозможно, что вас кто-то послал, и, если это тот капитан, за которого я думаю, то я скажу Аби все в лучшем виде, и пусть вас больше не волнует этих глупостей. А сейчас ее нет дома, моя девочка в это время молится Богу за грехи грешников, подобных вам.";
+			link.l1 = "Ох, Господи! И как только таких земля носит... Прощай, старый скряга.";
 			link.l1.go = "Solomon_treasure_2";
 		break;
 		
@@ -193,26 +193,26 @@ void ProcessDialogEvent()
 //----------------------------------------------против всех---------------------------------------------	
 		
 		case "Abigile_kidnap":
-			dialog.text = "A letter? You don't say! Mynheer Rodenburg is a step away from being my son-in-law. Blow! I like him!";
-			link.l1 = "Listen, I don't give a shit who your son-in-law is. I am obliged to give this letter to Abigail. Do you know where can I find her? And who are you?";
+			dialog.text = "Письмо? Ой, я вас умоляю! Минхер Роденбург без пяти минут мой зять. Чтоб он сдох, как я от него в восторге!";
+			link.l1 = "Послушайте, мне все равно, кто ваш зять. Мне нужно передать это письмо Абигайль. Вы в конце концов скажете, где мне ее найти? И вообще, кто вы?";
 			link.l1.go = "Abigile_kidnap_1";
 		break;
 		
 		case "Abigile_kidnap_1":
-			dialog.text = "Who am I? I am her father Solomon... And I don't like you, young man.";
-			link.l1 = "You know, I'd start worrying, if you said you like me... So, are you going to keep shitting on me, or will you just call Abigail? I repeat once again, I am a messenger! I have a letter for your daughter!";
+			dialog.text = "Кто я? Я ее родный папа Соломон... А вот вы мне что-то не нравитесь, молодой человек.";
+			link.l1 = "Ну, знаете, я бы забеспокоился, если бы вы вдруг заявили, что я вам нравлюсь... Вы продолжите и дальше нести чепуху, или все-таки позовете Абигайль? Повторяю еще раз: я вестовой, я принес письмо для вашей дочери!";
 			link.l1.go = "Abigile_kidnap_2";
 		break;
 		
 		case "Abigile_kidnap_2":
-			dialog.text = "Give this letter to me. I will hand it over to my daughter.";
-			link.l1 = "Who pissed in your porridge this morning? Sorry, but I have orders to give this message to her personally. They didn't say a word about her father. So I am repeating myself - where can I find Abigail?";
+			dialog.text = "Отдайте письмо мне. Я передам его дочке.";
+			link.l1 = "Сожалею, но у меня приказ вручить это послание только ей лично в руки. Про папу в моем приказе ничего не было. Так что я вынужден повторить вопрос - где я могу найти Абигайль?";
 			link.l1.go = "Abigile_kidnap_3";
 		break;
 		
 		case "Abigile_kidnap_3":
-			dialog.text = "As soon as I scream, young man, all soldiers will be here at once, don't be so stubborn.";
-			link.l1 = "Jesus! Really? And then what? Since when delivering letters is a crime? Don't be ridiculous!";
+			dialog.text = "Молодой человек, стоит мне закричать караул, и сюда сбегутся все солдаты гарнизона, если вы будете столь настырны...";
+			link.l1 = "О, Господи! И что? Я нарушил закон? Не будьте смешны, папаша!";
 			link.l1.go = "Abigile_kidnap_4";
 		break;
 		
@@ -225,8 +225,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Abigile_GoOver":
-			dialog.text = "Are you kidding? You've excited my poor girl with that message... She decided to follow that rotten captain! She sailed away on a ship of opportunity. Ah, what shall this old Jew do now? Do me a favour, young man, leave my house at once.";
-			link.l1 = "How about that! Apparently, she could not wait...";
+			dialog.text = "Вы издеваетесь? Своим посланием вы взбудоражили мою бедную девочку... Она решила отправиться к этому... прохвосту, этому капитанишке! Уплыла она с острова на попутном судне. Ах, что же делать теперь старому еврею! Сделайте милость, молодой человек, покиньте мой дом!";
+			link.l1 = "Вот это да... Не дождалась, видимо...";
 			link.l1.go = "Abigile_GoOver_1";
 		break;
 		
@@ -240,19 +240,19 @@ void ProcessDialogEvent()
 		
 		case "Solomon_history":
 			PlaySound("VOICE\Russian\hambit\Solomon Shneur-03.wav");
-			dialog.text = "How does it look like? It's just an island with no decent people, save for me and Abigail. There I have hidden my chest, so that this monster could not have taken it. Everything I had honestly earned, was there...";
-			link.l1 = "Tell me, Solomon - perhaps, you could recall the name of the flute you daughter was talking about? And what was her captain's name?";
+			dialog.text = "Каков он? Остров как остров, не считая меня с Аби, ни одного приличного человека. То есть вообще никого. Посредине грот. Вот в нем я свой сундук спрятал, чтобы он не достался этому извергу. А в сундуке том все, что нажито непосильными трудами...";
+			link.l1 = "Скажите, Соломон, может вы помните, как назывался тот флейт, о котором рассказала ваша дочь, и как звали капитана?";
 			link.l1.go = "Solomon_history_1";
 		break;
 		
 		case "Solomon_history_1":
-			dialog.text = "Hmm... Well, I do not know. And why are you asking, young man?";
-			link.l1 = "I want to help your daughter, Solomon. I cannot promise anything, but I'd like to try. My former boss had treated her badly, and after that I think I am obliged to help her to settle down somehow.";
+			dialog.text = "Эм-м... Ну, не знаю. А вы, молодой человек, зачем вам все это надо?";
+			link.l1 = "Я просто хочу помочь вашей дочери, Соломон. Я ничего не обещаю, но хочу хотя бы попробовать. После того, как с ней обошелся мой бывший командир, будь он неладен, я считаю себя... обязанным хоть как-то, хоть попытаться, оказать возможное содействие в обустройстве ее дальнейшей жизни.";
 			link.l1.go = "Solomon_history_2";
 		break;
 		
 		case "Solomon_history_2":
-			dialog.text = "Well, if it is so...";
+			dialog.text = "Ну, если так...";
 			link.l1 = "";
 			link.l1.go = "Solomon_history_3";
 			pchar.questTemp.HWIC.Self = "SolomonHistoryNext";
@@ -266,32 +266,32 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Solomon_thanks":
-			dialog.text = "Young man! Wait!";
-			link.l1 = "Yes?";
+			dialog.text = "Молодой человек! Постойте!";
+			link.l1 = "Да, Соломон?";
 			link.l1.go = "Solomon_thanks_1";
 		break;
 		
 		case "Solomon_thanks_1":
-			dialog.text = "Young man! I would like to thank you for everything you've done for me and my daughter. You saved us. I am sorry for giving you a hard welcome the first time we met and for my doubts in your sincere desire to help. Please forgive the old Jew. Now tell me - haven't you found anything else except my money in the grotto?";
-			link.l1 = "No, Solomon. There was nothing but money. I had to fight with van Berg's cutthroats - it was him who sunk your ship months ago. It might be that they had already stolen something... And what else was supposed to be there?";
+			dialog.text = "Молодой человек! Я хочу поблагодарить вас за то, что вы сделали для меня и моей дочки. Вы просто спасли нас. Простите за то, как я принял вас в первый раз, и за то, что сомневался в вашем желании помочь. Простите старого еврея... И, скажите: кроме денег, вы ничего в гроте не находили?";
+			link.l1 = "Нет, Соломон. Кроме денег ничего не было. Прямо в гроте мне пришлось выдержать бой с головорезами ван Берга - пирата, который потопил ваш корабль. Может, им что-то удалось похитить... А что там должно было быть?";
 			link.l1.go = "Solomon_thanks_2";
 		break;
 		
 		case "Solomon_thanks_2":
-			dialog.text = "Nothing important... One ancient relic... Well, nevermind! Forget about this rarity! And... Just one more thing, young man... ";
-			link.l1 = "Go on.";
+			dialog.text = "Да... неважно. Одна древняя реликвия. Да и Бог с ним, с этим раритетом! Молодой человек! Еще хотел спросить...";
+			link.l1 = "Да?";
 			link.l1.go = "Solomon_thanks_3";
 		break;
 		
 		case "Solomon_thanks_3":
-			dialog.text = "You... well, I have found out something about you. Our governor holds you on a high esteem, and you are a notable captain. I'll tell you a secret... my daughter likes you a lot. She told me that herself. Maybe you will think about this? Abigail is a very good girl, I assure you.";
-			link.l1 = "Oh, boy. It's not that straight forward, Solomon. But your daughter is a rare jewel indeed. You take good care of her.";
+			dialog.text = "Вы... это... ну, я узнал немного про вас. Вы в большом почете у нашего губернатора, да и вообще, видный капитан. Скажу по секрету - вы нравитесь моей дочке. Она сама мне так сказала. Может... ну, вы подумаете? Аби очень хорошая девушка, уверяю вас.";
+			link.l1 = "Эх, Соломон... Не все так просто. Да, ваша дочка - просто сокровище. Берегите ее.";
 			link.l1.go = "Solomon_thanks_4";
 		break;
 		
 		case "Solomon_thanks_4":
-			dialog.text = "Think it over, young man. Think again and come back!";
-			link.l1 = "Bye, Solomon.";
+			dialog.text = "Вы подумайте, молодой человек! Подумайте и возвращайтесь!";
+			link.l1 = "До свидания, Соломон.";
 			link.l1.go = "Solomon_thanks_5";
 		break;
 		
@@ -303,8 +303,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Solomon_poor":
-			dialog.text = "Heh... Sometimes it is impossible to start a new life, young man. To live in poverty - what can be worse for an old man?";
-			link.l1 = "I am sorry, Solomon. Stand firm.";
+			dialog.text = "Э-эх... Иногда, молодой человек, невозможно начать жизнь сначала... Провести старость в нищете - что может быть хуже?";
+			link.l1 = "Мне жаль, Соломон. Крепитесь.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Solomon_poor";
 		break;
@@ -316,8 +316,8 @@ void ProcessDialogEvent()
 		
 		//--> блок реагирования на попытку залезть в сундук
 		case "Man_FackYou":
-			dialog.text = LinkRandPhrase("You are a "+ GetSexPhrase("thief, mister! Guards, take him","thief, girl! Guards, take her") +"!!!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest! Take the thief!!!", "Guards! Robbery! Take the thief!!!");
-			link.l1 = "Damn it!";
+			dialog.text = LinkRandPhrase("Да ты "+ GetSexPhrase("вор, милейший! Стража, держи его","воровка! Стража, держи ее") +"!!!", "Вот это да! Чуть я загляделся, а ты сразу в сундук с головой! Держи "+ GetSexPhrase("вора","воровку") +"!!!", "Стража! Грабят!!! Держи "+ GetSexPhrase("вора","воровку") +"!!!");
+			link.l1 = "А-ать, дьявол!!!";
 			link.l1.go = "exit";
 			LAi_group_Attack(NPChar, Pchar);
 		break;

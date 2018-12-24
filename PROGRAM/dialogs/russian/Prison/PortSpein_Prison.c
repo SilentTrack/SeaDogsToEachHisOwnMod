@@ -4,45 +4,45 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
  	switch(Dialog.CurrentNode)
 	{
         case "quests":
-            dialog.text = "Speak, I am listening";
-			link.l1 = "I was mistaken. Farewell.";
+            dialog.text = "Говорите, я слушаю.";
+			link.l1 = "Я "+ GetSexPhrase("ошибся","ошиблась") +". Прощайте.";
 			link.l1.go = "Exit";
 			//Цена чахотки
 			if (!CheckAttribute(npchar, "quest.Consumption") && CheckAttribute(pchar, "questTemp.Consumption") && pchar.questTemp.Consumption == "begin")
 			{
-				link.l1 = "A bird said that you have an epidemic here, am I correct?";
+				link.l1 = "Слышал, у вас свирепствует эпидемия?";
 				link.l1.go = "Consumption";
 			}
 		break;
 		
 		//--> Цена чахотки
 		case "Consumption":
-			dialog.text = "Correct, so avoid visiting the dungeons without a serious reason. Why?";
-			link.l1 = "Just curious. So if my boys will get too drunk and end up here - should I prepare some yellow linen then?";
+			dialog.text = "Да, так что без крайней нужды в тюремные помещения не попасть, а почему вас это интересует?";
+			link.l1 = "Просто любопытно... Если мои ребята надебоширят на берегу и загремят под арест, стоит запастись желтым полотном?";
 			link.l1.go = "Consumption_1";
 		break;
 		
 		case "Consumption_1":
-			dialog.text = "Alas, senior, I don't get the joke in case you were joking. The dungeons are wet and cold and you know the climate. Consumption is an often guest in these dungeons. I even have to pay my lads for bringing food to chambers. Patrolling there is considered to be the same as penal servitude.";
-			link.l1 = "I am sorry, I just wanted to know how serious is this?";
+			dialog.text = "Если это шутка, сеньор, то мне, увы, не смешно. Казематы здесь сырые и холодные, да и климат – сами видите, какой. Чахотка - частый гость в этих подземельях. Я даже вынужден приплачивать своим ребятам за то, чтобы они разносили еду в камеры. А уж стоять в карауле там внутри – считается чем-то вроде каторжных работ.";
+			link.l1 = "Прошу прощения, я просто хотел узнать, насколько все серьезно?";
 			link.l1.go = "Consumption_2";
 		break;
 		
 		case "Consumption_2":
-			dialog.text = "Exactly so. We don't even have a physician here - he died of the damn consumption too. Now only a medic of local garrisson examines prisoners once in a week. But who gives a damn about these low-lifes and criminals?\nMost folks think that they totally deserved such fate and it's hard to argue about this.";
-			link.l1 = "My knowledge of medicine is modest, but as far as I know, consumption doesn't kill people in days like it does here. Shouldn't victims pine for months or even years?";
+			dialog.text = "Более чем. У нас даже доктора нет – умер от этой же проклятой чахотки. Теперь, лишь фельдшер полкового гарнизона раз в неделю осматривает больных. Но кому какое дело, до этих оборванцев и преступников?\nБольшинство считает, что туда им и дорога, и с этим сложно поспорить.";
+			link.l1 = "Мои познания в медицине не велики, но чахотка, хоть заразна и смертоносна, ведь не убивает людей в считанные дни, как поговаривают про вашу эпидемию в городе? Разве больной не должен 'чахнуть' месяцы, или даже годы?";
 			link.l1.go = "Consumption_3";
 		break;
 		
 		case "Consumption_3":
-			dialog.text = "As you have just mentioned, you are not a physician, therefore talking about disease's characteristics is quite groundlessly for you. I don't get your curiosity and cynic behavior. People die here!";
-			link.l1 = "Didn't you just said that they deserve it?";
+			dialog.text = "Как вы верно заметили, вы не медик, так что судить о протекании болезней, с вашей стороны несколько... необоснованно. Я говорю лишь то, что считал наш доктор, перед тем как эта эпидемия унесла и его, и мне непонятно ваше любопытство и цинизм. Здесь умирают люди!";
+			link.l1 = "А разве не вы, еще минуту назад, называли их оборванцами и преступниками, и считали их участь заслуженной?";
 			link.l1.go = "Consumption_4";
 		break;
 		
 		case "Consumption_4":
-			dialog.text = "Enough, senior! I believe that you and me have other matters to attend to rather then to sparkle with wit. The door is right behind you.";
-			link.l1 = "Fine, forgive me my tactlessness, I am leaving already.";
+			dialog.text = "Довольно, сеньор! Я полагаю, у вас, как и у меня, есть дела поважнее, чем состязаться в остроумии. Дверь прямо за вами – прошу.";
+			link.l1 = "Что же, простите мою бестактность, я уже ухожу.";
 			link.l1.go = "Consumption_5";
 		break;
 		

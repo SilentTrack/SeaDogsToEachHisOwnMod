@@ -12,8 +12,8 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "I don't want to talk.";
-			link.l1 = "Hm, I see.";
+			dialog.text = "Не хочу разговаривать.";
+			link.l1 = "Хм, понятно...";
 			link.l1.go = "exit";
 		break;
 
@@ -23,83 +23,87 @@ void ProcessDialogEvent()
 		break;
 
 		case "zpq_sld2":
-			dialog.text = "Just a minute, senor, are you "+ GetFullName (pchar) +"?";
-			link.l1 = "Yes.. How can I help you??";
+			dialog.text = "Минутку, сеньор"+ GetSexPhrase("","ита") +", не вы ли "+ GetFullName (pchar) +"?";
+			link.l1 = "Да, именно так. Чем могу служить?";
 			link.l1.go = "zpq_sld2_1";
 		break;
+		
 		case "zpq_sld2_1":
-			dialog.text = "We need you. Your money to be more specific. And don't try to play stubborn because I am not in a good mood today, I can get angry.";
-			link.l1 = "Oh, please, what money are you talking about? Do you really think that I will carry the treasure with me?";
+			dialog.text = "Вы-то нам и нужны. А вернее, ваши деньги. И не вздумайте упрямиться, я сегодня не в настроении - могу и разозлиться ненароком.";
+			link.l1 = "Да помилуйте, какие деньги? Не думаете же вы, что я стану носить с собой казну.";
 			link.l1.go = "zpq_sld2_2";
 		break;
+		
 		case "zpq_sld2_2":
-			dialog.text = "Don't try to fool me. Just give me the money - " + FindRussianMoneyString(sti(pchar.questTemp.zpq.sum)) + " and you may walk your way. Or we will take it by force.";
+			dialog.text = "Не морочьте нам голову. Просто отдайте деньги, которые только что получили - " + FindRussianMoneyString(sti(pchar.questTemp.zpq.sum)) + ", и идите своей дорогой. Или мы заберём их силой.";
 			if (pchar.questTemp.zpq == "failed")
 			{
-				link.l1 = "Don't you work for this prison rat? I have got good news for you then, I sent him to hell.";
+				link.l1 = "Уж не на эту ли фортовую крысу вы работаете? Тогда могу вас обрадовать - я отправил"+ GetSexPhrase("","а") +" его к праотцам. Так что проваливайте, пока вас не отправил"+ GetSexPhrase("","а") +" следом.";
 				link.l1.go = "zpq_sld2_3_1";
 			}
 			else
 			{
-				link.l1 = "Don't you work for this prison rat? Tell him that the money was given to reliable hands, so he may forget about them.";
+				link.l1 = "Уж не на эту ли фортовую крысу вы работаете? Передайте ему, что деньги попали в надёжные руки, пусть забудет о нём!";
 			link.l1.go = "zpq_sld2_3";
 			}
 			if(makeint(Pchar.money) >= sti(pchar.questTemp.zpq.sum))
 			{
-				link.l2 = "Fine, take your dirty money, bastard!";
+				link.l2 = "Хорошо, забирайте свои грязные деньги, мерзавцы!";
 				link.l2.go = "zpq_sld2_6";
 			}
 			else
 			{
-				link.l2 = "I don't  have them...";
+				link.l2 = "У меня их нет...";
 				link.l2.go = "zpq_sld2_3";
 			}
 		break;
+		
 		case "zpq_sld2_3":
-			dialog.text = "That's your fate then - to die young because of your greed. It is too dangerous to let you stay alive.";
-			link.l1 = "Such a self confidence.";
+			dialog.text = "Ну что ж, значит такая твоя судьба - умереть в расцвете лет от жадности, потому что теперь слишком опасно оставлять тебя в живых.";
+			link.l1 = "Какая самоуверенность.";
 			link.l1.go = "zpq_sld2_4";
 		break;
+		
 		case "zpq_sld2_3_1":
-			dialog.text = "He-he, your fate is to die because of your greed then. It works for us, we don't want to share.";
-			link.l1 = "It's your greed which will kill you...";
+			dialog.text = "Хе-хе, значит такая его судьба - умереть от жадности. Но нам это даже на руку - теперь не придётся ни с кем делиться.";
+			link.l1 = "И вас жадность погубит...";
 			link.l1.go = "zpq_sld2_4";
 		break;
+		
 		case "zpq_sld2_4":
-			dialog.text = "Hey, guys!! Put a bag on his  head!";
-			link.l1 = "Well, it was your choice...";
+			dialog.text = "Эй, ребята!! А ну надевай мешок е"+ GetSexPhrase("му","й") +" на голову!";
+			link.l1 = "Ну, вы сами напросились...";
 			link.l1.go = "zpq_sld2_5";
 		break;
+		
 		case "zpq_sld2_5":
 			LAi_LocationFightDisable(loadedLocation, false);
 			LAi_SetFightMode(PChar, true);
-
 			LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 			LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
 			DialogExit();	
 			AddDialogExitQuest("MainHeroFightModeOn");
 			AddQuestRecord("zpq", "7");
-
 			pchar.quest.zpq_seaBattle.win_condition.l1 = "location";
 			pchar.quest.zpq_seaBattle.win_condition.l1.location = "Cumana";
 			pchar.quest.zpq_seaBattle.function = "zpq_seaBattle";
 		break;
+		
 		case "zpq_sld2_6":
-			dialog.text = "Nice. Give them and get lost, captain!";
-			link.l1 = "Ha...";
+			dialog.text = "Вот и славно. Давай их сюда и проваливай, капитан!";
+			link.l1 = "Кха...";
 			link.l1.go = "zpq_sld2_7";
 			AddMoneyToCharacter(Pchar, -makeint(pchar.questTemp.zpq.sum));
 			ChangeCharacterComplexReputation(pchar,"nobility", -5);
 			AddQuestRecord("zpq", "8");
-			AddQuestUserData("zpq", "sSex", GetSexPhrase("",""));
+			AddQuestUserData("zpq", "sSex", GetSexPhrase("","а"));
 		break;
+		
 		case "zpq_sld2_7":
 			DialogExit();
 			LAi_LocationFightDisable(loadedLocation, false);
 			for(int i = 1; i <= 3; i++)
-
 			{
-
 				sld = CharacterFromID("qp2_" +i);
 				LAi_SetImmortal(sld, true);
 				LAi_type_actor_Reset(sld);
@@ -108,8 +112,3 @@ void ProcessDialogEvent()
 		break;
 	}
 }
-
-
-
-
-

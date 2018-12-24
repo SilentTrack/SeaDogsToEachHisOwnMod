@@ -71,8 +71,8 @@ void wdmShipEncounter(float dltTime, float playerShipX, float playerShipZ, float
 	}
 	if( numShips < 0 )
 	{
-		trace("Warning! World map ship quantity < 0 : numShips = " + numShips);
-		trace("pchar.worldmap.shipcounter = " + pchar.worldmap.shipcounter);
+//		trace("Warning! World map ship quantity < 0 : numShips = " + numShips);
+//		trace("pchar.worldmap.shipcounter = " + pchar.worldmap.shipcounter);
 		numShips = 0;
 	}
 	if(numShips < 8)

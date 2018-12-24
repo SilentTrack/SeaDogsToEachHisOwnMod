@@ -15,8 +15,8 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "What do you want?";
-			link.l1 = "No, nothing.";
+			dialog.text = "Что вам нужно?";
+			link.l1 = "Ничего.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
@@ -24,8 +24,8 @@ void ProcessDialogEvent()
 		// Жерар Лекруа
 		case "lecrua":
 			pchar.quest.Trial_LineOver.over = "yes"; //снять таймер
-			dialog.text = "Good afternoon. You must be "+GetFullName(pchar)+". Unless I'm mistaken?";
-			link.l1 = "You're correct, monsieur LeCroix. Captain "+GetFullName(pchar)+" at your service. I've been recommended to you by Fadey the Muscovite...";
+			dialog.text = "Добрый день. Полагаю, вы - "+GetFullName(pchar)+". Я не ошибся?";
+			link.l1 = "Все верно, месье Лекруа. Капитан "+GetFullName(pchar)+" к вашим услугам. Меня рекомендовал вам Фадей Московит...";
 			link.l1.go = "lecrua_1";
 		break;
 		
@@ -33,32 +33,32 @@ void ProcessDialogEvent()
 			iTemp = FindColony("Baster");
 			rColony = GetColonyByIndex(iTemp);
 			bOk = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
-			dialog.text = "Yes, yes. Dear old Fadey has described you in detail. I knew it was you as soon as I saw you at the doorway. Tell me captain, what kind of ship do you have?";
+			dialog.text = "Да-да, дорогой Фадей очень точно описал вас - я с порога понял, что это именно вы. Скажите, капитан, что у вас за корабль?";
 			if(sti(pchar.ship.type) == SHIP_NOTUSED || !bOk)
 			{
-				link.l1 = "Uh-um... At the time being I don't have a ship, monsieur... It's temporary.";
+				link.l1 = "Эм-м... У меня на данный нет корабля, месье... Это временно.";
 				link.l1.go = "lecrua_noship";
 			}
 			else
 			{
-				link.l1 = "I have "+GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(RealShips[sti(pchar.ship.type)].basetype), "Name")))+", called "+pchar.ship.name+".";
+				link.l1 = "У меня "+GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(RealShips[sti(pchar.ship.type)].basetype), "Name")))+", называется - '"+pchar.ship.name+"'.";
 				if (5-sti(RealShips[sti(pchar.ship.type)].Class) < 0) link.l1.go = "lecrua_badship";
 				else link.l1.go = "lecrua_2";
 			}
 		break;
 		
 		case "lecrua_noship":
-			dialog.text = "Ha! Well what kind of a captain are you then if you don't have a ship? I'm sorry, monsieur, but in that case I don't have any work to offer you. All the best, give Fadey my regards!";
-			link.l1 = "Hm...";
+			dialog.text = "Ха! Ну так какой же вы капитан, если у вас нет даже корабля? Извините, месье, но в таком случае никакой работы у меня для вас нет. Всего доброго, передавайте привет Фадею!";
+			link.l1 = "Гм...";
 			link.l1.go = "lecrua_exit";
-			sTotalTemp = "I don't have a ship at the moment";
+			sTotalTemp = "в данный момент я был без корабля";
 		break;
 		
 		case "lecrua_badship":
-			dialog.text = "Well, this is duck soup. What kind of ship is this? This is just a big boat! Alas, monsieur, you do not fit the role. All the best, say hello to Fadey for me!";
-			link.l1 = "Hm...";
+			dialog.text = "Ну, это совсем несерьезно. Какой же это корабль? Это просто большая лодка! Увы, месье, но вы мне не подходите. Всего доброго, передавайте привет Фадею!";
+			link.l1 = "Гм...";
 			link.l1.go = "lecrua_exit";
-			sTotalTemp = "my ship wasn't enough for that wretch";
+			sTotalTemp = "мой корабль не устроил этого хлыща";
 		break;
 		
 		case "lecrua_exit":
@@ -72,34 +72,34 @@ void ProcessDialogEvent()
 		break;
 		
 		case "lecrua_repeat":
-			dialog.text = "You and I have discussed everything already, monsieur. Have we not?";
-			link.l1 = "Yes, yes, monsieur LeCroix... I'm on my way.";
+			dialog.text = "Мы ведь уже все с вами обсудили, месье, разве не так?";
+			link.l1 = "Да-да, месье Лекруа... Я уже иду.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "lecrua_repeat";
 		break;
 		
 		case "lecrua_2":
-			dialog.text = "Excellent. In that case you're a good fit for me. Are you ready to set out to sea right away?";
-			link.l1 = "Yes, monsieur, I'm ready. What do I have to do?";
+			dialog.text = "Превосходно. В таком случае вы мне подходите. Вы готовы отправиться в путь немедленно?";
+			link.l1 = "Да, месье, готов. Что я должен сделать?";
 			link.l1.go = "lecrua_3";
 		break;
 		
 		case "lecrua_3":
 			sld = characterFromId("BasTer_trader");
-			dialog.text = "You must deliver a small batch of gun powder and bombs to Port-au-Prince, at French Hispaniola. Commandant has been waiting for it for a while, so don't lose any time, you have about ten days left\nRespected "+GetFullName(sld)+" will see it delivered and loaded to your vessel. The commandant will pay you five thousand pesos for the job.";
-			link.l1 = "And that's the whole job?";
+			dialog.text = "Вы должны доставить небольшую партию пороха и бомб в форт Порт-о-Пренса, это на французской Эспаньоле. Комендант уже заждался этот груз, так что вам не следует терять времени - у вас в распоряжении не более десяти дней\nУважаемый "+GetFullName(sld)+" позаботится о погрузке указанного груза на борт вашего судна. Оплату за фрахт получите у коменданта форта - пять тысяч песо.";
+			link.l1 = "И это вся работа?..";
 			link.l1.go = "lecrua_4";
 		break;
 		
 		case "lecrua_4":
-			dialog.text = "Oh, by no means, monsieur. The commandant will explain the main task to you to whom you will bring the gun powder and the bombs when you arrive. This freight is just a morsel of the work you have lying ahead. You don't fret: if you give it your all, you'll have a good opportunity to make some money.";
-			link.l1 = "Great! I'm very happy about that prospect that's opening up. My ship is ready to take the cargo on board.";
+			dialog.text = "Нет, конечно, месье. Основную задачу вам объяснит комендант, которому вы повезете порох и бомбы, по прибытии. Этот фрахт - всего лишь малая часть работы, которая вам предстоит. Так что не расстраивайтесь: если проявите старание - сможете хорошо заработать.";
+			link.l1 = "Отлично! Я очень рад открывшейся перспективе. Мое судно готово принять груз на борт.";
 			link.l1.go = "lecrua_5";
 		break;
 		
 		case "lecrua_5":
-			dialog.text = "Let's not waste any time then, captain! Make your way to your ship and prepare to embark.";
-			link.l1 = "I'm going!";
+			dialog.text = "Тогда не будем терять времени, капитан! Отправляйтесь на свой корабль и готовьтесь к выходу в море.";
+			link.l1 = "Уже иду!";
 			link.l1.go = "lecrua_6";
 		break;
 		
@@ -119,42 +119,42 @@ void ProcessDialogEvent()
 		// Флориан Шоке
 		case "florian_deck":
 			pchar.quest.Trial_CannonFail.over = "yes"; //снять таймер
-			dialog.text = "What could I help you with, sir?";
-			link.l1 = "Good afternoon, captain. You're Florian Shoke, I presume?";
+			dialog.text = "Что вам угодно, сударь?";
+			link.l1 = "Добрый день, капитан. Как я понимаю, вы - Флориан Шоке?";
 			link.l1.go = "florian_deck_1";
 		break;
 		
 		case "florian_deck_1":
-			dialog.text = "Right you are. And you are a messenger from Port-au-Prince, if I'm not mistaken?";
-			link.l1 = "Exactly! I have delivered you fifteen cannons. I was seemingly flying on wings. I barely made it...";
+			dialog.text = "Вы не ошиблись. А, я, кажется, понимаю: вы - курьер из Порт-о-Пренса, так?";
+			link.l1 = "Именно! Я доставил вам пятнадцать орудий. Летел как на крыльях, еле успел...";
 			link.l1.go = "florian_deck_2";
 		break;
 		
 		case "florian_deck_2":
 			if (GetSquadronGoods(pchar, GOOD_CANNON_24) < 15)
 			{
-				dialog.text = "Hm. Strange sense of humour you have, sir! For some reason I don't see enough cannons on your tub for my ship.";
-				link.l1 = "God damn it! We had a leak and had to throw some of the cargo overboard...";
+				dialog.text = "Хм. Странные у вас шутки, сударь! Что-то я не вижу на вашем корыте достаточного количества орудий для моего корабля.";
+				link.l1 = "Черт побери! Мы получили пробоину и часть груза выбросили за борт...";
 				link.l1.go = "florian_deck_fail";
 			}
 			else
 			{
-				dialog.text = "Glad to see you, captain?..";
-				link.l1 = ""+GetFullName(pchar)+". Captain "+GetFullName(pchar)+".";
+				dialog.text = "Рад вас видеть, капитан?..";
+				link.l1 = ""+GetFullName(pchar)+". Капитан "+GetFullName(pchar)+".";
 				link.l1.go = "florian_deck_3";
 			}
 		break;
 		
 		case "florian_deck_3":
-			dialog.text = "Nice to meet you. Let's not waste time and get straight to reloading the cannons on my ship. This isn't going be simple, god damn it!";
-			link.l1 = "We'll manage somehow. The main thing is getting a lot of people involved...";
+			dialog.text = "Приятно познакомиться. Не будем терять времени и приступим к перегрузке орудий на мой корабль - черт возьми, это будет очень непросто!";
+			link.l1 = "Как нибудь справимся. Главное - задействовать побольше людей...";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("Trial_TakeCannons");
 		break;
 		
 		case "florian_deck_fail":
-			dialog.text = "And why did they entrust a task like this to such a simpleton? Make your way back to your ship, captain, and do something you're better at doing: carrying passengers or products between stores. Otherwise, I doubt you'll be able to handle this. All the best!";
-			link.l1 = "But...";
+			dialog.text = "И как только подобное дело доверили такому недотепе? Отправляйтесь на свой корабль, капитан, и займитесь чем-нибудь, что больше вам подходит: пассажиров возите, или товары по магазинам. И то, сомневаюсь, что это у вас получится. Всего доброго!";
+			link.l1 = "Но...";
 			link.l1.go = "florian_deck_fail_1";
 		break;
 		
@@ -173,31 +173,31 @@ void ProcessDialogEvent()
 		break;
 		
 		case "florian_deck_4":
-			dialog.text = "Well, looks like we're done here... I thank you for the service, captain! Take your reward two hundred doubloons.";
-			link.l1 = "Thank you!";
+			dialog.text = "Ну вот, закончили... Благодарю за службу, капитан! Примите вашу награду - двести дублонов.";
+			link.l1 = "Спасибо!";
 			link.l1.go = "florian_deck_5";
 		break;
 		
 		case "florian_deck_5":
 			TakeNItems(pchar, "gold_dublon", 200);
-			Log_Info("You've received 200 doubloons.");
+			Log_Info("Вы получили 200 дублонов");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "But that's not all, captain. Would you like to make another two hundred fifty coins?";
-			link.l1 = "Ha! Who wouldn't want fill their pocket! But it depends on what you're going to ask me to do for it...";
+			dialog.text = "Но это еще не все, капитан. Хотите заработать еще двести пятьдесят монет?";
+			link.l1 = "Ха! А кто же не хочет пополнить карман! Но смотря что вы попросите за это сделать...";
 			link.l1.go = "florian_deck_6";
 		break;
 		
 		case "florian_deck_6":
-			dialog.text = "I won't lie, it is dangerous. As you may already know, I am waiting for a Spanish heavy galleon with a valuable cargo. The ship was put in the docks for a repair. According to my information, she was supposed to set sail yesterday but it didn’t happen\nBesides, my agent in Portobello didn't come to rendezvous point to deliver an information he gathered. I suspect that the Spanish arrested him. You should sneak in Portobello and find out why the galleon is still there and what happened to my agent. Are you in?";
-			link.l1 = "I'm afraid I lack the proper training for such a operation. I might get into trouble myself and I won't be able to help you. Alas, I cannot help you.";
+			dialog.text = "Задача довольно опасная, не скрою. Как вы наверняка знаете, я тут подстерегаю испанский тяжелый галеон с ценным грузом. Этот корабль был поставлен в доки на починку. По моим сведениям, он должен был встать на рейд и готовиться к выходу в море еще вчера, однако этого не произошло\nКроме того, мой агент в Порто Белло так и не пришел для передачи собранных сведений в условленную бухту. Я подозреваю, что испанцы его схватили. Вам следует пробраться в Порто Белло и попытаться разузнать две вещи: почему галеон до сих пор находится в доках и что случилось с моим агентом. Вы готовы?";
+			link.l1 = "Боюсь, у меня нет должной подготовки для дела такого рода. Я и сам попадусь, и вам помочь не смогу. Увы, но - нет.";
 			link.l1.go = "florian_deck_bye";
-			link.l2 = "The danger level is high, but I'll risk it anyway. What's your man's name and what is the name of the galleon?";
+			link.l2 = "Опасность велика, но все же я рискну. Каково имя вашего человека и как называется галеон?";
 			link.l2.go = "florian_deck_7";
 		break;
 		
 		case "florian_deck_bye":
-			dialog.text = "Well, you're entitled. I understand you. Goodbye then, captain, and thanks again for your help!";
-			link.l1 = "All the best, monsieur Shoke.";
+			dialog.text = "Что же, это ваше право. Я вас понимаю. Тогда до свидания, капитан, и еще раз спасибо за помощь!";
+			link.l1 = "Всего доброго, месье Шоке.";
 			link.l1.go = "florian_deck_bye_1";
 		break;
 		
@@ -214,8 +214,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "florian_deck_7":
-			dialog.text = "Great! The agent's name is Sylvan Laforet, but in Portobello he introduced himself as Jaime Silicio, a merchant. The galleon bears the name of Alacantara. I advise that you pass through the city at night time, through the jungle since Portobello guards are very suspicious nowadays, not to mention that Sylvan's disappearance doesn't give you a pretty picture either. You have no longer than two days for this operation. Good luck, monsieur!";
-			link.l1 = "See you soon, Monsieur Shoke...";
+			dialog.text = "Отлично! Агента зовут Сильвен Лафоре, но в Порто Белло он представился как Хайме Силисио, торговец. Галеон носит имя 'Алькантара'. Советую пробираться в город ночью, через джунгли - стража в Порто Белло сейчас очень подозрительна, да и исчезновение Сильвена тоже наводит на неприятные мысли. Времени на операцию у вас не более двух суток. Удачи, месье!";
+			link.l1 = "Скоро увидимся, месье Шоке...";
 			link.l1.go = "florian_deck_8";
 		break;
 		
@@ -236,36 +236,36 @@ void ProcessDialogEvent()
 		break;
 		
 		case "florian_deck_repeat":
-			dialog.text = "We've discussed everything, captain, haven't we?";
-			link.l1 = "Yes, yes. I'm on my way.";
+			dialog.text = "Мы ведь уже все обсудили, капитан, разве не так?";
+			link.l1 = "Да-да, я уже иду...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "florian_deck_repeat";
 		break;
 		
 		case "florian_failspy":
 			pchar.quest.trial_spy_over.over = "yes"; //снять прерывание
-			dialog.text = "How are things coming along, captain? What have you managed to find out?";
-			link.l1 = "Things are coming along quite moderately, Monsieur Shoke. I'm not much of a spy I was disclosed fairly quickly. I had to escape the city by battle. The only thing I managed to discover is that your man, Sylvan Laforet has been arrested and is being held in jail.";
+			dialog.text = "Как успехи, капитан? Что удалось узнать?";
+			link.l1 = "Успехи мои весьма посредственны, месье Шоке. Все-таки шпион из меня неважный - раскрыли меня очень быстро. Пришлось вырываться из города с боем. Единственное, что мне удалось узнать - что ваш человек, Сильвен Лафоре, арестован и находится в тюрьме.";
 			link.l1.go = "florian_failspy_1";
 		break;
 		
 		case "florian_failspy_1":
-			dialog.text = "God damn it! That's not good... Did you find out anything about the galleon?";
-			link.l1 = "No I didn't.";
+			dialog.text = "Черт возьми! Это плохие новости... Про галеон ничего не узнали?";
+			link.l1 = "Ничего.";
 			link.l1.go = "florian_failspy_2";
 		break;
 		
 		case "florian_failspy_2":
-			dialog.text = "Damn. I really need some information on it. Anyway, I'll try sending one more scoot over there... Captain, I ask that you don't leave here for now. I might need your help. Will you wait till another day while I sniff something out on Alacantara?";
-			link.l1 = "Hm. Of course, I'll wait! I wouldn't mind refuelling after my breakdown at all.";
+			dialog.text = "Жаль. Мне очень нужна информация о нем. Ладно, попробую послать еще одного лазутчика... Капитан, я предлагаю вам пока не уходить отсюда. Возможно, мне потребуется ваша помощь. Подождете денек-другой, пока я выведаю что-нибудь об 'Алькантаре'?";
+			link.l1 = "Хм. Конечно, подожду! Я буду очень не прочь реабилитироваться за провал.";
 			link.l1.go = "florian_9";
-			link.l2 = "I don't think so. Apparently I'm not cut out for such games. I'm going homeward.";
+			link.l2 = "Нет, пожалуй. Видимо, подобные игры не для меня. Я отправляюсь восвояси.";
 			link.l2.go = "florian_failspy_3";
 		break;
 		
 		case "florian_failspy_3":
-			dialog.text = "Well, that's your choice. All the best, captain.";
-			link.l1 = "Farewell, Monsieur Shoke.";
+			dialog.text = "Что же, это ваше право. Всего доброго, капитан.";
+			link.l1 = "Прощайте, месье Шоке.";
 			link.l1.go = "florian_failspy_4";
 		break;
 		
@@ -284,19 +284,19 @@ void ProcessDialogEvent()
 		
 		case "florian_failspy_5":
 			pchar.quest.trial_spy_over.over = "yes"; //снять прерывание
-			dialog.text = "How are things coming along, captain? What have you managed to find out?";
-			link.l1 = "Things are coming along quite moderately, Monsieur Shoke. I'm not much of a spy, I was disclosed fairly quickly. The only thing I managed to discover was that your man, Sylvan Laforet has been arrested and is being held.";
+			dialog.text = "Как успехи, капитан? Что удалось узнать?";
+			link.l1 = "Успехи мои весьма посредственны, месье Шоке. Все-таки шпион из меня неважный. Единственное, что мне удалось узнать - что ваш человек, Сильвен Лафоре, арестован и находится в тюрьме.";
 			link.l1.go = "florian_failspy_1";
 		break;
 		
 		case "florian_9":
-			dialog.text = "Then make your way to our ship and tomorrow at about the same time, or a little later, you climb up on board. Maybe by that time I'll worm something out. Don't set foot on the shore, wait for me on the ship!";
-			link.l1 = "All right. Will do.";
+			dialog.text = "Тогда отправляйтесь на ваш корабль, а завтра, примерно в это же время, или немного позже, поднимитесь ко мне на борт. Может, к тому времени я что-нибудь разузнаю. На берег не суйтесь, ждите у себя на судне!";
+			link.l1 = "Хорошо. Так и поступим.";
 			link.l1.go = "florian_10";
 		break;
 		
 		case "florian_10":
-			dialog.text = "And captain: take this purse. Your efforts weren't completely in vain after all. At least we know what happened to poor old Sylvan...";
+			dialog.text = "И, капитан: возьмите этот кошель. Ведь все-таки ваши труды не были напрасны - по крайней мере, мы знаем, что случилось с беднягой Сильвеном...";
 			link.l1 = "...";
 			link.l1.go = "florian_11";
 		break;
@@ -314,59 +314,59 @@ void ProcessDialogEvent()
 			pchar.quest.Trial_spyfail_wait.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
 			pchar.quest.Trial_spyfail_wait.function = "Trial_Spyfail_NextStage";
 			TakeNItems(pchar, "purse2", 1);
-			Log_Info("You've received a purse of doubloons");
+			Log_Info("Вы получили кошель с дублонами");
 		break;
 		
 		case "florian_deck_wait":
-			dialog.text = "Captain, I don't have any news at the moment. We're still waiting...";
-			link.l1 = "All right...";
+			dialog.text = "Капитан, пока никаких новостей у меня нет. Ждем...";
+			link.l1 = "Хорошо...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "florian_deck_wait";
 		break;
 		
 		case "florian_12":
 			pchar.quest.trial_spy_over.over = "yes"; //снять прерывание
-			dialog.text = "How are things coming along, captain? What have you managed to find out?";
-			link.l1 = "It's done. Your man, Sylvan Laforet, was arrested and is being held in jail. It is over for him.";
+			dialog.text = "Как успехи, капитан? Что удалось узнать?";
+			link.l1 = "Мой поход оказался успешным - мне удалось узнать много интересного. Ваш человек, Сильвен Лафоре, арестован и находится в тюрьме. Его раскусили.";
 			link.l1.go = "florian_13";
 		break;
 		
 		case "florian_13":
-			dialog.text = "God damn it! That's dreadful... Did you find out anything about the galleon?";
-			link.l1 = "Yes. She is been prepared to embark for a while now, but the governor of Portobello is intending on holding her at the dock. Right now he's waiting for a bark called Puebla to arrive from Cartagena with a gunpowder cargo for the Alacantara. Looks like they don't have enough gun powder.";
+			dialog.text = "Черт возьми! Это очень плохо... Про галеон что-нибудь удалось узнать?";
+			link.l1 = "Да. Он уже давно готов к выходу в море, но губернатор Порто Белло намеренно держит его в доках. Сейчас он ждет прибытия из Картахены барка 'Пуэбла' с грузом пороха для 'Алькантары'. Судя по словам матроса с галеона, у них нехватка пороха.";
 			link.l1.go = "florian_14";
 		break;
 		
 		case "florian_14":
-			dialog.text = "How interesting!";
-			link.l1 = "But if Puebla doesn't arrive within three days then the Alacantara will stop waiting and set sail.";
+			dialog.text = "Очень интересно!";
+			link.l1 = "Но если 'Пуэбла' не придет за ближайшие три дня - то 'Алькантара' не будет ее ждать и отправится в путь.";
 			link.l1.go = "florian_15";
 		break;
 		
 		case "florian_15":
-			dialog.text = "Excellent work, captain! I'm very pleased with you. Here, take your reward. You've totally earned it!";
-			link.l1 = "Thank you! Do you have any other assignments for me?";
+			dialog.text = "Великолепная работа, капитан! Я очень доволен вами. Вот, возьмите ваше вознаграждение. Вы его честно заработали!";
+			link.l1 = "Благодарю! У вас есть еще задания для меня?";
 			link.l1.go = "florian_16";
 		break;
 		
 		case "florian_16":
 			TakeNItems(pchar, "gold_dublon", 250);
-			Log_Info("You've received 250 doubloons");
+			Log_Info("Вы получили 250 дублонов");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "You are reading my mind, captain! Yes, damn it! Since Alacantara has a lack of gun powder, I can let her sail into the open sea and then force her to engage in a protracted naval fight, in which their supplies will run off before ours\nYou should make sure that bark Puebla never reaches Portobello. I can't sail close to the shores, patrols will notice my frigate easily and I might never intercept Alacantara if that would be the case\nAnd you can deal with her on your own. Find her and get rid of her. Sink her or board her, I don't care. Just prevent this egg shell from getting here!\nIf you succeed, than go to Guadeloupe and see Gerard LeCroix, I believe that you already know him, don't you? He will pay you the coin you deserve.";
-			link.l1 = "Deal! I'll be on my way to cut off the Puebla!";
+			dialog.text = "Вы читаете мои мысли, капитан! Да, есть, черт возьми! Раз на 'Алькантаре' недостаточно пороха, то я могу ее отпустить подальше в море и затем принудить вести затяжной морской бой, в котором они израсходуют свои запасы раньше нас. Это весьма облегчит мою задачу\nВам нужно сделать так, чтобы этот барк, 'Пуэбла', не дошел до Порто Белло. Я не могу расхаживать на фрегате вдоль побережья - береговая охрана легко заметит мой корабль, и тогда я вообще могу не дождаться 'Алькантары'\nА вы вполне справитесь с этим барком. Отыщите его и уничтожьте: потопите, абордируйте - мне все равно. Лишь бы это корыто не добралось до Порто Белло!\nЕсли вы успешно выполните эту задачу - отправляйтесь на Гваделупу и идите к Жерару Лекруа - ведь вы знаете его, так? Он выдаст вам заслуженный гонорар.";
+			link.l1 = "Договорились! Отправляюсь на перехват 'Пуэблы'!";
 			link.l1.go = "florian_19";
 		break;
 		
 		case "florian_17":
-			dialog.text = "Very good that you've arrived, captain. I've just received important information from my spy and I have an important errand for you.";
-			link.l1 = "I'm all ears.";
+			dialog.text = "Очень хорошо, что вы пришли, капитан. Я как раз получил важные сведения от своего лазутчика и у меня есть для вас ответственное поручение.";
+			link.l1 = "Слушаю вас внимательно.";
 			link.l1.go = "florian_18";
 		break;
 		
 		case "florian_18":
-			dialog.text = "The Alacantara is ready to set sail, but the galleon's captain is waiting for bark Puebla to arrive first from Cartagena loaded with ammunition. Thing is that Alacantara doesn't have enough gun powder, so the Spanish are not ready to set sail yet. But his patience has limits and if Puebla won't come in three days then the galleon will leave Portobello\nThe Alacantara has a lack of gun powder, I can let her sail into the open sea and then force her to engage in a protracted naval fight, in which their supplies will run off before ours. Your objective is to intercept the bark and to destroy her. Sink her or board her, I don't care. Just prevent this egg shell from getting here!\nIf you succeed than go to Guadeloupe and see Gerard LeCroix, I believe that you already know him, don't you? He will pay you the coin you deserve.";
-			link.l1 = "Deal! I'll be on my way to cut off the Puebla!";
+			dialog.text = "'Алькантара' готова к выходу в море, однако капитан галеона ждет прибытия барка 'Пуэбла' из Картахены с грузом боеприпасов. Дело в том, что на 'Алькантаре' недостаточно пороха, и испанец не решается отправиться в путь. Однако терпение его не безгранично, и если 'Пуэбла' не прибудет через три дня, галеон покинет Порто Белло\nНа нем будет нехватка пороха, и я смогу навязать ему затяжной морской бой, в котором буду иметь преимущество. Ваша задача - перехватить 'Пуэблу' и уничтожить ее. Потопите, абордируйте - мне все равно. Лишь бы это корыто не добралось до Порто Белло!\nЕсли вы успешно выполните эту работу - отправляйтесь на Гваделупу и идите к Жерару Лекруа - ведь вы знаете его, так? Он выдаст вам заслуженный гонорар.";
+			link.l1 = "Договорились! Отправляюсь на перехват 'Пуэблы'!";
 			link.l1.go = "florian_19";
 		break;
 		
@@ -385,8 +385,8 @@ void ProcessDialogEvent()
 		
 		// испанский офицер в таверне
 		case "tavern_officer":
-			dialog.text = "So, who do we have here? Another French heeler? How interesting! Would you like to see Jaime Silicio? Well then, I'll introduce you to him right inside our prison. Take him, boys!";
-			link.l1 = "Ah-argh! Just go ahead and try!";
+			dialog.text = "Так, кто это тут у нас? Очередной французский шпик? Очень интересно! Ты хотел видеть Хайме Силисио? Ну что же, я предоставлю тебе такую возможность в нашей тюрьме. Взять его!";
+			link.l1 = "А-аргх! Ну, попробуйте!";
 			link.l1.go = "tavern_officer_1";
 		break;
 		

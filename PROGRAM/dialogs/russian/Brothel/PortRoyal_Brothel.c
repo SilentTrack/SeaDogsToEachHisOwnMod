@@ -1,14 +1,14 @@
 // диалог по городам
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
-    ref sld;
+    ref sld;     
 	switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What kind of questions, "+ GetSexPhrase("young man","young lady") +"?", "What do you want, "+ GetSexPhrase("handsome","pretty one") +"? Ask it."), "Questions again?", "Tee-hee, it's all the same for third time this day - questions...",
-                          ""+ GetSexPhrase("Hm, why don't you pick up a beauty for yourself? I am starting to get suspicions about you...","Hm, why don't you pick up a beauty for yourself? We don't have boys here, sorry, tee-hee...") +"", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Well, it is nothing..."), "I can't... no questions...",
-                      "You're right it the third time already. Pardon me.", "Not now... next time...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы, "+ GetSexPhrase("молодой человек","юная леди") +"?", "Чего ты хочешь, "+ GetSexPhrase("красавчик","красотка") +"? Ну хоть задай его."), "Опять вопросы?", "Хи-хи, третий раз на дню одно и то же - вопросы...",
+                          ""+ GetSexPhrase("Хм, может ты выберешь какую-нибудь красотку себе? А то у меня уже складывается в отношении тебя вполне определенное мнение...","Хм, может ты выберешь какую-нибудь красотку себе? Мальчиков не держим, хи-хи...") +"", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал...", "Хм, да ничего..."), "Не могу... Нет вопросов...",
+                      "Да уж, действительно в третий раз... Извини.", "Не сейчас... В другой раз...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 		break;
 	}

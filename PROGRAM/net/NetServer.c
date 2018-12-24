@@ -125,6 +125,8 @@ void Net_CreateServer(ref rSrvParams)
 		NSClients[i].Stat.Lost = 0;
 		NSClients[i].Stat.DamageInflicted = 0;
 	}
+	
+	trace("create server (0)");
 
 	NetServer.ServerName = rSrvParams.ServerName;
 	NetServer.ServerPort = sti(rSrvParams.ServerPort);
@@ -154,9 +156,13 @@ void Net_CreateServer(ref rSrvParams)
 	NetServer.ConvoyPoint.x = 0.0;
 	NetServer.ConvoyPoint.z = 0.0;
 
+	trace("create server (1)");
+	
 	CreateEntity(&NetServer, "NetServer");
 	NetServer.StartServer = "";
 
+	trace("create server (2)");
+	
 	Net_LoadFile(true, &NSBanList, "BanList.nsv");
 	Net_LoadFile(true, &NSPlayers, "Players.nsv");
 	
@@ -169,22 +175,32 @@ void Net_CreateServer(ref rSrvParams)
 	NetServer.wWinnerClientID = DST_INVALID;
 	NetServer.iWinnerTeam = -1;
 
+	trace("create server (3)");
+	
 	// sort NSPlayers
 	NetServer_SortPlayers();
+	
+	trace("create server (4)");
 
 	// send to master server message
 	if (sti(NetServer.InetServer))
 	{
+		trace("create server (5)");
 		int iSMsg = NMCreate();
+		trace("create server (6)");
 		NMAddByte(iSMsg, NC_MASTERSERVER);
 		NMAddByte(iSMsg, NSC_MASTERSERVER_ADDSERVER);
 		NMAddByte(iSMsg, NET_SCRIPT_VERSION);
 		NetServer_SendMasterServerMessage(sMasterServerAddress, iMasterServerPort, iSMsg);
 		NMDelete(iSMsg);
 
+		trace("create server (7)");
+		
 		SetEventHandler("NetServer_UpdateMasterServerInfo", "NetServer_UpdateMasterServerInfo", 0);
 		PostEvent("NetServer_UpdateMasterServerInfo", MASTERSERVER_UPDATETIME);
 	}
+	
+	trace("create server (8)");
 }
 
 void NetServer_UpdateMasterServerInfo()
@@ -247,6 +263,8 @@ void NetServer_SortPlayers()
 	aref arPlayers; makearef(arPlayers, NSPlayers.Players);
 	int iNumPlayers = GetAttributesNum(arPlayers);
 	
+	trace("NetServer_SortPlayers(0) : iNumPlayers " + iNumPlayers);
+	
 	int iRealDays = iRealYear * (iRealMonth * 31 + iRealDay);
 
 	// kill players who offline > 30 days, fake counting ofcourse, but who care?
@@ -265,6 +283,7 @@ void NetServer_SortPlayers()
 			continue;
 		}
 	}
+	trace("NetServer_SortPlayers(1)");
 
 	iNumPlayers = GetAttributesNum(arPlayers);
 	for (i=0; i<iNumPlayers; i++) 
@@ -272,9 +291,11 @@ void NetServer_SortPlayers()
 		if (i >= MAX_TOPPLAYERS) { break; }
 		NSSortedPlayers[i] = i; 
 	}
+	trace("NetServer_SortPlayers(2) : iNumPlayers " + iNumPlayers );
 
 	// sort players using rank and (second condition) Ship Sunks
-	Net_Sort2i(arPlayers, &NSSortedPlayers, 1, 100, "Rank", "ShipsSunk");
+	//Net_Sort2i(arPlayers, &NSSortedPlayers, 1, 100, "Rank", "ShipsSunk");
+	trace("NetServer_SortPlayers(3)");
 }
 
 // update global player statistics

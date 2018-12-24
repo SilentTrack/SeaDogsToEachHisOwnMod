@@ -5,36 +5,36 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 	switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat("Go ahead, what do you want?",
-                          "We were just talking about that. You must have forgotten...", "This is the third time today you're talking about some question...",
-                          "Listen, this is a store. People buy stuff here. Don't disturb me!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("You know, " + NPChar.name + ", maybe next time.", "Right, I've forgotten for some reason...",
-                      "Yes, it really is the third time...", "Hm, I wont...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat("Спрашивай, чего ты хочешь?",
+                          "Мы только что поднимали это тему. Вы, вероятно, запамятовали...", "Сегодня вы уже третий раз говорите о каком-то вопросе...",
+                          "Послушай, это магазин, здесь люди покупают что-то. Не отвлекай меня!", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Знаешь, " + NPChar.name + ", как-нибудь в следующий раз.", "Точно, "+ GetSexPhrase("забыл","забыла") +" что-то...",
+                      "Да уж, действительно в третий раз...", "Гм, не буду...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			// Jason НСО
 			if (CheckAttribute(pchar, "questTemp.Patria.Goods"))
 			{
-				link.l1 = "You have my goods stored in your warehouse. Tea, cocoa and guayacan wood. I want to take it.";
+				link.l1 = "У вас на складе лежит мой товар. Кофе, какао и бакаут. Я хочу забрать его.";
                 link.l1.go = "patria_goods";
 			}
 			if (CheckAttribute(pchar, "questTemp.Patria.GoodsSM"))
 			{
-				link.l2 = "You have my goods from Sint Maarten stored in your warehouse. Baron Noel Forgue left them to me.";
+				link.l2 = "У вас на складе лежит мой товар с Синт-Маартена. Барон Ноэль Форже оставлял его для меня.";
                 link.l2.go = "patria_goods_3";
 			}
 		break;
 		
 		case "patria_goods":
-			dialog.text = "Aye, you are correct, captain, I do have your goods. Are you sure that you want to take them?";
-			link.l1 = "Yes.";
+			dialog.text = "Да, все верно, капитан, товар у меня, вас дожидается. Забираете?";
+			link.l1 = "Да.";
 			link.l1.go = "patria_goods_1";
-			link.l2 = "Hang on, I need to check if there is enough space in the hold first.";
+			link.l2 = "Стоп, сначала я проверю, есть ли место для него в трюмах.";
 			link.l2.go = "exit";
 		break;
 		
 		case "patria_goods_1":
-			dialog.text = "Perfect. I'll order the carriers to deliver it to the dock.";
-			link.l1 = "It's a deal then!";
+			dialog.text = "Отлично. Я прикажу грузчикам доставить его к пирсу.";
+			link.l1 = "Договорились!";
 			link.l1.go = "patria_goods_2";
 		break;
 		
@@ -52,16 +52,16 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "patria_goods_3":
-			dialog.text = "Yes, exactly. I keep it here by the baron's decree. Are you sure you want to take them?";
-			link.l1 = "Yes.";
+			dialog.text = "Да, именно так, по распоряжению барона я храню его у себя. Забираете?";
+			link.l1 = "Да.";
 			link.l1.go = "patria_goods_4";
-			link.l2 = "Hang on, I need to check if there is enough space in the hold first.";
+			link.l2 = "Стоп, сначала я проверю, есть ли место для него в трюмах.";
 			link.l2.go = "exit";
 		break;
 		
 		case "patria_goods_4":
-			dialog.text = "Perfect. I'll order the carriers to deliver it to the dock.";
-			link.l1 = "It's a deal then!";
+			dialog.text = "Отлично. Я прикажу грузчикам доставить его к пирсу.";
+			link.l1 = "Договорились!";
 			link.l1.go = "patria_goods_5";
 		break;
 		

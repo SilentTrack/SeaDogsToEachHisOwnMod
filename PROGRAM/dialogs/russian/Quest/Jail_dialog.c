@@ -27,7 +27,7 @@ void ProcessDialogEvent()
 		//--> Сомнительное предложение
 		if (CheckAttribute(pchar, "GenQuest.Contraoffer.Jail"))
 		{
-			dialog.text = "You were detained for trying to transfer and sell a contraband. Considering your help to the authorities and your position, you will spend in prison only "+FindRussianDaysString(sti(pchar.questTemp.JailTemp2))+". Besides, all money you've earned by smuggling -"+FindRussianMoneyString(sti(pchar.questTemp.JailTemp1))+" will be taken away and put in the town's treasury. Have a good time, captain!";
+			dialog.text = "Вы задержаны с поличным при попытке провезти и сбыть контрабанду. Поскольку вы пошли следствию навстречу, и учитывая ваше положение в обществе, вы проведете в тюрьме всего лишь "+FindRussianDaysString(sti(pchar.questTemp.JailTemp2))+". Кроме того, все деньги от сделки с контрабандным товаром - "+FindRussianMoneyString(sti(pchar.questTemp.JailTemp1))+" изымаются и поступают в городскую казну. Приятного времяпровождения, капитан! Хе-хе!";
 			link.l1 = "";
 			link.l1.go = "Jail_officer_take_1";
 			DeleteAttribute(pchar, "GenQuest.Contraoffer.Jail");
@@ -35,7 +35,7 @@ void ProcessDialogEvent()
 			break;
 		}
 		//<-- Сомнительное предложение
-			dialog.text = "You were detained for committing a crime and you will be held in prison for "+FindRussianDaysString(sti(pchar.questTemp.JailTemp2))+". Besides you will be fined for "+FindRussianMoneyString(sti(pchar.questTemp.JailTemp1))+". Have a nice time, captain!";
+			dialog.text = "Вы задержаны за совершение преступления и проведете в тюрьме "+FindRussianDaysString(sti(pchar.questTemp.JailTemp2))+". Кроме того, вы будете оштрафованы на "+FindRussianMoneyString(sti(pchar.questTemp.JailTemp1))+". Приятного времяпровождения, хе-хе!";
 			link.l1 = "";
 			link.l1.go = "Jail_officer_take_1";
 			NextDiag.currentnode = "Jail_officer_free";
@@ -49,7 +49,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Jail_officer_free":
-			dialog.text = "Well, a period of your imprisonment is over. I hope that it will teach you something. You are free now. Take your belongings in the chest near the officer. And don't let me catch you again!";
+			dialog.text = "Ну что же, срок вашего заключения истек. Надеюсь, это послужит вам уроком. Вы свободны. Свои вещи заберете в сундуке на столе у дежурного. И не попадайтесь больше!";
 			link.l1 = "";
 			link.l1.go = "Jail_officer_free_1";
 		break;

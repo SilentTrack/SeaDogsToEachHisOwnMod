@@ -17,201 +17,201 @@ void ProcessDialogEvent()
 			// Jason НСО
 			if(CheckAttribute(pchar, "questTemp.Patria.DodsonFail"))
 			{
-				dialog.text = "Charles, what the hell!..";
-				link.l1 = "Steven, there was an overlap. I could neither come nor inform you about my abscence...";
+				dialog.text = "Шарль, какого дьявола!..";
+				link.l1 = "Стивен, накладка вышла. Не смог я придти, и тебе не сумел сообщить никак...";
 				link.l1.go = "patria_33";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Patria.DodsonAgain"))
 			{
-				dialog.text = "Glad to see you, pal! How can I help you? ";
-				link.l1 = "Glad to see you too. I wanted to thank you for the perfectly conducted spectacle!";
+				dialog.text = "Рад тебя видеть, приятель!";
+				link.l1 = "И я тебя. Спасибо за отлично организованный спектакль!";
 				link.l1.go = "patria_29";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Patria.Saga.Shark") && pchar.questTemp.Patria == "epizode_12_pirates")
 			{
-				dialog.text = "Glad to see you, pal! How can I help you?";
-				link.l1 = "I have a proposal for you. Pirate stuff, you know!";
+				dialog.text = "Рад тебя видеть, приятель! Чем я могу тебе помочь?";
+				link.l1 = "Дело к тебе, Стивен. Пиратское!";
 				link.l1.go = "patria";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Patria.Saga.Shark") && pchar.questTemp.Patria == "epizode_12_talk")
 			{
-				dialog.text = "That's our customer! The job is done, your baron is sitting in a well-guarded dungeon. Perhaps you'd like to take a look, he-he?!";
-				link.l1 = "I will have plenty of time to do that, haha. Is he well-treated?";
+				dialog.text = "А вот и заказчик пожаловал! Дело сделано, твой барон сидит в подвале под надежным замком. Не хочешь пойти посмотреть, ха-ха?!";
+				link.l1 = "Еще успею, хе-хе. Его обрабатывают?";
 				link.l1.go = "patria_10";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Tieyasal") && pchar.questTemp.Tieyasal == "begin" && !CheckAttribute(npchar, "quest.Tieyasal"))
 			{
-				dialog.text = "Glad to see you, pal! How can I help you?";
-				link.l1 = "I've come again to ask for your help.";
+				dialog.text = "Рад тебя видеть, приятель! Чем я могу тебе помочь?";
+				link.l1 = "И снова я к тебе, Стивен, за помощью.";
 				link.l1.go = "tieyasal";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Guardoftruth.Archy") && pchar.questTemp.Guardoftruth.Archy == "islatesoro")
 			{
-				dialog.text = "Glad to see you, pal! How can I help you?";
-				link.l1 = "Steven, I've got something for you.";
+				dialog.text = "Рад тебя видеть, приятель! Чем я могу тебе помочь?";
+				link.l1 = "Стивен, у меня опять к тебе дело.";
 				link.l1.go = "guardoftruth";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Saga.Shadows") && pchar.questTemp.Saga.Shadows == "islatesoro")
 			{
-				dialog.text = "Glad to see you, pal! How can I help you?";
-				link.l1 = "Steven, I have to ask you something. You might not like it, but I need your help.";
+				dialog.text = "Рад тебя видеть, приятель! Чем я могу тебе помочь?";
+				link.l1 = "Стивен, у меня к тебе есть разговор. Не знаю, насколько он будет тебе приятен, но мне так или иначе нужна твоя помощь.";
 				link.l1.go = "shadows";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Terrapin") && pchar.questTemp.Terrapin == "islatesoro")
 			{
-				dialog.text = "Ha, here you are, "+pchar.name+". I was expecting your arrival. Wood Devil told me about your trouble with Tortuga...";
-				link.l1 = "He also told me that you had already found a solution. Is it true?";
+				dialog.text = "Ха, вот и ты, "+pchar.name+". Я ожидал твоего прибытия. Лесной Дьявол озадачил меня твоей проблемой с Тортугой...";
+				link.l1 = "Он также сказал мне, что ты, или вы, уже отыскали решение проблемы. Это так?";
 				link.l1.go = "terrapin";
 				break;
 			}
 			if(CheckAttribute(pchar, "questTemp.Terrapin.Catherina") && pchar.questTemp.Terrapin == "tortuga")
 			{
-				dialog.text = "How are we doing, "+pchar.name+"?";
-				link.l1 = "Secrets everywhere... I need your advice, Steven.";
+				dialog.text = "Как продвигаются наши дела, "+pchar.name+"?";
+				link.l1 = "Сплошные тайны мадридского двора... Я пришел к тебе за советом, Стивен.";
 				link.l1.go = "terrapin_8";
 				break;
 			}
-			dialog.text = "A-ah, my friend "+GetFullName(pchar)+"! Come in, I am glad to see you! What do you want?";
-			link.l1 = "I just wanted to pay you a short visit.";
+			dialog.text = "А-а, мой друг "+GetFullName(pchar)+"! Проходи, рад тебя видеть! Зачем пожаловал?";
+			link.l1 = "Да так, посетил вот по делам Исла Тесоро, и решил заглянуть к тебе на минутку.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
 		
 		// --------------------------------------вариант R-----------------------------------------------
 		case "Chad_die":
-			dialog.text = "Ha! I take it that you are our night visitor? I was informed about this accident too late. I had checked you belongings and found a letter from Wood Devil. Hell, it almost smelled of Main's jungles\nYour name is "+GetFullName(pchar)+"? Don't be surprised, I read it from the letter. My name is Steven Dodson. Or simply Shark. The Shark. I trust, that you have already heard about me. I currently occupy a position of admiral in this city or island, whatever\nI apologize for the actions of my men last night. It was my order to capture everyone who sneaks inside the hold. Too many thieves among Narwhals and Rivados\nChad let you go, I assume? Odd. I was only going to send him an order to release you. Where is your ship? I hope she is fine?";
-			link.l1 = "Chad? As far as I understand, your boatswain would never let me leave the prison alive. I did it myself and I also set free one black guy of these... Rivados.";
+			dialog.text = "Ха! Я так понимаю, это и есть наш таинственный ночной гость? Мне слишком поздно донесли. Я буквально с полчаса назад проверил твои вещи и нашел письмо от Лесного Дьявола. Черт побери, прямо пахнуло джунглями Мейна\nТебя зовут "+GetFullName(pchar)+"? Не удивляйся, я узнал это из письма. Мое имя Стивен Додсон, или просто - Акула. Думаю, ты слышал обо мне. Сейчас я занимаю место адмирала этого острова, или города - как хочешь, так и называй\nТы это... извини за действия моих людей. Это мой приказ - хватать каждого, кто проникнет в трюм. Слишком много желающих среди нарвалов и ривадос украсть то, что им не принадлежит\nЯ так понимаю, Чад тебя отпустил? Это странно, ибо я только-только собрался писать ему приказ о твоем немедленном освобождении. Где твой корабль? Надеюсь, он цел?";
+			link.l1 = "Чад? Как я понял, твой боцман ни за что бы не выпустил меня живым из тюрьмы. Я выбрался сам, и выпустил одного негра из этих, как его... ривадос.";
 			link.l1.go = "Chad_die_1";
 		break;
 		
 		case "Chad_die_1":
-			dialog.text = "You are telling me interesting things, pal. And how did you make it out of 'Tartarus'? It looks like I will have a nice chat with Chad and his prison guards...";
-			link.l1 = "You won't have any chat with them. They will never be talking again, I'm afraid. Chad threatened to keep me in the cage forever. He blamed me for being Rivados and he demanded that I prove it otherwise by killing the black wizard Chimiset...";
+			dialog.text = "Ты говоришь занятные вещи, приятель. И как же ты выбрался из 'Тартаруса'? Похоже, у меня будет с Чадом и его тюремщиками серьезный разговор...";
+			link.l1 = "Никакого разговора не будет. Точнее, не получится. Чад пригрозил мне пожизненным заточением, обвинил в том, что я - ривадос, и в качестве доказательства, что я не принадлежу к их клану, потребовал убить негра-колдуна по имени Чимисет...";
 			link.l1.go = "Chad_die_2";
 		break;
 		
 		case "Chad_die_2":
-			dialog.text = "What the hell?! Such a foolish self-will! We need Chimiset alive, and Chad perfectly knew that! And why would he assume that you were Rivados, if all of them are black? What is he up for, damn him?";
-			link.l1 = "He is up for something you surely won't like, Steven. Chad gave me a machete and sent me downstairs to kill Chimiset. But the old Black has told me something important, and I realized that if I kill Chimiset, I'll be the next...";
+			dialog.text = "Гром и молния! Что за нелепое самоуправство?! Чимисет нужен мне живым, и Чад это прекрасно знает! И как он мог предположить, что ты из ривадос, если все ривадос, как один - негры? Что он затеял, черт бы его побрал?";
+			link.l1 = "Он затеял то, что тебе очень не понравится, Стивен. Давай по порядку. Чад дал мне мачете и отправил вниз убить Чимисета. Но старый негр рассказал мне кое-что, и я понял, что если совершу убийство, то сам стану следующим...";
 			link.l1.go = "Chad_die_3";
 		break;
 		
 		case "Chad_die_3":
 			dialog.text = "";
-			link.l1 = "Instead of killing the old man I have opened a chest with ammunition and fought with Chad and his buddies. Do you see now why you can't talk to them anymore? They are all dead.";
+			link.l1 = "Вместо того, чтобы расправиться со стариком, я по его подсказке вскрыл сундук с амуницей, вооружился и вступил в бой с Чадом и его дружками. Теперь ты понимаешь, почему ты не сможешь с ними поговорить? Они все мертвы.";
 			link.l1.go = "Chad_die_4";
 		break;
 		
 		case "Chad_die_4":
-			dialog.text = "Damn it! The news just gets more and more terrifying! And what should I do with all of that mess?";
-			link.l1 = "Listen to me, Steve. Chimiset told me that Chad had a deal with some Narwhals - this is the other clan as far as I understand. Chad was planning to kill you and take your position. Narwhals are eager to see you dead, because they are certain that you had killed their leader Allen... or Alan, I don't remember.";
+			dialog.text = "Черт возьми! Одна новость хлеще другой! И что мне теперь прикажешь с тобой делать?";
+			link.l1 = "Дослушай до конца, Стив. Чимисет рассказал мне, что Чад сговорился с какими-то нарвалами, как я понял - это еще один клан - и планировал убрать тебя и занять твое место. Нарвалы жаждут твоей смерти, так как уверены в том, что ты убил их вожака, Алена, или Алана, не помню...";
 			link.l1.go = "Chad_die_5";
 		break;
 		
 		case "Chad_die_5":
-			dialog.text = "Bullshit! I didn't kill Alan! Someone else did that, even Narwhals, perhaps. I think that their current leader - Donald Greenspen - killed Alan!";
-			link.l1 = "No. Chad murdered him. Chimiset had witnessed the crime - that is why they wanted to kill him, too. Chad didn't want to do that himself for some reason - it looks like he was afraid of a curse of some sort. That is why he wanted me to do the job.";
+			dialog.text = "Вздор! Я не убивал Алана! Это сделал кто-то другой, возможно, сами нарвалы. Я думаю, что Дональд Гринспи, их нынешний главарь, и отправил Алана на тот свет!";
+			link.l1 = "Нет. Его убил Чад. И Чимисет был тому свидетель. Поэтому-то от него и хотели избавиться, но Чад почему-то не хотел сделать это сам - вроде как, боялся проклятия. Поэтому и попытался натравить меня на Чимисета.";
 			link.l1.go = "Chad_die_6";
 		break;
 		
 		case "Chad_die_6":
-			dialog.text = "I can't believe it... Chad killed Alan? But why?";
-			link.l1 = "To leave you the blame and to make you enemies with Narwhals. I suppose that he was the one spreading rumours, because why would Narwhals blame you and you only? Steven, they are planning to kill you. And the Rivados clan would be blamed for that - I don't know how they are going to do it though. Chimiset told me about that.";
+			dialog.text = "Голова идет кругом... Чад убил Алана? Но зачем?";
+			link.l1 = "Чтобы потом обвинить в этом деянии тебя и настроить враждебно клан нарвалов. Думаю, он тайком распустил слухи, иначе почему бы нарвалы считали убийцей именно тебя? Стивен, тебя собираются убить. Причем вину возложат на клан ривадос, как - не знаю. Чимисет рассказал мне все это.";
 			link.l1.go = "Chad_die_7";
 		break;
 		
 		case "Chad_die_7":
 			dialog.text = "";
-			link.l1 = "Besides, I have found this letter in Chad's chest. Read it. It looks like a solid proof, though it is indirect.";
+			link.l1 = "Кроме того, я нашел в сундуке Чада вот это письмо. Почитай. Вполне убедительное доказательство, хоть и косвенное.";
 			link.l1.go = "Chad_die_8";
 		break;
 		
 		case "Chad_die_8":
 			RemoveItems(pchar, "letter_chad", 1);
-			dialog.text = "...(reading)... heh! I am not surprised of Chad's betrayal. Son of a bitch always wanted power on this island. But Narwhals! To seriously believe that it was me who killed Alan! This will cost them a double price for provisions\nI was planning to release Chimiset anyway, it's high time to make peace with them. You have shocked me, buddy, to be honest...";
-			link.l1 = "I understand, Steven. I don't like it, either, I got in the middle of some political mess since I have reached the Island. I came here only to find you and Nathaniel Hawk...";
+			dialog.text = "...(читает)... Хех! Я не удивлен, что Чад предал меня. Я давно подозревал, что он хочет власти на этом острове. Но нарвалы! Поверить в то, что я убил Алана, и начать строить козни! Это им дорого зачтется... в денежном эквиваленте. Теперь продукты они будут получать по двойной цене\nЧто же касается Чимисета, то я и так собирался его выпустить - пора бы уже налаживать отношения с ривадос, сколько можно жить на ножах? Ты здорово меня ошарашил, дружище. Сказать по чести, я немного растерян...";
+			link.l1 = "Я понимаю, Стивен. Мне и того хуже - не успел я прибыть на остров, как тут же угодил в самый центр вашей политической заварухи. На самом же деле я пришел сюда, чтобы найти тебя и Натаниэля Хоука...";
 			link.l1.go = "Chad_die_9";
 		break;
 		
 		// ноды пересечения
 		case "Chad_die_9":
-			dialog.text = "What? Hawk? Isn't he at Jamaica? He is a baron of Maroon town, why would he be here?";
-			link.l1 = "No. Jackman is in command there now. I was able to find out that Hawk had gotten there the same way I did - through the portal of Kukulcan.";
+			dialog.text = "Натана Хоука? А с чего ты взял, что он должен быть здесь? Разве он не у себя, в Марун-Тауне?";
+			link.l1 = "Нет. Теперь там командует Джекман. Мне удалось добыть сведения, что Хоук прибыл на Остров тем же путем, что и я - через портал Кукулькана.";
 			link.l1.go = "Chad_die_10";
 		break;
 		
 		case "Chad_die_10":
-			dialog.text = "What's all this nonsense? What portal? And you still haven't answered - where is your ship?";
-			link.l1 = "There is no ship. I understand, Steve, that it is difficult to believe, but I really got here through the Indian idol from the Main... don't look at me like that - I am not crazy! I myself don't understand how is it possible, but it is!";
+			dialog.text = "Что за вздор? Какой портал? Да, ты так и не ответил мне - где твой корабль?";
+			link.l1 = "Нет никакого корабля. Я понимаю, Стив, в это трудно поверить, но я действительно попал сюда через индейского истукана в джунглях Мэйна... и не смотри на меня так, я не помешался! Я сам не понимаю толком, как это произошло, но это факт!..";
 			link.l1.go = "Chad_die_11";
 		break;
 		
 		case "Chad_die_11":
 			dialog.text = "";
-			link.l1 = "The shaman in Miskito village has seen how Nathaniel Hawk, who was escaping from the chasers, ran to the Indian idol, which is known as a statue of Kukulcan, and suddenly disappeared. This shaman told me that he had been on this Island himself, and that he went there the same way through the statue...";
+			link.l1 = "Шаман в деревне мискито видел, как Натаниэль Хоук, спасаясь в джунглях от преследователей, подбежал к индейской статуе, называемой статуей Кукулькана, и бесследно исчез. Этот же шаман поведал мне, что и сам бывал когда-то на Острове, причем попав тем же путем, через статую, и убрался отсюда через такого же истукана, который есть где-то тут...";
 			link.l1.go = "Chad_die_12";
 		break;
 		
 		case "Chad_die_12":
 			dialog.text = "";
-			link.l1 = "I'm looking for Nathan, so that is why I had to walk in his footsteps. I came to the statue at midnight, just as the shaman told me. You won't believe it, but the top of stone statue was golden that night, and a mysterious light was glowing above it!";
+			link.l1 = "Поскольку я разыскиваю Натана, то мне ничего больше не оставалось, как повторить его действия. По указанию шамана я пришел в полночь к истукану. Веришь, нет: в полночь верх каменной статуи стал золотым и над ней зажегся призрачный свет!";
 			link.l1.go = "Chad_die_13";
 		break;
 		
 		case "Chad_die_13":
 			dialog.text = "";
-			link.l1 = "As soon as I had touched the statue, a circle of light formed around the idol, fire blazed up, and then I was drawn into the statue. I was thrown out here, in your ship's cargo hold, downstairs near the bow, at the breach...";
+			link.l1 = "Стоило мне только прикоснуться к статуе, как вокруг истукана образовался круг из огней, потом вспыхнуло пламя, и меня буквально затянуло внутрь статуи и выбросило здесь, в трюме твоего корабля, на самом низу, в носовой части, где пролом...";
 			link.l1.go = "Chad_die_14";
 		break;
 		
 		case "Chad_die_14":
 			dialog.text = "";
-			link.l1 = "I barely survived that, thanks to the shaman, who had given me a special potion. In the end I was attacked by some monster - a giant crab. I hope that now you trust me?";
+			link.l1 = "Я был чуть жив - спасибо шаману, который дал мне с собой лечебное зелье. В довершение ко всему, на меня напал какой-то монстр - гигантский краб. Надеюсь, это ты выдумкой не сочтешь?";
 			link.l1.go = "Chad_die_15";
 		break;
 		
 		case "Chad_die_15":
-			dialog.text = "You mean the crab part? I believe you in that. There are lot of these monsters around the island. We bait them with a dead fish, so they often guard our back door. Scares thieves shitless. And what you've told about the idol - I am not crazy yet\nBut I will not reject you story either, locals have been gossiping about such things for several dozens of years, plus I saw things myself long ago at Rivados' place... never mind.";
-			link.l1 = "I swear that it is all truth.";
+			dialog.text = "Про краба? Нет. Эти твари живут в большом количестве вокруг острова. Жуткие, правда? Мы подбрасываем куски протухшей рыбы за дверь, ведущую в затопленную часть корабля, и крабы частенько забираются туда. Они здорово отпугивают воров. А что касается твоей истории с истуканом, то... я ничего не скажу, поскольку еще в здравом рассудке\nНо отрицать не стану, ибо по острову уже несколько десятков лет ходят слухи, которые описывают то, что ты мне сейчас рассказал. Да и я сам припоминаю, давно, у ривадос... впрочем, это неважно.";
+			link.l1 = "Клянусь, что это чистая правда, от первого и до последнего слова.";
 			link.l1.go = "Chad_die_16";
 		break;
 		
 		case "Chad_die_16":
-			dialog.text = "Fine. So be it. Tell me why have you been looking for me and Nathan? According to Jan's letter, you wanted me to become the head of Brethren of the Coast?";
-			link.l1 = "Exactly. Many things have changed after your and Hawk's disappearance. Jackman is trying to play the central role among the pirates. He is planning to become their leader, and he will succeed, if Jan and me don't stop him.";
+			dialog.text = "Хорошо. Пусть будет так. Скажи, для чего ты разыскивал меня и Натана? Я понял из письма Яна, что вы хотите мне предложить встать во главе Берегового Братства?";
+			link.l1 = "Именно так. С исчезновением Хоука и твоим отбытием в неизвестном направлении, на архипелаге многое изменилось. Центральную роль среди пиратов сейчас пытается играть Джекман. Он метит в лидеры и, несомненно, добьется своего, если мы с Яном ему не помешаем.";
 			link.l1.go = "Chad_die_17";
 		break;
 		
 		case "Chad_die_17":
 			dialog.text = "";
-			link.l1 = "Jackman is up for a serious and bloody game. I am sure that it was him, who had organized the ambush and hunt for Nathaniel. I also think that he killed Blaze. Making you the leader of Brethren of the Coast is the only way to stop him.";
+			link.l1 = "Джекман затеял серьезную и кровавую игру. Я уверен, что это он организовал засаду и последующую охоту на Натаниэля, а также думаю, что убийство Блейза - тоже его рук дело. Остановить его можно только избрав тебя на пост главы Берегового братства.";
 			link.l1.go = "Chad_die_18";
 		break;
 		
 		case "Chad_die_18":
-			dialog.text = "Look, I'd be glad, but we need to leave this island first. I had enough of it. All the more so that I can leave Dexter here, he can manage doing business in my absence. I didn't intend to stay here for that long, but my ship was burnt down in a fight against the clans\nI am not going to travel through those portals, don't even try to persuade me, I need a ship.";
-			link.l1 = "I won't... Steven, the Miskito shaman told me that there was a statue of Kukulcan here, on the Island. It looks like an ordinary stone idol. Do you know where I can find it?";
+			dialog.text = "Послушай, я был бы и не против, но для этого надо сначала убраться с этого острова. Он мне уже осточертел. Тем более, что я вполне могу положиться на Декстера - он хорошо ведет дела. Я не рассчитывал задерживаться здесь так долго, но мой корабль, на котором я сюда приплыл, сгорел в бою с местными кланами\nТак что если бы ты прибыл сюда на судне, я бы не задумываясь оставил остров на Лейтона и отправился назад на Карибы. Путешествовать через эти твои статуи я не намерен, даже не пытайся уговаривать.";
+			link.l1 = "Не буду... Стивен, шаман мискито говорил мне о том, что на острове есть статуя Кукулькана. На вид это обычный каменный истукан. Ты не знаешь, где он находится?";
 			link.l1.go = "Chad_die_19";
 		break;
 		
 		case "Chad_die_19":
-			dialog.text = "I don't. I have never seen any statues like that. Ask somebody else.";
-			link.l1 = "See, if I find this statue, I will be able to get away from this island without a ship. The trip doesn't scare me anymore. And then I would return here in a normal way and take you from here.";
+			dialog.text = "Не имею ни малейшего представления. Я лично никаких статуй не встречал. Поспрашивай об этом кого-нибудь другого.";
+			link.l1 = "Понимаешь, если бы я нашел истукана, я бы смог уйти с острова без корабля. Меня более не пугает это путешествие. А потом вернулся бы сюда нормальным путем и забрал тебя с острова.";
 			if (pchar.questTemp.LSC == "entrance" || pchar.questTemp.LSC == "mary") link.l1.go = "entrance_4";
 			else link.l1.go = "Chad_die_20";
 		break;
 		// ноды пересечения
 		
 		case "Chad_die_20":
-			dialog.text = "I understand, but I can not help you. Plus, this assassination thing is quite disturbing. Chad is dead, but I doubt that Narwhals will drop their plan. I do not want to live expecting to be shot in the back every day. Since you need me alive and you are already involved in this mess, I offer you to investigate this conspiracy\nYour are a newcomer, it's an advantage. Find Chad's partners and bring them to me or kill them where they stand, I don't care. Talk to Chimiset, old black knows more than he told us already\nBe careful with Narwhals, don't cross their borders unless you have got a password. They change passwords every week.\nOnce the threat is eliminated, I will provide you with sailing directions and all information you need\nGo and find those responsible. Restore order. I will make sure they clean prison after you. And we need a new jailer. And I need some rum, I don't feel well.";
-			link.l1 = "Fine, Steven. Let's do that...";
+			dialog.text = "Понимаю, но помочь ничем не могу. К тому же сейчас меня больше волнует твое известие о готовящемся на меня покушении. Чад мертв, но я не думаю, что нарвалы оставят свой план. Я не желаю жить в постоянном ожидании пули в затылок. И, поскольку ты уже начал это дело, и судя по твоим словам, я нужен вам живым, я хочу попросить тебя провести расследование\nВсе мои люди хорошо известны, а ты здесь лицо новое, так что тебе будет проще. Чад явно действовал не один - у него есть помощники среди нарвалов. Найди их и доставь мне, или ликвидируй без разговоров. Поговори с Чимисетом - уверен, этот негр знает больше, чем сказал\nБудь осторожен с нарвалами - они терпеть не могут, когда посторонние суются на их корабли. Доступ туда разрешен либо членам клана, либо тем, кто знает пароль. Пароли они меняют еженедельно. Любого, кто рискнет проникнуть без разрешения, они просто убьют\nКак только устранишь угрозу со стороны нарвалов - я дам тебе лоцию, по которой ты сможешь найти наш остров, если выберешься отсюда. Без этого документа ты в жизни не отыщешь его. Также расскажу еще некоторые важные подробности\nНо это потом. А пока - займись нарвалами. А я сейчас отдам распоряжение прибраться после тебя в тюрьме, да и назначить нового тюремщика не помешает. И, пожалуй, хлебну рому - что-то мне дурно.";
+			link.l1 = "Хорошо, Стивен. Так и порешим...";
 			link.l1.go = "Chad_die_21";
 		break;
 		
@@ -227,161 +227,161 @@ void ProcessDialogEvent()
 			AddQuestRecord("SharkHunt", "10");
 			sld = characterFromId("Facio");
 			sld.quest.parol = true;
-			AddSimpleRumourCityTip("Just imagine: someone has killed the admiral's jailer, Chad Kapper. Impossible! No doubt, that was the Rivados wizard's job...", "LostShipsCity", 7, 2, "LSC", "");
-			AddSimpleRumourCityTip("I heard that Chad Kapper is dead. There was no official statement; his body was never found, either. Perhaps, the admiral had simply given him a secret mission?", "LostShipsCity", 7, 2, "LSC", "");
-			AddSimpleRumourCityTip("I don't see our jailer Chad Kapper. Some people say that he was killed and some disagree. Anyway, no one has seen him dead.", "LostShipsCity", 7, 2, "LSC", "");
-			AddSimpleRumourCityTip("They say that the admiral has doubled provision prices for Narwhals! That pirate is truly reckless!", "LostShipsCity", 7, 3, "LSC", "");
+			AddSimpleRumourCityTip("Вы только представьте себе: прошел слух, что кто-то прикончил тюремщика адмирала, Чада Каппера. Просто невероятно! Не иначе, это колдун ривадос постарался...", "LostShipsCity", 7, 2, "LSC", "");
+			AddSimpleRumourCityTip("Удалось услышать краем уха, что начальник тюрьмы Чад Каппер мертв. Официального подтверждения не было, да и трупа никто не видел. Может, адмирал просто дал ему тайное задание?", "LostShipsCity", 7, 2, "LSC", "");
+			AddSimpleRumourCityTip("Что-то не видно нашего тюремщика Чада Каппера. Кто говорит - его убили, а кто и не согласен с этим. Во всяком случае, мертвым его никто не видел.", "LostShipsCity", 7, 2, "LSC", "");
+			AddSimpleRumourCityTip("Говорят, адмирал повысил цены на продовольствие для нарвалов сразу в два раза! Ох, и не боится же ничего отчаянный пират!", "LostShipsCity", 7, 3, "LSC", "");
 		break;
 		
 			case "Mary_Die":
-			dialog.text = "Well, what have you got, "+pchar.name+"? Any news about Narwhals?";
-			link.l1 = "Yes. You will be glad to know, Steve, that the conspiracy was unveiled and the plotters are dead. I have got all the proofs.";
+			dialog.text = "Ну, что там у тебя, "+pchar.name+"? Есть новости о нарвалах?";
+			link.l1 = "Да. Я готов тебя обрадовать, Стив. Заговор раскрыт, все заговорщики убиты. Доказательства у меня на руках.";
 			link.l1.go = "Mary_Die_1";
 		break;
 		
 		case "Mary_Die_1":
-			if (CheckAttribute(pchar, "questTemp.Saga.SharkHunt.TownAttack")) dialog.text = "I thought so when I heard the gunfight... Tell me more, I am listening.";
-			else dialog.text = "Is that so? I am really glad to hear that! Tell me more, I am listening.";
-			link.l1 = "It was all planned by your boatswain, Chad Kapper. He has killed Alan Milrow in the Tartarus prison, and he had spread gossips about your involvement. I think that Narwhals were really angry, and it was a hard blow for Alan's girlfriend, Red Mary...";
+			if (CheckAttribute(pchar, "questTemp.Saga.SharkHunt.TownAttack")) dialog.text = "Я так и подумал, когда услышал стрельбу на улицах города... Рассказывай подробнее, я тебя внимательно слушаю.";
+			else dialog.text = "Вот как? Очень рад это слышать! Рассказывай подробнее, я тебя внимательно слушаю.";
+			link.l1 = "Все затеял твой боцман, Чад Каппер. Он убил в тюрьме на 'Тартарусе' Алана Милроу, главу нарвалов, и пустил слух, что это сделал ты. Нарвалы, думаю, были недовольны, а для Красной Мэри, подружки Алана, это явилось настоящим ударом...";
 			link.l1.go = "Mary_Die_2";
 		break;
 		
 		case "Mary_Die_2":
 			dialog.text = "";
-			link.l1 = "Mary was eager to take vengeance and Chad Kapper used it for his own ends. They made a cunning plan of an attempt on your life. Everyone here knows about your habit of walking around on the rear gallery of the San Augustine every evening.";
+			link.l1 = "Мэри жаждала мести, и это использовал в своих целях Чад Каппер. Они разработали хитроумный план покушения. Всем на острове известно, что ты по вечерам гуляешь по кормовой галерее 'Сан-Августина'. Вот там-то тебя и должна была настигнуть пуля снайпера...";
 			link.l1.go = "Mary_Die_3";
 		break;
 		
 		case "Mary_Die_3":
-			dialog.text = "Heh! I will reconsider my habits... Go on.";
-			link.l1 = "They needed a long-range and accurate musket to perform their plan, and so some Adolf Barbier provided it. But his rifle was pawned to Giuseppe Fazio, so Mary and Chad gave him enough money to buy it back. Adolf got it out of pawn...";
+			dialog.text = "Хех! Приму к сведению... Продолжай.";
+			link.l1 = "Для успешного выполнения задуманного им нужен был дальнобойный и точный мушкет. Такой они нашли у некого Адольфа Барбье. Однако его штуцер был заложен у Джузеппе Фацио, поэтому Мэри и Чад снабдили Адольфа деньгами для возврата долга. Адольф выкупил ружье...";
 			link.l1.go = "Mary_Die_4";
 		break;
 		
 		case "Mary_Die_4":
 			dialog.text = "";
-			link.l1 = "They hired Cyclops Marcello, an ex royal huntsman, to kill you. He had to receive the rifle and shoot you dead. After that Mary would have killed him and used his corpse and rifle as a proof that Rivados were responsible for the attack. Cyclops Marcello is a mulatto, you know...";
+			link.l1 = "Киллером они наняли Циклопа Марчелло, бывшего королевского егеря. Он должен был получить штуцер и убить тебя прицельным выстрелом. После этого Циклоп пал бы от руки Красной Мэри, а его труп вместе со штуцером выступили бы доказательством того, что это совершили ривадос. Ведь Циклоп Марчелло - мулат...";
 			link.l1.go = "Mary_Die_5";
 		break;
 		
 		case "Mary_Die_5":
-			dialog.text = "Such a smart bastard!";
-			link.l1 = "After that, Narwhals and pirates would attack Rivados and destroyed them. Chad would become an admiral and Mary would be his lover. Perhaps, though, he would have cut her throat instead, since she knew too much. Quite probably...";
+			dialog.text = "Вот продуманный ублюдок!";
+			link.l1 = "После этого нарвалы и пираты должны были бы напасть на ривадос и совместными усилиями уничтожить их. Чад стал бы адмиралом, а Мэри - его любовницей. А может, он потом бы и ей горло перерезал, поскольку она слишком много знала. Вполне вероятно...";
 			if (CheckAttribute(pchar, "questTemp.Saga.SharkHunt.TownAttack")) link.l1.go = "Mary_Die_6a";
 			else link.l1.go = "Mary_Die_6";
 		break;
 		
 		case "Mary_Die_6":
 			dialog.text = "";
-			link.l1 = "Anyway, it is over now. Adolf wasn't talkative enough, and I had to kill him right in his cabin. I also had to deal with Mary and Cyclops, who had come to get the rifle from Adolf. They realized, who I was, at once, and attacked me immediately.";
+			link.l1 = "В любом случае, все кончено. Адольф оказался несговорчивым и мне пришлось его убить прямо в его каюте. С Циклопом и Мэри, которые пришли к Адольфу за штуцером, тоже пришлось расправиться: они сразу поняли, кто я, и напали без лишних разговоров.";
 			link.l1.go = "Mary_Die_7";
 		break;
 		
 		case "Mary_Die_7":
-			dialog.text = "So they are lying down inside Santa Florentina, right?";
-			link.l1 = "Yes. All three of them.";
+			dialog.text = "Значит, все трое сейчас лежат внутри 'Санта-Флорентины'?";
+			link.l1 = "Да. Все трое.";
 			link.l1.go = "Mary_Die_8";
 		break;
 		
 		case "Mary_Die_8":
-			dialog.text = "That is good that no witnesses were involved in this mess. I will take care of the bodies. You did a good job, "+pchar.name+"! Were you in my crew, I'd definitely have made you my first mate.";
-			link.l1 = "Thanks for such a high response! And, finally, take a look at these letters. I took them from the bodies of Cyclops and poor Mary...";
+			dialog.text = "Это хорошо, что обошлось без лишних свидетелей. О трупах я позабочусь. Ты здорово поработал, "+pchar.name+"! Если бы ты был в моей команде, место первого помощника было бы тебе обеспечено.";
+			link.l1 = "Спасибо за лестный отзыв! Ну, и в довершение - прочти эти письма. Одно я взял с тела Адольфа, второе - с трупа бедняжки Мэри...";
 			link.l1.go = "Mary_Die_9";
-			AddSimpleRumourCityTip("Have you heard that? Our squabbler and madcap Red Mary has disappeared. I won't be surprised if she is dead...", "LostShipsCity", 10, 1, "LSC", "");
-			AddSimpleRumourCityTip("They say that Red Mary has disappeared. Have you heard about it?", "LostShipsCity", 10, 1, "LSC", "");
-			AddSimpleRumourCityTip("Mary Casper has vanished. Some people say that she is still inside her cabin but I don't believe it. It's been too long since there last was light in it.", "LostShipsCity", 10, 1, "LSC", "");
-			AddSimpleRumourCityTip("They say that Red Mary was murdered. Poor girl! Yes, she had tough character, but everybody loved her. Who would have done such a terrible thing?", "LostShipsCity", 10, 1, "LSC", "");
+			AddSimpleRumourCityTip("Вы слыхали? Наша забияка и сорвиголова Красная Мэри пропала. Не удивлюсь, если ее уже нет в живых...", "LostShipsCity", 10, 1, "LSC", "");
+			AddSimpleRumourCityTip("Говорят, Красная Мэри бесследно исчезла. Ничего не слышали об этом?", "LostShipsCity", 10, 1, "LSC", "");
+			AddSimpleRumourCityTip("Мэри Каспер словно испарилась. Кто-то говорит, что она у себя в каюте. Но я не верю этому - там давно уже не зажигается свет.", "LostShipsCity", 10, 1, "LSC", "");
+			AddSimpleRumourCityTip("Шепнули мне тут по секрету, что Красную Мэри убили. Бедная девушка! Да, у нее был сложный характер, но ее все любили. Кому она помешала?", "LostShipsCity", 10, 1, "LSC", "");
 		break;
 		
 		case "Mary_Die_6a":
 			dialog.text = "";
-			link.l1 = "Anyway, it is over now. Adolf wasn't talkative enough, and I had to kill him right in his cabin. I also had to deal with Mary and Cyclops, who had come to get the rifle from Adolf. They realized, who I was, at once, and attacked me immediately.";
+			link.l1 = "В любом случае, все кончено. Адольф оказался несговорчивым и мне пришлось его убить прямо в его каюте. Циклоп и Мэри подстерегли меня на улице вместе с двумя нарвалами и напали без лишних разговоров - пришлось расправиться и с ними.";
 			link.l1.go = "Mary_Die_7a";
 		break;
 		
 		case "Mary_Die_7a":
-			dialog.text = "Too bad that you have started a fight on Eva. Now Narwhals are aware that you are responsible for killing their men, such actions won't improve your reputation. Same can be said about mine. Don't pay them a visit until you fix this conflict\nIn general, you did good, "+pchar.name+"! Were you in my crew, I'd definitely have made you my first mate.";
-			link.l1 = "Thanks for such a high response! And, finally, take a look at these letters. I took them from the bodies of Cyclops and poor Mary...";
+			dialog.text = "Это плохо, что ты устроил драку на 'Эве'... Теперь нарвалы знают, что это именно ты убил их людей, а это не прибавит популярности в их глазах ни тебе, ни мне. После этого лучше к нарвалам и не суйся, по крайней мере, пока не уладишь конфликт\nНо в любом случае ты здорово поработал, "+pchar.name+"! Если бы ты был в моей команде, место первого помощника было бы тебе обеспечено.";
+			link.l1 = "Спасибо за лестный отзыв! Ну, и в довершение - прочти эти письма. Одно я взял с тела Адольфа, второе - с трупа бедняжки Мэри...";
 			link.l1.go = "Mary_Die_9";
-			AddSimpleRumourCityTip("Such a massacre you have performed here! Narwhals won't forget about it!", "LostShipsCity", 5, 2, "LSC", "");
-			AddSimpleRumourCityTip("I understand killing Cyclops and two Narwhal bandits... But the girl, why have you killed the girl? Poor Mary...", "LostShipsCity", 7, 5, "LSC", "");
+			AddSimpleRumourCityTip("Ну и бойню же вы устроили! Теперь нарвалы вам спуску не дадут!", "LostShipsCity", 5, 2, "LSC", "");
+			AddSimpleRumourCityTip("Я понимаю, убить Циклопа, двух нарвалов-головорезов... Но девушку, девушку-то зачем было убивать? Неужели нельзя было как-то иначе? Бедняжка Мэри...", "LostShipsCity", 7, 5, "LSC", "");
 		break;
 		
 		case "Mary_Die_9":
 			RemoveItems(pchar, "letter_chad", 1);
 			RemoveItems(pchar, "letter_chad_1", 1);
-			dialog.text = "Poor Mary? Are you feeling sorry for that whore?";
-			link.l1 = "I really am. See, Chad deceived her and used her. She couldn't resist her feelings and natural hotheadedness... and that's where it got her.";
+			dialog.text = "Бедняжки Мэри? Ты жалеешь эту девку?";
+			link.l1 = "Мне действительно ее жаль. Ведь если разобраться, Чад обманул ее и использовал в своих целях. Она просто поддалась чувствам и природной горячности... и вот результат.";
 			link.l1.go = "Mary_Die_10";
 		break;
 		
 		case "Mary_Die_10":
 			TakeNItems(pchar, "gold_dublon", 500);
-			Log_Info("You have received 500 doubloons");
+			Log_Info("Вы получили 500 дублонов");
 			PlaySound("interface\important_item.wav");
 			CloseQuestHeader("SharkHunt");
-			dialog.text = "Well, go see brother Julian and light a candle... I won't do that myself, though. Alright, let's drop the subject. I am grateful to you, "+pchar.name+", for your help. You can count on my support now. I want to pay you for your excellent work. Here, take five hundred doubloons.";
-			link.l1 = "Nice!";
+			dialog.text = "Сходи к брату Юлиану и поставь свечку... но лично я этого делать не стану. Ладно, не будем об этом. Я благодарен тебе, "+pchar.name+", за твою помощь. Теперь ты можешь всегда рассчитывать на мою поддержку. Я хочу заплатить тебе за отличную работу. Вот, держи, здесь пятьсот дублонов.";
+			link.l1 = "Не откажусь!";
 			link.l1.go = "LSC_navy";
-			AddSimpleRumourCityTip("They say that the admiral respects you, mister...", "LostShipsCity", 15, 2, "LSC", "");
-			AddSimpleRumourCityTip("They say that you are the admiral's loyal friend. Is that true?", "LostShipsCity", 15, 2, "LSC", "");
+			AddSimpleRumourCityTip("Ходят слухи, что вы у адмирала в большом почете, сударь...", "LostShipsCity", 15, 2, "LSC", "");
+			AddSimpleRumourCityTip("Говорят, что адмирал обрел в вашем лице верного друга. Это правда?", "LostShipsCity", 15, 2, "LSC", "");
 		break;
 		
 		// ----------------------------------------вариант N---------------------------------------------------
 		case "entrance":
-			dialog.text = "What do you want? I don't remember you...";
-			link.l1 = "Of course, you don't - we had never met before, and I came here just recently. Hello, Steven. Such a rare luck! I have found you after all, though it wasn't you who I was expecting to find here!";
+			dialog.text = "Ну, по какому делу явился? Что-то я тебя не припомню...";
+			link.l1 = "И это неудивительно, потому что мы раньше не встречались, а сюда я прибыл минувшей ночью. Здравствуй, Стивен. Вот уж редкая удача! Нашел тебя, даже не искавши!";
 			link.l1.go = "entrance_1";
 		break;
 		
 		case "entrance_1":
-			dialog.text = "Wait, pal, calm down. Looking for me? I don't like it. Why the hell would you be looking for me?";
-			link.l1 = "I see. Let's try again then. Here, take the letter. It is written by Jan Svensson for you. I suppose that all your suspicions will be wiped away after you read it.";
+			dialog.text = "Постой-ка, приятель, не торопись. Искал меня? Что-то мне не нравится все это. С какой стати тебе меня разыскивать?";
+			link.l1 = "Так. Давай по-другому. Вот, возьми это письмо. Оно от Яна Свенсона и адресовано тебе. Думаю, после прочтения все твои подозрения в мой адрес рассеятся.";
 			link.l1.go = "entrance_2";
 		break;
 		
 		case "entrance_2":
 			RemoveItems(pchar, "letter_svenson", 1);
 			PlaySound("interface\important_item.wav");
-			dialog.text = "(reading)... Hm. That explains a lot. And I thought that you were going to give me a black mark for Blaze's death. You know, recently there have been many guys eager to do that. Did you leave your ship at the outer ring? And how did you know that I was here?";
-			link.l1 = "I didn't. This was a lucky chance. And about Blaze... Jan and me think that you are not responsible for his death.";
+			dialog.text = "(читает)... Хм. Это многое объясняет. А то я уже грешным делом подумал, что ты хочешь мне вручить черную метку за Блейза. Знаешь, в последнее время развелось много желающих сделать это. Ты оставил корабль за внешним кольцом? И как вообще ты узнал, что я здесь?";
+			link.l1 = "Я не знал. Можно сказать, это случайность. А насчет Блейза - мы с Яном считаем, что ты к его смерти не причастен.";
 			link.l1.go = "entrance_3";
 		break;
 		
 		case "entrance_3":
-			dialog.text = "And you are right. I am not. Someone is trying to blame me, that is true. But I didn't kill him.";
-			link.l1 = "That is good. Interesting, I came here to find Nathaniel Hawk, but I have found you instead, ha-ha!";
+			dialog.text = "И правильно делаете. Я тут никаким боком. Кто-то пытается взвалить вину за это на меня - это верно. Но я не убивал Шарпа.";
+			link.l1 = "Это радует. Но однако, интересно получилось: пришел сюда по следам Натаниэля Хоука, а вышел на Акулу Додсона, ха-ха!";
 			link.l1.go = "Chad_die_9";
 		break;
 		
 		case "entrance_4":
-			dialog.text = "I understand but I can't help you. You have to talk about it with the old-timers of this Island. Talk to Rivados wizard Chimiset. The old black man knows much more than he says.";
-			link.l1 = "And where can I find this wizard?";
+			dialog.text = "Понимаю, но помочь ничем не могу. Тебе нужно поговорить на этот счет со старожилами Острова, например колдуном ривадос Чимисетом. Старый негр знает много, намного больше, чем говорит.";
+			link.l1 = "И где мне найти этого колдуна?";
 			if (pchar.questTemp.LSC == "mary") link.l1.go = "mary";
 			else link.l1.go = "entrance_5";
 		break;
 		
 		case "entrance_5":
-			dialog.text = "In my prison, in 'Tartarus'. I was planning to release him anyway, it's time to improve our relations with Rivados. Right! Go to prison, tell Chad Kapper, he is a jailer, that I have ordered to release Chimiset\nTell the black man why I sent you, tell him that I will release him if he will be talkative enough. I am sure this will make him talk.";
-			link.l1 = "Hm... I am a newbie here. Where is the prison?";
+			dialog.text = "В моей тюрьме, на 'Тартарусе'. Я все равно собираюсь его выпускать - надо бы наладить отношения с ривадос, и этот ход будет как нельзя кстати... Да! Ты сейчас пойдешь в тюрьму, и передашь Чаду Капперу - это наш тюремщик - мой приказ о том, что Чимисет должен быть освобожден\nНегру скажешь, что тебя прислал я, и, мол, если он будет с тобой откровенен - то я выпущу его. Уверен, это развяжет ему язык и он будет словоохотлив.";
+			link.l1 = "Хм... Я вообще-то здесь еще не ориентируюсь. Где находится тюрьма?";
 			link.l1.go = "entrance_6";
 		break;
 		
 		case "entrance_6":
-			dialog.text = "Keep the following in mind. Leave my residence, cross the bridge, turn left, go through frigate Carolina to galleon Gloria and you will get to Esmeralda. Look for a sign of store and enter the doors beneath it. Get through the door in the bow part of the ship and you will reach Tartarus\nBe careful at Esmeralda, it is a property of Narwhals clan, even though, others can visit it. Do not cross their fighters and avoid any troubles.";
-			link.l1 = "Who are these Rivados and Narwhals?";
+			dialog.text = "Запоминай. Выйдешь из моей резиденции, пройдешь по мосткам, затем поверни налево, пройди через фрегат 'Каролина' на галеон 'Глория', пересечешь палубу 'Глории' - попадешь на 'Эсмеральду'. Увидишь вывеску - магазин. Заходи внутрь и пройди в носовую часть корабля, поднимись по бушприту наверх, а оттуда по доскам спустишься на палубу 'Тартаруса'\nЕсть еще один путь, но он долгий и мокрый - вплавь вокруг Острова. Так что лучше иди через магазин. Будь осторожен на 'Эсмеральде' - это территория клана нарвал, хотя и доступная для посещений жителями. Не приставай и не цепляйся к бойцам клана, у них разговор короткий.";
+			link.l1 = "Кто это такие - ривадос и нарвалы?";
 			link.l1.go = "entrance_7";
 		break;
 		
 		case "entrance_7":
-			dialog.text = "The clans have been living here for a very long time. They represent offsprings of first settlers. Narwhals are mostly English, Dutch and French, Rivados are all Negro. Every clan has a leader, they hold several ships and don't let others into their territory\nYou must know passwords in order to visit them. They change passwords every week.";
-			link.l1 = "Fine. I will deal with that. Will they let me get inside the prison?";
+			dialog.text = "Группировки жителей острова, живут здесь очень давно, и были, сколько я себя помню. Представляют собой потомков первых поселенцев Острова. Нарвалы - в основном англичане, голландцы и французы, а вот ривадос все как один - негры. Кланы имеют лидера, занимают несколько кораблей каждый, и на свою территорию посторонних не пускают\nЕсли хочешь пройти - должен знать их пароли, которые они, кстати, меняют еженедельно. Так что по пути на 'Тартарус' не забреди на их вотчину. Впрочем, они тебя предупредят, если ты попробуешь пойти 'не туда'.";
+			link.l1 = "Ладно. Разберусь как-нибудь. Ну а в тюрьму-то меня пустят?";
 			link.l1.go = "entrance_8";
 		break;
 		
 		case "entrance_8":
-			dialog.text = "They will. Here is the key, so Chad will know that I have sent you there. Take it.";
-			link.l1 = "Fine. Then I will talk with that... Chimiset and then I will be back with the results.";
+			dialog.text = "Пустят. Я дам тебе ключ от дверей, так что Чад сразу поймет, что ты от меня. Держи.";
+			link.l1 = "Хорошо. Тогда я поговорю с этим... как его, Чимисетом, и вернусь к тебе с результатами.";
 			link.l1.go = "entrance_9";
 		break;
 		
@@ -416,56 +416,56 @@ void ProcessDialogEvent()
 		break;
 		
 		case "entrance_10":
-			dialog.text = "So, have you been at Tartarus?";
-			link.l1 = "Yes. I have given your orders to Chad and I had a talk with the black man.";
+			dialog.text = "Ну что, ты был на 'Тартарусе'?";
+			link.l1 = "Да. Передал Чаду твое распоряжение и поговорил с негром.";
 			link.l1.go = "entrance_11";
 		break;
 		
 		case "entrance_11":
-			dialog.text = "Did the wizard tell you anything interesting?";
-			link.l1 = "Oh, yes. He told me were to find the teleportation idol of Kukulcan. It was on San Geronimo ship, which had sunken at the shoal near the Narwhal territory.";
+			dialog.text = "Что-нибудь интересное колдун тебе рассказал?";
+			link.l1 = "О, да. Он сообщил, где можно искать телепортационную статую Кукулькана. Она находилась на корабле 'Сан-Херонимо', который затонул на мелководье у территории нарвалов.";
 			link.l1.go = "entrance_12";
 		break;
 		
 		case "entrance_12":
-			dialog.text = "Ha-ha-ha, great! So your 'portal' is at the bottom now? Well, pal, I fear that you are locked up on this island. So join me and my men...";
-			link.l1 = " I will figure out a way to get to the idol. I will find the way. Now. Chimiset told me that you should not trust Kapper, because he saw Chad killing some Alan Milrow, the head of Narwhals, with his own eyes.";
+			dialog.text = "Ха-ха-ха, великолепно! Получается, твой 'портал' теперь на дне? Ну, дружище, боюсь, теперь ты с нами в одной лодке и заперт на этом острове. Так что присоединяйся ко мне и моим людям...";
+			link.l1 = " Я придумаю способ, как добраться до истукана. Обязательно придумаю. Далее. Чимисет сказал, что не стоит доверять Капперу, потому что он собственными глазами видел, как Чад прикончил некого Алана Милроу, главу нарвалов, там же, в тюрьме.";
 			link.l1.go = "entrance_13";
 		break;
 		
 		case "entrance_13":
-			dialog.text = "What?! Chad killed Alan? That wizard is insane! It simply cannot be true!";
-			link.l1 = "You know, Steve, Chimiset is really scared. I don't think that he was lying to me.";
+			dialog.text = "Что?! Чад убил Алана?! Да этот колдун спятил! Не может быть!";
+			link.l1 = "Знаешь, Стив, Чимисет здорово напуган. Не думаю, что он лжет. Не похоже было.";
 			link.l1.go = "entrance_14";
 		break;
 		
 		case "entrance_14":
-			dialog.text = "Damn it, now that is really bad news! Alan's murder has already spoiled my reputation among Narwhals - some of them decided that I was responsible for it, and now it turns out that one of my officers could have done that!";
-			link.l1 = "It seems that people like to blame you for the sins which are not yours...";
+			dialog.text = "Черт возьми, это плохая новость! Убийство Алана и так здорово испортило мою репутацию среди нарвалов - некоторые из них решили, что это моих рук дело, так теперь еще выясняется, что это мог сделать один из моих офицеров!";
+			link.l1 = "Что-то любят тебя подозревать в грехах, которые ты не совершал...";
 			link.l1.go = "entrance_15";
 		break;
 		
 		case "entrance_15":
-			dialog.text = "Yeah, that is troubling...";
-			link.l1 = "And now, the most 'nice' news for you - the old man told me that he had overheard several conversations and fugured that some of your men are planning to kill you. He will tell you more only after you release him, and in private.";
+			dialog.text = "Да уж, прямо напасть какая-то...";
+			link.l1 = "Ну и под конец самая 'приятная' для тебя новость - негр сказал, что подслушал какие-то разговоры и сделал вывод, что на тебя готовится покушение. Причем людьми из твоего окружения. Более подробно он расскажет тебе только после освобождения, и с глазу на глаз.";
 			link.l1.go = "entrance_16";
 		break;
 		
 		case "entrance_16":
-			dialog.text = "Great! And all of this because of you! No offence, I am just joking. My head is going round: Chad killed Alan, my men are planning an attempt on my life... Has the old black man told you any details?";
-			link.l1 = "No. He fears Chad too much, as far as I understood.";
+			dialog.text = "Просто замечательно! И откуда тебя только принесло на мою голову, не скажешь? Не обижайся, это я так шучу. Голова идет кругом: Чад убил Алана, какие-то мои люди готовят покушение... Никаких подробностей негр не сказал?";
+			link.l1 = "Нет. Он очень боится Чада, как я понял.";
 			link.l1.go = "entrance_17";
 		break;
 		
 		case "entrance_17":
-			dialog.text = "Fine. I will tell Rivados that I want to meet with Chimiset. We'll see what he tells me. And concerning the attempt... fine, I will be careful. So, what are you going to do now, "+pchar.name+"?";
-			link.l1 = "Nothing in particular yet. I will walk around the Island and get to know the locals - perhaps I will come up with an idea how to get out of this place. And I need to find Nathan Hawk first, he is the reason why I am here.";
+			dialog.text = "Ладно. Я передам ривадос, что хочу встретится с Чимисетом. Посмотрим, что он мне расскажет. А что насчет покушения... ладно, буду предельно осторожен. Что ты сейчас намерен делать, "+pchar.name+"?";
+			link.l1 = "Пока ничего. Осмотрюсь на Острове, познакомлюсь с людьми - может, что натолкнет меня на мысль, как выбраться отсюда. Да и Натана Хоука найти надо - я ведь за этим сюда явился.";
 			link.l1.go = "entrance_18";
 		break;
 		
 		case "entrance_18":
-			dialog.text = "I see. Don't forget to visit me when you find a way out of this island - I will give you the sailing directions, you won't be able to back get here without them. I will also tell you some important details.";
-			link.l1 = "Fine. I will visit you for sure, Steve!";
+			dialog.text = "Понятно. Но если найдешь способ убраться с Острова, через твою статую, или еще как - прежде чем отправиться в путь, обязательно зайди ко мне - я дам тебе лоцию, по которой ты сможешь вернуться сюда на корабле. Без этого документа ты в жизни не отыщешь нас. Также расскажу еще некоторые важные подробности.";
+			link.l1 = "Хорошо. Обязательно приду, Стив!";
 			link.l1.go = "entrance_19";
 		break;
 		
@@ -487,26 +487,26 @@ void ProcessDialogEvent()
 		break;
 		
 		case "entrance_20":
-			dialog.text = "It is good that you have come, "+pchar.name+". I have been waiting for you. Bad news. Chimiset is dead, Chad Kapper has vanished without a trace.";
-			link.l1 = "You don't say... I am sure that Chad has killed Chimiset! The old black man was so scared not without a reason.";
+			dialog.text = "Очень хорошо, что ты пришел, "+pchar.name+". Я уже заждался. Плохие новости. Чимисет убит, Чад Каппер бесследно исчез.";
+			link.l1 = "Вот это да... Уверен, что это Чад прикончил Чимисета! Старый негр недаром был так перепуган.";
 			link.l1.go = "entrance_21";
 		break;
 		
 		case "entrance_21":
-			dialog.text = "I have no doubt in that. Damn it, the situation is getting worse every hour. I have almost arranged solid and straight contacts with Black Eddie and now this. Well, we can forget about friendship with Rivados\nThey know that you were talking to Chimiset before he died, and they consider you as one of my men, so avoid contacting them.";
-			link.l1 = "Yeah, what a shame...";
+			dialog.text = "После вчерашнего разговора с тобой я тоже в этом не сомневаюсь. Черт возьми, ситуация накаляется с каждым часом. Ривадос просто в ярости. Я только-только наладил отношения с Черным Эдди напрямую, минуя Фацио, и тут такое безобразие. О дружбе с ривадос теперь можно забыть\nПоскольку они считают тебя моим человеком, да еще и прознали откуда-то, что ты разговаривал с Чимисетом, то советую проявлять острожность на их территории, если отправишься туда.";
+			link.l1 = "Да уж, весело...";
 			link.l1.go = "entrance_22";
 		break;
 		
 		case "entrance_22":
-			dialog.text = "I have asked you to come not only to tell news. I have received a letter from our mediator and diplomat, Giuseppe Fazio, he invites me to visit his cabin in Carolina at midnight. He also mentions that I must come alone, because this is my life at stake and no one can be trusted\nThis makes sense, Chimiset warned us about a traitor close to me. Yet it smells too suspicious... alone, at midnight... Normally, the fat man himself comes to me. Anyways, I am going to ask for your help\nTechnically, you are not one of my men and you are new here. Jan characterized you as a resourceful and brave man with good skills in fencing. I want you to escort me to the meeting at midnight...";
-			link.l1 = "No questions asked, Steven. I don't like this invitation either - it smells like a trap.";
+			dialog.text = "Но я тебя позвал не только для того, чтобы сообщить новости. Я получил от нашего посредника-дипломата, Джузеппе Фацио, письмо, в котором он приглашает меня к себе в каюту на 'Каролину' в полночь. Также он пишет, чтобы я приходил один, так как речь пойдет о моей жизни, а доверять никому из моих людей нельзя\nЭто стыкуется с предупреждением Чимисета, что недоброжелатель находится в моем окружении, но все равно мне кажется это очень подозрительным: полночь, у него в каюте... Обычно этот толстяк всегда сам приходил ко мне. Короче говоря, я хочу попросить тебя о помощи\nФормально ты не являешься моим человеком и прибыл на Остров совсем недавно. Ян охарактеризовал тебя как смелого и находчивого человека, умеющего хорошо обращаться со шпагой. Мне нужно, чтобы ты сопроводил меня на встречу с Фацио сегодня в полночь...";
+			link.l1 = "Никаких вопросов, Стивен. Мне это приглашение тоже совсем не нравится - попахивает подвохом.";
 			link.l1.go = "entrance_23";
 		break;
 		
 		case "entrance_23":
-			dialog.text = "Perhaps I am wrong and there is no trap, but I'd better be ready. I am glad that you have agreed. Come at the deck of the San Augustine at midnight, and we will go see Fazio, his old tub is not far from here.";
-			link.l1 = "Deal. I will be at the deck of San Augustine at midnight and well armed.";
+			dialog.text = "Возможно, я ошибаюсь, и никакого подвоха нет, но лучше подстраховаться. Я рад, что ты согласился. Приходи на палубу 'Сан-Августина' сегодня в полночь и отправимся к Фацио - его корыто совсем рядом.";
+			link.l1 = "Договорились. В полночь я буду на 'Сан-Августине' в полной боевой готовности.";
 			link.l1.go = "entrance_24";
 		break;
 		
@@ -519,8 +519,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "caroline":
-			dialog.text = "Glad to see you, "+pchar.name+". Let's not waste time and see, what that fat man Fazio has to say. Follow me!";
-			link.l1 = "Let's go, Steve. Keep your weapons ready...";
+			dialog.text = "Рад тебя видеть, "+pchar.name+". Не будем задерживаться и пойдем узнаем, что нам скажет этот толстяк Фацио. Следуй за мной!";
+			link.l1 = "Идем, Стив. Держи оружие наготове...";
 			link.l1.go = "caroline_1";
 		break;
 		
@@ -532,13 +532,13 @@ void ProcessDialogEvent()
 		break;
 		
 		case "caroline_2":
-			dialog.text = "And where is that damn fat man? Where did he go? We are his guests and he is not welcoming us. Do you see him, "+pchar.name+"? Perhaps we should check his chests, he might be in them...";
-			link.l1 = "He won't be able to get inside a chest anyway. Hush! Steven! There's noise outside...";
+			dialog.text = "Ну и где этот чертов толстяк? Куда он подевался? Позвал в гости, а самого нет. Ты не видишь его, "+pchar.name+"? Может, проверить сундуки - глядишь, отыщется...";
+			link.l1 = "В сундук он при всем желании не влезет. Т-с-с! Стивен! Снаружи какой-то шум...";
 			link.l1.go = "caroline_3";
 		break;
 		
 		case "caroline_3":
-			dialog.text = "Damn it! You are right. It seems that we are in trouble."+pchar.name+".";
+			dialog.text = "Черт возьми! Ты прав. Кажется, мы влипли, "+pchar.name+".";
 			link.l1 = "...";
 			link.l1.go = "caroline_4";
 		break;
@@ -562,32 +562,32 @@ void ProcessDialogEvent()
 		break;
 		
 		case "caroline_5":
-			dialog.text = "Argh! We did it... To be honest, I thought that we were dead for sure.";
-			link.l1 = "It's been worse. But I admit, those bastards were tough. Chimiset was right to warn us - Chad is a traitor. Who was the girl commanding them?";
+			dialog.text = "Аргх! Отбились... Честно говоря, я думал, что нам с тобой крышка.";
+			link.l1 = "И не из таких переделок выходили. Хотя момент был не из приятных - эти черти были невероятно крепкими. Недаром Чимисет предупреждал про Чада - предатель! Что это за девка командовала ими, не знаешь?";
 			link.l1.go = "caroline_6";
 		break;
 		
 		case "caroline_6":
-			dialog.text = "Her name is Mary Casper, also known as Red Mary, the ex girlfriend of late Alan Milrow. I understand why Chad  has come here, he wanted to gain my position but what was she doing here?";
-			link.l1 = "It's clear enough. You said that she was his lover, her intentions are clear - revenge. Poor girl didn't know that she was fighting on the same side with her boyfriend's murderer.";
+			dialog.text = "Девка эта - Мэри Каспер, по прозвищу Красная Мэри, одна из нарвалов, бывшая подружка убитого Алана Милроу. Почему Чад был среди нападавших - ясно, он, очевидно, метил на мое место. Но что она здесь делала?";
+			link.l1 = "С ней тоже все ясно. Ты сам сказал, что нарвалы считают, что это ты убил их главаря Милроу. А раз она была его любовницей, то мотив очевиден - месть. Вот только не знала, бедная, что дралась на стороне убийцы ее дружка.";
 			link.l1.go = "caroline_7";
 		break;
 		
 		case "caroline_7":
-			dialog.text = "Makes sense. Well, now they will pay for everything! I will stop selling them supplies and provision - let them starve to death. My men can stand any siege, in case Narwhals try to storm the San Augustine. We shall shoot them like dogs every chance we get\nThey are going to regret to act against me in such low manner. I will nail Fazio's fat ass to the wall behind by chair!";
-			link.l1 = "Wait, Steve. It seems that it is not that clear. Give me one day and I will try to investigate this mess. I am sure that Chad is the only man responsible. He killed Milrow, spread the rumour that it was you, used Alan's girlfriend...";
+			dialog.text = "Логично. Ну, теперь нарвалы ответят за все! Я прекращу отпускать им продовольствие вообще - пусть передохнут с голоду, а если попробуют рыпаться - им хуже, мои люди на 'Сан-Августине' выдержат любую осаду. И при каждом удобном случае будем отстреливать их, как собак\nОни еще горько пожалеют, что пошли против меня, да еще таким подлым путем! А этого слизняка Фацио я лично подвешу за жирный зад на рее!";
+			link.l1 = "Погоди, Стив. Сдается мне, что тут не все так просто. Дай мне сутки времени - я попробую разобраться в сценарии этой заварухи. Уверен, что всю кашу заварил мерзавец Чад - убил Милроу, распустил слухи, что это сделал ты, использовал подружку Алана, сыграв на чувстве мести...";
 			link.l1.go = "caroline_8";
 		break;
 		
 		case "caroline_8":
-			dialog.text = "Fine. Investigate. Perhaps we haven't found all the plotters yet. And I will go and have some rum. And, "+pchar.name+": I owe you. You can count on me in everything. You would get a position of boatswain if you would have been in my crew.";
-			link.l1 = "Thanks for such a high response! We will work together when you become head of Brethren of the Coast anyway. Go and have some rest and I will check this cabin - perhaps I will find something useful.";
+			dialog.text = "Ладно. Разбирайся. Может, мы действительно еще не всех заговорщиков нашли. А я пойду к себе, выпью рому. И, "+pchar.name+": я твой должник. Можешь рассчитывать на меня всегда и во всем. Если бы ты был в моей команде - место боцмана было бы тебе обеспечено.";
+			link.l1 = "Спасибо за лестный отзыв! Нам с тобой в любом случае еще придется работать вместе, когда ты станешь главой Берегового братства. Иди отдыхай, а я здесь поковыряюсь в каюте - может, найду что интересное.";
 			link.l1.go = "caroline_9";
 		break;
 		
 		case "caroline_9":
-			dialog.text = "Good. I will send my men here to clean up before morning - we don't want to scare people with dead bodies. Well, crabs will get a fine meal tonight!.. See you!";
-			link.l1 = "See you...";
+			dialog.text = "Хорошо. Я отправлю сюда своих людей, чтобы они прибрались тут до утра - незачем пугать людей кучей трупов. Ну, а крабы сегодня попируют!.. До встречи!";
+			link.l1 = "До встречи...";
 			link.l1.go = "caroline_10";
 		break;
 		
@@ -599,154 +599,154 @@ void ProcessDialogEvent()
 		break;
 		
 		case "narval":
-			dialog.text = "Well, "+pchar.name+", I take it that your investigation was fruitful?";
-			link.l1 = "You can say so. Narwhals are not involved in the attempt on your life. Except for Mary and those guys who had met us at the Carolina - I think that she instigated them to attack us. Fazio was forced to send you the invitation. I have found the letter in his cabin which explains a lot. Read it.";
+			dialog.text = "Ну что, "+pchar.name+", вижу, твое расследование принесло результаты?";
+			link.l1 = "Можно сказать, и так. Нарвалы не причастны к покушению на тебя. Ну, за исключением Мэри Каспер и тех, кто встретил нас на 'Каролине' - думаю, это именно она подговорила их напасть на нас. Фацио тоже оказался заложником ситуации. Я нашел в его каюте письмо, которое многое объясняет. Прочти.";
 			link.l1.go = "narval_1";
 		break;
 		
 		case "narval_1":
 			RemoveItems(pchar, "letter_chad_1", 1);
-			dialog.text = "(reading)... Hm. That looks like a Fazio's type. Sure, what could he do against Chad... he was saving his fat skin. It seems that it was all because of my boatswain...";
-			link.l1 = "You see it for yourself now. The motives are clear, and we know why Chad killed Chimiset and Alan. Kapper wanted to become the admiral of the island. I have visited the head of Narwhals - Donald Greenspen. He swore that neither him, nor anyone of his men were plotting against you.";
+			dialog.text = "(читает)... Хм. Это похоже на Фацио. Конечно, куда ему было рыпаться на Чада... вот он и спасал свою шкуру. Получается, что все организовал мой боцман...";
+			link.l1 = "Ты сам видишь. Мотивы налицо, причины совершения Чадом убийств Алана и Чимисета ясны. Каппер хотел стать адмиралом острова. Я был у главы нарвалов, Дональда Гринспи. Он поклялся, что ни он, ни кто-либо из его людей не строили козней против тебя.";
 			link.l1.go = "narval_2";
 		break;
 		
 		case "narval_2":
-			dialog.text = "Do you trust him?";
-			link.l1 = "I do. Donald will clear your name of accusations of Alan's death. He is ready to visit you personally and to bring you official excuses. You were blamed for nothing, too, remember?";
+			dialog.text = "Ты думаешь, он не лжет?";
+			link.l1 = "Уверен, что нет. Дональд очистит твое имя от подозрений в убийстве Алана, и готов лично прийти к тебе с официальными извинениями. Тебя ведь тоже подозревали в том, что ты не совершал, помнишь?";
 			link.l1.go = "narval_3";
 		break;
 		
 		case "narval_3":
-			dialog.text = "Fine, declaring a war would be a bit too much. We are not in position to start a bloodshed. Plus, it looks like only a few scums are responsible for this, not the whole clan\nYou said that Donald is ready to apologize? Fine, let's use it to establish positive relations with Narwhals, Rivados are lost to us anyway.";
-			link.l1 = "That is a good point, Steven. Now it's a perfect time for it.";
+			dialog.text = "Ладно. Похоже, я действительно погорячился насчет войны против нарвалов. Не в том мы сейчас положении, чтобы устраивать кровопролитие, да и, похоже, клан, за исключением нескольких мерзавцев, тут ни при чем\nГоворишь, Дональд хочет принести извинения? Пожалуй, надо использовать эту возможность для более тесного сближения с нарвалами, ибо наладить отношения с ривадос после смерти Чимисета у меня надежды нет.";
+			link.l1 = "Это хорошая мысль, Стивен. Момент как нельзя удачный.";
 			link.l1.go = "narval_4";
 		break;
 		
 		case "narval_4":
-			dialog.text = "Fine. Tell Donald that I am ready to see him and make peace.";
-			link.l1 = "I am on my way.";
+			dialog.text = "Хорошо. Передай Дональду, что я готов принять его у себя и заключить мирное соглашение.";
+			link.l1 = "Прямо сейчас и отправлюсь.";
 			link.l1.go = "narval_5";
 		break;
 		
 		case "narval_5":
-			dialog.text = "Wait, "+pchar.name+". You did well and I want to pay you with fine coin. Here, take these five hundred doubloons.";
-			link.l1 = "Thank you!";
+			dialog.text = "Погоди, "+pchar.name+". Ты здорово поработал, и я хочу отблагодарить тебя звонкой монетой. Возьми, здесь пятьсот дублонов.";
+			link.l1 = "Не откажусь!";
 			link.l1.go = "LSC_navy";
 			TakeNItems(pchar, "gold_dublon", 500);
-			Log_Info("You have received 500 doubloons");
+			Log_Info("Вы получили 500 дублонов");
 			PlaySound("interface\important_item.wav");
 			AddQuestRecord("SharkHunt", "27");
 			pchar.questTemp.Saga.SharkHunt = "find"; //флаг - покушение предотвращено
 			sld = characterFromId("Grinspy");
 			sld.dialog.currentnode = "shark_16"; // ноду Дональду Гринспи
 			SetFunctionTimerCondition("LSC_FacioReturn", 0, 0, 1, false); // вертаем на место Фацио через сутки
-			AddSimpleRumourCityTip("They say that admiral respects you, mister...", "LostShipsCity", 15, 2, "LSC", "");
-			AddSimpleRumourCityTip("They say that you are the admiral's loyal friend. Is that true?", "LostShipsCity", 15, 2, "LSC", "");
+			AddSimpleRumourCityTip("Ходят слухи, что вы у адмирала в большом почете, сударь...", "LostShipsCity", 15, 2, "LSC", "");
+			AddSimpleRumourCityTip("Говорят, что адмирал обрел в вашем лице верного друга. Это правда?", "LostShipsCity", 15, 2, "LSC", "");
 		break;
 		
 		// ----------------------------------------вариант M----------------------------------------------------
 		case "mary":
-			dialog.text = "In my prison 'Tartarus'. You can go there and see him. I will give you the key and Chad Kapper won't put obstacles in your way...";
-			link.l1 = "Wait, Steven. I think that I should  not go to Chad Kapper yet...";
+			dialog.text = "В моей тюрьме, на 'Тартарусе'. Можешь сходить туда и поговорить с ним. Я дам тебе ключ, Чад Каппер не будет препятствовать...";
+			link.l1 = "Подожди, Стивен. Думаю, что пока мне не стоит ходить к Чаду Капперу...";
 			link.l1.go = "mary_1";
 		break;
 		
 		case "mary_1":
-			dialog.text = "And why shouldn't you? What, you don't like him?";
-			link.l1 = "Actually it's you whom he doesn't like. I've got bad news for you. Chad Kapper is planning to make an attempt on your life.";
+			dialog.text = "Интересно, а почему? Чем он тебе не угодил?";
+			link.l1 = "Это ты ему не угодил. У меня для тебя неприятные новости. На Острове планируется твое убийство, и стоит за всем этим - Чад Каппер.";
 			link.l1.go = "mary_2";
 		break;
 		
 		case "mary_2":
-			dialog.text = "What?! Explain yourself. Who said that?";
-			link.l1 = "Let me tell you the whole story. That would be better.";
+			dialog.text = "Что?! Потрудись объяснить свои слова. Кто тебе такое сказал?";
+			link.l1 = "Позволь рассказать по порядку. Так будет лучше.";
 			link.l1.go = "mary_3";
 		break;
 		
 		case "mary_3":
-			dialog.text = "Well, tell me, then...";
-			link.l1 = "After I had found myself in the drowned cargo hold, I got out through the hole and swam among the ship wrecks to find a safe place. Finally, I climbed on the old flute and got inside the ship. There was a fight between some girl in red jacket and two big guys...";
+			dialog.text = "Ну, рассказывай...";
+			link.l1 = "После того, как меня выбросило в затопленном трюме, я выбрался через пролом и поплыл среди нагромождения кораблей, разыскивая место, где бы забраться наверх. В конце-концов я залез на носовую часть старого флейта и вошел внутрь корабля. Там, в каюте, шла драка: рыжая девушка в красном камзоле сражалась на шпагах против двух здоровяков...";
 			if (pchar.questTemp.LSC.Mary == "alive") link.l1.go = "mary_4"; // Мэри жива
 			else link.l1.go = "mary_15";
 		break;
 		
 		case "mary_4":
-			dialog.text = "Heh, it seems that Red Mary has finally pissed someone off.";
-			link.l1 = "I have helped her and we finished those bastards. We have had an interesting chat after that... Tell me, Steve, who are these Narwhals and Rivados, she has been using these words so often that I was too shy to ask her what did they actually mean.";
+			dialog.text = "Хех, похоже, Красная Мэри все-таки кого-то достала.";
+			link.l1 = "Я пришел к ней на помощь и мы вместе положили негодяев. После этого у меня с ней состоялся презанятный разговор... Скажи, Стив, кто такие нарвалы и ривадос, а то она часто употребляла эти слова, а спросить у нее я как-то постеснялся.";
 			link.l1.go = "mary_5";
 		break;
 		
 		case "mary_5":
-			dialog.text = "The groups of local inhabitants who have been living here for a long time. They are the offsprings of the very first settlers of the Island. Narwhals are mostly English, Dutch and French, Rivados are all black. These clans have their own leaders, their own several ships and they don't let others on their territories. You have to know their passwords in case you want to visit clans' ships. They change them every week.";
-			link.l1 = "I see now. I take it that Mary is with Narwhals?";
+			dialog.text = "Группировки жителей острова, живут здесь очень давно, и были, сколько я себя помню. Представляют собой потомков первых поселенцев Острова. Нарвалы - в основном англичане, голландцы и французы, а вот ривадос - все как один - негры. Кланы имеют лидера, занимают несколько кораблей каждый, и на свою территорию посторонних не пускают. Если хочешь пройти - должен знать их пароли, которые они, кстати, меняют еженедельно.";
+			link.l1 = "Теперь все понятно. Эта девушка, Мэри, как я понимаю, из нарвалов?";
 			link.l1.go = "mary_6";
 		break;
 		
 		case "mary_6":
-			dialog.text = "Yes, that expressive girl is from their clan. So what did she tell you?";
-			link.l1 = "Chad Kapper has killed Alan Milrow, her lover, who was captured by you. After that, he has spread gossips about your involvement in this. Chad has deceived Mary and tried to use her craving for revenge.";
+			dialog.text = "Да, эта экспрессивная особа из их клана. Так что она тебе рассказала?";
+			link.l1 = "Буду краток: Чад Каппер убил в тюрьме некого Алана Милроу, ее любовника, которого ты захватил в плен, а затем распустил по Острову слух, что это сделал ты. Чад обманул Мэри и пытался использовать ее стремление отомстить тебе.";
 			link.l1.go = "mary_7";
 		break;
 		
 		case "mary_7":
-			dialog.text = "Damn it! He killed Alan? But why? To leave me the blame?";
-			link.l1 = "To make Narwhals hostile and to gain their trust. Kapper's final goal is to eliminate you and take your position. Mary has refused to take part in his plan and to become his lover - that is why he ordered Narwhals to kill her.";
+			dialog.text = "Гром и молния! Чад убил Алана? Но зачем? Чтобы обвинить в этом меня?";
+			link.l1 = "И настроить нарвалов враждебно к тебе, а заодно самому втереться к ним в доверие. Конечная цель Каппера - убрать тебя и занять твое место. Мэри отказалась принимать участие в его планах, да и не хотела становиться его наложницей, поэтому он приказал двум нарвалам убить ее.";
 			link.l1.go = "mary_8";
 		break;
 		
 		case "mary_8":
-			dialog.text = "Did she tell you that?";
-			link.l1 = "Yes. And it didn't look like she was lying. Besides, she gave me a letter from Chad Kapper. I have already read it so you should do the same.";
+			dialog.text = "Это все она тебе рассказала?";
+			link.l1 = "Да. И не похоже, что она лгала. Кроме того, она дала мне письмо от Чада Каппера. Я прочел его - теперь прочти и ты. Думаю, после этого все твои сомнения улетучатся.";
 			link.l1.go = "mary_9";
 		break;
 		
 		case "mary_9":
 			RemoveItems(pchar, "letter_chad_1", 1);
-			dialog.text = "Hm. Yes, these are Chad's writings. I am very familiar with his peasant handwriting (reading) Argh! Unbelievable! Bastard! Traitor! Well, I am going to hang him on his own entrails! Layton! Gather five men! On the second thought, Layton, as you were!\nWe shall do it in a smart way. I have been planning to improve our relations with Rivados, this is a chance. Their wizard Chimiset is being held in Tartarus. A prison. We are going to let Rivados to free the man themselves and in the act, they will kill the traitor\nLayton! Go to Tartarus and take all our guards from her upper deck! "+pchar.name+", you will also take part in this and I am about to assign a very important role to you. Find the leader of Rivados, Black Eddie, and negotiate with him...";
-			link.l1 = "Me? Hm. But I don't know anyone here!";
+			dialog.text = "Хм. Да, это писал Чад. Мне хорошо знаком его корявый почерк... (читает). Аргх! Невероятно! Вот мерзавец! Предатель! Ну, теперь я его повешу на ноке рея на собственных кишках! Лейтон! Собрать пять человек! Хотя нет... Лейтон, отставить!\nМы сделаем по-другому. Я давно хочу наладить отношения с ривадос - вот и подвернулся случай. На 'Тартарусе' в тюрьме томится их колдун, Чимисет. Я все равно хотел его выпустить. Вот пускай ривадос и освободят его, а заодно прикончат Чада\nЛейтон! Немедленно отправляйся на 'Тартарус' и сними всю палубную охрану! "+pchar.name+", ты тоже в этом примешь участие, причем тебе отвожу очень важную роль. Ты отправишься к лидеру ривадос, Черному Эдди, и проведешь переговоры...";
+			link.l1 = "Я? Хм. Но я же никого здесь не знаю!";
 			link.l1.go = "mary_10";
 		break;
 		
 		case "mary_10":
-			dialog.text = "So you will get to know some people soon - actually you will get to know the very first man of the entire Rivados clan. You are the most suitable candidate to perform the diplomatic part of my plan. My pirates won't be able to come through Rivados territories easily; neither do I have men with decent oratory skills.";
-			link.l1 = "Well, fine. I am on it. What should I do?";
+			dialog.text = "Значит, познакомишься, причем с самой верхушкой клана ривадос. Ты - наиболее подходящая кандидатура для дипломатической части моего плана, именно потому, что тебя не знают. Моим пиратам будет сложнее пройти к ривадос, да и нет у меня людей, искушенных в ораторском искусстве - саблями махать мастера, а вот договариваться - это не по их части.";
+			link.l1 = "Ну, хорошо. Я согласен. Что нужно сделать?";
 			link.l1.go = "mary_11";
 		break;
 		
 		case "mary_11":
 			GiveItem2Character(pchar, "key_capper");
-			Log_Info("You have received 50 doubloons");
+			Log_Info("Вы получили 50 дублонов");
 			PlaySound("interface\important_item.wav");
 			TakeNItems(pchar, "gold_dublon", 50);
-			dialog.text = "Take this key. It opens every door on 'Tartarus'. Also, take these fifty doubloons. First you should go to Carolina, buy a password in order to access Rivados territory. Talk to Fazio, he is our mediator, a password will cost you fifty doubloons. Then you should go to Protector\nIt's a residence of Black Eddie. Tell him that Chad Kapper is on the side of Narwhals, stopped following my orders and going to murder Chimiset. Give him the key, tell him to take a decent number of his fighters and to attack Tartarus\nWe shall kill two birds with one stone: Rivados will consider us their allies and Kapper will die by the hands of Negros. Can't say I envy the man. Got it?";
+			dialog.text = "Держи этот ключ. Он открывает все двери на 'Тартарусе'. Также держи пятьдесят дублонов. Сначала тебе нужно пойти на 'Каролину' и купить у пройдохи Фацио пароль для прохода на корабли ривадос - для этого тебе и потребуется полсотни золотых. Затем отправляйся на 'Протектор'\nТам находится резиденция Черного Эдди. Скажешь ему следующее: Чад Каппер сговорился с нарвалами, перестал подчиняться приказам и задумал убить Чимисета. Отдашь ему ключ - пускай возьмет своих бойцов побольше и атакует 'Тартарус'. Охрану с палубы Лейтон сейчас снимет, так что Чад останется один в своих казематах\nПускай вломятся внутрь, порешат Чада и освободят своего колдуна. Таким образом мы убьем двух зайцев: и с ривадос улучшим отношения, и с Каппером поквитаемся, причем все сделают сами негры. Ох, не завидую я Чаду, когда он попадет в руки ривадос... Всё понял?";
 			if (pchar.questTemp.LSC.Mary == "alive")// Мэри жива
 			{
-				link.l1 = "I understand - but where to find Protector and Carolina?";
+				link.l1 = "Что делать - да, но где находятся эти 'Протектор' и 'Каролина'?";
 				link.l1.go = "mary_12";
 			}
 			else
 			{
-				link.l1 = "Listen, Steve, tell me who are those Rivados and Narwhals. You are talking about them all the time, but I still have no idea, who they are.";
+				link.l1 = "Послушай, Стив, ты хотя бы введи в курс дела - кто такие нарвалы и ривадос. А то сыпешь этими терминами через слово и думаешь, что я все понимаю.";
 				link.l1.go = "mary_12_1";
 			}
 		break;
 		
 		case "mary_12_1":
-			dialog.text = "Narvals and Rivados are the local clans. The clans have been living here for a very long time. They represent offsprings of first settlers. Narvals are mostly English, Dutch and French, Rivados are all Negro. Every clan has a leader, they hold several ships and don't let others into their territory\nYou must know passwords in order to visit them. They change passwords every week.";
-			link.l1 = "Now I see. Tell me - where to find Protector and Carolina?";
+			dialog.text = "Нарвалы и ривадос - это группировки жителей острова, живут здесь очень давно, и были, сколько я себя помню. Представляют собой потомков первых поселенцев Острова. Нарвалы - в основном англичане, голландцы и французы, а вот ривадос - все как один - негры\nПостоянно враждуют между собой. Кланы имеют лидера, занимают несколько кораблей каждый, и на свою территорию посторонних не пускают. Если хочешь пройти - должен знать их пароли, которые они меняют еженедельно.";
+			link.l1 = "Теперь понятно. Также заодно объясни, где находятся эти 'Протектор' и 'Каролина'.";
 			link.l1.go = "mary_12";
 		break;
 		
 		case "mary_12":
-			dialog.text = "Easy as pie. Leave my residence, pass a bridge and turn left. This will be Carolina. Finding Protector is a bit trickier: after you have passed a bridge, turn right and go to Santa Florentina over boards\nFind Rivados soldiers there. They will ask for a password. Say it loud and clear. Then go inside Fury and enter Protector through the stern.";
-			link.l1 = "Well, I see now. I think that I won't miss them.";
+			dialog.text = "На 'Каролину' попасть проще простого. Запоминай. Выходишь из моей резиденции, проходишь висячий мостик и сразу налево. Это и будет 'Каролина'. На 'Протектор' пройти сложнее: сначала по висячему мосту из резиденции идешь на флейт 'Плуто', поднимаешься на носовую часть, по доскам переходишь на 'Санта-Флорентину'\nНа баке 'Санта-Флорентины' находится блок-пост ривадос. Там у тебя спросят пароль. Смотри, не ошибись! Затем спускаешься на палубу 'Фурии', проходишь через внутренние помещения на кормовую галерею, а оттуда - на 'Протектор'.";
+			link.l1 = "Ну, с большего запомнил. Думаю, не заблужусь.";
 			link.l1.go = "mary_13";
 		break;
 		
 		case "mary_13":
-			dialog.text = "Very well, then. Get to it, friend!";
-			link.l1 = "See you!";
+			dialog.text = "Вот и хорошо. Действуй, дружище!";
+			link.l1 = "До встречи!";
 			link.l1.go = "mary_14";
 		break;
 		
@@ -762,40 +762,40 @@ void ProcessDialogEvent()
 		break;
 		
 		case "dodson_warwait":
-			dialog.text = "Are you still here? Go to Rivados now!";
-			link.l1 = "I am on my way!";
+			dialog.text = "Ты еще здесь? Немедленно отправляйся к ривадос!";
+			link.l1 = "Уже бегу!";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "dodson_warwait";
 		break;
 		
 		case "mary_15":
-			dialog.text = "Heh, it seems that Red Mary has finally pissed someone off.";
-			link.l1 = "Yes. She pissed Chad Kapper off. I had joined the fight, but, unfortunately, I wasn't able to save the girl, one of the attacker has cut her with his saber.";
+			dialog.text = "Хех, похоже, Красная Мэри все-таки кого-то достала.";
+			link.l1 = "Да. Она достала Чада Каппера. Я вмешался в драку, но к сожалению, спасти девушку не удалось - один из нападавших зарубил ее саблей.";
 			link.l1.go = "mary_16";
 		break;
 		
 		case "mary_16":
-			dialog.text = "I am sorry for her, sure, but it was her fault no doubt. Mary had always been looking for trouble. And what about Chad Kapper? This is my boatswain, actually.";
-			link.l1 = "Your boatswain? He-he... Here, read this letter. I have found it on the girl's body. You will see now, who had ordered to kill her and for what. Kapper is planning an attempt on your life.";
+			dialog.text = "Жаль девчонку, конечно, но то, что случилось - вполне закономерно. Мэри постоянно нарывалась на неприятности. А причем здесь Чад Каппер? Это вообще-то мой боцман.";
+			link.l1 = "Твой боцман? Хе-хе... На, прочти вот это письмо. Я нашел его на трупе девушки. Ты сразу поймешь, кто приказал ее убить, и за что. Каппер планирует на тебя покушение.";
 			link.l1.go = "mary_9";
 		break;
 		
 		// Каппер сбежал
 		case "Chad_escape":
-			dialog.text = "Where have you been for so long? They told me that Rivados have already freed their wizard...";
-			link.l1 = "I was held as a hostage on Protector to ensure their safety from an ambush. They have freed Chimiset, yes, but Chad managed to escape.";
+			dialog.text = "Ты что так долго пропадал? Мне уже донесли, что ривадос освободили своего колдуна...";
+			link.l1 = "Меня все это время держали заложником на 'Протекторе' - боялись засады. Чимисета-то они освободили, да вот Чад ухитрился улизнуть.";
 			link.l1.go = "Chad_escape_1";
 		break;
 		
 		case "Chad_escape_1":
-			dialog.text = "Damn it! Never deal with black, they say... They were unable to do even such a simple task! Fuck those Rivados!";
-			link.l1 = "Chad has hidden among the Narwhals...";
+			dialog.text = "Вот проклятие! Недаром говорят - никогда не связывайся с черномазыми... Такое простое дело - и не смогли выполнить! Черт бы побрал этих ривадос!";
+			link.l1 = "Чад скрылся у нарвалов...";
 			link.l1.go = "Chad_escape_2";
 		break;
 		
 		case "Chad_escape_2":
-			dialog.text = "Sure, he has! He is not a fool and he realized that Rivados couldn't have got inside Tartarus without my help. Now he will hide and attack from the shadows. Layton! Fortify the posts! Keep your eyes open all the time! I will pay a fortune to the man who will deal with Kapper!";
-			link.l1 = "Fine, Steven. I need to think about it. Perhaps I will be able to track Chad down. See you.";
+			dialog.text = "Еще бы! Он не дурак, и прекрасно понял, что ривадос не смогли бы без моей помощи прорваться на 'Тартарус'. Теперь он будет прятаться и действовать исподтишка. Лейтон! Усилить блок-посты! Смотреть в оба! Тот, кто ликвидирует Каппера, получит щедрую награду!";
+			link.l1 = "Ладно, Стивен. У меня есть почва для размышлений. Возможно, мне удасться выйти на след Чада. До встречи.";
 			link.l1.go = "Chad_escape_3";
 			NextDiag.TempNode = "Total_wait";
 		break;
@@ -827,38 +827,38 @@ void ProcessDialogEvent()
 		break;
 		
 		case "whiskey":
-			dialog.text = "What happened, "+pchar.name+"? You look like you're being chased by Lucefer himself.";
-			link.l1 = "Have they brought you a barrel of whiskey?";
+			dialog.text = "Что случилось, "+pchar.name+"? Ты выглядишь так, словно за тобой гонится сам Люцифер.";
+			link.l1 = "Тебе приносили бочонок виски?";
 			link.l1.go = "whiskey_1";
 		break;
 		
 		case "whiskey_1":
-			dialog.text = "What barrel?";
-			link.l1 = "HAVE THEY BROUGHT YOU A OF WHISKEY?!";
+			dialog.text = "Какой еще бочонок?";
+			link.l1 = "Так тебе приносили бочонок, или нет?!";
 			link.l1.go = "whiskey_2";
 		break;
 		
 		case "whiskey_2":
-			dialog.text = "Why are you shouting like that, pal? No, they haven't. What is the matter?";
-			link.l1 = "Thank god I wasn't too late... Chad Kapper bought a barrel of Bushmills from Axel Yost...";
+			dialog.text = "Что ты так раскричался, дружище? Нет, никакого бочонка мне не приносили. А в чем дело-то?";
+			link.l1 = "Слава Богу, успел... Чад Каппер купил у Акселя Йоста бочонок виски 'Бушмилс'...";
 			link.l1.go = "whiskey_3";
 		break;
 		
 		case "whiskey_3":
-			dialog.text = "Bushmills? This is my favorite one! I haven't drunken it for ages!";
-			link.l1 = "Yes-yes. And Kapper knows that, too. He also asked his pal, Marcello Cyclops, to buy some arsenic from Sancho Carpentero. See why?";
+			dialog.text = "'Бушмилс'? Это же мой любимый виски! Сто лет его не пил!";
+			link.l1 = "Вот-вот. И Каппер, видимо, знает об этом. А потом он через своего дружка Марчелло Циклопа приобрел у Санчо Карпентеро мышьяк. Теперь ты понимаешь, о чем я?";
 			link.l1.go = "whiskey_4";
 		break;
 		
 		case "whiskey_4":
-			dialog.text = "Do you think that he is going to poison me?";
-			link.l1 = "No doubt! That is why I was in such a hurry. If they bring you a barrel of whiskey - don't drink it. It is poisoned.";
+			dialog.text = "Ты думаешь, он решил меня отравить?";
+			link.l1 = "Ну конечно! Поэтому я так спешил. Если тебе принесут бочонок с виски - не пей его ни в коем случае. Он отравлен.";
 			link.l1.go = "whiskey_5";
 		break;
 		
 		case "whiskey_5":
-			dialog.text = "Heh, thanks for the warning! I will be careful. Wait, where are you going now?";
-			link.l1 = "I need to find Kapper and Cyclops. I have an idea where to find them. See you!";
+			dialog.text = "Хех, спасибо за предупреждение! Буду острожен. Стой, а ты куда?";
+			link.l1 = "Надо найти Каппера и Циклопа. У меня есть подозрения, где их искать. Увидимся!";
 			link.l1.go = "whiskey_6";
 		break;
 		
@@ -870,26 +870,26 @@ void ProcessDialogEvent()
 		break;
 		
 		case "whiskey_7":
-			dialog.text = "Ha! I am glad to see you, pal! It looks like I owe you my life.";
-			link.l1 = "Have they brought whiskey?";
+			dialog.text = "Ха! Рад тебя видеть, дружище! Похоже, я обязан тебе жизнью.";
+			link.l1 = "Приносили виски?";
 			link.l1.go = "whiskey_8";
 		break;
 		
 		case "whiskey_8":
-			dialog.text = "They have! Bushmills, just as you've said. Our dear Fazio was so kind... I have arrested him to investigate...";
-			link.l1 = "Has he confessed?";
+			dialog.text = "Точно! Причем именно 'Бушмилс', как ты и сказал. Наш дорогой Фацио постарался... Я его задержал, до выяснения...";
+			link.l1 = "Он сознался?";
 			link.l1.go = "whiskey_9";
 		break;
 		
 		case "whiskey_9":
-			dialog.text = "Yes. He says that Kapper forced him to do that. He was scared and... brought me the barrel as a present from Narwhals.";
-			link.l1 = "Kapper is dead. I have eliminated him and his Narwhal friends. Now there's just one bastard left - Cyclops Marcello... I am confident that this fat pig is aware of his whereabouts. Let me push him a bit!";
+			dialog.text = "Да. Говорит, Каппер заставил его под дулом пистолета. Он испугался, и... потащил бочонок ко мне как 'подарок от нарвалов'.";
+			link.l1 = "Каппер мертв. Я расправился с ним и его дружками-нарвалами. Но остался еще один негодяй - Циклоп Марчелло... Я уверен, что эта жирная свинья знает, где его искать. Позволь, я вытрясу из него информацию!";
 			link.l1.go = "whiskey_10";
 		break;
 		
 		case "whiskey_10":
-			dialog.text = "Sure. Just try not to kill him, our poor Fazio is in rather poor health.";
-			link.l1 = "I will be gentle... very gentle, damn it!";
+			dialog.text = "Валяй. Только не убей его, у нашего бедного Джузеппе слабое здоровье.";
+			link.l1 = "Я буду нежен... очень нежен, черт побери!";
 			link.l1.go = "whiskey_11";
 		break;
 		
@@ -903,27 +903,27 @@ void ProcessDialogEvent()
 		
 		case "poison":
 			pchar.questTemp.LSC.Dodson_poison = "true"; // разговор состоялся
-			dialog.text = "Argh... "+pchar.name+", friend, something is very wrong with me..";
-			link.l1 = "Steven! Did you drink the whiskey? Damn it, did you really drink it?!";
+			dialog.text = "Аргх... "+pchar.name+", дружище, что-то мне совсем... нехорошо.";
+			link.l1 = "Стивен! Ты пил виски из бочонка? Пил, черт тебя дери?!";
 			link.l1.go = "poison_1";
 		break;
 		
 		case "poison_1":
-			dialog.text = "Yes... This is the very best Irish whiskey... Giuseppe Fazio brought it for me today. He said that it was a present from Narwhal leader... a token of peace... oh, that hurts... Looks like it is the end of me.";
-			link.l1 = "Damn it! The whiskey was poisoned with arsenic! Chad Kapper and Marcello Cyclops did that!";
+			dialog.text = "Да... Это самый лучший ирландский виски... мне его сегодня принес Джузеппе Фацио. Сказал - от лидера нарвалов, в знак примирения... ох, до чего же плохо... Кажется, мне конец.";
+			link.l1 = "Проклятие! Виски был отравлен мышьяком! Это сделал Чад Каппер вместе с Марчелло Циклопом!";
 			link.l1.go = "poison_2";
 		break;
 		
 		case "poison_2":
-			dialog.text = "Argh... boatswain has finally got me... damn him!";
+			dialog.text = "Арх... боцман все-таки добрался до меня... будь он проклят!";
 			if (CheckCharacterItem(pchar, "ultimate_potion"))
 			{
-				link.l1 = "You are not going to die! Hear me? You won't die! Quickly, take this flask. This is the most powerful healing potion in the world, it cures everything. Drink it... now!";
+				link.l1 = "Ты не умрешь! Слышишь? Ты не умрешь! Быстрее бери эту флягу. В ней самое сильное лечебное зелье из всех, какие только есть на свете, оно лечит всё. Пей... Пей быстрее!";
 				link.l1.go = "poison_3";
 			}
 			else
 			{
-				link.l1 = "Steven!";
+				link.l1 = "Стивен!!";
 				link.l1.go = "dodson_poison";
 			}
 		break;
@@ -947,32 +947,32 @@ void ProcessDialogEvent()
 		
 		case "poison_3":
 			RemoveItems(pchar, "ultimate_potion", 1);
-			Log_Info("Comanche potion was used");
-			Log_Info("Poison was cured!");
+			Log_Info("Использовано зелье команчей");
+			Log_Info("Отравление вылечено!");
 			PlaySound("interface\notebook.wav");
-			dialog.text = "Oh... "+pchar.name+", it really helped. Still feeling sick a bit, but the pain is almost gone...";
-			link.l1 = "This potion neutralizes even the most lethal poisons. Drink it all! Yes...";
+			dialog.text = "Ох... "+pchar.name+", мне и впрямь полегчало. Только тошнит сильно, а боль почти утихла...";
+			link.l1 = "Это зелье лечит даже самые страшные отравления. Пей до последней капли! Вот так...";
 			link.l1.go = "poison_4";
 		break;
 		
 		case "poison_4":
 			LAi_SetStayType(npchar);
-			dialog.text = "A miracle... I am fine now. Thank you, friend, I will never forget it...";
+			dialog.text = "Чудо какое-то... Словно рукой сняло. Спасибо, дружище, никогда этого не забуду...";
 			if (CheckAttribute(pchar, "questTemp.LSC.CapperDie_Aeva"))
 			{
-				link.l1 = "You'd better rest now. You look like a dead man. That bastard Kapper won't be able to threat us anymore - I have dealt with him and with a few Narwhals, too. Only Marcello Cyclops is left. You said that Fazio brought you the whiskey, right?";
+				link.l1 = "Тебе лучше все-таки пойти отлежаться. Выглядишь ты немногим лучше мертвеца. Мерзавец Каппер больше не будет нам вредить - я отыскал его в трюме 'Эвы' с кучкой нарвалов и всех перебил. Остался только Циклоп Марчелло - последний негодяй, замешанный в заговоре. Ты сказал, виски тебе принес Джузеппе Фацио?";
 				link.l1.go = "poison_5";
 			}
 			else
 			{
-				link.l1 = "You'd better rest now. You look like a dead man. You said that Fazio has brought you the whiskey, right?";
+				link.l1 = "Тебе лучше все-таки пойти отлежаться. Выглядишь ты немногим лучше мертвеца. Ты сказал, виски тебе принес Джузеппе Фацио?";
 				link.l1.go = "poison_7";
 			}
 		break;
 		
 		case "poison_5":
-			dialog.text = "Yes. I really had to have paid attention to his pale face and shaking hands...";
-			link.l1 = "It seems that he was forced to do that. Fine, I am going to visit that fat pig and get the information from him. I am sure that he knows what I need. Get well!";
+			dialog.text = "Да. Мне нужно было сразу обратить внимание на его бледный вид и дрожащие руки...";
+			link.l1 = "Очевидно, его запугали. Ладно, пойду найду эту жирную свинью и вытрясу из него сведения о Циклопе. Уверен, он что-то знает. Выздоравливай!";
 			link.l1.go = "poison_6";
 		break;
 		
@@ -987,8 +987,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "poison_7":
-			dialog.text = "Yes. I really had to have paid attention to his pale face and shaking hands...";
-			link.l1 = "It seems that he was forced to do that. Fine, I will get that fat pig eventually, but now I have to deal with Kapper and Cyclops. I know where they are hiding. Get well!";
+			dialog.text = "Да. Мне нужно было сразу обратить внимание на его бледный вид и дрожащие руки...";
+			link.l1 = "Очевидно, его запугали. Ладно, до этой жирной свиньи я еще доберусь, а пока пойду и прикончу Каппера с Циклопом. Я знаю, где они прячутся. Выздоравливай!";
 			link.l1.go = "poison_8";
 		break;
 		
@@ -999,33 +999,33 @@ void ProcessDialogEvent()
 		break;
 		
 		case "clear":
-			dialog.text = "What do you say, "+pchar.name+"? I already know that you have dealt with Kapper at Eva. And you haven't even cleaned up there, ha-ha! To be honest, I am admired! To kill Chad and his men, isn't that something! Yes, Jan was right to praise you.";
-			link.l1 = "Not only have I dealt with Kapper, but I also prevented an attempt on your life. You were going to be poisoned, Steven, but I have stopped the bastards from doing that.";
+			dialog.text = "Что интересного скажешь, "+pchar.name+"? Я уже знаю - ты разделался с Каппером на 'Эве'. И даже не прибрался за собой, ха-ха! Скажу честно - я восхищен! Уложить Чада и трех головорезов - это что-то! Недаром Ян тебя так хвалил.";
+			link.l1 = "Я не только расправился с Каппером, но сделал кое-что большее: предотвратил подлое покушение. Тебя собирались отравить, Стивен. Я помешал негодяям привести в исполнение их гнусный план.";
 			link.l1.go = "clear_1";
 		break;
 		
 		case "clear_1":
-			dialog.text = "To poison me? But how?";
-			link.l1 = "Chad bought a barrel of Irish Bushmills whiskey from Axel...";
+			dialog.text = "Отравить? Но каким образом?";
+			link.l1 = "Чад купил у торговца Акселя бочонок ирландского виски 'Бушмилс'...";
 			link.l1.go = "clear_2";
 		break;
 		
 		case "clear_2":
-			dialog.text = "Bushmills? This is my favorite one! I haven't drunk it for ages!";
-			link.l1 = "Yes-yes. And Kapper knows that, too. He also asked his pal, Marcello Cyclops, to buy some arsenic from Sancho Carpentero.  Then he and his pals took Fazio and went down the cargo hold of 'Eva'. He was going to poison the whiskey and force Fazio to bring it to you as a gift from Narwhals.";
+			dialog.text = "'Бушмилс'? Это же мой любимый виски! Сто лет его не пил!";
+			link.l1 = "Вот-вот. И Каппер, видимо, знал об этом. А потом он через своего дружка Марчелло Циклопа приобрел у Санчо Карпентеро мышьяк. Затем он вместе со своими дружками-нарвалами отправился в трюм 'Эвы', прихватив с собой Джузеппе Фацио. Там он намеревался отравить виски, а запуганный до смерти Фацио принес бы его тебе, как подарок от нарвалов.";
 			link.l1.go = "clear_3";
 		break;
 		
 		case "clear_3":
-			dialog.text = "Ha! Of course, I would have drink a pint of the whiskey immediately...";
+			dialog.text = "Ха! Я бы, конечно, сразу выпил бы пинту этого виски...";
 			if (CheckCharacterItem(pchar, "cask_whisky"))
 			{
-				link.l1 = "Chad was counting on that. But he failed - he didn't even have time to put an arsenic in it. Yes, and I took the barrel with me. You can have it as a gift.";
+				link.l1 = "На это и рассчитывал Чад. Но ему ничего не удалось сделать - он не успел даже всыпать мышьяк в бочонок. Да, я забрал этот виски с собой. Могу подарить на память.";
 				link.l1.go = "clear_4";
 			}
 			else
 			{
-				link.l1 = "Chad was counting on that. But he failed - he didn't even have time to put an arsenic in it.";
+				link.l1 = "На это и рассчитывал Чад. Но ему ничего не удалось сделать - он не успел даже всыпать мышьяк в бочонок, когда я вошел в трюм 'Эвы'.";
 				link.l1.go = "clear_7";
 			}
 		break;
@@ -1033,17 +1033,17 @@ void ProcessDialogEvent()
 		case "clear_4":
 			RemoveItems(pchar, "cask_whisky", 1);
 			PlaySound("interface\notebook.wav");
-			dialog.text = "Show me... "+pchar.name+", this is a real Bushmills! The best Irish whiskey! Argh, I've been a dreaming of it for years! You, you.. Damn it! You have eliminated Chad and you found such lovely whiskey!\nI will give you one of my best talismans. This is Thor's Hammer, it's everlasting. Your cannoneer is going to love it!";
-			link.l1 = "Thanks! I am very glad, too.";
+			dialog.text = "Покажи... "+pchar.name+", это же настоящий 'Бушмилс'! Лучший ирландский виски! Аргх, сколько лет я о нем мечтал! Ты... ты... у меня нет слов! Уничтожил Чада, да еще и нашел такой замечательный виски!\nЯ в долгу не останусь. За это я не пожалею один из моих самых лучших талисманов. Вот, держи, дружище. Это Молот Тора - заговоренный талисман, сила которого не иссякает. Твой канонир оценит его действие по достонству!";
+			link.l1 = "Спасибо! Я тоже очень рад.";
 			link.l1.go = "clear_5";
 		break;
 		
 		case "clear_5":
 			GiveItem2Character(pchar, "talisman3"); 
 			PlaySound("interface\notebook.wav");
-			Log_Info("You have received a 'Thor's hammer' amulet");
-			dialog.text = "I am looking forward to drink a pint of this magnificent whiskey... "+pchar.name+", we will party tonight! And you come and see me tomorrow. In the meantime, I will think about your words and Chad's actions...";
-			link.l1 = "Fine, Steven, I won't bother you from... relaxing, ha-ha!";
+			Log_Info("Вы получили оберег 'Молот Тора'");
+			dialog.text = "Мне не терпится выпить пинту этого прекрасного напитка... "+pchar.name+", сегодня будем отдыхать! А ты приходи завтра. Я тут пока подумаю над твоими словами насчет покушения, оценю действия Чада...";
+			link.l1 = "Хорошо, Стивен. не буду мешать тебе... расслабляться, ха-ха!";
 			link.l1.go = "clear_6";
 			AddQuestRecord("SharkHunt", "53");
 		break;
@@ -1060,20 +1060,20 @@ void ProcessDialogEvent()
 		break;
 		
 		case "clear_7":
-			dialog.text = "You have told me something very important. I will think about your words and Chad's actions... and then I will call you.";
-			link.l1 = "Fine, Steven. I will be waiting!";
+			dialog.text = "Ты рассказал об очень серьезных вещах. Я тут пока подумаю над твоими словами насчет покушения, оценю действия Чада... и потом позову тебя.";
+			link.l1 = "Хорошо, Стивен. Буду ждать!";
 			link.l1.go = "clear_6";
 			AddQuestRecord("SharkHunt", "54");
 		break;
 		
 		case "whyskey_final":
-			dialog.text = "Ha, there you are, "+pchar.name+". Now everybody is here and we can start. I have summoned you and Layton to discuss the situation and to decide what to do with Narwhals.";
-			link.l1 = "What do you mean - what to do with Narwhals?";
+			dialog.text = "Ха, вот и ты, "+pchar.name+". Теперь мы все вместе, и можем начинать. Я позвал тебя и Лейтона для того, чтобы обсудить сложившуюся ситуацию и решить, что будем делать с нарвалами.";
+			link.l1 = "В смысле - что делать с нарвалами?";
 			link.l1.go = "whyskey_final_1";
 		break;
 		
 		case "whyskey_final_1":
-			dialog.text = "An attempt on my life was organized by Chad who had a direct support from Narwhals. I recognize it as an open act of aggression. Considering the fact, that we have a short-term alliance with Rivados, I offer the following...\nWe form an alliance with Rivados, prepare an operation and wipe out Narwhal clan once and for all. I had enough of their bandit attitude. You, "+pchar.name+", are going to play a role of diplomat once again\nTalk to Black Eddie and Chimiset, convince them to join us in battle against our mutual enemy. I think that they will listen to you, they believe you to be their ally\nDexter will develop a plan of attack, he knows everything about the Island's geography. Layton, do you have any thoughts already?";
+			dialog.text = "Покушение на меня, едва не увенчавшееся успехом, было организовано Чадом при непосредственной помощи клана нарвал. Я расцениваю это как открытое проявление агрессии и вызов. Учитывая тот факт, что мы вступили в кратковременный союз с ривадос и предоставили им возможность освободить Чимисета, я предлагаю следующее\nМы образуем с ривадос альянс, подготавливаем операцию и совместными усилиями уничтожаем клан нарвал в корне. Своими бандитскими действиями они окончательно вывели меня из себя. Тебе, "+pchar.name+", как и в прошлый раз, будет отводится роль дипломата\nТебе нужно будет переговорить с Черным Эдди и Чимисетом и убедить их образовать с нами союз против общего врага. Думаю, у тебя получится, особенно при учете того, что ривадос считают тебя своим сторонником\nДекстер разработает план нападения на корабли нарвалов с нескольких сторон - он изучил Остров лучше, чем кто-либо другой. Лейтон, может, у тебя прямо сейчас есть какие-то соображения по данному вопросу?";
 			link.l1 = "";
 			link.l1.go = "whyskey_final_2";
 		break;
@@ -1089,52 +1089,52 @@ void ProcessDialogEvent()
 		break;
 		
 		case "whyskey_final_3":
-			dialog.text = "A wise idea. Forced to retreat to the San Gabriel, Narwhals, perhaps, won't yield to our troops too soon - but they will die quickly without any provision supply or they will be forced to launch a desperate attack. What do you say, "+pchar.name+"?";
-			link.l1 = "What do I say... I say that declaring a war against Narwhals is a politically wrong step.";
+			dialog.text = "Разумное предложение. Загнанные на 'Сан-Габриэль' нарвалы, может, и не поддадутся натиску наших бойцов, но без продовольствия они долго не протянут и начнут либо дохнуть, как мухи, либо им придется пойти в атаку прямо на наши мушкеты. Что скажешь, "+pchar.name+"?";
+			link.l1 = "Что я скажу... скажу, что начинать войну против нарвалов я считаю политически неверным шагом.";
 			link.l1.go = "whyskey_final_4";
 		break;
 		
 		case "whyskey_final_4":
-			dialog.text = "And you say that after you have killed all the Chad's men? Don't forget that all of them were Narwhals!";
-			link.l1 = "Not all of them. One of the first of those bastards, Marcello Cyclops, wasn't a Narwhal. Actually, he was loyal to Rivados and, perhaps, he was planning to join them. He is a mulatto, after all. I think that Narwhals are not responsible for an attempt on your life - only a few bastards, who were recruited by Kapper.";
+			dialog.text = "И это после того, как ты собственноручно разделался с кучей пособников Чада? Не забывай, это были одни нарвалы!";
+			link.l1 = "Не только. Один из главных негодяев, Циклоп Марчелло не принадлежал к нарвалам. Более того, он лоялен к ривадос и, возможно, планировал стать одним из них - он же мулат. Я считаю, что к покушению на тебя клан нарвалов целиком не имеет отношения - только те отдельные негодяи, завербованные Каппером.";
 			link.l1.go = "whyskey_final_5";
 		break;
 		
 		case "whyskey_final_5":
-			dialog.text = "And what do you suggest? Ignore all this?";
-			link.l1 = "I suggest keeping me to my role of being a diplomat - but this time I will negotiate with the leader of Narwhals, Donald. Besides, let me tell you my point of view concerning the possible outcome of attacking Narwhals.";
+			dialog.text = "И что ты предлагаешь? Оставить учиненный ими беспредел безнаказанным?";
+			link.l1 = "Я предлагаю оставить за мной изначальную роль - роль дипломата, но только переговоры я буду проводить не с Эдди, а с лидером нарвалов, неким Дональдом. Кроме того, позволь мне также высказать свою точку зрения на последствия нападения на нарвалов.";
 			link.l1.go = "whyskey_final_6";
 		break;
 		
 		case "whyskey_final_6":
-			dialog.text = "Go on.";
-			link.l1 = "As far as I see, the peace on the Island is possible only because of rivalry between two clans who are almost equal in their strengths. Your fighters are the third power, and they can help either of them to achieve victory. But both Rivados and Narwhals are strong and a victory will cost the winner too much in any case.";
+			dialog.text = "Излагай.";
+			link.l1 = "Насколько я изучил ситуацию, хрупкий мир на Острове возможен лишь за счет противостояния ривадос и нарвалов - двух кланов, примерно равных друг другу по силе. Третья сила - твои бойцы - могут повлиять на победу того или иного клана. Однако что ривадос, что нарвалы, достаточно сильны, и победа одного клана над другим приведет к серьезным потерям у второго. Есть такое выражение - Пиррова победа, когда победивший остается настолько слаб, что становится нежизнеспособен. Я об этом...";
 			link.l1.go = "whyskey_final_7";
 		break;
 		
 		case "whyskey_final_7":
 			dialog.text = "";
-			link.l1 = "The price for the destruction of the Narwhals will be many lives of yours and Rivados men. Besides, Layton said that the siege of San Gabriel will take a long time, and also we may face possible aggression from Rivados in case we loose to many men...";
+			link.l1 = "Уничтожение нарвалов придется оплатить большим количеством жизней что ривадос, что людей твоего отряда. Кроме того, как говорит Лейтон, еще и придется длительное время осаждать 'Сан-Габриэль'. А также, в случае больших потерь с нашей стороны, не исключена агрессия со стороны бывших союзников-ривадос...";
 			link.l1.go = "whyskey_final_8";
 		break;
 		
 		case "whyskey_final_8":
 			dialog.text = "";
-			link.l1 = "Don't forget that both clans are eager to dominate on the Island and not long ago they were your enemies. So, in my opinion, the slaughter would be a real plague for the common inhabitants.";
+			link.l1 = "Не стоит забывать, что оба клана стремятся к доминированию на Острове, и еще не так давно были твоими ярыми врагами. В общем, взвешивая все 'про' и 'контра', я прихожу к выводу, что эта бойня может обернуться бедой для всех жителей Острова.";
 			link.l1.go = "whyskey_final_9";
 		break;
 		
 		case "whyskey_final_9":
-			dialog.text = "Hm. Your words sound wise, but you haven't persuaded me yet.";
-			link.l1 = "I also need to leave the Island somehow, so I have to reach the statue of Kukulcan at the bottom of the sea. Rivados are unable to help me - perhaps, Narwhals are? Fighting them will not help me either.";
+			dialog.text = "Хм. В твоих словах есть здравый смысл, но ты меня пока не убедил.";
+			link.l1 = "Кроме того, мне нужно как-то покинуть Остров, а для этого необходимо добраться до статуи Кукулькана на дне. Ривадос мне ничем помочь не могут - возможно, кто-то из нарвалов сумеет? В общем, война с нарвалами сейчас крайне невыгодна.";
 			link.l1.go = "whyskey_final_10";
 		break;
 		
 		case "whyskey_final_10":
-			if (pchar.questTemp.LSC.Mary != "die") sTemp = "Ha! And I guess that there is one more reason why you don't want to make Narwhals our enemies. That red-haired girl of Ceres Smithy, right, friend? Am I right? Don't worry about her, "+pchar.name+", since you care about her this much - we shall take her in the safe place before fighting starts.\n";
+			if (pchar.questTemp.LSC.Mary != "die") sTemp = "Ха! Я, кажется, догадываюсь, по какой еще причине ты не хочешь открытой вражды с нарвалами. Из-за рыжей девчонки, живущей на 'Церес Смити', так, дружище? Я угадал? Не беспокойся за нее, "+pchar.name+", раз она тебе так дорога - мы перевезем ее в безопасное место до начала военных действий\n";
 			else sTemp = "";
-			dialog.text = ""+sTemp+" But I agree if you are so determined. Go and see Donald Greenspen, the head of Narwhals. His residence is in the rear of Esmeralda. Let's see what that scoundrel tells us.";
-			link.l1 = "Good. I am on my way.";
+			dialog.text = ""+sTemp+"Но, раз ты так категоричен - я согласен. Отправляйся к Дональду Гринспи, лидеру нарвалов. Его резиденция находится в кормовой части 'Эсмеральды'. Посмотрим, что скажет этот прохвост.";
+			link.l1 = "Хорошо. Не буду медлить и отправляюсь сейчас же!";
 			link.l1.go = "whyskey_final_11";
 		break;
 		
@@ -1151,70 +1151,70 @@ void ProcessDialogEvent()
 		break;
 		
 		case "negotiations_wait":
-			dialog.text = "Go to Donald, pal, and make him lick your boots, ha-ha! I will be waiting for you.";
-			link.l1 = "I am on my way.";
+			dialog.text = "Ступай к Дональду, дружище, и заставь его лизать подметки твоих сапог, ха-ха! Я жду тебя с результатами переговоров.";
+			link.l1 = "Уже иду.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "negotiations_wait";
 		break;
 		
 		case "peace":
-			dialog.text = "So what, have you spoken to Donald? I see that you have...";
-			link.l1 = "Yes. He didn't order his men to harm you. All Narwhals, who had participated in the attempt, were recruited by Chad Kapper. He is very upset and he assures us that Narwhals have no bad intentions towards you. He is ready to bring you his personal apologies for this attempt on your life and for suspecting you of Alan's murder.";
+			dialog.text = "Ну что, поговорил с Дональдом? Вижу, поговорил...";
+			link.l1 = "Да. Он не давал приказа своим людям действовать во вред тебе - нарвалы, участвовавшие в покушении, были завербованы Чадом Каппером лично. Он очень расстроен случившимся, уверяет, что нарвалы не намерены вредить тебе. Он также готов лично принести тебе извинения и за покушение, и за подозрения в убийстве Алана.";
 			link.l1.go = "peace_1";
 		break;
 		
 		case "peace_1":
-			dialog.text = "Is he ready to come here and say all these things?";
-			link.l1 = "He swore on the Bible.";
+			dialog.text = "Он готов прийти сюда и все это сказать?";
+			link.l1 = "Более того - поклясться на Библии.";
 			link.l1.go = "peace_2";
 		break;
 		
 		case "peace_2":
-			dialog.text = "Heh, perhaps, that will do. It seems that the only one bastard to be blamed - is my ex boatswain.";
-			link.l1 = "I am completely sure of that, Steven. We don't need this war. Nobody needs it.";
+			dialog.text = "Хех, возможно, это меняет дело. Не исключено, что все это устроил один мерзавец - мой бывший боцман.";
+			link.l1 = "Я в этом полностью уверен, Стивен. Не нужна нам эта война. Никому не нужна.";
 			link.l1.go = "peace_3";
 		break;
 		
 		case "peace_3":
-			dialog.text = "Fine! Deal. I am ready to accept Donald with his apologies, but he'd better hurry up. Go and tell him that.";
-			link.l1 = "At once, Steven.";
+			dialog.text = "Ладно! Хорошо. Я готов принять Дональда вместе с его извинениями, но пусть поторопится. Иди и передай ему это.";
+			link.l1 = "Сделаю немедленно, Стивен.";
 			link.l1.go = "peace_4";
 		break;
 		
 		case "peace_4":
-			if (pchar.questTemp.LSC.Mary == "alive") sTemp = "Take your Mary there and live your lives together, there is plenty of free space.";
+			if (pchar.questTemp.LSC.Mary == "alive") sTemp = "Забирай туда свою Мэри, и устраивайтесь вдвоем - места там предостаточно.";
 			else sTemp = "";
-			dialog.text = "Wait! "+pchar.name+", I am very glad that you've shown up here, on the Island. Jan holds you on a very high esteem, but you have surpassed all expectations. If you were in my crew... actually, I offer you Kapper's position, while you are here. You will command my garrison on Tartarus. "+sTemp+".";
-			if (pchar.questTemp.LSC.Mary == "alive") link.l1 = "No, Steven, thanks a lot, but I am not going to stay here for a long time. Find someone else for it. And concerning Mary - we are doing fine on 'Ceres Smithy'.";
-			else link.l1 = "No, Steven, thanks a lot, but I am not going to stay here for a long time. Find someone else for it.";
+			dialog.text = "Постой! "+pchar.name+", я очень рад, что ты появился на Острове так вовремя. Ян дал тебе высокую оценку, но я вижу, что даже этого недостаточно. Если бы ты был в моей команде, то я... впрочем, пока ты не отбыл с Острова, я предлагаю тебе занять место Каппера. Будешь командовать моим гарнизоном на 'Тартарусе'. "+sTemp+".";
+			if (pchar.questTemp.LSC.Mary == "alive") link.l1 = "Нет, Стивен, спасибо, но я не намерен задерживаться тут надолго. Назначь кого-нибудь еще. А что до моей Мэри - так нам и на 'Церес Смити' неплохо.";
+			else link.l1 = "Нет, Стивен, спасибо, но я не намерен задерживаться тут надолго. Назначь кого-нибудь еще.";
 			link.l1.go = "peace_5";
 		break;
 		
 		case "peace_5":
 			TakeNItems(pchar, "gold_dublon", 500);
-			Log_Info("You have received 500 doubloons");
+			Log_Info("Вы получили 500 дублонов");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Whatever, friend. So be it. Please accept this present from me. I think that you will find these five hundred doubloons useful.";
-			link.l1 = "Thanks!";
+			dialog.text = "Ладно, дружище. Пускай будет так. Прими от меня в подарок пятьсот дублонов. Думаю, они тебе пригодятся.";
+			link.l1 = "Не откажусь!";
 			link.l1.go = "LSC_navy";
 			AddQuestRecord("SharkHunt", "57");
 			pchar.questTemp.Saga.SharkHunt = "find"; //флаг - покушение предотвращено
 			sld = characterFromId("Grinspy");
 			sld.dialog.currentnode = "negotiations_17"; // ноду Дональду Гринспи
-			AddSimpleRumourCityTip("They say that admiral respects you, mister...", "LostShipsCity", 15, 2, "LSC", "");
-			AddSimpleRumourCityTip("They say that you are the admiral's loyal friend. Is that true?", "LostShipsCity", 15, 2, "LSC", "");
+			AddSimpleRumourCityTip("Ходят слухи, что вы у адмирала в большом почете, сударь...", "LostShipsCity", 15, 2, "LSC", "");
+			AddSimpleRumourCityTip("Говорят, что адмирал обрел в вашем лице верного друга. Это правда?", "LostShipsCity", 15, 2, "LSC", "");
 		break;
 		
 		case "LSC_navy":
-			dialog.text = "Let's talk about our business... Take these sailing directions. Use them to return here on ship and in one piece\nWithout it you will either fail to find a passage here or your ship will join her sisters here. Remember that you must use relatively small vessel in order to pass the reefs. Lugger, schooner, brigantine, brig... Fourth class, not bigger\nYour goal is to leave this place with these sailing directions in a pocket and then to return back for me on a ship. Once I am back, I will join you and Svensson in your game. I have no idea how can you leave the island, though. Only you can help yourself in this matter, and, perhaps, that Kukulcan of yours...";
-			link.l1 = "Funny, but I am actually counting on it's help. Thanks for the sailing instructions, Steven. I will yet find the way out of this island.";
+			dialog.text = "Теперь вернемся к разговору о делах наших карибских... Я даю тебе лоцию нашего острова. Используя ее, ты сможешь добраться сюда морским путем... в живом виде. То есть не сядешь на рифы, не будешь унесен течением и не утонешь в шторме\nБез этой лоции ты либо не найдешь сюда дорогу, либо пополнишь кладбище кораблей внешнего кольца Острова своим судном. Кроме того, учти: пройти через рифы может только судно с относительно небольшой осадкой, маневренное и быстроходное. Люггер, шхуна, бригантина... в общем, не крупнее четвертого класса. Я добрался сюда на бриге\nИ Боже упаси тебя явиться на какой-нибудь калоше типа флейта или галеона, или на большом корабле - они просто не проскочат через рифы и благополучно отправятся на дно. Тут у нас даже линейные корабли есть, например, тот же 'Тартарус'. Все понял?\nТеперь твоя задача - выбраться отсюда с этой лоцией и вернуться за мной на корабле. Тогда я вступлю в игру, которую вы затеяли со Свенсоном. А вот уже как ты будешь выбираться - я ума не приложу. Тут ты только сам можешь себе помочь. Или твой Кукулькан...";
+			link.l1 = "Ты будешь смеяться, но именно на его помощь я и рассчитываю. Спасибо за лоцию, Стивен. Я обязательно придумаю способ, как выбраться отсюда и вернуться вновь на корабле.";
 			link.l1.go = "LSC_navy_1";
 		break;
 		
 		case "LSC_navy_1":
 			GiveItem2Character(pchar, "LSC_navigation_map");
-			dialog.text = "I wish you luck, then. Hurry up if you can, my storehouses are running low quite fast, and soon there will be no provision at all. You know what hungry and armed men are capable of, don't you?";
-			link.l1 = "I do. Now I have to go. See you!";
+			dialog.text = "Тогда я желаю тебе удачи. И по возможности поторопись - склады мои пустеют, и скоро продовольствия начнет не хватать. А что такое голодные и вооруженные люди - думаю, тебе рассказывать не надо.";
+			link.l1 = "Я понимаю. А теперь мне пора идти. Еще увидимся!";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Dodson_wait";
 			AddQuestRecord("LSC", "5");
@@ -1225,64 +1225,64 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Dodson_wait":
-			dialog.text = "Have you found the way out from the island, "+pchar.name+"?";
-			link.l1 = "Not yet, Steven. I am still on it.";
+			dialog.text = "Как успехи в поиске выхода с острова, "+pchar.name+"?";
+			link.l1 = "Пока никак, Стивен. Я работаю над этим.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Dodson_wait";
 		break;
 		
 		// --> информационный блок
 		case "Total_wait":
-			dialog.text = "Well, what have you got, "+pchar.name+"? Got any interesting news?";
+			dialog.text = "Ну, что там у тебя, "+pchar.name+"? Есть какие-нибудь интересные новости?";
 			
 			if (!CheckAttribute(npchar, "quest.items") && CheckAttribute(npchar, "quest.takeitems"))
 			{
-				link.l1 = "Steven, I'd like to ask you to give me back my confiscated belongings.";
+				link.l1 = "Стивен, я бы хотел попросить тебя вернуть мне мои конфискованные вещи.";
 				link.l1.go = "Items";
 			}
 			if (!CheckAttribute(npchar, "quest.story"))
 			{
-				link.l2 = "Steven, tell me more about this island.";
+				link.l2 = "Стивен, расскажи мне подробнее об этом острове.";
 				link.l2.go = "Story_island";
 			}
 			if (!CheckAttribute(npchar, "quest.natan"))
 			{
-				link.l3 = "Are you sure that Hawk is not on the island? He came through the portal, so he must be here.";
+				link.l3 = "Так ты точно уверен, что Хоука нет на острове? Раз он прошел через ту же статую, то должен был попасть именно сюда.";
 				link.l3.go = "Natan";
 			}
 			if (!CheckAttribute(npchar, "quest.whiteboy"))
 			{
-				link.l4 = "Do you any know a man nicknamed White Boy?";
+				link.l4 = "Ты не знаешь человека по кличке Белый Мальчик среди жителей города?";
 				link.l4.go = "Whiteboy";
 			}
 			if (!CheckAttribute(npchar, "quest.ships"))
 			{
-				link.l5 = "What territories here belong to Narwhals and Rivados?";
+				link.l5 = "Какие места на острове принадлежат нарвалам, а какие - ривадос?";
 				link.l5.go = "ships";
 			}
 			if (!CheckAttribute(npchar, "quest.parol"))
 			{
-				link.l6 = "How can I know the passwords to get on board the clan ships?";
+				link.l6 = "Как я могу узнать пароли для проникновения на корабли кланов?";
 				link.l6.go = "parol";
 			}
 			if (!CheckAttribute(npchar, "quest.map"))
 			{
-				link.l7 = "Listen, is there any map of the Island?";
+				link.l7 = "Послушай, есть какая-нибудь карта-схема Острова?";
 				link.l7.go = "map";
 			}
 			if (!CheckAttribute(npchar, "quest.blade"))
 			{
-				link.l8 = "You have got such an interesting broadsword. I have never seen anything like it before...";
+				link.l8 = "Интересный у тебя палаш. Никогда таких раньше не видел...";
 				link.l8.go = "blade";
 			}
-			link.l9 = "No questions yet. But I may have some soon...";
+			link.l9 = "Пока никаких. Но, думаю, очень скоро будут.";
 			link.l9.go = "exit";
 			NextDiag.TempNode = "Total_wait";
 		break;
 		
 		case "Items":
-			dialog.text = "Ah, yes, sure! I have completely forgotten about it... Your things are upstairs in the chest. You can take them. Layton won't stop you.";
-			link.l1 = "Thanks!";
+			dialog.text = "Ах, да, конечно! Совсем забыл об этом... Твои вещи в сундуке наверху. Можешь забрать. Лейтон не будет препятствовать.";
+			link.l1 = "Благодарю!";
 			link.l1.go = "exit";
 			npchar.quest.items = "true";
 			NextDiag.TempNode = "Total_wait";
@@ -1296,50 +1296,50 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Story_island":
-			dialog.text = "This Island must be very old. I've seen old caravels at the outer ring, they are more than a hundred years old. It's existence is possible because of a large shallow waters and strong current which brings ship frames here. People has been living here for a long time. There are those who were born here and never left.\nClans were formed right after de Betancourt's expedition ended up here. By the way, the San Augustine and the Tartarus were part of that expedition. The Tartarus had a lot of black salves in her holds. They founded Rivados clan in honour of Pedro Rivados, their leader. He had started an uprising and tried to capture Tartarus, but they failed. The man was sentenced to a slow death\nSlaves got their freedom here and immediately opposed themselves to the rest of locals. Their request for dominance and African traditions made most of the Christians to unite, forming a Narwhal clan\nNarwhal clan had a lot of mercenaries, soldiers, officers and adventurers within it's ranks, they were gathering supplies and building a small, professional army ready to fight Rivados with their advantage in numbers. Since then Narwhals has become very selective in accepting new recruits and Rivados has limited their ambitions. You can see the results now.";
-			link.l1 = "Were there any connections between the Island and the outer world?";
+			dialog.text = "Этот Остров из погибших кораблей существует уже очень давно, столько, сколько я себя помню. Во внешнем кольце встречаются каравеллы Колумбовского времени, а это значит, что Острову уже более двухсот лет. Его существование, как я понимаю, обусловлено наличием обширного мелководья и сильного течения, приносящего сюда корабельные остовы. Что же касается людей, то они тоже живут здесь очень давно. Есть много тех, кто родился здесь и ничего кроме этого острова и не видел\nКланы же образовались, как рассказывали мне старожилы, после крушения на Острове эскадры испанского адмирала де Бетанкура. Кстати, мои корабли - 'Сан-Августин' и 'Тартарус' - как раз из этой эскадры. На 'Тартарусе' в трюмах было полно черных невольников из Гвинеи. Они-то и образовали клан под названием ривадос, в честь некого Педро Ривадоса, их идейного предводителя. Ривадос поднял бунт на 'Тартарусе' и пытался его захватить, однако восстание было подавлено, а Ривадос приговорен к медленной смерти\nВскоре после этого экспедиция попала в шторм и закончила свой путь здесь. Негры, естественно, тут обрели свободу, а уцелевшие испанцы пополнили ряды белых поселенцев Острова. Ривадос сразу поставили себя в оппозицию прочему населению и стали насаждать свои дикие африканские порядки. Это не могло понравиться добрым христианам, и они объединились. Так появился клан нарвал\nСреди белых жителей было немало опытных солдат, наемников и просто авантюристов. Обыскивая корабли, они находили оружие и доспехи, обучали друг друга военному искусству и в итоге сплотились в единую семью, которая стала противостоять многочисленным ривадос. Затем Остров пополнялся новыми и новыми жителями, но нарвалы уже не принимали в свой клан первых встречных. В итоге и имеем картину, которую ты наблюдаешь здесь сейчас.";
+			link.l1 = "Остров не поддерживает связь с внешним миром?";
 			link.l1.go = "Story_island_1";
 		break;
 		
 		case "Story_island_1":
-			dialog.text = "There have been no connections for the last ten years. The locals had been trading with Cuba at one time, exchanging gold and valuable goods for food. But they don't do it anymore.";
-			link.l1 = "Hm. So it seems that Svensson and Black Pastor were both right... And why didn't people leave the Island, while they still had the opportunity?";
+			dialog.text = "Раньше поддерживал, но уже больше десятка лет - нет. Когда-то баркасы островитян добирались до Кубы, обменивая золото и ценные товары с погибших кораблей на продовольствие, иногда находились смельчаки-буканьеры, решавшиеся на поход сюда. Однако сильные штормы, столь часто налетающие на окрестные воды Острова, постепенно разорвали эти связи.";
+			link.l1 = "Хм. Значит, и Свенсон, и Черный Пастор были каждый по-своему правы... А почему люди не покинули этот Остров, когда была такая возможность?";
 			link.l1.go = "Story_island_2";
 		break;
 		
 		case "Story_island_2":
-			dialog.text = "Some people did, but the majority decided to stay. A lot of them have found home here, many others were born here. They don't want to return. This place seems to be much better for them... Some folks are too scared to travel through the zone of storms on old boats. As for Rivados - they have no choice but to stay here.";
-			link.l1 = "And why did you come here? You abandoned your excellent frigate, picking a brig instead...";
+			dialog.text = "Некоторые покидали, но многие оставались, поскольку нашли здесь свой новый дом, а многие родились здесь. Не всем хотелось возвращаться назад. Видимо, здесь им лучше, чем там... Многих пугало путешествие через зону штормов в утлых челнах. Что же касается ривадос - так им вообще путь с Острова заказан.";
+			link.l1 = "А зачем ты пришел сюда? Оставил свой отличный фрегат, пересел на бриг...";
 			link.l1.go = "Story_island_3";
 		break;
 		
 		case "Story_island_3":
-			dialog.text = "I was blamed in a murder of Blaze Sharp. I have no clue why. Obviously, someone is playing dirty. Number of my enemies started to grow rapidly, so I had to leave Isla Tesoro and wait here. I have been knowing about this place for a very long time. I have left my frigate, because she was too big to bypass local reefs\nI was attacked by Narwhals and Rivados as soon as I got here. They didn't appreciate my arrival. They came close to my ship at night on longboats and set her on fire. We have crushed their tubs with our cannons and muskets. But the fire did it's work - my brig was burnt down\nWe got mad as hell, invaded the Island, stormed the San Augustine and showed them how corsairs fight. They could not bear our pressure and soon shown their backs like cowards. We had captured San Augustine, turned out that these morons used her as provision warehouse. Now they have to buy it from me for a price I name\nWe also captured local leaders: a head of Narwhals Alan Milrow and a spiritual leader of Rivados Chimiset. Layton had spent next few days to scout the area and we attacked Tartarus - a weak spot in their defences\nNow we hold two of these ships and clans have to get used to our presence. Now days, we have got some sort of peace here. As for the other locals, they seem to like the idea of third force.";
-			link.l1 = "Now I see. Thanks for the story!";
+			dialog.text = "Меня обвинили в смерти Блейза Шарпа. Почему - не знаю. Очевидно, это чья-то грязная игра. Слишком много развелось недоброжелателей, и я решил покинуть Исла Тесоро и на время обосноваться здесь. Я-то про этот Остров давно знаю... Фрегат я свой оставил, потому что на нем сюда не пройти\nНо едва я прибыл на Остров и начал присматривать место для базы, как на меня напали объединенные силы нарвалов и ривадос - им сильно не понравилось мое появление. Подкравшись под покровом ночи на своих лодках, они подожгли мой бриг. Бортовыми залпами мы разнесли в щепки их челны, и обстреляли из мушкетов. Но пожар потушить не удалось - бриг в итоге сгорел\nНас охватила ярость. Покинув пылающее судно, мы ворвались на Остров на 'Сан-Августин' и показали кланам, как умеют сражаться корсары. Они долго не продержались и позорно показали спины. Мы захватили 'Сан-Августин', в котором эти недоумки складировали основные запасы продовольствия. Теперь они вынуждены покупать его у меня, а я ставлю такую цену, какую хочу\nБыли взяты в плен местные лидеры: глава клана нарвал Алан Милроу, и духовный вдохновитель ривадос, колдун Чимисет. В последующие дни Лейтон произвел рекогносцировку местности, и мы атаковали малозаселенный 'Тартарус' и включили его в свои владения\nТеперь мы удерживаем оба этих корабля, а кланы вынуждены мириться с нашим присутствием, и за несколько месяцев у нас сложилось что-то вроде призрачного мира. Что же касается прочих жителей - то они, похоже, даже рады, что на Острове появилась третья сила.";
+			link.l1 = "Теперь все понятно. Спасибо за рассказ!";
 			link.l1.go = "exit";
 			npchar.quest.story = "true";
 			NextDiag.TempNode = "Total_wait";
 		break;
 		
 		case "Natan":
-			dialog.text = "I can't say for sure, but I haven't seen him here, anyway. Not at the streets, neither in the tavern nor on clan ships. You are the first man who told me that Hawk should be somewhere around. But as I have already said - I doubt it.";
-			link.l1 = "I see...";
+			dialog.text = "Уверен, или не уверен - во всяком случае, я его здесь не видел. Ни на улицах, ни в таверне, ни на кораблях кланов, ни где-либо еще. Я от тебя первого узнал, что Хоук может быть здесь. Но как я уже сказал - это навряд ли.";
+			link.l1 = "Понятно...";
 			link.l1.go = "exit";
 			npchar.quest.natan = "true";
 			NextDiag.TempNode = "Total_wait";
 		break;
 		
 		case "Whiteboy":
-			dialog.text = "White boy? Hm... No, I haven't heard about him before. But it doesn't mean that he is not here. I don't have to know all the local scum, do you agree?";
-			link.l1 = "I do. Fine, I'd ask someone else.";
+			dialog.text = "Белый Мальчик? Хм... Нет, пожалуй, я ничего не слышал о таком. Но это не значит, что его здесь нет. Просто я не обязан знать весь местный сброд по кличкам, ты согласен?";
+			link.l1 = "Согласен. Ладно, спрошу у кого-нибудь еще.";
 			link.l1.go = "exit";
 			npchar.quest.whiteboy = "true";
 			NextDiag.TempNode = "Total_wait";
 		break;
 		
 		case "ships":
-			dialog.text = "The Island is divided by Narwhals, Rivados and my men. There is also a neutral area. I control San Augustine and Tartarus\nRivados hold Protector which is their residence, Fury - barracks, Velasco - warehouse. Strangers are forbidden to pass, you must say a special password in order to get there\nNarwhals has a lot of ships in their possession. Esmeralda is a residence of their leader and a store. So called 'Science centre San Gabriel' and a Phoenix platform. Last but not least, Ceres Smithy - their workshop. Every ship except of Esmeralda is a restricted area, you must say a password before they let you in\nThe rest of ships are considered to be neutral, local citizens live inside them. Sancho's tavern is located in caravel Fleron and brother Julian is a head of local church in galleon Gloria.";
-			link.l1 = "Thanks for the information!";
+			dialog.text = "Остров поделен между нарвалами, ривадос и моими бойцами. Также есть нейтральная зона. Мне принадлежит 'Сан-Августин' и уже знакомый тебе 'Тартарус'\nРивадос обитают на 'Протекторе' - это их штаб-квартира, пинасе 'Фурия' - там находится их боевая группировка, и на 'Веласко', который они используют как склад. Доступ посторонним на эти корабли ограничен, чтобы попасть на них, нужно сказать особый пароль\nВладения нарвалов более обширны: галеон 'Эсмеральда' - магазин и резиденция их лидера, затем так называемый 'научный центр Сан-Габриэль' с выходом на 'Феникс', и флейт 'Церес Смити' - мастерская. Свободный доступ разрешен только в магазин 'Эсмеральды', для прохода на 'Сан-Габриэль' и 'Церес Смити' нужно знать специальные пароли\nОстальные корабли являются нейтральной зоной и служат местом обитания всех прочих жителей. На каравелле 'Флерон' располагается таверна 'Три сухаря' Санчо Карпентеро, на галеоне 'Глория' - церковь с братом Юлианом.";
+			link.l1 = "Спасибо за подробную информацию!";
 			link.l1.go = "exit";
 			npchar.quest.ships = "true";
 			NextDiag.TempNode = "Total_wait";
@@ -1347,8 +1347,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "parol":
-			dialog.text = "Actually, they give them to people they take interest in themselves. Alas, you are not one of them. But it is hardly an issue. Go to an old frigate named Carolinea. That's where a fat sly dog Giuseppe Fazio live. He is some sort of diplomat here. I don't know what did he do before he got here, but the man has skill\nHe does business with everyone. Clans use him as a mediator. Greedy. Ready to eat himself for a single doubloon, but he never shows it. Ask him for a current password, though it will cost you.";
-			link.l1 = "Thanks! I will remember that.";
+			dialog.text = "Вообще-то они сами их выдают нужным людям. К сожалению, к таковым ты не относишься. Но проблема решаема. На старом фрегате под названием 'Каролина' обитает один пройдоха по имени Джузеппе Фацио. Он у нас здесь вроде дипломата. Не знаю, кем он был до попадания на Остров, но способности у него выдающиеся\nОн ухитряется вести дела и с ривадос, и с нарвалами, и со мной, и служит связующим звеном между кланами. Посредник. Редкостный проныра и прохиндей. Готов удавиться за золотой дублон, хотя виду не показывает. Вот у него-то и можешь узнать текущий пароль, конечно, не бесплатно.";
+			link.l1 = "Спасибо! Приму к сведению.";
 			link.l1.go = "exit";
 			npchar.quest.parol = "true";
 			NextDiag.TempNode = "Total_wait";
@@ -1356,8 +1356,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "map":
-			dialog.text = "Dexter owns one. He is my second in command. He had made a detailed map right after our arrival. Go upstairs and talk to him in case you need it.";
-			link.l1 = "Got it. Thanks!";
+			dialog.text = "Есть такая у Декстера. Это мой старпом. После прибытия на Остров он составил его детальную схему. Если тебе она нужна - поднимись наверх и поговори с ним.";
+			link.l1 = "Понятно. Спасибо!";
 			link.l1.go = "exit";
 			npchar.quest.map = "true";
 			NextDiag.TempNode = "Total_wait";
@@ -1366,14 +1366,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "blade":
-			dialog.text = "Ha! A fine broadsword. A unique blade of some sort.. A trophy from Alan Milrow, head of Narwhal clan. That is how I named it. Jurgen, a Narwhal gunsmith, made it from some amazing metal they found at the bottom of the sea\nIt doesn't rust, never grow blunt and cut everything and everyone at once. I am very pleased with this weapon and I am not going to leave it behind.";
-			link.l1 = "I am curious, if Jurgen is able to make another broadsword like this? For good money, of course...";
+			dialog.text = "Ха! Да, палаш знатный. Он единственный в своем роде. Он достался мне в качестве трофея от Алана Милроу, главы клана нарвал. Я так и назвал его - 'Нарвал'. Его сделал Юрген, оружейник нарвалов, из какого-то необыкновенного железа, которое нарвалы достали со дна нашего мелководья\nОн не ржавеет, не тупится и разит наповал. Я очень доволен этим палашом и не променяю его ни на какое другое оружие.";
+			link.l1 = "Интересно, а этот Юрген может сделать еще один такой же палаш? Если ему хорошо заплатить, конечно...";
 			link.l1.go = "blade_1";
 		break;
 		
 		case "blade_1":
-			dialog.text = "Well, he can make another one for sure. But he won't. Jurgen is Narwhal, he is loyal to his clan and he will never make anything for outsiders. Besides, you will need very special iron to make the second sword. This iron can be found only at the bottom - and how can anyone get there? So forget about it.";
-			link.l1 = "I see. Pity.";
+			dialog.text = "Ну, раз сделал один - так наверняка может сделать и второй. Но только он не станет. Юрген - потомственный нарвал, предан клану до мозга костей и никогда не станет ничего изготавливать для чужих. Кроме того, для второго такого палаша потребуется особенное железо, которое находят только у нас на дне, а как ты спустишься под воду? Никак. Так что забудь.";
+			link.l1 = "Понятно. Жаль...";
 			link.l1.go = "exit";
 			npchar.quest.blade = "true";
 			NextDiag.TempNode = "Total_wait";
@@ -1387,25 +1387,25 @@ void ProcessDialogEvent()
 		
 		case "return":
 			chrDisableReloadToLocation = true;//закрыть локацию
-			dialog.text = "Ha, I saw your sails on the horizon, "+pchar.name+". Glad to see you, friend! How was the trip?";
-			link.l1 = "It was fine.";
+			dialog.text = "Ха, я увидел твои паруса еще на горизонте, "+pchar.name+". Рад тебя видеть, дружище! Нормально добрался?";
+			link.l1 = "Да, каких-либо серьезных проблем не возникло.";
 			link.l1.go = "return_1";
 		break;
 		
 		case "return_1":
-			dialog.text = "Good. Well, I am ready to get on your ship and sail to Jan Svensson. Layton will stay here as admiral, he has already taken the chair, ha-ha! It looks like he is not going to leave the Island, he loves it here.";
-			link.l1 = "You said once that he is doing really well.";
+			dialog.text = "Вот и славно. Что же, я готов подняться на борт твоего судна и отправиться к Яну Свенсону. Лейтон остается вместо меня: видишь - уже занял адмиральское кресло, ха-ха! Похоже, он не горит желанием оставлять Остров - ему здесь нравится.";
+			link.l1 = "Ты же сам говорил, что он со всем отлично управляется.";
 			link.l1.go = "return_2";
 		break;
 		
 		case "return_2":
-			dialog.text = "Yes, he certainly is. Well, I am ready. Shall we?";
-			link.l1 = "Get on my ship, Steven. We will set sail as soon as I finish my business here.";
+			dialog.text = "Да. Так оно и есть. Ну, я готов. Пойдем?";
+			link.l1 = "Поднимайся на палубу моего корабля, Стивен. Как только я решу все свои оставшиеся дела на Острове - мы сразу отчаливаем.";
 			link.l1.go = "return_3";
 		break;
 		
 		case "return_3":
-			dialog.text = "Deal! Eh, it's been too long since I was feeling the deck of a decent ship under my feet!";
+			dialog.text = "Договорились! Эх, как давно я не чувствовал под ногами палубы нормального корабля!";
 			link.l1 = "...";
 			link.l1.go = "return_4";
 		break;
@@ -1417,8 +1417,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "return_5":
-			dialog.text = "Here are we are, friend. Well, I will go and see Svensson. You should also see him and discuss our future plans. Ha-ha! Hot days await us, eh?";
-			link.l1 = "No doubt. See you, Steven!";
+			dialog.text = "Вот мы и прибыли, дружище. Ну что же, я - к Свенсону. Да и тебе тоже надо к нему заглянуть - согласовать план дальнейших действий. Ха-ха! Похоже, нас ждут горячие денечки, так, "+pchar.name+"?";
+			link.l1 = "Не сомневаюсь. Увидимся, Стивен!";
 			link.l1.go = "return_6";
 		break;
 		
@@ -1436,39 +1436,39 @@ void ProcessDialogEvent()
 		
 		// Тени прошлого
 		case "shadows":
-			dialog.text = "Sure, I'll do what I can! Go on.";
-			link.l1 = "Steve, take a look... A shark's tooth. Don't you tell me that it's unfamiliar to you!";
+			dialog.text = "Ну конечно, чем смогу - тем помогу! Выкладывай, что там у тебя?";
+			link.l1 = "Стив, смотри... Вот акулий зуб. Только не говори мне, что видишь его впервые!";
 			link.l1.go = "shadows_1";
 		break;
 		
 		case "shadows_1":
 			RemoveItems(pchar, "shark_teeth", 1);
-			dialog.text = "Ha! You are smart! Yes, it is my tooth. Well, it's the tooth of a shark which I killed to impress one beauty. They call me Shark since then. Only a few were able to do so underwater with a simple saber, but I was young and foolish, and Beatrice Sharp was the most beautiful girl in the Caribbean... How did you get it?";
-			link.l1 = "The ex executioner of St. John's gave it to me. A man was butchered with it. His name was... Joshua Leadbeater.";
+			dialog.text = "Ха! От тебя ничего не утаишь! Да, это мой зуб. Вернее, зуб белой акулы, которую я собственноручно убил, пытаясь понравиться одной красотке. С тех пор меня и зовут Акулой. Мало кому это удавалось сделать под водой при помощи простой сабли. Но я был молод и глуп, а Беатрисс Шарп была самой красивой девушкой на Карибах... Как он у тебя оказался?";
+			link.l1 = "Мне отдал его бывший палач Сент-Джонса. Этим зубом зарезали одного человека. Его звали... Джошуа Ледбиттер.";
 			link.l1.go = "shadows_2";
 		break;
 		
 		case "shadows_2":
-			dialog.text = "Yes, I did it. I was horrified by the death of Beatrice and I believed Leadbeater to be the only responsible left alive. I read his papers later. Well, he had every right for the revenge\nBlaze's sister was just at the wrong place in the wrong time. Mask is not to be blamed for her death, he didn't want it, only Butcher was his target. I regret murdering him. Truth is, that bitch Jessica set the whole thing up.";
-			link.l1 = "Have you saved those papers?";
+			dialog.text = "Да, это сделал я. Я был потрясен смертью Беатрисс и полагал Ледбиттера единственным оставшимся в живых виновником ее смерти. Потом я прочитал его бумаги, которые прихватил с трупа. Что же, у него было право на месть\nСестра Блейза просто оказалась не в том месте. И вины Маски в ее смерти нет - ему была нужна не она, а Бучер. Я сожалею, что убил его. На самом деле все подстроила эта стерва Джессика.";
+			link.l1 = "Ты сохранил эти бумаги?";
 			link.l1.go = "shadows_3";
 		break;
 		
 		case "shadows_3":
-			dialog.text = "Why? Of course, I haven't. I didn't need them. But I can tell you why Mask had been chasing Butcher, if you have time.";
-			link.l1 = "I have. Know that it is not some curiosity, I am really interested. I am even ready to write your story down.";
+			dialog.text = "Что за глупости? Конечно, нет. Зачем они мне были нужны? Но если у тебя есть время, я расскажу тебе, почему Маска преследовал Бучера.";
+			link.l1 = "Время есть. Пойми мой интерес правильно - это не праздное любопытство. Я даже готов записать твой рассказ.";
 			link.l1.go = "shadows_4";
 		break;
 		
 		case "shadows_4":
-			dialog.text = "I know, you never waste your time. Listen then. Joshua Leadbeater was an ordinary British Navy captain and he was commanding frigate Neptune, which has become a legend later...";
+			dialog.text = "Я знаю, ты напрасно время терять не станешь. Тогда слушай. Джошуа Ледбиттер был английским военным капитаном, и командовал ставшим впоследствии легендарным фрегатом 'Нептун'...";
 			link.l1 = "...";
 			link.l1.go = "shadows_5";
 		break;
 		
 		case "shadows_5":
 			DialogExit();
-			SetLaunchFrameFormParam("One hour later...", "Saga_FinalLedbitterStory", 0, 4);
+			SetLaunchFrameFormParam("Прошел час...", "Saga_FinalLedbitterStory", 0, 4);
 			LaunchFrameForm();
 			WaitDate("", 0, 0, 0, 1, 10); //крутим время
 			RecalculateJumpTable();
@@ -1476,74 +1476,74 @@ void ProcessDialogEvent()
 		
 		case "shadows_6":
 			AddQuestRecordInfo("Mask", "1");
-			dialog.text = "... However Leadbeater survived and he was saved by a passing ship. His wounds made him ugly, and he had been wearing a mask since then. Finding and punishing the culprit had become his life's meaning.";
-			link.l1 = "I see... I have it written down. I think I should read it to see what I got. It is a very sad story. Have you seen that Jessica?";
+			dialog.text = "... Ледбиттер же, однако, выжил, и был подобран проходящим судном. Ранение обезобразило его, и отныне он появлялся на людях только в маске на пол-лица - так за ним укрепилось прозвище 'Маска'. Найти и покарать виновника своих бед стало для него единственным смыслом жизни.";
+			link.l1 = "Так... Я все записал. Думаю, что мне потребуется перечитать написанное, чтобы сопоставить с тем, что у меня уже имеется. Действительно, грустная история. А ты видел эту Джессику?";
 			link.l1.go = "shadows_7";
 		break;
 		
 		case "shadows_7":
-			dialog.text = "Sure! She accompanied Butcher in all his voyages until he dumped her for Beatrice. Jess couldn't forgive him that. They called her the Butcher's talisman, because he always had luck while she was there with him\nBelieve it or not, but as soon as he got rid of her at Barbados, his business went bad, booty got poor and the Neptune became an often guest at the shipyard of Isla Tesoro. Though it can be explained by the fact that Butcher had been spending most of his time with Beatrice in the cabin rather then at the quarterdeck\nBeatrice was not like Jessica, she wasn't addicted to adventures and war, although Nicolas taught her fencing and seamanship. Yes, she was fond of sea romance but she didn't have enough hardness of character. Butcher's Neptune wasn't the right place for her. In the end, she killed her.";
-			link.l1 = "And what about Jessica?";
+			dialog.text = "А как же! Она сопровождала Бучера во всех его походах, до тех пор, пока он не бросил ее, увлекшись Беатрисс. Этого Джесс ему не простила. Ее считали талисманом капитана Бучера, потому как пока она была с ним, удача от Бучера не отвернулась ни разу\nХочешь верь, хочешь нет - но как только он ее сплавил домой на Барбадос, его дела стали идти все хуже и хуже - добыча стала скудной, а 'Нептун' буквально прописался на верфи Исла Тесоро. Хотя, это можно объяснить и тем, что Бучер проводил больше времени в каюте с Беатрисс, нежели на шканцах\nВ отличие от Джессики, Беатрисс не имела выраженной склонности к авантюрам и боевым похождениям, хотя Николас обучил ее искусству кораблевождения и фехтованию. Конечно, романтика моря ее манила, но она не обладала достаточной жесткостью характера. У Бучера на 'Нептуне' Беа была явно не на своем месте. Это в итоге ее и погубило.";
+			link.l1 = "А Джессика?";
 			link.l1.go = "shadows_8";
 		break;
 		
 		case "shadows_8":
-			dialog.text = "Oh, she was something. Every sailor of the Neptune obeyed her orders and not just because she was a captain's girlfriend. Jess had mastered fencing and seamanship, Butcher's efforts were not wasted. She was tough and reckless, and also was gifted with a good look\nA lot of men wanted to have sex with her, but she wanted Butcher only, bothering her was really risky - many tested the results on their own backs literally, and for the most persistent her fencing lessons turned to be the last in their lifes\nJess owned a very special sword, the only of it's kind in the Caribbean, I have no clue where did she get. Flame-bladed sword. One can't grab it's blade and even the slightest touch leaves a terrible wound\nJess was an adventurer not by birth, but by vocation. By the way, if you need to learn more about her, you can talk to an acquaintance of yours. He can tell you about her much more than I can.";
-			link.l1 = "Really? And who is that man?";
+			dialog.text = "О-о, это была штучка еще та... Ее слушались все матросы на 'Нептуне', и не потому, что она была подругой капитана. Джесс мастерски владела шпагой и прекрасно управлялась с кораблем - школа Бучера не прошла даром. Нрав у нее был крутой и решительный, да и внешностью Бог не обделил\nЖелающих разделить с ней постель было предостаточно, но она никого, кроме Бучера, и знать не хотела, а докучать ей было более, чем рискованно - многие познали это на своей шкуре в буквальном смысле, а для нескольких особо ретивых ее урок фехтования оказался последним в жизни\nУ Джесс была особенная шпага, единственная в своем роде на Карибах - уж не знаю, где она такую достала: шпага-фламберж. Ее нельзя схватить рукой за лезвие, а даже легкое прикосновение оставляет жуткую рану\nДжесс была авантюристкой не по рождению, а по призванию. Кстати, если тебе нужно подробнее узнать о Джессике, ты можешь спросить об этом у одного очень хорошо знакомого тебе человека. Он сможет рассказать об этой стерве побольше, чем я.";
+			link.l1 = "Вот как? И кто же этот человек?";
 			link.l1.go = "shadows_9";
 		break;
 		
 		case "shadows_9":
-			dialog.text = "ТJan Svensson. Wood Devil will never admit it, but he had plans about Jessica. That was the time when he had already taken Western Main for himself and his fame was something to envy for, so the tigress was as good as him\nAfter Butcher got rid of Jess, Jan started to visit Barbados suspiciously often giving a shake to English garrison. As you know, Jessica was a daughter of Bridgetown's planter\nAll in all, his plans were well known in private circles, yet no one dared to speak one's mind about it, Jan may sit on his backsides in Blueweld now days, but back then any wrong word in his address could result badly\nIn the end, it didn't work out for them. Jess couldn't live with the way Butcher treated her and she had her revenge a year later with a help of the Mask. This vengeance ended terrible for everyone: for Butcher, for Beatrice, for the Mask and for herself. They all died.";
-			link.l1 = "Not all of them. Butcher is still alive.";
+			dialog.text = "Ты будешь смеяться... это Ян Свенсон. Лесной Дьявол, конечно, не признается в этом, но то, что он имел в свое время виды на Джессику - это факт. Он уже тогда прибрал к рукам Западный Мэйн, и слава у него была - закачаешься, так что эта тигрица была вполне ему под стать\nКогда Бучер вышвырнул Джесс со своего корабля, Ян подозрительно часто стал появляться на Барбадосе, и так часто, что вызвал немалое беспокойство английского гарнизона. Как ты уже знаешь, Джессика - дочь бриджтаунского плантатора\nВ общем, его планы на нее были хорошо известны в узких кругах, однако высказываться по этому поводу никто бы не рискнул - это сейчас Ян в Блювельде сиднем сидит, а тогда любое неосторожное слово в его адрес могло закончиться плачевно\nНо в итоге у него с ней ничего так и не вышло. Джесс не смогла смириться с тем, как с ней обошелся Бучер, и спустя год, связавшись с Маской, таки отомстила ему. Эта месть обернулась трагедией для всех: и для Бучера, и для Беатрисс, и для Маски, и для нее самой. Погибли все.";
+			link.l1 = "Не все. Бучер жив.";
 			link.l1.go = "shadows_10";
 		break;
 		
 		case "shadows_10":
-			dialog.text = "What? Have I misheard you? He is alive?!";
-			link.l1 = "Yes. Captain Butcher wasn't executed. Well, he should have been, but he survived thanks to Jacob Jackman and Henry the Hangeman, who had intimidated the executioner. The execution was a fake. I have got evidence.";
+			dialog.text = "Что?! Я не ослышался? Он жив?!";
+			link.l1 = "Да. Капитан Бучер не был казнен. Точнее, был, но благодаря Якобу Джекману и Генри Висельнику, которые запугали палача, остался жив. Казнь была инсценирована. У меня есть доказательства.";
 			link.l1.go = "shadows_11";
 		break;
 		
 		case "shadows_11":
-			dialog.text = "Impossible! And where is he now?";
-			link.l1 = "He is known as Lawrence Beltrope and he lives in Port Royal. He is still dangerous though. Jackman, who caused that much trouble among the Brethren of the Coast, had been acting under his command.";
+			dialog.text = "Невероятно! И где же Мясник сейчас?";
+			link.l1 = "Он известен как Лоуренс Белтроп, и живет себе спокойно в Порт-Рояле. Однако, похоже, с годами он не стал менее опасен. Джекман, наделавший в последние месяцы столько бед внутри Берегового братства, действовал по его приказам.";
 			link.l1.go = "shadows_12";
 		break;
 		
 		case "shadows_12":
-			dialog.text = "Damn it! The quartermaster had found his captain after so long! Beltrope, you say... wait! Now I see why there was a strange record of interrogation among Blaze's papers... It looks like Blaze had also found out about Butcher-Beltrope...";
-			link.l1 = "What are you talking about?";
+			dialog.text = "Черт побери! Квартирмейстер нашел своего капитана через столько лет! Белтроп, говоришь... постой-ка! Теперь понятно, почему в бумагах Блейза оказался этот странный протокол допроса... Видать, Блейз тоже разузнал о Бучере-Белтропе...";
+			link.l1 = "Ты это сейчас о чем?";
 			link.l1.go = "shadows_13";
 		break;
 		
 		case "shadows_13":
-			dialog.text = "After I had taken this residence, I rummaged through old Blaze's papers. I have found an interrogation record of some Samuel Brooks. There was a lot about adventures of Thomas Beltrope and that he is known as a pirate and a close friend of Nicolas Sharp. It seems that he was Butcher's father.";
-			link.l1 = "Interesting. It looks like Sharp's and Beltrope's kids continued their parents' the line of work...";
+			dialog.text = "Когда я занял эту резиденцию, я позволил себе дерзость покопаться в старых бумагах Блейза. Там я нашел протокол допроса некого Сэмюэля Брукса. Там достаточно подробно описаны похождения Томаса Белтропа - в прошлом известного пирата и близкого друга самого Николаса Шарпа. Очевидно, он и был отцом Бучера.";
+			link.l1 = "Очень интересно. Значит, дети Белтропа и Шарпа продолжили дело своих родителей...";
 			link.l1.go = "shadows_14";
 		break;
 		
 		case "shadows_14":
-			dialog.text = "It seems so... But tell me, friend, why are you so interested in late people's deeds? What is your concern?";
-			link.l1 = "I need papers, which would confirm that Helen McArthur is the daughter of Beatrice Sharp and that she has all rights to this surname. I don't care that she is also Beltrope.";
+			dialog.text = "Выходит, так... Скажи, дружище, а для чего ты вообще начал копаться в прошлом уже давно умерших людей? К чему весь этот сыр-бор?";
+			link.l1 = "Мне нужны бумаги, подтверждающие, что Элен Мак Артур – дочь Беатрисс Шарп, внучка Николаса Шарпа, и имеет право носить эту фамилию. То, что она может носить и фамилию Белтроп, в данном случае меня мало интересует.";
 			link.l1.go = "shadows_15";
 		break;
 		
 		case "shadows_15":
-			dialog.text = "There is nothing about Helen McArthur neither in Leadbeater's papers nor in Blaze's archives. It is strange that Beatrice didn't tell Blaze about the birth of his niece. It doesn't look like her.";
-			link.l1 = "Listen, perhaps, there is something else in Sharp's papers? I need every detail!";
+			dialog.text = "На счет Элен Мак Артур ни в бумагах Ледбиттера, ни в архивах Блейза ничего не было. Все-таки странно, что Беатрисс ничего не сказала Блейзу о рождении племянницы. Это на нее не похоже.";
+			link.l1 = "Послушай, может, в бумагах Шарпа было что-то еще, относящееся к этой истории? Мне важна буквально каждая мелочь!";
 			link.l1.go = "shadows_16";
 		break;
 		
 		case "shadows_16":
-			dialog.text = "Hm, I guess. According to Blaze's notes, he had been trying to find the island where his sister died. There are papers concerning Leadbeater's punitive expedition. Nothing interesting, except for a few numbers of latitude\nThis parallel crosses Caribbean sea in it's Northern part. But there is no sign of longitude. Obviously, Blaze's searches failed, you can not even imaging how many small islands at that latitude.";
-			link.l1 = "And what is it?";
+			dialog.text = "Хм... Возможно, да. Судя по записям Блейза, он пытался разыскать остров, где погибла его сестра. Есть бумаги, являющие собой копии архивных документов, в которых упоминалась карательная экспедиция Ледбиттера. Там все пустое, за исключением нескольких цифр, обозначающих географическую широту\nЭта параллель пересекает Карибское море в его северной части. Долготы нет. Очевидно, поиски Блейза успехом не увенчались - ты не представляешь, сколько на этой широте мелких островов.";
+			link.l1 = "И что это за широта?";
 			link.l1.go = "shadows_17";
 		break;
 		
 		case "shadows_17":
-			dialog.text = "Let's see... here: latitude 21 degrees 32' North. I don't know how it can help you.";
-			link.l1 = "It will. Fine, Steven, thank you very much for your honest story. See you!";
+			dialog.text = "Сейчас посмотрим... вот: 21 гр. 32' северной широты. Не знаю, чем тебе это поможет.";
+			link.l1 = "Поможет. Ладно, Стивен, огромное спасибо за откровенный рассказ. Еще увидимся!";
 			link.l1.go = "shadows_18";
 		break;
 		
@@ -1571,44 +1571,44 @@ void ProcessDialogEvent()
 		
 		// суп из черепахи
 		case "terrapin":
-			dialog.text = "You could say that. Now, Tortuga\nThe island was named like this because it looks almost like a turtle. Levasseur had been thickening turtle's shell for twelve years - fort La Roche. A frontal attack is suicidal, fort's heavy cannons will leave no chance. So, cooking a soup of this beauty won't be easy. Spanish have been trying for a very long time and they never succeeded.";
-			link.l1 = "That is why I went to Svensson. So what is your plan? Come on, Steven!";
+			dialog.text = "Ну, можно сказать и так. Теперь немного о Тортуге\nОстров назван именно так из-за своего сходства с черепахой. Левассер двенадцать лет наращивал панцирь этой черепашки – форт Ля-Рош. Штурмовать остров в лоб под огнем его страшных пушек захочет лишь самоубийца. Так что сварить из этой крепкой малютки черепаховый суп будет очень непросто. По крайней мере, испанцам это до сих пор не удалось.";
+			link.l1 = "Именно поэтому я и пошел к Свенсону. Так что вы там придумали? Не тяни, Стивен!";
 			link.l1.go = "terrapin_1";
 		break;
 		
 		case "terrapin_1":
-			dialog.text = "My men had done decent work on Tortuga for the last few weeks, and they obtained a lot of interesting information. So I have good news for you, pal! It seems that you don't have to deal with the cannons of La Roche, since we are not the only ones fed up with Levasseur. There are people among his friends, who want him dead, too.";
-			link.l1 = "Go on...";
+			dialog.text = "Последние несколько недель мои люди хорошо поработали на Тортуге и добыли массу полезной информации. Так что у меня для тебя хорошие новости, приятель! Похоже, знакомства с главным калибром Ля-Рош тебе можно избежать, ибо Левассер стал поперек горла не только нам. Даже среди ближайшего окружения губернатора есть люди, заинтересованные в его смерти.";
+			link.l1 = "Продолжай...";
 			link.l1.go = "terrapin_2";
 		break;
 		
 		case "terrapin_2":
-			dialog.text = "It is known that Levasseur is fond of young colonist girls. They disappear after he finishes having fun with them. The main slave supplier of Tortuga is called Robert Marten of galleon Voltigeur\nHis buddy, Levasseur's nephew Henri Thibaut picks the prettiest white girls right in the port for his patron. So, not long ago, Marten got his hands on a very beautiful girl from English brig. Name's Molly Jones. He delivered her not to Levasseur, but to his nephew, at night to some secret grotto on Tortuga\nThe crew was told that the girl died of heart attack and her 'body' was thrown aboard. Looks like our buddies decided to leave a pretty thing to themselves. If Levasseur will find out about Molly, these two will have problems.";
-			link.l1 = "And how can we trust that information? It is obvious that both of them understand that they are playing with fire...";
+			dialog.text = "Известно, что Левассер – большой любитель поразвлечься с молодыми колонистками. После его забав они исчезают бесследно. Главным поставщиком рабов на Тортугу  является некий Робер Мартэн, капитан галеона под названием 'Вольтижер'\nЕго приятель, племянник Левассера, Анри Тибо, прямо в порту отбирает наиболее смазливых белокожих пленниц для своего патрона. Так вот, недавно в лапы Мартэна попала красотка с английского брига по имени Молли Джонс, которую вопреки обычным правилам Мартэн тайком передал Тибо ночью в каком-то секретном гроте\nПри этом команде за день до прибытия на Тортугу объявили, что девчонку хватил удар, а якобы ее тело выбросили за борт, завернутым в мешковину. Похоже, что Тибо с Мартеном решили оставить Молли для себя. Если Левассер узнает про это, им не сдобровать.";
+			link.l1 = "Насколько мы можем доверять этой информации? Очевидно, оба заговорщика понимают, что играют с огнем, и должны держать языки за зубами...";
 			link.l1.go = "terrapin_3";
 		break;
 		
 		case "terrapin_3":
-			dialog.text = "True. But every chain has a weak spot. And have found such for you. Three days ago, an ex sailor of 'Voltigeur' named Fernand Lucas drank too much and told a lot of interesting thing in Basse-Terre's tavern\nTurned out that Molly Jones had asked him to ask her brother in St John's for help. But Lucas never reached the goal, he is sitting his ass in Guadeloupe and drowning his cowardliness in rum\nAntigua is not a safe place for French pirates. Remember that! Colonel Fox is ready to hang them on every palm of the island after his wife died by the hand of French corsair. And his fearsome marines will do everything their commander orders.";
-			link.l1 = "I don't yet understand how it is connected with our business... Let's talk about our guys, Marten and Thibaut. What is the point of such a risk? Was the woman's charm that strong or did these slavers show mercy?";
+			dialog.text = "Все верно. Но в любой цепи всегда найдется слабое звено. И я нашел его для тебя. Три дня назад в таверне Бас-Тера бывший матрос с 'Вольтижера', по имени Фернан Люка, хватил лишнего и рассказал много интересного\nПомимо прочего выяснилось, что мисс Джонс просила его передать весточку своему брату в Сент-Джонсе с просьбой о помощи. Но Люка, сбежав от своего капитана, до цели так и не добрался, засев на Гваделупе и заливая ромом собственную трусость\nДело в том, что французским пиратам на Антигуа появляться небезопасно. Кстати, имей это в виду! Полковник Фокс, после гибели  своей жены, готов развешивать их гроздьями на окрестных пальмах. А для его грозных морпехов желание командира – закон.";
+			link.l1 = "Пока мне непонятно, какое это имеет отношение к нашему делу... Лучше давай вернемся к нашим дружкам, Мартэну и Тибо. Какой смысл в подобном риске для заговорщиков? Неужто женские чары оказались сильнее инстинкта самосохранения, или в работорговцах проснулось сострадание?";
 			link.l1.go = "terrapin_4";
 		break;
 		
 		case "terrapin_4":
-			dialog.text = "I know that scum Marten very well. If he is taking risks, that means that there is either gold involved or fear for his skin. I don't know what our prisoner has to do with this\nMaybe Robert is expecting to get a huge ransom for her, which is unlikely, the girl was looking like a servant. Or maybe... Ha! I wonder who might be more frightful for Marten than Levasseur!";
-			link.l1 = "And why do you think that miss Jones is still being hidden from the governor? Perhaps they had got what they wanted from her and delivered her to Levasseur? Yes, do you have anything specific to tell about this Thibaut?";
+			dialog.text = "Я хорошо знаю этого мерзавца Мартэна. И если он решил рисковать, то причиной этого может быть либо  золото, либо страх за собственную шкуру. Как это связано с пленницей - мне непонятно\nТо ли Робер хочет получить за нее огромный выкуп, то ли опасается мести в случае ее гибели со стороны кого-то, кого он боится больше Левассера. На первое непохоже, англичанка выглядела как служанка. На второе... Ха! Страшнее Левассера для Мартэна может быть только сам дьявол!";
+			link.l1 = "А с чего ты взял, что мисс Джонс до сих пор прячут от губернатора? Может, они с Тибо уже получили от нее, что хотели, и отдали Левассеру? Да, об этом Тибо можешь сказать что-то конкретное?";
 			link.l1.go = "terrapin_5";
 		break;
 		
 		case "terrapin_5":
-			dialog.text = "Don't know much about the man. I only know that the uncle trusts this pup enough to make him his heir. He still has a girl, otherwise why would they need all this conspiracy?\nIt's unclear where the girl is held and why Thibaut allows Marten to take lead. There is a mystery which may can help us win this game without storming Tortuga. You are French, so I guess, you would prefer it that way\nBut you should hurry, Lucas's drunk talks could be heard by agents of Marten and Levasseur, you can imagine the consequences!";
-			link.l1 = "I get it. So, Thibaut is an heir of Levasseur? And he hides a slave girl from his uncle? Damn, I guess the young man is eager to see uncle dead as soon as possible!";
+			dialog.text = "Про Тибо мне известно мало. Знаю только, что дядя доверяет этому щенку настолько, что объявил своим наследником. Девчонка до сих пор у него, поскольку изначально не предназначалась для Левассера. Иначе Мартэн не стал бы ломать комедию перед командой, опасаясь тайных осведомителей\nМисс Джонс передали Тибо, когда вся команда гуляла на берегу. На веслах сидело лишь несколько особо доверенных людей. Люка был один из них. Так что у Левассера она не появлялась. В этом я уверен\nНо где Тибо ее держит, и почему согласился плясать под дудку Мартэна, рискуя расположением губернатора - неясно. Чую, за всем этим стоит какая-то тайна! Сдается мне, что если грамотно разыграть эту партию, то можно сменить власть на Тортуге без ее самоубийственного штурма, что тебе, как французу, было бы вдвойне приятно\nНо надо поспешить, откровения Люка мог слышать еще кто-нибудь, кроме моего человека. Если они станут известны Мартэну или Левассеру... Сам понимаешь!";
+			link.l1 = "Понимаю. Значит, Тибо - наследник Левассера? И прячет наложницу от своего дяди? Клянусь громом, у него ходят в голове мыслишки, как бы сделать так, чтобы его драгоценый дядюшка побыстрее сыграл в ящик!";
 			link.l1.go = "terrapin_6";
 		break;
 		
 		case "terrapin_6":
-			dialog.text = "True. According to Lucas's words, this Molly is a rare piece of beauty, our brave Thibaut may had fallen in love with her. You know what people can do for the sake of love. Go to Basse-Terre\nFind this drunken idiot and make him speak. Plus, I you might want visit Antigua first, Molly had sent Lucas there for purpose. But what purpose?";
-			link.l1 = "I see. Let's not waste time. Thank you, Steven.";
+			dialog.text = "Вот-вот. Судя по словам Люка, эта Молли - чертовски красивая девка, так что вполне возможно, что наш бравый Тибо в нее втюрился. А на что может быть способен человек, ослепленный любовью - думаю, ты знаешь. Так что сейчас тебе прямая дорога в Бас-Тер\nНайди там этого придурка Люка и вытряхни из него все, что сможешь, касательно Тибо и Мартэна. Не помешает также разузнать об этой Молли Джонс и ее братце. Недаром она просила Люка доставить весточку.";
+			link.l1 = "Ясно. Не буду терять времени! Спасибо, Стивен!";
 			link.l1.go = "terrapin_7";
 		break;
 		
@@ -1623,10 +1623,10 @@ void ProcessDialogEvent()
 			// садим в таверну Робера Мартэна
 			float fMft = MOD_SKILL_ENEMY_RATE/10;
 			sld = GetCharacter(NPC_GenerateCharacter("Rober", "Marten", "man", "man", 30, FRANCE, -1, true, "quest"));
-			FantomMakeCoolSailor(sld, SHIP_GALEON_L, "Voltigeur", CANNON_TYPE_CANNON_LBS20, 90, 90, 90);
+			FantomMakeCoolSailor(sld, SHIP_GALEON_L, "Вольтижер", CANNON_TYPE_CANNON_LBS20, 90, 90, 90);
 			FantomMakeCoolFighter(sld, 30, 80, 80, "blade_19", "pistol5", "bullet", 150);
-			sld.name = "Rober";
-			sld.lastname = "Marten";
+			sld.name = "Робер";
+			sld.lastname = "Мартэн";
 			sld.dialog.FileName = "Quest\Sharlie\Terrapin.c";
 			sld.dialog.currentnode = "Rober";
 			sld.greeting = "pirat_common";
@@ -1670,56 +1670,56 @@ void ProcessDialogEvent()
 		break;
 		
 		case "terrapin_8":
-			dialog.text = "Go on!";
-			link.l1 = "I have found Molly's brother in St. John's. It is Fox's batman. But there is something strange. His sister Molly is a well known ugly hag about as tall as you. She is the maid of Fox's daughter, Catherine, and she had been in England with her until recently...";
+			dialog.text = "Выкладывай!";
+			link.l1 = "Я нашел в Сент-Джонсе брата Молли. Это денщик Фокса. Но выяснились странные вещи. Его сестра Молли всем известна как редкая уродина с тебя ростом. Она прислуживает дочери полковника Фокса - Кэтрин - и вместе с ней до недавнего времени была в Англии...";
 			link.l1.go = "terrapin_9";
 		break;
 		
 		case "terrapin_9":
 			dialog.text = "";
-			link.l1 = "As for Catherine, she indeed is known for her beauty and she was going to visit her father on his birthday, but she was late due to the squadron's delay in London...";
+			link.l1 = "А вот Кэтрин действительно славится своей красотой, и собиралась навестить отца к его юбилею, но не успела, поскольку эскадра задержалась в Лондоне...";
 			link.l1.go = "terrapin_10";
 		break;
 		
 		case "terrapin_10":
 			dialog.text = "";
-			link.l1 = "Her father, who took hard the death of his wife due the French corsair's attack, strictly has forbidden her from leaving England on a solitary ship. So Molly Jones can't be Thibaut's prisoner. Then who is she?";
+			link.l1 = "Отец, остро переживший гибель жены в результате атаки французского корсара, строго-настрого запретил ей покидать Англию на одиночном корабле. Так что пленницей Тибо никак не может быть Молли Джонс. Тогда кто она?";
 			link.l1.go = "terrapin_11";
 		break;
 		
 		case "terrapin_11":
-			dialog.text = "Hm... Damn if I know. Perhaps she is some other Molly Jones, not the one you've been asking about. Though... there are too many coincidences. I don't believe that it is all just an accident! I've got some unclear suspicions but... though many strange things can happen!";
-			link.l1 = "What do you mean? Tell me!";
+			dialog.text = "Хм... Черт его знает. Может, какая-нибудь еще одна Молли Джонс, не та, о которой ты расспрашивал. Хотя... уж больно много совпадений. Не верю я, что все это случайно! Есть у меня неясные подозрения, но... хотя чего только в нашей жизни не случается!";
+			link.l1 = "О чем это ты? Делись своими соображениями!";
 			link.l1.go = "terrapin_12";
 		break;
 		
 		case "terrapin_12":
-			dialog.text = "And what if the daughter disobeyed father's orders and set sail without an escort? Last month was quite stormy, Albatross could get damaged and became an easy pray for Marten. I suspect that Catherine herself is being kept in Tortuga under Molly's name\nYou know what awaits her if her true name is compromised. This is starting to make sense!";
-			link.l1 = "Damn it! I would have never thought about it! Molly... Catherine... But it is all coinciding!";
+			dialog.text = "А что, если дочь ослушалась приказа отца и рванула за океан, понадеявшись на скорость и опытную команду 'Альбатроса', а? Последний месяц сильно штормит... Бриг мог попасть в шторм, потерять скорость и стать легкой добычей Мартэна. Чую, что под именем Молли на Тортуге в плену сама Кэтрин Фокс\nОна могла притвориться служанкой, дабы не называть своего настоящего имени - сам понимаешь, чем это грозит ей. На первый взгляд это выглядит безумием, но зато все становится на свои места!";
+			link.l1 = "Черт побери! Я даже и не подумал! Молли... Кэтрин... Но ведь все сходится!";
 			link.l1.go = "terrapin_13";
 		break;
 		
 		case "terrapin_13":
-			dialog.text = "That is what I am talking about, pal. Not sure that we are right, but...";
-			link.l1 = "But it changes everything! Perhaps we should ask the English for support? To let the bayonets of the marines clear the way for us!";
+			dialog.text = "Вот и я о том же, дружище. Не факт, что мы с тобой правы, но...";
+			link.l1 = "Но ведь это меняет весь расклад! Может есть смысл заручиться поддержкой англичан? Пусть штыки морпехов расчистят нам дорогу!";
 			link.l1.go = "terrapin_14";
 		break;
 		
 		case "terrapin_14":
-			dialog.text = "Calm down, "+pchar.name+"! We need more solid proofs. We can not know for sure. Real Catherine might be in London, waiting for a squadron to set sail. Brits have got problems of their own, they won't risk attacking La Roche. But if our suspicions are true and colonel Fox will find out what has happened to his daughter...\n He we set up a blockade around the island and will wait for the squadron's arrival. Then he will storm the place. Sea foxes are a fearsome force in close quarters fighting. I am sure that he will raise the English flag above ruins of Tortuga in three days. Do you really want this?";
-			link.l1 = "No, it is not our way. Now I see what ransom Marten is talking about.";
+			dialog.text = "Не горячись, "+pchar.name+"! Во-первых, то, что пресловутая Молли Джонс на самом деле - Кэтрин Фокс, конечно, возможно, но не доказано. Может, Кати сейчас спокойно сидит в Лондоне и ждет отбытия эскадры Кромвеля\nВо-вторых, британцы пока не рискуют ломать зубы о стены Ля-Роша. У них хватает других проблем. Но если наша догадка верна, и полковник Фокс узнает, что его дочь в плену, он устроит Левассеру морскую блокаду и, дождавшись линейной эскадры, пойдет на штурм. Мало кто сравнится с морскими лисами в ближнем бою\nА калибры флагмана эскадры смогут легко поспорить с пушками Левассера. Если этот еретик не выдаст Кэтрин и голову Мартэна впридачу, уверен, не пройдет и трех дней, как полковник Фокс, не считаясь с потерями, сравняет Ля-Рош с землей, а на развалинах водрузит британский флаг. Оно нам надо?";
+			link.l1 = "Нет, это не наш путь. Но теперь понятно, за кого хочет получить выкуп Мартэн.";
 			link.l1.go = "terrapin_15";
 		break;
 		
 		case "terrapin_15":
-			dialog.text = "We must act carefully. We are not even sure that Marten is aware of true Molly's true identity. Blackmailing colonel Fox would be a suicidal idea. Especially when Cromwell's squadron is arriving shortly\nIf Catherine dies, we shall loose too. Our Brotherhood is not interested to make colonel Fox more angry than usual. This man can cause a lot of troubles. If Catherine has to die after all, we must make sure she dies not by our hands and after she plays her role in our game\nBut it would be much better to deliver poor girl to her father. Her saviour will be rewarded. If not in this world, than in the other.";
-			link.l1 = "For God's will... Steven, you are genius! I am going to Tortuga immediately! I will find out, who that Molly Jones is! I am damn sure that she is Catie Fox!";
+			dialog.text = "Думаю, что дело не в выкупе. Не уверен даже, что Мартэн уже разгадал нехитрый обман девушки. Нужно быть полным идиотом, чтобы решиться на шантаж полковника Фокса, тем более, когда на подходе эскадра Кромвеля\nЕсли я прав, то англичане не простят Мартэну гибели 'Альбатроса'. В случае смерти Кэтрин мы тоже проиграем. Братство не заинтересовано в ярости Фокса. Он и так не подарок, а на что способен в гневе, известно одному дьяволу, которому он служит. Если Кэтрин суждено умереть, то пусть она умрет без нашей помощи и после того, как сыграет в нашей партии. Не раньше\nНо лучше было бы доставить бедняжку отцу. Ее спасителю это зачтется. Не здесь, так на том свете.";
+			link.l1 = "На все воля Господа... Стивен, ты - просто гений! Немедленно выдвигаюсь на Тортугу! Там я выясню, кто она такая, эта Молли Джонс! Я на все сто уверен, что это Кати Фокс!";
 			link.l1.go = "terrapin_16";
 		break;
 		
 		case "terrapin_16":
-			dialog.text = "Perhaps... Don't waste time, "+pchar.name+". And if I was right - make sure she stays alive.";
-			link.l1 = "I will do what I can. See you!";
+			dialog.text = "Очень возможно... Не теряй времени, "+pchar.name+". И если моя догадка верна - постарайся сделать так, чтобы девушка осталась жива.";
+			link.l1 = "Я приложу все возможные усилия для этого. До встречи!";
 			link.l1.go = "terrapin_17";
 		break;
 		
@@ -1731,67 +1731,67 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "Ho-Ho! Spit it out, friend! We will solve any problem for damn sure!";
-			link.l1 = "I will get straight to the point, then. Do you know Miguel Dichoso?";
+			dialog.text = "Хо-хо! Выкладывай, что там у тебя, дружище! Решим любую проблему, клянусь громом!";
+			link.l1 = "Тогда начну без долгих предисловий. Ты знаешь человека по имени Мигель Дичозо?";
 			link.l1.go = "guardoftruth_1";
 		break;
 		
 		case "guardoftruth_1":
-			dialog.text = "I know him. That Spanish don sold me a great ship - a frigate. Eh, what a vessel she was, just imagine...";
-			link.l1 = "Let me guess, a unique hull, sixteen knots max speed? Santa Quiteria?";
+			dialog.text = "Знаю. Этот испанский дон продал мне один замечательный корабль, фрегат. Эх, такая посудина была - загляденье...";
+			link.l1 = "Дай угадаю: уникальный по обводам корпуса и способный развивать скорость до шестнадцати узлов? И назывался он 'Санта-Квитерия'?";
 			link.l1.go = "guardoftruth_2";
 		break;
 		
 		case "guardoftruth_2":
-			dialog.text = "You are right about her hull and speed, but the name was different - San Martin. I paid him a huge amount of gold, it was everything I had. All my savings went straight into that rogue's pockets.";
-			link.l1 = "Are you sure that her name was San Martin and not Santa Quiteria? And when did you buy it? And why are you calling him a rogue?";
+			dialog.text = "Насчет обводов и скорости ты совершенно прав, а вот назывался он по-другому: 'Сан-Мартин'. Я целую кучу золота за него выложил этому проходимцу. Все свои сбережения растратил.";
+			link.l1 = "Ты уверен, что 'Сан-Мартин', а не 'Санта-Квитерия'? И когда была совершена сделка? И почему ты назвал Дичозо проходимцем?";
 			link.l1.go = "guardoftruth_3";
 		break;
 		
 		case "guardoftruth_3":
-			dialog.text = "So many questions! I shall answer them all in the order: I am sure that it was San Martin. I personally had helped Alexus's workers to get rid of a plank with that papist name from the stern. I named her Fortune - a much more suitable name for such princess\nI bought her not long before Blaze Sharp was murdered in winter 1654. Why did I call Miguel like that? Because that son of a bitch had managed to steal the ship from Spanish military base of Providence. We had arranged quite a show for them, right in front of San Juan's fort. I sacrificed two half-dead luggers in order to make the fight more trustworthy. I got the ship and Dichoso got money. He told his high command that the frigate was sunken in a battle with pirates, San Juan's commandant verified that.";
-			link.l1 = "So that is how Spanish dons fill their pockets! What a scoundrel! Tell me, had it really happened in winter 1654? Maybe in spring? And was the frigate damaged by storms?";
+			dialog.text = "Ого, сколько вопросов! Отвечаю по-порядку: совершенно уверен, что 'Сан-Мартин', потому что я лично помогал работникам Алексуса отдирать доску с этим папистским именем от кормы. Я назвал этот фрегат 'Фортуна' - куда более подходящее имя такому красавцу\nКупил я его незадолго до того, как был убит Блейз Шарп, зимой 1654 года. А почему я назвал дона Мигеля проходимцем? Да потому что этот корабль он украл у испанского военного флота, с базы Провиденсия. Мы разыграли целый спектакль с пальбой и дымом на глазах у форта Сан-Хуан\nЯ пожертвовал пару дырявых люггеров, которые мы сожгли и затопили, инсценируя бой с фрегатом. А как спустилась темнота - отогнали 'Сан-Мартин' на Исла Тесоро. Я получил корабль, а Дичозо - золото. В дальнейшем он доложил своему начальству, что фрегат был потоплен в бою с пиратами, что подтвердил комендант форта Сан-Хуан.";
+			link.l1 = "Вот как испанские доны набивают себе карманы! Каков прохиндей! Скажи, а это точно случилось зимой 1654 года? Может, все-таки весной? И не имел ли твой новый фрегат следов потрепанности штормом?";
 			link.l1.go = "guardoftruth_4";
 		break;
 		
 		case "guardoftruth_4":
-			dialog.text = "In winter... Damn it, I am not totally sure - could be in spring, too. I don't remember really. The frigate wasn't damaged, she was all new. She looked newly built. When I think of her, I just want to cry with vexation...";
-			link.l1 = "Why? Yeah, and where is your beautiful frigate now?";
+			dialog.text = "Вроде зимой... да черт его знает, может, и весной. Я точно не помню. А потрепанным фрегат не был - совсем новенький, с иголочки. Видно, недавно со стапелей сошел. Эх, когда я его вспоминаю, выть хочу от досады...";
+			link.l1 = "А почему? Да, и где твой красавец-фрегат сейчас?";
 			link.l1.go = "guardoftruth_5";
 		break;
 		
 		case "guardoftruth_5":
-			dialog.text = "Because she is gone from me. They set me up, put my talisman on Blaze's corpse and spread the word that I was the murderer. Then I heard that Marcus Tyrex - our code keeper - is going to hand me a black mark. So I decided to escape from that mess for a while at the Island of Justice, where you had found me\nI couldn't get there on a frigate, so I pledged her to Black Pastor in exchange for a brig filled with provision, I didn't have much coin after my deal with that sly Dichoso. I was hoping to sell provision and to return to Isla Tesoro in a month or two... Well, you know the rest.";
-			link.l1 = "And Black Pastor didn't wait for you, so he sold her";
+			dialog.text = "Да вот именно потому и выть хочу, что нет его больше. Когда убили Блейза, все подозрения пали на меня: на трупе нашли мой талисман - акулий зуб, которым, собственно, и зарезали Шарпа, и еще какая-то сволочь распустила по Исла-Тесоро слухи, что меня видели в ту ночь у вот этой самой резиденции\nПотом я узнал, что Маркус Тиракс - хранитель Кодекса - собирается отправить мне черную метку. Вот тогда-то я и решил скрыться на время, пока страсти поулягутся, и отправился на Остров Справедливости, где ты меня и нашел\nНо, как ты помнишь, к Острову нельзя подойти на фрегате. Поэтому я оставил свою 'Фортуну' в залог Черному Пастору в обмен на бриг с продовольствием - денег у меня было в обрез, так как все ушло этому хитрецу Дичозо. Я думал выгодно продать провиант и вернуться через месяцок-другой, но чертовы кланы напали на мой бриг и сожгли его... впрочем, это ты уже знаешь.";
+			link.l1 = "И Черный Пастор, не дождавшись, продал твой фрегат...";
 			link.l1.go = "guardoftruth_6";
 		break;
 		
 		case "guardoftruth_6":
-			dialog.text = "Precisely. She was bought by one English, or to be more specific, by one Scot, William Patterson. I could try to return the girl, sure, but this highlander is a serious bird, a captain of Royal Navy, a good friend of colonel Fox. Besides, he was doing business with Jackman same way you were with Svensson\nThe Scot has a squadron... screw it, I will not see my ship again.";
-			link.l1 = "I see. Don't you know where is that Dichoso now?";
+			dialog.text = "Именно так. Его купил англичанин, вернее - шотландец, Вильям Патерсон. Я, конечно, мог бы попытаться вернуть себе 'Фортуну' тем или иным способом, но этот горец - большая шишка, капитан Королевского флота, любимец самого полковника Фокса. Кстати, он еще и с Джекманом якшался, примерно так, как ты со Свенсоном\nХодит в составе мощной эскадры... нет, об этом можно забыть. Больше я своего корабля не увижу.";
+			link.l1 = "Ясно. Ты не знаешь, где сейчас Дичозо?";
 			link.l1.go = "guardoftruth_7";
 		break;
 		
 		case "guardoftruth_7":
-			dialog.text = "I have no idea. I have never seen him after I bought my Fortune.";
-			link.l1 = "And why didn't Miguel offer to buy it to someone else? How about Tyrex, Barbazon, Sharp? Or Patterson?";
+			dialog.text = "Понятия не имею. После покупки 'Фортуны' я больше его не видел и ничего о нем не слышал.";
+			link.l1 = "А почему дон Мигель предложил купить фрегат таким необычным способом именно тебе? Почему не Тираксу, не Барбазону, не Шарпу, наконец? Или Патерсону?";
 			link.l1.go = "guardoftruth_8";
 		break;
 		
 		case "guardoftruth_8":
-			dialog.text = "I have no idea. Patterson wasn't here that time as far as I remember. Zachariah, Jaques and Marcus would have never agreed and I... I really liked the frigate!";
-			link.l1 = "I understand that... I don't understand a thing. Puzzles everywhere...";
+			dialog.text = "Да пес его знает. Патерсона тогда на архипелаге вроде как не было еще. Захария, Жак и Маркус на эту авантюру навряд ли бы подписались, а вот я... так уж мне понравился этот фрегат!";
+			link.l1 = "Понятно... что ничего не понятно. Сплошные загадки...";
 			link.l1.go = "guardoftruth_9";
 		break;
 		
 		case "guardoftruth_9":
-			dialog.text = "Delving in the past again? What island do you want to take this time? Ha-ha-ha!";
-			link.l1 = "There is one island... Though I can't find a way to it yet. Fine, Steven, thanks for your information! Farewell!";
+			dialog.text = "Ты опять начал копаться в прошлом? Какой остров на этот раз решил прихватить? Ха-ха-ха!";
+			link.l1 = "Да есть тут один... только пока дорогу к нему никак не найду. Ладно, Стивен, спасибо за информацию! Бывай!";
 			link.l1.go = "guardoftruth_10";
 		break;
 		
 		case "guardoftruth_10":
-			dialog.text = "Good luck, "+pchar.name+"!";
+			dialog.text = "Удачи, "+pchar.name+"!";
 			link.l1 = "...";
 			link.l1.go = "guardoftruth_11";
 		break;
@@ -1806,32 +1806,32 @@ void ProcessDialogEvent()
 		break;
 		
 		case "tieyasal":
-			dialog.text = "And I am glad to help you, as always. What do you want this time, "+pchar.name+"?";
-			link.l1 = "It's again about your old friend Miguel Dichoso. I am aware that he was seen on Isla Tesoro again. Can't you help me to find him?";
+			dialog.text = "И я как обычно - рад тебе помочь. Что на этот раз, "+pchar.name+"?";
+			link.l1 = "Я снова по поводу твоего старого знакомца - Мигеля Дичозо. У меня есть сведения, что он снова появился на Исла Тесоро. Не подскажешь, где его найти?";
 			link.l1.go = "tieyasal_1";
 		break;
 		
 		case "tieyasal_1":
-			dialog.text = "Ho, friend, I didn't know that, actually. I haven't seen him here. I haven't seen him since I bought Fortune from him. And why do you need that Spanish don?";
-			link.l1 = "I need him. Miguel knows the way to an old Indian city. I am really eager to get there.";
+			dialog.text = "Хо, дружище, вот это для меня самого новость. Я не видел его на Исла Тесоро. Я вообще его не видел с самого того дня, как приобрел у него 'Фортуну'. А зачем тебе сдался этот испанский дон?";
+			link.l1 = "Да вот, нужен он мне. Мигель знает дорогу в старый индейский город. А мне страсть как нужно туда попасть.";
 			link.l1.go = "tieyasal_2";
 		break;
 		
 		case "tieyasal_2":
-			dialog.text = "Just as always, my friend, you are going to drag yourself into the mess. Alas, I can't help you. I advice you to walk around the settlement and ask people, perhaps someone had seen him. He is a famous man here, you know.";
-			link.l1 = "Hey, Steven, can you at least tell me what he looks like?";
+			dialog.text = "Узнаю тебя, приятель: опять лезешь в самое пекло! Но увы - я ничем не помогу тебе. Могу лишь посоветовать походить по поселку и поспрашивать у людей - может, кто его и видел. Он тут фигура известная.";
+			link.l1 = "Слушай, Стивен, ты хоть опиши мне его, как он выглядит внешне?";
 			link.l1.go = "tieyasal_3";
 		break;
 		
 		case "tieyasal_3":
-			dialog.text = "Well, he is twenty five - twenty eight years old, about as tall as you, dark eyes, no wig. There is a saber scar on his right cheek.";
-			link.l1 = "Hm. You know, there are many people who would fit that description.";
+			dialog.text = "Ну, ему лет двадцать пять-двадцать восемь, ростом примерно с тебя, глаза темные, волосы недлинные, париков не носит. На правой щеке сабельный шрам.";
+			link.l1 = "Хм. Под это описание много кто подойдет.";
 			link.l1.go = "tieyasal_4";
 		break;
 		
 		case "tieyasal_4":
-			dialog.text = "There are no other unique details about him. He is self-confident, insolent and very dangerous. There were gossips about him...";
-			link.l1 = "I see. Fine, I will ask around about him. Good luck, Steven!";
+			dialog.text = "Других уникальных примет у него нет. А вообще - уверенный в себе, нагловатый и очень опасный тип. Про него всякие слухи ходили.";
+			link.l1 = "Ясно. Ладно, поспрашиваю в поселении. Удачи, Стивен!";
 			link.l1.go = "tieyasal_5";
 		break;
 		
@@ -1843,56 +1843,56 @@ void ProcessDialogEvent()
 		
 		// Jason НСО
 		case "patria":
-			dialog.text = "Ho-ho! You've come to the right place! Spit it out!";
-			link.l1 = "There is a fella that has no fear of pirates. He doesn't take them seriously. He needs to be taught a lesson om respect. Remember, don't kill him.";
+			dialog.text = "Хо-хо, тогда ты по адресу! Выкладывай!";
+			link.l1 = "Есть один фрукт, который не боится пиратов. Всерьез их не воспринимает. Надо его поучить уму-разуму. Но не убивать.";
 			link.l1.go = "patria_1";
 		break;
 		
 		case "patria_1":
-			dialog.text = "Huh! It's noone else than the old man Charles! I bet you got yourself into some affair again! Let's get to the details, who's the target this time and what shall we teach him";
-			link.l1 = "A guest from Europe, an inspector of the French Ministry of Finance - baron Noel Forget. He wants to establish a French Trading Company here, but me and a close friend of mine object against it. We tried to convince the baron, that trading here would be very risky because of the Dutch, English and especially pirates after Levasseur was defeated, but he won't listen. We need to strike fear into him, to make him feel it on his own skin.";
+			dialog.text = "Хех! Узнаю старину Шарля! Опять что-то затеял! Ну, давай подробнее, что за фрукт, как учить будем?";
+			link.l1 = "Гость из Европы, инспектор министерства финансов барон Ноэль Форже. Хочет организовать тут Французскую торговую Компанию, а я и мой большой друг этого не хотим. Мы пытались убедить барона, что торговать тут весьма опасно из-за голландцев, испанцев, англичан и особенно пиратов, после разгрома Левассера, но он и ухом не ведет. Надо внушить ему страх, и дать прочувствовать его на своей собственной шкуре.";
 			link.l1.go = "patria_2";
 		break;
 		
 		case "patria_2":
-			dialog.text = "Yes-yes... An actual baron!.. Shall we assault his ship?";
-			link.l1 = "Here's the plan: his vessel will depart to Capsterville from Port-au-Prince soon. He must be intercepted by Saint Kitts and take the baron as a hostage. It would be better if you didn't sink the ship and avoided killing men. The French are our friends, after all. Will you be able handle that?";
+			dialog.text = "Так-так... Неужто барон!.. Напасть на его корабль?";
+			link.l1 = "План таков: его судно отправляется к Капстервилю из Порт-о-Пренса. Уже скоро. Надо перехватить его у Сент-Кристофера и взять барона в плен. Корабль лучше бы не топить и людей не губить, все-таки свои, французы... Сможешь?";
 			link.l1.go = "patria_3";
 		break;
 		
 		case "patria_3":
-			dialog.text = "Well, I can't promise anything. But I'll try. What ship is it?";
-			link.l1 = "A brig called 'Favory'.";
+			dialog.text = "Это уж как пойдет, сам знаешь. Но постараюсь. Что за корабль?";
+			link.l1 = "Бриг под названием 'Фавори'.";
 			link.l1.go = "patria_4";
 		break;
 		
 		case "patria_4":
-			dialog.text = "A brig is no match for my frigate. We'll easily deal with them. If it surrenders, I'll let everyone live.";
-			link.l1 = "Perfect. Strike fear and offer them to yield. Afterwards, send the baron to the rat-infested hold. Try to find the filthiest place you can, but keep him there no longer than a day, or else he could get sick and die. Then accomodate him in the cabin, go to the Isla Tesoro, and lock in some secluded place. Dress some of your men as captured French merchants and make them to act like ones. For three days straight, they should tell him all about how the ruthless pirates chase them, rob them, demand ransoms, torture them... with all the details required.";
+			dialog.text = "Бриг моему фрегату не противник. Легко разделаемся. Если сдастся, отпущу всех целыми.";
+			link.l1 = "Отлично. Нагони страху и предложи капитулировать. Барона отправишь в трюм к крысам, где пострашнее и погрязнее, но только на день, а то еще заболеет и умрет. Потом посели в каюте, доставь на Исла Тесоро в укромное местечко и запри надежно. К нему надо отправить подсадных уток - твоих людей, которые будут играть роль пленных французских купцов. Пусть они ему дня три рассказывают, как пираты нещадно гоняют торговцев, грабят их и пытают... выкуп требуют... во всех красках.";
 			link.l1.go = "patria_5";
 		break;
 		
 		case "patria_5":
-			dialog.text = "Ha-ha-ha! This must be the funniest job I've ever taken on since a very long time! Well then, I will find such actors, pal. Have no doubt, after their stories your baron will crap his pants! They will show him scars from cutlasses and heated ramrods... ";
-			link.l1 = "Nailed it. Then you will force him to write a letter to Poincy, asking for ransom. Thirty five hundred thousand for such a big shot is not that much.";
+			dialog.text = "Ха-ха-ха! Такого веселого дела у меня давно не было! Ну что же, найду таких клоунов, дружище. Не сомневайся, после их рассказов твой барон в штаны наложит. Они ему и шрамы от сабель и шомполов раскаленных покажут...";
+			link.l1 = "То, что надо. Потом заставишь написать его письмо на имя Пуанси с просьбой о выкупе. Тысяч триста пятьдесят за такую важную птицу много не будет.";
 			link.l1.go = "patria_6";
 		break;
 		
 		case "patria_6":
-			dialog.text = "Good. What shall we do next?";
-			link.l1 = "And then you'll bring the baron to Terrax. There you will take the ransom, and you will give me the baron. And additionally you should tell them, that they will answer for Tortuga and Levasseur.";
+			dialog.text = "Хорошо. Что дальше?";
+			link.l1 = "А потом ты привезешь барона на Теркс. На Терксе передадим выкуп, а ты мне отдашь барона. Плюс скажешь, что за Тортугу и Левассера французы еще ответят не раз.";
 			link.l1.go = "patria_7";
 		break;
 		
 		case "patria_7":
-			dialog.text = "Ha-ha-ha! That one hell of a trick! We personally, well, you know what we did to Levasseur, and now... ha-ha-ha!.. Fine, pal. It will be done! You believe that the ship will arrive soon?";
-			link.l1 = "Soon. We need to be on lookout.";
+			dialog.text = "Ха-ха-ха! Вот это умора! Мы сами с тобой Левассера - того, а теперь... Ха-ха-ха!.. Хорошо, дружище, для тебя - все сделаю! Говоришь, скоро кораблик придет?";
+			link.l1 = "Скоро. Но надо уже караулить.";
 			link.l1.go = "patria_8";
 		break;
 		
 		case "patria_8":
-			dialog.text = "Don't be bothered , I won't let you down. I will handle this personally. When you hear rumor that the baron was captured, come to me.";
-			link.l1 = "Good. My thanks, Steven.";
+			dialog.text = "Не дрейфь, не подведу. Лично займусь этим. Как пройдет слух, что захватили барона, дуй ко мне.";
+			link.l1 = "Хорошо. Спасибо, Стивен.";
 			link.l1.go = "patria_9";
 		break;
 		
@@ -1905,26 +1905,26 @@ void ProcessDialogEvent()
 		break;
 		
 		case "patria_10":
-			dialog.text = "Of course, pal. As agreed. Scary tales about evil pirates, slaughtering innocent French merchants, The sounds of a whip, moans and screams. Brazier with coal and scorched handcuffs. Just like it should be.";
-			link.l1 = "Well now! Hold your horses. I need him alive.";
+			dialog.text = "Конечно, приятель, как договаривались. Страшные истории о злых пиратах, потрошащих невинных французских торговцев. Щелкание плеткой, вопли и крики. Жаровня с углями и раскаленные наручники. Все в лучших традициях.";
+			link.l1 = "Но-но! Только не переусердствуйте. Он мне живой нужен.";
 			link.l1.go = "patria_11";
 		break;
 		
 		case "patria_11":
-			dialog.text = "Worry not, he will live. He wrote that letter with a shaky hand. Here it is.";
-			link.l1 = "What is written there? He's begging Poincy to get him out of this?";
+			dialog.text = "Не дрейфь, жив будет. Письмо он уже дрожащей рукой накалякал. Держи.";
+			link.l1 = "Что там написано? Умоляет Пуанси забрать его отсюда?";
 			link.l1.go = "patria_12";
 		break;
 		
 		case "patria_12":
-			dialog.text = "Spot on, pal! He's begging!";
-			link.l1 = "Throw this letter away, or better - burn it. We'll meet on Terks in a week. It must look as if we need time to collect the ransom.";
+			dialog.text = "В точку - умоляет!";
+			link.l1 = "Выброси это письмо, а лучше сожги. Через неделю встречаемся на Терксе. Надо же время типа для сбора выкупа.";
 			link.l1.go = "patria_13";
 		break;
 		
 		case "patria_13":
-			dialog.text = "Got it. In a week time, Northern gulf. Don't forget to take the money: this must look pretty. Afterwards, come to me, well settle this.";
-			link.l1 = "Of course, I bet even the echinus would have figured that out. See you later! ";
+			dialog.text = "Договорились. В заливе Северный через неделю. Деньги не забудь взять: надо, чтобы все красиво выглядело. Потом ко мне зайдешь - разберемся.";
+			link.l1 = "Это и морскому ежу ясно. До встречи, Стивен!";
 			link.l1.go = "patria_14";
 		break;
 		
@@ -1938,35 +1938,35 @@ void ProcessDialogEvent()
 		
 		case "patria_15":
 			pchar.quest.Patria_CondotierTerksOver.over = "yes"; //снять таймер
-			dialog.text = "Hey, frog! Halt!";
-			link.l1 = "I'm not moving";
+			dialog.text = "Эй, лягушатник! А ну, стоять!";
+			link.l1 = "Стою.";
 			link.l1.go = "patria_16";
 		break;
 		
 		case "patria_16":
-			dialog.text = "Here's your baron. A bit worn, but in one piece. Is it him?";
-			link.l1 = "Yes.";
+			dialog.text = "Вот твой барон, немного потрепанный, но целый. Он?";
+			link.l1 = "Да.";
 			link.l1.go = "patria_17";
 		break;
 		
 		case "patria_17":
-			dialog.text = "Perfect. Now hand over the money or he is done for! And don't try to trick us, we've got you in the sights!";
+			dialog.text = "Отлично. А теперь гони деньги, иначе кончим твоего барона прямо тут! И не вздумай хитрить, ты у нас под прицелом!";
 			if (sti(pchar.money) >= 350000)
 			{
-				link.l1 = "Here.";
+				link.l1 = "Держи.";
 				link.l1.go = "patria_18";
 			}
 			else
 			{
-				link.l1 = "Damn! I forot it on the ship...";
+				link.l1 = "Вот черт! На корабле забыл...";
 				link.l1.go = "patria_22";
 			}
 		break;
 		
 		case "patria_18":
 			AddMoneyToCharacter(pchar, -350000);
-			dialog.text = "Ha-ha-ha! You're a smart kid, frenchie. Take thine holiness. And tell Poincy that he should prepare the money: you'll have to pay up for what you did to Levasseur and Tortuga. And your hagglers shall pay us with their, goods and ships. Ha-ha-ha! Don't forget to bring us some more barons to the archipelago, they bring us a lot of profit! Ha-ha-ha!";
-			link.l1 = "Please go to my boat, baron.";
+			dialog.text = "Ха-ха-ха! А ты молодец, французик. Забирай свое высокопреосвященство. И передай Пуанси, пусть готовит денежки: вы будете теперь долго и дорого платить за то, что сделали с Левассером и Тортугой. И ваши торгаши будут нам платить, товарами и кораблями. Ха-ха-ха! Привозите нам на Архипелаг еще баронов, за них хорошо платят! Ха-ха-ха!";
+			link.l1 = "Барон, идите к моей шлюпке.";
 			link.l1.go = "patria_19";
 		break;
 		
@@ -1974,13 +1974,13 @@ void ProcessDialogEvent()
 			sld = CharacterFromID("Noel");
 			LAi_SetActorType(sld);
 			LAi_ActorRunToLocation(sld, "reload", "reload1_back", "none", "", "", "", 10.0);
-			dialog.text = "And don't even think about chasing us, captain. You know who I am. I hold the more frogs captive, and if I don't return home in time, they all be done for. Got it?";
-			link.l1 = "The time will come and we shall deal with you, cursed blasphemers!";
+			dialog.text = "И не вздумай преследовать нас, капитан. Ты знаешь, кто я. У меня в плену еще три лягушатника, и если я не вернусь домой к сроку - их всех кончат. Понял?";
+			link.l1 = "Придет время, и мы займемся вами вплотную, проклятые безбожники!";
 			link.l1.go = "patria_20";
 		break;
 		
 		case "patria_20":
-			dialog.text = "Ha-ha-ha-ha!";
+			dialog.text = "А-ха-ха-ха!";
 			link.l1 = "...";
 			link.l1.go = "patria_21";
 		break;
@@ -2009,8 +2009,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "patria_22":
-			dialog.text = "Are you messing with me?";
-			link.l1 = "One minute, I'll bring it...";
+			dialog.text = "Ты что, шутить со мной вздумал?";
+			link.l1 = "Сейчас принесу...";
 			link.l1.go = "patria_23";
 		break;
 		
@@ -2024,25 +2024,25 @@ void ProcessDialogEvent()
 		
 		case "patria_24":
 			dialog.text = "";
-			link.l1 = "Argh, Steven, what has your dullard done!";
+			link.l1 = "А-ать, Стивен, что твой олух наделал!";
 			link.l1.go = "patria_25";
 		break;
 		
 		case "patria_25":
-			dialog.text = "Charles, what were you doing? Where's the money? I didn't tell my boys that this wasn't real... and so this idiot decided that you wanted to trick them...";
-			link.l1 = "What a shame! Baron is dead... What will Poincy do now?";
+			dialog.text = "Шарль, а ты куда смотрел? Где деньги? Я же перед своими дураками все за чистую монету выдал... этот дурень и решил, что ты хочешь надуть...";
+			link.l1 = "Вот неудача! Барон мертв... Что теперь Пуанси скажет?";
 			link.l1.go = "patria_26";
 		break;
 		
 		case "patria_26":
-			dialog.text = "Well, pal, It's your fault, I hope you understand that. Perhaps it will be all the better for you.";
-			link.l1 = "What an idiot I am! Messed everything up. Fine, I'll go to Poincy... Forgive me for being a fool, Steven, see you.";
+			dialog.text = "Ну, дружище, тут ты сам напорол, понимаешь, надеюсь. А может, так и лучше для вас повернется.";
+			link.l1 = "Да, ну и растяпа же я! Все испортил. Ладно, пойду к Пуанси... Бывай, Стивен, и прости дурака.";
 			link.l1.go = "patria_27";
 		break;
 		
 		case "patria_27":
-			dialog.text = "You need to rest, you're losing your touch. Come to me sometime, I'll get you some rum and fine maidens.";
-			link.l1 = "Thank you, I'll play you a visit when I can.";
+			dialog.text = "Тебе надо отдохнуть - ты теряешь хватку. Заходи в гости, я тебе девок и рому организую.";
+			link.l1 = "Спасибо, загляну как-нибудь.";
 			link.l1.go = "patria_28";
 		break;
 		
@@ -2061,22 +2061,22 @@ void ProcessDialogEvent()
 		break;
 		
 		case "patria_29":
-			dialog.text = "You're welcome, pal. For me this was the most fun I've had this year! We laughed so much, me and my lads!.. So I'd like to thank you for this. Here's your money.";
-			link.l1 = "You should keep yourself a share.";
+			dialog.text = "Не за что, дружище. Для меня это было лучшим развлечением за последний год! Мы тут с ребятами так нагоготались!.. Так что это тебе спасибо, повеселил на славу. Держи свои деньги.";
+			link.l1 = "Думаю, что тебе должна причитаться их часть.";
 			link.l1.go = "patria_30";
 		break;
 		
 		case "patria_30":
 			AddMoneyToCharacter(pchar, 350000);
-			dialog.text = "Forget it. I did this for the sake of our friendship. The Brotherhood of the Coast owes you much more, yet you didn't ask for a single dubloon.";
-			link.l1 = "Still, take at least fifty thousand for the services and compensation. Thank you, Steven! I'm glad that I once met you on that strange island of the lost ships.";
+			dialog.text = "Брось. Это по дружбе. Ты сделал для Берегового братства в разы больше, и не попросил ни дублона.";
+			link.l1 = "И все же возьми пятьдесят тысяч компенсации за издержки. Спасибо, Стивен! Рад, что мы когда-то с тобой познакомились, на том странном острове Погибших кораблей.";
 			link.l1.go = "patria_31";
 		break;
 		
 		case "patria_31":
 			AddMoneyToCharacter(pchar, -50000);
-			dialog.text = "And so am I. Charles, pay me a visit whenever you have some time!";
-			link.l1 = "With pleasure!";
+			dialog.text = "И я тоже этому чертовски рад, Шарль. Заходи в гости, как время будет!";
+			link.l1 = "Обязательно!";
 			link.l1.go = "patria_32";
 		break;
 		
@@ -2086,20 +2086,20 @@ void ProcessDialogEvent()
 		break;
 		
 		case "patria_33":
-			dialog.text = "You're late by a week! I didn't tell my boys that this wasn't real... ! They refused to wait any longer, and decided to end your baron!";
-			link.l1 = "What an idiot I am! Messed everything up! What am I going to tell Poincy?";
+			dialog.text = "Мы тебя ждали неделю! А я своим дуракам все за чистую монету выдал! И в один прекрасный момент они просто кончили твоего барона!";
+			link.l1 = "А-ать! Что же я теперь Пуанси скажу? Вот растяпа я!";
 			link.l1.go = "patria_34";
 		break;
 		
 		case "patria_34":
-			dialog.text = "Well, pal, It's your fault, I hope you understand that. Perhaps it will be all the better for you.";
-			link.l1 = "Fine, I'll go to Poincy... Forgive me for being a fool, Steven, see you..";
+			dialog.text = "Ну, дружище, тут ты сам напорол, понимаешь, надеюсь. А может, так и лучше для вас повернется.";
+			link.l1 = "Ладно, пойду к Пуанси... Бывай, Стивен, и прости дурака.";
 			link.l1.go = "patria_35";
 		break;
 		
 		case "patria_35":
-			dialog.text = "You need to rest, you're losing your touch. Come to me sometime, I'll get you some rum and fine maidens";
-			link.l1 = "Thank you, I'll play you a visit when I can.";
+			dialog.text = "Тебе надо отдохнуть - ты теряешь хватку. Заходи в гости, я тебе девок и рому организую.";
+			link.l1 = "Спасибо, загляну как-нибудь.";
 			link.l1.go = "patria_36";
 		break;
 		

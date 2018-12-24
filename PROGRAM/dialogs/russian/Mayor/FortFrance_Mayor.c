@@ -4,34 +4,34 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What do you want? Ask away.", "I am listening to you, what's the question?"), "It is the second time you are trying to ask...", "It is the third time you are again trying to ask...",
-                          "When is it going to end?! I am a busy man, working on the colony's matters and you are still trying to ask something!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Not now. There is no time."), "True... But later, not now...",
-                      "I'll ask, I'll ask... a bit later though...", "I am sorry, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);			  
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Что вы хотели? Спрашивайте.", "Я слушаю вас, что за вопрос?"), "Второй раз за день вы пытаетесь задать вопрос...", "В третий раз за день вы опять пытаетесь задать вопрос...",
+                          "Да когда же это кончится?! У меня дел полно по управлению делами города, а ты все вопросы пытаешься задать!", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал"+ GetSexPhrase("","а") +"...", "Не сейчас, не место и не время..."), "Да, верно... Но не сейчас, позже...",
+                      "Задам, задам... Только позже...", "Извините, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			//--> Бремя гасконца
 			if (CheckAttribute(pchar, "questTemp.Sharlie.Junglejew"))
 			{
-				link.l1 = "Monsieur, I have found a bandit corpse in jungles. He was killed by the Indians. There were those earrings on his body, looks like they were brought here from Europe. Maybe they were belonging to one of the nobles in your town?";
+				link.l1 = "Месье, я нашел в джунглях труп бандита, убитого индейцами. На теле кроме прочего были вот эти серьги - явно привезенные из Европы. Может, они принадлежали кому-то из знатных граждан вашего города?";
                 link.l1.go = "Sharlie_junglejew";
 			}
 			//<-- Бремя гасконца
 			// Jason НСО
 			if (CheckAttribute(pchar, "questTemp.Patria") && pchar.questTemp.Patria == "epizode_9_continue" && !CheckAttribute(npchar, "quest.frigate"))
 			{
-				link.l1 = "I arrived by the order of Governor General Philippe de Poincy to take command of your armed frigate.";
+				link.l1 = "Я прибыл по приказу генерал-губернатора Филиппа де Пуанси чтобы принять командование над снаряженным вами фрегатом.";
                 link.l1.go = "patria";
 			}
 			if (CheckAttribute(npchar, "quest.frigate.wait") && GetCompanionQuantity(pchar) < 5)
 			{
-				link.l1 = "I'm ready to take the frigate into the squadron.";
+				link.l1 = "Я готов принять в эскадру фрегат.";
                 link.l1.go = "patria_2";
 			}
 		break;
 		
 		case "Sharlie_junglejew":
-			dialog.text = "Let's take a closer look ... Incredible! It's just incredible, Charles! This is my wife's earrings. I gave them to her before I left for the colonies. They disappeared a few months ago under mysterious circumstances. I knew they were stolen!\nCharles, I'm very glad that you came directly to me, and did not sell this thing that I hold so dear to the merchants. I'll repay you your favour. From what I've heard, you are going to buy a ship? Since you decided to partake in seafaring, you will undoubtedly need a map of our archipelago. Here, take it. I'm sure it will come in handy!";
-			link.l1 = "Thank you, your Grace!";
+			dialog.text = "Дайте поглядеть поближе... Невероятно! Это просто невероятно, Шарль! Это серьги моей жены. Я сам их ей подарил перед отъездом в колонии. Они исчезли несколько месяцев назад при загадочных обстоятельствах. Я так и знал, что они были украдены!\nШарль, я очень рад, что вы пришли прямо ко мне, а не стали сбывать эту дорогую мне вещь лавочникам. Я в долгу не останусь. Как я слышал, вы собираетесь приобрести корабль? Раз вы решили приобщиться к морскому делу, то вам несомненно потребуется карта нашего архипелага. Вот, возьмите ее. Уверен, она не раз вам пригодится!";
+			link.l1 = "Спасибо, Ваша Светлость!";
 			link.l1.go = "Sharlie_junglejew_1";
 		break;
 		
@@ -49,14 +49,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "patria":
 			if (GetCompanionQuantity(pchar) > 4)
 			{
-				dialog.text = "The ship is ready, but you do not have room for it. Reduce your squadron and return, and I will immediately give you the frigate..";
-				link.l1 = "Fine.";
+				dialog.text = "Корабль готов, но у вас нет места для него. Уменьшите вашу эскадру и возвращайтесь, и я сразу передам вам фрегат.";
+				link.l1 = "Хорошо.";
 				link.l1.go = "patria_1";
 			}
 			else
 			{
-				dialog.text = "Yes, of course, the ship is ready to sail. The captain is aware and will carry out all your orders.";
-				link.l1 = "Then we're setting out. Farewell, Your Grace.";
+				dialog.text = "Да, конечно, корабль готов к выходу в море. Капитан осведомлен и будет выполнять все ваши распоряжения.";
+				link.l1 = "Тогда мы отправляемся в путь. До свидания, Ваша Светлость.";
 				link.l1.go = "patria_3";
 			}
 		break;
@@ -68,8 +68,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "patria_2":
 			DeleteAttribute(npchar, "quest.frigate.wait");
-			dialog.text = "Excellent. Prepare to greet your new ship. The captain is aware and will follow all your orders.";
-			link.l1 = "Then we're setting out. Farewell, Your Grace.";
+			dialog.text = "Отлично. Принимайте. Капитан осведомлен и будет выполнять все ваши распоряжения.";
+			link.l1 = "Тогда мы отправляемся в путь. До свидания, Ваша Светлость.";
 			link.l1.go = "patria_3";
 		break;
 		

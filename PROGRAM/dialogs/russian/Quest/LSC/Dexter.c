@@ -17,8 +17,8 @@ void ProcessDialogEvent()
 		case "First time":
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = "What do you want, lad? Talk to Shark, he is in charge here.";
-				link.l1 = "Can I at least say hi to you or is it forbidden too?";
+				dialog.text = "Чего тебе, парень? По всем вопросам - к Акуле, он здесь заправляет.";
+				link.l1 = "Ну а хоть поздороваться-то с тобой можно, или это запрещено правилами?";
 				link.l1.go = "meeting";
 				npchar.quest.meeting = "1";
 			}
@@ -26,67 +26,67 @@ void ProcessDialogEvent()
 			{
 				if (CheckAttribute(npchar, "quest.map"))
 				{
-					link.l2 = "Layton, Shark told me that you've got a map of the Island. Are you selling it?";
+					link.l2 = "Лейтон, мне Акула сказал, что у тебя есть карта Острова. Не мог бы ты мне ее продать?";
 					link.l2.go = "map";
 				}
-				dialog.text = "A-ah, "+GetFullName(pchar)+"! Do you have business with me or you just want to chat again? If so, then bring a bottle of rum next time, he-he.";
-				link.l1 = "No, I have no particular business for you. I will take care of rum next time.";
+				dialog.text = "А-а, "+GetFullName(pchar)+"! По какому делу явился, или опять просто поболтать? Если поболтать, в следующий раз тащи с собой бутылку рома, хе-хе.";
+				link.l1 = "Да, никакого конкретного дела нет. А насчет рома - приму к сведению.";
 				link.l1.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "meeting":
-			dialog.text = "Ha! You are a joker boy, aren't you? Fine... My name is Layton Dexter, I am Shark's second in command and nowadays I am his deputy on this damned Island. In the meantime I am selling provisions and tapping that idler Fazio for money.";
-			link.l1 = "And my name is "+GetFullName(pchar)+". Nice to meet you!";
+			dialog.text = "Ха! Ты шутник, как я погляжу. Ладно... Меня зовут Лейтон Декстер, и я старпом Акулы, а нынче - его заместитель на этом треклятом Острове. В свободное от скуки время я занимаюсь продажей продовольствия и выколачиванием денег из этого бездельника Фацио.";
+			link.l1 = "Ну а я - "+GetFullName(pchar)+". Будем знакомы!";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
 		
 		// Акула погиб по варианту N
 		case "admiral":
-			dialog.text = "I suppose you already know that Steven is dead. The Narwhals did it.";
-			link.l1 = "You are right, I know that... So you are the admiral now?";
+			dialog.text = "Думаю, для тебя это не будет новостью. Стивен убит. К этому приложили руку нарвалы.";
+			link.l1 = "Ты прав, новостью для меня это никак не может являться... Теперь ты - адмирал?";
 			link.l1.go = "admiral_1";
 			AddQuestRecord("SharkHunt", "28");
 			CloseQuestHeader("SharkHunt");
 		break;
 		
 		case "admiral_1":
-			dialog.text = "Exactly. Chad defected to Narwhals, Steven is dead and being the second in command, naturally, I am the admiral now. Objections?";
-			link.l1 = "No. No objections.";
+			dialog.text = "Именно так. Чад переметнулся на сторону нарвалов, Стивен погиб - значит, я, как старпом, автоматически становлюсь адмиралом. У тебя возражения есть?";
+			link.l1 = "Нет. Никаких возражений.";
 			link.l1.go = "admiral_2";
 		break;
 		
 		case "admiral_2":
-			dialog.text = "Good. All questions go to me now.";
-			link.l1 = "Are you going to exact revenge upon Narwhals for Steven's death?";
+			dialog.text = "Вот и славно. Так что по всем вопросам теперь обращайся ко мне.";
+			link.l1 = "Ты как-то будешь мстить нарвалам за гибель Стивена?";
 			link.l1.go = "admiral_3";
 		break;
 		
 		case "admiral_3":
-			dialog.text = "You mean, will I declare a war to then? No. There are better ways to make them pay. I will triple the price for provisions for them\nIf they attack the San Augustine we shall give them hell. Besides, I am going to try negotiating with Rivados. Sure, we can't trust the niggers and they hold grudges for the death of their wizard, but any problem can be solved.";
-			link.l1 = "I see. Fine, Layton, I have to go...";
+			dialog.text = "Ты имеешь в виду - развяжу ли я против них боевые действия? Нет. Существует куда более действенный способ наказать этих ублюдков. Я повышу для них цену на продовольствие в три раза. Пусть платят\nА если они вдруг решатся атаковать 'Сан-Августин' - тем хуже для них, мы обеспечим им достойный прием. Кроме того, я попробую продолжить переговоры с ривадос. Конечно, негритосам доверять нельзя, да и в обиде они на нас за своего колдуна, но любые проблемы решаемы.";
+			link.l1 = "Понятно. Ладно, Лейтон, я пойду...";
 			link.l1.go = "admiral_4";
 		break;
 		
 		// нода пересечения
 		case "admiral_4":
-			dialog.text = "Wait. Steven told me that you are going to leave the Island somehow and to come back here on a ship?";
-			link.l1 = "That's the plan.";
+			dialog.text = "Погоди. Стивен рассказывал мне, что ты намерен как-то покинуть Остров, а затем вернуться сюда на корабле?";
+			link.l1 = "Именно это я и собираюсь сделать.";
 			link.l1.go = "admiral_5";
 		break;
 		
 		case "admiral_5":
-			dialog.text = "Take these sailing directions. Use them to return here on ship and in one piece\nWithout them you will either fail to find a passage or your ship will join her sisters here. Remember that you must use relatively small vessel in order to pass the reefs. Lugger, schooner, brigantine, brig... Fourth class, not bigger.";
-			link.l1 = "Thanks! That is exactly what I need.";
+			dialog.text = "Тогда держи вот эту лоцию. Используя ее, ты сможешь добраться сюда морским путем... в живом виде. То есть не сядешь на рифы, не будешь унесен течением и не утонешь в шторме\nБез этой лоции ты либо не найдешь сюда дорогу, либо пополнишь кладбище кораблей внешнего кольца острова своим судном. Кроме того, учти: пройти через рифы может только судно с относительно небольшой осадкой, маневренное и быстроходное. Люггер, шхуна, бригантина... в общем, не крупнее четвертого класса. Мы добрались сюда на бриге\nИ Боже упаси тебя явиться на какой-нибудь калоше типа флейта или галеона, или на большом корабле - они просто не проскочат через рифы и благополучно отправятся на дно. Тут у нас даже линейные корабли есть, например, тот же 'Тартарус'.";
+			link.l1 = "Спасибо! Это именно то, что нужно.";
 			link.l1.go = "admiral_6";
 		break;
 		
 		case "admiral_6":
 			GiveItem2Character(pchar, "LSC_navigation_map");
-			dialog.text = "Don't forget to fill your cargo hold with provisions. You must understand that I will sell it here for a good price. Don't show this document to anyone, our base must remain secret. I am giving you this document only because Steven himself was going to give it to you, and you are a friend of Jan Svensson.";
-			link.l1 = "Don't worry about that. Thank you again and see you around!";
+			dialog.text = "И когда будешь возвращаться, не забудь заполнить доверху трюмы своего корабля провиантом - как ты понимаешь, я продам его здесь за очень хорошую цену. Лоцию никому не показывай - нечего светить нашу базу. Я дал тебе документ лишь потому, что Стивен сам собирался тебе его отдать, и потому что ты друг Яна Свенсона.";
+			link.l1 = "Можешь не беспокоиться на этот счет. Спасибо еще раз и до встречи!";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Dexter_wait";
 			AddQuestRecord("LSC", "5");
@@ -98,40 +98,40 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Dexter_wait":
-			dialog.text = "Do you have any progress in leaving the Island, "+pchar.name+"?";
-			link.l1 = "No progress yet, Layton. I am working on it.";
+			dialog.text = "Как успехи в поиске выхода с острова, "+pchar.name+"?";
+			link.l1 = "Пока никак, Лейтон. Я работаю над этим.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Dexter_wait";
 		break;
 		
 		// Акула погиб по варианту M
 		case "admiral_7":
-			dialog.text = "Here you are, "+pchar.name+". I have a few things to discuss with you.";
-			link.l1 = "As far as I understood, you have taken Steven's position after his death. So are you the admiral now?";
+			dialog.text = "Вот и ты, "+pchar.name+". Мне нужно решить с тобой несколько вопросов.";
+			link.l1 = "Как я понял, после смерти Стивена ты занял его место. Теперь ты - адмирал?";
 			link.l1.go = "admiral_8";
 		break;
 		
 		case "admiral_8":
-			dialog.text = "Exactly. Being the second in command, I became the admiral now. Objections?";
-			link.l1 = "No objections. You have every right to keep this position.";
+			dialog.text = "Именно так. Как старпом Акулы, я автоматически становлюсь адмиралом Острова. У тебя есть какие-то возражения?";
+			link.l1 = "Отнюдь. Это место принадлежит тебе по праву.";
 			link.l1.go = "admiral_9";
 		break;
 		
 		case "admiral_9":
-			dialog.text = "I am very glad that we understand each other. Ask me if you need anything.";
-			link.l1 = "Are you going to exact revenge upon Narwhals for Steven's death?";
+			dialog.text = "Очень рад, что мы с тобой сразу нашли общий язык. Теперь по всем вопросам обращайся ко мне.";
+			link.l1 = "Ты как-то будешь мстить нарвалам за гибель Стивена?";
 			link.l1.go = "admiral_10";
 		break;
 		
 		case "admiral_10":
-			dialog.text = "You mean, will I declare a war to then? No. There are better ways to make them pay. I will triple the price for provisions for them\nIf they attack 'San Augustine we shall give them hell. Besides, we have good relationships with Rivados now, so Narwhals won't risk to act stupidly.";
-			link.l1 = "I see. Do you want to tell me anything else? Or can I go now?";
+			dialog.text = "Ты имеешь в виду - развяжу ли я против них боевые действия? Нет. Существует куда более действенный способ наказать этих ублюдков. Я повышу для них цену на продовольствие в три раза. Пусть платят\nА если они вдруг решатся атаковать 'Сан-Августин' - тем хуже для них, мы обеспечим им достойный прием. К тому же у нас теперь неплохие отношения с ривадос - нарвалы не рискнут рыпаться.";
+			link.l1 = "Понятно. Ты что-то еще хотел мне сказать? Или я могу идти?";
 			link.l1.go = "admiral_4";
 		break;
 		
 		case "plan":
 			PlaySound("VOICE\Russian\LSC\Layton Dexter-07");
-			dialog.text = "I do. I can see only one possible tactics against Narwhals. It's not perfect, but I don't see any alternative. We shall attack from two directions. Shock troop on longboats will board the Ceres Smithy, while our second troop along with Rivados forces will be storming the Esmeralda. This will either eliminate them completely, or will make them retreat to the San Gabriel. Second scenario is the most probable, San Gabriel is a highly fortified position and the siege of her will take a long time. But, either way, we will win.";
+			dialog.text = "Конечно, есть. Существует единственно возможная тактика атаки нарвалов. Она, конечно, не идеальна, но альтернативы я не вижу. Размещаем нашу ударную группировку на 'Тартарусе', обеспечиваем ее несколькими лодками. По сигналу наш десант выдвигается по воде в сторону 'Церес Смити'\nВ этот же момент бойцы ривадос, усиленные нашим вторым отрядом, атакуют 'Эсмеральду' со стороны 'Эвы' и 'Глории'. К тому моменту, когда бойцы будут теснить нарвалов к 'Сан-Габриэлю', наш десант заберется на палубу 'Церес Смити' и нападет на нарвалов с тыла - тогда они будут вынуждены либо воевать на два фронта, и мы их легко сомнем, либо уйдут в глухую оборону на 'Сан-Габриэле'\nВторое более вероятно, так как 'Сан-Габриэль' превращен нарвалами в настоящий бастион - взять его будет непросто. Итогом нашего нападения станет захват 'Эсмеральды' и 'Церес Смити', а вот 'Сан-Габриэлем' сходу овладеть не удастся, и, вероятно, придется вести длительную осаду.";
 			link.l1 = "";
 			link.l1.go = "plan_1";
 		break;
@@ -149,26 +149,26 @@ void ProcessDialogEvent()
 		break;
 		
 		case "plan_2":
-			dialog.text = "We are waiting for the results of your conversation with Donald Greenspen. It is a very important matter, so don't waste time.";
-			link.l1 = "I am on my way!";
+			dialog.text = "Мы ждем результатов разговора с Дональдом Гринспи. Это очень важно, не теряй время попусту.";
+			link.l1 = "Уже иду!";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "plan_2";
 		break;
 		
 		case "map":
-			dialog.text = "Yes, I have got the map. Would you like to buy it? You are welcome, if you would. It will be yours for just two hundred doubloons.";
-			link.l1 = "How about pesos?";
+			dialog.text = "Да, у меня есть карта. Хочешь купить? Пожалуйста. Двести дублонов на бочку - и она твоя.";
+			link.l1 = "А в песо не пойдет?";
 			link.l1.go = "map_1";
 		break;
 		
 		case "map_1":
-			dialog.text = "No. I want doubloons. No haggling will do.";
+			dialog.text = "Нет. Мне нужны дублоны. Так что даже не торгуйся.";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 200)
 			{
-				link.l1 = "Fine. Take you gold, I agree.";
+				link.l1 = "Хорошо. Держи свое золото, я согласен.";
 				link.l1.go = "map_2";
 			}
-			link.l2 = "I don't have that much gold. Perhaps later...";
+			link.l2 = "Нет у меня сейчас столько дублонов. Возможно, позже...";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
@@ -176,10 +176,10 @@ void ProcessDialogEvent()
 		case "map_2":
 			RemoveItems(pchar, "gold_dublon", 200);
 			PlaySound("interface\important_item.wav");
-			Log_Info("You have received a map of the Justice Island");
+			Log_Info("Вы получили карту Острова Справедливости");
 			GiveItem2Character(pchar, "map_LSC");
-			dialog.text = "Nice deal, lad! Take your map. It's worth the price - I had been crawling around the Island for a week to draw it so I've sold it quite cheaply, actually.";
-			link.l1 = "Cheaply?! Sure. Well, thank you anyway!";
+			dialog.text = "Отличная сделка, парень! Держи свою карту. А что до ее стоимости - так я неделю ползал по этому треклятому Острову, пока нарисовал ее. Так что еще недорого продал.";
+			link.l1 = "Это недорого? Ну-ну. Но все равно - спасибо!";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 			DeleteAttribute(npchar, "quest.map");
@@ -187,7 +187,7 @@ void ProcessDialogEvent()
 		
 		// геймовер диким геймерам за издевательство над игрой
 		case "LSC_GameOverPrison":
-			dialog.text = "Stop right there, psycho! Yes, Shark was right, this guy has gone crazy. So many men are dead because of him... Chain him, boys, make him still! He must be isolated immediately!";
+			dialog.text = "Стоять, псих! Да, Акула был прав - этот тип сошел с ума. Столько людей пострадало из-за него... Вяжи его, ребята, хватаем все сразу, чтобы не дернулся! Его надо немедленно изолировать!";
 			link.l1 = "...";
 			link.l1.go = "LSC_GameOverPrison_1";
 		break;
@@ -198,40 +198,40 @@ void ProcessDialogEvent()
 		break;
 		
 		case "return":
-			dialog.text = "Steven has made me admiral of the Island instead of him - I take it that you and him are going back to the Caribbean together. I will stay here and do business, me and Steven are not going to lose such a great base. And I want to tell you that you will always be a welcome guest here.";
-			link.l1 = "Thanks, Layton. I think I will be returning to your Island quite often.";
+			dialog.text = "Стивен назначил меня адмиралом Острова вместо себя - как я понимаю, вы отбываете на Карибы вместе. Я остаюсь здесь и буду вести дела - терять такую отличную базу мы со Стивеном не намерены. Хочу тебе сказать, что ты здесь всегда желанный гость.";
+			link.l1 = "Спасибо, Лейтон. Думаю, что я еще не раз посещу Остров.";
 			link.l1.go = "return_1";
 		break;
 		
 		case "return_A":
-			dialog.text = "Ah, my old friend "+GetFullName(pchar)+"! You have managed to find the Island using Steven's sailing directions, right? I am very, very glad to see you. You are always a welcome guest here.";
-			link.l1 = "Thanks, Layton. I think I will be returning to your Island quite often.";
+			dialog.text = "А, мой старый знакомый "+GetFullName(pchar)+"! Ты все-таки нашел Остров по лоции Стивена? Очень, очень рад тебя видеть. Ты здесь всегда желанный гость.";
+			link.l1 = "Спасибо, Лейтон. Думаю, что я еще не раз посещу Остров.";
 			link.l1.go = "return_1";
 		break;
 		
 		int iTrade = GetSquadronGoods(pchar, GOOD_FOOD)-GetCrewQuantity(pchar);
 		int iMoney = 0;
 		case "return_1":
-			dialog.text = "Very well. Do you have any provision for sale? I am ready to buy it from you for a double price.";
+			dialog.text = "Очень хорошо. Да, ты случайно не забыл привезти нам провианта? Я готов купить его у тебя по двухкратной цене.";
 			if (iTrade > 0)
 			{
-				link.l1 = "Yes, I can sell you some provision.";
+				link.l1 = "Да, я могу продать тебе некоторое количество провианта.";
 				link.l1.go = "trade";
 			}
-			link.l2 = "Unfortunately, I have nothing to sell you now.";
+			link.l2 = "К сожалению, сейчас мне нечего тебе продать.";
 			link.l2.go = "return_2";
 			npchar.quest.foodqty = 0; // предел затарки складов = 15 000
 		break;
 		
 		case "return_2":
-			dialog.text = "Pity. Don't forget to bring it next time - I will pay well.";
-			link.l1 = "Fine. I will try not to forget about it...";
+			dialog.text = "Жаль. В следующий раз не забудь захватить - я хорошо заплачу за него.";
+			link.l1 = "Хорошо. Постараюсь не забыть...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "head";
 		break;
 		
 		case "trade":
-			dialog.text = "How much?";
+			dialog.text = "Сколько именно?";
 			link.l1.edit = 4;
 			link.l1 = "";	
 			link.l1.go = "trade_1";
@@ -242,30 +242,30 @@ void ProcessDialogEvent()
 			int iMax = GetSquadronGoods(pchar, GOOD_FOOD)-GetCrewQuantity(pchar);
 			if (iTemp <= 0 || iTemp > GetSquadronGoods(pchar, GOOD_FOOD))
 			{
-				dialog.text = "Damn, you are drunk, pal... Go and have some sleep, we will trade later.";
-				link.l1 = "Hm...";
+				dialog.text = "Черт возьми, да ты пьян, дружище... Иди проспись, а торговлей займемся позже.";
+				link.l1 = "Гм...";
 				link.l1.go = "exit";
 			break;
 			}
 			if (iTemp <= 50)
 			{
-				dialog.text = "I won't even lift my ass from the chair for such a petty amount. Bring me more!";
-				link.l1 = "Hm...";
+				dialog.text = "Ради такого количества я даже свою задницу от стула не оторву. Привози больше!";
+				link.l1 = "Гм...";
 				link.l1.go = "exit";
 			break;
 			}
 			if (iTemp > iMax)
 			{
-				dialog.text = "And how are you going to sail without any provision on the ship, pal? Keep at least "+FindRussianQtyString(GetCrewQuantity(pchar))+" for yourself.";
-				link.l1 = "Hm, you are right.";
+				dialog.text = "А как ты, дружище, собираешься выходить в море без еды на корабле? Оставь себе хотя бы "+FindRussianQtyString(GetCrewQuantity(pchar))+".";
+				link.l1 = "Хм, как-то я не подумал.";
 				link.l1.go = "exit";
 			break;
 			}
 			iMoney = (50+drand(5))*iTemp;
-			dialog.text = ""+FindRussianQtyString(iTemp)+"? Fine. I will pay you "+FindRussianMoneyString(iMoney)+". Deal?";
-			link.l1 = "Sure! Nice trading!";
+			dialog.text = ""+FindRussianQtyString(iTemp)+"? Хорошо. Я заплачу тебе за товар "+FindRussianMoneyString(iMoney)+". Устраивает?";
+			link.l1 = "Конечно! Хорошая сделка!";
 			link.l1.go = "trade_2";
-			link.l2 = "Hm. No, I have changed my mind.";
+			link.l2 = "Хм. Нет, пожалуй, я передумал продавать.";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "head";
 		break;
@@ -279,28 +279,28 @@ void ProcessDialogEvent()
 			if (sti(npchar.quest.foodqty) >= 15000) // склады затарены на полгода
 			{
 				SetFunctionTimerCondition("LSC_ClearFoodStorage", 0, 0, 180, false);
-				dialog.text = "Nice! My storehouse is full now. I won't need to buy provision for the next half a year.";
-				link.l1 = "Good. Then I will bring the next load of provision to you in six months.";
+				dialog.text = "Вот и славно! Теперь мои склады заполнены доверху. На ближайшие полгода необходимость в закупке провианта отпадает.";
+				link.l1 = "Хорошо. Тогда следующую партию я привезу тебе через шесть месяцев.";
 				link.l1.go = "exit";
 				AddQuestRecord("LSC", "25");
 			}
 			else
 			{
-				dialog.text = "Great! Bring me more next time.";
-				link.l1 = "Sure!";
+				dialog.text = "Вот и славно! Привози еще.";
+				link.l1 = "Обязательно!";
 				link.l1.go = "exit";
 			}
 			NextDiag.TempNode = "head";
 		break;
 		
 		case "head": // стандартный диалог Декстера-адмирала
-			dialog.text = "A-ah, "+GetFullName(pchar)+"! Glad to see you! What do you want?";
+			dialog.text = "А-а, "+GetFullName(pchar)+"! Рад тебя видеть! По какому делу пожаловал?";
 			if (iTrade > 0 && sti(npchar.quest.foodqty) < 15000)
 			{
-				link.l1 = "I want to offer you to buy some provision from me.";
+				link.l1 = "Я хочу предложить тебе купить у меня некоторое количество провианта.";
 				link.l1.go = "trade";
 			}
-			link.l2 = "It's nothing, just wanted to know how you were doing.";
+			link.l2 = "Да собственно, ни по какому - зашел с тобой поздороваться и узнать, как дела.";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "head";
 		break;

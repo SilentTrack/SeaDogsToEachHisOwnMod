@@ -574,7 +574,7 @@ void BI_LaunchCommand()
         }
         else
         {
-            Log_SetStringToLog("Global map is unavailable right now.");
+            Log_SetStringToLog("Выход на карту закрыт.");
         }
 		break;
 	case "BI_Moor":
@@ -1099,21 +1099,21 @@ void BI_InitializeCommands()
 	BattleInterface.Commands.Boat.selPicNum	= 10;
 	BattleInterface.Commands.Boat.texNum	= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Boat.event	= "BI_Boat";
-	BattleInterface.Commands.Boat.note	= "Send a longboat";
+	BattleInterface.Commands.Boat.note	= "Выслать шлюпку";
 	
 	BattleInterface.Commands.Cabin.enable	= false;
 	BattleInterface.Commands.Cabin.picNum	= 27;
 	BattleInterface.Commands.Cabin.selPicNum	= 11;
 	BattleInterface.Commands.Cabin.texNum	= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Cabin.event	= "BI_Cabin";
-	BattleInterface.Commands.Cabin.note	    = "Cabin";
+	BattleInterface.Commands.Cabin.note	    = "Каюта";
 	
 	BattleInterface.Commands.Bomb.enable	= false;
 	BattleInterface.Commands.Bomb.picNum	= 67;
 	BattleInterface.Commands.Bomb.selPicNum	= 66;
 	BattleInterface.Commands.Bomb.texNum	= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Bomb.event	= "BI_Bomb";
-	BattleInterface.Commands.Bomb.note	    = "Drop a mine";
+	BattleInterface.Commands.Bomb.note	    = "Спустить мину";
 	
 	BattleInterface.Commands.ImmediateDeath.enable	= false;
 	BattleInterface.Commands.ImmediateDeath.picNum	= 43;    // это чит

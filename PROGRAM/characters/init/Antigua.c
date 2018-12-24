@@ -33,8 +33,8 @@ int CreateAntiguaCharacters(int n)
 	makeref(ch,Characters[n]);			//губернатор
 	ch.id		= "SentJons_Mayor";
 	ch.model	= "huber_10";
-	ch.name 	= "Cristofer";
-    ch.lastname = "Keynell";
+	ch.name 	= "Кристофер";
+    ch.lastname = "Кейнелл";
 	ch.sex = "man";
 	ch.City = "SentJons";
 	ch.greeting = "mayor_1";
@@ -61,8 +61,8 @@ int CreateAntiguaCharacters(int n)
 	makeref(ch,Characters[n]);			//денщик Фокса
 	ch.id		= "BenjaminJons";
 	ch.model	= "Addington";
-	ch.name 	= "Benjamin";
-    ch.lastname = "Johnes";
+	ch.name 	= "Бенджамин";
+    ch.lastname = "Джонс";
 	ch.sex = "man";
 	ch.City = "SentJons";
 	ch.greeting = "soldier";
@@ -224,7 +224,7 @@ int CreateAntiguaCharacters(int n)
 	n = n + 1;
 	
 	makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "SentJons_Smuggler";
 	ch.model    = "sitiz_28";

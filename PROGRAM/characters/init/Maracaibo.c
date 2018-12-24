@@ -11,8 +11,8 @@ int CreateMaracaiboCharacters(int n)
 	ch.id		= "Maracaibo_Mayor";
 	ch.model	= "huber_23";
 	ch.sex = "man";
-	ch.name 	= "Andres";
-    ch.lastname = "de Vera";
+	ch.name 	= "Андрес";
+    ch.lastname = "де Вера";
 	ch.City = "Maracaibo";
 	ch.location	= "Maracaibo_townhall";
 	ch.location.group = "sit";
@@ -170,7 +170,7 @@ int CreateMaracaiboCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "Maracaibo_Smuggler";
 	ch.model    = "citiz_28";

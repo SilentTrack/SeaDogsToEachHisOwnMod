@@ -5,51 +5,51 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 	switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat("Go ahead, what do you want?",
-                          "We were just talking about that. You must have forgotten...", "This is the third time today you're talking about some question...",
-                          "Listen, this is a store. People buy stuff here. Don't disturb me!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("You know, " + NPChar.name + ", maybe next time.", "Right, I've forgotten for some reason...",
-                      "Yes, it really is the third time...", "Hm, I wont...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat("Спрашивай, чего ты хочешь?",
+                          "Мы только что поднимали это тему. Вы, вероятно, запамятовали...", "Сегодня вы уже третий раз говорите о каком-то вопросе...",
+                          "Послушай, это магазин, здесь люди покупают что-то. Не отвлекай меня!", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Знаешь, " + NPChar.name + ", как-нибудь в следующий раз.", "Точно, "+ GetSexPhrase("забыл","забыла") +" что-то...",
+                      "Да уж, действительно в третий раз...", "Гм, не буду...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			//Jason --> Португалец
 			if (CheckAttribute(pchar, "questTemp.Portugal") && pchar.questTemp.Portugal == "Findcloves" && !CheckAttribute(npchar, "quest.Portugal"))
 			{
-   				link.l1 = "Listen, I need some good clothing. Expensive so that I'd barely be distinguished from a noble. Do you have anything of the sort?";
+   				link.l1 = "Послушайте, мне нужна хорошая одежда. Подороже, чтобы дворянину было не стыдно облачиться. У вас есть что-то подобное?";
 				link.l1.go = "Portugal_cloves";
 			}
 			//<-- Португалец
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "maarten")
 			{
-				link.l1 = "A galleon brought you cargo recently from Tortuga by the name 'Admirable'. Do you recall that?";
+				link.l1 = "К вам не так давно привозил груз кож галеон из Тортуги под названием 'Восхитительный'. Припоминаете?";
                 link.l1.go = "guardoftruth";
 			}
 		break;
 		
 		//Jason --> Португалец
 		case "Portugal_cloves":
-			dialog.text = "Noble clothing? Sure, I've got a set lying here pants, a jerkin, a silk shirt, and boots. It costs 20 000 pesos. The clothing is very high quality, it's comfortable, and it has a remarkable look to it, so I won't go any less for it.";
+			dialog.text = "Дворянская одежда? Есть такая, лежит у меня полный комплект - штаны, колет, шелковая рубашка и сапоги. Стоит 20 000 песо - одежда очень добротная, удобная и имеет великолепный внешний вид, так что за меньшую сумму не отдам.";
 			if (sti(pchar.money) >= 20000)
 			{
-				link.l1 = "Great! Give it here.";
+				link.l1 = "Отлично! Давай ее сюда.";
 				link.l1.go = "Portugal_cloves_1";
 			}
-			link.l2 = "Hm... I don't have that much money at the moment.";
+			link.l2 = "Гм... Сейчас у меня нет нужной суммы.";
 			link.l2.go = "Portugal_cloves_nomoney";
 		break;
 		
 		case "Portugal_cloves_nomoney":
-			dialog.text = "Then come back in when you have the money.";
-			link.l1 = "All right. I'll be back!";
+			dialog.text = "Тогда заходите, когда деньги будут.";
+			link.l1 = "Хорошо. Я скоро вернусь!";
 			link.l1.go = "exit";
 		break;
 		
 		case "Portugal_cloves_1":
 			AddMoneyToCharacter(pchar, -20000);
 			GiveItem2Character(pchar, "suit_1");
-			Log_Info("You've received expensive clothing");
+			Log_Info("Вы получили дорогую одежду");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Here you are.";
-			link.l1 = "Thank you!";
+			dialog.text = "Пожалуйста, получите.";
+			link.l1 = "Спасибо!";
 			link.l1.go = "exit";
 			npchar.quest.Portugal = "true";
 			sld = characterFromId("PortugalDoctor");
@@ -57,14 +57,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		//<-- Португалец
 		case "guardoftruth":
-			dialog.text = "Yes. He arrived on time, hauled out the merchandise, and I paid for it as we had agreed. Why?";
-			link.l1 = "The captain of that ship is Gaius Marchais, my old acquaintance. So I'm trying to find him. Would you be able to tell me what he did after that? Maybe you provided him some additional freight or he mentioned where he was going to take off to?";
+			dialog.text = "Ну да. Прибыл в срок, выгрузил товар, я с ним рассчитался, как положено. А что?";
+			link.l1 = "Капитан этого корабля, Гай Марше, мой старинный знакомый. Вот я его и разыскиваю. Не подскажете, что он делал дальше? Может, вы предоставили ему очередной фрахт, или он упоминал, куда собирается отправиться?";
 			link.l1.go = "guardoftruth_1";
 		break;
 		
 		case "guardoftruth_1":
-			dialog.text = "Nothing of the sort. I didn't offer him any freight; he didn't even ask for it. He didn't share his plans for the future with me. I don't even remember all the details –you know how many people have come in and out of here since that time? He basically debarked and took off and that's all I can say about him.";
-			link.l1 = "All right. Well, thanks anyway. All the best!";
+			dialog.text = "Ни то, ни другое. Фрахта я ему не предлагал, да и он сам не просил. Своими планами на будущее также не делился. Да и не помню я всех подробностей - знаете, сколько у меня народу за это время прошло? В общем, выгрузился он и ушел, и больше ничего сказать не могу.";
+			link.l1 = "Ясно. Ну, спасибо и на этом. Всего доброго!";
 			link.l1.go = "guardoftruth_2";
 		break;
 		

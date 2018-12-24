@@ -13,20 +13,20 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = NPCStringReactionRepeat("You again, senor?", 
-				"Listen, sir, you'd better walk away...", 
-				"Don't bother me, sir! I kindly ask you.",
-                "Oh, I can't endure that... Even the mine was kinder to me.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Yes, it's me again.", 
-				"Don't tell me what to do.",
-                "And what about the hard way?", 
-				"Get back to the mine!", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat("Опять вы, сеньор?", 
+				"Слушайте, сударь, шли бы вы своей дорогой...", 
+				"Отстаньте, сударь! По-хорошему прошу.",
+                "Ох, сил моих нет... На руднике и то легче было.", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Да, опять я.", 
+				"Не указывай мне, что делать.",
+                "А если по-плохому?", 
+				"Ну так вернись в шахты!", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = "What do you want, senor?";
-				link.l1 = "From you? Nothing I suppose. Just saying hi.";
+				dialog.text = "Что вы хотели, сеньор?";
+				link.l1 = "От тебя? Пожалуй, ничего. Просто поздоровался.";
 				link.l1.go = "exit";
 				npchar.quest.meeting = "1";
 			}
@@ -35,8 +35,8 @@ void ProcessDialogEvent()
 
 		//замечание по обнаженному оружию от персонажей типа citizen
 		case "CitizenNotBlade":
-			dialog.text = NPCharSexPhrase(NPChar, "Don't challenge your fate, pal! Take away your weapon!", "Listen, I am the citizen of this town and I'd ask you to hold down your blade.");
-			link.l1 = LinkRandPhrase("Fine.", "Fair enough.", "As you say...");
+			dialog.text = NPCharSexPhrase(NPChar, "Не искушай судьбу, приятель! Убери свою саблю!", "Знаете, я, как гражданка этого города, прошу вас не ходить у нас с обнаженным клинком.");
+			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
 		break;
 

@@ -868,7 +868,7 @@ string GetItemDescribe(int iGoodIndex)
 			}
 		}
 	}
-	
+
 	describeStr = describeStr + GetAssembledString(LanguageConvertString(lngFileID, Items[iGoodIndex].describe), &Items[iGoodIndex]);
 	if (CheckAttribute(arItm, "potion"))
 	{

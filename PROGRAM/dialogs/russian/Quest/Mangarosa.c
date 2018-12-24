@@ -19,59 +19,59 @@ void ProcessDialogEvent()
 		break;
 		
         case "First time":
-			dialog.text = "What do you want?";
-			link.l1 = "Nothing.";
+			dialog.text = "Что вам надо?";
+			link.l1 = "Ничего.";
 			link.l1.go = "exit";
 		break;
 		
 		// Амелия - знахарка-цыганка
 		case "amelia":
-			dialog.text = "What do you want in my house?";
+			dialog.text = "Что тебе нужно в моем доме?";
 			if (CheckAttribute(pchar, "questTemp.Mangarosa") && pchar.questTemp.Mangarosa == "amelia")
 			{
-				link.l1 = "Your name is Amelia, right? I came to ask you about one plant. Manga Rosa.";
+				link.l1 = "Тебя зовут Амелия, верно? Я пришел к тебе с вопросом, касательно одного растения. Мангаросы.";
 				link.l1.go = "amelia_1";
 			}
 			else
 			{
-				link.l1 = "I have nothing to tell you yet. But I will be back one day...";
+				link.l1 = "Пока, наверное, мне нечего тебе сказать. Но я еще вернусь...";
 				link.l1.go = "exit";
 			}
 			NextDiag.TempNode = "amelia";
 		break;
 		
 		case "amelia_1":
-			dialog.text = "Interesting! And who has told you about me, brave young man?";
-			link.l1 = "One of your people. She said that you know the secrets of this plant and you can teach me how to make special potions of it...";
+			dialog.text = "Очень интересно! И кто же тебе обо мне понарассказывал, а, соколик?";
+			link.l1 = "Да одна из ваших. Сказала, что ты знаешь секреты этого растения и можешь научить готовить из него какие-то особенные зелья...";
 			link.l1.go = "amelia_2";
 		break;
 		
 		case "amelia_2":
-			dialog.text = "First, show me the plant you are talking about. Perhaps you don't know a thing about it and you're just wasting my time. Where is your Manga Rosa?";
+			dialog.text = "Ну, давай начнем с того, что ты мне покажешь растение, о котором ведешь речь. Может, ты просто наслушался уличной болтовни, а теперь явился сюда и отвлекаешь меня от важных дел. Где твоя мангароса?";
 			if (CheckCharacterItem(pchar, "cannabis7"))
 			{
-				link.l1 = "Here, take a look.";
+				link.l1 = "Вот она, смотри.";
 				link.l1.go = "amelia_3";
 			}
 			else
 			{
-				link.l1 = "Hm...";
+				link.l1 = "Гм...";
 				link.l1.go = "amelia_exit";
 			}
 		break;
 		
 		case "amelia_exit":
-			dialog.text = "And what were going to show me? You don't have Manga Rosa. So get lost, pal, until I got angry. The talk is over.";
-			link.l1 = "But...";
+			dialog.text = "Ну, и что ты тут мне пытаешься показать? Нет у тебя мангаросы. Так что топай отсюда, парень, пока я не рассердилась. Разговор окончен.";
+			link.l1 = "Но...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "amelia_wait";
 		break;
 		
 		case "amelia_wait":
-			dialog.text = "You again? Don't lead to trouble, boy...";
+			dialog.text = "Опять ты? Не доводи до греха, парень...";
 			if (CheckCharacterItem(pchar, "cannabis7"))
 			{
-				link.l1 = "Calm down, Amelia. I have dropped it somewhere last time. Here, I have brought you Manga Rosa. Take a look.";
+				link.l1 = "Не ругайся, Амелия. В прошлый раз я просто ее где-то выронил. Вот, я принес мангаросу. Смотри.";
 				link.l1.go = "amelia_3";
 			}
 			else
@@ -83,37 +83,37 @@ void ProcessDialogEvent()
 		break;
 		
 		case "amelia_3":
-			dialog.text = "Let's see... It seems that you know something about it. And do you want me to tell you the secrets of my potions?";
-			link.l1 = "Exactly. And not for free, I understand...";
+			dialog.text = "Так... Похоже, ты все-таки что-то знаешь. И ты хочешь, чтобы я рассказала тебе секреты своих зелий из этого растения?";
+			link.l1 = "Именно так. Ну, конечно, не бесплатно, я понимаю...";
 			link.l1.go = "amelia_4";
 		break;
 		
 		case "amelia_4":
-			dialog.text = "Sure you understand, young man! You don't look like a complete idiot. Well, I can teach a man who seeks knowledge and who doesn't waste this rare plant on a useless smoking stuff...";
-			link.l1 = "Amelia, before we start bargaining... would you be kindly to tell me some basic knowledge about potions one can make of Manga Rosa?";
+			dialog.text = "Еще бы ты этого не понимал, соколик! На дурня ты совсем не похож. Ну что же, я не против поделиться знаниями с человеком, который сам за ними пришел, и который не переводит это редкое растение на дурманящее курево...";
+			link.l1 = "Амелия, перед тем как торговаться, просвети меня хотя бы в общих чертах - что за зелья получаются из мангаросы?";
 			link.l1.go = "amelia_5";
 		break;
 		
 		case "amelia_5":
-			dialog.text = "No bargaining, pal. I will tell you the price and it would be your decision to pay it or not. Don't count on any bargain or discount, it is not a market. And concerning your question... You can make special potions of Manga Rosa which will fortify your physical abilities. They can make you stronger, more endurable, faster or do a complex influence to your body.";
-			link.l1 = "Very interesting. Name your price.";
+			dialog.text = "Торговаться, парень, мы с тобой не будем. Я назначаю цену - а ты решишь, будешь ее платить, или нет. Ни на какие скидки и торг даже не рассчитывай, чай, не на рынке. Что же касается твоего вопроса: из мангаросы получаются зелья, воздействующие на физические способности. Они могут сделать тебя более сильным, выносливым и быстрым, либо оказать комплексное воздействие на твое тело.";
+			link.l1 = "Очень интересно! Назови свою цену.";
 			link.l1.go = "amelia_6";
 		break;
 		
 		case "amelia_6":
-			dialog.text = "I can teach you three recipes. For every recipe I ask for one plant and three hundred golden coins.";
-			link.l1 = "Tell me more about these potions. What each of them does?";
+			dialog.text = "Я могу научить тебя рецептам трех зелий. За каждый рецепт я прошу один стебель мангаросы и триста золотых монет.";
+			link.l1 = "Расскажи об этих трех зельях подробнее - что каждое делает?";
 			link.l1.go = "amelia_7";
 		break;
 		
 		case "amelia_7":
-			dialog.text = "You must master the art of alchemy if you want to make any potion. Every potion acts for two days or less, depends when you drink it\nFirst potion adds you strength and endurance. You will fight better, take less damage and carry more weight\nSecond potion will make you swifter, agile, tireless and it will also improve your aim\nThird potion has a twice weaker effects of both previous potions. But it also adds you charm, self-confidence and luck too\nAll Manga Rosa-based potions have a positive effect on your health. You must drink only one potion at time, never mix them, otherwise they will do you no good, on the contrary you will get a strong poisoning\nSo, handsome, are you ready to pay for the knowledge right now or you need time to think?";
+			dialog.text = "Чтобы изготовить любое зелье, ты должен владеть основами алхимии. Действие всех зелий временное и ограничивается приблизительно двумя днями\nПервое зелье придает тебе силы и выносливости. Ты становишься крепче, можешь успешнее противостоять врагам в бою и переносить больше тяжестей\nВторое зелье дарит тебе быстроту, ловкость, неутомимость, а также остроту глаза\nТретье зелье сочетает в себе эффекты первого и второго, но вдвое слабее. Однако оно также придаст тебе обаяния, уверенности в себе и сделает более удачливым\nТакже все зелья из мангаросы положительно влияют на здоровье. Употреблять их следует только по одному, и не раньше, чем закончится действие предыдущего - в противном случае не только не будет эффекта, но напротив - получишь отравление\nНу что, соколик, ты готов оплатить свои новые знания, или тебе нужно время на размышление?";
 			if (CheckCharacterItem(pchar, "cannabis7") && GetCharacterItem(pchar, "gold_dublon") >= 300)
 			{
-				link.l1 = "Yes, I am ready.";
+				link.l1 = "Да, я готов.";
 				link.l1.go = "amelia_8";
 			}
-			link.l2 = "I need to think a bit. This is a big decision to make.";
+			link.l2 = "Я хочу немного подумать. Это непростое решение.";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "amelia_next";
 		break;
@@ -121,46 +121,46 @@ void ProcessDialogEvent()
 		case "amelia_next":
 			if (CheckAttribute(npchar, "quest.recipe_all"))
 			{
-				dialog.text = "Ah, it's you, young man! So, do my potions help you?";
-				link.l1 = "They really do, Amelia. Thank you!";
+				dialog.text = "А-а, это ты, соколик! Ну как, помогают тебе мои зелья?";
+				link.l1 = "Даже очень, Амелия. Спасибо тебе!";
 				link.l1.go = "exit";
 			}
 			else
 			{
-				dialog.text = "Ah, it's you, young man! Want to buy some recipes?";
+				dialog.text = "А-а, это ты, соколик! Ты хочешь купить у меня рецептов зелий из мангаросы, так?";
 				if (CheckCharacterItem(pchar, "cannabis7") && GetCharacterItem(pchar, "gold_dublon") >= 300)
 				{
-					link.l1 = "Exactly. This is why I am here.";
+					link.l1 = "Именно. За этим я и пришел.";
 					link.l1.go = "amelia_8";
 				}
-				link.l2 = "Not yet, Amelia. Just paying you a visit.";
+				link.l2 = "Пока нет, Амелия. Просто заглянул проведать.";
 				link.l2.go = "exit";
 			}
 			NextDiag.TempNode = "amelia_next";
 		break;
 		
 		case "amelia_8":
-			dialog.text = "Very well. What kind of recipe do you want to buy?";
+			dialog.text = "Очень хорошо. Какой рецепт ты хочешь приобрести?";
 			if (!CheckAttribute(npchar, "quest.recipe_power"))
 			{
-				link.l1 = "The recipe for potion of strength and endurance.";
+				link.l1 = "Рецепт зелья силы и выносливости.";
 				link.l1.go = "power";
 			}
 			if (!CheckAttribute(npchar, "quest.recipe_fast"))
 			{
-				link.l2 = "The recipe for potion of agility and tirelessness.";
+				link.l2 = "Рецепт зелья ловкости и неутомимости.";
 				link.l2.go = "fast";
 			}
 			if (!CheckAttribute(npchar, "quest.recipe_total"))
 			{
-				link.l3 = "The recipe for a complex potion.";
+				link.l3 = "Рецепт комплексного зелья.";
 				link.l3.go = "total";
 			}
 		break;
 		
 		case "power":
-			dialog.text = "Fine. I have called it the 'Tidal Wave'. Here, take an instruction. Read it carefully. And don't forget how to use it correctly!";
-			link.l1 = "Thanks, Amelia...";
+			dialog.text = "Хорошо. Я назвала его 'Удар прибоя'. Вот, возьми инструкцию приготовления. Следуй строго по рецепту. Не забывай о правилах применения!";
+			link.l1 = "Спасибо, Амелия...";
 			link.l1.go = "recipe_exit";
 			AddQuestRecordInfo("Recipe", "mangarosapower");
 			SetAlchemyRecipeKnown("mangarosapower");
@@ -168,8 +168,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "fast":
-			dialog.text = "Fine. I have called it the 'Squall'. Here, take an instruction. Read it carefully. And don't forget how to use it correctly!";
-			link.l1 = "Thanks, Amelia...";
+			dialog.text = "Хорошо. Я назвала его 'Шквал'. Вот, возьми инструкцию приготовления. Следуй строго по рецепту. Не забывай о правилах применения!";
+			link.l1 = "Спасибо, Амелия...";
 			link.l1.go = "recipe_exit";
 			AddQuestRecordInfo("Recipe", "mangarosafast");
 			SetAlchemyRecipeKnown("mangarosafast");
@@ -177,8 +177,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "total":
-			dialog.text = "Fine. I have called it the 'Sea Hug'. Here, take an instruction. Read it carefully. And don't forget how to use it correctly!";
-			link.l1 = "Thanks, Amelia...";
+			dialog.text = "Хорошо. Я назвала его 'Ласка моря'. Вот, возьми инструкцию приготовления. Следуй строго по рецепту. Не забывай о правилах применения!";
+			link.l1 = "Спасибо, Амелия...";
 			link.l1.go = "recipe_exit";
 			AddQuestRecordInfo("Recipe", "mangarosatotal");
 			SetAlchemyRecipeKnown("mangarosatotal");
@@ -190,7 +190,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = "amelia_next";
 			RemoveItems(pchar, "gold_dublon", 300);
 			RemoveItems(pchar, "cannabis7", 1);
-			Log_Info("You have given 300 doubloons and one Manga Rosa");
+			Log_Info("Вы отдали 300 дублонов и стебель мангаросы");
 			PlaySound("interface\important_item.wav");
 			if (CheckAttribute(npchar, "quest.recipe_power") && CheckAttribute(npchar, "quest.recipe_fast") && CheckAttribute(npchar, "quest.recipe_total"))
 			{

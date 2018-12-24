@@ -18,93 +18,93 @@ void ProcessDialogEvent()
 		case "First time":
 			if (CheckAttribute(pchar, "GenQuest.CitizenConflict") && sti(pchar.GenQuest.CitizenConflict) > 3)
 			{
-				dialog.text = "I don't want to talk with you. You attack peaceful civilians with no reasons and provoke them. Get lost!";
-				link.l1 = "Hm...";
+				dialog.text = "Я не желаю с тобой общаться. Ты нападаешь без причины на мирных граждан, провоцируешь их на драку. Уходи прочь!";
+				link.l1 = "Гм...";
 				link.l1.go = "exit";
 				break;
 			}
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = "Hm... What do you want, pal? If you want to chat, I'd have to disappoint you. I have no wish to talk.";
-				link.l1 = "Too bad... I wanted to talk. I am a newcomer here and I am just getting to know people...";
+				dialog.text = "Хм... Что ты хотел, приятель? Если поболтать, то я тебя огорчу: у меня нет никакого желания трепать языком.";
+				link.l1 = "Очень жаль... Я именно хотел поговорить. Я недавно тут, вот, знакомлюсь с людьми...";
 				link.l1.go = "meeting";
 				npchar.quest.meeting = "1";
 			}
 			else
 			{
-				dialog.text = "Аh, "+GetFullName(pchar)+"! What do you want?";
-				link.l1 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
+				dialog.text = "А, "+GetFullName(pchar)+"! Чего надо?";
+				link.l1 = LinkRandPhrase("Что-нибудь интересное мне расскажешь?", "Что нового произошло на острове в последнее время?", "Не расскажешь ли последние сплетни?");
 				link.l1.go = "rumours_LSC";
-				link.l2 = "I want to ask you a few questions about the island.";
+				link.l2 = "Я хочу задать тебе пару вопросов об острове.";
 				link.l2.go = "int_quests"; //информационный блок
-				link.l5 = "Just wanted to know how are you doing. See you!";
+				link.l5 = "Да просто решил узнать как у тебя дела. Еще увидимся!";
 				link.l5.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "meeting": // первая встреча
-			dialog.text = "A newcomer? Hm. Fine then. I am Victor Cassel and you'd better avoid making me angry while I am in a bad mood. And when I am in a good mood too. I don't waste time on chatting, I punch people immediately if they are too pushy. ";
-			link.l1 = "Well and I am "+GetFullName(pchar)+". By the way, I can easily punch back. But I hope that there will be no reason to do that. I won't bother you if you are so unsociable. Bye.";
+			dialog.text = "Новичок? Хм. Ладно, раз такое дело. Я - Виктор Кассель, и лучше меня не злить, когда я в дурном расположении духа. Да и когда в хорошем - тоже. Ибо я не трачу время на ненужные разговоры, а за настырность могу и заехать кулаком по физиономии.";
+			link.l1 = "Ну а я - "+GetFullName(pchar)+". Кстати, за удар по физиономии кулаком могу запросто ответить тем же. Но, надеюсь, до этого не дойдет. Не буду тебя раздражать, раз ты такой нелюдимый. Пока.";
 			link.l1.go = "exit";
-			link.l2 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
+			link.l2 = LinkRandPhrase("Что-нибудь интересное мне расскажешь?", "Что нового произошло на острове в последнее время?", "Не расскажешь ли последние сплетни?");
 			link.l2.go = "rumours_LSC";
-			link.l3 = "I want to ask you a few questions about the island.";
+			link.l3 = "Я хочу задать тебе пару вопросов об острове.";
 			link.l3.go = "int_quests"; //информационный блок
 			NextDiag.TempNode = "First time";
 		break;
 		
 //--------------------------------------- блок вопросов и ответов ---------------------------------------------
 		case "int_quests":
-			dialog.text = "Yeah? And what can I tell you?";
+			dialog.text = "Да? И что же я могу тебе рассказать?";
 			if (!CheckAttribute(npchar, "quest.answer_1"))
 			{
-				link.l1 = "How did you get here?";
+				link.l1 = "Как ты очутился на острове?";
 				link.l1.go = "ansewer_1";
 			}
 			if (!CheckAttribute(npchar, "quest.answer_2"))
 			{
-				link.l2 = "What does the life here look like?";
+				link.l2 = "Что из себя представляет жизнь на Острове?";
 				link.l2.go = "ansewer_2";
 			}
 			if (!CheckAttribute(npchar, "quest.answer_3"))
 			{
-				link.l3 = "Who is most... important person here?";
+				link.l3 = "Кто из жителей острова наиболее... значительный?";
 				link.l3.go = "ansewer_3";
 			}
 			if (!CheckAttribute(npchar, "quest.answer_4"))
 			{
-				link.l4 = "And where can I get coins at the Island?";
+				link.l4 = "А где можно на Острове раздобыть денег?";
 				link.l4.go = "ansewer_4";
 			}
-			link.l10 = "No questions. Pardon...";
+			link.l10 = "Нет вопросов. Извините...";
 			link.l10.go = "exit";
 		break;
 		
 		case "ansewer_1":
-			dialog.text = "I am sorry, friend, but what is your concern? I simply got here. I don't want to talk about that story, especially with a man I don't know.";
-			link.l1 = "Well, I am sorry...";
+			dialog.text = "Прости, дружище, но тебе-то какое дело? Очутился и очутился. Я не хочу распространяться об этой истории, тем более обсуждать ее с каждым встречным-поперечным.";
+			link.l1 = "Ну извини...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_1 = "true";
 		break;
 		
 		case "ansewer_2":
-			dialog.text = "It looks like a bore. Tiresome, dull and senseless. I am going to join to the Shark's pirates, these lads are worthy. I will join there crew with a great pleasure, I just need to... explore a bit. I am sure that they will find a way out from the Island.";
-			link.l1 = "Really? I see...";
+			dialog.text = "Скуку. Нудную, тупую, бессмысленную. Я вот сейчас собираюсь прибиться к пиратам Акулы - это достойные ребята. Я с удовольствием вступлю в их команду, только сначала немного... присмотрюсь. Уверен, что они найдут способ выбраться с Острова.";
+			link.l1 = "Ты так считаешь? Понятно...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_2 = "true";
 		break;
 		
 		case "ansewer_3":
-			dialog.text = "Admiral for sure! Pirates hold Narwhals and Rivados in their fist and clans don't dare to say anything. Next in a row go the leaders of clans, Donald Greenspy of Narwhals and Black Eddy of Rivados. Axel Yost - a merchant of Narwhals is an important man too. And of course Sancho Carpentero, he is a good lad...";
-			link.l1 = "I see...";
+			dialog.text = "Конечно - адмирал! Пираты держат в кулаке и нарвалов, и ривадос, и те не смеют против них даже пикнуть. Потом - лидеры кланов, Дональд Гринспи у нарвалов и Черный Эдди у ривадос. Аксель Йост - торговец нарвалов - тоже не последний человек. Ну и, конечно, бармен Санчо Карпентеро - свой парень...";
+			link.l1 = "Ясно...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_3 = "true";
 		break;
 		
 		case "ansewer_4":
-			dialog.text = "Chests. Of course, I must open them first, people don't trust each other here, so all chests get locks. Let me tell you one thing, pal, the best trinkets are kept inside the ships under the watch of their owners\nYou also can explore the outer ring but pray not to fall down through the rotten wood. Or you may hunt giant crabs, you can get a good price for the meat on their pincers.";
-			link.l1 = "Got it...";
+			dialog.text = "В сундуках. Если, конечно, ты сумеешь их открыть, ибо никто тут друг другу не доверяет и все сундуки запираются. И то, дружище, скажу тебе, что ценные предметы лежат в сундуках внутри кораблей под надежным присмотром их хозяев\nА кроме сундуков - плыви на внешнее кольцо и шарься по протухлым трюмам кораблей, и молись, чтобы не провалиться сквозь гнилые доски под воду, или ступай охотиться на крабов - за их мясистые клешни тут очень неплохо платят.";
+			link.l1 = "Понятно...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_4 = "true";
 		break;
@@ -113,14 +113,14 @@ void ProcessDialogEvent()
 //----------------------------------------- специальные реакции -----------------------------------------------
 		//обнаружение ГГ в сундуках
 		case "Man_FackYou":
-			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
-			link.l1 = "Damn it!";
+			dialog.text = LinkRandPhrase("Что ты там копаешься, а? Да ты вор!", "Вот это да! Чуть я загляделся, а ты сразу в сундук с головой!", "По сундукам шарить вздумал?! Тебе это даром не пройдет!");
+			link.l1 = "А-ать, дьявол!!!";
 			link.l1.go = "fight";
 		break;
 		
 		case "Woman_FackYou":
-			dialog.text = "What?! Decided to check my chests? You won't get away with it!";
-			link.l1 = "Foolish girl!...";
+			dialog.text = "Ах, вот, значит, как?! По сундукам шарить вздумал?! Тебе это даром не пройдет!";
+			link.l1 = "Вот дура!..";
 			link.l1.go = "exit_setOwner";
 			LAi_group_Attack(NPChar, Pchar);
 		break;
@@ -141,8 +141,8 @@ void ProcessDialogEvent()
 		
 		//замечание по обнаженному оружию
 		case "LSCNotBlade":
-			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
-			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
+			dialog.text = LinkRandPhrase("Слушай, ты бы убрал оружие. А то нервируешь немного...", "Знаешь, у нас тут не принято сабелькой размахивать. Убери оружие.", "Слушай, что ты, как д'Артаньян, бегаешь тут, шпагой машешь? Убери оружие, не к лицу это серьезному мужчине...");
+			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;	
@@ -150,13 +150,13 @@ void ProcessDialogEvent()
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{
-				dialog.text = NPCharSexPhrase(NPChar, "Listen, I am the citizen of the city and I'd ask you to hold down your blade.", "Listen, I am the citizen of the city and I'd ask you to hold down your blade.");
-				link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
+				dialog.text = NPCharSexPhrase(NPChar, "Послушайте, я, как гражданин этого города, прошу вас не ходить у нас с обнаженным клинком.", "Знаете, я, как гражданка этого города, прошу вас не ходить у нас с обнаженным клинком.");
+				link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажете...");
 			}
 			else
 			{
-				dialog.text = NPCharSexPhrase(NPChar, "Be careful, pal, while running with a weapon. I can get nervous...", "I don't like when men walking in front of me with their weapon ready. It scares me...");
-				link.l1 = RandPhraseSimple("Got it.", "I am taking it away.");
+				dialog.text = NPCharSexPhrase(NPChar, "Острожней на поворотах, приятель, когда бежишь с оружием в руках. Я ведь могу и занервничать...", "Мне не нравится, когда мужчины ходят передо мной с оружием на изготовку. Это меня пугает...");
+				link.l1 = RandPhraseSimple("Понял.", "Убираю.");
 			}
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";

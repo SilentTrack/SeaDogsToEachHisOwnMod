@@ -154,7 +154,7 @@ bool AISeaGoods_ShipEatGood()
 		case "unknown_boat":
 			if (iCharacterIndex == sti(pchar.index))
 			{
-				Log_TestInfo("Picked up the boat from the shipwrecked");
+				Log_TestInfo("Подобрали шлюпку с потерпевшим кораблекрушение");
 				Achievment_SetStat(pchar, 60, 1);
 				pchar.GenQuest.Survive_In_SeaPrisonerIdx = iGoodCharacterIndex;
 				DoQuestCheckDelay("Survive_In_SeaPrisoner", 1.0);
@@ -180,7 +180,7 @@ bool AISeaGoods_ShipEatGood()
 		case "barrel_treasure":
 			if (iCharacterIndex == sti(pchar.index))
 			{
-				Log_TestInfo("Picked up a barrel with unknown contents");
+				Log_TestInfo("Подобрали бочку с неизвестным содержимым");
 				Achievment_SetStat(pchar, 59, 1);
 				DoQuestCheckDelay("Get_TreasureBarrel", 1.0);
 				return true;

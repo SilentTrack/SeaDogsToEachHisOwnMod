@@ -11,8 +11,8 @@ int CreatePortPaxCharacters(int n)
 	ch.id		= "PortPax_Mayor";
 	ch.model	= "huber_8";
 	ch.sex = "man";
-	ch.name 	= "Jeremy Deshamp";
-    ch.lastname = "do Mussack";
+	ch.name 	= "Жереми Дешамп";
+    ch.lastname = "дю Мюссак";
 	ch.City = "PortPax";
 	ch.location	= "PortPax_townhall";
 	ch.location.group = "sit";
@@ -170,7 +170,7 @@ int CreatePortPaxCharacters(int n)
 	n = n + 1;
 	
 	makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "PortPax_Smuggler";
 	ch.model    = "citiz_29";

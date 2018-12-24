@@ -163,14 +163,14 @@ void SetCrewBackAfterBattle()
             iTemp = iTemp - GetCargoGoods(Pchar, GOOD_MEDICAMENT); // умерли от ран
 			RemoveCharacterGoodsSelf(Pchar, GOOD_MEDICAMENT, GetCargoGoods(Pchar, GOOD_MEDICAMENT)); // все нулим
 			i += iTemp; // трупов больше
-			Log_Info("" + iTemp + "  crewmen died due to the lack of medicines");
+			Log_Info("Из-за нехватки медикаментов от ран умерли " + iTemp + " матросов");
 	    }
 	    else
 	    {
 	        RemoveCharacterGoodsSelf(Pchar, GOOD_MEDICAMENT, iTemp);
 	        if (GetCargoGoods(Pchar, GOOD_MEDICAMENT) < 16)
 		    {
-		        Log_Info("" + Pchar.Ship.Name + " is low on medicines");
+		        Log_Info("На корабле " + Pchar.Ship.Name + " осталось мало медикаментов");
 		    }
 	    }
 	}
@@ -788,7 +788,7 @@ void TWN_FightInTown_OpenNext()
     }
     chrDisableReloadToLocation = false;
     LAi_SetFightMode(Pchar, false);
-    Log_Info("Enemies' forces are suppressed! The way is clear.");
+    Log_Info("Силы противника подавлены! Путь свободен.");
     PlaySound("interface\door_locked.wav");
 	if (pchar.location == "villemstad_town")
 	{
@@ -1277,8 +1277,8 @@ void SetGovenoursToResidence() // Jason: усадка генгуберов и командоров - полнос
 	ref rChar;
 	// главный француз - Пуанси
 	rChar = GetCharacter(NPC_GenerateCharacter("Puancie", "huber_3", "man", "man", 25, FRANCE, -1, false, "quest"));
-	rChar.name = "Chevalier Philippe";
-	rChar.lastname = "de Poincy";
+	rChar.name = "шевалье Филипп";
+	rChar.lastname = "де Пуанси";
 	rChar.greeting = "puancie_1";
     rChar.Dialog.Filename = "Governor\Puancie.c";
 	rChar.dialog.currentnode = "First time";
@@ -1299,8 +1299,8 @@ void SetGovenoursToResidence() // Jason: усадка генгуберов и командоров - полнос
 	
 	// главный англичанин - лорд Виндзор
 	rChar = GetCharacter(NPC_GenerateCharacter("Vindzor", "huber_0", "man", "man", 25, ENGLAND, -1, false, "quest"));
-	rChar.name = "lord Thomas";
-	rChar.lastname = "Vindzor";
+	rChar.name = "лорд Томас";
+	rChar.lastname = "Виндзор";
 	rChar.greeting = "Vindzor";
     rChar.Dialog.Filename = "Governor\Vindzor.c";
 	rChar.dialog.currentnode = "First time";
@@ -1321,8 +1321,8 @@ void SetGovenoursToResidence() // Jason: усадка генгуберов и командоров - полнос
 	
 	// главный испанец - дон Хуан де Кордова
 	rChar = GetCharacter(NPC_GenerateCharacter("Cordova", "huber_2", "man", "man", 25, SPAIN, -1, false, "quest"));
-	rChar.name = "don Juan";
-	rChar.lastname = "de Cordova";
+	rChar.name = "дон Хуан";
+	rChar.lastname = "де Кордова";
 	rChar.greeting = "Cordova";
     rChar.Dialog.Filename = "Governor\Cordova.c";
 	rChar.dialog.currentnode = "First time";
@@ -1343,8 +1343,8 @@ void SetGovenoursToResidence() // Jason: усадка генгуберов и командоров - полнос
 	
 	// бравый вояка англичан - полковник Фокс
 	rChar = GetCharacter(NPC_GenerateCharacter("Fox", "Fox", "man", "man", 35, ENGLAND, -1, false, "quest"));
-	rChar.name = "colonel";
-	rChar.lastname = " Jonathan Fox";
+	rChar.name = "полковник";
+	rChar.lastname = " Джонатан Фокс";
 	rChar.greeting = "Fox";
     rChar.Dialog.Filename = "Governor\Fox.c";
 	rChar.dialog.currentnode = "First time";
@@ -1511,7 +1511,6 @@ void SetShipSquadron(ref rChar)
 
     Fantom_SetCannons(rChar, "war");
     Fantom_SetBalls(rChar, "war");
-    Fantom_SetGoods(rChar, "war");
 }
 // отбились
 void TWN_End_Siege_Any(string city)

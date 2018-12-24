@@ -123,6 +123,8 @@ void WorldSituationsUpdate()
 			if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "Start") DoQuestFunctionDelay("Caleuche_StartGo", 1.0);
 			// ФМК - без НИ
 			if (!CheckAttribute(pchar, "questTemp.FMQ.Success") && sti(pchar.rank) > 3) DoQuestFunctionDelay("FMQ_SetConditions", 1.0);
+			
+			AchievmentsDayUpdateStart();
 		break;
 		
 		case 2:
@@ -152,8 +154,9 @@ void WorldSituationsUpdate()
 			if (CheckAttribute(pchar, "questTemp.Patria.Governor") && GetDataDay() == 15)
 			{
 				AddMoneyToCharacter(pchar, 100000);
-				log_info("You have received your share of profit from Poincy");
+				log_info("Вы получили долю прибыли от Пуанси");
 			}
+			if (!CheckAttribute(pchar, "questTemp.Patria_BugsFixer")) Patria_BugsFixer(); // 17-add
 		break;
 		
 		case 4:
@@ -182,8 +185,8 @@ void WorldSituationsUpdate()
 		break;
 		
 		case 9:
-				UpdateReputation();
-				GenerateRumour() //homo 05/07/06
+			UpdateReputation();
+			GenerateRumour() //homo 05/07/06
 		break;
 		
 		case 10:

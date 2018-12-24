@@ -11,8 +11,8 @@ int CreateGuadeloupeCharacters(int n)
 	ch.id		= "BasTer_Mayor";
 	ch.model	= "huber_5";
 	ch.sex = "man";
-	ch.name 	= "Clod Fransua";
-    ch.lastname = "de Lion";
+	ch.name 	= "Клод Франсуа";
+    ch.lastname = "де Лион";
 	ch.City = "BasTer";
 	ch.location	= "BasTer_townhall";
 	ch.greeting = "mayor_4";
@@ -170,7 +170,7 @@ int CreateGuadeloupeCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "BasTer_Smuggler";
 	ch.model    = "citiz_29";

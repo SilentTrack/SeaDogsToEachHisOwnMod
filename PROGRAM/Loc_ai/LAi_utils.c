@@ -431,7 +431,7 @@ void LAi_CheckKillCharacter(aref chr)
 				LAi_SetHP(rOff, ihpm, ihpm); // штраф в НР
 				LAi_SetCurHPMax(rOff);
 				AddPassenger(pchar, rOff, false);
-				Log_Info("Boarding officer " + GetFullName(rOff) + " is unconscious! Character's capabilities will be crippled forever!");
+				Log_Info("Абордажник " + GetFullName(rOff) + " без сознания!");
 		}
 	}
 }
@@ -1151,7 +1151,7 @@ void MakePoisonAttackCheckSex(aref attacked, aref enemy)
 		if (rand(1000) < 150) MakePoisonAttack(enemy, attacked);
 		else
 		{
-			if (rand(2) < 1 && CheckAttribute(enemy, "viper")) MakePoisonAttack(enemy, attacked);
+			if (rand(2) < 2 && CheckAttribute(enemy, "viper")) MakePoisonAttack(enemy, attacked);
 		}
 	}
 }

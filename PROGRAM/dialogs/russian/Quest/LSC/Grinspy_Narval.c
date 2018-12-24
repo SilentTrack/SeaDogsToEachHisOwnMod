@@ -19,115 +19,115 @@ void ProcessDialogEvent()
 		case "First time":
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = "What? What do you want?";
-				link.l1 = TimeGreeting()+". My name is "+GetFullName(pchar)+". I wanted to meet the leader of the clan.";
+				dialog.text = "Ну? Чего тебе надо?";
+				link.l1 = TimeGreeting()+". Меня зовут "+GetFullName(pchar)+". Вот, зашел познакомиться с главой клана на Острове.";
 				link.l1.go = "meeting";
 				npchar.quest.meeting = "1";
 			}
 			else
 			{
-				dialog.text = "Ah, "+GetFullName(pchar)+"! Want something?";
-				link.l5 = "Just wanted to greet you. See you!";
+				dialog.text = "А, "+GetFullName(pchar)+"! Ты что-то хотел?";
+				link.l5 = "Да просто решил узнать как у тебя дела. Еще увидимся!";
 				link.l5.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "meeting": // первая встреча
-			dialog.text = "Now you know me. My name is Donald Greenspen and don't make me or my men angry. And don't try to visit the San Gabriel until you have got a password. Shop is free to visit, everyone need to trade. Any questions?";
-			link.l2 = "No, I got it. See you.";
+			dialog.text = "Ну вот и познакомился. Мое имя - Дональд Гринспи, и берегись, если ты разозлишь меня или моих людей. И не суйся на 'Сан-Габриэль', если, конечно, тебе не дадут пароль - это плохо для тебя кончится. В магазин ходи, сколько вздумается - торговать-то надо всем. Еще вопросы есть?";
+			link.l2 = "Больше ничего, информация исчерпывающая. До свидания!";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
 		
 	// ----------------------------------после разгрома Чада и Мэри на Каролине---------------------------
 		case "shark":
-			dialog.text = "What business do you have for me?";
-			link.l1 = "A very unpleasant one, Donald. There was an attempt on Steven's life last night. Fighters of your clan participated.";
+			dialog.text = "По какому вопросу пожаловал?";
+			link.l1 = "По достаточно неприятному, Дональд. Минувшей ночью на Стивена Додсона было совершено покушение. Причем бойцы твоего клана приняли в этом самое деятельное участие.";
 			link.l1.go = "shark_1";
 		break;
 		
 		case "shark_1":
-			dialog.text = "I don't know about that. Why do you think that they were my men?";
-			link.l1 = "Because I was there. We are able to see the difference between your men, pirates and Rivados. The group was lead by Mary Casper and Chad Kapper. Do you need more evidences?";
+			dialog.text = "Ничего не знаю об этом. С чего ты взял, что это дело рук моих бойцов?";
+			link.l1 = "Да потому что я присутствовал при этом. А уж отличить твоих людей от людей Акулы, и уж тем более ривадос, мы в состоянии. Возглавляли шайку нападавших ваша Мэри Каспер и предатель Чад Каппер. Какие еще доказательства тебе нужны?";
 			link.l1.go = "shark_2";
 		break;
 		
 		case "shark_2":
-			dialog.text = "I can only ensure you that me and my men have nothing to do about it.";
-			link.l1 = "You will have to ensure admiral of it and it won't be easy. Dodson is very angry at all Narwhals after the attack. He is going to declare you a war - he will stop providing you with a provision and shoot your men whenever any opportunity is given. And it's not just words.";
+			dialog.text = "Могу тебя лишь заверить в том, что я лично и мои люди не имеют к этому никакого отношения.";
+			link.l1 = "Тебе придется заверить в этом адмирала, а сделать это будет ох как непросто. После этого нападения, в результате которого Додсон чуть не распрощался с жизнью, он весьма зол на всех нарвалов без исключения. Акула собирается объявить вам войну - прекратить отпускать продовольствие, и отстреливать твоих людей при каждом удобном случае. И это не пустые слова.";
 			link.l1.go = "shark_3";
 		break;
 		
 		case "shark_3":
-			dialog.text = "I hope that admiral understands what he is going to do. Does he doubt that my men can shoot too?";
-			link.l1 = "I think he does. He is ready to turn the San Augustine into a fortress and fight until you all starve. Besides, Dodson is going to talk with Rivados and offer them a cooperation. You won't stand a chance against admiral and Rivados together.";
+			dialog.text = "Надеюсь, адмирал отдает себе отчет? Или он сомневается в том, что мои люди тоже умеют стрелять?";
+			link.l1 = "Думаю, что отдает. Он готов превратить 'Сан-Августин' в крепость и выдерживать осаду до тех пор, пока вы не перемрете с голода. Кроме того, Додсон готовится отправить посла к Черному Эдди с предложением о сотрудничестве - если против вас пойдет и адмирал, и ривадос - вам не устоять.";
 			link.l1.go = "shark_4";
 		break;
 		
 		case "shark_4":
-			dialog.text = "Damn it! But we are not a part of this attempt! Why the whole clan must pay for actions of that idiot Mary and a bunch of scums from my crew?\nBesides, let's talk logic, by killing Marlow Dodson himself provoked Mary and my soldiers. That's exactly what happens when you commit such meanness.";
-			link.l1 = "You don't understand a thing. You were fooled. Why are you so sure that Dodson has killed Alan? Actually he thinks that you have done that to take his position...";
+			dialog.text = "Черт побери! Но мы же действительно не причастны к этому покушению! Если эта дуреха Красная Мэри, ослепленная жаждой мести, и несколько отморозков из моей команды напали на адмирала - то причем здесь весь клан целиком?\nК тому же, давай рассуждать здраво: убив Алана Милроу в тюрьме, Додсон сам спровоцировал и Мэри, и моих бойцов. Когда делаешь подлость, то следует быть готовым к тому, что за нее придется заплатить.";
+			link.l1 = "Ничего ты не знаешь и не понимаешь. Вас обвели вокруг пальца. Откуда у тебя такая уверенность, что это Додсон прикончил Алана? Он, например, считает, что это ты его шлепнул, чтобы занять место лидера...";
 			link.l1.go = "shark_5";
 		break;
 		
 		case "shark_5":
-			dialog.text = "I don't care what he is thinking. All evidences are against him. Only he and his men had an access to the prison. Alan was in his hands. Red Mary told me a lot. Dodson personally visited the prison not long before Alan was murdered and he don't do it often.";
-			link.l1 = "Have you seen his death?";
+			dialog.text = "Мне все равно, что он считает. Против адмирала были все улики: никто кроме него и его людей не мог войти в тюрьму. Алан был целиком и полностью в его власти. Красная Мэри, которая плавала тайком на 'Тартарус', много чего рассказывала. Перед тем, как Милроу убили, Додсон лично посетил тюрьму, что делает крайне редко.";
+			link.l1 = "Ты сам видел, как Акула убивает Алана? Нет?";
 			link.l1.go = "shark_6";
 		break;
 		
 		case "shark_6":
-			dialog.text = "Rubbish! Of course I haven't.";
-			link.l1 = "And Chimiset have. Yes-yes, Rivados wizard who had been sitting next to Alan. He was also murdered there recently. I have been in the prison a day before his death and had a talk with him. Milrow was killed by Chad Kapper, the boatswain of Shark.";
+			dialog.text = "Что за вздор! Нет, конечно.";
+			link.l1 = "А вот Чимисет видел убийцу Алана. Да-да, колдун ривадос, который сидел в клетке рядом с Аланом, и которого тоже недавно зарубили в тюрьме. Я был там за день до его смерти и разговаривал с ним. Милроу был убит Чадом Каппером, боцманом Акулы.";
 			link.l1.go = "shark_7";
 		break;
 		
 		case "shark_7":
-			dialog.text = "Is it true?";
-			link.l1 = "Think about it: Chimiset didn't care about your relationship with the admiral. He had no reason to lie. The old wizard was scared of Chad, he supposed that he would be the next. He was right, Chad had murdered him as soon as he learnt that admiral is going to set him free.";
+			dialog.text = "Это правда?";
+			link.l1 = "Сам подумай: Чимисету наплевать на ваши отношения с адмиралом и ваши внутриклановые разборки. Ему не было смысла лгать. Старый негр панически боялся Каппера, так как полагал, что будет следующим. И, как видно, не ошибся, к сожалению - Чад разделался с ним, как только узнал, что адмирал собирается его выпустить.";
 			link.l1.go = "shark_8";
 		break;
 		
 		case "shark_8":
-			dialog.text = "But why Kapper wanted Alan's death?";
-			link.l1 = "Damn, don't you really understand? I have told you that Kapper was working with Red Mary. He wanted to take Shark's position and made a cunning plan to do so. Killing Alan Milrow and spreading gossips about Shark's involvement in his death made Narwhal clan hostile against admiral...";
+			dialog.text = "Но зачем Капперу нужно было убивать Алана?";
+			link.l1 = "Черт возьми, неужели не догадываешься? Я же сказал, что Каппер вместе с Красной Мэри руководил нападением. Он решил занять место Акулы и разработал для этого хитрый план. Убив Алана Милроу и распространив слухи, что это сделал Акула, он настроил против адмирала клан нарвал...";
 			link.l1.go = "shark_9";
 		break;
 		
 		case "shark_9":
 			dialog.text = "";
-			link.l1 = "Silly girl Mary trusted him and stood on the side of the real killer of her boyfriend. They had persuaded a few Narwhals to join them, it must had been easy for Mary. Then they have organized an attack on admiral in Fazio's cabin who was forced to write an invitation to admiral...";
+			link.l1 = "Глупая девчонка, Мэри, поверила ему, и, пылая жаждой мести за смерть дружка, встала на сторону настоящего убийцы. Вдвоем они подговорили нескольких нарвалов - думаю, Мэри это труда не составило - и организовали нападение в каюте Фацио, которого угрозами заставили написать предательское послание адмиралу...";
 			link.l1.go = "shark_10";
 		break;
 		
 		case "shark_10":
 			dialog.text = "";
-			link.l1 = "I have a letter from Fazio which explains everything. Chimiset was killed by Chad as a dangerous witness. He was cooperating with Narwhals and Rivados would be really glad to hear that during their talk with Shark. We will easily prove Black Eddie that Chad became one of your kind by showing this letter.";
+			link.l1 = "У меня на руках письмо Фацио, в котором он раскрывает всю суть этого гнусного плана. Чимисета Чад убрал, как опасного свидетеля. А действовал он сообща с нарвалами, так что ривадос весьма обрадуются этому факту, когда Акула будет вести переговоры о создании коалиции. Мы легко докажем Черному Эдди, что Чад переметнулся к вам - достаточно будет показать письмо Фацио.";
 			link.l1.go = "shark_11";
 		break;
 		
 		case "shark_11":
-			dialog.text = "Hm. You have got all aces, what are doing here then? You want something from me, right?";
-			link.l1 = "I do. Because I believe that it was all Chad's plan and you are not involved. Chad has cheated on Mary, she called her pals from your clan to help her and that is it. Anyway, I haven't found any evidences against you or any other Narwhal..";
+			dialog.text = "Хм. Ну раз все козыри у вас на руках, тогда скажи, зачем ты сюда явился? Ты ведь сделал это не просто так - тебе что-то от меня нужно?";
+			link.l1 = "Нужно. Потому что в отличие от Акулы я считаю, что все это затеял Чад. Он обманул Мэри, та позвала на помощь знакомых из твоего клана - вот так все и вышло. Во всяком случае, мне не удалось отыскать причастности к этом делу тебя или кого-либо другого из нарвалов...";
 			link.l1.go = "shark_12";
 		break;
 		
 		case "shark_12":
 			dialog.text = "";
-			link.l1 = "But it doesn't mean that there is no other plotters are left. I want you to search for them. Then, perhaps, we will settle things without a slaughter.";
+			link.l1 = "Но то, что мне не удалось найти - не значит, что заговорщиков больше нет. Я хочу, чтобы ты разыскал среди своих людей тех, кто имел отношение к нападению на адмирала. Тогда, возможно, мы сможем уладить этот конфликт, не доводя его до кровавой бойни.";
 			link.l1.go = "shark_13";
 		break;
 		
 		case "shark_13":
-			dialog.text = "I have already told you that no one else of my men was part of it. After Marlow's death Mary basically left the clan and locked herself in her cabin. Actually, I have no idea how she managed to persuade others to take part in it, but it seems that she had succeeded.  I swear that neither me nor anyone else from my clan are acting against admiral.\nWe had lost too many men recently, so we don't want to step into a messy business now. I am not afraid of admiral's attack, even joined with Rivados. Narwhals are true warriors and we will prove that in our last battle. But this would be pointless\nWe have already decided to keep peace with admiral. Rivados are the different matter, we don't negotiate with Negros. I am ready to apologize personally to admiral, to ask forgiveness for my suspicions and for the attack on his life. I will swear on Bible to prove my sincerity. Are you and Dodson fine with that?";
-			link.l1 = "I am. Are you sure that there are no tricks from your men should be expected?";
+			dialog.text = "Я тебе уже сказал - никто из моих людей более не участвовал в этом. Мэри после убийства Алана совершенно отдалилась от клана, запершись у себя в каюте. Я вообще не представляю, как ей удалось кого-то уговорить подписаться на это дело, но видимо - удалось. Я клянусь тебе, что ни я, ни кто-либо другой из клана нарвал не замышляет ничего против адмирала\nИ так было слишком много жертв в последнее время, чтобы продолжать кровавые разборки. Я не боюсь нападения адмирала, даже вместе с ривадос: нарвалы - настоящие бойцы, и мы докажем это, пусть даже в последнем для нас бою. Но в чем смысл этого?\nМы же решили сосуществовать с адмиралом мирно. Ривадос - это другой вопрос, с неграми мы не договариваемся. Я готов лично принести извинения адмиралу и за нападение, и за подозрение в убийстве Алана, и поклясться на Библии в искренности своих слов. Вас с Додсоном такой вариант устроит?";
+			link.l1 = "Хорошо. Ты уверен, что со стороны твоих людей более не стоит ожидать подвоха?";
 			link.l1.go = "shark_14";
 		break;
 		
 		case "shark_14":
-			dialog.text = "Absolutely. I will inform my clan about the real killer of Alan Milrow. My men's relation to the admiral will be changed immediately, I assure you. Tell me, will a slaughter be needed after that?";
-			link.l1 = "No, it won't. I am here to prevent it. I trust you, Donald, and I will try to persuade Shark. I have got a few arguments left... See you, Donald!";
+			dialog.text = "Полностью и абсолютно. Я немедленно поставлю в известность весь свой клан о том, кто был истинным убийцей Алана Милроу. После этого отношение моих людей к адмиралу в корне переменится, уверяю. Скажи, и стоит после этого устраивать побоище?";
+			link.l1 = "Нет, не стоит. Я пришел сюда для того, чтобы его предотвратить. Я поверю тебе, Дональд, и попробую уговорить Акулу не развязывать военных действий. У меня есть несколько весомых аргументов... До встречи!";
 			link.l1.go = "shark_15";
 		break;
 		
@@ -140,158 +140,158 @@ void ProcessDialogEvent()
 		break;
 		
 		case "narval_wait":
-			dialog.text = "Have you spoken to the admiral already? Any results?";
-			link.l1 = "I am in progress. I will see you later...";
+			dialog.text = "Ты уже поговорил с адмиралом? Какие результаты?";
+			link.l1 = "Вопрос еще окончательно не решен. Я приду позже...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "narval_wait";
 		break;
 		
 		case "shark_16":
-			dialog.text = "Have you spoken to the admiral already? Any results?";
-			link.l1 = "Yes, I have. Your apologies are accepted, your clan's accusation is off. There is even more, Shark is offering you to come and see him to discuss terms of the future peaceful agreement between Narwhals and pirates.";
+			dialog.text = "Ты уже поговорил с адмиралом? Какие результаты?";
+			link.l1 = "Да, поговорил. Вопрос с причастностью клана нарвал к покушению снят, твои извинения приняты. Более того, Акула предлагает тебе явиться к нему с визитом для обсуждения условий создания мирного соглашения между пиратами и нарвалами.";
 			link.l1.go = "shark_17";
 		break;
 		
 		case "shark_17":
-			dialog.text = "To be honest, I didn't expect... This is a great news. Perhaps we will be even able to reconsider prices for provision for our clan and a new policy concerning Rivados.";
-			link.l1 = "That concerns only you and the admiral.";
+			dialog.text = "Сказать по чести, не ожидал... Это очень хорошая новость. Возможно, мы сможем договориться о пересмотре цен на продовольствие для нашего клана и проведении политики в отношении ривадос.";
+			link.l1 = "Это уже обсуждайте вместе с адмиралом.";
 			link.l1.go = "shark_18";
 		break;
 		
 		case "shark_18":
-			dialog.text = "Yes, of course. You have done a great service to Narwhal clan by preventing the pointless bloodshed and perhaps even the total annihilation of my men. Take this tower musket as a token of my gratitude, you won't find another weapon of this kind\nBesides, you are allowed to visit our restricted areas just like any of clan members.";
-			link.l1 = "Thanks! Farewell now, I have got a lot of things to do.";
+			dialog.text = "Да, конечно. Ты оказал неоценимую услугу клану нарвал, предотвратив бессмысленное кровопролитие, а, возможно, и тотальное истребление моих людей. В знак признательности я дарю тебе этот башенный мушкетон - такого оружия ты нигде более не найдешь\nКроме того, ты можешь беспрепятственно посещать нашу закрытую территорию, как любой член клана.";
+			link.l1 = "Спасибо! И то, и другое мне очень пригодится. А теперь позволь откланятся - у меня еще очень много дел.";
 			link.l1.go = "shark_19";
 		break;
 		
 		case "shark_19":
 			GiveItem2Character(pchar, "mushket6"); 
-			Log_Info("You have received a tower mousqueton");
+			Log_Info("Вы получили башенный мушкетон");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Good luck. See me if you'll have any questions.";
-			link.l1 = "Got it. See you!";
+			dialog.text = "Удачи. Если у тебя появятся какие-то вопросы - я всегда рад тебя видеть в моей резиденции.";
+			link.l1 = "Я приму это к сведению. Всего доброго!";
 			link.l1.go = "exit";
 			CloseQuestHeader("SharkHunt");
 			pchar.questTemp.LSC.nrv_friend = "true"; //флаг на проход по кораблям нарвалов
 			NextDiag.TempNode = "grinspy_wait";
-			AddSimpleRumourCityTip("They say that you are a friend of Donald, Greenspen, the leader of Narwhals. Well, Rivados hate you now...", "LostShipsCity", 5, 2, "LSC", "");
-			AddSimpleRumourCityTip("They say that you are Narwhal now. Or do you serve under admiral's command? I don't get it...", "LostShipsCity", 5, 2, "LSC", "");
-			AddSimpleRumourCityTip("I've heard that you have made peace between admiral and Narwhals. Hm, Rivados must be insane about that...", "LostShipsCity", 5, 2, "LSC", "");
-			AddSimpleRumourCityTip("So Chad Kapper was a murderer of Alan Milrow! That is surprising!", "LostShipsCity", 5, 2, "LSC", "");
+			AddSimpleRumourCityTip("Ходят слухи, что вы подружились с лидером нарвалов, Дональдом Гринспи. Ну, зато теперь к ривадос вам путь заказан...", "LostShipsCity", 5, 2, "LSC", "");
+			AddSimpleRumourCityTip("Говорят, вы вступили в клан нарвал. Или вы все-таки служите у адмирала? Никак не пойму...", "LostShipsCity", 5, 2, "LSC", "");
+			AddSimpleRumourCityTip("Слыхал я, что вы помирили адмирала и нарвалов. Хм, а ривадос из-за этого просто в ярости...", "LostShipsCity", 5, 2, "LSC", "");
+			AddSimpleRumourCityTip("Так это Чад Каппер был убийцей Алана Милроу! Вот уж неожиданная новость!", "LostShipsCity", 5, 2, "LSC", "");
 		break;
 		
 		case "grinspy_wait": // стал другом
 			if (pchar.questTemp.LSC == "return" && !CheckAttribute(npchar, "quest.return_isl"))
 			{
-				dialog.text = "Ho! "+GetFullName(pchar)+"! You are... no, it is impossible! Are you alive?!";
-				link.l1 = "Talks about my death were a bit wrong, Donald. Ha-ha, glad to see you!";
+				dialog.text = "Хо! "+GetFullName(pchar)+"! Ты же... нет, не может быть! Ты жив?!";
+				link.l1 = "Слухи о моей смерти были слегка преувеличены, Дональд. Ха-ха, рад тебя видеть!";
 				link.l1.go = "exit";
 				npchar.quest.return_isl = "true";
 				break;
 			}
-			dialog.text = "A-ah, my friend "+GetFullName(pchar)+"! Need something?";
-			link.l1 = "No, I don't. Just wanted to greet you.";
+			dialog.text = "А-а, мой друг "+GetFullName(pchar)+"! По какому делу пожаловал?";
+			link.l1 = "Никаких проблем, слава Богу, нет. Просто зашел поздороваться.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "grinspy_wait";
 		break;
 		
 		case "negotiations":
-			dialog.text = "What business do you have for me?";
-			link.l1 = "A very unpleasant one, Donald. There was an attempt on Steven's life. Fighters of your clan participated.";
+			dialog.text = "По какому вопросу пожаловал?";
+			link.l1 = "По достаточно неприятному, Дональд. На Стивена Додсона было совершено покушение. Причем бойцы твоего клана приняли в этом самое деятельное участие.";
 			link.l1.go = "negotiations_1";
 		break;
 		
 		case "negotiations_1":
-			dialog.text = "I don't know about that. Why do you think that my men were involved?";
-			link.l1 = "Because I personally killed few of them along with Chad Kapper, the admiral's boatswain who is responsible for all of this mess. He wasn't able to do it on his own, so your men had been helping him a lot. Admiral knows that and he is very, very angry.";
+			dialog.text = "Ничего не знаю об этом. С чего ты взял, что это дело рук моих бойцов?";
+			link.l1 = "Да потому что я лично прикончил несколько негодяев из твоего клана вместе с Чадом Каппером, боцманом адмирала, который и заварил всю эту кашу. Но в одиночку он бы ничего не смог сделать - твои люди активно помогали ему. Адмирал знает это и очень, очень зол.";
 			link.l1.go = "negotiations_2";
 		break;
 		
 		case "negotiations_2":
-			dialog.text = "My men? Who exactly, can you name them?";
-			link.l1 = "They didn't introduce theirselves. They were just shooting and fencing. Your people are reckless. They can attack even one of their own. Hell with me or with the admiral, but attempting to kill the girl?";
+			dialog.text = "Мои люди? А кто именно, ты можешь назвать?";
+			link.l1 = "Они не представлялись. Они просто доставали пистолеты и стреляли. И вообще, что за беспредельщики у тебя в клане? Готовы убивать даже своих! Ладно - адмирал, или я, но это же каким надо быть негодяем, чтобы напасть на девушку!";
 			link.l1.go = "negotiations_3";
 		break;
 		
 		case "negotiations_3":
-			dialog.text = "Hm. Who are you talking about?";
+			dialog.text = "Хм. Ты это сейчас о чем?";
 			if (pchar.questTemp.LSC.Mary == "alive")
 			{
-				link.l1 = "Who am I talking about? I am talking about the attack on Red Mary. Two Narwhals tried to kill her. I got to her cabin in a critical moment by a pure accident. They would have killed her, if it wasn't me. I didn't ask their names, I am sorry, I had no time, but Mary said that they were Narwhals.";
+				link.l1 = "О чем? Я сейчас о нападении на Красную Мэри, которое совершили два нарвала. Я совершенно случайно оказался в ее каюте в критический момент. Если бы я не вмешался - они бы убили ее. Имен я у них не спрашивал, не было времени, уж извини, но Мэри сказала, что это нарвалы.";
 				link.l1.go = "negotiations_4";
 			}
 			else
 			{
-				link.l1 = "Who am I talking about? I am talking about the attack on Red Mary and those two Narwhals who killed her."
+				link.l1 = "О чем? Я сейчас о нападении на Красную Мэри, которое совершили два нарвала."
 				link.l1.go = "negotiations_6";
 			}
 		break;
 		
 		case "negotiations_4":
-			dialog.text = "What? Why didn't she tell me?! I would have acted immediately!";
-			link.l1 = "She was scared even to leave her cabin recently. She had an argue with you not long ago so why should she run to you and ask for your help?";
+			dialog.text = "Что за вздор? Почему Мэри мне об этом не рассказала?! Я бы немедленно принял меры!";
+			link.l1 = "До недавнего момента она вообще боялась выйти из каюты. А с тобой она поругалась - так чего же она побежит к тебе за помощью?";
 			link.l1.go = "negotiations_5";
 		break;
 		
 		case "negotiations_5":
-			dialog.text = "I didn't have an argue with her! She demanded impossible from me, we had a rough chat and I sent her away. But it doesn't mean that I...";
-			link.l1 = "Fine, whatever. After all, all problems are solved now. But there are bastards among your men, that is a fact.";
+			dialog.text = "Да не ругался я с ней! Она захотела невозможного, мы немного повздорили и я ее выставил. Но это же не значит, что я...";
+			link.l1 = "Ладно, не будем об этом. В конце-концов, ее проблемы уже решены. Но сам факт наличия среди твоих людей полных отморозков - налицо.";
 			link.l1.go = "negotiations_7";
 		break;
 		
 		case "negotiations_6":
-			dialog.text = "What? Was she killed by Narwhals? Why?";
-			link.l1 = "By the order of Chad Kapper, Donald. She knew too much and she didn't want to help Chad. And now the poor girl is dead!";
+			dialog.text = "Что за вздор? Мэри убили нарвалы? Но почему?";
+			link.l1 = "По приказу Чада Каппера, Дональд. Она слишком много знала и не захотела помогать Чаду. И вот теперь несчастная девушка мертва!";
 			link.l1.go = "negotiations_7";
 		break;
 		
 		case "negotiations_7":
-			dialog.text = "I swear, I didn't know about it!";
-			link.l1 = "Sure, you didn't... But let's talk about the admiral. Chad Kapper had organized the attempt and your men helped him. They tried to poison Dodson and I barely prevented that.";
+			dialog.text = "Клянусь, я не знал, что случилось с Мэри!";
+			link.l1 = "Еще бы... Но вернемся к адмиралу. Покушение организовал Чад Каппер, и помогали ему твои люди. Додсона пытались отравить, и только чудом мне удалось предупредить тяжкие для адмирала последствия.";
 			link.l1.go = "negotiations_8";
 		break;
 		
 		case "negotiations_8":
-			dialog.text = "I didn't order anything like that. Dodson is aware that I don't support the policy of late Alan and I think that a lean compromise is better than a fat lawsuit.";
-			link.l1 = "You will have to ensure admiral in it and it won't be easy. Dodson is very angry at all Narwhals after the attempt. He is going to declare you a war.";
+			dialog.text = "Я никому из своих людей не давал такого приказа. Додсон знает, что я не поддерживаю политику покойного Алана и считаю, что худой мир лучше доброй ссоры.";
+			link.l1 = "Тебе придется заверить в этом адмирала, а сделать это будет ох как непросто. После этого покушения, в результате которого Додсон чуть не распрощался с жизнью, он весьма зол на всех нарвалов без исключения. Акула собирается объявить вам войну.";
 			link.l1.go = "negotiations_9";
 		break;
 		
 		case "negotiations_9":
-			dialog.text = "I hope that admiral understands his actions. Does he doubt that my men can shoot back?";
-			link.l1 = "He doesn't. He thinks your clan is a bandit cluster and it must be destroyed before you start to kill everyone. Besides, we have got strong connections with Rivados. I can simply talk to Black Eddie and offer him something. You won't stand against our alliance.";
+			dialog.text = "Надеюсь, адмирал отдает себе отчет? Или он сомневается в том, что мои люди тоже умеют стрелять?";
+			link.l1 = "Отдает. Он считает, что такое разбойничье гнездо, как ваш клан, нужно уничтожить, пока вы не начали убивать тайком всех подряд и без разбора. Кроме того, у нас налажены отношения с ривадос. Достаточно мне прийти к Черному Эдди с предложением - и у нас будет с неграми альянс. Против наших объединенных сил вам не устоять.";
 			link.l1.go = "negotiations_10";
 		break;
 		
 		case "negotiations_10":
-			if (pchar.questTemp.LSC.Mary == "alive") sTemp = "Call Red Mary if you don't believe me and ask her! She will confirm.";
-			else sTemp = "I have got a letter from Chad to Mary which proves everything.";
-			dialog.text = "Damn it! Why does the whole clan have to pay for the actions of a few idiots? Don't you think that I am scared. We are warriors and we will prove that even in our last battle. But I want justice. Actually, admiral is responsible for killing Alan Milrow in the prison.";
-			link.l1 = "How can you be the leader, Donald... You don't know neither about Mary nor about Alan. Chad Kapper killed him. "+sTemp+" He did that to make Narwhals hostile towards the admiral and drag some of them to his side.";
+			if (pchar.questTemp.LSC.Mary == "alive") sTemp = "Если не веришь - позови Красную Мэри и спроси у нее! Она подтвердит.";
+			else sTemp = "У меня есть письмо Чада к Мэри, доказывающее это.";
+			dialog.text = "Черт побери! Но почему за действия нескольких безмозглых тупиц должен расплачиваться весь клан? Ты не подумай, я не боюсь вас. Мы, нарвалы - бойцы, и мы докажем это, пусть даже в последнем для нас бою. Но я хочу справедливости. К тому же, адмирал сам хорош: убил Алана Милроу в тюрьме.";
+			link.l1 = "Ну вот что ты за лидер, Дональд... Про Мэри ничего не знаешь, про Алана тоже. Адмирал не убивал Милроу, его убил Чад Каппер! "+sTemp+" Он сделал это для того, чтобы посеять ненависть у нарвалов к адмиралу и склонить на свою сторону.";
 			link.l1.go = "negotiations_11";
 		break;
 		
 		case "negotiations_11":
-			dialog.text = "I see. Fine. Now let's have a talk. You are here for some purpose, right? What do you want?";
-			link.l1 = "I don't want a bloody mess on the Island. I don't want people to die. I don't like the idea of eliminating all Narwhals, though I assure you that Rivados and us are able to do that. I also think that the whole clan must not answer for actions of some bastards...";
+			dialog.text = "Так. Хорошо. Давай иначе построим разговор. Ты ведь не просто так сюда пришел и все это рассказываешь, да? Тебе что-то нужно?";
+			link.l1 = "Да, нужно. Я не хочу устраивать на Острове кровавую баню. Я не хочу, чтобы гибли люди. Мне не нравится идея уничтожения нарвалов, хотя уверяю - вместе с ривадос мы в состоянии сделать это. И я, как и ты, считаю, что весь клан не должен отвечать за действия кучки мерзавцев...";
 			link.l1.go = "negotiations_12";
 		break;
 		
 		case "negotiations_12":
 			dialog.text = "";
-			link.l1 = "But my vote won't be enough - you should officially ensure admiral that the attempt wasn't approved by you and your clan is not planning to kill Dodson.";
+			link.l1 = "Но моего голоса недостаточно - ты должен официально заверить адмирала, что данное покушение не было санкционировано тобой лично и клан не ставит целью физическое уничтожение Додсона.";
 			link.l1.go = "negotiations_13";
 		break;
 		
 		case "negotiations_13":
-			dialog.text = "What can I do? I am ready to apologize for the attempt and for my suspicions. I can assure him that Narwhals are not planning anything against him and I will swear on the holy Bible. Will you and Dodson find it sufficient?";
-			link.l1 = "I will. I am sure that it will also work for Dodson if you will visit him personally. But first, I will tell him about your intentions and then I will visit you again with results.";
+			dialog.text = "Что я могу сделать? Я готов лично принести извинения адмиралу и за покушение, и за подозрение в убийстве Алана, и заверить, что нарвалы не замышляют ничего против него, и поклянусь на Библии в искренности своих слов. Вас с Додсоном такой вариант устроит?";
+			link.l1 = "Меня - да. Адмирала, если ты нанесешь ему визит на 'Сан-Августин' - наверняка тоже. Но сначала я передам ему твои слова, а затем еще раз приду к тебе, и мы продолжим нашу беседу!";
 			link.l1.go = "negotiations_14";
 		break;
 		
 		case "negotiations_14":
-			dialog.text = "Fine. I will wait.";
-			link.l1 = "I will be back soon...";
+			dialog.text = "Хорошо. Я буду ждать результатов.";
+			link.l1 = "Я скоро вернусь...";
 			link.l1.go = "negotiations_15";
 		break;
 		
@@ -308,43 +308,43 @@ void ProcessDialogEvent()
 		break;
 		
 		case "negotiations_17":
-			dialog.text = "Have you spoken to the admiral already? Any results?";
-			link.l1 = "Yes, I have. If you will pay him an official visit then the problem is solved.";
+			dialog.text = "Ты уже поговорил с адмиралом? Какие результаты?";
+			link.l1 = "Да, поговорил. Если ты нанесешь официальный визит с извинениями - то инцидент будет исчерпан.";
 			link.l1.go = "negotiations_18";
 		break;
 		
 		case "negotiations_18":
-			dialog.text = "To be honest, I didn't expect... This is a great news.";
-			link.l1 = "Yes, you know, I am glad too.";
+			dialog.text = "Сказать по чести, не ожидал... Это очень хорошая новость.";
+			link.l1 = "Да, ты знаешь, я тоже рад этому.";
 			link.l1.go = "negotiations_19";
 		break;
 		
 		case "negotiations_19":
-			dialog.text = "You have done a great service to Narwhal clan by preventing a meaningless massacre and, perhaps, even the total extermination of my people. I grant you this tower musket - you won't find another weapon like it. You are also allowed to visit our ships without any limitations.";
+			dialog.text = "Ты оказал неоценимую услугу клану нарвал, предотвратив бессмысленное кровопролитие, а, возможно, и тотальное истребление моих людей. В знак признательности я дарю тебе этот башенный мушкетон - такого оружия ты нигде более не найдешь. Кроме того, ты можешь беспрепятственно посещать нашу закрытую территорию, как любой член клана.";
 			if (pchar.questTemp.LSC.Mary == "alive") 
 			{
-				link.l1 = "Thanks. A very valuable gift. Yes, Donald, one more thing: make peace with Red Mary. She is hot-tempered, but she is also sincere and honest. Arguing with you made her part off from the clan and it almost costed her life.";
+				link.l1 = "Спасибо. Очень ценная вещь. Да, Дональд, еще: помирись с Красной Мэри. Она, конечно, горячая и вспыльчивая, но зато искренняя и не умеет лгать. Из-за ссоры с тобой она отстранилась от клана и чуть не попала в беду.";
 				link.l1.go = "negotiations_20";
 			}
 			else
 			{
-				link.l1 = "Thanks. A very valuable gift. And I am really glad that it has ended that well.";
+				link.l1 = "Спасибо. Очень ценная вещь. И - я действительно рад, что все закончилось миром.";
 				link.l1.go = "negotiations_21";
 			}
 		break;
 		
 		case "negotiations_20":
-			dialog.text = "Tell her that I ask her to forgive me for hurting her and for those two scums who dared to attack her. You both are... the friends, am I right?";
-			link.l1 = "You are right, Donald. I will tell her. And I am really glad that it all has ended that well.";
+			dialog.text = "Передай ей, что я прошу у нее прощения за то, что обидел ее тогда, и за то, что два мерзавца, недостойные называться нарвалами, осмелились поднять на нее руку. Ведь вы с ней... друзья, я не ошибся?";
+			link.l1 = "Нет, Дональд, не ошибся. Обязательно передам. И - я действительно рад, что все закончилось миром.";
 			link.l1.go = "negotiations_21";
 		break;
 		
 		case "negotiations_21":
 			GiveItem2Character(pchar, "mushket6"); 
-			Log_Info("You have received a tower musket");
+			Log_Info("Вы получили башенный мушкетон");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Good luck. See me if you'll have any questions.";
-			link.l1 = "Fine. Good bye!";
+			dialog.text = "Удачи. Если у тебя появятся какие-то вопросы - я всегда рад тебя видеть в моей резиденции.";
+			link.l1 = "Я приму это к сведению. Всего доброго!";
 			link.l1.go = "exit";
 			CloseQuestHeader("SharkHunt");
 			pchar.questTemp.LSC.nrv_friend = "true"; //флаг на проход по кораблям нарвалов
@@ -360,23 +360,23 @@ void ProcessDialogEvent()
 			DeleteAttribute(pchar, "questTemp.LSC.Dodson_warning");
 			DeleteAttribute(pchar, "questTemp.LSC.Whiskey_clear");
 			DeleteAttribute(pchar, "questTemp.LSC.CapperDie_Aeva");
-			AddSimpleRumourCityTip("They say that you are a friend of Donald, Greenspen, the leader of Narwhals. Well, Rivados hate you now...", "LostShipsCity", 5, 2, "LSC", "");
-			AddSimpleRumourCityTip("They say that you are Narwhal now. Or do you serve under admiral's command? I don't get it...", "LostShipsCity", 5, 2, "LSC", "");
-			AddSimpleRumourCityTip("I've heard that you have made peace between admiral and Narwhals. Hm, Rivados must be insane about that...", "LostShipsCity", 5, 2, "LSC", "");
-			AddSimpleRumourCityTip("So Chad Kapper was a murderer of Alan Milrow! That is surprising!", "LostShipsCity", 5, 2, "LSC", "");
-			AddSimpleRumourCityTip("Take care of Red Mary cause you are lucky to be with her - she is so reckless! She always gets in trouble...", "LostShipsCity", 20, 5, "LSC", "");
+			AddSimpleRumourCityTip("Ходят слухи, что вы подружились с лидером нарвалов, Дональдом Гринспи. Не пойму я вас - друг и нарвалам, и ривадос...", "LostShipsCity", 5, 2, "LSC", "");
+			AddSimpleRumourCityTip("Говорят, вы вступили в клан нарвал. Или вы все-таки служите у адмирала? Или у ривадос? Никак не пойму...", "LostShipsCity", 5, 2, "LSC", "");
+			AddSimpleRumourCityTip("Слыхал я, что вы предотвратили кровавую схватку между адмиралом и нарвалами. Вы - молодец, скажу по чести!", "LostShipsCity", 5, 2, "LSC", "");
+			AddSimpleRumourCityTip("Так это Чад Каппер был убийцей Алана Милроу! Вот уж неожиданная новость!", "LostShipsCity", 5, 2, "LSC", "");
+			AddSimpleRumourCityTip("Присматривайте за Красной Мэри, раз уж вам повезло быть с ней вместе - она такая отчаянная! Вечно во что-нибудь влезет...", "LostShipsCity", 20, 5, "LSC", "");
 		break;
 //----------------------------------------- специальные реакции -----------------------------------------------
 		//обнаружение ГГ в сундуках
 		case "Man_FackYou":
-			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
-			link.l1 = "Damn it!";
+			dialog.text = LinkRandPhrase("Что ты там копаешься, а? Да ты вор!", "Вот это да! Чуть я загляделся, а ты сразу в сундук с головой!", "По сундукам шарить вздумал?! Тебе это даром не пройдет!");
+			link.l1 = "А-ать, дьявол!!!";
 			link.l1.go = "fight";
 		break;
 		
 		case "Woman_FackYou":
-			dialog.text = "What?! Decided to check my chests? You won't get away with it!";
-			link.l1 = "Foolish girl!...";
+			dialog.text = "Ах, вот, значит, как?! По сундукам шарить вздумал?! Тебе это даром не пройдет!";
+			link.l1 = "Вот дура!..";
 			link.l1.go = "exit_setOwner";
 			LAi_group_Attack(NPChar, Pchar);
 		break;
@@ -397,8 +397,8 @@ void ProcessDialogEvent()
 		
 		//замечание по обнаженному оружию
 		case "LSCNotBlade":
-			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
-			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
+			dialog.text = LinkRandPhrase("Слушай, ты бы убрал оружие. А то нервируешь немного...", "Знаешь, у нас тут не принято сабелькой размахивать. Убери оружие.", "Слушай, что ты, как д'Артаньян, бегаешь тут, шпагой машешь? Убери оружие, не к лицу это серьезному мужчине...");
+			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;	
@@ -406,13 +406,13 @@ void ProcessDialogEvent()
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{
-				dialog.text = NPCharSexPhrase(NPChar, "Listen, I am the citizen of the city and I'd ask you to hold down your blade.", "Listen, I am the citizen of the city and I'd ask you to hold down your blade.");
-				link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
+				dialog.text = NPCharSexPhrase(NPChar, "Послушайте, я, как гражданин этого города, прошу вас не ходить у нас с обнаженным клинком.", "Знаете, я, как гражданка этого города, прошу вас не ходить у нас с обнаженным клинком.");
+				link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажете...");
 			}
 			else
 			{
-				dialog.text = NPCharSexPhrase(NPChar, "Be careful, pal, while running with a weapon. I can get nervous...", "I don't like when men walking in front of me with their weapon ready. It scares me...");
-				link.l1 = RandPhraseSimple("Got it.", "I am taking it away.");
+				dialog.text = NPCharSexPhrase(NPChar, "Острожней на поворотах, приятель, когда бежишь с оружием в руках. Я ведь могу и занервничать...", "Мне не нравится, когда мужчины ходят передо мной с оружием на изготовку. Это меня пугает...");
+				link.l1 = RandPhraseSimple("Понял.", "Убираю.");
 			}
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";

@@ -18,99 +18,129 @@ void ProcessDialogEvent()
 		case "First time":
 			if (CheckAttribute(pchar, "GenQuest.CitizenConflict") && sti(pchar.GenQuest.CitizenConflict) > 3)
 			{
-				dialog.text = "I don't want to talk with you. You attack peaceful civilians with no reasons and provoke them. Get lost!";
-				link.l1 = "Hm...";
+				dialog.text = "Я не желаю с тобой общаться. Ты нападаешь без причины на мирных граждан, провоцируешь их на драку. Уходи прочь!";
+				link.l1 = "Гм...";
 				link.l1.go = "exit";
 				break;
 			}
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = "Greeting, mister. Let me introduce myself - Dougall Abbot. It is good to see a noble man here. I am tired of local peasants. I could never imagine that I will have to live the rest of my life among common folks.";
-				link.l1 = TimeGreeting()+". My name is "+GetFullName(pchar)+". It's good to meet you. And why don't you like the locals?";
+				dialog.text = "Здравствуйте, сударь. Позвольте представиться - Дугалл Эббот. Приятно видеть приличного человека - сброд, обитающий здесь, мне уже порядком опротивел. Никогда бы не подумал, что остаток жизни мне придется провести среди черни.";
+				link.l1 = TimeGreeting()+". Меня зовут "+GetFullName(pchar)+". Приятно познакомиться. Чем вам жители Острова так не угодили?";
 				link.l1.go = "meeting";
 				npchar.quest.meeting = "1";
 			}
 			else
 			{
-				dialog.text = "Аh, "+GetFullName(pchar)+"! "+TimeGreeting()+"! Want something?";
-				link.l1 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
+				dialog.text = "А, "+GetFullName(pchar)+"! "+TimeGreeting()+"! Вы что-то хотели?";
+				link.l1 = LinkRandPhrase("Что-нибудь интересное мне расскажете?", "Что нового произошло на острове в последнее время?", "Не расскажете ли последние сплетни?");
 				link.l1.go = "rumours_LSC";
-				link.l2 = "I want to ask you a few questions about the island.";
+				link.l2 = "Я хочу задать вам пару вопросов об острове.";
 				link.l2.go = "int_quests"; //информационный блок
-				link.l5 = "Just wanted to know how are you doing. See you!";
+				link.l5 = "Да просто решил узнать как у вас дела. Еще увидимся!";
 				link.l5.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "meeting": // первая встреча
-			dialog.text = "You don't know them well. Have you just arrived here? I don't remember any recent shipwreck though...";
-			link.l1 = "I came here on a small barque...";
+			dialog.text = "Вы, видимо еще их мало знаете. Вы ведь недавно здесь? Правда, я что-то не припомню в последнее время ни одного кораблекрушения...";
+			link.l1 = "Меня прибило сюда на баркасе...";
 			link.l1.go = "meeting_1";
 		break;
 		
 		case "meeting_1":
-			dialog.text = "Yes, it happens often - ships sink and just a few survivors got here on their ships' boats. Sometimes people live here for months and you never meet them.";
-			link.l1 = "I see. It was good to meet you, mister Abbot. See you!";
+			dialog.text = "Да, так часто случается - корабли тонут, а сюда добирается несколько выживших на шлюпках. И, бывает, живет человек себе уже месяц на Острове, а ты его и в глаза не видел.";
+			link.l1 = "Ясно. Приятно было познакомиться, мистер Эббот. Еще увидимся!";
 			link.l1.go = "exit";
-			link.l2 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the latest gossips?");
+			link.l2 = LinkRandPhrase("Что-нибудь интересное мне расскажете?", "Что нового произошло на острове в последнее время?", "Не расскажете ли последние сплетни?");
 			link.l2.go = "rumours_LSC";
-			link.l3 = "I want to ask you a few questions about the island.";
+			link.l3 = "Я хочу задать вам пару вопросов об острове.";
 			link.l3.go = "int_quests"; //информационный блок
 			NextDiag.TempNode = "First time";
 		break;
 		
+		case "":
+			dialog.text = "";
+			link.l1 = "";
+			link.l1.go = "";
+		break;
+		
+		case "":
+			dialog.text = "";
+			link.l1 = "";
+			link.l1.go = "";
+		break;
+		
+		case "":
+			dialog.text = "";
+			link.l1 = "";
+			link.l1.go = "";
+		break;
+		
+		case "":
+			dialog.text = "";
+			link.l1 = "";
+			link.l1.go = "";
+		break;
+		
+		case "":
+			dialog.text = "";
+			link.l1 = "";
+			link.l1.go = "";
+		break;
+		
 //--------------------------------------- блок вопросов и ответов ---------------------------------------------
 		case "int_quests":
-			dialog.text = "I am listening.";
+			dialog.text = "Внимательно вас слушаю.";
 			if (!CheckAttribute(npchar, "quest.answer_1"))
 			{
-				link.l1 = "And how did you get here?";
+				link.l1 = "А как вы сами попали на Остров?";
 				link.l1.go = "ansewer_1";
 			}
 			if (!CheckAttribute(npchar, "quest.answer_2"))
 			{
-				link.l2 = "What can you tell me about the locals?";
+				link.l2 = "Что вы можете сказать о жителях Острова?";
 				link.l2.go = "ansewer_2";
 			}
 			if (!CheckAttribute(npchar, "quest.answer_3"))
 			{
-				link.l3 = "What can you tell me about clans?";
+				link.l3 = "Что вы можете сказать о кланах?";
 				link.l3.go = "ansewer_3";
 			}
 			if (!CheckAttribute(npchar, "quest.answer_4"))
 			{
-				link.l4 = "And about the weather? Do storms often happen here?";
+				link.l4 = "А как здесь погода на Острове? Штормит часто?";
 				link.l4.go = "ansewer_4";
 			}
-			link.l10 = "No questions. Pardon...";
+			link.l10 = "Нет вопросов. Извините...";
 			link.l10.go = "exit";
 		break;
 		
 		case "ansewer_1":
-			dialog.text = "It was five years ago, but I still remember perfectly like it happened yesterday. One unfortunate day I had decided to sail on my flute from Port Royal to Belize, that cargo was way too valuable to trust others the deal\nNext day my misadventures had started, first, our boatswain got drunk and fell overboard, then we almost hit the reefs and in the end of it our navigator made a mistake, so we sailed in the wrong direction\nThen we were chased by a brig and a galleon. We tried to flee, but they were pushy. The galleon was left behind but the brig had finally catched us\nThe galleon was still out there, so we boarded the brig without shooting. Those Spanish dogs didn't expect that and we won, but most of my crew was dead\nFew hours later, storm got us, we couldn't fight the weather with so little crew and now you see the result. My flute is somewhere at the outer ring, me and the other three survivors made it here.";
-			link.l1 = "Got it...";
+			dialog.text = "Это было пять лет назад, но я все помню, словно это случилось вчера. В один злосчастный день я решил отправиться на своем флейте из Порт-Рояля в Белиз - уж очень ценной была партия груза, и я не мог никому доверить ее продажу\nБуквально на следующий же день посыпались несчастья за несчастьем: сначала боцман напился и вывалился за борт, потом мы чуть не наскочили на рифы, а в довершение штурман ошибся в вычислениях и отклонился от курса\nА потом за нами погнались испанцы - бриг и галеон. Мы не стали принимать бой и попытались от них оторваться, но они были настырны и преследовали нас целый день. Галеон отстал, но бриг в итоге настиг наш корабль\nОпасаясь галеона, мы не стали вступать в долгую перестрелку и сразу пошли на абордаж. Этого кастильские собаки не ожидали. Мы одолели мерзавцев, правда, ценой жизней почти всего экипажа\nА спустя несколько часов налетел шторм. Мы не смогли остатками команды бороться со стихией, и вот результат: наш флейт стоит во внешнем кольце кораблей, а я и еще трое счастливчиков добрались до Острова.";
+			link.l1 = "Понятно...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_1 = "true";
 		break;
 		
 		case "ansewer_2":
-			dialog.text = "Scum. All of them. Low lifes of all kind. Richard Shambon is a criminal, it's just written on his face. Kassel? Killing people for him is natural as breathing. Jasper Pratt is a convict. Musket is a drunkard. Should I even continue?\nJosef Loderdale is the only decent man here, except you, he is an ex military of English navy. There are two nobles here - Antonio Betancourt and Lorenzo Solderra, blasted Spanish scum, I won't even sit with them by the same table.";
-			link.l1 = "I see...";
+			dialog.text = "Сброд. Натуральный сброд. Люмпены всех мастей, другой характеристики у меня для них нет. Вот, например, Ришард Шамбон - у него же на роже написано, что он жулик. А Виктор Кассель? Да ему убить человека проще, чем высморкаться. Джаспер Пратт - каторжник, Леонард Маскетт - пропойца... Дальше перечислять?\nЕдинственный нормальный человек, кроме вас, конечно, это Джозеф Лодердэйл - бывший военный офицер флота Англии. А еще два человека дворянского происхождения - Антонио Бетанкур и Лоренцо Сольдерра - проклятые кастильцы, я с ними даже за один стол в таверне не сяду.";
+			link.l1 = "Ясно...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_2 = "true";
 		break;
 		
 		case "ansewer_3":
-			dialog.text = "A bunch of bastards and scum's. They don't harm us though. They are more interested in stabbing and shooting each other. They can't live without it. I don't like pirates either but I must admit that they made the Island more peaceful place.";
-			link.l1 = "Interesting...";
+			dialog.text = "Сборище мерзавцев и негодяев. Правда, нас они не трогают. Им гораздо интереснее резать и стрелять друг дружку. Они без этого жить не могут. И хотя я пиратов терпеть не могу, но с их появлением на Острове стало значительно спокойнее - нарвалы и ривадос уже не устраивают кровавые бойни ежемесячно.";
+			link.l1 = "Очень интересно...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_3 = "true";
 		break;
 		
 		case "ansewer_4":
-			dialog.text = "They never do. Storms are often happen around the Island but this place is always calm and quite. A strong wind can reach this place sometimes and that's it. Rains can do any damage either.";
-			link.l1 = "Interesting...";
+			dialog.text = "Да практически никогда. Штормы часто бушуют вокруг Острова, а вот здесь словно заколдованное место - тихо и спокойно. Может, за год раз пять налетит сильный шквал - вот и все дела. А что до дождей - так от них ущерба никакого.";
+			link.l1 = "Занятно...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_4 = "true";
 		break;
@@ -119,14 +149,14 @@ void ProcessDialogEvent()
 //----------------------------------------- специальные реакции -----------------------------------------------
 		//обнаружение ГГ в сундуках
 		case "Man_FackYou":
-			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
-			link.l1 = "Damn it!";
+			dialog.text = LinkRandPhrase("Что ты там копаешься, а? Да ты вор!", "Вот это да! Чуть я загляделся, а ты сразу в сундук с головой!", "По сундукам шарить вздумал?! Тебе это даром не пройдет!");
+			link.l1 = "А-ать, дьявол!!!";
 			link.l1.go = "fight";
 		break;
 		
 		case "Woman_FackYou":
-			dialog.text = "What?! Decided to check my chests? You won't get away with it!";
-			link.l1 = "Foolish girl!...";
+			dialog.text = "Ах, вот, значит, как?! По сундукам шарить вздумал?! Тебе это даром не пройдет!";
+			link.l1 = "Вот дура!..";
 			link.l1.go = "exit_setOwner";
 			LAi_group_Attack(NPChar, Pchar);
 		break;
@@ -147,8 +177,8 @@ void ProcessDialogEvent()
 		
 		//замечание по обнаженному оружию
 		case "LSCNotBlade":
-			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
-			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
+			dialog.text = LinkRandPhrase("Слушай, ты бы убрал оружие. А то нервируешь немного...", "Знаешь, у нас тут не принято сабелькой размахивать. Убери оружие.", "Слушай, что ты, как д'Артаньян, бегаешь тут, шпагой машешь? Убери оружие, не к лицу это серьезному мужчине...");
+			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;	
@@ -156,13 +186,13 @@ void ProcessDialogEvent()
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{
-				dialog.text = NPCharSexPhrase(NPChar, "Listen, I am the citizen of the city and I'd ask you to hold down your blade.", "Listen, I am the citizen of the city and I'd ask you to hold down your blade.");
-				link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
+				dialog.text = NPCharSexPhrase(NPChar, "Послушайте, я, как гражданин этого города, прошу вас не ходить у нас с обнаженным клинком.", "Знаете, я, как гражданка этого города, прошу вас не ходить у нас с обнаженным клинком.");
+				link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажете...");
 			}
 			else
 			{
-				dialog.text = NPCharSexPhrase(NPChar, "Be careful, pal, while running with a weapon. I can get nervous...", "I don't like when men walking in front of me with their weapon ready. It scares me...");
-				link.l1 = RandPhraseSimple("Got it.", "I am taking it away.");
+				dialog.text = NPCharSexPhrase(NPChar, "Острожней на поворотах, приятель, когда бежишь с оружием в руках. Я ведь могу и занервничать...", "Мне не нравится, когда мужчины ходят передо мной с оружием на изготовку. Это меня пугает...");
+				link.l1 = RandPhraseSimple("Понял.", "Убираю.");
 			}
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";

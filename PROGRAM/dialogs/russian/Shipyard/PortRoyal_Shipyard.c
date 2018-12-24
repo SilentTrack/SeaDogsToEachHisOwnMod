@@ -4,38 +4,38 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me a question a little while ago...", "At his dock, and you know what–I've never seen such flat, curious people before in town.",
-                          "What's with all the questions? My job is to build ships. Let's take care about that.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where did my memory go...",
-                      "Hm, well...", "Go ahead...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно?"), "Совсем недавно вы пытались задать мне вопрос...", "У себя на верфи, а и вообще в городе, я таких однообразно любознательных не видал.",
+                          "Ну что за вопросы? Мое дело - корабли строить, давайте этим и займемся.", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить."), "Хм, что-то с памятью моей стало...",
+                      "Хм, однако...", "Давайте...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			// Addon 2016-1 Jason пиратскаЯ линейка
+			// Addon 2016-1 Jason пиратская линейка
 			if (CheckAttribute(pchar, "questTemp.Mtraxx"))
             {
 				if (pchar.questTemp.Mtraxx == "silk_2" || pchar.questTemp.Mtraxx == "silk_3")
 				{
-					link.l1 = "I've heard this shipyard deals with improving the ship's sailing speed. It requires some silk sailcloth, which is seldom to come by. Would you be... interested in discussing these matters?";
+					link.l1 = "Я знаю, что на вашей верфи улучшают ходовые качества кораблей: скорость и ход в бейдевинд. Для этой работы используется редкий товар - корабельный шелк. Вам... было бы интересно поговорить об этом?";
 					link.l1.go = "mtraxx";
 				}
 			}
 		break;
 		
-		// Addon 2016-1 Jason пиратскаЯ линейка
+		// Addon 2016-1 Jason пиратская линейка
 		case "mtraxx":
-            dialog.text = "Could you be more clear, young man? What exactly brought you here? If you want to improve your ship - let's get to business.";
-			link.l1 = "Not entirely. The type of services you perform require goods not freely available in the store. I would like to offer you the type of materials you might require.";
+            dialog.text = "Молодой человек, изъясняйтесь понятнее. Что у вас ко мне за дело? Вам нужно провести работы по улучшению вашего корабля? Давайте обсудим.";
+			link.l1 = "Нет, я имею в виду другое. Вы используете в работе товар, который нельзя приобрести в магазинах или где-то заказать. А я хочу вам предложить то, в чем нуждается ваше производство.";
 			link.l1.go = "mtraxx_1";
 		break;
 		
 		case "mtraxx_1":
-            dialog.text = "Well-well... Ugh... Are you aware that only the authorities on this colony are allowed to deal with such strategic goods? You are free to provide your own silk for me to work on improving your ship, however, selling it is strictly forbidden. As is buying it from me - such activities will be fined rather heavily.";
-			link.l1 = "Well, this isn't a store, nor is it a customs office...";
+            dialog.text = "Так-так... Кхм... Вы вообще в курсе, что купля-продажа данного товара в нашей колонии находится под контролем властей? Вы можете предоставить мне шелк для работы, но продавать не имеете права, так же как и я - купить его у вас. За это полагается крупный штраф.";
+			link.l1 = "Но мы же не в магазине, и не на таможне...";
 			link.l1.go = "mtraxx_2";
 		break;
 		
 		case "mtraxx_2":
-            dialog.text = "I acquire all of the silk sailcloth directly from my clients, or purchase limited quantities with a special permission of the governor. If you don't have any further questions - please, let me get back to my job.";
-			link.l1 = "Hm... Very well. Have a good day, master.";
+            dialog.text = "Весь шелк для работы я получаю либо от клиентов, либо приобретаю в ограниченных количествах по специальному разрешению губернатора. Еще вопросы есть? Если нет - не мешайте работать.";
+			link.l1 = "Гм... Ладно. Всего доброго, мастер.";
 			link.l1.go = "mtraxx_3";
 		break;
 		

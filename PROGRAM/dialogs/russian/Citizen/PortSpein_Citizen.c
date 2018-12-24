@@ -4,53 +4,53 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-            dialog.text = RandPhraseSimple("What kind of questions?", "What would you like?");
-			link.l1 = RandPhraseSimple("I have changed my mind...", "I have got nothing to say now.");
+            dialog.text = RandPhraseSimple("Какие вопросы?", "Что вам угодно?");
+			link.l1 = RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить");
 		    link.l1.go = "exit";
 			//Цена чахотки
 			if (!CheckAttribute(npchar, "quest.Consumption") && CheckAttribute(pchar, "questTemp.Consumption.AskJuan"))
 			{
-				link.l1 = "Tell me, does the name 'Juan' mean anything for you?";
+				link.l1 = "Скажите, имя 'Хуан' вам что-нибудь говорит?";
 				link.l1.go = "Consumption";
 			}
 			if (!CheckAttribute(npchar, "quest.Guardoftruth") && CheckAttribute(pchar, "questTemp.Guardoftruth.Trinidad") && pchar.questTemp.Guardoftruth.Trinidad == "begin")
 			{
-				link.l1 = "Listen, the frigate under the command of Miguel Dichoso touched a port here in April 1654. He disappeared then. Do you remember anything about it?";
+				link.l1 = "Послушайте, в апреле 1654 года в ваш порт заходил фрегат под командованием капитана Мигеля Дичозо. Он потом исчез. Не припоминаете ничего связанного с ним?";
 				link.l1.go = "guardoftruth";
 			}
 		break;
 		
 		case "info":
         // заменить на описание неких НПС, по квестам
-			dialog.text = "Do I work for the secret service of "+NationNameGenitive(sti(NPChar.nation))+"?";
-			link.l1 = "Well... farewell then.";
+			dialog.text = "Я что, работаю на тайную агентурную сеть для "+NationNameGenitive(sti(NPChar.nation))+"?";
+			link.l1 = "Ну ладно... тогда пока.";
 			link.l1.go = "exit";
-			link.l2 = "Next question then ";
+			link.l2 = "Тогда другой вопрос";
 			link.l2.go = "new question";
 		break;
 		
 		case "town":
         // заменить на описание как пройти, по квестам
-			dialog.text = "Do I work on an enquiry position? Don't know. Don't know a thing.";
+			dialog.text = "Я вам что справочная? Не знаю. Ничего не ведаю.";
 
-            link.l1 = "Such a muddle-head! See you.";
+            link.l1 = "Вот бестолочь! Пока.";
 			link.l1.go = "exit";
-			link.l2 = "Next question then ";
+			link.l2 = "Тогда другой вопрос";
 			link.l2.go = "new question";
 		break;
 		
 		//Цена чахотки
 		case "Consumption":
-			dialog.text = "Are you kidding me? There are Juans in every colony...";
-			link.l1 = "I see. Sorry for troubling you...";
+			dialog.text = "Да вы что, смеетесь? Этих Хуанов в любой колонии...";
+			link.l1 = "Ясно. Простите за беспокойство...";
 			link.l1.go = "exit";
 			npchar.quest.Consumption = "true";
 		break;
 		
 		// Страж Истины
 		case "guardoftruth":
-			dialog.text = LinkRandPhrase("Come on, captain! Do you think that I remember such things?","Forgive me, senor, I can't help you.","Sir, do you really think that remember such a rubbish? I have got enough of my own problems.");
-			link.l1 = LinkRandPhrase("I see. Sorry for troubling you...","What a shame. See you.","");
+			dialog.text = LinkRandPhrase("Бросьте, капитан! Вы думаете, я держу у себя в памяти события многомесячной давности?","Сожалею, сеньор, но ничем помочь не могу.","Сударь, вы серьезно думаете, что я запоминаю подобные пустяки? У меня и своих дел по горло.");
+			link.l1 = LinkRandPhrase("Ясно. Простите за беспокойство...","Жаль. Всего доброго.","");
 			link.l1.go = "exit";
 			npchar.quest.guardoftruth = "true";
 		break;

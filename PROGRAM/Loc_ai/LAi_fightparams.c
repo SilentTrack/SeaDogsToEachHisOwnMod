@@ -629,7 +629,7 @@ float LAi_GunCalcDamage(aref attack, aref enemy)
 	if(IsEquipCharacterByArtefact(enemy,  "amulet_1")) dmg -= 15;
 	if(IsEquipCharacterByArtefact(attack, "amulet_2")) dmg *= 0.9;
 	if(IsEquipCharacterByArtefact(attack, "KhaelRoa_item")) dmg = dmg*10; // калеуче
-	
+		
 	if (CheckAttribute(attack, "MultiShooter")) // мультишутер // Addon-2016 Jason
 	{
 		dmg = dmg*stf(attack.MultiShooter);
@@ -643,14 +643,14 @@ float LAi_GunCalcDamage(aref attack, aref enemy)
 	if (CheckAttribute(enemy, "GuardMask"))
 	{
 		dmg = 0;
-		if (attack.id == "Blaze") log_info("Your bullets can't do any harm to the Guardian!");
+		if (attack.id == "Blaze") log_info("Ваши пули бессильны против Стража!");
 	}
 	// калеуче
 	bool bTutt = (IsCharacterEquippedArtefact(pchar, "kaleuche_amulet2")) || (IsCharacterEquippedArtefact(pchar, "kaleuche_amulet3"))
 	if (CheckAttribute(enemy, "KhaelRoaMonster") && !bTutt)
 	{
 		dmg = 0.0;
-		if (attack.id == "Blaze") log_info("Your bullets cannot harm the Chavinavi!");
+		if (attack.id == "Blaze") log_info("Ваши пули не наносят урона чавинави!");
 	}
 	if (CheckAttribute(attack, "KhaelRoaMonster") && !bTutt) 
 	{
@@ -796,14 +796,14 @@ void LAi_ApplyCharacterAttackDamage(aref attack, aref enemy, string attackType, 
 	if (CheckAttribute(enemy, "GuardMask") && GetCharacterEquipByGroup(attack, BLADE_ITEM_TYPE) != "knife_01")
 	{
 		dmg = 0.0;
-		if (attack.id == "Blaze") log_info("Your weapon can't do any harm to the Guardian!");
+		if (attack.id == "Blaze") log_info("Ваше оружие бессильно против Стража!");
 	}
 	// калеуче
 	bool bTutt = (IsCharacterEquippedArtefact(pchar, "kaleuche_amulet2")) || (IsCharacterEquippedArtefact(pchar, "kaleuche_amulet3"))
 	if (CheckAttribute(enemy, "KhaelRoaMonster") && !bTutt)
 	{
 		dmg = 0.0;
-		if (attack.id == "Blaze") log_info("Your weapons cannot harm the Chavinavi!");
+		if (attack.id == "Blaze") log_info("Ваше оружие не наносит урона чавинави!");
 	}
 	if (CheckAttribute(attack, "KhaelRoaMonster") && !bTutt) 
 	{
@@ -959,7 +959,7 @@ void LAi_SetResultOfDeath(ref attack, ref enemy, bool isSetBalde)
 		if (CheckCharacterItem(pchar, "HolTradeLicence") && CheckAttribute(enemy, "City") && sti(enemy.nation) == HOLLAND) // Jason: изъятие лицензии
 		{
 			TakeNationLicence(HOLLAND);
-			log_info("A trade license was annulled!");
+			log_info("Торговая лицензия аннулирована!");
 		}
 		if (CheckAttribute(enemy, "City") && sti(enemy.nation) == PIRATE) 
 		{

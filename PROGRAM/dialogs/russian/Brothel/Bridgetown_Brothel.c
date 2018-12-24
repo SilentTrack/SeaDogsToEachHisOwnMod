@@ -5,21 +5,22 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 	switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What kind of questions, "+ GetSexPhrase("young man","young lady") +"?", "Whatdo you want, "+ GetSexPhrase("handsome","pretty one") +"? Ask it."), "Questions again?", "Tee-hee, it's all the same for third time this day - questions...",
-                          ""+ GetSexPhrase("Hm, why don't you pick up a beauty for yourself? I am starting to get suspicions about you...","Hm, why don't you pick up a beauty for yourself? We don't have boys here, sorry, tee-hee...") +"", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Well, it is nothing..."), "I can't... no questions...",
-                      "You're right it the third time already. Pardon me.", "Not now... next time...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы, "+ GetSexPhrase("молодой человек","юная леди") +"?", "Чего ты хочешь, "+ GetSexPhrase("красавчик","красотка") +"? Ну хоть задай его."), "Опять вопросы?", "Хи-хи, третий раз на дню одно и то же - вопросы...",
+                          ""+ GetSexPhrase("Хм, может ты выберешь какую-нибудь красотку себе? А то у меня уже складывается в отношении тебя вполне определенное мнение...","Хм, может ты выберешь какую-нибудь красотку себе? Мальчиков не держим, хи-хи...") +"", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал...", "Хм, да ничего..."), "Не могу... Нет вопросов...",
+                      "Да уж, действительно в третий раз... Извини.", "Не сейчас... В другой раз...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
+			//Голландский гамбит
 			if (CheckAttribute(pchar, "questTemp.HWIC.Eng") && pchar.questTemp.HWIC.Eng == "GotoBridgetown" && !CheckAttribute(npchar, "quest.HWICTalked"))
             {
-                link.l1 = "I bought a bunch of redwood and I'm heading to Blueweld. It is a long way to sail, the crew is small and my men are a bit nervous... How much will cost a rest for a fifty sailors?";
+                link.l1 = "Я тут закупился красным деревом на продажу и отправляюсь в Блювельд. Впереди - большой переход, команды у меня мало, ребята нервничают... Сколько будет стоить отдых для пяти десятков моих матросов?";
                 link.l1.go = "BrothelDone";
             }
 		break;
 		
 		case "BrothelDone":
-			dialog.text = "Fifteen thousands.";
-			link.l1 = "Wow! A lot... I've got to think about it.";
+			dialog.text = "Пять десятков - пятнадцать тысяч.";
+			link.l1 = "Ого! Немало... Ладно, еще подумаю над этим.";
 			link.l1.go = "exit";	
 			npchar.quest.HWICTalked = "true";
 			pchar.questTemp.HWIC.Eng.BridgeCounter = sti(pchar.questTemp.HWIC.Eng.BridgeCounter)+1;

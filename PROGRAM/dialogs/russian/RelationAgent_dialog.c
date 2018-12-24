@@ -77,26 +77,26 @@ void ProcessDialogEvent()
 		break;
 		
 		case "First time":
-			dialog.text = "Glad to see you again.";
-			link.l1 = "I need your services again.";
+			dialog.text = "Рад видеть вас снова.";
+			link.l1 = "Мне опять нужны ваши услуги.";
 			link.l1.go = "relation";
-			link.l2 = "I should go.";
+			link.l2 = "Я уже ухожу.";
 			link.l2.go = "exit";
 
 			// генератор  "Найденные документы"
 			if ((pchar.questTemp.different == "GiveShipLetters") && !CheckAttribute(pchar, "questTemp.different.GiveShipLetters.speakAgent"))			
 			{
-				link.l4 = "I want to offer you a deal."
+				link.l4 = "Хочу предложить сделку."
 				link.l4.go = "D_ShipLetters_1"; 
 				pchar.questTemp.different.GiveShipLetters.speakAgent = true;
 			}			
 
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = "Let me introduce myself. I am the man who can put in a word for you to any governor here. It is not free of course, but trust me that my services cost their price. You won't regret paying for my talents.";
-				link.l1 = "Interesting. Go on.";
+				dialog.text = "Позвольте представиться, я являюсь тем человеком, который может замолвить за вас словечко тому или иному губернатору. За плату, естественно, но поверьте, мои услуги самого высшего качества, и вы не пожалеете, если воспользуетесь моими талантами.";
+				link.l1 = "Очень интересно, продолжай.";
 				link.l1.go = "relation";
-				link.l2 = "Next time.";
+				link.l2 = "Может быть, в другой раз.";
 				link.l2.go = "exit";
 				npchar.quest.meeting = "1";
 			}
@@ -104,21 +104,21 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 
-		//*************************** Генератор - "You've found shipping papers." **************		
+		//*************************** Генератор - "Найденные судовые документы" **************		
 		case "D_ShipLetters_1":
-			dialog.text = "What are your terms?";
-			s1 = "Luckily I've found an absolute legit package of the shipping papers. There are not wanted yet.";
-			s1 = s1 + "The vessel is still sailing and in the register so don't worry. That idiot owner just lost";
+			dialog.text = "Излагайте условия.";
+			s1 = "У меня, по счастливой случайности, оказался абсолютно легальный пакет судовых документов, еще не заявленных в розыск.";
+			s1 = s1 + "Судно на плаву и не исключено из реестра, не беспокойтесь. Просто разиня-владелец умудрился потерять эти бумаги...";
 			link.l1 = s1;
 			link.l1.go = "D_ShipLetters_2";
 		break;
 		case "D_ShipLetters_2":
-			s1 = "Let me see them! Yes, the markers here are actual. You are a lucky "+ GetSexPhrase("man","woman") +"! ";
-			s1 = s1 + "I just need a package like this and I offer you " + sti(pchar.questTemp.different.GiveShipLetters.price5) + " pesos. What do you say?";
+			s1 = "Дайте-ка взглянуть! Действительно, отметки совсем свежие. Что же, удача Вам благоволит, "+ GetSexPhrase("сударь","сударыня") +"! ";
+			s1 = s1 + "Мне как раз понадобился именно такой комплект, и я, в свою очередь предлагаю Вам " + sti(pchar.questTemp.different.GiveShipLetters.price5) + " песо. Что скажете?";
 			dialog.text = s1;
-			link.l1 = "Such a royal generosity! Of course I agree!";
+			link.l1 = "Воистину королевская щедрость! Конечно же я "+ GetSexPhrase("согласен","согласна") +"!";
 			link.l1.go = "D_ShipLetters_3";
-			link.l2 = "No, I'd say no.";
+			link.l2 = "Пожалуй, нет.";
 			link.l2.go = "exit";
 		break;
 		case "D_ShipLetters_3":
@@ -135,80 +135,80 @@ void ProcessDialogEvent()
 		break;
 		
 		case "relation":
-			dialog.text = "Let's see how I can help you.";
+			dialog.text = "Давайте посмотрим, чем я могу вам помочь.";
             if (ChangeCharacterNationReputation(pchar, ENGLAND, 0) < 0)
 			{
-				link.l3 = "I want to reconcile with England.";
+				link.l3 = "Я хочу помириться с Англией.";
 				link.l3.go = "RelationTo_0";
 			}
 			
 			if (ChangeCharacterNationReputation(pchar, FRANCE, 0) < 0)
 			{
-				link.l1 = "I want to reconcile with France.";
+				link.l1 = "Я хочу помириться с Францией.";
 				link.l1.go = "RelationTo_1";
 			}
 			if (ChangeCharacterNationReputation(pchar, SPAIN, 0) < 0)
 			{
-				link.l2 = "I want to reconcile with Spain.";
+				link.l2 = "Я хочу помириться с Испанией.";
 				link.l2.go = "RelationTo_2";
 			}
 
 			if (ChangeCharacterNationReputation(pchar, HOLLAND, 0) < 0)
 			{
-				link.l4 = "I want to reconcile with Holland.";
+				link.l4 = "Я хочу помириться с Голландией.";
 				link.l4.go = "RelationTo_3";
 			}
 			if (ChangeContrabandRelation(pchar, 0) <= 5)
             {
-                Link.l5 = "I want to reconcile with smugglers.";
+                Link.l5 = "Я хочу помириться с контрабандистами.";
 				Link.l5.go = "Contraband";
             }
-            Link.l8 = "I need a letter of marquee.";
+            Link.l8 = "Мне нужен каперский патент.";
 			Link.l8.go = "patent_0";
 			
-			Link.l9 = "Got any trade licenses?";
+			Link.l9 = "Есть торговые лицензии?";
 			Link.l9.go = "Licence";
 			
 			if (isHeroOwnCity(true))
 			{
-				Link.l10 = "I have a question about the ownership of colonies.";
+				Link.l10 = "У меня вопрос, связанный с принадлежностью поселений.";
 				Link.l10.go = "City_Buy";
 			}
 			
-			link.l99 = "You know I'd better deal with it by myself.";
+			link.l99 = "Знаете, я думаю, что обойдусь своими силами.";
 			link.l99.go = "exit";
 		break;
 		
 		case "Licence":
-			dialog.text = "Always have them for a different periods. What exactly do you want?";
-		    link.l1 = "Of England";
+			dialog.text = "Всегда в наличии, на разные сроки. Какая торговая лицензия интересует?";
+		    link.l1 = "Англии";
 			link.l1.go = "SetNationLicence_0";
-		    link.l2 = "Of France";
+		    link.l2 = "Франции";
 			link.l2.go = "SetNationLicence_1";
-		    link.l3 = "Of Spain";
+		    link.l3 = "Испании";
 			link.l3.go = "SetNationLicence_2";
-		    link.l4 = "Of Holland";
+		    link.l4 = "Голландии";
 			link.l4.go = "SetNationLicence_3";
-			link.l9 = "You know I'd better deal with it by myself.";
+			link.l9 = "Знаете, я думаю, что обойдусь своими силами.";
 			link.l9.go = "exit";
 		break;
 		
 		case "NationLicenceType":
-        	dialog.text = "Period?";
-		    link.l1 = "30 days";
+        	dialog.text = "На какой срок?";
+		    link.l1 = "30 дней";
 			link.l1.go = "NationLicenceType_30";
-		    link.l2 = "60 days";
+		    link.l2 = "60 дней";
 			link.l2.go = "NationLicenceType_60";
-		    link.l3 = "90 days";
+		    link.l3 = "90 дней";
 			link.l3.go = "NationLicenceType_90";
-			link.l9 = "I have changed my mind.";
+			link.l9 = "Я передумал"+ GetSexPhrase("","а") +".";
 			link.l9.go = "exit";
 		break;
 		
 		case "NationLicenceType2":
 			iSumm = sti(npchar.LicenceType) * (3000 + MOD_SKILL_ENEMY_RATE*500);
-        	dialog.text = "So, the trade license" + XI_ConvertString(Nations[sti(npchar.LicenceNation)].Name + "Gen") + " at " + sti(npchar.LicenceType) + " days, the price is " + FindRussianMoneyString(iSumm) + ".";
-		    link.l1 = "I agree.";
+        	dialog.text = "Итак, торговая лицензия " + XI_ConvertString(Nations[sti(npchar.LicenceNation)].Name + "Gen") + " сроком на " + sti(npchar.LicenceType) + " дней, цена " + FindRussianMoneyString(iSumm) + ".";
+		    link.l1 = "Меня устраивает.";
 		    if(makeint(Pchar.money) < iSumm)
             {
 				Link.l1.go = "No_money";
@@ -217,38 +217,38 @@ void ProcessDialogEvent()
 			{
 				link.l1.go = "NationLicenceType3";
 			}
-			link.l9 = "I have changed my mind.";
+			link.l9 = "Я передумал"+ GetSexPhrase("","а") +".";
 			link.l9.go = "exit";
 		break;
 		
 		case "NationLicenceType3":
             iSumm = sti(npchar.LicenceType) * (3000 + MOD_SKILL_ENEMY_RATE*500);
-			dialog.text = "Here it is. Don't forget to raise a friendly flag while entering a port. And remember that patrol can check the license's date.";
-			link.l9 = "My thanks.";
+			dialog.text = "Вот ваш документ. Входить в порт нужно под дружественным флагом. Помните, патруль может проверить, не просрочена ли лицензия.";
+			link.l9 = "Спасибо.";
 			link.l9.go = "exit";
 			AddMoneyToCharacter(pchar, -iSumm);
 			GiveNationLicence(sti(npchar.LicenceNation), sti(npchar.LicenceType));
 		break;
 		
         case "No_money":
-			dialog.text = "Most excellent! Come back when you'll get enough coin.";
-			link.l1 = "Fine.";
+			dialog.text = "Отлично! Обратитесь ко мне, когда будет нужная сумма.";
+			link.l1 = "Хорошо.";
 			link.l1.go = "exit";
 		break;
 		
         case "patent_0":
-			dialog.text = "Splendid. First of all you've got to prove your loyalty to the nation" + 
-                          " by an excellent serving for it. Go to any governor" + //NationNameGenitive(sti(NPChar.nation)) +
-                          " and complete few of his missions. Then he will grant you a license.";
-			link.l1 = "Tell me, "+GetAddress_FormToNPC(NPChar) + ", can I get around this boring formality?";
+			dialog.text = "Замечательно! Для этого вы должны доказать свою преданность державе" + 
+                          " безупречной службой. Отправляйтесь к любому губернатору" + //NationNameGenitive(sti(NPChar.nation)) +
+                          " и выполните ряд его заданий. После этого он выдаст вам патент.";
+			link.l1 = "Скажите, "+GetAddress_FormToNPC(NPChar) + ", а можно как-нибудь обойти эту формальность? ";
 			link.l1.go = "patent_1";
-			link.l2 = "Farwell, "+GetAddress_FormToNPC(NPChar);
+			link.l2 = "Прощайте, "+GetAddress_FormToNPC(NPChar);
 			link.l2.go = "exit";
 		break;
 		
 		case "patent_1":
-			dialog.text = "You mean a bribe!? You want me to make you a license by myself?";
-			link.l1 = "Exactly!";
+			dialog.text = "Вы имеете в виду подкуп должностного лица!? Хотите, чтобы я выдал вам патент сам?";
+			link.l1 = "Именно!";
             if (GetCharacterSkillToOld(PChar, SKILL_FORTUNE) > rand(11) || bBettaTestMode)
             {
 			    link.l1.go = "patent_2_give";
@@ -257,39 +257,39 @@ void ProcessDialogEvent()
 			{
                 link.l1.go = "patent_2_none";
 			}
-			link.l2 = "No. Farewell, "+GetAddress_FormToNPC(NPChar);
+			link.l2 = "Нет. Всего хорошего, "+GetAddress_FormToNPC(NPChar);
 			link.l2.go = "exit";
 		break;
 		
 		case "patent_2_none":
-			dialog.text = "I don't have that kind of relations to this now. And I can't get you a blank license with all stamps and signs.";
-            link.l1 = "Too bad. Farewell."+GetAddress_FormToNPC(NPChar);
+			dialog.text = "В данный момент я не располагаю такими связями, чтобы раздобыть чистый бланк патента со всеми печатями и подписями.";
+            link.l1 = "Жаль. Прощайте, "+GetAddress_FormToNPC(NPChar);
 			link.l1.go = "exit";
 		break;
 		
 		case "patent_2_give":
-			dialog.text = "Alright, I can arrange that for you. What kind of license do you need?";
+			dialog.text = "Хорошо, я смогу это устроить. Какой патент вам нужен?";
 			if (GetPatentNation() != ENGLAND)
 			{
-			    link.l1 = "Of England";
+			    link.l1 = "Англии";
 				link.l1.go = "SetNationPatent_0";
 			}
 			if (GetPatentNation() != FRANCE)
 			{
-			    link.l2 = "Of France";
+			    link.l2 = "Франции";
 				link.l2.go = "SetNationPatent_1";
 			}
 			if (GetPatentNation() != SPAIN)
 			{
-			    link.l3 = "Of Spain";
+			    link.l3 = "Испании";
 				link.l3.go = "SetNationPatent_2";
 			}
 			if (GetPatentNation() != HOLLAND)
 			{
-			    link.l4 = "Of Holland";
+			    link.l4 = "Голландии";
 				link.l4.go = "SetNationPatent_3";
 			}
-			link.l9 = "You know I'd better deal with it by myself.";
+			link.l9 = "Знаете, я думаю, что обойдусь своими силами.";
 			link.l9.go = "exit";
 		break;
 		
@@ -300,23 +300,23 @@ void ProcessDialogEvent()
             {
 			    case PIRATE :
                     dialog.text = "Явный баг, если видите - сообщите ALexusB";
-                    link.l1 = "Looks fine for me. I agree with you terms!";
+                    link.l1 = "Неплохая перспектива. Я "+ GetSexPhrase("согласен","согласна") +" на ваши условия!";
                     break;
                 case HOLLAND :
-                    dialog.text = "Holland is almost a peaceful nation. You will get a lot of friends and a few enemies. And the license itself will cost you "+pchar.PatentPrice+" pesos.";
-                    link.l1 = "Looks fine for me. I agree with you terms!";
+                    dialog.text = "Голландия почти мирная страна, у вас станет много друзей и мало врагов. А сам патент обойдется вам всего лишь в "+pchar.PatentPrice+" песо.";
+                    link.l1 = "Неплохая перспектива. Я "+ GetSexPhrase("согласен","согласна") +" на ваши условия!";
                     break;
                 case FRANCE :
-                    dialog.text = "Friends and enemies of France will be yours. You will be allowed to sink ships of enemies. And the license itself will cost you "+pchar.PatentPrice+" pesos.";
-                    link.l1 = "Sounds good! Don't really care about who should I serve! France will be fine.";
+                    dialog.text = "Друзья и враги Франции станут вашими. Вы сможете топить корабли врагов. А сам патент обойдется вам всего лишь в "+pchar.PatentPrice+" песо.";
+                    link.l1 = "Отличная перспектива! Мне плевать, кому служить! Послужу и французам!";
                     break;
                 case SPAIN :
-                    dialog.text = "Spain has got a lot of enemies and they will be yours at ones! Spain is a nation of the sea warriors. And the license itself will cost you "+pchar.PatentPrice+" pesos.";
-                    link.l1 = "That's what I wanted! Take this pathetic sum of coins for fights and missions for high-ranked people!";
+                    dialog.text = "У Испании много врагов и они тут же станут вашими! Испанцы - нация морских воинов. Патент обойдется вам всего лишь в "+pchar.PatentPrice+" песо.";
+                    link.l1 = "Вы один предлагаете мне что-то стоящее! Получите эти жалкие гроши за романтику кровавого боя и новые задания высокопоставленных особ!";
                     break;
                 case ENGLAND :
-                    dialog.text = "To be honest this is how the English governor-general fills his pocket. And the license itself will cost you "+pchar.PatentPrice+" pesos.";
-                    link.l1 = "I agree to give him my blood money which I got contraband and boardings!!";
+                    dialog.text = "Если честно, таким образом генерал-губернатор Англии набивает свой карман. А сам патент обойдется вам всего лишь в "+pchar.PatentPrice+" песо.";
+                    link.l1 = "Я "+ GetSexPhrase("согласен","согласна") +" отдать ему свои кровные деньги, которые добыл"+ GetSexPhrase("","а") +" контрабандой и абордажами!!";
                     break;
 			}
 
@@ -329,22 +329,22 @@ void ProcessDialogEvent()
 				link.l1.go = "patent_3";
 			}
 
-			link.l2 = "No, it doesn't suit me.";
+			link.l2 = "Нет, это не для меня!";
 			link.l2.go = "exit";
 		break;
 
 		case "patent_3":
             pchar.PatentNation = NationShortName(sti(NPChar.nation));
-			dialog.text = "I am glad that we have made a deal.";
-			link.l1 = "Farewell, "+GetAddress_FormToNPC(NPChar);
+			dialog.text = "Я рад, что мы договорились. По рукам.";
+			link.l1 = "Прощайте, "+GetAddress_FormToNPC(NPChar);
 			link.l1.go = "exit";
 			AddDialogExitQuest("any_patent_take");
 		break;
 
 		case "Contraband":
 			Pchar.questTemp.Relations.sum = makeint(0.3 * stf(Pchar.rank)/stf(Pchar.reputation.nobility)*DIPLOMAT_SUM);
-			dialog.Text = "Fine. It will cost you " + Pchar.questTemp.Relations.sum + " pesos.";
-			Link.l1 = "I agree.";
+			dialog.Text = "Хорошо. Это обойдется в " + Pchar.questTemp.Relations.sum + " песо.";
+			Link.l1 = "Я соглас"+ GetSexPhrase("ен","на") +".";
 			if(makeint(Pchar.money) < makeint(Pchar.questTemp.Relations.sum))
 			{
 				Link.l1.go = "No_money";
@@ -353,13 +353,13 @@ void ProcessDialogEvent()
 			{
 				Link.l1.go = "Contraband_Agreed";
 			}
-			Link.l2 = "I have changed my mind.";
+			Link.l2 = "Пожалуй, я передумал"+ GetSexPhrase("","а") +".";
 			Link.l2.go = "exit";
 		break;
 		
 		case "Contraband_Agreed":
-			dialog.Text = "Most excellent, I will settle everything. They will work for you.";
-			Link.l99 = "Thanks.";
+			dialog.Text = "Замечательно, я все улажу. Они будут иметь с вами дело.";
+			Link.l99 = "Спасибо.";
 			Link.l99.go = "exit";
 			ChangeContrabandRelation(pchar, 25);
 			AddMoneyToCharacter(pchar, -sti(Pchar.questTemp.Relations.sum));
@@ -367,19 +367,19 @@ void ProcessDialogEvent()
         // boal <--
 		case "RelationAny_Done":
 			iSumm = sti(npchar.quest.relation.summ);
-			dialog.text = "Hm... I don't even know what to say. Sure I can fulfill your ask for making peace with "+ XI_ConvertString(Nations[sti(npchar.quest.relation)].Name + "Abl") +", it will be cost " + FindRussianMoneyString(iSumm) + ".";
+			dialog.text = "Хм-м... даже не знаю, что сказать. Я, конечно, смогу выполнить вашу просьбу о примирении с "+ XI_ConvertString(Nations[sti(npchar.quest.relation)].Name + "Abl") +", но это будет вам стоить " + FindRussianMoneyString(iSumm) + ".";
 			if(sti(pchar.money) >= iSumm)
 			{
-				link.l1 = "I don't think that I have a choice. Take my money.";
+				link.l1 = "Думаю, у меня все равно нет выбора. Так что вот ваши деньги.";
 				link.l1.go = "relation3";
 			}
-			link.l2 = "No it is too much. Farewell.";
+			link.l2 = "Нет, это слишком большая сумма. Прощайте.";
 			link.l2.go = "exit";
 		break;
 
 		case "relation3":
-			dialog.text = "Splendid! It is surprisingly easy to deal with you. Don't worry I will settle your problem in 15 days.";
-			link.l1 = "Fine.";
+			dialog.text = "Отлично! С вами удивительно легко иметь дело. Можете быть спокойны, по истечении максимум 15 дней ваши дела будут улажены.";
+			link.l1 = "Хорошо.";
 			link.l1.go = "exit";
 			AddMoneyToCharacter(pchar, -sti(npchar.quest.relation.summ));
 			ChangeNationRelationFromRelationAgent(npchar);
@@ -388,13 +388,13 @@ void ProcessDialogEvent()
 		break;
 		
 		case "RelationYet":
-			dialog.Text = "You problem is solving now. Just wait it can't go faster.";
-			Link.l99 = "Thanks.";
+			dialog.Text = "За вас уже пошло ходатайство. Ждите, так быстро дела не делаются.";
+			Link.l99 = "Спасибо.";
 			Link.l99.go = "exit";
 		break;
 		
 		case "City_Buy":
-			dialog.Text = "Which of the colonies ownership you want to discuss?";
+			dialog.Text = "Принадлежность какого поселения вы хотите обсудить?";
 			for (i=0; i<MAX_COLONIES; i++)
 			{
 				if (sti(colonies[i].HeroOwn) == true && sti(colonies[i].isBought) == false)
@@ -405,7 +405,7 @@ void ProcessDialogEvent()
 					Link.(attrLoc).go = "CityPay_" + i;
 				}
 			}
-			Link.l99 = "No. Nothing.";
+			Link.l99 = "Нет. Ничего.";
 			Link.l99.go = "exit";
 		break;
 		
@@ -413,23 +413,23 @@ void ProcessDialogEvent()
             i = sti(NPChar.quest.CityIdx);
             sld = GetFortCommander(colonies[i].id);
             iSumm = TWN_CityCost(colonies[i].id);
-			dialog.Text = "Colony " + GetCityName(colonies[i].id) + ", was belonging to " + XI_ConvertString(GetNationNameByType(sti(sld.Default.nation)) + "Gen") + ", ransom for stopping recapture attempts is " + FindRussianMoneyString(iSumm) + ".";
+			dialog.Text = "Город " + GetCityName(colonies[i].id) + ", принадлежал " + XI_ConvertString(GetNationNameByType(sti(sld.Default.nation)) + "Gen") + ", сумма выкупа для прекращения попыток отбить поселение составит " + FindRussianMoneyString(iSumm) + ".";
    			if(sti(pchar.money) >= iSumm)
 			{
-			    Link.l1 = "Yes, that works for me.";
+			    Link.l1 = "Да, меня это вполне устраивает.";
 				Link.l1.go = "City_Buy_End";
 			}
-			Link.l99 = "No thanks. I am not interested.";
+			Link.l99 = "Нет, спасибо. Не интересно.";
 			Link.l99.go = "exit";
 		break;
 		
 		case "City_Buy_End":
             i = sti(NPChar.quest.CityIdx);
             TWN_RealeseForMoney(colonies[i].id, true);
-			dialog.Text = "Alright, the deal is in process. There won't be any tries to capture " + GetCityName(colonies[i].id) + ".";
-			Link.l2 = "Thanks. Have a nice day.";
+			dialog.Text = "Хорошо, информация о сделке пошла. Попыток захвата города " + GetCityName(colonies[i].id) + " больше не будет.";
+			Link.l2 = "Спасибо. Всего хорошего.";
 			Link.l2.go = "exit";
-			Link.l3 = "One more question.";
+			Link.l3 = "Еще один вопрос.";
 			Link.l3.go = "relation";
 		break;
 	}

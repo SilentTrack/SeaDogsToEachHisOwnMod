@@ -15,22 +15,22 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "Is there something you need?";
-			link.l1 = "No, nothing.";
+			dialog.text = "Ты что-то хотел?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
 		
 		// ица-горожане
 		case "itza_ctz":
-			dialog.text = LinkRandPhrase("Another pale-faced... The great priest will be overjoyed to carve out your heart...","Pale-faced know how come to Tayasal, but no one leaves our city!","I'm surprised, pale-faced: you still not go to spirit land... Walk you still can for now, soon you see your ancestors.");
-			link.l1 = LinkRandPhrase("Well, well. We'll see...","Don't scare me, red-skinned warrior. We've seen worse than that.","Go, go. You'll frighten your children.");
+			dialog.text = LinkRandPhrase("Еще один бледнолицый... Великий жрец быть рад вырезать твой сердце...","Бледнолицый знать, как прийти в Тайясаль, но ни один не выйти наш город!","Я удивлен, бледнолицый: ты еще не уйти в страна духи... Гулять, пока еще мочь, скоро ты увидеть свои предок.");
+			link.l1 = LinkRandPhrase("Ну-ну, посмотрим...","Не пугай меня, краснокожий воин. И не такое видали.","Иди-иди. Детей своих стращать будешь.");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "itza_ctz";
 		break;
 		
 		case "itza_ctz_1":
-			dialog.text = LinkRandPhrase("Bless me for this battle with foe, great Cavil!","Great Cavil and great Kukulcan reverence us their presence. Even in ancient Maya this not happen!","We pass legend of great battle of Kukulcan and Cavil our children!");
+			dialog.text = LinkRandPhrase("Благословить меня на бой с враги, великий Кавиль!","Великий Кавиль и великий Кукулькан почтить нас свой присутствие. Такого не быть даже у древний майя!","Мы передать легенда о великий битва Кукулькан и Кавиль свой потомки!");
 			link.l1 = "...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "itza_ctz_1";
@@ -38,50 +38,50 @@ void ProcessDialogEvent()
 		
 		// Уракан - вождь ица
 		case "urakan":
-			dialog.text = "You are great warrior, pale-faced. We bring your blood to gods. You die with dignity.";
-			link.l1 = "Easy there, red-skinned warrior. I'm not planning on letting your Kanek bring me as a sacrifice to Kukulcan or anybody else for that matter. Your warriors were not able not capture me and every one of them has fallen in batten.";
+			dialog.text = "Ты есть великий воин, бледнолицый. Мы принести твоя кровь богам, ты умереть с почетом.";
+			link.l1 = "Полегче, краснокожий воин. Я не намерен позволить вашему Канеку принести меня в жертву Кукулькану, или кому-то еще. Твои воины не смогли схватить меня, и все полегли в бою.";
 			link.l1.go = "urakan_1";
 		break;
 		
 		case "urakan_1":
-			dialog.text = "Yes, you gracious warrior, pale-faced. But you not withstand hundreds Tayasal Itza warriors. However, you say interesting word. How you know about great Kanek and Kukulcan?";
-			link.l1 = "Well, let me guess... Since you're not Kanek, then you're name is probably Urakan and you're then son of Kanek the priest?";
+			dialog.text = "Да, ты славный воин, бледнолицый. Но ты не устоять перед сотней воин ица из Тайясаль. Однако ты сказать интересный слово. Откуда ты знать про великий Канек и Кукулькан?";
+			link.l1 = "Попробую угадать... раз ты не Канек - то тебя, вероятно, зовут Уракан, и ты сын жреца Канека?";
 			link.l1.go = "urakan_2";
 		break;
 		
 		case "urakan_2":
-			dialog.text = "Your lips speak truth, pale-faced. I am Urakan, and I am surprised.";
-			link.l1 = "You're going to be even more surprised when you get a load of this... Look.";
+			dialog.text = "Уста твои говорят правду, бледнолицый. Я есть Уракан, и я удивлен...";
+			link.l1 = "Сейчас ты удивишься еще больше, когда взглянешь на это... смотри.";
 			link.l1.go = "urakan_3";
 		break;
 		
 		case "urakan_3":
-			dialog.text = "Oh, gods! If this pale-faced have mask, then that means the time is come... You are the one that Kukulcan has told about. He ordered to bring you to him as soon you arrive to Tayasal. He know you come.";
-			link.l1 = "Kukulcan?! He's here in Tayasal?";
+			dialog.text = "О, боги! Если у бледнолицый есть этот маска, значит, время пришло... Ты и есть тот, о ком сообщил Кукулькан. Он приказал привести тебя к нему, как только ты появиться в Тайясаль. Он знать, что ты прийти.";
+			link.l1 = "Кукулькан?! Он тут, в Тайясале?";
 			link.l1.go = "urakan_4";
 		break;
 		
 		case "urakan_4":
-			dialog.text = "Yes, white warrior. Quetzalcoatl come Tayasal. Soon he leave to bring light our ancestors, great city of Maya.";
-			link.l1 = "God damn it! So, HE'S already here...(lowering voice) Urakan, I know everything. I know that you're the one who sent Ksatl Cha with the Guardian of Truth to search for Ksocheatem and the mask of Kukulcan...";
+			dialog.text = "Да, белый воин. Кетцалькоатль прийти Тайсаль. Скоро он отправиться нести свет наши предки, великий народ майя.";
+			link.l1 = "Черт побери! Значит, ОН уже здесь... (понижая голос) Уракан, я знаю все. Я знаю, что это ты отправил Кстал Ча со Стражем Истины на поиски Ксочитэма и маски Кукулькана. Я знаю, что ты не хочешь перемен, которые несет с собой пришествие Кукулькана...";
 			link.l1.go = "urakan_5";
 		break;
 		
 		case "urakan_5":
 			dialog.text = "";
-			link.l1 = "I see a surprise in your eyes and a doubt, great chief Urakan.. You're not happy with Kukulcan, am I wrong?";
+			link.l1 = "Я вижу в твоих глазах удивление и сомнение, великий вождь Уракан... Ты ведь не рад Кукулькану, я не прав?";
 			link.l1.go = "urakan_6";
 		break;
 		
 		case "urakan_6":
-			dialog.text = "Every Itza warrior happy great Kukulcan come, white warrior. You must stand before Kukulcan. He wait for you many nights. He is great prophet. He know everything ahead of time. Go to Flying Snake, you have no other path. We not allow you leave Tayasal.";
-			link.l1 = "Don't you understand that as soon as Kukulcan leaves through the gates of time, all of you, as well as you personally – will cease to exist? And the best part is that you will be reborn in another image, another body... Maybe a simple warrior. Or maybe a cripple or a beggar...";
+			dialog.text = "Каждый воин ица рад явлению великий Кукулькан, белый воин. Ты должен предстать перед Кукулькан. Он ждать тебя уже много ночей. Он великий пророк, он все знать наперед. Идти к Крылатый Змей, другой дорога у тебя нет. Мы не позволить тебе уйти из Тайясаль.";
+			link.l1 = "Неужели ты не понимаешь, что как только Кукулькан уйдет через врата времен, вы все, и ты лично - перестанете существовать? И самое лучшее, что может быть - ты переродишься в другом облике, другом теле... может, простым воином. А может, калекой, или убогим...";
 			link.l1.go = "urakan_7";
 		break;
 		
 		case "urakan_7":
-			dialog.text = "Go, pale-skinned warrior. You find Kukulcan in Great temple of Itza warriors. Go strait on bridge, until you see big pyramid. Go in lower door of temple and approach sanctuary.";
-			link.l1 = "All right. I will go to Kukulcan, for I see that we are not to escape this encounter. But I've warned you.";
+			dialog.text = "Ступать, бледнолицый воин. Ты найти Кукулькан в Великий храм предков ица. Идти по мосту прямо, пока не увидеть большой пирамида. Войти в нижний дверь храм и подойти святилище.";
+			link.l1 = "Хорошо. Я пойду к Кукулькану, ибо вижу, что нам не избежать этой встречи. Но я тебя предупредил.";
 			link.l1.go = "urakan_8";
 		break;
 		
@@ -104,58 +104,58 @@ void ProcessDialogEvent()
 		break;
 		
 		case "urakan_9":
-			dialog.text = "Go, white warrior. Kukulcan wait for you.";
-			link.l1 = "I'm on my way...";
+			dialog.text = "Идти, белый воин. Кукулькан ждать тебя.";
+			link.l1 = "Иду-иду...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "urakan_9";
 		break;
 		
 		case "urakan_10":
 			PlaySound("VOICE\Russian\Complete.wav");
-			dialog.text = "It's came true! As soon I see how you fight Kukulcan I know that you are Cavil himself and you come Tayasal to save Itza people from death because of my father and Kukulcan. My father, the great priest Kanek doom Itza people in glory of long dead ancestors Maya\nI am war chief Urakan who protect Itza people for many years. Not a single paleface leave Tayasal alive. Me and my warriors made sure Itza people stay protected and alive for many-many years to come. I don't want to sacrifice all my people.";
-			link.l1 = "I knew that, Urakan. And I asked you to help me on the bridge.";
+			dialog.text = "Свершилось! Как только я увидеть, как ты сражаться с Кукулькан, я сразу понять: ты - сам Кавиль, и ты прийти Тайясаль, дабы спасти народ ица от гибель от действий мой отец и Кукулькан. Мой отец, великий жрец Канек, обречь народ ица на гибель во славу давно мертвый предки майя\nЯ, вождь Уракан, защищать народ ица много лет. Ни один бледнолицый не покинуть Тайясаль. Я и мой воины обеспечить охрану и жизнь народа ица на долгий-долгий век впредь. Я не хотеть приносить жертва весь мой люди.";
+			link.l1 = "Я знал это, Уракан. И я спросил тебя на мосту.";
 			link.l1.go = "urakan_11";
 		break;
 		
 		case "urakan_11":
-			dialog.text = "Nothing hide from eyes of great Cavil. Forgive Urakan that he not understand who you are right away.";
-			link.l1 = "Don't worry about it, chief. I've defeated the mortal embodiment of Kukulcan, but we have a second important task lying ahead – to close the gates to the past. This unnatural hole in time must be eliminated. Will you help me?";
+			dialog.text = "От глаз великий Кавиль не укрыться ничто. Простить Уракан, что сразу не понять, кто есть ты.";
+			link.l1 = "Оставим это, вождь. Смертное воплощение Кукулькана побеждено мной, но перед нами стоит вторая важная задача - закрыть врата в прошлое. Это неестественная дыра во времени должна быть уничтожена. Ты поможешь мне?";
 			link.l1.go = "urakan_12";
 		break;
 		
 		case "urakan_12":
-			dialog.text = "What Urakan help you with, oh Cavil?";
-			link.l1 = "You sent Ksatl Cha with the Guardian of Truth to search for Ksocheatem and the mask of Kukulcan. So, you know that it can be used to shut the gates of time. Did your father tell you of this?";
+			dialog.text = "Чем Уракан помочь тебе, о Кавиль?";
+			link.l1 = "Ты отправил Ксатл Ча со Стражем Истины на поиски Ксочитэма и маски Кукулькана. Значит, ты знал, как с ее помощью запечатать врата времен. Отец поведал тебе об этом?";
 			link.l1.go = "urakan_13";
 		break;
 		
 		case "urakan_13":
-			dialog.text = "Father not speak. I study writings in temple of Knowledge and Wisdom. But much may be unclear Urakan. Maybe, Cavil can understand?";
-			link.l1 = "What exactly did you find out?";
+			dialog.text = "Отец не говорить. Я сам изучить письмена в храме Знаний и Мудрости. Но многое быть неясным Уракан. Может, Кавиль суметь понять?";
+			link.l1 = "Что именно ты выяснил?";
 			link.l1.go = "urakan_14";
 		break;
 		
 		case "urakan_14":
-			dialog.text = "I learn by heart. Writing proclaim : 'When sun arise against rain, and fire between them in triangle, strike Tohil leg against leg and incinerate mask of Kukulcan on alter of time. And seal then Itzamna gates of time until end of days.'";
-			link.l1 = "What.";
+			dialog.text = "Я выучить это наизусть. Письмена гласить: 'Когда солнце встать напротив дождь, а огонь между они в треугольник, ударить Тохил нога об нога и испепелить пламя маска Кукулькан на алтарь времен. И запечатать тогда Ицамна врата время до скончания век.'";
+			link.l1 = "Алтарь времен - это то самое место внизу, где большой календарь? Где я встретился с Кукульканом?";
 			link.l1.go = "urakan_15";
 		break;
 		
 		case "urakan_15":
-			dialog.text = "Yes.";
-			link.l1 = "Jesus... Show me the gates.";
+			dialog.text = "Да.";
+			link.l1 = "Так-так... Ладно. Покажи мне, где находятся врата времени.";
 			link.l1.go = "urakan_16";
 		break;
 		
 		case "urakan_16":
-			dialog.text = "They located temple Kukulcan. But door there is locked. Only my father can lock and unlock them. When he open door temple Kukulcan, he say: 'Sun come and go, water fall and subside, fire ignite and fade, war and peace interchange, but only heaven is forever. Above time is only heaven.'";
-			link.l1 = "Interesting... Let's remember that and see what we can do...";
+			dialog.text = "Они находиться храм Кукулькана. Но дверь туда заперта. Ее запирать и отпирать только мой отец. Когда он открывать дверь храм Кукулькан, он говорить: 'Солнце приходить и уходить, вода прибывать и убывать, огонь загораться и гаснуть, война и мир сменять друг друг, но только небо быть всегда. Выше время - только небо.'";
+			link.l1 = "Занятно... Запомним и будем разбираться...";
 			link.l1.go = "urakan_17";
 		break;
 		
 		case "urakan_17":
-			dialog.text = "I will be here, down below, by alter of time. I suggest you see inside every pyramid and building in Taysal. Find keys. I'll say here.";
-			link.l1 = "If I have any questions of importance, I'll definitely come to you.";
+			dialog.text = "Я быть тут, внизу, у алтарь времен. Если у тебя быть вопросы - задать их.";
+			link.l1 = "Если возникнут таковые - обязательно обращусь.";
 			link.l1.go = "urakan_18";
 		break;
 		
@@ -176,25 +176,25 @@ void ProcessDialogEvent()
 		break;
 		
 		case "urakan_adv":
-			dialog.text = "Urakan can help somehow great Cavil advice or action?";
+			dialog.text = "Уракан мочь чем-то помочь великий Кавиль совет или действие?";
 			if (Tieyasal_CheckTablets() && !CheckAttribute(npchar, "quest.tablets"))
 			{
-				link.l1 = "Take a look at this tablet I found. Judging by the place I found it, it must have had something to do with your father and it's clearly not a regular item...";
+				link.l1 = "Взгляни вот на эту скрижаль, которую мне удалось отыскать. Судя по месту, откуда я ее взял, она имела отношение к твоему отцу, и это явно не простой предмет...";
 				link.l1.go = "tablets";
 			}
 			if (CheckAttribute(npchar, "quest.treasureentrance"))
 			{
-				link.l1 = "I found another entrance on the top of the Great Temple, but it's sealed. How could I get inside there? Possibly what I'm looking for might be in there.";
+				link.l1 = "Я нашел на вершине Большого храма еще один вход, но он закрыт. Как мне попасть туда? Возможно, там лежит то, что я ищу.";
 				link.l1.go = "treasure";
 			}
-			link.l9 = "Nothing right now, Urakan. I'll manage myself...";
+			link.l9 = "Пока ничем, Уракан. Справляюсь сам...";
 			link.l9.go = "exit";
 			NextDiag.TempNode = "urakan_adv";
 		break;
 		
 		case "tablets":
-			dialog.text = "Gods stone plate. My father have several different pieces and he very value them. Ancient Tayasal builders use plate to activate hidden mechanism, open and close door, even do magic rituals\nThey work if put in the right place - that is what my father do. But I am a warrior just like you, don't know how to use them right. Perhaps Cavil know?";
-			link.l1 = "We'll definitely get to the bottom of it...";
+			dialog.text = "Это каменный табличка боги. У мой отец быть их несколько разный штук, и он очень дорожить ими. Древний строители Тайясаль использовать эти табличка для действие разный скрытый механизм, отпирать и запирать дверь, и даже для проведение магические ритуалы\nОни работать, если их поставить в определенный место - так делать мой отец. Но я, как и ты - воин, а не жрец, и не знать, как применять их правильно. Может, Кавиль суметь разгадать это?";
+			link.l1 = "Обязательно разгадаем...";
 			link.l1.go = "exit";
 			npchar.quest.tablets = "true";
 			NextDiag.TempNode = "urakan_adv";
@@ -202,14 +202,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "treasure":
-			dialog.text = "This is door to treasures of Tayasal. There lie riches of Itza Indians. Door inside only my father open and close. No one dare enter to treasures without him. Not even I.";
-			link.l1 = "How did your father open the entrance?";
+			dialog.text = "Это дверь в сокровищница Тайясаль. Там лежать богатства индейцы ица. Дверь туда открывать и закрывать только мой отец, никто не сметь входить сокровищница без он, даже я.";
+			link.l1 = "Каким образом твой отец отпирал вход туда?";
 			link.l1.go = "treasure_1";
 		break;
 		
 		case "treasure_1":
-			dialog.text = "My father said: 'Any riches have two side. Only he who know these two side enter to treasures of Tayasal.' What this mean – I not know. Maybe, Cavil solve?";
-			link.l1 = "We'll figure this one out too...";
+			dialog.text = "Мой отец говорить: 'У любой богатства есть две сторона. К сокровища Тайясаль пройти лишь тот, кто знать об обе эти сторона.' Что это означать - я не знать. Может, Кавиль суметь разгадать?";
+			link.l1 = "Разгадаем и это...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "urakan_adv";
 			DeleteAttribute(npchar, "quest.treasureentrance");
@@ -218,23 +218,23 @@ void ProcessDialogEvent()
 		
 		case "urakan_19":
 			PlaySound("VOICE\Russian\Complete.wav");
-			dialog.text = "You do it, oh great Cavil! People of Itza now safe. I, Urakan, son of Kanek, assure you that I not put shame on the honor you give me and I protect Tayasal from any invasion of dishonorable pale-faced in your name.";
-			link.l1 = "I can well believe it, chief. Well, we can celebrate now: we have put a crimp in the treacherous plans of Kukulcan. He'll never be able to materialize a time revolution again.";
+			dialog.text = "Ты сделать это, о великий Кавиль! Народ ица теперь безопасность. Я, Уракан, сын Канека, заверить тебя, что я не посрамить оказанный мне честь, и твой именем защитить Тайясаль от любой вторжение подлый бледнолицый.";
+			link.l1 = "Охотно в это верю, вождь. Ну что же, можем праздновать: коварные планы Кукулькана расстроены. Более он не сможет осуществить переворот во времени.";
 			link.l1.go = "urakan_20";
 		break;
 		
 		case "urakan_20":
 			PlaySound("interface\abordage_wining.wav");
-			dialog.text = "Glory great Cavil! To me and my generation befall great honor see Tayasal two gods. We write about this history for our children. They know about battle of gods in Tayasal! Glory Cavil! Glory!";
-			link.l1 = "I am getting drunk.";
+			dialog.text = "Слава великий Кавиль! Мне и мой поколение выпасть великий честь видеть Тайясаль двух богов. Мы написать об это история для наши потомок. Они знать о битва богов в Тайясаль! Слава Кавиль! Слава!";
+			link.l1 = "...";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("Tieyasal_Win_IndianBead");
 		break;
 		
 		// Канек - жрец ица
 		case "kanek":
-			dialog.text = "You stand before the Winged Serpent, paleface. Spirit of mighty Kukulcan in human flesh. You lucky to be brother through father of his embodiment as I lucky to be father of mother gave him birth. Great honour. Perhaps that is why you become a strong warrior and still alive\nBut your time run out, paleface. We start new time, time of great Maya. We establish our own power and never let palefaces to come our world. Soon. I, Kanek the priest, go to start the ritual!";
-			link.l1 = "Strike me pink...";
+			dialog.text = "Ты стоять перед Крылатый Змей, бледнолицый. Дух великий Кукулькан, воплощенный в человеческий образ. Тебе посчастливиться быть брат по отец его воплощение, так как мне - быть отец женщина, родившей его на свет. Это великая честь. Возможно, именно поэтому ты стать сильный воин, и поэтому ты до сих пор жить\nНо твоя время подойти к концу, белый человек. Мы начать новый время, время великий майя. Мы установить свой власть и не позволить белый прийти наш мир. Остаться совсем мало. Я, жрец Канек, готовить провести ритуал!";
+			link.l1 = "Вот это да...";
 			link.l1.go = "kanek_1";
 		break;
 		
@@ -247,20 +247,20 @@ void ProcessDialogEvent()
 		break;
 		
 		case "kanek_2":
-			dialog.text = "Urakan, you heard what our lord said. Submit now!";
-			link.l1 = "When great ones battle amongst each other, it is better for us simple mortals to just stand aside and gaze from a distance, father...";
+			dialog.text = "Уракан, ты слышал, что сказал наш повелитель. Немедленно подчинись!";
+			link.l1 = "Когда между собой сражаются великие, нам, простым смертным, лучше держаться в стороне и воззирать на это поодаль, отец...";
 			link.l1.go = "kanek_3";
 		break;
 		
 		case "kanek_3":
-			dialog.text = "What?! Come to your senses, son!";
-			link.l1 = "This man is Kukulcan brother and a great warrior. I see the embodiment of Cavil himself in him! No one besides him could withstand a god like THAT. Don't doddle in the duel of the gods, father! And if you bring offerings to Kukulcan, then my warriors will give their blood to Cavil!";
+			dialog.text = "Что?! Опомнись, сын!";
+			link.l1 = "Этот человек - брат Кукулькана и великий воин. Я вижу в нем воплощение самого Кавиля! Никто, кроме него, не мог бы ТАК противостоять богу. Не вмешивайся в схватку богов, отец! И если ты приносишь жертвы Кукулькану, то мои воины отдают свою кровь Кавилю!";
 			link.l1.go = "kanek_4";
 		break;
 		
 		case "kanek_4":
-			dialog.text = "Are you in your right mind, Urakan?";
-			link.l1 = "Many years I, named after Hurakan, have successfully protected our lands in Cavil's name from the invasion of outlanders. Hundreds of them have fallen under our clubs and not one has left Tayasal. But never in all my life have I see a warrior so strong and swift as this pale-faced. If he was able to defeat Kukulcan, then he's embodied the spirit of Cavil himself!";
+			dialog.text = "Ты в своем уме, Уракан?";
+			link.l1 = "Долгие годы я, названный в честь Хуракана, именем Кавиля успешно защищал наши земли от вторжения чужеземцев. Сотни их пали под нашими палицами, ни один не ушел из Тайясаля. Но за всю свою жизнь я не видел воина более ловкого и сильного, нежели этот бледнолицый. Если он сумел победить Кукулькана, то в нем заключен дух самого Кавиля!";
 			link.l1.go = "kanek_5";
 		break;
 		

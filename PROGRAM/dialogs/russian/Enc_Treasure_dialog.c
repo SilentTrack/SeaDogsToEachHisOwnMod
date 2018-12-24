@@ -37,16 +37,16 @@ void ProcessDialogEvent()
 		break;
 
         case "Map_NotBuy":
-            dialog.Text = "When you get rich, I'll wrap it for you in a cloth an in a handkerchief, if you like.";
-			Link.l1 = "Stay there, I'll be right back!";
+            dialog.Text = "Разбогатеешь, заверну и в тряпочку, и в платочек носовой.";
+			Link.l1 = "Сиди тут, я мигом!";
 			Link.l1.go = "exit";
 		break;
 		
 		case "First time":
 			Diag.TempNode = "First time";
 
-			dialog.Text = "Pssst... Listen now... I've got something for you...";
-			Link.l1 = "What are you talking about?";
+			dialog.Text = "Псс... слушай сюда. У меня есть кое-что для тебя...";
+			Link.l1 = "Ты про что?";
 			Link.l1.go = "map_treasure_1";
 		break;
 		
@@ -54,25 +54,25 @@ void ProcessDialogEvent()
             ok = (GetCharacterItem(Pchar, "map_part1")>0)  && (GetCharacterItem(Pchar, "map_part2")>0);
             if (GetCharacterItem(Pchar, "map_full") > 0 || ok)
             {
-                dialog.Text = "About a drink! H-Hic... drink with me!";
-    			Link.l1 = "Oh, shut up. I thought you were serious.";
+                dialog.Text = "Это выпивка!! И-ик... выпей со мной!";
+    			Link.l1 = "Да ну тебя. Я "+ GetSexPhrase("думал","думала") +", ты серьезно.";
     			Link.l1.go = "exit";
             }
             else
             {
-                dialog.Text = "I have something for you at a reasonable price.";
-    			Link.l1 = "And what could it be?";
+                dialog.Text = "Есть у меня одна вещица специально для тебя по сходной цене.";
+    			Link.l1 = "И что же это?";
     			Link.l1.go = "map_treasure_2";
-    			Link.l2 = "Oh, get lost. I've got no time for this.";
+    			Link.l2 = "Да ну тебя. Некогда мне.";
     			Link.l2.go = "exit";
 			}
 		break;
 		
 		case "map_treasure_2":
-            dialog.Text = "That's a great map. You will never buy anything like that in the store. It shows where a treasure is hidden. I can't get there myself, but the map is genuine, I swear.";
-			Link.l1 = "That's interesting, How much do you want?";
+            dialog.Text = "Это отличная карта. Такую в магазине не найти. На ней указано, где зарыты сокровища! Сам я туда не доберусь, но карта точно подлинная. Клянусь.";
+			Link.l1 = "Очень интересно. Сколько просишь?";
 			Link.l1.go = "map_treasure_3";
-			Link.l2 = "Oh, get lost. I've got no time for this.";
+			Link.l2 = "Да ну тебя. Некогда мне.";
 			Link.l2.go = "exit";
 		break;
 		
@@ -81,8 +81,8 @@ void ProcessDialogEvent()
 		    {
                 npchar.quest.trade_date      = lastspeak_date;
             }
-            dialog.Text = "It costs only "+Pchar.GenQuest.TreasureMoney+" doubloons."; // Addon-2016 Jason
-			Link.l1 = "Alright. And wrap it in a nice piece of cloth.";
+            dialog.Text = "Стоит всего "+FindRussianDublonString(sti(Pchar.GenQuest.TreasureMoney))+"."; // Addon-2016 Jason
+			Link.l1 = "Давай, заверни в красивую тряпочку.";
 			if (GetCharacterItem(pchar, "gold_dublon") >= sti(Pchar.GenQuest.TreasureMoney)) // Addon-2016 Jason
 			{
 			   Link.l1.go = "map_treasure_buy";
@@ -91,13 +91,13 @@ void ProcessDialogEvent()
 			{
 			   Link.l1.go = "Map_NotBuy";
 			}
-			Link.l2 = "That's too expensive. I don't need it.";
+			Link.l2 = "Дорого очень. Не нужно.";
 			Link.l2.go = "exit";
 		break;
 		
 		case "map_treasure_buy":
-            dialog.Text = "Here you go. No you're bound to become rich!";
-			Link.l1 = "Thanks!";
+            dialog.Text = "Забирай. Теперь ты обязательно разбогатеешь!";
+			Link.l1 = "Спасибо!";
 			Link.l1.go = "exit";
 			RemoveItems(pchar, "gold_dublon", sti(Pchar.GenQuest.TreasureMoney)); // Addon-2016 Jason
 			GiveItem2Character(pchar, "map_full");
@@ -106,24 +106,24 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Temp_treasure":
-            dialog.Text = "Let's have a drink, shall we? Hic... They serve great rum here!";
-			Link.l1 = "I have no time!";
+            dialog.Text = "Давай выпьем? И-ик... Хороший тут ром!";
+			Link.l1 = "Некогда!";
 			Link.l1.go = "exit";
 			ok = (GetCharacterItem(Pchar, "map_part1")>0)  || (GetCharacterItem(Pchar, "map_part2")>0);
             if (GetCharacterItem(Pchar, "map_full") == 0 && !ok)
             {
 				Achievment_SetStat(pchar, 68, 1); // ugeen 2016
-    			Link.l2 = "You sold me a fake map!";
+    			Link.l2 = "Ты продал мне фальшивку!!";
     			Link.l2.go = "Temp_treasure_1";
 			}
 			Diag.TempNode = "Temp_treasure";
 		break;
 		
 		case "Temp_treasure_1":
-            dialog.Text = "Who are you? Hic! I don't know you and I don't care!";
-			Link.l1 = "Whatever...";
+            dialog.Text = "А ты кто? И-ик... Я тя не знаю и уже не хочу знать.";
+			Link.l1 = "Ну и не надо!";
 			Link.l1.go = "exit";
-			Link.l2 = "You sold me this forgery! I will beat the crap out of you...";
+			Link.l2 = "Да ты мне продал эту подделку!!! Я тебе счас...";
 			Link.l2.go = "outraged"; //navy -- дуэли!!!
 			Diag.TempNode = "let_s_duel";
 			npchar.LifeDay = 1; // чтоб не слетел на выходе

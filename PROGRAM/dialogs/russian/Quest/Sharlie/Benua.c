@@ -16,73 +16,73 @@ void ProcessDialogEvent()
 		case "First time":
 			if (CheckAttribute(pchar, "questTemp.Sharlie.BenuaLoan.Late")) // Addon 2016-1 Jason пиратская линейка 1
 			{
-				dialog.text = "It`s good to see you, my son.  You are here to wipe away your debt?";
+				dialog.text = "Рад видеть тебя, сын мой. Ты пришел, чтобы вернуть мне займ?";
 				if (GetCharacterItem(pchar, "gold_dublon") >= 100 && sti(pchar.money) >= 50000)
 				{
-					link.l1 = "Yes, pater. I am.";
+					link.l1 = "Да, отче. Я готов отдать вам долг.";
 					link.l1.go = "FastStart_7";
 				}
 				else
 				{
-					link.l1 = "I am sorry for the delay, but I am not. But I will don`t you worry.";
+					link.l1 = "Я все помню, отче. Прошу прощения за задержку - дела идут не лучшим образом, но в ближайшее время я рассчитаюсь, обещаю.";
 					link.l1.go = "exit";
 				}
 				break;
 			}
 			if (CheckAttribute(pchar, "questTemp.Sharlie") && pchar.questTemp.Sharlie == "benua_final")
 			{
-				dialog.text = "Is there something you need, my son?";
-				link.l1 = "Yes, father. I would like to see my brother, Michel de Monper. He said...";
+				dialog.text = "Ты что-то хотел, сын мой?";
+				link.l1 = "Да, отче. Я хочу увидеть своего брата, Мишеля де Монпе. Он сказал, что...";
 				link.l1.go = "escape";
 				break;
 			}
-			dialog.text = "Is there something you need, my son?";
+			dialog.text = "Ты что-то хотел, сын мой?";
 			if (CheckAttribute(pchar, "questTemp.Sharlie.FastStart") && !CheckAttribute(npchar, "quest.FastStart") && !CheckAttribute(npchar, "quest.meet")) // еще не виделись
 			{
-				link.l1 = "Yes, pater. I need your help. My name is "+GetFullName(pchar)+". Michelle de Monper advised me to talk to you.";
+				link.l1 = "Да, отче. Мне нужна ваша помощь. Меня зовут "+GetFullName(pchar)+". Мне порекомендовал обратиться к вам мой брат, Мишель де Монпе.";
 				link.l1.go = "FastStart";
 			}
 			if (CheckAttribute(npchar, "quest.help") && !CheckAttribute(npchar, "quest.meet")) // еще не виделись
 			{
-				link.l1 = "Yes, father. I need your help.  My name is "+GetFullName(pchar)+". I was advised to talk to you by my brother, Michel de Monper.";
+				link.l1 = "Да, отче. Мне нужна ваша помощь. Меня зовут "+GetFullName(pchar)+". Мне порекомендовал обратиться к вам мой брат, Мишель де Монпе.";
 				link.l1.go = "meet";
 			}
 			if (CheckAttribute(pchar, "questTemp.Sharlie.FastStart") && !CheckAttribute(npchar, "quest.FastStart") && CheckAttribute(npchar, "quest.meet"))
 			{
-				link.l1 = "Yes, pater. I need a ship to help Michelle yet I have just recently arrived to the Caribbean and my purse is empty. My brother told me you could lend me some money...";
+				link.l1 = "Да, отче. Для того, чтобы помочь Мишелю, мне нужен корабль. Но я только недавно прибыл на Карибы, и почти без гроша в кармане. Мой брат сказал мне, что вы можете ссудить мне некоторую сумму денег...";
 				link.l1.go = "FastStart_2";
 			}
 			if (CheckAttribute(npchar, "quest.help") && CheckAttribute(npchar, "quest.meet"))
 			{
-				link.l1 = "Yes, father. I need your help.";
+				link.l1 = "Да, отче. Мне нужна ваша помощь.";
 				if (CheckAttribute(npchar, "quest.relation_info")) link.l1.go = "help";
 				else link.l1.go = "help_start";
 			}
 			if (CheckAttribute(pchar, "questTemp.Sharlie.BenuaLoan") && GetCharacterItem(pchar, "gold_dublon") >= 100 && sti(pchar.money) >= 50000)
 			{
-				link.l2 = "Yes, pater. I am.";
+				link.l2 = "Да, отче. Я готов отдать вам долг.";
 				link.l2.go = "FastStart_7";
 			}
-			link.l9 = "No, nothing, father.";
+			link.l9 = "Да нет, ничего, отче.";
 			link.l9.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "Benua_meeting":
-			dialog.text = "What brings you to me, my son?";
-			link.l1 = "Hello, father. I was advised to talk to you. My name is Charles de Maure. I am searching for Michel de Monper. As far as I know, he should be somewhere here on Martinique. I'm... his brother.";
+			dialog.text = "Что привело тебя ко мне, сын мой?";
+			link.l1 = "Здравствуйте, отче. Мне посоветовали обратиться к вам. Мое имя - Шарль де Мор. Я разыскиваю Мишеля де Монпе. Как мне известно, он должен быть где-то здесь, на Мартинике. Я... его брат.";
 			link.l1.go = "Benua_meeting_1";			
 		break;
 		
 		case "Benua_meeting_1":
-			dialog.text = "Michel de Monper's brother? De Maure? How strange...";
-			link.l1 = "I understand your doubts, father. We simply have different fathers. My father is Henry de Monper.";
+			dialog.text = "Брат Мишеля де Монпе? Де Мор? Очень странно...";
+			link.l1 = "Я понимаю ваши сомнения, отче. У нас просто разные фамилии. Мой отец - Анри де Монпе.";
 			link.l1.go = "Benua_meeting_2";			
 		break;
 		
 		case "Benua_meeting_2":
-			dialog.text = "A-ah, I see now. I used to know Henri de Monper personally. Turn yourself to the light, young man. Right! You do look like him. Same looks, same noble side view! I am glad to see a son of Henri de Monper in our parish\nAnd concerning your question I will tell you that Michel is a high-ranked officer of the Order of Malta, but he is... in trouble. Come here tomorrow, my son, and I will introduce you to one man, I believe he will be able to get you to your brother. Go to the tavern now, get some rest.";
-			link.l1 = "Thank you, father. I will be here tomorrow morning.";
+			dialog.text = "А-а, это все проясняет. Я лично знал Анри де Монпе. Повернись к свету, юноша... Точно! Ты действительно похож на него... Такой же взгляд, такой же благородный профиль! Я рад видеть сына Анри де Монпе в нашей обители\nЧто же до вопроса твоего, то я сообщу тебе, что Мишель - один из высокопоставленных членов Ордена мальтийских рыцарей, однако... с ним случилась беда. Приходи завтра утром, сын мой, я познакомлю тебя с одним человеком - думаю, он сможет проводить тебя к брату.";
+			link.l1 = "Спасибо, отче! Я буду завтра утром.";
 			link.l1.go = "Benua_meeting_3";			
 		break;
 		
@@ -99,15 +99,15 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Benua_meeting_repeat":
-			dialog.text = "My son, come tomorrow morning. At the moment, I have nothing more to tell you.";
-			link.l1 = "All right.";
+			dialog.text = "Сын мой, приходи завтра утром. Мне пока нечего сказать тебе более.";
+			link.l1 = "Хорошо.";
 			link.l1.go = "exit";	
 			NextDiag.TempNode = "Benua_meeting_repeat";
 		break;
 		
 		case "Benua_maltie":
-			dialog.text = "Hello, my son. As promised, the person you're needing is already here waiting for you. He's ready to show you to your miserable brother. May the Lord have mercy on his soul...";
-			link.l1 = "Who is this man, holy father?";
+			dialog.text = "Здравствуй, сын мой. Как я и обещал - нужный человек уже здесь и ждет тебя. Он готов провести тебя к твоему несчастному брату, да смилуется Господь над его судьбой...";
+			link.l1 = "Где же этот человек, отче?";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("Sharlie_enterMaltie");
 			NextDiag.TempNode = "First time";
@@ -115,20 +115,20 @@ void ProcessDialogEvent()
 		break;
 		
 		case "escape":
-			dialog.text = "Yes, Charles, I'm aware of that. But I must disappoint you. Michel is not here.";
-			link.l1 = "What do you mean he's not here? He said that he'd be waiting for me in your church! Father, what happened? Where's my brother?!";
+			dialog.text = "Да, Шарль, я в курсе. Но вынужден тебя огорчить. Мишеля здесь нет.";
+			link.l1 = "Как нет?! Он же сказал, что будет ждать меня в церкви у вас! Отче, что случилось? Где мой брат?!";
 			link.l1.go = "escape_1";
 		break;
 		
 		case "escape_1":
-			dialog.text = "My son, your brother was here and he left my modest tabernacle late last night. Where he did he go, I don't know. But he left you this letter.";
-			link.l1 = "I can't believe it... after what I did for him! Give me that letter!";
+			dialog.text = "Сын мой, твой брат был здесь и покинул мою скромную обитель глубокой ночью. Куда он отправился - мне неведомо. Но он оставил для тебя письмо.";
+			link.l1 = "Невероятно... и это после того, что я сделал для него! Дайте же мне это письмо!";
 			link.l1.go = "escape_2";
 		break;
 		
 		case "escape_2":
-			dialog.text = "Don't get go enraged, Charles. Here's the letter. Read it and then... then I would like to speak with you. But first read your brother's message.";
-			link.l1 = "I'm burning from impatience!";
+			dialog.text = "Не горячись, Шарль. Вот это письмо. Прочти его, а потом... потом я хочу поговорить с тобой. Но сначала прочитай послание своего брата.";
+			link.l1 = "Я сгораю от нетерпения!";
 			link.l1.go = "escape_3";
 		break;
 		
@@ -144,46 +144,46 @@ void ProcessDialogEvent()
 		case "escape_4":
 			if (CheckAttribute(pchar, "GenQuest.specialletter.read") && pchar.GenQuest.specialletter.read == "Letter_Mishelle")
 			{
-				dialog.text = "I see you read the letter. Now I would like to tell you something, Charles...";
-				link.l1 = "But... how can that be? What kind of balderdash is this? I know my brother is peculiar, but he's not a madman!";
+				dialog.text = "Я вижу, ты прочел письмо. Теперь я хочу сказать тебе кое-что, Шарль...";
+				link.l1 = "Но... как же так? Что за ахинею он несет? Я знаю, что у моего брата есть странности, но на сумасшедшего он не похож!";
 				link.l1.go = "escape_5";
 			}
 			else
 			{
-				dialog.text = "My son, read the letter. We'll speak later.";
-				link.l1 = "Yes, father...";
+				dialog.text = "Сын мой, прочти письмо. Потом поговорим.";
+				link.l1 = "Да, отче...";
 				link.l1.go = "exit";
 				NextDiag.TempNode = "escape_4";
 			}
 		break;
 		
 		case "escape_5":
-			dialog.text = "Your brother's actions surprise me as well, Charles. In addition, I still have my moments of perplexity. A loyal servant of the Order and the Trinity and he's behaving like a deserter.";
-			link.l1 = "You have no idea what is the reason of such strange behaviour?";
+			dialog.text = "Меня тоже удивил поступок твоего брата, Шарль. Более - я до сих пор пребываю в растерянности. Верный слуга Ордена и Отечества - и поступает как дезертир...";
+			link.l1 = "Вы не догадываетесь о причинах этого странного поступка?";
 			link.l1.go = "escape_6";
 		break;
 		
 		case "escape_6":
-			dialog.text = "Alas, I do not. But I suppose that he does have motives of his own, deep motives. For abrogating one's entire past would suggest an extremely significant reason. I can't even imagine what it is. But I sense, that it involves something extremely bad... even awful.";
-			link.l1 = "What could it be, father?";
+			dialog.text = "Увы, но - нет. Но полагаю, что для этого есть мотивы, очень глубокие мотивы. Ибо чтобы отречься от всего своего прошлого, нужно иметь какую-то очень значительную причину. Я даже не могу представить, какую. Но я чувствую, что здесь замешано что-то крайне нехорошее... даже ужасное.";
+			link.l1 = "Что именно, отче?";
 			link.l1.go = "escape_7";
 		break;
 		
 		case "escape_7":
-			dialog.text = "My son, a priest sees not with his eyes, but with his heart. I cannot explain to you in words, but... you brother has set forth to do something unclean. I never though my mouth could utter this, however...";
-			link.l1 = "Well, I don't doubt that my brother has planned something unclean. I can even get what it exactly he's planning to do. This 'something' involves something yellow and makes a nice clink sound.";
+			dialog.text = "Сын мой, священник видит не глазами, а сердцем. Я не могу объяснить тебе словами, но... твой брат задумал что-то скверное. Я никогда не думал, что мои уста смогут произнести такое, однако...";
+			link.l1 = "Ну, в том, что мой брат что-то задумал - я не сомневаюсь. Я даже догадываюсь, что именно. Это 'что-то' лежит где-то, имеет желтый цвет и приятно позвякивает.";
 			link.l1.go = "escape_8";
 		break;
 		
 		case "escape_8":
-			dialog.text = "I don't think the lust for gold is what drives you brother. I would say that he needs something bigger.";
-			link.l1 = "I have learned a lot from Michel and have a grasp on his philosophy, so I can assume what's important to him and what isn't. But I will keep your words in mind, reverend father.";
+			dialog.text = "Я не думаю, что жажда золота движет твоим братом. Сдается мне, что ему нужно нечто большее.";
+			link.l1 = "Я многому научился от Мишеля и постиг его философию, так что могу допускать, что для него важно, а что нет. Но я учту ваши слова, святой отец.";
 			link.l1.go = "escape_9";
 		break;
 		
 		case "escape_9":
-			dialog.text = "God bless you, my son. Go, now. My the Lord watch over you!";
-			link.l1 = "Thank you, father. Goodbye!";
+			dialog.text = "Благословляю тебя, сын мой. А теперь ступай. Да хранит тебя Господь!";
+			link.l1 = "Спасибо, отче. До свидания!";
 			link.l1.go = "escape_10";
 		break;
 		
@@ -208,58 +208,58 @@ void ProcessDialogEvent()
 		
 		// уменьшение награды за голову
 		case "meet":
-			dialog.text = "Michel de Monper's brother? De Maure? How strange...";
-			link.l1 = "I understand your doubts, father. We simply have different fathers. My father is Henry de Monper.";
+			dialog.text = "Брат Мишеля де Монпе? Де Мор? Очень странно...";
+			link.l1 = "Я понимаю ваши сомнения, отче. У нас просто разные фамилии. Мой отец - Анри де Монпе.";
 			link.l1.go = "meet_1";			
 		break;
 		
 		case "meet_1":
-			dialog.text = "A-ah, I see now. I new Henri de Monper personally. Turn yourself to the light, young man... Right! You do look like him. Same looks, same noble side view! I am glad to see a son of Henri de Monper in our parish\nI have already heard that Michel was visited by some man arrived from Europe, but I couldn't even imagine that it was his own brother. I hope that you will be able to help Michel, he is experiencing a difficult time. So how can I be of service?";
-			link.l1 = "Michel told me that you would be able to help if I get into specific troubles with the authorities.";
+			dialog.text = "А-а, это все проясняет. Я лично знал Анри де Монпе. Повернись к свету, юноша... Точно! Ты действительно похож на него... Такой же взгляд, такой же благородный профиль! Я рад видеть сына Анри де Монпе в нашей обители\nЯ уже слышал, что Мишеля посещал некий человек, прибывший из Европы, но даже и представить себе не мог, что это - его брат. Надеюсь, что ты сможешь помочь Мишелю, у него сейчас трудные дни. Так что я могу сделать для тебя?";
+			link.l1 = "Мишель сказал мне, что вы можете помочь в случае, если у меня возникнут проблемы с властями...";
 			link.l1.go = "help_info";	
 			npchar.quest.meet = true;
 		break;
 		
 		case "help_info":
-			dialog.text = "That is what Michel told you? I see. Well, I can be of some help in such matters. I have some influence within Holy Roman Church and Dutch colonies. Therefore I might to intercede for you to the Spanish and the Dutch authorities. Surely, I won't be able to do much if your misconduct is too heavy - in that case only a slight extenuation can be achieved\nIt will require several intercessions for a complete reconciliation. Besides, you will have to supply me with golden doubloons for charities and for voyage spendings. Only one nation at one go, of course. If you find it acceptable then don't hesitate to appeal, we'll see what can be done.";
-			link.l1 = "Thank you! I'll keep that in mind.";
+			dialog.text = "Это Мишель так сказал? Ясно... Что же, оказать определенную помощь в этом вопросе я смогу. У меня есть определенное влияние в обители Римской католической церкви здесь, на архипелаге, а также в голланских поселениях. Таким образом, я могу ходатайствовать за тебя перед властями Испании и Голландии. Безусловно, я не смогу просить о многом, и если твоя провинность будет велика - то сумею лишь снизить враждебное отношение к тебе\nДля полного примирения потребуется несколько ходатайств. Кроме того, ты должен будешь снабдить меня золотыми дублонами для уплаты пожертвований и дорожных издержек. Ну, и только с одной державой за раз, конечно. Если тебя такое устраивает - обращайся, будем разрешать твои беды.";
+			link.l1 = "Спасибо! Приму к сведению.";
 			link.l1.go = "exit";
 			npchar.quest.relation_info = "true";
 		break;
 		
 		case "help_start":
-			dialog.text = "What can I do for you, my son? Speak, I am listening.";
-			link.l1 = "Michel told me that you would be able to help if I get into specific troubles with the authorities.";
+			dialog.text = "Так что я могу сделать для тебя, сын мой? Говори, я слушаю.";
+			link.l1 = "Мишель сказал мне, что вы можете помочь в случае, если у меня возникнут проблемы с властями...";
 			link.l1.go = "help_info";
 		break;
 		
 		case "help":
-			dialog.text = "How can I help you, my son?";
+			dialog.text = "Чем я могу помочь, сын мой?";
 			if (ChangeCharacterNationReputation(pchar, SPAIN, 0) < 0 && !CheckAttribute(npchar, "quest.relation"))
 			{
-				link.l1 = "I've got into troubles with the Spanish authorities.";
+				link.l1 = "У меня возникли неприятности с испанскими властями.";
 				link.l1.go = "relation_spa";
 			}
 			if (ChangeCharacterNationReputation(pchar, HOLLAND, 0) < 0 && !CheckAttribute(npchar, "quest.relation"))
 			{
-				link.l2 = "I've got into troubles with the Dutch authorities.";
+				link.l2 = "У меня возникли неприятности с голландскими властями.";
 				link.l2.go = "relation_hol";
 			}
-			link.l9 = "Sorry, I think I'll handle things myself.";
+			link.l9 = "Извините, я пока обойдусь своими силами.";
 			link.l9.go = "exit";
 		break;
 		
 		case "relation_spa": // patch-10
 			pchar.GenQuest.BenuaNation = SPAIN;
-			dialog.text = "So, the noble seniors are eager to put you inside Havana's dungeons...";
-			link.l1 = "Exactly so, father...";
+			dialog.text = "Значит, благородные сеньоры жаждут увидеть тебя закованным в кандалы в казематах Гаваны...";
+			link.l1 = "Именно так, отче...";
 			link.l1.go = "relation";
 		break;
 		
 		case "relation_hol":
 			pchar.GenQuest.BenuaNation = HOLLAND;
-			dialog.text = "So, the smart merchants are eager to put you inside Willemstad's dungeons...";
-			link.l1 = "Exactly so, father...";
+			dialog.text = "Значит, предприимчивые негоцианты жаждут увидеть тебя закованным в кандалы в казематах Виллемстада...";
+			link.l1 = "Именно так, отче...";
 			link.l1.go = "relation";
 		break;
 		
@@ -267,40 +267,40 @@ void ProcessDialogEvent()
 			rate = abs(ChangeCharacterNationReputation(pchar, sti(pchar.GenQuest.BenuaNation), 0));
 			if (rate <= 10)
 			{
-				dialog.text = "Yes, those rumours have reached our church as well. I can help you with your dilemma. It's something that can be solved. I need two hundred fifty gold doubloons to smooth out the predicament.";
+				dialog.text = "Да, эти слухи достигли и нашей церкви. Смогу я помочь твоей беде, это дело поправимое. Мне нужно двести пятьдесят золотых дублонов, чтобы уладить неприятности.";
 				if (GetCharacterItem(pchar, "gold_dublon") >= 250)
 				{
-					link.l1 = "Great! Here's the gold.";
+					link.l1 = "Отлично! Вот, держите золотые.";
 					link.l1.go = "agree";
 					iTotalTemp = 250;
 				}
-				link.l2 = "Then it's just the right time for me to go get the coins.";
+				link.l2 = "Тогда мне самое время отправиться за монетами.";
 				link.l2.go = "exit";
 			}
 			else
 			{
 				if (rate <= 20)
 				{
-					dialog.text = "Yes, rumours of your 'feats' have reached our church as well. You've tarnished your reputation, my son. You should be more prudent. But I can help you. I need five hundred gold doubloons to smooth out the predicament.";
+					dialog.text = "Да, слухи о твоих 'подвигах' достигли и нашей церкви. Подмочил ты свою репутацию, сын мой, надо было быть осмотрительнее. Но помочь все же я сумею. Мне нужно пятьсот золотых дублонов, чтобы уладить неприятности.";
 					if (GetCharacterItem(pchar, "gold_dublon") >= 500)
 					{
-						link.l1 = "Great! Here's the gold.";
+						link.l1 = "Отлично! Вот, держите золотые.";
 						link.l1.go = "agree";
 						iTotalTemp = 500;
 					}
-					link.l2 = "Then it's just the right time for me to go get the coins.";
+					link.l2 = "Тогда мне самое время отправиться за монетами.";
 					link.l2.go = "exit";
 				}
 				else
 				{
-					dialog.text = "Yes, my son. You're just as desperate as your brother... This is probably a family trait. I can't completely correct the situation, but nevertheless, I believe I can soften your dismal predicament. And later we will make more offering if you wish. I need six hundred gold doubloons and I will begin solving your dilemma right away.";
+					dialog.text = "Да, сын мой, ты такой же отчаянный, как и твой брат... Это, вероятно, ваша родовая черта. Полностью ситуацию я исправить не смогу, но улучшить твое бедственное положение - думаю, сумею. А потом еще раз пожертвования сделаем, если пожелаешь. Мне нужно шестьсот золотых дублонов - и сразу начну решать твои проблемы.";
 					if (GetCharacterItem(pchar, "gold_dublon") >= 600)
 					{
-						link.l1 = "Great! Here's the gold.";
+						link.l1 = "Отлично! Вот, держите золотые.";
 						link.l1.go = "agree";
 						iTotalTemp = 600;
 					}
-					link.l2 = "Then it's just the right time for me to go get the coins.";
+					link.l2 = "Тогда мне самое время отправиться за монетами.";
 					link.l2.go = "exit";
 				}
 			}
@@ -308,10 +308,10 @@ void ProcessDialogEvent()
 		
 		case "agree":
 			RemoveItems(pchar, "gold_dublon", iTotalTemp);
-			Log_Info("You've given "+iTotalTemp+" doubloons");
+			Log_Info("Вы отдали "+iTotalTemp+" дублонов");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Now wait at least two weeks. I think that in this time I'll be able to meet and have a word with the right people.";
-			link.l1 = "Thank you, father! I will be waiting...";
+			dialog.text = "Теперь ожидай не менее двух недель. Думаю, за это время я встречусь и переговорю с нужными людьми.";
+			link.l1 = "Спасибо, отче! Буду ждать...";
 			link.l1.go = "agree_1";
 		break;
 		
@@ -324,40 +324,40 @@ void ProcessDialogEvent()
 		
 		// Addon 2016-1 Jason пиратская линейка 1
 		case "FastStart":
-			dialog.text = "De Maure? And you are a brother of Michelle de Monper? Odd...";
-			link.l1 = "I understand your doubts, padre. My father is Henri de Monper.";
+			dialog.text = "Брат Мишеля де Монпе? Де Мор? Очень странно...";
+			link.l1 = "Я понимаю ваши сомнения, отче. У нас просто разные фамилии. Мой отец - Анри де Монпе.";
 			link.l1.go = "FastStart_1";			
 		break;
 		
 		case "FastStart_1":
-			dialog.text = "A-ah, I see. I knew Henri de Monper personally. Turn to the light, young man… Right! Same eyes, same noble features! I am pleased to see a son of Henri de Monper in my church. Hope you will help you brother out… He had a bad luck recently.";
-			link.l1 = "Yes, pater. I need a ship to help Michelle yet I have just recently arrived to the Caribbean and my purse is empty. My brother told me you could lend me some money...";
+			dialog.text = "А-а, это все проясняет. Я лично знал Анри де Монпе. Повернись к свету, юноша... Точно! Ты действительно похож на него... Такой же взгляд, такой же благородный профиль! Я рад видеть сына Анри де Монпе в нашей обители. Надеюсь, что ты сможешь помочь Мишелю, у него сейчас трудные дни. Так что я могу сделать для тебя?";
+			link.l1 = "Для того, чтобы помочь Мишелю, мне нужен корабль. Но я только недавно прибыл на Карибы, и почти без гроша в кармане. Мой брат сказал мне, что вы можете ссудить мне некоторую сумму денег...";
 			link.l1.go = "FastStart_2";	
 			npchar.quest.meet = true;
 		break;
 		
 		case "FastStart_2":
-			dialog.text = "Michelle told you so?";
-			link.l1 = "Padre, it may sound not trustworthy yet it`s true. The sooner I get a ship, the sooner I will get my brother out of jail.";
+			dialog.text = "Это Мишель так сказал?";
+			link.l1 = "Отче, я понимаю ваши сомнения, но это действительно так. Чем быстрее я стану владельцем и капитаном судна, тем быстрее смогу выполнить задачу, поставленную де Пуанси и освободить брата из темницы.";
 			link.l1.go = "FastStart_3";
 		break;
 		
 		case "FastStart_3":
-			dialog.text = "I see, my son. I can hear you speaking the truth. Well, for the sake of Michelle and your father I will help you out. I have some saving, take them. I assume 50 000 pesos and 100 doubloons will suffice.";
-			link.l1 = "Thank you, padre. What are the terms?";
+			dialog.text = "Я понял, сын мой. И слышу, что ты говоришь мне правду. Что же, ради Мишеля и ради твоего отца, я, конечно, помогу тебе. У меня есть личные сбережения, которые я завещал монастырю Сен-Пьера. Я готов передать их тебе на время, если это действительно поможет твоему брату. Пятьдесят тысяч песо и сто золотых дублонов - этого должно тебе хватить с лихвой.";
+			link.l1 = "Спасибо, отче. Сколько времени у меня на возврат займа?";
 			link.l1.go = "FastStart_4";
 		break;
 		
 		case "FastStart_4":
 			AddMoneyToCharacter(pchar, 50000);
 			TakeNItems(pchar, "gold_dublon", 100);
-			dialog.text = "No pressure. A half of a year will be enough.";
-			link.l1 = "Very good, holy father. Thank you again!";
+			dialog.text = "Я не буду тебя торопить. Полгода - срок, более, чем достаточный.";
+			link.l1 = "Хорошо, святой отец. Еще раз благодарю вас!";
 			link.l1.go = "FastStart_5";
 		break;
 		
 		case "FastStart_5":
-			dialog.text = "Go with my blessing, my son.";
+			dialog.text = "Ступай с моим благословением, сын мой.";
 			link.l1 = "...";
 			link.l1.go = "FastStart_6";
 		break;
@@ -372,8 +372,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "FastStart_7":
-			dialog.text = "Splendid, my son. Hope these money did you some good.";
-			link.l1 = "You bet they did! Thanks!";
+			dialog.text = "Прекрасно, сын мой. Надеюсь, эти деньги тебе пригодились.";
+			link.l1 = "Еще как, отче! Спасибо.";
 			link.l1.go = "FastStart_8";
 		break;
 		

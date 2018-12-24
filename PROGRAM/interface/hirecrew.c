@@ -221,8 +221,8 @@ void SetVariable()
 	// на одном корабле
 	SetFoodShipInfo(refCharacter, "FOOD_SHIP");
 	
-	SetFormatedText("INFO_SHIP", XI_ConvertString(refBaseShip.BaseName) + ", class " + refBaseShip.Class +", crew: min. "+GetMinCrewQuantity(refCharacter) + ", max. " + GetOptCrewQuantity(refCharacter));
-	SetFormatedText("MONEY_SHIP", "Maintenance of the ship: " + NewStr() + FindRussianMoneyString(GetSalaryForShip(refCharacter)));
+	SetFormatedText("INFO_SHIP", XI_ConvertString(refBaseShip.BaseName) + ", класс " + refBaseShip.Class +", команда: мин. "+GetMinCrewQuantity(refCharacter) + ", макс. " + GetOptCrewQuantity(refCharacter));
+	SetFormatedText("MONEY_SHIP", "Содержание корабля: " + NewStr() + FindRussianMoneyString(GetSalaryForShip(refCharacter)));
 	////  заполнялка города
 	SetCrewExpTable(refTown, "TABLE_CREW2", "BAR_Sailors2", "BAR_Cannoners2", "BAR_Soldiers2");
 	
@@ -234,7 +234,7 @@ void SetVariable()
 	
 	if(IsEquipCharacterByArtefact(pchar, "totem_07")) iPriceSailor = makeint(iPriceSailor/2);
 	
-	SetFormatedText("TAVERN_PRICE", "The cost of hiring a sailor " + FindRussianMoneyString(iPriceSailor));
+	SetFormatedText("TAVERN_PRICE", "Стоимость найма одного матроса " + FindRussianMoneyString(iPriceSailor));
 }
 
 void ProcessFrame()
@@ -426,7 +426,7 @@ void ChangeQTY_EDIT()
 		        GameInterface.qty_edit.str = GetCrewQuantity(refCharacter);
 		    }
 		    // проверка на колво доступное <--
-		    SetFormatedText("QTY_TypeOperation", "Dismiss");
+		    SetFormatedText("QTY_TypeOperation", "Уволить");
 		    SetFormatedText("QTY_Result", "");
 		}
 		else
@@ -459,8 +459,8 @@ void ChangeQTY_EDIT()
 						
 		    // проверка на колво доступное <--
 
-			SetFormatedText("QTY_TypeOperation", "Hire");
-			SetFormatedText("QTY_Result", "The cost of hiring " + makeint(iPriceSailor*stf(GameInterface.qty_edit.str)));
+			SetFormatedText("QTY_TypeOperation", "Нанять");
+			SetFormatedText("QTY_Result", "Стоимость найма " + makeint(iPriceSailor*stf(GameInterface.qty_edit.str)));
 		}
 		// если получили ноль
 		if (sti(GameInterface.qty_edit.str) == 0)

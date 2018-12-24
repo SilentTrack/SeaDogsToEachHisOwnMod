@@ -793,17 +793,17 @@ void InitColonies()
 	/// Исла-Мона
 	/////////////////////////////////////////////////////////////////////
 		n = n + 1;
-		Colonies[n].id = "Is";
+		Colonies[n].id = "IslaMona";
 		Colonies[n].visible = false;
 		Colonies[n].smuggling_nation = "none";
-		Colonies[n].nation = "none";
+		Colonies[n].nation = PIRATE;
 		Colonies[n].island = "IslaMona";
 		Colonies[n].islandLable = "IslaMona";
 		Colonies[n].num = "1";
 		colonies[n].map.x = 1698;
 		colonies[n].map.y = 1598;
 		colonies[n].colonylevel = 0;
-		colonies[n].StoreNum   = Pirates_STORE; // заглушка
+		colonies[n].StoreNum   = IslaMona_STORE; 
 		colonies[n].from_sea   = "";
 		colonies[n].HasNoFort = true;				
 		

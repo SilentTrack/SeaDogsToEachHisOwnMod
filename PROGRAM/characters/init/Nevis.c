@@ -110,8 +110,8 @@ int CreateNevisCharacters(int n)
 	ch.model	= "shipowner_8_1";
 	ch.greeting = "shipyarder_1";
 	ch.sex = "man";
-	ch.name 	= "Timothy";
-    ch.lastname = "Vitrye";
+	ch.name 	= "Тимоти";
+    ch.lastname = "Витрие";
 	ch.City = "Charles";
 	ch.location	= "Charles_Shipyard";
 	ch.location.group = "sit";
@@ -136,8 +136,8 @@ int CreateNevisCharacters(int n)
 	ch.id		= "Charles_usurer";
 	ch.model	= "banker_8_1";
 	ch.sex = "man";
-	ch.name 	= "Simon";
-	ch.lastname = "Morua";
+	ch.name 	= "Симон";
+	ch.lastname = "Моруа";
 	ch.City = "Charles";
 	ch.Merchant.type = "jeweller"; 
 	ch.location	= "Charles_Bank";
@@ -173,7 +173,7 @@ int CreateNevisCharacters(int n)
 
 	makeref(ch,Characters[n]);			//Хозяйка борделя
 	ch.id		= "Charles_Hostess";
-	ch.name		= "Merilin"
+	ch.name		= "Мерилин"
 	ch.lastname = "";
 	ch.model	= "maman_5";
 	ch.model.animation = "woman_B";
@@ -191,7 +191,7 @@ int CreateNevisCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "Charles_Smuggler";
 	ch.model    = "citiz_30";

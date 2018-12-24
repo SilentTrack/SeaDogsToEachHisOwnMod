@@ -4,35 +4,36 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What kind of questions?", "What do you want, " + GetAddress_Form(NPChar) + "?"), "You've already tried to ask me a question " + GetAddress_Form(NPChar) + "...", "You have been talking about some question for the third time today...",
-                          "Look, if you have nothing to tell me about the port's matters then don't bother me with your questions.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind.", "Sorry!"), "Sorry!", "Pardon!", "Sorry!", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно, " + GetAddress_Form(NPChar) + "?"), "Совсем недавно вы пытались задать мне вопрос " + GetAddress_Form(NPChar) + "...", "В течение этого дня вы уже третий раз говорите о каком-то вопросе...",
+                          "Послушайте, если вы не по делам порта, то не стоит меня вопросами донимать.", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал"+ GetSexPhrase("","а") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Да уж, действительно в третий раз...", "Извините, но портовые дела меня сейчас не интересуют.", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 
 			//работорговец
 			if (pchar.questTemp.Slavetrader == "EscapeSlaveVillemstad_P")
             {
-    			link.l1 = "I'd like to learn concerning the bark which was gone in the night after revolt of slaves.";
+    			link.l1 = "Я бы хотел"+ GetSexPhrase("","а") +" узнать по поводу барка, пропавшего в ночь после восстания рабов.";
     			link.l1.go = "EscapeSlave_Villemstad_P1";
             }
 			//Голландский гамбит, против всех
 			if (CheckAttribute(pchar, "questTemp.HWIC.Self") && pchar.questTemp.HWIC.Self == "SeekFleut")
             {
-    			link.l1 = "I want to find a captain named Toff Keller. He owns a flute 'Leiden'. I am informed that he often visits Willemstad so it won't difficult for you to help me I suppose.";
+    			link.l1 = "Я бы хотел найти капитана по имени Тофф Келлер. У него флейт под названием 'Лейден'. Я совершенно точно знаю, что он периодически бывает в Виллемстаде, так что, думаю, помочь мне для вас труда не составит.";
     			link.l1.go = "SeekTradeFleut";
             }
 		break;
 
 		//работорговец
 		case "EscapeSlave_Villemstad_P1":
-				dialog.text = "Hm... And why are you interested in that?";
-				link.l1 = "I am here by the order of Mathias Beck, the governor. I have all reasons to suspect runaway slaves for the ship's disappear. So I ask you to give me all possible help in my searches.";
+				dialog.text = "Хм... А с какой стати вдруг это вас заинтересовало?";
+				link.l1 = "Я действую по указаниям Матиаса Бека, губернатора. Есть основания полагать, что к исчезновению корабля причастны беглые рабы. Поэтому я прошу вас оказать мне все возможное содействие в розысках.";
 				link.l1.go = "EscapeSlave_Villemstad_P2";
 		break;
 		
 		case "EscapeSlave_Villemstad_P2":
-				dialog.text = "I see. But unfortunately I can't help you. Bark named '" + pchar.questTemp.Slavetrader.ShipName + "' disappeared at night, no one saw anything. The watch is gone and left no trail\nThe authorities have failed to find it and, to be honest, they didn't try much. The city was in panic, people expected the slaves' attack...";
-				link.l1 = "Well, there are really not much information... But thanks for that anyway. Farewell.";
+				dialog.text = "Понятно. Но, к сожалению, я мало чем могу вам помочь. Барк с именем " + pchar.questTemp.Slavetrader.ShipName + ", пропал ночью, никто ничего не видел и не слышал. Вахтенный исчез бесследно\nРозыск корабля по горячим сдедам ничего не дал, собственно, потому что никаких следов не было. Город был взбудоражен, все ожидали нападения рабов, готовились к обороне...";
+				link.l1 = "Да уж, действительно информации немного. Но спасибо и на этом. До свидания.";
 				link.l1.go = "exit";
 				AddQuestRecord("Slavetrader", "22_3");
 				AddQuestUserData("Slavetrader", "sShipName", pchar.questTemp.Slavetrader.ShipName);
@@ -40,8 +41,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;				
 		//Голландский гамбит
 		case "SeekTradeFleut":
-			dialog.text = "Toff Keller? Sure I know him! He regularly sails voyages to Cumana and San Jose which is on the Trinidad. He have sailed to Trinidad not long ago. I suppose that you can find him there.";
-			link.l1 = "Thanks!";
+			dialog.text = "Тофф Келлер? Ну конечно же я его знаю! Он совершает регулярные рейсы между Виллемстадом, Сан-Хосе на Тринидаде и Куманой. Недавно он отбыл на Тринидад. Думаю, что вы там его найдете.";
+			link.l1 = "Спасибо!";
 			link.l1.go = "SeekTradeFleut_1";
 		break;
 		

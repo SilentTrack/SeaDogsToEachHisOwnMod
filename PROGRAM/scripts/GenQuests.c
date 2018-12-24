@@ -47,7 +47,7 @@ void ContraDeliverQuest_ReloadConterToRoom(string sQuest) // генерим клона контр
 	ref rChar = GetCharacter(NPC_GenerateCharacter("ContraDeliverQuest_Contra_1", PChar.GenQuest.ContraDeliver.Model, "man", PChar.GenQuest.ContraDeliver.Model.Animation, sti(PChar.rank)*2, PIRATE, 0, true, "marginal"));
 	rChar.DontClearDead = true;
 	SetFantomParamFromRank(rChar, sti(PChar.rank)*2, true);
-	rChar.Name = "Smuggler";
+	rChar.Name = "Контрабандист";
 	rChar.LastName = "";
 	rChar.greeting = "Gr_Smuggler Agent";
 	LAi_SetActorType(rChar);
@@ -96,7 +96,7 @@ void ContraDeliverQuest_GeneratePatrolToRoom()
 	{
 		rChar = GetCharacter(NPC_GenerateCharacter("ContraDeliverQuest_Soldier_" + i, sModel[i], "man", "man", sti(PChar.rank)*2, iNation, 0, true, "soldier"));
 		SetFantomParamFromRank(rChar, sti(PChar.rank)*2, true);
-		rChar.Name = "Officer";
+		rChar.Name = "Офицер";
 		rChar.LastName = "";
 		rChar.Greeting = "soldier_arest";
 		LAi_SetActorType(rChar);
@@ -188,14 +188,14 @@ void ContraMeetManQuest_EnterToShore(string sQuest) // Вошли в бухту
 			{
 				rChar = GetCharacter(NPC_GenerateCharacter("ContraMeetManQuest_Officer_" + i, "off_"+sShortNation+"_1", "man", "man", sti(PChar.rank)*2, iNation, -1, true, "officer"));
 				SetFantomParamFromRank(rChar, sti(PChar.rank)*2, true);
-				rChar.Name = "Officer";
+				rChar.Name = "Офицер";
 				rChar.LastName = "";
 			}
 			else // Солдаты
 			{
 				rChar = GetCharacter(NPC_GenerateCharacter("ContraMeetManQuest_Soldier_" + i, "sold_"+sShortNation+"_1", "man", "man", sti(PChar.rank), iNation, -1, true, "soldier"));
 				SetFantomParamFromRank(rChar, sti(PChar.rank), true);
-				rChar.Name = "Soldier";
+				rChar.Name = "Солдат";
 				rChar.LastName = "";
 			}
 			
@@ -267,7 +267,7 @@ void ContraMeetManQuest_ReloadConterToRoom(string sQuest)
 	{
 		rChar = GetCharacter(NPC_GenerateCharacter("ContraMeetManQuest_Contrick_" + i, "citiz_"+(rand(9)+41), "man", "man", sti(PChar.rank)*2, PIRATE, 0, true, "hunter"));
 		SetFantomParamFromRank(rChar, sti(PChar.rank)*2, true);
-		rChar.Name = "Smuggler";
+		rChar.Name = "Контрабандист";
 		rChar.LastName = "";
 		rChar.Greeting = "Gr_Smuggler Agent";
 		LAi_SetActorType(rChar);
@@ -389,7 +389,7 @@ void CitizenFindItemMiniQuest_CheckItem()
 		DeleteGameModeCondition("CitizenFindItemMiniQuest_CheckItem");
 		PChar.GenQuest.CitizenFindItem.GiveItem = true; // Флаг - взяли предмет
 		string sCity = XI_ConvertString("Colony" + PChar.GenQuest.CitizenFindItem.City + "Gen");
-		Log_Info("I found the girl's ring from " + sCity + ".");
+		Log_Info("Вот я и нашел обручальное кольцо девушки из " + sCity + ". Нужно отнести его ей.");
 	}
 }
 
@@ -766,23 +766,23 @@ int ReasonToFast_GetVictimShipType()
 	{	
 	    case 0: 		 
 			iShipType = SHIP_BARQUE;     	
-			sTemp = "Barque";
+			sTemp = "Барк";
 		break; 
 	    case 1:  
 			iShipType = SHIP_FLEUT;
-			sTemp = "Fleut";
+			sTemp = "Флейт";
 		break; 
 	    case 2: 
 			iShipType = SHIP_GALEON_L;         
-			sTemp = "Galeon";
+			sTemp = "Галеон";
 		break; 
 	    case 3: 
 			iShipType = SHIP_PINNACE; 			
-			sTemp = "Pinnace";
+			sTemp = "Пинас";
 		break;  	
 		case 4: 
 			iShipType = SHIP_CARACCA; 			
-			sTemp = "Caracca";
+			sTemp = "Каракка";
 		break;  	
 	}
 	pchar.questTemp.ReasonToFast.ShipTypeName = sTemp;
@@ -924,27 +924,27 @@ void ReasonToFast_PreparePirateShip(string qName) // генерация пиратского корабл
 	{	
 	    case 0: 		 
 			iShipType = SHIP_SCHOONER_W;     	
-			sTemp1 = "schooner";
+			sTemp1 = "шхуна";
 		break; 		
 	    case 1:  
 			iShipType = SHIP_BRIG;     		
-			sTemp1 = "brig";
+			sTemp1 = "бриг";
 		break; 		
 	    case 2:  
 			iShipType = SHIP_BRIGANTINE;
-			sTemp1 = "brigantine";
+			sTemp1 = "бригантина";
 		break; 
 	    case 3: 
 			iShipType = SHIP_CORVETTE; 	
-			sTemp1 = "corvette";
+			sTemp1 = "корвет";
 		break; 
 	    case 4: 
 			iShipType = SHIP_FRIGATE;         
-			sTemp1 = "frigate";
+			sTemp1 = "фрегат";
 		break; 
 	    case 5: 
 			iShipType = SHIP_LINESHIP; 			
-			sTemp1 = "ship-of-the-line";
+			sTemp1 = "военный корабль";
 		break;  	
 	}
 		
@@ -1145,7 +1145,7 @@ void ReasonToFast_SetTreasureBoxFromMap(string qName)
 
     if (GetCharacterItem(pchar, "mapQuest") > 0 )
     {
-        Log_Info("The treasures must be somewhere nearby!");
+        Log_Info("Сокровища где-то рядом!");
         PlaySound("interface\notebook.wav");
 		Statistic_AddValue(pchar, "Treasure", 1);
 		Achievment_SetStat(pchar, 8, 1);
@@ -1509,7 +1509,7 @@ void PiratesOnUninhabited_InTreasureLoc(String _quest)
 	
 	makearef(boxItems, location.(boxId).items);
 	
-	Log_Info("The treasures must be somewhere nearby!");
+	Log_Info("Сокровища где-то рядом!");
 	Statistic_AddValue(Pchar, "Treasure", 1);
 	Achievment_SetStat(Pchar, 8, 1);
 	
@@ -1726,7 +1726,7 @@ void RemoveCrewEpidemy_GenQuest()
 	int i, cn, crew, hcrew;
 	int ShipType;
 	
-	Log_SetStringToLog("Captain! We have an epidemic here!");
+	Log_SetStringToLog("Капитан! У нас эпидемия!");
 	for(i = 0; i < COMPANION_MAX; i++)
 	{
 		cn = GetCompanionIndex(mainCh,i);
@@ -1740,7 +1740,7 @@ void RemoveCrewEpidemy_GenQuest()
 			{
 				crew = makeint(crew/2);
 			}
-			Log_SetStringToLog("" + crew + " men are already dead on " + chref.Ship.Name + "");
+			Log_SetStringToLog("На борту корабля " + chref.Ship.Name + " " + crew + " человек уже мертвы");
 			Statistic_AddValue(mainCh, "Sailors_dead", crew);
 			Achievment_SetStat(mainCh, 21, crew);
 			hcrew = GetCrewQuantity(chref);
@@ -2020,7 +2020,7 @@ void ShipSituation_MakeDetonate(string qName)
 	Event(SHIP_BRANDER_DETONATE,"l", sti(sld.index));
     PlaySound("Sea Battles\Vzriv_fort_001.wav");
 	Ship_SetTaskNone(SECONDARY_TASK, sti(sld.index));
-	Log_Info("" + XI_ConvertString(rBaseShip.BaseName) + " '" + sld.Ship.Name + "' " + GetShipSexWord(rBaseShip.BaseName, "exploded", "exploded") + " a powder-magazine.");
+	Log_Info("" + XI_ConvertString(rBaseShip.BaseName) + " '" + sld.Ship.Name + "' " + GetShipSexWord(rBaseShip.BaseName, "взорвал", "взорвала") + " крюйт камеру.");
 	bQuestDisableMapEnter = false;
 	RefreshBattleInterface();
 	if (sld.id == "Fleetwood_free") DoQuestFunctionDelay("FleetwoodJournalFind", 0.1);
@@ -2032,7 +2032,7 @@ void CheckQuestAboardCabinSituation(ref echar)
 	if(CheckAttribute(pchar,"GenQuest.ShipSituation.Explosion")) 
 	{	
 		echar.FaceId = 333;
-		echar.name = "the ship is empty";
+		echar.name = "Корабль пуст";
 		echar.lastname = "";
 		bQuestDisableMapEnter = true;
 
@@ -2120,7 +2120,7 @@ void EncGirl_GenQuest_GetCoins(string qName)
 	ref sld = CharacterFromID("CangGirl");
 	ChangeCharacterAddress(sld, "None", ""); 
 	sld.lifeDay = 0; 
-	//AddSimpleRumour("Вы слышали, что служанку " + pchar.GenQuest.EncGirl.name + " хозяйка выгнала только за то, что та не смогла собрать в джунглях её рассыпавшиеся жемчужины? Совсем народ стыд потерял!.. а совести и не имел никогда.", sti(sld.nation), 5, 1);
+	AddSimpleRumour("Вы слышали, что служанку " + pchar.GenQuest.EncGirl.name + " хозяйка выгнала только за то, что та не смогла собрать в джунглях её рассыпавшиеся жемчужины? Совсем народ стыд потерял!.. а совести и не имел никогда.", sti(sld.nation), 5, 1);
 	ChangeCharacterComplexReputation(pchar,"nobility", -10);
 	AddQuestRecord("JungleGirl", "3");
 	AddQuestUserData("JungleGirl", "sSex", GetSexPhrase("","а"));
@@ -2556,9 +2556,9 @@ void EncGirl_GenQuest_GetBag(string qName)
 {
 	ref sld = CharacterFromID("CangGirl");
 	sld.lifeDay = 0; 
-	//AddSimpleRumour(RandPhraseSimple("Вы слышали, какая-то шлюха пыталась без документов проникнуть на корабль? Её поймали и отвели назад в бордель. Говорят она задолжала хозяйке кругленькую сумму.",  
-	//			"Слыхали? у нас в порту поймали какую-то шлюху без документов. Говорят, из борделя сбежала, предварительно почистив сундуки тамошней хозяйки. Давно бы следовало прикрыть этот разносчик заразы и воровства. Ведь наши дети всё это видят, чему они могут научиться?"), 
-	//			sti(pchar.GenQuest.EncGirl.nation), 3, 1);
+	AddSimpleRumour(RandPhraseSimple("Вы слышали, какая-то шлюха пыталась без документов проникнуть на корабль? Её поймали и отвели назад в бордель. Говорят она задолжала хозяйке кругленькую сумму.",  
+				"Слыхали? у нас в порту поймали какую-то шлюху без документов. Говорят, из борделя сбежала, предварительно почистив сундуки тамошней хозяйки. Давно бы следовало прикрыть этот разносчик заразы и воровства. Ведь наши дети всё это видят, чему они могут научиться?"), 
+				sti(pchar.GenQuest.EncGirl.nation), 3, 1);
 	ChangeCharacterComplexReputation(pchar,"nobility", -8);
 	pchar.quest.EncGirl_GenerateBag.over = "yes";
 	pchar.quest.EncGirl_SpeakHorse.over = "yes";	
@@ -3007,18 +3007,18 @@ void CaptainComission_GenerateManager()
 	{
 		case 0:
 			sModel = "trader_2";
-			sName = "George";
-			sLastName = "Bush";		
+			sName = "Джордж";
+			sLastName = "Буш";		
 		break;
 		case 1:
 			sModel = "citiz_41";
-			sName = "Rabak";
-			sLastName = "Maboa";				
+			sName = "Рабак";
+			sLastName = "Мабоа";				
 		break;
 		case 2:
 			sModel = "trader_3";
-			sName = "Abraham";
-			sLastName = "Lincoln";				
+			sName = "Авраам";
+			sLastName = "Линкольн";				
 		break;
 	}
 	
@@ -3326,13 +3326,13 @@ void GetSlaveSpeciality()
 	switch (Spec)
     {
         case 0 :
-             Speciality = "in shipbuilding";
+             Speciality = "в кораблестроении";
         break;
         case 1 :
-            Speciality = "in artillery";
+            Speciality = "в артиллерии";
         break;
         case 2 :
-            Speciality = "in navigation";
+            Speciality = "в навигации";
         break;
     }
 	pchar.GenQuest.CaptainComission.SlaveSpeciality = Speciality;	
@@ -3769,8 +3769,8 @@ void CaptainComission_toShore() // вышвыриваем в бухту без штанов
 	RemoveAllPassengersAndCompanions();
 	CleanAllCabinBoxes();
 	
-	//AddSimpleRumour(RandPhraseSimple("Капитан, как вам путешествие на пиратском корабле? Нормально? Вас там не обижали? Ха-ха-ха!!", 
-	//			"О-о-о, капитан, я слышал вам здорово досталось недавно.... Вы, батенька, теперь голодранец! Ха-ха-ха!!"), sti(pchar.GenQuest.CaptainComission.Nation), 5, 1);
+	AddSimpleRumour(RandPhraseSimple("Капитан, как вам путешествие на пиратском корабле? Нормально? Вас там не обижали? Ха-ха-ха!!", 
+				"О-о-о, капитан, я слышал вам здорово досталось недавно.... Вы, батенька, теперь голодранец! Ха-ха-ха!!"), sti(pchar.GenQuest.CaptainComission.Nation), 5, 1);
 	pchar.quest.Munity = "Deads";
 	pchar.location.from_sea = pchar.GenQuest.CaptainComission.City + "_town";
 	
@@ -4231,11 +4231,11 @@ void CaptainComission_Ship_Sink(string qName)
 void CaptainComission_GenerateRumourCaptainPrison()
 {
 	string sShipType = GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(pchar.GenQuest.CaptainComission.ShipType),"Name") + "Acc"));
-	//AddSimpleRumourCity(LinkRandPhrase("Вы слышали, " + GetAddress_Form(pchar) + ", недавно арестовали капитана патрульного " + sShipType + " " + pchar.GenQuest.CaptainComission.Name + ". Оказывается, он подрабатывал контрабандой. Подумать только, до чего довёл колонию нынешний губернатор! Те, кто должен ловить пиратов, сами же нас и обворовывают!.. Поговаривают, что через неделю он будет казнён. Вот и поделом ему.",
-	//	"Поговаривают, что капитан патрульного " + sShipType + " " + pchar.GenQuest.CaptainComission.Name + " оказался организатором шайки контрабандистов. Его поймали и скоро повесят. Похоже, " + GetAddress_Form(pchar) + ", наш губернатор всерьёз взялся за наведение порядка в колонии.",
-	//	RandPhraseSimple("Вы представляете! Начальник форта разоблачил тайную организацию контрабандистов, которой удалось завербовать в свои ряды даже офицеров флота. Одного из них, " + pchar.GenQuest.CaptainComission.Name + ", уже поймали и вскоре повесят. О, " + GetAddress_Form(pchar) + ", я всегда говорил, что наш губернатор рано или поздно наведёт порядок в поселении.",
-	//	"Вы уже знаете, что капитана патрульного " + sShipType + " " + pchar.GenQuest.CaptainComission.Name + " арестовали? Властям стало известно, что он укрыл крупную партию товара, который конфисковывал у проходящих в акватории судов. Похоже, виселицы ему не избежать. А ведь, скажу я вам, он был одним из лучших в патрульной эскадре. Кто бы мог подумать...")),
-	//	pchar.GenQuest.CaptainComission.City, 5, 3, "CaptainComission_rumourCapPrison");
+	AddSimpleRumourCity(LinkRandPhrase("Вы слышали, " + GetAddress_Form(pchar) + ", недавно арестовали капитана патрульного " + sShipType + " " + pchar.GenQuest.CaptainComission.Name + ". Оказывается, он подрабатывал контрабандой. Подумать только, до чего довёл колонию нынешний губернатор! Те, кто должен ловить пиратов, сами же нас и обворовывают!.. Поговаривают, что через неделю он будет казнён. Вот и поделом ему.",
+		"Поговаривают, что капитан патрульного " + sShipType + " " + pchar.GenQuest.CaptainComission.Name + " оказался организатором шайки контрабандистов. Его поймали и скоро повесят. Похоже, " + GetAddress_Form(pchar) + ", наш губернатор всерьёз взялся за наведение порядка в колонии.",
+		RandPhraseSimple("Вы представляете! Начальник форта разоблачил тайную организацию контрабандистов, которой удалось завербовать в свои ряды даже офицеров флота. Одного из них, " + pchar.GenQuest.CaptainComission.Name + ", уже поймали и вскоре повесят. О, " + GetAddress_Form(pchar) + ", я всегда говорил, что наш губернатор рано или поздно наведёт порядок в поселении.",
+		"Вы уже знаете, что капитана патрульного " + sShipType + " " + pchar.GenQuest.CaptainComission.Name + " арестовали? Властям стало известно, что он укрыл крупную партию товара, который конфисковывал у проходящих в акватории судов. Похоже, виселицы ему не избежать. А ведь, скажу я вам, он был одним из лучших в патрульной эскадре. Кто бы мог подумать...")),
+		pchar.GenQuest.CaptainComission.City, 5, 3, "CaptainComission_rumourCapPrison");
 }
 
 void CaptainComission_RumourCaptainPrison()
@@ -4469,11 +4469,11 @@ bool CaptainComission_CheckAllPassengersHired()
 void CaptainComission_GenerateRumourCaptainDeath()
 {
 	string sShipType = GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(pchar.GenQuest.CaptainComission.ShipType),"Name") + "Acc"));
-	//AddSimpleRumourCity(LinkRandPhrase("Вы слышали, " + GetAddress_Form(pchar) + ", недавно повесили бывшего капитана патрульного " + sShipType +" " + pchar.GenQuest.CaptainComission.Name + ". Говорят, он ограбил какого-то купца. Вот ведь, как бывает, никому верить нельзя... И всю команду с ним за одно казнили. Сговор значит...",
-	//	"Вы уже знаете, " + GetAddress_Form(pchar) + ", что бывший капитан патрульного " + sShipType + " " + pchar.GenQuest.CaptainComission.Name + " казнён? Поговаривают, что он пустил ко дну какое-то важное судно, а товар спрятал. И ведь никто из команды не признался где тайник. Так их всех и повесили...",
-	//	RandPhraseSimple("Вы представляете, " + GetAddress_Form(pchar) + "? Один из капитанов патрульной эскадры занимался морским разбоем. Так его недавно казнили вместе со всей командой. Говорят, что они грабили и пускали ко дну торговые суда.",
-	//	"Недавно казнили бывшего капитана " + pchar.GenQuest.CaptainComission.Name + " вместе с командой его патрульного " + sShipType + ". Поговаривают, что они укрыли крупную партию товара, который конфисковывали у проходящих в акватории судов. А ведь это был один из лучших патрульных экипажей. Я думаю, " + GetAddress_Form(pchar) +", что их намеренно оклеветали. Ведь товар так и не нашли..")), 
-	//pchar.GenQuest.CaptainComission.City, 5, 3, "CaptainComission_rumourCapDeath");
+	AddSimpleRumourCity(LinkRandPhrase("Вы слышали, " + GetAddress_Form(pchar) + ", недавно повесили бывшего капитана патрульного " + sShipType +" " + pchar.GenQuest.CaptainComission.Name + ". Говорят, он ограбил какого-то купца. Вот ведь, как бывает, никому верить нельзя... И всю команду с ним за одно казнили. Сговор значит...",
+		"Вы уже знаете, " + GetAddress_Form(pchar) + ", что бывший капитан патрульного " + sShipType + " " + pchar.GenQuest.CaptainComission.Name + " казнён? Поговаривают, что он пустил ко дну какое-то важное судно, а товар спрятал. И ведь никто из команды не признался где тайник. Так их всех и повесили...",
+		RandPhraseSimple("Вы представляете, " + GetAddress_Form(pchar) + "? Один из капитанов патрульной эскадры занимался морским разбоем. Так его недавно казнили вместе со всей командой. Говорят, что они грабили и пускали ко дну торговые суда.",
+		"Недавно казнили бывшего капитана " + pchar.GenQuest.CaptainComission.Name + " вместе с командой его патрульного " + sShipType + ". Поговаривают, что они укрыли крупную партию товара, который конфисковывали у проходящих в акватории судов. А ведь это был один из лучших патрульных экипажей. Я думаю, " + GetAddress_Form(pchar) +", что их намеренно оклеветали. Ведь товар так и не нашли..")), 
+	pchar.GenQuest.CaptainComission.City, 5, 3, "CaptainComission_rumourCapDeath");
 }
 
 void CaptainComission_RumourCaptainDeath()
@@ -4983,14 +4983,14 @@ string ShipWreck_GetStringQty(int Qty)
 	string strQty;
 	switch(Qty)
 	{
-		case 3:    	strQty = "the three"; 	break;
-		case 4:    	strQty = "the four"; 	break;
-		case 5: 	strQty = "the five"; 	break;
-		case 6: 	strQty = "the six";		break;
-		case 7: 	strQty = "the seven";	break;
-		case 8: 	strQty = "the eight";	break;
-		case 9: 	strQty = "the nine";	break;
-		case 10:	strQty = "the ten";		break;		
+		case 3:    	strQty = "трем"; 		break;
+		case 4:    	strQty = "четверым"; 	break;
+		case 5: 	strQty = "пятерым"; 	break;
+		case 6: 	strQty = "шестерым";	break;
+		case 7: 	strQty = "семерым";		break;
+		case 8: 	strQty = "восьмерым";	break;
+		case 9: 	strQty = "девятерым";	break;
+		case 10:	strQty = "десятерым";	break;		
 	}
 	return strQty;
 }
@@ -5060,7 +5060,7 @@ void ShipWreck_DeliveToCity(string qName)
 	if(pchar.location == pchar.location.from_sea && reload_cur_island_index > -1)
 	{
 		chrDisableReloadToLocation = true;
-		Log_Info("have delivered convicts to ");
+		Log_Info("доставили каторжан в поселение");
 		for(int i = 0; i < sti(pchar.GenQuest.ShipWreck.Qty); i++)
 		{
 			sld = CharacterFromID("ShipWreck_" + i);
@@ -5610,7 +5610,7 @@ void Hold_GenQuest_SetTreasureBoxFromMap(string qName)
     aref   item, arToBox, arFromBox;
 	if (GetCharacterItem(pchar, "mapQuest") > 0 )
     {
-        Log_Info("The treasures must be somewhere nearby!");
+        Log_Info("Сокровища где-то рядом!");
         PlaySound("interface\notebook.wav");
 		Statistic_AddValue(Pchar, "Treasure", 1);
 		Achievment_SetStat(Pchar, 8, 1);

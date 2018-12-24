@@ -4,47 +4,47 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What do you want? Ask away.", "I am listening to you, what's the question?"), "It is the second time you are trying to ask...", "It is the third time you are again trying to ask...",
-                          "When is it going to end?! I am a busy man, working on the colony's matters and you are still trying to ask something!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Not now. There is no time."), "True... But later, not now...",
-                      "I'll ask, I'll ask... a bit later though...", "I am sorry, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Что вы хотели? Спрашивайте.", "Я слушаю вас, что за вопрос?"), "Второй раз за день вы пытаетесь задать ворпос...", "В третий раз за день вы опять пытаетесь задать вопрос...",
+                          "Да когда же это кончится?! У меня дел полно по управлению делами города, а ты все вопросы пытаешься задать!", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал"+ GetSexPhrase("","а") +"...", "Не сейчас, не место и не время..."), "Да, верно... Но не сейчас, позже...",
+                      "Задам, задам... Только позже...", "Извините, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			// Jason НСО
 			if (CheckAttribute(pchar, "questTemp.Patria") && pchar.questTemp.Patria == "epizode_2" && !CheckAttribute(npchar, "quest.patria") && !CheckAttribute(pchar, "questTemp.Patria.Visiter_Late"))
 			{
-				link.l1 = TimeGreeting()+" monseigneur. I am here as ordered by the Governor General Chevalier da Poincy. My task is to deliver a baron by the name of Noel Forget to Tortuga, who arrived from the parent state with a task to inspect the colonies, with the aim to establish French West-Indies trading Company. Let me itroduce him to you... He will explain all the details himself.";
+				link.l1 = TimeGreeting()+", ваша светлость. Я прибыл по приказанию генерал-губернатора шевалье де Пуанси. В мою задачу входит доставить на Эспаньолу барона Ноэля Форже, прибывшего из метрополии с целью инспекции французских колоний для последующей огранизации Французской Вест-Индской торговой Компании. Позвольте представить вам барона... Все дальнейшее изложит вам непосредственно он сам.";
                 link.l1.go = "patria_portpax";
 			}
 		break;
 
 		case "Cupture_after":
-            dialog.text = RandPhraseSimple("You have already taken everything. What else do you want?", "Haven't you taken already everything?");
-            link.l1 = RandPhraseSimple("Just a final search for the loot...", "Just checking, I may have forgotten to take...");
+            dialog.text = RandPhraseSimple("Вы уже все забрали. Что вам еще нужно?", "Неужели осталось еще что-то, что вы не прихватили?");
+            link.l1 = RandPhraseSimple("Осматриваюсь напоследок...", "Проверяю, может забыл"+ GetSexPhrase("","а") +" что забрать...");
             link.l1.go = "exit";
             NextDiag.TempNode = "Cupture_after";
 		break;
 		
 		// Jason НСО
 		case "patria_portpax":
-			dialog.text = "I am very glad to meet with you, Captain Charles de Maure, and with the baron. I will do everything possible to ensure that the stay of Monsieur Forget in our colony was as comfortable as possible. And taking advantage of the fact that such high-ranking people paid me a visit, I will petition you for a cause.";
-			link.l1 = "Most interesting! Get to it, captain.";
+			dialog.text = "Очень рад встрече с вами, капитан Шарль де Мор, и с бароном. Я сделаю все возможное для того, чтобы пребывание месье Форже в нашей колонии было максимально комфортным. И пользуясь тем, что столь высокопоставленные особы нанесли мне визит, я буду ходатайствовать вам об одном деле.";
+			link.l1 = "Очень интересно! Излагайте, ваша светлость.";
 			link.l1.go = "patria_portpax_1";
 		break;
 		
 		case "patria_portpax_1":
-			dialog.text = "In recent months, no representative of the Governor General has visited our colony, as if they completely forgot about us at St. Kitts! And in the meantime, the Spaniards, who are eager to make the whole of Hispaniola purely Spanish and to whom the French settlers and buccaneers in the west of the island are a minor annoyance, are preparing an attack! My patrol officers, our trading captains and even ordinary fishermen have reported that a powerful Spanish squadron is going to Santiago, and that it is preparing to attack Port-au-Prince!";
-			link.l1 = "Is the evidence clear enough, your Majesty?";
+			dialog.text = "В последние месяцы нашу колонию ни разу не посетил ни один представитель генерал-губернатора, словно про нас на Сент-Кристофере совсем забыли! А тем временем, испанцы, которые жаждут сделать всю Эспаньолу чисто испанской и которым французские поселенцы и буканьеры на западе острова как кость в горле, готовят нападение! Мои патрульные офицеры, наши торговые капитаны и даже простые рыбаки сообщали, что в Сантьяго собирается мощная испанская эскадра, и что она готовится атаковать Порт-о-Пренс!";
+			link.l1 = "Сведения достоверны, ваша светлость?";
 			link.l1.go = "patria_portpax_2";
 		break;
 		
 		case "patria_portpax_2":
-			dialog.text = "I do not have accurate intel but such an abundance of information from completely random people can't be mere rumors. Our colony is very important for France, we have the best plantations here, which the baron can personally see. To lose this colony or even expose it to the risk of being looted is unacceptable!";
-			link.l1 = "I will take your evidence into account and inform Charles de Poincy. I'm sure that he will take immediate measures.";
+			dialog.text = "Я не располагаю точными разведданными, но такое обилие информации от совершенно разных людей не может быть просто досужими слухами. Наша колония очень важна для Франции, у нас здесь лучшие плантации, в чем барон сможет лично убедиться. Потерять эту колонию или даже подвергнуть ее риску разграбления - недопустимо!";
+			link.l1 = "Я приму к сведению ваши слова и обязательно сообщу шевалье де Пуанси. Уверен, он примет надлежащие меры.";
 			link.l1.go = "patria_portpax_3";
 		break;
 		
 		case "patria_portpax_3":
-			dialog.text = "Thank you, captain...";
+			dialog.text = "Благодарю, капитан...";
 			link.l1 = "";
 			link.l1.go = "patria_portpax_4";
 		break;

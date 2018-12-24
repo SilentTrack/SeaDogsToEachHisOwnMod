@@ -13,8 +13,8 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "A bug. Tell the devs.";
-			link.l1 = "I will!";
+			dialog.text = "Явный баг в коде. Сообщите об этом Jason'у, как и при каких обстоятельствах его получили.";
+			link.l1 = "Обязательно сообщу!";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
@@ -29,26 +29,26 @@ void ProcessDialogEvent()
 		//сопроводить торговца
 		case "Baltazar":
 			pchar.quest.Create_BaltazarOver.over = "yes";//снять прерывание
-			dialog.text = "What a stroke of luck! Captain, I just happen to need an escort to Philipsburg very urgently...";
-			link.l1 = "Are you Balthazar Ridderbock?";
+			dialog.text = "Какая удача! Капитан, мне как раз нужен эскорт до Филипсбурга, очень срочно...";
+			link.l1 = "Вы - Бальтазар Риддербок?";
 			link.l1.go = "Baltazar_1";			
 		break;
 		
 		case "Baltazar_1":
-			dialog.text = "What the hell, I am already more famous than the viceroy! Who are you? What do you want?";
-			link.l1 = "I am captain " + GetFullName(pchar) + ". I was sent to you by Lucas Rodenburg. I am authorized to take you and your ship under my protection.";
+			dialog.text = "А, черт, я становлюсь известнее вице-короля! Кто вы? Что вам угодно?";
+			link.l1 = "Я - капитан " + GetFullName(pchar) + ". Меня прислал Лукас Роденбург. Я должен взять вас и ваше судно под охрану.";
 			link.l1.go = "Baltazar_2";			
 		break;
 		
 		case "Baltazar_2":
-			dialog.text = "Oh, mynheer Rodenburg must have heard my pleas for help! You see, there is one privateer...";
-			link.l1 = "Let's skip the details of your story, I already know them.";
+			dialog.text = "О, значит минхер Роденбург все-таки прислушался к моим мольбам о помощи! А то, понимаете, нашелся какой-то капер...";
+			link.l1 = "Опустим подробности этой истории - они мне известны.";
 			link.l1.go = "Baltazar_3";			
 		break;
 		
 		case "Baltazar_3":
-			dialog.text = "Of course! I've lost too much time already... I should arrive in Philipsburg no later than in two weeks.";
-			link.l1 = "Then go to your ship and prepare her for sailing. We are setting sail right away!";
+			dialog.text = "Конечно! Я и так потерял слишком много времени... Мне необходимо быть в Филипсбурге не позднее, чем через две недели.";
+			link.l1 = "Тогда отправляйтесь на корабль и готовьте судно к отплытию. Мы отчаливаем немедленно!";
 			link.l1.go = "Baltazar_4";			
 		break;
 		
@@ -82,14 +82,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Baltazar_5":
-			dialog.text = "Thank you for your help, captain! And your protection could not have come at a better time, and therefore please accept my thanks and these 5 000 pesos.";
-			link.l1 = "Hmm... This is not a very generous award for a saved life...";
+			dialog.text = "Спасибо за ваш труд, капитан! Как я и ожидал - проклятый " + GetName( NAMETYPE_ORIG, pchar.questTemp.HWIC.Holl.PirateName, NAME_NOM) + " напал на меня. И ваша защита оказалась как нельзя кстати, а потому примите мою благодарность и эти 5 000 песо.";
+			link.l1 = "Хм, не слишком щедрая награда за жизнь...";
 			link.l1.go = "Baltazar_6";			
 		break;
 		
 		case "Baltazar_6":
-			dialog.text = "Besides, I will send a letter to mynheer Rodenburg when I have a chance - with the highest possible appraisal of your actions. I have to go now.";
-			link.l1 = "Well, farewell then, Balthazar.";
+			dialog.text = "Кроме этого, я обязательно при случае отправлю минхеру Роденбургу письмо с наивысшей оценкой ваших действий. А теперь - мне пора.";
+			link.l1 = "Ну что же, прощайте, Бальтазар.";
 			link.l1.go = "Baltazar_7";			
 		break;
 		
@@ -109,15 +109,15 @@ void ProcessDialogEvent()
 		
 		//командировка в Сантьяго
 		case "Santiago_Trip":
-			dialog.text = "Senor! Wait... it looks like you've dropped something...";
-			link.l1 = "What? Ah?!";
+			dialog.text = "Сеньор! Подождите... вы, кажется, уронили...";
+			link.l1 = "Что? А?!...";
 			link.l1.go = "Santiago_Trip_1";
 		break;
 		
 		case "Santiago_Trip_1":
 			DialogExit();
 			PlaySound("People Fight\Death_NPC_08.wav");
-			SetLaunchFrameFormParam("You were knocked senseless from behind", "", 0, 5);
+			SetLaunchFrameFormParam("Вас оглушили ударом сзади", "", 0, 5);
 			LaunchFrameForm();
 			WaitDate("", 0, 0, 0, 15, 10); //крутим время
 			RecalculateJumpTable();
@@ -125,57 +125,57 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Santiago_Trip_2":
-			dialog.text = "Sorry, my friend - I had to hit you slightly so that you didn't cause any trouble. I realize your head must be aching, but the pain will only be passing. If there's time for that...";
-			link.l1 = "Who are you, damn it, and what's going on here?";
+			dialog.text = "Прости, друг мой – пришлось тебя слегка приложить, чтоб не трепыхался. Понимаю – голова болит. Ничего – пройдет. Если успеет...";
+			link.l1 = "Кто ты, раздери тебя черт, и что тут творится?!";
 			link.l1.go = "Santiago_Trip_3";
 		break;
 		
 		case "Santiago_Trip_3":
-			dialog.text = "Easy, easy, my friend - otherwise I will have to calm you down once again. We don't want these martinets breaking in, clanking their rusty swords, do we? We need to talk in quiet.";
-			link.l1 = "Give me back my sword, fucker, and we will have a nice talk, I swear!";
+			dialog.text = "Потише, потише, друг – иначе придется тебя опять угомонить. Мы ведь не хотим, чтобы сюда ломились эти скучные солдафоны, бренча своими ржавыми железяками, так? Надо поговорить, спокойно и без шума.";
+			link.l1 = "Верните мне мою шпагу, сударь, и мы с вами замечательно побеседуем, клянусь бурей!";
 			link.l1.go = "Santiago_Trip_4";
 		break;
 		
 		case "Santiago_Trip_4":
-			dialog.text = "You are a swift little man, aren't you? No need to use steel for now. Tell me what I want to know and, perhaps, you shall leave this place in one piece. Am I clear? So let's chat a little\nKeeping silence? Good, we have a deal then. What did you carry from Rodenburg to the banker?";
-			link.l1 = "A letter.";
+			dialog.text = "Шустрый какой... Нет уж, обойдемся без стали на этот раз. Если расскажешь мне то, что я хочу знать – возможно, уйдешь отсюда на своих двоих. А будешь мутить воду, и шуметь – получишь вот этот милый кинжал в брюхо. Я понятно объясняю? Так что давай просто, как ты сказал - побеседуем\nМолчишь? Хорошо... значит, мы договорились. Что ты вез от Роденбурга к банкиру?";
+			link.l1 = "Письмо.";
 			link.l1.go = "Santiago_Trip_5";
 		break;
 		
 		case "Santiago_Trip_5":
-			dialog.text = "Clever. I know that it was not a bouquet of daisies. What was in that letter, boy?";
-			link.l1 = "How do I know? I am not in the habit of reading correspondence entrusted to me. Maybe, it was a love message. You know what they say about people of power. There are all fa...";
+			dialog.text = "Умно... я знаю, что не букет хризантем. Что было в письме, парень?";
+			link.l1 = "Откуда мне знать? Может любовное послание. Я не имею привычки читать доверенную мне корреспонденцию.";
 			link.l1.go = "Santiago_Trip_6";
 		break;
 		
 		case "Santiago_Trip_6":
-			dialog.text = "...An honest captain is quite a rare thing to see in these miserable times. Well, this is your funeral. What did this goddamned banker say, when he received the package? What kind of business does he have with the Dutch?";
-			link.l1 = "They're dealing in smuggled perfume from France... or Bavarian muck, methinks.";
+			dialog.text = "Честный капитан – редкость в наше паршивое время. Тем хуже для тебя. А что сказал этот чертов банкир, когда получил пакет? Что у него за дела с голландцами?";
+			link.l1 = "Торгуют контрабандным парфюмом из Франции, полагаю... или баварским коровьим навозом.";
 			link.l1.go = "Santiago_Trip_7";
-			link.l2 = "The question was about a compensation for something. That is all I know.";
+			link.l2 = "Речь шла о некой компенсации за что-то. Это все, что мне известно.";
 			link.l2.go = "Santiago_Trip_8";
 		break;
 		
 		case "Santiago_Trip_7":
-			dialog.text = "You are a brave fellow... And with a sense of humour, too. It would be a pity to kill you. Gaston would have liked you. Although... stay here for the time being. I should go and check something, and Miguel will be looking after you while I am away.";
-			link.l1 = "I swear, 'my friend' - you will regret this! ";
+			dialog.text = "А ты смелый парень... еще и с чувством юмора. Жаль будет тебя убивать. Гастону бы ты понравился. Впрочем, посиди пока тут. Мне нужно кое-что проверить, а Мигель приглядит, чтобы ты не шумел, пока меня не будет.";
+			link.l1 = "Клянусь, 'друг мой', вы пожалеете!";
 			link.l1.go = "Santiago_Trip_9";
 		break;
 		
 		case "Santiago_Trip_8":
-			dialog.text = "There goes the arrogance... When the things are looking grim, our brave captain shows reason. You could have done it much sooner and save us time and trouble. Well, I have to go and check something, but then I will come back and we'll talk, if there is still a need to talk, that is. Stay here for the time being. Miguel will be looking after you while I am away.";
-			link.l1 = "I swear, 'my friend' - you will regret this! ";
+			dialog.text = "Вот вам и весь гонор... Запахло жареным, и наш бравый капитан сразу проявил благоразумие. Что ж так тянул-то? Мне придется кое-что проверить, а потом – я вернусь, и мы договорим, если будет о чем. Посиди пока тут, сейчас придет Мигель и приглядит, чтобы ты не шумел, пока меня не будет.";
+			link.l1 = "Клянусь, 'друг мой', вы пожалеете!";
 			link.l1.go = "Santiago_Trip_11";
 		break;
 		
 		case "Santiago_Trip_9":
-			dialog.text = "But of course. Keep quiet, 'hero' - perhaps, all will yet be well.";
+			dialog.text = "Ну-ну. Сиди тихо, герой, и может быть, все будет хорошо.";
 			link.l1 = "...";
 			link.l1.go = "Santiago_Trip_11";
 		break;
 		
 		case "Santiago_Trip_10":
-			dialog.text = "Stay here and hope that your principal flexibility will justify itself.";
+			dialog.text = "Сиди уж, и надейся, что твоя принципиальная гибкость себя оправдает.";
 			link.l1 = "...";
 			link.l1.go = "Santiago_Trip_11";
 		break;
@@ -190,8 +190,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Santiago_Trip_12":
-			dialog.text = "What the hell?!";
-			link.l1 = "Hold on to your hat, you rascal!";
+			dialog.text = "Что за черт?!";
+			link.l1 = "Ну, держись, каналья!";
 			link.l1.go = "Santiago_Trip_13";
 		break;
 		
@@ -207,8 +207,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Santiago_Trip_14":
-			dialog.text = "What a mess! I've been wondering what this noise was all about. My congratulations - you are a smart fellow!";
-			link.l1 = "Smarter than you think... Let's see now what you can do against an armed adversary!";
+			dialog.text = "Вот так дела... а я думаю, что за шум. Мои поздравления – ты ловкий малый!";
+			link.l1 = "Ловчее, чем ты думаешь... Ну, а теперь посмотрим, что ты стоишь против вооруженного противника!";
 			link.l1.go = "Santiago_Trip_15";
 		break;
 		
@@ -225,8 +225,8 @@ void ProcessDialogEvent()
 		
 		//офицер-посланник по 5 заданию
 		case "HollQuest_Officer":
-			dialog.text = "Mynheer Lucas Rodenburg wants to see you right away. Come see him at once.";
-			link.l1 = "On my way.";
+			dialog.text = "Вас срочно вызывает минхер Лукас Роденбург. Прибудьте к нему немедленно.";
+			link.l1 = "Хорошо. Я уже иду к нему.";
 			link.l1.go = "HollQuest_Officer_exit";			
 		break;
 		
@@ -241,19 +241,19 @@ void ProcessDialogEvent()
 //---------------------------------------------против всех----------------------------------------------
 		//убрать испанского идальго
 		case "Fernando":
-			dialog.text = "What do you want from me?";
-			link.l1 = "Your head!";
+			dialog.text = "Что вам от меня нужно?";
+			link.l1 = "Твоя голова, каналья!";
 			link.l1.go = "Fernando_fight";
-			link.l2 = "Nothing, nevermind.";
+			link.l2 = "Да нет, ничего.";
 			link.l2.go = "exit";	
 			NextDiag.TempNode = "Fernando_repeat";
 		break;
 		
 		case "Fernando_repeat":
-			dialog.text = "It's you again? What do you want from me?! Explain yourself!";
-			link.l1 = "Your head!";
+			dialog.text = "Это опять вы? Что вы хотите, объясните, наконец!";
+			link.l1 = "Твоя голова, каналья!";
 			link.l1.go = "Fernando_fight";
-			link.l2 = "Nothing, nevermind.";
+			link.l2 = "Да нет, ничего.";
 			link.l2.go = "exit";	
 			NextDiag.TempNode = "Fernando_repeat";		
 		break;
@@ -275,29 +275,29 @@ void ProcessDialogEvent()
 		case "Fleetwood_soldier"://для любителей сунуть нос куда не надо
 			if (CheckAttribute(npchar, "quest.talked"))
 			{
-			dialog.text = "It's you again? What are you sniffing out around here? I don't like it at all. Alright, I will arrest you and send you to the commandant's office for investigation. Boys, seize that type!";
-			link.l1 = "But I just wanted to...";
+			dialog.text = "Опять вы? Да что же вы тут все вынюхиваете? Не нравится мне все это... Вот что: я вас арестую, и отправлю на разбирательство в комендатуру. Ребята, взять этого типа!";
+			link.l1 = "Но я только хотел...";
 			link.l1.go = "Fleetwood_soldier_4";	
 			}
 			else
 			{
-			dialog.text = "Who are you and what do you want here? Explain yourself!";
-			link.l1 = "I am sorry, sir, it seems I've come to the wrong house. I beg your pardon.";
+			dialog.text = "Кто вы такой и что вам здесь надо? Немедленно объяснитесь!";
+			link.l1 = "Извините, сэр, я кажется, зашел не в тот дом. Прошу меня извинить.";
 			link.l1.go = "Fleetwood_soldier_1";	
-			link.l2 = "I'd like to see Richard Fleetwood.";
+			link.l2 = "Я хочу увидеть Ричарда Флитвуда.";
 			link.l2.go = "Fleetwood_soldier_2";		
 			}
 		break;
 		
 		case "Fleetwood_soldier_1":
-			dialog.text = "That's right. You are talking to the wrong man. Be so kind to leave at once!";
-			link.l1 = "Yes. Sure.";
+			dialog.text = "Точно. Вы здесь не по адресу. Будьте добры покинуть помещение!";
+			link.l1 = "Да, конечно.";
 			link.l1.go = "Fleetwood_soldier_3";			
 		break;
 		
 		case "Fleetwood_soldier_2":
-			dialog.text = "Really? Who told you that he lived here? It seems suspicious... Alright, I will arrest you and send you to the commandant's office for investigation. Boys, seize that type!";
-			link.l1 = "But I just wanted to see Richard...";
+			dialog.text = "Вот как? И кто же вам сказал, что он здесь живет? Подозрительно все это... Вот что: я вас арестую, и отправлю на разбирательство в комендатуру. Ребята, взять этого типа!";
+			link.l1 = "Но я только хотел увидеть Ричарда...";
 			link.l1.go = "Fleetwood_soldier_4";	
 		break;
 		
@@ -316,8 +316,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Theft_soldier":
-			dialog.text = "Ah! Thieves? Spies? Hold on to your hat now!";
-			link.l1 = "Hup!";
+			dialog.text = "Аргх! Вор? Шпион? Ну, держись, голубчик!";
+			link.l1 = "А-а-ть!";
 			link.l1.go = "Attack_Theft_soldier";			
 		break;
 		
@@ -333,8 +333,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Attack_soldier":
-			dialog.text = "Ah! What is this type doing here? Boys, there's a spy here! To arms!";
-			link.l1 = "Hup!";
+			dialog.text = "Аргх! Что этот тип тут делает? Ребята, здесь шпион! К оружию!";
+			link.l1 = "А-а-ть!";
 			link.l1.go = "Attack_soldier_fight";			
 		break;
 		
@@ -357,8 +357,8 @@ void ProcessDialogEvent()
 		//Книппель-пленник в трюме
 		case "Sailor_deck":
 			chrDisableReloadToLocation = true;
-			dialog.text = "Captain, we've questioned this scoundrel, as you told us. We had to cauterize him a bit... He had this letter on him. Tried to eat it, but we didn't let him. Just as we thought, he was to take some girl in Willemstad and bring her to his boss.";
-			link.l1 = "A letter? Let's have a look at it. Then I will talk to him myself.";
+			dialog.text = "Капитан, мы допросили этого мерзавца, как вы и сказали. Пришлось слегка прижечь его... При нем оказалось вот это письмо. Негодяй пытался его съесть, но мы вовремя пережали ему глотку. Как вы и предполагали - его цель была вывезти из Виллемстада некую девчонку для своего шефа.";
+			link.l1 = "Письмо? Давай посмотрим... Ну, а потом я сам с ним поговорю.";
 			link.l1.go = "Sailor_deck_1";			
 		break;
 		
@@ -369,13 +369,13 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Sailor_deck_2":
-			dialog.text = "What are your orders, captain?";
-			link.l1 = "Throw the corpse overboard. And prepare to go ashore!";
+			dialog.text = "Какие будут приказания, капитан?";
+			link.l1 = "Выбросите эту падаль за борт. И приготовиться к высадке на берег!";
 			link.l1.go = "Sailor_deck_3";			
 		break;
 		
 		case "Sailor_deck_3":
-			dialog.text = "Aye, captain!";
+			dialog.text = "Есть, капитан!";
 			link.l1 = "...";
 			link.l1.go = "Sailor_deck_4";			
 		break;
@@ -404,13 +404,13 @@ void ProcessDialogEvent()
 		//Лонгвэй-пленник в трюме
 		case "Sailor_deck_5":
 			chrDisableReloadToLocation = true;
-			dialog.text = "We have prepared the Chinese for questioning, just like you ordered, captain. He had nothing on him, no papers. A brazier has been prepared, and we are heating the handcuffs and tongs red-hot at the moment.";
-			link.l1 = "Good work, Alonso. But before you start, I'd like to try to reason with him. Perhaps, he decides to cooperate willingly?";
+			dialog.text = "Мы подготовили китайца к допросу, как вы приказали, капитан. При нем ничего не было, никаких бумаг. Жаровня зажжена, наручники и клещи сейчас раскаляем.";
+			link.l1 = "Хорошо, Алонсо. Но прежде чем ты возьмешься за дело, я попробую поговорить с ним по душам. Может, он решит сотрудничать добровольно?";
 			link.l1.go = "Sailor_deck_6";			
 		break;
 		
 		case "Sailor_deck_6":
-			dialog.text = "As you say, captain.";
+			dialog.text = "Как прикажете, кэп.";
 			link.l1 = "...";
 			link.l1.go = "exit";	
 			LAi_SetActorType(npchar);
@@ -418,13 +418,13 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Sailor_deck_7":
-			dialog.text = "Yes, captain?";
-			link.l1 = "Put him in manacles and keep your eye on him all the time, until we reach Guadeloupe. You three must be here all the time. You are answering with your lives for him.";
+			dialog.text = "Да, капитан?";
+			link.l1 = "Наденьте на него кандалы и глаз не спускать, ни днем, ни ночью, пока не прибудем на Гваделупу. Всем троим неотступно находится здесь. Отвечаете за него.";
 			link.l1.go = "Sailor_deck_8";			
 		break;
 		
 		case "Sailor_deck_8":
-			dialog.text = "Aye, captain!";
+			dialog.text = "Есть, капитан!";
 			link.l1 = "";
 			link.l1.go = "Sailor_deck_9";			
 		break;
@@ -443,67 +443,67 @@ void ProcessDialogEvent()
 		
 		//пьяница - передача письма Флитвуду
 		case "Drunkard":
-			dialog.text = "H-ic! Good evening, sir! What would you like? Maybe you can buy an old drunkard a drink? And I'd...";
-			link.l1 = "Listen here, old drunkard... Are you Jack Harrison?";
+			dialog.text = "И-ик! Добрый вечер, сэр! Что вам от меня нужно? Может, поставите кружечку старому пропойце? А я...";
+			link.l1 = "Вот что, старый пропойца... Это ты - Джек Гаррисон?";
 			link.l1.go = "Drunkard_1";			
 		break;
 		
 		case "Drunkard_1":
-			dialog.text = "Oh! Yes, that's me. Who else could it be? Why? Wh-a-t sha-a-ll we do-o with a-a dru-un-ken sai-lo-o-r...";
-			link.l1 = "Oh my Lady, give me patience! What sailor? It is written on your face that you are a landlubber... Do you want to make some money?";
+			dialog.text = "О! Ну конечно, это я. Кто же еще? А что? На-а-дува-е-ет ве-е-тер пару-у-са...";
+			link.l1 = "Пресвятая Дева, даруй мне терпение! Какие паруса? Да у тебя на роже написано, что ты сухопутная крыса... Заработать хочешь?";
 			link.l1.go = "Drunkard_2";			
 		break;
 		
 		case "Drunkard_2":
-			dialog.text = "I always want to make money. What should I do? But I won't kill anyone. And neither steal anything. And you are not my type.";
-			link.l1 = "You won't have to kill anybody, and I doubt you are actually able to do that. You are too ham-handed. Now. Here is a letter. You take it and deliver to a house to the left of the governor's residence. It is meant for Richard Fleetwood.";
+			dialog.text = "Заработать всегда хочу. А что делать-то надо? Только никого убивать я не буду. И красть тоже.";
+			link.l1 = "Никого убивать не надо, да и сомневаюсь я, что ты на это способен. Руки не оттуда растут... Вот тут письмо. Ты его берешь и относишь в дом слева от резиденции губернатора, для Ричарда Флитвуда.";
 			link.l1.go = "Drunkard_3";			
 		break;
 		
 		case "Drunkard_3":
-			dialog.text = "For Richard Fleetwood? No... I will be arrested on sight.";
-			link.l1 = "Shut up and listen. Nobody is going to arrest you. You'll say that you've come from Charlie Knippel regarding Abigail. You will be let in. Repeat what I've said.";
+			dialog.text = "Для Ричарда Флитвуда? Не-е... Да меня сразу же арестуют, если я только сунусь к нему на порог.";
+			link.l1 = "Заткнись и слушай. Никто тебя не арестует. Скажешь, что ты прибыл от Чарли Книппеля по поводу Абигайль. Тебя пропустят. Повтори, что я тебе сказал.";
 			link.l1.go = "Drunkard_4";			
 		break;
 		
 		case "Drunkard_4":
-			dialog.text = "Who is Abigail? I know Knippel...";
-			link.l1 = "None of your business. The less you know the longer you'll live. Well, I am waiting. Repeat.";
+			dialog.text = "А кто это - Абигайль? Книппеля я знаю...";
+			link.l1 = "Не твое дело. Меньше знаешь - дольше живешь. Ну, я жду. Повтори.";
 			link.l1.go = "Drunkard_5";			
 		break;
 		
 		case "Drunkard_5":
-			dialog.text = "I've come from Charlie Knippel regarding ur..... Abigail. That's it. ";
-			link.l1 = "Well done. You'll get 5000 pesos for the job.";
+			dialog.text = "Прибыл от Чарли Книппеля по делу э-э... Абигайль, вот.";
+			link.l1 = "Молодец. За работу получишь 5 000 песо.";
 			link.l1.go = "Drunkard_6";			
 		break;
 		
 		case "Drunkard_6":
 			if (makeint(Pchar.money) >= 5000)
 			{
-			dialog.text = "5000 pesos? Oh.... Only for delivering a letter?";
-			link.l1 = "No. You'll be given another letter. You'll come with it to the tavern and take a seat here. I'll take it from you. Do not do anything stupid and don't be afraid - I will be watching you and stay close. Take this sum as an advance so you feel easier.";
+			dialog.text = "Пять тысяч? О-ох... Только передать письмо?";
+			link.l1 = "Не только. Тебе дадут другое письмо. С ним придешь в таверну и сядешь на это место. Я у тебя его заберу. Не вздумай сглупить, и ничего не бойся - я за тобой наблюдаю и буду рядом. Держи деньги авансом, чтобы тебе спокойнее было.";
 			link.l1.go = "Drunkard_7";	
 			}
 			else
 			{
-			dialog.text = "Five thousand? Do you have such money?";
-			link.l1 = "Ha! Of course I do. I'll bring it now.";
+			dialog.text = "Пять тысяч? А у вас есть эти деньги?";
+			link.l1 = "Ха! Конечно, есть. Сейчас принесу.";
 			link.l1.go = "Drunkard_no_money";	
 			NextDiag.CurrentNode = "Drunkard_no_money";
 			}
 		break;
 		
 		case "Drunkard_no_money":
-			dialog.text = "Have you brought the five thousand?";
+			dialog.text = "Вы принесли пять тысяч?";
 			if (makeint(Pchar.money) >= 5000)
 			{
-			link.l1 = "Yes. Here you are. Don't worry.";
+			link.l1 = "Да. Вот они, не переживай. Держи.";
 			link.l1.go = "Drunkard_7";
 			}
 			else
 			{
-			link.l1 = "No. Wait. I will be back soon.";
+			link.l1 = "Нет, жди, скоро вернусь.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Drunkard_no_money";
 			}
@@ -512,8 +512,8 @@ void ProcessDialogEvent()
 		case "Drunkard_7":
 			AddMoneyToCharacter(pchar, -5000);
 			RemoveItems(PChar, "MC_Letter", 1);
-			dialog.text = "Hmm... Should I go now, sir?";
-			link.l1 = "No, in the morning on Thursday... Of course, right now, you bonehead! Now finish you rum, and off you go!";
+			dialog.text = "Гм... Идти прямо сейчас, сэр?";
+			link.l1 = "Нет, в четверг с утра... Конечно сейчас, тупица! Допивай свой ром и давай живо на выход!";
 			link.l1.go = "Drunkard_8";			
 		break;
 		
@@ -533,14 +533,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Drunkard_9":
-			dialog.text = "Ah here you are, sir... I'd better not did this. Richard became enraged, when he had finished reading. I feared I was done for.";
-			link.l1 = "But here you are! Do not worry - he would not dare to do this - you were very valuable for him at that moment ha-ha! You cannot even imagine, just how much...";
+			dialog.text = "А, вот и вы, сэр... Право, лучше бы я этого не делал. Ричард пришел в ярость, когда прочитал ваше письмо. Я думал, он меня убьет...";
+			link.l1 = "Но не убил же! Не переживай, он не посмел бы этого сделать - ты ему очень дорог был в тот момент, ха-ха! Ты даже не представляешь, как...";
 			link.l1.go = "Drunkard_10";			
 		break;
 		
 		case "Drunkard_10":
-			dialog.text = "I need to have a drink... Here's his reply to you.";
-			link.l1 = "Give it to me! And keep your mouth shut!";
+			dialog.text = "Мне надо выпить... Вот его ответ вам.";
+			link.l1 = "Давай сюда. И не вздумай болтать!";
 			link.l1.go = "Drunkard_11";			
 		break;
 		
@@ -548,8 +548,8 @@ void ProcessDialogEvent()
 			GiveItem2Character(pchar, "MC_Letter");
 			ChangeItemDescribe("MC_Letter", "itmdescr_MC_Letter1");
 			AddQuestRecordInfo("FleetwoodAnswer", "1");
-			dialog.text = "It will be difficult for me to talk in the next couple of days... Goodbye...Wish I never see you again.";
-			link.l1 = "Take it easy, old drunkard, ha-ha-ha! Wh-a-t shall we-e do-o with a dru-un-ken sai-lor... Drink and relax - everything is over now!";
+			dialog.text = "Я еще дня два с трудом разговаривать буду... Прощайте... век бы вас не видеть.";
+			link.l1 = "Бывай, старый пропойца, ха-ха-ха! Наду-у-ва-а-ет ве-е-тер пару-у-са... Выпей и успокойся, всё уже позади!";
 			link.l1.go = "Drunkard_12";			
 		break;
 		
@@ -564,20 +564,20 @@ void ProcessDialogEvent()
 		
 		//кэп курьерского судна
 		case "Cureer_abordage":
-			dialog.text = "Why the hell have you attacked my ship? I have neither valuables nor money - just papers, which are of no use to you, anyway!";
-			link.l1 = "Shut up. You've lost, so now you will listen to me. I do not need neither your ship, nor your papers. I need you to give this message to your boss, that dirty rat Lucas Rodenburg. Tell him that captain Fleetwood sends his regards.";
+			dialog.text = "Аргх! Какого черта вы атаковали мой корабль? У меня нет ни ценностей, ни денег - одни бумаги, в которых вы ни черта не поймете!";
+			link.l1 = "Заткнись. Ты проиграл бой, поэтому слушай, что тебе буду говорить я. Мне не нужен твой корабль, и твои бумаги тоже. Мне нужно, чтобы ты передал вот это послание своему шефу - гнусной крысе Лукасу Роденбургу. Это ему привет... от капитана Флитвуда.";
 			link.l1.go = "Cureer_abordage_1";			
 		break;
 		
 		case "Cureer_abordage_1":
-			dialog.text = "Captain Fleetwood? But...";
-			link.l1 = "Will you give this letter to your boss - or should I run you through? I can look for another candidate for delivery. I rob ships of your filthy Company on weakly basis, just so that you know.";
+			dialog.text = "Капитана Флитвуда? Но...";
+			link.l1 = "Так вы передадите это письмо, или мне проткнуть вас шпагой? Я могу поискать и другого кандидата на доставку - корабли вашей бандитской Компании я граблю еженедельно.";
 			link.l1.go = "Cureer_abordage_2";			
 		break;
 		
 		case "Cureer_abordage_2":
-			dialog.text = "Alright, sir Fleetwood. I'll deliver it.";
-			link.l1 = "That's great. Now we can say goodbye to each other, mynheer. You can consider yourself very lucky today. And don't forget to visit a church upon arrival!";
+			dialog.text = "Конечно, сэр Флитвуд. Передам.";
+			link.l1 = "Вот и замечательно. А теперь мы можем с вами проститься, минхер. Считайте, что вам здорово повезло сегодня. Так что не забудьте сходить в церковь по прибытии!";
 			link.l1.go = "Cureer_abordage_3";			
 		break;
 		
@@ -591,7 +591,7 @@ void ProcessDialogEvent()
 			pchar.quest.HWICCureer_AfterBattle.over = "yes";
 			pchar.quest.HWICCureerOnMapOver.over = "yes";
 			AddQuestRecord("Holl_Gambit", "3-39");
-			Log_TestInfo("THE LETTER HAS BEEN DELIVERED!");
+			Log_TestInfo("ПИСЬМО ОТДАНО!");
 			RemoveItems(PChar, "MC_Letter", 1);
 			pchar.questTemp.HWIC.Self = "LetterToLucasSent";
 			pchar.quest.Curacao_exploring.win_condition.l1 = "location";
@@ -604,7 +604,7 @@ void ProcessDialogEvent()
 		
 		//Матиас Бек в тюрьме
 		case "MatiasBek"://на случай если геймер захочет пообщаться
-			dialog.text = "I was arrested illegally! I have no connection with the English! Those are all Rodenburg's intrigues. Nevermind. Peter Stuyvesant will arrive soon - he shall sort it all out!";
+			dialog.text = "Меня арестовали незаконно! Я не имею к англичанам никакого отношения! Это все интриги Роденбурга. Ничего, прибудет Питер Стайвесант - он во всем разберется!";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "MatiasBek";
@@ -612,16 +612,16 @@ void ProcessDialogEvent()
 		
 		//стражник у входа в резиденцию
 		case "QuestGuard":
-			dialog.text = "Mynheer Lucas Rodenburg does not see anybody at the time. Be so kind to leave the residence at once.";
-			link.l1 = "Hm. I see. I will try to drop by in a week...";
+			dialog.text = "Господин Лукас Роденбург никого не принимает. Будьте любезны покинуть территорию резиденции.";
+			link.l1 = "Гм. Понятно. Попробую заглянуть через недельку...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "QuestGuard";		
 		break;
 		
 		//Питер Стайвесант
 		case "Stivesant":
-			dialog.text = "We are going to the residence, captain. I've already sent my people to the fort in order to get information about Matthias Beck. If he is actually in prison, at this moment he already must have been released and accompanied to the town. Follow me!";
-			link.l1 = "Yes, mynheer Stuyvesant.";
+			dialog.text = "Отправляемся в резиденцию, капитан. Я уже послал своих людей в форт, чтобы получить информацию о Матиасе Беке. Если он действительно в тюрьме, то сейчас его уже освободили и сопровождают в город. Следуйте за мной!";
+			link.l1 = "Хорошо, минхер Стайвесант.";
 			link.l1.go = "Stivesant_1";			
 		break;
 		
@@ -631,32 +631,32 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Stivesant_2":
-			dialog.text = "Lucas! What is going on here? Where is Matthias Beck? Is this true that you've sent him to prison?";
-			link.l1 = "Hello, mynheer Stuyvesant. I got proof of his connection with British intelligence and directly with captain Fleetwood. He tipped off the damned Brit to attack our courier brigantine to take possession of confidential correspondence of the Company.";
+			dialog.text = "Лукас! Что здесь происходит? Где Матиас Бек? Это правда, что вы отправили его в тюрьму?";
+			link.l1 = "Здравствуйте, минхер Стайвесант. Я получил доказательства его связи с английской разведкой и непосредственно с капитаном Флитвудом. По его наводке проклятый британец напал на нашу курьерскую бригантину с целью завладеть секретной перепиской компании.";
 			link.l1.go = "Stivesant_3";			
 		break;
 		
 		case "Stivesant_3":
-			dialog.text = "Where did you get this information?";
-			link.l1 = "It was claimed by the captain of the courier brigantine. Richard Fleetwood boarded his ship and took away his papers; then the ship was set free. Nobody except me, you and Matthias Beck had any information about either the route or the schedule.";
+			dialog.text = "Откуда у вас такие сведения?";
+			link.l1 = "Об этом засвидетельствовал капитан курьерской бригантины. Ричард Флитвуд абордировал его корабль и отнял бумаги, затем корабль был отпущен. Никто, кроме меня, вас и Матиаса Бека не знал ни маршрута, ни времени движения бригантины.";
 			link.l1.go = "Stivesant_4";			
 		break;
 		
 		case "Stivesant_4":
-			dialog.text = "And that's why you had decided that Beck tipped off Fleetwood to attack the brigantine? What rubbish! Fleetwood is an ordinary pirate; he only attacks merchant ships. Why would he need the papers, which, by the way, only contained bookkeeping information?";
-			link.l1 = "Mynheer, the courier also transported other important Company documents - not just the usual reports. And now they are all in the hands of the British. That is why I decided to put Beck under arrest.";
+			dialog.text = "И поэтому вы решили, что Флитвуда на бригантину навел Бек? Что за вздор? Флитвуд - обычный пират, он нападает только на торговые корабли. Зачем ему бумаги, в которых, кстати, ничего, кроме бухгалтерских сведений, не содержится?";
+			link.l1 = "Минхер, кроме простых отчетов курьер вез и более важные документы Компании. Все они теперь в руках у англичан. Поэтому я принял решение о смещении Бека и помещении под стражу.";
 			link.l1.go = "Stivesant_5";			
 		break;
 		
 		case "Stivesant_5":
-			dialog.text = "Damn it! This is real usurpation of power! Did you actually realize what you'd been doing, Lucas? Where is the captain of the courier brigantine?";
-			link.l1 = "He's gone to Philipsburg, mynheer.";
+			dialog.text = "Черт возьми! Но это же самое настоящее самоуправство! Вы отдаете себе отчет в своих действиях, Лукас? Где капитан курьерской бригантины?";
+			link.l1 = "Отбыл в Филипсбург, минхер.";
 			link.l1.go = "Stivesant_6";			
 		break;
 		
 		case "Stivesant_6":
-			dialog.text = "Fine, then. I've ordered to release Beck. He'll be brought here and then the three of us will have a talk.";
-			link.l1 = "All right, I don't mind. Three of us - fine. Let's talk.";
+			dialog.text = "Так-так... Я приказал освободить Бека. Сейчас его сюда доставят. Поговорим втроем...";
+			link.l1 = "Ну что же, я не возражаю. Втроем, так втроем.";
 			link.l1.go = "Stivesant_7";			
 		break;
 		
@@ -669,8 +669,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Bek":
-			dialog.text = "You shall pay for your lawlessness, Rodenburg! Your accusations are absurd. You didn't even let me see the captain of brigantine! You didn't bring any evidences, all accusations came from you personally\nI swear to the Lord, I am innocent! I do not and did not have any contacts with the Brits!";
-			link.l1 = "Oh, really? Then how did Fleetwood find out about our brigantine and that she had not only usual documents on board?";
+			dialog.text = "Вы поплатитесь за свой произвол, Роденбург! Ваши обвинения смехотворны. Вы даже не позволили мне встретится с капитаном бригантины! Все ваши так назывемые обвинения вы сделали сами, лично, не приведя никаких доказательств\nВидит Бог, я невиновен! У меня нет и не было никаких контактов с англичанами!";
+			link.l1 = "Вот как? А откуда же тогда Флитвуд узнал про нашу бригантину, и про то, что на ней перевозились не только бумаги?";
 			link.l1.go = "Bek_1";			
 		break;
 		
@@ -684,8 +684,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "MC_Diag":
-			dialog.text = "Rodenburg is lying. Richard Fleetwood could not have attacked the courier brigantine.";
-			link.l1 = "And just who are you, mynheer? On what grounds are you making such statements?";
+			dialog.text = "Роденбург лжет. Ричард Флитвуд не мог напасть на курьерскую бригантину.";
+			link.l1 = "А вы кто такой, минхер, позвольте спросить? И на каком основании делаете подобные заявления?";
 			link.l1.go = "MC_Diag_1";			
 		break;
 		
@@ -693,14 +693,14 @@ void ProcessDialogEvent()
 			sld = characterFromId("Blaze");
 			LAi_ActorTurnToCharacter(characterFromID("Stivesant"), sld);
 			LAi_ActorTurnToCharacter(characterFromID("hol_guber"), sld);
-			dialog.text = "My name is " + GetFullName(sld) + ". I personally eliminated captain Fleetwood by luring him into a trap. His corpse is been eaten by seagulls on the shores of Turks. Officials failed to protect us, Dutch traders, from the man's aggression, so I finished it myself. And it happened before the courier brigantine was plundered\nFleetwood simply could not do it, he was dead already. I had learnt from locals in the tavern that Mathias Beck was arrested, so I decided to investigate the matter, because I always believed that mynheer Beck is a man of crystal reputation\nPeople in the port told me that you loaded your xebec with all kinds of criminals and mercenaries, the Company's guardsmen were left ashore. I followed your ship and captured her slaying every cutthroat you hired. I had interrogated captain Longway, in exchange for his freedom he told me everything, mynheer Rodenburg\nYou were planning to take power over Curacao and ordered Longway to sink mynheer's Stuyvesant galleon. Knowing you methods, I am sure that the poor captain of brigantine is dead. You must had organized an attack on the courier vessel in order to create a precedent, am I correct? And this act was conducted by your assassin named Jacob van Berg? Longway told me a lot about the man.";
-			link.l1 = "This ... this is a blatant lie! What are you talking about, mynheer? Who the hell are you? ";
+			dialog.text = "Мое имя - " + GetFullName(sld) + ". Я лично уничтожил капитана Флитвуда, организовав негодяю ловушку. Сейчас его останки доедают чайки на пустынном берегу Теркса... Я сам положил конец беспределу этого мерзавца, раз официальные власти оказались неспособны защитить нас, голландских торговых капитанов, от его произвола. И случилось это ДО того, как была ограблена курьерская бригантина\nФлитвуд просто не смог бы этого сделать, поскольку был уже мертв. Узнав в таверне Виллемстада от моряков о захвате курьерского корабля, а также о том, что Матиас Бек арестован, я решил докопаться до сути дела, ибо, как мне было известно, минхер Бек - человек кристально чистой репутации\nПоговорив с матросами в порту, я узнал, что вы расквартировали с вашей шебеки гвардейцев Компании и набрали команду из негодяев всех мастей. Я отправился в море, проследил за вашим кораблем, и, улучив момент, захватил его. Перебив свору нанятых вами головорезов, я допросил китайца Лонгвэя - капитана шебеки. В обмен на свободу он раскрыл все ваши карты, минхер Роденбург\nВы решили узурпировать власть на Кюрасао, а Лонгвэю приказали потопить галеон минхера Стайвесанта. Зная ваши методы, я уверен, что капитан бригантины отбыл не в Филипсбург, а прямиком на дно. Ведь это вы сами организовали нападение на бригантину Компании, чтобы создать прецедент, не так ли? И сделали это при помощи вашего наемного убийцы Якоба ван Берга, о котором мне также поведал Лонгвэй?";
+			link.l1 = "Это... это наглая ложь! Что вы несете, сударь?! Вы кто вообще такой?!";
 			link.l1.go = "MC_Diag_2";			
 		break;
 		
 		case "MC_Diag_2":
-			dialog.text = "I am an independent captain who wanted to clear the sea and the land out of that scoundrel Fleetwood and was engaged into your political intrigues! I warned mynheer Stuyvesant about the danger he was in. And I am here to put an end to your depredations on Curacao - together with the legal authorities!";
-			link.l1 = "What insolence! You shall answer for your words, mynheer 'independent captain'! You...";
+			dialog.text = "Я - свободный капитан, который пожелал очистить море и землю от подонка Флитвуда, и оказавшийся втянутым в ваши политические интриги! Я предупредил минхера Стайвесанта о грозящей ему опасности. И я здесь, чтобы совместно с законной властью положить конец вашим бесчинствам на Кюрасао!";
+			link.l1 = "Какая дерзость! Вы ответите за ваши слова, минхер 'свободный капитан'! Вы...";
 			link.l1.go = "MC_Diag_3";			
 		break;
 		
@@ -714,8 +714,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Stivesant_8":
-			dialog.text = "Enough, Lucas. You will pay for your crimes! I heard and saw enough. Lucas Rodenburg, I arrest you for an attempt on the life of the Company's director, for an attempt of seizure of power by force and for a suspicion of murdering a captain of courier vessel\nBesides, I am sure that we shall find out more interesting parts of your biography during official investigation. You shall be put in custody and delivered to Amsterdam where you shall be prosecuted. Take him away!";
-			link.l1 = "But...";
+			dialog.text = "Довольно, Лукас. Это вы ответите за свои действия! Увиденного и услышанного мне достаточно. Лукас Роденбург, я арестую вас за попытку силового захвата власти, за покушение на убийство директора Компании и по подозрению в убийстве капитана курьерского корабля\nКроме того, в процессе расследования мы наверняка найдем и другие занятные факты вашей биографии. Вы будете помещены под стражу и доставлены в Амстердам, где предстанете перед судом. Увести его!";
+			link.l1 = "Но...";
 			link.l1.go = "Stivesant_9";			
 		break;
 		
@@ -742,14 +742,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Stivesant_10":
-			dialog.text = "Captain " + GetFullName(pchar) + "! On behalf of the colony administration of Willemstad I kindly ask you to accept our sincere gratitude for your actions, which helped us to put that dangerous criminal under arrest. I also would like to thank you personally, since I am likely indebted to you with my life.";
-			link.l1 = "I acted for the good of all the Dutch colonies, mynheer.";
+			dialog.text = "Капитан " + GetFullName(pchar) + "! От лица администрации колонии Виллемстад прошу принять нашу искреннюю благодарность за ваши действия, в результате которых был арестован этот опасный преступник. Также хочу поблагодарить вас от себя лично - возможно, я обязан вам жизнью.";
+			link.l1 = "Я сделал это ради блага голландских колоний, минхер.";
 			link.l1.go = "Stivesant_11";			
 		break;
 		
 		case "Stivesant_11":
-			dialog.text = "Your modesty commands respect, my friend. Now I would like to settle some formalities: since you captured the Meifeng only for good purposes and in dire straits, there cannot be any claims. But this ship belongs to the Company and I kindly ask you to return her.";
-			link.l1 = "Certainly, mynheer.";
+			dialog.text = "Ваша скромность внушает уважение, друг мой. Теперь я хотел бы уладить некоторые формальности: поскольку вы захватили 'Мейфенг' исключительно в благих целях и пошли на это из крайней необходимости, никаких претензий быть не может. Но этот корабль принадлежит Компании, и я прошу вас его вернуть.";
+			link.l1 = "Безусловно, минхер.";
 			link.l1.go = "Stivesant_12";			
 		break;
 		
@@ -759,7 +759,7 @@ void ProcessDialogEvent()
 		if(sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_MAYFANG)
 		{
 			pchar.Ship.Type = GenerateShipExt(SHIP_TARTANE, true, pchar);
-			pchar.Ship.name = "A boat";
+			pchar.Ship.name = "Лодка";
 			SetBaseShipData(pchar);
 			SetCrewQuantityOverMax(PChar, 0);//сажаем на тартану
 		}
@@ -781,8 +781,8 @@ void ProcessDialogEvent()
 				}
 			}
 		}
-			dialog.text = "Please come to my residence tomorrow - you will be awarded on behalf of the Republic of Free Provinces for your deeds in the best interests of it. I kindly ask you not to leave the town.";
-			link.l1 = "Alright, mynheer. I shall come tomorrow.";
+			dialog.text = "И я прошу вас зайти завтра в резиденцию - вы будете награждены от лица Республики Свободных Провинций за ваши деяния в ее благо. Прошу вас не покидать город.";
+			link.l1 = "Хорошо, минхер. Буду у вас на приеме завтра.";
 			link.l1.go = "Stivesant_13";			
 		break;
 		
@@ -794,8 +794,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Bek_2":
-			dialog.text = "I also would like to thank you personally, captain, for your spirit of enterprise and timely assistance. Don't forget to come here tomorrow, I will prepare a valuable gift for you.";
-			link.l1 = "Thank you, mynheer Beck. I will be there!";
+			dialog.text = "Я тоже хочу поблагодарить вас, капитан, за вашу предприимчивость и за оказание такой своевременной помощи. Не забудьте придти завтра сюда - я приготовлю для вас ценный подарок.";
+			link.l1 = "Спасибо, минхер Бек. Буду обязательно!";
 			link.l1.go = "Bek_3";			
 		break;
 		
@@ -822,14 +822,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Stivesant_14":
-			dialog.text = "" + GetFullName(pchar) + ", on behalf of the Republic of Free Provinces you hereby are awarded a personal weapon and money in the amount of 100 000 pesos for the initiative taken in the liquidation of the enemy of all Dutch people, state criminal Richard Fleetwood. Congratulations!";
-			link.l1 = "Thank you, mynheer Styuvesant!";
+			dialog.text = "" + GetFullName(pchar) + ", именем Республики Свободных Провинций, за проявленную инициативу в уничтожении врага голландской нации, государственного преступника Ричарда Флитвуда, вы награждаетесь именным оружием и денежной суммой в размере 100 000 песо. Поздравляю!";
+			link.l1 = "Благодарю, минхер Стайвесант!";
 			link.l1.go = "Stivesant_15";			
 		break;
 		
 		case "Stivesant_15":
-			dialog.text = "Also, for unprecedented courage, for an exposure of treacherous conspiracy inside the Company and for a risky operation of capturing ex vice-president of the Company, you are being awarded with 150 000 pesos. You also are allowed to conduct contracts with Dutch West India Company\nI am sure that our new vice-director will find a well paid job for such brave captain like yourself.";
-			link.l1 = "Thank you! I will keep that in mind.";
+			dialog.text = "Также, за беспрецедентную отвагу, за раскрытие коварного заговора внутри Компании и содействие в поимке бывшего вице-директора Компании, сопряженное с серьезным риском, вы награждаетесь денежной премией в размере 150 000 песо. Также вы получаете право на заключение контрактов с Голландской Вест-Индской Компанией\nУверен, что новый вице-директор всегда сможет найти задание, достойное такого храброго капитана, и щедро оплатить ваши услуги.";
+			link.l1 = "Спасибо! Приму это во внимание.";
 			link.l1.go = "Stivesant_16";			
 		break;
 		
@@ -837,7 +837,7 @@ void ProcessDialogEvent()
 			AddMoneyToCharacter(pchar, 250000);
 			GiveItem2Character(pchar, "blade_16");
 			ChangeCharacterComplexReputation(pchar, "nobility", 5);
-			dialog.text = "Be aware that you can always count on my assistance in any dealings as long as you act on the side and in the interests of Holland. Now I give you the governor of Willemstad, Matthias Beck.";
+			dialog.text = "Ну, и вы всегда можете рассчитывать на мое содействие в любых вопросах, до тех пор, пока действуете на стороне и в интересах Голландии. Далее предоставляю слово губернатору Виллемстада, Матиасу Беку.";
 			link.l1 = "";
 			link.l1.go = "Stivesant_17";			
 		break;
@@ -852,15 +852,15 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Bek_4":
-			dialog.text = "I express my sincere gratitude, captain, for your courage and insight in discovering a plot against the state. I would like to present you this valuable navigation instrument, which is invaluable for any man-of-war's man.";
-			link.l1 = "Thank you, mynheer Beck";
+			dialog.text = "Выражаю вам свою искреннюю благодарность, капитан, за проявленную храбрость и смекалку в раскрытии государственного заговора. Я хочу подарить вам вот этот ценный навигационный прибор - незаменимая для военного моряка вещь.";
+			link.l1 = "Спасибо, минхер Бек.";
 			link.l1.go = "Bek_5";			
 		break;
 		
 		case "Bek_5":
 			GiveItem2Character(pchar, "bussol");
-			dialog.text = "I would like you to know: you are my friend now, and this means a lot. You will always be a welcome guest in my residence. Come around at any time and for whatever reason - I will be happy to provide you with any help you might need.";
-			link.l1 = "I am happy to hear that, mynheer!";
+			dialog.text = "И знайте: в моем лице вы обрели друга, а это многое значит. Вы всегда желанный гость в моей резиденции. Заходите в любое время, по любым вопросам - я буду рад оказать вам любую помощь, которая потребуется.";
+			link.l1 = "Рад слышать это, минхер!";
 			link.l1.go = "Bek_6";			
 		break;
 		
@@ -888,8 +888,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Bek_7":
-			dialog.text = "Holland is proud of you, mynheer. Captains like you you are the backbone of the Dutch Fleet in the Caribbean. Here you are, please accept your reward.";
-			link.l1 = "Thank you, mynheer. I am honoured to serve Holland!";
+			dialog.text = "Голландия гордится вами, минхер. На таких капитанах, как вы, и зиждется сила голландского флота в Карибском бассейне. Прошу вас, вот ваша награда.";
+			link.l1 = "Благодарю, минхер. Служба на благо Голландии - честь для меня!";
 			link.l1.go = "Bek_8";
 		break;
 		
@@ -905,8 +905,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Stivesant_18":
-			dialog.text = "I am glad to see you. How are you?";
-			link.l1 = "I am fine. I just dropped in to see you.";
+			dialog.text = "Рад вас видеть. Как у вас дела?";
+			link.l1 = "У меня все хорошо. Я просто зашел вас навестить.";
 			link.l1.go = "exit";	
 			NextDiag.TempNode = "Stivesant_18";
 		break;
@@ -915,21 +915,21 @@ void ProcessDialogEvent()
 		case "Stivesant_19":
 			if (ChangeCharacterHunterScore(pchar, "holhunter", 0) > 10)
 			{
-				dialog.text = "Look who it is! It's " + GetFullName(pchar) + ". We have recently sent headhunters, that had to bring you here. And that service did cost a lot.";
-				link.l1 = "Uhm... I need to go..";
+				dialog.text = "О! Кто пришел! Это же сам " + GetFullName(pchar) + ". Мы как раз недавно высылали охотников за головами, чтобы они привели вас сюда. И знаете, это уже встало нам в кругленькую сумму.";
+				link.l1 = "Э... пожалуй, мне пора.";
 				link.l1.go = "arest";
 				break;
 			}
 			if (pchar.questTemp.Patria == "epizode_4" && pchar.model == "Sharle_6")
 			{
-				dialog.text = "Are you a captain of French Navy? Good, I'm short on time, but I will listen to what you have to say. What brings you here?";
-				link.l1 = "Mynheer Stuyvesant, I've come from Saint Christopher with a message from Governor General of Chevalier de Poincy's French colonies.";
+				dialog.text = "Вы капитан военно-морского флота Франции? Хорошо, у меня хоть и нет времени на посторонние дела, я вас выслушаю. Что привело вас сюда?";
+				link.l1 = "Минхер Стайвесант, я прибыл с Сент-Кристофера с посланием от генерал-губернатора французских колоний шевалье Филиппа де Пуанси.";
 				link.l1.go = "Stivesant_20";
 			}
 			else
 			{
-				dialog.text = "Excuse me, captain, but I'm extremely busy right now and can't dedicate enough time to you. Talk to mynheer Mathias Beck, let him hear what you have to say.";
-				link.l1 = "Hmm...";
+				dialog.text = "Прошу прощения, капитан, но я сейчас очень занят и не могу уделить вам ни минуты времени. Обратитесь к минхеру Матиасу Беку, пусть он вас выслушает.";
+				link.l1 = "Гм...";
 				link.l1.go = "Stivesant_19_1";
 			}
 		break;
@@ -941,27 +941,27 @@ void ProcessDialogEvent()
 		
 		case "Stivesant_20":
 			sld = characterFromId("Patria_FlautCap");
-			dialog.text = "From Chevalier de Poincy? Definitely didn't expect that this time it would take so little... ahem... how fairs Chevalier?";
-			link.l1 = "Everything is fine, mynheer. Monsieur de Poincy ordered me to deliver this letter to you. My other task was to escort '"+sld.ship.name+"' with cargo for your company to Willemstad's port. The vessel is at the dock and the cargo was not damaged.";
+			dialog.text = "От шевалье де Пуанси? Вот уж не ожидал, что на этот раз так рано... Кхм... Как дела у шевалье?";
+			link.l1 = "Все хорошо, минхер. Месье де Пуанси поручил мне передать вам вот это письмо и доставить ответ на него. Также в мою задачу входило сопроводить флейт '"+sld.ship.name+"' с грузом для вашей Компании в порт Виллемстада. Судно стоит на рейде, груз в целости.";
 			link.l1.go = "Stivesant_21";
 		break;
 		
 		case "Stivesant_21":
-			dialog.text = "A fleet with cargo for our company? Intriguing... And the letter, captain?";
-			link.l1 = "Here. Please, take it.";
+			dialog.text = "Флейт с грузом для Компании? Как интересно... А письмо, капитан?";
+			link.l1 = "Вот оно, пожалуйста.";
 			link.l1.go = "Stivesant_22";
 		break;
 		
 		case "Stivesant_22":
 			RemoveItems(pchar, "Reserve_item_01", 1);
-			dialog.text = "Hmmm... (reading). An inspection from the parent state... Ahem... Huh, well... that's interesting, he-he... By the way captain, I've heard that France is at war with Spain in the Caribbean? The siege and sacking of San Jose fort, the destruction of Spanish war squadron off the eastern coast of Cuba...";
-			link.l1 = "Off the western coast of Hispaniola by Port-au-Prince, mynheer. And the only goal of the siege of San Jose was to get financial compensation from the Spaniards for their attack on Saint-Pierre. We are on bad terms with Spain for quite some time... When shall I return to get the answer?";
+			dialog.text = "Так-так... (читает). Инспекция из метрополии, значит... Кхм... Хе-хе, ну-ну... Занятно, хе-хе... Кстати, капитан, я слышал, Франция начала самую настоящую войну против Испании на Карибах? Осада и разрушение форта Сан-Хосе, уничтожение испанской военной эскадры у восточного побережья Кубы...";
+			link.l1 = "У западного побережья Эспаньолы вблизи Порт-о-Пренса, минхер. А осада Сан-Хосе преследовала целью получить материальное возмещение от испанцев за предшествовавшее нападение на Сен-Пьер. Наши отношения с Испанией уже давно не отличаются теплотой и дружелюбием... Когда мне зайти за ответом?";
 			link.l1.go = "Stivesant_23";
 		break;
 		
 		case "Stivesant_23":
-			dialog.text = "I won't hold you captian, you're a military man, you probably have a lot of affairs and I'm sure Chevalier is eagerly waiting for your return. Be so kind and wait right here, in the living room for two hours until I compose an answer for that letter. Take a sit and rest here, you will be served wine or rum, If you wish...";
-			link.l1 = "My gratitude, mynheer, I'd prefer a glass of fine wine...";
+			dialog.text = "Я не буду вас задерживать, капитан, вы же человек военный, у вас наверняка много дел, да и шевалье, уверен, с нетерпением ждет вашего возвращения. Будьте так любезны подождать прямо здесь, в приемной, два часа, и я подготовлю вам ответ на депешу. Присядьте, отдохните, сейчас вам принесут рому или вина, как пожелаете...";
+			link.l1 = "Благодарю, минхер, предпочту бокал хорошего вина...";
 			link.l1.go = "Stivesant_24";
 		break;
 		
@@ -983,8 +983,8 @@ void ProcessDialogEvent()
 		case "Stivesant_25":
 			GiveItem2Character(pchar, "Reserve_item_01");
 			ChangeItemDescribe("Reserve_item_01", "itmdescr_Reserve_item_01_2");
-			dialog.text = "The answer for monsieur de Poincy is ready. Here, please, take it... Good luck, captain.";
-			link.l1 = "Thank you, mynheer. Farewell!";
+			dialog.text = "Ответ для месье де Пуанси готов. Вот, возьмите, пожалуйста... Счастливого пути, капитан.";
+			link.l1 = "Спасибо, минхер. До свидания!";
 			link.l1.go = "Stivesant_26";
 		break;
 		
@@ -999,21 +999,21 @@ void ProcessDialogEvent()
 		case "Stivesant_27":
 			if (ChangeCharacterHunterScore(pchar, "holhunter", 0) > 10)
 			{
-				dialog.text = "Look who it is! It's " + GetFullName(pchar) + ". We have recently sent headhunters, that had to bring you here. And that service did cost a lot.";
-				link.l1 = "Uhm... I need to go..";
+				dialog.text = "О! Кто пришел! Это же сам " + GetFullName(pchar) + ". Мы как раз недавно высылали охотников за головами, чтобы они привели вас сюда. И знаете, это уже встало нам в кругленькую сумму.";
+				link.l1 = "Э... пожалуй, мне пора.";
 				link.l1.go = "arest";
 				break;
 			}
 			if (pchar.questTemp.Patria == "epizode_6" && pchar.model == "Sharle_6")
 			{
-				dialog.text = "You've come again with a message from Governor General Philippe de Poincy, right?";
-				link.l1 = "Yes, mynheer Stuyvesant. On the banks of Sint Maarten there was an unpleasant misunderstanding - a ship carrying the inspector from Paris, Baron Noel Forget, was shot at by the fort of Philipsburg, and ...";
+				dialog.text = "Вы снова с посланием от генерал-губернатора Филиппа де Пуанси, так?";
+				link.l1 = "Да, минхер Стайвесант. У берегов Синт-Маартена произошло неприятное недоразумение - корабль, на борту которого был инспектор из Парижа, барон Ноэль Форже, был обстрелян фортом Филипсбурга, и...";
 				link.l1.go = "Stivesant_28";
 			}
 			else
 			{
-				dialog.text = "Excuse me, captain, but I'm extremely busy right now and can't dedicate enough time to you. Talk to mynheer Mathias Beck, let him hear what you have to say.";
-				link.l1 = "Hmm...";
+				dialog.text = "Прошу прощения, капитан, но я сейчас очень занят и не могу уделить вам ни минуты времени. Обратитесь к минхеру Матиасу Беку, пусть он вас выслушает.";
+				link.l1 = "Гм...";
 				link.l1.go = "Stivesant_27_1";
 			}
 		break;
@@ -1026,20 +1026,20 @@ void ProcessDialogEvent()
 		case "Stivesant_28":
 			if (pchar.questTemp.HWIC.Detector == "holl_win" || pchar.questTemp.HWIC.Detector == "self_win")
 			{
-				dialog.text = "And that's why you're here, Captain. I will not go into diplomatic discusions: tell Chevalier that he is no longer in charge of Sint Maarten. Enough of him. And regarding the inspection from the parent state - let him come up with something, It was never difficult for de Poincy to turn everything upside down.";
-				link.l1 = "Is that exactly what I should tell him?";
+				dialog.text = "И поэтому вы здесь, капитан. Не буду вдаваться в дипломатические дискуссы: передайте шевалье, что он больше не в деле на Синт-Маартене. Хватит с него. А касательно инспекции из метрополии - пусть придумает что-нибудь, для де Пуанси перевернуть все с ног на голову никогда не составляло труда.";
+				link.l1 = "Так и передать?";
 				link.l1.go = "Stivesant_29";
 			}
 			else
 			{
-				dialog.text = "And that's why you're here, Captain. I will not go into diplomatic discusions: you liege has been way too greedy on Sint Maarten as of late, so it's time to temper his insatiable hunger. And I believe that he understands that perfectly. To you, Captain Charles de Maure, we also have questions about recent events related to the British bandit by the name of Richard Fleetwood, so you will have to stay here for a while\nSeregant! Take the captain's weapons and bring him to the commandant's office!";
-				link.l1 = "It seems to me that delaying a French officer on duty is unacceptable!";
+				dialog.text = "И поэтому вы здесь, капитан. Не буду вдаваться в дипломатические дискуссы: ваш шеф чрезмерно зажрался на Синт-Маартене, поэтому настало время умерить его ненасытные аппетиты. И он это, я думаю, прекрасно понял. К вам, капитан Шарль де Мор, у нас тоже есть вопросы по недавним событиям, связанным с английским разбойником Ричардом Флитвудом, поэтому вы здесь задерживаетесь\nСержант! Примите оружие у капитана и проводите в комендатуру!";
+				link.l1 = "Мне кажется, что задерживать французского офицера на при исполнении им служебного долга недопустимо!";
 				link.l1.go = "Stivesant_31";
 			}
 		break;
 		
 		case "Stivesant_29":
-			dialog.text = "Couldn't put in better myself, Captain. Your commander will understand everything, but you do not need to delve into it, that won't change anything. Wish all the best. Sergeant, lead Monsieur Charles de Maure to the exit!";
+			dialog.text = "Слово в слово, капитан. Ваш командир все поймет, а вам вникать необязательно, это ничего не изменит. Всего доброго. Сержант, проводите месье Шарля де Мора к выходу!";
 			link.l1 = "...";
 			link.l1.go = "Stivesant_30";
 		break;
@@ -1050,8 +1050,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Stivesant_31":
-			dialog.text = "Unfortunately, I have a different opinion. Sergeant! In case of resistance, use force!";
-			link.l1 = "You just do not know who you're dealing with yet, mynheer ...";
+			dialog.text = "К сожалению, у меня другое мнение. Сержант! В случае сопротивления применяйте силу!";
+			link.l1 = "Вы просто еще не знаете, с кем связались, минхер...";
 			link.l1.go = "Stivesant_32";
 		break;
 		
@@ -1061,52 +1061,52 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Stivesant_33":
-			dialog.text = "It's a little strange to see you, Captain Charles de Maure, in this role ... I hope you can guarantee immunity for those, who came to you for negotiations..";
-			link.l1 = "You can be sure of it, mynheer Stuyvesant.";
+			dialog.text = "Немного странно видеть вас, капитан Шарль де Мор, в этой роли... Надеюсь, вы сможете гарантировать неприкосновенность лиц, пришедших к вам на переговоры.";
+			link.l1 = "Можете быть в этом уверены, минхер Стайвесант.";
 			link.l1.go = "Stivesant_34";
 		break;
 		
 		case "Stivesant_34":
-			dialog.text = "So, can you give me an opportunity to read the agreement that you have prepared? As I understand, it contains content from the letter?";
-			link.l1 = "Precisely, mincher, only in an official form. From France's side - restoration of relations to neutral, rejection of any claim for the island of Sint Maarten. From England's - the end of the trade war. Details are all described ... And, of course, financial compensation for the damage that we suffered because of the military actions you initiated.";
+			dialog.text = "Итак, вы можете дать мне для прочтения соглашение, которое вы подготовили? Я так понимаю, там будет то, что содержалось в письме?";
+			link.l1 = "Именно, минхер, только в официальной форме. Со стороны Франции - восстановление отношений до нейтральных, отказ от любых притязаний на остров Синт-Маартен. Со стороны Англии - прекращение торговой войны. Подробности все описаны... Ну и, конечно, репарации, связанные с возмещением ущерба, который мы понесли в связи с развязанными вами военными действиями.";
 			link.l1.go = "Stivesant_35";
 		break;
 		
 		case "Stivesant_35":
-			dialog.text = "Please be so kind and give me the document.";
-			link.l1 = "Of course.";
+			dialog.text = "Будьте любезны дать мне этот документ.";
+			link.l1 = "Пожалуйста.";
 			link.l1.go = "Stivesant_36";
 		break;
 		
 		case "Stivesant_36":
-			dialog.text = "...(reading)...";
+			dialog.text = "...(читает)...";
 			link.l1 = "...";
 			link.l1.go = "Stivesant_37";
 		break;
 		
 		case "Stivesant_37":
 			LAi_Fade("", "");
-			dialog.text = "Since you didn't leave me a choice, I'll sign this agreement. But for me the protection of Willemstad and it's inhabitants is of the highest importance to me";
-			link.l1 = "Then we shall validate all three copies with signatures. I am authorized by Governor General Philippe de Poincy to endorse the document from France, Colonel Doily will sign it for England.";
+			dialog.text = "Поскольку вы не оставили мне выбора, я готов подписать это соглашение. Сохранность Виллемстада и его жителей для меня превыше всего.";
+			link.l1 = "Тогда скрепляем все три экземпляра подписями. Я уполномочен генерал-губернатором Филиппом де Пуанси завизировать документ со стороны Франции, полковник Дойли подпишет со стороны Англии.";
 			link.l1.go = "Stivesant_38";
 		break;
 		
 		case "Stivesant_38":
-			dialog.text = "...(signing)...";
-			link.l1 = "Perfect! Now we shall sign this...";
+			dialog.text = "...(подписывает)...";
+			link.l1 = "Отлично! Теперь подпишем мы...";
 			link.l1.go = "Stivesant_39";
 		break;
 		
 		case "Stivesant_39":
 			LAi_Fade("", "");
-			dialog.text = "So, I believe you will call off the siege now?";
-			link.l1 = "Without any doubt. I hope that all the terms of the agreement will be abided by the Dutch side without violations.";
+			dialog.text = "Сейчас, я полагаю, вы снимете осаду с города?";
+			link.l1 = "Вне всякого сомнения. Надеюсь, что все пункты соглашения будут исполняться голландской стороной без нарушений.";
 			link.l1.go = "Stivesant_40";
 		break;
 		
 		case "Stivesant_40":
-			dialog.text = "If there are no violations by England or France, then we will abide by the terms of the contract, do not worry.";
-			link.l1 = "It's always better to trade than to fight, mynheer Stuyvesant. And now you can safely return to Willemstad. The siege will be lifted and our squadrons will soon leave the waters of Curacao.";
+			dialog.text = "Если не последует нарушений со стороны Англии или Франции, то мы будем соблюдать условия договора, не беспокойтесь.";
+			link.l1 = "Торговать всегда лучше, чем воевать, минхер Стайвесант. А теперь можете спокойно возвращаться в Виллемстад. Осада будет снята и наша эскадра вскоре покинет воды Кюрасао.";
 			link.l1.go = "Stivesant_41";
 		break;
 		
@@ -1116,37 +1116,37 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Stivesant_42":
-			dialog.text = "So, are you Baron Noel Forget? Huh, and you must be Monsieur Charles de Maure himself! Greetings, Vice Admiral! There is a reason why you are known as the most cunning plotter of the archipelago - one may never know on whose side you are at the moment...";
-			link.l1 = "Vice Admiral is on the King's and yours sincerely, his entitled representative's side at the moment.";
+			dialog.text = "Итак, это вы - барон Ноэль Форже? Ба, да тут еще и месье Шарль де Мор собственной персоной! Здравствуйте, здравствуйте, вице-адмирал! Недаром про вас идет слава самого ловкого интригана архипелага - никогда не знаешь, на чьей вы стороне в данный момент...";
+			link.l1 = "В данный момент вице-адмирал на стороне короля Франции и его законного представителя, то есть меня.";
 			link.l1.go = "Stivesant_43";
 		break;
 		
 		case "Stivesant_43":
-			dialog.text = "The King is far from here, and so is France, Baron, but Saint Christopher and Chevalier de Poincy are close. He is the true owner of the french colonies. De facto ... However, are you here to get something that compromises de Poincy in the eyes of the finance minister?";
-			link.l1 = "Precisely, mynheer.";
+			dialog.text = "Король далеко отсюда, как и вся Франция, барон, а вот Сент-Кристофер и шевалье Пуанси - близко. Истинный хозяин французских колоний именно он. Де-факто... Впрочем, вы здесь за тем, чтобы получить нечто, копрометирующее Пуанси в глазах министра финансов?";
+			link.l1 = "Именно, минхер.";
 			link.l1.go = "Stivesant_44";
 		break;
 		
 		case "Stivesant_44":
-			dialog.text = "I have such documents. This is a whole ledger with my and de Poincy's accounts for the mine and some other affairs. Also in it there is a whole heap of papers related to this business, with the personal signature of Philippe de Poincy. I guarantee you that the contents of these papers in the hands of the interested person will drown Chevalier deeper than the bottom of the Caribbean Sea.";
-			link.l1 = "What do you want for this ledger?";
+			dialog.text = "Такие документы у меня есть. Это целый гроссбух с нашей с Пуанси бухгалтерией по руднику и некоторым прочим делам. Также в нем есть целый ворох бумаг, относящихся к этой бухгалтерии, с личной подписью Филиппа де Пуанси. Я вам гарантирую, что содержимое этих бумаг в руках заинтересованного человека утопит шевалье глубже дна Карибского моря.";
+			link.l1 = "Что вы хотите за этот гроссбух?";
 			link.l1.go = "Stivesant_45";
 		break;
 		
 		case "Stivesant_45":
-			dialog.text = "I'm selling it for a song. Merely a million peso in silver.";
-			link.l1 = "A million peso?!!";
+			dialog.text = "О-о, сущие пустяки. Миллион песо серебром.";
+			link.l1 = "Миллион песо?!!";
 			link.l1.go = "Stivesant_46";
 		break;
 		
 		case "Stivesant_46":
-			dialog.text = "that's right, Baron. This amount will at least partially cover the losses caused by the recent war. I will give you an advice: turn to Monsieur Charles de Maure. During his service for de Poincy and ahem... other people, he probably made a huge fortune, and getting a million won't be a problem for him. I'm almost sure of it\nI will give you a term - one month. After this time, if you do not bring the indicated amount, I will send a letter to the Chevalier, in which I will describe the details of your visit to me. You can guess what happens next.";
-			link.l1 = "You're blackmailing me! You must understand that I can't possibly have a million in the colonies!";
+			dialog.text = "Так точно, барон. Эта сумма хотя бы частично покроет мне убытки, нанесенные недавней войной. Я дам вам совет: обратитесь к месье Шарлю де Мору. За время службы у Пуанси и мммм... других персон, он наверняка сколотил огромное состояние, и достать миллион не будет для него особой проблемой. Я в этом практически уверен\nСрок вам даю - один месяц. По истечении этого времени, если вы не принесете указанную сумму, я отправлю письмо шевалье, в котором опишу подробности вашего визита ко мне. Что за этим последует - полагаю, вы догадываетесь.";
+			link.l1 = "Это очень похоже на шантаж! Вы же понимаете, что у меня не может быть с собой в колониях миллиона!";
 			link.l1.go = "Stivesant_47";
 		break;
 		
 		case "Stivesant_47":
-			dialog.text = "Of course I understand. Therefore, I immediately pointed out to you the person who has this million. If Monsieur de Maure refuses, it's best for you, Baron, to sail from here to Europe before the Chevalier receives my letter, otherwise you risk staying here forever. As for Monsieur de Maure... of course, he will lose his admiral rank, but he'll get out... and maybe even get rid of de Poincy with his methods, I'm perfectly fine with that\nWell, gentlemen, you heard me. I will be waiting for you with a million in a month time at my residence. Free entrance and exit guaranteed.";
+			dialog.text = "Конечно, понимаю. Поэтому сразу указал вам человека, у которого этот миллион есть. Если же месье де Мор откажет вам, то лучше всего для вас, барон, будет уплыть отсюда в Европу раньше, чем шевалье получит мое письмо, иначе вы рискуете остаться здесь навсегда. Ну а месье де Мор... конечно, он лишится своего адмиральского чина, но выкрутится... и, возможно, даже ликвидирует Пуанси своими методами, что меня вполне устроит\nНу, господа, вы меня услышали. Жду вас с миллионом в течение месяца у себя в резиденции. Свободный вход и выход гарантирую. Всего доброго!";
 			link.l1 = "...";
 			link.l1.go = "Stivesant_48";
 		break;
@@ -1179,13 +1179,13 @@ void ProcessDialogEvent()
 		case "Stivesant_49":
 			if (sti(pchar.money) >= 1000000)
 			{
-				dialog.text = "I did not even doubt, Vice Admiral Charles de Maure, that you would bring me this money. Perhaps, I even asked too little of you, but oh well ... The Baron is just a pawn in your next game, right? The rank and money is not enough for you, now you want to take the place of de Poincy, am I right? You have to agree, a million is a small payment for the post of Governor General of the French colonies! You will get this money back matter of months, given your iron grip.";
-				link.l1 = "Take your million, mynheer. I'd like to recieve my promised ledger.";
+				dialog.text = "Я даже не сомневался, вице-адмирал Шарль де Мор, что вы принесете мне эти деньги. Пожалуй, я даже маловато с вас запросил, ну да ладно... Барон - лишь пешка в вашей очередной игре, так? Чина и денег вам недостаточно, теперь вы желаете занять место де Пуанси, я прав? Согласитесь, миллион - невелика плата за должность генерал-губернатора французских колоний! Вы отобьете их за считаные месяцы, учитывая вашу железную хватку.";
+				link.l1 = "Возьмите ваш миллион, минхер. И я бы хотел получить обещаный гроссбух.";
 				link.l1.go = "Stivesant_50";
 			}
 			else
 			{
-				dialog.text = "You'd better concentrate on collecting a million, Monsieur, instead of wasting your time on pointless visits.";
+				dialog.text = "Вам лучше сосредоточиться на сборе миллиона, месье, а не тратить время на пустые визиты.";
 				link.l1 = "...";
 				link.l1.go = "Stivesant_49_1";
 			}
@@ -1207,8 +1207,8 @@ void ProcessDialogEvent()
 			itm.Weight = 2.0;
 			itm.name = "itmname_Reserve_item_01_1";
 			ChangeItemDescribe("Reserve_item_01", "itmdescr_Reserve_item_01_4");
-			dialog.text = "Of course, Vice Admiral. And do not frown: when you become a Governor General, you will see that the Dutch West-Indies Trade Company is a more profitable business partner than greedy and warmongering British. Do not you know that if you give Brit a finger, he will take the whole hand? If not, you Learn that the hard way. So I'm not saying goodbye to you yet. Keep your papers. I hope your baron is competent enough to defeat Chevalier.";
-			link.l1 = "My thanks. Farewell, mynheer Stuvesant.";
+			dialog.text = "Конечно, вице-адмирал. И не хмурьтесь так: когда вы станете генерал-губернатором, вы увидите, что Голландская Вест-Индская торговая Компания - более выгодный деловой партнер, чем жадные и воинственные англичане. Вы разве не знаете, что если дать англичанину палец, он заберет всю руку? Если нет, то узнаете. Так что я с вами не прощаюсь. Держите свои бумаги. Надеюсь, ваш барон будет достаточно компетентен, чтобы уничтожить шевалье.";
+			link.l1 = "Благодарю. Всего доброго, минхер Стайвесант.";
 			link.l1.go = "Stivesant_51";
 		break;
 		
@@ -1223,8 +1223,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "vanberg_sold":
-			dialog.text = "Ha-ha-ha! Look at that! Jacob was right, as always - this fox went to the island for a good reason. It seems there is quite a pile of gold in the chest. Very careless of you to come here alone, fellow. But then again, it makes our job that much easier!";
-			link.l1 = "The scumbags have tracked me down! I never expected that... But I shall not be an easy prey!";
+			dialog.text = "Ха-ха! Вы только посмотрите! Якоб был прав, как всегда - этот хитрец направился на остров не просто так. Похоже, в этом сундучке целая куча золота. Неосторожно было с твоей стороны, приятель, явиться сюда в одиночку. Ну да ладно, нам проще будет...";
+			link.l1 = "Выследили, гады! Не ожидал... Ну, псы, я вам так просто не дамся!";
 			link.l1.go = "vanberg_sold_1";			
 		break;
 		
@@ -1244,14 +1244,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Abihouselady":
-			dialog.text = "Are you looking for someone?";
-			link.l1 = "Yes, I am. Where is Solomon and Abigail Shneur?";
+			dialog.text = "Вы кого-то ищете?";
+			link.l1 = "Да, ищу. А где Соломон и Абигайль Шнеур?";
 			link.l1.go = "Abihouselady_1";			
 		break;
 		
 		case "Abihouselady_1":
-			dialog.text = "They don't live here any longer. They simply can not afford the place. Abigail, poor girl, is working as a governor's servant, she works hard every day to make a living for her and for her father. Solomon is drinking in the tavern every day, he couldn't bear what happened to them. They live now in a small hut not far from the sea...";
-			link.l1 = "I say... Alright, thank you for information. I have to go.";
+			dialog.text = "Они здесь больше не живут. Этот дом стал им не по карману, и они переехали в лачугу на берегу моря. Абигайль работает прислугой у губернатора, а Соломон... ну, вы всегда можете найти его в таверне. Он не выдержал невзгод и запил\nБедняжка Абигайль, она трудится целыми днями, чтобы заработать на себя и на содержание своего отца. А ведь ее руки добивался сам минхер Роденбург... пока его не арестовали. Вот это я называю - судьба...";
+			link.l1 = "Да уж.. Ладно, спасибо за информацию. Мне пора.";
 			link.l1.go = "Abihouselady_2";
 		break;
 		
@@ -1261,8 +1261,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Abihouselady_3":
-			dialog.text = "What else would you like to know, mynheer?";
-			link.l1 = "Nothing, nevermind.";
+			dialog.text = "Вы еще что-то хотели узнать, минхер?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Abihouselady_3";
 		break;
@@ -1273,7 +1273,7 @@ void ProcessDialogEvent()
 			if(sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_MAYFANG)
 			{
 				pchar.Ship.Type = GenerateShipExt(SHIP_TARTANE, true, pchar);
-				pchar.Ship.name = "A boat";
+				pchar.Ship.name = "Лодка";
 				SetBaseShipData(pchar);
 				SetCrewQuantityOverMax(PChar, 0);//сажаем на тартану
 			}
@@ -1295,13 +1295,13 @@ void ProcessDialogEvent()
 					}
 				}
 			}
-			dialog.text = "Captain, you misappropriated a ship of the Dutch West India Company. I am authorized to confiscate her and use force in case of any resistance. This is an order of Peter Stuyvesant.";
-			link.l1 = "Well, if it is an order of Peter Stuyvesant himself... I will not go to war with Holland because of just a ship. Take her.";
+			dialog.text = "Капитан, вы незаконным способом присвоили себе корабль Голландской Вест-Индской Компании. Я уполномочен конфисковать его у вас, а в случае сопротивления - применить силу без колебаний. Это приказ Питера Стайвесанта.";
+			link.l1 = "Ну что же, раз самого Питера Стайвесанта... Я не буду ссориться с Голландией из-за какого-то корабля. Забирайте.";
 			link.l1.go = "TempOffGuard_1";			
 		break;
 		
 		case "TempOffGuard_1":
-			dialog.text = "Good for you to show reason.";
+			dialog.text = "Рад, что вы проявили похвальное благоразумие.";
 			link.l1 = "...";
 			link.l1.go = "TempOffGuard_2";
 		break;
@@ -1315,8 +1315,8 @@ void ProcessDialogEvent()
 		
 		// Jason НСО
 		case "arest":
-			dialog.text = "Of course it's time to leave, you will even be accompanied. Guards! Get him!";
-		    link.l1 = "Make me!";
+			dialog.text = "Конечно пора, вас проводят. Стража! Взять его!";
+		    link.l1 = "Ну, уж нет!";
 		    link.l1.go = "fight";
 		break;
 		
@@ -1339,8 +1339,8 @@ void ProcessDialogEvent()
 		
 		//замечание по обнаженному оружию от персонажей типа citizen
 		case "CitizenNotBlade":
-			dialog.text = NPCharSexPhrase(NPChar, "Hey, listen up! As a citizen of this town, I kindly ask you not to walk around with an unsheathed blade.", "You know, as a citizen of this town, I kindly ask you not to walk around with an unsheathed blade.");
-			link.l1 = LinkRandPhrase("Fine.", "Alright.", "As you say...");
+			dialog.text = NPCharSexPhrase(NPChar, "Послушайте, я, как гражданин этого города, прошу вас не ходить у нас с обнаженным клинком.", "Знаете, я, как гражданка этого города, прошу вас не ходить у нас с обнаженным клинком.");
+			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажете...");
 			link.l1.go = "exit";
 		break;
 	}

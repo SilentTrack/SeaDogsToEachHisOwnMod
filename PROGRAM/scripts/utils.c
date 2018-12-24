@@ -121,10 +121,10 @@ void ChangeNationRelationFromRelationAgentComplete(string sQuest)
     
 	if (CheckAttribute(pchar, "GenQuest."+(sNation)+".loyer"))
 	{
-		Log_Info("Albert Loxley has done his job.");
+		Log_Info("Альберт Локсли выполнил свою работу.");
 		DeleteAttribute(pchar, "GenQuest."+(sNation)+".loyer");
 	}
-	else Log_Info("A diplomat has done his job.");
+	else Log_Info("Дипломат выполнил свою работу.");
 }
 
 void ChangeNationRelationFromFadeyComplete(string sQuest) 
@@ -149,7 +149,7 @@ void ChangeNationRelationFromFadeyComplete(string sQuest)
 	if (CheckAttribute(sld, "quest.relation")) DeleteAttribute(sld, "quest.relation");
 	if (CheckAttribute(pchar, "GenQuest.FadeyNation")) DeleteAttribute(pchar, "GenQuest.FadeyNation");
 	
-	Log_Info("Fadey has done his job."); // patch-10
+	Log_Info("Фадей выполнил свою работу"); // patch-10
 }
 
 void ChangeNationRelationFromBenuaComplete(string sQuest) // 141012
@@ -174,7 +174,7 @@ void ChangeNationRelationFromBenuaComplete(string sQuest) // 141012
 	if (CheckAttribute(sld, "quest.relation")) DeleteAttribute(sld, "quest.relation");
 	if (CheckAttribute(pchar, "GenQuest.BenuaNation")) DeleteAttribute(pchar, "GenQuest.BenuaNation");
 	
-	Log_Info("Abbot Benoit has done his job."); // patch-10
+	Log_Info("Аббат Бенуа выполнил свою работу"); // patch-10
 }
 
 int CalculateRelationSum(int iNation)
@@ -1150,6 +1150,11 @@ void CreateModel(int iChar, string sType, int iSex)
 				iNumber = rand(5)+1;
 			}
 		break;
+		
+		case "mercenary": //наемники
+			sBody = "citiz";
+			iNumber = rand(9)+51;
+		break;
 	}
 
 	sPrefix = "_";
@@ -1842,7 +1847,7 @@ ref GetOurSailor(string _id) // моежт быть нужно несколько
     
 	i = NPC_GenerateCharacter(_id, smodel, "man", ani, 10, sti(pchar.nation), 0, true, "soldier");
 	CrOur = GetCharacter(i);
-	CrOur.name     = "Sailor";
+	CrOur.name     = "Матрос";
 	CrOur.lastname = "";
 	
 	return CrOur;

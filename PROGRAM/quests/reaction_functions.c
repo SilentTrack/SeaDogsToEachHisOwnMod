@@ -68,8 +68,8 @@ void Create_Baltazar()//создание торговца
 	sld = GetCharacter(NPC_GenerateCharacter("Baltazar", "trader_2", "man", "man", 5, HOLLAND, -1, true, "quest"));
 	FantomMakeSmallSailor(sld, SHIP_FLEUT, "", CANNON_TYPE_CANNON_LBS12, 10+rand(5), 10+rand(5), 10+rand(5), 10+rand(5), 15+rand(5));
     SetFantomParamFromRank(sld, 5, true); 
-	sld.name = "Baltazar";
-	sld.lastname = "Ridderbok";
+	sld.name = "Бальтазар";
+	sld.lastname = "Риддербок";
 	sld.greeting = "captain_trader";
 	sld.AnalizeShips = true;
 	SetCharacterGoods(sld, GOOD_FOOD, 222);
@@ -289,7 +289,7 @@ void SantiagoTrip_Migel(string qName)//создаем Мигеля
 	int iRank = 12+MOD_SKILL_ENEMY_RATE;
 	sld = GetCharacter(NPC_GenerateCharacter("SantiagoEnemy2", "mercen_17", "man", "man", iRank, SPAIN, -1, true, "quest"));
 	FantomMakeCoolFighter(sld, iRank, 10, 10, "blade_05", "", "bullet", iRank);
-	sld.name = "Miguel";
+	sld.name = "Мигель";
 	sld.lastname = "";
 	sld.dialog.Filename = "Quest\HollandGambit\OtherNPC.c";
 	sld.dialog.currentnode = "Santiago_Trip_12";
@@ -376,7 +376,7 @@ void Create_Mirage(string qName)//создаем 'Мираж'
 	Group_FindOrCreateGroup("Mirage");
 	Group_SetType("Mirage", "pirate");
 	sld = GetCharacter(NPC_GenerateCharacter("MirageCap", "mercen_"+(rand(10)+1), "man", "man", iRank, PIRATE, -1, false, "quest"));
-	FantomMakeSmallSailor(sld, SHIP_MIRAGE, "Mirage", CANNON_TYPE_CANNON_LBS20, 40+rand(10), 30+rand(20), 30+rand(20), 30+rand(15), 25+rand(25));
+	FantomMakeSmallSailor(sld, SHIP_MIRAGE, "Мираж", CANNON_TYPE_CANNON_LBS20, 40+rand(10), 30+rand(20), 30+rand(20), 30+rand(15), 25+rand(25));
 	FantomMakeCoolFighter(sld, iRank, 20, 20, "blade_10", "pistol2", "grapeshot", 30);
 	DeleteAttribute(sld, "SaveItemsForDead");
 	DeleteAttribute(sld, "DontClearDead");
@@ -496,7 +496,7 @@ void Jacob_RemoveShip()//удаление корабля
 	if(sti(RealShips[sti(pchar.ship.type)].basetype) == sti(pchar.questTemp.HWIC.Holl.ShipType))
 	{
 		pchar.Ship.Type = GenerateShipExt(SHIP_TARTANE, true, pchar);
-		pchar.Ship.name = "Boat";
+		pchar.Ship.name = "Лодка";
 		SetBaseShipData(pchar);
 		SetCrewQuantityOverMax(PChar, 0);//сажаем на тартану
 	}
@@ -568,7 +568,7 @@ void CreateFleetwoodOnMap(string qName)//подгружаем в море энкаунтер Флитвуда
 	int iRank = 15+MOD_SKILL_ENEMY_RATE/2;
 	Group_FindOrCreateGroup("Fleetwood_Attack");
 	sld = characterFromId("Fleetwood");
-	FantomMakeSmallSailor(sld, SHIP_VALCIRIA, "Valkyrie", CANNON_TYPE_CANNON_LBS20, 40+rand(10), 35+rand(20), 35+rand(20), 30+rand(15), 35+rand(25));
+	FantomMakeSmallSailor(sld, SHIP_VALCIRIA, "Валькирия", CANNON_TYPE_CANNON_LBS20, 40+rand(10), 35+rand(20), 35+rand(20), 30+rand(15), 35+rand(25));
 	FantomMakeCoolFighter(sld, iRank, 30, 30, "blade_14", "pistol3", "grapeshot", 50);
 	GiveItem2Character(sld, "FleetwoodJournal");
 	GiveItem2Character(sld, "sand_clock");
@@ -587,7 +587,7 @@ void CreateFleetwoodOnMap(string qName)//подгружаем в море энкаунтер Флитвуда
     Group_LockTask("Fleetwood_Attack");
 	SetCharacterRelationBoth(sti(sld.index), GetMainCharacterIndex(), RELATION_ENEMY);
 	Sea_LoginGroupCurrentSea("Fleetwood_Attack");
-	log_info("Valkyrie is on the horizon!");
+	log_info("Валькирия на горизонте!");
 	PlaySound("interface\_EvEnemy1.wav");
 	
 	pchar.quest.FleetwoodAttack_AfterBattle.win_condition.l1 = "Group_Death";
@@ -635,9 +635,9 @@ void CreateEmptyMeifeng(string qName)//Мейфенг без китайца в порту Виллемстада
 	Island_SetReloadEnableGlobal("Dominica", true);//patch-7
 	Group_FindOrCreateGroup("Meifeng_Empty");
 	sld = GetCharacter(NPC_GenerateCharacter("MeifengCap", "off_hol_2", "man", "man", 40, HOLLAND, -1, true, "quest"));
-	sld.name = "Hainrih";
-	sld.lastname = "Claus";
-	FantomMakeSmallSailor(sld, SHIP_MAYFANG, "Meifeng", CANNON_TYPE_CANNON_LBS20, 90+rand(10), 80+rand(20), 80+rand(20), 80+rand(15), 75+rand(25));
+	sld.name = "Хейнрих";
+	sld.lastname = "Клаус";
+	FantomMakeSmallSailor(sld, SHIP_MAYFANG, "Мейфенг", CANNON_TYPE_CANNON_LBS20, 90+rand(10), 80+rand(20), 80+rand(20), 80+rand(15), 75+rand(25));
 	SetFantomParamFromRank(sld, 40, true); 
 	Character_SetAbordageEnable(sld, false);//нельзя абордировать
 	sld.AnalizeShips = true;
@@ -690,7 +690,7 @@ void Lucas_ExangeShip()//обмен корабля
 void GetMeifengToCharacter(ref rChar)//сажаем на Мейфенг
 {
 	rChar.Ship.Type = GenerateShipExt(SHIP_MAYFANG, true, rChar);
-	rChar.Ship.name = "Meifeng";
+	rChar.Ship.name = "Мейфенг";
 	SetBaseShipData(rChar);
 	rChar.Ship.Cannons.Type = CANNON_TYPE_CANNON_LBS20;
 	SetCrewQuantityFull(rChar);
@@ -840,7 +840,7 @@ void IslaDeCocheInSea(string qName)//вышли у острова
 void IslaDeCocheInGrot(string qName)//вошли в грот
 {
 	PlaySound("interface\notebook.wav");
-	Log_info("Here is the grotto. I should look for Solomon's stash here.");
+	Log_info("Вот и грот. Следует искать схрон Соломона именно здесь.");
 }
 
 void SkullAztec_Find(string qName)//нашли схрон и череп
@@ -880,8 +880,8 @@ void MerdokInUndergroundCave(string qName)//установим Мердока и Тонзага в подзем
 {
 	sld = characterFromId("Bridgetown_tavernkeeper");
 	sld.model = "barmen_3";
-	sld.name = "Harry";
-	sld.lastname = "Fletcher";//перерисуем бармена Бриджтауна
+	sld.name = "Гарри";
+	sld.lastname = "Флетчер";//перерисуем бармена Бриджтауна
 	sld.greeting = "barmen_1";
 	LAi_group_Delete("EnemyFight");
 	LAi_LocationDisableMonGenTimer("SentJons_TownCave", 3); //монстров не генерить
@@ -1058,7 +1058,7 @@ void HWICSilverConvoyInWorld()//создаем серебряный конвой
 		if (i == 2) SetCharacterGoods(sld, GOOD_SILVER, sti(pchar.questTemp.HWIC.Eng.SlvQty));//положить в трюм серебро
 		sld.mapEnc.type = "war";
 		sld.mapEnc.worldMapShip = "quest_ship";
-        sld.mapEnc.Name = "silver convoy";
+        sld.mapEnc.Name = "cеребряный конвой";
         Group_AddCharacter(sGroup, sCapId + i);
 	}
 	Group_SetGroupCommander(sGroup, sCapId+ "1");
@@ -1101,7 +1101,7 @@ void HollConvoy_Remove()//удаляем товар и корабль
 	if(sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_EASTINDIAMAN)
 	{
 		pchar.Ship.Type = GenerateShipExt(SHIP_TARTANE, true, pchar);
-		pchar.Ship.name = "Boat";
+		pchar.Ship.name = "Лодка";
 		SetBaseShipData(pchar);
 		SetCrewQuantityOverMax(PChar, 0);//сажаем на тартану
 	}
@@ -1148,7 +1148,7 @@ void Knippel_InHouse(string qName)//заходим в дом
 void GetValckiriaToCharacter(ref rChar)//сажаем на Валькирию
 {
 	rChar.Ship.Type = GenerateShipExt(SHIP_VALCIRIA, true, rChar);
-	rChar.Ship.name = "Valkyrie";
+	rChar.Ship.name = "Валькирия";
 	SetBaseShipData(rChar);
 	rChar.Ship.Cannons.Type = CANNON_TYPE_CANNON_LBS20;
 	SetCrewQuantityFull(rChar);
@@ -1211,7 +1211,7 @@ void CreateVanBergInWorld()//запускаем Ван Берга на карте
 	Group_DeleteGroup(sGroup);
 	Group_FindOrCreateGroup(sGroup);
 	sld = characterFromId("JacobBerg");
-	FantomMakeCoolSailor(sld, SHIP_MIRAGE, "Mirage", CANNON_TYPE_CANNON_LBS20, 60, 60, 60);
+	FantomMakeCoolSailor(sld, SHIP_MIRAGE, "Мираж", CANNON_TYPE_CANNON_LBS20, 60, 60, 60);
 	FantomMakeCoolFighter(sld, iRank, 60, 60, "blade_14", "pistol1", "bullet", 100);
 	GiveItem2Character(sld, "JacobJournal");
 	GiveItem2Character(sld, "sand_clock");
@@ -1229,7 +1229,7 @@ void CreateVanBergInWorld()//запускаем Ван Берга на карте
 	sld.AnalizeShips = true;
 	sld.mapEnc.type = "war";
 	sld.mapEnc.worldMapShip = "quest_ship";
-	sld.mapEnc.Name = "Mirage";
+	sld.mapEnc.Name = "Мираж";
 	SetCharacterPerk(sld, "MusketsShoot");
 	Group_AddCharacter(sGroup, sCapId);
     Group_SetGroupCommander(sGroup, sCapId);
@@ -1307,7 +1307,7 @@ void Fleetwood_RemoveShip()//удаление корабля
 	if(sti(RealShips[sti(pchar.ship.type)].basetype) == sti(pchar.questTemp.HWIC.Eng.ShipType))
 	{
 		pchar.Ship.Type = GenerateShipExt(SHIP_TARTANE, true, pchar);
-		pchar.Ship.name = "Boat";
+		pchar.Ship.name = "Лодка";
 		SetBaseShipData(pchar);
 		SetCrewQuantityOverMax(PChar, 0);//сажаем на тартану
 	}
@@ -1372,7 +1372,7 @@ void CreateChavinavyMonster(string qName)//драка с монстром
 	LAi_SetStayType(Pchar);
 	sld = GetCharacter(NPC_GenerateCharacter("Chavinavi", "Chavinavi_1", "man", "skeleton", 20+MOD_SKILL_ENEMY_RATE*3, PIRATE, -1, false, "quest"));
 	FantomMakeCoolFighter(sld, 20+MOD_SKILL_ENEMY_RATE*3, 70, 70, "topor_01", "pistol6", "bullet", MOD_SKILL_ENEMY_RATE*60);
-	sld.name = "Chavinavy";
+	sld.name = "Чавинави";
 	sld.lastname = "";
 	sld.greeting = "";
 	sld.SaveItemsForDead = true;
@@ -1497,7 +1497,7 @@ void CreateLucasOnMeifeng(string qName)//создадим Лукаса на Мейфенг
 	bQuestDisableMapEnter = true; // patch-4
 	Group_FindOrCreateGroup("Lucas_Attack");
 	sld = characterFromId("Lucas");
-	FantomMakeSmallSailor(sld, SHIP_MAYFANG, "Meifeng", CANNON_TYPE_CANNON_LBS20, 100, 70, 70, 90, 70);
+	FantomMakeSmallSailor(sld, SHIP_MAYFANG, "Мейфенг", CANNON_TYPE_CANNON_LBS20, 100, 70, 70, 90, 70);
 	FantomMakeCoolFighter(sld, 25, 70, 70, "blade_30", "pistol5", "bullet", 100); // приз - офицерский катлас
     sld.AlwaysEnemy = true;
     sld.DontRansackCaptain = true;
@@ -1544,8 +1544,8 @@ void CreateFernandoOnLand(string qName)//испанец в городе
 	pchar.questTemp.HWIC.Self = "FernandoCreated";
 	sld = GetCharacter(NPC_GenerateCharacter("HWICFernando", "Rodriges", "man", "man", 20, SPAIN, 1, false, "quest"));
 	FantomMakeCoolFighter(sld, 20, 50, 50, "blade_09", "pistol1", "bullet", 50);
-	sld.name = "Fernando";
-	sld.lastname = "Rodriges";
+	sld.name = "Фернандо";
+	sld.lastname = "Родригес";
 	sld.greeting = "hambit_other_5";
 	sld.dialog.Filename = "Quest\HollandGambit\OtherNPC.c";
 	sld.dialog.currentnode = "Fernando";
@@ -1571,8 +1571,8 @@ void CreateFernandoOnSea(string qName)//испанец на море
 	sld = GetCharacter(NPC_GenerateCharacter("HWICFernando", "Rodriges", "man", "man", 20, SPAIN, -1, false, "quest"));
 	FantomMakeSmallSailor(sld, SHIP_BRIGANTINE, "", CANNON_TYPE_CANNON_LBS16, 45, 40, 40, 50, 50);
 	FantomMakeCoolFighter(sld, 20, 50, 50, "blade_09", "pistol1", "bullet", 150);
-	sld.name = "Fernando";
-	sld.lastname = "Rodriges";
+	sld.name = "Фернандо";
+	sld.lastname = "Родригес";
 	sld.greeting = "hambit_other_5";
 	sld.SaveItemsForDead = true;
 	sld.DontClearDead = true;
@@ -1819,7 +1819,7 @@ void CreateKnippelShip(string qName)//создаем бригантину Чарли
 	Group_SetType("Knippel_Attack", "war");
 	sld = characterFromId("Knippel");
 	sld.nation = HOLLAND;
-	FantomMakeSmallSailor(sld, SHIP_BRIGANTINE, "Zeekalf", CANNON_TYPE_CULVERINE_LBS18, 45, 90, 85, 30, 80);
+	FantomMakeSmallSailor(sld, SHIP_BRIGANTINE, "Зеекалф", CANNON_TYPE_CULVERINE_LBS18, 45, 90, 85, 30, 80);
 	sld.SaveItemsForDead = true;
 	sld.DontClearDead = true;
 	sld.DontRansackCaptain = true; 
@@ -1862,8 +1862,8 @@ void Knippel_AfterBattle(string qName)//реакция на победу
 		AddComplexSelfExpToScill(60, 60, 60, 60);
 		AddCharacterExpToSkill(pchar, "Fortune", 100);//везение
 		ref chr = GetCharacter(NPC_GenerateCharacter("KnippelClone", "Kneepel", "man", "man_B", 25, ENGLAND, -1, false, "quest"));
-		chr.name = "Charlie";
-		chr.lastname = "Knippel";
+		chr.name = "Чарли";
+		chr.lastname = "Книппель";
 		LAi_SetGroundSitType(chr);
 		ChangeCharacterAddressGroup(chr, "My_Deck", "rld", "aloc3");
 		chr.Dialog.Filename = "Quest\HollandGambit\Knippel.c";
@@ -1877,7 +1877,7 @@ void Knippel_AfterBattle(string qName)//реакция на победу
 			else ChangeCharacterAddressGroup(sld, "My_Deck", "rld", "loc3");
 		}
 		sld = GetCharacter(NPC_GenerateCharacter("Sailor_3", "citiz_36", "man", "man", 25, pchar.nation, -1, false, "soldier"));
-		sld.name 	= "Alonso";
+		sld.name 	= "Алонсо";
 		sld.lastname = "";
 		sld.greeting = "hambit_other_4";
 		sld.Dialog.Filename = "Quest\HollandGambit\OtherNPC.c";
@@ -1929,7 +1929,7 @@ void RemoveAbigileOver(string qName)//удаление Абигайль
 	CloseQuestHeader("Holl_Gambit");
 	pchar.questTemp.HWIC.Self = "end";
 	pchar.questTemp.HWIC.Detector = "self_fail";
-	Log_Info("Abigail died of calenture!");
+	Log_Info("Абигайль заболела тропической лихорадкой и умерла!");
 }
 
 void RemoveKnippelOver(string qName)//удаление Книппеля (клона в трюме)
@@ -1947,7 +1947,7 @@ void RemoveKnippelOver(string qName)//удаление Книппеля (клона в трюме)
 	CloseQuestHeader("Holl_Gambit");
 	pchar.questTemp.HWIC.Self = "end";
 	pchar.questTemp.HWIC.Detector = "self_fail";
-	Log_Info("Charlie Knippel died of wounds!");
+	Log_Info("Чарли Книппель умер от полученных ран!");
 }
 
 void RemoveLongwayOver(string qName)//удаление Лонгвэя (клона в трюме)
@@ -1964,12 +1964,12 @@ void RemoveLongwayOver(string qName)//удаление Лонгвэя (клона в трюме)
 	if (pchar.questTemp.HWIC.Self == "GotoGuadeloupe")
 	{
 	AddQuestRecord("Holl_Gambit", "3-71");
-	Log_Info("Longway died of calenture!");
+	Log_Info("Лонгвэй умер тропической лихорадки!");
 	}
 	else
 	{
 	AddQuestRecord("Holl_Gambit", "3-70");
-	Log_Info("Longway died of wounds!");
+	Log_Info("Лонгвэй умер от полученных ран!");
 	}
 	if (CheckShipTypeInSquadron(SHIP_MAYFANG) > 0)//если есть шебека - отберем
 		{
@@ -1996,7 +1996,7 @@ void AbigileDied(string qName)//для отморозков, решивших пострелять по Аби
 //-------------------------------------------4 задание------------------------------------------------
 void MC_writeLetterGo(string qName)//пишем письмо
 {
-	SetLaunchFrameFormParam("An hour passed...", "", 0, 5);
+	SetLaunchFrameFormParam("Прошел час...", "", 0, 5);
 	LaunchFrameForm();
 	WaitDate("", 0, 0, 0, 1, 10); //крутим время
 	RecalculateJumpTable();
@@ -2027,8 +2027,8 @@ void CreateDrunckardInTavern()//создаем пьянтоса
 	sld = GetCharacter(NPC_GenerateCharacter("Drunkard", "panhandler_6", "man", "man", 10, ENGLAND, -1, true, "quest"));
 	FantomMakeCoolFighter(sld, 10, 10, 10, "topor_1", "pistol3", "bullet", 50);
 	RemoveAllCharacterItems(sld, true);
-	sld.name = "Jack";
-	sld.lastname = "Harrison";
+	sld.name = "Джек";
+	sld.lastname = "Гаррисон";
 	sld.dialog.FileName = "Quest\HollandGambit\OtherNPC.c";
 	sld.dialog.currentnode = "Drunkard";
 	sld.greeting = "poorman_male";
@@ -2152,7 +2152,7 @@ void CreateValkiriaBrig(string qName)//создаем Валькирию без Флитвуда
 	Group_FindOrCreateGroup("Val_Attack");
 	Group_SetType("Val_Attack", "war");
 	sld = GetCharacter(NPC_GenerateCharacter("ValCap", "off_eng_4", "man", "man", 25, ENGLAND, -1, true, "quest"));
-	FantomMakeSmallSailor(sld, SHIP_VALCIRIA, "Valkyrie", CANNON_TYPE_CANNON_LBS20, 50, 60, 60, 60, 60);
+	FantomMakeSmallSailor(sld, SHIP_VALCIRIA, "Валькирия", CANNON_TYPE_CANNON_LBS20, 50, 60, 60, 60, 60);
 	sld.DontRansackCaptain = true; 
 	sld.AnalizeShips = true;
 	sld.Alwaysenemy = true;
@@ -2208,7 +2208,7 @@ void CreateHWICCureerOnMap(string qName)//энкаунтер курьера на карте
 	Group_DeleteGroup(sGroup);
 	Group_FindOrCreateGroup(sGroup);
 	sld = GetCharacter(NPC_GenerateCharacter("CureerCap", "citiz_41", "man", "man", 20, HOLLAND, 15, true, "quest"));
-	FantomMakeSmallSailor(sld, SHIP_BRIGANTINE, "Hoop", CANNON_TYPE_CANNON_LBS16, 50, 45, 45, 50, 60);
+	FantomMakeSmallSailor(sld, SHIP_BRIGANTINE, "Хооп", CANNON_TYPE_CANNON_LBS16, 50, 45, 45, 50, 60);
 	SetCaptanModelByEncType(sld, "war");
 	SetRandomNameToCharacter(sld);
 	LAi_SetHP(sld, 100+MOD_SKILL_ENEMY_RATE*30, 100+MOD_SKILL_ENEMY_RATE*30);
@@ -2240,7 +2240,7 @@ void CreateHWICCureerOnMap(string qName)//энкаунтер курьера на карте
 		DeleteAttribute(sld, "DontClearDead");
 		sld.mapEnc.type = "war";
 		sld.mapEnc.worldMapShip = "quest_ship";
-        sld.mapEnc.Name = "brigantine 'Hoop'";
+        sld.mapEnc.Name = "бригантина 'Хооп'";
         Group_AddCharacter(sGroup, "CureerCap");
 	Group_SetGroupCommander(sGroup, "CureerCap");
     Group_SetTaskAttackInMap(sGroup, PLAYER_GROUP);
@@ -2272,7 +2272,7 @@ void CuracaoExploring(string qName)//на Кюрасао
 	Group_FindOrCreateGroup("Meifeng_Empty");
 	Group_SetType("Meifeng_Empty", "pirate");//тип группы
 	sld = characterFromId("Longway");
-	FantomMakeSmallSailor(sld, SHIP_MAYFANG, "Meifeng", CANNON_TYPE_CANNON_LBS20, 50, 65, 65, 50, 90);
+	FantomMakeSmallSailor(sld, SHIP_MAYFANG, "Мейфенг", CANNON_TYPE_CANNON_LBS20, 50, 65, 65, 50, 90);
 	Character_SetAbordageEnable(sld, false);//нельзя абордировать
 	sld.AnalizeShips = true;
 	SetCharacterPerk(sld, "MusketsShoot");
@@ -2343,7 +2343,7 @@ void CreateMeifengOnMap(string qName)//энкаунтер Мейфенг на карте
 	Character_SetAbordageEnable(sld, true);//можно абордировать
 	sld.mapEnc.type = "war";
 	sld.mapEnc.worldMapShip = "quest_ship";
-	sld.mapEnc.Name = "'Meifeng'";
+	sld.mapEnc.Name = "'Мейфенг'";
 	Group_AddCharacter(sGroup, "Longway");
 	
 	Group_SetGroupCommander(sGroup, "Longway");
@@ -2389,7 +2389,7 @@ void Meifeng_AfterBattle(string qName)//реакция на победу
 		AddComplexSeaExpToScill(150, 150, 150, 200, 150, 150, 0);
 		AddComplexSelfExpToScill(60, 60, 60, 60);
 		ref chr = GetCharacter(NPC_GenerateCharacter("LongwayClone", "Longway", "man", "man", 20, HOLLAND, -1, false, "quest"));
-		chr.name = "Longway";
+		chr.name = "Лонгвэй";
 		chr.lastname = "";
 		LAi_SetStayType(chr);
 		ChangeCharacterAddressGroup(chr, "My_Deck", "rld", "aloc3");
@@ -2433,12 +2433,12 @@ void CreatePiterHalleon(string qName)//галеон Стайвесанта
 {
 	Group_FindOrCreateGroup("Stivesant_Halleon");
 	sld = GetCharacter(NPC_GenerateCharacter("Stivesant", "huber_1", "man", "man_B", 35, HOLLAND, 9, false, "quest"));
-	FantomMakeSmallSailor(sld, SHIP_GALEON_H, "Frederic", CANNON_TYPE_CANNON_LBS24, 100, 100, 100, 100, 100);
+	FantomMakeSmallSailor(sld, SHIP_GALEON_H, "Фредерик", CANNON_TYPE_CANNON_LBS24, 100, 100, 100, 100, 100);
 	FantomMakeCoolFighter(sld, 35, 90, 90, "blade_15", "pistol5", "bullet", 250);
 	DeleteAttribute(sld, "SaveItemsForDead");
 	DeleteAttribute(sld, "DontClearDead");
-	sld.name = "Peter";
-	sld.lastname = "Stuyvesant";
+	sld.name = "Питер";
+	sld.lastname = "Стайвесант";
 	sld.greeting = "Stivesant"; 
 	Character_SetAbordageEnable(sld, false);//нельзя абордировать
 	sld.DontRansackCaptain = true;
@@ -2645,10 +2645,10 @@ void CreateTradeFleut(string qName)//флейт Тоффа Келлера
 	Group_FindOrCreateGroup("Keller_Fleut");
 	Group_SetType("Keller_Fleut", "trade");//тип группы
 	sld = GetCharacter(NPC_GenerateCharacter("Keller", "trader_2", "man", "man", 20, HOLLAND, 5, false, "quest"));
-	FantomMakeSmallSailor(sld, SHIP_FLEUT, "Leiden", CANNON_TYPE_CANNON_LBS12, 50, 40, 40, 60, 60);
+	FantomMakeSmallSailor(sld, SHIP_FLEUT, "Лейден", CANNON_TYPE_CANNON_LBS12, 50, 40, 40, 60, 60);
 	FantomMakeCoolFighter(sld, 20, 30, 30, "blade_08", "pistol3", "grapeshot", 50);
-	sld.name = "Toff";
-	sld.lastname = "Keller";
+	sld.name = "Тофф";
+	sld.lastname = "Келлер";
 	DeleteAttribute(sld, "SaveItemsForDead");
 	DeleteAttribute(sld, "DontClearDead");
 	Character_SetAbordageEnable(sld, false);//нельзя абордировать
@@ -2732,7 +2732,7 @@ void CreateVanbergInSea(string qName)//Якоб ван Берг у острова
 	Group_FindOrCreateGroup("Mirage");
 	Group_SetType("Mirage", "pirate");//тип группы
 	sld = characterFromId("JacobBerg");
-	FantomMakeCoolSailor(sld, SHIP_MIRAGE, "Mirage", CANNON_TYPE_CANNON_LBS20, 70, 70, 70);
+	FantomMakeCoolSailor(sld, SHIP_MIRAGE, "Мираж", CANNON_TYPE_CANNON_LBS20, 70, 70, 70);
 	FantomMakeCoolFighter(sld, 30, 80, 80, "topor_04", "pistol5", "bullet", 150); // приз - секира 090912
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
@@ -2811,7 +2811,7 @@ void MakeAbiPoor(string qName)//Аби и Соломон остались без гроша
 	sld.Dialog.Filename = "Quest\HollandGambit\OtherNPC.c";
 	sld.dialog.currentnode = "Abihouselady";
 	ChangeCharacterAddressGroup(sld, "Villemstad_houseSp2", "goto", "goto1");
-	log_info("You didn't return money to Abigail thus making her a beggar");
+	log_info("Вы не вернули деньги Абигайль и обрекли ее на нищету");
 	ChangeCharacterComplexReputation(pchar, "nobility", -20);
 }
 
@@ -2914,8 +2914,8 @@ void Sharlie_CreateStorehelper()//создаем помощника торговца
 	sld = GetCharacter(NPC_GenerateCharacter("Storehelper", "Fugitive", "man", "man", 10, FRANCE, 3, true, "soldier"));
 	SetFantomParamFromRank(sld, 10, true);
 	sld.Dialog.Filename = "Quest\Sharlie\StartMiniQuests.c";
-	sld.name = "Gralam";
-	sld.lastname = "Lavua";
+	sld.name = "Гийом";
+	sld.lastname = "Лавуа";
 	sld.greeting = "town_pirate";
 	LAi_SetImmortal(sld, true);
 	LAi_group_MoveCharacter(sld, "PIRATE_CITIZENS");
@@ -3031,10 +3031,10 @@ void StorehelperFinal(string qName)//спустя час
 //привезти ром контрабандой для бармена
 void Rum_CreateBarkas(string qName)//баркас у пирса
 {
-	log_info("The boat is waiting for you at the pier now");
+	log_info("Баркас поставлен к пирсу");
 	AddQuestRecord("SharlieB", "7");
 	pchar.Ship.Type = GenerateShipExt(SHIP_TARTANE, true, pchar);
-	pchar.Ship.name = "Boat";
+	pchar.Ship.name = "Лодка";
 	SetBaseShipData(pchar);
 	NullCharacterGoods(pchar);
 	AddCharacterGoods(pchar, GOOD_FOOD, 10);
@@ -3070,7 +3070,7 @@ void Rum_FindLugger(string qName)//вышли в море - ставим люггер
 	Group_FindOrCreateGroup("Rum_CapGroup");
 	Group_SetType("Rum_CapGroup", "pirate");//тип группы
 	sld = GetCharacter(NPC_GenerateCharacter("Rum_Cap", "mercen_5", "man", "man", 20, FRANCE, 5, true, "quest"));
-	FantomMakeSmallSailor(sld, SHIP_LUGGER, "Ghost", CANNON_TYPE_CANNON_LBS3, 50, 45, 45, 40, 45);
+	FantomMakeSmallSailor(sld, SHIP_LUGGER, "Призрак", CANNON_TYPE_CANNON_LBS3, 50, 45, 45, 40, 45);
 	FantomMakeCoolFighter(sld, 20, 50, 50, "blade_05", "pistol1", "bullet", 100);
 	sld.Dialog.Filename = "Quest\Sharlie\StartMiniQuests.c";
 	sld.dialog.currentnode = "Rum_Cap";
@@ -3089,7 +3089,7 @@ void Rum_FindLugger(string qName)//вышли в море - ставим люггер
 
 void Rum_FindLuggerOver(string qName)//не нашли
 {
-	Log_Info("You are too late for the meeting!");
+	Log_Info("Вы опоздали прибыть на встречу!");
 	PlaySound("interface\notebook.wav");
 	sld = characterFromId("Rum_Cap");
 	sld.dialog.currentnode = "Rum_Cap_Over";
@@ -3114,7 +3114,7 @@ void Rum_RemoveBarkas(string qName)//удаляем баркас
 
 void Rum_CarrierEnter()//погрузка
 {
-	SetLaunchFrameFormParam("An hour passed..."+ NewStr() +"Rum was loaded on your boat", "", 0, 5);
+	SetLaunchFrameFormParam("Прошел час"+ NewStr() +"Ром погружен на ваш баркас", "", 0, 5);
 	LaunchFrameForm();
 	WaitDate("", 0, 0, 0, 1, 10); //крутим время
 	RecalculateJumpTable();
@@ -3167,8 +3167,8 @@ void Sharlie_CreateGigoloMan()//ставим дворянина и прерывание на джунгли
 void Sharlie_CreateGigoloGirl()//ставим девочку
 {
 	sld = GetCharacter(NPC_GenerateCharacter("GigoloGirl", "women_24", "woman", "towngirl", 3, FRANCE, -1, false, "soldier"));
-	sld.name = "Lutisse";
-	sld.lastname = "Montane";
+	sld.name = "Люсиль";
+	sld.lastname = "Монтань";
 	sld.City = "Fortfrance";
 	sld.CityType = "horse";
 	LAi_SetLoginTime(sld, 23.0, 0.0);
@@ -3342,8 +3342,8 @@ void RescueDaughter_CreateProsper()//создаем Проспера
 	SetCharacterPerk(sld, "BasicDefense");
 	sld.MusketerDistance = 20;
 	sld.SuperShooter = true;
-	sld.name = "Prosper";
-	sld.lastname = "Trubal";
+	sld.name = "Проспер";
+	sld.lastname = "Трубаль";
 	sld.Dialog.Filename = "Quest\Sharlie\StartMiniQuests.c";
 	sld.dialog.currentnode = "Prosper";
 	sld.greeting = "prosper";
@@ -3455,8 +3455,8 @@ void RescueDaughter_CreateIndiansGrot(string qName)//бой с индеями в гроте
 	//Селина
 	sld = GetCharacter(NPC_GenerateCharacter("RD_Selina", "Selena", "woman", "towngirl", 1, FRANCE, -1, true, "quest"));
 	SetFantomParamFromRank(sld, 1, true);
-	sld.name = "Selina";
-	sld.lastname = "Trubal";
+	sld.name = "Селина";
+	sld.lastname = "Трубаль";
 	sld.Dialog.Filename = "Quest\Sharlie\StartMiniQuests.c";
 	sld.greeting = "rapers_girl_2";
 	LAi_SetImmortal(sld, true);
@@ -3466,8 +3466,8 @@ void RescueDaughter_CreateIndiansGrot(string qName)//бой с индеями в гроте
 	//Жильберт
 	sld = GetCharacter(NPC_GenerateCharacter("RD_Jilberte", "citiz_17", "man", "man", 5, FRANCE, -1, true, "quest"));
 	FantomMakeCoolFighter(sld, 5, 5, 5, "", "", "", 10);
-	sld.name = "Gilbert";
-	sld.lastname = "Cursee";
+	sld.name = "Жильберт";
+	sld.lastname = "Курси";
 	sld.Dialog.Filename = "Quest\Sharlie\StartMiniQuests.c";
 	sld.dialog.currentnode = "Jilberte";
 	LAi_SetImmortal(sld, true);
@@ -3564,8 +3564,8 @@ void SharlieSeabattle_agent(string qName)//пиратский агент
 	FantomMakeSmallSailor(sld, SHIP_WAR_TARTANE, "", CANNON_TYPE_CANNON_LBS3, 15, 10, 15, 10, 10);
 	sld.Dialog.Filename = "Quest\Sharlie\OtherNPC.c";
 	sld.Dialog.currentnode = "Seabattle_pirate";
-	sld.name = "Wolter";
-	sld.lastname = "Catcher";
+	sld.name = "Уолтер";
+	sld.lastname = "Катчер";
 	sld.greeting = "town_pirate";
 	GetCharacterPos(pchar, &locx, &locy, &locz);
 	ChangeCharacterAddressGroup(sld, "Fortfrance_town", "goto", LAi_FindNearestLocator("goto", locx, locy, locz));
@@ -3632,7 +3632,7 @@ void FreeTichingituOver(string qName)//удаляем Тичингиту
 void SetTichingituJail()//ставим Тичингиту
 {
 	sld = GetCharacter(NPC_GenerateCharacter("Tichingitu", "maskog", "man", "man", 1, FRANCE, 10, false, "quest"));
-	sld.name = "Tichingitu"; // 270912
+	sld.name = "Тичингиту"; // 270912
 	sld.lastname = "";
 	sld.greeting = "Tichingitu";
     sld.Dialog.Filename = "Quest\Sharlie\Tichingitu.c";
@@ -3690,8 +3690,8 @@ void Trial_StartLine(string qName)// начало линейки
 {
 	sld = GetCharacter(NPC_GenerateCharacter("Lecrua", "trader_8", "man", "man", 10, FRANCE, -1, true, "citizen"));
 	SetFantomParamFromRank(sld, 10, true);
-	sld.name = "Gerar";
-	sld.lastname = "Lecrua";
+	sld.name = "Жерар";
+	sld.lastname = "Лекруа";
 	sld.dialog.FileName = "Quest\Sharlie\Trial.c";
 	sld.dialog.currentnode = "Lecrua";
 	sld.greeting = "captain_trader";
@@ -3733,10 +3733,10 @@ void Trial_CreateFlorianFrigate(string qName)// ставим фрегат Флориана Шоке
 	Group_FindOrCreateGroup("Florian_group");
 	Group_SetType("Florian_group", "war");//тип группы
 	sld = GetCharacter(NPC_GenerateCharacter("Florian", "off_fra_3", "man", "man", 40, FRANCE, -1, true, "quest"));
-	FantomMakeCoolSailor(sld, SHIP_FRIGATE, "Warlike", CANNON_TYPE_CANNON_LBS24, 105, 105, 105);
+	FantomMakeCoolSailor(sld, SHIP_FRIGATE, "Воинственный", CANNON_TYPE_CANNON_LBS24, 105, 105, 105);
 	FantomMakeCoolFighter(sld, 40, 100, 100, "blade_13", "pistol1", "bullet", 250);
-	sld.name = "Florian";
-	sld.lastname = "Shoke";
+	sld.name = "Флориан";
+	sld.lastname = "Шоке";
 	sld.dialog.FileName = "Quest\Sharlie\Trial.c";
 	sld.DeckDialogNode = "florian_deck";
 	sld.greeting = "captain";
@@ -3788,7 +3788,7 @@ void Trial_FlorianAfterBattle(string qName)// напал на Флориана Шоке
 
 void Trial_TakeCannons()// выгрузка
 {
-	SetLaunchFrameFormParam("Three hours passed..."+ NewStr() +"The cannons were loaded on the frigate", "", 0, 5);
+	SetLaunchFrameFormParam("Прошло три часа..."+ NewStr() +"Орудия перегружены на фрегат", "", 0, 5);
 	LaunchFrameForm();
 	WaitDate("", 0, 0, 0, 3, 10); //крутим время
 	RecalculateJumpTable();
@@ -3839,8 +3839,8 @@ void Trial_TavernEnterSoldiers() //неверный путь в таверне
     }
     sld = GetCharacter(NPC_GenerateCharacter("TTOfficer", "off_spa_"+(rand(1)+1), "man", "man", iRank, SPAIN, 0, true, "quest"));
 	FantomMakeCoolFighter(sld, iRank, iRank+30, iRank+30, "blade_19", "pistol3", "grapeshot", 50);
-	sld.name = "Arthuro";
-	sld.lastname = "Cascos";
+	sld.name = "Артуро";
+	sld.lastname = "Каскос";
 	sld.dialog.FileName = "Quest\Sharlie\Trial.c";
 	sld.dialog.currentnode = "tavern_officer";
 	sld.greeting = "soldier_arest";
@@ -3877,7 +3877,7 @@ void Trial_CreatePueblaBarqueInWorld()//запускаем барк 'Пуэбла' на карте
 	Group_DeleteGroup(sGroup);
 	Group_FindOrCreateGroup(sGroup);
 	sld = GetCharacter(NPC_GenerateCharacter(sCapId, "off_spa_"+(rand(1)+1), "man", "man", iRank, SPAIN, 3, true, "soldier"));
-	FantomMakeSmallSailor(sld, SHIP_BARQUE, "Puebla", CANNON_TYPE_CANNON_LBS6, iScl+10, iScl, iScl, iScl, iScl);
+	FantomMakeSmallSailor(sld, SHIP_BARQUE, "Пуэбла", CANNON_TYPE_CANNON_LBS6, iScl+10, iScl, iScl, iScl, iScl);
 	FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_14", "pistol1", "bullet", iScl*2);
 	SetCharacterPerk(sld, "HullDamageUp");
 	SetCharacterPerk(sld, "SailsDamageUp");
@@ -3893,7 +3893,7 @@ void Trial_CreatePueblaBarqueInWorld()//запускаем барк 'Пуэбла' на карте
 	sld.AnalizeShips = true;
 	sld.mapEnc.type = "war";
 	sld.mapEnc.worldMapShip = "quest_ship";
-	sld.mapEnc.Name = "'Puebla'";
+	sld.mapEnc.Name = "'Пуэбла'";
 	Group_AddCharacter(sGroup, sCapId);
     Group_SetGroupCommander(sGroup, sCapId);
     Group_SetTaskAttackInMap(sGroup, PLAYER_GROUP);
@@ -3943,12 +3943,12 @@ void Trial_Pueblabarque_Result(string qName) // результаты
 	{
 		pchar.Trial_Puebla_barque_abordage.over = "yes"; //снять прерывание
 		pchar.Trial_Puebla_barque_Sink.over = "yes"; //снять прерывание
-		sld = characterFromId("Lecrua");
-		sld.lifeday = 0;
-		AddQuestRecord("Trial", "20");
-		CloseQuestHeader("Trial");
-		DeleteAttribute(pchar, "questTemp.Trial");
-	}
+	sld = characterFromId("Lecrua");
+	sld.lifeday = 0;
+	AddQuestRecord("Trial", "20");
+	CloseQuestHeader("Trial");
+	DeleteAttribute(pchar, "questTemp.Trial");
+}
 } // <-- 170712
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
@@ -3982,8 +3982,8 @@ void Saga_CreateJimmy(string qName)//ставим Джимми
 	int iScl = 50;
 	sld = GetCharacter(NPC_GenerateCharacter("SagaJimmy" , "mercen_16", "man", "man", iRank, PIRATE, -1, true, "quest"));
 	FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_10", "pistol6", "bullet", iScl);
-	sld.name = "Jimmy";
-	sld.lastname = "Higgins";
+	sld.name = "Джимми";
+	sld.lastname = "Хиггинс";
 	sld.dialog.FileName = "Quest\Saga\OtherNPC.c";
 	sld.dialog.currentnode = "Jimmy";
 	sld.greeting = "town_pirate";
@@ -4004,10 +4004,10 @@ void Saga_createDonovan(string qName)//ставим корвет Донована
 	int iRank = 18+MOD_SKILL_ENEMY_RATE;
 	int iScl = 55;
 	sld = GetCharacter(NPC_GenerateCharacter("Donovan", "Donovan", "man", "man", iRank, ENGLAND, -1, true, "quest"));
-	FantomMakeSmallSailor(sld, SHIP_CORVETTE, "Arbutus", CANNON_TYPE_CANNON_LBS20, 70, iScl, iScl+5, iScl+10, iScl+5);
+	FantomMakeSmallSailor(sld, SHIP_CORVETTE, "Арбутус", CANNON_TYPE_CANNON_LBS20, 70, iScl, iScl+5, iScl+10, iScl+5);
 	FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_22", "pistol6", "bullet", iScl*2); // 300912
-	sld.name = "Arthur";
-	sld.lastname = "Donovan";
+	sld.name = "Артур";
+	sld.lastname = "Донован";
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
 	sld.SaveItemsForDead = true; // сохранять на трупе вещи
@@ -4135,7 +4135,7 @@ void Helena_ReturnOver(string qName)//чтобы не тянул c переходом
 	AddQuestRecord("Saga", "12");
 	CloseQuestHeader("Saga");
 	DeleteAttribute(pchar, "questTemp.Saga");
-	log_info("Helen McArthur died of calenture!");
+	log_info("Элен Мак Артур заболела тропической лихорадкой и умерла!");
 }
 
 void Saga_CreateGonsalesA(string qName)	//ставим Гонсалеса
@@ -4143,8 +4143,8 @@ void Saga_CreateGonsalesA(string qName)	//ставим Гонсалеса
 	chrDisableReloadToLocation = true;//закрыть локацию
 	sld = GetCharacter(NPC_GenerateCharacter("SagaGonsalesA" , "citiz_19", "man", "man", 12, SPAIN, 2, true, "soldier"));
 	SetFantomParamFromRank(sld, 12, true);
-	sld.name = "Enrique";
-	sld.lastname = "Gonzales";
+	sld.name = "Энрике";
+	sld.lastname = "Гонсалес";
 	sld.dialog.FileName = "Quest\Saga\OtherNPC.c";
 	sld.dialog.currentnode = "GonsalesA";
 	sld.greeting = "citizen_male";
@@ -4157,8 +4157,8 @@ void Saga_CreateGonsalesB(string qName)	//ставим Гонсалеса
 {
 	sld = GetCharacter(NPC_GenerateCharacter("SagaGonsalesB", "citiz_41", "man", "man", 15, SPAIN, -1, true, "soldier"));
 	FantomMakeCoolFighter(sld, 15, 40, 40, "blade_10", "pistol1", "bullet", 50);
-	sld.name = "Enrique";
-	sld.lastname = "Galliardo";
+	sld.name = "Энрике";
+	sld.lastname = "Гальярдо";
 	sld.dialog.FileName = "Quest\Saga\OtherNPC.c";
 	sld.dialog.currentnode = "GonsalesB";
 	sld.greeting = "town_pirate";
@@ -4178,8 +4178,8 @@ void Saga_SetOrtega() //ставим клон Ортеги, а настоящего смотрителя прячем
 	string sBlade = GetBestGeneratedItem("blade_10");
 	GiveItem2Character(sld, sBlade);
 	sld.equip.blade = sBlade;
-	sld.name = "Alvares";
-	sld.lastname = "Ortega";
+	sld.name = "Альварес";
+	sld.lastname = "Ортега";
 	sld.dialog.FileName = "Quest\Saga\OtherNPC.c";
 	sld.dialog.currentnode = "Ortega";
 	sld.greeting = "lighthouseman_2";
@@ -4199,8 +4199,8 @@ void Saga_LightmanReturn(string qName)//вертаем назад смотрителя маяка Картахены
 	sld.location.locator = "bar2";
 	sld.model = "citiz_32";
 	sld.model.animation = "man";
-	sld.name = "Juan";
-	sld.lastname = "Peres";
+	sld.name = "Хуан";
+	sld.lastname = "Перес";
 	sld.dialog.currentnode = "First time";
 }
 
@@ -4395,7 +4395,7 @@ void Saga_CreateSnakeEye()// создаем Змеиного Глаза - шамана
 {
 	sld = GetCharacter(NPC_GenerateCharacter("SnakeEye", "Shaman", "man", "man_B", 20, PIRATE, -1, true, "native"));
 	SetFantomParamFromRank(sld, 10, true);
-	sld.name = "Snake Eye";
+	sld.name = "Змеиный Глаз";
 	sld.lastname = "";
 	sld.dialog.FileName = "Quest\Saga\SnakeEye.c";
 	sld.dialog.currentnode = "SnakeEye";
@@ -4454,7 +4454,7 @@ void Saga_NatanTreatment(string qName)// Даниэль после сдачи Натана на лечение
 void LSC_CreateCrabGuard() // крабик-охранник
 {
 	sld = GetCharacter(NPC_GenerateCharacter("CrabGuard", "crabBig", "crab", "crabBig", 40+(MOD_SKILL_ENEMY_RATE), PIRATE, 0, false, "quest"));
-	sld.name = "Giant crab";
+	sld.name = "Гигантский краб";
 	sld.lastname = "";
 	GiveItem2Character(sld, "unarmed");
 	EquipCharacterbyItem(sld, "unarmed");
@@ -4722,8 +4722,8 @@ void LSC_CreateAdolfClone()// ставим клона Адольфа
 	int iRank = 20+MOD_SKILL_ENEMY_RATE+5;
 	int iScl = 50;
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Adolf_Clon", "Adolf", "man", "man", iRank, PIRATE, -1, true, "quest"));
-	sld.name = "Adolf";
-	sld.lastname = "Barbier";
+	sld.name = "Адольф";
+	sld.lastname = "Барбье";
 	FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_09", "pistol6", "bullet", iScl*2);
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Adolf.c";
 	sld.dialog.currentnode = "Adolf";
@@ -5252,7 +5252,7 @@ void LSC_RescueMary(string qName) // бежим на помощь Мэри
 void LSC_SetAlarmMusic(string qName) // бежим по городу, не путаемся в фалдах камзола и не спотыкаемся :)
 {
 	SetMusic("music_teleport");
-	log_info("Red Mary is in danger. You have only 100 seconds to find and help her!");
+	log_info("Красная Мэри в опасности! У вас 100 секунд, чтобы прийти к ней на помощь!");
 	PlaySound("interface\notebook.wav");
 }
 
@@ -5474,7 +5474,7 @@ void LSC_takeUnderwater(string qName)// выдача скафандра
 {
 	GiveItem2Character(pchar, "underwater"); 
 	PlaySound("interface\notebook.wav");
-	Log_Info("You have received a diving suit");
+	Log_Info("Вы получили водолазный скафандр");
 }
 
 void LSC_underwaterDeathTimer(string qName) // время нахождения под водой истекло
@@ -5490,12 +5490,12 @@ void LSC_FindUnderwaterDolly(string qName) // нашли статую
 	if (CheckAttribute(rLoc, "canteleport"))
 	{
 		AddQuestRecord("LSC", "12");
-		if (CheckAttribute(pchar, "questTemp.LSC.MaryBye")) AddQuestUserData("LSC", "sText", "Wait! I should talk to Mary before leaving the Island. She won't forgive me if I dissappear without warning her."); 
+		if (CheckAttribute(pchar, "questTemp.LSC.MaryBye")) AddQuestUserData("LSC", "sText", "Стоп! Прежде чем покинуть Остров, я должен обязательно поговорить с Мэри. Она не простит мне, если я исчезну без предупреждения."); 
 	}
 	else
 	{
 		AddQuestRecord("LSC", "13");
-		if (CheckAttribute(pchar, "questTemp.LSC.MaryBye")) AddQuestUserData("LSC", "sText", "But I should talk to Mary before leaving the Island. She won't forgive me if I dissappear without warning her."); 
+		if (CheckAttribute(pchar, "questTemp.LSC.MaryBye")) AddQuestUserData("LSC", "sText", "Но прежде чем покинуть Остров, я должен обязательно поговорить с Мэри. Она не простит мне, если я исчезну без предупреждения."); 
 	}
 	AddCharacterExpToSkill(pchar, "Fortune", 100);//везение
 }
@@ -5690,7 +5690,7 @@ void LSC_RingStart(string qName) // готовы
 void LSC_RingEnter(string qName) // входим
 {
 	pchar.quest.LSC_Ring_Over.over = "yes"; //снять прерывание
-	SetLaunchFrameFormParam("An hour passed..."+ NewStr() +"You have reached the shipwreck", "", 0, 6);//табличка
+	SetLaunchFrameFormParam("Прошел час..."+ NewStr() +"Вы добрались до разбитого корабля", "", 0, 6);//табличка
 	LaunchFrameForm();
 	WaitDate("", 0, 0, 0, 1, 10); //крутим время
 	RecalculateJumpTable();
@@ -5835,14 +5835,14 @@ void LSC_ReturnCheckShips(string qName) //проверяем правильность кораблей и нали
 		{
 			Island_SetReloadEnableGlobal("LostShipsCity", false);//закрыть остров
 			PlaySound("interface\notebook.wav");
-			log_info("You can not pass through the Island's reefs without sailing directions!");
+			log_info("Вы не можете пройти через рифы Острова без лоции!");
 		}
 	}
 	else
 	{
 		Island_SetReloadEnableGlobal("LostShipsCity", false);//закрыть остров
 		PlaySound("interface\notebook.wav");
-		log_info("You can not come close to the Island - your ships are too big!");
+		log_info("Вы не можете подойти к Острову - корабли вашей эскадры слишком велики!");
 	}
 	pchar.quest.LSC_checkships_repeat.win_condition.l1 = "MapEnter";
 	pchar.quest.LSC_checkships_repeat.function = "LSC_ReturnCheckShipsRepeat";
@@ -6024,7 +6024,7 @@ void Saga_BarbBarkasBoarding(string qName)// абордировали баркас
 
 void Saga_BarbBarkasSilk()//погрузка шелка
 {
-	SetLaunchFrameFormParam("An hour passed..."+ NewStr() +"Silk was loaded on your vessel", "", 0, 5);
+	SetLaunchFrameFormParam("Прошел час"+ NewStr() +"Шелк погружен на ваш корабль", "", 0, 5);
 	LaunchFrameForm();
 	WaitDate("", 0, 0, 0, 1, 10); //крутим время
 	RecalculateJumpTable();
@@ -6046,8 +6046,8 @@ void Saga_CreateMorelle() //создаем Мореля
 {
 	sld = GetCharacter(NPC_GenerateCharacter("Morelle", "citiz_22", "man", "man", 10, PIRATE, -1, true, "quest"));
 	RemoveAllCharacterItems(sld, true);
-	sld.name = "Simon";
-	sld.lastname = "Morelle";
+	sld.name = "Симон";
+	sld.lastname = "Морель";
 	sld.dialog.FileName = "Quest\Saga\OtherNPC.c";
 	sld.dialog.currentnode = "Morelle";
 	sld.greeting = "town_pirate";
@@ -6058,8 +6058,8 @@ void Saga_CreateMorelle() //создаем Мореля
 
 void Saga_SetMorelGoods(string qName) //тайник Мореля
 {
-	Log_Info("You have discovered Morel's hidden stash");
-	Log_Info("Goods were loaded on the ship");
+	Log_Info("Вы нашли тайник Мореля");
+	Log_Info("Товары погружены на корабль");
 	PlaySound("interface\notebook.wav");
 	AddCharacterGoods(pchar, GOOD_SHIPSILK, 30); 
 	AddCharacterGoods(pchar, GOOD_EBONY, 50); 
@@ -6078,8 +6078,8 @@ void Saga_SetJuniorInCharles() //создаем Валета
 	int iScl = 65;
 	sld = GetCharacter(NPC_GenerateCharacter("Valet", "Valet", "man", "man", iRank, PIRATE, -1, true, "quest"));
 	FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_18", "pistol6", "bullet", iScl*2);
-	sld.name = "David";
-	sld.lastname = "Fackman";
+	sld.name = "Давид";
+	sld.lastname = "Факман";
 	sld.dialog.FileName = "Quest\Saga\OtherNPC.c";
 	sld.dialog.currentnode = "valet";
 	sld.greeting = "Valet";
@@ -6114,7 +6114,7 @@ void Saga_SetPolacreMarlin(string qName) //ставим полакр Марлин
 	Group_FindOrCreateGroup("Ship_Marlin");
 	Group_SetType("Ship_Marlin", "pirate");//тип группы
 	sld = GetCharacter(NPC_GenerateCharacter("Cap_Marlin", "mercen_27", "man", "man", iRank, ENGLAND, -1, true, "quest"));
-	FantomMakeCoolSailor(sld, SHIP_POLACRE, "Marlin", CANNON_TYPE_CULVERINE_LBS18, iScl, iScl, iScl);
+	FantomMakeCoolSailor(sld, SHIP_POLACRE, "Мapлин", CANNON_TYPE_CULVERINE_LBS18, iScl, iScl, iScl);
 	FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_18", "pistol6", "bullet", iScl*2+70);
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
@@ -6154,7 +6154,7 @@ void Saga_CheckMarlinAfterBattle(string qName) //проверяем полакр Марлин после б
 		if(iTemp > 0)
 		{
 			sld = GetCharacter(iTemp);
-			if(sti(RealShips[sti(sld.ship.type)].basetype) == SHIP_POLACRE && sld.ship.name == "Marlin") iMar = 1;
+			if(sti(RealShips[sti(sld.ship.type)].basetype) == SHIP_POLACRE && sld.ship.name == "Мapлин") iMar = 1;
 		}
 	} // есть ли у нас Марлин
 	if (iMar == 1) // есть
@@ -6191,7 +6191,7 @@ void Saga_CheckVensanBrigantine(string qName) // проверка правильности выполнени
 		Group_FindOrCreateGroup("Ship_Vensan");
 		Group_SetType("Ship_Vensan", "pirate");//тип группы
 		sld = GetCharacter(NPC_GenerateCharacter("Cap_Vensan", "mercen_20", "man", "man", 20, ENGLAND, -1, true, "quest"));
-		FantomMakeCoolSailor(sld, SHIP_BRIGANTINE, "Separator", CANNON_TYPE_CANNON_LBS16, 50, 50, 50);
+		FantomMakeCoolSailor(sld, SHIP_BRIGANTINE, "Разлучница", CANNON_TYPE_CANNON_LBS16, 50, 50, 50);
 		sld.FaceId = 333; // пустой кораблик
 		sld.name = "";
 		sld.lastname = "";
@@ -6227,8 +6227,8 @@ void Saga_CreateCapnCrewVensan() // палуба бригантины венсана
 {
 	// усадим Венсана
 	sld = GetCharacter(NPC_GenerateCharacter("Vensan", "Vensan", "man", "man", 20, ENGLAND, -1, true, "quest"));
-	sld.name = "Bernar";
-	sld.lastname = "Vensan";
+	sld.name = "Бернар";
+	sld.lastname = "Венсан";
 	sld.dialog.FileName = "Quest\Saga\OtherNPC.c";
 	sld.dialog.currentnode = "vensan";
 	sld.greeting = "vensan";
@@ -6343,9 +6343,9 @@ void Saga_CreateVensanEnemyes(string qName) // устанавливаем Бродягу и Упыря
 	Group_SetType("Ship_VensanEnemy", "pirate");//тип группы
 	// устанавливаем корвет Бродяги
 	sld = GetCharacter(NPC_GenerateCharacter("Saga_Vagrant", "mercen_26", "man", "man", iRank, ENGLAND, -1, true, "quest")); // patch
-	FantomMakeSmallSailor(sld, SHIP_CORVETTE, "Cuttlefish", CANNON_TYPE_CULVERINE_LBS18, iScl, iScl, iScl, iScl, iScl);
+	FantomMakeSmallSailor(sld, SHIP_CORVETTE, "Каракатица", CANNON_TYPE_CULVERINE_LBS18, iScl, iScl, iScl, iScl, iScl);
 	FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_13", "pistol5", "bullet", iScl*2);
-	sld.name = "Vagrant";
+	sld.name = "Бродяга";
 	sld.lastname = "";
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
@@ -6357,9 +6357,9 @@ void Saga_CreateVensanEnemyes(string qName) // устанавливаем Бродягу и Упыря
 	//SetNationRelation2MainCharacter(PIRATE, RELATION_FRIEND); // 300912
 	// устанавливаем фрегат Упыря
 	sld = GetCharacter(NPC_GenerateCharacter("Saga_vampire", "mercen_25", "man", "man", iRank+5, ENGLAND, -1, true, "quest")); // patch
-	FantomMakeCoolSailor(sld, SHIP_FRIGATE, "Merciless", CANNON_TYPE_CANNON_LBS24, iScl+5, iScl+5, iScl+5);
+	FantomMakeCoolSailor(sld, SHIP_FRIGATE, "Беспощадный", CANNON_TYPE_CANNON_LBS24, iScl+5, iScl+5, iScl+5);
 	FantomMakeCoolFighter(sld, iRank+5, iScl+15, iScl+15, "blade_14", "pistol5", "bullet", iScl*2+100);
-	sld.name = "Vampire";
+	sld.name = "Упырь";
 	sld.lastname = "";
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
@@ -6382,11 +6382,11 @@ void Saga_CreateVensanEnemyes(string qName) // устанавливаем Бродягу и Упыря
 void Saga_CheckVensanEnemyes() // анализируем ГГ - обработка в АИ
 {
 	bool bOk = false;
-	if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Marlin") && pchar.ship.name == "Marlin" && GetSummonSkillFromName(pchar, SKILL_SNEAK)*isEquippedArtefactUse(pchar, "indian_11", 1.0, 1.15) > (10+rand(35))) bOk = true;
-	if (!CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Marlin") && pchar.ship.name == "Marlin" && GetSummonSkillFromName(pchar, SKILL_SNEAK)*isEquippedArtefactUse(pchar, "indian_11", 1.0, 1.15) > (10+rand(85))) bOk = true;
+	if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Marlin") && pchar.ship.name == "Мapлин" && GetSummonSkillFromName(pchar, SKILL_SNEAK)*isEquippedArtefactUse(pchar, "indian_11", 1.0, 1.15) > (10+rand(35))) bOk = true;
+	if (!CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Marlin") && pchar.ship.name == "Марлин" && GetSummonSkillFromName(pchar, SKILL_SNEAK)*isEquippedArtefactUse(pchar, "indian_11", 1.0, 1.15) > (10+rand(85))) bOk = true;
 	if (!bOk)
 	{
-		log_info("Pirates recognized your true identity!");
+		log_info("Пираты распознали в вас врага!");
 		DeleteAttribute(pchar, "questTemp.Saga.BarbTemptation.Bomb"); // если было
 		pchar.questTemp.Saga.BarbTemptation.vensan_attack = "true";
 		sld = characterFromId("Saga_Vagrant");
@@ -6424,11 +6424,11 @@ void Saga_HitSeaBomb() // ставим бомбу под фрегат - обработка в АИ
 	float fTemp = 100.0;
 	DeleteAttribute(pchar, "questTemp.Saga.BarbTemptation.Bomb");
 	PlaySound("Ships\jakor_002.wav");
-	log_info("Mine has been dropped!");
+	log_info("Мина сброшена!");
 	if(iArcadeSails == 1) fTemp = 40.0;
 	AISeaGoods_AddGood(pchar, "powder", "barrel_treasure", fTemp-10.0, 1);
 	DoQuestFunctionDelay("Saga_HitSeaBomb_Detonate", fTemp);
-	log_info("You have only "+sti(fTemp)+" to get away!");
+	log_info("У вас "+sti(fTemp)+" секунд, чтобы отойти на безопасное расстояние!");
 }
 
 void Saga_HitSeaBomb_Detonate(string qName) // капут фрегату
@@ -6452,7 +6452,7 @@ void Saga_HitSeaBomb_Detonate(string qName) // капут фрегату
 
 void Saga_SeaBombFail() // а если ГГ не удрал - то и ему тоже
 {
-	log_info("You failed to avoid the explosion!");
+	log_info("Вы не успели отойти на безопасное расстояние!");
 	Ship_Detonate(pchar, true, true); // ба-бах!!!
 	PlayStereoSound("Sea Battles\Vzriv_fort_001.wav");
 	PlayStereoSound("Sea Battles\vzriv_pogreb_002.wav");
@@ -6481,7 +6481,7 @@ void Saga_VensanAfterBattle(string qName) // уничтожили врагов
 		AddQuestRecord("BarbTemptation", "17");
 		pchar.questTemp.Saga.BarbTemptation = "danielle"; // даю еще один шанс
 	}
-	if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.BombFire")) AddQuestUserData("BarbTemptation", "sText", "Yeah, we didn't go greedy on gunpowder there! Boomed so loud that they have probably heard it even at Tortuga. The frigate got her powder supplies detonated and her captain went to the bottom along with his ship in no time.");
+	if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.BombFire")) AddQuestUserData("BarbTemptation", "sText", "Да, пороха мы не пожалели! Рвануло так, что услышали, наверное, даже на Тортуге. У фрегата сдетонировал пороховой запас, и капитан Упырь отправился вместе со своим кораблем на дно в считаные минуты.");
 	AddComplexSeaExpToScill(150, 150, 150, 150, 150, 150, 0);
 }
 
@@ -6525,7 +6525,7 @@ void Saga_CheckJackmanBermudes(string qName) // Джекман
 		if (sti(pchar.rank) < 15 || MOD_SKILL_ENEMY_RATE < 7) iCannon = CANNON_TYPE_CANNON_LBS24;
 		sld = characterFromId("Jackman");
 		sld.nation = ENGLAND;
-		FantomMakeSmallSailor(sld, SHIP_FRIGATE_H, "Centurion", iCannon, iScl, iScl, iScl, iScl, iScl);
+		FantomMakeSmallSailor(sld, SHIP_FRIGATE_H, "Центурион", iCannon, iScl, iScl, iScl, iScl, iScl);
 		SetCharacterPerk(sld, "CriticalShoot");
 		SetCharacterPerk(sld, "LongRangeShoot");
 		SetCharacterPerk(sld, "CannonProfessional");
@@ -6572,15 +6572,15 @@ void Saga_CheckJackmanBermudes(string qName) // Джекман
 				if (GetCharacterIndex("Mary") != -1)
 				{
 					sld = characterFromId("Mary");
-					sTemp = "Wait! It won't hurt to ask for Mary's advice, she did help with the bomb last time! Her bright head may produce some idea again...";
+					sTemp = "Стоп! А пойду-ка я посоветуюсь на этот счет с Мэри - ведь сработала же ее предыдущая идея с бомбой! Может, какая дельная мысль посетит ее светлую голову...";
 					sld.quest.fugas = "true";
 				}
-				else sTemp = "Eh, I wish Mary were here... She would have made something up for sure...";
+				else sTemp = "Эх, была бы Мэри... Она обязательно бы что-нибудь придумала...";
 			}
 			else
 			{
 				sld = characterFromId("Helena");
-				sTemp = "Wait! It won't hurt to ask for Helen's advice, she did help with the bomb last time! Her bright head may produce some idea again...";
+				sTemp = "Стоп! А пойду-ка я посоветуюсь на этот счет с Элен - ведь сработала же ее предыдущая идея с бомбой! Может, какая дельная мысль посетит ее светлую голову...";
 				sld.quest.fugas = "true";
 			}
 		}
@@ -6602,11 +6602,11 @@ void Saga_CheckJackmanFrigate() // анализируем ГГ - обработка в АИ
 {
 	// Джекмана обмануть сложнее
 	bool bOk = false;
-	if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Marlin") && pchar.ship.name == "Marlin" && GetSummonSkillFromName(pchar, SKILL_SNEAK)*isEquippedArtefactUse(pchar, "indian_11", 1.0, 1.15) > (10+rand(50))) bOk = true;
-	if (!CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Marlin") && pchar.ship.name == "Marlin" && GetSummonSkillFromName(pchar, SKILL_SNEAK)*isEquippedArtefactUse(pchar, "indian_11", 1.0, 1.15) > (20+rand(100))) bOk = true;
+	if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Marlin") && pchar.ship.name == "Мapлин" && GetSummonSkillFromName(pchar, SKILL_SNEAK)*isEquippedArtefactUse(pchar, "indian_11", 1.0, 1.15) > (10+rand(50))) bOk = true;
+	if (!CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Marlin") && pchar.ship.name == "Марлин" && GetSummonSkillFromName(pchar, SKILL_SNEAK)*isEquippedArtefactUse(pchar, "indian_11", 1.0, 1.15) > (20+rand(100))) bOk = true;
 	if (!bOk)
 	{
-		log_info("Pirates recognized your true identity!");
+		log_info("Пираты распознали в вас врага!");
 		sld = characterFromId(pchar.questTemp.Saga.BarbTemptation.adviser);
 		DeleteAttribute(sld, "quest.fugas");
 		sld = characterFromId("Jackman");
@@ -6643,9 +6643,9 @@ void Saga_HitSeaFugas() // бросаем фугас - обработка в АИ
 	{
 		PlayStereoSound("Sea Battles\udar_metal_002.wav");
 	}
-	log_info("Charges have been thrown!");
+	log_info("Фугасы заброшены!");
 	DoQuestFunctionDelay("Saga_HitSeaFugas_Detonate", fTemp);
-	log_info("Charges will explode in  "+sti(fTemp)+" seconds!");
+	log_info("Фугасы взорвутся через "+sti(fTemp)+" секунд!");
 }
 
 void Saga_HitSeaFugas_Detonate(string qName) // фугасом по пиратам
@@ -6875,14 +6875,14 @@ void Saga_MineBanditsPrepareAttack(string qName) // идем на рудник со Свенсоном
 		FantomMakeCoolFighter(sld, iRank+8, iScl+8, iScl+8, "blade_21", "pistol6", "bullet", iScl*2+50);
 		if (i == 1)
 		{
-			sld.name = "Randolf";
-			sld.lastname = "Berns";
+			sld.name = "Рандольф";
+			sld.lastname = "Бернс";
 			LAi_SetCheckMinHP(sld, 10, true, "");
 		}
 		else
 		{
-			sld.name = "Gregory";
-			sld.lastname = "Couper";
+			sld.name = "Грегори";
+			sld.lastname = "Коупер";
 		}
 		sld.dialog.FileName = "Quest\Saga\OtherNPC.c";
 		sld.dialog.currentnode = "Svensons_off";
@@ -7187,11 +7187,11 @@ void Saga_CreateMolliganInWorld()
 	int iDays = 15;
 	if (sti(pchar.rank) < 15 || MOD_SKILL_ENEMY_RATE < 7) iCannon = CANNON_TYPE_CANNON_LBS20;
 	sld = GetCharacter(NPC_GenerateCharacter("Molligan", "Molligan", "man", "man", iRank, ENGLAND, iDays, true, "quest"));
-	sld.name = "Paul";
-	sld.lastname = "Molligan";
+	sld.name = "Поль";
+	sld.lastname = "Моллиган";
 	sld.Dialog.Filename = "Quest\Saga\OtherNPC.c";
 	sld.DeckDialogNode = "Molligan";
-	FantomMakeSmallSailor(sld, SHIP_EASTINDIAMAN, "Oyster", iCannon, iScl, iScl, iScl, iScl, iScl);
+	FantomMakeSmallSailor(sld, SHIP_EASTINDIAMAN, "Уcтрицa", iCannon, iScl, iScl, iScl, iScl, iScl);
 	SetCharacterPerk(sld, "CriticalShoot");
 	SetCharacterPerk(sld, "LongRangeShoot");
 	SetCharacterPerk(sld, "ShipDefenseProfessional");
@@ -7217,7 +7217,7 @@ void Saga_CreateMolliganInWorld()
 	sld.mapEnc.type = "trade";
 	//выбор типа кораблика на карте
 	sld.mapEnc.worldMapShip = "quest_ship";
-	sld.mapEnc.Name = "'Oyster'";
+	sld.mapEnc.Name = "ост-индец 'Устрица'";
 	Map_CreateTrader(sld.cityShore, "Bridgetown", sld.id, iDays);
 	
 	SetFunctionTimerCondition("Saga_MolliganInWorldOver", 0, 0, iDays+1, false);
@@ -7240,7 +7240,7 @@ void Saga_MolliganInWorldOver(string qName) // упустили Моллигана
 
 void Saga_MolliganAttack() // атака Моллигана - обработка в АИ
 {
-	log_info("Pole Molligan is attacking you!");
+	log_info("Поль Моллиган атакует вас!");
 	PlaySound("interface\notebook.wav");
 	sld = characterFromId("Molligan");
 	sld.AlwaysEnemy = true;
@@ -7254,7 +7254,7 @@ void Saga_MolliganAttack() // атака Моллигана - обработка в АИ
 void Saga_MolliganCriticalAttack() // атакуем Моллигана - обработка в АИ
 {
 	DeleteAttribute(pchar, "questTemp.Saga.Molligan.friend");
-	log_info("A critical hit of chain shots!");
+	log_info("Критический залп картечью!");
 	sld = characterFromId("Molligan");
 	PlayStereoSound("Sea Battles\sdavl_kriki_005.wav");
 	int iCrew = makeint(sti(sld.Ship.Crew.Quantity)*0.67); 
@@ -7282,13 +7282,13 @@ void Saga_MolliganAbordage(string qName) //проверяем Устрицу после боя
 		if(iTemp > 0)
 		{
 			sld = GetCharacter(iTemp);
-			if(sti(RealShips[sti(sld.ship.type)].basetype) == SHIP_EASTINDIAMAN && sld.ship.name == "Oyster") iUst = 1;
+			if(sti(RealShips[sti(sld.ship.type)].basetype) == SHIP_EASTINDIAMAN && sld.ship.name == "Уcтрицa") iUst = 1;
 		}
 	} // есть ли у нас Устрица
 	if (iUst == 1) pchar.questTemp.Saga.Oyster = "true"; // есть
 	if (CheckCharacterItem(pchar, "letter_parol")) // нашел записку
 	{
-		sTemp = "I have found a note with coordinates in Milligan's cabin. There is a mysterious buyer waiting. I can sail to him and, perhaps, make a good coin. Or I can deliver the cargo to Svensson.";
+		sTemp = "В каюте Моллигана я нашел записку с координатами места, где будет ждать таинственный покупатель бакаута. Можно отправиться туда и продать бакаут ему - возможно, мне удастся выручить приличную сумму. А можно отвезти в Блювельд к Свенсону.";
 		pchar.quest.Saga_RozencraftWG.win_condition.l1 = "location";
 		pchar.quest.Saga_RozencraftWG.win_condition.l1.location = "Trinidad";
 		pchar.quest.Saga_RozencraftWG.function = "Saga_CheckRozencraftWG";
@@ -7296,7 +7296,7 @@ void Saga_MolliganAbordage(string qName) //проверяем Устрицу после боя
 		sld = ItemsFromID("letter_parol");
 		sld.price = 10;
 	}
-	else sTemp = "Time to return to Jan Svensson.";
+	else sTemp = "Отправляюсь назад к Яну Свенсону.";
 	AddQuestRecord("Testament", "6");
 	AddQuestUserData("Testament", "sText", sTemp);
 	pchar.questTemp.Saga.Bakaut = "find";
@@ -7320,10 +7320,10 @@ void Saga_RozencraftWGOver(string qName) // снять Розенкрафта
 
 void Saga_RemoveOuster() //удаление Устрицы
 {
-	if(sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_EASTINDIAMAN && pchar.ship.name == "Oyster")
+	if(sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_EASTINDIAMAN && pchar.ship.name == "Уcтрицa")
 	{
 		pchar.Ship.Type = GenerateShipExt(SHIP_TARTANE, true, pchar);
-		pchar.Ship.name = "Boat";
+		pchar.Ship.name = "Лодка";
 		SetBaseShipData(pchar);
 		SetCrewQuantityOverMax(PChar, 0);//сажаем на тартану
 	}
@@ -7335,7 +7335,7 @@ void Saga_RemoveOuster() //удаление Устрицы
 			if(iTemp > 0)
 			{
 				sld = GetCharacter(iTemp);
-				if(sti(RealShips[sti(sld.ship.type)].basetype) == SHIP_EASTINDIAMAN && sld.ship.name == "Oyster")
+				if(sti(RealShips[sti(sld.ship.type)].basetype) == SHIP_EASTINDIAMAN && sld.ship.name == "Уcтрицa")
 				{
 					pchar.GanQuest.CompanionIndex = sld.Index;
 					sld = GetCharacter(sti(pchar.GanQuest.CompanionIndex));
@@ -7356,7 +7356,7 @@ void Saga_CheckRozencraftWG(string qName) // устанавливаем Розенкрафта
 		if(iTemp > 0)
 		{
 			sld = GetCharacter(iTemp);
-			if(sti(RealShips[sti(sld.ship.type)].basetype) == SHIP_EASTINDIAMAN && sld.ship.name == "Oyster") iUst = 1;
+			if(sti(RealShips[sti(sld.ship.type)].basetype) == SHIP_EASTINDIAMAN && sld.ship.name == "Уcтрицa") iUst = 1;
 		}
 	} // есть ли у нас Устрица
 	// двойная защита от жухления геймеров
@@ -7367,8 +7367,8 @@ void Saga_CheckRozencraftWG(string qName) // устанавливаем Розенкрафта
 	if (iRank > 40) iRank = 40;
 	int iScl = 100;
 	sld = GetCharacter(NPC_GenerateCharacter("Rozencraft", "Rozencraft", "man", "man", iRank, HOLLAND, -1, true, "quest"));
-	sld.name = "Mikhael";
-	sld.lastname = "Rozencraft";
+	sld.name = "Михаэль";
+	sld.lastname = "Розенкрафт";
 	sld.Dialog.Filename = "Quest\Saga\Rozencraft.c";
 	sld.DeckDialogNode = "Rozencraft";
 	FantomMakeSmallSailor(sld, SHIP_GALEON_H, "", CANNON_TYPE_CANNON_LBS32, iScl, iScl, iScl, iScl, iScl);
@@ -7472,11 +7472,11 @@ void Saga_SetBaldMaggy(string qName) // ставим плешивую мэгги
 	Group_FindOrCreateGroup("BaldMaggy_Group");
 	Group_SetType("BaldMaggy_Group", "trade");
 	sld = GetCharacter(NPC_GenerateCharacter("Benson", "trader_10", "man", "man", 15, ENGLAND, -1, false, "quest"));
-	sld.name = "Jim";
-	sld.lastname = "Benson";
+	sld.name = "Джим";
+	sld.lastname = "Бенсон";
 	sld.Dialog.Filename = "Quest\Saga\OtherNPC.c";
 	sld.DeckDialogNode = "Benson";
-	FantomMakeCoolSailor(sld, SHIP_BARKENTINE, "Bald Maggy", CANNON_TYPE_CANNON_LBS12, 40, 40, 40);
+	FantomMakeCoolSailor(sld, SHIP_BARKENTINE, "Плешивая Мэгги", CANNON_TYPE_CANNON_LBS12, 40, 40, 40);
 	FantomMakeCoolFighter(sld, 15, 40, 40, "blade_10", "pistol1", "bullet", 50);
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
@@ -7528,12 +7528,12 @@ void Saga_BakerToCabin()
 {
 	DeleteAttribute(pchar, "questTemp.Saga.Shadows.Baker");
 	DeleteAttribute(pchar, "DisableChangeFlagMode");
-	Log_Info("Raymond Baker is onboard");
+	Log_Info("Раймонд Бейкер поднялся на борт");
 	PlaySound("interface\notebook.wav");
 	AddQuestRecord("Shadows", "4");
 	sld = GetCharacter(NPC_GenerateCharacter("Baker", "Baker", "man", "man_B", 1, ENGLAND, -1, false, "quest"));
-	sld.name = "Raymond";
-	sld.lastname = "Baсker";
+	sld.name = "Раймонд";
+	sld.lastname = "Бейкер";
 	sld.greeting = "baker";
     sld.Dialog.Filename = "Quest\Saga\Baker.c";
 	sld.dialog.currentnode = "baker";
@@ -7643,8 +7643,8 @@ void Saga_CreateJessikaGhost(string qName) // ставим Джессику
 	pchar.questTemp.Saga.Attack = true; // обработка в АИ
 	pchar.questTemp.Saga.Jess_Fightstage = "first";
 	sld = GetCharacter(NPC_GenerateCharacter("Jessika", "Ghost_1", "woman", "jess", 1, PIRATE, -1, false, "quest"));
-	sld.name = "Jessica";
-	sld.lastname = "Rose";
+	sld.name = "Джессика";
+	sld.lastname = "Роуз";
 	sld.greeting = "jessika_0";
     sld.Dialog.Filename = "Quest\Saga\Jessika.c";
 	sld.dialog.currentnode = "reef";
@@ -7845,8 +7845,8 @@ void Saga_ChangesIslatesoro() // вызов перестановки на Исла-Тесоро
 		sld.lifeday = 0;
 		sld = GetCharacter(NPC_GenerateCharacter("Valet", "Valet", "man", "man", 30, PIRATE, -1, true, "quest"));
 		FantomMakeCoolFighter(sld, 30, 100, 100, "blade_18", "pistol6", "bullet", 200);
-		sld.name = "David";
-		sld.lastname = "Fackman";
+		sld.name = "Давид";
+		sld.lastname = "Факман";
 		sld.dialog.FileName = "Mayor\LaVega_Mayor.c";
 		sld.dialog.currentnode = "First time";
 		sld.greeting = "Valet";
@@ -8044,8 +8044,8 @@ void Terrapin_GotoWindow(string qName) // телепортируем через окошко на крыши
 	sld = GetCharacter(NPC_GenerateCharacter("Kathy", "Catherine", "woman", "woman", 10, ENGLAND, -1, true, "quest"));
 	sld.dialog.FileName = "Quest\Sharlie\Terrapin.c";
 	sld.dialog.currentnode = "kathy";
-	sld.name = "Cathrin";
-	sld.lastname = "Fox";
+	sld.name = "Кэтрин";
+	sld.lastname = "Фокс";
 	LAi_CharacterDisableDialog(sld);
 	LAi_SetStayType(sld);
 	LAi_SetImmortal(sld, true);
@@ -8241,7 +8241,7 @@ void Terrapin_KathyDie(string qName) // не довезли Кати
 	RemovePassenger(pchar, sld);
 	sld.lifeday = 0;
 	SetFunctionTimerCondition("Terrapin_ReturnFox", 0, 0, 3, false); // Фокса на место
-	Log_Info("Catherine Fox died of calenture!");
+	Log_Info("Кэтрин Фокс заболела тропической лихорадкой и умерла!");
 	AddQuestRecord("Terrapin", "15");
 }
 
@@ -8266,8 +8266,8 @@ void Terrapin_ReturnFox(string qName) // Фокса на место
 void Terrapin_SetFontene(string qName) // Фонтене на место
 {
 	sld = GetCharacter(NPC_GenerateCharacter("Tortuga_Mayor", "off_fra_5", "man", "man", 40, FRANCE, -1, true, "soldier"));
-	sld.name = "chevalier Timoleon";
-    sld.lastname = "de Fontene";
+	sld.name = "шевалье Тимолеон";
+    sld.lastname = "де Фонтене";
 	sld.Dialog.Filename = "Common_Mayor.c";
 	sld.dialog.currentnode = "First time";
 	sld.greeting = "fra_gov_common";
@@ -8293,7 +8293,7 @@ void CreateGriffondor() // малый фрегат Гриффондор
 {
 	sld = GetCharacter(NPC_GenerateCharacter("GriffOfficer", "off_fra_2", "man", "man", 10, FRANCE, -1, true, "soldier"));
 	SetFantomParamFromRank(sld, 10, true);
-	FantomMakeSmallSailor(sld, SHIP_CORVETTE_QUEST, "Griffondor", CANNON_TYPE_CANNON_LBS24, 30, 30, 30, 30, 30);
+	FantomMakeSmallSailor(sld, SHIP_CORVETTE_QUEST, "Гриффондор", CANNON_TYPE_CANNON_LBS24, 30, 30, 30, 30, 30);
 	SetShipSkill(sld, 30, 40, 50, 50, 65, 40, 45, 48, 20);
 	SetSelfSkill(sld, 20, 22, 18, 25, 30);
 	sld.dialog.FileName = "Quest\Sharlie\OtherNPC.c";
@@ -8390,8 +8390,8 @@ void Terrapin_CreateRoberConvoy()//создаем испанский конвой
 		if (i == 2)
 		{
 			sld.model = "Marten";
-			sld.name = "Rober";
-			sld.lastname = "Marten";
+			sld.name = "Робер";
+			sld.lastname = "Мартэн";
 			sld.Ship.Mode = "pirate";
 			sld.Ship.Name = "Инфанта";
 			FantomMakeCoolFighter(sld, 30, 70, 70, "blade_19", "pistol5", "bullet", 150);
@@ -8448,7 +8448,7 @@ void Terrapin_CreateRoberConvoy()//создаем испанский конвой
 		if (i == 2) SetCharacterGoods(sld, GOOD_ROPES, 50);//бонус
 		sld.mapEnc.type = "war";
 		sld.mapEnc.worldMapShip = "quest_ship";
-        sld.mapEnc.Name = "spain convoy";
+        sld.mapEnc.Name = "испанский конвой";
         Group_AddCharacter(sGroup, sCapId + i);
 	}
 	Group_SetGroupCommander(sGroup, sCapId+ "1");
@@ -8556,31 +8556,31 @@ void Terrapin_SetCromvelScuadron(string qName) //эскадра Кромвеля прибыла
 			case 1:
 				iShip = SHIP_LSHIP_ENG;
 				iCannon = CANNON_TYPE_CULVERINE_LBS36;
-				sName = "Victory";
+				sName = "Виктори";
 			break;
 			
 			case 2:
 				iShip = SHIP_LINESHIP;
 				iCannon = CANNON_TYPE_CANNON_LBS32;
-				sName = "Vindzor Castle";
+				sName = "Замок Виндзор";
 			break;
 			
 			case 3:
 				iShip = SHIP_FRIGATE_H;
 				iCannon = CANNON_TYPE_CANNON_LBS32;
-				sName = "Royal Katherine";
+				sName = "Роял Катерин";
 			break;
 			
 			case 4:
 				iShip = SHIP_FRIGATE;
 				iCannon = CANNON_TYPE_CANNON_LBS24;
-				sName = "Loyal London";
+				sName = "Лоял Лондон";
 			break;
 			
 			case 5:
 				iShip = SHIP_POLACRE;
 				iCannon = CANNON_TYPE_CANNON_LBS20;
-				sName = "Haughty";
+				sName = "Надменный";
 			break;
 		}
 		iRank = 20+MOD_SKILL_ENEMY_RATE+(15-i*3);
@@ -8599,8 +8599,8 @@ void Terrapin_SetCromvelScuadron(string qName) //эскадра Кромвеля прибыла
 		if (i < 5) SetRandGeraldSail(sld, ENGLAND);
 		Group_AddCharacter("CromvelGroup", "Cromvel_cap_"+i);
 	}
-	Group_SetGroupCommander("CromvelGroup", "Cromvel_cap_1");
-	Group_SetAddress("CromvelGroup", "IslaMona", "quest_ships", "quest_ship_1");
+		Group_SetGroupCommander("CromvelGroup", "Cromvel_cap_1");
+		Group_SetAddress("CromvelGroup", "IslaMona", "quest_ships", "quest_ship_1");
 	Group_SetTaskNone("CromvelGroup"); // 280313
 }
 
@@ -8626,7 +8626,7 @@ void DefendSP_PrepareMartinique(string qName) // готовим Мартинику
 			case 1:
 				iShip = SHIP_LSHIP_SPA;
 				iCannon = CANNON_TYPE_CULVERINE_LBS36;
-				sName = "San Felipe";
+				sName = "Сан Фелипе";
 				fSpace = 1.0;
 				fDamage = 1.0;
 			break;
@@ -8634,7 +8634,7 @@ void DefendSP_PrepareMartinique(string qName) // готовим Мартинику
 			case 2:
 				iShip = SHIP_LINESHIP;
 				iCannon = CANNON_TYPE_CANNON_LBS32;
-				sName = "San Isidro";
+				sName = "Сан Исидро";
 				fSpace = 1.5;
 				fDamage = 1.2;
 			break;
@@ -8642,7 +8642,7 @@ void DefendSP_PrepareMartinique(string qName) // готовим Мартинику
 			case 3:
 				iShip = SHIP_GALEON_H;
 				iCannon = CANNON_TYPE_CANNON_LBS32;
-				sName = "Santa Magdalena";
+				sName = "Санта Магдалена";
 				fSpace = 1.6;
 				fDamage = 1.3;
 			break;
@@ -8650,7 +8650,7 @@ void DefendSP_PrepareMartinique(string qName) // готовим Мартинику
 			case 4:
 				iShip = SHIP_GALEON_H;
 				iCannon = CANNON_TYPE_CANNON_LBS24;
-				sName = "Santa Anna";
+				sName = "Санта Анна";
 				fSpace = 1.7;
 				fDamage = 1.2;
 			break;
@@ -8658,7 +8658,7 @@ void DefendSP_PrepareMartinique(string qName) // готовим Мартинику
 			case 5:
 				iShip = SHIP_XebekVML;
 				iCannon = CANNON_TYPE_CANNON_LBS20;
-				sName = "Apostle";
+				sName = "Апостол";
 				fSpace = 1.0;
 				fDamage = 1.0;
 			break;
@@ -8954,7 +8954,7 @@ void DefendSP_OpenMishelleCasemate()
 		PlaySound("interface\key.wav");
 		RemoveItems(pchar, "MaltieBase_keys", 1);
 		DeleteAttribute(pchar, "questTemp.Sharlie.DefendSP.SeekKey");
-		Log_info("Cage has been opened!");
+		Log_info("Камера открыта!");
 		DoQuestFunctionDelay("DefendSP_MishelleFreedom", 2.0);
 	}
 	else
@@ -9075,8 +9075,8 @@ void DefendSP_BeforeSeaBattle(string qName) // убираем солдат наших, если остали
 	// переделываем коммандера и форт
 	sld = CharacterFromID("FortFrance Fort Commander");
 	sld.FaceId = 204;
-	sld.name = "Michel";
-	sld.lastname = "de Monper"; 
+	sld.name = "Мишель";
+	sld.lastname = "де Монпе"; 
 	sld.ShipEnemyDisable  = true;
 	i = FindIsland("Martinique");
 	Islands[i].reload.l2.fort.locators = "Martinique_fort1quest_locators";
@@ -9132,8 +9132,8 @@ void DefendSP_AllClear(string qName) // чистим все по квесту
 	// переделываем коммандера и форт
 	sld = CharacterFromID("FortFrance Fort Commander");
 	sld.FaceId = 5;
-	sld.name = "Anry";
-	sld.lastname = "Duble"; 
+	sld.name = "Анри";
+	sld.lastname = "Дюбле"; 
 	DeleteAttribute(sld, "ShipEnemyDisable");
 	n = FindIsland("Martinique");
 	Islands[n].reload.l2.fort.locators = "Martinique_fort1_locators";
@@ -9210,10 +9210,10 @@ void GuardOT_CreateTwoShips(string qName) // создаем галеон Гая и каракку торгов
 	Group_FindOrCreateGroup("Marshe_group");
 	Group_SetType("Marshe_group", "trade");//тип группы
 	sld = GetCharacter(NPC_GenerateCharacter("GOT_boatsvanDega", "mercen_3", "man", "man", 15, FRANCE, -1, true, "soldier"));
-	FantomMakeCoolSailor(sld, SHIP_GALEON_L, "Delicious", CANNON_TYPE_CANNON_LBS16, 50, 50, 50);
+	FantomMakeCoolSailor(sld, SHIP_GALEON_L, "Восхитительный", CANNON_TYPE_CANNON_LBS16, 50, 50, 50);
 	SetFantomParamFromRank(sld, 15, true);
-	sld.name = "boatswain Serge";
-	sld.lastname = "Dega";
+	sld.name = "боцман Серж";
+	sld.lastname = "Дега";
 	sld.greeting = "captain";
 	sld.Dialog.Filename = "Quest\Sharlie\Guardoftruth.c";
 	sld.DeckDialogNode = "boatsvandega";
@@ -9239,10 +9239,10 @@ void GuardOT_CreateTwoShips(string qName) // создаем галеон Гая и каракку торгов
 	Group_FindOrCreateGroup("Gevarra_group");
 	Group_SetType("Gevarra_group", "trade");//тип группы
 	sld = GetCharacter(NPC_GenerateCharacter("GOT_Gevarra", "trader_5", "man", "man", 15, HOLLAND, -1, true, "soldier"));
-	FantomMakeCoolSailor(sld, SHIP_CARACCA, "San Gregorio", CANNON_TYPE_CANNON_LBS12, 50, 50, 50);
+	FantomMakeCoolSailor(sld, SHIP_CARACCA, "Сан Грегорио", CANNON_TYPE_CANNON_LBS12, 50, 50, 50);
 	SetFantomParamFromRank(sld, 15, true);
-	sld.name = "Carlos";
-	sld.lastname = "Gevarra";
+	sld.name = "Карлос";
+	sld.lastname = "Геварра";
 	sld.greeting = "captain";
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
@@ -9259,8 +9259,8 @@ void GuardOT_CreateTwoShips(string qName) // создаем галеон Гая и каракку торгов
 	// сажаем Марше в таверну
 	sld = GetCharacter(NPC_GenerateCharacter("GOT_Marshe", "GayMarshe", "man", "man", 30, FRANCE, -1, true, "soldier"));
 	SetFantomParamFromRank(sld, 30, true);
-	sld.name = "Guy";
-	sld.lastname = "Marshe";
+	sld.name = "Гай";
+	sld.lastname = "Марше";
 	sld.dialog.FileName = "Quest\Sharlie\Guardoftruth.c";
 	sld.dialog.currentnode = "marshe_tavern";
 	LAi_SetLoginTime(sld, 7.0, 21.0);
@@ -9296,7 +9296,7 @@ void GuardOT_TradeCompleteNext(string qName) // типо поторговали - насильно теле
 	if (iTime >= 21) iAddTime = 24 - iTime + 21;
 	if (iTime < 7) iAddTime = 21 - iTime;
 	if (iTime >= 7 && iTime < 21) iAddTime = 24  + 21 - iTime;
-	SetLaunchFrameFormParam("A day passed..."+ NewStr() +"Vanilla was loaded on the carrack...", "", 0, 5);
+	SetLaunchFrameFormParam("Прошел день..."+ NewStr() +"Ваниль была перегружена на каракку...", "", 0, 5);
 	LaunchFrameForm();
 	StoreDayUpdate();
 	WaitDate("",0,0,1,iAddtime,5);
@@ -9310,8 +9310,8 @@ void GuardOT_TradeCompleteNext(string qName) // типо поторговали - насильно теле
 	ChangeCharacterAddressGroup(sld, "none", "", "");
 	sld = characterFromId("GOT_boatsvanDega");
 	sld.DontDeskTalk = true;
-	sld.name = "Guy";
-	sld.lastname = "Marshe";
+	sld.name = "Гай";
+	sld.lastname = "Марше";
 	sld.FaceId = 44;
 	SetCrewQuantityOverMax(sld, 30);
 	RemoveCharacterGoods(pchar, GOOD_CINNAMON, sti(pchar.questTemp.Guardoftruth.VanilleQty));
@@ -9565,8 +9565,8 @@ void GuardOT_InCumanaCave(string qName) //
 	FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_07", "pistol1", "bullet", iScl*2);
 	sld.dialog.FileName = "Quest\Sharlie\Guardoftruth.c";
 	sld.dialog.currentnode = "barty";
-	sld.name = "Barty";
-	sld.lastname = "Flayer";
+	sld.name = "Барти";
+	sld.lastname = "Живодер";
 	sld.LSC_clan = true;
 	LAi_SetCheckMinHP(sld, 10, true, "GuardOT_BartyEscape");
 	LAi_SetStayType(sld);
@@ -9624,7 +9624,7 @@ void GuardOT_SetPadreVincento() // ставим отца Винсенто
 	LAi_LocationFightDisable(&Locations[FindLocation("Santiago_Incquisitio")], true);//запретим шалить
 	sld = GetCharacter(NPC_GenerateCharacter("Vincento", "vincento", "man", "man_B", 35, SPAIN, -1, true, "quest"));
 	SetFantomParamFromRank(sld, 35, true);
-	sld.name = "Father Vincento";
+	sld.name = "отец Винсенто";
 	sld.lastname = "";
 	sld.dialog.FileName = "Quest\Sharlie\Vincento.c";
 	sld.dialog.currentnode = "First time";
@@ -9642,8 +9642,8 @@ void GuardOT_SetDiegoOnMayak(string qName) // ставим Диего
 	chrDisableReloadToLocation = true;//закрыть локацию
 	// Диего, косит под офицера патруля
 	sld = characterFromId("Diego");
-	sld.name = "Pedro";
-	sld.lastname = "Lopez";
+	sld.name = "Педро";
+	sld.lastname = "Лопес";
 	sld.dialog.FileName = "Quest\Sharlie\Diego.c";
 	sld.dialog.currentnode = "patrol";
 	sld.greeting = "patrol";
@@ -9826,7 +9826,7 @@ void GuardOT_CreateDiegoShips(string qName) //
 	Group_FindOrCreateGroup("Diegohaleon_group");
 	Group_SetType("Diegohaleon_group", "war");//тип группы
 	sld = GetCharacter(NPC_GenerateCharacter("Diegohaleon_cap", "off_spa_2", "man", "man", 35, SPAIN, -1, true, "quest"));
-	FantomMakeCoolSailor(sld, SHIP_GALEON_H, "San Markos", CANNON_TYPE_CANNON_LBS32, 80, 80, 80);
+	FantomMakeCoolSailor(sld, SHIP_GALEON_H, "Сан Маркос", CANNON_TYPE_CANNON_LBS32, 80, 80, 80);
 	FantomMakeCoolFighter(sld, 35, 80, 80, "blade_15", "pistol5", "bullet", 150);
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
@@ -9876,11 +9876,11 @@ void GuardOT_LuggerClear(string qName)
 void GuardOT_CreateDiegoLuggerInWorld()
 {
 	sld = GetCharacter(NPC_GenerateCharacter("Diego_clone", "diego_1", "man", "man", 35, SPAIN, 3, true, "soldier"));
-	FantomMakeCoolSailor(sld, SHIP_CAREERLUGGER, "Shadow", CANNON_TYPE_CANNON_LBS12, 100, 100, 100);
+	FantomMakeCoolSailor(sld, SHIP_CAREERLUGGER, "Тень", CANNON_TYPE_CANNON_LBS12, 100, 100, 100);
 	FantomMakeCoolFighter(sld, 35, 100, 100, "blade_15", "pistol5", "bullet", 250);
 	sld.FaceId = 203;
-	sld.name = "Diego";
-	sld.lastname = "de Montoya";
+	sld.name = "Диего";
+	sld.lastname = "де Монтойя";
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
 	sld.Ship.Mode = "war";
@@ -9903,7 +9903,7 @@ void GuardOT_CreateDiegoLuggerInWorld()
 	Group_SetGroupCommander(sGroup, sld.id);
 	sld.mapEnc.type = "trade";
 	sld.mapEnc.worldMapShip = "quest_ship";
-	sld.mapEnc.Name = "Carrier lugger 'Shadow'";
+	sld.mapEnc.Name = "Курьерский люггер Диего 'Тень'";
 	Map_CreateCoolTrader("shore15", "shore6", sld.id, 2, 1.7);
 }	
 
@@ -9930,7 +9930,7 @@ void GuardOT_CreateCatocheSquadron(string qName) // эскадра Диего
 	// ставим люггер Диего
 	Group_FindOrCreateGroup("camicadze_group");
 	sld = GetCharacter(NPC_GenerateCharacter("GOT_camicadze", "off_spa_1", "man", "man", 35, SPAIN, 2, true, "soldier"));
-	FantomMakeCoolSailor(sld, SHIP_CAREERLUGGER, "Shadow", CANNON_TYPE_CANNON_LBS12, 100, 100, 100);
+	FantomMakeCoolSailor(sld, SHIP_CAREERLUGGER, "Тень", CANNON_TYPE_CANNON_LBS12, 100, 100, 100);
 	sld.FaceId = 333;
 	sld.name = "";
 	sld.lastname = "";
@@ -10008,7 +10008,7 @@ void GuardOT_CreateCatocheSquadron(string qName) // эскадра Диего
 
 void GuardOT_CamicadzeBoom()
 {
-	log_info("Whole powder supply got exploded on 'Shadow'!")
+	log_info("На корабле 'Тень' был взорван пороховой запас!")
 	sld = characterFromId("GOT_camicadze");
 	PostEvent(SHIP_BRANDER_DETONATE, 800, "l", sti(sld.index));
     PlaySound("Sea Battles\Vzriv_fort_001.wav");
@@ -10291,7 +10291,7 @@ void GuardOT_SetWillySquadron(string qName) // ставим эскадру Патерсона
 	Group_FindOrCreateGroup("Willy_group");
 	Group_SetType("Willy_group", "war");//тип группы
 	sld = CharacterFromID("Willy");
-	FantomMakeCoolSailor(sld, SHIP_FRIGATE_L, "Fortune", CANNON_TYPE_CANNON_LBS24, 90, 90, 90);
+	FantomMakeCoolSailor(sld, SHIP_FRIGATE_L, "Фортуна", CANNON_TYPE_CANNON_LBS24, 90, 90, 90);
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
 	sld.watchfort = true;
@@ -11027,8 +11027,8 @@ void Ksochitam_SQInside(string qName) // внутри Санта-Квитерии
 	FantomMakeCoolFighter(sld, iRank+5, iScl+10, iScl+10, "blade_21", "pistol4", "bullet", iScl*2+100);
 	sld.dialog.FileName = "Quest\Sharlie\Ksochitam.c";
 	sld.dialog.currentnode = "SQC_skeletcap";
-	sld.name = "captain";
-	sld.lastname = "of 'Santa Quiteria'";
+	sld.name = "капитан";
+	sld.lastname = "'Санта-Квитерии'";
 	sld.MultiFighter = 1.0+fMft; // мультифайтер
 	GiveItem2Character(sld, "key_archy");
 	sld.SaveItemsForDead = true; // сохранять на трупе вещи
@@ -11390,7 +11390,7 @@ void Tieyasal_SetAdrianInChapel(string qName) // ставим падре Адриана
 {
 	sld = GetCharacter(NPC_GenerateCharacter("Adrian", "priest_sp1", "man", "man2", 25, SPAIN, -1, true, "quest"));
 	SetFantomParamFromRank(sld, 25, true);
-	sld.name = "father Adrian";
+	sld.name = "отец Адриан";
 	sld.lastname = "";
 	sld.dialog.FileName = "Quest\Sharlie\OtherNPC.c";
 	sld.dialog.currentnode = "adrian";
@@ -11560,7 +11560,7 @@ void Tieyasal_InGraveyardCrypt(string qName) // внутри крипты
 	int iScl = 90;
 	sld = GetCharacter(NPC_GenerateCharacter("Dichoso_crypt_agent", "mercen_22", "man", "man", iRank, SPAIN, -1, false, "soldier"));
 	FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_20", "pistol4", "bullet", iScl*2);
-	sld.name = "Stranger";
+	sld.name = "Незнакомец";
 	sld.lastname = "";
 	sld.Dialog.Filename = "Quest\Sharlie\OtherNPC.c";
 	sld.Dialog.currentnode = "Dichoso_crypt_agent";
@@ -11596,7 +11596,7 @@ void Tieyasal_StartCryptBattle() // драка в крипте
 	if (MOD_SKILL_ENEMY_RATE > 5) n++;
 	if (MOD_SKILL_ENEMY_RATE > 7) n++;
 	if (MOD_SKILL_ENEMY_RATE > 9) n++;
-	//log_info("Врагов в засаде - "+n+" штук"); 040214
+	log_info("Врагов в засаде - "+n+" штук");
 	for(i=1; i<=n; i++)
 	{
 		sld = GetCharacter(NPC_GenerateCharacter("Dichoso_crypt_soldier_"+i, "citiz_58", "man", "man", iRank, PIRATE, -1, false, "soldier"));
@@ -11701,7 +11701,7 @@ void Tieyasal_GraveyardBattle(string qName) // бой на кладбище
 
 void Tieyasal_TalkSelfInCabin(string qName) // идем в каюту
 {
-	log_info("I should get in my cabin");
+	log_info("Нужно спуститься в каюту");
 	PlaySound("interface\notebook.wav");
 	Island_SetReloadEnableGlobal("Nevis", false);
 	bQuestDisableMapEnter = true;//закрыть карту
@@ -11740,7 +11740,7 @@ void Tieyasal_SetUrakanItzaWarrior(string qName)
 	// ставим Уракана и мушкетеров ица
 	sld = GetCharacter(NPC_GenerateCharacter("Urakan", "itza_Urakan", "man", "man", 40, PIRATE, -1, false, "quest"));
 	FantomMakeCoolFighter(sld, 40, 110, 110, "topor_01", "", "", 250);
-	sld.name = "Urakan";
+	sld.name = "Уракан";
 	sld.lastname = "";
 	sld.dialog.FileName = "Quest\Sharlie\Itza.c";
 	sld.dialog.currentnode = "urakan";
@@ -11836,7 +11836,7 @@ void Tieyasal_InGreatTemple(string qName) // внутри большого храма
 	// ставим Канека
 	sld = GetCharacter(NPC_GenerateCharacter("Kanek", "itza_Kanek", "man", "man", 40, PIRATE, -1, false, "quest"));
 	FantomMakeCoolFighter(sld, 40, 90, 90, "topor_01", "", "", 200);
-	sld.name = "Kanek";
+	sld.name = "Канек";
 	sld.lastname = "";
 	sld.dialog.FileName = "Quest\Sharlie\Itza.c";
 	sld.dialog.currentnode = "kanek";
@@ -12275,7 +12275,7 @@ void Tieyasal_CheckTwoTablets() // проверяем установку 2 скрижалей для сокровищн
 			LocatorReloadEnterDisable("Tenochtitlan", "reloadTemple3"+i, false);
 		}
 		PlaySound("Ambient\Teno_inside\big_ring.wav");
-		Log_Info("Itzha's treasury has been opened");
+		Log_Info("Открыта сокровищница ица");
 	}
 }
 
@@ -12329,7 +12329,7 @@ void Tieyasal_MaskTerminationContinue_4(string qName)
 
 void Tieyasal_MaskTerminationEnd(string qName)
 {
-	SetLaunchFrameFormParam("The Mask of Kukulcan is destroyed"+ NewStr() +"Portals are eliminated!", "", 0, 4);
+	SetLaunchFrameFormParam("Маска Кукулькана уничтожена"+ NewStr() +"Телепортационные порталы разрушены!", "", 0, 4);
 	LaunchFrameForm();
 	DoQuestFunctionDelay("Tieyasal_MaskTerminationReload", 4);
 	// убираем партиклы
@@ -12454,7 +12454,7 @@ void Tieyasal_InSeaShore(string qName) // победный финал
 
 void Tieyasal_InSeaShoreTime(string qName)
 {
-	SetLaunchFrameFormParam("Several days passed..."+ NewStr() +"The ship has arrived to the bay", "", 0, 5);
+	SetLaunchFrameFormParam("Прошло несколько дней..."+ NewStr() +"Корабль прибыл в бухту", "", 0, 5);
 	WaitDate("", 0, 0, 7, 3, 10); 
 	LaunchFrameForm();
 	RefreshLandTime();
@@ -13403,11 +13403,11 @@ void Slavetrader_Bonanza(string qName)//cоздание индейцев
         GetCharacterPos(pchar, &locx, &locy, &locz);
 		sTemp = LAi_FindNearestFreeLocator("goto", locx, locy, locz);
 		if (sTemp == "") sTemp = LAi_FindNearestLocator("goto", locx, locy, locz);
-        ChangeCharacterAddressGroup(sld, "Shore18", "goto", sTemp);
+		ChangeCharacterAddressGroup(sld, "Shore18", "goto", sTemp);
     }
 	sld = GetCharacter(NPC_GenerateCharacter("Nabuki", "Canib_Boss", "man", "man", 35, PIRATE, 0, true, "quest"));
-    sld.name 	= "Nabukee";
-    sld.lastname = "Anaconda";
+    sld.name 	= "Набуки";
+    sld.lastname = "Анаконда";
 	FantomMakeCoolFighter(sld, 35, 80, 80, "topor_01", "pistol4", "bullet", 150);
 	TakeNItems(sld, "jewelry2", 120+rand(80));
 	TakeNItems(sld, "jewelry3", 120+rand(60));
@@ -13470,8 +13470,8 @@ void Slavetrader_RatCorvette(string qName)//создание корвета крысы
 	Group_SetType("Rat_Attack", "war");
 	sTemp = pchar.questTemp.Slavetrader.ShipName;
 	sld = GetCharacter(NPC_GenerateCharacter("RatCap", "Gontier", "man", "man", 35, FRANCE, 3, true, "quest"));
-	sld.name = "Fransua";
-	sld.lastname = "Gontier";
+	sld.name = "Франсуа";
+	sld.lastname = "Гонтьер";
 	FantomMakeCoolSailor(sld, SHIP_CORVETTE, sTemp, CANNON_TYPE_CANNON_LBS20, 100, 70, 70);
 	FantomMakeCoolFighter(sld, 35, 80, 80, "blade_18", "pistol5", "bullet", 200);
 	DeleteAttribute(sld, "SaveItemsForDead");
@@ -13491,7 +13491,7 @@ void Slavetrader_RatCorvette(string qName)//создание корвета крысы
 	Group_SetTaskAttack("Rat_Attack", PLAYER_GROUP);
 	Group_SetPursuitGroup("Rat_Attack", PLAYER_GROUP);
 	Group_SetAddress("Rat_Attack", "Tortuga", "", "");
-	Group_LockTask("Rat_Attack");
+	Group_LockTask("Rat_Attack");	
     pchar.quest.Slavetrader_AfterBattle.win_condition.l1 = "Group_Death";//условие победы
 	pchar.quest.Slavetrader_AfterBattle.win_condition.l1.group = "Rat_Attack";
 	pchar.quest.Slavetrader_AfterBattle.function = "Slavetrader_RatAttack_AfterBattle";//это победа
@@ -13538,52 +13538,52 @@ void Slavetrader_GetEscapeShore()//выбираем маяк, куда беглых рабов запхнем
 		case 0:
 			pchar.questTemp.Slavetrader.EsIsland = "Barbados";
 			pchar.questTemp.Slavetrader.Island.Shore = "Mayak2";
-			pchar.questTemp.SlavetraderAreal.add = "at the shores of Barbados";
+			pchar.questTemp.SlavetraderAreal.add = "у берегов Барбадоса";
 			break;
 		case 1:
 			pchar.questTemp.Slavetrader.EsIsland = "Guadeloupe";
 			pchar.questTemp.Slavetrader.Island.Shore = "Mayak4";
-			pchar.questTemp.SlavetraderAreal.add = "at the shores of Guadeloupe";
+			pchar.questTemp.SlavetraderAreal.add = "у берегов Гваделупы";
 			break;
 		case 2:
 			pchar.questTemp.Slavetrader.EsIsland = "Cuba1";
 			pchar.questTemp.Slavetrader.Island.Shore = "Mayak9";
-			pchar.questTemp.SlavetraderAreal.add = "not far from Santiago";
+			pchar.questTemp.SlavetraderAreal.add = "недалеко от Сантьяго";
 			break;
 		case 3:
 			pchar.questTemp.Slavetrader.EsIsland = "Cuba2";
 			pchar.questTemp.Slavetrader.Island.Shore = "Mayak10";
-			pchar.questTemp.SlavetraderAreal.add = "not far from Havana";
+			pchar.questTemp.SlavetraderAreal.add = "недалеко от Гаваны";
 			break;
 		case 4:
 			pchar.questTemp.Slavetrader.EsIsland = "Tortuga";
 			pchar.questTemp.Slavetrader.Island.Shore = "Mayak6";
-			pchar.questTemp.SlavetraderAreal.add = "at the shores of Tortuga";
+			pchar.questTemp.SlavetraderAreal.add = "у берегов Тортуги";
 			break;
 		case 5:
 			pchar.questTemp.Slavetrader.EsIsland = "Trinidad";
 			pchar.questTemp.Slavetrader.Island.Shore = "Mayak1";
-			pchar.questTemp.SlavetraderAreal.add = "at the shores of Trinidad";
+			pchar.questTemp.SlavetraderAreal.add = "у берегов Тринидада";
 			break;
 		case 6:
 			pchar.questTemp.Slavetrader.EsIsland = "Nevis";
 			pchar.questTemp.Slavetrader.Island.Shore = "Mayak5";
-			pchar.questTemp.SlavetraderAreal.add = "at the shores of St. Christopher";
+			pchar.questTemp.SlavetraderAreal.add = "у берегов Сент-Кристофера";
 			break;
 		case 7:
 			pchar.questTemp.Slavetrader.EsIsland = "Hispaniola1";
 			pchar.questTemp.Slavetrader.Island.Shore = "Mayak8";
-			pchar.questTemp.SlavetraderAreal.add = "not far from Santo Domingo";
+			pchar.questTemp.SlavetraderAreal.add = "недалеко от Санто-Доминго";
 			break;
 		case 8:
 			pchar.questTemp.Slavetrader.EsIsland = "Hispaniola2";
 			pchar.questTemp.Slavetrader.Island.Shore = "Mayak7";
-			pchar.questTemp.SlavetraderAreal.add = "not far from Port-au-Prince";
+			pchar.questTemp.SlavetraderAreal.add = "недалеко от Порт-о-Принса";
 			break;
 		case 9:
 			pchar.questTemp.Slavetrader.EsIsland = "Cartahena";
 			pchar.questTemp.Slavetrader.Island.Shore = "Mayak11";
-			pchar.questTemp.SlavetraderAreal.add = "not far from Cartagena";
+			pchar.questTemp.SlavetraderAreal.add = "недалеко от Картахены";
 			break;
 	}
 }
@@ -13619,7 +13619,7 @@ void Slavetrader_EscapeSlaveInShore(string qName)
         ChangeCharacterAddressGroup(sld, sShore, "goto", "goto"+i);
     }
 	sld = GetCharacter(NPC_GenerateCharacter("Jimmy", "Tamango", "man", "man", 30, PIRATE, 0, true, "quest"));
-	sld.name 	= "Tamango";
+	sld.name 	= "Таманго";
 	sld.lastname = "";
 	FantomMakeCoolFighter(sld, 30, 80, 80, "blade_06", "pistol1", "bullet", 100);
 	sld.SaveItemsForDead = true; // сохранять на трупе вещи
@@ -13755,8 +13755,8 @@ void Slavetrader_HavanaSeekOver(string qName)//просроченный таймер
 void Slavetrader_UsurerEscape(string qName)//меняем модель ростовщика
 {
 	sld = characterFromId(pchar.questTemp.Slavetrader.UsurerId);
-	sld.name = "Sven";
-	sld.lastname = "Carlson";
+	sld.name = "Свен";
+	sld.lastname = "Карлсон";
 	sld.model = "trader_8";
 	LocatorReloadEnterDisable(pchar.questTemp.Slavetrader.Cityname, "reload8_back", false);
 }
@@ -13925,10 +13925,10 @@ void Deliver_CreateCureerShips(string qName)//создание курьерского корабля
 	FantomMakeCoolSailor(sld, ShipType, sTemp, iCannonType, 75, 50, 50);
 	FantomMakeCoolFighter(sld, Rank, 40, 40, Blade, "pistol3", "grapeshot", 40);
 	Group_AddCharacter("Cureer_Attack", "CureerAttack");
-	DeleteAttribute(sld, "SaveItemsForDead");
-	DeleteAttribute(sld, "DontClearDead");
-	SetCharacterPerk(sld, "MusketsShoot");
-	sld.AlwaysEnemy = true;
+		DeleteAttribute(sld, "SaveItemsForDead");
+		DeleteAttribute(sld, "DontClearDead");
+		SetCharacterPerk(sld, "MusketsShoot");
+		sld.AlwaysEnemy = true;
 	Group_SetGroupCommander("Cureer_Attack", "CureerAttack");
 	Group_SetTaskAttack("Cureer_Attack", PLAYER_GROUP);
 	Group_SetPursuitGroup("Cureer_Attack", PLAYER_GROUP);
@@ -14001,12 +14001,12 @@ void mOfficer_fc(string qName)
 		{
 			if (sti(sld.ship.type) != SHIP_NOTUSED)
 			{
-				Log_SetStringToLog("Officer " + GetFullName(sld) + " has run away with " + sld.ship.name + "");
+				Log_SetStringToLog("Офицер " + GetFullName(sld) + " сбежал с кораблем " + sld.ship.name + "");
 				Pchar.questTemp.MunityOfficerIDX.begin = "0";
 			}
 			else
 			{
-				Log_SetStringToLog("Officer " + GetFullName(sld) + " has run away from " + pchar.ship.name + "");
+				Log_SetStringToLog("Офицер " + GetFullName(sld) + " сбежал с корабля " + pchar.ship.name + "");
 
 				if (GetCrewQuantity(pchar) > 0 && !IsEquipCharacterByArtefact(pchar, "totem_02"))
 				{
@@ -14104,10 +14104,10 @@ void zpq_seaBattle(string qName)
 	int iScl = 20+sti(pchar.rank)*2;
 	LAi_group_Delete("EnemyFight");
 	sld = GetCharacter(NPC_GenerateCharacter("zpqCaptain", "citiz_45", "man", "man", iRank, PIRATE, 1, true, "quest"));
-	FantomMakeSmallSailor(sld, SHIP_CAREERLUGGER, "Normandy", CANNON_TYPE_CANNON_LBS6, iScl, iScl, iScl, iScl, iScl);
+	FantomMakeSmallSailor(sld, SHIP_CAREERLUGGER, "Нормандия", CANNON_TYPE_CANNON_LBS6, iScl, iScl, iScl, iScl, iScl);
 	FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_10", "pistol3", "grapeshot", iScl*2);
-    sld.name 	= "Small";
-    sld.lastname = "Jimmy";
+    sld.name 	= "Маленький";
+    sld.lastname = "Джимми";
 	sld.AlwaysSandbankManeuver = true;
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
@@ -14215,7 +14215,7 @@ void EnemyNationHunterOnMap(bool _fast)//охотники вражеской нации
         sld.AlwaysEnemy = true;
         sld.DontRansackCaptain = true;
         sld.mapEnc.type = "war";
-        sld.mapEnc.Name = "interceptors";
+        sld.mapEnc.Name = "перехватчики";
 		sld.hunter = ""+iNation+"";
         Group_AddCharacter(sGroup, sCapId + i);
     }
@@ -14624,7 +14624,7 @@ void RepairShip_Prepare(string qName)//подготовка к ремонту в бухте
 
 void RepairShip_WithoutMasts(string qName)//крутим время
 {
-	SetLaunchFrameFormParam("Five hours passed...", "", 0, 6);
+	SetLaunchFrameFormParam("Прошло пять дней...", "", 0, 6);
     LaunchFrameForm();
     WaitDate("", 0, 0, 5, 0, 10); 
     RecalculateJumpTable();
@@ -14871,7 +14871,7 @@ void DisasterShipCrew_onBoard()//добавим моряков в нашу команду
 	AddPassenger(pchar, sld, false);
 	SetCharacterRemovable(sld, false);
 	SetCrewQuantityOverMax(pchar, sti(PChar.Ship.Crew.Quantity)+55); 
-	log_info("55 people has joined your crew");
+	log_info("Ваша команда пополнилась на 55 человек");
 	if (sti(pchar.ship.Crew.Morale) < 90) pchar.ship.Crew.Morale = sti(pchar.ship.Crew.Morale)+10;//поднимем мораль
 	ChangeCrewExp(pchar, "Sailors", 10);
 	ChangeCrewExp(pchar, "Cannoners", 10);
@@ -15356,7 +15356,7 @@ void Sunplace_CreateTraderShip(string qName)//создание торгового корабля(-ей)
 	{
 		for (i=1; i<=4; i++)
 		{
-			if (i == 3) sTemp = pchar.GenQuest.Sunplace.Trader.ShipName;
+			if (i == 1) sTemp = pchar.GenQuest.Sunplace.Trader.ShipName;
 			else sTemp = "";
 			switch (i)
 			{
@@ -15429,7 +15429,7 @@ void Sunplace_CreateTraderShip(string qName)//создание торгового корабля(-ей)
 	Group_SetAddress("SunplaceTrader", pchar.GenQuest.Sunplace.Trader.Island, "quest_ships", "Quest_ship_6");
 	Group_LockTask("SunplaceTrader");
 	
-    pchar.quest.Sunplace_AfterBattle.win_condition.l1 = "Character_Capture";
+	pchar.quest.Sunplace_AfterBattle.win_condition.l1 = "Character_Capture";
 	pchar.quest.Sunplace_AfterBattle.win_condition.l1.character = "SunplaceCaptain_1";
 	pchar.quest.Sunplace_AfterBattle.function = "Sunplace_AfterBattle";
 	pchar.quest.Sunplace_AfterBattle_1.win_condition.l1 = "Character_sink";
@@ -15442,9 +15442,10 @@ void Sunplace_CreateTraderShip(string qName)//создание торгового корабля(-ей)
 void Sunplace_AfterBattle(string qName)//реакция на победу
 {
 	DoQuestCheckDelay("sea_victory", 1.5);
-	Group_DeleteGroup("SunplaceTrader");
 	pchar.quest.Sunplace_AfterBattle.over = "yes";
 	pchar.quest.Sunplace_AfterBattle_1.over = "yes";
+	pchar.quest.Sunplace_DieHard.over = "yes";
+	Group_DeleteGroup("SunplaceTrader");
     pchar.quest.Sunplace_DieHard.over = "yes";
 	AddQuestRecord("Sunplace", "4");
 	pchar.GenQuest.Sunplace.Trader = "complete";
@@ -15590,8 +15591,8 @@ void RedChieftain_Begin(string qName)//инициализация квестодателя
 {
 	chrDisableReloadToLocation = true;
 	sld = GetCharacter(NPC_GenerateCharacter("RedChieftain", "Canib", "man", "man", 20, sti(pchar.nation), -1, false, "native"));
-	sld.name = "chieftain";
-	sld.lastname = "Kanauri";
+	sld.name = "вождь";
+	sld.lastname = "Канаури";
     sld.Dialog.Filename = "Quest\LineMiniQuests\RedChieftain.c";
 	sld.dialog.currentnode = "RedChieftain";
     FantomMakeCoolFighter(sld, 20, 50, 50, "blade_01", "", "", 50);
@@ -15645,8 +15646,8 @@ void RedChieftain_CreateShooner(string qName)//создание кораблей и лодок
 		for (i=1; i<=6; i++)
 		{
 			sld = GetCharacter(NPC_GenerateCharacter("TartaneRC_Cap_"+i, "mercen_25", "man", "man", 5, PIRATE, 0, true, "native"));
-			sld.name = "indians";
-			sld.lastname = "of Caiman tribe";
+			sld.name = "араваки";
+			sld.lastname = "рода Кайман";
 			FantomMakeSmallSailor(sld, SHIP_TARTANE, "", CANNON_TYPE_NONECANNON, 30, 10, 10, 10, 10);
 			SetCrewQuantityOverMax(sld, 12);
 			Group_AddCharacter("RedChieftain_Tartane", "TartaneRC_Cap_"+i);
@@ -15751,16 +15752,16 @@ void RedChieftainOver(string qName)//просрочили
 	pchar.quest.Red_Chieftain_2.over = "yes"; //снять прерывание
 	if (IsEntity(worldMap) || bSeaActive) 
 	{
-		pchar.quest.Red_Chieftain_end.win_condition.l1 = "Location_Type";
-		pchar.quest.Red_Chieftain_end.win_condition.l1.location_type = "town";
-		pchar.quest.Red_Chieftain_end.function = "RemoveRedChieftain";
+	pchar.quest.Red_Chieftain_end.win_condition.l1 = "Location_Type";
+	pchar.quest.Red_Chieftain_end.win_condition.l1.location_type = "town";
+	pchar.quest.Red_Chieftain_end.function = "RemoveRedChieftain";
 	}
 	else
 	{
-		sld = CharacterFromID("RedChieftain");
-		RemovePassenger(Pchar, sld);
-		sld.lifeday = 0;
-		log_info("The chieftain has left your vessel!");
+	sld = CharacterFromID("RedChieftain");
+	RemovePassenger(Pchar, sld);
+	sld.lifeday = 0;
+	log_info("Вождь Канаури покинул ваш корабль!");
 		PlaySound("interface\notebook.wav");
 	}
 	AddQuestRecord("RedChieftain", "2");
@@ -15775,7 +15776,7 @@ void RemoveRedChieftain(string qName)//удалить вождя
 	sld = CharacterFromID("RedChieftain");
 	RemovePassenger(Pchar, sld);
 	sld.lifeday = 0;
-	log_info("The chieftain has left your vessel!");
+	log_info("Вождь Канаури покинул ваш корабль!");
 	PlaySound("interface\notebook.wav");
 }
 
@@ -15795,12 +15796,12 @@ void RedChieftain_Shore(string qName)//высадка на сушу и бой
 	{
 		if (i == 3)
 		{
-			sld = GetCharacter(NPC_GenerateCharacter("RSOur_crew_"+i, "mush_ctz_5", "man", "mushketer", iRank, sti(pchar.nation), 0, false, "soldier"));
+		sld = GetCharacter(NPC_GenerateCharacter("RSOur_crew_"+i, "mush_ctz_5", "man", "mushketer", iRank, sti(pchar.nation), 0, false, "soldier"));
 			FantomMakeCoolFighter(sld, iRank, iScl, iScl, "", "mushket1", "cartridge", iScl*2);
 		}
 		else
 		{
-			sld = GetCharacter(NPC_GenerateCharacter("RSOur_crew_"+i, "citiz_"+(rand(9)+31), "man", "man", iRank, sti(pchar.nation), 0, false, "soldier"));
+		sld = GetCharacter(NPC_GenerateCharacter("RSOur_crew_"+i, "citiz_"+(rand(9)+31), "man", "man", iRank, sti(pchar.nation), 0, false, "soldier"));
 			FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_10", "pistol1", "bullet", iScl*2);
 		}
 		ChangeCharacterAddressGroup(sld, pchar.questTemp.RedChieftain.Shore, "goto", "goto1");
@@ -15869,8 +15870,8 @@ void FalseTrace_Begin(string qName)//инициализация квестодателя
 	chrDisableReloadToLocation = true;
 	bDisableFastReload = true;
 	sld = GetCharacter(NPC_GenerateCharacter("Mugger", "AdamRainer", "man", "man", 20, sti(pchar.nation), -1, false, "quest"));
-	sld.name = "Adam";
-	sld.lastname = "Rayner";
+	sld.name = "Адам";
+	sld.lastname = "Рейнер";
     sld.Dialog.Filename = "Quest\LineMiniQuests\FalseTrace.c";
 	sld.dialog.currentnode = "FalseTrace";
 	sld.greeting = "town_pirate";
@@ -15916,25 +15917,25 @@ void FalseTraceGaleonOver(string qName)//просрочили или не нашли
 	Group_DeleteGroup("Sea_FalseTrace1");
 	if (IsEntity(worldMap) || bSeaActive) 
 	{
-		pchar.quest.False_Trace_end.win_condition.l1 = "Location_Type";
-		pchar.quest.False_Trace_end.win_condition.l1.location_type = "town";
-		pchar.quest.False_Trace_end.function = "RemoveFalseTrace";
-		sld = characterFromId("Mugger");
-		DeleteAttribute(sld, "HalfImmortal");
-		RemovePassenger(Pchar, sld);
-		AddPassenger(pchar, sld, false);
-		SetCharacterRemovable(sld, false);
+	pchar.quest.False_Trace_end.win_condition.l1 = "Location_Type";
+	pchar.quest.False_Trace_end.win_condition.l1.location_type = "town";
+	pchar.quest.False_Trace_end.function = "RemoveFalseTrace";
+	sld = characterFromId("Mugger");
+	DeleteAttribute(sld, "HalfImmortal");
+	RemovePassenger(Pchar, sld);
+	AddPassenger(pchar, sld, false);
+	SetCharacterRemovable(sld, false);
 	}
 	else
 	{
-		sld = CharacterFromID("Mugger");
-		sld.lifeday = 0;
-		sld.dialog.currentnode = "FalseTrace_Remove1";
-		RemovePassenger(Pchar, sld);
-		GetCharacterPos(pchar, &locx, &locy, &locz);
-		LAi_SetActorType(sld);
-		ChangeCharacterAddressGroup(sld, pchar.location, "goto", LAi_FindNearestFreeLocator("goto", locx, locy, locz));
-		LAi_ActorDialog(sld, pchar, "", -1, 0);
+	sld = CharacterFromID("Mugger");
+	sld.lifeday = 0;
+	sld.dialog.currentnode = "FalseTrace_Remove1";
+	RemovePassenger(Pchar, sld);
+	GetCharacterPos(pchar, &locx, &locy, &locz);
+	LAi_SetActorType(sld);
+	ChangeCharacterAddressGroup(sld, pchar.location, "goto", LAi_FindNearestFreeLocator("goto", locx, locy, locz));
+	LAi_ActorDialog(sld, pchar, "", -1, 0);
 	}
 	AddQuestRecord("FalseTrace", "2");
 	CloseQuestHeader("FalseTrace");
@@ -15990,7 +15991,7 @@ void CreateFalseTraceGaleonOnMap(string qName)//энкаунтер галеона на карте
 	DeleteAttribute(sld, "DontClearDead");
 	sld.mapEnc.type = "war";
 	sld.mapEnc.worldMapShip = "quest_ship";
-    sld.mapEnc.Name = "galleon '"+pchar.questTemp.FalseTrace.ShipName+"'";
+    sld.mapEnc.Name = "галеон '"+pchar.questTemp.FalseTrace.ShipName+"'";
     Group_AddCharacter(sGroup, "FalseTraceCap");
 	Group_SetGroupCommander(sGroup, "FalseTraceCap");
     Group_SetTaskAttackInMap(sGroup, PLAYER_GROUP);
@@ -16050,44 +16051,44 @@ void FalseTraceSollyOver(string qName)//просрочили за наводкой на Солли
 	{
 		if (CheckAttribute(pchar, "questTemp.FalseTrace.KillAdam")) 
 		{
-			AddQuestRecord("FalseTrace", "12");
-			AddQuestUserData("FalseTrace", "sCity", XI_ConvertString("Colony"+pchar.questTemp.FalseTrace.QuestCity));
-			sld = CharacterFromID("Mugger");
-			RemovePassenger(Pchar, sld);
-			sld.lifeday = 0;
-			sld = CharacterFromID("FalseTraceWife");
-			RemovePassenger(Pchar, sld);
-			sld.lifeday = 0;
-			log_info("Adam Rayner has stolen a rowboat and escaped with his wife!");
+		AddQuestRecord("FalseTrace", "12");
+		AddQuestUserData("FalseTrace", "sCity", XI_ConvertString("Colony"+pchar.questTemp.FalseTrace.QuestCity));
+		sld = CharacterFromID("Mugger");
+		RemovePassenger(Pchar, sld);
+		sld.lifeday = 0;
+		sld = CharacterFromID("FalseTraceWife");
+		RemovePassenger(Pchar, sld);
+		sld.lifeday = 0;
+		log_info("Адам Рейнер украл шлюпку и сбежал с корабля, прихватив жену!");
 			PlaySound("interface\notebook.wav");
 		}
 		else
 		{
-			pchar.quest.False_Trace_end.win_condition.l1 = "Location_Type";
-			pchar.quest.False_Trace_end.win_condition.l1.location_type = "town";
-			pchar.quest.False_Trace_end.function = "RemoveFalseTraceBoth";
-			AddQuestRecord("FalseTrace", "13");
+		pchar.quest.False_Trace_end.win_condition.l1 = "Location_Type";
+		pchar.quest.False_Trace_end.win_condition.l1.location_type = "town";
+		pchar.quest.False_Trace_end.function = "RemoveFalseTraceBoth";
+		AddQuestRecord("FalseTrace", "13");
 			AddQuestUserData("FalseTrace", "sCity", XI_ConvertString("Colony"+pchar.questTemp.FalseTrace.QuestCity));
 		}
 	}
 	else
 	{
-		AddQuestRecord("FalseTrace", "13");
+	AddQuestRecord("FalseTrace", "13");
 		AddQuestUserData("FalseTrace", "sCity", XI_ConvertString("Colony"+pchar.questTemp.FalseTrace.QuestCity));
-		sld = CharacterFromID("Mugger");
-		sld.lifeday = 0;
-		sld.dialog.currentnode = "FalseTrace_Remove2";
-		RemovePassenger(Pchar, sld);
-		GetCharacterPos(pchar, &locx, &locy, &locz);
-		LAi_SetActorType(sld);
-		ChangeCharacterAddressGroup(sld, pchar.location, "goto", LAi_FindNearestFreeLocator("goto", locx, locy, locz));
-		LAi_ActorDialog(sld, pchar, "", -1, 0);
-		ref chr = CharacterFromID("FalseTraceWife");
-		chr.lifeday = 0;
-		RemovePassenger(Pchar, chr);
-		LAi_SetActorType(chr);
-		ChangeCharacterAddressGroup(chr, pchar.location, "goto", LAi_FindNearestFreeLocator("goto", locx, locy, locz));
-		LAi_ActorFollow(chr, sld, "", -1);
+	sld = CharacterFromID("Mugger");
+	sld.lifeday = 0;
+	sld.dialog.currentnode = "FalseTrace_Remove2";
+	RemovePassenger(Pchar, sld);
+	GetCharacterPos(pchar, &locx, &locy, &locz);
+	LAi_SetActorType(sld);
+	ChangeCharacterAddressGroup(sld, pchar.location, "goto", LAi_FindNearestFreeLocator("goto", locx, locy, locz));
+	LAi_ActorDialog(sld, pchar, "", -1, 0);
+	ref chr = CharacterFromID("FalseTraceWife");
+	chr.lifeday = 0;
+	RemovePassenger(Pchar, chr);
+	LAi_SetActorType(chr);
+	ChangeCharacterAddressGroup(chr, pchar.location, "goto", LAi_FindNearestFreeLocator("goto", locx, locy, locz));
+	LAi_ActorFollow(chr, sld, "", -1);
 	}
 	CloseQuestHeader("FalseTrace");
 	DeleteAttribute(pchar, "questTemp.FalseTrace");
@@ -16217,8 +16218,8 @@ void FalseTrace_SollyShip(string qName)//появился Солли
 	if (sti(pchar.rank < 15)) iTemp = SHIP_BRIG;
 	else iTemp = SHIP_CORVETTE;
 	sld = GetCharacter(NPC_GenerateCharacter("Solly", "mercen_20", "man", "man", iRank, PIRATE, 0, true, "quest"));
-	sld.name = "Cockeyed";
-	sld.lastname = "Solly";
+	sld.name = "Косой";
+	sld.lastname = "Солли";
 	FantomMakeSmallSailor(sld, iTemp, "", CANNON_TYPE_CULVERINE_LBS18, 100, iScl, iScl, iScl, iScl);
 	FantomMakeCoolFighter(sld, iRank, 40, 40, "blade_04", "pistol1", "bullet", 100);
 	DeleteAttribute(sld, "SaveItemsForDead");
@@ -16364,7 +16365,7 @@ void CreateFalseTraceGoldShipOnMap(string qName)//создаем корабль с золотом
 		}
 		sld.mapEnc.type = "war";
 		sld.mapEnc.worldMapShip = "quest_ship";
-        sld.mapEnc.Name = "galleon with gold ore";
+        sld.mapEnc.Name = "галеон с золотой рудой";
         Group_AddCharacter(sGroup, sCapId + i);
 	}
 	Group_SetGroupCommander(sGroup, sCapId+ "1");
@@ -16762,7 +16763,7 @@ void EnemyTrader_DieHard(string qName)//сбежали
 
 void DesIslandAttack(string qName)//нападение торговца-пирата
 {
-	Log_Info("The trader has raised the black flag and attacking us!");
+	Log_Info("Торговец поднял пиратский флаг и атакует нас!");
 	Island_SetReloadEnableGlobal(pchar.GenQuest.Escort.Trader.Island, false);//на остров нельзя
 	pchar.quest.EscortTrader_fail.over = "yes";
 	pchar.quest.EscortTrader_Complete.over = "yes";
@@ -16958,7 +16959,7 @@ void Monkpassenger_Over(string qName)//опоздали с пассажиром
 	else
 	{
 		RemovePassenger(Pchar, sld);
-		log_info("Passenger "+GetFullName(sld)+" has left your ship!");
+		log_info("Пассажир "+GetFullName(sld)+" покинул ваш корабль!");
 		AddQuestRecordEx(sTemp, "Citizpassenger", "2");
 		CloseQuestHeader(sTemp);
 		sld.lifeday = 0;
@@ -16971,7 +16972,7 @@ void Monkpassenger_remove(string qName)//удаление пассажира
 	sld = characterFromId(pchar.GenQuest.Monkpassenger.id);
 	sTemp = sld.index+"Citizpassenger";
 	RemovePassenger(Pchar, sld);
-	log_info("Passenger "+GetFullName(sld)+" has left your ship!");
+	log_info("Пассажир "+GetFullName(sld)+" покинул ваш корабль!");
 	AddQuestRecordEx(sTemp, "Citizpassenger", "2");
 	CloseQuestHeader(sTemp);
 	sld.lifeday = 0;
@@ -17008,7 +17009,7 @@ void ShipCapellan_Remove()//удаление капеллана
 	else
 	{
 		RemovePassenger(Pchar, sld);
-		log_info("Chaplain "+GetFullName(sld)+" has left your ship!");
+		log_info("Капеллан "+GetFullName(sld)+" покинул ваш корабль!");
 		PlaySound("interface\notebook.wav");
 		sld.lifeday = 0;
 		DeleteAttribute(Pchar, "questTemp.ShipCapellan.id");
@@ -17019,7 +17020,7 @@ void ShipCapellan_remove_1(string qName)//удаление капеллана
 {
 	sld = characterFromId(pchar.questTemp.ShipCapellan.id);
 	RemovePassenger(Pchar, sld);
-	log_info("Chaplain "+GetFullName(sld)+" has left your ship!");
+	log_info("Капеллан "+GetFullName(sld)+" покинул ваш корабль!");
 	PlaySound("interface\notebook.wav");
 	sld.lifeday = 0;
 	DeleteAttribute(Pchar, "questTemp.ShipCapellan.id");
@@ -17043,7 +17044,7 @@ void Townpassenger_Over(string qName)//опоздали с пассажиром
 	else
 	{
 		RemovePassenger(Pchar, sld);
-		log_info("Passenger "+GetFullName(sld)+" has left your ship!");
+		log_info("Пассажир "+GetFullName(sld)+" покинул ваш корабль!");
 		AddQuestRecordEx(sTemp, "Citizpassenger", "2");
 		CloseQuestHeader(sTemp);
 		sld.lifeday = 0;
@@ -17056,7 +17057,7 @@ void Townpassenger_remove(string qName)//удаление пассажира
 	sld = characterFromId(pchar.GenQuest.Townpassenger.id);
 	sTemp = sld.index+"Citizpassenger";
 	RemovePassenger(Pchar, sld);
-	log_info("Passenger "+GetFullName(sld)+" has left your ship!");
+	log_info("Пассажир "+GetFullName(sld)+" покинул ваш корабль!");
 	AddQuestRecordEx(sTemp, "Citizpassenger", "2");
 	CloseQuestHeader(sTemp);
 	sld.lifeday = 0;
@@ -17092,7 +17093,7 @@ void Noblepassenger_Over(string qName)//опоздали с пассажиром
 	else
 	{
 		RemovePassenger(Pchar, sld);
-		log_info("Passenger "+GetFullName(sld)+" has left your ship!");
+		log_info("Пассажир "+GetFullName(sld)+" покинул ваш корабль!");
 		AddQuestRecordEx(sTemp, "Citizpassenger", "2");
 		CloseQuestHeader(sTemp);
 		sld.lifeday = 0;
@@ -17105,7 +17106,7 @@ void Noblepassenger_remove(string qName)//удаление пассажира
 	sld = characterFromId(pchar.GenQuest.Noblepassenger.id);
 	sTemp = sld.index+"Citizpassenger";
 	RemovePassenger(Pchar, sld);
-	log_info("Passenger "+GetFullName(sld)+" has left your ship!");
+	log_info("Пассажир "+GetFullName(sld)+" покинул ваш корабль!");
 	AddQuestRecordEx(sTemp, "Citizpassenger", "2");
 	CloseQuestHeader(sTemp);
 	sld.lifeday = 0;
@@ -17328,7 +17329,7 @@ void Marginpassenger_SouthshipInWorld(string qName)//запускаем кораблик с дерево
 	AddCharacterGoods(sld, sti(pchar.GenQuest.Marginpassenger.Goods), sti(pchar.GenQuest.Marginpassenger.GoodsQty));//положить в трюм древесину
 	sld.mapEnc.type = "trade";
 	sld.mapEnc.worldMapShip = "ranger";
-	sld.mapEnc.Name = "barquentine '"+pchar.GenQuest.Marginpassenger.ShipName1 + "'";
+	sld.mapEnc.Name = "баркентина '"+pchar.GenQuest.Marginpassenger.ShipName1 + "'";
 	Group_AddCharacter(sGroup, "SouthshipCap");
 	Group_SetGroupCommander(sGroup, "SouthshipCap");
 	Map_CreateTrader(pchar.GenQuest.Marginpassenger.Southcity, pchar.GenQuest.Marginpassenger.Southcity1, "SouthshipCap", iDays);
@@ -17428,6 +17429,7 @@ void MarchCap_Over(string qName)//снимаем кораблик
 		sld.DontDeskTalk = true;
 	}
 	else pchar.quest.MarchCap_Create.over = "yes"; //снять прерывание
+	DeleteAttribute(pchar, "GenQuest.MarchCap"); // diffix
 }
 
 void MarchCap1_CreateConvoy(string qName)//конвой на боевой карте
@@ -17647,7 +17649,7 @@ void MarchCap2_CreateConvoy(string qName)//конвой на карте
 		}
 		sld.mapEnc.type = "war";
 		sld.mapEnc.worldMapShip = "quest_ship";
-        sld.mapEnc.Name = "trading convoy";
+        sld.mapEnc.Name = "торговый конвой";
         Group_AddCharacter(sGroup, sCapId + i);
 	}
 	Group_SetGroupCommander(sGroup, sCapId+ "1");
@@ -17749,7 +17751,7 @@ void MarchCap3_CreatePirate(string qName)//пират с золотишком
 //--> Контркурьер
 void TakePostcureer_CreateShip(string qName)
 {
-	Log_Info("Enemy vessel is on the horizon!");
+	Log_Info("Вражеское судно на горизонте!");
 	DoQuestCheckDelay("see_sails", 1.3);
 	pchar.quest.AllMayorsQuests_Late.over = "yes"; //снимаем общий таймер
 	Island_SetReloadEnableGlobal(pchar.GenQuest.TakePostcureer.Island, false);//на остров нельзя
@@ -17814,7 +17816,7 @@ void ContraCureer_DieHard(string qName)//сбежали
 //--> Контрфрахт - арсенал
 void TakeArsenalship_CreateShip(string qName)
 {
-	Log_Info("Enemy convoy is on the horizon!");
+	Log_Info("Вражеский конвой на горизонте!");
 	DoQuestCheckDelay("see_sails", 1.3);
 	pchar.quest.AllMayorsQuests_Late.over = "yes"; //снимаем общий таймер
 	Island_SetReloadEnableGlobal(pchar.GenQuest.TakeArsenalship.Island, false);//на остров нельзя
@@ -17890,7 +17892,7 @@ void ContraArs_DieHard(string qName)//сбежали
 //--> ОЗГ - пират
 void TakePirateship_CreateShip(string qName)
 {
-	Log_Info("Pirate vessel in on the horizon!");
+	Log_Info("Пиратское судно на горизонте!");
 	DoQuestCheckDelay("see_sails", 1.3);
 	pchar.quest.AllMayorsQuests_Late.over = "yes"; //снимаем общий таймер
 	Island_SetReloadEnableGlobal(pchar.GenQuest.TakePirateship.Island, false);//на остров нельзя
@@ -18102,7 +18104,7 @@ void FindFugitive_Over(string qName)//не пошел сдавать пленника
 	sld = &Characters[sti(Pchar.GenQuest.FindFugitive.PrisonerIDX)];
 	ReleasePrisoner(sld); //освободили пленника
 	sld.lifeday = 0;
-	log_info(""+pchar.GenQuest.FindFugitive.Name+" died of calenture!");
+	log_info(""+pchar.GenQuest.FindFugitive.Name+" заболел тропической лихорадкой и скоропостижно скончался!");
 	PlaySound("interface\notebook.wav");
 	pchar.GenQuest.FindFugitive = "Late"; //флаг опоздал
 }
@@ -18155,8 +18157,8 @@ void PrepareToRegataInPortroyal(string qName)//создаем распорядителя регаты
 	sld = GetCharacter(NPC_GenerateCharacter("RegataHead", "off_eng_5", "man", "man", 20, ENGLAND, -1, false, "quest"));
     sld.Dialog.Filename = "Quest\Regata_dialog.c";
 	sld.dialog.currentnode = "Regata_Head";
-	sld.name = "Henry";
-	sld.lastname = "Stivenson";
+	sld.name = "Генри";
+	sld.lastname = "Стивенсон";
 	LAi_SetImmortal(sld, true);
 	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
     FantomMakeCoolFighter(sld, 90, 90, 90, "blade_11", "pistol3", "grapeshot", 50);
@@ -18185,30 +18187,30 @@ void Regata_SetCitizen()//оптимизация - установка ситизенов и распорядителя
 	for (i=1; i <=5; i++)
 	{
 		sld = GetCharacter(NPC_GenerateCharacter("RegataCitPRWom_"+i, "women_"+(rand(9)+7), "woman", "towngirl", 5, ENGLAND, 1, false, "quest"));
-		sld.Dialog.Filename = "Quest\Regata_dialog.c";
+	sld.Dialog.Filename = "Quest\Regata_dialog.c";
 		LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
-		ChangeCharacterAddressGroup(sld, "Portroyal_town", "patrol", "patrol1");
-		LAi_SetActorType(sld);
-		LAi_ActorGoToLocator(sld, "quest", "quest1", "RegataCitPR_norm", -1);
+	ChangeCharacterAddressGroup(sld, "Portroyal_town", "patrol", "patrol1");
+	LAi_SetActorType(sld);
+	LAi_ActorGoToLocator(sld, "quest", "quest1", "RegataCitPR_norm", -1);
 		if (CheckAttribute(pchar, "questTemp.Regata.Prepare"))
 		{
-			LAi_SetLoginTime(sld, 9.0, 13.0);
-			sld.dialog.currentnode = "Regata_CitWom";
+		LAi_SetLoginTime(sld, 9.0, 13.0);
+		sld.dialog.currentnode = "Regata_CitWom";
 		}
 		else sld.dialog.currentnode = "Regata_CitWom_1";
 	}
 	for (i=1; i <=2; i++)
 	{
-		sld = GetCharacter(NPC_GenerateCharacter("RegataCitPRHor_"+i, "horse0"+(2+i), "woman", "towngirl", 5, ENGLAND, 1, false, "quest"));
-		sld.Dialog.Filename = "Quest\Regata_dialog.c";
+	sld = GetCharacter(NPC_GenerateCharacter("RegataCitPRHor_"+i, "horse0"+(2+i), "woman", "towngirl", 5, ENGLAND, 1, false, "quest"));
+	sld.Dialog.Filename = "Quest\Regata_dialog.c";
 		LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
-		ChangeCharacterAddressGroup(sld, "Portroyal_town", "patrol", "patrol13");
-		LAi_SetActorType(sld);
-		LAi_ActorGoToLocator(sld, "goto", "goto27", "RegataCitPR_norm", -1);
+	ChangeCharacterAddressGroup(sld, "Portroyal_town", "patrol", "patrol13");
+	LAi_SetActorType(sld);
+	LAi_ActorGoToLocator(sld, "goto", "goto27", "RegataCitPR_norm", -1);
 		if (CheckAttribute(pchar, "questTemp.Regata.Prepare"))
 		{
-			LAi_SetLoginTime(sld, 9.0, 13.0);
-			sld.dialog.currentnode = "Regata_CitHorse";
+		LAi_SetLoginTime(sld, 9.0, 13.0);
+		sld.dialog.currentnode = "Regata_CitHorse";
 		}
 		else sld.dialog.currentnode = "Regata_CitHorse_1";
 	}
@@ -18228,12 +18230,12 @@ void Regata_SetTime(string qName)//подготовка к запуску
 	//установим тела противников, для антуражу и индикации готовности, без возможности общения
 	for (i=1; i<=5; i++)
 	{
-		sld = GetCharacter(NPC_GenerateCharacter("Regata_Cap_F"+i, "mercen_1"+i, "man", "man", 20, ENGLAND, 1, true, "quest"));
-		ChangeCharacterAddressGroup(sld, "Portroyal_town", "reload", "reload1_back");
+	sld = GetCharacter(NPC_GenerateCharacter("Regata_Cap_F"+i, "mercen_1"+i, "man", "man", 20, ENGLAND, 1, true, "quest"));
+	ChangeCharacterAddressGroup(sld, "Portroyal_town", "reload", "reload1_back");
 		LAi_SetImmortal(sld, true);
-		LAi_SetActorType(sld);
-		LAi_ActorGoToLocator(sld, "reload", "reload1_back", "RegataCapTurn", -1);
-		LAi_SetLoginTime(sld, 12.0, 13.0);
+	LAi_SetActorType(sld);
+	LAi_ActorGoToLocator(sld, "reload", "reload1_back", "RegataCapTurn", -1);
+	LAi_SetLoginTime(sld, 12.0, 13.0);
 	}
 	//установим кораблики противников
 	Group_FindOrCreateGroup("Regata");
@@ -18285,7 +18287,7 @@ void Regata_Lost(string qName)//опоздал к старту
 {
 	pchar.quest.Regata_Start.over = "yes";//снять прерывание
 	DeleteAttribute(pchar, "questTemp.Regata");
-	log_info("You are too late for the regatta.");
+	log_info("Вы опоздали, и регата стартовала без вас.");
 	Group_DeleteGroup("Regata");
 	LocatorReloadEnterDisable("Portroyal_town", "reload1_back", false);//откроем выход в море
 	sld = characterFromId("RegataHead");
@@ -18305,17 +18307,17 @@ void Regata_Start(string qName)//старт регаты
 	pchar.questTemp.Regata.StartTime = GetTime();
 	for (i=1; i <=5; i++)
 	{
-		if (i==1) sTemp = "a";
-		if (i==2) sTemp = "b";
-		if (i==3) sTemp = "c";
-		if (i==4) sTemp = "d";
-		if (i==5) sTemp = "e";
-		pchar.questTemp.Regata.AdversaryFirstTransition.Time.(sTemp) = 72*stf(pchar.questTemp.Regata.AdversarySpeed.(sTemp));//время 1 перехода в часах
-		pchar.questTemp.Regata.AdversarySecondTransition.Time.(sTemp) = 122*stf(pchar.questTemp.Regata.AdversarySpeed.(sTemp));//время 1+2 переходов в часах
-		pchar.questTemp.Regata.AdversaryThirdTransition.Time.(sTemp) = 192*stf(pchar.questTemp.Regata.AdversarySpeed.(sTemp));//время 1+2+3 переходов в часах
-		pchar.questTemp.Regata.AdversaryFourthTransition.Time.(sTemp) = 240*stf(pchar.questTemp.Regata.AdversarySpeed.(sTemp));//время 1+2+3+4 переходов в часах
-		pchar.questTemp.Regata.AdversaryFifthTransition.Time.(sTemp) = 360*stf(pchar.questTemp.Regata.AdversarySpeed.(sTemp));//время 1+2+3+4+5 переходов в часах
-		log_testinfo(FindRussianDaysString(pchar.questTemp.Regata.AdversaryThirdTransition.Time.(sTemp)));
+	if (i==1) sTemp = "a";
+	if (i==2) sTemp = "b";
+	if (i==3) sTemp = "c";
+	if (i==4) sTemp = "d";
+	if (i==5) sTemp = "e";
+	pchar.questTemp.Regata.AdversaryFirstTransition.Time.(sTemp) = 72*stf(pchar.questTemp.Regata.AdversarySpeed.(sTemp));//время 1 перехода в часах
+	pchar.questTemp.Regata.AdversarySecondTransition.Time.(sTemp) = 122*stf(pchar.questTemp.Regata.AdversarySpeed.(sTemp));//время 1+2 переходов в часах
+	pchar.questTemp.Regata.AdversaryThirdTransition.Time.(sTemp) = 192*stf(pchar.questTemp.Regata.AdversarySpeed.(sTemp));//время 1+2+3 переходов в часах
+	pchar.questTemp.Regata.AdversaryFourthTransition.Time.(sTemp) = 240*stf(pchar.questTemp.Regata.AdversarySpeed.(sTemp));//время 1+2+3+4 переходов в часах
+	pchar.questTemp.Regata.AdversaryFifthTransition.Time.(sTemp) = 360*stf(pchar.questTemp.Regata.AdversarySpeed.(sTemp));//время 1+2+3+4+5 переходов в часах
+	log_testinfo(FindRussianDaysString(pchar.questTemp.Regata.AdversaryThirdTransition.Time.(sTemp)));
 	}
 	pchar.quest.Regata_Check.win_condition.l1 = "location";
 	pchar.quest.Regata_Check.win_condition.l1.location = "Beliz";
@@ -18337,10 +18339,10 @@ void ReturnJamaicaNorm(string qName)//вертаем остров в норму
 	DeleteAttribute(pchar, "questTemp.Regata.Prepare");
 }
 
-void RegataCheck(string qName)//проверку ставим в локации острова, чтобы не жульничал 
+void RegataCheck(string qName)//проверку ставим в локации острова, чтобы не жульничал
 {
 	log_testinfo("ПРОВЕРКА ПРАВИЛЬНОСТИ!!!");
-	if ((GetCompanionQuantity(pchar) > 1) || sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LUGGER || pchar.Ship.Name != "Santa Catherina") pchar.questTemp.Regata.Breach = "true";
+	if ((GetCompanionQuantity(pchar) > 1) || sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LUGGER || pchar.Ship.Name != "Сaнта-Kатepина") pchar.questTemp.Regata.Breach = "true";
 }
 
 void RegataPU_Open(string qName)//телепорт в ПУ, если ночь на дворе
@@ -18474,19 +18476,19 @@ void RegataAttack_Brigantine(string qName)//засада - бригантина
 	int iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE;
 	int iScl = 10*sti(pchar.rank);
 	int iNation = sti(pchar.questTemp.Regata.AttackNation);
-	sld = GetCharacter(NPC_GenerateCharacter("Brigantine_CapAttack_1", "mercen_"+(rand(27)+1), "man", "man", iRank, iNation, 5, true, "quest"));
-	FantomMakeCoolSailor(sld, SHIP_BRIGANTINE, "", CANNON_TYPE_CANNON_LBS16, 100, iScl, iScl);
-	FantomMakeCoolFighter(sld, iRank, 50, 50, "blade_10", "pistol1", "bullet", 100);
-	DeleteAttribute(sld, "SaveItemsForDead");
-	DeleteAttribute(sld, "DontClearDead");
-	UpgradeShipParameter(sld, "SpeedRate");
-	if (drand(1) == 0) UpgradeShipParameter(sld, "Capacity");
-	else UpgradeShipParameter(sld, "WindAgainstSpeed");
-	Character_SetAbordageEnable(sld, false); //нельзя абордировать
-	sld.AlwaysEnemy = true;
-	sld.Coastal_Captain = true;
-	sld.AnalizeShips = true;
-	Group_AddCharacter("Brigantine_Attack", "Brigantine_CapAttack_1");
+		sld = GetCharacter(NPC_GenerateCharacter("Brigantine_CapAttack_1", "mercen_"+(rand(27)+1), "man", "man", iRank, iNation, 5, true, "quest"));
+		FantomMakeCoolSailor(sld, SHIP_BRIGANTINE, "", CANNON_TYPE_CANNON_LBS16, 100, iScl, iScl);
+		FantomMakeCoolFighter(sld, iRank, 50, 50, "blade_10", "pistol1", "bullet", 100);
+		DeleteAttribute(sld, "SaveItemsForDead");
+		DeleteAttribute(sld, "DontClearDead");
+		UpgradeShipParameter(sld, "SpeedRate");
+		if (drand(1) == 0) UpgradeShipParameter(sld, "Capacity");
+		else UpgradeShipParameter(sld, "WindAgainstSpeed");
+		Character_SetAbordageEnable(sld, false); //нельзя абордировать
+		sld.AlwaysEnemy = true;
+		sld.Coastal_Captain = true;
+		sld.AnalizeShips = true;
+		Group_AddCharacter("Brigantine_Attack", "Brigantine_CapAttack_1");
 	Group_SetGroupCommander("Brigantine_Attack", "Brigantine_CapAttack_1");
 	Group_SetTaskAttack("Brigantine_Attack", PLAYER_GROUP);
 	Group_SetPursuitGroup("Brigantine_Attack", PLAYER_GROUP);
@@ -18553,11 +18555,11 @@ void RegataSiege(string qName)//создаем осаду ручками, ибо CreateSiege() тут не 
 		switch (i)
 		{
 			case 1: FantomMakeCoolSailor(sld, SHIP_LINESHIP, "", CANNON_TYPE_CANNON_LBS32, 100, 100, 100); break;
-			case 2:
+		case 2:
 				FantomMakeCoolSailor(sld, SHIP_LINESHIP, "", CANNON_TYPE_CANNON_LBS32, 100, 100, 100);
-				LAi_SetImmortal(sld, true);//защита от дурака
-				Character_SetAbordageEnable(sld, false); //нельзя абордировать
-			break;
+		LAi_SetImmortal(sld, true);//защита от дурака
+		Character_SetAbordageEnable(sld, false); //нельзя абордировать
+		break;
 			case 3: FantomMakeCoolSailor(sld, SHIP_GALEON_H, "", CANNON_TYPE_CANNON_LBS32, 100, 100, 100); break;
 			case 4: FantomMakeCoolSailor(sld, SHIP_GALEON_H, "", CANNON_TYPE_CANNON_LBS24, 100, 100, 100); break;
 			case 5: FantomMakeCoolSailor(sld, SHIP_GALEON_H, "", CANNON_TYPE_CANNON_LBS24, 100, 100, 100); break;
@@ -18581,8 +18583,8 @@ void RegataSiegeDelete(string qName)//удалить осаду
 	{
 		if (GetCharacterIndex("Siege_CapAttack_"+i) != -1)
 		{
-			sld = characterFromId("Siege_CapAttack_"+i);
-			sld.lifeday = 0;
+		sld = characterFromId("Siege_CapAttack_"+i);
+		sld.lifeday = 0;
 		}
 	}
 }
@@ -18600,8 +18602,8 @@ void RegataSiegeOfficer(string qName)//офицер-вестовой
 	FantomMakeCoolFighter(sld, 25, 60, 60, "blade_10", "pistol5", "bullet", 100);
 	DeleteAttribute(sld, "SaveItemsForDead");
 	DeleteAttribute(sld, "DontClearDead");
-	sld.name = "lieutenant";
-    sld.lastname = "Mahoiny";
+	sld.name = "лейтенант";
+    sld.lastname = "Махойни";
 	sld.Dialog.Filename = "Quest\Regata_dialog.c";
 	sld.dialog.currentnode = "Regata_SiegeOfficer";
 	GetCharacterPos(pchar, &locx, &locy, &locz);
@@ -18611,14 +18613,14 @@ void RegataSiegeOfficer(string qName)//офицер-вестовой
 	//поставим горожанок
 	for (i=1; i <=9; i++)
 	{
-		sld = GetCharacter(NPC_GenerateCharacter("RegataBridgWom_"+i, "women_"+(rand(9)+7), "woman", "towngirl", 5, ENGLAND, -1, false, "quest"));
-		sld.Dialog.Filename = "Quest\Regata_dialog.c";
-		sld.dialog.currentnode = "Regata_BridgWom";
-		LAi_SetImmortal(sld, true);//защита от дурака
+	sld = GetCharacter(NPC_GenerateCharacter("RegataBridgWom_"+i, "women_"+(rand(9)+7), "woman", "towngirl", 5, ENGLAND, -1, false, "quest"));
+	sld.Dialog.Filename = "Quest\Regata_dialog.c";
+	sld.dialog.currentnode = "Regata_BridgWom";
+	LAi_SetImmortal(sld, true);//защита от дурака
 		LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
-		ChangeCharacterAddressGroup(sld, "Bridgetown_town", "goto", "goto4");
-		LAi_SetActorType(sld);
-		LAi_ActorGoToLocator(sld, "patrol", "patrol17", "RegataBridgWom_norm", -1);
+	ChangeCharacterAddressGroup(sld, "Bridgetown_town", "goto", "goto4");
+	LAi_SetActorType(sld);
+	LAi_ActorGoToLocator(sld, "patrol", "patrol17", "RegataBridgWom_norm", -1);
 	}
 }
 
@@ -18658,10 +18660,10 @@ void RegataSiegeShore(string qName)//бой в бухте
 	chrDisableReloadToLocation = true;
 	for (i=1; i <=9; i++)
 	{
-		sld = characterFromId("RegataBridgWom_"+i);
-		ChangeCharacterAddressGroup(sld, "Shore4", "goto", "goto10");
-		LAi_SetActorType(sld);
-		LAi_ActorGoToLocator(sld, "goto", "goto4", "RegataBridgWom_norm", -1);
+	sld = characterFromId("RegataBridgWom_"+i);
+	ChangeCharacterAddressGroup(sld, "Shore4", "goto", "goto10");
+	LAi_SetActorType(sld);
+	LAi_ActorGoToLocator(sld, "goto", "goto4", "RegataBridgWom_norm", -1);
 	}
 	sld = characterFromId("SiegeOfficer");
 	sld.dialog.currentnode = "Regata_SiegeOfficer_6";
@@ -18696,11 +18698,11 @@ void RegataBarbadosCave(string qName)//в пещере
 	LocatorReloadEnterDisable("Barbados_cave", "reload1", true);
 	if (GetCharacterIndex("SiegeOfficer") != -1)
 	{
-		sld = characterFromId("SiegeOfficer");
-		sld.dialog.currentnode = "Regata_SiegeOfficer_8";
-		LAi_SetActorType(sld);
-		LAi_ActorDialog(sld, pchar, "", -1, 0);
-		ChangeCharacterAddressGroup(sld, "Barbados_cave", "monsters", "monster10");
+	sld = characterFromId("SiegeOfficer");
+	sld.dialog.currentnode = "Regata_SiegeOfficer_8";
+	LAi_SetActorType(sld);
+	LAi_ActorDialog(sld, pchar, "", -1, 0);
+	ChangeCharacterAddressGroup(sld, "Barbados_cave", "monsters", "monster10");
 	}
 	else
 	{
@@ -18712,10 +18714,10 @@ void RegataBarbadosCave(string qName)//в пещере
 	}
 	for (i=2; i <=9; i++)
 	{
-		sld = characterFromId("RegataBridgWom_"+i);
-		LAi_SetActorType(sld);
-		ChangeCharacterAddressGroup(sld, "Barbados_cave", "monsters", "monster37");
-		LAi_ActorRunToLocator(sld, "reload", "reload1", "", 30);
+	sld = characterFromId("RegataBridgWom_"+i);
+	LAi_SetActorType(sld);
+	ChangeCharacterAddressGroup(sld, "Barbados_cave", "monsters", "monster37");
+	LAi_ActorRunToLocator(sld, "reload", "reload1", "", 30);
 	}
 }
 
@@ -18733,8 +18735,8 @@ void RegataSiegeSkiper()//Вудро в церкви
 	SetCharacterPerk(sld, "SailsMan");
 	SetCharacterPerk(sld, "SailingProfessional");
 	sld.CompanionDisable = true;
-	sld.name = "Vudro";
-    sld.lastname = "Doggerty";
+	sld.name = "Вудро";
+    sld.lastname = "Доггерти";
 	sld.Dialog.Filename = "Quest\Regata_dialog.c";
 	sld.dialog.currentnode = "Regata_SiegeSkiper";
 	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
@@ -18747,19 +18749,19 @@ void SiegeSkiperOver(string qName)//время службы Вудро истекло
 {
 	if (IsEntity(worldMap) || bSeaActive) 
 	{
-		pchar.quest.Remove_Vudro.win_condition.l1 = "Location_Type";
-		pchar.quest.Remove_Vudro.win_condition.l1.location_type = "town";
-		pchar.quest.Remove_Vudro.function = "RemoveSiegeSkiper";
+	pchar.quest.Remove_Vudro.win_condition.l1 = "Location_Type";
+	pchar.quest.Remove_Vudro.win_condition.l1.location_type = "town";
+	pchar.quest.Remove_Vudro.function = "RemoveSiegeSkiper";
 	}
 	else
 	{
-		Pchar.questTemp.FiringOfficerIDX = GetCharacterIndex("SiegeSkiper");
-		sld = &Characters[sti(Pchar.questTemp.FiringOfficerIDX)];
-		CheckForReleaseOfficer(sti(Pchar.questTemp.FiringOfficerIDX));
-		RemovePassenger(Pchar, sld);
-		DeleteAttribute(sld, "Payment");
-		DeleteAttribute(Pchar, "questTemp.FiringOfficerIDX");//удаляем из офицеров
-		log_info("The navigator has left your ship!");
+	Pchar.questTemp.FiringOfficerIDX = GetCharacterIndex("SiegeSkiper");
+	sld = &Characters[sti(Pchar.questTemp.FiringOfficerIDX)];
+	CheckForReleaseOfficer(sti(Pchar.questTemp.FiringOfficerIDX));
+	RemovePassenger(Pchar, sld);
+    DeleteAttribute(sld, "Payment");
+	DeleteAttribute(Pchar, "questTemp.FiringOfficerIDX");//удаляем из офицеров
+	log_info("Вудро Доггерти покинул ваш корабль!");
 		PlaySound("interface\notebook.wav");
 	}
 }
@@ -18772,7 +18774,7 @@ void RemoveSiegeSkiper(string qName)//удалить Вудро
 	RemovePassenger(Pchar, sld);
     DeleteAttribute(sld, "Payment");
 	DeleteAttribute(Pchar, "questTemp.FiringOfficerIDX");//удаляем из офицеров
-	log_info("The navigator has left your ship!");
+	log_info("Вудро Доггерти покинул ваш корабль!");
 	PlaySound("interface\notebook.wav");
 }
 
@@ -18898,8 +18900,8 @@ void CreatePortugalDoctor(string qName)//создаем доктора и Португальца
 	//Барт Португалец
 	sld = GetCharacter(NPC_GenerateCharacter("Portugal", "Port_A", "man", "man", 35, PIRATE, -1, true, "quest"));
 	FantomMakeCoolFighter(sld, 35, 65, 65, "", "", "bullet", 150);
-	sld.name = "Bartolomeo";
-	sld.lastname = "Portuguese";
+	sld.name = "Барт";
+	sld.lastname = "Португалец";
 	sld.dialog.FileName = "Quest\Portugal_dialog.c";
 	sld.dialog.currentnode = "Bart_lay";
 	LAi_SetLayType(sld);
@@ -18909,8 +18911,8 @@ void CreatePortugalDoctor(string qName)//создаем доктора и Португальца
 	sld.dialog.FileName = "Quest\Portugal_dialog.c";
 	sld.dialog.currentnode = "Portugal_doctor";
 	sld.greeting = "shtile";
-	sld.name = "Piter";
-	sld.lastname = "van Stahl";
+	sld.name = "Питер";
+	sld.lastname = "ван Шталь";
 	GetCharacterPos(pchar, &locx, &locy, &locz);
 	ChangeCharacterAddressGroup(sld, "Marigo_RoomHouseF1", "goto", LAi_FindNearestFreeLocator("goto", locx, locy, locz));
 	LAi_SetActorType(sld);
@@ -19022,8 +19024,8 @@ void PortugalOnStreet(string qName)//охотники в Сент-Джонсе
 		LAi_SetWarriorType(sld);
 		if (i == 1)
 		{
-		sld.name = "Leo";
-		sld.lastname = "Cord";
+		sld.name = "Лео";
+		sld.lastname = "Корд";
 		}
 		if (i != 1) LAi_CharacterDisableDialog(sld);
 		LAi_SetActorType(sld);
@@ -19100,7 +19102,7 @@ void PortugalSeapatrolEnd(string qName)//отдежурили
 	AddQuestRecord("Portugal", "11");
 	Island_SetReloadEnableGlobal("Martinique", true); //снять запрет
 	LocatorReloadEnterDisable("Fortfrance_town", "reload4_back", false);//открыть таверну
-	SetLaunchFrameFormParam("Two days later"+ NewStr() +"Enemy's vessel was not seen", "", 0, 4);
+	SetLaunchFrameFormParam("Прошли два дня"+ NewStr() +"Вражеское судно не обнаружено", "", 0, 4);
 	LaunchFrameForm();
 	WaitDate("", 0, 0, 2, 4, 10); //крутим время
 	RecalculateJumpTable();
@@ -19168,8 +19170,8 @@ void CreateFranzGarke(string qName)//создаем Франца Гарке в комнате, туда же - П
 	sld = GetCharacter(NPC_GenerateCharacter("FranzGarke", "Garke", "man", "man", 30, PIRATE, -1, true, "quest"));
 	FantomMakeCoolFighter(sld, 25+MOD_SKILL_ENEMY_RATE, 90, 90, "blade_17", "pistol6", "bullet", 150);
 	SetCharacterPerk(sld, "SwordplayProfessional");
-	sld.name = "Frants";
-	sld.lastname = "Garke";
+	sld.name = "Франц";
+	sld.lastname = "Гарке";
 	GiveItem2Character(sld, "cirass2");
 	EquipCharacterbyItem(sld, "cirass2");
 	DeleteAttribute(sld, "SaveItemsForDead");
@@ -19224,7 +19226,7 @@ void CreateVaskezsFrigate(string qName)//атака фрегата Васкеза // patch-9
 	ChangeCharacterAddressGroup(sld, "My_Deck", "goto", "goto6");//Португальца в трюм
 	Group_FindOrCreateGroup("VaskezFrigate");
 	sld = GetCharacter(NPC_GenerateCharacter("Vaskezs_helper", "mercen_"+(rand(27)+1), "man", "man", 25+MOD_SKILL_ENEMY_RATE, PIRATE, -1, true, "quest"));
-	FantomMakeCoolSailor(sld, SHIP_FRIGATE, "Albatross", CANNON_TYPE_CANNON_LBS24, 90, 90, 90);
+	FantomMakeCoolSailor(sld, SHIP_FRIGATE, "Альбатрос", CANNON_TYPE_CANNON_LBS24, 90, 90, 90);
 	FantomMakeCoolFighter(sld, 25+MOD_SKILL_ENEMY_RATE, 70, 70, "blade_10", "pistol3", "grapeshot", 100);
 	sld.AlwaysEnemy = true;
 	sld.DontRansackCaptain = true;
@@ -19278,7 +19280,7 @@ void RemovePortugal(string qName)//Португальца - вон
 	LAi_ActorGoToLocation(sld, "", "", "none", "", "", "", 1.0);
 	CloseQuestHeader("Portugal");
 	pchar.questTemp.Portugal = "end";
-	log_info("Bart the Portuguese has left your ship!");
+	log_info("Барт Португалец покинул ваш корабль!");
 }
 
 void CreateHollIndBattle(string qName)//массовая драка в джунглях с индейцами и голландцами
@@ -19441,8 +19443,8 @@ void CreateErnandoVaskez()//появился Васкез
 {
 	sld = GetCharacter(NPC_GenerateCharacter("Vaskez", "Vasces", "man", "man", 35, PIRATE, -1, true, "soldier"));
 	FantomMakeCoolFighter(sld, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+15, 100, 100, "blade_10", "pistol6", "bullet", 200);
-	sld.name = "Ernando";
-	sld.lastname = "Vaskez";
+	sld.name = "Эрнандо";
+	sld.lastname = "Васкез";
 	sld.dialog.FileName = "Quest\Portugal_dialog.c";
 	sld.dialog.currentnode = "Vaskez";
 	sld.greeting = "vaskez";
@@ -19508,8 +19510,8 @@ void Consumption_CreateSergio(string qName)//создаем Сержио
 	int iScl = 15 + 2*sti(pchar.rank); // patch-9
 	sld = GetCharacter(NPC_GenerateCharacter("Sergio", "SerhioSaldo", "man", "man", iRank, SPAIN, -1, true, "quest"));
 	FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_13", "pistol1", "bullet", iScl*2);
-	sld.name = "Sergio";
-    sld.lastname = "Saldo";
+	sld.name = "Сержио";
+    sld.lastname = "Сальдо";
 	sld.dialog.FileName = "Quest\LineMiniQuests\Consumption.c";
 	sld.dialog.currentnode = "Sergio";
 	sld.greeting = "soldier";
@@ -19619,8 +19621,8 @@ void Consumption_CreateJuan(string qName)//галеон Хуана
 	Island_SetReloadEnableGlobal("Trinidad", false);
 	Group_FindOrCreateGroup("ConJuanShip");
 	sld = GetCharacter(NPC_GenerateCharacter("ConJuan", "HuanTubercul", "man", "man", iRank, PIRATE, -1, true, "quest"));
-	sld.name = "Juan";
-    sld.lastname = "Consumption";
+	sld.name = "Хуан";
+    sld.lastname = "Чахотка";
 	FantomMakeSmallSailor(sld, iShip, "", iCannon, iScl, iScl, iScl, iScl, iScl);
 	FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_19", "pistol5", "bullet", iScl*3); // 280313
 	sld.AlwaysEnemy = true;
@@ -19664,11 +19666,11 @@ void Consumption_AfterBattle(string qName)//победили
 	}
 	else
 	{
-		Island_SetReloadEnableGlobal("Trinidad", true);
-		ChangeOfficersLoyality("bad_all", 1);
-		AddQuestRecord("Consumption", "13");
-		Consumption_Close();
-	}
+	Island_SetReloadEnableGlobal("Trinidad", true);
+	ChangeOfficersLoyality("bad_all", 1);
+	AddQuestRecord("Consumption", "13");
+	Consumption_Close();
+}
 }
 
 void Consumption_OpenLocation(string qName)//открыть локацию
@@ -19776,8 +19778,8 @@ void MangarosaEffect(string sEff)
 	if (CheckAttribute(pchar, "questTemp.Mangarosa.Potion"))
 	{
 		DeleteAttribute(pchar, "questTemp.Mangarosa.Potion");
-		Log_Info("An overdose of Mangarosa!");
-		Log_Info("You are poisoned");
+		Log_Info("Передозировка зелья мангаросы!");
+		Log_Info("Вы получили отравление");
 		Pchar.chr_ai.hp = stf(Pchar.chr_ai.hp)-50;
 		LAi_CheckKillCharacter(pchar);
 		AddCharacterHealth(pchar, -10); //сносим здоровье
@@ -19786,7 +19788,7 @@ void MangarosaEffect(string sEff)
 	}
 	else
 	{
-		Log_Info("A special potion of Mangarosa was used!");
+		Log_Info("Использовано специальное зелье мангаросы!");
 		pchar.questTemp.Mangarosa.Potion.(sEff) = true;
 		AddCharacterHealth(pchar, 4);
 		pchar.quest.Mangarosa_del.win_condition.l1 = "Timer";
@@ -19803,7 +19805,7 @@ void MangarosaEffect(string sEff)
 void Mangarosa_DeleteEffect(string qName) //
 {
 	PlaySound("interface\notebook.wav");
-	Log_Info("A potion of Mangarosa is not affecting you anymore");
+	Log_Info("Действие зелья мангаросы прекратилось");
 	DeleteAttribute(pchar, "questTemp.Mangarosa.Potion");
 }
 
@@ -19929,7 +19931,7 @@ void TownPirate_battle(string qName) //
 
 void Caleuche_StartTotal(string qName) // квест Калеуче
 {
-	pchar.questTemp.Caleuche = "Start"; 
+	pchar.questTemp.Caleuche = "Start";
 }
 
 void Caleuche_StartGo(string qName) // этот долбоебизм вызван необходимостью типа не начинать новую игру... 
@@ -20014,10 +20016,11 @@ void Caleuche_FindFirstAmulet(string qName) // нашли первый амулет
 
 void Caleuche_CreateShamane()// создаем Туттуатхапака - шамана
 {
+	if (!GetDLCenabled(DLC_APPID_1)) return;
 	sld = GetCharacter(NPC_GenerateCharacter("Tuttuat", "Tuttuathapack", "man", "man_A1", 30, PIRATE, -1, true, "native"));
 	SetFantomParamFromRank(sld, 30, true);
 	RemoveAllCharacterItems(sld, true);
-	sld.name = "Tuttuathapak";
+	sld.name = "Туттуатхапак";
 	sld.lastname = "";
 	sld.dialog.FileName = "Quest\Caleuche_dialog.c";
 	sld.dialog.currentnode = "Tuttuat";
@@ -20044,14 +20047,15 @@ void Caleuche_PrepareGhostship(string qName) // готовим первую атаку Калеуче
 
 void Caleuche_CreateGhostship(string qName)//подгружаем в море Калеуче
 {
+	if (!GetDLCenabled(DLC_APPID_1)) return;
 	int iRank = 20+MOD_SKILL_ENEMY_RATE*2;
 	Group_FindOrCreateGroup("Caleuche_Attack");
 	sld = GetCharacter(NPC_GenerateCharacter("Caleuche_seacap", "skeletcap", "man", "man", iRank, PIRATE, -1, true, "quest"));
-	sld.name = "captain-undead";
+	sld.name = "капитан-нежить";
 	sld.lastname = "";
 	sld.dialog.FileName = "Quest\Caleuche_dialog.c";
 	sld.dialog.currentnode = "CaleucheCap";
-	FantomMakeCoolSailor(sld, SHIP_CURSED_FDM, "Ghost ship", CANNON_TYPE_CANNON_LBS32, 90, 90, 90);
+	FantomMakeCoolSailor(sld, SHIP_CURSED_FDM, "Корабль-призрак", CANNON_TYPE_CANNON_LBS32, 90, 90, 90);
 	FantomMakeCoolFighter(sld, iRank, 90, 90, "blade_21", "pistol5", "bullet", 200);
 	NullCharacterGoods(sld); // удаляем все товары, чтобы не стрелял
 	LAi_SetImmortal(sld, true);
@@ -20113,10 +20117,11 @@ void Caleuche_PrepareBeliz(string qName) // готовим локации Белиза
 
 void Caleuche_FergusCome(string qName) // Фергус в таверне Белиза
 {
+	if (!GetDLCenabled(DLC_APPID_1)) return;
 	sld = GetCharacter(NPC_GenerateCharacter("Fergus", "mercen_16", "man", "man", 20, ENGLAND, -1, true, "quest"));
 	FantomMakeCoolFighter(sld, 20, 50, 50, "blade_12", "pistol1", "bullet", 50);
-	sld.name = "Fergus";
-	sld.lastname = "Hooper";
+	sld.name = "Фергус";
+	sld.lastname = "Хупер";
 	sld.dialog.FileName = "Quest\Caleuche_dialog.c";
 	sld.dialog.currentnode = "fergus";
 	sld.greeting = "marginal";
@@ -20270,7 +20275,7 @@ void Caleuche_SecondAmuletFind(string qName) //
 	pchar.quest.Caleuche_Prepare_MapAttack.function = "Caleuche_PrepareMapAttack";
 }
 
-void Caleuche_BelizbandosClear(string qName) // чистим всё по квесту
+void Caleuche_BelizbandosClear(string qName) // чистим все по квесту
 {
 	locations[FindLocation("Beliz_ExitTown")].DisableEncounters = false; 
 	locations[FindLocation("Beliz_Jungle_01")].DisableEncounters = false; 
@@ -20304,6 +20309,7 @@ void Caleuche_PrepareMapAttack(string qName) //
 
 void Caleuche_MapAttack(string qName) // корабль-призрак ищет ГГ
 {
+	if (!GetDLCenabled(DLC_APPID_1)) return;
 	if (!Caleuche_CheckAmulet()) return;
 	string sCapId = "Map_Caleuche";
     string sGroup = "Sea_" + sCapId + "1";
@@ -20311,9 +20317,9 @@ void Caleuche_MapAttack(string qName) // корабль-призрак ищет ГГ
 	Group_FindOrCreateGroup(sGroup);
 	
 	sld = GetCharacter(NPC_GenerateCharacter(sCapId, "skeletcap", "man", "man", 45, PIRATE, -1, true, "quest"));
-	sld.name = "captain-undead";
+	sld.name = "капитан-нежить";
 	sld.lastname = "";
-	FantomMakeCoolSailor(sld, SHIP_CURSED_FDM, "Ghost ship", CANNON_TYPE_CANNON_LBS32, 105, 105, 105);
+	FantomMakeCoolSailor(sld, SHIP_CURSED_FDM, "Корабль-призрак", CANNON_TYPE_CANNON_LBS32, 105, 105, 105);
 	FantomMakeCoolFighter(sld, 45, 100, 100, "blade_21", "pistol5", "bullet", 300);
 	LAi_SetImmortal(sld, true);
 	sld.DontRansackCaptain = true;
@@ -20327,7 +20333,7 @@ void Caleuche_MapAttack(string qName) // корабль-призрак ищет ГГ
 	shTo.TurnRate = 70.0;
 	SetCrewQuantityOverMax(sld, 666);
 	sld.mapEnc.type = "war";
-    sld.mapEnc.Name = "ghost ship";
+    sld.mapEnc.Name = "Корабль-призрак";
 	sld.mapEnc.worldMapShip = "pirates_manowar";
 	
 	Group_AddCharacter(sGroup, sCapId);
@@ -20339,7 +20345,7 @@ void Caleuche_MapAttack(string qName) // корабль-призрак ищет ГГ
 
 void Caleuche_ClearFromMap(string qName) // стираем энкаунтер Калеуче и ставим новый таймер
 {
-	log_info("You have escaped from the ghost ship!");
+	log_info("Вы убежали от корабля-призрака!");
 	PlaySound("MUSIC\Victory.mp3");
 	Group_DeleteGroup("Sea_Map_Caleuche1");
 	SetFunctionTimerCondition("Caleuche_MapAttack", 0, 0, 4, false); // таймер
@@ -20380,12 +20386,12 @@ void Caleuche_CreateGarpiyaInWorld(string qName) // щебека Гарпия на карте
 	Group_FindOrCreateGroup(sGroup);
 	
 	sld = GetCharacter(NPC_GenerateCharacter(sCapId, "mercen_20", "man", "man", 30, FRANCE, 13, true, "quest"));
-	sld.name = "Reginald";
-	sld.lastname = "Jackson";
+	sld.name = "Реджинальд";
+	sld.lastname = "Джексон";
 	sld.greeting = "captain";
 	sld.Dialog.Filename = "Quest\Caleuche_dialog.c";
 	sld.DeckDialogNode = "reginald";
-	FantomMakeCoolSailor(sld, SHIP_XebekVML, "Harpy", CANNON_TYPE_CULVERINE_LBS18, 70, 70, 70);
+	FantomMakeCoolSailor(sld, SHIP_XebekVML, "Гарпия", CANNON_TYPE_CULVERINE_LBS18, 70, 70, 70);
 	FantomMakeCoolFighter(sld, 30, 70, 70, "blade_20", "pistol4", "bullet", 200);
 	LAi_SetImmortal(sld, true);
 	sld.DontRansackCaptain = true;
@@ -20399,7 +20405,7 @@ void Caleuche_CreateGarpiyaInWorld(string qName) // щебека Гарпия на карте
 	SetCharacterPerk(sld, "MusketsShoot");
 	
 	sld.mapEnc.type = "trade";
-    sld.mapEnc.Name = "xebec 'Harpy'";
+    sld.mapEnc.Name = "шебека 'Гарпия'";
 	sld.mapEnc.worldMapShip = "ranger";
 	
 	Group_AddCharacter(sGroup, sCapId);
@@ -20414,6 +20420,7 @@ void Caleuche_CreateGarpiyaInWorld(string qName) // щебека Гарпия на карте
 
 void Caleuche_CreateGarpiyaInSea(string qName) // щебека Гарпия в порту
 {
+	if (!GetDLCenabled(DLC_APPID_1)) return;
 	log_testinfo("Гарпия в порту");
 	if (!CheckAttribute(pchar, "questTemp.Caleuche.Garpiya")) return;
 	
@@ -20436,12 +20443,12 @@ void Caleuche_CreateGarpiyaInSea(string qName) // щебека Гарпия в порту
 	Group_FindOrCreateGroup(sGroup);
 	
 	sld = GetCharacter(NPC_GenerateCharacter(sCapId, "mercen_20", "man", "man", 30, iNation, 2, true, "quest"));
-	sld.name = "Reginald";
-	sld.lastname = "Jackson";
+	sld.name = "Реджинальд";
+	sld.lastname = "Джексон";
 	sld.Dialog.Filename = "Quest\Caleuche_dialog.c";
 	sld.DeckDialogNode = "reginald";
 	sld.greeting = "captain";
-	FantomMakeCoolSailor(sld, SHIP_XebekVML, "Harpy", CANNON_TYPE_CULVERINE_LBS18, 70, 70, 70);
+	FantomMakeCoolSailor(sld, SHIP_XebekVML, "Гарпия", CANNON_TYPE_CULVERINE_LBS18, 70, 70, 70);
 	FantomMakeCoolFighter(sld, 30, 70, 70, "blade_20", "pistol4", "bullet", 200);
 	LAi_SetImmortal(sld, true);
 	sld.DontRansackCaptain = true;
@@ -20481,6 +20488,7 @@ void Caleuche_ThirdAmuletFind(string qName) // нашли третий амулет
 
 void Caleuche_CreateMonk(string qName) // ставим монаха в Виллемстад
 {
+	if (!GetDLCenabled(DLC_APPID_1)) return;
 	chrDisableReloadToLocation = true;//закрыть локацию
 	sld = GetCharacter(NPC_GenerateCharacter("monk_caleuche", "monk_5", "man", "man_B", 5, HOLLAND, 1, false, "soldier"));
 	FantomMakeCoolFighter(sld, 5, 10, 10, "", "", "", 20);
@@ -20523,7 +20531,7 @@ void Caleuche_SetLandLedySkel(string qName) // скелет хозяйки дома
 	}
 	float fMft = MOD_SKILL_ENEMY_RATE/10;
 	sld.MultiFighter = 1.0+fMft; // мультифайтер
-	sld.name = "dead hostess";
+	sld.name = "мертвая хозяйка дома";
 	sld.lastname = "";
 	sld.monster = true;
 	sld.SaveItemsForDead = true;
@@ -20533,7 +20541,7 @@ void Caleuche_SetLandLedySkel(string qName) // скелет хозяйки дома
 	GiveItem2Character(sld, "jewelry46");
 	GiveItem2Character(sld, "jewelry43");
 	GiveItem2Character(sld, "Mineral6");
-	GiveItem2Character(sld, "purse1"); // Addon-2016
+	GiveItem2Character(sld, "purse1"); // Addon-2016 Jason
 	LAi_SetActorType(sld);
 	LAi_ActorTurnToCharacter(sld, pchar);
 	ChangeCharacterAddressGroup(sld, "Villemstad_houseSp1_room", "goto", "goto2");
@@ -20645,11 +20653,12 @@ void Caleuche_CubaGrot(string qName) // нечисть в гроте
 
 void Caleuche_CubaGrotChavinavy(string qName)//драка с монстром
 {
+	if (!GetDLCenabled(DLC_APPID_1)) return;
 	LAi_group_Delete("EnemyFight");
 	PlaySound("ambient\horror\horror2.wav");
 	sld = GetCharacter(NPC_GenerateCharacter("CubaChavinavi", "Chavinavi_1", "skeleton", "skeleton", 20+MOD_SKILL_ENEMY_RATE*3, PIRATE, -1, false, "quest"));
 	FantomMakeCoolFighter(sld, 20+MOD_SKILL_ENEMY_RATE*3, 80, 80, "topor_01", "pistol6", "bullet", MOD_SKILL_ENEMY_RATE*80);
-	sld.name = "Chavinavy";
+	sld.name = "Чавинави";
 	sld.lastname = "";
 	sld.monster = true; // признак нежити
 	sld.MultiFighter = 1.0+MOD_SKILL_ENEMY_RATE/10; // мультифайтер
@@ -20667,8 +20676,8 @@ void Caleuche_MerrimanCaveOver(string qName) // провалили по времени
 	sld = characterFromId("Havana_Cemeteryman");
 	sld.model = "keeper_5";
 	Characters_RefreshModel(sld);
-	sld.name = "Esberto";
-	sld.lastname = "Salinas";
+	sld.name = "Эсберто";
+	sld.lastname = "Салинас";
 	sld = characterFromId("Tuttuat");
 	sld.dialog.currentnode = "Tuttuat_41";
 	sld = GetCharacter(NPC_GenerateCharacter("cryptguard", "off_spa_2", "man", "man", 40, SPAIN, -1, true, "quest"));
@@ -20792,6 +20801,7 @@ void Caleuche_InMerrimanCave(string qName) // заполняем логово Мерримана
 
 void Caleuche_MerrimanTalk(string qName) // активируем разговор с Мерриманом
 {
+	if (!bAddonContent) return;
 	DoQuestFunctionDelay("Terrapin_SetMusic", 0.5);
 	// останавливаем скелетов и офицеров
 	for (i=1; i<=11; i++)
@@ -20823,7 +20833,7 @@ void Caleuche_MerrimanCallMonster(string qName) // вызов Мерриманом Чавинави
 	PlaySound("VOICE\Russian\hambit\Joakim Merriman-03.wav");
 	sld = GetCharacter(NPC_GenerateCharacter("MerrimanChavinavi"+iGlobalTemp, "Chavinavi_1", "man", "skeleton", 20+MOD_SKILL_ENEMY_RATE*3, PIRATE, -1, false, "quest"));
 	FantomMakeCoolFighter(sld, 20+MOD_SKILL_ENEMY_RATE*3, 70, 70, "topor_01", "pistol6", "bullet", MOD_SKILL_ENEMY_RATE*60);
-	sld.name = "Chavinavy";
+	sld.name = "Чавинави";
 	sld.lastname = "";
 	sld.monster = true; // признак нежити
 	sld.LSC_clan = true;
@@ -20860,13 +20870,13 @@ void Caleuche_MerrimanBoxOpen() // открыли ящик Мерримана
 {
 	RemoveItems(pchar, "MerrimanBook", 1);
 	PlaySound("interface\important_item.wav");
-	Log_Info("You have received a vial of ethyl alcohol");
-	Log_Info("You have received a vial of nitric acid");
-	Log_Info("You have received a crucible");
-	Log_Info("You have received pestle and mortar");
-	Log_Info("You have received glass vials");
-	Log_Info("You have received a plant of Mangarosa");
-	Log_Info("You have received a recipe of elixir");
+	Log_Info("Вы получили склянку этилового спирта");
+	Log_Info("Вы получили склянку азотной кислоты");
+	Log_Info("Вы получили тигель");
+	Log_Info("Вы получили ступку с пестиком");
+	Log_Info("Вы получили стеклянные флаконы");
+	Log_Info("Вы получили мангаросу");
+	Log_Info("Вы получили рецепт эликсира");
 	TakeNItems(pchar, "mineral28", 1);
 	TakeNItems(pchar, "mineral29", 1);
 	TakeNItems(pchar, "tigel", 1);
@@ -20878,7 +20888,7 @@ void Caleuche_MerrimanBoxOpen() // открыли ящик Мерримана
 
 void Caleuche_TuttuatAmuletOver(string qName) // действие амулетов истекло
 {
-	Log_Info("Amulets of Tuttuathapak have lost their power!");
+	Log_Info("Амулеты Туттуатхапака утратили силу!");
 	PlaySound("interface\notebook.wav");
 	if(IsEquipCharacterByArtefact(pchar, "kaleuche_amulet2")) RemoveCharacterEquip(pchar, TALISMAN_ITEM_TYPE);
 	if(IsEquipCharacterByArtefact(pchar, "kaleuche_amulet3")) RemoveCharacterEquip(pchar, TALISMAN_ITEM_TYPE);
@@ -20904,6 +20914,7 @@ void Caleuche_TuttuatAmuletOver(string qName) // действие амулетов истекло
 
 void Caleuche_KhaelRoaArrive(string qName) // прибыли на Хаэль Роа
 {
+	if (!GetDLCenabled(DLC_APPID_1)) return;
 	AddQuestRecord("Caleuche", "36");
 	int i, n;
 	string sTemp;
@@ -21063,6 +21074,7 @@ void Caleuche_NineStoneTiles() // ступили на правильную плитку
 
 void Caleuche_NineStoneTilesOpen() // прошли 9 плиток правильно
 {
+	if (!bAddonContent) return;
 	DeleteAttribute(pchar, "questTemp.Caleuche.NextTile");
 	DeleteAttribute(pchar, "questTemp.Caleuche.Tile");
 	PlaySound("Ambient\Teno_inside\door_1.wav");
@@ -21277,7 +21289,7 @@ void Caleuche_LeverAttack(string qName) // ставим чавинави при неправильной посл
 	{
 		sld = GetCharacter(NPC_GenerateCharacter("LeverChavinavi_"+i+iGlobalTemp, "Chavinavi_1", "man", "skeleton", 20+MOD_SKILL_ENEMY_RATE*2, PIRATE, -1, false, "quest"));
 		FantomMakeCoolFighter(sld, 20+MOD_SKILL_ENEMY_RATE*3, 70, 70, "topor_01", "pistol6", "bullet", MOD_SKILL_ENEMY_RATE*60);
-		sld.name = "Chavinavy";
+		sld.name = "Чавинави";
 		sld.lastname = "";
 		sld.monster = true; // признак нежити
 		sld.LSC_clan = true;
@@ -21317,14 +21329,14 @@ void Caleuche_LeverFight(string qName) // атака чавинави
 
 void Caleuche_TeleportSupport(string qName)
 {
-	log_info("Press 'T' to use");
+	log_info("Для использования нажмите 'Т'");
 }
 
 void Caleuche_TeleportStart() // телепортация по алькову
 {
 	if (CheckAttribute(pchar, "questTemp.Caleuche.LockTeleport"))
 	{
-		log_info("The portal is blocked!");
+		log_info("Портал заблокирован!");
 		return;
 	}
 	PlaySound("Ambient\Teno_inside\teleporter.wav");
@@ -21352,7 +21364,7 @@ void Caleuche_TeleportTrap() // телепорт-ловушка
 	{
 		sld = GetCharacter(NPC_GenerateCharacter("AlkovChavinavi_"+i+iGlobalTemp, "Chavinavi_1", "skeleton", "skeleton", 20+MOD_SKILL_ENEMY_RATE*2, PIRATE, -1, false, "quest"));
 		FantomMakeCoolFighter(sld, 20+MOD_SKILL_ENEMY_RATE*3, 70, 70, "topor_01", "", "", MOD_SKILL_ENEMY_RATE*60);
-		sld.name = "Chavinavy";
+		sld.name = "Чавинави";
 		sld.lastname = "";
 		sld.monster = true; // признак нежити
 		sld.LSC_clan = true;
@@ -21381,7 +21393,7 @@ void Caleuche_InAlcoveTop(string qName) // в святилище
 	if (MOD_SKILL_ENEMY_RATE > 4) sPistol = "pistol4";
 	sld = GetCharacter(NPC_GenerateCharacter("TopChavinavi_1", "mictlantecuhtli", "skeleton", "skeleton", iRank+10, PIRATE, -1, false, "quest"));
 	FantomMakeCoolFighter(sld, iRank+10, 90, 90, "topor_01", sPistol, "bullet", 50);
-	sld.name = "Chieftain Chavinavy";
+	sld.name = "Чавинави-вождь";
 	sld.lastname = "";
 	sld.Dialog.Filename = "Quest\Caleuche_dialog.c";
 	sld.dialog.currentnode = "Chavinavi";
@@ -21399,7 +21411,7 @@ void Caleuche_InAlcoveTop(string qName) // в святилище
 		{
 			sld = GetCharacter(NPC_GenerateCharacter("TopChavinavi_"+i, "Chavinavi_1", "skeleton", "skeleton", iRank, PIRATE, -1, false, "quest"));
 			FantomMakeCoolFighter(sld, iRank, 70, 70, "topor_01", "", "", 50);
-			sld.name = "Chavinavy";
+			sld.name = "Чавинави";
 			sld.lastname = "";
 			LAi_SetHP(sld, iHpt, iHpt);
 			sld.KhaelRoaMonster = true;
@@ -21416,7 +21428,7 @@ void Caleuche_InAlcoveTop(string qName) // в святилище
 		{
 			sld = GetCharacter(NPC_GenerateCharacter("TopChavinavi_"+i, "skel"+(rand(3)+1), "skeleton", "skeleton", iRank, PIRATE, -1, false, "quest"));
 			FantomMakeCoolFighter(sld, iRank-10, 60, 60, LinkRandPhrase("blade_10","blade_06","blade_04"), "pistol5", "bullet", 50);
-			sld.name = "temple undead";
+			sld.name = "храмовая нежить";
 			sld.lastname = "";
 			LAi_SetHP(sld, iHpt-400, iHpt-400);
 			sld.monster = true; // признак нежити
@@ -21431,7 +21443,7 @@ void Caleuche_InAlcoveTop(string qName) // в святилище
 		{
 			sld = GetCharacter(NPC_GenerateCharacter("TopChavinavi_"+i, "Chavinavi_1", "skeleton", "skeleton", iRank, PIRATE, -1, false, "quest"));
 			FantomMakeCoolFighter(sld, iRank, 70, 70, "topor_01", "", "", 50);
-			sld.name = "Chavinavy";
+			sld.name = "Чавинави";
 			sld.lastname = "";
 			LAi_SetHP(sld, iHpt, iHpt);
 			sld.KhaelRoaMonster = true;
@@ -21498,15 +21510,16 @@ void Caleuche_FinalBattle(string qName) // последний бой калеуче
 
 void Caleuche_CreateGhostshipKhalRoa(string qName)//подгружаем в море Калеуче
 {
-	log_info("Ghost ship on the horizon!");
+	if (!GetDLCenabled(DLC_APPID_1)) return;
+	log_info("Корабль-призрак на горизонте!");
 	PlaySound("interface\_EvEnemy1.wav");
 	SetMusicAlarm("music_storm");
 	int iRank = 20+MOD_SKILL_ENEMY_RATE*3;
 	Group_FindOrCreateGroup("Caleuche_Attack");
 	sld = GetCharacter(NPC_GenerateCharacter("Kaleuche_khaelroacap", "skeletcap", "man", "man", iRank, PIRATE, -1, true, "quest"));
-	sld.name = "Baltazar";
-	sld.lastname = "de Cordes";
-	FantomMakeCoolSailor(sld, SHIP_CURSED_FDM, "Flying Heart", CANNON_TYPE_CANNON_LBS36, 100, 100, 100);
+	sld.name = "Бальтазар";
+	sld.lastname = "де Кордес";
+	FantomMakeCoolSailor(sld, SHIP_CURSED_FDM, "Летящее сердце", CANNON_TYPE_CANNON_LBS36, 100, 100, 100);
 	FantomMakeCoolFighter(sld, iRank, 100, 100, "blade_21", "pistol5", "bullet", 400);
 	sld.MultiFighter = 1.0+MOD_SKILL_ENEMY_RATE/10;
 	GiveItem2Character(sld, "kaleuche_amulet1");
@@ -21556,6 +21569,7 @@ void Caleuche_CreateGhostshipKhalRoa(string qName)//подгружаем в море Калеуче
 
 void Caleuche_KhaelRoaAfterBattle(string qName) // победили калеуче
 {
+	if (!GetDLCenabled(DLC_APPID_1)) return;
 	DoQuestCheckDelay("sea_victory", 1.5);
 	Group_DeleteGroup("Caleuche_Attack");
 	bQuestDisableMapEnter = false;//открыть карту
@@ -21599,7 +21613,7 @@ void Caleuche_MangarosaPotionEffect(string sEff) //
 		case "kaleuche_amulet1":
 			if (AddSPECIALValue(pchar, SPECIAL_A, 0) != SPECIAL_MAX)
 			{
-				log_info("You feel more dexterous");
+				log_info("Вы чувствуете себя более ловким");
 				AddSPECIALValue(pchar, SPECIAL_A, 1);
 			}
 			AddCharacterSkill(pchar, SKILL_F_LIGHT, 5);
@@ -21608,7 +21622,7 @@ void Caleuche_MangarosaPotionEffect(string sEff) //
 		case "kaleuche_amulet2":
 			if (AddSPECIALValue(pchar, SPECIAL_E, 0) != SPECIAL_MAX)
 			{
-				log_info("You feel more sturdy");
+				log_info("Вы чувствуете себя более выносливым");
 				AddSPECIALValue(pchar, SPECIAL_E, 1);
 			}
 			AddCharacterSkill(pchar, SKILL_FENCING, 5);
@@ -21622,7 +21636,7 @@ void Caleuche_MangarosaPotionEffect(string sEff) //
 				case 31:
 					if (AddSPECIALValue(pchar, SPECIAL_S, 0) != SPECIAL_MAX)
 					{
-						log_info("You feel stronger");
+						log_info("Вы чувствуете себя сильнее");
 						AddSPECIALValue(pchar, SPECIAL_S, 1);
 					}
 					AddCharacterSkill(pchar, SKILL_F_HEAVY, 5);
@@ -21631,7 +21645,7 @@ void Caleuche_MangarosaPotionEffect(string sEff) //
 				case 32:
 					if (AddSPECIALValue(pchar, SPECIAL_P, 0) != SPECIAL_MAX)
 					{
-						log_info("Your perception intensifies");
+						log_info("Ваше восприятие обостряется");
 						AddSPECIALValue(pchar, SPECIAL_P, 1);
 					}
 					AddCharacterSkill(pchar, SKILL_PISTOL, 5);
@@ -21640,7 +21654,7 @@ void Caleuche_MangarosaPotionEffect(string sEff) //
 				case 33:
 					if (AddSPECIALValue(pchar, SPECIAL_I, 0) != SPECIAL_MAX)
 					{
-						log_info("You feel more insightful");
+						log_info("Вы чувствуете себя проницательнее");
 						AddSPECIALValue(pchar, SPECIAL_I, 1);
 					}
 					AddCharacterSkill(pchar, SKILL_SNEAK, 5);
@@ -21649,7 +21663,7 @@ void Caleuche_MangarosaPotionEffect(string sEff) //
 				case 34:
 					if (AddSPECIALValue(pchar, SPECIAL_C, 0) != SPECIAL_MAX)
 					{
-						log_info("You feel more self-assured");
+						log_info("Вы чувствуете себя уверенее");
 						AddSPECIALValue(pchar, SPECIAL_C, 1);
 					}
 					AddCharacterSkill(pchar, SKILL_LEADERSHIP, 5);
@@ -21658,7 +21672,7 @@ void Caleuche_MangarosaPotionEffect(string sEff) //
 				case 35:
 					if (AddSPECIALValue(pchar, SPECIAL_L, 0) != SPECIAL_MAX)
 					{
-						log_info("You feel inspired");
+						log_info("Вы чувствуете себя окрыленным");
 						AddSPECIALValue(pchar, SPECIAL_L, 1);
 					}
 					AddCharacterSkill(pchar, SKILL_FORTUNE, 5);
@@ -21739,8 +21753,8 @@ void FMQG_Activation(string qName) //
 	SetFantomParamFromRank(sld, 10, true);
 	sld.Dialog.Filename = "Quest\LineMiniQuests\FMQ_Guadeloupe.c";
 	sld.Dialog.currentnode = "citizen";
-	sld.name = "Bertrand";
-	sld.lastname = "Pinette";
+	sld.name = "Бертран";
+	sld.lastname = "Пинетт";
 	RemoveAllCharacterItems(sld, true);
 	ChangeCharacterAddressGroup(sld, "Baster_town", "quest", "quest1");
 	LAi_SetActorType(sld);
@@ -21776,16 +21790,16 @@ void FMQG_CapsterBeach(string qName) // на пляже
 	// испанец
 	sld = GetCharacter(NPC_GenerateCharacter("FMQG_pass_2", "off_spa_6", "man", "man", 30, SPAIN, -1, false, "soldier"));
 	SetFantomParamFromRank(sld, 30, true);
-	sld.name = "Carlos";
-	sld.lastname = "de Milyar";
+	sld.name = "Карлос";
+	sld.lastname = "де Мильяр";
 	ChangeCharacterAddressGroup(sld, "Shore29", "smugglers", "smuggler02");
 	LAi_SetActorType(sld);
 	TakeNItems(sld, "potion2", 2);
 	// француз
 	sld = GetCharacter(NPC_GenerateCharacter("FMQG_pass_3", "quest_off_franc", "man", "man", 20, FRANCE, -1, false, "soldier"));
 	SetFantomParamFromRank(sld, 20, true);
-	sld.name = "Jean";
-	sld.lastname = "Deno";
+	sld.name = "Жан";
+	sld.lastname = "Дено";
 	ChangeCharacterAddressGroup(sld, "Shore29", "smugglers", "smuggler03");
 	LAi_SetActorType(sld);
 	TakeNItems(sld, "potion2", 2);
@@ -21880,16 +21894,18 @@ void FMQG_CreateJuanship(string qName) // ставим корабль дона Хуана
 	AddQuestRecord("FMQ_Guadeloupe", "11");
 	Group_FindOrCreateGroup("FMQG_shipgroup");
 	sld = GetCharacter(NPC_GenerateCharacter("FMQG_Juan", "quest_off_spain", "man", "man", iRank, SPAIN, -1, false, "soldier"));
-	FantomMakeSmallSailor(sld, SHIP_SCHOONER_W, "Sario", iCannon, iScl, iScl, iScl, iScl, iScl);
-	FantomMakeCoolFighter(sld, iRank-5, iScl, iScl, "blade_13", "pistol1", "bullet", iScl*3);
-	sld.name = "Juan";
-	sld.lastname = "Deno";
+	FantomMakeSmallSailor(sld, SHIP_SCHOONER_W, "Сэрио", iCannon, iScl, iScl, iScl, iScl, iScl);
+	FantomMakeCoolFighter(sld, iRank-5, iScl, iScl, "blade_13", "pistol1", "bullet", iScl*2);
+	sld.name = "Хуан";
+	sld.lastname = "Дено";
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
 	sld.DontHitInStorm = true; // не ломается в шторм
 	sld.Ship.Mode = "war";
 	Character_SetAbordageEnable(sld, false);
 	sld.DontDeskTalk = true;
+	DeleteAttribute(sld, "SaveItemsForDead");
+	DeleteAttribute(sld, "DontClearDead");
 	RealShips[sti(sld.Ship.Type)].ship.upgrades.hull = 1;
 	SetSailsColor(sld, 3);
 	sld.ship.Crew.Morale = MOD_SKILL_ENEMY_RATE*8+20;
@@ -21952,7 +21968,7 @@ void FMQG_ShipJuanToMap(string qName) // шхуна на карте
 	Character_SetAbordageEnable(sld, true);//можно абордировать
 	sld.mapEnc.type = "war";
 	sld.mapEnc.worldMapShip = "quest_ship";
-	sld.mapEnc.Name = "'Sario'";
+	sld.mapEnc.Name = "'Сэрио'";
 	Group_AddCharacter(sGroup, "FMQG_Juan");
 	
 	Group_SetGroupCommander(sGroup, "FMQG_Juan");
@@ -22066,7 +22082,7 @@ void FMQG_KidnappingInfo(string qName) //
 
 void FMQG_KidnappingPinett(string qName) // Пинетт вышел
 {
-	log_info("This is it! Bertrand Pinette is heading to the town!");
+	log_info("Внимание! Бертран Пинетт направляется в город!");// Addon 2016-1 Jason пиратская линейка
 	PlaySound("interface\notebook.wav");
 	iTotalTemp = MOD_SKILL_ENEMY_RATE/2;
 	if (iTotalTemp < 2) iTotalTemp = 2;
@@ -22084,7 +22100,7 @@ void FMQG_KidnappingPinett(string qName) // Пинетт вышел
 	for (int i=1; i<=iTotalTemp; i++)
 	{
 		ref chr = GetCharacter(NPC_GenerateCharacter("FMQG_pinett_guard_"+i, "citiz_2"+i, "man", "man", iRank, ENGLAND, -1, false, "soldier"));
-		FantomMakeCoolFighter(chr, iRank, iScl, iScl, LinkRandPhrase("blade_10","blade_04","blade_06"), "pistol1", "bullet", iScl*3);
+		FantomMakeCoolFighter(chr, iRank, iScl, iScl, LinkRandPhrase("blade_10","blade_04","blade_06"), "pistol1", "bullet", iScl*2);
 		chr.LSC_clan = true;
 		ChangeCharacterAddressGroup(chr, pchar.location, "quest", "detector3");
 		LAi_SetActorType(chr);
@@ -22119,10 +22135,11 @@ void FMQG_Killers(string qName) // привет от ростовщика
 	if (MOD_SKILL_ENEMY_RATE < 4) n = 1;
 	int iRank = MOD_SKILL_ENEMY_RATE+5;
 	chrDisableReloadToLocation = true;
+	LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true); // правки релиза
 	for (int i=1; i<=n; i++)
 	{
 		sld = GetCharacter(NPC_GenerateCharacter("FMQG_killer_"+i, RandPhraseSimple("Killer_1","Killer_5"), "man", "man", iRank, PIRATE, -1, false, "soldier")); // may-16
-		FantomMakeCoolFighter(sld, iRank, 30, 30, RandPhraseSimple("topor_04","blade_06"), "pistol1", "bullet", 120);
+		FantomMakeCoolFighter(sld, iRank, 30, 30, RandPhraseSimple("blade_04","blade_06"), "pistol1", "bullet", 80);
 		ChangeCharacterAddressGroup(sld, pchar.location, "reload", "reload2_back");
 		LAi_SetActorType(sld);
 		if (i == 1)
@@ -22173,12 +22190,12 @@ void FMQG_UsurerTimeOut(string qName) // таймер опоздания 61 день
 		sld = characterFromId("FMQG_pass_1");
 		RemovePassenger(pchar, sld);
 		sld.lifeday = 0;
-		AddQuestUserData("FMQ_Guadeloupe", "sAdd", " As for Pinette.. Hell with him, the scum banker won't have him.");
+		AddQuestUserData("FMQ_Guadeloupe", "sAdd", " Ну а Пинетт... Пусть отправляется на все четыре стороны - мерзавцу-ростовщику он не достанется.");
 	}
 	if (pchar.questTemp.FMQG == "letter") // письмо Пинетта
 	{
 		ReOpenQuestHeader("FMQ_Guadeloupe");
-		AddQuestUserData("FMQ_Guadeloupe", "sAdd1", " The scum banker will help me to sort this out under a threat of exposure - Pinette's letter is a very serious argument. I should head to Guadeloupe and enter the town through the city gates at night.");
+		AddQuestUserData("FMQ_Guadeloupe", "sAdd1", " И в этом мне поможет скотина-ростовщик, под угрозой разоблачения: письмо Пинетта - серьезный аргумент. Продолжаю свой путь на Гваделупу, но в порт лучше не причаливать, а пройти в город через джунгли ночной порой.");
 		pchar.questTemp.FMQG.Letter = "true";
 	}
 	pchar.questTemp.FMQG = "fail";
@@ -22227,11 +22244,11 @@ void FMQM_Denial(string qName) // просрочка
 void FMQM_ConvoyStart(string qName) // конвой со смолой
 {
 	if(!GetDLCenabled(DLC_APPID_2)) return;
-	string sCapId = "OilCap";
+	string sCapId = "OilCap";// Addon 2016-1 Jason пиратская линейка
     string sGroup = "Sea_" + sCapId + "1";
 	Group_DeleteGroup(sGroup);
 	Group_FindOrCreateGroup(sGroup);
-	int iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE-2;// Addon 2016-1 Jason пиратская линейка
+	int iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE-2;
 	int iScl = 10 + 2*sti(pchar.rank);
 	int iShip, iTemp, iSpace;
 	if (sti(pchar.rank) < 8)
@@ -22292,7 +22309,7 @@ void FMQM_ConvoyStart(string qName) // конвой со смолой
 		SetCharacterPerk(sld, "HullDamageUp");
 		SetCharacterPerk(sld, "SailsDamageUp");
 		SetCharacterPerk(sld, "CrewDamageUp");
-		if (MOD_SKILL_ENEMY_RATE > 4 && i == 1) SetCharacterPerk(sld, "CriticalShoot");
+		if (MOD_SKILL_ENEMY_RATE > 6 && i == 1) SetCharacterPerk(sld, "CriticalShoot");
 		if (MOD_SKILL_ENEMY_RATE > 6) SetCharacterPerk(sld, "MusketsShoot");
 		SetCharacterPerk(sld, "AdvancedBattleState");
 		SetCharacterPerk(sld, "ShipTurnRateUp");
@@ -22310,13 +22327,13 @@ void FMQM_ConvoyStart(string qName) // конвой со смолой
 		Fantom_SetCharacterGoods(sld, GOOD_SUGAR, iSpace, 1);
 		if (i == 2) 
 		{
-			sld.Ship.Name = "Benseсho";
+			sld.Ship.Name = "Бенсэхо";
 			SetCharacterGoods(sld, GOOD_OIL, 100+drand(10));//положить в трюм смолу
 			if (MOD_SKILL_ENEMY_RATE > 4) SetCrewQuantityOverMax(sld, hcrew+4*MOD_SKILL_ENEMY_RATE); // увеличенная команда // may-16
 		}
 		sld.mapEnc.type = "trade";
 		sld.mapEnc.worldMapShip = "quest_ship";
-        sld.mapEnc.Name = "trade convoy from Port-of-Spain";
+        sld.mapEnc.Name = "торговый конвой из Порт-оф-Спейна";
         Group_AddCharacter(sGroup, sCapId + i);
 	}
 	Group_SetGroupCommander(sGroup, sCapId+ "1");
@@ -22384,7 +22401,7 @@ void FMQM_WaitTime(string qName) //
 	if (iTime >= 21) iAddTime = 24 - iTime;
 	if (iTime < 7) iAddTime = 21 - iTime;
 	if (iTime >= 7 && iTime < 21) iAddTime = 21 - iTime;
-	SetLaunchFrameFormParam("Evening has come..."+ NewStr() +"The resin was unloaded at the shipyard...", "", 0, 5);
+	SetLaunchFrameFormParam("Наступил вечер..."+ NewStr() +"Смолы были выгружены на верфи...", "", 0, 5);
 	LaunchFrameForm();
 	StoreDayUpdate();
 	WaitDate("",0,0,0,iAddtime,5);
@@ -22448,7 +22465,7 @@ void FMQM_ArriveGuadeloupe(string qName) //
 	Group_FindOrCreateGroup("FMQM_Tartane");
 	Group_SetType("FMQM_Tartane", "pirate");//тип группы
 	sld = GetCharacter(NPC_GenerateCharacter("FMQM_Tartane_Cap", "mercen_7", "man", "man", 15, FRANCE, 5, true, "soldier"));
-	FantomMakeCoolSailor(sld, SHIP_WAR_TARTANE, "Topaz", CANNON_TYPE_CANNON_LBS3, 30, 30, 30);
+	FantomMakeCoolSailor(sld, SHIP_WAR_TARTANE, "Топаз", CANNON_TYPE_CANNON_LBS3, 30, 30, 30);// Addon 2016-1 Jason пиратская линейка
 	FantomMakeCoolFighter(sld, 15, 30, 30, "blade_06", "pistol1", "bullet", 50);
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
@@ -22471,7 +22488,7 @@ void FMQM_ArriveGuadeloupe(string qName) //
 
 void FMQM_TartanaAlarm() // 
 {
-	log_info("Sounds of alarm on the Topaz tartane!");
+	log_info("На тартане 'Топаз' поднята тревога!");
 	pchar.quest.FMQM_Tartane.over = "yes";
 	Island_SetReloadEnableGlobal("Guadeloupe", true);
 	bQuestDisableMapEnter = false;
@@ -22509,7 +22526,7 @@ void FMQM_TartaneSail(string qName) //
 
 void FMQM_AbandonGuadeloupe(string qName) // 
 {
-	log_info("You are free to land on shore");
+	log_info("Можно начинать высадку на берег");
 	PlaySound("interface\notebook.wav");
 	Island_SetReloadEnableGlobal("Guadeloupe", true);
 	DeleteAttribute(pchar, "GenQuest.CabinLock");
@@ -22543,7 +22560,7 @@ void FMQM_AbandonGuadeloupeLate(string qName) //
 
 void FMQM_AbandonCoast(string qName) // в бухте Морн л'О
 {
-	if(!GetDLCenabled(DLC_APPID_2)) return;
+	//if(!GetDLCenabled(DLC_APPID_2)) return;
 	pchar.quest.FMQM_Tartane2.over = "yes";
 	DeleteAttribute(pchar, "GenQuest.SmugglersBlock");
 	int iRank = MOD_SKILL_ENEMY_RATE+5;
@@ -22762,8 +22779,8 @@ void FMQN_Activation(string qName) //
 	FantomMakeCoolFighter(sld, iRank+5, iScl+5, iScl+5, "blade_15", "pistol5", "bullet", iScl*3);
 	sld.Dialog.Filename = "Quest\LineMiniQuests\FMQ_Nevis.c";
 	sld.Dialog.currentnode = "seafox";
-	sld.name = "Caspar";
-	sld.lastname = "Gratton";
+	sld.name = "Каспар";
+	sld.lastname = "Грэттон";
 	DeleteAttribute(sld, "SaveItemsForDead");
 	DeleteAttribute(sld, "DontClearDead");
 	ChangeCharacterAddressGroup(sld, "Charles_town", "quest", "quest1");
@@ -22906,7 +22923,7 @@ void FMQN_ChooseContinue() // продолжаем квест
 	// поставим корвет Зеепард
 	Group_FindOrCreateGroup("FMQN_shipgroup");
 	sld = GetCharacter(NPC_GenerateCharacter("FMQN_Cap_Zeepard", "off_hol_4", "man", "man", 25, HOLLAND, -1, false, "soldier"));
-	FantomMakeCoolSailor(sld, SHIP_CORVETTE, "'Zeepard", CANNON_TYPE_CULVERINE_LBS18, 65, 65, 65);
+	FantomMakeCoolSailor(sld, SHIP_CORVETTE, "Зеепард", CANNON_TYPE_CULVERINE_LBS18, 65, 65, 65);
 	FantomMakeCoolFighter(sld, 25, 65, 65, "blade_13", "pistol1", "bullet", 150);
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
@@ -22965,8 +22982,8 @@ void FMQN_ThreeDaysOver(string qName) // прошли три дня
 	pchar.questTemp.FMQN = "fail";
 	AddQuestRecord("FMQ_Nevis", "6");
 	CloseQuestHeader("FMQ_Nevis");
-	AddSimpleRumourCity("English raiding party tried to infiltrate our prison but got into a trap arranged by our vigilant commandant. Now every Englishman is locked behind bars, ha ha!", "Marigo", 20, 2, "");
-	AddSimpleRumourCity("Hear, hear. They caught British raiding party not long ago. They wanted to free their countrymen from our prison but got locked there as well instead!", "Marigo", 20, 2, "");
+	AddSimpleRumourCity("Английский десант пытался проникнуть в нашу тюрьму, однако попал в ловушку, расставленную нашим бдительным комендантом, и теперь все англичане сидят за решеткой, ха-ха!", "Marigo", 20, 2, "");
+	AddSimpleRumourCity("Слыхали? Недавно поймали английских диверсантов. Они хотели освободить своих соотечественников из тюрьмы, да в итоге сами туда угодили!", "Marigo", 20, 2, "");
 }
 
 void FMQN_ToGovernor(string qName) // посланец к губеру
@@ -23043,8 +23060,8 @@ void FMQN_ToChurch() // в церковь к Филипу Якобсену
 	sld = GetCharacter(NPC_GenerateCharacter("FMQN_monk", "monk_5", "man", "man_B", 10, HOLLAND, -1, true, "quest"));
 	SetFantomParamFromRank(sld, 10, true);
 	RemoveAllCharacterItems(sld, true);
-	sld.name = "Filippe";
-	sld.lastname = "Jaсobsen";
+	sld.name = "Филип";
+	sld.lastname = "Якобсен";
 	sld.Dialog.Filename = "Quest\LineMiniQuests\FMQ_Nevis.c";
 	sld.dialog.currentnode = "monk";
 	sld.greeting = "monk";
@@ -23075,8 +23092,8 @@ void FMQN_HollandPeace() // за голландцев, мир
 void FMQN_HollandPeaceReward(string qName) // за голландцев, мир, награда
 {
 	pchar.questTemp.FMQN = "hol_peace_rew";
-	AddSimpleRumourCity("British raiding party had come to our island yet our vigilant commandant found and slain them all. This is big!", "Marigo", 20, 2, "");
-	AddSimpleRumourCity("Have you heard? There was a skirmish outside the town. They have found English raiding party. Brits refused to surrender and were killed in action. Good job, commandant!", "Marigo", 20, 2, "");
+	AddSimpleRumourCity("Английский десант явился на наш остров, однако наш бдительный комендант не зевал, нашел всех негодяев и перебил. Вот так-то!", "Marigo", 20, 2, "");
+	AddSimpleRumourCity("Слыхали? Была схватка за городом. Нашли английских диверсантов. Они отказались сдаться, и были перебиты солдатами. Молодец наш комендант!", "Marigo", 20, 2, "");
 }
 
 void FMQN_HollandPeaceComplete() // за голландцев, мир, завершение
@@ -23183,8 +23200,8 @@ void FMQN_HollandBattleComplete() // за голландцев, боевой, завершение
 	AddCharacterExpToSkill(pchar, "Leadership", 200);
 	AddCharacterExpToSkill(pchar, "Fortune", 200);
 	AddComplexSelfExpToScill(50, 50, 50, 50);
-	AddSimpleRumourCity("Oh, it's you! Bravo, captain! You were brave enough to face English spies armed to the teeth!", "Marigo", 20, 3, "");
-	AddSimpleRumourCity("Our powers praise you highly, captain. And for reasons: helping to eliminate English spies is a big deal!", "Marigo", 20, 3, "");
+	AddSimpleRumourCity("О, это вы! Браво, капитан: не побоялись английских шпионов, вооруженных до зубов!", "Marigo", 20, 3, "");
+	AddSimpleRumourCity("Губернатор и комендант очень хвалят вас, капитан. И есть за что: обнаружить и помочь схватить английских диверсантов - большое дело!", "Marigo", 20, 3, "");
 	SetFunctionTimerCondition("FMQN_HollandSetHunters", 0, 0, 5, false);
 }
 
@@ -23241,7 +23258,7 @@ void FMQN_EnglandFail(string qName) // провал английского варианта
 
 void FMQN_EnglandBattleFail(string qName) // тревога
 {
-	Log_Info("Alarm in the town!");
+	Log_Info("В городе поднята тревога!");
 	PlaySound("VOICE\Russian\EvilPirates01.wav");
 	LAi_group_SetHearRadius("HOLLAND_CITIZENS", 200);
 	for (int i=1; i<=5; i++)
@@ -23295,8 +23312,8 @@ void FMQN_EnglandBattleFailExit(string qName) // провал после тревоги
 	AddQuestRecord("FMQ_Nevis", "24");
 	CloseQuestHeader("FMQ_Nevis");
 	pchar.questTemp.FMQN = "fail";
-	AddSimpleRumourCity("What insolence! The Brits infiltrated our town at night! And yet our commandant had them found and killed. Big deal!", "Marigo", 20, 2, "");
-	AddSimpleRumourCity("Have you heard? There was a skirmish in the town. They have found English raiding party. Brits refused to surrender and were killed in action. Good job, commandant!", "Marigo", 20, 2, "");
+	AddSimpleRumourCity("Какая наглость! Английские диверсанты проникли ночью в город! Однако наш бдительный комендант не зевал, нашел всех негодяев и перебил. Вот так-то!", "Marigo", 20, 2, "");
+	AddSimpleRumourCity("Слыхали? Была схватка в городе. Нашли английских диверсантов. Они отказались сдаться, и были перебиты солдатами. Молодец наш комендант!", "Marigo", 20, 2, "");
 }
 
 void FMQN_EnglandMonkPlan(string qName) // монах все сделал
@@ -23374,7 +23391,7 @@ void FMQN_EnglandInShoreAttack(string qName) // рубилово в бухте
 	if (pchar.location.from_sea == "shore40") bOk;
 	else 
 	{
-		Log_Info("You didn't moor at the bay!");
+		Log_Info("Вы не поставили свое судно в бухту!");
 		PlaySound("interface\notebook.wav");
 	}
 	PlaySound("interface\abordage_wining.wav");
@@ -23398,8 +23415,8 @@ void FMQN_EnglandInShoreAttack(string qName) // рубилово в бухте
 	LAi_group_Delete("EnemyFight");
 	sld = GetCharacter(NPC_GenerateCharacter("FMQN_holland_0", "off_hol_5", "man", "man", iRank+5, HOLLAND, -1, false, "soldier"));
 	FantomMakeCoolFighter(sld, iRank+5, iScl+5, iScl+5, "blade_15", "pistol5", "bullet", iScl*4);
-	sld.name = "Hans";
-	sld.lastname = "Shulte";
+	sld.name = "Ханс";
+	sld.lastname = "Шулте";
 	DeleteAttribute(sld, "SaveItemsForDead");
 	DeleteAttribute(sld, "DontClearDead");
 	ChangeCharacterAddressGroup(sld, "shore40", "goto", "goto10");
@@ -23520,7 +23537,7 @@ void FMQN_EnglandAfterSeaBattle(string qName) // после морского боя
 	Group_SetAddress("FMQN_shipgroup", "SentMartin", "", "");
 	Group_SetTaskAttack("FMQN_shipgroup", PLAYER_GROUP);
 	Sea_LoginGroupCurrentSea("FMQN_shipgroup");
-	Log_Info("The Zeepard corvette is on us!");
+	Log_Info("Корвет 'Зеепард' на горизонте!");
 	// через 3 дня откроем остров
 	SetFunctionTimerCondition("FMQN_EnglandOpenSintMaarten", 0, 0, 3, false);
 	// НЗГ
@@ -23530,8 +23547,8 @@ void FMQN_EnglandAfterSeaBattle(string qName) // после морского боя
 	pchar.quest.FMQN_eng_complete.function = "FMQN_EnglandOnAntigua";
 	AddQuestRecord("FMQ_Nevis", "27");
 	SetFunctionTimerCondition("FMQN_EnglandAntiguaLate", 0, 0, 20, false);
-	AddSimpleRumourCity("Have you heard about the mess happening here? The governor is outraged. English spies have freed their countrymen from our prison! They say some French had something to do with this.", "Marigo", 20, 2, "");
-	AddSimpleRumourCity("Have you heard?? The governor is outraged. English spies have freed their countrymen from our prison! They say some French had something to do with this.", "Marigo", 20, 2, "");
+	AddSimpleRumourCity("Вы слышали, какие безобразия у нас творятся? Губернатор в ярости. Английские диверсанты похитили своих соплеменников из тюрьмы прямо из-под носа коменданта! Еще говорят, француз какой-то к этому делу руку приложил.", "Marigo", 20, 2, "");
+	AddSimpleRumourCity("Слыхали? Разжаловали нашего коменданта за то, что английские шпионы нагло выкрали своих соотечественников из-за решетки и бежали с острова. А помог им в этом какой-то французский капитан!", "Marigo", 20, 2, "");
 }
 
 void FMQN_EnglandOpenSintMaarten(string qName) // открываем Синт-Маартен
@@ -23625,22 +23642,22 @@ void FMQN_EnglandComplete() // за Англию завершение
 	{        
 		case "HeroType_1": 
 			GiveItem2Character(pchar, "blade_15");
-			Log_Info("You have received Marinera");
+			Log_Info("Вы получили клинок 'Маринера'");
 		break;
 		
 		case "HeroType_2":
 			GiveItem2Character(pchar, "blade_10");
-			Log_Info("You have received Cord");
+			Log_Info("Вы получили клинок 'Корд'");
 		break;
 		
 		case "HeroType_3":
 			GiveItem2Character(pchar, "blade_13");
-			Log_Info("You have received Officer Broadsword");
+			Log_Info("Вы получили клинок 'Офицерский палаш'");
 		break;
 		
 		case "HeroType_4":
 			GiveItem2Character(pchar, "blade_15");
-			Log_Info("You have received Marinera");
+			Log_Info("Вы получили клинок 'Маринера'");
 		break;
 	}
 	LocatorReloadEnterDisable("SentJons_town", "reload1_back", false);
@@ -23653,7 +23670,7 @@ void FMQN_EnglandComplete() // за Англию завершение
 	CloseQuestHeader("FMQ_Nevis");
 	AddMoneyToCharacter(pchar, 30000); 
 	GiveItem2Character(pchar, "mushket3");
-	Log_Info("You have received an arquebuse");
+	Log_Info("Вы получили аркебузу");
 	PlaySound("interface\important_item.wav");
 	ChangeCharacterNationReputation(pchar, ENGLAND, 20);
 	ChangeCharacterComplexReputation(pchar, "nobility", 5);
@@ -23664,8 +23681,8 @@ void FMQN_EnglandComplete() // за Англию завершение
 	AddCharacterExpToSkill(pchar, "Leadership", 200);
 	AddCharacterExpToSkill(pchar, "Fortune", 200);
 	AddComplexSelfExpToScill(50, 50, 50, 50);
-	AddSimpleRumourCity("Oh, it's you! Bravo, captain! You were brave enough to assist our marines right in the Dutch den!", "SentJons", 20, 3, "");
-	AddSimpleRumourCity("The governor praise you highly, captain. And for reasons: helping Fox's men to save the imprisoned officers is a big deal!", "SentJons", 20, 3, "");
+	AddSimpleRumourCity("О, это вы! Браво, капитан: не побоялись помочь нашим славным морпехам в берлоге голландцев!", "SentJons", 20, 3, "");
+	AddSimpleRumourCity("Губернатор очень хвалит вас, капитан. И есть за что: помочь людям полковника Фокса спасти пленных офицеров - большое дело!", "SentJons", 20, 3, "");
 }
 
 // --> ФМК-Тортуга
@@ -23743,8 +23760,8 @@ void FMQT_WifeMeeting(string qName) //
 	chrDisableReloadToLocation = true;
 	sld = GetCharacter(NPC_GenerateCharacter("FMQT_wife", "Levaser_Wife", "woman", "towngirl", 5, FRANCE, -1, false, "quest"));
 	SetFantomParamFromRank(sld, 5, true);
-	sld.name = "Marceline";
-	sld.lastname = "Levasseur";
+	sld.name = "Марселина";
+	sld.lastname = "Левассер";
 	sld.Dialog.Filename = "Quest\LineMiniQuests\FMQ_Tortuga.c";
 	if (pchar.questTemp.FMQT == "begin_serveroom") sld.Dialog.currentnode = "wife";
 	else sld.Dialog.currentnode = "wife_8";
@@ -23852,8 +23869,8 @@ void FMQT_MercenEnter(string qName) // входит наемник
 	LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 	LAi_group_Delete("EnemyFight");
 	sld = GetCharacter(NPC_GenerateCharacter("FMQT_mercen", "Claude_Durand", "man", "man", 1, FRANCE, -1, false, "soldier"));
-	sld.name = "Clod";
-	sld.lastname = "Duran";
+	sld.name = "Клод";
+	sld.lastname = "Дюран";
 	sld.Dialog.Filename = "Quest\LineMiniQuests\FMQ_Tortuga.c";
 	sld.Dialog.currentnode = "mercen";
 	sld.rank = 15;
@@ -24092,7 +24109,7 @@ void FMQP_InSantoDomingo(string qName) //
 	int iScl = 15 + 2*sti(pchar.rank);
 	sld = GetCharacter(NPC_GenerateCharacter("FMQP_Ugo", "citiz_19", "man", "man", iRank, PIRATE, 2, false, "soldier"));
 	FantomMakeCoolFighter(sld, iRank, iScl, iScl, RandPhraseSimple("blade_05","blade_07"), "pistol1", "bullet", iScl*2);
-	sld.name = "Ugo";
+	sld.name = "Уго";
 	sld.lastname = "";
 	ChangeCharacterAddressGroup(sld, "CommonPirateHouse", "goto", "goto6");
 	sld.Dialog.Filename = "Quest\LineMiniQuests\FMQ_PortPax.c";
@@ -24121,7 +24138,7 @@ void FMQP_SantoDomingoFight(string qName) //
 	for (int i=3; i<=4; i++)
 	{
 		sld = GetCharacter(NPC_GenerateCharacter("FMQP_bandos_"+i, "citiz_2"+i, "man", "man", iRank, PIRATE, -1, false, "soldier"));
-		FantomMakeCoolFighter(sld, iRank, iScl, iScl, RandPhraseSimple("blade_05","blade_07"), "pistol1", "bullet", iScl*2);
+		FantomMakeCoolFighter(sld, iRank, iScl, iScl, RandPhraseSimple("blade_05","blade_07"), "pistol1", "bullet", iScl);
 		ChangeCharacterAddressGroup(sld, "CommonPirateHouse", "goto", "goto"+i);
 		LAi_SetWarriorType(sld);
 		LAi_group_MoveCharacter(sld, "EnemyFight");
@@ -24172,7 +24189,7 @@ void FMQP_SetRaiders(string qName) //
 	if (iShipType > SHIP_SLOOP && MOD_SKILL_ENEMY_RATE > 4) iCannon = CANNON_TYPE_CANNON_LBS16;
 	string sGroup = "FMQP_SeaGroup";
 	Group_FindOrCreateGroup(sGroup);
-	sld = GetCharacter(NPC_GenerateCharacter("FMQP_Follower", "mercen_23", "man", "man", iRank, SPAIN, 50, true, "quest"));
+	sld = GetCharacter(NPC_GenerateCharacter("FMQP_Follower", "mercen_23", "man", "man", iRank, SPAIN, 30, true, "quest"));
 	FantomMakeSmallSailor(sld, iShipType, "", iCannon, iScl, iScl, iScl, iScl, iScl);
 	FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_06", "pistol1", "bullet", 150);
 	sld.Ship.Mode = "pirate";	
@@ -24185,22 +24202,21 @@ void FMQP_SetRaiders(string qName) //
 	sld.WatchFort = true;
 	sld.AlwaysEnemy = true;
 	sld.Coastal_Captain = true;
-	SetCharacterPerk(sld, "SwordplayProfessional");
 	SetCharacterPerk(sld, "AdvancedDefense");
 	SetCharacterPerk(sld, "CriticalHit");
 	SetCharacterPerk(sld, "MusketsShoot");
 	SetCharacterPerk(sld, "HardHitter");
-	sld.ship.Crew.Morale = 40+5*MOD_SKILL_ENEMY_RATE;
-	ChangeCrewExp(sld, "Sailors", 40+5*MOD_SKILL_ENEMY_RATE);
-	ChangeCrewExp(sld, "Cannoners", 40+5*MOD_SKILL_ENEMY_RATE);
-	ChangeCrewExp(sld, "Soldiers", 40+5*MOD_SKILL_ENEMY_RATE);
+	sld.ship.Crew.Morale = 20+5*MOD_SKILL_ENEMY_RATE;
+	ChangeCrewExp(sld, "Sailors", 20+5*MOD_SKILL_ENEMY_RATE);
+	ChangeCrewExp(sld, "Cannoners", 20+5*MOD_SKILL_ENEMY_RATE);
+	ChangeCrewExp(sld, "Soldiers", 20+5*MOD_SKILL_ENEMY_RATE);
 	Group_SetTaskAttackInMap(sGroup, PLAYER_GROUP);
 	Group_LockTask(sGroup);
 	Group_AddCharacter(sGroup, sld.id);
 	Group_SetGroupCommander(sGroup, sld.id);
 	sld.mapEnc.type = "war";
 	sld.mapEnc.worldMapShip = "Galleon_red";
-    sld.mapEnc.Name = "interceptor";
+    sld.mapEnc.Name = "перехватчик";
 	Map_CreateCoolWarrior("", sld.id, 50);
 }
 
@@ -24225,7 +24241,7 @@ void FMQP_PortobelloClear(string qName) //
 	pchar.questTemp.FMQP = "fail";
 	AddQuestRecord("FMQ_Portpax", "6");
 	CloseQuestHeader("FMQ_Portpax");
-	Log_Info("Domingo Albalate has left your ship");
+	Log_Info("Доминго Альбалате покинул ваш корабль");
 }
 
 void FMQP_OnPlantation(string qName) // 
@@ -24262,7 +24278,7 @@ void FMQP_OnPlantation(string qName) //
 
 void FMQP_FindBook(string qName) // 
 {
-	Log_Info("You have found a heavy accounting book");
+	Log_Info("Вы нашли объемистый гроссбух");
 	sld = CharacterFromID("FMQP_noble");
 	sld.Dialog.currentnode = "noble_27";
 	LAi_SetActorType(sld);
@@ -24298,8 +24314,8 @@ void FMQP_CreateUncleLuis(string qName) //
 	if (MOD_SKILL_ENEMY_RATE > 8) sPistol = "pistol4";
 	ref chr = GetCharacter(NPC_GenerateCharacter("FMQP_Uncle", "citiz_1", "man", "man", iRank, SPAIN, -1, false, "soldier"));
 	FantomMakeCoolFighter(chr, iRank, iScl, iScl, "blade_15", "pistol5", "bullet", iScl*2);
-	chr.name = "Luis";
-	chr.lastname = "Ortiz";
+	chr.name = "Луис";
+	chr.lastname = "Ортис";
 	chr.Dialog.Filename = "Quest\LineMiniQuests\FMQ_PortPax.c";
 	chr.Dialog.currentnode = "uncle";
 	DeleteAttribute(chr, "SaveItemsForDead");
@@ -24408,12 +24424,12 @@ void FMQP_LateFinal(string qName) //
 // --> ФМК-Последний урок
 void FMQL_Start() // накручиваем гида и выдаем ему шняву
 {
-	if(!GetDLCenabled(DLC_APPID_2)) return;
+        if(!GetDLCenabled(DLC_APPID_2)) return;
 	if (CheckAttribute(pchar, "questTemp.HWIC") || sti(pchar.rank) > 14) return;
 	sld = GetCharacter(NPC_GenerateCharacter("Guide_y", "Guide_1", "man", "man", 10, FRANCE, -1, true, "officer"));
-	FantomMakeSmallSailor(sld, SHIP_SHNYAVA, "Fudroyan", CANNON_TYPE_CANNON_LBS16, 45, 45, 45, 45, 45);
-	sld.name = "Gregoire";
-	sld.lastname = "Valinnie";
+	FantomMakeSmallSailor(sld, SHIP_SHNYAVA, "Фудройян", CANNON_TYPE_CANNON_LBS16, 45, 45, 45, 45, 45);
+	sld.name = "Грегуар";
+	sld.lastname = "Валинье";
 	sld.dialog.FileName = "Quest\LineMiniQuests\FMQ_Lesson.c";
 	sld.dialog.currentnode = "greguar";
 	sld.talker = 9;
@@ -24691,8 +24707,8 @@ void FMQL_InJungle(string qName) // в джунглях
 		sld = GetCharacter(NPC_GenerateCharacter("FMQL_Prosper", "Prospero_mush", "man", "mushketer", iRank, FRANCE, -1, false, "soldier"));
 		FantomMakeCoolFighter(sld, iRank, iScl, 110, "", "mushket1", "cartridge", iScl*3);
 		LAi_SetCharacterUseBullet(sld, "cartridge");
-		sld.name = "Prosper";
-		sld.lastname = "Trubal";
+		sld.name = "Проспер";
+		sld.lastname = "Трубаль";
 		sld.dialog.FileName = "Quest\LineMiniQuests\FMQ_Lesson.c";
 		sld.dialog.currentnode = "prosper";
 		sld.cirassId = Items_FindItemIdx("cirass1");
@@ -25005,6 +25021,7 @@ void FMQL_MeetingOnLamanten(string qName) // встреча на пляже Ламантен
 	// ставим шняву
 	sld = CharacterFromID("Guide_y");
 	DeleteAttribute(sld, "chr_ai.poison"); // патч 17/1
+	LAi_SetCurHPMax(sld);
 	Group_AddCharacter("FMQL_GuideGroup", "Guide_y");
 	Group_SetGroupCommander("FMQL_GuideGroup", "Guide_y");
 	Group_SetAddress("FMQL_GuideGroup", "Martinique", "quest_ships", "quest_ship_10");
@@ -25100,19 +25117,19 @@ void FMQL_OnLamantenBeach(string qName) // на самом пляже
 
 void FMQL_CreateGuidesWarriors() // ставим кодлу гида
 {
-	int iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+10;
-	int iScl = 55 + 3*sti(pchar.rank); // may-16
+	int iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+13;
+	int iScl = 75 + 3*sti(pchar.rank); // may-16
 	// индей со склопеттой
 	sld = GetCharacter(NPC_GenerateCharacter("FMQL_Johnny", "mush_cnb_1", "man", "mushketer", iRank, PIRATE, -1, false, "native"));
 	FantomMakeCoolFighter(sld, iRank, iScl, 110, "", "grape_mushket", "grenade", iScl*3);
-	sld.name = "Johnny";
+	sld.name = "Джонни";
 	sld.lastname = "";
 	SetSPECIAL(sld, 10, 10, 5, 3, 5, 10, 10);
 	TakeNItems(sld, "grenade", 70); // may-16
 	LAi_SetCharacterUseBullet(sld, "grenade");
 	if (MOD_SKILL_ENEMY_RATE > 2) // may-16
 	{
-		sld.MultiFighter = 2.0;
+		sld.MultiFighter = 3.0;
 		sld.MultiShooter = 4.0;
 	}
 	TakeNItems(sld, "potion2", makeint(MOD_SKILL_ENEMY_RATE/2)); // may-16
@@ -25132,8 +25149,8 @@ void FMQL_CreateGuidesWarriors() // ставим кодлу гида
 		sld = GetCharacter(NPC_GenerateCharacter("FMQL_guard_"+i, "killer_"+(rand(4)+1), "man", "man", iRank, PIRATE, -1, false, "soldier")); // may-16
 		FantomMakeCoolFighter(sld, iRank, iScl, iScl, "topor_04", "pistol4", "bullet", iScl*3);
 		ChangeCharacterAddressGroup(sld, "Shore38", "goto", "goto"+(i+1));
-		sld.MultiFighter = 1.4;
-		if (MOD_SKILL_ENEMY_RATE > 4) sld.MultiFighter = 2.0; // мультифайтер may-16
+		sld.MultiFighter = 2.0;
+		if (MOD_SKILL_ENEMY_RATE > 4) sld.MultiFighter = 4.0; // мультифайтер may-16
 		TakeNItems(sld, "potion2", makeint(MOD_SKILL_ENEMY_RATE/3)); // may-16
 		sld.cirassId = Items_FindItemIdx("cirass4");
 		sld.LSC_clan = true; // may-16
@@ -25150,7 +25167,7 @@ void FMQL_MoneyForSelina(string qName) //
 {
 	AddMoneyToCharacter(pchar, -20000);
 	PlaySound("interface\notebook.wav");
-	Log_Info("You have spared 20 000 pesos for Selina Trubal");
+	Log_Info("Вы отложили 20 000 песо для передачи Селине Трубаль");
 }
 
 void FMQL_ProsperDead(string qName) // 
@@ -25209,8 +25226,8 @@ void Mtraxx_SetGabriela(string qName) //
 void Mtraxx_RenameGabriela(string qName) // 
 {
 	sld = characterFromId("HorseGen_"+reload_location_index+"_2"); // переименуем девку
-	sld.name = "Gabriela";
-	sld.lastname = "Chapada";
+	sld.name = "Габриэла";
+	sld.lastname = "Чападо";
 }
 
 void Mtraxx_JewelrySDMOver(string qName) // опоздание по Санто-Доминго
@@ -25231,15 +25248,17 @@ void Mtraxx_JewelryHavanaOver(string qName) // опоздание по Гаване
 
 void Mtraxx_HavanaInfo(string qName) // 
 {
+	if (pchar.questTemp.Mtraxx != "jewelry_3") return;
 	AddQuestRecord("Roger_1", "6");
 }
 
 void Mtraxx_CreateOfficer() // ставим Лопе Монторо
 {
+	if (pchar.questTemp.Mtraxx == "fail") return;
 	sld = GetCharacter(NPC_GenerateCharacter("Lope", "sold_spa_16", "man", "man", 25, SPAIN, 15, true, "quest"));
 	SetFantomParamFromRank(sld, 25, true);
-	sld.name = " Lope";
-	sld.lastname = "Montoro";
+	sld.name = "Лопе";
+	sld.lastname = "Монторо";
 	sld.dialog.FileName = "Quest\Roger.c";
 	sld.dialog.currentnode = "Mtr_officer";
 	sld.greeting = "";
@@ -25266,10 +25285,11 @@ void Mtraxx_TimeclearPrison(string qName) // опоздание по тюрьме
 
 void Mtraxx_CreateRosario() // ставим Росарио
 {
+	if (pchar.questTemp.Mtraxx == "fail") return;
 	sld = GetCharacter(NPC_GenerateCharacter("Rosario", "off_spa_3", "man", "man", 25, SPAIN, -1, true, "quest"));
 	SetFantomParamFromRank(sld, 25, true);
-	sld.name = "Rosario";
-	sld.lastname = "Gusman";
+	sld.name = "Росарио";
+	sld.lastname = "Гусман";
 	sld.dialog.FileName = "Quest\Roger.c";
 	sld.dialog.currentnode = "Mtr_rosario";
 	sld.greeting = "";
@@ -25308,10 +25328,10 @@ void Mtraxx_JewelryGulf(string qName) // Кабаньяс в заливе
 	int iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+5;
 	if (iRank > 50) iRank = 50;
 	sld = GetCharacter(NPC_GenerateCharacter("Cabanos", "off_spa_2", "man", "man", iRank, SPAIN, -1, true, "quest"));
-	FantomMakeCoolSailor(sld, SHIP_SCHOONER_W, "Cantavro", CANNON_TYPE_CULVERINE_LBS18, 50, 50, 50);
+	FantomMakeCoolSailor(sld, SHIP_SCHOONER_W, "Кантавро", CANNON_TYPE_CULVERINE_LBS18, 50, 50, 50);
 	FantomMakeCoolFighter(sld, iRank, 50, 50, "blade_15", "pistol5", "bullet", 150); // патч 17/1
-	sld.name = " Esberdo";
-	sld.lastname = "Cabanas";
+	sld.name = "Эсберто";
+	sld.lastname = "Кабаньяс";
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
 	sld.SaveItemsForDead = true;
@@ -25420,9 +25440,9 @@ void Mtraxx_SilkCreateJeffry(string qName) // создаем Джеффри // 3 прогона
 	if(!GetDLCenabled(DLC_APPID_3)) return;
 	Group_FindOrCreateGroup("Mtr_Jeffry");
 	sld = GetCharacter(NPC_GenerateCharacter("Jeffry", "Jeffry", "man", "man", 25, ENGLAND, -1, true, "quest"));
-	FantomMakeCoolSailor(sld, SHIP_GALEON_L, "Snake", CANNON_TYPE_CULVERINE_LBS18, 80, 80, 80);
-	sld.name = "Geffrey";
-	sld.lastname = "Brooke";
+	FantomMakeCoolSailor(sld, SHIP_GALEON_L, "Снэйк", CANNON_TYPE_CULVERINE_LBS18, 80, 80, 80);
+	sld.name = "Джеффри";
+	sld.lastname = "Брук";
 	sld.dialog.FileName = "Quest\Roger.c";
 	sld.DeckDialogNode = "Jeffry";
 	sld.greeting = "captain";
@@ -25490,10 +25510,10 @@ void Mtraxx_CreateBilly(string qName) // создаем Билли
 	Group_SetAddress("Mtr_Jeffry", "Nevis", "quest_ships", "quest_ship_6"); // переместить судно Джеффри
 	Group_FindOrCreateGroup("Mtr_Billi");
 	sld = GetCharacter(NPC_GenerateCharacter("Siplyi", "Billy_Pirt", "man", "man", 25, ENGLAND, -1, true, "quest"));
-	FantomMakeCoolSailor(sld, SHIP_TARTANE, "Fly Fish", CANNON_TYPE_NONECANNON, 70, 70, 70);
+	FantomMakeCoolSailor(sld, SHIP_TARTANE, "Летучая рыба", CANNON_TYPE_NONECANNON, 70, 70, 70);
 	FantomMakeCoolFighter(sld, 25, 70, 70, "blade_06", "pistol1", "bullet", 150);
-	sld.name = "Billy";
-	sld.lastname = "Pert";
+	sld.name = "Билли";
+	sld.lastname = "Пирт";
 	sld.dialog.FileName = "Quest\Roger.c";
 	sld.DeckDialogNode = "Billy";
 	sld.greeting = "";
@@ -25594,7 +25614,7 @@ void Mtraxx_SilkCreateSmuggler(string qName) // подгружаем Утрехт, если ГГ в мор
 {
 	if(!GetDLCenabled(DLC_APPID_3)) return;
 	if (pchar.questTemp.Mtraxx == "fail") return;
-	log_info("The Utrecht is on the horizon!");
+	log_info("'Утрехт' на горизонте!");
 	PlaySound("interface\notebook.wav");
 	PlaySound("interface\_EvEnemy0.wav");
 	pchar.quest.mtr_silk_smuggler_over.over = "yes";
@@ -25604,10 +25624,10 @@ void Mtraxx_SilkCreateSmuggler(string qName) // подгружаем Утрехт, если ГГ в мор
 	if (iRank > 45) iRank = 45;
 	Group_FindOrCreateGroup("Mtr_Utreht");
 	sld = GetCharacter(NPC_GenerateCharacter("Cap_Utreht", "mercen_19", "man", "man", iRank, ENGLAND, -1, true, "quest"));
-	FantomMakeCoolSailor(sld, SHIP_BRIGANTINE, "Utrecht", CANNON_TYPE_CULVERINE_LBS18, 50, 50, 50);
+	FantomMakeCoolSailor(sld, SHIP_BRIGANTINE, "Утрехт", CANNON_TYPE_CULVERINE_LBS18, 50, 50, 50);
 	FantomMakeCoolFighter(sld, iRank, 50, 50, "blade_13", "pistol5", "bullet", 100);
-	sld.name = "Joachim";
-	sld.lastname = "Gusen";
+	sld.name = "Йоахим";
+	sld.lastname = "Гузен";
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
 	sld.Coastal_Captain = true; // правки прогона 3
@@ -25773,7 +25793,7 @@ void Mtraxx_SilkTimeLateAll(string qName) // опоздали полностью
 
 void Mtraxx_CargoSilk() // выгрузка шелка
 {
-	SetLaunchFrameFormParam("One hour later..."+ NewStr() +"The silk was unloaded to the buyer", "", 0, 5);
+	SetLaunchFrameFormParam("Прошел час"+ NewStr() +"Шелк выгружен покупателю", "", 0, 5);
 	LaunchFrameForm();
 	WaitDate("", 0, 0, 0, 1, 10); //крутим время
 	RecalculateJumpTable();
@@ -25872,10 +25892,10 @@ void Mtraxx_PlantCreatePelly(string qName) // ставим Пелли
 	int iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+10;
 	if (iRank > 50) iRank = 50;
 	sld = GetCharacter(NPC_GenerateCharacter("Pelly_sea", "Tesak", "man", "man", iRank, ENGLAND, -1, true, "quest"));
-	FantomMakeCoolSailor(sld, SHIP_BARKENTINE, "Moray", CANNON_TYPE_CANNON_LBS16, 65, 65, 65);
+	FantomMakeCoolSailor(sld, SHIP_BARKENTINE, "Мурена", CANNON_TYPE_CANNON_LBS16, 65, 65, 65);
 	FantomMakeCoolFighter(sld, iRank, 65, 65, "blade_06", "pistol3", "grapeshot", 200);
-	sld.name = "Paul";
-	sld.lastname = "Chant";
+	sld.name = "Пол";
+	sld.lastname = "Чант";
 	sld.dialog.FileName = "Quest\Roger.c";
 	sld.DeckDialogNode = "Pelly";
 	sld.greeting = "town_pirate";
@@ -25959,8 +25979,8 @@ void Mtraxx_PlantPellyArrive(string qName) // 3 прогона
 	}
 	// клон Пелли - сухопутный
 	sld = GetCharacter(NPC_GenerateCharacter("Pelly", "Tesak", "man", "man", 25, PIRATE, -1, false, "quest"));
-	sld.name = "Paul";
-	sld.lastname = "Chant";
+	sld.name = "Пол";
+	sld.lastname = "Чант";
 	sld.greeting = "town_pirate";
 	sld.Dialog.Filename = "Quest\Roger.c";
 	sld.dialog.currentnode = "Pelly_7";
@@ -26098,8 +26118,8 @@ void Mtraxx_PlantSetMaxRocur() // ставим Жана Пикара
 {
 	if(!GetDLCenabled(DLC_APPID_3)) return;
 	sld = GetCharacter(NPC_GenerateCharacter("Mrt_Rocur", "Jan_Slave", "man", "man", 20, PIRATE, -1, false, "soldier"));
-	sld.name = "Jean";
-	sld.lastname = "Picard";
+	sld.name = "Жан";
+	sld.lastname = "Пикар";
 	sld.Dialog.Filename = "Quest\Roger.c";
 	sld.Dialog.currentnode = "rocur";
 	sld.greeting = ""; 
@@ -26140,8 +26160,8 @@ void Mtraxx_PlantMakeMaxRocurClone() // ставим клон Жана Пикара
 {
 	sld = GetCharacter(NPC_GenerateCharacter("Mrt_Rocur_clone", "Jan_Slave", "man", "man", 20, PIRATE, -1, false, "soldier"));
 	SetFantomParamFromRank(sld, 15, true);
-	sld.name = "Jean";
-	sld.lastname = "Picard";
+	sld.name = "Жан";
+	sld.lastname = "Пикар";
 	sld.Dialog.Filename = "Quest\Roger.c";
 	sld.Dialog.currentnode = "rocur_4";
 	sld.greeting = "";
@@ -26167,32 +26187,32 @@ void Mtraxx_PlantCheckShoreBox() // анализ содержимого сундука
 		pchar.questTemp.Mtraxx.Weapon.Blade = "true";
 		int n = Findlocation("Shore37");
 		locations[n].private1.items.Bunch = 1;
-		log_info("30 pieces of cold arms has been taken from the ship's arsenal");
-		log_info("Gathered cold arms - 30 pieces");
+		log_info("Из арсенала корабля взято холодного оружия - 30 штук");
+		log_info("Собрано холодного оружия - 30 штук");
 	}
 	if (CheckAttribute(pchar, "questTemp.Mtraxx.Weapon.Blade"))
 	{
 		DeleteAttribute(pchar, "questTemp.Mtraxx.Weapon.NoBlade");
 		iBlade = CheckItemInBox("Bunch", "Shore37", "private1");
-		if (iBlade > 0) log_info("Gathered cold arms - 30 pieces");
+		if (iBlade > 0) log_info("Собрано холодного оружия - 30 штук");
 		else 
 		{
 			pchar.questTemp.Mtraxx.Weapon.NoBlade = "true";
-			log_info("No cold arms");
+			log_info("Нет холодного оружия");
 		}
 	}
 	iGun = 0;
 	iGun = iGun+CheckItemInBox("pistol1", "Shore37", "private1");
-	log_info("Gathered pistols - "+FindRussianQtyString(iGun)+"");
+	log_info("Собрано пистолей - "+FindRussianQtyString(iGun)+"");
 	pchar.questTemp.Mtraxx.Weapon.Gun = iGun;
 	iMushket = 0;
 	iMushket = iMushket+CheckItemInBox("mushket1", "Shore37", "private1");
-	log_info("Gathered muskets - "+FindRussianQtyString(iMushket)+"");
+	log_info("Собрано мушкетов - "+FindRussianQtyString(iMushket)+"");
 	pchar.questTemp.Mtraxx.Weapon.Mushket = iMushket;
 	iPotion = 0;
 	iPotion = iPotion+CheckItemInBox("potion1", "Shore37", "private1");
 	iPotion = iPotion+CheckItemInBox("potion2", "Shore37", "private1");
-	log_info("Gathered healing potions - "+FindRussianQtyString(iPotion)+"");
+	log_info("Собрано лечебных зелий - "+FindRussianQtyString(iPotion)+"");
 	pchar.questTemp.Mtraxx.Weapon.Potion = iPotion;
 	iBullet = 0;
 	iBullet = iBullet+CheckItemInBox("bullet", "Shore37", "private1");
@@ -26203,7 +26223,7 @@ void Mtraxx_PlantCheckShoreBox() // анализ содержимого сундука
 	if (iBullet > iGunpowder || iBullet == iGunpowder) iShot = iGunpowder;
 	else iShot = iBullet;
 	iShot = iShot+iCartridge;
-	log_info("Gathered supplies for "+iShot+" shots");
+	log_info("Собрано пороха, пуль и бумажных патронов на "+iShot+" выстрелов");
 	pchar.questTemp.Mtraxx.Weapon.Shot = iShot;
 }
 
@@ -26244,6 +26264,7 @@ void Mtraxx_SeekWeaponOver(string qName) // истек месяц на сбор оружия
 	
 void Mtraxx_PlantWaitDay(string qName) // крутим время до 21 ч следующего дня
 {
+	pchar.quest.Mtraxx_SeekWeaponOver.over = "yes"; // снимаем таймер на поиск оружия релиз-правка
 	bDisableCharacterMenu = true;//лочим F2
 	pchar.GenQuest.FrameLockEsc = true; // закрыть ESC
 	int iTime, iAddTime;
@@ -26251,7 +26272,7 @@ void Mtraxx_PlantWaitDay(string qName) // крутим время до 21 ч следующего дня
 	if (iTime >= 21) iAddTime = 24 - iTime;
 	if (iTime < 7) iAddTime = 21 - iTime;
 	if (iTime >= 7 && iTime < 21) iAddTime = 21 - iTime;
-	SetLaunchFrameFormParam("Later, next evening...", "Mtraxx_PlantWaitDay", 0, 5);
+	SetLaunchFrameFormParam("Наступил вечер следующего дня...", "Mtraxx_PlantWaitDay", 0, 5);
 	LaunchFrameForm();
 	StoreDayUpdate();
 	WaitDate("",0,0,1,iAddtime,5);
@@ -26321,7 +26342,7 @@ void Mtraxx_PlantPrepareMarch() // к походу
 	pchar.quest.Mtraxx_TimerPlantMutiny2.function = "Mtraxx_PlantMutinyAlarm";
 	
 	int n = 26 - sti(environment.time);
-	SetLaunchFrameFormParam("Some time later...", "Mtraxx_PlantPrepareMarch", 0, 3);
+	SetLaunchFrameFormParam("Прошло некоторое время...", "Mtraxx_PlantPrepareMarch", 0, 3);
 	LaunchFrameForm();
 	StoreDayUpdate();
 	WaitDate("",0,0,0,n,5);
@@ -26360,7 +26381,7 @@ void Mtraxx_PlantMutinyAlarm(string qName) // подошел слишком близко
 	LocatorReloadEnterDisable("Maracaibo_ExitTown", "reload4", false); 
 	LocatorReloadEnterDisable("Maracaibo_ExitTown", "reload3_back", false); 
 	LAi_group_AttackGroup("SPAIN_CITIZENS", LAI_GROUP_PLAYER);
-	log_info("Plantation is alarmed!");
+	log_info("На плантации поднята тревога!");
 	SetNationRelation2MainCharacter(SPAIN, RELATION_ENEMY);
 	sld = characterFromId("Pelly");
 	LAi_SetWarriorType(sld);
@@ -26634,7 +26655,7 @@ void Mtraxx_PlantMutiny() // восстание на плантации
 	// таймер, для большего эффекта - визуальный
 	pchar.questTemp.Mtraxx.PlantMutiny = "true";
 	SetShowTimer(300.0);
-	log_info("You have 300 seconds before the Spanish will get reinforces from the fort");
+	log_info("Через 300 секунд испанцам прибудет подкрепление из форта!");
 	DoQuestFunctionDelay("Terrapin_SetMusic", 0.5);
 	pchar.quest.Escort_fail.win_condition.l1 = "NPC_Death";
 	pchar.quest.Escort_fail.win_condition.l1.character = "Mrt_Rocur";
@@ -26909,7 +26930,7 @@ void Mtraxx_PlantSeaBattle(string qName) // бой с испанской эскадрой
 
 void Mtraxx_PlantSeaBattleCanEscape(string qName) // уничтожили флагман испанцев
 {
-	Log_Info("The Spanish has lost their flagship! We can try to flee!");
+	Log_Info("Испанская эскадра потеряла флагман! Можно попытаться выйти из боя и скрыться");
 	PlaySound("interface\notebook.wav");
 	bQuestDisableMapEnter = false;//открыть карту
 	pchar.quest.mtraxx_plant_seabattlemap.win_condition.l1 = "MapEnter";
@@ -27029,7 +27050,7 @@ void Mtraxx_PasqualeConvoyOver(string qName) // не нашли конвой
 
 void Mtraxx_PasqualeCreateConvoy(string qName) // создаем конвой
 {
-	log_info("Dutch convoy is on the horizon!");
+	log_info("Голландский конвой на горизонте!");
 	PlaySound("interface\notebook.wav");
 	PlaySound("interface\_EvEnemy0.wav");
 	Group_FindOrCreateGroup("Mtr_PasqSeaGroup");
@@ -27115,7 +27136,7 @@ void Mtraxx_PasqualeCreateConvoy(string qName) // создаем конвой
 		}
 		if (i == 2) 
 		{
-			sld.ship.name = "Rosbohom";
+			sld.ship.name = "Розбоом";
 			NullCharacterGoods(sld);
 			AddCharacterGoods(sld, GOOD_BALLS, 500);
 			AddCharacterGoods(sld, GOOD_GRAPES, 400);
@@ -27290,7 +27311,7 @@ void Mtraxx_PasqualeNight() // ночной порой два жулика...
 	iTime = sti(environment.time);
 	iAddTime = 24 - iTime;
 	if (iAddTime < 1) iAddTime = 24;
-	SetLaunchFrameFormParam("Night has come...", "", 0, 3);
+	SetLaunchFrameFormParam("Наступила ночь...", "", 0, 3);
 	LaunchFrameForm();
 	StoreDayUpdate();
 	WaitDate("",0,0,0,iAddtime,5);
@@ -27389,7 +27410,7 @@ void Mtraxx_PasqualeNightLavega(string qName) // вошли в Ла Вегу
 	// ставим деваху
 	sld = GetCharacter(NPC_GenerateCharacter("Mirabella", "Mirabelle", "woman", "towngirl", 1, PIRATE, -1, false, "quest"));
 	SetFantomParamFromRank(sld, 1, true);
-	sld.name = "Mirabelle";
+	sld.name = "Мирабель";
 	sld.lastname = "";
 	sld.Dialog.Filename = "Quest\Roger.c";
 	sld.dialog.currentnode = "mirabelle";
@@ -27610,27 +27631,27 @@ void Mtraxx_MirabellaSex(string qName) // секс с Мирабель
 	{
 		case 0: 
 			sTemp = "8";
-			fTime = 9.3;
+			fTime = 5.0;
 		break;
 		
 		case 1: 
 			sTemp = "10";
-			fTime = 12.2;
+			fTime = 5.0;
 		break;
 		
 		case 2: 
 			sTemp = "12";
-			fTime = 12.3;
+			fTime = 5.0;
 		break;
 		
 		case 3: 
 			sTemp = "13";
-			fTime = 10.2;
+			fTime = 5.0;
 		break;
 		
 		case 4: 
 			sTemp = "14";
-			fTime = 11.2;
+			fTime = 5.0;
 		break;
 	}
 	PlayStereoSound("sex\sex" + sTemp + ".wav");
@@ -27659,7 +27680,7 @@ void Mtraxx_MirabellaSailOver(string qName) // не довез Мирабель
 	sld = characterFromId("Mirabella");
 	sld.lifeday = 0;
 	RemovePassenger(pchar, sld);
-	Log_Info("Mirabelle died of fever!");
+	Log_Info("Мирабель заболела тропической лихорадкой и умерла!");
 	PlaySound("interface\notebook.wav");
 }
 
@@ -27720,8 +27741,8 @@ void Mtraxx_MeridaCreateLepricon(string qName) // ставим Леприкона с бригадой
 	if(!GetDLCenabled(DLC_APPID_3)) return;
 	chrDisableReloadToLocation = true;
 	sld = GetCharacter(NPC_GenerateCharacter("Lepricon", "Leprechaun", "man", "man", 25, PIRATE, -1, true, "quest"));
-	sld.name = "Luka";
-	sld.lastname = "Bayard";
+	sld.name = "Люка";
+	sld.lastname = "Байярд";
 	sld.dialog.FileName = "Quest\Roger.c";
 	sld.dialog.currentnode = "lepricon";
 	sld.greeting = "";
@@ -27844,7 +27865,7 @@ void Mtraxx_MeridaFindVillage(string qName) // нашли деревню
 	// вождь Кумвана
 	sld = GetCharacter(NPC_GenerateCharacter("Cumvana", "Kumvana", "man", "man", 25, SPAIN, -1, true, "native"));
 	SetFantomParamFromRank(sld, 25, true);
-	sld.name = "Kumwana";
+	sld.name = "Кумвана";
 	sld.lastname = "";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	sld.dialog.Filename = "indian_dialog.c";
@@ -27857,7 +27878,7 @@ void Mtraxx_MeridaFindVillage(string qName) // нашли деревню
 	// Хайами
 	sld = GetCharacter(NPC_GenerateCharacter("Hayamee", "squaw_3", "woman", "woman_B", 10, SPAIN, -1, true, "native"));
 	SetFantomParamFromRank(sld, 10, true);
-	sld.name = "Hayami";
+	sld.name = "Хайами";
 	sld.lastname = "";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetImmortal(sld, true);
@@ -27891,7 +27912,7 @@ void Mtraxx_MeridaHayameeTimer(string qName) // ставим Тагофу
 	// Тагофа - проводник
 	sld = GetCharacter(NPC_GenerateCharacter("Tagofa", "miskito_6", "man", "man", 25, SPAIN, -1, true, "native"));
 	SetFantomParamFromRank(sld, 25, true);
-	sld.name = "Tagofa";
+	sld.name = "Тагофа";
 	sld.lastname = "";
 	sld.dialog.Filename = "Quest\Roger.c";
 	sld.dialog.currentnode = "tagofa";
@@ -28050,7 +28071,7 @@ void Mtraxx_MeridaBuildBoats() // строим лодки
 	PlaySound("ambient\ShipYard\pila_001.wav");
 	PlaySound("ambient\ShipYard\topor_001.wav");
 	pchar.questTemp.Mtraxx = "merida_trip";
-	SetLaunchFrameFormParam("Two days later..."+ NewStr() +"Six longboats has been built...", "Mtraxx_MeridaBuildBoats", 0, 5);
+	SetLaunchFrameFormParam("Прошли два дня..."+ NewStr() +"Шесть лодок были построены...", "Mtraxx_MeridaBuildBoats", 0, 5);
 	LaunchFrameForm();
 	StoreDayUpdate();
 	WaitDate("",0,0,2,3,5);
@@ -28190,7 +28211,7 @@ void Mtraxx_MeridaExitTown(string qName) // у ворот Мериды
 	sld = characterFromId("Tagofa");
 	LAi_SetActorType(sld);
 	LAi_ActorGoToLocator(sld, "quest", "waterfall", "", -1);
-	LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER); // правки прогона 3
+	LAi_group_MoveCharacter(sld, "TMP_FRIEND"); // правки прогона 3
 	// ставим дозорного
 	sld = GetCharacter(NPC_GenerateCharacter("Merida_guard", "mercen_23", "man", "man", 25, SPAIN, -1, true, "quest"));
 	FantomMakeCoolFighter(sld, 25, 70, 70, "blade_13", "pistol3", "grapeshot", 150);
@@ -28327,8 +28348,8 @@ void Mtraxx_MeridaTownhall(string qName) // в резиденции Мериды
 	FantomMakeCoolFighter(sld, 20, 50, 50, "blade_15", "", "", 100);
 	sld.dialog.Filename = "Quest\Roger.c";
 	sld.dialog.currentnode = "merida_head";
-	sld.name = "Demetrio";
-	sld.lastname = "Rojas";
+	sld.name = "Деметрио";
+	sld.lastname = "Рохас";
 	sld.greeting = "";
 	LAi_SetImmortal(sld, true);
 	DeleteAttribute(sld, "SaveItemsForDead");
@@ -28467,7 +28488,6 @@ void Mtraxx_MeridaReturnEnd(string qName) // уплываем назад по реке
 
 void Mtraxx_MeridaFinal(string qName) // на берегу, дележ добычи
 {
-	chrDisableReloadToLocation = true;
 	pchar.GenQuest.Hunter2Pause = true;
 	// чистим нпс
 	for (int i=5; i<=9; i++) // ребята Леприкона
@@ -28544,13 +28564,13 @@ void Mtraxx_IgnasioKitty(string qName) // ставим пинас Китти
 	if(!GetDLCenabled(DLC_APPID_3)) return;
 	bQuestDisableMapEnter = true;//закрыть карту
 	pchar.GenQuest.MapClosedNoBattle = true;
-	pchar.quest.mtraxx_merida_returnover.over = "yes";
-	pchar.quest.mtraxx_merida_returnover1.over = "yes";
+		pchar.quest.mtraxx_merida_returnover.over = "yes";
+		pchar.quest.mtraxx_merida_returnover1.over = "yes";
 	pchar.quest.Mtraxx_MeridaReturnLate.over = "yes";
 	LocatorReloadEnterDisable("LaVega_port", "boat", true);
 	Group_FindOrCreateGroup("Mtr_Kitty");
 	sld = GetCharacter(NPC_GenerateCharacter("Mtr_KittyCap", "mercen_10", "man", "man", 20, ENGLAND, -1, false, "soldier"));
-	FantomMakeCoolSailor(sld, SHIP_PINNACE, "Kitty", CANNON_TYPE_CANNON_LBS16, 50, 50, 50);
+	FantomMakeCoolSailor(sld, SHIP_PINNACE, "Китти", CANNON_TYPE_CANNON_LBS16, 50, 50, 50);
 	FantomMakeCoolFighter(sld, 20, 40, 40, "blade_11", "pistol1", "bullet", 50);
 	SetShipSkill(sld, 30, 90, 40, 45, 65, 55, 20, 50, 45);
 	sld.Dialog.Filename = "Quest\Roger.c";
@@ -28612,13 +28632,13 @@ void Mtraxx_IgnasioCreateMarko() // ставим Игнасио Марко
 	if(!GetDLCenabled(DLC_APPID_3)) return;
 	float locx, locy, locz;
 	sld = GetCharacter(NPC_GenerateCharacter("Ignasio", "Marco", "man", "man", 30, ENGLAND, -1, false, "soldier"));
-	FantomMakeCoolSailor(sld, SHIP_POLACRE_QUEST, "Torero", CANNON_TYPE_CANNON_LBS24, 60, 60, 60);
+	FantomMakeCoolSailor(sld, SHIP_POLACRE_QUEST, "Тореро", CANNON_TYPE_CANNON_LBS24, 60, 60, 60);
 	FantomMakeCoolFighter(sld, 30, 80, 80, "blade_10", "pistol6", "bullet", 150);
 	sld.Dialog.Filename = "Quest\Roger.c";
 	sld.dialog.currentnode = "ignasio";
 	sld.greeting = "captain";
-	sld.name = "Ignacio";
-	sld.lastname = "Marco";
+	sld.name = "Игнасио";
+	sld.lastname = "Марко";
 	SetCharacterPerk(sld, "BasicDefense");
 	SetCharacterPerk(sld, "Gunman");
 	SetCharacterPerk(sld, "GunProfessional");
@@ -28891,6 +28911,7 @@ void Mtraxx_IgnasioOurEscape() // убираем наших антуражников
 
 void Mtraxx_IgnasioPrepareSpanish(string qName) // ставим убегающего Игнасио Марко
 {
+	Island_SetReloadEnableGlobal("IslaDeCoche", false); // правки релиза
 	DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
 	Group_FindOrCreateGroup("IgnasioSeaGroup");
 	sld = CharacterFromID("Ignasio");
@@ -28970,9 +28991,9 @@ void Mtraxx_IgnasioCreateSpanish(string qName) //
 			SetRandGeraldSail(sld, SPAIN);
 			int hcrew = GetMaxCrewQuantity(sld);
 			SetCrewQuantityOverMax(sld, 1.2*hcrew);
-			sld.name = "Eduardo";
-			sld.lastname = "de Losada";
-			sld.ship.name = "El Casador";
+			sld.name = "Эдуардо";
+			sld.lastname = "де Лосада";
+			sld.ship.name = "Эль Касадор";
 			NullCharacterGoods(sld);
 			UpgradeShipParameter(sld, "SpeedRate");
 			UpgradeShipParameter(sld, "HP");
@@ -29038,12 +29059,14 @@ void Mtraxx_IgnasioClearSeaGroup(string qName) //
 {
 	Group_DelCharacter("IgnasioSeaGroup", "Ignasio");
 	Group_DeleteGroup("IgnasioSeaGroup");
+	Island_SetReloadEnableGlobal("IslaDeCoche", true); // правки релиза
 }
 
 void Mtraxx_IgnasioClearSeaGroups(string qName) // 
 {
 	Group_DelCharacter("IgnasioSeaGroup", "Ignasio");
 	Group_DeleteGroup("IgnasioSeaGroup");
+	Island_SetReloadEnableGlobal("IslaDeCoche", true); // правки релиза
 	pchar.quest.mtraxx_ignasio_brave.over = "yes";
 	pchar.quest.mtraxx_ignasio_open.over = "yes";
 	Group_DeleteGroup("LosadaSeaGroup");
@@ -29140,7 +29163,7 @@ void Mtraxx_WolfreekReadLogbook() // чтение судового журнала
 	else 
 	{
 		PlaySound("interface\knock.wav");
-		log_info("Go to your cabin in order to study the ship log");
+		log_info("Для изучения журнала нужно расположиться в каюте");
 	}
 }
 
@@ -29494,7 +29517,7 @@ void Mtraxx_WolfreekIslaMonaAttack(string qName) // пиратусы выскочили
 void Mtraxx_WolfreekCpy(string qName) // собираем штурмовую роту
 {
 	if(!GetDLCenabled(DLC_APPID_3)) return;
-	Log_Info("Boarding party is ready!");
+	Log_Info("Абордажная команда назначена и собрана");
 	PlaySound("interface\notebook.wav");
 	pchar.quest.mtraxx_wolfreek_march.win_condition.l1 = "location";
 	pchar.quest.mtraxx_wolfreek_march.win_condition.l1.location = "Shore75";
@@ -29657,9 +29680,9 @@ void Mtraxx_CorridaStart(string qName) // пришли на Мартинику
 	Group_AddCharacter("IgnasioSeaGroup", "Ignasio");
 	// Бродяга
 	sld = GetCharacter(NPC_GenerateCharacter("Mtr_Vagrant", "mercen_26", "man", "man", iRank, PIRATE, -1, true, "quest")); 
-	FantomMakeSmallSailor(sld, SHIP_CORVETTE, "Cuttlefish", CANNON_TYPE_CULVERINE_LBS18, iScl, iScl, iScl, iScl, iScl);
+	FantomMakeSmallSailor(sld, SHIP_CORVETTE, "Каракатица", CANNON_TYPE_CULVERINE_LBS18, iScl, iScl, iScl, iScl, iScl);
 	FantomMakeCoolFighter(sld, iRank, iScl, iScl, "blade_13", "pistol5", "bullet", iScl*2);
-	sld.name = "Vagrant";
+	sld.name = "Бродяга";
 	sld.lastname = "";
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
@@ -29673,9 +29696,9 @@ void Mtraxx_CorridaStart(string qName) // пришли на Мартинику
 	Group_AddCharacter("IgnasioSeaGroup", "Mtr_Vagrant");
 	// Упырь
 	sld = GetCharacter(NPC_GenerateCharacter("Mtr_vampire", "mercen_25", "man", "man", iRank+5, PIRATE, -1, true, "quest")); 
-	FantomMakeCoolSailor(sld, SHIP_FRIGATE, "Merciless", CANNON_TYPE_CANNON_LBS24, iScl+5, iScl+5, iScl+5);
+	FantomMakeCoolSailor(sld, SHIP_FRIGATE, "Беспощадный", CANNON_TYPE_CANNON_LBS24, iScl+5, iScl+5, iScl+5);
 	FantomMakeCoolFighter(sld, iRank+5, iScl+15, iScl+15, "blade_14", "pistol5", "bullet", iScl*2+100);
-	sld.name = "Vampire";
+	sld.name = "Упырь";
 	sld.lastname = "";
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
@@ -29695,7 +29718,7 @@ void Mtraxx_CorridaStart(string qName) // пришли на Мартинику
 	bQuestDisableMapEnter = true;//закрыть карту
 	bDisableCharacterMenu = true;//лочим F2
 	InterfaceStates.Buttons.Save.enable = false;//запретить сохраняться
-	Log_Info("The Torero is on a raid of Le Francois!");
+	Log_Info("Полакр 'Тореро' стоит на рейде Ле Франсуа!");
 	PlaySound("interface\notebook.wav");
 	DoQuestFunctionDelay("Mtraxx_CorridaSenPierre", 7.0);
 }
@@ -29707,7 +29730,7 @@ void Mtraxx_CorridaSenPierre(string qName) // релоад из моря в Сен-Пьер
 
 void Mtraxx_CorridaSeeMarko(string qName) // входит Игнасио в Ле Франсуа
 {
-	Log_Info("Ignacio Marco is entering the village!");
+	Log_Info("Игнасио Марко входит в ворота поселка!");
 	PlaySound("interface\notebook.wav");
 	LAi_SetActorType(pchar);
 	LAi_ActorTurnToLocator(pchar, "reload", "reload1");
@@ -29781,7 +29804,7 @@ void Mtraxx_CorridaToreroOnMap(string qName) // запускаем энкаунтер Марко на кар
 	sld.Nation = SPAIN;
 	sld.mapEnc.type = "war";
 	sld.mapEnc.worldMapShip = "quest_ship";
-	sld.mapEnc.Name = "'Torero'";
+	sld.mapEnc.Name = "'Тореро'";
 	Group_AddCharacter(sGroup, "Ignasio");
 	Group_SetGroupCommander(sGroup, "Ignasio");
     Group_SetTaskAttackInMap(sGroup, PLAYER_GROUP);
@@ -29841,10 +29864,10 @@ void Mtraxx_CorridaToreroSquadron() // ставим эскадру пиратов у Синт-Маартена
 	pchar.questTemp.Mtraxx.Corrida.IslandLock = "true";
 	Group_FindOrCreateGroup("JokerSeaGroup");
 	sld = GetCharacter(NPC_GenerateCharacter("Mtr_joker", "mercen_20", "man", "man", 35, HOLLAND, -1, true, "quest")); 
-	FantomMakeCoolSailor(sld, SHIP_FRIGATE, "Eagle-Owl", CANNON_TYPE_CANNON_LBS24, 100, 100, 100);
+	FantomMakeCoolSailor(sld, SHIP_FRIGATE, "Филин", CANNON_TYPE_CANNON_LBS24, 100, 100, 100);
 	FantomMakeCoolFighter(sld, 100, 100, 100, "blade_13", "pistol5", "bullet", 200);
-	sld.name = "Joker";
-	sld.lastname = "Jim";
+	sld.name = "Джокер";
+	sld.lastname = "Джим";
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
 	sld.Ship.Mode = "pirate";
@@ -30061,7 +30084,7 @@ void Mtraxx_CorridaCreateHispanios(string qName) // ставим конвой испанцев с зол
 	Island_SetReloadEnableGlobal("Antigua", true);
 	DeleteAttribute(pchar, "questTemp.Mtraxx.Corrida.IslandLock");
 	DeleteAttribute(pchar, "questTemp.Mtraxx.Corrida.Hispanios");
-	log_info("Spanish convoy on the horizon!");
+	log_info("Испанский конвой на горизонте!");
 	PlaySound("interface\notebook.wav");
 	PlaySound("interface\_EvEnemy0.wav");
 	Group_FindOrCreateGroup("Mtr_GoldSeaGroup");
@@ -30148,7 +30171,7 @@ void Mtraxx_CorridaCreateHispanios(string qName) // ставим конвой испанцев с зол
 		}
 		if (i == 2) 
 		{
-			sld.ship.name = "Toro de Oro";
+			sld.ship.name = "Торо де Оро";
 			UpgradeShipParameter(sld, "Capacity");
 			SetRandGeraldSail(sld, SPAIN);
 			NullCharacterGoods(sld);
@@ -30202,7 +30225,7 @@ void Mtraxx_CorridaMarkus(string qName) //
 	if(!GetDLCenabled(DLC_APPID_3)) return;
 	Group_FindOrCreateGroup("Terrax_SeaGroup");
 	sld = CharacterFromID("Terrax");
-	FantomMakeCoolSailor(sld, SHIP_LINESHIP, "Red Dragon", CANNON_TYPE_CULVERINE_LBS36, 110, 110, 110);
+	FantomMakeCoolSailor(sld, SHIP_LINESHIP, "Красный дракон", CANNON_TYPE_CULVERINE_LBS36, 110, 110, 110);
 	FantomMakeCoolFighter(sld, 50, 110, 110, "blade_19", "pistol4", "bullet", 300);
 	sld.DeckDialogNode = "mtraxx_board";
 	SetCharacterPerk(sld, "BasicDefense");
@@ -30272,7 +30295,7 @@ void Mtraxx_CorridaMarkus(string qName) //
 
 void Mtraxx_MarkusGameOver(string qName) // прибьем корабль особо умных, чтобы не выделывались
 {
-	Log_Info("A huge explosion on "+pchar.ship.name+"!");
+	Log_Info("На корабле "+pchar.ship.name+" взорвалась крюйт-камера!");
 	Ship_Detonate(pchar, true, true); 
 	PlaySound("Sea Battles\Vzriv_fort_001.wav");
 	PlaySound("Sea Battles\vzriv_pogreb_002.wav");
@@ -30448,7 +30471,7 @@ void Mtraxx_CartahenaSailOver(string qName) // опоздание к Картахене
 void Mtraxx_CartahenaArrive(string qName) // прибыли в акваторию Картахены
 {
 	if(!GetDLCenabled(DLC_APPID_3)) return;
-	Log_Info("We've arrived to Cartagena! Tyrex orders to sail to Covenas Bay");
+	Log_Info("Мы прибыли к Картахене! Тиракс приказывает идти к бухте Ковеньяс");
 	PlaySound("interface\notebook.wav");
 	pchar.quest.Mtraxx_CartahenaSailOver.over = "yes";
 	LocatorReloadEnterDisable("LaVega_port", "reload1_back", false); // правки релиза
@@ -30616,7 +30639,7 @@ void Mtraxx_CartahenaPrepareFortBattle() // готовим атаку форта - штурм квестовы
 	if(!GetDLCenabled(DLC_APPID_3)) return;
 	DeleteAttribute(pchar, "questTemp.Mtraxx.Cartahena.Fort");
 	PlaySound("MUSIC\Victory.mp3");
-	Log_Info("Landing parties are ready to storm Cartagena!");
+	Log_Info("Десант к штурму Картахены!");
 	PlaySound("interface\notebook.wav");
 	PlaySound("interface\_GTTown2.wav");
 	// расчет числа десанта
@@ -30629,10 +30652,10 @@ void Mtraxx_CartahenaPrepareFortBattle() // готовим атаку форта - штурм квестовы
 	int iCrew4 = GetCrewQuantity(characterFromId("Pelly")) - GetMinCrewQuantity(characterFromId("Pelly"));
 	if (iCrew4 <= GetMinCrewQuantity(characterFromId("Pelly"))) iCrew4 = 0; // патч 17/1
 	int iCrew = iCrew1 + iCrew2 + iCrew3 + iCrew4;
-	log_info("Landing party of '"+pchar.ship.name+"' has "+iCrew1+" men");
-	log_info("Landing party of Red Dragon has "+iCrew2+" men");
-	log_info("Landing party of Snake has "+iCrew3+" men");
-	log_info("Landing party of Moray has "+iCrew4+" men");
+	log_info("Десант корабля '"+pchar.ship.name+"' составляет "+iCrew1+" человек");
+	log_info("Десант корабля 'Красный дракон' составляет "+iCrew2+" человек");
+	log_info("Десант корабля 'Снэйк' составляет "+iCrew3+" человек");
+	log_info("Десант корабля 'Мурена' составляет "+iCrew4+" человек");
 	pchar.questTemp.Mtraxx.Cartahena.Crew = iCrew;
 	pchar.questTemp.Mtraxx.Cartahena.Crewpercent1 = makeint(100*iCrew1/iCrew); // процент команды ГГ
 	pchar.questTemp.Mtraxx.Cartahena.Crewpercent2 = makeint(100*iCrew2/iCrew); // процент команды Тиракса
@@ -30901,10 +30924,11 @@ void Mtraxx_RetributionToRoom(string qName) // релоад в комнату
 
 void Mtraxx_RetributionOutRoom() // Камилла уходит
 {
+	chrDisableReloadToLocation = true; // прогон 4
 	sld = characterFromId("Kamilla");
 	sld.dialog.currentnode = "camilla_27";
 	LAi_SetActorType(sld);
-	LAi_ActorGoToLocation(sld, "reload", "reload1", "Tortuga_church", "goto", "goto1", "Mtraxx_RetributionKamilla", -1);
+	LAi_ActorGoToLocation(sld, "reload", "reload1", "Tortuga_church", "goto", "goto1", "Mtraxx_RetributionKamilla", 3.0);
 	LAi_SetLoginTime(sld, 10.0, 13.0);
 	AddQuestRecord("Roger_10", "1");
 	CloseQuestHeader("Roger_9");
@@ -30978,7 +31002,7 @@ void Mtraxx_RetributionPowder(string qName) // на корабль за порохом
 
 void Mtraxx_RetributionBarrels() // доставка бочонков
 {
-	SetLaunchFrameFormParam("One day later..."+ NewStr() +" Barrels with gunpowder have been delivered to the logjam.", "Mtraxx_RetributionBarrels", 0, 5);//табличка
+	SetLaunchFrameFormParam("Прошел день..."+ NewStr() +"Бочки с порохом доставлены к завалу", "Mtraxx_RetributionBarrels", 0, 5);//табличка
 	WaitDate("", 0, 0, 1, 2, 10); //крутим время
 	LaunchFrameForm();
 	RefreshLandTime();
@@ -31013,7 +31037,7 @@ void Mtraxx_RetributionBurn() // поджечь фитиль!
 	}
 	else
 	{
-		Log_Info("You need a flint to fire the fuse");
+		Log_Info("Чтобы поджечь фитили, нужен предмет - огниво");
 		PlaySound("interface\notebook.wav");
 	}
 }
@@ -31219,6 +31243,7 @@ void Mtraxx_RetributionWithJeffry(string qName) // вместе с Джеффри к сокровищам
 
 void Mtraxx_RetributionJeffryTreasure(string qName) // вместе с Джеффри у сокровищ
 {
+	InterfaceStates.Buttons.Save.enable = false; // правки релиза
 	LAi_SetActorType(pchar);
 	LAi_ActorTurnToLocator(pchar, "monster", "monster3");
 	sld = characterFromId("Jeffry");
@@ -31253,6 +31278,7 @@ void Mtraxx_RetributionJeffryFight(string qName) // бой с Джеффри
 	LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
 	LAi_group_SetCheck("EnemyFight", "Mtraxx_RetributionJeffryAfterFight");
 	LAi_SetFightMode(pchar, true);
+	InterfaceStates.Buttons.Save.enable = true; // правки релиза
 }
 
 void Mtraxx_RetributionMushketers(string qName) // ставим 2 мушкетеров в шахте №3
@@ -31797,8 +31823,8 @@ void Patria_SetInspector() // ставим инспектора
 	FantomMakeCoolFighter(sld, 25, 80, 80, "blade_17", "pistol5", "bullet", 120);
 	sld.Dialog.Filename = "Quest\Patria_NPC.c";
 	sld.dialog.currentnode = "noel";
-	sld.name = "Noel";
-	sld.lastname = "Forget";
+	sld.name = "Ноэль";
+	sld.lastname = "Форже";
 	LAi_SetImmortal(sld, true);
 	ChangeCharacterAddressGroup(sld, pchar.location, "goto", "goto4");
 	LAi_SetActorType(sld);
@@ -31817,12 +31843,12 @@ void Patria_SetEcliaton() // ставим Эклятон
 	// Эклятон
 	sld = GetCharacter(NPC_GenerateCharacter("Ecliaton_Cap", "Off_Fra_Z", "man", "man", 40, FRANCE, -1, true, "officer"));
 	sld.Ship.Type = GenerateShipHand(sld, SHIP_LSHIP_FRA, 42, 9000, 700, 9900, 250000, 14.5, 32.5, 0.4);
-	sld.Ship.name = "Eclatant";
+	sld.Ship.name = "Эклятон";
 	SetBaseShipData(sld);
 	sld.Ship.Cannons.Type = CANNON_TYPE_CULVERINE_LBS36;
 	FantomMakeCoolFighter(sld, 40, 100, 100, "blade_17", "pistol4", "bullet", 250);
-	sld.name = "Uber";
-	sld.lastname = "Dassen";
+	sld.name = "Юбер";
+	sld.lastname = "Дассен";
 	sld.Dialog.Filename = "Quest\Patria_NPC.c";
 	sld.DeckDialogNode = "ecliaton_cap";
 	DeleteAttribute(sld, "SaveItemsForDead");
@@ -31973,7 +31999,7 @@ void Patria_SanJoseAttack(string qName) // вышли у Тринидада
 void Patria_SanJoseFortDestroyed() // форт Сан-Хосе разрушен
 {
 	if(!GetDLCenabled(DLC_APPID_4)) return;
-	Log_Info("The Spanish has been given a note to send parleys to Trinidad's lighthouse to start negotiations!");
+	Log_Info("Испанцам подан сигнал прислать парламентеров для переговоров на маяк Тринидада!");
 	Island_SetReloadEnableGlobal("Trinidad", true); //открыть остров
 	pchar.GenQuest.MapClosedNoBattle = true;
 	AddQuestRecord("Patria", "5");
@@ -32045,7 +32071,7 @@ void Patria_SanJoseMayakSpanishGo() // испанцы уходят на сутки
 
 void Patria_SanJoseMayakSpanishWait() // крутим сутки
 {
-	SetLaunchFrameFormParam("One day has passed...", "", 0, 5);
+	SetLaunchFrameFormParam("Прошел день...", "", 0, 5);
 	LaunchFrameForm();
 	WaitDate("", 0, 0, 1, 0, 10); //крутим время
 	RecalculateJumpTable();
@@ -32201,7 +32227,7 @@ void Patria_VisiterDelete(string qName) // провал по срокам
 	}
 	sld = characterFromId("Noel");
 	RemovePassenger(pchar, sld);
-	Log_Info("Baron Noel Forget has left your ship!");
+	Log_Info("Барон Ноэль Форже покинул ваш корабль!");
 	RemoveItems(pchar, "patent_fra", 1);
 	ChangeCharacterComplexReputation(pchar, "nobility", -5);
 	ChangeCharacterComplexReputation(pchar, "authority", -5);
@@ -32463,7 +32489,7 @@ void Patria_PortPaxAfterBattle(string qName) // потопили испанскую эскадру
 void Patria_PortPaxNextBattle(string qName) // добавочный ТГ
 {
 	PlaySound("interface\notebook.wav");
-	Log_Info(RandSwear()+"Another enemy ship is on us!");
+	Log_Info(RandSwear()+"На нас идет в атаку еще один вражеский корабль!");
 	PlaySound("interface\_EvEnemy0.wav");
 	Group_FindOrCreateGroup("PatriaPPSeaGroup1");
 	sld = GetCharacter(NPC_GenerateCharacter("PatriaPP_Seacap_add", "off_spa_4", "man", "man", 20+MOD_SKILL_ENEMY_RATE*2, SPAIN, -1, true, "quest"));
@@ -32556,12 +32582,12 @@ void Patria_CureerBegin() // отсоединяем Эклятон, присоединяем флейт
 	else
 	{
 		sld = GetCharacter(NPC_GenerateCharacter("Stivesant", "huber_1", "man", "man_B", 35, HOLLAND, -1, false, "quest"));
-		FantomMakeSmallSailor(sld, SHIP_GALEON_H, "Frederick", CANNON_TYPE_CANNON_LBS24, 100, 100, 100, 100, 100);
+		FantomMakeSmallSailor(sld, SHIP_GALEON_H, "Фредерик", CANNON_TYPE_CANNON_LBS24, 100, 100, 100, 100, 100);
 		FantomMakeCoolFighter(sld, 35, 90, 90, "blade_15", "pistol5", "bullet", 250);
 		DeleteAttribute(sld, "SaveItemsForDead");
 		DeleteAttribute(sld, "DontClearDead");
-		sld.name = "Peter";
-		sld.lastname = "Stuyvesant";
+		sld.name = "Питер";
+		sld.lastname = "Стайвесант";
 		sld.greeting = "Stivesant"; 
 	}
 	sld.Dialog.Filename = "Quest\HollandGambit\OtherNPC.c";
@@ -33201,6 +33227,7 @@ void Patria_HunterConvoyGenerate(string qName) // генерируем конвой
 	if (iRank > 45) iRank = 45;
 	for (int i = 1; i <= 3; i++)
     {
+		// 17-add
 		switch (i)
 		{
 			case 1: 
@@ -33239,7 +33266,7 @@ void Patria_HunterConvoyGenerate(string qName) // генерируем конвой
 		if (i == 2) SetCharacterGoods(sld, iGoods, iSpace); // груз в ост-индец
 		sld.mapEnc.type = "trade";
 		sld.mapEnc.worldMapShip = "quest_ship";
-        sld.mapEnc.Name = "The Company's trade convoy";
+        sld.mapEnc.Name = "торговый конвой Компании";
         Group_AddCharacter(sGroup, sCapId + i);
 	}
 	Group_SetGroupCommander(sGroup, sCapId+ "1");
@@ -33263,7 +33290,7 @@ void Patria_HunterNewConvoyGenerate(string qName) //
 
 void Patria_HunterCaptureCounter(string qName) // 
 {
-	log_info("The Company's Ost-Indian has been captured!");
+	log_info("Ост-индец Голландской торговой Компании захвачен!");
 	PlaySound("interface\notebook.wav");
 	pchar.questTemp.Patria.Hunter.Capture = sti(pchar.questTemp.Patria.Hunter.Capture)+1;
 }
@@ -33355,7 +33382,7 @@ void Patria_SiegeCreateSquadron() // осада
 		if (i == 1) 
 		{
 			sld.Ship.Type = GenerateShipHand(sld, SHIP_LSHIP_HOL, 42, 9500, 760, 10500, 350000, 13.5, 29.5, 0.38);
-			sld.Ship.name = "Oliphant";
+			sld.Ship.name = "Олифант";
 			SetBaseShipData(sld);
 			sld.Ship.Cannons.Type = CANNON_TYPE_CULVERINE_LBS36;
 			sld.rank = 45;
@@ -33508,8 +33535,8 @@ void Patria_SiegeCapitulation(string qName) // Капстервиль капитулировал, полный
 	sld = characterFromId("Charles_Mayor");
 	sld.model = "off_hol_6";
 	Characters_RefreshModel(sld);
-	sld.name 	= "Lenart";
-    sld.lastname = "Klap";
+	sld.name 	= "Ленарт";
+    sld.lastname = "Клап";
 	sld.nation = HOLLAND;
 	LAi_group_MoveCharacter(sld, "HOLLAND_CITIZENS");
 	// меняем нацию колонии
@@ -33602,6 +33629,7 @@ void Patria_SiegeEscape(string qName) // вышли в море, начинаем подгружать три к
 	sld.AnalizeShips = true;
 	sld.AlwaysEnemy = true;
 	sld.Ship.Mode = "war";
+	sld.Coastal_Captain = true; // 14-add
 	sld.ship.Crew.Morale = 40+MOD_SKILL_ENEMY_RATE*6;
 	sld.Ship.Crew.Exp.Sailors = 40+MOD_SKILL_ENEMY_RATE*6;
 	sld.Ship.Crew.Exp.Cannoners = 40+MOD_SKILL_ENEMY_RATE*6;
@@ -33629,11 +33657,11 @@ void Patria_SiegeEscapeOnMap(string qName) //
 	// ставим эскадру клона Дойли у Антигуа
 	int iShip, iCannon;
 	sld = GetCharacter(NPC_GenerateCharacter("Doily", "huber_9", "man", "man", 45, ENGLAND, -1, true, "quest"));
-	sld.name = "Edward";
-    sld.lastname = "Doily";
+	sld.name = "Эдвард";
+    sld.lastname = "Дойли";
 	sld.Dialog.Filename = "Quest\Patria_NPC.c";
 	sld.dialog.currentnode = "doily_10";
-	FantomMakeCoolSailor(sld, SHIP_LSHIP_ENG, "Trafalgar", CANNON_TYPE_CULVERINE_LBS36, 100, 100, 100);
+	FantomMakeCoolSailor(sld, SHIP_LSHIP_ENG, "Трафальгар", CANNON_TYPE_CULVERINE_LBS36, 100, 100, 100);
 	FantomMakeCoolFighter(sld, 45, 100, 100, "blade_20", "pistol5", "bullet", 250);
 	SetSelfSkill(sld, 90, 90, 90, 90, 90);
 	SetShipSkill(sld, 90, 100, 100, 100, 100, 100, 100, 100, 70);
@@ -33703,14 +33731,15 @@ void Patria_SiegeEscapeOnMap(string qName) //
 	Group_LockTask("Patria_EngSquadron");
 	// в резиденцию еще один клон
 	sld = GetCharacter(NPC_GenerateCharacter("Doily_land", "huber_9", "man", "man", 45, ENGLAND, -1, true, "quest"));
-	sld.name = "Edward";
-    sld.lastname = "Doily";
+	sld.name = "Эдвард";
+    sld.lastname = "Дойли";
 	sld.Dialog.Filename = "Quest\Patria_NPC.c";
 	sld.dialog.currentnode = "doily";
 	FantomMakeCoolFighter(sld, 45, 100, 100, "blade_20", "pistol5", "bullet", 250);
 	SetSelfSkill(sld, 90, 90, 90, 90, 90);
 	SetShipSkill(sld, 90, 100, 100, 100, 100, 100, 100, 100, 70);
 	LAi_SetStayType(sld);
+	LAi_SetImmortal(sld, true); // 14-add
 	ChangeCharacterAddressGroup(sld, "SentJons_Roomtownhall", "goto", "goto4");
 	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
 }
@@ -34374,8 +34403,8 @@ void Patria_BastionNewHuber(string qName) // обновляем губера Синт-Маартена и ру
 	sld = characterFromId("Marigo_Mayor");
 	sld.model = "off_fra_5";
 	Characters_RefreshModel(sld);
-	sld.name 	= "Kristian";
-    sld.lastname = "Beusson";
+	sld.name 	= "Кристиан";
+    sld.lastname = "Бюиссон";
 	sld.dialog.currentnode = "First time";
 	sld.nation = FRANCE;
 	LAi_SetHuberType(sld);
@@ -34544,7 +34573,7 @@ void Patria_SlaveShipsSail(string qName) // запускаем конвой
 		if (i == 2 || i == 3) SetCharacterGoods(sld, GOOD_SLAVES, 1500+rand(50)); // рабов в ост-индцы
 		sld.mapEnc.type = "trade";
 		sld.mapEnc.worldMapShip = "quest_ship";
-        sld.mapEnc.Name = "The Company's Africa convoy";
+        sld.mapEnc.Name = "конвой Компании из Африки";
         Group_AddCharacter(sGroup, sCapId + i);
 	}
 	Group_SetGroupCommander(sGroup, sCapId+ "1");
@@ -34675,7 +34704,7 @@ void Patria_CuracaoDoilyReady(string qName) // Дойли готов к походу - эскадру на
 	int iShip, iCannon;
 	sld = characterFromId("Doily");
 	sld.nation = ENGLAND;
-	FantomMakeCoolSailor(sld, SHIP_LSHIP_ENG, "Trafalgar", CANNON_TYPE_CULVERINE_LBS36, 100, 100, 100);
+	FantomMakeCoolSailor(sld, SHIP_LSHIP_ENG, "Трафальгар", CANNON_TYPE_CULVERINE_LBS36, 100, 100, 100);
 	sld.DontRansackCaptain = true;
 	sld.AnalizeShips = true;
 	sld.AlwaysFriend = true;
@@ -34849,7 +34878,7 @@ void Patria_CuracaoEnter(string qName) // пришли к Кюрасао
 		if (MOD_SKILL_ENEMY_RATE > 2) SetCharacterPerk(sld, "MusketsShoot");
 		sld.AnalizeShips = true;
 		sld.WatchFort = true; //видеть форты
-		if (i == 1) sld.ship.name = "Frederick";
+		if (i == 1) sld.ship.name = "Фредерик";
 		Group_AddCharacter("Patria_CuracaoGroup1", "Patria_CuracaoCap1_"+i);
 	}
 	Group_SetGroupCommander("Patria_CuracaoGroup1", "Patria_CuracaoCap1_1");
@@ -34922,12 +34951,12 @@ void Patria_CuracaoFortDestroyed() // форт Кюрасао разрушен
 	pchar.questTemp.Patria.Curacao.FortDead = "true";
 	DeleteAttribute(pchar, "questTemp.Patria.CuracaoAttack");
 	if (CheckAttribute(pchar, "questTemp.Patria.Curacao.SquadronDead")) Patria_CuracaoTrooper(); // эскадра уничтожена, на высадку
-	else Log_Info("We must destroy the enemy squadron!");
+	else Log_Info("Нужно уничтожить вражескую эскадру!");
 }
 
 void Patria_CuracaoTrooper() // высадка
 {
-	Log_Info("Colonel Doily has given a signal to land in Blanca lagoon!");
+	Log_Info("Полковник Дойли отдал сигнал на высадку в лагуне Бланка!");
 	DoQuestFunctionDelay("Patria_CuracaoTrooperLand", 7.0);
 }
 
@@ -35469,7 +35498,7 @@ void Patria_CuracaoTownBombingTime(string qName) //
 
 void Patria_CuracaoTownBombingEnd(string qName) // 
 {
-	SetLaunchFrameFormParam("After a two hours bombardement,"+ NewStr() +"the Dutch has sent a parley party", "", 0, 5);
+	SetLaunchFrameFormParam("После двухчасового обстрела"+ NewStr() +"голландцы прислали парламентеров", "", 0, 5);
 	LaunchFrameForm();
 	WaitDate("", 0, 0, 0, 2, 10); //крутим время
 	RecalculateJumpTable();
@@ -35567,6 +35596,7 @@ void Patria_CuracaoClear() // прибираемся немного
 	LocatorReloadEnterDisable("Shore22", "reload1_back", false); // 17-add
 	sld = characterFromId("Doily_land");
 	LAi_SetWarriorType(sld);
+	LAi_CharacterDisableDialog(sld); // 14-add
 	LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 	for (int i=1; i<=15; i++)
 	{
@@ -35748,6 +35778,8 @@ void Patria_CondotierTerks(string qName) // на Терксе
 		sld = GetCharacter(NPC_GenerateCharacter("Dodson_sea", "Shark", "man", "man", 45, PIRATE, -1, true, "quest"));
 		FantomMakeCoolSailor(sld, SHIP_FRIGATE_H, "Фортуна", CANNON_TYPE_CANNON_LBS32, 105, 105, 105);
 		FantomMakeCoolFighter(sld, 45, 100, 100, "blade_21", "pistol5", "bullet", 100);
+		sld.name = "Стивен";
+		sld.lastname = "Додсон"; //14-add
 		sld.Abordage.Enable = false;
 		sld.AlwaysFriend = true;
 		sld.ShipEnemyDisable = true; 
@@ -35771,6 +35803,8 @@ void Patria_CondotierTerks(string qName) // на Терксе
 		sld = GetCharacter(NPC_GenerateCharacter("Terrax_sea", "Terrax", "man", "man", 45, PIRATE, -1, true, "quest"));
 		FantomMakeCoolSailor(sld, SHIP_LINESHIP, "Красный дракон", CANNON_TYPE_CULVERINE_LBS36, 110, 110, 110);
 		FantomMakeCoolFighter(sld, 45, 100, 100, "blade_21", "pistol5", "bullet", 100);
+		sld.name = "Маркус";
+		sld.lastname = "Тиракс"; //14-add
 		sld.Abordage.Enable = false;
 		sld.AlwaysFriend = true;
 		sld.ShipEnemyDisable = true; 
@@ -35914,7 +35948,7 @@ void Patria_CondotierBaronFail(string qName) // барон помер от избытка времени
 	sld = CharacterFromID("Noel");
 	RemovePassenger(pchar, sld);
 	sld.lifeday = 0;
-	log_info("Baron Noel Forget died of fever!");
+	log_info("Барон Ноэль Форже умер от тропической лихорадки");
 	AddQuestRecord("Patria", "75_1");
 	pchar.questTemp.Patria = "epizode_12_baronfail";
 }
@@ -35971,6 +36005,7 @@ void Patria_CondotierOnCuracao(string qName) //
 	ChangeCharacterAddressGroup(sld, "Shore22", "goto", "goto1");
 	LAi_SetActorType(sld);
 	LAi_ActorDialog(sld, pchar, "", -1, 0);
+	LocatorReloadEnterDisable("Location_reserve_01", "reload1_back", false); //14-add
 }
 
 void Patria_CondotierStivesant(string qName) // приходит Стайвесант
@@ -36072,7 +36107,7 @@ void Patria_CondotierRemoveBaron(string qName) //
 	sld = characterFromId("Noel");
 	RemovePassenger(pchar, sld);
 	sld.lifeday = 0;
-	log_info("Baron Noel Forget has left your ship!");
+	log_info("Барон Ноэль Форже покинул ваш корабль!");
 	
 }
 
@@ -36128,8 +36163,8 @@ void Patria_EuropePrepare() // готовим всех персонажей
 	FantomMakeCoolFighter(sld, 25, 80, 80, "blade_17", "pistol5", "bullet", 120);
 	sld.Dialog.Filename = "Quest\Patria_NPC.c";
 	sld.dialog.currentnode = "burden";
-	sld.name = "Olivier";
-	sld.lastname = "Burden";
+	sld.name = "Оливье";
+	sld.lastname = "Бурден";
 	LAi_SetImmortal(sld, true);
 	ChangeCharacterAddressGroup(sld, "Charles_roomtownhall", "goto", "goto4");
 	LAi_SetActorType(sld);
@@ -36164,4 +36199,17 @@ void Patria_EuropeFinal(string qName) //
 void Patria_EuropeMusic(string qName) // 7-add
 {
 	SetMusic("music_alcove_1");
+}
+
+void Patria_BugsFixer() // 17-add
+{
+	if (GetCharacterIndex("Mary") != -1)
+	{
+		sld = characterFromId("Mary");
+		sld.name = "Мэри";
+		sld.lastname = "Каспер";
+	}
+	DeleteAttribute(pchar, "DisableChangeFlagMode"); // открываем флаг
+	if (CheckAttribute(pchar, "questTemp.Patria.BugsFixer")) DeleteAttribute(pchar, "questTemp.Patria.BugsFixer");
+	pchar.questTemp.Patria_BugsFixer = "true";
 }

@@ -11,8 +11,8 @@ int CreatePuertoPrincipeCharacters(int n)
 	ch.id		= "Marlow";
 	ch.sex = "man";
 	ch.model = "Marlow";
-	ch.name = "Zachary";
-	ch.lastname = "Marlow";
+	ch.name = "Захария";
+	ch.lastname = "Марлоу";
 	ch.City = "PuertoPrincipe";
 	ch.location	= "PuertoPrincipe_townhall";
 	ch.location.group = "sit";

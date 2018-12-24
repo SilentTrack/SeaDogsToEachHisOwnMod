@@ -42,9 +42,9 @@ void InitInterface_R(string iniName, ref pStore)
 		GameInterface.TABLE_LIST.hr.td4.str = XI_ConvertString("In the store");
 	}
 	GameInterface.TABLE_LIST.hr.td4.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td5.str = "Packet";
+	GameInterface.TABLE_LIST.hr.td5.str = "Пачка";
 	GameInterface.TABLE_LIST.hr.td5.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td6.str = "The weight of the packet";
+	GameInterface.TABLE_LIST.hr.td6.str = "Вес пачки";
 	GameInterface.TABLE_LIST.hr.td6.scale = 0.9;
 
     FillShipsScroll();
@@ -86,11 +86,11 @@ void InitInterface_R(string iniName, ref pStore)
 
 	if(refStore.Colony == "none")
 	{
-		SetFormatedText("STORECAPTION1", "Ship: '" + refShipChar.ship.name + "'");
+		SetFormatedText("STORECAPTION1", "Корабль: '" + refShipChar.ship.name + "'");
 	}
 	else
 	{
-		SetFormatedText("STORECAPTION1", XI_ConvertString("Colony" + refStore.Colony) + ": Robbery");
+		SetFormatedText("STORECAPTION1", XI_ConvertString("Colony" + refStore.Colony) + ": Грабёж");
 	}
 
  	if (refStore.Colony == "none")
@@ -350,15 +350,19 @@ void ShowHelpHint()
 	
 	if (!bShowChangeWin)
 	{// покажем помощь по работе с формой
-        sHeader = "Interface robbery town";
-		sText1 = "";
+        sHeader = "Интерфейс грабежа города";
+		sText1 = "Двойной клик мыши или Enter по строкам таблицы вызывает форму перемещения товара. "+ newStr() +
+		         "Shift + лево/право на строках таблицы автоматически вызывают форму с предустановленным количеством на максимальное. "+ newStr() +
+				 "Ввод положительного количества с клавиатуры устанавливает взятие товара, а отрицательного (с минусом) обратное перемещение."+ newStr() +
+				 "Стрелки лево/право изменяют количество по пачкам, а Shift + лево/право на максимально доступное. Нажатие Enter на форме равносильно ОК, а Esc - Отмена." + newStr() +
+				 "Находясь в режиме формы и мотая список в таблице стрелкам вверх/вниз, можно просматривать описание товара под курсором таблицы.";
 				 
-        sText2 = "";
-		sText3 = "Good's colors explanation:" + newStr() + 
-				 "- green: local production" + newStr() + 
-				 "- blue: imports" + newStr() + 
-				 "- red: smuggles" + newStr() + 
-				 "- peach-coloured: goods of great demand";
+        sText2 = "Быстрое взятие всего: стрелками вверх/вниз по списку, Shift + право, Enter";
+		sText3 = "Цвета типа товара:" + newStr() + 
+				 "- зелёный : колониальные товары" + newStr() + 
+				 "- синий : импортные товары" + newStr() + 
+				 "- красный : контрабандные товары" + newStr() + 
+				 "- персиковый : товары агрессивного спроса";
                 
 		CreateTooltip("#" + sHeader, sText1, argb(255,255,255,255), sText2, argb(255,192,192,192), sText3, argb(255,255,255,255), "", argb(255,255,255,255), sPicture, sGroup, sGroupPicture, 64, 64);
 	}
@@ -546,7 +550,7 @@ void ShowGoodsInfo(int iGoodIndex)
     iCurGoodsIdx = iGoodIndex;
 	string goodsDescr = GetAssembledString( LanguageConvertString(lngFileID,goodName+"_descr"), &Goods[iGoodIndex]);
     goodsDescr += newStr() + XI_ConvertString("weight") + " " + Goods[iGoodIndex].weight + " " + XI_ConvertString("cwt") +
-	              ", packet " + Goods[iGoodIndex].Units + " " + XI_ConvertString("units");
+	              ", пачка " + Goods[iGoodIndex].Units + " " + XI_ConvertString("units");
 
 	iUnits  = sti(Goods[iGoodIndex].Units);
 	fWeight = stf(Goods[iGoodIndex].weight);
@@ -694,8 +698,8 @@ void ChangeQTY_EDIT()
 		        GameInterface.qty_edit.str = makeint(iWeight / fWeight * iUnits ); // округдение
 		    }
 		    // проверка на колво доступное <--
-		    SetFormatedText("QTY_TypeOperation", "Retain");
-		    SetFormatedText("QTY_Result", "Weight " + iWeight + " cent.");
+		    SetFormatedText("QTY_TypeOperation", "Оставить");
+		    SetFormatedText("QTY_Result", "Вес " + iWeight + " ц");
 		}
 		else
 		{
@@ -716,8 +720,8 @@ void ChangeQTY_EDIT()
 		    }
 		    // проверка на колво доступное <--
 
-			SetFormatedText("QTY_TypeOperation", "Take");
-			SetFormatedText("QTY_Result", "Weight " + iWeight + " cent.");
+			SetFormatedText("QTY_TypeOperation", "Взять");
+			SetFormatedText("QTY_Result", "Вес " + iWeight + " ц");
 		}
 	}
 	// если получили ноль

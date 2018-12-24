@@ -23,19 +23,19 @@ void InitInterface_RI(string iniName, ref pTrader, int mode)
 	refStoreChar = pTrader;
 	TradeMode = mode;
 	//GameInterface.TABLE_LIST.hr.height = 36;
-	GameInterface.TABLE_LIST.hr.td1.str = "Items";
+	GameInterface.TABLE_LIST.hr.td1.str = "Предметов";
 	GameInterface.TABLE_LIST.hr.td1.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td2.str = "Wgt";
+	GameInterface.TABLE_LIST.hr.td2.str = "Вес";
 	GameInterface.TABLE_LIST.hr.td2.scale = 0.9;
 	GameInterface.TABLE_LIST.hr.td3.str = XI_ConvertString("Price sell");
 	GameInterface.TABLE_LIST.hr.td3.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td4.str = "Items name";
+	GameInterface.TABLE_LIST.hr.td4.str = "Наименование предметов";
 	GameInterface.TABLE_LIST.hr.td4.scale = 0.9;
 	GameInterface.TABLE_LIST.hr.td5.str = XI_ConvertString("Price buy");
 	GameInterface.TABLE_LIST.hr.td5.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td6.str = "Trader items";//XI_ConvertString("In the store");
+	GameInterface.TABLE_LIST.hr.td6.str = "Предметов торговца";//XI_ConvertString("In the store");
 	GameInterface.TABLE_LIST.hr.td6.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td7.str = "Wgt/pcs";
+	GameInterface.TABLE_LIST.hr.td7.str = "Вес шт.";
 	GameInterface.TABLE_LIST.hr.td7.scale = 0.9;
 
     FillCharactersScroll();
@@ -376,10 +376,14 @@ void ShowHelpHint()
 	if (!bShowChangeWin)
 	{// покажем помощь по работе с формой
         sHeader = XI_ConvertString("titleItemsTrade");
-		sText1 = "";
+		sText1 = "Двойной клик мыши или Enter по строкам таблицы вызывает форму покупки/продажи предмета. "+ newStr() +
+		         "Shift + лево/право на строках таблицы автоматически вызывают форму с предустановленным количеством покупки/продажи на максимальное. "+ newStr() +
+				 "Ввод положительного количества с клавиатуры устанавливает покупку предмета, а отрицательного (с минусом) продажу."+ newStr() +
+				 "Стрелки лево/право изменяют количество по одному, а Shift + лево/право на максимально доступное. Нажатие Enter на форме равносильно ОК, а Esc - Отмена." + newStr() +
+				 "Находясь в режиме формы и мотая список в таблице стрелкам вверх/вниз, можно просматривать описание предмета под курсором таблицы.";
 
-        sText3 = "";
-		sText2 = "";
+        sText3 = "В списке на продажу отсутствуют экипированные персонажем предметы.";
+		sText2 = "Быстрая продажа всего: стрелками вверх/вниз по списку, Shift + право, Enter";
 
 		CreateTooltip("#" + sHeader, sText1, argb(255,255,255,255), sText2, argb(255,192,192,192), sText3, argb(255,255,255,255), "", argb(255,255,255,255), sPicture, sGroup, sGroupPicture, 64, 64);
 	}
@@ -491,7 +495,7 @@ void SetVariable()
 
 	iTotalSpace = iMaxGoodsStore;
 	string sMaxGoodsStore;
-    sMaxGoodsStore = "Trader"; //XI_ConvertString("store");
+    sMaxGoodsStore = "Торговец"; //XI_ConvertString("store");
 	SetFormatedText("STORE_CAPACITY", sMaxGoodsStore);
 
 	if(!CheckAttribute(refStoreChar,"Merchant.type"))
@@ -748,9 +752,9 @@ void ChangeQTY_EDIT()
 		        GameInterface.qty_edit.str = 0;
 		    }
 		    // квестовые не продать <--
-		    SetFormatedText("QTY_TypeOperation", "Sell");
-		    SetFormatedText("QTY_Result", "Money " + makeint(iStorePrice*stf(GameInterface.qty_edit.str) + 0.5) +
-			                ", weight " + FloatToString(iWeight, 1) );
+		    SetFormatedText("QTY_TypeOperation", "Продать");
+		    SetFormatedText("QTY_Result", "Деньги " + makeint(iStorePrice*stf(GameInterface.qty_edit.str) + 0.5) +
+			                ", вес " + FloatToString(iWeight, 1) );
 		}
 		else
 		{
@@ -787,9 +791,9 @@ void ChangeQTY_EDIT()
 			}	
 		    // проверка на колво доступное <--
 
-			SetFormatedText("QTY_TypeOperation", "Buy");
-			SetFormatedText("QTY_Result", "Money " + makeint(iCharPrice*stf(GameInterface.qty_edit.str) + 0.5) +
-			                ", weight " + FloatToString(iWeight, 1) );
+			SetFormatedText("QTY_TypeOperation", "Купить");
+			SetFormatedText("QTY_Result", "Деньги " + makeint(iCharPrice*stf(GameInterface.qty_edit.str) + 0.5) +
+			                ", вес " + FloatToString(iWeight, 1) );
 		}
 	}
 	// если получили ноль

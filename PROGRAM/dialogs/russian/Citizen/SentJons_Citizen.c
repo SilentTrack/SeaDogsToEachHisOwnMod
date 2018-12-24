@@ -4,13 +4,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-            dialog.text = RandPhraseSimple("What kind of questions?", "What would you like?");
-			link.l1 = RandPhraseSimple("I have changed my mind...", "I have got nothing to say now.");
+            dialog.text = RandPhraseSimple("Какие вопросы?", "Что вам угодно?");
+			link.l1 = RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить");
 		    link.l1.go = "exit";
 			//Jason, суп из черепахи
 			if (CheckAttribute(PChar, "questTemp.Terrapin") && pchar.questTemp.Terrapin == "baster" && !CheckAttribute(npchar, "quest.terrapin") && CheckAttribute(PChar, "questTemp.Terrapin.SJ_count"))
 			{
-				link.l1 = "I am looking for mister Johns. Do you know him?";
+				link.l1 = "Я ищу господина Джонса. Не знаете такого?";
 				link.l1.go = "terrapin";
 			}
 		break;
@@ -18,29 +18,29 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "terrapin":
 			if (sti(pchar.questTemp.Terrapin.SJ_count) == 5 || rand(9) == 1) // 10% или числом
 			{
-				dialog.text = "There are a lot of Johnses here. The most renowned I know is the colonel Fox's batman, Benjamin Johns. He usually meets visitors in the regiment's headquarters.";
-				link.l1 = "Has he got a sister Molly?";
+				dialog.text = "Вообще-то Джонсов у нас тут много. Но самый известный из тех, кого я знаю – денщик полковника Фокса, Бенджамин Джонс. Он обычно встречает посетителей в штабе полка.";
+				link.l1 = "А у него есть сестра Молли?";
 				link.l1.go = "terrapin_yes";
 			}
 			else
 			{
-				dialog.text = LinkRandPhrase("Which Johns do you need? I know two dozens of them at least.","We have got too many Johnses here. Specify please.","There are a lot of Johnses here just as Johnsons or Jacksons. Can you tell me anything specific about him?");
-				link.l1 = "He has got an adult sister Molly. They say that she has got a rare beauty...";
+				dialog.text = LinkRandPhrase("Какой именно Джонс вам нужен? Я знаю не менее двух десятков.","У нас Джонсов, как грибов поганых. Поточнее можете сказать?","Да тут Джонсов не меньше, чем Джонсонов или Джексонов. Может, примету какую назовете?");
+				link.l1 = "У него есть взрослая сестра Молли. Говорят, редкая красавица...";
 				link.l1.go = "terrapin_no";
 			}
 			npchar.quest.terrapin = "true";
 		break;
 		
 		case "terrapin_no":
-			dialog.text = RandPhraseSimple(LinkRandPhrase("Hm. Can't help you with that.","I don't know him.","Well, if that Molly Johns has got a beauty than our colonel Fox is a priest."), LinkRandPhrase("I know a few Mollies Johnses. One of them really has got a brother but she is not who are you looking for. Only a man who has been living with apes would call her beautiful.","I am sorry, but all Johnses I know don't have sisters.","I am sorry, I can't help you. Ask someone else."));
-			link.l1 = "Sorry for troubling you...";
+			dialog.text = RandPhraseSimple(LinkRandPhrase("Хм. Боюсь, ничем не смогу помочь.","Не знаю такого.","Ну, если ту Молли Джонс, которую я знаю, считать красавицей, то нашего полковника Фокса можно считать настоятелем церкви."), LinkRandPhrase("Я знаю несколько Молли Джонс. У одной из них действительно есть братец, но это не те, кого вы ищете. Назвать Молли красавицей может только человек, всю жизнь проведший среди обезьян.","Увы, но все мои знакомые Джонсы сестер не имеют.","Жаль, но подсказать не могу. Спросите у кого-нибудь еще."));
+			link.l1 = "Извините за беспокойство...";
 			link.l1.go = "exit";
 			pchar.questTemp.Terrapin.SJ_count = sti(pchar.questTemp.Terrapin.SJ_count)+1;
 		break;
 		
 		case "terrapin_yes":
-			dialog.text = "Yes, but she'd better be a man. This strapper won't likely find yourself a groom because of her mug.";
-			link.l1 = "Thanks for your help!";
+			dialog.text = "Есть, но лучше бы ей было родиться парнем. С такой рожей этой верзиле вряд ли удастся найти себе жениха.";
+			link.l1 = "Спасибо за помощь!";
 			link.l1.go = "terrapin_yes_1";
 		break;
 		
@@ -53,20 +53,20 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "info":
         // заменить на описание неких НПС, по квестам
-			dialog.text = "Do I work for the secret service of "+NationNameGenitive(sti(NPChar.nation))+"?";
-			link.l1 = "Well... farewell then.";
+			dialog.text = "Я что, работаю на тайную агентурную сеть для "+NationNameGenitive(sti(NPChar.nation))+"?";
+			link.l1 = "Ну ладно... тогда пока.";
 			link.l1.go = "exit";
-			link.l2 = "Next question then ";
+			link.l2 = "Тогда другой вопрос";
 			link.l2.go = "new question";
 		break;
 		
 		case "town":
         // заменить на описание как пройти, по квестам
-			dialog.text = "Do I work on an enquiry position? Don't know. Don't know a thing.";
+			dialog.text = "Я вам что справочная? Не знаю. Ничего не ведаю.";
 
-            link.l1 = "Such a muddle-head! See you.";
+            link.l1 = "Вот бестолочь! Пока.";
 			link.l1.go = "exit";
-			link.l2 = "A next question then";
+			link.l2 = "Тогда другой вопрос";
 			link.l2.go = "new question";
 		break;
 	}

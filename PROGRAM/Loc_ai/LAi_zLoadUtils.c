@@ -273,7 +273,7 @@ void CreateLostShipsCity(aref loc)
 	}
 }
 
-void CreatUnderwater(aref loc)
+void CreatUnderwater(aref loc) // под водой
 {
 	if (loc.type == "underwater")
 	{
@@ -296,7 +296,7 @@ void CreatUnderwater(aref loc)
 				if (GetCharacterIndex("Crab_"+i) == -1)
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("Crab_"+i, "crabBig", "crab", "crabBig", 50+(MOD_SKILL_ENEMY_RATE), PIRATE, -1, false, "quest"));
-					sld.name = "Giant crab";
+					sld.name = "Гигантский краб";
 					sld.lastname = "";
 					GiveItem2Character(sld, "unarmed");
 					EquipCharacterbyItem(sld, "unarmed");
@@ -360,87 +360,102 @@ void CreatePlantation(aref loc)
 		}
 		
 		SaveCurrentNpcQuestDateParam(loc, "Plantation_date");
-		int iCitizensQuantity, iModel;
 		ref chr;
 		aref st;
-		int iChar, i, iSex;
-		string slai_group, locatorName, sType;
-	    slai_group = GetNationNameByType(iNation)  + "_citizens";
-		int num, iMassive, iRank;
-		string sAnime;
+		int iCitizensQuantity, iModel, iChar, i, iSex, num, iMassive, iRank, iScl;
+		string slai_group, locatorName, sType, sAnime;
+	    slai_group = GetNationNameByType(iNation)+"_citizens";
 		string model[10];
-	    
-	    	// ==> просто работники
-			model[0] = "prizon_1";
-			model[1] = "prizon_2";
-			model[2] = "prizon_3";
-			model[3] = "prizon_4";
-			model[4] = "prizon_5";
-			model[5] = "prizon_6";
-			model[6] = "prizon_7";
-			model[7] = "prizon_8";
-			model[8] = "prizon_3";
-			model[9] = "prizon_4";
-			i = 0;
-			num = rand(3) + 7; //кол-во
-			while(i < num)
+	    	// ==> рабы
+		model[0] = "prizon_1";
+		model[1] = "prizon_2";
+		model[2] = "prizon_3";
+		model[3] = "prizon_4";
+		model[4] = "prizon_5";
+		model[5] = "prizon_6";
+		model[6] = "prizon_7";
+		model[7] = "prizon_8";
+		model[8] = "prizon_3";
+		model[9] = "prizon_4";
+		i = 0;
+		num = rand(3) + 7; //кол-во
+		while(i < num)
+		{
+			iMassive = rand(9);
+			if (model[iMassive] != "")
 			{
-				iMassive = rand(9);
-				if (model[iMassive] != "")
-				{
-					sAnime = "man_B"
-					if(model[iMassive] == "prison_5") sAnime = "man2";
-					chr = GetCharacter(NPC_GenerateCharacter("Slave_"+i, model[iMassive], "man", sAnime, 7, iNation, 2, false, "slave"));
+				sAnime = "man_B"
+				if(model[iMassive] == "prison_5") sAnime = "man2";
+				chr = GetCharacter(NPC_GenerateCharacter("Slave_"+i, model[iMassive], "man", sAnime, 7, iNation, 2, false, "slave"));
 
-					chr.dialog.filename = "Quest\ForAll_dialog.c";
-					chr.dialog.currentnode = "plantation_slave";
-					
-	                chr.greeting = "convict";
-	                chr.CityType = "citizen";
-					chr.city = Colonies[iColony].id;
-					LAi_SetLoginTime(chr, 6.0, 22.99);
+				chr.dialog.filename = "Quest\ForAll_dialog.c";
+				chr.dialog.currentnode = "plantation_slave";
+				
+				chr.greeting = "convict";
+				chr.CityType = "citizen";
+				chr.plantation = "slave";
+				chr.city = Colonies[iColony].id;
+				LAi_SetLoginTime(chr, 6.0, 22.99);
 
-					PlaceCharacter(chr, "goto", "random_free");
-					LAi_SetCitizenType(chr);
-					LAi_group_MoveCharacter(chr, slai_group);
-					i++;
-					model[iMassive] = "";
-				}
+				PlaceCharacter(chr, "goto", "random_free");
+				LAi_SetCitizenType(chr);
+				LAi_group_MoveCharacter(chr, slai_group);
+				i++;
+				model[iMassive] = "";
 			}
+		}
 
 		// солдаты -->
+		iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE;
+		iScl = 30 + 2*sti(pchar.rank);
+		if (iRank > 50) iRank = 50;
 		if (checkAttribute(loc, "soldiers") && CheckAttribute(loc, "locators.soldiers"))
 		{
-	 		if(iNation == PIRATE)
+			for (i=1; i<=3; i++)
 			{
-	            sType = "mushketer_" + (rand(4)+1);
+				if(iNation == PIRATE)
+				{
+					sType = "mushketer_" + (rand(4)+1);
+				}
+				else
+				{
+					sType = "mush_" + NationShortName(iNation) + "_" + (rand(2)+1);
+				}
+				chr = GetCharacter(NPC_GenerateCharacter("GenChar_"+i+"_", sType, "man", "mushketer", iRank, iNation, 2, false, "soldier"));
+				FantomMakeCoolFighter(chr, iRank, iScl, iScl, "", "mushket1", "cartridge", iScl*2);
+				LAi_SetCharacterUseBullet(chr, "cartridge");
+				chr.id = "GenChar_"+i+"_" + chr.index;
+				chr.City = Colonies[iColony].id;
+				chr.CityType = "soldier";
+				chr.plantation = "guardian";
+				chr.MusketerDistance = 0;
+				chr.cirassId = Items_FindItemIdx("cirass2");
+				LAi_SetLoginTime(chr, 6.0, 23.0); //а ночью будет беготня от патруля :)
+				LAi_SetGuardianType(chr);
+				chr.dialog.filename = "Plantation_dialog.c";
+				// протекторы
+				if (i == 2 || i == 3) 
+				{
+					chr.protector = true;
+					chr.dialog.currentnode = "plantation_protector"; 
+				}
+				else 
+				{
+					chr.dialog.currentnode = "plantation_soldier"; 
+					chr.greeting = "soldier";
+				}
+				
+				if (sti(Colonies[iColony].HeroOwn) == true)
+				{
+					LAi_group_MoveCharacter(chr, LAI_GROUP_PLAYER_OWN);
+					chr.greeting = "pirat_guard";
+				}
+				else
+				{
+					LAi_group_MoveCharacter(chr, slai_group);
+				}			
+				ChangeCharacterAddressGroup(chr, pchar.location, "soldiers", "soldier"+i);
 			}
-			else
-			{
-	            sType = "mush_" + NationShortName(iNation) + "_" + (rand(2)+1);
-			}
-			chr = GetCharacter(NPC_GenerateCharacter("GenChar_", sType, "man", "mushketer", sti(pchar.rank), iNation, 2, false, "soldier"));
-			chr.id = "GenChar_" + chr.index;	
-			chr.reputation.nobility = (1 + rand(44) + rand(44));// репа всем горожанам
-			chr.City = Colonies[iColony].id;
-	        chr.CityType = "soldier";
-			chr.greeting = "soldier";
-			chr.MusketerDistance = 0;
-			LAi_SetLoginTime(chr, 6.0, 23.0); //а ночью будет беготня от патруля :)
-
-			LAi_SetPatrolType(chr);
-	        if (sti(Colonies[iColony].HeroOwn) == true)
-			{
-				LAi_group_MoveCharacter(chr, LAI_GROUP_PLAYER_OWN);
-				chr.greeting = "pirat_guard";
-			}
-			else
-			{
-				LAi_group_MoveCharacter(chr, slai_group);
-			}
-			chr.dialog.filename = "Common_Soldier.c";
-			chr.dialog.currentnode = "first time";   
-			ChangeCharacterAddressGroup(chr, pchar.location, "soldiers", "soldier1");
 		}
 		// солдаты <--
 		// патруль -->
@@ -452,7 +467,7 @@ void CreatePlantation(aref loc)
 			{
 				iCitizensQuantity = 10;
 			}
-			for (i=0; i<iCitizensQuantity-3; i++)
+			for (i=0; i<iCitizensQuantity; i++)
 			{
 	            if(iNation != PIRATE && LAi_IsCapturedLocation == 0)
 				{
@@ -468,7 +483,8 @@ void CreatePlantation(aref loc)
 				SetNPCModelUniq(chr, sType, MAN);
 				chr.City = Colonies[iColony].id;
 	            chr.CityType = "soldier";
-	            SetFantomParamFromRank(chr, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE, true); // бравые орлы
+				chr.plantation = "patrol";
+	            SetFantomParamFromRank(chr, iRank, true); // бравые орлы
 				chr.RebirthPhantom = true;
 				LAi_CharacterReincarnation(chr, true, true);
 				LAi_SetReincarnationRankStep(chr, MOD_SKILL_ENEMY_RATE+2); //задаем шаг на увеличение ранга фантомам на реинкарнацию
@@ -492,7 +508,7 @@ void CreatePlantation(aref loc)
 		}
 		// патруль <--
 		// грузчики -->
-		if (loc.type == "town" && CheckAttribute(loc, "carrier") && IsLoginTime())
+		if (CheckAttribute(loc, "carrier") && IsLoginTime())
 		{
 			int iTemp;
 			int iQtyCarrier = rand(2) + 2;
@@ -540,6 +556,7 @@ void CreatePlantation(aref loc)
 						iSex = 0;
 					}
 				}
+				chr.plantation = "carrier";
 				ChangeCharacterAddressGroup(chr, loc.id, "reload", "gate");
 				LAi_SetCarrierType(chr);
 				LAi_SetLoginTime(chr, 6.0, 23.0);

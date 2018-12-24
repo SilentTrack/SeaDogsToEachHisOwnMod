@@ -47,8 +47,8 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "First time";
 			if (GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY && sti(NPChar.nation) != PIRATE)
 			{
-				dialog.text = RandPhraseSimple("A spy! Surrender your weapons and follow me!", "An enemy agent! Seize "+ GetSexPhrase("him","her") +"!");
-				link.l1 = RandPhraseSimple("Shut up, sissy!", "Says you!");
+				dialog.text = RandPhraseSimple("Шпион? Сдать оружие!! Следовать за мной!", "Вражеский агент!! Немедленно схватить е"+ GetSexPhrase("го","е") +"!");
+				link.l1 = RandPhraseSimple("Заткнись, малахольный!", "Как бы не так!");
 				link.l1.go = "fight"; 
 			}
 			else
@@ -56,11 +56,11 @@ void ProcessDialogEvent()
 				// eddy. проверяем, не казачок ли. -->
 				if (GetRelation2BaseNation(sti(npchar.nation)) == RELATION_ENEMY && sti(NPChar.nation) != PIRATE)
 				{
-					dialog.text = RandPhraseSimple("Who are you and what are you doing here?", "Hold still! Who are you? For shat reason are you trying to enter the fort?");
+					dialog.text = RandPhraseSimple("Кто ты и что тебе здесь нужно?", "Стой! Кто ты? На каком основании пытаешься войти в форт?");
 					//==> по лицензии
 					if (CheckNationLicence(HOLLAND))
 					{
-						link.l1 = "Officer, I have " + GetRusNameNationLicence(sti(npchar.nation)) + ", so I am here on legal grounds. Here, please take a look...";
+						link.l1 = "Офицер, у меня имеется " + GetRusNameNationLicence(sti(npchar.nation)) + ", так что, я нахожусь здесь на законных основаниях. Прошу ознакомиться...";
 						link.l1.go = "LicenceOk";
 					}
 					else
@@ -69,18 +69,18 @@ void ProcessDialogEvent()
 						// заглушка на пирата
 						if (sti(pchar.nation) == PIRATE)
 						{
-    						dialog.text = RandPhraseSimple("Pirates in the fort?! Seize"+ GetSexPhrase("him","her") +"!!", "It is a pirate, sniffs up something here!! To arrest!!!!");
-							link.l1 = RandPhraseSimple("Yes, I am a pirate - now what?", "Heh, catch me if you can...");
+    						dialog.text = RandPhraseSimple("Пираты в форте?! Держи е"+ GetSexPhrase("го","е") +"!!", "Это пират, он"+ GetSexPhrase("","а") +" вынюхивает здесь что-то!! Держи е"+ GetSexPhrase("го","е") +"!!!");
+							link.l1 = RandPhraseSimple("Да, пират, ну и что?..", "Хех, попробуйте схватить...");
 							link.l1.go = "fight"; 
 							break;
 						}
 						if (findsubstr(pchar.location.from_sea, "_town" , 0) != -1) //если причалил в городе
 						{
-							link.l1 = "Don't you see on the mast of my ship the flag" + NationNameGenitive(sti(pchar.nation)) + "?!";
+							link.l1 = "Ты что, не видишь, как на мачте моего корабля развевается флаг" + NationNameGenitive(sti(pchar.nation)) + "?!";
 						}
 						else //если причалил не в городе
 						{
-							link.l1 = "I cast anchor at " + XI_ConvertString(GetIslandByCityName(npchar.city)+"Gen") + " under the flag" + NationNameGenitive(sti(pchar.nation)) + ". For crying out loud!";
+							link.l1 = "Я бросил якорь у " + XI_ConvertString(GetIslandByCityName(npchar.city)+"Gen") + " под флагом " + NationNameGenitive(sti(pchar.nation)) + ". Что тебе еще не ясно?";
 						}
 						if (GetSummonSkillFromName(pchar, SKILL_SNEAK) < (10+rand(50)+rand(50)))
 						{
@@ -102,72 +102,72 @@ void ProcessDialogEvent()
 			         		switch (rand(10))
 							{
 								case 0:
-									dialog.text = "Oh, captain, we've had such a great time with you at sea! So many ships we have sunk together under your command! And here...";
-									link.l1 = "And here, my friend, you can feast your eyes upon charming ladies, for you will not see them at sea.";
+									dialog.text = "Эх, капитан, как славно было с вами в море! Сколько кораблей мы потопили под вашей командой! А тут...";
+									link.l1 = "А тут, друг мой, перед вами постоянно мелькают очаровательные женщины, которых в море не бывает.";
 									link.l1.go = "exit";
 								break;
 
 								case 1:
-									dialog.text = "Captain, what have we done to deserve this?! We aren't landlubbers, are we?";
-									link.l1 = "Quiet, sailor! Your post is an important and honorary one, so quit your whining.";
+									dialog.text = "Капитан, за что такое наказание?! Мы ведь не сухопутные крысы!";
+									link.l1 = "Спокойно, моряк! Вы на важном и почетном посту, так что не нойте.";
 									link.l1.go = "exit";
 								break;
 
 								case 2:
-									dialog.text = "What's up with te sea, captain? Will we ever see it again?";
-									link.l1 = "But of course, sailor! Once you are relieved from duty, you can go to the pier and enjoy the sea as much as you like.";
+									dialog.text = "Как там в море, капитан? Мы когда-нибудь снова увидим его?";
+									link.l1 = "Конечно, матрос! Сменитесь с караула, выйдете на пирс и наслаждайтесь морем сколько угодно.";
 									link.l1.go = "exit";
 								break;
 
 								case 3:
-									dialog.text = "I want to complain, captain: every one of us longs to ship out. We're all totally fed up with this land duty!";
-									link.l1 = "I got tired from this whining! A drinking-bout has you and on earth! Serve wherein you were put by a captain! And then somebody will be to hitch up for an example.";
+									dialog.text = "Спешу пожаловаться, капитан: мы все стремимся снова в море. Эта служба на суше просто поперек горла стоит!";
+									link.l1 = "Я устал"+ GetSexPhrase("","а") +" от этого нытья! Выпивки вам хватает и на земле! Служи там, где тебя поставил"+ GetSexPhrase("","а") +" капитан! А то кое-кого придется вздернуть для примера.";
 									link.l1.go = "exit";
 								break;
 
 								case 4:
-									dialog.text = "I'll tell you in confidence, captain, the new governor is a grafter and embezzler of funds. Now that's really none of my business...";
-									link.l1 = "Exactly, corsair. Your business is standing at your post and keeping order. And to hang the governor on the yardarm is my business. Good job!";
+									dialog.text = "Скажу вам по секрету, капитан, новый губернатор - взяточник и казнокрад. Но это, конечно, не мое дело…";
+									link.l1 = "Ты прав, корсар: твое дело - стоять на посту и следить за порядком. Ну а вздернуть губернатора на нок рее - это уже занятие для меня. Молодец!";
 									link.l1.go = "exit";
 								break;
 
 								case 5:
-									dialog.text = "Thank you for not forgetting about us, captain! We'd go through fire and water for your sake!";
-									link.l1 = "I know your type, crooks! All you really love is gold. Now, there's a carouse at the tavern today, it's on me. Don't forget to show up.";
+									dialog.text = "Спасибо, что не забываете о нас капитан! Мы за вас и в огонь и в воду!";
+									link.l1 = "Знаю я вас, проходимцев! Любите только золото. Сегодня в таверне попойка, я угощаю. Не забудь заглянуть.";
 									link.l1.go = "exit";
 								break;
 
 								case 6:
-									dialog.text = "Heh, captain! Just think about it - can a corsair really be a keeper of order?! It's been so long we've last been on the real business!";
-									link.l1 = "No time for relaxing, corsair! Enemy armadas are scouring the seas near our islands, and we must be ready for a bloodbath at any time.";
+									dialog.text = "Эх, капитан! Ну, какие из корсаров блюстители порядка?! Как давно мы не были в настоящем деле!";
+									link.l1 = "Не расслабляйся, корсар! Вражеские армады рыщут вокруг наших островов, так что кровавая баня может приключиться в любой момент.";
 									link.l1.go = "exit";
 								break;
 
 								case 7:
-									dialog.text = "Captain, they say that the Crown had sent another squadron our way?";
-									link.l1 = "Of course, corsair. While we live, there will be no peace for us. And even in Hell we shall be fighting devils!";
+									dialog.text = "Капитан, говорят, королевские власти снова посылают сюда эскадру?";
+									link.l1 = "Конечно, корсар. Пока мы живы, мира не будет никогда. Даже в Аду нам придется сражаться с чертями!";
 									link.l1.go = "exit";
 								break;
 
 								case 8:
-									dialog.text = "Yo-ho-ho! Now that was a real carouse yesterday, captain! It's a pity you weren't there.";
-									link.l1 = "No big deal, I'll make up for it. And I don't envy you, guys.";
+									dialog.text = "Йо-хо-хо! Какая знатная вчера у нас была попойка, капитан! Жалко, что вас не было.";
+									link.l1 = "Ничего, я свое еще наверстаю. И вам, ребята, я не завидую.";
 									link.l1.go = "exit";
 								break;
 
 								case 9:
-									dialog.text = "I'll tell you in confidence, captain, 'cause you've always treated us well - we had some good time with a really nice chick yesterday...";
-									link.l1 = "Heh, corsair, a noose is something you really need!";
+									dialog.text = "Скажу вам по секрету, капитан, поскольку вы нас никогда не обижали, завалили мы вчера с ребятами здесь одну телочку...";
+									link.l1 = "Эх, корсар, плачет по вам петля!";
 									link.l1.go = "exit";
 								break;
 
 								case 10:
-									dialog.text = "Cap! Please relieve me from this cursed duty! I simply can't play the part of a keeper of order anymore.";
-									link.l1 = "Night watch on a ship is no cakewalk, either. Now duty is duty, whatever and wherever it is.";
+									dialog.text = "Кэп! Освободите вы меня от этой проклятой повинности! Ну, не могу я здесь блюстителя порядка разыгрывать!";
+									link.l1 = "Ты лучше вспомни: ночную вахту на корабле стоять тоже нелегко. Служба, брат, она везде служба.";
 									link.l1.go = "exit";
 								break;
 							}
-							link.l2 = RandPhraseSimple("I've got an important business!", "I have business with you.");
+							link.l2 = RandPhraseSimple("Есть важное дело!", "У меня к тебе дело.");
 							link.l2.go = "quests";//(перессылка в файл города)
 							break;
 						}
@@ -178,10 +178,10 @@ void ProcessDialogEvent()
 					{// Addon 2016-1 Jason пиратская линейка
 						if (npchar.location.locator == "protector1" || npchar.location.locator == "protector2")
 						{
-							dialog.text = "Hey, buddy! Can you make me a small favor?";
-							link.l1 = "Depends on what needs to be done.";
+							dialog.text = "Эй, дружище! Не окажешь мне маленькую услугу?";
+							link.l1 = "Ну, смотря о чем попросишь.";
 							link.l1.go = "Wine_soldier";
-							link.l2 = "I don't have time for this.";
+							link.l2 = "Некогда мне.";
 							link.l2.go = "exit";
 							pchar.questTemp.Wine = "true";
 							break;
@@ -192,72 +192,72 @@ void ProcessDialogEvent()
 					switch (rand(10))
 					{
 						case 0: ////////////////////////////////////////
-							dialog.text = "Can't you see? I'm on duty. Stop bothering me.";
-							link.l1 = "Alright, alright...";
+							dialog.text = "Не видишь, я на посту! Не отвлекай меня.";
+							link.l1 = "Хорошо, хорошо...";
 							link.l1.go = "exit";
 						break;
 
 						case 1:
-							dialog.text = "Are you going to tell me about some suspicious activity?";
-							link.l1 = "No, none at all, and I am a captain, by the way. I see you're not listening anymore? See ya.";
+							dialog.text = "Ты хочешь сообщить мне о чем-то подозрительном?";
+							link.l1 = "Нет, ничего такого, к тому же я капитан. Вижу, ты уже не слушаешь? Прощай.";
 							link.l1.go = "exit";
 						break;
 
 						case 2: ///////////////////////////////////////////
-							dialog.text = "This is a military objective, so keep quiet there.";
-							link.l1 = "Alright, I'll keep that in mind.";
+							dialog.text = "Запомни, это военный объект! Так что веди себя здесь тихо.";
+							link.l1 = "Хорошо, я приму это к сведению.";
 							link.l1.go = "exit";
 						break;
 
 						case 3:
-							dialog.text = "Such fair weather, and I'm bound to stand there. In towns, there are girls at the least, and here.";
-							link.l1 = ""+ GetSexPhrase("I sympathize, but there's nothing I can do to help - it's your duty.","Hey! What's wrong with me? Am I not a girl?") +"";
+							dialog.text = "Какая погода, а я вынужден стоять здесь. Эх, в городах хоть девушки ходят, а здесь только гарнизонные крысы вокруг...";
+							link.l1 = ""+ GetSexPhrase("Сочувствую. Но ничем не могу помочь, работа у тебя такая.","Эй! А я что - не девушка?") +"";
 							link.l1.go = "exit";
 						break;
 
 						case 4: ///////////////////////////////////////////
-							dialog.text = "If you like to chat, find someone else. I must keep order here, and I have no time for chit-chat.";
-							link.l1 = "Oh, no, I was just "+ GetSexPhrase("checking","checking") +", if you're still alive - you were standing just like a statue.";
+							dialog.text = "Если вам хочется поболтать, то найдите себе кого-нибудь другого, а я должен следить за порядком, и мне некогда чесать с вами языком.";
+							link.l1 = "Да нет, я просто "+ GetSexPhrase("проверял","проверяла") +", жив ли ты еще, а то стоишь, как статуя.";
 							link.l1.go = "exit";
 						break;
 
 						case 5: ////////////////////////////////////////////
-							dialog.text = "You probably think that garrison working days are a cakewalk? Says you! It's a hard and important work. I remember... ";
-							link.l1 = "You tall me that story some other time - I am in a bit of hurry today.";
+							dialog.text = "Вот вы думаете, гарнизонные будни - это игрушки? Как бы не так! Это очень ответственный и опасный труд. Вот помнится...";
+							link.l1 = "Расскажешь свою историю как-нибудь в другой раз, а сейчас я спешу.";
 							link.l1.go = "exit";
 						break;
 
 						case 6: ////////////////////////////////////////////
-							dialog.text = "Careful here, you're in a fort! Be quiet as a lamb!";
-							link.l1 = "As you say, soldier.";
+							dialog.text = "Аккуратней здесь, это форт! Веди себя тише воды...";
+							link.l1 = "Как скажешь, солдат.";
 							link.l1.go = "exit";
 						break;
 
 						case 7:
-							dialog.text = "Hey! Do you have any water, by chance? I am dying of thirst.";
-							link.l1 = "No, buddy, keep your patience...";
+							dialog.text = "Эй! Нет ли у тебя воды? Умираю от жажды.";
+							link.l1 = "Нет, приятель, потерпи...";
 							link.l1.go = "exit";
 						break;
 
 						case 8://///////////////////////////////////////////
-							dialog.text = "How boring is the garrison life - only rednecks like you around! Now the town garrison surely has better time...";
-							link.l1 = "And you are calling this 'being on duty'? This way you'll surely let a spy slip past you!";
+							dialog.text = ""+ GetSexPhrase("Эх, и скука же в гарнизоне, вокруг одни неотесанные мужланы вроде тебя! А вот городской гарнизон жирует...","Эй, красавица! Как насчет того, чтобы немного пофлиртовать с бравым воякой?") +"";
+							link.l1 = ""+ GetSexPhrase("И это называется 'нести службу'? Смотри, проворонишь какого-нибудь лазутчика!","Твоё дело за порядком следить... и слюни подбери.") +"";
 							link.l1.go = "exit";
 						break;
 
 						case 9://///////////////////////////////////////////
-							dialog.text = ""+ GetSexPhrase("You look like a stout guy, don't you? Would you like to sign up for duty at the fort's garrison? We have roomy barracks, two meals a day - and booze for free.","Oh, young lady, you have no idea, how pleasant it is to meet such a nice damsel in this back of beyond!") +"";
-							link.l1 = ""+ GetSexPhrase("That's certainly tempting, but I still must refuse. All that drill is just not for me.","Thank you for a compliment, soldier.") +".";
+							dialog.text = ""+ GetSexPhrase("Ты выглядишь крепким парнем! Не хочешь поступить на службу в гарнизон форта? У нас просторная казарма, двухразовое питание, плюс выпивка бесплатно.","О, вы даже не представляете, девушка, насколько приятно встретить в этом захолустье такую милую особу, как вы!") +"";
+							link.l1 = ""+ GetSexPhrase("Соблазнительно, черт побери, но я вынужден отказаться. Казарменная муштра не для меня","Спасибо за комплимент, солдат") +".";
 							link.l1.go = "exit";
 						break;
 
 						case 10:
-							dialog.text = "Such heat... I would gladly give up half of my life to go back to Europe.";
-							link.l1 = "Yeah, I can see that you're not fit for the local climate.";
+							dialog.text = "Эта жара... Я бы полжизни отдал, чтобы снова оказаться в Европе.";
+							link.l1 = "Да, смотрю, для здешнего климата ты здоровьем не вышел.";
 							link.l1.go = "exit";
 						break;
 					}
-					link.l3 = "I see... You know, I "+ GetSexPhrase("wanted to") +" ask you something...";
+					link.l3 = "Н-да... ясно. Я вот что "+ GetSexPhrase("хотел","хотела") +" спросить...";
 					link.l3.go = "quests";//(перессылка в файл города)
 				}
 			}
@@ -265,22 +265,22 @@ void ProcessDialogEvent()
 		
 		//Jason --> мини-квест Дефицитный товар
 		case "Wine_soldier":
-			dialog.text = "You see, I badly want some wine... But not the local swill made of rotten fruits, which sells for two pesos per barrel - I want a bottle of real European wine. You can get it in the town from merchants. The price is quite steep, but I will pay in full and will even add three hundred pesos on top of it. So, will you bring me some?";
-			link.l1 = "And why can't you het it yourself? You won't need to overpay - just wait until you're relieved and go for it. What's the catch?";
+			dialog.text = "Понимаешь, я очень-очень хочу вина... Но не это пойло местного разлива из гнилых фруктов, по два песо за баррель, а бутылочку настоящего европейского вина. Его можно достать в городе у торговцев. Стоит оно недешево, но я заплачу сполна, и добавлю три сотни песо сверх того. Принесешь?";
+			link.l1 = "А чего сам сходить не можешь? Закончится смена, и иди покупай, и не надо переплачивать... В чем подвох-то?";
 			link.l1.go = "Wine_soldier_1";
 		break;
 		
 		case "Wine_soldier_1":
-			dialog.text = "There is no catch. I just can't leave the fort to go to the town until I get my leave, which is not going to happen anytime soon. Besides, our commander strictly banned all drinking in the fort, bad cess to him! So, will you help a soldier out?";
-			link.l1 = "Well, why not? I'll fetch you that wine, I have some spare time anyway.";
+			dialog.text = "Никакого подвоха нет. Просто я не могу отлучаться из форта в город - служба, понимаешь ли, а в увольнение еще не скоро. Кроме того, наш командир строжайше запрещает употреблять спиртное в форте, черт бы его побрал. Ну так что, поможешь солдату?";
+			link.l1 = "А почему бы и нет? Принесу тебе твое вино, время свободное у меня есть.";
 			link.l1.go = "Wine_soldier_2";
-			link.l2 = "I am sorry, buddy, but I can't do that. Look for someone else to help you.";
+			link.l2 = "Извини, приятель, но я не могу этим заняться. Поищи себе другого помощника.";
 			link.l2.go = "exit";
 		break;
 		
 		case "Wine_soldier_2":
-			dialog.text = "Great! Thank you very much! Today I am on watch, so come tomorrow. You'll find me on the fort's topmost platform - there you can slip me the bottle so no one takes notice...";
-			link.l1 = "Alright. Wait for me - I'll come see you tomorrow.";
+			dialog.text = "Вот и замечательно, спасибо тебе! Сегодня я в карауле, так что приходи завтра. Найдешь меня на самой верхней площадке форта. Там незаметно и передашь бутылочку...";
+			link.l1 = "Хорошо. Жди, завтра навещу тебя.";
 			link.l1.go = "exit";
 			pchar.questTemp.Wine.id = npchar.ID;
 			pchar.questTemp.Wine.SName = GetFullName(npchar);
@@ -296,8 +296,8 @@ void ProcessDialogEvent()
 		
 		//============================== ноды на разборки при распознавании =========================
 		case "PegYou":
-			dialog.text = RandPhraseSimple("It seems to me some trickery is afoot. Let's go see the commandant, "+ GetSexPhrase("buddy","deary") +", and figure it all out...", "Hmm... Something tells me that you're not "+ GetSexPhrase("the one","the one") +", who you're pretending to be... Now surrender your weapons, " + GetAddress_Form(npchar) + ", and follow me for further investigation!");
-			link.l1 = RandPhraseSimple("Says you!", "When two Sundays come in one week...");
+			dialog.text = RandPhraseSimple("Сдается мне, что это обман... Давай-ка пройдем к коменданту, голуб"+ GetSexPhrase("чик","ушка") +", там разберемся...", "Хм, что-то подсказывает мне, что ты не "+ GetSexPhrase("тот","та") +", за кого себя выдаешь... Немедленно сдай оружие, " + GetAddress_Form(npchar) + ", и следуй за мной для дальнейшего разбирательства!");
+			link.l1 = RandPhraseSimple("Как бы не так!", "После дождичка, в четверг...");
 			link.l1.go = "fight";
 			if (sti(pchar.questTemp.stels.landFort) != GetDataDay())
 			{
@@ -306,8 +306,8 @@ void ProcessDialogEvent()
 			}
 		break;
 		case "NotPegYou":
-			dialog.text = RandPhraseSimple("Oh, I see... Everything seems to be in order, you're free to go, " + GetAddress_Form(pchar) + ".", "I must have gotten a bit tired standing on watch... Everything seems to be fine, " + GetAddress_Form(pchar) + ", I am sorry.");
-			link.l1 = "That'll teach you!";
+			dialog.text = RandPhraseSimple("А-а-а, вижу... Все в порядке, вы можете идти, " + GetAddress_Form(pchar) + ".", "Что-то я немного подустал в карауле... Все в порядке, " + GetAddress_Form(pchar) + ", прошу прощения.");
+			link.l1 = "Так-то!";
 			link.l1.go = "exit";
 			if (sti(pchar.questTemp.stels.landFort) != GetDataDay())
 			{
@@ -319,54 +319,54 @@ void ProcessDialogEvent()
 			iTemp = GetDaysContinueNationLicence(HOLLAND);
 			if (ChangeCharacterNationReputation(pchar, sti(NPChar.nation), 0) <= -12)
 			{
-				dialog.text = "Just come to think of it! Such insolence! To come here under the guise of a merchant! Your pictures are posted in every barrack, you bastard! You won't get away with it this time! Seize him!";
-				link.l1 = RandPhraseSimple("Arrgh!..", "Well, you asked for it...");
+				dialog.text = "Только подумать, какая наглость! Явиться сюда под видом торговца! Да твои портреты развешаны в каждой казарме, негодяй! Ну, теперь ты не уйдешь! Хватай его!";
+				link.l1 = RandPhraseSimple("Аргх!..", "Ну, вы сами напросились...");
 				link.l1.go = "fight";	
 				TakeNationLicence(HOLLAND);
 				break;
 			}
 			if (findsubstr(pchar.location.from_sea, "_town" , 0) == -1) //если причалил не в городе
 			{
-				dialog.text = "You have come to trade here? Might I ask how? Where is your ship? You know, it all looks very suspicious, and I am forced to detain you until we figure it all out. Surrender your weapons and follow me!";
-				link.l1 = RandPhraseSimple("Says you!", "When two Sundays come in one week...");
+				dialog.text = "Вы прибыли сюда торговать? Позвольте спросить - на чем? Где ваш корабль? Все это очень подозрительно - я вынужден вас задержать до выяснения. Сдайте оружие и следуйте за мной!";
+				link.l1 = RandPhraseSimple("Как бы не так!", "После дождичка, в четверг...");
 				link.l1.go = "fight";	
 				TakeNationLicence(HOLLAND);
 				break;
 			}
 			if (iTemp == -1)
 			{
-				dialog.text = "Your license has to be revoked since it is expired and is not valid for that reason. Surrender your weapons and follow me for further investigation!";
-				link.l1 = RandPhraseSimple("Says you!", "When two Sundays come in one week...");
+				dialog.text = "Ваша лицензия подлежит изъятию, так как просрочена и поэтому недействительна. Сдайте оружие и следуйте за мной для последующих разбирательств!";
+				link.l1 = RandPhraseSimple("Как бы не так!", "После дождичка, в четверг...");
 				link.l1.go = "fight";	
 				TakeNationLicence(HOLLAND);
 				break;
 			}
 			if (iTemp == 0)
 			{
-				dialog.text = "Hmm... Everything looks okay. Still, I must note that your license expires today. I will let you pass this time, but you still will have to get a new license.";
-				link.l1 = "Thank you, I'll do it at my earliest convenience.";
+				dialog.text = "Хм, все верно. Однако позволю себе заметить, что срок действия вашей лицензии сегодня истекает. Я пропущу вас сейчас, но вам нужно будет получить новую лицензию.";
+				link.l1 = "Спасибо, я сделаю это при первой же возможности.";
 				link.l1.go = "exit";			
 			}
 			if (iTemp > 0 && iTemp <= 10)
 			{
-				dialog.text = "Hmm... Everything looks okay. Still, I must note that your license expires rather soon - it is still valid only for " + FindRussianDaysString(iTemp) + ". So keep that in mind, " + GetAddress_Form(npchar) + ".";
-				link.l1 = "Thank you, I'll get a new one at my earliest convenience.";
+				dialog.text = "Хм, все верно. Однако позволю себе заметить, что срок действия вашей лицензии вскоре истекает - она действительна еще только " + FindRussianDaysString(iTemp) + ". Так что имейте в виду, " + GetAddress_Form(npchar) + ".";
+				link.l1 = "Спасибо, я обзаведусь новой при первой же возможности.";
 				link.l1.go = "exit";			
 			}
 			if (iTemp > 10)
 			{
-				dialog.text = LinkRandPhrase("Well, everything looks fine. Your license is valid for another " + FindRussianDaysString(iTemp) + ". You may pass.", "Everything is clear, "+GetAddress_Form(npchar)+". You can freely go in and out of town, your license is valid for another " + FindRussianDaysString(iTemp) + ". Sorry for bothering you.", "Everything looks fine, " + GetAddress_Form(npchar) + ", I am no longer keeping you there.");
-				link.l1 = RandPhraseSimple("Excellent. Best regards.", "Thank you, officer.");
+				dialog.text = LinkRandPhrase("Ну что же, очень хорошо, ваша лицензия действует еще " + FindRussianDaysString(iTemp) + ". Вы можете пройти.", "Все ясно, "+GetAddress_Form(npchar)+". Вы можете свободно проходить в город, ваша лицензия действует еще " + FindRussianDaysString(iTemp) + ". Прошу прощения за беспокойство.", "Все в порядке, " + GetAddress_Form(npchar) + ", не смею вас задерживать.");
+				link.l1 = RandPhraseSimple("Отлично. Всего хорошего.", "Спасибо, офицер.");
 				link.l1.go = "exit";
 			}
 		break;
 
 		//замечение по обнаженному оружию
 		case "SoldierNotBlade":
-			dialog.text = LinkRandPhrase("Why the hell are you running around with an unsheathed blade? Put away your weapon at once!", "I am ordering you to sheathe your weapon at once!", "Hey, "+ GetSexPhrase("buddy","lass") +", stop scaring the folks! Sheathe your weapon.");
-			link.l1 = LinkRandPhrase("Fine.", "Okay.", "As you say...");
+			dialog.text = LinkRandPhrase("Какого черта ты бегаешь по городу с обнаженным клинком? Немедленно убери оружие!", "Приказываю вам немедленно убрать оружие в ножны!", "Эй, "+ GetSexPhrase("приятель","подруга") +", прекрати пугать народ! Убери оружие в ножны.");
+			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
-			link.l2 = LinkRandPhrase("Says you!", "There's no harm in dreaming...", "When two Sundays come in one week.");
+			link.l2 = LinkRandPhrase("Черта с два!", "Помечтай...", "После дождичка, в четверг.");
 			link.l2.go = "fight";
 			npchar.greeting = "soldier_common";
 			NextDiag.TempNode = "First Time";

@@ -11,8 +11,8 @@ int CreateJamaicaCharacters(int n)
 	ch.id		= "PortRoyal_Mayor";
 	ch.model	= "huber_9";
 	ch.sex = "man";
-	ch.name 	= "Eduard";
-    ch.lastname = "Doily";
+	ch.name 	= "Эдвард";
+    ch.lastname = "Дойли";
 	ch.City = "PortRoyal";
 	ch.location	= "PortRoyal_townhall";
 	ch.location.group = "sit";
@@ -109,8 +109,8 @@ int CreateJamaicaCharacters(int n)
 	makeref(ch,Characters[n]);			//Корабел
 	ch.id		= "PortRoyal_shipyarder";
 	ch.model	= "shipowner_9_1";
-	ch.name 	= "Oldjivly";
-    ch.lastname = "Moris";
+	ch.name 	= "Олдживли";
+    ch.lastname = "Морис";
 	ch.greeting = "shipyarder_1";
 	ch.sex = "man";
 	ch.City = "PortRoyal";
@@ -137,8 +137,8 @@ int CreateJamaicaCharacters(int n)
 	ch.id		= "PortRoyal_usurer";
 	ch.model	= "banker_9_1";
 	ch.sex = "man";
-	ch.name 	= "Mortimer";
-	ch.lastname = "Hope";
+	ch.name 	= "Мортимер";
+	ch.lastname = "Хоуп";
 	ch.City = "PortRoyal";
 	ch.Merchant.type = "jeweller"; 
 	ch.location	= "PortRoyal_Bank";
@@ -174,7 +174,7 @@ int CreateJamaicaCharacters(int n)
 
 	makeref(ch,Characters[n]);			//Хозяйка борделя
 	ch.id		= "PortRoyal_Hostess";
-	ch.name		= "Ida"
+	ch.name		= "Ида"
 	ch.lastname = "";
 	ch.model	= "maman_3";
 	ch.model.animation = "woman_B";
@@ -192,7 +192,7 @@ int CreateJamaicaCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "PortRoyal_Smuggler";
 	ch.model    = "citiz_29";
@@ -251,8 +251,8 @@ int CreateJamaicaCharacters(int n)
 
     makeref(ch,Characters[n]);			//Глава пиратов
 	ch.id		= "Jackman";
-	ch.name 	= "Jacob";
-	ch.lastname = "Jackman";
+	ch.name 	= "Якоб";
+	ch.lastname = "Джекман";
 	ch.rank = 30;
 	ch.model	= "Jeckman";
 	ch.sex = "man";

@@ -175,6 +175,7 @@ void ProcCommand()
 		case "Save":		SavePress(); 		break;
 		case "Options":		OptionsPress(); 	break;
 		case "Credits":		CreditsPress(); 	break;
+//		case "Credits":		MultiPress()(); 	break;
 		case "Updates":		UpdatesPress(); 	break;
 		case "Exit":		SetEventHandler("frame","QuitPress",0);  break;
 	}

@@ -5,34 +5,34 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 	switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat("Go ahead, what do you want?",
-                          "We were just talking about that. You must have forgotten...", "This is the third time today you're talking about some question...",
-                          "Listen, this is a store. People buy stuff here. Don't disturb me!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("You know, " + NPChar.name + ", maybe next time.", "Right, I've forgotten for some reason...",
-                      "Yes, it really is the third time...", "Hm, I wont...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat("Спрашивай, чего ты хочешь?",
+                          "Мы только что поднимали это тему. Вы, вероятно, запамятовали...", "Сегодня вы уже третий раз говорите о каком-то вопросе...",
+                          "Послушай, это магазин, здесь люди покупают что-то. Не отвлекай меня!", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Знаешь, " + NPChar.name + ", как-нибудь в следующий раз.", "Точно, "+ GetSexPhrase("забыл","забыла") +" что-то...",
+                      "Да уж, действительно в третий раз...", "Гм, не буду...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			if(CheckAttribute(pchar, "questTemp.Tieyasal") && pchar.questTemp.Tieyasal == "begin" && !CheckAttribute(npchar, "quest.Tieyasal"))
 			{
-				link.l1 = "Listen, "+npchar.name+", have you seen Miguel Dichoso on Isla Tesoro lately?";
+				link.l1 = "Послушай, "+npchar.name+", ты не видел в последнее время на Исла Тесоро Мигеля Дичозо?";
 				link.l1.go = "tieyasal";
 			}
-			// Addon 2016-1 Jason пиратскаЯ линейка
+			// Addon 2016-1 Jason пиратская линейка
 			if(CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "pasq_start")
 			{
-				link.l1 = ""+npchar.name+", I am here on behalf of Marcus Tyrex. He said that you need a man for a job.";
+				link.l1 = ""+npchar.name+", я прибыл от Маркуса Тиракса. Он сказал, что вам нужен человек для работы.";
 				link.l1.go = "mtraxx";
 			}
 			if(CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "pasq_win")
 			{
-				link.l1 = ""+npchar.name+", Rosbohom was found and captured. Shall we unload and do counting?";
+				link.l1 = ""+npchar.name+", 'Розбоом' найден и захвачен. Приступим к выгрузке товара и расчету?";
 				link.l1.go = "mtraxx_5";
 			}
 		break;
 				
 		// город майя
 		case "tieyasal":
-			dialog.text = "Yes, I have. He was stocking up on ammunition for his ship here. It was very recently by the way. You literally missed each other by a few days. By the way, he might still be in this settlement. I don't spy for people, you know. Ask around some more and who knows you just might find your don.";
-			link.l1 = "All right. Thanks for the info!";
+			dialog.text = "Видел. Он закупал припасы на свой корабль у меня. Кстати, совсем недавно. Вы буквально на несколько дней разминулись. Кстати, быть может, он еще где-то в поселке. Я, знаешь ли, не шпионю за людьми. Поспрашивай еще, глядишь - отыщется твой дон.";
+			link.l1 = "Понятно. Спасибо за сведения!";
 			link.l1.go = "tieyasal_1";
 		break;
 		
@@ -41,31 +41,31 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.tieyasal = "true";
 		break;
 		
-		// Addon 2016-1 Jason пиратскаЯ линейка
+		// Addon 2016-1 Jason пиратская линейка
 		case "mtraxx":
 			pchar.quest.Mtraxx_PasqualeLate.over = "yes";
-            dialog.text = "Precisely! It's good you arrived in time. Now let me tell you the crux of the matter...";
-			link.l1 = "I am all ears.";
+            dialog.text = "Именно так! Очень хорошо, вы прибыли вовремя. Теперь излагаю суть дела...";
+			link.l1 = "Внимательно вас слушаю.";
 			link.l1.go = "mtraxx_1";
 		break;
 		
 		case "mtraxx_1":
 			string sTemp = GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(pchar.questTemp.Mtraxx.Crdn.Ship), "Name")));
-            dialog.text = "At this very moment a "+sTemp+" - the Dutch vessel by a name of the 'Rosbohom' is arriving to our waters along with one guard ship. She is loaded with iron wood and sailing from Willemstad to meet another guard ship to ensure a safety voyage to Europe. I know the coordinates of their rendezvous point\nYour mission is to find the Dutch there, board the trader and get her cargo to me. I will pay as soon as the cargo is delivered.";
-			link.l1 = "Got it. Time and location?";
+            dialog.text = "В данный момент к нашим водам приближается голландский корабль из Виллемстада - "+sTemp+" под названием 'Розбоом' с трюмом, полным черного дерева, в сопровождении одного корабля охранения. Каким маршрутом он идет - через Синт-Маартен или через Эспаньолу - мне неведомо, но я точно знаю дату и координаты места, где этот караван встретится с третьим голландским кораблем, и под его охраной конвой двинется на север, в Европу\nВаша задача - найти голландцев в указанном мной месте, отбить 'Розбоом', захватить весь его груз и доставить мне. С вами рассчитаемся сразу же после доставки товара.";
+			link.l1 = "Задача ясна. Место и день?";
 			link.l1.go = "mtraxx_2";
 		break;
 		
 		case "mtraxx_2":
 			int i = sti(pchar.questTemp.Mtraxx.Crdn.minN2)-10;
 			int n = sti(pchar.questTemp.Mtraxx.Crdn.minW2)-10;
-            dialog.text = ""+sti(pchar.questTemp.Mtraxx.Crdn.degN)+" "+i+" North and "+sti(pchar.questTemp.Mtraxx.Crdn.degW)+" "+n+" West. It must be somewhere South or South-West from Isla Tesoro, I am not good in it, I am not a sailor, but you are. You have around five days to do the job.";
-			link.l1 = "Noted... I got it. No wasting time then!";
+            dialog.text = "Встреча голландцев назначена в следующем месте: "+sti(pchar.questTemp.Mtraxx.Crdn.degN)+" градусов "+i+" минут северной широты, "+sti(pchar.questTemp.Mtraxx.Crdn.degW)+" градусов "+n+" минут западной долготы. Это где-то на юг или юго-запад от Исла-Тесоро, я в этом плохо соображаю, вы моряк - разберетесь. Дата - через 5 дней, не считая сегодняшний.";
+			link.l1 = "Сейчас все запишем... понятно. Ну, тогда не будем терять времени!";
 			link.l1.go = "mtraxx_3";
 		break;
 		
 		case "mtraxx_3":
-            dialog.text = "Godspeed captain. I'll be waiting for you and the cargo.";
+            dialog.text = "Удачи, капитан. Жду вас с товаром.";
 			link.l1 = "...";
 			link.l1.go = "mtraxx_4";
 		break;
@@ -89,27 +89,27 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			iTotalTemp = GetSquadronGoods(pchar, GOOD_EBONY);
 			if (iTotalTemp < 1)
 			{
-				dialog.text = "Are you mocking me young man? Your cargo holds do not have a single center of iron wood in them! This is an insolent trickery! Get out of here - I will inform Marcus of this! Get out!!!";
-				link.l1 = "Hm...";
+				dialog.text = "Вы издеваетесь, молодой человек? В ваших трюмах нет ни одного центнера черного дерева! Вы меня нагло надули! Это вам даром не пройдет - я пожалуюсь Маркусу Тираксу! Убирайтесь вон!!";
+				link.l1 = "Гм...";
 				link.l1.go = "mtraxx_6";
 				break;
 			}
 			if (iTotalTemp < makeint(sti(pchar.questTemp.Mtraxx.Crdn.Ebony)/4))
 			{
-				dialog.text = "Are you mocking me young man? Your cargo holds have only crumbs of iron wood! This is an insolent trickery! Get out of here - I will inform Marcus of this! Get out!!!";
-				link.l1 = "Hm...";
+				dialog.text = "Вы издеваетесь, молодой человек? В ваших трюмах жалкие крохи от того количества черного дерева, что было на 'Розбоом'! Вы меня нагло надули! Это вам даром не пройдет - я пожалуюсь Маркусу Тираксу! Убирайтесь вон!!";
+				link.l1 = "Гм...";
 				link.l1.go = "mtraxx_6";
 				break;
 			}
 			if (iTotalTemp < sti(pchar.questTemp.Mtraxx.Crdn.Ebony)-20)
 			{
-				dialog.text = "The Rosbohom had at least "+FindRussianQtyString(sti(pchar.questTemp.Mtraxx.Crdn.Ebony))+" of iron wood. Why did you bring me less?";
-				link.l1 = "Well... you know, had to get rid of some part of it during the fight. Plus the rats, damn them...";
+				dialog.text = "На 'Розбоом' должно было быть не меньше "+FindRussianQtyString(sti(pchar.questTemp.Mtraxx.Crdn.Ebony))+" черного дерева. Почему вы привезли меньше?";
+				link.l1 = "Так это - часть груза пришлось бросить в бою. И еще крысы сожрали, треклятые...";
 				link.l1.go = "mtraxx_7";
 				break;
 			}
-            dialog.text = "Very well. How much do you have? "+FindRussianQtyString(iTotalTemp)+"? Splendid! I will pay you 150 pesos for a piece.";
-			link.l1 = "And here I thought that iron wood would cost much more.";
+            dialog.text = "Очень хорошо. Сколько у вас товара? "+FindRussianQtyString(iTotalTemp)+"? Отлично! Я заплачу вам по 150 песо за единицу товара.";
+			link.l1 = "По 150 песо? Но мне кажется, что это дерево стоит гораздо дороже...";
 			link.l1.go = "mtraxx_10";
 		break;
 		
@@ -123,16 +123,16 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "mtraxx_7":
-            dialog.text = "Rats? Well, well... Whatever. 100 pesos for a piece and off you go.";
-			link.l1 = "100 pesos only? This is a robbery!";
+            dialog.text = "Крысы? Ну-ну... Впрочем, ладно. Я заплачу вам по 100 песо за единицу товара и можете быть свободны.";
+			link.l1 = "Всего по 100 песо? Но это же грабеж!";
 			link.l1.go = "mtraxx_8";
 		break;
 		
 		case "mtraxx_8":
 			AddMoneyToCharacter(pchar, iTotalTemp*100);
 			RemoveCharacterGoods(pchar, GOOD_EBONY, iTotalTemp);
-            dialog.text = "Robbery is your thing captain, I am only but a merchant. Take your money and let's go no further with arguments - you have already made a good sum, selling a part of my cargo elsewhere.";
-			link.l1 = "Screw you then!";
+            dialog.text = "Грабеж - это по вашей части, капитан, а я просто торговец. Берите ваши деньги и прекратим эти споры - вы и так нажились на мне, сбыв где-то часть моего товара...";
+			link.l1 = "Ну и черт с вами!";
 			link.l1.go = "mtraxx_9";
 		break;
 		
@@ -145,16 +145,16 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "mtraxx_10":
-            dialog.text = "And you are right captain, but first, try selling stolen goods and see how much are they willing to pay you for them. My price is golden, compared. Second, it was my lead, you would never find that caravan on your own, plus there were other valuables and goods on it and I am not claiming them. Third, I will give you best credits in the eyes of Marcus Tyrex and this costs a lot, trust me. And finally, fourth, a poor merchant must make a living somehow.";
-			link.l1 = "Whoa! I must retreat in the face of such arguments "+npchar.name+". Let's do counting.";
+            dialog.text = "Вам правильно кажется, капитан, но во-первых, попробуйте продать дороже награбленный товар - я посмотрю, сколько вам за него заплатят. Цена, предложенная вам, очень высока. Во-вторых, без моей наводки вы бы никогда не нашли этот караван, а там, кроме дерева, было наверняка что-то еще, но, заметьте - я не требую от вас более ничего. В-третьих, я похвалю вас перед Маркусом Тираксом, а это - поверьте - дорогого стоит. Ну и в-четвертых, должен же бедный торговец на что-то жить.";
+			link.l1 = "Ух! Под градом таких аргументов я отступаю, "+npchar.name+". Приступим к расчету.";
 			link.l1.go = "mtraxx_11";
 		break;
 		
 		case "mtraxx_11":
 			AddMoneyToCharacter(pchar, iTotalTemp*150);
 			RemoveCharacterGoods(pchar, GOOD_EBONY, iTotalTemp);
-            dialog.text = "Splendid. Take your coins. It was a pleasure. Make sure to check my place from time to time. May you be fortunate in the sea!";
-			link.l1 = "And you in the trade...";
+            dialog.text = "Вот и славно. Получите ваши деньги. Было приятно с вами работать. Заглядывайте, не забывайте. Удачи в море!";
+			link.l1 = "И вам успехов в торговле...";
 			link.l1.go = "mtraxx_12";
 		break;
 		

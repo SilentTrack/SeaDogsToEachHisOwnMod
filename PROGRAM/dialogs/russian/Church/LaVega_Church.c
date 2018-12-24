@@ -4,8 +4,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-            dialog.text = RandPhraseSimple("What kind of questions?", "What do you want?");
-			link.l1 = RandPhraseSimple("I have changed my mind.", "I've got nothing to say to you");
+            dialog.text = RandPhraseSimple("Какие вопросы?", "Что вас угодно?");
+			link.l1 = RandPhraseSimple("Я передумал...", "Сейчас мне не о чем говорить");
 		    link.l1.go = "exit";
 		break;
 	}

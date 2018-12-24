@@ -4,33 +4,33 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat("All the rumors of "+ GetCityName(npchar.city) +" at your service. What would you like to find out?",
-                          "We were just talking about that. You must have forgotten...", "This is the third time today you're talking about some question...",
-                          "you're harping like a parrot the same...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("You know, " + NPChar.name + ", maybe next time.", "Right, I've forgotten for some reason...",
-                      "Yes, it really is the third time...", "Yep...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat("Все сплетни города "+ GetCityName(npchar.city) +" к вашим услугам. Что бы вы хотели узнать?",
+                          "Мы только что поднимали это тему. Вы, вероятно, запамятовали...", "Сегодня вы уже третий раз говорите о каком-то вопросе...",
+                          "Что ты "+ GetSexPhrase("заладил","заладила") +" как попугай одно и то же...", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Знаешь, " + NPChar.name + ", как-нибудь в следующий раз.", "Точно, забыл что-то...",
+                      "Да уж, действительно в третий раз...", "Да уж...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			if (pchar.questTemp.Slavetrader == "FindRatJamaica")
             {
-                link.l1 = "Do you know where I can find Francois Gontier by any chance?";
+                link.l1 = "Ты не знаешь, где я могу найти Франсуа Гонтьера?";
                 link.l1.go = "Jamaica_ratP_1";
             }
 			// Страж Истины
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "merdok" && !CheckAttribute(npchar, "quest.jino"))
 			{
-				link.l1 = "Listen, has there been an alchemist that arrived here in this town, a physician? He's Italian, about thirty years old, his name is Gino Gvineili. Have you heard anything about that?";
+				link.l1 = "Послушай, не появлялся ли у вас в городе ученый-алхимик, лекарь? Он итальянец, лет тридцати, зовут Джино Гвинейли. Не слыхал о таком?";
 				link.l1.go = "guardoftruth";
 			}
 		break;
 
 		case "Jamaica_ratP_1":
-			dialog.text = NPCStringReactionRepeat("I haven't the slightest clue. I've never even heard that name before.", "You've already asked about that and I've answered you.", "I told you, you've already asked about that Gontier.", "Listen, walk away and quit bothering me! Have you completely lost your noggin?", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Well then, we'll have to look.", "Hm, I guess so...", "Yes, right, I've asked that...", "Sorry, " + npchar.name + "...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat("Без малейшего понятия. Я вообще впервые слышу это имя.", "Ты уже "+ GetSexPhrase("спрашивал","спрашивала") +" об этом, я тебе ответил.", "Я же говорю тебе, ты уже "+ GetSexPhrase("спрашивал","спрашивала") +" об этом Гонтьере.", "Послушай, отойди и не мешай! Совсем что ли крыша поехала?", "block", 0, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Ну что же, будем искать.", "Хм, ну да...", "Да, точно, "+ GetSexPhrase("спрашивал","спрашивала") +"...", "Извини, " + npchar.name + "...", npchar, Dialog.CurrentNode);
 		break;
 		
 		case "guardoftruth":
-			dialog.text = LinkRandPhrase("No, I haven't. We've got herbalists and physicians, but none with a name like that.","This is the first time I've heard such a weird name. No, we've never had a visit from the man you speak of.","We don't even have any alchemists here at all. We've got physicians, but none with a weird name like that.");
-			link.l1 = "I see. That's too bad. I'll continue searching!";
+			dialog.text = LinkRandPhrase("Нет, не слыхал. Есть у нас травники, и лекари - но ни одного с таким именем.","Впервые такое чудное имя слышу. Нет, таких у нас отродясь не водилось.","Да у нас и вовсе никаких алхимиков нет. Лекари есть, но ни одного с таким чудным именем.");
+			link.l1 = "Ясно. Жаль. Буду искать дальше!";
 			link.l1.go = "exit";
 			npchar.quest.jino = "true";
 		break;

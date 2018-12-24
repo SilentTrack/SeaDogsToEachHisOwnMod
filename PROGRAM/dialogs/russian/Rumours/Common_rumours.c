@@ -18,34 +18,34 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
         string posrep1, posrep2, answ1, answ2, answ3, answ4;
         if (RumourHasInformation(srum))
         {
-            posrep1 = RandPhraseSimple(" This is it...", " You might find it funny.");
-            posrep2 = " Hey, captain, do you have any news for our colony to tell?";
-            answ1 = RandPhraseSimple(RandSwear() + "You are saying interesting things, "+GetFullName(NPChar)+".",
-                                 "Then tell me about...");
-            answ2 = RandPhraseSimple(RandSwear() + "Interesting! There is one more thing I wanted to ask...","One more question.");
-            answ3 = RandPhraseSimple("All kinds of stuff happen all the time. Sorry, but I have nothing special to tell you. ","I am quite in a hurry, so next time perhaps.");
+            posrep1 = RandPhraseSimple(" Такие вот дела...", " Возможно, вас это позабавит.");
+            posrep2 = " А у вас, капитан, есть какие-нибудь известия для нашей колонии?";
+            answ1 = RandPhraseSimple(RandSwear() + "Интересные вещи ты рассказываешь, "+GetFullName(NPChar)+".",
+                                 "Тогда расскажи мне еще...");
+            answ2 = RandPhraseSimple(RandSwear() + "Это очень интересно! Вот что еще хотел"+ GetSexPhrase("","а") +" спросить...","Еще вопрос.");
+            answ3 = RandPhraseSimple("Чего только не случается на свете. Мне жаль, но никаких новостей у меня нет. ","Я немного спешу, так что как-нибудь в другой раз.");
             answ4 = "";
         }
         else
         {
-            posrep1 = " It is quite a dull place here. So if something does happen, then everyone will talk about it.";
-            posrep2 = " Nothing of interest. " + GetAddress_Form(NPChar) + " might know something?";
-            answ1 = RandPhraseSimple("Then tell me about...",RandSwear() + "You know nothing! Fine, another topic...");
-            answ2 = RandPhraseSimple("Whatever, just tell me something else...","Yeah, you were not much of a help, got anything else to share with me?");
-            answ3 = RandPhraseSimple("I doubt that I have got anything of interest to tell you.","It will be my pleasure, but let's talk next time.");
+            posrep1 = " У нас вообще редко что-либо происходит. Но если же произойдет что-то необычное, то все об этом только и говорят.";
+            posrep2 = " Так что новостей никаких. Но может " + GetAddress_Form(NPChar) + " капитан что-то знает?";
+            answ1 = RandPhraseSimple("Тогда расскажи-ка мне лучше...",RandSwear() + "Ты ничего не знаешь! Ладно, вот что еще хотел"+ GetSexPhrase("","а") +" спросить...");
+            answ2 = RandPhraseSimple("Говоришь, не знаешь, ладно, скажи мне тогда...","Да, не сильно ты мне помог"+NPCharSexPhrase(NPChar, "","ла")+", но, может, ты знаешь что-то еще?");
+            answ3 = RandPhraseSimple("Не думаю, что знаю что-то что, могло бы вас заинтересовать.","Я с удовольствием что-нибудь расскажу, но как-нибудь в другой раз.");
             answ4 = "";
         }
 		Dialog.Text = NPCStringReactionRepeat(srum,
             srum+posrep1,
             srum+posrep2,
-            RandPhraseSimple("Alas, nothing more to tell ya, let me pass.","I had enough of your questions, excuse me, I have got business to attend to."),"block", 1, npchar, Dialog.CurrentNode);
+            RandPhraseSimple("К сожалению, больше я ничего не знаю, позвольте мне идти.","Вы утомили меня своими расспросами, прошу меня простить, но меня ждут дела."),"block", 1, npchar, Dialog.CurrentNode);
         link.l1 = HeroStringReactionRepeat(answ1,
                                             answ2,
                                             answ3,
                                             answ4,
                                             npchar, Dialog.CurrentNode);
 		link.l1.go = "new question";
-		link.l2 = RandPhraseSimple("Thanks, I should go.","Farewell.");
+		link.l2 = RandPhraseSimple("Спасибо, долж"+ GetSexPhrase("ен","на") +" откланяться.","Всего хорошего.");
 		link.l2.go = "exit";
 	break;
 
@@ -58,34 +58,34 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
         else srum = NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)]; // fix
         if (RumourHasInformation(srum))
         {
-            posrep1 = RandPhraseSimple(" This is it...", " You might find it funny.");
-            posrep2 = " Hey, captain, do you have any news for our colony to tell?";
-            answ1 = RandPhraseSimple(RandSwear() + "You are saying interesting things, "+GetFullName(NPChar)+".",
-                                 "Then tell me about...");
-            answ2 = RandPhraseSimple(RandSwear() + "Interesting! There is one more thing I wanted to ask...","One more question.");
-            answ3 = RandPhraseSimple("All kinds of stuff happen all the time. Sorry, but I have nothing special to tell you. ","I am quite in a hurry, so next time perhaps.");
+            posrep1 = RandPhraseSimple(" Такие вот дела...", " Возможно, вас это позабавит.");
+            posrep2 = " А у вас, капитан, есть какие-нибудь известия для нашей колонии?";
+            answ1 = RandPhraseSimple(RandSwear() + "Интересные вещи ты рассказываешь, "+GetFullName(NPChar)+".",
+"Тогда расскажи мне еще...");
+            answ2 = RandPhraseSimple(RandSwear() + "Это очень интересно! Вот что еще хотел"+ GetSexPhrase("","а") +" спросить...","Еще вопрос.");
+            answ3 = RandPhraseSimple("Чего только не случается на свете. Мне жаль, но никаких новостей у меня нет. ","Я немного спешу, так что как-нибудь в другой раз.");
             answ4 = "";
         }
         else
         {
-            posrep1 = " It is quite a dull place here. So if something does happen, then everyone will talk about it.";
-            posrep2 = " Nothing of interest. " + GetAddress_Form(NPChar) + " might know something?";
-            answ1 = RandPhraseSimple("Then tell me about...",RandSwear() + "You know nothing! Fine, another topic...");
-            answ2 = RandPhraseSimple("Whatever, just tell me something else...","Yeah, you were not much of a help, got anything else to share with me?");
-            answ3 = RandPhraseSimple("I doubt that I have got anything of interest to tell you.","It will be my pleasure, but let's talk next time.");
+            posrep1 = " У нас вообще редко что-либо происходит. Но если же произойдет что-то необычное, то все об этом только и говорят.";
+            posrep2 = " Так что новостей никаких. Но может " + GetAddress_Form(NPChar) + " капитан что-то знает?";
+            answ1 = RandPhraseSimple("Тогда расскажи-ка мне лучше...",RandSwear() + "Ты ничего не знаешь! Ладно, вот что еще хотел"+ GetSexPhrase("","а") +" спросить...");
+            answ2 = RandPhraseSimple("Говоришь, не знаешь, ладно, скажи мне тогда...","Да, не сильно ты мне помог"+NPCharSexPhrase(NPChar, "","ла")+", но, может, ты знаешь что-то еще?");
+            answ3 = RandPhraseSimple("Не думаю, что знаю что-то что, могло бы вас заинтересовать.","Я с удовольствием что-нибудь расскажу, но как-нибудь в другой раз.");
             answ4 = "";
         }
 		Dialog.Text = NPCStringReactionRepeat(srum,
             srum+posrep1,
             srum+posrep2,
-            RandPhraseSimple("Alas, nothing more to tell ya, let me pass.","I had enough of your questions, excuse me, I have got business to attend to."),"block", 1, npchar, Dialog.CurrentNode);
+            RandPhraseSimple("К сожалению, больше я ничего не знаю, позвольте мне идти.","Вы утомили меня своими расспросами, прошу меня простить, но меня ждут дела."),"block", 1, npchar, Dialog.CurrentNode);
         link.l1 = HeroStringReactionRepeat(answ1,
-                                            answ2,
-                                            answ3,
-                                            answ4,
-                                            npchar, Dialog.CurrentNode);
+            answ2,
+            answ3,
+            answ4,
+            npchar, Dialog.CurrentNode);
 		link.l1.go = "new question";
-		link.l2 = RandPhraseSimple("Thanks, I should go.","Farewell.");
+		link.l2 = RandPhraseSimple("Спасибо, долж"+ GetSexPhrase("ен","на") +" откланяться.","Всего хорошего.");
 		link.l2.go = "exit";
 	break;
 	
@@ -98,34 +98,34 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
         else srum = NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)]; // fix
         if (RumourHasInformation(srum))
         {
-            posrep1 = RandPhraseSimple(" This is it...", " You might find it funny.");
-            posrep2 = " Hey, captain, do you have any news for our colony to tell?";
-            answ1 = RandPhraseSimple(RandSwear() + "You are saying interesting things, "+GetFullName(NPChar)+".",
-                                 "Then tell me about...");
-            answ2 = RandPhraseSimple(RandSwear() + "Whatever, just tell me something else...","Yeah, you were not much of a help, got anything else to share with me?");
-            answ3 = RandPhraseSimple("All kinds of stuff happen all the time. Sorry, but I have nothing special to tell you. ","I am quite in a hurry, so next time perhaps.");
+            posrep1 = RandPhraseSimple(" Такие вот дела...", " Возможно, вас это позабавит.");
+            posrep2 = " А у вас, капитан, есть какие-нибудь известия для нашей колонии?";
+            answ1 = RandPhraseSimple(RandSwear() + "Интересные вещи ты рассказываешь, "+GetFullName(NPChar)+".",
+"Тогда расскажи мне еще...");
+            answ2 = RandPhraseSimple(RandSwear() + "Это очень интересно! Вот что еще хотел"+ GetSexPhrase("","а") +" спросить...","Еще вопрос.");
+            answ3 = RandPhraseSimple("Чего только не случается на свете. Мне жаль, но никаких новостей у меня нет. ","Я немного спешу, так что как-нибудь в другой раз.");
             answ4 = "";
         }
         else
         {
-            posrep1 = " It is quite a dull place here. So if something does happen, then everyone will talk about it.";
-            posrep2 = " Nothing of interest. " + GetAddress_Form(NPChar) + " might know something?";
-            answ1 = RandPhraseSimple("Then tell me about...",RandSwear() + "You know nothing! Fine, another topic...");
-            answ2 = RandPhraseSimple("Whatever, just tell me something else...","Yeah, you were not much of a help, got anything else to share with me?");
-            answ3 = RandPhraseSimple("I doubt that I have got anything of interest to tell you.","It will be my pleasure, but let's talk next time.");
+            posrep1 = " У нас вообще редко что-либо происходит. Но если же произойдет что-то необычное, то все об этом только и говорят.";
+            posrep2 = " Так что новостей никаких. Но может " + GetAddress_Form(NPChar) + " капитан что-то знает?";
+            answ1 = RandPhraseSimple("Тогда расскажи-ка мне лучше...",RandSwear() + "Ты ничего не знаешь! Ладно, вот что еще хотел"+ GetSexPhrase("","а") +" спросить...");
+            answ2 = RandPhraseSimple("Говоришь, не знаешь, ладно, скажи мне тогда...","Да, не сильно ты мне помог"+NPCharSexPhrase(NPChar, "","ла")+", но, может, ты знаешь что-то еще?");
+            answ3 = RandPhraseSimple("Не думаю, что знаю что-то что, могло бы вас заинтересовать.","Я с удовольствием что-нибудь расскажу, но как-нибудь в другой раз.");
             answ4 = "";
         }
 		Dialog.Text = NPCStringReactionRepeat(srum,
             srum+posrep1,
             srum+posrep2,
-            RandPhraseSimple("Alas, nothing more to tell ya, let me pass.","I had enough of your questions, excuse me, I have got business to attend to."),"block", 1, npchar, Dialog.CurrentNode);
+            RandPhraseSimple("К сожалению, больше я ничего не знаю, позвольте мне идти.","Вы утомили меня своими расспросами, прошу меня простить, но меня ждут дела."),"block", 1, npchar, Dialog.CurrentNode);
         link.l1 = HeroStringReactionRepeat(answ1,
             answ2,
             answ3,
             answ4,
             npchar, Dialog.CurrentNode);
 		link.l1.go = "question";
-		link.l2 = RandPhraseSimple("Thanks, I should go.","Farewell.");
+		link.l2 = RandPhraseSimple("Спасибо, долж"+ GetSexPhrase("ен","на") +" откланяться.","Всего хорошего.");
 		link.l2.go = "exit";
 	break;
 	
@@ -134,34 +134,34 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
         srum = SelectRumourEx("nobleman", NPChar);
         if (RumourHasInformation(srum))
         {
-            posrep1 = RandPhraseSimple(" This is it...", " You might find it funny.");
-            posrep2 = " Hey, captain, do you have any news for our colony to tell?";
-            answ1 = RandPhraseSimple(RandSwear() + "You are saying interesting things, "+GetFullName(NPChar)+".",
-                                 "Then tell me about...");
-            answ2 = RandPhraseSimple(RandSwear() + "Whatever, just tell me something else...","Yeah, you were not much of a help, got anything else to share with me?");
-            answ3 = RandPhraseSimple("All kinds of stuff happen all the time. Sorry, but I have nothing special to tell you. ","I am quite in a hurry, so next time perhaps.");
+            posrep1 = RandPhraseSimple(" Такие вот дела...", " Так вот.");
+            posrep2 = " Да, и это всё. Мне больше нечего добавить к сказанному.";
+            answ1 = RandPhraseSimple("Интересные вещи вы рассказываете, сударь! Но может, позволите еще вопрос...",
+"Разрешите еще вопрос...");
+            answ2 = RandPhraseSimple("Это очень интересно! Вот что еще хотел"+ GetSexPhrase("","а") +" спросить...","Еще один вопрос, пожалуйста.");
+            answ3 = RandPhraseSimple("Чего только не случается на свете! Можно еще спросить...","Благодарю вас, сударь. Но может, вы еще знаете...");
             answ4 = "";
         }
         else
         {
-            posrep1 = " It is quite a dull place here. So if something does happen, then everyone will talk about it.";
-            posrep2 = " Nothing of interest. " + GetAddress_Form(NPChar) + " might know something?";
-            answ1 = RandPhraseSimple("Then tell me about...",RandSwear() + "You know nothing! Fine, another topic...");
-            answ2 = RandPhraseSimple("Whatever, just tell me something else...","Yeah, you were not much of a help, got anything else to share with me?");
-            answ3 = RandPhraseSimple("I doubt that I have got anything of interest to tell you.","It will be my pleasure, but let's talk next time.");
+            posrep1 = " У нас вообще редко что-либо происходит. Но если же произойдет что-то необычное, то все об этом только и говорят.";
+            posrep2 = " Так что новостей никаких. Но может " + GetAddress_Form(NPChar) + " капитан что-то знает?";
+            answ1 = RandPhraseSimple("Тогда расскажи-ка мне лучше...",RandSwear() + "Ты ничего не знаешь! Ладно, вот что еще хотел"+ GetSexPhrase("","а") +" спросить...");
+            answ2 = RandPhraseSimple("Говоришь, не знаешь, ладно, скажи мне тогда...","Да, не сильно ты мне помог"+NPCharSexPhrase(NPChar, "","ла")+", но, может, ты знаешь что-то еще?");
+            answ3 = RandPhraseSimple("Не думаю, что знаю что-то что, могло бы вас заинтересовать.","Я с удовольствием что-нибудь расскажу, но как-нибудь в другой раз.");
             answ4 = "";
         }
 		Dialog.Text = NPCStringReactionRepeat(srum,
             srum+posrep1,
             srum+posrep2,
-            RandPhraseSimple("I trust that I have made my point - I am done.","I had enough of your questions, captain. Go find something better to do!"),"block", 1, npchar, Dialog.CurrentNode);
+            RandPhraseSimple("Я, кажется, понятно выразился - у меня всё.","Вы утомили меня своими расспросами, капитан. Идите, займитесь делом, наконец!"),"block", 1, npchar, Dialog.CurrentNode);
         link.l1 = HeroStringReactionRepeat(answ1,
             answ2,
             answ3,
             answ4,
             npchar, Dialog.CurrentNode);
 		link.l1.go = "question";
-		link.l2 = RandPhraseSimple("Thanks, I should go.","Farewell.");
+		link.l2 = RandPhraseSimple("Спасибо, долж"+ GetSexPhrase("ен","на") +" откланяться.","Всего хорошего.");
 		link.l2.go = "exit";
 	break;
 	
@@ -170,34 +170,33 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
         srum = SelectRumourEx("noblegirl", NPChar);
         if (RumourHasInformation(srum))
         {
-            posrep1 = RandPhraseSimple(" This is it...", " You might find it funny.");
-            posrep2 = " Hey, captain, do you have any news for our colony to tell?";
-            answ1 = RandPhraseSimple(RandSwear() + "You are saying interesting things, "+GetFullName(NPChar)+".",
-                                 "Then tell me about...");
-            answ2 = RandPhraseSimple(RandSwear() + "Whatever, just tell me something else...","Yeah, you were not much of a help, got anything else to share with me?");
-            answ3 = RandPhraseSimple("All kinds of stuff happen all the time. Sorry, but I have nothing special to tell you. ","I am quite in a hurry, so next time perhaps.");
+            posrep1 = RandPhraseSimple(" Такие вот дела...", " Возможно, вас это позабавит.");
+            posrep2 = " Да, и это всё. Мне больше нечего добавить к сказанному.";
+            answ1 = RandPhraseSimple("Интересные вещи вы рассказываете, сударыня! Но может, позволите еще вопрос...", "Разрешите еще вопрос...");
+            answ2 = RandPhraseSimple("Это очень интересно! Вот что еще хотел"+ GetSexPhrase("","а") +" спросить...","Еще один вопрос, пожалуйста.");
+            answ3 = RandPhraseSimple("Чего только не случается на свете! Можно еще спросить...","Благодарю вас, сударыня. Но может, вы еще знаете...");
             answ4 = "";
         }
         else
         {
-            posrep1 = " It is quite a dull place here. So if something does happen, then everyone will talk about it.";
-            posrep2 = " Nothing of interest. " + GetAddress_Form(NPChar) + " might know something?";
-            answ1 = RandPhraseSimple("Then tell me about...",RandSwear() + "You know nothing! Fine, another topic...");
-            answ2 = RandPhraseSimple("Whatever, just tell me something else...","Yeah, you were not much of a help, got anything else to share with me?");
-            answ3 = RandPhraseSimple("I doubt that I have got anything of interest to tell you.","It will be my pleasure, but let's talk next time.");
+            posrep1 = " У нас вообще редко что-либо происходит. Но если же произойдет что-то необычное, то все об этом только и говорят.";
+            posrep2 = " Так что новостей никаких. Но может " + GetAddress_Form(NPChar) + " капитан что-то знает?";
+            answ1 = RandPhraseSimple("Тогда расскажи-ка мне лучше...",RandSwear() + "Ты ничего не знаешь! Ладно, вот что еще хотел"+ GetSexPhrase("","а") +" спросить...");
+            answ2 = RandPhraseSimple("Говоришь, не знаешь, ладно, скажи мне тогда...","Да, не сильно ты мне помог"+NPCharSexPhrase(NPChar, "","ла")+", но, может, ты знаешь что-то еще?");
+            answ3 = RandPhraseSimple("Не думаю, что знаю что-то что, могло бы вас заинтересовать.","Я с удовольствием что-нибудь расскажу, но как-нибудь в другой раз.");
             answ4 = "";
         }
 		Dialog.Text = NPCStringReactionRepeat(srum,
             srum+posrep1,
             srum+posrep2,
-            RandPhraseSimple("I trust that I have made my point - I am done.","I had enough of your questions, captain. Go find something better to do!"),"block", 1, npchar, Dialog.CurrentNode);
+            RandPhraseSimple("Я, кажется, понятно выразилась - у меня всё.","Вы утомили меня своими расспросами, капитан. Идите, займитесь делом, наконец!"),"block", 1, npchar, Dialog.CurrentNode);
         link.l1 = HeroStringReactionRepeat(answ1,
             answ2,
             answ3,
             answ4,
             npchar, Dialog.CurrentNode);
 		link.l1.go = "question";
-		link.l2 = RandPhraseSimple("Thanks, I should go.","Farewell.");
+		link.l2 = RandPhraseSimple("Спасибо, долж"+ GetSexPhrase("ен","на") +" откланяться.","Всего хорошего.");
 		link.l2.go = "exit";
 	break;
 	
@@ -209,57 +208,57 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
         else srum = NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)]; // fix
         if (RumourHasInformation(srum))
         {
-            posrep1 = RandPhraseSimple(" This is it...", " You might find it funny.");
-            posrep2 = " Hey, captain, do you have any news for our colony to tell?";
-            answ1 = RandPhraseSimple(RandSwear() + "You are saying interesting things, "+GetFullName(NPChar)+".",
-                                 "Then tell me about...");
-            answ2 = RandPhraseSimple(RandSwear() + "Whatever, just tell me something else...","Yeah, you were not much of a help, got anything else to share with me?");
-            answ3 = RandPhraseSimple("All kinds of stuff happen all the time. Sorry, but I have nothing special to tell you. ","I am quite in a hurry, so next time perhaps.");
+            posrep1 = RandPhraseSimple(" Такие вот дела...", " Возможно, вас это позабавит.");
+            posrep2 = " А у вас, капитан, есть какие-нибудь известия для нашей колонии?";
+            answ1 = RandPhraseSimple(RandSwear() + "Интересные вещи ты рассказываешь, "+GetFullName(NPChar)+".",
+"Тогда расскажи мне еще...");
+            answ2 = RandPhraseSimple(RandSwear() + "Это очень интересно! Вот что еще хотел"+ GetSexPhrase("","а") +" спросить...","Еще вопрос.");
+            answ3 = RandPhraseSimple("Чего только не случается на свете. Мне жаль, но никаких новостей у меня нет. ","Я немного спешу, так что как-нибудь в другой раз.");
             answ4 = "";
         }
         else
         {
-            posrep1 = " It is quite a dull place here. So if something does happen, then everyone will talk about it.";
-            posrep2 = " Nothing of interest. " + GetAddress_Form(NPChar) + " might know something?";
-            answ1 = RandPhraseSimple("Then tell me about...",RandSwear() + "You know nothing! Fine, another topic...");
-            answ2 = RandPhraseSimple("Whatever, just tell me something else...","Yeah, you were not much of a help, got anything else to share with me?");
-            answ3 = RandPhraseSimple("I doubt that I have got anything of interest to tell you.","It will be my pleasure, but let's talk next time.");
+            posrep1 = " У нас вообще редко что-либо происходит. Но если же произойдет что-то необычное, то все об этом только и говорят.";
+            posrep2 = " Так что новостей никаких. Но может " + GetAddress_Form(NPChar) + " капитан что-то знает?";
+            answ1 = RandPhraseSimple("Тогда расскажи-ка мне лучше...",RandSwear() + "Ты ничего не знаешь! Ладно, вот что еще хотел"+ GetSexPhrase("","а") +" спросить...");
+            answ2 = RandPhraseSimple("Говоришь, не знаешь, ладно, скажи мне тогда...","Да, не сильно ты мне помог"+NPCharSexPhrase(NPChar, "","ла")+", но, может, ты знаешь что-то еще?");
+            answ3 = RandPhraseSimple("Не думаю, что знаю что-то что, могло бы вас заинтересовать.","Я с удовольствием что-нибудь расскажу, но как-нибудь в другой раз.");
             answ4 = "";
         }
 		Dialog.Text = NPCStringReactionRepeat(srum,
             srum+posrep1,
             srum+posrep2,
-            RandPhraseSimple("Alas, nothing more to tell ya, let me pass.","I had enough of your questions, excuse me, I have got business to attend to."),"block", 1, npchar, Dialog.CurrentNode);
+            RandPhraseSimple("К сожалению, больше я ничего не знаю, позвольте мне идти.","Вы утомили меня своими расспросами, прошу меня простить, но меня ждут дела."),"block", 1, npchar, Dialog.CurrentNode);
         link.l1 = HeroStringReactionRepeat(answ1,
             answ2,
             answ3,
             answ4,
             npchar, Dialog.CurrentNode);
 		link.l1.go = "question";
-		link.l2 = RandPhraseSimple("Thanks, I should go.","Farewell.");
+		link.l2 = RandPhraseSimple("Спасибо, долж"+ GetSexPhrase("ен","на") +" откланяться.","Всего хорошего.");
 		link.l2.go = "exit";
 	break;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	case "rumours_habitue":
-		Dialog.Text = LinkRandPhrase("Well... hic! ","Eh, what a rum! ","Well... ")+SelectRumourEx("habitue", NPChar);
-		link.l1 = RandPhraseSimple(RandSwear() + "This is worth an extra cup...",
-                                 "This is worth of an extra cup.");
+		Dialog.Text = LinkRandPhrase("Ну... И-ик! ","Эх, какой ром! ","Н-да... ")+SelectRumourEx("habitue", NPChar);
+		link.l1 = RandPhraseSimple(RandSwear() + "За это надо выпить еще кружечку...",
+                                 "Хорошо. Давай еще по одной.");
 		link.l1.go = "sit_3";
-		link.l2 = RandPhraseSimple("Thanks, I should go.",
-                                 "Eh, helluva rum. Fine, I should go, have fun here.");
+		link.l2 = RandPhraseSimple("Спасибо, долж"+ GetSexPhrase("ен","на") +" откланяться.",
+                                 "Эх, забористый ром. Ладно, мне уже пора, удачно посидеть.");
 		link.l2.go = "exit_sit";
 
 		//-->работорговец
 		if (pchar.questTemp.Slavetrader == "FindRatJamaica_H" && npchar.location == "FortOrange_tavern")
         {
-			dialog.text = "(singing some crappy tavern song) Hey, sailor, how are you doing? How is the sea?";
-            link.l1 = "Sea? Same shit as always. Salt and wet. I say, tell me about my pal who rented a room here not long ago? Gontier was his name.";
+			dialog.text = "(поет) Однажды мне встре-етился гамбургский шип. На мачтах - мокрицы и пле-есенный гриб, обшивка гнила-ая, в ракушках корма. Клопов полон ку-убрик, а камбуз - дерьма... Как жизнь, моря"+ GetSexPhrase("к","чка") +", рассказывай. Как оно там, в море?";
+            link.l1 = "Да в море все так же, как и всегда - сыро и солоно. Ты вот скажи лучше, не знаешь ли, куда ушел мой приятель, который тут комнату снимал недавно? Франсуа Гонтьер его зовут.";
             link.l1.go = "Jamaica_ratH_1";
         }
 		if (pchar.questTemp.Slavetrader == "EscapeSlaveVillemstad_H" && npchar.location == "Villemstad_tavern")
         {
-			dialog.text = "(singing some crappy tavern song) Pour, sailor! First day ashore, still trying to pull myself back.";
-            link.l1 = "Have a drink, pal! How is the sea?";
+			dialog.text = "(поет) Я бла-агода-арен виски за свой багро-овый нос, и по-о его-о совету пальто в закла-ад отнес... Эх, наливай, моря"+ GetSexPhrase("к","чка") +"! Я только вчера из рейса, поэтому еще немного не в себе.";
+            link.l1 = "Угощайся, приятель! Ну, и как там в море, что интересного видел?";
             link.l1.go = "EscapeSlave_Villemstad_H1";
         }
 		//<--работорговец
@@ -267,8 +266,8 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
 		//Голландский Гамбит, против всех
 		if (CheckAttribute(pchar, "questTemp.HWIC.Self") && pchar.questTemp.HWIC.Self == "LetterToLucasSent" && npchar.location == "Villemstad_tavern")
         {
-			dialog.text = "Eh, the sea... I wish I was in your shoes!";
-            link.l1 = "Don't see any problems, friend. Join my crew anytime.";
+			dialog.text = "Эх, море, море... Как бы я хотел быть на вашем месте!";
+            link.l1 = "Ну так в чем проблема, дружище? Айда ко мне матросом на корабль.";
             link.l1.go = "Lucas_Tavern";
         }
 		//Голландский Гамбит
@@ -276,8 +275,8 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
 		//--> поиск дезертира
 		if (CheckAttribute(pchar, "GenQuest.FindFugitive") && sti(NPChar.nation) == PIRATE && !CheckAttribute(npchar, "quest.fugitive"))
         {
-			dialog.text = LinkRandPhrase("Have a rum, go brave and find a thousand of friends! Ha-ha!","After a decent cup of rum even a jailer will seem lovely! Ha-ha!","Rum and ale will lead you to heavens, so drink, dammit! Ha!");
-            link.l1 = "Sure, let's share a drink… Tell me, good man, do you know "+pchar.GenQuest.FindFugitive.Name+"? He is my old squad mate. Some fellas told me that he moved his arse to this place...";
+			dialog.text = LinkRandPhrase("Выпей рому, посмелей, сразу будет сто друзей! Ха-ха!","Опрокинешь добрую кружку - и тюремщик покажется душкой! Ха-ха!","Ром и эль покажут рай - наливай, да выпивай! Ха-ха!");
+            link.l1 = "Выпьем, выпьем, дружище... Скажи-ка мне, любезный, не появлялся ли в вашем поселке человек по имени "+pchar.GenQuest.FindFugitive.Name+"? Он - мой бывший сослуживец. Добрые люди сказали, что он направил свои стопы именно сюда...";
             link.l1.go = "FindFugitiveHb";
         }
 		//<-- поиск дезертира
@@ -285,14 +284,14 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
 		// карибские нравы
 		if (CheckAttribute(pchar, "questTemp.Trial") && pchar.questTemp.Trial == "spy" && npchar.location == "Portobello_tavern")
 		{
-			dialog.text = "News? Hic! Haven't you heard already? Our soldiers captured a French spy. Fucking pretender, tried to act like a merchant, but *hic* - our commander is a tough bastard!";
-            link.l1 = "You don't say! And what did that frog eater tried to sniff out?";
+			dialog.text = "А какие тут у нас новости? И-ик! А разве ничего не слыхал? Изловила наша стража французского шпиона. Торговцем прикидывался, шельма, но... ик! - с нашим комендантом не забалуешь!";
+            link.l1 = "Да ну! И что же этот лягушатник тут высматривал?";
             link.l1.go = "trial_spy";
 		}
 		if(CheckAttribute(PChar, "GenQuest.ChurchQuest_2.AskAlcash") && PChar.location == PChar.GenQuest.ChurchQuest_2.QuestTown + "_tavern")
 	    {
-			dialog.text = "Eh, " + GetAddress_Form(pchar) + " what a world are we living at... Shitty people all around!";
-			link.l1 = "What do you mean, pal?";
+			dialog.text = "Эх, " + GetAddress_Form(pchar) + " что за жизнь нынче пошла... Ничего святого в людишках не осталось!";
+			link.l1 = "О чём это ты, приятель?";
 			link.l1.go = "Alcogol_GenQuest_Church_2_1";
 		}
 	break;
@@ -301,23 +300,23 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
             if (!CheckAttribute(NPChar, "quest.repeat.rumours_trader") || NPChar.quest.repeat.rumours_trader!= 3 )
             strum = SelectRumourEx("trader", NPChar);
             else strum = NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)]; // fix
-			Dialog.Text =  NPCStringReactionRepeat(strum, strum+" Yup. Nothing more to tell.",
-                strum+" Now I should get to business.",RandPhraseSimple("I have already told you, that I don't have time for a chit chat!","I am a busy man, I don't have time to talk gossip!"),"block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(pcharrepphrase(RandSwear() + "Interesting! But let's get to the point","Gratitude, here is one more thing."), pcharrepphrase(""+ GetSexPhrase("Damn me","Interesting") +"! Nice talker. But I have one more question.","Let's not waste more time and talk business."),
-pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, time is money."),pcharrepphrase("Always thinking only about your own profits. Fine, don't go mad.","Forgive me. Let's talk business."),npchar, Dialog.CurrentNode);
+			Dialog.Text =  NPCStringReactionRepeat(strum, strum+" Да. Больше ничего не припомню.",
+                strum+" А сейчас мне нужно вернуться к делам.",RandPhraseSimple("Я ведь уже сказал, что у меня нет времени на пустую болтовню!","Я занятой человек и мне некогда обсуждать всякие сплетни!"),"block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(pcharrepphrase(RandSwear() + "Это очень интересно! Но давай к делу","Благодарю, тогда вот еще какое дело."), pcharrepphrase(""+ GetSexPhrase("Чтоб я сдох","Разрази меня гром") +"! Складно врешь. Но у меня есть еще вопрос.","Так не будем больше терять драгоценное время и перейдем к делам."),
+pcharrepphrase(RandSwear() +" Еще одно дельце, и я уйду.","Вы правы, время - деньги."),pcharrepphrase("Только и думаешь, что о своей выгоде. Ладно, не кипятись.","Прошу простить меня. Перейдем к делу."),npchar, Dialog.CurrentNode);
 			link.l1.go = "business";
-			link.l2 = HeroStringReactionRepeat(NPCharRepPhrase(npchar,pcharrepphrase("Farewell, you old drunkass.",
-"Bye, "+GetAddress_FormToNPC(NPChar)+" " +GetFullName(npchar)+"."),pcharrepphrase("Carramba! Don't go far away. I'll be back shortly.","Pleasure to see you, "+GetAddress_FormToNPC(NPChar)+" " +GetFullName(npchar)+"! Farewell!")),NPCharRepPhrase(npchar,pcharrepphrase("Cast off!","Farewell!"),pcharrepphrase("Hey! What are you hiding there? Rum? No!?! Whatever, I'll get some drink.","I am sorry, I have an important business in the city.")),NPCharRepPhrase(npchar,pcharrepphrase("Heh! See you around!","I should go. Bye, "+GetAddress_FormToNPC(NPChar)+" " +GetFullName(npchar)+"!"),pcharrepphrase("Don't you dare to argue with me! I have no wish for this!","I guess I should check my ship. See you, "+GetAddress_FormToNPC(NPChar)+" " +GetFullName(npchar)+"!")),NPCharRepPhrase(npchar,pcharrepphrase("What's wrong you, pal? It's me - " +GetFullName(pchar)+ "! Have a nap, I will talk to you later.","I fear that your liver will kill you before I come here again."),pcharrepphrase("Count your silver, sly dog! I'll see you later.","Pleasure to see you, " + GetAddress_FormToNPC(NPChar)+" " +GetFullName(npchar)+"!")),npchar, Dialog.CurrentNode);
+			link.l2 = HeroStringReactionRepeat(NPCharRepPhrase(npchar,pcharrepphrase("Пока, старый пропойца.",
+"Всего доброго, "+GetAddress_FormToNPC(NPChar)+" " +GetFullName(npchar)+"."),pcharrepphrase("Каррамба! Никуда не уходи. Я еще зайду.","Приятно было вас видеть, "+GetAddress_FormToNPC(NPChar)+" " +GetFullName(npchar)+"! До свидания!")),NPCharRepPhrase(npchar,pcharrepphrase("Отдать швартовы!","До свидания, милейший."),pcharrepphrase("Эй! Ты что там прячешь? Ром? Нет!?! Ну ладно, пойду горло промочу.","Прошу меня извинить, у меня срочные дела в городе.")),NPCharRepPhrase(npchar,pcharrepphrase("Хех! Еще увидимся!","Мне надо идти. Прощайте, "+GetAddress_FormToNPC(NPChar)+" " +GetFullName(npchar)+"!"),pcharrepphrase("И не смей мне перечить! Недосуг мне тут с тобой спорить!","Пожалуй, стоит проверить, как дела на корабле. Прощайте, "+GetAddress_FormToNPC(NPChar)+" " +GetFullName(npchar)+"!")),NPCharRepPhrase(npchar,pcharrepphrase("Что с тобой, старина? Это же я - " +GetFullName(pchar)+ "! Проспись, я потом зайду.","Боюсь, ваша печень прикончит вас раньше, чем я еще раз зайду сюда."),pcharrepphrase("Считай свое серебро, пройдоха! Я еще зайду.","Рад"+ GetSexPhrase("","а") +" был"+ GetSexPhrase("","а") +" вас видеть, " + GetAddress_FormToNPC(NPChar)+" " +GetFullName(npchar)+"!")),npchar, Dialog.CurrentNode);
 			link.l2.go = "Exit";
 		break;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case "rumours_capitan":
 			Dialog.Text = SelectRumourEx("capitan", NPChar);
-			Link.l1 = RandPhraseSimple(RandSwear() + "Interesting! There is one more thing I wanted to ask...",
-                                     "One more question.");
+			Link.l1 = RandPhraseSimple(RandSwear() + "Это очень интересно! Вот что еще хотел"+ GetSexPhrase("","а") +" спросить...",
+                                     "Еще вопрос.");
 			Link.l1.go = "quests";
-			Link.l2 = RandPhraseSimple("Thanks, I should go.",
-                                     "Farewell.");
+			Link.l2 = RandPhraseSimple("Спасибо, долж"+ GetSexPhrase("ен","на") +" откланяться.",
+                                     "Всего хорошего.");
 			Link.l2.go = "exit";
 			NextDiag.TempNode = "quests";
             NPChar.talk_date =  lastspeakdate();
@@ -325,11 +324,11 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 		
 		 case "rumours_landcaptain":
 			Dialog.Text = SelectRumourEx("landcaptain", NPChar);
-			Link.l1 = RandPhraseSimple(RandSwear() + "Interesting! There is one more thing I wanted to ask...",
-                                     "One more question.");
+			Link.l1 = RandPhraseSimple(RandSwear() + "Это очень интересно! Вот что еще хотел"+ GetSexPhrase("","а") +" спросить...",
+                                     "Еще вопрос.");
 			Link.l1.go = "question";
-			Link.l2 = RandPhraseSimple("Thanks, I should go.",
-                                     "Farewell.");
+			Link.l2 = RandPhraseSimple("Спасибо, долж"+ GetSexPhrase("ен","на") +" откланяться.",
+                                     "Всего хорошего");
 			Link.l2.go = "exit";
 			NextDiag.TempNode = "question";
             NPChar.talk_date =  lastspeakdate();
@@ -337,30 +336,31 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		case "rumours_tavern":  // homo 03/08/06
 
-                 Dialog.Text = NPCStringReactionRepeat(LinkRandPhrase("Information costs money. 1000 pieces and I will tell you everything I know.",
-                "Something's wrong with my memory, 1000 coins might help me remember something.",
-                "I am eager to share with information. But it will cost you 1000 pesos. No bargaining."),
-                "Nothing more to add here. Now, excuse me, I should go.",
+                 Dialog.Text = NPCStringReactionRepeat(LinkRandPhrase("Сведения стоят денег. За скромные 1000 песо я расскажу все, что знаю.",
+                "Что-то я запамятовал. Но, возможно, 1000 монет освежат мою память.",
+                "Я готов рассказать все, что знаю. Но не бесплатно - 1000 песо, на меньшее я не согласен."),
+                "Больше мне нечего добавить. А теперь прошу меня извинить, но дела не ждут.",
                 "", "", "block", 1, npchar, Dialog.CurrentNode);
              
-    			link.l1 = HeroStringReactionRepeat(RandPhraseSimple(RandSwear() + "I am not paying for a worthless chit chat.",
-                                         "I am thinking about better ways to spend these money."), "Let's change the subject.", "Let's change the subject.", "Let's change the subject.", npchar, Dialog.CurrentNode);
+    			link.l1 = HeroStringReactionRepeat(RandPhraseSimple(RandSwear() + "Платить за пустую болтовню? Нет уж, поищи кого-нибудь другого.",
+                                         "За такие деньги я сам"+ GetSexPhrase("","а") +" все узнаю."), "Давай поговорим о чем-нибудь другом.", "Давай поговорим о чем-нибудь другом.", "Давай поговорим о чем-нибудь другом.", npchar, Dialog.CurrentNode);
                 link.l1.go = HeroStringReactionRepeat("rumours_tavern_no", "first time", "first time", "first time", npchar, Dialog.CurrentNode);//"rumours_tavern_no";
                 NextDiag.CurrentNode = NextDiag.TempNode;
     			if (makeint(pchar.money) >= 1000 )
     			{
-    				link.l2 = HeroStringReactionRepeat(RandPhraseSimple("You will have them if I learn something worthy from you.", "I'll pay if you give me something of value."),
+    				link.l2 = HeroStringReactionRepeat(RandPhraseSimple("Ты их получишь, если я получу действительно ценные сведения.", "Я заплачу, но только при условии, что ты мне расскажешь действительно что-то важное."),
                      "", "", "" , npchar, Dialog.CurrentNode);
     				link.l2.go = HeroStringReactionRepeat("rumours_tavern_yes", "exit", "exit", "exit", npchar, Dialog.CurrentNode);
     			}
     			else
     			{
-                    link.l2 =  HeroStringReactionRepeat("I don't have such sum.", "", "", "", npchar, Dialog.CurrentNode);
+                    link.l2 =  HeroStringReactionRepeat("У меня нет такой суммы.", "", "", "", npchar, Dialog.CurrentNode);
     				link.l2.go = HeroStringReactionRepeat("rumours_tavern_no", "exit", "exit", "exit", npchar, Dialog.CurrentNode);
     			}
 
 		break;
 		
+		// платные слухи таверны
 		case "rumours_tavern_yes":
 			if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation"))
 			{
@@ -368,21 +368,21 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 				if (bOk && npchar.location == "Marigo_tavern" && !CheckAttribute(npchar, "quest.barbtemptation"))
 				{
 					AddMoneyToCharacter(pchar, -1000);
-					Dialog.Text =  "Our patrol has recently destroyed a brigantine of some French smuggler Morel. The man is now sitting in the dungeons and facing a death sentence. They still try to find his cargo, bastard dies when they do.";
-					link.l1 = "Interesting... Fine, take the money. Anything else to tell?";
+					Dialog.Text =  "Недавно наш патруль потопил бригантину некого французского контрабандиста Мореля, а самого его взял в плен. Теперь этот Морель сидит каземате и дожидается суда. Комендант уверен, что на корабле был не весь груз контрабанды, и пытается вызнать это. А как только узнает - тут и конец французишке...";
+					link.l1 = "Очень интересно... Хорошо, ты заслужил свои деньги - держи. А больше ничего примечательного не знаешь?";
 					link.l1.go = "rumours_tavern";
 					Saga_CreateMorelle(); //ставим Мореля
 					npchar.quest.barbtemptation = "true";
 					pchar.questTemp.Saga.BarbTemptation.Prison = "true";
 					break;
 				}
-			}	
+			}
 			// Addon-2016 Jason ФМК-Гваделупа
 			if (CheckAttribute(pchar, "questTemp.FMQG") && pchar.questTemp.FMQG == "headhunter_portobello" && npchar.location == "portobello_tavern")
 			{
 				AddMoneyToCharacter(pchar, -1000);
-				Dialog.Text =  "There was a big party in a governor's palace. His excellence's friend, don Carlos de Milyar is back. He was captured in a sea battle, but he managed to escape with the help of a French lieutenant. Don Carlos is not only smart, he is also a very generous man. This lieutenant, Jean Deno, is a captain of the Sario now. As far as I've heard he was also gifted by a small plantation. Now the frog eater is called Juan! What a story!";
-				link.l1 = "Intriguing... Fine, the money is yours. Take this. Anything else to tell me?";
+				Dialog.Text =  "Недавно в губернаторском дворце пышный праздник был. Вернулся дон Карлос де Мильяр, большой друг его Светлости. В морском сражении он попал в плен к французам, однако ему удалось сбежать, склонив на свою сторону французского лейтенанта. Дону Карлосу ума не занимать, как, впрочем, и щедрости: лейтенанта этого, Жана Дено, приняли на службу в должности капитана и поставили командовать судном 'Сэрио'. И вроде даже небольшую плантацию ему подарили. Теперь француза величают, не иначе как дон Хуан. Так-то!";
+				link.l1 = "Очень интересно... Хорошо, ты заслужил свои деньги - держи. А больше ничего примечательного не знаешь?";
 				link.l1.go = "rumours_tavern";
 				pchar.questTemp.FMQG = "headhunter_juan";
 				AddQuestRecord("FMQ_Guadeloupe", "10");
@@ -395,17 +395,17 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 			if (CheckAttribute(pchar, "questTemp.FMQN") && pchar.questTemp.FMQN == "town" && npchar.location == "Marigo_tavern")
 			{
 				AddMoneyToCharacter(pchar, -1000);
-				Dialog.Text =  "Our commandant has sent extra forces to patrol the jungles. Not to mention the city guard. There are rumors about Englishmen planning to infiltrate Philipsburg and set the captured officers free.";
-				link.l1 = "You don't say? Do they actually have balls to perform such a trick?.. And what officers are you talking about exactly?";
+				Dialog.Text =  "Наш комендант усилил патрулирование в джунглях и охрану в городе. Прошел слух, что англичане собираются проникнуть в Филипсбург и выкрасть из тюрьмы пленных офицеров.";
+				link.l1 = "Да ну? Неужели англичане решатся на такое?.. А что это за офицеры - не слыхал?";
 				link.l1.go = "FMQN_r";
 				break;
-			}	
+			}
 			// Addon 2016-1 Jason пиратская линейка
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "jewelry_3" && npchar.location == "Havana_tavern")
 			{
 				AddMoneyToCharacter(pchar, -1000);
-				Dialog.Text =  "The other day the whole town got agitated. An officer from a military lugger got dead drunk in my tavern, and just about raped a married girl. Then proceeded to beat up her husband, who tried to defend his wife, and even threatened him with a sword. Imagine all that right in front of the town's guard! As they say, dog does not eat dog. The soldiers just turned away while this bastard was raging\nBut the scoundrel was disarmed by - who would've thought - some sailors from a merchant's ship. They almost pinned him down, although the bastard got away and hid on his ship. Commandant and alcalde tried to sweep it under the rug, but the assaulted man is a respected citizen, who turned to his Excellence don Diego de Toledo and made some noise among the local bourgeoisie\nThey issued officer's arrest and suggested his captain to hastily leave the port with him, transferring the scoundrel to a different location. However, lugger's captain, Esberdo Cabanas, was a man of honor. Once he learned what the officer has done, he immediately arrested the scoundrel and sent him back to the shore. The bastard is rotting in prison for the foreseeable future, where he belongs if you ask me. And then, maybe, he'll get disranked to make an example.";
-				link.l1 = "Wait, did you say captain Esberdo Cabanas? Huh... an exciting story, indeed!.. Alright, you earned your money - here you go. Anything else you could tell me?";
+				Dialog.Text =  "У нас тут на днях весь город взбудоражен был. Офицер с военной шхуны надрался в стельку у меня в таверне, а затем чуть было не обесчестил замужнюю горожанку, а ее мужа, защищавшего свою жену, избил и угрожал обнаженной саблей. И все это происходило при полном бездействии городской стражи! Ворон ворону глаз не выклюет - правду ведь говорят. Солдаты чинно отворачивались и смотрели в другую сторону, пока этот негодяй творил свои безобразия\nНо негодяя обезвредили - и кто бы вы думали? - Матросы с купеческого судна. Мерзавца едва не скрутили, но он сумел вырваться и скрыться на своем корабле. Комендант и алькальд хотели замять это дело, но пострадавший - уважаемый горожанин, обратился к Его светлости дону Диего де Толедо и поднял шум среди зажиточных граждан. Офицера повелели схватить\nПоговаривают, что капитану советовали быстрее уйти из порта и увезти буяна в море, а потом его перевели бы в другое место службы, но капитан шхуны, Эсберто Кабаньяс, оказался человеком чести: узнав, что натворил его офицер, он немедленно арестовал негодяя и отправил на берег. Теперь дебошир в тюрьме, где ему самое место, и проведет там еще немало времени. А потом его, глядишь, разжалуют в солдаты, чтобы другим неповадно было.";
+				link.l1 = "Как ты сказал? Капитан Эсберто Кабаньяс? Хм... презанятная история!.. Хорошо, ты заслужил свои деньги - держи. А больше ничего примечательного не знаешь?";
 				link.l1.go = "rumours_tavern";
 				Mtraxx_CreateOfficer(); // ставим офицера-негодяя
 				pchar.questTemp.Mtraxx = "jewelry_4";
@@ -414,11 +414,11 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 				break;
 			}
             string RumText = SelectRumourEx("tavern", NPChar); //fix
-			
+           
 		    if(!RumourHasInformation(RumText))
             {
                 Dialog.Text = NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)]; //fix
-                link.l1 = RandPhraseSimple("Worthless crap. I am paying for this. Bye.", "Your information costs nothing, so you get nothing.");
+                link.l1 = RandPhraseSimple("Я не стану платить за пустые сплетни, прощай.", "Твои сведения не стоят и ломаного гроша - ты ничего не получишь.");
 
 			    link.l1.go = "Exit";
 			    NextDiag.CurrentNode = NextDiag.TempNode;
@@ -427,19 +427,19 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
             {
                 AddMoneyToCharacter(pchar, -1000);
                 Dialog.Text = RumText;
-    			link.l1 = RandPhraseSimple("Thanks, take the money. Anything else to tell?", "Fine, take the money. Anything else to tell?");
+    			link.l1 = RandPhraseSimple("Благодарю, вот твои деньги. А больше ничего не припомнишь?", "Хорошо, ты заслужил свои деньги - держи. Есть что-нибудь еще?");
     			link.l1.go = "rumours_tavern";
     			NextDiag.CurrentNode = NextDiag.TempNode;    
             }
 		break;
 
 		case "rumours_tavern_no":
-			Dialog.Text = "I have a family, you know.";
-            link.l1 = "Let's change the subject.";
+			Dialog.Text = "Поймите меня правильно, мне нужно кормить семью.";
+            link.l1 = "Давай поговорим о чем-нибудь другом.";
 			link.l1.go = "first time";
 			NextDiag.CurrentNode = NextDiag.TempNode;
-			link.l2 = LinkRandPhrase("Thanks, I should go.",
-                                     "Farewell.","Bye.");
+			link.l2 = LinkRandPhrase("Спасибо, долж"+ GetSexPhrase("ен","на") +" откланяться.",
+                                     "Всего хорошего","До свидания.");
 			link.l2.go = "Exit";
 		break;	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -447,20 +447,20 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 			if (!CheckAttribute(NPChar, "quest.repeat.rumours_poor") || NPChar.quest.repeat.rumours_poor <= 1)
 			{
 				Dialog.Text = SelectRumourEx("poor", NPChar);
-				Link.l1 = RandPhraseSimple(RandSwear() + "Interesting. One more question...",
-										"Hm, let me ask something else...");
+				Link.l1 = RandPhraseSimple(RandSwear() + "Да, это интересно. Имеется еще вопрос...",
+										"Хм, вот что еще хотел"+ GetSexPhrase("","а") +" спросить...");
 				Link.l1.go = "rumours_poor_2";
-				Link.l2 = RandPhraseSimple("Well, farewell.",
-										"Bye, pal.");
+				Link.l2 = RandPhraseSimple("Ну, прощай, барыга.",
+										"Всего хорошего, приятель.");
 				Link.l2.go = "exit";
 				NPChar.quest.repeat.rumours_poor = sti(NPChar.quest.repeat.rumours_poor) + 1;
 			}
 			else 
 			{
-				Dialog.Text = RandPhraseSimple("Told you all I know.", 
-					"Nothing more to share, sorry...");
-				Link.l1 = RandPhraseSimple("I see. Farewell.",
-										"Goodbye, pal...");
+				Dialog.Text = RandPhraseSimple("Не о чем говорить, все уже выболтал, что знал.", 
+					"Больше я ничего не слышал, извините...");
+				Link.l1 = RandPhraseSimple("Понятно. Ну что же, всего хорошего.",
+										"Ясно. Ну, бывай, приятель...");
 				Link.l1.go = "exit";			
 			}
             NPChar.talk_date = lastspeakdate();
@@ -469,20 +469,20 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 			if (NPChar.quest.repeat.rumours_poor <= 1)
 			{
 				Dialog.Text = SelectRumourEx("poor", NPChar);
-				Link.l1 = RandPhraseSimple(RandSwear() + "Interesting. One more question...",
-										"Hm, let me ask something else...");
+				Link.l1 = RandPhraseSimple(RandSwear() + "Да, это интересно. Имеется еще вопрос...",
+										"Хм, вот что еще хотел"+ GetSexPhrase("","а") +" спросить...");
 				Link.l1.go = "rumours_poor";
-				Link.l2 = RandPhraseSimple("Well, farewell.",
-										"Bye, pal.");
+				Link.l2 = RandPhraseSimple("Ну, прощай, барыга.",
+										"Всего хорошего, приятель.");
 				Link.l2.go = "exit";
 				NPChar.quest.repeat.rumours_poor = sti(NPChar.quest.repeat.rumours_poor) + 1;
 			}
 			else 
 			{
-				Dialog.Text = RandPhraseSimple("Told you all I know.", 
-					"Nothing more to share, sorry...");
-				Link.l1 = RandPhraseSimple("I see. Farewell.",
-										"Goodbye, pal...");
+				Dialog.Text = RandPhraseSimple("Не о чем говорить, все уже выболтал, что знал.", 
+					"Больше я ничего не слышал, извините...");
+				Link.l1 = RandPhraseSimple("Понятно. Ну что же, всего хорошего.",
+										"Ясно. Ну, бывай, приятель...");
 				Link.l1.go = "exit";			
 			}
 			NPChar.talk_date = lastspeakdate();
@@ -493,24 +493,24 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 			if (CheckNPCQuestDate(NPChar, "quest.repeat.rumours"))
 			{
 				Dialog.Text = SelectRumourExSpecial("LSC", NPChar);
-				Link.l1 = RandPhraseSimple("Understood...",
-										"I see...");
+				Link.l1 = RandPhraseSimple("Понятно...",
+										"Ясно...");
 				Link.l1.go = "exit";
 				SetNPCQuestDate(NPChar, "quest.repeat.rumours");
 			}
 			else  
 			{
-				Dialog.Text = NPCharSexPhrase(npchar, RandPhraseSimple("Told you all I know.", "Told you all I know, sorry..."), 
-					RandPhraseSimple("Told you all I know.", "Told you all I know, sorry..."));
-				Link.l1 = RandPhraseSimple("I see. Farewell.", "Goodbye.");
+				Dialog.Text = NPCharSexPhrase(npchar, RandPhraseSimple("Не о чем говорить, все уже выболтал, что знал.", "Больше я ничего не слышал, прошу прощения..."), 
+					RandPhraseSimple("Простите, но я вам уже все выболтала.", "Больше я ничего не слышала, извините..."));
+				Link.l1 = RandPhraseSimple("Я понял"+ GetSexPhrase("","а") +".", "Ну, всего хорошего.");
 				Link.l1.go = "exit";			
 			}
 		break;
 		
 //Jason -------------слухи смотрителей маяков, идентичны таверне, но бесплатны, по 1 шт за день--------------------
 		case "rumours_lighthouse": 
-			Dialog.Text = NPCStringReactionRepeat(RandPhraseSimple("Eh, captain! It's always nice chatting with you. Being on my own here is quite dull sometimes...", "I live alone, visitors are a rare occasion. So I am always in a mood to talk."), "Fancy a chit chat, captain? Well, I might have something else to tell...", "Take a bottle of rum next time you visit me...", "Alas, I told you everything I know.", "block", 1, npchar, Dialog.CurrentNode);
-    		link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Then share your information. I like talking with people, you know...", "Tell me! You know what they say about value of information?"), "Like what?", "By all means! Got anything else to share?", "Fine, we had a nice chat anyway." , npchar, Dialog.CurrentNode);
+			Dialog.Text = NPCStringReactionRepeat(RandPhraseSimple("Эх капитан! Я всегда рад поболтать. Знаете, здесь одному иногда бывает так скучно...", "Я живу здесь один, гости ко мне заходят нечасто. Так что переброситься парой слов с кем-нибудь для меня всегда - радость."), "Любите поболтать, капитан? Ну, может еще что вспомню...", "Соберетесь еще ко мне - захватывайте бутылку рома. Под спиртное так хорошо вести беседы...", "К сожалению, я рассказал все, что знал. Больше мне нечего добавить.", "block", 1, npchar, Dialog.CurrentNode);
+    		link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Ну, тогда поделись своей информацией. Я, знаешь ли, тоже охотник поболтать...", "Рассказывай! Кто владеет информацией - тот владеет миром, так ведь говорят?"), "Например?", "Обязательно! Ну, выкладывай, что еще слышал?", "Ну и ладно, мы и так здорово поболтали." , npchar, Dialog.CurrentNode);
     		link.l1.go = HeroStringReactionRepeat("rumours_lighthouse_yes", "rumours_lighthouse_void", "rumours_lighthouse_void", "exit", npchar, Dialog.CurrentNode);
 		break;
 		
@@ -519,19 +519,19 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 		    if(!RumourHasInformation(RumText))
             {
                 Dialog.Text = NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)];
-                link.l1 = RandPhraseSimple("Thank you! Anything else?", "Very interesting! Anything else?");
+                link.l1 = RandPhraseSimple("Благодарю! Что-нибудь еще слышал?", "Очень интересно! Больше ничего не припомнишь?");
 
 			    link.l1.go = "rumours_lighthouse";
-				link.l2 = RandPhraseSimple("Gratitude! It was quite entertaining...", "Thank you for telling me!");
+				link.l2 = RandPhraseSimple("Благодарю! Весьма занятно...", "Спасибо за информацию!");
 			    link.l2.go = "exit";
 			    NextDiag.CurrentNode = NextDiag.TempNode;
             }
             else
             {
                 Dialog.Text = RumText;
-    			link.l1 = RandPhraseSimple("Thank you! Anything else?", "Very interesting! Anything else?");
+    			link.l1 = RandPhraseSimple("Благодарю! Весьма занимательно... Что-нибудь еще слышал?", "Очень интересно! А больше ничего не припомнишь?");
     			link.l1.go = "rumours_lighthouse";
-				link.l2 = RandPhraseSimple("Gratitude! It was quite entertaining...", "Thank you for telling me!");
+				link.l2 = RandPhraseSimple("Благодарю! Весьма занятно...", "Спасибо за интересный рассказ!");
 			    link.l2.go = "exit";
     			NextDiag.CurrentNode = NextDiag.TempNode;    
             }
@@ -539,10 +539,10 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 		
 		case "rumours_lighthouse_void":
                 Dialog.Text = NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)];
-                link.l1 = RandPhraseSimple("Thank you! Anything else?", "Very interesting! Anything else?");
+                link.l1 = RandPhraseSimple("Благодарю! Что-нибудь еще слышал?", "Очень интересно! Больше ничего не припомнишь?");
 
 			    link.l1.go = "rumours_lighthouse";
-				link.l2 = RandPhraseSimple("Gratitude! It was quite entertaining...", "Thank you for telling me!");
+				link.l2 = RandPhraseSimple("Благодарю! Весьма занятно...", "Спасибо за интересный рассказ!");
 			    link.l2.go = "exit";
 			    NextDiag.CurrentNode = NextDiag.TempNode;
 		break;
@@ -551,16 +551,16 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 			//начинаем проверять
 			if (!CheckCharacterItem(pchar, pchar.questTemp.WPU.Current.Item))
 			{
-				dialog.text = "But where is the package? You don't have it?";
-	        	link.l1 = "Well... I was supposed to deliver it to you. But it was… to be completely honest, it was taken from me. I couldn't fight back and gave them the package myself. ";
+				dialog.text = "Но где же пакет? У вас его нет?";
+	        	link.l1 = "М-м... я должен был вам его доставить. Но у меня его попросту... буду честным - отняли. Я не смог противостоять нападавшим и отдал им пакет. ";
 	        	link.l1.go = "Postcureer_LevelUp_complete_fail";
 				break;
 			}
 			
 			if (sti(pchar.questTemp.WPU.Postcureer.AgentChance) == 4)//раскрыли обман
 			{
-				dialog.text = "Hm. Excuse me, but the package was opened before! It's crystal for me. The seal is was re-stamped...";
-	        	link.l1 = "" + GetAddress_FormToNPC(NPChar) + ", it is the package I was given at harbor office of " +XI_ConvertString("Colony"+pchar.questTemp.WPU.Postcureer.StartCity+"Gen")+ ", and I don't see why...";
+				dialog.text = "Хм. Позвольте, но этот пакет уже вскрывали! Я это совершенно точно вижу. Печать поставлена повторно...";
+	        	link.l1 = "" + GetAddress_FormToNPC(NPChar) + ", я привез вам пакет в том виде, в котором получил его в портовом управлении  " +XI_ConvertString("Colony"+pchar.questTemp.WPU.Postcureer.StartCity+"Gen")+ ", и не имею ни малейшего понятия...";
 	        	link.l1.go = "Postcureer_LevelUp_complete_Agentfail";
 				break;
 			}
@@ -569,8 +569,8 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 			{
 				int iTime = makeint(GetQuestPastDayParam("questTemp.Postcureer.Late"))+1;
 				pchar.questTemp.WPU.Postcureer.Money = makeint(sti(pchar.questTemp.WPU.Postcureer.Money)/(sti(iTime)+1));//сильно снижаем оплату
-				dialog.text = "I was waiting for you. But you are " + FindRussianDaysString(iTime)+ " late! The information you are carrying has become much less useful… It still has some value of course, so I will pay you - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money)) + ". Please, take the money and farewell.";
-	        	link.l1 = "Thanks. I guess.";
+				dialog.text = "Я ждал вас. Но вы опоздали на " + FindRussianDaysString(iTime)+ "! Информация, содержащаяся в этом документе, уже значительно утратила свою актуальность... Но польза от нее все-таки есть - поэтому я заплачу вам за работу, хотя, конечно, меньше - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money)) + ". Пожалуйста, получите ваши деньги и прощайте.";
+	        	link.l1 = "Спасибо и на этом.";
 	        	link.l1.go = "Postcureer_LevelUp_complete";
 				pchar.quest.PostcureerTime_FullOver.over = "yes";//снять второй таймер
 				pchar.questTemp.WPU.Postcureer.count = sti(pchar.questTemp.WPU.Postcureer.count)-1;//опоздавший рейс не засчитываем
@@ -582,13 +582,13 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 			
 			if (pchar.questTemp.WPU.Postcureer == "lost")//опоздали совсем
 			{
-				dialog.text = "So it is you! I've been waiting for you quite a while, even took steps to retrieve the package. Give me it. I don't need it now really, thanks to your timing, but I'd like to keep it to myself\nAs you understand, I can't pay you anything, yet I will make sure your good name is restored.";
-	        	link.l1 = "Thanks... I guess. I am sorry for the delay, I really do. Farewell.";
+				dialog.text = "Так это вы! А я вас уже не ждал, уже и меры соответствующие в ваш адрес принял - знаете ли, охотников за важной информацией много. Давайте сюда пакет. Хотя он мне уже и не нужен - благодаря вашему опозданию, информация, содержащаяся там, мне уже вряд ли пригодится - но все-таки пусть он будет у меня\nКак вы понимаете, оплаты за доставку не будет. Единственное, что я сделаю - приму меры, чтобы восстановить ваше доброе имя.";
+	        	link.l1 = "Спасибо и на этом. Простите за опоздание, мне действительно жаль, что так вышло. Всего доброго.";
 	        	link.l1.go = "Postcureer_LevelUp_complete_bad";
 				break;
 			}
-			dialog.text = "I was waiting for you. You are just in time, the information you brought me will be a good use. Please, accept these money for your job - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money)) + ". My thanks for your timing.";
-        	link.l1 = "You are welcome. Farewell!";
+			dialog.text = "Я ждал вас. Вы прибыли вовремя - информация, которую вы привезли, будет очень кстати. Получите, пожалуйста, вашу оплату за труды - " + FindRussianMoneyString(sti(pchar.questTemp.WPU.Postcureer.Money)) + ". Благодарю за оперативность.";
+        	link.l1 = "И вам спасибо. До свидания!";
         	link.l1.go = "Postcureer_LevelUp_complete";
 			pchar.quest.PostcureerTime_Over.over = "yes";//снять таймер
 			AddQuestRecord("Postcureer", "10");
@@ -626,8 +626,8 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 		break;
 		
 		case "Postcureer_LevelUp_complete_fail":
-			dialog.text = "Eh, I knew it would end this way... I should had hired a military courier vessel, not a civilian captain... Whatever, " + GetAddress_Form(NPChar) + ", you are not a soldier, so there is nothing to blame you for. Farewell.";
-			link.l1 = "Bye, " + GetAddress_FormToNPC(NPChar) + ".";
+			dialog.text = "Эх, я так и знал, что всё этим кончится... надо было оплатить услуги военного курьерского судна, а не положиться на гражданских капитанов... Ладно, " + GetAddress_Form(NPChar) + ", чего уж вас винить - вы ведь все-таки не солдат. Прощайте.";
+			link.l1 = "До свидания, " + GetAddress_FormToNPC(NPChar) + ".";
 			link.l1.go = "exit";
 			if (pchar.questTemp.WPU.Postcureer == "begin") pchar.quest.PostcureerTime_Over.over = "yes";//снять таймер
 			if (pchar.questTemp.WPU.Postcureer == "late") pchar.quest.PostcureerTime_FullOver.over = "yes";//снять второй таймер
@@ -642,8 +642,8 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 		break;
 		
 		case "Postcureer_LevelUp_complete_Agentfail":
-			dialog.text = "Sir, I know the harbor master of " +XI_ConvertString("Colony"+pchar.questTemp.WPU.Postcureer.StartCity+"Gen")+ " personally, he is an honest man. Plus, there was no point for him to open the message. " + GetAddress_Form(NPChar) + ", you are a fraud! I am not paying you a single copper. Get lost!";
-			link.l1 = "Hm...";
+			dialog.text = "Сударь, я лично знаю начальника порта " +XI_ConvertString("Colony"+pchar.questTemp.WPU.Postcureer.StartCity+"Gen")+ ", это честнейший человек. Да и ни к чему ему было вскрывать это послание. " + GetAddress_Form(NPChar) + ", вы - мошенник! Я не намерен ничего платить вам. Убирайтесь!";
+			link.l1 = "Гхм-м...";
 			link.l1.go = "Postcureer_LevelUp_complete_Agentfail_1";
 		break;
 		
@@ -659,6 +659,7 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 			DeleteAttribute(pchar, "questTemp.WPU.Postcureer.TargetPortmanID");
 			DeleteAttribute(pchar, "questTemp.WPU.Current");
 			DeleteAttribute(pchar, "questTemp.WPU.Postcureer.LevelUp");
+			DeleteAttribute(pchar, "questTemp.WPU.Postcureer.AgentChance");
 			pchar.questTemp.WPU.Postcureer = "complete";
 			DialogExit();
 		break;
@@ -667,8 +668,8 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 
 //Jason --> ---------------------------------генератор Неудачливый вор--------------------------------------------
 		case "Device_Common":
-			dialog.text = "Looked like shit. A beggar or a hobo. Can't tell where exactly did he go, I didn't care to follow him.";
-			link.l1 = "Better than nothing. Thank you! I should go.";
+			dialog.text = "На вид - оборванец-оборванцем, похоже, нищий, или бездомный. А куда пошел - сказать не могу, мне некогда было за ним ходить-следить. Ушел куда-то, а куда - Бог его знает.";
+			link.l1 = "Уже какая-то информация - все лучше, чем ничего. Спасибо! Побегу его искать!";
 			link.l1.go = "Device_Common_1";
 		break;
 		
@@ -718,8 +719,8 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 		
 		// Addon-2016 Jason ФМК-Сент-Кристофер
 		case "FMQN_r":
-			Dialog.Text =  "Not long ago they captured an English vessel not far from Sint-Maarten, she was carrying a few high-ranked officers. It's decided to sent them to Willemstad but at this moment they are held here in our comfortable dungeons. They say that one of them has told our superiors about intentions of the English to sent here a raiding party to rescue the officers. That's why our good old commandant is ready and prepared. Why wouldn't he be - if the prisoners are gone, they will demote him to a soldier!";
-			link.l1 = "Intriguing... Fine, the money is yours. Take this. Anything else to tell me?";
+			Dialog.Text =  "Да не так давно у берегов Синт-Маартена захватили английский корабль, а на нем было несколько высокопоставленных военных. Их решили отправить в Виллемстад, но временно поместили в тюрьму. Поговаривают, что пленный солдат с того судна в обмен на свободу рассказал коменданту, что англичане намереваются прислать диверсионную группу и организовать побег заключенных. Даже план у них готов был. Вот и начеку наш бравый комендант. Ведь если упорхнут такие важные птицы - его, как пить дать, разжалуют в солдаты. Так-то!";
+			link.l1 = "Очень интересно... Хорошо, ты заслужил свои деньги - держи. А больше ничего примечательного не знаешь?";
 			link.l1.go = "rumours_tavern";
 			pchar.questTemp.FMQN = "governor";
 			pchar.quest.FMQN_governor.win_condition.l1 = "location";
@@ -728,14 +729,15 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 			if (Whr_IsDay()) AddDialogExitQuest("FMQN_GetRumoursDay");
 			else AddDialogExitQuest("FMQN_GetRumoursNight");
 		break;
-
+		
+		
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////		Квесты мэра, проникновение во враждебный город
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		case "IntelligenceForAll":
-            Dialog.Text = RandPhraseSimple("Very well then. I have the package here, ready to delivery. Take it.\nDon't come here and don't talk to me anymore, it is too dangerous. Watch yourself out there...", 
-				"Hm, great. Take the package and make sure you deliver it to the man we just talked about.\nGoodbye and don't talk to me anymore, it is too dangerous.");
-            link.l1 = RandPhraseSimple("Got it. Goodbye...", "Farewell and good luck.");
+            Dialog.Text = RandPhraseSimple("Ну что же, очень хорошо. У меня готов для вас пакет, который вам надлежит доставить известному лицу лично в руки. Извольте получить.\nНе подходите ко мне больше и не заговаривайте со мной, это может быть подозрительным. Соблюдайте осторожность...", 
+				"Хм, прекрасно. Я вручаю вам пакет, и помните, что он должен быть доставлен названному вами лицу лично в руки.\nТеперь прощайте и не подходите ко мне более - это опасно.");
+            link.l1 = RandPhraseSimple("Я понял"+ GetSexPhrase("","а") +". Прощайте...", "Прощайте и удачи.");
 			link.l1.go = "exit";
 			pchar.GenQuest.Intelligence = "Execute";
 			GiveItem2Character(pchar, "sicretLetter");
@@ -755,8 +757,8 @@ pcharrepphrase(RandSwear() +" One more topic and I'll leave.","You are correct, 
 /////////		Грабеж среди бела дня, попытка залезть в сундуки
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case "Man_FackYou":
-			dialog.text = LinkRandPhrase("A robbery in the middle of the day!!! Really?! Stay where you are, pal...", "Hey, what are doing there?! Seems like someone was going to rob me. You are done...", "Wait, we are you going? A thief! End of the line, pal...");
-			link.l1 = LinkRandPhrase("Flames!!", "Carramba!!", "Dammit!");
+			dialog.text = LinkRandPhrase("Грабеж среди бела дня!!! Это что же такое делается?! Ну, погоди, "+ GetSexPhrase("приятель","подруга") +"...", "Эй, ты чего это там копаешься?! Никак, вздумал"+ GetSexPhrase("","а") +" ограбить меня? Ну, тогда тебе конец...", "Постой, ты куда это полез"+ GetSexPhrase("","ла") +"? Да ты вор"+ GetSexPhrase("","овка") +", оказывается! Ну, считай, что ты приплыл"+ GetSexPhrase("","а") +", родн"+ GetSexPhrase("ой","ая") +"...");
+			link.l1 = LinkRandPhrase("Дьявол!!", "Каррамба!!", "А-ать, черт!");
 			link.l1.go = "fight_owner";
 		break;
 		case "fight_owner":
@@ -898,40 +900,40 @@ string sRumourAboutOwners_Init(string sOwnerType, int iRumourNum) // База слухов
 {
 	
 	string STR_MAYOR[MAX_RUMOURS_ABOUT_OWNERS]; // Губернаторы
-	STR_MAYOR[0] = "Oh, sir governor is an excellent man. He manages our colony with a great skill, never had a single conflict since the day of foundation\nHis only flaw is... he is… well... he is quite saving. It might be just another virtue though.";
-	STR_MAYOR[1] = "Oh, sir governor is an excellent man. He manages our colony with a great skill, never had a single conflict since the day of foundation\nHis only flaw is... he is… well... he is quite saving. It might be just another virtue though.";
-	STR_MAYOR[2] = "Oh, sir governor is an excellent man. He manages our colony with a great skill, never had a single conflict since the day of foundation\nHis only flaw is... he is… well... he is quite saving. It might be just another virtue though.";
-	STR_MAYOR[3] = "Oh, sir governor is an excellent man. He manages our colony with a great skill, never had a single conflict since the day of foundation\nHis only flaw is... he is… well... he is quite saving. It might be just another virtue though.";
-	STR_MAYOR[4] = "Oh, sir governor is an excellent man. He manages our colony with a great skill, never had a single conflict since the day of foundation\nHis only flaw is... he is… well... he is quite saving. It might be just another virtue though.";
-	STR_MAYOR[5] = "Oh, sir governor is an excellent man. He manages our colony with a great skill, never had a single conflict since the day of foundation\nHis only flaw is... he is… well... he is quite saving. It might be just another virtue though.";
-	STR_MAYOR[6] = "Oh, sir governor is an excellent man. He manages our colony with a great skill, never had a single conflict since the day of foundation\nHis only flaw is... he is… well... he is quite saving. It might be just another virtue though.";
+	STR_MAYOR[0] = "О, господин губернатор - замечательный человек. Он умело управляет нашей колонией - с момента ее основания у нас не было ни единого крупного конфликта\nЕдинственный его недостаток - он... ммм... весьма бережлив. Хотя, возможно, это наоборот достоинство.";
+	STR_MAYOR[1] = "О, господин губернатор - замечательный человек. Он умело управляет нашей колонией - с момента ее основания у нас не было ни единого крупного конфликта\nЕдинственный его недостаток - он... ммм... весьма бережлив. Хотя, возможно, это наоборот достоинство.";
+	STR_MAYOR[2] = "Увы, господин губернатор у нас хороший... Но слабохарактерный. Ему бы чуточку твердости в душе - и у наших торговцев появились бы небольшие налоговые льготы... И субсидии на ремонт форта давно пора бы выделить.";
+	STR_MAYOR[3] = "Хм... Он недавно стал у нас губернатором. Он довольно молод и поэтому очень инициативен - при нем наша колония процветает.";
+	STR_MAYOR[4] = "Наш губернатор еще относительно молод. Говорят, он - непутевый младший сын испанского графа, отправленный от двора куда подальше, чтобы прекратил позорить свой род. Назначен он был сюда совсем недавно, и ничего запоминающегося сотворить не успел.";
+	STR_MAYOR[5] = "Хм... Он недавно стал у нас губернатором. Он довольно молод и поэтому очень инициативен - при нем наша колония процветает.";
+	STR_MAYOR[6] = "Э-э... Ничего... ничего плохого сказать про него не могу.";
 	
 	string STR_TAVERNKEEPER[MAX_RUMOURS_ABOUT_OWNERS]; // Тавернщики
-	STR_TAVERNKEEPER[0] = "Quite a pleasant guy. It is always nice spending time in his place, he also got a great sense of humor. The most important thing about him is that he keeps a tavern in order and prevents drunk lowlifes from pestering good citizens.";
-	STR_TAVERNKEEPER[1] = "Quite a pleasant guy. It is always nice spending time in his place, he also got a great sense of humor. The most important thing about him is that he keeps a tavern in order and prevents drunk lowlifes from pestering good citizens.";
-	STR_TAVERNKEEPER[2] = "Quite a pleasant guy. It is always nice spending time in his place, he also got a great sense of humor. The most important thing about him is that he keeps a tavern in order and prevents drunk lowlifes from pestering good citizens.";
-	STR_TAVERNKEEPER[3] = "Quite a pleasant guy. It is always nice spending time in his place, he also got a great sense of humor. The most important thing about him is that he keeps a tavern in order and prevents drunk lowlifes from pestering good citizens.";
-	STR_TAVERNKEEPER[4] = "Quite a pleasant guy. It is always nice spending time in his place, he also got a great sense of humor. The most important thing about him is that he keeps a tavern in order and prevents drunk lowlifes from pestering good citizens.";
-	STR_TAVERNKEEPER[5] = "Quite a pleasant guy. It is always nice spending time in his place, he also got a great sense of humor. The most important thing about him is that he keeps a tavern in order and prevents drunk lowlifes from pestering good citizens.";
-	STR_TAVERNKEEPER[6] = "Quite a pleasant guy. It is always nice spending time in his place, he also got a great sense of humor. The most important thing about him is that he keeps a tavern in order and prevents drunk lowlifes from pestering good citizens.";
+	STR_TAVERNKEEPER[0] = "Хм, я бы не доверил свое имущество этому пройдохе. Не поймите меня неправильно, но мне кажется, что это самый ненадежный человек в нашем городке\nГоворят, что он путается с контрабандистами и пиратами - и в таверне у него все время всякий сброд ошивается!";
+	STR_TAVERNKEEPER[1] = "Да что о нем можно сказать! Трусоват, да и умом не отличается. К тому же жаден до денег, отчего постоянно попадает в различные неприятности! Зато, правда, он всегда в курсе всех новостей.";
+	STR_TAVERNKEEPER[2] = "Довольно приятный тип. У него в таверне всегда приятно посидеть, да и чувством юмора у хозяина все в порядке. А самое главное - он следит за порядком в таверне и не позволяет всякой пьяной швали задирать добропорядочных граждан.";
+	STR_TAVERNKEEPER[3] = "Удивительный человек. Ему надо не таверну содержать, а осведомителем быть при тайной канцелярии. Иногда кажется, что ему известно буквально все, что происходит в нашем городе. Даже жуть пробирает.";
+	STR_TAVERNKEEPER[4] = "Не знаю, чего уж вам о нем сказать. Человек как человек. Содержит таверну, соответственно, в курсе всех новостей нашего острова.";
+	STR_TAVERNKEEPER[5] = "Говорят, на него можно положиться. С другой стороны, я слышал, что он не любит ненужного риска и всегда расчетливо ведет свои дела. Да и темными делишками вроде не занимается.";
+	STR_TAVERNKEEPER[6] = "Таверна досталась ему от отца. Его отец содержал таверну не так далеко отсюда, на небольшом острове Хайрок в другом архипелаге. Потом отец перебрался сюда, построил здесь новую таверну, и теперь в ней заправляет его сын.";
 	
 	string STR_SHIPYARDER[MAX_RUMOURS_ABOUT_OWNERS]; // Верфисты
-	STR_SHIPYARDER[0] = "Great lad. Always willing to help. I have to say, he builds fine ships for such a shithole like this place. ";
-	STR_SHIPYARDER[1] = "Great lad. Always willing to help. I have to say, he builds fine ships for such a shithole like this place. ";
-	STR_SHIPYARDER[2] = "Great lad. Always willing to help. I have to say, he builds fine ships for such a shithole like this place. ";
-	STR_SHIPYARDER[3] = "Great lad. Always willing to help. I have to say, he builds fine ships for such a shithole like this place. ";
-	STR_SHIPYARDER[4] = "Great lad. Always willing to help. I have to say, he builds fine ships for such a shithole like this place. ";
-	STR_SHIPYARDER[5] = "Great lad. Always willing to help. I have to say, he builds fine ships for such a shithole like this place. ";
-	STR_SHIPYARDER[6] = "Great lad. Always willing to help. I have to say, he builds fine ships for such a shithole like this place. ";
+	STR_SHIPYARDER[0] = "Корабли он строит неплохие... А как о человеке, о нем трудно что-либо сказать - он живет тихо и спокойно. Наверное, неплохой человек.";
+	STR_SHIPYARDER[1] = "Корабли он строит неплохие... А как о человеке, о нем трудно что-либо сказать - он живет тихо и спокойно. Наверное, неплохой человек.";
+	STR_SHIPYARDER[2] = "Неплохой человек, но говорят, что он излишне суров. Постоянно отчитывает всех работников. Поэтому они часто у него меняются. Правда, не смотря на это, корабел он превосходный.";
+	STR_SHIPYARDER[3] = "Он очень образованный человек. Говорят, что он учился кораблестроению в Англии, потом в Голландии. А в конце концов оказался здесь - вдали от метрополии, в захолустном архипелаге\nГоворят, что он не поладил в свое время со Святой Инквизицией, и ему пришлось бежать в колонии.";
+	STR_SHIPYARDER[4] = "Да, этот старик уже никуда не годится. Он постоянно грезит о прошедших временах, и ворчит, когда ему заказывают что-нибудь, кроме каравеллы или галеона.";
+	STR_SHIPYARDER[5] = "Отличный парень. Всегда готов помочь, выручить из беды. Надо сказать, что и корабли для подобного захолустья он строит очень даже неплохие.";
+	STR_SHIPYARDER[6] = "Он был ссыльным в нашей колонии, пока не оказалось, что у него талант к кораблестроению. После того, как под его руководством на верфях нашей колонии были построены два великолепных брига, ему простили его прегрешения, и теперь он - полноправный член нашего общества.";
 	
 	string STR_TRADER[MAX_RUMOURS_ABOUT_OWNERS]; // Магазинщики
-	STR_TRADER[0] = "Nothing bad about him. A decent citizen, often visits our chapel. People seem to like him. Never heard of anyone being angry at him.";
-	STR_TRADER[1] = "Nothing bad about him. A decent citizen, often visits our chapel. People seem to like him. Never heard of anyone being angry at him.";
-	STR_TRADER[2] = "Nothing bad about him. A decent citizen, often visits our chapel. People seem to like him. Never heard of anyone being angry at him.";
-	STR_TRADER[3] = "Nothing bad about him. A decent citizen, often visits our chapel. People seem to like him. Never heard of anyone being angry at him.";
-	STR_TRADER[4] = "Nothing bad about him. A decent citizen, often visits our chapel. People seem to like him. Never heard of anyone being angry at him.";
-	STR_TRADER[5] = "Nothing bad about him. A decent citizen, often visits our chapel. People seem to like him. Never heard of anyone being angry at him.";
-	STR_TRADER[6] = "Nothing bad about him. A decent citizen, often visits our chapel. People seem to like him. Never heard of anyone being angry at him.";
+	STR_TRADER[0] = "Ничего особенно плохого о нем сказать не могу. Добропорядочный житель, усердный прихожанин нашей церкви. Никогда не слышал, чтобы кто-нибудь хулил его или был на него обижен.";
+	STR_TRADER[1] = "Он главный поставщик нашего губернатора, и это дает ему неплохой доход. Но дела он свои ведет честно. Ну, или пока ни в чем позорящем его замечен не был.";
+	STR_TRADER[2] = "Этот толстяк пользуется заслуженным уважением в нашем городе. Товар у него всегда отменный, и я не припомню случая, чтобы он кого-нибудь обсчитал.";
+	STR_TRADER[3] = "Непутевый он малый. Торгует-торгует, а толку никакого. То одних товаров нет, то других. И сам из долгов никак не вылезет.";
+	STR_TRADER[4] = "Нехороший он человек, мсье. Говорят, он был помощником Болдуина Коффье, но разорил его и потом перекупил магазин. Не знаю, как насчет качества товаров, которые он продает, но как человек он мне весьма неприятен.";
+	STR_TRADER[5] = "О! Это мерзкий человек, я бы не советовал вам иметь с ним никаких дел\nОн держит половину жителей нашего города в должниках! А товары, которые продаются у него в магазине всегда низкого качества.";
+	STR_TRADER[6] = "Да никто о нем ничего толком и не знает. Он недавно сюда переселился, и сразу открыл свое дело. Торгует вроде честно, контрабанды не возит.";
 	
 	string sTempMayor = STR_MAYOR[iRumourNum];
 	string sTempTavernkeper = STR_TAVERNKEEPER[iRumourNum];

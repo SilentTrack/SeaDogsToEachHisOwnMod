@@ -135,7 +135,7 @@ string GenQuest_GeneratePrize() // клинок или артефакт
 	if(rand(12) > 4) itm = GenQuest_GenerateArtefact();
 	else
 	{
-		if (sti(pchar.rank) > 15) itm = GenQuest_GenerateBestBlade(); // Addon 2016 Jason
+		if (sti(pchar.rank) > 15) itm = GenQuest_GenerateBestBlade(); // may-16
 		else itm = GenQuest_GenerateGoodBlade();
 	}
 	return itm;

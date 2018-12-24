@@ -15,45 +15,45 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "Is there something you needed?";
-			link.l1 = "No, nothing.";
+			dialog.text = "Вы что-то хотели?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
 		
 		// --> матрос на корабле, прибытие в Сен-Пьер
 		case "Startsailor":
-			dialog.text = "Erm, first of all, as soon as I get down to the bay I'm getting drunk!... Wake up, monsieur... whatever your name is... We have arrived!";
-			link.l1 = "A-ah! What, already? God damn heat!...";
+			dialog.text = "Эх, первым делом, как сойду на берег - напьюсь!.. Просыпайтесь, месье... как вас там... Прибыли!";
+			link.l1 = "А-ах! Что, уже? Чертова жара...";
 			link.l1.go = "Startsailor_1";			
 		break;
 		
 		case "Startsailor_1":
-			dialog.text = "Get used to it, monsieur. This is the only weather we get here... At least not any better.";
-			link.l1 = "How could it get worse! I'm wearing one linen shirt and I've got sweat streaming down my side like hail!";
+			dialog.text = "Привыкайте, месье, тут другой погоды и не бывает... Разве что хуже.";
+			link.l1 = "Куда уж хуже! Под одной полотняной рубашкой пот катится градом!";
 			link.l1.go = "Startsailor_2";			
 		break;
 		
 		case "Startsailor_2":
-			dialog.text = "Don't forget your things... Hurry up, monsieur. The longboat isn't going to wait. You don't want to swim to the island, do you?";
-			link.l1 = "Yes, I do not... Where's my sword? Ah, here it is...";
+			dialog.text = "Не забудьте свои вещи... Поторопитесь, месье, шлюпка ждать не станет. Вы же не хотите добираться до берега вплавь?";
+			link.l1 = "Да, я уже готов... Где моя шпага? Ах, вот...";
 			link.l1.go = "Startsailor_3";			
 		break;
 		
 		case "Startsailor_3":
-			dialog.text = "Yes, this isn't Europe... Be careful, monsieur. Most people haven't welcomed those that ask too many questions here lately. Times today, as you know, have turned hostile. They say that the island was sold to some faith fanatics. I still haven't noticed any change in the usual way of life of the Martinique inhabitants. But since I've been gone, a lot could have changed.";
-			link.l1 = "Faith fanatics? What a bunch of balderdash!";
+			dialog.text = "Да, тут вам не Европа... Будьте осторожны, месье. Здесь в последнее время не любят тех, кто задает слишком много вопросов. Времена нынче, знаете ли, неспокойные. Говорят, что остров продали каким-то фанатикам веры. Я до сих пор не замечал каких-то перемен в привычном укладе жителей Мартиники. Но за время моего отсутствия многое могло измениться.";
+			link.l1 = "Фанатики веры? Что за вздор!";
 			link.l1.go = "Startsailor_4";			
 		break;
 		
 		case "Startsailor_4":
-			dialog.text = "Whether it's balderdash or not, rumours are going around. There's already enough adversity as it is. Cannibals in the jungle, fever, pirates, bandits in the alleyways...";
-			link.l1 = "Oh, here we go again... Right now the only kind of adversity that I've come across is heat and moskitos... All right, I'm ready. Shall we?";
+			dialog.text = "Вздор, или не вздор, а слухи ходят. Да и без этого напастей хватает. Людоеды в джунглях, лихорадка, пираты в море, бандиты в переулках...";
+			link.l1 = "Ну, началось... Страсти-то какие. Пока единственные напасти, которые я встретил - это жара и москиты, проклятые... Ладно, я готов. Идем?";
 			link.l1.go = "Startsailor_5";			
 		break;
 		
 		case "Startsailor_5":
-			dialog.text = "Walk up top and step onto the longboat, monsieur. Welcome to the Caribbean!";
+			dialog.text = "Поднимайтесь наверх и ступайте в шлюпку, месье. Добро пожаловать на Карибы!";
 			link.l1 = "";
 			link.l1.go = "Startsailor_6";			
 		break;
@@ -70,8 +70,8 @@ void ProcessDialogEvent()
 		
 		// --> арест в резиденции
 		case "Sharlie_arest":
-			dialog.text = "Yield your weapons right away, monsieur, and follow us!";
-			link.l1 = "Well, I'm up the creek...";
+			dialog.text = "Немедленно сдайте оружие, месье, и следуйте за нами!";
+			link.l1 = "Вот так влип...";
 			link.l1.go = "Sharlie_arest_1";			
 		break;
 		
@@ -95,37 +95,37 @@ void ProcessDialogEvent()
 			ref location = &Locations[FindLocation(pchar.location)];
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "begin")
 			{
-				dialog.text = "I'm glad to see you, Monsieur de Maure. What's the occasion?";
-				link.l1 = TimeGreeting()+", officer. I would like to speak with my brother, Michel de Monper. Off the record. I would like to find out a little bit more about his service here.";
+				dialog.text = "Рад вас видеть, месье де Мор. По какому вопросу пожаловали?";
+				link.l1 = TimeGreeting()+", офицер. Я хочу поговорить о моем брате, Мишеле де Монпе. Причем неофициально. Мне хотелось бы немного больше узнать о его службе здесь.";
 				link.l1.go = "spanish";
 				break;
 			}
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "think")
 			{
-				dialog.text = "Well, how did the interrogation go? Did you find out a lot of new information?";
-				link.l1 = "So much that I'm taking this Spaniard with me back on the ship. This is an important witness and he must be delivered to St. Christopher for further investigation.";
+				dialog.text = "Ну, как прошел допрос? Много нового узнали?";
+				link.l1 = "Настолько много, что я забираю этого испанца к себе на корабль. Это важный свидетель, и он должен быть доставлен на Сент-Кристофер для дальнейших разбирательств.";
 				link.l1.go = "spanish_10";
 				break;
 			}
 			if (!CheckAttribute(location, "first_meeting"))
 			{
-				dialog.text = "Monsieur, how did you get here? What is your business here?";
-				link.l1 = "I have come to see my brother, Michel de Monper.";
+				dialog.text = "Месье, как вы попали сюда? По какому делу вы здесь?";
+				link.l1 = "Я пришел, чтобы увидеть своего брата, Мишеля де Монпе.";
 				link.l1.go = "Maltie_officer_1";
 				location.first_meeting = true;
 			}
 			else
 			{
-				dialog.text = "Monsieur, I gently remind you that you are located inside a military object. So behave accordingly.";
-				link.l1 = "Yes, officer. Of course.";
+				dialog.text = "Месье, я прошу вас не забывать, что вы находитесь на военном объекте. Так что ведите себя соответсвующим образом.";
+				link.l1 = "Да, конечно, офицер.";
 				link.l1.go = "exit";
 				NextDiag.TempNode = "Maltie_officer";
 			}
 		break;
 		
 		case "Maltie_officer_1":
-			dialog.text = "Michel de Monper is under watch in one of the cells and held under the personal order of chevalier Philippe de Poincy. Descend down to the lower tier. You will find the casemates there. I think you'll find your way.";
-			link.l1 = "Thank you!";
+			dialog.text = "Мишель де Монпе находится под стражей в одной из камер, заключен по личному приказу шевалье Филиппа де Пуанси. Спуститесь на нижний ярус, там отыщете казематы. Думаю, не заблудитесь.";
+			link.l1 = "Спасибо!";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Maltie_officer";
 		break;
@@ -133,8 +133,8 @@ void ProcessDialogEvent()
 		
 		// --> солдаты базы
 		case "Maltie_soldier":
-			dialog.text = "Hello, monsieur. Can I help you with anything?";
-			link.l1 = "Thank you, soldier. Alas, you are not able to render me any assistance...";
+			dialog.text = "Здравствуйте, месье. Я чем-нибудь могу помочь вам?";
+			link.l1 = "Благодарю, солдат. Увы, помочь вы мне ничем не можете...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Maltie_soldier";
 		break;
@@ -142,25 +142,25 @@ void ProcessDialogEvent()
 		
 		// --> мальтиец-проводник
 		case "Sharlie_maltie":
-			dialog.text = "I'm here, monsieur. So you were searching for Michel de Monper? And you are his brother?";
-			link.l1 = "Yes, that's correct. I am his brother Charles. I need to see him right away. He's gotten into trouble, has he?";
+			dialog.text = "Я здесь, месье. Так это вы ищете Мишеля де Монпе? И вы - его брат?";
+			link.l1 = "Да, это так. Я его сводный брат Шарль. Мне нужно срочно увидеть Мишеля! Он попал в неприятности, да?";
 			link.l1.go = "Sharlie_maltie_1";			
 		break;
 		
 		case "Sharlie_maltie_1":
-			dialog.text = "Unfortunately so, monsieur. Michel is under arrest and locked in our prison. Chevalier de Poincy the general-governor of French colonies himself initiated and signed the orders. All of us had been shocked\nYour brother is an example of manhood, firmness and courage, a pride of our Order! The worst part is that we, his friends, have to lock his cell and guard him as a criminal! We do everything to ease his state, but... prison is a prison.";
-			link.l1 = "So what is he being accused of? Has he committed a crime?";
+			dialog.text = "К сожалению, да, месье. Мишель арестован и находится в нашей тюрьме. Приказ о его помещении под стражу выдан и подписан самим шевалье де Пуанси, генерал-губернатором французских колоний архипелага. Мы все были буквально ошарашены этим\nВаш брат - образец мужественности, решительности и отваги, гордость нашего Ордена, и тут - такое! Угнетает также то, что мы, его друзья, вынуждены теперь запирать за ним решетку каземата и смотреть, как за преступником! Мы делаем все, чтобы облегчить его участь, но... тюрьма есть тюрьма.";
+			link.l1 = "Так в чем же его обвиняют? Он совершил преступление?";
 			link.l1.go = "Sharlie_maltie_1_1";			
 		break;
 		
 		case "Sharlie_maltie_1_1":
-			dialog.text = "Nonsense! A pure nonsense! They have accused Michelle in peculation and stealing money of the state. Ridiculous! All of us are sure that it is just a political game. Michel had been taking part in secret operations of the Order, perhaps, he learnt more than allowed to learn\nOr else. But stealing money! Nobody believes that. It is just a pretence, not a reason, such a rude and stupid pretence! But enough of the words. Your brother is looking forward to see you, I am sure he will tell you everything himself.";
-			link.l1 = "Good. Where is the prison located?";
+			dialog.text = "Вздор! Чистой воды вздор! Они обвинили Мишеля в растрате и присвоении государственных денег. Это полная чушь! Мы все уверены в том, что это какие-то грязные политические игры. Мишель участвовал в секретных операциях, проводимых Орденом, и, видимо, узнал больше, чем положено было знать\nИли что-то еще. Но украсть деньги! В это никто не верит. Это предлог, а не причина, причем грубый и нелепый предлог! Но довольно слов. Ваш брат очень ждал вас, и, думаю, он сам вам все расскажет.";
+			link.l1 = "Хорошо. Где находится тюрьма?";
 			link.l1.go = "Sharlie_maltie_1_2";
 		break;
 		
 		case "Sharlie_maltie_1_2":
-			dialog.text = "It's located in our underground base, here in the city. Follow me. I'll show you the way.";
+			dialog.text = "Это на нашей подземной базе, тут, в городе. Следуйте за мной, я вас проведу!";
 			link.l1 = "...";
 			link.l1.go = "Sharlie_maltie_2";
 		break;
@@ -171,8 +171,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Sharlie_maltie_3":
-			dialog.text = "Here we are. This is our base - a military base of the Order of Malta. The dungeons are below us. Find a stairs and go to the bottom floor. Look for a corridor with cells. You will find your brother in one of those\nGo, Charles, and please help our Michel! He is blameless, everyone here is ready swear on it.";
-			link.l1 = "That's the reason I came to this shithole to help my brother. I hope I'll be able to do at least something for him.";
+			dialog.text = "Вот мы и пришли. Это наша база - Ордена Мальтийских рыцарей. Казематы находятся внизу. Пройдите мимо столовой и комнаты для молитв и спуститесь по лестнице вниз. Там вы найдете коридор с зарешеченными камерами. В одной из них и содержится ваш несчастный брат\nСтупайте, Шарль, и помогите нашему Мишелю! Он ни в чем не виноват, здесь все готовы подтвердить это под присягой...";
+			link.l1 = "Я затем и прибыл в эту глушь, чтобы помочь брату. Надеюсь, мне удастся хоть что-то сделать.";
 			link.l1.go = "Sharlie_maltie_4";
 		break;
 		
@@ -186,53 +186,53 @@ void ProcessDialogEvent()
 		
 		// --> найм матросов
 		case "Sharlie_sailor":
-			dialog.text = "Good health, monsieur. Is there something you needed?";
-			link.l1 = "Yes. I have a ship in my property, but no crew. The bartender advised that I speak with you on this subject, you and your lads have supposedly been dismissed from some ship and you need a work...";
+			dialog.text = "Доброго здоровья, месье. Вы что-то хотели?";
+			link.l1 = "Да. У меня есть в собственности корабль, но нет команды. Бармен посоветовал мне поговорить с тобой на эту тему - ты и твои товарищи, вроде, как были уволены с какого-то судна и вам нужна работа...";
 			link.l1.go = "Sharlie_sailor_1";
 		break;
 		
 		case "Sharlie_sailor_1":
-			dialog.text = "Yes, that's correct. Would you like to hire us into service? What kind of ship do you have?";
-			link.l1 = "A regular ship, "+GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(RealShips[sti(pchar.ship.type)].basetype), "Name")))+". Why do you even care?";
+			dialog.text = "Ну, это действительно так. Хотите нанять нас на службу? Что у вас за корабль?";
+			link.l1 = "Корабль как корабль, "+GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(RealShips[sti(pchar.ship.type)].basetype), "Name")))+". А вам не все равно?";
 			link.l1.go = "Sharlie_sailor_2";
 		break;
 		
 		case "Sharlie_sailor_2":
-			dialog.text = "Well, monsieur, nobody wants to serve on a tartan or on a longboat, but "+GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(RealShips[sti(pchar.ship.type)].basetype), "Name")))+" will do just fine. But I warn you, captain, you can hire only all of us at once. See, we are a team...";
-			link.l1 = "How many people do you have?";
+			dialog.text = "Ну, знаете, месье, не очень-то хочется служить на баркасе или тартане, ну а "+GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(RealShips[sti(pchar.ship.type)].basetype), "Name")))+" нас устраивает. Но сразу хочу предупредить, капитан, что мы пойдем на службу только все вместе. Сработались мы за прошлое время, понимаете...";
+			link.l1 = "А сколько вас человек?";
 			link.l1.go = "Sharlie_sailor_3";
 		break;
 		
 		case "Sharlie_sailor_3":
-			dialog.text = "Forty. We're experienced sailors, no landlubbers, and we've had to take a sniff of gun powder a time or two as well. And we'll be able to handle the sails, we'll take the cannons if the need arises, and we can work a sword if need be.";
-			link.l1 = "Nice. How much do you want?";
+			dialog.text = "Нас ровно сорок. Моряки мы опытные, не крысы сухопутные, да и пороху понюхать тоже приходилось не раз. И с парусами управимся, и у орудий встанем, коль нужда придет, и за сабли возьмемся, если потребуется.";
+			link.l1 = "Хорошо. Сколько вы хотите?";
 			link.l1.go = "Sharlie_sailor_4";
 		break;
 		
 		case "Sharlie_sailor_4":
-			dialog.text = "An advance of 200 pesos each and then standard rates. We won't ask for too much, don't worry about that.";
+			dialog.text = "Аванс - по 200 песо на брата, ну а потом - как на всех кораблях. Мы лишнего не попросим, за это не беспокойтесь.";
 			if (sti(Pchar.money) >= 8000)
 			{
-				link.l1 = "Here are your coins.";
+				link.l1 = "Ну что же, тогда - по рукам! Вот ваши монеты.";
 				link.l1.go = "Sharlie_sailor_5";
 			}
-			link.l2 = "Unfortunately, I don't have that much money.";
+			link.l2 = "К сожалению, у меня нет пока такой суммы.";
 			link.l2.go = "Sharlie_sailor_nomoney";
 		break;
 		
 		case "Sharlie_sailor_5":
 			if (GetSquadronGoods(pchar, GOOD_FOOD) < 20 || GetSquadronGoods(pchar, GOOD_MEDICAMENT) < 30)
 			{
-				dialog.text = "Do you have foodstuffs in the hold, captain? And medicine? No? Well then first buy up at least a minimum and then come back and we'll talk. Go to the store.";
-				link.l1 = "Hm. You're right. Okay, I'll do that.";
+				dialog.text = "А запасы продовольствия у вас есть в трюме, капитан? И лекарства? Нет? Ну, тогда сначала закупите хотя бы какой-то минимум - тогда и возвращайтесь.";
+				link.l1 = "Хм. Ты прав. Хорошо, я так и сделаю.";
 				link.l1.go = "exit";
 				NextDiag.TempNode = "Sharlie_sailor_again";
 			}
 			else
 			{
 				AddMoneyToCharacter(pchar, -8000);
-				dialog.text = "Great, captain! I'll put some guys together right away and we'll be off to your ship on the double.";
-				link.l1 = "Wonderful. Prepare the ship for departure.";
+				dialog.text = "Отлично, капитан! Я немедленно собираю ребят и мы сейчас же отправимся на ваш корабль.";
+				link.l1 = "Превосходно. Готовьте судно к выходу в море.";
 				link.l1.go = "Sharlie_sailor_6";
 			}
 		break;
@@ -256,23 +256,23 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Sharlie_sailor_nomoney":
-			dialog.text = "Well as soon as you put them together, come back. I think you'll be able to find me here in the tavern. At the moment there aren't any ships around. We'll just carry on drinking our money, ha ha!";
-			link.l1 = "All right. I'll try to be back as soon as possible.";
+			dialog.text = "Ну, тогда как соберете - возвращайтесь. Думаю, вы сможете найти меня здесь, в таверне - пока никаких кораблей на рейде нет, службы не предвидится. Будем и дальше пропивать свои монеты, ха-ха!";
+			link.l1 = "Хорошо. Я постараюсь вернуться как можно скорее.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Sharlie_sailor_again";
 		break;
 		
 		case "Sharlie_sailor_again":
-			dialog.text = "So, captain? Are you willing to hire me and my guys? We can't wait to go back out to sea again! And our pockets are getting windy at that...";
+			dialog.text = "Ну что, капитан, вы готовы нанять меня и моих товарищей на свое судно? Нам не терпится снова выйти в море! Да и в карманах уже начинает ветер гулять...";
 			if (sti(Pchar.money) < 8000)
 			{
-				link.l1 = "Not yet, I'm still preparing.";
+				link.l1 = "Нет пока, я еще подготавливаюсь.";
 				link.l1.go = "exit";
 				NextDiag.TempNode = "Sharlie_sailor_again";
 			}
 			else
 			{
-				link.l1 = "Yes. Take your advance. Now you are on my service.";
+				link.l1 = "Да. Получите ваш аванс. Теперь вы у меня на службе.";
 				link.l1.go = "Sharlie_sailor_5";
 			}
 		break;
@@ -280,29 +280,29 @@ void ProcessDialogEvent()
 		
 		// наводчик на штурмана
 		case "skipertalker":
-			dialog.text = LinkRandPhrase("Greetings, captain! What do you need?","Hello, sir. What can I do for you?","Good afternoon. What would you like?");
-			link.l1 = RandPhraseSimple("I've got a question for you.", "I need information on the business of this colony.");
+			dialog.text = LinkRandPhrase("Приветствую, капитан! Что вам угодно?","Здравствуйте, сударь. Чем могу быть вам полезен?","Доброго дня, уважаемый. Вы что-то хотели?");
+			link.l1 = RandPhraseSimple("У меня есть вопрос к тебе.", "Мне нужна информация о делах в этой колонии.");
 			link.l1.go = "skipertalker_1";
-			link.l2 = "Just decided to say hello. Tootles!";
+			link.l2 = "Просто решил поздороваться. Бывай!";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "skipertalker";
 		break;
 		
 		case "skipertalker_1":
-			dialog.text = RandPhraseSimple("What questions?", "What do you need?");
-			link.l1 = "Listen, "+GetAddress_FormToNPC(NPChar)+", here's what's going on... I'm looking for a navigator for my ship. Maybe you know somebody fit for the job in your city?";
+			dialog.text = RandPhraseSimple("Какие вопросы?", "Что вам угодно?");
+			link.l1 = "Послушайте, "+GetAddress_FormToNPC(NPChar)+", тут такое дело... Я ищу штурмана на свой корабль - может, знаете подходящего человека в вашем городе?";
 			link.l1.go = "skipertalker_2";
 		break;
 		
 		case "skipertalker_2":
-			dialog.text = "A Nav-guy? Hm... Well, I know somebody... There's just one problem - he's in jail at the moment. He's been put behind bars for his debt. He's probably been in the casemate for a month already. Poor sod.";
-			link.l1 = "A debtor? Hm... What's his name, can you tell me?";
+			dialog.text = "Штурман? Хм... Есть тут такой... вот только незадача - в тюрьме он сейчас. За долги его посадили, наверное, уже месяц в каземате, бедолага.";
+			link.l1 = "За долги? Хм... Как его зовут, не подскажете?";
 			link.l1.go = "skipertalker_3";
 		break;
 		
 		case "skipertalker_3":
-			dialog.text = "Name's Folke Deluc. Ask the commandant in the jail. But I don't think they'll let him free that easy, unless of course you pay his debt, ha ha!";
-			link.l1 = "Maybe I will. Thanks for the information, you've been a big help!";
+			dialog.text = "Фульк Делюк его зовут. Спросите у коменданта в тюрьме. Но только не думаю, что его отпустят так просто, разве что вы заплатите за него долг, ха-ха!";
+			link.l1 = "Возможно, и заплачу. Благодарю за информацию, вы мне очень помогли!";
 			link.l1.go = "exit";
 			LAi_CharacterDisableDialog(npchar);
 			npchar.lifeday = 0;
@@ -312,31 +312,31 @@ void ProcessDialogEvent()
 		
 		// --> штурман
 		case "Folke":
-			dialog.text = "What do I owe such an honour, monsieur?";
-			link.l1 = "Hello, Folke. It's simple, I've got a ship, but no navigator. And I need one. So I've bought you out of your debt hole...";
+			dialog.text = "Чем обязан такому вниманию, месье?";
+			link.l1 = "Приветствую, Фульк. Все очень просто - у меня есть корабль, но нет штурмана, а он мне очень нужен. Поэтому я и выкупил тебя из долговой ямы...";
 			link.l1.go = "Folke_1";
 		break;
 		
 		case "Folke_1":
-			dialog.text = "You're saying that you've dragged me out of here to take me on your crew?";
-			link.l1 = "Exactly. I think you'll quickly make up for the money I've spent on you. Beyond that... we'll see how it goes and go from there.";
+			dialog.text = "Вы хотите сказать, что вытащили меня отсюда, чтобы взять к себе на службу?";
+			link.l1 = "Именно так. Думаю, ты быстро отработаешь затраченные на тебя деньги. А затем... впрочем, там и посмотрим.";
 			link.l1.go = "Folke_2";
 		break;
 		
 		case "Folke_2":
-			dialog.text = "My gratitude, monsieur. I've grown sick and empty of these casemates. It would do me great pleasure to climb on top of a deck once more. Ah, the sea, the sea...";
-			link.l1 = "I'm glad we've reached an understanding, Folke. Yes and one more thing: do you have any other sea skills, besides steering a ship?";
+			dialog.text = "Благодарю вас, месье. Мне чертовски опостылели эти казематы. Я с удовольствием вновь поднимусь на палубу корабля. Эх, море, море...";
+			link.l1 = "Я рад, что мы поняли друг друга, Фульк. Да, еще: у тебя есть еще какие-то познания в морском деле, кроме как управлении кораблем?";
 			link.l1.go = "Folke_3";
 		break;
 		
 		case "Folke_3":
-			dialog.text = "A bit of everything, captain. I used to serve as mercenary in the Dutch Navy, I learnt there how to aim and reload cannons. So I can take place at the gun deck if you need me there. But trading or boarding is not what I am about.";
-			link.l1 = "I see. Now follow me to the ship. You'll watch with an experienced eye how, what, and where. Then, I want to depart to Guadeloupe as soon as possible.";
+			dialog.text = "Всего понемногу, кэп. Когда я служил наемником в голландском флоте, я научился наводить орудия и грамотно перезаряжать их. Так что в бою могу занять место на орудийной палубе. А вот торговаться c купцами или забрасывать абордажные крючья - это совсем не мое.";
+			link.l1 = "Понятно. Теперь следуй за мной на корабль, посмотришь опытным глазом, что да как. А потом я хочу как можно скорее отправиться на Гваделупу.";
 			link.l1.go = "Folke_4";
 		break;
 		
 		case "Folke_4":
-			dialog.text = "Aye, captain! I'll wait for you in the cabin. *Use the action menu in the sea in order to access the cabin*";
+			dialog.text = "Слушаюсь, кэп!";
 			link.l1 = "...";
 			link.l1.go = "Folke_5";
 		break;
@@ -360,14 +360,14 @@ void ProcessDialogEvent()
 		case "Folke_6":
 			pchar.GenQuest.StoreGoods.StoreIdx = Fortfrance_STORE;
 			pchar.GenQuest.StoreGoods.Starting = true; // заполняем магазин 250912
-			dialog.text = "Great lugger, captain! Quite a decent ship. With a ship like this you're good not only to make it to Guadeloupe, but even across the whole Caribbean sea.";
-			link.l1 = "Excellent. At least I didn't throw my money away for nothing... Will you have any advice before we set sail, Folke?";
+			dialog.text = "Отличный люггер, капитан! Весьма и весьма достойный корабль. На таком можно без опаски не то что на Гваделупу отправляться, но хоть через все Карибское море.";
+			link.l1 = "Очень хорошо. По крайней мере, деньги не пропали даром... Какие-нибудь советы перед тем как отправиться в путь будут, Фульк?";
 			link.l1.go = "Folke_8";
 		break;
 		
 		case "Folke_7":
-			dialog.text = " Well, well. This sloop is tellingly damaged, captain. To cross over to Guadalupe, she's capable of even more, but to arrive at Basse-Terre she'll have to be submitted for repair immediately.";
-			link.l1 = "I didn't have a choice they only offered this vessel here at the shipyard. And they took and hefty sum for it to boot. And as you know, we don't have any time to fix her at the moment... Do you have any advice before we set sail?";
+			dialog.text = "Да уж, этот шлюп основательно поврежден, капитан. Для перехода до Гваделупы он с большего годен, но по прибытию в Бас-Тер нужно сразу поставить его на ремонт.";
+			link.l1 = "У меня не было выбора - на верфи предложили только эту посудину. Да еще и содрали приличную сумму, а чинить ее, понимаешь ли, времени у них нет... Какие-нибудь советы перед тем как отправиться в путь будут, Фульк?";
 			link.l1.go = "Folke_8";
 		break;
 		
@@ -375,14 +375,14 @@ void ProcessDialogEvent()
 		case "Folke_8":
 			if (bOk)
 			{
-				dialog.text = "Well, you've definitely stocked up on enough ammo, captain. This arsenal will be more than enough for us. Just don't forget to restock it in due time.";
-				link.l1 = "Well that goes without saying. Any other comments?";
+				dialog.text = "Ну, боеприпасами вы запаслись достаточно, капитан. Этого арсенала нам хватит вполне, только не забывайте своевременно пополнять его.";
+				link.l1 = "Конечно, это же само собой разумеется. Еще какие-то замечания?";
 				link.l1.go = "Folke_10";
 			}
 			else
 			{
-				dialog.text = "I have looked in the hold, captain. We don't have enough ammo. We need to have at least one hundred cannon balls, chain shots, and bombs as well as one hundred portions of case shots and 200 pieces of gun powder. Buy up the necessary arsenal, captain it's all not going to cost a lot, but it'll save our lives in case we get attacked by pirates or the Spanish.";
-				link.l1 = "All right. I'll follow your advice. I'm off to the shore.";
+				dialog.text = "Я осмотрел трюм, капитан. У нас недостаточно боеприпасов. Нужно как минимум по сто штук ядер, книппелей и бомб, а также сто порций картечи и пороха на двести выстрелов. Закупите необходимый арсенал, капитан - все это не будет стоить дорого, зато спасет наши жизни в случае нападения пиратов или испанцев.";
+				link.l1 = "Хорошо. Я последую твоему совету. Отправляюсь на берег.";
 				link.l1.go = "Folke_9";
 			}
 		break;
@@ -395,15 +395,15 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Folke_goods_1":
-			dialog.text = "Have you finished buying up on ammunition, captain?";
+			dialog.text = "Вы закончили закупку амуниции, капитан?";
 			if (bOk)
 			{
-				link.l1 = "Yes, I have. Any other comments?";
+				link.l1 = "Да, закончил. Еще какие-то замечания?";
 				link.l1.go = "Folke_10";
 			}
 			else
 			{
-				link.l1 = "No, I'm still in the process.";
+				link.l1 = "Нет, я еще этим занимаюсь.";
 				link.l1.go = "exit";
 				NextDiag.TempNode = "Folke_goods_1";
 			}
@@ -413,14 +413,14 @@ void ProcessDialogEvent()
 		case "Folke_10":
 			if (bOk)
 			{
-				dialog.text = "Well done, you have bought enough arms for your crew. The lack of arms on board leads to a higher casualty rate during a hand-to-hand fighting. God save us from it. Don't forget to constantly check the amount in cargo hold\nAlso, keep a little extra of arms, damned rats like to gnaw at handles.";
-				link.l1 = "Got it. I see there's still something you wanted to add?";
+				dialog.text = "Оружия для команды вы закупили достаточно, и правильно сделали - не дай Бог рукопашная - не голыми же руками драться. Не забывайте проверять его количество, потому что безоружный матрос - это мертвый матрос\nИ лучше держать оружие с запасом, ибо проклятые крысы любят грызть рукояти сабель и пистолей, приводя их в негодность.";
+				link.l1 = "Понятно. Вижу, ты еще что-то хочешь сказать?";
 				link.l1.go = "Folke_11";
 			}
 			else
 			{
-				dialog.text = "We don't have enough of arms for the crew. The lack of arms on board leads to a higher casualty rate during a hand-to-hand fighting. God save us from it. As far as I understand, you have forty souls of crewmen\nBuy a weapon for the each, or even a buy a little extra, fifty sets should suffice. Damned rats like to gnaw at handles.";
-				link.l1 = "That's what we'll do. I'll be back soon.";
+				dialog.text = "У нас нехватка оружия для матросов. Не дай Бог рукопашная - что им, голыми руками драться? Безоружный матрос - это мертвый матрос. Как я понял, у вас сорок человек экипажа\nНужно купить оружие каждому, и лучше с запасом, комплектов пятьдесят, ибо проклятые крысы любят грызть рукояти сабель и пистолей, приводя их в негодность.";
+				link.l1 = "Так и поступим. Скоро вернусь.";
 				link.l1.go = "Folke_10_1";
 			}
 		break;
@@ -433,15 +433,15 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Folke_goods_2":
-			dialog.text = "Have you finished buying up on weapons, captain?";
+			dialog.text = "Вы закончили закупку оружия, капитан?";
 			if (bOk)
 			{
-				link.l1 = "The weapons are in the hold. I see there's still something you wanted to add?";
+				link.l1 = "Оружие в трюме. Вижу, ты еще что-то хочешь сказать?";
 				link.l1.go = "Folke_11";
 			}
 			else
 			{
-				link.l1 = "No, I'm still in the process.";
+				link.l1 = "Нет, я еще этим занимаюсь.";
 				link.l1.go = "exit";
 				NextDiag.TempNode = "Folke_goods_2";
 			}
@@ -451,14 +451,14 @@ void ProcessDialogEvent()
 		case "Folke_11":
 			if (bOk)
 			{
-				dialog.text = "No, I think that's it. We have enough rations, you've also taken care of rum for the crew. That's great, since there's no better medicine for any kind of ailments as a good old cup of rum after your shift. Sailors love and respect captains who provide them daily portions of rum...";
-				link.l1 = "Well, I take it that we can now confidently set sail?";
+				dialog.text = "Наверное, больше ничего. Провизии у нас достаточно, о роме для команды вы тоже позаботились - очень хорошо, так как нет лучшего лекарства от всех хворей, как добрая кружка рому после вахты. Матросы любят и уважают капитанов, выдающих ежедневные порции рома...";
+				link.l1 = "Ну, как я понял, мы можем смело отправляться в путь?";
 				link.l1.go = "Folke_12";
 			}
 			else
 			{
-				dialog.text = "Yes. Provisions and rum. It is really bad if you don't have enough of provisions on board. You never know how long the voyage will last - a dead calm or a strong gale can ruin any plan. People die and mutiny when provisions are gone\nRum supplies however are not that critical, but I suggest you always keep some on board, there is no better cure for any disease than a good glass of rum after the shift. Crewmen respect and love captains who provide daily portions of rum\nSo go and buy supplies we need - at least a hundred packages of provisions and ten barrels of rum.";
-				link.l1 = "I guess you're right. I'll go revisit the merchant.";
+				dialog.text = "Да. Это касается провианта и рома. Если на корабле мало провианта - это плохо. Никогда не знаешь, на сколько затянется рейс - штиль или шторм могут нарушить все планы. А если закончится еда - быть беде: голодный бунт обеспечен\nКасательно рома всё не так серьезно, конечно, но рекомандую держать его на корабле постоянно - нет лучшего лекарства от всех хворей, как добрая кружка рому после вахты. Матросы любят и уважают капитанов, выдающих ежедневные порции рома\nТак что докупите необходимое количество, хотя бы сто пачек провианта и десять бочонков рому.";
+				link.l1 = "Пожалуй, ты прав. Пойду снова к купцу.";
 				link.l1.go = "Folke_11_1";
 			}
 		break;
@@ -471,28 +471,28 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Folke_goods_3":
-			dialog.text = "Have you finished buying up on rations and rum, captain?";
+			dialog.text = "Вы закончили закупку провизии и рома, капитан?";
 			if (bOk)
 			{
-				link.l1 = "Yes. I take it that we can now confidently set out to sea?";
+				link.l1 = "Да. Теперь мы можем смело отправляться в путь?";
 				link.l1.go = "Folke_12";
 			}
 			else
 			{
-				link.l1 = "No, I'm still in the process.";
+				link.l1 = "Нет, я еще этим занимаюсь.";
 				link.l1.go = "exit";
 				NextDiag.TempNode = "Folke_goods_3";
 			}
 		break;
 		
 		case "Folke_12":
-			dialog.text = "Aye, cap. You can pull up the anchor and set course due north toward Guadalupe as you wanted. There is something extra I wanted to add\nYou can keep your stuff in cabin's chests. Your things will be perfectly safe here, and the crew will move them to another vessel in case you decide to change it in the future\nAlso, hire a purser as soon as possible, even a small ship can dry your wallet, it will take a lot of time for you to master personal skills of accounting and trading.";
-			link.l1 = "Let's not waste any time! Full speed ahead!";
+			dialog.text = "Да, кэп. Можно поднимать якоря и брать курс на север, к Гваделупе, как вы и хотели.";
+			link.l1 = "Не будем медлить! В путь!";
 			link.l1.go = "Folke_13";
 		break;
 		
 		case "Folke_13":
-			dialog.text = "Then I'll return back to my place on the deck. Order me to unmoor, captain! *USE F2 MENU IN ORDER TO ASSIGN OFFICERS. MAKE FOLKE YOUR NAVIGATOR BEFORE SETTING SAIL";
+			dialog.text = "Тогда я отправляюсь на свое место на палубе. Приказывайте отчаливать, капитан!";
 			link.l1 = "...";
 			link.l1.go = "Folke_14";
 		break;
@@ -518,38 +518,38 @@ void ProcessDialogEvent()
 		
 		// --> пират-обманщик
 		case "Seabattle_pirate":
-			dialog.text = "My apologies. "+GetFullName(pchar)+"?";
-			link.l1 = "Correct. What do I owe for this occasion, sir?";
+			dialog.text = "Прошу прощения, ведь это вы - "+GetFullName(pchar)+"?";
+			link.l1 = "Именно так. Чем обязан вашему вниманию, сударь?";
 			link.l1.go = "Seabattle_pirate_1";
 		break;
 		
 		case "Seabattle_pirate_1":
-			dialog.text = "Allow me to introduce myself - "+GetFullName(npchar)+". I've been sent here to you by Cesar Craig. You must know him. He's the owner of Le Francois tavern. As far as he is informed, you are about to depart to Guadeloupe and he would like to offer you a nice way of making some extra money.";
-			link.l1 = "Hm... Interesting! And how has Cesar Craig has become so well-informed of my plans?";
+			dialog.text = "Позвольте представиться - "+GetFullName(npchar)+". Меня послал к вам Чезаре Крейг. Вы, должны его знать - это хозяин таверны в Ле Франсуа. Насколько ему известно, вы собираетесь на Гваделупу, и он хочет предложить вам неплохо подзаработать.";
+			link.l1 = "Хм... Забавно! Интересно, и откуда же Чезаре Крейг так осведомлен о моих планах?";
 			link.l1.go = "Seabattle_pirate_2";
 		break;
 		
 		case "Seabattle_pirate_2":
-			dialog.text = "Captain, it's simple. Your ship is the only ship in St. Pierre at the moment, so everyone is pretty much fully informed about you: who you are and where you're going. In this neck of the woods, rumours float around at about the speed of seagull. So are you interested in hearing what I have to offer?";
-			link.l1 = "Sure. I'm never opposed to making some money.";
+			dialog.text = "Капитан, это же просто. Ваш корабль в порту Сен-Пьера сейчас - единственный, так что про вас уже всем практически все известно: и кто вы, и куда идете. В наших краях слухи разносятся молниеносно. Так вам интересно послушать мое предложение?";
+			link.l1 = "Конечно. Я никогда не прочь заработать.";
 			link.l1.go = "Seabattle_pirate_3";
 		break;
 		
 		case "Seabattle_pirate_3":
-			dialog.text = "Now we are talking! I can always see a business spirit in people. So, Cesar urgently needs a batch of our wine to be delivered to Guadeloupe. Two hundred barrels, your ship's hold can take them easily\nTen thousand pesos for such an easy job - Cesar is in a hurry, and your ship is the only ship in the harbour right now. Do agree, such profitable proposals are rare.";
-			link.l1 = "Ten thousands pesos? Well you bet!";
+			dialog.text = "Вот это разговор! Сразу видно деловую хватку. Так вот, Чезаре нужно срочно перевезти на Гваделупу тамошнему купцу груз нашего местного вина, двести бочонков. Трюм вашего корабля без труда их вместит\nЗа эту несложную работу вы получите целых десять тысяч песо - Чезаре очень спешит, а других кораблей, кроме вашего, сейчас у наших берегов нет. Соглашайтесь - такие выгодные предложения не каждый день поступают.";
+			link.l1 = "Десять тысяч песо? Ну конечно же я согласен! Где нужно произвести погрузку?";
 			link.l1.go = "Seabattle_pirate_4";
 		break;
 		
 		case "Seabattle_pirate_4":
-			dialog.text = "Depart from Le Francois port and speak with Cesar. He will organize everything himself all you'll have to do is set your ship at bay. Don't let us down, cap: Craig has promised me a thousand pesos if I manage to convince you...";
-			link.l1 = "Don't worry. You can consider me convinced. As soon as I'm ready to depart, I will move directly over to Le Francois.";
+			dialog.text = "Отправляйтесь на корабле в порт Ле Франсуа и поговорите с Чезаре. Он сам все организует - вам нужно будет только поставить корабль у берега. Не подведите, кэп: Крейг пообещал мне тысячу песо, если мне удастся уговорить вас...";
+			link.l1 = "Не волнуйтесь, сударь. Считайте, что вы меня уговорили. Как только я буду готов к выходу в море - сразу отправлюсь в Ле Франсуа.";
 			link.l1.go = "Seabattle_pirate_5";
 		break;
 		
 		case "Seabattle_pirate_5":
-			dialog.text = "Commendable! Then I'll go get my thousand. Thank you, cap!";
-			link.l1 = "Not at all...";
+			dialog.text = "Вот и славно! Тогда я пойду за своей тысячей. Спасибо, кэп!";
+			link.l1 = "Да не за что...";
 			link.l1.go = "Seabattle_pirate_6";
 		break;
 		
@@ -571,7 +571,7 @@ void ProcessDialogEvent()
 		// командир абордажной роты по защите Сен-Пьера
 		case "rosetti":
 			PlaySound("VOICE\Russian\EvilPirates01.wav");
-			dialog.text = "Captain, the boarding company is built and in full military promptitude! Awaiting orders!";
+			dialog.text = "Капитан, абордажная рота построена и в полной боевой готовности! Ждем ваших приказаний!";
 			link.l1 = "";
 			link.l1.go = "rosetti_1";
 		break;
@@ -593,7 +593,7 @@ void ProcessDialogEvent()
 		
 		case "rosetti_2":
 			PlaySound("interface\abordage_wining.wav");
-			dialog.text = "Got it, captain! Company, get ready! Moving out! Hip-hip-hurrah! Onward, follow the captain!";
+			dialog.text = "Есть, капитан! Рота, готовьсь! Выступаем! Ура, ура, ура! Вперед, за капитаном!";
 			link.l1 = "";
 			link.l1.go = "rosetti_3";
 		break;
@@ -617,7 +617,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "spain_patrol":
-			dialog.text = "Frenchmen! Engage! Lorenzo, hurry into camp! Give the alarm! Die, fuckers!";
+			dialog.text = "Французы! К бою! Лоренцо, бегом в лагерь! Поднять тревогу!";
 			link.l1 = "...";
 			link.l1.go = "spain_patrol_1";
 		break;
@@ -641,56 +641,56 @@ void ProcessDialogEvent()
 		
 		// страж истины
 		case "spanish":
-			dialog.text = "Do you understand that I am not authorized to disseminate such information?";
-			link.l1 = "Do you understand that its only thanks to my opportune assistance that St. Pierre wasn't ripped apart by the Spanish? My brother has hidden himself, leaving service to the Society. He did that for a reason. I, as a representative of Philippe de Poincy's interests, am obliged to investigate!";
+			dialog.text = "Вы понимаете, что я не могу разглашать подобную информацию?";
+			link.l1 = "А вы понимаете, что только благодаря моей своевременной помощи Сен-Пьер не был разобран испанцами по кирпичику? Мой брат скрылся, оставив службу Ордену. Это неспроста. Я, как представитель интересов Филиппа де Пуанси, обязан разобраться в этом!";
 			link.l1.go = "spanish_1";
 		break;
 		
 		case "spanish_1":
-			dialog.text = "All right, all right, Monsieur de Maure. I will give you an answer to all of your questions. Just keep your cool. Now ask.";
-			link.l1 = "What happened prior to Michel's being locked up under guard?";
+			dialog.text = "Хорошо-хорошо, месье де Мор. Я отвечу на все ваши вопросы. Только не горячитесь. Спрашивайте.";
+			link.l1 = "Что предшествовало заключению Мишеля под стражу?";
 			link.l1.go = "spanish_2";
 		break;
 		
 		case "spanish_2":
-			dialog.text = "Michel de Monper was negotiating with powerful pirate barons to call a political realignment on Tortuga.";
-			link.l1 = "That I know. What else?";
+			dialog.text = "Мишель де Монпе вел переговоры среди влиятельных пиратских баронов, чтобы вызвать политическую перестановку на Тортуге.";
+			link.l1 = "Это мне уже известно. Что еще?";
 			link.l1.go = "spanish_3";
 		break;
 		
 		case "spanish_3":
-			dialog.text = "He also had been planning an operation against the Spanish, to be more specific - a capture of one Spanish ship with a very valuable cargo. You brother was somehow supposed to lure the Spanish transport under the cannons of light frigate Gryffondor. Michel was taking part in some expedition over a long period of time, we didn't heard of him for a while\nBut something went wrong, because the Spanish transport didn't come and Michel himself was found by local fishermen at Le Marin bay. He was contused and barely alive. It seems that the operation was failed\nWar is war, he survived - that is quite an accomplishment itself, but chevalier de Poincy absolutely unexpectedly took up arms against Michel for no reason, he accused him of peculation and stealing the Order's money, and finally had him imprisoned\nOf course, we didn't believe in those accusations. Michel is an honest lad, only God knows what cat has come between him and the chevalier. Perhaps monsieur de Poincy will tell you that himself?";
-			link.l1 = "Possibly. Is that all you know?";
+			dialog.text = "Также он готовил военную операцию против испанцев, а именно - захват испанского корабля с очень ценным грузом. Ваш брат должен был каким-то образом вывести испанский транспорт в нужное место прямо под пушки малого фрегата 'Гриффондор'. Мишель отбыл в длительную экспедицию, и некоторое время о нем не было ни слуху, ни духу\nОднако что-то у него пошло не так, поскольку испанского транспорта 'Гриффондор' не дождался, а сам Мишель был обнаружен рыбаками, выброшенный волнами на берег в бухте Ле Марен, контуженный и едва живой. Видимо, операция провалилась\nКазалось бы - на войне, как на войне, хорошо, что вообще жив остался, однако шевалье де Пуанси совершенно неожиданно ополчился против Мишеля, обвинил в растрате и присвоении денежных средств Ордена и заключил под стражу\nКонечно, мы не поверили этим обвинениям: Мишель - честнейший парень, так что одному Богу известно, какая черная кошка пробежала между ним и шевалье. Быть может, сам месье де Пуанси поведает вам об этом?";
+			link.l1 = "Возможно. Это все, что вам известно?";
 			link.l1.go = "spanish_4";
 		break;
 		
 		case "spanish_4":
-			dialog.text = "Unfortunately, there's nothing to be added to what's already been said. The details of all operations conducted by your brother were known only by him himself and chevalier de Poincy. We are officers and soldiers of the Society. We're just carrying out orders.";
-			link.l1 = "If chevalier is so trusting of Michel, then weren't not all of his operations in vain? Were there fruitful ones as well?";
+			dialog.text = "К сожалению, добавить к сказанному мне нечего. Подробности всех операций, проводимых вашим братом, были известны только ему самому и шевалье де Пуанси. Мы, офицеры и солдаты Ордена, просто выполняли приказы.";
+			link.l1 = "Раз шевалье так доверял Мишелю, значит, не все его операции были провальными? Были и успехи?";
 			link.l1.go = "spanish_5";
 		break;
 		
 		case "spanish_5":
-			dialog.text = "Most definitely. The last muff by Michel de Monper was also his first muff, which is why we were literally shocked by the reaction of the chevalier. Not particularly long before that with aid of Michel's thoroughly planned operation 'Gryffindor', a Spanish galleon was captured stacked all in silver. That alone could have compensated for dozens of muffs in the future. And yet, your brother was arrested.";
-			link.l1 = "I see. Do you have any assumptions on why Michel so quickly hid away from St. Pierre?";
+			dialog.text = "Конечно. Последняя неудача Мишеля де Монпе была также и его первой неудачей, поэтому мы буквально были поражены реакцией шевалье. Еще незадолго до этого при помощи тщательно спланированной операции Мишеля 'Гриффондором' был захвачен испанский галеон, доверху груженый серебром. Одно это могло компенсировать десяток неудач в будущем. И все же ваш брат был арестован.";
+			link.l1 = "Ясно. У вас есть какие-то предположения, почему Мишель так спешно скрылся из Сен-Пьера?";
 			link.l1.go = "spanish_6";
 		break;
 		
 		case "spanish_6":
-			dialog.text = "I suspect that an interpersonal conflict was the reason of the arrest. Obviously, your brother fears that the chevalier will continue persecutions against him even after the final release, so he took precautionary measures. And you know what, monsieur de Maure - nobody here blames him for his decision!\nThe man had been working hard and bravely for the good of the Order and yet they had him, wounded and in a bad health, thrown into the cell for the very first failure of him. The failure he could compensate without a problem!\nAnd by the way, this is an unofficial conversation and I won't repeat what I have just said under oath, are we clear on that, monsieur de Maure?";
-			link.l1 = "Definitely, officer. We had arranged for that from the very beginning. Tell me, could the Spanish attack on St. Pierre have been provoked by the military operations of the Society against Spanish ships? That same Spanish galleon with silver that you mentioned? Those Castilians were painfully zealous in fitting out your base...";
+			dialog.text = "Я подозреваю, что причины его ареста - в межличностном конфликте с Филиппом де Пуанси. Ваш брат, очевидно, опасается, что преследования со стороны шевалье продолжатся и после освобождения, поэтому принял превентивные меры. И знаете что, месье де Мор - здесь никто не осуждает его решение!\nЧеловек мужественно и доблестно работал на благо Ордена, а его при первой же неудаче, которую он бы компенсировал в дальнейшем сторицей, раненого и больного, бросают в камеру, обвиняя в какой-то совершенной нелепице!\nДа, если что: разговор наш неофициальный, и под присягой повторять свои слова я не буду. Мы поняли друг друга, месье де Мор?";
+			link.l1 = "Безусловно, офицер. Мы договорились об этом с самого начала. Скажите, а нападение испанцев на Сен-Пьер не могло быть спровоцировано военными операциями Ордена против испанских кораблей? Ну, тот же галеон с серебром, о котором вы упомянули? Уж больно рьяно кастильцы орудовали на вашей базе...";
 			link.l1.go = "spanish_7";
 		break;
 		
 		case "spanish_7":
-			dialog.text = "Doubt it. A very few people know about our base here and all of our actions against the Spanish were accurate and well planned. Ask the Spanish officer we have captured, he is in our dungeons now. We have already interrogated him\nThe attack of Sent Pierre was an ordinary raid, organized by a Spanish grand, baron Ramon de Mendoza y Riba for the purpose of his own profit and an act of intimidation of French colonies. He also wanted to gain favour to Escorial.";
-			link.l1 = "I will speak to your captive. Where do I find him?";
+			dialog.text = "Навряд ли. О нашей базе на Мартинике вообще мало кому известно, да и все наши действия против испанцев были точечными и аккуратно спланированными. Но вы можете сами спросить об этом у пленного испанского офицера, который в данный момент содержится в наших казематах. Мы уже допросили его\nАтака Сен-Пьера - обычный грабительский налет, организованный испанским грандом, бароном Рамоном де-Мендосой-и-Риба, с целью личной наживы и устрашения гражданского населения французких колоний, а также чтобы выслужиться перед Эскориалом.";
+			link.l1 = "Я побеседую с вашим пленным. Где мне его найти?";
 			link.l1.go = "spanish_8";
 		break;
 		
 		case "spanish_8":
-			dialog.text = "Downstairs, in the cell where your brother was held.";
-			link.l1 = "All right. I'll be back after I interrogate the Spaniard. Maybe I'll have additional questions.";
+			dialog.text = "Внизу, в камере, где содержался ваш брат.";
+			link.l1 = "Хорошо. Я вернусь, после того как допрошу испанца. Возможно, у меня появятся еще вопросы.";
 			link.l1.go = "spanish_9";
 		break;
 		
@@ -705,38 +705,38 @@ void ProcessDialogEvent()
 		break;
 		
 		case "spanish_10":
-			dialog.text = "Well isn't that news! But I can't release the captive. He participated in the incursion on St. Pierre...";
-			link.l1 = "Officer, this is an important witness. The attack on St. Pierre was perpetuated not for theft. Don Ramon Mendosa was looking for something else. We need to get a definitive motive on this. So will you release this Spaniard to me or will I have to demand permission from de Poincy?";
+			dialog.text = "Вот это новость! Но я не могу отпустить пленника, он участвовал в набеге на Сен-Пьер...";
+			link.l1 = "Офицер, это важный свидетель. Нападение на Сен-Пьер было совершено не для грабежа. Дону Рамону Мендосе нужно было другое. Мы должны разобраться с этим окончательно. Так вы выдадите мне этого испанца, или мне затребовать разрешение у де Пуанси?";
 			link.l1.go = "spanish_11";
 		break;
 		
 		case "spanish_11":
-			dialog.text = "All right, take him. I was about to publicly put this bastard to death anyway on St. Pierre square... But he's strictly under your own personal liability!";
-			link.l1 = "Undoubtedly. I will answer for this Spaniard before de Poincy. Have this captive shackled and delivered to the port onto my longboat.";
+			dialog.text = "Ладно, забирайте его, раз уж он так важен вам. Все равно я собирался казнить мерзавца публично на площади Сен-Пьера... Но строго под вашу личную ответственность!";
+			link.l1 = "Безусловно. Перед шевалье де Пуанси за этого испанца буду отвечать я. Распорядитесь надеть на пленника кандалы и доставить в порт к моей шлюпке.";
 			link.l1.go = "spanish_12";
 		break;
 		
 		case "spanish_12":
-			dialog.text = "Will do, captain.";
-			link.l1 = "And one more thing, officer: does the name Miguel Dichoso ring a bell to you?";
+			dialog.text = "Будет сделано, капитан.";
+			link.l1 = "И еще, офицер: имя 'Мигель Дичозо' о чем-нибудь говорит вам?";
 			link.l1.go = "spanish_13";
 		break;
 		
 		case "spanish_13":
-			dialog.text = "No. I've never heard it before. Why?";
-			link.l1 = "Are you sure? So you haven't met anyone by that name, not on your base, not in the governor's palace, not anywhere in St. Pierre?";
+			dialog.text = "Нет. Впервые слышу. А что?";
+			link.l1 = "Точно нет? То есть ни на вашей базе, ни в губернаторском дворце, ни вообще в Сен-Пьере вы не встречали человека с таким именем?";
 			link.l1.go = "spanish_14";
 		break;
 		
 		case "spanish_14":
-			dialog.text = "No, I haven't. You know, we don't think too well of Spaniards where I'm from.";
-			link.l1 = "Alright. Anyway, that's to be expected. It would have been too simple... Thank you officer! You've been very helpful.";
+			dialog.text = "Нет, не встречал. У нас, знаете ли, не жалуют испанцев.";
+			link.l1 = "Ясно. Впрочем, этого и следовало ожидать. Было бы слишком просто... Ладно, я еще раз поговорю с пленным испанцем, а вы тем временем подготовьте его к доставке. И: спасибо, офицер! Вы мне очень помогли.";
 			link.l1.go = "spanish_15";
 		break;
 		
 		case "spanish_15":
-			dialog.text = "Oh, you are welcome... What do you think, monsieur de Maure, where is your brother now?";
-			link.l1 = "I would like to know the answer to that question myself. And I will find out... sooner or later. Good luck!";
+			dialog.text = "Да не за что... Как вы думаете, месье де Мор: где же сейчас ваш брат?";
+			link.l1 = "Я бы и сам хотел знать ответ на этот вопрос. И узнаю... рано или поздно. Удачи!";
 			link.l1.go = "spanish_16";
 		break;
 		
@@ -752,26 +752,26 @@ void ProcessDialogEvent()
 		
 		// монах-посланник от Винсенто
 		case "monk_vinsento":
-			dialog.text = TimeGreeting()+"! Are you captain "+GetFullName(pchar)+"?";
-			link.l1 = "Yes, it is me. What can I do for you?";
+			dialog.text = TimeGreeting()+"! Вы и есть капитан "+GetFullName(pchar)+"?";
+			link.l1 = "Да, это я. Что вам угодно?";
 			link.l1.go = "monk_vinsento_1";
 		break;
 		
 		case "monk_vinsento_1":
-			dialog.text = "I've been sent to you by father Vincento. I've got something for you...";
-			link.l1 = "Father Vincento? I don't work with His Grace anymore. Not after he sent Alonso de Maldonado, Diego de Montoya's buddy, after me. He failed, you can pass this on to His Grace.";
+			dialog.text = "Я к вам от отца Винсенто. У меня для вас...";
+			link.l1 = "От отца Винсенто? Боюсь, с Его Преосвященством у меня дела окончены. После того, как он натравил на меня дружка Диего де Монтойи, Алонсо де Мальдонадо. Однако он просчитался, так ему и передайте.";
 			link.l1.go = "monk_vinsento_2";
 		break;
 		
 		case "monk_vinsento_2":
-			dialog.text = "Wait, captain. Father Vincento expected such a reaction from you and warned me of this. I assure you that His Grace does not wish you any ill. Please, read this letter. It's very, very important.";
-			link.l1 = "He doesn't wish me any ill? Hm. Maybe he also failed to tell you anything about me and Don de Maldonado? I'm having a hard time believing that.";
+			dialog.text = "Постойте, капитан. Отец Винсенто ожидал от вас такой реакции, и предупредил меня об этом. Уверяю, Его Преосвященство не желает вам зла. Пожалуйста, прочтите его письмо. Это очень, очень важно.";
+			link.l1 = "Не желает мне зла? Хм. Может, он также ничего не рассказывал про меня и дону де Мальдонадо? Не верится мне что-то.";
 			link.l1.go = "monk_vinsento_3";
 		break;
 		
 		case "monk_vinsento_3":
-			dialog.text = "Take this letter, captain. Read it and make your own decision. Just remember that the fate of the entire Christian world is now in your hands. Don't take this lightly. May God bless you and send your feet on a righteous path!";
-			link.l1 = "All right, give me the letter.";
+			dialog.text = "Возьмите письмо, капитан. Прочтите его, и решайте сами. Только помните, что судьба всего христианского мира сейчас в ваших руках, и отнеситесь к этому со всей серьезностью. Да просветит вас Господь, и да направит он ваши стопы на путь истинный!";
+			link.l1 = "Ладно, давайте сюда письмо.";
 			link.l1.go = "monk_vinsento_4";
 		break;
 		
@@ -780,7 +780,7 @@ void ProcessDialogEvent()
 			ChangeItemDescribe("specialletter", "itmdescr_specialletter_vinsento");
 			sld = ItemsFromID("specialletter");
 			sld.text = "Letter_Vincento_last";
-			dialog.text = "Here you go. I hope you make the right decision.";
+			dialog.text = "Держите. Надеюсь, вы примете правильное решение.";
 			link.l1 = "...";
 			link.l1.go = "monk_vinsento_5";
 		break;
@@ -796,14 +796,14 @@ void ProcessDialogEvent()
 		
 		// падре Адриан
 		case "adrian":
-			dialog.text = "Greetings, my son. May the Lord bless all of your doings...";
-			link.l1 = "Hello, father Adrian. His Grace has told me that you are can equip me with amulets and medicines...";
+			dialog.text = "Приветствую, сын мой. Да благословит Господь дела твои...";
+			link.l1 = "Здравствуйте, отец Адриан. Его Преосвященство сказал мне, что вы можете снабдить меня оберегами и лекарствами...";
 			link.l1.go = "adrian_1";
 		break;
 		
 		case "adrian_1":
-			dialog.text = "Yes, of course. This package, which I brought directly from Santiago is just for you. Here are sanctified amulets and health-giving decoctions. And even a rare, unique Ometochli tincture which fortifies combat qualities. This is all for you, my son.";
-			link.l1 = "Thank you!";
+			dialog.text = "Да, конечно. Вот то, что я привез из Сантьяго специально для тебя. Здесь освященные обереги и целебные отвары. И даже редкая, уникальная тинктура Ометочтли, улучшающая боевые качества. Это всё тебе, сын мой.";
+			link.l1 = "Спасибо!";
 			link.l1.go = "adrian_2";
 		break;
 		
@@ -817,61 +817,61 @@ void ProcessDialogEvent()
 			TakeNItems(pchar, "potion4", 10);
 			TakeNItems(pchar, "potion7", 3);
 			TakeNItems(pchar, "berserker_potion", 3);
-			dialog.text = "If you do need any more health-giving herbs, you can acquire them from me one, a vial of each every day. I will prepare as much of them as you need.";
-			link.l1 = "All right, father Adrian. I'll keep that in mind.";
+			dialog.text = "Если тебе еще понадобятся целебные зелья - ты можешь приобрести их у меня, по одному пузырьку каждого вида в день. Я буду их готовить по мере надобности.";
+			link.l1 = "Хорошо, отец Адриан. Я учту это.";
 			link.l1.go = "exit";
-			link.l2 = "Great. I would like to acquire some of them right now.";
+			link.l2 = "Отлично. Я прямо сейчас хочу приобрести некоторые из них.";
 			link.l2.go = "potion";
 			NextDiag.TempNode = "adrian_3";
 		break;
 		
 		case "adrian_3":
-			dialog.text = "God bless you, my son. What would you like?";
-			link.l1 = "I would like to purchase several health-giving elixirs.";
+			dialog.text = "Да благословит тебя Господь, сын мой. Что ты хотел?";
+			link.l1 = "Я хочу купить несколько лечебных эликсиров.";
 			link.l1.go = "potion";
-			link.l2 = "Nothing at the moment. I'm preparing for a journey. Just stopped by to see how you are doing here.";
+			link.l2 = "Пока ничего, готовлюсь к походу. Просто заглянул проведать.";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "adrian_3";
 		break;
 		
 		case "potion":
-			dialog.text = "Of course, my son. What medicine would you like to acquire?";
+			dialog.text = "Конечно, сын мой. Какое лекарство ты желаешь приобрести?";
 			if (!CheckAttribute(npchar, "potion1_date") || GetNpcQuestPastDayParam(npchar, "potion1_date") >= 1)
 			{
-				link.l1 = "Just a remedial essence.";
+				link.l1 = "Простую лечебную эссенцию.";
 				link.l1.go = "potion1";
 			}
 			if (!CheckAttribute(npchar, "potion2_date") || GetNpcQuestPastDayParam(npchar, "potion2_date") >= 1)
 			{
-				link.l2 = "A health-giving elixir.";
+				link.l2 = "Целебный эликсир.";
 				link.l2.go = "potion2";
 			}
 			if (!CheckAttribute(npchar, "potion3_date") || GetNpcQuestPastDayParam(npchar, "potion3_date") >= 1)
 			{
-				link.l3 = "An antidote.";
+				link.l3 = "Противоядие.";
 				link.l3.go = "potion3";
 			}
 			if (!CheckAttribute(npchar, "potion4_date") || GetNpcQuestPastDayParam(npchar, "potion4_date") >= 1)
 			{
-				link.l4 = "An herbal mixture.";
+				link.l4 = "Травяную микстуру.";
 				link.l4.go = "potion4";
 			}
-			link.l5 = "Forgive me, father Adrian. I've changed my mind.";
+			link.l5 = "Извините, отец Адриан, я передумал.";
 			link.l5.go = "exit";
 		break;
 		
 		case "potion1":
 			npchar.quest.price = 90;
 			npchar.quest.type = 1;
-			dialog.text = "A remedial essence? That'll be 90 pesos, my son.";
+			dialog.text = "Лечебную эссенцию? С тебя 90 песо, сын мой.";
 			if (sti(Pchar.money) >= 90)
 			{
-				link.l1 = "Here you go, father Adrian. Here's the money.";
+				link.l1 = "Пожалуйста, отец Адриан. Вот деньги.";
 				link.l1.go = "potion_pay";
 			}
 			else
 			{
-				link.l1 = "Unfortunately, I don't have sufficient funds... I'll return later.";
+				link.l1 = "К сожалению, у меня недостаточно средств... Я вернусь позже.";
 				link.l1.go = "exit";
 			}
 		break;
@@ -879,15 +879,15 @@ void ProcessDialogEvent()
 		case "potion2":
 			npchar.quest.price = 500;
 			npchar.quest.type = 2;
-			dialog.text = "A health-giving elixir? That'll be 500 pesos, my son.";
+			dialog.text = "Целебный эликсир? С тебя 500 песо, сын мой.";
 			if (sti(Pchar.money) >= 500)
 			{
-				link.l1 = "Here you go, father Adrian. Here's the money.";
+				link.l1 = "Пожалуйста, отец Адриан. Вот деньги.";
 				link.l1.go = "potion_pay";
 			}
 			else
 			{
-				link.l1 = "Unfortunately, I don't have sufficient funds... I'll return later.";
+				link.l1 = "К сожалению, у меня недостаточно средств... Я вернусь позже.";
 				link.l1.go = "exit";
 			}
 		break;
@@ -895,15 +895,15 @@ void ProcessDialogEvent()
 		case "potion3":
 			npchar.quest.price = 200;
 			npchar.quest.type = 3;
-			dialog.text = "An antidote? That'll be 200 pesos, my son.";
+			dialog.text = "Противоядие? С тебя 200 песо, сын мой.";
 			if (sti(Pchar.money) >= 200)
 			{
-				link.l1 = "Here you go, father Adrian. Here's the money.";
+				link.l1 = "Пожалуйста, отец Адриан. Вот деньги.";
 				link.l1.go = "potion_pay";
 			}
 			else
 			{
-				link.l1 = "Unfortunately, I don't have sufficient funds... I'll return later.";
+				link.l1 = "К сожалению, у меня недостаточно средств... Я вернусь позже.";
 				link.l1.go = "exit";
 			}
 		break;
@@ -911,15 +911,15 @@ void ProcessDialogEvent()
 		case "potion4":
 			npchar.quest.price = 900;
 			npchar.quest.type = 4;
-			dialog.text = "A herbal mixture? That'll be 900 pesos, my son.";
+			dialog.text = "Микстуру? С тебя 900 песо, сын мой.";
 			if (sti(Pchar.money) >= 900)
 			{
-				link.l1 = "Here you go, father Adrian. Here's the money.";
+				link.l1 = "Пожалуйста, отец Адриан. Вот деньги.";
 				link.l1.go = "potion_pay";
 			}
 			else
 			{
-				link.l1 = "Unfortunately, I don't have sufficient funds... I'll return later.";
+				link.l1 = "К сожалению, у меня недостаточно средств... Я вернусь позже.";
 				link.l1.go = "exit";
 			}
 		break;
@@ -929,8 +929,8 @@ void ProcessDialogEvent()
 			iTemp = sti(npchar.quest.type);
 			GiveItem2Character(pchar, "potion"+iTemp);
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Here you are. Take your medicine. May the Lord watch over you!";
-			link.l1 = "Thank you, father Adrian.";
+			dialog.text = "Пожалуйста. Держи свое лекарство. Да хранит тебя Господь!";
+			link.l1 = "Спасибо, отец Адриан.";
 			link.l1.go = "exit";
 			SaveCurrentNpcQuestDateParam(npchar, "potion"+iTemp+"_date");
 			NextDiag.TempNode = "adrian_3";
@@ -938,38 +938,38 @@ void ProcessDialogEvent()
 		
 		// посланец Дичозо
 		case "Dichoso_agent":
-			dialog.text = "Captain "+GetFullName(pchar)+"?";
-			link.l1 = "Yes, it is me. What do I owe for this visit?";
+			dialog.text = "Капитан "+GetFullName(pchar)+"?";
+			link.l1 = "Да, это я. Чем обязан?";
 			link.l1.go = "Dichoso_agent_1";
 		break;
 		
 		case "Dichoso_agent_1":
-			dialog.text = "I have a message for you from captain Miguel Dichoso. He said you know him.";
-			link.l1 = "I haven't had the honour to know him in person, but yes I had heard something of him.";
+			dialog.text = "У меня к вам сообщение от капитана Мигеля Дичозо. Он сказал, что вы знаете его.";
+			link.l1 = "Чести знать лично не удостоился, а слышать о нем - не спорю, доводилось.";
 			link.l1.go = "Dichoso_agent_2";
 		break;
 		
 		case "Dichoso_agent_2":
-			dialog.text = "Captain Dichoso would like to meet with you. He has an offer for you concerning a hike into the depths of Main to the Indian city of Tayasal. He's told me that your experience coupled with his knowledge will produce an excellent result.";
-			link.l1 = "Those were his exact words?";
+			dialog.text = "Капитан Дичозо хочет с вами встретится. У него предложение к вам лично касательно похода в глубь Мэйна к индейскому городу Тайясаль. Как он сказал - ваш опыт, помноженный на его знания, дадут отличный результат.";
+			link.l1 = "Прямо так и сказал?";
 			link.l1.go = "Dichoso_agent_3";
 		break;
 		
 		case "Dichoso_agent_3":
-			dialog.text = "Yes! Captain Dichoso will be waiting for you on St. Christopher island. In order to avoid unneeded eyes and ears, Miguel proposes to hold a meeting with you in the large crypt of the Capsterville cemetery.";
-			link.l1 = "Hm...";
+			dialog.text = "Именно! Капитан Дичозо будет ждать вас на острове Сент-Кристофер. Дабы избежать ненужных глаз и ушей, Мигель предлагает провести встречу в большой крипте кладбища Капстервиля.";
+			link.l1 = "Хм...";
 			link.l1.go = "Dichoso_agent_4";
 		break;
 		
 		case "Dichoso_agent_4":
-			dialog.text = "Dichoso had warned that you would hesitate and authorized me to assure you that he guarantees a peaceful conclusion to your negotiation no mater what. And he also asked me to pass on to you that what you found on one island is just the tip of the iceberg considering what you will find in Tayasal.";
-			link.l1 = "Is that so! Then that's very interesting. But why wouldn't captain Dichoso pay a visit to me himself and send a third party instead?";
+			dialog.text = "Дичозо предупредил, что вы будете колебаться и уполномочил меня заверить, что гарантирует мирный исход переговоров независимо ни от чего. А также попросил передать, что то, что вы нашли на одном острове, лишь малая толика того, что есть в Тайясале.";
+			link.l1 = "Даже так! Тогда это очень интересно. Но почему же капитан Дичозо не явился ко мне сам, а прислал третье лицо?";
 			link.l1.go = "Dichoso_agent_5";
 		break;
 		
 		case "Dichoso_agent_5":
-			dialog.text = "Don Dichoso had been searching for you on Isla Tesoro, then here, and now has departed to St. Christopher in hope of finding you there. You are an officer of Philippe de Poincy himself, aren't you? I was supposed to wait for you here in the event that you arrived in Blueweld.";
-			link.l1 = "Then it's all clear. Well, all right. I won't waste any time. Off I go to Capsterville.";
+			dialog.text = "Дон Дичозо разыскивал вас на Исла-Тесоро, потом здесь, а теперь отбыл на Сент-Кристофер, в надежде найти вас там. Ведь вы же офицер самого Филиппа де Пуанси, я не прав? А я должен был ожидать тут, на случай, если вы прибудете в Блювельд.";
+			link.l1 = "Тогда все ясно. Ну что же, не буду терять времени и отправляюсь в Капстервиль.";
 			link.l1.go = "Dichoso_agent_6";
 		break;
 		
@@ -981,92 +981,92 @@ void ProcessDialogEvent()
 		
 		// агент Дичозо
 		case "Dichoso_crypt_agent":
-			dialog.text = "Well, finally we meet, captain "+GetFullName(pchar)+"...";
+			dialog.text = "Ну, наконец мы с тобой встретились, капитан "+GetFullName(pchar)+"...";
 			if (CheckAttribute(pchar, "questTemp.Tieyasal.MigelKnow")) 
 			{
-				link.l1 = "Where is Miguel Dichoso? And don't try to wheedle out of this. I know very well who he really is and I think you do too.";
+				link.l1 = "Где Мигель Дичозо? И не пытайся юлить. Я прекрасно знаю, кто он есть на самом деле. Думаю, что и ты тоже.";
 				link.l1.go = "Dichoso_crypt_agent_2";
 			}
 			else
 			{
-				link.l1 = "I suppose this is Miguel Dichoso in the flesh right in front of me?";
+				link.l1 = "Полагаю, передо мной Мигель Дичозо собственной персоной?";
 				link.l1.go = "Dichoso_crypt_agent_1";
 			}
 		break;
 		
 		case "Dichoso_crypt_agent_1":
-			dialog.text = "You suppose correctly, captain. We have been on each other's heals for a long time, haven't we?";
+			dialog.text = "Правильно полагаешь, капитан. Мы уже давно ходим по следу друг друга, разве не так?";
 			if (CheckAttribute(pchar, "questTemp.Ksochitam.SQCapBookRead")) // прочел журнал Санта-Квитерии
 			{
-				link.l1 = "I look at you right now, buddy, and I can tell that you're lying. You're no Dichoso. I've read the stern notebook entries by the captain of the Santa Quiteria and also asked around about his appearance. You don't really look like him. You don't even have a scar on your face from a cavalry sword.";
+				link.l1 = "Вот смотрю я на тебя, приятель, и понимаю, что ты лжешь. Никакой ты не Дичозо. Я читал записи в судовом журнале капитана 'Санта-Квитерии', а также расспрашивал о его внешности. Что-то не похож ты на него. Даже сабельного шрама на лице нет.";
 				link.l1.go = "Dichoso_crypt_agent_2";
 			}
 			else
 			{
-				link.l1 = "Exactly. As I understand, we're talking about Tayasal?";
+				link.l1 = "Именно так. Как я понимаю, речь пойдет о Тайясале?";
 				link.l1.go = "Dichoso_crypt_agent_7";
 			}
 		break;
 		
 		case "Dichoso_crypt_agent_2":
-			dialog.text = "Hm. Well, there's no point in playing hide and seek then. Miguel warned that you are one hell of a sharp rascal...";
-			link.l1 = "Where is Dichoso?";
+			dialog.text = "Хм. Ну что же, не вижу смысла играть в прятки. Мигель предупреждал, что ты чертовски сообразительный каналья...";
+			link.l1 = "Где Дичозо?";
 			link.l1.go = "Dichoso_crypt_agent_3";
 		break;
 		
 		case "Dichoso_crypt_agent_3":
-			dialog.text = "He's not here. I am authorized to meet you and chat with you on his behalf.";
-			link.l1 = "I have no desire to speak with a pawn. I need the queen. So where is he?";
+			dialog.text = "Его тут нет. Я уполномочен встретить тебя и побеседовать от его имени.";
+			link.l1 = "У меня нет желания разговаривать с пешкой. Мне нужен ферзь. Так где он?";
 			link.l1.go = "Dichoso_crypt_agent_4";
 		break;
 		
 		case "Dichoso_crypt_agent_4":
-			dialog.text = "This conversation isn't going to last very long, captain. You weren't invited here to go on raving, you know.";
-			link.l1 = "I get it. A primitive ambush trap. Did I guess it right?";
+			dialog.text = "Мы не будем долго с тобой разговаривать, капитан. В общем-то, тебя пригласили сюда не для разглагольствований.";
+			link.l1 = "Понимаю. Примитивная ловушка-засада. Я угадал?";
 			link.l1.go = "Dichoso_crypt_agent_5";
 		break;
 		
 		case "Dichoso_crypt_agent_5":
-			dialog.text = "Right on the dot, buddy. Right behind that door is a basement and my people are waiting in there. Besides that, I've hidden a retracted shooter into each grave. You're way back is completely cut off. So as primitive as this trap may be, you've climbed into it. Your desire to see Tayasal has outweighed your sense of caution, has it?";
-			link.l1 = "You've picked a great place for an ambush, buddy. We're gonna bury you and your bandits right into the graves.";
+			dialog.text = "В точку, приятель. За вот той маленькой дверью есть подвал, а в нем мои люди. Кроме того, в каждый гроб я спрятал по отменному стрелку. Выход назад тебе отрезан. Так что ловушка хоть и примитивная, но ты в нее залез. Желание увидеть Тайясаль перевесило осторожность, да?";
+			link.l1 = "А вообще удачное ты выбрал место для засады, дружок. Сразу тут тебя и твоих бандитов по гробам и упакуем.";
 			link.l1.go = "Dichoso_crypt_agent_6";
 		break;
 		
 		case "Dichoso_crypt_agent_6":
-			dialog.text = "I like your sense of humour. That you have in common with Michel. Say what you will, he's your flesh and blood... I'll do just as he requested - I'll send you into the other world as fast and painlessly as possible. Guys, prepare for action!";
-			link.l1 = "Many have tried to do that, but their hands are yet short...";
+			dialog.text = "Мне нравится твое чувство юмора. В этом ты похож на Мигеля. Что ни говори - родная кровь... Я сделаю, как он просил: отправлю тебя на тот свет максимально быстро и безболезненно. Ребята, к бою!";
+			link.l1 = "Многие пытались это сделать, да руки коротки...";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("Tieyasal_StartCryptBattle");
 		break;
 		
 		case "Dichoso_crypt_agent_7":
-			dialog.text = "You really want to make it there? I get it. But I don't think it's a good idea.";
-			link.l1 = "Then what were you about to discuss with me?";
+			dialog.text = "Очень хочется туда попасть? Понимаю. Но не думаю, что это хорошая идея.";
+			link.l1 = "Тогда о чем ты собрался со мной беседовать?";
 			link.l1.go = "Dichoso_crypt_agent_8";
 		break;
 		
 		case "Dichoso_crypt_agent_8":
-			dialog.text = "I wasn't looking to enter a deep, long conversation with you. You're here and that for me is enough.";
-			link.l1 = "I get it. A primitive ambush trap. Did I guess right?";
+			dialog.text = "А я и не собираюсь с тобой разводить долгие разговоры. Ты здесь, и этого мне достаточно.";
+			link.l1 = "Понимаю. Примитивная ловушка-засада. Я угадал?";
 			link.l1.go = "Dichoso_crypt_agent_5";
 		break;
 		
 		// командир абордажников
 		case "newcastle_officer":
-			dialog.text = "Awaiting your orders, captain!";
-			link.l1 = "We move out through the jungle toward the St. Christopher cemetery. Don't enter the cemetery itself, assume your position along the trail and follow what goes on. In the case of danger, attack.";
+			dialog.text = "Ждем ваших приказаний, капитан!";
+			link.l1 = "Выдвигаемся через джунгли в сторону кладбища Сент-Кристофера. На само кладбище не заходите, занимаете позицию в джунглях у тропы и следите за происходящим. В случае опасности - атакуете.";
 			link.l1.go = "newcastle_officer_1";
 		break;
 		
 		case "newcastle_officer_0":
-			dialog.text = "Awaiting your orders, captain!";
-			link.l1 = "We move out through the jungle toward the St. Christopher cemetery. Don't enter the cemetery itself, assume your position along the trail, surround the perimeter, and follow what goes on. The enemy is surely planning an ambush. As soon as you see the enemy, attack immediately.";
+			dialog.text = "Ждем ваших приказаний, капитан!";
+			link.l1 = "Выдвигаемся через джунгли в сторону кладбища Сент-Кристофера. На само кладбище не заходите, занимаете позиции в джунглях по обе стороны тропы - окружаете территорию и следите за происходящим. Враг наверняка готовит засаду. Как только увидите неприятеля - немедленно атакуете.";
 			link.l1.go = "newcastle_officer_1";
 		break;
 		
 		case "newcastle_officer_1":
-			dialog.text = "Yes, captain!  ";
-			link.l1 = "All right. Onward!";
+			dialog.text = "Есть, капитан!";
+			link.l1 = "Хорошо. Вперед!";
 			link.l1.go = "newcastle_officer_2";
 		break;
 		
@@ -1099,8 +1099,8 @@ void ProcessDialogEvent()
 		
 		case "Europe":
 			PlaySound("VOICE\Russian\military01.wav");
-			dialog.text = "Captain Hobart! According to the spy's information, runaway rebels are hiding out in this estate. There are five dragoons at your disposal search the building and seize the anybody hanging out inside there! Don't handle with kid gloves. You're acting in the name of the king!";
-			link.l1 = "Yes, sir!";
+			dialog.text = "Капитан Гобарт! По сведениям лазутчиков, в этом имении укрываются беглые мятежники. В вашем распоряжении пять драгун - обыщите дом и схватите всех, кто там находится! Можете не церемониться, вы действуете от имени короля!";
+			link.l1 = "Есть, сэр!";
 			link.l1.go = "Europe_1";
 		break;
 		
@@ -1113,8 +1113,8 @@ void ProcessDialogEvent()
 		
 		//замечание по обнаженному оружию от персонажей типа citizen
 		case "CitizenNotBlade":
-			dialog.text = NPCharSexPhrase(NPChar, "Listen. I ,as a citizen of this city, do request that you do not walk around here with exposed blades.", "You know, I, as a citizen of this city, do request that you do not walk around here with exposed blades.");
-			link.l1 = LinkRandPhrase("All right.", "Fine.", "As you wish...");
+			dialog.text = NPCharSexPhrase(NPChar, "Послушайте, я, как гражданин этого города, прошу вас не ходить у нас с обнаженным клинком.", "Знаете, я, как гражданка этого города, прошу вас не ходить у нас с обнаженным клинком.");
+			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажете...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 			if (npchar.id == "GigoloMan") NextDiag.TempNode = "GigoloMan";

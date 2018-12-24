@@ -14,29 +14,29 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "Want something?";
-			link.l1 = "No, nothing.";
+			dialog.text = "Вы что-то хотели?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "guide_0":
-			dialog.text = "Welcome to the colonies, monsieur! Let me introduce myself, I am "+GetFullName(npchar)+". You are a newcomer, right?";
-			link.l1 = "Greeting, monsieur. My name is "+GetFullName(pchar)+". Yes, I am just off the ship. I don't recognize you... Do I know you?";
+			dialog.text = "Рад приветствовать вас в колониях, сударь! Позвольте представиться: "+GetFullName(npchar)+". Только что прибыли из метрополии?";
+			link.l1 = "Здравствуйте, месье. Мое имя - "+GetFullName(pchar)+". Да, я только-только с корабля. А вот вас, правда, что-то не припомню... Мы знакомы?";
 			link.l1.go = "guide_1";			
 		break;
 		
 		case "guide_1":
-			dialog.text = "No, monsieur, you don't. Though, I couldn't miss an opportunity to introduce myself to a nobleman like yourself\nOh, I remember my first day, the day of my arrival to the New World. Things are different here and the local lifestyle may damage your health and your wallet\nThat's why I offer you my modest help. Free of charge, which is rare here, ha ha. I can make you a bit more familiar with our colony and the archipelago. Consider it as a little presentation.";
-			link.l1 = "That's very kind of you, monsieur! Sure, I'd be glad to accept you offer. Knowledge is power.";
+			dialog.text = "Нет, сударь, к сожалению, я не имел чести быть знакомым с вами раньше. Однако, увидев благородного дворянина, впервые ступившего на землю Мартиники, я счел просто обязанным подойти и познакомиться с вами\nЯ хорошо помню свой первый день, когда и я, подобно вам, прибыл в Новый Свет. Здесь все не так, как в старушке Европе, и местные порядки могут изрядно навредить здоровью и кошельку незнакомого с ними человека\nПоэтому я и подошел поприветствовать вас и предложить свою скромную и абсолютно безвозмездную помощь в ознакомлении с нашей колонией и архипелагом в целом - дабы вы имели хотя бы поверхностное представление о месте, куда приехали.";
+			link.l1 = "Весьма благородно с вашей стороны, месье! Я буду очень рад воспользоваться вашим предложением. Знания еще никому не повредили.";
 			link.l1.go = "guide_2";
-			link.l2 = "I appreciate your offer, monsieur, I really do, but I'll pass.";
+			link.l2 = "Спасибо за заботу, сударь, я действительно признателен вам, но думаю, что без труда разберусь во всем сам.";
 			link.l2.go = "guide_exit";	
 		break;
 		
 		case "guide_exit":
-			dialog.text = "As you wish, monsieur. Anyway, nice to meet you. Honourable people are rare guests here. I wish you luck!";
-			link.l1 = "You too, "+GetFullName(npchar)+"!";
+			dialog.text = "Как вам будет угодно, месье. В любом случае, я был рад нашему знакомству. Благородные люди столь редки в этой глуши. Всего доброго и удачи вам!";
+			link.l1 = "И вам тоже, "+GetFullName(npchar)+"!";
 			link.l1.go = "guide_exit_1";			
 		break;
 		
@@ -48,7 +48,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guide_2":
-			dialog.text = "Glad to hear it. My pleasure. Well, let me tell you some basics. Most of colonies were built in the same manner: a settlement on the shore protected by a fort and walls with gates. Nobles, rich folks, soldiers, sailors, merchants, mercenaries and criminals - all of them live together\n Sometimes you'll meet captains, monks, gypsies and beggars. You won't find any Indians on the streets though, people don't feel comfortable about their presence. Follow me, I will show you local establishments.";
+			dialog.text = "Я рад, что вы согласились. А для меня эта экскурсия будет в удовольствие - не каждый день удается поговорить с достойным человеком. Ну что же, начнем наше знакомство с устройства поселений на Карибах\nБольшинство колоний архипелага устроены по одинаковому принципу: поселение, расположенное на берегу моря, защищенное фортом от нападения вражеских судов, с городскими воротами, ведущими в джунгли. Население городов весьма разнообразно: высокородные дворяне, зажиточные мещане, солдаты гарнизона, матросы с кораблей, темные личности и всякий маргинальный сброд\nВ городе часто можно увидеть капитанов с прибывших кораблей, бродячих монахов, собирающих пожертвования на нужды церкви, цыганок, предлагающих гадания, а также нищих. Индейцев колонисты не жалуют, так что на улицах вы их не увидите. А теперь следуйте за мной, я познакомлю вас с городскими заведениями.";
 			link.l1 = "";
 			link.l1.go = "guide_3";			
 		break;
@@ -63,7 +63,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guide_4":
-			dialog.text = "So, this is the most important place in any colony - a tavern. Yes, in Europe such place may be considered a den of thieves, but everything is opposite here. A bartender can offer you a room to sleep, some rum, juicy gossips and a job\nIf you seek any information, try talking with people there. Buy a drink to a drunkard and you may get something interesting in return. Gambling is a popular way of entertainment here, but be attentive of cheaters. If you catch someone on cheating don't hesitate to kill. Nobody will judge you for that\nA tavern is also a place where you can hire crew and officers for your ship, in case you own one. Remember: information, job, crew, entertainment.";
+			dialog.text = "Итак, перед нами одно из самых важных заведений города - портовая таверна. Да-да, это в Европе кабаки - притоны, а здесь это место просто незаменимо. Здесь вы всегда сможете найти ночлег за очень небольшую плату - всего пять песо за ночь и десять - за сутки, пинту доброго рома и занимательную беседу с хозяином заведения\nТавернщики - самые знающие люди в порту, потому что ежедневно видят десятки людей с разных кораблей и из разных мест и слышат сотни бесед и слухов. Если мне что-то нужно узнать - я сразу иду в таверну и беседую с барменом. Также за кружку рома, поставленную в качестве угощения завсегдатаю или подвыпившему моряку, можно получить такие сведения, о которых не в курсе даже тавернщик\nВ таверне можно сыграть в карты или кости на деньги, но имейте в виду: не все игроки честны, попадаются и шулеры. Впрочем, если вы словите кого-то на плутовстве за руку, вы всегда можете вызвать его на дуэль прямо в таверне и проткнуть негодяя шпагой в назидание прочим - за это вас никто не осудит\nВ таверне капитаны при посредничестве тавернщика нанимают матросов на свои корабли, а также подыскивают офицеров на корабельные должности - желающие нанятся штурманом или, там, боцманом, сами приходят в таверну и ждут нанимателей. Также в таверне частенько ошиваются купцы, ищущие капитана, готового их сопроводить до места назначения и охранять по пути от пиратов\nА еще в таверне обретаются контрабандисты - ищут продавцов и покупателей нелегального товара, но иметь дела с ними не советую, так как сделки с этим темным народцем запрещены законом. Ну что же, теперь идем дальше...";
 			link.l1 = "";
 			link.l1.go = "guide_5";
 		break;
@@ -77,7 +77,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guide_6":
-			dialog.text = "A store is a trading centre of any colony. Captains visit this place as often as a shipyard. You can always purchase here munitions, supplies or goods to trade. Commerce is quite tricky\nFirst, it takes time to find the best places where to buy or to sell. Second, you need some decent skills in trading to compete with local merchants\nThat is why most of captains hire pursers to do business instead of themselves. So don't forget to hire such professional when... if you will get a ship of your own. This is critical, you don't want to waste a shitload of money without a purpose in this cruel world. One last thing. Merchants in stores often propose beneficial freight contracts, you may find this useful in the future.";
+			dialog.text = "Средоточие крупной торговли города - магазин. Капитаны кораблей посещают его не реже, чем верфь. Здесь всегда можно приобрести как необходимые в плавании припасы, так и амуницию и товар для перепродажи. Впрочем, торговать - занятие не такое простое, как кажется изначально\nВо-первых, товары, производимые колониями, очень похожи, как и закупаемые привозные из Европы, поэтому отыскать точку сбыта со значительной разницей в цене не так-то просто. Кроме того, ценовая ситуация постоянно меняется. Во-вторых, нужно иметь подвешенный язык и определенную наглость: купцы - народ ушлый, неопытного новичка распознают сразу и немедленно задирают цены на свой товар и сбивают на покупной\nТак что у большинства капитанов в почете казначеи, которые ведут торговые сделки. Также купцы частенько фрахтуют корабли для перевозки товаров из одной колонии в другую и неплохо платят за это... Впрочем, вам это, наверное, неинтересно - ведь вы же не шкипер торговой шхуны. Давайте лучше пойдем дальше.";
 			link.l1 = "";
 			link.l1.go = "guide_7";
 		break;
@@ -91,7 +91,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guide_8":
-			dialog.text = "And this is a prison. Filthy place. Real criminals end up into the noose fast, so they keep mostly little fish inside\nIf you want to chat with them - address to a guard officer. He will allow you to see the insides for a small fee or even for free in case you are persuasive enough. It may prove useful, but remember that lowlifes can not be trusted, though they always talk sweet when they are caged.";
+			dialog.text = "А вот это городская тюрьма. Б-р-р, гнусное местечко. Не советую туда попадать: там кишмя кишат крысы, блохи и вши, а также стоит жуткая вонь от отребья, помещенного под стражу. Настоящих преступников не так и много - их быстренько вздергивают сушиться на солнышке на пирсе, а в казематах гниют мелкие воришки, жулики и прочий сброд\nВпрочем, если вам интересно на них полюбоваться - можете попробовать поговорить с дежурным офицером охраны - иногда за небольшую мзду они могут пропустить внутрь на 'экскурсию'.";
 			link.l1 = "";
 			link.l1.go = "guide_9";
 		break;
@@ -105,7 +105,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guide_10":
-			dialog.text = "Marketplace. Traders sell and buy everything you need. An armourer can provide you with blades, firearms, armours, munitions and so on. Good pieces are rare though, so don't hope to find a masterpiece sword here. Such things come with a great price and risk\nA herbalist can offer health potions, mixtures, antidotes, plants, ingredients and, if you are lucky, recipes. But why am I even telling you that, you are not an alchemist! Am I right? Gypsies offer pagan amulets and useless crap like bat corpses, some folks claim to know the true purpose of such things, but this is just a dangerous bragging\nMonks sells candles, holy talismans and other trinkets: crosses, rings, writing tools. And junkmen offer garbage. But if you possess special skills, you can make something useful of those tortoise combs, nails and ropes.";
+			dialog.text = "Мы на рыночной площади. Как вы можете заметить, здесь целая куча торговцев всякой всячиной. У оружейника вы можете купить пули и порох для своего пистоля, а также холодное и огнестрельное оружие и даже кирасы. Впрочем, рассчитывать на приобретение хорошего клинка не очень-то и стоит: достойные экземпляры появляются редко, а так - всякий лом\nУ травницы вы можете купить лечебные настойки, противоядия, микстуры, эликсиры, целебные травы. Иногда у них продаются рецепты для изготовления зелий и занятных талисманов, но вы же не алхимик, в конце концов, ха-ха, я прав? Цыганки торгуют заговоренными амулетами и всякой поганью, вроде дохлых летучих мышей, когтей ягуаров и сушеных костей - не знаю, кому эта пакость нужна, но кто-то же покупает!\nУ монаха вы всегда найдете церковные свечи, освященные обереги и всякую мелочь: крестики, кольца, письменные наборы. Ну и есть еще старьевщики, торгующие какой-то дребеденью, вроде черепаховых гребней, гвоздей и шпагата.";
 			link.l1 = "";
 			link.l1.go = "guide_19";
 		break;
@@ -119,26 +119,26 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guide_12":
-			dialog.text = "Behold the governor's palace. This is a home and an office of the most important man in a colony. Nobles visit the place for balls and parties, people of business and captain come here to solve both official and personal matters. It is important to be a governor's friend, because he has a strong influence on the citizens of nation he represents\nPrivateers earn good money working for governors. They also buy war captives. If you are wealthy and has have established a good relationship with His Excellency, then he may even honour you by gambling with you\nIt seems that you are impatient, my friend. Are you in a hurry?";
-			link.l1 = "Well... I guess. Monsieur, I came here to find my brother, I was told that he must be somewhere here, in Saint-Pierre. He is an important man, the governor must know him...";
+			dialog.text = "А вот перед нами дворец самого главного лица в колонии - губернатора. Знатные люди ходят сюда на вечерние балы и приемы, а деловые люди и капитаны кораблей заглядывают для решения личных проблем. Быть в хороших отношениях с губернатором - большое дело, скажу я вам, потому что от него во многом зависит, как все колонисты той или иной нации будут относиться к вам\nМногие отчаянные каперы работают на губернатора - получают от него задания, успешное выполнение которых хорошо оплачивается. Также сюда приводят плененных в бою капитанов для получения за них выкупа от держав. Ну а если у вас хорошая репутация и карман раздувается от песо и дублонов, то Его Светлость может даже почтить вас игрой в кости или карты по солидным ставкам\nНо я смотрю, вы что-то переминаетсь с ноги на ногу, мой друг. Вы куда-то торопитесь и я вас отвлекаю?";
+			link.l1 = "Ну... наверное, так. Месье, я прибыл сюда для того, чтобы найти своего брата, который, как мне сообщили, должен быть где-то тут, в Сен-Пьере. Он важная птица, и наверняка известен губернатору...";
 			link.l1.go = "guide_13";
 		break;
 		
 		case "guide_13":
-			dialog.text = "A-ha, I see. So you want to pay His Excellency a visit and ask him about your brother? Well, I won't delay you any further then. Our governor is called Jaques Dille du Parquets, I am sure he will do what he can.";
-			link.l1 = "Tell me, who else can help me? Perhaps it is unwise to trouble His Excellency?";
+			dialog.text = "А-а, я вас понял. Мы с вами как раз пришли к резиденции Его Светлости, и вы решили зайти на прием? Ну что же, не смею отвлекать вас от столь важного дела. Нашего губернатора зовут Жак Дил ду Парке, и уверен, что он примет вас без отлагательств.";
+			link.l1 = "Скажите, а у кого я еще могу поспрашивать о моем брате? Может, не стоит беспокоить Его Светлость?";
 			link.l1.go = "guide_14";
 		break;
 		
 		case "guide_14":
-			dialog.text = "You've said that your brother is well-known here. Ask around the streets. Eventually you shall find someone who can help. What's your brother's name?";
-			link.l1 = "Michel de Monper.";
+			dialog.text = "Если, как вы сказали, ваш брат хорошо известен на Мартинике, поспрашивайте на улицах города у прохожих. Может, кто-то вам поможет. Кстати, как зовут вашего брата?";
+			link.l1 = "Мишель де Монпе.";
 			link.l1.go = "guide_15";
 		break;
 		
 		case "guide_15":
-			dialog.text = "Michel de Monper... Yes, I heard this name before, but I have never been introduced to the man, so I can not help you. Good luck, monsieur, I am sure that we will meet again.";
-			link.l1 = "Gratitude, "+GetFullName(npchar)+"!";
+			dialog.text = "Мишель де Монпе... да-да, я уже не раз слышал это имя, но, к сожалению, не имел чести быть представленным вашему брату лично, так что помочь не смогу. Но я уверен, что вы отыщете своего родственника. Удачи, месье, мы с вами еще обязательно увидимся и поболтаем! Я буду тут, в городе.";
+			link.l1 = "Спасибо, "+GetFullName(npchar)+"!";
 			link.l1.go = "guide_16";
 		break;
 		
@@ -159,7 +159,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guide_18":
-			dialog.text = "This is the house of a money-lender. Usurer, banker, their kind has many different names, often rude ones. You may think whatever you want of them, but their services can help you a lot. You can deposit money, exchange doubloons and pesos, sell or buy jewellery. If you have a positive reputation you can even loan some coins, but be careful\nUsurers offer best prices for gems, jewels and other valuable trinkets, always visit them to sell such things. They are powerful people, so don't cross them.";
+			dialog.text = "Это - дом ростовщика. Вы можете относиться к этим скрягам, как угодно - большинство людей их не любит, но их услуги весьма востребованы. У ростовщика вы можете занять денег в долг, если, конечно, вы не овеяны ореолом дурной славы, сделать вклад в песо или дублонах и стричь проценты, произвести обмен песо на дублоны в небольшом количестве, а также купить ювелирные украшения и драгоценные камни\nЕсли же вы, напротив, хотите их продать - то ни один торговец города не даст вам столько денег за драгоценности, сколько заплатит ростовщик. Если вы одолжили деньги - то постарайтесь вернуть их полностью и в срок, иначе не миновать беды: ростовщики люди серьезные и влиятельные, и у них есть способы разобраться с неплательщиками, так что лучше не ссориться с ними. Но довольно об этих менялах - идем дальше.";
 			link.l1 = "";
 			link.l1.go = "guide_11";
 		break;
@@ -173,37 +173,37 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guide_20":
-			dialog.text = "A brothel. Every man visits such places, don't believe the opposite. Even the nobles, yet the reputation... suffers. Be aware of that. Be nice with the girls and they may tell you interesting things\nThere is no better cure for your mind and your body. If your health is damaged - visit the place. You may also drink a special potion to fix it, yet it's rare and much less fun. Oh, when I say 'health', I don't mean scratches on your skin. You will get hit. A lot. But if they hit you hard and often, if you drink too much strong health potions, eventually you will ruin your body. Watch your condition, take rest if needed be or suffer terrible consequences. Priests can almost literally resurrect you, but such last resorts are very expensive.";
+			dialog.text = "Перед нами пристанище греха и порока - бордель. Впрочем, от недостатка посетителей он не страдает - моряки после долгого похода легко спускают свое жалование на портовых красоток. Не брезгуют ими и горожане, и даже дворянское сословие частенько посещает это место, хотя репутация из-за этого несколько... страдает\nОднако нет лекарства для тела лучше, чем любовные утехи в объятиях умелой женщины - если ваше здоровье пошатнулось, загляните сюда, развейтесь, получите порцию любви и ласки - сразу почувствуете себя другим человеком. В общении с девочками не будьте грубы, после развлечения почтите жрицу любви разговором - и, возможно, она поведает вам что-нибудь интересное.";
 			link.l1 = "";
 			link.l1.go = "guide_17";
 		break;
 		
 		case "guide_21":
-			dialog.text = "Oh, you again, my friend! I see that they have let you inside Saint-Pierre's holy place - headquarters of the Order. You must be important. Found your brother?";
-			link.l1 = "Yes, I did...";
+			dialog.text = "О, это снова вы, мой друг! Вижу, вас допустили в святая святых Сен-Пьера - твердыню мальтийских рыцарей. По всему видать вы - птица высокого полета. Нашли своего брата?";
+			link.l1 = "Да, нашел...";
 			link.l1.go = "guide_22";
 		break;
 		
 		case "guide_22":
-			dialog.text = "Forgive me, monsieur, but your voice is absent joy...";
-			link.l1 = "True. I was hoping to get the hell out of this shithole back to France in no time, yet my fate keeps mocking me. I will stay here for a bloody long time! And the best part is that I must become a sailor, imagine that!";
+			dialog.text = "Простите за навязчивость, месье, но мне показалось, что я не слышу радости в вашем голосе...";
+			link.l1 = "Это так, сударь. Я рассчитывал убраться отсюда назад во Францию ближайшим же судном, но судьба, похоже, решила поиздеваться надо мной: я остаюсь в этой глуши надолго... нет, черт возьми - на неведомо долгий срок! И вы представляете - впридачу я должен буду освоить профессию моряка, пхе!";
 			link.l1.go = "guide_23";
 		break;
 		
 		case "guide_23":
-			dialog.text = "That is... a sudden change in your life. But don't be sad, to be a captain of your own ship is a very, very respected position here. You do intend to buy a ship, right?";
-			link.l1 = "Yes, damn it, that's exactly what I must do... All I need is to find a shipyard and money as soon as possible. Problem is - I don't know where the hell is a shipyard, how to fly a vessel and where to get money!";
+			dialog.text = "Вот уж действительно неожиданный поворот... Но вы не огорчайтесь - быть владельцем собственного судна и капитаном очень почетно. Вы ведь собираетесь приобрести корабль?";
+			link.l1 = "Да, черт возьми, именно это я и должен сделать... Осталось только найти верфь и денежек собрать побыстрее. Одна беда - я не знаю ни где верфь, ни как управлять кораблем, ни где взять денег - ничего!";
 			link.l1.go = "guide_24";
 		break;
 		
 		case "guide_24":
-			dialog.text = "I wish I could to fill your pockets with gold, but I am broke just as you are. But I can fill your head with knowledge you so desperately need. Interested?";
-			link.l1 = "Yes, it would be great.";
+			dialog.text = "Я был бы рад помочь вам с деньгами, но, к величайшему сожалению, я сейчас сам на мели. А вот просветить вас в вопросах, на которые теперь вам совершенно точно нужно знать ответы - могу. Ну как, вы готовы к продолжению нашей экскурсии?";
+			link.l1 = "Да, пожалуй, ведь недаром говорят: знания - сила.";
 			link.l1.go = "guide_25";
 		break;
 		
 		case "guide_25":
-			dialog.text = "Follow me then. Let's start from the core - the ships.";
+			dialog.text = "Тогда следуйте за мной. Начнем с самого основного - с кораблей.";
 			link.l1 = "";
 			link.l1.go = "guide_26";
 		break;
@@ -218,8 +218,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guide_27":
-			dialog.text = "A shipyard. Every colony has one. A place to sell or buy a sea vessel and also to repair her. Know that our shipyards have nothing to do with famous shipyards of old good Europe. This is province, they don't build large trade and military ships here\nLocal masters build luggers, schooners, sloops. Rarely brigs and barkentines. But sometimes privateers bring prizes they captured, shipbuilders buy them for cheap, repair them and sell for a fortune\nI once saw a frigate in price list. Local made ships also have poor characteristics. Don't worry though, you must start to learn on small and poor vessels in order to master something better\nOh, and a shipyard is also a place to buy cannons. There are several types of guns you may get on your vessel, provided, of course, that she can carry them. Every vessel has limitations, you will never be able to put 24-pounders on a lugger. Remember that big calibres are rare and expensive. On the bright side, such guns can literally exterminate enemy's crew, sails and hull\nOne last thing. Shipyards also provide services for aesthetes: they can paint your sails and draw emblems or coats of arms. Won't speed up your beauty, but will make her look much fancier.";
-			link.l1 = "Interesting...";
+			dialog.text = "Вот это и есть верфь. Такие существуют в каждой колонии нашего архипелага. Здесь вы всегда сможете починить корабль, если он у вас есть, и приобрести таковой, если у вас его нет. Предупреждаю заранее: местные верфи не идут ни в какое сравнение со знаменитыми верфями Европы, так что купить здесь серьезный торговый или военный корабль рассчитывать не приходится\nМестные корабелы строят в основном небольшие посудины: люггеры, шлюпы, шхуны, редко бриги или баркентины. Однако бывает такое, что местный корабел приобретает по дешевке у каперов захваченные в боях призы, ремонтирует их и выставляет на продажу, накручивая на этом сумасшедшие деньги\nВот так и появляются на наших верфях в продаже галеоны, корветы и пинасы, а однажды мне довелось увидеть даже фрегат. Но это скорее исключение. В основном в продаже всякая мелкота, а то и вовсе - баркасы да рыболовецкие лодки, да и характеристиками суда местного производства похвалиться не могут - провинция-с. Но вас это пугать не должно: учиться морскому делу следует как раз с освоения малых судов\nТакже на верфи можно купить корабельные орудия. Немного информации о них: есть два типа орудий - пушки и кулеврины. Кулеврины за счет длинного ствола бьют значительно дальше пушек, но имеют неподъемный вес и долго перезаряжаются. Орудия бывают разных калибров, чем выше калибр - тем крупнее закладываемый в него снаряд, а, значит, и больший урон\nКаждое судно имеет ограничение по максимальному калибру - на маленький люггер вы никогда не сможете установить пушки двадцать четвертого калибра, которые и не на каждый фрегат годятся. Ну и чем выше калибр орудия - тем оно сложнее в производстве, дороже и в меньшем количестве в продаже\nТакже на верфях удовлетворяют мелкие прихоти капитанов-эстетов: красят парусину в разные цвета, меняют материал парусов, ставят гербы. На ход посудины, как вы понимаете, эти изыски никак не влияют и тешат лишь самолюбие и вкус судовладельца.";
+			link.l1 = "Очень занятно...";
 			link.l1.go = "guide_28";
 		break;
 		
@@ -232,61 +232,61 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guide_29":
-			dialog.text = "This is a pier, a heart of any port. I used to sail in the past, so let me tell you more about seamanship\nFirst, remember the most important thing: don't even try to control a vessel if you don't have enough points in your navigation skill! If you do, then your other skills will suffer and so do your officers'\nYou will fight worse, shoot worse, trade worse and so on\nThat means that if you will attempt to control a man-of-war with your current skill of navigation, you will turn in a worthless pile of crap, unable to do anything.";
-			link.l1 = "How do I learn this... navigation?";
+			dialog.text = "Пирс, самое сердце порта. Сюда прибывают капитаны, отсюда они отправляются в путь. Я тоже не раз выходил в море раньше, и позволю себе немного просветить вас, мой друг, по сложному искусству управления парусным кораблем\nВ первую очередь вы должны усвоить раз и навсегда главное правило: не берись за управление судном, если не хватает умений в навигации! Это пагубно отразится на вашей жизни: вы постоянно будете бегать по палубе корабля, пытаясь понять, а что это за штука, а как опустить вот тот парус, а почему такой сильный крен на левый борт и прочее\nВы будете измотаны и усталы, недосып и издерганность отрицательно скажутся на ваших навыках во всем: в фехтовании и стрельбе, в реакции и выносливости\nВаше изнуренное помятое лицо не будет вызывать ни уважения, ни доверия. Команда и офицеры, видя вашу беспомощность, начнут опускать руки, и дела на корабле пойдут плохо: пушки будут заряжаться медленно и стрелять мимо, плотник будет ронять топор себе на ногу, казначей ошибаться в расчетах, а врач залечит раненых до смерти\nИ чем слабее вы разбираетесь в данном корабле - тем хуже будут последствия. Если вы прямо сейчас попробуете взять на себя управление фрегатом - я уверен, вы даже не выйдете из этой бухты, а налети свежий ветер - отправитесь прямиком на дно.";
+			link.l1 = "Но как же тогда учиться этой... навигации?";
 			link.l1.go = "guide_30";
 		break;
 		
 		case "guide_30":
-			dialog.text = "Time and patience. At this moment you can control a tartane or a long boat. But you can always hire a navigator. Normally they can be found in taverns along with other mercenaries\nAlways check their skill first, in case it is not enough for your ship, you will experience the very same problems I mentioned before.";
-			link.l1 = "How do I know how many points in navigation I need in order to control a particular ship?";
+			dialog.text = "Умения приходят со временем и опытом. С вашими нынешними умениями вы сможете взять под личное командование только тартану или баркас. Но вы всегда можете нанять штурмана. Обычно они ошиваются вместе с прочими офицерами в тавернах. Штурман возьмет на себя все обязанности по управлению судном\nПодбирая штурмана на свой корабль, сразу смотрите, каковы его умения в навигации, ибо если требования корабля к навыкам будут выше, чем есть у вашего штурмана - вы получите те же проблемы, о которых я рассказал вам только что, ибо неумение штурмана вы будете восполнять своими собственными силами.";
+			link.l1 = "А как узнать, какие 'требования' к уровню навигации у конкретного судна?";
 			link.l1.go = "guide_31";
 		break;
 		
 		case "guide_31":
-			dialog.text = "Ship's rank determines it. For example, I know enough (45 points) to control a 4th rank vessel without penalties. Brigs, barkentines, flutes. Xebec and corvette require more, so I won't be able to use them properly. Not mentioning second rank ships like frigates and heavy galleons\nAs for giant battleships or man-of-wars... only experts in navigation can control such monsters, it takes years to master the skill and don't forget the money. A battleship and her crew can waste your purse in a month if you are not as rich as king.";
-			link.l1 = "I see...";
+			dialog.text = "Уровень требуемой навигации определяется классом корабля. Чем крупнее судно - тем больше требуется умений в навигации, чтобы успешно управлять им. Я вот, например, освоил управление лишь до четвертого класса: бриги, баркентины, флейты. А вот шебека или корвет мне уже не по плечу, не говоря о кораблях второго класса, таких, как фрегаты или тяжелый галеон\nА огромными линейными кораблями способны управлять лишь очень, очень опытные капитаны и штурманы, и учиться этому надо много лет.";
+			link.l1 = "Понятно...";
 			link.l1.go = "guide_32";
 		break;
 		
 		case "guide_32":
-			dialog.text = "Take care of all officer positions. A boatswain trains your crew and makes boarding more effective, a purser will do financial activities instead of you and fight rats. A physician saves people, a ship joiner saves a ship and boarding officers save your ass\nPay attention to skills of candidates and watch their reputation.";
-			link.l1 = "Reputation?";
+			dialog.text = "Кроме штурмана, у вас на корабле должны быть закрыты все офицерские должности. Боцман будет отвечать за обучение команды и абордаж, казначей - избавит вас от нужды торговаться с негоциантами, врач спасет раненых, канонир наведет пушки точно в цель, плотник залатает пробоины, а абордажники прикроют вашу спину в бою\nЧем опытнее офицер - тем лучше он справится со своими обязанностями. Изучайте способности кандидатов в офицеры при найме, а также обращайте внимание на их репутацию.";
+			link.l1 = "Репутацию?";
 			link.l1.go = "guide_33";
 		break;
 		
 		case "guide_33":
-			dialog.text = "Exactly. Everyone has it. It is made of the man's deeds and show everyone what is he really is\nIf you are an honourable man and you always try to do good, then look for officers who share you ideals. And if you prefer to act as a bandit... well, you have got the idea\nHonest folks will not work for scums, the opposite is also true.";
-			link.l1 = "Got it.";
+			dialog.text = "Да-да, репутацию. У каждого человека есть репутация. Как вы понимаете, она создается поступками и характеризует склонности человека\nЕсли вы - благородны и честны, стремитесь всегда делать добро - то ищите себе в команду таких же офицеров, а негодяи и распутники с вами не уживутся - им подавай грабежи, насилие и бесчинство\nЕсли капитан - мерзавец, то он, как правило, подбирает себе офицерский состав из таких же подонков, как он сам, ибо порядочный человек долго не выдержит в разбойничьем вертепе.";
+			link.l1 = "Ясно. Учту это.";
 			link.l1.go = "guide_34";
 		break;
 		
 		case "guide_34":
-			dialog.text = "Now let's talk about types of ships. There are two types. Trade and military ships. Trade ships have large cargo holds and military ones have speed and strong guns. Barque, flute, carrack are the brightest examples of trade ships. As for military vessels... lugger, brig, corvette. There are mixes of course, the ships which have characteristics of both trade and military: snows, schooners, galleons\nShips also have different rigging arrangements, some are mostly square rig and some are mostly fore-and-aft rig, which form the ship's course angle.";
-			link.l1 = "Course angle?";
+			dialog.text = "Теперь немного о типах кораблей. Есть торговые суда, а есть военные. Торговые характеризуются вместительным трюмом, а военные - ходовыми качествами и мощными орудиями. Яркие примеры торговых кораблей - барк, флейт, каракка, военных - люггер, бриг, корвет. Есть суда, сочетающие в себе характеристики военных и торговых - шнявы, шхуны, галеоны\nПо парусному вооружению корабли бывают с преимущественно косыми парусами и с преимущественно прямыми парусами, что неизбежно сказывается на их курсовом угле.";
+			link.l1 = "Что такое курсовой угол?";
 			link.l1.go = "guide_35";
 		break;
 		
 		case "guide_35":
-			dialog.text = "Yes. It determines how your rigging is affected by wind and on which course your vessel will make the best speed she is capable of. Once you at the sea, find an arrow on the mini map, that will be your course angle.";
-			link.l1 = "That's a bit hard to me. But I guess I shall learn in time.";
+			dialog.text = "Это способность корабля идти относительно данного направления ветра. Суда с косыми парусами развивают наибольшую скорость при движении в галфвинд - когда ветер перпендикулярен корпусу, а также способны круче идти к встречному ветру без критического падения скорости\nКорабли с прямыми парусами плохо идут в бейдевинд - при встречном ветре, зато отлично разгоняются при ходе в фордевинд и особенно - в бакштаг. Так что даже не пытайтесь скрыться на люггере от брига или корвета, на шебеке от фрегата или линейного корабля, уходя по ветру - догонят. Лучше возьмите курс в бейдевинд\nВеличину курсового угла, как, впрочем, скорость, маневренность и прочее, вы всегда можете найти в характеристиках корабля.";
+			link.l1 = "Немного непонятно, но, думаю, на практике разберусь.";
 			link.l1.go = "guide_36";
 		break;
 		
 		case "guide_36":
-			dialog.text = "Crew. You and your ship are nothing without a manpower. Every sailor must know how to do three things. How to deal with rigging, to operate cannons and to fight. Every nation excels only in one of these three activities. For example, Spain has the best fighters in the world and their soldiers wear armour, so grapeshot and slice stabs are not quite effective against them. I am talking about handguns, cannon grapeshot don't give a damn about body armour\nVisit taverns of Spain, England and France if you want to make a dream crew. Watch you men's morale, provide them with rum, whores and coin. Do that on a constant basis and your people will die for you. Fail to do so, and they will see you hanged. A motivated professional has worth of ten rookies in a fight, don't forget about a physician or take care of your own medicine skills in order to prevent extra casualties.";
-			link.l1 = "I will remember this...";
+			dialog.text = "Людской ресурс корабля - команда. Без нее корабль и капитан - ничто. Любой матрос должен уметь делать три вещи: управляться со снастями, обслуживать орудия и лихо махать абордажной саблей. Собрать команду профессионалов, способных выполнять на высоте эти функции - мечта любого капитана\nК сожалению, в тавернах на найм в основном сидят либо специалисты в каком-то одном конкретном навыке, либо вовсе салаги, так что обучать команду придется в процессе: матросские умения растут во время морских переходов, канонирские - во время пушечных баталий, а солдатские - в абордажных схватках\nЕсли вы долго не будете вступать в сражения, ваши матросы расслабятся, и их канонирские и солдатские умения начнут падать. Но если вы все же добились своего и ваши матросы стали настоящими морскими волками во всем - то можете не бояться ни бури, ни артиллерийской дуэли, ни абордажной рубки, ибо один обученный матрос стоит десятка сухопутных крыс из таверны\nТакже следите за моралью экипажа, ибо если матрос всем доволен, то он разорвет за своего капитана любого, а если доведете команду до отчаяния - они сами выбросят вас за борт\nПлатите вовремя зарплату, не перегружайте корабль людьми, постоянно обеспечивайте матросов ромом - и вы увидите, что ваша команда стоит за вас горой.";
+			link.l1 = "Я запомню это...";
 			link.l1.go = "guide_37";
 		break;
 		
 		case "guide_37":
-			dialog.text = "Now a few words about naval battles. Our waters are dangerous, they are crawling with Spanish and pirates, so eventually you will engage them in the open sea. Ship cannons use four types of ammo. Cannon balls, grape shots, chain shots and bombs\nCannon balls are all-purpose and the cheapest to buy, they have the biggest effective fire range, they tear enemy's sails, destroy his hull and kills his crew\nChain shots have a decent range of fire, their purpose is to eliminate enemy's rigging in order to make him loose his speed. They are good to use when you want to chase or flee. If you are lucky you may even take down a whole mast\nBombs. Use them if you want to sink your opponent's vessel. Bombs do the biggest damage to the hull, but they have a second short range of fire, so you need to come closer first which may prove fatal. They also cost the most of all shells\nGrape shot is your best choice if you want to board and capture an enemy's ship. These little balls wipe out people, but the shortest fire range makes them risky to use. But it is worth it\nHold your fire if you are not sure that you can deal enough damage. Every volley comes with a price of gunpowder and cannons' condition. They explode sometimes, especially if you shoot too often. Always maneuver, try to take a better position to the wind. If the enemy is too dangerous and you can't flee, then try to provoke him to shoot you constantly from distance without any negative effect upon you. Such trick will eventually empty his gunpowder supplies. It may take days, so you'd better find a cover like rocks or a coastal line. Of course, such tactics will not work in the open sea\nMines. Also a fine way to sink them all. Make them to chase you and drop mines. Every mine require a decent amount of powder, but even one mine can almost destroy a lugger\nGet a spyglass and use it to observe your enemy. A good spyglass will provide you a fine tactical overview, a presence of musketeer unit on your opponent's vessel for instance. Such unit can kill up a lot of your men, in this case be sure to gift them a few volleys of grape shot before boarding.";
-			link.l1 = "You scary me... but I guess, I must be ready for anything.";
+			dialog.text = "Теперь пару слов о морских сражениях. Воды у нас опасные, кишат испанцами и пиратами всех мастей, так что боев вам, к сожалению, избежать навряд ли удастся. Корабельные орудия используют четыре типа снарядов: ядра, картечь, книппели и бомбы\nЯдра - наиболее популярный и универсальный боеприпас, они рвут паруса противника, пробивают корпус и убивают вражеских матросов. Эффективная дальность полета ядра превосходит все остальные типы снарядов\nКниппели используются на средних дистанциях для нанесения максимального урона парусам противника - вращаясь, они наматывают на себя парусину, оставляя в полотнищах огромные дыры, в результате вражеское судно теряет ход. Если противник явно сильнее вас и вы хотите скрыться, не принимая боя - изрешетите ему паруса книппелями и убегайте. В особо удачных случаях книппелем можно даже сбить мачту\nБомбы - самое лучшее средство для потопления корабля противника, ибо они наносят сокрушительный урон деревянному корпусу, но дальность их полета невелика, поэтому применяются на небольших дистанциях\nНу, а если вы задумали захватить вражеское судно абордажем, то без картечи вам никак не обойтись - эти маленькие шарики, выпущенные из жерла пушки, на коротком расстоянии сносят все живое с палубы\nВо время боя маневрируйте, занимайте выгодные позиции относительно ветра, не палите без разбору - пушки перегреются и взорвутся, или израсходуете весь порох и останетесь беззащитны. Купите себе хорошую подзорную трубу и наблюдайте за действиями вражеского канонира - чем он заряжает свои орудия - и принимайте соответствующее решение\nТакже труба поможет вам разглядеть такую пакость, как рота мушкетеров на палубе. С такими кораблями будьте осторожны, пытаясь их абордировать: вас ждет неприятный сюрприз в виде свинцового града от мушкетного залпа, способного выкосить значительную часть вашей команды.";
+			link.l1 = "Вы меня пугаете... но лучше быть готовым ко всему.";
 			link.l1.go = "guide_38";
 		break;
 		
 		case "guide_38":
-			dialog.text = "You shall learn, I have no doubt in that. Since you are going to be a captain and a ship owner, I will show one more place of great importance to you. A harbour office. Follow me.";
+			dialog.text = "Вы всему научитесь, в этом нет никаких сомнений. А раз вам предстоит жизнь судовладельца и капитана, то я покажу вам еще одно примечательное и нужное заведение - портовое управление. Следуйте за мной.";
 			link.l1 = "";
 			link.l1.go = "guide_39";
 		break;
@@ -300,19 +300,19 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guide_40":
-			dialog.text = "There it is. In a harbour office you can find job offers. Freights for large trade ships and convoys for military ones. If you own a fast ship, they might offer you a courier job\nI recommend to earn some recommendations here, if you do your job well several times, they will give you more complicated and much better paid contracts\nYou may also ask here about other captains and leave your ships for safekeeping. Open ended, just don't forget to pay.";
-			link.l1 = "Got it.";
+			dialog.text = "Вот и оно. В портовом управлении вы всегда сможете найти работу. Для больших торговых судов здесь можно получить выгодный фрахт, для военных - задание на сопровождение конвоя, для быстрых - перевезти почту или срочную депешу\nГоворят, что капитаны, которые не меньше пяти раз успешно справлялись с поставленной задачей, в дальнейшем получали более сложную и высокооплачиваемую работу по данному профилю, так что советую хорошо зарекомендовать себя\nВ портовом управлении вы можете справиться о капитанах, посещавших город, и, конечно, оставить один или несколько своих кораблей на хранение. Корабль может находиться на стоянке портового управления сколь угодно долго, только оплачивайте услуги.";
+			link.l1 = "Понятно.";
 			link.l1.go = "guide_41";
 		break;
 		
 		case "guide_41":
-			dialog.text = "Well, the city gates are close, so there is another topic I'd like to tell you about. These gates by the way lead to the jungles. Follow me and I will tell you about stealth actions and fencing. You mind?";
-			link.l1 = "Sure. You help me a lot.";
+			dialog.text = "Ну, поскольку мы оказались совсем рядом с городскими воротами, ведущими в джунгли, то я хочу поведать вам еще и об искусстве скрытного проникновения во вражеские города, а также предложить вам поупражняться в фехтовании. Все это вам очень пригодится. Не возражаете?";
+			link.l1 = "Ни в коем случае. Ваша экскурсия очень полезна для меня.";
 			link.l1.go = "guide_42";
 		break;
 		
 		case "guide_42":
-			dialog.text = "Follow me then!";
+			dialog.text = "Тогда идемте!";
 			link.l1 = "";
 			link.l1.go = "guide_43";
 		break;
@@ -326,26 +326,26 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guide_44":
-			dialog.text = "So, the city gates. Straight to the jungles. In daytime, guarded by two soldiers who check everyone entering the city. Therefore, there are two ways to get in the city. First, you can drop an anchor in port and disembark on a pier. Second, you may land on some distant bay and travel through the jungles to the city gates\nSometimes you will have to visit Spanish colonies, so remember: we are at war with the Spanish, so don't even think to sail into their port without a Spanish flag raised, otherwise a fort will open fire immediately\nYou need to master special skills and be careful in order to get inside hostile settlements. Know that the only way to safely drop an anchor in Spanish port is to learn a skill named 'raise the Spanish flag' or 'raise the Dutch flag'\nSuch tricks require time and experience to learn. 'Raising the flag' doesn't mean to raise some yellow-red piece of leather, but to conduct various masking measures\nA chance of successful deception depends on the level of your stealth skill, class and number of your ships. It is easy to make a single small sloop looking like a Spanish vessel, the same can not be said about five frigates\nIf you are unable to trick the fort guards and port officers, you should consider sneaking through the city gates I mentioned before. Wait until night to avoid gates guards and enter. Avoid any soldiers in the city, especially at night, find a tavern, rest there and do what you planned. Don't fight soldiers if you are compromised, find an empty house and stay there for half an hour. This will make them stop hunting you\nTricky isn't it? In order to avoid such complications, buy a trading license, it will save you a lot of nerves.";
-			link.l1 = "A trading license? What is that?";
+			dialog.text = "Итак, перед нами городские ворота, ведущие прямиком в джунгли. В дневное время ворота охраняются пикетом из двух солдат, проверяющих каждого, кто входит в город. Таким образом, попасть в любое поселение архипелага можно двумя путями: первый - причалить в порту и высадиться на пирсе, и второй - отдать якорь в бухте и пройти через джунгли по тропам к городским воротам\nЕсли вам вдруг, паче чаяния, потребуется попасть в испанский город, вы должны помнить следующее: здесь, на Карибах, у нас с испанцами открытая вражда, и если вы попробуете сунуться в их порт под французским флагом - форт немедленно откроет по вашему кораблю огонь на потопление, а если в бухте будут испанские суда - они нападут на вас\nПоэтому, чтобы пройти во вражеское поселение, нужно либо обладать определенными навыками и умениями, либо проявить недюжинную осторожность. Запомните: в испанский порт вы сможете причалить лишь в том случае, если вы и ваша команда умеете 'поднимать флаг' Испании\nЭтому нужно учиться, потому что 'поднять флаг' - это означает не просто вывесить красно-желтую тряпку на флагштоке, а провести целый комплекс маскировочных мероприятий, чтобы всё на корабле выглядело так, словно это испанское судно\nЧем выше ваше умение в скрытности - тем лучше вам удастся это сделать. Если маскировка сделана неудачно - вас распознают и откроют огонь, как по врагу. Также вероятность распознавания зависит от величины корабля и количества кораблей в эскадре - чем крупнее корабль и чем больше кораблей - тем труднее обмануть дозорных на стенах форта\nЕсли вы пока еще не научились маскироваться под испанца, либо скрытность не позволяет причалить - то вам прямой путь в ближайшую бухту, а оттуда - пешком через джунгли к городским воротам. Но ни в коем случае не входите в город днем - охрана у ворот немедленно попытается задержать вас и поднимет тревогу!\nДождитесь ночи - после одиннадцати вечера пикет у ворот снимается, и вы сможете проникнуть внутрь поселения незамеченным. Однако в городе вам придется проявить крайнюю осторожность: по ночам стражники очень подозрительны, смотрят внимательно, и в случае вашего обнаружения попытаются арестовать\nДержитесь от патрульных подальше и поторопитесь пройти в таверну - бармены привечают всех путников и позволят вам переночевать, невзирая на национальность. Днем делайте свои дела в городе, но от встреч с солдатами старайтесь уклониться - иначе быть беде. Если вас обнаружили, то выход один - бежать, ибо вы не сможете справиться со всем городским гарнизоном\nУбегайте за ворота, отсидитесь в джунглях, пока не уляжется шум, а потом можете опять попытаться проникнуть внутрь. Хотя всех этих приключений можно избежать, если заранее приобрести торговую лицензию.";
+			link.l1 = "Торговая лицензия? Что это?";
 			link.l1.go = "guide_45";
 		break;
 		
 		case "guide_45":
-			dialog.text = "A document you can get in the headquarters of the Dutch West Indian Company. A sign of your peaceful intentions. This paper will allow you to enter any port until the terms are expired\nBut there are some downsides. First, the Company has special rules and demands which any captain willing to buy the license must follow. Second, it costs a lot. And the last and the worst, you still need a 'raising flag' skill to land at ports. Otherwise you will be shot on approach by fort's heavy cannons.";
-			link.l1 = "Where is the Company's headquarters?";
+			dialog.text = "Это документ, выдающийся в штаб-квартире Голландской Вест-Индской торговой Компании, свидетельствующий о том, что вы - уважаемый торговец, и явились в порт исключительно с целью купли-продажи товаров. С этой бумагой на руках вы можете беспрепятственно входить в любые испанские порты, пока не истечет срок ее действия\nОднако и тут есть несколько нюансов: Компания предъявляет определенный набор требований к капитанам, за невыполнение которых лицензия немедленно аннулируется, сама лицензия стоит немалых денег, и, наконец, самое неприятное: для входа в испанский порт, даже с лицензией, вам все равно потребуется поднять испанский флаг на корабле, потому что иначе вместо проверки документов вас встретят залпами из пушек форта.";
+			link.l1 = "Где находится штаб-квартира этой Компании?";
 			link.l1.go = "guide_46";
 		break;
 		
 		case "guide_46":
-			dialog.text = "Willemstad. Curacao. If you want to buy a license - go there, they will give you details.";
-			link.l1 = "Things are so messed up here...";
+			dialog.text = "В Виллемстаде, это на Кюрасао. Если надумаете купить лицензию - там вам всё подробно объяснят, и сколько стоит, и какие требования, и прочее.";
+			link.l1 = "Как тут у вас всё сложно...";
 			link.l1.go = "guide_47";
 		break;
 		
 		case "guide_47":
-			dialog.text = "Don't be upset, my friend. You shall learn. Now, let's do fencing practice.";
-			link.l1 = "Sounds good. Let's move!";
+			dialog.text = "Не стоит огорчаться, друг мой. Во всех этих тонкостях вы без труда разберетесь на практике. А теперь я предлагаю выйти за ворота и немного поразвлечься - потренируемся в фехтовании.";
+			link.l1 = "Пойдемте! Это будет как нельзя кстати.";
 			link.l1.go = "guide_48";
 		break;
 		
@@ -356,45 +356,45 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guide_49":
-			dialog.text = "My friend, I believe you know how to hold a sword?";
-			link.l1 = "Ha! Sure, I know. I was taught by the very best fencing master of France and...";
+			dialog.text = "Мой друг, как я полагаю, вы не новичок в фехтовальном деле?";
+			link.l1 = "Ха! Конечно, не новичок. Я обучался у хорошего мастера во Франции, и...";
 			link.l1.go = "guide_50";
 		break;
 		
 		case "guide_50":
-			dialog.text = "Good for you. Let me tell you some theory first\nSo, there are three types of cold steel: rapiers and swords, sabres and cutlasses, broadswords and axes. Every type requires different skills and abilities to master, so you will have to learn them separately\nEvery class has it's own ups and downs. Rapiers are light, low requirements of stamina, but they deal the least amount of damage. An axe is heavy, but it can kill with a single heavy blow, though it will take so much stamina from you, that you will have to rest for a while. Sabres are somewhere in the middle\nThere are several fencing moves and tricks in your disposal: thrust attack, chopping attack, heavy attack and group attack. You can also parry, feint and block\nThrust attack is the fastest move, requires a small amount of stamina to perform, excellent for rapiers and mostly useless for axes. Chopping attack is quite versatile, decent speed, significant loss of stamina, good for sabres, broadswords and axes, not that good for rapiers. Heavy attack is dealt from above, an excellent choice for axes, will work fine for sabres and cutlasses, yet rapiers are simple not designed for such moves. This attack will drain a huge amount of stamina, it is slow but, it has maximum potential damage and it ignores blocking\nBlocking is not a panacea, it is useless against heavy attacks and decent opponents always have a chance to break your block. Parrying is much better, it makes your opponent open for your attacks, he also losses stamina. Several successful parries and your opponent completely losses his initiative and is forced to defend himself while you have a total advantage\nFeints are tricky and risky. Fooling your opponent and immediately dealing him a quick thrust requires a little loss of stamina, but you must be concentrated, attentive and to be in a rhythm of the fight. Mastering this move will demand a lot of practice from you, but it is rewarding - even professional duellists and masters of sword will fall from your hand\nThe last thing. In order to maximize damage from every type of attacks, you must use the right weapon for the each. Thrust attack will show it's best with long, heavy, straight rapier or sword with a balance from 0 to 0.5. Long, curved cutlasses or sabres with a balance from 1.5 to 2 are excellent for chopping and heavy attacks. A heavy axe with a balance of 2.0 is perfect for heavy attacks, but such weapon will require a lot of stamina and skill to use. Group attack doesn't worth to be your primal move, it's rather defensive, but a curved, light, long cutlass with a balance around 1.25 will do great against groups of enemies around you\nFinally, the best weapon for feint is a dagger, think about it if you want to make this move your speciality. A weight of a weapon determines how much stamina it will require for any attack move and it also affects the damage. Remember, that finding your perfect weapon may take some time and working on your fighting style will take even more.";
-			link.l1 = "And what if there are several enemies?";
+			dialog.text = "Это очень хорошо. Но все же я сначала расскажу вам немного теории, а потом перейдем к практике\nИтак, существует три типа холодного оружия: рапиры и шпаги, сабли и тесаки, а также палаши и топоры. Каждый тип оружия требует своих навыков, поэтому владению каждым типом следует обучаться отдельно\nУ любого класса оружия есть как свои плюсы, так и минусы: рапиры требуют меньше затрат сил в бою, однако они наносят меньший урон, а тяжелый топор, хоть и способен одним удачным ударом уложить противника наповал, но отнимет при этом столько энергии, что вам еще долго придется переводить дух\n Основная тактика фехтования строится на следующих методах: атакующие - выпад, рубящий удар, пробивающий удар, защитные - блок, парирование и финт. Также есть еще круговой удар, наносящий урон сразу нескольким противникам\nВыпад - самый быстрый прием, эффективен в основном для рапир, и совсем не годен для топоров. Рубящий удар более универсален, пригоден как для сабель, так и палашей с топорами, менее удачен для шпаг. Пробивающий удар наносится сверху вниз, наиболее подходит для топоров, но сгодится для палашей и тесаков, а вот для рапир практически бесполезен. Его значительный плюс - он всегда пробивает блок противника\nРубящие удары и выпады вы можете отбить блоком, однако если вам попадется опытный противник - блок спасет не всегда. Пробивающий же удар пытаться блокировать и вовсе бессмысленно. Гораздо эффективнее метод парирования - уклонение с шагом в сторону, при котором противник промахивается, сбивается с ритма и теряет часть своей энергии\nНесколько удачных парри - и ваш оппонент, запыхавшись, уходит в блок для восстановления энергии, а вы получаете преимущество. Обманный удар - финт, удобнее всего выполнять рапирами, а еще лучше - кинжалом, при этом, создавая иллюзию парирования, вы наносите зазевавшемуся противнику неожиданный укол\nЕсли вы мастерски овладеете этим приемом, то любая дуэль один на один, даже с опытным бретером, закончится в вашу пользу.";
+			link.l1 = "А если врагов несколько?";
 			link.l1.go = "guide_51";
 		break;
 		
 		case "guide_51":
-			dialog.text = "This complicates things. A decent fighter can take down a few rookies at once in the open area, but if there are dozen of bad guys - avoid to be surrounded at all costs, run away, find yourself a corner, stairs, doorways whatever, just make them fight you one on one, or two on one. They will slice you in a second if you make a mistake, so force them to play on your terms, don't lose initiative and watch your stamina\nThough, I have heard about a special Indian potion which allowed masters of sword and axe to kill five or six enemies at once with a few swings of group attack.";
-			link.l1 = "A potion?";
+			dialog.text = "Это осложняет ситуацию. Умелый боец способен справиться с тремя салагами на открытой местности, но если враги набежали, как саранча - то нельзя допускать окружения со всех сторон, нужно убегать, восстанавливая энергию для боя, искать узкие места: лестничные проемы, тесные проходы, каменные ниши - там, где на вас не могут напасть всем скопом одновременно\nВыстраиваете врагов в цепочку и деретесь по очереди с одним-двумя негодяями. Иначе - мигом порежут, даже ойкнуть не успеете\nВпрочем, слыхал я о таких мастерах меча и топора, которые, глотнув индейского зелья, на короткое время повышающего их силу и ловкость, двумя-тремя круговыми ударами укладывали по пять-шесть серьезных противников.";
+			link.l1 = "А что это за зелье такое?";
 			link.l1.go = "guide_52";
 		break;
 		
 		case "guide_52":
-			dialog.text = "Ometochtli mixture or whatever they call it. An ancient Indian recipe. Ask merchants, someone may sell it to you someday. But you must learn alchemy first in order to use the recipe... Since we are already talking potions - let me tell about healing\nIf you need to fix a small wound, use a healing essence. Serious hits can be treated with a healing elixir. Mixture, rum and wine also restore your health\nAntidote and mixture will do fine if you are poisoned. I also recommend you a ginger root - it heals without any side effects, as distinct from essence and elixir.";
-			link.l1 = "Side effects?";
+			dialog.text = "Оно называется тинктура Ометочтли. Варится по старинному индейскому рецепту. Если вам так интересно - поищите этот рецепт у травниц в продаже. Однако одного рецепта мало - нужно еще обладать знаниями в алхимии... Впрочем, раз затронули тему зелий - то несколько слов и о них\nЗалечить небольшие раны вы можете при помощи лечебной эссенции, серьезные ранения - с помощью целебного эликсира. Также раны лечат микстура и спиртосодержащие напитки - ром и вино\nОт отравления спасаются противоядием либо микстурой. Ну и рекомендую имбирный корень - он лечит без отрицательных побочных эффектов, в отличие от эссенции или эликсира.";
+			link.l1 = "Каких побочных эффектов?";
 			link.l1.go = "guide_53";
 		break;
 		
 		case "guide_53":
-			dialog.text = "Essences, elixirs and mixtures damages your health. As I mentioned in the beginning of our small tour, it's bad. Bad health will cause drops in your skills' level, it will decrease total amount of your health points and stamina.\nSleeping, sex and a rare potion 'Tears of Ish-Chel' restore health if it's not ruined completely. If it is too late, then attend to a priest, they will help for a fee.";
-			link.l1 = "I see. What can you tell me about handguns?";
+			dialog.text = "Эссенция, эликсир и микстура вредно влияют на здоровье. Если вы будете бесконтрольно и в большом количестве употреблять эти зелья - у вас начнутся проблемы со здоровьем. Снизятся ваши умения и навыки, что, как вы понимаете, ни к чему хорошему не приведет\nСледите за своим здоровьем, не позволяйте ему ухудшаться. Оно падает от полученных ранений и употребления лекарств. Сон в таверне на мягкой постели поможет восстановиться, но лучше всего поправлять здоровье в объятиях прелестных женщин... например, в борделе\nЕсли же вы довели себя до такого плачевного состояния, что уже не спасает ни сон, ни девочки - тогда идите в церковь и просите святых отцов помочь вам\nИли раздобудьте редкое зелье под названием 'Слезы Иш-Чель', но я о нем только слышал, а где взять - ума не приложу.";
+			link.l1 = "Ясно. Про пистоли что-нибудь расскажете?";
 			link.l1.go = "guide_54";
 		break;
 		
 		case "guide_54":
-			dialog.text = "Not much to say. Point and shoot! Use grapeshot if there are several enemies. Get a musket or a rifle. Deadly damage and you can always hit people with a grip. I also heard about weapon which shoots grenades, but I have never seen it.";
-			link.l1 = "I see. Practice time?";
+			dialog.text = "Что про них скажешь - вынимай да стреляй! Если врагов несколько, то можно использовать картечницы: они наносят урон сразу нескольким противникам. При случае обязательно обзаведитесь мушкетом: стреляет он убойно и прикладом бьет дай Бог, так что однозначно вам пригодится. Слыхал я про мушкеты, стреляющие гранатами, но сам никогда такого чудо-оружия не то что в руках не держал - даже не видел.";
+			link.l1 = "Ясно. Ну что, начнем практиковаться?";
 			if (FindCharacterItemByGroup(pchar, BLADE_ITEM_TYPE) == "") link.l1.go = "guide_55a";
 			else link.l1.go = "guide_55";
 		break;
 		
 		case "guide_55a":
-			dialog.text = "Hm. Just noticed. Where is your sword? I fear that our lesson must be delayed. How did you end up without a weapon, "+pchar.name+"?";
-			link.l1 = "One dickhead in a fancy suit took it from me in advance of my brother's debt... Do you have an extra sword for me? I will return it after the lesson is over...";
+			dialog.text = "Хм. Я только сейчас заметил, что у вас с собой нет шпаги. Боюсь, наш урок фехтования придется отменить. Как же вы так без оружия-то остались, а, "+pchar.name+"?";
+			link.l1 = "Один напыщенный индюк конфисковал его у меня в счет уплаты долга брата... А у вас нет еще одного клинка? После урока я сразу верну...";
 			link.l1.go = "guide_55b";
 		break;
 		
@@ -402,14 +402,14 @@ void ProcessDialogEvent()
 			GiveItem2Character(pchar, "blade_05");
 			EquipCharacterByItem(Pchar, "blade_05");
 			npchar.quest.guide_blade = "true";
-			dialog.text = "You are lucky. I do have an extra sword. I was going to sell it, but, lucky you, I was delayed.";
-			link.l1 = "Thank you. Shall we?";
+			dialog.text = "Вот уж действительно редкий случай, когда у меня есть с собой вторая сабля. Держите этот катлас. Я собирался передать его лавочнику, и, на ваше счастье, не успел.";
+			link.l1 = "Спасибо! Начинаем тренировку?";
 			link.l1.go = "guide_55";
 		break;
 		
 		case "guide_55":
-			dialog.text = "Begin! And don't waste potions if you have them, we are not going to kill each other.";
-			link.l1 = "Fine...";
+			dialog.text = "Начнем! Если у вас есть с собой лечебные зелья - не тратьте их попусту: мы же не убивать друг друга сюда пришли.";
+			link.l1 = "Хорошо...";
 			link.l1.go = "guide_56";
 			npchar.quest.guide_win = 0;
 		break;
@@ -433,46 +433,46 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guide_57": // побил гида с первого раза
-			dialog.text = "This. This is the man who knows how to hold his sword. Well done, monsieur. You need more practice, but you have all chances to become the master of sword.";
-			link.l1 = "Thank you. What now?";
+			dialog.text = "Вот, это я понимаю - человек знает, с какой стороны шпагу держать. Вы молодец, монсеньор. Теперь вам только побольше практики - у вас есть все шансы стать настоящим мастером меча.";
+			link.l1 = "Спасибо! Что теперь?";
 			link.l1.go = "guide_62"; // нода на выход
 			AddComplexSelfExpToScill(50, 50, 50, 50);
 			AddCharacterExpToSkill(pchar, "Leadership", 80);
 		break;
 		
 		case "guide_58": // побил гида со второго или третьего раза
-			dialog.text = "Much better! See, all you need is to concentrate. You need more practice, one day you will become a decent fencer.";
-			link.l1 = "Thank you. What now?";
+			dialog.text = "Вот, так намного лучше! Видите - стоило сосредоточиться - и все получилось. Теперь вам нужно больше практики - и вы легко станете умелым фехтовальщиком.";
+			link.l1 = "Спасибо! Что теперь?";
 			link.l1.go = "guide_62"; // нода на выход
 			AddComplexSelfExpToScill(20, 20, 20, 20);
 			AddCharacterExpToSkill(pchar, "Leadership", 30);
 		break;
 		
 		case "guide_59": // побили первый раз
-			dialog.text = "I won, monseniour. Move faster, parry my stabs, jump back. A rematch?";
-			link.l1 = "Sure! No mercy, monseniour!";
+			dialog.text = "Этот бой закончился не в вашу пользу, месье. Двигайтесь быстрее, парируйте мои удары, отскакивайте назад или в сторону. Желаете реванш?";
+			link.l1 = "Конечно! Не ждите пощады, монсеньор!";
 			link.l1.go = "guide_56";
-			link.l2 = "No, I had enough. Let's finish the lesson. What now?";
+			link.l2 = "Нет, с меня, пожалуй, довольно. На этом закончим наш урок фехтования. Что теперь?";
 			link.l2.go = "guide_62"; // нода на выход
 		break;
 		
 		case "guide_60": // побили второй раз
-			dialog.text = "I won again, "+pchar.name+"! Don't loose your initiative. Catch my hits, feint them. If you see that I am going to hit hard - jump away or parry, don't just guard. Again!";
-			link.l1 = "Come, messere, I shall give you a lesson this time!";
+			dialog.text = "Два-ноль в мою пользу, "+pchar.name+"! Не давайте перехватывать у себя инициативу. Ловите мои удары финтом. Если видите, что я хочу нанести пробивающий - отскакивайте назад, либо парируйте, не стойте в блоке. Еще разок!";
+			link.l1 = "Идите сюда, сударь, и я наконец преподам вам урок!";
 			link.l1.go = "guide_56";
-			link.l2 = "No, I had enough. Let's finish the lesson. What now?";
+			link.l2 = "Нет, с меня, пожалуй, довольно. На этом закончим наш урок фехтования. Что теперь?";
 			link.l2.go = "guide_62"; // нода на выход
 		break;
 		
 		case "guide_61": // побили третий раз
-			dialog.text = "You need a lot to learn, "+pchar.name+". Don't worry, you still got a lot of time to master you fencing. But be careful, don't take any chances until you know how to hold a weapon.";
-			link.l1 = "I will consider it, monsieur, but I have to say that you were just too fortunate! This blasted heat... the only reason why I didn't beat a heck out of you. Whatever, let's end our fencing lesson. What now?";
+			dialog.text = "Да, что-то слабоваты вы, "+pchar.name+". Но не огорчайтесь сильно: у вас еще будет масса времни и возможностей отточить свое мастерство. Но будьте предельно осторожны и не лезьте попусту на рожон, пока не научитесь владеть шпагой получше.";
+			link.l1 = "Я приму ваши слова к сведению, монсеньор, но хочу сказать, что вам всего лишь просто повезло! Эта проклятая жара меня совсем из колеи выбила, не то я бы вам показал!.. Ладно, закончим наш урок фехтования. Что теперь?";
 			link.l1.go = "guide_62"; // нода на выход
 		break;
 		
 		case "guide_62":
-			dialog.text = "Now it's time to say farewells, monsieur. It was a pleasure. I hope that my presentation and training did you some good and will prove useful in the future. Perhaps, we shall meet again one day\nAnd about the money - talk to important people of our city. Visit all places that I have shown you today and speak to their owners. Ask people around. Take a walk to the jungles and to the fort. Find a job or... well, I am not God or a judge, check people's houses and see what trinkets you can find in their chests. Just do it when the yshow their backs to you or you are screwed\nGood luck, "+pchar.name+", I have a strong feeling that you have a spark of greatness inside you, do your best to make it a fire.";
-			link.l1 = "Gratitude, monsieur. Pleasure was mine. Godspeed!";
+			dialog.text = "А теперь нам пора попрощаться, сударь. Очень рад был нашему знакомству. Надеюсь, моя экскурсия и тренировка оказались полезными для вас, и полученные знания пригодятся вам в дальнейшем. Возможно, мы с вами еще когда-нибудь встретимся\nА насчет денег - поговорите с влиятельными людьми нашего города: купцом в магазине, барменом в таверне, ростовщиком, чиновником в портовом управлении, поспрашивайте других людей на улице, сходите в форт, джунгли - так и найдете работу, либо иной способ разжиться серебром да золотом\nУдачи, "+pchar.name+", дерзайте - и всё у вас получится.";
+			link.l1 = "Благодарю вас, монсеньор. Взаимно был рад знакомству. Всего доброго вам!";
 			link.l1.go = "guide_63";
 			if (CheckAttribute(npchar, "quest.guide_blade"))
 			{

@@ -145,7 +145,7 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 		if (blic || sti(echr.nation) == HOLLAND)
 		{
 			TakeNationLicence(HOLLAND);
-			log_info("A trade license was annulled!");
+			log_info("Торговая лицензия аннулирована!");
 		}
 	}
 	
@@ -222,7 +222,7 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 		ecrewBak = makeint(mDamage);	
 		ecrew = ecrew - ecrewBak;
 		
-		Log_SetStringToLog("A musket salvo eliminated " + ecrewBak + " enemy's crewmen");
+		Log_SetStringToLog("Мушкетным залпом убито " + ecrewBak + " человек команды противника.");
 	}
 	if (CheckOfficersPerk(echr, "MusketsShoot") && IsFort == false) // для противника
 	{
@@ -242,7 +242,7 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 		ecrewBak = makeint(eDamage);	
 		mcrew = mcrew - ecrewBak;
 		
-		Log_SetStringToLog("A musket salvo eliminated " + ecrewBak + " your crewmen");
+		Log_SetStringToLog("Мушкетным залпом убито " + ecrewBak + " человек нашей команды.");
         Statistic_AddValue(mchr, "DeadCrewBoard", ecrewBak);
 		Statistic_AddValue(mchr, "Sailors_dead", ecrewBak);
 		
@@ -754,14 +754,14 @@ void LAi_ReloadEndFade()
 					deadCrewWOMedic = iTemp - GetCargoGoods(mchar, GOOD_MEDICAMENT); // умерли от ран
 					RemoveCharacterGoodsSelf(mchar, GOOD_MEDICAMENT, GetCargoGoods(mchar, GOOD_MEDICAMENT)); // все нулим
 					deadCrew += deadCrewWOMedic; // трупов больше
-					Log_Info("" + deadCrewWOMedic + " crewmen died due to the lack of medicines");
+					Log_Info("Из-за нехватки медикаментов от ран умерли " + deadCrewWOMedic + " матросов");
 				}
 				else
 				{
 					RemoveCharacterGoodsSelf(mchar, GOOD_MEDICAMENT, iTemp);
 					if (GetCargoGoods(mchar, GOOD_MEDICAMENT) < 16)
 					{
-						Log_Info("" + mchar.Ship.Name + " is low on medicines");
+						Log_Info("На корабле " + mchar.Ship.Name + " осталось мало медикаментов");
 					}
 				}
 			}
@@ -1019,11 +1019,6 @@ void LAi_SetBoardingActors(string locID)
 			SetNewModelToChar(chr); //иначе сабли не те, что реально
 			chr.AboardFantom = true;
 			AddCharHP(chr, boarding_player_hp); // влияение опыта и морали в НР
-			/*if (!bNewFantomGenerator)
-	        {
-				xhp = GetBoarding_player_hp(boarding_player_hp);
-				LAi_SetHP(chr, xhp, xhp);
-			}*/
 		}
 		//ставим своих мушкетеров -->
 		if (CheckOfficersPerk(mchr, "MusketsShoot") && CheckAttribute(&Locations[locIndex], "UpDeckType") && !CheckAttribute(boarding_enemy, "GenQuest.CrewSkelMode"))

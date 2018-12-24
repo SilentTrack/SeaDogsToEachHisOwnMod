@@ -14,56 +14,56 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "Is there something you need?";
-			link.l1 = "No, I'm fine.";
+			dialog.text = "Ты что-то хотел?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "portroyal":
-			dialog.text = "Ha, monsieur de Maure!  Welcome to Port Royal!  Do you still remember me?";
-			link.l1 = "Hmm...You're mr. Calhoun, aren't you? Henry Calhoun?";
+			dialog.text = "Ха, месье де Мор! Рад вас приветствовать в Порт-Рояле! Надеюсь, вы меня не забыли?";
+			link.l1 = "М-м-м... Кажется - мистер Колхаун? Анри Колхаун?";
 			link.l1.go = "portroyal_1";
 		break;
 		
 		case "portroyal_1":
-			dialog.text = "Almost... Archibald Calhoun.";
-			link.l1 = "Oh, forgive me, monsieur. Yes, I remember you. We met at Cape Catoche, on the bay. Your captain was with you as well, William Patterson. I recognized his squadron.";
+			dialog.text = "Ну почти... Арчибальд Колхаун.";
+			link.l1 = "Ох, простите, мистер. Да, я вас вспомнил. Мы встретились на мысе Каточе, в бухте. С вами был еще ваш капитан, Вильям Патерсон. Я узнал его эскадру на рейде.";
 			link.l1.go = "portroyal_2";
 		break;
 		
 		case "portroyal_2":
-			dialog.text = "Right on the dot, captain! Please forgive my cap. He's always this short with people he doesn't know. You've done excellent, blitzing Fort Diego de Montoya, which we happened to pare our claws over...";
-			link.l1 = "It's for the sake of justice, I might add, that without the preliminary preparation displayed by your captain I doubtfully would have even been able to run up to the gains while under fire of the Spanish cannons. Did you commander find what he was looking for?";
+			dialog.text = "В точку, капитан! Вы уж извините моего кэпа - он всегда такой суровый с незнакомыми людьми. А вы молодец - разгромили форт Диего де Монтойи, об который мы зубы обломали...";
+			link.l1 = "Справедливости ради отмечу, что без предварительной 'подготовки' в лице вашего капитана мне навряд ли удалось бы даже добежать до ворот под огнем испанских пушек. Ваш командир нашел, что искал?";
 			link.l1.go = "portroyal_3";
 		break;
 		
 		case "portroyal_3":
-			dialog.text = "Yes. He nuzzled quite deeply in the casemates under the fort and found some kind of archives. He was unspeakably glad. By the way, if you don't mind my asking, what jerked you to attack that fort in the jungle?";
-			link.l1 = "After being defeated by me in Saint-Pierre, Don Diego began constructing a scheme and ended up staging an open attack on Cuba. Then he broke off combat and headed for the hills toward Main.  Well, so I decided to get rid of that yellow dog once and for all. So he'd never bedraggle the French again.";
+			dialog.text = "Да. Он хорошенько порылся в казематах под фортом и нашел какие-то архивы. Был несказанно рад. А скажите, если не секрет - что вас заставило атаковать этот форт в джунглях?";
+			link.l1 = "Дон Диего после поражения от меня в Сен-Пьере начал строить козни и в итоге напал в открытую у Кубы. Затем он вышел из боя и удрал в сторону Мэйна. Ну, я и решил избавиться от этого подлеца раз и навсегда. Чтобы больше не пакостил французам.";
 			link.l1.go = "portroyal_4";
 		break;
 		
 		case "portroyal_4":
-			dialog.text = "Yep, I've heard quite a few legends about captain Charles de Maure's heroics –now I've seen it with my own eyes...";
-			link.l1 = "Yeah, I've heard a few things about William Patterson's velour as well. You're lucky to have a captain like him.";
+			dialog.text = "Да уж, о героизме капитана Шарля де Мора я уже немало легенд наслушался - теперь увидел и собственными глазами...";
+			link.l1 = "Ну, я тоже кое-что слыхал о героизме Вильяма Патерсона. Повезло вам с капитаном.";
 			link.l1.go = "portroyal_5";
 		break;
 		
 		case "portroyal_5":
-			dialog.text = "Lucky me, that's true. Though he has become such an important man these days, a man of high society, audiences, balls, parades and private parties… You can't lure him out of the governor's palace every time we arrive at Port Royal. Actually he is right there now again\nCaptain Charles de Maure, can you do a favour for the Scottish drunkard? Join my company and let's have a chat! I am sick of these always the same faces and you seem to be a good person to talk with. Come to my place, let's relax and have a barrel of excellent whiskey. I'll buy!";
-			link.l1 = "Hm... Tempting, but...";
+			dialog.text = "Повезло, согласен. Только в последнее время он такой важный стал, прямо весь из высшего света, все на приемы да парады, балы и закрытые вечеринки... Как прибудет в Порт-Рояль - не выгнать из губернаторского дворца. Как и сейчас, впрочем\nКапитан де Мор, не откажите в любезности выпивохе-шотландцу: составьте компанию для беседы! Так уже осточертели все эти морды, смотреть тошно, а с вами есть о чем поговорить. Пойдемте ко мне в гости, разопьем бочоночек чудесного виски, отдохнете. Я угощаю!";
+			link.l1 = "Хм... Заманчиво, но...";
 			link.l1.go = "portroyal_6";
 		break;
 		
 		case "portroyal_6":
-			dialog.text = "Oh stop, captain –you need to rest sometimes too. I've got some fine hors-d'oeuvres by the way, right out of a local merchant's store –I'm renting a room right above the store. Whenever you feel like getting a bite to eat or a drink, you just take a walk downstairs and it's ready, haha!  Convenient, isn't it? Come on, let's go!";
-			link.l1 = "You've talked me into it!";
+			dialog.text = "Да полноте, капитан: отдыхать тоже надо. У меня и закуска знатная, прямо со склада купца местного: я снимаю комнату прямо над магазином. Захотелось поесть или выпить - спустился вниз и готово, ха-ха! Удобно, правда? Ну пойдемте!";
+			link.l1 = "Уговорили!";
 			link.l1.go = "portroyal_7";
 		break;
 		
 		case "portroyal_7":
-			dialog.text = "Great. After me!";
+			dialog.text = "Отлично. Идите за мной!";
 			link.l1 = "...";
 			link.l1.go = "portroyal_8";
 		break;
@@ -79,79 +79,79 @@ void ProcessDialogEvent()
 		
 		case "portroyal_9":
 			LAi_SetSitType(Pchar);
-			dialog.text = "See how nice it is here? Nice and cool... Here are some whisky barrels! Bottoms up, captain!";
-			link.l1 = "Well, let's drink to our fortuitous meeting and a pleasant acquaintance!";
+			dialog.text = "Видите, как хорошо тут, прохладненько... А вот и бочоночек с виски! Наливайте, капитан!";
+			link.l1 = "Ну, давайте выпьем за случайную встречу и приятное знакомство!";
 			link.l1.go = "portroyal_10";
 		break;
 		
 		case "portroyal_10":
-			dialog.text = "Delighted!...Ah! Have you long arrived at the Caribbean, monsieur de Maure?";
-			link.l1 = "Relatively recently...or not so recently. I don't really know how to put it. I feel like I've lived here half my life.";
+			dialog.text = "С удовольствием!.. Эх! А вот вы давно прибыли на Карибы, а, месье де Мор?";
+			link.l1 = "Относительно недавно... или давно. Я и сам не знаю, как сказать. Мне кажется, словно я полжизни тут провел.";
 			link.l1.go = "portroyal_11";
 		break;
 		
 		case "portroyal_11":
-			dialog.text = "Oh, I know that feeling... Although I've been here a long time myself.  And when I landed on that damn island that William saved me from... Ohoo, it surely feels like I kissed goodbye half my life over there.";
-			link.l1 = "Interesting! What island was that?";
+			dialog.text = "Ох, знакомое чувство... хотя я и правда здесь давно. А как попал на этот проклятый остров, с которого меня Вильям спас... охо-хо, там я точно - словно полжизни потерял.";
+			link.l1 = "Интересно! Что за остров такой?";
 			link.l1.go = "portroyal_12";
 		break;
 		
 		case "portroyal_12":
-			dialog.text = "Willy is an old friend of mine, we already knew each other when I was still breathing a fair air of Scotland... Good times. I was foolish enough to have a quarrel with damned papists and the inquisitor himself, so he organized troubles for me. I was a trader back then, had my own flute\nEh, that blasted day my ship was attacked by the Spanish dressed as pirates, we fought bravely but they managed to corner us like rats! Even then the old Colhaun didn't lose his head and jumped overboard with a barrel of water and a few planks\nI used the dark and swam away from my ship unseen. Chances of survival weren't very good, but staying on the ship meant no chances at all. Two days later I cast up on the shore of some desert island\nI had been living in the Caribbean for while and never heard of it until then! It is small and completely uninhabited... and I had spent there two years which felt like an eternity. I still don't know how I managed to save my mind intact.";
-			link.l1 = "You lived two years on an uninhabited island?";
+			dialog.text = "Вилли - мой старинный друг, мы знакомы с ним еще с тех славных времен, когда я дышал чудным воздухом гор Шотландии... Я имел неосторожность повздорить с проклятыми папистами и самим инквизитором, и он устроил мне травлю. Тогда я занимался торговлей, у меня был свой флейт\nЭх, и вот в тот кошмарный день на мой корабль напали кастильцы, переодетые пиратами. У нас не было ни шанса. Мы дрались, как могли, но они загнали нас по углам, как крыс! Однако старина Колхаун не растерялся и выпрыгнул через пушечный порт за борт, прихватив с собой бочонок с водой и пару досок\nПользуясь тем, что сгустилась темнота, я смог уплыть прочь от своего захваченного судна незамеченным. Шанс выжить был невелик, но его совсем не было бы, останься я на корабле. А так через два дня меня прибило течением к какому-то пустынному острову\nСколько я живу на Карибах - и знать не знал про него! Остров небольшой и совсем-совсем пустынный... и я прожил там два года, показавшихся мне вечностью. Как у меня не помутился рассудок - сам не пойму.";
+			link.l1 = "Вы прожили два года на необитаемом острове?";
 			link.l1.go = "portroyal_13";
 		break;
 		
 		case "portroyal_13":
-			dialog.text = "I sure did, cursed place! Good thing there was freshwater over there. I nourished myself with crabs, barnacles, fish, and birds. That's what I named it – Crab Island. I didn't have any weapons – I mastered the harpoon, spear, and arrow like a savage man! Ohoo! Drink, drink, captain! I don't mind wetting my whistle as well...";
-			link.l1 = "Yeah... I don't envy you.";
+			dialog.text = "Так точно, черт его дери! Хорошо, что там была пресная вода. Питался я крабами, ракушками, рыбой и птицами. Я так и назвал его - Крабовый остров. Оружия у меня не было - смастерил гарпун, копье и лук, как дикарь! Охо-хо! Пейте, пейте, капитан! И я выпью тоже...";
+			link.l1 = "Да уж, незавидное положение.";
 			link.l1.go = "portroyal_14";
 		break;
 		
 		case "portroyal_14":
-			dialog.text = "There you go!  That's exactly what I said when first set my foot on the beach of that large hunk of sand: 'Old Archy, you're situation is not enviable, but it's not hopeless either'! And you know what kept me alive, captain?";
-			link.l1 = "A ship passing by the island?";
+			dialog.text = "Вот! именно это я и сказал, когда сделал первый шаг по пляжу этого клочка суши: 'Старина Арчи, твое положение незавидное, но и не безнадежное!' И знаете, что меня спасло, капитан?";
+			link.l1 = "Проходящий мимо корабль?";
 			link.l1.go = "portroyal_15";
 		break;
 		
 		case "portroyal_15":
-			dialog.text = "No! Labour saved me! Labour, faith and a wish to live! I explored the whole place, every corner of it and I was awarded with a chest filled with carpenter's tools, writing accessories and other little things. You know what I said to myself that moment? Pour more, captain, just pour!\nI said: Archie, you must work to keep your mind in place and the God has given you everything to start doing so. Now you see! I had started building a house close to a bay and you know what? It saved me from ill thoughts and gave me reason to live!";
-			link.l1 = "You're a living inspiration, mr. Calhoun. Not every man would be able to do much of anything at all in a situation like that...";
+			dialog.text = "Нет! Меня спас труд! Труд, вера и любовь к жизни! Я обошел весь остров, исследовал каждый его уголок и был вознагражден: я отыскал выброшенный на берег сундук с плотницким инструментом! Там также были письменные принадлежности и прочие пустяки. И знаете, что я сказал себе тогда? Вы наливайте, наливайте, капитан!\nА сказал я: 'Арчи, чтобы не сойти с ума, тебе нужно трудиться, и Господь послал тебе эту возможность'. Так-то! Я начал строить домик недалеко от бухты, и честно: это отвлекло меня от дурных мыслей и дало стимул к жизни!";
+			link.l1 = "Вы просто молодец, мистер Колхаун. Не каждый был бы способен в такой ситуации вообще хоть что-то сделать...";
 			link.l1.go = "portroyal_16";
 		break;
 		
 		case "portroyal_16":
-			dialog.text = "Yes, old Calhaun was born in Scotland for a reason! Right! We are the sons of the mountains - strong, brave and tough, much better than those featherweights from the marshland. Pour more... Right, what I was talking about? Yes! I worked hard a built a decent house for myself. I also started a journal for everyday writings of my misfortunes. I took the journal with me when Willy saved me\nNow I keep it in this table and reread it in a warm, soft bed every time we stay in Port Royal\I wrote everything in it, everything happened to me before and I after I got there. It is one of the reasons I still have my mind with me.";
-			link.l1 = "So it turns out that Mr. Patterson picked you up off the island? But how could he have found it? You said...";
+			dialog.text = "Да, старина Колхаун не зря родился в Шотландии! То-то! Мы, дети гор, сильны и выносливы, и крепки духом, не то, что мозгляки с болотистых равнин. Наливайте... Так вот, о чем я? А, да! Я трудился, и я построил себе неплохой дом. А еще я завел дневник и каждый день писал туда о своих мытарствах. Когда Вилли забрал меня с острова, я прихватил этот дневничок с собой\nТеперь он лежит у меня вот тут на столе, и когда мы возвращаемся из походов назад, в Порт-Рояль, я пролистываю его, лежа в теплой постели, и вспоминаю те два года тяжких испытаний\nЯ записал туда все, что произошло со мной до попадания на остров, и во время пребывания там. Во многом благодаря ему я сохранил здравый рассудок.";
+			link.l1 = "Так получается, мистер Патерсон забрал вас с острова? Но как же он нашел его? Вы же сказали, что...";
 			link.l1.go = "portroyal_17";
 		break;
 		
 		case "portroyal_17":
-			dialog.text = "Yes, yes, the island is not marked on any map. But Willy – he's old Willy! He can do anything! And he found that god damn island and saved me, for which I am grateful to the grave to him.  Yeah...";
-			link.l1 = "Do you like serving mister Patterson? Would you go again on your own resources?";
+			dialog.text = "Да, да, остров не обозначен ни на одной карте. Но Вилли - это же старина Вилли! Он может всё! И он отыскал этот чертов остров и спас меня, за что я ему благодарен по гроб жизни. Да...";
+			link.l1 = "Вам нравится служба у мистера Патерсона? Не хотите вновь на вольные хлеба?";
 			link.l1.go = "portroyal_18";
 		break;
 		
 		case "portroyal_18":
-			dialog.text = "I'm done with being independent.  Willie's young and successful and plus I'm a long time friend of his.  What else do I need?  No, I'll be with Willy until the end of my days, or at least until he kicks me out the next time I get wasted, haha! Speaking of getting wasted, pour it on!";
-			link.l1 = "Akh...(drinking) Tell me, Mr. Calhoun. I heard you, uh, used to be a treasure hunter. Is that so or is it just nonsense?";
+			dialog.text = "Хватит с меня вольницы. Вилли молод, успешен, к тому же я его старинный друг. Чего мне еще желать-то? Нет, я буду с Вилли до конца дней моих, или пока он не выгонит меня за очередную пьянку, ха-ха! Кстати, о пьняке: наливайте!";
+			link.l1 = "Угх... (пьет) Скажите, Мистер Колхаун, я вот тут слыхал, что вы раньше были охотником за сокровищами. Это так, или брешут люди?";
 			link.l1.go = "portroyal_19";
 		break;
 		
 		case "portroyal_19":
-			dialog.text = "Who told you that? Well, no sense trying to hide it. I used to. Didn't turn out well though, such treasure hunting had led me to the blasted Jesuits and to the island. Holy fathers had tortured a man to death because of me, and I myself… oh, let's keep the past in past\nI have paid enough for my sins and I hope to never repeat such in the future. No, Willy won't let that happen, I am sure!";
-			link.l1 = "Listen, Archibald. Have you ever heard of a man named Miguel Dichoso?";
+			dialog.text = "Кто вам такое сказал? Впрочем - чего греха таить? Водилось такое за мной. Да только к добру не привело: именно через это кладоискательство я и схлестнулся с иезуитами, будь они прокляты, и попал на этот остров. Из-за меня святые отцы зверски замучали человека, да и я сам... ох, лучше не будем вспоминать\nЯ сполна искупил все свои грехи, и надеюсь больше не повторить таких ошибок в будущем. Нет, с Вилли такого не случится, я уверен!";
+			link.l1 = "Послушайте, Арчибальд, а вы никогда не слышали про человека по имени Мигель Дичозо?";
 			link.l1.go = "portroyal_20";
 		break;
 		
 		case "portroyal_20":
-			dialog.text = "I've never heard that name before. Who is he?";
-			link.l1 = "Oh nobody interesting... just a man that likes searching for adventures and treasure. But since you haven't heard about him, we won't talk about him.";
+			dialog.text = "Первый раз слышу это имя. А кто он?";
+			link.l1 = "Да так... искатель приключений и сокровищ. Раз не слышали - так и не будем о нем.";
 			link.l1.go = "portroyal_21";
 		break;
 		
 		case "portroyal_21":
-			dialog.text = "Yes, let's not! Let's talk about old Europe instead! I remember twenty years ago in Scotland...";
+			dialog.text = "Вот именно - не будем! Давайте лучше поговорим про нашу старушку-Европу! Эх! Вот помню, двадцать лет назад в Шотландии...";
 			link.l1 = "...";
 			link.l1.go = "portroyal_22";
 		break;

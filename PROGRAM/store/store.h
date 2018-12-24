@@ -1,4 +1,4 @@
-#define STORE_QUANTITY			30
+#define STORE_QUANTITY			31
 
 #define Bridgetown_STORE		0
 #define SanJuan_STORE			1
@@ -29,8 +29,9 @@
 #define SantaCatalina_STORE     26
 #define Beliz_STORE          	27
 #define SanAndres_STORE         28
+#define IslaMona_STORE          29
 
-#define SHIP_STORE 				29
+#define SHIP_STORE 				30
 
 #define T_TYPE_NORMAL			0		// повседневные товары
 #define T_TYPE_AMMUNITION		1		// боеприпасы

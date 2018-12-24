@@ -15,8 +15,8 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "Is there something you need?";
-			link.l1 = "No, nothing.";
+			dialog.text = "Ты что-то хотел?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
@@ -24,13 +24,13 @@ void ProcessDialogEvent()
 		case "norman_us":
 			if(CheckAttribute(pchar, "questTemp.Tieyasal") && pchar.questTemp.Tieyasal == "begin" && !CheckAttribute(npchar, "quest.Tieyasal"))
 			{
-				dialog.text = LinkRandPhrase("What do you need, buddy? Walk your path, take care of your business. Just leave me alone.","Hey, hey, pal. Going for a walk? Well you just keep on walking and leave mr. Abraham alone. He's going for a walk too. He's getting a breath of some fresh sea air.","Hello, friend. Wanna chat? There's just one problem: I'm not in the mood for conversation. So go look for somebody else to bother. Go kick back at the tavern. Have some rum...");
-				link.l1 = "Listen, Abraham, did you happen to run into a man named Miguel Dichoso recently on Isla Tesoro? He's kind of a well-known cat around here.";
+				dialog.text = LinkRandPhrase("Что тебе, дружок? Иди своей дорогой, занимайся делами-делишками, а от меня отстань.","Привет-привет, паренек. Гуляешь? Вот и гуляй себе дальше, и отстань от дядюшки Абрахама. Он тоже гуляет, морским воздухом дышит.","Здравствуй, парнишка. Хочешь поболтать? Но вот ведь незадача: я не в настроении разговаривать. Так что поищи себе другого собеседника. Зайди в таверну, рому выпей...");
+				link.l1 = "Послушай, Абрахам, ты не встречал недавно на Исла Тесоро человека по имени Мигель Дичозо? Он тут вроде известная птица.";
 				link.l1.go = "tieyasal";
 				break;
 			}
-			dialog.text = NPCStringReactionRepeat(LinkRandPhrase("What do you need, buddy? Walk your path, take care of your business. Just leave me alone.","Hey, hey, pal. Going for a walk? Well you just keep on walking and leave mr. Abraham alone. He's going for a walk to. He's getting a breath of some fresh sea air.","Hello, pal. Wanna chat? There's just one problem: I'm not in the mood for conversation. So go bother someone else. Go kick back at the tavern. Have some rum..."), LinkRandPhrase("Hey, sailor. What are you slow or something? I thought I was pretty clear.","Pal, go get some rest. Otherwise, you seem to be a little hard of hearing.","Hey pal, what are you stupid or something? I pretty much spelled it out for you already."), "Buddy, don't make me angry. I've slaughtered so many landlubbers in my time, that one more or one less doesn't really make a difference.", "All right, you've pissed me off. Now either take out your rusty sword or run as fast as you can. I recommend the second option...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("All right, friend. I'm not gonna bother you.", "Fine, fine. I got it...", "Whoa, well you look to be the thunder of the seas! All right, I'm out of here.", "What?!", npchar, Dialog.CurrentNode); 
+			dialog.text = NPCStringReactionRepeat(LinkRandPhrase("Что тебе, дружок? Иди своей дорогой, занимайся делами-делишками, а от меня отстань.","Привет-привет, паренек. Гуляешь? Вот и гуляй себе дальше, и отстань от дядюшки Абрахама. Он тоже гуляет, морским воздухом дышит.","Здравствуй, парнишка. Хочешь поболтать? Но вот ведь незадача: я не в настроении разговаривать. Так что поищи себе другого собеседника. Зайди в таверну, рому выпей..."), LinkRandPhrase("Морячок, ты туго соображаешь? Я вроде ясно объяснил.","Парень, иди проспись. А то, видать, слышишь плоховато.","Паренек, ты что - дурачок? Я же вроде доступно все расписал."), "Приятель, не доводи до греха. Я столько сухопутных крыс на своем веку перерезал, что одной больше, одной меньше - уже неважно.", "Ну все, ты меня достал. Теперь или доставай свою ржавую саблю, или беги со всех ног. Второе - вернее...", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Хорошо, приятель. Не буду тебе мешать.", "Да-да, я понял. Просто вспомнил тут...", "Ух, да ты, видать - Гроза морей! Ладно, ухожу.", "Что?!", npchar, Dialog.CurrentNode); 
 			link.l1.go = DialogGoNodeRepeat("exit", "", "", "fight", npchar, Dialog.CurrentNode);
 			NextDiag.TempNode = "norman_us";
 		break;
@@ -38,73 +38,73 @@ void ProcessDialogEvent()
 		case "norman_fes":
 			if(CheckAttribute(pchar, "questTemp.Tieyasal") && pchar.questTemp.Tieyasal == "begin" && !CheckAttribute(npchar, "quest.Tieyasal"))
 			{
-				dialog.text = LinkRandPhrase("What do you need, buddy? Walk your path, take care of your business. Just leave me alone.","Hey, hey, pal. Going for a walk? Well you just keep on walking and leave mr. Abraham alone. He's going for a walk to. He's getting a breath of some fresh sea air.","Hello, pal. Wanna chat? There's just one problem: I'm not in the mood for conversation. So go bother someone else. Go kick back at the tavern. Have some rum...");
-				link.l1 = "Listen, Abraham, did you happen to run into a man named Miguel Dichoso recently on Isla Tesoro? He's kind of a well-known cat around here.";
+				dialog.text = LinkRandPhrase("Что тебе, дружок? Иди своей дорогой, занимайся делами-делишками, а от меня отстань.","Привет-привет, паренек. Гуляешь? Вот и гуляй себе дальше, и отстань от дядюшки Абрахама. Он тоже гуляет, морским воздухом дышит.","Здравствуй, парнишка. Хочешь поболтать? Но вот ведь незадача: я не в настроении разговаривать. Так что поищи себе другого собеседника. Зайди в таверну, рому выпей...");
+				link.l1 = "Послушай, Абрахам, ты не встречал недавно на Исла Тесоро человека по имени Мигель Дичозо? Он тут вроде известная птица.";
 				link.l1.go = "tieyasal";
 				break;
 			}
 			switch (drand(5))
 			{
 				case 0:
-					dialog.text = "Freeze! I'm the governor of this island. What you don't believe me?!";
-					link.l1 = "Of course I do! Who doesn't know the governor of Isla Tesoro...";
+					dialog.text = "Стоять! Я губернатор этого острова. Ты что, не веришь мне?!";
+					link.l1 = "Конечно верю! Кто же не знает губернатора Исла-Тесоро...";
 					link.l1.go = "norman_fes0_fight";
-					link.l2 = "Ha, call yourself an admiral while your at it, I'll definitely buy that!";
+					link.l2 = "Ха, ты еще адмиралом назовись, вот тогда точно поверю!";
 					link.l2.go = "norman_fes0_peace";
 				break;
 				
 				case 1:
-					dialog.text = "Stand at attention! Behold - Admiral Barbarigo! Don't you recognize my famous cavalry sword?";
-					link.l1 = "My apologies, sir admiral! From now on, I'll be more attentive.";
+					dialog.text = "Руки по швам! Перед тобой адмирал Барбариго! Ты что, не узнал мою знаменитую саблю?";
+					link.l1 = "Виноват, господин адмирал! Впредь буду внимательнее.";
 					link.l1.go = "norman_fes1_peace";
-					link.l2 = "Your cavalry sworn is widely known. Too bad, it has reached a fool.";
+					link.l2 = "Сабля у тебя знатная. Жаль, дураку досталась.";
 					link.l2.go = "norman_fes1_fight";
 				break;
 				
 				case 2:
-					dialog.text = "As you can see, I am here in exile. I am awaiting further notification from General Monk. I ask that you do not disseminate my concealed royal identity. Cromwell's intelligence has long ears.";
-					link.l1 = "But of course, you majesty. No one will ever learn that Karl the II is hiding in West India.";
+					dialog.text = "Я, видите ли, здесь в изгнании, жду новостей от генерала Монка. Прошу не разглашать мое королевское инкогнито. У разведки Кромвеля длинные уши.";
+					link.l1 = "Конечно, Ваше Величество. Никто не узнает, что Карл II прячется в Вест-Индии.";
 					link.l1.go = "norman_fes2_fight";
-					link.l2 = "Well, and I am Pope Innocent X then.";
+					link.l2 = "Ну а я тогда - римский папа Иннокентий X.";
 					link.l2.go = "norman_fes2_peace";
 				break;
 				
 				case 3:
-					dialog.text = "What happened to you, Blaze? I've been looking for you for two days. You've completely forgotten your father Nicolas!";
-					link.l1 = "I don't have time for you father! I'm swamped.";
+					dialog.text = "Куда ты пропал, Блейз? Я ищу тебя второй день. Ты совсем забыл своего папу Николаса!";
+					link.l1 = "Не до тебя, отец! Дел по горло.";
 					link.l1.go = "norman_fes3_peace";
-					link.l2 = "You've mistaken, sir. My name is "+GetFullName(pchar)+".";
+					link.l2 = "Вы обознались, уважаемый. Меня зовут "+GetFullName(pchar)+".";
 					link.l2.go = "norman_fes3_fight";
 				break;
 				
 				case 4:
-					dialog.text = "Sh-sh... I am Davy Jones. Tell me, are you afraid of death?";
-					link.l1 = "Of course I am, mr. Jones. Especially after a hangover.";
+					dialog.text = "Т-с-с... Я Дэви Джонс. Скажи, ты боишься смерти?";
+					link.l1 = "Конечно, мистер Джонс, особенно с похмелья.";
 					link.l1.go = "norman_fes4_fight";
-					link.l2 = "One death is a tragedy, a thousand is just a statistic.";
+					link.l2 = "Ста смертям не бывать, а одной не миновать.";
 					link.l2.go = "norman_fes4_peace";
 				break;
 				
 				case 5:
-					dialog.text = "I'm in a hurry to finish my new play. You must help me finish the phrase 'To be or not to be'?!";
-					link.l1 = "That is the question! Shall we endure the offense and move on...";
+					dialog.text = "Я пьесу новую закончить тороплюсь. Ты должен мне помочь продолжить фразу 'Быть, иль не быть?!'";
+					link.l1 = "Вот, в чем единственный вопрос! Сносить ли нам и впредь обиды свысока...";
 					link.l1.go = "norman_fes5_fight";
-					link.l2 = "A drink, for sure. But I won't be surprised when I catch a disease in a brothel!";
+					link.l2 = "Конечно 'пить', но я не удивлюсь, когда в борделе подцеплю заразу!";
 					link.l2.go = "norman_fes5_peace";
 				break;
 			}
 		break;
 		
 		case "norman_fes0_fight":
-			dialog.text = "What the hell are you talking about 'Tesoro'?! You might as well call it the Bermudas! This island is called Norman Island after me and don't forget it. I'm going to have to teach you geography...";
-			link.l1 = "Huh! What do you mean?!";
+			dialog.text = "Какой к дьяволу 'Тесоро'?! Ты бы его еще Бермудами обозвал! Запомни, в честь меня этот остров называется Норман-Айленд. Придется поучить тебя географии...";
+			link.l1 = "Э! Да ты чего?!";
 			link.l1.go = "fight";
 			NextDiag.TempNode = "norman_fight_again";
 		break;
 		
 		case "norman_fes0_peace":
-			dialog.text = "You're right, sailor. I really am Admiral Barbarigo, but that's strictly between us. Get ready to march. We're moving out soon. That'll come in handy for you.";
-			link.l1 = "I'm extremely grateful!";
+			dialog.text = "Ты прав, матрос. На самом деле я адмирал Барбариго, но это строго между нами. Готовься к походу, скоро выступаем. Это тебе пригодится.";
+			link.l1 = "Премного благодарен!";
 			link.l1.go = "norman_fes0_exit";
 		break;
 		
@@ -115,33 +115,33 @@ void ProcessDialogEvent()
 			if (GetDataDay() == 12)
 			{
 				GiveItem2Character(pchar, "pistol2");
-				Log_Info("You've received a three-barreled shotgun");
+				Log_Info("Вы получили трехствольный дробовик");
 			}
 			else
 			{
 				if (GetDataDay() == 23 && GetDataMonth() == 2)
 				{
 					GiveItem2Character(pchar, "mushket1");
-					Log_Info("You've received a match-lock musket");
+					Log_Info("Вы получили фитильный мушкет");
 				}
 				else
 				{
 					GiveItem2Character(pchar, "cartridge");
-					Log_Info("You've received a paper cartridge");
+					Log_Info("Вы получили бумажный патрон");
 				}
 			}
 		break;
 		
 		case "norman_fes1_fight":
-			dialog.text = "We'll see which of us is the fool now. On guard!";
-			link.l1 = "Are you serious?!";
+			dialog.text = "Сейчас посмотрим, кто из нас дурак. Защищайся!";
+			link.l1 = "Ты что, серьезно?!";
 			link.l1.go = "fight";
 			NextDiag.TempNode = "norman_fight_again";
 		break;
 		
 		case "norman_fes1_peace":
-			dialog.text = "What did I tell you! Here, drink for my health.";
-			link.l1 = "Bottoms up, admiral!";
+			dialog.text = "То-то же! На вот, выпей за мое здоровье.";
+			link.l1 = "Есть, адмирал!";
 			link.l1.go = "norman_fes1_exit";
 		break;
 		
@@ -152,14 +152,14 @@ void ProcessDialogEvent()
 			if (GetDataDay() == 13)
 			{
 				GiveItem2Character(pchar, "gold_dublon");
-				Log_Info("You've received a gold doubloon");
+				Log_Info("Вы получили золотой дублон");
 			}
 			else
 			{
 				if (GetDataDay() == 1 && GetDataMonth() == 4)
 				{
 					GiveItem2Character(pchar, "chest");
-					Log_Info("You've received a chest of doubloons");
+					Log_Info("Вы получили сундучок с дублонами");
 				}
 				else
 				{
@@ -169,15 +169,15 @@ void ProcessDialogEvent()
 		break;
 		
 		case "norman_fes2_fight":
-			dialog.text = "I asked you not to disseminate my name! Now I'm going to have to do away with you as a dangerous witness...";
-			link.l1 = "Oh, I've been waiting for this!";
+			dialog.text = "Я же просил не разглашать мое имя! Теперь придется убрать тебя, как опасного свидетеля...";
+			link.l1 = "Только этого мне не хватало!";
 			link.l1.go = "fight";
 			NextDiag.TempNode = "norman_fight_again";
 		break;
 		
 		case "norman_fes2_peace":
-			dialog.text = "Forgive me, your grace! I didn't recognize you in this image. Deign to accept this modest gift from a true catholic.";
-			link.l1 = "Insanity pipes up...";
+			dialog.text = "Простите, Ваше Преосвященство! Не признал я вас в этом обличии. Соблаговолите принять скромный дар от истинного католика.";
+			link.l1 = "Маразм крепчал...";
 			link.l1.go = "norman_fes2_exit";
 		break;
 		
@@ -188,33 +188,33 @@ void ProcessDialogEvent()
 			if (GetDataDay() == 14)
 			{
 				GiveItem2Character(pchar, "amulet_10");
-				Log_Info("You've received the Wonderworker Amulet");
+				Log_Info("Вы получили амулет 'Чудотворец'");
 			}
 			else
 			{
 				if (GetDataDay() == 25 && GetDataMonth() == 12)
 				{
 					GiveItem2Character(pchar, "totem_04");
-					Log_Info("You've received the Talisman of the Accomplice");
+					Log_Info("Вы получили талисман 'Клеврет'");
 				}
 				else
 				{
 					GiveItem2Character(pchar, "Mineral3");
-					Log_Info("You've received a wax candle");
+					Log_Info("Вы получили восковую свечу");
 				}
 			}
 		break;
 		
 		case "norman_fes3_fight":
-			dialog.text = "Everyone's coming at me! I caught a spy that looks just like my son! I'm sure Thomas sent him to knock my second eye out!";
-			link.l1 = "Buzz off, moron!";
+			dialog.text = "Все ко мне! Я поймал лазутчика, похожего на моего сына! Его наверняка подослал Томас, чтобы выбить мне второй глаз!";
+			link.l1 = "Отвали от меня, придурок!";
 			link.l1.go = "fight";
 			NextDiag.TempNode = "norman_fight_again";
 		break;
 		
 		case "norman_fes3_peace":
-			dialog.text = "You're tired and you don't look so hot, sonny. Go on and get some treatment.";
-			link.l1 = "Thanks!";
+			dialog.text = "Ты устал и плохо выглядишь, сынок. На-ка вот, подлечись.";
+			link.l1 = "Спасибо!";
 			link.l1.go = "norman_fes3_exit";
 		break;
 		
@@ -225,33 +225,33 @@ void ProcessDialogEvent()
 			if (GetDataDay() == 15)
 			{
 				GiveItem2Character(pchar, "potion4");
-				Log_Info("You've received a potion");
+				Log_Info("Вы получили микстуру");
 			}
 			else
 			{
 				if (GetDataDay() == 19 && GetDataMonth() == 6)
 				{
 					GiveItem2Character(pchar, "talisman8");
-					Log_Info("You've received the Scorpion Amulet");
+					Log_Info("Вы получили оберег 'Скорпион'");
 				}
 				else
 				{
 					GiveItem2Character(pchar, "potion1");
-					Log_Info("You've received remedial essence")
+					Log_Info("Вы получили лечебную эссенцию")
 				}
 			}
 		break;
 		
 		case "norman_fes4_fight":
-			dialog.text = "Don't be afraid, buddy. See, dying isn't scary at all...";
-			link.l1 = "Looks like you aren't kidding!";
+			dialog.text = "Ее не надо бояться, дружок. Смотри, умирать совсем не страшно...";
+			link.l1 = "А ты, похоже, не шутишь!";
 			link.l1.go = "fight";
 			NextDiag.TempNode = "norman_fight_again";
 		break;
 		
 		case "norman_fes4_peace":
-			dialog.text = "Apparently you're not scared. I knew it. That's bravery!";
-			link.l1 = "You are a funny old man...";
+			dialog.text = "Стало быть, не боишься. Я так и знал. Вот тебе за храбрость!";
+			link.l1 = "Забавный ты старик, однако...";
 			link.l1.go = "norman_fes4_exit";
 		break;
 		
@@ -262,33 +262,33 @@ void ProcessDialogEvent()
 			if (GetDataDay() == 17)
 			{
 				GiveItem2Character(pchar, "cirass6");
-				Log_Info("You've received a fire-eater waistcoat");
+				Log_Info("Вы получили жилет бретера");
 			}
 			else
 			{
 				if (GetDataDay() == 1 && GetDataMonth() == 1)
 				{
 					GiveItem2Character(pchar, "cirass3");
-					Log_Info("You've received a parade cuirass");
+					Log_Info("Вы получили парадную кирасу");
 				}
 				else
 				{
 					GiveItem2Character(pchar, "Mineral18");
-					Log_Info("You've received some tobacco");
+					Log_Info("Вы получили табак");
 				}
 			}
 		break;
 		
 		case "norman_fes5_fight":
-			dialog.text = "You're a crappy poet, sailor. Could it be that your blade is more agile than your tongue?";
-			link.l1 = "Caramba! That cavalry sword of yours isn't a sham at all!";
+			dialog.text = "Хреновый ты поэт, матрос, быть может, твой клинок проворней языка?";
+			link.l1 = "Карамба! А сабля-то у тебя отнюдь не бутафорская!";
 			link.l1.go = "fight";
 			NextDiag.TempNode = "norman_fight_again";
 		break;
 		
 		case "norman_fes5_peace":
-			dialog.text = "Dang! Things have gone pretty smoothly for you! How's that for your imagination!";
-			link.l1 = "Come again.";
+			dialog.text = "Ух ты! Как у тебя складно получилось! Это тебе за фантазию!";
+			link.l1 = "Если что, обращайся.";
 			link.l1.go = "norman_fes5_exit";
 		break;
 		
@@ -300,80 +300,80 @@ void ProcessDialogEvent()
 			if (GetDataDay() == 16)
 			{
 				GiveItem2Character(pchar, "potionrum");
-				Log_Info("You've received a bottle of rum");
+				Log_Info("Вы получили бутылку рома");
 			}
 			else
 			{
 				if (GetDataDay() == 28 && GetDataMonth() == 11)
 				{
 					GiveItem2Character(pchar, "totem_01");
-					Log_Info("You've received a throat of cast iron");
+					Log_Info("Вы получили тотем 'Луженая глотка'");
 				}
 				else
 				{
 					GiveItem2Character(pchar, "Mineral17");
-					Log_Info("You've received a glass flask");
+					Log_Info("Вы получили стеклянный флакон");
 				}
 			}
 		break;
 		
 		case "norman_fight_again":
-			dialog.text = "Aha, I recognize you! Ha ha!";
-			link.l1 = "Again...";
+			dialog.text = "А-а, я тебя узнал! Ха-ха!";
+			link.l1 = "Опять...";
 			link.l1.go = "fight";
 		break;
 		
 		case "norman_fes_again":
-			dialog.text = "All right, pal, we've had our talk. Be on your way now.";
-			link.l1 = "As you say...";
+			dialog.text = "Все-все, приятель, поговорили-договорили, и ладно. Гуляй себе дальше.";
+			link.l1 = "Как скажешь...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "norman_fes_again";
 		break;
 		
 		case "tieyasal":
-			dialog.text = "Dichoso? What do you need him for, huh?";
-			link.l1 = "Well, I need him. I just need him. So have you seen him?";
+			dialog.text = "Дичозо? А зачем же тебе он понадобился, а?";
+			link.l1 = "Ну нужен он мне. Просто нужен человек. Так ты видел его?";
 			link.l1.go = "tieyasal_1";
-			link.l2 = "What do you mean what do I need him for? Miguel is my old buddy, a friend you could say. He's supposed to...";
+			link.l2 = "Как - зачем? Мигель - мой старинный приятель, можно сказать - друг. Он должен...";
 			link.l2.go = "tieyasal_2";
-			link.l3 = "I want him to haul along a new vessel for me just like he did once before for Shark Dodson.";
+			link.l3 = "Хочу, чтобы он подогнал мне новую посудину, как сделал когда-то для Акулы Додсона.";
 			link.l3.go = "tieyasal_3";
 			if (CheckAttribute(pchar, "questTemp.Ksochitam.SQCapBookRead")) // прочел журнал Санта-Квитерии
 			{
-				link.l4 = "Miguel Dichoso has killed a man. That's why I'm searching for him.";
+				link.l4 = "Мигель Дичозо убил одного человека. Поэтому я и разыскиваю его.";
 				link.l4.go = "tieyasal_4";
 			}
 			npchar.quest.Tieyasal = "true";
 		break;
 		
 		case "tieyasal_1":
-			dialog.text = "You just need him...You juuust need him! All you need is Miguel Dichoso! No, I haven't seen him. I haven't seen him for a long time. There's nothing I can help you with, sailor.";
-			link.l1 = "Hm... All right, bye.";
+			dialog.text = "Просто нужен... просто-просто нужен! Мигель Дичозо - и просто нужен! Нет, не видал я его. Давно не видал. Ничем не помогу тебе, матросик.";
+			link.l1 = "Гм... Ладно, пока.";
 			link.l1.go = "exit";
 		break;
 		
 		case "tieyasal_2":
-			dialog.text = "A friend, you say... He seems to have cultivated a whole heap of friends. He's about to have one less...";
-			link.l1 = "Hey, old man. What's with you?";
+			dialog.text = "Друг, значит, говоришь... Что-то тут друзей всяких немеряно развелось. Сейчас одним меньше станет...";
+			link.l1 = "Э, старый, ты чего?";
 			link.l1.go = "fight";
 			NextDiag.TempNode = "norman_fight_again";
 		break;
 		
 		case "tieyasal_3":
-			dialog.text = "Yes, Dichoso is a master of such trades either way you look at it. But I don't know where he is. He came and then he took off. So go on over to Alexus, sailor. He'll hammer together a wonderful tub.";
-			link.l1 = "Hm... Thanks for the tip, buddy.";
+			dialog.text = "Да, на такие дела Дичозо мастер, что ни говори. Но я не знаю, где он. Был - да сплыл. Так что ступай к Алексусу, матросик, он сколотит тебе отличную лоханку.";
+			link.l1 = "Хм... Спасибо за совет, приятель.";
 			link.l1.go = "exit";
 		break;
 		
 		case "tieyasal_4":
-			dialog.text = "And who was it that ganked Dichoso for you to be conducting a search for him, huh buddy? ";
+			dialog.text = "И кого же прикончил Дичозо, что ты занялся его поисками, а, дружище?";
 			link.l1 = "";
 			Link.l1.edit = 8;
 			link.l1.go = "tieyasal_5";
 		break;
 		
 		case "tieyasal_4_1":
-			dialog.text = "What do you mean? What Sharp exactly did he kill? There are a lot of Sharps, you know.";
+			dialog.text = "В смысле - какого именно Шарпа он убил? Шарпов, знаешь ли, много.";
 			link.l1 = "";
 			Link.l1.edit = 8;
 			link.l1.go = "tieyasal_5";
@@ -381,118 +381,118 @@ void ProcessDialogEvent()
 		
 		case "tieyasal_5":
 			sTemp = GetStrSmallRegister(dialogEditStrings[8]);
-			if (sTemp == "blaze sharp")
+			if (sTemp == "блейз шарп" || sTemp == "блейза шарпа")
 			{
-				dialog.text = "Sh-sh-sh...(looking around) So you also think that Blaze Sharp was killed by Dichoso?";
-				link.l1 = "Yes. I have not only suspicions, but a solid proof. Entries in his logbook...";
+				dialog.text = "Чш-ш-ш...(оглядывается) Так ты тоже считаешь, что Блейза Шарпа убил Дичозо?";
+				link.l1 = "Ну да. У меня есть на то не просто подозрения, а доказательства. Записи в судовом журнале...";
 				link.l1.go = "tieyasal_6";
 				break;
 			}
-			if (sTemp == "sharp")
+			if (sTemp == "шарп" || sTemp == "шарпа")
 			{
-				dialog.text = "Go on, little sailor...";
-				link.l1 = "What do you mean? Tell me more.";
+				dialog.text = "C этого места поподробнее, матросик...";
+				link.l1 = "В смысле - поподробнее?";
 				link.l1.go = "tieyasal_4_1";
 				break;
 			}
-			dialog.text = "Ah...Well. He killed him and that's all there is to it. You know how many killers we've got running around here? Every other man! No sailor. I haven't seen Dichoso in a long time. I can't help you with anything.";
-			link.l1 = "Pity...";
+			dialog.text = "А-а... Ну убил и убил. У нас тут знаешь сколько убивцев расхаживает? Да каждый первый встречный! Не, матросик, не видал я Дичозо уже давно. Ничем не помогу.";
+			link.l1 = "Жаль...";
 			link.l1.go = "exit";
 		break;
 		
 		case "tieyasal_6":
-			dialog.text = "Quiet down, buddy. What's your name, huh? It's somehow escaped my memory...";
-			link.l1 = "Captain "+GetFullName(pchar)+".";
+			dialog.text = "Говори тише, приятель. Как там тебя зовут, а? Запамятовал я что-то...";
+			link.l1 = "Капитан "+GetFullName(pchar)+".";
 			link.l1.go = "tieyasal_7";
 		break;
 		
 		case "tieyasal_7":
-			dialog.text = "Listen, "+pchar.name+". Dichoso killed poor Blaze. I saw it with my own eyes, yes-yes. But they don't believe me. See, they think I am crazy. One of their own, but crazy. And I used to be the best boarding officer in a crew of Nicolas Sharp himself! Good times! But eventually I have lost my claws, hoof and lens and got grounded\nWhat? Ah, right! Everyone thought that the Shark was to blame, but he was not. No-no-no. There was a shark's tooth, a talisman of Dodson but it was Dichoso who planted it there\nHe must had stolen it from Steven when they were sailing together for a frigate Fortune. I didn't sleep well that day and went outside to walk. I saw Dichoso had sneaked inside Sharp's residence, heard someone screamed and then groaned. Soon Dichoso had left the residence and his hands were in blood\nThey didn't believe me, no-no. Because there was no Dichoso at the island that day, and Shark was. And they had found his tooth. But I saw Dichoso, I am sure. Nobody just knew that he was there that day. The Lucky is a very cunning and fearsome man...";
-			link.l1 = "You're not the first one to call Dichoso 'the Lucky'. Why is that? Is it his nickname?";
+			dialog.text = "Вот что, капитан "+pchar.name+". Именно Дичозо убил беднягу Блейза. Я сам видел это, да-да. Но мне никто не поверил. Понимаешь, меня тут все считают чокнутым. Своим, но - чокнутым. А ведь когда-то я был лучшим абордажником в команде самого Николаса Шарпа! Эх, вот были времена! Но потом я потерял свои когти, копыто и линзу, и был списан на берег\nТак, о чем это я? Ах да! Все решили, что это сделал Акула, но это не так. Нет-нет. Там был акулий зуб, талисман Додсона, но это Дичозо его подбросил\nОн наверняка стащил его у Стивена, когда они вместе ходили в море добывать фрегат, 'Фортуну'. Мне не спалось той ночью, и я вышел погулять. И я видел, как Дичозо забрался через окно на второй этаж резиденции Шарпа, и как оттуда донесся хриплый крик и стон. И я видел, как Дичозо вылез назад, а с рукавов его камзола капала кровь\nМне не поверили, нет-нет. Потому что Дичозо не было на острове в тот день, а Акула - был. И зуб его нашли. А Дичозо был, точно был! Просто никто об этом не знал. Счастливчик очень хитрый и страшный человек...";
+			link.l1 = "Ты не первый, кто назвал Дичозо 'Счастливчиком'. Почему? Это кличка?";
 			link.l1.go = "tieyasal_8";
 		break;
 		
 		case "tieyasal_8":
-			dialog.text = "Don't you know Spanish, guy? 'Dichoso' in the papist language means 'lucky'. Lucky Miguel, Miguel the Lucky. That's what his name is.";
-			link.l1 = "Miguel the Lucky?... Hm. That reminds me of something. Hm. That phrase sounds so familiar...";
+			dialog.text = "Ты что, паренек, не знаешь испанского? 'Дичозо' с языка папистов - 'счастливый'. Счастливчик Мигель, Мигель Счастливчик, вот как это называется.";
+			link.l1 = "Мигель Счастливчик?.. Хм. Что-то это мне напоминает. Вот только не могу понять - что. Такое знакомое сочетание...";
 			link.l1.go = "tieyasal_9";
 		break;
 		
 		case "tieyasal_9":
-			dialog.text = "Well, be his last name Dichoso, I still don't think that he's Spanish. No, no. He isn't Spanish. Although he looks like a Spanish.";
-			link.l1 = "Then who is he? English, French?";
+			dialog.text = "Но хоть он и Дичозо, я не думаю, что он - испанец. Нет-нет, не испанец. Хотя и похож.";
+			link.l1 = "А кто же он? Англичанин, француз?";
 			link.l1.go = "tieyasal_10";
 		break;
 		
 		case "tieyasal_10":
-			dialog.text = "That's not what I'm talking about sailor... Oh, forgive me, captain. Yes, Dichoso babbles French quite fabulously, no worse than you do. And in English as well. However in his veins flows Indian blood. I have seen many such people in my life. It's not clear to see, but he's a halfzee. I guarantee you.";
-			link.l1 = "Does he speak Indian?";
+			dialog.text = "Я не об этом, матросик... Ой, прости - капитан. Да, по-хранцузски Дичозо шпарит знатно, не хуже тебя. И по-англицки тоже. Однако в его жилах течет индейская кровь. Я таких много повидал в своей жизни. Это явно не видно, но он полукровка. Я тебе точно говорю.";
+			link.l1 = "А по-индейски он не говорит?";
 			link.l1.go = "tieyasal_11";
 		break;
 		
 		case "tieyasal_11":
-			dialog.text = "Oh, hell knows. Maybe he does. Although, wait. He does! He used to constantly utter weird sentences in some bizarre language and he made a scary sage face and blew out his cheeks while he was pronouncing them. For example, he would say something like: kogito ergo sum! And then he would roll out his eyes and stare look for the reaction of the sailors. Or he would exclaim like this: aut cezar, aut nihil! He blurted out a lot of other things too. I don't remember everything he would say.";
-			link.l1 = "That's not Indian language. That's Latin. Latin... Latin?! Holy Fuck!!";
+			dialog.text = "А пес его разберет. Может, и говорит. Хотя - точно, говорит! Он постоянно вворачивал фразы на непонятном языке, и делал при этом страшно ученый вид и раздувал щеки. Вот, например, скажет что-то вроде: когито эрго сум! А потом выкатит глаза и смотрит за реакцией матросиков. Или вот так он часто восклицал: аут цезар, аут нихил! Он еще много чего лопотал, да я не помню всего.";
+			link.l1 = "Это не индейский язык. Это латынь. Латынь... Латынь?! Черт возьми!!";
 			link.l1.go = "tieyasal_12";
 		break;
 		
 		case "tieyasal_12":
-			dialog.text = "Why you so jumpy, guy? What are you shouting for? Did you get bit by a snake or something?  Where did it go?";
-			link.l1 = "How didn't I guess it in the beginning! Everything was staring me right in the face! Latin! Miguel... Miguel the Lucky!!";
+			dialog.text = "Ты чего запрыгал, парень? Чего орешь? Никак змея укусила? Где она?";
+			link.l1 = "Да как же я сразу-то не догадался! Все лежало на поверхности! Латынь! Мигель... Мишель Счастливчик!!";
 			link.l1.go = "tieyasal_13";
 		break;
 		
 		case "tieyasal_13":
-			dialog.text = "Hey, pal. Would you stop hollering already. People are staring at us. What's eating you sailor... sorry captain?";
-			link.l1 = "I know who Miguel Dichoso really is. He really isn't Spanish. He's French! Oh, I was so blind!";
+			dialog.text = "Прекрати, наконец, вопить - люди смотрят. Что с тобой, матросик... прости - капитан?";
+			link.l1 = "Я знаю, кто есть Мигель Дичозо на самом деле. Он действительно не испанец. Он француз! Да как же я был слеп!";
 			link.l1.go = "tieyasal_14";
 		break;
 		
 		case "tieyasal_14":
-			dialog.text = "Nah-uh, dummy. He's not French. He's a halfzee. His white daddy shaked boots with a little bitty Indian girl, one of those Arawaks or Miskito from the Caribbean or even an Itza, and that's how Holy Miguel Dichoso came on this Earth. You don't see this, but I do. It's written in his eyes...";
-			link.l1 = "Let's leave the question of his origin aside for a moment. Where is he, Abraham?! Was he here?!";
+			dialog.text = "Не-е, дружочек, он не хранцуз. Я тебе говорю - полукровка. Его белый папашка обрюхатил индианочку, из араваков или мискито, из карибов или даже ица, а от нее и появился на свет Божий Мигель Дичозо. Ты этого не видишь, а я вижу. У него в глазах написано...";
+			link.l1 = "Оставим вопрос о его происхождении. Где он, Абрахам?! Он был тут?!";
 			link.l1.go = "tieyasal_15";
 		break;
 		
 		case "tieyasal_15":
-			dialog.text = "Sh-sh... Yes, he was here. But he left. He's not on Isla Tesoro anymore.";
-			link.l1 = "What did he come here for? What kind of ship does he have?";
+			dialog.text = "Тс-с... Да, он был тут. Но он ушел. Его сейчас нет на Исла Тесоро.";
+			link.l1 = "Зачем он сюда приходил? Какой у него корабль?";
 			link.l1.go = "tieyasal_16";
 		break;
 		
 		case "tieyasal_16":
-			dialog.text = "His ship is a galleon. A big, war galleon. What he came here for... Well, he walked around and sniffed around asking questions. But I overheard his conversations, yes yes! He was looking for some Charles de Maure. Yes, that's it. Charles de Maure. Wait, that's you Charles de Maure! He was looking for you, buddy.";
-			link.l1 = "Do you know what for?";
+			dialog.text = "Корабль у него - галеон. Большой военный галеон. А зачем он был тут... ходил, вынюхивал что-то, расспрашивал. Но я подслушал его разговоры, да-да! Он искал какого-то Шарля де Мора. Да, вот так и говорил - Шарля де Мора. Стой, так это же ты - Шарль де Мор! Так он тебя искал, дружочек.";
+			link.l1 = "А ты не знаешь, зачем?";
 			link.l1.go = "tieyasal_17";
 		break;
 		
 		case "tieyasal_17":
-			dialog.text = "Well definitely not to kick back and sip rum with you. He was prompting to capture you. Yes, yes! Capture you! You're in deep shit, captain!";
-			link.l1 = "I don't doubt it...";
+			dialog.text = "Ну уж точно не для того, чтобы выпить с тобой рому. Он давал наущения схватить тебя. Да-да, схватить! Ты в опасности, капитан!";
+			link.l1 = "Не сомневаюсь...";
 			link.l1.go = "tieyasal_18";
 		break;
 		
 		case "tieyasal_18":
-			dialog.text = "And you? What are you searching for him for? Oh, I get it, I get it: to kill him! Kill him, kill the bastard! Avenge Blaze Sharp! Blaze was a terrific guy. I remember him even as a child just like Nicholas.";
-			link.l1 = "Where did Dichoso go?";
+			dialog.text = "А ты? Зачем ты его ищешь? О, понимаю, понимаю: чтобы убить его! Убей его, убей мерзавца! Отомсти за Блейза Шарпа! Блейз был отличным парнем. Я помню его еще ребенком - весь в Николаса.";
+			link.l1 = "Куда отправился Дичозо?";
 			link.l1.go = "tieyasal_19";
 		break;
 		
 		case "tieyasal_19":
-			dialog.text = "He was on his way to Blueweld. He said that Charles de Maure is to be sought under the wing of the Forest Devil. But he left his people here... Wait. I think you've already been noticed!";
-			link.l1 = "Who's noticed me?";
+			dialog.text = "Он собирался в Блювельд. Сказал, что Шарля де Мора следует искать под крылышком у Лесного Дьявола. Но он оставил здесь своих людей... стой, тебя ведь уже заметили!";
+			link.l1 = "Кто заметил?";
 			link.l1.go = "tieyasal_20";
 		break;
 		
 		case "tieyasal_20":
-			dialog.text = "Dichoso's men. He's ordered to put a watch on you here. Oh, I know, I know! Be alert, captain: the reefs of Isla Tesoro are surrounded by ships and they're sitting there for your head. The captain is sly as a fox. Don't let yourself be tricked.";
-			link.l1 = "I'll try...";
+			dialog.text = "Люди Дичозо. Он приказал караулить тебя здесь. О, я знаю, знаю! Будь внимателен, капитан: у рифов Исла Тесоро стоят корабли, и стоят они по твою душу. Капитан их очень хитер. Не дай себя обмануть.";
+			link.l1 = "Я постараюсь...";
 			link.l1.go = "tieyasal_21";
 		break;
 		
 		case "tieyasal_21":
-			dialog.text = "And one more thing: here, take my cavalry sword. Take it, take it. You'll need it. This is captain Barbarigo's sword itself. It's an excellent blade. The best on the archipelago. Don't be shy, take it. Blaze Sharp shall be avenged!";
-			link.l1 = "Thank you, Abraham.";
+			dialog.text = "И еще: вот, возьми мою саблю. Бери-бери, она тебе понадобится. Это сторта самого капитана Барбариго, да-да. Отличный клинок. Лучший на архипелаге. Не стесняйся, бери. Блейз Шарп должен быть отомщен!";
+			link.l1 = "Ну, спасибо, Абрахам.";
 			link.l1.go = "tieyasal_22";
 		break;
 		
@@ -505,10 +505,10 @@ void ProcessDialogEvent()
 			sld.Balance = 1.0;
 			GiveItem2Character(npchar, "blade_19"); 
 			EquipCharacterbyItem(npchar, "blade_19");
-			Log_Info("You've received Barbarigo's sword");
+			Log_Info("Вы получили сторту Барбариго");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Go now. Go, you are being watched. Make it looks like you're smart. Or stupid. It doesn't matter. Just be careful!";
-			link.l1 = "Thanks, buddy. You don't even know how much you've helped me. Good luck!";
+			dialog.text = "А теперь иди. Иди, ибо за тобой следят. Делай умный вид. Или глупый. Неважно. Но будь осторожен!";
+			link.l1 = "Спасибо, дружище. Ты даже не представляешь, как мне помог. Удачи!";
 			link.l1.go = "tieyasal_23";
 		break;
 		

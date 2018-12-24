@@ -943,7 +943,7 @@ void LaunchCustomSaveGame()
 	XI_WindowShow("CUSTOM_SAVE_WINDOW", true);    
 
 	GameInterface.CUSTOM_SAVE_NAME.str = saveName;
-	SetFormatedText("CUSTOM_SAVE_MSG", "Enter the name of the saved game :");
+	SetFormatedText("CUSTOM_SAVE_MSG", "¬ведите им€ сохран€емой игры :");
 }
 
 void ExitSaveCustomGame()

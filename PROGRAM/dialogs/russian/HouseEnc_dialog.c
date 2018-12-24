@@ -84,10 +84,10 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "HouseMan";
 			if (LAi_grp_playeralarm > 0)
 			{
-       			dialog.text = PCharRepPhrase(LinkRandPhrase("Alarm is raised in the town. Apparently, it's time for me to take up arms as well...", "Aren't the city guards running after you, by chance? ", "You will find no shelter here - but you may well find several inches of cold steel under your rib!"), 
-					LinkRandPhrase("What do you need,"+ GetSexPhrase("scoundrel","rascal") +"?! The city guards have already hit your scent, you won't get far, "+ GetSexPhrase("filthy pirate","stinker") +"!", "Filthy murderer! Guards!!!", "I don't fear you, "+ GetSexPhrase("creep","stinker") +"! Soon you will be hanged in our fort, you won't get far..."));
-				link.l1 = PCharRepPhrase(RandPhraseSimple("I see you're tired of living...", "So it seems, there is no peaceful live for citizens of " + XI_ConvertString("Colony" + npchar.city + "Gen") + "!"), 
-					RandPhraseSimple("Go to hell!", "Heh, those will be the last few seconds of your life..."));
+       			dialog.text = PCharRepPhrase(LinkRandPhrase("В городе поднята тревога. Похоже, и мне пора браться за оружие...", "Уж не за тобой ли носится вся городская стража?.. Ко мне, солдаты!!!", "У меня приюта ты не найдешь. Зато найдешь несколько дюймов холодной стали под ребро!"), 
+					LinkRandPhrase("Что тебе нужно, "+ GetSexPhrase("негодяй","негодяйка") +"?! Городская стража уже взяла твой след, далеко тебе не уйти, "+ GetSexPhrase("грязный пират","мерзавка") +"!", ""+ GetSexPhrase("Грязный","Грязная") +" убийца! Стража!!!", "Я не боюсь тебя, "+ GetSexPhrase("мерзавец","мерзавка") +"! Скоро тебя повесят в нашем форте, далеко тебе не уйти..."));
+				link.l1 = PCharRepPhrase(RandPhraseSimple("Похоже, тебе жить надоело...", "Хех, и не живется же спокойно мирным гражданам " + XI_ConvertString("Colony" + npchar.city + "Gen") + "!"), 
+					RandPhraseSimple("Отправляйся в ад!", "Хех, жить тебе осталось несколько секунд..."));
 				link.l1.go = PCharRepPhrase("exit_setOwner", "fight");
 				break;
 			}
@@ -95,14 +95,14 @@ void ProcessDialogEvent()
 			{
 				if (CheckAttribute(pchar, "questTemp.HouseEncTimer"))
 				{
-					dialog.text = "I have warned you. And then you can decide for yourself, if you want to run into trouble.";
-					link.l1 = "Heh!";
+					dialog.text = "Я тебя предупредил. А дальше "+ GetSexPhrase("сам","сама") +" смотри, нарываться или нет...";
+					link.l1 = "Хех!";
 					link.l1.go = "exit";
 				}
 				else
 				{
-					dialog.text = "What do you need in my house, scoundrel?!";
-					link.l1 = LinkRandPhrase("Heh, looks like they know me here, too!", "My fame has just preceded me...", "Hmm, I see.");
+					dialog.text = "Что тебе надо в моем доме, негодяй"+ GetSexPhrase("","ка") +"?! Даю тебе десять секунд, чтобы ты убрался отсюда!";
+					link.l1 = LinkRandPhrase("Хех, и здесь меня знают!", "Слава моя идет впереди меня...", "Хм, понятно.");
 					link.l1.go = "exit_GoOut";
 				}
 			}
@@ -110,39 +110,39 @@ void ProcessDialogEvent()
 			{
 				if (IsDay())
 				{
-					dialog.text = NPCStringReactionRepeat("I am glad to welcome you to my home. Do you have business with me?", 
-						"What can I do for you?", 
-						"Hmm... What can I do for you?",
-						"I am sorry, but if you have no business with me, please do not disturb me...", "block", 1, npchar, Dialog.CurrentNode);
-					link.l1 = HeroStringReactionRepeat("No, just looking around, meeting new people...", 
-						"No, nothing in particular...",
-						"Nothing...", 
-						"Fine, as you say.", npchar, Dialog.CurrentNode);
+					dialog.text = NPCStringReactionRepeat("Рад приветствовать вас в моем доме. Вы по делу ко мне?", 
+						"Чем я могу вам помочь?", 
+						"Хм, что я могу сделать для вас?",
+						"Простите, если я вам не нужен, я попрошу вас меня не беспокоить...", "block", 1, npchar, Dialog.CurrentNode);
+					link.l1 = HeroStringReactionRepeat("Нет, просто осматриваю город, знакомлюсь с жителями...", 
+						"Да так, ничем особенным...",
+						"Ничего...", 
+						"Хорошо, как скажешь.", npchar, Dialog.CurrentNode);
 					link.l1.go = DialogGoNodeRepeat("HouseMan_1", "exit_setOwner", "exit_setOwner", "exit_setOwner", npchar, Dialog.CurrentNode);
 				}
 				else
 				{
-					dialog.text = NPCStringReactionRepeat("I am sorry, but the night is not the best time for visiting, and therefore I would request that you leave my house at once!", 
-						"I have already told you - it's late. Please leave.", 
-						"I don't want to appear rude, but I insist that you leave my house at once!",
-						"Goddammit, what's going on?! Guards! Thieves!", "block", 1, npchar, Dialog.CurrentNode);
-					link.l1 = HeroStringReactionRepeat("Alright, I see...", 
-						"Yeah, just a moment...",
-						"Alright, just don't get so excited.", 
-						"What thieves?! Shut up!", npchar, Dialog.CurrentNode);
+					dialog.text = NPCStringReactionRepeat("Простите, вы не вовремя появились у меня дома - ночь на дворе. Я прошу вас покинуть мой дом!", 
+						"Я уже говорил, что время позднее. Прошу вас уйти.", 
+						"Не хочу показаться грубым, но я настаиваю, чтобы вы немедленно покинули мой дом!",
+						"Черт возьми, что это такое?! Стража, воры!!!", "block", 1, npchar, Dialog.CurrentNode);
+					link.l1 = HeroStringReactionRepeat("Хорошо, я понимаю...", 
+						"Да, сейчас...",
+						"Ладно, не кипятись.", 
+						"Заткнись, какие воры?!", npchar, Dialog.CurrentNode);
 					link.l1.go = DialogGoNodeRepeat("exit_close", "exit_setOwner", "exit_setOwner", "fight", npchar, Dialog.CurrentNode);
 				}
 			}
 		break;
 
 		case "HouseMan_1":
-			dialog.text = "Oh, allow me to introduce myself - " + GetFullName(npchar) + ". We're very happy to have you. In this town, the laws of hospitability are honored.";
-			link.l1 = GetFullName(pchar) + ", if you please...";
+			dialog.text = "О-о, разрешите представиться - " + GetFullName(npchar) + ". Мы рады вас видеть, законы гостеприимства для нашего города - не пустой звук.";
+			link.l1 = GetFullName(pchar) + ", с вашего позволения...";
 			link.l1.go = "exit_setOwner";
 		break;
 		case "Man_FackYou":
-			dialog.text = LinkRandPhrase("You're "+ GetSexPhrase("a thief, I see! Guards, seize him","a thief, I see! Guards, seize her") +"!!!", "I can't believe it! I turned away for a second - and you're diving into my chest! Stop thief!!!", "Guards! Robbery! Stop thief!!!");
-			link.l1 = "Aaaah, devil!!!";
+			dialog.text = LinkRandPhrase("Да ты "+ GetSexPhrase("вор, милейший! Стража, держи его","воровка! Стража, держи ее") +"!!!", "Вот это да! Чуть я загляделся, а ты сразу в сундук с головой! Держи "+ GetSexPhrase("вора","воровку") +"!!!", "Стража! Грабят!!! Держи "+ GetSexPhrase("вора","воровку") +"!!!");
+			link.l1 = "А-ать, дьявол!!!";
 			link.l1.go = "fight";
 		break;
 		// --------------------------------- баба ---------------------------------
@@ -150,10 +150,10 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "HouseWoman";
 			if (LAi_grp_playeralarm > 0)
 			{
-       			dialog.text = PCharRepPhrase(LinkRandPhrase("I am warning you that my husband shall return soon! You'd better leave my house now!", "I don't think that you manage to escape! And be aware that my husband will be home soon!", "My husband will be home soon! You must leave at once!"), 
-					LinkRandPhrase("A pity that my husband is not home... Get lost! Now!!!", "Filthy murderer - get out of my house at once! Guards!", ""+ GetSexPhrase("What a scoundrel","What a filth") +"...Soon my husband will return - and he will see what color your blood is!"));
-				link.l1 = PCharRepPhrase(RandPhraseSimple("Oh, your husband... I am trembling...", "Heh... You know, pussy, I am not scared of your husband..."), 
-					RandPhraseSimple("Shut yup, darling, before I gut you...", "I will stay there for as long as I choose. And you better keep your mouth shut if you know what's good for you..."));
+       			dialog.text = PCharRepPhrase(LinkRandPhrase("Предупреждаю, что скоро домой явится мой муж! Шли бы вы из моего дома...", "Не думаю, что вам удаться сбежать. И знайте, что скоро домой должен прийти мой муж!", "Мой муж скоро будет дома, вам немедленно нужно уйти отсюда!"), 
+					LinkRandPhrase("Эх, жаль, мужа нет дома... Убирайся!!!", "Грязный убийца, вон из моего дома! Стража!!", ""+ GetSexPhrase("Каков мерзавец","Какова мерзавка") +"... Скоро придет мой муж и посмотрит, какого цвета у тебя кровь!"));
+				link.l1 = PCharRepPhrase(RandPhraseSimple("Муж, объелся груш...", "Хех, мужем меня не напугаешь, киска..."), 
+					RandPhraseSimple("Заткни свой ротик, а не то кишки выпущу...", "Я останусь здесь только, сколько захочу. А ты сиди тихо, не то хуже будет..."));
 				link.l1.go = "exit_setOwner";
 				break;
 			}
@@ -161,14 +161,14 @@ void ProcessDialogEvent()
 			{
 				if (CheckAttribute(pchar, "questTemp.HouseEncTimer"))
 				{
-					dialog.text = "I have warned you. Get lost or you will regret it!";
-					link.l1 = "What a stupid wench...";
+					dialog.text = "Я тебя предупредила. Убирайся, или будет хуже!";
+					link.l1 = "Одно слово - дура...";
 					link.l1.go = "exit";
 				}
 				else
 				{					
-					dialog.text = "What are you doing in my house, "+ GetSexPhrase("scoundrel","rascal") +"?! If you are not gone in then seconds, I am calling the guards!";
-					link.l1 = "What a stupid wench...";
+					dialog.text = "Что тебе надо в моем доме, "+ GetSexPhrase("негодяй","негодяйка") +"?! Если ты не уберешься через десять секунд, то я позову стражу!";
+					link.l1 = "Вот дура...";
 					link.l1.go = "exit_GoOut";
 				}
 			}
@@ -176,46 +176,46 @@ void ProcessDialogEvent()
 			{
 				if (IsDay())
 				{
-					dialog.text = NPCStringReactionRepeat("I am glad to see you in our house. My name is " + GetFullName(npchar) + ". What can I do for you?", 
-						"You still here?", 
-						"Hm, excuse me, but don't you think that it is time for you to leave?",
-						"I would kindly ask you not to trespass on our hospitality.", "block", 1, npchar, Dialog.CurrentNode);
-					link.l1 = HeroStringReactionRepeat( GetFullName(pchar) + " at your service. I came here for no particular reason, just to make acquaintance.", 
-						"Still here.",
-						"Well, that depends...", 
-						"Fine.", npchar, Dialog.CurrentNode);
+					dialog.text = NPCStringReactionRepeat("Я рада вас видеть в нашем доме. Меня зовут " + GetFullName(npchar) + ". Чем я могу вам помочь?", 
+						"Вы еще здесь?", 
+						"Хм, простите, но вам не кажется, что вы уже засиделись у нас?",
+						"Я прошу вас не злоупотреблять нашим гостеприимством.", "block", 1, npchar, Dialog.CurrentNode);
+					link.l1 = HeroStringReactionRepeat( GetFullName(pchar) + " к вашим услугам. К вам заш"+ GetSexPhrase("ел","ла") +" без конкретного дела, познакомиться.", 
+						"Еще здесь.",
+						"Ну, как сказать...", 
+						"Хорошо.", npchar, Dialog.CurrentNode);
 					link.l1.go = DialogGoNodeRepeat("HouseWoman_1", "exit_setOwner", "exit_setOwner", "exit_setOwner", npchar, Dialog.CurrentNode);
 				}
 				else
 				{
-					dialog.text = NPCStringReactionRepeat("Oh my, why are breaking into my house at such a time! You scared me... Please, come visit us tomorrow!", 
-						"Please, leave our house!"+ GetSexPhrase("","I am a married woman!") +"", 
-						"Please, leave our house!",
-						"But what is it done?!", "block", 1, npchar, Dialog.CurrentNode);
-					link.l1 = HeroStringReactionRepeat("Don't be afraid, I will not hurt you.", 
-						"Alright, just don't get so agitated.",
-						"I am leaving.", 
-						"What's up?", npchar, Dialog.CurrentNode);
+					dialog.text = NPCStringReactionRepeat("Ах, господи, что же это вы врываетесь в дом в такое время! Прямо испугали меня... Прошу вас уйти, приходите к нам завтра.", 
+						"Уйдите же, прошу вас! "+ GetSexPhrase("Я замужняя женщина!","") +"", 
+						"Я последний раз добром прошу вас покинуть наш дом!",
+						"Да что же это делается?!!", "block", 1, npchar, Dialog.CurrentNode);
+					link.l1 = HeroStringReactionRepeat("Не бойтесь, я ничего плохого вам не сделаю.", 
+						"Хорошо, не надо волноваться...",
+						"Ухожу.", 
+						"В чем дело?", npchar, Dialog.CurrentNode);
 					link.l1.go = DialogGoNodeRepeat("exit_close", "exit_setOwner", "exit_setOwner", "HouseWoman_2", npchar, Dialog.CurrentNode);
 				}
 			}
 		break;
 
 		case "HouseWoman_1":
-			dialog.text = "We are always happy to have guests. Just don't stay here for too long,"+ GetSexPhrase(", since I have a lot to do."," since I am a married woman...") +"";
-			link.l1 = "Oh, yeah, sure...";
+			dialog.text = "Хорошо, всегда рады гостям. Только прошу вас не засиживаться"+ GetSexPhrase(" у меня, так как я замужем...",", у меня очень много дел.") +"";
+			link.l1 = "О-о, да, конечно...";
 			link.l1.go = "exit_setOwner";
 		break;
 		case "Woman_FackYou":
-			dialog.text = "So that's how it is? I welcomed you as my guest, and you are rummaging through our chests?! Guards!";
-			link.l1 = "Shut up, old hag.";
+			dialog.text = "Ах, вот, значит, как?! Я вас пустила в дом как гост"+ GetSexPhrase("я","ью") +", а вы по сундуками шарить вздумали?! Стража-а-а!!!";
+			link.l1 = "Заткнись, дура...";
 			link.l1.go = "exit_setOwner";
 			LAi_group_Attack(NPChar, Pchar);
 			if (rand(3) != 1) SetNationRelation2MainCharacter(sti(npchar.nation), RELATION_ENEMY);
 		break;
 		case "HouseWoman_2":
-			dialog.text = "I asked you to leave our house in a friendly way, but you just would not listen! Enough! Help! Guards!";
-			link.l1 = "Shut up, you foolish woman! Are you crazy?!";
+			dialog.text = "Сколько я тебя просила по-хорошему убраться из дома! Ну, хватит... Помогите! Стража!!!";
+			link.l1 = "Заткнись дура, с ума сошла?!";
 			link.l1.go = "exit_setOwner";
 			LAi_group_Attack(NPChar, Pchar);
 			if (rand(3) != 1) SetNationRelation2MainCharacter(sti(npchar.nation), RELATION_ENEMY);
@@ -226,22 +226,22 @@ void ProcessDialogEvent()
 			if (LAi_grp_playeralarm > 0)
 			{
        			dialog.text = NPCharRepPhrase(pchar, 
-					LinkRandPhrase("Alarm is raised in the town. Apparently, it's time for me to take up arms as well...", "Aren't the city guards running after you, by chance? ", "You will find no shelter here - but you may well find several inches of cold steel under your rib!"), 
-					LinkRandPhrase("What do you need,"+ GetSexPhrase("scoundrel","rascal") +"?! The city guards have already hit your scent, you won't get far, "+ GetSexPhrase("filthy pirate","stinker") +"!", "Filthy murderer! Guards!!!", "I don't fear you, "+ GetSexPhrase("creep","stinker") +"! Soon you will be hanged in our fort, you won't get far..."));
+					LinkRandPhrase("В городе поднята тревога. Похоже, и мне пора браться за оружие...", "Уж не за тобой ли носится вся городская стража?.. Ко мне, солдаты!!!", "У меня приюта ты не найдешь. Зато найдешь несколько дюймов холодной стали под ребро!"), 
+					LinkRandPhrase("Что тебе нужно, "+ GetSexPhrase("негодяй","негодяйка") +"?! Городская стража уже взяла твой след, далеко тебе не уйти, "+ GetSexPhrase("грязный пират","мерзавка") +"!", ""+ GetSexPhrase("Грязный","Грязная") +" убийца! Стража!!!", "Я не боюсь тебя, "+ GetSexPhrase("мерзавец","мерзавка") +"! Скоро тебя повесят в нашем форте, далеко тебе не уйти..."));
 				link.l1 = NPCharRepPhrase(pchar,
-					RandPhraseSimple("I see you're tired of living...", "So it seems, there is no peaceful live for citizens of " + XI_ConvertString("Colony" + npchar.city + "Gen") + "!"), 
-					RandPhraseSimple("Go to hell!", "Heh, those will be the last few seconds of your life..."));
+					RandPhraseSimple("Похоже, тебе жить надоело...", "Хех, и не живется же спокойно мирным гражданам " + XI_ConvertString("Colony" + npchar.city + "Gen") + "!"), 
+					RandPhraseSimple("Отправляйся в ад!", "Хех, жить тебе осталось несколько секунд..."));
 				link.l1.go = NPCharRepPhrase("exit_setOwner", "fight");
 				break;
 			}
-				dialog.text = NPCStringReactionRepeat("Welcome! My name is " + GetFullName(npchar) + ". Here, I am in charge, so don't even think of taking anything with you...", 
-				"Behave and keep in mind that I am watching.", 
-				"As long as you don't peek into the chests, you may stay here. I am bored alone, anyway...",
-				RandPhraseSimple("Oh my, I am so bored!", "Goddammit, what to take up?.."), "block", 3, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Alright, don't worry.", 
-				"Sure!",
-				"I see...", 
-				"Yeah, that sounds like a problem.", npchar, Dialog.CurrentNode);
+				dialog.text = NPCStringReactionRepeat("Приветсвую вас! Меня зовут " + GetFullName(npchar) + ". Я здесь заведую всем, так что не вздумай прихватить что-то с собой...", 
+				"Веди себя прилично. И помни, что я смотрю за тобой.", 
+				"Пока ты не лезешь в сундуки - все в порядке, можешь находиться здесь. Одному мне скучно...",
+				RandPhraseSimple("Эх, тоска тут смертная!", "Эх, черт возьми, чем бы заняться?.."), "block", 3, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Хорошо, не переживай.", 
+				"Конечно!",
+				"Понимаю...", 
+				"Да, проблемы у тебя серьезные...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("exit", "exit", "exit", "exit", npchar, Dialog.CurrentNode);				
 		break;
 		
@@ -250,27 +250,27 @@ void ProcessDialogEvent()
 			if (LAi_grp_playeralarm > 0)
 			{
        			dialog.text = NPCharRepPhrase(pchar, 
-					LinkRandPhrase("Alarm is raised in the town. Apparently, it's time for me to take up arms as well...", "Aren't the city guards running after you, by chance? ", "You will find no shelter here - but you may well find several inches of cold steel under your rib!"), 
-					LinkRandPhrase("What do you need,"+ GetSexPhrase("scoundrel","rascal") +"?! The city guards have already hit your scent, you won't get far, "+ GetSexPhrase("filthy pirate","stinker") +"!", ""+ GetSexPhrase("Filthy","Filthy") +" murderer! Guards!!!", "I don't fear you, "+ GetSexPhrase("creep","stinker") +"! Soon you will be hanged in our fort, you won't get far..."));
+					LinkRandPhrase("В городе поднята тревога. Похоже, и мне пора браться за оружие...", "Уж не за тобой ли носится вся городская стража?.. Ко мне, солдаты!!!", "У меня приюта ты не найдешь. Зато найдешь несколько дюймов холодной стали под ребро!"), 
+					LinkRandPhrase("Что тебе нужно, "+ GetSexPhrase("негодяй","негодяйка") +"?! Городская стража уже взяла твой след, далеко тебе не уйти, "+ GetSexPhrase("грязный пират","мерзавка") +"!", ""+ GetSexPhrase("Грязный","Грязная") +" убийца! Стража!!!", "Я не боюсь тебя, "+ GetSexPhrase("мерзавец","мерзавка") +"! Скоро тебя повесят в нашем форте, далеко тебе не уйти..."));
 				link.l1 = NPCharRepPhrase(pchar,
-					RandPhraseSimple("I see you're tired of living...", "So it seems, there is no peaceful live for citizens of " + XI_ConvertString("Colony" + npchar.city + "Gen") + "!"), 
-					RandPhraseSimple("Go to hell!", "Heh, those will be the last few seconds of your life..."));
+					RandPhraseSimple("Похоже, тебе жить надоело...", "Хех, и не живется же спокойно мирным гражданам " + XI_ConvertString("Colony" + npchar.city + "Gen") + "!"), 
+					RandPhraseSimple("Отправляйся в ад!", "Хех, жить тебе осталось несколько секунд..."));
 				link.l1.go = NPCharRepPhrase("exit_setOwner", "fight");
 				break;
 			}
-			dialog.text = NPCStringReactionRepeat("Here, I am in charge, so don't even think of taking anything with you...", 
-				"Behave and keep in mind that I am watching.", 
-				"As long as you don't peek into the chests, you may stay here. I am bored alone, anyway...",
-				RandPhraseSimple("Oh my, I am so bored!", "Goddammit, what to take up?.."), "block", 3, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Alright, don't worry.", 
-				"Sure!",
-				"I see...", 
-				"Yeah, that sounds like a problem.", npchar, Dialog.CurrentNode);	
+			dialog.text = NPCStringReactionRepeat("Я здесь заведую всем, так что не вздумай прихватить что-то с собой...", 
+				"Веди себя прилично. И помни, что я смотрю за тобой.", 
+				"Пока ты не лезешь в сундуки - все в порядке, можешь находиться здесь. Одному мне скучно...",
+				RandPhraseSimple("Эх, тоска тут смертная!", "Эх, черт возьми, чем бы заняться?.."), "block", 3, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Хорошо, не переживай.", 
+				"Конечно!",
+				"Понимаю...", 
+				"Да, проблемы у тебя серьезные...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("exit", "exit", "exit", "exit", npchar, Dialog.CurrentNode);				
 			//открывание двери верфи по квесту промышленного шпионажа
 			if (CheckAttribute(pchar, "questTemp.different.ShipyardsMap") && pchar.questTemp.different.ShipyardsMap == "toTarget" && npchar.city == pchar.questTemp.different.ShipyardsMap.city && locations[reload_cur_location_index].type == "shipyard")
 			{
-				link.l2 = "Listen, buddy, I wanted to talk to you openly.";
+				link.l2 = "Послушай, приятель, хочу поговорить с тобой откровенно.";
 				link.l2.go = "ShipyardsMap_1";
 				pchar.questTemp.different.ShipyardsMap = "toResult";					
 			}
@@ -279,24 +279,24 @@ void ProcessDialogEvent()
 			{
 				if(!CheckAttribute(NPChar, "Storage.Speak"))
 				{
-					dialog.text = "I have a tempting offer for you. Perhaps you might be interested in it.";
-					link.l7 = "Really? Alright, I am listening.";
+					dialog.text = "У меня к вам есть одно заманчивое предложение. Возможно, оно вас заинтересует.";
+					link.l7 = "Вот как? Ну что ж, излагайте ваше заманчивое предложение.";
 					link.l7.go = "storage_rent";
 				}
 				else
 				{
 					if(CheckAttribute(NPChar,"Storage.Activate"))
 					{
-						link.l7 = "Take me to the storehouse. I want to see, what condition it is in.";
+						link.l7 = "Проводите меня в пакгауз. Я хочу взглянуть на состояние своего склада.";
 						link.l7.go = "storage_0";
-						link.l8 = "I have decided to vacate the warehouse. I don't need it anymore.";
+						link.l8 = "Я решил"+ GetSexPhrase("","а") +" освободить пакгауз. Он мне больше без надобности.";
 						link.l8.go = "storage_04";
 					}
 					else
 					{
 						if(!CheckAttribute(NPChar,"Storage.NoActivate"))
 						{
-							link.l7 = "You have mentioned a storehouse. Is it still vacant?";
+							link.l7 = "Помнится, вы как-то о складе упоминали. Место ещё не занято?";
 							link.l7.go = "storage_01";
 						}						
 					}
@@ -308,38 +308,38 @@ void ProcessDialogEvent()
 		//--------------------------------- Аренда склада ---------------------------------
 		case "storage_rent":
 			NPChar.Storage.Speak = true;
-			dialog.text = "We have an area suitable as a storehouse? Would you like to rent it for a reasonable price. Just think - you'd have your own storehouse...";
-			link.l1 = "A storehouse, you say? Yeah, tempting, indeed... Is it large enough? And how much will you charge for the rent?";
+			dialog.text = "У нас есть площади, пригодные под склад. Не хотите арендовать за умеренную плату? Обзаведётесь собственным складиком...";
+			link.l1 = "Складиком, говорите? Заманчиво... А большой он? и сколько попросите за аренду?";
 			link.l1.go = "storage_rent1";
 		break;
 		
 		case "storage_rent1":
 			NPChar.MoneyForStorage = GetStoragePriceExt(NPChar, pchar); 
-			dialog.text = "It's quite spacious even for a port storehouse - it can hold 50000 centners of cargo. For " + FindRussianMoneyString(sti(NPChar.MoneyForStorage)) + "  per month I can provide safekeeping of your goods. "+
-				"This includes guarding, protection from waterlogging and fighting the rats. What say you? Oh, and confidentiality, too - that goes without saying.";
-			link.l1 = "Will do. Can I take a look at it?";	
+			dialog.text = "Он достаточно просторный даже для припортового пакгауза - вместимость 50000 ц. За " + FindRussianMoneyString(sti(NPChar.MoneyForStorage)) + " в месяц я готов обеспечить сохранность ваших запасов. "+
+				"Это включает услуги по охране, защиту от подтопления и борьбу с грызунами. Ну как, годится?.. Ну, и конфиденциальность, понятное дело, гарантирую.";
+			link.l1 = "Годится. Могу я его осмотреть?";	
 			link.l1.go = "storage_rent2";
-			link.l2 = "That's too much. And I bet it's flooded and infested with rats.";
+			link.l2 = "Слишком дорого просите. Там, небось, воды по колено и крысы вовсю шуруют.";
 			link.l2.go = "storage_rent3";		
 		break;
 		
 		case "storage_rent2":
-			dialog.text = "Sure, sure. But... I'll need a month's payment in advance. ";
+			dialog.text = "Конечно-конечно. Только эм-м... оплату за месяц попрошу вперёд.";
 			if(sti(pchar.money) >= sti(NPChar.MoneyForStorage))
 			{
-				link.l1 = "You are... quite mercenary, I must say. Here's your money - I'll rent this shed.";
+				link.l1 = "Экий вы... меркантильный. Держите свои деньги - я арендую этот сарай.";
 				link.l1.go = "storage_11";
 			}
 			else
 			{	
-				link.l1 = "You are... quite mercenary, I must say. Alright, I'll fetch the money.";
+				link.l1 = "Экий вы... меркантильный. Сейчас деньги принесу.";
 				link.l1.go = "exit";
 			}	
 		break;
 		
 		case "storage_rent3":
-			dialog.text = "As you wish. If you change your mind - let me know. And keep in mind, that such a nice storehouse is unlikely to stay vacant for long...";
-			link.l1 = "No problem. I'll let you know if I need it.";
+			dialog.text = "Ну, как знаете. Если надумаете - обращайтесь. Только учтите, что такое сокровище долго пустовать не будет. Как бы не опоздали.";
+			link.l1 = "Не волнуйтесь. Если понадобится - спрошу.";
 			link.l1.go = "exit";
 		break;
 		
@@ -347,47 +347,47 @@ void ProcessDialogEvent()
 			NPChar.MoneyForStorage = GetNpcQuestPastMonthParam(NPChar, "Storage.Date") * sti(NPChar.Storage.MoneyForStorage); 
 			if(sti(NPChar.MoneyForStorage) > 0) 
 			{
-				dialog.text = "And for the rent, you still owe me  " + FindRussianMoneyString(sti(NPChar.MoneyForStorage)) + ".";
+				dialog.text = "С вас за аренду еще " + FindRussianMoneyString(sti(NPChar.MoneyForStorage)) + ".";
 				if(sti(pchar.money) >= sti(NPChar.MoneyForStorage))
 				{
-					link.l1 = "Alright, I'll pay for the rent now.";
+					link.l1 = "Хорошо, сейчас оплачу аренду.";
 					link.l1.go = "storage_3";
 				}
 				else
 				{
-					link.l1 = "I'll come back later.";
+					link.l1 = "Я зайду попозже.";
 					link.l1.go = "exit";
 				}
 			}		
 			else
 			{
-				dialog.text = "Go ahead.";
-				link.l1 = "Thanks.";
+				dialog.text = "Проходите.";
+				link.l1 = "Спасибо.";
 				link.l1.go = "storage_2";
 			}
-			link.l2 = "No, I've changed my mind.";
+			link.l2 = "Нет, я передумал"+ GetSexPhrase("","а") +".";
 			link.l2.go = "exit"; 						
 		break;
 		
 		case "storage_01":
-			dialog.text = "No, "+ GetSexPhrase("mister","ma'am") +", still vacant and waiting for you. I knew that you would not turn down my offer in the end.";
-			link.l1 = "Very good. I'll rent it.";
+			dialog.text = "Нет, "+ GetSexPhrase("уважаемый","мэм") +", стоит - вас дожидается. Я как знал, что вы не оставите этого предложения.";
+			link.l1 = "Это хорошо. Я его арендую.";
 			link.l1.go = "storage_1";
-			link.l2 = "No, it just came to mind...";
+			link.l2 = "Да нет, я просто так вспомнил"+ GetSexPhrase("","а") +". Может когда и понадобится...";
 			link.l2.go = "exit";
 		break;
 		
 		case "storage_1":
 			NPChar.MoneyForStorage = GetStoragePriceExt(NPChar, pchar); 
-			dialog.text = "As you should remember, I need a month's payment up front.";
+			dialog.text = "Как вы помните - оплата за месяц вперёд.";
 			if(sti(pchar.money) >= sti(NPChar.MoneyForStorage))
 			{
-				link.l1 = "Of course, I remember. Here you go.";
+				link.l1 = "Помню - держите.";
 				link.l1.go = "storage_11";
 			}
 			else
 			{
-				link.l1 = "Damn it. Alright, I'll fetch the money.";
+				link.l1 = "Вот чёрт. Сейчас деньги принесу.";
 				link.l1.go = "exit";
 			}
 		break;
@@ -396,6 +396,7 @@ void ProcessDialogEvent()
 			AddMoneyToCharacter(pchar, -makeint(NPChar.MoneyForStorage)); 
 			NPChar.Storage.MoneyForStorage = NPChar.MoneyForStorage;
 			NPChar.Storage.Activate = true;
+			Achievment_SetStat(pchar, 67, 1); // ugeen 2016
 			SaveCurrentNpcQuestDateParam(NPChar, "Storage.Date");
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
@@ -419,10 +420,10 @@ void ProcessDialogEvent()
 		break;		
 
 		case "storage_04":
-			dialog.text = "Leaving already? What a pity - that's really an excellent place on great terms. I assure you that you won't be getting a deal like this one nowhere in the Caribbean.";
-			link.l1 = "I said, I am vacating it. Or do you propose me to pay for storing an air? You may look for another holder.";
+			dialog.text = "Неужели освобождаете? Ай-яй-яй, такое великолепное место, такие выгодные условия. Уверяю - больше нигде на Карибах вам не предложат подобных услуг.";
+			link.l1 = "Я же сказал"+ GetSexPhrase("","а") +" - освобождаю. Или вы предлагаете мне платить за хранение воздуха? Можете искать другого арендатора.";
 			link.l1.go = "storage_4";
-			link.l2 = "Nowhere in the Caribbean, you say? Alright, I'll bag it for awhile, then. But the rent cost, I must say, is a bit too high.";
+			link.l2 = "Нигде не предложат, говорите? Ладно, оставлю пока за собой. Но цена аренды, долж"+ GetSexPhrase("ен","на") +" сказать... немаленькая, одним словом.";
 			link.l2.go = "exit";
 		break;
 		
@@ -430,17 +431,17 @@ void ProcessDialogEvent()
 			NPChar.MoneyForStorage = GetNpcQuestPastMonthParam(NPChar,"Storage.Date") * sti(NPChar.Storage.MoneyForStorage); 
 			if(sti(NPChar.MoneyForStorage) > 0) 			
 			{
-				dialog.text = "And for the rent, you still owe me " + FindRussianMoneyString(sti(NPChar.MoneyForStorage)) + ".";
+				dialog.text = "С вас за аренду еще " + FindRussianMoneyString(sti(NPChar.MoneyForStorage)) + ".";
 				if(sti(pchar.money) >= sti(NPChar.MoneyForStorage))			
 				{
-					link.l1 = "Fine.";
+					link.l1 = "Хорошо.";
 					link.l1.go = "storage_5";
 				}
 			}
 			else
 			{
-				dialog.text = "Collect your goods, and I will close the storehouse.";
-				link.l1 = "Fine.";
+				dialog.text = "Забирайте свой товар и я закрою склад.";
+				link.l1 = "Хорошо.";
 				link.l1.go = "storage_6";
 			}
 		break;
@@ -463,15 +464,15 @@ void ProcessDialogEvent()
 		//--------------------------------- Аренда склада ---------------------------------
 		
 		case "ShipyardsMap_1":
-			dialog.text = "Heh! Alright, let's talk.";
-			link.l1 = "I need to get to the shipyard at night, when there's no one around.";
+			dialog.text = "Хе! Ну, давай поговорим.";
+			link.l1 = "Мне нужно попасть на верфь ночью, когда никого нет.";
 			link.l1.go = "ShipyardsMap_2";
 		break;
 		case "ShipyardsMap_2":
 			if (sti(pchar.questTemp.different.ShipyardsMap.skladFight))
 			{
-				dialog.text = "Look at you! Hey, guards, we have a thief here!!!";
-				link.l1 = "What thief? I just wanted  to talk!";
+				dialog.text = "Вот это да! Эй, стража, тут вор подбирается!!!";
+				link.l1 = "Какой вор?! Я поговорить "+ GetSexPhrase("хотел","хотела") +"!..";
 				link.l1.go = "fight";
 				AddCharacterExpToSkill(pchar, "FencingL", 5);
 				AddCharacterExpToSkill(pchar, "FencingS", 5);
@@ -480,30 +481,30 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				dialog.text = "Wow! Look at you, "+ GetSexPhrase("buddy","lass") +". To come to the shipyard's storehouse with such a request!";
-				link.l1 = "I need to get to the shipyard itself. I could not care less about your storehouse.";
+				dialog.text = "Хо! Ну, ты даешь "+ GetSexPhrase("приятель. Пришел","подруга. Пришла") +" на склад верфи с такой просьбой!";
+				link.l1 = "Мне не на склад надо, а на верфь. Сюда я ни ногой...";
 				link.l1.go = "ShipyardsMap_3";
 				AddCharacterExpToSkill(pchar, "Fortune", 10);
 			}
 		break;
 		case "ShipyardsMap_3":
-			dialog.text = "But what do you need it for?";
-			link.l1 = "There is a need. And I am willing  to pay for it...";
+			dialog.text = "Зачем тебе это?";
+			link.l1 = "Надо приятель, надо. Я "+ GetSexPhrase("готов","готова") +" заплатить...";
 			link.l1.go = "ShipyardsMap_4";
 		break;
 		case "ShipyardsMap_4":
-			dialog.text = "Hmm, that's better... Alright! Slip me " + FindRussianMoneyString(sti(pchar.questTemp.different.ShipyardsMap.sklad)*1000) + ", and I'll be leaving the door to the shipyard open during the following day.";
-			link.l1 = "That's too expensive. I'll have to do without it, then...";
+			dialog.text = "Хм, уже интересней... В общем, так! Гони " + FindRussianMoneyString(sti(pchar.questTemp.different.ShipyardsMap.sklad)*1000) + ", и следующие сутки входную дверь верфи я буду оставлять открытой.";
+			link.l1 = "Это слишком дорого для меня. Обойдусь...";
 			link.l1.go = "exit";
 			if (sti(pchar.money) >= (sti(pchar.questTemp.different.ShipyardsMap.sklad)*1000))
 			{
-				link.l2 = "Alright, I agree. Take your money and do as we agreed.";
+				link.l2 = "Хорошо, я "+ GetSexPhrase("согласен","согласна") +". Забирай деньги и делай, как договорились.";
 				link.l2.go = "ShipyardsMap_5";
 			}
 		break;
 		case "ShipyardsMap_5":
-			dialog.text = "Don't bother, it will be done.";
-			link.l1 = "I hope so...";
+			dialog.text = "Не волнуйся, все сделаю.";
+			link.l1 = "Хорошо, верю...";
 			link.l1.go = "exit";
 			AddMoneyToCharacter(pchar, -sti(pchar.questTemp.different.ShipyardsMap.sklad)*1000);
 			AddQuestRecord("ShipyardsMap", "5");

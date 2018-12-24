@@ -6,8 +6,8 @@ void InitInterface(string iniName)
 	locCameraSleep(true);
 	SetTimeScale(0.0);
 	EngineLayersOffOn(true);
-	CreateString(true, "Frame_Caption", "Recreation", FONT_CAPTION, COLOR_NORMAL, 400, 205, SCRIPT_ALIGN_CENTER, 1.2);
-	CreateString(true, "MainString", "How many hours do you want to relax?", FONT_CAPTION, COLOR_NORMAL, 400, 235, SCRIPT_ALIGN_CENTER, 1.2);
+	CreateString(true, "Frame_Caption", "Отдых", FONT_CAPTION, COLOR_NORMAL, 400, 205, SCRIPT_ALIGN_CENTER, 1.2);
+	CreateString(true, "MainString", "Сколько часов вы желаете отдыхать ?", FONT_CAPTION, COLOR_NORMAL, 400, 235, SCRIPT_ALIGN_CENTER, 1.2);
 	SetEventHandler("ievnt_command", "ProcCommand", 0);
 	SetEventHandler("exitcancel", "ExitCancel", 0);
 	SetEventHandler("eSlideChange", "ProcSlideChange", 0);
@@ -109,31 +109,31 @@ string GetCorrectHourString(int _hour)
 	
 	switch(_hour)
 	{
-		case "0": 	sRetStr = "Less than one hour"; 				break;
-		case "1": 	sRetStr = "About 1 hour . . ."; 	break;
-		case "2": 	sRetStr = "About 2 hours . . ."; 	break;
-		case "3": 	sRetStr = "About 3 hours . . ."; 	break;
-		case "4": 	sRetStr = "About 4 hours . . ."; 	break;
-		case "5": 	sRetStr = "About 5 hours . . ."; 	break;
-		case "6": 	sRetStr = "About 6 hours . . ."; 	break;
-		case "7": 	sRetStr = "About 7 hours . . ."; 	break;
-		case "8": 	sRetStr = "About 8 hours . . ."; 	break;
-		case "9": 	sRetStr = "About 9 hours . . ."; 	break;
-		case "10": 	sRetStr = "About 10 hours . . ."; 	break;
-		case "11": 	sRetStr = "About 11 hours . . ."; 	break;
-		case "12": 	sRetStr = "About 12 hours . . ."; 	break;
-		case "13": 	sRetStr = "About 13 hours . . ."; 	break;
-		case "14": 	sRetStr = "About 14 hours . . ."; 	break;
-		case "15": 	sRetStr = "About 15 hours . . ."; 	break;
-		case "16": 	sRetStr = "About 16 hours . . ."; 	break;
-		case "17": 	sRetStr = "About 17 hours . . ."; 	break;
-		case "18": 	sRetStr = "About 18 hours . . ."; 	break;
-		case "19": 	sRetStr = "About 19 hours . . ."; 	break;
-		case "20": 	sRetStr = "About 20 hours . . ."; 	break;
-		case "21": 	sRetStr = "About 21 hours . . ."; 	break;
-		case "22": 	sRetStr = "About 22 hours . . ."; 	break;
-		case "23": 	sRetStr = "About 23 hours . . ."; 	break;
-		case "24": 	sRetStr = "About 1 day . . ."; 	break;
+		case "0": 	sRetStr = "Менее одного часа"; 				break;
+		case "1": 	sRetStr = "1 час или около того . . ."; 	break;
+		case "2": 	sRetStr = "2 часа или около того . . ."; 	break;
+		case "3": 	sRetStr = "3 часа или около того . . ."; 	break;
+		case "4": 	sRetStr = "4 часа или около того . . ."; 	break;
+		case "5": 	sRetStr = "5 часов или около того . . ."; 	break;
+		case "6": 	sRetStr = "6 часов или около того . . ."; 	break;
+		case "7": 	sRetStr = "7 часов или около того . . ."; 	break;
+		case "8": 	sRetStr = "8 часов или около того . . ."; 	break;
+		case "9": 	sRetStr = "9 часов или около того . . ."; 	break;
+		case "10": 	sRetStr = "10 часов или около того . . ."; 	break;
+		case "11": 	sRetStr = "11 часов или около того . . ."; 	break;
+		case "12": 	sRetStr = "12 часов или около того . . ."; 	break;
+		case "13": 	sRetStr = "13 часов или около того . . ."; 	break;
+		case "14": 	sRetStr = "14 часов или около того . . ."; 	break;
+		case "15": 	sRetStr = "15 часов или около того . . ."; 	break;
+		case "16": 	sRetStr = "16 часов или около того . . ."; 	break;
+		case "17": 	sRetStr = "17 часов или около того . . ."; 	break;
+		case "18": 	sRetStr = "18 часов или около того . . ."; 	break;
+		case "19": 	sRetStr = "19 часов или около того . . ."; 	break;
+		case "20": 	sRetStr = "20 часов или около того . . ."; 	break;
+		case "21": 	sRetStr = "21 час или около того . . ."; 	break;
+		case "22": 	sRetStr = "22 часа или около того . . ."; 	break;
+		case "23": 	sRetStr = "23 часа или около того . . ."; 	break;
+		case "24": 	sRetStr = "Сутки или около того . . ."; 	break;
 	}
 
 	return sRetStr;

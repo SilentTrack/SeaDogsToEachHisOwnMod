@@ -4,20 +4,20 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me that question not long ago...", "Yup, let me guess... Once again going around in circles?",
-                          "Listen, I do the finances here, I don't answer questions...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
-                      "You've guessed it, I'm sorry...", "I understand...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно?"), "Совсем недавно вы пытались задать мне вопрос...", "М-да, позвольте угадаю... Опять ничего существенного?",
+                          "Послушайте, я финансами оперирую, а не на вопросы отвечаю...", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Вы угадали, простите...", "Я понимаю...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			//Голландский гамбит, Голландия
 			if (CheckAttribute(pchar, "questTemp.HWIC.Holl") && pchar.questTemp.HWIC.Holl == "SantiagoTripBegin")
 			{
-				link.l1 = "Senior, I'm captain " + GetFullName(pchar) + ", and I'm here on an errand for Lucas Rodenburg. I have a package from him to you.";
+				link.l1 = "Сеньор, я капитан " + GetFullName(pchar) + ", и нахожусь здесь по поручению Лукаса Роденбурга. У меня для вас пакет от него.";
 				link.l1.go = "SantiagoTripBank";	
 			}
 			if (CheckAttribute(pchar, "questTemp.HWIC.Holl") && pchar.questTemp.HWIC.Holl == "SantiagoTripReturn")
 			{
-				link.l1 = "I've come for Senior Lucas Rodenburg's reply.";
+				link.l1 = "Я пришел за ответом сеньору Лукасу Роденбургу.";
 				link.l1.go = "SantiagoTripBank_3";	
 			}
 			//Голландский гамбит, Голландия
@@ -26,23 +26,23 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "SantiagoTripBank":
 			if (GetCharacterItem(pchar, "Chest") >= 5)
 			{
-			dialog.text = "You don't say… a package! Well, give it, senior.";
-			link.l1 = "Also, Senior Rodenburg asked to tell you this...";
+			dialog.text = "Подумать только... пакет! Ну, давайте его сюда, сeньор.";
+			link.l1 = "Также сеньор Роденбург  просил передать вам это...";
 			link.l1.go = "SantiagoTripBank_1";
 			RemoveItems(PChar, "NPC_Letter", 1);
 			RemoveItems(PChar, "Chest", 5);
 			}
 			else
 			{
-			dialog.text = "As far as I know, there was something else I was supposed to receive besides the package, captain. So...where is it? Do you understand what I'm talking about?";
-			link.l1 = "But of course! The chests are under secure watch on my ship. I'll have them delivered to you now.";
+			dialog.text = "Насколько мне известно, кроме пакета должно было быть еще кое-что, капитан. Так где же... это? Вы поняли, о чем я говорю?";
+			link.l1 = "Конечно! Сундуки под надежной охраной у меня на корабле. Сейчас я прикажу их доставить.";
 			link.l1.go = "exit";
 			}
 		break;
 		
 		case "SantiagoTripBank_1":
-			dialog.text = "Hm-m... interesting. So he 'sends his regrets'. Well-well. Though, senior Rodenburg's regrets are quite persuasive, I'll give him that. Senior, it will take time to write a proper answer, could you come see me tomorrow and take a reply? Rest in a tavern, walk around the city. Santiago has a lot to offer.";
-			link.l1 = "Fine, I shall come by tomorrow. See you, senior.";
+			dialog.text = "Хм-м... интересно. Значит он, видите ли, 'сожалеет'. Так-так. Впрочем, сожаления сeньора Роденбурга весьма убедительны, тут сложно спорить. Сеньор, мне потребуется время для написания ответа – вас не затруднит зайти ко мне завтра днем, и забрать письмо? Переночуйте в таверне, погуляйте по городу... у нас в Сантьяго есть на что посмотреть.";
+			link.l1 = "Хорошо, я зайду завтра днем. До встречи, сeньор.";
 			link.l1.go = "SantiagoTripBank_2";
 		break;
 		
@@ -58,14 +58,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "SantiagoTripBank_3":
-			dialog.text = "Yes, of course... but I believe we can do without written conventionalities. Just tell him these words – 'this man must die'. That would be fair and we won't have any problems as far as a loud written apology.";
-			link.l1 = "Fine, I shall remember that, senior. Anything else?";
+			dialog.text = "Да, конечно... но, я думаю, мы можем обойтись и без письменных условностей. Просто передайте ему на словах - 'этот человек должен умереть'. Это будет честно, и мы не будем иметь никаких претензий, в виду полученного извинения в звонкой форме. А инцидент будем считать исчерпанным в полной мере.";
+			link.l1 = "Хорошо, я запомню, сeньор. Что-нибудь еще?";
 			link.l1.go = "SantiagoTripBank_4";
 		break;
 		
 		case "SantiagoTripBank_4":
-			dialog.text = "Yes, of course. What I've said is the will of the Giraldi family. And you can, of course, pass my best wishes onto Senior Lucas. I wish you a fair wind, captain " + GetFullName(pchar) + ".";
-			link.l1 = "I understand. Farewell, senior "+npchar.name+".";
+			dialog.text = "Да, конечно. Сказанное мною - это воля семьи Джеральди. И, конечно, передайте мои наилучшие пожелания сеньору Лукасу. Попутного вам ветра, капитан " + GetFullName(pchar) + ".";
+			link.l1 = "Я понял. Прощайте, сеньор "+npchar.name+".";
 			link.l1.go = "SantiagoTripBank_5";
 		break;
 		

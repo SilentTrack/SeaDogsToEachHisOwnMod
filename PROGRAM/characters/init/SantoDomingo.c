@@ -10,8 +10,8 @@ int CreateSantoDomingoCharacters(int n)
 	ch.id		= "SantoDomingo_Mayor";
 	ch.model	= "huber_16";
 	ch.sex = "man";
-	ch.name 	= "Juan";
-    ch.lastname = "de Kuencka";
+	ch.name 	= "дон Хуан";
+    ch.lastname = "де Куэнка";
 	ch.City = "SantoDomingo";
 	ch.location	= "SantoDomingo_townhall";
 	ch.location.group = "sit";
@@ -171,7 +171,7 @@ int CreateSantoDomingoCharacters(int n)
 
 	makeref(ch,Characters[n]);			//Хозяйка борделя
 	ch.id		= "SantoDomingo_Hostess";
-	ch.name		= "Lolita"
+	ch.name		= "Лолита"
 	ch.lastname = "";
 	ch.model	= "maman_7";
 	ch.model.animation = "woman_B";
@@ -189,7 +189,7 @@ int CreateSantoDomingoCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "SantoDomingo_Smuggler";
 	ch.model    = "citiz_28";

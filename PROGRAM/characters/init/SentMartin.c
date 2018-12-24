@@ -10,8 +10,8 @@ int CreateSentMartinCharacters(int n)
 	makeref(ch,Characters[n]);			//Губернатор
 	ch.id		= "Marigo_Mayor";
 	ch.model	= "huber_27";
-	ch.name 	= "Martin";
-    ch.lastname = "Thomas";
+	ch.name 	= "Мартин";
+    ch.lastname = "Томас";
 	ch.sex = "man";
 	ch.City = "Marigo";
 	ch.location	= "Marigo_townhall";
@@ -171,7 +171,7 @@ int CreateSentMartinCharacters(int n)
 
 	makeref(ch,Characters[n]);			//Хозяйка борделя
 	ch.id		= "Marigo_Hostess";
-	ch.name		= "Johanna"
+	ch.name		= "Йоханна"
 	ch.lastname = "";
 	ch.model	= "maman_1";
 	ch.model.animation = "woman_B";
@@ -189,7 +189,7 @@ int CreateSentMartinCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "Marigo_Smuggler";
 	ch.model    = "citiz_29";

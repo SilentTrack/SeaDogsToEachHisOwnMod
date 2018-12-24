@@ -146,7 +146,7 @@ void CalculateNationRelat()
         }
     }     */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	if (CheckAttribute(pchar, "questTemp.Patria.War")) // Jason НСО
+	if (CheckAttribute(pchar, "questTemp.Patria.War")) // Jason, НСО
 	{
 		RelatNat = RELATION_ENEMY;
 		Nation1 = FRANCE;
@@ -178,15 +178,15 @@ void CalculateNationRelat()
     totalInfo = XI_ConvertString(GetNationNameByType(Nation1)) + " и " + XI_ConvertString(GetNationNameByType(Nation2));
     if(RelatNat == RELATION_FRIEND)
     {
-        totalInfo = totalInfo + " became allies.";
+        totalInfo = totalInfo + " стали союзниками.";
     }
     if(RelatNat == RELATION_ENEMY)
     {
-        totalInfo = totalInfo + " went into a state of war.";
+        totalInfo = totalInfo + " перешли в состояние войны.";
     }
     if(RelatNat == RELATION_NEUTRAL)
     {
-        totalInfo = totalInfo + " moved to a neutral attitude.";
+        totalInfo = totalInfo + " перешли к нейтральным отношениям.";
     }
     Log_SetStringToLog(totalInfo); // boal fix tavern
     SetNewGroupPicture("Nat1", "NATIONS",  GetNationNameByType(Nation1));

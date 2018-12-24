@@ -11,8 +11,8 @@ int CreateCartahenaCharacters(int n)
 	ch.id		= "Cartahena_Mayor";
 	ch.model	= "huber_22";
 	ch.sex = "man";
-	ch.name 	= "Dionisio";
-    ch.lastname = "Peres";
+	ch.name 	= "Дионисио";
+    ch.lastname = "Перес";
 	ch.City = "Cartahena";
 	ch.location	= "Cartahena_townhall";
 	ch.location.group = "sit";
@@ -170,7 +170,7 @@ int CreateCartahenaCharacters(int n)
 	n = n + 1;
 	
 	makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "Cartahena_Smuggler";
 	ch.model    = "citiz_28";
@@ -191,8 +191,8 @@ int CreateCartahenaCharacters(int n)
 	ch.model	= "keeper_1";
 	ch.model.animation = "man_B";
 	ch.sex = "man";
-	ch.name 	= "Alvares";
-    ch.lastname = "Ortega";
+	ch.name 	= "Альварес";
+    ch.lastname = "Ортега";
 	ch.City = "Cartahena";
 	ch.location = "Mayak11_Lighthouseroom";
 	ch.location.group = "barmen";

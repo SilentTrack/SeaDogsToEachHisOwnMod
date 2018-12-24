@@ -4,10 +4,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you, " + GetAddress_Form(NPChar) + "?"), "You tried to ask me some question not long ago, " + GetAddress_Form(NPChar) + "...", "Over this whole day, this is the third time you're talking about some question...",
-                          "More questions, I presume?", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
-                      "Yes, it really is the third time...", "No, what questions?...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно, " + GetAddress_Form(NPChar) + "?"), "Совсем недавно вы пытались задать мне вопрос, " + GetAddress_Form(NPChar) + "...", "В течение этого дня вы уже третий раз говорите о каком-то вопросе...",
+                          "Опять вопросы будем задавать?", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Да уж, действительно в третий раз...", "Да нет, какие вопросы...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			if (CheckAttribute(PChar, "questTemp.Guardoftruth.Archy") && pchar.questTemp.Guardoftruth.Archy == "islatesorotavern")
 			{
@@ -16,55 +16,55 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 			if(CheckAttribute(pchar, "questTemp.Tieyasal") && pchar.questTemp.Tieyasal == "begin" && !CheckAttribute(npchar, "quest.Tieyasal"))
 			{
-				link.l1 = "Listen, "+npchar.name+", you haven't happed to have heard about a man named Miguel Dichoso, have you?";
+				link.l1 = "Послушай, "+npchar.name+", ты не видел в последнее время на Исла Тесоро Мигеля Дичозо?";
 				link.l1.go = "tieyasal";
 			}
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "I have. That Spanish don sold Shark Dodson a remarkable ship, a frigate, when he still resided here. Eh, it was a vessel all right it was a sight to see...";
-			link.l1 = "Let me guess: a uniquely outlined frame and capable of reaching a speed of sixteen knots? And its name was 'Santa Quit?ria'?";
+			dialog.text = "Слыхал. Этот испанский дон продал Акуле Додсону, когда тот еще тут обитал, замечательный корабль, фрегат. Эх, такая посудина была - загляденье...";
+			link.l1 = "Дай угадаю: уникальный по обводам корпуса и способный развивать скорость до шестнадцати узлов? И назывался он 'Санта-Квитерия'?";
 			link.l1.go = "guardoftruth_1";
 		break;
 		
 		case "guardoftruth_1":
-			dialog.text = "As for the frame and the speed, you're absolutely correct, but it had a different name: 'San Martin'. Shark forked up a whole heap of gold to that passer-by.";
-			link.l1 = "Are you sure it was 'San Martin' and not 'Santa Quiteria'? And when was that deal formulated? And why did you call Dichoso a passer-by?";
+			dialog.text = "Насчет обводов и скорости ты совершенно прав, а вот назывался он по-другому: 'Сан-Мартин'. Акула целую кучу золота за него выложил этому проходимцу.";
+			link.l1 = "Ты уверен, что 'Сан-Мартин', а не 'Санта-Квитерия'? И когда была совершена сделка? И почему ты назвал Дичозо проходимцем?";
 			link.l1.go = "guardoftruth_2";
 		break;
 		
 		case "guardoftruth_2":
-			dialog.text = "Absolutely sure that it was 'San Martin', because I personally witnessed how Alexus's worker were tearing a plate with this papist name from the stern. Shark Dodson named it 'Fortune', much more suitable name for such beauty. He had bought it at winter of 1654, not long before Blaze was murdered\nWhy did call don Miguel a rogue? Because he had stolen this ship from Spanish navy of Providence military base. Dodson set a performance with fire and smoke for St. Juan's fort and it's garrison. Shark sacrificed with two ruined luggers in order to make the fight with the frigate look persuasively\nWhen the night had come, he secretly took 'San Martin' to Isla Tesoro. The ship for Shark and coins to Dichoso. Sly bastard later told his higher-ups that the frigate was sunk during the fight with pirate fleet, St. Juan's fort commandant confirmed it.";
-			link.l1 = "Oh, those Spanish dons puff up their pockets! What a dodger! Tell me, are you sure that happened in the winter of 1654? Could it have been during the spring? And didn't that frigate show signs of wear and tear from the storm?";
+			dialog.text = "Совершенно уверен, что 'Сан-Мартин', потому что я лично ходил на верфь Алексуса и видел, как его работники отдирают доску с этим папистским именем от кормы. Акула Додсон назвал этот фрегат 'Фортуна' - куда более подходящее имя такому красавцу\nКупил он его незадолго до того, как был убит Блейз Шарп, зимой 1654 года. А почему я назвал дона Мигеля проходимцем? Да потому что этот корабль он украл у испанского военного флота, с базы Провиденсия. Додсон разыграл целый спектакль с пальбой и дымом на глазах у форта Сан-Хуан, он сам мне по пьяни рассказывал\nАкула пожертвовал пару дырявых люггеров, которые сжег и затопил, инсценируя бой с фрегатом. А как спустилась темнота - отогнал 'Сан-Мартин' на Исла Тесоро. Акула получил корабль, а Дичозо - золото. В дальнейшем тот доложил своему начальству, что фрегат был потоплен в бою с пиратами, что подтвердил комендант форта Сан-Хуан.";
+			link.l1 = "Вот как испанские доны набивают себе карманы! Каков прохиндей! Скажи, а это точно случилось зимой 1654 года? Может, все-таки весной? И не имел ли этот фрегат следов потрепанности штормом?";
 			link.l1.go = "guardoftruth_3";
 		break;
 		
 		case "guardoftruth_3":
-			dialog.text = "I'm pretty sure it was winter... Oh, who knows. Maybe it was spring. I don't remember for sure. The frigate wasn't worn down at all it was brand spickin new.";
-			link.l1 = "And where is that beauty of a frigate now?";
+			dialog.text = "Вроде зимой... да черт его знает, может, и весной. Я точно не помню. А потрепанным фрегат не был - совсем новенький, с иголочки.";
+			link.l1 = "И где этот красавец-фрегат сейчас?";
 			link.l1.go = "guardoftruth_4";
 		break;
 		
 		case "guardoftruth_4":
-			dialog.text = "A dark story, it is… When Blaze was murdered, everyone suspected Shark because his trinket, a shark's tooth, was found on the corpse. Plus, some people saw Shark in Blaze's residence that night\nShark had escaped Isla Tesoro before they gave him a black mark. He paid a visit to Dark Pastor and exchanged his frigate for a brig. No clue where the man is now. Zachary has sold the frigate to William Patterson later.";
-			link.l1 = "Who is this Patterson?";
+			dialog.text = "Тут темная история... Когда убили Блейза, все подозрения пали на Акулу: на трупе нашли его талисман - акулий зуб, которым, собственно, и зарезали Шарпа, и еще по Исла-Тесоро слухи пошли, что Додсона видели в ту ночь у резиденции Блейза\nАкула, не дожидаясь черной метки, отбыл на Кубу к Черному Пастору, обменял у него свой фрегат на бриг и сгинул неведомо куда. До сих пор о нем ни слуху, ни духу. А фрегат тот Захария потом продал Вильяму Патерсону.";
+			link.l1 = "А кто такой этот Патерсон?";
 			link.l1.go = "guardoftruth_5";
 		break;
 		
 		case "guardoftruth_5":
-			dialog.text = "What, you've never heard of Willie Patterson? The Scot, just arrived to the Caribbean, big shot, captain of the royal fleet, Colonel Fox's favorite himself? By the way, he started twiddling some business with Jackman too. He's part of a powerful squadron and his flagship is 'Fortuna' itself.";
-			link.l1 = "I see. Do you know where Dichoso is right now?";
+			dialog.text = "Ты что, никогда не слышал про Вилли Патерсона? Шотландец, недавно прибыл на Карибы, большая шишка, капитан Королевского флота, любимец самого полковника Фокса. Кстати, он еще и с Джекманом делишки какие-то вертел. В общем, птица высокого полета. Ходит в составе мощной эскадры, и флагман у него - та самая 'Фортуна'.";
+			link.l1 = "Ясно. Ты не знаешь, где сейчас Дичозо?";
 			link.l1.go = "guardoftruth_6";
 		break;
 		
 		case "guardoftruth_6":
-			dialog.text = "I have no idea. After that jiggery pokery with Fortuna I haven't seen him on Isla Tesoro again and I haven't heard anything about him.";
-			link.l1 = "All right, "+npchar.name+", thanks for the in-depth information! You're an excellent saloon keeper! I wish there were more people like you... Bye!";
+			dialog.text = "Понятия не имею. После тех махинаций с 'Фортуной' я больше его на Исла Тесоро не видел и ничего о нем не слышал.";
+			link.l1 = "Ладно, "+npchar.name+", спасибо за подробную информацию! Ты замечательный тавернщик! Побольше бы таких ребят... Бывай!";
 			link.l1.go = "guardoftruth_7";
 		break;
 		
 		case "guardoftruth_7":
-			dialog.text = "Good luck, "+pchar.name+"!";
+			dialog.text = "Удачи, "+pchar.name+"!";
 			link.l1 = "...";
 			link.l1.go = "guardoftruth_8";
 		break;
@@ -79,20 +79,20 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "tieyasal":
-			dialog.text = "It looks as if both of you are chasing each other, buddy. Yes, Dichoso was here right where you're standing. And in the exact way he was interrogating about you that last time you were in Sharptown.";
-			link.l1 = "God damn it! How's that for some news... And where's Miguel right now?";
+			dialog.text = "Да вы, похоже, друг за дружкой гоняетесь, приятель. Да, Дичозо был тут, прямо, вот как ты сейчас стоишь. И точно так же справлялся о тебе - когда ты в последний раз был в Шарптауне.";
+			link.l1 = "Черт возьми! Вот это новость... И где Мигель сейчас?";
 			link.l1.go = "tieyasal_1";
 		break;
 		
 		case "tieyasal_1":
-			dialog.text = "I've got no idea. He's departed out to sea where...he said something about Blueweld. He probably went there just looking for you.";
-			link.l1 = "Do you happen to be the one that sent him to Blueweld?";
+			dialog.text = "Понятия не имею. Он ушел в море, а куда... он вроде что-то говорил о Блювельде. Вероятно, за тобой отправился, не иначе.";
+			link.l1 = "Это не ты его в Блювельд отправил?";
 			link.l1.go = "tieyasal_2";
 		break;
 		
 		case "tieyasal_2":
-			dialog.text = "No. All I told him was that I hadn't seen you in a long time.";
-			link.l1 = "I see. All right, then. Thanks, buddy!";
+			dialog.text = "Нет. Я всего лишь сообщил ему, что давно тебя не видел.";
+			link.l1 = "Ясно. Ну что же, спасибо, дружище!";
 			link.l1.go = "tieyasal_3";
 		break;
 		

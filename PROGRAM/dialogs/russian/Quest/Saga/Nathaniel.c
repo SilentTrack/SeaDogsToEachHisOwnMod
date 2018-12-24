@@ -13,132 +13,132 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "Want something?";
-			link.l1 = "No, it's nothing.";
+			dialog.text = "Вы что-то хотели?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "diffindoor":
 			PlaySound("VOICE\Russian\saga\Nataniel Hawk-02.wav");
-			dialog.text = "Ah... who are you, damn it?.. He... aha-ha-hah! Damn weakness...";
-			link.l1 = "Greetings, Nathaniel.";
+			dialog.text = "А... кто ты такой, черт подери?.. Кхе.. аха-ха-хах! Проклятая слабость...";
+			link.l1 = "Здравствуй, Натаниэль. Ведь это ты - Натаниэль Хоук?";
 			link.l1.go = "diffindoor_1";
 		break;
 		
 		case "diffindoor_1":
-			dialog.text = "Yes, it is me, so to speak. I once was Nathaniel Hawk but now I am just a piece of crap. Fuck that statue! It sucked the lifeblood out of me.";
-			link.l1 = "I am familiar with the feeling...";
+			dialog.text = "Да, это я, если можно так сказать. Я был когда-то Натаниэлем Хоуком, а теперь я просто мешок с навозом. Будь она неладна, эта чертова статуя! Она выпила из меня всю жизнь.";
+			link.l1 = "Знакомое чувство...";
 			link.l1.go = "diffindoor_2";
 		break;
 		
 		case "diffindoor_2":
-			dialog.text = "How could you, lad, if you don't even realize what I am talking about? A-kha… Do you even know how it feels to turn into a half dead old man from being healthy and strong within a minute?\nI've seen a lot of things, I thought that ancient Indian temple killed my ability to get surprised, but this... I had to see it coming! The blasted statue looked the same as the old idol which opened the door to the temple!";
-			link.l1 = "Fine, Nathan, let's have a talk. Let me introduce myself, I am "+GetFullName(pchar)+". First, I understand you very well because I came here the same way you did - using the Kukulcan portal.";
+			dialog.text = "Да как же оно может быть тебе знакомо, парень, если ты даже не понимаешь, о чем я говорю? А-а-гх... Каково это - быть абсолютно здоровым и полным сил, а спустя какую-то минуту превратиться в немощного старика, неспособного даже самостоятельно двигаться\nЯ много повидал на свете, и после того заброшенного индейского храма я думал, что меня уже ничто не удивит, но это... Я должен был догадаться! Этот коварный истукан точь-в-точь похож на тот проклятый идол, который открывал проход в храм!";
+			link.l1 = "Ладно, Натан, давай поговорим. Представлюсь - "+GetFullName(pchar)+". Начнем с того, что я прекрасно тебя понимаю, потому что я пришел сюда тем же путем, что и ты - через портал Кукулькана.";
 			link.l1.go = "diffindoor_3";
 		break;
 		
 		case "diffindoor_3":
-			dialog.text = "Really?! And why are you looking fine? Or has that... Kukulcan harmed only me?";
-			link.l1 = "Snake Eye, Miskito shaman, who has helped you to escape, has given a very strong potion to me. I have drunken it as soon as I was thrown to the San Augustine. It totally healed me. I am sure that Snake Eye can help you too. You just need to get to him.";
+			dialog.text = "Да ну?! А чего же тогда ты выглядишь свеженьким, как огурчик? Или этот... Кукулькан высосал соки только из меня?";
+			link.l1 = "Шаман мискито Змеиный Глаз, тот самый, который помог тебе бежать из плена, дал мне очень сильное зелье. Я выпил его после того, как меня выбросило на 'Сан-Августине', и полностью излечился. Уверен, Змеиный Глаз сможет помочь и тебе. Надо только до него добраться.";
 			link.l1.go = "diffindoor_4";
 		break;
 		
 		case "diffindoor_4":
-			dialog.text = "Ah, that Indian! A potion? And why didn't he give it to me too?";
-			link.l1 = "He said that there was no time. You had been chased and the only thing he could do is to show you the way to escape - the portal.";
+			dialog.text = "А, этот индеец! Зелье? Но почему же он мне его не дал?";
+			link.l1 = "Как он объяснил - не было времени. За тобой гнались, и он только смог указать тебе на путь спасения - портал Кукулькана.";
 			link.l1.go = "diffindoor_5";
 		break;
 		
 		case "diffindoor_5":
 			PlaySound("VOICE\Russian\saga\Nataniel Hawk-01.wav");
-			dialog.text = "Escape? Oh... Don't you see my current condition? I can't even hold a saber. How can you call it an escape? Thank God, there are still good people in this world. Ole, God bless him... Do you know Ole?";
-			link.l1 = "Yes. Actually he has told me about you, he told me how he fed you with rats and how you keep being drunk, bottle after bottle...";
+			dialog.text = "Спасения? Ох... Ты разве не видишь, в каком я состоянии? Я даже саблю поднять не могу. Разве можно назвать это спасением? Слава Богу, что есть еще на свете добрые души. Оле, благослови его Господь... Ты знаешь Оле? ";
+			link.l1 = "Да. Он мне и рассказал о тебе: и как тебя нашел, и что кормит тебя жареными крысами, и что ты глушишь ром бутылку за бутылкой...";
 			link.l1.go = "diffindoor_6";
 		break;
 		
 		case "diffindoor_6":
-			dialog.text = "I will die faster than the candle if I won't drink rum. It is the only thing which is keeping me alive. Rum...";
-			link.l1 = "Are you still feeling that bad? Same as after teleportation?";
+			dialog.text = "Если я не буду пить ром, я отправлюсь на тот свет быстрее, чем успеет сгореть свеча. Только он еще как-то поддерживает мои силы. Ром...";
+			link.l1 = "Тебе все так же плохо? Как и после телепортации?";
 			link.l1.go = "diffindoor_7";
 		break;
 		
 		case "diffindoor_7":
-			dialog.text = "Well, not just like that... But not really better. Yes, pal, explain now why did you need to see old Nathan? Why the hell did you come here, on this old, rotten tub? To chat with me?";
-			link.l1 = "Actually, yes. You won't believe me, but the reason why I have gone all that way through teleportation was to find you. I work for the Brethren of the Coast and I represent Jan Svensson.";
+			dialog.text = "Ну, не совсем, чтобы так... Но немногим лучше. Да, парень, объясни наконец, зачем старый Натан тебе сдался? Какого черта ты явился сюда, на это полусгнившее корыто? Чтобы поболтать со мной?";
+			link.l1 = "Ну, в общем-то да. Ты наверное не поверишь, но я проделал этот путь через портал лишь с одной целью: найти тебя. Я действую в интересах Берегового братства и представляю Яна Свенсона.";
 			link.l1.go = "diffindoor_8";
 		break;
 		
 		case "diffindoor_8":
-			dialog.text = "Damn it... Wood Devil? Argh... Did you come to finish me? Or didn't you? You are too talkative for an assassin. Please - no tortures. If you were ordered to get something from me - I will tell everything myself, I have got nothing to hide.";
-			link.l1 = "What do you mean? A-ah, I see. You, just like Danielle, decided that Svensson has arranged that ambush on you in a selva. I assure you that Jan didn't do it. On the contrary, he is on your side and he worries a lot about your disappearance.";
+			dialog.text = "Черт возьми... Лесной Дьявол? А-а-гх... Ты пришел, чтобы добить меня? Или нет? Для простого убийцы ты слишком разговорчив. Прошу - не надо никаких пыток. Если тебе приказано что-то из меня вытянуть - я сам все расскажу, мне скрывать нечего.";
+			link.l1 = "Ты это сейчас о чем? А-а, понятно. Ты, как и Даниэль, решил, что это Свенсон организовал на тебя засаду в сельве? Уверяю, Ян ни при чем. Напротив, он на твоей стороне, и сильно переживает по поводу твоего ичезновения.";
 			link.l1.go = "diffindoor_9";
 		break;
 		
 		case "diffindoor_9":
-			dialog.text = "Really? I am damn glad to hear that. And I have already been thinking... but who did it? My detachment was destroyed in minutes. They were waiting for us. They even had ship cannons! They have mowed down half of my men with grape shot and then they were just finishing us with their muskets...";
-			link.l1 = "To be honest, I don't know details, but I am sure that Jackman is behind all of this. Too many coincidences, first Blaze, then you... Jackman wants to seize power and he eliminates everyone who stands in his way. He rules Maroon Town now instead of you.";
+			dialog.text = "Вот как? Чертовски рад это слышать. Я уже думал... но кто тогда стоял за всем этим? Мой отряд был разгромлен в считаные минуты. Нас ждали. У них были даже корабельные пушки! Они в один залп выкосили картечью половину моих людей, а потом только добивали из мушкетов...";
+			link.l1 = "Честно говоря, подробностей дела я не знаю, но уверен, что за всем стоит Джекман. Слишком много совпадений: сначала Блейз, потом ты... Джекман рвется к власти и устраняет всех, кто стоит у него на пути. Сейчас он возглавляет Марун-Таун, вместо тебя.";
 			link.l1.go = "diffindoor_10";
 		break;
 		
 		case "diffindoor_10":
-			dialog.text = "Jackman? Bastard! Eh...the Brethren has become separated for the last years, it all was different before. Zachariah has gone crazy on his religion matters, Tyrex doesn't give a damn about anything and Barbazon is only interested in doubloons. It was all different twenty years ago...";
-			link.l1 = "How did they capture you? Tell me more.";
+			dialog.text = "Джекман? Вот ублюдок! Эх.. В последние годы Братство стало разрозненным, не то, что в былые времена. Захария совсем свихнулся на почве религии, Тираксу на все наплевать, а Барбазона интересуют только дублоны в его сундуках. Двадцать лет назад все было совсем иначе...";
+			link.l1 = "Тебя взяли в плен? Расскажи подробнее.";
 			link.l1.go = "diffindoor_11";
 		break;
 		
 		case "diffindoor_11":
-			dialog.text = "There is nothing special to tell! As I said, those bandits planned the whole thing. They were acting neatly, they were coordinated and clearly they were following someone's orders. They could have me killed a hundred times, but they haven't. They wanted me alive. They took me to an abandoned mine and locked me inside one of the huts. 'Until the boss arrives' they said\nI thought that Svensson was the boss, but it seems that Jackman is in charge. I don't know what he wanted from me though, but I am sure, I wouldn't live long after having a chat with him.";
-			link.l1 = "I have no doubt in that. Svensson is sure that Jackman has killed Blaze Sharp... How were you able to escape?";
+			dialog.text = "А что там рассказывать! Как я уже сказал - бандиты к нашему приходу подготовились заранее. Они действовали четко и слаженно, и явно выполняли чей-то приказ. Меня могли сто раз прикончить, но они этого не сделали. Я нужен был им живым. Они отвели меня на заброшенный рудник и заперли в одной из хижин - как они сказали, 'до приезда босса'\nЯ думал, что 'босс' - это Свенсон, но с твоих слов выходит, что тут поработал Джекман. Что ему от меня было нужно - ума не приложу, но уверен, что долго после разговора с ним я бы не прожил.";
+			link.l1 = "Не сомневаюсь. Свенсон уверен, что именно Джекман виновен в убийстве Блейза Шарпа... Как тебе удалось бежать?";
 			link.l1.go = "diffindoor_12";
 		break;
 		
 		case "diffindoor_12":
-			dialog.text = "That Indian Snake Eye somehow managed to sneak inside the mines. As far as I understood the Miskito don't like bandits. Anyways, Snake Eye had arranged my escape for some reason. He made a sap, got inside, cut my ropes and we ran away to the jungles\nHe wanted to take me to his village, to the Miskito. But it looks like Jackman wants me badly, a big hunt was organized. They were close on our heels. Snake Eye did his best to fool them, but they always managed to find our trail. They had good pathfinders, no doubt\nWe were close to the village when they had finally found us. My belly was empty for two days and I was completely wasted, I had also damaged my leg badly. It was midnight and I still remember how bright was the star over the statue... Snake Eye said that my only chance is to make it to the idol and touch it\nI thought that the man is mad, but you know what they say about catching at a straw. I hobbled to the statue, touched it... and then crazy things started to happen!";
-			link.l1 = "You may not continue, I know what has been happening there.";
+			dialog.text = "Каким-то образом на рудник проник этот индеец, Змеиный Глаз. Как я понял, мискито сильно недолюбливают этих бандитов. В общем, благодаря этому, или еще какой-то своей причуде, Змеиный Глаз помог мне бежать: ночью устроил подкоп под хижину, пробрался внутрь, перерезал веревки, связывавшие меня, и мы вместе ушли в сельву\nОн решил отвести меня в свою деревню, к мискито. Но видать я сильно был нужен Джекману, так как была отряжена самая настоящая погоня. Бандиты шли за нами по пятам. Змеиный Глаз петлял, запутывал следы, но они все равно находили нас. Видимо, они хорошие следопыты\nИ когда мы уже были на подходе к деревне мискито, бандиты настигли нас. Я два дня ничего не ел и совершенно выбился из сил, а кроме того, сильно ушиб ногу и хромал. Была полночь, и я как сейчас помню эту яркую звезду, сияющую над истуканом посреди джунглей... Змеиный Глаз сказал, что мой единственный шанс спастись - добежать до статуи и прикоснуться к ней\nЯ счел это бредом, но тем не менее, утопающий хватается за соломинку, ведь так? Я доковылял до истукана и прислонился к нему. И тут... это было что-то невообразимое!";
+			link.l1 = "Можешь не объяснять - я знаю, что там творилось.";
 			link.l1.go = "diffindoor_13";
 		break;
 		
 		case "diffindoor_13":
-			dialog.text = "I had found myself inside a wet hold of some wrecked ship. I was half dead. Couldn't walk, only to crawl. Every minute my condition was getting worse. Ole shown up just in time. He poured in my some Caribbean crap tasted mixture, a mix of an antidote and a healing essence. Then he gave me rum\nIt got better. Then he used an old log to move me here. I've been living here for some time, don't know for sure how long, I've lost the time count.";
-			link.l1 = "It will be alright, Nathan. Me and Svensson have great plans and your role in them is very significant. You must return to your position in Maroon Town and we will deal with that scum Jackman.";
+			dialog.text = "Очнулся я в мокром трюме разрушенного корабля. Не было ни капли сил. Я мог передвигаться только ползком. С каждой минутой становилось все хуже. Оле появился вовремя - он влил в меня какую-то травяную дрянь, по вкусу - карибская микстура, смесь противоядия и лечебной эссенции, а затем дал рому\nСразу стало легче. А затем, воспользовавшись куском бревна, перетянул меня по воде сюда, на этот треснувший корабль. Вот я и живу теперь здесь, уже даже не знаю, сколько, так как потерял счет времени.";
+			link.l1 = "Все будет хорошо, Натан. У нас со Свенсоном большие планы, и ты играешь в них одну из ключевых ролей. Тебе следует вернуться на свое место в Марун-Таун, а о подлеце Джекмане мы позаботимся.";
 			link.l1.go = "diffindoor_14";
 		break;
 		
 		case "diffindoor_14":
-			dialog.text = "Maroon Town? And how exactly do you imagine this would work? Look at me, I am a rum soaked wreck! Worthless... No, the years of my authority at Maroon Town are gone forever. I am trapped on this bloody ship cemetery. How long will I last? A month, a two, a year?\nAnd then I will end up lying on these rotten planking and Ole will throw what is left of Nathaniel Hawk to the sea. The worst part is that I won't see my Dannie again. Eh, it's over, pal.";
-			link.l1 = "Don't be that pessimistic. I will get you out of here.";
+			dialog.text = "В Марун-Таун? И как ты себе это представляешь, парень? Посмотри на меня: пропитанная ромом развалина! Куда уж мне... Нет, годы моего правления Марун-Тауном ушли навсегда и безвозвратно. Я заперт на этом проклятом кладбище кораблей, и, видно, навеки. Сколько я еще протяну? Месяц, два, год?\nА потом так и останусь лежать на этих гнилых досках, а Оле спустит то, что останется от Натаниэля Хоука, в море. Но что меня больше всего угнетает, так это то, что я больше никогда не увижу свою Данни. Эх, все кончено, приятель.";
+			link.l1 = "Не будь таким пессимистом. Я вытащу тебя отсюда.";
 			link.l1.go = "diffindoor_15";
 		break;
 		
 		case "diffindoor_15":
-			dialog.text = "Will you get me out of here? And how are you going to leave this place? There are no ships. Do you want to build a raft?";
-			link.l1 = "No. I will leave this place the same way I came here. I know where is the statue... well, roughly. I will find it and then I will be back for you and Shark Dodson. We will get you to Snake Eye after that. He will heal you.";
+			dialog.text = "Вытащишь меня? А сам-то ты как собираешься отсюда выбираться? Кораблей здесь нет. Будешь строить плот?";
+			link.l1 = "Нет. Я уйду от сюда тем же путем, как и пришел: через портал Кукулькана. Я знаю, где находится статуя... ну, приблизительно. Я отыщу ее, а затем вернусь сюда на корабле за тобой и Акулой Додсоном. А потом отправимся к Змеиному Глазу - он быстро поставит тебя на ноги.";
 			link.l1.go = "diffindoor_16";
 		break;
 		
 		case "diffindoor_16":
-			dialog.text = "What did you say? Shark Dodson? Is Steve also here? Such a strange place...";
-			link.l1 = "Yes, he is here. He is a 'governor' of this island so to speak. I have asked him about you but he doesn't know a thing.";
+			dialog.text = "Как ты сказал? Акулой Додсоном? Стив тоже здесь? Вот странное место...";
+			link.l1 = "Да, он здесь. Он 'губернатор' этого острова погибших кораблей, если можно так сказать. Я спрашивал Стива о тебе, но он ничего не знает.";
 			link.l1.go = "diffindoor_17";
 		break;
 		
 		case "diffindoor_17":
-			dialog.text = "And he shouldn't. I don't want him to see me in that condition. You said that the shaman will heal me... I barely believe it. You have mentioned Dannie... Did you see her?";
-			link.l1 = "Yes. She has found me herself in Blueweld. She has eavesdropped on my conversation with Svensson and understood that Jan had no intention to kill you and he is working against Jackman. She went on my ship as an officer to help me to find you.";
+			dialog.text = "И не надо. Не хочу, чтобы он видел меня таким. Говоришь, шаман вылечит меня? Слабо в это верю... Кстати, ты говорил что-то про Данни... Ты видел ее?";
+			link.l1 = "Да. Она сама меня нашла в Блювельде. Она подслушала наш со Свенсоном разговор и поняла, что Ян не замышлял убить тебя и действует против Джекмана. Она пошла ко мне офицером на корабль, чтобы помочь мне разыскать тебя.";
 			link.l1.go = "diffindoor_18";
 		break;
 		
 		case "diffindoor_18":
-			dialog.text = "Eh, my dear Dannie! She hasn't changed a bit... As reckless as always… You can't even imagine how badly I want to see and hug her now! I thought a lot while procrastinating here. See, pal, you start to see things in a different light when you are close to death. I have spent so little time with my wife!\nRaiding, Brethren's of the Coast official businesses, ruling Maroon Town. And she always supported me in everything: stayed alone for weeks, had quarrels with other pirates while I was gone, commanded our ship... My Dannie is the best woman in the world! And I... I should had said that I love her more often!\nI remember the day we decided to be together! Actually, that was the day I first met and fought supernatural things. It all happened because of that blasted idol which looked like the statues. Do you mind to hear a story? It is quite interesting.";
-			link.l1 = "And why not? Tell me!";
+			dialog.text = "Эх, моя милая Данечка! Все такая же, ничуть не меняется: чуть что - сразу за саблю и на палубу... Ты даже не представляешь, как бы я хотел сейчас ее увидеть и обнять! Я обо многом думал, пока валялся здесь. Понимаешь, дружище, когда находишься при смерти, всё, что есть, и что было, предстает совсем в ином свете. Как же недостаточно времени я уделял своей жене!\nМорские походы, дела Берегового братства, управление Марун-Тауном. А она всегда поддерживала меня во всем: оставалась неделями одна, ругалась с пиратами в мое отсутствие, самостоятельно выходила в море, командуя нашим кораблем... Моя Данни - лучшая жена на свете! А я... я так редко говорил ей, что люблю ее!\nЯ часто вспоминаю тот день, когда мы признались друг другу в любви и решили быть вместе! Кстати, именно тогда я впервые столкнулся с необъяснимыми явлениями и потусторонней силой, и всему виной был проклятый идол, так похожий на эти статуи. Рассказать тебе? Очень занятная история.";
+			link.l1 = "Почему бы и нет? Рассказывай!";
 			link.l1.go = "story";
-			link.l2 = "Nathan, I don't have time for that. You will tell me about it later, when we will be sitting at Miskito village with a bottle of wine.";
+			link.l2 = "Натан, сейчас не время для воспоминаний. Расскажешь потом, за бутылочкой вина, когда мы будем сидеть под навесом в деревне мискито.";
 			link.l2.go = "diffindoor_19";
 		break;
 		
 		case "story":
-			dialog.text = "It was twenty five years ago... I was young, ardent and restless. The Caribbean was my playground. I already knew Dannie back then. I liked her, I really did and the feeling was mutual. But we often fought, quarreled and gibed at each other. Silly youth... I believe that we were a great entertainment for the respected sailors back then!\nSo. Somehow Dannie and I got involved in the same story. We had found a map of Khael Roa, they told us that it was the place to find Indian gold. We also had a strange golden idol, a smaller copy of the top part of the statues\nThe idol was dangerous, it sucked vitality from those who carried it. We needed that cursed item in order to get to the treasury inside the temple. But we had no idea how to use it properly. Dannie and I sailed to the island. There was an ancient temple, covered with grass and trees. Once we entered, we had found ourselves inside a huge labyrinth\nWe managed to find the right way and reached the central internal part of the labyrinth. We thought that it was a dead end, but when the desperation started to win a victory over us, we saw a strange platform with a small socket in it and a picture. I put the idol in it and...";
+			dialog.text = "Это было около двадцати пяти лет тому назад... Я тогда мотался по Карибам - знаешь, был молод и горяч, и не знал ни минуты покоя. С Данни я был уже знаком, и она мне нравилась, очень нравилась, да и я ей тоже, но мы все время ссорились и постоянно отпускали в адрес друг друга шпильки. Глупая молодежь... Ох и потешались же, наверное, над нами моряки в тавернах!\nТак вот. Волею судьбы мы с Данни ввязались в одну историю и стали действовать сообща. В результате к нам в руки попала карта неизвестного острова под названием Хаэль Роа, где якобы были спрятаны сокровища индейцев. Кроме того, мы заполучили странного золотого идола, полную копию верхней части телепортационной статуи, только гораздо меньших размеров\nИдол обладал разрушительными свойствами: вытягивал жизненную энергию. От длительного соприкосновения с ним развивались болезненное состояние и слабость - проклятая вещица... Идол был нужен, чтобы попасть к сокровищам, но каким образом он работает - мы не знали. Мы с Данни отправились на этот остров. В его глубине стоял заброшенный храм, весь заросший травой и деревьями. Мы вошли внутрь и оказались в запутанном лабиринте\nРазобравшись в хитросплетении проходов, мы вышли в центральную внутреннюю часть и попали в тупик - нигде не было прохода. Мы начали уже было отчаиваться, как заметили необычную каменную площадку с рисунком и квадратным углублением. Я поставил в углубление идол, и...";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			pchar.questTemp.LSC.Natanstory = "idol";
@@ -147,13 +147,13 @@ void ProcessDialogEvent()
 		break;
 		
 		case "story_1":
-			dialog.text = "The stone platform went a few inches down and one of the walls turned out to be a secret passage. The idol was left inside the platform, I failed to pull it back. Finally we  had reached a giant hall. Such a beautiful sight!\nThe most magnificent structure I've ever seen. Carvings on the walls, huge statues... We had searched the whole hall, but found no sign of treasures.";
-			link.l1 = "Heh, sure, that often happens to people like us. A lot of effort and no result in the end...";
+			dialog.text = "Каменная плита ушла на несколько дюймов вниз, а одна из стен поднялась и открыла проход дальше. Идол остался в плите, он намертво влип в нее - я так и не смог его вытащить. Мы пошли в глубь храма и после долгих плутаний попали в огромный зал. Вот это была красота!\nТакого величественного сооружения я еще не встречал: стены усеяны затейливыми письменами, кругом огромные статуи. Мы обыскали весь зал, но сокровищ не было и следа.";
+			link.l1 = "Хех, ну конечно, так часто и случается у людей нашей профессии: много усилий - ноль результата...";
 			link.l1.go = "story_2";
 		break;
 		
 		case "story_2":
-			dialog.text = "It wasn't for nothing. After all, we entered a throne hall with a giant statue of a bird in the end of it. There was a mystic light near the statue, it looked like the light above the idol at midnight. We came closer and saw a beautiful flying sphere. I swear, I am telling the pure truth!\nIt was real, but in the same time it wasn't. While I was thinking, Dannie - oh, that reckless devil! - touched the sphere. It started to glow even brighter and had finally turned into a small item in her hands...";
+			dialog.text = "Результат был. В конце-концов мы вышли в колонный зал, в конце которого стояла огромная статуя в виде птицы. Около ее подножия переливался таинственный свет, вроде того, что горел над истуканом в полночь. Мы подошли ближе. Над небольшим постаментом, прямо в воздухе, висел красивый призрачный шар. Клянусь, что не вру!\nОн был реален и в то же время... совсем нереален. Пока я размышлял, что да как, Данни... ох уж эта смелая чертовка! - прикоснулась к шару. Он тут же засиял ярче, начал уменьшаться в размерах, материализовался в сферический артефакт и остался у нее в руках. И тут...";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			pchar.questTemp.LSC.Natanstory = "temple";
@@ -162,25 +162,25 @@ void ProcessDialogEvent()
 		break;
 		
 		case "story_3":
-			dialog.text = "It seemed that we had committed a sacrilege. The temple went alive: all around us were moving, walls were shaking and started destroying. It was like we had awoken all Indian demons and they had stiked all of their anger back on us...";
-			link.l1 = "Wow!";
+			dialog.text = "Очевидно, мы совершили святотатство. Храм словно ожил: все кругом зашевелилось, стены заходили ходуном и начали разваливаться. Как будто мы разбудили всех индейских демонов, и они обрушили на нас свой гнев... Мы бросились бежать, не разбирая дороги, а сзади за нами из земли рвалось пламя и летели огромные камни.";
+			link.l1 = "Вот это да!";
 			link.l1.go = "story_4";
 		break;
 		
 		case "story_4":
-			dialog.text = "It is hard to believe, I know. But...";
-			link.l1 = "I'd call you a liar half a year ago. But I have been living long enough in the Caribbean so I don't have any reasons to mistrust you. Go on. How did you survive?";
+			dialog.text = "В это трудно, поверить, я знаю. Но...";
+			link.l1 = "Еще бы полгода назад я назвал бы тебя вруном. Но я уже пожил достаточно на Карибах, и многое повидал, так что не доверять тебе нет оснований. Продолжай. Как вы спаслись?";
 			link.l1.go = "story_5";
 		break;
 		
 		case "story_5":
-			dialog.text = "We ran away from the temple and were lucky enough to get to our ship. I have ordered to weigh anchors, we wanted to escape from that place as soon as possible.";
-			link.l1 = "Heh! So you have only found some odd artifact instead of treasures? Nice and equivalent replacement, he-he... And did you find out how to use it? Or was it useless?";
+			dialog.text = "Мы убежали от храма и благополучно добрались до своего корабля. Я приказал немедленно поднимать якорь - мы хотели как можно скорее убраться из этого жуткого места.";
+			link.l1 = "Хех! Значит, вместо сокровищ вы получили какой-то странный артефакт? Отличная, а главное - равноценная замена, хе-хе... А применение этому артефакту ты нашел? Или он оказался бесполезен?";
 			link.l1.go = "story_6";
 		break;
 		
 		case "story_6":
-			dialog.text = "Wait a bit. It wasn't over yet. Dannie had the artifact and as soon as we have decided to go at the cabin to study it, the sky went dark and the ship showed up. Oh God! It was...";
+			dialog.text = "Погоди. На этом наши злоключения не закончились. Артефакт был у Данни, и только мы решили спуститься в каюту и получше рассмотреть его, как небо потемнело, набежали тучи, и из-за мыса появился корабль. О Боже! Это был сам...";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			pchar.questTemp.LSC.Natanstory = "blackpearl";
@@ -190,45 +190,45 @@ void ProcessDialogEvent()
 		
 		// вот тут делаем развилку, в зависимости прошел ли игрок Калеуче
 		case "story_7":
-			dialog.text = "... Van der Decken himself!!";
+			dialog.text = "... Ван дер Декен!!";
 			if (CheckAttribute(pchar, "questTemp.KhaelRoa"))
 			{
-				link.l1 = "Van der Decken? Hm...";
+				link.l1 = "Ван дер Декен? Хм. Вот как?";
 				link.l1.go = "story_8_1";
 			}
 			else
 			{
-				link.l1 = "And who is he?";
+				link.l1 = "А кто это такой - Ван дер Декен?";
 				link.l1.go = "story_8";
 			}
 		break;
 		
 		case "story_8":
-			dialog.text = "Haven't you ever heard about Flying Dutchman?";
-			link.l1 = "And who hasn't heard about Flying Dutchman! I have already met with one Dutchman and sent it's captain to the bottom of the sea. He was just an ordinary pirate who has decorated his ship with some masquerade trash like algaes and torn sails.";
+			dialog.text = "Ты что, никогда не слышал о 'Летучем Голландце'?";
+			link.l1 = "Кто же не слышал о 'Летучем Голландце'! С одним таким голландцем я лично столкнулся и отправил его капитана на дно морское: он оказался самым обыкновенным пиратом, разукрасившим свое судно всякой маскарадной чепухой, вроде водорослей и драных парусов.";
 			link.l1.go = "story_9";
 		break;
 		
 		case "story_8_1":
-			dialog.text = "Yes, it was Van der Decken himself, captain of the Flying Dutchman!";
-			link.l1 = "Interesting. Please, go on. How have you pulled through?";
+			dialog.text = "Да, сам Ван дер Декен, капитан 'Летучего Голландца'!";
+			link.l1 = "Интересно... Рассказывай дальше. Как ты выбрался из этой переделки?";
 			link.l1.go = "story_11";
 		break;
 		
 		case "story_9":
-			dialog.text = "Eh-heh, friend... You sunk some jester and I am talking about the real Flying Dutchman. The huge warship. God save you from meeting it in the open sea. It's captain Van der Decken and his crew were once cursed to sail across the sea forever and restless\nI remember its torn black sails, the crew of dead men with their blades ready and the captain himself - a creepy skeleton wearing a black cocked hat... Jesus...";
-			link.l1 = "Is it true?";
+			dialog.text = "Э-э, дружище... Ты утопил шута ряженого, а то был настоящий 'Летучий Голландец' - огромный военный корабль. Не приведи Господь тебе повстречаться с ним. Его капитан, Ван дер Декен, и его команда, когда-то были прокляты и обречены навеки скитаться по морям, без надежды пристать к берегу и без надежды упокоиться\nКогда я вспоминаю его черный рваный парус, его команду мертвецов, стоящих у борта с обнаженными саблями, и его самого - жуткий скелет в черной треуголке, дрожь пробирает до костей... вот как сейчас, бр-рр...";
+			link.l1 = "Неужели это правда?";
 			link.l1.go = "story_10";
 		break;
 		
 		case "story_10":
-			dialog.text = "I can swear on the Bible that I am not lying... The meeting with Flying Dutchman means only death. It's powerful, very powerful, one volley of her guns can sink a heavy frigate and it's crew... how are you supposed to fight the undead?";
-			link.l1 = "But you have survived that mess!";
+			dialog.text = "Я готов поклясться на Библии, что не лгу... Встреча с 'Летучим Голландцем' означает лишь одно: верную гибель. Он силен, очень силен, один бортовой залп его орудий способен отправить на корм рыбам тяжелый фрегат, а команда... как ты себе представляешь битву с мертвецами?";
+			link.l1 = "Но ты же как-то выбрался из этой переделки!";
 			link.l1.go = "story_11";
 		break;
 		
 		case "story_11":
-			dialog.text = "It is all thanks to my lovely Dannie and the Indian artifact which we have taken from the temple. I have ordered to get ready to fight, but I was understanding that it was an end of the line. Flying Dutchman was coming at us and I was seeing her dreadful crew and Van der Decken himself. The ship had started to aim her cannons at us but...";
+			dialog.text = "Это все благодаря моей любимой Данечке и индейскому артефакту, который мы забрали из храма. Я приказал готовиться к бою, хотя понимал, что часы наши сочтены. 'Летучий Голландец' приближался, я хорошо видел его кошмарную команду и самого Ван дер Декена, отдающего приказы. Корабль начал поворачиваться к нам бортом, и тут...";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			pchar.questTemp.LSC.Natanstory = "artefact";
@@ -237,19 +237,19 @@ void ProcessDialogEvent()
 		break;
 		
 		case "story_12":
-			dialog.text = "Dannie raised the artifact and let it fly. I have no idea why. She said something about her female intuition… The artifact turned back into a glowing sphere, exploded, critically damaged the ghost ship and demoralized it's crew. I ordered to open fire\nFirst volley made them shudder. We performed an over stag and shot their rotten hull again before they recovered from the artifact's influence and returned fire...";
-			link.l1 = "But you had to fight them anyway?";
+			dialog.text = "Данни подняла вверх артефакт и выпустила его. Почему она так сделала - я не знаю. Как она объяснила потом - женская интуиция... Артефакт не упал. Он снова превратился в призрачный шар и засиял, словно солнце. Наконец он вспыхнул, озарив окрестности, и исчез\nКогда мы убрали руки от глаз, то увидели, что корабль-призрак дал огромную трещину прямо посередине и стоит, беспомощно хлопая рваными парусами, а скелеты, словно ослепленные, в беспорядке бегают по палубе. Я приказал открыть огонь\nПервый бортовой залп наших пушек заставил Голландца содрогнуться. Мы успели сделать поворот оверштаг и всадить в их трухлявый корпус ядра еще одной бортовой батареи, пока они оправились от воздействия артефакта и атаковали нас...";
+			link.l1 = "Тебе все же пришлось сражаться с ними?";
 			link.l1.go = "story_13";
 		break;
 		
 		case "story_13":
-			dialog.text = "I had. And I swear it was the toughest fight in my life. Their damn tub was barely keeping on the water, but they were still able to destroy half of my hull before we sent them sky high by blowing up their powder chamber.";
-			link.l1 = "So did you sink it? Did you sink the Flying Dutchman?";
+			dialog.text = "Пришлось. И, клянусь громом, это был самый тяжелый бой в моей жизни. Их проклятая лоханка, расколотая напополам, едва держалась на воде, но они успели разнести мне полкорпуса, пока мы не накрыли их метким залпом, взорвавшим крюйт-камеру.";
+			link.l1 = "Так ты потопил его? Ты потопил 'Летучего Голландца'?";
 			link.l1.go = "story_14";
 		break;
 		
 		case "story_14":
-			dialog.text = "Yes, damn it! We did!..";
+			dialog.text = "Да, черт возьми! Мы потопили его!..";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			pchar.questTemp.LSC.Natanstory = "ending";
@@ -258,27 +258,27 @@ void ProcessDialogEvent()
 		break;
 		
 		case "story_15":
-			dialog.text = "The damn ship went down. The sun was shining again and the sky went clear. We were happy... you can't even imagine how. We had beaten the death itself. Moments like that bring people together. And we did the thing which we had to do long time before - we embraced, kissed, said that we love each other and sworn to stay together forever.";
-			link.l1 = "And you are together...";
+			dialog.text = "Проклятый корабль отправился на дно. На небе снова засияло солнце, тучи рассеялись. Мы были счастливы... ты не представляешь, как. Мы вырвались из лап неминуемой, как казалось, смерти. Ничто так не сближает, как такие моменты. И мы наконец сделали то, что должны были сделать уже давно: обняли друг друга, поцеловались, сказали, что любим, и поклялись быть вместе всю оставшуюся жизнь.";
+			link.l1 = "И так оно и получилось...";
 			link.l1.go = "story_16";
 		break;
 		
 		case "story_16":
-			dialog.text = "Yes, we are. Me and Dannie got married and I have never regretted it. You won't find a better wife and sister in arms.";
+			dialog.text = "Да, именно так. Мы с Данечкой поженились, и я ни на минуту не пожалел об этом. Лучшую жену и боевую подругу трудно себе и представить.";
 			if (CheckAttribute(pchar, "questTemp.KhaelRoa"))
 			{
-				link.l1 = "So that's that mysterious captain who had sunken the Flying Dutchman... A real hero!";
+				link.l1 = "Так вот кто этот таинственный капитан, который потопил 'Летучего Голландца'... Герой!";
 				link.l1.go = "story_17_1";
 			}
 			else
 			{
-				link.l1 = "So are you the heroes then? You have sunken the famous ghost ship. Wait! You said that the Flying Dutchman is still flying... How can it be possible if she is lying at the bottom?";
+				link.l1 = "Так вы, получается, герои? Потопили легендарный корабль-призрак. Постой! Ты недавно сказал, что 'Летучий Голландец' и по сей день бороздит моря... Как такое может быть, если он на дне?";
 				link.l1.go = "story_17";
 			}
 		break;
 		
 		case "story_17":
-			dialog.text = "Eh, pal, you don't know a thing... You can sink Van der Decken, but you can't kill him. The curse upon him and his crew is too strong, much stronger than a death...";
+			dialog.text = "Э-э, дружище, ты видать, совсем ничего не знаешь... Ван дер Декена можно потопить, но убить его - нельзя. Проклятие, тяготеющее над ним, его командой и кораблем, сильнее самой смерти...";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			pchar.questTemp.LSC.Natanstory = "VDDrepair";
@@ -287,7 +287,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "story_17_1":
-			dialog.text = "A hero I might be, but Van der Decken cannot be slain. The curse hanging over him and his ship is stronger than death...";
+			dialog.text = "Может, и герой, да только Ван дер Декена нельзя убить. Проклятие, тяготеющее над ним, его командой и кораблем, сильнее самой смерти...";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			pchar.questTemp.LSC.Natanstory = "VDDrepair";
@@ -296,79 +296,79 @@ void ProcessDialogEvent()
 		break;
 		
 		case "story_18":
-			dialog.text = "Every time you sink them, they repair their ship, get her up and continue their eternal sail.";
+			dialog.text = "Будучи потопленными, они чинят свой корабль, поднимают на поверхность и вновь отправляются в свое бесконечное плавание, которому не будет конца.";
 			if (CheckAttribute(pchar, "questTemp.KhaelRoa"))
 			{
-				link.l1 = "I know, Nathaniel, I know. Still, Flying Dutchman will no longer trouble anyone.";
+				link.l1 = "Знаю, знаю, Натаниэль. Правда, больше 'Летучий Голландец' никого не потревожит.";
 				link.l1.go = "story_22";
 			}
 			else
 			{
-				link.l1 = "Well, you know, this sounds like a fable. To repair the parted and sunken ship...";
+				link.l1 = "Ну, знаешь, а вот это уже похоже на выдумку. Починить расколотое напополам, затонувшее судно...";
 				link.l1.go = "story_19";
 			}
 		break;
 		
 		case "story_19":
-			dialog.text = "People have seen the ship many times after we have sunk it... You decide to believe it or not.";
-			link.l1 = "And where is that island with the temple where did you get an artefact from?";
+			dialog.text = "После того, как мы с Данни утопили Ван дер Декена, его корабль много раз видели в Карибском море... Вот и думай сам - выдумка, или нет.";
+			link.l1 = "А где тот остров, с храмом, где вы взяли этот артефакт?";
 			link.l1.go = "story_20";
 		break;
 		
 		case "story_20":
-			dialog.text = "It is uncharted and it is located somewhere in the east of the Caribbean sea. I have lost my map during that mess so I won't be able to find it again. And to be honest I don't want to. The only thing I remember is it's name - Khael Roa...";
-			link.l1 = "Such an interesting story. I'd like to find that island!";
+			dialog.text = "Он нигде не обозначен и находится на востоке Карибского моря. Его карта валяется у меня где-то в Марун-Тауне, а туда мне теперь не добраться. Да и честно скажу - не вернусь я на этот проклятый остров никогда.";
+			link.l1 = "Интересная история. Вот бы найти этот остров!";
 			link.l1.go = "story_21";
 		break;
 		
 		case "story_21":
-			dialog.text = "Oh, I won't advise you... I ain't going to see it again.";
-			link.l1 = "I'd like to visit it anyway... Fine, thank you for your interesting story! Now I will know more about your wife. You both are the living legend!";
-			link.l1.go = "diffindoor_19";
 			DeleteAttribute(pchar, "questTemp.LSC.Natanstory");
 			pchar.questTemp.NatanStory = "true";
+			dialog.text = "Ох, не советую... Я лично туда более ни ногой.";
+			link.l1 = "А я бы отправился... Ладно, спасибо за интересный рассказ! Теперь буду знать немного больше о твоей жене. Вы вдвоем и впрямь - живая легенда!";
+			link.l1.go = "diffindoor_19";
 		break;
 		
 		case "story_22":
-			dialog.text = "What are you implying, buddy? Didn't I just tell you that he can't be slain?";
-			link.l1 = "Nathaniel, I've been to Khael Roa. And I was in the temple of the Chavins, where you, Danielle and some old man had been a quarter of century ago. The artifact you had taken from the temple back then, was called 'orb of the rising sun'. It was that thing that drew the attention of 'Flying Dutchman'. Its captain had fondness for Chavins artifacts.";
+			dialog.text = "Ты это о чем сейчас, приятель? Разве ты не понял - его нельзя убить!";
+			link.l1 = "Натаниэль, я был на Хаэль Роа. И в храме чавинцев, куда вы с Даниэль и каким-то стариком проникли четверть века назад, тоже был. Артефакт, который вы прихватили с собой, назывался 'шар восходящего солнца'. Именно он и привлек внимание 'Летучего Голландца'. Он падок на чавинские артефакты.";
 			link.l1.go = "story_23";
 		break;
 		
 		case "story_23":
-			dialog.text = "You were at Khael Roa? But that just can't be! Are you telling me the truth?";
-			link.l1 = "I swear. Just as you told me about the labyrinth and the statue of the giant bird, I immediately realized, what was that place. Caribbean shaman Tuttuathapak told me about your adventures. It was him who directed me to that island. It is located to the east of St. Christopher. It's very small, shaped like a ring. There are rocks all around and a small cove inside. And there is just one overgrown path leading to a temple, which is build in the form of a pyramid.";
+			dialog.text = "Ты был на Хаэль Роа? Не может быть! Это правда?";
+			link.l1 = "Клянусь. Как только ты рассказал про лабиринт и огромную статую птицы, я сразу понял, что это за место. О твоих похождениях мне поведал шаман карибов Туттуатхапак. Он-то и отправил меня на остров. Он восточнее Сент-Кристофера, маленький, в виде кольца, везде скалы, а внутри небольшая бухта. От пляжа одна-единственная заросшая тропа ведет к храму в виде пирамиды.";
 			link.l1.go = "story_24";
 		break;
 		
 		case "story_24":
-			dialog.text = "Yes! This is Khael Roa. And why did you go there?";
-			link.l1 = "To remove the spell of the Caleuche... well, of the Flying Dutchman. Actually, her name was Flying Heart, and the name of her captain was Balthazar de Cordes. Fifty years ago he was cursed by Yum Cimil, an Indian God of Death. I took the jade skull of Yum Cimil, which had been stolen from the temple by that Balthazar some time ago, and put it back on the pedestal in front of that condor statue...";
+			dialog.text = "Все верно! Это Хаэль Роа. А зачем ты туда пошел?";
+			link.l1 = "Чтобы снять заклятие с Калеуче... ну, 'Летучего Голландца'. На самом деле, он назывался 'Летящее сердце', а капитана звали Бальтазар де Кордес. Его проклял полвека назад индейский бог смерти Юм Симиль. Я отнес в храм нефритовый череп Юм Симиля, украденный когда-то этим Бальтазаром, и положил на тот самый постамент перед статуей кондора...";
 			link.l1.go = "story_25";
 		break;
 		
 		case "story_25":
 			dialog.text = "";
-			link.l1 = "...by returning the skull I have removed the curse of the Caleuche. And since I had two other Chavins amulets with me, she attacked me tight at the island, just like it'd happened to you back then. But without the curse he was no longer immortal, just as Tuttuathapak said. So... the 'Flying Dutchman' is no more. I personally took care of her.";
+			link.l1 = "...вернув череп, я снял проклятие с Калеуче. А так как со мной были еще два чавинских амулета, он их почуял, и напал прямо у берегов острова, совсем, как на тебя. Да только с проклятием слетело с него и бессмертие, как и сказал Туттуатхапак. Так что... нет больше 'Летучего Голландца'. Я лично об этом позаботился.";
 			link.l1.go = "story_26";
 		break;
 		
 		case "story_26":
-			dialog.text = "Thunder and lightning! I am astounded! You.. You're not kidding old Nathan, are you? No, I see it in your eyes that you are telling the truth! You're a real hero!";
-			link.l1 = "A hero or no hero, but I've surely seen my fair share of the adventures, just as you have. Well, surely we'll talk about the past times many more times, if we now have a common subject.";
+			dialog.text = "Разрази меня гром! Я поражен! Ты... ты и впрямь не обманываешь старого Натана? Нет, я вижу, твои глаза не лгут! Да ты - герой!";
+			link.l1 = "Ну, герой, или не герой, а приключений повидал немало, как и ты. Ладно, мы с тобой еще потом поболтаем о прошлом, раз у нас есть общая тема.";
 			link.l1.go = "diffindoor_19";
 			DeleteAttribute(pchar, "questTemp.LSC.Natanstory");
 		break;
 		
 		case "diffindoor_19":
-			dialog.text = "Are you going to leave me now, friend?";
-			link.l1 = "Yes, Nathan. Please, hold on until my return. Take care. Just live until I am back and it will all be well. Brethren of the Coast need you, Danielle needs you.";
+			dialog.text = "Ты сейчас уходишь, дружище, так?";
+			link.l1 = "Да, Натан. Держись, я тебя очень прошу. Береги себя. Главное - выживи до моего возвращения, а потом все будет хорошо. Ты нужен Береговому братству, и ты очень нужен Даниэль.";
 			link.l1.go = "diffindoor_20";
 		break;
 		
 		case "diffindoor_20":
-			dialog.text = "Is Dannie in your crew now? I beg you, watch over her. She didn't change since her youth, she is still a daredevil and she will not hesitate to go into hell. Tell her that I love her very much...";
-			link.l1 = "Sure I will. We will return together for you, I promise you that, Nathan. Hold on, and keep up. Ole will take care of you. See you soon!";
+			dialog.text = "Данни сейчас у тебя в команде? Умоляю, присматривай за ней. Она с юности почти не изменилась - все такая же сорвиголова, полезет в самое пекло без колебаний. И передай ей, когда увидишь, что я очень сильно ее люблю...";
+			link.l1 = "Передам обязательно. Мы приедем за тобой вместе с ней, Натан. Я обещаю. Держись, не падай духом. Оле позаботится о тебе. До скорой встречи!";
 			link.l1.go = "diffindoor_21";
 		break;
 		
@@ -382,15 +382,15 @@ void ProcessDialogEvent()
 		break;
 		
 		case "diffindoor_wait":
-			dialog.text = "Ah, here are you, "+pchar.name+". Didn't make out of the Island yet?";
-			link.l1 = "Don't worry, Nathan, all is going according to the plan. Rest.";
+			dialog.text = "А, это ты, "+pchar.name+". Еще не выбрался с острова?";
+			link.l1 = "Не беспокойся, Натан, все идет по плану. Отдыхай.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "diffindoor_wait";
 		break;
 		
 		case "danny":
 			PlaySound("VOICE\Russian\saga\Nataniel Hawk-03.wav");
-			dialog.text = "Danielle!.. Dannie! My Dannie!..";
+			dialog.text = "Даниэль!.. Данни! Данечка моя!..";
 			link.l1 = "...";
 			link.l1.go = "danny_1";
 		break;
@@ -409,102 +409,102 @@ void ProcessDialogEvent()
 		break;
 		
 		case "danny_2":
-			dialog.text = "Thank you, my friend. Thank you for everything and especially for my Dannie...";
-			link.l1 = "You are welcome, Nathan.";
+			dialog.text = "Спасибо тебе, друг. Спасибо за все, и в особенности - за Данечку...";
+			link.l1 = "Не за что, Натан.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "danny_2";
 		break;
 		
 		// в Марун-Тауне
 		case "marun_town":
-			dialog.text = "Look who's just dropped in! It's "+GetFullName(pchar)+"  himself! Come in, come in, friend! How are you?";
-			link.l1 = "I am fine. And you, Nathan? I see that there is no spleen left. You look good. Snake Eye has done really well!";
+			dialog.text = "Кто к нам пришел! Это же "+GetFullName(pchar)+" собственной персоной! Проходи, проходи, дружище! Как ты?";
+			link.l1 = "Я-то нормально. А ты, Натан? Смотрю, от былой хандры и уныния не осталось и следа. И выглядишь бодрячком. Змеиный Глаз постарался на славу!";
 			link.l1.go = "marun_town_1";
 		break;
 		
 		case "marun_town_1":
 			ChangeCharacterComplexReputation(pchar, "fame", 3);
-			dialog.text = "Yes your shaman is a miracle-worker. I feel even better than I was before that damn teleport! I feel like I am ten years younger!.. "+pchar.name+", I owe you a great deal. I am impressed: you were helping the complete stranger, passed the cursed portal, grabbed me from the death's hands, returned my wife!\nAnd even more! You brought us our ship and our home back. You are now our best friend. Forever. If you'll ever need something - you know who to ask! Maroon Town will always provide you with protection, support and a sanctuary in case you need it\nThe whole village with fight for you if you are in danger. During the peaceful times you will find here friendship, best rum, soft bed and a fine rest. Dannie and I will make sure of it.";
-			link.l1 = "Thank you, baron! I am sincerely glad to see you in a good health and... with Dannie.";
+			dialog.text = "Да, твой шаман действительно оказался чудотворцем. Я чувствую себя лучше, чем до того злосчастного телепорта! Я словно помолодел лет на десять!.. "+pchar.name+", я в неоплатном долгу перед тобой. Я поражен: ты помогал мне, по сути незнакомому тебе человеку, совершенно бескорыстно, прошел через адский портал, вытащил меня из лап смерти, вернул мне жену!\nНет, еще не все! Ты вернул нам с Данни наш корабль и... этот дом. Ты наш лучший друг. Навсегда. Если тебе что-то будет нужно - ты знаешь, к кому обратиться! В Марун-Тауне ты всегда найдешь защиту, поддержку, и если понадобится - укрытие\nВесь поселок встанет на твою сторону в случае опасности. А в мирное время тебя здесь ждет дружеское тепло, самый лучший ром, мягкая постель и приятный отдых. Мы с Данни об этом позаботимся.";
+			link.l1 = "Спасибо, барон! Я искренне рад видеть тебя в добром здравии и... вместе с Данни.";
 			link.l1.go = "marun_town_2";
 		break;
 		
 		case "marun_town_2":
-			dialog.text = "I was expecting your visit, "+pchar.name+", and I have prepared a gift - a rare and powerful weapon. One day, perhaps, you will need to take down numerous enemies in one shot and this hand mortar will help you to do that. 'Sclopetta' fires special grenades so I've also prepared an instruction how to make them. Here, take it.";
-			link.l1 = "Excellent weapon! Thanks!";
+			dialog.text = "Я ожидал твоего визита, "+pchar.name+", и приготовил подарок: редкое и мощное оружие. Возможно, тебе понадобится в непростой ситуации поразить сразу нескольких противников, и эта 'склопетта' окажется славным подспорьем. Снаряжать такую ручную мортирку следует специальными гранатами, порядок изготовления которых я записал для тебя, вот, держи этот лист.";
+			link.l1 = "Отличная штука! Благодарю!";
 			link.l1.go = "marun_town_3";
 		break;
 		
 		case "marun_town_3":
 			GiveItem2Character(pchar, "grape_mushket"); 
 			GiveItem2Character(pchar, "recipe_grenade"); 
-			Log_Info("You have received a hand mortar");
-			Log_Info("You have received a grenade instruction");
+			Log_Info("Вы получили склопетту");
+			Log_Info("Вы получили инструкцию по изготовлению гранаты");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Come and see us more often, "+pchar.name+"! Dannie and I will always be glad to see you any time.";
-			link.l1 = "It will be my pleasure. Expect to see me soon!";
+			dialog.text = "Заходи к нам почаще, "+pchar.name+"! Мы с Данни будем очень рады тебя видеть в любое время дня и ночи.";
+			link.l1 = "С удовольствием буду навещать вас. Так что ждите в гости!";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "marun_town_4";
 		break;
 		
 		case "marun_town_4":
-			dialog.text = "Ah, my friend "+GetFullName(pchar)+"! Come in, come in, captain! How are you? Need any help?";
+			dialog.text = "А, мой друг "+GetFullName(pchar)+"! Проходи, проходи, капитан! Как дела? Нужна какая-нибудь помощь?";
 			// калеуче
 			if (CheckAttribute(pchar, "questTemp.Caleuche.NatanInfo"))
 			{
-				link.l2 = "Nathan, I've come to you on a very important business. Do you remember telling me on the Island of Dead Ships, how you and Dannie sneaked into an Indian temple and then sunk the 'Flying Dutchman'?";
+				link.l2 = "Натан, я по очень важному делу. Помнишь, ты мне на Острове погибших кораблей рассказывал, как вы с Данни пробрались в индейский храм, а потом топили 'Летучего Голландца'?";
 				link.l2.go = "caleuche";
 			}
-			link.l1 = "Thanks, I am fine. Just wanted to see you both.";
+			link.l1 = "Спасибо, все хорошо! Просто зашел повидать вас.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "marun_town_4";
 		break;
 		
 		case "caleuche":
-			dialog.text = "Of course, I do.";
-			link.l1 = "I need to get to that island with the temple. I need it very badly. You said you had a map of it. Can you tell me the coordinates?";
+			dialog.text = "Конечно, помню.";
+			link.l1 = "Мне нужно попасть на этот остров с храмом. Очень нужно. Ты сказал, что у тебя есть его карта. Ты можешь сказать координаты?";
 			link.l1.go = "caleuche_1";
 		break;
 		
 		case "caleuche_1":
-			dialog.text = "Oh, friend, this is a very dangerous undertaking, you know... The temple of Khael Roa is cursed. If you only knew who dwells its corridors...";
-			link.l1 = "At the moment it is inhabited by monsters much more terrifying compared to those you've seen back then. And still I will go there.";
+			dialog.text = "Ох, опасное дело ты затеял, дружище... Храм Хаэль Роа - проклят. Видел бы ты, кто там обитает...";
+			link.l1 = "Сейчас там обитают монстры пострашнее, чем те, которых ты видел, и тем не менее, я намерен пойти туда.";
 			link.l1.go = "caleuche_2";
 		break;
 		
 		case "caleuche_2":
-			dialog.text = "I will not forgive myself if you perish there. "+pchar.name+", I beg you: abandon this venture! Besides, it's where the Flying Dutchman has been seen very often...";
-			link.l1 = "I have already encountered it, and I know how to outrun it. Nathan, please, give me the coordinates of Khael Roa and tell me everything you know about that temple, besides that it's inhabited by the undead Indians.";
+			dialog.text = "Я не прощу себе, если ты погибнешь там. "+pchar.name+", прошу: брось эту авантюру! Кроме всего прочего, в тех местах чаще всего видят 'Летучего Голландца'...";
+			link.l1 = "С ним я уже встречался, так что знаю, что он за птица, и научился убегать от него. Натан, пожалуйста, дай мне координаты Хаэль Роа и расскажи, что знаешь о храме, кроме того, что там обитают толпы индейцев-нежити.";
 			link.l1.go = "caleuche_3";
 		break;
 		
 		case "caleuche_3":
-			dialog.text = "Oh well... I cannot turn you down, but... You have no idea, what me and Dannie experienced there! Khael Roa is located east of Antigua. I found its map right when I got back to Maroon Town, it's there... (looking) The coordinates: 19 degrees 32' North, 62 degrees 25' West.";
-			link.l1 = "I'll write it down in my journal… Thanks, Nathan!";
+			dialog.text = "Ох... Я не могу тебе отказать, дружище, но... ты не представляешь, что мы там с Данни пережили! Хаэль Роа находится севернее Сент-Кристофера, а его карту я нашел сразу по возвращении в Марун-Таун, она вот тут... (смотрит) Итак, координаты: 19 градусов 25 минут северной широты, 62 градуса 8 минут западной долготы.";
+			link.l1 = "Я запишу в журнал... Спасибо, Натан!";
 			link.l1.go = "caleuche_4";
 		break;
 		
 		case "caleuche_4":
-			dialog.text = "You can thank me later. Now the details. Island of Khael Roa is a ring of rocks with a cove inside. Seek for the passage between the crags - it's fairly deep there. In the cove, you should cast anchor and disembark at the beach. Look for an old path heading deeper into the island - there's only one there. It will lead you to an Indian pyramid - this is the temple you seek.\nThe island itself is quiet, but the temple is crawling with abominations of all sorts. The entrance is located at the top of the pyramid. There'll be three passages inside; you should take the middle one. Then you walk down the corridor and there will be a platform with four entrances-exits. This is where the temple creatures attacked me for the first time, so you be careful\nThen there is a labyrinth. It's very complex, and I surely can't remember the right route. And there is a multitude of foul creatures in there. You must kill them all, then walk up to a hall with two entrances, six columns and a platform with nine stone slabs. This is the vestibule of the sanctuary. Its stone wall is closed, and I have no idea how you're going to open it.\nThere is a mechanism of some kind, but I swear to God that I have no clue how it functions! I had an idol key. I inserted it into the central slab, and the door opened. But you don't have such an idol, so you'll have to figure out, how this mechanism functions.";
-			link.l1 = "Alright, I'll do my best to figure it out. What of the sanctuary?";
+			dialog.text = "Не благодари... Теперь подробности. Остров Хаэль Роа представляет собой скалистое кольцо с бухтой внутри. Ищи проход среди скал - там довольно глубоко. В бухте отдашь якорь и высадишься на пляж. Ищи старую тропу в глубь острова, она там одна. Тропа приведет тебя к индейской пирамиде - это и есть нужный тебе храм\nСам остров тихий и пустынный, а вот в храме скрывается всякая мерзость. Вход в него наверху пирамиды. Внутри будет три прохода - иди в средний. Проходишь по коридору и попадаешь на площадку с четырьмя входами-выходами. Вот там меня в первый раз и атаковала храмовая нечисть, так что будь внимателен\nДальше начинается лабиринт. Он очень запутанный, и я в жизни не вспомню правильный путь. Да, и в нем полным-полно всякой погани. Твоя задача - перебить ее, подняться наверх и попасть в зал с двумя входами, шестью колоннами и площадкой из девяти каменных плит - это преддверие святилища. Каменная дверь в него закрыта, и как ты ее откроешь - не представляю\nТам есть какой-то механизм, но не пить мне рому до конца дней, если я что-то в нем понял! У меня был ключ - идол, я вставил его в центральную каменную плиту, и дверь открылась. Но у тебя идола нет, так что придется что-то мудрить и пытаться понять, как работает подъемник двери.";
+			link.l1 = "Буду разбираться. Что в святилище?";
 			link.l1.go = "caleuche_5";
 		break;
 		
 		case "caleuche_5":
-			dialog.text = "The sanctuary is a huge hall with a very high ceiling and large stone stairs. You cannot use them - they are too old and fallen apart for the most part. But the builders of the temple, as it seems, were also great sorcerers. There are portals, like those of Kukulcan - they will take you from one place to another.\nYou will recognize them easily - they look like colored swirls. There will be two portals on the first floor, but one of them is a trap, so you be careful! The correct portal will take you to the second floor. There you must find another portal to go even higher, and then to the very heart of the temple!\nThere, at the great statue of the bird, was that magical artifact, which me and Dannie taken with us. And I already told you, what had happened next.";
-			link.l1 = "I will remember it. Thank you, Nathaniel You have helped me greatly.";
+			dialog.text = "Святилище - огромный зал с высоченным потолком и большими каменными лестницами. Вот только пользоваться ими нельзя - от старости они во многих местах обвалились. Но строители храма, видать, были не только мастера на все руки, но и колдуны знатные. Там есть что-то вроде порталов Кукулькана, через которые тебя перекидывает с места на место\nТы легко узнаешь их - они светятся разноцветными завихрениями. На первом этаже будет два портала, один из них - ловушка, но какой из двух - не помню, так что будь готов ко всему! Нужный портал перенесет тебя на второй этаж. Там ищешь еще один портал, и перемещаешься выше, а потом - в самое сердце храма\nТам, у огромной статуи в виде птицы, мы с Данни и забрали магический артефакт. Что было потом - я тебе рассказывал.";
+			link.l1 = "Я все запомнил. Спасибо, Натаниэль. Ты мне очень помог.";
 			link.l1.go = "caleuche_6";
 		break;
 		
 		case "caleuche_6":
-			dialog.text = "Take care, "+pchar.name+". The labyrinth and the halls of the temple are full of dangers. Just one wrong move - and you're sure to stay there forever.";
-			link.l1 = "Praemonitus praemunitus, friend. I was forewarned - that means, I am forearmed. I have to go now. Until we meet again!";
+			dialog.text = "Береги себя, "+pchar.name+". Лабиринт и залы храма полны опасностей. Один неосторожный шаг - и ты останешься там навеки.";
+			link.l1 = "Praemonitus praemunitus, дружище. Кто предупрежден - тот вооружен, а я - предупрежден. Мне пора в путь. До встречи!";
 			link.l1.go = "caleuche_7";
 		break;
 		
 		case "caleuche_7":
-			dialog.text = "Good luck, "+pchar.name+"!";
-			link.l1 = "Thanks!";
+			dialog.text = "Удачи, "+pchar.name+"!";
+			link.l1 = "Спасибо!";
 			link.l1.go = "caleuche_8";
 		break;
 		

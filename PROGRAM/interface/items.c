@@ -177,13 +177,13 @@ void FillItemsTable(int _mode) // 1 - все 2 - оружие 3 - остальное
 	aref rootItems, arItem;
 	aref  curItem;
 	
-	GameInterface.TABLE_ITEMS.hr.td1.str = "Items name";
+	GameInterface.TABLE_ITEMS.hr.td1.str = "Наименование предметов";
 	GameInterface.TABLE_ITEMS.hr.td1.scale = 0.8;
-	GameInterface.TABLE_ITEMS.hr.td2.str = "Wgt/pcs";
+	GameInterface.TABLE_ITEMS.hr.td2.str = "Вес шт.";
 	GameInterface.TABLE_ITEMS.hr.td2.scale = 0.8;
-	GameInterface.TABLE_ITEMS.hr.td3.str = "Qty";
+	GameInterface.TABLE_ITEMS.hr.td3.str = "Кол-во";
 	GameInterface.TABLE_ITEMS.hr.td3.scale = 0.8;
-	GameInterface.TABLE_ITEMS.hr.td4.str = "Wgt";
+	GameInterface.TABLE_ITEMS.hr.td4.str = "Вес";
 	GameInterface.TABLE_ITEMS.hr.td4.scale = 0.8;
 	GameInterface.TABLE_ITEMS.select = 0;
 	GameInterface.TABLE_ITEMS.top = 0;
@@ -238,7 +238,7 @@ void FillItemsTable(int _mode) // 1 - все 2 - оружие 3 - остальное
 			ok3 = (groupID == TALISMAN_ITEM_TYPE) || ok2; // талисманы
                  
 			if(_mode == 1 && groupID == MAPS_ITEM_TYPE)	continue;	
-			if(_mode == 2 && !ok)  continue;
+			if(_mode == 2 && !ok)  continue;	 
 			if(_mode == 3) 
 			{
 				if (!ok1) continue;
@@ -452,8 +452,10 @@ void ShowInfoWindow()
 			sText1 = GetRPGText("Nation_hint");
 		break;   */
 	}
-	sHeader = "Items";
-	sText1  = "Equipment management for you and your officers";
+	sHeader = "Предметы";
+	sText1  = "Здесь Вы можете получить информацию об имеющихся предметах, изучить инвентарь или изменить экипировку главного героя. "+
+              "Так же можно посмотреть состояние инвентаря офицеров, компаньонов и пассажиров. Выбор оружия они делают сами при экипировке их новым снаряжением. "+
+              "Обмен предметами со своими офицерами осуществляется на суше через команду 'Обмен'.";
 	CreateTooltip("#" + sHeader, sText1, argb(255,255,255,255), sText2, argb(255,255,192,192), sText3, argb(255,192,255,192), "", argb(255,255,255,255), sPicture, sGroup, sGroupPicture, 64, 64);
 }
 
@@ -764,11 +766,11 @@ void EquipPress()
 				SetVAligmentFormatedText("MAP_TEXT");
 				ShowMapWindow();
 				return;
-			}
+			}	
 			// Addon 2016-1 Jason пиратская линейка
 			if(itmRef.id == "mapEnrico")
 			{
-				totalInfo = "Go west from Laguna de Caratasca. Keep to the right side of the road. Get through a logjam. The path will lead you to the ruins of old town, destroyed by an earthquake 20 years ago. Find treasures in the dungeons below abandoned mines.";
+				totalInfo = "Из лагуны Каратаска следуй по тропе на запад. Держись правой стороны. Груда поваленных ураганом деревьев преградит тебе путь. Проберись через завал. Тропа выведет тебя к руинам старого города, разрушенного землетрясением двадцать лет назад. Сокровища находятся в подземелье за заброшенными шахтами.";
 				SetNewPicture("MAP_PICTURE", "interfaces\Maps\treasure map.tga");
 				SetFormatedText("MAP_TEXT", totalInfo);
 				SetVAligmentFormatedText("MAP_TEXT");
@@ -853,7 +855,7 @@ void EquipPress()
 				}
 				if (itmRef.id == "potion7") // слезы Иш-Чель
 				{
-					Log_Info("An Indian healing potion was used");
+					Log_Info("Использовано зелье 'Слезы Иш-Чель'");
 					PlaySound("Ambient\Tavern\glotok_001.wav");
 					AddCharacterHealth(pchar, 10);
 					AddCharacterMaxHealth(pchar, 4);
@@ -866,7 +868,7 @@ void EquipPress()
 				// калеуче
 				if (findsubstr(itmRef.id, "kaleuche_amulet", 0) != -1)
 				{
-					Log_Info("A powerful potion was used");
+					Log_Info("Использовано зелье Туттуатхапака");
 					PlaySound("Ambient\Tavern\glotok_001.wav");
 					AddCharacterHealth(pchar, 5);
 					RemoveItems(pchar, itmRef.id, 1);
@@ -879,7 +881,7 @@ void EquipPress()
 					if (isMultiObjectKnown(itmRef.result))
 					{
 						PlaySound("interface\knock.wav");
-						log_info("You already know this recipe");
+						log_info("Вам уже известен этот рецепт");
 					}
 					else
 					{
@@ -893,7 +895,7 @@ void EquipPress()
 					RemoveItems(pchar, itmRef.id, 1);
 					TakeNItems(pchar, itmRef.result, sti(itmRef.result.qty));
 					PlaySound("Ambient\Tavern\monetki_taverna_001.wav");
-					log_info("You have acquired "+sti(itmRef.result.qty)+XI_ConvertString("dublon4")+"");
+					log_info("Вы получили "+sti(itmRef.result.qty)+XI_ConvertString("dublon4")+"");
 				}
 				if (itmRef.id == "RingCapBook") // СЖ пинаса 'Санта-Люсия' и дневник Колхауна
 				{
@@ -991,6 +993,7 @@ void EquipPress()
 						{
 							Achievment_SetStat(xi_refCharacter, 71, 1);
 						}
+						
 					}
 					else
 					{
@@ -1044,24 +1047,24 @@ void EquipPress()
 							}
 							LAi_SetCharacterUseBullet(xi_refCharacter, itmRef.ID);
 							LAi_GunSetUnload(xi_refCharacter);
-							log_info("Ammo received - "+GetConvertStr(itmRef.name, "ItemsDescribe.txt")+"");
+							log_info("Выбран боеприпас - "+GetConvertStr(itmRef.name, "ItemsDescribe.txt")+"");
 							PlaySound("People Fight\reload1.wav");
 							SetVariable();
 							return;
 						}
 						else
 						{
-							if(IsEquipCharacterByItem(xi_refCharacter, itmRef.id))
-							{
-								RemoveCharacterEquip(xi_refCharacter, itmGroup);
-							}
-							else
-							{
-								EquipCharacterByItem(xi_refCharacter, itmRef.id);
-							}
+						if(IsEquipCharacterByItem(xi_refCharacter, itmRef.id))
+						{
+							RemoveCharacterEquip(xi_refCharacter, itmGroup);
+						}
+						else
+						{
+							EquipCharacterByItem(xi_refCharacter, itmRef.id);
 						}
 					}	
 				}
+			}
 			}
 			FillItemsSelected();
 			SendMessage(&GameInterface,"lsls",MSG_INTERFACE_MSG_TO_NODE,"EQUIP_BUTTON",0, "#"+XI_ConvertString("Equip that"));

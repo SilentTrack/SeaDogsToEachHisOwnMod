@@ -5,32 +5,32 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 	switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me some question not long ago...", "Nobody's asked questions like that in a Tortuga store for a long time...",
-                          "Questions, questions, and more questions...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
-                      "All right, so it's been a long time.", "Moooore questions, yeah...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно?"), "Совсем недавно вы пытались задать мне вопрос...", "В магазине Тортуги таких вопросов не было давно...",
+                          "Вопросы, вопросы, опять вопросы...", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Ну, не было - так не было.", "Во-о-о-просы, да...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "tortuga2")
 			{
-				link.l1 = "Listen, I need to find a Gaius Marchais. As I've been told, he's taken to privateering and become a decent negotiator, scooping up an excellent galleon from the Spanish. Has he happened to purchase any kind of merchandise off you for negotiation?";
+				link.l1 = "Послушай, мне нужно найти Гая Марше. Как мне сказали, он завязал с каперством и стал добропорядочным негоциантом, отбив у испанцев отличный галеон. Не закупал ли он у тебя каких товаров для негоции?";
                 link.l1.go = "guardoftruth";
 			}
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "Gaius Marchais? Oh yes, of course I remember him! Only he didn't purchase anything. He offered his ship for freight. I just happened to need a ship with a spacious hold –a large batch of raw skins.";
-			link.l1 = "And what  was the unloading point?";
+			dialog.text = "Гай Марше? Как же, как же, помню! Вот только ничего он не закупал, а предоставил свой корабль для фрахта. Мне как раз нужно было судно с объемным трюмом - большая партия сырых кож.";
+			link.l1 = "И какой был пункт выгрузки?";
 			link.l1.go = "guardoftruth_1";
 		break;
 		
 		case "guardoftruth_1":
-			dialog.text = "Philipsburg, Saint Maarten.";
-			link.l1 = "Okay. Thank you, you've been a lot of help!";
+			dialog.text = "Филипсбург, Синт-Маартен.";
+			link.l1 = "Ясно. Спасибо, ты мне очень помог!";
 			link.l1.go = "guardoftruth_2";
 		break;
 		
 		case "guardoftruth_2":
-			dialog.text = "Anytime, captain. Stop by my store anytime you like!";
+			dialog.text = "Всегда пожалуйста, капитан. Буду рад видеть вас в своем магазине хоть каждый день!";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			AddQuestRecord("Guardoftruth", "10");

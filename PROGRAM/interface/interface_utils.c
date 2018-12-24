@@ -739,7 +739,7 @@ void SetFoodShipInfo(ref chr, string _textName)
 	SetFormatedText(_textName, "");
 	if (sti(chr.ship.type) != SHIP_NOTUSED)
 	{
-		sText = "Provisions on the ship on ";
+		sText = "Провианта на корабле на ";
 		iFood = CalculateShipFood(chr);
 		sText = sText + FindRussianDaysString(iFood);
 		SetFormatedText(_textName, sText);
@@ -769,7 +769,7 @@ void SetRumShipInfo(ref _character, String _node)
 	
 	if(sti(_character.ship.type) != SHIP_NOTUSED)
 	{
-		text = "Rum on the ship on ";
+		text = "Рому на корабле на ";
 		rum = CalculateShipRum(_character);
 		text = text + FindRussianDaysString(rum);
 		SetFormatedText(_node, text);

@@ -28,7 +28,7 @@ int CreateBermudesCharacters(int n)
 	ch.id		= "Pirates_tavernkeeper";
 	ch.model	= "Tuerto";
 	ch.greeting = "barmen_1";
-	ch.name		= "One-eyed";
+	ch.name		= "Одноглазый";
 	ch.lastname = "";
 	ch.sex = "man";
 	ch.City = "Pirates";
@@ -46,8 +46,8 @@ int CreateBermudesCharacters(int n)
 
 	makeref(ch,Characters[n]);			//Торговец
 	ch.id		= "Pirates_trader";
-	ch.name		= "Pascal";
-	ch.lastname = "Voisier";
+	ch.name		= "Паскуале";
+	ch.lastname = "Вуазье";
 	ch.model	= "Pasquale";
 	ch.greeting = "store_3";
 	ch.sex = "man";
@@ -74,8 +74,8 @@ int CreateBermudesCharacters(int n)
 	ch.model	= "Alexus";//"trader_15";
 	ch.model.animation = "man_A1";
 	ch.greeting = "Gr_shipyarderA";
-	ch.name 	= "Master";
-    ch.lastname = "Alexis";
+	ch.name 	= "Мастер";
+    ch.lastname = "Алексус";
 	ch.sex = "man";
 	ch.City = "Pirates";
 	ch.location	= "Pirates_Shipyard";
@@ -92,8 +92,8 @@ int CreateBermudesCharacters(int n)
 
 	makeref(ch,Characters[n]);			// Норман
 	ch.id		= "Norman";
-	ch.name 	= "Abraham";
-	ch.lastname = "Norman";
+	ch.name 	= "Абрахам";
+	ch.lastname = "Норман";
 	ch.model	= "Norman_1";
     ch.rank     = 45;
 	ch.sex = "man";

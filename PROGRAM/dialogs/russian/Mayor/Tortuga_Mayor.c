@@ -4,36 +4,36 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What do you want? Ask away.", "I am listening to you, what's the question?"), "It is the second time you are trying to ask...", "It is the third time you are again trying to ask...",
-                          "When is it going to end?! I am a busy man, working on the colony's matters and you are still trying to ask something!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Not now. There is no time."), "True... But later, not now...",
-                      "I'll ask, I'll ask... a bit later though...", "I am sorry, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Что вы хотели? Спрашивайте.", "Я слушаю вас, что за вопрос?"), "Второй раз за день вы пытаетесь задать ворпос...", "В третий раз за день вы опять пытаетесь задать вопрос...",
+                          "Да когда же это кончится?! У меня дел полно по управлению делами города, а ты все вопросы пытаешься задать!", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал"+ GetSexPhrase("","а") +"...", "Не сейчас, не место и не время..."), "Да, верно... Но не сейчас, позже...",
+                      "Задам, задам... Только позже...", "Извините, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			// Addon-2016 Jason, французские миниквесты (ФМК) Тортуга
 			if (CheckAttribute(pchar, "questTemp.FMQT") && pchar.questTemp.FMQT == "huber")
 			{
-				link.l1 = "Monsieur governor, I have terrible news for you. I'll be brief: your wife wants to rob you. She tried to persuade me to lock pick one of your cabinet chests. I feel my duty is to tell you about this.";
+				link.l1 = "Месье губернатор, у меня для вас неприятные известия. Буду краток: ваша жена хочет вас ограбить. Она пыталась подрядить меня на взлом одного из ваших сундуков. Считаю своим долгом вам об этом сообщить.";
                 link.l1.go = "FMQT";
 			}
 			// Jason НСО
 			if (CheckAttribute(pchar, "questTemp.Patria") && pchar.questTemp.Patria == "epizode_2" && !CheckAttribute(npchar, "quest.patria") && !CheckAttribute(pchar, "questTemp.Patria.Visiter_Late"))
 			{
-				link.l1 = TimeGreeting()+", monseigneur. I am here as ordered by the Governor General Chevalier da Poincy. My task is to deliver a baron by the name of Noel Forget to Tortuga, who arrived from the parent state with a task to inspect the colonies, with the aim to establish French West-Indies trading Company. Let me itroduce him to you... He will explain all the details himself.";
+				link.l1 = TimeGreeting()+", ваша светлость. Я прибыл по приказанию генерал-губернатора шевалье де Пуанси. В мою задачу входит доставить на Тортугу барона Ноэля Форже, прибывшего из метрополии с целью инспекции французских колоний для последующей огранизации Французской Вест-Индской торговой Компании. Позвольте представить вам барона... Все дальнейшее изложит вам непосредственно он сам.";
                 link.l1.go = "patria_tortuga";
 			}
 		break;
 		
 		case "FMQT":
-			dialog.text = "Wh-a-at? Again? That bitch! She is not forgetting this, oh I swear! Kampacho will make her scream. Why are you still here? Get the hell out of here!";
-			link.l1 = "I thought...";
+			dialog.text = "Что-о-о? Опять? Тварь! Этот раз она не забудет, я позабочусь об этом. Кампачо заставит её вопить. А ты что еще тут делаешь? Вон!";
+			link.l1 = "Я думал, что...";
 			if (GetSummonSkillFromName(pchar, SKILL_LEADERSHIP) > 25) link.l1.go = "FMQT_2";
 			else link.l1.go = "FMQT_1";
 		break;
 		
 		case "FMQT_1":
 			AddMoneyToCharacter(pchar, 1000);
-			dialog.text = "Always the same! Here, take this! It's all I have in the table! Now get lost!";
-			link.l1 = "Why thank you, your Excellence. On my way.";
+			dialog.text = "Всем вам нужно одно и то же! Держи, это всё, что лежит у меня в столе! А теперь проваливай!";
+			link.l1 = "Спасибо, ваша милость. Проваливаю.";
 			link.l1.go = "FMQT_3";
 		break;
 		
@@ -41,9 +41,9 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddMoneyToCharacter(pchar, 1000);
 			GiveItem2Character(pchar, "pistol6");
 			GiveItem2Character(pchar, "purse1");
-			Log_Info("You have received a double barreled pistol and a purse of doubloons");
-			dialog.text = "Always the same! Here, take this! It's all I have in the table!.. Though, fine, you don't look like the rest of morons and losers my island is filled with. Take a bit extra... Now get lost!";
-			link.l1 = "Why thank you, your Excellence. On my way.";
+			Log_Info("Вы получили двуствольный пистолет и кошель дублонов");
+			dialog.text = "Всем вам нужно одно и то же! Держи, это всё, что лежит у меня в столе!.. Хотя, ладно, ты вроде не из этих идиотов и неудачников, которыми набит мой остров. Держи еще сверху... А теперь проваливай!";
+			link.l1 = "Спасибо, ваша милость. Проваливаю.";
 			link.l1.go = "FMQT_3";
 		break;
 		
@@ -61,7 +61,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		// Jason НСО
 		case "patria_tortuga":
-			dialog.text = "Fine, captain Charles de Maure. The baron will be treated properly and I shall do what I can to aid him with his task.";
+			dialog.text = "Хорошо, капитан Шарль де Мор. Барону с моей стороны будет оказан соответствующий его положению прием и содействие в выполнении его требований.";
 			link.l1 = "";
 			link.l1.go = "patria_tortuga_1";
 		break;

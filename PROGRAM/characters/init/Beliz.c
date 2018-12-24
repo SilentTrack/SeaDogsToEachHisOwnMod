@@ -11,8 +11,8 @@ int CreateBelizCharacters(int n)
 	ch.id		= "Beliz_Mayor";
 	ch.model	= "huber_13";
 	ch.sex = "man";
-	ch.name 	= "Piter";
-    ch.lastname = "Walles";
+	ch.name 	= "Питер";
+    ch.lastname = "Уоллес";
 	ch.City = "Beliz";
 	ch.location	= "Beliz_townhall";
 	ch.location.group = "sit";
@@ -170,7 +170,7 @@ int CreateBelizCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "Beliz_Smuggler";
 	ch.model    = "citiz_30";

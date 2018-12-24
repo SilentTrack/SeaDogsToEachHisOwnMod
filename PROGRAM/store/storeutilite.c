@@ -696,7 +696,7 @@ void SetNull2Deposit(string _city)
 {
     if (CheckAttribute(Pchar, "quest.Deposits." + _city))
     {
-        Log_Info("All investments of yours in " + GetCityName(_city) + " are gone.");
+        Log_Info("Все вклады у ростовщика в городе " + GetCityName(_city) + " пропали.");
         DeleteAttribute(Pchar, "quest.Deposits." + _city);
     }
 }

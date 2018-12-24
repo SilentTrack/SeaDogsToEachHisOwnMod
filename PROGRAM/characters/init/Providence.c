@@ -11,8 +11,8 @@ int CreateProvidenceCharacters(int n)
 	ch.id		= "SanAndres_Mayor";
 	ch.model	= "huber_19";
 	ch.sex = "man";
-	ch.name 	= "Alexandro";
-    ch.lastname = "de la Cruz";
+	ch.name 	= "Алехандро";
+    ch.lastname = "де ла Круз";
 	ch.City = "SanAndres";
 	ch.greeting = "mayor_4";
 	ch.location = "SanAndres_townhall";
@@ -173,7 +173,7 @@ int CreateProvidenceCharacters(int n)
 	n = n + 1;
 	
 	makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "SanAndres_Smuggler";
 	ch.model    = "citiz_30";

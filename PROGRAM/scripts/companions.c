@@ -15,7 +15,7 @@ bool Ship_AutoAbordage(ref rCharacter, float fMinEnemyDistance)
 
 		//navy 18.02.08 Запрет абордажа
 		if (CheckAttribute(rCharacter, "Tasks.CanBoarding") && !sti(rCharacter.Tasks.CanBoarding)) return false;
-		
+
 		// Addon 2016-1 Jason Пиратская линейка
 		if (sti(RealShips[sti(rCharacter.ship.type)].basetype) == SHIP_POLACRE_QUEST && rCharacter.id == "Ignasio") return false;
 		if (rCharacter.id == "Terrax") return false;
@@ -69,12 +69,12 @@ bool Ship_AutoAbordage(ref rCharacter, float fMinEnemyDistance)
             { // победа
                 if (IsCompanion(rShipCharacter))
 			    {
-			        Log_SetStringToLog("Our ship " + rShipCharacter.Ship.Name + " was boarded ");
+			        Log_SetStringToLog("Наш корабль " + rShipCharacter.Ship.Name + " взят на абордаж ");
 			    }
 			    else
 			    {
-			        Log_SetStringToLog("" + rShipCharacter.Ship.Name + " was boarded ");
-					trace("" + rShipCharacter.Ship.Name + " was boarded ");
+			        Log_SetStringToLog("Корабль " + rShipCharacter.Ship.Name + " взят на абордаж ");
+					trace("Корабль " + rShipCharacter.Ship.Name + " взят на абордаж ");
 			    }
 			    deadCrew = sti(rCharacter.Ship.Crew.Quantity) * fEnCrewFencing / (fOurCrewFencing*1.8);
 				if (IsCompanion(rShipCharacter))
@@ -102,14 +102,14 @@ bool Ship_AutoAbordage(ref rCharacter, float fMinEnemyDistance)
             { // поражение
                 if (IsCompanion(rCharacter))
 			    {
-			        Log_SetStringToLog("Our ship " + rCharacter.Ship.Name + " has lost the fight ");
+			        Log_SetStringToLog("Наш корабль " + rCharacter.Ship.Name + " проиграл абордаж ");
 					Statistic_AddValue(pchar, "Sailors_dead", sti(rCharacter.Ship.Crew.Quantity));
 					Achievment_SetStat(pchar, 21, sti(rCharacter.Ship.Crew.Quantity));
 			    }
 			    else
 			    {
-			        Log_SetStringToLog("" + rCharacter.Ship.Name + " lost the fight ");
-					trace("" + rCharacter.Ship.Name + " lost the fight ");
+			        Log_SetStringToLog("Корабль " + rCharacter.Ship.Name + " проиграл абордаж ");
+					trace("Корабль " + rCharacter.Ship.Name + " проиграл абордаж ");
 			    }
 			    deadCrew = sti(rShipCharacter.Ship.Crew.Quantity) * fOurCrewFencing/ (fEnCrewFencing*1.8);
 			    SetCrewQuantity(rShipCharacter, makeint(sti(rShipCharacter.Ship.Crew.Quantity) - deadCrew));
@@ -182,9 +182,9 @@ void SeaExchangeCharactersShips(ref rOneChr, ref rSecChr, bool _showLog, bool _s
 	}
 	if (_showLog)
 	{
-		Log_SetStringToLog(GetFullName(rOneChr) + " changed one's ship to " +
+		Log_SetStringToLog(GetFullName(rOneChr) + " обменял свой корабль на " +
 						XI_ConvertString(RealShips[sti(rOneChr.Ship.Type)].BaseName) + " " + rOneChr.Ship.Name + ".");
-		trace(GetFullName(rOneChr) + " changed one's ship to " +
+		trace(GetFullName(rOneChr) + " обменял свой корабль на " +
 						XI_ConvertString(RealShips[sti(rOneChr.Ship.Type)].BaseName) + " " + rOneChr.Ship.Name + ".");				
 	}
 }
@@ -201,13 +201,15 @@ bool CheckChanceOfBetterShip(ref rChar, ref rTryChar)
 	//запрет меняться кораблями 18.02.08
 	if (CheckAttribute(rChar, "Tasks.CanChangeShipAfterBoarding") && !sti(rChar.Tasks.CanChangeShipAfterBoarding)) return false;
     if (CheckAttribute(rChar, "Tasks.CanBoarding") && !sti(rChar.Tasks.CanBoarding)) return false;
-	
-	// Addon 2016-1 Jason Пиратская линейка
-	if (sti(RealShips[sti(rCharacter.ship.type)].basetype) == SHIP_POLACRE_QUEST && rCharacter.id == "Ignasio") return false;
-	if (rCharacter.id == "Terrax") return false;
+    
+	// Addon 2016-1 Jason Пиратская линейка // правки релиза
+	//if (sti(RealShips[sti(rCharacter.ship.type)].basetype) == SHIP_POLACRE_QUEST && rCharacter.id == "Ignasio") return false;
+	//if (rCharacter.id == "Terrax") return false;
     
 	//заглушка для квестовых кораблей с 48ф пушками. 22.09.05
 	if (sti(rChar.Ship.Cannons.Type) == CANNON_TYPE_CANNON_LBS48 || sti(rTryChar.Ship.Cannons.Type) == CANNON_TYPE_CANNON_LBS48) return false;
+
+	
 
 	fChance = (stf(rShip.Class) / stf(rTryShip.Class)) * 0.3; //при равных классах база 30%
 

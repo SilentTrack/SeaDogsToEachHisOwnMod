@@ -21,22 +21,22 @@ void ProcessDialogEvent()
 			{
 				if (sti(NPChar.nation) != PIRATE && GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY)//проверка межнациональных отношений
 				{
-					dialog.text = "Hm. You sail under the flag of "+NationNameGenitive(sti(pchar.nation))+", pal. I have no wish in talking with you and I don't want problems... Leave me!";
-					link.l1 = "And you, captain...";
+					dialog.text = "Хм. Ты ходишь под флагом "+NationNameGenitive(sti(pchar.nation))+", приятель. У меня нет никакого желания с тобой общаться - потом проблем не оберешься... Ступай своей дорогой!";
+					link.l1 = "Ну надо же, сам - капитан, а все туда же...";
 					link.l1.go = "exit";
 					break;
 				}
-				if (CheckAttribute(npchar, "quest.march") && !CheckAttribute(pchar, "questTemp.Sharlie.Lock"))//боевые генераторные квесты
+				if (CheckAttribute(npchar, "quest.march") && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && GetCompanionQuantity(pchar) < 5)//боевые генераторные квесты 2015
 				{
-					dialog.text = "Ha!  You are just in time, captain... I have a business proposal for you. Do you have a few hours for me?";
-					link.l1 = "I don't. I am in a hurry, colleague. Next time maybe.";
+					dialog.text = "Ха! Вы очень вовремя, капитан... У меня к вам деловое предложение. У вас есть пара свободных часов?";
+					link.l1 = "Нет. Я тороплюсь, коллега. Как-нибудь в другой раз.";
 					link.l1.go = "exit_quest";
-					link.l2 = "I do. I am ready to listen you. Where are we going? To the tavern?";
+					link.l2 = "Есть. Я готов вас выслушать. Куда отправимся? В таверну?";
 					link.l2.go = "march";
 					break;
 				}
-				dialog.text = "Ha, good day to you, colleague! It's good to see a prosperous captain!";
-				link.l1 = "Glad to see you, sir! My name is "+GetFullName(pchar)+". Do you have a spare minute to chat?";
+				dialog.text = "Ха, приветствую вас, коллега! Приятно видеть преуспевающего капитана!";
+				link.l1 = "Рад встрече, уважаемый! Мое имя - "+GetFullName(pchar)+". Не найдется минутки поболтать?";
 				link.l1.go = "question";
 				npchar.quest.meeting = "1";
 			}
@@ -45,14 +45,14 @@ void ProcessDialogEvent()
 				//повторные обращения
 				if (sti(NPChar.nation) != PIRATE && GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY)
 				{
-					dialog.text = "Should I repeat myself? I don't want to be suspected as a friend of "+NationNameAblative(sti(pchar.nation))+"! Get lost or I will call the guards!";
-					link.l1 = "Fine, fine, calm down. I am leaving.Fine, fine, calm down. I am leaving.";
+					dialog.text = "Я что, непонятно выражаюсь? Я не желаю, чтобы меня заподозрили в связи с "+NationNameAblative(sti(pchar.nation))+"! Проваливай, не то точно страже доложу!";
+					link.l1 = "Ладно-ладно, не кипятись. Ухожу.";
 					link.l1.go = "exit";
 				}
 				else
 				{
-					dialog.text = "What do you want?";
-					link.l1 = "Nothing.";
+					dialog.text = "Что вам надо?";
+					link.l1 = "Ничего.";
 					link.l1.go = "exit";
 				}
 			}
@@ -60,23 +60,23 @@ void ProcessDialogEvent()
 		break;
 
 		case "question":
-			dialog.text = NPCStringReactionRepeat(""+GetFullName(npchar)+" at you service, good sir! What would you like to know?", 
-				"Glad to talk with you, captain!", 
-				"Well, I suppose I have got some more time...",
-                "Unfortunately I have to go. See you!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Do you have something interesting to tell me about?", 
-				"Do you have something interesting to tell me about?",
-                "Do you have something interesting to tell me about?", 
-				"Sure. Good luck!", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(""+GetFullName(npchar)+" к вашим услугам, милейший! Что вы хотели узнать?", 
+				"Рад поболтать, капитан!", 
+				"Ну, пожалуй, у меня есть еще время...",
+                "К сожалению, мне пора идти. Всего доброго!", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Может, расскажете что интересное?", 
+				"Может, расскажете что интересное?",
+                "Может, расскажете что интересное?", 
+				"Да, конечно. Удачи вам!", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("rumours_landcaptain", "rumours_landcaptain", "rumours_landcaptain", "exit", npchar, Dialog.CurrentNode);
 		break;
 		
 		//квестовая часть
 			case "march":
-				dialog.text = "No, captain there are a lot of ears in the tavern and we don't need them, trust me. This proposal is all about taking something from someone so... let's have a talk on my ship.";
-				link.l1 = "Fine... What's your ship and it's name?";
+				dialog.text = "Нет, капитан, на улице и в таверне много лишних ушей, а они нам ни к чему, уверяю вас. Дело пойдет о том, чтобы кое-кого хорошенько пощипать, так что... давайте лучше побеседуем у меня на корабле.";
+				link.l1 = "Хорошо... Что у вас за судно и как называется?";
 				link.l1.go = "march_1";
-				link.l2 = "It looks quite suspicious to me... No, I'd better reject your invitation... Farewell, sir!";
+				link.l2 = "Что-то мне это кажется подозрительным... Нет, пожалуй, я откажусь от вашего приглашения. Прощайте, сударь!";
 				link.l2.go = "exit_quest";
 			break;
 			
@@ -94,8 +94,8 @@ void ProcessDialogEvent()
 				pchar.GenQuest.MarchCap.BaseNation = npchar.nation;
 				pchar.GenQuest.MarchCap.Nation = drand(HOLLAND);
 				pchar.GenQuest.MarchCap.basecity = npchar.city;
-				dialog.text = "My ship is "+GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(pchar.GenQuest.MarchCap.shiptype), "Name")))+" '"+pchar.GenQuest.MarchCap.shipname+" and it's in the harbor. Don't be late captain, I'll be away in six hours!";
-				link.l1 = "I see, I will try to be on time. See you!";
+				dialog.text = "Мой корабль - "+GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(pchar.GenQuest.MarchCap.shiptype), "Name")))+" '"+pchar.GenQuest.MarchCap.shipname+"', стоит на рейде. Не затягивайте, капитан: через шесть часов я планирую поднимать якоря!";
+				link.l1 = "Понятно. Постараюсь прибыть к вам вовремя. До встречи!";
 				link.l1.go = "march_2";
 			break;
 			
@@ -118,8 +118,8 @@ void ProcessDialogEvent()
 			
 		//замечание по обнаженному оружию от персонажей типа citizen
 		case "CitizenNotBlade":
-			dialog.text = NPCharSexPhrase(NPChar, "Listen, I am the citizen of this town and I'd ask you to hold down your blade.", "Listen, I am the citizen of this town and I'd ask you to hold down your blade.");
-			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
+			dialog.text = NPCharSexPhrase(NPChar, "Послушайте, я, как гражданин этого города, прошу вас не ходить у нас с обнаженным клинком.", "Знаете, я, как гражданка этого города, прошу вас не ходить у нас с обнаженным клинком.");
+			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажете...");
 			link.l1.go = "exit";
 		break;
 		

@@ -600,7 +600,7 @@ void FillSkillTables()
     }
     else
     {
-        GameInterface.TABLE_OTHER.tr7.td3.str = "no title";
+        GameInterface.TABLE_OTHER.tr7.td3.str = "нет звания";
     }
 
 	GameInterface.TABLE_OTHER.tr8.UserData.ID = "NextExp";
@@ -989,7 +989,7 @@ void ChoosePerk()
 
     if (CheckAttribute(&ChrPerksList, "list." + perkName + ".OfficerType"))
     {
-        descr += "\n\n The ability works for an appointed officer "+ XI_ConvertString (ChrPerksList.list. (PerkName) .OfficerType) +", who was learnt it.";
+        descr += "\n\n Способность будет работать и в том случае, если назначен офицер " + XI_ConvertString(ChrPerksList.list.(perkName).OfficerType)+ ", у которого она есть.";
     }
     SetFormatedText("PERK_WINDOW_TEXT", descr);
     SetVAligmentFormatedText("PERK_WINDOW_TEXT");
@@ -1103,8 +1103,8 @@ void ExitMsgMenu()
 
 void ShowMsgMenu()
 {
-	SetFormatedText("MSG_WINDOW_CAPTION", "Create your hero");
-	SetFormatedText("MSG_WINDOW_TEXT", "To change the settings, specify the characteristics of the hero and arrows redistribute points. Skills are automatically converted from selected PIRATES. Close the form of a cross or Esc, when the distribution is completed.");
+	SetFormatedText("MSG_WINDOW_CAPTION", "Создать своего героя");
+	SetFormatedText("MSG_WINDOW_TEXT", "Для изменения параметров героя укажите характеристику и стрелками перераспределите очки. Умения автоматически пересчитаются от выбранных PIRATES. Закройте форму крестиком или Esc, когда распределение будет завершено.");
 	
 	XI_WindowShow("MSG_WINDOW", true);
 	XI_WindowDisable("MSG_WINDOW", false);

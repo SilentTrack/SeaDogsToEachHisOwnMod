@@ -2201,7 +2201,7 @@ void MakeQuickSave()
 	// boal 09.07.06 -->
 	if (!QuickSaveGameEnabledHardcore())
 	{
-        Log_Info("In his game mode you can save only in churches");
+        Log_Info("Сохранение в данной игре возможно только в церквях.");
 		return;
 	}
 	
@@ -2383,8 +2383,8 @@ string GetPlayTime()
 int GetPlayTimeHours() // ugeen 2016 - нужно для ачивки
 {
 	int hours = sti( InterfaceStates.GameTime.hour );
-//	int days = hours / 24;
-//	hours = hours - days*24;
+	//int days = hours / 24; 
+	//hours = hours - days*24;
 	
 	return hours;
 }

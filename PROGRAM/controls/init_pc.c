@@ -227,6 +227,10 @@ void ExternControlsInit(bool bFirst)
 		CI_CreateAndSetControls( "Sailing3Pers", "Ship_SetRTime", CI_GetKeyCode("KEY_R"), 0, true );
 	}
 */	
+	if (MOD_BETTATESTMODE == "On")
+	{
+		CI_CreateAndSetControls( "Sailing3Pers", "Test_MastFall", CI_GetKeyCode("KEY_Y"), 0, true );
+	}
 /*
 	CI_CreateAndSetControls( "Sailing3Pers", "Ship_GetPosition", CI_GetKeyCode("KEY_V"), 0, true );
 	MapControlToGroup("Ship_GetPosition","Sailing1Pers");

@@ -4,37 +4,37 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
  	switch(Dialog.CurrentNode)
 	{
         case "quests":
-            dialog.text = "Speak, I am listening";
-			link.l1 = "I was mistaken. Farewell.";
+            dialog.text = "Говорите, я слушаю.";
+			link.l1 = "Я "+ GetSexPhrase("ошибся","ошиблась") +". Прощайте.";
 			link.l1.go = "Exit";
 			// Калеуче
 			if (CheckAttribute(pchar, "questTemp.Caleuche.Bandos") && pchar.questTemp.Caleuche.Bandos == "start")
 			{
-				link.l1 = "I heard about a gang of thieves and robbers operating in the vicinity of Beliz and in the town itself.";
+				link.l1 = "Я слышал, что в окрестностях Белиза появилась шайка воров и разбойников. И что они также промышляют в самом городе.";
 				link.l1.go = "caleuche";
 			}
 			if (CheckAttribute(pchar, "questTemp.Caleuche.Bandos") && pchar.questTemp.Caleuche.Bandos == "know" && CheckAttribute(pchar, "questTemp.Caleuche.belizbandos") && GetQuestPastDayParam("questTemp.Caleuche.belizbandos") < 3)
 			{
-				link.l1 = "I can give you information about the gang.";
+				link.l1 = "Я могу сообщить вам кое-что о банде.";
 				link.l1.go = "caleuche_3";
 			}
 			if (CheckAttribute(pchar, "questTemp.Caleuche.BelizRegard"))
 			{
-				link.l1 = "What news about the gang& Have you seized them at the cave?";
+				link.l1 = "Какие новости о банде? Вы взяли их у пещеры?";
 				link.l1.go = "caleuche_7";
 			}
 		break;
 		
 		// Калеуче
 		case "caleuche":
-			dialog.text = "Your source was telling the truth. These bandits have become a real pain in the butt for us. Can you tell anything about them?";
-			link.l1 = "Beside that they stole one important thing for me - nothing. Frankly, I hoped that you would be able to tell me something about them. If, say, one of them was caught and is now ready to testify ...";
+			dialog.text = "Ваши слухи вам не соврали. Эти бандиты стали нашей настоящей головной болью. Вы хотите что-то сообщить о них?";
+			link.l1 = "Кроме того, что они украли важную для меня вещь - ничего. Я надеялся, что вы мне расскажете про них что-нибудь. Например, что кто-то из их шайки пойман и готов дать показания...";
 			link.l1.go = "caleuche_1";
 		break;
 		
 		case "caleuche_1":
-			dialog.text = "Sorry to disappoint you, captain, but I have no information about them. I only know that they are hiding somewhere in the jungle, and they have accomplices in town, that's all. Now if you learn anything new about them, please tell me immediately.";
-			link.l1 = "Alright, officer. I'll do that.";
+			dialog.text = "Я вас разочарую, капитан. У нас нет о них никаких сведений кроме того, что они прячутся где-то в джунглях, а в городе у них есть сообщники. Вот и всё, что мне известно. Если узнаете больше - немедленно мне собщите.";
+			link.l1 = "Хорошо, офицер. Я обязательно так и сделаю.";
 			link.l1.go = "caleuche_2";
 		break;
 		
@@ -46,23 +46,23 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "caleuche_3":
 			string sTime;
-			if (GetQuestPastDayParam("questTemp.Caleuche.belizbandos") == 0) sTime = "in three days";
-			if (GetQuestPastDayParam("questTemp.Caleuche.belizbandos") == 1) sTime = "the day after tomorrow";
-			if (GetQuestPastDayParam("questTemp.Caleuche.belizbandos") == 2) sTime = "tomorrow";
-			dialog.text = "Are you serious, captain? Speak out, I am all attention.";
-			link.l1 = "I have found one of their informers in the town. He told me that their gang is about to attack a ship, which is supposed to arrive to the cove of Chetumal. The villains are gathering "+sTime+" at night near a cave not far from Belize. To get there, one must take the left path at the fork in the jungle.";
+			if (GetQuestPastDayParam("questTemp.Caleuche.belizbandos") == 0) sTime = "через три дня";
+			if (GetQuestPastDayParam("questTemp.Caleuche.belizbandos") == 1) sTime = "послезавтра";
+			if (GetQuestPastDayParam("questTemp.Caleuche.belizbandos") == 2) sTime = "завтра";
+			dialog.text = "Вы серьезно, капитан? Выкладывайте, я внимательно слушаю.";
+			link.l1 = "Я нашел одного из их осведомителей в городе. От него мне удалось узнать, что их шайка готовится напасть на судно, которое дожно прибыть в бухту Четумаль. Сбор негодяев назначен "+sTime+" ночью у пещеры, что недалеко от Белиза, если в джунглях на развилке взять левее.";
 			link.l1.go = "caleuche_4";
 		break;
 		
 		case "caleuche_4":
-			dialog.text = "At the cave? Excellent news. I will order to prepare an ambush for these villains. If you got it right and your informer was telling the truth, we shall catch them red-handed, and then I'll solicit for you before the governor regarding your reward.";
-			link.l1 = "Thanks! I'll come to see you in three days, when it's over.";
+			dialog.text = "У пещеры? Отличные вести. Я немедленно отдам приказ подготовить на мерзавцев засаду. Если вы не ошиблись, или ваш осведомитель не соврал, и мы возьмем подонков, я буду ходатайствовать за вас перед губернатором о награде.";
+			link.l1 = "Спасибо! Я загляну к вам денька через три - как раз всё уже разрешится.";
 			link.l1.go = "caleuche_5";
 		break;
 		
 		case "caleuche_5":
-			dialog.text = "Alright. That’s fine.";
-			link.l1 = "Until we meet again, officer.";
+			dialog.text = "Хорошо. Заходите.";
+			link.l1 = "До встречи, офицер.";
 			link.l1.go = "caleuche_6";
 		break;
 		
@@ -77,34 +77,34 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "caleuche_7":
 			if (sti(pchar.questTemp.Caleuche.BelizChance) < 3)
 			{
-				dialog.text = "We prepared a warm welcome for the scoundrels, ha-ha-ha! If only you could have seen their faces! We took everyone, including the ringleader! They attempted to resist, but our brave soldiers had eliminated them.";
-				link.l1 = "Excellent news, officer! Now the citizens of Beliz can finally sleep the sleep of the just.";
+				dialog.text = "Мы устроили мерзавцам теплый прием, ха-ха-ха! Накрыли банду в полном составе, вместе с главарем! Вы бы видели их изумленные рожи! Они попытались оказать сопротивление, но были уничтожены мушкетным огнем и саблями наших бравых солдат.";
+				link.l1 = "Отличные новости, офицер! Теперь граждане Белиза могут спать спокойно.";
 				link.l1.go = "caleuche_12";
 			}
 			else
 			{
-				dialog.text = "Hmm… My soldiers had been waiting for them at the cave for the whole night, but no one ever showed up. The sergeant was really furious. It's good that he didn't catch sight of you.";
-				link.l1 = "Goddammit! That just can't be! At which cave have you set the ambush? There are two of them!";
+				dialog.text = "Хм. Мои солдаты прождали всю ночь у пещеры, и никто так и не появился. Сержант был просто в ярости. Хорошо, что вы ему не попались на глаза.";
+				link.l1 = "Черт побери! Не может быть! У какой пещеры была засада? Там их две!";
 				link.l1.go = "caleuche_8";
 			}
 		break;
 		
 		case "caleuche_8":
-			dialog.text = "Where you told me. At the one to the right at the fork...";
-			link.l1 = "TO THE LEFT! To the left on the fork!";
+			dialog.text = "У какой вы сказали, у той и устроили. На развилке в джунглях направо...";
+			link.l1 = "Налево!! На развилке - на-ле-во! Я же говорил!";
 			link.l1.go = "caleuche_9";
 		break;
 		
 		case "caleuche_9":
-			dialog.text = "But I perfectly remember that you said - to the right.";
-			link.l1 = "Oh my God! To the left! You let them slip away, and it was your fault!";
+			dialog.text = "Но я же точно помню, что вы сказали - направо!";
+			link.l1 = "Я сказал - налево. Вы упустили банду по собственной же ошибке!";
 			link.l1.go = "caleuche_10";
 		break;
 		
 		case "caleuche_10":
 			AddQuestRecord("Caleuche", "16");
-			dialog.text = "Then you must have mumbled something under your nose. I can hear quite well, you know.";
-			link.l1 = "Alright, officer, I am not going to argue. I just wanted to help. Farewell.";
+			dialog.text = "Значит, вы мямлили себе под нос, а не говорили. У меня со слухом все в порядке, и я...";
+			link.l1 = "Я не желаю с вами спорить, офицер. Я искренне хотел помочь. Прощайте.";
 			link.l1.go = "caleuche_11";
 		break;
 		
@@ -115,20 +115,20 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "caleuche_12":
-			dialog.text = "I reported to the governor of your role in the elimination of the gang. He valued your contribution very highly and authorized me to present you with a reward: a monetary premium and a trophy arquebus.";
-			link.l1 = "Thank you!";
+			dialog.text = "Я доложил губернатору о вашей роли в уничтожении бандитов. Он высоко оценил ваш вклад и уполномочил меня выдать вам награду: денежную премию и трофейное ружье. Извольте получить!";
+			link.l1 = "Спасибо!";
 			link.l1.go = "caleuche_13";
 		break;
 		
 		case "caleuche_13":
-			Log_Info("You have received a chest with doubloons");
-			Log_Info("You have received an arquebus");
+			Log_Info("Вы получили сундук с дублонами");
+			Log_Info("Вы получили аркебузу");
 			PlaySound("interface\important_item.wav");
 			AddQuestRecord("Caleuche", "17");
 			GiveItem2Character(pchar, "chest"); 
 			GiveItem2Character(pchar, "mushket3"); 
-			dialog.text = "Thanks for the service, captain! If only all our citizens were as conscientious as you, we'd have defeated the crime once and for all long ago! Best of luck to you!";
-			link.l1 = "Goodbye, officer! Best of luck to you in your service!";
+			dialog.text = "Благодарю за службу, капитан! Если бы все граждане были такими же предприимчивыми и сознательными, как вы, мы бы уже давно искоренили преступность. Всего доброго!";
+			link.l1 = "До свидания, офицер. Удачи в вашей службе!";
 			link.l1.go = "caleuche_11";
 			ChangeCharacterComplexReputation(pchar, "nobility", 5);
 			ChangeCharacterComplexReputation(pchar, "authority", 3);

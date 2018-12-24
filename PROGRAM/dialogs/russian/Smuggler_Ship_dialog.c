@@ -22,34 +22,34 @@ void ProcessDialogEvent()
 		break;
 
 		case "start":
-			dialog.text = "Wake up, " + Pchar.name + "! We have reached the "+ Pchar.HeroParam.Land +" destination at last after all of these storms!"+
-                          "  What are you going to do now? You've lost your ship.";
-			link.l1 = "Not my first time! Fortune is a bitch.";
+			dialog.text = "Просыпайся, " + Pchar.name + "! Мы наконец добрались до "+ Pchar.HeroParam.Land +" после всех этих штормов!"+
+                          " Что собираешься делать? Корабля-то у тебя больше нет.";
+			link.l1 = "Не в первый раз! Удача - переменчивая штука.";
 			link.l1.go = "start1";
-			link.l2 = "Do you want to offer me a job, Abraham?";
+			link.l2 = "Хочешь мне предложить работу, Абрахам?";
 			link.l2.go = "start2";
 		break;
 
 		case "start1":
-			dialog.text = "I hope that you'll have more like than with yours 'Mercury'. Farewell.";
-			link.l1 = "No doubt in that. Farewell, captain!";
+			dialog.text = "Надеюсь, тебе повезет больше чем с 'Меркурием'. Прощай.";
+			link.l1 = "Не сомневаюсь. Прощай, капитан!";
 			link.l1.go = "game_begin";
 		break;
 		
 		case "start2":
-            ret = Pchar.name + ", I am a smuggler not a mayor.";
+            ret = Pchar.name + ", я контрабандист, а не мэр города. Какая у меня для тебя работа?";
             if (sti(Pchar.nation) == PIRATE)
             {
-                dialog.text = ret + " Check up the Inness's tavern. She is aware about everyone in the town."+
-                              "  Go to Urksen, he is the leader here. But have a talk with local pirates first.";
+                dialog.text = ret + " Загляни в таверну к Инес. Она знает всех на этом острове."+
+                              " Зайди к Юрксену, он здесь у пиратов вместо губернатора. Но сначала поговори с простыми пиратами.";
             }
             else
             {
-                dialog.text = ret + " Borrow some coin, sell your stuff. You know what to do.";
+                dialog.text = ret + " Займи где-нибудь денег, продай что-нибудь. Не мне тебя учить.";
             }
-            link.l1 = "Fine, thanks for an advice. Farwell.";
+            link.l1 = "Ладно, спасибо за совет. Прощай.";
 			link.l1.go = "game_begin";
-			link.l2 = "You know, Abraham, I'd better take your ship. I kind of like it!";
+			link.l2 = "Знаешь, Абрахам, я, пожалуй, реквизирую твой корабль. Мне он очень понравился!";
 			link.l2.go = "start3";
 		break;
 		
@@ -59,23 +59,23 @@ void ProcessDialogEvent()
 		break;
 		
 		case "start3":
-			dialog.text = "Bad joke, pal.";
-			link.l1 = "Don't worry , old man. Farewell!";
+			dialog.text = "Ты плохо шутишь, приятель.";
+			link.l1 = "Не бери в голову, старик. Прощай!";
 			link.l1.go = "game_begin";
-			link.l2 = "Who said that I was joking? You tell your people that you've sold your vessel to me. And I'll spare your life. Deal?";
+			link.l2 = "А кто сказал, что я шучу? Ты скажешь команде, что продал мне свою посудину. А я оставлю тебе жизнь. Договорились?";
 			link.l2.go = "start4";
 		break;
 		
 		case "start4":
-			dialog.text = "They say that you've murdered your master Malcolm Hatcher for a cheap saber. I thought that it was just a bubble talk. Such a fool I was. You'll be feeding fish tonight, lad. You have got no chance.";
-			link.l1 = "O really?";
+			dialog.text = "Говорили, что ты убил своего учителя Малькольма Хатчера из-за паршивой сабли. Не верил, а зря. Сегодня ты будешь кормить рыб. У тебя нет ни шанса, приятель.";
+			link.l1 = "Неужели?!";
 			link.l1.go = "exit";
 			addDialogExitQuest("Tut_KillOnShip");
 		break;
 
 		case "First time":
 			dialog.text = "";
-			Link.l1 = "Oops...";
+			Link.l1 = "Упс...";
 			Link.l1.go = "exit";
 		break;
 
@@ -88,18 +88,18 @@ void ProcessDialogEvent()
 			int iRnd = (rand(100) == 30);
 			if (iRnd)
 			{
-				dialog.text = "We have an idea to sell you as a slave. Ha.. Money are always useful.";
-				link.l1 = "You don't say?";
+				dialog.text = "Мы тут подумали, что, может, стоит продать тебя на рудники. Ха... деньги лишними не бывают.";
+				link.l1 = "Что вы говорите?";
 				//заглушка, пока нет рудников.
 				link.l1.go = "Travel_fight";
 				//"Travel_mine"; //Собственно тоже можно боевку организовать, ГГ сопротивляется.
 			}
 			else
 			{
-				dialog.text = "We've reached our destination. Farewell.";
-				link.l1 = "Farewell.";
+				dialog.text = "Мы прибыли на место, прощай.";
+				link.l1 = "Прощай.";
 				link.l1.go = "Travel_end";
-				link.l2 = "I like your ship. Want to keep it to myself.";
+				link.l2 = "Я тут подумал, нравится мне твой корабль. Хочу оставить его себе.";
 				link.l2.go = "Travel_fight";
 			}
 		break;

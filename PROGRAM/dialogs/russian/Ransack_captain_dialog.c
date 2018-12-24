@@ -22,57 +22,57 @@ void ProcessDialogEvent()
 		//--> Jason, Ложный след
 		if (CheckAttribute(pchar, "questTemp.FalseTrace.Prisoner") && GetFullName(npchar) == pchar.questTemp.FalseTrace.CapName)
 		{
-			dialog.text = "What do you want, captain? Discuss my ransom? I'd like you to know that I care about the girl's fate...";
-			link.l1 = "You talk about Katerine Rayner? I am already informed about "+pchar.questTemp.FalseTrace.CapName+". She asked me to talk with you.";
+			dialog.text = "Что вам угодно, капитан? Вы пришли обсудить вопрос о моем выкупе? Я бы хотел вас уведомить, что мне крайне небезразлична судьба девушки...";
+			link.l1 = "Катерины Рейнер? Я уже в курсе, "+pchar.questTemp.FalseTrace.CapName+". Именно по ее просьбе я здесь.";
 			link.l1.go = "FalseTrace_Prisoner";
 			break;	
 		}
 		//<-- Ложный след
 		
-		// Addon-2016 Jason ”ЊЉ-ѓваделупа
+		// Addon-2016 Jason ФМК-Гваделупа
 		if (CheckAttribute(pchar, "questTemp.FMQG") && pchar.questTemp.FMQG != "fail" && CheckAttribute(pchar, "questTemp.FMQG.Prisoner") && GetFullName(npchar) == pchar.questTemp.FMQG.Prisoner)
 		{
 			dialog.text = "";
-			link.l1 = "See now, don Juan, treason is bad...";
+			link.l1 = "Ну что, дон Хуан, как видишь, предательство до добра тебя не довело...";
 			link.l1.go = "FMQG";
 			break;	
 		}
 			if (sti(NPChar.nation) == PIRATE)
 			{
-				dialog.text = RandSwear() + "I am your prisoner, " + GetAddress_Form(NPChar) + ". But I want you to know that " + NationNameNominative(sti(NPChar.nation)) + " never pays for their people. We are all for ourselves.";
-				link.l1 = "Well... I see that I won't make any profit on you. At least I can ransom you as a criminal in any colony.";
+				dialog.text = RandSwear() + "Я Ваш пленник, " + GetAddress_Form(NPChar) + ". Но должен сказать, что " + NationNameNominative(sti(NPChar.nation)) + " никогда не выкупает своих -  каждый сам за себя.";
+				link.l1 = "Н-да... На тебе не заработать, только если сдать тебя как преступника в каком-нибудь порту за выкуп.";
 				link.l1.go = "offender";
 				if (FindFreeRandomOfficer() > 0)
 				{
-					link.l2 = "Look, you are a skilled fighter and I need people like you. Would you like to serve under my command?";
+					link.l2 = "Слушай, ты неплохой боец, а мне как раз нужны отчаянные головорезы. Не желаешь послужить у меня офицером?";
 					link.l2.go = "free_to_officer";
 				}	
 			}
 			else
 			{
-				dialog.text = RandSwear() + "I am your prisoner, " + GetAddress_Form(NPChar) + ". " + NationNameNominative(sti(NPChar.nation)) + " will pay a good price for my freedom.";
+				dialog.text = RandSwear() + "Я ваш пленник, " + GetAddress_Form(NPChar) + ". " + NationNameNominative(sti(NPChar.nation)) + " заплатит хорошую сумму за мою свободу.";
 				if(NPChar.EncType == "trade" && FindFreeRandomOfficer() > 0 && CheckAttribute(NPChar, "Back.Ship.Mode") && NPChar.Back.Ship.Mode == "trade")
 				{
-					link.l1 = "Look, you are a skilled sailor and I need people like you. Would you like to serve under my command?";
+					link.l1 = "Послушайте, в морском деле вы дока, а мне нужны опытные моряки. Не желаете послужить под моим началом?";
 					link.l1.go = "free_to_officer_trader";
 				}
 			}
 			attrLoc = Sea_FindNearColony();
 			if (attrLoc != "none") 
 			{
-                link.l3 = "We are not far from " + GetConvertStr(attrLoc +" Town", "LocLables.txt") + ". And I could let you go here.";
+                link.l3 = "Мы сейчас близ города " + GetConvertStr(attrLoc +" Town", "LocLables.txt") + ". Я "+ GetSexPhrase("мог","могла") +" бы вас тут высадить.";
 			    link.l3.go = "free_withoutFee";
 			}
 			else
 			{
-                link.l3 = "Go to the boatswain, tell him to give you a locker. You can land in the next harbor.";
+                link.l3 = "Ступайте к боцману, скажите пусть выделит рундук на баке. В ближайшей бухте сойдёте на берег.";
 			    link.l3.go = "free_withoutFee_2";
 			}			
-			link.l4 = "I suppose I will make a great slave of you - strong and dutiful.";
+			link.l4 = "Я думаю, из вас получится отличный раб - крепкий и послушный.";
 			link.l4.go = "Slave_1";
-			link.l5 = "You have ignored an order to lower your flag and resisted with force. You will be hanged for it. Boatswain have already received my orders.";
+			link.l5 = "Вы проигнорировали приказ лечь в дрейф и оказали сопротивление, за это будете казнены. Боцман уже получил соответствующие распоряжения.";
 			link.l5.go = "PunishmentAction";
-			link.l99 = "I know.";
+			link.l99 = "Я знаю.";
 			link.l99.go = "exit";
 			NextDiag.TempNode = "second time"; 
 		break;
@@ -82,39 +82,39 @@ void ProcessDialogEvent()
 			{
 				switch(sti(NPChar.Hold_GenQuest.variant))
 				{				
-					case 0: // "tip-off"
-						dialog.text = RandPhraseSimple("Captain, would you like to hear my proposal about more profitable variant of my ransom?",
-							"I understand that there is no room for barter in my place but would you like to hear my proposal?");
-						link.l1 = "I am listening.";	
+					case 0: // "наводка"
+						dialog.text = RandPhraseSimple("Капитан, не сочтите за дерзость, не будет ли мне позволено предложить довольно выгодный вариант моего освобождения?",
+							"Я понимаю, что торговаться в моём положении неуместно, но не согласитесь ли выслушать деловое предложение?");
+						link.l1 = "Хм, ну излагайте своё предложение.";	
 						link.l1.go = "free_tip_off";
 					break;
 					
 					case 1:
-						dialog.text = "Captain, why won't you just release me? I have no value for you. If you sell me to slavers you will only get a few coins and bad renown.";
-						link.l1 = "And if I will simply release you I won't get a thing...";
+						dialog.text = "Капитан, отпустили бы вы меня. На что я вам теперь? Ну, продадите меня работорговцам - может и получите горсть серебра, только репутацию жестокого человека заработаете.";
+						link.l1 = "Если отпущу, то вообще ничего не заработаю...";
 						link.l1.go = "free_by_hoard";
 						attrLoc = Sea_FindNearColony();
 						if (attrLoc != "none") 
 						{
-							link.l2 = "You have ignored an order to lower your flag and resisted with force. You will be hanged for it. Boatswain have already received my orders.";
+							link.l2 = "Вы проигнорировали приказ лечь в дрейф и оказали сопротивление, за это будете казнены. Боцман уже получил соответствующие распоряжения.";
 							link.l2.go = "PunishmentAction";							
 						}
 						else
 						{
-							link.l2 = "You are really insistent so I think I can give you what you want. You are free man now. Leave my ship.";
+							link.l2 = "Вы так настаиваете на освобождении, что я готов пойти вам навстречу. Вы свободны - покиньте судно.";
 							link.l2.go = "free_in_sea";
 						}
-						link.l3 = LinkRandPhrase("Don't test my patience. You are already a lucky man to stay alive.",
-							"I have got my own plans on you.","I suppose that you can still be useful for me in future.");
+						link.l3 = LinkRandPhrase("Не искушайте мое терпение. Вам уже повезло остаться в живых.",
+							"У меня насчёт вас другие планы.","Я думаю, что вы мне еще пригодитесь.");
 						link.l3.go = "exit";	
 					break;
 					
-					case 2: // "ransom"
-						dialog.text = "Captain, this uncertainty is killing me. May I know about your plans you have on me?";
-						link.l1 = "Have you got anything to offer me?";
+					case 2: // "выкуп"
+						dialog.text = "Капитан, более всего угнетает неопределённость. Разрешите узнать, какие у вас насчёт меня планы?";
+						link.l1 = "Имеете конкретные предложения?";
 						link.l1.go = "free_buyout";
-						link.l2 = RandPhraseSimple("I haven't got any ideas yet about you.",
-							RandPhraseSimple("Plans? Cannonball on your neck? I am joking, ha!","You are my prisoner and I have all rights to do with you whatever I want. Your own opinion has no value here."));
+						link.l2 = RandPhraseSimple(RandPhraseSimple("Я еще не решил"+ GetSexPhrase("","а") +", что с вами делать.","Узнаете, когда время придёт."),
+							RandPhraseSimple("А какие планы? Ядро на шею и ага... Да шучу я, шучу.","Вы мой пленник, и я вправе поступить с вами, как сочту нужным, не учитывая ни вашего мнения, ни желания."));
 						link.l2.go = "exit";
 					break;										
 				}
@@ -124,44 +124,44 @@ void ProcessDialogEvent()
 			{
 				if (sti(NPChar.nation) == PIRATE)
 				{
-					dialog.text = "Captain, why won't you just let me go? You don't need me. Choosing to be pirate was the only option for me because I have no valuable skills or education. My wish was to make some coin and retire then.";
+					dialog.text = "Капитан, отпустили бы вы меня по-добру, по-здорову. Чего с меня взять? Я ведь не от доброй жизни в разбой подался - ничему больше и не обучен. Думал, деньжат на старость скопить, а вышло-то вон как.";
 					if (FindFreeRandomOfficer() > 0)
 					{
-						link.l2 = "Look, you are a skilled fighter and I need cut-throats like you. Would you like to be my officer?";
+						link.l2 = "Слушай, ты неплохой боец, а мне как раз нужны отчаянные головорезы. Не желаешь послужить у меня офицером?";
 						link.l2.go = "free_to_officer";
 					}				
-					link.l3 = LinkRandPhrase("No mercy for you. There are a lot of thugs at sea. One less will be sailing there now at least.",
-						"Problem, 'sea wolf'? Stay here.",
-						"Gallows is waiting for all of your kind. I will sell you to the authorities and that will be a great lesson for any pirate.");	
+					link.l3 = LinkRandPhrase("Пощады не ждите. Много вас таких по морю рыщет, теперь на одного меньше будет.",
+						"Что запричитал, 'гроза морей'? Сиди, раз попался.",
+						"Сколь верёвочке не виться, а петли не миновать. Сдам тебя властям, чтоб другим неповадно было.");	
 					link.l3.go = "exit";
 				}
 				else
 				{
 					if(NPChar.EncType == "trade")
 					{
-						dialog.text = "Captain, I beg you... Release me. I've got family and kids and they won't make it without me.";
+						dialog.text = "Капитан, всеми святыми молю - отпустите с миром. Дома семья, дети малые, каково им без кормильца? Уж похоронили, наверное...";
 						if (FindFreeRandomOfficer() > 0 && CheckAttribute(NPChar, "Back.Ship.Mode") && NPChar.Back.Ship.Mode == "trade")
 						{
-							link.l2 = "Look, you are a skilled sailor and I need people like you. Would you like to serve under my command?";
+							link.l2 = "Послушайте, в морском деле вы дока, а мне нужны опытные моряки. Не желаете послужить под моим началом?";
 							link.l2.go = "free_to_officer_trader";
 						}
-						link.l3 = LinkRandPhrase("I have got my own plans on you.","I suppose that you can still be useful for me in future.","You are my prisoner and I have all rights to do with you whatever I want.");
+						link.l3 = LinkRandPhrase("У меня насчёт вас другие планы.","Я думаю, что вы мне еще пригодитесь.","Вы мой пленник, и я поступлю с вами так, как сочту нужным.");
 						link.l3.go = "exit";
 					}
 					if(NPChar.EncType == "war")
 					{
-						dialog.text = RandPhraseSimple("Captain, I have lost my fight and I beg you for your mercy. ",
-							"Captain, I beg for your generosity. I understand that there is no reason for you to treat me like prisoner of war so I ask you to spare me. I give you my word that I will evade meeting you in the sea.");
-						link.l2 = LinkRandPhrase("Don't test my patience. You are already a lucky man to stay alive.", 
-							RandPhraseSimple("I have got my own plans on you.","I suppose that you can still be useful for me in future."),
-							RandPhraseSimple("You are my prisoner and I have all rights to do with you whatever I want. Your own opinion has no value here.",
-							"You are... well you was a captain of warship and you were aware of risks. Don't try to represent yourself as a saint here."));
+						dialog.text = RandPhraseSimple("Капитан, я своё сражение проиграл и хочу просить о снисхождении. Как великодушный человек отпустите во славу милосердия. Всё одно наказания мне не миновать - разжалуют за сдачу судна. Так хоть свободы не лишайте...",
+							"Капитан, взываю к вашему великодушию! Понимаю - нет смысла требовать обращаться со мной, как с военнопленным, поэтому прошу освободить. Даю слово офицера, что впредь буду избегать встречи с вами.");
+						link.l2 = LinkRandPhrase("Не искушайте мое терпение. Вам уже повезло остаться в живых.", 
+							RandPhraseSimple("У меня насчёт вас другие планы.","Я думаю, что вы мне еще пригодитесь."),
+							RandPhraseSimple("Вы мой пленник, и я вправе поступить с вами, как сочту нужным, не учитывая ни вашего мнения, ни желания.",
+							"Вы  капитан военного судна и знали на что идёте. Нечего теперь из себя святого представлять."));
 						link.l2.go = "exit";	
 						if (isMainCharacterPatented() && sti(Items[sti(pchar.EquipedPatentId)].TitulCur) > 1)
 						{
 							if(sti(Items[sti(pchar.EquipedPatentId)].Nation) == sti(NPChar.nation) && FindFreeRandomOfficer() > 0)
 							{
-								link.l3 = "Look, you are a skilled fighter and I need cut-throats like you. Would you like to be my officer?";
+								link.l3 = "Слушай, ты неплохой боец, а мне как раз нужны отчаянные головорезы. Не желаешь послужить у меня офицером?";
 								link.l3.go = "free_to_officer";
 							}
 						}
@@ -170,47 +170,47 @@ void ProcessDialogEvent()
 				attrLoc = Sea_FindNearColony();
 				if (attrLoc != "none") 
 				{
-					link.l4 = "We are not far from " + GetConvertStr(attrLoc +" Town", "LocLables.txt") + ". And I could let you go here.";
+					link.l4 = "Мы сейчас близ города " + GetConvertStr(attrLoc +" Town", "LocLables.txt") + ". Я "+ GetSexPhrase("мог","могла") +" бы вас тут высадить.";
 					link.l4.go = "free_withoutFee";
 				}
 				else
 				{
 					if(NPChar.EncType == "trade" || NPChar.EncType == "pirate")
 					{
-						link.l4 = "Go to the boatswain, tell him to give you a locker. You can land in the next harbor.";
+						link.l4 = "Ступайте к боцману, скажите пусть выделит рундук на баке. В ближайшей бухте сойдёте на берег.";
 						link.l4.go = "free_withoutFee_4";			
 					}	
 					else
 					{
-						link.l4 = "Damn with you! Go to the boatswain, tell him to give you a locker. You can land in the next harbor. And remember that our next meeting will be the last one.";
+						link.l4 = "Черт с вами! Ступайте к боцману, он получит соответствующие распоряжения, вас высадят в ближайшей бухте. И помните - следующая наша встреча будет последней.";
 						link.l4.go = "free_withoutFee_4";
 					}
 				}				
-				link.l5 = "You have ignored an order to lower your flag and resisted with force. You will be hanged for it. Boatswain have already received my orders.";
+				link.l5 = "Вы проигнорировали приказ лечь в дрейф и оказали сопротивление, за это будете казнены. Боцман уже получил соответствующие распоряжения.";
 				link.l5.go = "PunishmentAction";
 				NextDiag.TempNode = "second time"; 
 			}	
 		break;
 		
 		case "offender":
-			dialog.text = "Criminal? You are joking me," + GetAddress_Form(NPChar) + "!";
-			link.l1 = "No kidding. You are a pirate.";
+			dialog.text = "Преступника? Вы, наверное, шутите, " + GetAddress_Form(NPChar) + "!";
+			link.l1 = "Да какие тут шутки. Пират - он и есть пират.";
 			link.l1.go = "exit";
 		break;
 		
 		case "free_to_officer":
 			if ((GetSummonSkillFromName(pchar, "Leadership") + 20) <= GetSummonSkillFromName(npchar, "Leadership"))
 			{
-				dialog.text = "Serving under your command? I'd better feed sharks!";
-				link.l1 = "Watch your tongue or I will cut it off.";
+				dialog.text = "Служить у вас? Нет уж, лучше кормить акул!";
+				link.l1 = "Попридержи язык, а то ведь так и сделаю.";
 				link.l1.go = "exit";
 			}
 			else
 			{
-				dialog.text = "To be your officer, " + GetAddress_Form(NPChar) + "? I agree. I know my job and I tired to live in the shadow of the hallow.";
-				link.l1 = "Deal! Go and do your job.";
+				dialog.text = "Офицером, " + GetAddress_Form(NPChar) + "? Отказываться не стану. Дело я знаю, да и сколько можно тащить за собой якорь и ждать встречи с петлёй.";
+				link.l1 = "Вот и договорились! Иди, принимай дела.";
 				link.l1.go = "free_to_officer_Hire";
-				link.l2 = "Wait a bit, I have changed my mind.";
+				link.l2 = "Не торопись, я передумал"+ GetSexPhrase("","а") +". Иметь офицером бывшего пирата - себе дороже.";
 				link.l2.go = "exit";
 			}
 		break;
@@ -218,18 +218,18 @@ void ProcessDialogEvent()
 		case "free_to_officer_trader":
 			if (GetSummonSkillFromName(pchar, "Leadership") <= GetSummonSkillFromName(npchar, "Leadership"))
 			{
-				dialog.text = LinkRandPhrase("It is a tempting offer... but I have to reject it. On principle.",
-					"Sorry but after what you have done with my friends... It is impossible.",
-					"No, captain. After all of this terror I can't do this job anymore. I made a vow that if the Blessed Virgin will hear my prays and grant me a freedom I won't sail anymore.");
-				link.l1 = "It is your call. I won't be persistent.";	
+				dialog.text = LinkRandPhrase("Это конечно лестное предложение, но я вынужден отказаться... по идейным, так сказать, соображениям.",
+					"Увы, после того, что вы сделали с моими товарищами, это вряд ли возможно...",
+					"Нет, капитан, после всего этого ужаса я больше не смогу. Я дал обет, что, если Пресвятая Дева услышит мои молитвы и дарует свободу, то в море я больше ни ногой.");
+				link.l1 = "Ну, как знаете. Упрашивать не стану.";	
 				link.l1.go = "exit";
 			}
 			else
 			{
-				dialog.text = "Why not? I am a bad captain, lost my ship and there is nothing left for me on the shore. Except bills and debts...";
-				link.l1 = "Deal! Go to the boatswain and get your allowances. I will give you a position on my ship a bit later.";	
+				dialog.text = "А отчего же не послужить? Капитана из меня не вышло, дело своё загубил, что меня ждёт на берегу, кроме векселей и долговых расписок?.. Моряком - так моряком.";
+				link.l1 = "Вот и договорились! Идите к боцману - пусть поставит вас на довольствие. После определю вам должность.";	
 				link.l1.go = "free_to_officer_Hire";
-				link.l2 = "Wait a bit, I have changed my mind.";
+				link.l2 = "Не торопитесь, я передумал"+ GetSexPhrase("","а") +". Всё же судно не проходной двор.";
 				link.l2.go = "exit";
 			}
 		break;
@@ -269,10 +269,10 @@ void ProcessDialogEvent()
         break;
 				
 		case "Slave_1":
-			dialog.text = "But " + GetAddress_Form(NPChar) + ", you can't do that! I have surrendered.";
-            link.l1 = "Shut your mouth! Bound him.";
+			dialog.text = "Но " + GetAddress_Form(NPChar) + ", вы не можете так поступить! Я же сдался в бою на вашу милость.";
+            link.l1 = "Отставить разговоры! В кандалы его.";
 			link.l1.go = "Slave_2";
-			link.l99 = "Alright. Stay here until I decide...";
+			link.l99 = "Ну ладно, я ещё подумаю, посидите пока...";
 			link.l99.go = "exit";
 		break;
 		
@@ -281,8 +281,8 @@ void ProcessDialogEvent()
 			ChangeCharacterComplexReputation(pchar,"nobility", -2);
             if (rand(5) == 1)
             {
-    			dialog.text = "No way! I'd better kill myself than become a slave!";
-                link.l1 = "Stop that! It's an order! ... Boatswain! Clean the cargo..";
+    			dialog.text = "Ну уж нет!.. Я лучше покончу с собой, чем стану рабом!";
+                link.l1 = "Стой! Я приказываю!.. Боцман! очистите трюм...";
     			link.l1.go = "free_in_sea_4";
 			}			
 			else
@@ -291,21 +291,21 @@ void ProcessDialogEvent()
                 {
                     if (GetPrisonerQty() > 1)
                     {
-                        dialog.text = "Butcher! Guys, we have got nothing to loose!";
-                        link.l1 = "Wrong choice, ladies. I deal with mutinies by myself and in a very fast way...";
+                        dialog.text = "Ах ты палач! Братцы, двум смертям не бывать, а одной не миновать!";
+                        link.l1 = "А вот это вы напрасно. Попытки бунта я пресекаю собственноручно и без проволочек...";
             			link.l1.go = "free_in_sea_battle_all";
                     }
 					else
 					{
-						dialog.text = "No way! I'd better die in fight!";
-						link.l1 = "As you wish..";
+						dialog.text = "Нет! Уж лучше смерть в бою!";
+						link.l1 = "Как вам будет угодно...";
 						link.l1.go = "free_in_sea_battle_1";
 					}	
     			}
     			else
     			{
-					dialog.text = "Oh, I agree. I have got no way.";
-                    link.l1 = "Splendid. It's better to be a breathing slave than a dead hero.";
+					dialog.text = "Хорошо, я согласен. У меня просто нет другого выхода...";
+                    link.l1 = "Вот и славно. Лучше быть живым рабом, чем мёртвым героем.";
         			link.l1.go = "Slave_3";				
     			}			
 			}
@@ -321,16 +321,16 @@ void ProcessDialogEvent()
         break;
 
 		case "free_withoutFee":
-			dialog.text = "Oh, " + GetAddress_Form(NPChar) + ", are you really that kind and releasing me without a ransom?";
-            link.l1 = "Yes I do. You are free now," + GetFullName(NPChar);
+			dialog.text = "О, " + GetAddress_Form(NPChar) + ", вы столь добры, что отпускаете меня без выкупа?";
+            link.l1 = "Да, отпускаю. Вы свободны, " + GetFullName(NPChar);
 			link.l1.go = "free_withoutFee_2";
-			link.l99 = "Hm... yes you have a point! I need more time to decide.";
+			link.l99 = "Хм... да, вы правы! Ещё подумаю...";
 			link.l99.go = "exit";
 		break;
 
 		case "free_withoutFee_2":
-			dialog.text = "Thank you, "+GetFullName(PChar) + "! I will pray for you.";
-            link.l1 = "Go until I have changed my mind.";
+			dialog.text = "Спасибо, "+GetFullName(PChar) + "! Я буду за вас молиться.";
+            link.l1 = "Ладно, ступайте, пока я не передумал"+ GetSexPhrase("","а") +".";
 			link.l1.go = "free_withoutFee_3";
 			OfficersReaction("good");
 		break;
@@ -347,17 +347,17 @@ void ProcessDialogEvent()
 			switch(NPChar.EncType)
 			{
 				case "pirate":
-					dialog.text = RandPhraseSimple("Thank you, captain. I will never forget your kindness. I am going to leave this job and repair small boats in peaceful harbors. I can do that.",
-						"My thanks, captain.");
-					link.l1 = "Of course...";	
+					dialog.text = RandPhraseSimple("Вот, спасибо, капитан. Век не забуду вашей доброты. Брошу к чертям этот промысел - наймусь баркасы чинить. Уж это-то я умею...",
+						"Спасибо вам, капитан. И родная мать не смогла бы так утешить. Вот вам крест - брошу это неблагодарное занятие, в рыбаки подамся.");
+					link.l1 = "Хотелось бы верить...";	
 				break;
 				case "trade":
-					dialog.text = "Don't even know how to thank you, captain. I have already lost my hope. I am going to tell everyone about your kindness. I give you my word that I will light a candle for you! Just let me get to a church.";
-					link.l1 = "Farewell. And next time don't even try to resist. Shoot at me and this will be a death sentence for you and your crew.";
+					dialog.text = "Даже не знаю, как вас благодарить, капитан. Уж не чаял избавления. Я всем расскажу о вашем великодушии. И клянусь, поставлю за вас свечку - дайте только до церкви добраться!";
+					link.l1 = "Прощайте, и в будущем не вздумайте оказывать сопротивление. Первый же ваш выстрел - это смертный приговор и вам, и команде.";
 				break;
 				case "war":
-					dialog.text = "My thanks, captain. I will pray for you.";
-					link.l1 = "Note that next time I want be that kind.";
+					dialog.text = "Спасибо вам, капитан. Я буду за вас молиться.";
+					link.l1 = "Учтите на будущее, что в следующий раз я могу быть менее благосклонн"+ GetSexPhrase("ым","ой") +".";
 				break;
 			}
 			link.l1.go = "free_withoutFee_3";
@@ -414,10 +414,10 @@ void ProcessDialogEvent()
         break;
 
 		case "PunishmentAction":
-			dialog.text = "But " + GetAddress_Form(NPChar) + ", you can't do that! I have surrendered.";
-			link.l1 = "Only after your men were gone. You betrayed them... Boatswain! Do it.";
+			dialog.text = "Но " + GetAddress_Form(NPChar) + ", вы не можете так поступить! Я же сдался в бою на вашу милость.";
+			link.l1 = "После того, как погибли люди, которых вы просто предали... Боцман! приступайте.";
 			link.l1.go = "PunishmentAction1";
-			link.l2 = "Well... I need time to think about it. Stay here.";
+			link.l2 = "Ну ладно, я ещё подумаю, посидите пока...";
 			link.l2.go = "exit";
         break;
 
@@ -429,21 +429,21 @@ void ProcessDialogEvent()
             {
                 if (GetPrisonerQty() > 1)
                 {
-                    dialog.text = "Butcher! Guys, we have nothing to loose!";
-                    link.l1 = "Wrong choice, ladies. I deal with mutinies by myself and in a very fast way...";
+                    dialog.text = "Ах ты палач! Братцы, двум смертям не бывать, а одной не миновать!";
+                    link.l1 = "А вот это вы напрасно. Попытки бунта я пресекаю собственноручно и без проволочек...";
 					link.l1.go = "free_in_sea_battle_all";
                 }
 				else
 				{
-					dialog.text = "No way! I'd better die in fight!";
-					link.l1 = "As you wish..";
+					dialog.text = "Нет! Уж лучше смерть в бою!";
+					link.l1 = "Как вым будет угодно...";
 					link.l1.go = "free_in_sea_battle_1";
 				}	
     		}
 			else
     		{
-				dialog.text = "At least give me some time to pray...";
-                link.l1 = "Pray if you want.";
+				dialog.text = "Разрешите хоть помолиться перед смертью...";
+                link.l1 = "Молитесь...";
         		link.l1.go = "PunishmentAction2";				
     		}						
 		break;
@@ -457,10 +457,10 @@ void ProcessDialogEvent()
 		break;
 		
 		case "free_tip_off":
-			dialog.text = "I have got an interesting information which can be useful for a man like you. But I need your guarantees that I will get my freedom in exchange.";
-			link.l1 = "How can I give you my guarantees if I don't even know your proposal? Your information can cost nothing.";
+			dialog.text = "У меня есть некоторые сведения, учитывая характер вашей деятельности, они могут оказаться вам интересны. Но я хотел бы иметь гарантии, что в обмен на информацию получу свободу.";
+			link.l1 = "Как я могу вам что-либо гарантировать, если не знаю о чём пойдёт речь? Наверняка ваши сведения и выеденного яйца не стоят.";
 			link.l1.go = "free_tip_off_0";
-			link.l2 = "I can only give you my word. Period.";
+			link.l2 = "Каких же вы ждёте гарантий, кроме моего слова чести?";
 			link.l2.go = "free_tip_off_1";
 		break;
 		
@@ -474,28 +474,28 @@ void ProcessDialogEvent()
 			switch(NPChar.EncType)
 			{
 				case "trade":
-					sTmp = "He proposed me a freight but this guy was too greedy and I rejected the offer.";  
+					sTmp = "Хотел и моё судно зафрахтовать, но слишком пожадничал с оплатой - я отказался.";  
 				break;
 				case "war":
-					sTmp = "I have escorted him a few times as a commander of a convoy.";
+					sTmp = "Мне несколько раз приходилось сопровождать его в качестве капитана конвоя.";
 				break;
 				case "pirate":
-					sTmp = "I had an idea to rob him once but I have never had a single chance to do that.";
+					sTmp = "Я как-то подумывал его выпотрошить, но не подвернулось удобного случая.";
 				break;
 			}
-			dialog.text = "Fine. It's enough. Now straight to the business, where " + XI_ConvertString("Colony" + NPChar.Hold_GenQuest.City + "Dat") + " lives a wealthy merchant " + NPChar.Hold_GenQuest.Name + ". " + 
-				"He made his fortune on his ship '" + NPChar.Hold_GenQuest.ShipName + " selling " + GetStrSmallRegister(XI_ConvertString(Goods[sti(NPChar.Hold_GenQuest.Goods)].Name + "Acc")) + " with route : " + XI_ConvertString("Colony" + NPChar.Hold_GenQuest.FromCity) + " - " + XI_ConvertString("Colony" + NPChar.Hold_GenQuest.ToCity) +". " + 
-				"When he has too much cargo he pays for an escort." + sTmp + " I am sure that this information worth for you much more than a life of the  single man.";
-			link.l1 = "Doubt that this information can be useful for me. I won't hunt peaceful traders.";	
+			dialog.text = "Хорошо. Этого достаточно. Теперь к делу - в " + XI_ConvertString("Colony" + NPChar.Hold_GenQuest.City + "Dat") + " живёт богатый купец " + NPChar.Hold_GenQuest.Name + ". " + 
+				"Он сколотил своё немалое состояние тем, что на судне '" + NPChar.Hold_GenQuest.ShipName + "' возит " + GetStrSmallRegister(XI_ConvertString(Goods[sti(NPChar.Hold_GenQuest.Goods)].Name + "Acc")) + " маршрутом " + XI_ConvertString("Colony" + NPChar.Hold_GenQuest.FromCity) + " - " + XI_ConvertString("Colony" + NPChar.Hold_GenQuest.ToCity) +". " + 
+				"Когда партия товара слишком велика для его трюма, он нанимает эскорт. " + sTmp + " Уверен, что эти сведения стоят для вас куда больше, чем свобода одного пленного.";
+			link.l1 = "Не думаю, что они могут быть для меня полезны. Я не стану охотиться на мирных торговцев.";	
 			link.l1.go = "free_tip_off_0";
-			link.l2 = "Not sure that this information will work for me but have given you my word. Boatswain will place you with my crew and will let you go in the closest harbor.";
+			link.l2 = "Не знаю, пригодятся ли мне ваши сведения, но, согласно уговору, вы свободны. Боцман разместит вас с командой, а в ближайшем порту высадит на берег.";
 			link.l2.go = "free_tip_off_2";			
 		break;
 		
 		case "free_tip_off_2":
-			dialog.text = "My thanks, captain! I have always had faith in your honesty!";
-			link.l1 = RandPhraseSimple(RandPhraseSimple("I wish I could say the same about you","Sorry but I can't say the same about you."),
-				RandPhraseSimple("Next time I won't be that generous.","Go and never stay in my way. Next time I wouldn't be cheated so easily."));
+			dialog.text = "Спасибо вам, капитан! Я ни секунды не сомневался в вашей честности!";
+			link.l1 = RandPhraseSimple(RandPhraseSimple("Хотелось бы и о вас думать так же","К сожалению, не могу сказать того же о вас."),
+				RandPhraseSimple("Учтите на будущее, что в следующий раз я могу быть менее благосклонн"+ GetSexPhrase("ым","ой") +".","Ступайте и не попадайтесь мне больше. В другой раз я не буду столь легковер"+ GetSexPhrase("ен","на") +"."));
 			link.l1.go = "free_tip_off_3";
 		break;
 		
@@ -530,11 +530,11 @@ void ProcessDialogEvent()
 		break;
 	
 		case "free_buyout":
-			dialog.text = "And I have a proposal for you. In " + XI_ConvertString("Colony" + NPChar.Hold_GenQuest.City + "Dat") + " lives my friend, " + NPChar.Hold_GenQuest.Name + " - his name. We had a business together once." +
-				"Find him if we will be there. I am sure that he'll pay you a great sum. He owes me and I'll deal with him myself.";
-			link.l1 = "Your friend, huh? Let's see him.";	
+			dialog.text = "Верно, предложение имеется. В " + XI_ConvertString("Colony" + NPChar.Hold_GenQuest.City + "Dat") + " живёт мой хороший товарищ, " + NPChar.Hold_GenQuest.Name + " зовут, мы дело вместе начинали. " +
+				"Если будем в тех местах - разыщите его. Я уверен, он не поскупится, хороший выкуп даст. А я уж с ним рассчитаюсь по-свойски... да и должок за ним.";
+			link.l1 = "Товарищ, говорите? Что ж, наведаемся к вашему товарищу...";	
 			link.l1.go = "free_buyout1";
-			link.l2 = "Why should I look for your friend if I can ransom in the very first harbor?";
+			link.l2 = "Вряд ли я стану искать вашего товарища, если первый же губернатор может дать за вас выкуп.";
 			link.l2.go = "free_tip_off_0";
 		break;
 	
@@ -558,42 +558,43 @@ void ProcessDialogEvent()
 		break;
 
 		case "free_by_hoard":
-			dialog.text = "Actually I know one man who has a fine treasure but he doesn't have balls to take it.";
-			link.l1 = "What do you mean?";
+			dialog.text = "Э не скажите... Знаю я одного человека, который имеет огромное сокровище, только по своему малодушию не решается им воспользоваться.";
+			link.l1 = "О чём это вы?";
 			link.l1.go = "free_by_hoard1";
-			link.l2 = "Spare me of your stories. You'd better think about your soul.";
+			link.l2 = "Оставьте свои истории, вам сейчас самое время о душе подумать.";
 			link.l2.go = "free_tip_off_0";
 		break;
 		
 		case "free_by_hoard1":
-			dialog.text = "I'm telling you the story which leads to a great treasures. I need your word in return that you'll let me go in the next harbor.";
-			link.l1 = "I'll do myself will decide when and what to do with you. From your inventions that will not depend.";
+			dialog.text = "Я расскажу вам эту историю, которая ведёт прямиком к несметным богатствам... Только дайте слово, что отпустите меня в первой же бухте.";
+			link.l1 = "Я сам" + GetSexPhrase("","а") + " буду решать что и когда с вами делать. От ваших выдумок это зависеть не будет.";
 			link.l1.go = "free_tip_off_0";
-			link.l2 = "I am listening. You have my word.";
+			link.l2 = "Ну рассказывайте свою историю. Даю слово...";
 			link.l2.go = "free_by_hoard2";
 		break;
 		
 		case "free_by_hoard2":
-			dialog.text = "I trust such a honorable "+ GetSexPhrase("man","woman") +". People like you always keep their word! Doesn't matter if the whole world is burning, he will keep his word! Am I right, captain?";
-			link.l1 = "Tell me your story or I will let you go right now... overboard.";
+			dialog.text = "Верю благородному человеку! Так"+ GetSexPhrase("ой","ая") +", как вы, слово, если уж дал" + GetSexPhrase("","а") + ", то о-го-го... Пусть, хоть черти вокруг пляшут, а он" +GetSexPhrase("","а")+ " своё слово держать будет! Не правда ли капитан " + GetFullName(pchar) + "?..";
+			link.l1 = "Или рассказывайте, или я отпущу вас прямо сейчас... только за борт.";
 			link.l1.go = "free_by_hoard4";
 		break;
 		
 		case "free_by_hoard4":
-			dialog.text = "Ha-ha, nice joke... Now listen. There is one pal in " + XI_ConvertString("Colony" + NPChar.Hold_GenQuest.City + "Dat") + 
-				"named " + NPChar.Hold_GenQuest.Name + "he was a really reckless guy in his youth. He had a lot of 'deals' those days..." + 
-				"So once in the tavern he told me that he was a member of " + GetName( NAMETYPE_VIP, NPChar.Hold_GenQuest.PirateName, NAME_ACC) + " gang and saw how those pirates were burying a treasure." +
-				" He had five his buddies killed over that treasure... There were gossips that he was catched and hanged, but  truth is that he has withdrawn from business, started a family. He remembered the location of the treasure, even had drawn a map. He offered me to accompany him in finding the treasure. A superstitious man, the treasure was covered in blood, so he fears to go alone there. I admit, I didn't venture too. "+ 
-                "He was ready to sell the map, but why would I need it if I will never go there anyway...\nThat's my story... I think that such a brave man like yourself will find it useful, and the map is quite cheap by the way.";
-			link.l1 = "And do you really suggest that I am buying that? You story is not real so I break our deal.";
+			dialog.text = "Хе-хе, удачная шутка, хе-хе... А история следующая. Живёт в " + XI_ConvertString("Colony" + NPChar.Hold_GenQuest.City + "Dat") + " человек "+ 
+				"по имени " + NPChar.Hold_GenQuest.Name + ", в молодости был отчаянным парнем, столько всего натворил, что и вспомнить страшно... " + 
+				"Так вот, как-то за бутылкой рому рассказал мне этот приятель, что, промышляя в банде " + GetName( NAMETYPE_VIP, NPChar.Hold_GenQuest.PirateName, NAME_ACC) + ", довелось ему быть свидетелем того, как пираты клад хоронили." +
+				" Пятерых своих дружков " + GetName( NAMETYPE_VIP, NPChar.Hold_GenQuest.PirateName, NAME_NOM) + " поверх этого клада положил...\nПотом поползли слухи, что " + GetName( NAMETYPE_VIP, NPChar.Hold_GenQuest.PirateName, NAME_ACC) + " поймали и к одноногой тёще приставили, а " + NPChar.Hold_GenQuest.Name + " с тех пор от дел отошёл, " +
+				"остепенился, семьёй обзавёлся. Но место клада он хорошо запомнил, даже карту нацарапал. Мне предлагал вместе с ним за сокровищами идти. Самому, говорит, боязно - клад тот обильно кровью полили, а человек он суеверный. Я, признаться, тоже не решился. "+ 
+				"Он готов был и карту продать, но на кой она мне - я всё одно за это дело не возьмусь...\n Вот такая моя история... Думаю, карта эта вам как человеку отважному в самый раз пригодилась бы... он её задёшево отдаст.";
+			link.l1 = "И вы действительно надеетесь, что я поверю в эту ерунду? Уговор расторгается по причине несостоятельности вашей истории.";
 			link.l1.go = "free_tip_off_0";
-			link.l2 = "Interesting story, though I don't really believe in it. You had my word, go and  tell boatswain to give you a locker. You are free.";
+			link.l2 = "Хм... интересная история, хотя и верится с трудом. Ну, раз слово дал - идите, скажите боцману, пусть выделит вам рундук на баке. В первой же бухте сойдёте на берег.";
 			link.l2.go = "free_by_hoard5";
 		break;
 		
 		case "free_by_hoard5":
-			dialog.text = "My thanks, captain! Now I see the price of the word of "+ GetSexPhrase("gentleman!","lady!");
-			link.l1 = "Go and never stay in my way. Next time I wouldn't be cheated so easily.");
+			dialog.text = "Вот, спасибо вам, капитан! Вот что значит слово "+ GetSexPhrase("джентльмена!","леди!");
+			link.l1 = "Ступайте и не попадайтесь мне больше. В другой раз я не буду столь " + GetSexPhrase("легковерен.","легковерна.");
 			link.l1.go = "free_by_hoard6";
 		break;
 		
@@ -623,61 +624,61 @@ void ProcessDialogEvent()
 		break;
 		
 		case "free_in_sea":
-			dialog.text = "But, " + GetAddress_Form(NPChar) + ", we are in the open sea! It's the same as my execution!";
-			link.l1 = "That's what you wanted. Farewell. Boatswain will make my order done.";
+			dialog.text = "Но, " + GetAddress_Form(NPChar) + ", мы же в открытом море! Это равносильно моей казни!!!";
+			link.l1 = "Но вы же именно этого добивались - так что прощайте. Боцман проследит за выполнением моего распоряжения.";
 			link.l1.go = "PunishmentAction1";
-			link.l2 = "Alright, I haven't decided yet.";
+			link.l2 = "Ну ладно, я ещё подумаю...";
 			link.l2.go = "exit";
 		break;		
 		
 		//--> Jason, Ложный след
 		case "FalseTrace_Prisoner":
-			dialog.text = "Katerine! She really asked you to come here? Such a wonderful girl...";
-			link.l1 = "Let's stay away from lyrics, captain, and talk about more serious things. I'm going to tell you about the current situation and I am expecting an answer from you. Your answer will determine your and Katerine's fate.";
+			dialog.text = "Катерина! По ее просьбе вы здесь? Удивительная девушка...";
+			link.l1 = "Оставим лирику, капитан, и перейдем к вопросам более приземленным. Я сейчас обрисую сложившуюся ситуацию и буду ждать вашего ответа. От того, что вы сможете мне предложить, будет зависеть и ваша судьба, и судьба Катерины.";
 			link.l1.go = "FalseTrace_Prisoner_1";
 		break;
 		
 		case "FalseTrace_Prisoner_1":
-			dialog.text = "I am listening, captain.";
-			link.l1 = "I have boarded your galleon because Adam Rayner, Katerin's husband, told me that there are a lot of silver on your ship. This trick allowed him to return his wife who has escaped from him to you.";
+			dialog.text = "Я слушаю вас внимательно, капитан.";
+			link.l1 = "Ваш галеон я захватил по наводке Адама Рейнер, мужа Катерины. Он-то и сказал, что на нем полно серебра. Этот обман позволил ему вернуть назад свою жену, сбежавшую от него, как я понимаю, с вами.";
 			link.l1.go = "FalseTrace_Prisoner_2";
 		break;
 		
 		case "FalseTrace_Prisoner_2":
-			dialog.text = "Adam? That bastard? It was all his plan! Now I see... Yes, I helped Katrine to escape three month ago. Such a poor girl, you have no idea how he were treating her...";
-			link.l1 = "She is his wife and it's not my business. I made a mistake boarding your galleon but it is too late talk about it. Adam has promised me to pay for my help.";
+			dialog.text = "Адам? Эта скотина? Так вот кто всё организовал! Теперь все становится на свои места... Да, это я помог три месяца назад Катерине бежать из дома. Несчастная девушка, вы даже не представляете, как он с ней обращался...";
+			link.l1 = "Она его жена. Впрочем, меня это не касается. Я совершил промах, атаковав ваш галеон, но теперь поздно рассуждать о содеянном. Адам обещает расплатиться со мной за оказанную помощь в возврате жены.";
 			link.l1.go = "FalseTrace_Prisoner_3";
 		break;
 		
 		case "FalseTrace_Prisoner_3":
-			dialog.text = "Adam? Ha-ha! And you have trusted him? Captain, do you even know what kind of person is he? He...";
-			link.l1 = "Katerine has already told me a lot about him and put a great effort in that. But his proposal make sense and though I have no reason to trust this bastard this time he might be telling the truth. Now let's go straight to the point...";
+			dialog.text = "Адам? Ха-ха! И вы ему поверили? Капитан, вы знаете, кто он такой? Да он...";
+			link.l1 = "Катерина уже во всех подробностях описала своего мужа, не будем повторяться. Но его предложение похоже на правду, и, хотя у меня есть полные основания не верить этому мерзавцу, в этот раз он может не лгать. Теперь о главном...";
 			link.l1.go = "FalseTrace_Prisoner_4";
 		break;
 		
 		case "FalseTrace_Prisoner_4":
 			dialog.text = "";
-			link.l1 = "I was going to ransom you to the authorities and to deliver Adam with Katerine to "+XI_ConvertString("Colony"+pchar.questTemp.FalseTrace.QuestCity+"Gen")+", then get from Adam an information about Squint eyed Solly and sail for him. But Katerine has persuaded me to talk with you first, she said that you might offer me something better and more reliable then Adam in exchange for your lifes and freedom.";
+			link.l1 = "В мои планы входило следующее: вас сдать за выкуп властям, Адама и Катерину доставить в "+XI_ConvertString("Colony"+pchar.questTemp.FalseTrace.QuestCity+"Gen")+", получить у Адама информацию о золоте некого Косого Солли и отправиться за ним. Но Катерина уговорила меня поговорить с вами, сказав, что вы сможете предложить мне нечто более существенное, и менее сомнительное, нежели Адам, за ваши жизни и свободу.";
 			link.l1.go = "FalseTrace_Prisoner_5";
 		break;
 		
 		case "FalseTrace_Prisoner_5":
 			dialog.text = "";
-			link.l1 = "That's why I am standing here and talking with you. I have finished. Now is your turn. Think about my word and words of Katerine and give me your ideas. You don't have much time.";
+			link.l1 = "Вот поэтому я здесь стою и распинаюсь перед вами. Я сказал все. Теперь ваша очередь. Подумайте над моими словами и словами Катерины и дайте свой ответ. Времени на размышления у вас немного, так что не тяните.";
 			link.l1.go = "FalseTrace_Prisoner_6";
 		break;
 		
 		case "FalseTrace_Prisoner_6":
-			dialog.text = "Captain! I don't think that you are a good man but you've listened a poor girl and came here. It shows me that you can be honorable and feel pity. I don't need time I am ready to give you my proposal.";
-			link.l1 = "Really? Excellent! I am listening.";
+			dialog.text = "Капитан! Хоть я и не считаю вас хорошим человеком, но то, что вы прислушались к мольбам бедной девушки и пришли сюда, свидетельствует о том, что вам не чужды жалость и благородство. Мне не нужно долго думать, я готов вынести вам предложение немедленно.";
+			link.l1 = "Вот как? Замечательно! Тогда излагайте.";
 			link.l1.go = "FalseTrace_Prisoner_7";
 		break;
 		
 		case "FalseTrace_Prisoner_7":
-			dialog.text = "You will arrest Adam Rayner and put him in chains. Then you will take me and Katerine to "+XI_ConvertString("Colony"+pchar.questTemp.FalseTrace.TargetCity)+". Do not land in the city, after all, it was you who sunk my galleon, drop all three of us at " + XI_ConvertString(pchar.questTemp.FalseTrace.TargetShore+"Gen") + "\nI would also ask you for a weapon. We shall go to the city and I'll make sure that the scum pays not only for his crimes but for yours too. He deserves it\nYou have my word that your name won't come up. In return, I will give you true information concerning a ship with gold of enemy state\nIt won't be big of a challenge, you shall gain a fine booty. Much better than my ransom and ''so called'' Squint Eyed Solly's treasures. We have a deal?";
-			link.l1 = "I don't like your plan… I think, that they will organize a hunt for me as soon as I leave the shores of " + XI_ConvertString(pchar.questTemp.FalseTrace.TargetShore+"Gen") + ". No, captain, I am not going to risk my head. Our conversation is over.";
+			dialog.text = "Вы арестуете Адама Рейнера как преступника, наденете на него кандалы и посадите в трюм. Затем отвезете меня и Катерину в "+XI_ConvertString("Colony"+pchar.questTemp.FalseTrace.TargetCity)+", куда мы и направлялись. В сам город не причаливайте, чтобы не возникло ненужных эксцессов - ведь это все-таки вы, а не кто-то другой захватил мой галеон - и высадить нас у " + XI_ConvertString(pchar.questTemp.FalseTrace.TargetShore+"Gen") + ", всех троих: меня, Катерину и Адама\nТакже я попрошу у вас оружие для себя. Мы доберемся в город по суше, а там я уже представлю дело так, что вся вина ляжет на этого негодяя. Заслуженно, между прочим - ведь это он ввел вас в заблуждение и организовал нападение\nВаше имя никаким образом упомянуто не будет и преследования можете не опасаться - даю слово. Адама вздернут на виселицу, так что он тоже не сможет вам вредить. А за это я дам вам истинные сведения о корабле враждебной державы, скрытно перевозящем золотую руду\nВы сможете без труда захватить его - добыча намного превзойдет и выкуп за меня, и мифические сокровища Косого Солли, существуй они даже на самом деле.";
+			link.l1 = "Что-то не внушает доверия мне ваш план... Сдается мне, что это ловушка, и не успею я отойти от " + XI_ConvertString(pchar.questTemp.FalseTrace.TargetShore+"Gen") + " на полсотни миль, как за мной будет отряжена погоня. Нет, капитан, я не намерен рисковать своей головой. На этом разговор окончен.";
 			link.l1.go = "FalseTrace_Prisoner_8";
-			link.l2 = "Well, it looks like Katerine was right. I like your proposal. Adam Rayner will be arrested. I'll make it done right now. You will be released after we will get Adam. See you, captain!";
+			link.l2 = "Ну что же, Катерина была права - ваше предложение меня устраивает. Адам Рейнер будет арестован. Я немедленно займусь этим. Вас выпустят после того, как мы схватим Адама. До встречи, капитан!";
 			link.l2.go = "FalseTrace_Prisoner_9";
 		break;
 		
@@ -702,28 +703,28 @@ void ProcessDialogEvent()
 		break;
 		//<-- Ложный след
 		
-		// Addon-2016 Jason ”ЊЉ-ѓваделупа
+		// Addon-2016 Jason ФМК-Гваделупа
 		case "FMQG":
-			dialog.text = "You are here to preach or to do business?";
-			link.l1 = "The latter. I need your partner in crime - Bertrand Pinette. I am in a deep shit because of him. Where can I find him, huh?";
+			dialog.text = "Ты мне пришел морали читать, или для более важных дел?";
+			link.l1 = "Для более важных. Мне нужен твой сообщник - Бертран Пинетт. Из-за этого клоуна у меня большие неприятности. Где его искать, а?";
 			link.l1.go = "FMQG_1";
 		break;
 		
 		case "FMQG_1":
-			dialog.text = "Why do you think I'll tell you this?";
-			link.l1 = "It's your ass on the line. I will take you to Basse-Terre, deliver you to the governor and receive a reward for capturing a deserter who arranged an escape of Carlos de Milyar. It's your call. Either you are telling me about Pinette's location or we both are heading to Guadeloupe.";
+			dialog.text = "И с какой стати ты решил, что я стану тебе это рассказывать?";
+			link.l1 = "Не расскажешь - тебе хуже. Я отвезу тебя в Бас-Тер, сдам губернатору и получу награду за поимку дезертира, организовавшего побег Карлоса де Мильяра. Выбирай. Или ты говоришь, где найти этого жулика, или мы отправляемся на Гваделупу.";
 			link.l1.go = "FMQG_2";
 		break;
 		
 		case "FMQG_2":
-			dialog.text = "You did your homework... Fine, I'll tell your everything I know about Bertrand Pinette but you will set me free in return.";
-			link.l1 = "Go tell me then. I will land you in Mosquito's bay, same as I did the last time. But lie to me and I will return and set that plantation you were gifted by don Carlos on fire, I will also inform Basse-Terre of your whereabouts.";
+			dialog.text = "То есть ты все знаешь... Хорошо, я расскажу тебе то, что мне известно о Бертране Пинетте, но ты должен меня отпустить на свободу.";
+			link.l1 = "Рассказывай. А я высажу тебя там же, где и в прошлый раз - в заливе Москитос, и можешь проваливать на все четыре стороны. Но если обманешь - вернусь и сожгу твою плантацию, подаренную доном Карлосом, и сообщу властям в Бас-Тере, где тебя искать.";
 			link.l1.go = "FMQG_3";
 		break;
 		
 		case "FMQG_3":
-			dialog.text = "First, land me there. That will make me feel safer and I swear I'll tell you everything.";
-			link.l1 = "Fine. It's not like you are going anywhere from here.";
+			dialog.text = "Сначала довези до материка и высади на берег. Так мне будет спокойнее. Клянусь, я тебе все расскажу.";
+			link.l1 = "Ладно. Все равно ты от меня никуда не денешься...";
 			link.l1.go = "FMQG_4";
 		break;
 		

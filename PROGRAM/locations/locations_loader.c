@@ -61,8 +61,8 @@ void SetCamShuttle(ref loc) // boal вынес в метод
 			float ftmp = 0.1;
 			if (fshut > 0.4) fshut = 0.4;
 			if (fshut < 0.2) ftmp = 0.05;
-			//Log_TestInfo("Как штормит сегодня, однако... нажрался, скотина!");
-			//Log_TestInfo(""+fshut+"");
+			Log_TestInfo("Как штормит сегодня, однако... нажрался, скотина!");
+			Log_TestInfo(""+fshut+"");
 			SendMessage(&LocCamera, "lffffff", -1, 0.5, -1.0, 1.0, 1.0, ftmp, fshut);
 		}
 		else
@@ -657,6 +657,16 @@ bool LoadLocation(ref loc)
 		}
 	}
 	// ADDED BY VANO
+	
+	/////
+	/* if (CheckAttribute(loc, "time"))
+	{
+		int time = sti(loc.time);
+		WaitDate("", 0, 0, 0, 0, time); //крутим время
+		RecalculateJumpTable();
+	} */
+	/////
+	
 	// Jason
 	if (loc.id == "Shore67")
 	{	

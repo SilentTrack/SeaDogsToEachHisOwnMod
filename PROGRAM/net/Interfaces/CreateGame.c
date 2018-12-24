@@ -392,7 +392,11 @@ void CS_CreateServer()
 	oSrvParams.AllowUpload = true;
 	oSrvParams.AllowDownload = true;
 
+	trace("trying to create server");
+	
 	Net_CreateServer(&oSrvParams);
+	
+	trace("server created");
 
 	IDoExit(RC_INTERFACE_NET_FINDGAME);
 }

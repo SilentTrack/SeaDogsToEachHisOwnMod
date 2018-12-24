@@ -4,45 +4,45 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What kind of questions, "+ GetSexPhrase("my son","my daughter") +"?", "Ask, I am listening to you..."), "I am listening, speak, "+ GetSexPhrase("my son","my daughter") +"...", "And it's the third time I say to you, "+ GetSexPhrase("my son","my daughter") +", ask your question.",
-                          "A clergyman has a lot of work... and you are bothering me, "+ GetSexPhrase("my son","my daughter") +"...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "Not now, padre..."), "Have nothing to say really...",
-                      "I'll ask, I'll ask... a bit later though...", "Pardon me, holy father...", npchar, Dialog.CurrentNode);
-			link.l1.go = "exit";		
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы, "+ GetSexPhrase("сын мой","дочь моя") +"?", "Спрашивай, я слушаю тебя..."), "Я слушаю тебя, говори, "+ GetSexPhrase("сын мой","дочь моя") +"...", "И в третий раз говорю тебе, "+ GetSexPhrase("сын мой","дочь моя") +": задавай свой вопрос.",
+                          "Столько обязанностей у церковнослужителя, а тут еще и ты донимаешь, "+ GetSexPhrase("сын мой","дочь моя") +"...", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Не сейчас, падре..."), "Да, пока особо и нечего сказать...",
+                      "Задам, задам... Только позже...", "Простите, святой отец...", npchar, Dialog.CurrentNode);
+			link.l1.go = "exit";
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "utensil" && !CheckAttribute(npchar, "quest.utensil"))
 			{
-				link.l1 = "I came here because of an unusual matter, holy father. A privateer named Guy Marchais has presented a very valuable item to your parish not long ago. It was a golden pectoral cross with a lazurite on it. Is that true?";
+				link.l1 = "Я по несколько необычному делу, святой отец. Не так давно вашему приходу капер Гай Марше подарил очень ценную вещь - золотой наперсный крест с лазуритом. Это правда?";
                 link.l1.go = "guardoftruth";
 			}
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "Oh yes, my son!  It is the best item in our parish. I haven't seen such a magnificence in my whole life! And what's wrong, my son? Why are you so interested in this cross?";
-			link.l1 = "Holy father, I know that you won't like it but I have to tell you that this cross was stolen from another parish and the clergyman was murdered during that theft. That man who has presented this item to you is a criminal.";
+			dialog.text = "О да, сын мой! Это лучшая вещь в нашем приходе. Я за всю свою жизнь не видел подобного великолепия. А что-то не так, сын мой? Почему тебя интересует этот крест?";
+			link.l1 = "Святой отец, я знаю, что вам будет неприятно это услышать, но этот крест был похищен из другого прихода, причем его похищение было сопряжено с убийством священнослужителя. Человек, даровавший его вам - преступник.";
 			link.l1.go = "guardoftruth_1";
 		break;
 		
 		case "guardoftruth_1":
-			dialog.text = "We all do have sins, my son, but murdering a clergyman is a serious accusation. Do you have any proof? And from which parish was this cross stolen?";
-			link.l1 = "Couldn't my word be a proof? This cross was stolen from the Santiago's parish and it must be returned.";
+			dialog.text = "Все мы грешны, сын мой, и все равны перед Богом... но убийство священнослужителя - серьезное обвинение. Ты можешь чем-нибудь доказать свои слова? И из какого прихода был украден этот крест?";
+			link.l1 = "Мое слово разве не может являться доказательством? А этот крест был похищен из прихода Сантьяго и должен быть возвращен назад.";
 			link.l1.go = "guardoftruth_2";
 		break;
 		
 		case "guardoftruth_2":
-			dialog.text = "Santiago? Spanish? My son, you are surprising me...";
-			link.l1 = "Holy father, everyone is equal under the God. Spanish are Christians just like us and disagreements between the nations must not apply to believers' feelings. I beg you to return this cross to the Santiago parish.";
+			dialog.text = "Из прихода Сантьяго? Испанцы? Сын мой, ты, право, меня удивляешь...";
+			link.l1 = "Святой отец, мы все равны перед Богом. Испанцы - такие же христиане, как и мы, и разногласия властей не должны отражаться на чувствах верующих в Единого Господа нашего. Я прошу вас вернуть этот крест приходу Сантьяго.";
 			link.l1.go = "guardoftruth_3";
 		break;
 		
 		case "guardoftruth_3":
-			dialog.text = "My son, don't you understand that this cross is a gift from the believing Christian to our parish! No, my son, I can't do what you ask for.";
-			link.l1 = "And you don't care that blood was spilled for this cross even the blood of clergyman?";
+			dialog.text = "Сын мой, ты понимаешь, что говоришь? Этот крест был получен нашим приходом в дар от верующего христианина! Нет, сын мой, я не могу исполнить твою просьбу.";
+			link.l1 = "Даже несмотря на то, что из-за этого драгоценного креста была пролита кровь священнослужителя, пусть даже и испанца?";
 			link.l1.go = "guardoftruth_4";
 		break;
 		
 		case "guardoftruth_4":
-			dialog.text = "My son, you have not given any proof. The cross will stay in our parish. This is my final decision. Besides, your effort in helping Spanish in this matter really concerns me.";
-			link.l1 = "I see, Farewell then, holy father...";
+			dialog.text = "Сын мой, ты не предоставил никаких доказательств. Крест останется в нашем приходе. Таково мое решение. Более того, твоя заинтересованность по этому вопросу в интересах испанцев настораживает меня...";
+			link.l1 = "Ясно. Ну что же, тогда до свидания, святой отец...";
 			link.l1.go = "guardoftruth_5";
 		break;
 		

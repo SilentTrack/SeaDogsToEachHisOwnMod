@@ -4,56 +4,56 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat("All the rumors of "+ GetCityName(npchar.city) +" at your service. What would you like to find out?",
-                          "We were just talking about that. You must have forgotten...", "This is the third time today you're talking about some question...",
-                          "you're harping like a parrot the same...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("You know, " + NPChar.name + ", maybe next time.", "Right, I've forgotten for some reason...",
-                      "Yes, it really is the third time...", "Yep...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat("Все сплетни города "+ GetCityName(npchar.city) +" к вашим услугам. Что бы вы хотели узнать?",
+                          "Мы только что поднимали это тему. Вы, вероятно, запамятовали...", "Сегодня вы уже третий раз говорите о каком-то вопросе...",
+                          "Что ты "+ GetSexPhrase("заладил","заладила") +" как попугай одно и то же...", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Знаешь, " + NPChar.name + ", как-нибудь в следующий раз.", "Точно, "+ GetSexPhrase("забыл","забыла") +" что-то...",
+                      "Да уж, действительно в третий раз...", "Да уж...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			if (pchar.questTemp.Slavetrader == "FindRatTortuga") // работорговец
             {
-                link.l1 = "Listen, where can I find Francois Gontier? He was supposed to have arrived at Tortuga already.";
+                link.l1 = "Послушай, где мне найти Франсуа Гонтьера? Он должен был уже прибыть на Тортугу.";
                 link.l1.go = "Tortuga_ratT_1";
             }
 			// суп из черепахи
 			if (CheckAttribute(PChar, "questTemp.Terrapin") && pchar.questTemp.Terrapin == "tortuga")
 			{
-				link.l1 = "I'm looking for Henri Thibaut. Where can I find him?";
+				link.l1 = "Я ищу Анри Тибо. Где мне его найти?";
 				link.l1.go = "terrapin";
 			}
 			if (CheckAttribute(PChar, "questTemp.Terrapin") && pchar.questTemp.Terrapin == "tortuga1")
 			{
-				link.l1 = "I'm looking for Henri Thibaut. Where can I find him?";
+				link.l1 = "Я ищу Анри Тибо. Где мне его найти?";
 				link.l1.go = "terrapin_2";
 			}
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "tortuga")
 			{
-				link.l1 = "Tell me, has a galleon by the name of 'Santa Margarita' stopped at your colony lately? Maybe as a privateer prize?";
+				link.l1 = "Скажи, в вашу колонию в последнее время не заходил галеон под названием 'Санта-Маргарита'? Быть может, в качестве каперского приза?";
                 link.l1.go = "guardoftruth";
 			}
 			// Addon 2016-1 Jason Пиратская линейка
 			if (CheckAttribute(pchar, "questTemp.Mtraxx.Jeweller"))
 			{
-				link.l1 = "Look pal, I am looking for Gaspard Parmentier. Where can I find him?";
+				link.l1 = "Послушай, мне нужен господин по имени Гаспар Парментье. Где я могу его найти?";
                 link.l1.go = "mtraxx_jew";
 			}
         break;
         
 		case "Tortuga_ratT_1":
-			dialog.text = "Francois Gontier? He is who? I don't know any man by that name.";
-			link.l1 = "He's the captain of the corvette '" + pchar.questTemp.Slavetrader.ShipName + "'.";
+			dialog.text = "Франсуа Гонтьер? А кто это такой? Я не знаю человека с таким именем.";
+			link.l1 = "Ну, он капитан корвета '" + pchar.questTemp.Slavetrader.ShipName + "'.";
 			link.l1.go = "Tortuga_ratT_2";
         break;
 		
 		case "Tortuga_ratT_2":
-			dialog.text = "I don't have the slightest clue, buddy. And no corvette by that name has docked at our port, I can say that for sure.";
-			link.l1 = "Okay then, have you seen any outsiders lately in town?";
+			dialog.text = "Не имею ни малейшего представления, "+ GetSexPhrase("дружище","мэм") +". И корвет с таким названием у нас в порту не причаливал, я совершенно точно знаю.";
+			link.l1 = "Ну хорошо, а чужаков в городе в последнее время не видал?";
 			link.l1.go = "Tortuga_ratT_3";
         break;
 		
 		case "Tortuga_ratT_3":
-			dialog.text = "Good question! This is a port city, not a village. Strangers come every day. Though, I have heard about five odd lads, they always stay close together and keep their blades ready\nA patrol even run a check on them with no result. But I am sure that they didn't arrive here on a corvette, no such vessel was seen around, savvy?";
-			link.l1 = "Hm... All right then, I see. Thank you, " + npchar.name + ".";
+			dialog.text = "Ну, спросил"+ GetSexPhrase("","а") +"! Это же портовый город, а не деревня. Тут чужаки каждый день появляются... Хотя, слыхал я про каких-то странных типов, недавно объявившихся у нас\nХодят всегда вместе, впятером, и за эфесы сабель держатся, словно во вражеской колонии. Их уже и патруль проверял - нет, все в порядке. Но прибыли они точно не на корвете - ни в порту, ни на рейде - ни одного корвета, смекаешь?";
+			link.l1 = "Гм... Ну что же, понятно. Спасибо, " + npchar.name + ".";
 			link.l1.go = "exit";
 			AddQuestRecord("Slavetrader", "21_8");
 			pchar.questTemp.Slavetrader = "wait1";//затычка
@@ -61,8 +61,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		// суп из черепахи
 		case "terrapin":
-			dialog.text = "Well, Monsieur Thibaut is a famous individual on Tortuga. His mansion is located near the port authority. When leaving my saloon, head straight toward the port. Approaching the arch leading to the port, turn left on the crossroads and go all the way down to the end of the street where you'll run into a two-story stone building with a red roof. That is Monsieur Thibaut's mansion.";
-			link.l1 = "Thank you! I'll go visit him...";
+			dialog.text = "Ну, месье Тибо – личность на Тортуге известная. Его особняк находится недалеко от портового управления. Как выйдешь из моей таверны - иди в сторону порта. Не доходя арки, ведущей в порт, на перекрестке поверни налево и ступай по улице до конца, пока не упрешься в каменный двухэтажный дом с красной крышей. Это и есть особняк месье Тибо.";
+			link.l1 = "Спасибо!  Пойду в гости...";
 			link.l1.go = "terrapin_1";
 		break;
 		
@@ -75,22 +75,22 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "terrapin_2":
-			dialog.text = "Monsieur Thibaut is high in demand today, a messenger from the governor just ran over here. He was interested too. Why would people be looking for him? He's been renting a room from me on the second floor for quite some time now, although he has a whole mansion to live in. I don't know what he needs it for, but he comes in a lot more often than he leaves. And he's only there during the evenings.";
-			link.l1 = "Maybe, he's at your place right now.";
+			dialog.text = "Сегодня на месье Тибо настоящий спрос, только что прибегал посыльный от губернатора. Тоже интересовался. А чего его искать? В последнее время он постоянно снимает у меня комнату на втором этаже, хотя у самого целый особняк. Не знаю, зачем ему это нужно, только входит он туда гораздо чаще, чем выходит. И бывает там только по вечерам.";
+			link.l1 = "Может, и сейчас он у тебя";
 			link.l1.go = "terrapin_3";
 		break;
 		
 		case "terrapin_3":
 			if (stf(environment.time) < 20.0 && stf(environment.time) > 8.0)
 			{
-				dialog.text = "No. He said he wouldn't be back until eight in the evening today. You can try looking for him at home in his mansion, but I don't you'll find him there. I saw his sailing of on a patrol lugger on the sea.";
-				link.l1 = "Thank you! I'll stop by to see him later.";
+				dialog.text = "Нет. Он сказал, что будет сегодня не раньше восьми вечера. Можешь попробовать поискать его у себя в особняке, но это вряд ли - я видел, что он отправился на патрульном люггере в море.";
+				link.l1 = "Спасибо! Зайду к нему позже.";
 				link.l1.go = "terrapin_4";
 			}
 			else
 			{
-				dialog.text = "Yes. If you want, you can come on up.";
-				link.l1 = "Thank you! I'll got visit him...";
+				dialog.text = "Да. Если хочешь - можешь подняться.";
+				link.l1 = "Спасибо! Пойду в гости...";
 				link.l1.go = "terrapin_4";
 			}
 		break;
@@ -125,19 +125,19 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "No clue about the ship's name, was it 'Santa Margarita' or 'Castilian Whore' but they did brought here a captured Spanish galleon. By the way, captured by a sloop! Gaius Marchais, a captain, had been bragging for two days in a tavern - first voyage and such prize!\nYeah, very heroic deed, to board a galleon filled with church rats absent soldiers. It seems that papists forgot what they say about those who help themselves...";
-			link.l1 = "Yes, God helps him who helps himself, that's for sure. How do I get a glimpse of that lucky cap? Is he here, on Tortuga?";
+			dialog.text = "Как уж там назывался этот корабль - 'Санта Маргарита', или 'Кастильская блудница', я не знаю, но с месяц назад действительно притащили сюда испанский галеон, взятый призом. Причем взяли его на шлюпе! Гай Марше, капитан этого шлюпа, потом два дня хлестал ром в таверне и все бахвалился своей удачей - первый поход, и такой приз!\nНу да, велик героизм: на том галеоне даже абордажной роты не было, взяли их голыми руками, как ягнят. Да и кому там сопротивление оказывать было, когда плыли на нем какие-то церковные крысы? Видать, забыли паписты старую поговорку...";
+			link.l1 = "Да-да, на Бога надейся, но сам не плошай, это точно. А как мне увидеть этого удачливого кэпа? Он сейчас здесь, на Тортуге?";
 			link.l1.go = "guardoftruth_1";
 		break;
 		
 		case "guardoftruth_1":
-			dialog.text = "Ah, who the hell knows. I haven't seen him in his saloon in a long time. As soon as he got sober he brought a trophy galleon to bay and ran around it like a mad man. I have no idea where Marchais is now. Maybe he's on Tortuga or maybe he's at sea.";
-			link.l1 = "All right. Well, thanks for the story, buddy!";
+			dialog.text = "А пес его знает. Я уже давно его не видел у себя в таверне. Он как протрезвел, так сразу загнал трофейный галеон в доки и бегал вокруг него, как угорелый. Понятия не имею, где Марше сейчас. Может, на Тортуге, а может - в плавании.";
+			link.l1 = "Ясно. Ну что же, спасибо за рассказ, дружище!";
 			link.l1.go = "guardoftruth_2";			
 		break;
 		
 		case "guardoftruth_2":
-			dialog.text = "Any time, Monsieur "+pchar.name+", any information for our beloved captain, savior of St. Pierre! Stop by later!";
+			dialog.text = "Всегда пожалуйста, месье "+pchar.name+", любая информация для нашего славного капитана, спасителя Сен-Пьера! Заходите еще!";
 			link.l1 = "...";
 			link.l1.go = "exit";	
 			AddQuestRecord("Guardoftruth", "8");
@@ -146,8 +146,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		// Addon 2016-1 Jason Пиратская линейка
 		case "mtraxx_jew":
-            dialog.text = "Seems like Gaspard is getting more and more popular among your kindЙ His house is by the wall. Turn left from the tavern and head to the port, but don't go there, turn left again, go straight and then turn right. A two-storied house.";
-			link.l1 = "Thanks!";
+            dialog.text = "Смотрю, Гаспар становится все популярней и популярней у вашей братии... Его дом находится у городской стены. Выйдешь из таверны, повернешь налево, пройдешь в сторону порта, не выходя в порт еще раз налево, до упора прямо и затем направо. Двухэтажный особняк.";
+			link.l1 = "Спасибо, дружище!";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("Mtraxx_WolfreekJewellerHouse");
 		break;

@@ -33,53 +33,53 @@ void ProcessDialogEvent()
 		break;
 
 		case "First time":
-			dialog.text = "Who the hell are you?";
-			link.l1 = "Quite, calm yourself. Your imprisoned fellow by the name of " + pchar.questTemp.jailCanMove.Deliver.name + " has sent me here, do you know him?";
+			dialog.text = "Ты кто так"+ GetSexPhrase("ой","ая") +"?!";
+			link.l1 = "Тихо, шуму не поднимай. Меня прислал твой приятель, что в каземате сидит. " + pchar.questTemp.jailCanMove.Deliver.name + ", знаешь такого?";
 			link.l1.go = "Step_1";			
 			NextDiag.TempNode = "Second time";
 		break;
 		
 		case "Step_1":
-			dialog.text = "Got any proof that you are not one of the governor's dogs?";
-			link.l1 = "He has asked me to deliver a note. Here it is.";
+			dialog.text = "Чем докажешь, что ты не из губернаторских ищеек?";
+			link.l1 = "Записку просил передать. Вот она.";
 			link.l1.go = "Step_2";
 			TakeItemFromCharacter(pchar, "Malyava");
 		break;
 		
 		case "Step_2":
-			dialog.text = "Let's see...(reading). Damn it! A bad time to get caught... Fuck, such a deal... Listen, sailor, I take it that you are "+ GetSexPhrase("strong pal","skilful girl") +". Do you want to make some coins? We will all benefit from the deal.";
-			link.l1 = "I always want to. What's the deal?";
+			dialog.text = "Так...(читает). Вот черт! Надо же ему было так неудачно вляпаться... Эх, такое дело пропадает... Слушай, моря"+ GetSexPhrase("к","чка") +", ты, смотрю, "+ GetSexPhrase("парень неслабый","деваха боевая") +". Не хочешь подзаработать? И ты в выигрыше будешь, и нам перепадет.";
+			link.l1 = "Подзаработать - это я всегда хочу. Что ты предлагаешь?";
 			link.l1.go = "Step_3";
 		break;
 			
 		case "Step_3":
-			dialog.text = "I can share some interesting information with you. I don't need it, I won't make it in time, thanks to our mutual friend, but you might find it useful. Not for free.";
-			link.l1 = "How much?";
+			dialog.text = "Могу поделиться информацией. Мне она теперь ни к чему - не успеть уже, а тебе может сгодиться. Только не бесплатно - сам"+ GetSexPhrase("","а") +" понимаешь, это денег стоит. Дело выгодное, поверь.";
+			link.l1 = "Сколько ты хочешь?";
 			if (drand(2) == 0) link.l1.go = "Step_4";
 			else link.l1.go = "Step_4d";
 		break;
 		
 		case "Step_4":
 			iTotalTemp = 0;
-			dialog.text = "Fifty thousand pesos.";
+			dialog.text = "Пятьдесят тысяч песо.";
 			if(makeint(Pchar.money) >= 50000)
 			{
-				link.l1 = "Hm, quite pricey. But I say yes, if the business is worth it. I am in! What's the details?";
+				link.l1 = "Хм, немало. Но если дело того стоит... соглас"+ GetSexPhrase("ен","на") +". Где наша ни пропадала! О чем пойдет речь?";
 				link.l1.go = "Step_5";
 			}
-			link.l2 = "Not interested.";
+			link.l2 = "Нет. Я не намерен"+ GetSexPhrase("","а") +" платить неизвестно за что. Покупкой котов в мешках я не занимаюсь.";
 			link.l2.go = "Step_no";
 		break;
 		
 		case "Step_4d":
 			iTotalTemp = 250+drand(25)*10;
-			dialog.text = ""+FindRussianDublonString(iTotalTemp)+". Not a single coin less!";
+			dialog.text = ""+FindRussianDublonString(iTotalTemp)+". И ни монетой меньше!";
 			if (GetCharacterItem(pchar, "gold_dublon") >= iTotalTemp)
 			{
-				link.l1 = "Hm, quite pricey. But I agree if the business is worth it. I am in! What's the details?";
+				link.l1 = "Хм, немало. Но если дело того стоит... соглас"+ GetSexPhrase("ен","на") +". Где наша ни пропадала! О чем пойдет речь?";
 				link.l1.go = "Step_5";
 			}
-			link.l2 = "Not interested.";
+			link.l2 = "Нет. Я не намерен"+ GetSexPhrase("","а") +" платить неизвестно за что. Покупкой котов в мешках я не занимаюсь.";
 			link.l2.go = "Step_no";
 		break;
 		
@@ -87,8 +87,8 @@ void ProcessDialogEvent()
 			switch (sti(pchar.questTemp.jailCanMove.Deliver.good))
 			{
 				case 0://попытка грабежа
-					dialog.text = "Well-well, whatever, "+ GetSexPhrase("you were fooled, idiot","you were fooled, stupid girl") +". Now pay the cash down!";
-					link.l1 = "Go screw yourself with an anchor... And your friend has told me that his pals are generous.";
+					dialog.text = "Так-так, отлично, "+ GetSexPhrase("повелся, фраерок","повелась, дуреха") +". Ну-ка, гони сюда свои денежки!";
+					link.l1 = "Экий ты наглец... А твой приятель говорил, что друзья у него щедрые.";
 					link.l1.go = "Step_fight";
 				break;
 				
@@ -101,8 +101,8 @@ void ProcessDialogEvent()
 					pchar.questTemp.jailCanMove.Deliver.terms = 10+rand(2);
 					pchar.questTemp.jailCanMove.Deliver.ShipName1 = GenerateRandomNameToShip(sti(pchar.questTemp.jailCanMove.Deliver.Nation));
 					pchar.questTemp.jailCanMove.Deliver.ShipName2 = GenerateRandomNameToShip(sti(pchar.questTemp.jailCanMove.Deliver.Nation));
-					dialog.text = "Fine, listen. I was informed that in " + FindRussianDaysString(sti(pchar.questTemp.jailCanMove.Deliver.terms)) + " not far from "+ pchar.questTemp.jailCanMove.Deliver.Island.Areal +" there will be two "+ pchar.questTemp.jailCanMove.Deliver.add1 +" trade ships - the "+ pchar.questTemp.jailCanMove.Deliver.ShipName1 +" and the "+ pchar.questTemp.jailCanMove.Deliver.ShipName2 +" with their cargo holds filled with "+ pchar.questTemp.jailCanMove.Deliver.add +". You can try to catch them.";
-					link.l1 = "Splendid! It looks like I was right sharing coins with you.";
+					dialog.text = "Хорошо, слушай. Мне стало достоверно известно, что в ближайшие " + FindRussianDaysString(sti(pchar.questTemp.jailCanMove.Deliver.terms)) + " у берегов "+ pchar.questTemp.jailCanMove.Deliver.Island.Areal +" будут находится два "+ pchar.questTemp.jailCanMove.Deliver.add1 +" купеческих корабля - '"+ pchar.questTemp.jailCanMove.Deliver.ShipName1 +"' и '"+ pchar.questTemp.jailCanMove.Deliver.ShipName2 +"', с трюмами, полными "+ pchar.questTemp.jailCanMove.Deliver.add +". Можешь попытаться их перехватить.";
+					link.l1 = "Отлично! Кажется, я недаром поделил"+ GetSexPhrase("ся","ась") +" с вами деньжатами.";
 					link.l1.go = "Step_lay";
 				break;
 				
@@ -116,8 +116,8 @@ void ProcessDialogEvent()
 					pchar.questTemp.jailCanMove.Deliver.ShipName1 = GenerateRandomNameToShip(sti(pchar.questTemp.jailCanMove.Deliver.Nation));
 					pchar.questTemp.jailCanMove.Deliver.ShipName2 = GenerateRandomNameToShip(sti(pchar.questTemp.jailCanMove.Deliver.Nation));
 					
-					dialog.text = "Fine, listen. I was informed that in " + FindRussianDaysString(sti(pchar.questTemp.jailCanMove.Deliver.terms)) + " not far from "+ pchar.questTemp.jailCanMove.Deliver.Island.Areal +" there will be two "+ pchar.questTemp.jailCanMove.Deliver.add1 +" trade ships - the "+ pchar.questTemp.jailCanMove.Deliver.ShipName1 +" and the "+ pchar.questTemp.jailCanMove.Deliver.ShipName2 +" with their cargo holds filled with "+ pchar.questTemp.jailCanMove.Deliver.add +". You can try to catch them.";
-					link.l1 = "Splendid! It looks like I was right sharing coins with you.";
+					dialog.text = "Хорошо, слушай. Мне стало достоверно известно, что в ближайшие " + FindRussianDaysString(sti(pchar.questTemp.jailCanMove.Deliver.terms)) + " у берегов "+ pchar.questTemp.jailCanMove.Deliver.Island.Areal +" будут находится два "+ pchar.questTemp.jailCanMove.Deliver.add1 +" купеческих корабля - '"+ pchar.questTemp.jailCanMove.Deliver.ShipName1 +"' и '"+ pchar.questTemp.jailCanMove.Deliver.ShipName2 +"', с трюмами, полными "+ pchar.questTemp.jailCanMove.Deliver.add +". Можешь попытаться их перехватить.";
+					link.l1 = "Отлично! Кажется, я недаром поделил"+ GetSexPhrase("ся","ась") +" с вами деньжатами.";
 					link.l1.go = "Step_trader";
 				break;
 				
@@ -128,24 +128,24 @@ void ProcessDialogEvent()
 					GetBandersTradeNation();
 					pchar.questTemp.jailCanMove.Deliver.ShipName = GenerateRandomNameToShip(sti(pchar.questTemp.jailCanMove.Deliver.Nation));
 					pchar.questTemp.jailCanMove.Deliver.terms = 5+rand(5);
-					dialog.text = "Fine, listen. I was informed that in " + FindRussianDaysString(sti(pchar.questTemp.jailCanMove.Deliver.terms)) + " not far from "+ pchar.questTemp.jailCanMove.Deliver.Island.Areal +" will be sailing a courier lugger "+ pchar.questTemp.jailCanMove.Deliver.add2 +" named "+ pchar.questTemp.jailCanMove.Deliver.ShipName +". There are a lot of jewels on it. You can try to catch her.";
-					link.l1 = "Splendid! It looks like I was right sharing coins with you.";
+					dialog.text = "Хорошо, слушай. Мне стало достоверно известно, что в ближайшие " + FindRussianDaysString(sti(pchar.questTemp.jailCanMove.Deliver.terms)) + " у берегов "+ pchar.questTemp.jailCanMove.Deliver.Island.Areal +" будет проходить курьерский корабль "+ pchar.questTemp.jailCanMove.Deliver.add2 +" под названием '"+ pchar.questTemp.jailCanMove.Deliver.ShipName +"'. Он перевозит целую кучу драгоценностей. Можешь попытаться его перехватить.";
+					link.l1 = "Отлично! Кажется, я недаром поделил"+ GetSexPhrase("ся","ась") +" с вами деньжатами.";
 					link.l1.go = "Step_cureer";
 				break;
 			}
 		break;
 			
 		case "Step_fight":
-			dialog.text = "If he wasn't that foolish he would have been drinking his rum in a tavern by now and not sitting in the casemates. So all complains go to him, ha-ha! Now give me your cash or you won't get away from here alive.";
-			link.l1 = "Are you so sure in that, clown?";
+			dialog.text = "Если бы он не был таким болваном, то пил бы ром в таверне, а не помои в каземате. Так что все вопросы потом ему и задашь, ха-ха-ха! А теперь деньги на бочку, иначе " + GetSexPhrase("живым","живой") + " отсюда не выйдешь.";
+			link.l1 = "Ну, это мы сейчас поглядим, клоун...";
 			link.l1.go = "quest_fight";
-			link.l2 = "Fine, take your coins... I am outnumbered...";
+			link.l2 = "Ладно, забирайте деньги... Сила не на моей стороне.";
 			link.l2.go = "Step_takemoney";
 		break;
 		
 		case "Step_takemoney":
-			dialog.text = "Well done, "+ GetSexPhrase("pal","girl") +". Our common friend will return them to you, ha-ha... once he is dead. Get lost. Quietly.";
-			link.l1 = "Curse you!";
+			dialog.text = "Вот и "+ GetSexPhrase("молодец","умница") +". А вернет их тебе наш общий друг... хе-хе, когда откинется. И давай, топай отсюда по-тихому...";
+			link.l1 = "Будьте вы прокляты!";
 			link.l1.go = "exit";
 			if (iTotalTemp == 0) AddMoneyToCharacter(pchar, -50000);
 			else RemoveItems(pchar, "gold_dublon", 300);
@@ -158,8 +158,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Step_lay":
-			dialog.text = "Sure... Whatever, now leave, quietly.";
-			link.l1 = "Farewell.";
+			dialog.text = "Конечно, недаром... Все, а теперь давай, поторапливайся. И выходи тихонько, внимания не привлекай.";
+			link.l1 = "Прощай.";
 			link.l1.go = "exit";
 			AddQuestRecord("GivePrisonFree", "13");
 			AddQuestUserData("GivePrisonFree", "sGoods", pchar.questTemp.jailCanMove.Deliver.add);
@@ -176,8 +176,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Step_trader":
-			dialog.text = "Sure... Whatever, now leave, quietly.";
-			link.l1 = "Farewell.";
+			dialog.text = "Конечно, недаром... Все, а теперь давай, поторапливайся. И выходи тихонько, внимания не привлекай.";
+			link.l1 = "Прощай.";
 			link.l1.go = "exit";
 			AddQuestRecord("GivePrisonFree", "13");
 			AddQuestUserData("GivePrisonFree", "sGoods", pchar.questTemp.jailCanMove.Deliver.add);
@@ -194,8 +194,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Step_cureer":
-			dialog.text = "Sure... Whatever, now leave, quietly.";
-			link.l1 = "Farewell.";
+			dialog.text = "Конечно, недаром... Все, а теперь давай, поторапливайся. И выходи тихонько, внимания не привлекай.";
+			link.l1 = "Прощай.";
 			link.l1.go = "exit";
 			AddQuestRecord("GivePrisonFree", "14");
 			AddQuestUserData("GivePrisonFree", "sDay", FindRussianDaysString(sti(pchar.questTemp.jailCanMove.Deliver.terms)));
@@ -211,12 +211,12 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Step_no":
-			dialog.text = "Whatever then. Now go, we have got nothing to talk with you.";
-			link.l1 = "Fine, farewell.";
+			dialog.text = "Ну, как знаешь. Тогда проваливай, не о чем нам с тобой больше трепаться.";
+			link.l1 = "Ладно, прощай.";
 			link.l1.go = "exit";
 			AddQuestRecord("GivePrisonFree", "16");
-			AddQuestUserData("GivePrisonFree", "sSex", GetSexPhrase("",""));
-			AddQuestUserData("GivePrisonFree", "sSex1", GetSexPhrase("",""));
+			AddQuestUserData("GivePrisonFree", "sSex", GetSexPhrase("","а"));
+			AddQuestUserData("GivePrisonFree", "sSex1", GetSexPhrase("ся","ась"));
 			CloseQuestHeader("GivePrisonFree");
 			LAi_SetWarriorTypeNoGroup(npchar);
 			chrDisableReloadToLocation = false;
@@ -224,15 +224,15 @@ void ProcessDialogEvent()
 		break;
 
 		case "Second time":
-			dialog.text = "What else do you want? I've already told you to get lost.";
-			link.l1 = "Fine, I am on my way...";
+			dialog.text = "Ну чего ещё? Сказано же - вали по-тихому.";
+			link.l1 = "Ладно, уже иду...";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "Second time";
 		break;
 		
 		case "Man_FackYou":
-			dialog.text = "Do you want to get stabbed, " + GetSexPhrase("fop","stupid girl") + "?!";
-			link.l1 = LinkRandPhrase("Devil!", "Carramba!", "Damn it!");
+			dialog.text = "Ты что, " + GetSexPhrase("пижон, сам","дуреха, сама") + " на кинжал лезешь?!";
+			link.l1 = LinkRandPhrase("Дьявол!!", "Каррамба!!", "А-ать, черт!");
 			link.l1.go = "fight";
 		break;
 	}
@@ -265,37 +265,37 @@ void GetBandersTradeGoods()//выберем товар для торгашей
 	{
 		case 0:
 			pchar.questTemp.jailCanMove.Deliver.Goods = GOOD_EBONY;
-			pchar.questTemp.jailCanMove.Deliver.add = "ebony";
+			pchar.questTemp.jailCanMove.Deliver.add = "черного дерева";
 		break;
 		
 		case 1:
 			pchar.questTemp.jailCanMove.Deliver.Goods = GOOD_MAHOGANY;
-			pchar.questTemp.jailCanMove.Deliver.add = "redwood";
+			pchar.questTemp.jailCanMove.Deliver.add = "красного дерева";
 		break;
 		
 		case 2:
 			pchar.questTemp.jailCanMove.Deliver.Goods = GOOD_CHOCOLATE;
-			pchar.questTemp.jailCanMove.Deliver.add = "cacao";
+			pchar.questTemp.jailCanMove.Deliver.add = "какао";
 		break;
 		
 		case 3:
 			pchar.questTemp.jailCanMove.Deliver.Goods = GOOD_COFFEE;
-			pchar.questTemp.jailCanMove.Deliver.add = "coffee";
+			pchar.questTemp.jailCanMove.Deliver.add = "кофе";
 		break;
 		
 		case 4:
 			pchar.questTemp.jailCanMove.Deliver.Goods = GOOD_CINNAMON;
-			pchar.questTemp.jailCanMove.Deliver.add = "cinnamon";
+			pchar.questTemp.jailCanMove.Deliver.add = "корицы";
 		break;
 		
 		case 5:
 			pchar.questTemp.jailCanMove.Deliver.Goods = GOOD_FOOD;
-			pchar.questTemp.jailCanMove.Deliver.add = "provisions";
+			pchar.questTemp.jailCanMove.Deliver.add = "провианта";
 		break;
 		
 		case 6:
 			pchar.questTemp.jailCanMove.Deliver.Goods = GOOD_WEAPON;
-			pchar.questTemp.jailCanMove.Deliver.add = "weapons";
+			pchar.questTemp.jailCanMove.Deliver.add = "оружия";
 		break;
 	}
 }
@@ -306,26 +306,26 @@ void GetBandersTradeNation()//выберем нацию торгаша и курьера
 	{
 		case 0:
 			pchar.questTemp.jailCanMove.Deliver.Nation = SPAIN;
-			pchar.questTemp.jailCanMove.Deliver.add1 = "Spanish";
-			pchar.questTemp.jailCanMove.Deliver.add2 = "Spanish Treasury";
+			pchar.questTemp.jailCanMove.Deliver.add1 = "испанских";
+			pchar.questTemp.jailCanMove.Deliver.add2 = "испанского казначейства";
 		break;
 		
 		case 1:
 			pchar.questTemp.jailCanMove.Deliver.Nation = FRANCE;
-			pchar.questTemp.jailCanMove.Deliver.add1 = "French";
-			pchar.questTemp.jailCanMove.Deliver.add2 = "French Treasury";
+			pchar.questTemp.jailCanMove.Deliver.add1 = "французских";
+			pchar.questTemp.jailCanMove.Deliver.add2 = "французского казначейства";
 		break;
 		
 		case 2:
 			pchar.questTemp.jailCanMove.Deliver.Nation = HOLLAND;
-			pchar.questTemp.jailCanMove.Deliver.add1 = "Holland";
-			pchar.questTemp.jailCanMove.Deliver.add2 = "Dutch West India Company";
+			pchar.questTemp.jailCanMove.Deliver.add1 = "голландских";
+			pchar.questTemp.jailCanMove.Deliver.add2 = "голландской Вест-Индской торговой Компании";
 		break;
 		
 		case 3:
 			pchar.questTemp.jailCanMove.Deliver.Nation = ENGLAND;
-			pchar.questTemp.jailCanMove.Deliver.add1 = "English";
-			pchar.questTemp.jailCanMove.Deliver.add2 = "English Treasury";
+			pchar.questTemp.jailCanMove.Deliver.add1 = "английских";
+			pchar.questTemp.jailCanMove.Deliver.add2 = "английского казначейства";
 			break;
 	}
 }

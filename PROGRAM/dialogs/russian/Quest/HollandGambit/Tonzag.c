@@ -25,20 +25,20 @@ void ProcessDialogEvent()
 		case "First time":
 			if (CheckAttribute(pchar, "questTemp.HWIC.Self") && pchar.questTemp.HWIC.Self == "MainBegin")
 			{
-				dialog.text = "Well, hello, " + pchar.name + ". Glad to see you alive.";
-				link.l1 = "Gaston! Is that you?";
+				dialog.text = "Ну, здравствуй, " + pchar.name + ". Рад тебя видеть!";
+				link.l1 = "Гастон!? Это ты?";
 				link.l1.go = "SJ_talk";
 				break;
 			}
 			if (CheckAttribute(pchar, "questTemp.HWIC.Self") && pchar.questTemp.HWIC.Self == "MeetTonzag")
 			{
-				dialog.text = "Greetings, " + pchar.name + ". I already know about your dealings - John told me everything. I don't even know what to say. I admire you!";
-				link.l1 = "It is very pleasant to hear such a praise from you, Hercule!";
+				dialog.text = "Здравствуй, " + pchar.name + ". Я уже в курсе о твох делах - Джон мне все рассказал. Я, даже, право, не знаю, что и сказать. Я восхищен!";
+				link.l1 = "Приятно слышать похвалу из твоих уст, Эркюль!";
 				link.l1.go = "SJ_talk_11";
 				break;
 			}
-			dialog.text = "Good afternoon. Do you have business with me?";
-			link.l1 = "No. My mistake. I am sorry. Bye. .";
+			dialog.text = "Добрый день. У вас ко мне дело?";
+			link.l1 = "Нет. Вероятно, я ошибся. Прошу меня извинить. До свидания.";
 			link.l1.go = "exit";	
 			NextDiag.TempNode = "First time";
 		break;
@@ -49,61 +49,61 @@ void ProcessDialogEvent()
 		break;
 		
 		case "SJ_talk":
-			dialog.text = "You knew me by that name. But my real name is Hercule. Hercule Tonzag.";
-			link.l1 = "Holy Lord! I am also glad to see you... I didn't not recognized you in the heat of the fight. You were just in time with your help.";
+			dialog.text = "Ты знал меня под этим именем. Но мое настоящее имя - Эркюль. Эркюль Тонзаг.";
+			link.l1 = "Вот это да! Я тоже рад тебя видеть... А я тебя и не узнал в пылу драки. Ты вовремя подоспел ко мне на выручку.";
 			link.l1.go = "SJ_talk_1";
 		break;
 		
 		case "SJ_talk_1":
-			dialog.text = "Right after your departure I got news that Fleetwood stepped up efforts to protect his house. I suggested there may be a trap behind this or something like that. I had immediately set sail to Antigua on my lugger - and, as you see now, for a good reason.";
-			link.l1 = "True. I barely managed to deal with the guards inside the house, but I was too exhausted to go on in the street...";
+			dialog.text = "После твоего отбытия, я буквально на следующий день получил известия, что Флитвуд значительно усилил охрану своего дома. Предполагая, что за этим может крыться некая ловушка, или что-то подобное, я немедленно на своем люггере выдвинулся на Антигуа. И, как видишь, не зря.";
+			link.l1 = "Это точно. Я еле управился с гвардейцами внутри дома, на бой на улице сил уже не хватило... немного не хватило.";
 			link.l1.go = "SJ_talk_2";
 		break;
 		
 		case "SJ_talk_2":
-			dialog.text = "After this fight Fleetwood had put a Dutch spy on the wanted list. They thought you were a Dutch spy. He is at inveterate feud with them. The bad thing was that one soldier in the house survived and remembered your face. But, anyway, it is not a problem now. I have finished what you'd started. This soldier will not be able to recognize anybody anymore...";
-			link.l1 = "Did you kill him? I see...";
+			dialog.text = "После этой бойни, Флитвуд объявил розыск голландского шпиона - они приняли тебя именно за голландца. У Флитвуда старая вражда с ними... Плохо было то, что один из солдат в доме остался жив и запомнил твое лицо. Впрочем, эта проблема уже решена - я сегодня доделал то, что начал ты. Больше этот солдат уже никого не опознает...";
+			link.l1 = "Ты его - того? Понятно...";
 			link.l1.go = "SJ_talk_3";
 		break;
 		
 		case "SJ_talk_3":
-			dialog.text = "Yes. While you were lying unconscious at John's place, I injured Fleetwood, but the fucker managed to survive. I struck him blind - threw pepper in his eyes, and then hit him before he had a chance to draw his sword. But this scum wore a hauberk under his uniform - it saved his life. Smart. Now he is staying in bed at home with increased security. It is very unfortunate that he survived.";
-			link.l1 = "So, your main task on Antigua was eliminating Fleetwood?";
+			dialog.text = "Да. А пока ты валялся без сознания у Джона, я приложил нашему дружку, Флитвуду, но тут вышла промашка. Я ослепил его, бросив перец в глаза, и рубанул, прежде чем он успел обнажить клинок. Но этот гад носит под мундиром пурпан... это и спасло его. Сейчас он отлеживается у себя в доме, под усиленной охраной. Очень плохо, что он остался жив.";
+			link.l1 = "Так твоя основная задача на Антигуа - убрать Флитвуда?";
 			link.l1.go = "SJ_talk_4";
 		break;
 		
 		case "SJ_talk_4":
-			dialog.text = "Generally, yes. Now it seems undoable, though - the house is always locked up, there are half a dozen of selected guardsmen on duty round the clock, and they allow only his confidant to see him - an old canoneer Charlie nicknamed Knippel.";
-			link.l1 = "That's already something...";
+			dialog.text = "Ну, в общем, да. Но теперь это, похоже, невыполнимо - дом всегда на замке, в нем дежурит полдюжины отборных гвардейцев, и пропускают к Флитвуду только его доверенное лицо - старого артиллериста Чарли, по прозвищу Книппель.";
+			link.l1 = "Уже что-то...";
 			link.l1.go = "SJ_talk_5";
 		break;
 		
 		case "SJ_talk_5":
-			dialog.text = "Wait a bit... Are you going to interfere with this affair?";
-			link.l1 = "Why not? Don't you need help? You saved me, and I want to help. Plus, I still in a need of coins.";
+			dialog.text = "Постой-ка... Ты что, задумал вмешаться в это дело?";
+			link.l1 = "А почему бы и нет? Разве тебе не нужна помощь? Ты спас меня, и я хочу помочь.";
 			link.l1.go = "SJ_talk_6";
 		break;
 		
 		case "SJ_talk_6":
-			dialog.text = "Believe me, friend, you will not manage that. You are a fine fellow, a real talent, and the logbook, which you had fetched, helped me to plan an attempt on Fleetwood's life, you did a good job at slicing the guards - but you will never be able to get to Fleetwood now. Even I have no slightest clue how to do it.";
+			dialog.text = "Поверь мне, парень, ты с этим не справишься. Ты молодец, добытый тобой журнал помог мне спланировать покушение на Флитвуда, ты здорово покрошил в капусту гвардейцев, но до Флитвуда тебе не добраться. Даже я не представляю теперь, как это сделать.";
 			if (pchar.Ship.Type == SHIP_NOTUSED)
 			{
-				link.l1 = "I will think it over. I still have time. It's too bad that my ship was arrested, and I do not have a crew.";
+				link.l1 = "Я подумаю. Время у меня есть. Вот только жаль, корабль мой арестовали, да и команды не осталось.";
 				link.l1.go = "SJ_talk_7";
 			}
 			else
 			{
-				link.l1 = "I will think about that. I have time and a ship.";
+				link.l1 = "Я подумаю. Время у меня есть, и корабль тоже.";
 				link.l1.go = "SJ_talk_8";
 			}
 		break;
 		
 		case "SJ_talk_7":
-			dialog.text = "Do not worry about that. When your old tub was placed under arrest, I took all your officers and some of the sailors on board of my lugger. They know that you are alive and agreed to stay in service. And in reward for the journal, I am relinquishing my lugger to you.";
-			link.l1 = "Thank you! I will remember that!";
+			dialog.text = "Не переживай по поводу этого. Когда твою лоханку взяли под стражу, я собрал весь твой офицерский состав и часть матросов на своем люггере. Они знают, что ты жив и остались на службе. В качестве награды за журнал я передаю тебе в постоянное пользование свой люггер.";
+			link.l1 = "Спасибо! Я в долгу не останусь.";
 			link.l1.go = "SJ_talk_9";
 			pchar.Ship.Type = GenerateShipHand(pchar, SHIP_CAREERLUGGER, 12, 580, 30, 800, 20000, 16.5, 65.5, 1.6);
-			pchar.Ship.name = "Twilight";
+			pchar.Ship.name = "Сумрак";
 			SetBaseShipData(pchar);
 			pchar.Ship.Cannons.Type = CANNON_TYPE_CANNON_LBS12;
 			SetCrewQuantityFull(pchar);
@@ -123,14 +123,14 @@ void ProcessDialogEvent()
 		
 		case "SJ_talk_8":
 			AddMoneyToCharacter(pchar, 15000);
-			dialog.text = "Yes, I would like to pay you for the journal. 15000 - I do not have more at the moment, unfortunately. We'll settle it up one day. ";
-			link.l1 = "No need. This is enough. If not for you, I would not need any money, anyway.";
+			dialog.text = "Да, я хочу передать тебе деньги за журнал. Вот 15 000 - больше у меня на данный момент нет, к сожалению. Потом сочтемся.";
+			link.l1 = "Не надо. Этого хватит. Если бы не ты, мне бы и эти деньги уже не понадобились бы.";
 			link.l1.go = "SJ_talk_9";
 		break;
 		
 		case "SJ_talk_9":
-			dialog.text = "Alright, " + pchar.name + ", I have to go. I am not going back to Bridgetown yet. Should you really need me - ask John. Good luck!";
-			link.l1 = "Good luck, Hercule!";
+			dialog.text = "Ладно, " + pchar.name + ", мне пора идти. В Бриджтаун я пока не намерен возвращаться. Если я тебе сильно понадоблюсь - поспрашивай Джона. Счастливо!";
+			link.l1 = "Удачи, Эркюль!";
 			link.l1.go = "SJ_talk_10";
 		break;
 		
@@ -143,8 +143,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "SJ_talk_11":
-			dialog.text = "I would like to present you this armour for eliminating Fleetwood. It will protect you in future battles. Let's go see John now. He wants to talk to you and offer you... one interesting affair.";
-			link.l1 = "Thank you for the present. Alright, let's go...";
+			dialog.text = "За ликвидацию Флитвуда я хочу подарить тебе этот доспех - он надежно защитит тебя в схватках. А теперь пойдем к Джону. У него к тебе серьезный разговор - он хочет предложить тебе... одно дело.";
+			link.l1 = "За подарок спасибо! Хорошо, пойдем...";
 			link.l1.go = "SJ_talk_12";
 		break;
 		
@@ -159,10 +159,10 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Tonzag_hired":
-			dialog.text = "I also would like to talk to you, captain. I was going to teach you my trade, but now I see that it is me who should learn from you now. Hire me as an officer on your ship - and you will not regret this.";
-			link.l1 = "With pleasure, Hercule! Welcome to the crew!";
+			dialog.text = "Капитан, у меня тоже к тебе дело. Я собирался учить тебя ремеслу, но вижу, что мне самому есть чему у тебя поучиться на старости лет. Возьми меня к себе офицером на корабль - не пожалеешь.";
+			link.l1 = "С удовольствием, Эркюль! Добро пожаловать в команду!";
 			link.l1.go = "Tonzag_hired_1";
-			link.l2 = "Hercule, I cannot imagine myself being your superior. Thank you for your offer, but I just cannot see you as my subordinate.";
+			link.l2 = "Эркюль, я не могу представить себя в роли твоего босса. Спасибо за предложение, но я не могу себе позволить командовать тобой.";
 			link.l2.go = "Tonzag_exit";
 		break;
 		
@@ -186,8 +186,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Tonzag_exit":
-			dialog.text = "As you say, " + pchar.name + ". See you. Perhaps we will meet again. It's been a pleasure working with you.";
-			link.l1 = "Good luck, friend!";
+			dialog.text = "Ну, как скажешь, " + pchar.name + ". Бывай. Может, еще встретимся. Приятно было с тобой работать!";
+			link.l1 = "И тебе всего хорошего, дружище!";
 			link.l1.go = "Tonzag_exit_1";
 		break;
 		
@@ -200,24 +200,24 @@ void ProcessDialogEvent()
 		
 		//--> ----------------------------------- офицерский блок ------------------------------------------
 		case "tonzag_officer":
-			dialog.text = "I am listening to you, captain. What do you have to say?";
+			dialog.text = "Слушаю, тебя, кэп. Что скажешь?";
 			if (CheckAttribute(pchar, "questTemp.Dolly_Tieyasal") && !CheckAttribute(npchar, "quest.Tieyasal"))
 			{
-				Link.l4 = "Hercule, I am going to the old Indian city of Tayasal and, which is even more unusual, my way lies through a teleportation statue. Will you join me?";
+				Link.l4 = "Эркюль, я собираюсь отправиться в старый индейский город Тайясаль. Не буду скрывать: это крайне опасное путешествие, и более того - необычное: через телепортационный истукан. Ты... пойдешь со мной?";
 				Link.l4.go = "tieyasal";
 			}
-			Link.l1 = "Listen to my order!";
+			Link.l1 = "Слушай мой приказ!";
             Link.l1.go = "stay_follow";
-			link.l2 = "Nothing at the moment. At ease!";
+			link.l2 = "Пока ничего. Вольно!";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "tonzag_officer";
 		break;
 		
 		case "stay_follow":
-            dialog.Text = "What are your orders? ?";
-            Link.l1 = "Stay here!";
+            dialog.Text = "Какие приказания?";
+            Link.l1 = "Стой здесь!";
             Link.l1.go = "Boal_Stay";
-            Link.l2 = "Follow me and don't fall behind!";
+            Link.l2 = "Следуй за мной и не отставай!";
             Link.l2.go = "Boal_Follow";
 			sGun = GetCharacterEquipByGroup(NPChar, GUN_ITEM_TYPE);
 			if(sGun != "")
@@ -225,14 +225,14 @@ void ProcessDialogEvent()
 				rItm = ItemsFromID(sGun);
 				if(CheckAttribute(NPChar, "chr_ai.bulletNum") && sti(NPChar.chr_ai.bulletNum) > 1)
 				{
-					Link.l3 = "Change the type of your ammo.";
+					Link.l3 = "Нужно изменить тип боеприпаса для твоего огнестрельного оружия.";
 					Link.l3.go = "SetGunBullets";
 				}	
 			}		
 		break;
 		
 		case "SetGunBullets":
-			Dialog.Text = "Choice of ammunition type:";
+			Dialog.Text = "Выбор типа боеприпаса:";
 			sGun = GetCharacterEquipByGroup(NPChar, GUN_ITEM_TYPE);
 			rItm = ItemsFromID(sGun);
 			makearef(rType, rItm.type);	
@@ -263,30 +263,30 @@ void ProcessDialogEvent()
         case "Boal_Stay":
             Pchar.questTemp.HiringOfficerIDX = GetCharacterIndex(Npchar.id);
             AddDialogExitQuestFunction("LandEnc_OfficerStay");
-            dialog.Text = "Aye!";
-            Link.l1 = "At ease.";
+            dialog.Text = "Есть изменить дислокацию!";
+            Link.l1 = "Вольно.";
             Link.l1.go = "Exit";
             Npchar.chr_ai.tmpl = LAI_TMPL_STAY;
         break;
         
         case "Boal_Follow":
             SetCharacterTask_FollowCharacter(Npchar, PChar);
-            dialog.Text = "Aye!";
-            Link.l1 = "At ease.";
+            dialog.Text = "Есть изменить дислокацию!";
+            Link.l1 = "Вольно.";
             Link.l1.go = "Exit";
         break;
 	//<-- ----------------------------------- офицерский блок ----------------------------------------
 	
 	// на Тайясаль
 		case "tieyasal":
-			dialog.text = "You are lucky son of bitch, captain. I am glad I've joined you back then in John's. May a shark swallow me, if I won't support you in this undertaking!";
-			link.l1 = "Thank you, Hercule! I am glad that I was right about you.";
+			dialog.text = "Ты чертовски удачлив, кэп. Я рад, что присоединился к тебе тогда, у Джона. И проглоти меня акула, если я не поддержу тебя и в этом предприятии!";
+			link.l1 = "Спасибо, Эркюль! Я рад, что не ошибся в тебе.";
 			link.l1.go = "tieyasal_1";
 		break;
 		
 		case "tieyasal_1":
-			dialog.text = "So, when are we departing?";
-			link.l1 = "A bit later. Now we should get prepared for the journey.";
+			dialog.text = "Когда мы будем отправляться?";
+			link.l1 = "Немного позже. А пока подготовимся к походу.";
 			link.l1.go = "tieyasal_2";
 		break;
 		

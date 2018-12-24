@@ -4,47 +4,47 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you, " + GetAddress_Form(NPChar) + "?"), "You tried to ask me some question not long ago, " + GetAddress_Form(NPChar) + "...", "Over this whole day, this is the third time you're talking about some question...",
-                          "More questions, I presume?", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
-                      "Yes, it really is the third time...", "No, what questions?...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно, " + GetAddress_Form(NPChar) + "?"), "Совсем недавно вы пытались задать мне вопрос, " + GetAddress_Form(NPChar) + "...", "В течение этого дня вы уже третий раз говорите о каком-то вопросе...",
+                          "Опять вопросы будем задавать?", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Да уж, действительно в третий раз...", "Да нет, какие вопросы...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			//Jason, Сага, Тени прошлого
 			if (CheckAttribute(PChar, "questTemp.Saga.Shadows") && pchar.questTemp.Saga.Shadows == "sentjons")
 			{
-				link.l1 = "I've searching for a Raymond Baker, a former executioner. Do you know if he's alive and where I can find him?";
+				link.l1 = "Я разыскиваю Раймонда Бейкера, бывшего палача. Не знаешь, жив ли он, и как мне его найти?";
 				link.l1.go = "baker";
 			}
 			//Jason, суп из черепахи
 			if (CheckAttribute(PChar, "questTemp.Terrapin") && pchar.questTemp.Terrapin == "baster" && !CheckAttribute(npchar, "quest.terrapin"))
 			{
-				link.l1 = "I'm looking for Mr. Jones. Can you help my in my search, pal?";
+				link.l1 = "Я ищу господина Джонса. Не поможешь в розысках, приятель?";
 				link.l1.go = "terrapin";
 			}
 			// Страж Истины
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "merdok")
 			{
-				link.l1 = "Listen, has there been an alchemist that arrived here in this town, a physician? He's Italian, about thirty years old, his name is Gino Gvineili. Have you heard anything about that?";
+				link.l1 = "Послушай, не появлялся ли у вас в городе ученый-алхимик, лекарь? Он итальянец, лет тридцати, зовут Джино Гвинейли. Не слыхал о таком?";
 				link.l1.go = "guardoftruth";
 			}
 		break;
 		
 		//Сага, Тени прошлого
 		case "baker":
-			dialog.text = "Our fatso has become more popular than Colonel Fox! He's alive, the poor guy. Only he's not in town right now. After Raymond found out that serious people like you are taking an interest in him, he hurried up and sold his hovel for peanuts and was gone with the wind.";
-			link.l1 = "Gone with the wind where?";
+			dialog.text = "Наш толстяк стал популярнее полковника Фокса! Жив он, страдалец. Вот только в городе его сейчас нет. После того, как Раймонд узнал, что им интересуются серьезные люди вроде вас, он в спешке продал за бесценок свою лачугу и тю-тю.";
+			link.l1 = "Куда тю-тю?";
 			link.l1.go = "baker_1";
 		break;
 		
 		case "baker_1":
-			dialog.text = "Oh, who knows. He signed up to serve on the first vessel that came by with a ship's doctor. Only that vessel came back today and nobody saw Baker come out to the shore.";
-			link.l1 = "How do I find the captain?";
+			dialog.text = "А кто ж его знает. Завербовался на первое попавшееся судно корабельным врачом. Только вот судно это сегодня вернулось, а Бейкера сошедшим на берег никто не видел.";
+			link.l1 = "Как мне найти капитана?";
 			link.l1.go = "baker_2";
 		break;
 		
 		case "baker_2":
-			dialog.text = "What do you need him for? I'm sure he drunk off his rear end as usual in his cabin. His trough is called 'Callow Meggy'. Such is the captain, such is the name...";
-			link.l1 = "Thanks for the help, buddy!";
+			dialog.text = "А чего его искать? Он уже наверняка напился по обыкновению у себя в каюте. Его корыто называется 'Плешивая Мэгги'. Каков капитан - такое и название...";
+			link.l1 = "Спасибо за помощь, дружище!";
 			link.l1.go = "baker_3";
 		break;
 		
@@ -59,33 +59,33 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		//суп из черепахи
 		case "terrapin":
-			dialog.text = "Mr. Jones? You're taking it a little far, buddy. I don't really recall a Mr. Jones, but simple Joneses –solicitors, hunkies, and soldiers we have up to our necks. Tell me, who is it specifically that you need?";
-			link.l1 = "He's got an adult sister Molly. They say she's amazingly beautiful.";
+			dialog.text = "Господина Джонса? Ну ты загнул, парень. Господинов Джонсов я что-то не припомню, а просто Джонсов - стряпчих, чернорабочих, солдат - тут как собак нерезаных. Кто именно тебе нужен, скажи конкретнее?";
+			link.l1 = "У него есть взрослая сестра Молли. Говорят, редкая красавица.";
 			link.l1.go = "terrapin_1";
 		break;
 		
 		case "terrapin_1":
-			dialog.text = "No. Nothing like that comes to mind. Sorry, buddy...";
-			link.l1 = "All right, if you don't know, you don't know...";
+			dialog.text = "Нет. Не припомню никого такого. Извини, приятель...";
+			link.l1 = "Ладно, на нет - и суда нет...";
 			link.l1.go = "exit";
 			npchar.quest.terrapin = "true";
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "No, I haven't heard. And we've only got one alchemist in the town, pharmacist John Murdock. He's got remarkable potions –they heal any ailments.";
-			link.l1 = "Do you think he prepares these potions himself?";
+			dialog.text = "Нет, не слыхал. Да у нас всего один алхимик в городе, аптекарь Джон Мердок. Микстуры у него знатные - от любых хворей исцеляют.";
+			link.l1 = "Как думаешь, он сам готовит эти микстуры?";
 			link.l1.go = "guardoftruth_1";
 		break;
 		
 		case "guardoftruth_1":
-			dialog.text = "Good question. I ask myself that every now and then John looks nothing like a connoisseur of medicine glasses, herbs, and powders. He kind of resembles an ex-soldier, a mercenary... that's closer to the truth.";
-			link.l1 = "Well, I guess the man's overqualified...";
+			dialog.text = "Хороший вопрос. Я сам себе его иногда задаю - Джон совсем не похож на человека, привыкшего к мензуркам, травам и порошкам. У него замашки бывшего солдата, наемника... это ближе к истине.";
+			link.l1 = "Ну, переквалифицировался человек...";
 			link.l1.go = "guardoftruth_2";
 		break;
 		
 		case "guardoftruth_2":
-			dialog.text = "Maybe, he is. But I there's one thing I know for sure somebody lives on his second floor. The window is constantly draped off. Even when John's downstairs, a clinking sound escapes this window resembling glass vials and bottle as well as what seems to be the odor of boiling herbs, and in the night time the light doesn't go out. That's why I'm suspicious that the inhabitant of that room is the one preparing John medicine for sale.";
-			link.l1 = "Hm. Interesting observation. Thanks, buddy!";
+			dialog.text = "Возможно, что и так. Но вот что я еще точно знаю - живет у него на втором этаже кто-то. Окно постоянно занавешено. Даже когда Джон внизу, из этого окна доносится звон, как от стеклянных пузырьков или бутылок, тянет запахом варящихся трав, а по ночам не гаснет свет. Вот и подозреваю я, что обитатель этой комнаты и готовит лекарства Джону на продажу.";
+			link.l1 = "Хм. Интересное наблюдение. Спасибо, дружище!";
 			link.l1.go = "exit";
 			pchar.questTemp.Guardoftruth = "merdok1";
 		break;

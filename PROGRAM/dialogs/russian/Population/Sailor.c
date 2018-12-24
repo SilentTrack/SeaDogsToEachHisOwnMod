@@ -31,102 +31,102 @@ void ProcessDialogEvent()
 			{
 				if (sti(Pchar.Ship.Type) != SHIP_NOTUSED && CheckAttribute(npchar, "quest.crew"))//найм в команду
 				{
-					dialog.text = "Good day, "+GetAddress_Form(NPChar)+". I am aware that you are the captain of your own ship. I've got a deal for you.";
-					link.l1 = "I am listening, "+GetAddress_FormToNPC(NPChar)+". What this is all about?";
+					dialog.text = "Здравствуйте, "+GetAddress_Form(NPChar)+". Как мне известно, вы - капитан собственного корабля. У меня к вам деловой разговор.";
+					link.l1 = "Слушаю вас внимательно, "+GetAddress_FormToNPC(NPChar)+". О чем речь?";
 					link.l1.go = "crew";
-					link.l2 = "Sorry, "+GetAddress_FormToNPC(NPChar)+", but I am in hurry.";
+					link.l2 = "Простите, "+GetAddress_FormToNPC(NPChar)+", но я очень спешу.";
 					link.l2.go = "exit";
 					npchar.quest.meeting = "1";
 					DeleteAttribute(npchar, "talker"); //снимаем говорилку
 					break;
 				}
-				dialog.text = LinkRandPhrase("Greeting, captain! What do you want from a common sailor?","Good day, sir. How can I help you?","Good day, sir. Do you want something?");
-				link.l1 = "Glad to meet you, pal! My name is "+GetFullName(pchar)+". Got a minute to talk?";
+				dialog.text = LinkRandPhrase("Приветствую, капитан! Что вам угодно от простого матроса?","Здравствуйте, сударь. Чем могу быть вам полезен?","Доброго дня, уважаемый. Вы что-то хотели?");
+				link.l1 = "Рад встрече, уважаемый! Мое имя - "+GetFullName(pchar)+". Не найдется минутки поболтать?";
 				link.l1.go = "question";
-				link.l2 = RandPhraseSimple("I've got a question for you.", "I need some information about this colony.");
+				link.l2 = RandPhraseSimple("У меня есть вопрос к тебе.", "Мне нужна информация о делах в этой колонии.");
 				link.l2.go = "quests";//(перессылка в файл города)
-				link.l3 = "Just wanted to say hi. See you!";
+				link.l3 = "Просто решил поздороваться. Бывай!";
 				link.l3.go = "exit";
 				npchar.quest.meeting = "1";
 			}
 			else
 			{
-				dialog.text = "You again, sir? What else do you want?";
-				link.l1 = "Got a minute to chat?";
+				dialog.text = "Это опять вы, сударь? Вы еще что-то хотели?";
+				link.l1 = "Не найдется ли минутки поболтать о том, о сем?";
 				link.l1.go = "question";
-				link.l2 = RandPhraseSimple("I have got a question for you.", "I need some information about this colony.");
+				link.l2 = RandPhraseSimple("У меня есть вопрос к тебе.", "Мне нужна информация о делах в этой колонии.");
 				link.l2.go = "quests";//(перессылка в файл города)
-				link.l3 = "No, pal, it's nothing. Good luck!";
+				link.l3 = "Нет, приятель, ничего. Удачи!";
 				link.l3.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 
 		case "question":
-			dialog.text = NPCStringReactionRepeat(""+GetFullName(npchar)+" at your service, good sir! What do you want to know?", 
-				"Glad to chat with you, captain!", 
-				"Well... I suppose I still have some more time to talk...",
-                "Unfortunately, I have to go now. Farewell!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Got anything interesting to tell me?", 
-				"Got anything interesting to tell me?",
-                "Got anything interesting to tell me?", 
-				"Sure. Good luck!Sure. Good luck!", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(""+GetFullName(npchar)+" к вашим услугам, милейший! Что вы хотели узнать?", 
+				"Рад поболтать, капитан!", 
+				"Ну, пожалуй, у меня есть еще время...",
+                "К сожалению, мне пора идти. Всего доброго!", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Может, расскажете что интересное?", 
+				"Может, расскажете что интересное?",
+                "Может, расскажете что интересное?", 
+				"Да, конечно. Удачи вам!", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("rumours_sailor", "rumours_sailor", "rumours_sailor", "exit", npchar, Dialog.CurrentNode);
 		break;
 
 		case "crew":
 			switch (drand(2))
 			{
-				case 0: sTemp = "Me and my fellows were posted from a ship due to our injuries. But we are all healthy now and want to employ as sailors again. Do you want to reman your crew?"; break;
-				case 1: sTemp = "Me and a few guys were posted from a trading ship due to the end of our contracts. We have been without a single coin for a long time already so we want to hire as sailors again. Do you need skillful sailors for you crew?"; break;
-				case 2: sTemp = "Me and my pals were back from our voyage two weeks ago. Master has dismissed us and we have been having a great fun during these weeks. But the sailor's pocket is empty now so it's the time to sail again. Do you want to hire us, captain?"; break;
+				case 0: sTemp = "Я и несколько моих друзей были списаны на берег после полученных ранений. Теперь мы выздоровели и хотим вновь наняться на службу матросами. Не желаете ли пополнить свою команду?"; break;
+				case 1: sTemp = "Меня и нескольких ребят недавно списали на берег с купеческого судна - закончился срок действия уговора с хозяином. Мы уже который день на мели и хотим наняться матросами. Нет ли у вас нужды в опытных моряках для вашей команды?"; break;
+				case 2: sTemp = "Мы с друзьями две недели назад вернулись из рейса, хозяин нас рассчитал, и мы здорово повеселились эти денечки. Однако ветер свищет в матросском кармане - значит, снова пора в море. Не наймете ли нас на свое судно, капитан?"; break;
 			}
 			dialog.text = sTemp;
-			link.l1 = "Well, I am ready to discuss your proposal. How many of you and what are you good at?";
+			link.l1 = "Ну что же, я готов рассмотреть ваше предложение. Сколько вас человек, и что вы умеете делать на судне?";
 			link.l1.go = "crew_1";
-			link.l2 = "I am sorry, sailor, but I have got enough men already. You've got to find yourself another captain.";
+			link.l2 = "Сожалею, матрос, но моя команда полностью укомплектована. Так что придется тебе поискать другого капитана.";
 			link.l2.go = "exit";
 		break;
 		
 		case "crew_1":
 			switch (sti(npchar.quest.crew.type))
 			{
-				case 0: sTemp = "We are the best in working with sails and tackles. Not being too modest, I'd say that we are pro's in that, so don't worry, we won't let you down even in the strongest storm."; break;
-				case 1: sTemp = "But most of all we like to be on the gun deck. We are able to deal with cannons in the way no one in your crew is. You can count on us in every hard fight!"; break;
-				case 2: sTemp = "But our favorite is the boarding fight. Glitter of sabers, smell of a gunpowder and blood. That's our calling. It's not easy to defeat us in a fight, so you can always count on our blades, captain!"; break;
+				case 0: sTemp = "Хотя лучше всего прочего мы умеем обращаться с парусами и снастями. Без лишней скромности скажу: мы на этом деле собаку съели, так что не подведем даже в самый свирепый шторм!"; break;
+				case 1: sTemp = "Однако больше всего нам по душе пушечная палуба. Мы умеем обращаться с орудиями так, как никто другой в вашей команде, уверяю. Во время жаркой баталии можете без опаски положиться на нас!"; break;
+				case 2: sTemp = "Но наша стихия - это абордажная схватка. Блеск сабель, запах пороха и крови - вот наше призвание. В бою с нами нелегко совладать, так что в случае опасности наши клинки выручат вас, капитан!"; break;
 			}
-			dialog.text = "There are "+sti(npchar.quest.crew.qty)+" of us and we will hire only together. We are able to do anything the sailor must do."+sTemp+"";
+			dialog.text = "Нас "+sti(npchar.quest.crew.qty)+" человек, и пойдем мы на службу только все вместе. Умеем мы всё, что положено матросу. "+sTemp+"";
 			if (GetFreeCrewQuantity(pchar) >= sti(npchar.quest.crew.qty))
 			{
-				link.l1 = "Sounds tempting. What about your advance?";
+				link.l1 = "Звучит весьма заманчиво. Сколько вы хотите аванса?";
 				link.l1.go = "crew_2";
-				link.l2 = "Sorry, sailor, but I was counting on something... different. You've to find yourself another captain.";
+				link.l2 = "Сожалею, матрос, но я рассчитывал на несколько... иное. Придется вам поискать другого капитана.";
 				link.l2.go = "exit";
 			}
 			else
 			{
-				link.l1 = "Sorry, sailor, but I don't have enough spare room on my ship. You've to find yourself another captain.";
-				link.l1.go = "exit";
+				link.l1 = "Сожалею, матрос, но для всех вас у меня нет мест на корабле. Придется вам поискать другого капитана.";
+			link.l1.go = "exit";
 			}
 		break;
 		
 		case "crew_2":
 			iTemp = sti(npchar.quest.crew.money)*sti(npchar.quest.crew.qty);
-			dialog.text = ""+FindRussianMoneyString(sti(npchar.quest.crew.money))+" for each. And then the common sailor's wage per month. We won't ask anything excessive, captain.";
+			dialog.text = ""+FindRussianMoneyString(sti(npchar.quest.crew.money))+" на брата. Потом - обычное матросское жалование. Мы лишнего не попросим, кэп.";
 			if (sti(pchar.money) >= iTemp)
 			{
-				link.l1 = "Deal! Take your coins. Now go to my ship, it is called '"+pchar.ship.name+"', right in the harbor. Boatswain will give you your places in the crew's quarters and assign your jobs.";
+				link.l1 = "Договорились! Вот здесь вся сумма. Отправляйтесь на мой корабль, он называется '"+pchar.ship.name+"', стоит на рейде. Боцман выделит вам места в кубрике и даст работу.";
 				link.l1.go = "crew_3";
 			}
-			link.l2 = "Unfortunately, I can't afford to pay for your services. You've got to find yourselves another captain.";
+			link.l2 = "К сожалению, я не могу себе позволить оплатить ваши услуги. Придется вам поискать другого капитана.";
 			link.l2.go = "exit";
 		break;
 		
 		case "crew_3":
 			iTemp = sti(npchar.quest.crew.money)*sti(npchar.quest.crew.qty);
 			AddMoneyToCharacter(pchar, -iTemp);
-			dialog.text = "We are on our way, captain! I will gather folks and we will be off immediately.";
-			link.l1 = "Hurry up, I am not going to stay here for along time.";
+			dialog.text = "Уже идем, капитан! Я соберу ребят, и мы отправимся на борт немедленно!";
+			link.l1 = "Давайтие, поторапливайтесь, я долго задерживаться тут не планирую.";
 			link.l1.go = "crew_4";
 		break;
 		
@@ -151,8 +151,8 @@ void ProcessDialogEvent()
 
 		//замечание по обнаженному оружию от персонажей типа citizen
 		case "CitizenNotBlade":
-			dialog.text = NPCharSexPhrase(NPChar, "Listen, I am the citizen of this town and I'd ask you to hold down your blade.", "Listen, I am the citizen of this town and I'd ask you to hold down your blade.");
-			link.l1 = LinkRandPhrase("Fine.", "Whatever.", "Whatever you say...");
+			dialog.text = NPCharSexPhrase(NPChar, "Послушайте, я, как гражданин этого города, прошу вас не ходить у нас с обнаженным клинком.", "Знаете, я, как гражданка этого города, прошу вас не ходить у нас с обнаженным клинком.");
+			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажете...");
 			link.l1.go = "exit";
 		break;
 

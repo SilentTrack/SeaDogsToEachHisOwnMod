@@ -16,8 +16,8 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "Want something?";
-			link.l1 = "No, it's nothing.";
+			dialog.text = "Вы что-то хотели?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
@@ -25,7 +25,7 @@ void ProcessDialogEvent()
 		// бой на рифе
 		case "reef":
 			PlaySound("VOICE\Russian\saga\Jessica Rose-06.wav");
-			dialog.text = "You! You have brought her here! She is his flesh and blood! She is her flesh and blood! The daughter of whore has come to her mother's grave! She'll die! And you won't stop it! Don't stay in Jessica's way! Let the vengeance commit!";
+			dialog.text = "Ты! Ты привел ее сюда! Она - его плоть и кровь! Она - ее плоть и кровь! Дочь проклятой шлюхи явилась на могилу своей матери! Она умрет! И ты не сможешь помешать этому! Не стой на пути Джессики! Да свершится месть!";
 			link.l1 = "...";
 			link.l1.go = "reef_1";
 		break;
@@ -42,7 +42,7 @@ void ProcessDialogEvent()
 		
 		case "stage_1":
 			PlaySound("VOICE\Russian\saga\Jessica Rose-07.wav");
-			dialog.text = "Ha! You cannot hurt me!\n The air, the water, the earth, the fire - I order you to assist me!\n Let the dead rise, let the fire burn, let the water guard the bridge, let the wind take you and throw!\nHave fun!!!";
+			dialog.text = "Ха-ха-ха-ха! Тебе не одолеть меня!\nВоздух, вода, земля и огонь - призываю вас себе в помощь!\nДа поднимутся мертвецы и обнажат сабли, да взовьются над твердью языки пламени, да встанет вода на страже у моста, да подхватит тебя ветер на крылья свои, и да притянет тебя земля хваткой тяжести!\nПолучай, ха-ха-ха!!!";
 			link.l1 = "...";
 			link.l1.go = "stage_1_exit";
 		break;
@@ -60,8 +60,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "stage_2":
-			PlaySound("VOICE\Russian\saga\Jessica Rose-08.wav");
-			dialog.text = "Ha! You cannot hurt me!\nLet more of the dead rise and attack, let the fire burn the stone, let the wind take you and let the earth absorb your strengths!\nEnjoy!!!";
+			PlaySound("VOICE\Russian\saga\Jessica Rose-07.wav");
+			dialog.text = "Ха-ха-ха-ха! Тебе не одолеть меня!\nРезерв встанет из могил и да пойдет в атаку, да вспыхнет пламя над скалой, да подхватит тебя ветер плащом своим и да поглотит земля твои силы хваткой слабости!\nПолучай, ха-ха-ха!!!";
 			link.l1 = "...";
 			link.l1.go = "stage_2_exit";
 		break;
@@ -81,7 +81,7 @@ void ProcessDialogEvent()
 		
 		case "stage_3":
 			PlaySound("VOICE\Russian\saga\Jessica Rose-07.wav");
-			dialog.text = "Ha! You cannot hurt me!\nLet the poison to cover my flame-bladed sword, let the wind take you, let the water drink away your agility!\nDie!";
+			dialog.text = "Ха-ха-ха-ха! Тебе не одолеть меня!\nМой фламберж да окропится ядом, да схватит тебя ветер в объятия свои, да поглотит вода твою ловкость хваткой усталости!\nПолучай, ха-ха-ха!!!";
 			link.l1 = "...";
 			link.l1.go = "stage_3_exit";
 		break;
@@ -104,12 +104,12 @@ void ProcessDialogEvent()
 		case "stage_4":
 			PlayStereoOGG("music_shore");
 			sld = characterFromId("Svenson");
-			dialog.text = "Enough... I am tired. I am defeated... Take pity upon the fate of unfortunate Jessica!";
-			link.l1 = "Sure... I will spare your poor soul from the weigh of this dead body!";
+			dialog.text = "Довольно... У меня нет больше сил. Я побеждена... Сжалься хоть ты над судьбой несчастной Джессики!";
+			link.l1 = "Конечно... Я освобожу твою бедную душу от тягот этого мертвого тела!";
 			link.l1.go = "exit_battle";
 			if (CheckAttribute(sld, "quest.jessika_peace")) // выслушал историю Джессики
 			{
-				link.l2 = "I know your story, Jessica. And I am sorry that your life was so sad and ended that silly. You want to talk to me, right? Well, I'll try to forget that you've recently been trying to kill me and I'll listen to you, though it won't be easy for me...";
+				link.l2 = "Я знаю твою историю, Джессика. И мне жаль, что жизнь твоя сложилась так грустно и закончилась так нелепо. Я вижу, ты хочешь поговорить? Что же, я постараюсь забыть о том, что ты только что чуть не убила меня, и выслушаю, хотя мне это и непросто...";
 				link.l2.go = "exit_talk";
 			}
 		break;
@@ -131,7 +131,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "exit_talk":
-			dialog.text = "Thank you... You already know about Beatrice Sharp and Lawrence... my Lawrence. I have killed her unhesitatingly, but I couldn't kill him. I couldn't do it, but he could. Jessica died...";
+			dialog.text = "Спасибо... Ты уже знаешь о Беатрисс Шарп и Лоуренсе... моем Лоуренсе. Я без колебаний убила ее, но его - не смогла. Моя рука дрогнула, а его - нет. Джессика погибла...";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			AddDialogExitQuest("Video_Reef");
@@ -139,52 +139,52 @@ void ProcessDialogEvent()
 		break;
 		
 		case "exit_talk_0":
-			dialog.text = "... but the blood vow, bonded by a terrible oath is still unperformed. Power of this vow is strengthen by Indian magic. It has risen the corpse from it's grave\nHatred turned my soul into a desert. Everyone who came to this reef were slain by my hand and their dead bodies became my puppets. I can ask for help no one, but the one who has vanquished me...";
-			link.l1 = "And what can I do for you? The only thing I can is to spare you from suffering...";
+			dialog.text = "... но обет, принятый и связанный страшной клятвой, остался не исполненным. Сила этого обета в сочетании с индейским заклятием подняла мертвое тело из могилы\nНенависть превратила мою душу в пустыню. Все, кто приходил на этот риф ночью, были убиты мной, а их мертвые тела подчинились мне. Только того, кто смог победить меня, могу я просить о помощи...";
+			link.l1 = "Да что же я могу для тебя сделать? Единственное - это освободить от страданий...";
 			link.l1.go = "exit_talk_1";
 		break;
 		
 		case "exit_talk_1":
 			PlaySound("VOICE\Russian\saga\Jessica Rose-03.wav");
-			dialog.text = "Help me... Take me to him.";
-			link.l1 = "To Lawrence Beltrope? And how am I supposed to do that? My crew will either run away as soon as they see you or they will burn you with no regret. By the way, you are still able to butcher my men and 'control' them...";
+			dialog.text = "Помоги мне... Отвези меня к нему.";
+			link.l1 = "К Лоуренсу Белтропу? Да как же я это сделаю? Моя команда или разбежится, завидев тебя, или отправит на костер без рассуждений. Да и ты можешь перерезать моих людей, а потом 'подчинить их себе'...";
 			link.l1.go = "exit_talk_2";
 		break;
 		
 		case "exit_talk_2":
-			dialog.text = "They won't see me. But you will. You must have already understood that I posses powers unavailable for the living. But I cannot get aboard your ship without your permission. Take me to him\nI won't stay with you for long. And I won't hurt you people. Land me at Portland Cove at midnight, the next night we shall meet again and you will get what you wanted to find here.";
-			link.l1 = "How do you know why am I here?";
+			dialog.text = "Меня никто не увидит. Кроме тебя. Ты должен был уже понять, что мне доступно то, чего никогда не сможет сделать живой. Но я не смогу подняться на твой корабль без твоего согласия. Отвези меня к нему! Отсюда до Ямайки несколько дней пути\nЯ недолго буду твоим спутником. Людей твоих я не трону. Высади меня в полночь в бухте Портленд, а в следующую ночь мы снова встретимся, и ты получишь то, за чем сюда пришел.";
+			link.l1 = "Откуда ты знаешь, почему я здесь?";
 			link.l1.go = "exit_talk_3";
 		break;
 		
 		case "exit_talk_3":
 			PlaySound("VOICE\Russian\saga\Jessica Rose-01.wav");
-			dialog.text = "I know a lot. More then the living do. I saw her... You need a document for her and you will get it. You will get even more, I will give you something extra. Take me to him...";
-			link.l1 = "Hm. I don't like your bloodthirsty intentions towards Helen. Don't you dare to touch her. After all, she is not responsible for her mother's actions.";
+			dialog.text = "Я знаю многое. Больше, чем вы, живые. И я видела ее... Тебе нужна одна бумага, для нее, и ты ее получишь. Ты получишь больше - я дам тебе еще кое-что. Отвези...";
+			link.l1 = "Гм. Мне очень не нравятся твои кровожадные намерения в отношении Элен. Не смей ее трогать. В конце концов, она не несет ответ за свою мать.";
 			link.l1.go = "exit_talk_4";
 		break;
 		
 		case "exit_talk_4":
-			dialog.text = "You have defeated me. I won't harm her... I promise.";
-			link.l1 = "It is not over yet. Are you going to take your numerous curses away from me? I admit, I don't like the idea to live with them forever...";
+			dialog.text = "Ты победил меня. Я не трону ее... Я обещаю.";
+			link.l1 = "Это не все. Ты собираешься снимать с меня заклятия, которыми так обильно наградила? Признаюсь, мне бы не хотелось до конца дней своих остаться в таком виде, в который ты меня привела...";
 			link.l1.go = "exit_talk_5";
 		break;
 		
 		case "exit_talk_5":
-			dialog.text = "It is not that simple... When we shall meet at Portland Cove after I... I will tell you how to heal yourself.";
-			link.l1 = "After you what?.. What do you mean?";
+			dialog.text = "Это не так просто... Когда мы встретимся с тобой в бухте Портленд, после того, как я... Я расскажу тебе, как исцелиться.";
+			link.l1 = "После того, как ты?.. Что именно?";
 			link.l1.go = "exit_talk_6";
 		break;
 		
 		case "exit_talk_6":
-			dialog.text = "After my meeting with him.";
-			link.l1 = "Oh, he won't be happy. I can imagine. Fine, let's summarize: first, you promise that no one will see you, second, you won't harm my crew, third, you will not even think about Helen, fourth, you will give me what I am looking for and, fifth, you will heal me from your curses. Am I right?";
+			dialog.text = "После того, как я встречусь с ним.";
+			link.l1 = "Ох, он будет очень рад. Могу представить. Ладно, подведем итоги: ты обещаешь, что никто тебя не увидит - раз, что ты не тронешь мою команду - два, что ты забудешь даже думать про Элен - три, отдашь мне то, что я ищу - четыре, и вылечишь от своего колдовства - пять. Так?";
 			link.l1.go = "exit_talk_7";
 		break;
 		
 		case "exit_talk_7":
-			dialog.text = "Almost. I won't heal you, but I will tell you how to. You will have to do it yourself.";
-			link.l1 = "Fine. Deal then. I allow you to go to my ship.";
+			dialog.text = "Почти. Я не вылечу. Я скажу, как исцелиться. Ты сделаешь это сам.";
+			link.l1 = "Хорошо. Тогда договорились. Я разрешаю тебе взойти на мой корабль...";
 			link.l1.go = "exit_talk_8";
 		break;
 		
@@ -192,7 +192,7 @@ void ProcessDialogEvent()
 			PlaySound("Ambient\Teno_inside\teleporter.wav");
 			ChangeCharacterAddressGroup(npchar, "none", "", "");
 			dialog.text = "";
-			link.l1 = "Hey! Where are you? Just disappeared...";
+			link.l1 = "Эй! Ты где? Словно испарилась...";
 			link.l1.go = "exit_talk_9";
 		break;
 		
@@ -225,8 +225,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "shore":
-			dialog.text = "You have kept your word - we are at Jamaica. Come here tomorrow night and I will fulfil my promise. Farewell.";
-			link.l1 = "Farewell...";
+			dialog.text = "Ты сдержал слово - мы на Ямайке. Приходи сюда завтра ночью - я выполню свое обещание. До встречи.";
+			link.l1 = "До встречи...";
 			link.l1.go = "shore_1";
 		break;
 		
@@ -245,28 +245,28 @@ void ProcessDialogEvent()
 		break;
 		
 		case "shore_2":
-			dialog.text = "It is over, "+pchar.name+"...";
-			link.l1 = "What do you mean?";
+			dialog.text = "Вот и всё, "+pchar.name+"...";
+			link.l1 = "Что - всё?";
 			link.l1.go = "shore_3";
 		break;
 		
 		case "shore_3":
-			dialog.text = "It is over... Here, take it, this is what you were looking for. This is the letter of my rival, it was buried with her. It was preserved well. I have forgiven her and there is no more hatred in my soul.";
-			link.l1 = "Did you... meet with him? With Lawrence?";
+			dialog.text = "Всё - это всё... Вот, держи то, что ты искал. Это письмо моей соперницы, похороненное вместе с ней. Оно хорошо сохранилось. Теперь я простила ее, и в моей душе нет более ненависти.";
+			link.l1 = "Ты... встретилась с ним? С Лоуренсом?";
 			link.l1.go = "shore_4";
 		break;
 		
 		case "shore_4":
 			GiveItem2Character(pchar, "letter_beatriss"); // дать письмо
 			AddQuestRecordInfo("Letter_beatriss", "1");
-			dialog.text = "Yes. The last thing he has felt in his life was a horror. I don't feel pity for him.";
-			link.l1 = "Jesus... It seems that I will never meet him.";
+			dialog.text = "Да. Последнее, что он испытал в своей жизни - это ужас. Мне не жаль его.";
+			link.l1 = "Упокой Господи его грешную душу... Видно, так и не придется мне с ним встретится.";
 			link.l1.go = "shore_5";
 		break;
 		
 		case "shore_5":
-			dialog.text = "You have lost nothing. He is a very bad man. And we say goodbye to each other, there is nothing more left for me here. My vow was fulfilled and the magic has lost it's power. I have promised you a present. Here. This is my flamberge. I don't need it anymore. This blade is unique, you won't find better.";
-			link.l1 = "Thanks...";
+			dialog.text = "Ты ничего не потерял от того, что не увидел его. Он очень плохой человек. А сейчас будем прощаться - меня ничего более здесь не держит. Обет выполнен, заклятие потеряло силу. Я обещала тебе подарок. Вот. Это мой фламберж. Мне он больше не нужен. Это уникальный клинок, второго такого нет на свете.";
+			link.l1 = "Спасибо...";
 			link.l1.go = "shore_6";
 		break;
 		
@@ -274,21 +274,21 @@ void ProcessDialogEvent()
 			RemoveAllCharacterItems(npchar, true);
 			GiveItem2Character(pchar, "blade_25");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Now you. Go to Bridgetown ,to the local church in order to take off my curses. You will find a priest there. He knew me in person. Talk to him and he will tell you what to do. Prepare twenty candles, you will need them.";
-			link.l1 = "Will he heal me?";
+			dialog.text = "Теперь о тебе. Чтобы снять мои заклятия, отправляйся в Бриджтаун, в местную церковь. Там найдешь священника. Он знал меня лично. Обратись к нему - он скажет, что делать. Запасись заранее двумя десятками восковых свечей - они тебе понадобятся.";
+			link.l1 = "Он точно вылечит меня?";
 			link.l1.go = "shore_7";
 		break;
 		
 		case "shore_7":
-			dialog.text = "You will do it yourself. God guide you. Be sure. All be well.";
-			link.l1 = "Fine, I will go to Barbados immediately. And what now?";
+			dialog.text = "Ты все сделаешь сам. Господь поможет тебе. Будь уверен. Все будет хорошо.";
+			link.l1 = "Ладно, я немедленно отправлюсь на Барбадос. И что теперь?";
 			link.l1.go = "shore_8";
 		break;
 		
 		case "shore_8":
 			PlaySound("VOICE\Russian\saga\Jessica Rose-04.wav");
-			dialog.text = "And now I have one last wish to you. Bury my body at this cove near the sea. I want that. Perhaps one day you will visit a grave of poor Jessica. Farewell, "+pchar.name+", and pray for me...";
-			link.l1 = "Jess?..";
+			dialog.text = "А теперь у меня к тебе последняя просьба: похорони мое тело в этой бухте, у моря. Я так хочу. Может, когда-нибудь навестишь могилку несчастной Джессики. Прощай, "+pchar.name+", и помолись за меня...";
+			link.l1 = "Джесс?..";
 			link.l1.go = "shore_9";
 		break;
 		
@@ -311,44 +311,44 @@ void ProcessDialogEvent()
 		break;
 		
 		case "soul":
-			dialog.text = "Did you recognize me, captain?";
-			link.l1 = "Is it... is it you? But how?";
+			dialog.text = "Ты не узнал меня, капитан?";
+			link.l1 = "Это... это ты? Но как?";
 			link.l1.go = "soul_1";
 		break;
 		
 		case "soul_1":
-			dialog.text = "Yes, "+pchar.name+", it is me, it's Jessica! At least, I was looking lake that twenty years ago.";
-			link.l1 = "So... did I die? But since when? How?";
+			dialog.text = "Да, "+pchar.name+", это я, Джессика! По крайней мере, такой я была двадцать лет назад.";
+			link.l1 = "Получается... я тоже умер? Но когда же я успел? Как это случилось?";
 			link.l1.go = "soul_2";
 		break;
 		
 		case "soul_2":
-			dialog.text = "You are not dead, "+pchar.name+". You are in the church of Bridgetown now. You are just... sleeping.";
-			link.l1 = "Is it just a dream? Things look too real...";
+			dialog.text = "Ты не умер, "+pchar.name+". Сейчас ты находишься в церкви Бриджтауна. Ты просто... спишь.";
+			link.l1 = "А ты мне видишься? Что-то уж очень реально...";
 			link.l1.go = "soul_3";
 		break;
 		
 		case "soul_3":
-			dialog.text = "It happens sometime, "+pchar.name+". God has heard you. Your prays have not only healed you, but also have purified my soul. Thank you very much, "+pchar.name+"! And I want to ask you to forgive me for what has happened at the reef. It's... well, just forgive me. I couldn't leave without asking for your forgiveness.";
-			link.l1 = "I forgive you, Jessica. Am I really alive?";
+			dialog.text = "Так бывает, "+pchar.name+". Господь услышал тебя. Твои молитвы не только исцелили тебя, но и очистили мою душу от скверны. Спасибо тебе большое, "+pchar.name+"! И я хочу попросить у тебя прощения за то, что произошло на рифе. Это... в общем, просто прости меня. Я не могла уйти, не испросив твоего прощения.";
+			link.l1 = "Я прощаю тебя, Джессика. А я точно жив?";
 			link.l1.go = "soul_4";
 		break;
 		
 		case "soul_4":
-			dialog.text = "You are... Don't worry. Soon, you will wake up. I just wanted to say goodbye.";
-			link.l1 = "You are so... beautiful!";
+			dialog.text = "Точно... Не переживай. Скоро ты проснешься. Я просто пришла с тобой проститься.";
+			link.l1 = "Какая ты... красивая!";
 			link.l1.go = "soul_5";
 		break;
 		
 		case "soul_5":
-			dialog.text = "Do you like me? Yes, there was a time when the best of suitors from Lesser Antilles have been courting me and every third pirate of Isla Tesoro was ready to duel for me.";
-			link.l1 = "But you have always needed only one... Eh, ginger talisman! Just tell me why?..";
+			dialog.text = "Нравлюсь? Да, когда-то за мной бегали лучшие женихи Малых Антил, а каждый третий пират с Исла Тесоро был готов драться за меня на дуэли.";
+			link.l1 = "Но тебе был нужен только один... Эх, рыжий талисман! За что же тебя так?..";
 			link.l1.go = "soul_6";
 		break;
 		
 		case "soul_6":
-			dialog.text = "Because of my anger. of hatred. For inability to comprehend, forgive and forget. I could start a new life, but I preferred to devote myself to the stupid and pointless vengeance. You were able to release me. Thank you, "+pchar.name+"...";
-			link.l1 = "I feel really sorry for your life...";
+			dialog.text = "За злобу. За ненависть. За неспособность понять, простить и забыть. Я могла начать новую жизнь, но предпочла посвятить себя глупой и бессмысленной мести. И была наказана страшной карой. Ты смог освободить меня. Спасибо тебе, "+pchar.name+"...";
+			link.l1 = "Мне действительно жаль, что у тебя все так вышло...";
 			link.l1.go = "soul_7";
 		break;
 		
@@ -356,64 +356,64 @@ void ProcessDialogEvent()
 		case "soul_7":
 			if (CheckAttribute(pchar, "questTemp.LSC.Mary_officer") && GetCharacterIndex("Mary") != -1)
 			{ // Мэри-офицер
-				dialog.text = "Don't... You also have a ginger talisman...";
-				link.l1 = "Yes? Who is that?";
+				dialog.text = "Не жалей... У тебя, кстати, тоже есть рыжий талисман...";
+				link.l1 = "Да? И кто же это?";
 				link.l1.go = "mary_1";
 				break;
 			}
 			if (!CheckAttribute(pchar, "questTemp.LSC.Mary_officer") && CheckAttribute(pchar, "questTemp.LSC.marywait"))
 			{ // Мэри осталась на острове
-				dialog.text = "Don't... You also have a ginger talisman...";
-				link.l1 = "Yes? Who is that?";
+				dialog.text = "Не жалей... У тебя, кстати, тоже есть рыжий талисман...";
+				link.l1 = "Да? И кто же это?";
 				link.l1.go = "mary_3";
 				break;
 			}
-			dialog.text = "Don't... Consider my sad experience and don't repeat any of my mistakes. And don't let the people you love do it.";
-			link.l1 = "I will consider that. I will do that for sure...";
+			dialog.text = "Не жалей... Лучше учти мой горький опыт и не повтори подобного в своей жизни. И не позволь повторить близкому тебе человеку.";
+			link.l1 = "Я учту. Я обязательно это учту...";
 			link.l1.go = "soul_8";
 		break;
 		
 		case "mary_1":
-			dialog.text = "Think a bit. She is on you ship.";
-			link.l1 = "Mary?!";
+			dialog.text = "Подумай немного. Она у тебя на корабле.";
+			link.l1 = "Мэри?!";
 			link.l1.go = "mary_2";
 		break;
 		
 		case "mary_2":
-			dialog.text = "Yes. She is the best you will ever have in your life. Remember that. Her love is clear, her devotion is infinite. She is brave, desperate, but young and inexperienced. She don't understand a lot. Take care of her, protect her and don't let anyone stand between you two. She is you talisman...";
-			link.l1 = "I will consider that. I will do that for sure...";
+			dialog.text = "Да. Она - лучшее, что есть, и что будет у тебя в жизни. Запомни это. Ее любовь чиста, ее преданность безгранична. Она смела, отчаянна, но молода и неопытна, и многого не понимает. Заботься о ней, береги ее, не позволь никому встать между вами. Она - твой талисман...";
+			link.l1 = "Я учту. Я обязательно это учту...";
 			link.l1.go = "soul_8";
 		break;
 		
 		case "mary_3":
-			dialog.text = "She is on the strange island which is made of dead ships... She is not alone there, but she is lonely. Every morning of hers begins with a thought of you, every day she prays for you, every night there is a light in her cabin and her pillow is wet because of her tears...";
-			link.l1 = "Mary...";
+			dialog.text = "Она на странном острове из погибших кораблей посреди моря... Она там не одна, но она одинока. Каждое ее утро начинается с мысли о тебе, каждый день она посылает Господу молитву за тебя, а по ночам в ее каюте не гаснет свет, и подушка ее мокра от слез...";
+			link.l1 = "Мэри...";
 			link.l1.go = "mary_4";
 		break;
 		
 		case "mary_4":
-			dialog.text = "There is the daughter between you two. The daughter of the woman who once stood between me and Lawrence. Your talisman's fate is in your hands. They can't live together just like me and Beatrice couldn't.";
-			link.l1 = "How do you know that?";
+			dialog.text = "Между ней и тобой стоит дочь той, которая встала когда-то между мной и Лоуренсом. Судьба твоего талисмана в твоих руках. Они не смогут сосуществовать вместе, точно так же, как я и Беатрисс.";
+			link.l1 = "Откуда же тебе все известно?";
 			link.l1.go = "mary_5";
 		break;
 		
 		case "mary_5":
-			dialog.text = "I just do. It's you choice, but remember: Mary is the best you will ever have in your life. Her love is clear, her devotion is infinite. She is brave, desperate but young and inexperienced. She don't understand a lot. She needs your protection, your care and your love. She is your talisman.";
-			link.l1 = "I will consider that. I will do that for sure...";
+			dialog.text = "Там... там становится известно многое. Решай, но помни: Мэри - лучшее, что есть, и что будет у тебя в жизни. Ее любовь чиста, ее преданность безгранична. Она смела, отчаянна, но молода и неопытна, и многого не понимает. Ей нужна твоя защита, твоя забота и твоя любовь. Она - твой талисман.";
+			link.l1 = "Я учту. Я обязательно это учту...";
 			link.l1.go = "soul_8";
 		break;
 		
 		case "soul_8":
 			if (CheckAttribute(pchar, "questTemp.Saga.Helena_friend")) sTemp = "";
-			else sTemp = "And about a daughter of Beatrice, know that your noble actions in her behalf will be left unvalued. Soon you will see that for yourself. Be careful with her. Well\n";
-			dialog.text = ""+sTemp+"I have to go. It is time to say goodbyes... For real this time. Don't forget about Jessica and try to visit her grave sometimes... Only you know where is it.";
-			link.l1 = "Sure, Jess. I will visit it and I will pray for you.";
+			else sTemp = "Что же касается дочери Беатрисс, то твои благородные поступки в ее отношении так и останутся неоцененными. Скоро ты в этом убедишься. Будь с ней осторожен. Ну а теперь\n";
+			dialog.text = ""+sTemp+"Мне пора уходить. Пришло время расстаться... На этот раз - навсегда. Не забывай Джессику, и хотя бы изредка навещай ее могилку... Ведь только ты один знаешь, где она.";
+			link.l1 = "Обязательно, Джесс. Я и навещу, и помолюсь за тебя.";
 			link.l1.go = "soul_9";
 		break;
 		
 		case "soul_9":
-			dialog.text = "Thanks. Farewell, "+pchar.name+"! Farewell!";
-			link.l1 = "Farewell, Jessica...";
+			dialog.text = "Спасибо. Прощай, "+pchar.name+"! Прощай!";
+			link.l1 = "Прощай, Джессика...";
 			link.l1.go = "soul_10";
 		break;
 		

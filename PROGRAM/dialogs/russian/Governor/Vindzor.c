@@ -13,8 +13,8 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "What do you want?";
-			link.l1 = "Nothing.";
+			dialog.text = "Что вам угодно?";
+			link.l1 = "Ничего.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;

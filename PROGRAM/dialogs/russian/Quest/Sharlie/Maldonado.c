@@ -14,87 +14,87 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "Is there something you need?";
-			link.l1 = "No, nothing.";
+			dialog.text = "Ты что-то хотел?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "ksochitam":
-			dialog.text = "Stop, captain "+GetFullName(pchar)+"...";
-			link.l1 = "Somehow, I'm not even surprised by the Spanish soldiers' presence here... I guess I've just gotten used to somebody always on my tail.  What are you looking for on this god-forsaken island, Castilian?  Looking for a quick way to kick up your heels?";
+			dialog.text = "Стой, капитан "+GetFullName(pchar)+"...";
+			link.l1 = "Почему-то я даже не удивлен присутствию здесь испанцев... наверное, уже привык к тому, что за мной постоянно кто-то охотится. Чего тебе надо на этом проклятом острове, кастилец? Смерти ищешь?";
 			link.l1.go = "ksochitam_1";
 		break;
 		
 		case "ksochitam_1":
-			dialog.text = "My name is Alonso de Maldonado. That might not mean anything to you, but Diego de Montoya might ring a few bells. He was my best friend. He saved my life and now his blood is on your hands.";
-			link.l1 = "I take it you've followed me here to seek out revenge?";
+			dialog.text = "Мое имя - Алонсо де Мальдонадо. Тебе оно ничего не говорит, но зато имя Диего де Монтойя ты должен знать хорошо. Он был моим лучшим другом. Он спас мне жизнь. И он пал от твоей руки.";
+			link.l1 = "Как я понимаю, ты меня преследовал, чтобы отомстить?";
 			link.l1.go = "ksochitam_2";
 		break;
 		
 		case "ksochitam_2":
-			dialog.text = "I'm not just looking for revenge. I take it that you have Kukulcan's mask?";
-			link.l1 = "Well, I'll be dammed! Another treasure hunter! Come for some unfinished business started by Don Diego?";
+			dialog.text = "И не только. Маска Кукулькана у тебя, как я понимаю?";
+			link.l1 = "О! Еще один охотник за сокровищами! Решил довершить дело, начатое доном Диего?";
 			link.l1.go = "ksochitam_3";
 		break;
 		
 		case "ksochitam_3":
-			dialog.text = "I'm not interested in treasures. I've seen riches in Tayasal. Miguel Dichoso wasn't able to haul out much more than a morsel. The mask is what I want.";
-			link.l1 = "You've been to Tayasal?  That's hard to believe.  As I remember, Dichoso was the one and only survivor of the expedition.";
+			dialog.text = "Меня не интересуют сокровища. Я видел их в Тайясале столько... Мигель Дичозо смог вывезти лишь ничтожную их часть. Мне нужна маска.";
+			link.l1 = "Ты был в Тайясале? Слабо верится. Дичозо вернулся из похода на Тайясаль один, как я помню. ";
 			link.l1.go = "ksochitam_4";
 		break;
 		
 		case "ksochitam_4":
-			dialog.text = "I went to Tayasal twenty years before Dichoso ever got there. The same time that mad sorcerer Kanek used that despicable human sacrifice ritual to hide the mask on this island.";
-			link.l1 = "I can't believe what I'm hearing! You're from the same band of conquistadors that was brought to sacrifice when the Guardian of Truth was being created? You were all dead!";
+			dialog.text = "Я был в Тайсале за двадцать лет до того, как туда пришел Дичозо. Тогда же, когда этот сумасшедший колдун Канек при помощи ужасного ритуала с человеческим жертвоприношением спрятал маску на этом острове.";
+			link.l1 = "Ушам не верю! Ты что, из того самого отряда конкистадоров, который был принесен в жертву при создании Стража Истины? Вы же все погибли!";
 			link.l1.go = "ksochitam_5";
 		break;
 		
 		case "ksochitam_5":
-			dialog.text = "Not all of us. I survived.";
-			link.l1 = "Why did the Itza decide to spare you? What makes you so different?";
+			dialog.text = "Не все. Я остался жив.";
+			link.l1 = "И почему ица пощадили тебя? Чем же ты так отличился?";
 			link.l1.go = "ksochitam_6";
 		break;
 		
 		case "ksochitam_6":
-			dialog.text = "You wouldn't understand. Hell, I didn't understand either. No one spared me.  I remember it like it was yesterday... After that savage took a dagger and filleted a patch of skin off Casco's back right before putting him to death and then started howling like a maniac, I think I got sucked into the idol. I woke up far away from Tayasal twenty years later in what felt like a mere moment!";
-			link.l1 = "A space-time funnel... God damn it, everything Ksatl Cha said was right on the dot!  How did you find out about the mask?  What do you need it for?";
+			dialog.text = "Тебе этого не понять. Как, впрочем, и мне. Меня никто на щадил. Я помню, словно это случилось вчера... После того, как дикарь вырезал дагой из спины Каскоса кусок кожи, затем умертвил его, а потом начал свои жуткие завывания, меня словно втянуло внутрь истукана. Я очнулся далеко за пределами Тайясаля, а еще оказалось, что за одно мгновение прошло двадцать лет!";
+			link.l1 = "Пространственно-временная воронка... Черт возьми, Ксатл Ча не солгал ни на йоту! Откуда ты узнал про маску? Для чего она тебе?";
 			link.l1.go = "ksochitam_7";
 		break;
 		
 		case "ksochitam_7":
-			dialog.text = "I must stop a spawn of hell, summoned by a mad Indian sorcerer. This abomination aims to make a bonfire of our world!";
-			link.l1 = "Hmm... You've spoken to father Vincento, haven't you? The inquisitor is holding with the hare and running with the hounds. Surprise, surprise. He's sent you to track me down for a battle royale? Well done! You've completed your mission, Don Alonso!";
+			dialog.text = "Я должен остановить исчадие ада, вызванное сумасшедшим индейским колдуном. Это порождение зла, стремящееся уничтожить наш мир!";
+			link.l1 = "Ясно... Ты разговаривал с отцом Винсенто, так? Инквизитор ведет двойную игру, кто бы сомневался... Он послал тебя следить за мной и выйти на Ксочитэм? Браво! Ты отлично справился с заданием, дон Алонсо!";
 			link.l1.go = "ksochitam_8";
 		break;
 		
 		case "ksochitam_8":
-			dialog.text = "The lord fortifies my hand in battle against evil. I will return to Tayasal and use the mask to seal the gates shut forever. And no demon in human form will cross over into our world.";
-			link.l1 = "There's just one little problem  in your plan, Don Alonso. The demon is ALREADY among us.  And you can't let him LEAVE through these gates.  He won't as long as you keep the mask away from him.  ";
+			dialog.text = "Господь укрепит мою руку в борьбе против зла. Я вернусь в Тайясаль и при помощи маски навечно запечатаю врата, через которые демон в обличии человека намеревается пройти в наш мир.";
+			link.l1 = "А вот тут у тебя ошибочка вышла, дон Алонсо. Демон УЖЕ среди нас. И нельзя позволить ему УЙТИ через эти врата. А для этого достаточно не дать ему завладеть маской.";
 			link.l1.go = "ksochitam_9";
 		break;
 		
 		case "ksochitam_9":
-			dialog.text = "It'll take more than that. Whoever of us is right, one thing is for sure: the gates must be closed forever. And there's only one way to do that: destroy the mask on the altar in Tayasal. At that moment, the demon will stripped of all its power.";
-			link.l1 = "Hm. I agree that it's our best bet... How are you planning on making it to Tayasal? Do you know the way there?";
+			dialog.text = "Этого недостаточно. Кто бы из нас ни был прав - верно одно: врата должны быть закрыты навечно, и сделать это можно одним лишь путем: уничтожить маску на алтаре в Тайясале. Тогда демон будет бессилен что-либо сделать.";
+			link.l1 = "Хм. Я согласен, что это самый надежный вариант... и как же ты намерен попасть в Тайясаль? Ты знаешь туда дорогу?";
 			link.l1.go = "ksochitam_10";
 		break;
 		
 		case "ksochitam_10":
-			dialog.text = "The easy path we used back then is no longer exists. Roads are buried with stones and lost in jungles. There is another way to the city, but it long and dangerous. The path starts at the Northerst bay of Yucatan\nWith a help of father Vincento and don Ramon de Mendoza I will gather a squad of elite soldiers and we will fight our way through selva protected by Itza savages. It won't be easy, but God will grant us strength and bravery, for we fight for the name of our faith.";
-			link.l1 = "Don Alonso, my aspirations happen to coincide with yours. Isn't it time we put the grudge aside for a moment and combine forces? Together we'd  have a better chance of completing this crusade successfully.";
+			dialog.text = "Легкого пути в Тайясаль, по которому мы проникли туда, уже двадцать лет как не существует - тропы завалены камнями и заросли джунглями. Но есть еще один проход, долгий и опасный. Это тропа начинает свой бег из бухты на севере Юкатана\nПри помощи отца Винсенто и дона Рамона де Мендосы я соберу отряд отборных солдат, и мы пробьемся сквозь сельву, охраняемую дикарями ица. Путь будет тяжел, но Господь дарует нам силы и мужество, ибо мы пойдем на битву во имя нашей веры.";
+			link.l1 = "Дон Алонсо, мои стремления вообще-то схожи с твоими. Не пора ли забыть вражду хотя бы на время и объединить наши силы? Вдвоем нам будет проще осуществить это предприятие.";
 			link.l1.go = "ksochitam_11";
 		break;
 		
 		case "ksochitam_11":
-			dialog.text = "I am a Spanish soldier. I do not form alliances with heretics nor do I make deals with Frenchmen. Besides, I've already declared my vendetta to you for Don Diego. A life for a life!";
-			link.l1 = "You're as stubborn as an ox, Don Alonso! There you stand preaching that the world is threatened by a great evil and yet you refuse my help in such an astronomical task!";
+			dialog.text = "Я испанский солдат, я не вступаю в союзы с еретиками и не заключаю сделок с французами. Кроме того, я объявил тебе вендетту за дона Диего. Жизнь за жизнь!";
+			link.l1 = "По-моему, ты просто упрямый баран, дон Алонсо! Сам утверждаешь, что нашему миру угрожает вселенское зло, и сам же отказываешься от моей помощи в столь важном деле! Отец Винсенто не одобрил бы твоего решения!";
 			link.l1.go = "ksochitam_12";
 		break;
 		
 		case "ksochitam_12":
-			dialog.text = "I make the decisions now, not father Vincento!  Say your prayers and prepare to die, French captain!..";
-			link.l1 = "Oh, how many times have I heard that in the past few months!  On guard, hard-headed caballero!";
+			dialog.text = "Сейчас решения принимаю я, а не отец Винсенто! Помолись напоследок и приготовься умереть, французский капитан!..";
+			link.l1 = "Ох, сколько раз за последние месяцы я слышал эту фразу! К бою, тупоголовый кабальеро!";
 			link.l1.go = "ksochitam_13";
 		break;
 		

@@ -15,36 +15,36 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "An obvious bug. Tell the devs about it.";
-			link.l1 = "Oh, I will.";
+			dialog.text = "Явный баг. Сообщите Jason'у, как и при каких обстоятельствах его получили.";
+			link.l1 = "Обязательно сообщу!";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "seafox":
 			PlaySound("VOICE\Russian\military01.wav");
-			dialog.text = TimeGreeting()+", captain. Allow me to introduce myself - lieutenant "+GetFullName(npchar)+", Royal Marines, St. Jones of Antigua. I have a favor to ask.";
-			link.l1 = "Greetings lieutenant. My name is "+GetFullName(pchar)+". What kind of favor?";
+			dialog.text = TimeGreeting()+", капитан. Разрешите представиться - лейтенант "+GetFullName(npchar)+", морская пехота, Сент-Джонс, Антигуа. Хочу обратиться к вам с просьбой об оказании услуги.";
+			link.l1 = "Здравствуйте, лейтенант. Мое имя "+GetFullName(pchar)+". Какого рода услуга вам требуется?";
 			link.l1.go = "seafox_1";
 		break;
 		
 		case "seafox_1":
-			dialog.text = "Let me briefly explain the situation. Me and four of my subordinates were sailing from St. Jones to the shores of Sint-Maarten when a storm hit us hard. It didn't last long but it was enough for our old tub to spring a leak. We had to change our course and make a stop here. Turned out that repairing our vessel will take a lot of time which we do not posses at the moment\nWe are in a rush and got to make to Grand Case beach of Sint-Maarten. Help us out captain and I will make it worth your while. It's just a two days voyage for a generous pay.";
-			link.l1 = "A military operation on the Dutch island? Hm...";
+			dialog.text = "Позвольте в двух словах объяснить ситуацию. Я и четверо моих подчиненных отправились из Сент-Джонса к берегам острова Синт-Маартен для выполнения задания. По пути шхуну, на борту которой мы находились, захватил внезапно налетевший шторм. И хоть длился он совсем недолго, старая лоханка дала течь, была вынуждена изменить курс и отдать якорь здесь, в Капстервиле. В доках обнаружилось, что ее днище сплошь источено червями, и на починку этого гнилого корыта уйдет уйма времени\nМне и моим людям крайне срочно требуется прибыть на Синт-Маартен, в бухту Гранд Кейс. Окажите помощь, капитан, доставьте мой отряд в указанное место, и как можно скорее. Это же совсем рядом, дня два пути, или даже быстрее при попутном ветре. Ваши услуги будут щедро оплачены.";
+			link.l1 = "Военное задание на голландском острове? Гм...";
 			link.l1.go = "seafox_2";
 		break;
 		
 		case "seafox_2":
-			dialog.text = "Don't you worry. France is not in war with the Dutch. Just land us at the bay and that will be all. Is it a deal?";
-			link.l1 = "Fine, I am in. It really is not that far from here. What about a reward?";
+			dialog.text = "Месье, это вас волновать не должно. Франция с Голландией не воюет, вам ничего не угрожает. Вы просто высадите нас в бухте и все. Ну как, по рукам?";
+			link.l1 = "Хорошо, я согласен, здесь действительно недалеко. Что насчет оплаты?";
 			link.l1.go = "seafox_3";
-			link.l2 = "I am sorry, but I am heading in a different direction and it's urgent.";
+			link.l2 = "Прошу извинить меня, но я направляюсь совсем в другую сторону, и не менее срочно.";
 			link.l2.go = "seafox_exit";
 		break;
 		
 		case "seafox_exit":
-			dialog.text = "Whatever you say, captain. I'll keep looking then. Farewell!";
-			link.l1 = "Farewell, lieutenant.";
+			dialog.text = "Как скажете, капитан. Буду искать другое судно. Всего доброго!";
+			link.l1 = "Прощайте, лейтенант.";
 			link.l1.go = "seafox_exit_1";
 		break;
 		
@@ -58,14 +58,14 @@ void ProcessDialogEvent()
 		
 		case "seafox_3":
 			GiveItem2Character(pchar, "purse2"); 
-			Log_Info("You have received a purse of doubloons");
-			dialog.text = "Ten thousand pesos. Here's an advance.";
-			link.l1 = "Good. Get yourself and your men aboard, let's not waste any time.";
+			Log_Info("Вы получили кошель дублонов");
+			dialog.text = "Десять тысяч песо. Вот задаток.";
+			link.l1 = "Хорошо. Собирайте ваших людей и поднимайтесь на борт - не будем мешкать.";
 			link.l1.go = "seafox_4";
 		break;
 		
 		case "seafox_4":
-			dialog.text = "Aye, captain!";
+			dialog.text = "Так точно, капитан!";
 			link.l1 = "...";
 			link.l1.go = "seafox_5";
 		break;
@@ -80,87 +80,87 @@ void ProcessDialogEvent()
 		
 		case "seafox_6":
 			PlaySound("VOICE\Russian\QuestMan04.wav");
-			dialog.text = "Thank you for the transportation, captain! Sadly, and I am sorry for this, I can't pay you at the moment: I was expecting to see a lugger of ours in this area, but she's not here as you can clearly see. I have to ask for your help one more time. Could you wait at this bay for two or three days? Once we are back, take us to Antigua - trust me, colonel Fox will pay you a great deal.";
-			link.l1 = "Hm... Obviously, I was hoping for something different...";
+			dialog.text = "Благодарю за доставку, капитан! Однако, к сожалению, я не могу сейчас с вами полностью рассчитаться: я ожидал увидеть у берегов Синт-Маартена люггер из Сент-Джонса, но, как видите, его нет. Вынужден вас снова просить о помощи: задержитесь на два-три дня в этой бухте, а когда мы вернемся - доставьте нас на Антигуа. Полковник Фокс не станет скупиться на оплату ваших услуг.";
+			link.l1 = "Гм... Я, конечно, рассчитывал на другое...";
 			link.l1.go = "seafox_7";
 		break;
 		
 		case "seafox_7":
-			dialog.text = "I know that captain, but alas: I have no money at all. I can promise you that you will get a full compensation for both voyages and for waiting for us here.";
-			link.l1 = "I see. No choice there for me. Very well, lieutenant...";
+			dialog.text = "Я понимаю вас, капитан, но увы: у меня нет более денег, кроме тех, что я отдал вам. Обещаю, что на Антигуа вы получите полный расчет за оба рейса и простой у берегов Синт-Маартена.";
+			link.l1 = "Ясно. Выбора у меня нет. Хорошо, лейтенант...";
 			link.l1.go = "seafox_8";
 		break;
 		
 		case "seafox_8":
-			dialog.text = "Good. We are heading inside the island. Your waiting will last for about three days and not a day longer.";
-			link.l1 = "Godspeed sir...";
+			dialog.text = "Отлично. Мы отправляемся в глубь острова. Ваше ожидание не затянется более, чем на три дня.";
+			link.l1 = "Удачи, сэр...";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("FMQN_EnglishmanGo");
 		break;
 		
 		case "seafox_9":
 			PlaySound("VOICE\Russian\QuestMan04.wav");
-			dialog.text = "Hm... What a meeting! I though you'd be waiting for us at Grand Case beach, captain...";
-			link.l1 = "Well, and I didn't expect to see you dressed like a Dutch colonial military!.. I was looking for you, sir.";
+			dialog.text = "Гхм... Неожиданная встреча! Я думал, вы сейчас стоите на якоре в бухте Гранд Кейс, капитан...";
+			link.l1 = "Тоже не ожидал: лейтенант Каспар Грэттон в мундире голландских колониальных войск!.. Я искал вас, сэр.";
 			link.l1.go = "seafox_10";
 		break;
 		
 		case "seafox_10":
-			dialog.text = "It's my disguise... Why were you looking for us, captain?";
-			link.l1 = "To tell you the news. And the news is bad.";
+			dialog.text = "Мой мундир - это прикрытие... Зачем вы искали нас, капитан?";
+			link.l1 = "Чтобы сообщить вам новости. Не очень приятные, кстати.";
 			link.l1.go = "seafox_11";
 		break;
 		
 		case "seafox_11":
-			dialog.text = "Go on!";
-			link.l1 = "I went to Philipsburg and talked with locals after your departure. Dutch know everything. They know about your squad and about your mission to rescue the captured high ranked officers.";
+			dialog.text = "Говорите!";
+			link.l1 = "После нашего с вами расставания я отправился в Филипсбург и побеседовал с жителями. Голландцы знают о том, что на Синт-Маартен должна прибыть диверсионная группа англичан для того, чтобы вытащить из тюрьмы нескольких высокопоставленных английских офицеров.";
 			link.l1.go = "seafox_12";
 		break;
 		
 		case "seafox_12":
-			dialog.text = "What the hell?! How did they learn about this?";
-			link.l1 = "They say that one of your prisoners got too talkative. In return for his freedom he told the Dutch everything he knew about the rescue operation. Now Philipsburg is ready for your arrival and they are waiting for you. The area around this island is being patrolled by a war corvette. It is a trap, lieutenant.";
+			dialog.text = "Разрази меня гром! Как они сумели узнать об этом?";
+			link.l1 = "Говорят, один из ваших пленных проболтался. В обмен на свободу он сдал голандцам план побега. Теперь в Филипсбурге все предупреждены и вас ждут. Воды острова патрулирует военный корвет. Вы в мышеловке, лейтенант.";
 			link.l1.go = "seafox_13";
 		break;
 		
 		case "seafox_13":
-			dialog.text = RandSwear()+"And what shall we do now? Hm...";
-			link.l1 = "I suggest you sneak into Grand Case beach tonight and get aboard of my vessel.";
+			dialog.text = RandSwear()+"И что же нам теперь предпринять?.. Гм...";
+			link.l1 = "Мне кажется, выход только один: пробирайтесь ночью в бухту Гранд Кейс, поднимайтесь на борт моего корабля и уходим отсюда.";
 			link.l1.go = "seafox_14";
 		break;
 		
 		case "seafox_14":
-			dialog.text = "And the mission? No way! You have no idea what it's like to fail colonel Fox's orders!";
-			link.l1 = "You prefer gallows then?";
+			dialog.text = "Уйти, не выполнив задание? О, нет! Вы просто не знаете, капитан, что значит не выполнить приказ полковника Фокса!";
+			link.l1 = "То есть, лучше попасть на виселицу, так?";
 			link.l1.go = "seafox_15";
 		break;
 		
 		case "seafox_15":
-			dialog.text = "Not a chance... Captain, I need you help. We should do our best to save the day since we both got into this mess. I don't think that the Dutch would tolerate you role in this operation if they catch you.";
-			link.l1 = "Go on.";
+			dialog.text = "Отнюдь... Капитан, мне нужна ваша помощь. Раз мы уже оказались в одной лодке - давайте выпутываться вместе, ведь если голландцы схватят нас, то и вам может не поздоровиться, как соучастнику.";
+			link.l1 = "Внимательно вас слушаю.";
 			link.l1.go = "seafox_16";
 		break;
 		
 		case "seafox_16":
-			dialog.text = "The prisoners must be released. We have taken care of the disguise already - take a look at this fancy uniform. If it wasn't for treason, we would just have went to the local prison and killed everyone inside. But they must have laid an ambush there. We should use extra resources... Captain, go to Philipsburg's church and find a servant named Filippe Jacobsen. You can find him there from eight till ten in the morning. Filippe is a man of ours\nTell him a password: 'How long ago did the captive sailors confess?', tell him about the situation and demand his assistance in my name. Then you should deliver his answer to me. See? Nothing either hard or risky in this for you.";
-			link.l1 = "I see. Fine, I'll do this. Tell me about this uniform... it was taken from a Dutch patrol, am I right?";
+			dialog.text = "Пленников надо освободить. Мы уже позаботились о маскировке - мой отряд одет в голландскую форму. Если бы не предательство... мы бы запросто проникли в тюрьму, уложили охрану и все было бы сделано. Но в тюрьме наверняка будет засада. Поэтому придется воспользоваться дополнительными ресурсами... Капитан, вам надо отправится в Филипсбург, в местную церковь, и найти там служку по имени Филип Якобсен. Это надо сделать с восьми до десяти утра, так как потом в церкви его не найти. Филип - наш человек\nСкажете ему пароль: 'Давно ли была исповедь пленных моряков', затем обрисуете ситуацию, и от моего имени потребуете помощи. Потом принесете его ответ мне. Как видите - ничего сложного или опасного для вас.";
+			link.l1 = "Ясно. Хорошо, я сделаю это. Скажите, лейтенант, эта форма... снята с голландского патруля, не иначе?";
 			link.l1.go = "seafox_17";
 		break;
 		
 		case "seafox_17":
-			dialog.text = "Correct.";
-			link.l1 = "And where are they now?";
+			dialog.text = "Именно.";
+			link.l1 = "А сами голландцы где?";
 			link.l1.go = "seafox_18";
 		break;
 		
 		case "seafox_18":
-			dialog.text = "Held as hostages in the bushes not far away from this cave.";
-			link.l1 = "Got it. Fine, I am heading to the city. Wait for me here and try to stay low - the Dutch are patrolling not only in a sea but also in jungles.";
+			dialog.text = "Лежат недалеко от пещеры в зарослях связанные. Я подумал, что в случае чего они могут сгодиться как заложники.";
+			link.l1 = "Понятно. Ладно, отправляюсь в город. Ждите меня тут и не высовывайтесь особо - голландцы рейдируют не только море, но и джунгли.";
 			link.l1.go = "seafox_19";
 		break;
 		
 		case "seafox_19":
-			dialog.text = "Hurry up, captain!";
+			dialog.text = "Торопитесь, капитан!..";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("FMQN_ToChurch");
@@ -168,25 +168,25 @@ void ProcessDialogEvent()
 		
 		case "seafox_20":
 			PlaySound("VOICE\Russian\soldier_common_4.wav");
-			dialog.text = "You again? Captain what are you doing here? Go to the city, don't hang about, you cause too much attention to our hideout...";
-			link.l1 = "I am just from the city. What games are you playing?";
+			dialog.text = "Опять? Капитан, да что вы тут ошиваетесь? Идите в город, а так вы только внимание кого не следует привлечете...";
+			link.l1 = "Я только что из города. В какие игры вы играете?";
 			link.l1.go = "seafox_21";
 		break;
 		
 		case "seafox_21":
-			dialog.text = "Beg pardon?";
-			link.l1 = "I told you that I've been in the city just recently. I was in the church. Guess what, there is no servant named Filippe Jacobsen.";
+			dialog.text = "Не понял - о чем вы?";
+			link.l1 = "Я сказал - я только что из города. Я был в церкви. И мне там ответили, что никакого служки по имени Филип Якобсен в их приходе нет.";
 			link.l1.go = "seafox_22";
 		break;
 		
 		case "seafox_22":
-			dialog.text = "He visits the place every morning, I've told you already...";
-			link.l1 = "Damn it! They told me that he never visits the place! Not in the morning, not in the evening. Fuck it! And why did I even agreed on this job?! For fu-...";
+			dialog.text = "Он там бывает по утрам, я же говорил...";
+			link.l1 = "Карамба! А мне сказали, что его нет там, ни по утрам, ни по вечерам! "+RandSwear()+" И зачем я только связался с вами! "+RandSwear()+"";
 			link.l1.go = "seafox_23";
 		break;
 		
 		case "seafox_23":
-			dialog.text = "Why are you behaving like an old hag, captain? Stop it!";
+			dialog.text = "Да что вы разорались как баба старая, капитан? Уймитесь!";
 			link.l1 = ""+RandSwear()+"";
 			link.l1.go = "seafox_24";
 		break;
@@ -194,14 +194,14 @@ void ProcessDialogEvent()
 		case "seafox_24":
 			PlaySound("Ambient\Jail\chain.wav");
 			PlaySound("Ambient\Land\door_001.wav");
-			dialog.text = "What? Shut up, all of you! What is it? Did you hear?..";
+			dialog.text = "А?! А ну, заткнитесь! Что это, вы слышали?..";
 			link.l1 = "";
 			link.l1.go = "seafox_25";
 		break;
 		
 		case "seafox_25":
 			PlaySound("Ambient\Land\cough_01.wav");
-			dialog.text = "Fuck, someone is coming here!.. You brought the Dutch here you bastard! Traitor!";
+			dialog.text = "Черт побери, кто-то лезет сюда!.. Ты привел голландцев, каналья! Предатель!";
 			link.l1 = ""+RandSwear()+"!!";
 			link.l1.go = "exit";
 			AddDialogExitQuest("FMQN_HollandBattleFight");
@@ -210,40 +210,40 @@ void ProcessDialogEvent()
 		case "seafox_26":
 			pchar.quest.FMQN_fail1.over = "yes";
 			PlaySound("VOICE\Russian\QuestMan04.wav");
-			dialog.text = "How are you doing, captain?";
-			link.l1 = "I've met you agent. He did his job. Tonight they will deliver a poisoned wine to the prison. Some gypsies' potion, it's not lethal, yet causes a dead dream. This night you should go there and get your prisoners. By the way, this operation had cost me twenty five doubloons, hope this donation will be mentioned in the report.";
+			dialog.text = "Как успехи, капитан?";
+			link.l1 = "Встретился я с вашим агентом. Он все организовал: сегодня вечером в тюрьму будет доставлено вино, разбавленное каким-то цыганским зельем, вызывающим глубокий сон. Так что ночью вам нужно идти в город и вытаскивать своих пленных. Кстати, помощь вам обошлась в два с половиной десятка дублонов - надеюсь, это будет учтено при окончательном расчете.";
 			link.l1.go = "seafox_27";
 		break;
 		
 		case "seafox_27":
-			dialog.text = "Don't worry about the coin. Captain, I'd ask you to join us in this operation. Show us the way to the prison. You've been in Philipsburg already, so you must know it's layout. No need to go inside the prison with us, we'll do the job ourselves just get us there.";
-			link.l1 = "Eh... This is getting just better and better! Fine, I will help you one more time.";
+			dialog.text = "За деньги не волнуйтесь. Капитан, я попрошу вас принять участие в этой операции - сопроводите нас до тюрьмы. Вы уже не раз бывали в Филипсбурге, и наверняка знаете расположение зданий. В саму тюрьму ходить не нужно - мы все сделаем сами. Просто помогите найти дорогу.";
+			link.l1 = "Эх... Подведете вы меня под монастырь, лейтенант! Но ладно, раз я уже начал вам помогать - помогу.";
 			link.l1.go = "seafox_28";
 		break;
 		
 		case "seafox_28":
-			dialog.text = "You won't regret it. Is your vessel at Grand Case beach?";
+			dialog.text = "Вы не пожалеете об этом. У вас корабль сейчас в бухте Гранд Кейс?";
 			if (pchar.location.from_sea == "Shore40")
 			{
-				link.l1 = "Yes.";
+				link.l1 = "Да.";
 				link.l1.go = "seafox_29";
 			}
 			else
 			{
-				link.l1 = "No.";
+				link.l1 = "Нет.";
 				link.l1.go = "seafox_29x";
 			}
 		break;
 		
 		case "seafox_29":
-			dialog.text = "Good. Then get ready and meet us at the city gates by eleven o'clock in the evening.";
-			link.l1 = "Deal. See you there.";
+			dialog.text = "Отлично. Тогда подготовьтесь к походу и встречайте нас в джунглях у городских ворот в одиннадцать вечера.";
+			link.l1 = "Договорились. До встречи.";
 			link.l1.go = "seafox_30";
 		break;
 		
 		case "seafox_29x":
-			dialog.text = "Then make sure to move the ship there, we will be leaving the island through the jungles to the beach in a hurry. Sailing from a port or Simpson bay is not an option because of the fort. Get everything ready and meet us at the city gates by eleven o'clock in the evening.";
-			link.l1 = "Deal. See you there.";
+			dialog.text = "Тогда поставьте судно на якорь в бухте - уходить будем сразу, через джунгли к морю и на ваш корабль. Отплывать из порта или залива Симпсон опасно - можно попасть под огонь форта, если поднимется тревога. А затем подготовьтесь к походу и встречайте нас в джунглях у городских ворот в одиннадцать вечера.";
+			link.l1 = "Договорились. До встречи.";
 			link.l1.go = "seafox_30";
 		break;
 		
@@ -255,48 +255,48 @@ void ProcessDialogEvent()
 		
 		case "seafox_31":
 			PlaySound("VOICE\Russian\Gr_hovernor01.wav");
-			dialog.text = "Ready, captain?";
-			link.l1 = "Yes.";
+			dialog.text = "Вы готовы, капитан?";
+			link.l1 = "Да.";
 			link.l1.go = "seafox_32";
 		break;
 		
 		case "seafox_32":
-			dialog.text = "Let's not waste time then. Onwards!";
+			dialog.text = "Тогда не будем терять времени. Вперед!";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("FMQN_EnglandReload");
 		break;
 		
 		case "seafox_33":
-			dialog.text = "Hushhhh... Captain! Quite! It's done, let's get the hell out of here!..";
+			dialog.text = "Пс-с-т-т... Капитан! Чш-ш-ш... Дело сделано! Теперь быстро уходим!..";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			AddDialogExitQuest("FMQN_EnglandRunToJungle");
 		break;
 		
 		case "seafox_34":
-			dialog.text = "It was a success. You did well, captain. Now for the final part - we should escape from this island in one piece. Move to Grand Case beach, hurry!";
-			link.l1 = "Let's move!";
+			dialog.text = "Все прошло успешно. Вы молодец, капитан. Теперь осталось последнее - унести ноги с этого острова. Быстрее отправляемся в бухту Гранд Кейс!";
+			link.l1 = "Идем!";
 			link.l1.go = "exit";
 			AddDialogExitQuest("FMQN_EnglandRunToShore");
 		break;
 		
 		case "seafox_35":
 			PlaySound("VOICE\Russian\QuestMan05.wav");
-			dialog.text = "Thank you for your assistance, captain! You are a real hero! I'd ask to stay here for a one more day while I am reporting to colonel Fox. Pay him a visit tomorrow, his office is in the governor's palace.";
-			link.l1 = "Very well, lieutenant. Please give me some credit out there. The Dutch don't like me much now because of you.";
+			dialog.text = "Спасибо за вашу помощь, капитан! Вы вели себя, как настоящий герой! Я прошу вас погостить один день в нашей колонии, пока я сделаю доклад полковнику Фоксу, а завтра прошу вас явиться к нему на прием. Если вы не знаете - штаб-квартира полковника Фокса находится в резиденции губернатора, налево.";
+			link.l1 = "Хорошо, лейтенант. Вы уж там постарайтесь... за меня перед вашим начальством. Из-за вас меня голландцы теперь не жалуют";
 			link.l1.go = "seafox_36";
 		break;
 		
 		case "seafox_35x":
 			PlaySound("VOICE\Russian\QuestMan05.wav");
-			dialog.text = "Thank you for your assistance, captain! You are a real hero! Shame that lieutenant Caspar Gretton didn't make it. He died as a true soldier and a patriot of England. I'd ask to stay here for a one more day while I am reporting to colonel Fox. Pay him a visit tomorrow, his office is in the governor's palace.";
-			link.l1 = "Very well. Please give me some credit out there. The Dutch don't like me much now because of you.";
+			dialog.text = "Спасибо за вашу помощь, капитан! Вы вели себя, как настоящий герой! Очень жаль лейтенанта Каспара Грэттона, но он погиб, как настоящий солдат и патриот Англии. Я прошу вас погостить один день в нашей колонии, пока я сделаю доклад полковнику Фоксу, а завтра прошу вас явиться к нему на прием. Если вы не знаете - штаб-квартира полковника Фокса находится в резиденции губернатора, налево.";
+			link.l1 = "Хорошо, сэр. Вы уж там постарайтесь... за меня перед мистером Фоксом. Мне ведь теперь проблемы с голландскими властями решать придется.";
 			link.l1.go = "seafox_36";
 		break;
 		
 		case "seafox_36":
-			dialog.text = "Don't you worry. I will give the best credit possible in my report. It was a pleasure sir!";
+			dialog.text = "Не беспокойтесь, я опишу ваши действия в докладе в самом лучшем виде. Был рад знакомству, сэр!";
 			link.l1 = "...";
 			link.l1.go = "seafox_37";
 		break;
@@ -317,33 +317,33 @@ void ProcessDialogEvent()
 		
 		case "soldier":
 			PlaySound("VOICE\Russian\soldier_common_2.wav");
-			dialog.text = "Captain "+GetFullName(pchar)+"?";
-			link.l1 = "Hm... Yes, it's me. What can I do for you?";
+			dialog.text = "Капитан "+GetFullName(pchar)+"?";
+			link.l1 = "Кхм... Да, это я. Чем могу служить?";
 			link.l1.go = "soldier_1";
 		break;
 		
 		case "soldier_1":
-			dialog.text = "A port office has informed us about your recent arrival. His Excellence the governor of Philipsburg mynheer Martin Thomas desires to see you.";
-			link.l1 = "I don't get it... Am I under arrest? What for?";
+			dialog.text = "В портовом управлении сообщили, что ваш корабль недавно прибыл в порт. Его Светлость губернатор Филипсбурга, минхер Мартин Томас, желает с вами побеседовать.";
+			link.l1 = "Что-то я не понимаю... Я арестован? С какой стати?";
 			link.l1.go = "soldier_2";
 		break;
 		
 		case "soldier_2":
-			dialog.text = "No, no, mynheer captain, you are not under arrest. The governor ordered to invite every new arrived captain to his office. We've got a situation here. Follow me!";
-			link.l1 = "Ah, very well then... I am on my way!";
+			dialog.text = "Никак нет, минхер капитан, вы не арестованы. Губернатор отдал приказ приглашать к нему всех капитанов кораблей, отдающих якорь у нас в порту, в связи с особой ситуацией. Пройдемте!";
+			link.l1 = "А, ну тогда хорошо... Иду!";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("FMQN_ReloadToGovernor");
 		break;
 		
 		case "hol_officer":
 			PlaySound("VOICE\Russian\hol_gov_complete.wav");
-			dialog.text = "So mynheer, show us the way to the place where you saw the suspects.";
-			link.l1 = "We should go to a cave in the jungles. They are inside.";
+			dialog.text = "Итак, минхер, показывайте дорогу туда, где вы видели подозрительных личностей.";
+			link.l1 = "Нам надо к пещере, что находится в джунглях. Они там.";
 			link.l1.go = "hol_officer_1";
 		break;
 		
 		case "hol_officer_1":
-			dialog.text = "Go then, we are following you!";
+			dialog.text = "Ступайте вперед, мы за вами!";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			AddDialogExitQuest("FMQN_HollandBattleMarch");
@@ -351,73 +351,73 @@ void ProcessDialogEvent()
 		
 		case "hol_officer_2":
 			PlaySound("VOICE\Russian\hol_gov_quest.wav");
-			dialog.text = "Wait captain! You mentioned that you had met the spies over there - close to the cave's entrance?";
-			link.l1 = "Yes. I briefly saw them going inside after they talked to me.";
+			dialog.text = "Стойте, капитан! Говорите, что встретили шпионов там - у входа в пещеру?";
+			link.l1 = "Да. Но я краем глаза видел, как они после беседы со мной направились внутрь пещеры.";
 			link.l1.go = "hol_officer_3";
 		break;
 		
 		case "hol_officer_3":
-			dialog.text = "Most likely they are still there. If we charge all at once - they will see us coming, take defensive positions in narrow corridors of the cave and will make it hard for us. Let's play this the other way. Captain, you go there alone and make them busy. Me and my men will move to a dry well around the corner. It leads right inside the cave. The bastards won't see us coming from there\nYou go inside and if the spies are still there, talk to them, ask them stupid questions, do whatever you want just make them busy with you. Once you have their absolute attention - swear as filthy as you can. You are a sailor, so you must excel in this. This will serve as a signal to us. Two of my men will guard the main entrance in order to prevent them from a possible escape. We have them.";
-			link.l1 = "Hm... I believe that the spies will start hitting me first...";
+			dialog.text = "Скорее всего, они в ней и засели. Если мы сунемся всем отрядом ко входу - нас наверняка заметят, займут удобные позиции в узких проходах пещеры и бой будет трудным. Надо сделать иначе. Вы, капитан, отправитесь туда один - подозрений вы не вызовите, а я с частью отряда пройду немного дальше. Там, за поворотом - есть сухой колодец, он ведет прямиком в эту пещеру. Из колодца негодяи нас не увидят\nВы войдете в пещеру, и если шпионы там - отвлечете их внимание каким-либо глупым вопросом, а потом громко выругайтесь, как можно громче. Едва мы это услышим - как тут же по веревке десантируемся в колодец и накроем мерзавцев. Два человека следом за вами пройдут ко входу в пещеру и перекроют шпионам путь к бегству. Возьмем их в клещи.";
+			link.l1 = "Гм... Кажется, шпионы начнут в первую очередь рубить именно меня...";
 			link.l1.go = "hol_officer_4";
 		break;
 		
 		case "hol_officer_4":
-			dialog.text = "Don't be afraid, captain. You goal is too shout as loud as you can as soon as you'll see the enemy raiding party. If they attack you - then run and keep shouting. Don't be shy, we need to hear you signal from the well. My men are well trained, so don't you worry, they will do the job fast.";
-			link.l1 = "I got it. Well... I am on my way.";
+			dialog.text = "Не бойтесь, капитан: ваша задача - крикнуть погромче при обнаружении диверсантов, чтобы мы услышали из колодца. А если они нападут на вас - бегите со всех ног и орите во всю глотку. Не беспокойтесь, мои люди знают свое дело и уложат противника.";
+			link.l1 = "Хорошо. Ну... я пошел.";
 			link.l1.go = "exit";
 			AddDialogExitQuest("FMQN_HollandBattlePosition");
 		break;
 		
 		case "hol_officer_5":
 			PlaySound("VOICE\Russian\hol_gov_common.wav");
-			dialog.text = "Tough bastards they were... Nicely done, captain. Congratulations. English dogs are eliminated, our commandant and governor will be pleased.";
-			link.l1 = "You took you time, mynheer...";
+			dialog.text = "Крепкие, мерзавцы, оказались... Отлично сработали, капитан! Поздравляю. Английские собаки ликвидированы, комендант и губернатор будут довольны.";
+			link.l1 = "Как-то вы немного задержались, минхер...";
 			link.l1.go = "hol_officer_6";
 		break;
 		
 		case "hol_officer_6":
-			dialog.text = "Blame the rope, it turned to be very old and noisy, had to be careful.";
-			link.l1 = "There is one of yours missing patrols in the bushes. They might be still alive.";
+			dialog.text = "Веревка подлая рваться стала, когда начали спуск... из-за этого и замешкались немного.";
+			link.l1 = "Недалеко от пещеры где-то в зарослях лежат ваши патрульные. Поищите их - может, еще живы.";
 			link.l1.go = "hol_officer_7";
 		break;
 		
 		case "hol_officer_7":
-			dialog.text = "I'll investigate. You should go to the city and take some rest. Pay a visit to our governor tomorrow, he'll have my report by then.";
-			link.l1 = "I will. Godspeed mynheer.";
+			dialog.text = "Я займусь этим немедленно. А вы отправляйтесь в город и отдыхайте. Завтра утром мой доклад будет лежать на столе у губернатора - пожалуйте к нему на прием за честно заработанной наградой.";
+			link.l1 = "Обязательно. Удачи, минхер.";
 			link.l1.go = "exit";
 			AddDialogExitQuest("FMQN_HollandBattleRest");
 		break;
 		
 		case "monk":
 			pchar.questTemp.FMQN = "way_eng_2";
-			dialog.text = "What can I do for you, my son?";
-			link.l1 = "I'd like to know of how long ago did the captive sailors confess?";
+			dialog.text = "Чем я могу помочь тебе, сын мой?";
+			link.l1 = "Я бы хотел узнать, давно ли была исповедь пленных моряков.";
 			link.l1.go = "monk_1";
 		break;
 		
 		case "monk_1":
-			dialog.text = "Yesterday evening, my son... Hush... Be quite... (whispering) I assume that you are already aware about the treason?";
-			link.l1 = "Absolutely. I wouldn't be standing here otherwise. Lieutenant Casper Gratton's squad is in the jungles at the moment. All dressed like Dutch military, but we need extra assistance since there is an ambush set in prison.";
+			dialog.text = "Вчерашним вечером, сын мой. Ч-ш-ш... Говори тише... (шепотом) Полагаю, вы уже в курсе о том, что было совершено предательство, и вас ждут?";
+			link.l1 = "Безусловно. Иначе бы я тут не стоял. Отряд лейтенанта Каспара Грэттона сейчас находится в джунглях. Все одеты в форму голландских военных, но в тюрьме ждет засада. Меня прислали за помощью к вам.";
 			link.l1.go = "monk_2";
 		break;
 		
 		case "monk_2":
-			dialog.text = "I prayed every day to save your from the path of ignorance. I have a plan already, yet I need two dozens of golden doubloons to get everything I need to perform it.";
-			link.l1 = "What is the plan? Will you tell me?";
+			dialog.text = "Я молился ежедневно о том, чтобы ваше неведение не завело вас в ловушку. План у меня давно созрел, но для его реализации мне не хватает средств: нужны две дюжины золотых дублонов.";
+			link.l1 = "Что за план - не поведаете ли мне?";
 			link.l1.go = "monk_3";
 		break;
 		
 		case "monk_3":
-			dialog.text = "Of course. Soldiers stationed in prison are aware about English operation. The Dutch superiors provide them with extra portion of good wine every evening in order to support the moral. The wine is being transported from a warehouse I have an access to. There is a gypsy woman who is in my debt, she can give us a dream potion. All I need is to buy a few bottles of good wine, add the potion and change bottles in the warehouse. That's what I need money for.";
+			dialog.text = "Конечно. Солдатам в тюрьме, в связи с ожиданием английских шпионов, добавили в довольствие ежевечернюю порцию хорошего вина для поддержания морального духа. Его доставляют со склада, куда у меня есть доступ. А у цыганки-торговки, которая мне кое-чем обязана, я могу достать зелье, погружающее употребившего в глубокий сон на несколько часов. Я должен купить несколько бутылок хорошего вина, подмешать в них зелье цыганки, а затем подменить бутылки на складе. Вот для чего мне нужны деньги.";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 24)
 			{
-				link.l1 = "I have the money. Take it.";
+				link.l1 = "У меня есть с собой нужная сумма. Держите.";
 				link.l1.go = "monk_4";
 			}
 			else
 			{
-				link.l1 = "I will get the sum!";
+				link.l1 = "Я принесу их!..";
 				link.l1.go = "monk_wait";
 			}
 		break;
@@ -428,25 +428,25 @@ void ProcessDialogEvent()
 		break;
 		
 		case "monk_repeat":
-			dialog.text = "Do you have two dozens doubloons with you my son?";
+			dialog.text = "Ты принес две дюжины дублонов, сын мой?";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 24)
 			{
-				link.l1 = "Yes, here.";
+				link.l1 = "Да. Держите.";
 				link.l1.go = "monk_4";
 			}
 			else
 			{
-				link.l1 = "I will get the needed amount soon enough...";
+				link.l1 = "Скоро я соберу нужное количество, ждите...";
 				link.l1.go = "monk_wait";
 			}
 		break;
 		
 		case "monk_4":
 			RemoveItems(pchar, "gold_dublon", 24);
-			Log_Info("You've give 24 doubloons");
+			Log_Info("Вы отдали 24 дублона");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Splendid. Come see me same time tomorrow - I will tell you the results.";
-			link.l1 = "Very well...";
+			dialog.text = "Прекрасно. Приходите завтра в это же время - я сообщу вам результаты.";
+			link.l1 = "Хорошо...";
 			link.l1.go = "monk_5";
 		break;
 		
@@ -471,14 +471,14 @@ void ProcessDialogEvent()
 		
 		case "monk_6":
 			pchar.quest.FMQN_fail.over = "yes";
-			dialog.text = "Greetings, my son.";
-			link.l1 = "Same to you, holy father. Any news?";
+			dialog.text = "Приветствую тебя, сын мой.";
+			link.l1 = "И вам доброго утра, отче. Есть у вас какие-нибудь новости?";
 			link.l1.go = "monk_6x";
 		break;
 		
 		case "monk_6x":
-			dialog.text = "Yes. It's done. The wine is 'loaded' and the right bottles will get to prison guards tonight. They have a supper by nine o'clock in the evening so they will all be sleeping by midnight. This is your only window to do the job, there will be no second chance. Be careful, you can't completely rely on your Dutch disguise.";
-			link.l1 = "Got it. Let's not waste any time! Farewell.";
+			dialog.text = "Да. Все готово. Вино 'заряжено' и нужные бутылки сегодня вечером попадут тюремной страже. Ужин у них в девять вечера, так что к полуночи вся охрана уже будет мирно спать на посту. Это ваша единственная возможность выполнить задачу: не справитесь - второго шанса не будет. Сегодня ночью или никогда. Будьте осторожны - хоть у вас и голландские мундиры, но и патруль не дурак. Держитесь от дозорных в городе подальше.";
+			link.l1 = "Все ясно. Не буду терять времени! До свидания.";
 			link.l1.go = "monk_7";
 		break;
 		

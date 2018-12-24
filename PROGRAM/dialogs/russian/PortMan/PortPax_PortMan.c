@@ -11,15 +11,16 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			//регата
 			if (CheckAttribute(pchar, "questTemp.Regata.Go") && !CheckAttribute(npchar, "quest.regatatalk"))
 			{
-				dialog.text = "What do you want? A-ha, you are the participant of the regatta! Am I right?";
-				link.l1 = "Exactly, mister. I need to get registered here according to the rules.";
+				dialog.text = "Что вам угодно? А-а, вы участник регаты! Так?";
+				link.l1 = "Да, именно так, мистер. Мне нужно отметиться у вас согласно правил.";
 				link.l1.go = "Regata_check";
 				break;
 			}
 			//регата
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What kind of questions?", "What do you want, " + GetAddress_Form(NPChar) + "?"), "You've already tried to ask me a question " + GetAddress_Form(NPChar) + "...", "You have been talking about some question for the third time today...",
-                          "Look, if you have nothing to tell me about the port's matters then don't bother me with your questions.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind.", "Sorry!"), "Sorry!", "Pardon!", "Sorry!", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно, " + GetAddress_Form(NPChar) + "?"), "Совсем недавно вы пытались задать мне вопрос " + GetAddress_Form(NPChar) + "...", "В течение этого дня вы уже третий раз говорите о каком-то вопросе...",
+                          "Послушайте, если вы не по делам порта, то не стоит меня вопросами донимать.", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал"+ GetSexPhrase("","а") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Да уж, действительно в третий раз...", "Извините, но портовые дела меня сейчас не интересуют.", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 		break;
 
@@ -34,25 +35,25 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
 		if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)//проверка на наличие корабля в порту
 		{
-			if (CheckAttribute(pchar, "questTemp.Regata.Breach") || !CheckAttribute(pchar, "questTemp.Regata.Beliz") || GetCompanionQuantity(pchar) > 1 || sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LUGGER || pchar.Ship.Name != "Santa Catherina")
+			if (CheckAttribute(pchar, "questTemp.Regata.Breach") || !CheckAttribute(pchar, "questTemp.Regata.Beliz") || GetCompanionQuantity(pchar) > 1 || sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LUGGER || pchar.Ship.Name != "Сaнта-Kатepина")
 			{
-			dialog.text = "Hm... You have broken the rules of regatta and I have to disqualify you. I am sorry. You are not participating in the next voyage. I have already prepared a dispatch to Port-Royal.";
-			link.l1 = "Eh... what a shame! But I can't do anything here, you were too vigilant. Farewell!";
+			dialog.text = "Хм... Вы нарушили правила регаты и я вынужден вас дисквалифицировать. Увы! В дальнейшем заплыве вы не участвуете. Я уже подготовил депешу в Порт-Рояль.";
+			link.l1 = "Эх... жаль! Ладно, ничего не поделаешь - вы оказались бдительны. До свидания!";
 			link.l1.go = "exit";
 			DeleteAttribute(pchar, "questTemp.Regata");
 			}
 			else
 			{
 			pchar.questTemp.Regata.SecondTransitionTime = GetPastTime("hour", sti(pchar.questTemp.Regata.StartYear), sti(pchar.questTemp.Regata.StartMonth), sti(pchar.questTemp.Regata.StartDay), stf(pchar.questTemp.Regata.StartTime), GetDataYear(), GetDataMonth(), GetDataDay(), GetTime());//истратил ГГ в часах на 1+2 переход
-			dialog.text = "Let's register: captain "+ GetFullName(pchar) +", ship is - "+pchar.Ship.Name+"... Regatta's time in hours is "+sti(pchar.questTemp.Regata.SecondTransitionTime)+". Done, your result if registered, you can continue your way.";
-			link.l1 = "Tell me my rank.";
+			dialog.text = "Так, отмечаем: капитан "+ GetFullName(pchar) +", корабль - "+pchar.Ship.Name+"... Затрачено времени от старта регаты в часах - "+sti(pchar.questTemp.Regata.SecondTransitionTime)+". Все, ваш результат зафиксирован, можете продолжать путь.";
+			link.l1 = "Скажите, а на каком я сейчас месте?";
 			link.l1.go = "Regata_info";
 			}
 		}
 		else
 		{
-			dialog.text = "You are here but I don't see your ship. Where is it?";
-			link.l1 = "I am sorry, sir. I will transfer my ship to the port immediately.";
+			dialog.text = "Вы сами прибыли - а корабль ваш где? Что-то я его не вижу.";
+			link.l1 = "Прошу прощения, сэр. Я немедленно приведу свой корабль в порт.";
 			link.l1.go = "exit";
 		}
 		break;
@@ -78,30 +79,30 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 			if (n==1)
 			{
-			dialog.text = "You are in the lead. Congratulation! Keep it up!";
-			link.l1 = "Thanks!";
+			dialog.text = "Вы на первом месте. Поздравляю! Так держать!";
+			link.l1 = "Спасибо!";
 			link.l1.go = "exit";
 			}
 			else
 			{
 				if (n==6)
 				{
-				dialog.text = "You are the last. You should hurry up.";
-				link.l1 = "I am on my way!";
+				dialog.text = "Вы на последнем месте. Вам следует поторопиться!";
+				link.l1 = "Уже бегу!";
 				link.l1.go = "exit";
 				}
 				else
 				{
 					if (n==2)
 					{
-					dialog.text = "You are the second. The leader is "+sName+" on the ship "+sShip+". I suppose that you can still outrun him.";
-					link.l1 = "Thanks! I'll be trying!";
+					dialog.text = "Вы на втором месте. Перед вами только "+sName+" на корабле "+sShip+". Думаю, вы вполне сможете его обогнать.";
+					link.l1 = "Спасибо! Буду стараться!";
 					link.l1.go = "exit";
 					}
 					else
 					{
-					dialog.text = "You rank is "+n+". Your closest opponent is "+sName+" on the ship "+sShip+".";
-					link.l1 = "Thanks!";
+					dialog.text = "Вы на "+n+" месте. Ваш ближайший соперник впереди - "+sName+" на корабле "+sShip+".";
+					link.l1 = "Спасибо!";
 					link.l1.go = "exit";
 					}
 				}

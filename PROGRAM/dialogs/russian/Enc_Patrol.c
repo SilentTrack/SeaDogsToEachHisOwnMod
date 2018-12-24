@@ -64,68 +64,68 @@ void ProcessDialogEvent()
 			{
     			if (pchar.nation == npchar.nation)
 				{
-					dialog.text = RandPhraseSimple("Ohh, it seems, that scoundrel raised alarm in " + XI_ConvertString("Colony" + npchar.city + "Dat") + "! Seize h"+ GetSexPhrase("im","er") +"!!", "Heh, look at this! Several " + NationNamePeople(sti(pchar.nation))+ " manage to be enemies with " + NationNameAblative(sti(npchar.nation)) + "! Seize the scoundrel!!!");
+					dialog.text = RandPhraseSimple("А-а-а, кажется, "+ GetSexPhrase("этот мерзавец поднял","эта мерзавка подняла") +" тревогу в " + XI_ConvertString("Colony" + npchar.city + "Dat") + "! Схватить е"+ GetSexPhrase("го","е") +"!!", "Хех, вы только полюбуйтесь! Некоторые " + NationNamePeople(sti(pchar.nation))+ " умудряются быть во вражде с " + NationNameAblative(sti(npchar.nation)) + "! Схватить негодя"+ GetSexPhrase("я","йку") +"!!!");
 				}
 				else
 				{
-					dialog.text = RandPhraseSimple("Enemy agent near " + XI_ConvertString("Colony" + npchar.city + "Gen") + "! Seize h"+ GetSexPhrase("im","er") +"!!", "Hey, look, " + NationNamePeople(sti(pchar.nation))+ " are on the loose almost in " + XI_ConvertString("Colony" + npchar.city + "Dat") + "! Immediately grab him!!!");
+					dialog.text = RandPhraseSimple("Вражеский агент близ " + XI_ConvertString("Colony" + npchar.city + "Gen") + "! Взять е"+ GetSexPhrase("го","е") +"!!", "Смотрите-ка, " + NationNamePeople(sti(pchar.nation))+ " разгуливают чуть ли не в " + XI_ConvertString("Colony" + npchar.city + "Dat") + "! Немедленно схватить!!!");
 				}
-				link.l1 = RandPhraseSimple("Well, you may try. We are alone here...", "Heh, no one will lend you a helping hand here.");
+				link.l1 = RandPhraseSimple("Попробуйте, здесь мы в одиночестве...", "Хех, здесь вам помощи ждать неоткуда.");
 				link.l1.go = "exit_fight"; 				
 			}
 			else
 			{				
-				dialog.text = LinkRandPhrase("Allow me to introduce myself! I am a patrol officer from " + XI_ConvertString("Colony" + npchar.city + "Gen") + ", we're looking for an escaped convict.",
-					"Hello, I the chief of this patrol. We're looking for an escaped slave from " + XI_ConvertString("Colony" + npchar.city + "Gen") + ".",
-					"Greetings to you, " + GetAddress_Form(NPChar) + ". My detachment is patrolling the territories near " + XI_ConvertString("Colony" + npchar.city + "Gen") + ".");
-				Link.l1 = LinkRandPhrase("Very good. How may I help you?",
-				"Very good. Can I help you than anything, " + GetAddress_FormToNPC(NPChar) + "?",
-				"Very good. Is there anything I can do for you?");
+				dialog.text = LinkRandPhrase("Имею честь представиться! Я начальник патруля из " + XI_ConvertString("Colony" + npchar.city + "Gen") + ", мы разыскиваем беглого каторжника.",
+					"Здравствуйте, я начальник этого патруля. Мы разыскиваем сбежавшего из " + XI_ConvertString("Colony" + npchar.city + "Gen") + " раба.",
+					"Приветствую вас, " + GetAddress_Form(NPChar) + ". Мое подразделение осуществляет патрулирование территории близ " + XI_ConvertString("Colony" + npchar.city + "Gen") + ".");
+				Link.l1 = LinkRandPhrase("Прекрасно. Чем я могу вам помочь?",
+				"Очень хорошо. Могу ли я быть вам чем-нибудь полез"+ GetSexPhrase("ен","на") +", " + GetAddress_FormToNPC(NPChar) + "?",
+				"Великолепно. Что лично я могу для вас сделать?");
 				Link.l1.go = "Node_2";
 			}
 		break;
 		
 		case "Node_2":
-			dialog.text = RandPhraseSimple("Have you seen anything suspicious in the district?",
-				"Have you met anyone looking suspicious, " + GetAddress_Form(NPChar) + "?");
-			Link.l1 = RandPhraseSimple("No, nothing like that.", "No, officer, everything seemed calm.");
+			dialog.text = RandPhraseSimple("Вы не видели ничего подозрительного в округе?",
+				"Встречался ли вам кто-нибудь, внушающий подозрения, " + GetAddress_Form(NPChar) + "?");
+			Link.l1 = RandPhraseSimple("Нет, ничего такого.", "Нет, офицер, все спокойно.");
 			Link.l1.go = "Node_3";		
 		break;
 
 		case "Node_3":
 			Diag.TempNode = "GoodBye";
-			dialog.text = RandPhraseSimple("Alright, that I shall not delay you any longer. Farewell, " + GetAddress_Form(NPChar) + ".",
-				"I see. Farewell, then.");
-			Link.l1 = "Good luck.";
+			dialog.text = RandPhraseSimple("Ну что же, не смею вас задерживать. Прощайте, " + GetAddress_Form(NPChar) + ".",
+				"Понятно. В таком случае, прощайте.");
+			Link.l1 = "Удачи вам.";
 			Link.l1.go = "exit_noFight";
 		break;
 
 		case "GoodBye":
 			Diag.TempNode = "GoodBye";
-			dialog.text = LinkRandPhrase("Do not distract us from our duty.",
-				"I would like you to leave us be!",
-				"Oh, that's you again... Go your own way and don't disturb us.");
-			Link.l1 = "Fine.";
+			dialog.text = LinkRandPhrase("Не отвлекайте нас от несения службы.",
+				"Я прошу вас не мешать нам!",
+				"А, это опять вы... Идите своей дорогой, не мешайте нам.");
+			Link.l1 = "Хорошо.";
 			Link.l1.go = "Exit";			
 		break;
 		
-		// генератор "A reason to hurry"
+		// генератор "Повод для спешки"
 		case "Reason_To_Fast_1":
 				if(Pchar.Location == Pchar.location.from_sea)
 				{
-					dialog.text = "Hmm... I haven't seen you before. Who are you?";
-					link.l1 = "I am the one whom you're waiting for...";
+					dialog.text = "Хм... я тебя раньше не видел. Ты кто таков"+ GetSexPhrase("","а") +"?";
+					link.l1 = "Я т"+ GetSexPhrase("от","а") +", кого ты ждешь...";
 					link.l1.go = "Reason_To_Fast_11";
-					link.l2 = "I am captain " + GetFullName(pchar) + ". I would like to know why would you be in such a hurry that you'd almost forgotten your pants in the brothel...";
+					link.l2 = "Я капитан " + GetFullName(pchar) + ". Хочу поинтересоваться, зачем ты сюда так торопился, чуть портки в борделе не оставил...";
 					link.l2.go = "Reason_To_Fast_21";
-					link.l3 = "I am captain " + GetFullName(pchar) + ". I am just taking a stroll here, breathing in the salty breeze...";
+					link.l3 = "Я капитан " + GetFullName(pchar) + ". Гуляю здесь, морским бризом дышу...";
 					link.l3.go = "Reason_To_Fast_31";
 				}
 				else
 				{
 					Diag.TempNode = "GoodBye";
-					dialog.text = "You've come at last. I thought I'd never see you again. And who is that type with you?";
-					link.l1 = "What type?";
+					dialog.text = "Приш"+ GetSexPhrase("ел","ла") +", наконец. Я уж думал, не дождусь... А этот тип с тобой что-ли?";
+					link.l1 = "Какой тип?";
 					link.l1.go = "Reason_To_Fast_Hunter";
 				} 
 		break;
@@ -136,27 +136,27 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Reason_To_Fast_11":
-			dialog.text = "You don't look much like, someone who would trust " + GetName( NAMETYPE_MAIN, pchar.questTemp.ReasonToFast.p3, NAME_NOM) + ".";
+			dialog.text = "Не очень-то ты похож"+ GetSexPhrase("","а") +" на того, кому бы доверился " + GetName( NAMETYPE_MAIN, pchar.questTemp.ReasonToFast.p3, NAME_NOM) + ".";
 			if(!CheckCharacterItem(pchar,"mapQuest"))
 			{
-				link.l1 = "Alright, I'll tell him that.";
+				link.l1 = "Хорошо, я так ему и передам.";
 				link.l1.go = "Reason_To_Fast_12";
 			}	
-			link.l2 = "And who is this " + GetName( NAMETYPE_MAIN, pchar.questTemp.ReasonToFast.p3, NAME_NOM) + "?";
+			link.l2 = "А кто такой этот " + GetName( NAMETYPE_MAIN, pchar.questTemp.ReasonToFast.p3, NAME_NOM) + "?";
 			link.l2.go = "Reason_To_Fast_13";
 		break;
 		
 		case "Reason_To_Fast_21":
-			dialog.text = "Curiosity had killed a lot more people than cats...";
-			link.l1 = "Go ahead!";
+			dialog.text = "Любопытство, конечно не порок, но иногда изрядно укорачивает жизнь...";
+			link.l1 = "Ну-ну!";
 			link.l1.go = "Reason_To_Fast_ExitFight";
 			pchar.questTemp.ReasonToFast = "PatrolAfter";	
 		break;
 		
 		case "Reason_To_Fast_31":
 			Diag.TempNode = "Reason_To_Fast_GoodBye";
-			dialog.text = "The tide is coming. You'd better leave the cove - the water here rises to the level of the palm tangle.";
-			link.l1 = "No problem, I am a good swimmer.";
+			dialog.text = "Скоро прилив. Вы бы покинули бухту, здесь вода поднимается до самых пальмовых зарослей.";
+			link.l1 = "Ничего, я хорошо плаваю.";
 			link.l1.go = "Reason_To_Fast_GoodBye_0";
 			pchar.questTemp.ReasonToFast = "MeetPatrolFail";
 		break;
@@ -168,46 +168,46 @@ void ProcessDialogEvent()
 			switch (jewelType)
 			{
 				case 1:
-					sItemName = "amethysts";
+					sItemName = "аметистов";
 				break;
 				case 2:
-					sItemName = "diamonds";
+					sItemName = "алмазов";
 				break;
 				case 3:
-					sItemName = "rubies";
+					sItemName = "рубинов";
 				break;
 				case 4:
-					sItemName = "emeralds";
+					sItemName = "изумрудов";
 				break;
 			}
 			pchar.questTemp.ReasonToFast.jewType = sItemName;
-			dialog.text = "Alright, alright. Are promised 30 " + sItemName + " with you?";
-			link.l1 = GetName(NAMETYPE_MAIN , pchar.questTemp.ReasonToFast.p3, NAME_NOM) + " said that there was not enough time to collect that many stones. He ordered me to offer money instead.";
+			dialog.text = "Ладно, ладно. Обещанные 30 " + sItemName + " с тобой?";
+			link.l1 = GetName(NAMETYPE_MAIN , pchar.questTemp.ReasonToFast.p3, NAME_NOM) + " сказал, что времени мало было, чтобы столько камешков собрать. Велел деньги предложить.";
 			link.l1.go = "Reason_To_Fast_14";
 			if (GetCharacterItem(pchar, pchar.questTemp.ReasonToFast.item) >= 30)
 			{
-				link.l2 = "Here you go.";
+				link.l2 = "Получи.";
 				link.l2.go = "Reason_To_Fast_15";
 			}			
 		break;
 		
 		case "Reason_To_Fast_13":
-			dialog.text = "Heh! You'll know it in heaven!";
-			link.l1 = "What a self-assurance...";
+			dialog.text = "Хех! На том свете узнаешь!";
+			link.l1 = "Какая самоуверенность...";
 			link.l1.go = "Reason_To_Fast_ExitFight";
 			pchar.questTemp.ReasonToFast = "PatrolAfter";	
 		break;
 		
 		case "Reason_To_Fast_14":
-			dialog.text = "Alright, then you owe me " + sti(pchar.questTemp.ReasonToFast.p5) + " pesos, as we had agreed.";
-			link.l1 = "Isn't that a little to much?";
+			dialog.text = "Отлично, тогда с тебя " + sti(pchar.questTemp.ReasonToFast.p5) + " песо, как и уговаривались.";
+			link.l1 = "Не много ли ты просишь?";
 			link.l1.go = "Reason_To_Fast_16";
 			if(makeint(pchar.money) >= sti(pchar.questTemp.ReasonToFast.p5))
 			{
-				link.l2 = "Here you go.";
+				link.l2 = "Получи.";
 				link.l2.go = "Reason_To_Fast_17";
 			}	
-			link.l3 = "But I don't have that much money on me!";
+			link.l3 = "Но у меня нет при себе такой суммы!";
 			link.l3.go = "Reason_To_Fast_18";	
 			AddQuestRecord("ReasonToFast", "9");
 			AddQuestUserData("ReasonToFast", "sText", pchar.questTemp.ReasonToFast.jewType);
@@ -215,8 +215,8 @@ void ProcessDialogEvent()
 		
 		case "Reason_To_Fast_15":
 			TakeNItems(pchar, pchar.questTemp.ReasonToFast.item, -30); 
-			dialog.text = "Everything is in accordance with the deal. Here you go. This map was taken from the hanged pirate - about whom "  + GetName( NAMETYPE_MAIN, pchar.questTemp.ReasonToFast.p3, NAME_NOM) + " had inquired.";
-			link.l1 = "The deed is done!";
+			dialog.text = "Все согласно уговору. Вот, держи. Эту карту отняли у того повешенного пирата, о котором спрашивал "  + GetName( NAMETYPE_MAIN, pchar.questTemp.ReasonToFast.p3, NAME_NOM) + ".";
+			link.l1 = "Дело сделано!";
 			link.l1.go = "Reason_To_Fast_15_1";
 		break;
 		
@@ -235,8 +235,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Reason_To_Fast_16":
-			dialog.text = "We have settled the sum with " + GetName( NAMETYPE_MAIN, pchar.questTemp.ReasonToFast.p3, NAME_ABL) + " in advance. I don't like it one bit. Kill h"+ GetSexPhrase("im","er") +", boys!";
-			link.l1 = "Alright, you may try!";
+			dialog.text = "Мы о сумме с " + GetName( NAMETYPE_MAIN, pchar.questTemp.ReasonToFast.p3, NAME_ABL) + " заранее договорились... Что-то не нравится мне это... Вали е"+ GetSexPhrase("го","е") +", ребята!";
+			link.l1 = "Что ж, попробуй!";
 			link.l1.go = "Reason_To_Fast_ExitFight";
 			pchar.questTemp.ReasonToFast = "PatrolAfter";	
 		break;
@@ -254,8 +254,8 @@ void ProcessDialogEvent()
 					sTemp1 = generateRandomNameToShip(sti(pchar.questTemp.ReasonToFast.GuardNation));
 					iShipType = ReasonToFast_GetVictimShipType();
 					iShipGoods = ReasonToFast_GetVictimShipGoods();
-					dialog.text = "Excellent! Now let's get down to business. We have intercepted that " + GetStrSmallRegister(pchar.questTemp.ReasonToFast.ShipTypeName) +" '" + sTemp1 + "' with a cargo of " + GetGoodsNameAlt(iShipGoods) + ", the crew is already detained, and the 'cargo' is still on board. The crew was hired among down-and-outers in the port, and they are not getting into the port until tomorrow. You can deal with them however you see fit.";
-					link.l1 = "Alright. I'll pass your word " + GetName( NAMETYPE_MAIN, pchar.questTemp.ReasonToFast.p3, NAME_DAT) + ".";
+					dialog.text = "Отлично! Теперь о деле. Мы перехватили тот " + GetStrSmallRegister(pchar.questTemp.ReasonToFast.ShipTypeName) +" '" + sTemp1 + "' с грузом " + GetGoodsNameAlt(iShipGoods) + ", весь экипаж уже в казематах, а 'товар' пока на борту. Транспортная команда набрана из портовых забулдыг, и до завтра в порт попадёт вряд ли. Поступай с ними, как сочтёшь нужным.";
+					link.l1 = "Хорошо. Все так и передам " + GetName( NAMETYPE_MAIN, pchar.questTemp.ReasonToFast.p3, NAME_DAT) + ".";
 					link.l1.go = "Reason_To_Fast_GoodBye_0";
 					pchar.questTemp.ReasonToFast.chain = "A0";
 					pchar.questTemp.ReasonToFast.ShipName = sTemp1;										
@@ -271,37 +271,37 @@ void ProcessDialogEvent()
 					switch(rand(3))
 					{
 						case 0:
-							sTemp1 = "The governor's daughter dowry is";
+							sTemp1 = "Приданое своей дочурки";
 						break;
 						case 1:
-							sTemp1 = "Governor's gifts for the Viceroy are";
+							sTemp1 = "Подарки для вице-короля";
 						break;
 						case 2:
-							sTemp1 = "The presents for governor's jubilee are";
+							sTemp1 = "Подарки к своему юбилею";
 						break;
 						case 3:
-							sTemp1 = "Governors 'pensionary' money is";
+							sTemp1 = "Свои 'пенсионные'";
 						break;
 					}
 					switch(rand(3))
 					{
 						case 0:
-							sTemp2 = "Cheat";
+							sTemp2 = "Плутовка";
 						break;
 						case 1:
-							sTemp2 = "Mischief";
+							sTemp2 = "Шалунья";
 						break;
 						case 2:
-							sTemp2 = "Prank";
+							sTemp2 = "Проказница";
 						break;
 						case 3:
-							sTemp2 = "Naughty";
+							sTemp2 = "Озорница";
 						break;
 					}
 					pchar.questTemp.ReasonToFast.password = sTemp2;
 					sTemp2 = generateRandomNameToShip(sti(pchar.questTemp.ReasonToFast.GuardNation));
-					dialog.text = "Excellent! " + sTemp1 + " kept in his boudoir. The courier ship shall arrive any day now, but you should still manage. The lackey is 'our' man. Password: '"+ pchar.questTemp.ReasonToFast.password +"', reply: '"+ sTemp2 +"'.";
-					link.l1 = "Alright. I'll pass your word " + GetName( NAMETYPE_MAIN, pchar.questTemp.ReasonToFast.p3, NAME_DAT) + ".";
+					dialog.text = "Отлично! " + sTemp1 + " губернатор хранит у себя в будуаре. Курьерское судно для транспортировки будет со дня на день, но ты успеешь. Лакей 'наш' человек. Пароль: '"+ pchar.questTemp.ReasonToFast.password +"', отзыв: '"+ sTemp2 +"'.";
+					link.l1 = "Хорошо. Все так и передам " + GetName( NAMETYPE_MAIN, pchar.questTemp.ReasonToFast.p3, NAME_DAT) + ".";
 					link.l1.go = "Reason_To_Fast_GoodBye_0";
 					pchar.questTemp.ReasonToFast.chain = "A1";
 					AddQuestRecord("ReasonToFast", "12");
@@ -320,15 +320,15 @@ void ProcessDialogEvent()
 		case "Reason_To_Fast_18":
 			if(makeint(pchar.money) >= sti(pchar.questTemp.ReasonToFast.p5))
 			{
-				dialog.text = "Are you trying to trick me?! You cur!";
-				link.l1 = "Shut up!";
+				dialog.text = "Да ты пытаешься меня обмануть?! Собака!";
+				link.l1 = "Закрой рот!";
 				link.l1.go = "Reason_To_Fast_ExitFight";
 				pchar.questTemp.ReasonToFast = "PatrolAfter";	
 			}
 			else
 			{
-				dialog.text = "You drank away! My! Money!... Argh.";
-				link.l1 = "Damn it!";
+				dialog.text = "Ты пропил"+ GetSexPhrase("","а") +"! Мои! Деньги!... Аргх.";
+				link.l1 = "Вот черт!";
 				link.l1.go = "Reason_To_Fast_ExitFight";
 				pchar.questTemp.ReasonToFast = "PatrolAfter";	
 			}
@@ -353,8 +353,8 @@ void ProcessDialogEvent()
 		
 		case "Reason_To_Fast_GoodBye":
 			Diag.TempNode = "Reason_To_Fast_GoodBye";
-			dialog.text = "You'd better leave the cove, the tide is already coming...";
-			link.l1 = "Yeah, yeah, I am leaving.";
+			dialog.text = "Вы бы покинули бухту, уже прилив начался...";
+			link.l1 = "Да-да, уже ухожу.";
 			link.l1.go = "Exit";
 		break;
 		
@@ -392,26 +392,26 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Reason_To_Fast_AfterHunter1":
-			dialog.text = "Haven't we agreed that the messenger must be alone?";
-			link.l1 = "Lack of coordination. The messenger had lost his way. I am the substitute.";
+			dialog.text = "Мы же договаривались, что посыльный должен быть один!";
+			link.l1 = "Неувязочка вышла. Видишь, посыльный заплутал? Меня на подмену прислали.";
 			link.l1.go = "Reason_To_Fast_11";
-			link.l2 = "And I have come alone, but not for what you are expecting.";
+			link.l2 = "А я и приш"+ GetSexPhrase("ел один","ла одна") +", только не за тем, о чём ты думаешь.";
 			link.l2.go = "Reason_To_Fast_AfterHunter2";
 		break;
 		
 		case "Reason_To_Fast_AfterHunter2":
-			dialog.text = "So, you have still tracked me down...";
-			link.l1 = "Arrgh!";
+			dialog.text = "Значит, всё-таки выследил"+ GetSexPhrase("","а") +"... Ну, тогда не обессудь.";
+			link.l1 = "Аргх...";
 			link.l1.go = "Reason_To_Fast_ExitFight";
 			pchar.questTemp.ReasonToFast = "PatrolAfterHunter";	
 		break;
 		
 		case "Reason_To_Fast_AfterHunter3":
-			dialog.text = "You scoundrel! I've almost fallen for that!.. Guards! Seize h"+ GetSexPhrase("im","er") +"...";
-			link.l1 = "Arrgh!";
+			dialog.text = "Ах, мерзав"+ GetSexPhrase("ец","ка") +"! А я чуть не попался!.. Стража! Взять е"+ GetSexPhrase("го","е") +"...";
+			link.l1 = "Аргх...";
 			link.l1.go = "Reason_To_Fast_ExitFight";
 			pchar.questTemp.ReasonToFast = "PatrolAngry";	
 		break;
-		// генератор "A reason to hurry"
+		// генератор "Повод для спешки"
 	}
 }

@@ -4,18 +4,18 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-            dialog.text = RandPhraseSimple("What kind of questions?", "What would you like?");
-			link.l1 = RandPhraseSimple("I have changed my mind...", "I have got nothing to say now.");
+            dialog.text = RandPhraseSimple("Какие вопросы?", "Что вам угодно?");
+			link.l1 = RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить");
 		    link.l1.go = "exit";
 			//Бремя гасконца
 			if (CheckAttribute(pchar, "questTemp.Sharlie.Citcount") && !CheckAttribute(npchar, "quest.Sharlie"))
 			{
-				link.l1 = "Excuse me, "+GetAddress_FormToNPC(NPChar)+" can you tell me where can I find Michel de Monper? He has to be somewhere in your town.";
+				link.l1 = "Извините, "+GetAddress_FormToNPC(NPChar)+" вы не знаете, где я могу найти человека - Мишеля де Монпе? Он должен быть где-то у вас в городе.";
                 link.l1.go = "Sharlie";
 			}	
 			if (CheckAttribute(pchar, "questTemp.Sharlie") && pchar.questTemp.Sharlie == "findskiper" && !CheckAttribute(npchar, "quest.Sharlie1"))
 			{
-				link.l1 = "Listen, "+GetAddress_FormToNPC(NPChar)+", I want to ask something... I am looking for a navigator to serve on my ship, do you know someone in your town?";
+				link.l1 = "Послушайте, "+GetAddress_FormToNPC(NPChar)+", тут такое дело... Я ищу штурмана на свой корабль - может, знаете подходящего человека в вашем городе?";
                 link.l1.go = "Sharlie_1";
 			}
 			//Бремя гасконца
@@ -23,19 +23,20 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "info":
         // заменить на описание неких НПС, по квестам
-			dialog.text = "Do I work for the secret service of "+NationNameGenitive(sti(NPChar.nation))+"?";
-			link.l1 = "Well... farewell then.";
+			dialog.text = "Я что, работаю на тайную агентурную сеть для "+NationNameGenitive(sti(NPChar.nation))+"?";
+			link.l1 = "Ну ладно... тогда пока.";
 			link.l1.go = "exit";
-			link.l2 = "Next question then ";
+			link.l2 = "Тогда другой вопрос";
 			link.l2.go = "new question";
 		break;
 		
 		case "town":
         // заменить на описание как пройти, по квестам
-			dialog.text = "Do I work on an enquiry position? Don't know. Don't know a thing.";
-            link.l1 = "Such a muddle-head! See you.";
+			dialog.text = "Я вам что справочная? Не знаю. Ничего не ведаю.";
+
+            link.l1 = "Вот бестолочь! Пока.";
 			link.l1.go = "exit";
-			link.l2 = "Next question then ";
+			link.l2 = "Тогда другой вопрос";
 			link.l2.go = "new question";
 		break;
 		
@@ -43,15 +44,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "Sharlie":
 			if (sti(pchar.questTemp.Sharlie.Citcount) == 3)
 			{
-				dialog.text = "Hm... You must be new here since you fearlessly ask such questions... I advice you to stop that or you'll get troubles on your head otherwise. And about your question... Talk to the abbot. You can find him at the church.";
-				link.l1 = "Gratitude!";
+				dialog.text = "Хм... Вижу, вы в нашем городе приезжий, раз совершенно без опаски ведете подобные расспросы... Я советую вам их прекратить, не то накличете беду на свою голову. А насчет вашего вопроса... поговорите с аббатом Бенуа. Вы сможете найти его в церкви.";
+				link.l1 = "Спасибо!";
 				link.l1.go = "exit";
 				AddDialogExitQuest("Sharlie_SetBenua");
 			}
 			else
 			{
-				dialog.text = LinkRandPhrase("No, I don't know this name.","Can't help you. I have to go, bye.","Sorry, I have never heard that name before. So..");
-				link.l1 = "I see... Sorry for troubling you. ";
+				dialog.text = LinkRandPhrase("Нет, это имя мне ничего не говорит.","Ничем не могу вам помочь. Мне пора идти, до свидания.","Увы, но я впервые слышу это имя. Так что...");
+				link.l1 = "Понятно... Прошу прощения за беспокойство.";
 				link.l1.go = "exit";
 				pchar.questTemp.Sharlie.Citcount = sti(pchar.questTemp.Sharlie.Citcount)+1;
 				npchar.quest.Sharlie = "true";
@@ -59,8 +60,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "Sharlie_1":
-			dialog.text = LinkRandPhrase("No, I don't know any navigators.","I have no idea. I have to go, bye.","Sorry, I have never heard that name before. So..");
-			link.l1 = "I see. Pardon me...";
+			dialog.text = LinkRandPhrase("Нет, никаких штурманов я не знаю.","Без малейшего понятия. Мне пора идти, до свидания.","Увы, но ничем не могу помочь. Так что...");
+			link.l1 = "Понятно. Извините...";
 			link.l1.go = "exit";
 			npchar.quest.Sharlie1 = "true";
 			npchar.dialog.currentnode = "first time";

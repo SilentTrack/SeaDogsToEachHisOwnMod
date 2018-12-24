@@ -4,135 +4,135 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me that question not long ago...", "Yup, let me guess... Once again going around in circles?",
-                          "Listen, I do the finances here, I don't answer questions...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
-                      "You've guessed it, I'm sorry...", "I understand...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно?"), "Совсем недавно вы пытались задать мне вопрос...", "М-да, позвольте угадаю... Опять ничего существенного?",
+                          "Послушайте, я финансами оперирую, а не на вопросы отвечаю...", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Вы угадали, простите...", "Я понимаю...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			//--> Бремя гасконца
 			if (CheckAttribute(pchar, "questTemp.Sharlie.Junglejew") && !CheckAttribute(npchar, "quest.junglejew"))
 			{
-				link.l1 = "Take a look at these earrings, monsieur. I've found them in the pocket of a bandit in the jungle. This is clearly the work of a fine jeweler that couldn't have been out here in this armpit. What say you?";
+				link.l1 = "Взгляните на эти серьги, месье. Я нашел их в кармане мертвого бандита в джунглях. Это явно работа хорошего ювелира, которого в этой глуши и быть не могло. Можете что-нибудь сказать о них?";
                 link.l1.go = "Sharlie_junglejew";
 			}
 			if (CheckAttribute(pchar, "questTemp.Sharlie") && pchar.questTemp.Sharlie == "bankskiper")
 			{
-				link.l1 = "I know that you have a debtor by the name Folke Delluc. Tell me, of what multitude is his...delinquency?";
+				link.l1 = "Я знаю, что у вас есть должник по имени Фульк Делюк. Скажите, насколько велика его... провинность?";
                 link.l1.go = "Sharlie";
 			}	
 			if (CheckAttribute(pchar, "questTemp.Sharlie") && pchar.questTemp.Sharlie == "bankskipermoney")
 			{
-				link.l1 = "I'm here about Folke Delluc's debt.";
+				link.l1 = "Я по поводу долга Фулька Делюка.";
                 link.l1.go = "Sharlie_repeat";
 			}
 			if (CheckAttribute(pchar, "questTemp.Sharlie") && pchar.questTemp.Sharlie == "bankskipercaptive")
 			{
-				link.l1 = "I've completed your assignment, monsieur. Here is your... Spanish friend.";
+				link.l1 = "Я выполнил ваше задание, месье. Вот ваш... испанский друг.";
                 link.l1.go = "Sharlie_14";
 			}
 			//<-- Бремя гасконца
 		break;
 		
 		case "Sharlie":
-			dialog.text = "What business is it of yours, if I may ask?";
-			link.l1 = "I need this man free, not behind bars. And as far as I've been informed, until this debt is returned to you, he will not be released, I'm interested in paying off this debt.";
+			dialog.text = "А вам-то какое дело до этого, позволю себе спросить?";
+			link.l1 = "Мне нужен этот человек. Причем на свободе, а не за решеткой. А поскольку в тюрьме мне сообщили, что пока долг не будет возвращен вам, то его не выпустят, я заинтересован в погашении этого долга.";
 			link.l1.go = "Sharlie_1";
 		break;
 		
 		case "Sharlie_1":
-			dialog.text = "Aha, that changes everything. I'm also interested in my money returning back to me... This Folke Delluc is a strange fellow. He borrowed a relatively small amount of money - five thousand pesos. He just didn't want to give it back and started hiding away. In the end, interest ran all the way up to the price of the original debt and he found himself behind bars.";
-			link.l1 = "It follows that, his debt has currently accumulated at ten thousand?";
+			dialog.text = "А-а, это меняет дело. Я тоже заинтересован, чтобы мои деньги вернулись ко мне... Этот Фульк Делюк - странный тип. Он взял в долг относительно небольшую сумму денег - пять тысяч песо. Вернуть он ее не вернул и стал скрываться. В итоге - процентов набежало уже на размер суммы основного долга, и сам в тюрьму угодил.";
+			link.l1 = "Стало быть, на сей день его долг составляет десять тысяч?";
 			link.l1.go = "Sharlie_2";
 		break;
 		
 		case "Sharlie_2":
-			dialog.text = "Ten thousand four hundred fifty pesos exactly, monsieur. So his freedom is priced at this amount. You're willing to pay it to me? I'm a little surprised...";
+			dialog.text = "Десять тысяч четыреста пятьдесят песо, если быть точным, месье. Так что его свобода оценивается именно в эту сумму. Вы готовы оплатить мне ее? Я, пожалуй, удивлен...";
 			if (sti(pchar.money) >= 10450)
 			{
-				link.l1 = "Don't be surprised. Here's the money.";
+				link.l1 = "Не удивляйтесь. Вот деньги.";
 				link.l1.go = "Sharlie_3";
 			}
-			link.l2 = "Hm... A hefty sum indeed. Listen, monsieur, maybe you and I should try and make a deal? For instance, you have something that I would be able to take care of and you could evaluate my favor at these ten thousand five hundred...";
+			link.l2 = "Хм... Сумма и впрямь приличная. Послушайте, месье, может, мы попробуем с вами договориться? Ну, например, у вас есть какое-то дело, которое я бы смог выполнить, а вы бы оценили мою услугу в эти десять с половиной тысяч...";
 			if (CheckAttribute(pchar, "questTemp.Sharlie.FastStart")) link.l2.go = "Sharlie_5x";
-			else link.l2.go = "Sharlie_5"; // Addon 2016-1 Jason пиратскаЯ линейка 1
+			else link.l2.go = "Sharlie_5"; // Addon 2016-1 Jason пиратская линейка 1
 		break;
 		
 		case "Sharlie_3":
 			AddMoneyToCharacter(pchar, -10450);
-			dialog.text = "Yes, it appears that you really need this sailor if you're willing to shell out such an amount of money for him. Anyway, it's none of my business, is it monsieur? Here is his bill of debt now you're entitled to his debt and have right to ask for the coins from him. Well, and of course, petition for his release from prison.";
-			link.l1 = "That's exactly what I wanted. Goodbye, "+npchar.name+"!";
+			dialog.text = "Да, похоже этот моряк вам действительно нужен, раз вы готовы выложить за него такую сумму денег. Впрочем, это не мое дело, ведь так, месье? Возьмите его расписки - теперь вы обладаете правом на его долг и можете требовать свои монеты с него. Ну и, конечно, ходатайствовать о его освобождении из тюрьмы.";
+			link.l1 = "Именно этого я и хотел. До свидания, "+npchar.name+"!";
 			link.l1.go = "Sharlie_4";
 		break;
 		
 		case "Sharlie_4":
 			DialogExit();
-			Log_Info("You've received a bill of debt");
+			Log_Info("Вы получили долговые расписки");
 			PlaySound("interface\important_item.wav");
 			GiveItem2Character(pchar, "letter_open");
 			ChangeItemDescribe("letter_open", "itmdescr_letter_open_usurer");
 			pchar.questTemp.Sharlie = "freeskiper";
 		break;
 		
-		case "Sharlie_5x": // Addon 2016-1 Jason пиратскаЯ линейка 1
-			dialog.text = "A favor? Alas, I do not need any favors from you. At least now.";
-			link.l1 = "Pity. I should bring the coin for Fulka then. Bye!";
+		case "Sharlie_5x": // Addon 2016-1 Jason пиратская линейка 1
+			dialog.text = "Услуга? Увы, но я не нуждаюсь в ваших услугах, по крайней мере - сейчас.";
+			link.l1 = "Жаль. Что же, тогда я принесу деньги за Фулька. До встречи!";
 			link.l1.go = "exit";
 			pchar.questTemp.Sharlie = "bankskipermoney";
 		break;
 		
 		case "Sharlie_5":
-			dialog.text = "Favor? Hm... You know, monsieur, I wouldn't given a negative answer had you come yesterday, but now... yes, I have something that I would evaluate taking care of at this amount, but I warn you: it's dangerous.";
-			link.l1 = "Dangerous for what?";
+			dialog.text = "Услуга? Хм... Знаете, месье, еще вчера бы я ответил отрицательно, но теперь... да, у меня есть дело, выполнение которого я бы оценил в эту сумму, но предупреждаю: это опасно.";
+			link.l1 = "Опасно для чего?";
 			link.l1.go = "Sharlie_6";
 		break;
 		
 		case "Sharlie_6":
-			dialog.text = "For your precious life, of course. So think about it, before agreeing and decide whether you're willing to do something like that or not.";
-			link.l1 = "Sir, danger isn't any stranger to me. I've looked death into it's jaws before. So, let's get to the details. As long as it doesn't involve taking out the entire port's garrison single-handedly, maybe I'll be able to accomplish what you're so mysteriously alluding to.";
+			dialog.text = "Для вашей драгоценной жизни, конечно. Так что подумайте, перед тем как дать согласие, готовы ли вы к такому.";
+			link.l1 = "Сударь, мне не впервой смотреть в глаза опасностям разного рода. Так что давайте перейдем к описанию подробностей, и если для этого не нужно будет в одиночку вырезать гарнизон форта, возможно, я смогу выполнить то, о чем вы сейчас так загадочно намекаете.";
 			link.l1.go = "Sharlie_7";
 		break;
 		
 		case "Sharlie_7":
-			dialog.text = "Fine. Listen then. Tonight several pirates and a prisoner will leave pirate den Le Francois and move to Le Maren bay. The prisoner is a Spanish officer, a great expert of fortification engineering. Brits intend to use him for their own purposes, so they will send a warship to pick the man up from the bay\nThe officer is my old acquaintance and I don't want him to end up as an English captive. I can not ask local authorities to help me because we are at war with Spain. If I had more time, I would hire men capable of retaking the Spanish... hm, my Spanish acquaintance, but alas!\nYou are the only man I can trust this job. You must go to Le Maren bay and... persuade the pirates to give the prisoner to you. I doubt that they will show much cooperation, so it's up to you.";
-			link.l1 = "How many pirates will be in the Spanish convoy?";
+			dialog.text = "Хорошо. Тогда слушайте. Сегодня вечером из пиратского логова Ле Франсуа, что находится в восточной части нашего острова, выйдут несколько пиратов и отправятся в бухту Ле Марен. С ними будет пленник - испанский офицер, которого они собираются сдать за выкуп англичанам\nЭтот испанский офицер - замечательный специалист в фортификационном деле, и англичане намерены использовать его таланты в своих целях. За ним специально в бухту Ле Марен присылают военный корабль из Порт-Рояля\nОфицер - мой старинный знакомый, и я бы не хотел, чтобы он попал в плен к англичанам. Как вы понимаете, к официальным властям острова я обратиться не могу, поскольку мы с Испанией находимся в состоянии вражды\nБудь у меня побольше времени - я бы, конечно, нанял соответствующих людей для перехвата испанца... кхм, моего знакомого, но увы! Мне остатся только предложить это дело вам, а именно: отправиться в бухту Ле Марен и... убедить пиратов отдать вам пленника\nНе думаю, что они окажутся сговорчивыми, так что - решайте.";
+			link.l1 = "Сколько будет пиратов в конвое испанца?";
 			link.l1.go = "Sharlie_8";
 		break;
 		
 		case "Sharlie_8":
-			dialog.text = "I don't know. Maybe two people, maybe three or four. So, what do you say?";
-			link.l1 = "I've already told you danger isn't any stranger to me and I know which side to hold a sword on.";
+			dialog.text = "Не знаю. Может, человека два, а может - три или четыре. Ну, так что скажете?";
+			link.l1 = "Я уже сказал вам - мне не привыкать смотреть в лицо опасности, и я знаю, с какой стороны держать шпагу.";
 			link.l1.go = "Sharlie_10";
-			link.l2 = "Hm. You're right it's dangerous. I won't attack a crew of pirates all alone.";
+			link.l2 = "Хм. Вы правы - дело опасное. Не буду я в одиночку нападать на отряд пиратов.";
 			link.l2.go = "Sharlie_9";
 		break;
 		
 		case "Sharlie_9":
-			dialog.text = "That's your decision. If you believe you're not up to the job, then you better refuse right away. Then I'll be waiting for Delluc's debt money.";
-			link.l1 = "All right. I'll bring the money for him. See you later!";
+			dialog.text = "Дело ваше. Если чувствуете, что не по плечу ноша - то лучше сразу отказаться. Тогда жду вас с деньгами в качестве уплаты долга Делюка.";
+			link.l1 = "Хорошо. Я принесу деньги за него. До встречи!";
 			link.l1.go = "exit";
 			pchar.questTemp.Sharlie = "bankskipermoney";
 		break;
 		
 		case "Sharlie_10":
-			dialog.text = "Very well. Glad to hear that. Then you should go to Le Maren bay, the pirates will be there from nine p.m. till midnight. Don't loose them! And don't even think to use a ship - such actions will scare them off. Go there on foot through jungles!\nBring the prisoner to me when you have him, I shall keep the door open, I recommend to wait until one a.m. before returning to the city in order to avoid gates guards' attention\nPress enter and choose actions menu to skip time. Be careful and good luck!";
-			link.l1 = "Thank you! I'll definitely need some luck...";
+			dialog.text = "Очень хорошо. Рад слышать это. Тогда вам следует отправляться в бухту Ле Марен - пираты будут там приблизительно с девяти вечера и до полуночи. Не прозевайте их! И не вздумайте идти в бухту на корабле - спугнете негодяев. Только по суше через джунгли!\nКогда освободите пленника, приведете его ко мне - дверь будет открыта даже ночью. Будьте осторожны и удачи вам!";
+			link.l1 = "Спасибо! Удача мне точно понадобится...";
 			if (CheckCharacterItem(pchar, "pistol1")) link.l1.go = "Sharlie_13";
 			else link.l1.go = "Sharlie_11";
 		break;
 		
 		case "Sharlie_11":
-			dialog.text = "Wait a minute! I see you don't even have a gun. Take one of mine. I've got several shots for it. I think it'll come in handy.";
-			link.l1 = "Yes, this doodad might definitely come in handy. Thank you, sir.";
+			dialog.text = "Одну минуту! Вижу, у вас нет даже пистоля. Возьмите один из моих, и несколько зарядов к нему. Думаю, это вам пригодится.";
+			link.l1 = "Да, эта штучка однозначно может понадобиться. Благодарю вас, сударь.";
 			link.l1.go = "Sharlie_12";
 		break;
 		
 		case "Sharlie_12":
-			Log_Info("You've received a combat pistol");
+			Log_Info("Вы получили строевой пистоль");
 			PlaySound("interface\important_item.wav");
 			GiveItem2Character(pchar, "pistol1");
 			TakeNItems(pchar, "bullet", 20);
 			TakeNItems(pchar, "gunpowder", 20);
-			dialog.text = "And now be gone, God help you!";
+			dialog.text = "А теперь ступайте, и да поможет вам Бог!";
 			link.l1 = "...";
 			link.l1.go = "Sharlie_13";
 		break;
@@ -159,14 +159,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			sld.lifeday = 0;
 			SetNationRelation2MainCharacter(FRANCE, RELATION_FRIEND);
 			DeleteAttribute(pchar, "questTemp.Sharlie.Captive");
-			dialog.text = "Wonderful! I've very pleased that you were able to handle it successfully. I suppose I need not know the details of the operation, need I?  So, my dear Spanish guest may now feel himself safe in my home...";
-			link.l1 = "What about Folke Delluc's debt?";
+			dialog.text = "Замечательно! Очень рад, что вам удалось успешно с этим справиться. Подробности дела, мне, пожалуй, лучше не знать, ведь так? Ну, а мой дорогой испанский гость может чувствовать себя у меня дома в безопасности...";
+			link.l1 = "Что насчет долга Фулька Делюка?";
 			link.l1.go = "Sharlie_15";
 		break;
 		
 		case "Sharlie_15":
-			dialog.text = "Of course, yes. Take his bill of debt now you're entitled to his debt and have right to ask for the coins from him. Well, and of course, petition for his release from prison. Have I done everything as promised?";
-			link.l1 = "Yes, monsieur. Everything's in strict adherence to the agreement. And now allow me to take my bow.";
+			dialog.text = "Да, конечно. Возьмите его расписки - теперь вы обладаете правом на его долг и можете требовать свои монеты с него. Ну и, конечно, ходатайствовать о его освобождении из тюрьмы. Я всё сделал, как обещал?";
+			link.l1 = "Да, месье. Все строго согласно договору. А теперь разрешите откланяться.";
 			link.l1.go = "Sharlie_4";
 			AddQuestRecord("SharlieD", "7");
 			CloseQuestHeader("SharlieD");
@@ -174,21 +174,21 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "Sharlie_repeat":
-			dialog.text = "So, are you ready to pay his debt for him?";
+			dialog.text = "Итак, вы готовы заплатить за него долг?";
 			if (sti(pchar.money) >= 10450)
 			{
-				link.l1 = "Yes. Here's the money.";
+				link.l1 = "Да. Вот деньги.";
 				link.l1.go = "Sharlie_3";
 			}
-			link.l2 = "Unfortunately, I still haven't put together the required sum...";
+			link.l2 = "К сожалению, я еще не собрал нужной суммы...";
 			link.l2.go = "exit";
 		break;
 		
 		case "Sharlie_junglejew":
-			dialog.text = "Hm. It appears you're right, these are expensive earrings and they were made in the Old World for sure... What can I say? I'll give you thirty for them... no even thirty five gold doubloons. Take the money, you won't sell them for any more.";
-			link.l1 = "Thirty five doubloons? That isn't a bad price. I agree. Here you go.";
+			dialog.text = "Хм. Похоже, вы правы - это дорогие серьги, и сделаны в Старом Свете, несомненно... Что я могу сказать? Я могу дать вам за них тридцать... нет, даже тридцать пять золотых дублонов. Соглашайтесь, дороже вам их не продать.";
+			link.l1 = "Тридцать пять дублонов? Неплохая цена. Я согласен. Забирайте.";
 			link.l1.go = "Sharlie_junglejew_1";
-			link.l2 = "No. I thing I'll leave this jewel to myself.";
+			link.l2 = "Нет. Лучше я оставлю эту драгоценность себе.";
 			link.l2.go = "exit";
 			npchar.quest.junglejew = "true";
 		break;
@@ -196,7 +196,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "Sharlie_junglejew_1":
 			DialogExit();
 			PlaySound("interface\important_item.wav");
-			Log_Info("You've given the earrings");
+			Log_Info("Вы отдали серьги");
 			RemoveItems(pchar, "jewelry25", 1);
 			TakeNItems(pchar, "gold_dublon", 35);
 			AddQuestRecord("SharlieE", "3");

@@ -21,110 +21,110 @@ void ProcessDialogEvent()
 		case "First time":
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = "Hello, hello... Are you new here? I don't recall your face. Allow me to introduce myself - I am Giuseppe Fazio, a specialist in solving problems on this small island.";
-				link.l1 = TimeGreeting()+". My name is "+GetFullName(pchar)+". You are right, I am new here. Forgive my curiosity - but what kind of problems do you solve?";
+				dialog.text = "Здравствуйте-здравствуйте... Недавно на острове? Ваше лицо мне незнакомо. Позвольте представиться - Джузеппе Фацио, специалист по решению различного рода проблем на этом клочке суши среди моря.";
+				link.l1 = TimeGreeting()+". Мое имя - "+GetFullName(pchar)+". Вы правы, я действительно здесь недавно. Простите за любопытство, а какие такие проблемы вы решаете?";
 				link.l1.go = "meeting";
 				npchar.quest.meeting = "1";
 			}
 			else
 			{
-				dialog.text = "Ah, you again, dear "+pchar.name+"! What brings you to my humble house?";
+				dialog.text = "А, это снова вы, дорогой "+pchar.name+"! Что привело вас в мое скромное жилище?";
 				if (CheckAttribute(pchar, "GenQuest.NarvalConflict") || CheckAttribute(pchar, "GenQuest.RivadosConflict") || CheckAttribute(pchar, "GenQuest.SharkConflict"))
 				{
-					link.l10 = "Fazio, I have got a serious conflict with one clan. I need to solve this problem.";
+					link.l10 = "Фацио, у меня возник серьезный конфликт с одним из кланов. Мне нужно как-то решить эту проблему.";
 					link.l10.go = "conflict";
 				}
 				// --> квестовые ветки
 				if (CheckAttribute(pchar, "questTemp.Saga.SharkHunt") && pchar.questTemp.Saga.SharkHunt == "search_mush_3")
 				{
-					link.l4 = "Giuseppe, I am looking for a man by the name of Adolf Barbier. They told me that you had been drinking with him at the tavern recently...";
+					link.l4 = "Джузеппе, я разыскиваю человека по имени Адольф Барбье. Мне сказали, что вы недавно с ним беседовали за кружкой эля в таверне...";
 					link.l4.go = "adolf";
 				}
 				if (CheckAttribute(pchar, "questTemp.LSC.Drink") && pchar.questTemp.LSC.Drink == "begin")
 				{
-					link.l5 = "Giuseppe, they say that you are completely resistant to drinks. No matter how much you drink, you still stand on your feet.";
+					link.l5 = "Джузеппе, тут про вас ходят презанятные слухи. Говорят, что никакой ром не может свалить вас с ног.";
 					link.l5.go = "drink";
 				}
 				if (CheckAttribute(pchar, "questTemp.LSC.Drink") && GetCharacterItem(pchar, "gold_dublon") >= 100 && pchar.questTemp.LSC.Drink == "wait")
 				{
-					link.l5 = "I am ready to play your game. Here is my stake.";
+					link.l5 = "Я готов сыграть в вашу игру. Вот моя ставка.";
 					link.l5.go = "drink_4";
 				}
 				// <-- квестовые ветки
 				if (CheckAttribute(npchar, "quest.parol"))
 				{
-					link.l1 = "I want to know the current password of the clans to enter their territories.";
+					link.l1 = "Я хочу узнать текущий пароль кланов для прохода на их территорию.";
 					link.l1.go = "parol_choice";
 				}
-				link.l2 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the latest gossips?");
+				link.l2 = LinkRandPhrase("Что-нибудь интересное мне расскажете?", "Что нового произошло на острове в последнее время?", "Не расскажете ли последние сплетни?");
 				link.l2.go = "rumours_LSC";
-				link.l3 = "Nothing special, Giuseppe. Just wanted to see you.";
+				link.l3 = "Ничего особенного, Джузеппе. Я просто зашел поздороваться с вами.";
 				link.l3.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "meeting":
-			dialog.text = "All sorts, my dear, all sorts. For example, I smooth things up between admiral and clans. As you might already know, Rivados, Narwhals and admiral are mutual enemies. I act as a mediator when things get tricky.\nBesides, I often play a role of a neutral side when admiral sells provision to the clans. But this is just a tiny part of my business. So if you will have troubles with Rivados or Narwhals - don't hesitate to ask for my assistance, we'll see what can be done.";
-			link.l1 = "Fine. I will consider that.";
+			dialog.text = "Разные, мой дорогой, разные. Например, я улаживаю сложности в общении между кланами и адмиралом. Как вам должно быть известно, ривадос, нарвалы и адмирал враждуют между собой. Я осуществляю посредническую деятельность между ними по щекотливым вопросам\nКроме того, часто выступаю в роли нейтральной стороны при продаже продовольствия адмиралом представителям кланов. Но это лишь небольшая часть моей деятельности. Так что если у вас вдруг возникли трудности с нарвалами или ривадос - обращайтесь ко мне, попробуем решить.";
+			link.l1 = "Хорошо. Я приму это к сведению.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
 		
 		// пароли
 		case "parol_choice":
-			dialog.text = "What clan?";
-			link.l1 = "Narwhals.";
+			dialog.text = "Пароль какого клана вас интересует?";
+			link.l1 = "Нарвалов.";
 			link.l1.go = "parol_nrv";
-			link.l2 = "Rivados.";
+			link.l2 = "Ривадос.";
 			link.l2.go = "parol_rvd";
 		break;
 		
 		case "parol_nrv":
-			dialog.text = "Want to see Donald Greenspen, am I right?";
-			link.l1 = "Correct. So do you know the password?";
+			dialog.text = "Решили заглянуть к Дональду Гринспи, я прав?";
+			link.l1 = "Точно. Так вы знаете текущий пароль нарвалов?";
 			link.l1.go = "parol";
-			pchar.questTemp.LSC.parol = "Narwals";
+			pchar.questTemp.LSC.parol = "нарвалов";
 			sTotalTemp = sNrvParol;
 		break;
 		
 		case "parol_rvd":
-			dialog.text = "Want to see Black Eddie, am I right?";
-			link.l1 = "Something like that. So do you know the password?";
+			dialog.text = "Отправляетесь в гости к Черному Эдди, я угадал?";
+			link.l1 = "Вроде того. Так вы знаете текущий пароль ривадос?";
 			link.l1.go = "parol";
-			pchar.questTemp.LSC.parol = "Rivados";
+			pchar.questTemp.LSC.parol = "ривадос";
 			sTotalTemp = sRvdParol;
 		break;
 		
 		case "parol":
 			if (!CheckAttribute(npchar, "quest.parolrules"))
 			{
-				dialog.text = "Sure! But let me give you some details first. Passwords contain only one word and change every week. Every seventh, fourteenth, twenty first and twenty eighth day of month\nSo watch the current date to avoid any mistakes. Finally, as you must understand, it's not a charity. Fifty doubloons for a password. Remember, doubloons only.";
-				link.l1 = "Fifty doubloons? This is a huge sum!";
+				dialog.text = "А как же! Но сначала позвольте внести краткие пояснения. Пароли кланов представляют собой одно определенное слово и меняются четыре раза в месяц, то есть практически еженедельно. Смена паролей происходит каждого седьмого, четырнадцатого, двадцать первого и двадцать восьмого числа\nТак что следите за текущей датой, чтобы не попасть впросак. Ну и, как вы понимаете, пароль я вам предоставлю не бесплатно. Стоимость одной услуги - пятьдесят дублонов. За пароли я беру только дублоны, имейте это в виду.";
+				link.l1 = "Пятьдесят дублонов? Это же целая куча монет!";
 				link.l1.go = "parol_1";
 			}
 			else
 			{
-				dialog.text = "Sure, my boy. You know the price. Do you have fifty doubloons?";
+				dialog.text = "Конечно, мой мальчик. Цену вы знаете. У вас есть с собой пятьдесят дублонов?";
 				if (GetCharacterItem(pchar, "gold_dublon") >= 50)
 				{
-					link.l1 = "Yes. Take your coins.";
+					link.l1 = "Да. Вот, держите ваши монеты.";
 					link.l1.go = "parol_pay";
 				}
-				link.l2 = "Unfortunately, I don't. Perhaps later...";
+				link.l2 = "К сожалению, у меня нет достаточного количества монет. Возможно, позже...";
 				link.l2.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "parol_1":
-			dialog.text = "Well-well, my boy, calm down. Don't be greedy, trust me: I know the real price of my information. You aren't going just to walk around the ships of "+pchar.questTemp.LSC.parol+" right? Right. So you have to be ready to loose some coin... So, are you ready to pay fifty doubloons?";
+			dialog.text = "Ну-ну, мой мальчик, не стоит так горячиться. Не жадничайте, поверьте: я отлично знаю цену своей информации. Ведь вы на корабли "+pchar.questTemp.LSC.parol+" не на прогулку собрались, верно? Верно. Значит, должны были быть готовы к тому, что вам придется расстаться с некоторой суммой денег... Так вы готовы заплатить пятьдесят дублонов?";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 50)
 			{
-				link.l1 = "Yes. Take your coins.";
+				link.l1 = "Да. Вот, держите ваши монеты.";
 				link.l1.go = "parol_pay";
 			}
-			link.l2 = "Unfortunately, I don't have such money. Perhaps later...";
+			link.l2 = "К сожалению, у меня нет достаточного количества монет. Возможно, позже...";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "First time";
 			npchar.quest.parolrules = "true";
@@ -132,25 +132,25 @@ void ProcessDialogEvent()
 		
 		case "parol_pay":
 			RemoveItems(pchar, "gold_dublon", 50);
-			dialog.text = "Great! Nice doing business with you. The current password for "+pchar.questTemp.LSC.parol+" is: '"+sTotalTemp+"'. Remember it well and don't make a mistake or I won't give a single coin for your life.";
-			link.l1 = "I know, I know... Thanks!";
+			dialog.text = "Отлично! Приятно иметь с вами дело. Текущий пароль "+pchar.questTemp.LSC.parol+": '"+sTotalTemp+"'. Запомните хорошенько, и не ошибитесь, когда будете называть, в противном случае я не дам за вашу жизнь и медного гроша.";
+			link.l1 = "Да знаю я, знаю... Спасибо за информацию!";
 			link.l1.go = "exit";
 			AddQuestRecord("LSC", "parol");
 			AddQuestUserData("LSC", "sText", pchar.questTemp.LSC.parol);
 			AddQuestUserData("LSC", "sParol", sTotalTemp);
-			if (pchar.questTemp.LSC.parol == "Rivados") pchar.questTemp.LSC.RParol_bye = "true";
+			if (pchar.questTemp.LSC.parol == "ривадос") pchar.questTemp.LSC.RParol_bye = "true";
 			else pchar.questTemp.LSC.NParol_bye = "true";
 		break;
 		
 		case "adolf":
-			dialog.text = "Ah, but of course, my good old Adolfo! Yes, I had a talk with him. See, my dear, I was glad to have my money back, the money I thought I would never see again! Adolfo borrowed a big sum on a collateral of his outstanding rifle and he had troubles returning my coins\nI had lost any hope to get them back and was going to sell the rifle to our beloved Axel Yost. But suddenly dear Adolfo brought me my gold! Turned out that he managed to get coins enough not only to redeem his rifle, but also to buy a Sessile Gallard's cabin at the head of the Santa Florentina!\nSure, this is much better than living in a half-watered hold\nTherefore, Adolfo has his rifle back, a new home and I have my money. Why wouldn't I had a drink with him, especially when he was buying?";
-			link.l1 = "Ah, sure! You had a lot of things to drink to. And for free... Thanks, Giuseppe, you have helped me a lot. Now I know where to find Adolf.";
+			dialog.text = "Ах, ну как же, мой любезный Адольфо! Конечно, я беседовал с ним. Понимаете, мой дорогой, тогда я празновал возвращение моих денег, которые я уже и не чаял увидеть! Адольфо одолжил у меня крупную сумму в песо под залог своего чудо-штуцера, и всё никак не мог вернуть\nЯ уже и не надеялся получить их обратно и подумывал о продаже штуцера нашему драгоценному Акселю Йосту. И тут любезнейший Адольфо приносит мне мои монеты! Он, оказывается, внезапно разжился деньгами, и не только выкупил у меня свой штуцер, но и приобрел у милой Сесил Галард ее каюту на носовой части 'Санта Флорентины'!\nКонечно, там намного удобнее, чем в гамаке в полузатопленном трюме\nТак что наш дорогой Адольфо при штуцере и при новом доме, а я - при своих денежках. И как же нам было с ним не выпить, тем более, что он угощал?";
+			link.l1 = "Ах, ну конечно! Столько поводов, что не выпить было нельзя. Тем более, что наливали... Спасибо, Джузеппе, вы мне очень помогли. Теперь я хоть знаю, где мне искать Адольфа.";
 			link.l1.go = "adolf_1";
 		break;
 		
 		case "adolf_1":
-			dialog.text = "It's always my pleasure, dear. But don't look for Adolfo until evening comes, he is very busy... Yeah, and visit me more often!";
-			link.l1 = "I will invite you when I have my own cabin... Farewell and good luck!";
+			dialog.text = "Всегда пожалуйста, мой дорогой. Но не ищите Адольфо у себя в каюте раньше вечера - он очень, очень занятой, что вы, все бегает и бегает по делам... Да, а вы заходите ко мне почаще, еще поболтаем!";
+			link.l1 = "Куплю себе каюту - обязательно приглашу вас на новоселье... Всего доброго и до встречи!";
 			link.l1.go = "adolf_2";
 		break;
 		
@@ -165,21 +165,21 @@ void ProcessDialogEvent()
 			switch (sti(npchar.quest.poisonnode))
 			{
 				case 1: // у себя
-					dialog.text = "Ah? Why are you invading my place like there is a fire? What liberties are you taking?";
-					link.l1 = "I will take even more liberties... poisoner!";
+					dialog.text = "А? Что ты врываешься ко мне, словно здесь пожар? Что ты себе позволяешь?";
+					link.l1 = "Сейчас я позволю себе еще большее... отравитель!";
 					link.l1.go = "whiskey_1";
 				break;
 				
 				case 2: // на Эве
-					dialog.text = "Spare me! I swear, they have forced me! They have put a gun against my...";
-					link.l1 = "Shut up. I know that. Where is the last bastard? Where is Marcello Cyclops?!";
+					dialog.text = "Пощади! Клянусь, они заставили меня! Они приставили мне пистолет ко...";
+					link.l1 = "Замолчи. Я это уже понял. Где последний ублюдок из их компании? Где Марчелло Циклоп?!";
 					link.l1.go = "whiskey_3";
 					SetFunctionTimerCondition("LSC_FacioReturn", 0, 0, 1, false); // вертаем на место Фацио через сутки
 				break;
 				
 				case 3: // у Акулы
-					dialog.text = "I swear, they have forced me! I have already told the admiral everything! I couldn't resist them, they would...";
-					link.l1 = "Shut up. I know that. Where is the last bastard? Where is Marcello Cyclops?!";
+					dialog.text = "Клянусь, они заставили меня! Я уже все рассказал адмиралу! Я не мог им сопротивляться, они бы...";
+					link.l1 = "Замолчи. Я это уже понял. Где последний ублюдок из их компании? Где Марчелло Циклоп?!";
 					link.l1.go = "whiskey_3";
 					SetFunctionTimerCondition("LSC_FacioReturn", 0, 0, 1, false); // вертаем на место Фацио через сутки
 				break;
@@ -187,51 +187,51 @@ void ProcessDialogEvent()
 		break;
 		
 		case "whiskey_1":
-			dialog.text = "What... what did you say?";
-			link.l1 = "I know everything, bastard. You have been working with Chad Kapper. You have brought a barrel with poisoned rum to admiral. Now pray, you miserable f...";
+			dialog.text = "Что... что ты сказал?";
+			link.l1 = "Я все знаю, негодяй. Ты действовал заодно с Чадом Каппером. Ты принес бочонок с отравленным ромом адмиралу. Теперь молись, ничтожество...";
 			link.l1.go = "whiskey_2";
 		break;
 		
 		case "whiskey_2":
-			dialog.text = "Wait! Stop! Spare me! I swear, they have forced me! They had a gun against my...";
-			link.l1 = "Shut up. I know that. Where is the last bastard? Where is Marcello Cyclops?!";
+			dialog.text = "Стой! Остановись! Пощади! Клянусь, они заставили меня! Они приставили мне пистолет ко...";
+			link.l1 = "Замолчи. Это понятно. Где последний ублюдок из их компании? Где Марчелло Циклоп?!";
 			link.l1.go = "whiskey_3";
 		break;
 		
 		case "whiskey_3":
-			dialog.text = "I... I.... I don't know!";
-			link.l1 = "You are lying, scum! I see that. Where is Cyclops?";
+			dialog.text = "Я... я... я не знаю!";
+			link.l1 = "Лжешь, поганый мешок навоза! Я это вижу. Где Циклоп?";
 			if (pchar.questTemp.LSC.Mary == "die") link.l1.go = "whiskey_10"; // ушел на Флерон
 			else link.l1.go = "whiskey_4";
 		break;
 		
 		case "whiskey_4":
-			dialog.text = "He... he had received some order from Kapper and was gone. I don't know where he is!";
-			link.l1 = "Lying again. You know everything. Don't be a coward, you filthy creature - Kapper is dead and he won't harm you. But if you don't tell me where Marcello is - I will run you through like a pig right now! What did Chad order to Cyclops?";
+			dialog.text = "Он... он получил от Каппера какой-то приказ и ушел. Я не знаю, где он!";
+			link.l1 = "Опять лжешь. Ты все знаешь. Не трусь, малодушная тварь, Каппер мертв и ничего не сделает тебе. Но если ты не скажешь, где Марчелло - я проткну тебя, как жука, прямо сейчас! Что приказал Циклопу Чад?";
 			link.l1.go = "whiskey_5";
 		break;
 		
 		case "whiskey_5":
-			dialog.text = "He sent him to kill... Red Mary.";
-			link.l1 = "What?! Speak now, how is he going to do that? It is impossible to get inside her cabin! How is he planning to kill her?!";
+			dialog.text = "Он отправил его убить... Красную Мэри.";
+			link.l1 = "Что?! Говори немедленно, каким образом он планирует это сделать? К ней в каюту на 'Церес Смити' не попасть, у нее заперты все двери! Как он собирается убить ее?!";
 			link.l1.go = "whiskey_6";
 		break;
 		
 		case "whiskey_6":
-			dialog.text = "He will get inside Jurgen's cabin while the blacksmith is out. Then he will move to the bottom of the hold, cross it and reach Mary's cabin\nThen the only thing he will need is to wait until the girl turns her back or falls asleep. That is what Chad told me. I know nothing more, I swear!";
-			link.l1 = "That will be enough. When did he go? When, I ask you, did Cyclops go to the Ceres Smithy?";
+			dialog.text = "Он пройдет через корму 'Церес Смити', в каюту Юргена, оружейника, когда тот отлучится. Потом спустится на самое дно трюма по веревке - все трапы, ведущие туда, сломаны. Затем тихо пересечет подтопленный трюм и выйдет прямо к каюте Мэри\nДальше ему нужно будет только дождаться, пока девушка повернется к нему спиной, или заснет - и все, дело сделано. Это все сказал Чад. Клянусь, я больше ничего не знаю!";
+			link.l1 = "Этого достаточно. Когда он ушел? Когда, я спрашиваю, Циклоп ушел на 'Церес Смити'?";
 			link.l1.go = "whiskey_7";
 		break;
 		
 		case "whiskey_7":
-			dialog.text = "He must already be at Jurgen's... or getting down inside the cargo hold...";
-			link.l1 = "Damn it!! I don't have time to swim around the Island! Tell me the password to Narwhals ships! Speak, and if you lie to me, I will stay alive anyway, you will be dead for sure!";
+			dialog.text = "Он уже наверняка у Юргена... или спускается в трюм...";
+			link.l1 = "Проклятие!! Вплавь вокруг острова я не успею! Говори пароль нарвалов для прохода на их корабли! Говори, а если солжешь - я все равно останусь в живых, но тогда тебе точно конец!";
 			link.l1.go = "whiskey_8";
 		break;
 		
 		case "whiskey_8":
 			dialog.text = "'"+sNrvParol+"'...";
-			link.l1 = "Got it. Now pray that the girl lives.";
+			link.l1 = "Я запомнил. А теперь молись, чтобы девушка осталась жива!";
 			link.l1.go = "whiskey_9";
 		break;
 		
@@ -248,15 +248,15 @@ void ProcessDialogEvent()
 		break;
 		
 		case "whiskey_repeat":
-			dialog.text = "I have already told you everything I know! I swear!";
+			dialog.text = "Я уже все сказал, что знал! Клянусь!";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "whiskey_repeat";
 		break;
 		
 		case "whiskey_10":
-			dialog.text = "He... He is somewhere inside the Fleron. Chad has ordered him to hide there and wait for his next orders.";
-			link.l1 = "I see. It'd better be the truth...";
+			dialog.text = "Он... О спрятался где-то на каравелле 'Флерон'. Чад сказал ему затаиться там и ждать его дальнейших указаний.";
+			link.l1 = "Понятно. Но смотри мне, если солгал...";
 			link.l1.go = "whiskey_11";
 		break;
 		
@@ -273,86 +273,86 @@ void ProcessDialogEvent()
 		
 		// --> конфликты
 		case "conflict":
-			dialog.text = "Is that so? Well, my boy, what clan is troubling you?";
+			dialog.text = "Вот как? Ну что же, мой мальчик, с каким кланом у тебя неприятности?";
 			if (CheckAttribute(pchar, "GenQuest.NarvalConflict"))
 			{
-				link.l1 = "Narwhals.";
+				link.l1 = "C нарвалами.";
 				link.l1.go = "narval";
 				npchar.quest.clan = "narval";
 			}
 			if (CheckAttribute(pchar, "GenQuest.RivadosConflict"))
 			{
-				link.l2 = "Rivados.";
+				link.l2 = "С ривадос.";
 				link.l2.go = "rivados";
 				npchar.quest.clan = "rivados";
 			}
 			if (CheckAttribute(pchar, "GenQuest.SharkConflict"))
 			{
-				link.l3 = "Admiral's pirates.";
+				link.l3 = "С пиратами адмирала.";
 				link.l3.go = "shark";
 				npchar.quest.clan = "shark";
 			}
-			link.l4 = "No such thing. I was kidding, Giuseppe, I am fine.";
+			link.l4 = "Ни с каким. Я пошутил, Джузеппе, у меня все в порядке.";
 			link.l4.go = "exit";
 		break;
 		
 		case "narval":
 			npchar.quest.price = sti(pchar.GenQuest.NarvalConflict)*50;
-			if (sti(pchar.GenQuest.NarvalConflict) < 3) dialog.text = "Well, it's not actually a conflict, just a small misunderstanding, he-he. "+sti(npchar.quest.price)+"  doubloons and your problem will be solved in a day.";
+			if (sti(pchar.GenQuest.NarvalConflict) < 3) dialog.text = "Ну, это еще не конфликт - так, небольшое недоразумение, хе-хе. "+sti(npchar.quest.price)+" дублонов - и ваша проблема будет решена через сутки.";
 			else
 			{
-				if (sti(pchar.GenQuest.NarvalConflict) >= 3 && sti(pchar.GenQuest.NarvalConflict) < 10) dialog.text = "Sure, I have heard about it. You made a big mess, my dear. But there is a way out. "+sti(npchar.quest.price)+" doubloons and your problem will be solved in a day.";
-				else dialog.text = "The entire Island is aware of the slaughter you did. It won't be easy to help you, but there is a chance. "+sti(npchar.quest.price)+" doubloons and I will try to solve your problem.";
+				if (sti(pchar.GenQuest.NarvalConflict) >= 3 && sti(pchar.GenQuest.NarvalConflict) < 10) dialog.text = "Как же, как же, наслышан. Драку вы учинили знатную, мой дорогой. Но выход есть. "+sti(npchar.quest.price)+" дублонов - и ваша проблема будет решена через сутки.";
+				else dialog.text = "Уже весь Остров знает о резне, которую вы учинили. Сложно будет вам помочь, но ситуация не безвыходная. "+sti(npchar.quest.price)+" дублонов - и я попробую решить вашу проблему.";
 			}
 			if (GetCharacterItem(pchar, "gold_dublon") >= sti(npchar.quest.price))
 			{
-				link.l1 = "Here, take your coins and deal with it.";
+				link.l1 = "Вот, держите ваши монеты и уладьте все разногласия.";
 				link.l1.go = "pay";
 			}
-			link.l2 = "Unfortunately, I don't have enough doubloons with me right now. But I will bring them later, and we shall talk again.";
+			link.l2 = "К сожалению, у меня нет сейчас такого количества дублонов. Но я обязательно принесу, и мы вернемся к нашему разговору.";
 			link.l2.go = "exit";
 		break;
 		
 		case "rivados":
 			npchar.quest.price = sti(pchar.GenQuest.RivadosConflict)*50;
-			if (sti(pchar.GenQuest.RivadosConflict) < 3) dialog.text = "Well, it's not actually a conflict, just a small misunderstanding, he-he. "+sti(npchar.quest.price)+"  doubloons and your problem will be solved in a day.";
+			if (sti(pchar.GenQuest.RivadosConflict) < 3) dialog.text = "Ну, это еще не конфликт - так, небольшое недоразумение, хе-хе. "+sti(npchar.quest.price)+" дублонов - и ваша проблема будет решена через сутки.";
 			else
 			{
-				if (sti(pchar.GenQuest.RivadosConflict) >= 3 && sti(pchar.GenQuest.RivadosConflict) < 10) dialog.text = "Sure, I have heard about it. You made a big mess, my dear. But there is a way out. "+sti(npchar.quest.price)+"  doubloons and your problem will be solved in a day.";
-				else dialog.text = "The entire Island is aware of the slaughter you did. It won't be easy to help you, but there is a chance. "+sti(npchar.quest.price)+" doubloons and I will try to solve your problem.";
+				if (sti(pchar.GenQuest.RivadosConflict) >= 3 && sti(pchar.GenQuest.RivadosConflict) < 10) dialog.text = "Как же, как же, наслышан. Драку вы учинили знатную, мой дорогой. Но выход есть. "+sti(npchar.quest.price)+" дублонов - и ваша проблема будет решена через сутки.";
+				else dialog.text = "Уже весь Остров знает о резне, которую вы учинили. Сложно будет вам помочь, но ситуация не безвыходная. "+sti(npchar.quest.price)+" дублонов - и я попробую решить вашу проблему.";
 			}
 			if (GetCharacterItem(pchar, "gold_dublon") >= sti(npchar.quest.price))
 			{
-				link.l1 = "Here, take your coins and deal with it.";
+				link.l1 = "Вот, держите ваши монеты и уладьте все разногласия.";
 				link.l1.go = "pay";
 			}
-			link.l2 = "Unfortunately, I don't have enough doubloons with me right now. But I will bring them later, and we shall talk again.";
+			link.l2 = "К сожалению, у меня нет сейчас такого количества дублонов. Но я обязательно принесу, и мы вернемся к нашему разговору.";
 			link.l2.go = "exit";
 		break;
 		
 		case "shark":
 			npchar.quest.price = sti(pchar.GenQuest.SharkConflict)*50;
-			if (sti(pchar.GenQuest.SharkConflict) < 3) dialog.text = "Well, it's not actually a conflict, just a small misunderstanding, he-he. "+sti(npchar.quest.price)+" doubloons and your problem will be solved in a day.";
+			if (sti(pchar.GenQuest.SharkConflict) < 3) dialog.text = "Ну, это еще не конфликт - так, небольшое недоразумение, хе-хе. "+sti(npchar.quest.price)+" дублонов - и ваша проблема будет решена через сутки.";
 			else
 			{
-				if (sti(pchar.GenQuest.SharkConflict) >= 3 && sti(pchar.GenQuest.SharkConflict) < 10) dialog.text = "Sure, I have heard about it. You made a big mess, my dear. But there is a way out. "+sti(npchar.quest.price)+" doubloons and your problem will be solved in a day.";
-				else dialog.text = "The entire Island is aware of the slaughter you did. It won't be easy to help you, but there is a chance. "+sti(npchar.quest.price)+" doubloons and I will try to solve your problem.";
+				if (sti(pchar.GenQuest.SharkConflict) >= 3 && sti(pchar.GenQuest.SharkConflict) < 10) dialog.text = "Как же, как же, наслышан. Драку вы учинили знатную, мой дорогой. Но выход есть. "+sti(npchar.quest.price)+" дублонов - и ваша проблема будет решена через сутки.";
+				else dialog.text = "Уже весь Остров знает о резне, которую вы учинили. Сложно будет вам помочь, но ситуация не безвыходная. "+sti(npchar.quest.price)+" дублонов - и я попробую решить вашу проблему.";
 			}
 			if (GetCharacterItem(pchar, "gold_dublon") >= sti(npchar.quest.price))
 			{
-				link.l1 = "Here, take your coins and deal with it.";
+				link.l1 = "Вот, держите ваши монеты и уладьте все разногласия.";
 				link.l1.go = "pay";
 			}
-			link.l2 = "Unfortunately, I don't have enough doubloons with me right now. But I will bring them later, and we shall talk again.";
+			link.l2 = "К сожалению, у меня нет сейчас такого количества дублонов. Но я обязательно принесу, и мы вернемся к нашему разговору.";
 			link.l2.go = "exit";
 		break;
 		
 		case "pay":
 			RemoveItems(pchar, "gold_dublon", sti(npchar.quest.price));
 			PlaySound("interface\important_item.wav");
-			Log_Info("You have given "+sti(npchar.quest.price)+" doubloons");
-			dialog.text = "Splendid. Now take a seat and have a rest. You'd better stay in my cabin until I solve your problem. I don't want you to make it even worse, my dear.";
-			link.l1 = "Fine...";
+			Log_Info("Вы отдали "+sti(npchar.quest.price)+" дублонов");
+			dialog.text = "Замечательно! Теперь присаживайтесь, отдохните. До тех пор, пока я не улажу все вопросы, вам лучше побыть в моей каюте. А то не дай Бог, опять бед натворите, любезнейший.";
+			link.l1 = "Хорошо...";
 			link.l1.go = "peace";
 		break;
 		
@@ -362,7 +362,7 @@ void ProcessDialogEvent()
 			pchar.locx = locx;
 			pchar.locy = locy;
 			pchar.locz = locz;
-			SetLaunchFrameFormParam("One day later..."+ NewStr() +"Fazio has dealt with the conflict", "Reload_To_Location", 0.1, 5.0);
+			SetLaunchFrameFormParam("Прошли сутки..."+ NewStr() +"Фацио урегулировал ваш конфликт", "Reload_To_Location", 0.1, 5.0);
 			SetLaunchFrameReloadLocationParam(pchar.location, "goto", LAi_FindNearestFreeLocator2Pchar("goto"), "LocTeleport");
 			WaitDate("", 0, 0, 1, 3, 10); //крутим время
 			LaunchFrameForm();
@@ -396,53 +396,53 @@ void ProcessDialogEvent()
 		
 		// --> пей до дна
 		case "drink":
-			dialog.text = "Come on, my boy! Lying, they are all lying, he-he. My head is just a bit tougher than an average head, but I am a human being just like you are, so I also get drunk with rum. People drink rum to get drunk, that is it's only purpose. Have you ever thought about that, dear?";
-			link.l1 = "Quite true.";
+			dialog.text = "Ну что вы, мой мальчик! Лгут, всё лгут, хе-хе. Просто у меня голова крепче, чем у большинства, но я такой же человек, как и вы, и тоже пьянею от рома. Если бы ром не вызывал опьянение - кто бы его тогда пил, а? Вы не задумывались над этим, мой драгоценнейший?";
+			link.l1 = "Вы правы. Наверное, и пьяниц тогда не было бы на свете...";
 			link.l1.go = "drink_1";
 		break;
 		
 		case "drink_1":
-			dialog.text = "Do you want to play some funny game with me? They call it - 'drink to the dregs!', ha-ha! I am sure, that you have already heard about it. Am I right?";
-			link.l1 = "Yeah, there were some whispers about it... I'd call it 'face on the table'.";
+			dialog.text = "А хотите сыграть со мной в одну забавную игру? Она называется - 'пей до дна', ха-ха! Уверен, вы уже слышали об этом. Ведь так?";
+			link.l1 = "Да, чирикали об этом пташки... Только я бы ее назвал 'мордой в стол', эту вашу игру.";
 			link.l1.go = "drink_2";
 		break;
 		
 		case "drink_2":
-			dialog.text = "Ha-ha-ha, my dear boy, you have made the old man laughing, what else can I say! 'Face on the table!' I'll remember it... So what say you? Play for a hundred doubloons?";
-			link.l1 = "Hundred doubloons?";
+			dialog.text = "Ха-ха-ха, мой милый мальчик, потешили старика, ничего не скажешь! Мордой в стол! Надо запомнить... Так сыграем, или нет? На сто дублонов?";
+			link.l1 = "На сотню?";
 			link.l1.go = "drink_3";
 		break;
 		
 		case "drink_3":
-			dialog.text = "Yes, and the loser pays for the drinks. Deal?";
+			dialog.text = "Да, и проигравший оплачивает все выпитое. Согласны?";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 100)
 			{
-				link.l1 = "Yes, deal. Here is my stake.";
+				link.l1 = "Да, согласен. Вот моя ставка.";
 				link.l1.go = "drink_4";
 			}
-			link.l2 = "Hm. I don't have that many doubloons.";
+			link.l2 = "Хм. У меня нет столько дублонов.";
 			link.l2.go = "drink_wait";
 		break;
 		
 		case "drink_wait":
-			dialog.text = "Well, come and see me when you have them, and we'll play!";
-			link.l1 = "Fine...";
+			dialog.text = "Ну, тогда как достанете - обязательно приходите, сыграем, милейший!";
+			link.l1 = "Хорошо...";
 			link.l1.go = "exit";
 			pchar.questTemp.LSC.Drink = "wait";
 		break;
 		
 		case "drink_4":
 			RemoveItems(pchar, "gold_dublon", 100);
-			Log_Info("You have given 100 doubloons");
+			Log_Info("Вы отдали 100 дублонов");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Excellent, my dear! Then see me at nine p.m. in Sancho's tavern! Yes, your stake will stay with me if you will be late, this is one of the rules. But you won't be late, my boy, will you?";
-			link.l1 = "Sure, Giuseppe. Prepare for a bottle fight!";
+			dialog.text = "Отлично, мой драгоценнейший! Тогда встречаемся в девять вечера в таверне у милейшего Санчо и сыграем! Да, если вы вдруг передумаете, или паче чаяния вас отвлекут неотложные дела - то ваша ставка останется у меня, это одно из правил. Но вы ведь придете, так, мой мальчик?";
+			link.l1 = "Обязательно, Джузеппе. Готовьтесь к сражению на бутылках!";
 			link.l1.go = "drink_5";
 		break;
 		
 		case "drink_5":
-			dialog.text = "And you, and you, my dear! Face on the table! Ha-ha!";
-			link.l1 = "See you at nine in the tavern!";
+			dialog.text = "И вы тоже, драгоценнейший! Мордой в стол! Ну надо же, ха-ха!";
+			link.l1 = "До встречи в девять часов в таверне!";
 			link.l1.go = "drink_6";
 		break;
 		
@@ -466,8 +466,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "drink_8":
-			dialog.text = "Well, my dear, are you ready to kiss a table, he-he? Good Sancho has already brought us rum. No need to tell you the rules I guess? They are pretty simple: we drink the same bottle until one of us is down.\nYes, we can talk, we should talk! Talking with decent people is great, isn't it? And if you win, you may get your prize from Sancho. Ready?";
-			link.l1 = "I'd say yes. Let's start, Giuseppe!";
+			dialog.text = "Ну что, любезнейший, готовы к встрече со столом, хе-хе? Ром наш драгоценный Санчо уже принес. Правила не надо оглашать? Они очень просты: пьем из одной бутылки кружку за кружкой до дна, пока кто-то из нас не отключится\nДа, разговаривать нам с вами, милейший, не запрещается, наоборот - приветствуется! Это же ведь так замечательно - поболтать с хорошим человеком! Ну, а если вам удастся выиграть - то свой приз получите у Санчо. Начинаем?";
+			link.l1 = "Пожалуй, да. Приступим, Джузеппе!";
 			link.l1.go = "drink_9";
 		break;
 		
@@ -485,8 +485,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "drunk":
-			dialog.text = "Fift-een me-eeen on th-the dead... hic! Aha! Yo-ho-ho-kha... And... bottle...";
-			link.l1 = "Glorious...";
+			dialog.text = "Пя-ятнад-цать че-елов-ек, на сундук... ик! Аха!.. Йо-хо-кха... И м... бутылка...";
+			link.l1 = "Ясно...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "drunk";
 		break;

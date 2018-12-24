@@ -12,20 +12,20 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "Bug. Let the devs know.";
-			link.l1 = "Sure!";
+			dialog.text = "Явный баг. Сообщите Jason'у, как и при каких обстоятельствах его получили.";
+			link.l1 = "Обязательно сообщу!";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "Wine_fort":
-			dialog.text = "So, did you bring the bottle?";
+			dialog.text = "Ну что, принес бутылочку?";
 			if (CheckCharacterItem(pchar, "potionwine"))
 			{
-				link.l1 = "Yes, take it. I paid 700 pesos for it, so I expect 1000 pesos from you.";
+				link.l1 = "Да, держи, как договаривались. Мне оно обошлось в 700 монет, так что с тебя 1000 песо.";
 				link.l1.go = "Wine_fort_1";
 			}
-			link.l2 = "No, I am still on it.";
+			link.l2 = "Нет, я еще этим занимаюсь.";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "Wine_fort";
 		break;
@@ -33,16 +33,16 @@ void ProcessDialogEvent()
 		case "Wine_fort_1":
 			AddMoneyToCharacter(pchar, 1000);
 			RemoveItems(PChar, "potionwine", 1);
-			dialog.text = "Argh, thank you, pal! Here, take your thousand and this bottle is mine now, ha-ha! Listen, since we are already doing a fine business here, I have another request for you\nCould you get more wine for me and my friends, for future use? We had shaken smugglers pretty hard recently, so we have coins, he-he...";
-			link.l1 = "No, pal, I am sorry, I don't have time for this.";
+			dialog.text = "Аргх, спасибо тебе, дружище! Вот, держи свою тысячу, а эта бутылочка теперь моя, ха-ха-ха! Послушай, раз уже такое дело пошло, то у меня к тебе будет еще одна просьба\nНе мог бы ли ты раздобыть в городе еще вина, для меня и всех моих друзей, про запас? Мы тут недавно хорошо контрабандистов пощипали, так что деньги у нас имеются, хе-хе...";
+			link.l1 = "Нет, дружище, извини, нет у меня времени.";
 			link.l1.go = "Wine_fort_exit";
-			link.l2 = "Hm, interesting. How many bottles do you need?";
+			link.l2 = "Хм, это интересно. Сколько бутылок вам надо?";
 			link.l2.go = "Wine_fort_2";
 		break;
 	
 	case "Wine_fort_exit":
-			dialog.text = "Whatever. Thanks for your help anyway!";
-			link.l1 = "Keep up, soldier!";
+			dialog.text = "Ну, как скажешь. Все равно спасибо за помощь!";
+			link.l1 = "Бывай, служивый!";
 			link.l1.go = "exit";
 			sld = characterFromId(pchar.questTemp.Wine.id);	
 			sld.lifeday = 0;
@@ -53,14 +53,14 @@ void ProcessDialogEvent()
 	break;
 	
 		case "Wine_fort_2":
-			dialog.text = "Well, considering the price for each bottle, we can afford to buy sixty bottles, but not more. But don't bring us less than ten, too - it will make no sense.";
-			link.l1 = "Fine. You will get your wine.";
+			dialog.text = "Ну, при учете цены в тысячу за бутылку, штук шестьдесят бутылок мы сможем себе позволить, но не больше. Ну и меньше десяти тоже не приноси - несерьезно получится.";
+			link.l1 = "Хорошо. Будет вам ваше вино.";
 			link.l1.go = "Wine_fort_3";
 		break;
 	
 		case "Wine_fort_3":
-			dialog.text = "Splendid! I am counting on you, captain. Try to bring me the wine no later than in a week - we will go to the sea, and I will not be around for a couple of months.";
-			link.l1 = "I see. I'll try to be quick.";
+			dialog.text = "Вот и славно! Я надеюсь на вас, капитан. Только постарайтесь принести вино не позже, чем за неделю - потом мы уходим в плавание на патрульном судне, и меня здесь месяц-другой не будет.";
+			link.l1 = "Понятно. Постараюсь побыстрее.";
 			link.l1.go = "exit";
 			pchar.questTemp.Wine.bottles = "true";
 			npchar.lifeday = 7;
@@ -72,13 +72,13 @@ void ProcessDialogEvent()
 		break;
 	
 		case "Wine_fort_check":
-			dialog.text = "So, captain, have you brought the wine?";
+			dialog.text = "Ну, капитан, вы принесли вино?";
 			if (sti(pchar.items.potionwine) >= 10)
 			{
-				link.l1 = "Yes, I have.";
+				link.l1 = "Да, принес.";
 				link.l1.go = "Wine_take";
 			}
-			link.l2 = "No. I am still on it.";
+			link.l2 = "Нет. Я еще этим занимаюсь.";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "Wine_fort_check";
 		break;
@@ -88,16 +88,16 @@ void ProcessDialogEvent()
 			pchar.questTemp.Wine.Money = sti(pchar.questTemp.Wine.Qty)*1000;
 			if (sti(pchar.items.potionwine) > 60)
 			{
-				dialog.text = "Whoa, so many bottles here! Excellent! Though as I've said, we can afford to buy only sixty bottles, unfortunately we don't have enough money to buy more. Take your coins and I will take care about these sixty bottles.";
-				link.l1 = "Take them. I am sure that you will have a good rest with your friends!";
+				dialog.text = "У-у, сколько тут у вас бутылок! Великолепно! Правда, как я уже говорил - денег у нас только на шестьдесят - больше нет, к сожалению. Держите ваши деньги, а шестьдесят бутылочек я забираю.";
+				link.l1 = "Забирайте. Уверен, вы с друзьями неплохо отдохнете!";
 				link.l1.go = "Wine_take_1";
 				pchar.questTemp.Wine.Money = 60000;
 				RemoveItems(PChar, "potionwine", 60);
 			}
 			else
 			{
-				dialog.text = "Well, let's see... You have brought "+sti(pchar.questTemp.Wine.Qty)+" bottles. Nice! I'll take them. The payment is " + FindRussianMoneyString(sti(pchar.questTemp.Wine.Money))".";
-				link.l1 = "Take your wine. I am sure that you will have a good rest with your friends!";
+				dialog.text = "Так, давайте посмотрим... Вы принесли "+sti(pchar.questTemp.Wine.Qty)+" бутылок. Отлично! Я их забираю. Оплата - как и договаривались: " + FindRussianMoneyString(sti(pchar.questTemp.Wine.Money))".";
+				link.l1 = "Держите ваше вино. Уверен, вы с друзьями неплохо отдохнете!";
 				link.l1.go = "Wine_take_1";
 				RemoveItems(PChar, "potionwine", sti(pchar.questTemp.Wine.Qty));
 			}
@@ -105,15 +105,15 @@ void ProcessDialogEvent()
 	
 		case "Wine_take_1":
 			AddMoneyToCharacter(pchar, sti(pchar.questTemp.Wine.Money));
-			dialog.text = "My gratitude, " + GetAddress_Form(NPChar) + "! And I have to go now. Goodbye!";
-			link.l1 = "Goodbye, soldier!";
+			dialog.text = "Благодарю вас от всей души, " + GetAddress_Form(NPChar) + "! А теперь мне пора идти. Всего доброго!";
+			link.l1 = "Пока, служивый!";
 			link.l1.go = "Wine_take_2";
 		break;
 	
 		case "Wine_take_2":
 			DialogExit();
 			PlaySound("interface\important_item.wav");
-			Log_Info ("You have given the wine");
+			Log_Info ("Вы отдали вино");
 			pchar.quest.Soldier_wait.over = "yes";//снять прерывание
 			DeleteAttribute(pchar, "questTemp.Wine.City");
 			sld = characterFromId(pchar.questTemp.Wine.id);

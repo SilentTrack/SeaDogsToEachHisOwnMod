@@ -10,8 +10,8 @@ int CreateBarbadosCharacters(int n)
 	ch.id		= "Bridgetown_Mayor";
 	ch.model	= "huber_11";
 	ch.sex = "man";
-	ch.name 	= "Frensis";
-    ch.lastname = "lord Willoughby";
+	ch.name 	= "Фрэнсис";
+    ch.lastname = "Лорд Уиллоби";
 	ch.City = "Bridgetown";
 	ch.greeting = "mayor_2";
 	ch.location = "Bridgetown_townhall";
@@ -78,8 +78,8 @@ int CreateBarbadosCharacters(int n)
 	ch.id		= "Bridgetown_tavernkeeper";
 	ch.model	= "Gaston";
 	ch.greeting = "tonzag_1";
-	ch.name 	= "Gaston";
-    ch.lastname = "Bald-pate";
+	ch.name 	= "Гастон";
+    ch.lastname = "Плешивый";
 	ch.sex = "man";
 	ch.City = "Bridgetown";
 	ch.location = "Bridgetown_Tavern";
@@ -177,7 +177,7 @@ int CreateBarbadosCharacters(int n)
 
 	makeref(ch,Characters[n]);			//Хозяйка борделя
 	ch.id		= "Bridgetown_Hostess";
-	ch.name		= "Mirabelle"
+	ch.name		= "Мирабель"
 	ch.lastname = "";
 	ch.model	= "maman_2";
 	ch.model.animation = "woman_B";
@@ -195,7 +195,7 @@ int CreateBarbadosCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "Bridgetown_Smuggler";
 	ch.model    = "citiz_29";

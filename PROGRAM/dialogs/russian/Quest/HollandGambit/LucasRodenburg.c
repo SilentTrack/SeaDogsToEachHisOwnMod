@@ -17,13 +17,13 @@ void ProcessDialogEvent()
 		case "First time":
 			if (CheckAttribute(pchar, "questTemp.HWIC.CanTake") && !CheckAttribute(pchar, "questTemp.HWIC.CanTake.Holl"))
 			{
-				dialog.text = "Speak... But be quick, I am busy.";
-				link.l1 = "They say that you are hiring captains.";
+				dialog.text = "Говорите... Только поживее - у меня много дел.";
+				link.l1 = "Ходят слухи о том, что вам для работы требуются капитаны.";
 				link.l1.go = "Holl_start";	
 			break;
 			}
-			dialog.text = "Do you have any business for me?";
-			link.l1 = "No, no, never mind. I am leaving.";
+			dialog.text = "У вас ко мне дело?";
+			link.l1 = "Нет-нет, не обращайте на меня внимания. Я уже ухожу.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
@@ -38,37 +38,37 @@ void ProcessDialogEvent()
 		{
 			if (pchar.questTemp.HWIC.Holl == "BaltazarEsc")
 			{
-				dialog.text = "I thought that you are already at the halfway to Saint-Martin, captain...";
-				link.l1 = "I am preparing to set sail, mynheer.";
+				dialog.text = "Я полагал, что вы уже на полпути к Синт-Маартену, капитан...";
+				link.l1 = "Я уже готовлюсь к выходу в море, минхер.";
 				link.l1.go = "exit";
 				break;
 			}
 			if (pchar.questTemp.HWIC.Holl == "BaltazarCom")
 			{
-				dialog.text = "Ah, captain, there you are! I didn't see you coming, I have just finished reading Ridderbrock's letter, he calls you the guardian of merchants and the God's scourge for pirates! What say you about that?";
-				link.l1 = "I'd prefer to stay just a common captain. Common yet rich captain.";
+				dialog.text = "А, капитан, вот и вы! Я не заметил, как вы вошли - перечитывал послание Риддербока, в котором он называет вас покровителем торговцев и Божьим бичом пиратов, никак не меньше! Что скажете?";
+				link.l1 = "Я бы предпочел остаться простым капитаном. Простым, но богатым капитаном, минхер.";
 				link.l1.go = "SantiagoTrip";
 				break;
 			}
 			if (pchar.questTemp.HWIC.Holl == "SantiagoTripBegin")
 			{
-				dialog.text = "Why are you still here and not at the halfway to Cuba?!";
-				link.l1 = "Yes, yes, I am on my way, mynheer.";
+				dialog.text = "Почему вы все еще здесь, а не в пути на Кубу?!";
+				link.l1 = "Да-да, уже бегу, минхер.";
 				link.l1.go = "exit";
 				break;
 			}
 			if (pchar.questTemp.HWIC.Holl == "SantiagoTripFinal")
 			{
 				sld = characterFromId("Santiago_usurer");
-				dialog.text = "Ah, captain! I admit I have already started to worry. How was it?";
-				link.l1 = "It was... not without troubles, but I'll tell you about them later. Business first. Senor " + GetFullName(sld) + " told me to say you the following: 'this man has to die'. Then the Geraldi will consider the incident settled. Also, he said that this decision is a will of their family.";
+				dialog.text = "А, вот и вы, капитан! Признаться, я уже начал беспокоиться. Как все прошло?";
+				link.l1 = "Прошло... не без осложнений, но о них потом. Сначала о деле: сеньор " + GetFullName(sld) + " велел передать на словах следующее: 'этот человек должен умереть'. Тогда Джеральди будут считать некий инцидент исчерпанным. И то, что это решение - воля их семьи.";
 				link.l1.go = "SantiagoTrip_8";
 				break;
 			}
 			if (pchar.questTemp.HWIC.Holl == "SantiagoTripComplete" && GetQuestPastDayParam("questTemp.HWIC_TaskBerg") > 7)
 			{
-				dialog.text = "Glad to see you, captain! It's good you came to see me.";
-				link.l1 = "Good day, mynheer. I take it that you have already got a new assignment for me for the good of the Company?";
+				dialog.text = "Рад вас видеть, капитан! Хорошо, что вы ко мне зашли.";
+				link.l1 = "Добрый день, минхер. Вероятно, у вас уже готово для меня очередное выгодное поручение во благо Компании?";
 				link.l1.go = "JacobBerg";
 				break;
 			}
@@ -76,22 +76,22 @@ void ProcessDialogEvent()
 			{
 				if (sti(Pchar.Ship.Type) != SHIP_NOTUSED)
 				{
-					dialog.text = "I have told you to moor your ship. Do you even listen to me?";
-					link.l1 = "Yes-yes, I got it, I am on my way.";
+					dialog.text = "Я попросил вас сдать свой корабль на хранение. Чем вы слушаете?";
+					link.l1 = "Да-да, я понял, уже иду.";
 					link.l1.go = "exit";
 				}
 				else
 				{
-					dialog.text = "So, you have moored your ship and now it's the time to give my xebec under your command. Are you ready to get this mission started immediately? My ship is well equipped and ready to sail so there is nothing left to worry about for you.";
-					link.l1 = "Yes, sure. I am ready, mynheer Rodenburg.";
+					dialog.text = "Итак, корабли вы сдали, значит, самое время передать под ваше командование мою шебеку. Вы готовы приступить к выполнению работы немедленно? Мой корабль полностью снаряжен и готов к выходу в море, так что беспокоиться вам не о чем.";
+					link.l1 = "Да, конечно. Я готов, минхер Роденбург.";
 					link.l1.go = "JacobBerg_6";
 				}
 			break;
 			}
 			if (pchar.questTemp.HWIC.Holl == "JacobLongway")
 			{
-				dialog.text = "I think that you must be seeing Longway now. Why are you still here?";
-				link.l1 = "Yes-yes, I am on my way.";
+				dialog.text = "Вы, кажется, сейчас уже должны встречаться с Лонгвэем. Почему вы еще здесь?";
+				link.l1 = "Да-да, уже бегу.";
 				link.l1.go = "exit";
 				break;
 			}
@@ -114,34 +114,34 @@ void ProcessDialogEvent()
 				pchar.quest.MirageConvoyOver.over = "yes"; //снять таймер
 				if (iMir == 1 && iMef == 0)//потеряли Мейфенг
 				{
-					dialog.text = "Captain... I am already aware about your voyage.";
-					link.l1 = "Oh, really? So you must know that...";
+					dialog.text = "Вот вы и вернулись, капитан... Я уже все знаю о вашем путешествии.";
+					link.l1 = "Вот как? Тогда вам наверное известно, что...";
 					link.l1.go = "Jacob_lostMef";
 					break;
 				}
 				if (iMir == 0 && iMef == 1)//потеряли Мираж
 				{
-					dialog.text = "Captain... I am already aware about your voyage.";
-					link.l1 = "Is that so? So you must know that...";
+					dialog.text = "Вот вы и вернулись, капитан... Я уже все знаю о вашем путешествии.";
+					link.l1 = "Вот как? Тогда вам наверное известно, что...";
 					link.l1.go = "Jacob_lostMir";
 					break;
 				}
 				if (iMir == 0 && iMef == 0)//а это вообще плохо
 				{
-					dialog.text = "Captain... I am already aware about your voyage.";
-					link.l1 = "Is that so? So you must know that...";
+					dialog.text = "Вот вы и вернулись, капитан... Я уже все знаю о вашем путешествии.";
+					link.l1 = "Вот как? Тогда вам наверное известно, что...";
 					link.l1.go = "Jacob_failFull";
 					break;
 				}
-					dialog.text = "Here are you are, captain... I already know everything about your trip.";
-					link.l1 = "Is that so? So you must know that...";
+			dialog.text = "Вот вы и вернулись, капитан... Я уже все знаю о вашем путешествии.";
+			link.l1 = "Вот как? Тогда вам наверное известно, что...";
 			link.l1.go = "Jacob_complete";
 			break;
 			}
 			if (pchar.questTemp.HWIC.Holl == "toAntigua")
 			{
-				dialog.text = "Aren't you already at Antigua? Hm... strange.";
-				link.l1 = "Yes-yes, I am on my way.";
+				dialog.text = "Вы еще не на Антигуа? Хм... странно.";
+				link.l1 = "Да-да, уже бегу.";
 				link.l1.go = "exit";
 				break;
 			}
@@ -161,14 +161,14 @@ void ProcessDialogEvent()
 				pchar.quest.ToAntiguaOver.over = "yes"; //снять таймер
 				if (iMir == 0)//потеряли Мираж
 				{
-					dialog.text = "I was reported already about your arrival, captain. I also know, that you have lost the Mirage in battle.";
-					link.l1 = "You are well informed, mynheer Rodenburg. Despite all of my efforts I wasn't able to save her.";
+					dialog.text = "Мне уже доложили о вашем прибытии, капитан. Также мне известно, что вы потеряли в бою 'Мираж'.";
+					link.l1 = "У вас верные сведения, минхер Роденбург. Несмотря на все усилия с моей стороны, сохранить 'Мираж' не удалось.";
 					link.l1.go = "Fleetwood_fail";
 				}
 				else
 				{
-					dialog.text = "I was reported already about your arrival, captain. I see that the Mirage is in your squadron. That is great...";
-					link.l1 = "It was all by your instructions, mynheer. You have ordered to kill Fleetwood - he is dead. You have ordered to bring the Mirage to the local port - she is there.";
+					dialog.text = "Мне уже доложили о вашем прибытии, капитан. Как я вижу, 'Мираж' у вас в эскадре. Это очень хорошо...";
+					link.l1 = "Я все сделал по вашим инструкциям, минхер. Вы сказали уничтожить Флитвуда - он на дне. Вы сказали привести 'Мираж' в порт - он в порту.";
 					link.l1.go = "Fleetwood_complete";
 				}
 				pchar.quest.Meifeng_fail.over = "yes";
@@ -179,96 +179,96 @@ void ProcessDialogEvent()
 			}
 			if (pchar.questTemp.HWIC.Holl == "Abby_prepare" && GetQuestPastDayParam("questTemp.HWIC.Holl.Abby") > 7)
 			{
-				dialog.text = "Ah, here are you are. I am glad to see you. I have got another mission for you, just as I have promised.";
-				link.l1 = "I am listening, mynheer.";
+				dialog.text = "А, вот и вы. Рад вас видеть. У меня для вас, как я и обещал, очередное задание.";
+				link.l1 = "Слушаю вас внимательно, минхер.";
 				link.l1.go = "Abby";
 				break;
 			}
 			if (!CheckAttribute(pchar, "questTemp.HWIC.Holl.LucasMoney") && pchar.questTemp.HWIC.Holl == "AbbyAgreeMarried")
 			{
-				dialog.text = "Ah, I am glad to see you, my friend. You were getting late, and I had started to worry. Were you able to get anything from Abigail?";
-				link.l1 = "I was able not only to get, but also to solve all problems. I have found the island and the lost money of the Shneur. Solomon is happy and Abigail will say yes. Congratulations, mynheer!";
+				dialog.text = "А, рад вас видеть, мой друг. Что-то вы задержались, я уже начал беспокоиться. Удалось вам узнать что-либо от Абигайль?";
+				link.l1 = "Удалось не только узнать, но и решить все проблемы. Я отыскал остров и потерянные деньги семьи Шнеуров. Соломон счастлив, Абигайль готова выйти за вас замуж. Поздравляю, минхер!";
 				link.l1.go = "Abby_2";
 				break;
 			}
 			if (pchar.questTemp.HWIC.Holl == "NotFindAbbyIsland")
 			{
-				dialog.text = "Ah, I am glad to see you, my friend. Were you able to get anything from Abigail?";
-				link.l1 = "Yes. I had a talk with Abigail and her father. Well... there is a problem, mynheer, the reason is the money they had lost. Abigail is feeling herself... well... unworthy of you, she fears of people's gossips and whispers. I hope that you understand me.";
+				dialog.text = "А, рад вас видеть, мой друг. Удалось вам узнать что-либо от Абигайль?";
+				link.l1 = "Да. Я поговорил с Абигайль и ее отцом. Тут такое дело... минхер, причина кроется в деньгах, которые они потеряли. Абигайль чувствует себя... ну, что ли... недостойной вас, опасается людских сплетен и перешептываний. Надеюсь, вы понимаете, о чем я.";
 				link.l1.go = "Abby_6";
 				break;
 			}
 			if (CheckAttribute(pchar, "questTemp.HWIC.Holl.LucasMoney") && pchar.questTemp.HWIC.Holl == "AbbyAgreeMarried")
 			{
-				dialog.text = "Ah, my friend! I hope that you have brought good news?";
-				link.l1 = "Our plan was successful! Abigail will say yes. Congratulations, mynheer.";
+				dialog.text = "А, вот и вы мой друг! Надеюсь, вы пришли с добрыми вестями?";
+				link.l1 = "Наш план полностью удался! Абигайль согласна выйти за вас замуж. Поздравляю, минхер.";
 				link.l1.go = "Abby_8";
 				break;
 			}
 			if (pchar.questTemp.HWIC.Holl == "MerdokStart")
 			{
-				dialog.text = "I was expecting you. My friend, you are in a great danger. I worry about your fate.";
-				link.l1 = "What do you mean?";
+				dialog.text = "Я ждал вас. Друг мой, вам грозит большая опасность. Я обеспокоен вашей судьбой.";
+				link.l1 = "Да что вы такое говорите?";
 				link.l1.go = "Merdok";
 				break;
 			}
 			if (pchar.questTemp.HWIC.Holl == "MerdokDie")
 			{
-				dialog.text = "I was reported about your arrival, my friend. I am glad that I can see you again. Does it mean that Johan van Merden is dead?";
-				link.l1 = "Yes. He and his accomplice are eliminated. It was a tough, but I saw it through.";
+				dialog.text = "Мне уже доложили о вашем прибытии на Кюрасао, друг мой. Я рад, что вновь вижу вас. Это означает, что Йохан ван Мерден мертв?";
+				link.l1 = "Да. Он и его сообщник уничтожены. Мне пришлось выдержать нелегкий бой, но все-таки я одолел их.";
 				link.l1.go = "Merdok_4";
 				break;
 			}
-			dialog.text = "Anything else, captain? I thought that we have already discussed everything.";
-			link.l1 = "No, it is nothing. I am leaving.";
+			dialog.text = "Что-то еще, капитан? Я думал, мы уже все обсудили.";
+			link.l1 = "Нет, ничего. Я уже ухожу.";
 			link.l1.go = "exit";
 		}
-		dialog.text = "Do you have something for me?";
-		link.l1 = "No-no, don't draw your attention to me. I am leaving.";
+		dialog.text = "У вас ко мне дело?";
+		link.l1 = "Нет-нет, не обращайте на меня внимания. Я уже ухожу.";
 		link.l1.go = "exit";
 		break;
 		
 //------------------------------------------------1 задание--------------------------------------------
 		case "Holl_start":
-			dialog.text = "Perhaps the rumours are true. So what?";
-			link.l1 = "I am captain " + pchar.name + ", me and my ship can be useful to you.";
+			dialog.text = "Допустим, слухи не врут. И что с того?";
+			link.l1 = "А то, что я, капитан " + pchar.name + ", и мой корабль, могут оказаться вам весьма полезны.";
 			link.l1.go = "Holl_start_0";			
 		break;
 		
 		case "Holl_start_0":
-			dialog.text = "Really? Are you serious?";
-			link.l1 = "That is why I am here, mynheer.";
+			dialog.text = "Да неужели? Вы это серьезно?";
+			link.l1 = "Для этого я сюда и явился, минхер.";
 			link.l1.go = "Holl_start_1";			
 		break;
 		
 		case "Holl_start_1":
 			pchar.questTemp.HWIC.Holl.PirateName = "l" + rand(GetNamesCount(NAMETYPE_ORIG) - 1);
-			dialog.text = "Hm, fine. By the way, captain - forgot your name - do you know Balthazar Ridderbrock? No? Lucky you! Such greedy, grumpy, hot-tempered idiots are rare sights.\nBut it seems that such outstanding qualities were not enough for the man, so he was smart enough to offend some filibuster by the name of " + GetName( NAMETYPE_ORIG, pchar.questTemp.HWIC.Holl.PirateName, NAME_NOM) + " in the local tavern and called soldiers upon him the very moment the offended party fairly touched a sword...";
-			link.l1 = "... and surely they had the pirate hanged on the very first free rope?";
+			dialog.text = "Хм, хорошо... Кстати, капитан, как вас там... вам случайно не знаком торговец Бальтазар Риддербок? Нет? Вам повезло! Такого скупого, сварливого, вспыльчивого и напыщенного болвана, скажу вам по секрету, нужно еще поискать\nКо всем этим выдающимся качествам он еще умудрился затеять ссору в местной таверне с флибустьером по кличке " + GetName( NAMETYPE_ORIG, pchar.questTemp.HWIC.Holl.PirateName, NAME_NOM) + ", оскорбил его, а когда тот вполне справедливо схватился за шпагу, позвал солдат и...";
+			link.l1 = "...и те, конечно, повесили пирата на первой же свободной веревке?";
 			link.l1.go = "Holl_start_2";			
 		break;
 		
 		case "Holl_start_2":
-			dialog.text = "It is not that simple. " + GetName( NAMETYPE_ORIG, pchar.questTemp.HWIC.Holl.PirateName, NAME_NOM) + " is not a common pirate, but a Dutch privateer, a veteran of fighting the Brits. Besides, local citizens really sympathize him. I can't say the same about Ridderbrock.";
-			link.l1 = "So our filibuster is still alive?";
+			dialog.text = "Не все так просто. " + GetName( NAMETYPE_ORIG, pchar.questTemp.HWIC.Holl.PirateName, NAME_NOM) + " не простой пират, а голландский капер, неплохо зарекомендовавший себя в стычках с англичанами. Кроме того, ему симпатизирует население города, в отличие от Риддербока. ";
+			link.l1 = "Так значит нашему флибустьеру повезло и он еще жив?";
 			link.l1.go = "Holl_start_3";			
 		break;
 		
 		case "Holl_start_3":
-			dialog.text = "Yes, but he is really angry and that is why Ridderbrock scared shitless. He has reasons for that though.";
-			link.l1 = "I suppose, that my fortune is about to end, so will I meet the dear Balthazar soon enough?";
+			dialog.text = "Да, но взбешен до крайности и поэтому Риддербок опасается, и не без основания, за свою шкуру.";
+			link.l1 = "Подозреваю, что мое везение подходит к концу и в скором времени мне предстоит знакомство с милейшим Бальтазаром?";
 			link.l1.go = "Holl_start_4";			
 		break;
 		
 		case "Holl_start_4":
-			dialog.text = "Precisely. People of Philipsburg are desperately waiting for a cargo of sugar, which our mutual acquaintance promised to deliver. I don't consider the man my friend, but, alas, he works for us, so go to a harbour office, find him there and tell him that I order him to set sail immediately.\nYou shall follow him, and, please, escort him to Philipsburg in one piece, I don't want " + GetName( NAMETYPE_ORIG, pchar.questTemp.HWIC.Holl.PirateName, NAME_NOM) + " to waste the cargo and reputation of our company.";
-			link.l1 = "And what about payment for such, I'd be clear, unpleasant assignment?";
+			dialog.text = "Именно так. В Филипсбурге с нетерпением ждут груз сахара, который взялся доставить наш, теперь уже общий знакомый Риддербок. Я не питаю к нему никаких дружеских чувств, но, к несчастью, Бальтазар состоит у нас на службе, поэтому отправляйтесь в портовое управление, найдите там Риддербока и передайте ему мое распоряжение немедленно выступать в дорогу\nВы проследуете вместе с ним и, ради Бога, доведите его живым до Филипсбурга - мне бы не хотелось, чтобы " + GetName( NAMETYPE_ORIG, pchar.questTemp.HWIC.Holl.PirateName, NAME_NOM) + " испортил груз и репутацию нашей компании.";
+			link.l1 = "А как обстоят дела с оплатой этого, прямо скажем, малоприятного поручения?";
 			link.l1.go = "Holl_start_5";			
 		break;
 		
 		case "Holl_start_5":
-			dialog.text = "Captain, do you job first. Balthazar will pay you as soon as he reaches his destination and I am not talking about the bottom of the sea. Anyway, return back to me with your report once the job is done. If you will successfully do this job, you will be able to count on my further patronage. I don't keep you any more.";
-			link.l1 = "See you, mynheer.";
+			dialog.text = "Капитан, сперва работа. А рассчитается с вами сам Бальтазар, если, конечно, окажется там, куда следует, а не на морском дне. В любом случае сразу же возвращайтесь с отчетом ко мне. Если успешно выполните это задание - сможете рассчитывать впоследствии на мое покровительство. Я более вас не задерживаю.";
+			link.l1 = "До встречи, минхер.";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("Create_Baltazar");
 			pchar.questTemp.HWIC.Holl = "BaltazarEsc";
@@ -279,49 +279,49 @@ void ProcessDialogEvent()
 		
 //----------------------------------------------задание 1а--------------------------------------------	
 		case "SantiagoTrip":
-			dialog.text = "Ha-ha-ha... Yes, Ridderbrock is greedy that's for sure. Whatever, I am not interested in him any more. Let's talk about you, captain. I like your resoluteness so I am going to offer you another job. Don't worry, this time I will pay for it myself.";
-			link.l1 = "I am listening, mynheer.";
+			dialog.text = "Ха-ха-ха... Да, Риддербок скуп, этого у него не отнять. Ну да ладно, меня он более не интересует. Поговорим лучше о вас, капитан. Мне нравится ваша решительность, поэтому я предлагаю вам следующую работу. И не волнуйтесь - на этот раз платить буду я.";
+			link.l1 = "Внимательно слушаю вас, минхер.";
 			link.l1.go = "SantiagoTrip_1";			
-			AddSimpleRumourCity("Ah, so you are the captain who was protecting a ship of our scrub Ridderbrock? I have heard about it... He paid you only five thousands for your job and he was boasting about it in public at the tavern of Philipsburg drunken as a pig. If I were you, captain, I'd shown him.", "Villemstad", 20, 3, "");//слух по 1 заданию
+			AddSimpleRumourCity("А, так это вы и есть тот капитан, который охранял корабль нашего скряги Риддербока? Слыхал, слыхал... Он заплатил вам всего лишь пять тысяч за работу, о чем прилюдно похвалялся в таверне Филипсбурга, накачавшись рому. На вашем месте, капитан, я бы показал ему, где раки зимуют.", "Villemstad", 20, 3, "");//слух по 1 заданию
 		break;
 		
 		case "SantiagoTrip_1":
-			dialog.text = "I need a man for a very important matter. You did well in that story with Balthazar so I suppose... yes, I can trust it to you.";
-			link.l1 = "I am honoured. So, what's the matter?";
+			dialog.text = "Мне необходим человек для одного весьма важного дела. Вы неплохо проявили себя в истории с Бальтазаром, так что, пожалуй, да... я смогу вам это доверить.";
+			link.l1 = "Благодарю. Итак, что же это за дело?";
 			link.l1.go = "SantiagoTrip_2";
 		break;
 		
 		case "SantiagoTrip_2":
 			sld = characterFromId("Santiago_usurer");
-			dialog.text = "I am not going to explain you what is the situation here, but be aware that this is not just about me, this is about the Company, so you have a chance to do us a big favour.\nSail to Santiago of Cuba and deliver this package to don " + GetFullName(sld) + ". He has a high position in Geraldi's bank and he is also my... our business partner. Besides, you are to deliver him gold which I will give you right now. I trust in your honesty, captain.";
-			link.l1 = "Do you doubt in me, mynheer?";
+			dialog.text = "Я не стану объяснять вам сложившуюся ситуацию, однако учтите - дело касается не только моих интересов, но и всей Компании, поэтому вы действительно можете оказать нам большую услугу\nОтправляйтесь на Кубу, в город Сантьяго и вручите этот пакет прямо в руки дону " + GetFullName(sld) + ". Он крупный чиновник в банке Джеральди, и мой... наш деловой партнер. Кроме прочего, ему необходимо передать золото, которое я вам вручу. Полагаюсь на вашу честность, капитан.";
+			link.l1 = "Минхер, вы сомневаетесь во мне?";
 			link.l1.go = "SantiagoTrip_3";
 		break;
 		
 		case "SantiagoTrip_3":
-			if (pchar.BaseNation == ENGLAND || pchar.BaseNation == FRANCE) sTemp = " I am also giving you this short-term trade license in order to spare you from any troubles. This will allow you to visit Spanish colonies for some time.";
+			if (pchar.BaseNation == ENGLAND || pchar.BaseNation == FRANCE) sTemp = " Чтобы не возникло осложнений, я выдам вам краткосрочную торговую лицензию для пребывания в портах испанской короны.";
 			else sTemp = "";
-			dialog.text = "Not at all. Trust me, I wouldn't even talk with you about the matter, if I hadn't reasons for that. Know it took quite a while finding the right courier for the job, so you have only about fifteen days to deliver."+sTemp+"\nMy message must be delivered in time, this is vital, my friend. It will help smooth some things up. Hurry, but be careful, I doubt that this is going to be an easy voyage.";
-			link.l1 = "Anything else? Why do you warn me, mynheer Rodenburg?";
+			dialog.text = "Отнюдь. Поверьте – я бы не завел этот разговор, если бы не имел к нему причин. Учтите, я сильно затянул с поисками подходящего курьера, поэтому у вас на выполнение поручения будет не более пятнадцати дней."+sTemp+"\nМое послание должно попасть к адресату в срок, это очень важно, мой друг. Это поможет... уладить некоторые недоразумения, имевшие место в последнее время. Поторопитесь, но будьте осторожны – вряд ли это будет похоже на легкую прогулку.";
+			link.l1 = "Так есть еще что-то? Почему вы предупреждаете меня, минхер Роденбург?";
 			link.l1.go = "SantiagoTrip_4";
 		break;
 		
 		case "SantiagoTrip_4":
 			if (pchar.BaseNation == ENGLAND || pchar.BaseNation == FRANCE) GiveNationLicence(HOLLAND, 20);
-			dialog.text = "Let's just say that it is only my personal suspicions. Don't worry, if you will do as certain and fast as you did the last job, then you will have a chance to become a very valuable agent for delicate matters of the Company.";
-			link.l1 = "So, all I have is to deliver this letter and money to the banker at Santiago for fifteen days? Well, it doesn't look much difficult.";
+			dialog.text = "Скажем так, это мои личные подозрения. Не беспокойтесь – если вы будете действовать так же уверенно и быстро, как в предыдущем деле, то из вас получится весьма толковый агент Компании для специальных поручений.";
+			link.l1 = "Итак, я должен просто передать этот конверт и денежную сумму банкиру в Сантьяго, не позднее чем через пятнадцать дней? Что же, это не выглядит слишком сложным.";
 			link.l1.go = "SantiagoTrip_5";
 		break;
 		
 		case "SantiagoTrip_5":
-			dialog.text = "Wait, my friend... I take it that you don't really get the importance of this situation. Doing this job will make me very obliged to you and on the contrary, failing it will make me really upset. In that case I will try to do my best to upset you as well. I hope that we understand each other, captain " + GetFullName(pchar) + "?";
-			link.l1 = "Point taken. You have my word. I will do my best to keep you in good mood.";
+			dialog.text = "Подождите, мой друг... Вы, как я вижу, не совсем понимаете важность ситуации. Выполнив это поручение, вы меня очень обяжете, или очень расстроите, провалив его. И тогда я обязательно найду способ расстроить и вас. Надеюсь, мы поняли друг друга, капитан " + GetFullName(pchar) + "?";
+			link.l1 = "Даю вам слово сохранить вам хорошее настроение, минхер.";
 			link.l1.go = "SantiagoTrip_6";
 		break;
 		
 		case "SantiagoTrip_6":
-			dialog.text = "Very well. Now, take the letter, these chests and remember about terms. And one more thing: try to avoid troubles in Santiago. I expect good news soon.";
-			link.l1 = "On my way.";
+			dialog.text = "Очень хорошо. Теперь, берите конверт, эти сундуки и помните о сроках. Да, и еще одно: постарайтесь не попасть в неприятности там в Сантьяго. Жду вас с хорошими вестями.";
+			link.l1 = "Я отправляюсь немедленно.";
 			link.l1.go = "SantiagoTrip_7";
 		break;
 		
@@ -336,37 +336,37 @@ void ProcessDialogEvent()
 		break;
 		
 		case "SantiagoTrip_8":
-			dialog.text = "'Has to die'... just like that. I didn't expect that coming. Hm. You have done your job in the most perfect way, captain. Now tell me about troubles you had faced.";
-			link.l1 = "Nothing special... just usual trip troubles.";
+			dialog.text = "'Должен умереть'... вот так просто. А я и не рассчитывал, что все так обернется. Хм. Вы прекрасно справились с работой, капитан. А теперь, расскажите мне об упомянутых осложнениях.";
+			link.l1 = "Ничего страшного... мелкие путевые неурядицы.";
 			link.l1.go = "SantiagoTrip_9";
-			link.l2 = "I was stunned and kidnapped by one man in Santiago. He was really interested in your business with Geraldi. I managed to escape, but I had to kill him first. He mentioned some Gaston and that is the only thing I got to know from him. I don't have any ideas what was it all about.";
+			link.l2 = "В Сантьяго меня оглушил и похитил какой-то тип, очень интересовавшийся вашими делами с Джеральди. Мне удалось выбраться, но пришлось убить моего похитителя. Единственное, что я успел узнать – он упоминал некоего Гастона. Что все это значит и кто это – ума не приложу.";
 			link.l2.go = "SantiagoTrip_10";
-			link.l3 = "I was stunned and kidnapped by one man in Santiago. He was really interested in your business with Geraldi. I managed to escape, but I had to kill him first. I wasn't able to get to know anything from him.";
+			link.l3 = "В Сантьяго меня оглушил и похитил какой-то тип, очень интересовавшийся вашими делами с Джеральди. Мне удалось выбраться, но пришлось убить моего похитителя. Я ничего не успел от него узнать.";
 			link.l3.go = "SantiagoTrip_11";
 		break;
 		
 		case "SantiagoTrip_9":
-			dialog.text = "Well, let's get straight to more pleasant part. My gratitude is not limited by only my words. Here, take your reward, you have earned it.";
-			link.l1 = "Our collaboration is quite profitable.";
+			dialog.text = "Ну, тогда перейдем сразу к приятному. Моя благодарность вам выражается не только на словах. Примите ваше вознаграждение – вы его честно заслужили.";
+			link.l1 = "Наше сотрудничество приносит неплохие плоды.";
 			link.l1.go = "SantiagoTrip_12";
 		break;
 		
 		case "SantiagoTrip_10":
-			dialog.text = "Nonsense! Kidnapping you... Wait, though... Gaston! I understand... I guess. Alas, my friend, this is not your business. For the present, at least. We shall see how it goes. Never mind, glad that you made it alive.\nLet's talk about more pleasant things - accept this reward, it's totally deserved.";
-			link.l1 = "Our collaboration is quite profitable.";
+			dialog.text = "Бессмыслица! Похищать вас... Хотя, постойте – Гастон! Кажется, я кое-что понимаю. Сожалею, мой друг, но это уже не ваше дело. Впрочем, если ваша удача вам не изменит, а ваши интересы будут по-прежнему совпадать с моими... впрочем, неважно. Я рад, что вам удалось выбраться\nПерейдем к вещам более приятным: моя благодарность вам выражается не только на словах. Примите ваше вознаграждение – вы его честно заслужили.";
+			link.l1 = "Наше сотрудничество приносит неплохие плоды.";
 			link.l1.go = "SantiagoTrip_12";
 		break;
 		
 		case "SantiagoTrip_11":
-			dialog.text = "Nonsense! Kidnapping you... I have some suspicions though. You shall learn more if you continue working for me. You are lucky and I am glad that you made it.\nLet's talk about more pleasant things - accept this reward, it's totally deserved.";
-			link.l1 = "Our collaboration is quite profitable.";
+			dialog.text = "Бессмыслица! Похищать вас... Хотя, у меня есть некоторые подозрения на этот счет. Если наши интересы и впредь будут совпадать, возможно – вы сможете помочь мне и в этом деле, но не сейчас. Вам повезло, и я рад, что вы выбрались\nПерейдем к вещам более приятным: моя благодарность вам выражается не только на словах. Примите ваше вознаграждение – вы его честно заслужили";
+			link.l1 = "Наше сотрудничество приносит неплохие плоды.";
 			link.l1.go = "SantiagoTrip_12";
 		break;
 		
 		case "SantiagoTrip_12":
 			AddMoneyToCharacter(pchar, 25000);
-			dialog.text = "Exactly, my friend, exactly! You can become a perfect agent of the Company if we will continue to work together. Now go, take rest from this mad race. You have lived up to my expectations and I appreciate it. But time is running and I would be really grateful if you will be back in a week, we still have got a lot of work to do.";
-			link.l1 = "You can count on me, mynheer Rodenburg.";
+			dialog.text = "Именно, мой друг, именно! Из вас может получиться отличный агент Компании, если мы продолжим сотрудничать. А теперь – идите и передохните после этой безумной гонки. Вы целиком и полностью оправдали мое доверие, и я ценю это. Но – время не ждет, и я буду очень признателен, если вы вернетесь через неделю – наши дела далеки от завершения.";
+			link.l1 = "Можете на меня положится, минхер Роденбург.";
 			link.l1.go = "SantiagoTrip_13";
 		break;
 		
@@ -378,50 +378,50 @@ void ProcessDialogEvent()
 			AddCharacterExpToSkill(pchar, "Sailing", 100);//навигация
 			AddCharacterExpToSkill(pchar, "Sneak", 100);//скрытность
 			AddCharacterExpToSkill(pchar, "Leadership", 80);
-			AddSimpleRumourCity("The say that mynheer Rodenburg is quite pleased by you, captain. Don't loose your chance, Lucas rarely favors people.", "Villemstad", 10, 3, "");
+			AddSimpleRumourCity("Говорят, минхер Роденбург очень доволен вами, капитан. Не упустите свой шанс - Лукас редко к кому бывает благосклонен.", "Villemstad", 10, 3, "");
 		break;
 		
 //-----------------------------------------------2 задание--------------------------------------------
 		case "JacobBerg":
-			dialog.text = "You are smart, captain. Exactly. Well, let's talk details of the upcoming mission...";
-			link.l1 = "I am all ears.";
+			dialog.text = "Вы проницательны, капитан. Именно так. Ну, приступим к изложению подробностей очередного дела...";
+			link.l1 = "Слушаю вас внимательно.";
 			link.l1.go = "JacobBerg_1";			
 		break;
 		
 		case "JacobBerg_1":
-			dialog.text = "I have a very serious and important mission for you and I expect you to do everything according to my instructions. So, as you know, we have very unfriendly relations with England. Brits are sure that they are the ones, who should rule the world. Problem is - not everyone tend to agree with such claim.\nHolland has the biggest trade fleet in the world and our military squadrons can defend interests of the Republic. English hate us for our trading power and they are doing what they can to sabotage the Company's activities. There is a navy captain called Richard Fleetwood, he is basically a pirate who attacks and plunders any ship flying Dutch. He explains his actions to be counter measures to the 'ghost ship' which sinks English traders. He claims that this ship acts under protection of our colours\nDid you hear about the ghost ship, captain?";
-			link.l1 = "Well, you can hear that kind of fables in any tavern. Just buy a few cups of rum for an old boatswain and you will get any story you want...";
+			dialog.text = "Я поручаю вам очень ответственное и секретное задание и рассчитываю на неукоснительное выполнение всего того, о чем я буду вам говорить. Итак... Как вы знаете, у нас весьма недружественные отношения с Англией. Британцы уверены, что они должны править всем миром, но вот ведь незадача - не все с этим согласны\nГолландия обладает самым многочисленным торговым флотом в этих водах, да и военные эскадры тоже могут постоять за честь Республики Свободных Провинций. Торговое могущество Нидерландов для англичан - как кость в горле, и они всяческими подлыми способами пытаются подорвать деятельность Компании и наших купцов\nОсобо среди прочих выделяется английский военный капитан Ричард Флитвуд, который совершенно по-пиратски атакует торговые корабли Компании и просто любые суда под голландским флагом, и грабит их. Причем весьма удачно прикрывается отговоркой про 'корабль-призрак', который якобы топит только английских купцов, и объясняет свои действия 'ответом на произвол голландских властей', словно этот 'Летучий Голландец' - действительно голландец\nВы слышали о корабле-призраке, капитан?";
+			link.l1 = "Ну, подобных баек можно наслушаться в любой таверне. Стоит налить какому-нибудь старому боцману пару кружек рома - и такого расскажут, хоть про корабль-призрак, хоть про корабль обезьян...";
 			link.l1.go = "JacobBerg_2";
 		break;
 		
 		case "JacobBerg_2":
-			dialog.text = "It is so, yes. But this matter is a bit more... real. I have investigated actions of that 'ghost ship' and I found out that she is not an ordinary ship, but a ketch named Mirage and she is under the command of Jacob van Berg, who has turned her into a masquerade and pretended her to be the legendary Flying Dutchman.";
-			link.l1 = "Van Berg? Huh.. It looks like he is a Dutch afterall, right?";
+			dialog.text = "Это все так. Но в данном случае все имеет гораздо более... материальную основу. Я предпринял расследование деятельности этого 'корабля-призрака', и выяснил, что это обычный корабль, кеч под названием 'Мираж', и командует им самый обычный пират и проходимец Якоб ван Берг, который навел на своем судне маскарад и выдает себя за пресловутого Летучего Голландца.";
+			link.l1 = "Ван Берг? Хех... Значит, всё-таки это голландец?";
 			link.l1.go = "JacobBerg_3";
 		break;
 		
 		case "JacobBerg_3":
-			dialog.text = "Jacob van Berg is a Dutch. But my country sentenced him to the gallows a long time ago. He is a criminal, a pirate who acts only on his own. So, Richard Fleetwood is hunting van Berg. This fact we shall use against this insolent brat.\nI don't want to literally eliminate Fleetwood, though he deserved it long ago. Death not would be enough for him. I want not only to kill the scum, but also to destroy his name and crush his honour. This is much more effective measure. This will also teach arrogant Englishmen a lesson.\nLet's talk details now...";
-			link.l1 = "Yes, mynheer, from stage to stage. I am starting to loose your point...";
+			dialog.text = "Якоб ван Берг, как вы правильно поняли по имени, действительно голландец. Однако этот негодяй уже давно заочно приговорен к повешению, причем властями Нидерландов. Он вне закона, как и любой другой пират. Так вот, Ричард Флитвуд ведет охоту на ван Берга. И этот факт мы используем в борьбе против наглого британца\nЯ хочу не просто банально уничтожить Флитвуда, хотя он давно это уже заслужил. Он так много попортил нам крови, что этого недостаточно. Я хочу уничтожить не только физическую оболочку этого негодяя, я хочу убить его имя, втоптать в грязь его честь - это куда более действенная мера. Заодно и утрем нос этим заносчивым бриттам\nНо давайте всё по порядку...";
+			link.l1 = "Да, минхер, лучше объясните все поэтапно, а то я уже перестаю понимать...";
 			link.l1.go = "JacobBerg_4";
 		break;
 		
 		case "JacobBerg_4":
-			dialog.text = "Good. I have managed to learn a location of Jacob van Berg, thanks to my agent. He is in some city of Southern Main. Go to him and find out where did he leave his ghost ship\nThen kill him, find his vessel, capture her and deliver her here. You must capture the Mirage, don't even think to sink her.";
-			link.l1 = "Hah, at least now I know what to do. Where should I look for that van Berg?";
+			dialog.text = "Хорошо. Мой план таков: с помощью моего человека мне удалось выяснить, где сейчас находится сам Якоб ван Берг. Он в одном из городов Южного Мейна. Вы должны будете отправиться к нему и узнать, где он оставил свой 'корабль-призрак'\nЗатем: Якоба ликвидируете, отправляетесь на поиски его корабля, берете судно на абордаж и доставляете в Виллемстад. Запомните, для реализации задуманного мной плана вы должны захватить 'Мираж' - ни в коем случае не вздумайте утопить его.";
+			link.l1 = "Хех, ну теперь по крайней мере ясно, что делать. В каком городе мне следует искать этого ван Берга, и где?";
 			link.l1.go = "JacobBerg_5";
 		break;
 		
 		case "JacobBerg_5":
-			dialog.text = "All details will be provided to you by my agent. His name is Longway, he is a Chinese. Yes, I am also giving you my personal ship, xebec Meifeng for this mission. Longway is her captain, but he will act only as your officer while you are in charge.\nGo to the local harbour office and leave moor all your vessels. Return to me once it's done.";
-			link.l1 = "Fine, I will visit the harbour master. I won't make you wait me for too long.";
+			dialog.text = "Все детали вы узнаете из первых рук, от человека, который и добыл эту информацию. Это мой агент, Лонгвэй... он китаец. Да-да, не удивляйтесь. Чтобы облегчить вам задачу, для выполнения этой работы я предоставлю вам в распоряжение мой личный корабль, шебеку 'Мейфенг'. Лонгвэй - ее капитан, но на весь срок задания я снимаю его с этой должности и передаю под ваше командование в качестве офицера\nСейчас отправляйтесь в портовое управление и сдайте на стоянку все свои корабли. Стоянка для вашего флагмана согласно моего указания будет абсолютно бесплатной. Затем возвращайтесь ко мне и я передам вам 'Мейфенг'.";
+			link.l1 = "Хорошо, отправляюсь в портовое управление. Я не заставлю себя долго ждать, минхер.";
 			link.l1.go = "exit";
 			pchar.questTemp.HWIC.Holl = "JacobTakeShip";
 		break;
 		
 		case "JacobBerg_6":
-			dialog.text = "Longway is waiting for you outside. He will show you your new ship and will give you some information regarding van Berg's location. Good luck, captain and don't let me down! Remember that you also have to preserve the Meifeng so try not to sink her.";
-			link.l1 = "I got it. I am on my way!";
+			dialog.text = "Лонгвэй ждет вас на улице. Отправляйтесь, он покажет вам ваш новый корабль и введет в курс дела по деталям касательно местонахождения ван Берга. Удачи, капитан, не подведите меня! Помните также, что вы должны будете вернуть мне 'Мейфенг', так что постарайтесь не утопить ее.";
+			link.l1 = "Задачу понял. Выдвигаюсь в путь!";
 			link.l1.go = "JacobBerg_7";	
 		break;
 		
@@ -439,22 +439,22 @@ void ProcessDialogEvent()
 		
 		//дурдом продолжается
 		case "Jacob_lostMir":
-			dialog.text = "Yes, I am aware that you have failed your mission to capture the pirate vessel. All my plans are ruined. I am taking away Meifeng from you. You can go now, I don't need your services.";
-			link.l1 = "I am so sorry for that. Farewell, mynheer Rodenburg.";
+			dialog.text = "Да, мне известно, что вы провалили дело, не сумев захватить пиратское судно. Весь мой план пошел прахом. 'Мейфенг' я у вас забираю. А теперь можете идти. Более ваши услуги мне не нужны.";
+			link.l1 = "Мне очень жаль, что так получилось. Всего доброго, минхер Роденбург.";
 			link.l1.go = "Jacob_RemoveShip";
 			pchar.questTemp.HWIC.Holl.ShipType = SHIP_MAYFANG;
 		break;
 		
 		case "Jacob_lostMef":
-			dialog.text = "Yes, I am aware that you have lost the Meifeng. It is most unacceptable... I am going to take away the captured pirate vessel. You can go now, I don't need your services.";
-			link.l1 = "I am so sorry for that. Farewell, mynheer Rodenburg.";
+			dialog.text = "Да, мне известно, что вы потеряли 'Мейфенг'. Я же предупреждал вас, это совершенно недопустимо! Я изымаю у вас захваченный пиратский корабль. А теперь можете идти. Более ваши услуги мне не нужны, я подыщу для выполнения моего плана более способного агента.";
+			link.l1 = "Мне очень жаль, что так получилось. Всего доброго, минхер Роденбург.";
 			link.l1.go = "Jacob_RemoveShip";
 			pchar.questTemp.HWIC.Holl.ShipType = SHIP_MIRAGE;
 		break;
 		
 		case "Jacob_failFull":
-			dialog.text = "Yes, I am aware that you are a rare muddler and bungler. You didn't captured the pirate vessel and lost my Meifeng. I am really disappointed at you. Get lost!";
-			link.l1 = "I am so sorry for that. Farewell, mynheer Rodenburg.";
+			dialog.text = "Да, мне известно, что вы редкостный растяпа и неумеха. Вы не привели в порт пиратское судно, да еще и 'Мейфенг' потеряли. Я в вас глубоко разочарован. Убирайтесь прочь с глаз моих!";
+			link.l1 = "Мне очень жаль, что так получилось. Прощайте, минхер Роденбург.";
 			link.l1.go = "exit";
 			Pchar.questTemp.FiringOfficerIDX = GetCharacterIndex("Longway");
 			AddDialogExitQuestFunction("LandEnc_OfficerFired");//Лонгвэя из офицеров
@@ -466,12 +466,12 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Jacob_complete":
-			dialog.text = "Yes, I am aware that you have perfectly conducted our plan. The filthy pirate is dead and you captured his ship. A payment for this stage of plan is 50 000 pesos, take it.\nI am retrieving the Meifeng from you, it's time for you to take command of the Mirage, she will play an important role in the next stage. Are you ready to listen to my instructions?";
-			link.l1 = "Yes, sure, mynheer Rodenburg.";
+			dialog.text = "Да, мне известно, что вы великолепно выполнили задуманный нами план. Вы устранили гнусного пирата и захватили его судно. Оплата за выполненный этап работы составляет 50 000 песо. Пожалуйста, получите\n'Мейфенг' я у вас забираю и отдаю Лонгвэю, а вы принимаете командование 'Миражом' - это необходимо для реализации второй части моего плана. Вы готовы выслушать мои дальнейшие инструкции?";
+			link.l1 = "Да, конечно, минхер Роденбург.";
 			link.l1.go = "Fleetwood";
 			pchar.questTemp.HWIC.Holl.ShipType = SHIP_MAYFANG;
 			AddDialogExitQuestFunction("Jacob_RemoveShip");	
-			AddSimpleRumourCity("They say that you are doing some special assignments for mynheer Rodenburg himself. Something about destroying those insolent pirates. It seems that you are a very significant person, captain.", "Villemstad", 15, 3, "");
+			AddSimpleRumourCity("Ходят слухи, что вы выполняете некое секретное поручение самого минхера Роденбурга по уничтожению распоясавшися пиратов. Видать, вы весьма значительный капитан...", "Villemstad", 15, 3, "");
 		break;
 		
 		case "Jacob_RemoveShip":
@@ -484,27 +484,27 @@ void ProcessDialogEvent()
 			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");//ПУ откроем
 			DeleteAttribute(pchar, "questTemp.HWIC.HollEquip");
 			pchar.questTemp.HWIC.Detector = "holl_fail";
-			AddSimpleRumourCity("They say that you have failed some secret assignment of mynheer Rodenburg himself. Well, don't even come close to him after that...", "Villemstad", 20, 3, "");
+			AddSimpleRumourCity("Говорят, что вы провалили некое секретное поручение самого минхера Роденбурга. Скажу вам - после этого лучше даже и не подходите к нему.", "Villemstad", 20, 3, "");
 		break;
 		
 //----------------------------------------------3 задание-------------------------------------------------
 		
 		case "Fleetwood":
 			AddMoneyToCharacter(pchar, 50000);
-			dialog.text = "Another raid is ahead of you, time to deal with Fleetwood. We should lure him out, using the 'ghost ship'. Organize a trap close to Dominica and the Mirage will serve as a bait.\nFirst, you should let Fleetwood know that the Mirage was seen not far from Dominica. This will force our brave military man to leave all his doings and rush there for a hunt. Surely you must understand that talking to the man himself is too dangerous. Find a drugstore in St. John's. It's owner John Murdock is an old friend of mine.\nTell him that you are acting under my command and he will help you to find ears to fill with a juicy lie about the 'ghost ship' attacking poor English merchants around Dominica.";
-			link.l1 = "I see. I will lie something, I am used to it. The prior goal is to eliminate Fleetwood at Dominica, am I right?";
+			dialog.text = "Вам предстоит очередной рейд, на этот раз - до Антигуа, в самое логово мерзавца Флитвуда. Нам следует вытащить его на открытое место, и захваченный вами 'корабль-призрак' нам в этом поможет... Мы организуем засаду у пустынных берегов Доминики, а 'Мираж' в этом деле послужит приманкой\nКак вы понимаете, нужно донести до Флитвуда информацию, что 'Мираж' был якобы замечен у Доминики, чтобы наш бравый вояка бросил все свои дела и кинулся на охоту. Также думаю, вам ясно, что с самим Флитвудом на эту тему вам разговаривать опасно. Поступим следующим образом. В Сент-Джонсе найдите аптеку и поговорите с ее хозяином. Его зовут Джон Мердок\nСкажете, что от меня, и что пришли по вопросу о Ричарде Флитвуде. Мердок - мой старый знакомый, он в курсе происходящего, так что лишних вопросов он задавать не станет. Джон сообщит вам имя человека, который является глазами и ушами Флитвуда на суше, и скажет, где его найти в городе. Вы отправитесь к этому агенту и намекнете про 'корабль-призрак'\nПридумайте какую-нибудь историю, чтобы это выглядело правдоподобно. Лучший вариант - представьтесь купцом, торгующим на Мартинике, пожалуйтесь на нападения 'Летучего Голландца' и попросите уничтожить пирата. Это должно сработать.";
+			link.l1 = "Понятно. Что-нибудь навру в таком духе, мне не привыкать. Основная цель - чтобы Флитвуд отправился к Доминике, я правильно понял?";
 			link.l1.go = "Fleetwood_1";
 		break;
 		
 		case "Fleetwood_1":
-			dialog.text = "Yes, exactly. Longway on the Meifeng will wait for you near Dominica. Two of you can kill the English dog easily. I ask you to board his ship and search through his cabin. I want to see his logbook, it might help to clear up some things. I will pay extra for the logbook.\nBut your main priority is to kill the bastard, so if boarding him will not be an option - screw it, just sink his tub. Also, preserve Mirage at all costs. She has a role to play in the next stage.";
-			link.l1 = "The goal is clear. May I proceed?";
+			dialog.text = "Да, именно так. У Доминики в засаде будет находиться уже известный вам Лонгвэй на моей 'Мейфенг'. Вдвоем вы без труда разделаетесь с этим английским псом. Но это еще не все. Я прошу вас взять его корабль на абордаж, обыскать каюту и найти судовой журнал - в нем могут содержаться очень важные для меня сведения. За доставку этого журнала я заплачу отдельно\nНо если ситуация в бою не позволит вам этого сделать - топите его лоханку к чертовой матери не колеблясь. Также любой ценой сохраните на плаву 'Мираж' - он будет нужен для завершающего аккорда моего плана.";
+			link.l1 = "Задача ясна. Разрешите приступить к выполнению?";
 			link.l1.go = "Fleetwood_2";
 		break;
 		
 		case "Fleetwood_2":
-			dialog.text = "A piece of advice, captain. Do not drop an anchor at St. John's port. Land at one of the island's bays and get to the city through the jungles. Plus, be careful at the sea - the Mirage is too famous among English colonies, so avoid their warships and settlements, you don't want to be compromised. This is it. Set sail and God help you!";
-			link.l1 = "Thanks! I am on my way.";
+			dialog.text = "Еще несколько напутствий, капитан... Вы не должны причаливать в порту Сент-Джонса. Произведите высадку в одной из бухт и пройдите в город через джунгли. В противном случае Джон Мердок на контакт с вами не пойдет - ему не нужны проблемы с властями\nНу и, конечно, будьте осторожны в море - 'Мираж' слишком известная посудина для британских моряков, так что не приближайтесь на нем к английским кораблям и поселениям, если не желаете быть атакованным - флаг вам не поможет. Теперь все. Отправляйтесь, и да поможет вам Бог!";
+			link.l1 = "Спасибо! Отправляюсь в путь немедленно.";
 			link.l1.go = "Fleetwood_3";
 		break;
 		
@@ -519,60 +519,60 @@ void ProcessDialogEvent()
 		case "Fleetwood_complete":
 			if (pchar.questTemp.HWIC.Holl == "FleetwoodSink")//Флитвуд утоп с журналом
 			{
-				dialog.text = "I am glad that you are showing such a conscientiousness, captain... Did you get Richard Fleetwood's logbook?";
-				link.l1 = "Unfortunately, I didn't. Didn't get a chance to board him. I had to shoot down his ship with my cannons.";
+				dialog.text = "Я рад, что вы проявляете столь точную исполнительность, капитан... Судовой журнал Ричарда Флитвуда у вас?";
+				link.l1 = "К сожалению, нет. Мне не удалось взять Флитвуда на абордаж. Пришлось расстрелять его корабль из орудий.";
 				link.l1.go = "Fleetwood_complete_1";
 				break;
 			}
 			if (!CheckCharacterItem(pchar, "FleetwoodJournal"))
 			{
-				dialog.text = "I am glad that you are showing such a conscientiousness, captain... Did you get Richard Fleetwood's logbook?";
-				link.l1 = "Unfortunately, I didn't. I managed to board his ship and to kill the man in a close quarter combat, but I didn't find his journal. The ship was mined and I didn't have much time to look for it.";
+				dialog.text = "Я рад, что вы проявляете столь точную исполнительность, капитан... Судовой журнал Ричарда Флитвуда у вас?";
+				link.l1 = "К сожалению, нет. Мне удалось взять Флитвуда на абордаж, но журнала я не нашел - корабль был заминирован, и у меня не было времени на поиски.";
 				link.l1.go = "Fleetwood_complete_1";
 				break;
 			}
-			dialog.text = "I am glad that you are showing such a conscientiousness, captain... Did you get Richard Fleetwood's logbook?";
-			link.l1 = "I did. Here it is. I managed to board the Valkyrie. Though it was too close - the damn bastard had mined his ship and blew it sky high. We barely made it.";
+			dialog.text = "Я рад, что вы проявляете столь точную исполнительность, капитан... Судовой журнал Ричарда Флитвуда у вас?";
+			link.l1 = "Конечно. Вот он. Мне удалось взять 'Валькирию' на абордаж. Правда, дело чуть было не закончилось плохо - проклятый негодяй заминировал корабль и взорвал его - мы едва успели отойти на безопасное расстояние.";
 			link.l1.go = "Fleetwood_complete_2";
 		break;
 		
 		case "Fleetwood_complete_1":
 			AddMoneyToCharacter(pchar, 100000);
-			dialog.text = "Too bad, we could have found a lot of interesting things from it... Whatever. You managed to destroy that insolent English dog and that is the most important. Here is your reward - 100 000 pesos. I am taking the Mirage from you, we are going to return this ship to England.";
-			link.l1 = "How?! Why? I don get it...";
+			dialog.text = "Очень жаль, мы могли бы почерпнуть из него много интересного... Но ладно. Главное - что вы уничтожили этого зарвавшегося английского пса. Вот ваше вознаграждение - 100 000 песо. 'Мираж' я у вас забираю - мы передадим этот корабль англичанам.";
+			link.l1 = "Как?! Почему англичанам? Ничего не понимаю...";
 			link.l1.go = "Fleetwood_complete_3";
 		break;
 		
 		case "Fleetwood_complete_2":
 			AddMoneyToCharacter(pchar, 150000);
 			RemoveItems(PChar, "FleetwoodJournal", 1);
-			dialog.text = "Excellent! You are really an exemplary military sailor! If all of our captains were like you, Holland would take the first place among sea nations. Here is your reward - 100 000 pesos, and 50 000 pesos extra for the journal. I am taking the Mirage from you, we are going to return this ship to England.";
-			link.l1 = "How?! Why? I don get it...";
+			dialog.text = "Превосходно! Вы действительно образцовый военный моряк! Если бы все наши капитаны были такими, как вы - Голландия уже давно бы занимала лидирующее положение среди морских держав. Вот ваше вознаграждение - 100 000 песо, и отдельно 50 000 за журнал. 'Мираж' я у вас забираю - мы передадим этот корабль англичанам.";
+			link.l1 = "Как?! Почему англичанам? Ничего не понимаю...";
 			link.l1.go = "Fleetwood_complete_3";
 		break;
 		
 		case "Fleetwood_complete_3":
-			dialog.text = "My friend, you are an excellent soldier, but trust me and my experience in the matters of politics. Remember what I said about Fleetwood? I will nail him and his name. And these arrogant nobles from Port Royal will have to swallow and choke.\nWe are going to make Richard Fleetwood a captain of the 'ghost ship', a werewolf who were playing off with two nations, plundering, pillaging and murdering peaceful citizens of both, only to make himself rich. I have already prepared evidences and witnesses and the Mirage will serve as a primal evidence.";
-			link.l1 = "And you will sacrifice the excellent ship for that plan?";
+			dialog.text = "Друг мой, вы великолепный солдат, но в вопросах политики доверьтесь мне и моему опыту... Вы помните, что я вам сказал в нашей первой беседе про Флитвуда? Я смешаю имя этого выскочки с грязью навечно, и эти высокомерные шуты из Порт-Рояля будут вынуждены не только проглотить горькую пилюлю, но еще и подавиться своими же недавно сказанными словами\nМы представим Ричарда Флитвуда как капитана 'корабля-призрака', оборотня, который стравливал между собой две державы, уничтожая английские и голландские торговые корабли, беззастенчиво наживаясь на этом. Я уже подготовил соответствующие доказательства, и 'Мираж' послужит главной уликой.";
+			link.l1 = "И вы ради этого плана пожертвуете великолепным кораблем?";
 			link.l1.go = "Fleetwood_complete_4";
 			AddDialogExitQuestFunction("Lucas_ExangeShip");
 		break;
 		
 		case "Fleetwood_complete_4":
-			dialog.text = "This is war. Sometimes we sacrifice not only ships, but settlements with people. And every war comes with losses. Speaking of losses. I have bad news for you.\nWillemstad was attacked by English capers and all ships in the harbour were thrown to fight them\nYour ship was also participating in a battle, but, alas, she was burnt down and sunk.";
-			link.l1 = "F...! To sink my ship... What a shame! But there is nothing I can do now.";
+			dialog.text = "Ради верных политических решений приходится иногда жертвовать не только кораблями, но и городами со всем проживающим там населением... Это война, а на войне без потерь не бывает. Да, кстати, о потерях. Вы принесли хорошие новости, а вот я вынужден вас огорчить. Во время вашего отсутствия на Виллемстад было совершено нападение английских каперов. Нам потребовались все имеющиеся корабли для отражения атаки\nВаше судно, которое вы сдали на хранение, тоже было задействовано в бою, и, к моему величайшему сожалению, затонуло.";
+			link.l1 = "Невероятно! Потопить мое судно... Эх, жаль! Но ничего уже не поделаешь.";
 			link.l1.go = "Fleetwood_complete_5";			
 		break;
 		
 		case "Fleetwood_complete_5":
-			dialog.text = "Don't be sad, captain. I have something to please you. I place xebec Meifeng under your command instead of Longway's. You are free to use the ship in any way you want, within reasonable limits of course. And I will be waiting for you tomorrow in the governor's residence, you are nominated for a state award. Don't leave the town, captain.";
-			link.l1 = "Am I?! That's great news, indeed. I am honoured. By the way, mynheer, but where has Longway gone?";
+			dialog.text = "Не расстраивайтесь, капитан. У меня есть и чем вас порадовать. Я назначаю вас капитаном моей шебеки 'Мейфенг' вместо Лонгвэя. Вы можете пользоваться этим кораблем по своему усмотрению, в разумных пределах, конечно. И жду вас завтра в резиденции губернатора - вы представлены к государственной награде. Не покидайте город, капитан.";
+			link.l1 = "Вот как! Очень рад! Государственная награда... И 'Мейфенг' действительно отличное судно! Да, минхер, а куда же подевался Лонгвэй?";
 			link.l1.go = "Fleetwood_complete_6";
 		break;
 		
 		case "Fleetwood_complete_6":
-			dialog.text = "Longway has suddenly disappeared right after I ordered him to sail to Dominica. I have got suspicions that it is English intelligence to blame... or perhaps not. I am investigating this incident.";
-			link.l1 = "I see. His help at Dominica would be most welcome. Fleetwood was a tough guy. I hope that Longway still lives... Farewell, mynheer!";
+			dialog.text = "Лонгвэй бесследно исчез на следующий же день после того, как я отдал ему приказ отправляться к Доминике. У меня есть подозрения, что к этому приложила руку английская разведка... хотя, может, и нет. Я провожу расследование этого инцидента.";
+			link.l1 = "Понятно. Его помощь у Доминики была бы как нельзя кстати - Флитвуд был крепким орешком. Надеюсь, Лонгвэй отыщется живым... До свидания, минхер!";
 			link.l1.go = "Fleetwood_complete_7";
 			pchar.questTemp.HWIC.Holl = "Award";
 			AddQuestRecord("Holl_Gambit", "1-24");
@@ -591,31 +591,31 @@ void ProcessDialogEvent()
 			pchar.quest.Award_FromLucas.win_condition.l2 = "location";
 			pchar.quest.Award_FromLucas.win_condition.l2.location = "Villemstad_townhall";
 			pchar.quest.Award_FromLucas.function = "AwardFromFromLucas";
-			AddSimpleRumour("Tell me, captain, was this damned English dog Fleetwood was really responsible for plundering English merchants? Really? Such an artful rogue! It is good that you have eliminated this bastard. You are a real hero, captain!", HOLLAND, 10, 3);
+			AddSimpleRumour("Скажите, капитан, это правда - что проклятая английская собака - Флитвуд - и был командиром таинственного корабля, уничтожавшего английских торговцев? Да? Ну и хитрая же бестия! Хорошо, что вы обезвредили негодяя. Вы настоящий герой, капитан!", HOLLAND, 10, 3);
 		break;
 		
 		case "Fleetwood_fail":
-			dialog.text = "Too bad... My beautiful plan is flopped. Eh, captain, you were so close to the sacred goal but you have failed it... Well, I will pay you 30 000 pesos for Fleetwood's elimination. I have no more missions for you. You are free to go.";
-			link.l1 = "Whatever then.";
+			dialog.text = "Очень жаль... Мой так красиво задуманный план провалился. Эх, капитан, вы были так близки к заветной цели, и не довели дело до конца... Ну что же, за уничтожение Флитвуда я плачу вам 30 000 песо. Более заданий для вас у меня нет. Можете быть свободны.";
+			link.l1 = "Ну что же, нет - так нет.";
 			link.l1.go = "Fleetwood_fail_1";			
 		break;
 		
 		case "Fleetwood_fail_1":
 			AddMoneyToCharacter(pchar, 30000);
-			dialog.text = "Yes, captain, I have to frustrate you. Willemstad was attacked by the English privateer while you were gone. We have had to take all ships to protect the town. Your stored ship was also participated in the battle but, unfortunately, it was sunk. Alas! I am sorry.";
-			link.l1 = "Yes, it is really a pity. But there is nothing I can do. Farewell!";
+			dialog.text = "Да, капитан, я вынужден вас огорчить. Во время вашего отсутствия на Виллемстад было совершено нападение английских каперов. Нам потребовались все имеющиеся корабли для отражения атаки. Ваше судно, которое вы сдали на хранение, тоже было задействовано в боевых действиях, и, к моему величайшему сожалению, затонуло. Увы! Приношу свои соболезнования.";
+			link.l1 = "Да, действительно, жаль. Но ничего не поделаешь. До свидания!";
 			link.l1.go = "exit";
 			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");//можно пользоваться ПУ
 			DeleteAttribute(pchar, "questTemp.HWIC.HollEquip");
 			CloseQuestHeader("Holl_Gambit");
 			pchar.questTemp.HWIC.Holl = "end";
 			pchar.questTemp.HWIC.Detector = "holl_fail";
-			AddSimpleRumour("Tell me, captain, is it true that you have sunk this damned English dog Fleetwood? Really? It is good that you have eliminated this bastard. You did well, captain!", HOLLAND, 15, 3);
+			AddSimpleRumour("Скажите, капитан, это правда, что вы потопили проклятого английского пирата Флитвуда? Да? Очень хорошо, что вы обезвредили негодяя. Вы молодец, капитан!", HOLLAND, 15, 3);
 		break;
 		
 		case "LucasAward":
-			dialog.text = "Captain " + GetFullName(pchar) + "! For eliminating Richard Fleetwood, a dangerous state criminal, for exposure of treacherous English conspiracy against the Company, for your bravery and courage, you are awarded with one thousand golden doubloons on behalf of Dutch Republic!\nYou also are to receive this valuable navigation tool - a dream of any military sailor.";
-			link.l1 = "I serve the Republic!";
+			dialog.text = "Капитан " + GetFullName(pchar) + "! За уничтожение опасного государственного преступника Ричарда Флитвуда, за содействие в раскрытии коварного заговора англичан против Компании, за мужество и отвагу, от лица Республики Свободных Провинций вы награждаетесь денежной премией в размере тысячи золотых дублонов!\nТакже вы получаете в подарок вот этот ценный навигационный прибор - настоящая мечта военного моряка.";
+			link.l1 = "Служу Респубике!";
 			link.l1.go = "LucasAward_1";			
 		break;
 		
@@ -632,8 +632,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "LucasAward_2":
-			dialog.text = "Congratulations again, my friend. And, please, visit me in a week, I am going to ask you and only you to deal with a very delicate matter.";
-			link.l1 = "I got it, mynheer Rodenburg. I will visit you in a week.";
+			dialog.text = "Еще раз поздравляю вас, друг мой. И прошу через неделю быть у меня - я хочу поручить вам, и только вам выполнение одного очень деликатного задания.";
+			link.l1 = "Принял к сведению, минхер Роденбург. Буду у вас в указанное время.";
 			link.l1.go = "LucasAward_3";			
 		break;
 		
@@ -656,20 +656,20 @@ void ProcessDialogEvent()
 			LocatorReloadEnterDisable("Villemstad_town", "gate_back", false);
 			pchar.questTemp.HWIC.Holl = "Abby_prepare";
 			SaveCurrentQuestDateParam("questTemp.HWIC.Holl.Abby");
-			AddSimpleRumourCity("Oh, they say that you were nominated to a state award by Matias Beck himself! Holland can be proud to have people like you, captain!", "Villemstad", 20, 4, "");
+			AddSimpleRumourCity("О, говорят, вы были представлены к государственной награде и получили ее из рук самого Матиаса Бека! Голландия по праву может гордится такими моряками как вы, капитан!", "Villemstad", 20, 4, "");
 		break;
 		
 //--------------------------------------------------4 задание----------------------------------------------
 		
 		case "Abby":
-			dialog.text = "Let me tell one intriguing story first, it will help you to understand how delicate your next task is. A few months ago a flute under English flag was attacked by well-known to you Jacob van Berg, he sunk the flute not far from some unknown island. Only two Jewish settlers survived - Solomon Shneur and his daughter Abigail. They lost the rest of their family in the fight. Somehow they reached the island\nSolomon even managed to drag a chest with family gold to a shore. Another well-known character, Richard Fleetwood, heard the sounds of fighting and arrived to catch van Berg, but he was too late and the pirate fled. So he decided to check the island for any survivors\nHe saved Solomon and Abigail from eternal life on the desert island, the irony is, that Solomon mistook Richard's ship for Jacob's Mirage and got scared as heck, so he stashed his gold somewhere on the island. As I result, he and his daughter arrived here without a penny, dropped by Fleetwood at Blanca Lagoon\nSolomon told me this story. The Company supports Jewish community here, therefore I made sure they have a roof over their heads, got something to eat and to wear. I visited their place a lot. Abigail is a wonderful young girl. Sincere and naive\nI won't lie to you, captain, I like her and I intend to make her my wife. She likes me too, but something is eating her, and this 'something' interferes with my plans.";
-			link.l1 = "Perhaps, her father is the reason?";
+			dialog.text = "Тогда позвольте мне поведать небольшую историю, чтобы вы смогли лучше понять все тонкости вашего поручения. Несколько месяцев тому назад купеческий флейт под английским флагом вышел из Ресифии и направился в Виллемстад. На нем в качестве пассажиров была семья еврейских беженцев, стремившихся попасть в голландские колонии\nОднако до Кюрасао ему дойти было не суждено - по пути он подвергся атаке небезысвестного вам пирата Якоба ван Берга и затонул у берегов какого-то неизвестного необитаемого островка в Карибском море. Из всего экипажа удалось спастись только двум еврейским переселенцам - Соломону Шнеуру и его дочери Абигайль. Они каким-то чудом достигли берегов острова\nСоломон также сумел дотащить до суши и сундук со своим семейным золотом. Возможно, они бы остались на этом острове навеки, но им снова повезло - шум битвы услышал проходивший неподалеку на своем корабле также знакомый вам Ричард Флитвуд и атаковал пирата. Ван Берг не принял боя и скрылся, а Флитвуд высадился на остров и забрал потерпевших крушение к себе на борт\nСамое забавное, что Соломон принял 'Валькирию' Флитвуда, подошедшую к острову, за 'Мираж' ван Берга и, испугавшись, спрятал cвои сокровища в глубине острова. В итоге Абигайль и Соломон прибыли на Кюрасао без ломаного гроша в кармане, на корабле Флитвуда, который высадил их на берег в лагуне Бланка\nИсторию эту мне поведал сам Соломон. Поскольку Компания оказывает всяческую поддержку еврейской общине на Кюрасао, я лично проследил за тем, чтобы у несчастных отца и дочери появилась крыша над головой, и им было что есть и что одеть. Часто бывая у них в гостях, я поближе познакомился с Абигайль. Это чудесная юная девушка, искренняя и наивная\nНе буду скрывать, капитан - она мне очень нравится, и я намереваюсь сделать ее своей женой. Она тоже питает ко мне благосклонность, но... что-то ее гложет, и это 'что-то' мешает осуществиться нашему союзу.";
+			link.l1 = "Возможно, причина кроется в ее отце? Может, это именно он противится вашему с Абигайль счастью?";
 			link.l1.go = "Abby_0";			
 		break;
 		
 		case "Abby_0":
-			dialog.text = "This is not about her dad, I am sure of it. Solomon would be in the seventh heaven if I married Abigail. In the matter of fact, he pushes her to accept my proposal. No, there is something different about her. I ask you, my friend, to solve this problem for me. Talk to the girl and find out what is wrong\nYou are a stranger, she might tell you things, she would never tell familiar people because of her girly modesty. Their house is left of governor's palace. Go, you might be fortunate, I know that you are a smooth talker\nBut remember one thing: Richard Fleetwood was the true captain of the 'ghost ship'... Keep it in mind while talking to Abigail.";
-			link.l1 = "Ha! Sure I remember that, mynheer Rodenburg. Actually, this is the officially  recognized fact... I won't waste time then, I am going to pay your beloved a visit immediately.";
+			dialog.text = "Дело не в отце, я знаю это совершенно точно. Соломон был бы на седьмом небе от счастья, выйди Абигайль за меня замуж. Собственно, он сам подталкивает ее к этому. Нет, тут дело в чем-то другом... Я хочу попросить вас, друг мой, помочь мне разрешить эту проблему. Отправляйтесь к Абигайль и попробуйте разузнать, что да как\nВы человек сторонний, возможно, она сможет вам сказать то, чего никогда не скажет мне из своей девичьей скромности. Дом Шнеуров находится слева от резиденции губернатора, если стоять к ней спиной. Ступайте, возможно вам улыбнется удача - вести переговоры, как я понял - вы умеете, и учить вас этому не нужно\nОднако не забывайте об одном: Ричард Флитвуд - действительно капитан 'корабля-призрака'... Помните об этом, когда будете говорить с девушкой.";
+			link.l1 = "Ха! Конечно, я об этом помню, минхер Роденбург. И вообще - это же официально признанный факт... Не буду тянуть время - отправляюсь к вашей возлюбленной прямо сейчас.";
 			link.l1.go = "Abby_1";			
 		break;
 		
@@ -681,36 +681,36 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Abby_2":
-			dialog.text = "Have you really found the island where Solomon has stashed his savings? This is most excellent! I am starting to think that you are able to do any task... Have you found anything else in the stash?";
+			dialog.text = "Говорите, нашли остров, где Соломон спрятал свои сбережения? Это просто великолепно! Я начинаю думать, что нет такого дела, которое вы бы не смогли выполнить... А кроме денег, ничего такого не находили в схроне?";
 			if (CheckAttribute(pchar, "questTemp.HWIC.Holl.ScullnotReturn"))
 			{
-				link.l1 = "No, nothing else. Only money.";
+				link.l1 = "Нет, ничего. Только деньги.";
 				link.l1.go = "Abby_3";
 			}
 			else
 			{
-				link.l1 = "There was an interesting item - a jade skull. I have given it to Solomon, he had said that it is a relic of his family. He had also said that you were going to buy this item from him...";
+				link.l1 = "Была там одна занятная вещица - нефритовый череп. Я отдал его Соломону - он говорил, что это их семейная реликвия. Еще он упоминал, что вы собираетесь приобрести эту вещь у него...";
 				link.l1.go = "Abby_4";
 			}
 		break;
 		
 		case "Abby_3":
 			pchar.questTemp.HWIC.Holl.LucasItem = "obereg_11";
-			dialog.text = "Hm. Fine then. It is quite odd though. Whatever... I owe you, mynheer, and I will never forget it. I have prepared a reward for you - 50 000 pesos and this amulet. It is yours now.";
-			link.l1 = "Thank you, mynheer Rodenburg!";
+			dialog.text = "Хм. Ну, ладно. Хотя это и довольно странно. Впрочем, неважно... Я в долгу перед вами, минхер, и я этого не забуду. Я приготовил вам награду - 50 000 песо и вот этот амулет. Теперь это ваше.";
+			link.l1 = "Спасибо, минхер Роденбург!";
 			link.l1.go = "Abby_5";
 		break;
 		
 		case "Abby_4":
 			pchar.questTemp.HWIC.Holl.LucasItem = "totem_04";
-			dialog.text = "Excellent! Yes I am going to buy this artefact from Solomon, he doesn't need it and I have got a very generous buyer for it. Whatever though... I have prepared a reward for you - 50 000 pesos and this amulet. It is yours now.";
-			link.l1 = "Thank you, mynheer Rodenburg!";
+			dialog.text = "Отлично! Да, я приобретаю этот артефакт у Соломона - ему он ни к чему, а у меня на него есть один весьма щедрый покупатель. Впрочем, неважно... Я в долгу перед вами, минхер, и я этого не забуду. Я приготовил вам награду - 50 000 песо и вот этот амулет. Теперь это ваше.";
+			link.l1 = "Спасибо, минхер Роденбург!";
 			link.l1.go = "Abby_5";
 		break;
 		
 		case "Abby_5":
-			dialog.text = "Well, I don't have any job worthy of such a captain like you for now. But don't leave Curacao for too long, soon I will need your services again.";
-			link.l1 = "I got it, mynheer. Goodbye!";
+			dialog.text = "Ну, а пока какой-либо работы, достойной такого капитана, как вы, у меня нет. Однако не покидайте Кюрасао надолго - мне вскоре вновь потребуются ваши услуги.";
+			link.l1 = "Я вас понял, минхер. До свидания!";
 			link.l1.go = "exit";
 			GiveItem2Character(pchar, pchar.questTemp.HWIC.Holl.LucasItem);
 			AddMoneyToCharacter(pchar, 50000);
@@ -724,18 +724,18 @@ void ProcessDialogEvent()
 			pchar.quest.Merdok_prepare.function = "GiveTaskMerdok";
 			pchar.questTemp.HWIC.Holl = "Merdok_wait";
 			AddQuestRecord("Holl_Gambit", "1-34");
-			AddSimpleRumourCity("Have you heard the last news? Mynheer Rodenburg is going to marry Abigail Shneur, the daughter of that old crazy Solomon. What can I say, she is a lucky girl...", "Villemstad", 20, 3, "");
+			AddSimpleRumourCity("Вы слышали последние новости? Минхер Роденбург женится на Абигайль Шнеур, дочери этого старого чудака, Соломона. Повезло девушке, что уж тут скажешь...", "Villemstad", 20, 3, "");
 		break;
 		
 		case "Abby_6":
-			dialog.text = "Ha, and that's just it? Ridiculous... Listen to me, my friend, this problem can be easily solved, I know how much money was in Solomon's stash. Two hundred thousands pesos. I am ready to spare this sum for my and Abigail's happiness. I will give you the money and you will leave Curacao for a week or two. Then you will return to Solomon and give him these coins. Pretend that you've found the stash. The wolves are sated and the sheep intact. Here, take required sum. Do you agree with my plan?";
-			link.l1 = "I completely agree with your plan. Let's do it.";
+			dialog.text = "Ха, и всего-то дел? Никогда бы не подумал... Друг мой, вот как мы решим эту проблему: я знаю, сколько было денег в схроне старого Соломона. Двести тысяч песо. Я готов расстаться с этой суммой ради нашего с Абигайль счастья. Я дам вам эти деньги, вы уйдете куда-нибудь с Кюрасао на недельку-другую, а потом вернетесь к Соломону и отдадите ему эти деньги, как его сбережения. И волки сыты, и овцы целы. Вот, держите необходимую сумму. Вы одобряете мой план?";
+			link.l1 = "Целиком и полностью, минхер. Так и поступим.";
 			link.l1.go = "Abby_7";
 		break;
 		
 		case "Abby_7":
-			dialog.text = "Well, then sail to the open sea and return back to me in ten days.";
-			link.l1 = "As you say, mynheer Rodenburg.";
+			dialog.text = "Ну, тогда отправляйтесь в море, и через дней десять возвращайтесь назад.";
+			link.l1 = "Хорошо. Уже поднимаю якоря!";
 			link.l1.go = "exit";
 			AddMoneyToCharacter(pchar, 200000);
 			pchar.questTemp.HWIC.Holl = "GiveLucasMoney";
@@ -746,27 +746,27 @@ void ProcessDialogEvent()
 		
 		case "Abby_8":
 			pchar.questTemp.HWIC.Holl.LucasItem = "obereg_11";
-			dialog.text = "Splendid! Once again, you did the job perfectly. I owe you, mynheer, and I will never forget it. I have prepared a reward for you - 50 000 pesos and this amulet. It is yours now.";
-			link.l1 = "Thank you, mynheer Rodenburg!";
+			dialog.text = "Превосходно! Вы отлично справились с задачей. Я в долгу перед вами, минхер, и я этого не забуду. Я приготовил вам награду - 50 000 песо и вот этот амулет. Теперь это ваше.";
+			link.l1 = "Спасибо, минхер, Роденбург!";
 			link.l1.go = "Abby_5";
 		break;
 		
 //-------------------------------------------5 задание-------------------------------------------------
 		case "Merdok":
-			dialog.text = "Yes, exactly so. My friend, sometimes it's hard to see who is your friend and who is your enemy. Sometimes you miss the point when your dearest friend turns into arch-enemy. Our mutual acquaintance from St John's, John Murdock also known as Johan van Merden, an ex agent of the Company has sold himself to the English Navy intelligence.\nHis newest mission is to eliminate one of the Company's brightest agents... you.";
-			link.l1 = "I am flattered. Sure, you never see such treachery coming.";
+			dialog.text = "Да-да, именно так. Мой друг, в нашем мире порой невозможно определить, кто враг, а кто друг, и зачастую невидим тот момент, когда лучший друг превращается в злейшего врага... Наш общий знакомый, аптекарь Сент-Джонса Джон Мердок, а на самом деле - бывший агент Компании Йохан ван Мерден, продался британской военной разведке и перешел на сторону англичан\nОт них он получил задание - пользуясь личным знакомством, устранить одного из талантливейших агентов Компании... я имею в виду вас.";
+			link.l1 = "Невероятно! Воистину никогда не знаешь, в какой момент получишь удар ножом в спину...";
 			link.l1.go = "Merdok_1";
 		break;
 		
 		case "Merdok_1":
-			dialog.text = "Precisely, captain. He is a sly dog. Find the scum and kill him before he strikes you. Sail to Antigua and search for a secret entrance to his drugstore. There is a hatch in front of the church. Use it.";
-			link.l1 = "It looks like I don't have a choice.";
+			dialog.text = "Именно, капитан. Вы бы никогда не заподозрили Йохана-Джона в предательстве, ведь так? Я вовремя сумел раскрыть этот коварный заговор. Вы должны опередить ван Мердена и нанести упреждающий удар, прежде чем он настигнет вас в каком-нибудь темном углу, когда вы будете не готовы скрестить шпаги... Отправляйтесь на Антигуа и уничтожьте продажную тварь в ее же логове!\nЕсть один небольшой секрет: в аптеку можно попасть через подземный ход, начинающийся под люком прямо напротив церкви Сент-Джонса. Воспользуйтесь этим ходом, прокрадитесь незаметно в берлогу негодяя и убейте его!";
+			link.l1 = "Похоже, выхода у меня нет. Жить, постоянно оглядываясь за спину - это мне как-то не по душе...";
 			link.l1.go = "Merdok_2";
 		break;
 		
 		case "Merdok_2":
-			dialog.text = "There is one more thing, captain. Once Johan is dead, search his corpse, the house and the dungeon. He has an archive - a fat ledger, he used to write down some juicy notes during his work for the Company. This information will harm us all if our enemies find it.\nFind the archive and deliver it to me, I will pay extra for it. Now go. Godspeed, captain " + pchar.name + ", and try to return in one piece. The Republic needs you!";
-			link.l1 = "I promise you, mynheer, to return back in one piece. And what is more, this is actually in my interests. See you soon!";
+			dialog.text = "Есть еще один нюанс, капитан. Когда вы ликвидируете Йохана, обыщите его дом и его самого. У него есть архив - толстый гроссбух, куда он вносил различные записи, когда еще был агентом Компании. Я надеюсь, он еще не передал его англичанам - там содержится масса информации, способной нам навредить, окажись она в руках врага\nНайдите этот архив и доставьте мне - я хорошо заплачу вам за него. А теперь отправляйтесь. Желаю вам удачи, " + pchar.name + ", и постарайтесь вернуться живым. Вы нужны Голландии!";
+			link.l1 = "Я обещаю вам, минхер, вернуться на Кюрасао целым и невредимым. Тем более, это в моих интересах, как-никак. До скорой встречи!";
 			link.l1.go = "Merdok_3";
 		break;
 		
@@ -788,46 +788,46 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Merdok_4":
-			dialog.text = "Excellent, captain! I am glad, I really do. Have you found an archive?";
+			dialog.text = "Превосходно, капитан! Я рад, очень рад. Вы нашли архив?";
 			if (CheckCharacterItem(pchar, "MerdokArchive"))//архив
 			{
-				link.l1 = "Yes, here it is. There were no any more ledgers neither on the chemist's corpse nor in his chests.";
+				link.l1 = "Да. Вот он. Другого гроссбуха ни в сундуках, ни на трупе аптекаря не было.";
 				link.l1.go = "Merdok_book";
 			}
-			link.l2 = "No. I was looking for it everywhere, yet found nothing.";
+			link.l2 = "Нет. Я обыскал всё, но ничего похожего на гроссбух не нашел.";
 			link.l2.go = "Merdok_5";
 			DeleteAttribute("SentJons_TownCave", "box2");//если не нашли шифр - уже и не найдем
 		break;
 		
 		case "Merdok_5":
-			dialog.text = "That's a pity for sure, but I am fine with that. I am sure that Johan didn't have enough time to give it to the English, otherwise we would see the consequences by now. It is likely that he has hidden it in some secret stash... let it stay there forever! I congratulate you, captain, with the successful end of the mission!";
-			link.l1 = "Gratitude!";
+			dialog.text = "Жаль, конечно, но я не расстраиваюсь. Я уверен, что Йохан еще не успел передать его англичанам - иначе последствия были бы уже видны. Скорее всего, архив лежит где-нибудь в тайном схроне... и пусть себе лежит там вечно! Поздравляю вас, капитан, с успешным завершением дела!";
+			link.l1 = "Спасибо!";
 			link.l1.go = "Merdok_6";
 		break;
 		
 		case "Merdok_book":
-			dialog.text = "Splendid! Now the English won't get it. You have proven that you are the best once again... Give me the book... There is a reward for the archive you found - here, this fine musket. It has been serving me with a great effort and now it's your turn!";
-			link.l1 = "Gratitude!";
+			dialog.text = "Отлично! Теперь он не достанется англичанам. Вы в очередной раз подтвердили то, что вы лучший... Дайте эту книгу мне... За найденный архив вам положена награда - вот этот отличный мушкет. Он верой и правдой служил мне - пусть теперь послужит и вам!";
+			link.l1 = "Спасибо!";
 			link.l1.go = "Merdok_6";
 			RemoveItems(PChar, "MerdokArchive", 1);
 			GiveItem2Character(PChar, "mushket2");
 		break;
 		
 		case "Merdok_6":
-			dialog.text = "We did well, me and you, captain. It is not an overstatement that you have been a great special agent. You will reach incredible career heights in case you will continue to serve Holland.";
-			link.l1 = "It sounds like you are saying goodbyes...";
+			dialog.text = "Мы отлично поработали с вами, капитан. Без преувеличения могу сказать, что из вас получился отличный агент по специальным поручениям. Если вы продолжите служить во благо Голландии, уверен, что вы достигнете невероятных карьерных высот.";
+			link.l1 = "Вы так говорите, минхер, словно прощаетесь...";
 			link.l1.go = "Merdok_7";
 		break;
 		
 		case "Merdok_7":
-			dialog.text = "I am, " + pchar.name + ". I have accomplished everything I wanted here, so I am leaving to Europe, to my homeland Holland in a week. My wife Abigail and my father-in-law Solomon will accompany me. Peter Stuyvesant has already found a new vice-director, so talk to him if you need something\nAh, for your loyalty I present you the Meifeng, she is yours now, captain, you totally deserved the girl.";
-			link.l1 = "Thank you, mynheer Rodenburg. I really have got attached to the Meifeng and I've started to consider her as my property...";
+			dialog.text = "Так и есть, " + pchar.name + ". Мои дела в колониях наконец-то окончены, и я через неделю отбываю в Европу, в родную Голландию. Со мной отправляется моя жена Абигайль, и теперь уже мой тесть Соломон. Питер Стайвесант уже нашел нового вице-директора Компании, так что по всем вопросам будете обращаться к нему\nДа, чуть не забыл: за вашу верную службу я передаю вам в постоянное владение 'Мейфенг'. Этот корабль отныне ваш, целиком и полностью.";
+			link.l1 = "Спасибо, минхер Роденбург. Я так привязался к 'Мейфенг', что даже привык считать ее своей... теперь это на самом деле так.";
 			link.l1.go = "Merdok_8";
 		break;
 		
 		case "Merdok_8":
-			dialog.text = "And now I have to ask you to leave me, my friend, I have got a lot of things to do before we set sail... Visit me in Amsterdam one day! We will share a drink and remember the good old times...";
-			link.l1 = "Sure, mynheer. I wish you to be happy and prosperous in your new life! Farewell!";
+			dialog.text = "А теперь я попрошу вас покинуть меня, мой друг - мне еще предстоит сделать массу работы до отплытия... Будете в Амстердаме - обязательно заходите! Выпьем по стаканчику у камина, вспомним былые времена...";
+			link.l1 = "Обязательно, минхер. Желаю вам счастья в вашей новой жизни! До свидания!";
 			link.l1.go = "Merdok_9";
 		break;
 		
@@ -853,21 +853,21 @@ void ProcessDialogEvent()
 			sld.Dialog.Filename = "Common_Mayor.c";//patch-8
 			sld.dialog.currentnode = "First time";
 			sld.quest.meeting = "1";
-			AddSimpleRumourCity("Mynheer Rodenburg has sailed to Holland with his young wife and the father-in-law. There is a new vice-director in the Company. Isn't that you, captain?", "Villemstad", 30, 3, "");
-			AddSimpleRumour("They say, that you are highly thought of by our authorities. They say that mynheer Rodenburg has appointed you as his successor in the Company. Is that so, captain?", HOLLAND, 30, 3);
+			AddSimpleRumourCity("Минхер Роденбург отбыл в Голландию с молодой женой и тестем. У Компании теперь новый вице-директор. Кстати, это случайно не вы, капитан?", "Villemstad", 30, 3, "");
+			AddSimpleRumour("Говорят, вы у наших властей в большом почете. Ходят слухи, что именно вас минхер Роденбург назначил своим преемником в Компании. Это так, капитан?", HOLLAND, 30, 3);
 		break;
 		
 //----------------------------------------------за Англию------------------------------------------------------
 		case "Lucas_abordage":
-			dialog.text = "Ha, a friend of Fleetwood's is here! You have won the boarding, but you are about to see that Lucas Rodenburg will slam the door very loudly!";
-			link.l1 = "I don't think that you 'door' will be slammed more loudly than a hatch of the chest with Gaston's head did... Nothing and no one will be able to scare me anymore. Not after that awful day.";
+			dialog.text = "Ха, явился дружок Флитвуда! Ты выиграл абордаж - но увидишь: Лукас Роденбург уйдет, громко хлопнув дверью!";
+			link.l1 = "Не думаю, что твоя 'дверь' хлопнет громче, чем хлопнула крышка сундука с головой Гастона... После того жуткого дня меня уже ничем и никому не напугать. Даже тебе!";
 			link.l1.go = "Lucas_abordage_1";
 		break;
 		
 		case "Lucas_abordage_1":
 			PlaySound("VOICE\Russian\hambit\Lucas Rodenburg-04.wav");
-			dialog.text = "Ha-ha, conceited English dog! I have fired the cargo hold and the fire will get to the powder room soon enough. Ships are deadly coupled so you won't escape! Hell with you!";
-			link.l1 = "We will see...";
+			dialog.text = "Ха-ха, самонадеянный английский пес! Я устроил пожар в трюме, и огонь с минуты на минуту достигнет крюйт-камеры. Корабли сцепились намертво, так что сбежать тебе не удастся! Да пропади ты пропадом!";
+			link.l1 = "Это мы еще посмотрим...";
 			link.l1.go = "Lucas_abordage_2";
 		break;
 		
@@ -882,15 +882,15 @@ void ProcessDialogEvent()
 		
 //----------------------------------------------против всех--------------------------------------------------
 		case "LucasPrisoner":
-			dialog.text = "Why are you here? Want to mock me? Perhaps you will tell me at last what's your interest in all of this? It was you who captured the brigantine, right? Was it your plan from the beginning?";
-			link.l1 = "I am here, Lucas, to give you regards. Best regards from betrayed John Merdock. You was my job and I did it. Farewell now.";
+			dialog.text = "Зачем ты явился? Поглумиться? Может, все-таки скажешь, зачем ты все это затеял? Ведь это ты захватил бригантину, так? Это ты все подстроил?";
+			link.l1 = "Я пришел, Лукас, чтобы передать тебе привет. Привет от преданного тобой Джона Мердока. Ты был моей работой, и я ее выполнил. А теперь - прощай.";
 			link.l1.go = "LucasPrisoner_1";
 		break;
 		
 		case "LucasPrisoner_1":
 			PlaySound("VOICE\Russian\hambit\Lucas Rodenburg-04.wav");
-			dialog.text = "Johan? Ha-ha! So that was the man behind all of this! Old scum! But the game is not over yet. There is a van Berg coming for you and you won't escape from him! Your life will be ended soon, bastard!";
-			link.l1 = "Spare your oratory for the court, Lucas. Farewell.";
+			dialog.text = "Йохан? Ха-ха! Так вот кто стоял за всем этим! Старый каналья! Но игра не окончена. За тобой по пятам идет ван Берг - тебе не скрыться от него! Тебе недолго осталось жить, мерзавец!";
+			link.l1 = "Прибереги свое красноречие для суда, Лукас. Прощай.";
 			link.l1.go = "LucasPrisoner_2";
 		break;
 		

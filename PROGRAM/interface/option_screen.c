@@ -70,6 +70,8 @@ void InitInterface(string iniName)
 	
 	GameInterface.nodes.GLOW_SLIDE.value = glowEffect;
 	SendMessage(&GameInterface, "lslf", MSG_INTERFACE_MSG_TO_NODE, "GLOW_SLIDE", 0, glowEffect);
+	
+//	trace("isLoaded : " + isLoaded);
 }
 
 void ProcessCancelExit()

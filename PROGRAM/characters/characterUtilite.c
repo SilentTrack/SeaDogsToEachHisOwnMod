@@ -46,7 +46,7 @@ void SetShipRemovable(ref _refCharacter, bool bRemovable)
 	}
 }
 
-//ugeen --> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅпїЅ
+//ugeen --> проверка, является ли персонаж глав.героем
 bool IsMainCharacter(ref chr)
 {
 	if(CheckAttribute(chr,"chr_ai.type") && chr.chr_ai.type == LAI_TYPE_PLAYER) return true;
@@ -130,16 +130,16 @@ int GetCargoLoadEx(ref _refCharacter, int addGoods, int iGoods)
 int RecalculateCargoLoad(ref _refCharacter)
 {
 	int loadSpace = 0;
-	// boal 27/07/06 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ -->
+	// boal 27/07/06 учет орудий на борту -->
 	if (sti(_refCharacter.Ship.Cannons.Type) != CANNON_TYPE_NONECANNON)
 	{
 		ref Cannon = GetCannonByType(sti(_refCharacter.Ship.Cannons.Type));
 		loadSpace = GetCannonsNum(_refCharacter) * sti(Cannon.Weight);
 	}
-	// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ <--
-	// ugeen --> пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (1 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 1 пїЅ.)
+	// учет орудий на борту <--
+	// ugeen --> учет веса экипажа (1 тушка члена экипажа весит 1 ц.)
 	loadSpace = loadSpace + GetCrewQuantity(_refCharacter);
-	// <-- пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	// <-- учет веса экипажа
 	for(int i=0; i<GOODS_QUANTITY; i++)
 	{
 		loadSpace = loadSpace + GetGoodWeightByType(i,GetCargoGoods(_refCharacter,i));
@@ -148,9 +148,9 @@ int RecalculateCargoLoad(ref _refCharacter)
 	return loadSpace;
 }
 
-///// --> Ugeen 13.11.10 пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-//   0  -  пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-//   1  -  пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+///// --> Ugeen 13.11.10 Расчет ценового коэффициента для грузов
+//   0  -  товар досталяся на халяву
+//   1  -  товар достался честно
 
 float GetCargoCostCoeff(ref _refCharacter, int _goods)
 {
@@ -212,7 +212,7 @@ int AddCharacterGoodsCostCoeff(ref _refCharacter,int _Goods,int _Quantity, float
 	for (i=0; i<COMPANION_MAX; i++)
 	{
 		cn = GetCompanionIndex(_refCharacter,i);
-		if (cn!=-1 && GetRemovable(&Characters[cn]))//fix пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+		if (cn!=-1 && GetRemovable(&Characters[cn]))//fix грузим токо своим
 		{
 			freeQuantity = GetGoodQuantityByWeight( _Goods, GetCargoFreeSpace(&Characters[cn]) );
 			if(freeQuantity>=_Quantity)
@@ -242,7 +242,7 @@ int RemoveCharacterGoods(ref _refCharacter,int _Goods,int _Quantity)
 	for(i=0; i<COMPANION_MAX; i++)
 	{
 		cn = GetCompanionIndex(_refCharacter,i);
-		if (cn!=-1 && GetRemovable(&Characters[cn]))//fix пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+		if (cn!=-1 && GetRemovable(&Characters[cn]))//fix грузим токо своим
 		{
             if (CheckAttribute(&Characters[cn], "Ship.Cargo.Goods."+goodsName)) // boal fix 230804
             {
@@ -259,7 +259,7 @@ int RemoveCharacterGoods(ref _refCharacter,int _Goods,int _Quantity)
 			}
 			else
 			{
-                if (MOD_BETTATESTMODE == "On") Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ): RemoveCharacterGoods пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ characterID = "+ Characters[cn].id);
+                if (MOD_BETTATESTMODE == "On") Log_TestInfo("Проверка (не критично): RemoveCharacterGoods нет груза для characterID = "+ Characters[cn].id);
 			}
 		}
 	}
@@ -337,7 +337,7 @@ int GetSquadronFreeSpace(ref _refCharacter,int _Goods)
 	for(i=1; i<COMPANION_MAX; i++)
 	{
 		cn = GetCompanionIndex(_refCharacter,i);
-  		if(cn!=-1 && GetRemovable(&Characters[cn]))//fix пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+  		if(cn!=-1 && GetRemovable(&Characters[cn]))//fix грузим токо своим
 		{
 			chref = GetCharacter(cn);
 			//if(GetShipRemovableEx(chref))
@@ -366,7 +366,7 @@ int GetSquadronGoods(ref _refCharacter,int _Goods)
 	for(i=1; i<COMPANION_MAX; i++)
 	{
 		cn = GetCompanionIndex(_refCharacter,i);
-		if(cn!=-1 && GetRemovable(&Characters[cn]))//fix пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+		if(cn!=-1 && GetRemovable(&Characters[cn]))//fix грузим токо своим
 		{
 			chref = GetCharacter(cn);
 			if( GetShipRemovableEx(chref) )
@@ -392,7 +392,7 @@ void SetCharacterGoods(ref _refCharacter,int _Goods,int _Quantity)
 }
 
 
-// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+// доработал метод, теперь возвращает сколько взял
 int AddCharacterGoodsSimple(aref aCharacter, int iGood, int iQuantity)
 {
 	string sGoodName = Goods[iGood].name;
@@ -418,7 +418,7 @@ int AddCharacterGoods(ref _refCharacter,int _Goods,int _Quantity)
 	for (i=0; i<COMPANION_MAX; i++)
 	{
 		cn = GetCompanionIndex(_refCharacter,i);
-		if (cn!=-1 && GetRemovable(&Characters[cn]))//fix пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+		if (cn!=-1 && GetRemovable(&Characters[cn]))//fix грузим токо своим
 		{
 			freeQuantity = GetGoodQuantityByWeight( _Goods, GetCargoFreeSpace(&Characters[cn]) );
 			if(freeQuantity>=_Quantity)
@@ -527,7 +527,7 @@ string GetShipTypeName(ref _refCharacter)
 int GetCharacterShipClass(ref _refCharacter)
 {
 	int nShipType = GetCharacterShipType(_refCharacter);
-	if( nShipType==SHIP_NOTUSED ) return 6; // -1 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	if( nShipType==SHIP_NOTUSED ) return 6; // -1 неправильно, иначе сравнение врет, нет кораля - это лодка
 	return sti(RealShips[nShipType].Class);
 }
 int GetMaxCrewQuantity(ref _refCharacter)
@@ -595,10 +595,10 @@ int SetCrewQuantity(ref _refCharacter,int num)
 	return true;
 }
 
-// --> Eddy, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
+// --> Eddy, пусть будет пока, а то неудобно в тестах.
 void SetCrewQuantityFull(ref _refCharacter)
 {
-	SetCrewQuantity(_refCharacter, GetMaxCrewQuantity(_refCharacter)); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 01/08/06 boal
+	SetCrewQuantity(_refCharacter, GetMaxCrewQuantity(_refCharacter)); // переделал в мах перегруз 01/08/06 boal
 }
 // <-- Eddy
 
@@ -652,7 +652,7 @@ float GetHullPercentWithModifier(ref _refCharacter, int iModifier)
 	return fphp;
 }
 
-float GetSailRPD(ref _refCharacter) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
+float GetSailRPD(ref _refCharacter) // процент ремонта парусов в день
 {
 	float repairSkill = GetSummonSkillFromNameToOld(_refCharacter, SKILL_REPAIR);
 	
@@ -679,7 +679,7 @@ float GetSailRPD(ref _refCharacter) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅп
 	if (ret > damagePercent) ret = damagePercent;
 	return ret;  //boal
 }
-float GetHullRPD(ref _refCharacter) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
+float GetHullRPD(ref _refCharacter) // процент ремонта корпуса в день
 {
 	float repairSkill = GetSummonSkillFromNameToOld(_refCharacter, SKILL_REPAIR);
 	
@@ -706,20 +706,20 @@ float GetHullRPD(ref _refCharacter) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅп
 	if (ret > damagePercent) ret = damagePercent;
 	return ret;  //boal
 }
-float GetSailSPP(ref _refCharacter) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+float GetSailSPP(ref _refCharacter) // количество парусины на один процент починки
 {
 	float ret = 8-GetCharacterShipClass(_refCharacter);
 	
 	if (CheckOfficersPerk(_refCharacter, "Builder"))
 	{
-		ret = ret * 0.75; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+		ret = ret * 0.75; // потребность ниже
 	}
 	ret = ret * isEquippedArtefactUse(_refCharacter, "obereg_2", 1.0, 0.85);
 	ret = ret * isEquippedArtefactUse(_refCharacter, "indian_6", 1.0, 1.10);
 	
 	return ret;
 }
-float GetHullPPP(ref _refCharacter) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+float GetHullPPP(ref _refCharacter) // количество досок на один процент починки
 {
 	float ret = 8-GetCharacterShipClass(_refCharacter);
 	
@@ -729,15 +729,15 @@ float GetHullPPP(ref _refCharacter) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅп
 	
 	if (CheckOfficersPerk(_refCharacter, "Builder"))
 	{
-		ret = ret * 0.75; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+		ret = ret * 0.75; // потребность ниже
 	}
 	ret = ret * isEquippedArtefactUse(_refCharacter, "obereg_1", 1.0, 0.85);
 	ret = ret * isEquippedArtefactUse(_refCharacter, "indian_5", 1.0, 1.10);
 	
 	return ret;
 }
-// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-float GetHullRepairDay(ref _refCharacter, bool _qty) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+// расчет починки корпуса
+float GetHullRepairDay(ref _refCharacter, bool _qty) // процент ремонта корпуса в день с материалом
 {
     float repPercent = 0.0;
     float matQ, tmpf;
@@ -764,7 +764,7 @@ float GetHullRepairDay(ref _refCharacter, bool _qty) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пї
 	return repPercent;
 }
 
-float GetSailRepairDay(ref _refCharacter, bool _qty)			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+float GetSailRepairDay(ref _refCharacter, bool _qty)			// расчет починки парусов
 {
     float repPercent = 0.0;
     float matQ, tmpf;
@@ -813,14 +813,14 @@ bool CheckSelfRepairConditions()
 
 
 // Fellowtravels utilites
-// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+// работа с пассажирами
 int GetPassengersQuantity(ref _refCharacter)
 {
 	if(!CheckAttribute(_refCharacter,"Fellows.Passengers.Quantity")) return 0;
 	return sti(_refCharacter.Fellows.Passengers.Quantity);
 }
 
-// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ boal
+// пассажиры без пленных и квестовых boal
 int GetOfficerPassengerQuantity(ref _refCharacter)
 {
 	int psgQuant = GetPassengersQuantity(_refCharacter);
@@ -1151,7 +1151,7 @@ bool CheckPassengerInCharacter(ref _refBaseChar, string _seekId)
 	return false;
 }
 
-// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+// работа с компаньонами
 int SetCompanionIndex(ref _refCharacter,int _CompanionNum, int _CompanionIdx)
 {
   if(_CompanionNum == -1)
@@ -1200,7 +1200,7 @@ int RemoveCharacterCompanion(ref _refCharacter, ref refCompanion)
 
 	aref refComps;
 	makearef(refComps,_refCharacter.Fellows.Companions);
-	for(i=1; i<COMPANION_MAX; i++)  // пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ3
+	for(i=1; i<COMPANION_MAX; i++)  // был баг к3
 	{
 		compName = "id"+i;
 		if(CheckAttribute(refComps,compName) && refComps.(compName)==refCompanion.index)
@@ -1296,7 +1296,7 @@ bool CheckCompanionInCharacter(ref _refBaseChar, string _seekId)
 	return false;
 }
 
-// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+// работа с офицерами
 int GetOfficersQuantity(ref _refCharacter)
 {
 	int idx=0;
@@ -1341,7 +1341,7 @@ int SetOfficersIndex(ref _refCharacter,int _OfficerNum, int _OfficerIdx)
         // fix
         if (_OfficerNum == -1)
         {
-            _OfficerNum = 3; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ?? пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+            _OfficerNum = 3; // нет места?? да пофиг
         }
 	}
 	if(_OfficerNum<1) return _OfficerIdx;
@@ -1400,18 +1400,18 @@ int AddMoneyToCharacter(ref _refCharacter,int _Money)
 	_refCharacter.Money = newMoney;
 
     //boal -->
-	if (sti(_refCharacter.index) == GetMainCharacterIndex()) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+	if (sti(_refCharacter.index) == GetMainCharacterIndex()) // флаг лога
 	{
 		if (_Money > 0)
 		{
-			Log_Info("" + _Money + " pesos received");
+			Log_Info("Добавлено " + _Money + " песо");
 			Statistic_AddValue(Pchar, "Money_get", _Money);
 		}
 		else
 		{
 		    if (_Money < 0)
 			{
-				Log_Info("" + abs(_Money) + " pesos spent");
+				Log_Info("Потрачено " + abs(_Money) + " песо");
 				Statistic_AddValue(Pchar, "Money_spend", abs(_Money));
 			}
 		}
@@ -1468,11 +1468,11 @@ void SetBaseShipData(ref refCharacter)
 		}
 		if (!CheckAttribute(refShip,"Crew.Quantity")) 
 		{ 
-			refShip.Crew.Quantity = refBaseShip.OptCrew; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
+			refShip.Crew.Quantity = refBaseShip.OptCrew; // оптимальная команда 
 		}
         
-		SetGoodsInitNull(refCharacter); // boal пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
-		// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+		SetGoodsInitNull(refCharacter); // boal пееренс в метод
+		// новый опыт
         if(!CheckAttribute(refCharacter, "ship.crew.Exp"))
 		{
 			refCharacter.Ship.Crew.Exp.Sailors   = 1 + rand(80);
@@ -1627,7 +1627,7 @@ void SetGoodsInitNull(ref refCharacter)
 	NullCharacterGoods(refCharacter);
 }
 
-// Warship. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+// Warship. Нулим все товары у персонажа. Так уж получилось, что два одинаковых метода
 void NullCharacterGoods(ref rChar)
 {
 	string sGood;
@@ -1642,7 +1642,7 @@ void NullCharacterGoods(ref rChar)
 	}
 }
 
-// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ1 пїЅпїЅпїЅпїЅпїЅпїЅ :)
+// метод рудимент от к1 видимо :)
 void SetBaseFellows(object refCharacter)
 {
 	aref tmpRef;
@@ -1684,7 +1684,7 @@ void TakeItemFromCharacter(ref _refCharacter,string itemName)
 	TakeNItems(_refCharacter,itemName,-1);
 }
 
-// Warship. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
+// Warship. Просто сокращения -->
 void AddItems(ref _Chr, string _ItemID, int _Num)
 {
 	TakeNItems(_Chr, _ItemID, _Num);
@@ -1694,9 +1694,9 @@ void RemoveItems(ref _Chr, string _ItemID, int _Num)
 {
 	TakeNItems(_Chr, _ItemID, -1*_Num);
 }
-// <-- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+// <-- Просто сокращения
 
-// Warship 11.05.09 пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+// Warship 11.05.09 Для новой системы предметов
 void GenerateAndAddItems(ref _chr, string _itemID, int _qty)
 {
 	int i;
@@ -1865,7 +1865,7 @@ bool TakeNItems(ref _refCharacter, string itemName, int n)
 	
 	if(CheckAttribute(arItm, "price") && sti(arItm.price) == 0)
 	{
-		if(arItm.ID != "Gold") // Warship. пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		if(arItm.ID != "Gold") // Warship. Для нового интерфейса обмена - проверка на золото
 		{
 			if(sti(_refCharacter.index) == GetMainCharacterIndex() && IsEntity(_refCharacter))
 			{
@@ -1883,8 +1883,8 @@ bool TakeNItems(ref _refCharacter, string itemName, int n)
 				PlayStereoSound("interface\important_item.wav");
 			}
 			
-			// Warship 08.05.09 - пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅ пїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			// Warship 08.05.09 - Не ясная мне логика. И и ИЛИ в одном выражении не поддерживаются скриптовым двигом
+			// Перенес вверх
 			/*if(n > 0 && IsOfficer(_refCharacter) || IsCompanion(_refCharacter))
 			{
 				AddMsgToCharacter(_refCharacter, MSGICON_GETITEM);
@@ -1934,7 +1934,7 @@ bool TakeNItems(ref _refCharacter, string itemName, int n)
 
 int GetCharacterCurrentIsland(ref _refCharacter)
 {
-	int curLocNum = FindLocation(_refCharacter.location);   // boal fix Characters[GetMainCharacterIndex()]    - пїЅпїЅ-пїЅпїЅ
+	int curLocNum = FindLocation(_refCharacter.location);   // boal fix Characters[GetMainCharacterIndex()]    - ну-ну
 	if(curLocNum<0) return -1;
 	return GetIslandIdxByLocationIdx(curLocNum);
 }
@@ -2156,14 +2156,14 @@ string FindCharacterItemByGroup(ref chref, string groupID)
     float  maxBladeValue, curBladeValue;
     string resultItemId;
 	
-	if (CheckAttribute(chref, "CanTakeMushket") && CheckAttribute(chref, "IsMushketer")) return ""; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-    // boal 17.06.05 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ -->
+	if (CheckAttribute(chref, "CanTakeMushket") && CheckAttribute(chref, "IsMushketer")) return ""; // мушкеты не выбираем
+    // boal 17.06.05 офицерам даем кулаки -->
 	if (groupID == BLADE_ITEM_TYPE && IsOfficer(chref) && IsEquipCharacterByItem(chref, "unarmed") && !CheckAttribute(chref, "isMusketer"))
 	{
         RemoveCharacterEquip(chref, BLADE_ITEM_TYPE);
         TakeItemFromCharacter(chref, "unarmed");
 	}
-	// boal 17.06.05 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ <--
+	// boal 17.06.05 офицерам даем кулаки <--
 	maxBladeValue = 0;
 	resultItemId  = "";
 	for(i=TOTAL_ITEMS-1; i>=0; i--)
@@ -2187,20 +2187,20 @@ string FindCharacterItemByGroup(ref chref, string groupID)
             // boal <--
 			continue;
 		}
-		// boal 08.10.04 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->
-		// Jason: пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
+		// boal 08.10.04 броню офицерам -->
+		// Jason: больше перк кирасы не нужен, водолаза и мундиры офицерам не даем
 		if (groupID == CIRASS_ITEM_TYPE)
 		{
           // if( IsCharacterPerkOn(chref, "Ciras") )	{return refItm.id;}
 			if(refItm.Clothes == false)	return refItm.id;
            continue;
 		}
-		// boal 08.10.04 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ <--
+		// boal 08.10.04 броню офицерам <--
 
-		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+		// перебор на лучшую саблю
 		if (groupID == BLADE_ITEM_TYPE)
 		{
-			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+			// формула лучшего выбора
 			//( 20 + ( 0.6 * bAttack + 0.4 * bAttack * GetCharacterSkill(chref, refItm.FencingType) * ( 1 + ( 1 - bBlnce ) * ( bBlnce - 1 ) / 5 ) ) / Wght
 			curBladeValue = (20.0 + (0.6 * stf(refItm.Attack) + 0.4 * stf(refItm.Attack) * (GetCharacterSkill(chref, refItm.FencingType) / SKILL_MAX) * (1.0 + (1.0 - stf(refItm.Balance)) * (stf(refItm.Balance) - 1.0)/5.0) ) ) / stf(refItm.Weight);
 			
@@ -2220,14 +2220,14 @@ string FindCharacterItemByGroup(ref chref, string groupID)
 	{
         return resultItemId;
 	}
-	// boal 17.06.05 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ -->
+	// boal 17.06.05 офицерам даем кулаки -->
 	if (groupID == BLADE_ITEM_TYPE && IsOfficer(chref) && sti(chref.index) != GetMainCharacterIndex() && !CheckAttribute(chref, "isMusketer"))
 	{
         GiveItem2Character(chref, "unarmed");
         EquipCharacterByItem(chref, "unarmed");
 	}
-	// boal 17.06.05 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ <--
-	return "";  //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	// boal 17.06.05 офицерам даем кулаки <--
+	return "";  //ничего не делать далее
 }
 
 bool IsEquipCharacterByItem(ref chref, string itemID)
@@ -2242,7 +2242,7 @@ bool IsEquipCharacterByItem(ref chref, string itemID)
 	return false;
 }
 
-// --> ugeen - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ     18.06.09
+// --> ugeen - проверяем, есть ли карта в атласе     18.06.09
 bool IsEquipCharacterByMap(ref chref, string itemID)
 {
 	aref arEquip;
@@ -2258,7 +2258,7 @@ bool IsEquipCharacterByMap(ref chref, string itemID)
 	return false;
 }
 
-// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ -> пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+// получить суммарный вес экипированных предметов в зависимости от группы -> нужно для атласа карт
 float GetEquippedItemsWeight(ref chref, string groupID)
 {	
 	int 	j;
@@ -2361,7 +2361,7 @@ void SetEquipedItemToCharacter(ref chref, string groupID, string itemID)
 		break;
 	    // boal -->
 	    case CIRASS_ITEM_TYPE:
-	        if (CheckAttribute(chref, "HeroModel")) // пїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	        if (CheckAttribute(chref, "HeroModel")) // все, у кого есть что одеть
 	        {
 	            if (CheckAttribute(arItm, "model"))
 	            {
@@ -2376,7 +2376,7 @@ void SetEquipedItemToCharacter(ref chref, string groupID, string itemID)
 	        }
 	        else
 	        {
-	            // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	            // тут анализ модели офицера или пирата
 	            if(CheckAttribute(arItm, "model"))
 	            {
 	                chref.cirassId = itemNum;
@@ -2394,7 +2394,7 @@ void SetEquipedItemToCharacter(ref chref, string groupID, string itemID)
 	        if(CheckAttribute(arItm,"quest"))
 	        {
 	            DoQuestCheckDelay(arItm.quest, 1.0);
-	            chref.EquipedPatentId = itemNum; // boal пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	            chref.EquipedPatentId = itemNum; // boal текущий патент
 	        }
 	        else
 	        {
@@ -2449,20 +2449,20 @@ void SetEquipedItemToCharacter(ref chref, string groupID, string itemID)
 			} else
 			{	LAi_BladeFencingType(chref, "FencingS");
 			}
-			if(CheckAttribute(arItm,"Weight")) //eddy.пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ
+			if(CheckAttribute(arItm,"Weight")) //eddy.при загрузки локации если у ГГ нет оружия - ошибка
 			{
-				LAi_BladeEnergyType(chref, GetEnergyBladeDrain(stf(arItm.Weight), arItm.FencingType ) );  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
+				LAi_BladeEnergyType(chref, GetEnergyBladeDrain(stf(arItm.Weight), arItm.FencingType ) );  // энергоемкость от веса и типа
 			}		
 			// boal <--
 		break;
-		// --> ugeen 18.06.09   - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ	
+		// --> ugeen 18.06.09   - увеличиваем счетчик карт в атласе	
 		case MAPS_ITEM_TYPE:	
 			if(CheckAttribute(chref, "MapsAtlasCount"))
 			{
 				if(sti(arItm.Atlas) > 0)
 				{
 					chref.MapsAtlasCount = sti(chref.MapsAtlasCount) + 1;
-					if(sti(chref.MapsAtlasCount) == MAPS_IN_ATLAS && !CheckCharacterPerk(chref, "MapMaker"))  // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+					if(sti(chref.MapsAtlasCount) == MAPS_IN_ATLAS && !CheckCharacterPerk(chref, "MapMaker"))  // даем скрытый перк если собрали все карты островов
 					{
 						SetCharacterPerk(chref, "MapMaker");
 					}	
@@ -2473,7 +2473,7 @@ void SetEquipedItemToCharacter(ref chref, string groupID, string itemID)
 	}
 }
 
-// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+// коэф траты энергии от веса сабли
 float GetEnergyBladeDrain(float _weight, string _bladeType)
 {
 	float drain = 0.0;
@@ -2522,7 +2522,7 @@ void EquipCharacterByItem(ref chref, string itemID)
 	if( !CheckAttribute(arItm, "groupID") ) return;
 
 	string groupName = arItm.groupID;
-	if(groupName != MAPS_ITEM_TYPE) // ugeen - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ  18.06.09
+	if(groupName != MAPS_ITEM_TYPE) // ugeen - для атласа карт  18.06.09
 	{
 		string oldItemID = GetCharacterEquipByGroup(chref, groupName);
 		if(oldItemID == itemID) return;
@@ -2550,7 +2550,7 @@ void EquipCharacterByItem(ref chref, string itemID)
 			{
 				if (!IsCharacterPerkOn(chref,"GunProfessional")) return;
 			}
-			// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+			// Для мушкетов нужен соответствующий перк
 			if(HasSubStr(arItm.id, "mushket") && !IsCharacterPerkOn(chref,"Gunman"))	return;		
 		}
 		if (groupName == GUN_ITEM_TYPE && HasSubStr(arItm.id, "mushket")) return;
@@ -2627,7 +2627,7 @@ void EnableEquip(ref chref, string equiping_group, bool enable)
 			stmp = BLADE_ITEM_TYPE;		chref.equip.disabled_group.(stmp) = true;
 			stmp = SPYGLASS_ITEM_TYPE;	chref.equip.disabled_group.(stmp) = true;
 			//
-			stmp = SPECIAL_ITEM_TYPE;	chref.equip.disabled_group.(stmp) = true; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			stmp = SPECIAL_ITEM_TYPE;	chref.equip.disabled_group.(stmp) = true; // зелье команчей
 		}
 		else
 		{
@@ -2730,13 +2730,13 @@ bool IsCanArtefactBeEquipped(ref chref, string itemID)
 		if(sItem == SLOT_NOT_USED) continue;
 		else
 		{
-			ref rItem1 = ItemsFromID(sItem);  	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-			ref rItem2 = ItemsFromID(itemID); 	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+			ref rItem1 = ItemsFromID(sItem);  	// экипированный артефакт
+			ref rItem2 = ItemsFromID(itemID); 	// артефакт который хотим одеть
 			if(!CheckAttribute(rItem1,"type") || !CheckAttribute(rItem2,"type")) return false;
 			if(rItem1.type == rItem2.type) continue;
 			if(rItem1.type == ITEM_OBEREG || rItem1.type == ITEM_TOTEM) continue;
 			if(rItem2.type == ITEM_OBEREG || rItem2.type == ITEM_TOTEM) continue;
-			else return false; 					// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ !!!!!
+			else return false; 					// разного типа - одеть нельзя !!!!!
 		}
 	}
 	return true;
@@ -2776,7 +2776,7 @@ void RemoveCharacterArtefactEquip(ref chref, string slotID)
 	if(sItem != "")
 	{
 		ref rItem = ItemsFromID(sItem);
-		if(CheckAttribute(rItem, "time") && sti(rItem.time) > -1) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		if(CheckAttribute(rItem, "time") && sti(rItem.time) > -1) // бессрочные артефакты оставляем
 		{
 			TakeNItems(chref, sItem, -1);			
 		}
@@ -2795,7 +2795,7 @@ void EquipCharacterByArtefact(ref chref, string itemID)
 	if( !CheckAttribute(arItm, "groupID") ) return;
 	if(arItm.groupID == ITEM_SLOT_TYPE)
 	{
-		if(IsEquipCharacterByArtefact(chref, itemID)) return; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		if(IsEquipCharacterByArtefact(chref, itemID)) return; // если уже экипирован этим артефактом
 		slotID = GetCharacterFreeSlot(chref);
 		if(slotID != SLOT_NOT_USED)
 		{
@@ -2852,7 +2852,7 @@ void UpdateCharacterEquipItem(ref chref)
 					idLngFile = LanguageOpenFile("ItemsDescribe.txt");
 					sItem = GetCharacterEquipBySlot(chref, sAttr)
 					ref arItem = ItemsFromID(sItem);
-					Log_SetStringToLog(GetFullName(chref) + " noticed that " + LanguageConvertString(idLngFile, arItem.name) + " has lost it's powers");
+					Log_SetStringToLog(GetFullName(chref) + " заметил, что артефакт " + LanguageConvertString(idLngFile, arItem.name) + " утратил силу");
 					RemoveCharacterArtefactEquip(chref, sAttr);
 					LanguageCloseFile(idLngFile);
 					if(!IsMainCharacter(chref) && GetCharacterFreeItem(chref, sItem) > 0)
@@ -2870,8 +2870,8 @@ void CheckCharactersUpdateItems()
 	int iPassenger, cn;
 	ref sld;
 
-	UpdateCharacterEquipItem(pchar); // пїЅпїЅ
-	for (int io = 0; io < GetPassengersQuantity(pchar); io++) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	UpdateCharacterEquipItem(pchar); // ГГ
+	for (int io = 0; io < GetPassengersQuantity(pchar); io++) // пассажиры и офицеры
 	{
 		iPassenger = GetPassenger(pchar, io);
 		if (iPassenger != -1)
@@ -2880,7 +2880,7 @@ void CheckCharactersUpdateItems()
 			UpdateCharacterEquipItem(sld);
 		}
 	}
-	for (int i=1; i<COMPANION_MAX; i++) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	for (int i=1; i<COMPANION_MAX; i++) // компаньоны
 	{
 		cn = GetCompanionIndex(pchar, i);
 		if(cn != -1)
@@ -2897,7 +2897,7 @@ bool IsCharacterEquippedArtefact(ref rChar, string itemID)
 	ref 	rItem, sld;
 	string  sKind = "";
 	
-	if (IsMainCharacter(rChar)) // пїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
+	if (IsMainCharacter(rChar)) // ГГ и его офицеры 
 	{
 		if(IsEquipCharacterByArtefact(pchar, itemID)) return true;
 		rItem = ItemsFromID(itemID);
@@ -2942,7 +2942,7 @@ bool IsCharacterEquippedArtefact(ref rChar, string itemID)
 			return false;
 		}	
 	}
-	// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅ.пїЅ.)
+	// все прочие (компаньоны, враги и т.п.)
 	return IsEquipCharacterByArtefact(rChar, itemID);
 }
 
@@ -2958,7 +2958,7 @@ float isEquippedAmuletUse(ref rChar, string sItem, float fOff, float fOn)
 	return fOff;
 }
 
-/// --> Ugeen 30.09.10  пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
+/// --> Ugeen 30.09.10  Новая комплексная репутация ГГ
 int ChangeCharacterComplexReputationABS(ref chref, string repName, float incr)
 {
 	int curVal = COMPLEX_REPUTATION_NEUTRAL;
@@ -2991,7 +2991,7 @@ int ChangeCharacterComplexReputation(ref chref, string repName, float incr)
 	chref.reputation.(repName) = newVal;
 	if(!IsMainCharacter(chref)) return makeint(newVal);
 
-	if(repName != "authority") // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	if(repName != "authority") // изменение авторитета не выводим
 	{
 		prevName 		= GetReputationComplexName(makeint(prevVal), repName);
 		newName 		= GetReputationComplexName(makeint(newVal),  repName);
@@ -3018,11 +3018,11 @@ int ChangeCharacterComplexReputation(ref chref, string repName, float incr)
 	
 	return makeint(newVal);
 }
-/// <-- пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
+/// <-- Новая комплексная репутация ГГ
 
-///  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 06/06/06 boal new concept -->
-//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
-//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
+///  репутация ГГ 06/06/06 boal new concept -->
+//изменить репутацию персонажа в зависимости от текущей репутации.
+//минус для плохого это рост в плюс
 int ChangeCharacterReputationABS(ref chref, float incr)
 {
 	int curVal = REPUTATION_NEUTRAL;
@@ -3032,7 +3032,7 @@ int ChangeCharacterReputationABS(ref chref, float incr)
 	return ChangeCharacterReputation(chref , incr);
 }
 
-// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+// репутация стремится к нейтральной
 int ChangeCharacterReputationToNeutral(ref chref, float incr)
 {
 	int curVal = REPUTATION_NEUTRAL;
@@ -3044,7 +3044,7 @@ int ChangeCharacterReputationToNeutral(ref chref, float incr)
 
 int ChangeCharacterReputation(ref chref, float incr)
 {
-	if (CheckAttribute(chref, "GenQuest.ReputationNotChange")) return sti(chref.reputation); //eddy. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+	if (CheckAttribute(chref, "GenQuest.ReputationNotChange")) return sti(chref.reputation); //eddy. нужен флаг
 	float prevVal = REPUTATION_NEUTRAL;
 	if (CheckAttribute(chref,"reputation") )	prevVal = stf(chref.reputation);
 
@@ -3072,41 +3072,41 @@ int ChangeCharacterReputation(ref chref, float incr)
 
 void UpdateReputation()
 {
-	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
-	if (sti(pchar.reputation.nobility) < (COMPLEX_REPUTATION_NEUTRAL - 10))  // пїЅпїЅпїЅпїЅпїЅпїЅ
+	// благородство (бывшая репутация)
+	if (sti(pchar.reputation.nobility) < (COMPLEX_REPUTATION_NEUTRAL - 10))  // плохиш
 	{
 		ChangeCharacterComplexReputation(pchar, "nobility", (MOD_SKILL_ENEMY_RATE / 50.0));
 	}
-	if (sti(pchar.reputation.nobility) > (COMPLEX_REPUTATION_NEUTRAL + 10))  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	if (sti(pchar.reputation.nobility) > (COMPLEX_REPUTATION_NEUTRAL + 10))  // кибальчиш
 	{
 		ChangeCharacterComplexReputation(pchar, "nobility", (-MOD_SKILL_ENEMY_RATE / 25.0));
 	}
 	
-	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-	if (sti(pchar.reputation.fame) < (COMPLEX_REPUTATION_NEUTRAL - 10))  // пїЅпїЅпїЅпїЅпїЅпїЅ
+	//известность
+	if (sti(pchar.reputation.fame) < (COMPLEX_REPUTATION_NEUTRAL - 10))  // плохиш
 	{
 		ChangeCharacterComplexReputation(pchar, "fame", (MOD_SKILL_ENEMY_RATE / 50.0));
 	}
-	if (sti(pchar.reputation.fame) > (COMPLEX_REPUTATION_NEUTRAL + 10))  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	if (sti(pchar.reputation.fame) > (COMPLEX_REPUTATION_NEUTRAL + 10))  // кибальчиш
 	{
 		ChangeCharacterComplexReputation(pchar, "fame", (-MOD_SKILL_ENEMY_RATE / 25.0));
 	}
 	
 }
 
-// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+// метод вызывается ежедневно, уменьшает значение крайних репутаций - эффект забывания.
 void UpdateFame()
 {
-	if (sti(pchar.reputation) < (REPUTATION_NEUTRAL - 10))  // пїЅпїЅпїЅпїЅпїЅпїЅ
+	if (sti(pchar.reputation) < (REPUTATION_NEUTRAL - 10))  // плохиш
 	{
-		ChangeCharacterReputation(pchar, (MOD_SKILL_ENEMY_RATE / 40.0)); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		ChangeCharacterReputation(pchar, (MOD_SKILL_ENEMY_RATE / 40.0)); // медленнее
 	}
-	if (sti(pchar.reputation) > (REPUTATION_NEUTRAL + 10))  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	if (sti(pchar.reputation) > (REPUTATION_NEUTRAL + 10))  // кибальчиш
 	{
 		ChangeCharacterReputation(pchar, (-MOD_SKILL_ENEMY_RATE / 20.0));
 	}
 }
-///  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 06/06/06 boal new concept <--
+///  репутация ГГ 06/06/06 boal new concept <--
 
 bool Character_IsAbordageEnable(ref rCharacter)
 {
@@ -3271,14 +3271,14 @@ void  Set_My_Cabin()
 	else
 	{
 	    rShip = GetRealShip(nShipType);
-	    newCab = "My_" + rShip.CabinType;  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	    newCab = "My_" + rShip.CabinType;  // превратим из каюты типа корабля
 	}
 
     if (Pchar.SystemInfo.CabinType != newCab)
     {
         if (Pchar.SystemInfo.CabinType != "")
         {
-            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            // переселить предметы
             ref     loc, locTo;
             aref    arFromBox;
             aref    curItem;
@@ -3353,7 +3353,7 @@ void  Set_My_Cabin()
     }
 }
 
-int CheckItemInBox(string _itemID, string _locationID, string _box) // Addon 2016-1 Jason пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+int CheckItemInBox(string _itemID, string _locationID, string _box) // Addon 2016-1 Jason подсчет указанных предметов в конкретном сундуке конкретной локации
 {
 	int Qty = 0; 
     string attr;
@@ -3499,7 +3499,7 @@ int GetItemMyCabin(string _itemID, int _qty)
 	return rQty;
 } 
  
-// пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+// есть ли патент
 bool isMainCharacterPatented()
 {
     if(CheckAttribute(pchar, "EquipedPatentId") && CheckCharacterItem(pchar, Items[sti(pchar.EquipedPatentId)].id))
@@ -3518,7 +3518,7 @@ int GetPatentNation()
     return -1;
 }
 
-// пїЅпїЅпїЅпїЅпїЅпїЅ
+// звания
 void AddTitleNextRate(int nation, float num)
 {
     if (isMainCharacterPatented() && sti(Items[sti(pchar.EquipedPatentId)].Nation) == nation)
@@ -3529,7 +3529,7 @@ void AddTitleNextRate(int nation, float num)
         Log_TestInfo("TitleCurNext = " + stf(Items[sti(pchar.EquipedPatentId)].TitulCurNext));
     }
 }
-// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ?
+// присвоить следующее?
 bool isReadyToNextTitle(int nation)
 {
     bool    ret = false;
@@ -3544,7 +3544,7 @@ bool isReadyToNextTitle(int nation)
 
     return ret;
 }
-// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ -->
+// проверка на допустимость игры в карты и кости -->
 float GetCardsGameCheckRate()
 {
 	float k;
@@ -3616,10 +3616,10 @@ bool CheckDiceGameBigRate()
     }
 	return ret;
 }
-// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ <--
+// проверка на допустимость игры в карты и кости <--
 
 // boal 08.01.05 -->
-int GetPartyCrewQuantity(ref _refCharacter, bool _removable) // true - пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+int GetPartyCrewQuantity(ref _refCharacter, bool _removable) // true - если только наши
 {
 	int cn;
 	int sumCrew = 0;
@@ -3631,7 +3631,7 @@ int GetPartyCrewQuantity(ref _refCharacter, bool _removable) // true - пїЅпїЅпїЅ
 		if (cn!=-1)
 		{
             officer = GetCharacter(cn);
-            if (!GetRemovable(officer) && _removable) continue; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ + пїЅпїЅ
+            if (!GetRemovable(officer) && _removable) continue; // только наши + ГГ
 			sumCrew = sumCrew + GetCrewQuantity(officer);
 		}
 	}
@@ -3648,7 +3648,7 @@ int GetTroopersCrewQuantity(ref _refCharacter)
  	if (CheckOfficersPerk(_refCharacter, "Troopers"))
     {
         Log_TestInfo("-= GetTroopersCrewQuantit =-");
-        for (j=1; j<COMPANION_MAX; j++) // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        for (j=1; j<COMPANION_MAX; j++) // ГГ отдельно
         {
 	        cn = GetCompanionIndex(_refCharacter, j);
 	        if (cn>0)
@@ -3661,38 +3661,38 @@ int GetTroopersCrewQuantity(ref _refCharacter)
 		        {
 		           compCrew = 0;
 		        }
-				compCrew = GetWeaponCrew(officer, compCrew);  // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ)
+				compCrew = GetWeaponCrew(officer, compCrew);  // без оружия просто не идут (как половина команды учет)
 
                 if (compCrew > 0)
                 {
 	                RemoveCharacterGoodsSelf(officer, GOOD_WEAPON, makeint(compCrew/2 + 0.5));
 	                SetCrewQuantity(officer, GetCrewQuantity(officer) - compCrew);
-                	Log_SetStringToLog("A landing party of " + officer.Ship.Name + " has " + compCrew + " soldiers in it");
-                	AddCharacterExpToSkill(officer, "Defence", makeint(compCrew / 2 + 0.5)); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+                	Log_SetStringToLog("Десант корабля " + officer.Ship.Name + " составляет " + compCrew + " человек.");
+                	AddCharacterExpToSkill(officer, "Defence", makeint(compCrew / 2 + 0.5)); //качаем защиту
                 	AddCharacterExpToSkill(officer, "Grappling", makeint(compCrew / 2 + 0.5));
                 	sumCrew = sumCrew + compCrew;
                 }
 		    }
 		}
     }
-    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+    // квестовый перк
     if (CheckAttribute(_refCharacter, "TempPerks.QuestTroopers"))
 	{
         Log_TestInfo("-= QuestTroopers =-");
-		for (j=1; j<COMPANION_MAX; j++) // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		for (j=1; j<COMPANION_MAX; j++) // ГГ отдельно
         {
 	        cn = GetCompanionIndex(_refCharacter, j);
 	        if (cn>0)
 	        {
 		        officer = GetCharacter(cn);
-		        if (GetRemovable(officer)) continue;// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		        if (GetRemovable(officer)) continue;// токо квесты
 
 		        compCrew = GetCrewQuantity(officer);
 		        if (compCrew < 0)
 		        {
 		           compCrew = 0;
 		        }
-		        Log_SetStringToLog("A landing party of " + officer.Ship.Name + " has " + compCrew + " soldiers in it");
+		        Log_SetStringToLog("Десант корабля " + officer.Ship.Name + " составляет " + compCrew + " человек.");
                 if (compCrew > 0)
                 {
                 	sumCrew = sumCrew + compCrew;
@@ -3703,7 +3703,7 @@ int GetTroopersCrewQuantity(ref _refCharacter)
 	}
 	return sumCrew;
 }
-// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
+// распределить перегруз экипажа по кораблям ГГ
 void AddTroopersCrewToOther(ref _refCharacter)
 {
 	int cn, j;
@@ -3719,7 +3719,7 @@ void AddTroopersCrewToOther(ref _refCharacter)
     }
 	if (compCrew > 0)
 	{
-	    for (j=1; j<COMPANION_MAX; j++) // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	    for (j=1; j<COMPANION_MAX; j++) // ГГ отдельно
 	    {
 	        cn = GetCompanionIndex(_refCharacter, j);
 	        if (cn>0)
@@ -3730,7 +3730,7 @@ void AddTroopersCrewToOther(ref _refCharacter)
                 if (GetMaxCrewQuantity(officer) >= (GetCrewQuantity(officer) + compCrew))
                 {
                     SetCrewQuantity(officer, (GetCrewQuantity(officer) + compCrew));
-                    break;  // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+                    break;  // все влезли
                 }
                 else
                 {
@@ -3753,7 +3753,7 @@ int GetWeaponCrew(ref _char, int _crew)
 }
 // boal 08.01.05 <--
 
-// ========================= eddy пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+// ========================= eddy пока сюда перенесу
 int GenerateNationTrade(int nation)
 {
 	int i = -1;
@@ -3765,7 +3765,7 @@ int GenerateNationTrade(int nation)
 	{
 		i = rand(MAX_NATIONS - 1);
 		ok = (GetNationRelation2MainCharacter(i) == RELATION_ENEMY) && (i != PIRATE); //fix 12.05.05
-		if (ok || GetNationRelation(nation, i) == RELATION_ENEMY) // boal пїЅпїЅпїЅпїЅ nation == i || i == PIRATE- пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!!!
+		if (ok || GetNationRelation(nation, i) == RELATION_ENEMY) // boal было nation == i || i == PIRATE- но сами себе можем!!!
 		{
 			i = -1;
 		}
@@ -3791,10 +3791,10 @@ int RecalculateSquadronCargoLoad(ref _refCharacter)
 	return retVal;
 }
 
-// пїЅпїЅ пїЅпїЅпїЅ_пїЅпїЅпїЅпїЅпїЅпїЅ
+// из Боф_реакшн
 void LoansMoneyAvenger(ref _loan)
 {
-    Log_SetStringToLog("Terms of your loan are expired");
+    Log_SetStringToLog("Срок Вашего займа истек");
 
     LoansMoneyAvengerAmount(_loan, 25);
 }
@@ -3806,11 +3806,11 @@ void LoansMoneyAvengerAmount(ref _loan, int _sum)
     OfficersReaction("bad");
     if ( _loan.nation == PIRATE)
     {
-        typeHunter = "enghunter";  // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+        typeHunter = "enghunter";  // за пиратов мстит англия
     }
     ChangeCharacterHunterScore(PChar, typeHunter, _sum);
 }
-//homo пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+//homo возращает нпс стоящего на локаторе
 int GetCharacterbyLocation(string location, string group, string locator)
 {
     ref sld;
@@ -3823,41 +3823,41 @@ int GetCharacterbyLocation(string location, string group, string locator)
 }
 
 // Warship -->
-// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-bool SetMainCharacterToMushketer(string sMushket, bool _ToMushketer) // пїЅпїЅпїЅпїЅ _ToMushketer == true, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+// Сделать ГГ мушкетером или обычным фехтовальщиком
+bool SetMainCharacterToMushketer(string sMushket, bool _ToMushketer) // если _ToMushketer == true, значит делаем мушкетером, иначе - делаем ГГ фехтовальщиком
 {
 	int iItem;
 	string sLastGun = "";
 	
-	if(_ToMushketer && sMushket != "") // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	if(_ToMushketer && sMushket != "") // Делаем ГГ мушкетером
 	{
 		iItem = GetItemIndex(sMushket);
 		if(iItem == -1) return false;
 		
-		// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		// Стоит проверка при надевании предмета. Если каким-то образом дошло до сюда, то тут не разрешим
 		if(!CanEquipMushketOnLocation(PChar.Location)) return false;
 		
 		sLastGun = GetCharacterEquipByGroup(PChar, GUN_ITEM_TYPE);
 		PChar.DefaultAnimation = PChar.model.Animation;
-		PChar.IsMushketer = true; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ "пїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
-		PChar.IsMushketer.MushketID = sMushket; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-		PChar.IsMushketer.LastGunID = sLastGun; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ID пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		PChar.IsMushketer = true; // Ставим флаг "ГГ - мушкетер"
+		PChar.IsMushketer.MushketID = sMushket; // Запомним, какой мушкет надели
+		PChar.IsMushketer.LastGunID = sLastGun; // Запомним ID предыдущего пистоля
 		PChar.model = PChar.model + "_mush";
-		PChar.model.animation = "mushketer"; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-		Characters_RefreshModel(PChar); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-		EquipCharacterByItem(PChar, sMushket); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-		PChar.Equip.TempGunID = sLastGun; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		PChar.model.animation = "mushketer"; // Сменим анимацию
+		Characters_RefreshModel(PChar); // Обновим модель. Важно: обновлять модель нужно ДО экипировки мушкетом
+		EquipCharacterByItem(PChar, sMushket); // Экипируем мушкет
+		PChar.Equip.TempGunID = sLastGun; // Пистоль оставляем экипированным, но в другой группе
 		
 	}
-	else // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	else // Делаем ГГ обычным фехтовальщиком
 	{
-		PChar.model = FindStringBeforeChar(PChar.model, "_mush"); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		PChar.model = FindStringBeforeChar(PChar.model, "_mush"); // Вернем модель и анимацию
 		PChar.model.Animation = PChar.DefaultAnimation;
 		Characters_RefreshModel(PChar);
-		RemoveCharacterEquip(PChar, GUN_ITEM_TYPE); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		RemoveCharacterEquip(PChar, GUN_ITEM_TYPE); // Снимим мушкет
 		if(PChar.IsMushketer.LastGunID != "" && GetCharacterItem(PChar, PChar.IsMushketer.LastGunID) > 0)
 		{
-			EquipCharacterByItem(PChar, PChar.IsMushketer.LastGunID); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			EquipCharacterByItem(PChar, PChar.IsMushketer.LastGunID); // Оденем прошлый пистоль
 		}
 		
 		DeleteAttribute(PChar, "IsMushketer");
@@ -3867,13 +3867,13 @@ bool SetMainCharacterToMushketer(string sMushket, bool _ToMushketer) // пїЅпїЅпї
 	return true;
 }
 
-// пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ?
+// Можно-ли экипировать мушкет в локации?
 bool CanEquipMushketOnLocation(string LocationID)
 {
 	int iLocation = FindLocation(LocationID);
 	if(iLocation == -1) return false;
 	
-	/* if(HasSubStr(LocationID, "Tavern")) // пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	/* if(HasSubStr(LocationID, "Tavern")) // В таверне нельзя
 	{
 		return false;
 	} */
@@ -3886,7 +3886,7 @@ bool CanEquipMushketOnLocation(string LocationID)
 	return true;
 }
 
-// пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ?
+// Есть ли для нашего ГГ мушкетерская модель?
 bool IsPCharHaveMushketerModel()
 {
 	String sModel = PChar.Model;
@@ -3902,7 +3902,7 @@ bool IsPCharHaveMushketerModel()
 	return false;
 }
 
-// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+// Создадим клона персонажа. Корабль не копируется
 int CreateCharacterClone(ref Character, int iLifeDay)
 {
 	int iTemp = NPC_GeneratePhantomCharacter("citizen", sti(Character.Nation), MAN, iLifeDay);
@@ -3915,7 +3915,7 @@ int CreateCharacterClone(ref Character, int iLifeDay)
 	return iTemp;
 }
 
-// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ ID пїЅпїЅпїЅпїЅпїЅпїЅпїЅ  пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+// Получим ID надетой  кирасы или одежды
 String GetCharacterEquipSuitID(ref rChar)
 {
 	String sItem = GetCharacterEquipByGroup(rChar, CIRASS_ITEM_TYPE);
@@ -3933,7 +3933,7 @@ void EquipCharacterByAtlas(ref chref)
 	chref.equip.(groupID) = rLoc.id;
 }
 
-// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ
+// проверим наличие атласа и карты в нем
 bool CheckMapForEquipped(ref refCh, string itemID)
 {
 	int   idLngFile;
@@ -3944,13 +3944,13 @@ bool CheckMapForEquipped(ref refCh, string itemID)
 	
 	if(sti(refCh.index) == GetMainCharacterIndex() && CheckCharacterItem(refCh, arItem.id))	
 	{	
-		if(!CheckCharacterItem(refCh, "MapsAtlas")) { // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ,  пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		if(!CheckCharacterItem(refCh, "MapsAtlas")) { // тривиальная проверка на наличие атласа - если его нет,  то получите и распишитесь
 			GiveItem2Character(refCh, "MapsAtlas");
 			EquipCharacterByAtlas(refCh);
 		}	
-		if(!IsEquipCharacterByMap(refCh, itemID)) { // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ  пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		if(!IsEquipCharacterByMap(refCh, itemID)) { // проверяем, экипирован ли ГГ  этой картой
 			EquipCharacterByItem(refCh, itemID); 			
-			Log_SetStringToLog(LanguageConvertString(idLngFile, arItem.name) +" is added to your atlas");
+			Log_SetStringToLog(LanguageConvertString(idLngFile, arItem.name) +" добавлена в атлас");
 			arItem = ItemsFromID("MapsAtlas");
 			arItem.Weight = GetEquippedItemsWeight(refCh, MAPS_ITEM_TYPE);						
 		}
@@ -3961,7 +3961,7 @@ bool CheckMapForEquipped(ref refCh, string itemID)
 	return true;
 }
 
-// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
+// проверка - есть ли новые карты для включения в атлас
 void RefreshEquippedMaps(ref chref)
 {
 	int 	i;
@@ -4003,7 +4003,7 @@ void StoreEquippedMaps(ref refCh)
 			if(groupID == MAPS_ITEM_TYPE)
 			{
 				if(IsEquipCharacterByMap(refCh, rLoc.id))  
-				// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ  пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+				// проверяем, экипирован ли ГГ  этой картой
 				{
 					refCh.Stored.Maps.(sName) = refCh.items.(sName);
 				}
@@ -4057,12 +4057,12 @@ void OfficersFollow()
 	}
 }
 
-float ChangeIndianRelation(float _val) // Jason: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+float ChangeIndianRelation(float _val) // Jason: репутация у индейцев
 {
    pchar.questTemp.Indian.relation = stf(pchar.questTemp.Indian.relation) + _val;
    if (stf(pchar.questTemp.Indian.relation) > 100.0) pchar.questTemp.Indian.relation = 100.0;
    if (stf(pchar.questTemp.Indian.relation) < 0) pchar.questTemp.Indian.relation = 0;
-   log_testInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ "+stf(pchar.questTemp.Indian.relation)+" пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
+   log_testInfo("Отношение индейцев изменилось и равно "+stf(pchar.questTemp.Indian.relation)+" единицам");
    
    return stf(pchar.questTemp.Indian.relation);
 }

@@ -355,9 +355,14 @@ void Items_ShowItem(int _itemN)
 		Items_LoadModel(&itemModels[_itemN], &Items[_itemN]);
 
 		if (!FindLocator(Items[_itemN].startLocation, Items[_itemN].startLocator, &al, true))
+		{
 			Trace("ItemLogic: locator for item "+_itemN+" not found! ["+Items[_itemN].startLocation+">>"+Items[_itemN].startLocator);
-		Trace ("ItemLogic: showing item at "+al.x+", "+al.y+", "+al.z);
-		SendMessage(&itemModels[_itemN], "lffffffffffff", MSG_MODEL_SET_POSITION, makeFloat(al.x), makeFloat(al.y), makeFloat(al.z), makeFloat(al.vx.x), makeFloat(al.vx.y), -makeFloat(al.vx.z), makeFloat(al.vy.x), makeFloat(al.vy.y), -makeFloat(al.vy.z), makeFloat(al.vz.x), makeFloat(al.vz.y), -makeFloat(al.vz.z));
+		}
+		else
+		{	
+			Trace ("ItemLogic: showing item at "+al.x+", "+al.y+", "+al.z);
+			SendMessage(&itemModels[_itemN], "lffffffffffff", MSG_MODEL_SET_POSITION, makeFloat(al.x), makeFloat(al.y), makeFloat(al.z), makeFloat(al.vx.x), makeFloat(al.vx.y), -makeFloat(al.vx.z), makeFloat(al.vy.x), makeFloat(al.vy.y), -makeFloat(al.vy.z), makeFloat(al.vz.x), makeFloat(al.vz.y), -makeFloat(al.vz.z));
+		}	
 	}
 	else
 	{ //used
@@ -566,7 +571,7 @@ void Box_EnterToLocator(aref loc, string locName)
 				{
 					loc.(locName).opened = true;
 					PlaySound("interface\key.wav");
-					if(!CheckCharacterItem(pchar, loc.(locName).key)) Log_Info("Lock pick was used to open this lock!");
+					if(!CheckCharacterItem(pchar, loc.(locName).key)) Log_Info("Замок открыт отмычкой!");
 					
 					if(CheckAttribute(loc, locName+".key.delItem"))
 					{
@@ -591,7 +596,7 @@ void Box_EnterToLocator(aref loc, string locName)
 				}
 				else 
 				{
-					if (CheckCharacterItem(pchar, "keys_skel")) Log_Info("This lock can not be lock picked");
+					if (CheckCharacterItem(pchar, "keys_skel")) Log_Info("Замок отмычками не открывается");
 					Log_SetStringToLog(XI_ConvertString("You have not need key"));
 					PlaySound("interface\box_locked.wav");
 					return;
@@ -652,7 +657,7 @@ void OpenBoxProcedure()
 	// токо сундуки и дома
 	if (sti(chr.GenQuest.God_hit_us) == 1 && rand(100) >= (85 + GetCharacterSkillToOld(chr, SKILL_FORTUNE)) && chr.location != "SentJons_HouseF3_Room2") // 280313
 	{
-		Log_Info("A trap!");
+		Log_Info("Ловушка!");
 		PlaySound("people\clothes1.wav");
 		DoQuestCheckDelay("God_hit_us", 0.2);
 	}
@@ -671,8 +676,8 @@ void OpenBoxProcedure()
 				if (CheckAttribute(chr, "questTemp.Mtraxx.Pasquale.Grabbing") && chr.location == "LaVega_TwoFloorHouse" && atrName == "private1") Mtraxx_PasqualeCheckChest();
 				LaunchItemsBox(&ar);
 			}
-		}
 	}
+}
 }
 
 void Box_OnLoadLocation(ref _location)
@@ -711,13 +716,14 @@ void Box_OnLoadLocation(ref _location)
 			_location.(locatorName) = "";
 			_location.(locatorName).open = true;
 		}
-		
+/*		
 		// Warship генерим предметы в сундуке
 		if(!CheckAttribute(_location, locatorName + ".opened")) 
 		{
 			makearef(boxLocator, _location.(locatorName));
 			FillGenerableItemsForChest(boxLocator);
 		}	
+*/		
 	}
 
 	// simple box

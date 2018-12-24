@@ -38,13 +38,13 @@ void ProcessDialogEvent()
 	{
 		// ----------------------------------- Диалог первый - первая встреча
 		case "First time":
-            dialog.text = NPCStringReactionRepeat("Do you have got something to tell me? No? Then get away from here!",
-                         "I trust that I have made myself clear…", "Although I've made myself clear, you keep annoying me!",
-                         "Right, I am getting tired of this rudeness.", "repeat", 3, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("I am leaving already.",
-                                               "Sure"+npchar.name+"...",
-                                               "Sorry, "+npchar.name+"...",
-                                               "Oups...", npchar, Dialog.CurrentNode);
+            dialog.text = NPCStringReactionRepeat(""+ GetSexPhrase("У тебя дело ко мне? Нет? Тогда вали отсюда!","Ха, " + pchar.name + "! У тебя дело ко мне? Нет? Тогда не отвлекай меня.") +"",
+                         "Я кажется ясно выразился.", "Хотя я выразился и ясно, но ты продолжаешь отвлекать меня!",
+                         "Та-а-ак, это уже похоже на грубость, меня это утомило.", "repeat", 3, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Уже ухожу.",
+                                               "Конечно "+npchar.name+"...",
+                                               "Извини, "+npchar.name+"...",
+                                               "Ой...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
@@ -55,50 +55,50 @@ void ProcessDialogEvent()
 		break;
 
         case "I_know_you_good":
-            dialog.text = NPCStringReactionRepeat(GetFullName(pchar) + ", I am glad to see you! What do you wish?",
-                         "What else?", "Again? Don't bother people if you have got nothing to do!",
-                         "I know that you are a decent man. But I am done talking to you.", "repeat", 10, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Nothing. Just a wanted to see you.",
-                                               "Nothing...",
-                                               "Ok, "+npchar.name+", sorry...",
-                                               "Damn it, caught it at last!", npchar, Dialog.CurrentNode);
+            dialog.text = NPCStringReactionRepeat(GetFullName(pchar) + ", рад тебя видеть! Зачем пожаловал"+ GetSexPhrase("","а") +" на этот раз?",
+                         "Ну что тебе еще?", "Долго это будет продолжаться? Если тебе делать нечего, не отвлекай других!",
+                         "Ты неплохой человек, я знаю. Но общаться и разговаривать с тобой я больше не желаю.", "repeat", 10, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Да, собственно, просто так заглянул проведать. Ничего по делу нет.",
+                                               "Ничего, просто так...",
+                                               "Хорошо, "+npchar.name+", извини...",
+                                               "Вот черт возьми, доиграл"+ GetSexPhrase("ся","ась") +"!!!", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			NextDiag.TempNode = "I_know_you_good";
 		break;
 
 		// ============== Грабеж среди бела дня, попытка залезть в сундуки =========================
 		case "Man_FackYou":
-			dialog.text = LinkRandPhrase("Thievery!!! Are you serious?! You are done, pal...", "Wait, what the hell? Turns out that you are a thief! End of the line, good man...");
-			link.l1 = LinkRandPhrase("Damn!", "Carramba!!", "Damn it!!");
+			dialog.text = LinkRandPhrase("Грабеж среди бела дня!!! Это что же такое делается?! Ну, погоди, "+ GetSexPhrase("приятель","подруга") +"...", "Эй, ты чего это там копаешься?! Никак, вздумал"+ GetSexPhrase("","а") +" ограбить меня? Ну, тогда тебе конец...", "Постой, ты куда это полез"+ GetSexPhrase("","ла") +"? Да ты вор"+ GetSexPhrase("","овка") +", оказывается! Ну, считай, что ты приплыл"+ GetSexPhrase("","а") +", родн"+ GetSexPhrase("ой","ая") +"...");
+			link.l1 = LinkRandPhrase("Дьявол!!", "Каррамба!!", "А-ать, черт!");
 			link.l1.go = "PL_Q3_fight";
 		break;
 					
 		// ======================== блок нод angry ===============>>>>>>>>>>>>>>>
 		case "AngryRepeat_1":
-            dialog.text = RandPhraseSimple(""+ GetSexPhrase("Go away","Get away ") +" from here!", "Get out of my home!");
-			link.l1 = "Oups...";
+            dialog.text = RandPhraseSimple(""+ GetSexPhrase("Пошел вон","Убирайся") +" отсюда!", "Вон из моего дома!");
+			link.l1 = "Ай...";
 		    link.l1.go = "AngryExitAgainWithOut";
             if (CheckAttribute(npchar, "angry.terms")) //примиряемся через 10 дней.
             {
                 if (GetNpcQuestPastDayParam(npchar, "angry.terms") > sti(npchar.angry.terms))
                 {
-         			dialog.text = "Don't bother me with your cheap promises. Next time you might won't like the result...";
-        			link.l1 = "I got it.";
+         			dialog.text = "Тебе не стоит отвлекать меня от дела пустыми обращениями. Впредь результат может быть более плачевным...";
+        			link.l1 = "Я понял"+ GetSexPhrase("","а") +".";
         			link.l1.go = NextDiag.TempNode;
         			CharacterDelAngry(npchar);
                 }
             }
     	break;
 		case "AngryRepeat_2":
-            dialog.text = "It's over, no talking.";
-			link.l1 = RandPhraseSimple("Whatever...", "Fine then...");
+            dialog.text = RandPhraseSimple("Ты меня изрядно утомил"+ GetSexPhrase("","а") +", никакого общения.", "Я не хочу с тобой общаться, так что тебе лучше меня не беспокоить.");
+			link.l1 = RandPhraseSimple("Ну как знаешь...", "Хм, ну что же...");
 		    link.l1.go = "AngryExitAgain";
             if (CheckAttribute(npchar, "angry.terms")) //примиряемся через 10 дней.
             {
                 if (GetNpcQuestPastDayParam(npchar, "angry.terms") > sti(npchar.angry.terms))
                 {
-         			dialog.text = "I hope that you will show more respect to me too and will stop barking? I would have to kill you otherwise. That would be very unpleasant.";
-        			link.l1 = ""+npchar.name+" you can be sure, I won't.";
+         			dialog.text = "Надеюсь, впредь ты не будешь утомлять меня пустыми разговорами, иначе мне придется тебя убить. Признаюсь, мне это будет очень неприятно.";
+        			link.l1 = ""+npchar.name+", ты можешь быть уверен - не буду...";
         			link.l1.go = NextDiag.TempNode;
         			CharacterDelAngry(npchar);
                 }

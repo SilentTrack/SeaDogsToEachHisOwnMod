@@ -4,23 +4,23 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me that question not long ago...", "Yup, let me guess... Once again going around in circles?",
-                          "Listen, I do the finances here, I don't answer questions...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
-                      "You've guessed it, I'm sorry...", "I understand...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно?"), "Совсем недавно вы пытались задать мне вопрос...", "М-да, позвольте угадаю... Опять ничего существенного?",
+                          "Послушайте, я финансами оперирую, а не на вопросы отвечаю...", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Вы угадали, простите...", "Я понимаю...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			//Цена чахотки
 			if (!CheckAttribute(npchar, "quest.Consumption") && CheckAttribute(pchar, "questTemp.Consumption.AskJuan"))
 			{
-				link.l1 = "Listen, does the name 'Juan' mean anything to you?";
+				link.l1 = "Скажите, имя 'Хуан' вам что-нибудь говорит?";
 				link.l1.go = "Consumption";
 			}
 		break;
 		
 		//Цена чахотки
 		case "Consumption":
-			dialog.text = "I don't know. And I don't wanna know. I don't recommend you to know either. And now, you'll have to excuse me, but I have business I must return to. I'd take a gander that you probably have business to take care of as well? Take care of it.";
-			link.l1 = "Okay. Sorry for bothering you...";
+			dialog.text = "Не знаю. И не хочу знать. И вам не советую. А теперь, прошу прощения, но мне нужно возвращаться к делам. У вас, наверное, тоже есть дела? Займитесь ими.";
+			link.l1 = "Ясно. Извините за беспокойство...";
 			link.l1.go = "exit";
 			pchar.questTemp.Consumption.AskJuan = sti(pchar.questTemp.Consumption.AskJuan)+1;
 			if(sti(pchar.questTemp.Consumption.AskJuan) == 3)

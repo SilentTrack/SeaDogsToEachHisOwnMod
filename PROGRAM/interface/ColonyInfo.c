@@ -90,7 +90,7 @@ void CalculateEndSiegeCity()
 {
     string sTemp =  GetNationNameByType(iNation);
     
-	totalInfo = "Town " + GetCityName(sCity) + " captured by " + XI_ConvertString(sTemp + "Gen") + ".";
+	totalInfo = "Город " + GetCityName(sCity) + " захвачен войсками " + XI_ConvertString(sTemp + "Gen") + ".";
 
     SetNewGroupPicture("Nat1", "NATIONS",  sTemp);
     SetFormatedText("INFO_TEXT",totalInfo);
@@ -102,11 +102,11 @@ void CalculateSiegeCity()
     
 	if (!isCityHasFort(sCity)) // сухопутный город
 	{
-	    totalInfo = "Troopers "+ XI_ConvertString (sTemp +" Gen ") +" besieged city "+GetCityName(sCity)+". Do you have a "+ FindRussianDaysString (iDay) +" for the siege.";
+	    totalInfo = "Десант "+XI_ConvertString(sTemp + "Gen")+" осадил город "+GetCityName(sCity)+". У вас есть "+FindRussianDaysString(iDay)+" для снятия осады.";
 	}
 	else
 	{
-		totalInfo = "Squadron "+ XI_ConvertString (sTemp +" Gen ") +" besieged city "+GetCityName(sCity)+". Do you have a "+ FindRussianDaysString (iDay) +" for the siege";
+		totalInfo = "Эскадра "+XI_ConvertString(sTemp + "Gen")+" осадила город "+GetCityName(sCity)+". У вас есть "+FindRussianDaysString(iDay)+" для снятия осады.";
 	}
     SetNewGroupPicture("Nat1", "NATIONS",  sTemp);
     SetFormatedText("INFO_TEXT",totalInfo);
@@ -115,7 +115,7 @@ void CalculateSiegeCity()
 void CalculateCapturedCity()
 {
 
-    totalInfo = "Above the city "+ XI_ConvertString (" Colony "+ sCity) +" raised a new flag.";
+    totalInfo = "Над городом " + XI_ConvertString("Colony" + sCity) + " поднят новый флаг.";
 
     SetNewGroupPicture("Nat1", "NATIONS",  GetNationNameByType(iNation));
     SetFormatedText("INFO_TEXT",totalInfo);

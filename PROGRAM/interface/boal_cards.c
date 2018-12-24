@@ -214,13 +214,13 @@ void ProcessCommandExecute()
                     if (dir_i == 1 && (iMoneyP - iRate) < 0)
                     {
                         PlaySound("interface\knock.wav");
-                        SetFormatedText("INFO_TEXT", "You dry? What a shame.");
+                        SetFormatedText("INFO_TEXT", "Что, денежки кончились? Бедненький :)");
                         break;
                     }
                     if (dir_i == -1 && (iMoneyN - iRate) < 0)
                     {
                         PlaySound("interface\knock.wav");
-                        SetFormatedText("INFO_TEXT", "Fuck, I am broke!");
+                        SetFormatedText("INFO_TEXT", "Я на мели!!! Вот не пруха!");
                         break;
                     }
                     
@@ -264,13 +264,13 @@ void ProcessCommandExecute()
                     SetNextTip();
                     if (dir_i_start == -1)// комп начинал игру первый
                     {
-                        SetFormatedText("INFO_TEXT", "Open up!");
+                        SetFormatedText("INFO_TEXT", "Открываемся!!!");
                         bStartGame = 100;
                         PostEvent("My_eOpenCards", 2000);
                     }
                     else
                     {// комп должен себе набрать
-                        SetFormatedText("INFO_TEXT", "A card for me...");
+                        SetFormatedText("INFO_TEXT", "Так, теперь мне карту.");
                         
                         move_i = 0;
                         PlaySound("interface\took_item.wav");
@@ -441,22 +441,22 @@ void SetNextTip()
     {
         if (bStartGame <2)
         {
-            SetFormatedText("INFO_TEXT","You go."+NewStr()+"Bid!");
+            SetFormatedText("INFO_TEXT","Теперь тебе карту."+NewStr()+"Делай ставку!");
         }
         else
         {
-            SetFormatedText("INFO_TEXT","Your turn!");
+            SetFormatedText("INFO_TEXT",LinkRandPhrase("Твой ход!", "Давай, не тяни кота за хвост...", RandSwear() + "Бери карту себе! Не задерживай!"));
         }
     }
     else
     {
         if (bStartGame <2)
         {
-            SetFormatedText("INFO_TEXT","Come to daddy."+NewStr()+"Coins on the table!");
+            SetFormatedText("INFO_TEXT","Теперь мне карту."+NewStr()+"Кладу монету!");
         }
         else
         {
-            SetFormatedText("INFO_TEXT","Now my turn!");
+            SetFormatedText("INFO_TEXT",LinkRandPhrase("Мой ход!", "Посмотрим, что там за карта...", "Ну-ка, опять шиперки..."));
         }
     }
 }
@@ -556,13 +556,13 @@ bool CheckGame()
     if (CountCardsP() > 21)
     {
         ok = -1;
-        sTemp = "Ha! You are going bust, pal. Lucky me!";
+        sTemp = "Ха! Да у тебя ПЕРЕБОР! Я выиграл.";
         iHeroLose++;
     }
     if (CountCardsN() > 21)
     {
         ok = 1;
-        sTemp = RandSwear() + "For f... Bust! You won...";
+        sTemp = RandSwear() + "У меня ПЕРЕБОР! Ты выиграл"+ GetSexPhrase("","а") +".";
         iHeroWin++;
     }
     if (ok != 0)
@@ -572,12 +572,12 @@ bool CheckGame()
         
         if (CheckNextGame() && rand(10) < 10) // есть деньги на игру
         {
-            sTemp += NewStr() + RandPhraseSimple("Another ride?","One more time?");
+            sTemp += NewStr() + RandPhraseSimple("Повторим?","Еще разок?");
         }
         else
         {
             bStartGame = 100;//признах запрета новой игры
-            sTemp += NewStr() + "That's it, I had enough!";
+            sTemp += NewStr() + "Все, с меня хватит!";
         }
         SetFormatedText("INFO_TEXT", sTemp);
         ret = true;
@@ -603,7 +603,7 @@ bool CheckGame()
         {
             if (dir_i == -1 && dir_i_start == 1)// комп ходит последним
             {
-                SetFormatedText("INFO_TEXT", "That's good enough for me. Opens!");
+                SetFormatedText("INFO_TEXT", "Мне хватит. Открываемся!");
                 bStartGame = 100;
                 PostEvent("My_eOpenCards", 2000);
                 ret = true;
@@ -611,7 +611,7 @@ bool CheckGame()
             if (dir_i == -1 && dir_i_start == -1)// комп начинает
             {
                 dir_i = 1;
-                SetFormatedText("INFO_TEXT", "You go. I am full.");
+                SetFormatedText("INFO_TEXT", "Теперь ты себе! Мне хватит.");
                 ret = true;
             }
         }
@@ -643,7 +643,7 @@ void NewGameBegin()
 {
     RedrawDeck(); // новая игра
     bStartGame = 0;
-    SetFormatedText("INFO_TEXT","Dealing the cards. "+NewStr()+"Bid!");
+    SetFormatedText("INFO_TEXT","Сдаем карты. "+NewStr()+"Делаем ставки.");
     PostEvent("My_eStartGame", 1000);
 }
 
@@ -668,24 +668,24 @@ void OpenCards();
     if (CountCardsP() > makefloat(CountCardsN() + 0.1*dir_i_start)) // преимущество тому, кто сдает (те ходит последним)
     {
         EndGameCount(1);
-        sTemp = RandSwear() + "You won. You have " + CountCardsP() +", I have " + CountCardsN()+"." ;
+        sTemp = RandSwear() + "Ты выиграл"+ GetSexPhrase("","а") +". У тебя " + CountCardsP() +", у меня " + CountCardsN()+"." ;
         iHeroWin++;
     }
     else
     {
         EndGameCount(-1);
-        sTemp = "I won. I have " + CountCardsN() +", you have " + CountCardsP()+".";
+        sTemp = "Удача на моей стороне. У меня " + CountCardsN() +", у тебя " + CountCardsP()+". Я победил!";
         iHeroLose++;
     }
     if (CheckNextGame() && rand(10) < 10) // есть деньги на игру
     {
-        sTemp += NewStr() + RandPhraseSimple("One more round?","Again?");
+        sTemp += NewStr() + RandPhraseSimple("Повторим?","Еще разок?");
         bStartGame = 2;
     }
     else
     {
         bStartGame = 100;//признах запрета новой игры
-        sTemp += NewStr() + "We are done here!";
+        sTemp += NewStr() + "Все, с меня хватит!";
     }
     SetFormatedText("INFO_TEXT", sTemp);
     RedrawCards();

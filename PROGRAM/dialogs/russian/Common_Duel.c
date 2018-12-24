@@ -14,57 +14,57 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 	{
 	case "outraged":
 		Dialog.Text = NPCharRepPhrase(NPChar, RandSwear() + 
-				RandPhraseSimple("How dare you to insult me, rascal?!", "These words will cost you dearly!"), 
-				RandPhraseSimple("My honor is at the stake, " + GetAddress_Form(NPChar) + "! And you will have to pay for that.", "How you dare? Take back your words this instant!"));
+				RandPhraseSimple("Как ты смеешь меня оскорблять, мерзав"+ GetSexPhrase("ец","ка") +"?!", "Ты дорого заплатишь за свои слова!"), 
+				RandPhraseSimple("Вы задели мою честь, " + GetAddress_Form(NPChar) + "! За это придется заплатить.", "Как вы смеете? Немедленно возьмите свои слова назад!"));
 
 		//это такая засада.. чтобы читали текст :)
 		MakeRandomLinkOrderTwo(link, 
 					NPCharRepPhrase(pchar, 
-				RandPhraseSimple("Ha?! I would not even want to stain my sword with your blood!", "Ha?! I would not even want to stain my sword with your blood!"), 
-				RandPhraseSimple("I am always at your service!", "I am not going to choose expressions, speaking with the rabble!")), "outraged_1",
+				RandPhraseSimple("Ха??!! Да я об тебя и шпагу марать не хочу!", "Ха??!! Да я об тебя и шпагу марать не хочу!"), 
+				RandPhraseSimple("Я всегда к вашим услугам!", "Я не намерен"+ GetSexPhrase("","а") +" выбирать выражения, разговаривая с отребьем!")), "outraged_1",
 					NPCharRepPhrase(pchar, RandSwear() + 
-				RandPhraseSimple("I didn't mean it!", "I fired up..."), 
-				RandPhraseSimple("That was a mistake. I am sorry.", "I took you for someone else, " + GetAddress_FormToNPC(NPChar) + ". Please excuse me.")), "change_mind");
+				RandPhraseSimple("Я не это имел"+ GetSexPhrase("","а") +" в виду...", "Я погорячил"+ GetSexPhrase("ся","ась") +"..."), 
+				RandPhraseSimple("Это была ошибка. Прошу прощения.", "Я обознал"+ GetSexPhrase("ся","ась") +", " + GetAddress_FormToNPC(NPChar) + ". Прошу меня простить.")), "change_mind");
 		break;
 
 	case "outraged_1":
 		Dialog.Text = NPCharRepPhrase(NPChar,  
-				RandPhraseSimple("I'll cut your ears off!", "I'll cut your heart off!"), 
-				RandPhraseSimple("I do hope that you'd excuse yourself or I don't guarantee I'll control myself!", "You do realize what it means, don't you?"));
+				RandPhraseSimple("Я тебе уши обрежу!", "Я вырежу тебе сердце!"), 
+				RandPhraseSimple("Я надеюсь, вы немедленно принесете свои извинения, или я за себя не ручаюсь!", "Вы понимаете, что это означает?"));
 
 		MakeRandomLinkOrderTwo(link,
 					NPCharRepPhrase(pchar, RandSwear() + 
-				RandPhraseSimple("I do hope that your saber is as swift as your tongue!", "My blade will speak for myself."), 
-				RandPhraseSimple("I challenge you to a duel!", "That's a matter of honor!")), "let_s_duel",
+				RandPhraseSimple("Надеюсь, твоя шпага так же быстра, как твой язык!", "За меня будет говорить мой клинок."), 
+				RandPhraseSimple("Я вызываю вас на дуэль!", "Это дело чести!")), "let_s_duel",
 					NPCharRepPhrase(pchar, 
-				RandPhraseSimple("I think I am not ready yet!", "Think, it is not needed so to get excited! It is words only!"), 
-				RandPhraseSimple("I remembered, I am waited. All blessing...", "Ah! Seems, my ship sails already.")), "change_mind");
+				RandPhraseSimple("Пожалуй, я еще не готов"+ GetSexPhrase("","а") +" к встрече с дьяволом!", "Думаю, не стоит так горячиться! Это только слова!"), 
+				RandPhraseSimple("Я тут вспомнил"+ GetSexPhrase("","а") +", меня ждут. Всех благ...", "Ах! Кажется, мой корабль уже отплывает.")), "change_mind");
 		break;
 
 	case "let_s_duel":
 		//проверка на начатые дуэли.
 		if (CheckAttribute(PChar, "questTemp.duel.Start") && sti(PChar.questTemp.duel.Start))
 		{
-			Dialog.Text = "First you settle your business with others, and then we'll talk.";
+			Dialog.Text = "Тебе стоит сначала разобраться с другими, а потом мы поговорим.";
 			if (PChar.questTemp.duel.enemy == NPChar.id)
 			{
-				Dialog.Text = "We had already come to an agreement.";
+				Dialog.Text = "Мы уже с тобой договорились обо всем.";
 			}
-			link.l1 = RandSwear() + "Oh, how could I forget...";
+			link.l1 = RandSwear() + "Как это я забыл"+ GetSexPhrase("","а") +"...";
 			link.l1.go = "exit";
 			break
 		}
 		//может отказаться.
 		if (rand(100) < 30)
 		{
-			Dialog.Text = RandPhraseSimple("Duel?! Get lost, you're not worth of wasting time on you.", "Duel? You don't deserve the honor! Get lost!");
-			link.l1 = RandPhraseSimple("Alright...", "Guess I can wait...");
+			Dialog.Text = RandPhraseSimple("Дуэль?!!! Проваливай, ты не стоишь потраченного времени.", "Дуэль? Слишком много чести! Сгинь!");
+			link.l1 = RandPhraseSimple("Ну-ну...", "Я могу и подождать...");
 			link.l1.go = "exit";
 /**/
 			//можно дать возможность драться полюбому :)			
 			if (rand(100) < 30)
 			{
-				link.l1 = RandPhraseSimple("Well, we'll see about that!!!", "Oh really?! I'll see what color your blood is!");
+				link.l1 = RandPhraseSimple("Ну, это мы сейчас посмотрим!!!", "Да что ты говоришь?! Сейчас я увижу цвет твоей крови!");
 				link.l1.go = "fight_right_now";
 			}
 /**/
@@ -72,30 +72,30 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 		}
 
 		//согласен.
-		Dialog.Text = RandPhraseSimple("A duel, you say? That's fine with me. Swords and pistols shall be our weapons.", 
-			"Can you even wield a sword?");
-		link.l1 = RandPhraseSimple("You will be for mercy, standing on your knees.", "I will strangle you with these bare hands, you scoundrel!");
+		Dialog.Text = RandPhraseSimple("Дуэль, говоришь? Пожалуй, я не прочь. Будем биться на шпагах и пистолетах.", 
+			"Да ты, наверное, и шпагу-то держать не умеешь?");
+		link.l1 = RandPhraseSimple("Ты будешь на коленях просить о пощаде.", "Я прикончу тебя вот этими руками, мерзавец!");
 		link.l1.go = "land_duel";
 		if (sti(pchar.Ship.Type) != SHIP_NOTUSED && sti(NPChar.Ship.Type) != SHIP_NOTUSED)
 		{
-			Dialog.Text = RandPhraseSimple(Dialog.Text + " Or we can ship out and see who's who!", 
-				"A duel?!! Ha, I'll squish you like a flea! Choose how you'd want to die!");
-			link.l2 = RandPhraseSimple("At sea, I am second to none.", "My ship will easily sink your old tub!");
+			Dialog.Text = RandPhraseSimple(Dialog.Text + " Или мы можем выйти в море и посмотреть, кто на что способен!", 
+				"Дуэль?!! Ха, да я раздавлю тебя как блоху! Выбирай, как ты умрешь!");
+			link.l2 = RandPhraseSimple("В море мне нет равных.", "Мой корабль пустит ко дну твое старое корыто!");
 			link.l2.go = "sea_duel";
 		}
-		link.l3 = "I changed my mind...";
+		link.l3 = "Я передумал"+ GetSexPhrase("","а") +"...";
 		link.l3.go = "change_mind";
 		break;
 
 	//дуэль на подводных лодках :))))
 	case "sea_duel":
-		Dialog.Text = RandPhraseSimple("I don't see your ship in the harbor...", "Get lost until you find a crappy old tub at the least!");
-		link.l1 = RandPhraseSimple("My mistake...", "...Then I am leaving you.");
+		Dialog.Text = RandPhraseSimple("Что-то не вижу твоего корабля в порту...", "Проваливай, пока не найдешь себе хоть какое-нибудь корыто!!!");
+		link.l1 = RandPhraseSimple("Моя ошибка...", "...Тогда я вас покидаю.");
 		link.l1.go = "exit";
 		if (pchar.location.from_sea == GetCurrentTown() + "_town")
 		{
-			Dialog.Text = "Alright, I'll be waiting for you at the exit from the cove...";
-			link.l1 = "I won't keep you waiting for too long.";
+			Dialog.Text = "Что ж, жду тебя на выходе из бухты...";
+			link.l1 = "Долго не придется ждать.";
 
 			pchar.questTemp.Duel.enemy = NPChar.id;
 			pchar.questTemp.Duel.Sea_Location = Islands[GetCharacterCurrentIsland(PChar)].id;
@@ -112,35 +112,35 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 //			iHour = MakeInt(18.0 - GetTime()) + rand(2); //раскоментировать для дуэлей только по ночам
 		}
 		pchar.questTemp.Duel.WaitTime = iHour;
-		Dialog.Text = RandSwear() + RandPhraseSimple("Draw steel, and let's see what color your blood is!", "Well, if you have a death wish...");
-		link.l1 = RandPhraseSimple("We'd better go someplace without too many witnesses. I know just the right place past the city gates. Let's meet there in " + iHour + " hours.",
-			"Hold your horses. Such things are better settled without witnesses. Come in " + iHour + "  hours to the entrance to the city.");
+		Dialog.Text = RandSwear() + RandPhraseSimple("Доставай свой клинок, и мы посмотрим, какого цвета твоя кровь!", "Ну, если ты так хочешь умереть...");
+		link.l1 = RandPhraseSimple("Лучше нам пойти туда, где свидетелей поменьше. Я знаю одно местечко за городскими воротами. Встретимся там через " + iHour + " часа.",
+			"Эй... не так быстро. Такие дела лучше делать без свидетелей. Приходи через " + iHour + " часа к входу в город.");
 		link.l1.go = "fight_off_town";
-		link.l2 = RandPhraseSimple("Well, if you are longing to die that much...", "Damn it! I'll help you to go straight to hell!");
+		link.l2 = RandPhraseSimple("Ну, если ты так торопишься умереть...", "Проклятье! Я помогу тебе отправиться в ад!!!");
 		link.l2.go = "fight_right_now";
-		link.l3 = "I changed my mind...";
+		link.l3 = "Я передумал...";
 		link.l3.go = "change_mind";
 
 		if (rand(1))
 		{
-			Dialog.Text = RandSwear() + RandPhraseSimple("I thing we'd better go past the city gates. I'll be waiting for you there in " + pchar.questTemp.Duel.WaitTime + " hours. Don't delay!", 
-				"This is not the best place for settling disputes. We'd better get out of town. In " + pchar.questTemp.Duel.WaitTime + " hours I will be there.");
-			link.l1 = RandPhraseSimple("You don't deserve the honor! Defend yourself!", "I have no time! Draw steel!");
+			Dialog.Text = RandSwear() + RandPhraseSimple("Я думаю, нам стоит выйти за городские ворота. Жду тебя там через " + pchar.questTemp.Duel.WaitTime + " часа. Не задерживайся!", 
+				"Тут не лучшее место для разбирательств. Лучше выйдем из города. Через " + pchar.questTemp.Duel.WaitTime + " часа я буду там.");
+			link.l1 = RandPhraseSimple("Слишком много чести! Защищайся!", "Мне некогда! Доставай свой клинок!");
 			link.l1.go = "fight_right_now";
-			link.l2 = RandPhraseSimple("Alright, let's take a stroll.", "You're probably right. Let's meet past the gates.");
+			link.l2 = RandPhraseSimple("Что ж, давай прогуляемся.", "Пожалуй, ты прав. Встретимся за воротами.");
 			link.l2.go = "fight_off_town_prep";
 		}
 		break;
 
 	//предложение "пойдем выйдем" рассматривается
 	case "fight_off_town":
-		Dialog.Text = RandPhraseSimple("You don't deserve the honor! Defend yourself!", "I have no time! Right here and now!");
-		link.l1 = RandPhraseSimple("Well, if you are longing to die that much...", "Damn it! I'll help you to go straight to hell!");
+		Dialog.Text = RandPhraseSimple("Слишком много чести! Защищайся!", "Мне некогда! Здесь и сейчас!");
+		link.l1 = RandPhraseSimple("Ну, если ты так торопишься умереть...", "Проклятье! Я помогу тебе отправиться в ад!!!");
 		link.l1.go = "fight_right_now";
 		if (rand(1))
 		{
-			Dialog.Text = RandPhraseSimple("Alright, let's take a stroll.", "You're probably right. Let's meet past the gates.");
-			link.l1 = RandPhraseSimple("I'll be waiting for you there.", "Don't delay.");
+			Dialog.Text = RandPhraseSimple("Что ж, давай прогуляемся.", "Пожалуй, ты прав. Встретимся за воротами.");
+			link.l1 = RandPhraseSimple("Жду тебя там.", "Не опаздывай.");
 			link.l1.go = "fight_off_town_prep";
 		}
 		break;
@@ -182,22 +182,22 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 
 	//последнее слово перед боем
 	case "talk_off_town":
-		Dialog.Text = "So, are you ready?";
-		link.l1 = "Yeah. Let's see who's a better person!";
+		Dialog.Text = "Ну что, ты готов"+ GetSexPhrase("","а") +" отправиться в ад?";
+		link.l1 = "Да. Сейчас посмотрим, кто кого!";
 		link.l1.go = "fight_right_now";
-		link.l2 = "No, I decided to bring the apologies to you. I Was wrong, fired up.";
+		link.l2 = "Нет, я решил"+ GetSexPhrase("","а") +" принести тебе извинения. Был"+ GetSexPhrase("","а") +" неправ, вспылил"+ GetSexPhrase("","а") +".";
 		link.l2.go = "change_mind";
 		if (rand(100) < 20)
 		{
-			Dialog.Text = RandPhraseSimple("Hey, listen, I meditated on it and I now see that I was wrong. My apologies.", 
-				"Damn it! It's all that damned rum!!! My apologies, "+ GetSexPhrase("brother","sister") +"!");
+			Dialog.Text = RandPhraseSimple("Слушай, я тут подумал и понял, что был неправ. Приношу свои извинения", 
+				"Черт! Это все ром!!! Прости, "+ GetSexPhrase("брат","сестра") +"!");
 			link.l1 = NPCharRepPhrase(pchar, 
-				RandPhraseSimple("No, only your blood can give me satisfaction now!", "Draw steal and stop being such a wuss!"), 
-				RandPhraseSimple("No! I demand satisfaction!", "You're the disgrace of your family! Unsheathe your sword!"));
+				RandPhraseSimple("Ну уж нет, теперь только твоя кровь может принести мне удовлетворение!", "Доставай свою шпагу, и нечего тут сопли распускать!"), 
+				RandPhraseSimple("Нет! Я требую сатисфакции!", "Вы - позор своей семьи! Доставайте свою шпагу!"));
 			link.l1.go = "fight_right_now";
 			link.l2 = NPCharRepPhrase(pchar, 
-				RandPhraseSimple("Alright, I agree. We got a bit worked up.", "Who's keeping score between friends!"), 
-				RandPhraseSimple("You're probably right. We shouldn't spill blood on such petty things.", "My generosity knows no bounds! You're forgiven!"));
+				RandPhraseSimple("Что ж, соглас"+ GetSexPhrase("ен","на") +". Погорячились.", "Какие счеты между своими!!"), 
+				RandPhraseSimple("Пожалуй, вы правы. Не стоит проливать кровь по пустякам.", "Мое великодушие не знает границ! Вы прощены!"));
 			link.l2.go = "peace";
 		}
 		NextDiag.TempNode = npchar.BackUp.DialogNode;
@@ -224,17 +224,17 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 	case "change_mind":
 		if (CheckAttribute(pchar, "questTemp.Duel.End")) LAi_SetWarriorType(NPChar);
 		Dialog.Text = NPCharRepPhrase(NPChar, RandSwear() + 
-				RandPhraseSimple("Then get lost!", "Get lost then, before I change my mind."), 
-				RandPhraseSimple("In that case I am nit delaying you any longer!", "Then you better leave before I change my mind."));
-		link.l1 = "I am already leaving...";
+				RandPhraseSimple("Тогда проваливай отсюда!", "Скройся тогда. А то я могу передумать."), 
+				RandPhraseSimple("В таком случае, не смею вас больше задерживать!", "Тогда вам лучше уйти, пока я не передумал."));
+		link.l1 = "Уже ухожу...";
 		link.l1.go = "peace";
 		break;
 
 	case "after_peace":
 		Dialog.Text = NPCharRepPhrase(NPChar, RandSwear() +
-				RandPhraseSimple("Get lost!", "Disappear from my sight, before I change my mind."),
-				RandPhraseSimple("Can I help you?", "Did you want anything?"));
-		link.l1 = "I am leaving.";
+				RandPhraseSimple("Проваливай отсюда!", "Скройся. А то я могу передумать."),
+				RandPhraseSimple("Чем могу быть полезен?", "Вы что-то хотели?"));
+		link.l1 = "Я ухожу.";
 		link.l1.go = "peace";
 		break;
 

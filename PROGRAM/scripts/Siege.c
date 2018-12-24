@@ -137,7 +137,7 @@ void BeginSiegeMap(string sChar)
 {
     aref aData;
     makearef(aData, NullCharacter.Siege);
-    SiegeRumourEx("They say that local fishers saw a mighty squadron in this area.", aData.Colony, sti(aData.nation)+10, -1, 2, 1, "citizen,habitue,trader,tavern");
+    SiegeRumourEx("Поговаривают, что местные рыбаки видели мощную "+NationNameSK(sti(aData.nation))+"ую эскадру в водах нашей колонии.", aData.Colony, sti(aData.nation)+10, -1, 2, 1, "citizen,habitue,trader,tavern");
     int idist = makeint(GetDistanceToColony(aData.Colony));
     if (idist != -1 && idist <= 100 )
     {
@@ -191,7 +191,7 @@ void EndSiegeMap()
     pchar.quest.(sQuest).win_condition = "ClearSiege";
     pchar.quest.(sQuest).function= "SiegeClear";
     //--> слухи
-    SiegeRumourEx("They say that the squadron responsible for pillaging our city is still not far away. I wish there were some brave captain who would risk to attack them back.", aData.Colony, sti(aData.conation), -1, 5, 3, "citizen,habitue,trader,tavern");
+    SiegeRumourEx("Говорят, что "+NationNameSK(sti(aData.nation))+"ая эскадра, разорившая наш город, все еще в водах нашей колонии. Эх, если бы нашелся храбрый капитан, который рискнул бы напасть на них...", aData.Colony, sti(aData.conation), -1, 5, 3, "citizen,habitue,trader,tavern");
     //<-- слухи
 }
 
@@ -511,7 +511,7 @@ void BattleOfTheColony(string tmp)
     pchar.quest.(sQuest).function= "PlayerKillSquadron";
     
     SaveCurrentQuestDateParam("Siege_Start");
-    aData.tmpID1 = SiegeRumourEx("Are you deaf? "+NationNameSK(sti(aData.nation))+" ships are bombing our fort. It may fall anytime and awful thing will start happen.", aData.Colony, sti(aData.nation)+10, -1, sti(aData.SiegeTime)-2, 3, "citizen,habitue,trader,tavern");
+    aData.tmpID1 = SiegeRumourEx("Вы что не слышали? В нашей гавани "+NationNameSK(sti(aData.nation))+"ие корабли ведут бой с фортом. Форт может пасть в любой момент и тогда начнется самое страшное.", aData.Colony, sti(aData.nation)+10, -1, sti(aData.SiegeTime)-2, 3, "citizen,habitue,trader,tavern");
     aData.tmpID2 = SiegeRumour("OnSiege_1", "", sti(aData.conation)+10, sti(aData.nation)+10, sti(aData.SiegeTime)-2, 3);
     aData.tmpID3 = SiegeRumour("OnSiege_2", "", sti(aData.nation), -1, sti(aData.SiegeTime)-2, 3);
     aData.tmpID4 = SiegeRumour("OnSiege_3", "!"+aData.Colony, sti(aData.conation), -1, sti(aData.SiegeTime)-2, 3);
@@ -629,10 +629,10 @@ void  EndOfTheSiege(string tmp)
             {
                 SetCaptureTownByNation(aData.colony, sti(aData.nation))
                 
-               // SiegeRumour("Сегодня славный день для "+ NationNameGenitive(sti(aData.nation))+" - нам удалось захватить такую важную колонию как "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+"! Весь "+NationNameSK(sti(aData.conation))+"ий гарнизон был перебит, а форт занят нашими войсками и уже снова укреплен!", aData.Colony, sti(aData.nation), -1, 15, 3);
-               // SiegeRumour("Говорят, что "+NationNameSK(sti(aData.nation))+"ая эскадра, после длительной осады, захватила "+NationNameSK(sti(aData.conation))+"ую колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". Теперь "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+" - "+NationNameSK(sti(aData.nation))+"ая колония!", "", sti(aData.conation)+10, sti(aData.nation)+10, 30, 3);
-               // SiegeRumour("Поговаривают, что "+NationNamePeople(sti(aData.nation))+" подло напали на нашу колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+" и захватили город!", "", sti(aData.conation), -1, 30, 3);
-                //SiegeRumour("Вы слышали новость? Наш доблестный флот отбил у "+ NationNameGenitive(sti(aData.conation))+" богатую колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". ", ("!"+aData.Colony), sti(aData.nation), -1, 30, 3);
+                SiegeRumour("Сегодня славный день для "+ NationNameGenitive(sti(aData.nation))+" - нам удалось захватить такую важную колонию как "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+"! Весь "+NationNameSK(sti(aData.conation))+"ий гарнизон был перебит, а форт занят нашими войсками и уже снова укреплен!", aData.Colony, sti(aData.nation), -1, 15, 3);
+                SiegeRumour("Говорят, что "+NationNameSK(sti(aData.nation))+"ая эскадра, после длительной осады, захватила "+NationNameSK(sti(aData.conation))+"ую колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". Теперь "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+" - "+NationNameSK(sti(aData.nation))+"ая колония!", "", sti(aData.conation)+10, sti(aData.nation)+10, 30, 3);
+                SiegeRumour("Поговаривают, что "+NationNamePeople(sti(aData.nation))+" подло напали на нашу колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+" и захватили город!", "", sti(aData.conation), -1, 30, 3);
+                SiegeRumour("Вы слышали новость? Наш доблестный флот отбил у "+ NationNameGenitive(sti(aData.conation))+" богатую колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". ", ("!"+aData.Colony), sti(aData.nation), -1, 30, 3);
                 
             }
             else
@@ -641,10 +641,10 @@ void  EndOfTheSiege(string tmp)
                 SetNull2Deposit(aData.colony);// нулим ростовщиков
 				SetNull2ShipInStockMan(aData.colony)
                 
-                SiegeRumourEx("Sad day for "+ NationNameGenitive(sti(aData.conation))+" - we failed to protect our colony. The fort was destroyed by "+NationNameSK(sti(aData.nation))+" ships, and the city was pillaged.", aData.Colony, sti(aData.conation), -1, 15, 3, "citizen,habitue,trader,tavern");
-                SiegeRumour("There are rumors that "+NationNameSK(sti(aData.nation))+" captured "+NationNameSK(sti(aData.conation))+" colony "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". They pillaged the city and sailed away.", "", sti(aData.conation)+10, sti(aData.nation)+10, 30, 3);
-                //SiegeRumour("Поговаривают, что "+NationNamePeople(sti(aData.nation))+" внезапно атаковали нашу колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+" и разграбили город, до того как подоспело подкрепление! Затем "+NationNamePeople(sti(aData.nation))+" постыдно ретировались с награбленным.", "!"+aData.Colony, sti(aData.conation), -1, 30, 3);
-                SiegeRumour("Heard the news? Our military squadron successfully besieged "+NationNameSK(sti(aData.conation))+" city called "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". The garrison's resistance was broken but, of course, our forces had to leave. But the prize...", "!"+aData.Colony, sti(aData.nation), -1, 30, 3);
+                SiegeRumourEx("Печальные вести для "+ NationNameGenitive(sti(aData.conation))+" - нам не удалось отстоять нашу колонию! Форт был разрушен "+NationNameSK(sti(aData.nation))+"ими кораблями, а город разграблен. После чего враг покинул воды колонии.", aData.Colony, sti(aData.conation), -1, 15, 3, "citizen,habitue,trader,tavern");
+                SiegeRumour("Говорят, что "+NationNameSK(sti(aData.nation))+"ая эскадра, после длительной осады, захватила "+NationNameSK(sti(aData.conation))+"ую колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". После того, как город был разграблен - "+NationNameSK(sti(aData.nation))+"ая эскадра покинула воды колонии.", "", sti(aData.conation)+10, sti(aData.nation)+10, 30, 3);
+                SiegeRumour("Поговаривают, что "+NationNamePeople(sti(aData.nation))+" внезапно атаковали нашу колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+" и разграбили город, до того как подоспело подкрепление! Затем "+NationNamePeople(sti(aData.nation))+" постыдно ретировались с награбленным.", "!"+aData.Colony, sti(aData.conation), -1, 30, 3);
+                SiegeRumour("Вы слышали новость? Недавно наша эскадра, после непродолжительной осады "+NationNameSK(sti(aData.conation))+"ой колонии "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+" сломила сопротивление гарнизона и разграбила богатый город! В последствии колонию, правда, пришлось оставить. Но добыча...", "!"+aData.Colony, sti(aData.nation), -1, 30, 3);
             }
             FortDestroy();// уничтожаем форт
             Group_SetAddressNone(sGroup);
@@ -653,10 +653,10 @@ void  EndOfTheSiege(string tmp)
         }
         else
         {
-            SiegeRumourEx("Today we are celebrating! "+NationNameSK(sti(aData.nation))+" attackers were eliminated and the city is safe.", aData.Colony, sti(aData.conation), -1, 15, 3, "citizen,habitue,trader,tavern");
-          //  SiegeRumour("Говорят, что "+NationNameSK(sti(aData.nation))+"ая эскадра потерпела поражение при штурме "+NationNameSK(sti(aData.conation))+"ой колонии "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". Защитники оказались сильней.", "", sti(aData.conation)+10, sti(aData.nation)+10, 30, 3);
-            SiegeRumour("They say that "+NationNamePeople(sti(aData.nation))+" suddenly attacked "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+", but reinforcements came just in time! All "+NationNameSK(sti(aData.nation))+" were sunken.", "!"+aData.Colony, sti(aData.conation), -1, 30, 3);
-            SiegeRumour("I have heard that our squadron failed to besiege "+NationNameSK(sti(aData.conation))+" colony "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". It was a long siege but our ships were sunken! Next time, I guess.", "!"+aData.Colony, sti(aData.nation), -1, 30, 3);
+            SiegeRumourEx("Сегодня мы празднуем победу над "+NationNameSK(sti(aData.nation))+"ими захватчиками - нам удалось отстоять нашу колонию! Вражеская эскадра была потоплена, и городу больше ничего не угрожает.", aData.Colony, sti(aData.conation), -1, 15, 3, "citizen,habitue,trader,tavern");
+            SiegeRumour("Говорят, что "+NationNameSK(sti(aData.nation))+"ая эскадра потерпела поражение при штурме "+NationNameSK(sti(aData.conation))+"ой колонии "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". Защитники оказались сильней.", "", sti(aData.conation)+10, sti(aData.nation)+10, 30, 3);
+            SiegeRumour("Поговаривают, что "+NationNamePeople(sti(aData.nation))+" внезапно атаковали нашу колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+", но в город вовремя подоспело подкрепление! Все "+NationNameSK(sti(aData.nation))+"ие корабли были потоплены.", "!"+aData.Colony, sti(aData.conation), -1, 30, 3);
+            SiegeRumour("Ходят слухи, что недавно наша эскадра, после продолжительной осады "+NationNameSK(sti(aData.conation))+"ой колонии "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+", была потоплена фортом! Возможно, в следующий раз нам повезет больше.", "!"+aData.Colony, sti(aData.nation), -1, 30, 3);
             SiegeClear("");
             Log_TestInfo("Siege Finish - Squadron defeat!");
         }
@@ -773,19 +773,19 @@ string NationNameSK(int nat)
     switch (nat)
     {
         case ENGLAND:
-        	return "england";
+        	return "английск";
         break;
         
         case FRANCE:
-        	return "france";
+        	return "французск";
         break;
         
         case SPAIN:
-        	return "spain";
+        	return "испанск";
         break;
         
         case HOLLAND:
-        	return "holland";
+        	return "голландск";
         break;
     }
 }
@@ -798,23 +798,23 @@ string SiegeRumourText(int inum)
     makearef(aData, NullCharacter.Siege);
     
     int iDays = sti(aData.SiegeTime) - GetQuestPastDayParam("Siege_Start");
-    sDays = iDays+" days";
+    sDays = iDays+" дней";
     
-    if (iDays < 5) sDays = iDays+" day";
-    if (iDays <= 1 ) sDays = "several hours";
+    if (iDays < 5) sDays = iDays+" дня";
+    if (iDays <= 1 ) sDays = "несколько часов";
     
     switch (inum)
     {
         case 1:
-        	return "They say that "+NationNamePeople(sti(aData.nation))+" have attacked "+NationNameSK(sti(aData.conation))+" colony "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". They are still fighting, but defenders are low on supplies. They can hold on  for "+sDays+" at most.";
+        	return "Говорят, что "+NationNamePeople(sti(aData.nation))+" напали на "+NationNameSK(sti(aData.conation))+"ую колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". Защитники колонии держат оборону, но если в течение "+sDays+" к ним не подоспеет помощь, то гарнизон может дрогнуть.";
         break;
 
         case 2:
-        	return "There are rumors that our unstoppable fleet is storming "+NationNameSK(sti(aData.conation))+" colony  "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+".  Our enemies are fighting hard, but, most likely, we shall learn who is a victor in "+sDays+".";
+        	return "Ходят слухи, что наш несокрушимый флот напал на "+NationNameSK(sti(aData.conation))+"ую колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". Враг отчаянно обороняется, но, скорее всего исход сражения решится в ближайшие "+sDays+".";
         break;
         
         case 3:
-        	return ""+NationNamePeople(sti(aData.nation))+" have attacked our colony "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". Our brave defenders have only "+sDays+" before they will run out of provisions.";
+        	return "Поговаривают, что "+NationNamePeople(sti(aData.nation))+" напали на нашу колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". Защитники колонии храбро сражаются с врагом, но провизии и медикаментов у них осталось меньше чем на "+sDays+".";
         break;
     }
 }

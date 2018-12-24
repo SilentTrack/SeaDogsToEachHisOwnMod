@@ -30,7 +30,7 @@ void SeaHunterCheck()
                 sld.AlwaysEnemy = true;
                 sld.DontRansackCaptain = true;
                 sld.mapEnc.type = "war";
-                sld.mapEnc.Name = "Headhunters";
+                sld.mapEnc.Name = "Охотники за головами";
 				sld.hunter = "hunter";
 				//sld.mapEnc.worldMapShip = "Manowar_gold";
                 Group_AddCharacter(sGroup, sCapId + i);
@@ -62,11 +62,11 @@ void SetShipHunter(ref Hunter)
         ShipsHunter = SHIP_GALEON_L + rand(3));
     }
 
-    if(makeint(pchar.rank) >= 7 && makeint(pchar.rank) < 12)
+    if(makeint(pchar.rank) >= 8 && makeint(pchar.rank) < 12)
     {
         ShipsHunter = SHIP_BRIGANTINE + rand(2);
     }
-	
+
 	if(makeint(pchar.rank) >= 5 && makeint(pchar.rank) < 8) // Addon-2016 Jason
     {
         ShipsHunter = SHIP_SCHOONER_W;
@@ -143,7 +143,7 @@ void LandHunterReactionResult(ref loc)  // отработает после входа в локацию, но 
 	            {
 	                sld = GetCharacter(NPC_GenerateCharacter(sCapId + i, "off_hol_2", "man", "man", 5, j, 0, true, "hunter"));
 	                SetFantomParamHunter(sld); //крутые парни
-	                sld.name 	= "Head hunter";
+	                sld.name 	= "Охотник за головами";
 	                sld.lastname 	= "";
 	                sld.Dialog.CurrentNode = "First time";
 	                sld.dialog.filename = "Hunter_dialog.c";

@@ -561,7 +561,7 @@ void SetTreasureBoxFromMap()
 
     if (GetCharacterItem(Pchar, "map_full")>0 )
     {
-        Log_Info("The treasures must be somewhere nearby!");
+        Log_Info("Сокровища где-то рядом!");
         PlaySound("interface\notebook.wav");
 		Statistic_AddValue(Pchar, "Treasure", 1);
 		Achievment_SetStat(Pchar, 8, 1);
@@ -620,7 +620,7 @@ void  TraderHunterOnMap()
         sld.AlwaysEnemy = true;
         sld.DontRansackCaptain = true;
         sld.mapEnc.type = "war";
-        sld.mapEnc.Name = "gentlemen of Fortune";
+        sld.mapEnc.Name = "Джентльмены удачи";
 		sld.hunter = "pirate";
         Group_AddCharacter(sGroup, sCapId + i);
     }
@@ -650,7 +650,7 @@ void CoolTraderHunterOnMap()//Jason, быстрые ДУ
         sld.AlwaysEnemy = true;
         sld.DontRansackCaptain = true;
         sld.mapEnc.type = "war";
-        sld.mapEnc.Name = "gentlemen of Fortune";
+        sld.mapEnc.Name = "Джентльмены удачи";
 		sld.hunter = "pirate";
         Group_AddCharacter(sGroup, sCapId + i);
     }

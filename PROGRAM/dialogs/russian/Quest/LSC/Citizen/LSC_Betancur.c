@@ -18,146 +18,151 @@ void ProcessDialogEvent()
 		case "First time":
 			if (CheckAttribute(pchar, "GenQuest.CitizenConflict") && sti(pchar.GenQuest.CitizenConflict) > 3)
 			{
-				dialog.text = "I don't want to talk with you. You attack peaceful civilians with no reasons and provoke them. Get lost!";
-				link.l1 = "Hm...";
+				dialog.text = "Я не желаю с тобой общаться. Ты нападаешь без причины на мирных граждан, провоцируешь их на драку. Уходи прочь!";
+				link.l1 = "Гм...";
 				link.l1.go = "exit";
 				break;
 			}
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = "Hello, Hello... What do you want, friend?";
-				link.l1 = TimeGreeting()+". My name is "+GetFullName(pchar)+". And I just wanted to know who you are. See, I am newly arrived, walking around the city and talking with people.";
+				dialog.text = "Здравствуй-здравствуй... Чего хотел, парень?";
+				link.l1 = TimeGreeting()+". Меня зовут "+GetFullName(pchar)+". И я просто хотел познакомиться. понимаешь, я здесь недавно, хожу по городу, беседую с людьми. Налаживаю контакты - вот как это можно назвать.";
 				link.l1.go = "meeting";
 				npchar.quest.meeting = "1";
 			}
 			else
 			{
-				dialog.text = "Аh, "+GetFullName(pchar)+"! "+TimeGreeting()+"! What do you want this time?";
+				dialog.text = "А, "+GetFullName(pchar)+"! "+TimeGreeting()+"! Чего тебе на этот раз?";
 				if(CheckAttribute(pchar, "questTemp.LSC.Betancur"))
 				{
-					link.l4 = "Antonio, they say that you know the Island's history well. I have got a question for you about it.";
+					link.l4 = "Антонио, мне сказали, что ты хорошо знаком с историей Острова. У меня в связи с этим есть к тебе один вопрос.";
 					link.l4.go = "dolly";
 				}
-				dialog.text = "Аh, "+GetFullName(pchar)+"! "+TimeGreeting()+"! Want something?";
-				link.l1 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
+				link.l1 = LinkRandPhrase("Что-нибудь интересное мне расскажешь?", "Что нового произошло на острове в последнее время?", "Не расскажешь ли последние сплетни?");
 				link.l1.go = "rumours_LSC";
-				link.l2 = "I want to ask you a few questions about the island.";
+				link.l2 = "Я хочу задать тебе пару вопросов об острове.";
 				link.l2.go = "int_quests"; //информационный блок
-				link.l5 = "Just wanted to know how are you doing. See you!";
+				link.l5 = "Да просто решил узнать как у тебя дела. Еще увидимся!";
 				link.l5.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "meeting": // первая встреча
-			dialog.text = "Splendid. And you will do well, because we are all a big family here. Except for Narwhals and filthy Rivados of course. My name is Antonio, Antonio Betancourt. I am the grandson of Francisco Betancourt in case this name means anything to you.";
-			link.l1 = "Francisco Betancourt? I have heard this name before... Ah, sure! Dios told me about him and I read about him in the Alvarado's notes...";
+			dialog.text = "Прекрасно. Очень правильно делаешь, поскольку мы здесь все - одна большая семья. Ну, не считая, конечно, нарвалов и гнусных ривадос. Меня зовут Антонио, Антонио Бетанкур. Внук Франциско Бетанкура, если это тебе о чем-то говорит.";
+			link.l1 = "Франциско Бетанкур? Где-то я уже слышал это имя... А, точно! Его мне назвал Диос, и также оно встречается в хрониках Альворадо...";
 			link.l1.go = "meeting_1";
 		break;
 		
 		case "meeting_1":
-			dialog.text = "I have no idea who is this Dios of yours, but captain Alvarado visited us long ago. I've seen him personally when I was a kid. He sailed away from the island and wrote about it in his manuscripts. And Francisco Betancourt was a Spanish admiral, a commander of military squadron\nHe started the history of this place due to a fact that all Rivados are offsprings of black slaves from Tartarus, the flagship of squadron. Narwhals are children of the first white settlers, crewmembers of Tartarus, San Augustine and San Geronimo.";
-			link.l1 = "Incredible! So were you born here?";
+			dialog.text = "Кто такой Диос - мне неведомо, а что до капитана Альворадо - гостил такой у нас на Острове. Я лично видел его, когда был мальчишкой. Он уплыл с Острова и писал потом про него в своих сочинениях. А Франциско Бетанкур - испанский гранд, адмирал, командующий военной эскадрой\nИменно с него берет начало история нашего Острова, поскольку все ривадос - это потомки рабов, которые были в трюмах 'Тартаруса', флагмана эскадры, а нарвалы - соответственно дети детей первых белых поселенцев, людей команд 'Тартаруса', 'Сан-Августина' и 'Сан-Херонимо'.";
+			link.l1 = "Ого! Так ты, получается, родился тут?";
 			link.l1.go = "meeting_2";
 		break;
 		
 		case "meeting_2":
-			dialog.text = "Exactly. I am a straight offspring of a man who has basically occupied the Island.";
-			link.l1 = "I see. Glad to meet you, Antonio. See you.";
+			dialog.text = "Именно. Я прямой потомок человека, фактически заселившего Остров.";
+			link.l1 = "Ясно. Рад встрече и знакомству, Антонио! Еще увидимся.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
 		
 		// квестовая часть
 		case "dolly":
-			dialog.text = "Hm... Sure, friend, ask me. I will answer your questions, of course but only if I know the answers.";
-			link.l1 = "Tell me, do you remember the time when galleon San Geronimo was still here?";
+			dialog.text = "Хм... Спрашивай, дружище, конечно. Если знаю - конечно, отвечу.";
+			link.l1 = "Скажи, ты помнишь то время, когда галеон 'Сан-Херонимо' еще стоял на поверхности?";
 			link.l1.go = "dolly_1";
 		break;
 		
 		case "dolly_1":
-			dialog.text = "Sure, I do. It was a very special ship. There was an interesting Indian statue and these filthy pagans Rivados were performing sacrificial offerings.";
-			link.l1 = "And how were they doing that? Were they taking people's hearts away like the Maya? Or were they chopping off heads?";
+			dialog.text = "Конечно, помню. Это был очень примечательный корабль. На нем находилась интересная индейская статуя, у которой эти мерзкие язычники ривадос проводили жертвоприношения.";
+			link.l1 = "И как они их проводили? Вырезали ножом сердца, как майя, или рубили головы?";
 			link.l1.go = "dolly_2";
 		break;
 		
 		case "dolly_2":
-			dialog.text = "No... It was a very special statue - it dragged victims into itself and they disappeared forever. The tool of the devil... Thank God it has sunk with the ship and will never do any harm. It's quite interesting that sacrifices were always made in the same time in the morning. The statue used to turn to gold under the light of rising sun\nThat was when the savages were bringing victims, mostly the Narwhals they captured.";
-			link.l1 = "Interesting! And had somebody ever tried to explore how does the statue work?";
+			dialog.text = "Нет, что ты... Это была особенная статуя - она сама затягивала в себя жертв и они бесследно исчезали. Дьявольское порождение... Слава Господу, она утонула вместе с кораблем и уже никому не принесет вреда. И что примечательно - жертвоприношения всегда проводились в одно и то же время, утром. Тусклая статуя внезапно начинала сверкать золотом в лучах восходящего солнца, и над ней появлялось сияние\nВот тогда-то они и приводили к ней своих жертв, в основном это были пленники из клана нарвалов. Поставят рядом с ней человека - оп! И нет его, как корова языком слизала, прости за нелепое сравнение.";
+			link.l1 = "Очень занятно! А природу этой статуи никто не пытался понять?";
 			link.l1.go = "dolly_3";
 		break;
 		
 		case "dolly_3":
-			dialog.text = "Of course not! First, Rivados did not let anyone except their own to come close to San Geronimo and, secondly, an honest Catholic must keep a distance from devil's actions.";
-			link.l1 = "Got it. I see that you don't like Rivados. Am I right?";
+			dialog.text = "Что ты! Во-первых, ривадос никого постороннего даже близко не подпускали к 'Сан-Херонимо', а во-вторых, добропорядочному католику следует держаться как можно дальше от дьявольских порождений.";
+			link.l1 = "Понятно. Смотрю, ты как-то недолюбливаешь ривадос. Или мне кажется?";
 			link.l1.go = "dolly_4";
 		break;
 		
 		case "dolly_4":
-			dialog.text = "Do I? I hate those dirty pagans! In case you don't know, my granddad was a captain of the ship where Negros with their leader Rivados mutinied. Leaving their so called leader to rot inside the hold was a right thing to do. I also had a gorgeous key from St. Anna's treasury\nNo one knows where to find the treasury, perhaps it's at the bottom of the sea with crabs around, but the key was a sweet memento to me and yet it was stolen! I am sure that black ones did it. They must be trying to find the treasury. I doubt that they will succeed, it has been too long, ha-ha! Scum...";
-			link.l1 = "I see. Thanks for your interesting story!";
+			dialog.text = "Недолюбливаю? Да я их терпеть не могу, грязных нехристей! Если хочешь знать, то мой дед был капитаном корабля, на котором эти черномазые во главе с проклятым богоотступником Ривадосом подняли бунт. Правильно сделал мой дед, что подвесил этого мерзкого бунтовщика в трюме. А еще, у меня от деда оставалась реликвия - великолепный ключ от казны 'Санта-Анны'\nГде сейчас эта казна - никто не ведает, может, на дне среди крабов, но ключ этот был для меня как память - и тот украли! Я уверен, что это сделали черномазые. Наверняка думают найти казну. Ну, раз за столько лет никто не нашел, то и они не отыщут, ха-ха! Негодяи...";
+			link.l1 = "Ясно. Спасибо за интересную историю!";
 			link.l1.go = "dolly_5";
 		break;
 		
 		case "dolly_5":
-			dialog.text = "You are welcome, I am always glad to chat!";
-			link.l1 = "Farewell!";
+			dialog.text = "Да не за что, всегда рад поболтать!";
+			link.l1 = "До свидания!";
 			link.l1.go = "exit";
 			DeleteAttribute(pchar, "questTemp.LSC.Betancur");
 			AddQuestRecord("LSC", "16");
 		break;
 		
+		case "":
+			dialog.text = "";
+			link.l1 = "";
+			link.l1.go = "";
+		break;
+		
 //--------------------------------------- блок вопросов и ответов ---------------------------------------------
 		case "int_quests":
-			dialog.text = "I am listening, pal.";
+			dialog.text = "Слушаю тебя, парень.";
 			if (!CheckAttribute(npchar, "quest.answer_1"))
 			{
-				link.l1 = "So haven't you seen anything else but the Island in your life?";
+				link.l1 = "Так ты, выходит, кроме Острова ничего на свете и не видел?";
 				link.l1.go = "ansewer_1";
 			}
 			if (!CheckAttribute(npchar, "quest.answer_2"))
 			{
-				link.l2 = "You were born here... And why you are not a member of Narwhal clan? I though that all native white people are Narwhals...";
+				link.l2 = "Ты здесь родился... А почему не входишь в клан нарвалов? Я думал, все коренные белые - нарвалы...";
 				link.l2.go = "ansewer_2";
 			}
 			if (!CheckAttribute(npchar, "quest.answer_3"))
 			{
-				link.l3 = "And what do you do on the Island?";
+				link.l3 = "А чем ты занимаешься на Острове?";
 				link.l3.go = "ansewer_3";
 			}
 			if (!CheckAttribute(npchar, "quest.answer_4"))
 			{
-				link.l4 = "Tell me, have you ever wanted to leave the Island for while? To see the world...";
+				link.l4 = "Скажи, а тебе никогда не хотелось покинуть Остров хотя бы ненадолго? Посмотреть мир...";
 				link.l4.go = "ansewer_4";
 			}
-			link.l10 = "No questions. Pardon...";
+			link.l10 = "Нет вопросов. Извини...";
 			link.l10.go = "exit";
 		break;
 		
 		case "ansewer_1":
-			dialog.text = "Seems so, yes. But don't think that I am an idiot or narrow-minded. I have inherited a fine library from my granddad and my father provided me with an excellent education. I know ancient history, geography, astronomy, I know English, French, Spanish and even Latin\nA lot of sailors who have been everywhere know less than I do. Even though I have not seen anything except these ship wrecks, I mentally visited Europe, China and India...";
-			link.l1 = "I see...";
+			dialog.text = "Выходит, так. Но не считай из-за этого меня глупцом или ограниченным. Мне досталась от деда отличная библиотека, и отец дал мне достойное образование. Я знаю древнюю историю, современную историю, географию, астрономию, умею разговаривать на английском, французском и испанском языках, а также на латыни\nМногие моряки, объездившие свет, не знают столько, сколько знаю я. Книги - отличный источник знаний, скажу я тебе, приятель. Так что хоть я и не видел ничего, кроме этих корабельных остовов, мысленно я побывал и в Европе, и в Китае, и в Индии...";
+			link.l1 = "Ясно...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_1 = "true";
 		break;
 		
 		case "ansewer_2":
-			dialog.text = "It is not true, though you are ninety percent correct. But I am not Narwhal and I don't want to become one of them. For what purpose? To stand guard for hours like a fool or to fight with Rivados? Not a chance, spare me from that. I am different. I prefer to live independently and read books.";
-			link.l1 = "I see...";
+			dialog.text = "Это не так, хотя на девяносто процентов ты прав. Но я не нарвал, и не желаю им становиться. Зачем? Чтобы стоять на часах, как дураку, и рубиться с ривадос? Нет уж, увольте. Я - человек совсем другого воспитания. Я предпочитаю жить независимо и посвящать все свободное время чтению.";
+			link.l1 = "Понятно...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_2 = "true";
 		break;
 		
 		case "ansewer_3":
-			dialog.text = "Father left me a decent inheritance and I spend it carefully. So I don't need to lurk around old ship wrecks to find some jewels to trade for food. I don't believe in great treasures inside old ships\nThe only treasure I know is the St. Anna's treasury. It is a big iron chest. But no one has managed to find it yet\nActually, I am going to write a detailed history of the Island based on local stories. You think I should try?";
-			link.l1 = "I am sure of it. I know at least one man at the Archipelago who would pay for such book a lot of gold. So it's your chance...";
+			dialog.text = "От отца мне досталось неплохое наследство, и я очень экономно его расходую. Так что мне нет нужды шариться по корабельным остовам, для того чтобы раздобыть пару побрякушек на пропитание. В сказочные богатства на погибших кораблях я не верю\nЕдинственное сокровище, о котором мне достоверно известно, что оно существует - казна 'Санта-Анны', одного из кораблей эскадры моего деда. Это тяжелый кованый сундук. Но никому за все годы существования Острова так и не удалось найти его\nДа, я тут думаю написать подробную историю Острова, с момента его появления, основанную на рассказах очевидцев. Как думаешь, стоит этим заняться?";
+			link.l1 = "Уверен, что стоит. Я знаю на Архипелаге как минимум одного человека, который наверняка заплатил за такой труд немало золота. Так что - дерзай...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_3 = "true";
 		break;
 		
 		case "ansewer_4":
-			dialog.text = "Sometimes I think about it. Perhaps if the ship which would be able to handle with the current and survive storms would have come here, I'd take a risk. I am really eager to see things which are so interestingly described in my books! But these are just dreams for now...";
-			link.l1 = "Dreams happen. Just trust in them...";
+			dialog.text = "Такие мысли регулярно посещают меня. Возможно, если бы тут появился надежный корабль, способный пройти через течение и устоять в штормах, я бы рискнул. Мне жутко хочется взглянуть на то, что так занимательно описано в моих книгах! Но пока это только мечты...";
+			link.l1 = "Мечты имеют свойство сбываться. Главное - верить в них...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_4 = "true";
 		break;
@@ -166,14 +171,14 @@ void ProcessDialogEvent()
 //----------------------------------------- специальные реакции -----------------------------------------------
 		//обнаружение ГГ в сундуках
 		case "Man_FackYou":
-			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
-			link.l1 = "Damn it!";
+			dialog.text = LinkRandPhrase("Что ты там копаешься, а? Да ты вор!", "Вот это да! Чуть я загляделся, а ты сразу в сундук с головой!", "По сундукам шарить вздумал?! Тебе это даром не пройдет!");
+			link.l1 = "А-ать, дьявол!!!";
 			link.l1.go = "fight";
 		break;
 		
 		case "Woman_FackYou":
-			dialog.text = "What?! Decided to check my chests? You won't get away with it!";
-			link.l1 = "Foolish girl!...";
+			dialog.text = "Ах, вот, значит, как?! По сундукам шарить вздумал?! Тебе это даром не пройдет!";
+			link.l1 = "Вот дура!..";
 			link.l1.go = "exit_setOwner";
 			LAi_group_Attack(NPChar, Pchar);
 		break;
@@ -194,8 +199,8 @@ void ProcessDialogEvent()
 		
 		//замечание по обнаженному оружию
 		case "LSCNotBlade":
-			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
-			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
+			dialog.text = LinkRandPhrase("Слушай, ты бы убрал оружие. А то нервируешь немного...", "Знаешь, у нас тут не принято сабелькой размахивать. Убери оружие.", "Слушай, что ты, как д'Артаньян, бегаешь тут, шпагой машешь? Убери оружие, не к лицу это серьезному мужчине...");
+			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;	
@@ -203,13 +208,13 @@ void ProcessDialogEvent()
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{
-				dialog.text = NPCharSexPhrase(NPChar, "Listen, I am the citizen of the city and I'd ask you to hold down your blade.", "Listen, I am the citizen of the city and I'd ask you to hold down your blade.");
-				link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
+				dialog.text = NPCharSexPhrase(NPChar, "Послушайте, я, как гражданин этого города, прошу вас не ходить у нас с обнаженным клинком.", "Знаете, я, как гражданка этого города, прошу вас не ходить у нас с обнаженным клинком.");
+				link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажете...");
 			}
 			else
 			{
-				dialog.text = NPCharSexPhrase(NPChar, "Be careful, pal, while running with a weapon. I can get nervous...", "I don't like when men walking in front of me with their weapon ready. It scares me...");
-				link.l1 = RandPhraseSimple("Got it.", "I am taking it away.");
+				dialog.text = NPCharSexPhrase(NPChar, "Острожней на поворотах, приятель, когда бежишь с оружием в руках. Я ведь могу и занервничать...", "Мне не нравится, когда мужчины ходят передо мной с оружием на изготовку. Это меня пугает...");
+				link.l1 = RandPhraseSimple("Понял.", "Убираю.");
 			}
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";

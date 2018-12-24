@@ -37,13 +37,13 @@ void ProcessDialogEvent()
 		case "First time":
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = "My name is Albert Loxley and I am a lawyer. I present my client's interests in trials. My services are pricey, but they're worth it, I assure you.";
-				link.l1 = "Thanks but, fortunately, I don't need lawyer's services so far.";
+				dialog.text = "Я адвокат Альберт Локсли. Представляю своих клиентов в разного рода судебных разбирательствах. Мои услуги недешевы, но, смею вас уверить, они того стоят.";
+				link.l1 = "Спасибо, к счастью помощь адвоката мне пока без надобности.";
 				link.l1.go = "exit";
 				npchar.quest.meeting = "1";
 				if (CheckAttribute(pchar, "questTemp.Saga") && pchar.questTemp.Saga == "loxly")
 				{
-					link.l1 = "I need your services. I am an authorized delegate of one young lady named Helen McArthur, she is a granddaughter of famous Nicolas Sharp. She is the only heir at law left after death of her mother and uncle. She have a claim on Isla Tesoro according to her father's testament. How much would you ask for helping Helen to become a rightful mistress of the island?";
+					link.l1 = "Вы мне и нужны. Я доверенное лицо некой юной особы по имени Элен Мак Артур, родной внучки небезызвестного Николаса Шарпа. После смерти ее матери и дяди она единственная наследница своего деда, и претендует на право владения островом Исла-Тесоро, согласно его завещанию. У нас есть обе половины карты покойного, что является условием вхождения в наследство. Сколько вы хотите за то, чтобы помочь Элен стать владелицей острова по закону?";
 					link.l1.go = "saga";
 				}
 			}
@@ -53,22 +53,22 @@ void ProcessDialogEvent()
 				{
 					if (pchar.questTemp.Saga == "loxly") // первое обращение по саге
 					{
-						dialog.text = "Do you need my services, sir? You will be satisfied, I assure you.";
-						link.l1 = "Yes, I need them.  I am an authorized delegate of one young lady named Helen McArthur, she is a granddaughter of famous Nicolas Sharp. She is the only heir at law left after death of her mother and uncle. She have a claim on Isla Tesoro according to her father's testament. How much would you ask for helping Helen to become a rightful mistress of the island?";
+						dialog.text = "Вам потребовались мои услуги, сэр? Уверяю, вы останетесь довольны результатом.";
+						link.l1 = "Да, потребовались. Я доверенное лицо некой юной особы по имени Элен Мак Артур, родной внучки небезызвестного Николаса Шарпа. После смерти ее матери и дяди она единственная наследница своего деда, и претендует на право владения островом Исла-Тесоро. Сколько вы хотите за то, чтобы помочь Элен стать владелицей острова по закону?";
 						link.l1.go = "saga";
 						break;
 					}
 					if (pchar.questTemp.Saga == "bakaut")
 					{
-						dialog.text = "Sir, I am familiar with the materials of your business yet. Please, come see me later as I've already told you.";
-						link.l1 = "Fine.";
+						dialog.text = "Сэр, я еще не ознакомился с материалами вашего дела. Приходите позже, как я вам и говорил.";
+						link.l1 = "Хорошо.";
 						link.l1.go = "exit";
 						break;
 					}
 					if (pchar.questTemp.Saga == "molligan" || pchar.questTemp.Saga == "sellbakaut")
 					{ // если не выполнил до конца квест по бакауту
-						dialog.text = "Sir, unfortunately, I need more time to search all needed papers in the archives. I am not ready yet. Please, see me later.";
-						link.l1 = "Fine.";
+						dialog.text = "Сэр, к сожалению, мне потребовалось больше времени, чтобы разыскать нужные бумаги в архивах. Я еще не готов к разговору. Пожалуйста, приходите позже.";
+						link.l1 = "Хорошо.";
 						link.l1.go = "exit";
 						break;
 					}
@@ -78,21 +78,21 @@ void ProcessDialogEvent()
 						if (CheckAttribute(pchar, "questTemp.Saga.Late"))
 						{
 							RemoveItems(pchar, "map_sharp_full", 1);
-							dialog.text = "Mister, why have you been so slow?! It's all over for your principal. The period of the testament has elapsed and Isla Tesoro belongs to the English crown. It will become a military base soon."
-							link.l1 = "Well, really!... It seems that all my efforts were for nothing...";
+							dialog.text = "Сударь, ну что же вы так долго! Теперь все для вашей доверительницы потеряно. Срок действия завещания истек, и Исла Тесоро теперь по закону принадлежит английской короне. Теперь там будет военная база."
+							link.l1 = "Вот это да!.. Получается, все старания пошли прахом...";
 							link.l1.go = "saga_l3";
 						}
 						else
 						{
-							dialog.text = "Ah, here you are, sir. I have become familiar with the materials so it's time for an advance payment. Have you brought money?";
+							dialog.text = "А, вот и вы, сэр. Я ознакомился с материалами, так что теперь дело за авансом. Принесли деньги?";
 							if (GetCharacterItem(pchar, "gold_dublon") >= 450)
 							{
-								link.l1 = "Yes, I have. Here are your doubloons.";
+								link.l1 = "Да, принес. Вот ваши дублоны.";
 								link.l1.go = "saga_5";
 							}
 							else
 							{
-								link.l1 = "Pardon me for my bad memory, I have left them in a chest on the ship. I will bring them at once.";
+								link.l1 = "Прошу простить мою забывчивость - оставил в сундуке на корабле. Сейчас принесу.";
 								link.l1.go = "exit";
 							}
 						}
@@ -103,21 +103,21 @@ void ProcessDialogEvent()
 						// пятая проверка времени
 						if (CheckAttribute(pchar, "questTemp.Saga.Late"))
 						{
-							dialog.text = "Mister, why have you been so slow?! It's all over for your principal. The period of the testament has elapsed and Isla Tesoro belongs to the English crown. It will become a military base soon."
-							link.l1 = "Well, really!... It seems that all my efforts were for nothing...";
+							dialog.text = "Сударь, ну что же вы так долго! Теперь все для вашей доверительницы потеряно. Срок действия завещания истек, и Исла Тесоро теперь по закону принадлежит английской короне. Теперь там будет военная база."
+							link.l1 = "Вот это да!.. Получается, все старания пошли прахом...";
 							link.l1.go = "saga_l3";
 						}
 						else
 						{
-							dialog.text = "Sir, were you able to find anything which can prove your principal's parentage?";
+							dialog.text = "Сэр, вам удалось отыскать что-нибудь доказывающее происхождение вашей доверительницы?";
 							if (!CheckCharacterItem(pchar, "Letter_beatriss"))
 							{
-								link.l1 = "No yet. But I am working on it.";
+								link.l1 = "Пока нет. Но я работаю над этим.";
 								link.l1.go = "exit";
 							}
 							else
 							{
-								link.l1 = "Yes. I have got really exhaustive proofs.";
+								link.l1 = "Да. Причем у меня на руках доказательства более, чем исчерпывающие.";
 								link.l1.go = "saga_14";
 							}
 						}
@@ -125,31 +125,31 @@ void ProcessDialogEvent()
 					}
 					if (pchar.questTemp.Saga == "court" && GetNpcQuestPastDayParam(npchar, "court_date") >= 1 && IsOfficer(characterFromId("Helena")))
 					{
-						dialog.text = "A-ah, here you are, sir. Glad to see you. I must admit, I was looking for you. Is this you principal?";
-						link.l1 = "Yes. Let me introduce you Helen McArthur.";
+						dialog.text = "А-а, вот и вы, сэр. Рад вас видеть. Признаться, я вас уже заждался. Это и есть ваша доверительница?";
+						link.l1 = "Да. Позвольте представить - Элен Мак Артур.";
 						link.l1.go = "saga_26";
 						break;
 					}
-					dialog.text = "Do you need my services, sir? You will be satisfied, I assure you.";
-					link.l1 = "Thanks but I am fine.";
+					dialog.text = "Вам потребовались мои услуги, сэр? Уверяю, вы останетесь довольны результатом.";
+					link.l1 = "Спасибо, но пока я справляюсь со своими делами сам.";
 					link.l1.go = "exit";
 				}
 				if (CheckAttribute(npchar, "quest.waitgold"))
 				{
-					dialog.text = "Good day, sir. I take it that you have brought my fee?";
+					dialog.text = "Здравствуйте, сэр. Вы, как я полагаю, принесли мне мой гонорар?";
 					if (GetCharacterItem(pchar, "gold_dublon") >= 450)
 					{
-						link.l1 = "Yes, I have. Here are your doubloons.";
+						link.l1 = "Да, принес. Вот ваши дублоны.";
 						link.l1.go = "saga_36";
 					}
-					link.l2 = "You know, mister Loxley, I have a thought... My point is that 900 doubloons is more than enough for you work.";
+					link.l2 = "Знаете что, мистер Локсли, я тут прикинул... В общем, с моей точки зрения, 900 дублонов за вашу работу - это более, чем достаточно.";
 					link.l2.go = "saga_38";
-					link.l3 = "I remember about it, mister Loxley. I will bring it a bit later...";
+					link.l3 = "Мистер Локсли, я все помню. Принесу немного позже...";
 					link.l3.go = "exit";
 					break;
 				}
-				dialog.text = "Do you need my services, sir? You will be satisfied, I assure you.";
-				link.l1 = "Thanks but I am fine.";
+				dialog.text = "Вам потребовались мои услуги, сэр? Уверяю, вы останетесь довольны результатом.";
+				link.l1 = "Спасибо, но пока я справляюсь со своими делами сам.";
 				link.l1.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
@@ -160,33 +160,33 @@ void ProcessDialogEvent()
 			if (CheckAttribute(pchar, "questTemp.Saga.Late"))
 			{
 				RemoveItems(pchar, "map_sharp_full", 1);
-				dialog.text = "Sir, you must have been at the sea for too long. Isla Tesoro is now a military base of English Navy! Yes, Sharp's testament exists but it was expired and Isla Tesoro has become a property of the English crown. Alas!"
-				link.l1 = "Well, really!... It seems that all my efforts were for nothing...";
+				dialog.text = "Сударь, вы, наверное, давно не были на суше и не узнавали новостей? Исла Тесоро теперь - военная база английского флота! Да, завещание Шарпа существовало, однако срок, указанный в нем для предъявления прав на остров, истек, и Исла Тесоро отошел английской короне. Увы!"
+				link.l1 = "Вот это да!.. Получается, все старания пошли прахом...";
 				link.l1.go = "saga_l3";
 			}
 			else
 			{
-				dialog.text = "Lady claims to own the whole island? Hm... It seems that it won't be an easy deal. Isla Tesoro is almost an English colony already...";
-				link.l1 = "Not yet. According to the testament, a man or a woman who shows both of parts of the map will become an owner of Isla Tesoro. We have both of parts of the Sharp's map which is the maim term of heritage.";
+				dialog.text = "Девушка претендует на владение целым островом? Гм... Похоже, дело обещает быть непростым. Исла Тесоро - это уже практически английская колония...";
+				link.l1 = "Еще нет. Согласно завещанию, человек, предъявивший обе половинки карты Исла Тесоро руки Николаса Шарпа, становится владельцем острова. У нас есть обе половины карты покойного, что является условием вхождения в наследство. ";
 				link.l1.go = "saga_1";
 			}
 		break;
 		
 		case "saga_1":
-			dialog.text = "Nicolas Sharp... Well, well. I need to visit an archive and get familiar with materials  pertinent to Isla Tesoro. Do you have the map with you?";
-			link.l1 = "I have, but I will give to you only after we conclude a treaty. So what about the price for your services?";
+			dialog.text = "Николас Шарп... Так-так. Прежде чем приступить к делу, мне нужно предварительно посетить архив и ознакомиться с материалами, касающимися Исла Тесоро. Карта при вас?";
+			link.l1 = "При мне, но я ее вам дам только после того, как мы заключим с вами соглашение. Так что касательно оплаты ваших услуг?";
 			link.l1.go = "saga_2";
 		break;
 		
 		case "saga_2":
-			dialog.text = "As I said - it won't be easy. You need to prove rights of ownership of an island, not of some old tub or a shack. Besides, Nicolas Sharp was a pirate and helping pirates or their relatives is pricey.";
-			link.l1 = "Are you going to tell me a concrete sum?";
+			dialog.text = "Как я уже сказал - дело не из легких. Доказать права на остров - не то же самое, что отсудить старое корыто или лачугу на берегу. К тому же, Николас Шарп был пиратом, а дела пиратов и их родственников оплачиваются дороже.";
+			link.l1 = "Вы назовете мне конкретную сумму, чтобы я наконец знал, из чего мне исходить?";
 			link.l1.go = "saga_3";
 		break;
 		
 		case "saga_3":
-			dialog.text = "Sir, the final sum will be formed during the trial. I don't know how problematic it would be yet. But I am ready to estimate an advance - four hundred and fifty doubloons. This amount of gold will be doubled or tripled, it depends on how well our business will go\nBring me the money in a week, I need time to check the archives and to prepare myself. Then we will make an arrangement. Deal?";
-			link.l1 = "They have recommended you as the best lawyer at the archipelago, so we have a deal. See you in a week!";
+			dialog.text = "Сударь, окончательная сумма определится в процессе. Я пока не знаю, насколько сложным он будет. Но размер аванса назову сразу: четыреста пятьдесят дублонов. В зависимости от того, как пойдут наши дела, эта сумма удвоится или утроится\nПриходите через неделю с деньгами - я изучу архивы и буду во всеоружии. Тогда и заключим с вами соглашение. Вас устраивает?";
+			link.l1 = "Мне рекомендовали вас как лучшего адвоката, поэтому устраивает. До встречи через неделю!";
 			link.l1.go = "saga_4";
 		break;
 		
@@ -198,52 +198,52 @@ void ProcessDialogEvent()
 		
 		case "saga_5":
 			RemoveItems(pchar, "gold_dublon", 450);
-			Log_Info("You have given 450 doubloons");
+			Log_Info("Вы отдали 450 дублонов");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Very well. I am ready to carry on your case and to represent your interests in the court. Now let's cut to the chase. I did a good job in the archives and had a talk with important people. The case of Sharp's legacy is not going to be easy. It's good that you've acquired both pieces of the map. But this might not be enough\nColonel Doyle has got big plans for Isla Tesoro, since he failed to seize control over Tortuga. It has natural defences and could serve as a future military base in this area.";
-			link.l1 = "But Helen has all rights on this island according to the law of England!";
+			dialog.text = "Очень хорошо. Я готов вести ваше дело и представлять интересы в суде. Теперь конкретика. Я хорошо поработал в архиве и пообщался с важными людьми. Дело о наследстве Шарпа обещает быть непростым. Хорошо, что вам удалось найти обе половинки карты. Но этого может быть недостаточно\nПосле того, как стало ясно, что Тортуга Англии не по зубам, у полковника Дойли большие планы на остров Исла-Тесоро, как на хорошо укрепленную естественным образом будущую военную базу в этом районе.";
+			link.l1 = "Но согласно законам Англии при наличии карты у Элен все права на этот остров!";
 			link.l1.go = "saga_6";
 		break;
 		
 		case "saga_6":
-			dialog.text = "You don't know it perhaps, but late Sharp has made a postscript in his will. Heir or heirs must have his surname. And as far as I remember, your girl has a different surname. You've said that it was McArthur, right?";
-			link.l1 = "This is a surname of her stepfather, but Helen has all rights to carry Sharp surname, because she is a daughter of late Beatrice Sharp, the daughter of Nicolas.";
+			dialog.text = "Возможно вы не в курсе, но к своему завещанию покойный Шарп сделал приписку. Наследник, или наследники, обязательно должны носить его фамилию. А у вашей девушки, как я помню, фамилия другая. Мак Артур - вы так сказали?";
+			link.l1 = "Это фамилия ее приемного отца, но Элен может носить фамилию Шарп, так как является родной дочерью покойной Беатрисс Шарп, дочери Николаса.";
 			link.l1.go = "saga_7";
 		break;
 		
 		case "saga_7":
-			dialog.text = "Splendid! But who can confirm that under oath? Were Helen's foster parents familiar to Beatrice Sharp?";
-			link.l1 = "As far as I understand, there were not. Mister McArthur considered her as Gladys' daughter and Gladys was only familiar to the girl's father.";
+			dialog.text = "Прекрасно! Но кто это сможет подтвердить под присягой? Приемные родители Элен были лично знакомы с Беатрисс Шарп?";
+			link.l1 = "Насколько я понял - нет. Мистер Мак Артур считал ее дочерью Глэдис, а Глэдис имела дело только с отцом девочки.";
 			link.l1.go = "saga_8";
 		break;
 		
 		case "saga_8":
-			dialog.text = "That is a pity. See, I haven't found any mention in the archives that Beatrice Sharp has ever had any offspring. There is a possibility that there is no official note about child's birth at all. Anyone can call himself the Sharp's grandkid and claim the right to carry his surname.";
-			link.l1 = "But only Helen has the complete map!";
+			dialog.text = "Это плохо. Видите ли, в архиве нет даже упоминания о том, что у Беатрисс Шарп были прямые наследники. Возможно, что о рождении ребенка нет вообще никакой официальной записи. Эдак любой может назваться внуком Шарпа и претендовать на право носить его фамилию.";
+			link.l1 = "Но только у Элен есть полная карта Николаса!";
 			link.l1.go = "saga_9";
 		break;
 		
 		case "saga_9":
-			dialog.text = "This is her trump card and perhaps it would be enough if the local authorities didn't have their own plans for Isla Tesoro. The example of Beatrice sign is in the archives and we need some document written by her hand which would prove the fact of her daughter's birth, the daughter who was given to that Gladys... eh, what was her surname?";
-			link.l1 = "Chandler. Gladys Chandler from Belize.";
+			dialog.text = "Это сильный козырь в ее пользу, и его, возможно, было бы достаточно, не имей местная администрация планов на Исла-Тесоро. Образец почерка Беатрисс Шарп есть в архиве, и в идеале нужен какой-то документ, написанный ее рукой, который бы подтверждал факт рождения дочери, переданной на воспитание этой самой Глэдис... э-э-э, как ее?";
+			link.l1 = "Чандлер. Глэдис Чандлер, уроженка Белиза.";
 			link.l1.go = "saga_10";
 		break;
 		
 		case "saga_10":
-			dialog.text = "Exactly. Do you have an opportunity to find something like that?";
-			link.l1 = "I doubt it. It has been too long. According to the legend, captain Butcher himself might be Helen's father. Perhaps, the ex hangman of St. John's can tell us something about this. He was the last man who saw her father.";
+			dialog.text = "Вот именно. Есть у вас возможность найти что-либо подобное? ";
+			link.l1 = "Навряд ли. Столько лет прошло. Если верить легенде, отцом Элен мог быть сам капитан Бучер. Быть может, бывший палач Сент-Джонса смог бы что-то сказать по этому поводу. Он был последний, кто видел ее отца.";
 			link.l1.go = "saga_11";
 		break;
 		
 		case "saga_11":
-			dialog.text = "Hm. He was really an entertaining man. As far as remember, his name was Raymond Baker. I was lucky to talk with him once. He is smart and a well educated man. Well, try to find something at Antigua and I am going to continue my searches in the archives, perhaps I'll find something useful.";
-			link.l1 = "Fine. Works for me.";
+			dialog.text = "Хм. Это был весьма занятный тип. Звали его, помнится, Раймонд Бейкер. Я имел удовольствие с ним общаться. Весьма неглупый и образованный человек. Ну что же, попытайте счастья на Антигуа, а я продолжу изучение архивов - может, что-нибудь да и всплывет.";
+			link.l1 = "Хорошо. Так и поступим.";
 			link.l1.go = "saga_12";
 		break;
 		
 		case "saga_12":
-			dialog.text = "Give me the Sharp's map and hurry up, talk to Baker, perhaps you will be able to find some documents with his help. You might even find an evidence of her birth.";
-			link.l1 = "Eh, I wish I do. Fine, see you, mister Loxley.";
+			dialog.text = "Давайте карту Шарпа, и поторопитесь к Бейкеру - возможно, с его помощью вы сможете найти какие-то бумаги отца вашей доверительницы. Может, даже обнаружите подтверждение ее родословной. ";
+			link.l1 = "Эх, если бы так действительно оказалось. Ладно, до встречи, мистер Локсли.";
 			link.l1.go = "saga_13";
 		break;
 		
@@ -256,69 +256,69 @@ void ProcessDialogEvent()
 		break;
 		
 		case "saga_14":
-			dialog.text = "Is that so? Let's see the evidence.";
-			link.l1 = "This is the private letter written by Beatrice Sharp to her brother. It's written there that she bore a daughter, her father was Lawrence Beltrope. The girl was sent to a young widow named Gladys Chandler. Laurence Beltrope is also know as captain Butcher. Here, take the letter...";
+			dialog.text = "Вот как? Давайте посмотрим, что же это за доказательства.";
+			link.l1 = "Это личное письмо Беатрисс Шарп своему брату, в котором она однозначно утверждает, что родила дочь от Лоуренса Белтропа, известного, как капитан Бучер, и отдала ее на кормление молодой вдове Глэдис Чандлер. Вот это письмо, держите...";
 			link.l1.go = "saga_15";
 		break;
 		
 		case "saga_15":
 			RemoveItems(pchar, "Letter_beatriss", 1);
 			dialog.text = "";
-			link.l1 = "Gladys is ready to confirm it under oath. She is also ready to confirm that the father had introduced himself as captain Butcher.";
+			link.l1 = "Сама Глэдис готова подтвердить факт передачи ей малышки под присягой. А также то, что отец девочки представился ей именно как капитан Бучер.";
 			link.l1.go = "saga_16";
 		break;
 		
 		case "saga_16":
 			if (CheckAttribute(pchar, "questTemp.Saga.Beltrop_die")) // Белтроп убит
 			{
-				dialog.text = "Wait a minute! Captain Butcher, the evil pirate and the killer of English subjects was hanged in the fort of St. John's twenty years ago. And Laurence Beltrope, a close friend to Richard Doyle, tragically died not long ago. Most of all, Doyle wanted to make him a new governor of Sharptown!";
-				link.l1 = "Ha! Sure, nobody knew that... I have got written testimonies of Raymond Baker, the ex hanger of St, John's, that he was forced under the threat of death to fake Butcher's execution! Here, take a look...";
+				dialog.text = "Минуточку! Злостный пират и убийца английских подданных капитан Бучер был повешен в форте Сент-Джонса двадцать лет назад. А Лоуренс Белтроп, протеже Эдварда Дойли, трагически погиб совсем недавно. Более того именно его Дойли и планировал назначить губернатором Шарптауна!";
+				link.l1 = "Ха! Конечно, никто не в курсе... У меня есть письменные показания Раймонда Бейкера, бывшего палача Сент-Джонса, о том, что он под угрозой смерти вынужден был устроить инсценировку казни Бучера! Вот, ознакомьтесь...";
 				link.l1.go = "saga_17";
 			}
 			else
 			{
-				dialog.text = "Wait a minute! Captain Butcher, the evil pirate and the killer of English subjects was hanged in the fort of St. John's twenty years ago. And Laurence Beltrope is alive and he lives in one of the best mansions of Port Royal. Most of all, Doyle wanted to make him a new governor of Sharptown!";
-				link.l1 = "Ha! Sure, nobody knew that... I have got a written testimonies of Raymond Baker, the ex hanger of St, John's, that he was forced under the threat of death to fake Butcher's execution! Here, take a look...";
+				dialog.text = "Минуточку! Злостный пират и убийца английских подданных капитан Бучер был повешен в форте Сент-Джонса двадцать лет назад. А Лоуренс Бэлтроп жив и здоров, занимает один из лучших особняков Порт-Рояля. Более того именно его Дойли и планировал назначить губернатором Шарптауна!";
+				link.l1 = "Ха! Конечно, никто не в курсе... У меня есть письменные показания Раймонда Бейкера, бывшего палача Сент-Джонса, о том, что он под угрозой смерти вынужден был устроить инсценировку казни Бучера! Вот, ознакомьтесь...";
 				link.l1.go = "saga_17";
 			}
 		break;
 		
 		case "saga_17":
 			RemoveItems(pchar, "letter_baker", 1);
-			dialog.text = "Hm. Well, well...";
-			link.l1 = "Isn't that very adroitly? Butcher has managed to stay alive and went back to England. He has changed his name back to Laurence Beltrope. He has returned here unnoticed.";
+			dialog.text = "Хм. Так-так...";
+			link.l1 = "Ловко придумано, правда? Таким образом, Бучер остался жив, вернулся в Англию, где снова стал называться Лоуренсом Белтропом. Под этим именем он и прибыл сюда снова, не узнанный никем.";
 			if (CheckAttribute(pchar, "questTemp.Saga.Beltrop_die")) link.l1.go = "saga_18";
 			else link.l1.go = "saga_22";
 		break;
 		
 		case "saga_18":
-			dialog.text = "But this... This changes everything! Publishing Beatrice's letter will show that all this time the military governor was covering a fugitive pirate Butcher, who must be arrested immediately and appeared in court for his past crimes!\nAnd Baker's testimony will completely destroy any reasons against! This is great! With such aces in the hand we will beat Doyle fair and square!";
-			link.l1 = "I am glad. I rely on you in this trial. Yes, tell me, how did Laurence Beltrope die?";
+			dialog.text = "Но это... Это в корне меняет дело! Если мы предадим гласности письмо Беатрисс, то это фактически означает, что все это время военный губернатор Ямайки укрывал беглого пирата Бучера, которого должен был немедленно арестовать и предать суду за прошлые преступления!\nА показания Бейкера просто уничтожат любые доводы против! Вот это да! С такими козырями мы обыграем Дойли вчистую!";
+			link.l1 = "Я очень рад. Полностью полагаюсь в ведении процесса на вас. Да, скажите, а как погиб Лоуренс Белтоп?";
 			link.l1.go = "saga_19";
 		break;
 		
 		case "saga_19":
-			dialog.text = "This is a creepy story, sir. He was found in his own bedroom with twisted face. It is too hard to imagine what could scare this fearless man so much. The say that he was covered in hoarfrost. His body was all in scary and lacerated wounds. Not a single drop of blood! Just imagine! Not a single drop!";
-			link.l1 = "Yes, that is a nightmare. It seems that he was murdered... But who did that?";
+			dialog.text = "Это жуткая история, сэр. Его нашли в собственной спальне с лицом, перекошенным от ужаса. Трудно даже представить, что могло так напугать этого бесстрашного человека. Говорят, он был весь покрыт инеем, как будто месяц лежал на леднике. А все тело его было в страшных рваных ранах. И ни капли крови! Вы представляете?! Ни капли!";
+			link.l1 = "Да, кошмар. Получается, его убили... Но кто?";
 			link.l1.go = "saga_20";
 		break;
 		
 		case "saga_20":
-			dialog.text = "It is unknown. It is too tangle... Garrison physician said that his wounds were not lethal. Beltrope died because of fear, pain or something else. Anyway, this is a mystic death.";
-			link.l1 = "I see... And when will the trial happen?";
+			dialog.text = "Неизвестно. К тому же тут все так запутанно... Гарнизонный лекарь, осматривавший тело, сказал, что ни одна рана не была смертельной. Белтроп умер или от страха, или от боли, или от чего-то еще. В общем, загадочная смерть.";
+			link.l1 = "Понятно... Когда состоится суд?";
 			link.l1.go = "saga_21";
 		break;
 		
 		case "saga_21":
-			dialog.text = "It all depends on you, sir. I will submit all documents to the court as soon as you pay me the second part of my fee - 450 doubloons. Helen will gain her rights in a week after that.";
+			dialog.text = "Тут многое зависит от вас, сэр. Как только вы выплатите мне вторую часть гонорара - 450 дублонов, я подам документы в суд и максимально ускорю начало процесса. Не позже, чем через неделю после вашего взноса, Элен войдет в права наследства.";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 450)
 			{
-				link.l1 = "Very well. Here are you doubloons.";
+				link.l1 = "Очень хорошо. Держите ваши дублоны.";
 				link.l1.go = "saga_24";
 			}
 			else
 			{
-				link.l1 = "Yes, sure. I will bring you the sum you need.";
+				link.l1 = "Да, конечно. Я принесу вам нужную сумму.";
 				link.l1.go = "exit";
 				NextDiag.TempNode = "saga_23";
 			}
@@ -328,21 +328,21 @@ void ProcessDialogEvent()
 			// шестая проверка времени
 			if (CheckAttribute(pchar, "questTemp.Saga.Late"))
 			{
-				dialog.text = "Sir, you have staggered me! You have done so much, the island was almost in our hands but it is over now because of your delay with my fee! The testament was expired and Isla Tesoro belongs to the English crown now. There will be a military base."
-				link.l1 = "Well, really!... It seems that all my efforts were for nothing...";
+				dialog.text = "Сударь, вы меня поразили! Вы сделали почти все, остров был у нас практически в руках, но из-за вашей проволочки с оплатой теперь все для вашей доверительницы потеряно! Срок действия завещания истек, и Исла Тесоро теперь по закону принадлежит английской короне. Теперь там будет военная база."
+				link.l1 = "Вот это да!.. Получается, все старания пошли прахом...";
 				link.l1.go = "saga_l3";
 			}
 			else
 			{
-				dialog.text = "Have you brought the second part of my fee, sir?";
+				dialog.text = "Вы принесли вторую часть гонорара, сэр?";
 				if (GetCharacterItem(pchar, "gold_dublon") >= 450)
 				{
-					link.l1 = "Yes, sure. Here are your doubloons.";
+					link.l1 = "Да, конечно. Держите ваши дублоны.";
 					link.l1.go = "saga_24";
 				}
 				else
 				{
-					link.l1 = "Pardon me for my bad memory, I have left them in a chest on the ship. I will bring them at once.";
+					link.l1 = "Прошу простить мою забывчивость - оставил в сундуке на корабле. Сейчас принесу.";
 					link.l1.go = "exit";
 					NextDiag.TempNode = "saga_23";
 				}
@@ -350,17 +350,17 @@ void ProcessDialogEvent()
 		break;
 		
 		case "saga_22":
-			dialog.text = "But this… This changes everything! Publishing Beatrice's letter will mean that Lawrence Beltrope must be arrested immediately and appeared in court for his past crimes!\nAnd Baker's testimony will completely destroy any reasons against! This is great! With such aces in the hand we will beat Doyle fair and square!";
-			link.l1 = "I am very glad. When will the trial happen?";
+			dialog.text = "Но это... Это в корне меняет дело! Если мы предадим гласности письмо Беатрисс, то это автоматически означает, что Лоуренс Белтроп должен быть арестован, как беглый пират, и вновь осужден на казнь за прошлые преступления!\nА показания Бейкера просто уничтожат его! Вот это да! С такими козырями мы обыграем Дойли вчистую!";
+			link.l1 = "Я очень рад. Когда состоится суд?";
 			link.l1.go = "saga_21";
 		break;
 		
 		case "saga_24":
 			RemoveItems(pchar, "gold_dublon", 450);
-			Log_Info("You have given 450 doubloons");
+			Log_Info("Вы отдали 450 дублонов");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Excellent, sir. Pleasure doing business with you. Now, here is the deal. Come back here tomorrow. Yes-yes, you heard right - tomorrow! After all I am the best lawyer of the archipelago and I have connections\nBring your grantor, the trial won't happen without her. Don't be late and don't leave the city. And take the last part of the payment if you can, I am completely sure in our victory.";
-			link.l1 = "Good. We will be at your office tomorrow, mister Loxley.";
+			dialog.text = "Прекрасно, сэр. С вами приятно вести дела. Теперь договоримся так: прибудьте ко мне завтра. Да-да, вы не ослышались - завтра! Я все-таки лучший адвокат на архипелаге, и у меня большие связи\nПриходите обязательно вместе со своей доверительницей - как вы понимаете, без ее участия суд не может состояться. Не опаздывайте и не покидайте город. И если сможете - прихватите последнюю часть гонорара - я полностью уверен в нашей победе.";
+			link.l1 = "Хорошо. Мы будем в вашей конторе завтра, мистер Локсли.";
 			link.l1.go = "saga_25";
 		break;
 		
@@ -380,7 +380,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "saga_26":
-			dialog.text = "MacArthur? No, it's Sharp! Well, follow me now!";
+			dialog.text = "Мак Артур? Нет, пожалуй - Шарп! Ну что же, следуйте за мной!";
 			link.l1 = "...";
 			link.l1.go = "saga_27";
 		break;
@@ -404,52 +404,52 @@ void ProcessDialogEvent()
 		break;
 		
 		case "saga_28":
-			dialog.text = "Allow me to congratulate you, sire, and your principal. She is a rightful ruler of Ilsa Tesoro. It's worth some champagne to drink for!";
-			link.l1 = "Absolutely, mister Loxley. Your speech was most excellent. I thought that colonel Doyle would get a hearth attack when you have told to the court that Lawrence Beltrop is Butcher.";
+			dialog.text = "Ну что же, позвольте мне поздравить вас, сэр, и вашу доверительницу. Теперь она полноправная владелица Исла Тесоро. За это стоит выпить шампанского!";
+			link.l1 = "Безусловно, мистер Локсли. Ваша речь была просто великолепной. Я думал, полковника Дойли хватит удар, когда вы сообщили суду, что капитан Бучер и Лоуренс Белтроп - одно и то же лицо.";
 			link.l1.go = "saga_29";
 		break;
 		
 		case "saga_29":
-			dialog.text = "Yes, mister Doyle will have to say goodbye to his dream about military base on Isla Tesoro. And what could he do? Law is a law and it is written for everyone even for respected colonel.";
+			dialog.text = "Да, мистеру Дойли придется распрощаться с мечтой о военной базе на Исла Тесоро. А что же поделать? Закон - есть закон, и он обязателен для всех, включая уважаемого полковника.";
 			if (CheckAttribute(pchar, "questTemp.Saga.Beltrop_die"))
 			{
-				link.l1 = "Are the papers fine?";
+				link.l1 = "Все бумаги, подтверждающие права Элен на остров в порядке?";
 				link.l1.go = "saga_30";
 			}
 			else
 			{
-				link.l1 = "I have heard that the judge has ordered to arrest Lawrence Beltrop. I take it that he is going to be hanged?";
+				link.l1 = "Я слышал, как судья отдал распоряжение об аресте Лоуренса Белтропа. Как я понимаю, его теперь ждет виселица?";
 				link.l1.go = "saga_34";
 			}
 		break;
 		
 		case "saga_30":
-			dialog.text = "Sure, sir. I have checked every comma in them. You can be sure that they are fine.";
-			link.l1 = "Very well...";
+			dialog.text = "Конечно, сэр. Я лично проверил каждую запятую в них. Можете быть уверены - комар носа не подточит.";
+			link.l1 = "Очень хорошо...";
 			link.l1.go = "saga_31";
 		break;
 		
 		case "saga_31":
-			dialog.text = "Well, my job is done. The case was tricky but we have made it together. Now, sir, you only have to pay me the last part of my fee. No pressure, I realize that you must be busy. But I believe that you will find time to bring me 450 doubloons within a week\nBesides, such client as you may always count on substantial discounts. I can help you a lot, I have got connections in every capital of the archipelago, even in hostile ones, so any problem can be settled.";
-			link.l1 = "Excellent. Now I know who to ask.";
+			dialog.text = "Что же, я выполнил свою работу. Дело было сложным, но совместными усилиями мы справились. Теперь, сэр, вам остается только произвести окончательный расчет со мной. Я вас не тороплю - понимаю, что сейчас вам было немного не до этого. Но, думаю, в течение недели вы найдете возможность принести мне 450 дублонов\nКроме того, такой клиент, как вы, может теперь всегда рассчитывать на большие скидки. А сделать я могу немало: у меня связи в столицах всех наций на архипелаге, включая враждебные, так что любая проблема может быть улажена.";
+			link.l1 = "Отлично. Буду знать, к кому обращаться.";
 			link.l1.go = "saga_32";
 		break;
 		
 		case "saga_32":
-			dialog.text = "I guarantee you the positive outcome even in the toughest situations.";
-			link.l1 = "Nice. I have to go now, me and Helen have a lot to do.";
+			dialog.text = "Положительный результат гарантирую, даже в очень сложных ситуациях.";
+			link.l1 = "Вот и славно. А теперь разрешите откланяться - у нас с Элен еще очень много дел.";
 			link.l1.go = "saga_33";
 		break;
 		
 		case "saga_33":
-			dialog.text = "Goodbye, sir.";
-			link.l1 = "Goodbye, mister Loxley.";
+			dialog.text = "До встречи, сэр.";
+			link.l1 = "До свидания, мистер Локсли.";
 			link.l1.go = "saga_35";
 		break;
 		
 		case "saga_34":
-			dialog.text = "I suppose so, he is captain Butcher, a pirate and bandit. Though he is not in Port Royal now. He was fortunate to leave deep into the island. But the hunt has began and he will be catched for sure.";
-			link.l1 = "I see... Are the papers in check?";
+			dialog.text = "Думаю, да - ведь он же капитан Бучер, разбойник и пират. Однако сейчас его нет в Порт-Рояле - он, на свое счастье, отбыл в глубь острова. Но охота за ним уже началась, и он будет схвачен при первой же возможности.";
+			link.l1 = "Понятно... Все бумаги, подтверждающие права Элен на остров в порядке?";
 			link.l1.go = "saga_30";
 		break;
 		
@@ -464,10 +464,10 @@ void ProcessDialogEvent()
 		
 		case "saga_36":
 			RemoveItems(pchar, "gold_dublon", 450);
-			Log_Info("You have given 450 doubloons");
+			Log_Info("Вы отдали 450 дублонов");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Splendid! It was a pleasure doing business with you, sir! Now you can ask for my help in any matter and get a discount. Troubles with the law, head money... You are welcome. I will always be glad to see you.";
-			link.l1 = "I'd better stay out of troubles at all but... things happen. Thank you and goodbye, mister Loxley.";
+			dialog.text = "Превосходно! Очень приятно вести с вами дело, сэр! Теперь вы можете обращаться ко мне по любым вопросам и рассчитывать на скидки. Проблемы с законом вплоть до награды за голову... Пожалуйста, приходите. Всегда буду рад вас видеть.";
+			link.l1 = "Лучше, конечно, обойтись без неприятностей с законом, но... мало ли. Спасибо и до свидания, мистер Локсли.";
 			link.l1.go = "saga_37";
 		break;
 		
@@ -478,14 +478,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "saga_38":
-			dialog.text = "What do you mean, mister? Are you going to breach terms of our agreement?";
-			link.l1 = "Exactly. I did the most of work.  You can't even imagine what did it take to get evidences. And you have only taken those papers and went to the court. Nine hundred doubloons is more than enough, I am certain in that.";
+			dialog.text = "Вы это сейчас о чем, сударь? Вы решили нарушить условия нашего договора?";
+			link.l1 = "Именно. Всю основную работу сделал я. Вы даже не представляете, чего мне стоило достать письменные доказательства. А вы просто подшили бумажки к делу и выступили в суде. Девятисот дублонов за это, я уверен, более, чем достаточно.";
 			link.l1.go = "saga_39";
 		break;
 		
 		case "saga_39":
-			dialog.text = "You speak like a pirate, mister! Well, I won't go poor loosing four hundred fifty doubloons but you won't go rich either. In fact, you've just a lost much more! And you will loose something in future perhaps... Leave my house immediately and don't show yourself here ever!";
-			link.l1 = "And I am going to do that. Farewell, mister Loxley.";
+			dialog.text = "Вы разговариваете, как настоящий пират, сударь! Что же, я не обеднею от этих четырехсот пятидесяти дублонов, а вы не обогатитесь. Но потеряли вы намного больше! А возможно, и еще потеряете... Немедленно покиньте мой дом и больше никогда здесь не показывайтесь!";
+			link.l1 = "Это я и собираюсь сделать. Всего доброго, мистер Локсли.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "saga_40";
 			pchar.quest.Saga_RemainGoldLoxly.over = "yes"; //снять таймер
@@ -494,7 +494,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "saga_40":
-			dialog.text = "I don't want to talk with you. Get lost until I call the guards!";
+			dialog.text = "Я не желаю с вами разговаривать. Убирайтесь, пока я не вызвал стражу!";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "saga_40";
@@ -502,8 +502,8 @@ void ProcessDialogEvent()
 		
 		// провалы Саги
 		case "saga_l3":
-			dialog.text = "Sir, we would win your case if you'd come see earlier. The testament has expired recently. I am sorry.";
-			link.l1 = "Eh, I am sorry too! Whatever, farewell, mister Loxley.";
+			dialog.text = "Сэр, если бы вы пришли ко мне пораньше - мы бы могли выиграть дело, завещание потеряло силу совсем недавно. Мне очень жаль.";
+			link.l1 = "Эх, а мне-то как жаль! Ладно, прощайте, мистер Локсли.";
 			link.l1.go = "saga_l3_1";
 			// Элен - к разговору
 			sld = characterFromId("Helena");
@@ -521,51 +521,51 @@ void ProcessDialogEvent()
 		
 	//-------------------------------------- адвокатские услуги ------------------------------------------------
 		case "Loxly":
-			dialog.text = TimeGreeting()+", sir. Glad to see you. Do you need my services?";
-			link.l1 = "Yes. That is why I am here.";
+			dialog.text = TimeGreeting()+", сэр. Рад вас видеть. Вам потребовались мои услуги?";
+			link.l1 = "Да. Именно за этим я к вам и явился.";
 			link.l1.go = "loxly_1";
-			link.l2 = "No, fortunately, I don't need them so far. Just wanted to greet you.";
+			link.l2 = "Нет, к счастью, пока ничего не нужно. Я просто зашел поздороваться с вами.";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "Loxly";
 		break;
 		
 		case "loxly_1":
-			dialog.text = "I am ready to listen you. What kind of help do you need>";
+			dialog.text = "Я готов вас выслушать. Какого рода помощь вам нужна?";
 			if (ChangeCharacterNationReputation(pchar, ENGLAND, 0) < 0)
 			{
-				link.l1 = "I have got some troubles with English authorities.";
+				link.l1 = "У меня возникли серьезные неприятности с английскими властями.";
 				link.l1.go = "RelationTo_0";
 			}
 			
 			if (ChangeCharacterNationReputation(pchar, FRANCE, 0) < 0)
 			{
-				link.l2 = "I have got some troubles with French authorities.";
+				link.l2 = "У меня возникли серьезные неприятности с французскими властями.";
 				link.l2.go = "RelationTo_1";
 			}
 			if (ChangeCharacterNationReputation(pchar, SPAIN, 0) < 0)
 			{
-				link.l3 = "I have got some troubles with Spanish authorities.";
+				link.l3 = "У меня возникли серьезные неприятности с испанскими властями.";
 				link.l3.go = "RelationTo_2";
 			}
 
 			if (ChangeCharacterNationReputation(pchar, HOLLAND, 0) < 0)
 			{
-				link.l4 = "I have got some troubles with Holland authorities.";
+				link.l4 = "У меня возникли серьезные неприятности с голландскими властями.";
 				link.l4.go = "RelationTo_3";
 			}
 			if (ChangeContrabandRelation(pchar, 0) <= 5)
             {
-                Link.l5 = "I have scolded with smugglers.";
+                Link.l5 = "Я крупно переругался с контрабандистами.";
 				Link.l5.go = "contraband";
             }
-			Link.l7 = "I am sorry, I have changed my mind...";
+			Link.l7 = "Простите, но я передумал...";
 			Link.l7.go = "exit";
 			NextDiag.TempNode = "Loxly";
 		break;
 		
 		case "RelationYet": // уже оплачено
-			dialog.text = "I am already working on your matter. It will be alright, I assure you.";
-			Link.l1 = "Thank you. I'll be waiting.";
+			dialog.text = "Я уже работаю над вашим делом. Все будет в порядке, уверяю вас.";
+			Link.l1 = "Спасибо. Буду ждать!";
 			Link.l1.go = "exit";
 			NextDiag.TempNode = "Loxly";
 		break;
@@ -574,25 +574,25 @@ void ProcessDialogEvent()
 		case "RelationAny_Done":
 			iSumm = sti(npchar.quest.relation.summ);
 			int iRate = abs(ChangeCharacterNationReputation(pchar, sti(npchar.quest.relation), 0));
-			if (iRate <= 10) sTemp = "Well, I can't call it troubles. Just a little problem. I will settle an affair at once";
-			if (iRate > 10 && iRate <= 30) sTemp = "Yes, your reputation was slightly spoiled but I don't see anything critical. I will settle an affair at once";
-			if (iRate > 30 && iRate <= 60) sTemp = "Yes, you have done a bad turn to the authorities. It won't be easy but I am sure that I will be able to settle your disagreements without a hitch";
-			if (iRate > 60 && iRate <= 90) sTemp = "And how did you do that, sir? Your troubles are not just serious, they are really serious. The authorities are very eager to get you. I will have to put a lot of effort to settle your disagreements";
-			if (iRate > 90) sTemp = "Well... The situation is catastrophic - you were claimed as a bitterest enemy. It will be tough but I am the best lawyer at the Caribbean after all, I will settle your disagreements ";
-			dialog.text = ""+sTemp+" with "+XI_ConvertString(Nations[sti(npchar.quest.relation)].Name+"Abl")+". It will cost you "+FindRussianMoneyString(iSumm)+".";
+			if (iRate <= 10) sTemp = "Ну, серьезными неприятностями это никак не назовешь. Незначительный пустяк. Я без труда улажу ваши разногласия";
+			if (iRate > 10 && iRate <= 30) sTemp = "Да, ваша репутация подпорчена, но ничего критичного я не вижу. Я без труда улажу ваши разногласия";
+			if (iRate > 30 && iRate <= 60) sTemp = "Да, насолили вы властям изрядно. Придется постараться, но я уверен, что смогу без сучка и задоринки уладить ваши разногласия";
+			if (iRate > 60 && iRate <= 90) sTemp = "И как же это вы так умудрились, сэр? Неприятности не просто серьезные - они очень серьезные. Власти так и жаждут заполучить вас в свои лапы. Мне придется очень постараться, чтобы уладить ваши разногласия";
+			if (iRate > 90) sTemp = "Да уж... Ситуация катастрофическая - вы объявлены врагом нации номер один. Это будет крайне сложно, но я все-таки лучший адвокат на Карибах - я улажу ваши разногласия";
+			dialog.text = ""+sTemp+" с "+XI_ConvertString(Nations[sti(npchar.quest.relation)].Name+"Abl")+". Это обойдется вам в "+FindRussianMoneyString(iSumm)+".";
 			if(sti(pchar.money) >= iSumm)
 			{
-				link.l1 = "Very well, mister Loxley, I agree. Here are your money and try to settle thing as soon as possible.";
+				link.l1 = "Хорошо, мистер Локсли, я согласен. Вот ваши деньги и решите проблему поскорее.";
 				link.l1.go = "relation";
 			}
-			link.l2 = "I don't have the sum you ask right now. I will be back later!";
+			link.l2 = "У меня сейчас нет требуемой суммы. Я зайду позже!";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "Loxly";
 		break;
 
 		case "relation":
-			dialog.text = "Pleasure doing business with you, sir. You can breath freely again, your problem will go away within two weeks. Please avoid any confrontations with "+XI_ConvertString(Nations[sti(npchar.quest.relation)].Name+"Abl") +", while I am in a middle of negotiations.";
-			link.l1 = "Fine, I will consider your warning. Thank you and farewell!";
+			dialog.text = "Приятно иметь с вами дело, сэр. Можете спать спокойно - не позже, чем через две недели вы сможете забыть об этой проблеме. Единственная просьба - избегайте ненужных стычек и столкновений с "+XI_ConvertString(Nations[sti(npchar.quest.relation)].Name+"Abl") +", пока я решаю вопрос, чтобы не испортить дело.";
+			link.l1 = "Хорошо, я учту ваше предупреждение. Спасибо и до свидания!";
 			link.l1.go = "exit";
 			AddMoneyToCharacter(pchar, -sti(npchar.quest.relation.summ));
 			ChangeNationRelationFromRelationAgent(npchar);
@@ -605,19 +605,19 @@ void ProcessDialogEvent()
 		
 		case "contraband":
 			npchar.quest.contrasum = makeint(0.3*stf(Pchar.rank)/stf(Pchar.reputation.nobility)*60000);
-			dialog.Text = "And why have you done it? Smuggler are good lads, they are honest in their way. We all need to live and feed... Fine, it is not a big deal and it will cost you only "+FindRussianMoneyString(sti(npchar.quest.contrasum))+".";
+			dialog.Text = "Ну и зачем же вы так сделали? Контрабандисты - неплохие ребята, по-своему честные. А жить-то всем надо, и кушать всем хочется... Ладно, проблема ваша невелика, и обойдется вам всего в "+FindRussianMoneyString(sti(npchar.quest.contrasum))+".";
 			if(sti(Pchar.money) >= sti(npchar.quest.contrasum))
 			{
-				Link.l1 = "Very well, mister Loxley, I agree. Here are your money and try to settle thing as soon as possible.";
+				Link.l1 = "Хорошо, мистер Локсли, я согласен. Вот ваши деньги.";
 				Link.l1.go = "Contraband_Agreed";
 			}
-			Link.l2 = "I don't have the sum you ask right now. I will be back later!";
+			Link.l2 = "У меня сейчас нет требуемой суммы. Я зайду позже!";
 			Link.l2.go = "exit";
 		break;
 		
 		case "Contraband_Agreed":
-			dialog.Text = "Excellent, I will settle it. They will do business with you again.";
-			Link.l1 = "Thanks!";
+			dialog.Text = "Замечательно, я все улажу. Они будут иметь с вами дела.";
+			Link.l1 = "Спасибо!";
 			Link.l1.go = "exit";
 			ChangeContrabandRelation(pchar, 25);
 			AddMoneyToCharacter(pchar, -sti(npchar.quest.contrasum));

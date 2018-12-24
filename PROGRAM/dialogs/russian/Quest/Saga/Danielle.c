@@ -24,51 +24,51 @@ void ProcessDialogEvent()
 	{
 		case "First time": //первая встреча - знакомство
 			PlaySound("VOICE\Russian\saga\Denny Hawk-02.wav");
-			dialog.text = "Wait, handsome! I think that we can have a talk.";
-			link.l1 = "Do I know you? Anyway, I have always got few extra hours for a lady.";
+			dialog.text = "Постой, красавчик! Мне кажется, нам есть, что сказать друг другу.";
+			link.l1 = "Мы разве знакомы? Впрочем, даже для незнакомой дамы у меня всегда найдется пара часов свободного времени.";
 			link.l1.go = "meeting";			
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "meeting":
 			PlaySound("VOICE\Russian\saga\Denny Hawk-01.wav");
-			dialog.text = "Don't make plans, captain. Find yourself some younger fool girl for extra few hours. And I have got business for you. I am married actually. My husband's name is Nathaniel Hawk.";
-			link.l1 = "Isn't that something! So you must be that bit... eh, Dannie Hawk, mister Svensson mentioned you.";
+			dialog.text = "Не строй планов на мой счет, капитан. Найди себе на пару часов дурочку помоложе. А у меня к тебе конкретный разговор. Я как бы замужем. И моего мужа зовут Натаниэль Хоук.";
+			link.l1 = "Вот это да! Так вы и есть та самая стер... э-э-э, Данни Хоук, про которую мне только что рассказывал мистер Свенсон?";
 			link.l1.go = "meeting_1";
 		break;
 		
 		case "meeting_1":
-			dialog.text = "In the flesh. Yes, I am aware that the Forest Devil doesn't think much of me, the feeling is mutual, but he had to warn you that I wear my saber not because it's pretty. So, cut to the chase, son!\nI have been stalking Svensson and his visitors for a while because he was the one who sent my husband in jungles to die. I thought that he is working with Jackman, but now I see that he is not. I was under the windows all the time. Didn't eavesdrop everything,but learned a lot of useful information\nAre you really willing to find my husband and kick Jackman's butt? Or were you only talking cheap?";
-			link.l1 = "Eavesdropping is bad, madam Hawk. But I will excuse you for that if you talk to me in the more respectful way. Will I find Hawk or not, it's my concern only. Speak if you have got something useful to say. Leave me if you don't. I won't ask twice.";
+			dialog.text = "Она самая. Знаю, Лесной Дьявол обо мне не очень высокого мнения, как, впрочем и я о нем, но предупредить тебя на счет того, что саблю я ношу не для вида, он был обязан. Так что ближе к делу, сынок!\nЯ давно наблюдаю за Свенсоном и всеми, кто к нему приходит, поскольку именно он послал моего мужа в джунгли на погибель. Я думала, что он заодно с Джекманом, но теперь понимаю, что это не так. Я проторчала под окнами все это время. Подслушать удалось не все, но все же я узнала для себя много интересного\nТы действительно намерен найти моего мужа и надрать задницу Джекману? Или просто трепался?";
+			link.l1 = "Подслушивать, мадам Хоук, нехорошо. Но я вас, пожалуй, прощу, если впредь вы будете разговаривать со мной более почтительно. Найду я Хоука или нет, это мои проблемы. Если вам есть что сказать - говорите. Если сказать нечего, уйдите с дороги. Пока прошу по-хорошему.";
 			link.l1.go = "meeting_2";
 		break;
 		
 		case "meeting_2":
-			dialog.text = "A-ha, such a hothead! Come on, captain... My temper is not really comfortable that's for sure. I see that you are not a coward and you know your worth. So... let's be on familiar. I promise you that I will watch what I am saying. I need you and you need me. We share goals. Take me to your crew and you won't regret it. I will serve you with good faith and fidelity until we find Nathan, you have my word.";
-			link.l1 = "Consider yourself accepted... Dannie. Svensson told me that you have already been searching for your husband. Have you found anything?";
+			dialog.text = "А-та-та, какие мы горячие! Ну ладно тебе, капитан... Характер у меня и впрямь сложный. Вижу, что ты не из трусливых, и цену себе знаешь. И это... Давай на 'ты'. Обещаю, что буду легче на поворотах. Ты нужен мне, а я могу пригодиться тебе. У нас есть общие цели. Возьми меня к себе в команду, не пожалеешь. Пока не найдем Натана, буду служить тебе верой и правдой.";
+			link.l1 = "Считай себя уже зачисленной... Данни. Свенсон сказал, что ты занималась розысками мужа в одиночку. Тебе удалось узнать какие-нибудь подробности?";
 			link.l1.go = "meeting_3";
 		break;
 		
 		case "meeting_3":
-			dialog.text = "Not much, but enough to accuse Jackman of lying. The bastard said that mines guards, my Nathan faced, didn't take prisoners. It is true that no one has seen Hawk's corpse at the bay. And how could they, because he actually was taken to the mines as a prisoner. Snake Eye, a shaman of Miskito people, found him there\nHe also arranged an escape. But where is Hawk now stays unknown. The shaman was mumbling something about some Kukulcan who could eat him. Besides, the red skin made pretty clear that white women are nothing more but a joke for him.";
-			link.l1 = "That's is something! Such news make me happier. Where is that Indian village?";
+			dialog.text = "Немного, но этого достаточно, чтобы обвинить Джекмана во лжи. Этот подонок сказал, что охрана рудника, на засаду которой напоролся Натан, пленных не брала. Трупа Хоука в бухте действительно никто не видел. Но его и не могли увидеть, так как он все же оказался в плену на руднике. Его там нашел шаман мискито Змеиный Глаз\nОн же помог ему бежать. А вот куда Хоук делся потом - неизвестно. Шаман что-то бормотал про какого-то Кукулькана, который мог его сожрать. Но я в этом его бреду ничего не поняла. К тому же краснокожий явно дал мне понять, что белых женщин всерьез не воспринимает. Поговорил бы ты с ним. Может с тобой он будет более откровенным.";
+			link.l1 = "Уже что-то! Такие новости меня обнадеживают. Где находится индейская деревня, в которой живет этот шаман?";
 			link.l1.go = "meeting_4";
 		break;
 		
 		case "meeting_4":
-			dialog.text = "The village is deep in the jungles. We need to land at Amatique Bay and go west trough jungles. I will show the way if you won't find it yourself. The stone idol is really standing not far from the village and savages revere it as their god. I have been there several times. Nothing special really. Stone covered by moss.";
-			link.l1 = "Interesting. Fine, let's go. We will talk with the shaman and we will see what to do next. Ready?";
+			dialog.text = "Деревня находится в глубине джунглей. Лучше всего добраться до бухты Аматике и отправиться на запад по лесным тропам. Я покажу дорогу, если сам не найдешь. А каменный идол, который местные дикари почитают как своего бога, действительно стоит недалеко от деревни. Была я там пару раз. Ничего особенного. Камень, покрытый мхом, и ничего более.";
+			link.l1 = "Интересно. Ладно, собираемся в путь. Поговорим с шаманом - будем думать, что делать дальше. Ты готова?";
 			link.l1.go = "meeting_5";
 		break;
 		
 		case "meeting_5":
-			dialog.text = "Sure! Of course, I am ready. I have been travelling all the time since I've left Maroon Town. Besides I don't want to be just another your passenger.";
-			link.l1 = "Fine. Let's go to the ship.";
+			dialog.text = "Спрашиваешь! Конечно, готова. После того, как мне пришлось убраться из Марун-Тауна, я только и делаю, что путешествую. К тому же, я не пассажиром к тебе просилась.";
+			link.l1 = "Отлично. Тогда отправляемся на корабль.";
 			link.l1.go = "meeting_6";
 		break;
 		
 		case "meeting_6":
-			dialog.text = "Aye-aye, captain!";
+			dialog.text = "Есть, капитан!";
 			link.l1 = "...";
 			link.l1.go = "meeting_7";
 		break;
@@ -107,7 +107,7 @@ void ProcessDialogEvent()
 		
 		// у истукана в джунглях
 		case "Dolly":
-			dialog.text = ""+pchar.name+"! Come on! I will show you that stone idol which the Indian mage has been talking about. Just a usual stone pillar. Let's go!";
+			dialog.text = ""+pchar.name+"! Идем! Я покажу тебе этого каменного истукана, про которого талдычил индейский колдун. Самый обычный каменный столб. Пошли!";
 			link.l1 = "...";
 			link.l1.go = "Dolly_1";
 		break;
@@ -119,14 +119,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Dolly_2":
-			dialog.text = "Hey! Take a look, it is just a stone statue. Nothing special...";
-			link.l1 = "I see... Though the figure at the top is a bit sinister, don't you think? ";
+			dialog.text = "Эй! Смотри: просто каменная статуя. Ничего такого особенного...";
+			link.l1 = "Вижу... Хотя фигурка наверху жутковатая, не находишь?";
 			link.l1.go = "Dolly_3";
 		break;
 		
 		case "Dolly_3":
-			dialog.text = "All Indian statues are scary and evil. I have seen something like that before. They are all the same. Fine, let's go, the village is near!";
-			link.l1 = "Let's go!";
+			dialog.text = "У индейцев все истуканы такие - страшные и злые. Я раньше видала очень похожий идол. Все они одинаковые. Ладно, пойдем, деревня уже близко!";
+			link.l1 = "Пошли!";
 			link.l1.go = "Dolly_4";
 		break;
 		
@@ -140,117 +140,117 @@ void ProcessDialogEvent()
 		
 		// у мискито
 		case "SnakeEye":
-			dialog.text = "So, what say you, "+pchar.name+"? What did that redskin ventriloquist tell you? Did you understand anything from his philosophizing?";
-			link.l1 = "Were you eavesdropping again, Dannie?";
+			dialog.text = "Ну, что скажешь, "+pchar.name+"? Что тебе поведал этот краснокожий чревовещатель? Ты хоть что-нибудь понял из его мудрствований?";
+			link.l1 = "Ты опять подслушивала, Данни?";
 			link.l1.go = "SnakeEye_1";
 		break;
 		
 		case "SnakeEye_1":
-			dialog.text = "Well... a bit. Yes, yes, we, women are just like that. But you must understand - I worry about my husband. I actually love him. So what? Have you got any ideas?";
-			link.l1 = "I am trying to... Yes, it wasn't easy to understand Snake Eye. It seems that the idol which we were passing on our way to the village is some sort of magic portal which can teleport people.";
+			dialog.text = "Ну... только совсем чуть-чуть. Да, да, мы, женщины, такие. Но ты должен меня простить - я очень волнуюсь за своего мужа. Если что, то я его люблю, вообще-то. Ну? Ты хоть немного разобрался в том, что этот прорицатель рассказал?";
+			link.l1 = "Пытаюсь осмыслить... Да, понять Змеиного Глаза очень трудно. Получается примерно так: идол, мимо которого мы проходили по пути в деревню, тот самый, который ты назвала камнем, покрытым мхом, есть не что иное, как некий магический портал, способный перемещать человека в пространстве и времени.";
 			link.l1.go = "SnakeEye_2";
 		break;
 		
 		case "SnakeEye_2":
 			dialog.text = "";
-			link.l1 = "Don't look at me like that. It wasn't my idea, I have got no problems with my head so far. You have asked me what has shaman told me so I am telling you.";
+			link.l1 = "Ты чего так на меня уставилась? Я не сам это придумал, у меня с головой все в порядке. Ты спросила, что мне поведал шаман - я тебе и рассказываю.";
 			link.l1.go = "SnakeEye_3";
 		break;
 		
 		case "SnakeEye_3":
-			dialog.text = "Please, excuse me. I won't look at you like that anymore. Go on.";
-			link.l1 = "He said that when Nathan was almost caught by pursuers, he has shown him the statue as the way to rescue, he called it Kukulcan and said that it will gorge Nathan and spit him. To put it simply, it seems that Nathan was teleported by the statue.";
+			dialog.text = "Прости, пожалуйста. Я больше не буду так смотреть. Продолжай.";
+			link.l1 = "Он сказал, что когда Натана настигала погоня, он указал ему на этого истукана, как на возможность спасения, за счет того, что Кукулькан - шаман так называет это божество - пожрет и выплюнет его. Говоря человеческим языком, это значит, что Натаниэль мог через статую мгновенно попасть в другое место - телепортироваться.";
 			link.l1.go = "SnakeEye_4";
 		break;
 		
 		case "SnakeEye_4":
-			dialog.text = "God, what the... Me and Nathan have already been in such mess and now it happens again. We had enough of that Indian temple filled with Maya magic...";
-			link.l1 = "What did you just say?";
+			dialog.text = "Господи, держите меня семеро... Мало нам с Натаном досталось в индейском храме, напичканном магией майя, так еще под старость лет такая же ерунда начинается...";
+			link.l1 = "Что ты сейчас сказала?";
 			link.l1.go = "SnakeEye_5";
 		break;
 		
 		case "SnakeEye_5":
-			dialog.text = "No, it's nothing, "+pchar.name+", it doesn't matter. Just memories of my heated youth. But how was Nathan able to do that? I mean to teleport? We have just been near that idol, I was walking around it and touching it... it's only a stone!";
-			link.l1 = "Snake Eye has told me that the idol lives at midnight. Only then it becomes golden and the spirit of Kukulcan gets into it. It is the time to touch it. Or it's not.";
+			dialog.text = "Нет, ничего, "+pchar.name+", не обращай внимания. Так, воспоминания о бурной молодости. Но как Натан мог это сделать? В смысле, телепортироваться? Мы же с тобой только что были у этого истукана, я ходила вокруг него, прикасалась к нему... камень-камнем!";
+			link.l1 = "Змеиный Глаз сказал, что истукан оживает в полночь. Тогда он из каменного становится золотым и в нем поселяется дух Кукулькана. Вот тогда-то, наверное, к нему и стоит прикасаться. Или наоборот, не стоит.";
 			link.l1.go = "SnakeEye_6";
 		break;
 		
 		case "SnakeEye_6":
-			dialog.text = "Creepy... Now what? Let's wait until midnight and go to the jungle then?";
-			link.l1 = "No. The shaman said that the idol not only teleports people but also eats their lives. It drains their health. Snake Eye has passed three times through these statues and he has healed himself with some unique potion after every teleportation.";
+			dialog.text = "Жуть какая... Теперь что? Ждем полночи и идем в джунгли?";
+			link.l1 = "Нет. Шаман сказал, что истукан не только перемещает человека, но и подвергает его жизнь риску. Как я понял - высасывает здоровье. Змеиный Глаз сам трижды проходил через эти статуи, и после каждого прохождения лечился каким-то уникальным зельем.";
 			link.l1.go = "SnakeEye_7";
 		break;
 		
 		case "SnakeEye_7":
-			dialog.text = "Have you asked him for this potion?";
-			link.l1 = "Sure. But, first, there are only three flasks left and, secondly, he demanded three amulets for each.";
+			dialog.text = "Ты попросил у него это зелье?";
+			link.l1 = "Конечно. Но во-первых, у него осталось всего три фляги, а во-вторых, он потребовал за них три амулета.";
 			link.l1.go = "SnakeEye_8";
 		break;
 		
 		case "SnakeEye_8":
-			dialog.text = "How about we do this without the potion? Let's go to the statue at night and touch it...";
-			link.l1 = "Too risky. I concede that the Indian is crazy and fools us, but he doesn't look like a psychopath so it is luckily that he was telling the truth. I recall that you were telling me something about Indian magic... Do you doubt it's existence?";
+			dialog.text = "А может, обойдемся без этих зелий? Пойдем ночью к истукану и потрогаем его...";
+			link.l1 = "Опрометчивый шаг. Я, конечно, допускаю, что этот индеец попросту свихнулся и морочит нам голову, но на психопата он не похож, а потому весьма вероятно, что он говорит правду. Ты что-то там говорила про индейскую магию? Ты сомневаешься в ее существовании?";
 			link.l1.go = "SnakeEye_9";
 		break;
 		
 		case "SnakeEye_9":
-			dialog.text = "Yes, I was. I don't doubt it because I saw it with my own eyes. Yes, I suppose you are right, there is no point in risking.";
-			link.l1 = "Exactly. That is why we will find amulets at first, get that wonderful potion from shaman and go to the statue. I will go. Alone.";
+			dialog.text = "Да, говорила. Не сомневаюсь ни на секунду, потому что видела ее в действии собствеными глазами. Пожалуй, ты прав: рисковать не стоит.";
+			link.l1 = "Вот-вот. Поэтому мы раздобудем амулеты, которые просит шаман, возьмем его чудесное зелье и только потом отправимся к статуе. Точнее, я отправлюсь. Один.";
 			link.l1.go = "SnakeEye_10";
 		break;
 		
 		case "SnakeEye_10":
-			dialog.text = "Why is that? And what about me?";
-			link.l1 = "And you will stay on my ship and you'll be in charge while I am away. Don't even try to argue, Dannie. There are only three flasks of the potion. It is unknown where the portal leads to in case the shaman was right and this thing works for real. Perhaps, I won't be even able to find Nathan there.";
+			dialog.text = "Это еще почему? А как же я?";
+			link.l1 = "А ты останешься на моем корабле за старшего. Данни, и даже не спорь. Зелий всего три пузырька. Неизвестно, что там ждет за порталом. И, в конце-концов, неизвестно, куда меня забросит, если шаман прав и эта штука действительно работает. Может, Натана там и в помине не будет.";
 			link.l1.go = "SnakeEye_11";
 		break;
 		
 		case "SnakeEye_11":
-			dialog.text = "You are just like Nathan. All men are the same... Fine, I agree.";
-			link.l1 = "It is good that we understand each other. Let's go now, we need to find amulets.";
+			dialog.text = "Ты такой же, как и Натан. Все вы, мужчины, одинаковые... Ладно, будь по-твоему.";
+			link.l1 = "Вот и славно, что мы с тобой договорились. А теперь идем - нам нужно раздобыть амулеты.";
 			link.l1.go = "Dolly_4";
 		break;
 		
 		// перед походом к истукану
 		case "teleport":
-			dialog.text = "So what? Did you get potions?";
-			link.l1 = "Yes. I got potions and instructions. The one thing is left - to go to the idol at midnight and touch it.";
+			dialog.text = "Ну что? Получил зелья?";
+			link.l1 = "Да. Получил и зелья, и наставления. Теперь осталось последнее - отправиться в полночь к истукану и прикоснуться к нему.";
 			link.l1.go = "teleport_1";
 		break;
 		
 		case "teleport_1":
-			dialog.text = "Are you scared?";
-			link.l1 = "Yes. I am scared because the shaman might be crazy and no teleportation would happen.";
+			dialog.text = "Тебе страшно?";
+			link.l1 = "Да. Мне страшно, что шаман может оказаться сумасшедшим и никакого телепорта не произойдет.";
 			link.l1.go = "teleport_2";
 		break;
 		
 		case "teleport_2":
-			dialog.text = "I see... Aren't you scared? Not even a little bit?";
-			link.l1 = "Dannie, don't press at me... Sure, I am not feeling confident, it must be confessed.";
+			dialog.text = "Ну-ну... Неужели совсем, ни капельки не боязно?";
+			link.l1 = "Данни, ну что ты пристала... Конечно, немного не по себе, чего уж там греха таить.";
 			link.l1.go = "teleport_3";
 		break;
 		
 		case "teleport_3":
-			dialog.text = "I will go with you.";
-			link.l1 = "Are you going to start arguing again? I thought that we had a deal...";
+			dialog.text = "Я пойду с тобой.";
+			link.l1 = "Ты опять начинаешь? Мы же вроде договорились...";
 			link.l1.go = "teleport_4";
 		break;
 		
 		case "teleport_4":
-			dialog.text = "You didn't get it. I will only stay near you. I will have to be sure that the statue will work... or it won't.";
-			link.l1 = "I have got no objections. But don't even think to follow me in case the statue gorges me. Did you hear me?";
+			dialog.text = "Ты не понял. Я просто буду неподалеку. Надо же мне убедиться, что этот истукан работает... или не работает.";
+			link.l1 = "Против этого я не возражаю. Но только не вздумай последовать за мной, если статуя все-таки 'пожрет' меня. Ты слышишь?";
 			link.l1.go = "teleport_5";
 		break;
 		
 		case "teleport_5":
-			dialog.text = "I did. I promise that I won't be willful... captain.";
-			link.l1 = "Nice. And, Dannie, it seems that you are not that bitch as they say.";
+			dialog.text = "Слышу. Обещаю, что не стану своевольничать... капитан.";
+			link.l1 = "Вот и отлично. И, Данни: похоже, не такая уж ты и стерва, как рассказывают.";
 			link.l1.go = "teleport_6";
 		break;
 		
 		case "teleport_6":
-			dialog.text = "You don't know me well, "+pchar.name+". Fine, let's not talk about it.";
-			link.l1 = "Let's not... Well, now prepare yourself for the night trip!";
+			dialog.text = "Ты меня еще плохо знаешь, "+pchar.name+". Ладно, давай не будем об этом.";
+			link.l1 = "Не будем... Ну, тогда готовься к ночному походу!";
 			link.l1.go = "Dolly_4";
 			npchar.quest.talk = "shadowstar";
 			pchar.quest.Saga_Dolly1.win_condition.l1 = "location";
@@ -263,20 +263,20 @@ void ProcessDialogEvent()
 		
 		// перед телепортацией
 		case "shadowstar":
-			dialog.text = "Look, "+pchar.name+"! I swear by all saints, there is an odd light above the statue!";
-			link.l1 = "It seems that shaman wasn't lying. And, if the dark doesn't deceive me, the top of the statue doesn't look that stony anymore.";
+			dialog.text = "Смотри, "+pchar.name+"! Клянусь всеми святыми, над этим истуканом горит какой-то странный свет!";
+			link.l1 = "Похоже, шаман не солгал. И, если мне не кажется в темноте, то верх статуи уже совсем не каменный.";
 			link.l1.go = "shadowstar_1";
 		break;
 		
 		case "shadowstar_1":
-			dialog.text = "Exactly... It looks like it was made of gold! Incredible!";
-			link.l1 = "The time has come, Dannie. Wish me luck and cross your fingers for me. Don't come close to the idol! Stay here.";
+			dialog.text = "Точно... Он словно отлит из золота! Невероятно!";
+			link.l1 = "Данни, мне пора. Пожелай удачи и держи кулаки за меня. Не приближайся к истукану! Стой тут.";
 			link.l1.go = "shadowstar_2";
 		break;
 		
 		case "shadowstar_2":
-			dialog.text = "Good luck, "+pchar.name+". let's hope to God that it will work... Have you prepared shaman's potion?";
-			link.l1 = "Yes, I have. All will be well, Dannie. Well, here I go! (Press T to activate the idol)";
+			dialog.text = "Удачи, "+pchar.name+". Дай-то Бог, все получится... Зелье шамана у тебя наготове?";
+			link.l1 = "Да, под рукой. Все будет хорошо, Данни. Ну, вперед!";
 			link.l1.go = "shadowstar_3";
 		break;
 		
@@ -288,20 +288,20 @@ void ProcessDialogEvent()
 		
 		// прибыл назад 
 		case "arrive":
-			dialog.text = "A-a-ah?! FUCK! What is this monster, God damn it?! Screw you! I have seen worse creatures in my life including Van der Decken! Now I'll give you what you're asking for!";
-			link.l1 = "(faintly) Dannie, wait! Stop it! Now!";
+			dialog.text = "А-а-а?! Черт побери, что за чудовище?! Ну, погоди! Я и не таких тварей на своем веку повидала - один Ван дер Декен чего стоил! Сейчас я тебе задам жару!";
+			link.l1 = "(глухо) Данни, стой! Остановись сейчас же!";
 			link.l1.go = "arrive_1";
 		break;
 		
 		case "arrive_1":
-			dialog.text = "Ah?! What did you say?! Dannie?";
-			link.l1 = "(faintly) Stop that immediately! Hold your saber! Let me take this thing off!";
+			dialog.text = "А?! Что? Что ты сейчас сказало?! Данни?";
+			link.l1 = "(глухо) Да стой же ты наконец! Не хватайся за саблю! Дай мне снять с себя эту штуковину!";
 			link.l1.go = "arrive_2";
 		break;
 		
 		case "arrive_2":
-			dialog.text = "Damn, this thing sounds like... "+pchar.name+"?!";
-			link.l1 = "(faintly) Oh-oh... You don't say!";
+			dialog.text = "Черт возьми, эта дрянь говорит как... "+pchar.name+"?!";
+			link.l1 = "(глухо) Ох-х... Ну неужели!";
 			link.l1.go = "arrive_3";
 		break;
 		
@@ -312,74 +312,74 @@ void ProcessDialogEvent()
 		break;
 		
 		case "arrive_4":
-			dialog.text = "Fuh, you have almost scared me to death! I was close to start chopping you with my saber!";
-			link.l1 = "I saw that... and why are you so fiery, huh?";
+			dialog.text = "Фух, как же ты меня напугал! Я чуть не начала тебя кромсать саблей!";
+			link.l1 = "Я видел... да что же ты такая горячая, а?";
 			link.l1.go = "arrive_5";
 		break;
 		
 		case "arrive_5":
-			dialog.text = "That is who I am... Oh, my heart is still beating...";
-			link.l1 = "Dannie where are we now? Not far from the Miskito village, right?";
+			dialog.text = "Уж какая есть... Ох, до сих пор сердце готово из груди выпрыгнуть...";
+			link.l1 = "Данни, мы сейчас где? У деревни мискито, что ли?";
 			link.l1.go = "arrive_6";
 		break;
 		
 		case "arrive_6":
-			dialog.text = "And where else could we be! There is a statue which made you disappear. That was spectacular! I will remember that for the rest of my life.";
-			link.l1 = "And were you waiting for me since then?";
+			dialog.text = "А где же еще! Вон, стоит истукан, при помощи которого ты испарился. Да, вот это было зрелище! До конца дней помнить буду.";
+			link.l1 = "Так ты что, столько времени ждала меня здесь?";
 			link.l1.go = "arrive_7";
 		break;
 		
 		case "arrive_7":
-			dialog.text = "Tell me then what else was I supposed to do? After the statue had eaten you, I only hoped that one day it will spit you back. Besides, Snake Eye said that this is exactly what most likely would happen\nI lived with the Miskito and watched the idol every day. Why are we even talking about such hogwash? Go on! What happened out there? Where have you been?";
-			link.l1 = "Dannie, this story is too long, I have seen a lot... But to get it off your chest I'll tell you that I have found Nathaniel!";
+			dialog.text = "Скажи на милость, а что же мне еще оставалось делать? После того, как статуя сожрала тебя, у меня была одна надежда - что когда-нибудь она тебя и выплюнет. К тому же, Змеиный Глаз сказал, что скорее всего так и случится\nЯ жила у мискито и ежедневно дежурила у истукана. Да что мы о ерунде-то говорим? Рассказывай! Что было там? Куда тебя носило?";
+			link.l1 = "Данни, это очень долгая история - чего только я не насмотрелся... Но чтобы облегчить твою душу, скажу сразу: я нашел Натаниэля!";
 			link.l1.go = "arrive_8";
 		break;
 		
 		case "arrive_8":
-			dialog.text = "Have you found Nathan? Where is he? How is he?!";
-			link.l1 = "I won't lie - he is alive but he is really feeling bad. He had no potion of Comanche and the idol has drained all of his health. He is lying in a cabin of some old and broken vessel at the strange Island of Abandoned Ships. I was teleported there too, so Snake Eye was right!";
+			dialog.text = "Нашел Натана? Где он? Как он?!";
+			link.l1 = "Не буду лгать - он жив, но очень плох. У него не было с собой зелья команчей, и истукан высосал из него все здоровье. Он лежит сейчас в каюте старого разбитого корабля на странном Острове Погибших Кораблей, куда меня, собственно, и забросило. Змеиный Глаз оказался прав от начала и до конца!";
 			link.l1.go = "arrive_9";
 		break;
 		
 		case "arrive_9":
-			dialog.text = "Poor Nathan... Where is that damn island? How to get there?! Through the idol only? I will buy every single health potion from Miskito and go there this night! I will make it somehow...";
-			link.l1 = "Stop! Wait! Nathan is ill but there is no threat to his life. One lad is looking after him and feeding him. If you will go through teleport you will become a ruin and the Island is dangerous. It is too risky!";
+			dialog.text = "Бедный Натан... Где этот чертов остров? Как туда попасть?! Только через истукан? Я скуплю все лечебные зелья у мискито и сегодня же ночью отправляюсь туда! Как-нибудь выживу...";
+			link.l1 = "Стой! Да подожди ты! Натан болен, но угрозы его жизни нет. За ним ухаживает один парень, кормит его и присматривает за ним. А если ты пойдешь через телепорт, то вмиг превратишься в развалину, да и на Острове том такие порядки, что... опасно это!";
 			link.l1.go = "arrive_10";
 		break;
 		
 		case "arrive_10":
-			dialog.text = "So what are you suggesting? To do nothing while Nathan is suffering or dying perhaps?";
-			link.l1 = "Stop you hysterics. First, I told you that Nathan is ill but he is not dying. I have spoken to him. Secondly, I am going to sail to the Island and you will go with me.";
+			dialog.text = "Что ты предлагаешь? Сидеть, сложа руки, пока Натан там мучается, а, возможно, умирает?";
+			link.l1 = "Так, прекрати истерику. Во-первых, я тебе сказал - Натан болен, но не умирает. Я разговаривал с ним. А во-вторых, я собираюсь отправиться на этот Остров на корабле, и ты поплывешь со мной.";
 			link.l1.go = "arrive_11";
 		break;
 		
 		case "arrive_11":
-			dialog.text = "Do you know where is that Island?";
-			link.l1 = "Sure, I do! I have found there not only Nathan but also Shark Dodson. Now I have got fair coordinates of the Island and a sailing directions to bypass the reefs around it. And now we are going back to the ship and sail to Blueweld...";
+			dialog.text = "Ты знаешь, где этот Остров?";
+			link.l1 = "Ну конечно! Там я нашел, кроме Натана, еще и Акулу Додсона. У меня теперь есть точные координаты Острова и лоция, чтобы пройти через рифы, которыми он окружен. Сейчас мы возвращаемся назад, к кораблю, идем в Блювельд...";
 			link.l1.go = "arrive_12";
 		break;
 		
 		case "arrive_12":
-			dialog.text = "For what purpose? Why can't we sail straight to the Island now?";
-			link.l1 = "Dannie, I need to organize an expedition. There is a huge lack of provision on the Island so I will buy as much as I can. Then I will have to choose a ship to sail there, not any ship will be able to bypass the Island's reefs. And I also want to talk with Svensson first...";
+			dialog.text = "А это еще зачем? Почему нельзя отправиться сразу?";
+			link.l1 = "Данни, мне надо подготовить экспедицию. Закупить побольше продовольствия - на Острове оно дефицит, решить, на каком судне мы туда пойдем - не каждый корабль пройдет через островные рифы. Да и хочу поговорить со Свенсоном...";
 			link.l1.go = "arrive_13";
 		break;
 		
 		case "arrive_13":
 			dialog.text = "";
-			link.l1 = "It won't take too long to prepare. The Island is not far from here, it's north-west from Havana, right to the Gulf of Mexico.";
+			link.l1 = "Подготовка будет недолгой. А Остров отсюда недалеко - на северо-запад от Гаваны, в сторону Мексиканского залива.";
 			link.l1.go = "arrive_14";
 		break;
 		
 		case "arrive_14":
-			dialog.text = "Fine... Let it be. You have found Nathan and that's the most important. Thank you! Is he feeling bad there?";
-			link.l1 = "Well... he is ill. And in addition he is depressed and desperate. He missed you. Yes, Nathan asked me to tell you that he loves you very much.";
+			dialog.text = "Ну хорошо... Пускай будет так. Главное - что Натан найден. Спасибо тебе! Ему там совсем плохо, да?";
+			link.l1 = "Ну... болеет он. А кроме того, сильно хандрит - отчаялся совсем. И скучает по тебе. Да, Натан попросил передать, что очень любит тебя.";
 			link.l1.go = "arrive_15";
 		break;
 		
 		case "arrive_15":
-			dialog.text = "(wiping away a tear) Old fool! He had never listened me... "+pchar.name+", let's head to the ship! I want to sail as quickly as possible!";
-			link.l1 = "Sure, Dannie. And I will tell you about my adventures. Let's go!";
+			dialog.text = "(смахивая слезу) Старый дурак! Никогда меня не слушал, все по-своему... "+pchar.name+", давай пойдем к кораблю! Я хочу как можно быстрее отправиться в путь!";
+			link.l1 = "Конечно, Данни. А по пути я расскажу тебе о своих приключениях. Идем!";
 			link.l1.go = "Dolly_4";
 			AddQuestRecord("BaronReturn", "9");
 			LAi_LocationDisableOfficersGen("Pearl_jungle_03", false); // пускать офицеров в локу телепорта
@@ -391,32 +391,32 @@ void ProcessDialogEvent()
 		
 		// в LSC у причала
 		case "nathaniel":
-			dialog.text = "Yes, I have never seen any place like that before. This is a whole island made of ships!";
-			link.l1 = "I have told you about it, Dannie...";
+			dialog.text = "Да, подобного места мне еще не доводилось видеть. Да это же целый остров из кораблей!";
+			link.l1 = "Я же тебе рассказывал, Данни...";
 			link.l1.go = "nathaniel_1";
 		break;
 		
 		case "nathaniel_1":
-			dialog.text = "But now I can see it with my own eyes. Fine. Tell me where to find Nathaniel?";
-			link.l1 = "He is inside one of the ships. But you must swim there.";
+			dialog.text = "Одно дело - слышать, и совсем другое - видеть собственными глазами. Ладно. Скажи, где мне искать Натаниэля?";
+			link.l1 = "Он на одном из кораблей. Но туда можно добраться только вплавь.";
 			link.l1.go = "nathaniel_2";
 		break;
 		
 		case "nathaniel_2":
-			dialog.text = "I don't care. Tell me how to get to this ship.";
-			link.l1 = "Dannie, calm down. You and Nathan have been waiting for a long time so wait just a bit more now! I will lead you to him, you will never find him yourself. I don't want you to run against Narwhals or Rivados, you will start to argue with them and it won't end well.";
+			dialog.text = "Плевать. Рассказывай, как добраться до этого корабля.";
+			link.l1 = "Данни, не торопи события. Ты и Натан уже столько ждали - подожди еще немного! Я проведу тебя к нему, сама ты будешь плутать, да еще нарвешься не дай Бог на нарвалов или ривадос и начнешь с ними препираться - добром не кончится.";
 			link.l1.go = "nathaniel_3";
 		break;
 		
 		case "nathaniel_3":
-			dialog.text = "Fine, let's go then. I will follow you.";
-			link.l1 = "Now, that we will have to swim a lot.";
+			dialog.text = "Хорошо, тогда пошли. Я буду держаться за тобой.";
+			link.l1 = "Учти, нам придется проплыть приличное расстояние...";
 			link.l1.go = "nathaniel_4";
 		break;
 		
 		case "nathaniel_4":
-			dialog.text = "It's fine, I can handle it.";
-			link.l1 = "Glad to hear that... You will see your husband soon!";
+			dialog.text = "Ничего, я это как-нибудь переживу.";
+			link.l1 = "Рад это слышать... Скоро ты увидишь своего мужа!";
 			link.l1.go = "nathaniel_5";
 		break;
 		
@@ -452,7 +452,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "nathaniel_6":
-			dialog.text = "Nathaniel... Nathan! Damn it! My love...";
+			dialog.text = "Натаниэль... Натан! Черт бы тебя побрал! Любимый мой...";
 			link.l1 = "...";
 			link.l1.go = "nathaniel_7";
 		break;
@@ -468,21 +468,21 @@ void ProcessDialogEvent()
 		break;
 		
 		case "nathaniel_8":
-			dialog.text = "Jesus, just look at you... Why are doing that to yourself!..(crying) You never listen to me, never! I have told you not to go to that selva! And you have gone there! What Nathan?!";
-			link.l1 = "Dannie... I am sorry. I had no choice, you know that...";
+			dialog.text = "Господи, ну на кого же ты похож... До чего ты себя довел!..(плачет) Ты никогда меня не слушаешь, никогда! Я ведь говорила тебе - не ходи в эту проклятую сельву! А ты пошел! Зачем, Натан?!";
+			link.l1 = "Данечка... прости. Я не мог поступить иначе, ты же знаешь...";
 			link.l1.go = "nathaniel_9";
 		break;
 		
 		case "nathaniel_9":
 			sld = characterFromId("Blaze");
-			dialog.text = "I know that! Oh, God, darling... what has happened with you! (through tears) It is alright, darling, it all be well... I am here. We will take you to Miskito, to Snake Eye. "+sld.name+"  told me that the shaman will heal you. We have got a ship... All be well!";
-			link.l1 = "Dannie, dear... my love! Your presence here has half healed me. We will go wherever you say. Snake Eye will do.";
+			dialog.text = "Знаю, что мог! Господи, милый... что же с тобой стало! (сквозь слезы) Ничего, дорогой, все будет хорошо... Я здесь. Мы отвезем тебя к мискито, к Змеиному Глазу. "+sld.name+" сказал, что шаман тебя вылечит. У нас есть корабль... Все будет хорошо!";
+			link.l1 = "Данечка, дорогая моя... любимая! То, что ты тут - уже исцелило меня наполовину. Мы пойдем, куда скажешь. К Змеиному Глазу - значит, к Змеиному Глазу.";
 			link.l1.go = "nathaniel_10";
 		break;
 		
 		case "nathaniel_10":
-			dialog.text = "Pack up your things. Oh, I am so stupid... There are no any things to pack except empty bottles. Nathan...";
-			link.l1 = "Dannie...";
+			dialog.text = "Собирайся. Хотя, вот я глупая... Что же тебе здесь собирать, кроме пустых бутылок? Натан...";
+			link.l1 = "Данни...";
 			link.l1.go = "nathaniel_11";
 		break;
 		
@@ -500,31 +500,31 @@ void ProcessDialogEvent()
 		break;
 		
 		case "nathaniel_12":
-			dialog.text = ""+pchar.name+", you... Forgive me and Nathan for the scene.";
-			link.l1 = "Dannie! Forgive you for what? It is all right. Are you ashamed of your feelings?";
+			dialog.text = ""+pchar.name+", ты это... Извини меня за эту сцену. И Натана тоже.";
+			link.l1 = "Данни! Какие могут быть извинения? Все в порядке. Или ты стыдишься ваших чувств?";
 			link.l1.go = "nathaniel_13";
 		break;
 		
 		case "nathaniel_13":
-			dialog.text = "No, I am not... It just...";
-			link.l1 = "No one will never know about this scene. I promise. And no one will know what happened to Nathan. The pirates of Maroon Town will see strong and formidable Nathaniel Hawk!";
+			dialog.text = "Нет, не стыжусь... Просто...";
+			link.l1 = "Никто и никогда не узнает о том, что здесь происходило. Обещаю. Также никто не узнает, что было с Натаном. Пираты Марун-Тауна увидят его прежним, сильным и грозным Натаниэлем Хоуком!";
 			link.l1.go = "nathaniel_14";
 		break;
 		
 		case "nathaniel_14":
-			dialog.text = "Thanks... Thank you, "+pchar.name+"! I owe you... Fine, I will take my husband to the ship. Don't worry, I will manage to deliver him, I have remembered the way. I will put him in a bed and I will stay with him. We'll sail to Snake Eye after you will do all you need here. I trust in his ability to heal Nathan.";
-			link.l1 = "Fine, Dannie. We won't stay here for long. Are you sure that you don't need help?";
+			dialog.text = "Спасибо... Спасибо тебе, "+pchar.name+"! Я в долгу перед тобой... Ладно, я отведу мужа на наш корабль. Не беспокойся, я сумею сама его доставить - я запомнила дорогу. Я уложу его в постель и буду при нем. Как только закончишь все свои дела на Острове - отправимся к Змеиному Глазу. Я верю, что он вылечит Натана.";
+			link.l1 = "Хорошо, Данни. Мы здесь долго не задержимся. Ты уверена, что тебе не нужна помощь?";
 			link.l1.go = "nathaniel_15";
 		break;
 		
 		case "nathaniel_15":
-			dialog.text = "I am sure. We will reach the ship. Don't worry, I won't let my husband die!";
-			link.l1 = "Dannie, you are... wonderful!";
+			dialog.text = "Уверена. Мы доберемся до корабля. Можешь идти спокойно - я не позволю моему мужу умереть!";
+			link.l1 = "Данни, ты... замечательная!";
 			link.l1.go = "nathaniel_16";
 		break;
 		
 		case "nathaniel_16":
-			dialog.text = "(brushing away a tear) Go... just go, "+pchar.name+"... and please don't stay here for too long!";
+			dialog.text = "(смахивая слезу) Ступай... ступай, "+pchar.name+"... И не затягивай с отплытием, я прошу тебя!";
 			link.l1 = "...";
 			link.l1.go = "nathaniel_17";
 		break;
@@ -558,72 +558,72 @@ void ProcessDialogEvent()
 		break;
 		
 		case "treatment":
-			dialog.text = "So what? Will he heal my husband? Tell me that he will heal him!";
-			link.l1 = "Daniel, Nathan will stay here. Alone. Shaman asked to don't bother his rites. It concerns you too. He has promised to heal Nathaniel in a month.";
+			dialog.text = "Ну что? Шаман взялся за лечение? Скажи, что это так!";
+			link.l1 = "Даниэль, Натан остается у Змеиного Глаза. Один. Шаман попросил, чтобы никто не мешал его обрядам, в том числе и ты. Он пообещал вылечить Натаниэля за месяц.";
 			link.l1.go = "treatment_1";
 		break;
 		
 		case "treatment_1":
-			dialog.text = "You know, "+pchar.name+", I can breath freely only since just now. I have a strong confidence that shaman will bring my husband back to the normal life. I will leave Nathan here unhesitatingly because if Snake Eye won't heal him - no one would.";
-			link.l1 = "It will be alright, Dannie. Snake Eye has never lied to me. I trust him.";
+			dialog.text = "Ты знаешь, "+pchar.name+", вот только теперь я спокойна. У меня глубокая уверенность в том, что этот шаман вернет моего мужа к нормальной жизни. Я без колебаний оставляю его у Змеиного Глаза, потому что если он ему не поможет - то не поможет никто.";
+			link.l1 = "Все будет хорошо, Данни. Змеиный Глаз не обманул еще ни разу. Я верю ему.";
 			link.l1.go = "treatment_2";
 		break;
 		
 		case "treatment_2":
-			dialog.text = "So do I. I will stay with you for a while, "+pchar.name+", are you fine about that? We still have to find the main bastard Jackman, he is responsible for all our troubles. He organized the ambush! He took Nathan's place in Maroon Town! He stole our frigate 'Centurion'!";
-			link.l1 = "Agreed. We have to deal with Jackman in a hard way. None of us is safe until Jackman is alive. It won't be easy to kill him though.";
+			dialog.text = "Я тоже ему верю. Я останусь в твоей команде еще на некоторое время, "+pchar.name+", ты не возражаешь? Нам нужно найти главного мерзавца и виновника наших бед - скотину Джекмана. Это он организовал засаду на Натана! Он захватил его место в Марун-Тауне! Он украл 'Центурион', наш фрегат!";
+			link.l1 = "Я согласен. С Джекманом надо разобраться радикально, ибо пока он жив, ни тебе, ни мне, ни Натану покоя не будет. Однако сделать это будет не так просто.";
 			link.l1.go = "treatment_3";
 		break;
 		
 		case "treatment_3":
-			if (!CheckAttribute(pchar, "questTemp.Saga.DodsonDie")) sTemp = "Shark Dodson";
-			else sTemp = "Marcus Tyrex";
-			dialog.text = "Got any plan, "+pchar.name+"?";
-			link.l1 = "Not yet. I need to go to Jan Svensson and ask for his advice. Let's be consecutive, we have to promote "+sTemp+"  to the head of Brethren of the Coast. We need to get a vote from every pirate baron to do that.";
+			if (!CheckAttribute(pchar, "questTemp.Saga.DodsonDie")) sTemp = "Акулу Додсона";
+			else sTemp = "Маркуса Тиракса";
+			dialog.text = "У тебя есть какой-то план, "+pchar.name+"?";
+			link.l1 = "Пока нет. Надо отправлиться к Яну Свенсону и посоветоваться с ним. Будем последовательны - сейчас нужно выдвинуть "+sTemp+" на пост главы Берегового братства. А для этого нужно заручиться поддержкой всех пиратских баронов.";
 			link.l1.go = "treatment_4";
 		break;
 		
 		case "treatment_4":
-			dialog.text = "Fine, Let's go to Svensson. Let's listen what that old fogy will tell us...";
-			link.l1 = "Don't be so critical about Jan. Actually you'd better make peace with him... after all we all share a goal!";
+			dialog.text = "Хорошо. Пойдем к Свенсону. Послушаем, что этот старый пень скажет...";
+			link.l1 = "Не будь столь критична к Яну. Да и в конце концов, помирились бы вы с ним, что ли... одно дело делаем!";
 			link.l1.go = "treatment_5";
 		break;
 		
 		case "treatment_5":
-			dialog.text = "Only because I respect you... Fine, "+pchar.name+", I am sorry. I didn't mean to insult Svensson, I am just nervous. It wont' happen again.";
-			link.l1 = "Nice. Dannie, all be well. I promise you!";
+			dialog.text = "Ну разве что из уважения к тебе... Ладно, "+pchar.name+", прости меня. Я не хотела оскорбить Свенсона, просто я вся на нервах в последнее время. Я не буду больше.";
+			link.l1 = "Вот и славно. Данни, все будет хорошо. Обещаю тебе!";
 			link.l1.go = "treatment_6";
 		break;
 		
 		case "treatment_6":
-			dialog.text = "I trust you, "+pchar.name+". I put absolute trust in you. Let's go to Svensson?";
-			link.l1 = "Let's go, Dannie!";
+			dialog.text = "Я верю тебе, "+pchar.name+". Верю, как никому другому. Пойдем к Свенсону?";
+			link.l1 = "В путь, Данни!";
 			link.l1.go = "Dolly_4";
 			AddQuestRecord("BaronReturn", "13");
 		break;
 		
 		case "islatesoro":
-			dialog.text = "Yes? I am listening. How can I help you?";
-			link.l1 = "Do you have any ideas where Jackman can hide? You know this bastard better than I do. Perhaps he has got some places, bases...";
+			dialog.text = "Да? Тогда я тебя внимательно слушаю. О чем речь?";
+			link.l1 = "У тебя есть какие-нибудь предположения, где может скрываться Джекман? Ты знаешь этого ублюдка получше меня - может, у него есть какие-то места, базы...";
 			link.l1.go = "islatesoro_1";
 		break;
 		
 		case "islatesoro_1":
-			dialog.text = "Damned if I know! Jacob was always secretive. I haven't ever heard about his lairs. It will be better to try to think logically... Let's read the letter which you have got from Knave again. We might find something.";
-			link.l1 = "Let's try...";
+			dialog.text = "Да черт его знает. Якоб всегда был довольно скрытен. Про какие-то его укромные местечки я не слышала. Тут лучше попробовать рассудить логично... Давай еще раз прочтем письмо, которое ты нашел у Валета. Может, что-то высмотрим.";
+			link.l1 = "Давай...";
 			link.l1.go = "islatesoro_2";
 		break;
 		
 		case "islatesoro_2":
 			RemoveItems(pchar, "letter_chad", 1);
-			dialog.text = "Well... There is something about Isla Tesoro and some inheritance... Does it sound familiar to you?";
-			link.l1 = "Me and Jan think that Blaze Sharp was killed by Jackman at Isla Tesoro and Shark was blamed for nothing. And a testament... a broad... it must be Helen... Damn it, and how didn't I get it before! This bastard must be sailing near Isla Tesoro!";
+			dialog.text = "Так... Здесь упоминается Исла Тесоро и какое-то завещание... Тебе это ни о чем не говорит?";
+			link.l1 = "Мы с Яном считаем, что Блейза Шарпа на Исла Тесоро убрал Джекман, свалив вину на Акулу. А завещание... девка... это он Элен имеет в виду... Черт возьми, да как же я раньше не догадался! Этот подонок наверняка ошивается где-то у Исла Тесоро!";
 			link.l1.go = "islatesoro_3";
 		break;
 		
 		case "islatesoro_3":
-			dialog.text = "Let's not waste our time then, "+pchar.name+"?";
-			link.l1 = "Yes. Let's go to Isla Tesoro. The old 'Marlin' will help us in this raid.";
+			dialog.text = "Тогда не будем терять времени, "+pchar.name+"?";
+			link.l1 = "Да. Отправляемся к Исла Тесоро. Старина 'Марлин' послужит нам для этого рейда как нельзя лучше.";
 			link.l1.go = "islatesoro_4";
 		break;
 		
@@ -638,57 +638,57 @@ void ProcessDialogEvent()
 		break;
 		
 		case "after_boarding":
-			dialog.text = "This scum is dead at last... I can't believe it - I am standing on the deck of 'Centurion' again! I know every nail here and it looks like that the ship has recognized me too.";
-			link.l1 = "She is yours again, Dannie. Yours and Nathaniel's.";
+			dialog.text = "Ну наконец-то этот ублюдок сдох... Даже не верится - я снова на палубе 'Центуриона'! Я знаю здесь каждый гвоздь и мне кажется, что корабль тоже узнал меня.";
+			link.l1 = "Теперь он снова твой, Данни. Твой и Натаниэля.";
 			link.l1.go = "after_boarding_1";
 		break;
 		
 		case "after_boarding_1":
 			PlaySound("VOICE\Russian\saga\Denny Hawk-03.wav");
-			dialog.text = "You can't even imagine how glad am I. Nathaniel was often talking about our ship, he will be glad to know that it is ours once again.";
-			link.l1 = "What are you going to do now, Dannie?";
+			dialog.text = "Ты не представляешь, как я рада. Натаниэль часто вспоминал наш корабль - весть о том, что он снова наш, а не в руках подлеца Джекмана, прибавит ему сил.";
+			link.l1 = "Что ты сейчас будешь делать, Данни?";
 			link.l1.go = "after_boarding_2";
 		break;
 		
 		case "after_boarding_2":
-			dialog.text = "Me? I will take the ship to Sharp town, hire at least a minimum crew and sail to Blueweld. I will ask Jan Svensson to look after 'Centurion' and go to Miskito people to wait there until Snake Eye heals my husband.";
-			link.l1 = "Are you really going to go to Jan Svensson? I am surprised...";
+			dialog.text = "Что? Отведу корабль в Шарптаун, отремонтирую, найму хотя бы минимум команды и пойду в Блювельд. Попрошу Яна Свенсона, чтобы его люди присмотрели за 'Центурионом', а сама отправлюсь к мискито - буду ждать, пока Змеиный Глаз вылечит моего мужа.";
+			link.l1 = "Ты пойдешь к Яну Свенсону? Право, я удивлен...";
 			link.l1.go = "after_boarding_3";
 		break;
 		
 		case "after_boarding_3":
-			dialog.text = ""+pchar.name+", it is all your merit. I've been thinking about your words: 'we all share the same goal'. Remember? I want to make peace with Svensson, he has helped to return Nathan back to me after all. It's time to stop arguing.";
-			link.l1 = "Wise words, Dannie! Nathaniel will have to retake his position in Maroon Town back when he will be getting better.";
+			dialog.text = ""+pchar.name+", в этом твоя заслуга. Я долго думала о твоих словах: 'мы делаем одно дело'. Помнишь? Я хочу помириться со Свенсоном - ведь он, хоть и косвенно, но помог вернуть мне Натана. Да и в конце-концов, хватит ссор.";
+			link.l1 = "Разумные слова, Данни! Когда Натаниэль выздоровеет, он снова должен занять свое положенное место в Марун-Тауне.";
 			link.l1.go = "after_boarding_4";
 		break;
 		
 		case "after_boarding_4":
-			dialog.text = "That's true... but pirate baron is an elective office. What if meeting will decide otherwise?";
-			link.l1 = "Let Svensson to deal with it. He can persuade anyone. The eliminating of Jackman will matter too.";
+			dialog.text = "Так-то оно так... Но пиратский барон -  выборная должность. Вдруг сходка Марун-Тауна проголосует иначе?";
+			link.l1 = "Предоставь это Свенсону. Он уговорит кого угодно. Уничтожение Джекмана тоже сыграет свою роль.";
 			link.l1.go = "after_boarding_5";
 		break;
 		
 		case "after_boarding_5":
-			dialog.text = "Fine. I need to make Svensson my friend anyway... "+pchar.name+"! I want to thank you for all you have done to me and Nathan. You have saved my husband and returned us everything we lost. I owe you.";
-			link.l1 = "Come on, Dannie. We are friends.";
+			dialog.text = "Хорошо. Теперь нам со Свенсоном придется стать друзьями в любом случае... "+pchar.name+"! Я хочу от всей души поблагодарить тебя за то, что ты сделал для меня и Натана. Ты фактически спас моего мужа, а теперь еще и вернул все потерянное нами. Я в неоплатном долгу перед тобой.";
+			link.l1 = "Брось, Данни. Мы же друзья.";
 			link.l1.go = "after_boarding_6";
 		break;
 		
 		case "after_boarding_6":
-			dialog.text = "I want you to know that we will always be glad to see you in Maroon Town. Find us there when you'll have time. Nathaniel and me will find a way to reward you.";
-			link.l1 = "Good heavens, Dannie! But I accept your invitation with pleasure. We'll sit, drink and talk about how you and Nathan were sinking Van der Decken...";
+			dialog.text = "Я хочу, чтобы ты знал - в Марун-Тауне тебе всегда будут рады. Когда будет возможность - обязательно загляни к нам. Мы с Натаниэлем придумаем, как тебя отблагодарить.";
+			link.l1 = "Да Бог с тобой, Даниэль. Но я с удовольствием принимаю твое приглашение. Посидим, выпьем, вспомним, как вы с Натаном топили Ван дер Декена...";
 			link.l1.go = "after_boarding_7";
 		break;
 		
 		case "after_boarding_7":
-			dialog.text = "Did he tell? Oh, don't remind me about it...";
-			link.l1 = "Fine, Dannie. You have got a lot of work with your ship and I have to visit our sworn friends - Marcus and Barbazon. I hope that you will let me to topsy-turvy this cabin, I am sure that there are a lot of interesting things lying in Jackman's chests.";
+			dialog.text = "Это Натан тебе рассказал? Ох, не напоминай мне об этом...";
+			link.l1 = "Ладно, Данни. Тебе предстоит еще много хлопот со своим кораблем, а мне пора навестить заклятых друзей - Маркуса и Барбазона. Но сначала я переверну вверх дном эту каюту, уж не взыщи: я уверен, что в сундуках у Джекмана лежит много вещей, которые меня заинтересуют.";
 			link.l1.go = "after_boarding_8";
 		break;
 		
 		case "after_boarding_8":
-			dialog.text = "Sure, do you really think that I will object?";
-			link.l1 = "Nice. Actually it's a pity to part with you, Dannie... See you in Maroon Town!";
+			dialog.text = "Да пожалуйста, неужели ты думаешь, что я стану возражать?";
+			link.l1 = "Чудесно. А вообще, мне даже как-то жаль с тобой расставаться, Данни... Увидимся в Марун-Тауне!";
 			link.l1.go = "after_boarding_9";
 		break;
 		
@@ -705,55 +705,55 @@ void ProcessDialogEvent()
 		
 		// в Марун-Тауне
 		case "marun_town":
-			dialog.text = ""+pchar.name+", I am very glad to see you! We are back at Maroon Town and Nathan is on his rightful place again. Actually, everyone in the village are happy about it. Now it all will go well as it used to! I am very grateful for your unselfish help!\nI want to give you a gift. Here, take it. This talisman can make the fight much easier for you. The formula will allow you to make more of those yourself.";
-			link.l1 = "Thanks, Dannie!";
+			dialog.text = ""+pchar.name+", очень рада тебя видеть! Мы снова в Марун-Тауне, и Натан занял свое законное место. Кстати, все в поселке были этому очень рады. Теперь опять все будет по-прежнему! Огромное тебе спасибо за твою бескорыстную помощь!\nЯ хочу сделать тебе подарок. Вот, возьми. Этот талисман очень поможет тебе в бою. А следуя этому рецепту ты всегда сможешь создать его самостоятельно.";
+			link.l1 = "Спасибо, Данни!";
 			link.l1.go = "marun_town_1";
 		break;
 		
 		case "marun_town_1":
 			GiveItem2Character(pchar, "totem_12"); 
 			GiveItem2Character(pchar, "recipe_totem_12"); 
-			Log_Info("You have received a talisman");
-			Log_Info("You have a recipe of talisman");
+			Log_Info("Вы получили талисман");
+			Log_Info("Вы получили рецепт талисмана");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "It not over yet. I have also found too chests filled with gold here. They were Jackman's property no doubt. Take them as a token of my gratitude. And don't you dare to refuse! I know how much have you wasted to help me and Nathan.";
-			link.l1 = "Fine, fine, Dannie, I accept them!";
+			dialog.text = "Еще не все. Я нашла в резиденции в шкафу два сундука с золотом. Оно наверняка принадлежало Джекману. Возьми и их в знак моей признательности. И не смей отказываться! Я знаю, сколько ты денег истратил, пока решал мои с Натаном проблемы.";
+			link.l1 = "Хорошо, хорошо, Данни, не откажусь!";
 			link.l1.go = "marun_town_2";
 		break;
 		
 		case "marun_town_2":
 			TakeNItems(pchar, "chest", 2); 
-			Log_Info("You have received chests with doubloons");
+			Log_Info("Вы получили сундуки с дублонами");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Excellent! "+pchar.name+", I want you to know that you are the best friend of ours. Nathan and me will always be glad to see you in Maroon Town! See us more often!";
-			link.l1 = "Thanks! I would be glad to see you again so expect me!";
+			dialog.text = "Вот и славно! "+pchar.name+", я хочу, чтобы ты знал: ты - наш лучший друг. Мы с Натаном всегда будем рады видеть тебя в Марун-Тауне! Заходи почаще!";
+			link.l1 = "Спасибо! Мне тоже будет очень приятно видеть вас, так что ждите в гости!";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "marun_town_3";
 		break;
 		
 		case "marun_town_3":
-			dialog.text = "I am glad to see you, "+pchar.name+"! Wand some rum, wine? Or a girl?";
-			link.l1 = "Thanks, Dannie! I just wanted to see you...";
+			dialog.text = "Рада тебя видеть, "+pchar.name+"! Рому, вина? Может, девочку?";
+			link.l1 = "Спасибо, Данни! Я просто зашел вас проведать...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "marun_town_3";
 		break;
 		
 	// ------------------------------------------- провалы Саги ------------------------------------------------
 		case "failcenturion":
-			dialog.text = "At last me and Nathan can breath freely!  This  damn bastard Jackman is dead!.. I feel bad for 'Centurion'  but I have already taken its leave when that scum has stolen it from me. So I don't worry much.";
-			link.l1 = "Though I do. I am an idiot! All evidences has gone at the bottom with the ship. They could help us in voting for the new head of Brethren of the Coast. Now... it's all gone.";
+			dialog.text = "Ну наконец-то мы с Натаном сможем вздохнуть спокойно! Этот проклятый ублюдок Джекман сдох!.. Жаль, конечно, 'Центуриона', но я все равно уже с ним давно попрощалась, когда этот мерзавец отобрал его у меня. Так что я особо не расстраиваюсь.";
+			link.l1 = "Зато я расстраиваюсь, и очень. Ну надо же было оказаться таким растяпой! Вместе с этим кораблем на дно ушли все улики, которые могли сыграть на руку при выборе нового главы Берегового братства. А теперь... все пропало.";
 			link.l1.go = "failcenturion_1";
 		break;
 		
 		case "failcenturion_1":
-			dialog.text = "Don't get so upset! It happens. Next time you will get lucky… Whatever. I want to thank you for what you've done for me and Nathan. You saved my husband's life. I owe you a great deal\nI want you to know that Maroon Town will always be glad to see you. Check me and Nate there when you have time. We will find a way to repay you.";
-			link.l1 = "Fine, Dannie. I will visit you for sure. Are you leaving already?";
+			dialog.text = "Да не печалься ты так! В жизни всякое бывает. В другой раз обзательно повезет... Ладно. Я хочу от всей души поблагодарить тебя за то, что ты сделал для меня и Натана. Ты фактически спас моего мужа. Я в неоплатном долгу перед тобой\nЯ хочу, чтобы ты знал - в Марун-Тауне тебе всегда будут рады. Когда будет возможность - обязательно загляни к нам. Мы с Натаниэлем придумаем, как тебя отблагодарить.";
+			link.l1 = "Хорошо, Данни. Обязательно загляну к вам в гости. Ты уже уходишь?";
 			link.l1.go = "failcenturion_2";
 		break;
 		
 		case "failcenturion_2":
-			dialog.text = "Yes, I will go to Miskito, I hope that Snake Eye has already healed Nathan. Then we will return to Maroon Town.";
-			link.l1 = "Heh, I have got used to you already, it's too bad that we have to part with you... Good luck, Daniel!";
+			dialog.text = "Да, отправлюсь к мискито - надеюсь, Змеиный Глаз уже поставил Натана на ноги. А затем мы вернемся в Марун-Таун.";
+			link.l1 = "Хех, я уже так привык к тебе, что жаль с тобой расставаться... Удачи, Даниэль!";
 			link.l1.go = "failcenturion_3";
 		break;
 		
@@ -767,24 +767,24 @@ void ProcessDialogEvent()
 		
 		//--> ----------------------------------- офицерский блок ------------------------------------------
 		case "Danielle_officer":
-			dialog.text = "What do you want, captain?";
+			dialog.text = "Ну что тебе, капитан?";
 			if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation") && pchar.questTemp.Saga.BarbTemptation == "danielle")
 			{
-				Link.l3 = "Dannie, I want to ask for you advice!";
+				Link.l3 = "Данни, я бы хотел с тобой посоветоваться.!";
 				Link.l3.go = "islatesoro";
 			}
-			Link.l1 = "Listen to my order!";
+			Link.l1 = "Слушай мой приказ!";
             Link.l1.go = "stay_follow";
-			link.l2 = "It's nothing. Dismissed!";
+			link.l2 = "Пока ничего. Вольно!";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "Danielle_officer";
 		break;
 		
 		case "stay_follow":
-            dialog.Text = "Orders?";
-            Link.l1 = "Stand here!";
+            dialog.Text = "Какие будут приказания?";
+            Link.l1 = "Стой здесь!";
             Link.l1.go = "Boal_Stay";
-            Link.l2 = "Follow me and keep up!";
+            Link.l2 = "Следуй за мной и не отставай!";
             Link.l2.go = "Boal_Follow";
 			sGun = GetCharacterEquipByGroup(NPChar, GUN_ITEM_TYPE);
 			if(sGun != "")
@@ -792,14 +792,14 @@ void ProcessDialogEvent()
 				rItm = ItemsFromID(sGun);
 				if(CheckAttribute(NPChar, "chr_ai.bulletNum") && sti(NPChar.chr_ai.bulletNum) > 1)
 				{
-					Link.l3 = "Change the type of ammo for your firearms.";
+					Link.l3 = "Нужно изменить тип боеприпаса для твоего огнестрельного оружия.";
 					Link.l3.go = "SetGunBullets";
 				}	
 			}		
 		break;
 		
 		case "SetGunBullets":
-			Dialog.Text = "Choosing the type of ammo:";
+			Dialog.Text = "Выбор типа боеприпаса:";
 			sGun = GetCharacterEquipByGroup(NPChar, GUN_ITEM_TYPE);
 			rItm = ItemsFromID(sGun);
 			makearef(rType, rItm.type);	
@@ -830,19 +830,25 @@ void ProcessDialogEvent()
         case "Boal_Stay":
             Pchar.questTemp.HiringOfficerIDX = GetCharacterIndex(Npchar.id);
             AddDialogExitQuestFunction("LandEnc_OfficerStay");
-            dialog.Text = "There is change of disposition!";
-            Link.l1 = "Dismissed.";
+            dialog.Text = "Есть изменить дислокацию!";
+            Link.l1 = "Вольно.";
             Link.l1.go = "Exit";
             Npchar.chr_ai.tmpl = LAI_TMPL_STAY;
         break;
         
         case "Boal_Follow":
             SetCharacterTask_FollowCharacter(Npchar, PChar);
-            dialog.Text = "There is change of disposition!";
-            Link.l1 = "Dismissed.";
+            dialog.Text = "Есть изменить дислокацию!";
+            Link.l1 = "Вольно.";
             Link.l1.go = "Exit";
         break;
 		//<-- ----------------------------------- офицерский блок ----------------------------------------
+		
+		case "":
+			dialog.text = "";
+			link.l1 = "";
+			link.l1.go = "";
+		break;
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

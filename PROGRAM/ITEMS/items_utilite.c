@@ -207,13 +207,13 @@ int UseBestPotion(ref chref, bool needAntidote)
 		if (CheckCharacterItem(pchar, chref.GenQuest.Potion_choice))
 		{
 			DoCharacterUsedItem(pchar, chref.GenQuest.Potion_choice);
-			return 1;
-		}
+		return 1;
+	}
 		else
 		{
 			PlaySound("interface\notebook.wav");
-			log_info("You don't have such potion with you.");
-			log_info("An auto-choice of healing potion is activated");
+			log_info("Выбранное лечебное зелье отсутствует в инвентаре!");
+			log_info("Активирован автоматический выбор лечебного зелья");
 			DeleteAttribute(pchar, "GenQuest.Potion_choice");
 			return 0;
 		}
@@ -225,8 +225,8 @@ int UseBestPotion(ref chref, bool needAntidote)
 			DoCharacterUsedItem(pchar, Items[curPotionID].id);
 			return 1;
 		}
-		else return 0;
-	}
+	else return 0;
+}
 }
 
 int FindQuestUsableItem(ref arFind, int startIdx)
@@ -1175,7 +1175,7 @@ void QuestCheckUseButton(aref _location, string _locator, string _itemId) /// <<
 		LocatorReloadEnterDisable("Tenochtitlan", "reloadTemple31", false);
 		SetItemModelOnLocation(_location, "totem_7", _locator);
 		PlaySound("Ambient\Teno_inside\big_ring.wav");
-		Log_Info("The temple of Kukulcan is opened now");
+		Log_Info("Открыт храм Кукулькана");
 		AddQuestRecord("Tieyasal", "30");
 	}
 	if (_location.id == "Temple_2" && _locator == "button01") // 

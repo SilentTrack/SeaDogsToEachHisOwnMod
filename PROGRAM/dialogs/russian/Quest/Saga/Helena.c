@@ -23,33 +23,33 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "Want something?";
-			link.l1 = "No, it's nothing.";
+			dialog.text = "Вы что-то хотели?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "After_boarding":
-			dialog.text = "Thanks for you help, captain!";
-			link.l1 = "Hm... You are even more beautiful than I imagined!";
+			dialog.text = "Благодарю за помощь, капитан!";
+			link.l1 = "Хм... Ты еще красивей, чем я тебя представлял по рассказам!";
 			link.l1.go = "After_boarding_1";
 		break;
 		
 		case "After_boarding_1":
-			dialog.text = "To hell with my beauty! It nearly got me killed. He wouldn't let me leave the corvette alive, because I know too much about the bastard. Yesterday he told me that he is tired of waiting and going to get my favour against my will\nSo you have shown a perfect timing, captain! Well met. My name is Helen McArthur. My dad used to call me Rumba for my cheerful temper, so that's how they call me now.";
-			link.l1 = "Well and my name is "+GetFullName(pchar)+". I have been looking for you across all of archipelago for several days because miss Gladys asked me to do so.";
+			dialog.text = "Черт бы побрал эту красоту! Из-за нее я чуть было не сыграла в ящик. Живой бы он меня с корвета не отпустил, только с ядром на шее, потому как слишком много знаю про этого ублюдка. Вчера он сказал, что устал ждать и намерен добиться от меня расположения вопреки моей воле\nТак что ты вовремя успел, кэп! Давай знакомиться. Меня зовут Элен Мак Артур. Отец с детства называл Румбой за веселый нрав, так это прозвище ко мне и приклеилось.";
+			link.l1 = "Ну а меня зовут "+GetFullName(pchar)+". Вот уже несколько дней разыскиваю тебя по всему архипелагу по просьбе миссис Глэдис.";
 			link.l1.go = "After_boarding_2";
 		break;
 		
 		case "After_boarding_2":
-			dialog.text = "How is she?";
-			link.l1 = "She really worries about you. Anyway, soon you will see her, we are sailing to Blueweld now.";
+			dialog.text = "Как она?";
+			link.l1 = "Сильно переживает за тебя. Впрочем, скоро ты ее увидишь, мы идем в Блювельд. По дороге расскажешь про свои злоключения подробнее...";
 			link.l1.go = "After_boarding_3";
 		break;
 		
 		case "After_boarding_3":
-			dialog.text = "To be honest, "+pchar.name+", I'd like to have some meal and a nap. I am so tired due to all of these days I have spent on the ship of that monster...";
-			link.l1 = "No problem, Helen. I will order to serve you a meal and prepare a bed for you. Be my guest.";
+			dialog.text = "Сказать по чести, "+pchar.name+", мне бы сейчас больше всего хотелось бы поесть и лечь спать. Я зверски устала за все эти кошмарные дни, проведенные на корабле этого изверга...";
+			link.l1 = "Нет проблем, Элен. Я прикажу подать тебе еду и приготовить койку. Будь моей гостьей!";
 			link.l1.go = "After_boarding_4";
 		break;
 		
@@ -74,8 +74,8 @@ void ProcessDialogEvent()
 		
 		case "Return_blueveld":
 			pchar.quest.Helena_ReturnOver.over = "yes";
-			dialog.text = "My captain, I thank you again from the bottom of my heart for my rescue. You must visit me and my mother. Our house is not far from here. Here it is, on the left from the pier. And know, "+pchar.name+", I will never forgive you if you'll disappear without saying goodbye, know that!";
-			link.l1 = "Sure, I will visit you!";
+			dialog.text = "Еще раз от всего сердца благодарю тебя, мой капитан, за чудесное спасение. Ты обязательно должен навестить нас с матушкой. Наш домик тут совсем рядом. Вот он, налево от пирса в самом конце. И учти, "+pchar.name+", если ты исчезнешь, не простившись, никогда тебе этого не прощу, так и знай!";
+			link.l1 = "Зайду обязательно!";
 			link.l1.go = "Return_blueveld_1";
 		break;
 		
@@ -99,68 +99,68 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Helena_wait":
-			dialog.text = "Ah, there you are, my captain! I am so glad, "+pchar.name+", that you have finally decided to visit me. I have got a lot to tell you.";
-			link.l1 = "We will delay this conversation a bit. I need to get some more information before I am able to answer your questions. And now I ask you to don't show yourself at the streets. I hope that your waiting will not last long. Trust me and wait.";
+			dialog.text = "А вот и ты, мой капитан! Как я рада, "+pchar.name+", что ты решил наконец меня проведать. Я о многом хотела бы поговорить с тобой.";
+			link.l1 = "Отложим этот разговор на некоторое время. Я должен кое-что выяснить, прежде чем смогу ответить на твои вопросы. А пока убедительно прошу не показываться на людях без особой необходимости. Надеюсь, твое ожидание будет недолгим. Верь мне и жди.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Helena_wait";
 		break;
 		
 		case "Helena_hire":
-			dialog.text = "Ah, there you are, my captain! Your eyes tell me that you have got news for me!";
-			link.l1 = "Svensson told me that you are really eager to become my officer. I appreciate your wish, Gladys mentioned that you have missed the sea. Welcome to my crew, officer Helen McArthur!";
+			dialog.text = "А вот и ты, мой капитан! По глазам вижу, у тебя есть новости для меня!";
+			link.l1 = "Свенсон сказал, что ты рвешься ко мне в офицеры. Я очень рад твоему желанию - Глэдис говорила, что ты очень тоскуешь без моря. Добро пожаловать в мою команду, офицер Элен Мак Артур!";
 			link.l1.go = "Helena_hire_1";
 			if (CheckAttribute(pchar, "questTemp.Saga.Helena_friend"))
 			{
-				link.l2 = "Svensson told me that you are really eager to become my officer. I appreciate your wish, Gladys mentioned that you have missed the sea. Welcome to my crew, officer Helen Sharp!";
+				link.l2 = "Свенсон сказал, что ты хочешь стать офицером на моем корабле. Я очень рад твоему желанию - Глэдис говорила, что ты очень тоскуешь без моря. Добро пожаловать в мою команду, офицер Элен Шарп!";
 			link.l2.go = "Helena_hire_2";
 			}
 		break;
 		
 		case "Helena_hire_1":
 			DeleteAttribute(pchar, "questTemp.Saga.Helena_friend");
-			dialog.text = "Aye-aye, my captain! But know that I am a proud girl, I can stand up for myself and I won't tolerate any liberties.";
-			link.l1 = "Don't worry, there is an order on my ship. We shall stay professional. Besides, I want you to know something extra...";
+			dialog.text = "Есть, мой капитан! Но учти, я девушка гордая, могу за себя постоять и никаких вольностей не потерплю.";
+			link.l1 = "Не волнуйся, у нас на корабле с этим строго. Кроме того, хочу добавить еще кое-что...";
 			link.l1.go = "Helena_hire_1_1";
 		break;
 		
 		case "Helena_hire_1_1":
-			dialog.text = "And what is it?";
-			link.l1 = "Jan Svensson and I have found out that you have got succession to Isla Tesoro. Yes, yes, it is true though it seems impossible. I have got a half of the map which can prove your rights. It won't be easy, but me and mister Svensson will do our best to help you to become a rightful ruler of the island.";
+			dialog.text = "И что же это?";
+			link.l1 = "Мы с Яном Свенсоном выяснили, что у тебя есть все права на наследование острова Исла Тесоро. Да, да, именно так, хотя на первый взгляд кажется невероятным. У меня есть половинка карты, которая поможет доказать это. Хотя с этим делом все не так просто, мы с мистером Свенсоном поможем тебе стать полноправной наследницей острова.";
 			link.l1.go = "Helena_hire_1_2";
 		break;
 		
 		case "Helena_hire_1_2":
-			dialog.text = ""+pchar.name+", are you serious? No, you are kidding the poor girl! How can I have rights to the whole island?";
-			link.l1 = "I am absolutely serious, Helen. And what is more, I am going to help you to arrange your life. And let's sail now!";
+			dialog.text = ""+pchar.name+", ты серьезно? Нет, ты смеешься над бедной девушкой! Откуда у меня могут быть права на целый остров?";
+			link.l1 = "Я абсолютно серьезен, Элен. Более того - намерен помочь тебе устроить твою жизнь. А сейчас - отправляемся в путь!";
 			link.l1.go = "Helena_hire_6";
 		break;
 		
 		case "Helena_hire_2":
-			dialog.text = "What did you say? Helen Sharp? Why Sharp?";
-			link.l1 = "Helen, you are a daughter of Beatrice Sharp and an heir presumptive. This is a half of the map which had been kept by Gladys for all last years. It's an evidence of your rights to Isla Tesoro. It won't be easy, but me and mister Svensson will do our best to help you to become a rightful heir of your grandfather.";
+			dialog.text = "Как ты сказал? Элен Шарп? А почему Шарп?";
+			link.l1 = "Элен, ты - дочь Беатрисс Шарп, и единственная наследница по линии Шарпов. Эта половинка карты, которую бережно хранила Глэдис все эти годы, является подтверждением твоих прав на остров Исла-Тесоро и Шарптаун. Но с этим делом все не так просто, и мы с мистером Свенсоном поможем тебе стать полноправной наследницей твоего деда.";
 			link.l1.go = "Helena_hire_3";
 		break;
 		
 		case "Helena_hire_3":
-			dialog.text = "Ah... My poor mother! I hope to find her grave one day and take care about it. But... wait! Impossible!";
-			link.l1 = "What is it, Helen?";
+			dialog.text = "Ах... Бедная моя мама! Надеюсь когда-нибудь найти ее могилку и позаботиться о ней. Но... постой! Невероятно!";
+			link.l1 = "Что такое, Элен?";
 			link.l1.go = "Helena_hire_4";
 		break;
 		
 		case "Helena_hire_4":
-			dialog.text = "The Gypsy's prophecy has just come true... I understand it now.";
-			link.l1 = "What prophecy? What are you talking about?";
+			dialog.text = "Сбылось пророчество цыганки... Я только сейчас это поняла.";
+			link.l1 = "Какое еще пророчество? О чем ты это сейчас?";
 			link.l1.go = "Helena_hire_5";
 		break;
 		
 		case "Helena_hire_5":
-			dialog.text = ""+pchar.name+", you might call me naive, but I will share it with you anyway. Several years ago a gypsy told me that my fate is in the hands of the man who won't take the widow's coin,  who will return the dead man's gold and who will name the mother\nI thought that it was a nonsense back then, but somehow you've managed to fulfil every part of the prophecy, you couldn't know about before!";
-			link.l1 = "A fate, you say... Well, perhaps you are right. I'll do my best to don't disappoint you and we shall look for your mother's grave together. And for now... Officer Helen Sharp! Get yourself ready and don't be late!";
+			dialog.text = ""+pchar.name+", ты, наверное, сочтешь меня наивной, но я все равно скажу тебе. Несколько лет назад цыганка на улице сказала мне: 'твоя судьба в руках того, кто не возьмет денег вдовы, вернет золото мертвеца и назовет имя матери'\nТогда я подумала, что это полная чушь. Но появился ты, и не только спас меня от позорной смерти, но и умудрился выполнить все три условия пророчества, о котором не мог ничего знать заранее!";
+			link.l1 = "Судьба, говоришь... Что жe, вполне может быть и так. Я постараюсь не разочаровать тебя, а могилку твоей матери мы поищем вместе. А пока... Офицер Элен Шарп! Собирайся и не опаздывай к отплытию!";
 			link.l1.go = "Helena_hire_6";
 		break;
 		
 		case "Helena_hire_6":
-			dialog.text = "Aye-aye, captain!";
+			dialog.text = "Есть, капитан!";
 			link.l1 = "...";
 			link.l1.go = "Helena_hire_add";
 		break;
@@ -182,26 +182,26 @@ void ProcessDialogEvent()
 		
 		//-->  консультации по морским сражениям в искушении барбазона
 		case "sea_bomb":
-			dialog.text = ""+pchar.name+"! I have got an idea...";
-			link.l1 = ""+npchar.name+"? It's not safe here and I have ordered you to stay on the ship...";
+			dialog.text = ""+pchar.name+"! У меня возникла одна идея...";
+			link.l1 = ""+npchar.name+"? Тут вообще-то опасно, и я велел оставаться на корабле...";
 			link.l1.go = "sea_bomb_1";
 		break;
 		
 		case "sea_bomb_1":
-			dialog.text = ""+pchar.name+", there are too much gunpowder in this old tub so if it blows up then the whole island will fly sky high. There is no difference in where to stay now. Listen to me!";
-			link.l1 = "So? What did you want to tell me?";
+			dialog.text = ""+pchar.name+", на этом корыте столько пороха, что взорвись он - и взлетит на воздух весь остров, так что разницы нет - на этом судне мы, или на нашем. Но ты выслушай меня!";
+			link.l1 = "Ну? Что ты хотела сказать?";
 			link.l1.go = "sea_bomb_2";
 		break;
 		
 		case "sea_bomb_2":
-			dialog.text = "The corvette and the frigate. They believe that we are their own... Knive. This could be an opportunity for us. Let's take a few barrels of gunpowder, a fuse and sail to the ships\nAfter they let us close, we light the fuse, drop the barrel and sail away as fast as we can. And then we shall watch a spectacular explosion... What say you?";
-			link.l1 = "Tricky! Though, your plan might work... Only in case they won't recognize us.";
+			dialog.text = "Корвет и фрегат. Они считают нас за своего... Валета. Мы можем этим воспользоваться. Сейчас возьмем пару самых больших бочек с порохом отсюда, приладим фитиль и поплывем к тем кораблям\nОни подпустят нас вплотную и мы незаметно скинем бочку рядом с одним из них, зажжем шнур и быстро слиняем. Главное - успеть подальше отойти. А потом понаблюдаем, как вражеское корыто взлетит к небесам... Что скажешь?";
+			link.l1 = "Ну ты выдумщица! Хотя, твой план может сработать... Но только если нас не распознают.";
 			link.l1.go = "sea_bomb_3";
 		break;
 		
 		case "sea_bomb_3":
-			dialog.text = "Let's just risk it, "+pchar.name+"? It won't be easy to fight two ships at once but we have got a chance...";
-			link.l1 = "Fine. We will do that! Lads! Take three barrels with gunpowder! And we are going to get away from here! You are very imaginative, "+npchar.name+"... I would have never come to this idea myself.";
+			dialog.text = "Рискнем, "+pchar.name+"? Ведь с двумя кораблями нам будет трудно управиться, а так есть шанс...";
+			link.l1 = "Хорошо. Так и сделаем! Ребята! Заберите три бочки с порохом на борт! И уходим! Ну у тебя и фантазия, "+npchar.name+"... Я бы не додумался.";
 			link.l1.go = "sea_bomb_4";
 		break;
 		
@@ -215,44 +215,44 @@ void ProcessDialogEvent()
 		break;
 		
 		case "fugas":
-			dialog.text = "Yes, sure. What is the matter?";
-			link.l1 = "There is a Jackman's ship at Sabo-Matila Cove, heavy frigate Centurion. This ship was a property of Hawkes, besides there must be important items and documents in Jackman's cabin... anyway, we must board it.";
+			dialog.text = "Да, конечно. О чем пойдет речь?";
+			link.l1 = "В бухте Сабу-Матила стоит корабль Джекмана, тяжелый фрегат 'Центурион'. Это судно принадлежало раньше Хоукам, кроме того, в каюте Джекмана должны быть важные документы и вещи... в общем, его нужно брать на абордаж.";
 			link.l1.go = "fugas_1";
 		break;
 		
 		case "fugas_1":
-			dialog.text = "I see. And how are you going to do that on our polacre? They have more men and cannons.";
-			link.l1 = "You are right. Jackman has at least twice more men than we have and all of them are perfectly skilled -  selected mercenaries. It would be madness to attack them without any preparatory bombardment. The protracted fighting is not the best option too. So I've been thinking about what to do with that.";
+			dialog.text = "Понятно. И ты сейчас думаешь, как ухитриться сделать это на нашем полакре? У них команды больше, чем у нас, и пушек тоже.";
+			link.l1 = "Именно так. У Джекмана как минимум вдвое больше людей, и все отлично обучены - отборные наемники. Атаковать нахрапом, без артподготовки - полное безумие. Затяжная морская баталия тоже может обернуться не в нашу пользу. Вот я и ломаю голову - что бы такое придумать.";
 			link.l1.go = "fugas_2";
 		break;
 		
 		case "fugas_2":
-			dialog.text = "You won't believe, "+pchar.name+", but I have an idea! They haven't recognized us as an enemy yet like those two idiots back at Turks... We can repeat our trick...";
-			link.l1 = "Helen, I have just told you that we must board the frigate, sinking it is not an option.";
+			dialog.text = "Ты не поверишь, "+pchar.name+", но я уже об этом думала и кое-что придумала! Они ведь нас пока еще не узнали - считают своим, как те два олуха, на Терксе... Можно повторить операцию.";
+			link.l1 = "Элен! Я же только что сказал - фрегат нельзя топить, его нужно абордировать!";
 			link.l1.go = "fugas_3";
 		break;
 		
 		case "fugas_3":
-			dialog.text = "I know that, "+pchar.name+". We will not sink her. Listen, we are going to take a few empty rum barrels and grape shot. Short fuse. Then we will come close to their frigate and throw barrels with our fire rum at their deck.";
-			link.l1 = "Ha! You think that it is going to work?";
+			dialog.text = "Я все помню, "+pchar.name+". Топить не будем. Послушай: берем несколько пустых бочонков из-под рома, засыпаем туда порох, мелкую картечь и прилаживаем очень короткий фитиль. Затем подходим к борту фрегата и кидаем бочонки с нашим огненным ромом им на палубу.";
+			link.l1 = "Ха! Ты думаешь, это получится?";
 			link.l1.go = "fugas_4";
 		break;
 		
 		case "fugas_4":
-			dialog.text = "And why not? Their boards are higher than ours but two men will be able to throw a barrel easily. We'll shout them - 'catch some rum from the Knave'! Barrels will explode even before they would start thinking.";
-			link.l1 = "The grape shot will spread and eliminate everybody around the explosion... Damn, it sounds tempting. There are hordes of mercenaries walking around at the deck! They are the main threat.";
+			dialog.text = "А почему нет? Борта у них выше, но два человека вполне забросят бочонок наверх. Крикнем - 'лови ром в подарок от Валета'! Пока они будут соображать, что да как - бочонки взорвутся.";
+			link.l1 = "Картечь разлетится в стороны и буквально сметет всех, кто будет поблизости... Черт возьми, звучит заманчиво. Там целые толпы наемников слоняются по палубе от безделья! Они как раз и есть самые опасные.";
 			link.l1.go = "fugas_5";
 		break;
 		
 		case "fugas_5":
-			dialog.text = "Let's throw five barrels at different places. "+pchar.name+", we have got a great advantage - a surprise. They don't suspect of anything! And then we will immediately sail away from them before they have a chance to board us.";
-			link.l1 = "Well, let's try. They must not identify us before we throw barrels... Damn it, it wont' be easy to get close to them. Jackman is not that idiotic like Vampire was.";
+			dialog.text = "Кинем не один бочонок, а штук пять в разные места. "+pchar.name+", у нас огромное преимущество - внезапность. Они ничего не подозревают! А потом сразу отходим от них подальше, чтобы не успели забросить абордажные крючья.";
+			link.l1 = "Ну что же, попробуем. Главное - чтобы они не увидели раньше времени, что 'Марлин' уже не под командованием братца Джекмана... Черт возьми, это будет нелегко - к ним подобраться. Джекман не такой простак, как Упырь.";
 			link.l1.go = "fugas_6";
 		break;
 		
 		case "fugas_6":
-			dialog.text = "Let's risk it, "+pchar.name+"! It won't get worse anyway.";
-			link.l1 = "It won't, that is for sure... Prepare the fougasses and get ready to fight!";
+			dialog.text = "Рискнем, "+pchar.name+"! Если не получится - хуже не будет.";
+			link.l1 = "Хуже не будет, это точно... Готовим фугасы, и к бою!";
 			link.l1.go = "fugas_7";
 		break;
 		
@@ -269,61 +269,61 @@ void ProcessDialogEvent()
 		case "result":
 			if (!CheckAttribute(pchar, "questTemp.Saga.Helena_friend")) // не друзья
 			{
-				dialog.text = "Well, my captain... It is time for us to say goodbye to each other. My service is ended and it's time to get used to a role of the mistress of Isla Tesoro. I hope that I will be a worthy successor of my uncle. Thank you for your help.";
-				link.l1 = "Sure, it's a pity to part with you, but there is nothing I can do. You have got more important things to do than to serve on my ship.";
+				dialog.text = "Ну что, мой капитан... Настало время нам с тобой проститься. Моя служба закончилась, и мне пора привыкать к роли хозяйки Исла-Тесоро. Надеюсь, я смогу стать достойной преемницей своего дяди. Благодарю тебя за помощь.";
+				link.l1 = "Жаль, конечно, расставаться, но что же поделать. У тебя теперь есть дела поважнее, чем служба на моем судне.";
 				link.l1.go = "result_1";
 			}
 			else
 			{
-				dialog.text = "It's so strange, "+pchar.name+"! I have just become an owner of the whole island but I don't feel myself as a mistress of Isla Tesoro... I suppose that a new head of the Brethren will manage the colony better than I would. The rent will be enough for me.";
-				link.l1 = "Hm. Are you sure, Helen? Think about it, you own the whole island!";
+				dialog.text = "Как странно, "+pchar.name+"! Я только что стала владелицей целого острова, но совсем не чувствую себя хозяйкой Исла Тесоро... Полагаю, новый глава Берегового братства управится с делами колонии куда лучше меня. Мне же будет достаточно просто ренты.";
+				link.l1 = "Хм. Ты уверена, Элен? Подумай, у тебя же в собственности целый остров!";
 				link.l1.go = "result_9";
 			}
 		break;
 		
 		case "result_1":
-			dialog.text = "You are right... I was able to collect some gold while sailing on your ship. Take it and don't even try to reject my offer - I don't want to be in your debt.";
-			link.l1 = "Hm. Actually...";
+			dialog.text = "Ты прав... Мне тут удалось собрать немного золота - то, что я заработала на твоем корабле. Возьми его и не вздумай отказываться - я не хочу чувствовать себя твоим должником.";
+			link.l1 = "Гм. Вообще-то...";
 			link.l1.go = "result_2";
 		break;
 		
 		case "result_2":
-			dialog.text = "I know what are you going to say. Sure, you help costs much more than that chest with coins. But this is almost all I have got in my possesion right now and I have to repay you. Take it, if you don't take it yourself I will leave it in your cabin.";
-			link.l1 = "Are you going to sail on your own now? Perhaps I could take you to Isla Tesoro?";
+			dialog.text = "Я понимаю, что ты хочешь сказать. Безусловно, твоя помощь была намного значительней этого сундука с монетами. Но это почти все, что у меня есть, а отблагодарить тебя я просто обязана. Бери, а если не возьмешь сам - я оставлю его у тебя в каюте.";
+			link.l1 = "Ты что, сходишь на берег прямо сейчас? Может, тебя отвезти на Исла Тесоро?";
 			link.l1.go = "result_3";
 		break;
 		
 		case "result_3":
 			GiveItem2Character(pchar, "chest");
-			Log_Info("You have received a chest with doubloons");
+			Log_Info("Вы получили сундук с дублонами");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "No need for that, "+pchar.name+". I will get to the island myself. I have got some cash on me, it will suffice for a while... I am sure that the mistress of Isla Tesoro doesn't need to worry about an income.";
-			link.l1 = "Whatever you say. I wish you luck in your new life.";
+			dialog.text = "Не стоит, "+pchar.name+". Я сама доберусь до своего острова. Некоторая сумма денег у меня есть, на первое время хватит... А хозяйке Исла Тесоро, я уверена, не придется беспокоиться о доходах.";
+			link.l1 = "Ну что же - как скажешь. Желаю тебе удачи в твоей новой жизни.";
 			if (!CheckAttribute(pchar, "questTemp.Saga.Beltrop_die")) link.l1.go = "result_4";
 			else link.l1.go = "result_7";
 		break;
 		
 		case "result_4":
-			dialog.text = "Thanks. But that is not all I wanted to say. I have found my father again, though it was a bit strange. He has basically paid with his good name of English nobleman for my inheritance and that bothers me. They have declared a hunt for his head and I don't want you, "+pchar.name+", to participate in it.";
-			link.l1 = "Come to your senses, Helen! He is a bandit and a pirate!";
+			dialog.text = "Спасибо. Но это еще не все. Я вновь обрела отца, хотя и столь необычным образом. Фактически, он заплатил своим добрым именем английского дворянина за мое наследство, и меня это очень угнетает. На него объявлена охота, и я бы очень не хотела, чтобы ты, "+pchar.name+", принял в ней участие.";
+			link.l1 = "Опомнись, Элен! Он же бандит и пират!";
 			link.l1.go = "result_5";
 		break;
 		
 		case "result_5":
-			dialog.text = "Pirate? And who the fuck are you? He is my father and that is the most important! And I, the daughter of a bandit and a pirate, don't give a damn what does the English justice think of him. If you try to harm my father in any way, I will forget everything good you have done to me, know that. Consider this as a warning.";
-			link.l1 = "Is that so? Actually, girl, you'd better be more polite. I didn't notice any complains from you about my pirate's attitude while I was saving your pretty ass from the hands of Donovan!";
+			dialog.text = "Пират? А ты-то кто? В первую очередь он мой отец! И мне, дочери бандита и пирата, глубоко плевать, что о нем думает английское правосудие. И если ты попробуешь причинить вред моему отцу, то я забуду все то хорошее, что ты успел для меня сделать. Учти, я тебя предупредила.";
+			link.l1 = "Вот как? Вообще-то, девочка, можно было и повежливее. Что-то я не заметил от тебя критики по поводу моего пиратского поведения, когда я вытаскивал тебя из лап Донована, самым разбойничьм образом захватив его корвет!";
 			link.l1.go = "result_6";
 		break;
 		
 		case "result_6":
-			dialog.text = "I am sorry. I have gone into a passion. But still, I'd like to stay your friend which would be impossible if you play against my father.";
-			link.l1 = "Understood. But don't ever dare to threat me, Helen... Beltrope. You had to come to understanding, while saving on my ship, that I don't fear anyone and anything. I won't be scared of you, trust me. Farewell now. Nevertheless, I wish you luck.";
+			dialog.text = "Извини. Я погорячилась. Но мне все-таки хотелось бы остаться с тобой друзьями, что станет невозможным, если ты начнешь строить козни против моего отца.";
+			link.l1 = "Я услышал тебя. Но более никогда не смей угрожать мне, Элен... Белтроп. За время службы на моем корабле ты должна была понять, что я не боюсь ни черта, ни морского дьявола. И тебя тоже не испугаюсь, поверь мне. А теперь - прощай. И не смотря ни на что, я желаю тебе удачи.";
 			link.l1.go = "result_8";
 		break;
 		
 		case "result_7":
-			dialog.text = "Thanks. Perhaps we will meet again, "+pchar.name+"...";
-			link.l1 = "And why not? I will visit Isla Tesoro more than once in future. See you there... Bye, Helen!";
+			dialog.text = "Спасибо. Возможно, еще когда-нибудь встретимся, "+pchar.name+"...";
+			link.l1 = "А почему нет? На Исла Тесоро мне предстоит побывать еще не раз. Там и увидимся... Пока, Элен!";
 			link.l1.go = "result_8";
 		break;
 		
@@ -338,42 +338,42 @@ void ProcessDialogEvent()
 		break;
 		
 		case "result_9": // вот тут - ключевой момент, если игрок нашел Мэри - выбирай, какая девушка милее
-			dialog.text = "I am sure. "+pchar.name+", I'd like to stay on your ship if you let me. To stay with you...";
+			dialog.text = "Я уже подумала. "+pchar.name+", если ты позволишь, я бы и дальше хотела остаться у тебя на корабле. Рядом с тобой...";
 			if (CheckAttribute(pchar, "questTemp.LSC.Mary") && pchar.questTemp.LSC.Mary == "alive")
 			{
-				link.l1 = "(choose Mary) Helen! It looks like you don't understand. All your future is secured now and there is nothing for you to worry about. And I have got a war, political intrigues and the total uncertainty ahead of me. You must to arrange a life of your own, there is no room for such an adventurer like myself in it.";
+				link.l1 = "(выбрать Мэри) Элен! Ты, похоже, не понимаешь. Ты обеспечена до конца своих дней, и можешь не беспокоиться о будущем. У меня же впереди - война, закулисные интриги и полная неизвестность. Тебе нужно устраивать свою жизнь, а не связывать ее с авантюристом.";
 				link.l1.go = "result_10";
-				link.l2 = "(choose Helen) It's more than I could hope for, Helen. Of course, I don't want to loose you, but perhaps it will better for you to go to Isla Tesoro. Who knows where will my fate lead me to. I have got a war, political intrigues and the total uncertainty ahead of me.";
+				link.l2 = "(выбрать Элен) Я мог только мечтать об этом, Элен. Конечно, я не хочу терять тебя, но, возможно, тебе было бы лучше отправиться на Исла Тесоро. Кто знает, куда приведет меня моя судьба. У меня впереди - война, закулисные интриги и полная неизвестность.";
 				link.l2.go = "result_15";
 			}
 			else
 			{
-				link.l1 = "It's more than I can hope for, Helen. Of course I don't want to loose you but perhaps it will better for you to go to Isla Tesoro. Who knows where will my fate lead me to. I have got a war, political intrigues and the total uncertainty ahead of me.";
+				link.l1 = "Я мог только мечтать об этом, Элен. Конечно, я не хочу терять тебя, но, возможно, тебе было бы лучше отправиться на Исла Тесоро. Кто знает, куда приведет меня моя судьба. У меня впереди - война, закулисные интриги и полная неизвестность.";
 				link.l1.go = "result_15";
 			}
 		break;
 		
 		case "result_10":
-			dialog.text = ""+pchar.name+"! Don't lie to me. You just don't want to... Tell me, who is she? That ginger girl from the Island of Abandoned Ships? Am I right?";
-			link.l1 = "Helen! It is you who I carry about in first place! How don't you understand that?!";
+			dialog.text = ""+pchar.name+"! Не лги мне. Ты просто не хочешь, чтобы... Скажи: это она? Та рыжая девчонка с Острова Погибших Кораблей? Да?";
+			link.l1 = "Элен! Я в первую очередь думаю о тебе! Как ты этого не понимаешь?!";
 			link.l1.go = "result_11";
 		break;
 		
 		case "result_11":
-			dialog.text = "I knew that... And how was she able to charm you, huh? Is she really that good? Eh, "+pchar.name+"... Well, it's your decision, I have nothing left, but to go to my island. I won't stand between you two\nAnyways, thank you for everything you've done for me. You are the best man I've ever met. I hope that we shall stay friends?";
-			link.l1 = "Sure... Helen, we will meet several times again on Isla Tesoro. Do you want me to take you there?";
+			dialog.text = "Я так и знала... И чем же она тебя так очаровала, а? Эх, "+pchar.name+"... Ну, раз ты так решил - то мне и впрямь больше ничего не остается, как отправиться на свой остров. Я не буду стоять между вами\nВ любом случае, огромное спасибо тебе за все, что ты для меня сделал. Ты - лучший из всех, кого я только знала. Ну а друзьями-то мы останемся?";
+			link.l1 = "Конечно... Элен, мы с тобой еще не раз встретимся на Исла Тесоро. Тебя отвезти на твой остров?";
 			link.l1.go = "result_12";
 		break;
 		
 		case "result_12":
-			dialog.text = "No need in that. I will buy a new ship. I have collected the sum enough to buy and to equip a schooner while serving under your command. I will sail on my 'Rainbow' again.";
-			link.l1 = "I am really glad, Helen, that you were so... practical. But sailing on a schooner doesn't suit to the mistress of Isla Tesoro. Soon, I believe, you will get a frigate to yourself.";
+			dialog.text = "Не надо. Я куплю себе корабль. За время службы у тебя я собрала сумму, достаточную для покупки и снаряжения шхуны. У меня снова будет моя 'Радуга'.";
+			link.l1 = "Очень рад, Элен, что ты оказалась такой... хозяйственной. Но владелице Исла Тесоро не пристало ходить на шхуне - думаю, в скором времени ты обзаведешься собственным фрегатом.";
 			link.l1.go = "result_13";
 		break;
 		
 		case "result_13":
-			dialog.text = "Perhaps, "+pchar.name+". Fine. I will go to the shipyard but at first... kiss me goodbye. Please...";
-			link.l1 = "Helen...";
+			dialog.text = "Все возможно, "+pchar.name+". Ладно. Пойду на верфь, присматривать себе новый корабль, но сначала... поцелуй меня, на прощание. Пожалуйста...";
+			link.l1 = "Элен...";
 			link.l1.go = "result_14";
 		break;
 		
@@ -390,26 +390,26 @@ void ProcessDialogEvent()
 		break;
 		
 		case "result_15":
-			dialog.text = "My fate has become your fate since we met. Don't you understand that? "+pchar.name+"? I will follow you at the back of beyond!";
-			link.l1 = "And what of your father? Laurence Beltrope? He has become my enemy...";
+			dialog.text = "С первой же нашей встречи твоя судьба стала моей судьбой. Неужели ты до сих пор этого не понял, "+pchar.name+"? Я пойду с тобой хоть на край света!";
+			link.l1 = "А твой отец? Лоуренс Белтроп? Ведь вышло так, что он оказался моим врагом...";
 			link.l1.go = "result_16";
 		break;
 		
 		case "result_16":
-			dialog.text = "My father is Sean McArthur. I loved him and mourned the loss of him. He was my only father. And that pirate... I don't even want to talk about him.";
-			link.l1 = "Helen... Dear Helen!..";
+			dialog.text = "Мой отец - Шон Мак Артур! Я любила его, и уже оплакала его смерть. Другого отца у меня нет и быть не может. А этот пират... я не хочу о нем даже говорить.";
+			link.l1 = "Элен... Дорогая Элен!..";
 			link.l1.go = "result_17";
 		break;
 		
 		case "result_17":
-			dialog.text = ""+pchar.name+", I have always wanted to tell you that you are incredible, you are the best! You have done so much to me that I will never be able to repay you. I want to stay with you. Forever. I will marry you if you want... I love you.";
-			link.l1 = "We shall be together. I promise!"; // а куда же ты теперь денешься :)
+			dialog.text = ""+pchar.name+", я давно хотела тебе сказать: ты - лучший, ты - удивительный! Ты столько сделал для меня, что мне жизни не хватит, чтобы отплатить за твое добро. Я хочу быть с тобой рядом. Всегда. И если ты этого захочешь, я стану твоей женой... Я люблю тебя.";
+			link.l1 = "Мы будем вместе. Обещаю!"; // а куда же ты теперь денешься :)
 			link.l1.go = "result_18";
 		break;
 		
 		case "result_18":
-			dialog.text = ""+pchar.name+", dear... Embrace me! I have been waiting for this moment for too long!";
-			link.l1 = "Helen, my girl...";
+			dialog.text = ""+pchar.name+", дорогой... Обними меня! Я так долго ждала этого момента!";
+			link.l1 = "Элен, девочка моя...";
 			link.l1.go = "result_19";
 		break;
 		
@@ -429,15 +429,15 @@ void ProcessDialogEvent()
 		break;
 		
 		case "happy":
-			dialog.text = ""+pchar.name+"! That was... incredible! I don't want to go anywhere else... Let's stay here until morning. The world can wait!";
-			link.l1 = "We'll let it wait, Helen!";
+			dialog.text = ""+pchar.name+"! Это было просто... замечательно! Я никуда не хочу уходить... Давай останемся тут до утра. И пусть весь мир подождет!";
+			link.l1 = "Пускай подождет, Элен!";
 			link.l1.go = "happy_1";
 		break;
 		
 		case "happy_1":
 			DialogExit();
 			LSC_MaryLoveWaitTime();
-			SetLaunchFrameFormParam("Next morning...", "", 0, 4);
+			SetLaunchFrameFormParam("Следующим утром...", "", 0, 4);
 			LaunchFrameForm();
 			DoQuestCheckDelay("Saga_HelenaRomantic_5", 4.0);
 			pchar.questTemp.Saga.Helena_officer = "true"; // показатель, что Элен - наша навсегда
@@ -445,20 +445,20 @@ void ProcessDialogEvent()
 		
 	// -------------------------------------------- провалы саги ------------------------------------
 		case "failcenturion":
-			dialog.text = "Captain! Jackman is eliminated... So it seems that my family is safe, isn't it?";
-			link.l1 = "Yes, Helen, it is safe. But 'Centurion' was sunk and so were all documents and things which could help us to find your mother's grave and prove your rights to claim Isla Tesoro... Eh... Now I will have to storm Tortuga for my own...";
+			dialog.text = "Капитан! Джекман уничтожен... Это значит, что более ни с чьей стороны в адрес моей семьи угроз и опасностей нет?";
+			link.l1 = "Да, Элен, это так. Но радости у меня мало - вместе с 'Центурионом' утонули документы и вещи, которые могли бы позволить нам найти могилу твоей мамы, и доказать твои права на Исла Тесоро. Эх... Теперь и Тортугу придется брать в одиночку...";
 			link.l1.go = "failcenturion_1";
 		break;
 		
 		case "failcenturion_1":
-			dialog.text = ""+pchar.name+", don't worry to much. There is nothing we can do now. Don't worry about me either, I will live fine without that island. Thank you for you've done for me!";
-			link.l1 = "It sounds like you are going to... leave me, right?";
+			dialog.text = ""+pchar.name+", не огорчайся. Ну что же теперь поделать. А из-за меня точно не печалься - я прекрасно проживу и без этого острова. Спасибо тебе за все, что ты сделал для меня!";
+			link.l1 = "Ты так говоришь, словно уходишь... да?";
 			link.l1.go = "failcenturion_2";
 		break;
 		
 		case "failcenturion_2":
-			dialog.text = "Yes, my captain. I was able to collect enough money to buy and to equip a schooner. I will sail on my 'Rainbow' again. We will meet again at Blueweld, won't we? I am going back home.";
-			link.l1 = "Well... good luck, Helen!";
+			dialog.text = "Да, мой капитан. Мне удалось отложить на твоей службе денег, достаточных для покупки и снаряжения шхуны. У меня снова будет моя 'Радуга'. Мы с тобой еще не раз увидимся в Блювельде, правда? Я возвращаюсь домой.";
+			link.l1 = "Ну что же... удачи, Элен!";
 			link.l1.go = "failcenturion_3";
 		break;
 		
@@ -474,20 +474,20 @@ void ProcessDialogEvent()
 		break;
 		
 		case "late_l1":
-			dialog.text = "Well, my captain... It seems that we have failed. Farewell. I am going back home. I have earned enough money under your command to buy a new schooner for myself so we will meet again at the sea!";
-			link.l1 = "Good luck, Helen. I am sorry for all of that. Farewell.";
+			dialog.text = "Ну что же, мой капитан... Видимо, так и не удалось нам с тобой осуществить задуманное. Прощай. Я возвращаюсь домой. На заработанные у тебя деньги я куплю себе новую шхуну, так что еще, думаю, не раз увидимся в море!";
+			link.l1 = "Удачи, Элен. Мне жаль, что все так неудачно вышло. Прощай.";
 			link.l1.go = "failcenturion_3";
 		break;
 		
 		case "late_l2":
-			dialog.text = "Captain! Jackman is eliminated... So it seems that my family is safe, isn't it?";
-			link.l1 = "Yes, Helen, it is safe. But I am not happy, I have lost too much time and Isla Tesoro is now the English colony. You were left without any inheritance, so I'll have to storm Tortuga myself...";
+			dialog.text = "Капитан! Джекман уничтожен... Это значит, что более ни с чьей стороны в адрес моей семьи угроз и опасностей нет?";
+			link.l1 = "Да, Элен, это так. Но радости у меня мало - я потерял очень много времени, и Исла Тесоро теперь - английская колония. И ты теперь без положенного наследства, и мне придется брать Тортугу самому...";
 			link.l1.go = "failcenturion_1";
 		break;
 		
 		case "late_l3":
-			dialog.text = ""+pchar.name+", what did lawyer tell to you?";
-			link.l1 = "Eh! I have lost too much time and Isla Tesoro is now the English colony. You were left without any inheritance, so I'll have to storm Tortuga myself...";
+			dialog.text = ""+pchar.name+", что там сказал адвокат?";
+			link.l1 = "Эх! Я потерял очень много времени, и Исла Тесоро теперь - английская колония. И ты теперь без положенного наследства, и мне придется брать Тортугу самому... Увы, но мы проиграли.";
 			link.l1.go = "failcenturion_1";
 		break;
 	// <-- провалы Саги
@@ -496,14 +496,14 @@ void ProcessDialogEvent()
 		case "cabin_sex":
 			if (drand(4) == 0) // вероятность отказа 20%
 			{
-				dialog.text = RandPhraseSimple(""+pchar.name+", I am not feeling well today. Don't feel bad, please. Let's don't do it today...",""+pchar.name+", darling, I have been so tired for the last few days. To be honest, I only want to sleep. Forgive me. Let's do it another time.");
-				link.l1 = RandPhraseSimple("Fine...","I am fine. Whatever you say...");
+				dialog.text = RandPhraseSimple(""+pchar.name+", я себя что-то совсем неважно чувствую. Не обижайся, пожалуйста. Давай не сегодня...",""+pchar.name+", дорогой, я так устала за последние несколько дней. Честно говоря, мне хочется просто поспать. Не обижайся. Давай в другой раз.");
+				link.l1 = RandPhraseSimple("Ну хорошо...","Не обижаюсь. Как скажешь...");
 				link.l1.go = "sex_exit";
 			}
 			else
 			{
-				dialog.text = RandPhraseSimple(""+pchar.name+", I gladly approve your idea! Let's go!",""+pchar.name+", sure, no questions asked! Let's go!");
-				link.l1 = RandPhraseSimple("You are my good girl...","You are so charming, Helen...");
+				dialog.text = RandPhraseSimple(""+pchar.name+", я с радостью поддерживаю твое предложение! Идем!",""+pchar.name+", ну конечно же не возражаю! Идем!");
+				link.l1 = RandPhraseSimple("Ты моя умничка...","Ты - просто прелесть, Элен...");
 				link.l1.go = "cabin_sex_go";
 			}
 		break;
@@ -522,8 +522,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "sex_after":
-			dialog.text = RandPhraseSimple("It was great, "+pchar.name+"!..","You were great as always, darling...");
-			link.l1 = RandPhraseSimple("I am glad that you were satisfied...","It is always good to be with you, Helen...");
+			dialog.text = RandPhraseSimple("Все было отлично, "+pchar.name+"!..","Ты как всегда на высоте, дорогой...");
+			link.l1 = RandPhraseSimple("Я рад, что ты осталась довольна...","Мне с тобой очень хорошо, Элен...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Helena_officer";
 			chrDisableReloadToLocation = false;//открыть локацию
@@ -534,21 +534,21 @@ void ProcessDialogEvent()
 		case "room_sex":
 			if (CheckAttribute(pchar, "questTemp.Terrapin") && pchar.questTemp.Terrapin == "tavern")
 			{
-				dialog.text = ""+pchar.name+", I always glad to... But it's not the right time now - we have to catch that scum Thibaut until he escaped.";
-				link.l1 = "You are right as always, my girl...";
+				dialog.text = ""+pchar.name+", я всегда этому рада... Но сейчас немного не время - нужно отловить этого прохвоста Тибо, пока он не скрылся где-нибудь.";
+				link.l1 = "Ты как всегда права, моя девочка...";
 				link.l1.go = "exit";
 				break;
 			}
 			if (drand(4) == 0) // вероятность отказа 20%
 			{
-				dialog.text = RandPhraseSimple(""+pchar.name+", I am not feeling well today. Don't feel hurt, please. Let's don't do it today...",""+pchar.name+", darling, I have been so tired for the last few days. To be honest, I only want to sleep. Forgive me. Let's do it another time.");
-				link.l1 = RandPhraseSimple("Fine...","I am fine. Whatever you say...");
+				dialog.text = RandPhraseSimple(""+pchar.name+", я себя что-то совсем неважно чувствую. Не обижайся, пожалуйста. Давай не сегодня...",""+pchar.name+", дорогой, я так устала за последние несколько дней. Честно говоря, мне хочется просто поспать. Не обижайся. Давай в другой раз.");
+				link.l1 = RandPhraseSimple("Ну хорошо...","Не обижаюсь. Как скажешь...");
 				link.l1.go = "sex_exit";
 			}
 			else
 			{
-				dialog.text = RandPhraseSimple(""+pchar.name+", I gladly approve your idea! Let's go!",""+pchar.name+", sure, no questions asked! Let's go!");
-				link.l1 = RandPhraseSimple("You are my good girl...","You are so charming, Helen...");
+				dialog.text = RandPhraseSimple(""+pchar.name+", я с радостью поддержу твое предложение! Идем!",""+pchar.name+", ну конечно же не возражаю! Идем!");
+				link.l1 = RandPhraseSimple("Ты моя умничка...","Ты - просто прелесть, Элен...");
 				link.l1.go = "room_sex_go";
 			}
 		break;
@@ -565,39 +565,39 @@ void ProcessDialogEvent()
 		//--> ----------------------------------- офицерский блок ------------------------------------------
 		case "Helena_officer":
 			ref rLoc = &Locations[FindLocation(pchar.location)];
-			dialog.text = LinkRandPhrase("Yes, "+pchar.name+"?","Yes, my captain?","I am listening, "+pchar.name+"...");
+			dialog.text = LinkRandPhrase("Да, "+pchar.name+"?","Да, мой капитан?","Слушаю тебя, "+pchar.name+"...");
 			if (CheckAttribute(pchar, "questTemp.Dolly_Tieyasal") && !CheckAttribute(npchar, "quest.Tieyasal"))
 			{
-				Link.l4 = "Helen, I am going to visit the old Indian city Tayasal. I won't lie to you: this trip is very dangerous and even more - it includes teleportation through the idol. Will you... follow me?";
+				Link.l4 = "Элен, я собираюсь отправиться в старый индейский город Тайясаль. Не буду скрывать: это крайне опасное путешествие, и более того - необычное: через телепортационный истукан. Ты... пойдешь со мной?";
 				Link.l4.go = "tieyasal";
 			}
 			if (CheckAttribute(npchar, "quest.fugas"))
 			{
-				Link.l3 = "Helen, I need your advice.";
+				Link.l3 = "Элен, я хочу с тобой посоветоваться.";
 				Link.l3.go = "fugas";
 			}
-			Link.l1 = "Helen, I have got an order for you...";
+			Link.l1 = "Элен, у меня для тебя есть распоряжение...";
             Link.l1.go = "stay_follow";
 			if (CheckAttribute(pchar, "questTemp.Saga.Helena_officer") && pchar.location == Get_My_Cabin() && !CheckAttribute(npchar, "quest.daily_sex"))
 			{
-				Link.l2 = RandPhraseSimple("Helen, let's stay in the cabin together alone... for a few hours? Are you okay with that?","Dear, let's spend next few hours tete-a-tete? Do you like this idea?");
+				Link.l2 = RandPhraseSimple("Элен, может, останемся в каюте вдвоем... на ближайшие пару часов? Ты не против?","Дорогая, может, проведем следующие несколько часов тет-а-тет? Ты не против?");
 				Link.l2.go = "cabin_sex";
 			}
 			if (CheckAttribute(pchar, "questTemp.Saga.Helena_officer") && rLoc.type == "tavern" && !CheckAttribute(npchar, "quest.daily_sex") && sti(pchar.money) >= 10)
 			{
-				Link.l2 = RandPhraseSimple("Helen, why won't we take a room and stay there in private... for a next few hours? How do you feel about that?","Dear, let's spend next few hours tete-a-tete? We'll take a room... Will you stay?");
+				Link.l2 = RandPhraseSimple("Элен, может, снимен комнату и останемся там вдвоем... на ближайшие пару часов? Ты не против?","Дорогая, может, проведем следующие несколько часов тет-а-тет? Снимем комнату... Ты не против?");
 				Link.l2.go = "room_sex";
 			}
-			link.l9 = "It's nothing so far, Helen.";
+			link.l9 = "Пока ничего, Элен.";
 			link.l9.go = "exit";
 			NextDiag.TempNode = "Helena_officer";
 		break;
 		
 		case "stay_follow":
-            dialog.Text = "Orders?";
-            Link.l1 = "Stand here!";
+            dialog.Text = "Какие будут приказания?";
+            Link.l1 = "Стой здесь!";
             Link.l1.go = "Boal_Stay";
-            Link.l2 = "Follow me and keep up!";
+            Link.l2 = "Следуй за мной и не отставай!";
             Link.l2.go = "Boal_Follow";
 			sGun = GetCharacterEquipByGroup(NPChar, GUN_ITEM_TYPE);
 			if(sGun != "")
@@ -605,14 +605,14 @@ void ProcessDialogEvent()
 				rItm = ItemsFromID(sGun);
 				if(CheckAttribute(NPChar, "chr_ai.bulletNum") && sti(NPChar.chr_ai.bulletNum) > 1)
 				{
-					Link.l3 = "Change the type of ammo for your firearms.";
+					Link.l3 = "Нужно изменить тип боеприпаса для твоего огнестрельного оружия.";
 					Link.l3.go = "SetGunBullets";
 				}	
 			}		
 		break;
 		
 		case "SetGunBullets":
-			Dialog.Text = "Choosing the type of ammo:";
+			Dialog.Text = "Выбор типа боеприпаса:";
 			sGun = GetCharacterEquipByGroup(NPChar, GUN_ITEM_TYPE);
 			rItm = ItemsFromID(sGun);
 			makearef(rType, rItm.type);	
@@ -643,7 +643,7 @@ void ProcessDialogEvent()
         case "Boal_Stay":
             Pchar.questTemp.HiringOfficerIDX = GetCharacterIndex(Npchar.id);
             AddDialogExitQuestFunction("LandEnc_OfficerStay");
-            dialog.Text = "At once, captain!";
+            dialog.Text = "Будет сделано, капитан!";
             Link.l1 = "...";
             Link.l1.go = "Exit";
             Npchar.chr_ai.tmpl = LAI_TMPL_STAY;
@@ -651,7 +651,7 @@ void ProcessDialogEvent()
         
         case "Boal_Follow":
             SetCharacterTask_FollowCharacter(Npchar, PChar);
-            dialog.Text = "At once, captain!";
+            dialog.Text = "Будет сделано, капитан!";
             Link.l1 = "...";
             Link.l1.go = "Exit";
         break;
@@ -659,14 +659,14 @@ void ProcessDialogEvent()
 		
 		// --> суп из черепахи
 		case "terrapin_grot":
-			dialog.text = "There you are! I have barely found you... That was something, my captain! I have never seen such a roof run and a jump from such a breathtaking height! My heart was ready to explode! One day you will kill me with these tricks of yours, dear... Oh, ain't you alone here? Who is that girl?";
-			link.l1 = "This is Catherine Fox, a daughter of colonel Fox, commander of 'sea foxes' marines. We will be taking her to Antigua.";
+			dialog.text = "Вот ты где спрятался! Насилу тебя нашла... Ну ты дал жару, мой капитан! Такого забега по крышам и прыжка с головокружительной высоты мне еще не доводилось видеть! У меня чуть сердце не выпрыгнуло из груди! Ты однажды доведешь меня своими выходками до удара, дорогой... О, так ты тут не один? Кто эта девушка?";
+			link.l1 = "Это Кэтрин Фокс, дочь полковника Фокса, командира 'морских лис'. Мы отвезем ее на Антигуа.";
 			link.l1.go = "terrapin_grot_1";
 		break;
 		
 		case "terrapin_grot_1":
-			dialog.text = "Intriguing! Welcome aboard miss Fox... And now lets get to the longboat - we need to get out here.";
-			link.l1 = "You are the best, Helen! And what would I do without you?.. Catherine, follow me!";
+			dialog.text = "Как интересно! Добро пожаловать на борт, мисс Фокс... А теперь быстрее грузимся в шлюпку - надо убираться отсюда.";
+			link.l1 = "Ты умничка, Элен! И что бы я без тебя делал?.. Кэтрин, следуй за мной!";
 			link.l1.go = "terrapin_grot_2";
 		break;
 		
@@ -681,50 +681,50 @@ void ProcessDialogEvent()
 		
 		// --> калеуче
 		case "on_coast":
-			dialog.text = "Finally you woke up, darling. How do you feel? You have really scared me";
-			link.l1 = "Helen, what happened? My head is splitting...";
+			dialog.text = "Ну наконец-то ты очнулся, мой дорогой... Как ты себя чувствуешь? Ты очень напугал меня.";
+			link.l1 = "Элен... Милая, что произошло? Аргх, голова раскалывается...";
 			link.l1.go = "on_coast_1";
 		break;
 		
 		case "on_coast_1":
-			dialog.text = "When we entered the captain's cabin, you were lying on the floor still. My heart has almost stopped beating! The guys picked you up and dragged you to our ship - and just in time, since the dead men lying on the deck began to rise again.\nThat was a real nightmare! They were totally impervious! We quickly cut the ropes and tried to sail away, but a volley from their ship quickly turned our old tub into splinters. And then they hoisted sails and were gone in blink of an eye.\nOur ship sank, and everyone who managed to survive, have reached the shore in a boat. I managed to take your chest from the cabin. I know you keep many important things in there...";
-			link.l1 = "You're a smart girl, Helen. What would I have done without you?";
+			dialog.text = "Когда мы зашли в капитанскую каюту, ты лежал на полу без движения. У меня чуть сердце не остановилось! Ребята подхватили тебя и потащили на наш корабль, и вовремя, потому что эти ужасные скелеты, что валялись на палубе, начали подниматься и снова взялись за сабли\nЭто просто кошмар! Их нельзя одолеть! Мы быстро обрубили лини и отчалили от их корабля, но далеко уйти не успели: негодяи всадили в нас залп бортовой батареи, и наше судно в один миг превратилось в щепки. А затем они подняли паруса и в мгновение ока скрылись за горизонтом\nКорабль наш затонул, а все, кто выжил, добрались на лодке до берега. Я смогла прихватить твой капитанский рундук из каюты с твоими вещами. Там ведь много чего важного, я знаю.";
+			link.l1 = "Ты умничка, Элен... Что бы я без тебя делал?";
 			link.l1.go = "on_coast_2";
 		break;
 		
 		case "on_coast_2":
-			dialog.text = "I dragged you into the boat and then got you to the shore. You seemed dead, only your heart was beating very faintly. My hands are still shaking";
-			link.l1 = "Thank you, love. I am indebted to you. How long had I been lying there, unconscious?";
+			dialog.text = "Я вытащила тебя в лодку, а потом и на берег. А ты был словно мертвый, только сердце едва билось. У меня до сих пор руки дрожат...";
+			link.l1 = "Спасибо, моя милая. Я в долгу перед тобой. Сколько я здесь валялся без сознания?";
 			link.l1.go = "on_coast_3";
 		break;
 		
 		case "on_coast_3":
-			dialog.text = "For an entire day. I washed and bound your wounds, gave you medicine and poured some rum into you. Now you must get well!";
-			link.l1 = "I promise I will not die this time, darling. Although I don't feel really well...";
+			dialog.text = "Сутки. Я промыла и перевязала тебе раны, влила в рот лекарства и ром. Ты просто обязан теперь выздороветь!";
+			link.l1 = "Обещаю, что не умру, моя дорогая. Хотя чувствую себя на редкость паршиво...";
 			link.l1.go = "on_coast_4";
 		break;
 		
 		case "on_coast_4":
-			dialog.text = "That's for sure... Was it the 'Flying Dutchman', cap? Why did they attack us? And why didn't they shoot at us before the boarding, but sank the ship with just one volley later?";
-			link.l1 = "Their captain needed the amulet, about which I had talked to Tuttuathapak, an Indian shaman. That's why they haven't sunk us immediately, but as soon as their leader got the amulet, they quickly disposed of us... What a nightmare! A ship manned by the dead! Impossible to believe...";
+			dialog.text = "Не сомневаюсь... Это был 'Летучий Голландец', да? Почему они на нас напали? И почему сразу не сделали ни одного выстрела, а после абордажа потопили одним залпом?";
+			link.l1 = "Их капитану нужен был амулет, по поводу которого я ходил к Туттуатхапаку, индейскому шаману. Поэтому они и не потопили нас сразу. А как только главный мертвец забрал амулет, они и расправились с нами... Жуть какая! Корабль с командой живых мертвецов! Поверить невозможно...";
 			link.l1.go = "on_coast_5";
 		break;
 		
 		case "on_coast_5":
-			dialog.text = "Yeah, now it was our turn to encounter the 'Flying Dutchman'. When I have the chance, I'll go to church, light the candle for our miraculous delivery, and pray to our Lord";
-			link.l1 = "Me too, Helen, I guess. But first I'll go back to that village. I need to tell Tuttuathapak everything about it. That accursed ship attacked us because of the amulet! I hope that red-skinned devil has some ideas, why in hell those living dead might have needed it.";
+			dialog.text = "Вот мы и повстречались с 'Летучим Голландцем'. В первой же колонии я пойду в церковь,  поставлю свечу из чистого воска за наше спасение, и буду молиться...";
+			link.l1 = "Знаешь, Элен, я, пожалуй, тоже. Но сейчас мы пойдем назад в деревню карибов. Я должен всё рассказать Туттуатхапаку. Этот проклятый корабль напал на нас из-за амулета! Надеюсь, краснокожий дьявол сможет объяснить мне, зачем он понадобился мертвецам.";
 			link.l1.go = "on_coast_6";
 		break;
 		
 		case "on_coast_6":
-			dialog.text = "Alright. But you must be careful - your wounds have barely healed.";
-			link.l1 = "But you will help me to heal, won't you? And Helen, I love you...";
+			dialog.text = "Хорошо. Но тебе нужно беречь себя - твои раны до сих пор сочатся кровью.";
+			link.l1 = "Но ты же поможешь мне исцелиться, моя девочка? И, Элен: я люблю тебя...";
 			link.l1.go = "on_coast_7";
 		break;
 		
 		case "on_coast_7":
 			chrDisableReloadToLocation = false;//открыть локацию
-			dialog.text = "I love you too, my darling...";
+			dialog.text = "Я тебя тоже, дорогой...";
 			link.l1 = "...";
 			link.l1.go = "on_coast_8";
 		break;
@@ -740,14 +740,14 @@ void ProcessDialogEvent()
 		
 		// на Тайясаль
 		case "tieyasal":
-			dialog.text = ""+pchar.name+", I have told you once that we share our fates together now. Your fate is my fate. When are we going to go there?";
-			link.l1 = "You said yes, my dear... I am very glad. I will tell you a bit later when we are going to go there. We need to prepare ourselves.";
+			dialog.text = ""+pchar.name+", я как-то сказала тебе, что наши судьбы теперь едины. Твоя судьба - моя судьба. Когда мы отправляемся?";
+			link.l1 = "Значит, ты согласна, моя умничка... Я очень рад. А когда выдвигаться - я скажу немного позже. Пока нам нужно подготовиться.";
 			link.l1.go = "tieyasal_1";
 		break;
 		
 		case "tieyasal_1":
-			dialog.text = "I am ready, my captain! I will follow you at the back of beyond!";
-			link.l1 = "Thank you, my love...";
+			dialog.text = "Я готова в любой момент, мой капитан! С тобой - хоть на край света!";
+			link.l1 = "Спасибо, любимая...";
 			link.l1.go = "tieyasal_2";
 		break;
 		
@@ -759,8 +759,8 @@ void ProcessDialogEvent()
 		
 		// на Исла Тесоро
 		case "islatesoro":
-			dialog.text = "Oh, "+pchar.name+"! Glad to see you! What are you doing here, on Isla Tesoro?";
-			link.l1 = "Same as always - business matters. And of course I wanted to check on you, Helen...";
+			dialog.text = "О, "+pchar.name+"! Рада тебя видеть! Какими судьбами на Исла Тесоро?";
+			link.l1 = "Да все как обычно - по делам. И, конечно, не забыл тебя проведать, Элен...";
 			link.l1.go = "islatesoro_1";
 		break;
 		

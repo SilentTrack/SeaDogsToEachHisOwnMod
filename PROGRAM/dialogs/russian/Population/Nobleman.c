@@ -38,14 +38,14 @@ void ProcessDialogEvent()
 			//--> проверка межнациональных отношений
 				if (sti(NPChar.nation) != PIRATE && GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY)
 				{
-				dialog.text = NPCStringReactionRepeat("Hm. You are sailing under the flag of"+NationNameGenitive(sti(pchar.nation))+", pal. What the hell are you doing here, in our town? Get lost!", 
-					"I don't want to be suspected as a friend of "+NationNameAblative(sti(pchar.nation))+"! Get lost or I will report to the guards!", 
-					"It's your last chance to get away. Otherwise you have only yourself to blame.",
-					"I have warned you. Now you will pay for you impudence, bastard!", "block", 1, npchar, Dialog.CurrentNode);
-				link.l1 = HeroStringReactionRepeat("Such a patriot, ha!", 
-					"Fine, fine calm down. I am leaving.",
-					"Calm yourself. I am leaving.", 
-					"What?!", npchar, Dialog.CurrentNode);
+				dialog.text = NPCStringReactionRepeat("Хм. Ты ходишь под флагом "+NationNameGenitive(sti(pchar.nation))+", приятель. Какого черта ты делаешь здесь, в нашем городе? Убирайся!", 
+					"Я не желаю, чтобы меня заподозрили в связи с "+NationNameAblative(sti(pchar.nation))+"! Проваливай, не то точно страже доложу!", 
+					"Даю тебе последний шанс убраться прочь. Потом - пеняй на себя.",
+					"Ну, я тебя предупреждал. Теперь ты поплатишься за свою дерзость, негодяй!", "block", 1, npchar, Dialog.CurrentNode);
+				link.l1 = HeroStringReactionRepeat("Тоже мне, патриот выискался...", 
+					"Ладно-ладно, не кипятись. Ухожу.",
+					"Не шуми, я уже ушел...", 
+					"Что?!", npchar, Dialog.CurrentNode);
 				link.l1.go = DialogGoNodeRepeat("exit", "", "", "fight", npchar, Dialog.CurrentNode);
 			break;
 			}
@@ -53,14 +53,14 @@ void ProcessDialogEvent()
 			//--> проверка репутации - дворяне гнобят супернегодяев
 			if (sti(pchar.reputation.nobility) < 10)
 			{
-				dialog.text = NPCStringReactionRepeat("Look at that! And how do our guards let such bastards as you just walk around the town? Impossible...", 
-					"Get lost, I don't even want to talk with you! Hangman...", 
-					"It's your last chance to get away. Otherwise you have only yourself to blame.",
-					"I have warned you. Now you will pay for you impudence, bastard!", "block", 1, npchar, Dialog.CurrentNode);
-				link.l1 = HeroStringReactionRepeat("Hey hey! Show me more respect, sir!", 
-					"Look at yourself, saint...",
-					"Calm down...", 
-					"What?!", npchar, Dialog.CurrentNode);
+				dialog.text = NPCStringReactionRepeat("Ну надо же! И как только стража позволяет таким мерзавцам расхаживать по нашему городу? Невероятно...", 
+					"Проваливайте, я не желаю даже разговаривать с вами! Висельник...", 
+					"Даю тебе последний шанс убраться прочь. Потом - пеняй на себя.",
+					"Ну, я тебя предупреждал. Теперь ты поплатишься за свою дерзость, негодяй!", "block", 1, npchar, Dialog.CurrentNode);
+				link.l1 = HeroStringReactionRepeat("Но-но, сударь, проявляйте больше уважения!", 
+					"На себя посмотри, святоша...",
+					"Не шуми...", 
+					"Что?!", npchar, Dialog.CurrentNode);
 				link.l1.go = DialogGoNodeRepeat("exit", "", "", "fight", npchar, Dialog.CurrentNode);
 			break;
 			}
@@ -72,10 +72,10 @@ void ProcessDialogEvent()
 				bool ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
 				if (ok && sti(Pchar.Ship.Type) != SHIP_NOTUSED && CheckAttribute(npchar, "quest.passenger") && !CheckAttribute(pchar, "GenQuest.Noblepassenger") && 4-sti(RealShips[sti(Pchar.Ship.Type)].Class) > 0)//дворянин-пассажир
 				{
-					dialog.text = "Greeting, "+GetAddress_Form(NPChar)+". I see that you are a captain of the solid ship. I have got something to ask you. Deal if you want...";
-					link.l1 = "I am listening, "+GetAddress_FormToNPC(NPChar)+". What do you mean?";
+					dialog.text = "Приветствую, "+GetAddress_Form(NPChar)+". Вижу, вы капитан солидного корабля. У меня будет к вам просьба, или предложение - как вам угодно...";
+					link.l1 = "Слушаю вас, "+GetAddress_FormToNPC(NPChar)+". О чем пойдет речь?";
 					link.l1.go = "passenger";
-					link.l2 = "Pardon me, "+GetAddress_FormToNPC(NPChar)+", but I am in hurry.";
+					link.l2 = "Простите, "+GetAddress_FormToNPC(NPChar)+", но я очень спешу.";
 					link.l2.go = "exit";
 					npchar.quest.meeting = "1";
 					DeleteAttribute(npchar, "talker"); //снимаем говорилку
@@ -83,53 +83,53 @@ void ProcessDialogEvent()
 				}
 				if (CheckAttribute(npchar, "quest.donation"))//клянчит деньги
 				{
-					dialog.text = "Aha, it is good to see such a decent man in our beyond! I am sure that you are just from Europe. Listen, I want to ask you to help me as nobleman to nobleman. I hope that you will understand me correctly.";
-					link.l1 = "Good day to you, sir. I am listening.";
+					dialog.text = "А-а, рад видеть приличного человека в нашем захолустье! Ручаюсь, вы не так давно из Европы. Послушайте, я хочу попросить вас о помощи, как дворянин дворянина. Надеюсь, вы поймете меня правильно.";
+					link.l1 = "Здравствуйте, сударь. Я вас внимательно слушаю.";
 					link.l1.go = "donation";
 					npchar.quest.meeting = "1";
 					break;
 				}
 				if (CheckAttribute(npchar, "quest.lombard") && !CheckAttribute(pchar, "GenQuest.Noblelombard"))//семейная реликвия
 				{
-					dialog.text = "Good day, "+GetAddress_Form(NPChar)+"! It's good to meet a nobleman at the streets of our town! Will you let me to take a few minutes from you?";
-					link.l1 = "Sure, sir. I am listening.";
+					dialog.text = "Добрый день, "+GetAddress_Form(NPChar)+"! Приятно встретить представителя дворянского сословия на улицах нашего города! Позволите отнять несколько минут вашего драгоценного времени?";
+					link.l1 = "Конечно, сударь. Внимательно вас слушаю.";
 					link.l1.go = "lombard";
 					npchar.quest.meeting = "1";
 					break;
 				}
 				if (CheckAttribute(npchar, "quest.slaves") && !CheckAttribute(Colonies[FindColony(npchar.city)], "questslaves"))//привезти рабов
 				{
-					dialog.text = "Good day to you, captain! I am glad to see you because you look like a man who is able to solve my problem.";
-					link.l1 = ""+GetAddress_FormToNPC(NPChar)+"?";
+					dialog.text = "Приветствую, капитан! Рад вас видеть, потому что вы выглядите человеком, который в состоянии помочь мне в одном вопросе.";
+					link.l1 = "Очень интересно. И в чем же будет заключаться моя помощь, "+GetAddress_FormToNPC(NPChar)+"?";
 					link.l1.go = "slaves";
 					npchar.quest.meeting = "1";
 					break;
 				}
-				dialog.text = RandPhraseSimple("Hello, "+GetAddress_Form(NPChar)+". Do you want something from me?", "What do you want, sir?");
-				link.l1 = TimeGreeting()+", "+GetAddress_FormToNPC(NPChar)+". I won't take much of your time, just want to ask...";
+				dialog.text = RandPhraseSimple("Здравствуйте, "+GetAddress_Form(NPChar)+". Вы что-то от меня хотели?", "Что вам угодно, сударь?");
+				link.l1 = TimeGreeting()+", "+GetAddress_FormToNPC(NPChar)+". Я не задержу вас надолго, просто хочу спросить у вас...";
 				link.l1.go = "question";
-				link.l2 = RandPhraseSimple("I need information about your colony.", "I need information.");
+				link.l2 = RandPhraseSimple("Мне нужна информация о делах в вашей колонии.", "Мне нужна информация.");
 				link.l2.go = "quests";//(перессылка в файл города)
 				npchar.quest.meeting = "1";
 			}
 			else //--> повторные обращения
 			{
-				dialog.text = NPCStringReactionRepeat("What? Again? I don't have time for you. Look for someone else to talk. There are a lot of marginals walking around the streets. And I have to go, there will be a party tonight in the governor's residence and I have to prepare myself...", 
-					"No, now it is really annoying! Don't you just get it? Or are you a slow minded?", 
-					"Sir, I am beginning to suspect that you are not an idiot but a hick and a boor. I warn you.",
-					"Enough. I will teach you, an insolent fellow!", "block", 1, npchar, Dialog.CurrentNode);
-				link.l1 = HeroStringReactionRepeat("I see. Farewell.", 
-					"Yes-yes, I remember, just forgot to ask...",
-					"You have understood me wrong...", 
-					"What?!", npchar, Dialog.CurrentNode);
+				dialog.text = NPCStringReactionRepeat("Что? Опять? Нет у меня на вас времени. Поищите для болтовни кого-нибудь другого. Тут полно бездельников, слоняющихся по улицам. А мне пора - вечером прием у губернатора, надо готовиться...", 
+				"Нет, это уже начинает действительно утомлять! Вы что, не понимаете с первого раза? Вы тугодум?", 
+					"Сударь, я начинаю подозревать то, что вы не тупица, а банальный невежа и хам. Предупреждаю: не лезьте на рожон!",
+					"Так, ну все. Теперь я проучу тебя, наглец!", "block", 1, npchar, Dialog.CurrentNode);
+				link.l1 = HeroStringReactionRepeat("Понятно. Всего доброго.", 
+					"Да-да, я помню, просто забыл спросить вот что...",
+					"Вы меня неправильно поняли...", 
+					"Что?!", npchar, Dialog.CurrentNode);
 				link.l1.go = DialogGoNodeRepeat("exit", "", "", "fight", npchar, Dialog.CurrentNode);
 			}
 			NextDiag.TempNode = "First time";
 		break;
 
 		case "question":
-			dialog.text = LinkRandPhrase("Go on.","What do you want?","Questions? Fine, sailor, I am listening.");
-			link.l1 = LinkRandPhrase("Won't you tell me the last gossips of your town?","Have anything interesting happened here recently?","Any news from the Archipelago, sir?");
+			dialog.text = LinkRandPhrase("Тогда выкладывайте.","Ох, ну хорошо. Что вы хотите?","Вопросы задавать будем? Ладно, моряк, слушаю.");
+			link.l1 = LinkRandPhrase("Не расскажете последние новости вашего города?","Расскажите пожалуйста, что интересного в последнее время произошло?","Что интересного творится на архипелаге, сударь, вы не в курсе?");
 			link.l1.go = "rumours_nobleman";
 			NextDiag.TempNode = "First time";
 		break;
@@ -138,23 +138,23 @@ void ProcessDialogEvent()
 		case "passenger":
 			if (drand(19) > 9) SetPassengerParameter("Noblepassenger", false);
 			else SetPassengerParameter("Noblepassenger", true);
-			dialog.text = "Sir, I need to get to the colony" + XI_ConvertString("Colony"+pchar.GenQuest.Noblepassenger.City)+", as soon as possible it is on "+XI_ConvertString(GetIslandByCityName(pchar.GenQuest.Noblepassenger.City)+"Dat")+", for "+FindRussianDaysString(sti(pchar.GenQuest.Noblepassenger.DaysQty))+". Your ship looks solid comparing with the majority of those small boats sailing here. I can pay you "+FindRussianMoneyString(sti(pchar.GenQuest.Noblepassenger.Money))+". What would you say?";
-			link.l1 = "Hm. I am heading this way as well, so I am ready to take you aboard on this terms.";
+			dialog.text = "Сударь, мне срочно нужно добраться до колонии " + XI_ConvertString("Colony"+pchar.GenQuest.Noblepassenger.City)+", это на "+XI_ConvertString(GetIslandByCityName(pchar.GenQuest.Noblepassenger.City)+"Dat")+", за "+FindRussianDaysString(sti(pchar.GenQuest.Noblepassenger.DaysQty))+". Ваше судно выглядит вполне надежным, в отличие от большинства ошивающихся у нас лоханок. Я готов выложить за это путешествие "+FindRussianMoneyString(sti(pchar.GenQuest.Noblepassenger.Money))+". Что скажете?";
+			link.l1 = "Хм. Нам с вами по пути, так что я готов взять вас на борт на этих условиях.";
 			link.l1.go = "passenger_1";
-			link.l2 = "I so regret,  "+GetAddress_FormToNPC(NPChar)+", but I am sailing in the different direction. I can't help you.";
+			link.l2 = "Сожалею, "+GetAddress_FormToNPC(NPChar)+", но мне совсем в другую сторону. Ничем не могу помочь.";
 			link.l2.go = "passenger_exit";
 		break;
 		
 		case "passenger_exit":
-			dialog.text = "Too bad. Well, I'll wait for another ship. Farewell.";
-			link.l1 = "See you.";
+			dialog.text = "Жаль. Ну что же, подожду другого корабля. Прощайте!";
+			link.l1 = "Всего доброго.";
 			link.l1.go = "exit";
 			DeleteAttribute(pchar, "GenQuest.Noblepassenger");
 		break;
 		
 		case "passenger_1":
-			dialog.text = "Great because I am tired of waiting. You will get your payment when we will be there.";
-			link.l1 = "Go to my ship, "+GetAddress_FormToNPC(NPChar)+". We are leaving soon.";
+			dialog.text = "Очень хорошо, а то я уже устал ждать. Оплату получите по прибытии на место.";
+			link.l1 = "Отправляйтесь на мое судно, "+GetAddress_FormToNPC(NPChar)+". Мы скоро отчаливаем.";
 			link.l1.go = "passenger_2";
 		break;
 		
@@ -171,9 +171,9 @@ void ProcessDialogEvent()
 			SetCharacterRemovable(npchar, false);
 			sTitle = npchar.index+"Citizpassenger";
 			AddQuestRecordEx(sTitle, "Citizpassenger", "1");
-			AddQuestUserDataForTitle(sTitle, "sType", "nobleman");
+			AddQuestUserDataForTitle(sTitle, "sType", "дворянина");
 			AddQuestUserDataForTitle(sTitle, "sName", GetFullName(npchar));
-			sTemp = XI_ConvertString("Colony" +pchar.GenQuest.Noblepassenger.City+"Gen") + ", at " + XI_ConvertString(GetIslandByCityName(pchar.GenQuest.Noblepassenger.City)+"Dat")+".";
+			sTemp = XI_ConvertString("Colony" +pchar.GenQuest.Noblepassenger.City+"Gen") + ", что на " + XI_ConvertString(GetIslandByCityName(pchar.GenQuest.Noblepassenger.City)+"Dat")+".";
 			AddQuestUserDataForTitle(sTitle, "sCity", sTemp);
 			AddQuestUserData(sTitle, "sName", GetFullName(npchar));
 			AddQuestUserData(sTitle, "sCity", sTemp);
@@ -188,8 +188,8 @@ void ProcessDialogEvent()
 		
 		case "passenger_3":
 			pchar.quest.Noblepassenger_Over.over = "yes"; //снять таймер
-			dialog.text = "Here we are, most excellent! This travel on your ship was quite satisfying. My thanks. Take your money, sir.";
-			link.l1 = "Удачи, "+GetAddress_FormToNPC(NPChar)+"! Farewell.";
+			dialog.text = "Вот мы и на месте, замечательно! Путешествие на вашем корабле меня весьма и весьма устроило. Благодарю. Вот ваши деньги, сударь.";
+			link.l1 = "Удачи, "+GetAddress_FormToNPC(NPChar)+"! Всего доброго.";
 			link.l1.go = "passenger_4";
 		break;
 		
@@ -217,21 +217,21 @@ void ProcessDialogEvent()
 //-------------------------------------------------помощь деньгами------------------------------------------------
 		case "donation":
 			sTemp = DonationText();
-			dialog.text = "I have got a quite delicate business..."+sTemp+" I need money now or things will fall apart for me. I would never ask you for coins but the situation is really bad.";
-			link.l1 = "How much do you need?";
+			dialog.text = "Тут такое дело, очень щекотливое... "+sTemp+" Деньги нужны мне срочно, прямо сейчас, иначе - катастрофа. Я бы никогда не позволил себе обратиться к вам с такой просьбой, если бы не пиковая ситуация.";
+			link.l1 = "Сколько конкретно денег вам нужно?";
 			link.l1.go = "donation_1";
 		break;
 		
 		case "donation_1":
 			iTemp = drand(4)+1;
 			pchar.GenQuest.Nobledonation.Money = iTemp*1000+rand(iTemp)*150;
-			dialog.text = "The sum is quite small, it's "+FindRussianMoneyString(sti(pchar.GenQuest.Nobledonation.Money))+". So what, can you help me?";
+			dialog.text = "Сумма небольшая, всего "+FindRussianMoneyString(sti(pchar.GenQuest.Nobledonation.Money))+". Ну как, поможете?";
 			if (sti(pchar.money) >= sti(pchar.GenQuest.Nobledonation.Money))
 			{
-				link.l1 = "Yes, sure. Take it.";
+				link.l1 = "Да без проблем. Вот, держите.";
 				link.l1.go = "donation_2";
 			}
-			link.l2 = "I'd be glad to help but my pockets are empty as well - not a single spare peso.";
+			link.l2 = "Я бы помог, но я сам сейчас на мели, нет ни песо лишнего в кармане.";
 			link.l2.go = "donation_exit";
 		break;
 		
@@ -245,8 +245,8 @@ void ProcessDialogEvent()
 		
 		case "donation_2":
 			AddMoneyToCharacter(pchar, -sti(pchar.GenQuest.Nobledonation.Money));
-			dialog.text = "My gratitude, "+GetAddress_Form(NPChar)+"! You have saved me! I have got friends in governor's palace and I will tell them about your generosity. Thousand thanks again!";
-			link.l1 = "You are welcome, sir. I am sure that you would do the same to me.";
+			dialog.text = "Искренне благодарю вас, "+GetAddress_Form(NPChar)+"! Вы меня просто спасли! У меня есть друзья в губернаторском дворце, и я при случае обязательно упомяну о вашем благородстве. Еще раз большое спасибо!";
+			link.l1 = "Да не за что, сударь. Уверен, вы бы на моем месте поступили точно так же.";
 			link.l1.go = "donation_3";
 		break;
 		
@@ -263,16 +263,16 @@ void ProcessDialogEvent()
 //-------------------------------------------------семейная реликвия---------------------------------------------
 		case "lombard":
 			LombardText();
-			dialog.text = "I need your help. You are wealthy and noble man, so I hope that you will understand. I had a strong need for money not long ago so I had to go to the banker and to pawn "+pchar.GenQuest.Noblelombard.Item+"\nHe offered good terms. Ten percents for each month, three months in total. But the time is off and I don't possess money to redeem the item due to unfortunate course of events.";
-			link.l1 = "And how can I help you with that, "+GetAddress_FormToNPC(NPChar)+"?";
+			dialog.text = "Я хочу попросить вас о помощи. Как человек не бедный, и благородного происхождения, думаю, вы меня правильно поймете. Некоторое время назад у меня возникла острая потребность в деньгах, и я был вынужден заложить у нашего ростовщика "+pchar.GenQuest.Noblelombard.Item+"\nОн предоставил выгодные условия - всего десять процентов ежемесячно, на три месяца. Однако сроки истекли, а у меня ввиду неудачно сложившихся обстоятельств так и не появились деньги на выкуп\nТеперь он говорит, что на "+pchar.GenQuest.Noblelombard.Item+" появился покупатель, и он продаст мою вещь, если я немедленно не погашу проценты по долгу и сам долг. Однако у меня сейчас нет достаточной суммы, моя реликвия - вещь дорогая...";
+			link.l1 = "И чем же я могу помочь вам в этой ситуации, "+GetAddress_FormToNPC(NPChar)+"?";
 			link.l1.go = "lombard_1";
 		break;
 		
 		case "lombard_1":
-			dialog.text = "I ask you to talk with our banker. Offer him money, vouch for me... or do something else. Unfortunately, I have no one to ask, all of my buddies have suddenly gone 'bankrupt'. I will repay you all of your costs in three month "+pchar.GenQuest.Noblelombard.Text+", doubly repay. You have my word!";
-			link.l1 = "Fine, I'll try to help you in this case.";
+			dialog.text = "Я прошу вас - поговорите с нашим ростовщиком. Посулите ему денег, поручитесь, может, что еще. К сожалению, мне не к кому обратиться - у всех моих знакомых 'внезапно' не стало денег. Через три месяца "+pchar.GenQuest.Noblelombard.Text+", и я возмещу все ваши расходы в двухкратном размере. Слово чести!";
+			link.l1 = "Ну хорошо, попробую вам помочь, раз такое дело.";
 			link.l1.go = "lombard_2";
-			link.l2 = "Unfortunately, I am a 'bankrupt' too right now. So I can't help you, I am so sorry!";
+			link.l2 = "К сожалению, я сейчас тоже на мели. Так что ничем не могу помочь, увы!";
 			link.l2.go = "lombard_exit";
 		break;
 		
@@ -284,7 +284,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "lombard_2":
-			dialog.text = "Thank you for your understanding. I'll be waiting for you in the tavern. Come there as soon as possible.";
+			dialog.text = "Спасибо за понимание. Я буду ждать вас в таверне. Приходите скорее!";
 			link.l1 = "...";
 			link.l1.go = "lombard_3";
 		break;
@@ -316,23 +316,23 @@ void ProcessDialogEvent()
 			if (CheckAttribute(pchar, "GenQuest.Noblelombard.Regard"))
 			{
 				pchar.quest.Noblelombard_Over.over = "yes"; //снять таймер
-				dialog.text = "What can you say, "+GetAddress_Form(NPChar)+"? Have you been in bank? Got good news or bad ones?";
-				if (pchar.GenQuest.Noblelombard == "full") link.l1 = "I have. I have repaid all of the interest and the debt itself. You can go there and take back your relic.";
-				if (pchar.GenQuest.Noblelombard == "maxpercent") link.l1 = "I have. I have repaid all of the interest for the last three month and although for the next tree. You can serenely wait for your money. Just don't forget to repay your main debt in three month.";
-				if (pchar.GenQuest.Noblelombard == "minpercent") link.l1 = "I have. I have repaid all of the interest for the last three month. Banker is agreed to wait three month more until you will get the whole sum.";
+				dialog.text = "Что скажете, "+GetAddress_Form(NPChar)+"? Вы были у ростовщика? Сможете меня порадовать, или нет?";
+				if (pchar.GenQuest.Noblelombard == "full") link.l1 = "Да, был. Я оплатил проценты за три месяца и стоимость вашего раритета. Можете идти и забирать его.";
+				if (pchar.GenQuest.Noblelombard == "maxpercent") link.l1 = "Да, был. Я оплатил проценты за истекшие три месяца, и авансом за следующие три. Так что можете спокойно ждать денег. Главное - не позже, чем через три месяца, оплатить сумму основного долга.";
+				if (pchar.GenQuest.Noblelombard == "minpercent") link.l1 = "Да, был. Я оплатил проценты за истекшие три месяца. Ростовщик согласен подождать еще три, пока вы соберете нужную сумму.";
 				link.l1.go = "lombard_5";
 			break;
 			}
 			if (pchar.GenQuest.Noblelombard == "fail")
 			{
-				dialog.text = "What can you say, "+GetAddress_Form(NPChar)+"? Have you been in bank? Got good news or bad ones?";
-				link.l1 = "I have. This miser has asked for the incredible sum. He has rejected to abate and I don't have the required sum. So I can't help you. Too bad!";
+				dialog.text = "Что скажете, "+GetAddress_Form(NPChar)+"? Вы были у ростовщика? Сможете меня порадовать, или нет?";
+				link.l1 = "Да, был. Этот скряга заломил просто невероятную сумму! На уступки он пойти не согласился, а требуемой суммы у меня нет. Так что я ничем не смог вам помочь, увы!";
 				link.l1.go = "lombard_fail";
 			}
 			else
 			{
-				dialog.text = "What can you say, "+GetAddress_Form(NPChar)+"? Have you been in bank? Got good news or bad ones?";
-				link.l1 = "I am on it. Wait.";
+				dialog.text = "Что скажете, "+GetAddress_Form(NPChar)+"? Вы были у ростовщика? Сможете меня порадовать, или нет?";
+				link.l1 = "Я еще работаю над этим, ждите.";
 				link.l1.go = "exit";
 				NextDiag.TempNode = "lombard_4";
 			}
@@ -340,8 +340,8 @@ void ProcessDialogEvent()
 		
 		case "lombard_fail":
 			pchar.quest.Noblelombard_Over.over = "yes"; //снять таймер
-			dialog.text = "Meh, "+GetAddress_Form(NPChar)+"... And you've also witnessed the irrepressible greed of this damned bloodthirsty usurers. Remember that when you will be willing to borrow money from them like I did. Thank you for your trying at least...";
-			link.l1 = "Never liked them. Well, who likes usurers? I am sorry for that, "+GetAddress_FormToNPC(NPChar)+". Farewell.";
+			dialog.text = "Эх, "+GetAddress_Form(NPChar)+"... Вот вы и оказались свидетелем неуемной жадности этих проклятых кровопийц-ростовщиков. Помните об этом, когда будете одалживать у них деньги, не попадитесь, как я. Спасибо вам за участие, что хотя бы попробовали...";
+			link.l1 = "Никогда не любил ростовщиков. Да, впрочем, кто их любит? Мне жаль, что так вышло, "+GetAddress_FormToNPC(NPChar)+". Прощайте.";
 			link.l1.go = "lombard_fail_1";
 		break;
 		
@@ -358,13 +358,13 @@ void ProcessDialogEvent()
 		break;
 		
 		case "lombard_5":
-			dialog.text = "Incredible! You've just saved me, "+GetAddress_Form(NPChar)+"! I will never forget it. You can be sure that all of your costs will be doubly repaid. Come to see our banker in three month. I will open a deposit for your name.";
-			link.l1 = "Fine, it'll do. See you!";
+			dialog.text = "Невероятно! Вы меня просто спасли, "+GetAddress_Form(NPChar)+"! Никогда этого не забуду. Можете быть уверены - ваши расходы будут компенсированы, как я и обещал - в двухкратном размере. Через три месяца зайдите к нашему ростовщику - я открою у него депозит на ваше имя - и заберите свои деньги.";
+			link.l1 = "Хорошо, так и поступим. Всего доброго!";
 			link.l1.go = "lombard_6";
 		break;
 		
 		case "lombard_6":
-			dialog.text = "Thanks again, captain. Good luck!";
+			dialog.text = "Еще раз большое спасибо, капитан! Удачи!";
 			link.l1 = "...";
 			link.l1.go = "lombard_7";
 		break;
@@ -386,10 +386,10 @@ void ProcessDialogEvent()
 			npchar.quest.slaves.price = 3+drand(1);//цена на рабов в дублонах
 			npchar.quest.slaves.qty = 50+drand(5)*10;//количество
 			npchar.quest.slaves.money = sti(npchar.quest.slaves.qty)*sti(npchar.quest.slaves.price);
-			dialog.text = "I own a "+LinkRandPhrase("factory","mine","plantation")+" and I always need slaves. Right now I need "+sti(npchar.quest.slaves.qty)+"heads. I am willing to order a batch of them. I am paying in gold for each head "+sti(npchar.quest.slaves.price)+".\nNo rush, I don't limit you in a matter of time. Well, within reason of course, don't prolong it for more then half a year. So what say you? Deal?";
-			link.l1 = "Deal! It's going to be messy business but it worths the risk.";
+			dialog.text = "Мне для работы на "+LinkRandPhrase("моей фактории","моем руднике","моей плантации")+" постоянно требуются рабы. В данный момент эта потребность составляет "+sti(npchar.quest.slaves.qty)+" человек. Я хочу заказать у вас эту партию рабов. Плачу я щедро, золотом, по "+sti(npchar.quest.slaves.price)+" дублона за голову\nОсобой спешки нет, так что в сроках я вас сильно не ограничиваю. Ну, конечно, если вы не растянете это больше, чем на полгода. Ну как, по рукам?";
+			link.l1 = "По рукам! Дело хлопотное, но оно того стоит.";
 			link.l1.go = "slaves_1";
-			link.l2 = "Pardon me but I don't do slavery business. Not my type of work.";
+			link.l2 = "Простите, но работорговлей я не занимаюсь. Не мой профиль.";
 			link.l2.go = "exit_slaves";
 		break;
 		
@@ -400,8 +400,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "slaves_1":
-			dialog.text = "Very well then. I'll be waiting you with the cargo. You can find me in a church from eleven to thirteen a.m. I am busy or away at the rest of the day.";
-			link.l1 = "Fine. I'll remember that. See you, "+GetAddress_FormToNPC(NPChar)+".";
+			dialog.text = "Очень хорошо. Буду ждать вас с товаром. Найти меня вы сможете в городской церкви ежедневно с одиннадцати до часу дня. В остальное время я или в разъездах, или занят.";
+			link.l1 = "Хорошо. Я приму это к сведению. До встречи, "+GetAddress_FormToNPC(NPChar)+".";
 			link.l1.go = "slaves_2";
 		break;
 		
@@ -428,46 +428,46 @@ void ProcessDialogEvent()
 		case "slaves_3":
 			if (GetNpcQuestPastDayParam(npchar, "slaves_date") < 180)
 			{
-				dialog.text = "Have you brought "+sti(npchar.quest.slaves.qty)+" slave as I've asked you, captain?";
+				dialog.text = "Вы привезли мне "+sti(npchar.quest.slaves.qty)+" рабов, как я вас просил, капитан?";
 				if (GetSquadronGoods(pchar, GOOD_SLAVES) >= sti(npchar.quest.slaves.qty))
 				{
-					link.l1 = "Yes. The whole batch is in my cargo. I am ready to tranfer them to you.";
+					link.l1 = "Да. Вся партия находится у меня в трюме. Я готов передать их вам.";
 					link.l1.go = "slaves_4";
 				}
 				else
 				{
-					link.l1 = "No, I am on it.";
+					link.l1 = "Нет. Я еще работаю над этим вопросом.";
 					link.l1.go = "exit";
 					NextDiag.TempNode = "slaves_3";
 				}
 			}
 			else
 			{
-				dialog.text = "Captain, if you are about that slaves business... I have already bought enough and I don't need more right now. You were working on my task too long.";
-				link.l1 = "What a shame! But you I right, I wasn't fast enough. Farewell!";
+				dialog.text = "Капитан, если вы по поводу рабов - то я уже приобрел достаточное количество и пока больше в них не нуждаюсь. Уж очень долго вы мне их везли.";
+				link.l1 = "Эх, жаль! Но вы правы - затянул я с этим делом. До свидания!";
 				link.l1.go = "slaves_8";
 			}
 		break;
 		
 		case "slaves_4":
-			dialog.text = "Excellent. I will send a barque for them immediately.";
-			link.l1 = "How about my payment?";
+			dialog.text = "Великолепно! Я немедленно распоряжусь прислать за ними барку.";
+			link.l1 = "Что там насчет моей оплаты?";
 			link.l1.go = "slaves_5";
 		break;
 		
 		case "slaves_5":
-			dialog.text = "Don't worry, I remember about it. Here, take the sum, "+sti(npchar.quest.slaves.price)+"doubloons for a head.";
-			link.l1 = "Thanks, sir. Nice doing business with you!";
+			dialog.text = "Не беспокойтесь, я не забыл об этом. Вот, держите оговоренную сумму - по "+sti(npchar.quest.slaves.price)+" дублона за раба.";
+			link.l1 = "Благодарю, сударь. С вами приятно иметь дело!";
 			link.l1.go = "slaves_6";
 		break;
 		
 		case "slaves_6":
 			RemoveCharacterGoods(pchar, GOOD_SLAVES, sti(npchar.quest.slaves.qty));
 			TakeNItems(pchar, "gold_dublon", sti(npchar.quest.slaves.money));
-			Log_Info("You have received "+FindRussianDublonString(sti(npchar.quest.slaves.money))+"");
+			Log_Info("Вы получили "+FindRussianDublonString(sti(npchar.quest.slaves.money))+"");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "It is... Pardon me now, I have to go. See you!";
-			link.l1 = "Good luck, "+GetAddress_FormToNPC(NPChar)+".";
+			dialog.text = "Еще бы... А теперь прошу меня простить - дела ждут. Всего доброго!";
+			link.l1 = "До свидания, "+GetAddress_FormToNPC(NPChar)+".";
 			link.l1.go = "slaves_7";
 		break;
 		
@@ -501,8 +501,8 @@ void ProcessDialogEvent()
 
 		//замечание по обнаженному оружию от персонажей типа citizen
 		case "CitizenNotBlade":
-			dialog.text = NPCharSexPhrase(NPChar, "Listen, I am the citizen of this town and I'd ask you to hold down your blade.", "Listen, I am the citizen of this town and I'd ask you to hold down your blade.");
-			link.l1 = LinkRandPhrase("Fine.", "Whatever.", "Whatever you say...");
+			dialog.text = NPCharSexPhrase(NPChar, "Послушайте, я, как гражданин этого города, прошу вас не ходить у нас с обнаженным клинком.", "Знаете, я, как гражданка этого города, прошу вас не ходить у нас с обнаженным клинком.");
+			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажете...");
 			link.l1.go = "exit";
 		break;
 
@@ -530,12 +530,12 @@ string DonationText()
 	string sText;
 	switch (drand(5))
 	{
-		case 0: sText = "I've lost all my money in gambling yesterday and I don't have enough sum to wipe away the debt. Can you help me?" break;
-		case 1: sText = "I had a nice time yesterday with one... wench, and now she is trying to blackmail me. I need to pay her first and then I will deal with her... Can you help me with a small sum?" break;
-		case 2: sText = "I have pierced through one idiot with my rapier recently and now the commandant demands a bribe to hush up this event. I am short of money now. Can you help me?" break;
-		case 3: sText = "I was unlucky to loose a bet and I don't have a trifling sum  to repay the debt of honor. Can you help me?" break;
-		case 4: sText = "One bastard has known about my... spicy story with one lady. I don't have enough money to shut his mouth. Just a few golden coins are left... " break;
-		case 5: sText = "One bastard has stolen important papers from my house and demanding a significant sum for them. I've almost got it, just a few more coins left. Can you help me?" break;
+		case 0: sText = "Я вчера проигрался в карты, и на покрытие долга не хватает сущей безделицы. Не сможете меня выручить?" break;
+		case 1: sText = "Я вчера здорово повеселился с одной... девкой, а теперь она меня пытается шантажировать. Мне нужно заплатить ей, ну а потом я уже с ней разберусь... Не могли бы вы мне помочь небольшой суммой?" break;
+		case 2: sText = "Я тут на днях проткнул одного невежу шпагой, так теперь комендант требует мзду, чтобы замять дело. Мне не хватает совсем немного. Может, выручите?" break;
+		case 3: sText = "Я имел неосторожность проиграть в споре, а на уплату долга чести у меня банально не хватает нескольких жалких монет. Не поможете?" break;
+		case 4: sText = "Один негодяй узнал о моей причастности к пикантной истории с одной дамой... В общем, мне не хватает буквально несколько золотых, чтобы купить его молчание." break;
+		case 5: sText = "Один негодяй выкрал из моего дома важные бумаги и требует за них кругленькую сумму. Я собрал все, что нужно, но не хватает сущего пустяка. Выручите?" break;
 	}
 	return sText;
 }
@@ -545,27 +545,27 @@ void LombardText()
 	switch (drand(5))
 	{
 		case 0:
-			pchar.GenQuest.Noblelombard.Item = "my mother's diamond pendant made by a jeweler from Madrid";
-			pchar.GenQuest.Noblelombard.Text = RandPhraseSimple("I will get my inheritance","my ship will return from Africa loaded with slaves");
+			pchar.GenQuest.Noblelombard.Item = "алмазные подвески моей матери работы мадридского ювелира";
+			pchar.GenQuest.Noblelombard.Text = RandPhraseSimple("я получу причитающееся мне наследство","вернется мой корабль из плавания к берегам Африки, с грузом рабов");
 		break;
-		case 1: pchar.GenQuest.Noblelombard.Item = "an emerald necklace of my sister crafted by a jeweler of Paris";
-				pchar.GenQuest.Noblelombard.Text = RandPhraseSimple("I will inherit a county in Europe","my ship will return from India loaded with spicery");
+		case 1: pchar.GenQuest.Noblelombard.Item = "изумрудное колье моей сестры работы парижского ювелира";
+				pchar.GenQuest.Noblelombard.Text = RandPhraseSimple("я вступлю в право наследования графством в Европе","вернется мой корабль из плавания к берегам Индии, с грузом пряностей");
 		break;
 		case 2:
-			pchar.GenQuest.Noblelombard.Item = "family ring with an emblem of our kin";
-			pchar.GenQuest.Noblelombard.Text = RandPhraseSimple("my expedition will return from Main with gold ingots","I will get my heritage");
+			pchar.GenQuest.Noblelombard.Item = "фамильный перстень с гербом нашего рода, передающийся от отца к сыну";
+			pchar.GenQuest.Noblelombard.Text = RandPhraseSimple("вернется моя экспедиция из глубин Мейна с золотыми слитками","я получу причитающееся мне наследство");
 		break;
 		case 3:
-			pchar.GenQuest.Noblelombard.Item = "a ruby bracelet of my wife, a gift from her mother";
-			pchar.GenQuest.Noblelombard.Text = RandPhraseSimple("I will get my investment with the interest from a European bank","I will get profits from my current business");
+			pchar.GenQuest.Noblelombard.Item = "браслет жены с рубинами и бриллиантами, подарок ее матери";
+			pchar.GenQuest.Noblelombard.Text = RandPhraseSimple("я получу свой вклад с процентами из европейского банка","я получу прибыль от проводимой сейчас спекуляции");
 		break;
 		case 4:
-			pchar.GenQuest.Noblelombard.Item = "a necklace of gold and diamonds, piece work, a pride of my wife";
-			pchar.GenQuest.Noblelombard.Text = RandPhraseSimple("I will get profits from my current business","my ship will be back from Africa with the cargo filled with slaves");
+			pchar.GenQuest.Noblelombard.Item = "ожерелье из золота и бриллиантов, штучной работы, гордость моей жены";
+			pchar.GenQuest.Noblelombard.Text = RandPhraseSimple("я получу прибыль от проводимой сейчас спекуляции","вернется мой корабль из плавания к берегам Африки, с грузом рабов");
 		break;
 		case 5:
-			pchar.GenQuest.Noblelombard.Item = "an ivory cane of semiprecious stones, a gift from my grandfather";
-			pchar.GenQuest.Noblelombard.Text = RandPhraseSimple("my ship will be back from India with the cargo filled with spices","I will receive my interest from the European bank");
+			pchar.GenQuest.Noblelombard.Item = "трость из слоновой кости с самоцветами, подарок моего деда";
+			pchar.GenQuest.Noblelombard.Text = RandPhraseSimple("вернется мой корабль из плавания к берегам Индии, с грузом пряностей","я получу свой вклад с процентами из европейского банка");
 		break;
 	}
 }

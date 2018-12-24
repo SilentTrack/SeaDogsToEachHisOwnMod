@@ -23,8 +23,8 @@ void ProcessDialogEvent()
 		case "First time":
 			if (CheckAttribute(pchar, "GenQuest.NarvalConflict"))
 			{
-				dialog.text = "Listen, mister, why have you let loose with yours fists, huh? You have nothing to do in my workshop until you are our enemy. Get lost!";
-				link.l1 = "Hm...";
+				dialog.text = "Послушайте, уважаемый, вы зачем руки так распустили, а? Пока вы с нами в ссоре - вам нечего делать в моей мастерской. Уходите!";
+				link.l1 = "Гм...";
 				link.l1.go = "exit";
 				break;
 			}
@@ -32,14 +32,14 @@ void ProcessDialogEvent()
 			{
 				if (CheckAttribute(pchar, "questTemp.LSC.nrv_friend")) // стал другом нарвалов
 				{
-					dialog.text = "Аh, "+GetFullName(pchar)+"! I have heard about your deeds. It is good that you have become a Donald's friend and our ally. Narwhals can appreciate friendship, I can tell you that for sure.";
-					link.l1 = "I hope so. Can I count on your services now?";
+					dialog.text = "А, "+GetFullName(pchar)+"! Наслышан, наслышан о ваших делах. Приятно, что вы стали другом Дональда и нашим сторонником. Нарвалы умеют ценить дружбу, это я вам говорю точно.";
+					link.l1 = "Надеюсь, что это так. Я могу рассчитывать на ваши услуги?";
 					link.l1.go = "friend";
 				}
 				else
 				{
-					dialog.text = "So? What do you want?";
-					link.l1 = TimeGreeting()+". My name is "+GetFullName(pchar)+". And I am just walking around get knowing people. Do I bother you?";
+					dialog.text = "Ну? Чего тебе надо?";
+					link.l1 = TimeGreeting()+". Меня зовут "+GetFullName(pchar)+". Я просто знакомлюсь с людьми. Я вас отрываю от дел?";
 				link.l1.go = "meeting";
 				}
 				npchar.quest.meeting = "1";
@@ -48,14 +48,14 @@ void ProcessDialogEvent()
 			{
 				if (CheckAttribute(pchar, "questTemp.LSC.nrv_friend")) // стал другом нарвалов
 				{
-					dialog.text = "Аh, "+GetFullName(pchar)+"! I have heard about your deeds. It is good that you have become a Donald's friend and our ally. Narwhals can appreciate friendship, I can tell you that for sure.";
-					link.l1 = "I hope so. Can I count on your services now?";
+					dialog.text = "А, "+GetFullName(pchar)+"! Наслышан, наслышан о ваших делах. Приятно, что вы стали другом Дональда и нашим сторонником. Нарвалы умеют ценить дружбу, это я вам говорю точно.";
+					link.l1 = "Надеюсь, что это так. Теперь я могу рассчитывать на ваши услуги?";
 					link.l1.go = "friend";
 				}
 				else
 				{
-					dialog.text = "Аh, "+GetFullName(pchar)+"! Want to chat again? I have to disappoint you, I have got no time and no wish for that.";
-					link.l1 = "Fine, I won't bother you.";
+					dialog.text = "А, "+GetFullName(pchar)+"! Опять поболтать захотелось? Ну, так я вас разочарую - нет у меня на это ни времени, ни желания.";
+					link.l1 = "Хорошо, не буду вас отвлекать.";
 					link.l1.go = "exit";
 				}
 			}
@@ -63,28 +63,28 @@ void ProcessDialogEvent()
 		break;
 		
 		case "meeting": // первая встреча
-			dialog.text = "Exactly! You are bothering me, mister. I am Jurgen Schmidt, gunsmith and blacksmith of Narwhal clan. I provide our people with weapons. But it takes time to make a good blade, key, lock or to repair the mechanism of tower mousqueton. It takes a lot of time, patience and attentiveness. That is why because I don't like when people bother me.";
-			link.l1 = "Do you make weapons? Can I order something from you?";
+			dialog.text = "Точно! Вы меня отрываете от дел, сударь. Я Юрген Шмидт, кузнец и оружейник нарвалов, и обеспечиваю наш клан оружием. Но чтобы сделать хороший клинок, или починить механизм башенного мушкетона, или сделать новый замок и ключ - нужно время, терпение и внимательность. Поэтому я не люблю, когда меня отвлекают от работы.";
+			link.l1 = "Вы делаете оружие? А заказать у вас что-нибудь можно?";
 			link.l1.go = "meeting_1";
 		break;
 		
 		case "meeting_1":
-			dialog.text = "No. I make weapons only for members of Narwhal clan. This is my principle and I will keep it. So don't even hope, mister. Join our clan or at least become our ally and in that case we will have a talk.";
-			link.l1 = "Fine. I am leaving you then. Sorry for troubling you!";
+			dialog.text = "Нет. Я делаю оружие только для членов клана нарвал. Это мой принцип, и я от него не отступлю ни на шаг. Так что не рассчитывайте, сударь. Вступите в клан нарвал, или, как минимум, станенете нашим союзником - тогда и приходите, поговорим.";
+			link.l1 = "Ладно. Тогда я пойду. Извините, что побеспокоил!";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "friend":
-			dialog.text = "You can. Friend of Narwhals is my friend too so I am listening you.";
-			link.l1 = "I'd like to order a blade.";
+			dialog.text = "Можете. Друг нарвалов - мой друг, так что можете высказывать свои пожелания.";
+			link.l1 = "Я бы хотел изготовить клинок под заказ.";
 			link.l1.go = "blade";
 			if (CheckAttribute(npchar, "quest.narval_blade") && pchar.questTemp.LSC.Mary == "alive")
 			{
-				link.l2 = "I have heard that you have made a special blade for late Alan Milrow. I have seen that broadsword, it is a great weapon. Can I order something like that?";
+				link.l2 = "Я слышал, вы изготовили для покойного Алана Милроу особый клинок. Я видел этот палаш - великолепное оружие. Я мог бы у вас заказать себе такой же?";
 				link.l2.go = "narval";
 			}
-			link.l3 = "I have no ideas yet. I will think about it and then I will be back!";
+			link.l3 = "Пока никаких пожеланий нет, ничего в голову не приходит. Подумаю - и обязательно вернусь!.";
 			link.l3.go = "exit";
 			NextDiag.TempNode = "Jurgen";
 		break;
@@ -92,71 +92,71 @@ void ProcessDialogEvent()
 		case "Jurgen":
 			if (pchar.questTemp.LSC == "return" && !CheckAttribute(npchar, "quest.return_isl"))
 			{
-				dialog.text = "Ha, "+GetFullName(pchar)+"! So you haven't drown? Isn't that something! Are you really alive?";
-				link.l1 = "Don't worry, Jurgen. I am alive! I wasn't going to get drown...";
+				dialog.text = "Ха, "+GetFullName(pchar)+"! Так ты не утонул? Вот это да! Ты точно не мертвец?";
+				link.l1 = "Не беспокойся, Юрген. Живой! Я тонуть и не собирался - это вы тут напридумывали невесть чего...";
 				link.l1.go = "exit";
 				npchar.quest.return_isl = "true";
 				NextDiag.TempNode = "Jurgen";
 				break;
 			}
-			dialog.text = "Аh, "+GetFullName(pchar)+"! What do you want?";
+			dialog.text = "А, "+GetFullName(pchar)+"! По какому делу пожаловали?";
 			if (CheckAttribute(npchar, "quest.narval_blade") && npchar.quest.narval_blade == "ferrum")
 			{
 				if (GetCharacterItem(pchar, "jewelry11") >= 3)
 				{
-					link.l4 = "I have brought your three pieces of the special iron as you have asked. Take a look, is it what you have wanted?";
+					link.l4 = "Я принес три куска особого железа, как вы и просили. Гляньте - это оно?";
 					link.l4.go = "narval_7";
 				}
 				if (CheckCharacterItem(pchar, "meteorite"))
 				{
-					link.l5 = "Take a look, Jurgen. I have found an interesting iron ingot at the bottom, but it weights much more than you've asked. Five pounds not less.";
+					link.l5 = "Гляньте сюда, Юрген. Я нашел интересный слиток железа на дне, но он весит гораздо больше, чем вы говорили - в нем не меньше пяти фунтов.";
 					link.l5.go = "narval_7_1";
 				}
 			}
 			if (!CheckAttribute(npchar, "quest.blade_done"))
 			{
-				link.l1 = "I'd like to order a blade.";
+				link.l1 = "Я бы хотел изготовить клинок под заказ.";
 				if (!CheckAttribute(npchar, "quest.blade_rules")) link.l1.go = "blade";
 				else link.l1.go = "blade_4";
 			}
 			if (CheckAttribute(npchar, "quest.blade_payseek"))
 			{
-				link.l1 = "I have brought you more doubloons as a payment for the blade.";
+				link.l1 = "Я принес еще дублонов в счет оплаты за клинок.";
 				link.l1.go = "blade_3";
 			}
 			if (CheckAttribute(npchar, "quest.narval_blade") && pchar.questTemp.LSC.Mary == "alive" && npchar.quest.narval_blade == "begin" && pchar.questTemp.LSC != "return") // patch-9
 			{
-				link.l2 = "I have heard that you have made a special blade for late Alan Milrow. I have seen that broadsword, it is a great weapon. Can I order something like that?";
+				link.l2 = "Я слышал, вы изготовили для покойного Алана Милроу особый клинок. Я видел этот палаш - великолепное оружие. Я мог бы у вас заказать себе такой же?";
 				link.l2.go = "narval";
 			}
 			if (CheckAttribute(npchar, "blade_date") && GetNpcQuestPastDayParam(npchar, "blade_date") >= 20)
 			{
-				link.l1 = "I am here for my order. It must be finished already, am I right?";
+				link.l1 = "Я пришел за своим заказом. Он уже должен быть готов, как я понимаю?";
 				link.l1.go = "blade_done_2";
 			}
-			link.l3 = "No, it is nothing, just wanted to greet you.";
+			link.l3 = "Да нет, ничего, просто зашел поздороваться.";
 			link.l3.go = "exit";
 			NextDiag.TempNode = "Jurgen";
 		break;
 		
 		// --> заказ клинков
 		case "blade":
-			dialog.text = "Fine. But I have some special requirements for any order, so listen carefully first.";
-			link.l1 = "I am all ears.";
+			dialog.text = "Хорошо. Но у меня есть определенные требования к заказу, так что выслушайте сначала, а потом решайте - заказывать, или нет.";
+			link.l1 = "Я вас внимательно слушаю.";
 			link.l1.go = "blade_1";
 		break;
 		
 		case "blade_1":
-			dialog.text = "You may order only one blade from me and only once. I don't make specific weapons, you may name only type - rapier, saber or a broadsword. Think wisely before you make a choice, the final characteristics and quality of the blade will depend on materials I possess at the moment\nNow. It will take twenty days to craft your order. I accept only doubloons. One thousand gold. Moneys upfront.";
-			link.l1 = "Really! Pricey...";
+			dialog.text = "Вы можете заказать у меня только один клинок и только один раз. Также я не принимаю заказа какого-то конкретного клинка, вы можете выбрать только тип, который хотите - рапиру, саблю или палаш, а уж что получится выковать - будет зависеть от того, какие материалы у меня в наличии на данный момент\nТак что хорошенько подумайте, прежде чем сделать выбор. Далее. Срок изготовления - двадцать дней. Оплата - исключительно в дублонах. Ставка у меня фиксированная, за любой клинок - тысяча золотых. Деньги вперед.";
+			link.l1 = "Ого! Недешево, однако...";
 			link.l1.go = "blade_2";
 		break;
 		
 		case "blade_2":
-			dialog.text = "It is pricey. But I make excellent blades so the price is fair enough. It's your call anyway, no pressure.";
-			link.l1 = "I got it, Jurgen. Yes, I want to make an order.";
+			dialog.text = "Да, недешево. Но и клинки я делаю соответствующего качества, так что цена оправдана. Впрочем, я вас не принуждаю: хотите - заказывайте, хотите - нет.";
+			link.l1 = "Я вас понял, Юрген. Да, я хочу сделать заказ.";
 			link.l1.go = "blade_3";
-			link.l2 = "Hm. I need time to think before ordering anything from you. We will talk about it later!";
+			link.l2 = "Хм. Пожалуй, мне стоит хорошенько подумать, прежде чем решиться на заказ. Вернемся к этому разговору позже!";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "Jurgen";
 			npchar.quest.blade_rules = "true";
@@ -165,21 +165,21 @@ void ProcessDialogEvent()
 		break;
 		
 		case "blade_3":
-			dialog.text = "Very well. Give me your doubloons then.";
+			dialog.text = "Очень хорошо. Тогда давайте ваши дублоны.";
 			if (CheckCharacterItem(pchar, "gold_dublon"))
 			{
 				npchar.quest.blade_pay = GetCharacterItem(pchar, "gold_dublon");
-				link.l1 = "Here, please. I have "+FindRussianQtyString(sti(npchar.quest.blade_pay))+".";
+				link.l1 = "Вот, пожалуйста. У меня есть с собой "+FindRussianQtyString(sti(npchar.quest.blade_pay))+".";
 				link.l1.go = "blade_pay";
 			}
-			link.l2 = "Hm. Unfortunately, I don't have any with me now. But I will bring them to you for sure and we will continue our talk.";
+			link.l2 = "Хм. У меня сейчас их с собой нет, к сожалению. Но я обязательно принесу, и мы вернемся к этому разговору.";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "Jurgen";
 		break;
 		
 		case "blade_4":
-			dialog.text = "So is it your final choice? Are you sure?";
-			link.l1 = "Yes, I am.";
+			dialog.text = "Вы все-таки сделали свой выбор? Хорошо подумали?";
+			link.l1 = "Да. Я полностью определился.";
 			link.l1.go = "blade_3";
 		break;
 		
@@ -192,18 +192,18 @@ void ProcessDialogEvent()
 			else iTemp = sti(npchar.quest.blade_dublon)-sti(npchar.quest.blade_pay);
 			npchar.quest.blade_dublon = iTemp; // запоминаем остаток
 			RemoveItems(pchar, "gold_dublon", sti(npchar.quest.blade_pay));
-			Log_Info("You have given "+sti(npchar.quest.blade_pay)+" дублонов");
+			Log_Info("Вы отдали "+sti(npchar.quest.blade_pay)+" дублонов");
 			PlaySound("interface\important_item.wav");
 			if (iTemp == 0)
 			{
-				dialog.text = "Splendid. You have paid me for my work and materials, so I can start now.";
-				link.l1 = "Can I make an order?";
+				dialog.text = "Отлично. Теперь, когда вы оплатили мою работу и материалы, я могу приступить к делу.";
+				link.l1 = "Я могу делать заказ?";
 				link.l1.go = "blade_done";
 			}
 			else
 			{
-				dialog.text = "Fine. I accept your doubloons. You have to bring me "+FindRussianQtyString(sti(npchar.quest.blade_dublon))+" more.";
-				link.l1 = "I will bring them to you when I will have them.";
+				dialog.text = "Хорошо. Я принимаю у вас дублоны. Вам осталось принести еще "+FindRussianQtyString(sti(npchar.quest.blade_dublon))+".";
+				link.l1 = "Как только соберу еще дублонов - немедленно принесу вам.";
 				link.l1.go = "exit";
 				npchar.quest.blade_payseek = "true";
 			}
@@ -211,33 +211,33 @@ void ProcessDialogEvent()
 		
 		case "blade_done":
 			DeleteAttribute(npchar, "quest.blade_payseek");
-			dialog.text = "Sure! What type do you like most? Rapiers, sabers or broadswords?";
-			link.l1 = "Rapiers. I like elegant and light weapons.";
+			dialog.text = "Конечно! Какая группа вам по душе - рапиры, сабли или палаши?";
+			link.l1 = "Рапиры. Люблю изящное легкое оружие.";
 			link.l1.go = "rapier";
-			link.l2 = "Sabers. They are optimal in my opinion.";
+			link.l2 = "Сабли. Это оптимальный вариант с моей точки зрения.";
 			link.l2.go = "sabre";
-			link.l3 = "Broadswords for sure! Cut and chop!";
+			link.l3 = "Конечно же, палаши! Рубить так рубить, как говорится!";
 			link.l3.go = "palash";
 		break;
 		
 		case "rapier":
 			npchar.quest.blade_done = SelectJurgenBladeDone("rapier");
-			dialog.text = "Whatever you say. Come back for your order in twenty days, not earlier.";
-			link.l1 = "Thanks! I will see you in twenty days. Farewell, Jurgen.";
+			dialog.text = "Как скажете. За заказом приходите через двадцать дней, не раньше.";
+			link.l1 = "Спасибо! Буду в указанное время. До свидания, Юрген.";
 			link.l1.go = "blade_done_1";
 		break;
 		
 		case "sabre":
 			npchar.quest.blade_done = SelectJurgenBladeDone("sabre");
-			dialog.text = "Whatever you say. Come back for your order in twenty days, not earlier.";
-			link.l1 = "Thanks! I will see you in twenty days. Farewell, Jurgen.";
+			dialog.text = "Как скажете. За заказом приходите через двадцать дней, не раньше.";
+			link.l1 = "Спасибо! Буду в указанное время. До свидания, Юрген.";
 			link.l1.go = "blade_done_1";
 		break;
 		
 		case "palash":
 			npchar.quest.blade_done = SelectJurgenBladeDone("palash");
-			dialog.text = "Whatever you say. Come back for your order in twenty days, not earlier.";
-			link.l1 = "Thanks! I will see you in twenty days. Farewell, Jurgen.";
+			dialog.text = "Как скажете. За заказом приходите через двадцать дней, не раньше.";
+			link.l1 = "Спасибо! Буду в указанное время. До свидания, Юрген.";
 			link.l1.go = "blade_done_1";
 		break;
 		
@@ -249,8 +249,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "blade_done_2":
-			dialog.text = "Yes. Your blade is ready. Please, take it and use it. You will understand that it costs it's price as soon as you just touch it.";
-			link.l1 = "Thanks, Jurgen.";
+			dialog.text = "Да. Ваш клинок готов. Пожалуйста, получите и владейте на здоровье. Как только вы возьмете его в руки, сразу поймете, что он стоит затраченных на него денег.";
+			link.l1 = "Спасибо, Юрген.";
 			link.l1.go = "blade_done_3";
 		break;
 		
@@ -264,38 +264,38 @@ void ProcessDialogEvent()
 		
 		// заказ палаша Нарвал для Мэри
 		case "narval":
-			dialog.text = "Alas, my friend, I have two reject, because of two reasons. First, I will make such a broadsword only for a member of Narwhal clan and only for someone special. Secondly, I don't have materials for it.";
-			link.l1 = "And what is that special iron you need? I have heard that they got it from the bottom...";
+			dialog.text = "Увы, дружище, но тут я вам вынужден отказать по двум причинам. Во-первых, такой палаш я возьмусь делать только для члена клана нарвал, и то - не для каждого. А во-вторых, у меня нет материала для его изготовления.";
+			link.l1 = "А что за особое железо для него нужно? Я слышал, что его доставали со дна...";
 			link.l1.go = "narval_1";
 		break;
 		
 		case "narval_1":
-			dialog.text = "Exactly. There are pieces of this metal scattered all around our shoal. I don't know how did they got there. But the iron is unique, it never turns rusty and the blades made from it never grow blunt. So if you would manage to get the iron then we might solve the matter. But there is still a problem, you are not Narwhal...";
-			link.l1 = "Hm. Does it really matter?";
+			dialog.text = "Именно так. Куски этого железа разбросаны на нашем мелководье. Откуда они тут взялись - мне неведомо. Но железо действительно уникальное - не ржавеет вообще, а клинки из него не тупятся. Так что если бы вы каким-то образом достали это железо - можно было бы решить вопрос. Но опять же проблема - вы не нарвал...";
+			link.l1 = "Хм. А то, что я не нарвал - это имеет настолько принципиальное значение?";
 			link.l1.go = "narval_2";
 		break;
 		
 		case "narval_2":
-			dialog.text = "Yes. You may consider that as my vagary, but I will make such a broadsword only for Narwhal.";
-			link.l1 = "Well... Fine, I accept that. But I have an idea. Can I order this blade for the member of Narwhal clan?";
+			dialog.text = "Да. Воспринимайте это как мою причуду, если хотите, но такой палаш я буду делать только для нарвала.";
+			link.l1 = "Так... Ладно, приму, как неизбежность. Но у меня возникла другая мысль. А могу ли я заказать этот клинок в подарок для члена клана нарвал?";
 			link.l1.go = "narval_3";
 		break;
 		
 		case "narval_3":
-			dialog.text = "Hm. I suppose that you can in case you will bring me the iron. It won't violate my principles... And for who do you want me to make the broadsword?";
-			link.l1 = "For the Red Mary. She is from Narwhal clan and she deserves to own such an excellent weapon.";
+			dialog.text = "Гм. Ну, если вы принесете мне железо для изготовления, то наверное, да. Это никак не будет противоречить принципу... А для кого вы хотите сделать этот палаш?";
+			link.l1 = "Для Красной Мэри. Она из клана нарвал, и вполне заслуживает право владеть таким замечательным оружием.";
 			link.l1.go = "narval_4";
 		break;
 		
 		case "narval_4":
-			dialog.text = "Ha! I could have figured that myself. I am getting too old... Well, I agree. Mary will be really happy to get such a gift, I am sure... Bring me the iron and I will make the broadsword. I will take for the blade... ah, whatever, I will make it for free. It will be a present not only from you, but from us both.";
-			link.l1 = "Thanks! How much iron will you need?";
+			dialog.text = "Ха! Я мог бы догадаться и сам. Старею... Ну что же, я согласен. Мэри будет просто в восторге от такого подарка, я уверен... Несите железо - и я сделаю палаш. За работу я возьму... а, впрочем, ничего не надо. Пусть это будет подарок не только от вас, но и от меня.";
+			link.l1 = "Спасибо! Сколько вам нужно железа для его изготовления?";
 			link.l1.go = "narval_5";
 		break;
 		
 		case "narval_5":
-			dialog.text = "Those pieces we have been founding at the bottom were quite the same - a pound each. I need three pieces like them.";
-			link.l1 = "Fine. I will try to find them. And we will talk again.";
+			dialog.text = "Куски, которые находили на дне, были все примерно одинакового размера - по фунту с небольшим. Мне нужно три куска.";
+			link.l1 = "Хорошо. Я постараюсь добыть их. Тогда и вернемся к нашему разговору.";
 			link.l1.go = "narval_6";
 		break;
 		
@@ -318,8 +318,8 @@ void ProcessDialogEvent()
 		case "narval_7":
 			RemoveItems(pchar, "jewelry11", 3);
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Let me see... Yes it is! Was it difficult to search such a small pieces at the bottom?";
-			link.l1 = "Well, what can I say... Mary is worth such troubles, isn't she?";
+			dialog.text = "Ну-ка, покажите... Да, точно - оно! Это было трудно - отыскать такие небольшие куски на дне?";
+			link.l1 = "Ну, как сказать... Но ради Мэри ведь можно было постараться, не так ли?";
 			link.l1.go = "narval_8";
 			pchar.quest.LSC_narval_ferrum.over = "yes"; //снять прерывание
 		break;
@@ -327,14 +327,14 @@ void ProcessDialogEvent()
 		case "narval_7_1":
 			RemoveItems(pchar, "meteorite", 1);
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Let me see... Isn't that something! Yes, it is the bottom iron, but I have never seen such big pieces before. This one will be enough for making the broadsword. Was it difficult to find it?";
-			link.l1 = "Well, what can I say... Mary is worth such troubles, isn't she?";
+			dialog.text = "Ну-ка, покажите... Ого! Да, это то самое донное железо, но таких огромных кусков я еще не видал. Его одного с лихвой хватит для изготовления палаша. Это было, наверное, трудно - найти его?";
+			link.l1 = "Ну, как сказать... Но ради Мэри ведь можно было постараться, не так ли?";
 			link.l1.go = "narval_8";
 		break;
 		
 		case "narval_8":
-			dialog.text = "I am liking your more and more, "+pchar.name+"... Very well then. Now it's my turn to work in behalf of our beautiful Amazon. It will take two days to make the broadsword, I'll put away other orders\nTake Mary to me the day after tomorrow. Don't tell her, it is a surprise. She will be happy as a child.";
-			link.l1 = "Fine, Jurgen. Deal. See you the day after tomorrow!";
+			dialog.text = "Вы нравитесь мне все больше и больше, "+pchar.name+"... Ну что же, отлично. Теперь пришло время и мне постараться для нашей прекрасной амазонки. Работа займет два дня - я оставлю все прочие заказы и займусь палашом\nПриходите послезавтра ко мне вдвоем с Мэри. Только не говорите ей ничего заранее - сделаем сюрприз. Она будет радоваться, как ребенок.";
+			link.l1 = "Хорошо, Юрген. Договорились. Тогда - до послезавтра!";
 			link.l1.go = "narval_9";
 		break;
 		
@@ -347,8 +347,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "narval_10":
-			dialog.text = ""+pchar.name+", don't bother me. Do you want me to make the broadsword in time, don't you?";
-			link.l1 = "Yes, sure. I am leaving.";
+			dialog.text = ""+pchar.name+", не отвлекайте меня. Вы же хотите, чтобы палаш был готов вовремя?";
+			link.l1 = "Да, конечно. Я уже ухожу...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "narval_10";
 		break;
@@ -356,16 +356,9 @@ void ProcessDialogEvent()
 //----------------------------------------- специальные реакции -----------------------------------------------
 		//обнаружение ГГ в сундуках
 		case "Man_FackYou":
-			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
-			link.l1 = "Damn it!";
+			dialog.text = LinkRandPhrase("Что ты там копаешься, а? Да ты вор!", "Вот это да! Чуть я загляделся, а ты сразу в сундук с головой!", "По сундукам шарить вздумал?! Тебе это даром не пройдет!");
+			link.l1 = "А-ать, дьявол!!!";
 			link.l1.go = "fight";
-		break;
-		
-		case "Woman_FackYou":
-			dialog.text = "What?! Decided to check my chests? You won't get away with it!";
-			link.l1 = "Foolish girl!...";
-			link.l1.go = "exit_setOwner";
-			LAi_group_Attack(NPChar, Pchar);
 		break;
 		
 		case "fight":
@@ -376,16 +369,10 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
 		
-		case "exit_setOwner":
-			LAi_SetOwnerTypeNoGroup(npchar);
-			NextDiag.CurrentNode = NextDiag.TempNode;
-			DialogExit();
-		break;
-		
 		//замечание по обнаженному оружию
 		case "LSCNotBlade":
-			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
-			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
+			dialog.text = LinkRandPhrase("Слушай, ты бы убрал оружие. А то нервируешь немного...", "Знаешь, у нас тут не принято сабелькой размахивать. Убери оружие.", "Слушай, что ты, как д'Артаньян, бегаешь тут, шпагой машешь? Убери оружие, не к лицу это серьезному мужчине...");
+			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;	
@@ -393,13 +380,13 @@ void ProcessDialogEvent()
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{
-				dialog.text = NPCharSexPhrase(NPChar, "Listen, I am the citizen of the city and I'd ask you to hold down your blade.", "Listen, I am the citizen of the city and I'd ask you to hold down your blade.");
-				link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
+				dialog.text = NPCharSexPhrase(NPChar, "Послушайте, я, как гражданин этого города, прошу вас не ходить у нас с обнаженным клинком.", "Знаете, я, как гражданка этого города, прошу вас не ходить у нас с обнаженным клинком.");
+				link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажете...");
 			}
 			else
 			{
-				dialog.text = NPCharSexPhrase(NPChar, "Be careful, pal, while running with a weapon. I can get nervous...", "I don't like when men walking in front of me with their weapon ready. It scares me...");
-				link.l1 = RandPhraseSimple("Got it.", "I am taking it away.");
+				dialog.text = NPCharSexPhrase(NPChar, "Острожней на поворотах, приятель, когда бежишь с оружием в руках. Я ведь могу и занервничать...", "Мне не нравится, когда мужчины ходят передо мной с оружием на изготовку. Это меня пугает...");
+				link.l1 = RandPhraseSimple("Понял.", "Убираю.");
 			}
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";

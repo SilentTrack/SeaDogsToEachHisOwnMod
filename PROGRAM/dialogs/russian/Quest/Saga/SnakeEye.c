@@ -15,39 +15,39 @@ void ProcessDialogEvent()
 		case "First time":
 			if (CheckAttribute(pchar, "questTemp.Tieyasal") && pchar.questTemp.Tieyasal == "calendar")
 			{
-				dialog.text = "Greetings, my pale friend.";
-				link.l2 = "You too, redskin brother. I have an important business for you again.";
+				dialog.text = "Привет тебе, мой бледнолицый друг.";
+				link.l2 = "И тебе привет, краснокожий брат. Меня снова привело к тебе важное дело.";
 				link.l2.go = "calendar";
 				break;
 			}
-			dialog.text = "Greetings, my pale friend.";
-			link.l1 = "I am glad to see you too, Snake Eye.";
+			dialog.text = "Привет тебе, мой бледнолицый друг.";
+			link.l1 = "Я тоже рад тебя видеть, Змеиный Глаз.";
 			link.l1.go = "exit";
 			if (CheckAttribute(npchar, "quest.amulet") && CheckCharacterItem(pchar, pchar.questTemp.Saga.BaronReturn.Indian) && CheckCharacterItem(pchar, pchar.questTemp.Saga.BaronReturn.Amulet) && CheckCharacterItem(pchar, pchar.questTemp.Saga.BaronReturn.Obereg))
 			{
-				link.l2 = "I brought you the amulets you've asked. Let's trade.";
+				link.l2 = "Я принес тебе амулеты, которые ты просил. Давай меняться.";
 				link.l2.go = "SnakeEye_potion";
 			}
 			if (CheckAttribute(pchar, "questTemp.LSC")) // был в LSC
 			{
 				if (CheckAttribute(npchar, "quest.LSC_hello") && CheckCharacterItem(pchar, "buben"))
 				{
-					link.l2 = "I have found your tambourine, Snake Eye. Take a look at it.";
+					link.l2 = "Я нашел твой бубен, Змеиный Глаз. Посмотри - это он?";
 					link.l2.go = "LSC_buben";
 				}
 				if (CheckAttribute(npchar, "quest.LSC_tube") && CheckCharacterItem(pchar, "smoking_tube"))
 				{
-					link.l2 = "I have found an interesting Indian pipe, Snake Eye. Take a look.";
+					link.l2 = "Я нашел интересную индейскую трубку, Змеиный Глаз. Посмотри - это твоя?";
 					link.l2.go = "LSC_tube";
 				}
 				if (!CheckAttribute(npchar, "quest.LSC_hello"))
 				{
-					link.l2 = "Hello, shaman. I have used the statue and had an incredible travel. You were totally right. I found the ship's cemetery, the white captain and even the cargo hold with supplies!";
+					link.l2 = "Привет тебе, шаман. Я воспользовался статуей и совершил необыкновенное путешествие. Ты был полностью, от начала и до конца прав - я попал на кладбище кораблей. И белого капитана там нашел. И даже трюм с припасами - это тоже было!";
 					link.l2.go = "LSC_hello";
 				}
 				if (CheckAttribute(npchar, "quest.LSC_hello") && pchar.questTemp.Saga.BaronReturn == "shamane")
 				{
-					link.l3 = "Snake Eye, I need your help.";
+					link.l3 = "Змеиный Глаз, мне нужна твоя помощь.";
 					link.l3.go = "Saga_nathaniel";
 				}
 			}		
@@ -56,71 +56,71 @@ void ProcessDialogEvent()
 		
 	//---------------------------------------- первая встреча------------------------------------------------
 		case "SnakeEye":
-			dialog.text = "Greetings, my pale friend.";
-			link.l1 = "Hello, shaman. And why do you think that I am a friend of yours?";
+			dialog.text = "Привет тебе, мой бледнолицый друг.";
+			link.l1 = "Здравствуй и ты, шаман, коли не шутишь. С чего ты взял, что я твой друг?";
 			link.l1.go = "SnakeEye_1";
 		break;
 		
 		case "SnakeEye_1":
-			dialog.text = "I know a lot but I not always know what exactly. You come here with purpose. Fate lead you here and I help you.";
-			link.l1 = "Good to know! That is why I am here for your help, redskin friend. Well, I'd be straight: what did you mean by telling Hawk's wife about Kukulcan?";
+			dialog.text = "Я знать много, но не всегда знать, что именно. Ты прийти сюда не случайно. Тебя привести судьба, и я помочь тебе.";
+			link.l1 = "Отрадно слышать! Потому что я именно за помощью к тебе и явился, краснокожий друг. Что же, не буду рассыпаться в предисловиях и перейду сразу к делу: что ты имел в виду, когда говорил жене Хоука про Кукулькана?";
 			link.l1.go = "SnakeEye_2";
 		break;
 		
 		case "SnakeEye_2":
-			dialog.text = "Even dead fish can flow adrift. And living man is lead by fate from goal to goal. The goal of chained captain who was chased by bad people at selva could be Kukulcan statue. If he sacrifice himself, he can be far away from here.";
-			link.l1 = "I didn't understand a thing. What the statue of your god is about and how Hawk was able to go on feet so far that nobody can't find him now?";
+			dialog.text = "Даже мертвая рыба может плыть по течению. А живого человека судьба вести от цели к цели. Цель пленного капитана, за которым гнаться по сельве плохой люди, мочь быть статуя Кукулькана. Если он принести себя в жертву, то может оказаться очень далеко отсюда.";
+			link.l1 = "Ничего не понял, извини. При чем тут статуя вашего бога, и как Хоук мог пешком уйти так далеко, что его до сих пор никто не может найти?";
 			link.l1.go = "SnakeEye_3";
 		break;
 		
 		case "SnakeEye_3":
-			dialog.text = "If Kukulcan eat Hawk then it could spit him out anywhere. Perhaps even to the other world. Kukulcan eat me three times. And each time I be in different places. Long ago I got here and decide no more to risk. I don't go to Kukulcan's mouth and I don't know where he spit his victims out.";
-			link.l1 = "Jesus, it is beyond my understanding! So do you want to say that the stone idol can move people far away?";
+			dialog.text = "Если Хоука пожрать Кукулькан, то отрыгнуть он его мог где угодно. Может быть даже в другой мир. Моя Кукулькан жрать три раза. И каждый раз я оказываться в самых разных местах. В последний раз много лет назад я попасть сюда и решить больше не искушать судьбу. Так что в пасть местному Кукулькану я не лазить, и где он выплевывать свои жертвы, мне неведомо.";
+			link.l1 = "Господи, это выше моего понимания! То есть ты хочешь сказать, что каменный идол может перемещать человека на большие расстояния?";
 			link.l1.go = "SnakeEye_4";
 		break;
 		
 		case "SnakeEye_4":
-			dialog.text = "Not only. Kukulcan rule not only the space but also the time. Or even something more. I tell chained captain about gold statue eats people. Perhaps, he decide to risk when he see that chasing is close...";
-			link.l1 = "Wait, statue is stony. And you are talking about golden one...";
+			dialog.text = "И не только. Кукулькану подвластно не только пространство, но и само время. А может, и нечто большее. Я рассказать пленный капитан про золотой статуя, пожирающий людей. Возможно, он решить рискнуть, когда понять, что погоня его настигать...";
+			link.l1 = "Постой, статуя-то - каменная. А ты говоришь про золотую...";
 			link.l1.go = "SnakeEye_5";
 		break;
 		
 		case "SnakeEye_5":
-			dialog.text = "At midnight idol live and become gold. This moment Kukulcan spirit live in it. Fear then to come close to him or you can meet sunrise in different place. Even stars can change their places at the sky. You meet those who weren't born yet or see the birth of those who die long ago or aren't born at all.";
-			link.l1 = "What the... Riddles and riddles again... You are intriguing me, Snake Eye. But you have survived three meetings with Kukulcan which you believe in. So why don't I try to test my luck with the idol of the god I don't believe in?";
+			dialog.text = "В полночь идол на час оживать и стать золотым. В этот момент оживать в нем и дух Кукулькана. Вот тогда бойся приближаться к нему на расстояние копья, ибо можешь встретить рассвет совсем не там, где встречал закат. Даже звезды на небе могут поменять свое расположение. И ты встретить тех, кто еще не родился,  увидеть рождение тех, кто уже давно умереть, или вообще не рождаться.";
+			link.l1 = "Загадка на загадке... Заинтриговал ты меня, Змеиный Глаз. Но раз тебе удалось целых три раза остаться в живых после общения с Кукульканом, в которого ты веришь, отчего бы и мне не испытать свою удачу у идола чужого бога, в которого я не верю?";
 			link.l1.go = "SnakeEye_6";
 		break;
 		
 		case "SnakeEye_6":
-			dialog.text = "Pity. Pity that you not believe. Perhaps, Kukulcan himself call you and make you leave the land of your ancestors. But you not hear him yet. Everything good in its season. If you decided to risk then you must know that I survive each time only because I have wonderful Comanche potions.";
-			link.l1 = "The Comanche? Who are they?";
+			dialog.text = "А зря. Зря не верить. Возможно, именно зов Кукулькана позвать тебя в дорогу и заставить покинуть земля предков. Только ты его пока не слышать. Всему свое время. Если ты решил рискнуть, то должен знать, что каждый раз я оставаться в живых лишь потому, что иметь при себе запас чудодейственный зелье команчей.";
+			link.l1 = "Команчи? Кто это?";
 			link.l1.go = "SnakeEye_7";
 		break;
 		
 		case "SnakeEye_7":
-			dialog.text = "That how enemies call my people I never see again. Potion restore strengths and endurance, also heal and save from strong poisons. You may need several flasks but I have only three left\nThere was four flasks but I lost one in strange place, it look like cemetery of white men's canoes. There I start my journey in this world. Perhaps Kukulcan spit the captain there. If so I not envy him.";
-			link.l1 = "What is the place? Canoe cemetery? You mean ships?";
+			dialog.text = "Так звать враги мой народ, который я уже никогда не увидеть. Зелье восстановить силы и здоровье, а также лечить от смертельных отравлений сильными ядами. Твоя может потребоваться несколько фляжек, но у меня их остаться только три\nБыть четвертая, но я ее обронить в один странный место, больше всего похожее на кладбище каноэ белых. Оттуда начаться мой путешествие по этому миру. Возможно, что Кукулькан отрыгнуть капитана именно туда. Если это так, то моя ему не завидовать.";
+			link.l1 = "Что это еще за место? Кладбище каноэ? То есть кораблей?";
 			link.l1.go = "SnakeEye_8";
 		break;
 		
 		case "SnakeEye_8":
-			dialog.text = "Strange place... It should not exist but it exist. People who kill because of skin tone live there. They keep their supplies inside big canoe where Kukulcan spit me. Don't go inside it's hold which they protect from thieves, not trusting neighbors. If you get there - find another exit, don't go inside hold or trouble happen\nWhite Boy help you find another statue if he still live. Give him this white bead. He rejoice.";
-			link.l1 = "Hm. My head is going round and this is just getting more interesting. Go on, redskin brother.";
+			dialog.text = "Странное... Его не должно было быть, но оно есть. И жить там люди, привыкшие убивать друг друга из-за цвета кожи. На большом каноэ, куда Кукулькан отрыгнуть моя, они хранить свой припасы. Так что лучше не лезть в его трюм, который они охранять от воров, не доверяя соседям. Если ты попасть туда - найди другой выход, не ходить трюм, иначе быть беда\nПомочь найти там такой же истукан тебе мочь Белый Мальчик, если он еще жить. У него добрый сердце, но слабый голова. Подари ему этот белый бусинка. Он обрадоваться.";
+			link.l1 = "Гм... Голова идет кругом, но становится все занятнее и занятнее. Продолжай, мой краснокожий брат.";
 			link.l1.go = "SnakeEye_9";
 		break;
 		
 		case "SnakeEye_9":
-			Log_Info("You have received a white pearl");
+			Log_Info("Вы получили большую жемчужину");
 			PlaySound("interface\important_item.wav");
 			GiveItem2Character(pchar, "jewelry52");
-			dialog.text = "If you find captain alive, he might be very ill. I have no time to give him a potion. Look for my tambourine there. I get it from my grandfather. There is a lot things in the bag I loose but I need only tambourine. It us difficult to talk with spirits without it.";
-			link.l1 = "Well, this place sounds to be interesting! Let's hope that Hawk got to the other place... Will you give your potion?";
+			dialog.text = "Если найти живой капитан, он может быть очень болен. Я не успеть дать ему с собой свой зелье. А еще поискать там мой бубен. Он достаться моя от прадед. В мой седельный сумка, которую я обронить в суматохе, быть много чего, но мне нужен именно бубен. Без него мне трудно говорить с духами.";
+			link.l1 = "Да уж, веселое местечко! Будем надеяться, что Хоук попал в другое... Ты дашь мне своего зелья?";
 			link.l1.go = "SnakeEye_10";
 		break;
 		
 		case "SnakeEye_10":
-			dialog.text = "Give. You give me three local amulet in exchange: "+XI_ConvertString(pchar.questTemp.Saga.BaronReturn.Indian)+", "+XI_ConvertString(pchar.questTemp.Saga.BaronReturn.Amulet)+" and "+XI_ConvertString(pchar.questTemp.Saga.BaronReturn.Obereg)+". One flask for each. So be fair. Come when have all. Then exchange. Do not think I am greedy. Perhaps you will rethink while looking for amulets.";
-			link.l1 = "I won't. Wait for me, Snake Eye, I'll be back soon.";
+			dialog.text = "Дать. Взамен ты отдать мне три местный амулет: "+XI_ConvertString(pchar.questTemp.Saga.BaronReturn.Indian)+", "+XI_ConvertString(pchar.questTemp.Saga.BaronReturn.Amulet)+" и "+XI_ConvertString(pchar.questTemp.Saga.BaronReturn.Obereg)+". По один за каждый фляга. Так быть справедливо. Приходить, как собирать все. Тогда и совершить обмен. Ты не думать, я не жадный. Возможно, пока будешь искать амулеты, тебе расхотеться рисковать, и ты передумать.";
+			link.l1 = "Не передумаю. Жди меня, Змеиный Глаз, я скоро вернусь.";
 			link.l1.go = "SnakeEye_11";
 		break;
 		
@@ -141,8 +141,8 @@ void ProcessDialogEvent()
 		
 		// дает зелья - идем на телепортацию
 		case "SnakeEye_potion":
-			dialog.text = "Good, my friend. You bring me amulets so you ready to go to Kukulcan?";
-			link.l1 = "Yes. I am ready to do the same as Nathaniel, the chained captain, did.";
+			dialog.text = "Хорошо, мой друг. То, что ты принести мне эти амулеты, есть знак того, что ты готов отправиться к Кукулькан?";
+			link.l1 = "Да. Я собираюсь повторить путь Натаниэля, пленного капитана. Мне нужно найти его.";
 			link.l1.go = "SnakeEye_potion_1";
 		break;
 		
@@ -151,17 +151,17 @@ void ProcessDialogEvent()
 			RemoveItems(pchar, pchar.questTemp.Saga.BaronReturn.Amulet, 1);
 			RemoveItems(pchar, pchar.questTemp.Saga.BaronReturn.Obereg, 1);
 			TakeNItems(pchar, "Ultimate_potion", 3);
-			Log_Info("You have given amulets");
-			Log_Info("You have received three versatile potions");
+			Log_Info("Вы отдали амулеты");
+			Log_Info("Вы получили три универсальных зелья");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Take these potions. Remember that you have to drink it immediately after Kukulcan spit you or you die or be very-very ill. Also remember to don't go to cargo hold where palefaces store their supplies. There is another way from canoe. Two ways in fact. Try to find red woman in night. That all I say to you.";
-			link.l1 = "I will remember that, redskin brother.";
+			dialog.text = "Возьми эти зелья. Помнить, после того, как Кукулькан отрыгнуть тебя, ты должен выпить это зелье немедленно, иначе ты или умереть, или сильно-сильно болеть. Также помнить: не ходить в трюм, где бледнолицые хранить припасы. Есть другой выход из каноэ.";
+			link.l1 = "Я запомню это, краснокожий брат.";
 			link.l1.go = "SnakeEye_potion_2";
 		break;
 		
 		case "SnakeEye_potion_2":
-			dialog.text = "Then go. At midnight touch Kukulcan and it eat you. I will call spirits to guide you.";
-			link.l1 = "Thank you, Snake Eye. Don't worry about me, it will all be well. We will meet again!";
+			dialog.text = "Тогда иди. В полночь прикоснись к Кукулькану, и он пожрать тебя. А я буду призывать духи тебе в помощь.";
+			link.l1 = "Спасибо, Змеиный Глаз. Не беспокойся за меня - все будет в порядке. Мы еще обязательно встретимся!";
 			link.l1.go = "SnakeEye_potion_3";
 		break;
 		
@@ -182,116 +182,116 @@ void ProcessDialogEvent()
 		
 		// пришел из LSC
 		case "LSC_hello":
-			dialog.text = "I am glad, my friend. How you return back from canoe cemetery?";
-			link.l1 = "I've found there the statue of Kukulcan as you've told me. White Boy has helped me - Ole Christiansen. The statue was sunk but I was able to reach it. It moved me to Carib village.";
+			dialog.text = "Я рад, что все кончиться благополучно, мой друг. Как ты вернуться назад из кладбище каноэ?";
+			link.l1 = "Я нашел там статую Кукулькана, как ты и говорил. Мне помог Белый Мальчик - Оле Кристиансен. Правда, статуя затонула, но я смог до нее добраться. Она перенесла меня в деревню карибов...";
 			link.l1.go = "LSC_hello_1";
 			npchar.quest.LSC_hello = "true";
 		break;
 		
 		case "LSC_hello_1":
-			dialog.text = "Monkitekuvri meet you there?";
-			link.l1 = "Hm. Monkitekuvri? Who is it?";
+			dialog.text = "Тебя встретить там Монкитекуври?";
+			link.l1 = "Хм. Монкитекуври? А кто это?";
 			link.l1.go = "LSC_hello_2";
 		break;
 		
 		case "LSC_hello_2":
-			dialog.text = "He is village chief.";
-			link.l1 = "I didn't ask his name. Perhaps he was Monkitekuvri, perhaps not.";
+			dialog.text = "Это вождь деревня.";
+			link.l1 = "Я не спрашивал его имени. Возможно, это был Монкитекуври, а может, кто-то другой.";
 			link.l1.go = "LSC_hello_3";
 		break;
 		
 		case "LSC_hello_3":
-			dialog.text = "Had he a pompous headdress made of bird feather on his head?";
-			link.l1 = "Sure, he had. A lot of feathers... It seems that he plucked all parrots in the wood.";
+			dialog.text = "У него быть на голове пышный убор из птичий перо?";
+			link.l1 = "А как же, был. Много перьев... Наверное, у всех попугаев в лесу хвосты повыдергал.";
 			link.l1.go = "LSC_hello_4";
 		break;
 		
 		case "LSC_hello_4":
-			dialog.text = "He. Monkitekuvri. It is not parrot feather. Eagle feather. This headdress is my headdress. I present it to Monkitekuvri when Kukulcan spit me back. Then they take me to another idol...";
-			link.l1 = "Isn't that something! They have also 'sacrificed me' to Kukulcan! And I have found myself here, near the first statue.";
+			dialog.text = "Он. Монкитекуври. Это не перо попугай. Это перо орел. Этот убор - мой убор. Я подарить его Монкитекуври, когда Кукулькан отрыгнуть меня туда. А потом они отвести меня к еще один истукан...";
+			link.l1 = "Ну надо же! Меня они тоже 'принесли в жертву' Кукулькану! А потом я очутился здесь, у первой статуи.";
 			link.l1.go = "LSC_hello_5";
 		break;
 		
 		case "LSC_hello_5":
-			dialog.text = "Yes, my pale friend. My path finish here too.";
-			link.l1 = "Idols teleport in a circle... But what is the point of that? Have you got any ideas, Snake Eye?";
+			dialog.text = "Да, мой белый друг. Мой путь тоже окончиться здесь.";
+			link.l1 = "Истуканы телепортируют по кругу... Но какой в этом смысл? У тебя есть догадки насчет этого, Змеиный Глаз?";
 			link.l1.go = "LSC_hello_6";
 		break;
 		
 		case "LSC_hello_6":
-			dialog.text = "I suppose that statues don't work right. They move people to each but they must move them to one place. Something make them broken.";
-			link.l1 = "Why have you decided so?";
+			dialog.text = "Я предполагать, что статуи работать не так, как надо. Они перекидывать друг к другу, а должны все отправлять в один место. Что-то заставить их сбиться с ритм.";
+			link.l1 = "Почему ты так решил?";
 			link.l1.go = "LSC_hello_7";
 		break;
 		
 		case "LSC_hello_7":
-			dialog.text = "Because teleportation in circle have no point. Kukulcan must take all victims to one place and don't move around.";
-			link.l1 = "And what is that place?";
+			dialog.text = "Потому что в перемещение по круг нет никакой нормальный объяснение. Кукулькан должен быть собирать жертв в один место, а не бросать между истукан.";
+			link.l1 = "И что же это за место?";
 			link.l1.go = "LSC_hello_8";
 		break;
 		
 		case "LSC_hello_8":
-			dialog.text = "And this is a great secret, white brother, even for me.";
-			link.l1 = "I see. Fine, hell with idols. I won't come close to them ever. I have found white captain, there is no need to travel trough portals.";
+			dialog.text = "А вот это, белый брат, великий тайна, даже для моя.";
+			link.l1 = "Понятно. Ладно, Бог с ними, с истуканами. Больше я к ним не подойду ни на шаг. Белого капитана я нашел - больше в путешествиях через порталы нет нужды.";
 			link.l1.go = "LSC_hello_9";
 			AddQuestRecord("BaronReturn", "12");
 		break;
 		
 		case "LSC_hello_9":
-			dialog.text = "You be at canoe cemetery. Find there my tambourine?";
+			dialog.text = "Ты быть на кладбище каноэ. Ты случайно не найти мой бубен?";
 			if (CheckCharacterItem(pchar, "buben"))
 			{
-				link.l1 = "I think so. Take a look.";
+				link.l1 = "Я думаю, что - да. Посмотри - это он?";
 				link.l1.go = "LSC_buben";
 			}
 			else
 			{
-				link.l1 = "No. Unfortunately I haven't found it. But I know where is the Island and I can reach it. I will look for your tambourine.";
+				link.l1 = "Нет. К сожалению, бубен мне не попадался. Но я знаю, где этот Остров из погибших кораблей, и смогу добраться туда по морю. Тогда и поищу твой бубен получше.";
 				link.l1.go = "LSC_hello_10";
 			}
 		break;
 		
 		case "LSC_hello_10":
-			dialog.text = "Look for it, my pale friend. I very ask. Without my tambourine I can't hear spirits well.";
-			link.l1 = "All right, Snake Eye. See you!";
+			dialog.text = "Поискать, мой белый друг. Я очень просить. Без мой бубен мне трудно слышать духи.";
+			link.l1 = "Хорошо, Змеиный Глаз. Увидимся!";
 			link.l1.go = "exit";
 		break;
 		
 		case "LSC_buben":
 			RemoveItems(pchar, "buben", 1);
 			PlaySound("interface\important_item.wav");
-			dialog.text = "It is. Thank you, my pale friend. My repay you. I present you this weapon, your people don't have it for a long time to go. This weapon is a weapon of palefaces of my time.";
-			link.l1 = "Interesting! Show me it, redskin friend...";
+			dialog.text = "Он. Спасибо тебе, мой белый друг. Моя не остаться в долгу. Я дарить тебе за это оружие, который еще не быть у вас очень долгий время. Этот оружие - оружие бледнолицых мой время.";
+			link.l1 = "Очень интересно! Покажи, мой краснокожий друг...";
 			link.l1.go = "LSC_buben_1";
 		break;
 		
 		case "LSC_buben_1":
 			GiveItem2Character(pchar, "pistol7");
-			Log_Info("You have received Colt revolver");
+			Log_Info("Вы получили револьвер Кольта");
 			PlaySound("interface\important_item.wav");
 			TakeNItems(pchar, "shotgun_cartridge", 3);
 			TakeNItems(pchar, "GunCap_colt", 3);
-			dialog.text = "Take. Only three charges in it, rest I shoot but you perhaps will learn to make charge for it. I lost a few dozens of parts for charge at canoe cemetery, you can find them.";
-			link.l1 = "Oho! That is a pistol! Have never seen anything like this before... what an odd machine? Some turning thing... Five charges! Nice!";
+			dialog.text = "Держи. В нем всего три заряд - остальные я расстрелять - но может ты научиться делать заряд для него. Я потерять на кладбище каноэ несколько десяток составных частей для заряд - может, ты что-то и находить.";
+			link.l1 = "Ого! Вот это пистоль! Никогда таких не видел... что за чудное устройство? Штука какая-то крутящаяся... Пять зарядов! Здорово!";
 			link.l1.go = "LSC_buben_2";
 		break;
 		
 		case "LSC_buben_2":
-			dialog.text = "It call colt. No more such in your time. Easy to use, raise the cock and pull the trigger. It shoot good.";
-			link.l1 = "Thank you! Thank you, Snake Eye! It will be a nice surprise for the enemies... Pity that there are only three charges...";
+			dialog.text = "Он называться - револьвер кольт. Таких больше нет ваше время. Пользовать им легко - отводить курок назад и нажимать спуск. Он очень метко стрелять.";
+			link.l1 = "Спасибо! Спасибо, Змеиный Глаз! Отличный сюрприз для врагов будет. Жаль, что всего три заряда...";
 			link.l1.go = "LSC_buben_3";
 		break;
 		
 		case "LSC_buben_3":
-			dialog.text = "Try to teach yourself how to make charges for colt. Then you be great warrior of you time. Yes, my pale brother, I forget to ask you to find my pipe at canoe cemetery. It very pretty pipe.";
+			dialog.text = "Попробуй научить себя делать заряды для кольт. Тогда ты стать великий воин свой время. Да, мой бледнолицый брат, я совсем забыть попросить поискать тебя на кладбище каноэ кроме бубен еще и мой курительный трубка. Это очень красивый трубка.";
 			if (CheckCharacterItem(pchar, "smoking_tube"))
 			{
-				link.l1 = "Ha! And I have been thinking what is that painted pipe for? Take a look.";
+				link.l1 = "Ха! А я-то думаю - что это за трубка расписная? Не она?";
 				link.l1.go = "LSC_tube";
 			}
 			else
 			{
-				link.l1 = "Fine. I will look for you pipe. See you!";
+				link.l1 = "Хорошо. Я поищу твою трубку. Увидимся!";
 				link.l1.go = "exit";
 			}
 			npchar.quest.LSC_tube = "true";
@@ -300,42 +300,42 @@ void ProcessDialogEvent()
 		case "LSC_tube":
 			RemoveItems(pchar, "smoking_tube", 1);
 			PlaySound("interface\important_item.wav");
-			dialog.text = "It is, my brother. I glad you find it. And I also make you a present. This clever book of palefaces from my time. I can't understand it. Try to find clever man who can read and understand this clever book.";
-			link.l1 = "Thank you, Snake Eye. I will think where to find such a man.";
+			dialog.text = "Она, мой брат. Я рад, что ты найти ее. И я тоже сделать тебе подарок: вот этот ученый книга бледнолицых мой время. Я не суметь понять, что там есть. Попробуй найти ученый муж, который суметь прочесть и понять этот мудрый книга.";
+			link.l1 = "Спасибо, Змеиный Глаз. Я подумаю, где найти такого ученого мужа.";
 			link.l1.go = "LSC_tube_1";
 		break;
 		
 		case "LSC_tube_1":
 			GiveItem2Character(pchar, "chemistry");
-			Log_Info("You have received a Lavoisier's chemistry textbook");
+			Log_Info("Вы получили учебник химии Лавуазье");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Look for it, white brother. This book have great secrets of paleface wisdom.";
-			link.l1 = "Good. See you, Snake Eye!";
+			dialog.text = "Поискать, белый брат. В этот книга сокрыт великие секреты мудрости бледнолицых.";
+			link.l1 = "Хорошо. Увидимся, Змеиный Глаз!";
 			link.l1.go = "exit";
 		break;
 		
 		// лечение Натаниэля
 		case "Saga_nathaniel":
-			dialog.text = "I am listen you, paleface brother.";
-			link.l1 = "I have brought white captain who I was looking for. He is very ill. I know that only you can heal him...";
+			dialog.text = "Я внимательно слушать тебя, бледнолицый брат.";
+			link.l1 = "Я привел белого капитана, за которым последовал через статую Кукулькана. Он очень болен. Я знаю, что никто, кроме тебя, не сможет его вылечить...";
 			link.l1.go = "Saga_nathaniel_1";
 		break;
 		
 		case "Saga_nathaniel_1":
-			dialog.text = "Kukulcan drink his health. I help him to heal. But it take not less than a one moon. Kukulcan eat captain long ago and illness is deep inside him.";
-			link.l1 = "Will you heal him, shaman? I will bring all what you need!";
+			dialog.text = "Кукулькан выпить здоровье белый капитан. Я помочь ему исцелить себя. Но лечение занять не меньше луны - Кукулькан пожрать капитан уже давно и болезнь сидеть глубоко...";
+			link.l1 = "Ты вылечишь его, шаман? Я принесу, все что надо!";
 			link.l1.go = "Saga_nathaniel_2";
 		break;
 		
 		case "Saga_nathaniel_2":
-			dialog.text = "I try, white brother. Don't bring anything. Me have all. Time make illness stronger. I think he make it. White captain be healthy in one moon.";
-			link.l1 = "Thank you, redskin brother. You are saving me again.";
+			dialog.text = "Я постараться, белый брат. Ничего не нести. У моя все есть. Прошло много время - это осложнить болезнь. Я думать - я справиться. Через луну белый капитан должен быть здоров.";
+			link.l1 = "Спасибо, краснокожий брат. Ты в очередной раз выручаешь меня.";
 			link.l1.go = "Saga_nathaniel_3";
 		break;
 		
 		case "Saga_nathaniel_3":
-			dialog.text = "Leave white captain my hut, white brother, and walk freely. Take his wife, no one must not see my rites.";
-			link.l1 = "Fine, Snake Eye. I will take Danielle with me. See you!";
+			dialog.text = "Оставлять белый капитан мой хижина, белый брат, и ступать спокойно. Забери с собой его жена - никто не должен видеть мой обряды.";
+			link.l1 = "Хорошо, Змеиный Глаз. Я заберу Даниэль. До встречи!";
 			link.l1.go = "Saga_nathaniel_4";
 		break;
 		
@@ -352,69 +352,69 @@ void ProcessDialogEvent()
 		break;
 		
 		case "calendar":
-			dialog.text = "I listen, my friend.";
-			link.l1 = "Remember our talk about Kukulcan statues? You have said that they must move people to one special place?";
+			dialog.text = "Я внимательно слушать тебя, мой друг.";
+			link.l1 = "Ты помнишь нашу беседу касательно статуй Кукулькана? Ты еще тогда сказал, что они должны переносить людей не по кругу, а в какое-то одно место?";
 			link.l1.go = "calendar_1";
 		break;
 		
 		case "calendar_1":
-			dialog.text = "I remember, white captain.";
-			link.l1 = "I know where those statues must have moved people who as eaten by Kukulcan.";
+			dialog.text = "Помнить, белый капитан.";
+			link.l1 = "Я знаю, куда эти статуи должны были отправлять пожранных Кукульканом людей.";
 			link.l1.go = "calendar_2";
 		break;
 		
 		case "calendar_2":
-			dialog.text = "Where to?";
-			link.l1 = "To the old Maya city Tayasal. It is situated deep in the Main.";
+			dialog.text = "И куда?";
+			link.l1 = "В старый город майя под названием Тайясаль. Он находится в глубине Мэйна.";
 			link.l1.go = "calendar_3";
 		break;
 		
 		case "calendar_3":
-			dialog.text = "Very interesting. How you know?";
-			link.l1 = "It is a long story, Snake Eye. I also understood how did you get here. You are not born yet, right?";
+			dialog.text = "Очень интересно. Откуда ты узнать?";
+			link.l1 = "Это долгая история, Змеиный Глаз. Я также понял, как ты попал сюда. Ты ведь еще не родился, верно?";
 			link.l1.go = "calendar_4";
 		break;
 		
 		case "calendar_4":
-			dialog.text = "Even my father not born in your time. But I live in your time and that is a great mystery.";
-			link.l1 = "It is quite easy. Itza priest named Kanek who is living in Tayasal called Kukulcan to be born as a mortal and to absorb wisdom of pale race. He also created the time hole which dragged a few men from the future...";
+			dialog.text = "Для ваш время еще не родиться даже мой отец. Но я существовать ваш время, и это великая загадка.";
+			link.l1 = "Разгадка достаточно проста - жрец ица по имени Канек, живущий в Тайясале, призвал на землю Кукулькана, чтобы тот воплотился в смертном обличье и впитал в себя всю мудрость белой расы. Для этой же цели он создал временную воронку, в которую затянуло несколько людей из будущего...";
 			link.l1.go = "calendar_5";
 		break;
 		
 		case "calendar_5":
-			dialog.text = "To let Kukulcan to absorb wisdom of future people?";
-			link.l1 = "Yes. And then Kukulcan will go to the past to bring knowledge for Maya people who died long ago. History will be changed then and Maya will rule Americas and perhaps not only it...";
+			dialog.text = "Чтобы Кукулькан впитал и мудрость люди будущих лет?";
+			link.l1 = "Да. А затем Кукулькан отправится в прошлое через портал, похожий на тот, через который и ты, и я проходили, и принесет знания ныне умершим индейцам майя. Благодаря этому изменится история - майя станут господствовать в Америке, а может, и не только...";
 			link.l1.go = "calendar_6";
 		break;
 		
 		case "calendar_6":
 			dialog.text = "";
-			link.l1 = "But something has happened with portals and they started to teleport people on circle but not to Tayasal. And here I am, I need your advice, Snake Eye.";
+			link.l1 = "Но во время ритуала что-то случилось с порталами, и они стали переносить людей не в Тайясаль, а по кругу. Вот я и пришел за советом к тебе, Змеиный Глаз.";
 			link.l1.go = "calendar_7";
 		break;
 		
 		case "calendar_7":
-			dialog.text = "Why me, white captain?";
-			link.l1 = "Because you was eaten by Kukulcan. And because the Kukulcan statue near your village was on the map which has a strong connection to Kanek's rites.";
+			dialog.text = "Почему ко мне, белый капитан?";
+			link.l1 = "Потому что тебя пожирал Кукулькан. А еще потому, что статуя Кукулькана рядом с вашей деревней обозначена странным значком на карте, имевшей самое прямое отношение к ритуалам Канека.";
 			link.l1.go = "calendar_8";
 		break;
 		
 		case "calendar_8":
-			dialog.text = "Show me this map?";
-			link.l1 = "Here, take a look...";
+			dialog.text = "Ты показать мне эта карта?";
+			link.l1 = "Вот, держи...";
 			link.l1.go = "calendar_9";
 		break;
 		
 		case "calendar_9":
 			RemoveItems(pchar, "skinmap", 1);
-			dialog.text = "(looking) This round sign, yes? And what it mean?";
-			link.l1 = "I don't know shaman. I only now that only one of three Kukulcan statues has the mark. And this statue is yours. I make a conclusion that it is a special one. Got any ideas?";
+			dialog.text = "(смотрит) Вот этот круглый знак, да? И что он означать?";
+			link.l1 = "Я не знаю, шаман. Мне ясно лишь то, что только одна из трех статуй Кукулькана отмечена этим знаком - ваша. Я делаю вывод, что она какая-то особенная, отличающаяся от прочих. Может, у тебя есть какие-то догадки?";
 			link.l1.go = "calendar_10";
 		break;
 		
 		case "calendar_10":
-			dialog.text = "Give time until tomorrow morning, white brother. Leave me this leather map. I need ask spirits. Come tomorrow.";
-			link.l1 = "Fine, redskin brother. I will be here tomorrow. Thank you for helping me.";
+			dialog.text = "Дать мне время подумать до завтрашний утро, белый брат. Оставить мне этот кожаный карта. Я должен спросить у духи. Приходить завтра.";
+			link.l1 = "Хорошо, краснокожий брат. Я буду завтра. Спасибо, что решил помочь мне.";
 			link.l1.go = "calendar_11";
 		break;
 		
@@ -426,99 +426,99 @@ void ProcessDialogEvent()
 		break;
 		
 		case "calendar_wait":
-			dialog.text = "Come later, white brother. Not bother me now.";
-			link.l1 = "Sure, shaman...";
+			dialog.text = "Приходить позже, белый брат. Не отвлекать меня сейчас.";
+			link.l1 = "Конечно, шаман...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "calendar_wait";
 		break;
 		
 		case "calendar_12":
-			dialog.text = "I have something to tell you, white brother.";
-			link.l1 = "Did you find something? Or do you have a guess?";
+			dialog.text = "У меня есть что сказать тебе, белый брат.";
+			link.l1 = "Ты что-то нашел? Или догадался?";
 			link.l1.go = "calendar_13";
 		break;
 		
 		case "calendar_13":
-			dialog.text = "Ancestor spirits give me a vision and I go to Kukulcan with map. And search. I find. It must be what you look for, white brother.";
-			link.l1 = "What did you find?";
+			dialog.text = "Духи предков показать мне видение, я пойти к Кукулькан вместе с кожаный карта и искать. И я найти. Вероятно, это то, что ты искать, белый брат.";
+			link.l1 = "Что ты раскопал?";
 			link.l1.go = "calendar_14";
 		break;
 		
 		case "calendar_14":
-			dialog.text = "Statue have two iron cramps and a flute. It have round and smooth form. It orient to the round and flat item from your leather map.";
-			link.l1 = "What is it?";
+			dialog.text = "У истукан Кукулькан спереди в наши джунгли есть два металлический скоба из камень и выемка. Она круглый и ровной форма. Оно предназначаться для круглый плоский предмет, указанный на твоей кожаный карта.";
+			link.l1 = "Что это за предмет?";
 			link.l1.go = "calendar_15";
 		break;
 		
 		case "calendar_15":
-			dialog.text = "I not know. I know that it round, flat, size like a small pumpkin and finger thick. You can go and look at flute and cramp for yourself. Cramp need to held it.";
-			link.l1 = "Got any ideas? Guesses?";
+			dialog.text = "Я не знать. Я знать, что он круглый, плоский, размер как небольшой тыква, толщина с палец. Ты мочь сам пойти посмотреть на выемка в камень и скоба. Скоба нужен чтобы держать он.";
+			link.l1 = "У тебя есть какие-то догадки? Предположения?";
 			link.l1.go = "calendar_16";
 		break;
 		
 		case "calendar_16":
-			dialog.text = "Stone have a fire trace. I know what it is. Sky thunder hit it.";
-			link.l1 = "Lightning? Did lightning hit it?";
+			dialog.text = "Камень по краям в один место иметь след, как от сильный огонь. Я знать, что это. Туда попасть небесный гром.";
+			link.l1 = "Молния? Туда ударила молния?";
 			link.l1.go = "calendar_17";
 		break;
 		
 		case "calendar_17":
-			dialog.text = "I be sure in that. I ask Miskito about this idol. One warrior say that long ago a few pretty painted things be find there. Like crocks. He tell that be a very pretty red crocks. One white man from white village buy it.";
-			link.l1 = "Hm. As far as I understood, it seems that lightning hit this round 'something', broke it on crocks and then these crocks were sold to some white guy?";
+			dialog.text = "Я быть уверен в это. Я расспросить мискито об этот истукан. Один воин сказать, что возле этот статуя, давно, быть подобран несколько красивый предмет с узорами, похожий на черепки от горшок. Сказать - очень красивый красный черепки. Их купить один белый человек из селение белых.";
+			link.l1 = "Хм. Если строить логическую цепь, получается, что в это круглое 'нечто' попала молния, разбила его на черепки, а потом эти куски продали какому-то белому?";
 			link.l1.go = "calendar_18";
 		break;
 		
 		case "calendar_18":
-			dialog.text = "Seem so.";
-			link.l1 = "And who is that white man? Did your warrior tell you?";
+			dialog.text = "Получаться так.";
+			link.l1 = "И кто этот белый человек? Твой воин не сказал?";
 			link.l1.go = "calendar_19";
 		break;
 		
 		case "calendar_19":
-			dialog.text = "Tell. It be a big friend of Miskito and he live in Blueweld village. His name Wood Devil. I know him, you must know him too.";
-			link.l1 = "Jan Svensson? Wait a second... Red painted crocks, you say? It looks like I am lucky. Now look here, shaman, see what a red crocks I have! Wood Devil presented them to me.";
+			dialog.text = "Сказать. Это большой друг индеец мискито, жить в поселении Блювельд. Его звать Лесной Дьявол. Я знать его, ты тоже должен знать его.";
+			link.l1 = "Ян Свенсон? Постой-ка... Красные черепки с узорами, говоришь? Похоже, фортуна повернулась ко мне лицом. Ну-ка, шаман, посмотри сюда, какие у меня есть красные черепки! Их подарил мне сам Лесной Дьявол.";
 			link.l1.go = "calendar_20";
 		break;
 		
 		case "calendar_20":
-			Log_Info("You have given ornamental pattern fragments");
+			Log_Info("Вы отдали осколки с орнаментом");
 			RemoveItems(pchar, "splinter_js", 1);
 			RemoveItems(pchar, "splinter_nh", 1);
 			RemoveItems(pchar, "splinter_mt", 1);
 			RemoveItems(pchar, "splinter_zm", 1);
 			RemoveItems(pchar, "splinter_jb", 1);
-			dialog.text = "Must be them. Five crocks. Take a look, white brother. If they place like that... (putting together)";
+			dialog.text = "Наверное, это они. Пять черепков. Смотри сюда, белый брат. Если их разместить вот так... (складывает)";
 			link.l1 = "...";
 			link.l1.go = "calendar_21";
 		break;
 		
 		case "calendar_21":
-			dialog.text = "... then we have round item. Look! They match. It be intact item before.";
-			link.l1 = "Damn it! And this thing has been lying in my pocket for so long... Listen, shaman, so if I will put this shards in the flute...";
+			dialog.text = "... то получиться предмет как круг. Глядеть! Они совпадать один к один. Раньше они быть целый предмет.";
+			link.l1 = "Черт возьми! Выходит, эта штуковина уже столько времени была у меня в кармане... Слушай, шаман, так если поставить эти осколки в выемку на истукане, то...";
 			link.l1.go = "calendar_22";
 		break;
 		
 		case "calendar_22":
-			dialog.text = "Kukulcan spit the victim to the old Indian city as you say.";
-			link.l1 = "It would be great! I need to get there! Don't you think that this round thing will work being broken?";
+			dialog.text = "Кукулькан может отрыгнуть жертву туда, куда ты говорить - в старый индейский город.";
+			link.l1 = "Это было бы превосходно! Мне как раз туда и надо! Как думаешь, это не страшно, что этот кругляш расколот на пять частей?";
 			link.l1.go = "calendar_23";
 		break;
 		
 		case "calendar_23":
-			dialog.text = "I think that we need bring it together and then put it in cramp.";
-			link.l1 = "Match? But how to bring together broken crocks?";
+			dialog.text = "Я думать, его надо соединить, и только потом ставить в камень в скоба.";
+			link.l1 = "Соединить? Но как соединить разбитые черепки?";
 			link.l1.go = "calendar_24";
 		break;
 		
 		case "calendar_24":
-			dialog.text = "Leave it to me and ancestor spirits, white brother. It not just simple crocks. It miracle item. Come in three night, white brother. I call spirits, wisdom and skill of living and I try to unite shards.";
-			link.l1 = "Incredible... How can I repay you, Snake Eye?";
+			dialog.text = "Оставить это мне и мудрость духи предков, белый брат. Это не просто черепки. Это чудодейственный вещь. Приходить через три ночи, белый брат. Я призвать на помощь духи, мудрость и умение живых люди и попытаться объединить осколки.";
+			link.l1 = "Невероятно... И как же мне благодарить тебя, Змеиный Глаз?";
 			link.l1.go = "calendar_25";
 		break;
 		
 		case "calendar_25":
-			dialog.text = "Thank me later, white brother. Go. Come in three nights.";
-			link.l1 = "Fine. I hope that you will succeed...";
+			dialog.text = "Оставить благодарности на потом, белый брат. Ступай. Возвращаться через три ночи.";
+			link.l1 = "Хорошо. Надеюсь, тебе удасться осуществить задуманное...";
 			link.l1.go = "calendar_26";
 		break;
 		
@@ -529,20 +529,20 @@ void ProcessDialogEvent()
 		break;
 		
 		case "calendar_28":
-			dialog.text = "I can happy you, white brother.";
-			link.l1 = "Were you able to bring the shards together?";
+			dialog.text = "Я могу порадовать тебя, белый брат.";
+			link.l1 = "Тебе удалось собрать осколки в единое целое?";
 			link.l1.go = "calendar_29";
 		break;
 		
 		case "calendar_29":
-			dialog.text = "Yes. It was not easy and there are scars left on the calendar but it is complete now.";
-			link.l1 = "Calendar? Why did you call it like that?";
+			dialog.text = "Да. Это было непросто, и на календаре остаться шрамы, но он теперь един.";
+			link.l1 = "Календарь? Почему ты сказал - календарь?";
 			link.l1.go = "calendar_30";
 		break;
 		
 		case "calendar_30":
-			dialog.text = "Because this round thing is calendar. I study it carefully. There is a time count on it. Indians from ancient city count nights, moons, years and ages.";
-			link.l1 = "Incredible... Though, concerning what Maya priests are able to do -there is not anything special about this calendar.";
+			dialog.text = "Потому что этот круглый вещь - календарь. Я изучить его внимательно. На нем изображен отсчет времен. С помощью этот предмет индейцы из древний город считать ночи, луны, годы и века.";
+			link.l1 = "Удивительно... Хотя если взять в расчет то, что умели жрецы майя - ничего особенного, что они создали календарь.";
 			link.l1.go = "calendar_31";
 		break;
 		
@@ -550,30 +550,30 @@ void ProcessDialogEvent()
 			GiveItem2Character(pchar, "calendar_maya");
 			sld = ItemsFromID("calendar_maya");
 			sld.shown = "0";
-			Log_Info("You have received a Maya calendar");
-			dialog.text = "Take it, white captain. Plant it in cramps of the statue. Then perhaps it spit you at Indian city.";
-			link.l1 = "How can I repay you, Snake Eye?";
+			Log_Info("Вы получили календарь майя");
+			dialog.text = "Возьми, белый капитан. Установи его в скобы на камень статуи Кукулькан. И тогда возможно он отрыгнуть тебя в индейский город.";
+			link.l1 = "Чем мне тебя вознаградить, Змеиный Глаз?";
 			link.l1.go = "calendar_32";
 		break;
 		
 		case "calendar_32":
-			dialog.text = "Say 'Thank you'. Gods guide you on your path even you do not see it. White people say - fate. Kukulcan call you, gods guide you. Go. Do you work and let good spirit guide you.";
-			link.l1 = "Thank you, Snake Eye! I will never forget you.";
+			dialog.text = "Сказать 'спасибо'. Боги вести тебя этот тропа, даже если ты не понимать. Как вы белые говорить - судьба. Кукулькан звать тебя, боги направить тебя. Иди. Делать свой дело и да охранить тебя добрые духи.";
+			link.l1 = "Спасибо, Змеиный Глаз! Век тебя не забуду.";
 			link.l1.go = "calendar_33";
 		break;
 		
 		case "calendar_33":
 			TakeNItems(pchar, "Ultimate_potion", 4);
-			Log_Info("You have received four versatile potions");
+			Log_Info("Вы получили четыре универсальных зелья");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Wait. Forgot some important thing. Kukulcan eat man and drink his life. I make our potion. Comanche potion. I give it to you, I have four flasks. You can take three loyal companions who be brave.";
-			link.l1 = "You have done so much for me, redskin brother...";
+			dialog.text = "Постой. Мы совсем забыть важный деталь. Кукулькан пожирать человек и высасывать его жизненный сок. Я суметь приготовить наш зелье. Зелье команчей. Я дать тебе его. У меня есть четыре фляга. Ты мочь взять с собой три верный спутник, кто быть смел, чтобы дать себя пожрать Кукулькан.";
+			link.l1 = "Ты столько сделал для меня, краснокожий брат...";
 			link.l1.go = "calendar_34";
 		break;
 		
 		case "calendar_34":
-			dialog.text = "Friend is not just a word for Indian of Comanche tribe. When back from Kukulcan city, visit our village. We cook a lot, a lot of kashirie. I will be glad to see you.";
-			link.l1 = "Sure, redskin brother! I will certainly visit you!";
+			dialog.text = "Друг - это не просто слово для индейца племени команч. Когда вернуться из город Кукулькан, заходить наш деревня. Мы приготовить много-много кашири. Я буду рад тебя видеть.";
+			link.l1 = "Обязательно, краснокожий брат! Я непременно навещу тебя!";
 			link.l1.go = "calendar_35";
 		break;
 		

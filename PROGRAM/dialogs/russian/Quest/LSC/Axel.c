@@ -18,67 +18,67 @@ void ProcessDialogEvent()
 		case "First time":
 			if (pchar.questTemp.LSC == "return" && !CheckAttribute(npchar, "quest.return_isl"))
 			{
-				dialog.text = "Just look at that..."+GetFullName(pchar)+"! Are you back from the next world? How is it possible?";
-				link.l1 = "People don't get back from the next world, Axel. It is simple - I have never been there, ha-ha!";
+				dialog.text = "Подумать только... "+GetFullName(pchar)+"! Ты вернулся с того света? Как это возможно?";
+				link.l1 = "С того света не возвращаются, Аксель. Все гораздо проще - я туда и не уходил, ха-ха!";
 				link.l1.go = "exit";
 				npchar.quest.return_isl = "true";
 				break;
 			}
 			if (CheckAttribute(pchar, "GenQuest.NarvalConflict"))
 			{
-				dialog.text = "Heh, pal, I won't do business with you until you settle things down with Narwhals. I don't want troubles. Go to Fazio, he can handle this.";
-				link.l1 = "Fine, I will do that immediately.";
+				dialog.text = "Хех, приятель, до тех пор, пока ты не уладишь конфликт с нарвалами - я не буду иметь с тобой никаких дел, ты уж извини. Мне не нужны проблемы. Ступай к Фацио - он все решит.";
+				link.l1 = "Хорошо, я немедленно займусь этим вопросом.";
 				link.l1.go = "exit";
 				break;
 			}
 			if (CheckAttribute(pchar, "GenQuest.CitizenConflict") && sti(pchar.GenQuest.CitizenConflict) > 3)
 			{
-				dialog.text = "I don't want to talk with you. You attack peaceful people for no reason and provoke them to fight. Get lost from my shop!";
-				link.l1 = "Hm...";
+				dialog.text = "Я не желаю с тобой общаться. Ты нападаешь без причины на мирных граждан, провоцируешь их на драку. Уходи прочь из моего магазина!";
+				link.l1 = "Гм...";
 				link.l1.go = "exit";
 				break;
 			}
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = "Oh! A new face! What brings you here? But it is not my business. Let me introduce myself: my name is Axel Yost and I own this shop. Want to buy or sell something? Talk to me then.";
-				link.l1 = TimeGreeting()+". My name is "+GetFullName(pchar)+". What kind of goods are you dealing in?";
+				dialog.text = "О! Новое лицо! Каким ветром вас занесло на наш остров? Впрочем, это не мое дело. Давайте знакомиться: меня зовут Аксель Йост, и я хозяин этого магазина. Желаете что-нибудь купить или продать? Тогда это ко мне.";
+				link.l1 = TimeGreeting()+". Меня зовут "+GetFullName(pchar)+". Чем вы торгуете, Аксель?";
 				link.l1.go = "meeting";
 				npchar.quest.meeting = "1";
 			}
 			else
 			{
-				dialog.text = "Ah, "+pchar.name+"! Glad to see you. Want to buy or sell something?";
+				dialog.text = "А, "+pchar.name+"! Рад вас видеть. Желаете что-то купить или продать?";
 				// квестовые ветки
 				if (CheckAttribute(pchar, "questTemp.Saga.SharkHunt") && pchar.questTemp.Saga.SharkHunt == "search_mush_1")
 				{
-					link.l4 = "Listen, Axel, do you have a fine musket to sell? Not a casual soldier's gun, but something for sniping - accurate and long-range?";
+					link.l4 = "Послушайте, Аксель, у вас нет в продаже хорошего мушкета? Не обычное солдатское ружье, а что-нибудь для прицельной стрельбы, точное и дальнобойное?";
 					link.l4.go = "adolf";
 				}
 				if (CheckAttribute(pchar, "questTemp.Saga.SharkHunt") && pchar.questTemp.Saga.SharkHunt == "trader_whiskey")
 				{
-					link.l4 = "Listen, Axel, did Chad Kapper ask you to get him a whiskey barrel? ";
+					link.l4 = "Послушайте, Аксель, к вам обращался Чад Каппер по поводу покупки бочонка виски?";
 					link.l4.go = "whiskey";
 				}
 				if (CheckAttribute(npchar, "quest.ole_pearl"))
 				{
-					link.l5 = "Listen, Axel, you must have heard my conversation with this local idiot. What bead did he ask for? I don't get it.";
+					link.l5 = "Послушайте, Аксель, вы же слышали наш разговор с этим местным дурачком. Не могу понять - что за бусинку он от меня требует? Не знаете случайно?";
 					link.l5.go = "ole_pearl";
 				}
-				link.l1 = "Yes. Let's trade, Axel!";
+				link.l1 = "Да. Займемся торговлей, Аксель!";
 				link.l1.go = "Trade_items";
-				link.l2 = LinkRandPhrase("Got anything interesting to tell?", "What had happened on the Island recently?", "Any gossips?");
+				link.l2 = LinkRandPhrase("Что-нибудь интересное мне расскажете?", "Что нового произошло на острове в последнее время?", "Не расскажете ли последние сплетни?");
 				link.l2.go = "rumours_LSC";
-				link.l3 = "Not yet. Just wanted to greet you.";
+				link.l3 = "Пока нет. Я просто зашел поздороваться с вами.";
 				link.l3.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "meeting":
-			dialog.text = "All kinds of stuff. Mixtures, blades, firearms, ammo, cuirasses, gems and minerals. Enchanted amulets and talismans. Garbage and everyday items. People bring to me everything they find on dead ships, things they don't need themselves\nSo feel free to do the same. I must warn you, though. I do not offer provision and ship wares.";
-			link.l1 = "Fine, Axel. Let's see your goods.";
+			dialog.text = "Да чем придется. Лечебные эликсиры, холодное и огнестрельное оружие, боеприпасы, кирасы, камни и минералы. Заговоренные амулеты и обереги. Прочая всевозможная мелочь, необходимая в повседневной жизни, и не очень необходимая. Мне несут все, что находят на погибших кораблях и что не нужно самим\nТак что и вы приносите, если что найдете, ну а если надо купить - я тоже всегда к вашим услугам. Но должен предупредить: корабельных товаров и продовольствия у меня в продаже нет.";
+			link.l1 = "Хорошо, Аксель. Давайте посмотрим ваши товары.";
 			link.l1.go = "Trade_items";
-			link.l2 = "Thank you, Axel. I'll keep that in mind. I will see you as soon as I need your services.";
+			link.l2 = "Спасибо, Аксель. Я приму к сведению. Как только мне понадобятся ваши услуги, я сразу же загляну к вам.";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
@@ -95,20 +95,20 @@ void ProcessDialogEvent()
 		
 		// наводка на Адольфа
 		case "adolf":
-			dialog.text = "This must some kind of a joke. You are already the third to ask. I don't have such weapon. But several months ago Adolf Barbier tried to sell me his hunting scoped rifle. A wonderful weapon, I tell you. Exactly what are you looking for\nBut Barbier asked a hell of price for it, it seems that it is made of pure gold and shoots with diamonds. So, I had to reject his offer.";
-			link.l1 = "Interesting! And where can I find Barbier?";
+			dialog.text = "Да что вы все, сговорились, что ли? Вы уже третий, кто за последние две недели спрашивает меня об этом. Так вот, у меня такого оружия нет. Но несколько месяцев назад Адольф Барбье приносил мне на продажу свой охотничьий штуцер с прицелом. Великолепная вещь, скажу я вам! Это именно то, что вы ищете\nНо Барбье тогда запросил за него такую цену, будто он отлит из золота и стреляет бриллиантами. В общем, я был вынужден отказать. Так что штуцер остался у Адольфа.";
+			link.l1 = "Очень интересно! И где же мне искать Барбье?";
 			link.l1.go = "adolf_1";
 		break;
 		
 		case "adolf_1":
-			dialog.text = "I have no idea. He must be walking around somewhere. He often visits Sancho's tavern, he likes to have a drink every evening.";
-			link.l1 = "Thanks! I think, I will easily find him there. Tell me, Axel, has anyone else asked you about the rifle? You've mentioned the other two and who are they? Competitors?";
+			dialog.text = "Понятия не имею. Шастает где-то по острову. Но чаще всего его можно увидеть в таверне Санчо - он любитель приложиться к кружечке рома по вечерам.";
+			link.l1 = "Спасибо! Думаю, я легко его там найду. И скажи еще, Аксель, а кто еще кроме меня спрашивал про этот штуцер? Ты сказал, еще двое? Кто они, эти конкуренты?";
 			link.l1.go = "adolf_2";
 		break;
 		
 		case "adolf_2":
-			dialog.text = "Mary Casper and some Marcello also known as Cyclops. I have no idea, why would the girl need a rifle, but our Red Mary is a well-known madcap. A year ago, she started to buy tons of gun powder in order to make mines, she wanted to stun crabs. Thank the Lord, they forbidden her to do so\nAnd Marcello wanted to buy a rifle for bird hunting, the man got tired of salted beef. I sent them both to Adolf, don't know if they bought the rifle from him\nAlso, this sly dog Giuseppe Fazio was asking about Adolf recently. Perhaps, he wants to buy this gun too?";
-			link.l1 = "Heh, I've got a lot of competitors. Fine, I'll go to find that Adolf - perhaps, he hasn't sold the gun yet.";
+			dialog.text = "Это Мэри Каспер и некий Марчелло по кличке Циклоп. Зачем девчонке понадобилось ружье - ума не приложу, но наша Красная Мэри - известная сумасбродка, и ей могло прийти в голову что угодно. Год назад она начала скупать порох для изготовления мин - решила глушить крабов. Слава Богу, ей это запретили\nА Марчелло хотел приобрести этот штуцер для охоты за пролетающими птицами - понимаете ли, надоела ему солонина и охота поесть свежего мяса. Я их обоих отправил искать Адольфа, а уж купили они у него это ружье, или нет - не могу знать\nДа, еще Адольфом на днях интересовался этот прохиндей, Джузеппе Фацио. Может, и он захотел купить себе этот штуцер?";
+			link.l1 = "Хех, соперников у меня - хоть отбавляй. Ладно, пойду поищу этого Адольфа: глядишь, еще не сторговал свой штуцер.";
 			link.l1.go = "adolf_3";
 		break;
 		
@@ -122,28 +122,28 @@ void ProcessDialogEvent()
 		
 		// бусинка для Белого Мальчика - просто инфа
 		case "ole_pearl":
-			dialog.text = "Everybody knows that, mister! He asks everyone for these beads, that is how he calls big pearls. Give him one, and you will become his best friend.";
-			link.l1 = "Now I see. Thank you, Axel, I would never have guessed it myself.";
+			dialog.text = "Да кто же этого не знает, сударь! Он эти бусинки у всех клянчит. Он так называет крупный жемчуг. Дайте ему одну жемчужину - сразу станете лучшим другом.";
+			link.l1 = "Так вот оно что! Спасибо, Аксель. Никогда бы не догадался.";
 			link.l1.go = "exit";
 			DeleteAttribute(npchar, "quest.ole_pearl");
 		break;
 		
 		// виски для Акулы
 		case "whiskey":
-			dialog.text = "Yes, pal, he did. But I will disappoint you in case you want to buy a barrel of Bushmills too. I had only one barrel and Chad has bought it. I can offer you Scottish Whiskey - it's as good as Irish, and, actually, I like it's taste much better.";
-			link.l1 = "Perhaps, later. Has Chad bought anything else from you?";
+			dialog.text = "Да, дружище, обращался. Но если и ты надумал купить бочонок 'Бушмилс' - то я тебе огорчу: он был единственный и Чад его уже оплатил и забрал. Могу предложить шотландский виски - он ничуть не хуже ирландского, а как на мой вкус - даже лучше.";
+			link.l1 = "Может быть, позже. А что-нибудь еще у тебя Чад покупал?";
 			link.l1.go = "whiskey_1";
 		break;
 		
 		case "whiskey_1":
-			dialog.text = "No. He was interested in arsenic, he said that there are too many rats at the Tartarus and he wants to exterminate them. I don't need arsenic since I've hired that idiot Olle to clean the shop, all rats have just gone to the tavern of poor Sancho. I don't know why rats hate Olle so much...";
-			link.l1 = "Perhaps, he had some cats in his family...";
+			dialog.text = "Нет. Интересовался мышьяком - сказал, что у него на 'Тартарусе' расплодилось много крыс и хочет их потравить. Но мне мышьяк ни к чему - с тех пор, как я нанял этого дурачка Оле убираться в магазине, все крысы сбежали в таверну к бедняге Санчо. Чего уж так крысы не выносят Оле - я не знаю.";
+			link.l1 = "Наверное, у него в роду были кошки...";
 			link.l1.go = "whiskey_2";
 		break;
 		
 		case "whiskey_2":
-			dialog.text = "Ha-ha! Perhaps... Sancho is the man who has arsenic - that's for sure.";
-			link.l1 = "I see. Thanks for the information, then!";
+			dialog.text = "Ха-ха! Наверное... Так что если у кого и есть мышьяк на Острове - так это у Санчо.";
+			link.l1 = "Понятно. ну что же, спасибо за информацию!";
 			link.l1.go = "whiskey_3";
 		break;
 		

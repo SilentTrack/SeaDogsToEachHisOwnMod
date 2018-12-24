@@ -144,7 +144,7 @@ void AffairOfHonor_LighthouseLocEnter(string _quest)
 	
 	DisableAllExits(true);
 	
-	Log_Info("Time to cross blades");
+	Log_Info("Пришло время скрестить клинки");
 }
 
 // Функция, вызываемая по истечении двух часов с момента взятия квеста.

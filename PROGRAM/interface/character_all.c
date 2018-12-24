@@ -397,7 +397,7 @@ void ShowInfoWindow()
 				iItem = GetMoneyForOfficerFull(rchr);
 				if (iItem > 0)
 				{
-				    sText2 = "Payment " + FindRussianMoneyString(iItem) + " per month";
+				    sText2 = "Оплата " + FindRussianMoneyString(iItem) + " в месяц";
 				}
 				if(FindFellowtravellers(pchar,rchr) != FELLOWTRAVEL_COMPANION)
 				{
@@ -426,7 +426,7 @@ void ShowInfoWindow()
 			{
 				sPicture = "interfaces/portraits/128/" + sHeader + ".tga";
 			}
-            sText3 = "Clicking on the list - the appointment or removal officer.";
+            sText3 = "Клик по списку - назначение или съем офицера.";
             if (bBettaTestMode)
             {
                 sText3 += "   " +  Characters[iCharacter].id;
@@ -796,7 +796,7 @@ void FillSkillTables()
     }
     else
     {
-        GameInterface.TABLE_OTHER.tr7.td3.str = "no title";
+        GameInterface.TABLE_OTHER.tr7.td3.str = "нет звания";
     }
 	
 	GameInterface.TABLE_OTHER.tr8.UserData.ID = "NextExp";
@@ -1439,7 +1439,7 @@ void ChoosePerk()
     
     if (CheckAttribute(&ChrPerksList, "list." + perkName + ".OfficerType"))
     {
-        descr += "\n\n The ability will work for the appointed "+ XI_ConvertString (ChrPerksList.list. (PerkName) .OfficerType) +" if he or she has it already.";
+        descr += "\n\n Способность будет работать и в том случае, если назначен офицер " + XI_ConvertString(ChrPerksList.list.(perkName).OfficerType)+ ", у которого она есть.";
     }
     SetFormatedText("PERK_WINDOW_TEXT", descr);
     SetVAligmentFormatedText("PERK_WINDOW_TEXT");

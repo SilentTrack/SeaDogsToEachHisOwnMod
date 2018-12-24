@@ -98,13 +98,13 @@ void CalculateInfoData()
 	
 	if (GetAttributesNum(rootItems) > 1)
 	{
-		totalInfo = "Our ships ";
-		sEnd = " are in contact with the enemy." 
+		totalInfo = "Ќаши корабли ";
+		sEnd = " наход€тс€ в контакте с противником." 
 	}
 	else
 	{
-		totalInfo = "Our ship ";
-		sEnd = " is in contact with the enemy." 
+		totalInfo = "Ќаш корабль ";
+		sEnd = " находитс€ в контакте с противником." 
 	}
 	cn = sti(GetAttributeValue(GetAttributeN(rootItems, 0)));
 	if (cn != -1) 

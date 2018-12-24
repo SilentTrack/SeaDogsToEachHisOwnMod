@@ -19,29 +19,29 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "That is defenetly a bug. Can you please inform Jason on when and how that happend.";
-			link.l1 = "Will do.";
+			dialog.text = "Явный баг. Сообщите об этом Jason'у, как и при каких обстоятельствах его получили.";
+			link.l1 = "Обязательно сообщу!";
 			link.l1.go = "exit";
 		break;
 		
 		// шаман карибов Туттуатхапак
 		case "Tuttuat":
-			dialog.text = "Why have you come to my hut, white man? Tuttuathapak not think you his dear guest.";
+			dialog.text = "Зачем твоя явиться мой хижина, белый человек? Туттуатхапак не мочь назвать тебя дорогой гость.";
 			if (GetCharacterFreeItem(pchar, "mushket1") || GetCharacterFreeItem(pchar, "mushket2"))
 			{
-				link.l1 = "Hail to you, great shaman Tuttuathapak. I have come to you to seek your help and advice. Please accept this musket as a token of my goodwill.";
+				link.l1 = "Здравствуй, великий шаман Туттуатхапак. Я пришел к тебе за советом и помощью. Прими в знак моей дружбы в дар этот мушкет.";
 				link.l1.go = "Tuttuat_1";
 			}
 			else
 			{
-				link.l1 = "Hail to you, great shaman Tuttuathapak. I have come to you to seek your help and advice.";
+				link.l1 = "Здравствуй, великий шаман Туттуатхапак. Я пришел к тебе за советом и помощью.";
 				link.l1.go = "Tuttuat_exit";
 			}
 		break;
 		
 		case "Tuttuat_exit":
-			dialog.text = "Tuttuathapak not help white man. White men bad men. They kill and conquer Indians, make Indians slaves. Tuttuathapak give white man no advice. You leave now.";
-			link.l1 = "Hm...";
+			dialog.text = "Туттуатхапак не помогать белый человек. Белый люди - плохой люди. Они убивать и захватывать индеец, делать индеец раб. Туттуатхапак не давать совет белый человек. Твоя уходить.";
+			link.l1 = "Гм...";
 			link.l1.go = "Tuttuat_exit_1";
 		break;
 		
@@ -55,51 +55,51 @@ void ProcessDialogEvent()
 			else sTemp = "mushket2";
 			RemoveItems(pchar, sTemp, 1);
 			PlaySound("interface\important_item.wav");
-			Log_Info("You have given: "+XI_ConvertString(sTemp)+"");
-			dialog.text = "You know what give Tuttuathapak, white man. Tuttuathapak accept your gift. He will speak. What advice you seek of me?";
-			link.l1 = "I have heard that you have come from a distant place in the South. I have an Indian amulet, and one knowledgeable man told me that you might know how it can be used.";
+			Log_Info("Вы отдали "+XI_ConvertString(sTemp)+"");
+			dialog.text = "Твоя знать, что подарить Туттуатхапак, белый человек. Туттуатхапак принимать твоя подношение. Он говорить. Какой совет твоя прийти получить от моя?";
+			link.l1 = "Я слышал, что ты прибыл сюда из далеких мест на юге. У меня есть индейский амулет, и один знающий человек сказал, что ты сможешь помочь мне выяснить, как и для чего можно его применить.";
 			link.l1.go = "Tuttuat_2";
 		break;
 		
 		case "Tuttuat_2":
-			dialog.text = "Show me the amulet.";
-			link.l1 = "Here you go, great shaman.";
+			dialog.text = "Показать моя этот амулет.";
+			link.l1 = "Вот, возьми, великий шаман.";
 			link.l1.go = "Tuttuat_3";
 		break;
 		
 		case "Tuttuat_3":
 			PlaySound("interface\important_item.wav");
-			dialog.text = "(looking at the amulet)... Your friend tell the truth, white man. This amulet belong my people, great Indians Chavin. Cursed blasphemous palefaced cur defile the shrine and take it here. Tuttuathapak punished that hound.";
-			link.l1 = "You deprived him of his mind, I take it?";
+			dialog.text = "(рассматривает)... Твоя человек сказать правда, белый человек. Этот амулет принадлежать предки моя народ, великий индеец чавин. Проклятый нечестивый бледнолицый пес осквернить святилище и вывезти сюда. Этот пес быть наказан Туттуатхапак.";
+			link.l1 = "Ты лишил его рассудка, как я полагаю?";
 			link.l1.go = "Tuttuat_4";
 		break;
 		
 		case "Tuttuat_4":
-			dialog.text = "White man surprise Tuttuathapak with his knowledge. Yes, I devour the mind of that scurvy cur. He and his filthy man get they due.";
-			link.l1 = "I see... Tell me, shaman, what is this amulet used for? Perhaps it can protect one in battle or ward against evil magic?";
+			dialog.text = "Белый человек удивлять Туттуатхапак свой знание. Да, моя пожрать разум тот шелудивый пес. Он и его гнусный люди получить по заслуги.";
+			link.l1 = "Ладно, не будем об этом... Скажи, шаман, для чего нужен этот амулет? Может, он защищает в бою, или отводит злые чары?";
 			link.l1.go = "Tuttuat_5";
 		break;
 		
 		case "Tuttuat_5":
-			dialog.text = "This amulet id of no use to you, white captain. You cannon use it power. Only great shamans of our tribe know how awake it.";
-			link.l1 = "Hmm... So, it turns out that I took such a long journey in vain. But, perhaps, you can awaken the power of this amulet, great shaman? Certainly we could come to an agreement...";
+			dialog.text = "Для твоя, белый капитан, этот амулет бесполезен. Твоя не мочь использовать его сила. Только великий шаманы наш племя знать, как пробудить амулет.";
+			link.l1 = "Вот как... Получается, я проделал такой долгий путь напрасно. Но может, ты сумеешь пробудить силу этого амулета, великий шаман? Мы могли бы договориться...";
 			link.l1.go = "Tuttuat_6";
 		break;
 		
 		case "Tuttuat_6":
-			dialog.text = "Even if I wake amulet, you not hold its power for long. But I offer you deal, white man.";
-			link.l1 = "What kind of deal?";
+			dialog.text = "Даже если моя пробудить сила амулет, твоя не суметь удержать ее долго. Но моя предложить сделка, белый человек.";
+			link.l1 = "Какую сделку?";
 			link.l1.go = "Tuttuat_7";
 		break;
 		
 		case "Tuttuat_7":
-			dialog.text = "Three amulets like this was take from our shrine. They have different powers, but if they are bring together, they be much more powerful. Find all three amulets and bring they to me, and I reward you. I give you power you can hold forever.";
-			link.l1 = "I don't quite understand... What kind of power you're talking about?";
+			dialog.text = "Всего из святилище наш предки был вывезен три таких амулет. Они обладать разный свойства, но если они соединиться вместе, их мощь сильно-сильно возрасти. Найти и принести моя все три амулет, а моя за это вознаградить. Моя дать твоя сила, который твоя суметь удержать навсегда.";
+			link.l1 = "Немного не понял... что за сила?";
 			link.l1.go = "Tuttuat_8";
 		break;
 		
 		case "Tuttuat_8":
-			dialog.text = "You know all in right time. Find and bring me all three amulets. They be in Caribbean. Seek and find. You tell them easily - they look alike. Go, white man. Tuttuathapak wait and ask spirits help you.";
+			dialog.text = "Твоя все узнать в свой время. Найти и принести моя все три амулет. Они быть на Карибы. Искать и найти. Твоя легко их узнать - они похож один на один. Идти, белый человек. Туттуатхапак ждать и просить духи помочь тебе.";
 			link.l1 = "...";
 			link.l1.go = "Tuttuat_9";
 		break;
@@ -117,13 +117,13 @@ void ProcessDialogEvent()
 		case "Tuttuat_10":
 			if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "hunting" && Caleuche_CheckAmulet())
 			{
-				dialog.text = "Go, white man. Find two more amulets.";
-				link.l1 = "I have already found them, great shaman. Here, take a look.";
+				dialog.text = "Идти, белый человек. Найти еще два амулет.";
+				link.l1 = "Уже нашел, великий шаман. Вот, смотри.";
 				link.l1.go = "Tuttuat_33";
 			}
 			else
 			{
-				dialog.text = "Go, white man. Find other two amulets.";
+				dialog.text = "Идти, белый человек. Найти два амулет.";
 				link.l1 = "...";
 				link.l1.go = "Tuttuat_10_1";
 			}
@@ -135,135 +135,135 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Tuttuat_11":
-			dialog.text = "You here again, white man? You look like you meet fierce jaguar in the jungle.";
-			link.l1 = "Worse, great shaman. As I had put to sea, I was attacked by a ship manned by the undead! Their captain was totally invincible. First he took the amulet from me and almost killed me - I barely survived. And then they sank my ship.";
+			dialog.text = "Твоя снова здесь, белый человек? Твоя выглядеть так, как повстречаться свирепый ягуар джунгли.";
+			link.l1 = "Хуже, великий шаман. Едва я вышел в море, как на меня напал корабль, битком набитый живыми скелетами! Их капитан неуязвим. Он отнял у меня амулет, чуть не убив при этом. А затем они утопили мое судно.";
 			link.l1.go = "Tuttuat_12";
 		break;
 		
 		case "Tuttuat_12":
-			dialog.text = "Bad news, white man. The Caleuche goes on for the kill again.";
-			link.l1 = "The Caleuche? That undead captain called his ship the Flying Heart. So, you knew about the ghost ship and you didn't warn me about it? If I new that this sailing nightmare is hunting for the amulet, I'd never...";
+			dialog.text = "Плохой новости, белый человек. Калеуче опять выйти на охота.";
+			link.l1 = "Калеуче? Этот капитан-мертвяк назвал свой корабль 'Летящее сердце'. Ты знал о корабле-призраке? И ты ничего мне об этом не сказал? Да если бы я знал, что этот плавучий кошмар охотится за амулетом, я...";
 			link.l1.go = "Tuttuat_13";
 		break;
 		
 		case "Tuttuat_13":
-			dialog.text = "Tuttuathapak see white captain is upset. White captain must calm down.";
-			link.l1 = "Calm down?!";
+			dialog.text = "Туттуатхапак видеть, белый капитан расстроен. Белый капитан должен успокоиться.";
+			link.l1 = "Успокоиться?";
 			link.l1.go = "Tuttuat_14";
 		break;
 		
 		case "Tuttuat_14":
-			dialog.text = "Yes. Calm down and not shout. Tell me - you still want to receive great power from me, which stay with you forever?";
-			link.l1 = "Well, I sure do. But I don't have the amulet anymore.";
+			dialog.text = "Да. Успокоиться и перестать кричать. Сказать моя, твоя еще хотеть получить от моя большой сила, который остаться с твоя навсегда?";
+			link.l1 = "Ну... хочу конечно. Но амулета-то у меня уже нет.";
 			link.l1.go = "Tuttuat_15";
 		break;
 		
 		case "Tuttuat_15":
-			dialog.text = "I teach you how take amulet from captain of the Caleuche. It be not easy. But if you do it, you take his ship as your prize, find valuable treasure, win glory with your people and receive reward from me.";
-			link.l1 = "Goddammit! I'd gladly get even with that shrivelled monster! But how can I defeat him, if he cannot be harmed neither by the sword, nor by the bullet?!";
+			dialog.text = "Моя научить твоя, как забрать амулет у капитан Калеуче. Это быть нелегко. Но если твоя суметь сделать всё, то твоя получить его корабль военный трофей, найти ценный предметы, получить слава у твоя народ и моя награда.";
+			link.l1 = "Черт возьми! Я с удовольствием поквитаюсь с этой высохшей образиной! Но как же я с ним управлюсь, если его ни сабля, ни пуля не берет?";
 			link.l1.go = "Tuttuat_16";
 		break;
 		
 		case "Tuttuat_16":
-			dialog.text = "You ready listen to me, white captain?";
-			link.l1 = "Yes, I am, great shaman.";
+			dialog.text = "Твоя готов слушать моя, белый капитан?";
+			link.l1 = "Да, великий шаман.";
 			link.l1.go = "Tuttuat_17";
 		break;
 		
 		case "Tuttuat_17":
-			dialog.text = "When my father be a young warrior, white men came to my land on the ship the Flying Heart. They went to mountains. Legend say, a shrine of our ancestors is hidden there. Shrine of jaguar warriors. White men find shrine and gold and defiled ancient sacred thing. They take away great treasure of Chavins - the jade skull of  Yum Cimil, god of death and patron of jaguar men\nWhite men came to their ship. They decide to return to take more gold, but as the sailor step on dry land, he die in horrible pain. Yu Cimil cursed the captain and his crew. They become immortal, but they cannot step on land anymore. They sail many-many winters, half a century by your calendar. That's how the Caleuche emerged.\nTheir bodies wither, they flesh rotten, but they still live. If you hack an arm or leg off, it grow back. It you slice them into, they again become one. If their ship go down, they fix it underwater, and it sail again.";
-			link.l1 = "Just great...";
+			dialog.text = "Когда моя отец быть еще молодой воин, в земля мой народ прибыть отряд белый люди на корабле с имя 'Летящий сердце'. Они отправиться в горы, где древние легенды гласить, быть спрятан храм наши древний предки - храм люди-ягуары. Белый люди найти храм и золото, и осквернить древний святыня. Они вынести из святилище величайший сокровище чавинцы - нефритовый череп Юм Симиль, бога смерти и покровителя люди-ягуары\nБелый люди достигнуть свой корабль. Они решить вернуться назад храм, чтобы забрать еще золото, но едва нога матрос ступить на пляж, как он умереть в страшный мучение. Юм Симиль проклясть команда и капитан. Они стать бессмертен, но не суметь больше никогда ступить на земля. Так они и плавать уже много-много зим, по календарь белый люди - полвек. Так появиться Калеуче\nИх тела износиться, плоть сгнить, но они оставаться живы. Если им отрубить рука или нога - она прирасти вновь. Если разрубить тело - оно соединиться. Если их корабль утонуть - они чинить его под вода, поднимать и плыть снова.";
+			link.l1 = "Кошмар какой...";
 			link.l1.go = "Tuttuat_18";
 		break;
 		
 		case "Tuttuat_18":
-			dialog.text = " The Caleuche terrorize sailors. It attack without reason and spell certain doom. It is no frequent guest in Caribbean. It likes sailing at the shores of my motherland. Methinks, he want to remove curse. But he will never lift it.";
-			link.l1 = "Why? What needs to be done to lift the curse?";
+			dialog.text = "Калеуче наводить ужас на моряки. Он нападать без видимый причина и нести неминуемый смерть. Он быть нечастый гость в Карибский море. Он любить плавать у берега мой родина. Моя думать - он хотеть снять проклятие. Но ему это не сделать никогда.";
+			link.l1 = "Почему? А что нужно, чтобы снять проклятие?";
 			link.l1.go = "Tuttuat_19";
 		break;
 		
 		case "Tuttuat_19":
-			dialog.text = "Jade skull. It must return to shrine of Yum Cimil, temple of jaguar warriors. There are several temples. Elders of my tribe say there be one on a small island in the Caribbean. That's why the Caleuche sailed there. Once skull be at temple, spell of Yum Cimil breaks, and they become mortal and not heal wounds anymore.";
-			link.l1 = "Ha! More likely, they aren't going to return the skull! Why would they, if they're immortal and invincible? And besides, they simply cannot bring it back, if they aren't allowed to step on land, right?";
+			dialog.text = "Нефритовый череп. Он надо вернуть в храм Юм Симиль, храм воины-ягуары. Есть несколько такой храм. Старейшины мой племя говорить, что один из них быть на маленький островок на Карибы. Вот почему Калеуче захаживать сюда. Как только череп оказаться храм - чары Юм Симиль спасть с команда и корабль, и они или умереть сами, или не суметь восстановить после повреждение сабля или пуля.";
+			link.l1 = "Ха! Так может, они не хотят возвращать череп назад? Скажем, им неплохо живется: бессмертные, неуязвимые... Да и как они это сделают - они же не могут ступить на землю!";
 			link.l1.go = "Tuttuat_20";
 		break;
 		
 		case "Tuttuat_20":
-			dialog.text = "They don't have skull. Captain throw it away in my ancestor land, when return form the shrine of jaguar men. Jade is no gold, white man not need it, he could not take beautiful green gem in skull eyes. And he throw it away. One sailor picked it up, and he not be touched by curse\nWhen sailor see what the Caleuche crew has become, he flee. He came to our village. My father saw that sailor and skull of Yum Cimil. And then white man go North along the coast ant take skull with him.";
+			dialog.text = "У них нет череп. Капитан выбросить его еще на земля моих предки, когда возвращаться из святилище люди-ягуары. Нефрит не есть золото, он не нужен белый человек, а красивый зеленый камень в глаза череп он не суметь достать. Тогда он выкинуть череп. Его подобрать один матрос, и потому проклятье не коснуться он\nКогда матрос увидеть, что стать команда Калеуче, он бежать. Он быть наш деревня. Моя отец видеть тот матрос и череп Юм Симиль. А потом белый человек уйти вдоль берег на север вместе с череп.";
 			if (CheckAttribute(pchar, "questTemp.Caleuche.Skul"))
 			{
-				link.l1 = "A jade skull with green gems in the eye sockets? Holy f... I... I have held it with my own hands! And I've sold it to some Portuguese... Merryman, or something like that... Yeah, that's what he said - the skull of Yum Cimil! He wanted it really badly! He paid half a million pesos for it!";
+				link.l1 = "Нефритовый череп с зелеными камнями в глазницах? Да я же держал его в своих руках, черт возьми! И я продал его какому-то португальцу... как его там... Мерриману, что ли... Да, он так и говорил - череп Юм Симиля! Он очень хотел получить его. Настолько, что заплатил за него полмиллиона песо!";
 				link.l1.go = "Tuttuat_21_1";
 			}
 			else
 			{
-				link.l1 = "A jade skull with green gems in the eye sockets? So that is what I'll need to find? But that sailor could have perished in the selva fifty years ago, and the skull might be lost forever!";
+				link.l1 = "Нефритовый череп с зелеными камнями в глазницах? Я начинаю догадываться, что мне и его придется найти? Так может он сгинул бесследно в сельве вместе с тем матросом полвека назад!";
 				link.l1.go = "Tuttuat_21_2";
 			}
 		break;
 		
 		case "Tuttuat_21_1":
-			dialog.text = "Me know the skull is in Caribbean. The Caleuche be here not by chance. For the last six moons it often seen at the island. In former times it be not there for many winters. Captain of the Caleuche can feel the artifact of jaguar men. That's how he find you and your ship.";
-			link.l1 = "Alright, then. So, what do I do?";
+			dialog.text = "Моя знать, что череп быть на Карибы. Калеуче недаром появиться тут. Последние шесть лун его стать часто видеть у острова. Раньше он не бывать тут по много зим. Капитан Калеуче чувствовать, где есть артефакт люди-ягуары. Так он суметь найти и твоя корабль.";
+			link.l1 = "Так, ладно. Что я должен сделать?";
 			link.l1.go = "Tuttuat_22";
 		break;
 		
 		case "Tuttuat_21_2":
-			dialog.text = "Skull must be here, in Caribbean. Caleuche be here not by chance. For the last six moons it often seen at the island. In former times it be not there for many winters. Captain of Caleuche can feel the artifact of jaguar men. That's how he find you and your ship.";
-			link.l1 = "Alright, then. So, what do I do?";
+			dialog.text = "Череп должен быть здесь, на Карибы. Калеуче недаром появиться тут. Последние шесть лун его стать часто видеть у острова. Раньше он не бывать тут по много зим. Капитан Калеуче чувствовать, где есть артефакт люди-ягуары. Так он суметь найти и твоя корабль.";
+			link.l1 = "Так, ладно. Что я должен сделать?";
 			link.l1.go = "Tuttuat_22";
 		break;
 		
 		case "Tuttuat_22":
-			dialog.text = "You must find skull of Yum Cimil. You must find two amulet of which we spoke. Without them you cannot do anything. Amulet give you power to stand against jaguar men.";
-			link.l1 = "Stand against jaguar men? What are you talking about?";
+			dialog.text = "Твоя должен найти череп Юм Симиль. Твоя должен найти два амулет, про который мы говорить. Без них ничего не суметь сделать. Амулет дать тебе сила противостоять люди-ягуары.";
+			link.l1 = "Противостоять людям-ягуарам? Это ты о чем сейчас?";
 			link.l1.go = "Tuttuat_23";
 		break;
 		
 		case "Tuttuat_23":
-			dialog.text = "Temple where you must take jade skull, is on a desert island in the Caribbean. It guarded by jaguar men. They are undead. Without amulet you not pass them. With amulet you can enter temple, leave skull there, then find the Caleuche, defeat her captain and take amulet he took from you.";
-			link.l1 = "Undead? Again? Lucky me...";
+			dialog.text = "Храм, куда твоя должен отнести нефритовый череп, находиться на пустынный остров на Карибы. Он охраняться люди-ягуары. Без амулет твоя не суметь пройти мимо них. Люди-ягуары при жизнь быть свирепый воин, а после смерть стать почти непобедим. Им давать сила сам Юм Симиль.";
+			link.l1 = "Опять нежить? Да что же это такое...";
 			link.l1.go = "Tuttuat_24";
 		break;
 		
 		case "Tuttuat_24":
-			dialog.text = "Why so surprised, white captain? Yum Cimil is a god of death, jade skull give power over dead and alive. Caribbean. It guarded by jaguar men. Without amulet you not pass them. With amulet you can enter temple, leave skull there, then find the Caleuche, defeat her captain and take amulet he took from you.";
-			link.l1 = "And why does the captain of the Caleuche need these amulets?";
+			dialog.text = "Чему твоя удивляться, белый капитан? Юм Симиль - бог смерти, нефритовый череп Юм Симиль давать власть над живые и мертвые. С амулет твоя суметь пройти храм, оставить там череп, потом найти Калеуче, победить его капитан и забрать амулет, который он у тебя отобрать.";
+			link.l1 = "А зачем капитану Калеуче нужны эти амулеты?";
 			link.l1.go = "Tuttuat_25";
 		break;
 		
 		case "Tuttuat_25":
-			dialog.text = "Methinks he want go to temple of jaguar men and he thinks amulet help him. But I can be wrong. Still, the Caleuche is always attracted by artefacts of my land. She sailed near island where temple of jaguar men is, and she sailed at shores of my motherland.";
-			link.l1 = "And where is that island?";
+			dialog.text = "Моя думать, что он хотеть попасть в храм люди-ягуары, и думать, что амулет помочь ему в поход туда. Но моя может ошибаться. Однако Калеуче всегда привлекать артефакты мой земля. Он плавать у берега остров с храм люди-ягуары, плавать у берега моя родина.";
+			link.l1 = "И где же находится этот остров?";
 			link.l1.go = "Tuttuat_26";
 		break;
 		
 		case "Tuttuat_26":
-			dialog.text = "First you find skull of Yum Cimil and amulets. Then we talk about island.";
-			link.l1 = "Okay. Can you give me a hint, where to look for the jade skull?";
+			dialog.text = "Сначала твоя найти череп Юм Симиль и амулеты. Потом мы говорить об остров.";
+			link.l1 = "Хорошо. Ты не дашь подсказку, где искать нефритовый череп?";
 			link.l1.go = "Tuttuat_27";
 		break;
 		
 		case "Tuttuat_27":
-			dialog.text = "Me know not. But it's here, in the Caribbean. And amulets, too. Ask. Seek. Find.";
-			link.l1 = "Heh... Alright, I'll try.";
+			dialog.text = "Моя не знать. Но он здесь, на Карибы. Как и амулеты. Искать. Спрашивать. Найти.";
+			link.l1 = "Эх... Ладно, буду пробовать.";
 			link.l1.go = "Tuttuat_28";
 		break;
 		
 		case "Tuttuat_28":
-			dialog.text = "And you be careful, white captain. The Caleuche feels Chavins items. When you have amulet, she well seek you. If she finds you, flee and quickly. If she gets you, you're a dead man.";
-			link.l1 = "This cursed ship is insanely fast! It's about twice as fast as any ship I have ever seen.";
+			dialog.text = "Твоя быть осторожен, белый капитан. Калеуче чувствовать чавинский предметы. Когда твоя получить амулет, он твоя искать. Если найти - твоя бежать от него. Если он твоя настигнуть - второй раз твоя не выжить.";
+			link.l1 = "Его проклятый корабль летит по ветру, как птица!.. Он раза в два быстрее всех кораблей, которые я только видел.";
 			link.l1.go = "Tuttuat_29";
 		break;
 		
 		case "Tuttuat_29":
-			dialog.text = "The Caleuche is cursed - that's why she's so fast. Hard to escape. You must have ship which can outrun the Caleuche. Or you end up dead. When you find amulet, bring it to me. Not take amulet on ship.";
-			link.l1 = "I already got it. Thanks for your tale, great shaman. It's time for me to go now.";
+			dialog.text = "Калеуче под проклятие - он сильно быстро двигаться. Трудно убежать. Твоя должен быть на корабль, который суметь уйти от Калеуче. Иначе твоя погибать. Как только твоя найти амулет - сразу везти его моя. Не возить амулет на корабль.";
+			link.l1 = "Да это я уже понял. Хорошо, великий шаман. Спасибо за рассказ. Мне пора идти.";
 			link.l1.go = "Tuttuat_31";
 		break;
 		
 		case "Tuttuat_31":
-			dialog.text = "Me be asking spirits to help you and save you from the Caleuche.";
+			dialog.text = "Моя будет призывать духи твоя в помощь, чтобы они помочь твоя спасти от Калеуче.";
 			link.l1 = "...";
 			link.l1.go = "Tuttuat_32";
 		break;
@@ -279,10 +279,10 @@ void ProcessDialogEvent()
 		case "Tuttuat_33":
 			if (CheckCharacterItem(pchar, "kaleuche_amulet2")) RemoveItems(pchar, "kaleuche_amulet2", 1);
 			else RemoveItems(pchar, "kaleuche_amulet3", 1);
-			Log_Info("You have given the amulet");
+			Log_Info("Вы отдали амулет");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "(looks) Yes, it's the one. Second Chavins amulet. You good. You need find yet another amulet.";
-			link.l1 = "I remember that, shaman. Soon you shall have it.";
+			dialog.text = "(смотрит) Да, это он. Второй амулет чавинцы. Твоя молодец. Твоя нужно найти еще один амулет.";
+			link.l1 = "Я помню, шаман. Скоро он будет у тебя.";
 			link.l1.go = "Tuttuat_34";
 		break;
 		
@@ -304,13 +304,13 @@ void ProcessDialogEvent()
 		case "Tuttuat_35":
 			if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "hunting" && Caleuche_CheckAmulet())
 			{
-				dialog.text = "Go, white man. Find one more amulet.";
-				link.l1 = "I already have it, great shaman. Here, take a look.";
+				dialog.text = "Идти, белый человек. Найти еще один амулет.";
+				link.l1 = "Он уже у меня, великий шаман. Вот, смотри.";
 				link.l1.go = "Tuttuat_36";
 			}
 			else
 			{
-				dialog.text = "Go, white man. Find one more amulet.";
+				dialog.text = "Идти, белый человек. Найти еще один амулет.";
 				link.l1 = "...";
 				link.l1.go = "Tuttuat_35_1";
 			}
@@ -324,30 +324,30 @@ void ProcessDialogEvent()
 		case "Tuttuat_36":
 			if (CheckCharacterItem(pchar, "kaleuche_amulet2")) RemoveItems(pchar, "kaleuche_amulet2", 1);
 			else RemoveItems(pchar, "kaleuche_amulet3", 1);
-			Log_Info("You have given the amulet");
+			Log_Info("Вы отдали амулет");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "(looks) Yes, it's the one. Third Chavins amulet. You good. You found all amulets to pass dead jaguar warriors, servants of Yum Cimil.";
-			link.l1 = "Now I take it, I will need the jade skull?";
+			dialog.text = "(смотрит) Да, это он. Третий амулет чавинцы. Твоя молодец. Твоя найти все нужный амулет, чтобы пройти через чавинави, слуги Юм Симиль, мертвый воины-ягуары.";
+			link.l1 = "Теперь, как я понимаю - дело за нефритовым черепом?";
 			link.l1.go = "Tuttuat_37";
 		break;
 		
 		case "Tuttuat_37":
-			dialog.text = "You speak true. Jade skull of Yum Cimil. You must take it to Chavins temple. Then the Caleuche lose its power for good.";
-			link.l1 = "Tuttuathapak, please, tell me, where to look? Any thoughts?";
+			dialog.text = "Твоя говорить правильно. Нефритовый череп Юм Симиль. Твоя должен отвезти его храм чавинцы. Тогда Калеуче терять свой сила навеки.";
+			link.l1 = "Туттуатхапак, подскажи - где его искать? У тебя есть хоть какие-то предположения?";
 			link.l1.go = "Tuttuat_38";
 		break;
 		
 		case "Tuttuat_38":
 			if (CheckAttribute(pchar, "questTemp.Caleuche.Skul"))
 			{
-				dialog.text = "No. You think where you last seen jade skull. Whom you gave it to. Start seek there.";
-				link.l1 = "Alright, great shaman. I'll do everything I can.";
+				dialog.text = "Нет. Твоя думать, где твоя последний раз видеть нефритовый череп. Кому отдать. Туда начать поиски.";
+				link.l1 = "Хорошо, великий шаман. Я сделаю все, что в моих силах.";
 				link.l1.go = "Tuttuat_39";
 			}
 			else
 			{
-				dialog.text = "A white warlock interested in skull of Yum Cimil. He seek for it. He come even our village. I heard warlock live in a house on Dutch island. Seek warlock on Dutch island, and you may know something.";
-				link.l1 = "Alright, great shaman. I'll do everything I can.";
+				dialog.text = "Череп Юм Симиль интересовать один белый колдун. Он его искать. Быть даже наш деревня. Моя слышать, что колдун жить в хижина на остров голландцы. Искать белый колдун на остров голландцы, и твоя мочь узнать что-то.";
+				link.l1 = "Хорошо, великий шаман. Я сделаю все, что в моих силах.";
 				link.l1.go = "Tuttuat_39";
 			}
 		break;
@@ -356,8 +356,8 @@ void ProcessDialogEvent()
 			DialogExit();
 			npchar.dialog.currentnode = "Tuttuat_40";
 			AddQuestRecord("Caleuche", "23");
-			if (CheckAttribute(pchar, "questTemp.Caleuche.Skul")) sTemp = "I'll start with visiting Curacao - there I've sold the jade skull to Joachim Merryman.";
-			else sTemp = "Tuttuathapak told me, that a 'white warlock'  showed interest in the jade skull, and advised seeking for him on Dutch islands. Who might that be?";
+			if (CheckAttribute(pchar, "questTemp.Caleuche.Skul")) sTemp = "Начну с посещения Кюрасао - именно там я продал нефритовый череп Жоакиму Мерриману.";
+			else sTemp = "Туттуатхапак сообщил, что нефритовым черепом интересовался какой-то 'белый колдун' и посоветовал искать на голландских островах. Кто бы это мог быть?";
 			AddQuestUserData("Caleuche", "sText", sTemp);
 			if (GetCharacterIndex("Map_Caleuche") != -1)
 			{
@@ -372,10 +372,10 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Tuttuat_40":
-			dialog.text = "Go, white man. Find jade skull of Yum Cimil.";
+			dialog.text = "Идти, белый человек. Найти нефритовый череп Юм Симиль.";
 			if (pchar.questTemp.Caleuche == "island")
 			{
-				link.l1 = "I have it here, great shaman, take a look.";
+				link.l1 = "Он у меня, великий шаман. Взгляни.";
 				link.l1.go = "Tuttuat_45";
 			}
 			else
@@ -391,13 +391,13 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Tuttuat_41":
-			dialog.text = "Go, white man. Find jade skull of Yum Cimil.";
-			link.l1 = "I am afraid I will not be able to do it. I have found the warlock, but in the last moment he slipped away with the skull. I have absolutely no idea, where he can be now.";
+			dialog.text = "Идти, белый человек. Найти нефритовый череп Юм Симиль.";
+			link.l1 = "Боюсь, что мне не удасться этого сделать. Я нашел колдуна, но в самый последний момент он выскользнул у меня из рук вместе с нефритовым черепом. Где он теперь - не имею даже малейшего представления.";
 			link.l1.go = "Tuttuat_42";
 		break;
 		
 		case "Tuttuat_42":
-			dialog.text = "This is very bad, white man. Now you not pass the temple and not defeat the Caleuche. Me give you no gift. Now you leave.";
+			dialog.text = "Очень плохо, белый человек. Теперь твоя не суметь пройти храм, не суметь победить Калеуче. Моя не сделать тебе подарок. Твоя уходить.";
 			link.l1 = "...";
 			link.l1.go = "Tuttuat_43";
 		break;
@@ -408,7 +408,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Tuttuat_44":
-			dialog.text = "You leave now, white man.";
+			dialog.text = "Твоя уходить, белый человек.";
 			link.l1 = "...";
 			link.l1.go = "Tuttuat_44_1";
 		break;
@@ -419,116 +419,116 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Tuttuat_45":
-			dialog.text = "(looking) Yes, it's the one. Very beautiful. And very frightening.";
-			link.l1 = "Sure... But what's more interesting - I crossed the entire Caribbean sea from Cuba to Dominica, and the the Caleuche never tried to attack me, when I had this skull. And when I was carrying amulets to you, it constantly ran me down.";
+			dialog.text = "(смотрит) Да, это он. Очень красивый. Но и очень страшный.";
+			link.l1 = "Это точно... Но вот что интересно: я пересек с нефритовым черепом всё Карибское море, от Кубы до Доминики, и Калеуче даже не попытался напасть. Я его вовсе не видел! Когда же я вез тебе амулеты, этот чертов призрак буквально загонял меня...";
 			link.l1.go = "Tuttuat_46a";
 		break;
 		
 		case "Tuttuat_46a":
-			dialog.text = "Methinks, the Caleuche is afraid of skull. I have no other explanation. Perhaps Yum Cimil make jade skull very dangerous to the Caleuche - in addition to curse. Perhaps that's why captain wanted so much taking three amulets of my people. To gain wisdom how to control spell of Yum Cimil.";
-			link.l1 = "So, as long as I have the jade skull on board of my ship, I can have no fear of the Caleuche's attacks?";
+			dialog.text = "Моя полагать - Калеуче бояться череп. Другой объяснение у моя нет. Возможно, Юм Симиль сделать нефритовый череп смертельно опасный для капитан Калеуче, кроме основной проклятье. Наверно по этой капитан так хотеть захватить три амулеты предки мой народ, получить мудрость и научить своя управлять заклятье Юм Симиль...";
+			link.l1 = "Получается - пока нефритовый череп у меня на судне, я могу не бояться атак Калеуче?";
 			link.l1.go = "Tuttuat_46b";
 		break;
 		
 		case "Tuttuat_46b":
-			dialog.text = "Exactly, palefaced one. You see it for yourself.";
-			link.l1 = "Very good! So, I can take command of a large ship, hire decent crew and prepare a nice welcome for that walking dead, when the spell is lifted from him, without fear that he'd intercept me earlier...";
+			dialog.text = "Получаться, так, бледнолицый. Твоя сам убедиться это.";
+			link.l1 = "Очень хорошо! Значит, я могу взять под командование корабль помощнее, и набрать побольше экипажа, чтобы устроить этому ходячему мертвяку достойный приём, когда заклятие спадет с него, не опасаясь, что он перехватит меня раньше...";
 			link.l1.go = "Tuttuat_46c";
 		break;
 		
 		case "Tuttuat_46c":
 			dialog.text = "";
-			link.l1 = "...about that spell, by the way - where to shall I take the jade skull now?";
+			link.l1 = "...кстати, о заклятии. Куда я теперь должен отнести нефритовый череп?";
 			link.l1.go = "Tuttuat_46";
 		break;
 		
 		case "Tuttuat_46":
-			dialog.text = "You must take it to Chavins temple and finish your journey. I want tell you a story. You ready listen, white man?";
-			link.l1 = "My ears are always open for your wisdom, Tuttuathapak.";
+			dialog.text = "Твоя должен отнести его в храм чавинцы и завершить свой путь. Моя рассказать твоя немного, твоя готов слушать, белый человек?";
+			link.l1 = "Мои уши всегда открыты для твоих слов, Туттуатхапак.";
 			link.l1.go = "Tuttuat_47";
 		break;
 		
 		case "Tuttuat_47":
-			dialog.text = "As legends of my ancestors say, long ago, when palefaced men not yet come to our land, great chieftain of the Chavins build a very-very large canoe and send it with a warrior party to land of many islands. The son of great chieftain led them, and there also was one of the high shamans. In the land of many islands they find a desert land and founded a settlement and build great temple of Yum Cimil, which only our great ancestors could build\nMessengers returned with good news, but no one seen neither chieftain son, nor shaman nor the warriors anymore. Legend had it that they left there to live, bud the wisest of shamans talked to spirits and told that no people lived there anymore, and that Yum Cimil ruled this land\nLand of many islands is the Caribbean, white man. Temple of Yum Cimil is on island where no white men nor Indians live. Only servants of Yum Cimil, the Chavinavi, still guard temple corridors.";
-			link.l1 = "And where is that island?";
+			dialog.text = "Как говорить сказания моя предки, великий вождь чавинцы давным-давно, когда бледнолицый люди еще не ступать на наш земля, построить большой-большой каноэ и отправить его с отряд воины в край многий острова. Отряд возглавлять сын великий вождь, также там быть и один из важный шаман. Они найти в край многий острова пустынный земля, высадить там, построить селение и большой храм Юм Симиль, какой уметь строить только наш древний предки\nНазад с благая весть об этом вернуться гонцы, но более никто не видеть ни сын вождь, ни важный шаман, ни воины. Остаться легенда, что они так и жить на этот остров, но самый мудрый из шаман предки говорить с духи и объявить, что на тот земля уже нет живой люди и над остров властвовать Юм Симиль\nКрай многий острова - это Карибы, белый человек. Храм Юм Симиль есть на один из остров, где не жить ни белый, ни индеец. Только слуги Юм Симиль, чавинави, по сей час охранять пустынный коридоры храм.";
+			link.l1 = "И где же находится этот остров?";
 			link.l1.go = "Tuttuat_48";
 		break;
 		
 		case "Tuttuat_48":
-			dialog.text = "I take it it's small and to north of village somewhere in that great water you call ocean.";
-			link.l1 = "Hmm... To the North of Dominica at the ocean border? Goddammit - it's a very large area in the sea! How am I supposed to find a small island there, if no one had heard about it?";
+			dialog.text = "Из сказание моя понимать, что он малый, и находиться от остров с эта деревня по направление, который бледнолицые зовут 'север', на край великий вода, который твои братья звать 'океан'.";
+			link.l1 = "Хм. На север от Доминики на границе с океаном? Черт возьми, да это же огромный участок моря! Как там искать маленький островок, о котором до сих пор никто не слышал?";
 			link.l1.go = "Tuttuat_49";
 		break;
 		
 		case "Tuttuat_49":
-			dialog.text = "I cannot tell better. But I know yet another story. You could hear it from your brothers. About twenty winters ago white man find that island. With a woman and old man he enter temple of Yum Cimil and take away a powerful artifact - the orb of rising sun. At shores of island pale-faced captain be attacked by the Caleuche\nPalefaced be smart. He blind captain and crew of the Caleuche with rising sun. Curse of the Caleuche weakened, and captain sank it, but orb of rising sun dissolve. If you find that palefaced man, he tell you where the island is.";
-			if (CheckAttribute(pchar, "questTemp.NatanStory")) link.l1 = "Ha! I think I know that pale-faced man... The stories sounds too similar. So, the Caleuche was sunk?";
-			else link.l1 = "Hmm... So, the Caleuche was sunk?";
+			dialog.text = "Моя не может быть точнее в указание этот остров. Но моя знать еще один история. Твоя тоже мог слышать ее от твоя братья. Около двадцати зим тому назад тот остров найти и посетить белый человек. Вместе с женщина и старик он проникнуть в храм Юм Симиль и унести оттуда шар восходящий солнце - могучий артефакт. У берега остров на корабль тот бледнолицый напасть Калеуче\nБледнолицый оказаться хитер и ослепить капитан и команда Калеуче, направив на тот шар восходящий солнце. Проклятие Калеуче ослабеть и бледнолицый капитан суметь потопить его, но шар восходящий солнце раствориться навеки. Если твоя суметь найти этот бледнолицый - он рассказать твоя, где остров.";
+			if (CheckAttribute(pchar, "questTemp.NatanStory")) link.l1 = "Ха! Кажется, я знаю, кто этот бледнолицый... Уж больно истории похожие. Калеуче был потоплен?";
+			else link.l1 = "Хм. Так Калеуче был потоплен?";
 			link.l1.go = "Tuttuat_50";
 		break;
 		
 		case "Tuttuat_50":
-			dialog.text = "Yes, but curse protect them from death. They fixed it and continued on their eternal journey.";
-			link.l1 = "Alright, got it. But what shall I do in the temple? Where should I put the skull? How can I beat the jaguar warriors guarding it? If they are the Chavinavi like those summoned by that witcher Merryman, it'd be foolish to go there alone - each of them is as strong as ten soldiers.";
+			dialog.text = "Да, быть потоплен, но проклятие охранить их от смерть, и они починить свой корабль и снова отправиться в свой вечный поход.";
+			link.l1 = "Так, ладно, с островом понятно, но что я должен делать в храме? Куда положить череп? Как справиться с воинами-ягуарами, которые его охраняют? Если это такие же чавинави, которых призывал этот колдун Мерриман, то лучше туда даже не соваться - они сильны, как десять солдат.";
 			link.l1.go = "Tuttuat_51";
 		break;
 		
 		case "Tuttuat_51":
-			dialog.text = "They are not. Chavinavi summoned by white witcher with skull are weak. Much weaker than those summoned by Yum Cimil himself. You never harm them, and they kill you with one blow.";
-			link.l1 = "Hold on - and how that pale-faced man managed to enter the temple and steal the artifact?";
+			dialog.text = "Не такие же. Чавинави, который смог призвать белый колдун при помощь череп, намного слабей тех, который призывать сам Юм Симиль. Твоя даже не суметь нанести им урон, а они убить один удар.";
+			link.l1 = "Постой, а как же тогда тот бледнолицый прошел в храм и похитил артефакт?";
 			link.l1.go = "Tuttuat_52";
 		break;
 		
 		case "Tuttuat_52":
-			dialog.text = "Before that first palefaced enter temple, it be guarded by spirits of dead ancestors. Palefaced was strong warrior and he beat them. When he steal orb of rising sun, Yum Cimil was furious. He send fire and brimstone on palefaced man and almost destroy temple, but he run away with artefact. Now Yum Cimil summoned invincible jaguar warriors to guard temple.";
-			link.l1 = "Glorious! And how will I sneak in, then?";
+			dialog.text = "До прихода первый бледнолицый в храм его охранять духи мертвый воины-предки, который когда-то прийти туда в далекий время. Бледнолицый суметь победить их - он быть сильный воин. Когда шар восходящий солнце быть украден, Юм Симиль разгневаться. Он наслать на бледнолицый кара огонь и земля, и чуть не разрушить храм, но бледнолицый суметь убежать вместе с артефакт. Теперь Юм Симиль призвать для охрана храм непобедимый воины-ягуары.";
+			link.l1 = "Просто замечательно! И как же я туда теперь пройду?";
 			link.l1.go = "Tuttuat_53";
 		break;
 		
 		case "Tuttuat_53":
-			dialog.text = "I help you, white man. I give you two Chavins amulets you bring me. Me talk to ancestor spirits and empower amulet. When you don it, you can fight jaguar warriors like common soldiers, though very strong. Amulet protect you and give you weapon power to harm Chavinavi of temple.";
-			link.l1 = "Are you certain that the amulets will help?";
+			dialog.text = "Моя помогать твоя, белый человек. Моя дать твоя два амулет чавинцы, который твоя мне принести. Моя беседовать с духи предки и зарядить амулет сила. Когда твоя надеть амулет, твоя суметь драться с воины-ягуары как с очень сильный, но обычный солдат. Амулет защитить твоя и наделить твоя оружие сила, способный нанести урон чавинави из храм.";
+			link.l1 = "Ты уверен, что амулеты помогут мне?";
 			link.l1.go = "Tuttuat_54";
 		break;
 		
 		case "Tuttuat_54":
-			dialog.text = "Me know. Me talk to ancestors. Me great shaman. You trust me. You take two amulets. One protects. Other empowers weapon. One amulet you must don. Which one - you choose. If you no wear amulet, you perish to jaguar warriors\nAnd you remember that on midnight Yum Cimil bring back to life all warriors you kill. You must figure the time to not fight they twice.";
-			link.l1 = "I see.";
+			dialog.text = "Моя знать. Моя говорить с предки. Моя великий шаман. Твоя верить мне. У твоя быть два амулет с собой. Один - защищать, второй - давать сила оружие. Один амулет твоя должен одеть. Какой - выбирать сам. Если на тебе не быть одет амулет - твоя погибнуть от палица воин-ягуар\nИ твоя помнить, что как только наступить полночь, Юм Симиль оживить все воины-ягуары, которых твоя убить. Твоя должен рассчитать время так, чтобы не сражаться с чавинави снова.";
+			link.l1 = "Ясно.";
 			link.l1.go = "Tuttuat_55";
 		break;
 		
 		case "Tuttuat_55":
-			dialog.text = "You take amulets. Here they are. You remember that they power has limits. It wane in one moon. You remember me say that you not hold they power? Only great shaman of our tribe can hold it.";
-			link.l1 = "I remember. So, I only have one moon? One month?";
+			dialog.text = "Твоя брать амулет. Вот они. Но твоя помнить, что сила амулет не быть вечна, и иссякнуть через один луна. Твоя помнить, моя говорить - твоя не суметь удержать сила амулет? Только великий шаман наш племя уметь это.";
+			link.l1 = "Помню. Значит, у меня одна луна? Один месяц?";
 			link.l1.go = "Tuttuat_56";
 		break;
 		
 		case "Tuttuat_56":
-			dialog.text = "Yes. When you come to temple Yum Cimil, you must find shrine and a great statue of condor in it. This is the most important part of temple. Here you put jade skull of Yum Cimil, and curse be lifted from the Caleuche. When he attack you again, you defeat him like ordinary man. They you bring me amulet he take from you.";
-			link.l1 = "Condor? What is it?";
+			dialog.text = "Да. Когда твоя прийти в храм Юм Симиль, твоя должен найти святилище, а в нем - великий статуя кондор. Это самый важный место храм. Туда положить нефритовый череп Юм Симиль и проклятие падет с Калеуче. И когда он снова напасть на твоя - твоя суметь победить его, как он быть обычный человек. А потом принести моя амулет, который он отнять у твоя, и получить награда.";
+			link.l1 = "Кондор? Что это?";
 			link.l1.go = "Tuttuat_57";
 		break;
 		
 		case "Tuttuat_57":
-			dialog.text = "Condor is a great bird which live in the mountains of my home. In memory of home ancestors build statue of condor in shrine.";
-			link.l1 = "Okay, I'll search for it...";
+			dialog.text = "Кондор - это большой птица, живущий горы мой родина. В память о родина, предки возвести в святилище великий статуя кондор.";
+			link.l1 = "Ну что же, буду искать...";
 			link.l1.go = "Tuttuat_58";
 		break;
 		
 		case "Tuttuat_58":
-			dialog.text = "You be careful. Many dangers lurk in temple beside jaguar warriors.";
-			link.l1 = "What dangers?";
+			dialog.text = "Твоя быть осторожен. Кроме воины-ягуары, твоя найти в храм другой опасность.";
+			link.l1 = "Какая опасность?";
 			link.l1.go = "Tuttuat_59";
 		break;
 		
 		case "Tuttuat_59":
-			dialog.text = "I don't know for sure. You see for yourself. It can be a trap. Or a confusion. Enter shrine is hard. Entrance be sealed, and you must find way open it. My ancestors be not only great warriors and shamans, but great builders, too.";
-			link.l1 = "Heh! Sounds frightening, but let'em all come! I will not waste time. I am setting sail at once!";
+			dialog.text = "Моя точно не знать. Твоя увидеть сам. Это мочь быть коварный ловушка. Или обман, чтобы запутать твоя. В святилище твоя пройти нелегко. Вход наверняка быть запечатан, и твоя должен суметь открыть его. Моя предки быть не только великий воин и шаман, но и великий строитель.";
+			link.l1 = "Эх! Звучит пугающе, но где моя не пропадала! Не буду терять времени и выхожу в море!";
 			link.l1.go = "Tuttuat_60";
 		break;
 		
 		case "Tuttuat_60":
-			dialog.text = "Go, white warrior. Me shall summon spirits help you against jaguar warriors and the Caleuche.";
+			dialog.text = "Ступать, белый воин. Моя призывать духи в помощь твоя в битва против воины-ягуары и Калеуче.";
 			link.l1 = "...";
 			link.l1.go = "Tuttuat_61";
 		break;
@@ -536,7 +536,7 @@ void ProcessDialogEvent()
 		case "Tuttuat_61":
 			DialogExit();
 			npchar.dialog.currentnode = "Tuttuat_62";
-			Log_Info("You have received two amulets");
+			Log_Info("Вы получили два амулета");
 			PlaySound("interface\important_item.wav");
 			GiveItem2Character(pchar, "kaleuche_amulet2");
 			GiveItem2Character(pchar, "kaleuche_amulet3");
@@ -573,27 +573,27 @@ void ProcessDialogEvent()
 			pchar.quest.Caleuche_khaelroa_arrive.win_condition.l1.location = "KhaelRoa_port";
 			pchar.quest.Caleuche_khaelroa_arrive.function = "Caleuche_KhaelRoaArrive";
 			AddQuestRecord("Caleuche", "34");
-			if (CheckAttribute(pchar, "questTemp.NatanStory")) 
+			if (CheckAttribute(pchar, "questTemp.NatanStory"))
 			{
 				pchar.questTemp.Caleuche.NatanInfo = "true";
-				AddQuestUserData("Caleuche", "sText", "But I have a clue: it seems that white captain, who had visited the temple of the Chavins, is none other than my good friend Nathaniel Hawk. I remember him saying that he had a map of that island in Maroon Town. Guess I shall pay Nathan a visit.");
+				AddQuestUserData("Caleuche", "sText", "Но у меня есть зацепка: похоже, что белый капитан, побывавший в храме чавинцев, не кто иной, как мой добрый друг Натаниэль Хоук. Он говорил, что в Марун-Тауне у него есть карта этого острова. Надо навестить Натана.");
 			}
-			else AddQuestUserData("Caleuche", "sText", "That's a huge area in the sea, but I have no choice. I'll have to scour it entirely.");
+			else AddQuestUserData("Caleuche", "sText", "Просто огромный кусок морского пространства, но делать нечего: надо прочесать указанный район.");
 		break;
 		
 		case "Tuttuat_62":
 			if (pchar.questTemp.Caleuche == "regard" && CheckCharacterItem(pchar, "kaleuche_amulet1") && CheckCharacterItem(pchar, "kaleuche_amulet2") && CheckCharacterItem(pchar, "kaleuche_amulet3")) 
 			{
-				dialog.text = "My talk with spirits. You were on the island in temple of Yum Cimil. You find the  Caleuche and amulet?";
-				link.l1 = "You're right, great shaman. I have found the island, entered the temple and left the jade skull inside.";
+				dialog.text = "Моя говорить с духи. Твоя быть на остров в храм Юм Симиль. Ты найти Калеуче и амулет?";
+				link.l1 = "Ты прав, великий шаман. Я нашел остров, побывал в храме и оставил в нем нефритовый череп.";
 				link.l1.go = "Tuttuat_63";
 			}
 			else
 			{
-				dialog.text = "Go, white warrior.";
+				dialog.text = "Ступать, белый воин.";
 				if (CheckAttribute(pchar, "questTemp.Caleuche.AmuletOver"))
 				{
-					link.l1 = "Tuttuathapak, you see... I didn't take the skull to the temple in time, and your amulets lost their power.";
+					link.l1 = "Туттуатхапак, тут такое дело... Я не успел отнести нефритовый череп в храм, а твои амулеты потеряли силу...";
 					link.l1.go = "Tuttuat_82";
 				}
 				else
@@ -613,8 +613,8 @@ void ProcessDialogEvent()
 			pchar.quest.Caleuche_TuttuatAmuletOver.over = "yes"; //снять таймер
 			if(IsEquipCharacterByArtefact(pchar, "kaleuche_amulet2")) RemoveCharacterEquip(pchar, TALISMAN_ITEM_TYPE);
 			if(IsEquipCharacterByArtefact(pchar, "kaleuche_amulet3")) RemoveCharacterEquip(pchar, TALISMAN_ITEM_TYPE);
-			dialog.text = "You lifted curse from the Caleuche. She find you thereafter?";
-			link.l1 = "Yes. We met right at the island. I engaged in combat with her and came out victorious. Now I have all three amulets. Here, take them.";
+			dialog.text = "Твоя снять проклятие с Калеуче. Он найти твоя после этого?";
+			link.l1 = "Да. Мы встретились прямо у острова. Я вступил с ним в бой и победил его. Теперь все три амулета у меня. Возьми их.";
 			link.l1.go = "Tuttuat_64";
 		break;
 		
@@ -622,60 +622,60 @@ void ProcessDialogEvent()
 			RemoveItems(pchar, "kaleuche_amulet1", 1);
 			RemoveItems(pchar, "kaleuche_amulet2", 1);
 			RemoveItems(pchar, "kaleuche_amulet3", 1);
-			Log_Info("You have given three Chavin amulets");
+			Log_Info("Вы отдали три чавинских амулета");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "You big and strong warrior, palefaced one. Tuttuathapak not like white men. But me respect brave and skillful warrior. You did very well. You rid seas of the Caleuche. You bring me three amulets. Me reward you.";
-			link.l1 = "You promised something about 'power that I will be able to hold'?";
+			dialog.text = "Твоя большой и сильный воин, бледнолицый. Туттуатхапак не любить белый человек. Но моя уважать храбрый и умелый воин. Твоя сделать славный дело - избавить море от Калеуче. Твоя принести мне три амулет. Моя вознаградить твоя.";
+			link.l1 = "Ты обещал что-то насчет 'силы, которую я смогу удержать'?";
 			link.l1.go = "Tuttuat_65";
 		break;
 		
 		case "Tuttuat_65":
-			dialog.text = "You speak true. I'll give you that power. None in Caribbean know secret of plant I know. Listen to me, palefaced one! In my home, there be medicinal plant. We call it Manga Rosa. You hear about that plant?";
+			dialog.text = "Твоя говорить правда. Я дать тебе этот сила. Никто на Карибы не знать секрет растения, который знать моя. Слушать же моя, бледнолицый! На мой родина расти целебный трава. Мы называть ее 'мангароса'. Твоя слышать про такой трава?";
 			if (CheckAttribute(pchar, "questTemp.Mangarosa.Tell"))
 			{
-				link.l1 = "Yes. I held it in my hands. Gypsies show great interest in it. And one of them, healer Amelia, can even...";
+				link.l1 = "Да. Я держал в руках эту траву. Ей очень интересуются цыганки. А одна из них, знахарка Амелия, даже умеет делать из нее...";
 				link.l1.go = "Tuttuat_66";
 			}
 			else
 			{
-				link.l1 = "No idea...";
+				link.l1 = "Нет.";
 				link.l1.go = "Tuttuat_66_1";
 			}
 		break;
 		
 		case "Tuttuat_66":
-			dialog.text = "Me hear of herbalist Amelia. She not know much. She not know the secret of Manga Rosa. Only great shaman from my homeland, from where Manga Rosa be taken here, can use its full power.";
-			link.l1 = "What power?";
+			dialog.text = "Моя слышать про травница с имя Амелия. Она мало уметь. Она не знать тайны мангароса. Только великий шаман моя родина, откуда на Карибы попасть этот трава, уметь раскрыть ее истинный сила.";
+			link.l1 = "Что за сила?";
 			link.l1.go = "Tuttuat_67";
 		break;
 		
 		case "Tuttuat_66_1":
-			dialog.text = "This herb grow in my homeland, but it occurs in the Caribbean, too. It's a light-green tall plant, with leaves like palm with fingers spread, and nice smell. You will know it instantly and not confuse it with nothing. Me know secrets of this plant. I can extract power from it.";
-			link.l1 = "What power?";
+			dialog.text = "Этот трава расти на моя родина, но также встречаться и на Карибы. Это светло-зеленый высокий растение, с листья, как растопыренный пальцы ладонь, с приятный запах. Твоя легко узнать этот трава и не спутать его ни с чем. Моя знать тайный секреты этот трава и извлечь из она сила.";
+			link.l1 = "Что за сила?";
 			link.l1.go = "Tuttuat_67";
 		break;
 		
 		case "Tuttuat_67":
-			dialog.text = "Me can make potions of Manga Rosa. Very strong potions. None but me in the Caribbean can make those. My potions make man forever stronger, faster, smarter, keen-eyed, handsomer and luckier. I brew for you three potions.";
-			link.l1 = "Very interesting!";
+			dialog.text = "Моя уметь готовить из мангароса зелья. Очень сильный зелья, никто на Карибы, кроме моя, не уметь делать такой. Моя зелья делать человек навсегда сильней, ловчей, зорче, устойчивей, умней, красивей и удачливей. Моя сварить для твоя три зелье.";
+			link.l1 = "Очень интересно!";
 			link.l1.go = "Tuttuat_68";
 		break;
 		
 		case "Tuttuat_68":
-			dialog.text = "You great warrior, so you first need potion to make you sturdier and quicker. And you choose third potion after I make first two. But you must bring me Manga Rosa to make them - I have none.";
-			link.l1 = "Where should I look for Manga Rosa?";
+			dialog.text = "Твоя - великий воин, поэтому твоя нужней всего зелье, который повысит твой реакция в бой и выносливость в поход. А третий зелье твоя выбрать сам, когда моя сварить два первых. Но твоя должен принести для эти зелья мангароса, так как у моя ее нет.";
+			link.l1 = "Где лучше искать мангаросу?";
 			link.l1.go = "Tuttuat_69";
 		break;
 		
 		case "Tuttuat_69":
-			dialog.text = "Manga Rosa is rare herb in Caribbean. It grows where peoplу walk not a lot. Stupid people pick it, dry it and smoke it. It is very stupid. NO SMOKE IT! Seek jungle and coves, secluded places where silly people not thread. Look carefully. For each potion I need five stems of Manga Rosa.";
-			link.l1 = "Alright, great shaman. I'll come back to you once I have enough Manga Rosa.";
+			dialog.text = "Мангароса - редкий трава на Карибы. Расти там, где мало люди ходить. Бестолковый люди срывать этот трава, сушить и курить ее. Это великий глупость. Искать джунгли и бухты, укромный места, где не ходить глупый люди. Смотреть внимательней. На каждый зелье моя нужно пять стебель мангароса.";
+			link.l1 = "Хорошо, великий шаман. Как только я отыщу достаточно мангаросы - я приду к тебе.";
 			link.l1.go = "Tuttuat_70";
 		break;
 		
 		case "Tuttuat_70":
-			dialog.text = "Go, white warrior. Bring me Manga Rosa. You not regret it. My potions are best. Me tell spirits help you in your search.";
-			link.l1 = "Thank you! Until we meet again!";
+			dialog.text = "Ступать, белый воин. Принести мангароса. Твоя не пожалеть. Моя зелье - лучший зелье. Моя говорить духи, чтобы они помочь твоя в поиски.";
+			link.l1 = "Спасибо. До встречи!";
 			link.l1.go = "Tuttuat_71";
 		break;
 		
@@ -688,13 +688,13 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Tuttuat_72":
-			dialog.text = "You bring five stems of Manga Rosa for potion?";
+			dialog.text = "Твоя принести пять стебель мангароса для зелье?";
 			if (GetCharacterItem(pchar, "cannabis7") >= 5)
 			{
-				link.l1 = "Yes. Here are five plants that you need.";
+				link.l1 = "Да. Вот пять растений, которые тебе нужны.";
 				link.l1.go = "Tuttuat_73";
 			}
-			link.l2 = "Not yet, great shaman. My search continues...";
+			link.l2 = "Пока нет, великий шаман. Но я весь в поисках...";
 			link.l2.go = "Tuttuat_72_1";
 		break;
 		
@@ -708,30 +708,30 @@ void ProcessDialogEvent()
 			switch (sti(pchar.questTemp.Caleuche.Mangarosa))
 			{
 				case 0:
-					dialog.text = "Very good. Come tomorrow, once sun goes down. I will brew you potions which will increase your reaction and dexterity.";
-					link.l1 = "Alright, shaman. I'll come tomorrow in the evening.";
+					dialog.text = "Очень хорошо. Приходить завтра, когда солнце скрыться за деревья. Я сварить для твоя зелье, которое повысить твой реакция и ловкость.";
+					link.l1 = "Хорошо, шаман. Я приду завтра вечером.";
 					link.l1.go = "Tuttuat_74";
 					pchar.questTemp.Caleuche.Mangarosa = 1;
 				break;
 				
 				case 1:
-					dialog.text = "Very good. Come tomorrow, once sun goes down. I will brew you potions which will increase your endurance.";
-					link.l1 = "Alright, shaman. I'll come tomorrow in the evening.";
+					dialog.text = "Очень хорошо. Приходить завтра, когда солнце скрыться за деревья. Я сварить для твоя зелье, которое повысить твой выносливость.";
+					link.l1 = "Хорошо, шаман. Я приду завтра вечером.";
 					link.l1.go = "Tuttuat_74";
 					pchar.questTemp.Caleuche.Mangarosa = 2;
 				break;
 				
 				case 2:
-					dialog.text = "Very good. What is your potion to choose? Potion of strength, keen vision, intelligence, beauty or luck?";
-					link.l1 = "Potion of strength.";
+					dialog.text = "Очень хорошо. Какой зелье твоя выбирать? Зелье сила, зоркость, ум, красота, удача?";
+					link.l1 = "Зелье силы.";
 					link.l1.go = "Tuttuat_77_1";
-					link.l2 = "Potion of keen vision.";
+					link.l2 = "Зелье зоркости.";
 					link.l2.go = "Tuttuat_77_2";
-					link.l3 = "Potion of intelligence.";
+					link.l3 = "Зелье ума.";
 					link.l3.go = "Tuttuat_77_3";
-					link.l4 = "Potion of beauty.";
+					link.l4 = "Зелье красоты.";
 					link.l4.go = "Tuttuat_77_4";
-					link.l5 = "Potion of luck.";
+					link.l5 = "Зелье удачи.";
 					link.l5.go = "Tuttuat_77_5";
 				break;
 			}
@@ -752,16 +752,16 @@ void ProcessDialogEvent()
 			if (CheckAttribute(pchar, "questTemp.Caleuche.Potion"))
 			{
 				sTemp = "";
-				if (sti(pchar.questTemp.Caleuche.Mangarosa) == 1) sTemp = "  It make your movements faster, and you better fight with fine light weapons.";
-				if (sti(pchar.questTemp.Caleuche.Mangarosa) == 2) sTemp = "  It make you more hardy in long journeys, and you better fight with sharp sabers.";
-				dialog.text = "Potion ready, pale-faced warrior. You take it."+sTemp+"";
-				link.l1 = "Thank you, great shaman.";
+				if (sti(pchar.questTemp.Caleuche.Mangarosa) == 1) sTemp = " Он сделать твоя движение быстрей, и твоя суметь сражаться лучше тонкий изящный оружие.";
+				if (sti(pchar.questTemp.Caleuche.Mangarosa) == 2) sTemp = " Он сделать твоя выносливей в долгий поход, и твоя суметь сражаться лучше острый сабля.";
+				dialog.text = "Зелье готово, бледнолицый воин. Твоя взять он."+sTemp+"";
+				link.l1 = "Спасибо, великий шаман.";
 				link.l1.go = "Tuttuat_76";
 			}
 			else
 			{
-				dialog.text = "It's not ready yet, white man. Come later. Not disturb me.";
-				link.l1 = "Fine...";
+				dialog.text = "Пока еще рано, белый человек. Твоя приходить позже. Не мешать моя.";
+				link.l1 = "Хорошо...";
 				link.l1.go = "Tuttuat_75_1";
 			}
 		break;
@@ -774,14 +774,14 @@ void ProcessDialogEvent()
 		case "Tuttuat_76":
 			if (sti(pchar.questTemp.Caleuche.Mangarosa) > 2)
 			{
-				dialog.text = "Me brew for you all potions I promised. You become stronger. You happy?";
-				link.l1 = "Yes, great shaman. That was indeed a worthy reward.";
+				dialog.text = "Моя сварить твоя все зелье, что обещать. Ты стать сильней. Твоя доволен?";
+				link.l1 = "Да, великий шаман. Твоя награда была достойной.";
 				link.l1.go = "Tuttuat_78";
 			}
 			else
 			{
-				dialog.text = "You find five more stems of Manga Rosa, you bring them to me. I make you another potion.";
-				link.l1 = "I will bring you more of it. Until we meet again!";
+				dialog.text = "Когда твоя найти еще пять стебель мангароса - приносить моя. Моя сварить твоя еще один зелье.";
+				link.l1 = "Я обязательно принесу еще травы. До встречи!";
 				link.l1.go = "Tuttuat_77";
 			}
 		break;
@@ -819,54 +819,54 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Tuttuat_77_1":
-			dialog.text = "Come tomorrow, as usual. I brew you potion to make you stronger, and you better fight with big axe.";
-			link.l1 = "Fine.";
+			dialog.text = "Приходить завтра как обычно. Моя сварить зелье, который сделать твоя сильней, и твоя суметь сражаться лучше большой топор.";
+			link.l1 = "Хорошо.";
 			link.l1.go = "Tuttuat_74";
 			pchar.questTemp.Caleuche.Mangarosa = 31;
 		break;
 		
 		case "Tuttuat_77_2":
-			dialog.text = "Come tomorrow, as usual. I brew you potion to make your eyes keen, and you better hit with fiery weapons.";
-			link.l1 = "Fine.";
+			dialog.text = "Приходить завтра как обычно. Моя сварить зелье, который сделать твоя зорче, и твоя суметь попадать лучше из огненный оружие.";
+			link.l1 = "Хорошо.";
 			link.l1.go = "Tuttuat_74";
 			pchar.questTemp.Caleuche.Mangarosa = 32;
 		break;
 		
 		case "Tuttuat_77_3":
-			dialog.text = "Come tomorrow, as usual. I brew you potion to make you smarter, and you better hide from enemies.";
-			link.l1 = "Fine.";
+			dialog.text = "Приходить завтра как обычно. Моя сварить зелье, который сделать твоя умней, и твоя суметь прятаться лучше от враги.";
+			link.l1 = "Хорошо.";
 			link.l1.go = "Tuttuat_74";
 			pchar.questTemp.Caleuche.Mangarosa = 33;
 		break;
 		
 		case "Tuttuat_77_4":
-			dialog.text = "Come tomorrow, as usual. I brew you potion to make you handsomer, and you better persuade people.";
-			link.l1 = "Fine.";
+			dialog.text = "Приходить завтра как обычно. Моя сварить зелье, который сделать твоя красивей, и твоя суметь убеждать люди лучше.";
+			link.l1 = "Хорошо.";
 			link.l1.go = "Tuttuat_74";
 			pchar.questTemp.Caleuche.Mangarosa = 34;
 		break;
 		
 		case "Tuttuat_77_5":
-			dialog.text = "Come tomorrow, as usual. I brew you potion to make you luckier, and you have good fortune.";
-			link.l1 = "Fine.";
+			dialog.text = "Приходить завтра как обычно. Моя сварить зелье, который сделать твоя удачливей, и будет больше хороший случай твоя жизнь.";
+			link.l1 = "Хорошо.";
 			link.l1.go = "Tuttuat_74";
 			pchar.questTemp.Caleuche.Mangarosa = 35;
 		break;
 		
 		case "Tuttuat_78":
-			dialog.text = "Me glad that you like my art, art of great shaman.";
-			link.l1 = "Say, Tuttuathapak, what did you need these three amulets for? Just curious...";
+			dialog.text = "Моя рад, что твоя доволен мой искусство, искусство великий шаман.";
+			link.l1 = "Скажи, Туттуатхапак, а зачем тебе нужны были эти три амулета? Мне просто интересно...";
 			link.l1.go = "Tuttuat_79";
 		break;
 		
 		case "Tuttuat_79":
-			dialog.text = "You already feel the power of these two amulets. Spirits will help me give them power, and all three amulet together give great shaman wisdom and enlightenment of my ancestors, great Chavins.";
-			link.l1 = "I see. Alright, thanks once again for your excellent potions. You're truly a great shaman. It is time for me to go now. Farewell, Tuttuathapak.";
+			dialog.text = "Твоя уже ощутить силу двух этих амулет. Моя с помощь духи придать им сила, а все три амулет вместе даровать великий шаман мудрость и просвещение древний предки моя народ, великий индейцы чавин.";
+			link.l1 = "Ясно. Ладно, спасибо еще раз за отличные зелья. Ты действительно великий шаман. А теперь мне пора идти. Прощай, Туттуатхапак.";
 			link.l1.go = "Tuttuat_80";
 		break;
 		
 		case "Tuttuat_80":
-			dialog.text = "Farewell, white warrior. You no longer seek me. Me go to seclusion, grasp wisdom of my ancestors. May spirits help you in your journeys!";
+			dialog.text = "Прощай, белый воин. Больше твоя не искать встреча с моя. Моя удаляться постигать мудрость предки. Да помочь твоя духи в твоя дела!";
 			link.l1 = "...";
 			link.l1.go = "Tuttuat_81";
 		break;
@@ -896,11 +896,11 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Tuttuat_82":
-			Log_Info("You have given amulets");
+			Log_Info("Вы отдали амулеты");
 			RemoveItems(pchar, "kaleuche_amulet2", 1);
 			RemoveItems(pchar, "kaleuche_amulet3", 1);
-			dialog.text = "You make me sad, pale-face. Me perform ritual with spirits to give power these amulets, and you waste it. Me sad. You go now. Tuttuathapak nothing more to say you.";
-			link.l1 = "Now that was really unlucky... Oh, well. Farewell, shaman.";
+			dialog.text = "Твоя огорчить моя, бледнолицый. Моя провести целый ритуал с духи предки, чтобы дать сила эти амулет, а ты потратить она зря. Моя огорчен. Твоя ступать. Туттуатхапак больше нечего сказать твоя.";
+			link.l1 = "Как всё неудачно вышло... Прощай, шаман.";
 			link.l1.go = "Tuttuat_83";
 		break;
 		
@@ -918,15 +918,15 @@ void ProcessDialogEvent()
 		// капитан Калеуче
 		case "CaleucheCap":
 			PlaySound("Types\skel.wav");
-			dialog.text = "It's all in vain, sailor. You will not best me. And all my men lying on the deck will put together their bones and rise again before dawn. We cannot be killed, for death abandoned us.";
-			link.l1 = "Goddammit! Are you dead or alive? More likely still alive - the dead are usually lying quietly and not swinging swords. But who are you and why did you attack my ship?";
+			dialog.text = "Бесполезно, моряк. Ты не сможешь меня одолеть. А все мои матросы, которых вы положили на палубе, еще до восхода солнца соберут свои кости и восстанут вновь. Нас нельзя убить, ибо смерть покинула нас.";
+			link.l1 = "Черт возьми! Так вы живые или мертвецы? Наверное, живые, потому что покойники обычно лежат тихо и не машут саблями. Кто ты такой и зачем напал на мое судно?";
 			link.l1.go = "CaleucheCap_1";
 		break;
 		
 		case "CaleucheCap_1":
 			PlaySound("Reef\reef_01.wav");
-			dialog.text = "I am Balthazar de Cordes of the Flying Heart. Pitiful cowards, who don't know anything about me, call me Van der Decken, captain of the Flying Dutchman. But it doesn't matter. What matters is that you have an amulet on you, which I'll take now. I need it! I feel it! The great amulet of the Chavins, one of the three, will finally be mine! Kneel before me, mortal!";
-			link.l1 = "Go fuck yourself, corpse!";
+			dialog.text = "Я - Бальтазар де Кордес, капитан корабля 'Летящее сердце'. Жалкие трусы, не знающие обо мне ничего, называют меня Ван дер Декеном, капитаном 'Летучего Голландца'. Но это не имеет значения... У тебя есть амулет, который я сейчас заберу. Он нужен мне! Я чувствую его! Великий амулет чавинцев, один из трех, наконец-то он будет моим! Склонись передо мной, смертный!";
+			link.l1 = "Амулет? Аргх!..";
 			link.l1.go = "CaleucheCap_2";
 		break;
 		
@@ -943,19 +943,19 @@ void ProcessDialogEvent()
 		break;
 		
 		case "CaleucheCap_3":
-			dialog.text = "I can't believe it!.. It's been so long ago when I have last seen my own blood and felt pain!..";
-			link.l1 = "This time you have lost, Balthazar de Cordes. I know your story. The jade skull has been returned to the temple of Chavins, and the curse of Yum Cimil no longer hangs upon you or your crewmen. You will no longer bring your sailors back to life.";
+			dialog.text = "Я не могу поверить!.. Как же давно я не испытывал боли и не видел собственной крови!..";
+			link.l1 = "На сей раз ты проиграл, Бальтазар де Кордес. Я узнал твою историю. Нефритовый череп возвращен в храм чавинцев, и проклятие Юм Симиля не тяготеет над тобой и твоей командой. Больше ты не вернешь своих матросов к жизни.";
 			link.l1.go = "CaleucheCap_4";
 		break;
 		
 		case "CaleucheCap_4":
-			dialog.text = "Oh, so you're considering yourself a redeemer, perhaps? No! Balthazar de Cordes will sell dearly whatever little has left of his life!";
-			link.l1 = "The last journey of the Flying Heart ends here, at Khael Roa. And you will not lift your ship from the seabed, like you did twenty five years ago.";
+			dialog.text = "Может, ты считаешь себя избавителем? Нет! Бальтазар де Кордес дорого продаст даже остатки своей жизни!";
+			link.l1 = "Последний поход 'Летящего сердца' закончится тут, у Хаэль Роа. И ты не сможешь поднять свое судно с дна морского, как двадцать пять лет назад.";
 			link.l1.go = "CaleucheCap_5";
 		break;
 		
 		case "CaleucheCap_5":
-			dialog.text = "Hawk! Twenty five years have passed, but I still remember it like it was only yesterday. The radiance of that orb which blinded us and split my ship. That was the first and the last defeat of the Flying Heart and Balthazar de Cordes... So let's cross the swords, captain! Death in battle is light and welcome!";
+			dialog.text = "Двадцать пять лет прошло... а словно это было вчера... Я до сих пор помню сияние шара, ослепившее нас и расколовшее мой корабль. Это было первое и единственное поражение, которое потерпел 'Летящее сердце' и Бальтазар де Кордес... Скрестим же шпаги, капитан! Смерть в бою легка и весела!";
 			link.l1 = "...";
 			link.l1.go = "CaleucheCap_6";
 		break;
@@ -972,49 +972,49 @@ void ProcessDialogEvent()
 		
 		// --> // наш матрос на берегу
 		case "on_coast":
-			dialog.text = "Finally you woke up, captain... How do you feel?";
-			link.l1 = "Goddammit, what happened? My head is splitting...";
+			dialog.text = "Ну наконец-то вы очнулись, кэп... Как самочувствие?";
+			link.l1 = "Черт возьми, что произошло? Аргх, голова раскалывается...";
 			link.l1.go = "on_coast_1";
 		break;
 		
 		case "on_coast_1":
-			dialog.text = "When we entered the captain's cabin, you were lying on the floor still. The guys picked you up and dragged you to our ship - and just in time, since the dead men lying on the deck began to rise again\nMost Holy Virgin and all the Saints! We quickly cut the lines and tried to sail away, but a salvo from their ship quickly turned our old tub into splinters. And then they hoisted sails and were gone in blink of an eye\nOur ship sank, and everyone who managed to survive, have reached the shore in a boat. We took your captain's chest with us. There should be a lot of valuable things, right?";
-			link.l1 = "A lot, indeed. Thanks, pals, I'll remember that.";
+			dialog.text = "Когда мы зашли в капитанскую каюту, вы лежали на полу без движения. Ребята подхватили вас и потащили на наш корабль, и вовремя, потому что мертвецы, что валялись на палубе, начали подниматься и снова взялись за сабли\nПресвятая Дева и все святые угодники! Мы быстро обрубили лини и отчалили от их корабля, но далеко уйти не успели: костлявые всадили в нас залп бортовой батареи, и наше судно в один миг превратилось в щепки. А затем они подняли паруса и в миг скрылись за горизонтом\nКорабль наш затонул, а все, кто выжил, добрались на лодке до берега. Мы прихватили ваш капитанский рундук из каюты. Там ведь много чего важного, да?";
+			link.l1 = "Очень много. Спасибо, ребята, век не забуду.";
 			link.l1.go = "on_coast_2";
 		break;
 		
 		case "on_coast_2":
-			dialog.text = "We dragged you into the boat and then brought you to the shore. You were almost dead...";
-			link.l1 = "I am indebted to you. How long had I been lying there, unconscious?";
+			dialog.text = "Мы вытащили вас в лодку, а потом и на берег. А вы валялись, что тот мертвяк...";
+			link.l1 = "Я в долгу перед вами. Сколько я здесь лежал без сознания?";
 			link.l1.go = "on_coast_3";
 		break;
 		
 		case "on_coast_3":
-			dialog.text = "For an entire day. We washed and bound your wounds, gave you medicine and poured some rum into you. You should be getting well soon.";
-			link.l1 = "I surely will not die this time. Although I don't feel really well...";
+			dialog.text = "Сутки. Мы промыли и перевязали ваши раны, влили в рот лекарства и ром. Вы поправитесь, кэп.";
+			link.l1 = "Обещаю, что не умру. Хотя чувствую себя на редкость паршиво...";
 			link.l1.go = "on_coast_4";
 		break;
 		
 		case "on_coast_4":
-			dialog.text = "That's for sure... Was it the Flying Dutchman, cap? Why did they attack you? And why didn't they shoot at you before the boarding, but sank the ship with just one only volley later?";
-			link.l1 = "Their captain needed the amulet, about which I had talked to Tuttuathapak, an Indian shaman. That's why they haven't sunk us immediately, but as their leader took the amulet, they quickly disposed of us... What a nightmare! A ship manned by the dead! Impossible to believe...";
+			dialog.text = "Не сомневаюсь... Это был 'Летучий Голландец', кэп? Почему они на нас напали? И почему сразу не сделали ни одного выстрела, а после абордажа потопили одним залпом?";
+			link.l1 = "Их капитану нужен был амулет, по поводу которого я ходил к Туттуатхапаку, индейскому шаману. Поэтому они и не потопили нас сразу. А как только главный мертвец забрал амулет, они и расправились с нами... Жуть какая! Корабль с командой живых мертвецов! Поверить невозможно...";
 			link.l1.go = "on_coast_5";
 		break;
 		
 		case "on_coast_5":
-			dialog.text = "Yeah, now it was our turn to encounter the Flying Dutchman. When I have the chance, I'll go to church, light the candle for my miraculous delivery, and pray to our Lord...";
-			link.l1 = "Me too, I guess. But first I'll go back to that village. I need to tell Tuttuathapak everything about it. That accursed ship attacked us because of the amulet! I hope that red-skinned devil has some ideas, why in hell those living dead might have needed it.";
+			dialog.text = "Вот мы и повстречались с 'Летучим Голландцем'. В первой же колонии я пойду в церковь,  поставлю свечу из чистого воска за чудесное спасение, и буду молиться...";
+			link.l1 = "Я, пожалуй, тоже. Но сейчас я пойду назад в деревню карибов. Я должен всё рассказать Туттуатхапаку. Этот проклятый корабль напал на нас из-за амулета! Надеюсь, краснокожий дьявол сможет объяснить мне, зачем он понадобился мертвецам.";
 			link.l1.go = "on_coast_6";
 		break;
 		
 		case "on_coast_6":
-			dialog.text = "Alright. But be careful, cap - your wounds have barely healed.";
-			link.l1 = "I will be careful, I promise. Thanks for not abandoning me!";
+			dialog.text = "Хорошо. Но берегите себя - ваши раны до сих пор сочатся кровью.";
+			link.l1 = "Я буду осторожен. Обещаю. И - спасибо за то, что не бросили меня!";
 			link.l1.go = "on_coast_7";
 		break;
 		
 		case "on_coast_7":
-			dialog.text = "What are you talking about, cap! We'd go to the world's end for you and fight thousands of undead!";
+			dialog.text = "Как мы могли, кэп! Да мы за вас в огонь и воду, и хоть тысячу мертвяков порвем!";
 			link.l1 = "...";
 			link.l1.go = "on_coast_8";
 		break;
@@ -1030,63 +1030,63 @@ void ProcessDialogEvent()
 		
 		// Фергус Хупер
 		case "fergus":
-			dialog.text = "Hey! I haven't yet collected enough snake skins to sell them to you, so piss off!";
-			link.l1 = "Hmm... Are you Fergus Hooper?";
+			dialog.text = "Эй! Я еще не собрал достаточное количество змеиных кож, чтобы продавать их тебе, так что отвали!";
+			link.l1 = "Хм... Ты - Фергус Хупер?";
 			link.l1.go = "fergus_1";
 		break;
 		
 		case "fergus_1":
-			dialog.text = "No, my name is Tuttuathapak, and I will curse you, if you don't get lost at once. So you'd better hurry, or you will...";
-			link.l1 = "...lose my mind, burn my own ship, and my sailors will kill me and take all my belongings. Right?";
+			dialog.text = "Нет, меня зовут Туттуатхапак, и я прокляну тебя, если ты немедленно не исчезнешь. Так что поторопись, а не то ты...";
+			link.l1 = "...сойдешь с ума, подожжешь свой корабль, тебя прирежет собственная матросня и заберет твои вещи, ты это хотел сказать?";
 			link.l1.go = "fergus_2";
 		break;
 		
 		case "fergus_2":
 			sld = characterFromId(pchar.questTemp.Caleuche.Amuletmaster);
-			dialog.text = "Arrgh... What the hell, who are you? How did you...";
-			link.l1 = "We have a common friend, Fergus. He's a lighthouse keeper, and his name is "+GetFullName(sld)+". He told me about you and sent me to seek you out. By the way, I personally know shaman Tuttuathapak, so your joke didn't work, sorry. Listen, I am not looking for trouble. I want to buy something from you, and it's not the snake skins.";
+			dialog.text = "Кхарх... черт тебя побери, кто ты такой? Откуда...";
+			link.l1 = "У нас с тобой есть общий друг, Фергус. Он сейчас работает смотрителем маяка. Его зовут "+GetFullName(sld)+". Он и поведал мне твою историю и отправил меня к тебе. А шамана карибов Туттуатхапака я знаю лично, так что твоя шутка не удалась. Послушай, я не хочу ссориться. Я хочу купить у тебя одну вещь, и это не змеиные кожи.";
 			link.l1.go = "fergus_3";
 		break;
 		
 		case "fergus_3":
-			dialog.text = "Oh, so you know my old friend! How is he? Didn't he die of boredom in his lighthouse yet? Please, sit, sailor, have a drink with me!";
-			link.l1 = "I am sorry, Fergus, I really don't have much time. Listen, I need that Indian amulet, one of those which your late captain took from the Main with Tuttuathapak. I will pay a good price for it, and you will get rid of a dangerous trinket.";
+			dialog.text = "Хо, так ты знаешь моего старинного приятеля! Как он там? Не скис от скуки на своем маяке? Присаживайся, моряк, выпей со мной!";
+			link.l1 = "Извини, Фергус, у меня действительно мало времени. Послушай, мне нужен индейский амулет, один из тех, которые ваш покойный капитан вывез из глубин Мэйна вместе с Туттуатхапаком. Я хорошо заплачу за него, а ты избавишься от опасной вещи.";
 			link.l1.go = "fergus_4";
 		break;
 		
 		case "fergus_4":
-			dialog.text = "And what's so dangerous about it? I haven't seen any harm from it so far.";
-			link.l1 = "That's because you're no longer sailing the seas. I used to have a similar amulet until recently. A ghost ship is hunting those things.";
+			dialog.text = "Почему это - опасной? Я не заметил, чтобы он приносил какой-либо вред.";
+			link.l1 = "Не заметил, потому что ты больше не выходишь в море. У меня тоже был такой амулет до недавнего времени. За ними охотится корабль-призрак.";
 			link.l1.go = "fergus_5";
 		break;
 		
 		case "fergus_5":
-			dialog.text = "Are you kidding, buddy? Perhaps, knowing Tuttuathapak has taken its toll on you? Be careful, cap, that red-skinned devil will devour your mind...";
-			link.l1 = "Believe me or not, but I am telling the truth. I wouldn't believe it myself, it I didn't see it with my own eyes, I can swear on the Book. I barely survived after that encounter with the Caleuche.";
+			dialog.text = "Ты серьезно, приятель? Это на тебя так знакомство с Туттуатхапаком повлияло? Смотри, кэп, этот краснокожий демон сожрет твой разум...";
+			link.l1 = "Можешь мне не верить, я бы на твоем месте и сам бы себе не поверил. Но я готов поклясться на Библии, что не лгу. Я чудом выжил после встречи с Калеуче.";
 			link.l1.go = "fergus_6";
 		break;
 		
 		case "fergus_6":
-			dialog.text = "The Caleuche?";
-			link.l1 = "Well, the Flying Dutchman. Whatever. Just sell me that amulet. It's of no use to you anyway, I know.";
+			dialog.text = "Калеуче?";
+			link.l1 = "Ну, 'Летучим Голландцем'. Неважно. Продай мне этот амулет. Он все равно не приносит пользы, я знаю.";
 			link.l1.go = "fergus_7";
 		break;
 		
 		case "fergus_7":
-			dialog.text = "That's right. This is just a useless trinket, although quite a beautiful one. Listen, I would have sold it to you without more ado, but you see - I don't have it anymore. It was stolen from my hut among other things, while I was hunting out in the jungle. That happened rather recently, about a month ago. Sorry, but there is nothing I can help you with.";
-			link.l1 = "And who stole it?";
+			dialog.text = "Насчет этого ты прав. Бесполезная красивая безделушка. Послушай, моряк, я бы продал ее тебе без разговоров, но вот в чем беда: его у меня украли вместе с остальным скарбом из моей лачуги, пока я охотился в джунглях. И случилось это совсем недавно, чуть больше месяца назад. Так что ничем помочь не могу.";
+			link.l1 = "Кто украл?";
 			link.l1.go = "fergus_8";
 		break;
 		
 		case "fergus_8":
-			dialog.text = "Are you seriously thinking that I'd be sitting there if I knew, who cleaned out my home? There's a gang of thieves and brigands working outside Beliz, and they have informers in town. Well, at least that's what the commandant is thinking. I am positive that it was them.";
-			link.l1 = "The commandant knows about the bandits and still does nothing?";
+			dialog.text = "Ты что, думаешь, я бы так просто сидел тут, если бы знал, какая мразь обчистила мое жилище? В окрестностях Белиза появилась шайка разбойников и воров, и у них есть свои осведомители в городе. Во всяком случае, так считает комендант. Уверен, что именно эти подонки и обокрали меня.";
+			link.l1 = "Комендант знает о бандитах и ничего не предпринимает?";
 			link.l1.go = "fergus_9";
 		break;
 		
 		case "fergus_9":
-			dialog.text = "Whether he is doing something or not, I don't know. The only thing I know for sure is that my things are gone, and your precious amulet with them. Try to seek out these bandits - perhaps you'll find it in their pockets. It is unlikely that they managed to sell it - merchants have no need for such things.";
-			link.l1 = "Alright, I'll go see the commandant. Good luck, Fergus!";
+			dialog.text = "Предпринимает он что-то, или нет - я не знаю. Но вещички мои - тю-тю, и твой амулет вместе с ними. Можешь поискать бандитов, глядишь, у кого в кармане и отыщешь свое сокровище. Вряд ли они кому-то смогли его продать, торгашам он точно не нужен.";
+			link.l1 = "Ясно. Ладно, загляну к коменданту. Бывай, Фергус!";
 			link.l1.go = "fergus_10";
 		break;
 		
@@ -1100,26 +1100,26 @@ void ProcessDialogEvent()
 		
 		// бандит в городе
 		case "Beliz_townbandos":
-			dialog.text = "Hey! What do you need? I don't expect any guests. Get lost!";
-			link.l1 = "Why so rude, friend? I just wanted to ask...";
+			dialog.text = "Эй! Чего тебе? Я гостей не жду. Давай, проваливай!";
+			link.l1 = "А чего так невежливо, сударь? Я хотел спросить, вы не...";
 			link.l1.go = "Beliz_townbandos_1";
 		break;
 		
 		case "Beliz_townbandos_1":
-			dialog.text = "Have not you heard? Get out, or I'll kick you out the door!";
-			link.l1 = "Hmm... Well, perhaps you're the person I am looking for? You seem way to nervous, buddy...";
+			dialog.text = "Ты что, не слышал? Выметайся, или я сам выставлю тебя за дверь!";
+			link.l1 = "Кхм... А может, ты и есть тот, кто мне нужен? Уж больно ты нервничашь, приятель...";
 			link.l1.go = "Beliz_townbandos_2";
 		break;
 		
 		case "Beliz_townbandos_2":
-			dialog.text = "Thinking yourself too clever, aren't you? Once again: either you get lost right now, or I am calling the guards, and they'll throw you behind bars!";
-			link.l1 = "Throw me behind bars? How very interesting. You know, now I am almost positive that I have found whom I was looking for. Alright, I agree. Let's call the guards, and then we'll walk to the commandant's office together. I've just been there, so I remember the way... Guards! GUARDS!";
+			dialog.text = "Самый умный, да? Последний раз повтряю: или ты сам уберешься, или я позову стражу и тебя отправят хлебать баланду!";
+			link.l1 = "Хлебать баланду? Как интересно... Я все больше и больше убеждаюсь в том, что я нашел того, кого искал. Хорошо, я согласен. Давай позовем сюда стражу, а потом вместе пройдем в комендатуру. Я как раз оттуда, так что дорогу я запомнил... Стра-ажа! Стра-ажа! Сюда!!";
 			link.l1.go = "Beliz_townbandos_3";
 		break;
 		
 		case "Beliz_townbandos_3":
-			dialog.text = "Screw you! I'll run you through!";
-			link.l1 = "Oh! Well, you may try!";
+			dialog.text = "Ах ты, ищейка легавая, сейчас я тебя на стальной вертел насажу!";
+			link.l1 = "Ого! Ну, давай, попробуй!";
 			link.l1.go = "Beliz_townbandos_4";
 		break;
 		
@@ -1141,40 +1141,40 @@ void ProcessDialogEvent()
 		
 		// главарь лесных бандосов
 		case "Beliz_forestbandos":
-			dialog.text = "Hey, traveller! Welcome, welcome... Supper, lodging - everything for your money. So, get ready to turn your pockets inside out!";
-			link.l1 = "Not so fast, my good man. I have business with you.";
+			dialog.text = "Эй, путник! Ха-ха-ха, добро пожаловать к нашему огоньку... Ужин, ночлег - пожалуйста, но за это придется раскошелиться. А ну, готовься выворачивать карманы!";
+			link.l1 = "Не торопись, приятель. Я к тебе пришел по делу.";
 			link.l1.go = "Beliz_forestbandos_1";
 		break;
 		
 		case "Beliz_forestbandos_1":
-			dialog.text = "Business? Ha-ha! Your only business is to give me all your silver and gold!";
-			link.l1 = "Shut up already. I brought you a letter from Beliz you've been waiting for. The messenger couldn't get on with the guards and entrusted the affair to me.";
+			dialog.text = "По делу? Ха-ха-ха, твое дело - отдать мне все свое золотишко и серебришко, вот что!";
+			link.l1 = "Хватит уже зубоскалить. Я принес письмо из Белиза, которое ты наверняка ждешь. Посыльный не поладил со стражей, вот и доверил мне дело.";
 			link.l1.go = "Beliz_forestbandos_2";
 		break;
 		
 		case "Beliz_forestbandos_2":
-			dialog.text = "Show me!";
-			link.l1 = "Here...";
+			dialog.text = "А ну, покажи!";
+			link.l1 = "Держи...";
 			link.l1.go = "Beliz_forestbandos_3";
 		break;
 		
 		case "Beliz_forestbandos_3":
-			Log_Info("You have given a note");
+			Log_Info("Вы отдали записку");
 			PlaySound("interface\important_item.wav");
 			RemoveItems(pchar, "kaleuche_letter", 1);
-			dialog.text = "(reading) Hm... That's surely strange... How did you get involved?";
-			link.l1 = "I told you, they seized your guy, so I took his job. He promised money and a warm welcome from you...";
+			dialog.text = "(читает) Хм... странно все это. Каким боком ты при делах оказался?";
+			link.l1 = "Говорю же - замели братишку вашего, вот я и подвизался его работенку выполнить. Денежек он посулил, сказал - не обидят кореша, накормят, обогреют, встретят ласково...";
 			link.l1.go = "Beliz_forestbandos_4";
 		break;
 		
 		case "Beliz_forestbandos_4":
-			dialog.text = "A warm welcome? Alright, pal. We'll warm you up, feed you, give you money and all that stuff - but you, too, will have to prove us that you're no sleuth hound. We've got a score to settle\nA merchant has recently arrived to a nearby cove; apparently, he wants to sneak into the city with his wares past the customs office. But we will still exact the duty from him. We are lawful folk. You'll come with us. Do you know which end of the sword goes where?";
-			link.l1 = "And will I get a share of this duty?";
+			dialog.text = "Встретят ласково? Ладно, дружок, и обогреем тебя, и накормим, и приласкаем, и монет не пожалеем. Но и ты докажешь нам, что не ищейка легавая. Мы как раз на дело собираемся\nВ бухте недалече высадился купец, намерен он тайком в город проникнуть и товар кой-какой тихонько мимо таможни протащить. Вот мы с него пошлину-то и удержим. Пойдешь с нами. Сабельку-то знаешь с какого конца держать?";
+			link.l1 = "А доля с этой пошлины мне причитаться будет?";
 			link.l1.go = "Beliz_forestbandos_5";
 		break;
 		
 		case "Beliz_forestbandos_5":
-			dialog.text = "Sure - if you're brave in battle and if you stay alive. But don't expect a cakewalk - the merchant is not alone, he has an escort. Well, time to go - our prey is close. Boys! Prepare your weapons, we're heading out!";
+			dialog.text = "Долю свою получишь, коли храбрость проявишь и жив останешься. Но не надейся, что будет легко - купец не один идет, а с конвоем. И в путь нам уже пора - добыча на подходе. Ребята! Заряжай пистоли! Выступаем!";
 			link.l1 = "...";
 			link.l1.go = "Beliz_forestbandos_6";
 		break;
@@ -1199,51 +1199,51 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Beliz_forestbandos_7":
-			dialog.text = "I see you're no coward. Well done! You have earned your share. How would you like it? Cash? Merchandise?";
-			link.l1 = "Cash.";
+			dialog.text = "А ты не трус, как я посмотрю. Молодец! Свою долю ты честно заработал. Как предпочитаешь: деньгами, или товаром?";
+			link.l1 = "Деньгами.";
 			link.l1.go = "Beliz_forestbandos_8_1";
-			link.l2 = "Merchandise.";
+			link.l2 = "Товаром.";
 			link.l2.go = "Beliz_forestbandos_8_2";
 		break;
 		
 		case "Beliz_forestbandos_8_1":
-			Log_Info("You have received 100 doubloons");
+			Log_Info("Вы получили 100 дублонов");
 			PlaySound("interface\important_item.wav");
 			TakeNItems(pchar, "gold_dublon", 100);
-			dialog.text = "Here you go! And this purse is for delivering the letter.";
-			link.l1 = "Thanks! That's how I like it!";
+			dialog.text = "Получай! И еще возьми кошелек за доставку письма.";
+			link.l1 = "Благодарствую! Вот почаще бы так!";
 			link.l1.go = "Beliz_forestbandos_9";
 		break;
 		
 		case "Beliz_forestbandos_8_2":
-			Log_Info("You have received 30 bottles of rum");
-			Log_Info("You have received 12 bottles of wine");
+			Log_Info("Вы получили 30 бутылок рома");
+			Log_Info("Вы получили 12 бутылок вина");
 			PlaySound("interface\important_item.wav");
 			TakeNItems(pchar, "potionrum", 30);
 			TakeNItems(pchar, "potionwine", 12);
-			dialog.text = "Here you go! Just don't drink yourself to death, ha-ha-ha! And this purse is for delivering the letter.";
-			link.l1 = "Thanks! That's how I like it!";
+			dialog.text = "Получай! Не упейся до смерти, ха-ха-ха! И еще возьми кошелек за доставку письма.";
+			link.l1 = "Благодарствую! Вот почаще бы так!";
 			link.l1.go = "Beliz_forestbandos_9";
 		break;
 		
 		case "Beliz_forestbandos_9":
-			Log_Info("You have received a purse");
+			Log_Info("Вы получили кошель");
 			PlaySound("interface\important_item.wav");
 			TakeNItems(pchar, "purse2", 1);
-			dialog.text = "You look like a decent fellow to me. How about another score? It's about that letter you had delivered to me.";
-			link.l1 = "Sure.";
+			dialog.text = "Ты кажешься мне неплохим парнем. Хочешь еще пойти на дело? Как раз на то, весть о котором ты мне доставил?";
+			link.l1 = "Конечно!";
 			link.l1.go = "Beliz_forestbandos_10";
 		break;
 		
 		case "Beliz_forestbandos_10":
-			dialog.text = "Then come to the cave. There are two of them. Go to the jungle to the point we had last met, then take the left path. We gather in three days at the entrance to the cave, from midnight to one. Got it? If you're a good boy, we'll accept you into our gang. But keep in mind - if you blab anything out in the town, you're done for. I have a long arm.";
-			link.l1 = "Stop scaring me already. I got it. I shall be mute as a fish. Wait for me in three days. I love easy money!";
+			dialog.text = "Тогда приходи к пещере. Тут их две. Пройди в джунгли туда, где мы с тобой встретились, и топай по тропинке налево. Сбор через три дня у входа в пещеру, с полуночи до часу. Усёк? Хорошо себя покажешь - возьмем в нашу шайку. И смотри, не вздумай трепаться в городе - мигом порешим. У меня руки длинные.";
+			link.l1 = "Что ты меня стращаешь, я все понимаю, не маленький. Буду нем, как рыба. А через три дня жди меня - я обожаю легкие деньги!";
 			link.l1.go = "Beliz_forestbandos_11";
 		break;
 		
 		case "Beliz_forestbandos_11":
-			dialog.text = "Alright, pal. Now get lost before the guards come here. We're leaving as well.";
-			link.l1 = "See you around, pal...";
+			dialog.text = "Хорошо, фрайерок. А теперь проваливай, пока стража не явилась. Да и мы канаем отсюда.";
+			link.l1 = "Бывай, приятель...";
 			link.l1.go = "Beliz_forestbandos_12";
 		break;
 		
@@ -1292,8 +1292,8 @@ void ProcessDialogEvent()
 		
 		// спалили бандосы в пещере
 		case "Beliz_cavebandos":
-			dialog.text = "What! I take it you decided to appropriate some of our property? You will not get away with it, you filthy worm!";
-			link.l1 = "Whom did you just call a worm, scum?!";
+			dialog.text = "Ах, ты, скотина! Никак решил в наших вещичках покопаться и присвоить их себе? Это тебе даром не пройдет, червяк!";
+			link.l1 = "Ты кого червяком назвал, мразь?!";
 			link.l1.go = "Beliz_cavebandos_1";
 		break;
 		
@@ -1323,55 +1323,55 @@ void ProcessDialogEvent()
 		
 		// капитан гарпии
 		case "reginald":
-			dialog.text = "Hello, colleague! What has brought you here?";
-			link.l1 = TimeGreeting()+", mynheer Jackson. I am glad to finally find you.";
+			dialog.text = "Приветствую, коллега! Какими судьбами у меня на борту?";
+			link.l1 = TimeGreeting()+", минхер Джексон. Рад, что наконец-то нашел тебя.";
 			link.l1.go = "reginald_1";
 		break;
 		
 		case "reginald_1":
-			dialog.text = "'Mynheer Jackson', ha-ha! Well, to be honest, soon I am going call myself that too. I am working for this damned Company without a break... but they pay well, very well!.. So, what brings you here?";
-			link.l1 = "Our common acquaintance, keeper of the lighthouse, told me that you had an ancient Indian amulet. I guess you never made any use of it, and I need it really badly. I want to buy it from you.";
+			dialog.text = "'Минхер Джексон', ха-ха! Да, я, признаться, уже скоро сам себя так называть буду. Работаю без отдыха на эту чертову Компанию, будь она неладна... но деньги платят хорошие, очень хорошие, разрази меня гром!.. По какому делу пожаловал?";
+			link.l1 = "Наш общий знакомый, смотритель маяка, сообщил мне, что у тебя есть старинный индейский амулет. Тебе он наверняка так и не пригодился, а мне вот очень даже нужен. Я хочу купить его у тебя.";
 			link.l1.go = "reginald_2";
 		break;
 		
 		case "reginald_2":
-			dialog.text = "Oh, you mean that fancy trinket, of which I had inquired that retired bosun? Yeah, friend, you were right, it actually never came in handy.";
-			link.l1 = "How much do you want for it?";
+			dialog.text = "А, та чудная штуковина, о которой я справлялся у этого отставного боцмана! Ты прав, приятель, он мне так и не пригодился.";
+			link.l1 = "Сколько ты за него хочешь?";
 			link.l1.go = "reginald_3";
 		break;
 		
 		case "reginald_3":
-			dialog.text = "You see, there's a problem... Let me explain. I don't have it with me. Since I never found a use for it, I left it in my chest on the shore, among my other belongings.";
-			link.l1 = "Oh, that explains that you still... well, never mind. Let's just head to that chest of yours, and I'll buy the amulet from you. Simple as that. Where do you have it?";
+			dialog.text = "Понимаешь, тут такая проблема... Сейчас объясню. У меня его с собой нет. Поскольку я так и не нашел ему применения, я положил его в сундук на берегу на хранение с моими прочими вещичками.";
+			link.l1 = "Тогда понятно, почему ты до сих пор... впрочем, неважно. Давай отправимся вместе к твоему сундучку, и я куплю амулет. Все просто. Где он у тебя?";
 			link.l1.go = "reginald_4";
 		break;
 		
 		case "reginald_4":
-			dialog.text = "It's not exactly that simple. My chest is located on Barbados, in the lighthouse tower, and it's safely locked, so that no one could take advantage of it in my absence. And I am really sorry, but I cannot go with you to Barbados, according to my contract with the Dutch, I have to sail between Philipsburg and Port Royal and stick exactly to the schedule. And Barbados is nowhere near that route.";
-			link.l1 = "And what can we do? I really, really need that amulet!";
+			dialog.text = "Вот как раз и не просто. Сундук мой находится на Барбадосе, в башне маяка, и заперт на надежный замок, чтобы любители пошариться, где ни попадя, не покопались в моих вещах. А отправиться на Барбадос я с тобой не могу - извини, дружище, у меня контракт с голландцами, и я должен курсировать между Филипсбургом и Порт-Роялем строго по графику, а Барбадос от этого маршрута - чёрти где.";
+			link.l1 = "И что же нам сделать? Понимаешь, мне действительно очень нужен этот амулет.";
 			link.l1.go = "reginald_5";
 		break;
 		
 		case "reginald_5":
-			dialog.text = "Hmm... Well, there is one option. I give you the key to my chest, and you sail to Barbados on your own. But you will have to compensate me all stuff which is in it. I am sorry for the distrust - but you must understand. I've never seen you before.";
-			link.l1 = "How much?";
+			dialog.text = "Хм... Ну, есть один вариант. Я даю тебе ключ от моего сундука, и ты сам двигаешь на Барбадос. Но ты должен будешь выплатить мне денежную компенсацию за все вещички, что находятся в нем. Ты уж извини за недоверие, но сам понимаешь - я тебя впервые вижу.";
+			link.l1 = "Сколько?";
 			link.l1.go = "reginald_6";
 		break;
 		
 		case "reginald_6":
-			dialog.text = "Five hundred golden coins. No less.";
+			dialog.text = "Пятьсот золотых монет. И дешевле я не уступлю.";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 500)
 			{
-				link.l1 = "You've got it! Here's your gold.";
+				link.l1 = "По рукам! Вот твое золото.";
 				link.l1.go = "reginald_10";
 			}
-			link.l2 = "Hmm... I don't have that many doubloons with me.";
+			link.l2 = "Хм. У меня сейчас нет столько дублонов.";
 			link.l2.go = "reginald_7";
 		break;
 		
 		case "reginald_7":
-			dialog.text = "Then come see me again once you've raised the money. If you found me once, you'll find me again. I am going to sail between St. Martin and Jamaica for quite some time yet.";
-			link.l1 = "Alright, deal.";
+			dialog.text = "Тогда приходи, когда соберешь. Раз нашел меня один раз - значит, найдешь и второй. Я еще долго буду ходить между Синт-Маартеном и Ямайкой.";
+			link.l1 = "Хорошо. Договорились.";
 			link.l1.go = "reginald_8";
 		break;
 		
@@ -1382,28 +1382,28 @@ void ProcessDialogEvent()
 		break;
 		
 		case "reginald_9":
-			dialog.text = "You again, friend? Have you raised 500 coins?";
+			dialog.text = "Снова ты, дружище? Принес пятьсот монет?";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 500)
 			{
-				link.l1 = "Yes. Here's your gold.";
+				link.l1 = "Да. Вот твое золото.";
 				link.l1.go = "reginald_10";
 			}
-			link.l2 = "Not yet, but I am working on it.";
+			link.l2 = "Пока нет, но я работаю над этим.";
 			link.l2.go = "reginald_8";
 		break;
 		
 		case "reginald_10":
-			Log_Info("You have given 500 doubloons");
+			Log_Info("Вы отдали 500 дублонов");
 			PlaySound("interface\important_item.wav");
 			RemoveItems(pchar, "gold_dublon", 500);
-			dialog.text = "Great! And here is your key. And I have a request: after you take everything what's in, please leave the key in the lock. I would hate to commission a new lock and a key for it.";
-			link.l1 = "Alright.";
+			dialog.text = "Вот и славно! А вот твой ключ. И у меня к тебе будет огромная просьба: после того, как заберешь всё, что в сундуке, оставь ключ в замке. Неохота что-то делать новый замок для сундука и ключ к нему.";
+			link.l1 = "Хорошо.";
 			link.l1.go = "reginald_11";
 		break;
 		
 		case "reginald_11":
-			dialog.text = "Then good luck to you, friend! Bon voyage!";
-			link.l1 = "And the same to you, mynheer Jackson.";
+			dialog.text = "Тогда удачи, дружище! Счастливого пути!";
+			link.l1 = "И тебе того же, минхер Джексон.";
 			link.l1.go = "reginald_12";
 		break;
 		
@@ -1444,52 +1444,52 @@ void ProcessDialogEvent()
 		
 		// монах в Виллемстаде
 		case "monk_caleuche":
-			dialog.text = "Hello, captain "+GetFullName(pchar)+". Glad to welcome you in Willemstad.";
-			link.l1 = "Hello, Father. I don't remember you. Do we know each other?";
+			dialog.text = "Здравствуйте, капитан "+GetFullName(pchar)+". Рад вас приветствовать в Виллемстаде.";
+			link.l1 = "Добрый день, святой отец. Не помню, чтобы мы были с вами знакомы.";
 			link.l1.go = "monk_caleuche_1";
 		break;
 		
 		case "monk_caleuche_1":
-			dialog.text = "I made inquiries about you, once your ship has put in. And I think I can ask you for assistance.";
-			link.l1 = "Very interesting. And why me?";
+			dialog.text = "Я навел о вас справки в портовом управлении, когда ваш корабль встал на рейд. И думаю, что вас я могу просить о помощи.";
+			link.l1 = "Очень интересно. И почему же именно я?";
 			link.l1.go = "monk_caleuche_2";
 		break;
 		
 		case "monk_caleuche_2":
 			if (CheckAttribute(pchar, "questTemp.Caleuche.Skul"))
 			{
-				dialog.text = "Because you've done a lot for the Republic of Free Provinces. You're in good standing with the Company and you are friends with the governor. I have already appealed to several instances and was rebuked, but I do hope that a noble person such as you would not turn down a humble request of the servant of our Lord.";
+				dialog.text = "Потому что вы много сделали для Республики Свободных Провинций. Вы на хорошем счету в Компании, дружны с губернатором. Я уже обращался во все инстанции и получил пренебрежительный отказ, но надеюсь, что столь благородный человек, как вы, прислушается к скромной просьбе служителя Господа.";
 			}
 			else
 			{
-				dialog.text = "Because you are not in service of our governor; you're not working for the Company and you have no dealings with our military - otherwise you most likely would just brush me aside like an annoying fly, since I have already appealed to several instances and was rebuked.";
+				dialog.text = "Потому что вы не на службе у нашего губернатора, не служите в Компании и не имеете близких дел с военными нашей колонии. В противном случае вы бы наверняка отмахнулись от меня, как от назойливой мухи, поскольку со своей просьбой я уже обращался во все инстанции и получил пренебрежительный отказ.";
 			}
-			link.l1 = "Fine, then. What's the nature of your request?";
+			link.l1 = "Хорошо. Что за просьба?";
 			link.l1.go = "monk_caleuche_3";
 		break;
 		
 		case "monk_caleuche_3":
 			sld = characterFromId("Villemstad_Priest");
-			dialog.text = "There is a house opposite to the governor's residence. A lady who lived there was renting a room in it to one very suspicious type, not the local, and not the Dutchman. Well, our father superior, Father "+sld.name+", has recognized him\nIt was Joachim Merryman, a Portuguese, accused by the Inquisition of witchery and dealings with unholy powers. He hid himself from the Inquisition in the New World. You know, Spaniards often accuse those out of favour of heresy and witchery in order to burn them at the stake, but... In this case they were right. Merryman IS a warlock\nSo, he'd been living in Willemstad for some time, and then he disappeared as suddenly as he had emerged. And after some time the woman who rented the room to him, was never seen going out of the house. Never! And she was never seen anywhere ever since\nAnd at nights one can occasionally see red-blue lights flashing in the windows of the second floor and hear strange sounds. Father "+sld.name+" appealed to the commandant. He sent a patrol of four soldiers, they searched the house, but have found anything: neither the landlady herself, nor anyone else, nor anything suspicious at all\nBut these strange things continued to happen. The landlady never showed up, and this hellish light can still be seen there at nights. Besides, two beggars have recently gone missing. I heard them over talking at the parvis - they knew that there were no owners in the house, and so they decided to lodge there. No one has seen them thereafter.";
-			link.l1 = "And, I take it, you want me to go into that house and check out, what's happening there?";
+			dialog.text = "Напротив резиденции губернатора есть дом. Проживающая там горожанка не так давно сдавала комнату внаем очень подозрительному типу, не местному, и не голландцу. Так вот, настоятель нашей церкви, отец "+sld.name+", узнал его\nЭто Жоаким Мерриман, португалец, обвиненный инквизицией в колдовстве и связях с нечистой силой. Он скрылся от преследования инквизиторов в Новом Свете. Испанцы многих неугодных им людей причисляют к еретикам и обвиняют в колдовстве, дабы отправить на костер инквизиции, но это... тут они правы. Мерриман - черный колдун\nТак вот. Прожив немного в Виллемстаде, он исчез так же внезапно, как и появился. А спустя некоторое время женщина, сдававшая комнату Мерриману, перестала выходить из дома. Совсем! И не выходит до сих пор\nПри этом по ночам на втором этаже дома иногда мерцает красно-синий свет и раздаются подозрительные звуки. Отец "+sld.name+" обратился к коменданту. Тот отправил патруль из четырех солдат, они посетили дом и никого не обнаружили: ни хозяйки дома, ни посторонних, ни чего-либо подозрительного\nНо странности не закончились. Хозяйка так и не появилась, а по ночам наверху всё мерцает этот адский свет. Кроме того, исчезли двое нищих. Я слышал на паперти их беседу - прослышав, что дом стоит без хозяев, они в дождливый день решили переночевать в нем. Больше их никто не видел.";
+			link.l1 = "Как я полагаю, ваша просьба будет заключаться в том, чтобы пойти в этот дом и посмотреть, что там творится?";
 			link.l1.go = "monk_caleuche_4";
 		break;
 		
 		case "monk_caleuche_4":
-			dialog.text = "Exactly, noble sir. Please help the Holy Church. The commandant says that we're imagining things, since his patrol never found anything. The government thinks the same. Commoners simply don't care, because they don't see it as a clear threat to them.";
-			link.l1 = "Hmm... And I will need to go there at night?";
+			dialog.text = "Именно так, благородный господин. Выступите на стороне святой церкви. Комендант считает, что мы несем чушь - ведь патруль ничего не обнаружил в доме. Губернатор придерживается того же мнения. Обычным горожанам или все равно, так как нет никаких явных угроз, или страшно туда соваться.";
+			link.l1 = "Хм... Идти придется ночью?";
 			link.l1.go = "monk_caleuche_5";
 		break;
 		
 		case "monk_caleuche_5":
 			sld = characterFromId("Villemstad_Priest");
-			dialog.text = "Yes, mynheer. It's quiet there during daytime. Please, I beg you. Father "+sld.name+" will thank you and reward you for your service. Once you've been to that den during the night, please tell him what you find there. I assure you, our misgivings are well-grounded.";
-			link.l1 = "Alright. I'll think about it.";
+			dialog.text = "Да, минхер. Днем там все тихо. Очень вас прошу. Отец "+sld.name+" отблагодарит и вознаградит вас за службу. Как только побываете ночью в этом вертепе - расскажите ему, что вы там обнаружили. Уверяю вас, наши опасения имеют под собой почву.";
+			link.l1 = "Ладно. Я подумаю над тем, что вы мне сказали.";
 			link.l1.go = "monk_caleuche_6";
 		break;
 		
 		case "monk_caleuche_6":
-			dialog.text = "Thank you, captain. I hope you don't turn down my humble request. Please, do it in the name of our Lord and our faith. Go with my blessings.";
+			dialog.text = "Спасибо, капитан. Надеюсь, вы не откажете в моей просьбе. Ради веры, ради Христа. Благословляю вас.";
 			link.l1 = "...";
 			link.l1.go = "monk_caleuche_7";
 		break;
@@ -1500,8 +1500,8 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload7_back", "none", "", "", "", -1);
 			AddQuestRecord("Caleuche", "24");
-			if (CheckAttribute(pchar, "questTemp.Caleuche.Skul")) sTemp = "visit the house of my old acquaintance Joachim Merryman, where, allegedly, strange things are happening at nights. I still remember that glitter in Merryman's eyes, when he was looking at the skull, and I feel frightened. I am not really fond of the idea to visit his former abode in the night.";
-			else sTemp = "visit the house across the residence, where some Joachim Merryman had been renting a room. Apparently it is that warlock, of which Tuttuathapak was talking about. According to the monk, strange things are happening in this house in the night. I really feel uncomfortable about visiting the warlock's former home.";
+			if (CheckAttribute(pchar, "questTemp.Caleuche.Skul")) sTemp = "посетить дом моего старого знакомца Жоакима Мерримана, в котором, по его словам, по ночам творятся странные вещи. Вспоминая тот особенный блеск в глазах Мерримана, когда тот смотрел на нефритовый череп, мне становится жутковато. Как-то мне совсем не улыбается идти ночью в его бывшее обиталище.";
+			else sTemp = "посетить дом напротив резиденции, в котором снимал комнату некий Жоаким Мерриман. Судя по всему, это и есть тот самый белый колдун, о котором сообщил Туттуатхапак. По словам монаха, по ночам в доме творятся странные вещи. Как-то мне совсем не улыбается идти ночью в бывшее обиталище колдуна.";
 			AddQuestUserData("Caleuche", "sText", sTemp);
 			i = Findlocation("Villemstad_town");
 			DeleteAttribute(&locations[i], "reload.l14.close_for_night");
@@ -1515,19 +1515,19 @@ void ProcessDialogEvent()
 		
 		// охотник у пещеры
 		case "cavehunter":
-			dialog.text = "Hold on, buddy. You'd better not go there, if you cherish your life.";
-			link.l1 = "And what's the deal?";
+			dialog.text = "Постой, приятель. Лучше тебе туда не ходить, если жизнь дорога.";
+			link.l1 = "А что там такое?";
 			link.l1.go = "cavehunter_1";
 		break;
 		
 		case "cavehunter_1":
-			dialog.text = "Trust me, you don't want to know. But there is Death himself around the corner, and I can swear on the Book that you won't came back alive.";
-			link.l1 = "Well, if you say so, I will not tempt fate. Thanks for the warning.";
+			dialog.text = "Поверь, тебе лучше не знать. Но там, за поворотом - сама смерть, и я готов присягнуть на Библии, что живым ты оттуда не вернешься.";
+			link.l1 = "Ну раз так... то не буду понапрасну искушать судьбу. Спасибо за предупреждение.";
 			link.l1.go = "cavehunter_2";
 		break;
 		
 		case "cavehunter_2":
-			dialog.text = "You're welcome. Stay clear of that path.";
+			dialog.text = "Не за что. Держись от этой тропы подальше.";
 			link.l1 = "...";
 			link.l1.go = "cavehunter_3";
 		break;
@@ -1538,8 +1538,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "cavehunter_4":
-			dialog.text = "Stay clear of that path, buddy.";
-			link.l1 = "Yeah, I remember...";
+			dialog.text = "Держись от этой тропы подальше, приятель.";
+			link.l1 = "Я помню...";
 			link.l1.go = "cavehunter_4_1";
 		break;
 		
@@ -1550,20 +1550,20 @@ void ProcessDialogEvent()
 		
 		case "cavehunter_5":
 			sld = characterFromId("Havana_Priest");
-			dialog.text = "Are you certain you want to go there?";
-			link.l1 = "Absolutely. "+sld.name+", father superior of the church in Havana, sent me here. I must determine what's happening there, and take adequate measures.";
+			dialog.text = "Ты уверен, что хочешь пойти туда?";
+			link.l1 = "Абсолютно. Меня прислал отец "+sld.name+", настоятель церкви Гаваны. Я должен выяснить, что здесь происходит, и принять адекватные меры.";
 			link.l1.go = "cavehunter_6";
 		break;
 		
 		case "cavehunter_6":
-			dialog.text = "What's happening there? I'm afraid you'd be quaking with fear once you've seen what's happening there with your own eyes.";
-			link.l1 = "You mean the walking dead?";
+			dialog.text = "Что здесь происходит?! Боюсь, у тебя задрожат поджилки, как только ты увидишь своими глазами, что здесь происходит.";
+			link.l1 = "Это ты сообщил о том, что в пещере замечены ходячие мертвецы?";
 			link.l1.go = "cavehunter_7";
 		break;
 		
 		case "cavehunter_7":
-			dialog.text = "Yes. And you better believe my words.";
-			link.l1 = "I do. I have already encountered that unholy thing in Willemstad and destroyed it. And I will now go there and destroy all filth in that cave.";
+			dialog.text = "Да, я. И лучше тебе поверить моим словам.";
+			link.l1 = "Я верю. Я лично столкнулся с одной такой нечистью в Виллемстаде и уничтожил ее. И сейчас я пойду туда и вырежу всю пакость, которая засела в пещере.";
 			link.l1.go = "cavehunter_8";
 		break;
 		
@@ -1572,26 +1572,26 @@ void ProcessDialogEvent()
 			switch (icpy)
 			{
 				case 0:
-					dialog.text = "Are you going to go there alone? You're a dead man, buddy. You have no idea just how many of those things are there. Well, go, if you must, and I'll go to the church to light a candle for the peace of your soul.";
-					link.l1 = "Don't be too quick to bury me. I've seen worse.";
+					dialog.text = "И ты намерен сделать это в одиночку? Ты покойник, приятель. Ты даже не представляешь, сколько их там. Ступай, а я отправлюсь в церковь ставить свечу тебе за упокой.";
+					link.l1 = "Не спеши хоронить меня раньше времени. И не такое видали.";
 					link.l1.go = "cavehunter_exit";
 				break;
 				
 				case 1:
-					dialog.text = "Just the two of you? I am afraid you won't get far. You have no idea just how many are there. It's a suicide.";
-					link.l1 = "You just don't know us well, friend. Step aside, and we shall cleanse this unholy den.";
+					dialog.text = "И вы намерены сделать это вдвоем? Боюсь, далеко вы не пройдете. Вы даже не представляете, сколько их там. Это самоубийство.";
+					link.l1 = "Ты нас плохо знаешь, дружище. Отойди-ка в сторону, а мы вычистим гнездо этой нечисти.";
 					link.l1.go = "cavehunter_exit";
 				break;
 				
 				case 2:
-					dialog.text = "Just the three of you? You must be seasoned fighters if you dared to do it. But I am still afraid that you will not manage. You have no idea just how many are there in the grotto.";
-					link.l1 = "You just don't know us well, friend. Step aside, and we shall cleanse this unholy den.";
+					dialog.text = "И вы намерены сделать это втроем? Наверное, вы хорошие бойцы, раз решились на такое. Но боюсь, вам все равно не управиться. Вы даже не представляете, сколько их там в гроте.";
+					link.l1 = "Ты нас плохо знаешь, дружище. Отойди-ка в сторону, а мы вычистим гнездо этой нечисти.";
 					link.l1.go = "cavehunter_exit";
 				break;
 				
 				case 3:
-					dialog.text = "You guys are no cowards, I see. But you have really no idea, how many of them are there. In such an affair every man counts. Screw this, I'll come with you and I will shoot that filth with my musket!";
-					link.l1 = "You're a brave soul, friend. I will not turn down your help. Let's go!";
+					dialog.text = "А вы, похоже, ребята не промах. Но вы даже не представляете, сколько их там. В этом деле лишних людей быть не может. Я иду с вами, черт возьми, и буду отстреливать эту мерзость из своего мушкета!";
+					link.l1 = "Ты храбрый парень, дружище. Я не откажусь от твоей помощи. Вперед!";
 					link.l1.go = "cavehunter_9";
 				break;
 			}
@@ -1615,7 +1615,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "cavehunter_10":
-			dialog.text = "Let's go! Death to the filthy undead!";
+			dialog.text = "Вперед! Уничтожим проклятую нечисть!";
 			link.l1 = "...";
 			link.l1.go = "cavehunter_10_1";
 		break;
@@ -1626,27 +1626,27 @@ void ProcessDialogEvent()
 		break;
 		
 		case "cavehunter_11":
-			dialog.text = "Now that was quite a massacre! Who could have thought that so many dead were hiding in this place! Well, at least we can rest... Please tell about it that father superior of yours, who had sent you here. I do hope that the Inquisition is going to get down to this after your report. Dealing with the undead is on their own ground, after all.";
-			link.l1 = "I'll definitely tell them. Thanks you for the help, buddy. You're a real soldier! Good luck!";
+			dialog.text = "Ух, вот это бойня была! Сколько же здесь мертвяков пряталось! Теперь можно жить спокойно... Расскажи обо всем, что тут произошло, настоятелю, который тебя сюда отправил. Очень надеюсь, что после твоего доклада этим наконец займется инквизиция. В конце-концов, нечисть - это по ее части.";
+			link.l1 = "Обязательно расскажу. Спасибо за помощь, дружище. Ты настоящий солдат. Удачи!";
 			link.l1.go = "cavehunter_exit";
 		break;
 		
 		// солдат в крипте при провале
 		case "cryptguard":
-			dialog.text = "Stand where you are! This place is off-limits!";
-			link.l1 = "Ehh... And what is in there?";
+			dialog.text = "Стой! Туда вход воспрещен!";
+			link.l1 = "Э-э... А что там такое?";
 			link.l1.go = "cryptguard_1";
 		break;
 		
 		case "cryptguard_1":
-			dialog.text = "A dangerous warlock was found there. Only the holy fathers and soldiers accompanying them can enter.";
-			link.l1 = "I see. Was the warlock arrested?";
+			dialog.text = "Здесь был обнаружен опасный колдун. Входить в эту дверь могут только святые отцы и солдаты, сопровождающие их.";
+			link.l1 = "Ясно. Колдуна схватили?";
 			link.l1.go = "cryptguard_2";
 		break;
 		
 		case "cryptguard_2":
-			dialog.text = "I am not authorized to answer such questions, senor. It is time for you to leave.";
-			link.l1 = "Alright, I got it. Good luck!";
+			dialog.text = "Я не уполномочен отвечать на такие вопросы, сеньор. Вам лучше уйти.";
+			link.l1 = "Хорошо, я понял. Всего доброго.";
 			link.l1.go = "cryptguard_3";
 		break;
 		
@@ -1661,155 +1661,155 @@ void ProcessDialogEvent()
 		// чавинави-вождь
 		case "Chavinavi":
 			PlaySound("VOICE\Russian\TopChavinavi-01.wav");
-			dialog.text = "Hold still, human! You're in the very heart of the temple, and you have gone too far to turn back.";
-			link.l1 = "Who are you?!";
+			dialog.text = "Стой, человек! Ты находишься в самом сердце храма, и ты зашел слишком далеко, чтобы повернуть назад.";
+			link.l1 = "Кто ты?!";
 			link.l1.go = "Chavinavi_1";
 		break;
 		
 		case "Chavinavi_1":
-			dialog.text = "I am the chieftain of the Chavinavi, the keeper and guardian of this sacred place. You're not the first to enter this temple, but only two men and one woman entered it and left alive before you. That is the only reason I condescend to speaking with you. Why have you come here, pale-face?";
-			link.l1 = "I have brought an ancient relic here, the jade skull. Fifty years ago it was taken from an Indian temple deep in the mainland. I was going to find the shrine and return the relic to your god.";
+			dialog.text = "Я - вождь чавинави, хранитель оплота и страж священных чертог. Ты не первый, кто вошел в храм, но до тебя лишь один человек побывал в этом запретном месте. И лишь поэтому я снисхожу до разговора с тобой. Зачем ты пришел сюда, бледнолицый?";
+			link.l1 = "Я принес в этот храм древнюю реликвию - нефритовый череп. Пятьдесят лет назад он был вывезен из индейского храма далеко в глубине материка. Я намеревался найти святилище и вернуть череп вашему богу.";
 			link.l1.go = "Chavinavi_2";
 		break;
 		
 		case "Chavinavi_2":
-			dialog.text = "It is strange to hear such words from one of your kind. I don't believe you. You, pale-faced ones, are always coming to take something, but never to give anything back.";
-			link.l1 = "I do not lie. By returning the skull I will lift the curse laid upon the captain of the ghost ship terrorizing the Caribbean sea, which will make him mortal again, and I will rid the world of him for good.";
+			dialog.text = "Мне странно слышать эти слова из твоих уст. Я не верю тебе. Вы, бледнолицые, всегда и всюду приходите для того, чтобы что-то забрать, но никогда - чтобы отдать.";
+			link.l1 = "Я не лгу. Вернув нефритовый череп, я сниму проклятие, наложенное на капитана корабля-призрака, который терроризирует Карибское море, да и не только, сделаю его смертным и навсегда избавлю землю от этой напасти.";
 			link.l1.go = "Chavinavi_3";
 		break;
 		
 		case "Chavinavi_3":
-			dialog.text = "How do you know that our God shall lift that curse, pale-face? Does our god talk to you?";
-			link.l1 = "No. I came her on advice of a shaman by the name of Tuttuathapak. As he said, the skull is the key to the curse, and this is the only temple in the Caribbean. An you know what - I think that he indeed can converse with the spirits of the past. Perhaps even with you, chieftain of the jaguar warriors.";
+			dialog.text = "Откуда тебе ведомо, бледнолицый, что наш бог снимет проклятие с презренного вора? Кто сообщил тебе об этом? Разве наш бог говорит с тобой?";
+			link.l1 = "Нет, но я пришел сюда по подсказке шамана по имени Туттуатхапак. Как он утверждал, череп - ключ к снятию заклятия, а этот храм на Карибах - единственный. И знаешь что, сейчас мне кажется, что он действительно говорит с духами предков. Может быть, даже с тобой, вождь воинов-ягуаров.";
 			link.l1.go = "Chavinavi_4";
 		break;
 		
 		case "Chavinavi_4":
-			dialog.text = "Your words surprise me, pale-face, but I still cannot trust you completely. Yet, if you came to this temple to return our relic, surely our shaman must have told you about this place, its creation, its history and denizens\nIf so, you will easily answer all my questions. Then I will admit that you had been sincere with me, allow you to pass and, moreover, reward you.";
-			link.l1 = "Then ask!";
+			dialog.text = "Твои слова удивляют меня, бледнолицый, но я не могу окончательно поверить в то, что ты не лжешь. Если ты действительно пришел в этот храм, чтобы вернуть нашу реликвию, то твой шаман наверняка тебе сообщил подробности об этом месте, его создании, истории и обитателях\nЕсли это так, то тебе не составит труда ответить на все мои вопросы. И тогда я признаю твою искренность, и не только позволю пройти дальше, но более - награжу.";
+			link.l1 = "Спрашивай!";
 			link.l1.go = "question1";
 		break;
 		
 		case "question1":
 			PlaySound("VOICE\Russian\TopChavinavi-02.wav");
-			dialog.text = "I am the chieftain of the Chavinavi, the jaguar warriors. Thousand years ago I was human; now I am carrying out my sacred duty in these chambers. Which god commands me?";
-			link.l1 = "Mictlantecuhtli.";
+			dialog.text = "Я - вождь чавинави, воинов-ягуаров. Тысячу лет назад я был человеком, теперь же несу почетную службу в этих священных чертогах. Какой бог повелевает мной?";
+			link.l1 = "Миктлантекутли.";
 			link.l1.go = "question1_l";
-			link.l2 = "Kukulcan.";
+			link.l2 = "Кукулькан.";
 			link.l2.go = "question1_l";
-			link.l3 = "Yum Cimil.";
+			link.l3 = "Юм Симиль.";
 			link.l3.go = "question1_r";
-			link.l4 = "Inti.";
+			link.l4 = "Инти.";
 			link.l4.go = "question1_l";
-			link.l5 = "Kauil.";
+			link.l5 = "Кавиль.";
 			link.l5.go = "question1_l";
 		break;
 		
 		case "question1_r":
-			dialog.text = "Before your pale-faced people came, this entire land, from the great snow in the north to great plains in the south, belonged to us, brothers of one family...";
+			dialog.text = "До прихода вас, бледнолицых, вся эта земля, от великих снегов на севере до великих равнин на юге, принадлежала нам, разным братьям одной семьи...";
 			link.l1 = "";
 			link.l1.go = "question2";
 		break;
 		
 		case "question1_l":
-			dialog.text = "Before your pale-faced people came, this entire land, from the great snow in the north to great plains in the south, belonged to us, brothers of one family...";
+			dialog.text = "До прихода вас, бледнолицых, вся эта земля, от великих снегов на севере до великих равнин на юге, принадлежала нам, разным братьям одной семьи...";
 			link.l1 = "";
 			link.l1.go = "question2";
 			pchar.questTemp.Caleuche.QuestionFail = "true";
 		break;
 		
 		case "question2":
-			dialog.text = "What Indian tribe erected this temple?";
-			link.l1 = "Inca.";
+			dialog.text = "Какое племя индейцев воздвигло этот храм?";
+			link.l1 = "Инки.";
 			link.l1.go = "question2_l";
-			link.l2 = "Chavins.";
+			link.l2 = "Чавин.";
 			link.l2.go = "question2_r";
-			link.l3 = "Maya.";
+			link.l3 = "Майя.";
 			link.l3.go = "question2_l";
-			link.l4 = "Aztec.";
+			link.l4 = "Ацтеки.";
 			link.l4.go = "question2_l";
-			link.l5 = "Arawac.";
+			link.l5 = "Араваки.";
 			link.l5.go = "question2_l";
 		break;
 		
 		case "question2_r":
-			dialog.text = "Our people progressed, learning wisdom, and subjugated new forests, plains and islands. People, who had built this temple, arrived from the woodlands across the Great Water...";
+			dialog.text = "Наши народы развивались, постигали мудрость и покоряли новые леса, равнины и острова. Люди, построившие этот храм, прибыли из края лесов через Большую Воду...";
 			link.l1 = "";
 			link.l1.go = "question3";
 		break;
 		
 		case "question2_l":
-			dialog.text = "Our people progressed, learning wisdom, and subjugated new forests, plains and islands. People, who had built this temple, arrived from the woodlands across the Great Water...";
+			dialog.text = "Наши народы развивались, постигали мудрость и покоряли новые леса, равнины и острова. Люди, построившие этот храм, прибыли из края лесов через Большую Воду...";
 			link.l1 = "";
 			link.l1.go = "question3";
 			pchar.questTemp.Caleuche.QuestionFail = "true";
 		break;
 		
 		case "question3":
-			dialog.text = "Who led the party of those glorious pioneers?";
-			link.l1 = "Great chieftain.";
+			dialog.text = "Кто возглавлял славный отряд этих первопроходцев?";
+			link.l1 = "Верховный вождь.";
 			link.l1.go = "question3_l";
-			link.l2 = "Great priest.";
+			link.l2 = "Верховный жрец.";
 			link.l2.go = "question3_l";
-			link.l3 = "Son of the great chieftain.";
+			link.l3 = "Сын верховного вождя.";
 			link.l3.go = "question3_r";
-			link.l4 = "Son of the great priest.";
+			link.l4 = "Сын верховного жреца.";
 			link.l4.go = "question3_l";
-			link.l5 = "The party had no leader.";
+			link.l5 = "У отряда не было командира.";
 			link.l5.go = "question3_l";
 		break;
 		
 		case "question3_r":
-			dialog.text = "The Indians, valiant warriors and travellers, always loved and revered their homeland, even after settling in a new place. As a token of their love for their home they built a statue of the temple in the form of a bird the symbol of their home. It's behind me...";
+			dialog.text = "Индейцы - отважные воины и путешественники, поселившись на новой земле, не переставали любить и почитать свою родину. И в знак великой любви к земле предков они воздвигли в святилище храма статую птицы, символ родного края. Она за моей спиной...";
 			link.l1 = "";
 			link.l1.go = "question4";
 		break;
 		
 		case "question3_l":
-			dialog.text = "The Indians, valiant warriors and travellers, always loved and revered their homeland, even after settling in a new place. As a token of their love for their home they built a statue of the temple in the form of a bird the symbol of their home. It's behind me...";
+			dialog.text = "Индейцы - отважные воины и путешественники, поселившись на новой земле, не переставали любить и почитать свою родину. И в знак великой любви к земле предков они воздвигли в святилище храма статую птицы, символ родного края. Она за моей спиной...";
 			link.l1 = "";
 			link.l1.go = "question4";
 			pchar.questTemp.Caleuche.QuestionFail = "true";
 		break;
 		
 		case "question4":
-			dialog.text = "What is the name of that bird?";
-			link.l1 = "Albatross.";
+			dialog.text = "Какое название носит эта птица?";
+			link.l1 = "Альбатрос.";
 			link.l1.go = "question4_l";
-			link.l2 = "Eagle.";
+			link.l2 = "Орел.";
 			link.l2.go = "question4_l";
-			link.l3 = "Vulture.";
+			link.l3 = "Гриф.";
 			link.l3.go = "question4_l";
-			link.l4 = "Roc.";
+			link.l4 = "Рухх.";
 			link.l4.go = "question4_l";
-			link.l5 = "Condor.";
+			link.l5 = "Кондор.";
 			link.l5.go = "question4_r";
 		break;
 		
 		case "question4_r":
-			dialog.text = "Years of prosperity have passed and faded, like the flame of the lamp, and life abandoned the island. Only the temple was left to stand there as a reminder of the great power of ancient Indians. The last shaman left on a pedestal a holy solar orb, which gave power to the courageous and punished the wicked. It was taken by the man who'd been there before you.";
+			dialog.text = "Но годы процветания прошли, как угасает пламя лампады, и жизнь покинула остров. И только храм остался как вечное напоминание о величии древних индейцев. Последний шаман оставил на постаменте священный солнечный шар, дарующий силу храбрым и карающий нечестивцев. Его забрал тот, кто сумел пройти сюда до тебя...";
 			link.l1 = "";
 			link.l1.go = "question5";
 		break;
 		
 		case "question4_l":
-			dialog.text = "Years of prosperity have passed and faded, like the flame of the lamp, and life abandoned the island. Only the temple was left to stand there as a reminder of the great power of ancient Indians. The last shaman left on a pedestal a holy solar orb, which gave power to the courageous and punished the wicked. It was taken by the man who'd been there before you.";
+			dialog.text = "Но годы процветания прошли, как угасает пламя лампады, и жизнь покинула остров. И только храм остался как вечное напоминание о величии древних индейцев. Последний шаман оставил на постаменте священный солнечный шар, дарующий силу храбрым и карающий нечестивцев. Его забрал тот, кто сумел пройти сюда до тебя...";
 			link.l1 = "";
 			link.l1.go = "question5";
 			pchar.questTemp.Caleuche.QuestionFail = "true";
 		break;
 		
 		case "question5":
-			dialog.text = "What was the name of that sacred orb?";
-			link.l1 = "Orb of the shining sun.";
+			dialog.text = "Как назывался этот священный шар?";
+			link.l1 = "Шар солнечного сияния.";
 			link.l1.go = "question5_l";
-			link.l2 = "Orb of the sunrays.";
+			link.l2 = "Шар солнечных лучей.";
 			link.l2.go = "question5_l";
-			link.l3 = "Orb of the midday sun.";
+			link.l3 = "Шар полуденного солнца.";
 			link.l3.go = "question5_l";
-			link.l4 = "Orb of the rising sun.";
+			link.l4 = "Шар восходящего солнца.";
 			link.l4.go = "question5_r";
-			link.l5 = "Orb of the setting sun.";
+			link.l5 = "Шар заходящего солнца.";
 			link.l5.go = "question5_l";
 		break;
 		
@@ -1817,22 +1817,22 @@ void ProcessDialogEvent()
 			if (CheckAttribute(pchar, "questTemp.Caleuche.QuestionFail"))
 			{
 				PlaySound("VOICE\Russian\hambit\Chavinavy.wav");
-				dialog.text = "Wrong answers indicate that you lied to me, white man! You have come with evil intentions! You managed to sneak past the guardians of the temple and the shrine, you figured out how the mechanism of the door worked - but you still won't escape a mortal combat with me. Prepare to die, pale face!";
-				link.l1 = "Well, if you insist - let's see, what great warrior you are...";
+				dialog.text = "Неправильные ответы свидетельствуют о том, что ты мне лгал, белый человек, и о том, что ты пришел сюда с дурными намерениями. Ты сумел ускользнуть от стражей лабиринта и святилища, разгадать секрет механизма двери, но смертельного боя со мной тебе не миновать! Приготовься к смерти, бледнолицый!";
+				link.l1 = "Ну, раз ты настаиваешь - посмотрим, какой ты был великий воин...";
 				link.l1.go = "chavinavi_fight";
 			}
 			else
 			{
-				dialog.text = "Your knowledge of my people and my temple do you credit, pale-face. Now I believe you. Go and fulfil that what you came here for. Place the holy relic on a pedestal in front of the condor, where the orb of rising sun used to reside\nThen return to me. Your worship of Yum Cimil and the decision to voluntarily return that which had been stolen by your brothers must be rewarded.";
-				link.l1 = "Thank you for your trust, great chieftain.";
+				dialog.text = "Твои знания о моем народе и этом храме говорят в твою пользу, бледнолицый. Теперь я верю тебе. Ступай и выполни то, зачем сюда пришел. Возложи священную реликвию на постамент перед кондором, там, где когда-то сиял шар восходящего солнца\nА затем возвращайся ко мне. Твое почитание Юм Симиля и твой добровольный поступок по возврату украденного твоими братьями должны быть достойно вознаграждены.";
+				link.l1 = "Спасибо за доверие, великий вождь.";
 				link.l1.go = "chavinavi_exit";
 			}
 		break;
 		
 		case "question5_l":
 			PlaySound("VOICE\Russian\hambit\Chavinavy.wav");
-			dialog.text = "Wrong answers indicate that you lied to me, white man! You have come with evil intentions! You managed to sneak past the guardians of the temple and the shrine, you figured out how the mechanism of the door worked - but you still won't escape a mortal combat with me. Prepare to die, pale face!";
-			link.l1 = "Well, if you insist - let's see, what great warrior you are...";
+			dialog.text = "Неправильные ответы свидетельствуют о том, что ты мне лгал, белый человек, и о том, что ты пришел сюда с дурными намерениями. Ты сумел ускользнуть от стражей лабиринта и святилища, разгадать секрет механизма двери, но смертельного боя со мной тебе не миновать! Приготовься к смерти, бледнолицый!";
+			link.l1 = "Ну, раз ты настаиваешь - посмотрим, какой ты был великий воин...";
 			link.l1.go = "chavinavi_fight";
 		break;
 		
@@ -1866,23 +1866,23 @@ void ProcessDialogEvent()
 		
 		case "Chavinavi_5":
 			PlaySound("VOICE\Russian\Complete.wav");
-			dialog.text = "You have done what you promised, paleface. I am glad that you were not the liar like most of your brothers. I will keep my word, too. Here, take this gift from me - the symbol of jaguar warriors' might. Yum Cimil himself empowered this pelt with a bit of his strength.";
-			link.l1 = "Wow! It is so beautiful!";
+			dialog.text = "Ты выполнил, что обещал, бледнолицый. Я рад, что ты не оказался лжецом, как все твои братья. И я тоже сдержу слово. Вот, возьми мой подарок - символ мощи воинов-ягуаров. Сам Юм Симиль вложил в эту шкуру частицу своей силы!";
+			link.l1 = "Ух ты! Какая красивая!";
 			link.l1.go = "Chavinavi_6";
 		break;
 		
 		case "Chavinavi_6":
 			GiveItem2Character(pchar, "KhaelRoa_item");
-			Log_Info("You have received jaguar's pelt");
+			Log_Info("Вы получили шкуру ягуара");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "This is not a simple pelt. Once you wear it, you will gain the strength of the jaguar warrior. The power of your weapon which breathes fire and fires lead, will increase dramatically, and you will be able to litter the battlefield with the corpses of your enemies\nBut no mortal can hold the power, which was put into this pelt by Yum Cimil. Once you release it, it shall accompany you only until next midnight, and then it will fade. Take care of it, pale-face, and don't waste its power on a petty skirmish.";
-			link.l1 = "Thank you! I will only use it, when I am totally overwhelmed by enemies.";
+			dialog.text = "Это не простая шкура. Как только ты накинешь ее на себя, ты обретешь силу воина-ягуара. Мощь твоего оружия, изрыгающего пламя и свинец, возрастет многократно, и с его помощью ты сможешь усеять поле брани трупами своих врагов\nНо силу, заключенную Юм Симилем в эту шкуру, не сможет удержать ни один смертный. Как только ты высвободишь ее, она будет сопровождать тебя лишь до следующей полуночи, а затем - иссякнет. Береги мой подарок, бледнолицый, и не растрать его силу на пустячную стычку.";
+			link.l1 = "Спасибо! Я использую ее лишь тогда, когда врагов будет столько, что бежать от них станет некуда.";
 			link.l1.go = "Chavinavi_7";
 		break;
 		
 		case "Chavinavi_7":
-			dialog.text = "Now go. And warn your brothers against encroaching on the serenity of these sacred chambers. The jaguar warriors show no mercy for the pale-faces and will give them no quarter.";
-			link.l1 = "Farewell, chieftain.";
+			dialog.text = "А теперь - ступай. Но предостереги своих братьев от попыток посягнуть на спокойствие этих священных чертогов. Воины-ягуары не знают ни жалости, ни пощады к бледнолицым.";
+			link.l1 = "Прощай, вождь...";
 			link.l1.go = "Chavinavi_8";
 		break;
 		

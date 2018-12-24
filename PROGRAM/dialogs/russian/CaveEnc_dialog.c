@@ -16,8 +16,8 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "Did you want something?";
-			link.l1 = "No, nothing.";
+			dialog.text = "Ты что-то хотел?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
@@ -25,28 +25,28 @@ void ProcessDialogEvent()
 		case "CaveBanditosSit":
 			if (drand(2) == 1) 
 			{
-				dialog.text = NPCStringReactionRepeat("Whoa-ho, look who's there! Well, today is your lucky day, buddy. We're good guys, see, cooking some food and stuff... I am not inviting you to our table, but you may well get lost while you still can.", "Get lost no and bother us no more. Come back tomorrow - and don't forget to bring your purse with you, ha-ha!", "Don't make me mad, sailor? Do you still remember where the entrance to the cave is? It is there you should go now, and be quick about it!", "Well, now you've got my goat! Guess I'll have to tear myself away from my affairs and deal with you!", "block", 1, npchar, Dialog.CurrentNode);
-				link.l1 = HeroStringReactionRepeat("So very kind of you, buddy...", "I see you're quite a joker...", "Alright, keep frying your flat cakes, then...", "Now we're talking!", npchar, Dialog.CurrentNode); 
+				dialog.text = NPCStringReactionRepeat("Хо-хо, кто к нам пожаловал! Сегодня твой счастливый день, дружок. Мы добрые, вот, кушать готовим... Присоединиться не приглашаю, а вот унести ноги побыстрее - эта возможность у тебя есть.", "Давай-давай, топай отсюда, не мешай нам. Завтра приходи, и кошель не забудь, ха-ха!", "Не зли меня, морячок. Надеюсь, запомнил, где выход из пещеры? Туда и вали, да поживее!", "Ну все, ты меня достал. Придется оторваться от дел насущных и заняться тобой!", "block", 1, npchar, Dialog.CurrentNode);
+				link.l1 = HeroStringReactionRepeat("Какой ты добрый, приятель...", "Ты, посмотрю, шутник, однако...", "Ладно, сиди, жарь свои лепешки...", "Вот это деловой разговор!", npchar, Dialog.CurrentNode); 
 				link.l1.go = DialogGoNodeRepeat("exit_talk", "exit", "exit", "fight", npchar, Dialog.CurrentNode);
 			}
 			else
 			{
-				dialog.text = LinkRandPhrase("Whoa, good heavens! No need to go hunting the prey - it's already there... Hey, guys - let's shake this fop, shall we?","No one invited you here, buddy... But it's a good thing that you are there, anyway. Let's see now, just how hefty your purse is!","No one dragged you here by force, he-he... But if you're already there, guess we'll tickle you a bit to see what drops out of your pockets...");
-				link.l1 = LinkRandPhrase("Now I will shorten your tongue a bit...","I hope your skills with a saber match your wits, flapjaw!","Well, seems that it's time to make a couple more holes in your perishable body...");
+				dialog.text = LinkRandPhrase("Хо-хо, ну надо же! Даже искать добычу не надо - сама явилась... Ну-ка, ребята, порастрясем этого пижона!","Приятель, тебя никто сюда не звал... но раз пришел - мы очень рады! Ну-ка, поглядим, тяжел ли твой кошель!","А ведь тебя никто сюда не тянул, хе-хе... Но раз явился - то мы тебя малость пощекочем, посмотрим, что высыпется из карманов...");
+				link.l1 = LinkRandPhrase("Сейчас я тебе язычок-то подкорочу...","Надеюсь, саблей владеешь так же мастерски, как трепешься языком?","Ну что же, пришло время проделать в твоем бренном теле дополнительных пару дырок...");
 				link.l1.go = "fight";
 			}
 			NextDiag.TempNode = "CaveBanditosSit";
 		break;
 		
 		case "CaveBanditosStay":
-			dialog.text = LinkRandPhrase("Whoa, good heavens! No need to go hunting the prey - it's already there... Hey, guys - let's shake this fop, shall we?","No one invited you here, buddy... But it's a good thing that you are there, anyway. Let's see now, just how hefty your purse is!","No one dragged you here by force, he-he... But if you're already there, guess we'll tickle you a bit to see what drops out of your pockets...");
-			link.l1 = LinkRandPhrase("Now I will shorten your tongue a bit...","I hope your skills with a saber match your wits, flapjaw!","Well, seems that it's time to make a couple more holes in your perishable body...");
+			dialog.text = LinkRandPhrase("Хо-хо, ну надо же! Даже искать добычу не надо - сама явилась... Ну-ка, ребята, порастрясем этого пижона!","Приятель, тебя никто сюда не звал... но раз пришел - мы очень рады! Ну-ка, поглядим, тяжел ли твой кошель!","А ведь тебя никто сюда не тянул, хе-хе... Но раз явился - то мы тебя малость пощекочем, посмотрим, что высыпется из карманов...");
+			link.l1 = LinkRandPhrase("Сейчас я тебе язычок-то подкорочу...","Надеюсь, саблей владеешь так же мастерски, как трепешься языком?","Ну что же, пришло время проделать в твоем бренном теле дополнительных пару дырок...");
 			link.l1.go = "fight";
 		break;
 		
 		case "CaveBanditosTreasure":
-			dialog.text = NPCStringReactionRepeat("Get lost, buddy. Nothing to do for you here!", "Hey, I am asking in a friendly way: get lost. You never know...", "Last warning: if you don't get lost right now, you'll be very sorry.", "That's it, buddy, you asked for trouble.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Don't tell me what to do, alright?", "And what's so special down there? Just a cave, nothing more...", "Oh, come on now...", "Ha! Well, let's see who's better, shall we?", npchar, Dialog.CurrentNode); 
+			dialog.text = NPCStringReactionRepeat("Проваливай отсюда, приятель. Нечего тут шастать!", "Слушай, по-хорошему прошу: уйди отсюда. Неровен час...", "Последний раз предупреждаю: не уйдешь - пожалеешь об этом.", "Ну всё, приятель, ты сам напросился...", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Не указывай мне, что делать, ладно?", "И что тут такого особенного? Пещера и пещера...", "Да ладно тебе...", "Ха! Ну давай, посмотрим, кто крепче!", npchar, Dialog.CurrentNode); 
 			link.l1.go = DialogGoNodeRepeat("exit", "exit", "exit", "fight", npchar, Dialog.CurrentNode);
 			NextDiag.TempNode = "CaveBanditosTreasure";
 		break;
@@ -54,22 +54,22 @@ void ProcessDialogEvent()
 		case "CaveCaribSit":
 			if (drand(2) == 2) 
 			{
-				dialog.text = NPCStringReactionRepeat("Paleface go away. He be happy that "+npchar.name+"  kind. Gods take pity on you today.", "Get lost from my cave, while me and my brothers not angry!", "Get lost, paleface dog!", "Your luck and life come to an end, white dog!", "block", 1, npchar, Dialog.CurrentNode);
-				link.l1 = HeroStringReactionRepeat("Well, thank you, buddy, very kind of you...", "This cave is not yours, and I go where I please.", "Take it down a notch, swamp spawn.", "Now I'll stuff these words back into your throat, animal...", npchar, Dialog.CurrentNode); 
+				dialog.text = NPCStringReactionRepeat("Бледнолицый уходить прочь. Он радоваться, что "+npchar.name+" добр. Боги сжалиться над тобой сегодня.", "Убираться из мой пещера, пока я и мой братья не злиться!", "Проваливать прочь, бледнолицый пес!", "Твоя удача и жизнь подойти к концу, белая собака!", "block", 1, npchar, Dialog.CurrentNode);
+				link.l1 = HeroStringReactionRepeat("Ну спасибо, приятель, удружил...", "Пещера не твоя - хочу и хожу.", "Меньше гонору, сын болота.", "Сейчас я заткну эти слова тебе в глотку, скотина...", npchar, Dialog.CurrentNode); 
 				link.l1.go = DialogGoNodeRepeat("exit_talk", "exit", "exit", "fight", npchar, Dialog.CurrentNode);
 			}
 			else
 			{
-				dialog.text = LinkRandPhrase("Cursed paleface cur come to our campfire! Wheppee! You're done for!","Silly paleface come to the jaguar's lair. I will fry your liver!","Insolent paleface dare come to my cave? Then he never make it out alive!");
-				link.l1 = LinkRandPhrase("Now I will shorten your tongue a bit...","Now the world will become several cannibals shorter...","Well, seems that it's time to make a couple more holes in your perishable body, you red-faced ape.");
+				dialog.text = LinkRandPhrase("Проклятый бледнолицый пес сам явиться на наш костер! О-ей! Тебе конец!","Глупый яланауи сам прийти в пасть ягуар. Я поджарить твой печень на костер!","Наглый бледнолицый посметь прийти мой пещера? Тогда он не выйти отсюда никогда!");
+				link.l1 = LinkRandPhrase("Сейчас я тебе язычок-то подкорочу...","Сейчас несколькими каннибалами на земле меньше станет...","Похоже, настало время проделать в твоем бренном теле пару дырок, краснорожая обезьяна...");
 				link.l1.go = "fight";
 			}
 			NextDiag.TempNode = "CaveCaribSit";
 		break;
 		
 		case "CaveCaribStay":
-			dialog.text = LinkRandPhrase("Foul paleface cur come to our cave! Whe-hee! I cut out your tongue and fry it!","Stupid paleface come to the jaguar's lair. Brothers, cut this cursed white cur!","Insolent paleface dare come to my cave? Then he never make it out alive!");
-			link.l1 = LinkRandPhrase("Now I will shorten your tongue a bit...","Now the world will become several cannibals shorter...","Well, seems that it's time to make a couple more holes in your perishable body, you red-faced ape.");
+			dialog.text = LinkRandPhrase("Подлый бледнолицый собака прийти наш пещера! О-ей! Я вырезать твой сердце и зажарить его!","Глупый яланауи сам прийти в пасть ягуар. Братья, рубить проклятый белый пес!","Наглый бледнолицый посметь явиться мой пещера? Тогда он не выйти отсюда никогда!");
+			link.l1 = LinkRandPhrase("Сейчас я тебе язычок-то подкорочу...","Сейчас несколькими каннибалами на земле меньше станет...","Похоже, настало время проделать в твоем бренном теле пару дырок, краснорожая обезьяна...");
 			link.l1.go = "fight";
 		break;
 		

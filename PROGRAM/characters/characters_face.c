@@ -279,7 +279,7 @@ void FaceMaker(aref rCharacter)
 		case "Meriman_1"	: 		rCharacter.FaceId = 223;	break;		// Жоаким Мериман
 		case "Meriman_2"	: 		rCharacter.FaceId = 223;	break;		// Жоаким Мериман
 		case "Solomon"      :		rCharacter.FaceId = 224;	break;		// Соломон Шнеур
-		case "Aby"      	:		rCharacter.FaceId = 225;	break;		// Абигайль Шнеур
+		case "Aby"      	:		rCharacter.FaceId = 225;	break;		// Абигайль Шнеур		
 		case "Rodriges"		: 		rCharacter.FaceId = 286;	break;		// Фернандо Родригес
 		
 		// квест "Долгий путь к виселице"
@@ -524,7 +524,7 @@ void FaceMaker(aref rCharacter)
 		// новые модельки
 		case "BigPirate":		rCharacter.FaceId = 210; break;
 		case "chard":			rCharacter.FaceId = 211; break;
-		case "chard2":			rCharacter.FaceId = 212; break;
+		case "chard2":			rCharacter.FaceId = 37;  break;
 		case "chard3":			rCharacter.FaceId = 213; break;
 
 		//ОЗГи

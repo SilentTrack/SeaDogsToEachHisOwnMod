@@ -26,15 +26,15 @@ void InitInterface(string iniName)
 	
 	StartAboveForm(true);
 	
-	GameInterface.TABLE_LIST.hr.td1.str = "Items";
+	GameInterface.TABLE_LIST.hr.td1.str = "Предметов";
 	GameInterface.TABLE_LIST.hr.td1.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td2.str = "Function";
+	GameInterface.TABLE_LIST.hr.td2.str = "Назначение";
 	GameInterface.TABLE_LIST.hr.td2.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td3.str = "Item name";
+	GameInterface.TABLE_LIST.hr.td3.str = "Наименование предметов";
 	GameInterface.TABLE_LIST.hr.td3.scale = 0.9;	
-	GameInterface.TABLE_LIST.hr.td4.str = "Need";
+	GameInterface.TABLE_LIST.hr.td4.str = "Необходимо";
 	GameInterface.TABLE_LIST.hr.td4.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td5.str = "Items";
+	GameInterface.TABLE_LIST.hr.td5.str = "Предметов";
 	GameInterface.TABLE_LIST.hr.td5.scale = 0.9;
 	
 	FillItemsScroll();
@@ -249,8 +249,12 @@ void ShowHelpHint()
 		if(!bShowChangeWin) // покажем помощь по работе с формой
 		{
 			sHeader = XI_ConvertString("titleAlchemy");
-			sText1 = "";			
-			sText2 = "";
+			sText1 = "Для изготовления предметов нужно выбрать предмет в списке доступных рецептов, затем переместить необходимое количество инструментов и компонентов" + newStr() +
+			"в алхимическую лабораторию и нажать кнопку 'Результат' - она будет активной если количество компонентов совпадает с требуемым по рецепту." + newStr() + 
+			"Shift + лево/право на строках таблицы автоматически вызывают форму с предустановленным количеством предметов для перемещения на максимальное." + newStr() +
+			"Ввод положительного количества с клавиатуры устанавливает перемещение предмета в алхимическую лабораторию, а отрицательного (с минусом) перемещение" + newStr() +
+			"предмета герою. Стрелки лево/право изменяют количество по одному, а Shift + лево/право на максимально доступное. Нажатие Enter на форме равносильно ОК, а Esc - Отмена.";			
+			sText2 = "В списке имеющихся компонентов отсутствуют экипированные персонажем предметы.";
 			
 			CreateTooltip("#" + sHeader, sText1, argb(255,255,255,255), sText2, argb(255,192,192,192), sText3, argb(255,255,255,255), "", argb(255,255,255,255), sPicture, sGroup, sGroupPicture, 64, 64);
 		}
@@ -565,8 +569,7 @@ void onGetAllBtnClick()
 		if(sItmUse == "catalizator")
 		{
 			RemoveItems(alchemy, sItmId, 1);
-		}
-		
+		}		
 	}
 	AddItems(refCharacter, sCurItem, Qty * sti(rItem.multiobject.qty));
 	WaitDate("", 0, 0, 0, 0, 15 + (5 * (Qty - 1)));
@@ -748,7 +751,7 @@ void ChangeQTY_EDIT()
 		        GameInterface.qty_edit.str = iCharQty;
 		    }
 
-		    SetFormatedText("QTY_TypeOperation", "To give");
+		    SetFormatedText("QTY_TypeOperation", "Отдать");
 		}
 		else
 		{
@@ -759,7 +762,7 @@ void ChangeQTY_EDIT()
 		    {
 		        GameInterface.qty_edit.str = iStoreQty;
 		    }
-			SetFormatedText("QTY_TypeOperation", "Pick up");
+			SetFormatedText("QTY_TypeOperation", "Забрать");
 		}
 	}
 	// если получили ноль

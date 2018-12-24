@@ -23,69 +23,69 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "Want something?";
-			link.l1 = "No, it's nothing.";
+			dialog.text = "Вы что-то хотели?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "baker":
-			dialog.text = "Thank you, captain! I can't even imagine what would I do without you...";
-			link.l1 = "I can imagine. You'd died of starvation or ended up in stomachs of savages from Dominica. But you have got a chance to repay me.";
+			dialog.text = "Благодарю вас, капитан! Даже не знаю, чтобы я без вас делал...";
+			link.l1 = "Зато я знаю: умерли бы с голоду, или оказались в желудке дикарей с Доминики. Но у вас есть шанс отплатить за мое добро.";
 			link.l1.go = "baker_1";
 		break;
 		
 		case "baker_1":
-			dialog.text = "How can I help you, captain?";
-			link.l1 = "I want to know more about one man. He is our common friend so to speak. A very close friend of yours actually. I mean captain Butcher. Yes, the one you hanged twenty years ago. Jesus, why are you so pale? Do you want some rum?";
+			dialog.text = "Чем могу служить, капитан?";
+			link.l1 = "Меня интересует один человек. Он наш общий знакомый, так скажем. Причем вам он был знаком очень близко. Я говорю о капитане Бучере. Да, том самом, которого вы повесили двадцать лет назад. Господи, да что же вы так побледнели? Глоток рому?";
 			link.l1.go = "baker_2";
 		break;
 		
 		case "baker_2":
-			dialog.text = "Are... are you from him?";
-			link.l1 = "Nonsense! How can I be 'from him' if he is dead! I am interested more not in Butcher himself but in the things he has left. Letters, paper. Perhaps something was in his pockets... Wait! I don't get it. Do you really think that Butcher is alive? You have executed him yourself!";
+			dialog.text = "Вы... вы от него?";
+			link.l1 = "Что за чушь! Как я могу быть 'от него', если он давно уже мертв! Меня интересует не сколько сам Бучер, сколько то, что могло остаться после него. Какие-нибудь письма, документы. Может быть что-то было в карманах его камзола... Постойте! Я что-то не понял. Вы что, считаете, что Бучер - жив? Вы же сами казнили его!";
 			link.l1.go = "baker_3";
 		break;
 		
 		case "baker_3":
-			dialog.text = "Fuh! You don't know a thing. It means that you are not from Butcher as I thought...";
-			link.l1 = "Well, well. It just getting more interesting. It seems that Henry had all reasons to be scared of Butcher and that's why he died because of heart attack... Is Butcher alive?";
+			dialog.text = "Фу-у-у! Вы ничего не знаете. Значит вы не от Бучера, а я уж было подумал...";
+			link.l1 = "Так-так. Становится все занятнее и занятнее. Значит, Генри недаром боялся Бучера, и недаром его удар прикончил... Получается, Бучер жив?";
 			link.l1.go = "baker_4";
 		break;
 		
 		case "baker_4":
-			dialog.text = "He is, captain... And they are looking for me.";
-			link.l1 = "Raymond, they have told me that you are not a stupid man. Don't try to play games with me. You are safe here despite of any threat. Tell me everything you know and I will think how to help you. Perhaps we share a common enemy. Let's start with Butcher.";
+			dialog.text = "Это так, капитан... И они ищут меня.";
+			link.l1 = "Раймонд, мне вас представляли как неглупого человека. Не нужно со мной хитрить. Кто бы ни угрожал вам, под моей защитой вы в безопасности. Расскажите мне все, что знаете, а я подумаю, как вам помочь. Возможно, у нас общие враги, и мне не придется делать это специально. Начнем с Бучера.";
 			link.l1.go = "baker_5";
 		break;
 		
 		case "baker_5":
-			dialog.text = "He is alive, but his name is different now! His men came to me at the night of execution. Jackman and another man with some odd nickname. As far as I remember it was the 'Drowned man'.";
-			link.l1 = "Hangman. Henry the Hangman.";
+			dialog.text = "Он жив! Только зовут его теперь иначе. В ночь казни ко мне пришли его люди. Джекман и еще один со странным прозвищем. Кажется, 'Утопленник'.";
+			link.l1 = "Висельник. Генри Висельник.";
 			link.l1.go = "baker_6";
 		break;
 		
 		case "baker_6":
-			dialog.text = "Right! They said that I'll die in the most painful way if I won't save their captain. So I had to frame up the execution with a special equipment I have created in my free time. Such construction of belts and clumps can allocate the body's weight\nAll you have to do is link it with a secret hook in the loop. The 'corpse' must play it's role well though. I have to say that Lawrence's acting was most believable, he did everything right, but refused to piss himself, because of...";
-			link.l1 = "Did you just call Butcher Laurence?";
+			dialog.text = "Точно! Они предложили мне умереть в муках, если я не спасу их капитана. Ну мне и пришлось инсценировать казнь при помощи приспособления, которое я разработал от нечего делать. Такая конструкция из ремней и зажимов, равномерно распределяющая вес тела\nДостаточно прицепить ее сзади к незаметному крюку в петле и дело сделано. Главное чтобы 'покойник' вел себя правдоподобно. Нужно сказать, что Лоуренс оказался способным учеником и сделал все правильно, только мочиться отказался наотрез, потому что видите ли...";
+			link.l1 = "Вы назвали Бучера Лоуренсом?";
 			link.l1.go = "baker_7";
 		break;
 		
 		case "baker_7":
-			dialog.text = "That is his true name. I told you that he is called Lawrence Beltrope. I have been restless since he returned back to the Caribbean a year ago. And when I found out that some grumpy people are looking for me…\nI have even written a confession for the authorities just in case. I am keeping it with me all the time and I am too afraid to give it away. They might think that I was a willing abettor. Please, let me stay in your crew. I swear, I am an excellent physician and can help you a lot.";
-			link.l1 = "Fine. And what about Butcher's... eh, Beltrope's things? Isn't he relative to Thomas Beltrope?";
+			dialog.text = "Это его настоящее имя. Я же говорю, что его теперь зовут по-другому. Лоуренс Белтроп. С тех пор как он появился на Карибах год назад, я места себе не нахожу. А уж когда узнал, что меня ищут какие-то угрюмые люди, совсем потерял голову от страха\nЯ уже и признание написал для властей. Ношу вот постоянно с собой, а отдать боюсь. Вдруг решат, что я был добровольным помощником. Я вас умоляю, оставьте меня в своей команде. Ей-Богу, я отличный врач и могу быть полезен.";
+			link.l1 = "Хорошо. Что на счет личных вещей Бучера... э-э-э, Белтропа? Он случайно не родственник Томаса Белтропа?";
 			link.l1.go = "baker_8";
 		break;
 		
 		case "baker_8":
-			dialog.text = "No clue. Don't have anything special left from Beltrope himself. But I will give you everything I have got, you are free to do whatever you want with this. All papers related to the subject are in my bag. I saved everything just in case and keep it close to myself\nHere, take a look... this is the legend of captain Butcher, this is my confession... These are things belonged to Joshua Leadbeater...";
-			link.l1 = "Stop! Leadbeater? Who is that?";
+			dialog.text = "Не знаю. Собственно от Белтропа у меня ничего особого нет. Но я вам отдам все, что есть, и делайте с этим, что хотите. У меня в саквояже есть все бумаги, которые так или иначе касались этого дела. Я все сохранил, на всякий случай, и теперь ношу с собой\nВот смотрите... это легенда о капитане Бучере, а вот это - мое письменное подтверждение инсценировки казни... Вот вещи, принадлежавшие Джошуа Ледбиттеру...";
+			link.l1 = "Стоп! Кто такой Ледбиттер?";
 			link.l1.go = "baker_9";
 		break;
 		
 		case "baker_9":
-			dialog.text = "Oh! It was a very special man. The one who chased down Butcher himself. The people remembered him as the 'masked man'. He was murdered shortly after the Butcher's execution. They slit his throat with a shark's tooth! He must had been suffering\nI wish you saw his face under a mask! Nothing but meat! He had this journal paper in his pocket. This must be writings of Jessica Rose. Creepy story! Read it, it will make things much more understandable\nAnd this is the tooth itself. Can you see the letters? S.D. Whatever they mean. There are also some bloodstains left.";
-			link.l1 = "Enough! I need to read everything carefully and sleep on it. And you will be my passenger or the ship doctor until I deal with all of this. You can breath freely, Raymond, you are safe here.";
+			dialog.text = "О-о-о! Это очень серьезный человек. Тот, кто поймал самого Бучера. Народ запомнил его, как 'человека в маске'. Его убили сразу после казни Бучера. Акульим зубом по горлу... Вжик, и нет человека! Он, наверное, очень страдал при жизни\nВидели бы вы его лицо под маской! Сплошное месиво! Так вот у него была в кармане вот эта страничка из дневника. Должно быть, это рука Джессики Роуз. Жуткая история! Вы почитайте легенду, многое станет понятно\nА вот это тот самый зуб. На нем выцарапаны инициалы С.Д. Чтобы это значило? Видите, тут даже пятна крови еще...";
+			link.l1 = "Достаточно! Мне нужно все внимательно прочитать и хорошенько подумать. А вы остаетесь у меня пассажиром, или врачом - это уже как получится, до тех пор, пока я не разберусь со всем этим делом. Можете успокоиться, Раймонд, у меня на борту вы в безопасности.";
 			link.l1.go = "baker_10";
 		break;
 		
@@ -123,19 +123,19 @@ void ProcessDialogEvent()
 		
 		//--> ----------------------------------- офицерский блок ------------------------------------------
 		case "Baker_officer":
-			dialog.text = "Yes, captain?";
-			Link.l1 = "Listen to my order!";
+			dialog.text = "Да, капитан?";
+			Link.l1 = "Слушай мой приказ!";
             Link.l1.go = "stay_follow";
-			link.l2 = "It's nothing. Dismissed!";
+			link.l2 = "Пока ничего. Вольно!";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "Baker_officer";
 		break;
 		
 		case "stay_follow":
-            dialog.Text = "Orders?";
-            Link.l1 = "Stand here!";
+            dialog.Text = "Какие быть приказания?";
+            Link.l1 = "Стой здесь!";
             Link.l1.go = "Boal_Stay";
-            Link.l2 = "Follow me and keep up!";
+            Link.l2 = "Следуй за мной и не отставай!";
             Link.l2.go = "Boal_Follow";
 			sGun = GetCharacterEquipByGroup(NPChar, GUN_ITEM_TYPE);
 			if(sGun != "")
@@ -143,14 +143,14 @@ void ProcessDialogEvent()
 				rItm = ItemsFromID(sGun);
 				if(CheckAttribute(NPChar, "chr_ai.bulletNum") && sti(NPChar.chr_ai.bulletNum) > 1)
 				{
-					Link.l3 = "Change the type of ammo for your firearms.";
+					Link.l3 = "Нужно изменить тип боеприпаса для твоего огнестрельного оружия.";
 					Link.l3.go = "SetGunBullets";
 				}	
 			}		
 		break;
 		
 		case "SetGunBullets":
-			Dialog.Text = "Choosing the type of ammo:";
+			Dialog.Text = "Выбор типа боеприпаса:";
 			sGun = GetCharacterEquipByGroup(NPChar, GUN_ITEM_TYPE);
 			rItm = ItemsFromID(sGun);
 			makearef(rType, rItm.type);	
@@ -181,16 +181,16 @@ void ProcessDialogEvent()
         case "Boal_Stay":
             Pchar.questTemp.HiringOfficerIDX = GetCharacterIndex(Npchar.id);
             AddDialogExitQuestFunction("LandEnc_OfficerStay");
-            dialog.Text = "There is change of disposition!";
-            Link.l1 = "Dismissed.";
+            dialog.Text = "Есть изменить дислокацию!";
+            Link.l1 = "Вольно.";
             Link.l1.go = "Exit";
             Npchar.chr_ai.tmpl = LAI_TMPL_STAY;
         break;
         
         case "Boal_Follow":
             SetCharacterTask_FollowCharacter(Npchar, PChar);
-            dialog.Text = "There is change of disposition!";
-            Link.l1 = "Dismissed.";
+            dialog.Text = "Есть изменить дислокацию!";
+            Link.l1 = "Вольно.";
             Link.l1.go = "Exit";
         break;
 	//<-- ----------------------------------- офицерский блок ----------------------------------------

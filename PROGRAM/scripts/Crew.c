@@ -578,7 +578,7 @@ void Partition_GetCargoCostCoeff(string state) // state = "before" || "after" - 
 	string   	sGood;
 	ref         chref, cannon;
 	
-	trace("Partition_GetCargoCostCoeff    state :"+state);
+	//trace("Partition_GetCargoCostCoeff    state :"+state);
 	for (i=0; i<GOODS_QUANTITY; i++)
 	{
 		sGood = Goods[i].name;

@@ -1159,9 +1159,9 @@ void SetCapitainFromSeaToCity(string sChar)
     NullCharacter.capitainBase.(sTemp).checkTime.control_month = GetDataMonth();
     NullCharacter.capitainBase.(sTemp).checkTime.control_year = GetDataYear();
 	//даем слух, что кэп в городе
-	AddSimpleRumourCity(LinkRandPhrase("Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is in the city. He must be in a harbor office.", 
-		"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is in the city. He must be in a harbor office.", 
-		"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is in the city. He must be in a harbor office."), sld.City, Qty, 1, "none");
+	AddSimpleRumourCity(LinkRandPhrase("Капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' сейчас в городе. Кажется, его зовут " + GetFullName(sld) + ". Он сейчас должнен быть у начальника порта.", 
+		"Вы знаете, капитана " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' сейчас можно застать у начальника порта.", 
+		"Если вы хотите пообщаться с капитаном " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "', то идите прямоком к начальнику порта. " + GetFullName(sld) + " сейчас там..."), sld.City, Qty, 1, "none");
 }
 //отдать забытый судовой журнал. записть в квестбук из слухов
 void PortmansBook_writeQuestBook(ref rid)
@@ -1178,7 +1178,7 @@ void PortmansBook_writeQuestBook(ref rid)
 		AddQuestUserData(sTitle, "sTargetCity", XI_ConvertString("Colony" + sld.quest.targetCity + "Acc"));
 		if (GetIslandByCityName(sld.quest.targetCity) != sld.quest.targetCity)
 		{
-			AddQuestUserData(sTitle, "sAreal", ", on the " + XI_ConvertString(GetIslandByCityName(sld.quest.targetCity) + "Dat"));
+			AddQuestUserData(sTitle, "sAreal", ", что находится на " + XI_ConvertString(GetIslandByCityName(sld.quest.targetCity) + "Dat"));
 		}
 	}
 }
@@ -1215,9 +1215,9 @@ void SetRobberFromMapToSea(string sChar)
     NullCharacter.capitainBase.(sTemp).checkTime.control_month = GetDataMonth();
     NullCharacter.capitainBase.(sTemp).checkTime.control_year = GetDataYear();
 	//даем слух, что кэп на рейде
-	AddSimpleRumourCity(LinkRandPhrase("Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is on his vessel at the port. Odd fellow, I say, never put his steps ashore.", 
-		"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is on his vessel at the port. Odd fellow, I say, never put his steps ashore.", 
-		"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is on his vessel at the port. Odd fellow, I say, never put his steps ashore."), sld.City, Qty, 1, "none");
+	AddSimpleRumourCity(LinkRandPhrase("Капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' стоит в порту на рейде. Кажется, его зовут " + GetFullName(sld) + ". Странный тип, скажу я вам, на берег не сходит вообще.", 
+		"Вы знаете, капитана " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' сейчас можно встретить, только если выйти на шлюпке в порт. Корабль стоит на рейде, но капитан в город не выходит, предпочитает оставаться на корабле. И и недоело ему?..", 
+		"Если вы хотите пообщаться с капитаном " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "', то выходите в порт. " + GetFullName(sld) + " вроде бы его зовут... В общем, он бросил якорь в порту, но на берег не сходит. Настоящий морской волк, даже с палубной качкой расставаться не хочет."), sld.City, Qty, 1, "none");
 }
 //разыскать кэпа-вора. запись в квестбук из слухов
 void PortmansSeekShip_writeQuestBook(ref rid)
@@ -1238,7 +1238,7 @@ void PortmansSeekShip_writeQuestBook(ref rid)
 		AddQuestUserData(sTitle, "sTargetCity", XI_ConvertString("Colony" + sld.quest.targetCity + "Acc"));
 		if (GetIslandByCityName(sld.quest.targetCity) != sld.quest.targetCity)
 		{
-			AddQuestUserData(sTitle, "sAreal", ", on the " + XI_ConvertString(GetIslandByCityName(sld.quest.targetCity) + "Dat"));
+			AddQuestUserData(sTitle, "sAreal", ", что находится на " + XI_ConvertString(GetIslandByCityName(sld.quest.targetCity) + "Dat"));
 		}
 	}
 }
@@ -1260,9 +1260,9 @@ void CitizCapFromMapToCity(string sChar)
 		string slai_group = GetNationNameByType(sti(colonies[iColony].nation))  + "_citizens";
 		LAi_group_MoveCharacter(sld, slai_group);
 		//даем слух, что кэп на рейде
-		AddSimpleRumourCity(LinkRandPhrase("Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is the city. His name is " + GetFullName(sld) + ", I believe.", 
-			"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is the city.", 
-			"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is the city. His name is " + GetFullName(sld) + ", I believe. " + GetFullName(sld) + " вроде бы его зовут..."), sld.City, Qty, 1, "none");
+		AddSimpleRumourCity(LinkRandPhrase("Капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' в городе. Кажется, его зовут " + GetFullName(sld) + ".", 
+			"Вы знаете, капитана " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' сейчас можно застать в городе.", 
+			"Если вы хотите пообщаться с капитаном " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "', то поищите его в на улицах. " + GetFullName(sld) + " вроде бы его зовут..."), sld.City, Qty, 1, "none");
 	}
 	else
 	{	//стоит на рейде в порту
@@ -1273,9 +1273,9 @@ void CitizCapFromMapToCity(string sChar)
 		Group_SetAddress(sGroup, colonies[iColony].island, "quest_ships", "Quest_ship_"+(rand(2)+1));
 		Group_SetTaskNone(sGroup);
 		//даем слух, что кэп на рейде
-		AddSimpleRumourCity(LinkRandPhrase("Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is on his vessel at the port. His name is " + GetFullName(sld) + ", I believe.", 
-			"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is on his vessel at the port.", 
-			"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is on his vessel at the port. His name is " + GetFullName(sld) + ", I believe."), sld.City, Qty, 1, "none");
+		AddSimpleRumourCity(LinkRandPhrase("Капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' находится в порту на рейде. Кажется, его зовут " + GetFullName(sld) + ".", 
+			"Вы знаете, капитана " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' сейчас можно застать в нашем порту. Его корабль стоит на рейде.", 
+			"Если вы хотите пообщаться с капитаном " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "', то поищите его корабль в нашем порту. " + GetFullName(sld) + " вроде бы его зовут..."), sld.City, Qty, 1, "none");
 	}
 	//таймер через сколько опять выйти на карту
 	int Qty = rand(7)+5; //через сколько дней выйдем на карту
@@ -1310,7 +1310,7 @@ void CitizSeekCap_writeQuestBook(ref rid)
 		AddQuestUserData(sTitle, "sTargetCity", XI_ConvertString("Colony" + sld.quest.targetCity + "Acc"));
 		if (GetIslandByCityName(sld.quest.targetCity) != sld.quest.targetCity)
 		{
-			AddQuestUserData(sTitle, "sAreal", ", on the " + XI_ConvertString(GetIslandByCityName(sld.quest.targetCity) + "Dat"));
+			AddQuestUserData(sTitle, "sAreal", ", что находится на " + XI_ConvertString(GetIslandByCityName(sld.quest.targetCity) + "Dat"));
 		}
 	}
 }
@@ -1413,11 +1413,11 @@ void MaryCelesteInit()
 	generableGoods[14] = GOOD_LEATHER;
 	
 	character = GetCharacter(NPC_GenerateCharacter(capID , "citiz_45", "man", "man", 50, ENGLAND, -1, true, "citizen"));
-	FantomMakeCoolSailor(character, SHIP_BRIGANTINE, "Mary Celeste", CANNON_TYPE_CANNON_LBS16, 50, 50, 50);
-	character.name = "The ship is empty";
+	FantomMakeCoolSailor(character, SHIP_BRIGANTINE, "Мэри Селест", CANNON_TYPE_CANNON_LBS16, 50, 50, 50);
+	character.name = "Корабль пуст";
 	character.lastname = "";
 	character.mapEnc.type = "trade";
-	character.mapEnc.Name = "brigantine 'Mary Celeste'";
+	character.mapEnc.Name = "бригантина 'Мэри Селест'";
 	LAi_SetImmortal(character, true);
 	SetCharacterGoods(character, GOOD_RUM, 700);
 	Character_SetAbordageEnable(character, false); // Низя абордировать

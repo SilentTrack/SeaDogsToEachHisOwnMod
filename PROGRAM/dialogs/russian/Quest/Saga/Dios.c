@@ -15,92 +15,92 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "Want something?";
+			dialog.text = "Вы что-то хотели?";
 			if (CheckAttribute(pchar, "questTemp.Saga.SharkHunt") && pchar.questTemp.Saga.SharkHunt == "dios")
 			{
-				link.l3 = TimeGreeting()+"! Tell me, are you Jose Dios, a cartographer?";
+				link.l3 = TimeGreeting()+"! Скажите, это вы - Хосе Диос, картограф?";
 				link.l3.go = "island";
 			}
-			link.l1 = "No, it's nothing.";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";	
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "island":
-			dialog.text = "Yes, it's me. I don't know you, senor. What do you want from me?";
-			link.l1 = "My name is "+GetFullName(pchar)+" and I came here from Jan Svensson. Do you remember him?";
+			dialog.text = "Да, это именно я. А вот вы, сеньор, мне не знакомы. По какому вопросу пожаловали?";
+			link.l1 = "Меня зовут "+GetFullName(pchar)+" и я прибыл от Яна Свенсона. Вы помните этого человека?";
 			link.l1.go = "island_1";
 		break;
 		
 		case "island_1":
-			dialog.text = "Ah, senor Svensson! Sure I remember him! Come, make yourself comfortable... How is respected Jan doing?";
-			link.l1 = "Thanks, he is doing fine. Senor Dios, I need your help. I want to consult with you about one matter which must be familiar to you due to your job. Jan recommended you as an geography expert of Caribbean region";
+			dialog.text = "Ах, от сеньора Свенсона! Ну конечно же помню! Проходите, располагайтесь... Как дела у уважаемого Яна?";
+			link.l1 = "Спасибо, дела идут неплохо. Сеньор Диос, мне нужна ваша помощь. Консультация по вопросу, в котором вы просто обязаны разбираться благодаря роду вашей деятельности. Ян рекомендовал вас как одного из знатоков географии Карибского региона.";
 			link.l1.go = "island_2";
 		break;
 		
 		case "island_2":
-			dialog.text = "I am listening, senor. What do you want to know about the archipelago's geography?";
-			link.l1 = "They say that there is an island or some different kind of formation North West from Havana, between Cuba and Gulf of Mexico. This island was never been plotted on any map. I'd like to know the trustworthiness of all these gossips.";
+			dialog.text = "Я слушаю вас внимательно, сеньор. Что именно в географии архипелага вас интересует?";
+			link.l1 = "На северо-запад от Гаваны, между Кубой и Мексиканским заливом, по слухам находится не то остров, не то еще какое-то образование, не обозначенное ни на одной карте. Я хотел узнать у вас, есть ли там действительно какая-то суша, или это просто досужие домыслы?";
 			link.l1.go = "island_3";
 		break;
 		
 		case "island_3":
-			dialog.text = "Hm... You have asked the question which is one of the most stirring for me. This place you've mentioned has been attracting the inquisitive minds of geographers for a long time, but nobody have ever been brave enough to explore that region.";
-			link.l1 = "Why?";
+			dialog.text = "Хм... Вы задали один из самых волнующих меня вопросов. Указанное вами место давно уже притягивает пытливые умы географов, однако никто еще до сих пор не отважился лично побывать в том районе.";
+			link.l1 = "Это почему же?";
 			link.l1.go = "island_4";
 		break;
 		
 		case "island_4":
-			dialog.text = "Thing is, that the place is some sort of natural anomaly. The probability of storms there is much higher than anywhere else. Perhaps the reason is in the cold sea current, but this is just my hypothesis. A lot of ships have disappeared there and that was enough to make sailors avoid that place, all of the main sea routes are passing far away from that region anyway.";
-			link.l1 = "I take it that you also don't know the truth...";
+			dialog.text = "Все дело в том, что это место - своего рода природная аномалия. Вероятность штормов там намного выше, нежели в любой другой точке Карибского моря. Это, возможно, связано с неким холодным течением, но я высказал лишь гипотезу. В этом районе сгинуло без вести достаточно много кораблей, чтобы отучить моряков соваться туда, тем более что основные морские маршруты проходят стороной.";
+			link.l1 = "Как я понимаю, вы тоже не знаете истины...";
 			link.l1.go = "island_5";
 		break;
 		
 		case "island_5":
-			dialog.text = "Exactly, senor. But I have a few historical documents and some material evidences, so I have all rights to suspect the probability of that place's existence.";
-			link.l1 = "Can you tell me more?";
+			dialog.text = "Именно так, сеньор. Однако я располагаю некоторыми историческими справками и вещественными доказательствами, что какое-то образование, подобное суше, имеет вероятность существования в этом квадрате.";
+			link.l1 = "Вы можете мне привести свои доводы?";
 			link.l1.go = "island_6";
 		break;
 		
 		case "island_6":
-			dialog.text = "Sure. The most important evidence is the historical document with extracts from the journal of captain Alvarado who has visited the Island in 1620. Quite an interesting story I tell you!";
-			link.l1 = "Captain Alvarado? It is the second time I hear that name...";
+			dialog.text = "Конечно. Основное - это исторический документ, в котором приводятся выдержки из судового журнала капитана Альворадо, который в 1620 году посетил это место. Презанятная история, скажу я вам!";
+			link.l1 = "Капитан Альворадо? Вы уже второй, кто называет эту фамилию при упоминании о загадочном острове...";
 			link.l1.go = "island_7";
 		break;
 		
 		case "island_7":
-			dialog.text = "I am not surprised. The story of captain Alvarado has been a part of folklore for years. It changed, was filled with rumors, lies and dreams, so here it is - the legend of Justice Island\nBut the paper and the ink cannot be changed, they stay intact for hundreds of years. Here, read this story - perhaps, it will help to unveil something you are looking for.";
-			link.l1 = "Thanks! Got anything else?";
+			dialog.text = "В этом нет ничего удивительного. История капитана Альворадо попала в народные массы и за долгие годы претерпела изрядные изменения, наполнившись слухами, домыслами и мечтами, в результате чего и появилась легенда об Острове Справедливости\nНо бумага и чернила не терпят измышлений - они остаются неизменными, спустя десятилетия и столетия. Вот, прочтите эту историю - возможно, она прольет хоть какой-то свет на то, что вы ищете.";
+			link.l1 = "Спасибо! А еще какие-либо доказательства у вас есть?";
 			link.l1.go = "island_8";
 		break;
 		
 		case "island_8":
-			dialog.text = "There is a theory that the sea bottom in that area rises high enough to form a vast shoal. I have already mentioned the current. There is also a large accumulation of seagulls and other sea birds according to sailors talk\nAlvorado mentioned names of vessels which were the part of admiral Francisco Betancourt's squadron, it was lost more than fifty years ago. I doubt that this is just a coincidence...";
-			link.l1 = "I will return to my ship and read Alvarado's notes carefully. Thank you for your help, senor Dios!";
+			dialog.text = "Существуют гипотеза, что в этом районе дно поднимается почти до поверхности моря, образуя обширное мелководье. Про течение я вам уже говорил. По рассказам моряков, в этом квадрате наблюдается повышенное скопление чаек и прочих морских птиц\nВ заметках капитана Альворадо упоминаются названия кораблей, которые входили в эскадру адмирала Франциско де Бетанкура, бесследно исчезнувшую при загадочных обстоятельствах более полувека назад - навряд ли случайное совпадение...";
+			link.l1 = "Вернусь на корабль и тщательнейшим образом изучу записи этого капитана Альворадо. Спасибо за помощь, сеньор Диос!";
 			link.l1.go = "island_9";
 		break;
 		
 		case "island_9":
-			dialog.text = "You are welcome. Actually I didn't help you at all, you don't have coordinates of the place, as don't I, I can't even prove that there is an inhabited land out there. But as far as I understand,  you intend to explore this area?\nIf so, then be aware that I will be really grateful for any information, especially if it is provided with a material proof. It seems that you are a wealthy man, but I will find a way to repay you.";
-			link.l1 = "Good. Consider that we have a deal, senor Dios. Perhaps my notes will be also read by someone in the future... And someone might write a legend...";
+			dialog.text = "Не за что. Я ведь по сути ничем вам не помог - вы не знаете координат этого места, и я их не знаю, и достоверных фактов существования обитаемой земли в том квадрате у меня тоже нет. Но, как я понял, вы серьезно намерены исследовать тот район?\nЕсли это так, то имейте в виду, что за любую информацию, в особенности подкрепленную материальными доказательствами, я вам буду очень признателен. Судя по всему, вы человек не бедный, но у меня будет, чем отплатить вам за предоставленные сведения.";
+			link.l1 = "Хорошо. Считайте, что мы с вами договорились, сеньор Диос. Возможно, потом мои заметки тоже кто-нибудь будет читать, или даже сложит какую-нибудь легенду...";
 			link.l1.go = "island_10";
 		break;
 		
 		case "island_10":
-			dialog.text = "Why not? Senor "+pchar.name+", I see that you are an active man who travels a lot, so I'd ask you to do something.";
-			link.l1 = "Yes? I am listening.";
+			dialog.text = "А почему бы и нет? Да, сеньор "+pchar.name+", поскольку вы, как я вижу, человек деятельный и много путешествуете, то я хотел бы вас попросить еще кое о чем.";
+			link.l1 = "Да? Слушаю вас.";
 			link.l1.go = "island_11";
 		break;
 		
 		case "island_11":
-			dialog.text = "You know that I am cartographer. So, I had been drawing maps of the Caribbean archipelago for two years, compiling the admiral's atlas for the Vice King's contest of Nueva Granada. But all twenty four maps were stolen from my house in the most insolent way while I was captured by pirates, the ones senior Svensson saved me from\nI am sure that the attack was organized by my competitors in order to acquire my maps. It's been a long time but I have not seen a single map from my set.";
-			link.l1 = "I see. You want me to return your maps.";
+			dialog.text = "Как вам известно, я - картограф. Так вот, я два года рисовал карты Карибского архипелага и прилегающих участков суши, составляя адмиральский атлас на конкурс вице-короля Новой Гранады. Однако все эти карты, все двадцать четыре штуки, были наглым образом украдены из моего дома в то время, когда я был похищен пиратами, из плена которых меня освободил сеньор Свенсон\nЯ уверен, что нападение пиратов было организовано моими конкурентами с одной целью: выкрасть мои карты. С того момента прошло немало времени, но я так и не встретил нигде ни одной из своих карт.";
+			link.l1 = "Я догадываюсь, о чем пойдет речь. Вы хотите, чтобы я вернул вам ваши карты.";
 			link.l1.go = "island_12";
 		break;
 		
 		case "island_12":
-			dialog.text = "Exactly. Perhaps you will find them during your future adventures. It is easy to recognize them - there is my sign on every of them. I will generously reward you if you will be miraculously able to collect all twenty four maps.";
-			link.l1 = "Fine. I will attentively look at every map I'll find at the archipelago. Well, I have to go now. Thank you for an interesting conversation and for the document.";
+			dialog.text = "Именно так. Возможно, в ваших странствиях вы их повстречаете. Узнать их легко - на них стоит моя подпись: Хосе Диос. Если вам удасться совершить чудо и найти все двадцать четыре карты - я достойно отблагодарю вас.";
+			link.l1 = "Хорошо. Буду внимательнее присматриваться к картам, имеющим хождение на архипелаге. Ну а теперь мне пора. Спасибо за интересную беседу и за документ!";
 			link.l1.go = "island_13";
 		break;
 		
@@ -115,44 +115,44 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Dios":
-			dialog.text = "A-ah, it is you, senor "+GetFullName(pchar)+"? Got anything interesting to tell me?";
+			dialog.text = "А-а, это вы, сеньор "+GetFullName(pchar)+"? Расскажете что-нибудь интересное?";
 			if (CheckAttribute(pchar, "questTemp.AdmiralMap") && CountAdmiralMapFromCharacter() > 0 && CountAdmiralMapFromCharacter() < 24 && !CheckAttribute(npchar, "quest.mapinfo"))
 			{
-				link.l3 = TimeGreeting()+"! Senor Dios, please, take a look at the map I've found. It must be one of yours maps according to the sign.";
+				link.l3 = TimeGreeting()+"! Сеньор Диос, посмотрите пожалуйста, какую карту мне удалось найти. Судя по имени на обороте, это одна из ваших украденных карт.";
 				link.l3.go = "map_info";
 			}
 			if (CheckAttribute(pchar, "questTemp.AdmiralMap") && CountAdmiralMapFromCharacter() > 23)
 			{
-				link.l3 = TimeGreeting()+"! Senor Dios I have got good news for you. I was able to collect the whole complect of your unique maps just as you wanted. Here, there are all twenty four maps.";
+				link.l3 = TimeGreeting()+"! Сеньор Диос, я хочу вас обрадовать. Мне удалось собрать полный комплект ваших уникальных карт, как вы того хотели. Вот они, все двадцать четыре штуки.";
 				link.l3.go = "amap";
 			}
 			if (CheckAttribute(pchar, "questTemp.LSC.Dios")) // был в LSC
 			{
-				link.l4 = TimeGreeting()+"! Yes, I have. I was at that mystic place we had been talking about.";
+				link.l4 = TimeGreeting()+"! Да, расскажу. Я был в том самом таинственном месте, о котором мы с вами говорили.";
 				link.l4.go = "LSC";
 			}
-			link.l9 = "Nothing so far, senor. Just wanted to see how are you doing.";
+			link.l9 = "Пока ничего нет, сеньор. Просто зашел вас проведать.";
 			link.l9.go = "exit";
 			NextDiag.TempNode = "Dios";
 		break;
 		
 		case "map_info":
-			dialog.text = "Show me... (taking a look) Of course! This is of my maps for the admiral's atlas! Captain, I really ask you to find all of them! I understand that it's almost impossible but still... I don't loose hope.";
-			link.l1 = "Don't loose it, senor. I have found this map so there is a chance to find the rest. They are still at Caribbean.";
+			dialog.text = "Покажите... (смотрит) Ну конечно же! Это одна из моих карт для адмиральского атласа! Капитан, очень прошу вас: разыщите все двадцать четыре штуки! Я понимаю, что прошу практически невозможного, но всё же... не теряю надежды.";
+			link.l1 = "И правильно делаете, сеньор. Раз я сумел найти эту карту - значит, есть шанс найти и все остальные. Главное - что они остались на Карибах.";
 			link.l1.go = "map_info_1";
 		break;
 		
 		case "map_info_1":
-			dialog.text = "You optimism really encourages me, senor captain. Perhaps I still have an opportunity to show to don Juan de Cordova who is the best cartographer of the archipelago!";
-			link.l1 = "You will be able beat all your competitors-ill-wishers. The maps are really wonderful... Farewell, senor!";
+			dialog.text = "Меня очень ободряет ваш оптимизм, сеньор капитан. Возможно, мне еще удасться показать дону Хуану де Кордова, кто лучший картограф на архипелаге!";
+			link.l1 = "Если нам повезет, вы утрете нос всем вашим конкурентам-недоброжелателям. Карты действительно великолепные... До встречи, сеньор!";
 			link.l1.go = "exit";
 			npchar.quest.mapinfo = "true";
 			NextDiag.TempNode = "Dios";
 		break;
 		
 		case "amap":
-			dialog.text = "I don't believe my ears! Have you really found them? All of them?";
-			link.l1 = "Yes. It wasn't easy, but I was lucky enough in this search. Take your maps. They are so wonderful, that I am sorry to part with them.";
+			dialog.text = "Не верю собственным ушам! Вы действительно нашли их? Все двадцать четыре карты?";
+			link.l1 = "Да. Это было нелегко, но удача все же не отвернулась от меня в этом предприятии. Возьмите ваши карты. Они настолько великолепны, что мне искренне жаль с ними расставаться.";
 			link.l1.go = "amap_1";
 		break;
 		
@@ -162,37 +162,37 @@ void ProcessDialogEvent()
 				sTemp = IdentifyAdmiralMapLast();
 				if (sTemp != "") RemoveItems(pchar, sTemp, 1);
 			}
-			Log_Info("You have given the complect of admiral's maps");
+			Log_Info("Вы отдали комплект адмиральских карт");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Incredible! This is just too incredible! To be honest I have never believed that it will happen at all.";
-			link.l1 = "Dum spiro, spero, senior Dios. You may face don Cordova now. I am sure, he will value your talents highly.";
+			dialog.text = "Поразительно! Просто поразительно! Я по правде говоря, не верил, что это когда-нибудь произойдет.";
+			link.l1 = "Dum spiro, spero, сеньор Диос. Теперь вы можете отправляться к дону Кордове. Уверен, он по достоинству оценит ваше мастерство.";
 			link.l1.go = "amap_2";
 		break;
 		
 		case "amap_2":
-			dialog.text = "You have my thanks, captain! You don't even understand what a great service you have done for me. As I promised - I will reward you. I also have a gift for you. I think that a sailor like you will find it very useful.";
-			link.l1 = "You have intrigued me, senor!";
+			dialog.text = "Огромное вам спасибо, капитан! Вы даже не представляете, какую огромную услугу оказали мне. Как я и обещал - я в долгу не останусь. У меня тоже есть для вас подарок. Думаю, что вам, военному моряку, этот прибор очень пригодится.";
+			link.l1 = "Вы меня заинтриговали, сеньор!";
 			link.l1.go = "amap_3";
 		break;
 		
 		case "amap_3":
 			GiveItem2Character(pchar, "spyglass5"); 
-			Log_Info("You have received a ship telescope");
+			Log_Info("Вы получили корабельный телескоп");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Here! There is a ship telescope of my design. It is unique and you won't find anything like that anywhere else. Lens were made in Europe by the most skilful master of Spain. It's body was made by my friend gunsmith. A special tripod will help you to point the device despite of any rolling. You can see everything you need at the ship's deck or at a fort.";
-			link.l1 = "Isn't that a gift! Thank you, senor Dios.";
+			dialog.text = "Вот! Это корабельный телескоп, моей собственной конструкции. Второго такого не найдете нигде. Линзы изготовлены в Европе, вероятно, лучшим мастером Испании. Корпус сделал мой знакомый оружейник. Специальная подставка поможет точно навести прибор на цель при любой качке. В этот телескоп вы сможете рассмотреть абсолютно все, что только можно увидеть на палубе корабля или в бастионе форта.";
+			link.l1 = "Вот это подарок так подарок! Спасибо, сеньор Диос.";
 			link.l1.go = "amap_4";
 		break;
 		
 		case "amap_4":
-			dialog.text = "Use it, senor captain. I hope that my telescope will serve you well.";
-			link.l1 = "No doubt! I am looking forward  to plant it on the deck of my ship and look through it.";
+			dialog.text = "Пользуйтесь на здоровье, сеньор капитан. Надеюсь, мой телескоп не раз сослужит вам добрую службу.";
+			link.l1 = "Не сомневаюсь! Мне уже не терпится установить его на палубе моего корабля и оглядеть окрестности.";
 			link.l1.go = "amap_5";
 		break;
 		
 		case "amap_5":
-			dialog.text = "You will be surprised, I assure... thanks again for my saved maps!";
-			link.l1 = "Thank you too, senor. I think that we will meet again. And I have to go now, looking forward to try your gift. Farewell!";
+			dialog.text = "Вы будете приятно удивлены, смею вас заверить... и еще раз огромное спасибо за мои спасенные карты!";
+			link.l1 = "И вам спасибо, сеньор. Думаю, мы с вами еще увидимся. А пока - до свидания, пойду, опробую ваш великолепный прибор. Всего доброго!";
 			link.l1.go = "amap_6";
 		break;
 		
@@ -210,78 +210,78 @@ void ProcessDialogEvent()
 		break;
 		
 		case "LSC":
-			dialog.text = "Really?! Have you found it? Make yourself comfortable, I think coming conversation will take a while, am I right?";
-			link.l1 = "I really have a lot to tell you about the island. But, first, I want you to promise me something. I see that you are a man of honour, so I am sure that you will keep your word...";
+			dialog.text = "Да что вы такое говорите! Вам удалось его отыскать? Располагайтесь, капитан, поудобнее, как я понимаю - разговор будет длинный?";
+			link.l1 = "Мне действительно есть что поведать об этом острове. Но сначала я хочу, чтобы вы мне пообещали кое-что. Как я вижу, вы человек честный и порядочный, посему я уверен, что вы сдержите слово...";
 			link.l1.go = "LSC_1";
 		break;
 		
 		case "LSC_1":
-			dialog.text = "What are talking about, captain?";
-			link.l1 = "There are people living there... and they won't be happy if someone will meddle in their life. I don't think that a possible arrival of some 'research' squadron will be welcomed. So I want you to give me your word of honour that you won't publish any information which can be used to find the Island within ten years after our conversation. You are welcome to publish any information about locals, their life and so on, just don't set them up.";
+			dialog.text = "О чем вы сейчас, капитан?";
+			link.l1 = "На этом острове живут люди... которые, как я понимаю, не очень желают вмешательства в их жизнь посторонних лиц. Не думаю, что там будут рады прибытию эскадры 'исследователей'. Поэтому я прошу вас дать мне слово, что в течение десяти лет после нашего разговора вы не опубликуете ни одного точного факта или детали, благодаря которым Остров может быть найден. Все остальное - устройство, быт островитян и прочее - пожалуйста, но по возможности так, чтобы это не обернулось бедой для тамошних обитателей.";
 			link.l1.go = "LSC_2";
 		break;
 		
 		case "LSC_2":
-			dialog.text = "I agree, captain. I give you a word of a nobleman that I won't tell anyone neither the location of the Island nor any information which could harm it's inhabitants within ten years.";
-			link.l1 = "Listen to my story then. Write it if you want. So, the Island is made of a lot of wrecked ships which shells are lying on the wide shoal...";
+			dialog.text = "Я согласен, капитан. Даю слово дворянина, что никто от меня не узнает ни о точном местоположении острова - в течение десяти лет, ни сведений, которые смогут так или иначе навредить его жителям - никогда.";
+			link.l1 = "Тогда слушайте мой рассказ. Или даже - запишите. Итак, Остров этот состоит из большого числа погибших в разные эпохи кораблей, чьи остовы разместились на обширном мелководье...";
 			link.l1.go = "LSC_3";
 		break;
 		
 		case "LSC_3":
 			DialogExit();
-			SetLaunchFrameFormParam("Two hours later...", "LSC_FinalDiosStory", 0, 5);
+			SetLaunchFrameFormParam("Прошло два часа...", "LSC_FinalDiosStory", 0, 5);
 			LaunchFrameForm();
 			WaitDate("", 0, 0, 0, 2, 10); //крутим время
 			RecalculateJumpTable();
 		break;
 		
 		case "LSC_4":
-			dialog.text = "Incredible! You have told me a very valuable information, captain! Offspring's of admiral de Betancourt are living at the Island! Now we know what happened to his squadron. And there is one less blank spot on the map of the Caribbean archipelago now... Thank you very much for you story, "+pchar.name+"!";
-			link.l1 = "See now why have I asked you to be really careful in retelling my information?";
+			dialog.text = "Просто изумительно! Вы рассказали очень, очень ценные сведения, капитан! Подумать только - потомки адмирала де Бетанкура живут на Острове! И теперь нам точно известна судьба его эскадры. А на карте Карибского архипелага одним белым пятном стало меньше... Огромное спасибо за рассказ, "+pchar.name+"!";
+			link.l1 = "Теперь вы понимаете, почему я вас просил быть... предельно осторожным в пересказе моих сведений?";
 			link.l1.go = "LSC_5";
 		break;
 		
 		case "LSC_5":
-			dialog.text = "I see. You can be sure that I will keep my word. Tell me... do you have any material attributes from the Island?";
+			dialog.text = "Понимаю. И будьте уверены - слово свое сдержу. Скажите, а каких-то вещественных... атрибутов с этого Острова вы не привезли?";
 			if (CheckCharacterItem(pchar, "LSC_navigation_map"))
 			{
-				link.l1 = "I have sailing directions to the Island of Justice. Here, take a look. It allows you to sail a small ship through the reefs and debris and to land safely at the Island. It is impossible to reach the Island without it.";
+				link.l1 = "У меня есть лоция Острова Справедливости. Вот, посмотрите. Руководствуясь ей, можно провести небольшой корабль сквозь гиблые места и произвести высадку на Остров. Без нее подойти к Острову практически невозможно.";
 				link.l1.go = "LSC_6";
 			}
 			else
 			{
-				link.l1 = "Unfortunately, I don't have any.";
+				link.l1 = "К сожалению, ничего такого у меня нет.";
 				link.l1.go = "LSC_7_1";
 			}
 		break;
 		
 		case "LSC_6":
-			Log_Info("You have given a sailing directions");
+			Log_Info("Вы отдали лоцию Острова Справедливости");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "(looking) Such an excellent document! It was drawn by a man who is skilled in cartography. Even I couldn't do it better. Incredible! Captain, why won't you give me these sailing directions? Story is a story, but this paper must be shown to the most famous geographers of the Old World!";
-			link.l1 = "Sure. That is why I have brought it to you.";
+			dialog.text = "(смотрит) Какой великолепный документ! Его рисовал человек, весьма искушенный в картографии. Даже я навряд ли смог бы выполнить лучше. Изумительно! Капитан, вы не отдадите мне эту лоцию? Рассказ рассказом, а вот эта бумага должна быть представлена взору известнейших географов Старого Света!";
+			link.l1 = "Конечно. Для этого я вам ее и принес.";
 			link.l1.go = "LSC_10";
-			link.l2 = "Senor Dios, unfortunately, I need this item for my self. As I have said, it is impossible to bypass the reefs around the Island without it. I'd sacrifice it in the name of the science, but... I am sure that you understand.";
+			link.l2 = "Сеньор Диос, к сожалению, эта лоция нужна мне самому. Как я уже говорил, без нее невозможно пройти сквозь рифы, окружающие Остров. Я бы пожертвовал ее во благо науки, но... уверен, вы понимаете.";
 			link.l2.go = "LSC_7";
 		break;
 		
 		case "LSC_7":
-			Log_Info("You received a sailing directions");
+			Log_Info("Вы получили лоцию Острова Справедливости");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Absolutely. It is your right, though it's a pity... Anyway, thanks for you story! You have done a great service for geographers, cartographer and other curious people.";
-			link.l1 = "You are welcome, senor. Well, I have to go now. Farewell.";
+			dialog.text = "Безусловно. Это ваше право, хотя и очень жаль... Но в любом случае - огромное спасибо за ваш рассказ! Вы оказали неоценимую услугу географам, картографам и просто любознательным людям.";
+			link.l1 = "Не за что, сеньор. Ну, а теперь позвольте откланяться. Мне пора отправляться в путь.";
 			link.l1.go = "LSC_8";
 		break;
 		
 		case "LSC_7_1":
-			dialog.text = "What a pity... Anyway, thanks for you story! You have done a great service for geographers, cartographer and other curious people.";
-			link.l1 = "You are welcome, senor. Well, I have to go now. Farewell.";
+			dialog.text = "Очень жаль... Но в любом случае - огромное спасибо за ваш рассказ! Вы оказали неоценимую услугу географам, картографам и просто любознательным людям.";
+			link.l1 = "Не за что, сеньор. Ну, а теперь позвольте откланяться. Мне пора отправляться в путь.";
 			link.l1.go = "LSC_8";
 		break;
 		
 		case "LSC_8":
-			dialog.text = "Sure, "+pchar.name+". You have spared a lot of your time for me. Send my regards to senor Svensson!";
-			link.l1 = "Good bye, senor Dios.";
+			dialog.text = "Конечно, "+pchar.name+". Вы и так уделили мне столько своего драгоценного времени. Передавайте привет сеньору Свенсону!";
+			link.l1 = "До свидания, сеньор Диос.";
 			link.l1.go = "LSC_9";
 		break;
 		
@@ -300,8 +300,8 @@ void ProcessDialogEvent()
 		
 		case "LSC_10":
 			RemoveItems(pchar, "LSC_navigation_map", 1);
-			dialog.text = "Thank you very much! It was very kind of you. Now we have got not only oral evidences but also material ones... I won't not leave you unanswered, captain. I have got a small gift for you.";
-			link.l1 = "What kind of gift?";
+			dialog.text = "Огромное спасибо! Это очень любезно с вашей стороны. Теперь мы располагаем не только устными, но и вещественными доказательствами... Я тоже в долгу не останусь, капитан. У меня есть для вас небольшой презент.";
+			link.l1 = "И какой же, позвольте полюбопытствовать?";
 			link.l1.go = "LSC_11";
 		break;
 		
@@ -310,8 +310,8 @@ void ProcessDialogEvent()
 			sld.quest.sextant = "true"; // атрибут Алексу на хронометр
 			GiveItem2Character(pchar, "sextant1"); 
 			PlaySound("interface\important_item.wav");
-			dialog.text = "I am fond not only of cartography and geography, but also of mathematics and astronomy. It took a year of trying for me to create a universal tool for taking latitude and longitude. And I've made some progress. Here, take a look\nThis is my sextant. I've designed it myself. Problem is, it doesn't work. It requires an extremely accurate chronometer. Even those which were made by the best craftsmen give unacceptable errors over time. Therefore, my tool is worthless\nBut you travel a lot, perhaps you will find a chronometer accurate enough for the sextant to work. Once you find such clocks - you won't need a Boussole, a compass, an astrolabe, sand clocks and crappy chronometers - my tool will replace them all.";
-			link.l1 = "Thank you, senor Dios. Let's hope that I will find a chronometer which will make your invention to work. I'd like to have such a device... in working condition. Well, I have to go now. Farewell.";
+			dialog.text = "Я увлекаюсь не только географией и картографией, но также и астрономией и математикой. Я целый год пытался создать универсальный прибор для определения географической широты и долготы. И кое-что у меня получилось. Вот, взгляните\nЭто мой секстант. Я сам сделал его. Но вот в чем беда: он не работает. Для него нужен очень точный хронометр. Все, что попадались мне в руки, даже изготовленные лучшими мастерами, дают недопустимо большие погрешности. В итоге мой прибор оказался не востребованным\nВы много путшествуете, и возможно, вам удасться отыскать где-нибудь такой хронометр, с которым секстант сможет работать. Если вы найдете такие часы - то вам больше не нужно будет возиться с буссолью, компасом, астролябией, песочными часами и дрянными хронометрами - мой прибор заменит вам все это.";
+			link.l1 = "Спасибо, сеньор Диос. Будем надеяться, что я отыщу хронометр, который заставит ваше замечательное изобретение функционировать. Было бы очень хорошо иметь такой прибор... в работающем виде. Ну, а теперь позвольте откланяться. Мне пора отправляться в путь.";
 			link.l1.go = "LSC_8";
 		break;
 		

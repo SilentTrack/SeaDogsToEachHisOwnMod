@@ -153,6 +153,16 @@ bool LAi_group_Init()
 	LAi_group_SetAlarmReaction("LSC_CITIZEN", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY, LAI_GROUP_NEITRAL);
 	LAi_group_SetAlarmDown("LSC_CITIZEN", LAI_GROUP_PLAYER, 0.02);
 	LAi_group_SetAlarmReaction("LSC_CITIZEN", LAI_GROUP_ACTOR, LAI_GROUP_NEITRAL, LAI_GROUP_NEITRAL);
+	
+	// группа охраны плантаций
+	LAi_group_Register("PLANTATION_GUARD");
+	LAi_group_SetLookRadius("PLANTATION_GUARD", 15.0);
+	LAi_group_SetHearRadius("PLANTATION_GUARD", LAI_GROUP_GRD_HEAR);
+	LAi_group_SetSayRadius("PLANTATION_GUARD", 25.0);
+	LAi_group_SetPriority("PLANTATION_GUARD", LAI_GROUP_PGUARDS);
+	LAi_group_SetAlarmReaction("PLANTATION_GUARD", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY, LAI_GROUP_NEITRAL);
+	LAi_group_SetAlarmDown("PLANTATION_GUARD", LAI_GROUP_PLAYER, 0.02);
+	LAi_group_SetAlarmReaction("PLANTATION_GUARD", LAI_GROUP_ACTOR, LAI_GROUP_NEITRAL, LAI_GROUP_NEITRAL);
 	//Отношения	
 	//giards
 	//LAi_group_SetRelation(LAI_GROUP_GUARDS, LAI_DEFAULT_GROUP, LAI_GROUP_FRIEND);

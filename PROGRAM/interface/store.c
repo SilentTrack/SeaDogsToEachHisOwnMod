@@ -30,7 +30,7 @@ void InitInterface_R(string iniName, ref pStore)
 	//GameInterface.TABLE_LIST.hr.height = 36;
 	GameInterface.TABLE_LIST.hr.td1.str = XI_ConvertString("In the hold");
 	GameInterface.TABLE_LIST.hr.td1.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td2.str = "Wgt";
+	GameInterface.TABLE_LIST.hr.td2.str = "Вес";
 	GameInterface.TABLE_LIST.hr.td2.scale = 0.9;
 	GameInterface.TABLE_LIST.hr.td3.str = XI_ConvertString("Price sell");
 	GameInterface.TABLE_LIST.hr.td3.scale = 0.9;
@@ -47,9 +47,9 @@ void InitInterface_R(string iniName, ref pStore)
 		GameInterface.TABLE_LIST.hr.td6.str = XI_ConvertString("In the store");
 	}
 	GameInterface.TABLE_LIST.hr.td6.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td7.str = "Pack";
+	GameInterface.TABLE_LIST.hr.td7.str = "Пачка";
 	GameInterface.TABLE_LIST.hr.td7.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td8.str = "Pack wgt";
+	GameInterface.TABLE_LIST.hr.td8.str = "Вес пачки";
 	GameInterface.TABLE_LIST.hr.td8.scale = 0.9;
 
     FillShipsScroll();
@@ -93,7 +93,7 @@ void InitInterface_R(string iniName, ref pStore)
 
 	if(refStore.Colony == "none")
 	{
-		SetFormatedText("STORECAPTION1", "Ship: '" + refShipChar.ship.name + "'");
+		SetFormatedText("STORECAPTION1", "Корабль: '" + refShipChar.ship.name + "'");
 	}
 	else
 	{
@@ -390,15 +390,20 @@ void ShowHelpHint()
 	
 	if (!bShowChangeWin)
 	{// покажем помощь по работе с формой
-        sHeader = "Trading";
-		sText1 = "";
+        sHeader = "Интерфейс торговли";
+		sText1 = "Двойной клик мыши или Enter по строкам таблицы вызывает форму покупки/продажи товара. "+ newStr() +
+		         "Shift + лево/право на строках таблицы автоматически вызывают форму с предустановленным количеством покупки/продажи на максимальное. "+ newStr() +
+				 "Ввод положительного количества с клавиатуры устанавливает покупку товара, а отрицательного (с минусом) продажу."+ newStr() +
+				 "Стрелки лево/право изменяют количество по пачкам, а Shift + лево/право на максимально доступное. Нажатие Enter на форме равносильно ОК, а Esc - Отмена." + newStr() +
+				 "Находясь в режиме формы и мотая список в таблице стрелкам вверх/вниз, можно просматривать описание товара под курсором таблицы.";
 				 
-        sText2 = "";
-		sText3 = "Good's colors explanation:" + newStr() + 
-				 "- green: local production" + newStr() + 
-				 "- blue: imports" + newStr() + 
-				 "- red: smuggles" + newStr() + 
-				 "- peach-coloured: goods of great demand";
+        sText2 = "Быстрая продажа всего: стрелками вверх/вниз по списку, Shift + право, Enter";
+        
+        sText3 = "Цвета типа товара:" + newStr() + 
+				 "- зелёный : колониальные товары" + newStr() + 
+				 "- синий : импортные товары" + newStr() + 
+				 "- красный : контрабандные товары" + newStr() + 
+				 "- персиковый : товары агрессивного спроса";
 		
 		CreateTooltip("#" + sHeader, sText1, argb(255,255,255,255), sText2, argb(255,192,192,192), sText3, argb(255,255,255,255), "", argb(255,255,255,255), sPicture, sGroup, sGroupPicture, 64, 64);
 	}
@@ -513,7 +518,7 @@ void SetVariable()
 	
 	if(refStore.Colony == "none")
 	{
-	sText = XI_ConvertString("OurMoney") + " " + FindRussianMoneyString(sti(pchar.money));
+		sText = XI_ConvertString("OurMoney") + " " + FindRussianMoneyString(sti(pchar.money));
 		GameInterface.strings.Money_1 = sText;
 		sText = XI_ConvertString("CaptainMoney") + " " + FindRussianMoneyString(sti(refShipChar.money));
 		GameInterface.strings.Money_2 = sText;
@@ -521,7 +526,7 @@ void SetVariable()
 	else
 	{
 		sText = XI_ConvertString("OurMoney") + " " + FindRussianMoneyString(sti(pchar.money));			
-	SetFormatedText("OUR_GOLD", sText);
+		SetFormatedText("OUR_GOLD", sText);
 	}
 
 	if (CheckAttribute(refCharacter, "ship.name"))
@@ -608,7 +613,7 @@ void ShowGoodsInfo(int iGoodIndex)
 	}
 	goodsDescr += GetAssembledString( LanguageConvertString(lngFileID,goodName+"_descr"), &Goods[iGoodIndex]);
     goodsDescr += newStr() + XI_ConvertString("weight") + " " + Goods[iGoodIndex].weight + " " + XI_ConvertString("cwt") +
-	              ", pack " + Goods[iGoodIndex].Units + " " + XI_ConvertString("units");
+	              ", пачка " + Goods[iGoodIndex].Units + " " + XI_ConvertString("units");
 
 	iUnits  = sti(Goods[iGoodIndex].Units);
 	fWeight = stf(Goods[iGoodIndex].weight);
@@ -721,7 +726,7 @@ void TransactionOK()
 
 		AddCharacterGoods(refCharacter, iCurGoodsIdx, nTradeQuantity);
 		moneyback = makeint(iShipPrice*stf(GameInterface.qty_edit.str) / iUnits + 0.5);
-		pchar.money = sti(pchar.money)  - moneyback;
+		pchar.money = sti(pchar.money)  - moneyback;		
 		if(refStore.Colony == "none" && CheckAttribute(refShipChar,"money"))
 		{			
 			refShipChar.money = sti(refShipChar.money) + moneyback;			
@@ -821,9 +826,9 @@ void ChangeQTY_EDIT()
 				}			
 			}	
 		    // проверка на колво доступное <--
-		    SetFormatedText("QTY_TypeOperation", "Sell");
-		    SetFormatedText("QTY_Result", "Money " + makeint(iStorePrice*stf(GameInterface.qty_edit.str) / iUnits + 0.5) +
-			                ", weight " + iWeight + " cent.");
+		    SetFormatedText("QTY_TypeOperation", "Продать");
+		    SetFormatedText("QTY_Result", "Деньги " + makeint(iStorePrice*stf(GameInterface.qty_edit.str) / iUnits + 0.5) +
+			                ", вес " + iWeight + " ц");
 		}
 		else
 		{
@@ -854,9 +859,9 @@ void ChangeQTY_EDIT()
 		    }
 		    // проверка на колво доступное <--
 
-			SetFormatedText("QTY_TypeOperation", "Buy");
-			SetFormatedText("QTY_Result", "Money " + makeint(iShipPrice*stf(GameInterface.qty_edit.str) / iUnits + 0.5) +
-			                ", weight " + iWeight + " cent.");
+			SetFormatedText("QTY_TypeOperation", "Купить");
+			SetFormatedText("QTY_Result", "Деньги " + makeint(iShipPrice*stf(GameInterface.qty_edit.str) / iUnits + 0.5) +
+			                ", вес " + iWeight + " ц");
 		}
 	}
 	// если получили ноль Jason: или особо хитрожопые ввели минус

@@ -1,3 +1,4 @@
+
 void InitInterface(string iniName)
 {
 	EngineLayersOffOn(true);

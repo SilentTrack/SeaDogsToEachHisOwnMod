@@ -381,6 +381,7 @@ bool LAi_CreateEncounters(ref location)
 			
 			i = 0;
 			iEncrnd = rand(1);
+			if (!CheckAttribute(location, "locators.fire")) iEncrnd = 1; // фикс костров
 			while(i < num)
 			{
 				iMassive = rand(9);
@@ -494,6 +495,7 @@ bool LAi_CreateEncounters(ref location)
 			
 			i = 0;
 			iEncrnd = rand(2);
+			if (!CheckAttribute(location, "locators.fire")) iEncrnd = 1; // фикс костров
 			while(i < num)
 			{
 				iMassive = rand(9);
@@ -1144,7 +1146,7 @@ bool LAi_CreateCaveEncounters(ref location) // Jason 061012 пещерные энкаунтеры
 							rItm.startLocation = location.id;
 							rItm.startLocator = "fire";
 							location.fire = true;
-							CreateFireParticles("goto", "fire");
+		CreateFireParticles("goto", "fire");
 							locator = "ass"+(i+1);
 							ChangeCharacterAddressGroup(chr, location.id, "goto", locator);
 							LAi_SetGroundSitTypeNoGroup(chr);

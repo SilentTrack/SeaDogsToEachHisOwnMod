@@ -270,7 +270,7 @@ void LAi_CharacterFire()
 		LAi_Explosion(attack, rand(20));
   		if(GetCharacterItem(attack, weaponID) <= 1) RemoveCharacterEquip(attack, weapon.groupID);
         TakeItemFromCharacter(attack, weaponID);
-		Log_SetStringToLog("A pistol's barrel got exploded into pieces! " + GetCharacterFullName(attack.id) + " has thrown it's away.");
+		Log_SetStringToLog("Пистолету разорвало ствол! " + GetCharacterFullName(attack.id) + " выбросил обломки.");
 		return;
 	}
 	

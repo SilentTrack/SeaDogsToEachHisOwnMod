@@ -4,63 +4,63 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What do you want? Ask away.", "I am listening to you, what's the question?"), "It is the second time you are trying to ask...", "It is the third time you are again trying to ask...",
-                          "When is it going to end?! I am a busy man, working on the colony's matters and you are still trying to ask something!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Not now. There is no time."), "True... But later, not now...",
-                      "I'll ask, I'll ask... a bit later though...", "I am sorry, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Что вы хотели? Спрашивайте.", "Я слушаю вас, что за вопрос?"), "Второй раз за день вы пытаетесь задать вопрос...", "В третий раз за день вы опять пытаетесь задать вопрос...",
+                          "Да когда же это кончится?! У меня дел полно по управлению делами города, а ты все вопросы пытаешься задать!", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал"+ GetSexPhrase("","а") +"...", "Не сейчас, не место и не время..."), "Да, верно... Но не сейчас, позже...",
+                      "Задам, задам... Только позже...", "Извините, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			// Addon 2016-1 Jason пиратская линейка
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "silk_8")
 			{
-				link.l1 = "Your Excellence, I would like to report an illegal trading activity on this island.";
+				link.l1 = "Ваша светлость, я хочу сообщить информацию о проводящихся на Ямайке контрабандных сделках.";
                 link.l1.go = "Mtraxx";
 			}
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "silk_12")
 			{
-				link.l1 = "I would like to hear a report on your mission regarding the silk sailcloth smuggling.";
+				link.l1 = "Я бы хотел узнать результаты вашей операции по поводу контрабанды корабельного шелка.";
                 link.l1.go = "Mtraxx_4";
 			}
 			// Jason НСО
 			if (CheckAttribute(pchar, "questTemp.Patria") && pchar.questTemp.Patria == "epizode_10_continue" && !CheckAttribute(npchar, "quest.slaveships"))
 			{
-				link.l1 = "I arrived on the behalf of Governor-General Phillip de Poincy. My job was to get you the slaves captured from the Dutch, is that right?";
+				link.l1 = "Я прибыл по заданию генерал-губернатора Филиппа де Пуанси. В мою задачу входило доставить вам перехваченных у голландцев рабов, все верно?";
                 link.l1.go = "patria_Sl";
 			}
 			if (CheckAttribute(npchar, "quest.slaveships.wait") && GetSquadronGoods(pchar, GOOD_SLAVES) >= 3000)
 			{
-				link.l1 = "I brought you the slaves, as agreed.";
+				link.l1 = "Я привез для вас рабов, как договаривались.";
                 link.l1.go = "patria_Sl_2";
 			}
 			if (CheckAttribute(pchar, "questTemp.Patria") && pchar.questTemp.Patria == "epizode_11_start" && CheckAttribute(pchar, "questTemp.Patria.Curacao.DoilyReady"))
 			{
-				link.l1 = "I arrived on the instructions of Governor-General Phillip de Poincy to participate in a joint expedition to Curacao against the Dutch.";
+				link.l1 = "Я прибыл по заданию генерал-губернатора Филиппа де Пуанси для участия в совместной экспедиции на Кюрасао против голландцев.";
                 link.l1.go = "patria_Sl_4";
 			}
 			if (CheckAttribute(pchar, "questTemp.Patria") && pchar.questTemp.Patria == "epizode_11_wait" && GetCompanionQuantity(pchar) < 3)
 			{
-				link.l1 = "My squardon was diminished, we can set off now.";
+				link.l1 = "Моя эскадра уменьшена, можем отправляться в путь.";
                 link.l1.go = "patria_Sl_6";
 			}
 		break;
 		
 		// Addon 2016-1 Jason пиратская линейка
 		case "Mtraxx":
-            dialog.text = "Interesting. I am all ears.";
-			link.l1 = "I have it on good authority that a Dutch brigantine the 'Utrecht' under English colors is regularly unloading high quantities of silk sailcloth in Portland Bay. They operate for over a year, during night time, between 10th and 15th of each month.";
+            dialog.text = "Очень интересно. Ну что же, давайте послушаем.";
+			link.l1 = "Из достоверного источника мне стало известно, что уже в течение года, а то и больше, систематически, ежемесячно, между 10 и 15 числом, ночью, в бухте Портленд, некая голландская бригантина 'Утрехт' под английским флагом сгружает контрабандой корабельный шелк крупными партиями.";
 			link.l1.go = "Mtraxx_1";
 		break;
 		
 		case "Mtraxx_1":
-            dialog.text = "Are you sure your source can be trusted?";
-			link.l1 = "At times I do not trust even myself, however, a man who disclosed this information is reliable. Besides, he had no reason to lie.";
+            dialog.text = "Вы уверены, что вашему источнику действительно можно верить?";
+			link.l1 = "Я временами не уверен даже в себе, но человек, рассказавший мне об этом, вполне заслуживает доверия, и, к тому же, не имел резона лгать.";
 			link.l1.go = "Mtraxx_2";
 		break;
 		
 		case "Mtraxx_2":
-			string sTemp = "this";
-			if (sti(pchar.questTemp.Mtraxx.month == 1)) sTemp = "next";
-            dialog.text = "Very well, captain. This is a serious matter and I have to act on the presented information, even if your informer could be lying or simply wrong. I will issue a patrol at the specified time, and if your information is confirmed, you will be generously rewarded, for such illegal activities should be sternly suppressed.";
-			link.l1 = "I will see you "+sTemp+" month on the 16th. The situation will surely resolve itself by that time.";
+			string sTemp = "этого";
+			if (sti(pchar.questTemp.Mtraxx.month == 1)) sTemp = "следующего";
+            dialog.text = "Хорошо, капитан. То, что вы рассказали - весьма и весьма серьезно, и я обязан это проверить, даже если ваш информатор ошибся или сказал неправду. Я вышлю береговой патруль в указанное вами время. И если ваша информация подтвердится - вы можете рассчитывать на вознаграждение, ибо такого рода сделки надо строжайшим образом пресекать.";
+			link.l1 = "Я загляну к вам 16 числа "+sTemp+" месяца. Тогда уже наверняка все прояснится.";
 			link.l1.go = "Mtraxx_3";
 		break;
 		
@@ -76,15 +76,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.quest.mtr_silk_smuggler_patrol.win_condition.l1.date.month = GetAddingDataMonth(0, month, 0);
 			pchar.quest.mtr_silk_smuggler_patrol.win_condition.l1.date.year  = GetAddingDataYear(0, month, 0);
 			pchar.quest.mtr_silk_smuggler_patrol.function = "Mtraxx_SilkSmugglerPatrol";
-			sTemp = "this";
-			if (sti(pchar.questTemp.Mtraxx.month == 1)) sTemp = "next";
 			AddQuestRecord("Roger_2", "19");
-			AddQuestUserData("Roger_2", "sDate", sTemp);
+			sTemp = "этого";
+			if (sti(pchar.questTemp.Mtraxx.month == 1)) sTemp = "следующего";
+			AddQuestUserData("Headhunt", "sDate", sTemp);
 		break;
 		
 		case "Mtraxx_4":
-            dialog.text = "Your information turned out to be correct, captain. We ambushed the criminals during the transaction. The 'Utrecht' had tried to flee, but was sunk by our patrol corvette. The buyers, of whom there were four, resisted arrest. One was shot dead, and the other three fled to the jungle. The full load of 80 rolls of silk has been transferred to Port Royal's treasury. Though we failed to determine the head of this network - the dead man is unidentified, and the others have fled - I declare this operation a complete success. I doubt the culprits will dare to ever return here\nYou have done us a great service, captain, by being diligent and point out the swindlers. Here are 10 000 pesos as your reward.";
-			link.l1 = "Much obliged, your Excellence. I am happy to see it went according to plan and the smugglers got what they deserved. With that, I will take my leave.";
+            dialog.text = "Переданная вами информация оказалась верной. Мы накрыли преступников за сделкой. Бригантина 'Утрехт' попыталась с боем уйти, но была потоплена нашим патрульным корветом. Покупатели товара - их было четверо - оказали сопротивление, один был убит, троим удалось сбежать в джунгли. Весь груз контрабанды - 80 рулонов корабельного шелка - был передан в казну Порт-Ройяля\nИ хотя нам не удалось выяснить, кто из жителей Порт-Ройяля стоял за всем этим - убитого не опознали, а беглецов так и не нашли - я считаю операцию полностью успешной. Навряд ли мерзавцы осмелятся снова открыть свою лавочку. Вы оказали нам большую услугу, капитан, проявив сознательность и выдав мошенников. Вам за это полагается вознаграждение в размере 10 000 песо. Прошу, получите ваши деньги.";
+			link.l1 = "Благодарю, ваша Светлость. Рад, что все прошло как надо и негодяи получили по заслугам. А теперь позвольте откланяться.";
 			link.l1.go = "Mtraxx_5";
 		break;
 		
@@ -102,12 +102,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "patria_Sl":
 			if (GetSquadronGoods(pchar, GOOD_SLAVES) < 500)
 			{
-				dialog.text = "That's precise. How many slaves did you bring?";
-				link.l1 = "I'm still working on it. I will soon return with the results.";
+				dialog.text = "Совершенно верно, капитан. Сколько рабов вы привезли?";
+				link.l1 = "Я еще веду эту операцию, просто хотел уточнить, все ли верно. Скоро вернусь с результатами.";
 				link.l1.go = "patria_Sl_wait";
 				break;
 			}
-			dialog.text = "That's precise. How many slaves did you bring?";
+			dialog.text = "Совершенно верно, капитан. Сколько рабов вы привезли?";
 			link.l1 = ""+FindRussianQtyString(GetSquadronGoods(pchar, GOOD_SLAVES))+".";
 			if (GetSquadronGoods(pchar, GOOD_SLAVES) >= 3000) link.l1.go = "patria_Sl_2";
 			else link.l1.go = "patria_Sl_1";
@@ -119,15 +119,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "patria_Sl_1":
-			dialog.text = "Hmm, Chevalier promised that there would be no less than 3000 slaves";
-			link.l1 = "That's right. This is my fault: some of the slaves were killed when the enemy ship was shot, some died on the road. I will correct my mistake and return to you. Everything will be done according to the contract.";
+			dialog.text = "Гм, шевалье де Пуанси обещал, что рабов будет не меньше 3000 штук...";
+			link.l1 = "Все верно. Это моя вина: часть невольников погибла при обстреле вражеского корабля, некоторые умерли в пути. Я исправлю свою оплошность и вернусь к вам. Все будет сделано по договору.";
 			link.l1.go = "patria_Sl_wait";
 		break;
 		
 		case "patria_Sl_2":
 			DeleteAttribute(npchar, "quest.slaveships.wait");
-			dialog.text = "Excellent! With Chevalier de Poincy you can really do business. Tell the governor-general that my squadron for the Curacao attack will be ready in a month. Another month, but no more, I will wait for his squadron. I'm sure he will send you to this campaign for me, so I'll see you soon, Monsieur de Maure.";
-			link.l1 = "I would be glad to meet you again, Colonel. And now let me go to bed.";
+			dialog.text = "Отлично! С шевалье де Пуанси действительно можно вести дела. Передайте генерал-губернатору, что моя эскадра для атаки Кюрасао будет готова через месяц. Еще месяц, но не больше, буду ждать его эскадру. Уверен, что он отправит ко мне вас для этого похода, так что скоро увидимся, месье де Мор.";
+			link.l1 = "Буду рад очередной встрече, полковник. А сейчас позвольте откланяться.";
 			link.l1.go = "patria_Sl_3";
 		break;
 		
@@ -149,15 +149,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "patria_Sl_4":
-			dialog.text = "I did not even doubt it would be you. The better! Our squad is ready. Linear ship of 1 rank and two ships of 4 rank. The maximum size of the entire squadron must not exceed five ships.";
+			dialog.text = "Я даже не сомневался, что это будете вы. Тем лучше! Наша эскадра готова. Линейный корабль 1 ранга и два корабля 4 ранга. Максимальный размер всей эскадры не должен превышать пяти кораблей.";
 			if (GetCompanionQuantity(pchar) > 2)
 			{
-				link.l1 = "Then I will dock the extra ships and leave only two. I'll get five ships as a result.";
+				link.l1 = "Тогда я поставлю лишние корабли на стоянку и оставлю только два. Как раз получится пять кораблей.";
 				link.l1.go = "patria_Sl_5";
 			}
 			else
 			{
-				link.l1 = "Yes, exactly five. We should head off.";
+				link.l1 = "Так и получится - не больше пяти. Можем отправляться в путь.";
 				link.l1.go = "patria_Sl_6";
 			}
 		break;
@@ -168,32 +168,32 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "patria_Sl_6":
-			dialog.text = "Perfect. Now I will explain to you the plan by which we will act: perhaps you will want to change something or add something, then we will discuss it.";
-			link.l1 = "I'm all ears, colonel.";
+			dialog.text = "Отлично. Сейчас я объясню вам план, по которому мы будем действовать: возможно, вы захотите что-то изменить или добавить, тогда мы это обсудим.";
+			link.l1 = "Слушаю вас внимательно, полковник.";
 			link.l1.go = "patria_Sl_7";
 		break;
 		
 		case "patria_Sl_7":
-			dialog.text = "There is no point in capturing Curacao: it is the core Dutch colony in the archipelago, and even if we capture their flag in Willemstad's fort and hoist an English or French one, it will be very difficult to hold the island: the Dutch will do what they can to get it back and target it with military squadrons. In general, there is no point in capturing it since it's not mandatory. It is important for us to compel Steivesant to sign the treaty on terms that are beneficial for us, and in order to do this it will be sufficient to destroy the enemy's main defenses and put the Dutch under the threat of complete destruction of the Willemstad colony.";
-			link.l1 = "What is the treaty about?";
+			dialog.text = "Захватывать Кюрасао нет смысла: это основная колония голландцев на архипелаге, и даже если мы сорвем их флаг с форта Виллемстада и водрузим английский или французский, удержать остров будет очень трудно: голландцы станут отбивать его со всей яростью, направляя военные эскадры. В общем, захват нецелесообразен, да и не нужен. Нам важно принудить Стайвесанта подписать договор на выгодных для нас и вас условиях, а для этого достаточно будет уничтожить основные защитные силы врага и поставить голландцев перед угрозой полного уничтожения колонии Виллемстад.";
+			link.l1 = "Что это будет за договор?";
 			link.l1.go = "patria_Sl_8";
 		break;
 		
 		case "patria_Sl_8":
-			dialog.text = "The treaty was composed by me and Chevalier de Poincy. It is related to various aspects of trade, the end of the 'trade war' between the Company and England, the denial of Stuyvesant's claims to the island of Sint Maarten and other political points that are of little interest to you.";
-			link.l1 = "Understood.";
+			dialog.text = "Договор был составлен совместно мной и шевалье де Пуанси. Он касается различных аспектов торговли, прекращения 'торговой войны' между Компанией и Англией, отказ Стайвесанта от любых притязаний на остров Синт-Маартен и прочие малоинтересные для вас политические пункты.";
+			link.l1 = "Ясно.";
 			link.l1.go = "patria_Sl_9";
 		break;
 		
 		case "patria_Sl_9":
-			dialog.text = "Here's the plan: first, we go all guns blazing on the fort and destroy it.The Dutch will expect a landing, but we won't do that - the biggest casualties are suffered when taking a bastion from the sea. Instead, we will land assault teams on two points on the island: on Cape Santa Maria and at the lagoon of Blanca, and we will move overland to the city gate of Willemstad. I ordered to take field artillery with me to the ships - there are no hard-to-reach thickets in Curacao, and we can easily roll the cannon on wheels along the ground.\nWhile the Dutch will be puzzled as to what is going on, we will ensure that the cannons in the jungles are facing the city. Then we will cut off the opportunity to send reinforcements from the fort by land. After that, we will put the city under fire. Surely the garrison of the fort will try to attack, but they can do no hard to the field cannons and our musketeers, and if their weaponry held in the fort will still be functional, they won't be able to bring it to the jungle.\nIn addition, our ships will simulate preparations for landing from the sea to strike fear into the enemies and lower their morale. After a while, when the Dutch are fully aware of their desperate situation, we will call the parliamentarians for negotiations. What do you think, Captain?";
-			link.l1 = "Brilliant plan! And the best thing about it is that we won't lose any soldiers by the fort's walls.";
+			dialog.text = "Действовать будем так: сначала всеми силами обрушиваемся на форт и уничтожаем его. Голландцы будут ожидать высадки десанта, но мы этого делать не станем - самые большие потери именно при взятии бастиона с моря. Вместо этого мы высадим штурмовые роты в двух точках острова: на мысе Санта-Мария и у лагуны Бланка, и двинемся по суше к городским воротам Виллемстада. Я приказал взять с собой на корабли полевую артиллерию - на Кюрасао нет труднопроходимых зарослей, и мы без особого труда сможем катить пушки на колесах по земле\nПока голландцы будут соображать, что да как, мы возьмем город под прицел со стороны джунглей и отрежем возможность прислать подкрепление из форта по суше. После этого хорошенько обстреляем город поверх стен. Наверняка гарнизон форта попытается атаковать, но против полевых пушек и наших мушкетеров они ничего не смогут сделать, а свои фортовые орудия, если такие даже и останутся у них, они не смогут перетянуть в джунгли\nКроме того, наши корабли сымитируют подготовку к высадке десанта с моря - нагонят паники на противника. Через некоторое время, когда голландцы полностью осознают свое плачевное положение, мы запросим парламентеров для переговоров. Ваше мнение, капитан?";
+			link.l1 = "Отличный план! Главное - не понадобится губить солдат под стенами бастиона.";
 			link.l1.go = "patria_Sl_10";
 		break;
 		
 		case "patria_Sl_10":
-			dialog.text = "I'm glad that you took my ideas into liking. Let's roll out then!";
-			link.l1 = "Charge!";
+			dialog.text = "Я рад, что мои идеи вам понравились. Тогда выступаем!";
+			link.l1 = "Вперед!";
 			link.l1.go = "patria_Sl_11";
 		break;
 		

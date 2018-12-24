@@ -28,64 +28,63 @@ void ProcessDialogEvent()
 		case "First time":
 			if (LAi_grp_playeralarm > 0)
 			{
-       			dialog.text = PCharRepPhrase(LinkRandPhrase("In city alerted to. Alike, and it is time me to take up arms...", "Whether does all municipal guard rush about not after you?. To me, soldiers!!!", "For me you will not find shelter. But will find a few inches of cold steel under a rib!"), 
-					LinkRandPhrase("what do you want, scoundrel?! A municipal guard took your track already, far not to go away you, "+ GetSexPhrase("dirty pirate!","scoundrel") +"!", ""+ GetSexPhrase("Dirty killer! Guard!!!", "I am not afraid of you
-, "+ GetSexPhrase("dirty pirate!","scoundrel") +"! Soon you will be hung up in our fort, far not to go away you..."));
-				link.l1 = PCharRepPhrase(RandPhraseSimple("To live you bothered...", "And it does not live calmly to the peaceful citizens." + XI_ConvertString("Colony" + npchar.city + "Gen") + "!"), 
-					RandPhraseSimple("Go to hell!", "To live there are a few seconds to you..."));
+       			dialog.text = PCharRepPhrase(LinkRandPhrase("В городе поднята тревога. Похоже, и мне пора браться за оружие...", "Уж не за тобой ли носится вся городская стража?.. Ко мне, солдаты!!!", "У меня приюта ты не найдешь. Зато найдешь несколько дюймов холодной стали под ребро!"), 
+					LinkRandPhrase("Что тебе нужно, "+ GetSexPhrase("негодяй","негодяйка") +"?! Городская стража уже взяла твой след, далеко тебе не уйти, "+ GetSexPhrase("грязный пират","мерзавка") +"!", ""+ GetSexPhrase("Грязный","Грязная") +" убийца! Стража!!!", "Я не боюсь тебя, "+ GetSexPhrase("мерзавец","мерзавка") +"! Скоро тебя повесят в нашем форте, далеко тебе не уйти..."));
+				link.l1 = PCharRepPhrase(RandPhraseSimple("Похоже, тебе жить надоело...", "Хех, и не живется же спокойно мирным гражданам " + XI_ConvertString("Colony" + npchar.city + "Gen") + "!"), 
+					RandPhraseSimple("Отправляйся в ад!", "Хех, жить тебе осталось несколько секунд..."));
 				link.l1.go = PCharRepPhrase("exit_setOwner", "fight");
 				break;
 			}
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = RandPhraseSimple("Good afternoon, sailor! I am called by "+GetFullName(npchar)+", and I - only living the soul here, ho! ho! ho! Why did grant?", "Hello! Old I did not see a living man... Allow to introduce oneself - "+GetFullName(npchar)+", and this cemetery is my last refuge. Apparently, here me and will bury. What can I serve as?");
-				link.l1 = "Hello, "+npchar.name+"! My name is - "+GetFullName(pchar)+", and I am a captain. Here, walked about jungles and came here. Think, I will glance in this comfortable house, will look, whoever is afraid here to live...";
+				dialog.text = RandPhraseSimple("Добрый день, морячок! Меня зовут "+GetFullName(npchar)+", и я - единственный живой обитатель сего места, хе-хе. Впрочем, все там будем... Зачем пожаловали?", "Здравствуйте! Давненько я не видал живого человека... Позвольте представиться - "+GetFullName(npchar)+", а это кладбище - мое последнее пристанище в этой жизни. Видимо, тут же меня и похоронят. Чем могу служить?");
+				link.l1 = "Здравствуй, "+npchar.name+"! Мое имя - "+GetFullName(pchar)+", и я капитан. Вот, ходил по джунглям и забрел сюда. Думаю, загляну в этот уютный домик, посмотрю, кто не боится здесь жить...";
 				link.l1.go = "meeting";
 				npchar.quest.meeting = "1";
 			}
 			else
 			{
-				dialog.text = "А-а, my old friend, captain "+GetFullName(pchar)+"! Call, call!";
-				link.l1 = "I welcome, friend! Very glad to see you. Do not at nights dancing skeletons and dead persons yet dream you with copper coins on eyes?";
+				dialog.text = "А-а, мой старый знакомый, капитан "+GetFullName(pchar)+"! Проходите, проходите!";
+				link.l1 = "Приветствую, дружище! Рад тебя видеть. Тебе еще не снятся по ночам пляшущие скелеты и мертвецы с медяками на глазах?";
 				link.l1.go = "talk";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "meeting":
-			dialog.text = "And what to be here afraid, captain? To be afraid living is necessary, and the dead do not bite. Eh! Once I had quite another life, now here my caring is this cemetery. I look after graves. And also I a bit trade in every change...";
-			link.l1 = "And what do you trade in, say please?";
+			dialog.text = "А чего же тут бояться-то, капитан? Бояться живых надо, а мертвые не кусаются. Эх! Когда-то у меня была совсем другая жизнь, а теперь вот моя забота - это кладбище. Приглядываю за могилками. А также приторговываю всякой всячиной...";
+			link.l1 = "А чем ты торгуешь, скажи пожалуйста?";
 			link.l1.go = "trade_info";
 		break;
 		
 		case "talk":
-			dialog.text = "What did bring you over to me this time?";
-			link.l1 = "Show me what do you have for sale today.";
+			dialog.text = "Что привело вас ко мне на сей раз?";
+			link.l1 = "Давай посмотрим, что у тебя есть сегодня в продаже.";
 			link.l1.go = "trade";
-			link.l2 = "I wanted to ask you a question...";
+			link.l2 = "Я вот что "+ GetSexPhrase("хотел","хотела") +" спросить...";
 			link.l2.go = "quests";
-			link.l3 = "Nothing serious. Simply dropped by to greet you.";
+			link.l3 = "Ничего серьезного. Просто зашел поздороваться.";
 			link.l3.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "trade_info":
-			dialog.text = "For me free plenty of time, therefore I like to walk about jungles and collect useful grasses. Then I sell them in city. Pure pence pay for them, but however better, than nothing. The most different objects give me my friends...";
-			link.l1 = "Friends? Id est, do you resell that it is brought you?";
+			dialog.text = "У меня много свободного времени, поэтому я люблю побродить по окрестным джунглям и собрать полезные травки. Потом я продаю их в городе. За них платят сущие гроши, но все же лучше, чем ничего. Иногда я нахожу занятные камни. Нет, не самоцветы, но мастеровым они почему-то бывают нужны\nНу, и самые разные предметы мне дают мои друзья...";
+			link.l1 = "Друзья? То есть, ты перепродаешь то, что тебе привозят?";
 			link.l1.go = "trade_info_1";
 		break;
 		
 		case "trade_info_1":
-			dialog.text = "O-ho-ho... No, they all give me free of charge. What yet can be friends for a cemetery watch, if not deceaseds?";
-			link.l1 = "Do you, pick dead bodies?";
+			dialog.text = "О-хо-хо... Нет, они мне все предоставляют бесплатно. Какие еще могут быть друзья у кладбищенского сторожа, если не покойники?";
+			link.l1 = "Гм... ты что, обираешь мертвецов?";
 			link.l1.go = "trade_info_2";
 		break;
 		
 		case "trade_info_2":
-			dialog.text = "I do not steal, and I take off things that already does not need them. Different people are buried here. Many unknown and not from our edges. A commandant will bring from a city dead body - it to you, "+npchar.name+", send him in the last way. Or tramps what damned a guard will interrupt, and old "+npchar.name+" buries their bodies on a christian custom.";
-			link.l1 = "Clear. show the commodities to me.";
+			dialog.text = "Не обираю, а снимаю вещи, которые им уже не нужны. Здесь же разные люди похоронены. Многие без роду-племени и не из наших мест. Привезет комендант из города труп - 'на, "+npchar.name+", похорони с миром'. Или бродяг каких окаянных стража перебьет, а старый "+npchar.name+" предает их бренные тела земле по христианскому обычаю.";
+			link.l1 = "Ясно. Деньги, как говорится, не пахнут. Ладно, покажи мне свои товары.";
 			link.l1.go = "trade";
-			link.l2 = "Clear. It is time me to go. It was pleasant to become acquainted!";
+			link.l2 = "Понятно. Мне пора идти. Приятно было познакомиться!";
 			link.l2.go = "exit";
 		break;
 		
@@ -120,8 +119,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Man_FackYou"://реакция на попытку залезть в сундук
-			dialog.text = LinkRandPhrase("And you, "+GetFullName(pchar)+" thief, the nicest!!!", "Blimey! I gazed hardly, and you at once on trunks! Hold a thief!!!", "Guard! Rob!!! Catch a thief!!!");
-			link.l1 = "Did not drive me!!!";
+			dialog.text = LinkRandPhrase("Да ты "+ GetSexPhrase("вор, милейший! Стража, держи его","воровка! Стража, держи ее") +"!!!", "Вот это да! Чуть я загляделся, а ты сразу в сундук с головой! Держи "+ GetSexPhrase("вора","воровку") +"!!!", "Стража! Грабят!!! Держи "+ GetSexPhrase("вора","воровку") +"!!!");
+			link.l1 = "А-ать, дьявол!!!";
 			link.l1.go = "fight";
 		break;
 	}

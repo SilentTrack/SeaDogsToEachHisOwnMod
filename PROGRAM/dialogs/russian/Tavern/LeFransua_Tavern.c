@@ -4,54 +4,54 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you, " + GetAddress_Form(NPChar) + "?"), "You tried to ask me some question not long ago, " + GetAddress_Form(NPChar) + "...", "Over this whole day, this is the third time you're talking about some question...",
-                          "More questions, I presume?", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
-                      "Yes, it really is the third time...", "No, what questions?...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно, " + GetAddress_Form(NPChar) + "?"), "Совсем недавно вы пытались задать мне вопрос, " + GetAddress_Form(NPChar) + "...", "В течение этого дня вы уже третий раз говорите о каком-то вопросе...",
+                          "Опять вопросы будем задавать?", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Да уж, действительно в третий раз...", "Да нет, какие вопросы...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";						
 			//Jason, Бремя гасконца
 			if (CheckAttribute(PChar, "questTemp.Sharlie.Storehelper") && pchar.questTemp.Sharlie.Storehelper == "hire" && !CheckAttribute(npchar, "quest.storehelper"))
 			{
-				link.l1 = "Listen, " + npchar.name + ", I've come to you on an unusual matter. I need to find a man who would like a quiet, peaceful life on the bay as a merchant's assistant in a Saint-Pierre store. The salary is good and he'll have a roof over his head taken care of. Would you be able to suggest who I could turn to?";
+				link.l1 = "Послушай, " + npchar.name + ", я к тебе по одному необычному делу. Мне нужно найти человека, который хотел бы тихой и спокойной жизни на берегу в качестве помощника торговца в магазин Сен-Пьера. Жалование хорошее, и крыша над головой обеспечена. Не можешь посоветовать, к кому обратиться?";
 				link.l1.go = "storehelper";
 			}
 			if (CheckAttribute(PChar, "questTemp.Sharlie") && pchar.questTemp.Sharlie == "seabattle" && !CheckAttribute(npchar, "quest.seabattle") && pchar.location.from_sea == "LeFransua_port")
 			{
-				link.l1 = "I'm here about the barrels of wine that you're about to load onto my ship for delivery to Guadeloupe...";
+				link.l1 = "Я по поводу бочонков с вином, которые ты собираешься погрузить на мой корабль для доставки на Гваделупу...";
 				link.l1.go = "seabattle";
 			}
 			//Бремя гасконца
 			//Jason, Португалец
 			if (CheckAttribute(PChar, "questTemp.Portugal") && pchar.questTemp.Portugal == "PortugalLeFransua" && !CheckAttribute(npchar, "quest.portugal") && Pchar.location.from_sea == "LeFransua_port")
 			{
-				link.l1 = "You know, " + npchar.name + ", I'm looking for a friend of mine. He was supposed to arrive here and he was feeling off color. Perhaps his friends helped him out...";
+				link.l1 = "Знаешь, " + npchar.name + ", я ищу одного своего друга. Он должен был приехать сюда, и ему нездоровилось. Возможно, ему помогали друзья...";
 				link.l1.go = "Portugal";
 			}
 			//Португалец
 		break;
 		
 		case "storehelper":
-			dialog.text = "Hm.. We have several people here who would like to switch from being a sailor to the life of a land rat. I could help you, but I'll tell you right now: it won't be for free.";
-			link.l1 = "Heh! And how much do you want?";
+			dialog.text = "Хм... Есть тут у нас несколько человек, желающих сменить профессию моряка на жизнь сухопутной крысы. Я могу помочь тебе, но сразу говорю: не бесплатно.";
+			link.l1 = "Хех! И сколько же ты хочешь?";
 			link.l1.go = "storehelper_1";
 			npchar.quest.storehelper = "true";
 		break;
 		
 		case "storehelper_1":
-			dialog.text = "One thousand pesos. And there's nothing you'll have to do in an hour your candidates for the job will be in my saloon, multiple candidates. You'll be able to talk with them and select the one that appeals more to you than the rest.";
+			dialog.text = "Тысячу песо. И тебе вообще ничего не придется делать - через час желающие наняться будут у меня в таверне, и не один. Сможешь поговорить с ними и выбрать, кто приглянется больше других.";
 			if (sti(Pchar.money) >= 1000)
 			{
-				link.l1 = "Ahh... All right, here take a thousand!";
+				link.l1 = "Эх-х... Ладно, держи свою тысячу!";
 				link.l1.go = "storehelper_2";
 			}
-			link.l2 = "I'm sorry, but I don't have that much money!";
+			link.l2 = "Мне жаль, но у меня нет таких денег!";
 			link.l2.go = "storehelper_exit";
 		break;
 		
 		case "storehelper_2":
 			AddMoneyToCharacter(pchar, -1000);
-			dialog.text = "Don't worry, buddy. You'll get half of this amount back from the candidate I'll tell him that that's the cost of your services, he he... They won't give any more than five hundred. Stop by my saloon in an hour by that time I'll have the people you need here waiting for you.";
-			link.l1 = "All right. I'll be back in an hour, " + npchar.name + ".";
+			dialog.text = "Не переживай так, приятель. Половина этой суммы вернется тебе от кандидата - я скажу, что такова оплата твоих услуг, хе-хе... Больше пятисот потребовать не получится. Заходи в мою таверну через час - к этому времени я уже приглашу нужных тебе людей.";
+			link.l1 = "Хорошо. Я вернусь через час, " + npchar.name + ".";
 			link.l1.go = "storehelper_3";
 		break;
 		
@@ -68,8 +68,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "storehelper_exit":
-			dialog.text = "I'm sorry you don't have that kind of money too. But you know yourself, matters like that don't get done just for a 'thank you'. So...";
-			link.l1 = "I understand. But I really don't have the money. All right, bye...";
+			dialog.text = "Мне тоже жаль, приятель, что у тебя их нет. Но за спасибо такие дела не делаются, сам понимаешь. Так что...";
+			link.l1 = "Понимаю. Но денег действительно нет. Ладно, бывай...";
 			link.l1.go = "exit";
 			pchar.quest.storehelper.over = "yes";
 			DeleteAttribute(pchar, "questTemp.Sharlie.Storehelper");
@@ -77,27 +77,27 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "seabattle":
-			dialog.text = "What are you talking about, buddy? What wine do you speak of?";
-			link.l1 = "I've been sent to you by a man named Walter Catcher. He said you need a ship to transfer some wine cargo to Guadeloupe for ten thousand pesos. And that you need my ship for this job...";
+			dialog.text = "Ты это сейчас о чем, приятель? О каком вине ты говоришь?";
+			link.l1 = "Меня прислал к тебе человек по имени Уолтер Катчер. Он сказал, что тебе нужен корабль для перевозки партии вина на Гваделупу, за десять тысяч песо. И что тебе нужен именно мой корабль для этой работы...";
 			link.l1.go = "seabattle_1";
 			npchar.quest.seabattle = "true";
 		break;
 		
 		case "seabattle_1":
-			dialog.text = "Listen buddy, I don't deal with wine, I don't need your services, and I don't know any Walter Catcher.";
-			link.l1 = "Well, how about that! So, that Catcher wasn't sent from you at all... Then, what's this whole comedy about?";
+			dialog.text = "Послушай, дружище, я не торгую вином, и не нуждаюсь в твоих услугах, и никакого Уолтера Катчера знать не знаю.";
+			link.l1 = "Вот так номер! Так значит, этот Катчер был вовсе не от тебя... Но к чему тогда вся эта комедия?";
 			link.l1.go = "seabattle_2";
 		break;
 		
 		case "seabattle_2":
-			dialog.text = "Heh! Well, this is either some kind of mistake or a bad joke or...";
-			link.l1 = "Or what?";
+			dialog.text = "Хех! Ну, это или какая-то ошибка, или глупая шутка, или...";
+			link.l1 = "Что 'или'?";
 			link.l1.go = "seabattle_3";
 		break;
 		
 		case "seabattle_3":
-			dialog.text = "Can't you guess yourself? Somebody needed to lure you over to Le Francois, for what I don't know. In your shoes, I'd hurry up and get out of here while being as careful as can be. This smells like dirty business, buddy...";
-			link.l1 = "I suppose you're right. I didn't like that Catcher's mug. All right, I'll follow your advice. Bye, Cesar!";
+			dialog.text = "А сам не догадываешься? Кому-то понадобилось заманить тебя в Ле Франсуа, а вот уже для чего - не знаю. На твоем месте я бы сейчас поспешил убраться отсюда, соблюдая всю возможную осторожность. Это дело дурно пахнет, приятель...";
+			link.l1 = "Пожалуй, ты прав. Мне рожа этого Катчера сразу не понравилась. Ладно, последую твоему совету. Бывай, Чезаре!";
 			link.l1.go = "seabattle_4";
 		break;
 		
@@ -110,7 +110,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "Portugal":
-			dialog.text = "Yes, your friend's arrived here, captain. He got here as early as yesterday and rented a room up above. His pals are here too, he he... They're sitting over there. Ask them!";
+			dialog.text = "Да, приехал ваш друг, капитан. Еще вчера приехал, и снял комнату наверху. И дружки его здесь, хе-хе... вон сидят, у них и спросите!";
 			link.l1 = "...";
 			link.l1.go = "Portugal_1";
 		break;

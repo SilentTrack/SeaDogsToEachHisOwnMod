@@ -66,7 +66,7 @@ void InitInterface_RS(string iniName, ref itemsRef, string faceID)
 		if(sInterfaceType == INTERFACETYPE_DEADMAN) // Если обыск трупа
 		{
 			makearef(arDeadChar, itemsRef);
-			Tab3Caption = "Items on the corpse";
+			Tab3Caption = "Предметы на трупе";
 		}
 		
 		iSetCharIDToCharactersArroy(itemsRef); // Не нужно это, но и не помешает
@@ -95,17 +95,17 @@ void InitInterface_RS(string iniName, ref itemsRef, string faceID)
 		ShipSituation_SetQuestSituation(ShipSituation_0);
 	}
 	
-	GameInterface.TABLE_LIST.hr.td1.str = "Items";
+	GameInterface.TABLE_LIST.hr.td1.str = "Предметов";
 	GameInterface.TABLE_LIST.hr.td1.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td2.str = "Common\nwgt";
+	GameInterface.TABLE_LIST.hr.td2.str = "Общий\nвес";
 	GameInterface.TABLE_LIST.hr.td2.scale = 0.9;
 	GameInterface.TABLE_LIST.hr.td2.textoffset = "0, 2";
-	GameInterface.TABLE_LIST.hr.td3.str = "Items name";
+	GameInterface.TABLE_LIST.hr.td3.str = "Наименование предметов";
 	GameInterface.TABLE_LIST.hr.td3.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td4.str = "Common\nwgt";
+	GameInterface.TABLE_LIST.hr.td4.str = "Общий\nвес";
 	GameInterface.TABLE_LIST.hr.td4.scale = 0.9;
 	GameInterface.TABLE_LIST.hr.td4.textoffset = "0, 2";
-	GameInterface.TABLE_LIST.hr.td5.str = "Items";
+	GameInterface.TABLE_LIST.hr.td5.str = "Предметов";
 	GameInterface.TABLE_LIST.hr.td5.scale = 0.9;
 	
 	FillCharactersScroll();
@@ -125,14 +125,14 @@ void InitInterface_RS(string iniName, ref itemsRef, string faceID)
 		CreateString(true, "VersionInfo", VERSION_NUMBER1 + GetVerNum(), FONT_CAPTION, COLOR_NORMAL, 400, 550, SCRIPT_ALIGN_CENTER, 0.8);
 		CreateString(true, "DevTeam", VERSION_NUMBER3, FONT_CAPTION, COLOR_NORMAL, 400, 566, SCRIPT_ALIGN_CENTER, 0.8);
 		
-		if(sInterfaceType == INTERFACETYPE_CHEST)	Tab3Caption = "Chest items";
-		if(sInterfaceType == INTERFACETYPE_BARREL)	Tab3Caption = "Barrel items";		
+		if(sInterfaceType == INTERFACETYPE_CHEST)	Tab3Caption = "Предметы в сундуке";
+		if(sInterfaceType == INTERFACETYPE_BARREL)	Tab3Caption = "Предметы в бочонке";		
 	}
 	
 	if(sInterfaceType == INTERFACETYPE_EXCHANGE_ITEMS) // Установим строки с именами
 	{
 		GameInterface.strings.CharName = GetFullName(refToChar);
-		Tab3Caption = "Officer items";
+		Tab3Caption = "Предметы у офицера";
 	}
 	else
 	{
@@ -1020,10 +1020,14 @@ void ShowHelpHint()
 	if(!bShowChangeWin) // покажем помощь по работе с формой
 	{
 		sHeader = XI_ConvertString("titleItemsTrade");
-		sText1 = "";
+		sText1 = "Двойной клик мыши или Enter по строкам таблицы вызывает форму обмена предметами "+ newStr() +
+			"Shift + лево/право на строках таблицы автоматически вызывают форму с предустановленным количеством покупки/продажи на максимальное. "+ newStr() +
+			"Ввод положительного количества с клавиатуры устанавливает забирание предмета, а отрицательного (с минусом) отдачу."+ newStr() +
+			"Стрелки лево/право изменяют количество по одному, а Shift + лево/право на максимально доступное. Нажатие Enter на форме равносильно ОК, а Esc - Отмена." + newStr() +
+			"Находясь в режиме формы и мотая список в таблице стрелкам вверх/вниз, можно просматривать описание предмета под курсором таблицы.";
 		
-		sText3 = "";
-		sText2 = "";
+		sText3 = "В списке на обмен отсутствуют экипированные персонажем предметы.";
+		sText2 = "Быстрая отдача всего: стрелками вверх/вниз по списку, Shift + право, Enter";
 		
 		CreateTooltip("#" + sHeader, sText1, argb(255,255,255,255), sText2, argb(255,192,192,192), sText3, argb(255,255,255,255), "", argb(255,255,255,255), sPicture, sGroup, sGroupPicture, 64, 64);
 	}
@@ -1287,6 +1291,7 @@ void onTableRemoveAllBtnClick()
 	int maxItemsToAdd = GetMaxItemsToTake(refToChar, item);
 	
 	if(maxItemsToAdd < iItemsQty) iItemsQty = maxItemsToAdd;
+	//if(maxItems < 0) return 0;
 	
 	if(iItemsQty > 0) // fix
 	{
@@ -1419,9 +1424,16 @@ void ChangeQTY_EDIT()
 				if((fRefCharWeight + iWeight) > fRefCharMaxWeight)
 				{
 					iWeight = fRefCharMaxWeight - fRefCharWeight - 0.01; // чуть меньше
-					GameInterface.qty_edit.str = makeint(iWeight / fWeight );
-					iWeight = fWeight * sti(GameInterface.qty_edit.str);
-					GameInterface.qty_edit.str = makeint(iWeight / fWeight ); // округдение
+					if(iWeight < 0) // критический фикс в случае перегруза - просто нулим строку ввода
+					{
+						GameInterface.qty_edit.str = 0;
+					}
+					else
+					{
+						GameInterface.qty_edit.str = makeint(iWeight / fWeight );
+						iWeight = fWeight * sti(GameInterface.qty_edit.str);
+						GameInterface.qty_edit.str = makeint(iWeight / fWeight ); // округдение
+					}		
 				}
 		    }
 		    // проверка на колво доступное <--
@@ -1431,7 +1443,7 @@ void ChangeQTY_EDIT()
 		        GameInterface.qty_edit.str = 0;
 		    }
 		    // квестовые не продать <--
-		    SetFormatedText("QTY_TypeOperation", "Put in");
+		    SetFormatedText("QTY_TypeOperation", "Отдать");
 		}
 		else
 		{
@@ -1455,7 +1467,7 @@ void ChangeQTY_EDIT()
 		    }
 		    // проверка на колво доступное <--
 			
-			SetFormatedText("QTY_TypeOperation", "Take");
+			SetFormatedText("QTY_TypeOperation", "Забрать");
 		}
 	}
 	// если получили ноль
@@ -1552,6 +1564,7 @@ void ADD_BUTTON()  // купить
 int GetMaxItemsToTake(ref _char, String _item)
 {
 	float curWeight;
+	int   maxItems;
 	
 	// Warship MEGA FIX 10.07.09
 	if(_char == refToChar)
@@ -1572,7 +1585,13 @@ int GetMaxItemsToTake(ref _char, String _item)
 		return 1000000000;
 	}
 	
-	return MakeInt((maxWeight - curWeight) / itemWeight);
+	maxItems = MakeInt((maxWeight - curWeight) / itemWeight);
+	if(maxItems < 0) 
+	{
+		return 0;
+	}	
+	
+	return maxItems;
 }
 
 void OfficerReincarnation(ref rPassanger);
@@ -1592,5 +1611,5 @@ void OfficerReincarnation(ref rPassanger);
 	DeleteAttribute(rOff, "isMusketer.weapon");
 	DeleteAttribute(pchar, "items.mushket2x2");
 	AddPassenger(pchar, rOff, false);
-	Log_Info("Boarding officer " + GetFullName(rOff) + " was brought back to life.");
+	Log_Info("Абордажник " + GetFullName(rOff) + " реанимирован.");
 }

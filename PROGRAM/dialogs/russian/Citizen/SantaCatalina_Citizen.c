@@ -4,42 +4,42 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-            dialog.text = RandPhraseSimple("What kind of questions?", "What would you like?");
-			link.l1 = RandPhraseSimple("I have changed my mind...", " I have nothing to talk about");
+            dialog.text = RandPhraseSimple("Какие вопросы?", "Что вам угодно?");
+			link.l1 = RandPhraseSimple("я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить");
 		    link.l1.go = "exit";
 		break;
 		
 		case "info":
-			dialog.text = LinkRandPhrase("Who are you interested in?","Who do you need?","About who exactly?");
+			dialog.text = LinkRandPhrase(" Кто вас интересует?","Кто вам нужен?","О ком пойдет речь?");
 			if (CheckAttribute(pchar, "questTemp.Saga"))
 			{
-				link.l1 = "I want to know about Jan Svensson.";
+				link.l1 = "я хочу узнать о Яне Свенсоне.";
 				link.l1.go = "svenson";
 			}
-			link.l2 = "Let's change the subject...";
+			link.l2 = "Ћучше давайте поговорим о чем-нибудь другом...";
 			link.l2.go = "new question";
 		break;
 		
 		case "town":
-			dialog.text = LinkRandPhrase("Where do you want to get?","What are you are looking for?","Were to?");
+			dialog.text = LinkRandPhrase("Куда вам нужно попасть?","Что вы ищете?","Куда вы хотите пройти?");
 			if (CheckAttribute(pchar, "questTemp.Saga"))
 			{
-				link.l1 = "Where is the house of Jan Svenson?";
+				link.l1 = "Где находитс€ дом яна Cвенсона?";
 				link.l1.go = "svenson_house";
 			}
-			link.l2 = "Let's change the subject...";
+			link.l2 = "Лучше давайте поговорим о чем-нибудь другом...";
 			link.l2.go = "new question";
 		break;
 		
 		case "svenson":
-			dialog.text = RandPhraseSimple("Oh, our Jan Svensson is a very important person. In past, he was the most dashing pirate of the Western Main, and he is not to be trifled with now days though he is not that active than he was before. He owes a mansion and lives there with his fine, he is always a welcome guest for the governor. A lot of guests come to Jan... pirates mostly.","Jan Svensson is the legend of Western Main! Forest Devil, that is how the Spanish called him when he was busy driving them away from here. He used to be a famous corsair, now he is a respected citizen of our colony\nThough he still does some secret business, but not with his own hands anymore. He rarely leaves his house, especially since he married a young beauty.");
-			link.l1 = "Thanks!";
+			dialog.text = RandPhraseSimple("О-о, наш Ян Свенсон - очень значительна€ личность. В прошлом он был самым лихим пиратом Западного Мэйна, да и сейчас ему палец в рот не клади, хотя с годами он и поутих темпераментом немного. Живет в личном особняке вместе с молодой супругой, всегда желанный гость у губернатора. Часто гости к нему разные приходят... весьма корсарской наружности.","Ян Свенсон - легенда Западного Мэйна! 'Лесной Дьявол' - так его прозвали испанцы, когда он выкуривал их из окрестностей Блювельда. В прошлом известный корсар, а сейчас - почетный гражданин нашей колонии\nХотя и в данный момент ведет какие-то тайные дела, но уже при помощи чужих рук. Сам редко выбирается из своего дома, особенно после того, как женился на молодой красавице.");
+			link.l1 = "Спасибо!";
 			link.l1.go = "exit";
 		break;
 		
 		case "svenson_house":
-			dialog.text = RandPhraseSimple("Go straight from the pier until you see the square, a house on the right is the Svensson's mansion.","Go to the pier through the square from the governor's residence, a house on the left is the Svensson's mansion.");
-			link.l1 = "Thanks!";
+			dialog.text = RandPhraseSimple("Идете от пирса прямо, пока не увидите площадь, дом справа напротив фонтана и есть особняк Свенсона.","От резиденции губернатора пересекаете площадь по пути к пирсу, слева напротив фонтана - дом Свенсона.");
+			link.l1 = "Спасибо!";
 			link.l1.go = "exit";
 		break;
 	}

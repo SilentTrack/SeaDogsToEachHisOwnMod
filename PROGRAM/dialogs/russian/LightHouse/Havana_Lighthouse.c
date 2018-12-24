@@ -4,22 +4,22 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What do you want?", "What would you like to know?"), "Tell me, what are you interested in, " + GetAddress_Form(NPChar) + "?", "It's the third time you try to ask...", "I had enough of you. Leave my place!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "I have got nothing to say now."), "It seems I've forgotten, sorry...",
-                      "You're right it the third time already. Pardon me.", "I am sorry...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Что вам угодно?", "Что вы хотели узнать?"), "Так скажите, что же вас интересует, " + GetAddress_Form(NPChar) + "?", "Третий раз за сегодня вы пытаетесь задать вопрос...", "Всё, вы меня утомили. Покиньте мой дом!", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал"+ GetSexPhrase("","а") +"...", "Сейчас мне не о чем говорить"), "Ох, что-то я запамятовал. Простите...",
+                      "Да уж, действительно в третий раз...", "Извиняюсь...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			// калеуче
 			if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "graveyard" && !CheckAttribute(npchar, "quest.caleuche"))
 			{
-				link.l1 = "Hey, listen - has a man by the name of Joachim Merryman arrived here? A middle-aged senor, Portuguese, with moustache and imperial beard and piercing eyes? Perhaps, he disembarked in a cove or at the lighthouse? Have you seen someone like him?";
+				link.l1 = "Послушай, сюда не прибывал человек по имени Жоаким Мерриман? Немолодой сеньор, португалец, носит усы и эспаньолку, с пронзительным взглядом? Может, в бухте высадился, или на маяке? Не видал такого?";
 				link.l1.go = "merriman";
 			}
 		break;
 		
 		// калеуче
 		case "merriman":
-			dialog.text = "No, buddy, no one like that. I would have taken notice.";
-			link.l1 = "I see. Pity. Alright, I'll continue my search...";
+			dialog.text = "Нет, дружище, не видал. Мне никто такой на глаза не попадался.";
+			link.l1 = "Ясно. Жаль. Буду искать дальше...";
 			link.l1.go = "exit";
 			npchar.quest.caleuche = "true";
 		break;

@@ -15,7 +15,7 @@
 #define NET_SCRIPT_VERSION		101
 
 string sUserFacesPath = "net\faces\";
-string sUserSailsPath = "net\sails\";
+string sUserSailsPath = "ships\gerald\";
 string sUserFlagsPath = "net\flags\";
 
 string	sNetBortNames[4] = {"cannonl", "cannonr", "cannonf", "cannonb"};

@@ -11,26 +11,27 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			//регата
 			if (CheckAttribute(pchar, "questTemp.Regata.Go") && !CheckAttribute(npchar, "quest.regatatalk"))
 			{
-				dialog.text = "What do you want? A-ha, you are the participant of the regatta! Am I right?";
-				link.l1 = "Exactly, mister. I need to get registered here according to the rules.";
+				dialog.text = "Что вам угодно? А-а, вы участник регаты! Так?";
+				link.l1 = "Да, именно так, мистер. Мне нужно отметиться у вас согласно правил.";
 				link.l1.go = "Regata_check";
 				break;
 			}
 			//регата
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What kind of questions?", "What do you want, " + GetAddress_Form(NPChar) + "?"), "You've already tried to ask me a question " + GetAddress_Form(NPChar) + "...", "You have been talking about some question for the third time today...",
-                          "Look, if you have nothing to tell me about the port's matters then don't bother me with your questions.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind.", "Sorry!"), "Sorry!", "Sorry!", "Sorry!", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно, " + GetAddress_Form(NPChar) + "?"), "Совсем недавно вы пытались задать мне вопрос " + GetAddress_Form(NPChar) + "...", "В течение этого дня вы уже третий раз говорите о каком-то вопросе...",
+                          "Послушайте, если вы не по делам порта, то не стоит меня вопросами донимать.", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал"+ GetSexPhrase("","а") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Да уж, действительно в третий раз...", "Извините, но портовые дела меня сейчас не интересуют.", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			//Голландский гамбит
 			if (CheckAttribute(pchar, "questTemp.HWIC.Eng") && pchar.questTemp.HWIC.Eng == "GotoBridgetown" && !CheckAttribute(npchar, "quest.HWICTalked"))
             {
-                link.l1 = "I am sailing to Blueweld, want to sell some paprika. Tell me, mister, do you have any passengers who are heading to Blueweld? Or to Port-Royale at least. It would be great to lift somebody, it could pay off the crew's wage. ";
+                link.l1 = "Я направляюсь в Блювельд, паприку продавать. Скажите, мистер, нет ли у вас сейчас пассажиров до Блювельда? Ну, или до Порт-Рояля. Было бы неплохо подвезти, глядишь, покрыли бы убытки на оплату команде. Я и так ее сократил до минимума, но все равно, канальи, денег-то просят...";
                 link.l1.go = "PortofficeDone";
             }
 			// Страж Истины
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "barbados")
 			{
-				link.l1 = "There was a galleon named 'Admirable' freighted in Philipsburg under the command of Gaius Marchais. He had to deliver here a load of paprika. Can you help me to find this captain?";
+				link.l1 = "В портовом управлении Филипсбурга был зафрахтован галеон 'Восхитительный' под командованием Гая Марше. Он должен был привезти к вам груз паприки. Не подскажете, где мне найти капитана этого корабля?";
                 link.l1.go = "guardoftruth";
 			}
 			// калеуче
@@ -38,12 +39,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			{
 				if (CheckAttribute(npchar, "questTemp.caleuche"))
 				{
-					link.l1 = "I wanted to ask about a xebec with a strange name.";
+					link.l1 = "Я по поводу шебеки со странным названием.";
 					link.l1.go = "caleuche_2";
 				}
 				else
 				{
-					link.l1 = "I heard that a xebec belonging to captain Jack… or Jackson is frequently visiting your port. Could you tell me where to look for him?";
+					link.l1 = "Я слышал, что в вашем порту часто бывает шебека капитана Джексона... или Джека. Вы не подскажете, где мне его разыскать?";
 					link.l1.go = "caleuche";
 				}
 			}
@@ -51,8 +52,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 
 		//Голландский гамбит
 		case "PortofficeDone":
-			dialog.text = "Unfortunately, there is no passengers to Blueweld nor to Port-Royal. Come back tomorrow or the day after tomorrow.";
-			link.l1 = "Too bad. Farewell then.";
+			dialog.text = "Пассажиров ни до Блювельда, ни до Порт-Рояля нет, к сожалению. Зайдите завтра, или послезавтра - может, появятся.";
+			link.l1 = "Эх, жаль. Ладно, тогда до свидания.";
 			link.l1.go = "exit";	
 			npchar.quest.HWICTalked = "true";
 			pchar.questTemp.HWIC.Eng.BridgeCounter = sti(pchar.questTemp.HWIC.Eng.BridgeCounter)+1;
@@ -78,25 +79,25 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
 		if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)//проверка на наличие корабля в порту
 		{
-			if (CheckAttribute(pchar, "questTemp.Regata.Breach") || !CheckAttribute(pchar, "questTemp.Regata.Sentjons") || GetCompanionQuantity(pchar) > 1 || sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LUGGER || pchar.Ship.Name != "Santa Catherina")
+			if (CheckAttribute(pchar, "questTemp.Regata.Breach") || !CheckAttribute(pchar, "questTemp.Regata.Sentjons") || GetCompanionQuantity(pchar) > 1 || sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LUGGER || pchar.Ship.Name != "Сaнта-Kатepина")
 			{
-				dialog.text = "Hm... You have broken the rules of regatta and I have to disqualify you. I am sorry. You are not participating in the next voyage. I have already prepared a dispatch to Port-Royal.";
-				link.l1 = "Eh... what a shame! But I can't do anything here, you were too vigilant. Farewell!";
+				dialog.text = "Хм... Вы нарушили правила регаты и я вынужден вас дисквалифицировать. Увы! В дальнейшем заплыве вы не участвуете. Я уже подготовил депешу в Порт-Рояль.";
+				link.l1 = "Эх... жаль! Ладно, ничего не поделаешь - вы оказались бдительны. До свидания!";
 				link.l1.go = "exit";
 				DeleteAttribute(pchar, "questTemp.Regata");
 			}
 			else
 			{
 				pchar.questTemp.Regata.FourthTransitionTime = GetPastTime("hour", sti(pchar.questTemp.Regata.StartYear), sti(pchar.questTemp.Regata.StartMonth), sti(pchar.questTemp.Regata.StartDay), stf(pchar.questTemp.Regata.StartTime), GetDataYear(), GetDataMonth(), GetDataDay(), GetTime());//истратил ГГ в часах на 1+2+3+4 переход
-				dialog.text = "You might have noticed, captain, that the city is under the siege. We are expecting the Spanish to attack us and mobilizing our forces. But the regatta is going on.\nLet's register: captain "+ GetFullName(pchar) +", ship is - "+pchar.Ship.Name+"... Regatta's time in hours is "+sti(pchar.questTemp.Regata.FourthTransitionTime)+". Done, your result if registered, you can continue your way.";
-				link.l1 = "Tell me my rank.";
+				dialog.text = "Как вы заметили, капитан, у нас очень тревожная обстановка - город в осаде. Готовимся к атаке испанцев, мобилизуем все силы. Но регата продолжается\nТак, отмечаем: капитан "+ GetFullName(pchar) +", корабль - "+pchar.Ship.Name+"... Затрачено времени от старта регаты в часах - "+sti(pchar.questTemp.Regata.FourthTransitionTime)+". Все, ваш результат зафиксирован, можете продолжать путь.";
+				link.l1 = "Скажите, а на каком я сейчас месте?";
 				link.l1.go = "Regata_info";
 			}
 		}
 		else
 		{
-			dialog.text = "You are here but I don't see your ship. Where is it?";
-			link.l1 = "I am sorry, sir. I will transfer my ship to the port immediately.";
+			dialog.text = "Вы сами прибыли - а корабль ваш где? Что-то я его не вижу.";
+			link.l1 = "Прошу прощения, сэр. Я немедленно приведу свой корабль в порт.";
 			link.l1.go = "exit";
 		}
 		break;
@@ -120,30 +121,30 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 			if (n==1)
 			{
-			dialog.text = "Ah, yes... I am sorry I am too busy for that. You are the first.";
-			link.l1 = "I see. Thanks for you information.";
+			dialog.text = "Ах, ну да... Простите, мне просто немного не до этого. Вы на первом месте. ";
+			link.l1 = "Понятно, спасибо за информацию.";
 			link.l1.go = "exit";
 			}
 			else
 			{
 				if (n==6)
 				{
-				dialog.text = "Ah, yes... I am sorry I am too busy for that. You are the last.";
-				link.l1 = "I see. Thanks for you information.";
+				dialog.text = "Ах, ну да... Простите, мне просто немного не до этого. Вы на последнем месте.";
+				link.l1 = "Понятно, спасибо за информацию.";
 				link.l1.go = "exit";
 				}
 				else
 				{
 					if (n==2)
 					{
-						dialog.text = "Ah, yes... I am sorry I am too busy for that. You are the second. There is only one captain outrunning you. He is "+sName+" on the ship "+sShip+".";
-						link.l1 = "I see. Thanks for you information.";
+						dialog.text = "Ах, ну да... Простите, мне просто немного не до этого. Вы на втором месте. Перед вами только "+sName+" на корабле "+sShip+".";
+						link.l1 = "Понятно, спасибо за информацию.";
 						link.l1.go = "exit";
 					}
 					else
 					{
-						dialog.text = "Ah, yes... I am sorry I am too busy for that. Your rank is "+n+" . Your closest opponent is "+sName+" on the ship "+sShip+".";
-						link.l1 = "I see. Thanks for you information.";
+						dialog.text = "Ах, ну да... Простите, мне просто немного не до этого. Вы на "+n+" месте. Ваш ближайший соперник впереди - "+sName+" на корабле "+sShip+".";
+						link.l1 = "Понятно, спасибо за информацию.";
 						link.l1.go = "exit";
 					}
 				}
@@ -193,8 +194,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		// Страж Истины
 		case "guardoftruth":
-			dialog.text = "Yes, this galleon was here, got relieved of his goods and has left our port later. Information about it's destination... hm..none, there is nothing. I am sorry but there is nothing I can do.";
-			link.l1 = "I see. Too bad... I will continue looking for it.";
+			dialog.text = "Да, этот галеон прибывал к нам, разгрузился и через некоторое время покинул наш порт. Сведений о пункте назначения... гм... нет, ничего нет. Простите, но ничем помочь не могу.";
+			link.l1 = "Ясно. Очень жаль... Буду искать дальше.";
 			link.l1.go = "guardoftruth_1";
 		break;
 		
@@ -206,39 +207,39 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		// калеуче
 		case "caleuche":
-			dialog.text = "Sir, I need the exact name of the ship. We have tons of Jacks and Jacksons going through our port. So, what's the name?";
+			dialog.text = "Сэр, мне нужно название судна. Ибо что Джексонов, что Джеков, у нас как грибов поганых. Знаете, сколько их через наш порт проходит? Так какое название?";
 			link.l1 = "";
 			Link.l1.edit = 2;
 			link.l1.go = "caleuche_name";
-			link.l2 = "Trouble is that I don't know the name of his old tub. It's strange - some bird woman, born from…";
+			link.l2 = "Загвоздка в том, что я не знаю, как называется его лоханка. Имя такое странное, означает полуженщину-полуптицу, рожденную...";
 			link.l2.go = "caleuche_1";
 		break;
 		
 		case "caleuche_1":
-			dialog.text = "Mister, go tell your stories and riddles at the tavern, and we have a serious establishment here. Either you tell me the name of that xebec, or stop disturbing me from my work.";
-			link.l1 = "Alright, I'll try to find out.";
+			dialog.text = "Сударь, с байками и загадками - в таверну, а здесь серьезное учреждение. Или скажите, как называется шебека этого вашего капитана, или не отнимайте мое время.";
+			link.l1 = "Хорошо, я попытаюсь выяснить и вернусь к вам.";
 			link.l1.go = "exit";
 			npchar.questTemp.caleuche = "true";
 		break;
 		
 		case "caleuche_2":
-			dialog.text = "So? Do you have the name of the ship? I am listening.";
+			dialog.text = "Ну? Вы выяснили? Слушаю вас.";
 			link.l1 = "";
 			Link.l1.edit = 2;
 			link.l1.go = "caleuche_name";
 		break;
 		
 		case "caleuche_name":
-			if (GetStrSmallRegister(dialogEditStrings[2]) == "harpy")
+			if (GetStrSmallRegister(dialogEditStrings[2]) == "гарпия")
 			{
-				dialog.text = "'Harpy'? Of course, I know that xebec. Its captain is Reginald Jackson. But he hadn't been to Bridgetown for quite some time. I heard that he now works for the Dutch West India Company. So you're more likely to meet him in Willemstad.";
-				link.l1 = "Thank you very much! You've helped me out a lot.";
+				dialog.text = "'Гарпия'? Ну конечно, я знаю шебеку 'Гарпия', ее капитана зовут Реджинальд Джексон. Но в Бриджтауне он давно уже не появляется. Я слышал, что его наняла на службу Голландская Вест-Индская Компания. Так что вам нужно в Виллемстад.";
+				link.l1 = "Спасибо огромное! Вы мне очень помогли.";
 				link.l1.go = "caleuche_3";
 			}
 			else
 			{
-				dialog.text = "I am sorry, but that doesn't ring a bell. Are you sure that your captain was frequenting Bridgetown?";
-				link.l1 = "I am sure. Alright, perhaps I'll come up with something ...";
+				dialog.text = "Это мне ни о чем не говорит, к сожалению. Вы уверены, что ваш капитан бывал в Бриджтауне?";
+				link.l1 = "Уверен. Ладно, надо еще подумать, может, соображу...";
 				link.l1.go = "exit";
 			}
 		break;

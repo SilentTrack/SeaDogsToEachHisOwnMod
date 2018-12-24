@@ -4,94 +4,94 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What kind of questions, "+ GetSexPhrase("my son","my daughter") +"?", "Ask, I am listening to you..."), "I am listening, speak, "+ GetSexPhrase("my son","my daughter") +"...", "And it's the third time I say to you, "+ GetSexPhrase("my son","my daughter") +", ask your question.",
-                          "A clergyman has a lot of work... and you are bothering me, "+ GetSexPhrase("my son","my daughter") +"...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "Not now, padre..."), "Have nothing to say really...",
-                      "I'll ask, I'll ask... a bit later though...", "Pardon me, holy father...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы, "+ GetSexPhrase("сын мой","дочь моя") +"?", "Спрашивай, я слушаю тебя..."), "Я слушаю тебя, говори, "+ GetSexPhrase("сын мой","дочь моя") +"...", "И в третий раз говорю тебе, "+ GetSexPhrase("сын мой","дочь моя") +": задавай свой вопрос.",
+                          "Столько обязанностей у церковнослужителя, а тут еще и ты донимаешь, "+ GetSexPhrase("сын мой","дочь моя") +"...", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Не сейчас, падре..."), "Да, пока особо и нечего сказать...",
+                      "Задам, задам... Только позже...", "Простите, святой отец...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			// калеуче
 			if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "priest")
 			{
-				link.l1 = "One of the clergymen of your parish asked me to investigate the house, where a Joachim Merryman was renting a room…";
+				link.l1 = "Один из служителей вашего прихода попросил меня разведать обстановку в доме, где снимал комнату некий Жоаким Мерриман...";
 				link.l1.go = "caleuche";
 			}
 		break;
 		
 		// калеуче
 		case "caleuche":
-			dialog.text = "So? Have you been there, my son? Tell me!";
-			link.l1 = "Yes, I have. Although, I reckon, I'd better not. In the upper room I was attacked by a skeleton with a huge axe. I managed to come out victorious, although it certainly was not easy.";
+			dialog.text = "И? Ты был там, сын мой? Говори же, не томи!";
+			link.l1 = "Да, был. Но честно говоря, лучше бы я туда не ходил, потому что в комнате наверху на меня напал невесть откуда взявшийся оживший скелет с большим топором. Мне удалось с ним справиться, правда, не без труда.";
 			link.l1.go = "caleuche_1";
 		break;
 		
 		case "caleuche_1":
-			dialog.text = "Oh Lord, show mercy on us! My worst fears have come true!";
-			link.l1 = "And that's not all. When I finally put it down, it cried out loud like a woman. Then I looked through the bones and found some pieces of jewelry. I would assume it was the landlady who had gone missing.";
+			dialog.text = "Господи, спаси и сохрани нас! Сбываются мои худшие опасения!";
+			link.l1 = "Это еще не все. Когда я вышиб из этого скелета дух, или что там еще внутри него было, он издал предсмертный женский крик. Потом я пошарил по его костям и нашел женские украшения. Я полагаю, что это и есть пропавшая хозяйка дома.";
 			link.l1.go = "caleuche_2";
 		break;
 		
 		case "caleuche_2":
-			dialog.text = "(crosses himself)... Poor God's servant, may He put her soul to rest ...";
-			link.l1 = "It looks like that Merryman is a warlock indeed. I have no idea how one can turn a living man into an abomination like that.";
+			dialog.text = "(крестится)... Несчастная раба Божья, да примет Господь ее душу...";
+			link.l1 = "Выходит, этот Мерриман и на самом деле колдун. Сотворить такое из живого человека - уму непостижимо.";
 			link.l1.go = "caleuche_3";
 		break;
 		
 		case "caleuche_3":
-			dialog.text = "Joachim Merryman is a very fearsome warlock, my son, I knew him in Europe, but at those times he wasn't capable of anything like that. Here, In the Caribbean, he managed to get something which gave him supernatural powers.";
-			link.l1 = "You knew Merryman, Father?";
+			dialog.text = "Жоаким Мерриман - страшный колдун, сын мой. Я знал его еще в Европе, но тогда он не был способен на такое. Здесь, на Карибах, он сумел получить что-то, что наделило его едва ли не сверхъестественной силой.";
+			link.l1 = "Вы знали Мерримана, святой отец?";
 			link.l1.go = "caleuche_4";
 		break;
 		
 		case "caleuche_4":
-			dialog.text = "I did. Back then I was just a humble canon in one of Lisbon's parishes. Joachim Merryman was a wealthy nobleman. At some point he has taken interest in old manuscripts and scrolls brought by the sailors from the distant lands. Also he began to study alchemy. After some time he went into seclusion.\nPeople have seen flashes of light in his house; at times they could also smell something strange. Then they have seen him in the cemetery in the nights. Once they have seen him digging out a fresh corpse and bringing it to his home. That was just too much to bear, and the father superior contacted the inquisition.\nWhen the guards breached the door of Merryman's house, Joachim was not there - he had fled via a secret passage. They found a lab in the basement, and even the seasoned soldiers were deeply shocked by what they saw. Rotting whole and dismembered bodies, human and animal skeletons, strange things... Fear and hatred for Merryman were so great that his house was demolished completely.\nMerryman disappeared without a trace. The inquisition began to search for him, sentencing him in his absence to burning at a stake as a dangerous warlock. But they never found him. And now, after all these years, I saw him again on the streets of Willemstad.";
-			link.l1 = "And why didn’t you tell the inquisitors?";
+			dialog.text = "Да. Я тогда был скромным каноником в одном из приходов Лиссабона. А Жоаким Мерриман был знатным дворянином. Но в один момент он увлекся изучением старинных рукописей и свитков, которые привозили ему моряки из дальних стран. Также он занялся алхимией. А потом уединился и стал вести замкнутый образ жизни\nЛюди видели, как у него в доме вспыхивали огни, бывало, по округе разносился странный запах. А потом его стали видеть по ночам на кладбище. И один раз увидели, как Мерриман откопал свежий труп и утащил себе в дом. Это переполнило чашу терпения, и настоятель церкви обратился в инквизицию\nКогда стражники выломали дверь в дом Мерримана, Жоакима там не оказалось - он бежал через тайный проход. А в подвале нашли жуткую лабораторию. Даже суровые стражники были в шоке от увиденного. Гниющие целые и расчлененные трупы, скелеты людей и животных, странные предметы... Ужас и отвращение к Мерриману были настолько велики, что его дом сровняли с землей\nМерриман исчез бесследно. Инквизиция занялась его поисками, заочно приговорив к сожжению как опасного колдуна, но безуспешно. И вот, по прошествии стольких лет, я увидел его на улицах Виллемстада.";
+			link.l1 = "Почему же вы не сообщили в инквизицию?";
 			link.l1.go = "caleuche_5";
 		break;
 		
 		case "caleuche_5":
-			dialog.text = "My son, don't you know that our church is at odds with the inquisition? I prefer to stay clear of Father Vincento and his sidekicks.";
-			link.l1 = "I see. Father, I think I know, where from Merryman drew his power. He got a hold of an ancient artifact, a jade skull of Yum Cimil, ancient god of death worshipped by the Indians of the Chavin tribe.";
+			dialog.text = "Сын мой, разве ты не в курсе, как инквизиция относится к нашей церкви? Я предпочитаю держаться подальше от отца Винсенто и его приспешников.";
+			link.l1 = "Понятно. Святой отец, я, кажется, знаю, что придало Мерриману такую силу. Он заполучил в свои руки древний артефакт. Это нефритовый череп индейцев-чавинцев, который, по их поверьям, является артефактом их бога смерти, Юм Симиля.";
 			link.l1.go = "caleuche_6";
 		break;
 		
 		case "caleuche_6":
-			dialog.text = "Merryman was known for performing sorcerous rights and experiments on corpses, so it very well might be true. I thank God that this terrible man has left Willemstad, and you have destroyed the devilish seeds he attempted to plant there. We're indebted to you, my son. Please accept these sanctified items as your reward.";
-			link.l1 = "Thank you, Father";
+			dialog.text = "Тесная связь Мерримана с колдовскими обрядами и эксперименты над трупами позволяют предположить, что так оно и есть. Слава Богу, что этот ужасный человек покинул Виллемстад, а ты уничтожил его богомерзкие семена, которые он попытался посеять здесь. Мы в долгу перед тобой, сын мой. Возьми же в качестве награды эти освященные предметы.";
+			link.l1 = "Спасибо, святой отец.";
 			link.l1.go = "caleuche_7";
 		break;
 		
 		case "caleuche_7":
-			Log_Info("You have received church amulets");
+			Log_Info("Вы получили церковные обереги");
 			PlaySound("interface\important_item.wav");
 			GiveItem2Character(pchar, "amulet_2"); 
 			GiveItem2Character(pchar, "amulet_6"); 
 			GiveItem2Character(pchar, "amulet_8"); 
 			GiveItem2Character(pchar, "amulet_10"); 
 			ref sld = characterFromId("Havana_Priest");
-			dialog.text = "But that was not the end of our troubles, my son. Recently I have received a letter from "+sld.name+", father superior of a church in Havana. He is telling terrible news. In a cave, in the jungle of Cuba, hunters have seen frightening abominations, the walking dead. And it is all the more bothersome considering the fact that recently people have gone missing in Havana after going into the jungle on their business.";
-			link.l1 = "Hmm… You imply that this is Merryman's work, too?";
+			dialog.text = "Но беды наши на этом не закончились, сын мой. Недавно мне прислал письмо настоятель церкви Гаваны, отец "+sld.name+". Он сообщил ужасные вести. В пещере, в джунглях Кубы, охотниками были замечены жуткие существа, похожие на ходячих мертвецов. Особенно кошмарным это выглядит на фоне того, что в Гаване таинственным образом пропали люди, отправившиеся в джунгли по тем или иным делам.";
+			link.l1 = "Хм. Вы предполагаете, что это Мерриман приложил руку?";
 			if (CheckCharacterItem(pchar, "HolTradeLicence") && GetDaysContinueNationLicence(HOLLAND) >= 30) link.l1.go = "caleuche_8_1";
 			else link.l1.go = "caleuche_8";
 		break;
 		
 		case "caleuche_8":
 			sld = characterFromId("Havana_Priest");
-			dialog.text = "I don't know what to think, my son. But if that black witcher became so powerful, all inhabitants of the archipelago are in grave danger. Only God knows, what this servant of devil could have in mind.\nI do hope that Father "+sld.name+" was wrong, but anyway - please go to Havana and talk to him. I have prepared a trading license for you, which is good for a month. With it, you'll be able to enter the port of Havana without any difficulties.";
-			link.l1 = "Alright, Father. I'll head to Havana.";
+			dialog.text = "Я не знаю, что и думать, сын мой. Но если этот черный колдун стал настолько силен, что способен осуществить такие страшные вещи, то все жители архипелага находятся в большой опасности. Одному Господу известно, что задумал этот приспешник дьявола\nЯ все же надеюсь, что отец "+sld.name+" ошибся, но прошу тебя: отправься в Гавану и переговори с ним. Я приготовил торговую лицензию сроком на месяц - возьми, она поможет тебе беспрепятственно войти в порт Гаваны.";
+			link.l1 = "Хорошо, святой отец. Я отправлюсь в Гавану.";
 			link.l1.go = "caleuche_9";
 			npchar.quest.givelicence = true;
 		break;
 		
 		case "caleuche_8_1":
 			sld = characterFromId("Havana_Priest");
-			dialog.text = "I don't know what to think, my son. But if that black witcher became so powerful, all inhabitants of the archipelago are in grave danger. Only God knows, what this servant of devil could have in mind.\nI do hope that Father "+sld.name+" was wrong, but anyway - please go to Havana and talk to him.";
-			link.l1 = "Alright, Father. I'll head to Havana.";
+			dialog.text = "Я не знаю, что и думать, сын мой. Но если этот черный колдун стал настолько силен, что способен осуществить такие страшные вещи, то все жители архипелага находятся в большой опасности. Одному Господу известно, что задумал этот приспешник дьявола\nЯ все же надеюсь, что отец "+sld.name+" ошибся, но прошу тебя: отправься в Гавану и переговори с ним.";
+			link.l1 = "Хорошо, святой отец. Я отправлюсь в Гавану.";
 			link.l1.go = "caleuche_9";
 		break;
 		
 		case "caleuche_9":
-			dialog.text = "I am glad that you're a true son of the Church. I will pray for your health and well-being day and night. Go with my blessing. May the Lord strengthen you in your struggle against unholy powers.";
-			link.l1 = "Goodbye, Father.";
+			dialog.text = "Я рад, что ты оказался истинным сыном церкви, сын мой. Я буду неустанно молиться за твое здоровье и благополучие. Ступай с моим благословением. Да укрепит Господь твою руку в борьбе против нечисти.";
+			link.l1 = "До свидания, святой отец.";
 			link.l1.go = "caleuche_10";
 		break;
 		

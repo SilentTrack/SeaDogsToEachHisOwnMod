@@ -5,8 +5,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 	switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = RandPhraseSimple("What kind of questions?", "What would you like?");
-			link.l1 = RandPhraseSimple("I have changed my mind...", "I have nothing to say now.");
+            dialog.text = RandPhraseSimple("Какие вопросы?", "Что вам угодно?");
+			link.l1 = RandPhraseSimple("Я передумал...", "Сейчас мне не о чем говорить");
 		    link.l1.go = "exit";
 		break;
 		
@@ -14,8 +14,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "work_1":  // работа на благо короны - линейка нации
 			if (CheckAttribute(npchar, "notQuestLine"))
 			{
-				dialog.text = "Unfortunately I can offer you a job. You are not that type of people who I want to work with.";
-                link.l1 = "Seriously...";              
+                dialog.text = "К сожалению, я не могу предоставить вам работу. Вы не тот человек, кому я хотел бы доверить свои дела. До свидания.";
+                link.l1 = "Вот это да...";
                 link.l1.go = "exit";
 				break;
 			}            

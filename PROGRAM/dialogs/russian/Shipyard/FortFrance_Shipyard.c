@@ -4,49 +4,49 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me a question a little while ago...", "At his dock, and you know what–I've never seen such flat, curious people before in town.",
-                          "What's with all the questions? My job is to build ships. Let's take care about that.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where did my memory go...",
-                      "Hm, well...", "Go ahead...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно?"), "Совсем недавно вы пытались задать мне вопрос...", "У себя на верфи, а и вообще в городе, я таких однообразно любознательных не видал.",
+                          "Ну что за вопросы? Мое дело - корабли строить, давайте этим и займемся.", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Хм, однако...", "Давайте...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			// Addon-2016 Jason ”ЊЉ-Њартиника
+			// Addon-2016 Jason ФМК-Мартиника
 			if (CheckAttribute(pchar, "questTemp.FMQM") && pchar.questTemp.FMQM == "begin")
             {
-                link.l1 = "Your man told me that you want to see me. I am all ears.";
+                link.l1 = "Ваш человек встретил меня у пирса и сообщил, что вы желаете меня видеть. Слушаю вас внимательно.";
                 link.l1.go = "FMQM";
             }
 			if (CheckAttribute(pchar, "questTemp.FMQM") && pchar.questTemp.FMQM == "oil" && GetSquadronGoods(pchar, GOOD_OIL) >= 50)
             {
-                link.l1 = "I've done the job. "+FindRussianQtyString(GetSquadronGoods(pchar, GOOD_OIL))+" barrels of resin are inside my cargo holds.";
+                link.l1 = "Я выполнил ваше задание. Смолы в количестве "+FindRussianQtyString(GetSquadronGoods(pchar, GOOD_OIL))+" находятся у меня в трюме.";
                 link.l1.go = "FMQM_9";
             }
 		break;
 		
-		// Addon-2016 Jason ”ЊЉ-Њартиника
+		// Addon-2016 Jason ФМК-Мартиника
 		case "FMQM":
 			pchar.quest.FMQM_Denial.over = "yes";
-			dialog.text = "Yes-yes, captain "+GetFullName(pchar)+". I saw your vessel entering our port and immediately sent my worker to you. Straight to the business: you are a newcomer, but they say that you have already become a seasoned sailor and the fortune is on your side. This is why I have a business proposal to you.";
-			link.l1 = "Interesting! Go on, tell me.";
+			dialog.text = "Да-да, капитан "+GetFullName(pchar)+". Я увидел, как ваш корабль входит в порт, и сразу отправил одного из своих людей. Перейду сразу к делу: вы хоть и недавно в наших краях, но уже ходят слухи, что вы стали бывалым моряком, и вам сопутствует удача. Поэтому у меня к вам предложение.";
+			link.l1 = "Очень интересно! Ну, давайте, выкладывайте.";
 			link.l1.go = "FMQM_1";
 		break;
 		
 		case "FMQM_1":
-			dialog.text = "Have you ever heard of special resin they produce on the island of Trinidad? It is a rare resource of strategic value - used to fortify the ship hull. Every barrel costs a hefty sum because the Spanish direct all the resin for the needs of their Navy. Every colonial authority keeps a trade of this good under control, to put it simple, it's a pure contraband\nI need this resin for a special order. Of course, our store doesn't have it, same can be said about our local military warehouses or they simply didn't want to sell it. It's irrelevant really. What is relevant is that I need the resin and I know where to get some. All I need is a captain who is comfortable about boardings.";
-			link.l1 = "I think, I am starting to see your point...";
+			dialog.text = "В корабельном деле, для придания дополнительной прочности корпусу, используется смоляная пропитка древесины. Для этого применяются специальные природные смолы, которые добываются на испанском острове Тринидад. Товар дорогой и редкий, так как испанцы используют их для потребностей своего военного флота и не горят желанием делиться с кем-либо. Торговля данным товаром находится под контролем колониальных властей всех держав, проще говоря - свободный оборот под запретом\nА вот мне, для выполнения одного специального заказа, очень нужны эти смолы. Естественно, наш магазин ими не располагает, да и на военных складах их нет, или не пожелали продать - это уже неважно... Важно то, что они мне крайне необходимы - раз, и то, что я узнал, где и как их можно достать - два. Но для второго пункта требуется капитан, не страшащийся абордажных схваток.";
+			link.l1 = "Кажется, я начинаю понимать суть вашего предложения...";
 			link.l1.go = "FMQM_2";
 		break;
 		
 		case "FMQM_2":
-			dialog.text = "Splendid. There is a small trade convoy located in a harbor of Port-of-Spain. One ship is carrying a decent batch of the resin I am so in need of. I will tell more if you like the idea of plundering the enemies of our nation. What's your call?";
-			link.l1 = "I like your proposal. Ready to give it a try.";
+			dialog.text = "Прекрасно. Сейчас в порту Сан-Хосе стоит небольшой торговый конвой. В трюмах одного из кораблей будет отправлена приличная партия так нужных мне смол. Если вы не находите ничего ужасного в том, чтобы пощипать врагов нашей державы - я расскажу вам все подробности. Если нет - то и суда нет. Теперь слово за вами.";
+			link.l1 = "Предложение интересное. Я готов попытаться.";
 			link.l1.go = "FMQM_3";
-			link.l2 = "I'll pass, monsieur. My ship and my crew are not in their brightest state at the moment.";
+			link.l2 = "Пожалуй, я откажусь, месье. Мой корабль и команда сейчас не в самом лучшем состоянии.";
 			link.l2.go = "FMQM_exit";
 		break;
 		
 		case "FMQM_exit":
-			dialog.text = "You have every right to do what you want. Sorry for taking your time, captain.";
-			link.l1 = "Farewell.";
+			dialog.text = "Что же, как знаете. Это ваше право. Простите, что отнял ваше время, капитан.";
+			link.l1 = "Всего доброго.";
 			link.l1.go = "FMQM_exit_1";
 		break;
 		
@@ -58,33 +58,33 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "FMQM_3":
-			string sTemp = "barquentine";
-			if (MOD_SKILL_ENEMY_RATE < 7) sTemp = "barque";// Addon 2016-1 Jason пиратскаЯ линейка
-			dialog.text = "Then listen: the convoy of three vessels, the resin will be among other goods on a "+sTemp+" called the Benseсho. This is your target. As I've said before, the Spanish are sailing from Port-of-Spain, Trinidad, to San Juan, Puerto Rico. They will set sail tomorrow, so you are free to choose where to attack them.";
-			link.l1 = "Got it. What about a reward?";
+			string sTemp = "баркентине";
+			if (MOD_SKILL_ENEMY_RATE < 7) sTemp = "барке";// Addon 2016-1 Jason пиратская линейка
+			dialog.text = "Тогда запоминайте: конвой состоит из трех судов. Смола будет находиться среди прочих товаров на "+sTemp+" с названием 'Бенсэхо'. Это и есть ваша цель. Как я уже сказал, испанцы отправляются из Сан-Хосе, что на Тринидаде. Пункт прибытия - Сан-Хуан, это на Пуэрто-Рико. Конвой отправится в путь завтра на рассвете - так что прикиньте, где вам удобнее будет перехватить его.";
+			link.l1 = "Ясно. Что насчет оплаты?";
 			link.l1.go = "FMQM_4";
 		break;
 		
 		case "FMQM_4":
-			dialog.text = "All I am interested in is the resin. I will pay fifteen golden doubloons for every barrel of stuff. According to my information, the Bensecho carries around a hundred of barrels.";
-			link.l1 = "Holy cow! This is a big sum!..";
+			dialog.text = "Меня интересует только смола. И я заплачу по пятнадцать золотых дублонов за каждый бочонок товара. По моим сведениям, на 'Бенсэхо' не меньше сотни бочонков.";
+			link.l1 = "Ого! Это огромная сумма получается!..";
 			link.l1.go = "FMQM_5";
 		break;
 		
 		case "FMQM_5":
-			dialog.text = "Yes. I told you already that this particular merchandise is very expensive and rare.";
-			link.l1 = "You also told me that this is a contraband.";
+			dialog.text = "Да. Я говорил вам - товар редкий и дорогой.";
+			link.l1 = "Но вы также говорили и о том, что свободный оборот смолы запрещен...";
 			link.l1.go = "FMQM_6";
 		break;
 		
 		case "FMQM_6":
-			dialog.text = "Don't you worry, there will be no need for you to bring it to a store or to smugglers. Come see me when the job's done, we shall put your vessel in my shipyard for repairing and then unload all the cargo secretly at night. No one will suspect anything.";
-			link.l1 = "You think ahead, master. Very well. No wasting time them. I am on the way to set sail.";
+			dialog.text = "Не переживайте. Вы же не понесете ее в магазин или контрабандистам. После операции возвращаетесь в Сен-Пьер и ставите свое судно ко мне в доки на ремонт, вечером. По темноте, дабы не привлекать внимание плотников, двое моих верных людей перенесут всю смолу с вашего корабля в укромное место на верфи. Никто ничего не заподозрит.";
+			link.l1 = "Вы предусмотрительны, мастер. Хорошо. Тогда я не буду терять время и отправляюсь на свое судно.";
 			link.l1.go = "FMQM_7";
 		break;
 		
 		case "FMQM_7":
-			dialog.text = "Godspeed captain.";
+			dialog.text = "Желаю вам удачи, капитан.";
 			link.l1 = "...";
 			link.l1.go = "FMQM_8";
 		break;
@@ -97,8 +97,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "FMQM_9":
-			dialog.text = "Excellent! Let's put your ship in docks as we agreed before. We shall unload her there tonight. Get back to you ship and let me prepare the coin for you.";
-			link.l1 = "Let's do this.";
+			dialog.text = "Превосходно! Давайте поставим ваше судно в доки, а в сумерки займемся разгрузкой, как и договаривались. Вы отправляйтесь на корабль, а я пока соберу монеты и подготовлю вашу награду.";
+			link.l1 = "Так и поступим.";
 			link.l1.go = "FMQM_10";
 		break;
 		
@@ -118,4 +118,5 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 	}
 	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
 }
+
 

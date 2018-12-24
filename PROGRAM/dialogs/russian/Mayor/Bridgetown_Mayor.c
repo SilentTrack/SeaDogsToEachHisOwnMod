@@ -4,22 +4,22 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What do you want? Ask away.", "I am listening to you, what's the question?"), "It is the second time you are trying to ask...", "It is the third time you are again trying to ask...",
-                          "When is it going to end?! I am a busy man, working on the colony's matters and you are still trying to ask something!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Not now. There is no time."), "True... But later, not now...",
-                      "I'll ask, I'll ask... a bit later though...", "I am sorry, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);			  
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Что вы хотели? Спрашивайте.", "Я слушаю вас, что за вопрос?"), "Второй раз за день вы пытаетесь задать ворпос...", "В третий раз за день вы опять пытаетесь задать вопрос...",
+                          "Да когда же это кончится?! У меня дел полно по управлению делами города, а ты все вопросы пытаешься задать!", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал"+ GetSexPhrase("","а") +"...", "Не сейчас, не место и не время..."), "Да, верно... Но не сейчас, позже...",
+                      "Задам, задам... Только позже...", "Извините, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			//Голландский гамбит
 			if (CheckAttribute(pchar, "questTemp.HWIC.Eng") && pchar.questTemp.HWIC.Eng == "GotoBridgetown" && !CheckAttribute(npchar, "quest.HWICTalked"))
             {
-                link.l1 = "I have had a profitable deal on Martinique and I am planning to sail to Blueweld. I want to buy redwood and coffee in your colony. Besides, my brig can't hold that much cargo which I am willing to buy, so I need to get a flute from your shipyard.";
+                link.l1 = "Я совершил на Мартинике выгодную сделку, и сейчас в мои планы входит отправиться в Блювельд. Я намерен закупить в вашей колонии красное дерево и кофе. Кроме того, моего брига недостаточно для партии товара, которую я хочу купить - мне нужно приобрести на вашей верфи флейт. Вы не могли бы оказать мне содействие в этих вопросах?";
                 link.l1.go = "MayorDone";
             }
 		break;
 		
 		case "MayorDone":
-			dialog.text = "My assistance? Our trader is a very honest man, so I doubt that he will attempt to fool you. Talk to the shipmaster about the flute, he will help you with this matter. And if you will have troubles anyway, then come see me. I am interested in advance of trade connections with our colony and I will show you all my support\nYes, I am arranging an entertainment tonight at my place, all Bridgetown's brightest will attend. You should come too, captain.";
-			link.l1 = "Thanks for your invitation but unfortunately I am too busy. Farewell and thanks for your agency!";
+			dialog.text = "Мое содействие? Наш купец - весьма честный человек, я не думаю, что он будет пытаться вас обжулить. Что касается флейта - поговорите с хозяином верфи, думаю, он сможет вам помочь. Ну, а если все-таки у вас возникнут проблемы - тогда приходите ко мне. Я заинтересован в развитии торговых связей с нашей колонией и окажу вам свою поддержку\nДа, я сегодня вечером организую званый вечер, будут все сливки Бриджтауна. Приходите  и вы, капитан.";
+			link.l1 = "Благодарю за приглашение, но у меня, к сожалению, не получится - очень много дел. До свидания и спасибо за поручительство!";
 			link.l1.go = "exit";	
 			npchar.quest.HWICTalked = "true";
 			pchar.questTemp.HWIC.Eng.BridgeCounter = sti(pchar.questTemp.HWIC.Eng.BridgeCounter)+1;

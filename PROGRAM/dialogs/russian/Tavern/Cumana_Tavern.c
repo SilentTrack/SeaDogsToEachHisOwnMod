@@ -4,22 +4,22 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat("All the rumors of "+ GetCityName(npchar.city) +" at your service. What would you like to find out?",
-                          "We were just talking about that. You must have forgotten...", "This is the third time today you're talking about some question...",
-                          "you're harping like a parrot the same...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("You know, " + NPChar.name + ", maybe next time.", "Right, I've forgotten for some reason...",
-                      "Yes, it really is the third time...", "Yep...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat("Все сплетни города "+ GetCityName(npchar.city) +" к вашим услугам. Что бы вы хотели узнать?",
+                          "Мы только что поднимали это тему. Вы, вероятно, запамятовали...", "Сегодня вы уже третий раз говорите о каком-то вопросе...",
+                          "Что ты "+ GetSexPhrase("заладил","заладила") +" как попугай одно и то же...", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Знаешь, " + NPChar.name + ", как-нибудь в следующий раз.", "Точно, "+ GetSexPhrase("забыл","забыла") +" что-то...",
+                      "Да уж, действительно в третий раз...", "Да уж...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "utensil" && !CheckAttribute(npchar, "quest.utensil"))
 			{
-				link.l1 = "Tell me, where can I find Seniora Belinda de Ribero?";
+				link.l1 = "Скажи, где я могу найти сеньору Белинду де Риберо?";
                 link.l1.go = "guardoftruth";
 			}
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "In the governor's palace, of course. She's on of Don Fernando de Villegas. You can look for her there after noon during a siesta –she usually has business to attend to in the mornings. She's into some trouble right now, so keep that in mind. But she won't mind speaking with you. Donna Belinda is a good woman.";
-			link.l1 = "Thank you!";
+			dialog.text = "В губернаторском дворце, конечно. Она же родственница дона Фернандо де Вильегаса. Ищи ее там после полудня во время сиесты - по утрам она обычно уходит по делам. Сейчас у нее какие-то неприятности, так что имей в виду. Но от разговора с тобой она не откажется - донна Белинда хорошая женщина.";
+			link.l1 = "Спасибо!";
 			link.l1.go = "guardoftruth_1";
 		break;
 		
@@ -30,8 +30,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			// ставим Белинду
 			sld = GetCharacter(NPC_GenerateCharacter("GOT_Belinda", "Belinda", "woman", "towngirl", 3, SPAIN, -1, true, "quest"));
 			SetFantomParamFromRank(sld, 3, true);
-			sld.name = "Belinda";
-			sld.lastname = "de Ribero";
+			sld.name = "Белинда";
+			sld.lastname = "де Риберо";
 			sld.dialog.FileName = "Quest\Sharlie\guardoftruth.c";
 			sld.dialog.currentnode = "belinda";
 			sld.greeting = "noble_female";

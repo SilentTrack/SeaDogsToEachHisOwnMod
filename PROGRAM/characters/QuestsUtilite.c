@@ -243,7 +243,7 @@ void FillQuestHoldBox(ref _location)
 	{
 		if(nShipType == sti(pchar.GenQuest.CaptainComission.ShipType) && !CheckAttribute(pchar,"GenQuest.CaptainComission.Treasure"))
 		{
-			Log_QuestInfo("Set chests");
+			Log_QuestInfo("Устанавливаем сундуки");
 			DeleteAttribute(_location, "box1");
 			_location.box1.items.chest = 3;
 			pchar.GenQuest.CaptainComission.Treasure = true;
@@ -269,7 +269,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 	// заготовка под квест
 
 	// маленькая пасхалка от меня -> ugeen  17.06.09
-	if (CheckAttribute(_npchar, "Ship.Name") && _npchar.Ship.Name == "Wheel of Fortune" )
+	if (CheckAttribute(_npchar, "Ship.Name") && _npchar.Ship.Name == "Кoлecо Фoртуны" )
 	{
 		DeleteAttribute(_location, "box1");
 		if(drand(100) > 85)
@@ -1496,9 +1496,9 @@ string NPCStringReactionRepeat(string _strNormal, string _strBad1, string _strBa
         case "1":
             if (_strBad1 == "none" || _strBad1 == "")
             {
-                strBack = LinkRandPhrase("I don't want to discuss same things over and over again.",
-                          "We have already had this discussion.",
-                          "We talked this through already.");
+                strBack = LinkRandPhrase("Я не хочу говорить об одном и том же по нескольку раз.",
+                          "Мы уже говорили об этом.",
+                          "Эту тему мы уже обсуждали.");
             }
             else
             {
@@ -1510,9 +1510,9 @@ string NPCStringReactionRepeat(string _strNormal, string _strBad1, string _strBa
         case "2":
             if (_strBad2 == "none" || _strBad2 == "")
             {
-                strBack = LinkRandPhrase("I repeat, I do not want to talk about same topic over and over again.",
-                          "I said, there is nothing more to discuss!",
-                          "I am telling you that we talked this through already. Memory problems?");
+                strBack = LinkRandPhrase("Еще раз повторяю, что я не хочу говорить об одном и том же по десять раз!",
+                          "Повторяю, мы уже говорили об этом!",
+                          "Я же говорю, мы это уже обсуждали. Проблемы с памятью?");
             }
             else
             {
@@ -1524,9 +1524,9 @@ string NPCStringReactionRepeat(string _strNormal, string _strBad1, string _strBa
         case "3":
             if (_strBad3 == "none" || _strBad3 == "")
             {
-                strBack = LinkRandPhrase("I don't want to talk to you again.",
-                          "I will not speak to you ever again!",
-                          "Now I am angry as hell, get lost.");
+                strBack = LinkRandPhrase("Я не намерен более с вами общаться.",
+                          "Не буду с тобой больше разговаривать!",
+                          "Ты меня порядком разозлил"+ GetSexPhrase("","а") +", никакого общения более.");
             }
             else
             {
@@ -1567,9 +1567,9 @@ string HeroStringReactionRepeat(string _strNormal, string _strBad1, string _strB
         case "1":
             if (_strBad1 == "none" || _strBad1 == "")
             {
-                strBack = LinkRandPhrase("Fine, pal.",
-                          "Whatever you say.",
-                          "Sorry, my bad...");
+                strBack = LinkRandPhrase("Хорошо, приятель.",
+                          "Как скажешь.",
+                          "Не то ляпнул"+ GetSexPhrase("","а") +", извини...");
             }
             else
             {
@@ -1579,9 +1579,9 @@ string HeroStringReactionRepeat(string _strNormal, string _strBad1, string _strB
         case "2":
             if (_strBad2 == "none" || _strBad2 == "")
             {
-                strBack = LinkRandPhrase("Fine, fine. Calm down.",
-                          "As you say, just stop roaring at me.",
-                          "Pardon me, suffering from terrible headache...");
+                strBack = LinkRandPhrase("Хорошо, хорошо. Только не кипятись.",
+                          "Как скажешь, только не надо кричать.",
+                          "Извини, что-то я сегодня не в форме... Голова с утра раскалывается...");
             }
             else
             {
@@ -1591,9 +1591,9 @@ string HeroStringReactionRepeat(string _strNormal, string _strBad1, string _strB
         case "3":
             if (_strBad3 == "none" || _strBad3 == "")
             {
-                strBack = LinkRandPhrase("Whatever.",
-                          "Pity...",
-                          "What a shame.");
+                strBack = LinkRandPhrase("Как знаешь.",
+                          "Очень жаль...",
+                          "Невелика потеря.");
             }
             else
             {
@@ -2429,8 +2429,8 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 //--------------------------------штаб-квартира ГВИК в Виллемстаде--------------------------------------
 	//Лукас Роденбург
 	sld = GetCharacter(NPC_GenerateCharacter("Lucas", "Lucas", "man", "man", 30, HOLLAND, -1, false, "quest"));
-	sld.name = "Lucas";
-	sld.lastname = "Rodenburg";
+	sld.name = "Лукас";
+	sld.lastname = "Роденбург";
 	sld.greeting = "rodenburg_1";
 	sld.rank = 30;
 	LAi_SetHP(sld, 350, 350);
@@ -2476,8 +2476,8 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 //----------------------------------------Дом Соломона и Абигайль Шнеур-------------------------------------
 	//Абигайль
 	sld = GetCharacter(NPC_GenerateCharacter("Abigile", "Aby", "woman", "woman_A2", 10, HOLLAND, -1, false, "quest"));
-	sld.name = "Abigail";
-	sld.lastname = "Shneur";
+	sld.name = "Абигайль";
+	sld.lastname = "Шнеур";
 	sld.greeting = "abigile_1";
 	sld.rank = 5;
 	SetSelfSkill(sld, 5, 5, 5, 5, 5);
@@ -2492,8 +2492,8 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
  	LAi_group_MoveCharacter(sld, "HOLLAND_CITIZENS");
 	//Соломон
 	sld = GetCharacter(NPC_GenerateCharacter("Solomon", "Solomon", "man", "man_B", 10, HOLLAND, -1, false, "quest"));
-	sld.name = "Solomon";
-	sld.lastname = "Shneur";
+	sld.name = "Соломон";
+	sld.lastname = "Шнеур";
 	sld.greeting = "solomon_1";
 	sld.rank = 10;
 	sld.Dialog.Filename = "Quest\HollandGambit\Solomon.c";
@@ -2509,8 +2509,8 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 //-----------------------------------------аптека мистера Мердока-------------------------------------------
 	//Джон Мердок
 	sld = GetCharacter(NPC_GenerateCharacter("Merdok", "Merdok", "man", "man", 30, ENGLAND, -1, false, "quest"));
-	sld.name = "John";
-	sld.lastname = "Murdock";
+	sld.name = "Джон";
+	sld.lastname = "Мердок";
 	sld.greeting = "merdok_1";
 	sld.rank = 30;
 	LAi_SetHP(sld, 350, 350);
@@ -2531,8 +2531,8 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 	LocatorReloadEnterDisable("SentJons_HouseF3", "reload2", true);//подземелье закроем до поры
 	//Джино Гвинейли
 	sld = GetCharacter(NPC_GenerateCharacter("Jino", "Gino", "man", "man", 20, ENGLAND, -1, false, "quest"));
-	sld.name = "Gino";
-	sld.lastname = "Gvineili";
+	sld.name = "Джино";
+	sld.lastname = "Гвинейли";
 	sld.greeting = "Jino";
 	sld.rank = 20;
 	LAi_SetHP(sld, 150, 150);
@@ -2549,8 +2549,8 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 //------------------------------------хижина Чарли Книппеля-------------------------------------------
 	//Чарли Книппель
 	sld = GetCharacter(NPC_GenerateCharacter("Knippel", "Kneepel", "man", "man_B", 20, ENGLAND, -1, false, "quest"));
-	sld.name = "Charlie";
-	sld.lastname = "Knippel";
+	sld.name = "Чарли";
+	sld.lastname = "Книппель";
 	sld.greeting = "knippel_1";
 	sld.CompanionDisable = true;
 	sld.rank = 20;
@@ -2584,8 +2584,8 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 //----------------прочие персонажи - расстановка в зависимости от варианта квеста в разных местах-----------
 	//Ричард Флитвуд
 	sld = GetCharacter(NPC_GenerateCharacter("Fleetwood", "Fleetwood", "man", "man", 20, ENGLAND, -1, true, "quest"));
-	sld.name = "Richard";
-	sld.lastname = "Fleetwood";
+	sld.name = "Ричард";
+	sld.lastname = "Флитвуд";
 	sld.greeting = "fleetwood_1";
 	sld.rank = 30;
 	LAi_SetHP(sld, 300, 300);
@@ -2609,8 +2609,8 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 	
 	//Якоб ван Берг
 	sld = GetCharacter(NPC_GenerateCharacter("JacobBerg", "VanBerg", "man", "man", 35, PIRATE, -1, false, "quest"));
-	sld.name = "Jacob";
-	sld.lastname = "van Berg";
+	sld.name = "Якоб";
+	sld.lastname = "ван Берг";
 	sld.greeting = "JacobBerg";
 	sld.Dialog.Filename = "Quest\HollandGambit\JacobBerg.c";
 	sld.dialog.currentnode = "First time";
@@ -2622,7 +2622,7 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 	
 	//Лонгвэй
 	sld = GetCharacter(NPC_GenerateCharacter("Longway", "Longway", "man", "man", 20, HOLLAND, -1, false, "quest"));
-	sld.name = "Longway";
+	sld.name = "Лонгвэй";
 	sld.lastname = "";
 	sld.greeting = "Longway";
     sld.Dialog.Filename = "Quest\HollandGambit\Longway.c";
@@ -2652,8 +2652,8 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 	
 	//Жоаким Мерриман
 	sld = GetCharacter(NPC_GenerateCharacter("Joakim", "Meriman_1", "man", "man_B", 25, HOLLAND, -1, false, "quest"));
-	sld.name = "Joachim";
-	sld.lastname = "Merriman";
+	sld.name = "Жоаким";
+	sld.lastname = "Мерриман";
 	sld.greeting = "Joakim";
     sld.Dialog.Filename = "Quest\HollandGambit\Joakim.c";
 	sld.dialog.currentnode = "First time";
@@ -2669,8 +2669,8 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 	
 	//Эркюль Тонзаг
 	sld = GetCharacter(NPC_GenerateCharacter("Tonzag", "Tonzag", "man", "man", 30, ENGLAND, -1, false, "quest"));
-	sld.name = "Hercule";
-	sld.lastname = "Tonzag";
+	sld.name = "Эркюль";
+	sld.lastname = "Тонзаг";
 	sld.greeting = "tonzag_2";
 	sld.Dialog.Filename = "Quest\HollandGambit\Tonzag.c";
 	sld.dialog.currentnode = "First time";
@@ -2708,8 +2708,8 @@ void SharlieNpcInit()//создаем всех ключевых персонажей по квестам Бремя Гасконц
 	string sBlade;
 	//Мишель де Монпе
 	sld = GetCharacter(NPC_GenerateCharacter("Mishelle", "Migel_1", "man", "man", 60, FRANCE, -1, false, "quest"));
-	sld.name = "Michel";
-	sld.lastname = "de Monper";
+	sld.name = "Мишель";
+	sld.lastname = "де Монпе";
 	sld.greeting = "Mishelle_1";
     sld.Dialog.Filename = "Quest\Sharlie\Mishelle.c";
 	sld.dialog.currentnode = "First time";
@@ -2726,9 +2726,9 @@ void SharlieNpcInit()//создаем всех ключевых персонажей по квестам Бремя Гасконц
 	
 	//аббат Бенуа
 	sld = GetCharacter(NPC_GenerateCharacter("Benua", "abbat", "man", "man_B", 20, FRANCE, -1, false, "quest"));
-	sld.name = "abbot";
-	sld.lastname = "Benoit";
-	sld.greeting = "padre_1";
+	sld.name = "аббат";
+	sld.lastname = "Бенуа";
+	sld.greeting = "Gr_Church";
     sld.Dialog.Filename = "Quest\Sharlie\Benua.c";
 	sld.dialog.currentnode = "First time";
 	sld.rank = 25;
@@ -2744,7 +2744,7 @@ void SharlieNpcInit()//создаем всех ключевых персонажей по квестам Бремя Гасконц
 	
 	//Фадей Московит
 	sld = GetCharacter(NPC_GenerateCharacter("Fadey", "moscovit", "man", "moscovit", 30, FRANCE, -1, false, "quest"));
-	sld.name = "Fadey";
+	sld.name = "Фадей";
 	sld.lastname = "";
 	sld.greeting = "fadey";
 	sld.location = "BasTer_houseSp1";
@@ -2764,8 +2764,8 @@ void SharlieNpcInit()//создаем всех ключевых персонажей по квестам Бремя Гасконц
 	
 	// Диего де Монтойя
 	sld = GetCharacter(NPC_GenerateCharacter("Diego", "diego_6", "man", "man_A", 1, SPAIN, -1, false, "quest"));
-	sld.name = "Diego";
-	sld.lastname = "de Montoya";
+	sld.name = "Диего";
+	sld.lastname = "де Монтойя";
 	sld.greeting = "";
 	sld.FaceId = 203;
     sld.Dialog.Filename = "Quest\Sharlie\Diego.c";
@@ -2817,8 +2817,8 @@ void SharlieNpcInit()//создаем всех ключевых персонажей по квестам Бремя Гасконц
 	
 	// Алонсо де Мальдонадо
 	sld = GetCharacter(NPC_GenerateCharacter("Maldonado", "Alonso", "man", "man", 1, SPAIN, -1, false, "quest"));
-	sld.name = "Alonso";
-	sld.lastname = "de Maldonado";
+	sld.name = "Алонсо";
+	sld.lastname = "де Мальдонадо";
 	sld.greeting = "alonso";
     sld.Dialog.Filename = "Quest\Sharlie\Maldonado.c";
 	sld.dialog.currentnode = "First time";
@@ -2862,8 +2862,8 @@ void SharlieNpcInit()//создаем всех ключевых персонажей по квестам Бремя Гасконц
 	
 	// Вильям Патерсон
 	sld = GetCharacter(NPC_GenerateCharacter("Willy", "willy_6", "man", "man_A", 1, ENGLAND, -1, false, "quest"));
-	sld.name = "William";
-	sld.lastname = "Patterson";
+	sld.name = "Вильям";
+	sld.lastname = "Патерсон";
 	sld.greeting = "";
     sld.Dialog.Filename = "Quest\Sharlie\Willy.c";
 	sld.dialog.currentnode = "First time";
@@ -2916,8 +2916,8 @@ void SharlieNpcInit()//создаем всех ключевых персонажей по квестам Бремя Гасконц
 	
 	// Арчибальд Колхаун
 	sld = GetCharacter(NPC_GenerateCharacter("Archy", "archy", "man", "man", 1, ENGLAND, -1, false, "quest"));
-	sld.name = "Archibald";
-	sld.lastname = "Colhaun";
+	sld.name = "Арчибальд";
+	sld.lastname = "Колхаун";
 	sld.greeting = "Archy";
     sld.Dialog.Filename = "Quest\Sharlie\Archy.c";
 	sld.dialog.currentnode = "First time";
@@ -2964,8 +2964,8 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 {
 	//Ян Свенсон, Блювельд
 	sld = GetCharacter(NPC_GenerateCharacter("Svenson", "Svenson", "man", "man", 1, ENGLAND, -1, false, "quest"));
-	sld.name = "Jan";
-	sld.lastname = "Svensson";
+	sld.name = "Ян";
+	sld.lastname = "Свенсон";
 	sld.greeting = "svenson_1";
     sld.Dialog.Filename = "Quest\Saga\Svenson.c";
 	sld.dialog.currentnode = "First time";
@@ -3018,8 +3018,8 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	
 	//жена Яна Свенсона - просто антураж дома
 	sld = GetCharacter(NPC_GenerateCharacter("JS_girl", "Svenson_wife", "woman", "towngirl", 10, ENGLAND, -1, false, "quest"));
-	sld.name = "Joanna";
-	sld.lastname = "Svensson";
+	sld.name = "Джоанна";
+	sld.lastname = "Свенсон";
 	sld.greeting = "joanna";
     sld.Dialog.Filename = "Quest\Saga\OtherNPC.c";
 	sld.dialog.currentnode = "js_girl";
@@ -3033,8 +3033,8 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	//Натаниэль Хоук
 	sld = GetCharacter(NPC_GenerateCharacter("Nathaniel", "Hawk_1", "man", "man_B", 25, PIRATE, -1, false, "quest"));
 	SetFantomParamFromRank(sld, 25, true);
-	sld.name = "Nathaniel";
-	sld.lastname = "Hawk";
+	sld.name = "Натаниэль";
+	sld.lastname = "Хоук";
 	sld.greeting = "Nathaniel";
     sld.Dialog.Filename = "Quest\Saga\Nathaniel.c";
 	sld.dialog.currentnode = "First time";
@@ -3055,8 +3055,8 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	
 	//Даниэль Хоук ... Данни, Данни...
 	sld = GetCharacter(NPC_GenerateCharacter("Danielle", "Danny", "woman", "danny", 1, ENGLAND, -1, false, "quest"));
-	sld.name = "Danielle";
-	sld.lastname = "Hawk";
+	sld.name = "Даниэль";
+	sld.lastname = "Хоук";
 	sld.greeting = "Danny";
     sld.Dialog.Filename = "Quest\Saga\Danielle.c";
 	sld.dialog.currentnode = "First time";
@@ -3093,8 +3093,8 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 
 	//Эдвард Дойли
 	sld = GetCharacter(NPC_GenerateCharacter("Doylie", "citiz_6", "man", "man", 35, ENGLAND, -1, false, "quest"));
-	sld.name = "Eduard";
-	sld.lastname = "Doylie";
+	sld.name = "Эдвард";
+	sld.lastname = "Дойли";
 	//sld.greeting = "";
     sld.Dialog.Filename = "Quest\Saga\Doylie.c";
 	sld.dialog.currentnode = "First time";
@@ -3110,8 +3110,8 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	
 	//Лоуренс Белтроп
 	sld = GetCharacter(NPC_GenerateCharacter("Beltrop", "Balthrop", "man", "balthrop", 35, PIRATE, -1, false, "quest"));
-	sld.name = "Lawrence";
-	sld.lastname = "Beltrop";
+	sld.name = "Лоуренс";
+	sld.lastname = "Белтроп";
 	sld.greeting = "Beltrop";
     sld.Dialog.Filename = "Quest\Saga\Beltrop.c";
 	sld.dialog.currentnode = "First time";
@@ -3127,8 +3127,8 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	
 	//Глэдис
 	sld = GetCharacter(NPC_GenerateCharacter("Gladis", "Gladys", "woman", "woman", 10, ENGLAND, -1, false, "quest"));
-	sld.name = "Gladys";
-	sld.lastname = "McArthur";
+	sld.name = "Глэдис";
+	sld.lastname = "Мак Артур";
 	sld.greeting = "gladis_1";
     sld.Dialog.Filename = "Quest\Saga\Gladis.c";
 	sld.dialog.currentnode = "First time";
@@ -3138,8 +3138,8 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	
 	//Элен
 	sld = GetCharacter(NPC_GenerateCharacter("Helena", "Rumba", "woman", "rumba", 1, ENGLAND, -1, false, "quest"));
-	sld.name = "Helen";
-	sld.lastname = "McArthur";
+	sld.name = "Элен";
+	sld.lastname = "Мак Артур";
 	sld.Dialog.Filename = "Quest\Saga\Helena.c";
 	sld.dialog.currentnode = "First time";
 	sld.greeting = "helena_1";
@@ -3177,8 +3177,8 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	//Хосе Диос - картограф
 	sld = GetCharacter(NPC_GenerateCharacter("Dios", "Dios", "man", "man_B", 16, SPAIN, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 16, true);
-	sld.name = " Jose";
-	sld.lastname = "Dios";
+	sld.name = "Хосе";
+	sld.lastname = "Диос";
 	sld.greeting = "Dios";
     sld.Dialog.Filename = "Quest\Saga\Dios.c";
 	sld.dialog.currentnode = "First time";
@@ -3194,8 +3194,8 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	//Альберт Локсли - адвокат
 	sld = GetCharacter(NPC_GenerateCharacter("Loxly", "advocat", "man", "man", 20, ENGLAND, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 20, true);
-	sld.name = " Albert";
-	sld.lastname = "Loxley";
+	sld.name = "Альберт";
+	sld.lastname = "Локсли";
 	sld.greeting = "Loxly";
     sld.Dialog.Filename = "Quest\Saga\Loxly.c";
 	sld.dialog.currentnode = "First time";
@@ -3213,8 +3213,8 @@ void LSC_NpcInit()// ключевые НПС LSC
 {
 	//Акула Додсон
 	sld = GetCharacter(NPC_GenerateCharacter("Dodson", "Shark", "man", "man", 1, PIRATE, -1, false, "quest"));
-	sld.name = "Steven";
-	sld.lastname = "Dodson";
+	sld.name = "Стивен";
+	sld.lastname = "Додсон";
 	sld.greeting = "dodson_1";
     sld.Dialog.Filename = "Quest\LSC\Dodson.c";
 	sld.dialog.currentnode = "First time";
@@ -3257,8 +3257,8 @@ void LSC_NpcInit()// ключевые НПС LSC
 
 	// Чад Каппер
 	sld = GetCharacter(NPC_GenerateCharacter("Capper", "Chad", "man", "man", 1, PIRATE, -1, false, "quest"));
-	sld.name = "Chad";
-	sld.lastname = "Kapper";
+	sld.name = "Чад";
+	sld.lastname = "Каппер";
 	sld.greeting = "Capper";
     sld.Dialog.Filename = "Quest\LSC\Capper.c";
 	sld.rank = 30;
@@ -3298,8 +3298,8 @@ void LSC_NpcInit()// ключевые НПС LSC
 	
 	//Лейтон Декстер
 	sld = GetCharacter(NPC_GenerateCharacter("Dexter", "Dexter", "man", "man", 1, PIRATE, -1, false, "quest"));
-	sld.name = "Layton";
-	sld.lastname = "Dexter";
+	sld.name = "Лейтон";
+	sld.lastname = "Декстер";
 	sld.greeting = "dexter_1";
     sld.Dialog.Filename = "Quest\LSC\Dexter.c";
 	sld.dialog.currentnode = "First time";
@@ -3337,8 +3337,8 @@ void LSC_NpcInit()// ключевые НПС LSC
 	
 	// Черный Эдди
 	sld = GetCharacter(NPC_GenerateCharacter("Eddy", "Black", "man", "man", 1, PIRATE, -1, false, "quest"));
-	sld.name = "Eduard";
-	sld.lastname = "Black";
+	sld.name = "Эдвард";
+	sld.lastname = "Блэк";
 	sld.greeting = "eddy_1";
     sld.Dialog.Filename = "Quest\LSC\Eddy_Rivados.c";
 	sld.rank = 28;
@@ -3372,7 +3372,7 @@ void LSC_NpcInit()// ключевые НПС LSC
 	
 	// колдун ривадос Чимисет
 	sld = GetCharacter(NPC_GenerateCharacter("Chimiset", "Chimiset2", "man", "man_A1", 1, PIRATE, -1, false, "quest"));
-	sld.name = "Chimiset";
+	sld.name = "Чимисет";
 	sld.lastname = "";
 	sld.greeting = "Chimiset";
     sld.Dialog.Filename = "Quest\LSC\Chimiset.c";
@@ -3393,7 +3393,7 @@ void LSC_NpcInit()// ключевые НПС LSC
 	
 	// Зикомо
 	sld = GetCharacter(NPC_GenerateCharacter("Zikomo", "Zikomo", "man", "man", 1, PIRATE, -1, false, "quest"));
-	sld.name = "Zicomo";
+	sld.name = "Зикомо";
 	sld.lastname = "";
 	sld.greeting = "Zikomo";
     sld.Dialog.Filename = "Quest\LSC\Zikomo.c";
@@ -3428,8 +3428,8 @@ void LSC_NpcInit()// ключевые НПС LSC
 	
 	// Джузеппе Фацио - посредник
 	sld = GetCharacter(NPC_GenerateCharacter("Facio", "Facio", "man", "man_B", 1, PIRATE, -1, false, "quest"));
-	sld.name = "Giuseppe";
-	sld.lastname = "Fazio";
+	sld.name = "Джузеппе";
+	sld.lastname = "Фацио";
 	sld.greeting = "facio_1";
     sld.Dialog.Filename = "Quest\LSC\Facio.c";
 	sld.city = "LostShipsCity";
@@ -3459,8 +3459,8 @@ void LSC_NpcInit()// ключевые НПС LSC
 	
 	// Аксель Йост - торговец
 	sld = GetCharacter(NPC_GenerateCharacter("Axel", "Axel", "man", "man", 1, PIRATE, -1, false, "quest"));
-	sld.name = "Axel";
-	sld.lastname = "Yost";
+	sld.name = "Аксель";
+	sld.lastname = "Йост";
 	sld.greeting = "Axel";
     sld.Dialog.Filename = "Quest\LSC\Axel.c";
 	sld.city = "LostShipsCity";
@@ -3492,8 +3492,8 @@ void LSC_NpcInit()// ключевые НПС LSC
 	
 	// Санчо Карпентеро - бармен ...Санчо Панса...
 	sld = GetCharacter(NPC_GenerateCharacter("Carpentero", "Carpentero", "man", "man", 1, PIRATE, -1, false, "quest"));
-	sld.name = "Sancho";
-	sld.lastname = "Carpentero";
+	sld.name = "Санчо";
+	sld.lastname = "Карпентеро";
 	sld.greeting = "Carpentero";
     sld.Dialog.Filename = "Quest\LSC\Carpentero.c";
 	sld.city = "LostShipsCity";
@@ -3516,8 +3516,8 @@ void LSC_NpcInit()// ключевые НПС LSC
 	
 	// брат Юлиан - священник
 	sld = GetCharacter(NPC_GenerateCharacter("Julian", "priest_1", "man", "man", 1, PIRATE, -1, false, "quest"));
-	sld.name = "brother";
-	sld.lastname = "Julian";
+	sld.name = "брат";
+	sld.lastname = "Юлиан";
 	sld.greeting = "padre_1";
     sld.Dialog.Filename = "Quest\LSC\Julian_priest.c";
 	sld.city = "LostShipsCity";
@@ -3540,8 +3540,8 @@ void LSC_NpcInit()// ключевые НПС LSC
 	
 	// Мэри Каспер ... Мэри... никому теперь не верит Мэри... лучшей подруги и любовницы для ГГ не будет :)
 	sld = GetCharacter(NPC_GenerateCharacter("Mary", "Mary", "woman", "mary", 1, PIRATE, -1, false, "quest"));
-	sld.name = "Mary";
-	sld.lastname = "Casper";
+	sld.name = "Мэри";
+	sld.lastname = "Каспер";
 	sld.Dialog.Filename = "Quest\LSC\Mary.c";
 	sld.dialog.currentnode = "First time";
 	sld.greeting = ""; // установим по нужным местам
@@ -3581,8 +3581,8 @@ void LSC_NpcInit()// ключевые НПС LSC
 	
 	// Хенрик Ведекер - механик
 	sld = GetCharacter(NPC_GenerateCharacter("Mechanic", "Mechanic", "man", "man", 1, PIRATE, -1, false, "quest"));
-	sld.name = "Henrick";
-	sld.lastname = "Vedecker";
+	sld.name = "Хенрик";
+	sld.lastname = "Ведекер";
 	sld.greeting = "Mechanic";
     sld.Dialog.Filename = "Quest\LSC\Mechanic.c";
 	sld.rank = 25;
@@ -3602,8 +3602,8 @@ void LSC_NpcInit()// ключевые НПС LSC
 	
 	// Юрген Шмидт - оружейник
 	sld = GetCharacter(NPC_GenerateCharacter("Schmidt", "Schmidt", "man", "man", 1, PIRATE, -1, false, "quest"));
-	sld.name = "Jurgen";
-	sld.lastname = "Schmidt";
+	sld.name = "Юрген";
+	sld.lastname = "Шмидт";
 	sld.greeting = "Schmidt";
     sld.Dialog.Filename = "Quest\LSC\Schmidt.c";
 	sld.rank = 28;
@@ -3623,8 +3623,8 @@ void LSC_NpcInit()// ключевые НПС LSC
 	
 	//Дональд Гринспи - лидер нарвалов
 	sld = GetCharacter(NPC_GenerateCharacter("Grinspy", "Donald", "man", "man", 1, PIRATE, -1, false, "quest"));
-	sld.name = "Donald";
-	sld.lastname = "Greenspen";
+	sld.name = "Дональд";
+	sld.lastname = "Гринспи";
 	sld.greeting = "Grinspy";
     sld.Dialog.Filename = "Quest\LSC\Grinspy_Narval.c";
 	sld.dialog.currentnode = "First time";
@@ -3662,8 +3662,8 @@ void LSC_NpcInit()// ключевые НПС LSC
 	
 	// Оле Кристиансен - Белый Мальчик ...Оле...оле-оле-оле... :)
 	sld = GetCharacter(NPC_GenerateCharacter("Ole", "Ole", "man", "man", 1, PIRATE, -1, false, "quest"));
-	sld.name = "Ole";
-	sld.lastname = "Christiansen";
+	sld.name = "Оле";
+	sld.lastname = "Кристиансен";
 	sld.greeting = "Ole";
     sld.Dialog.Filename = "Quest\LSC\Ole.c";
 	sld.rank = 10;
@@ -3677,9 +3677,9 @@ void LSC_NpcInit()// ключевые НПС LSC
 	LAi_SetImmortal(sld, true); // ключевой персонаж
 	LAi_group_MoveCharacter(sld, "LSC_CITIZEN");
 	
-	// Циклоп Марчелло ...Циклопус... или Суслопас :)
+	// Циклоп Марчелло ...Циклопус... или Суслопус :)
 	sld = GetCharacter(NPC_GenerateCharacter("Marchello", "Cyclop", "man", "man", 15, PIRATE, -1, false, "quest"));
-	sld.name = "Marcello";
+	sld.name = "Марчелло";
 	sld.lastname = "";
 	sld.greeting = "Marchello";
     sld.Dialog.Filename = "Quest\LSC\OtherNPC.c";
@@ -3700,8 +3700,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// внешний горожанин Дугал Эбботт - дворянин
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Dugal", "citiz_3", "man", "man", 25, PIRATE, -1, true, "soldier"));
 	SetFantomParamFromRank(sld, 25, true);
-	sld.name = "Dougall";
-	sld.lastname = "Abbot";
+	sld.name = "Дугал";
+	sld.lastname = "Эбботт";
 	sld.city = "LostShipsCity";
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
@@ -3724,8 +3724,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// внешний горожанин Лайонел Маскетт - мещанин
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Lionel", "citiz_11", "man", "man", 20, PIRATE, -1, true, "citizen"));
 	SetFantomParamFromRank(sld, 20, true);
-	sld.name = "Lionell";
-	sld.lastname = "Maskered";
+	sld.name = "Лайонел";
+	sld.lastname = "Маскетт";
 	sld.city = "LostShipsCity";
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
@@ -3748,8 +3748,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// внешний горожанин Гхерад Смиитс - матрос
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Gherad", "citiz_38", "man", "man", 18, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 18, true);
-	sld.name = "Gerard";
-	sld.lastname = "Smeets";
+	sld.name = "Гхерад";
+	sld.lastname = "Смиитс";
 	sld.city = "LostShipsCity";
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
@@ -3772,8 +3772,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// внешний горожанин Ришард Шамбон - контрабандист
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Rishard", "Shambone", "man", "man", 17, PIRATE, -1, false, "marginal"));
 	SetFantomParamFromRank(sld, 17, true);
-	sld.name = "Richard";
-	sld.lastname = "Shambon";
+	sld.name = "Ришард";
+	sld.lastname = "Шамбон";
 	sld.city = "LostShipsCity";
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
@@ -3796,8 +3796,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// внешний горожанин Альваро Гомец - капитан
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Alvaro", "mercen_23", "man", "man", 28, PIRATE, -1, false, "soldier"));
 	SetFantomParamFromRank(sld, 28, true);
-	sld.name = "Alvaro";
-	sld.lastname = "Gomez";
+	sld.name = "Альваро";
+	sld.lastname = "Гомец";
 	sld.city = "LostShipsCity";
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
@@ -3820,8 +3820,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// внешний горожанин Виктор Кассель - бандит
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Victor", "mercen_20", "man", "man", 30, PIRATE, -1, true, "marginal"));
 	SetFantomParamFromRank(sld, 30, true);
-	sld.name = "Victor";
-	sld.lastname = "Cassel";
+	sld.name = "Виктор";
+	sld.lastname = "Кассель";
 	sld.city = "LostShipsCity";
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
@@ -3844,8 +3844,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// внешний горожанин Адольф Барбье - авантюрист
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Adolf", "Adolf", "man", "man", 22, PIRATE, -1, true, "marginal"));
 	SetFantomParamFromRank(sld, 22, true);
-	sld.name = "Adolf";
-	sld.lastname = "Barbier";
+	sld.name = "Адольф";
+	sld.lastname = "Барбье";
 	sld.city = "LostShipsCity";
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
@@ -3868,7 +3868,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// внешний горожанин Куранай - индеец
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Curanai", "miskito_4", "man", "man", 18, PIRATE, -1, true, "native"));
 	SetFantomParamFromRank(sld, 18, true);
-	sld.name = "Curanai";
+	sld.name = "Куранай";
 	sld.lastname = "";
 	sld.city = "LostShipsCity";
 	sld.location	= "LostShipsCity_town";
@@ -3894,8 +3894,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// внешняя горожанка Рамона Лоцано
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Ramona", "women_16", "woman", "towngirl", 14, PIRATE, -1, true, "citizen"));
 	SetFantomParamFromRank(sld, 14, true);
-	sld.name = "Ramona";
-	sld.lastname = "Lozano";
+	sld.name = "Рамона";
+	sld.lastname = "Лоцано";
 	RemoveAllCharacterItems(sld, true);
 	sld.city = "LostShipsCity";
 	sld.location	= "LostShipsCity_town";
@@ -3920,8 +3920,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// в таверне Оеларт Котеел - канонир (возможный офицер)
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Oelart", "mercen_3", "man", "man", 20, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 20, true);
-	sld.name = "Oelart";
-	sld.lastname = "Koteel";
+	sld.name = "Оеларт";
+	sld.lastname = "Котеел";
 	sld.city = "LostShipsCity";
 	sld.location	= "FleuronTavern";
 	sld.location.group = "sit";
@@ -3943,8 +3943,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// в таверне Джаспер Пратт - каторжник
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Jasper", "prizon_7", "man", "man_B", 15, PIRATE, -1, true, "slave"));
 	SetFantomParamFromRank(sld, 15, true);
-	sld.name = "Jasper";
-	sld.lastname = "Prutt";
+	sld.name = "Джаспер";
+	sld.lastname = "Пратт";
 	sld.city = "LostShipsCity";
 	sld.location	= "FleuronTavern";
 	sld.location.group = "sit";
@@ -3966,8 +3966,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// в таверне Леонард Маскетт - пьяница
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Leonard", "LeoMaskett", "man", "man", 12, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 12, true);
-	sld.name = "Leonard";
-	sld.lastname = "Musket";
+	sld.name = "Леонард";
+	sld.lastname = "Маскетт";
 	sld.city = "LostShipsCity";
 	sld.location = "FleuronTavern";
 	sld.location.group = "sit";
@@ -3989,8 +3989,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// в таверне Джозеф Лодердэйл - английский военный офицер
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Josef", "off_eng_2", "man", "man", 35, PIRATE, -1, true, "soldier"));
 	SetFantomParamFromRank(sld, 35, true);
-	sld.name = "Josef";
-	sld.lastname = "Loderdale";
+	sld.name = "Джозеф";
+	sld.lastname = "Лодердэйл";
 	sld.city = "LostShipsCity";
 	sld.location = "FleuronTavern";
 	sld.location.group = "sit";
@@ -4012,8 +4012,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// в таверне Лоренцо Сольдерра - испанский военный офицер
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Lorenzo", "off_spa_4", "man", "man", 35, PIRATE, -1, false, "soldier"));
 	SetFantomParamFromRank(sld, 35, true);
-	sld.name = "Lorenzo";
-	sld.lastname = "Solderra";
+	sld.name = "Лоренцо";
+	sld.lastname = "Сольдерра";
 	sld.city = "LostShipsCity";
 	sld.location	= "FleuronTavern";
 	sld.location.group = "sit";
@@ -4035,8 +4035,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// в таверне Жаклин Тьюрам - торговый капитан
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Jacklin", "citiz_26", "man", "man", 20, PIRATE, -1, false, "soldier"));
 	SetFantomParamFromRank(sld, 20, true);
-	sld.name = "Jacqueline";
-	sld.lastname = "Turam";
+	sld.name = "Жаклин";
+	sld.lastname = "Тьюрам";
 	sld.city = "LostShipsCity";
 	sld.location	= "FleuronTavern";
 	sld.location.group = "sit";
@@ -4059,8 +4059,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// в церкви Джиллиан Стайнер
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Jillian", "women_15", "woman", "towngirl", 12, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 12, true);
-	sld.name = "Jillian";
-	sld.lastname = "Steiner";
+	sld.name = "Джиллиан";
+	sld.lastname = "Стайнер";
 	RemoveAllCharacterItems(sld, true);
 	sld.city = "LostShipsCity";
 	sld.location	= "GloriaChurch";
@@ -4084,8 +4084,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// в церкви Таннеке Эверс
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Tanneke", "women_13", "woman", "towngirl", 13, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 13, true);
-	sld.name = "Tanneke";
-	sld.lastname = "Aevers";
+	sld.name = "Таннеке";
+	sld.lastname = "Эверс";
 	RemoveAllCharacterItems(sld, true);
 	sld.city = "LostShipsCity";
 	sld.location	= "GloriaChurch";
@@ -4111,8 +4111,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// внутреняя горожанка Орели Бертин
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Oreli", "women_18", "woman", "towngirl", 11, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 11, true);
-	sld.name = "Orelie";
-	sld.lastname = "Bertine";
+	sld.name = "Орели";
+	sld.lastname = "Бертин";
 	RemoveAllCharacterItems(sld, true);
 	sld.city = "LostShipsCity";
 	sld.location	= "PlutoStoreSmall";
@@ -4137,8 +4137,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// внутрений горожанин Антонио Бетанкур
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Betancur", "Betancur", "man", "man", 20, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 20, true);
-	sld.name = "Antonio";
-	sld.lastname = "Betancourt";
+	sld.name = "Антонио";
+	sld.lastname = "Бетанкур";
 	sld.rank = 10;
 	sld.city = "LostShipsCity";
 	sld.location	= "PlutoStoreSmall";
@@ -4163,8 +4163,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	// внутреняя горожанка Сесиль Галард
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Sesil", "women_17", "woman", "towngirl", 10, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 10, true);
-	sld.name = "Cecille";
-	sld.lastname = "Halard";
+	sld.name = "Сесиль";
+	sld.lastname = "Галард";
 	RemoveAllCharacterItems(sld, true);
 	sld.city = "LostShipsCity";
 	sld.location	= "AvaShipInside3";
@@ -4189,8 +4189,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	//официантка Наталия Бушелл
 	sld = GetCharacter(NPC_GenerateCharacter("Natalie_Waitress", "women_11", "woman", "towngirl", 10, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 10, true);
-	sld.name = "Nathalie";
-	sld.lastname = "Booshell";
+	sld.name = "Наталия";
+	sld.lastname = "Бушелл";
 	RemoveAllCharacterItems(sld, true);
 	sld.location	= "FleuronTavern";
 	sld.location.group = "waitress";
@@ -4414,7 +4414,7 @@ void QuestCheckTakeBoxes(ref itemsRef)
 	//-------------------- КЛАДЫ ------------>>>>>>>>>>>>>
 	if (CheckAttribute(itemsRef, "Treasure"))
 	{
-		Log_Info("It appears that this is a treasure you were looking for");
+		Log_Info("Похоже, что это и есть клад.");
 		PlaySound("interface\notebook.wav");
 		DeleteAttribute(itemsRef, "Treasure");
 		//eddy. для безконфликтности квестов
@@ -4606,8 +4606,8 @@ void GoToPrison(string _sCity, int _iStraff, int _iDay)//поместить ГГ в тюрьму, 
 	int iNation = sld.nation;
 	sld = GetCharacter(NPC_GenerateCharacter("Jail_officer", "off_" + NationShortName(iNation) + "_" + (rand(1) + 1), "man", "man", 20, iNation, -1, true, "soldier"));
 	SetFantomParamFromRank(sld, 20, true); 
-	sld.name = "Warder";
-    sld.lastname = "";
+	sld.name = "Тюремный";
+    sld.lastname = "надзиратель";
 	sld.Dialog.Filename = "Quest\Jail_dialog.c"; 
 	sld.dialog.currentnode = "Jail_officer_take"; 
 	sld.greeting = "soldier_arest";
@@ -4639,7 +4639,7 @@ void Jail_officer_talk(string qName)
 
 void InPrison(string qName)//отсидка
 {
-	SetLaunchFrameFormParam("Gone are the long days...", "", 0, 6);
+	SetLaunchFrameFormParam("Прошли долгие дни...", "", 0, 6);
 	LaunchFrameForm();
 	sld = characterFromId("Jail_officer");
     LAi_SetActorTypeNoGroup(sld);
@@ -4701,7 +4701,7 @@ string FindFriendCityToMC(bool bRand)//Jason выбрать радномный дружественный к Г
 			}
 		}
 		else
-		{
+		{ // may-16
 			if (nation != RELATION_ENEMY && nation != PIRATE && colonies[n].id != "Panama" && colonies[n].id != "Minentown" && colonies[n].id != "SanAndres" && colonies[n].nation != "none" && Islands[m].id != colonies[n].island)
 			{
 				storeArray[howStore] = n;
@@ -4950,36 +4950,36 @@ string UpdateLSCClanParol() // Jason: обновление паролей кланов
 	string sParol;
 	switch (rand(29))
 	{
-		case 0: sParol = "anfitrite"; break;
-		case 1: sParol = "fuerte"; break;
-		case 2: sParol = "imperial"; break;
-		case 3: sParol = "bonnet"; break;
-		case 4: sParol = "trafalgar"; break;
-		case 5: sParol = "gloucester"; break;
-		case 6: sParol = "griffin"; break;
-		case 7: sParol = "languedoc"; break;
-		case 8: sParol = "leiden"; break;
-		case 9: sParol = "moloch"; break;
-		case 10: sParol = "cristobal"; break;
-		case 11: sParol = "soberano"; break;
-		case 12: sParol = "alcantara"; break;
-		case 13: sParol = "vanguard"; break;
-		case 14: sParol = "torbay"; break;
-		case 15: sParol = "russell"; break;
-		case 16: sParol = "barford"; break;
-		case 17: sParol = "pelican"; break;
-		case 18: sParol = "montebello"; break;
-		case 19: sParol = "zeelandia"; break;
-		case 20: sParol = "limeno"; break;
-		case 21: sParol = "leviathan"; break;
-		case 22: sParol = "phoenix"; break;
-		case 23: sParol = "neptune"; break;
-		case 24: sParol = "bourgogne"; break;
-		case 25: sParol = "pandora"; break;
-		case 26: sParol = "rotterdam"; break;
-		case 27: sParol = "meerman"; break;
-		case 28: sParol = "bucentaure"; break;
-		case 29: sParol = "concord"; break;
+		case 0: sParol = "анфитрита"; break;
+		case 1: sParol = "фуэрта"; break;
+		case 2: sParol = "империал"; break;
+		case 3: sParol = "боннета"; break;
+		case 4: sParol = "трафальгар"; break;
+		case 5: sParol = "глостер"; break;
+		case 6: sParol = "грифон"; break;
+		case 7: sParol = "лангедок"; break;
+		case 8: sParol = "лейден"; break;
+		case 9: sParol = "молох"; break;
+		case 10: sParol = "кристобаль"; break;
+		case 11: sParol = "соберано"; break;
+		case 12: sParol = "алькантара"; break;
+		case 13: sParol = "вангард"; break;
+		case 14: sParol = "торбей"; break;
+		case 15: sParol = "рассел"; break;
+		case 16: sParol = "барфорд"; break;
+		case 17: sParol = "пеликан"; break;
+		case 18: sParol = "монтебелло"; break;
+		case 19: sParol = "зеландия"; break;
+		case 20: sParol = "лимено"; break;
+		case 21: sParol = "левиафан"; break;
+		case 22: sParol = "феникс"; break;
+		case 23: sParol = "нептун"; break;
+		case 24: sParol = "бургундия"; break;
+		case 25: sParol = "пандора"; break;
+		case 26: sParol = "роттердам"; break;
+		case 27: sParol = "меермен"; break;
+		case 28: sParol = "буцентавре"; break;
+		case 29: sParol = "конкорда"; break;
 	}
 	return sParol;
 }
@@ -4990,8 +4990,8 @@ void UltimatePotionEffect() // зелье команчей
 	LAi_SetCurHPMax(PChar);
 	AddCharacterHealth(pchar, 50);
 	DeleteAttribute(pchar, "chr_ai.poison");
-	Log_Info("A Comanche potion is used");
-	Log_Info("You are feeling that your health is restored!");
+	Log_Info("Использовано зелье команчей");
+	Log_Info("Вы чувствуете себя полностью излеченным!");
 	PlaySound("Ambient\Tavern\glotok_001.wav");
 }
 
@@ -5052,8 +5052,8 @@ void SetNull2ShipInStockMan(string _city)
 bool Saga_CheckMarlinShip() // проверка полакра марлин - одинаковый юз в 2 местах
 {
 	if(sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_POLACRE || GetCompanionQuantity(pchar) > 1) return false;
-	if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Marlin") && pchar.ship.name != "Marlin") return false;
-	if (!CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Marlin") && pchar.ship.name != "Marlin") return false;
+	if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Marlin") && pchar.ship.name != "Мapлин") return false;
+	if (!CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Marlin") && pchar.ship.name != "Марлин") return false;
 	return true;
 }
 
@@ -5215,7 +5215,7 @@ void Map_NationQuestHunter(int Nation)//квестовый энкаунтер-охотник
 		sld.Coastal_Captain = true;
         sld.mapEnc.type = "war";
 		sld.mapEnc.worldMapShip = "Galleon_red";
-        sld.mapEnc.Name = "interceptors";
+        sld.mapEnc.Name = "перехватчики";
 		sld.hunter = ""+iNation+"";
         Group_AddCharacter(sGroup, sCapId + i);
     }
@@ -5583,7 +5583,6 @@ bool Tieyasal_CheckTablets() // Jason: есть ли скрижали
 
 void ShowRipInscription(int i, string locId) // Jason: надписи на надгробиях - пасхалка
 {
-	return; // заглушка для англ. версии
 	if (LAi_grp_playeralarm > 0) return;
 	
 	if (locId == "Charles_graveyard")
@@ -5894,8 +5893,8 @@ void CaveEnc_FillSkeleton(ref chr, int i) // лут для скелетов в пещерах
 	switch (i)
 	{
 		case 0:
-			if (drand(7) == 0) TakeNItems(chr, "gold_dublon", drand(50)); // Addon-2016 Jason
-			if (drand(7) == 1) TakeNItems(chr, "chest", drand(2));
+			if (drand(7) == 0) TakeNItems(chr, "gold_dublon", drand(50));// Addon-2016 Jason
+			if (drand(7) == 1) TakeNItems(chr, "chest", drand(1));
 			if (drand(7) == 2) TakeNItems(chr, "purse"+(drand(2)+1), 1);
 			if (drand(7) > 2) TakeNItems(chr, "mineral"+(drand(12)+1), drand(5));
 		break;
@@ -5944,12 +5943,12 @@ bool LineShips_CheckAndIdentify(int Nation)
 	switch (Nation)
 	{
 		case ENGLAND:
-			if (sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LSHIP_ENG && LineShips_FindCompanionShips(SHIP_LSHIP_ENG) && Trafalgar_FindCompanionShip()) return false; // Jason НСО
+			if (sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LSHIP_ENG && LineShips_FindCompanionShips(SHIP_LSHIP_ENG) && Trafalgar_FindCompanionShip()) return false; // Jason, НСО
 			if (sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_LSHIP_ENG || LineShips_FindCompanionShips(SHIP_LSHIP_ENG)) return true;
 		break;
 		
 		case FRANCE:
-			if (sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LSHIP_FRA && LineShips_FindCompanionShips(SHIP_LSHIP_FRA) && Ecliaton_FindCompanionShip()) return false; // Jason НСО
+			if (sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LSHIP_FRA && LineShips_FindCompanionShips(SHIP_LSHIP_FRA) && Ecliaton_FindCompanionShip()) return false; // Jason, НСО
 			if (sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_LSHIP_FRA || LineShips_FindCompanionShips(SHIP_LSHIP_FRA)) return true;
 		break;
 		
@@ -5964,7 +5963,7 @@ bool LineShips_CheckAndIdentify(int Nation)
 	return false;
 }
 
-bool Ecliaton_FindCompanionShip() // Jason НСО
+bool Ecliaton_FindCompanionShip() // Jason, НСО
 {
 	for(int i=1; i<COMPANION_MAX; i++)
 	{
@@ -5972,13 +5971,13 @@ bool Ecliaton_FindCompanionShip() // Jason НСО
 		if(iTemp > 0)
 		{
 			ref sld = GetCharacter(iTemp);
-			if(sld.ship.name == "Eclatant" && CheckAttribute(pchar, "questTemp.Patria.Ecliaton")) return true;
+			if(sld.ship.name == "Эклятон" && CheckAttribute(pchar, "questTemp.Patria.Ecliaton")) return true;
 		}
 	}
 	return false;
 }
 
-bool Trafalgar_FindCompanionShip() // Jason НСО
+bool Trafalgar_FindCompanionShip() // Jason, НСО
 {
 	for(int i=1; i<COMPANION_MAX; i++)
 	{
@@ -5986,7 +5985,7 @@ bool Trafalgar_FindCompanionShip() // Jason НСО
 		if(iTemp > 0)
 		{
 			ref sld = GetCharacter(iTemp);
-			if(sld.ship.name == "Trafalgar" && CheckAttribute(pchar, "questTemp.Patria.Trafalgar")) return true;
+			if(sld.ship.name == "Трафальгар" && CheckAttribute(pchar, "questTemp.Patria.Trafalgar")) return true;
 		}
 	}
 	return false;

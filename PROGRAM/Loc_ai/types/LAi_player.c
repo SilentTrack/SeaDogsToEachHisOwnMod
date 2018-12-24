@@ -62,9 +62,9 @@ void LAi_type_player_CharacterUpdate(aref chr, float dltTime)
 				}
 				else
 				{
-					DoQuestFunctionDelay("LSC_underwaterDeathTimer", 0.1);
-				}
-			}
+			DoQuestFunctionDelay("LSC_underwaterDeathTimer", 0.1);
+		}
+		}
 		}
 		else Log_SetEternalString("" + sti(chr.showTimer));
 	}
@@ -167,7 +167,7 @@ void LAi_type_player_Fire(aref attack, aref enemy, float kDist, bool isFindedEne
 	int iCurHP = enemy.chr_ai.hp;
 	int iMaxHP = LAi_GetCharacterMaxHP(enemy);
 	if(iCurHP > 0 && !LAi_IsImmortal(enemy))
-		Log_Info("Health left - " + iCurHP + " of " + iMaxHP);
+		Log_Info("Осталось здоровья - " + iCurHP + " из " + iMaxHP);
 }
 
 

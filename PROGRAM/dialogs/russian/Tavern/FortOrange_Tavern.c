@@ -4,93 +4,93 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you, " + GetAddress_Form(NPChar) + "?"), "You tried to ask me some question not long ago, " + GetAddress_Form(NPChar) + "...", "Over this whole day, this is the third time you're talking about some question...",
-                          "More questions, I presume?", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
-                      "Yes, it really is the third time...", "No, what questions?...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно, " + GetAddress_Form(NPChar) + "?"), "Совсем недавно вы пытались задать мне вопрос, " + GetAddress_Form(NPChar) + "...", "В течение этого дня вы уже третий раз говорите о каком-то вопросе...",
+                          "Опять вопросы будем задавать?", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Да уж, действительно в третий раз...", "Да нет, какие вопросы...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			if (pchar.questTemp.Slavetrader == "FindRatJamaica")
             {
-                link.l1 = "Has a man named Francois Gontier dropped by your city? I really need him.";
+                link.l1 = "У вас в городе не появлялся такой Франсуа Гонтьер? Мне он очень нужен.";
                 link.l1.go = "Jamaica_ratF_1";
             }
-			// Addon 2016-1 Jason пиратскаЯ линейка
+			// Addon 2016-1 Jason пиратская линейка
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "silk_4")
             {
-                link.l1 = "Listen, matey, there's a ship builded in Port Royal who is purchasing some silk for his shipyard... some very special silk, you surely've heard of it. They say a seller of such silk is residing somewhere in this settlement. Do you have any clues on how to find him? I have a business proposal for him.";
+                link.l1 = "Послушай, дружище: корабел в Порт-Ройяле закупает для свого производства специальный шелк... особый такой шелк, слыхал наверное. И поговаривают, что продавец этого шелка обретается в вашем поселении. Не подскажешь, что это за человечек? У меня к нему деловое предложение имеется.";
                 link.l1.go = "mtraxx";
 			}
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "silk_5" && GetCharacterItem(pchar, "gold_dublon") >= 50)
             {
-                link.l1 = "I have fifty doubloon with me. Take them and start talking.";
+                link.l1 = "Я принес тебе пятьдесят дублонов. Держи и рассказывай.";
                 link.l1.go = "mtraxx_4_1";
 			}
 		break;
 
 		case "Jamaica_ratF_1":
-			dialog.text = "He has. He rented a room for me for a few days. Not the most pleasant fellow, I'll tell you. Besides that, he was obsessively paranoid of being searched for –he was always afraid and looking around. Are you the man that he was so afraid of?";
-			link.l1 = "No, it's not me. You know, privateers have a lot of enemies though. So, where can I find him? He and I decided to make an agreement, but he seems to have seeped right through the ground!";
+			dialog.text = "Появлялся. Снимал у меня комнату несколько дней. Пренеприятнейший тип, я вам скажу. И кроме того, с манией преследования - вечно озирался и всего опасался, как параноик. Не тебя ли он так боялся?";
+			link.l1 = "Нет, не меня. А вообще у каперов врагов много, сам знаешь. Так где его найти? Мы с ним договорились месте на дело пойти, а он как сквозь землю провалился!";
 			link.l1.go = "Jamaica_ratF_2";
 		break;
 		
 		case "Jamaica_ratF_2":
-			dialog.text = "He's departed to sea on his own ship. Where to –I don't know. He didn't fill me in on that.";
-			link.l1 = "Ah, what a pity! Where am I going to look for him now?";
+			dialog.text = "Ушел в море на своем корабле. А куда - не знаю. Он мне не докладывал.";
+			link.l1 = "Эх, жаль! Где ж я теперь его искать буду?";
 			link.l1.go = "Jamaica_ratF_3";
 		break;
 		
 		case "Jamaica_ratF_3":
-			dialog.text = "I don't know, buddy. I've I knew I'd tell you.";
-			link.l1 = "All right, I see. I'll go ask some other people...";
+			dialog.text = "Не знаю, "+ GetSexPhrase("дружище","мэм") +". Знал - подсказал бы.";
+			link.l1 = "Ладно, все понятно. Пойду, у кого еще поспрашиваю...";
 			link.l1.go = "exit";
 			AddQuestRecord("Slavetrader", "21_4");
 			pchar.questTemp.Slavetrader = "FindRatJamaica_H";
 		break;
 		
-		// Addon 2016-1 Jason пиратскаЯ линейка
+		// Addon 2016-1 Jason пиратская линейка
 		case "mtraxx":
-            dialog.text = "Huh, if you suspect our merchant, the one that keeps the store, I can tell it's not him, he doesn't deal in silk sailcloth. Smugglers don't come here neither, no need for them when there's no customs. And besides those who would have a use for silk in Maroon Town anyways? Have a look around - we aren't the sort, ha-ha! No, you've been duped.";
-			link.l1 = "But someone is supplying the silk to Port Royal - that's irrefutable. Do you have any clue on who could be the supplier?";
+            dialog.text = "Хех, если ты намекаешь на нашего купца, что магазин содержит - то совершенно напрасно, я точно знаю, что он корабельным шёлком не торгует. Контрабандистам у  нас тут нечего делать, чай, таможни не держим. Ну а больше торговлей в Марун-Тауне никто не промышляет - тут народ несколько другой собрался, ха-ха! Так что брешут люди.";
+			link.l1 = "Но кто-то же ему шёлк привозит в Порт-Ройяль. Это факт. Есть у тебя какие-то мысли на счет того, кто этим занимается?";
 			link.l1.go = "mtraxx_1";
 		break;
 		
 		case "mtraxx_1":
-            dialog.text = "Smugglers of Port Royal, maybe? Or rogue cappers? Must be unloading in some hidden cove... Ha! I have an idea, pal. There is this local, he seem to know all that's going on in these waters. If he won't have a lead for you, then there are no merchants.";
-			link.l1 = "Splendid! What's the guy's name?";
+            dialog.text = "Возможно, контрабандисты в Порт-Ройяле? Или каперы пришлые? Перегружают тихонечко в бухте неприметной... Ха! Имеется у меня одно соображение, приятель. Есть один человечек из местных, который знает всё, что творится в наших прибрежных водах. Если уже и он тебе не подскажет - то значит и нет никакого продавца.";
+			link.l1 = "Отлично! И какже зовут этого парня и где его искать?";
 			link.l1.go = "mtraxx_2";
 		break;
 		
 		case "mtraxx_2":
-            dialog.text = "Hm... I am trying to recall his name but it just doesn't come up for some reason...";
-			link.l1 = "How 'bout a few coins to aid your memory?";
+            dialog.text = "Кхм... Вот я пытаюсь вспомнить его имя, да всё никак не получается...";
+			link.l1 = "Может, немного золотых освежат твою память?";
 			link.l1.go = "mtraxx_3";
 		break;
 		
 		case "mtraxx_3":
-            dialog.text = "I guess that might help... Fifty gold doubloons will surely illuminate this here old head.";
+            dialog.text = "Пожалуй, да... Пять десятков дублонов наверняка вызовут у меня озарение.";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 50)
 			{
-				link.l1 = "I see. Here, take the coins.";
+				link.l1 = "Понимаю. Вот, держи.";
 				link.l1.go = "mtraxx_4_1";
 			}
 			else
 			{
-				link.l1 = "I see. I'll be back...";
+				link.l1 = "Понимаю. Я еще вернусь...";
 				link.l1.go = "mtraxx_4_2";
 			}
 		break;
 		
 		case "mtraxx_4_1":
 			RemoveItems(pchar, "gold_dublon", 50);
-			Log_Info("You have given 50 doubloons");
+			Log_Info("Вы отдали 50 дублонов");
 			PlaySound("interface\important_item.wav");
-            dialog.text = "Husky Billy is the man you need. He has been living on Jamaica, like, forever, knows every dog on the streets. Used to be a pirate and a pain in the brits asses until he got wounded some three years back. Now he mostly fishes, hunts sharks and gathers amber in Jamaica's bays. He leaves his ol' long boat only to buy more rum and crackers\nYou should look for him at sea around Jamaica. They say he's sailing on the northern side, all the way to the east-most point. But chasing a long boat is a fool's errand, you better stake out around a south-west corner, they say he's been seen near Cape Negril about once a week. His cockleboat is called 'The Fly Fish'.";
-			link.l1 = "Thanks, pal. You've earned your gold.";
+            dialog.text = "Тебе нужен Билли Сипатый. Он считай всю жизнь прожил на Ямайке, в Порт-Ройяле каждую собаку знает. Бывший пират, много крови попортил англичанам, но уже как три года отошел от дел после ранения и теперь промышляет рыбной ловлей, охотой на акул и сбором янтаря по бухточкам Ямайки. Со своего старого баркаса на сушу сходит видимо только затем, чтобы закупиться ромом и сухарями\nИщи его в море у берегов Ямайки. Он часто ходит вдоль северного побережья острова, до самой восточной точки, но искать на таком протяжении неприметный баркас - пустое занятие, лучше покарауль у юго-западной оконечности - в течение недели он должен появиться у мыса Негрил. Его скорлупа называется 'Летучая рыба'.";
+			link.l1 = "Спасибо, приятель. Ты честно заработал свое золото.";
 			link.l1.go = "mtraxx_5";
 		break;
 		
 		case "mtraxx_5":
-            dialog.text = "Good luck, matey! I hope you'll find what you are looking for!";
+            dialog.text = "Удачи, дружище. Надеюсь, ты найдешь то, что искал.";
 			link.l1 = "...";
 			link.l1.go = "mtraxx_6";
 		break;

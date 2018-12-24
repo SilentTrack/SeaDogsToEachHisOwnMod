@@ -391,7 +391,7 @@ void PerkBerserkerReaction()
 {
 	RemoveItems(pchar, "berserker_potion", 1);
 	AddCharacterHealth(pchar, -2);
-	log_info("Used Ometochli tincture! Your strength has increased several times!");
+	log_info("Использована тинктура Ометочтли! Сила возросла многократно!");
 	PlaySound("Ambient\Tavern\glotok_001.wav");
 	PlaySound("Types\warrior03.wav");
 }

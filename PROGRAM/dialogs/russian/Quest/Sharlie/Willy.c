@@ -14,57 +14,57 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "Is there something you want?";
-			link.l1 = "No, nothing.";
+			dialog.text = "Ты что-то хотел?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "catoche":
-			dialog.text = "Hello, monsieur. God damn it, so you're the one that raised all the military strife around here?!";
-			link.l1 = TimeGreeting()+", sir. Yes, it was off of my ship that the descent landed. What's the matter anyway? Who are you? An Englishman, I suppose?";
+			dialog.text = "Здравствуйте, месье. Черт возьми, так это вы развернули тут военные действия?!";
+			link.l1 = TimeGreeting()+", сударь. Да, это с моего корабля был высажен десант. А в чем, собственно говоря, дело? Кто вы такой? Как я полагаю - англичанин?";
 			link.l1.go = "catoche_1";
 		break;
 		
 		case "catoche_1":
-			dialog.text = "A Scotsman, monsieur. Captain of the English Navy William Patterson. And this is my first mate and right hand, Archibald Calhoun. Thing is, that there is a Spanish fort in the jungles. My mission is to kick the cursed bastards out of the fort, which they has built in a dangerous close to English territory\nRecently we tried to storm it, but the scum had managed to hold out despite of their losses. I'd left for reinforces and...";
-			link.l1 = "No need for that now. I've completed your unfinished business, the jungle fort is empty. Spanish commander Diego de Montoya is dead and his squadron has been wiped out as well.";
+			dialog.text = "Шотландец, месье. Капитан английского флота Вильям Патерсон. А это мой первый помощник и правая рука - Арчибальд Колхаун. Дело в том, что там, в джунглях, находится укрепленная база испанцев, и моя задача - выбить проклятых негодяев из форта, который они нахально отстроили в непосредственной близости от английских владений и угнездились в нем\nСовсем недавно нами была предпринята попытка штурма, однако мерзавцы, несмотря на понесенные потери, сумели выстоять. Я отправился за подкреплением и...";
+			link.l1 = "Подкрепление вам не понадобится. Я довершил начатое вами дело - форт в джунглях пуст. Командир испанцев, Диего де Монтойя, мертв, а его эскадра, прибывшая сюда, видимо, на подмогу - уничтожена.";
 			link.l1.go = "catoche_2";
 		break;
 		
 		case "catoche_2":
-			dialog.text = "What kind of vigilantism is this? What's your motivation for raising up such military action on English territory?";
-			link.l1 = "I dare remind you, captain Patterson, that this isn't Belize. What English possession? All this fuss got started due to Don Diego de Montoya and his risky decision attacking me and my ships.";
+			dialog.text = "Что за самоуправство? На каком основании вы развязали боевые действия на английской территории?";
+			link.l1 = "Смею напомнить, капитан Патерсон, что здесь не Белиз. Какие английские владения? А весь сыр-бор разгорелся из-за дона Диего де Монтойя, который имел такую неосторожность атаковать меня и мои корабли.";
 			link.l1.go = "catoche_3";
 		break;
 		
 		case "catoche_3":
-			dialog.text = "Ehem... and what reason did Don Diego have to attack you, huh captain?";
-			link.l1 = "He and I have a longstanding feud... Ever since the day when the squadron he was leading attacked St. Pierre and a little bit later was eliminated with my direct participation.";
+			dialog.text = "Кхм... и с чего бы это дону Диего было нападать на вас, а, капитан?";
+			link.l1 = "У нас с ним давняя вражда... Еще с того дня, когда эскадра, возглавляемая им, напала на колонию Сен-Пьер и чуть позже была уничтожена при моем непосредственном участии.";
 			link.l1.go = "catoche_4";
 		break;
 		
 		case "catoche_4":
-			dialog.text = "Shiver my timbers! I needed that venerable caballero alive! I was going to interrogate him on why he set up a military base in the jungle. It couldn't have been for no reason...";
-			link.l1 = "I'm sorry, but he won't be able to tell you anything now. Anyway, the fort may contain wounded soldiers from the garrison. Is there a chance they could talk?";
+			dialog.text = "Черт побери! Мне нужен был этот досточтимый кабальеро в живом виде! Я собирался допросить его, зачем он устроил в джунглях военную базу. Это ведь неспроста...";
+			link.l1 = "Сожалею, но он теперь вам уже ничего не скажет. Впрочем, в форте могут быть раненые солдаты гарнизона - быть может, они разговорятся?";
 			link.l1.go = "catoche_5";
 		break;
 		
 		case "catoche_5":
-			dialog.text = "Soldiers...Oh, what's the use of some hardheaded ramrods!... Where's Don Diego's corpse? He could have had important documents on him!";
-			link.l1 = "I left Don Diego on the ground of the arms fort. If you need him so bad, you can find him there. I don't think he's ran off.";
+			dialog.text = "Солдаты... да что толку от тупоголовых солдафонов!.. Где труп дона Диего? При нем могли быть важные документы!";
+			link.l1 = "Я оставил дона Диего на полу оружейной форта. Если он вам так нужен - вы сможете найти его там. Не думаю, что он куда-то сбежал.";
 			link.l1.go = "catoche_6";
 		break;
 		
 		case "catoche_6":
-			dialog.text = "Eh. And how asked you to bud into some one else's business... You've caused me a bad enough headache...";
-			link.l1 = "Captain, I don't understand why you reprimand me. I've done your job, put my own people into battle, risked my own life, and yet you're displeased. All you have to do now is inform Port Royal of your success in the mission and all of your affairs. I won't claim any credit for your glory, I assure you.";
+			dialog.text = "Эх, и вот кто вас просил лезть не в свое дело... принесла вас нелегкая на мою голову...";
+			link.l1 = "Капитан, я не понимаю ваших упреков. Я сделал вашу работу, положил своих людей в бою, сам рисковал жизнью - а вы недовольны. Вам остается только доложить в Порт-Рояль об успехе миссии и всех дел. Я не буду претендовать на вашу славу, заверяю.";
 			link.l1.go = "catoche_7";
 		break;
 		
 		case "catoche_7":
-			dialog.text = "Claim credit? What do you mean glory?! You don't get it at all... Eh, fine. Farewell, sir.";
-			link.l1 = "All the best to you as well!";
+			dialog.text = "Претендовать? Да какая тут слава?! Вы ничего не понимаете.. эх, ладно. Прощайте, сударь.";
+			link.l1 = "И вам всего доброго!";
 			link.l1.go = "catoche_8";
 		break;
 		
@@ -81,39 +81,39 @@ void ProcessDialogEvent()
 		
 		case "isladevieques":
 			PlaySound("VOICE\Russian\sharlie\Willie Paterson.wav");
-			dialog.text = "Man, when they say you have nine lives like a cat, they aren't lying! "+TimeGreeting()+", monsieur de Maure. You don't look so well...";
-			link.l1 = TimeGreeting()+", mr. Patterson. I have to say, you sure put one over on your friend Archibald, God damn you all! I didn't even see it coming...";
+			dialog.text = "И правду говорят, что у вас, как у кошки - девять жизней! "+TimeGreeting()+", месье де Мор. Что-то вы неважно выглядите...";
+			link.l1 = TimeGreeting()+", мистер Патерсон. Надо сказать, вы все очень ловко разыграли с вашим другом Арчибальдом, черт бы вас побрал! Я даже и не догадался...";
 			link.l1.go = "isladevieques_1";
 		break;
 		
 		case "isladevieques_1":
-			dialog.text = "Hey, don't swear before the gates of Holy Land. You didn't see it coming? I am flattered: I have fooled one of the most famous intrigant of the archipelago. The diary idea was brilliant, don't you think?\nI had to lure you to some obscure place, killing you in open field would be a scandal, you are a close friend of Philippe de Poincy, am I correct? Now you are going to disappear without any trails left and no one will ever know how.";
-			link.l1 = "So, everything that Calhoun told me... was a lie?";
+			dialog.text = "Но-но, не стоит чертыхаться на пороге вступления в Царствие Небесное. Не догадались? Я польщен: мне удалось обвести вокруг пальца одного из известнейших интриганов архипелага. Согласитесь, идея с дневником была гениальной, да?\nМне нужно было затащить вас в место, о котором никто не знает - уж больно рискованно было открыто ликвидировать вас - чревато крупным скандалом, ведь вы же друг шевалье Филиппа де Пуанси, так?.. А теперь вы исчезнете бесследно, и никто не узнает - как.";
+			link.l1 = "Получается, все, что рассказал мне Колхаун - ложь?";
 			link.l1.go = "isladevieques_2";
 		break;
 		
 		case "isladevieques_2":
-			dialog.text = "Not at all. I had really found poor Archibald at this place. He didn't write any memoirs though, the diary you have found in his room was written at my bidding specially for you, monseniour de Maure\nI have been keeping my eye on you since we met at Cape Catoche. It was you who took the map of Two Appearances from don Diego's corpse? Don't deny it, I know it was you.";
-			link.l1 = "You know about the Guardian of Truth as well?";
+			dialog.text = "Отнюдь. Я действительно нашел беднягу Арчибальда на этом самом острове. Вот только мемуаров никаких он не сочинял - дневник, который вы нашли в комнате Арчи в Порт-Рояле, куда пробрались столь изысканным способом, был написан им под мою диктовку, специально для вас, месье де Мор\nЯ давно за вами наблюдаю, с самого того дня, как мы встретились на мысе Каточе. Ведь это вы забрали с трупа дона Диего карту Двух Появлений? Не отпирайтесь: я знаю, что это вы.";
+			link.l1 = "Вам тоже известно о Страже Истины?";
 			link.l1.go = "isladevieques_3";
 		break;
 		
 		case "isladevieques_3":
-			dialog.text = "That's a stupid question. Of course, I do. And I know that you have the Chief's  Claw on you too. And soon you will give back those items, which do not belong to you.";
-			link.l1 = "I'm glad you don't wobble like Don Diego. I appreciate honestly and directness. As I understand you have the compass, the Arrow of the Way?";
+			dialog.text = "Глупый вопрос. Конечно, известно. Мне также известно и то, что дага 'Коготь вождя' также находится у вас. И вы скоро отдадите эти предметы, которые вам не принадлежат.";
+			link.l1 = "Я рад, что вы не виляете, как дон Диего. Люблю честность и прямоту. Как я понимаю, компас 'Стрела пути' у вас?";
 			link.l1.go = "isladevieques_4";
 		break;
 		
 		case "isladevieques_4":
-			dialog.text = "Haw-haw! Well, we'll be honest right down til the end... Do you really believe, sir, that I'm such an idiot, like you and Don Diego, that I would carry around such precious object with me? The compass is on Jamaica and not even in Port Royal, but in a place where no one would even think about looking and under a safe lock. But you won't be needing that information.";
+			dialog.text = "Хо-хо! Ну, будем честны до конца... неужели вы думаете, сударь, что я такой же идиот, как вы и дон Диего, что таскаю столь ценные предметы с собой? Компас лежит на Ямайке, и даже не в Порт-Рояле, а в месте, где никому даже в голову не придет его искать, и под надежным замком. Но вам эта информация не пригодится.";
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth.OfficerKill"))
 			{
-				link.l1 = "As I understand, you've already buried me, mr. Patterson? I dare proclaim that the cat has one life left!.. Where are my officers?";
+				link.l1 = "Как я понимаю, вы меня уже похоронили, мистер Патерсон? Смею заметить, у кошки осталась в запасе еще одна жизнь!.. Где мои офицеры?";
 				link.l1.go = "isladevieques_5_1";
 			}
 			else
 			{
-				link.l1 = "As I understand, you've already buried me, mr. Patterson? I dare proclaim that the cat has one life left!..";
+				link.l1 = "Как я понимаю, вы меня уже похоронили, мистер Патерсон? Смею заметить, у кошки осталась в запасе еще одна жизнь!..";
 				link.l1.go = "isladevieques_5_2";
 			}
 		break;
@@ -121,26 +121,26 @@ void ProcessDialogEvent()
 		case "isladevieques_5_1":
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth.GirlKill"))
 			{
-				dialog.text = "Worried for your lady friend, captain? Your woman is lying over there in the bushes with a hole in her forehead. She's laid out the way for you and you will soon join alongside her. I say, such a pretty girl she was! Hope you fucked her more than once?";
-				link.l1 = "You... DIE!";
+				dialog.text = "Переживаете за свою подружку, капитан? Ваша девка лежит вон там, в кустах, с дыркой во лбу. Она проложила вам дорожку, и вы скоро отправитесь следом за ней.";
+				link.l1 = "Ты за это дорого заплатишь, ублюдок!";
 				link.l1.go = "isladevieques_6";
 			}
 			else
 			{
-				dialog.text = "Your officers have laid out the road for you, monsieur de Maure. They're lying over there in the bushes. Soon you join alongside them.";
-				link.l1 = "We'll see about that!";
+				dialog.text = "Ваши офицеры проложили вам дорогу, месье де Мор. Они лежат вон там, в кустах. Скоро и вы отправитесь следом.";
+				link.l1 = "Это мы еще посмотрим!";
 				link.l1.go = "isladevieques_6";
 			}
 		break;
 		
 		case "isladevieques_5_2":
-			dialog.text = "We'll make sure it really remains your last.";
-			link.l1 = "We'll see about that!";
+			dialog.text = "Мы позаботимся о том, чтобы она стала действительно последней.";
+			link.l1 = "Это мы еще посмотрим!";
 			link.l1.go = "isladevieques_6";
 		break;
 		
 		case "isladevieques_6":
-			dialog.text = "You make me laugh. One against a whole troop! Anyway, enough chatting... Aim your muskets! Fire!";
+			dialog.text = "Вы смешны. В одиночку против целого отряда! Впрочем, довольно увлекательных бесед... Мушкеты на изготовку! Пли!";
 			link.l1 = "...";
 			link.l1.go = "isladevieques_7";
 		break;

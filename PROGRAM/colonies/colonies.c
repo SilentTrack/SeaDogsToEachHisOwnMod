@@ -66,7 +66,7 @@ string Colony_GetLighthouseId(string _colony)
 	}
 	else
 	{
-		log_Testinfo("Lighthouse not found");
+		log_Testinfo("Маяк не найден");
 		sMayak = "";
 	}
 	return sMayak;

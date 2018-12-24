@@ -11,8 +11,8 @@ int CreateTortugaCharacters(int n)
 	ch.id = "Tortuga_Mayor";
 	ch.model	= "huber_6";
 	ch.sex = "man";
-	ch.name 	= "Francois";
-    ch.lastname = "Levasseur";
+	ch.name 	= "Франсуа";
+    ch.lastname = "Левассер";
 	ch.City = "Tortuga";
 	ch.location	= "Tortuga_townhall";
 	ch.location.group = "sit";
@@ -181,7 +181,7 @@ int CreateTortugaCharacters(int n)
 
 	makeref(ch,Characters[n]);			//Хозяйка борделя
 	ch.id		= "Tortuga_Hostess";
-	ch.name		= "Janetta"
+	ch.name		= "Жанетта"
 	ch.lastname = "";
 	ch.model	= "maman_6";
 	ch.model.animation = "woman_B";
@@ -199,7 +199,7 @@ int CreateTortugaCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "Tortuga_Smuggler";
 	ch.model    = "citiz_30";

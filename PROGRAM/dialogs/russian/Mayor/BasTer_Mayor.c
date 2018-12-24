@@ -4,57 +4,57 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What do you want? Ask away.", "I am listening to you, what's the question?"), "It is the second time you are trying to ask...", "It is the third time you are again trying to ask...",
-                          "When is it going to end?! I am a busy man, working on the colony's matters and you are still trying to ask something!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Not now. There is no time."), "True... But later, not now...",
-                      "I'll ask, I'll ask... a bit later though...", "I am sorry, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);			  
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Что вы хотели? Спрашивайте.", "Я слушаю вас, что за вопрос?"), "Второй раз за день вы пытаетесь задать ворпос...", "В третий раз за день вы опять пытаетесь задать вопрос...",
+                          "Да когда же это кончится?! У меня дел полно по управлению делами города, а ты все вопросы пытаешься задать!", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал"+ GetSexPhrase("","а") +"...", "Не сейчас, не место и не время..."), "Да, верно... Но не сейчас, позже...",
+                      "Задам, задам... Только позже...", "Извините, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth.Baster_church") && !CheckAttribute(npchar, "quest.utensil"))
 			{
-				link.l1 = "I have got a delicate matter for you. No long ago one privateer has granted a golden cross with a lazurite on it to the parish of Basse-Terre. The problem is that the cross was stolen from the Santiago's parish and the servant was murdered during the theft...";
+				link.l1 = "У меня к вам щекотливое дело. Недавно приходу Бас-Тера неким капером была подарена драгоценность - золотой крест с лазуритом. Беда в том, что этот крест был похищен из прихода Сантьяго, причем при похищении был убит церковный служка...";
                 link.l1.go = "guardoftruth";
 			}
 			// Jason НСО
 			if (CheckAttribute(pchar, "questTemp.Patria") && pchar.questTemp.Patria == "epizode_9_continue" && !CheckAttribute(npchar, "quest.frigate"))
 			{
-				link.l1 = "I arrived by the order of Governor General Philippe de Poincy to take command of your armed frigate.";
+				link.l1 = "Я прибыл по приказу генерал-губернатора Филиппа де Пуанси чтобы принять командование над снаряженным вами фрегатом.";
                 link.l1.go = "patria";
 			}
 			if (CheckAttribute(npchar, "quest.frigate.wait") && GetCompanionQuantity(pchar) < 5)
 			{
-				link.l1 = "I'm ready to take the frigate into the squadron.";
+				link.l1 = "Я готов принять в эскадру фрегат.";
                 link.l1.go = "patria_2";
 			}
 		break;
 		//************************** Квестовые штрумы ************************
 		case "Cupture_after":
-            dialog.text = RandPhraseSimple("You have already taken everything. What else do you want?", "Haven't you taken already everything?");
-            link.l1 = RandPhraseSimple("Just a final search for the loot...", "Just checking, I may have forgotten to take something...");
+            dialog.text = RandPhraseSimple("Вы уже все забрали. Что вам еще нужно?", "Неужели осталось еще что-то, что вы не прихватили?");
+            link.l1 = RandPhraseSimple("Осматриваюсь напоследок...", "Проверяю, может забыл"+ GetSexPhrase("","а") +" что забрать...");
             link.l1.go = "exit";
             NextDiag.TempNode = "Cupture_after";
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "Hm. That's quite interesting. But why do you think that I care about problems of Spanish?";
-			link.l1 = "It is not about the Spanish, monsieur. Nation's matters mean nothing to the religion. There is an item which is covered in the holy servant's blood in your parish and there was a desecration made to the Santiago's parish...";
+			dialog.text = "Хм. Очень интересно. Но почему же вы считаете, что проблемы испанцев должны меня волновать?";
+			link.l1 = "Дело не в испанцах, месье. Религия не делит людей по национальному признаку. В вашем приходе сейчас находится вещь, политая кровью невинного церковнослужителя, а в отношении прихода Сантьяго совершено святотатство...";
 			link.l1.go = "guardoftruth_1";
 		break;
 		
 		case "guardoftruth_1":
 			dialog.text = "";
-			link.l1 = "I ask you to show a justice and to order holy father to return the cross to it's owners.";
+			link.l1 = "Я прошу вас проявить справедливость и приказать святому отцу вернуть крест тому приходу, которому он принадлежит.";
 			link.l1.go = "guardoftruth_2";
 		break;
 		
 		case "guardoftruth_2":
-			dialog.text = "And since when you have become such a true and earnest believer, "+pchar.name+"? Spanish are not friends of ours and I see no reason to push on the holy father in this matter. The cross was a gift and that's fine. Our priest has no connection to that theft and murder, so...";
-			link.l1 = "And you can't help me, right?";
+			dialog.text = "И с каких это пор вы стали таким ревностным и добропорядочным верующим, а, "+pchar.name+"? Испанцы нам не друзья, и я не считаю должным оказывать давление на святого отца в этом вопросе. Подарен крест - и ладно. Наш священник никакого отношения к грабежу и убийству не имеет, так что...";
+			link.l1 = "Ничем не можете мне помочь?";
 			link.l1.go = "guardoftruth_3";
 		break;
 		
 		case "guardoftruth_3":
-			dialog.text = "To be honest, "+pchar.name+", I don't feel that I have to. I have no love to those Papist's fanatics.";
-			link.l1 = "I see. Farewell then, monsieur...";
+			dialog.text = "Буду откровенным, "+pchar.name+": и не считаю должным. Я не испытываю любви к этим папистским фанатикам.";
+			link.l1 = "Ясно. Простите за беспокойство, месье...";
 			link.l1.go = "guardoftruth_4";
 		break;
 		
@@ -68,14 +68,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "patria":
 			if (GetCompanionQuantity(pchar) > 4)
 			{
-				dialog.text = "The ship is ready, but you do not have room for it. Reduce your squadron and return, and I will immediately give you the frigate.";
-				link.l1 = "Fine.";
+				dialog.text = "Корабль готов, но у вас нет места для него. Уменьшите вашу эскадру и возвращайтесь, и я сразу передам вам фрегат.";
+				link.l1 = "Хорошо.";
 				link.l1.go = "patria_1";
 			}
 			else
 			{
-				dialog.text = "Yes, of course, the ship is ready to sail. The captain is aware and will carry out all your orders.";
-				link.l1 = "Then we're setting out. Farewell, Your Grace.";
+				dialog.text = "Да, конечно, корабль готов к выходу в море. Капитан осведомлен и будет выполнять все ваши распоряжения.";
+				link.l1 = "Тогда мы отправляемся в путь. До свидания, Ваша Светлость.";
 				link.l1.go = "patria_3";
 			}
 		break;
@@ -87,8 +87,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "patria_2":
 			DeleteAttribute(npchar, "quest.frigate.wait");
-			dialog.text = "Excellent. Prepare to greet your new ship. The captain is aware and will follow all your orders.";
-			link.l1 = "Then we're setting out. Farewell, Your Grace.";
+			dialog.text = "Отлично. Принимайте. Капитан осведомлен и будет выполнять все ваши распоряжения.";
+			link.l1 = "Тогда мы отправляемся в путь. До свидания, Ваша Светлость.";
 			link.l1.go = "patria_3";
 		break;
 		

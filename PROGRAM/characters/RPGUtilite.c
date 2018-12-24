@@ -1,7 +1,7 @@
 // 11.08.05 Boal Модуль для новой РПГ системы S.P.E.C.I.A.L
 // метод для совместимости с .ИНИ файлом (секция SKILLCHANGER)
 
-#define MAX_ACHIEVMENTS		70
+#define MAX_ACHIEVMENTS		71
 
 // порог ранга
 int GetCharacterRankRate(ref _refCharacter)
@@ -1256,6 +1256,11 @@ int GetCharacterSkillSimple(ref _refCharacter, string skillName)
 			}
 		}
 		
+		if(CheckCharacterPerk(_refCharacter, "HT2") && skillName == SKILL_SNEAK)
+		{
+			skillN = skillN * 1.15;
+		}
+		
     	// boal учет перегруза 19.01.2004 -->
     	if ( GetItemsWeight(_refCharacter) > GetMaxItemsWeight(_refCharacter) && !IsEquipCharacterByArtefact(_refCharacter, "totem_06"))
     	{
@@ -1742,7 +1747,7 @@ string Achievment_GetID(int achievNum)
 		case 48  :	id = "ach_48"; break;
 		case 49  :	id = "ach_49"; break;
 		case 50  :	id = "ach_50"; break;
-		case 51  :	id = "ach_51"; break;
+		case 51  :	id = "ach_51"; break;		
 		case 52  :	id = "ach_52"; break;
 		case 53  :	id = "ach_53"; break;
 		case 54  :	id = "ach_54"; break;
@@ -1765,6 +1770,7 @@ string Achievment_GetID(int achievNum)
 		case 71  :	id = "ach_71"; break;
 //		case 72  :	id = "ach_72"; break;
 //		case 73  :	id = "ach_73"; break;
+		case 79  :	id = "ach_79"; break;
 	}
 	return id;
 }
@@ -1824,7 +1830,7 @@ string Stat_GetID(int achievNum)
 		case 48  :	id = "stat_48"; break;
 		case 49  :	id = "stat_49"; break;
 		case 50  :	id = "stat_50"; break;
-		case 51  :	id = "stat_51"; break;
+		case 51  :	id = "stat_51"; break;		
 		case 52  :	id = "stat_52"; break;
 		case 53  :	id = "stat_53"; break;
 		case 54  :	id = "stat_54"; break;
@@ -1847,11 +1853,12 @@ string Stat_GetID(int achievNum)
 		case 71  :	id = "stat_71"; break;
 //		case 72  :	id = "stat_72"; break;
 //		case 73  :	id = "stat_73"; break;
+		case 79  :	id = "stat_79"; break;
 	}
 	return id;
 }
 // <<-- сервисные функции
-#event_handler("NextDay","AchievmentsDayUpdateStart");
+//#event_handler("NextDay","AchievmentsDayUpdateStart");
 #event_handler("EvAchievmentsDayUpdate","AchievmentsDayUpdate");
 int AchievmentsDayUpdateCnt = 0;
 void AchievmentsDayUpdateStart()
@@ -1889,13 +1896,13 @@ void CheckAchievments(ref _chref, int achievNum)
 	
     if (sti(_chref.index) != GetMainCharacterIndex()) return; // оптимизация, выходим если не ГГ
 	
-	if(!bSteamAchievements) return;
+	if(!bSteamAchievements) return;	
 	
 	switch (achievNum)
 	{		
 		case 5 :	// Легендарный :  уровень >= 40
 			if(sti(_chref.rank) >= 40) Achievment_SetStat(_chref, 5, 1);
-		break;
+		break;			
 		case 11 : 	// Баловень судьбы : (удача = 100%)
 			if(GetSkillValue(_chref, SKILL_TYPE, SKILL_FORTUNE) >= 100)	Achievment_SetStat(_chref, 11, 1);
 		break;
@@ -1918,29 +1925,29 @@ void CheckAchievments(ref _chref, int achievNum)
 			if(GetSkillValue(_chref, SKILL_TYPE, SKILL_SAILING) >= 100)	Achievment_SetStat(_chref, 17, 1);
 		break;
 		case 18 : 	// Негоциант : (торговля = 100%)
-			if(GetSkillValue(_chref, SKILL_TYPE, SKILL_COMMERCE) >= 100)	Achievment_SetStat(_chref, 18, 1);
+			if(GetSkillValue(_chref, SKILL_TYPE, SKILL_COMMERCE) >= 100) Achievment_SetStat(_chref, 18, 1);
 		break;						
 		case 19  :	// Джедай :  достичь максимальной репутации
 			if(sti(_chref.reputation.nobility) > 95) Achievment_SetStat(_chref, 19, 1);
 		break;
 		case 20  :	// Ситх : достичь минимальной репутации
 			if(sti(_chref.reputation.nobility) < 5) Achievment_SetStat(_chref, 20, 1);
-		break;
+		break;		
 		case 28  :	// Скряга : сколотить капитал >= 10 000 000
 			if(sti(_chref.money) >= 10000000) Achievment_SetStat(_chref, 28, 1);
-		break;
+		break;		
 		case 30  :	// Флотоводец : собрать максимальную эскадру
 			if(GetRemovableCompanionsNumber(_chref) == COMPANION_MAX) Achievment_SetStat(_chref, 30, 1);
-		break;
+		break;		
 		case 32  :	// Болезненный : уронить здоровье до минимума
 			if(GetHealthNum(_chref) <= 5) Achievment_SetStat(_chref, 32, 1);
 		break;
 		case 33  :	// Коллекционер : собрать коллекцию из 100 сокровищ
-			if(CheckItemMyCabin("icollection") >= 100) Achievment_SetStat(_chref, 33, 1);
-		break;
+			if(CheckItemMyCabin("icollection") >= 100 || GetCharacterItem(_chref, "icollection") >= 100 ) Achievment_SetStat(_chref, 33, 1);
+		break;						
 		case 42  :	// Ростовщик :  вклады у ростовщиков на 5000000 песо
 			if(CheckTotalDepositsSum(_chref, 5000000)) Achievment_SetStat(_chref, 42, 1);
-		break;
+		break;		
 		case 44  :	// Ветер Перемен -  прохождение за Голландию
 			if(CheckAttribute(_chref,"questTemp.HWIC.Detector") && (_chref.questTemp.HWIC.Detector == "holl_win")) Achievment_SetStat(_chref, 44, 1);
 		break;
@@ -1959,18 +1966,13 @@ void CheckAchievments(ref _chref, int achievNum)
 		case 49  :  // Морской дьявол -  стать капитаном Калеуче
 			if(CheckAttribute(_chref, "questTemp.Caleuche.Abordage") && (RealShips[sti(_chref.Ship.Type)].BaseType == SHIP_CURSED_FDM)) Achievment_SetStat(_chref, 49, 1);
 		break;
-		// новые
 		case 54  :  // "Путешественник" - посетить все колонии (таверны) 
 			if(sti(pchar.questTemp.TavernVisit.counter) == 28) Achievment_SetStat(_chref, 54, 1);
 		break;
 		case 55  :  // "Команда профессионалов" - нанять офицеров на все должности
 		    if(CheckForAllOfficers()) Achievment_SetStat(_chref, 55, 1);
 		break;
-/*		
-		case 56  :  // "Долгожитель" - проведено в игре 100 часов
-		    if(GetPlayTimeHours() >= 100) Achievment_SetStat(_chref, 56, 1);
-		break;
-*/		
+	
 		case 62  :  // за три приготовленных зелья из Мангаросы
 			if(CheckAttribute(_chref, "Mangarosa.Alchemy.MP") && CheckAttribute(_chref, "Mangarosa.Alchemy.MF") && CheckAttribute(_chref, "Mangarosa.Alchemy.MT")) Achievment_SetStat(_chref, 62, 1);
 		break;
@@ -1983,12 +1985,14 @@ void CheckAchievments(ref _chref, int achievNum)
 		case 69  :  // "найм" монаха-капеллана
 			if(CheckAttribute(_chref,"questTemp.ShipCapellan.Yes") && (_chref.questTemp.ShipCapellan.Yes == "true")) Achievment_SetStat(_chref, 69, 1);
 		break;
-//		case 72  :  // "Опытный" - проведено в игре 500 часов
-//		    if(GetPlayTimeHours() >= 500) Achievment_SetStat(_chref, 72, 1);
-//		break;
-//		case 73  :  // "Матерый" - проведено в игре 1000 часов
-//		    if(GetPlayTimeHours() >= 1000) Achievment_SetStat(_chref, 73, 1);
-//		break;
+/*		
+		case 72  :  // "Опытный" - проведено в игре 500 часов
+		    if(GetPlayTimeHours() >= 500) Achievment_SetStat(_chref, 72, 1);
+		break;
+		case 73  :  // "Матерый" - проведено в игре 1000 часов
+		    if(GetPlayTimeHours() >= 1000) Achievment_SetStat(_chref, 73, 1);
+		break;
+*/		
 	}	
 }
 
@@ -2037,63 +2041,63 @@ void Achievment_SetStat(ref _chref, int achievNum, int _add)
 		case 1  :	// Боевое крещение : первая морская победа в игре
 			if(curState >= 1)
 			{
-				aName = "Baptism of fire";
+				aName = "Боевое крещение";
 				bOk = true;
 			}
 		break;
 		case 2  :	// Абордажник - абордаж кораблей (250)
 			if(curState >= 250)
 			{
-				aName = "Fighter";
+				aName = "Абордажник";
 				bOk = true;
 			}
 		break;
 		case 3  :	// Морской волк - уничтожение кораблей (500)
 			if(curState >= 500)
 			{
-				aName = "Sea wolf";
+				aName = "Морской волк";
 				bOk = true;
 			}
 		break;		
 		case 4  :	// Джентльмен удачи : полностью уничтожен Золотой Флот
 			if(curState >= 1)
 			{
-				aName = "Gentleman of fortune";
+				aName = "Джентльмен удачи";
 				bOk = true;
 			}
 		break;		
 		case 5 :	// Легендарный :  уровень >= 40
 			if(curState >= 1)			
 			{
-				aName = "Legendary";
+				aName = "Легендарный";
 				bOk = true;
 			}
 		break;	
 		case 6 :	// Покрытый шрамами : потрачено здоровья >= 10000
 			if(curState >= 10000)			
 			{
-				aName = "Scarred";
+				aName = "Покрытый шрамами";
 				bOk = true;
 			}		
 		break;
 		case 7 :	// Алхимик : кол-во актов алхимии >= 200
 			if(curState >= 200)
 			{	
-				aName = "Alchemist";
+				aName = "Алхимик";
 				bOk = true;			
 			}
 		break;	
 		case 8	:	// Кладоискатель : (>= 100 вырытых кладов)
 			if(CurState >= 100)
 			{	
-				aName = "Treasure hunter";
+				aName = "Кладоискатель";
 				bOk = true;			
 			}		
 		break;		
 		case 9  :	// Врунгель : победа в регате
 			if(curState >= 1)
 			{
-				aName = "Yachtsman";
+				aName = "Врунгель";
 				bOk = true;
 			}
 		break;				
@@ -2107,323 +2111,323 @@ void Achievment_SetStat(ref _chref, int achievNum, int _add)
 		case 11 : 	// Баловень судьбы : (удача = 100%)
 			if(curState >= 1)			
 			{
-				aName = "Darling of fortune";
+				aName = "Баловень судьбы";
 				bOk = true;
 			}
 		break;
 		case 12 : 	// Фехтовальщик : (фехт в ЛО = 100%)			
 			if(curState >= 1)			
 			{
-				aName = "Swordsman";
+				aName = "Фехтовальщик";
 				bOk = true;
 			}
 		break;
 		case 13 : 	// Гусар : (фехт в СО = 100%)
 			if(curState >= 1)			
 			{
-				aName = "Hussar";
+				aName = "Гусар";
 				bOk = true;
 			}
 		break;
 		case 14 : 	// Драгун : (фехт в ТО = 100%)
 			if(curState >= 1)			
 			{
-				aName		= "Dragoon";
+				aName		= "Драгун";
 				bOk = true;
 			}			
 		break;		
 		case 15 : 	// Шпион : (скрытность = 100%)
 			if(curState >= 1)			
 			{
-				aName = "Spy";
+				aName = "Шпион";
 				bOk = true;
 			}			
 		break;
 		case 16 : 	// Крепкий орешек : (защита = 100%)			
 			if(curState >= 1)			
 			{
-				aName = "Die hard";
+				aName = "Крепкий орешек";
 				bOk = true;
 			}
 		break;
 		case 17 : 	// Адмирал : (навигация = 100%)
 			if(curState >= 1)			
 			{
-				aName = "Navigator";
+				aName = "Адмирал";
 				bOk = true;
 			}
 		break;
 		case 18 : 	// Негоциант : (торговля = 100%)
 			if(curState >= 1)			
 			{
-				aName = "Trader";
+				aName = "Негоциант";
 				bOk = true;
 			}
 		break;						
 		case 19  :	// Джедай :  достичь максимальной репутации
 			if(curState >= 1)			
 			{
-				aName = "Hero";
+				aName = "Джедай";
 				bOk = true;
 			}
 		break;
 		case 20  :	// Ситх : достичь минимальной репутации
 			if(curState >= 1)			
 			{
-				aName = "Scoundrel";
+				aName = "Ситх";
 				bOk = true;
 			}
 		break;		
 		case 21  :	// Душегуб : 9999 погибших матросов в экипаже ГГ
 			if(curState >= 9999)
 			{
-				aName = "Murderer";
+				aName = "Душегуб";
 				bOk = true;
 			}
 		break;
 		case 22  :	// Ветеран : разгромить >= 15 фортов
 			if(curState >= 15)
 			{
-				aName = "Veteran";
+				aName = "Ветеран";
 				bOk = true;
 			}		
 		break;
 		case 23  :	// Ветреный " посетить бордель 100 раз
 			if(curState >= 100)
 			{
-				aName = "Light-headed";
+				aName = "Ветреный";
 				bOk = true;
 			}
 		break;
 		case 24  :	// Постоялец : заночевать в таверне >=50 раз
 			if(curState >= 50)
 			{
-				aName = "Guest";
+				aName = "Постоялец";
 				bOk = true;
 			}
 		break;
 		case 25  :	// Азартный игрок : (выигрыш в карты/кости >= 500 )	
 			if(curState >= 500)
 			{
-				aName = "Gambler";
+				aName = "Азартный игрок";
 				bOk = true;
 			}
 		break;
 		case 26  :	// Транжира : (проигрыш в карты/кости >= 500 )		
 			if(curState >= 500)
 			{
-				aName = "Spender";
+				aName = "Транжира";
 				bOk = true;
 			}		
 		break;
 		case 27  :	// снайпер : убийство из пистолета >= 500
 			if(curState >= 500)
 			{
-				aName = "Sniper";
+				aName = "Снайпер";
 				bOk = true;
 			}		
 		break;		
 		case 28  :	// Скряга : сколотить капитал >= 10 000 000
 			if(curState >= 1)			
 			{
-				aName = "Miser";
+				aName = "Скряга";
 				bOk = true;
 			}		
 		break;
 		case 29  :	// Доброе сердце : взять в команду кораблекрушенцев (>= 100)
 			if(curState >= 100)
 			{
-				aName = "Good-hearted";
+				aName = "Доброе сердце";
 				bOk = true;
 			}		
 		break;		
 		case 30  :	// Флотоводец : собрать максимальную эскадру
 			if(curState >= 1)			
 			{
-				aName = "Admiral";
+				aName = "Флотоводец";
 				bOk = true;
 			}
 		break;		
 		case 31  :	// Контрабандист : >=50 удачных сделок с контрабандистами
 			if(curState >= 50)
 			{
-				aName = "Smuggler";
+				aName = "Контрабандист";
 				bOk = true;
 			}		
 		break;		
 		case 32  :	// Болезненный : уронить здоровье до минимума
 			if(curState >= 1)			
 			{
-				aName = "Unhealthy";
+				aName = "Болезненный";
 				bOk = true;
 			}		
 		break;
 		case 33  :	// Коллекционер : собрать коллекцию из 100 сокровищ
 			if(CurState >= 1)			
 			{
-				aName = "Collector";
+				aName = "Коллекционер";
 				bOk = true;
 			}		
 		break;		
 		case 34  :	// Гибель врагам : убийство военных (>=500)
 			if(curState >= 500)
 			{
-				aName = "The death of enemies";
+				aName = "Гибель врагам";
 				bOk = true;
 			}		
 		break;
 		case 35  :	// Безжалостный : убийство гражданских (>= 500)
 			if(curState >= 500)
 			{
-				aName = "Ruthless";
+				aName = "Безжалостный";
 				bOk = true;
 			}		
 		break;
 		case 36  :	// Конкистадор :  убийство индейцев (>=250)
 			if(curState >= 250)
 			{
-				aName = "Conquistador";
+				aName = "Конкистадор";
 				bOk = true;
 			}				
 		break;
 		case 37  :	// Экзорцист :  убийство нечисти (>=100)
 			if(CurState >= 100)
 			{
-				aName = "Holy warrior";
+				aName = "Экзорцист";
 				bOk = true;
 			}				
 		break;
 		case 38  :	// Красная книга : убийство крабов (>=35)
 			if(curState >= 35)
 			{
-				aName = "Fisher";
+				aName = "Красная книга";
 				bOk = true;
 			}				
 		break;
 		case 39  :	// Торговец : Заработать торговлей/перепродажей 10000000
 			if(CurState >= 10000000)
 			{
-				aName = "Negotiant";
+				aName = "Торговец";
 				bOk = true;
 			}						
 		break;		
 		case 40  :	// Исследователь : исследовать данжи (>=50)
 			if(CurState >= 50)
 			{
-				aName = "Researcher";
+				aName = "Исследователь";
 				bOk = true;
 			}						
 		break;
 		case 41  :	// Щедрый : раздать милостыню 200 раз
 			if(curState >= 200)
 			{
-				aName = "Generous";
+				aName = "Щедрый";
 				bOk = true;
 			}						
 		break;		
 		case 42  :	// Ростовщик :  вклады у ростовщиков на 5000000 песо
 			if(curState >= 1)			
 			{
-				aName		= "Usurer";
+				aName		= "Ростовщик";
 				bOk = true;
 			}						
 		break;		
 		case 43  :	// Работорговец : продажа >= 5000 рабов
 			if(curState >= 5000)			
 			{
-				aName = "Slaver";
+				aName = "Работорговец";
 				bOk = true;
 			}				
 		break;		
 		case 44  :	// Ветер Перемен -  прохождение за Голландию
 			if(curState >= 1)			
 			{
-				aName = "The wind of change";
+				aName = "Ветер перемен";
 				bOk = true;
 			}
 		break;
 		case 45  :	// На службе Империи -  прохождение за Англию
 			if(curState >= 1)			
 			{
-				aName = "In the service of the empire";
+				aName = "На службе Империи";
 				bOk = true;
 			}
 		break;
 		case 46  :	// Не зная страха - прохождение "Против всех"			
 			if(curState >= 1)			
 			{
-				aName = "No fear";
+				aName = "Не зная страха";
 				bOk = true;
 			}
 		break;
 		case 47  :	// Простодушный -  провальный финал
 			if(curState >= 1)			
 			{
-				aName = "Simple-minded";
+				aName = "Простодушный";
 				bOk = true;
 			}
 		break;
 		case 48  :	// Усердный -  настоящий финал
 			if(curState >= 1)			
 			{
-				aName = "Diligent";
+				aName = "Усердный";
 				bOk = true;
 			}
 		break;
 		case 49  :  // Морской дьявол -  стать капитаном Калеуче
 			if(curState >= 1)			
 			{
-				aName = "Sea Devil";
+				aName = "Морской дьявол";
 				bOk = true;
 			}
-		break;
+		break;		
 		case 50  :	// Морской разбойник -  утопить под пиратским флагом >=100 кораблей
 			if(curState >= 100)
 			{
-				aName = "Pirat";
+				aName = "Морской разбойник";
 				bOk = true;
 			}
 		break;	
 		case 51  :  // Урок усвоен - пройдена линейка ФМК
 			if(curState >= 1)
 			{
-				aName = "Lesson Learnt";
+				aName = "Урок усвоен";
 				bOk = true;
 			}
-		break;
+		break;		
 		case 52  :  // "Законник" - убийство бандитов >= 250
 			if(curState >= 250)			
 			{
-				aName = "Vigilante";
+				aName = "Законник";
 				bOk = true;
 			}		
 		break;
 		case 53  : // "Гроза Архипелага" - убийство пиратов >= 500
 			if(curState >= 500)			
 			{
-				aName = "Caribbean Menace";
+				aName = "Гроза Архипелага";
 				bOk = true;
 			}		
 		break;
 		case 54  :  // "Путешественник" - посетить все колонии (таверны)
 			if(curState >= 1)			
 			{
-				aName = "Travaler";
+				aName = "Путешественник";
 				bOk = true;
 			}		
 		break;
 		case 55  :  // "Команда профессионалов" - нанять офицеров на все должности
 			if(curState >= 1)			
 			{
-				aName = "Crew of Pro's";
+				aName = "Команда профессионалов";
 				bOk = true;
 			}		
 		break;
 /*		
-		case 56  :  // "Долгожитель" - проведено в игре 100 часов
+		case 56  :  // "Герой нации" - спецачива DLC #4
 			if(curState >= 1)			
 			{
-				aName = "Long-Liver";
+				aName = "Герой нации";
 				bOk = true;
 			}				
 		break;
@@ -2431,105 +2435,105 @@ void Achievment_SetStat(ref _chref, int achievNum, int _add)
 		case 57  :  // "На скользком пути" - спецачива DLC #3
 			if(curState >= 1)			
 			{
-				aName = "On a Slippery Track";
+				aName = "На скользком пути";
 				bOk = true;
 			}						
 		break;
 		case 58  :  // "Под черным флагом" - спецачива DLC #3
 			if(curState >= 1)			
 			{
-				aName = "Flying the Jolly Roger";
+				aName = "Под черным флагом";
 				bOk = true;
 			}								
 		break;
 		case 59  :  // за 50 поднятых бочёнков (энкаунтер на глобальной карте)
 			if(curState >= 50)			
 			{
-				aName = "Fisher";
+				aName = "Ловильщик";
 				bOk = true;
 			}
 		break;
 		case 60  :  // за 20 спасённых капитанов (энкаунтер на глобальной карте)
 			if(curState >= 20)			
 			{
-				aName = "Good-hearted";
+				aName = "Благодушный";
 				bOk = true;
 			}				
 		break;
 		case 61  :  // за 200 сброшенных/установленных в бою мин
 			if(curState >= 200)			
 			{
-				aName = "Miner";
+				aName = "Минер";
 				bOk = true;
 			}						
 		break;
 		case 62  :  // за три приготовленных зелья из Мангаросы
 			if(curState >= 1)			
 			{
-				aName = "Herbalist";
+				aName = "Травник";
 				bOk = true;
 			}		
 		break;
 		case 63  :  // за ремонт на всех верфях архипелага
 			if(curState >= 1)			
 			{
-				aName = "Profitable Customer";
+				aName = "Выгодный клиент";
 				bOk = true;
 			}		
 		break;
 		case 64  :  // за самостоятельный ремонт в бухте
 			if(curState >= 5)			
 			{
-				aName = "Handy";
+				aName = "Умелец";
 				bOk = true;
 			}				
 		break;
 		case 65  :  // за возвращение Фадею его персидской коллекции;
 			if(curState >= 1)			
 			{
-				aName = "Antiquarian";
+				aName = "Антиквар";
 				bOk = true;
 			}		
 		break;
 		case 66  :  // за апгрейд корабля
 			if(curState >= 1)			
 			{
-				aName = "Construct";
+				aName = "Конструктор";
 				bOk = true;
 			}				
 		break;
 		case 67  :  // за аренду склада
 			if(curState >= 1)			
 			{
-				aName = "Renter";
+				aName = "Арендатор";
 				bOk = true;
 			}		
 		break;
 		case 68  :  // за несколько купленных фальшивых карт кладов  (5)
 			if(curState >= 5)			
 			{
-				aName = "Sea Calf";
+				aName = "Тюлень";
 				bOk = true;
 			}		
 		break;
 		case 69  :  // "найм" монаха-капеллана
 			if(curState >= 1)			
 			{
-				aName = "Spiritual Defence";
+				aName = "Духовная защита";
 				bOk = true;			
 			}
 		break;				
 		case 70  :  // за победу в конкурсе "Пей до дна" ))
 			if(curState >= 1)			
 			{
-				aName = "Blue Nose";
+				aName = "Сизый нос";
 				bOk = true;
 			}				
 		break;
 		case 71  :  // "Карибский отравитель" - спецачива DLC #3
 			if(curState >= 1)			
 			{
-				aName = "Caribbean Poisoner";
+				aName = "Карибский отравитель";
 				bOk = true;
 			}				
 		break;
@@ -2537,38 +2541,46 @@ void Achievment_SetStat(ref _chref, int achievNum, int _add)
 		case 72  :  // "Опытный" - провести в игре 500 часов
 			if(curState >= 1)			
 			{
-				aName = "Experienced";
+				aName = "Опытный";
 				bOk = true;
 			}				
 		break;
 		case 73  :  // "Матерый" - провести в игре 1000 часов
 			if(curState >= 1)			
 			{
-				aName = "Double-dyed";
+				aName = "Матерый";
 				bOk = true;
 			}				
 		break;
-*/
+*/		
+		case 79  :  // "Герой нации" - спецачива DLC #4
+			if(curState >= 1)			
+			{
+				aName = "Герой нации";
+				bOk = true;
+			}				
+		break;
 	}
 		
 	if(bOk)
-	{	
+	{			
 		achState = SetAchievement(sAchiev); // устанавливаем ачивку в стим
 		if(achState == 1) 
 		{
-			Log_SetStringToLog("A new achievement - '" + aName + "'!!");
+			Log_SetStringToLog("Получено новое достижение - '" + aName + "'!!");
 		}	
-	}			
+	}		
 	return;		
 }
 // <-- ачивки 
 
 string GetCharType(aref _enemy)  //TO_DO переделать на тип в НПС
 {
-    string  name  = "Warrior"; // define
-    string  model = _enemy.model;
+    string  name  	= "Warrior"; // define
+    string  model 	= _enemy.model;
 	string  _type;
 	int     iNation = sti(_enemy.nation);
+	
     switch (_enemy.chr_ai.type)
 	{
 		case LAI_TYPE_PATROL :
@@ -2632,9 +2644,7 @@ string GetCharType(aref _enemy)  //TO_DO переделать на тип в НПС
 				if (model == "crabBig")
 				{
 					name = "Crab";
-				}
-				
-				
+				}				
                 if (findsubstr(model, "off_" , 0) != -1)
                 {
                     name = "Solder";
@@ -2666,6 +2676,7 @@ string GetCharType(aref _enemy)  //TO_DO переделать на тип в НПС
 						}					
 					}
 				}					
+				
 		    }
 		break;
 	}
@@ -2708,22 +2719,22 @@ string GetHealthName(ref ch)
     switch (GetHealthNum(ch))
     {
         case 1:
-            name = "AWFUL";
+            name = "УЖАСНОЕ";
         break;
         case 2:
-            name = "BAD";
+            name = "ПЛОХОЕ";
         break;
         case 3:
-            name = "POOR";
+            name = "НЕВАЖНОЕ";
         break;
         case 4:
-            name = "MODERATE";
+            name = "СРЕДНЕЕ";
         break;
         case 5:
-            name = "GOOD";
+            name = "ХОРОШЕЕ";
         break;
         case 6:
-            name = "EXCELLENT";
+            name = "ОТЛИЧНОЕ";
         break;
     }
     return name;
@@ -2736,22 +2747,22 @@ string GetHealthNameMaxSmall(ref ch)
     switch (GetHealthMaxNum(ch))
     {
         case 1:
-            name = "awful";
+            name = "ужасное";
         break;
         case 2:
-            name = "bad";
+            name = "плохое";
         break;
         case 3:
-            name = "poor";
+            name = "неважное";
         break;
         case 4:
-            name = "moderate";
+            name = "среднее";
         break;
         case 5:
-            name = "good";
+            name = "хорошее";
         break;
         case 6:
-            name = "exellent";
+            name = "отличное";
         break;
     }
     return name;
@@ -2829,12 +2840,12 @@ void AddCharacterHealth(ref mainChr, float add)
 
     if (GetHealthNum(mainChr) > remHP)
     {
-        Log_Info("Health got better");
+        Log_Info("Здоровье стало лучше");
     }
 
     if (GetHealthNum(mainChr) < remHP)
     {
-        Log_Info("Health got worse");
+        Log_Info("Здоровье стало хуже");
     }
 }
 
@@ -2881,12 +2892,12 @@ int ChangeCharacterHunterScore(ref chref, string _huntName, int incr)
 	{
 	 	if (prevVal < newVal)
 		{
-			Log_SetStringToLog(XI_ConvertString(_huntName) + "  has increased a price for your head");
+			Log_SetStringToLog(XI_ConvertString(_huntName) + " увеличила награду за Вашу голову");
 		}
 
 	    if (prevVal > newVal)
 		{
-	        Log_SetStringToLog(XI_ConvertString(_huntName) + "  has lowered a price for your head");
+	        Log_SetStringToLog(XI_ConvertString(_huntName) + " снизила награду за Вашу голову");
 		}
 	}
 	else
@@ -2925,14 +2936,14 @@ string GetNationReputation(ref chref, int _Nation)
 
 string GetNationReputationName(int _Nation, int i)
 {
-	if (i <= -10)  return "The reward for the head " + (-i*1000);
-    if (i < 0 )    return "Hostile";
-    if (i <= 20 )  return "Neutral";
-    if (i <= 50 )  return "Good";
-    if (i <= 80 )  return "Exellent";
-    if (i <= 100 ) return "Admiration";
+	if (i <= -10)  return "Награда за голову " + (-i*1000);
+    if (i < 0 )    return "Враждебная";
+    if (i <= 20 )  return "Нейтральная";
+    if (i <= 50 )  return "Хорошая";
+    if (i <= 80 )  return "Отличная";
+    if (i <= 100 ) return "Восхищение";
 
-    return "Exellent";
+    return "Отличная";
 }
 // boal 04.04.04
 string NationShortName(int iNation)
@@ -3235,22 +3246,22 @@ void CCS_SetNewMainCharacter(ref ch, int num)
 		case 1: //Шарль де Мор
 			ch.FaceId 				= 201;
 			ch.HeroModel 			= "Sharle_1,Sharle_2,Sharle_3,Sharle_4,Sharle_5,protocusto,Sharle_6,Sharle_8";
-			ch.name 				= "Charles";
-			ch.lastname				= "de Maure";
-			ch.nameGen				= "Charles";
-			ch.lastnameGen			= "de Maure";
-			ch.nameDat				= "Charles";
-			ch.lastnameDat			= "de Maure";
+			ch.name 				= "Шарль";
+			ch.lastname				= "де Мор";
+			ch.nameGen				= "Шарля";
+			ch.lastnameGen			= "де Мора";
+			ch.nameDat				= "Шарлю";
+			ch.lastnameDat			= "де Мору";
 			ch.sex					= "man";
 			ch.model.animation 		= "man_A";
 			ch.HeroParam.HeroType 	= "HeroType_1";
 			ch.nation				= FRANCE;
 			ch.BaseNation			= FRANCE;
-			ch.info					= "AThe son of a French noble, an idler, a painter, and a lady killer - he has come to the Caribbean in order to find his lost brother. " + 
-									  "This is the place where he is going to find himself, face lies and dangers, seek after knowledge and love. In the end, he will have to get rid of any obstacles to reach the ultimate goal. " + NewStr() +
-                                      "Morals, society, titles and privileges do not mean much to Charles. He knows the price of man's vice, he never experience the bitter taste of defeat or a fight to the death. And how could he possibly gain such experience in the bright and gorgeous salons of Paris?" + 
-									  "Charles was wise enough to understand that his home education couldn't prepare him for real life, so he was taking extra classes." + NewStr() +
-									  "What activities did he find most interesting and promising? ";
+			ch.info					= "Cын французского дворянина, гуляка и ловелас, явился на Карибы, чтобы найти без вести пропавшего брата. " + 
+									  "Здесь ему предстоит обрести себя, открыть новые черты характера, столкнуться с ложью, хитростью и коварством, найти свою любовь, познать непознанное и преодолеть все препятствия на пути к поставленной цели. " + NewStr() +
+                                      "О личном жизненном опыте Шарля нам свидетельствуют его лёгкое отношение к морали и обществу. Он знает цену людским порокам, не ведает горечи поражений и не имеет боевого опыта (да и откуда им взяться в блистательных парижских салонах?), " + 
+									  "совершенно не кичится ни титулом, ни привилегиями. Сознавая малое соответствие полученного в детстве домашнего образования существующим реалиям, разумный Шарль брал индивидуальные уроки. " + NewStr() +
+									  "Наиболее увлекательными и полезными для себя занятиями он находил: ";
 									  
 		break;
 		case 2: // Диего  де Монтойя
@@ -3500,7 +3511,7 @@ void initNewMainCharacter()//инициализация главного героя
 	{
 		ch.Ship.Type = GenerateShipExt((SHIP_CAREERLUGGER + rand(2)), 0, ch);
 		SetBaseShipData(ch);
-		ch.Ship.Name = "Quicksilver";
+		ch.Ship.Name = "Быстрый вепрь";
 		SetCrewQuantity(ch, GetMinCrewQuantity(ch));
 		// коцаем корабль
 		// ch.ship.SP = sti(ch.ship.SP) - 10; <-- этот код не имеет смысла

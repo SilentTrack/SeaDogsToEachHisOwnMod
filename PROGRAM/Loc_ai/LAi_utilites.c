@@ -1282,8 +1282,8 @@ void CreateHWICOffice(aref loc)//Jason, заполнение офиса ГВИК
 		// главный клерк, статик
 		sld = GetCharacter(NPC_GenerateCharacter("HWIC_headclerk", "citiz_9", "man", "man", 20, HOLLAND, -1, false, "citizen"));
 		SetFantomParamFromRank(sld, 20, true);
-		sld.name = "Corice";
-		sld.lastname = "Gerrits";
+		sld.name = "Корис";
+		sld.lastname = "Герритц";
 		sld.Dialog.Filename = "Quest\HollandGambit\HWIC_Office.c";
 		sld.dialog.currentnode = "HWIC_headclerk";
 		sld.greeting = "official";
@@ -1669,7 +1669,7 @@ void CreateKhaelRoaSkeletons(aref loc) //Jason
 						FantomMakeCoolFighter(sld, iRank+5, 80, 80, "topor_01", "", "", 50);
 						LAi_SetHP(sld, iHp, iHp);
 						sld.KhaelRoaMonster = true;
-						sld.name = "Chavinavy";
+						sld.name = "Чавинави";
 						sld.lastname = "";
 						sld.MultiFighter = fMft; // мультифайтер
 					}
@@ -1678,7 +1678,7 @@ void CreateKhaelRoaSkeletons(aref loc) //Jason
 						sld = GetCharacter(NPC_GenerateCharacter(sIdf+"_skeleton_"+i, "skel"+(rand(3)+1), "skeleton", "skeleton", iRank, PIRATE, 1, false, "soldier"));
 						FantomMakeCoolFighter(sld, iRank, 60, 60, LinkRandPhrase("blade_10","blade_06","blade_04"), sPistol, "bullet", 50);
 						LAi_SetHP(sld, iHpt, iHpt);
-						sld.name = "temple undead";
+						sld.name = "храмовая нежить";
 						sld.lastname = "";
 					}
 					sld.LSC_clan = true; // для бесконфликтности
@@ -1959,7 +1959,7 @@ void CreateBrothels(aref loc)
 	}
 }
 
-void CreatePearlVillage(aref loc) // Jason: деревни мискито
+void CreatePearlVillage(aref loc) // Jason: деревни мискито, браво, араваков
 {
 	if (CheckAttribute(loc, "pearlVillage"))
 	{
@@ -2236,7 +2236,7 @@ void CreateMineBandits(aref loc) // Jason: бандиты у рудника у Блювельда
 					chr.dialog.Filename = "Quest\Saga\OtherNPC.c";
 					if (i == 3) chr.dialog.currentnode = "mine_bandit";
 					else chr.dialog.currentnode = "mine_bandit_0";
-					chr.greeting = "bandos";
+					//chr.greeting = "soldier_common";
 					LAi_CharacterReincarnation(chr, true, true);
 					LAi_SetReincarnationRankStep(chr, MOD_SKILL_ENEMY_RATE+2); 
 					LAi_SetCheckMinHP(chr, LAi_GetCharacterHP(chr)-1, false, "Saga_MineBanditsFire");
@@ -2267,7 +2267,7 @@ void CreateMineBandits(aref loc) // Jason: бандиты у рудника у Блювельда
 					chr.dialog.Filename = "Quest\Saga\OtherNPC.c";
 					if (i == 1) chr.dialog.currentnode = "mine_banditx";
 					else chr.dialog.currentnode = "mine_bandit_0";
-					chr.greeting = "bandos";
+					//chr.greeting = "soldier_common";
 					LAi_CharacterReincarnation(chr, true, true);
 					LAi_SetReincarnationRankStep(chr, MOD_SKILL_ENEMY_RATE+2);
 					LAi_SetCheckMinHP(chr, LAi_GetCharacterHP(chr)-1, false, "Saga_MineBanditsxFire");

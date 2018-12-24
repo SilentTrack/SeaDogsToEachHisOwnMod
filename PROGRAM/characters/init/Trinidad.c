@@ -10,8 +10,8 @@ int CreateTrinidadCharacters(int n)
 	ch.id		= "PortSpein_Mayor";
 	ch.model	= "huber_18";
 	ch.sex = "man";
-	ch.name 	= "Ruis";
-    ch.lastname = "de Aquerre";
+	ch.name 	= "Руис";
+    ch.lastname = "де Агуэрре";
 	ch.City = "PortSpein";
 	ch.location	= "PortSpein_townhall";
 	ch.location.group = "sit";
@@ -169,7 +169,7 @@ int CreateTrinidadCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "PortSpein_Smuggler";
 	ch.model    = "citiz_29";

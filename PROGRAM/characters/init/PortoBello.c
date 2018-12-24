@@ -11,8 +11,8 @@ int CreatePortoBelloCharacters(int n)
 	ch.id		= "PortoBello_Mayor";
 	ch.model	= "huber_20";
 	ch.sex = "man";
-	ch.name 	= "Luis";
-    ch.lastname = "de Montanos";
+	ch.name 	= "Луис";
+    ch.lastname = "де Монтанос";
 	ch.City = "PortoBello";
 	ch.location	= "PortoBello_townhall";
 	ch.location.group = "sit";
@@ -135,8 +135,8 @@ int CreatePortoBelloCharacters(int n)
 	ch.id		= "PortoBello_usurer";
 	ch.model	= "banker_1_1";
 	ch.sex = "man";
-	ch.name 	= "Ernesto";
-	ch.lastname = "Jeraldy";
+	ch.name 	= "Эрнесто";
+	ch.lastname = "Джеральди";
 	ch.City = "PortoBello";
 	ch.Merchant.type = "jeweller"; 
 	ch.location	= "PortoBello_Bank";
@@ -171,7 +171,7 @@ int CreatePortoBelloCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "PortoBello_Smuggler";
 	ch.model    = "citiz_28";

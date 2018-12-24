@@ -14,31 +14,33 @@ void ProcessDialogEvent()
 		case "First time":
 			if (GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY)
 			{
-					dialog.text = RandPhraseSimple("Brethren, there's an enemy in the ranks of the Inquisition!", "Raise alarm, brethren!!!");
-					link.l1 = "Indeed, the enemies of the Inquisition are on the alert...";
+					dialog.text = RandPhraseSimple("Братья, в Инквизиции враг!!!", "Поднимайте тревогу, братья!!!");
+					link.l1 = "Да уж, враги Инквизиции не дремлют...";
 					link.l1.go = "fight";			
 			}
 			else
-			{	
-				dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Hello there, "+ GetSexPhrase("my son","my daughter") +". What brings you here?..", "I am glad to see you in our abode, "+ GetSexPhrase("my son","my daughter") +". . What brings you here?"),
-							""+ GetSexPhrase("My son","My daughter") +", we had already talked today. Do you need anything else?", ""+ GetSexPhrase("My son","My daughter") +", the acolytes of our order are not known for their limitless patience. So, let me ask you once again: is there anything you need?",
-							RandPhraseSimple("Not only are you idling - you're distracting others from their duties. I am not speaking another word.", ""+ GetSexPhrase("My son","My daughter") +", I am not fond of pointless and senseless talks. I am not speaking another word."), "block", 1, npchar, Dialog.CurrentNode);
-				link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Just dropped in..", "Totally  full of business..."), 
-							"Oh, no, Father......", "No, padre, I just wanted to speak...", RandPhraseSimple("Hmm...", "Well, as you wish, Father..."), npchar, Dialog.CurrentNode);
+			{
+
+				
+				dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Здравствуй, "+ GetSexPhrase("сын мой","дочь моя") +". Какими судьбами у нас?..", "Рад видеть тебя в нашей обители, "+ GetSexPhrase("сын мой","дочь моя") +". Зачем пожаловал"+ GetSexPhrase("","а") +"?"),
+							""+ GetSexPhrase("Сын мой","Дочь моя") +", мы уже говорили с тобой сегодня. Тебе нужно что-то еще?", ""+ GetSexPhrase("Сын мой","Дочь моя") +", послушников нашего ордена не отличает терпение. Еще раз тебя спрашиваю: тебе что-нибудь нужно?",
+							RandPhraseSimple("Негоже находится в праздности самому и отвлекать других от работы. Более я не произнесу ни слова...", ""+ GetSexPhrase("Сын мой","Дочь моя") +", я не желаю вести бессмысленные разговоры. Тебе я не скажу более ни слова."), "block", 1, npchar, Dialog.CurrentNode);
+				link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Да так, заскочил"+ GetSexPhrase("","а") +" по делам, святой отец...", "Все по делам, падре. Тружусь, аки пчела - "+ GetSexPhrase("весь","вся") +" в заботах..."), 
+							"Да нет, святой отец...", "Нет, падре, просто хотел"+ GetSexPhrase("","а") +" поболтать...", RandPhraseSimple("Хм...", "Ну, как знаете, святой отец..."), npchar, Dialog.CurrentNode);
 				link.l1.go = DialogGoNodeRepeat("exit", "none", "none", "NoMoreTalkExit", npchar, Dialog.CurrentNode);				
 			}
 			if (CheckAttribute(npchar, "protector.CheckAlways")) //гарды на камерах
 			{
 				if (GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY)
 				{					
-					dialog.text = "Goddammit, that's a spy! Seize him!!!";
-					link.l1 = "Caramba!";
+					dialog.text = "Черт возьми, это шпион! Держи его!!!";
+					link.l1 = "Каррамба!!";
 					link.l1.go = "fight";
 				}
 				else
 				{
-					dialog.text = LinkRandPhrase("This is a guarded cell, and it is strictly off-limits.", "Don't even think about entering - it is punishable by death.", "Just one step into this cell - and you're done for.");
-					link.l1 = RandPhraseSimple("I see, soldier.", "I see...");	
+					dialog.text = LinkRandPhrase("Это охраняемая камера, вход сюда категорически запрещен!!!", "Даже и не думай сюда входить - карается смертью.", "Один шаг внутрь этой камеры - и тебе конец...");
+					link.l1 = RandPhraseSimple("Ясно, солдат.", "Понятно...");	
 					link.l1.go = "exit";
 				}
 			}
@@ -46,14 +48,14 @@ void ProcessDialogEvent()
 			{
 				if (LAi_group_IsActivePlayerAlarm())
 				{
-					dialog.text = LinkRandPhrase("Ho-ho, isn't it funny to watch those hypocrites going straight to hell?!", "Oh my, did someone really dare to challenge them?!", "They tortured me to near death, and I'll be going soon...");
-					link.l1 = RandPhraseSimple("Heh!", "Arrgh...");
+					dialog.text = LinkRandPhrase("Хо-хо, до чего же весело смотреть, как 'святоши' отправляются прямиком в ад!", "Господи, неужели хоть кто-то осмелился бросить им вызов!!", "Я уже не жилец на этом свете - пытки... Но ты доставил"+ GetSexPhrase("","а") +" мне последнее удовольствие в жизни. Спасибо...");
+					link.l1 = RandPhraseSimple("Хех!", "Аргх...");
 					link.l1.go = "exit";
 				}
 				else
 				{
-					dialog.text = LinkRandPhrase("Those hypocrites are totally inhuman. They shall burn in hell for everything they'd done to us...", "They were torturing and tormenting me every day! And I am not guilty in our Lord's face!", "My cellmate died yesterday... They were torturing him on the rack for two days... And how much is left for me?..");
-					link.l1 = RandPhraseSimple("Hmm... Well, I don't know...", "Oh, I see...");
+					dialog.text = LinkRandPhrase("Нет ничего людского у этих 'святош'. Попомни мое слово - гореть им в аду за наши муки...", "Ежедневные истязания и пытки! А ведь я же ни в чем не виноват перед Господом!!!", "Вчера умер мой сосед по камере, они два дня пытали его на дыбе... А сколько мне осталось?..");
+					link.l1 = RandPhraseSimple("Хм... Ну, не знаю...", "Что же, понимаю...");
 					link.l1.go = "exit";
 				}
 			}

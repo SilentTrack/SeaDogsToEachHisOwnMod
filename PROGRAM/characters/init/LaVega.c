@@ -10,11 +10,11 @@ int CreateLaVegaCharacters(int n)
 	makeref(ch,Characters[n]);			
 	ch.id		= "Terrax";
 	ch.model	= "Terrax";
-    ch.rank     = 30;
+    ch.rank     = 45;
 	ch.sex = "man";
     ch.model.animation = "man"; 
-	ch.name 	= "Marcus";
-	ch.lastname = "Tyrax";
+	ch.name 	= "Маркус";
+	ch.lastname = "Тиракс";
 	ch.City = "LaVega";
 	ch.location	= "LaVega_townhall";
 	ch.location.group = "sit";
@@ -45,7 +45,7 @@ int CreateLaVegaCharacters(int n)
 	ch.location.group = "waitress";
 	ch.location.locator = "barmen";
 	ch.Dialog.Filename = "Waitress_dialog.c";
-	ch.greeting = "waitress";
+	ch.greeting = "Gr_officiant";
 	ch.nation = PIRATE;
 	LAi_SetWaitressType(ch);
 	LAi_RemoveLoginTime(ch);
@@ -56,7 +56,7 @@ int CreateLaVegaCharacters(int n)
 	makeref(ch,Characters[n]);			//Трактирщик
 	ch.id		= "LaVega_tavernkeeper";
 	ch.model	= "barmen_14";
-	ch.greeting = "barmen_1";
+	ch.greeting = "Gr_Barmen";
 	ch.sex = "man";
 	ch.City = "LaVega";
 	ch.location	= "LaVega_Tavern";
@@ -74,7 +74,7 @@ int CreateLaVegaCharacters(int n)
 	makeref(ch,Characters[n]);			//Торговец
 	ch.id		= "LaVega_trader";
 	ch.model	= "trader_14";
-	ch.greeting = "store_2";
+	ch.greeting = "tra_common";
 	ch.sex = "man";
 	ch.City = "LaVega";
 	ch.location	= "LaVega_Store";

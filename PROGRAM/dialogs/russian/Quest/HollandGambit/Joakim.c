@@ -17,20 +17,20 @@ void ProcessDialogEvent()
 			{
 				if (pchar.questTemp.HWIC.Holl == "AbbySeekIsland" && !CheckAttribute(npchar, "quest.HWICHoll.Task"))
 				{
-					dialog.text = "Good day! My name is Joachim Merryman. And you are captain " + GetFullName(pchar) + "?";
-					link.l1 = "Yes, it is me. And how do you know my name? I don't remember meeting you before.";
+					dialog.text = "Добрый день! Меня зовут Жоаким Мерриман. А вы - капитан " + GetFullName(pchar) + "?";
+					link.l1 = "Совершенно верно. Откуда вам известно мое имя? Не помню, чтобы я когда-либо встречался с вами.";
 					link.l1.go = "JoakimSeekSkull";
 					break;
 				}
 				if (CheckCharacterItem(pchar, "SkullAztec"))
 				{
-					dialog.text = "I am glad to see you, captain. Your shining eyes tell me that you are about to make me happy. Do you have the Yum Cimil's skull?";
-					link.l1 = "Yes, senor Merryman. I have got the artefact you need. I think that this is it, it smells with antiquity and some hidden force.";
+					dialog.text = "Рад вас видеть, капитан. Судя по вашим блестящим глазам, вы готовы обрадовать меня? Череп Юм Симиля у вас?";
+					link.l1 = "Да, сеньор Мерриман. Нужный вам артефакт у меня. Думаю, это именно он - от него так и веет древностью и какой-то скрытой силой.";
 					link.l1.go = "JoakimFindSkull";
 					break;
 				}
-				dialog.text = "Do you have anything else to say, captain?";
-				link.l1 = "No, senor Merryman. I am leaving..";
+				dialog.text = "Вы что-то еще хотели мне сказать, капитан?";
+				link.l1 = "Нет, сеньор Мерриман. Я уже ухожу.";
 				link.l1.go = "exit";
 				break;
 			}
@@ -38,59 +38,59 @@ void ProcessDialogEvent()
 			{
 				if (pchar.questTemp.HWIC.Self == "JoakimMeeting" && !CheckAttribute(npchar, "quest.HWICHoll.Task"))
 				{
-					dialog.text = "Good day! My name is Joachim Merryman. And you are captain " + GetFullName(pchar) + "?";
-					link.l1 = "Yes, it is me. And how do you know my name? I don't remember meeting you before.";
+					dialog.text = "Добрый день! Меня зовут Жоаким Мерриман. А вы - капитан " + GetFullName(pchar) + "?";
+					link.l1 = "Совершенно верно. Откуда вам известно мое имя? Не помню, чтобы я когда-либо встречался с вами.";
 					link.l1.go = "JoakimSeekSkull";
 					break;
 				}
 				if (CheckCharacterItem(pchar, "SkullAztec"))
 				{
-					dialog.text = "I am glad to see you, captain. Your shining eyes tell me that you are ready to make me happy. Do you have the Yum Cimil's skull?";
-					link.l1 = "Yes, senor Merriman. I have got the artefact you need. I think that this is it, it smells with antiquity and  some hidden force.";
+					dialog.text = "Рад вас видеть, капитан. Судя по вашим блестящим глазам, вы готовы обрадовать меня? Череп Юм Симиля у вас?";
+					link.l1 = "Да, сеньор Мерриман. Нужный вам артефакт у меня. Думаю, это именно он - от него так и веет древностью и какой-то скрытой силой.";
 					link.l1.go = "JoakimFindSkull";
 					break;
 				}
-				dialog.text = "Do you have anything else to say, captain?";
-				link.l1 = "No, senor Merryman. I am leaving.";
+				dialog.text = "Вы что-то еще хотели мне сказать, капитан?";
+				link.l1 = "Нет, сеньор Мерриман. Я уже ухожу.";
 				link.l1.go = "exit";
 				break;
 			}
-			dialog.text = "Good day. Do you want something from me?";
-			link.l1 = "No. O am sorry but I am leaving already.";
+			dialog.text = "Добрый день. Вы что-то хотели от меня?";
+			link.l1 = "Нет. Прошу меня извинить, я уже ухожу.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
 
 		case "Landlady"://хозяйка дома
-			dialog.text = "If you are here for senor Joachim, then I have to tell you that he is not here.  He doesn't live here anymore.";
-			link.l1 = "I see.";
+			dialog.text = "Если вы к сеньору Жоакиму, то поднимайтесь на второй этаж. Он у себя.";
+			link.l1 = "Хорошо.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Landlady";
 		break;
 		
 		case "Landlady_1"://хозяйка дома
-			dialog.text = "If you are here for senor Joachim, then I have to tell you that he is not here. He is away and he didn't tell me when he will return.";
-			link.l1 = "I see.";
+			dialog.text = "Если вы к сеньору Жоакиму, то его нет. Ушел, а когда вернется - не сказал.";
+			link.l1 = "Хорошо.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Landlady_1";
 		break;
 		
 		case "Landlady_2"://хозяйка дома
-			dialog.text = "If you are here for senor Joachim, then I have to tell you that he is not here.  He doesn't live here anymore.";
-			link.l1 = "I see.";
+			dialog.text = "Если вы к сеньору Жоакиму, то его нет. Он больше здесь не живет.";
+			link.l1 = "Понятно.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Landlady_2";
 		break;
 		
 		case "JoakimSeekSkull":
 			PlaySound("VOICE\Russian\hambit\Joakim Merriman-01.wav");
-			dialog.text = "I have made inquiries about you, captain. See, I am a scientist and I work with Indian culture and ethnicity so I'd like to offer you an incredibly profitable business. Would you be so kind to walk with me to my house and discuss details of my proposal in a more private area?";
-			link.l1 = "I never reject profitable business proposals. Let's go and have a talk.";
+			dialog.text = "Я просто навел о вас справки, капитан. Понимаете, я ученый, занимаюсь изучением индейской культуры и этноса, и я бы хотел предложить вам одно невероятно выгодное для вас дело. Не откажете ли в любезности пройти ко мне в дом и в более спокойной обстановке обсудить детали моего предложения?";
+			link.l1 = "Никогда не отказываюсь от выгодных деловых предложений. Давайте пройдем и побеседуем.";
 			link.l1.go = "JoakimSeekSkull_1";
 		break;
 		
 		case "JoakimSeekSkull_1":
-			dialog.text = "Thank you. My home is not far from here. Follow me!";
+			dialog.text = "Благодарю. Мой дом совсем недалеко отсюда. Следуйте за мной!";
 			link.l1 = "...";
 			link.l1.go = "JoakimSeekSkull_2";
 		break;
@@ -102,32 +102,32 @@ void ProcessDialogEvent()
 		
 		case "JoakimSeekSkull_3":
 			PlaySound("VOICE\Russian\hambit\Joakim Merriman-01.wav");
-			dialog.text = "Well, we can talk here. You have been recently visiting my neighbour Solomon Shneur. I was just walking by and, don't blame me for that, captain, became an unintentional witness of your chat with Solomon. It has really interested me, so I had the impudence to listen it all.";
-			link.l1 = "Go on.";
+			dialog.text = "Ну вот, здесь мы можем спокойно поговорить. Вы были сейчас в гостях у моего соседа, Соломона Шнеура. Я как раз проходил мимо, и - не взыщите, капитан - оказался случайным слушателем вашего разговора с Соломоном. Ваша беседа меня чрезвычайно заинтересовала, и я позволил себе дерзость остановиться и дослушать ее до конца.";
+			link.l1 = "Хм. И что же такого интересного было в нашей беседе с этим старым евреем?";
 			link.l1.go = "JoakimSeekSkull_4";
 		break;
 		
 		case "JoakimSeekSkull_4":
-			dialog.text = "Solomon is my neighbour and he often visits me. I know about his misadventures... well, everybody knows about them! He has already told about them to the whole Willemstad. But straight to the business. The old man must have told you already about some jade skull which is stashed along with his money on some unknown island. Did he tell you about it?";
-			link.l1 = "Yes, he did. I didn't really get the part about the skull and a granddad... I had the impression that Abigail's dad is a bit out.";
+			dialog.text = "Соломон - мой сосед, и частенько захаживает ко мне в гости. Я знаю о его злоключениях... впрочем, кто о них не знает! Он рассказал об этом уже всему Виллемстаду. Но ближе к делу. Старик наверняка упоминал вам о неком черепе, который хранится вместе с его деньгами на неизвестном острове. Он говорил вам о нем?";
+			link.l1 = "Да, было такое. По правде сказать, я ничего не понял, что это за череп, какого деда... У меня вообще сложилось впечатление, что папаша Абигайль немного не в себе.";
 			link.l1.go = "JoakimSeekSkull_5";
 		break;
 		
 		case "JoakimSeekSkull_5":
-			dialog.text = "No, captain, Solomon is fine, he is just odd. The skull does exist. This is an ancient artefact, I have no idea how the old Jew got it. The jade skull of Yum Cimil! I have been looking for it for a lot of years\nSearch for the island, where Solomon stashed his family money. The skull must be there. Deliver this item to me and I will pay you half a million pesos.";
-			link.l1 = "Half of million?! Are you kidding me? I have never seen items which could cost so much in my life!";
+			dialog.text = "Нет, капитан, Соломон абсолютно нормален, просто несколько... чудаковат. Череп действительно существует. Это древний артефакт, совершенно невероятным образом попавший в руки этого старого еврея. Нефритовый череп Юм Симиля! Я ищу его уже много лет, и наконец появилась надежда таки заполучить его, спустя столько времени\nВы отправляетесь на поиски острова, где Соломон спрятал свой семейный капитал. Там же должен быть и череп. Доставьте мне эту вещь, и я заплачу вам полмиллиона песо.";
+			link.l1 = "Полмиллиона?! Вы шутите! Я в жизни не встречал вещей, стоящих такую кучу денег!";
 			link.l1.go = "JoakimSeekSkull_6";
 		break;
 		
 		case "JoakimSeekSkull_6":
-			dialog.text = "You have not seen much in your life yet, captain... So what? Are you in? You give me the skull and I will give you five hundred thousand in return. Deal?";
-			link.l1 = "Heh, what question can there be! Sure, deal!";
+			dialog.text = "Вы многого еще не встречали в своей жизни, капитан... Ну так что? Мое предложение вас заинтересовало? Вы мне - нефритовый череп, я вам - пятьсот тысяч. По рукам?";
+			link.l1 = "Хех, какие могут быть разговоры! Конечно, по рукам!";
 			link.l1.go = "JoakimSeekSkull_7";
 		break;
 		
 		case "JoakimSeekSkull_7":
-			dialog.text = "Splendid, captain. It is always a pleasure to work with a man who understands his obvious profit. You will find me in my house. Good luck!";
-			link.l1 = "Thank you, senor Merryman. I won't make you wait for too long.";
+			dialog.text = "Отлично, капитан. Приятно иметь дело с человеком, понимающим свою очевидную выгоду. Вы сможете найти меня в этом доме. Желаю вам удачи в поисках!";
+			link.l1 = "Спасибо, сеньор Мерриман. Я не заставлю вас долго ждать.";
 			link.l1.go = "exit";
 			npchar.quest.HWICHoll.Task = "true";
 			LAi_SetOwnerType(npchar);
@@ -136,28 +136,28 @@ void ProcessDialogEvent()
 		
 		case "JoakimFindSkull":
 			PlaySound("VOICE\Russian\hambit\Joakim Merriman-02.wav");
-			dialog.text = "Oh, yes! You are definitely right about the hidden force... But enough of words, let me see it, I am shaking with impatience.";
-			link.l1 = "Here, please, take it. I hope that I wasn't mistaken?";
+			dialog.text = "О, да! Вы действительно правы насчет скрытой силы... Но довольно слов, дайте мне на него взглянуть - я весь дрожу от нетерпения.";
+			link.l1 = "Вот, пожалуйста, держите. Надеюсь, я не ошибся?";
 			link.l1.go = "JoakimFindSkull_1";
 		break;
 		
 		case "JoakimFindSkull_1":
 			RemoveItems(PChar, "SkullAztec", 1);
-			dialog.text = "Ah, incredible! Yes, this is it. Excellent, captain, most excellent! I have it with me, at last! I have been waiting for this moment for so many years!";
-			link.l1 = "What about the money you promised, senor Merryman?";
+			dialog.text = "Ах, невероятно! Да, это он. Великолепно, капитан, просто великолепно! Наконец-то он у меня! Я столько лет ждал этого момента!";
+			link.l1 = "Что насчет обещанных денег, сеньор Мерриман?";
 			link.l1.go = "JoakimFindSkull_2";
 		break;
 		
 		case "JoakimFindSkull_2":
 			AddMoneyToCharacter(pchar, 500000);
-			dialog.text = "Oh, yes, sure! Half a million pesos. Take them, you have earned them for sure.";
-			link.l1 = "Thanks... Though I couldn't imagine how can this little item cost so much.";
+			dialog.text = "О, да, конечно! Вот ваши полмиллиона. Держите, вы их честно заработали.";
+			link.l1 = "Благодарю... Хотя я бы никогда и не представил себе, что эта небольшая штучка может стоить целое состояние.";
 			link.l1.go = "JoakimFindSkull_3";
 		break;
 		
 		case "JoakimFindSkull_3":
-			dialog.text = "Little item? This is... whatever, I doubt that you will be interested to hear the story of this item. Truth to be told, I don't have time to spare anyway\nThank you, captain, for what you have done. Now it's time to say farewells. I should go.";
-			link.l1 = "Farewell, senor Merryman. Perhaps, we will meet again...";
+			dialog.text = "Небольшая штучка? Хм... Это... впрочем, вас навряд ли заинтересует научный рассказ об истории и свойствах этого артефакта. Да и честно говоря, у меня сейчас нет времени на лекции, предстоит еще столько дел\nСпасибо вам, капитан, еще раз за проделанную работу. А теперь мы должны с вами проститься. Мне нужно отправляться в дорогу.";
+			link.l1 = "Всего доброго, сеньор Мерриман. Может, еще увидимся...";
 			link.l1.go = "JoakimFindSkull_4";
 		break;
 		
@@ -173,38 +173,38 @@ void ProcessDialogEvent()
 		
 		case "JoakimSeekSkull_8":
 			PlaySound("VOICE\Russian\hambit\Joakim Merriman-01.wav");
-			dialog.text = "Well, we can talk here.s. Captain, I know that you are a close friend of Abigail Shneur, a daughter of my neighbour Solomon. She has sailed away on your ship to her lover... but it doesn't matter really.";
-			link.l1 = "Hm. And what are you getting at, senor... Merryman?";
+			dialog.text = "Ну вот, здесь мы можем спокойно поговорить. Капитан, как мне известно, вы близко знакомы с Абигайль Шнеур, дочерью моего соседа Соломона. Она уехала на вашем корабле, как я понимаю, к своему возлюбленному... но это неважно.";
+			link.l1 = "Хм. К чему вы клоните, сеньор... Мерриман?";
 			link.l1.go = "JoakimSeekSkull_9";
 		break;
 		
 		case "JoakimSeekSkull_9":
-			dialog.text = "If you know Solomon then you must know his story of the shipwreck and his lost treasures which he has stashed on some unknown island. He has already told this story to everyone in Willemstad.";
-			link.l1 = "Well, let us suppose that I have heard something about that. And how can this story awake my interest? I don't care about the old Jew's misfortunes.";
+			dialog.text = "Раз вы знакомы с Соломоном, то наверняка знакомы и с его историей о кораблекрушении и об утраченных богатствах, спрятанных им на неком необитаемом острове - он рассказал о своих злоключениях всему Виллемстаду...";
+			link.l1 = "Ну, допустим, я действительно немного слышал об этом. Каким образом сия история может меня заитересовать? Мне абсолютно безразличны неудачи этого старого еврея.";
 			link.l1.go = "JoakimSeekSkull_10";
 		break;
 		
 		case "JoakimSeekSkull_10":
-			dialog.text = "You don't like Solomon? I assure you that he is just a harmless odd man. Forget about him. Let's talk business\nI have been chatting with Solomon several times. You can not even imagine how I felt when I found out that this old Jew is an owner of an ancient artefact I've been looking for years! The crazy old man stashed it along with his pathetic money on some island and he can not recall it's location\nI need this artefact. Bring it to me and I will pay you half a million pesos.";
-			link.l1 = "Half of million?! Are you kidding me? I have never seen items which could cost so much in my life!";
+			dialog.text = "Вам Соломон не понравился? Уверяю, это совершенно безобидный чудаковатый тип... Впрочем, и Бог с ним. Перейдем непосредственно к сути моего предложения, или просьбы\nЯ общался с Соломоном с момента его прибытия на остров. И вы не представляете, каково же было мое удивление, когда я узнал, что этот старый еврей является владельцем древнейшего артефакта - нефритового черепа Юм Симиля, который я разыскиваю уже много лет! Этот выживший из ума старик спрятал его вместе со своими жалкими сбережениями на острове, местонахождения которого он теперь даже и вспомнить не может\nМне нужен этот артефакт. Привезите его мне, и я заплачу вам за него полмиллиона песо.";
+			link.l1 = "Полмиллиона?! Вы шутите! Я в жизни не встречал вещей, стоящих такую кучу денег!";
 			link.l1.go = "JoakimSeekSkull_11";
 		break;
 		
 		case "JoakimSeekSkull_11":
-			dialog.text = "You have not seen much in your life yet, captain... So what? Are you in? You give me the skull and I will give you five hundred thousands in return. Besides, you can take Solomon's money. According to the old man's words there must be about two hundred thousands pesos... So it is seven hundred thousands for you to earn. Deal, captain?";
-			link.l1 = "Heh, what question can there be! Sure, deal! But how I am supposed to find this island?";
+			dialog.text = "Вы многого еще не встречали в своей жизни... Ну так что? Мое предложение вас заинтересовало? Вы мне - нефритовый череп, я вам - пятьсот тысяч. Кроме того, отыскав схрон Соломона, вы сможете забрать впридачу и его деньги. Судя по словам старика, там должно быть порядка двухсот тысяч песо... По рукам, капитан?";
+			link.l1 = "Хех, какие могут быть разговоры! Конечно, по рукам! Вот только как разыскать этот остров, если вы говорите, что Соломон не знает, где он находится?";
 			link.l1.go = "JoakimSeekSkull_12";
 		break;
 		
 		case "JoakimSeekSkull_12":
-			dialog.text = "Talk with Abigail. Perhaps she remembers something. Ask Solomon. See, if I'd knew where to find the island I wouldn't ask for you help.";
-			link.l1 = "I see. Sorry for my stupid question. Sure, it is my problem how to find the island... The job is up for me and the payment is up for you.";
+			dialog.text = "Поговорите с Абигайль. Может, она что-то помнит. Побеседуйте с Соломоном. Понимаете, если бы я знал, как найти этот остров, я бы не обращался к вам за помощью, а как-нибудь управился бы собственными силами.";
+			link.l1 = "Это понятно. Прошу прощения за глупый вопрос. Конечно, это мои проблемы, как найти этот остров... Моя работа - ваша оплата.";
 			link.l1.go = "JoakimSeekSkull_13";
 		break;
 		
 		case "JoakimSeekSkull_13":
-			dialog.text = "Exactly. I am glad that we understand each other, captain. Good luck with your searches. You can always find me here, in my house.";
-			link.l1 = "I won't make you wait for too long, senor Merryman. Goodbye!";
+			dialog.text = "Именно так. Я рад, что мы друг друга поняли, капитан. Желаю вам удачи в поисках. Вы всегда сможете найти меня здесь, в этом доме.";
+			link.l1 = "Постараюсь не заставить вас долго ждать, сеньор Мерриман. До свидания!";
 			link.l1.go = "JoakimSeekSkull_14";
 		break;
 		
@@ -221,21 +221,21 @@ void ProcessDialogEvent()
 		// калеуче
 		case "caleuche":
 			PlaySound("VOICE\Russian\LSC\Chymiset-03.wav");
-			dialog.text = "The sacrificial stones are red with the blood of my enemies! Yum Cimil granted me his power over the dead! With this power in my hands I shall soon rule the living!";
-			link.l1 = "Great speech. Are you insane?";
+			dialog.text = "Кровью врагов залиты жертвенные камни! Юм Симиль даровал мне силу - власть над мертвыми! И с этой силой я стану властвовать и над живыми!";
+			link.l1 = "Что ты затеял, Мерриман, черт бы тебя побрал? Зачем тебе эти армии из зомби? Ты что, решил сражаться против всего мира?";
 			link.l1.go = "caleuche_1";
 			CreateLocationParticles("large_smoke", "goto", "goto37", 0.5, 0, 0, "");
 		break;
 		
 		case "caleuche_1":
-			dialog.text = "Silence, you fool! My intentions will remain secret for you! My armies of darkness shall occupy all dark caves and dungeons of the archipelago. My outposts will be located in every village, waiting for my signal. And when the time comes, my legions shall march towards the final battle!\nPity that you won't live to see it, pitiful human, a hero wannabe! You have entered my sanctuary - and you will not get out of it alive!";
-			link.l1 = "Talk is cheap!";
+			dialog.text = "Молчи, глупец! Суть моих замыслов останется тайной для тебя! Мои армии тьмы оккупируют все темные пещеры и подземелья архипелага. Мои аванпосты будут стоять у каждого поселения в ожидании сигнала. А когда время придет, мой легион выступит в решающее сражение!\nНо тебе не дожить до этого момента, наивный человечишко, вообразивший себя героем! Ты вступил в святая святых - мое убежище, и ты не выйдешь отсюда живым!";
+			link.l1 = "Это мы еще посмотрим!";
 			link.l1.go = "caleuche_2";
 		break;
 		
 		case "caleuche_2":
 			PlaySound("Types\warrior04.wav");
-			dialog.text = "Ha-ha-ha! You would dare to challenge me and my servants?! Then behold, what I really am, and tremble with fear, you worm!";
+			dialog.text = "Ха-ха-ха-ха, ты осмелился выступить против меня и моих слуг?! Так посмотри же на того, кто я есть на самом деле, и устрашись, червь!";
 			link.l1 = "...";
 			link.l1.go = "caleuche_3";
 		break;
@@ -245,14 +245,14 @@ void ProcessDialogEvent()
 			Characters_RefreshModel(npchar);
 			PlaySound("Ambient\Teno_inside\teleporter.wav");
 			dialog.text = "";
-			link.l1 = "Ahhh! Holy crap!";
+			link.l1 = "А-а-а!! О, черт!!!";
 			link.l1.go = "caleuche_4";
 		break;
 		
 		case "caleuche_4":
 			PlaySound("VOICE\Russian\hambit\Joakim Merriman-04.wav");
-			dialog.text = "Now you understand who is standing in front of you, slime?! Yum Cimil himself favours me! I will rip your liver out and I will eat it!";
-			link.l1 = "Thousand sharks! Alright, you damned witcher! I'll sever that green skull of yours from your body!";
+			dialog.text = "Теперь ты понял, слизняк, кто перед тобой?! Сам Юм Симиль покровительствует мне! Я вырву, зажарю и сожру твою печень!!";
+			link.l1 = "Тысяча акул!! Ну, держись, проклятый колдун! Я снесу тебе твою зеленую черепушку!!";
 			link.l1.go = "caleuche_5";
 		break;
 		
@@ -272,8 +272,8 @@ void ProcessDialogEvent()
 		
 		//--> блок реагирования на попытку залезть в сундук
 		case "Man_FackYou":
-			dialog.text = LinkRandPhrase("You are a "+ GetSexPhrase("thief, mister! Guards, take him","thief, girl! Guards, take her") +"!!!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest! Take the thief!!!", "Guards! Robbery! Take the thief!!!");
-			link.l1 = "Damn it!";
+			dialog.text = LinkRandPhrase("Да ты "+ GetSexPhrase("вор, милейший! Стража, держи его","воровка! Стража, держи ее") +"!!!", "Вот это да! Чуть я загляделся, а ты сразу в сундук с головой! Держи "+ GetSexPhrase("вора","воровку") +"!!!", "Стража! Грабят!!! Держи "+ GetSexPhrase("вора","воровку") +"!!!");
+			link.l1 = "А-ать, дьявол!!!";
 			link.l1.go = "exit";
 			LAi_group_Attack(NPChar, Pchar);
 		break;

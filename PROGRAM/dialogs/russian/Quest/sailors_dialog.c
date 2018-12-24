@@ -19,16 +19,16 @@ void ProcessDialogEvent()
 		break;
 		
         case "First time":
-			dialog.text = "Talk with our captain. I have got nothing to say to you.";
-			Link.l1 = "Fine.";
+			dialog.text = "Поговорите с нашим капитаном. Мне нечего вам сказать";
+			Link.l1 = "Хорошо.";
 			Link.l1.go = "exit";
 			
 			NextDiag.TempNode = "first time";
 		break;
 		//  на палубе -->
 		case "On_Deck":
-			dialog.text = "Talk with our captain. I have got nothing to say to you.";
-			Link.l1 = "Fine.";
+			dialog.text = "Поговорите с нашим капитаном. Мне нечего вам сказать";
+			Link.l1 = "Хорошо.";
 			Link.l1.go = "exit";
 
 			NextDiag.TempNode = "On_Deck";
@@ -38,14 +38,14 @@ void ProcessDialogEvent()
 			{
 				if(CheckAttribute(PChar, "GenQuest.ChurchQuest_1.NeedToDialogWithSailors"))
 				{
-					dialog.text = "Sir, are you looking for somebody?";
-					Link.l1 = "Yes. Can I see the captain?";
+					dialog.text = "Госпо"+ GetSexPhrase("дин","жа") +", вы кого-то ищете?";
+					Link.l1 = "Да, парень. Могу я видеть капитана этого судна?";
 					Link.l1.go = "ChurchQuest1_Node1";
 				}
 				else
 				{
-					dialog.text = "All questions to our captain. He has recently landed.";
-					Link.l1 = "Fine";
+					dialog.text = "По всем вопросам обращайтесь к капитану. Он недавно сошёл на берег.";
+					Link.l1 = "Хорошо-хорошо";
 					Link.l1.go = "exit";
 				}
 				break;
@@ -54,16 +54,17 @@ void ProcessDialogEvent()
 			//--> eddy. квест мэра, закрываем выход с палубы и ноду даем нужную
 			if (CheckAttribute(pchar, "GenQuest.DestroyPirate") && pchar.GenQuest.CaptainId == "MQPirate")
 			{
-	    		dialog.text = RandPhraseSimple("Go to our captain. Tell him about your sad deeds...", "Go to our captain and he will talk with you.");
-				Link.l1 = "Too bad...";
+	    		dialog.text = RandPhraseSimple("Надо же, сам"+ GetSexPhrase("","а") +" к нам приш"+ GetSexPhrase("ел","ла") +"... Ну, раз приш"+ GetSexPhrase("ел","ла") +", то иди к кэпу. Поговоришь о делах своих скорбных...",
+	                                           "Хех, ну ты даешь, "+ GetSexPhrase("приятель","подруга") +"! Такого я еще не видал... Подойди к капитану, он с тобой будет говорить.");
+				Link.l1 = "Жаль...";
 				Link.l1.go = "exit";
 			}
 			//<-- eddy. квест мэра, закрываем выход с палубы
 		break;
 /*		
 		case "ChurchQuest1_Node1":
-			dialog.text = "You'd better look for him in the port.";
-			Link.l1 = "Thank you, my good man.";
+			dialog.text = "Вам лучше поискать его в порту.";
+			Link.l1 = "Спасибо, любезный.";
 			Link.l1.go = "exit";
 			NextDiag.TempNode = "On_Deck";
 			PChar.GenQuest.ChurchQuest_1.CapWaitOnTavern = true; 
@@ -74,8 +75,8 @@ void ProcessDialogEvent()
 				
 		// ugeen --> разговор с боцманом по генератору "Повод для спешки"
 		case "On_MyShip_Deck":
-			dialog.text = "Well, that was a serious mess, cap! We were in the tavern, drinking as we usually do when we heard screaming. Then we heard that they are trying to put you under the heel. Fuck them! So we decided to leave this unfriendly harbour.";
-			link.l1 = "Yeah, certainly some people have a bit strange perception of justice.";
+			dialog.text = "Ну и навели же Вы шороху, капитан! Мы с ребятами только заказали ещё по стаканчику, как услышали вопли на улице. Выскочив из таверны и узнав, что Вас пытаются арестовать, мы решили рубить концы и уходить из этой негостеприимной гавани.";
+			link.l1 = "Да уж, у некоторых людей странное понимание справедливости.";
 			link.l1.go = "On_MyShip_Deck_1";
 		break;
 		
@@ -83,21 +84,21 @@ void ProcessDialogEvent()
 		    if(pchar.questTemp.ReasonToFast == "speakSuccess_chain_A") 
 			{
 				// карты не было
-				dialog.text = "Captain! Don't you worry like that! It was clear that there were no way to flee in peace, so we have decided to visit the local banker in order to check his chests. He is your share - " + sti(pchar.questTemp.ReasonToFast.p9) + " pesos...";
+				dialog.text = "Капитан! Бросьте печалиться! Раз уж всё равно было миром не уйти, в суматохе мы решили заскочить к местному ростовщику и слегка облегчили его сундуки. Вот Ваша доля - " + sti(pchar.questTemp.ReasonToFast.p9) + " песо...";
 			}
 			if(pchar.questTemp.ReasonToFast == "speakSuccess_chain_B")
 			{
 				// карту отобрали
 				GiveItem2Character(pchar, pchar.questTemp.ReasonToFast.p6);
-				dialog.text = "Captain! Don't you worry like that! It was clear that there were no way to flee in peace, so we have decided to visit the local banker and to check his chests. There was also a fine sword in the pawn box. He is your share - " + sti(pchar.questTemp.ReasonToFast.p9) + " pesos and a sword...";
+				dialog.text = "Капитан! Бросьте печалиться! Раз уж всё равно было миром не уйти, в суматохе мы решили заскочить к местному ростовщику и слегка облегчили его сундуки. Да ещё и клинок приличный прихватили из ломбардного шкафа. Вот Ваша доля - " + sti(pchar.questTemp.ReasonToFast.p9) + " песо и клинок...";
 			}		
-			link.l1 = "That's my boys. Well done!";
+			link.l1 = "Весьма кстати. Молодцы!";
 			link.l1.go = "On_MyShip_Deck_End";
 			AddMoneyToCharacter(pchar, sti(pchar.questTemp.ReasonToFast.p9));			
 			pchar.Ship.Crew.Morale = MORALE_MAX;
 			chrDisableReloadToLocation = false; // Откроем выход
 			AddQuestRecord("ReasonToFast", "17");		
-			AddQuestUserData("ReasonToFast", "sSex", GetSexPhrase("",""));		
+			AddQuestUserData("ReasonToFast", "sSex", GetSexPhrase("ся","ась"));		
 			CloseQuestHeader("ReasonToFast");
 			DeleteAttribute(pchar,"TownEscape");
 			DeleteAttribute(pchar,"questTemp.ReasonToFast");
@@ -111,20 +112,20 @@ void ProcessDialogEvent()
 		
 		// разговор с боцманом по генератору 'Операция Галеон'
 		case "CapComission_OnShipDeck":
-			dialog.text = "Captain, your friend has escaped.";
-			link.l1 = "What friend?";
+			dialog.text = "Капитан, ваш приятель сбежал.";
+			link.l1 = "Какой приятель?";
 			link.l1.go = "CapComission_OnShipDeck1";
 		break;
 		
 		case "CapComission_OnShipDeck1":
-			dialog.text = "Well, the friend who you have taken from the dungeons.";
-			link.l1 = "How the hell you managed to loose him?!";
+			dialog.text = "Ну этот, которого вы из тюрьмы вытащили.";
+			link.l1 = "Да как же вы могли его проворонить?!!";
 			link.l1.go = "CapComission_OnShipDeck2";
 		break;
 		
 		case "CapComission_OnShipDeck2":
-			dialog.text = "It was not our fault, cap. He had jumped away through the latrine to the sea... We have tried to shoot him, but it was too dark there...";
-			link.l1 = "Damn it! You really have gotten out of hand! All of you will be landed and sent to work with the sugarcane! To loose such a valuable bigwig!";
+			dialog.text = "Да мы-то чего? Он ночью через гальюнные брусья перелез, якобы по нужде, а сам спустился по якорному канату и вплавь... Мы стреляли, но темно было...";
+			link.l1 = "Чёрт!!! Совсем распустились! Всех на берег спишу, будете тростник на плантациях окучивать! Такую ценную птицу упустили!..";
 			link.l1.go = "CapComission_OnShipDeck3";
 		break;
 		
@@ -147,20 +148,20 @@ void ProcessDialogEvent()
 		
 		// разговор с боцманом по ситуациям в трюме
 		case "Hold_GenQuest_OnShipDeck":
-			dialog.text = "Captain, forgive us, it was our fault - the prisoner has escaped.";
-			link.l1 = "What prisoner? Who has escaped?";
+			dialog.text = "Капитан, простите, не доглядели - пленный сбежал.";
+			link.l1 = "Что за пленный? Кто сбежал?";
 			link.l1.go = "Hold_GenQuest_OnShipDeck1";
 		break;
 				
 		case "Hold_GenQuest_OnShipDeck1":
-			dialog.text = "Well, oh, forgot his name, " + pchar.GenQuest.Hold_GenQuest.CapName + ", right?";
-			link.l1 = "Damn it! Where were you looking at?";
+			dialog.text = "Да этот, как его, " + pchar.GenQuest.Hold_GenQuest.CapName + " что ли.";
+			link.l1 = "Вот чёрт! Куда же вы смотрели?!";
 			link.l1.go = "Hold_GenQuest_OnShipDeck2";
 		break;
 		
 		case "Hold_GenQuest_OnShipDeck2":
-			dialog.text = "He got from the cargo hold and jumped from the bulwark. We didn't shoot him to avoid any noise and while we were preparing a longboat he was saved by fucking fishers.";
-			link.l1 = "And why do I pay you money! Flog the head of watch and deprive him of rum for a week. Stand to! We are weighing anchor...";
+			dialog.text = "Да он из трюма выбрался, сиганул через фальшборт и был таков. Мы стрелять не стали, чтоб шуму не поднимать, а пока спустили шлюпку, его уже рыбаки подобрали.";
+			link.l1 = "За что я вам только жалование плачу! Старшего вахты высечь и лишить недельной пайки рому. Все по местам! Снимаемся с якоря...";
 			link.l1.go = "Hold_GenQuest_OnShipDeck3";
 		break;
 		
@@ -178,33 +179,33 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Hold_GenQuest_OnShipDeck4":
-			dialog.text = "Greeting, captain. There were no accidents during your...";
-			link.l1 = "Fine, fine, I got it.... There is the prisoner in our cargo hold. His name is " + pchar.GenQuest.Hold_GenQuest.CapName + ". Take a few men and deliver him to the port. He is free now.";
+			dialog.text = "Приветствую, капитан. За время вашего отсутствия на борту никаких происшествий не...";
+			link.l1 = "Ладно-ладно, понятно... У нас в трюме пленник сидит, " + pchar.GenQuest.Hold_GenQuest.CapName + " зовут. Отряди команду доставить его в порт. Он свободен.";
 			link.l1.go = "Hold_GenQuest_OnShipDeck5";
 		break;
 		
 		case "Hold_GenQuest_OnShipDeck5":
-			dialog.text = "Is he free for real? We are to deliver him via longboat?";
-			link.l1 = "Via turtle... I thought I was clear enough. And hurry up! We need to weigh anchor by the start of an ebb.";
+			dialog.text = "Как, совсем что ли отпустить? На шлюпке что ли отправить?";
+			link.l1 = "На черепахе... Я по-моему предельно ясно выразился. И пусть пошевеливаются! Нужно сняться с якорей к началу отлива.";
 			link.l1.go = "Hold_GenQuest_OnShipDeck3";
 		break;
 		
 		// Warship 09.07.09 Базар с нашим матросом на палубе Мэри Селест -->
 		case "On_MaryCeleste_Deck":
-			Dialog.text = "Captain, there are no people at all on the ship! Something is very wrong here... Tommy said that he has seen a cat in the cockpit and it was the one living soul...";
-			Link.l1 = "Idiot, cats don't have souls. It looks like he has not visited a church for a long time already or he has never been there at all. Have you been in the captain's cabin? I need a logbook.";
+			Dialog.text = "Капитан, на корабле нет ни единого человека! Здесь что-то нечисто... Томми говорит, в кубрике кошку видел, а больше ни одной живой души...";
+			Link.l1 = "Болван, у кошки нет души. Видать давно в церкви не был... если вообще был когда-нибудь... В каюте капитана смотрели? Мне нужен судовой журнал.";
 			Link.l1.go = "On_MaryCeleste_Deck_1";
 		break;
 		
 		case "On_MaryCeleste_Deck_1":
-			Dialog.text = "No, they do have souls. There are no logbook and no any navigation instruments. Not even a single longboat...";
-			Link.l1 = "They don't. Was it tired off by a storm?";
+			Dialog.text = "Всё осмотрели, ни журнала, ни навигационных приборов нет. Нет также кормовой шлюпки...";
+			Link.l1 = "Шлюпка сорвана штормом?..";
 			Link.l1.go = "On_MaryCeleste_Deck_2";
 		break;
 		
 		case "On_MaryCeleste_Deck_2":
-			Dialog.text = "They do, cap. Cats do have souls. Captain, the longboat was cut away and we have found a sword on the floor at the cockpit. It is rusty to bloody. Here, take a look...";
-			Link.l1 = "Captain, I have got a bad feeling about this place... Perhaps it is time for us to leave?";
+			Dialog.text = "Нет, капитан, шлюпку снимали талью... И это... мы дюсак нашли на полу в кубрике. То ли окровавленный, то ли ржавый. Вот взгляните...";
+			Link.l1 = "Да что ты суёшь мне разную дрянь?! Осмотрите трюм и уходим... Ох, что-то не нравится мне всё это...";
 			Link.l1.go = "On_MaryCeleste_Last";
 			NextDiag.TempNode = "On_MaryCeleste_Deck_SailorLast";
 		break;
@@ -226,20 +227,20 @@ void ProcessDialogEvent()
 			switch(rand(2))
 			{
 				case 0:
-					Dialog.text = "Captain, I have got a bad feeling about this place... Perhaps it is time for us to leave?";
-					Link.l1 = "Yes... Go to the ship's boat.";
+					Dialog.text = "Капитан, жутковато здесь как-то... Может пора уже уходить?";
+					Link.l1 = "Да... Садитесь в шлюпку.";
 					Link.l1.go = "exit";
 				break;
 				
 				case 1:
-					Dialog.text = "Captain, I am not going to stay on this strange ship if you are willing to take it to the port. I'd better jump in the sea myself.";
-					Link.l1 = "I am not willing to do that... I am also a bit frightened...";
+					Dialog.text = "Капитан, если Вы планируете вести это странное судно в порт, то я на нём не останусь. Уж лучше сразу за борт.";
+					Link.l1 = "Ничего я не планирую... Само"+ GetSexPhrase("му","й") +" жутковато.";
 					Link.l1.go = "exit";
 				break;
 				
 				case 2:
-					Dialog.text = "Perhaps we should sink it, captain?";
-					Link.l1 = "To let souls of the missed sailors who are living here to visit us in our nightmares?";
+					Dialog.text = "Может затопить его, а капитан?";
+					Link.l1 = "Чтобы потом живущие здесь души пропавших моряков являлись нам в ночных кошмарах?..";
 					Link.l1.go = "On_MaryCeleste_Deck_SailorLast_1";
 				break;
 			}
@@ -248,24 +249,25 @@ void ProcessDialogEvent()
 		break;
 		
 		case "On_MaryCeleste_Deck_SailorLast_1":
-			Dialog.text = "Good God, no! Captain... why are you saying that?";
-			Link.l1 = "Don't go pale, I was joking... Go to the ship's boat. And I guess you are right after all, cats do have souls. Or they don't?";
+			Dialog.text = "Упаси Бог, капитан... что Вы такое говорите!..";
+			Link.l1 = "Не бледней так, шучу я... Садитесь в шлюпку.";
 			Link.l1.go = "exit";
 		break;
 		// <-- Базар с нашим матросом на палубе Мэри Селест
 		
         //  на палубе <--
         case "On_Fort":
-			dialog.text = RandPhraseSimple("Talk with the boss. I have got nothing to say you.", "I am at my post. All questions go to the commandant of fort.");
-			Link.l1 = "Fine.";
+			dialog.text = RandPhraseSimple("Поговорите с начальником. Мне нечего вам сказать.", "Я на посту. Со всеми вопросами - к коменданту форта.");
+			Link.l1 = "Хорошо.";
 			Link.l1.go = "exit";
 
 			NextDiag.TempNode = "On_Fort";
 		break;
 		
 		case "On_Fort_Head":
-			dialog.text = RandPhraseSimple("I am really busy now. Leave me alone.", "I am really busy now. Leave me alone.");
-			Link.l1 = "Pity...";
+			dialog.text = RandPhraseSimple("Я сейчас страшно занят. Оставьте меня в покое.",
+                                           "Не мешайте мне работать. Нам не о чем говорить.");
+			Link.l1 = "Жаль...";
 			Link.l1.go = "exit";
 
 			NextDiag.TempNode = "On_Fort_Head";
@@ -282,8 +284,9 @@ void ProcessDialogEvent()
 			Dialog.cam = "1";
 			Dialog.snd = "dialogs\0\009";
 
-			dialog.text = RandPhraseSimple("Morgan wanted tell you 'a thing or two'... He is somewhere here, on the deck.", "Heh, find Morgan. Bad new are waiting for you...");
-			Link.l1 = "Fine.";
+			dialog.text = RandPhraseSimple("Морган хотел тебе сказать 'пару ласковых'... Он где-то здесь, на палубе.",
+                                           "Хех, найди Моргана. Тебя ждут неприятные новости...");
+			Link.l1 = "Хорошо.";
 			Link.l1.go = "exit";
 
 			NextDiag.TempNode = "Morgan_wait_you";

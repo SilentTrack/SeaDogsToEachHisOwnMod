@@ -11,8 +11,8 @@ int CreateHavanaCharacters(int n)
 	ch.id		= "Havana_Mayor";
 	ch.model	= "huber_14";
 	ch.sex = "man";
-	ch.name 	= "Diego";
-    ch.lastname = "de Toledo";
+	ch.name 	= "дон Диего";
+    ch.lastname = "де Толедо";
 	ch.City = "Havana";
 	ch.location	= "Havana_townhall";
 	ch.location.group = "sit";
@@ -112,8 +112,8 @@ int CreateHavanaCharacters(int n)
 	ch.model	= "shipowner_1_1";
 	ch.greeting = "shipyarder_3";
 	ch.sex = "man";
-	ch.name 	= "Alexandro";
-    ch.lastname = "Garsia";
+	ch.name 	= "Алехандро";
+    ch.lastname = "Гарсия";
 	ch.City = "Havana";
 	ch.location	= "Havana_Shipyard";
 	ch.location.group = "sit";
@@ -138,8 +138,8 @@ int CreateHavanaCharacters(int n)
 	ch.id		= "Havana_usurer";
 	ch.model	= "banker_1_2";
 	ch.sex = "man";
-	ch.name 	= "Jacopo";
-	ch.lastname = "Jeraldy";
+	ch.name 	= "Якопо";
+	ch.lastname = "Джеральди";
 	ch.City = "Havana";
 	ch.Merchant.type = "jeweller"; 
 	ch.location	= "Havana_Bank";
@@ -174,7 +174,7 @@ int CreateHavanaCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "Havana_Smuggler";
 	ch.model    = "citiz_30";

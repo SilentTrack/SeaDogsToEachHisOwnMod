@@ -4,30 +4,30 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you, " + GetAddress_Form(NPChar) + "?"), "You tried to ask me some question not long ago, " + GetAddress_Form(NPChar) + "...", "Over this whole day, this is the third time you're talking about some question...",
-                          "More questions, I presume?", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
-                      "Yes, it really is the third time...", "No, what questions?...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно, " + GetAddress_Form(NPChar) + "?"), "Совсем недавно вы пытались задать мне вопрос, " + GetAddress_Form(NPChar) + "...", "В течение этого дня вы уже третий раз говорите о каком-то вопросе...",
+                          "Опять вопросы будем задавать?", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Да уж, действительно в третий раз...", "Да нет, какие вопросы...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			// Сага
 			if(CheckAttribute(pchar, "questTemp.Saga.BarbTemptation") && pchar.questTemp.Saga.BarbTemptation == "valet")
 			{
-				link.l1 = "I'm looking for a man by the nickname Valet. Do you know him?";
+				link.l1 = "Я ищу человека по кличке Валет. Не знаешь такого?";
 				link.l1.go = "valet_1";
-				link.l2 = "I'm searching for the captain of a polacre named 'Marlin'. Would you be able to tell me where to find him?";
+				link.l2 = "Я разыскиваю капитана полакра 'Марлин'. Не подскажешь, где его найти?";
 				link.l2.go = "valet_2";
 			}
 		break;
 		
 		case "valet_1":
-			dialog.text = NPCStringReactionRepeat("No, I don't know, buddy. So there's nothing I can help you with.", "I've already told you –I don't know!", "Are you drunk or are you just messing around?", "Leave me alone!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("I see. That's too bad...", "That's too bad. I thought you'd remember...", "I'm sober! I'm just persistent...", "Hm...", npchar, Dialog.CurrentNode); 
+			dialog.text = NPCStringReactionRepeat("Нет, не знаю, приятель. Так что ничем помочь не могу.", "Я тебе уже сказал - не знаю!", "Ты пьян, или издеваешься?", "Отстань!", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Понятно. Очень жаль...", "Жаль. Я думал, ты вспомнишь...", "Да трезвый я! Просто настойчивый...", "Гм...", npchar, Dialog.CurrentNode); 
 			link.l1.go = DialogGoNodeRepeat("exit", "", "", "", npchar, Dialog.CurrentNode);
 		break;
 		
 		case "valet_2":
-			dialog.text = NPCStringReactionRepeat("Ah, mister David Fackman! He rents a place not far from the shipyard. Look for him there.", "I just answered you. Open your ears.", "Are you drunk or are you just messing around?", "Leave me alone!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Thank you!", "Yes. I'm sorry.", "I'm sober! I'm just persistent...", "Hm...", npchar, Dialog.CurrentNode); 
+			dialog.text = NPCStringReactionRepeat("А, это же мистер Давид Факман! Он снимает дом недалеко от верфи. Поищите его там.", "Я только что тебе ответил. Чем ты слушаешь?", "Ты пьян, или издеваешься?", "Отстань!", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Спасибо!", "Да-да, извини.", "Да трезвый я! Просто непонятливый...", "Гм...", npchar, Dialog.CurrentNode); 
 			link.l1.go = DialogGoNodeRepeat("exit", "", "", "", npchar, Dialog.CurrentNode);
 		break;
 	}

@@ -4,49 +4,49 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat("All the rumors of "+ GetCityName(npchar.city) +" at your service. What would you like to find out?",
-                          "We were just talking about that. You must have forgotten...", "This is the third time today you're talking about some question...",
-                          "you're harping like a parrot the same...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("You know, " + NPChar.name + ", maybe next time.", "Right, I've forgotten for some reason...",
-                      "Yes, it really is the third time...", "Yep...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat("Все сплетни города "+ GetCityName(npchar.city) +" к вашим услугам. Что бы вы хотели узнать?",
+                          "Мы только что поднимали это тему. Вы, вероятно, запамятовали...", "Сегодня вы уже третий раз говорите о каком-то вопросе...",
+                          "Что ты заладил"+ GetSexPhrase("","а") +" как попугай одно и то же...", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Знаешь, " + NPChar.name + ", как-нибудь в следующий раз.", "Точно, "+ GetSexPhrase("забыл","забыла") +" что-то...",
+                      "Да уж, действительно в третий раз...", "Да уж...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			// Страж Истины
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "merdok" && !CheckAttribute(npchar, "quest.jino"))
 			{
-				link.l1 = "Listen, has there been an alchemist that arrived here in this town, a physician? He's Italian, about thirty years old, his name is Gino Gvineili. Have you heard anything about that?";
+				link.l1 = "Послушай, не появлялся ли у вас в городе ученый-алхимик, лекарь? Он итальянец, лет тридцати, зовут Джино Гвинейли. Не слыхал о таком?";
 				link.l1.go = "guardoftruth";
 			}
 			// Калеуче
 			if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "hunting" && !CheckAttribute(npchar, "quest.Caleuche"))
 			{
-				link.l1 = "Listen, I need hunted called Fergus Hooper. I was told that he lives here. Where can I find him?";
+				link.l1 = "Послушай, мне нужен охотник по имени Фергус Хупер. Мне сказали, что он в Белизе живет. Где я могу его найти?";
 				link.l1.go = "caleuche";
 			}
 		break;
 		
 		case "guardoftruth":
-			dialog.text = LinkRandPhrase("No, I haven't. We have herbalists and physicians, but none of them with such a name.","This is the first time I've heard such a weird name. No, we've never had a visit from the man you speak of.","We don't have any kind of alchemists at all. We've got physicians, but none with such a weird name.");
-			link.l1 = "I see. That's too bad. I'll keep looking!";
+			dialog.text = LinkRandPhrase("Нет, не слыхал. Есть у нас травники, и лекари - но ни одного с таким именем.","Впервые такое чудное имя слышу. Нет, таких у нас отродясь не водилось.","Да у нас и вовсе никаких алхимиков нет. Лекари есть, но ни одного с таким чудным именем.");
+			link.l1 = "Ясно. Жаль. Буду искать дальше!";
 			link.l1.go = "exit";
 			npchar.quest.jino = "true";
 		break;
 		
 		// Калеуче
 		case "caleuche":
-			dialog.text = "Fergus? He often visits my place. But he is in the selva since yesterday. Don't worry, he'll be back in a week, bragging about his sea adventures. Though, I admit, he is a hell of a hunter. Don't know anyone who can catch snakes as good as he can.";
-			link.l1 = "Snakes? Hm. When should I come back here in order to find him?";
+			dialog.text = "Фергус? Он у меня частенько бывает. Но сейчас его нет - ушел в сельву не позже, как вчера. Но ты не переживай, недели не пройдет, как он снова будет сидеть у меня за столиком, пить ром и пугать всех сказками о своих морских похождениях. Хотя охотник он знатный, не спорю. Никто лучше него не умеет ловить змей.";
+			link.l1 = "Змей? Хм. Так когда мне наведаться к тебе, чтобы застать Фергуса?";
 			link.l1.go = "caleuche_1";
 		break;
 		
 		case "caleuche_1":
-			dialog.text = "Three days at least. Be aware that he always come here not earlier six p.m and leave not later than ten.";
-			link.l1 = "How does he look like? Never seen him before.";
+			dialog.text = "Ну, раньше чем через три дня его не жди. Потом захаживай. Только учти, что он блюдет режим дня, и никогда не приходит раньше шести вечера, и уходит спать не позже десяти.";
+			link.l1 = "Как он выглядит? А то я ни разу его не видел.";
 			link.l1.go = "caleuche_2";
 		break;
 		
 		case "caleuche_2":
-			dialog.text = "Bearded, not young, brown coat, hat and long boots.";
-			link.l1 = "Gratitude! You have helped me a lot, pal. See ya!";
+			dialog.text = "Бородатый такой, немолод уже, ходит всегда в коричневом камзоле, шляпе и сапогах.";
+			link.l1 = "Спасибо! Ты мне очень помог, дружище. До встречи!";
 			link.l1.go = "caleuche_3";
 		break;
 		

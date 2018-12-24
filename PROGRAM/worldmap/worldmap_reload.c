@@ -14,7 +14,7 @@ void wdmReloadToSea()
 	}
 	if(questwdmLockReload)
 	{
-		Log_Info("You can't leave to the war map right now");
+		Log_Info("Вы не можете сейчас выйти на боевую карту");
 		return;
 	}
 	// расчеты ВМЛ -->

@@ -19,41 +19,41 @@ void ProcessDialogEvent()
 			if (LAi_grp_playeralarm > 0)
 			{
        			dialog.text = NPCharRepPhrase(pchar, 
-					LinkRandPhrase("You dared to show your face here?! You're a bold one, indeed...", "How did these lazybones let an enemy break into my place? This is beyond me...", "Surely, my guards aren't worth a copper, if some loafer is running around here..."), 
-					LinkRandPhrase("What do you need,"+ GetSexPhrase("scoundrel","stinker") +"?! My soldiers have already been set on your trail, "+ GetSexPhrase(", filthy pirate","") +"!", "Dirty murderer, leave my residence at once! Guards!", "I am not afraid of you, "+ GetSexPhrase("scoundrel","rat") +"! Soon you will be hanged in our fort, you won't get far..."));
+					LinkRandPhrase("Вы посмели явиться сюда?! Смелый шаг...", "Как эти бездельники допустили, чтобы ко мне ворвался враг?! Уму непостижимо...", "Да уж, моя охрана немногого стоит, раз "+ GetSexPhrase("какой-то бездельник","какая-то бездельница") +" бегает в тут..."), 
+					LinkRandPhrase("Что тебе нужно, "+ GetSexPhrase("негодяй","мерзавка") +"?! Мои солдаты уже взяли твой след, далеко тебе не уйти"+ GetSexPhrase(", грязный пират","") +"!", "Грязн"+ GetSexPhrase("ый","ая") +" убийца, вон из моей резиденции! Стража!!", "Я не боюсь тебя, мерзав"+ GetSexPhrase("ец","ка") +"! Скоро тебя повесят, далеко тебе не уйти..."));
 				link.l1 = NPCharRepPhrase(pchar,
-					RandPhraseSimple("Soldiers aren't worth a crap...", "They will never get me."), 
-					RandPhraseSimple("Zip up your piehole, " + GetWorkTypeOfMan(npchar, "") + ", or I'll rip out that foul tongue of yours!", "I'd tell you, buddy: sit quietly, and you may yet have seen another day..."));
+					RandPhraseSimple("Солдатня мало чего стоит...", "Им меня ни за что не поймать."), 
+					RandPhraseSimple("Заткни свою пасть, " + GetWorkTypeOfMan(npchar, "") + ", а не то вырву твой поганый язык!", "Вот что я тебе скажу, приятель: сиди тихо, и будешь жить..."));
 				link.l1.go = "fight";
 				break;
 			}
 			if (GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY)
 			{
-    			dialog.text = "Enemy in the mine! Alarm!";
-				link.l1 = "Aaah, devil!";
+    			dialog.text = "Враг в шахте! Тревога!!";
+				link.l1 = "А-ать, дьявол!";
 				link.l1.go = "fight"; 
 				break;
 			}	
-			dialog.text = LinkRandPhrase(""+TimeGreeting()+", senor. I am "+GetFullName(npchar)+", the mining engineer of the Los-Teques mine. What is it that you need here?","Hello, mister. What did you want?","Hmm... did you want anything from me, se?or? I am listening.");
+			dialog.text = LinkRandPhrase(""+TimeGreeting()+", сеньор. Я - "+GetFullName(npchar)+", дежурный горный инженер рудника Лос-Текес. Что вам тут нужно?","Здравствуйте, сударь. Что вам угодно?","Хм. Вы что-то хотели от меня, сеньор? Я вас слушаю.");
 			if (!CheckAttribute(location, "quest.info"))
 			{
-				link.l9 = "I am new to this place, and I would like to learn more about this mine...";
+				link.l9 = "Я здесь недавно, и хотел бы немного больше узнать об этом руднике...";
 				link.l9.go = "info";
 			}
 			if (GetSquadronGoods(pchar, GOOD_SLAVES) > 4)
 			{
-				link.l2 = "I have a cargo in my hold which might be interesting to you. Slaves for your mine, to be exact. Wanna haggle?";
+				link.l2 = "У меня в трюмах есть товар, который вас интересует. Рабы для вашего рудника. Поторгуемся?";
 				if (!CheckAttribute(location, "quest.slaves")) link.l2.go = "slaves_0";
 				else link.l2.go = "slaves";
 			}
-			link.l1 = "I just came in to say hi, and I am already leaving.";
+			link.l1 = "Я просто зашел с вами поздороваться и уже ухожу.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "info":
-			dialog.text = "Los-Teques  mine extracts gold for the Spanish crown. Everything we extract belongs to Spain. We also find here not only gold but also silver nuggets and valuable precious stones. We don't sell gold here, everything we extract is being delivered to the Old World under a reinforced convoy\nBut we have two exceptions for golden and silver nuggets. First, you can buy some amount of them in our local store from a quartermaster. Sometimes salary doesn't get here in time, so we have to keep some savings of coins here for such cases, that is why local trading is allowed\nSecond, we constantly experience a need of manpower, so we exchange nuggets for slaves. Therefore, talk to me if you have something to offer, we will do business\nI believe that rules of conduct of the mine are obvious: don't steal, don't distract convicts and don't bother soldiers otherwise you won't like the consequences.";
-			link.l1 = "Thanks!";			
+			dialog.text = "Наш рудник Лос-Текес добывает золото для испанской короны. Все добытое на руднике принадлежит Испании, и только ей. Кроме золота, здесь часто встречаются серебряные самородки и изредка - ценные самоцветы. Торговлю золотом мы не ведем - все добытое отправляется под усиленным конвоем в Старый Свет\nОднако насчет золотых и серебряных самородков действуют два исключения. Первое: вы можете приобрести некоторое количество самородков в нашем магазине у интенданта. Иногда жалование гарнизону из метрополии задерживается, и мы вынуждены иметь некоторый запас монет на этот случай - потому продажа самородков и была разрешена\nВторое: нам практически постоянно требуются рабочие руки для труда на руднике, поэтому мы покупаем рабов в обмен на самородки. Так что если у вас есть, что предложить - обращайтесь ко мне, будем договариваться\nКасательно поведения в шахте, думаю, вам и так должно быть ясно: не пытайтесь что-либо украсть, ибо закончится это для вас плачевно, не отвлекайте каторжников от работы и не путайтесь под ногами у солдат охранения.";
+			link.l1 = "Спасибо!";			
 			link.l1.go = "exit";
 			location.quest.info = "true";
 		break;
@@ -61,8 +61,8 @@ void ProcessDialogEvent()
 		// генератор купли-продажи рабов
 		case "slaves_0":
 			location.quest.slaves.qty = 200; // стартовая потребность
-			dialog.text = "Of course, se?or! How many should do you have?";
-			link.l1 = "I have "+FindRussianQtyString(GetSquadronGoods(pchar, GOOD_SLAVES))+".";
+			dialog.text = "Конечно, сеньор! Сколько у вас голов 'живого товара'?";
+			link.l1 = "У меня есть "+FindRussianQtyString(GetSquadronGoods(pchar, GOOD_SLAVES))+".";
 			link.l1.go = "slaves_1";
 		break;
 		
@@ -71,31 +71,31 @@ void ProcessDialogEvent()
 			if (sti(location.quest.slaves.qty) > 350) location.quest.slaves.qty = 350; // максимум потребности
 			if (sti(location.quest.slaves.qty) < 5)
 			{
-				dialog.text = "Se?or, unfortunately, right now we have no need in more slaves. But the situation can change anytime, so check back in a few weeks or some other time.";
-				link.l1 = "Alright, sir, I understand. You don't need them now, but you might need them in some time.";
+				dialog.text = "Сеньор, к сожалению, на данный момент у нас нет нужды в рабах. Но ситуация меняется ежедневно, так что загляните ко мне попозже, через несколько недель, ну, или в другой раз.";
+				link.l1 = "Хорошо, сударь. Я все понимаю: не нужны сейчас - понадобятся потом.";
 				link.l1.go = "exit";
 			}
 			else
 			{
-				dialog.text = "Of course, senor! How many should do you have?";
-				link.l1 = "I have "+FindRussianQtyString(GetSquadronGoods(pchar, GOOD_SLAVES))+".";
+				dialog.text = "Конечно, сеньор! Сколько у вас голов 'живого товара'?";
+				link.l1 = "У меня есть "+FindRussianQtyString(GetSquadronGoods(pchar, GOOD_SLAVES))+".";
 				link.l1.go = "slaves_1";
 			}
 		break;
 		
 		case "slaves_1":
-			dialog.text = "For every slave, I am willing to pay you either one gold ingot or two silver ingots. What do you choose?";
-			link.l1 = "Gold ingots.";
+			dialog.text = "За каждого раба я готов выдать вам либо один золотой самородок, либо два серебряных. Что выбираете?";
+			link.l1 = "Золотые самородки.";
 			link.l1.go = "slaves_g";
-			link.l2 = "Silver ingots.";
+			link.l2 = "Серебрные самородки.";
 			link.l2.go = "slaves_s";
-			link.l3 = "I am sorry, se?or, but I just changed my mind. Some other time.";
+			link.l3 = "Извините, сеньор, но что-то я передумал. В другой раз.";
 			link.l3.go = "slaves_exit";
 		break;
 		
 		case "slaves_g":
 			location.quest.slaves.type = "gold";
-			dialog.text = "Fine. How many slaves are you going to sell me?";
+			dialog.text = "Хорошо. Сколько рабов вы готовы мне продать?";
 			link.l1 = "";
 			link.l1.edit = 6;
 			link.l1.go = "slaves_trade";
@@ -103,7 +103,7 @@ void ProcessDialogEvent()
 		
 		case "slaves_s":
 			location.quest.slaves.type = "silver";
-			dialog.text = "Fine. How many slaves are you going to sell me?";
+			dialog.text = "Хорошо. Сколько рабов вы готовы мне продать?";
 			link.l1 = "";
 			link.l1.edit = 6;
 			link.l1.go = "slaves_trade";
@@ -113,42 +113,42 @@ void ProcessDialogEvent()
 			iTotalTemp = sti(dialogEditStrings[6]);
 			if (iTotalTemp < 1)
 			{
-				dialog.text = "Se?or, I have really no time for stupid jokes. If you're in a mood for jesting, go to the tavern!";
-				link.l1 = "Hmm...";
+				dialog.text = "Сеньор, я не расположен к глупым шуткам. Паясничать отправляйтесь в таверну!";
+				link.l1 = "Гм...";
 				link.l1.go = "slaves_exit";
 				break;
 			}
 			if (iTotalTemp > GetSquadronGoods(pchar, GOOD_SLAVES))
 			{
-				dialog.text = "Sen'or, I think that you need to rest. Perhaps you're very tired or got a heatstroke. Go to the tavern, have a good rest, and then we can continue our bargaining.";
-				link.l1 = "Hmm...";
+				dialog.text = "Сеньор, мне кажется, вам нужно отдохнуть. Видимо, вы очень устали, или перегрелись на нашем солнце. Сходите в таверну, поспите, а потом продолжим нашу торговлю.";
+				link.l1 = "Гм...";
 				link.l1.go = "slaves_exit";
 				break;
 			}
 			if (iTotalTemp > sti(location.quest.slaves.qty))
 			{
-				dialog.text = "Unfortunately, senor, right now we don't need that many slaves. The mine currently requires "+FindRussianQtyString(sti(location.quest.slaves.qty))+". Are you going to sell that many?";
-				link.l1 = "But of course!";
+				dialog.text = "К сожалению, сеньор, нам в данный момент не нужно так много рабов. Потребность рудника на сегодняшний день составляет "+FindRussianQtyString(sti(location.quest.slaves.qty))+". Будете продавать?";
+				link.l1 = "Да, конечно!";
 				link.l1.go = "slaves_max";
-				link.l2 = "Hmm... I guess not.";
+				link.l2 = "Гм... Нет, пожалуй.";
 				link.l2.go = "slaves_exit";
 				break;
 			}
-			dialog.text = ""+FindRussianQtyString(iTotalTemp)+"? Excellent. Please order to bring them to the town gates. I'll send my men after them.";
-			link.l1 = "Don't you worry, se?or. Your slaves will be delivered to you in no time. I shall issue all relevant orders immediately.";
+			dialog.text = ""+FindRussianQtyString(iTotalTemp)+"? Замечательно. Прикажите доставить их к городским воротам, я пошлю своих людей.";
+			link.l1 = "Не извольте беспокоиться, сеньор. Ваши рабы будут доставлены как можно скорее. Я немедленно отдам нужные распоряжения.";
 			link.l1.go = "slaves_calk";
 		break;
 		
 		case "slaves_max":
 			iTotalTemp = sti(location.quest.slaves.qty);
-			dialog.text = "Excellent. Please order to bring them to the town gates. I'll send my men after them.";
-			link.l1 = "Don't you worry, se?or. Your slaves will be delivered to you in no time. I shall issue all relevant orders immediately.";
+			dialog.text = "Замечательно. Прикажите доставить их к городским воротам, я пошлю своих людей.";
+			link.l1 = "Не извольте беспокоиться, сеньор. Ваши рабы будут доставлены как можно скорее. Я немедленно отдам нужные распоряжения.";
 			link.l1.go = "slaves_calk";
 		break;
 		
 		case "slaves_calk":
 			DialogExit();
-			Log_Info("Exchange of slaves for ingots has been completed");
+			Log_Info("Обмен рабов на самородки произведен");
 			PlaySound("interface\important_item.wav");
 			LAi_Fade("", "");
 			WaitDate("",0,0,0,5,10);
@@ -164,12 +164,6 @@ void ProcessDialogEvent()
 			DialogExit();
 			DeleteAttribute(location, "slave_date");
 			SaveCurrentNpcQuestDateParam(location, "slave_date");
-		break;
-		
-		case "":
-			dialog.text = "";
-			link.l1 = "";
-			link.l1.go = "";
 		break;
 		
 		case "fight":

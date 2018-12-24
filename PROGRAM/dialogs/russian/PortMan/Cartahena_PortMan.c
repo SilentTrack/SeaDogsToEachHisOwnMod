@@ -4,9 +4,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What kind of questions?", "What do you want, " + GetAddress_Form(NPChar) + "?"), "You've already tried to ask me a question " + GetAddress_Form(NPChar) + "...", "You have been talking about some question for the third time today...",
-                          "Look, if you have nothing to tell me about the port's matters then don't bother me with your questions.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind.", "Sorry!"), "Sorry!", "Sorry!", "Sorry!", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple(" акие вопросы?", "„то вам угодно, " + GetAddress_Form(NPChar) + "?"), "—овсем недавно вы пытались задать мне вопрос " + GetAddress_Form(NPChar) + "...", "¬ течение этого дн€ вы уже третий раз говорите о каком-то вопросе...",
+                          "ѕослушайте, если вы не по делам порта, то не стоит мен€ вопросами донимать.", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("я передумал"+ GetSexPhrase("","а") +"...", "—ейчас мне не о чем говорить"), "’м, что-то с пам€тью моей стало...",
+                      "ƒа уж, действительно в третий раз...", "»звините, но портовые дела мен€ сейчас не интересуют.", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 		break;		
 	}

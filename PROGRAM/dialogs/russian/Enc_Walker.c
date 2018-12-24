@@ -29,15 +29,15 @@ void ProcessDialogEvent()
 		case "First time":
 			if (NPChar.sex != "man")
 			{
-                dialog.text = RandPhraseSimple("My husband doesn't allow me to talk with strangers!",
-                         "There is nothing we could talk about.");
-				Link.l1 = "No big deal.";
+                dialog.text = RandPhraseSimple("Мой муж запрещает говорить с "+ GetSexPhrase("незнакомцами","посторонними") +"!",
+                         "Мне не о чем с вами говорить.");
+				Link.l1 = "Ну и не нужно";
 				Link.l1.go = "exit";
                 break;
 			}
-			link.l10 = LinkRandPhrase ("Tell me, what are the popular gossips at the local tavern?",
-									"Would you rather tell me what's happening around here?",
-									"Hey, buddy, would you tell me how's life on dry land?");
+			link.l10 = LinkRandPhrase ("Расскажи мне лучше, что за байки в ходу в здешней таверне?",
+									"Лучше скажи мне, новенького в этих краях?",
+									"Расскажи-ка мне лучше, приятель, как течет жизнь на суше?");
 			link.l10.go = "rumours_citizen"; //повесил на горожанина, если нужны отедельные слухи, то пишем соответствующую реализацию
 			if (npchar.quest.Meeting != LastSpeakDate() || bBettaTestMode)
 		    {
@@ -972,15 +972,15 @@ void ProcessDialogEvent()
 		case "sovet":
 			if (NPChar.sex != "man") //fix eddy. второй раз баба говорит как мужик
 			{
-                dialog.text = RandPhraseSimple("My husband doesn't allow me to talk with strangers!",
-                         "There is nothing we could talk about.");
-				Link.l1 = "No big deal.";
+                dialog.text = RandPhraseSimple("Мой муж запрещает говорить с "+ GetSexPhrase("незнакомцами","посторонними") +"!",
+                         "Мне не о чем с вами говорить.");
+				Link.l1 = "Ну и не нужно";
 				Link.l1.go = "exit";
                 break;
 			}
-			link.l10 = LinkRandPhrase ("Tell me, what are the popular gossips at the local tavern?",
-									"Would you rather tell me what's happening around here?",
-									"Hey, buddy, would you tell me how's life on dry land?");
+			link.l10 = LinkRandPhrase ("Расскажи мне лучше, что за байки в ходу в здешней таверне?",
+									"Лучше скажим мне, новенького в этих краях?",
+									"Расскажи ка мне лучше, приятель, как течет жизнь на суше?");
 			link.l10.go = "rumours_citizen"; //повесил на горожанина, если нужны отедельные слухи, то пишем соответствующую реализацию
 			dialog.text = DLG_TEXT[210];
 			Link.l1 = DLG_TEXT[211];
@@ -1126,35 +1126,34 @@ void ProcessDialogEvent()
 		//у горожанина должна быть эта ветка.
 		case "new question":
             dialog.text = NPCharRepPhrase(npchar,
-		                PCharRepPhrase(LinkRandPhrase("Oh yeah, I am glad"+NPCharSexPhrase(NPChar, "", "")+" to see you almost like a cup of booze. Ask whatever you like.", "You like talking, captain? Well, me too... Especially over a cup of rum.", "Yes, " + PChar.name + "?"),
-                                        LinkRandPhrase("What do you need?", "I see, captain "+PChar.name+", you are quite a talker? 
- ", "Tired questions, Captain, would be better treated with rum.")),
-		                PCharRepPhrase(LinkRandPhrase("What did you want to know "+ GetAddress_Form(NPChar) + "?", "I am listening to you, captain.", "I have to go, so please be quick about it, captain."),
-                                        LinkRandPhrase("Always glad to have nice company, " + GetAddress_Form(NPChar) + " " + PChar.lastname + ". Speak your mind.",
-                                                        "Yes, " + GetAddress_Form(NPChar) + "?",
-                                                        "You're like chatting, captain? Well, me too..."))
+		                PCharRepPhrase(LinkRandPhrase("О, да я рад"+NPCharSexPhrase(NPChar, " ", "а ")+" тебе как выпивке, спрашивай, чего хочешь.", "Любишь поболтать, капитан? Что ж, я тоже... Особенно за кружечкой рома.", "Да, " + PChar.name + "?"),
+                                        LinkRandPhrase("Ну, чего тебе еще?", "Вижу, капитан "+PChar.name+", ты "+ GetSexPhrase("охотник","охотница") +" поболтать? ", "Замучил"+ GetSexPhrase("","а") +" вопросами, капитан, лучше бы угостил"+ GetSexPhrase("","а") +" ромом.")),
+		                PCharRepPhrase(LinkRandPhrase("Что вы хотели узнать "+ GetAddress_Form(NPChar) + "?", "Я вас слушаю капитан.", "Мне нужно идти, поэтому спрашивайте скорее капитан."),
+                                        LinkRandPhrase("Всегда рад"+NPCharSexPhrase(NPChar, " ", "а ")+" приятному собеседнику, " + GetAddress_Form(NPChar) + " " + PChar.lastname + ". Говорите.",
+                                                        "Да, " + GetAddress_Form(NPChar) + "?",
+                                                        "Любите поболтать, капитан? Что ж, я тоже..."))
                             );
 
             // homo 25/06/06
-			link.l1 = LinkRandPhrase ("What kinds of gossips are popular in the local tavern?",
-                                    "What's going on in these lands?",
-                                    "What's new on land down there?");
+			link.l1 = LinkRandPhrase ("Какие байки в ходу в здешней таверне?",
+                                    "Что новенького в этих краях?",
+                                    "Как течет жизнь на суше?");
 			link.l1.go = "rumours_citizen";
-			link.l5 = PCharRepPhrase(RandPhraseSimple("No, you're hearing things. I'll be going now.", "No, nothing - just went out for a stroll."),
-                                        RandPhraseSimple("No, nothing. Best of luck to you!", "Just taking a stroll. Goodbye."));
+			link.l5 = PCharRepPhrase(RandPhraseSimple("Тебе послышалось, я пойду.", "Нет, ничего - просто вышел погулять."),
+                                        RandPhraseSimple("Ладно, ничего. Удачи!", "Просто прогуливаюсь. До свидания."));
 			link.l5.go = "exit";
 		break;
 		//замечение по обнаженному оружию
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{
-				dialog.text = NPCharSexPhrase(NPChar, "Listen - as a citizen of this town, I must ask you to restrain from walking around with an unsheathed blade.");
-				link.l1 = LinkRandPhrase("Fine.", "Okay.", "As you say...");
+				dialog.text = NPCharSexPhrase(NPChar, "Послушайте, я, как гражданин этого города, прошу вас не ходить у нас с обнаженным клинком.", "Знаете, я, как гражданка этого города, прошу вас не ходить у нас с обнаженным клинком.");
+				link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажете...");
 			}
 			else
 			{
-				dialog.text = NPCharSexPhrase(NPChar, "Hold your horses, "+ GetSexPhrase("buddy","lass") +", when running around with a weapon in hand. That can make me nervous...", "I don't like it when "+ GetSexPhrase("men","anyone") +" walk around with weapons ready. It scares me...");
-				link.l1 = RandPhraseSimple("I got it.", "I remove.");
+				dialog.text = NPCharSexPhrase(NPChar, "Острожней на поворотах, "+ GetSexPhrase("приятель","подруга") +", когда бежишь с оружием в руках. Я ведь могу и занервничать...", "Мне не нравится, когда "+ GetSexPhrase("мужчины","всякие тут") +" ходят передо мной с оружием на изготовку. Это меня пугает...");
+				link.l1 = RandPhraseSimple("Понял"+ GetSexPhrase("","а") +".", "Убираю.");
 			}
 			link.l1.go = "exit";
 			Diag.TempNode = "First Time";

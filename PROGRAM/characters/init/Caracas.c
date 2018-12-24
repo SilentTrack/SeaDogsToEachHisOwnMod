@@ -11,8 +11,8 @@ int CreateCaracasCharacters(int n)
 	ch.id		= "Caracas_Mayor";
 	ch.model	= "huber_24";
 	ch.sex = "man";
-	ch.name 	= "Diego Fratcisco";
-    ch.lastname = "de Kero";
+	ch.name 	= "Диего Франсиско";
+    ch.lastname = "де Керо";
 	ch.City = "Caracas";
 	ch.location	= "Caracas_townhall";
 	ch.location.group = "sit";
@@ -170,7 +170,7 @@ int CreateCaracasCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "Caracas_Smuggler";
 	ch.model    = "citiz_29";

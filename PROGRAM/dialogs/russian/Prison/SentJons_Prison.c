@@ -4,8 +4,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
  	switch(Dialog.CurrentNode)
 	{
         case "quests":
-            dialog.text = "Speak, I am listening";
-			link.l1 = "I was mistaken. Farewell.";
+            dialog.text = "Говорите, я слушаю.";
+			link.l1 = "Я "+ GetSexPhrase("ошибся","ошиблась") +". Прощайте.";
 			link.l1.go = "Exit";
 		break;
 	}

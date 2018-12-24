@@ -26,20 +26,20 @@ void ProcessDialogEvent()
 		
 		//вестовой
 		case "Regata_Cureer":
-			dialog.text = "Good day. Are you captain " + GetFullName(pchar) + "?";
-			link.l1 = "Yes, it is me. And what is the deal?";
+			dialog.text = "Добрый день. Вы - капитан " + GetFullName(pchar) + "?";
+			link.l1 = "Да, это я. А в чем дело?";
 			link.l1.go = "Regata_Cureer_1";
 		break;
 		
 		case "Regata_Cureer_1":
-			dialog.text = "I have got a letter for you from the governor of Jamaica, sir James Carlisle.";
-			link.l1 = "Whoa! I didn't expect... And what does the governor want from me?";
+			dialog.text = "У меня для вас письмо от губернатора Ямайки, сэра Эдварда Дойли.";
+			link.l1 = "Ого! Не ожидал... И что же губернатор хочет от меня?";
 			link.l1.go = "Regata_Cureer_2";
 		break;
 		
 		case "Regata_Cureer_2":
-			dialog.text = "Read the letter, sir. In brief, you are offered to take part in the regatta, time trial across all over the archipelago. Rumours about your naval skills and fast traveling around the sea were not unnoticed.";
-			link.l1 = "Incredible! Well... I will consider it.";
+			dialog.text = "Прочтите письмо, сэр. Но вкратце - вам предложено принять участие в регате, гонках на время, по архипелагу. Слухи о ваших способностях к быстрому передвижению в море не остались без внимания.";
+			link.l1 = "Удивительно! Ну что же... прочту и подумаю.";
 			link.l1.go = "Regata_Cureer_3";
 			GiveItem2Character(pchar, "letter_open");
 			ChangeItemDescribe("letter_open", "itmdescr_letter_open_Regata");
@@ -49,15 +49,15 @@ void ProcessDialogEvent()
 		case "Regata_Cureer_3":
 			if (Pchar.BaseNation == SPAIN || Pchar.BaseNation == HOLLAND)
 			{
-				dialog.text = "Also I am to provide you with a free access to the port of Port Royal. Here is a license for 30 days. Now my mission is complete. Goodbye, captain.";
-				link.l1 = "Thanks. The license is most welcome. Farewell!";
+				dialog.text = "Также я должен обеспечить вам беспрепятственный вход в порт Порт-Рояла для прибытия на регату. Для этого я уполномочен выдать вам лицензию сроком на 30 дней. На этом моя миссия выполнена. До свидания, капитан!";
+				link.l1 = "Спасибо, лицензия - это весьма кстати. До свидания!";
 				link.l1.go = "Cureer_exit";
 				GiveNationLicence(HOLLAND, 30);
 			}
 			else
 			{
-				dialog.text = "Good. Now my mission is complete. Goodbye, captain.";
-				link.l1 = "Farewell!";
+				dialog.text = "Хорошо. На этом моя миссия выполнена. До свидания, капитан!";
+				link.l1 = "До свидания!";
 				link.l1.go = "Cureer_exit";
 			}
 		break;
@@ -76,14 +76,14 @@ void ProcessDialogEvent()
 		case "Regata_Head":
 			if (CheckAttribute(pchar, "questTemp.Regata.Begin"))
 			{
-				dialog.text = "Good day. You are taking part in the regatta, I take it?";
-				link.l1 = "Precisely, sir. My name is " + GetFullName(pchar) + ". I have received the invitation.";
+				dialog.text = "Добрый день. Вы участвуете в регате, как я понимаю?";
+				link.l1 = "Именно так, сэр. Мое имя - " + GetFullName(pchar) + ". Я получил приглашение.";
 				link.l1.go = "Regata_Head_1";
 			}
 			else
 			{
-				dialog.text = "Want something, sir?";
-				link.l1 = "No, it is nothing. I am leaving already.";
+				dialog.text = "Вы что-то хотели, сэр?";
+				link.l1 = "Да нет, ничего. Я уже ухожу.";
 				link.l1.go = "exit";
 				NextDiag.TempNode = "Regata_Head";
 			}
@@ -98,23 +98,23 @@ void ProcessDialogEvent()
 			ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
 			if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)//проверка на наличие корабля в порту
 			{
-				dialog.text = "I am glad to meet you, captain " + GetFullName(pchar) + ". Let's start then.  You are already aware about the basics from the letter, right? Luggers only and she has to be the one vessel in your squadron in order to participate in the regatta. Have you fulfilled these terms?";
+				dialog.text = "Рад познакомиться, капитан " + GetFullName(pchar) + ". Итак, приступим. Первые условия вам должны были быть известны из письма, так? Регата проходит только на кораблях типа 'люггер' и только один в эскадре. Вы выполнили эти требования?";
 				if ((GetCompanionQuantity(pchar) > 1) || sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LUGGER)
 				{
-					link.l1 = "Not yet. I will do it now and I'll be back soon.";
+					link.l1 = "Еще не успел отдать необходимые распоряжения. Сейчас же сделаю это и вернусь к вам.";
 					link.l1.go = "exit";
 					NextDiag.TempNode = "Regata_Head_repeat";
 				}
 				else
 				{
-					link.l1 = "Yes, I have.";
+					link.l1 = "Да, так точно.";
 					link.l1.go = "Regata_Head_2";
 				}
 			}
 			else
 			{
-				dialog.text = "Where is your ship, captain?";
-				link.l1 = "Excuse me, sir. I will get my ship to the port immediately.";
+				dialog.text = "Вы прибыли на регату - а корабль ваш где? Я не получил никаких сведений о вашем судне из портового управления.";
+				link.l1 = "Прошу прощения, сэр. Я немедленно приведу свой корабль в порт.";
 				link.l1.go = "exit";
 				NextDiag.TempNode = "Regata_Head_repeat";
 			}
@@ -131,109 +131,108 @@ void ProcessDialogEvent()
 				ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
 				if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)//проверка на наличие корабля в порту
 				{
-					dialog.text = "Ah, it is you again. Have you done everything to fulfil terms of the regatta?";
+					dialog.text = "А, это опять вы. Ну, вы все сделали для выполнения условий?";
 					if ((GetCompanionQuantity(pchar) > 1) || sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LUGGER)
 					{
-						link.l1 = "Not yet. I will do it now and I'll be back soon.";
+						link.l1 = "Еще не успел. Сейчас же сделаю это и вернусь к вам.";
 						link.l1.go = "exit";
 						NextDiag.TempNode = "Regata_Head_repeat";
 					}
 					else
 					{
-						link.l1 = "Yes, I have.";
+						link.l1 = "Да, так точно.";
 						link.l1.go = "Regata_Head_2";
 					}
 				}
 				else
 				{
-					dialog.text = "Captain, we have got nothing to discuss until I don't see your ship on a roadstead. Do you get it or should I repeat myself?";
-					link.l1 = "Excuse me, sir. I will get my ship to the port immediately.";
+					dialog.text = "Капитан, пока я не увижу ваше судно на рейде, нам разговаривать не о чем. Вы это поняли наконец, или мне еще раз повторить?";
+					link.l1 = "Прошу прощения, сэр. Я немедленно приведу свой корабль в порт.";
 					link.l1.go = "exit";
 					NextDiag.TempNode = "Regata_Head_repeat";
 				}
 			}
 			else
 			{
-				dialog.text = "Want something, sir?";
-				link.l1 = "No, it is nothing. I am leaving already.";
+				dialog.text = "Вы что-то хотели, сэр?";
+				link.l1 = "Да нет, ничего. Я уже ухожу.";
 				link.l1.go = "exit";
 				NextDiag.TempNode = "Regata_Head";
 			}
 		break;
 		
 		case "Regata_Head_2":
-			dialog.text = "Fine. Now the next item. What is the name of your ship?";
+			dialog.text = "Отлично. Теперь далее. Как называется ваш корабль?";
 			link.l1 = "'"+pchar.Ship.Name+"'.";
 			link.l1.go = "Regata_Head_3";
 		break;
 		
 		case "Regata_Head_3":
-			dialog.text = "Since the regatta is hosted by English authorities and due to the fixed rules your ship's name must be changed for a time of the event. Don't worry, it concerns every participant.";
-			link.l1 = "They say that it is a bad token to change your ship's name.";
+			dialog.text = "Поскольку регата организуется английскими властями, а также согласно устоявшихся правил, на время регаты имя вашего корабля меняется. Не пугайтесь, это касается всех участников.";
+			link.l1 = "Менять имя кораблю - плохая примета, говорят.";
 			link.l1.go = "Regata_Head_4";
 		break;
 		
 		case "Regata_Head_4":
-			dialog.text = "You may change the name back after the regatta. So, your lugger will carry the name Santa Catherina.";
-			link.l1 = "I understand it, sir, I will change the name.";
+			dialog.text = "После регаты вернете имя обратно. Итак, ваш люггер теперь будет носить имя 'Сaнта-Kатepина'. Распорядитесь о визуальной смене названия вашего корабля.";
+			link.l1 = "Я вас понял, сэр, сделаю.";
 			link.l1.go = "Regata_Head_5";
-			pchar.Ship.Name = "Santa Catherina";
+			pchar.Ship.Name = "Сaнта-Kатepина";
 		break;
 		
 		case "Regata_Head_5":
-// 10Aug17 change "provide your" to "provide you"
-			dialog.text = "Now let's talk about the regatta itself. Listen carefully. I will also provide you with a rule paper.\nThe regatta starts and ends in Port Royal. There are five passages\nFirst one is Port Royal to Belize, West Main\nSecond is Belize to Port-au-Prince, Hispaniola\Third is Port-au-Prince to St.John's, Antigua\nFourth is St.John's to Bridgetown, Barbados\nAnd the last one is Bridgetown to Port Royal\nAm I clear?";
-			link.l1 = "Sure, sir.";
+			dialog.text = "Теперь немного подробнее о регате. Слушайте внимательно, что я вам расскажу. Также я дам вам бумагу с правилами, чтобы вы не забыли. Итак\nРегата круговая, начинается в Порт-Рояле и заканчивается в Порт-Рояле. По пути вас ожидает пять переходов\nпервый: Порт-Рояль - Белиз, что на Западном Мейне\nвторой: Белиз - Порт-о-Пренс, что на Эспаньоле\nтретий: Порт-о-Пренс - Сент-Джонс, что на Антигуа\nчетвертый: Сент-Джонс - Бриджтаун, что на Барбадосе\nпятый, самый продолжительный - Бриджтаун - Порт-Рояль\nЯ понятно объяснил?";
+			link.l1 = "Вполне, сэр.";
 			link.l1.go = "Regata_Head_6";
 		break;
 		
 		case "Regata_Head_6":
-			dialog.text = "Splendid. You must check in at every port office of following cities: Belize, Port-au-Prince, St.John's, Bridgetown. You will be disqualified if you miss any of these cities or break the right sequence\nThe offices will stay open twenty four hours during the course of the regatta. Knock the door and they will let you in.";
-			link.l1 = "Understood.";
+			dialog.text = "Замечательно. В каждом из названных мной промежуточных пунктов - Белиз, Порт-о-Пренс, Сент-Джонс и Бриджтаун, вы должны отметиться в портовом управлении - начальники портов являются контролерами регаты. Если вы не отметитесь хотя бы в одном из пунктов, или нарушите последовательность - вас дисквалифицируют\nЕсли вы прибудете ночью - не беспокойтесь, во время регаты будет установлено круглосуточное дежурство в портовых управлениях - просто подойдите и постучите в дверь - вам откроют.";
+			link.l1 = "Это тоже понятно.";
 			link.l1.go = "Regata_Head_7";
 		break;
 		
 		case "Regata_Head_7":
-			dialog.text = "It is forbidden to change the ship and to add more ships to your squadron. This will be verified in every city, consider that.";
-			link.l1 = "I will. Who is normally considered as a winner and let's talk prizes.";
+			dialog.text = "Менять корабль и добавлять корабли в эскадру запрещено. Это будет проверяться в каждом промежуточном пункте, учтите.";
+			link.l1 = "Учту. Как определяется победитель, и каковы награды?";
 			link.l1.go = "Regata_Head_8";
 		break;
 		
 		case "Regata_Head_8":
-			dialog.text = "Only the one winner in the regatta - the captain whose ship will be the first to reach Port-Royal. Prize is very valuable. The winner will get a big sum - 250 000 pesos. Also, he will be granted with a set of valuable gifts.";
-			link.l1 = "So, losers get nothing?";
+			dialog.text = "Победитель в регате только один - капитан, чей корабль вернется в Порт-Рояль первым. Награды весьма солидные. Победитель получает крупную денежную сумму - 250 000 песо. Также ему будет вручен комплект ценных призов.";
+			link.l1 = "То есть, проигравшим не достается ничего?";
 			link.l1.go = "Regata_Head_9";
 		break;
 		
 		case "Regata_Head_9":
-			dialog.text = "Exactly. Plus, a lot of rich and poor citizens of English colonies make bets on the winner of the regatta. You can also bet on... Yourself. Normally every captain does so. If you win, you will earn even more and don't forget about the motivation. Usually I accept the bets\nAre you betting on your victory?";
-			link.l1 = "Ha! Sure, I am. How much can I bet?";
+			dialog.text = "Совершенно верно. Добавлю: многие богатые, и не очень богатые жители английских колоний делают ставки на победителя регаты. Так вот, вы тоже можете сделать ставку... на свою победу, например. Обычно все капитаны так делают. В случае вашей победы денежный приз увеличится, и у вас будет дополнительный стимул. Ставки принимаю я\nБудете делать ставку на свою победу в регате?";
+			link.l1 = "Ха! Конечно, буду. Сколько можно ставить?";
 			link.l1.go = "Regata_rate";
-			link.l2 = "I will consider it. Perhaps I will bet.";
+			link.l2 = "Я подумаю. Может, и поставлю.";
 			link.l2.go = "Regata_Head_10";
 		break;
 		
 		case "Regata_Head_10":
 			if (CheckAttribute(pchar, "questTemp.Regata.Begin"))
 			{
-				dialog.text = "Think if you want. You have got some time before the regatta starts.";
-				link.l1 = "Fine. When does it start?";
+				dialog.text = "Думайте. До начала регаты вы можете прийти ко мне и сделать ставку.";
+				link.l1 = "Хорошо. Когда старт регаты?";
 				link.l1.go = "Regata_Head_11";
 				DeleteAttribute(pchar, "questTemp.Regata.Rate");
 				pchar.questTemp.Regata.Ratenext = "true";
 			}
 			else
 			{
-				dialog.text = "Think if you want. You have got some time before the regatta starts.";
-				link.l1 = "Fine.";
+				dialog.text = "Думайте. До начала регаты вы можете прийти ко мне и сделать ставку.";
+				link.l1 = "Хорошо.";
 				link.l1.go = "exit";
 			}
 		break;
 		
 		case "Regata_Head_11":
 			CreateRegataAdversaries();
-			dialog.text = "Three days later, at twelve o'clock. Come to the pier. Don't be late. You shall have five competitors.\n"+pchar.questTemp.Regata.AdversaryName.a+", of the "+pchar.questTemp.Regata.AdversaryShipName.a+"\n"+pchar.questTemp.Regata.AdversaryName.b+", of the "+pchar.questTemp.Regata.AdversaryShipName.b+"\n"+pchar.questTemp.Regata.AdversaryName.c+", of the "+pchar.questTemp.Regata.AdversaryShipName.c+"\n"+pchar.questTemp.Regata.AdversaryName.d+", of the "+pchar.questTemp.Regata.AdversaryShipName.d+"\n"+pchar.questTemp.Regata.AdversaryName.e+", of the "+pchar.questTemp.Regata.AdversaryShipName.e+"\nAll of them are seasoned captains. Well, apparently this is it. Take the rule paper just in case. See you at the start!";
-			link.l1 = "Goodbye, sir.";
+			dialog.text = "Через 3 дня, в 12 часов. Вы должны быть на пирсе. У вас будет пять противников\n"+pchar.questTemp.Regata.AdversaryName.a+", на корабле '"+pchar.questTemp.Regata.AdversaryShipName.a+"'\n"+pchar.questTemp.Regata.AdversaryName.b+", на корабле '"+pchar.questTemp.Regata.AdversaryShipName.b+"'\n"+pchar.questTemp.Regata.AdversaryName.c+", на корабле '"+pchar.questTemp.Regata.AdversaryShipName.c+"'\n"+pchar.questTemp.Regata.AdversaryName.d+", на корабле '"+pchar.questTemp.Regata.AdversaryShipName.d+"'\n"+pchar.questTemp.Regata.AdversaryName.e+", на корабле '"+pchar.questTemp.Regata.AdversaryShipName.e+"'\nВсе весьма опытные капитаны. Вот, вроде и все. Возьмите эту бумагу, в ней записаны все правила, чтобы вы не забыли чего. А теперь - до встречи на старте!";
+			link.l1 = "До свидания, сэр.";
 			if (Pchar.BaseNation == SPAIN || Pchar.BaseNation == HOLLAND) link.l1.go = "Regata_Head_13";
 			else link.l1.go = "Regata_Head_12";
 		break;
@@ -265,18 +264,18 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Regata_Head_13":
-			dialog.text = "Wait! I'll give you the 30 days license for visiting English and French ports. The regatta won't last more than a month. Please, take it.";
-			link.l1 = "Thanks!";
+			dialog.text = "Подождите! Для свободного посещения английских и французских портов я выдаю вам лицензию сроком на 30 дней - регата не продлится больше месяца. Пожалуйста, получите.";
+			link.l1 = "Спасибо!";
 			link.l1.go = "Regata_Head_12";
 			GiveNationLicence(HOLLAND, 30);
 		break;
 		
 		case "Regata_rate":
-			dialog.text = "How much are you betting on?";
+			dialog.text = "Сколько вы готовы поставить?";
 			link.l1 = "";
 			Link.l1.edit = 4;
 			link.l1.go = "Regata_rate_1";
-			link.l2 = "I suppose, I still need some time to think.";
+			link.l2 = "Пожалуй, мне еще надо подумать.";
 			link.l2.go = "Regata_Head_10";
 		break;
 		
@@ -285,40 +284,40 @@ void ProcessDialogEvent()
 			pchar.questTemp.Regata.Rate = sti(iQty);
 			if (iQty < 10000)
 			{
-				dialog.text = "Sir, this is not funny. Why is that meanness? I won't work with such a small sum.";
-				link.l1 = "Beg pardon... Let's reconsider the stake.";
+				dialog.text = "Сэр, не смешите. Ну что за мелочность? Я даже не буду возиться с такой ничтожной суммой.";
+				link.l1 = "Прошу прощения... Давайте пересмотрим размер ставки.";
 				link.l1.go = "Regata_rate";
 				break;
 			}
 			if (iQty > 100000)
 			{
-				dialog.text = "Sir, I can't accept such stakes due to the rules of the regatta. Reduce it to the reasonable value.";
-				link.l1 = "Too bad. Let's reconsider the sum.";
+				dialog.text = "Сэр, правила не позволяют мне принимать такие ставки. Уменьшите ее размер до разумной величины.";
+				link.l1 = "Жаль... Давайте пересмотрим сумму.";
 				link.l1.go = "Regata_rate";
 				break;
 			}
-			dialog.text = ""+iQty+"? That is a fine stake. I am ready to accept it. Your money, sir?";
+			dialog.text = ""+iQty+"? Хорошая ставка. Я готов ее принять. Ваши деньги, сэр?";
 			if (makeint(Pchar.money) >= sti(pchar.questTemp.Regata.Rate))
 			{
-				link.l1 = "Please, take them.";
+				link.l1 = "Пожалуйста, получите.";
 				link.l1.go = "Regata_rate_2";
 			}
-			link.l2 = "I don't have enough coins now. I will come to you later and will make a stake. And I will think more on it, perhaps I will reconsider the sum.";
+			link.l2 = "У меня сейчас недостаточно денег. Я приду позже и сделаю ставку. И еще подумаю, может, поменяю сумму.";
 			link.l2.go = "Regata_Head_10";
 		break;
 		
 		case "Regata_rate_2":
 			AddMoneyToCharacter(pchar, -sti(pchar.questTemp.Regata.Rate));
 			pchar.questTemp.Regata.Advantage = sti(pchar.questTemp.Regata.Rate)*(1.5+frand(1.5)); // dlc
-			dialog.text = "Splendid! Now all you need is to be the first and the prize is yours. It's final value could vary, it all depends on how many people will stake on you in the end.";
+			dialog.text = "Отлично! Теперь вам нужно прийти первым - и выигрыш ваш. Его размер может быть разным - в зависимости от того, сколько людей поставят на вас.";
 			if (!CheckAttribute(pchar, "questTemp.Regata.Ratenext"))
 			{
-				link.l1 = "I see. When is the start of the regatta?";
+				link.l1 = "Понятно. Когда старт регаты?";
 				link.l1.go = "Regata_Head_11";
 			}
 			else
 			{
-				link.l1 = "I see. I will be waiting for the start. See you!";
+				link.l1 = "Понятно. Жду старта. До свидания!";
 				link.l1.go = "exit";
 				DeleteAttribute(pchar, "questTemp.Regata.Ratenext");
 				NextDiag.TempNode = "Regata_Prepare";
@@ -326,35 +325,35 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Regata_Prepare":
-			dialog.text = "Are you here again, captain " + GetFullName(pchar) + "? What do you want?";
+			dialog.text = "А, это опять вы, капитан " + GetFullName(pchar) + "? По какому вопросу пожаловали?";
 			if (!CheckAttribute(pchar, "questTemp.Regata.Rate"))
 			{
-				link.l1 = "I want to bet on my victory.";
+				link.l1 = "Я хочу сделать ставку на свою победу.";
 				link.l1.go = "Regata_rate";
 			}
-			link.l2 = "No, it is nothing. Just wanted to greet you.";
+			link.l2 = "Да нет, ничего особенного, просто решил поприветствовать вас.";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "Regata_Prepare";
 		break;
 		
 		//старт регаты
 		case "Regata_CitMan":
-			dialog.text = RandPhraseSimple(LinkRandPhrase("Captain, are you first-timer? Let me tell you that you should be careful. Your competitors might set up a very unpleasant surprises for you...","Captain, I have made a stake on you. Don't disappoint me!","Captain, the locals in the ports of the regatta might offer you to buy something. It is often can be really useful. Consider that."), LinkRandPhrase("Have a safe sail, captain!","Captain, please be careful, Castilians often hunt the luggers of participants in the Spanish waters.","I have heard that some shady characters often offer their 'services' to the regatta captains. It is your call to accept their offers or not."));
-			link.l1 = "Yes, yes, of course...";
+			dialog.text = RandPhraseSimple(LinkRandPhrase("Капитан, вы первый раз участвуете в регате? Вот что я вам скажу: будьте осторожны. Соперники могут организовать вам неприятный сюрприз...","Капитан, я поставил на вас. Не разочаруйте меня!","Капитан, в портах следования регаты жители могут предложить купить у них что-нибудь. Это часто оказывается полезным. Имейте это в виду."), LinkRandPhrase("Счастливого плавания, капитан!","Капитан, проявляйте бдительность: у испанских островов кастильцы частенько ведут охоту на люггеры участников регаты.","Я слышал, что в пунктах следования разные темные личности предлагают капитанам регаты свои 'услуги'. Воспользоваться ими, или нет - дело, конечно, ваше."));
+			link.l1 = "Да-да, конечно...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Regata_CitMan";
 		break;
 		
 		case "Regata_CitWom":
-			dialog.text = LinkRandPhrase("Captain, me and my husband has bet ten thousands on your victory. Don't let us down!","Captain! I wish you luck!","Ah, you such a brave and courageous captain...");
+			dialog.text = LinkRandPhrase("Капитан, мы с мужем поставили на вас десять тысяч. Не подведите нас!","Капитан! Желаю вам удачи!","Ах, вы такой отважный, и такой мужественный, капитан...");
 			link.l1 = "...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Regata_CitWom";
 		break;
 		
 		case "Regata_CitHorse":
-			dialog.text = LinkRandPhrase("Hey, sailor! Wave to the beauty! I will be waiting for your return!","Hey, salty sailor! Madam has said that she will give me as prize to the winner of regatta for free... Try to win, you are so handsome!","Don't forget to visit us when you will be back, handsome, we will pleasure you according to the highest standards!");
-			link.l1 = "Fine, sweetie.";
+			dialog.text = LinkRandPhrase("Хей, морячок! Помаши красотке на прощание! Я тебя жду, когда вернешься!","Хи-и-и, моряк, соленый морячок! Мадам сказала, что отдаст меня победителю регаты на неделю бесплатно... Постарайся выиграть, ты такой милашка!","Когда вернешься, красавчик, не забудь заглянуть к нам - обслужим по высшему разряду!");
+			link.l1 = "Хорошо, дорогуша.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Regata_CitHorse";
 		break;
@@ -362,21 +361,21 @@ void ProcessDialogEvent()
 		case "Regata_Prepare_1":
 			if (sti(environment.time) < 12.0)
 			{
-				dialog.text = "Captain, the regatta starts at 12 o'clock. You can rest now, we are preparing the festive part. Come back at midday, your competitors will do the same.";
-				link.l1 = "Me and my crew are ready, sir! I am waiting for the start...";
+				dialog.text = "Капитан, регата стартует в 12 часов. Можете пока погулять - мы готовим торжественную часть. Приходите к полудню - ваши соперники тоже прибудут к этому времени.";
+				link.l1 = "Я и моя команда полностью подготовлены, сэр! Жду старта...";
 				link.l1.go = "exit";
 			}
 			else
 			{
-				dialog.text = "Here are you are, captain.";
-				link.l1 = "Me and my crew are ready, sir! I am waiting for the start...";
+				dialog.text = "Вот и вы, капитан. Занимайте место на пирсе и ожидайте объявления старта регаты.";
+				link.l1 = "Я и моя команда полностью подготовлены, сэр! Жду старта...";
 				link.l1.go = "exit";
 			}
 			NextDiag.TempNode = "Regata_Prepare_1";
 		break;
 		
 		case "Regata_Start":
-			dialog.text = "So, gentlemen, here we are. I announce the start of the regatta. You know the rules. The one who will return here first will be praised as a winner. Ladies and gentlemen let's wish luck to our brave captains!\nGentlemen! Are you up? Ready! Steady! Go!";
+			dialog.text = "Итак, джентльмены, вы все собрались. Я объявляю парусную регату открытой. Правила вы знаете. Побеждает тот, чей корабль вернется в Порт-Рояль первым. Дамы и господа, пожелаем нашим отважным капитанам удачи!\nДжентльмены! Вы готовы? На старт! Внимание! Марш!!";
 			link.l1 = "...";
 			link.l1.go = "Regata_Start_1";
 		break;
@@ -384,7 +383,7 @@ void ProcessDialogEvent()
 		case "Regata_Start_1":
 			DialogExit();
 			PlaySound("people fight\mushketshot.wav");
-			log_info("The regatta has started! Get aboard! Head to Belize!");
+			log_info("Регата стартовала! На корабль! Курс - на Белиз!");
 			for (i=1; i <=5; i++)
 			{
 				sld = characterFromId("Regata_Cap_F"+i);
@@ -413,38 +412,38 @@ void ProcessDialogEvent()
 		
 		//верфист с парусами
 		case "Regata_Shipyarder":
-			dialog.text = "Greeting, captain! I am informed that you are taking part in the Caribbean regatta...";
-			link.l1 = "It is true. News are truly spread across the archipelago faster than a wind.";
+			dialog.text = "Здравствуйте, капитан! Как мне известно, вы принимаете участие в карибской регате...";
+			link.l1 = "Да, это так. Новости по архипелагу, и правда, разносятся быстрее ветра.";
 			link.l1.go = "Regata_Shipyarder_1";
 		break;
 		
 		case "Regata_Shipyarder_1":
-			dialog.text = "They do, captain. I have got a proposal for you. It concerns your ship and the regatta.";
-			link.l1 = "Heh! Interesting. I am listening to you, mister.";
+			dialog.text = "Что верно, то верно, капитан. У меня для вас есть предложение, связанное с регатой и вашим кораблем.";
+			link.l1 = "Хех! Интересно. Слушаю вас внимательно, мистер.";
 			link.l1.go = "Regata_Shipyarder_2";
 		break;
 		
 		case "Regata_Shipyarder_2":
-			dialog.text = "Sir, I have a set of perfect sails for a lugger, they are made of the best cotton. These sails will increase your ship's acceleration and give you an advantage in time over opponents\nI am ready to sell them to you, of course if you are buying.";
-			link.l1 = "How much do you want for these sails?";
+			dialog.text = "Регата проводится на люггерах, сэр. А у меня как раз есть комплект парусов на люггер из хлопка самого высокого качества. Эти паруса позволят увеличить набор скорости вашим кораблем и дадут преимущество перед вашими соперниками во времени\nЯ готов вам их продать, если вы, конечно, желаете купить.";
+			link.l1 = "Сколько вы хотите за эти паруса?";
 			link.l1.go = "Regata_Shipyarder_3";
 		break;
 		
 		case "Regata_Shipyarder_3":
-			dialog.text = "Only 15 000 pesos. You must admit that this is a very modest price for such a thing and in such situation.";
+			dialog.text = "Всего лишь 15 000 песо. Согласитесь, это небольшая цена для такой вещи, да еще в такой ситуации.";
 			if (makeint(Pchar.money) >= 15000)
 			{
-				link.l1 = "I agree. I am buying these new sails for my lugger from you. Here, take your money. Would you be kindly to deliver them to my ship while I am checking in.";
+				link.l1 = "Согласен! Я покупаю у вас новые паруса на свой люггер. Вот деньги. Будьте любезны доставить их на мой корабль, пока я иду отмечаться в портовое управление.";
 				link.l1.go = "Regata_Shipyarder_4";
 			}
-			link.l2 = "I don't have such money. So I won't be able to buy your sails.";
+			link.l2 = "Нет у меня таких денег. Так что купить ваши паруса не получится.";
 			link.l2.go = "Regata_Shipyarder_exit";
 		break;
 		
 		case "Regata_Shipyarder_4":
 			AddMoneyToCharacter(pchar, -15000);
-			dialog.text = "It will be done, sir. You won't regret it. Besides these sails are nicely colored in blue. Your beauty will appreciate it.";
-			link.l1 = "Fine then! Well, I have to go and you do the sails.";
+			dialog.text = "Будет сделано, сэр! Вы не пожалеете о своем приобретении. Кроме того, эти паруса выкрашены в замечательный голубой цвет - ваш люггер будет смотреться очень нарядно.";
+			link.l1 = "Вот и славно! Ну, я отправляюсь, а вы займитесь парусами.";
 			link.l1.go = "Shipyarder_exit";
 			for (i=1; i <=5; i++)
 			{
@@ -461,8 +460,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Regata_Shipyarder_exit":
-			dialog.text = "What a shame. Well, it is your call. Farewell, captain.";
-			link.l1 = "Goodbye!";
+			dialog.text = "Жаль, очень жаль. Ну, хозяин - барин. До свидания, капитан.";
+			link.l1 = "Всего доброго!";
 			link.l1.go = "Shipyarder_exit";
 			pchar.questTemp.Regata.AdversarySecondTransition.Time.d = sti(pchar.questTemp.Regata.AdversarySecondTransition.Time.d)-16;//четвертый соперник выиграл 16 часов
 			log_testinfo(FindRussianDaysString(pchar.questTemp.Regata.AdversarySecondTransition.Time.e));
@@ -477,14 +476,14 @@ void ProcessDialogEvent()
 		
 		//контрики с пушками
 		case "Regata_Contra":
-			dialog.text = "Hello, captain " + GetFullName(pchar) + ". We have a talk to you... actually, a business proposal.";
-			link.l1 = "Hm. Interesting and how do you know who I am?";
+			dialog.text = "Здравствуйте, капитан " + GetFullName(pchar) + ". У нас к вам есть разговор... точнее, деловое предложение.";
+			link.l1 = "Хм. Интересно, а откуда вы меня знаете?";
 			link.l1.go = "Regata_Contra_1";
 		break;
 		
 		case "Regata_Contra_1":
-			dialog.text = "Captain, this part was relatively easy. There is the regatta is going on and you are taking part in it, you are famous.";
-			link.l1 = "I see. Well, speak your mind.";
+			dialog.text = "Капитан, ну это же проще простого. Идет регата, вы ее участник - как нам не знать вас!";
+			link.l1 = "Понятно. Ну, выкладывайте, что там у вас.";
 			link.l1.go = "Regata_Contra_2";
 		break;
 		
@@ -492,29 +491,29 @@ void ProcessDialogEvent()
 			if (sti(pchar.questTemp.Regata.Index != 1))
 			{
 				sTemp = pchar.questTemp.Regata.ContraIndex;
-				dialog.text = "We are aware that there is one more participant towards you - "+pchar.questTemp.Regata.AdversaryName.(sTemp)+" of the "+pchar.questTemp.Regata.AdversaryShipName.(sTemp)+". He left the port not long ago and soon he will sailing by the Gonaives cape.";
+				dialog.text = "Нам известно, что перед вами находится еще один участник регаты - "+pchar.questTemp.Regata.AdversaryName.(sTemp)+" на корабле "+pchar.questTemp.Regata.AdversaryShipName.(sTemp)+". Он вышел из порта совсем недавно, и скоро будет проходить мимо бухты Гонаив.";
 			}
 			else
 			{
-				dialog.text = "We are aware that there is one more participant right behind you - "+pchar.questTemp.Regata.AdversaryName.b+" of the "+pchar.questTemp.Regata.AdversaryShipName.b+". He will be here in a few hours.";
+				dialog.text = "Нам известно, что за вами буквально по пятам идет еще один участник регаты - "+pchar.questTemp.Regata.AdversaryName.b+" на корабле "+pchar.questTemp.Regata.AdversaryShipName.b+". Он с часа на час войдет в порт.";
 			}
-			link.l1 = "You are very well informed.";
+			link.l1 = "Вы хорошо осведомлены.";
 			link.l1.go = "Regata_Contra_3";
 		break;
 		
 		case "Regata_Contra_3":
-			if (sti(pchar.questTemp.Regata.Index != 1)) sTemp = "letting you pass ahead of him and take his position";
-			else sTemp = "therefore you will be taking a lead for a long time";
-			dialog.text = "Absolutely. Now let's cut to the chase. We offer you our help for a coin. We have placed four cannons from our ship at cape behind Gonaives bay. Any regatta ship must double it\nThe guns are loaded with chain shots. If we make a deal, I will tell our cannon friends to ruin your competitor's sails, so he will be forced to lose time repairing them, "+sTemp+".";
-			link.l1 = "How much do you want for this service?";
+			if (sti(pchar.questTemp.Regata.Index != 1)) sTemp = "а вы тем временем опредите его и займете его место";
+			else sTemp = "а вы тем временем уйдете далеко вперед";
+			dialog.text = "Безусловно. Теперь к сути дела. Мы предлагаем вам помощь на возмездной основе. Зная о маршруте регаты, мы сняли со своего корабля и установили на мысе за бухтой Гонаив четыре орудия. Любой корабль регаты будет огибать этот мыс\nПушки заряжены книппелями. Если мы с вами договоримся, мы просигналим нашим друзьям у орудий, и они несколькими залпами превратят паруса вашего соперника в рваные тряпки. Он потеряет время на починку, "+sTemp+".";
+			link.l1 = "Сколько вы хотите за эту услугу?";
 			link.l1.go = "Regata_Contra_4";
-			link.l2 = "No. I am not going to use such methods to win. You were mistaken about me. Farewell, gentlemen.";
+			link.l2 = "Нет. Я не намерен применять для победы подобные методы. Вы не за того меня приняли. Всего доброго, джентльмены.";
 			link.l2.go = "Regata_Contra_exit";
 		break;
 		
 		case "Regata_Contra_exit":
-			dialog.text = "Well captain, it is your call. Farewell.";
-			link.l1 = "Thanks for the information about the cape. I will stay away from it.";
+			dialog.text = "Ну, капитан, как знаете. Прощайте.";
+			link.l1 = "За инфорацию про мыс спасибо. Буду держаться от него подальше!";
 			link.l1.go = "Contra_exit";
 			ChangeCharacterComplexReputation(pchar, "nobility", 3);
 		break;
@@ -522,26 +521,26 @@ void ProcessDialogEvent()
 		case "Regata_Contra_4":
 			if (sti(pchar.questTemp.Regata.Index != 1)) iTemp = 50000;
 			else iTemp = 30000;
-			dialog.text = "Not much. Only "+iTemp+" pesos. And one of your competitors will loose almost two days because of our... operation, ha-ha!";
+			dialog.text = "Да сущие пустяки. Всего "+iTemp+" песо. А ваш соперник потеряет как минимум два дня после нашей... операции, ха-ха!";
 			if (makeint(Pchar.money) >= iTemp)
 			{
-				link.l1 = "Heh! You talk sense, my good man! I am paying. But what about guarantees that you will do your job? And that you won't shoot my ship when I will be passing the cape?";
+				link.l1 = "Хех! Вы говорите дело, джентльмены! Я готов заплатить вам. Но какие гарантии, что вы сделаете работу? И что мой корабль не обстреляете, когда я мыс проходить буду?";
 				link.l1.go = "Regata_Contra_5";
 			}
-			link.l2 = "I don't have such money. So I won't be able to use your services.";
+			link.l2 = "Нет у меня таких денег. Так что помощью вашей воспользоваться не придется.";
 			link.l2.go = "Regata_Contra_exit";
 		break;
 		
 		case "Regata_Contra_5":
-			dialog.text = "Captain, we are smugglers not pirates. We are honest men... in our way. You must had used our services before, right? You have my word. You can rely on it.";
-			link.l1 = "Fair enough, take your money.";
+			dialog.text = "Капитан, мы контрабандисты, а не какие-нибудь бродяги. Мы - люди честные... в своем деле. Или вы никогда нашими услугами не пользовались и не знаете, что мы не обманываем? Даю вам слово. Можете быть уверены.";
+			link.l1 = "Хорошо, вот ваши деньги.";
 			link.l1.go = "Regata_Contra_6";
 		break;
 		
 		case "Regata_Contra_6":
 			ChangeCharacterComplexReputation(pchar, "nobility", -3);
-			dialog.text = "You will be pleased by this deal, captain. And I will let my gun boys know about it immediately. Good luck!";
-			link.l1 = "Same to you...";
+			dialog.text = "Вы останетесь довольны этой сделкой, капитан. Ну, а мы сейчас дадим сигнал, и ваш соперник еще не скоро сможет развить приличную скорость. Удачи!";
+			link.l1 = "И вам того же...";
 			link.l1.go = "Contra_exit";
 			if (sti(pchar.questTemp.Regata.Index != 1))
 			{
@@ -572,15 +571,15 @@ void ProcessDialogEvent()
 		//падре
 		case "Regata_Padre":
 			pchar.questTemp.Regata.BranderName = GenerateRandomNameToShip(ENGLAND);
-			dialog.text = "Good day to you, my son. I am to greet you and to humbly ask you: don't you want to contribute to the parish treasury as a loyal servant of England and our great Lord?";
-			link.l1 = "Padre, people do charity, because of their soul' call not because of compulsion. I am starting to think that everyone at the archipelago has decided to fleece the captain of the regatta...";
+			dialog.text = "Здравствуй, сын мой. Я пришел поприветствовать тебя, а также смиренно спросить: не желаешь ли ты, как верный слуга Англии и Господа нашего, внести посильную лепту в приходскую казну нашей церкви?";
+			link.l1 = "Падре, люди делают пожертвования по зову своей души, а не по принуждению. У меня складываетя такое впечатление, что все на архипелаге решили, что раз капитан участвует в регате - значит, его нужно обобрать...";
 			link.l1.go = "Regata_Padre_exit";
-			link.l2 = "Sure, holy father. How much would be enough?";
+			link.l2 = "Конечно, святой отец. Какая сумма пожертвования будет достаточной?";
 			link.l2.go = "Regata_Padre_1";
 		break;
 		
 		case "Regata_Padre_1":
-			dialog.text = "Just as much as your wish and possibilities will let you, my son. Our parish will be glad for even the smallest sum.";
+			dialog.text = "Сколько позволяет тебе твое желание и твои возможности, сын мой. Наш приход будет рад даже маленькой денежной сумме.";
 			Link.l1.edit = 4;			
 			link.l1 = "";
 			link.l1.go = "Regata_Padre_2";
@@ -590,37 +589,37 @@ void ProcessDialogEvent()
 			iTemp = sti(dialogEditStrings[4]);
 			if (iTemp <= 0 || sti(pchar.money) < iTemp)
 			{
-				dialog.text = "This is wrong attitude, my son. We all have sins, don't forget about your soul. You will have to appear before our Creator... and perhaps soon.";
-				link.l1 = "I don't need your sermons, holy father. Farewell.";
+				dialog.text = "Нехорошо так поступать, сын мой. Все мы грешны - не забывай о душе и о том, что тебе придется предстать перед Создателем... и, возможно, очень скоро.";
+				link.l1 = "Я не нуждаюсь в нравоучениях, святой отец. До свидания.";
 				link.l1.go = "Padre_exit";
 				ChangeCharacterComplexReputation(pchar, "nobility", -3);
 				break;
 			}
 			if (iTemp > 0 && iTemp <= 1000)//ничего не скажет
 			{
-				dialog.text = "Our parish and I thank you for this modest gift.";
-				link.l1 = "You are welcome, holy father.";
+				dialog.text = "От лица нашего прихода благодарю тебя за этот скромный дар.";
+				link.l1 = "Не за что, святой отец.";
 				link.l1.go = "Padre_exit";
 				AddMoneyToCharacter(pchar, -iTemp);
 			}
 			if (iTemp > 1000 && iTemp <= 5000)//1 категория - намекнет
 			{
-				dialog.text = "Our parish and I thank you for this gift. And I want to warn you, my son, that some bad people are intend to harm you. Be careful in the sea!";
-				link.l1 = "Padre, every day people are planning to do something against me... But thank you for your concerns about my fate.";
+				dialog.text = "От лица нашего прихода благодарю тебя за этот дар. И в благодарность я хочу предупредить тебя, сын мой: нехорошие люди затеяли против тебя недоброе. Будь осторожен в море!";
+				link.l1 = "Падре, против меня ежедневно затевается что-то недоброе... Однако спасибо вам за ваше беспокойство о моей судьбе.";
 				link.l1.go = "Padre_exit";
 				AddMoneyToCharacter(pchar, -iTemp);
 			}
 			if (iTemp > 5000 && iTemp <= 10000)//2 категория - скажет
 			{
-				dialog.text = "I thank you in the name of our parish for this valuable gift. In return, I want to warn you that bad people are conspiring against you. I heard that these vile apostates are going to sink your vessel at this very harbour\nThey have already prepared a ship for this evil deed. Be careful, my son, these lost souls are serious about their vile intentions. Bless you!";
-				link.l1 = "Thank you, holy father. I will be attentive.";
+				dialog.text = "От лица нашего прихода благодарю тебя за этот дар. И в благодарность я хочу предупредить тебя, сын мой: нехорошие люди затеяли против тебя недоброе. Я слышал, как эти мерзкие богоотступники договаривались потопить твой корабль при выходе из нашего порта\nОни уже снарядили судно и готовятся тебя атаковать. Будь осторожен, сын мой, эти заблудшие души не шутили - следует ожидать нападения. Ступай с моим благословением!";
+				link.l1 = "Спасибо, святой отец. Я буду внимателен.";
 				link.l1.go = "Padre_exit";
 				AddMoneyToCharacter(pchar, -iTemp);
 			}
 			if (iTemp > 10000)//3 категория - расскажет полностью
 			{
-				dialog.text = "You are very generous, my son. A modesty of a humble servant of the God doesn't allow me to accept the whole sum you are willing to give away for the good our of church. I shall take only 10 000 pesos\nIn return, I want to warn you that bad people are conspiring against you. I heard that these vile apostates are going to sink your vessel at this very harbor\nThey have prepared a lugger '"+pchar.questTemp.Regata.BranderName+"', she is flying English in order to approach you without causing suspicions. Be careful, my son, these lost souls are serious about their vile intentions.\nDestroy them, I give you absolution for this sin. Bless you! I will pray for you, my son.";
-				link.l1 = "Thank you, holy father. If these bastards will dare to do something bad, I will send them right to hell!";
+				dialog.text = "Ты очень щедр, сын мой. Скромность, подобающая слугам Господа нашего, не позволяет мне принять всю сумму, которой ты готов пожертвовать ради нашей церкви. Я возьму только 10 000 песо\nИ в благодарность я хочу предупредить тебя, сын мой: нехорошие люди затеяли против тебя недоброе. Я слышал, как эти мерзкие богоотступники договаривались потопить твой корабль при выходе из нашего порта\nОни снарядили люггер, под названием '"+pchar.questTemp.Regata.BranderName+"', и намереваются атаковать тебя, под английским флагом, чтобы ты не понял, что к чему. Будь осторожен, сын мой, эти заблудшие души не шутили - следует ожидать нападения\nУничтожь их - я заранее отпускаю тебе этот грех. Ступай с моим благословением! Я буду молиться за тебя, сын мой.";
+				link.l1 = "Спасибо, святой отец. Я буду внимателен. Если эти мерзавцы осмелятся - я отправлю их прямиком в ад!";
 				link.l1.go = "Padre_exit";
 				AddMoneyToCharacter(pchar, -10000);
 				ChangeCharacterComplexReputation(pchar, "nobility", 2);
@@ -628,8 +627,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Regata_Padre_exit":
-			dialog.text = "Don be angry, my son. Anger is a sin. It is your right to don't do charity. Walk in peace, my son.";
-			link.l1 = "Farewell, holy father.";
+			dialog.text = "Не гневайся, сын мой. Гнев - это грех. Если ты не желаешь пожертвовать на благо церкви - то это твое решение и твое право. Ступай с миром, сын мой.";
+			link.l1 = "Всего доброго, святой отец.";
 			link.l1.go = "Padre_exit";
 			ChangeCharacterComplexReputation(pchar, "nobility", -1);
 		break;
@@ -641,14 +640,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Regata_Spyglass":
-			dialog.text = "Good day to you, captain! My name is " + npchar.name + " and I'd like to...";
-			link.l1 = "... to offer you something... Am I right, young lady?";
+			dialog.text = "Здравствуйте, капитан! Меня зовут " + npchar.name + ", и я бы хотела...";
+			link.l1 = "...предложить вам кое-что... Правильно, девушка?";
 			link.l1.go = "Regata_Spyglass_1";
 		break;
 		
 		case "Regata_Spyglass_1":
-			dialog.text = "You are, captain! And why are you surprised like that? You are a handsome sailor and you are taking part in the regatta, sure everyone are willing to sell you some useful naval stuff.";
-			link.l1 = "Fine, beauty, you have a point. What have you got for me?";
+			dialog.text = "Ну конечно же, капитан! А чему вы удивляетесь? Вы - моряк видный, участвуете в регате - конечно, все хотят вам что-нибудь продать, необходимое в морском деле.";
+			link.l1 = "Ладно, красавица, уговорила. Что там у тебя?";
 			link.l1.go = "Regata_Spyglass_2";
 		break;
 		
@@ -656,7 +655,7 @@ void ProcessDialogEvent()
 			if(drand(11) > 10)//отличная труба
 			{
 				pchar.questTemp.Regata.Spy = "spyglass4";
-				sTemp = "an excellent spyglass";
+				sTemp = "отличная подзорная труба";
 				pchar.questTemp.Regata.SpyPrice = 20000;
 				pchar.questTemp.Regata.SpyIndex = 12;//выигрыш - 12 часов
 			}
@@ -665,33 +664,33 @@ void ProcessDialogEvent()
 				if(drand(11) < 6)//обычная труба
 				{
 					pchar.questTemp.Regata.Spy = "spyglass2";
-					sTemp = "an ordinary spyglass";
+					sTemp = "обычная подзорная труба";
 					pchar.questTemp.Regata.SpyPrice = 1800;
 					pchar.questTemp.Regata.SpyIndex = 4;//выигрыш - 4 часа
 				}
 				else//хорошая труба - как пригодится
 				{
 					pchar.questTemp.Regata.Spy = "spyglass3";
-					sTemp = "a good spyglass";
+					sTemp = "хорошая подзорная труба";
 					pchar.questTemp.Regata.SpyPrice = 10000;
 					pchar.questTemp.Regata.SpyIndex = 8;//выигрыш - 8 часов
 				}
 			}
-			dialog.text = "Here, take a look. I have inherited it from my father. He also was a sailor just like you are. I don't need it, but you can find it useful. I ask only "+FindRussianMoneyString(sti(pchar.questTemp.Regata.SpyPrice))+" for it.";
+			dialog.text = "Вот, посмотрите. Она мне досталась от отца, он тоже был моряком, как и вы. Мне она не нужна, а вам может пригодиться. И прошу я за нее всего лишь "+FindRussianMoneyString(sti(pchar.questTemp.Regata.SpyPrice))+".";
 			if (sti(pchar.money) >= sti(pchar.questTemp.Regata.SpyPrice))
 			{
-				link.l1 = "Well, well..."+sTemp+"! Interesting! I say, I'll buy it from you. For your pretty eyes. Do you want "+FindRussianMoneyString(sti(pchar.questTemp.Regata.SpyPrice))+" for it? Please, take them.";
+				link.l1 = "Так-так... "+sTemp+"! Очень интересно. Пожалуй, я куплю ее у вас. В том числе, и за ваши красивые глаза. Вы хотите за нее "+FindRussianMoneyString(sti(pchar.questTemp.Regata.SpyPrice))+"? Пожалуйста, получите.";
 				link.l1.go = "Regata_Spyglass_3";
 			}
-			link.l2 = "Hm..."+sTemp+"? No, girl, I am sorry, but I don't need it. I have already got a fine spyglass. So... alas!";
+			link.l2 = "Хм... "+sTemp+"? Нет, девушка, извините, но мне эта вещь не нужна. У меня уже есть подзорная труба, и весьма неплохая. Так что... увы!";
 			link.l2.go = "Regata_Spyglass_exit";
 		break;
 		
 		case "Regata_Spyglass_3":
 			AddMoneyToCharacter(pchar, -sti(pchar.questTemp.Regata.SpyPrice));
 			GiveItem2Character(pchar, pchar.questTemp.Regata.Spy);
-			dialog.text = "Thank you, captain. I hope that it will serve you well. I am glad that you have found it useful. Good luck in the regatta!";
-			link.l1 = "Thank you, " + npchar.name + "! Farewell.";
+			dialog.text = "Благодарю вас, капитан. Надеюсь, эта вещь вам хорошо послужит. Рада, что она оказалась вам полезной. Удачи в регате!";
+			link.l1 = "Спасибо, " + npchar.name + "! До свидания.";
 			link.l1.go = "Spyglass_exit";
 			for (i=1; i <=5; i++)
 			{
@@ -706,8 +705,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Regata_Spyglass_exit":
-			dialog.text = "What a pity, captain. I was hoping that it will be useful for you. Well, I will try to sell it to someone else. Farewell!";
-			link.l1 = "Goodbye, " + npchar.name + ".";
+			dialog.text = "Жаль, очень жаль, капитан. А я надеялась, что она вам пригодится. Ну, попробую продать ее кому-нибудь еще. До свидания!";
+			link.l1 = "До свидания, " + npchar.name + ".";
 			link.l1.go = "Spyglass_exit";
 			pchar.questTemp.Regata.AdversaryFourthTransition.Time.c = sti(pchar.questTemp.Regata.AdversaryFourthTransition.Time.c)-sti(pchar.questTemp.Regata.SpyIndex);//третий соперник выиграл время
 		break;
@@ -721,19 +720,20 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Regata_SiegeOfficer":
-			dialog.text = "Greetings, captain. Aren't you a participant of the regatta? Am I right?";
-			link.l1 = "Yes. And what is the deal, officer?";
+			dialog.text = "Здравствуйте, капитан. Вы ведь участник скоростной регаты? Так?";
+			link.l1 = "Да. А в чем дело, офицер?";
 			link.l1.go = "Regata_SiegeOfficer_1";
 		break;
 		
 		case "Regata_SiegeOfficer_1":
-			dialog.text = "You must be informed already that our colony is under Spanish siege. That is why our governor wants to talk with you. Would you be kindly to pay him a visit? Right now, the matter is very urgent and I'd say it is vital.";
-			link.l1 = "Hm... Sure, I am to see his Excellency immediately, though I don't really understand how can I be involved in the military operations.";
+			dialog.text = "Вы, наверное, в курсе, что нашу колонию осадили испанцы. Именно по этому вопросу с вами хотел бы поговорить наш губернатор. Не откажите в любезности нанести ему визит, прямо сейчас - дело очень срочное, я бы сказал - безотлагательное.";
+			link.l1 = "Хм... Конечно, я отправлюсь к его светлости немедленно, хотя и не понимаю, какое я могу иметь отношение к военным действиям.";
 			link.l1.go = "Regata_SiegeOfficer_2";
 		break;
 		
 		case "Regata_SiegeOfficer_2":
-			dialog.text = "You are involved, captain. Let's not waste time and move to the residence. Follow me.";
+			dialog.text = "Самое прямое, капитан. Давайте не будем терять времени и пройдем в резиденцию. Следуйте за мной.";
+			link.l1 = "Да, конечно, офицер. Отправляемся.";
 			link.l1.go = "Regata_SiegeOfficer_3";
 		break;
 		
@@ -743,8 +743,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Regata_SiegeOfficer_4":
-			dialog.text = "Sir! I am ready to dispatch civilians to your ship. Are we going now?";
-			link.l1 = "Yes, sure. We will sail immediately. Forward people to longboats.";
+			dialog.text = "Сэр! Я готов препроводить гражданское население вам на корабль. Мы отправляемся?";
+			link.l1 = "Да, конечно. Отплываем немедленно. Доставляйте людей к шлюпкам.";
 			link.l1.go = "Regata_SiegeOfficer_5";
 		break;
 		
@@ -760,8 +760,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Regata_SiegeOfficer_6":
-			dialog.text = "We did it... Looks like this sloop was a courier of the squadron and these Castilian bastards were scouting around. Captain, help me to get women to the caverns, there is a possibility that there are more Spanish detachments.";
-			link.l1 = "Fine. Lets go!";
+			dialog.text = "Отбились... Очевидно, что этот шлюп - курьер эскадры, а эти кастильские негодяи - разведывательный отряд. Капитан, помогите мне довести женщин до пещеры - не исключено, что это не единственный испанский отряд.";
+			link.l1 = "Хорошо. Немедля отправляемся в путь!";
 			link.l1.go = "Regata_SiegeOfficer_7";
 		break;
 		
@@ -775,54 +775,54 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Regata_SiegeOfficer_8":
-			dialog.text = "Gratitude for you help, captain! If it wasn't for you and your courage... You are a true hero, you have completed this operation despite all dangers and your own interests. I have been thinking on how to reward you... there is a way to improve your chances in the regatta.";
-			link.l1 = "Interesting. What is this way?";
+			dialog.text = "Спасибо вам огромное за помощь, капитан! Если бы не вы, и не ваша отвага... Вы настоящий герой - невзирая на опасности, пренебрегая своими личными целями, блестяще выполнили операцию. Я тут подумал по дороге... есть возможность отблагодарить вас  - ведь вы участвуете в регате.";
+			link.l1 = "Очень интересно. Что за возможность?";
 			link.l1.go = "Regata_skiper";
 		break;
 		
 		case "Regata_Hovernor":
-			dialog.text = "Greeting, captain " + GetFullName(pchar) + ". It is good that you have come. Our town is need of your help.";
-			link.l1 = "Sir, if you are talking about Spanish squadron which is storming you colony right now, then I have no idea how can I help you. I command a lugger not a the ship of the line...";
+			dialog.text = "Здравствуйте, капитан " + GetFullName(pchar) + ". Очень хорошо, что вы пришли. Нашему городу нужна ваша помощь.";
+			link.l1 = "Сэр, если речь идет про напавшую на вашу колонию испанскую военную эскадру, то я не представляю, в чем будет выражаться моя помощь. Я командую люггером, а не линейным кораблем...";
 			link.l1.go = "Regata_Hovernor_1";
 		break;
 		
 		case "Regata_Hovernor_1":
-			dialog.text = "Listen to me, captain, and you will understand. We are in a serious trouble. The city is under the Spanish siege. A decisive battle with the fort is about to begin. Besides, a few hundred of Spanish have already landed and blocked every exit from the city, now they can attack us from the sea and the land\nFort's garrison is preparing to defend the city from the squadron and there are not enough soldiers in the settlement itself. Every man capable of handling a weapon is mobilized but what of about the others?\nThere are hundred souls of women in Bridgetown. Can you imagine what will happen to them if we fail to protect our colony? I believe that you understand.";
-			link.l1 = "Sir, I understand you, but, again, how can I help? What do you want from me? To fight ships of the line or to enlist with my crew in the town's militia?";
+			dialog.text = "Выслушайте меня, капитан, и вы все поймете. Мы попали в очень сложное положение. Город с моря осаждает испанская эскадра, и вот-вот начнет решающий бой с фортом. Кроме того, испанцы высадили на маяке десантную групиировку из нескольких сотен человек и блокировали выходы из города в джунгли, видимо, для того, чтобы атаковать нас с двух сторон - с моря и суши\nГарнизон форта готовится к обороне с моря, а солдат в городе недостаточно - мы не можем снять блокаду с суши... Все мужское население, способное носить оружие, мобилизовано, и все готовы к решающей схватке, но у нас в городе не только мужчины\nВ Бриджтауне остались почти сто душ женского населения. Вы представляете, что с ними будет, если мы не сможем отстоять колонию и испанцы захватят город? Думаю, подробно рассказывать вам не нужно.";
+			link.l1 = "Сэр, это все понятно, но чем я могу вам помочь? Чего вы хотите от меня? Чтобы я вступил в бой с линейными кораблями или записался со своей командой в городское ополчение?";
 			link.l1.go = "Regata_Hovernor_2";
 		break;
 		
 		case "Regata_Hovernor_2":
 			switch (sti(Pchar.BaseNation))
 			{
-				case ENGLAND: sTemp = "You are English , help us to save English citizens and what is more, women!" break;
-				case FRANCE: sTemp = "You are French, so you basically are our ally, help us to save English citizens and what is more, women!" break;
-				case SPAIN: sTemp = "I know that you are Spanish and there are your people in the sea, but you are participating in the English regatta and you are flying our colours. Don't you think that it is right to fight for peaceful people, for women? Help them!" break;
-				case HOLLAND: sTemp = "I know that you are Dutch and our nations are in war, but you are participating in the English regatta under the English flag. Don't you think that it is right to fight for peaceful people, for women? Help them!" break;
+				case ENGLAND: sTemp = "Вы же англичанин, помогите спасти английских мирных граждан, тем более - женщин!" break;
+				case FRANCE: sTemp = "Вы же француз, по сути - наш союзник, помогите спасти английских мирных граждан, тем более - женщин!" break;
+				case SPAIN: sTemp = "Я знаю, вы испанец, и там в море - ваши соотечественники, но вы участвуете в ангийской регате под английским флагом. Да и разве вы считаете правильным воевать против мирного населения, против женщин? Помогите им!" break;
+				case HOLLAND: sTemp = "Я знаю, вы голландец, и наши страны враждуют, но вы участвуете в ангийской регате под английским флагом. Да и разве вы считаете правильным воевать против мирного населения, против женщин? Помогите им!" break;
 			}
-			dialog.text = "Neither. I ask you for only one thing. Take women and children away from here on your ship. There are not many of them, about a hundred. Take them to Harrison Cape along with lieutenant Mahony, he will make sure they are save in the cave\nI am sure that the Spanish won't search for them. I don't have any ships to spare, everything we had was sunk by the Spanish squadron. You are my last hope. You can take them to the cape in one voyage, even though your vessel will be overloaded. Ships of the line won't follow you.\nI can't ask anyone else to do it. "+sTemp+"";
-			link.l1 = "Sir, I am sorry but my ship is overloaded already and she will not be able to hold that many people even for two voyages. Any random cannon ball even felled near will sent my ship and your women to the bottom of the sea. Forgive me, but I can't help you.";
+			dialog.text = "Ни то, ни другое. Я прошу вас только об одном: вывезите на своем корабле из города женщин и детей. Их немного, примерно сто человек. Доставьте их на мыс Гаррисон, вместе с лейтенантом Махойни, а он проведет их в глубь острова и укроет в пещере\nУверен, что испанцы не станут их разыскивать. У меня совершенно нет кораблей - все, что имелись, были потоплены испанской эскадрой. У меня одна надежда на вас. Вам потребуется всего один рейс, они все разместятся в трюме вашего корабля, пусть и с большим перегрузом - вы успеете до атаки. Линейные корабли не смогут догнать ваш люггер, да и не станут этого делать\nМне больше некого просить. "+sTemp+"";
+			link.l1 = "Сэр, извините, но мой корабль перегружен, и не выдержит такого количества пассажиров, даже в два рейса. Любое случайное ядро, даже упавшее рядом, отправит мой корабль вместе с вашими женщинами на дно. Простите, но я ничем не могу вам помочь.";
 			link.l1.go = "Regata_Hovernor_exit";
-			link.l2 = "Sure, sir. I will help you. The sailor's honour obliges me to  that.";
+			link.l2 = "Конечно, сэр. Я помогу вам. Честь моряка просто обязывает меня это сделать.";
 			link.l2.go = "Regata_Hovernor_3";
 		break;
 		
 		case "Regata_Hovernor_3":
-			dialog.text = "I am glad that you have agreed. You are a true soldier. Lieutenant Mahony will see the women to your ship. May God speed you!";
-			link.l1 = "Thank you, sir. Let's not waste time!";
+			dialog.text = "Я рад, что вы согласились. Вы настоящий солдат. Лейтенант Махойни займется доставкой пассажирок на ваш корабль. И да поможет вам Бог!";
+			link.l1 = "Спасибо, сэр. Не будем терять драгоценное время!";
 			link.l1.go = "Regata_Hovernor_4";
 		break;
 		
 		case "Regata_Hovernor_wait":
-			dialog.text = "Hurry up, captain. Time is running.";
-			link.l1 = "I am sailing already!";
+			dialog.text = "Поторопитесь, капитан! Время не ждет.";
+			link.l1 = "Уже отплываю!";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Regata_Hovernor_wait";
 		break;
 		
 		case "Regata_Hovernor_exit":
-			dialog.text = "This… this is unbelievable. You are not going to even try? Well, you are in your right. I can't demand anything from you. If you were just an ordinary captain, I would confiscate your ship for the sake of hundred women, but… you participate in the regatta, therefore you are under protection of general-governor of English colonies\nI was hoping that your conscience will take better of you, yet I was wrong. Go and let God be merciful on your soul!";
-			link.l1 = "Farewell, sir.";
+			dialog.text = "Я просто поражен... Вы не хотите даже попытаться? Ну что же, это ваше право. Я не могу ничего от вас требовать. Будь вы простым капитаном, я бы не колеблясь конфисковал ваше судно ради спасения сотни женщин, но... вы находитесь под протекцией генерал-губернатора английских колоний как участник регаты\nЯ надеялся на вашу совесть и просчитался. Ступайте, и да смилуется Господь над вашей душой в день Страшного Суда!";
+			link.l1 = "Прощайте, сэр.";
 			link.l1.go = "Hovernor_exit";
 		break;
 		
@@ -869,15 +869,15 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Regata_BridgWom":
-			dialog.text = "Spanish are on us! God, help us!";
+			dialog.text = "Испанцы наступают! Господи, смилуйся над нами!";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Regata_BridgWom";
 		break;
 		
 		case "Regata_BridgWom_1":
-			dialog.text = "Lieutenant Mahony is dead... it must be a nightmare. He was a brave officer. Captain, will you please take us to a cavern? Just take us there and we will take care about ourselves.";
-			link.l1 = "Sure. Follow me!";
+			dialog.text = "Лейтенант Махойни погиб... какой кошмар. Он был отважным офицером. Капитан, вы проведете нас в пещеру? Только доведите, а дальше мы сами о себе позаботимся.";
+			link.l1 = "Конечно. Следуйте за мной!";
 			link.l1.go = "Regata_BridgWom_2";
 		break;
 		
@@ -895,21 +895,21 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Regata_BridgWom_3":
-			dialog.text = "Here we are... thank you, captain! You have just saved all of us! I have been thinking how to reward you... there is a way to improve you chances in the regatta.";
-			link.l1 = "Go on.";
+			dialog.text = "Вот мы и на месте... Спасибо вам огромное, капитан! Вы просто спасли всех нас! Я тут подумала по дороге... есть возможность отблагодарить вас  - ведь вы участвуете в регате?";
+			link.l1 = "Да, участвую. И что это за возможность?";
 			link.l1.go = "Regata_skiper";
 		break;
 		
 		case "Regata_skiper":
 			pchar.questTemp.Regata.Name = GetFullName(npchar);
-			dialog.text = "Are you heading to Port Royal? The shortest route lies through Curacao. Return to Bridgetown. Find a man named Woodrow Dougherty, he is an old sailor and an experienced navigator. He perfectly knows the area between Barbados and Jamaica, he'd be a great help\nThis will save you a lot of critical time you so need to win. Find the man in the local church and tell him that " + GetFullName(npchar) + " - has sent you, he won't turn you down. Take him to Port Royal, he was going to sail there anyway.";
-			link.l1 = "Very well! A good navigator will be useful for me. Farewell.";
+			dialog.text = "Ваш путь лежит в Порт-Рояль? Самый короткий путь - через Кюрасао. Вернитесь в Бриджтаун. Там найдите человека по имени Вудро Доггерти - он старый моряк и опытный лоцман. Он как свои пять пальцев знает воды между Барбадосом и Кюрасао и проведет ваш корабль кратчайшим путем\nВы сэкономите на этом время, столь необходимое вам для победы. Найти Вудро вы скорее всего сможете в церкви. Скажете, что вас прислал"+ NPCharSexPhrase(NPChar, "","а") +" " + GetFullName(npchar) + " - он вам не откажет. Высадите его потом в Порт-Рояле - он все равно туда собирался.";
+			link.l1 = "Очень хорошо! Толковый лоцман мне и впрямь пригодится. Ну, а на теперь - прощайте. Мне пора отправляться в обратный путь.";
 			link.l1.go = "Regata_skiper_1";
 		break;
 		
 		case "Regata_skiper_1":
-			dialog.text = "Farewell, captain! Good luck!";
-			link.l1 = "Perhaps, we will meet again...";
+			dialog.text = "До свидания, капитан! Удачи вам!";
+			link.l1 = "Может, еще встретимся...";
 			link.l1.go = "Regata_skiper_2";
 		break;
 		
@@ -944,47 +944,47 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Regata_SiegeSkiper":
-			dialog.text = "Good day. Want something?";
-			link.l1 = "Your name is Woodrow Dougherty, am I right?";
+			dialog.text = "Здравствуйте. Вы что-то хотели?";
+			link.l1 = "Вас зовут Вудро Доггерти, правильно?";
 			link.l1.go = "Regata_SiegeSkiper_1";
 		break;
 		
 		case "Regata_SiegeSkiper_1":
-			dialog.text = "You are right. How can I be of service?";
-			link.l1 = "I know that you are a seasoned navigator and you know well the waters between Barbados and Curacao. I also know that you want to get to Port Royal. I am a participant of the regatta and there is the last passage left - to Port Royal. I want to ask you to join my crew as a navigator for this last passage.";
+			dialog.text = "Да, это так. Чем могу служить?";
+			link.l1 = "Мне известно, что вы опытный штурман и хорошо знаете воды между Барбадосом и Кюрасао. Также мне известно, что вам нужно в Порт-Рояль. Я - участник регаты, мне предстоит последний переход как раз до Порт-Рояля, и я хочу попросить вас войти в мою команду в качестве штурмана и лоцмана на этот переход.";
 			link.l1.go = "Regata_SiegeSkiper_2";
 		break;
 		
 		case "Regata_SiegeSkiper_2":
-			dialog.text = "Interesting... And why do you think that I will join your crew?";
-			link.l1 = "Well, because I got known about you from "+pchar.questTemp.Regata.Name+" with all guarantees that you won't say no. And because of my help to Bridgetown in this critical moment...";
+			dialog.text = "Очень интересно... А почему вы считаете, что я пойду на ваш корабль?";
+			link.l1 = "Ну, потому что я узнал это от человека по имени "+pchar.questTemp.Regata.Name+", с уверением, что вы мне не откажете. И потому что я, как-никак, оказал услугу городу Бриджтаун в этот трудный момент...";
 			link.l1.go = "Regata_SiegeSkiper_3";
 		break;
 		
 		case "Regata_SiegeSkiper_3"://а тут - как уж свезет
 			if(drand(2) != 2)
 			{
-				dialog.text = "From "+pchar.questTemp.Regata.Name+"? I see now, sure. Alright, captain, I will help you to sail the shortest way to Port Royal. Are you going to set sail now?";
-				link.l1 = "Yes..";
+				dialog.text = "От "+pchar.questTemp.Regata.Name+"? Это, конечно, всё проясняет. Хорошо, капитан, я помогу проложить вам кратчайший путь от Бриджтауна до Порт-Рояля. Вы отправляетесь прямо сейчас?";
+				link.l1 = "Да, конечно. Судно готово к отплытию.";
 				link.l1.go = "Regata_SiegeSkiper_4";
 			}
 			else
 			{
-				dialog.text = ""+pchar.questTemp.Regata.Name+"? I see. But, captain, I can't leave my city in such a dangerous time. You must understand me as a soldier who provided us with a disinterested aid\nI don't want people to whisper behind my back that old Woodrow fled away in light of the final battle against the Spanish. I shall stay. Hold no grudges, captain.";
-				link.l1 = "And this is your last word? But I have helped your colony...";
+				dialog.text = "От "+pchar.questTemp.Regata.Name+"? Ну, тогда понятно. Но, капитан, к сожалению я не могу покинуть мой город в это опасное время. Как солдат, оказавший нам бескорыстную помощь, вы должны это понимать\nЯ не хочу, чтобы потом люди шептались у меня за спиной, мол, Вудро сбежал из города перед решающей битвой с испанцами. Я остаюсь и буду защищать мой город. Не обессудьте, капитан.";
+				link.l1 = "Это ваше окончательное решение? Но я же помог вашей колонии...";
 				link.l1.go = "Regata_SiegeSkiper_6";
 			}
 		break;
 		
 		case "Regata_SiegeSkiper_4":
-			dialog.text = "Let's not waste time then. Just let me pack my things and will be in your disposal.";
-			link.l1 = "My seamen will be waiting for you on the pier and will deliver you to the Santa  Catherina. Thank you, Woodrow!";
+			dialog.text = "Тогда не будем терять времени. Я захвачу из дома вещи и выдвигаюсь на ваш корабль.";
+			link.l1 = "Матросы встретят вас на пирсе и доставят на 'Санта-Катерину'. Спасибо, Вудро!";
 			link.l1.go = "SiegeSkiper_hire";
 		break;
 		
 		case "Regata_SiegeSkiper_6":
-			dialog.text = "Captain, the regatta is a sport and the Spanish siege of my home is a life. I ain't going with you anywhere. And I will repeat myself, you have to understand me - honour and duty still mean something in this world. This is my last word and I am not going to change it.";
-			link.l1 = "Well... I am disappointed. Farewell, Woodrow.";
+			dialog.text = "Капитан, регата - это спорт, а осада испанцами моего города - это жизнь. Я никуда с вами не поплыву. И повторюсь - вы должны меня понять как никто другой - вам известны понятия 'честь' и 'долг'. Это мое окончательное решение и менять его я не намерен.";
+			link.l1 = "Что же... Очень жаль. Прощайте, Вудро.";
 			link.l1.go = "SiegeSkiper_exit";
 		break;
 		
@@ -1034,10 +1034,10 @@ void ProcessDialogEvent()
 			//снимаем запреты
 			bQuestDisableMapEnter = false;//открыть карту
 			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
-			if (CheckAttribute(pchar, "questTemp.Regata.Breach") || !CheckAttribute(pchar, "questTemp.Regata.Bridgetown") || GetCompanionQuantity(pchar) > 1 || sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LUGGER || pchar.Ship.Name != "Santa Catherina")
+			if (CheckAttribute(pchar, "questTemp.Regata.Breach") || !CheckAttribute(pchar, "questTemp.Regata.Bridgetown") || GetCompanionQuantity(pchar) > 1 || sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LUGGER || pchar.Ship.Name != "Сaнта-Kатepина")
 			{
-				dialog.text = "You have broken the rules of regatta on the very last stage. Your result was disqualified. I have nothing more to say you, captain.";
-				link.l1 = "Eh...what a shame! Well, there is nothing to be done, you were too attentive. Farewell!";
+				dialog.text = "Вы нарушили правила регаты, на самом последнем этапе. Ваш результат дисквалифицирован. Мне больше нечего вам сказать, капитан.";
+				link.l1 = "Эх... жаль! Ладно, ничего не поделаешь - вы оказались бдительны. Прощайте!";
 				link.l1.go = "exit";
 				npchar.lifeday = 1;
 				DeleteAttribute(pchar, "questTemp.Regata");
@@ -1057,22 +1057,22 @@ void ProcessDialogEvent()
 				}
 				if (n==1)
 				{
-					dialog.text = "Captain "+GetFullName(pchar)+", my congratulations! It took "+sti(pchar.questTemp.Regata.FifthTransitionTime)+" hours from you to finish the regatta and you have left all your opponents way behind. This is a remarkable result!";
-					link.l1 = "Thank you for your kind words, sir!";
+					dialog.text = "Капитан "+GetFullName(pchar)+", поздравляю вас с победой! Вы затратили на регату "+sti(pchar.questTemp.Regata.FifthTransitionTime)+" часов, оставив позади всех противников. Это отличный результат!";
+					link.l1 = "Спасибо за лестный отзыв, сэр!";
 					link.l1.go = "First_result";
 				}
 				else
 				{
 					if (n==6)
 					{
-						dialog.text = "Captain, alas but your result is the worst, you have spent "+sti(pchar.questTemp.Regata.FifthTransitionTime)+" hours. Don't be sad, you have had really tough opponents.";
-						link.l1 = "I am not sad, sir. I am glad that I have participated in the regatta and tried my skills.";
+						dialog.text = "Капитан, увы - но ваш результат последний - вы затратили на регату "+sti(pchar.questTemp.Regata.FifthTransitionTime)+" часов. Не огорчайтесь, у вас были действительно сильные противники.";
+						link.l1 = "Я не огорчаюсь, сэр. Я рад, что участвовал в регате и опробовал свои силы.";
 						link.l1.go = "Other_result";
 					}
 					else
 					{
-          					dialog.text = "Captain, your rank is number "+n+". Congratulations with the successful sail, you have shown a worthy time - "+sti(pchar.questTemp.Regata.FifthTransitionTime)+" hours. Congratulations despite your loss!";
-						link.l1 = "It is alright, sir. I am glad that I have shown a fine result in this tough competition.";
+						dialog.text = "Капитан, вы заняли "+n+" место. Поздравляю с успешным прохождением маршрута, вы показали достойное время - "+sti(pchar.questTemp.Regata.FifthTransitionTime)+" часов. И хоть вы и не выиграли, я все равно поздравляю вас!";
+						link.l1 = "Я не огорчаюсь, сэр. Я рад, что показал неплохой результат в этом сложном противостоянии.";
 						link.l1.go = "Other_result";
 					}
 				}
@@ -1083,23 +1083,23 @@ void ProcessDialogEvent()
 			RemovePassenger(Pchar, sld);
 			DeleteAttribute(sld, "Payment");
 			DeleteAttribute(Pchar, "questTemp.FiringOfficerIDX");//удаляем из офицеров
-			log_info("Woodrow Dougherty has landed");
+			log_info("Вудро Доггерти сошел на берег");
 			pchar.quest.SiegeSkiperOver.over = "yes"; //снять таймер
 		}
 		else
 		{
-			dialog.text = "Sir, let me ask you something - where is your ship? I don't see it...";
-			link.l1 = "I am sorry, sir. I will get her to the port immediately.";
+			dialog.text = "Сэр, позвольте спросить - где ваш корабль? Я что-то его не наблюдаю...";
+			link.l1 = "Прошу прощения, сэр. Я немедленно приведу свой корабль в порт.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Regata_Finish";
 		}
 		break;
 		
 		case "First_result":
-			if (CheckAttribute(pchar, "questTemp.Regata.Rate")) sTemp = "Come and see me in my office. I will give you your prize for your stake.";
-			else sTemp = "And if you would have made a stake on your victory as I have offered you to, you'd be getting extra prize too.";
-			dialog.text = "Visit governor-general tomorrow and he will give you your 250 000 pesos and valuable gifts. "+sTemp+" Don't leave the town, according to traditions the prizes will be given to the town's treasury in case the winner won't take them in a week time.";
-			link.l1 = "I got it, sir. I will visit him tomorrow!";
+			if (CheckAttribute(pchar, "questTemp.Regata.Rate")) sTemp = "Потом зайдите ко мне в кабинет - я выдам выигрыш по вашей ставке.";
+			else sTemp = "А если бы вы сделали ставку на свою победу, как я вам предлагал - получили бы еще и выигрыш.";
+			dialog.text = "Завтра явитесь к генерал-губернатору - он вручит вам призы за регату - положенные деньги в размере 250 000 песо и ценные подарки. "+sTemp+" Не покидайте город - согласно традиции, если победитель не является за призами в течение недели, они передаются в городскую казну.";
+			link.l1 = "Я все понял, сэр. Буду завтра на приеме!";
 			link.l1.go = "First_result_1";
 		break;
 		
@@ -1117,14 +1117,14 @@ void ProcessDialogEvent()
 			pchar.quest.Regata_Final.function = "RegataFinal";
 			SetFunctionTimerCondition("RegataFinalOver", 0, 0, 8, false);//таймер не снимаем - через 8 дней подчистится все автоматически
 			// слухи
-			AddSimpleRumour("Ah, you are the legendary captain, the winner of the regatta! It's such a pleasure to see you in flesh!", ENGLAND, 60, 10);
-			AddSimpleRumour("Ha, look at this, a master of wind and waves, the winner of the regatta! You have my respects...", ENGLAND, 60, 10);
-			AddSimpleRumour("Oh, a great sailor, a king of wind and sea, the winner of the regatta has visited our city! We are glad to see you, captain!", ENGLAND, 60, 10);
-			AddSimpleRumour("Oh, yes I was lucky to chat with a living legend, the captain who is capable of crossing the archipelago in three days even facing a headwind! My respects, captain!", ENGLAND, 60, 10);
-			AddSimpleRumour("Ah, so you are the legendary captain, the winner of the regatta! Pleasure to see you!", FRANCE, 60, 10);
-			AddSimpleRumour("Ha, aren't you the master of wind and waves, the winner of the regatta! You have my respects...", FRANCE, 60, 10);
-			AddSimpleRumour("Oh, a great sailor, a king of wind and sea, the winner of the regatta has visited our city! We are glad to see you, captain!", FRANCE, 60, 10);
-			AddSimpleRumour("Oh, yes I was lucky to chat with a living legend, the captain capable of crossing the archipelago in three days even facing a headwind! My respects, captain!", FRANCE, 60, 10);
+			AddSimpleRumour("А, так это вы - легендарный капитан, победитель парусной регаты! Очень приятно вас видеть!", ENGLAND, 60, 10);
+			AddSimpleRumour("Ха, да это же не кто иной, как повелитель ветра и волн, покоритель морских просторов, победитель парусной регаты! Мое вам уважение...", ENGLAND, 60, 10);
+			AddSimpleRumour("О, сам великий мореплаватель, король ветра и моря, победитель парусной регаты почтил наш город своим визитом! Мы рады вам, капитан!", ENGLAND, 60, 10);
+			AddSimpleRumour("О, да мне посчастливилось беседовать с настоящей живой легендой, капитаном, способным за три дня пересечь архипелаг даже при встречном ветре, победителем парусной регаты! Мое почтение, капитан!", ENGLAND, 60, 10);
+			AddSimpleRumour("А, так это вы - легендарный капитан, победитель парусной регаты! Очень приятно вас видеть!", FRANCE, 60, 10);
+			AddSimpleRumour("Ха, да это же не кто иной, как повелитель ветра и волн, покоритель морских просторов, победитель парусной регаты! Мое вам уважение...", FRANCE, 60, 10);
+			AddSimpleRumour("О, сам великий мореплаватель, король ветра и моря, победитель парусной регаты почтил наш город своим визитом! Мы рады вам, капитан!", FRANCE, 60, 10);
+			AddSimpleRumour("О, да мне посчастливилось беседовать с настоящей живой легендой, капитаном, способным за три дня пересечь архипелаг даже при встречном ветре, победителем парусной регаты! Мое почтение, капитан!", FRANCE, 60, 10);
 			// экспа
 			AddComplexSeaExpToScill(2000, 300, 300, 0, 500, 500, 0);
 			AddCharacterExpToSkill(pchar, "Leadership", 2000);//авторитет
@@ -1136,8 +1136,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Other_result":
-			dialog.text = "It is good to hear an honourable response. Good luck, captain!";
-			link.l1 = "Farewell, sir.";
+			dialog.text = "Приятно слышать этот достойный ответ. Удачи вам, капитан!";
+			link.l1 = "Прощайте, сэр.";
 			link.l1.go = "Other_result_1";
 		break;
 		
@@ -1155,28 +1155,28 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Other_result_repeat":
-			dialog.text = "Want something else, captain?";
-			link.l1 = "No, it is nothing.";
+			dialog.text = "Вы что-то еще хотели, капитан?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Other_result_repeat";
 		break;
 		
 		case "Give_advantage":
-			dialog.text = "Ah, there you are, mister "+GetFullName(pchar)+". Glad to see you. Are you here for your prize? It is ready for you.";
-			link.l1 = "It is good to hear that! What it the size of my additional prize?";
+			dialog.text = "А-а, вот и вы, уважаемый "+GetFullName(pchar)+". Рад вас видеть. Вы пришли за вашим выигрышем? Он подготовлен.";
+			link.l1 = "Приятно это слышать! Каков же размер моего дополнительного приза?";
 			link.l1.go = "Give_advantage_1";
 		break;
 		
 		case "Give_advantage_1":
-			dialog.text = "Considering all stakes, your final prize is "+FindRussianMoneyString(makeint(pchar.questTemp.Regata.Advantage))+". Please, take it. Congratulations!";
-			link.l1 = "Thanks!";
+			dialog.text = "С учетом сделанных ставок, ваш выигрыш составляет "+FindRussianMoneyString(makeint(pchar.questTemp.Regata.Advantage))+". Пожалуйста, получите. Поздравляю еще раз с победой!";
+			link.l1 = "Спасибо!";
 			link.l1.go = "Give_advantage_2";
 		break;
 		
 		case "Give_advantage_2":
 			AddMoneyToCharacter(pchar, makeint(pchar.questTemp.Regata.Advantage));
-			dialog.text = "Sure, your popularity among the citizens of Port Royal has grown. I think, that you are able to see that... but alas the people's memory is short. So bath in the glory while it is still that bright!";
-			link.l1 = "You are talking of the nicest things, sir... Let see how is it to bath in the glory. Farewell! It was a pleasure.";
+			dialog.text = "Безусловно, ваша популярность среди жителей Порт-Рояля выросла. Думаю, вы вполне сможете это заметить... правда, память у людей короткая, увы. Так что купайтесь в лучах славы, пока они еще яркие!";
+			link.l1 = "Интересные вещи вы говорите, сэр... Посмотрим, каково это - принимать ванны из лучей славы. До свидания! Рад был с вами познакомиться!";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Other_result_repeat";
 		break;
@@ -1188,28 +1188,28 @@ void ProcessDialogEvent()
 				{
 					if (sti(pchar.questTemp.Regata.Result) == 1)
 					{
-						dialog.text = "Congratulations with your victory, captain! An excellent result!";
-						link.l1 = "Thanks!";
+						dialog.text = "Поздравляю с победой, капитан! Великолепный результат!";
+						link.l1 = "Спасибо!";
 						link.l1.go = "exit";
 					}
 					else
 					{
-						dialog.text = "Don't be sad, captain. It is not easy to win the regatta even participating in it is a privilege!";
-						link.l1 = "Don't worry about me. I am satisfied with my result.";
+						dialog.text = "Не расстраивайтесь, капитан. Победить в регате - сложно, и даже просто участие в ней принесло вам почет!";
+						link.l1 = "Не переживайте за меня. Я доволен своим результатом.";
 						link.l1.go = "exit";
 					}
 				}
 				else
 				{
-					dialog.text = "Glad to see you, captain! You should register yourself at sir Stevenson's.";
-					link.l1 = "I see. I am on my way!";
+					dialog.text = "С прибытием, капитан! Сейчас вам надо отметится у сэра Стивенсона.";
+					link.l1 = "Понятно. Иду к нему!";
 					link.l1.go = "exit";
 				}
 			}
 			else
 			{
-				dialog.text = "Ah, captain, why have you failed like that and on the very last stage!";
-				link.l1 = "Yes, so stupid of me...";
+				dialog.text = "Эх, капитан, что же вы так оплошали, да на самом последнем этапе!";
+				link.l1 = "Да уж, ничего не скажешь...";
 				link.l1.go = "exit";
 			}
 			NextDiag.TempNode = "Regata_CitMan_1";
@@ -1222,28 +1222,28 @@ void ProcessDialogEvent()
 				{
 					if (sti(pchar.questTemp.Regata.Result) == 1)
 					{
-						dialog.text = "Congratulations on you victory, captain! An excellent result!";
-						link.l1 = "Thank you!";
+						dialog.text = "Поздравляю с победой, капитан! Великолепный результат!";
+						link.l1 = "Спасибо!";
 						link.l1.go = "exit";
 					}
 					else
 					{
-						dialog.text = "Don't be sad, captain. It is not easy to win the regatta even participating in it is a privilege!";
-						link.l1 = "Don't worry about me. I am satisfied with my result.";
+						dialog.text = "Не расстраивайтесь, капитан. Победить в регате - сложно, и даже просто участие в ней принесло вам почет!";
+						link.l1 = "Не переживайте за меня. Я доволен своим результатом.";
 						link.l1.go = "exit";
 					}
 				}
 				else
 				{
-					dialog.text = "Glad to see you, captain! You should register yourself at sir Stevenson's.";
-					link.l1 = "I see. I am on my way!";
+					dialog.text = "С прибытием, капитан! Сейчас вам надо отметится у сэра Стивенсона.";
+					link.l1 = "Понятно. Иду к нему!";
 					link.l1.go = "exit";
 				}
 			}
 			else
 			{
-				dialog.text = "Ah, captain, why have you failed like that and on the very last stage!";
-				link.l1 = "Yes, so stupid of me...";
+				dialog.text = "Эх, капитан, что же вы так оплошали, да на самом последнем этапе!";
+				link.l1 = "Да уж, ничего не скажешь...";
 				link.l1.go = "exit";
 			}
 			NextDiag.TempNode = "Regata_CitWom_1";
@@ -1256,28 +1256,28 @@ void ProcessDialogEvent()
 				{
 					if (sti(pchar.questTemp.Regata.Result) == 1)
 					{
-						dialog.text = "Congratulations with you victory, captain! An excellent result!";
-						link.l1 = "Thank you!";
+						dialog.text = "Поздравляю с победой, капитан! Великолепный результат!";
+						link.l1 = "Спасибо!";
 						link.l1.go = "exit";
 					}
 					else
 					{
-						dialog.text = "Don't be sad, captain. It is not easy to win in the regatta even participating in it is a privilege!";
-						link.l1 = "Don't worry about me. I am satisfied with my result.";
+						dialog.text = "Не расстраивайтесь, капитан. Победить в регате - сложно, и даже просто участие в ней принесло вам почет!";
+						link.l1 = "Не переживайте за меня. Я доволен своим результатом.";
 						link.l1.go = "exit";
 					}
 				}
 				else
 				{
-					dialog.text = "Glad to see you, captain! You should register yourself at sir Stevenson's.";
-					link.l1 = "I see. I am on my way!";
+					dialog.text = "С прибытием, капитан! Сейчас вам надо отметится у сэра Стивенсона.";
+					link.l1 = "Понятно. Иду к нему!";
 					link.l1.go = "exit";
 				}
 			}
 			else
 			{
-				dialog.text = "Ah, captain, why have you failed like that and on the very last stage!";
-				link.l1 = "Yes, so stupid of me...";
+				dialog.text = "Эх, капитан, что же вы так оплошали, да на самом последнем этапе!";
+				link.l1 = "Да уж, ничего не скажешь...";
 				link.l1.go = "exit";
 			}
 			NextDiag.TempNode = "Regata_CitHorse_1";

@@ -340,7 +340,7 @@ void SetOfficerParam(ref Npchar, int _type)
 	{
 		case 0:
 			Npchar.quest.officertype = "boatswain";
-			Npchar.quest.officertype_2 = RandPhraseSimple("I can also be a doctor if I must to. ", "Plus, I can fix bones and heal wounds. ");
+			Npchar.quest.officertype_2 = RandPhraseSimple("Могу и доктором побыть, если припрет. ", "Еще умею матросов беречь, кости им вправлять, когда подранят. ");
 			Npchar.quest.LeadershipModify     = frandSmall(2.0);
 			Npchar.quest.FencingModify     = Rand(1);
 			Npchar.quest.GrapplingModify   = frandSmall(2.0) + 2;
@@ -362,7 +362,7 @@ void SetOfficerParam(ref Npchar, int _type)
 		break;
 
 		case 2:
-			Npchar.quest.officertype_2 = RandPhraseSimple("I am capable of repairing ships too. ", "I also know how to deal with repair tools. ");
+			Npchar.quest.officertype_2 = RandPhraseSimple("Могу и корабль починить помочь. ", "Еще умею с пилой и рубанком обращаться. ");
 			Npchar.quest.officertype = "treasurer";
 			Npchar.quest.RepairModify        = frandSmall(2.0) + 3;
 			Npchar.quest.CommerceModify      = frandSmall(2.0) + 2;
@@ -373,7 +373,7 @@ void SetOfficerParam(ref Npchar, int _type)
 		break;
 
 		case 3:
-			Npchar.quest.officertype_2 = RandPhraseSimple("Also got some knowledge of medicine. ", "Not a physician, but can help if need be. ");
+			Npchar.quest.officertype_2 = RandPhraseSimple("Еще поверхностно медицину знаю. ", "Врачем, конечно, не считаюсь, но подскажу и в этом. ");
 			Npchar.quest.officertype = "navigator";
 			Npchar.quest.SailingModify        = frandSmall(2.0) + 2;
 			Npchar.quest.DefenseModify        = frandSmall(2.0) + 1.3;

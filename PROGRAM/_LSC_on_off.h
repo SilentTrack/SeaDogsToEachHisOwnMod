@@ -1,8 +1,8 @@
 // BOAL 07.09.03  Mods on_off mode
 // здесь и далее ник boal - это разработческий ник ALexusB
 
-#define VERSION_NUMBER1       "Sea Dogs: To Each His Own  " // Корсары: КС modding base #1
-#define VERSION_NUMBER2       "ver. 1.6.0.ENG (22.06.18)"
+#define VERSION_NUMBER1       "Корсары: Каждому Свое  " // Корсары: КС modding base #1
+#define VERSION_NUMBER2       "ver. 1.6.0 (18.12.17)"
 #define VERSION_NUMBER3       "BlackMark.bz"
 
 #define VERSION_NUM      99940  // текущий номер

@@ -6,58 +6,58 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What do you want? Ask away.", "I am listening to you, what's the question?"), "It is the second time you are trying to ask...", "It is the third time you are again trying to ask...",
-                          "When is it going to end?! I am a busy man, working on the colony's matters and you are still trying to ask something!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Not now. There is no time."), "True... But later, not now...",
-                      "I'll ask, I'll ask... a bit later though...", "I am sorry, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);			  
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Что вы хотели? Спрашивайте.", "Я слушаю вас, что за вопрос?"), "Второй раз за день вы пытаетесь задать ворпос...", "В третий раз за день вы опять пытаетесь задать вопрос...",
+                          "Да когда же это кончится?! У меня дел полно по управлению делами города, а ты все вопросы пытаешься задать!", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал"+ GetSexPhrase("","а") +"...", "Не сейчас, не место и не время..."), "Да, верно... Но не сейчас, позже...",
+                      "Задам, задам... Только позже...", "Извините, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			// Addon 2016-1 Jason пиратскаЯ линейка
+			// Addon 2016-1 Jason пиратская линейка
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "jewelry_6")
 			{
-				link.l1 = "Your Excellence, I am here on account of the imprisoned officer, Lope Montoro...";
+				link.l1 = "Ваша светлость, я к вам по поводу находящегося ныне под арестом офицера Лопе Монторо...";
                 link.l1.go = "Mtraxx";
 			}
 		break;
 		
 		case "Cupture_after":
-            dialog.text = RandPhraseSimple("You have already taken everything. What else do you want?", "Haven't you taken already everything?");
-            link.l1 = RandPhraseSimple("Just a final search for the loot...", "Just checking, I may have forgotten to take something...");
+            dialog.text = RandPhraseSimple("Вы уже все забрали. Что вам еще нужно?", "Неужели осталось еще что-то, что вы не прихватили?");
+            link.l1 = RandPhraseSimple("Осматриваюсь напоследок...", "Проверяю, может забыл"+ GetSexPhrase("","а") +" что забрать...");
             link.l1.go = "exit";
             NextDiag.TempNode = "Cupture_after";
 		break;
 		
 		case "Slavetrader_HavanaAttack":
-			dialog.text = "Damn ladr?nes! You dare to attack Havana?! What do you want?!";
-			link.l1 = "Think a bit, you'll understand.";
+			dialog.text = "Чертовы ладроны! Посметь напасть на Гавану - это неслыханная дерзость! Что вам нужно?!";
+			link.l1 = "Подумай хорошенько - поймешь.";
 			link.l1.go = "Slavetrader_HavanaAttack_1";
 			pchar.quest.Slavetrader_HavanaOver.over = "yes";
 			AfterTownBattle();
         break;
 		
 		case "Slavetrader_HavanaAttack_1":
-			dialog.text = "Gold, of course! What else could you be interested in but gold?! And we don't have it... just a few measures in the store.";
-			link.l1 = "Ha-ha... No, we are not interested in gold. We came here for an ivory... the black one. Do you understand me?";
+			dialog.text = "Золото, конечно! Что вам, проклятым, кроме золота еще может быть нужно? Да только нет у нас его... Разве что те жалкие несколько мер, что лежат на складе магазина?";
+			link.l1 = "Хе-хе... Нет, мы не за золотом. Мы пришли за слоновой костью... черной слоновой костью. Ты понял, о чем я толкую?";
 			link.l1.go = "Slavetrader_HavanaAttack_2";
         break;
 		
 		case "Slavetrader_HavanaAttack_2":
 			if (CheckAttribute(FortChref, "Fort.Mode") && sti(FortChref.Fort.Mode) != FORT_DEAD)//для особо хитрых - нефиг лезть с суши
 			{
-				dialog.text = "Ha! I have suspected that you have come here for them. But they are located in the fort. Our reinforcements are coming here now and your gang will be destroyed in a second.";
-				link.l1 = "Damn it! Fine sit here and don't move... Let's get away from here! Damn...";
+				dialog.text = "Ха-ха! Я подозревал, что именно рабы - ваша цель. Да только они находятся в форте. Сейчас прибудет подкрепление, и от вашей банды не останется даже дырявой треуголки.";
+				link.l1 = "Вот дьявол! Ладно, сиди тихо и не дергайся... Уходим! Проклятье...";
 				link.l1.go = "Slavetrader_HavanaAttack_lose";
 			}
 			else
 			{
-				dialog.text = "But how... How did you know that?";
-				link.l1 = "Ha! Only an idiot could put 5000 slaves at one place and hope that nobody would know. Their smell is around the Archipelago... I hope that you understand that we are taking them away from you.";
+				dialog.text = "Как... Как вы узнали об этом?";
+				link.l1 = "Ха! Собрать пять тысяч рабов в одном месте и надеяться, что об этом никому не станет известно, может лишь полный идиот. Да от них вонь стоит до самой Тортуги... Как ты понимаешь, мы их забираем.";
 				link.l1.go = "Slavetrader_HavanaAttack_3";
 			}
         break;
 		
 		case "Slavetrader_HavanaAttack_3":
-			dialog.text = "Fine, you have won anyway and we have to obey your violence. But don't hope to get away from the justice after that robbery and sinking two Spanish warships.";
-			link.l1 = "Don't puff up like that or you'll get a heart attack. Sit here and don't move...";
+			dialog.text = "Ну что же, вы победили, и мы вынуждены подчиниться насилию. Но не думайте, что этот грабеж и потопление двух военных кораблей Испании сойдет вам с рук! Вы дорого заплатите за этот произвол!";
+			link.l1 = "Не пыжься так сильно, удар хватит. Сиди тихо и не дергайся...";
 			link.l1.go = "Slavetrader_HavanaAttack_4";
 			ChangeCharacterHunterScore(pchar, NationShortName(sti(npchar.Nation)) + "hunter", 50);
 			ChangeCharacterComplexReputation(pchar,"nobility", -8);
@@ -71,8 +71,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             Statistic_AddValue(Pchar, NationShortName(sti(NPChar.nation)) + "_GrabbingTown", 1);
 			pchar.quest.Slavetrader_DieHardHavana.over = "yes";//теперь можно на карту
             SetCharacterGoods(pchar, GOOD_SLAVES, 5000+rand(500));// c перегрузом пойдет
-            Log_SetStringToLog("Slaves have been put in your ship");
-			Log_SetStringToLog("You have got 30 days to deliver slaves to your employer");
+            Log_SetStringToLog("Рабы погружены на корабль");
+			Log_SetStringToLog("У вас 30 дней на доставку рабов к работодателю");
 			chrDisableReloadToLocation = false;
 			sTemp = GetSquadronGoods(Pchar, GOOD_SLAVES);
 			AddQuestRecord("Slavetrader", "27");
@@ -96,22 +96,22 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.questTemp.Slavetrader = "End_quest";
         break;
 		
-		// Addon 2016-1 Jason пиратскаЯ линейка
+		// Addon 2016-1 Jason пиратская линейка
 		case "Mtraxx":
-            dialog.text = "How curious... more complaints?";
-			link.l1 = "No-no, quite on the contrary, your Excellence. Lope is an old army friend, we fought together back in Europe... I would love to help him out, and came to ask for your assistance.";
+            dialog.text = "Очень интересно... Еще одна жалоба?";
+			link.l1 = "Нет, совсем наоборот, ваша светлость. Лопе - мой старый товарищ, мы не один фунт соли вместе съели на полях брани в Европе... Я бы хотел как-нибудь помочь ему. Вы не можете поспособствовать моим начинаниям?";
 			link.l1.go = "Mtraxx_1";
 		break;
 		
 		case "Mtraxx_1":
-            dialog.text = "Hm.. Well, I assume, since you've come to me, you already know this... absurd story?";
-			link.l1 = "I do, your Excellence.";
+            dialog.text = "Хм... Ну, полагаю, раз вы пришли ко мне, то вы знаете всю эту... нелепую историю?";
+			link.l1 = "Да, ваша светлость.";
 			link.l1.go = "Mtraxx_2";
 		break;
 		
 		case "Mtraxx_2":
-            dialog.text = "I suggest you contact don Rosario Gusman. He, just like you, is eager to help don Lope Montero. He had attempted to contact the victim, however, the negotiations did not bare fruit. Meet with him, he'll explain the details. You can find don Rosario in the streets from four till eight. He does a full inspection of city guard posts every day.";
-			link.l1 = "Gratitude, your Excellence!";
+            dialog.text = "Я вам рекомендую обратиться к дону Росарио Гусману. Он тоже, как и вы, жаждет помочь дону Лопе Монторо. Он уже пытался делать шаги в этом направлении - разговаривал с потерпевшей стороной, однако, как мне известно, переговоры успехом не увенчались. Идите к нему, он прояснит вам подробности. Найти дона Росарио вы можете в городе на улицах ежедневно, с четырех до восьми часов пополудни - в это время он обходит посты городской стражи.";
+			link.l1 = "Спасибо, ваша светлость!";
 			link.l1.go = "Mtraxx_3";
 		break;
 		

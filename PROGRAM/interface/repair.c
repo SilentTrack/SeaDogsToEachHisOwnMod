@@ -405,20 +405,20 @@ void RepairStatShow(ref chr, bool isVisible)
 			SendMessage( &GameInterface,"lslll",MSG_INTERFACE_MSG_TO_NODE,"REPAIR_QTY_M", 8, 0, argb(255,255,255,255) );
 				
 		string sText;
-		sText = " State: \n" + hp + "% \n Current limit \ n recovery: \n " + chr.repair.hull_limit + "% ";
+		sText = " Состояние: \n" + hp + "% \n Текущий предел \n восстановления: \n " + chr.repair.hull_limit + "% ";
 		SetFormatedText("REPAIR_STATUS_HULL_STR", sText);
 		SendMessage( &GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"REPAIR_STATUS_HULL_STR", 5 );
 		
 		string mText = (mp) + "/" + GetShipMastsQuantity(chr);
-		sText = " State: \n" + mText + "\n Current limit \ n recovery: \n " + chr.repair.mast_limit + " ";
+		sText = " Состояние: \n" + mText + "\n Текущий предел \n восстановления: \n " + chr.repair.mast_limit + " ";
 		SetFormatedText("REPAIR_STATUS_MAST_STR", sText);
 		SendMessage( &GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"REPAIR_STATUS_MAST_STR", 5 );
 		
-		sText = " State: \n" + sp + "% \n Current limit \ n recovery: \n " + chr.repair.sail_limit + "% ";
+		sText = " Состояние: \n" + sp + "% \n Текущий предел \n восстановления: \n " + chr.repair.sail_limit + "% ";
 		SetFormatedText("REPAIR_STATUS_SAIL_STR", sText);
 		SendMessage( &GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"REPAIR_STATUS_SAIL_STR", 5 );
 
-		sText = " Running time :\n " + GetMaxRepairTime() + " hours. ";
+		sText = " Длительность работ :\n " + GetMaxRepairTime() + " час. ";
 		SetFormatedText("TIME_STR", sText);
 		SendMessage( &GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"TIME_STR", 5 );
 	}	
@@ -446,15 +446,15 @@ void RepairMatherialShow(ref chr, bool isVisible)
 	
 	if(isVisible)
 	{	
-		sText = " Available: \n" + makeint(cur_pAvail) + "/" + pAvail + " pcs \n Necessary for a \n complete repair: \n " + makeint(GetHullRepairMathQty(chr, 100 - hp)) + " pcs ";
+		sText = " Доступно всего: \n" + makeint(cur_pAvail) + "/" + pAvail + " шт. \n Необходимо для \n полного ремонта: \n " + makeint(GetHullRepairMathQty(chr, 100 - hp)) + " шт. ";
 		SetFormatedText("REPAIR_QTY_HULL_STR", sText);
 		SendMessage( &GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"REPAIR_QTY_HULL_STR", 5 );
 		
-		sText = " Available: \n" + makeint(cur_pAvail) + "/"  + pAvail + " pcs \n Necessary for a \n complete repair: \n " + makeint(GetMastRepairMathQtyPPP(chr, GetShipFallMastsQuantity(chr))) + " pcs ";
+		sText = " Доступно всего: \n" + makeint(cur_pAvail) + "/"  + pAvail + " шт. \n Необходимо для \n полного ремонта: \n " + makeint(GetMastRepairMathQtyPPP(chr, GetShipFallMastsQuantity(chr))) + " шт. ";
 		SetFormatedText("REPAIR_QTY_MAST_STR", sText);
 		SendMessage( &GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"REPAIR_QTY_MAST_STR", 5 );
 		
-		sText = " Available: \n" + makeint(cur_sAvail) + "/"  + sAvail + " pcs \n Necessary for a \n complete repair: \n " + makeint(GetSailRepairMathQty(chr, 100 - sp)) + " pcs ";
+		sText = " Доступно всего: \n" + makeint(cur_sAvail) + "/"  + sAvail + " шт. \n Необходимо для \n полного ремонта: \n " + makeint(GetSailRepairMathQty(chr, 100 - sp)) + " шт. ";
 		SetFormatedText("REPAIR_QTY_SAIL_STR", sText);
 		SendMessage( &GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"REPAIR_QTY_SAIL_STR", 5 );
 	}
@@ -678,7 +678,7 @@ void RepairOk()
 	if(ret > 0) 
 	{
 		mc.quest.waithours = ret;
-	}	
+	}
 	Achievment_SetStat(mc, 64, 1); // ugeen 2016
 }
 

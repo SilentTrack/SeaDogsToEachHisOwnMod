@@ -12,8 +12,8 @@ int CreateMartiniqueCharacters(int n)
 	ch.id		= "FortFrance_Mayor";
 	ch.model	= "huber_4";
 	ch.sex = "man";
-	ch.name 	= "Jacques Dille";
-    ch.lastname = "do Parquet";
+	ch.name 	= "Жак Дил";
+    ch.lastname = "ду Парке";
 	ch.City = "FortFrance";
 	ch.location	= "FortFrance_townhall";
 	ch.location.group = "sit";
@@ -137,8 +137,8 @@ int CreateMartiniqueCharacters(int n)
 	ch.id		= "FortFrance_usurer";
 	ch.model	= "banker_8_2";
 	ch.sex = "man";
-	ch.name 	= "Jean Pierre";
-	ch.lastname = "Morua";
+	ch.name 	= "Жан Пьер";
+	ch.lastname = "Моруа";
 	ch.City = "FortFrance";
 	ch.Merchant.type = "jeweller"; 
 	ch.location	= "FortFrance_Bank";
@@ -174,7 +174,7 @@ int CreateMartiniqueCharacters(int n)
 
 	makeref(ch,Characters[n]);			//Хозяйка борделя
 	ch.id		= "FortFrance_Hostess";
-	ch.name		= "Aurora"
+	ch.name		= "Аврора"
 	ch.lastname = "";
 	ch.model	= "maman_4";
 	ch.model.animation = "woman_B";
@@ -192,7 +192,7 @@ int CreateMartiniqueCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "FortFrance_Smuggler";
 	ch.model    = "citiz_30";
@@ -213,8 +213,8 @@ int CreateMartiniqueCharacters(int n)
 	makeref(ch,Characters[n]);			//Губернатор
 	ch.id		= "Barbazon";
 	ch.model	= "Barbazon";
-	ch.name 	= "Jacques";
-	ch.lastname = "Barbazon";
+	ch.name 	= "Жак";
+	ch.lastname = "Барбазон";
 	ch.sex = "man";
 	ch.City = "LeFransua";
 	ch.location	= "LeFransua_townhall";
@@ -257,8 +257,8 @@ int CreateMartiniqueCharacters(int n)
 	makeref(ch,Characters[n]);			//Трактирщик
 	ch.id		= "LeFransua_tavernkeeper";
 	ch.model	= "barmen_13";
-	ch.name 	= "Cesare";
-	ch.lastname = "Craig";
+	ch.name 	= "Чезаре";
+	ch.lastname = "Крейг";
 	ch.greeting = "barmen_1";
 	ch.sex = "man";
 	ch.City = "LeFransua";
@@ -277,8 +277,8 @@ int CreateMartiniqueCharacters(int n)
 	makeref(ch,Characters[n]);			//Торговец
 	ch.id		= "LeFransua_trader";
 	ch.model	= "trader_13_1";
-	ch.name 	= "Ian";
-	ch.lastname = "Snake";
+	ch.name 	= "Янг";
+	ch.lastname = "Снейк";
 	ch.greeting = "store_1";
 	ch.sex = "man";
 	ch.City = "LeFransua";

@@ -4,47 +4,48 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What kind of questions?", "What do you want, " + GetAddress_Form(NPChar) + "?"), "You've already tried to ask me a question " + GetAddress_Form(NPChar) + "...", "You have been talking about some question for the third time today...",
-                          "Look, if you have nothing to tell me about the port's matters then don't bother me with your questions.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind.", "Sorry!"), "Sorry!", "Pardon!", "Sorry!", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно, " + GetAddress_Form(NPChar) + "?"), "Совсем недавно вы пытались задать мне вопрос " + GetAddress_Form(NPChar) + "...", "В течение этого дня вы уже третий раз говорите о каком-то вопросе...",
+                          "Послушайте, если вы не по делам порта, то не стоит меня вопросами донимать.", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал"+ GetSexPhrase("","а") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Да уж, действительно в третий раз...", "Извините, но портовые дела меня сейчас не интересуют.", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			if (pchar.questTemp.Slavetrader == "FindRatHavana")
             {
-                link.l1 = "Good day to you. I'd like to learn about a corvette '" + pchar.questTemp.Slavetrader.ShipName + "' under the command of Francois Gontier.";
+                link.l1 = "Здравствуйте. Я бы хотел"+ GetSexPhrase("","а") +" узнать, не останавливался ли в вашем порту корвет '" + pchar.questTemp.Slavetrader.ShipName + "', под командованием Франсуа Гонтьера?";
                 link.l1.go = "Havana_ratP_1";
 			}
 			// калеуче
 			if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "graveyard" && !CheckAttribute(npchar, "quest.caleuche"))
 			{
-				link.l1 = "Excuse me - has a man by the name of Joachim Merryman arrived at your port? A middle-aged senor, Portuguese, with moustache and imperial beard and piercing eyes?";
+				link.l1 = "Послушайте, к вам в порт не прибывал пассажиром человек по имени Жоаким Мерриман? Немолодой сеньор, португалец, носит усы и эспаньолку, с пронзительным взглядом?";
 				link.l1.go = "caleuche";
 			}
 			// Addon 2016-1 Jason пиратская линейка
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "jewelry_3" && !CheckAttribute(npchar, "quest.Mtraxx"))
 			{
-				link.l1 = "The ship, 'Cantavro'. I am looking for her captain, one Esberdo Cabanas, on a private matter. Could you lend me a hand here?";
+				link.l1 = "Меня интересует судно 'Кантавро'. Я ищу его капитана, Эсберто Кабаньяса, по личному вопросу. Не можете мне чем-нибудь помочь?";
 				link.l1.go = "mtraxx";
 			}
 		break;
 		
 		case "Havana_ratP_1":
-			dialog.text = NPCStringReactionRepeat("Yes, he was here. But he has gone already. Ask our tavern keeper about him, he has rented the room in the tavern.", "You have already  about this and I've answered.", "I tell you that you have already asked about this Gontier..", "I ask you to don't bother me!", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Thanks. I'll do that.", "Hm, well ...", "Yes, I have really asked ...", "Pardon, " + npchar.name + "...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat("Да, останавливался. Но уже ушел от нас. Спросите о нем нашего трактирщика, капитан корвета снимал у него комнату в таверне.", "Вы уже "+ GetSexPhrase("спрашивали","спрашивали") +" об этом, я вам ответил.", "Я же говорю вам, вы уже "+ GetSexPhrase("спрашивали","спрашивали") +" об этом Гонтьере.", "Я прошу не мешать мне работать!", "block", 0, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Спасибо! Так и поступлю.", "Хм, ну да...", "Да, точно, "+ GetSexPhrase("спрашивал","спрашивала") +"...", "Извините, " + npchar.name + "...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 		break;
 		
 		// калеуче
 		case "caleuche":
-			dialog.text = "Can't tell you anything about him. Even if he arrived there, he never go registered anywhere.";
-			link.l1 = "I see. Pity. Alright, I'll continue my search ...";
+			dialog.text = "Не могу ничего сообщить вам об этом человеке. Может, и прибывал, но нигде не отмечался.";
+			link.l1 = "Ясно. Жаль. Буду искать дальше...";
 			link.l1.go = "exit";
 			npchar.quest.caleuche = "true";
 		break;
 		
 		// Addon 2016-1 Jason пиратская линейка
 		case "mtraxx":
-			dialog.text = "Let's see... Schooner the 'Cantavro' set sail two days. Mission - patrolling... however, the location is not listed. She is a military vessel, so it will be known only to her captain and the fort commandant. I would suggest you to talk with the commandant directly, at the fort, if you wish to know more. Unfortunately, that is all I can do for you.";
-			link.l1 = "I see. Well, thank you for your time...";
+			dialog.text = "Посмотрим... Шхуна 'Кантавро' отбыла в плавание два дня назад. Цель - патрулирование... а вот где - не указано. Корабль военный, и место назначения известно только коменданту Гаваны и самому капитану. Желаете подробностей - обращайтесь в комендатуру, в форт, а я большего сообщить не могу - увы!";
+			link.l1 = "Ясно. Спасибо и на этом...";
 			link.l1.go = "exit";
 			npchar.quest.Mtraxx = "true";
 			AddQuestRecord("Roger_1", "5");

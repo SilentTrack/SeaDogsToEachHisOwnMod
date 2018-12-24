@@ -4,76 +4,76 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
  	switch(Dialog.CurrentNode)
 	{
         case "quests":
-            dialog.text = "Speak, I am listening";
-			link.l1 = "I was mistaken. Farewell.";
+            dialog.text = "Говорите, я слушаю.";
+			link.l1 = "Я "+ GetSexPhrase("ошибся","ошиблась") +". Прощайте.";
 			link.l1.go = "Exit";
 			//искушение барбазона
 			if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Prison"))
             { 
-                link.l1 = "You have Simon Morelle under arrest here. He is a smuggler whose schooner was sunk by a patrol not long ago. Can I see him?";
+                link.l1 = "У вас под стражей содержится Симон Морель, контрабандист, чью бригантину недавно потопил патруль. Могу я его видеть?";
                 link.l1.go = "BarbTemptation";
 				DeleteAttribute(pchar, "questTemp.Saga.BarbTemptation.Prison");
             }
 			// Addon-2016 Jason ФМК-Сент-Кристофер
 			if (CheckAttribute(PChar, "questTemp.FMQN") && pchar.questTemp.FMQN == "way_div")
 			{
-				link.l1 = "Officer, I was sent here by mynheer governor of Philipsburg. He asked me to raid the island and it's waters in a search of English spies. His Excellence has also told me that you can provide me with useful information.";
+				link.l1 = "Офицер, меня отправил к вам минхер губернатор Филипсбурга. Он поручил мне обойти на корабле окрестности острова и осмотреть бухты на предмет нахождения английских шпионов. Его Светлость сказал, что вы можете мне сообщить что-то важное.";
 				link.l1.go = "FMQN";
 			}
 			if (CheckAttribute(PChar, "questTemp.FMQN") && pchar.questTemp.FMQN == "way_div_2")
 			{
-				link.l1 = "Officer, I've found the missing patrol. I also found the British spies. They are here on the island.";
+				link.l1 = "Офицер, я нашел пропавший патруль. И английских шпионов тоже. Они на острове.";
 				link.l1.go = "FMQN_3";
 			}
 			if (CheckAttribute(PChar, "questTemp.FMQN") && pchar.questTemp.FMQN == "hol_peace_rew")
 			{
-				link.l1 = "Me again, officer. Did you detain the spies?";
+				link.l1 = "Это снова я, офицер. Задержали английских шпионов?";
 				link.l1.go = "FMQN_8";
 			}
 		break;
 		
 		//искушение барбазона
 		case "BarbTemptation":
-			dialog.text = "And why do you need him, sir?";
-			link.l1 = "I want to tell him that he is a damn bastard and scoundrel. I hope that it will help him standing on gallows.";
+			dialog.text = "Интересно, и зачем же он вам понадобился, сударь?";
+			link.l1 = "Я хочу сказать ему, что он чертов ублюдок и подлец. Надеюсь, это ободрит его при восхождении на эшафот.";
 			link.l1.go = "BarbTemptation_1";
 		break;
 		
 		case "BarbTemptation_1":
-			dialog.text = "Ha-ha! You've got a humor, sir... Well, two thousand pesos and you can move along.";
+			dialog.text = "Ха-ха! А вы с юмором, уважаемый... Ну что же, две тысячи песо - и можете проходить.";
 			if(sti(Pchar.money) >= 2000)
 			{
-				link.l1 = "Take them, officer. Thanks!";
+				link.l1 = "Держите, офицер. Спасибо!";
 				link.l1.go = "BarbTemptation_2";
 			}
-			link.l2 = "Hm... You know I have changed my mind. I'd better waste these money in a tavern.";
+			link.l2 = "Хм... Знаете, пожалуй, я передумал. Лучше я пропью эти деньги в кабаке.";
 			link.l2.go = "BarbTemptation_4";
 		break;
 		
 		case "BarbTemptation_2":
 			AddMoneyToCharacter(pchar, -2000);
-			dialog.text = "You are welcome... Move along!";
+			dialog.text = "Да не за что... Проходите!";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			pchar.questTemp.jailCanMove = true;
 		break;
 		
 		case "BarbTemptation_4":
-			dialog.text = "Whatever, you want get such a proposal next time.";
-			link.l1 = "I don't need it anyway. See you, officer!";
+			dialog.text = "Как знаете. Второго такого предложения не получите.";
+			link.l1 = "И не надо. Всего доброго, офицер!";
 			link.l1.go = "exit";
 		break;
 		
 		// Addon-2016 Jason ФМК-Сент-Кристофер
 		case "FMQN":
-			dialog.text = "Useful? Ha! On the second thought, wait. I do have something useful to tell you. One of our patrols gone missing in the jungles. They were supposed to be back in their barracks by now but it seems that they prefer a company of parrots instead. Or something really has happened. If you find them during your searches, please tell them to make up a decent justification of their delay or otherwise I'll ground them. The patrol's commander is called Jannes Hoffman.";
-			link.l1 = "That will be all officer?";
+			dialog.text = "Важное? Ха! Впрочем, постойте. Действительно, есть кое-что важное. Из джунглей не вернулся патрульный отряд. Ему уже давно пора было топать в свои казармы отдыхать, но они, видимо, предпочитают считать попугаев. Либо - с ними что-то случилось. Если вы во время ваших поисков встретите их - передайте, чтобы придумали весомую причину своего отсутствия, иначе отправятся на гаупвахту. Командира отряда зовут Яннес Хоффман.";
+			link.l1 = "Это все, офицер?";
 			link.l1.go = "FMQN_1";
 		break;
 		
 		case "FMQN_1":
-			dialog.text = "Yes, dammit. Good luck, captain.";
-			link.l1 = "Thank you so much...";
+			dialog.text = "Да, черт побери, это все. Желаю вам удачи, капитан.";
+			link.l1 = "Спасибо и на этом...";
 			link.l1.go = "FMQN_2";
 		break;
 		
@@ -85,61 +85,61 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "FMQN_3":
-			dialog.text = "What?! I hope you are serious? Give me a report!";
-			link.l1 = "I met a patrol near a cave in the jungles. They had stopped me and asked where I was heading to and why. Damn me, if it wasn't Brits disguised in Dutch uniform! I also saw something curious in the jungles which looked exactly like a bunch of naked men hidden in bushes. I assume, the British raiding party had unarmed your patrol and took their uniform.";
+			dialog.text = "Что?! Капитан, надеюсь, это не шутки? Докладывайте!";
+			link.l1 = "У входа в пещеру в джунглях я встретил патрульный отряд. Они остановили меня, спросили, куда иду и зачем, затем отстали. Но я сразу понял: поглоти меня кит, если это не переодетые в голландскую форму англичане! А потом я заметил в джунглях среди зарослей что-то очень похожее на кучку лежащих на земле в одном нательном белье людей. Думаю, что диверсанты разоружили ваш патруль и одели его форму.";
 			link.l1.go = "FMQN_4";
 		break;
 		
 		case "FMQN_4":
 			dialog.text = "...";
-			link.l1 = "As you understand, I didn't take my chances against a squad of trained marines and rushed to you with a report instead.";
+			link.l1 = "Как вы понимаете, связываться с этими головорезами я не рискнул и поспешил убраться восвояси, а затем - немедленно отправился к вам.";
 			link.l1.go = "FMQN_5";
 		break;
 		
 		case "FMQN_5":
-			dialog.text = "Well-well... A cave you said? The number of heads?";
-			link.l1 = "Five heads. I believe they went inside that cave.";
+			dialog.text = "Так-так... У входа в пещеру, говорите, вы их встретили? Сколько их?";
+			link.l1 = "Их пять человек. И мне кажется, что они направились внутрь пещеры.";
 			link.l1.go = "FMQN_6";
 		break;
 		
 		case "FMQN_6":
-			dialog.text = "I am sending a squad to the cave right away! Captain, you can count on a reward if the men you met really are the British spies. You are free to join the squad if you want to assist the authorities and receive an extra reward. Governor's orders. So, are you coming to the jungles?";
-			link.l1 = "No officer, chasing spies is your job. Make sure to enforce the squad - those lads are a tough bunch.";
+			dialog.text = "Я немедленно отправлю отряд солдат к пещере! Капитан, если найденные вами люди действительно английские шпионы, вы получите вознаграждение. Если же вы желаете помочь властям в задержании негодяев - можете примкнуть к отряду, и тогда вы получите дополнительную награду, это приказ губернатора. Итак, вы пойдете в джунгли, или нет?";
+			link.l1 = "Нет, офицер, хватать шпионов - это ваша работа. И прикажите послать отряд посильнее - с этими парнями шутить не стоит.";
 			link.l1.go = "FMQN_7";
-			link.l2 = "I think I can do that. You men will find the spies faster with my help.";
+			link.l2 = "Думаю, я смогу быть полезен вашим людям - с моей помощью они быстрее отыщут шпионов.";
 			link.l2.go = "FMQN_10";
 		break;
 		
 		case "FMQN_7":
-			dialog.text = "No pressure, captain, I'll take your advice into account. Come see me tomorrow to hear about results of our operation.";
-			link.l1 = "See you tomorrow.";
+			dialog.text = "Это ваше право, капитан, а ваше замечание будет учтено. Приходите завтра - к этому времени мы уже во всем разберемся.";
+			link.l1 = "До свидания.";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("FMQN_HollandPeace");
 		break;
 		
 		case "FMQN_8":
-			dialog.text = "Your information was correct, captain. We had found the bastards inside the cave. They had shown no intention to surrender and engaged into a fight. Dead now, all of them.. We've also found the missing patrol. They are fine and alive, although a bit beaten... Thank you, captain, in the name of all good citizens of Philipsburg. Your vigilance will be rewarded as promised. Please take it.";
-			link.l1 = "Thank you!";
+			dialog.text = "Ваша информация оказалось верной, капитан. Мы нашли негодяев в пещере. Сдаться они не пожелали и вступили в бой, в котором и полегли все до единого. Нашли также и пропавших патрульных - из связали и бросили в заросли. Все они живы, только побиты немного... От лица колонии Филипсбург выражаю вам благодарность, капитан! Ваша бдительность будет вознаграждена, как и обещано. Примите, пожалуйста.";
+			link.l1 = "Спасибо!";
 			link.l1.go = "FMQN_9";
 		break;
 		
 		case "FMQN_9":
 			AddMoneyToCharacter(pchar, 10000);
-			dialog.text = "You are always a welcome guest on Sint-Maarten. Now please excuse me - I have other business to attend to.";
-			link.l1 = "Me too. Farewell.";
+			dialog.text = "На Синт-Маартене вы всегда желанный гость. А теперь прошу простить меня - дела ждут.";
+			link.l1 = "И мне тоже пора. Всего доброго!";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("FMQN_HollandPeaceComplete");
 		break;
 		
 		case "FMQN_10":
-			dialog.text = "Very well. Your help is the most appreciated. Go to the city gates to join the squad in an hour.";
-			link.l1 = "I suggest you order to send the best on this mission. Those spies are a tough lot.";
+			dialog.text = "Очень хорошо. Ваша помощь будет весьма кстати. Отправляйтесь к городским воротам - через час там будет собран карательный отряд.";
+			link.l1 = "Прикажите послать отряд посильнее - с этими парнями шутить не стоит.";
 			link.l1.go = "FMQN_11";
 		break;
 		
 		case "FMQN_11":
-			dialog.text = "Don't you worry. I am sending our most experienced soldiers under command of Hans Shulte - the best officer of Philipsburg.";
-			link.l1 = "No wasting time then.";
+			dialog.text = "Не беспокойтесь на этот счет. Пойдут самые опытные солдаты под командованием лучшего офицера Филипсбурга Ханса Шулте.";
+			link.l1 = "Тогда не буду терять времени.";
 			link.l1.go = "exit";
 			WaitDate("",0,0,0,1,5);
 			AddDialogExitQuestFunction("FMQN_HollandBattle");

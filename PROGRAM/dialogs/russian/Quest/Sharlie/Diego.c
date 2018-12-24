@@ -14,45 +14,45 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = "Is there something want?";
-			link.l1 = "No, nothing.";
+			dialog.text = "Ты что-то хотел?";
+			link.l1 = "Да нет, ничего.";
 			link.l1.go = "exit";			
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "patrol":
-			dialog.text = TimeGreeting()+", "+GetFullName(npchar)+", chief of San Jose patrol. We've received a message concerning suspicious behaviour in the outskirts of this town. Would you be so kind as to explain to us who you are and what you're up to?";
-			link.l1 = "Captain "+GetFullName(pchar)+", senor officer. I am here under the authority and direct instructions of inquisitor Father Vincento. Here is a document confirming my authorization.";
+			dialog.text = TimeGreeting()+", "+GetFullName(npchar)+", начальник патруля из Сан-Хосе. Поступило сообщение о подозрительных людях в окрестностях города. Будьте любезны объяснить, кто вы и что тут делаете.";
+			link.l1 = "Капитан "+GetFullName(pchar)+", сеньор офицер. Я нахожусь здесь по поручению и прямому указанию отца Винсенто, инквизитора. Вот бумага, подтверждающая мои полномочия.";
 			link.l1.go = "patrol_1";
 		break;
 		
 		case "patrol_1":
-			dialog.text = "All right... Everything looks fine. It's filled out properly with the signature of the inquisitor. Everything looks fine. My apologies for my suspicion. What are you doing at the lighthouse?";
-			link.l1 = "I'm not authorized to answer such questions. If you are genuinely interested as to the purpose of my work for the inquisitor, you would better refer directly to him in Santiago for clarification.  You are an officer, surely you have knowledge of military and service secrets. The only thing I can tell you is that I am investigating the circumstances of a wrecked Spanish ship.";
+			dialog.text = "Так-так... все верно. Грамота за подписью инквизитора в полном порядке. Прошу извинить мою подозрительность - что вы делает на маяке?";
+			link.l1 = "Я не вправе отвечать на подобные вопросы. Если вас действительно интересует цель моей работы на инквизитора, то вам лучше обратиться за разъяснениями прямо к нему, в Сантьяго. Вы офицер, и знаете о военной и служебной тайне. Единственное, что могу сказать - я расследую обстоятельства гибели одного испанского судна.";
 			link.l1.go = "patrol_2";
 		break;
 		
 		case "patrol_2":
-			dialog.text = "My apologies once again, monsieur. I won't dare to delay you any further... ah, one moment! Did I just see that or was it was just my imagination? What an interesting dagger you have! Can you show it to me?";
-			link.l1 = "Make sure you don't forget to give it back. It's very dear to me.";
+			dialog.text = "Еще раз приношу свои извинения, месье. Не смею вас задерживать... ах, минуточку! Это действительно так, или мне показалось? Какая у вас интересная дага! Не покажете?";
+			link.l1 = "Смотрите, только не забудьте вернуть. Это очень дорогая вещь.";
 			link.l1.go = "patrol_3";
 		break;
 		
 		case "patrol_3":
-			dialog.text = "Well I'll be damned, I saw her drawing in once of the library books! This is the dagger of Cortes himself! It's branded right here... Monsieur, please don't refuse. Let me have this dagger! I collect ancient and personalized weaponry and this is simply and incredible specimen. I'll pay well for it.";
-			link.l1 = "Senor, this dagger is not for sale. I received it as a gift and I'm not bent on selling it off to anyone. Give it back, please.";
+			dialog.text = "Черт побери, я видел ее рисунок в одной из книг в библиотеке! Это же кинжал самого Кортеса! Вот и клеймо на нем... Месье, не откажите в любезности, уступите мне эту дагу! Я коллекционирую древнее и именное оружие, а это просто изумительный экземпляр. Я хорошо заплачу.";
+			link.l1 = "Сеньор, эта дага не продается. Я получил ее в подарок и не намерен никому продавать. Верните ее, пожалуйста.";
 			link.l1.go = "patrol_4";
 		break;
 		
 		case "patrol_4":
-			dialog.text = "You won't even be happy with five hundred gold doubloons? That's a whole heap of money. You could buy a ship with it!";
-			link.l1 = "No. I have a ship already and the dagger is a one of a kind. I will not sell it.";
+			dialog.text = "Даже пятьсот золотых дублонов вас не устроит? Это же целая куча денег, на них корабль можно купить!";
+			link.l1 = "Нет. Корабль у меня уже есть, а вот дага - одна. Я ее не продам.";
 			link.l1.go = "patrol_5";
 		break;
 		
 		case "patrol_5":
-			dialog.text = "Eh, that's too bad... All right, take your valuable. I won't dare disturb you any longer.  Good luck!";
-			link.l1 = "All the best, officer.";
+			dialog.text = "Эх, жаль... Ладно, возьмите вашу ценность. Не смею больше задерживать. Удачи!";
+			link.l1 = "Всего доброго, офицер.";
 			link.l1.go = "patrol_6";
 		break;
 		
@@ -71,39 +71,39 @@ void ProcessDialogEvent()
 		
 		case "shore":
 			PlaySound("VOICE\Russian\Sharlie\Diego De Montoya.wav");
-			dialog.text = "Enough! I want to have a word with him...";
-			link.l1 = "So, I see Diego de Montoya himself right in front of me... But pardon me, senor.  We've met before, haven't we? Oh yes, that's right. Trinidad lighthouse. But I believe over there you called yourself something else...";
+			dialog.text = "Довольно! Я хочу говорить с ним...";
+			link.l1 = "Итак, я вижу перед собой самого Диего де Монтойя... но позвольте, сеньор, мы ведь с вами уже встречались? Да-да, точно. На маяке Тринидада. Вот только там вы назвали себя как-то по-другому...";
 			link.l1.go = "shore_1";
 		break;
 		
 		case "shore_1":
-			dialog.text = "Your memory serves you well, sir. Well, you're not the only one capable of sparking intrigue and waging wars behind the scenes. I am well informed of your undying desire to see me. Well, looks like your wish has come true.";
-			link.l1 = "This wasn't exactly the type of encounter I was hoping for, senor.";
+			dialog.text = "У вас хорошая память, сударь. Что же до встречи на маяке - не вы один умеете плести интриги и вести закулисные войны. Я хорошо осведомлен о вашем неуемном желании меня увидеть. Что же, ваше желание исполнилось.";
+			link.l1 = "Немного не такой встречи я хотел, сеньор.";
 			link.l1.go = "shore_2";
 		break;
 		
 		case "shore_2":
-			dialog.text = "Well, it is what it is. But I will give you a chance to get out of here alive if you give me your dagger.";
-			link.l1 = "Has your passion for collecting really sent you that far down the pipes, caballero, that you've prepared such a well thought out trap for me?  Oh, I don't think so. The Guardian of Truth keeping you the trot, am I far off?";
+			dialog.text = "Ну уж какая получилась. Но я все же дам вам шанс уйти отсюда живым, если вы отдадите мне свою дагу.";
+			link.l1 = "Неужели страсть к коллекционированию завела вас настолько далеко, кабальеро, что вы подготовили для меня столь продуманную ловушку? О нет! Вам не дает покоя Страж Истины, я угадал?";
 			link.l1.go = "shore_3";
 		break;
 		
 		case "shore_3":
-			dialog.text = "I have no idea what your talking about. The dagger must return to where it belongs and that's all you need to know. You didn't want to give it up for gold, so now you're going to give it up for your own life.";
-			link.l1 = "Do you really think, senor, that I'm going to believe in what you just told me? You've already decided long ago that I'm not leaving this bay, haven't you?";
+			dialog.text = "Понятия не имею, о чем вы там толкуете. Дага должна вернуться на положенное ей место, и это всё, что вам достаточно знать. Не захотели расстаться с ней за золото - сейчас обменяете на свою жизнь.";
+			link.l1 = "И вы думаете, сеньор, что я поверю вашим словам? Вы уже давно для себя решили, что из этой бухты я не уйду. Разве нет?";
 			link.l1.go = "shore_4";
 		break;
 		
 		case "shore_4":
-			dialog.text = "And what if I give you my word?";
-			link.l1 = "The word for a 'frog eater'? Hm...";
+			dialog.text = "А если я дам слово?";
+			link.l1 = "Слово, данное 'лягушатнику'? Хм...";
 			link.l1.go = "shore_5";
 		break;
 		
 		case "shore_5":
-			dialog.text = "Monsieur, I'm giving you one last chance. Either you hand over the dagger I'm interested in or I'll be frisking your dead body in a few minutes. Resistance is futile we've got an overwhelming advantage in numbers.";
-			if (CheckAttribute(pchar, "questTemp.Guardoftruth.SanAntonio")) link.l1 = "You sure have surprised me, senor. Did you really figure that I'm such a bullheaded imbecile that I'd just stick my head in the jaws of a shark without bothering to snag my harpoon? Men, kill them!";
-			else link.l1 = "You don't howl about your numbers, you howl about your skills, senior!";
+			dialog.text = "Месье, даю вам последний шанс. Или вы немедленно передадите мне интересующую меня дагу, или через короткое время я буду обыскивать ваш труп. Сопротивляться бесполезно - у нас подавляющее численное преимущество.";
+			if (CheckAttribute(pchar, "questTemp.Guardoftruth.SanAntonio")) link.l1 = "Вы, право, удивили меня, сеньор. Неужели вы и впрямь решили, что я такой набитый дурак, что полезу в пасть к акуле, не позаботившись прихватить с собой гарпун? Отря-яд, к бою!";
+			else link.l1 = "Воюют не числом, а умением, сеньор!";
 			link.l1.go = "shore_6";
 		break;
 		
@@ -137,6 +137,12 @@ void ProcessDialogEvent()
 			LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
 			LAi_group_SetCheck("EnemyFight", "GuardOT_DiegoShoreGuardDie");
 			AddDialogExitQuest("MainHeroFightModeOn");
+		break;
+		
+		case "":
+			dialog.text = "";
+			link.l1 = "";
+			link.l1.go = "";
 		break;
 		
 		case "Exit":

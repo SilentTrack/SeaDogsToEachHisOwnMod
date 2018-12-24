@@ -319,19 +319,19 @@ bool CheckUpdates()
 					switch (i)
 					{
 						case 0:						
-							sText = sText + " + 'The Сaleuche'";
+							sText = sText + " + 'Калеуче'";
 						break;
 					
 						case 1:
-							sText = sText + " + 'The Final Lesson'";		
+							sText = sText + " + 'Последний урок'";		
 						break;
 						
 						case 2:
-							sText = sText + " + 'Flying the Jolly Roger'";		
+							sText = sText + " + 'Под черным флагом'";		
 						break;
 						
 						case 3:
-							sText = sText + NewStr() + " + 'Hero of Nation'";		
+							sText = sText + NewStr() + " + 'Герой нации'";		
 						break;
 					}
 				}

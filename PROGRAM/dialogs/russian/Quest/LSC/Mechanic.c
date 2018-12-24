@@ -20,8 +20,8 @@ void ProcessDialogEvent()
 		case "First time":
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = "Good day, mister. I have never seen you before. Are you a newcomer? And is it the first time you visit this platform?";
-				link.l1 = TimeGreeting()+". My name is "+GetFullName(pchar)+". I am a newcomer here and just coming around getting to know people...";
+				dialog.text = "Добрый день, сударь. Я вас раньше не видел. Недавно на острове, или только впервые решились ко мне зайти?";
+				link.l1 = TimeGreeting()+". Меня зовут "+GetFullName(pchar)+". Я действительно недавно тут, вот, хожу, знакомлюсь с людьми...";
 				link.l1.go = "meeting";
 				npchar.quest.meeting = "1";
 			}
@@ -29,177 +29,177 @@ void ProcessDialogEvent()
 			{
 				if (pchar.questTemp.LSC == "platinum_wait")
 				{
-					dialog.text = "Listen, "+pchar.name+", if you will keep distracting me I will never finish the suit's repairing.";
-					link.l1 = "Yes, yes, I remember that. I am sorry to trouble you!";
+					dialog.text = "Послушайте, "+pchar.name+", если вы будете отвлекать меня, я никогда не закончу ремонт костюма.";
+					link.l1 = "Да-да, я помню. Извините за беспокойство!";
 					link.l1.go = "exit";
 					break;
 				}
 				// возвращение блудного скафандра
 				if (pchar.questTemp.LSC == "return" && !CheckAttribute(npchar, "quest.return_isl"))
 				{
-					dialog.text = "Ah! Just look at that! The drowned man is back from the other world! Now, tell me, how were you able to do such a trick? They have performed a funeral for you and buried you in your absence, just in case you didn't know...";
-					link.l1 = "Too bad, I am not going to die yet. The trick is simple - I have only touched the Kukulcan's idol at the bottom. It teleported me to Dominica, right to the Caribs' village...";
+					dialog.text = "Ах! Вот это дела! Утопленник вернулся с того света! Ну-ка, рассказывайте, как вам удалось провернуть такой трюк? Ведь вас уже отпели и заочно похоронили, если вы не в курсе...";
+					link.l1 = "И напрасно - я еще на тот свет не собираюсь. А трюк этот очень прост - я прикоснулся к статуе Кукулькана, которую нашел на дне, и телепортировался на Доминику, прямо в деревню карибов...";
 					link.l1.go = "return";
 					break;
 				}
 				
-				dialog.text = "Аh, "+GetFullName(pchar)+"! "+TimeGreeting()+"!";
+				dialog.text = "А, "+GetFullName(pchar)+"! "+TimeGreeting()+"!";
 				// квестовые ветки
 				if(pchar.questTemp.LSC == "mechanic")
 				{
-					link.l4 = "Henrik, I have got a business for you. A very important business. Ole Christiansen has told me about you. They also call him the White Boy.";
+					link.l4 = "Хенрик, я пришел к вам по делу. Очень важному делу. Мне тут кое-что рассказал о вас Оле Кристиансен, или как его еще называют, Белый Мальчик.";
 					link.l4.go = "mechanic_1";
 				}
 				if(pchar.questTemp.LSC == "platinum" && GetCharacterItem(pchar, "jewelry10") >= 11)
 				{
-					link.l4 = "Henrik, I have brought you enough amount of 'silver'. Exactly as you have asked: one of yours plus extra ten pieces. Here, take them.";
+					link.l4 = "Хенрик, я принес достаточное количество 'серебришка'. Столько, сколько вы просили: один ваш и еще десять. Вот, держите.";
 					link.l4.go = "mechanic_15";
 				}
 				if(pchar.questTemp.LSC == "underwater_check")
 				{
-					link.l4 = "Me again, Henrik. How is your suit? Were you able to repair it?";
+					link.l4 = "Это опять я, Хенрик. Как там ваш костюм? Удалось починить?";
 					link.l4.go = "mechanic_20";
 				}
 				if(pchar.questTemp.LSC == "platinum_add_wait" && GetCharacterItem(pchar, "jewelry10") >= sti(pchar.questTemp.LSC.PtAddQty))
 				{
-					link.l4 = "I have got enough metal you required. Take it.";
+					link.l4 = "У меня есть металл в том количестве, которое вы просили. Возьмите.";
 					link.l4.go = "mechanic_23";
 				}
 				if(pchar.questTemp.LSC == "underwater_prepare")
 				{
-					link.l4 = "Good day, Henrik. So what, is the suit is ready for a dive?";
+					link.l4 = "Здравствуйте, Хенрик. Ну как, костюм готов для погружения?";
 					link.l4.go = "immersion";
 				}
 				if(pchar.questTemp.LSC == "underwater_natan" && CheckAttribute(pchar, "questTemp.LSC.NatanTalk"))
 				{
-					link.l4 = "It is over, I have dealt with my problems and I am ready to dive. When will we start?";
+					link.l4 = "Всё, я решил свои проблемы и готов к погружению. Когда мы начинаем?";
 					link.l4.go = "immersion_1";
 				}
 				if(CheckAttribute(pchar, "questTemp.LSC.UW_ready"))
 				{
-					link.l5 = "Hello, Henrik. So what, is the suit ready for a dive?";
+					link.l5 = "Здравствуйте, Хенрик. Ну как, костюм готов для погружения?";
 					link.l5.go = "immersion_next";
 				}
 				if(CheckAttribute(pchar, "questTemp.LSC.UW_end") && CheckCharacterItem(pchar, "underwater"))
 				{
-					link.l5 = "I want to return your suit.";
+					link.l5 = "Я хочу вернуть вам костюм.";
 					link.l5.go = "immersion_next_2";
 				}
 				// квестовые ветки				
-				link.l1 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
+				link.l1 = LinkRandPhrase("Что-нибудь интересное мне расскажете?", "Что нового произошло на острове в последнее время?", "Не расскажете ли последние сплетни?");
 				link.l1.go = "rumours_LSC";
-				link.l3 = "I just wanted to know how are you doing.";
+				link.l3 = "Да просто решил узнать, как у вас дела.";
 				link.l3.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "meeting": // первая встреча
-			dialog.text = "And I am Henrik Vedecker. Though, the majority of locals know me as the Mechanic and it is a very true definition actually.";
+			dialog.text = "Ну а я - Хенрик Ведекер. Правда, большинство жителей острова знают меня как Механика, что, впрочем, полностью соответствует истине.";
 			if(pchar.questTemp.LSC == "mechanic")
 			{
-				link.l1 = "Are you the Henrick Vedecker? Glad to meet you! I was looking for you.";
+				link.l1 = "Вы - Хенрик Ведекер? Очень рад! Потому что именно вас я и ищу.";
 				link.l1.go = "mechanic";
 			}
 			else
 			{
-				link.l1 = "You must be the Jack of all trades, right?";
+				link.l1 = "Вы, вероятно, мастер на все руки?";
 				link.l1.go = "meeting_1";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "meeting_1":
-			dialog.text = "Oh, yes, Narwhals really appreciate my skills. My tools allow them to obtain a lot of valuables from lost ships of the outer ring, so they can buy provision from admiral Dodson\nActually, science and explorations are my passion. Therefore, I apologize if I won't be able to spend enough time on you - my experiments take almost all of it.";
-			link.l1 = "I see. I won't bother you for no reason, mister Vedecker, I assure you. I am very glad to meet you!";
+			dialog.text = "О, да, и клан нарвалов весьма и весьма ценит мои умения. Мои изобретения позволяют им добывать из трюмов погибших кораблей внешнего кольца всевозможные ценности, которые они потом обменивают у адмирала Додсона на продовольствие\nА вообще, моя страсть - исследования и научная деятельность. Так что извините, если не смогу уделять вам достаточно времени - эксперименты отнимают его у меня практически полностью.";
+			link.l1 = "Понятно. Я не буду вам докучать без дела, мистер Ведекер, уверяю вас. Очень рад знакомству!";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "mechanic":
-			dialog.text = "Were you? And why?";
-			link.l1 = "Ole Christiansen has told me about you. They also call him the White Boy.";
+			dialog.text = "Ищете меня? А зачем, позвольте спросить?";
+			link.l1 = "Мне рассказал про вас Оле Кристиансен, или, как его еще называют, Белый Мальчик.";
 			link.l1.go = "mechanic_1";
 		break;
 		
 		case "mechanic_1":
-			dialog.text = "Ah, that funny guy! Yes, yes, I know him. And what did he tell you?";
-			link.l1 = "I am sorry if my next question will sound stupid but... I will ask you anyway. Ole told me that you may teach me how to dive at the bottom, under water. Don't laugh at me please if it is just his imagination.";
+			dialog.text = "А, этот забавный паренек! Да-да, знаю его. Что же он такое вам про меня рассказал?";
+			link.l1 = "Заранее хочу извиниться, если это прозвучит глупо но... все же спрошу. Оле сказал мне, что вы сможете научить, как спуститься на дно, под воду. Только не смейтесь пожалуйста, если это просто его выдумка.";
 			link.l1.go = "mechanic_2";
 		break;
 		
 		case "mechanic_2":
-			dialog.text = "It's true. I've been at the bottom myself several times. Though, I don't dive any more, the shoal is crawling with giant crabs nowadays and, surely, as you can see - I am not a soldier, I am a scientist, I can't fight those things.\nBesides, there also were two others, Narwhals, who used to dive, but they eventually stopped doing so - looting holds of the outer ring turned out to be safer\nNow they use my equipment rarely, not a single dive for the last few months because of the suit's fracture...";
-			link.l1 = "Have you really got a suit to dive at the bottom? Did I mishear you?";
+			dialog.text = "Выдумка? Это отнюдь не выдумка. Я сам бывал на дне, и не раз. Правда, уже давно не спускаюсь, ибо за последние годы гигантских крабов на нашем мелководье развелось просто тьма тьмущая, а я, понимаете ли, ученый, а не боец, и сражаться с этими монстрами мне не по силам\nКроме меня, на дно также спускались еще два человека, из нарвалов, но в итоге тоже отказались - добывать всякую всячину безопаснее из трюмов кораблей, прибиваемых течением к внешнему кольцу, нежели со дна, кишащего жуткими тварями\nТеперь моим водолазным снаряжением пользуются редко, а за последние пару месяцев на дно вообще никто не отправлялся, так как костюм вышел из строя...";
+			link.l1 = "У вас есть костюм, в котором можно спускаться на дно? Я не ослышался?";
 			link.l1.go = "mechanic_3";
 		break;
 		
 		case "mechanic_3":
-			dialog.text = "Your ears are in the right place, young man. I have invented and crafted the suit myself. It is made of thick soaked completely watertight canvas, metal parts and a steel helmet forged by me and Jurgen in his smithy\nI also enforced the suit with metal chest plate, kneepieces, chest pieces and boots for better protection against crabs and extra weight\nSpecial tanks, filled with pressurized air, provide life-support function and ability to spend some time under the water. The suit is unique, I am quite proud of it.";
-			link.l1 = "That is splendid. But did you mention that the suit is damaged?";
+			dialog.text = "Со слухом у вас все в порядке, молодой человек. Я сам изобрел и сделал этот костюм из толстой парусины, многократно пропитанной специальными смолами, в результате чего она стала абсолютно водонепроницаема, и металлических составляющих частей, а также специального стального шлема, который мы изготовили совместно с Юргеном в его кузне\nЯ усилил костюм металлическим нагрудником и наплечником, наколенниками и налокотниками на случай столкновения с крабами, а также для придания массы для устойчивости при хождении по дну. Кроме того, в состав костюма входят тяжелые стальные ботинки - опять же для успешного передвижения по дну\nДля поддержания жизни водолаза имеются специальные емкости, наполненные сжатым воздухом, позволяющие некоторое время находится под водой. Вещь уникальная, моя гордость.";
+			link.l1 = "Это замечательно. Но вы сказали, что ваш костюм недавно вышел из строя?";
 			link.l1.go = "mechanic_4";
 		break;
 		
 		case "mechanic_4":
-			dialog.text = "Unfortunately, indeed, it is so. Several parts of the suit were connected by metal plates in order to achieve flexibility and extra protection, but the sea water affected them badly. The plates got rusty for years of operation and have lost their water protection abilities\nIt's good that I've noticed the damage and prevented people from dying. Even the dry suit contained some salt and water, they had finished their ill job completely.";
-			link.l1 = "Well.. But you can repair the suit! You can replace the old rusty parts with the new ones...";
+			dialog.text = "К величайшему сожалению, это действительно так. Отдельные части костюма для придания прочности и гибкости сочленений соединялись при помощи специальных металлических пластин. Однако морская вода оказала на сталь губительное воздействие - за год погружений они подверглись разрушению ржавчиной, и костюм утратил свою герметичность\nХорошо, что я вовремя это заметил и никто не пострадал. Вода оставалась на гибких сочленениях, даже при высушенном костюме, и морская соль с влагой сделали свое черное дело.";
+			link.l1 = "Да уж... Но вы же можете починить костюм! Поставить новые детали вместо проржавевших...";
 			link.l1.go = "mechanic_5";
 		break;
 		
 		case "mechanic_5":
-			dialog.text = "For what purpose? To replace them again a year later? Do you know how difficult this work is? To compose the suit with flexible joints and to make it waterproof? It is the one week work with no rest.";
-			link.l1 = "And that is the reason why are you willing to throw your invention away?";
+			dialog.text = "Для чего? Чтобы через год они опять разрушились? Вы знаете, какая это сложная работа - собрать костюм на гибких сочленениях, да так, чтобы он получился герметичным? Да мне неделю без отдыха этим заниматься придется.";
+			link.l1 = "Так что, вы из-за этого готовы выбросить свое великолепное творение на свалку?";
 			link.l1.go = "mechanic_6";
 		break;
 		
 		case "mechanic_6":
-			dialog.text = "No, of course, not. I have an idea. I need to make the joints from the metal which can't be destroyed by water and salt. And I know what metal can help...";
-			link.l1 = "So what is the problem?";
+			dialog.text = "Нет, конечно. Я уже придумал, что надо сделать. Нужно изготовить сочленяющие пластины из металла, который не разрушается под воздействием воды и соли. И такой металл есть...";
+			link.l1 = "Так в чем же проблема?";
 			link.l1.go = "mechanic_7";
 		break;
 		
 		case "mechanic_7":
-			dialog.text = "The problem is that this metal is very rare. I have got only one piece which is certainly not enough. I need at least ten more pieces or even fifteen.";
-			link.l1 = "And what is the metal are you talking about?";
+			dialog.text = "Проблема в том, что этот металл очень редок. У меня есть всего один кусок, чего, безусловно, недостаточно. Нужно еще как минимум десять, а то и пятнадцать таких кусков для выполнения работы.";
+			link.l1 = "А что это за металл такой?";
 			link.l1.go = "mechanic_8";
 		break;
 		
 		case "mechanic_8":
-			dialog.text = "Oh, this is a unique metal, really underestimated by people. It has high durability, plasticity and it is absolutely immune to exposure - neither water, nor salt can damage it\nPerhaps you might have already met the metal. It is white, looks like silver, that's why Spanish called it the 'silver'. Ha! It is hundred times better than silver! Even than gold! One day they will see that, but the right time hasn't come yet.";
-			link.l1 = "Listen, why can't you use other metal instead? Why don't you use gold to make those plates? I have never heard that gold can go rusty or go to ruin.";
+			dialog.text = "О-о, это уникальный металл, который недооценивается людьми. При высокой прочности и достаточной пластичности он абсолютно устойчив ко всем внешним воздействиям - ни вода, ни соль, ни какие-либо другие вещества не могут его разрушить\nВозможно, вы встречали этот металл. Он белый, и похож на серебро, поэтому испанцы прозвали его 'серебришком'. Кхе! Да он в сотни раз ценнее серебра по своим качествам! Да что серебра - золота! Когда-нибудь люди поймут это, но, видно, время еще не пришло.";
+			link.l1 = "Послушайте, а нельзя ли заменить этот металл каким-то другим, раз он так редок? Что если использовать для изготовления пластин золото? Я не слышал такого, чтобы золото ржавело или разрушалось.";
 			link.l1.go = "mechanic_9";
 		break;
 		
 		case "mechanic_9":
-			dialog.text = "You have a flexible and living mind, young man. That's good to know. Unfortunately, you proposition won't work. The thought of gold was the first thing which crossed my mind. But the gold is too soft to link different parts of the suit\nAlas, but the 'silver' is the only material that will do. I'll be crafting parts only from it, even if it'll take years to collect enough quantity. But I've seen pieces of the metal before on the Island - it is often mixed with silver due to the looks of it.";
-			link.l1 = "Hm. And if I will help you to find the enough amount of 'silver', will you give me the suit to dive underwater?";
+			dialog.text = "У вас гибкий и живой ум, молодой человек. Это не может не радовать. Но к сожалению, ваше предложение не годится. То, что вы сейчас сказали, было первое, что пришло мне в голову. Но золото слишком мягкий металл, чтобы выполнять данную функцию - соединять части костюма\nУвы, но 'серебришко' - единственный пригодный материал. Я буду делать детали только из него, даже если на сбор достаточного количества уйдет год. Но куски этого металла мне на Острове встречались - он часто смешивается с серебром ввиду внешней схожести.";
+			link.l1 = "Хм. А если я помогу вам найти достаточное количество серебришка, вы дадите мне костюм для спуска под воду?";
 			link.l1.go = "mechanic_10";
 		break;
 		
 		case "mechanic_10":
-			dialog.text = "No need to ask! Sure, I will. I have told you already that I won't dive there because of crabs and nobody else wants to do so as well.";
-			link.l1 = "Then show the piece of this metal to help me to understand what I need to find.";
+			dialog.text = "Ну что за вопрос! Конечно, дам. Тем более, я уже говорил: сам я под воду не полезу из-за крабов, а других желающих в последнее время тоже не наблюдается.";
+			link.l1 = "Тогда покажите мне кусок этого металла, чтобы я мог понять, о чем идет речь.";
 			link.l1.go = "mechanic_11";
 		break;
 		
 		case "mechanic_11":
-			dialog.text = "So you are going to search for it? Excellent. Here, take this piece as an example. Look for it among the silver ore and nuggets. It won't be easy to find it but you will handle it. There are small darkenings on silver but our metal is clear.";
-			link.l1 = "Fine. I am going to search for it immediately. Got any suggestions where should I look for it?";
+			dialog.text = "Так вы беретесь за розыски? Превосходно. Вот, возьмите этот кусок как образец для сравнения. Ищите среди серебряной руды и самородков. Отличить его на первый взгляд непросто, но вы быстро разберетесь, что к чему. На серебре практически всегда есть хотя бы небольшие потемнения. А этот металл чист.";
+			link.l1 = "Хорошо. Я немедленно приступаю к поискам. Какие-нибудь предположения, где его можно найти с наибольшей вероятностью, у вас есть?";
 			link.l1.go = "mechanic_12";
 		break;
 		
 		case "mechanic_12":
 			GiveItem2Character(pchar, "jewelry10");
 			PlaySound("interface\important_item.wav");
-			Log_Info("You have received a platinum ingot");
-			dialog.text = "Alas, I don't. If I knew where to find it, I'd do it myself. But I can give you an advice though. Search in the Rivados ships. I don't visit them so it's a chance.";
-			link.l1 = "I will consider it, Henrik. I hope, that I'd be lucky.";
+			Log_Info("Вы получили предмет");
+			dialog.text = "Увы, нет. Если бы я знал - то ваша помощь мне бы не потребовалась. Но совет все же дам: поищите на кораблях клана ривадос - я на них не бываю, соответственно, шанс нахождения там больше, ибо корабли нарвалов я уже облазил вдоль и поперек.";
+			link.l1 = "Я принял ваши слова к сведению, Хенрик. Надеюсь, мне повезет.";
 			link.l1.go = "mechanic_13";
 		break;
 		
 		case "mechanic_13":
-			dialog.text = "Collect ten more pieces. It is a minimum to repair the suit. Good luck!";
-			link.l1 = "Thanks. Farewell, Mechanic!";
+			dialog.text = "Соберите еще десять таких кусков. Это минимум, необходимый для ремонта костюма. Желаю удачи!";
+			link.l1 = "Спасибо. До встречи, Механик!";
 			link.l1.go = "mechanic_14";
 		break;
 		
@@ -213,26 +213,26 @@ void ProcessDialogEvent()
 		
 		case "mechanic_15":
 			RemoveItems(pchar, "jewelry10", 11);
-			dialog.text = "Well, well, show me... Excellent! Well done, young man! Was it difficult?";
-			link.l1 = "Not really...";
+			dialog.text = "Так-так, покажите... Великолепно! Отличная работа, молодой человек! Это было трудно?";
+			link.l1 = "Ну, как сказать...";
 			link.l1.go = "mechanic_16";
 		break;
 		
 		case "mechanic_16":
-			dialog.text = "Well, now I can start to repair the suit. I won't waste the time and I will start tomorrow. You are really eager to dive, aren't' you?";
-			link.l1 = "Exactly. I really want to explore the underwater.";
+			dialog.text = "Ну что же, теперь я могу приступить к ремонту костюма. Не буду откладывать дело в долгий ящик и начну завтра. Ведь вам не терпится попасть на дно, я правильно понимаю?";
+			link.l1 = "Именно так. Очень хочу исследовать подводное царство.";
 			link.l1.go = "mechanic_17";
 		break;
 		
 		case "mechanic_17":
-			dialog.text = "It is very good, because I will have an ask for you when we will organize your dive. But we will talk about it later. Come and see me in five days, I hope that I will finish the repair.";
-			link.l1 = "Fine. I wish you luck!";
+			dialog.text = "Это очень хорошо, потому что у меня будет для вас поручение, когда мы организуем ваше погружение. Но об этом позже. Приходите через пять дней - я надеюсь, к этому моменту я уже управлюсь с ремонтом.";
+			link.l1 = "Хорошо. Желаю вам удачи!";
 			link.l1.go = "mechanic_18";
 		break;
 		
 		case "mechanic_18":
-			dialog.text = "Luck is needed for certain, but the suit's repair will require skills mostly. Besides, I will need to spend a day near the furnace with Jurgen to make plate from the metal you've brought me.";
-			link.l1 = "Then I won't bother you. See you in five days. Farewell!";
+			dialog.text = "Удача, безусловно, нужна всегда, но сборка костюма - это прежде всего долгий и кропотливый труд. Кроме того, мне сначала нужно сутки провести у плавильного горна с Юргеном - нужно из ваших кусков металла сделать пластины надлежащей формы.";
+			link.l1 = "Тогда не буду вам мешать. Встретимся через пять дней. До свидания!";
 			link.l1.go = "mechanic_19";
 		break;
 		
@@ -247,23 +247,23 @@ void ProcessDialogEvent()
 		case "mechanic_20":
 			if (sti(pchar.questTemp.LSC.PtAddQty) == 0)
 			{
-				dialog.text = "Yes. Me and Jurgen did hell of a job and the amount of pieces you've brought was enough to do it. The suit is repaired and prepared. I only need to run several tests, but I am sure that it is fine. Come tomorrow at 10 a.m. - I will fill tanks with air and you will be able to do what you want.";
-				link.l1 = "Excellent! I look forward to do so. See you tomorrow, Henrik!";
+				dialog.text = "Да. Мы с Юргеном замечательно потрудились - принесенных вами слитков как раз хватило для выполнения работы. Костюм починен и собран. Мне осталось только испытать его, но я уверен, что все будет в порядке. Приходите завтра часам к десяти утра - я заправлю резервуары костюма воздухом, и вы сможете наконец осуществить свое желание.";
+				link.l1 = "Великолепно! Жду, не дождусь. Тогда до завтра, Хенрик!";
 				link.l1.go = "mechanic_24";
 				DeleteAttribute(pchar, "questTemp.LSC.PtAddQty");
 				AddCharacterExpToSkill(pchar, "Fortune", 100);
 			}
 			else
 			{
-				dialog.text = "I have to disappoint you, "+pchar.name+". As I have supposed there is not enough metal. I need "+FindRussianQtyString(sti(pchar.questTemp.LSC.PtAddQty))+" more pieces to finish the repair. I have to ask you for help again.";
-				link.l1 = "Well now, I didn't expect such a turn of events. Fine, I'll try to find nuggets you lack.";
+				dialog.text = "Я вынужден вас огорчить, "+pchar.name+". Как я и предполагал, металла оказалось недостаточно. Я посчитал - для завершения ремонта мне нужно еще таких слитков в количестве "+FindRussianQtyString(sti(pchar.questTemp.LSC.PtAddQty))+". И я снова вынужден просить вас о помощи.";
+				link.l1 = "Ну что же, я ожидал такого поворота событий. Хорошо, я попробую достать недостающие самородки.";
 				link.l1.go = "mechanic_21";
 			}
 		break;
 		
 		case "mechanic_21":
-			dialog.text = "I will wait for you. You can be sure that this amount will surely suffice. Just bring them and I will finish the work in a day.";
-			link.l1 = "I hope so... See you!";
+			dialog.text = "Я буду вас ждать. Будьте уверены, этого количества уже точно хватит. Как только вы принесете - я буквально за сутки закончу работу.";
+			link.l1 = "Надеюсь, что это так... До встречи!";
 			link.l1.go = "mechanic_22";
 		break;
 		
@@ -276,8 +276,8 @@ void ProcessDialogEvent()
 		
 		case "mechanic_23":
 			RemoveItems(pchar, "jewelry10", sti(pchar.questTemp.LSC.PtAddQty));
-			dialog.text = "Splendid! Now the suit will be restored. I only need to run several tests, but I am sure that it is fine. Come tomorrow at 10 a.m. - I will fill tanks with air and you will be able to do what you want.";
-			link.l1 = "Excellent! I look forward to do so. See you tomorrow, Henrik!";
+			dialog.text = "Замечательно! Теперь костюм будет восстановлен. Приходите послезавтра часикам к десяти утра - к этому времени я уже соберу костюм, испытаю, заправлю резервуары воздухом, и вы наконец сможете осуществить свое желание.";
+			link.l1 = "Великолепно! Жду, не дождусь. Тогда до послезавтра, Хенрик!";
 			link.l1.go = "mechanic_24";
 		break;
 		
@@ -286,15 +286,15 @@ void ProcessDialogEvent()
 			if (CheckAttribute(pchar, "questTemp.LSC.PtAddQty"))
 			{
 				iTemp = 2;
-				sTemp = "the day after tomorrow";
+				sTemp = "послезавтра";
 				DeleteAttribute(pchar, "pchar.questTemp.LSC.PtAddQty");
 			}
 			else
 			{
 				iTemp = 1;
-				sTemp = "tomorrow";
+				sTemp = "завтра";
 			}
-			if (!CheckAttribute(pchar, "questTemp.LSC.NatanTalk")) string sText = "But I have to find Nathaniel Hawk first before I dive."; //не было разговора с Натаном
+			if (!CheckAttribute(pchar, "questTemp.LSC.NatanTalk")) string sText = "Но прежде чем осуществить погружение, я должен обязательно найти Натаниэля Хоука и поговорить с ним."; //не было разговора с Натаном
 			else sText = "";
 			AddQuestRecord("LSC", "10");
 			AddQuestUserData("LSC", "sText1", sTemp);
@@ -309,53 +309,53 @@ void ProcessDialogEvent()
 		break;
 		
 		case "immersion":
-			dialog.text = "Yes, the suit is ready and filled with air. You can dive.";
+			dialog.text = "Да, костюм готов, проверен и заправлен воздухом. Можете приступать к погружению.";
 			if (!CheckAttribute(pchar, "questTemp.LSC.NatanTalk")) // не было разговора с Натаном
 			{
-				link.l1 = "Good. But I can't dive now, I need to solve one problem about my... friend, Nathan Hawk. I can't find him. Can the suit wait a bit?";
+				link.l1 = "Очень хорошо. Но сейчас я пока не могу отправиться под воду - мне нужно решить одну проблему, связанную... эм-м-м... с одним моим знакомым, Натаном Хоуком. Что-то никак не могу его найти. Костюм же может подождать?";
 				link.l1.go = "natan";
 			}
 			else
 			{
-				link.l1 = "Splendid! When will we start? Now?";
+				link.l1 = "Отлично! Когда мы начинаем? Прямо сейчас?";
 				link.l1.go = "immersion_1";
 			}
 		break;
 		
 		case "natan":
-			dialog.text = "Sure. It can wait. Won't you look for your friend for a year?";
-			link.l1 = "Sure, I won't. Perhaps I will find him even today. I will visit you just after I will finish my business with him.";
+			dialog.text = "Конечно. Будет ждать, сколько потребуется. Вы же не будете искать вашего друга полгода?";
+			link.l1 = "Безусловно. Возможно, я найду его даже сегодня. Как только закончу дела с ним - сразу же приду к вам.";
 			link.l1.go = "natan_1";
 		break;
 		
 		case "natan_1":
-			dialog.text = "Yes please. Come when you are ready to dive.";
-			link.l1 = "Thanks!";
+			dialog.text = "Да пожалуйста. Приходите, как будете готовы спуститься на дно.";
+			link.l1 = "Спасибо!";
 			link.l1.go = "exit";
 			pchar.questTemp.LSC = "underwater_natan";
 		break;
 		
 		case "immersion_1":
-			dialog.text = "Right now if you want. But let me give you a small instruction first. You will start your dive from the Phoenix platform, you can get there from the San Gabriel's stern. There is a hoist which will get you at the bottom and back. This is the only way to return\nSo you'd better remember a location of the hoist underwater and don't get lost. The suit's tanks have enough air for twenty minutes of diving. Watch your time or you will suffocate\nDon't walk too far away from the hoist or you won't be able to return in time and God save you from leaving our shoal - you'll get flattened like a flatfish\nBe careful and watch for crabs. If you approach them too close, they will attack you. Don't risk if you don't have to, you won't be able to kill a whole pack of them and running away fast is not an option down there.";
-			link.l1 = "I will deal with crabs. I got the rest. Don't dive deeper, don't go far away from the hoist and don't forget about tome. When can I dive?";
+			dialog.text = "Да хоть и прямо сейчас. Но сначала я прочитаю вам небольшую лекцию, или инструкцию. Спуск производите с платформы 'Феникс' - проход туда через кормовую галерею 'Сан-Габриэля'. На платформе установлена лебедка, при помощи которой вы спуститесь на дно. С ее же помощью вы подниметесь обратно - никаким иным способом вы всплыть не сможете - костюм очень тяжел\nТак что запомните, где находится крюк лебедки под водой и не потеряйтесь. Далее. Воздуха в резервуарах достаточно на 20 минут нахождения под водой. Если вы израсходуете весь воздух, и при этом останетесь под водой, вы попросту задохнетесь. Так что следите за временем\nНе отходите далеко от крюка лебедки, иначе у вас просто может не хватить времени вернуться к ней назад, и Боже вас упаси отправиться с нашего мелководья в морские глубины - вас сплющит, как камбалу\nПроявляйте острожность, под водой полно гигантских крабов. Если вы подойдете к ним слишком близко - они атакуют вас. Не стоит рисковать понапрасну - если они нападут стаей, вам придется ретироваться, а бегать под водой у вас точно не получится.";
+			link.l1 = "С крабами я как-нибудь управлюсь. Насчет остального понял - в глубину не лезть, держаться поближе к лебедке и не забывать о времени. Когда можно спуститься?";
 			link.l1.go = "immersion_2";
 		break;
 		
 		case "immersion_2":
-			dialog.text = "Whenever you want, but only from 7 a.m. to 9 p.m. You won't be able to see a thing in the dark.";
-			link.l1 = "Got it.";
+			dialog.text = "Спускаться можете когда угодно, но только в светлое время суток, с семи утра до девяти вечера, потому что я ума не приложу, что вы там рассмотрите ночью в кромешной тьме.";
+			link.l1 = "Понятно.";
 			link.l1.go = "immersion_4";
 		break;
 		
 		case "immersion_4":
-			dialog.text = "That's just it. Take the suit from the room at the platform. Take it off after a dive and bring to me. I will fill it with air again. But don't try to dive more than once per day, even the 20 minutes of diving and breathing the compressed air do an ill influence on your health.";
-			link.l1 = "Well, I won't dive more than once per day then.";
+			dialog.text = "Ну вот и все инструкции. Костюм возьмете в помещении на платформе, после погружения снимите его и принесите мне, я заправлю его воздухом снова. Но! В день больше одного погружения я вам делать крайне не советую: даже двадцатиминутное нахождение под водой и дыхание сжатым воздухом оказывают вредное воздействие на здоровье.";
+			link.l1 = "Ну, тогда больше одного раза в день под воду лезть и не буду.";
 			link.l1.go = "immersion_5";
 		break;
 		
 		case "immersion_5":
-			dialog.text = "I am glad that you understand. Now go and good luck!";
-			link.l1 = "Thanks!";
+			dialog.text = "Я рад, что вы все приняли к сведению. Теперь ступайте, и удачи вам!";
+			link.l1 = "Спасибо!";
 			link.l1.go = "immersion_6";
 		break;
 		
@@ -380,21 +380,21 @@ void ProcessDialogEvent()
 		case "after_first_immersion":
 			if (CheckAttribute(pchar, "questTemp.LSC.immersion"))
 			{
-				dialog.text = "So, why are you still here? The suit is looking forward for you.";
-				link.l1 = "Yes, yes. I am on my way.";
+				dialog.text = "Ну, и почему вы еще здесь? Костюм вас уже заждался.";
+				link.l1 = "Да-да, я иду.";
 				link.l1.go = "exit";
 			}
 			else
 			{
-				dialog.text = "So, how did the first dive go?";
+				dialog.text = "Ну, как прошло первое погружение?";
 				if (CheckAttribute(pchar, "questTemp.LSC.FindDolly"))
 				{
-					link.l1 = "Most excellent and I am satisfied with the results. I have found a stone idol in the sunken galleon. I have heard that Rivados did some sacrificial offerings to it before. Tell me, Henrik, do you know anyone who could tell me more about it?";
+					link.l1 = "Все как нельзя лучше, я доволен результатами. Я нашел в затонувшем галеоне каменную статую, у которой, как я слышал по рассказам, ривадос ранее проводили жертвоприношения. Скажите, Хенрик, вы не знаете кого-нибудь, кто мог бы поподробнее рассказать, как этот ритуал проводился?";
 					link.l1.go = "af_immersion_1";
 				}
 				else
 				{
-					link.l1 = "Fine. I did it! It was really interesting though a bit thrilling.";
+					link.l1 = "Нормально. У меня все получилось! И мне было очень интересно, хотя и чуточку жутковато.";
 					link.l1.go = "af_immersion_2";
 				}
 			}
@@ -402,37 +402,37 @@ void ProcessDialogEvent()
 		break;
 		
 		case "af_immersion_1":
-			dialog.text = "Are you interested in our history? Go to Antonio Betancourt. He was born here. He lives at the flute Pluto. If he doesn't know about something - no one does.";
-			link.l1 = "Excellent! I will definitely have to visit him.";
+			dialog.text = "Заинтересовались нашей историей? Ну, тогда вам прямая дорога к Антонио Бетанкуру. Он у нас потомственный горожанин, родился на Острове. Он живет на флейте 'Плуто'. Если уже он не знает - то не знает никто.";
+			link.l1 = "Отлично! Надо будет обязательно нанести ему визит.";
 			link.l1.go = "af_immersion_2";
 			pchar.questTemp.LSC.Betancur = "true";
 			AddQuestRecord("LSC", "14");
 		break;
 		
 		case "af_immersion_2":
-			dialog.text = "Leave the suit here. Come back tomorrow or any other day, I am going to fill it with air.";
+			dialog.text = "Оставьте костюм у меня. Если вы захотите еще раз спуститься на дно - приходите завтра или в любой день позже, я заправлю резервуары воздухом.";
 			if (CheckCharacterItem(pchar, "underwater"))
 			{
-				link.l1 = "Sure. Here is you suit. Thanks!";
+				link.l1 = "Конечно. Вот ваш костюм. Спасибо!";
 				link.l1.go = "af_immersion_3";
 			}
 			else
 			{
-				link.l1 = "Sure. I will bring it at once!";
+				link.l1 = "Конечно. Сейчас принесу!";
 				link.l1.go = "af_immersion_wait";
 			}
 		break;
 		
 		case "af_immersion_wait":
-			dialog.text = "Well, have you brought me my equipment?";
+			dialog.text = "Ну, вы принесли мое снаряжение?";
 			if (CheckCharacterItem(pchar, "underwater"))
 			{
-				link.l1 = "Sure. Here is you suit. Thanks!";
+				link.l1 = "Конечно. Вот ваш костюм. Спасибо!";
 				link.l1.go = "af_immersion_3";
 			}
 			else
 			{
-				link.l1 = "I will do it at once!";
+				link.l1 = "Уже несу!";
 				link.l1.go = "exit";
 			}
 			NextDiag.TempNode = "af_immersion_wait";
@@ -459,22 +459,22 @@ void ProcessDialogEvent()
 		case "immersion_next":
 			if (CheckAttribute(npchar, "quest.guarantee")) // требует залог
 			{
-				dialog.text = "Yes, sure. The suit was tested and filled with air. Have you got the pledge with you? 500 000 pesos?";
+				dialog.text = "Да, конечно. Костюм проверен и заправлен воздухом, стоит на платформе 'Феникс' где обычно. Приготовили залог - 500 тысяч песо?";
 				if (sti(pchar.money) >= 500000)
 				{
-					link.l1 = "Yes, sure. Here, take it.";
+					link.l1 = "Да, конечно. Вот, возьмите.";
 					link.l1.go = "immersion_next_pay";
 				}
 				else
 				{
-					link.l1 = "Oups! I have forgotten about it. I will bring it at once...";
+					link.l1 = "Ой! Совсем забыл! Сейчас принесу...";
 					link.l1.go = "exit";
 				}
 			}
 			else
 			{
-				dialog.text = "Yes, sure. The suit was tested and filled with air. Check the Phoenix platform as always.";
-				link.l1 = "Then I will dive. Thanks!";
+				dialog.text = "Да, конечно. Костюм проверен и заправлен воздухом, стоит на платформе 'Феникс' где обычно.";
+				link.l1 = "Тогда я отправляюсь под воду. Спасибо!";
 				link.l1.go = "immersion_next_1";
 			}
 		break;
@@ -492,8 +492,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "immersion_next_2":
-			dialog.text = "Fine. Come back tomorrow or later. I am going to prepare the suit.";
-			link.l1 = "Thanks, Mechanic!";
+			dialog.text = "Хорошо. Если желаете еще спуститься под воду - приходите завтра или позже. Я подготовлю костюм к работе.";
+			link.l1 = "Спасибо, Механик!";
 			link.l1.go = "immersion_next_3";
 		break;
 		
@@ -509,42 +509,42 @@ void ProcessDialogEvent()
 		
 		case "immersion_next_pay":
 			AddMoneyToCharacter(pchar, -500000);
-			dialog.text = "You will get your money back when you will return the suit. Fair deal.";
-			link.l1 = "Thanks, Mechanic! I am going to dive now.";
+			dialog.text = "Когда вернете мне скафандр - получите ваши деньги назад. Все по-честному.";
+			link.l1 = "Спасибо, Механик! Ну, а я отправляюсь под воду.";
 			link.l1.go = "immersion_next_1";
 		break;
 		// блок погружений
 		
 	//--------------------------------------вернулся на Остров---------------------------------------------
 		case "return":
-			dialog.text = "Wait a second please! What statue? A-ah, I get it now. You mean that idol in the sunken ship San-Geronimo, do you? So those Rivados tales are true?";
-			link.l1 = "Exactly! And there are no tales. I know two more idols at the archipelago which teleport people who touch them by circle.";
+			dialog.text = "Позвольте! К какой статуе? А-а, кажется, я понимаю. Это вы сейчас про истукана, который когда-то затонул вместе с кораблем 'Сан-Херонимо'? Так что, эти сказки ривадос - действительно правда?";
+			link.l1 = "Именно! И никакие это не сказки. На архипелаге я знаю еще два таких истукана, и они переносят любого коснувшегося их от одного к другому по кругу.";
 			link.l1.go = "return_1";
 		break;
 		
 		case "return_1":
-			dialog.text = "I see, I see. I will have to trust you though your words are the anti-scientific nonsense. Teleports, statues... ha! And who could even think about it?";
-			link.l1 = "Just trust me and don't try to find any logic here. I am not lying.";
+			dialog.text = "Ясно-ясно. Придется вам поверить, хотя вы несете антинаучный бред. Статуи переносят в пространстве.. пхе! Ну кто бы подумал?";
+			link.l1 = "Уж лучше просто поверьте и не ломайте над этим голову. Я действительно не лгу.";
 			link.l1.go = "return_2";
 		break;
 		
 		case "return_2":
-			dialog.text = "Fine. But I hope that you didn't loose the suit during that teleportation of yours?";
+			dialog.text = "Хорошо. Ну, а скафандр вы во время вашей телепортации, надеюсь, не потеряли?";
 			if(CheckCharacterItem(pchar, "underwater"))
 			{
-				link.l1 = "Sure, I didn't. It has saved me from Caribs so to speak. Here it is.";
+				link.l1 = "Нет, конечно. Он, можно сказать, спас меня от карибов. Я принес его вам.";
 				link.l1.go = "return_4";
 			}
 			else
 			{
-				link.l1 = "Sure, I didn't. It has saved me from Caribs so to speak. But I don't have it with me now.";
+				link.l1 = "Нет, конечно. Он, можно сказать, спас меня от карибов. Но сейчас у меня его с собой нет.";
 				link.l1.go = "return_3";
 			}
 		break;
 		
 		case "return_3":
-			dialog.text = "So bring it to me, damn it! We won't talk until you return it to me, know it!";
-			link.l1 = "Calm down, Mechanic. I will return it to you!";
+			dialog.text = "Ну так принесите его мне, черт возьми! Пока не вернете мне скафандр - дальнейшего разговора не будет, так и знайте!";
+			link.l1 = "Да не кипятитесь вы так, Механик. Верну я вам скафандр!";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "return_underwater";
 		break;
@@ -552,14 +552,14 @@ void ProcessDialogEvent()
 		case "return_underwater":
 			if(CheckCharacterItem(pchar, "underwater"))
 			{
-				dialog.text = "Ah, you have actually returned my suit! Thanks, I have started to worry about it.";
-				link.l1 = "There was no need to worry about it. I have promised you to return it.";
+				dialog.text = "А, вы все-таки принесли мне мой скафандр! Спасибо-спасибо, а то я уже начал было отчаиваться.";
+				link.l1 = "Зря вы переживали. Я же сказал - верну, значит - верну.";
 				link.l1.go = "return_4";
 			}
 			else
 			{
-				dialog.text = "Don't even come here until you don't have my suit.";
-				link.l1 = "Fine, fine.";
+				dialog.text = "Пока не вернете мне мой скафандр - даже не подходите ко мне.";
+				link.l1 = "Хорошо-хорошо...";
 				link.l1.go = "exit";
 			}
 			NextDiag.TempNode = "return_underwater";
@@ -570,41 +570,41 @@ void ProcessDialogEvent()
 			RemoveCharacterEquip(pchar, CIRASS_ITEM_TYPE);
 			RemoveItems(pchar, "underwater", 1);
 			SetFunctionTimerCondition("LSC_ReadyUnderwater", 0, 0, 1, false);
-			dialog.text = "Very good. I have started to think about making the new one, but it would be a work for a year not less... I am glad that you have shown a fine economy and returned my property in one piece. I will even give you a present.";
-			link.l1 = "Are you serious?";
+			dialog.text = "Очень хорошо. Я уже начинал подумывать об изготовлении нового, но это затянулось бы на год, не меньше... Я очень рад, что вы проявили хозяйственность и сохранили вверенное вам имущество в целости. И я даже сделаю вам презент.";
+			link.l1 = "Вы что это - серьезно?";
 			link.l1.go = "return_5";
 		break;
 		
 		case "return_5":
-			dialog.text = "Sure, I am! You have helped me to repair the suit and haven't thrown it away in the first occasion. You have been taking care of it and finally you have brought it back to me. Anyway, here is a fine toolbox. Learn how to use it. You will be able to make a lot of useful things with it's help.";
-			link.l1 = "And what else could I expect from the Mechanic! Sure, the toolbox! Thanks a lot, Henrik, I am touched... I didn't deserve such a gift.";
+			dialog.text = "Ну конечно! Вы же помогли мне починить скафандр, потом не бросили его под первым кустом, берегли его, носили с собой и вернули мне. В общем, я дарю вам вот этот набор слесарных инструментов. Научитесь ими пользоваться. С их помощью вы сможете смастерить очень много полезных вещей.";
+			link.l1 = "Ну какой же еще подарок можно было ждать от Механика! Конечно - набор инструментов! Спасибо большое, Хенрик, я, право, тронут... Я не заслужил этого подарка.";
 			link.l1.go = "return_6";
 		break;
 		
 		case "return_6":
 			GiveItem2Character(pchar, "mechanic_tool");
-			Log_Info("You have received a toolbox");
+			Log_Info("Вы получили слесарный инструмент");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "I know better what you deserved and what you didn't. Take it! It will be useful for you. But I will give you the suit again only if you will pledge five hundred thousand pesos because of your habit to teleport via idols.";
-			link.l1 = "Wow! Well, I understand that... precautionary measures...";
+			dialog.text = "Мне лучше знать, заслужили или нет. Берите-берите! Они вам пригодятся. А вот скафандр теперь я вам буду выдавать только под залог в полмиллиона песо, раз вы такой шустрый и умеете прыгать на расстояния через всякие статуи.";
+			link.l1 = "Ого! Ну что же, я понимаю - предосторожность...";
 			link.l1.go = "return_7";
 		break;
 		
 		case "return_7":
-			dialog.text = "Sure. And what if you will escape with it one day? Then the money will be my compensation.";
-			link.l1 = "Fine, Henrick. I agree. To be honest, I thought that you will never give it to me again.";
+			dialog.text = "Конечно. А то вдруг вы с ним сбежите однажды? Тогда эти полмиллиона послужат мне компенсацией.";
+			link.l1 = "Хорошо, Хенрик. Я согласен. Честно говоря, я думал, вы мне его больше вообще не дадите.";
 			link.l1.go = "return_8";
 		break;
 		
 		case "return_8":
-			dialog.text = "Not a chance. Pledge a half a million and it is all yours.";
-			link.l1 = "Deal! Can I take it as usual to dive then? From the tomorrow day?";
+			dialog.text = "Отнюдь. Полмиллиона в залог - и пользуйтесь на здоровье.";
+			link.l1 = "Договорились! Тогда я смогу как обычно брать его для погружений, начиная с завтрашнего дня?";
 			link.l1.go = "return_9";
 		break;
 		
 		case "return_9":
-			dialog.text = "Exactly.";
-			link.l1 = "Thanks! See you, Henrik!";
+			dialog.text = "Именно так.";
+			link.l1 = "Спасибо! Еще увидимся, Хенрик!";
 			link.l1.go = "return_10";
 		break;
 		
@@ -618,14 +618,14 @@ void ProcessDialogEvent()
 //----------------------------------------- специальные реакции -----------------------------------------------
 		//обнаружение ГГ в сундуках
 		case "Man_FackYou":
-			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
-			link.l1 = "Damn it!";
+			dialog.text = LinkRandPhrase("Что ты там копаешься, а? Да ты вор!", "Вот это да! Чуть я загляделся, а ты сразу в сундук с головой!", "По сундукам шарить вздумал?! Тебе это даром не пройдет!");
+			link.l1 = "А-ать, дьявол!!!";
 			link.l1.go = "fight";
 		break;
 		
 		case "Woman_FackYou":
-			dialog.text = "What?! Decided to check my chests? You won't get away with it!";
-			link.l1 = "Foolish girl!...";
+			dialog.text = "Ах, вот, значит, как?! По сундукам шарить вздумал?! Тебе это даром не пройдет!";
+			link.l1 = "Вот дура!..";
 			link.l1.go = "exit_setOwner";
 			LAi_group_Attack(NPChar, Pchar);
 		break;
@@ -646,8 +646,8 @@ void ProcessDialogEvent()
 		
 		//замечание по обнаженному оружию
 		case "LSCNotBlade":
-			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
-			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
+			dialog.text = LinkRandPhrase("Слушай, ты бы убрал оружие. А то нервируешь немного...", "Знаешь, у нас тут не принято сабелькой размахивать. Убери оружие.", "Слушай, что ты, как д'Артаньян, бегаешь тут, шпагой машешь? Убери оружие, не к лицу это серьезному мужчине...");
+			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;	
@@ -655,13 +655,13 @@ void ProcessDialogEvent()
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{
-				dialog.text = NPCharSexPhrase(NPChar, "Listen, I am the citizen of the city and I'd ask you to hold down your blade.", "Listen, I am the citizen of the city and I'd ask you to hold down your blade.");
-				link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
+				dialog.text = NPCharSexPhrase(NPChar, "Послушайте, я, как гражданин этого города, прошу вас не ходить у нас с обнаженным клинком.", "Знаете, я, как гражданка этого города, прошу вас не ходить у нас с обнаженным клинком.");
+				link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажете...");
 			}
 			else
 			{
-				dialog.text = NPCharSexPhrase(NPChar, "Be careful, pal, while running with a weapon. I can get nervous...", "I don't like when men walking in front of me with their weapon ready. It scares me...");
-				link.l1 = RandPhraseSimple("Got it.", "I am taking it away.");
+				dialog.text = NPCharSexPhrase(NPChar, "Острожней на поворотах, приятель, когда бежишь с оружием в руках. Я ведь могу и занервничать...", "Мне не нравится, когда мужчины ходят передо мной с оружием на изготовку. Это меня пугает...");
+				link.l1 = RandPhraseSimple("Понял.", "Убираю.");
 			}
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";

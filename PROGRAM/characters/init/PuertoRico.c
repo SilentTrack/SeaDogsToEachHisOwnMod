@@ -11,8 +11,8 @@ int CreatePuertoRicoCharacters(int n)
 	ch.id = "SanJuan_Mayor";
 	ch.model	= "huber_17";
 	ch.sex = "man";
-	ch.name 	= "Diego";
-    ch.lastname = "de Aguillera-Gamboa";
+	ch.name 	= "Диего";
+    ch.lastname = "де Агуильера-и-Гамбоа";
 	ch.City = "SanJuan";
 	ch.location	= "SanJuan_townhall";
 	ch.location.group = "sit";
@@ -170,7 +170,7 @@ int CreatePuertoRicoCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "SanJuan_Smuggler";
 	ch.model    = "citiz_28";

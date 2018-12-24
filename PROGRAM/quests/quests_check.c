@@ -226,7 +226,7 @@ bool ProcessCondition(aref condition)
 		case "Alarm":
 			return TestIntValue(LAi_grp_playeralarm, sti(condition.value), condition.operation);
     	break;
-		
+
 		// Addon-2016 Jason, французские миниквесты прерывание на количество денег
 		case "Money":
 			return TestIntValue(sti(pchar.money), sti(condition.value), condition.operation);
@@ -352,7 +352,7 @@ bool ProcessCondition(aref condition)
 			}
 		break;
 	}
-	trace("ERROR: unidentified condition type()" + condition);
+	trace("ERROR: unidentified condition type()" + condition + " : " + sConditionName);
 	return false;
 }
 

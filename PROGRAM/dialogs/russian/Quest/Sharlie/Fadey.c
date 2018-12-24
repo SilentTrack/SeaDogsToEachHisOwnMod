@@ -19,175 +19,175 @@ void ProcessDialogEvent()
 			{
 				if (pchar.questTemp.Sharlie == "fadey")
 				{
-					dialog.text = "What can I do for you, monsieur? I don't speak with people I'm not acquainted with. If you've stopped by just for a chat, then I'll have to disappoint you, I don't like being bothered with nonsense.";
-					link.l1 = "Good afternoon, monsieur Fadey. You, of course, may not be acquainted with me yet, but you do know my brother on the other hand. Allow me to introduce myself - Charles de Maure, brother of Michel de Monper.";
+					dialog.text = "Что вам угодно, месье? Я не общаюсь с незнакомыми мне людьми. А если вы зашли просто поболтать, то я вас разочарую - я не люблю, когда меня беспокоят по пустякам.";
+					link.l1 = "Добрый день, месье Фадей. Я, конечно, незнаком вам, но зато вы знаете моего брата. Позвольте представиться - Шарль де Мор, брат Мишеля де Монпе.";
 					link.l1.go = "Sharlie";
 					break;
 				}
 				if (pchar.questTemp.Sharlie == "takeknife" && !CheckAttribute(pchar, "questTemp.Persian"))
 				{
-					dialog.text = "Aha, you again, Charles! What is it this time?";
-					link.l1 = "You said that you were robbed... Have you found the culprits?";
+					dialog.text = "А-а, опять вы, Шарль! Что на этот раз?";
+					link.l1 = "Вы сказали, вас обокрали... Воров не нашли?";
 					link.l1.go = "Sharlie_8";
 					break;
 				}
 				if (CheckAttribute(pchar, "questTemp.Sharlie.Tichingitu") && pchar.questTemp.Sharlie.Tichingitu == "fadey")
 				{
-					dialog.text = "So, Charles? Have you gone to check out that Indian dummy?";
-					link.l1 = "I have... That's why I've come back to you.";
+					dialog.text = "Что скажете, Шарль? Сходили посмотреть на это индейское чучело?";
+					link.l1 = "Сходил... Поэтому и пришел снова к вам.";
 					link.l1.go = "Tichingitu";
 					break;
 				}
 				if (CheckAttribute(pchar, "questTemp.Sharlie.Tichingitu") && pchar.questTemp.Sharlie.Tichingitu == "dublon")
 				{
-					dialog.text = "Ah, it's you again, my dear friend! Well, have you brought the doubloons for the Indian?";
+					dialog.text = "А, это опять вы, мой дорогой друг! Ну что, принесли дублоны за индейца?";
 					if (GetCharacterItem(pchar, "gold_dublon") >= 100)
 					{
-						link.l1 = "Yes. Here are your hundred doubloons.";
+						link.l1 = "Да. Вот, держите ваши сто дублонов.";
 						link.l1.go = "Tichingitu_7";
 					}
 					else
 					{
-						link.l1 = "No, I haven't collected the required amount yet.";
+						link.l1 = "Нет, я еще не собрал требуемую сумму.";
 						link.l1.go = "exit";
 					}
 					break;
 				}
 				if (CheckAttribute(pchar, "questTemp.Trial") && pchar.questTemp.Trial == "begin")
 				{
-					dialog.text = "Ha, well it's Monsieur de Maure himself! Come in, come in... What brings you to my home?";
-					link.l1 = TimeGreeting()+", Fadey. I have come to you on the advise of my brother. He's told me you'd definitely be able to help me find some work.";
+					dialog.text = "Ха, да это сам месье де Мор! Проходите-проходите... Что вас привело в мой дом?";
+					link.l1 = TimeGreeting()+", Фадей. Я к вам пришел по совету моего брата. Он сказал, что вы обязательно сумеете помочь мне найти какую-нибудь работу.";
 					link.l1.go = "trial";
 					break;
 				}
 				if (pchar.questTemp.Sharlie == "trial" && !CheckAttribute(npchar, "quest.vodka"))
 				{
-					dialog.text = "Ha, my good old acquaintance. What brings you here, monsieur de Maure?";
-					link.l1 = TimeGreeting()+", Fadey. My brother insisted that I shouldn't speak to you about this, but I couldn't restrain myself... ";
+					dialog.text = "Ха, наш старый добрый знакомый! Какими судьбами, месье де Мор?";
+					link.l1 = TimeGreeting()+", Фадей. Мой брат настаивал, чтобы я с вами об этом не беседовал, но я все-таки не удержался...";
 					link.l1.go = "vodka";
 					break;
 				}
 				if (CheckAttribute(pchar, "questTemp.Guardoftruth.Baster_church") && pchar.questTemp.Guardoftruth.Baster_church == "seek")
 				{
-					dialog.text = "Aha, my old friend!  Come in, come in, "+pchar.name+"! How are things?";
-					link.l1 = TimeGreeting()+", Fadey. Pleased to see you. I've actually come to you on business.";
+					dialog.text = "А-а, мой старый друг! Проходите-проходите, "+pchar.name+"! Как ваши дела?";
+					link.l1 = TimeGreeting()+", Фадей. Рад вас видеть. Собственно, я к вам по делу.";
 					link.l1.go = "guardoftruth";
 					break;
 				}
 				if (CheckAttribute(pchar, "questTemp.Guardoftruth.Baster_church") && pchar.questTemp.Guardoftruth.Baster_church == "find" && !CheckAttribute(npchar, "quest.utensil"))
 				{
-					dialog.text = TimeGreeting()+", "+pchar.name+". I bet you're eager to discover the results of my soul-saving conversation with the priest?";
-					link.l1 = "Of course I am! How did it go?";
+					dialog.text = TimeGreeting()+", "+pchar.name+". Вам, конечно, не терпится узнать результаты моей душеспасительной беседы со священником?";
+					link.l1 = "Конечно, не терпится! Как все прошло?";
 					link.l1.go = "guardoftruth_9";
 					break;
 				}
 				if (CheckAttribute(npchar, "quest.utensil") && GetCharacterItem(pchar, "gold_dublon") >= 250)
 				{
-					dialog.text = "I keep hearing the chinks in your pockets!";
-					link.l1 = "Such attitude, monsieur Fadey! Here is your gold.";
+					dialog.text = "Слышу, слышу, как у вас позвякивает в карманах!";
+					link.l1 = "Пожалуйте, месье Фадей! Вот ваше золото.";
 					link.l1.go = "guardoftruth_11";
 					break;
 				}
 				if(CheckAttribute(pchar, "questTemp.Guardoftruth.Archy") && pchar.questTemp.Guardoftruth.Archy == "guadeloupe")
 				{
-					dialog.text = "Aha, my old friend! Come in, come in, "+pchar.name+"! How are things?";
-					link.l1 = "Hello, Fadey. I have come to you once again for your help.";
+					dialog.text = "А-а, мой старый друг! Проходите-проходите, "+pchar.name+"! Как ваши дела?";
+					link.l1 = "Здравствуйте, Фадей. Я снова к вам за помощью.";
 					link.l1.go = "guardoftruth_14";
 					break;
 				}
-				dialog.text = "Is there something you need, "+pchar.name+"?";
+				dialog.text = "Вы что-то хотели, "+pchar.name+"?";
 				if (CheckAttribute(pchar, "questTemp.Persian") && pchar.questTemp.Persian == "start" && CheckNCountPersian() > 0)
 				{// персидские клинки
-					link.l2 = "Take a look at what I have here, Fadey. Would I be far off to say it's a Persian sword blade and possibly one of the ones that were stolen from your home?";
+					link.l2 = "Посмотрите, Фадей, что у меня есть. Полагаю, это персидский клинок, и возможно, один из тех, что были украдены из вашего дома?";
 					link.l2.go = "persian";
 				}
 				if (CheckAttribute(pchar, "questTemp.Persian") && pchar.questTemp.Persian == "one" && CheckNCountPersian() > 0)
 				{
-					link.l2 = "I've got good news for you. I've got one more Persian cavalry sword for you here.";
+					link.l2 = "Я могу вас порадовать. Вот, у меня есть еще одна персидская сабля.";
 					link.l2.go = "persian_6";
 				}
 				if (CheckAttribute(pchar, "questTemp.Persian") && pchar.questTemp.Persian == "two" && CheckNCountPersian() > 0)
 				{
-					link.l2 = "I have a third Persian cavalry sword. Just as you asked, I came back to you right away.";
+					link.l2 = "У меня есть третья персидская сабля. Как вы и просили - я немедленно отправился к вам.";
 					link.l2.go = "persian_9";
 				}
 				if (CheckAttribute(pchar, "questTemp.Persian") && pchar.questTemp.Persian == "cirass")
 				{
-					link.l2 = "I'm here concerning the light armour we talked about.";
+					link.l2 = "Я по поводу легких доспехов, о которых мы говорили.";
 					link.l2.go = "persian_13";
 				}
 				if(CheckAttribute(npchar, "quest.ropes") && GetDataDay() == 20) // торговля канатами
 				{
-					link.l3 = "Fadey, I would like to buy in on some of your ropes.";
+					link.l3 = "Фадей, я хочу прикупить у вас канатов.";
 					link.l3.go = "ropes";
 				}
-				link.l1 = "Fadey, I need your help.";
+				link.l1 = "Фадей, мне нужна ваша помощь.";
 				link.l1.go = "help";
- 				link.l9 = "No, nothing at the moment.";
+ 				link.l9 = "Да нет, пока ничего.";
 				link.l9.go = "exit";
 			}
 			else
 			{
-				dialog.text = "What can I do for you, monsieur? I don't speak with people I'm not acquainted with.";
-				link.l1 = "Oh, I was just dropping by to look who lives here.";
+				dialog.text = "Что вам угодно, месье? Я не общаюсь с незнакомыми мне людьми.";
+				link.l1 = "Да я просто заглянул посмотреть, кто здесь живет.";
 				link.l1.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "Sharlie":
-			dialog.text = "Ah, so you are good old Michel's brother! That radically changes the situation! Come in, come in, monsieur, have a seat. Maybe a glass of vodka for our acquaintance? I still have got a few more bottles left and it would do me great pleasure do split one of them with one of my friends' brother!";
-			link.l1 = "Forgive me, monsieur Fadey, but drinking is completely out of the cards. I would prefer to get right to business.";
+			dialog.text = "А-а, так вы брат старого доброго Мишеля! Это в корне меняет дело! Проходите-проходите, месье, присаживайтесь. Может, по стаканчику водочки за знакомство? У меня еще осталось несколько бутылок, и я с радостью разопью одну из них с братом моего друга!";
+			link.l1 = "Простите, месье Фадей, но выпивать мне сейчас совсем не с руки. Я бы предпочел сразу перейти к делам.";
 			link.l1.go = "Sharlie_1";
 		break;
 		
 		case "Sharlie_1":
-			dialog.text = "Eh, too bad... Rome is nothing compared to Russian vodka! You don't know what you're missing. Fine, to business then. I'm all ears, Charles.";
-			link.l1 = "Monsieur, I suspect that what I'm about to tell you will come as quite unpleasant, but alas, I am compelled!  Michel has told me that you owe him quite high gambling debt. He has also ordered that you hand the money to me, cause my brother is... not able to come see you personally at the moment.";
+			dialog.text = "Эх, жаль... Ром - ничто по сравнению с русской водкой! Вы не понимаете, от чего отказываетесь. Ладно, раз к делам - так к делам. Слушаю вас, Шарль.";
+			link.l1 = "Месье, наверное то, о чем я сейчас скажу, вам не очень понравится, но я вынужден - увы! Мишель мне сообщил, что вы должны ему приличную сумму - карточный долг. Также он распорядился, чтобы вы передали деньги мне, ибо мой брат сейчас... не может лично явиться к вам.";
 			link.l1.go = "Sharlie_2";
 		break;
 		
 		case "Sharlie_2":
-			dialog.text = "Oh, young man! Of course, I remember everything and I unreservedly admit that I owe you brother. A gambling debt is sacred, every nobleman knows that. But I beg you to understand my position. An unpleasant story happened to me recently - I was robbed in the most impertinent way!\nDamned thieves took everything they could, everything I had earned for the last years, my money and my priceless collection! I simply can't sink a debt right now\nBut, monsieur de Maure, I don't give up my obligations! I only ask you to meet me halfway. Since I don't have any coin in my possession now anyway, I offer you to accept this excellent rare dagger. Take a look!\nThis is a real masterpiece of arms, a pride of my stolen collection. Besides it was enchanted by Indian shamans and has very strong hidden features. Indians called it the Chief's claw\nI would have never agreed to give it away because I paid a great sum for the dagger, the sum much bigger than my debt, but considering the circumstances I am ready to give it to you. Take it, it's a very paying business for you!";
-			link.l1 = "Hm... I'd prefer the money...";
+			dialog.text = "Ох, молодой человек! Я, безусловно, все помню и безоговорочно согласен с тем, что должен вашему брату. Карточный долг - святое, это известно каждому дворянину. Но я прошу вас войти в мое положение. У меня здесь недавно случилась пренеприятнейшая история - меня обокрали, обокрали самым наглым образом!\nПроклятые воры вынесли почти все, что находилось у меня в доме, все, что я нажил за долгие годы, украли мою бесценную коллекцию, вынесли все мои сбережения! Я просто не в состоянии сейчас погасить долг перед вашим братом деньгами\nНо, месье де Мор, я ни в коем случае не отказываюсь от своих обязательств! Я просто прошу вас пойти мне навстречу. Поскольку денег у меня сейчас все равно нет, я предлагаю вам в качестве оплаты долга вот этот великолепный раритетный кинжал. Взгляните на него!\nЭто произведение оружейного искусства, гордость моей бывшей коллекции. Кроме того, он заговорен индейскими шаманами и обладает очень сильными скрытыми свойствами. От индейцев он получил название 'Коготь вождя'\nЯ бы ни за что не согласился отдать его, поскольку я купил его за немалую сумму, намного превышающую размер моего долга, но учитывая обстоятельства, готов отдать его вам. Берите, это очень выгодная для вас сделка!";
+			link.l1 = "Хм... Я предпочел бы деньги...";
 			link.l1.go = "Sharlie_3";
 		break;
 		
 		case "Sharlie_3":
-			dialog.text = "But I really do not have them. Do you really think, my good man, that I would offer you this magnificent hoodoo dagger instead of some pitiful coins? You have to admit, I'm stuck in a rut here.  My heart bleeds when I hear my words. But a gambling debt is a debt of honour, so I'm willing to part with this item, which is very dear to me.";
-			link.l1 = "Alright, I agree. Since you don't have any money anyway, I'll at least take this vaunted dagger of yours here. I hope I can at least fetch a decent amount of money for it...";
+			dialog.text = "Но у меня действительно их нет. Неужели вы думаете, сударь, что я предложил бы вам этот великолепный заговоренный кинжал вместо каких-то жалких монет, не окажись я в безвыходном положении? Да у меня сердце кровью обливается, когда я слышу свои слова! Но карточный долг - долг чести, поэтому я готов расстаться ради этого с дорогой для меня вещью.";
+			link.l1 = "Ладно, я согласен. Раз у вас все равно нет денег, то я возьму хотя бы этот ваш хваленый кинжал. Надеюсь, я смогу выручить за него приличную сумму...";
 			link.l1.go = "Sharlie_4";
 		break;
 		
 		case "Sharlie_4":
-			dialog.text = "'At least'!? No, that I cannot believe! I'm giving away my most prized possession that I would get at least ten times more for in Europe, and you stand there saying 'at least'!? This dagger, young man, if you would like to know, saved one man's life! And he...";
-			link.l1 = "And what is it's hidden power that you mentioned?";
+			dialog.text = "'Хотя бы!' Нет, это просто невероятно! Я отдаю свой лучший экземпляр, за который в Европе я бы получил вдесятеро больше против своего долга, а вы говорите - 'хотя бы'! Этот кинжал, молодой человек, если хотите знать, спас жизнь не одному человеку! И он...";
+			link.l1 = "И в чем же его скрытая сила, о которой вы упомянули?";
 			link.l1.go = "Sharlie_5";
 		break;
 		
 		case "Sharlie_5":
-			dialog.text = "Oh, Charles! I am a Christian, you know, not an Indian shaman. And I have no way of knowing all the hidden properties of this blade. But they do exist, I assure you. Put this dagger in your hand and you can feel it for yourself! Take it, take it!  How about that! Do you feel anything?";
-			link.l1 = "Hm... No. Although it fits the hand very comfortably, not too bad.";
+			dialog.text = "Ох, сударь! Я ведь все-таки христианин, а не индейский шаман, и не могу знать всех скрытых свойств этого клинка. Но они есть, уверяю вас. Возьмите кинжал в руку - и вы сами почувствуете это! Возьмите-возьмите! Вот так! Ничего не ощущаете?";
+			link.l1 = "Гм... Нет. Хотя в руке лежит он очень удобно, ничего не скажешь...";
 			link.l1.go = "Sharlie_6";
 		break;
 		
 		case "Sharlie_6":
-			dialog.text = "There you go! But that's merely the least of it's qualities. If you put this dagger to use in battle I'm sure it will display it's might on all cylinders!.. Well so, are you taking it?";
-			link.l1 = "Do I have a choice? I'll take it since you've got such money troubles...";
+			dialog.text = "Вот! Но это лишь малая часть его достоинств. Если вы примените этот кинжал в бою - я уверен, он проявит свою мощь на всю катушку!.. Ну так что, берете?";
+			link.l1 = "А у меня есть выбор? Беру, раз так неудачно у вас с деньгами вышло...";
 			link.l1.go = "Sharlie_7";
 		break;
 		
 		case "Sharlie_7":
 			GiveItem2Character(pchar, "knife_01");
 			PlaySound("interface\important_item.wav");
-			Log_Info("You've received the Chief's Claw'");
+			Log_Info("Вы получили дагу 'Коготь вождя'");
 			sld = ItemsFromID("knife_01");
 			sld.Weight = 1.5;
 			sld.price = 0;
-			dialog.text = "It's a rational decision, Charles. You won't regret it! Here you go. And make sure to say hello to Michel for me! Tell him to drop by sometime as soon as he gets an opportunity.";
-			link.l1 = "I'll tell him, make no bones...";
+			dialog.text = "Разумное решение, сударь. Вы не пожалеете об этом! Вот, держите. И обязательно передайте привет Мишелю! Скажите, что я жду его в гости, как только у него появится такая возможность.";
+			link.l1 = "Передам, не сомневайтесь...";
 			link.l1.go = "exit";
-			link.l2 = "You said that you were robbed... Have you found the culprits?";
+			link.l2 = "Вы сказали, вас обокрали... Воров так и не нашли?";
 			link.l2.go = "Sharlie_8";
 			pchar.questTemp.Sharlie = "takeknife";
 			AddQuestRecord("Sharlie", "18-1");
@@ -196,34 +196,34 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Sharlie_8":
-			dialog.text = "Picture that, I haven't. The scumbags cleared out my whole house, ran away with all the silver, gold, my savings from years of back breaking labour, but the worst thing is they swiped my magnificent collection of Eastern sword blades! There wasn't a collection like that in all of the Caribbean. Very, very remarkable Persian cavalry swords...";
-			link.l1 = "Eastern sword blades, you say? Sounds pretty time consuming. So you're a collector?";
+			dialog.text = "Вы представляете - нет. Негодяи обчистили весь мой дом, унесли все серебро, золото, мои сбережения, нажитые годами и непосильным трудом, но самое ужасное - они стащили мою великолепную коллекцию восточных клинков! Такой на всех Карибах ни у кого не было. Очень, очень хорошие персидские сабли...";
+			link.l1 = "Восточные клинки, говорите? Весьма презанятно. Так вы - коллекционер?";
 			link.l1.go = "Sharlie_9";
 		break;
 		
 		case "Sharlie_9":
-			dialog.text = "Well, I like to collect rare things... Listen, Charles, maybe you can help me in the matter of the sword blades...";
-			link.l1 = "Help? But how? You mean by catching the thieves?";
+			dialog.text = "Ну, мне нравится собирать редкие вещи... Послушайте, Шарль, может, вы сможете мне помочь в этом вопросе с клинками...";
+			link.l1 = "Помочь? Но чем? Поймать воров, что ли?";
 			link.l1.go = "Sharlie_10";
 		break;
 		
 		case "Sharlie_10":
-			dialog.text = "Not at all. I'm not particularly interested in the thieves. I would like my Persian  cavalry swords to return back to me. If you find them, I won't just stay in debt, I promise.";
-			link.l1 = "Hm. But where should I look for them? Around the Caribbean? Or maybe all around the world?";
+			dialog.text = "Отнюдь. Воры меня мало интересуют. Мне бы хотелось, чтобы мои персидские сабли вернулись ко мне назад. Если сможете их найти - я в долгу не останусь, обещаю.";
+			link.l1 = "Хм. Но где же их искать-то? По всем Карибам? Или, быть может, уже по всему свету?";
 			link.l1.go = "Sharlie_11";
 		break;
 		
 		case "Sharlie_11":
-			dialog.text = "Well, maybe you'll catch sight of them on the isles with some street merchant, the scumbags couldn't even imagine the value of these cavalry swords and they've surely sold them for peanuts. So if you see the Persian sword blades anywhere, bring them to me. Will you be able to recognize them?";
-			link.l1 = "I think I will. Okay, I'll keep my eyes peeled and if I see something that looks like them, I'll definitely bring them to you.";
+			dialog.text = "Ну, может случайно встретите где на островах, у какого-нибудь уличного торговца - негодяи даже не представляли себе ценности этих сабель и наверняка продали за бесценок. Так что если где увидите персидские клинки - привозите мне. Сможете их опознать?";
+			link.l1 = "Думаю, да. Хорошо, я буду внимательно смотреть по сторонам - если встречу что-то похожее - обязательно привезу вам.";
 			link.l1.go = "Sharlie_12";
-			link.l2 = "You know, I'm not an expert in fine weaponry. I'm afraid I won't be able to help you. So it would be dishonest of me to give you false hope.";
+			link.l2 = "Знаете, я не эксперт в холодном оружии. Боюсь, я не смогу вам помочь. Так что будет нечестным с моей стороны напрасно обнадеживать вас.";
 			link.l2.go = "Sharlie_13";
 		break;
 		
 		case "Sharlie_12":
-			dialog.text = "Great! I hope you will be fortunate. And I will make it worth you while. Yes, Charles, can you imagine that I had another robbery attempt recently\nA thief tried to get inside my house just a few days ago\nThat was just too much for me! He didn't escape from me though: I managed to catch him, gave him a good beating and sent to the local prison. I believe they will hang him soon. Good riddance!";
-			link.l1 = "You think he's one of the guys that snagged your cavalry swords?";
+			dialog.text = "Вот и отлично! Я надеюсь, удача улыбнется вам. А я в долгу не останусь. Да, вы представляете, Шарль, эта кража - еще не все. Буквально на днях - представляете, ко мне снова залез воришка\nНу это уж слишком! Но тут он от меня не ушел: я поймал его, задал хорошую взбучку и сдал коменданту. Думаю, его скоро повесят. И поделом ему!";
+			link.l1 = "Вы думаете, он из тех, кто вынес ваши сабли?";
 			link.l1.go = "Sharlie_14";
 			pchar.questTemp.Persian = "start";
 			// --> скимитар 021012
@@ -234,21 +234,21 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Sharlie_13":
-			dialog.text = "Pity, but it's no use crying for the moon. Yes, Charles, can you imagine that I had another robbery attempt recently\nA thief tried to get inside my house just a few days ago\nThat was just too much for me! He didn't escape from me though: I managed to catch him, gave him a good beating and sent to the local prison. I believe they will hang him soon. Good riddance!";
-			link.l1 = "You think he's one of the guys that snagged your cavalry swords?";
+			dialog.text = "Жаль, конечно. Но на нет - и суда, как говорится, нет. Да, вы представляете, Шарль, эта кража - еще не все. Буквально на днях - представляете, ко мне снова залез воришка\nНу это уж слишком! Но тут он от меня не ушел: я поймал его, задал хорошую взбучку и сдал коменданту. Думаю, его скоро повесят. И поделом ему!";
+			link.l1 = "Вы думаете, он из тех, кто вынес ваши сабли?";
 			link.l1.go = "Sharlie_14";
 			pchar.questTemp.Persian = "end";
 		break;
 		
 		case "Sharlie_14":
-			dialog.text = "Nah, I don't think so. He was interested only in coins. Imagine a scarecrow in my room picking my chests\nAn Indian from some deep jungles, that's ridiculous. Coloured and in costume… You may visit our dungeons and see that jester for yourself if you want while he still lives.";
-			link.l1 = "Hm... Maybe I'll drop by.";
+			dialog.text = "Нет, не думаю. Его интересовали только монеты. Такое, представляете, чучело залезло ко мне в комнату и шарилось по сундукам\nИндеец из каких-то глухих джунглей, просто чудо. Весь в наряде, раскрашенный... Можете сходить в наши казематы и посмотреть на этого шута ряженого, если вам интересно, пока он еще жив.";
+			link.l1 = "Хм... Может, и загляну.";
 			link.l1.go = "Sharlie_15";
 		break;
 		
 		case "Sharlie_15":
-			dialog.text = "Go ahead, have a gaze at the local walking wonders... All right, Charles, it was a nice talk.  Are you going back to Martinique now? Happy trails.";
-			link.l1 = "All the best, Fadey.";
+			dialog.text = "Сходите-сходите, подивитесь на местные ходячие диковины... Ладно, Шарль, приятно поговорили - вы же сейчас назад, на Мартинику? Желаю вам счастливого пути.";
+			link.l1 = "Всего доброго, Фадей.";
 			link.l1.go = "exit";
 			pchar.questTemp.Sharlie.Tichingitu = "true";
 			AddDialogExitQuestFunction("SetTichingituJail");
@@ -257,49 +257,49 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Tichingitu":
-			dialog.text = "How interesting! I'm listening.";
-			link.l1 = "Fadey, I've spoken with that Indian. And I came to you to get him from you. The desolate heart just wanted something to eat...";
+			dialog.text = "Очень интересно! Ну, слушаю вас.";
+			link.l1 = "Фадей, я говорил с этим индейцем. И я пришел просить вас за него. Этот несчастный просто хотел есть...";
 			link.l1.go = "Tichingitu_1";
 		break;
 		
 		case "Tichingitu_1":
-			dialog.text = "Ha ha, and you believed those fairy tales? Youth...";
-			link.l1 = "Fadey, of course I may be younger than you, but even I am in a condition to differentiate when I'm being told the truth and when I'm being lied to. Besides, do you really think a hanging is an appropriate punishment for that kind of a crime?";
+			dialog.text = "Ха-ха-ха, и вы поверили в эти сказки? Молодежь-молодежь...";
+			link.l1 = "Фадей, я, конечно, моложе вас, но даже я в состоянии отличить, когда мне говорят правду, а когда лгут. К тому же вы не считаете, что повешение - не совсем адекватное наказание за его преступление?";
 			link.l1.go = "Tichingitu_2";
 		break;
 		
 		case "Tichingitu_2":
-			dialog.text = "Maybe it is! That scoundrel snuck into my home! What would you have done? I'm sure you'd just stick him with a skewer, wouldn't you?";
-			link.l1 = "No, I wouldn't. Fadey, I'm sure you're just enraged out because of your stolen cavalry sword collection. If it weren't for that, you'd just give this redskin a leathering and heave him out with a kick in the butt. Am I wrong?";
+			dialog.text = "А даже если и так? Этот негодяй залез в мой дом! Вот вы, что бы вы сделали? Уверен - просто проткнули бы его шпагой. Не так ли?";
+			link.l1 = "Нет, не так. Фадей, я уверен, вы просто в ярости за свою похищенную коллекцию сабель. Не случись этого - вы бы просто выпороли этого краснокожего и выставили пинком под зад. Я не прав?";
 			link.l1.go = "Tichingitu_3";
 		break;
 		
 		case "Tichingitu_3":
-			dialog.text = "Eh, Charles...You're just like your brother... Fine. We'll do this like businessmen. Since you need this Indian so bad, compensate me for the moral distress for him and I will write a pardon that will, of course, be upheld. Is that fine?";
-			link.l1 = "How much?";
+			dialog.text = "Эх, Шарль... Вы такой же, как и ваш брат... Ладно. Поступим по-деловому. Раз вам так нужен этот индеец - компенсируйте мне моральную неустойку за него и я напишу просьбу о помиловании, которую, конечно же, удовлетворят. Идет?";
+			link.l1 = "Сколько?";
 			link.l1.go = "Tichingitu_4";
 		break;
 		
 		case "Tichingitu_4":
-			dialog.text = "Ha, you're already starting to learn life in the Caribbean, Charles. One hundred fifty gold doubloons.";
-			link.l1 = "Fadey, God have mercy...";
+			dialog.text = "Ха, вы уже начинаете кое-что понимать в жизни на Карибах, Шарль. Сто пятьдесят золотых дублонов.";
+			link.l1 = "Фадей, побойтесь Бога...";
 			link.l1.go = "Tichingitu_5";
 		break;
 		
 		case "Tichingitu_5":
-			dialog.text = "Alright, alright. One hundred gold doubloons. But that's my final offer. And we're talking doubloons not pesos. Our banker will surely be able to come up with some amount.";
+			dialog.text = "Хорошо-хорошо, сто золотых дублонов. Но это последняя цена. Причем именно дублоны, а не песо. У нашего ростовщика наверняка найдется некоторое количество.";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 100)
 			{
-				link.l1 = "I've got the amount you need right now. There ya go, here are your hundred doubloons.";
+				link.l1 = "У меня есть нужное количество прямо сейчас. Вот, держите ваши сто дублонов.";
 				link.l1.go = "Tichingitu_7";
 			}
-			link.l2 = "All right, I'll go get what you need.";
+			link.l2 = "Хорошо, я принесу то, что вы требуете.";
 			link.l2.go = "Tichingitu_6";
 		break;
 		
 		case "Tichingitu_6":
-			dialog.text = "And hurry, Charles! You've got ten days...";
-			link.l1 = "I'll keep that it mind. Goodbye!";
+			dialog.text = "И поторопитесь, Шарль! Дней через десять они уже не понадобятся...";
+			link.l1 = "Приму к сведению. До свидания!";
 			link.l1.go = "exit";
 			pchar.questTemp.Sharlie.Tichingitu = "dublon";
 		break;
@@ -307,8 +307,8 @@ void ProcessDialogEvent()
 		case "Tichingitu_7":
 			RemoveItems(PChar, "gold_dublon", 100);
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Great! Get a hold of him! I'll write a note right now and put my stamp on it, hold on a second... here you go. Give this to the commandant and you can take your Indian with you. Why exactly you need him, I can't wrap my mind around it. What are you gonna do, display him at some fair? Ha ha!";
-			link.l1 = "God sees everything, Fadey. Saving a man's life is a noble deed.";
+			dialog.text = "Отлично! Вот это дело! Сейчас я напишу записку и приложу свою печать, подождите немного... вот, держите. Отдайте это коменданту и можете забирать своего индейца. Вот только зачем он вам понадобился - ума не приложу. Разве что на ярмарках за деньги показывать, ха-ха!";
+			link.l1 = "Бог все видит, Фадей. Спасти жизнь человеку - благое дело.";
 			link.l1.go = "Tichingitu_8";
 		break;
 		
@@ -316,54 +316,54 @@ void ProcessDialogEvent()
 			GiveItem2Character(pchar, "letter_1");
 			ChangeItemDescribe("letter_1", "itmdescr_letter_1_Fadey");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "That's a debatable, Charles. What if you save a killer or a rapist?  Anyway, God be with you. March to the commandant before your red-skinned friend gets hoisted on the scaffold...";
-			link.l1 = "I'm on my way. See you later, Fadey.";
+			dialog.text = "Это спорный вопрос, Шарль. А если вы спасаете убийцу или насильника? Впрочем, Бог с вами. Ступайте к коменданту, пока вашего краснокожего друга не вздернули на виселицу...";
+			link.l1 = "Уже иду. Еще увидимся, Фадей.";
 			link.l1.go = "exit";
 			pchar.questTemp.Sharlie.Tichingitu = "pay";
 		break;
 		
 		case "vodka":
-			dialog.text = "You don't say! By your stern face, I take it you're about to bring me up to speed on some bad news?";
-			link.l1 = "Pretty much. I'll be straight: Michel said that you basically put one over on me with this 'Chief's claw' thingy and that it's a piece of regular old junk, that you could buy from any street merchant for a couple hundred pesos. By the way, I asked around as far as it's price to some street vendors dealing metalware. They named me exactly that price.";
+			dialog.text = "Что вы такое говорите! Глядя на ваше суровое лицо, я понимаю, что вы хотите поведать мне что-то неприятное?";
+			link.l1 = "Ну, вроде того. Буду откровенным: Мишель сказал, что вы меня с этим кинжалом, 'когтем вождя', попросту надули, что это обычный хлам, который можно купить у уличного торговца за пару сотен песо. Я, кстати, поспрашивал о его цене у лоточников, торгующих железяками. Именно такую цену они и назвали.";
 			link.l1.go = "vodka_1";
 			npchar.quest.vodka = "true";
 		break;
 		
 		case "vodka_1":
-			dialog.text = "Oh, monsieur de Maure... I'm surely surprised by your brother. These half-wit salesmen can say whatever they want, but him! You tell me, Charles, if somebody brings you an old two hand knight's sword of the king Arthur days and offered you to buy it, what would you give for it?";
-			link.l1 = "A two hander? Are you kidding me? What use of it? We're in the middle of the seventeenth century! I wouldn't give anything for it. Not a peso.";
+			dialog.text = "Ох, месье де Мор... Ваш брат меня, право, удивил. Ладно - эти полуграмотные торгаши, но он, он! Вот скажите, Шарль, если бы вам кто-нибудь принес старый двуручный рыцарский меч времен короля Артура и предложил купить, сколько бы вы за него заплатили?";
+			link.l1 = "Двуручный меч? Вы издеваетесь? Да зачем мне этот лом? У нас сейчас, слава Богу, на дворе семнадцатый век! Нисколько бы я за него не дал, ни песо.";
 			link.l1.go = "vodka_2";
 		break;
 		
 		case "vodka_2":
-			dialog.text = "See! And if you bring such sword to me, I will pay three hundred doubloons for it. Ask why? Because it is a rarity hard to find in our seventeenth century! You don't understand yet you judge!\nThe Chief's claw is also a great quality dagger, experts told me that Cortez himself owned it. The Cortez! The one who captured Tenochtitlan! And you are saying that it is a rubbish!\nBesides, I have already told you that it's not just a dagger, it is an enchanted dagger! You are still a newcomer here so you don't know yet what role play magic spells, rituals and curses in the Caribbean! Charles, this is the New World, the homeland of Maya and Aztecs whose knowledge of such things had reached inconceivable heights!\nThis dagger does have hidden powers, alas no one just knows what kind of powers. You have a unique, incredible chance to learn it yourself and yet you call it a rubbish!\nIf only I had enough money to repay a debt to your brother, I'd immediately exchange it back for despicable metal... This is a very expensive item and it's cost valued not in money...";
-			link.l1 = "Alright, alright, Fadey. I believe you. Your arguments are quite convincing and the ardour that you have just performed here is a testament to your sincerity.";
+			dialog.text = "Вот видите! А принесите мне такой меч - и я заплачу вам за него три сотни дублонов. Спросите, почему? Да потому что вы его в семнадцатом веке днем с огнем не сыщете, это древняя вещь, раритет, редкость! Вы ничего не понимаете, а беретесь судить!\n'Коготь вождя' - такой же замечательный кинжал, знающие люди говорили, что он принадлежал самому Кортесу. Кортесу! Тому самому, который покорил Теночтитлан! А вы - хлам, хлам!\nКроме того, как я уже говорил, он не простой, он заговоренный! Вы еще слишком мало пробыли на Карибах, чтобы понять, какую роль здесь играют разного рода колдовские заклятия, наветы и заговоры! Шарль, здесь - Новый Свет, здесь родина майя и ацтеков - индейских племен, чьи познания магии и потустороннего мира достигли прямо-таки потрясающих величин!\nЭтот кинжал действительно имеет скрытые способности, просто никто из ныне живущих не знает, к сожалению, какие. Вам выпала потрясающая, уникальная возможность исследовать это - а вы называете сию великолепную вещь хламом!\nДа будь у меня сейчас достаточная сумма для покрытия долга вашему брату - я бы немедленно забрал у вас эту дагу назад взамен на презренный металл... Это очень дорогая вещь, и ценность ее измеряется не деньгами.";
+			link.l1 = "Ладно-ладно, Фадей, я верю вам. Ваши доводы вполне убедительны, а тот пыл, с которым вы все это рассказали, свидетельствует об искренности ваших слов.";
 			link.l1.go = "vodka_3";
 		break;
 		
 		case "vodka_3":
-			dialog.text = "Whoa! Well said! You've done well, Charles, for not taking offence and coming directly to me for an explanation. I hope now the incident is dismissed?";
-			link.l1 = "Yes, monsieur Fadey. Completely. Now, please allow me to make my bow...";
+			dialog.text = "Вот! Как хорошо сказано! Вы молодец, Шарль, что не стали таить обиду и сразу пришли ко мне за разъяснениями. Надеюсь, теперь инцидент исчерпан?";
+			link.l1 = "Да, месье Фадей. Полностью. Ну а теперь разрешите откланяться...";
 			link.l1.go = "vodka_4";
 		break;
 		
 		case "vodka_4":
 			PlaySound("Voice\Russian\sharlie\Fadey Moskovit-04.wav");
-			dialog.text = "Stop, Charles! I'll be honest, I really like you. Maybe you and I could become friends one day. And why not to make the first step toward that right now? I literally just cooled down two bottles of excellent Russian vodka in spring water down in the cellar. What do you say if you and I split it for the health of your brother?";
-			link.l1 = "Hm. I'm sorry, monsieur Fadey, but it's already time for me to set out to sea. I'm truly in a hurry!";
+			dialog.text = "Постойте, Шарль! Скажу честно: вы мне нравитесь. Возможно, мы даже когда-нибудь станем с вами друзьями. И я предлагаю сделать первый шаг в этом направлении. Я только-только охладил в погребке в ключевой воде две бутылочки отличной русской водки. Предлагаю распить их за наше знакомство и за здоровье вашего брата.";
+			link.l1 = "Хм. Извините, месье Фадей, но мне уже пора выходить в море. Я действительно тороплюсь!";
 			link.l1.go = "vodka_no";
-			link.l2 = "You had offered last time and I refused... It would be impolite to refuse again. Fine, Fadey. I am in!";
+			link.l2 = "Вы в прошлый раз предлагали, я отказался... Будет невежливо отказать еще раз. Я согласен, Фадей, давайте выпьем за знакомство!";
 			link.l2.go = "vodka_5";
 		break;
 		
 		case "vodka_no":
-			dialog.text = "That's too bad. Compared to vodka, rum is just a rotten, cheap wish wash. But since you're in a hurry, I won't hold you back. Good luck, Charles!";
-			link.l1 = "Same to you, monsieur Fadey...";
+			dialog.text = "Ну и зря. Ром по сравнению с водкой - поганое дешевое пойло. Но раз спешите - не буду задерживать. Удачи, Шарль!";
+			link.l1 = "И вам того же, месье Фадей...";
 			link.l1.go = "exit";
 		break;
 		
 		case "vodka_5":
-			dialog.text = "Well, get a load of you! Splendid! Let's have a sit and talk! Have a seat, monsieur, and I'll go get the vodka. Oh, it's gonna be tasty. It's nice and cold!..";
+			dialog.text = "Ай, молодца! Вот и славненько! Посидим, побеседуем о жизни! Присаживайтесь, присаживайтесь, месье, а я сейчас принесу водочку. Ох, какая же она будет вкусная, холодненькая!..";
 			link.l1 = "...";
 			link.l1.go = "vodka_6";
 		break;
@@ -384,37 +384,37 @@ void ProcessDialogEvent()
 		
 		case "vodka_7":
 			dialog.text = "";
-			link.l1 = "Whoo... Sso, tell m-me, Fadey, h-how does t-that work out? Hic! We've drunk... t-two b-bottles of v-vodka... by the way, how ironic! - you look s-stone c-cold sob-ber and I'm... drunk as a hog. How's t-that, huh?";
+			link.l1 = "Ох... В-вот-т, скажите м-мне, Фадей, н-ну, как так п-получается? Ик! Мы выпили с вами... д-две бут-тылочки в-водочки... кстати - отличная вещь! - и у вас ни в од-дном глаз-зу, а я.. пьян, к-как сапожник? А?";
 			link.l1.go = "vodka_8";
 		break;
 		
 		case "vodka_8":
-			dialog.text = "Charles, enjoy yourself, relax. What's a hog got to do with this? I've got some excellent vodka. Get some sleep and you'll be chipper as a whistle when you wake up. Even your headily clear up. You'll see.";
-			link.l1 = "Y-yeah, vodka...its... its absolutely magnificent, your vodka is. I've never drunk anything like it.";
+			dialog.text = "Шарль, ну вы же расслаблятесь, отдыхаете. Причем тут - как сапожник? Водочка у меня отличная, поспите немного - и будете как стеклышко, даже голова болеть не будет. Вот увидите.";
+			link.l1 = "Д-да, водочка... это... это просто великолепная она, ваша водочка. Сроду такого не пил.";
 			link.l1.go = "vodka_9";
 		break;
 		
 		case "vodka_9":
-			dialog.text = "Ha! You've got that right!  That's what kind of vodka they make where I'm from, in Russia, and even there not everybody knows how to make it right. I buy only the very best. Like this stuff here that you and I have deigned to nip off.";
-			link.l1 = "B-but you tell me, Fadey: h-how c-can you drink s-so much and not get drunk? H-how ya do that, huh? Sh-share the secret with me. M-maybe it'll c-come to use later... Hic!";
+			dialog.text = "Ха! Еще бы! Такую водочку делают только у нас, в России, и то не все умеют правильно. Я беру только самую лучшую. Вот, как эту, которую мы с вами изволили откушать.";
+			link.l1 = "А в-вот, скаж-жите, Фадей: а вот как м-можно пить - и не напиваться? Как в-вы? А? П-поделитесь секретом - м-может, мне это п-пригодится потом... Ик!";
 			link.l1.go = "vodka_10";
 		break;
 		
 		case "vodka_10":
-			dialog.text = "Ha! Well, you can't compare you and me, monsieur. Just take a look, you're skinny as this whip over there. Plus, you're not used to it. But anyway though, I'll share a few secrets with you about how to drink and still keep a handle on yourself.";
-			link.l1 = "P-lease d-do...hic! Monsieur Fadey...";
+			dialog.text = "Ха! Ну вы не сравнивайте месье, себя и меня - гляньте, какой вы стройный, что тот хлыст. Да и привычки у вас нет. Ну да ладно, расскажу я вам несколько секретов, чтобы пить да поменьше напиваться.";
+			link.l1 = "Б-будьте т-так любезны... ик! месье Фадей...";
 			link.l1.go = "vodka_11";
 		break;
 		
 		case "vodka_11":
-			dialog.text = "Well, if you want to drink and not to get drunk you should follow a few rules. Most importantly, never drink if your stomach is empty. Eat something decent before the libation starts\nSecond, don’t forget to eat after every glass. Meat or fish will do the best. Third, don't wash your mouth with the drink, swallow at once\nAlso, having a small - not more than a half pint - shot prior the main libation will prepare you poor body for receiving big doses of liquor. Don't overdo it, otherwise the effect will be quite the opposite\Finally, training is the key, drinking moderate amounts of rum or other types of liquors on a regular basis will make you more resistant to them.";
-			link.l1 = "Hm-mm... S-so that's how you do it! I'll d-definitely...hic!.. remember all your ins-structions, Fadey. Th-thank you. And n-now I think it'd b-be a g-good idea for me to g-get some shuteye, cuz I aint f-feelin too hot today.";
+			dialog.text = "Ну, чтобы пить, да не напиться, надо соблюдать несколько правил. Главное - никогда не пейте на пустой желудок. Ежели вам предстоит возлияние и вы не хотите упасть лицом в стол - предварительно откушайте хорошенько, доброй пищи\nВторое - когда пьете, не забывайте закусывать после каждой чарки. Закусывайте доброю едою, лучше мясом, или рыбою. Чем плотнее закуска - тем меньше вас одержит хмель. Третье - не полощите рот выпивкою - глотайте сразу\nТакже если вы знаете, что вам предстоит возлияние и вам негоже остаться пьяным - загодя сделайте небольшое принятие напитка, подготовьте ваше бренное тело к приему больших количеств алкоголя, но не более половины пинты. Остерегайтесь переборщить, ибо эффект получите совершенно оборотный\nНу, и если вы будете постоянно принимать умеренные количества рому аль иного алкоголю - сие настроит ваш организм устойчивей к выпивке, нежели абсолютное воздержание, ибо тренировка надобна во всяком деле.";
+			link.l1 = "Э-м-м... В-вот оно к-как! Я обяз-зательно... ик!.. запомню все ваши н-наставления, Фадей. С-спасибо. А теперь м-мне было бы неплохо в-выспаться, а то штормит м-меня что-то сегодня.";
 			link.l1.go = "vodka_12";
 		break;
 		
 		case "vodka_12":
-			dialog.text = "Get some rest, Charles. We've had a splendid evening, you and I! Good luck to you and see you later!";
-			link.l1 = "G-goodbye, Fadey!";
+			dialog.text = "Отдохните, Шарль. Славно мы с вами сегодня посидели! Удачи вам и до встречи!";
+			link.l1 = "Д-до с-свидания, Фадей!";
 			link.l1.go = "vodka_13";
 		break;
 		
@@ -432,20 +432,20 @@ void ProcessDialogEvent()
 		
 		case "trial":
 			pchar.quest.Sharlie_TrialOver.over = "yes"; //снять таймер
-			dialog.text = "What did he actually say that I would definitely help you?";
-			link.l1 = "Well, pretty much. Won't you lend a hand to the brother of your longtime friend? It's not like I'm asking for money from you. I'm asking you to present me an opportunity to make it.";
+			dialog.text = "Что, прямо так и сказал - что обязательно помогу?";
+			link.l1 = "Ну, примерно так. А разве вы не окажете помощь брату вашего старинного друга? Я же не прошу у вас денег, я прошу предоставить возможность их заработать.";
 			link.l1.go = "trial_1";
 		break;
 		
 		case "trial_1":
-			dialog.text = "Hm. No, I won't turn you over of course. If you wanna feed men, don't give em a fish, but a fishing pole. Isn't that right, monsieur de Maure? So you need a job... Easy enough. I'll have a chat with a man I know and I'll recommend you to him. And everything else will depend only on how well you do the job.";
-			link.l1 = "Wonderful. Who do I come to?";
+			dialog.text = "Хм. Нет, не откажу, конечно. Хочешь накормить человека - не давай ему рыбу, а дай удочку, так, месье де Мор? Значит, вам нужна работа... Хорошо. Я поговорю с одним человеком и рекомендую ему вас. Ну, а остальное будет зависеть только от вашей исполнительности.";
+			link.l1 = "Прекрасно. И к кому же мне обратиться?";
 			link.l1.go = "trial_2";
 		break;
 		
 		case "trial_2":
-			dialog.text = "Come by the store tomorrow. A man by the name of Gerard LeCroix will be waiting for you there. He'll give you some work. He'll stay in our colony only until tomorrow evening. See him in time and do the job well. Don't put me in an awkward position.";
-			link.l1 = "Deal. Gratitude, Fadey!";
+			dialog.text = "Приходите завтра в магазин нашей колонии. Вас там будет ждать человек по имени Жерар Лекруа. От него вы и получите поручение. Он пробудет в нашей колонии только до завтрашнего вечера, так что если не встретитесь с ним завтра - считайте, что свой шанс вы упустили. Надеюсь, вы будете пунктуальны и исполнительны, и не поставите меня в неловкое положение.";
+			link.l1 = "Приму к сведению. Спасибо, Фадей! Непременно приду на встречу с месье Лекруа.";
 			link.l1.go = "trial_3";
 		break;
 		
@@ -457,50 +457,50 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "Well, who'd doubt that you're here on business, my friend! I don't have any vodka to offer you at the moment, it's all gone. Tell me what kind of affliction has come upon you now.";
-			link.l1 = "A local parish was given a golden pectoral cross with lazurite by a certain privateer for the forgiveness of his sins. It's a unique and expensive item. The trouble is that this cross was stolen from another parish. Not only that, but a priest was murdered during the robbery.";
+			dialog.text = "Ну кто бы сумневался, что вы по делу, мой друг! Водочки не предлагаю - нет ее, родимой, у меня нонче. Рассказывайте, что за невзгода с вами приключилась.";
+			link.l1 = "Местному приходу один капер подарил за отпущение грехов наперсный золотой крест с лазуритом. Уникальная и дорогая вещь. Беда в том, что этот крест был похищен из другого прихода. Причем при грабеже был убит священник.";
 			link.l1.go = "guardoftruth_1";
 		break;
 		
 		case "guardoftruth_1":
-			dialog.text = "You don't say!";
-			link.l1 = "Yes. At the moment I am representing the interests of followers of the parish which was robbed and am attempting to return this item to it's legal place.";
+			dialog.text = "Да что же вы такое говорите!";
+			link.l1 = "Именно так. Я в данный момент представляю интересы верующих ограбленного прихода и пытаюсь вернуть эту вещь на ее законное место.";
 			link.l1.go = "guardoftruth_2";
 		break;
 		
 		case "guardoftruth_2":
-			dialog.text = "A noble deed, and very pious...";
-			link.l1 = "But the revered father refuses to return it to me despite all of my arguments that I've made to him. I don't get it. How can one calmly place a stolen item with blood of a holy man on it in a place of God? That's flat out blasphemy!";
+			dialog.text = "Благородное занятие, и богоугодное...";
+			link.l1 = "Но святой отец отказывается мне ее возвращать, несмотря на все мои доводы. Я не понимаю, как можно спокойно использовать в своем приходе вещь, которая была украдена и окроплена кровью несчастного священнослужителя? Это же фактически кощунство!";
 			link.l1.go = "guardoftruth_3";
 		break;
 		
 		case "guardoftruth_3":
-			dialog.text = "I take it you are wanting me to assist?";
-			link.l1 = "I am! You're quite an influence in Basse-Terre. You're well respected, so perhaps the revered father will listen to your admonitions?";
+			dialog.text = "Вы, как я понимаю, хотите, чтобы я помог вам вернуть этот крест?";
+			link.l1 = "Именно! Вы в большом авторитете в Бас-Тере, вас уважают, и, возможно, святой отец прислушается к вашим увещеваниям?";
 			link.l1.go = "guardoftruth_4";
 		break;
 		
 		case "guardoftruth_4":
-			dialog.text = ""+pchar.name+", have you told the story of this cross to our priest?";
-			link.l1 = "Of course! I have called to his religious sentiments, to Christian solidarity, to his conscience for god sakes, but he still closes his ears to my pleas.";
+			dialog.text = ""+pchar.name+", вы рассказали историю этого креста нашему священнику?";
+			link.l1 = "Конечно! Я взывал к его религиозным чувствам, к христианской солидарности, к совести, в конце концов - но он остался глух к моим доводам.";
 			link.l1.go = "guardoftruth_5";
 		break;
 		
 		case "guardoftruth_5":
-			dialog.text = "Hm... Have you tried using any other methods to convince him?";
-			link.l1 = "You mean bribing him? No... If he were a banker, or a merchant, or even a governor, I would attempt to solve the issue that way, but a priest!";
+			dialog.text = "Кхм... А другие способы убеждения вы не пытались применить?";
+			link.l1 = "Вы имеете в виду - подкуп? Нет... Если бы это был ростовщик, или купец, или даже губернатор - я бы попытался решить вопрос таким путем, но священник!";
 			link.l1.go = "guardoftruth_6";
 		break;
 		
 		case "guardoftruth_6":
-			dialog.text = "My friend, if the priest's ears really are closed to proclamations of conscience, then surely his hands will be open for gold... Or the other way around. I'll help you, for in my mind keeping such items here is unacceptable. However, it will require certain expenses."
-			link.l1 = "Not big surprise. How much?";
+			dialog.text = "Дорогой друг, если уши священника оказываются глухи к воззваниям к совести, то тогда наверняка его руки открыты для золота... И наоборот. Я помогу вам, ибо присутствие вещи, добытой кровавым путем, в нашем приходе я считаю недопустимым. Однако это потребует некоторых расходов."
+			link.l1 = "Я не удивлен. Сколько?";
 			link.l1.go = "guardoftruth_7";
 		break;
 		
 		case "guardoftruth_7":
-			dialog.text = "Come by tomorrow, "+pchar.name+", for I am not yet aware myself. But you will receive your item, rest assured.";
-			link.l1 = "Thank you, Fadey! I won't bother you any further then. See you tomorrow!";
+			dialog.text = "Приходите завтра, "+pchar.name+", ибо я пока и сам не ведаю. Но вы получите свою вещь, можете быть уверены.";
+			link.l1 = "Спасибо, Фадей! Тогда не буду вам мешать. До завтра!";
 			link.l1.go = "guardoftruth_8";
 		break;
 		
@@ -512,21 +512,21 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guardoftruth_9":
-			dialog.text = "Just as I assumed. I've got the cross, "+pchar.name+", and the details... oh forget them...all nonsense and fuss!";
-			link.l1 = "How much do I owe you?";
+			dialog.text = "Так, как я и предполагал. Крест у меня, "+pchar.name+", а подробности... да и Бог с ними, с этими пустяками и суетой!";
+			link.l1 = "Сколько я вам должен?";
 			link.l1.go = "guardoftruth_10";
 		break;
 		
 		case "guardoftruth_10":
-			dialog.text = "Two hundred fifty doubloons. A coverage of my expenses, and of course I'd appreciate a little for my righteous aid...";
+			dialog.text = "Двести пятьдесят дублонов. Это на покрытие моих расходов, ну и, конечно, немного за труды мои праведные...";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 250)
 			{
-				link.l1 = "Right this way, monsieur Fadey! Here is your gold.";
+				link.l1 = "Пожалуйте, месье Фадей! Вот ваше золото.";
 				link.l1.go = "guardoftruth_11";
 			}
 			else
 			{
-				link.l1 = "I'll go get them right away!";
+				link.l1 = "Я немедленно их принесу!";
 				link.l1.go = "exit";
 				npchar.quest.utensil = "true";
 			}
@@ -534,19 +534,19 @@ void ProcessDialogEvent()
 		
 		case "guardoftruth_11":
 			DeleteAttribute(npchar, "quest.utensil");
-			dialog.text = "Excellent. Here is your item!";
-			link.l1 = "Thank you, Fadey. You can't even imagine how much you've done for me!";
+			dialog.text = "Очень хорошо. А вот и ваш крест с лазуритом!";
+			link.l1 = "Спасибо, Фадей. Вы даже не представляете, как мне помогли!";
 			link.l1.go = "guardoftruth_12";
 		break;
 		
 		case "guardoftruth_12":
 			RemoveItems(pchar, "gold_dublon", 250);
-			Log_Info("You've given 250 doubloons");
+			Log_Info("Вы отдали 250 дублонов");
 			GiveItem2Character(pchar, "jewelry34");
-			Log_Info("You've received a golden cross with lazurite");
+			Log_Info("Вы получили золотой крест с лазуритом");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "I am always willing to go all out for a kind and more importantly generous friend. Drop by more often. Maybe we'll have some vodka when they deliver it to me from across the ocean.";
-			link.l1 = "Sure!";
+			dialog.text = "Для доброго, и главное - щедрого друга, я всегда готов расстараться. Заглядывайте почаще, может, выпьем водочки, когда мне ее привезут из-за океана.";
+			link.l1 = "Удачи!";
 			link.l1.go = "guardoftruth_13";
 		break;
 		
@@ -557,44 +557,44 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guardoftruth_14":
-			dialog.text = "Well the oceans have parted! Fill me in. What misfortunes have brought you to me this time?";
-			link.l1 = "I don't know whether to call them misfortunes or not, but nevertheless I'm here. Fadey, the first day we met you gave me a rare dagger, the Chief's Claw. Now I know that it previously belonged to a man named Archibald Calhoun. Please, tell me what you know about the man.";
+			dialog.text = "Доброму молодцу грех отказывать! Излагай, какие невзгоды на сей раз привели тебя ко мне.";
+			link.l1 = "Невзгоды, или не невзгоды, а привели. Фадей, в наш первый день знакомства вы дали мне раритетный кинжал - дагу 'Коготь вождя'. Теперь я знаю, что она до этого принадлежала человеку по имени Арчибальд Колхаун. Я вас прошу - расскажите мне о нем то, что вам известно.";
 			link.l1.go = "guardoftruth_15";
 		break;
 		
 		case "guardoftruth_15":
-			dialog.text = "One can't keep anything from you, "+pchar.name+". You see thing through, just like your brother. Yes, I won this dagger in game of dice from Archibald. Who is he? I don't even have a thought myself. We met on accident, we got to talking, drank a little, and he started telling me about some sins of his past that were weighing him down...";
-			link.l1 = "What sins?";
+			dialog.text = "От вас ничего не утаишь, "+pchar.name+". Вы такой же проницательный, как и ваш брат. Да, я выиграл эту дагу в кости у старины Арчибальда. Кто он такой? Да я и сам толком не ведаю. Познакомились мы случайно, разговорились, выпили немного, он поведал о грехах своих тяжких...";
+			link.l1 = "О каких грехах?";
 			link.l1.go = "guardoftruth_16";
 		break;
 		
 		case "guardoftruth_16":
-			dialog.text = "Archibald was eating himself over some man who got tortured by the inquisition to death because of him and over other innocent souls he killed. He was constantly calling himself Judah. Said that God was punishing him for his sins - the inquisition hunted him\nHe mentioned that Spanish inquisitor Vincento himself wants him dead and sent Spanish mercenaries to chase him everywhere. Then the drunkenness had won over him and we gambled for this old dagger.";
-			link.l1 = "Is that all? You never saw him again?";
+			dialog.text = "Жалился Арчибальд, что через него некого человека в инквизиции до смерти запытали. И что до этого погубил он душ невинных. Все сравнивал себя, сердешный, с Иудой Искариотом, что продался за тридцать сребренников. И что за той грех несет он теперь наказание - сама инквизиция идет за ним по пятам\nГоворил, что инквизитор гишпанский, отец Винсенто, погибели его желает, за то что ведает он дюже немало, и что наймиты гишпанские преследуют его повсеместно. А потом хмель все более одолел им, тут мы и сыграли в кости на кинжал этот старинный.";
+			link.l1 = "И все? Потом вы больше его не видели?";
 			link.l1.go = "guardoftruth_17";
 		break;
 		
 		case "guardoftruth_17":
-			dialog.text = "Archibald's dead! Cursed pirates sent his flute to the bottom of the sea and sent the whole crew to Timbuktu. Actually, rumours were that it wasn't pirates but Spaniards dressed up as tramps... the inquisition, "+pchar.name+", that is a serious organization.";
-			link.l1 = "Archibald Calhoun is alive. I saw him not that long ago along with some William Patterson. He serves as his first mate.";
+			dialog.text = "Дык сгинул Арчибальд, в пучине морской! Потопили пираты окаянные его флейт, а всю команду смерти предали. И ведь поговаривали, что не пираты то были, а гишпанцы в босяков переодетые... с инквизицией, "+pchar.name+", плохи шутки.";
+			link.l1 = "Арчибальд Колхаун жив. Я недавно видел его в компании некого Вильяма Патерсона. Он у него служит первым помощником.";
 			link.l1.go = "guardoftruth_18";
 		break;
 		
 		case "guardoftruth_18":
-			dialog.text = "Oh, you never guess how things unfold! I had no idea! Under the wing of captain Patterson, Archibald can at least catch his breath. He's in good company. The Spanish fear Patterson worse than a plague and they won't dare be scheming any more.";
-			link.l1 = "Do you know Patterson?";
+			dialog.text = "О как оно бывает! А я и ведать не ведал! Ну, под крылом капитана Патерсона Арчибальд может вольно дышать, аки у Христа за пазухой. Гишпанцы боятся Патерсона пуще огня, и не осмелятся болей чинить козни.";
+			link.l1 = "Вы знаете Патерсона?";
 			link.l1.go = "guardoftruth_19";
 		break;
 		
 		case "guardoftruth_19":
-			dialog.text = "That I do, my friend. Who doesn't know that distinguished man! He, just as yourself, has arrived to the archipelago recently, but has already hammered together an outstanding reputation. Mister Patterson is Colonel Fox's closest friend and well in with Lord Windsor himself, the governor general of all English settlements here. He occasionally goes to Port Royal into the governor's palace.";
-			link.l1 = "Got it. Well, thanks for the story, Fadey!";
+			dialog.text = "О то же, друг мой. Кто же не знает сего знатного мужа! Он, как и вы, прибыл на архипелаг недавно, но уже сколотил себе славу недюжинную. Господин Патерсон - первый друг полковника Фокса, и вхож к самому лорду Виндзору, генерал-губернатору всех англицких поселений. Он частенько захаживает в Порт-Рояль в дворец губернаторский.";
+			link.l1 = "Ясно. Ну что же, спасибо за рассказ, Фадей!";
 			link.l1.go = "guardoftruth_20";
 		break;
 		
 		case "guardoftruth_20":
-			dialog.text = "Oh, don't mention it, friend. Come visit me sometime!";
-			link.l1 = "Definitely!";
+			dialog.text = "Дык не за что, добрый молодец. Захаживай еще в гости!";
+			link.l1 = "Обязательно!";
 			link.l1.go = "guardoftruth_21";
 		break;
 		
@@ -611,14 +611,14 @@ void ProcessDialogEvent()
 		
 		// персидские клинки
 		case "persian":
-			dialog.text = "Let's have a look, "+pchar.name+"... Oh yeah, it's one of them! Where did you find it, my friend?";
-			link.l1 = "Irrelevant. The important thing is that it has found its way back to you.";
+			dialog.text = "Давайте посмотрим, "+pchar.name+"... Точно, это один из них! Где вы отыскали его, друг мой?";
+			link.l1 = "Это не столь важно. Важно то, что он может снова вернуться к вам.";
 			link.l1.go = "persian_1";
 		break;
 		
 		case "persian_1":
-			dialog.text = "I'll pay well for your gruelling labour. Three hundred golden doubloons is a dignified reward for your troubles...";
-			link.l1 = "Fadey, your kind disposition to me is much more valuable than these three hundred doubloons. Although, of course, I won't reject them. Here is your cavalry sword.";
+			dialog.text = "То есть вы хотите сказать, что можете не отдать его мне? Полноте, друг мой! Я хорошо оплачу труды ваши тяжкие. Три сотни золотых дублонов - достойная награда за ваше усердие...";
+			link.l1 = "Фадей, ваше благое расположение ко мне намного дороже этих трехсот дублонов. Хотя от них я, конечно, не откажусь. Держите вашу саблю.";
 			link.l1.go = "persian_2";
 		break;
 		
@@ -627,53 +627,53 @@ void ProcessDialogEvent()
 			RemoveItems(pchar, sTemp, 1);
 			PlaySound("interface\important_item.wav");
 			pchar.questTemp.Persian = "one";
-			dialog.text = "Thank you, my friend! Thank you kindly! For the sword and for you're reasonable words. You're intelligent beyond your years, "+pchar.name+", for you speak the truth, human bonds of friendship surpass the value of gold. But talking bout the precious gold, of course, I will pay you in full. Here, take your doubloons.";
-			link.l1 = "Gratitude!";
+			dialog.text = "Вот спасибо, добрый молодец! Вот спасибо! И за клинок сей, и за слова разумные. Вы дюже умны не по годам, "+pchar.name+", ибо глаголите истину - важней золота узы дружбы человеческой. Но и про него, родимое, забывать не моги - вот, держите ваши дублоны.";
+			link.l1 = "Спасибо!";
 			link.l1.go = "persian_3";
 		break;
 		
 		case "persian_3":
 			TakeNItems(pchar, "gold_dublon", 300);
-			Log_Info("You've received 300 doubloons");
+			Log_Info("Вы получили 300 дублонов");
 			PlaySound("interface\important_item.wav");
 			AddCharacterExpToSkill(pchar, "Leadership", 400);
 			AddCharacterExpToSkill(pchar, "Fortune", 200);
 			ChangeCharacterComplexReputation(pchar, "authority", 2);
 			ChangeCharacterComplexReputation(pchar, "nobility", 2);
 			ChangeCharacterNationReputation(pchar, FRANCE, 2);
-			dialog.text = "And talking about the bonds of friendship, yours and mine in particular, "+pchar.name+". I have something that I sense you'll be quite interested in.";
-			link.l1 = "Something to do with vodka?";
+			dialog.text = "А теперь об узах дружбы, а именно - нашей с вами, "+pchar.name+". У меня есть нечто, что обязательно заинтересует вас.";
+			link.l1 = "Неужто речь пойдет про водочку?";
 			link.l1.go = "persian_4";
 		break;
 		
 		case "persian_4":
-			dialog.text = "Vodka is good, but it is not the only thing my country is known for. There is a ware which only Russia produces and I deliver this ware here to trade. Any captain is interested in it, because it is a part of any ship. I am talking about hemp ropes\nThey are immune to a moisture and sea salt. They say that it is the best material for a rigging\nEvery month trade ships deliver me some amount of the ropes. Normally, my storehouse has a few hundreds of coils by the middle of each month. So, "+pchar.name+", I am offering you to buy a batch of fifty coils. Ten doubloons for a coil\nI have only two terms: I will keep your ropes until 20th of every month and you can buy only a whole batch. Fifty coils for five hundred gold. Confidentially speaking, "+pchar.name+", they say that there are places where you can resell the ropes for a much better price, but that's all I know\nThough I am completely satisfied with the current state of my operation. If you find a good merchant then you will have a fine profit.";
-			link.l1 = "Got it. That's a great offer, Fadey! I think I'll take advantage of the opportunity you've presented to me. So, every twentieth day of a month, five hundred doubloons for fifty pieces?";
+			dialog.text = "Водочка - это дело дюже хорошее, но моя родная сторона славится не только одной ею. Есть один товар, который делают только у нас, в России, и который я привожу сюда для негоции. Сей товар интересен любому капитану, ибо являет собой часть корабля. Я говорю о пеньковых канатах\nЭти канаты делаются из волокон конопляных, на прядильнях, руками умелых мастеровых. Они не боятся ни влаги, ни соли морской, и посему имеют таки огромный спрос у корабельных дел мастеров. Как говорят - лучшего материала для оснастки нет на свете\nЕжемесячно купеческие суда доставляют мне сюда небольшую партию канатов этих. Обычно к середине каждого месяца мой склад пополняется на сотню-полторы бухт. Так вот, я предлагаю вам, "+pchar.name+", покупать их у меня в количестве пятьдесят бухт за один присест. Стоимость одной бухты - десять золотых дублонов\nУсловий у меня всего два: я придерживаю канаты ваши до двадцатого числа каждого месяца - раз, вы покупаете всю партию в пятьдесят бухт целиком - два. Вы мне полтыщи золотых - я вам канаты. Скажу вам по секрету, "+pchar.name+": говорят, есть места, где можно перепродать сей товар дороже, но вот беда - я не ведаю, где и кому\nОднако, меня и нонешнее положение дел устраивает полностью. А ежели вы отыщете доброго купца - то сможете иметь выгоду немалую.";
+			link.l1 = "Ясно. Отличное предложение, Фадей! Думаю, буду пользоваться предоставленной возможностью. Итак, каждого двадцатого числа месяца пятьсот дублонов за полсотни бухт?";
 			link.l1.go = "persian_5";
 		break;
 		
 		case "persian_5":
 			AddQuestRecord("Unique_Goods", "2");
-			dialog.text = "Correct. Go collect your purchase. But wait, wait, dear fellow! Besides this sword, which you returned to me out of true benevolence, there were two others. I beg of you, please, if you find them, bring them back right away and I will pay you more than a fair share.";
-			link.l1 = "Definitely, Fadey. If I run into them, I'll definitely bring them back.";
+			dialog.text = "Именно так. Захаживайте за покупкой. Но погодите, погодите, мил человек! Окромя этого клинка, коий вы с истинным великодушием вернули мне, было еще два. Очень прошу, будьте так любезны: коли отыщете их где - сразу привозите, я сполна рассчитаюсь.";
+			link.l1 = "Обязательно, Фадей. Если попадется - обязательно привезу.";
 			link.l1.go = "exit";
 			if (CheckNCountPersian() > 0)
 			{
-				link.l2 = "Good news for you then. I've got another Persian cavalry sword here.";
+				link.l2 = "Я могу вас порадовать. Вот, у меня есть еще одна персидская сабля.";
 				link.l2.go = "persian_6";
 			}
 			npchar.quest.ropes = "true";
 		break;
 		
 		case "persian_6":
-			dialog.text = "Oh, my good friend! You have just swabbed my tears! Let me take a look...yes, this is it, my precious cavalry sword! Here, just as I promised you, three hundred doubloons reward for it.";
-			link.l1 = "Gramercy!";
+			dialog.text = "Ох, добрый молодец! Вы просто пролили бальзам на мое сердце! Дайте мне взглянуть... да, она это, сабелька моя драгоценная! Вот, как и обещано было - триста дублонов вознаграждения за нее.";
+			link.l1 = "Благодарствую!";
 			link.l1.go = "persian_7";
 		break;
 		
 		case "persian_7":
 			TakeNItems(pchar, "gold_dublon", 300);
-			Log_Info("You've received 300 doubloons");
+			Log_Info("Вы получили 300 дублонов");
 			sTemp = CheckNIdentifyPersian();
 			RemoveItems(pchar, sTemp, 1);
 			PlaySound("interface\important_item.wav");
@@ -683,34 +683,34 @@ void ProcessDialogEvent()
 			ChangeCharacterComplexReputation(pchar, "authority", 2);
 			ChangeCharacterComplexReputation(pchar, "nobility", 2);
 			ChangeCharacterNationReputation(pchar, FRANCE, 2);
-			dialog.text = "Please accept my gratitudes and a modest, but a very useful gift. I don't need it, but you or your ship joiner will find it quite helpful\nHere, look at this fine ring! It's yours now. But it is not just a common ring, it is an enchanted ring. It helps in carpeting and in ship repair. A lot of craftsmen would like to have it, but I have been keeping it for a special occasion. Take it, my friend, I wish it will ease your burden!";
-			link.l1 = "I didn't expect that! Thank you very much, Fadey!";
+			dialog.text = "Окромя примите мои искренние благодарности и вот этот скромный, но очень полезный подарок. Я решил презентовать его вам, коли вы вернете мне еще одну сабельку. Мне он не ко двору, а вот вам будет весьма кстати\nВот, глядите, какой пригожий перстень у меня есть! Это для вас. Но он не простой, он - заговоренный. Он помогает в плотницком деле и по части починки корабля. Многие мастеровые жаждали бы его заиметь, но я специально берег для особого случая. Вот как сейчас. Берите, друг мой, и владейте на здоровьичко!";
+			link.l1 = "Вот не ожидал! Огромное спасибо, Фадей!";
 			link.l1.go = "persian_8";
 		break;
 		
 		case "persian_8":
 			GiveItem2Character(pchar, "talisman7");
-			Log_Info("You've received the Scarab amulet");
+			Log_Info("Вы получили оберег 'Скарабей'");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "There's only one cavalry sword of my lost cavalry sword collection left to be found. I'm counting on you, "+pchar.name+", and on your luck. If you find it, don't hesitate to hurry back to me.";
-			link.l1 = "Definitely! See you soon...";
+			dialog.text = "Осталась последняя сабелька из моей коллекции утерянной. Уповаю на вас, "+pchar.name+", и на вашу удачу. Коли отыщете ее - не мешкая поспешайте ко мне.";
+			link.l1 = "Обязательно! До скорой встречи...";
 			link.l1.go = "exit";
 			if (CheckNCountPersian() > 0)
 			{
-				link.l2 = "Why hurry? I am already here. The sword is with me.";
+				link.l2 = "Можно никуда не торопиться. У меня есть третья персидская сабля.";
 				link.l2.go = "persian_9";
 			}
 		break;
 		
 		case "persian_9":
-			dialog.text = "Oh, thank God, that I came to you for help, "+pchar.name+". You're a miracle man, my friend! Show me it... Ohooo! It's, it's her. My darling! Precious! Gramercy, fine fellow, I take a bow to you! Here, here's your money. Four hundred doubloons. I won't be stingy.";
-			link.l1 = "Thank you, Fadey. Pleasure to be able to help.";
+			dialog.text = "Ох, ну до чего хорошо, что я обратился к вам за помощью, "+pchar.name+". Вы просто кудесник, мой друг! Покажите мне эту сабельку... Охо-хо, она, она, родненькая! Благодарствую, добрый молодец, низкий вам поклон! Вот, вот ваши денежки, четыре сотни дублонов. Не поскуплюсь.";
+			link.l1 = "Спасибо, Фадей. Рад был помочь вам.";
 			link.l1.go = "persian_10";
 		break;
 		
 		case "persian_10":
 			TakeNItems(pchar, "gold_dublon", 400);
-			Log_Info("You've received 400 doubloons");
+			Log_Info("Вы получили 400 дублонов");
 			sTemp = CheckNIdentifyPersian();
 			RemoveItems(pchar, sTemp, 1);
 			PlaySound("interface\important_item.wav");
@@ -720,14 +720,14 @@ void ProcessDialogEvent()
 			ChangeCharacterComplexReputation(pchar, "nobility", 2);
 			ChangeCharacterNationReputation(pchar, FRANCE, 3);
 			Achievment_SetStat(pchar, 65, 1); // ugeen 2016
-			dialog.text = "My collection is back to me! No one will dare to steal it from me again, I will make sure of that! And I have a very special reward for you, good man: they will bring me an excellent fencing armour from Europe in two weeks. An order of one nobleman, it is a quite unique piece of armour\nSo, if you want, you can buy it for only seven hundreds golden doubloons. I will tell the nobleman that they are still making it.";
-			link.l1 = "What's so good about this armour?";
+			dialog.text = "Снова моя драгоценная коллекция у меня! Теперь никто не посмеет ее выкрасть, я позабочусь об этом! Ну а для вас, добрый молодец, у меня будет еще одна награда: через две недели мне из Европы под заказ для одного дворянина родовитого должны привезти замечательные доспехи фехтовальщика. Они уникальны, в своем роде\nТак вот, ежели вы желаете, можете приобрести их у меня всего за семь сотен золотых дублонов. А дворянину тому сообщу я, что не прибыли они, и что еще подождать надобно.";
+			link.l1 = "А чем так хороши эти доспехи?";
 			link.l1.go = "persian_11";
 		break;
 		
 		case "persian_11":
-			dialog.text = "Its very comfortable and durable, yet it still can compete with iron cuirass. You come back in a couple of weeks and have a look at it. But don't take longer than a month or I'll sell it to the original orderer.";
-			link.l1 = "Deal. I'll drop by your place in two weeks.";
+			dialog.text = "Они очень удобные и прочные, и могут соперничать с кирасою железною. Вы приходите через две недельки, поглядите на них, коли захотите - купите. Только не задерживайтесь более месяца - тогда продам я их заказчику изначальному.";
+			link.l1 = "Договорились. Если надумаю - загляну к вам через две недели.";
 			link.l1.go = "persian_12";
 		break;
 		
@@ -738,34 +738,34 @@ void ProcessDialogEvent()
 		break;
 		
 		case "persian_13":
-			dialog.text = "Yes, they've brought it. It's waiting for you. Did you bring the money?";
+			dialog.text = "Да, привезли их мне, привезли, вас дожидаются. Денежки принесли?";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 700)
 			{
-				link.l1 = "Yes. Here's seven hundred doubloons.";
+				link.l1 = "Да. Вот, возьмите семь сотен дублонов.";
 				link.l1.go = "persian_14";
 			}
 			else
 			{
-				link.l1 = "Damn it. I forgot the money on the ship. I'll bring them in a second!";
+				link.l1 = "Вот незадача, забыл деньги на корабле. Сейчас принесу!";
 				link.l1.go = "exit";
 			}
 		break;
 		
 		case "persian_14":
 			RemoveItems(pchar, "gold_dublon", 700);
-			Log_Info("You've given 700 doubloons");
+			Log_Info("Вы отдали 700 дублонов");
 			PlaySound("interface\important_item.wav");
 			GiveItem2Character(pchar, "cirass8"); 
-			Log_Info("You've received wicker armour");
+			Log_Info("Вы получили плетеный доспех");
 			AddCharacterExpToSkill(pchar, "Sneak", 300);
-			dialog.text = "Yes, my good man! Here, take it. This wicker armour will serve well, I assure you. There's nothing else like it in all of the Caribbean.";
-			link.l1 = "Yes, I can see that the armour is good. Thank you! Can't wait to try it on...";
+			dialog.text = "Ай да добрый молодец! Вот, держите. Этот плетеный доспех послужит вам верою и правдою, заверяю вас. Такой на Карибах еще поискать надо, и навряд ли отыщете.";
+			link.l1 = "Да, доспехи, видать, хорошие. Спасибо! Прямо не терпится их примерить...";
 			link.l1.go = "persian_15";
 		break;
 		
 		case "persian_15":
-			dialog.text = "Why wait? Go ahead. Let's see how it fits.";
-			link.l1 = "Will do. See you later, monsieur Fadey!";
+			dialog.text = "А чего же терпеть? Ступайте, примерьте, они как раз вам по размеру.";
+			link.l1 = "Так и поступлю. Еще увидимся, месье Фадей!";
 			link.l1.go = "persian_16";
 		break;
 		
@@ -777,31 +777,31 @@ void ProcessDialogEvent()
 		
 		// торговля канатами
 		case "ropes":
-			dialog.text = "Come in, my dear friend. The merchandise is ready for you to purchase. Five hundred doubloons for fifty pieces.";
+			dialog.text = "Пожалуйте, друг мой любезный, для вас все готово! Пятьдесят бухт по десять дублонов за бухту.";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 500)
 			{
-				link.l1 = "Everything is as we've agreed on. Take the money.";
+				link.l1 = "Все по уговору. Вот, возьмите пять сотен дублонов.";
 				link.l1.go = "ropes_1";
 			}
 			else
 			{
-				link.l1 = "Just let me bring the coins from my cabin.";
+				link.l1 = "Вот незадача, забыл деньги на корабле. Сейчас принесу!";
 				link.l1.go = "exit";
 			}
 		break;
 		
 		case "ropes_1":
 			RemoveItems(pchar, "gold_dublon", 500);
-			Log_Info("You've given 500 doubloons");
+			Log_Info("Вы отдали 500 дублонов");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Nice doing business with you, "+pchar.name+". I'll order my men to carry over the ropes onto your ship.";
-			link.l1 = "Thank you!";
+			dialog.text = "Приятно иметь с вами дело, "+pchar.name+". По рукам! Я прикажу перенести канаты на ваш корабль.";
+			link.l1 = "Спасибо!";
 			link.l1.go = "ropes_2";
 		break;
 		
 		case "ropes_2":
-			dialog.text = "If you still need my product, come back in a month.";
-			link.l1 = "Very well, Fadey. See you later!";
+			dialog.text = "Еще понадобится мой товар - захаживайте через месяц.";
+			link.l1 = "Хорошо, Фадей. До встречи!";
 			link.l1.go = "exit";
 			AddCharacterGoods(pchar, GOOD_ROPES, 50);
 			DeleteAttribute(npchar, "quest.ropes");
@@ -813,36 +813,36 @@ void ProcessDialogEvent()
 		case "help":
 			if (!CheckAttribute(npchar, "quest.relation_info"))
 			{
-				dialog.text = "What can I do for you, my dear friend?";
-				link.l1 = "You are an influential person, Fadey, as far as I know. A friend of the governor, and, as rumours say, you've got connections at the palace. Would you be able to petition the authorities in case I get in trouble with the law?";
+				dialog.text = "Чем я могу вам помочь, дорогой друг?";
+				link.l1 = "Вы влиятельный человек, Фадей, как я знаю. Вхожи к губернатору, и, по слухам, имеете связи при дворе. Не сможете ли вы походатайствовать перед властями за меня в случае... возникновения проблем с законом?";
 				link.l1.go = "relation_info";
 				break;
 			}
-			dialog.text = "How can I help you, my friend?";
+			dialog.text = "Чем я могу вам помочь, мил человек?";
 			if (ChangeCharacterNationReputation(pchar, ENGLAND, 0) < 0 && !CheckAttribute(npchar, "quest.relation"))
 			{
-				link.l1 = "I have a problem with the English authorities.";
+				link.l1 = "У меня возникли неприятности с английскими властями.";
 				link.l1.go = "relation";
 				pchar.GenQuest.FadeyNation = ENGLAND;
 			}
 			if (ChangeCharacterNationReputation(pchar, FRANCE, 0) < 0 && !CheckAttribute(npchar, "quest.relation"))
 			{
-				link.l2 = "I've run into trouble with the French authorities.";
+				link.l2 = "У меня возникли неприятности с французскими властями.";
 				link.l2.go = "relation";
 				pchar.GenQuest.FadeyNation = FRANCE;
 			}
 			if (ChangeContrabandRelation(pchar, 0) <= 5)
             {
-                Link.l5 = "I had a huge quarrel with the smugglers.";
+                Link.l5 = "Я крупно переругался с контрабандистами.";
 				Link.l5.go = "contraband";
             }
-			link.l9 = "Sorry, I think I'll handle things myself.";
+			link.l9 = "Извините, я пока обойдусь своими силами.";
 			link.l9.go = "exit";
 		break;
 		
 		case "relation_info":
-			dialog.text = "Oh-ho, good man, who told you that? Everybody lies. But since you are a Michel's brother and a good friend of mine, I can try to fix things for you. Though my connections have limits, I can petition for you only to English and French authorities. I don't do business with the Spanish and the Dutch\nI also warn you that my influence is not enough to redeem considerable faults. I can persuade them to reconsider their attitude towards you in case of slight misconducts or to ease a bit an anger\nAnd only one nation at once, France or England, I can't tear myself apart. Of course, coins also will be required in order to make bribes. Don't hesitate to address me if you find my terms acceptable.";
-			link.l1 = "Thanks, Fadey. I'll keep that in mind.";
+			dialog.text = "О-хо-хо, добрый молодец, и кто же это вам такого рассказал? Брешут все люди... Но поелику вы - брат дорогого Мишеля де Монпе, да и мой добрый знакомый, то я могу попробовать замолвить за вас словечко. Однако связи мои не безграничны - я могу попросить за вас только французского и англицкого губернаторов. С голландцами и гишпанцами я делов не веду\nНо также предупреждаю вас: влияние мое не настолько велико, дабы загладить большую вину перед державой. Я могу уговорить пересмотреть отношение к вам в случае невеликих провинностей или несколько умерить враждебный пыл касательно вас\nИ только с одним губернатором за раз - либо англицким, либо французским, ибо я не могу разорваться на две половины. Также, конечно, потребуются монеты, дабы уплатить означенную мзду. Ежели вас такое устроит - то обращайтесь.";
+			link.l1 = "Спасибо, Фадей. Приму к сведению.";
 			link.l1.go = "exit";
 			npchar.quest.relation_info = "true";
 		break;
@@ -851,40 +851,40 @@ void ProcessDialogEvent()
 			rate = abs(ChangeCharacterNationReputation(pchar, sti(pchar.GenQuest.FadeyNation), 0));
 			if (rate <= 10)
 			{
-				dialog.text = "Of course. I sure have heard of your adventures. I'll take care of your dilemma, it's rectifiable. Three hundred golden doubloons and we'll take you out of hot water.";
+				dialog.text = "Как же, слыхал, слыхал. Смогу я помочь вашему горюшку, это дело поправимое. Три сотни золотых дублонов - и уладим все неприятности.";
 				if (GetCharacterItem(pchar, "gold_dublon") >= 300)
 				{
-					link.l1 = "Great! Here's the gold.";
+					link.l1 = "Отлично! Вот, держите золотые.";
 					link.l1.go = "agree";
 					iTotalTemp = 300;
 				}
-				link.l2 = "Then it's just the right time for me to go get the coins.";
+				link.l2 = "Тогда мне самое время отправиться за монетами.";
 				link.l2.go = "exit";
 			}
 			else
 			{
 				if (rate <= 20)
 				{
-					dialog.text = "Of course. I've heard about your troubles. You've tarnished your reputation. However, it is rectifiable. Six hundred gold doubloons and we'll take you out of hot water.";
+					dialog.text = "Как же, слыхал, слыхал. Подмочили вы свою репутацию. Однако дело поправимое. Шесть сотен золотых дублонов - и уладим все неприятности.";
 					if (GetCharacterItem(pchar, "gold_dublon") >= 600)
 					{
-						link.l1 = "Great! Here's the gold.";
+						link.l1 = "Отлично! Вот, держите золотые.";
 						link.l1.go = "agree";
 						iTotalTemp = 600;
 					}
-					link.l2 = "Then it's just the right time for me to go get the coins.";
+					link.l2 = "Тогда мне самое время отправиться за монетами.";
 					link.l2.go = "exit";
 				}
 				else
 				{
-					dialog.text = "Yes, you're in quite a legitimate quandary. I can't completely sort out the situation, however I can soften the burden of your scornful sins. And later at any moment, we'll present a bribe again if you have money and a desire. Seven hundred gold doubloons and we'll smooth out your troubles.";
+					dialog.text = "Да, неприятности у вас основательные. Полностью ситуацию я выправить не сумею, но облегчить бремя грехов ваших тяжких - смогу. А там, глядишь, еще разок мзду поднесем, коли будут у вас деньги и желание. Семь сотен золотых дублонов - и будем решать ваши проблемы.";
 					if (GetCharacterItem(pchar, "gold_dublon") >= 700)
 					{
-						link.l1 = "Great! Here's the gold.";
+						link.l1 = "Отлично! Вот, держите золотые.";
 						link.l1.go = "agree";
 						iTotalTemp = 700;
 					}
-					link.l2 = "Then it's just the right time for me to go get the coins.";
+					link.l2 = "Тогда мне самое время отправиться за монетами.";
 					link.l2.go = "exit";
 				}
 			}
@@ -892,10 +892,10 @@ void ProcessDialogEvent()
 		
 		case "agree":
 			RemoveItems(pchar, "gold_dublon", iTotalTemp);
-			Log_Info("You've given "+iTotalTemp+" doubloons");
+			Log_Info("Вы отдали "+iTotalTemp+" дублонов");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Okay, give me about ten, fifteen days. Meanwhile, I'll get an appointment and take care of this and that. It'll all be done in about two weeks. ";
-			link.l1 = "Thank you, Fadey! I'll be waiting...";
+			dialog.text = "Денечков так десять-пятнадцать подождите. Пока я на прием попаду, пока пятое, десятое. Недельки через две будет результат.";
+			link.l1 = "Спасибо, Фадей! Буду ждать...";
 			link.l1.go = "agree_1";
 		break;
 		
@@ -907,23 +907,23 @@ void ProcessDialogEvent()
 		break;
 		
 		case "contraband":
-			dialog.Text = "Why, my good man? The smugglers are not the worst folk in our world and they can make you a good profit. Fine, I will help you, I know how to grease some wheels… Prepare seven hundred doubloons, no bargaining.";
+			dialog.Text = "Ну зачем же вы так поступили, мил человек? Контрабандисты - они не самые плохие люди в нашем мире, и доход могут вам солидный обеспечить. Ладно, помогу я вам, так и быть - умаслю кого следует... Готовьте семь сотен дублонов, мой друг, дешевле никак не получится.";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 700)
 			{
-				Link.l1 = "Very well, Fadey, I agree. Take your gold.";
+				Link.l1 = "Хорошо, Фадей, я согласен. Вот ваши золотые.";
 				Link.l1.go = "Contraband_Agreed";
 			}
-			Link.l2 = "I don't have that much gold with me now. I will come back later!";
+			Link.l2 = "У меня сейчас нет столько золота. Я зайду позже!";
 			Link.l2.go = "exit";
 		break;
 		
 		case "Contraband_Agreed":
-			dialog.Text = "Good, I will patch up a quarrel, don't you worry. They will do business with you again.";
-			Link.l1 = "Thank you!";
+			dialog.Text = "Хорошо, я все улажу, можете не переживать более. Они будут иметь с вами дела.";
+			Link.l1 = "Спасибо!";
 			Link.l1.go = "exit";
 			ChangeContrabandRelation(pchar, 25);
 			RemoveItems(pchar, "gold_dublon", 700);
-			Log_Info("You've given 700 doubloons");
+			Log_Info("Вы отдали 700 дублонов");
 			PlaySound("interface\important_item.wav");
 		break;
 		

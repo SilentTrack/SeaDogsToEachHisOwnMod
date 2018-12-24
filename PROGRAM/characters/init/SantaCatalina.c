@@ -11,8 +11,8 @@ int CreateSantaCatalinaCharacters(int n)
 	ch.id = "SantaCatalina_Mayor";
 	ch.model	= "huber_12";
 	ch.sex = "man";
-	ch.name 	= "Josef";
-    ch.lastname = "Batler";
+	ch.name 	= "Джозеф";
+    ch.lastname = "Батлер";
 	ch.City = "SantaCatalina";
 	ch.location	= "SantaCatalina_townhall";
 	ch.greeting = "mayor_2";
@@ -169,7 +169,7 @@ int CreateSantaCatalinaCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "SantaCatalina_Smuggler";
 	ch.model    = "citiz_29";

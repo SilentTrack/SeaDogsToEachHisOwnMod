@@ -10,8 +10,8 @@ int CreateSantiagoCharacters(int n)
 	makeref(ch,Characters[n]);			//Губернатор
 	ch.id = "Santiago_Mayor";
 	ch.model	= "huber_15";
-	ch.name 	= "Rodriges";
-	ch.lastname = "de Flores-Aldana";
+	ch.name 	= "Родриго";
+	ch.lastname = "де Флорес-и-Алдана";
 	ch.sex = "man";
 	ch.City = "Santiago";
 	ch.location	= "Santiago_townhall";
@@ -169,7 +169,7 @@ int CreateSantiagoCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "Santiago_Smuggler";
 	ch.model    = "citiz_30";

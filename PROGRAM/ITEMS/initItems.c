@@ -151,8 +151,6 @@ int InitItems()
 	n = InitStdBlade(n, "q_blade_18", "ITEMS_15", 10,  TGT_QUEST,  B_EXCELLENT, "FencingL", 13, 1.05, 1.05, 0, 0, 0, 		  7500); // Паппенхаймер
 	n = InitStdBlade(n, "q_blade_19", "ITEMS_16",  8,  TGT_QUEST,  B_EXCELLENT, "FencingS", 14, 1.00, 1.05, 0, 0, 0, 		  7700); // Морская сабля
 	n = InitStdBlade(n, "q_blade_21", "ITEMS_17",  4,  TGT_QUEST,  B_EXCELLENT, "FencingH", 15, 0.95, 1.00, 0, 0, 0, 		  7900); // Клейбэг
-
-	// int InitStdBlade (index, model, texture, picture, target group, quality, blade type, group number, length, bend, generated, number of generated, general price, price if not generated);
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//										ОГНЕСТРЕЛЬНОЕ ОРУЖИЕ
@@ -1363,15 +1361,15 @@ int InitItems()
 	n++;  
 	
 	// резервные предметы для возможных дополнений - 10 шт
-	makeref(itm,Items[n]); //резервный предмет №1
+	makeref(itm,Items[n]); // письма и депеши по НСО
 	itm.id = "Reserve_item_01"; 
 	itm.name = "itmname_Reserve_item_01";
 	itm.describe = "itmdescr_Reserve_item_01";
 	itm.model = "";
-	itm.picIndex = 13;
-	itm.picTexture = "ITEMS_36";
+	itm.picIndex = 11;
+	itm.picTexture = "ITEMS_34";
 	itm.price = 0;
-	itm.Weight = 0.5;
+	itm.Weight = 0.1;
 	itm.ItemType = "QUESTITEMS";
 	n++;
 	

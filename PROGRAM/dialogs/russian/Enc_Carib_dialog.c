@@ -69,45 +69,45 @@ void ProcessDialogEvent()
 			}
 			if (sti(pchar.questTemp.Indian.relation) > 79)
 			{
-				dialog.text = LinkRandPhrase("Hail to you, son of the sea! I hear about you. You go easy on our land.",""+npchar.name+" greet you, paleface brother. We glad see you our guest.","I greet you, brave palefaced warrior! "+npchar.name+" glad to meet friend of Indians. Go in peace!");
-				link.l1 = RandPhraseSimple("And hail to you, red-skinned brother! Good hunt to you!","Greetings, brave warrior! May the gods bless you and your family!");
+				dialog.text = LinkRandPhrase("Приветствовать тебя, сын моря! Я слыхать о тебе. Ступать спокойно по наш земля.",""+npchar.name+" приветствовать тебя, бледнолицый брат. Мы рады видеть твоя гости у нас.","Привет тебе, славный бледнолицый воин! "+npchar.name+" рад встрече с друг индеец. Ступать с миром!");
+				link.l1 = RandPhraseSimple("Привет и тебе, краснокожий брат! Пусть будет удачна твоя охота!","Приветствую, храбрый воин! Да не обойдут боги вниманием тебя и твою семью!");
 				link.l1.go = "exit_peace";
 				if (CheckCaribGuns())
 				{
 					npchar.quest.count = 0;
-					link.l2 = RandPhraseSimple("I may have something of interest to you, red-skinned brother. Wanna trade?","I can offer you to buy something, brave warrior. Wanna trade?");
+					link.l2 = RandPhraseSimple("У меня есть то, что интересно тебе, краснокожий брат. Поторгуем?","Я могу предложить тебе кое-что купить, храбрый воин. Будем меняться?");
 					link.l2.go = "war_indian_trade";
 				}
 			}
 			else
 			{
-				dialog.text = LinkRandPhrase("Hold, paleface! By what right you walk my land?","Hold, white man! You on land of my forefathers and my land!","Hold, paleface! You not belong on my land?");
-				link.l1 = RandPhraseSimple("Your land? Get lost, you red-faced scum!","Look at him - a talking ape! Get lost, now!");
+				dialog.text = LinkRandPhrase("Стоять, бледнолицый! По какому праву ты ходить мой земля?","Стой, белый человек! Ты находиться земля моих предков и мой земля!","Остановись, яланауи! Тебе не место на мой земля!");
+				link.l1 = RandPhraseSimple("Твой земля? А ну, прочь с дороги, краснорожая образина!","Ну надо же - обезьяна, а разговаривает! Пошел прочь!");
 				link.l1.go = "war_indian_1";
-				link.l2 = RandPhraseSimple("I come in peace, red-skinned warrior. We shouldn't be fighting over nothing.","I do not infringe on your land, warrior. I come in peace.");
+				link.l2 = RandPhraseSimple("Я пришел с миром, краснокожий воин. Ни к чему нам развязывать бой не из-за чего.","Я не посягаю на твою землю, воин. Я пришел с миром.");
 				if (sti(pchar.questTemp.Indian.relation)+(makeint(GetSummonSkillFromName(pchar, SKILL_LEADERSHIP)/3)) > drand(80)) link.l2.go = "war_indian_2_1";
 				else link.l2.go = "war_indian_2_2";
-				link.l3 = RandPhraseSimple("I have come to trade with you, not to wage war.","I do not wage war with Indians. I trade with them.");
+				link.l3 = RandPhraseSimple("Я пришел сюда не воевать с вами, а торговать.","Я не воюю с индейцами. Я с ними торгую.");
 				if (sti(pchar.questTemp.Indian.relation)+(makeint(GetSummonSkillFromName(pchar, SKILL_LEADERSHIP)/6)+makeint(GetSummonSkillFromName(pchar, SKILL_FORTUNE)/6)) > drand(90)) link.l3.go = "war_indian_3_1";
 				else link.l3.go = "war_indian_3_2";
 			}
 		break;
 		
 		case "war_indian_1":
-			dialog.text = RandPhraseSimple("You fell sorry be born, palefaced cur... I cut out your heart and fry it on fire!","I make you chew stones, palefaced cur! You beg for death on your knees!");
-			link.l1 = RandPhraseSimple("You still won't quite down, painted scarecrow? I will drive you back to the jungle whence you came!","You dare to threaten me, scum?! Now you will climb the tree you just came down from!");
+			dialog.text = RandPhraseSimple("Ты пожалеть, что родиться на этот свет, бледнолицый собака... Я вырезать твое сердце и поджарить огонь!","Я заставить тебя есть камень, белолицый пес! Ты на коленях умолять о смерти!");
+			link.l1 = RandPhraseSimple("Ты все не уймешься, чучело крашеное? Ну, я сейчас загоню тебя назад в джунгли, из которых ты выполз...","Ты смеешь мне угрожать, мразь? Сейчас ты побежишь на дерево, с которого только вчера слез...");
 			link.l1.go = "exit_fight";
 		break;
 		
 		case "war_indian_2_1":
-			dialog.text = RandPhraseSimple("I hear your voice speak true. We not bare axes against you today. Go in peace, paleface.","Paleface rarely come peacefully, but I see in your eyes - you speak true. Go now.");
-			link.l1 = RandPhraseSimple("A wise decision, warrior. Fare thee well.","I am glad we came to an understanding, warrior.");
+			dialog.text = RandPhraseSimple("Я слышать твой голос - он говорить правда. Мы не обнажить топор друг против друг сегодня. Идти с миром, бледнолицый.","Бледнолицый редко приходить с мир на наш земля, но я видеть твой глаза - ты не лгать. Ступай.");
+			link.l1 = RandPhraseSimple("Ты поступил правильно, воин. Прощай.","Я рад, что мы поняли друг друга, воин.");
 			link.l1.go = "exit_peace";
 		break;
 		
 		case "war_indian_2_2":
-			dialog.text = RandPhraseSimple("You lie, paleface cur! You come here kill Indians! Ready for battle, paleface!","You kill Indians. White tongue is lying tongue. I rip it out and fry on fire!");
-			link.l1 = RandPhraseSimple("Well, buddy, no hard feelings, then. God knows, I tried to avoid it...","Well, you asked for it, apology for a warrior.");
+			dialog.text = RandPhraseSimple("Ты лгать, бледнолицый собака! Вы приходить сюда убивать индеец! Готовь к бой, яланауи!","Вы убивать индеец. Язык бледнолицых - лживый язык. Я вырвать его и поджарить огонь!");
+			link.l1 = RandPhraseSimple("Ну раз так, то не обессудь, приятель. Видит Бог, я этого не хотел...","Ну что же, ты сам напросился, горе-вояка...");
 			link.l1.go = "exit_fight";
 		break;
 		
@@ -115,35 +115,35 @@ void ProcessDialogEvent()
 			if (CheckCaribGuns())
 			{
 				npchar.quest.count = 0;
-				dialog.text = "Trade? We need weapons of white men. One hand fiery weapon of palefaced! For it we trade our wares! You have fiery weapon to trade?";
-				link.l1 = "Hmm. I do. And what will you give me in exchange?";
+				dialog.text = "Торговать? Нам нужен оружие бледнолицых. Одноручный огненный оружие бледнолицых! За него мы быть меняться наш товар! У тебя есть огненный оружие на обмен?";
+				link.l1 = "Хм. Есть. А что ты дашь мне взамен?";
 				link.l1.go = "war_indian_trade";
-				link.l2 = "You scoundrel! And then you will shoot the colonists with my pistols? No, that won't happen! As for you, jackals, I will cut you all down now...";
+				link.l2 = "Ах ты, каналья! А потом ты из моих пистолей будешь отстреливать колонистов? Ну уж нет, не бывать тому! А вас, шакалы, я сейчас всех перережу...";
 				link.l2.go = "exit_fight";
 			}
 			else
 			{
-				dialog.text = "You not have what we want, paleface... You be our war trophy!";
-				link.l1 = "Try if you dare, scarecrow...";
+				dialog.text = "У тебя нет то, что мы хотеть, бледнолицый... Ты стать наш военный трофей!";
+				link.l1 = "Ну, рискни, чучело...";
 				link.l1.go = "exit_fight";
 			}
 		break;
 		
 		case "war_indian_3_2":
-			dialog.text = RandPhraseSimple("We no trade with paleface curs. We take all by force!","We no filthy miskito or arawaks, we no trade with palefaces! We kill they and get war trophies!");
-			link.l1 = RandPhraseSimple("Well, then try to rob me, scoundrel!","First you will need to take my saber from me, you filth!");
+			dialog.text = RandPhraseSimple("Мы не торговать с бледнолицый пес. Мы забирать всё у них сами!","Мы не жалкий мискито или аравак, мы не торговать с яланауи! Мы убивать яланауи и получать военный трофей!");
+			link.l1 = RandPhraseSimple("Ну, попробуй ограбить меня, каналья!","Сначала тебе придется забрать у меня саблю, мерзавец!");
 			link.l1.go = "exit_fight";
 		break;
 		
 		case "war_indian_trade":
 			iGun = 1;
-			dialog.text = "You show what you have, and we say what we give for it.";
+			dialog.text = "Показывать, что у тебя есть, а мы сказать, что дать тебе за это.";
 			for (i=6; i>=1; i--)
 			{
 				if (GetCharacterFreeItem(pchar, "pistol"+i) > 0)
 				{
 					sLink = "l"+iGun;
-					link.(sLink) = "Offer "+XI_ConvertString("pistol"+i)+".";
+					link.(sLink) = "Предложить "+XI_ConvertString("pistol"+i)+".";
 					link.(sLink).go = "gun_"+i;
 					iGun++;				
 				}
@@ -156,18 +156,18 @@ void ProcessDialogEvent()
 			{
 				npchar.quest.item = "potion"+(rand(2)+2);
 				iTotalTemp = drand(1)+1;
-				sText = ""+FindRussianQtyString(iTotalTemp)+"  vial of good curative potion";
+				sText = ""+FindRussianQtyString(iTotalTemp)+" пузырек хороший целебный зелье";
 			}
 			else
 			{
 				npchar.quest.item = "jewelry"+(drand(9)+14);
 				iTotalTemp = drand(2)+1;
-				sText = ""+FindRussianQtyString(iTotalTemp)+" this beautiful stone";
+				sText = ""+FindRussianQtyString(iTotalTemp)+" вот этот красивый камень";
 			}
-			dialog.text = "Hey-ho! We give you for it "+sText+".";
-			link.l1 = "Deal!";
+			dialog.text = "О-ей! Мы дать тебе за него "+sText+".";
+			link.l1 = "По рукам!";
 			link.l1.go = "war_indian_trade_agree";
-			link.l2 = "No. That won't do.";
+			link.l2 = "Нет. Не пойдет.";
 			link.l2.go = "war_indian_trade_bad";
 		break;
 		
@@ -177,18 +177,18 @@ void ProcessDialogEvent()
 			{
 				npchar.quest.item = "potion"+(rand(2)+2);
 				iTotalTemp = drand(2)+2;
-				sText = ""+FindRussianQtyString(iTotalTemp)+" vial of good curative potion";
+				sText = ""+FindRussianQtyString(iTotalTemp)+" пузырек хороший целебный зелье";
 			}
 			else
 			{
 				npchar.quest.item = "jewelry"+(drand(3)+1);
 				iTotalTemp = drand(2)+2;
-				sText = ""+FindRussianQtyString(iTotalTemp)+" this beautiful stone";
+				sText = ""+FindRussianQtyString(iTotalTemp)+" вот этот красивый камень";
 			}
-			dialog.text = "Hey-ho! Cunning weapon... We give you for it "+sText+".";
-			link.l1 = "Deal!";
+			dialog.text = "О-ей! Хитрый оружие... Мы дать тебе за него "+sText+".";
+			link.l1 = "По рукам!";
 			link.l1.go = "war_indian_trade_agree";
-			link.l2 = "No. That won't do.";
+			link.l2 = "Нет. Не пойдет.";
 			link.l2.go = "war_indian_trade_bad";
 		break;
 		
@@ -199,18 +199,18 @@ void ProcessDialogEvent()
 				qty = rand(1)+2;
 				npchar.quest.item = "jewelry5"+qty;
 				iTotalTemp = drand(6)+qty*15;
-				sText = ""+FindRussianQtyString(iTotalTemp)+" this beautiful pearl";
+				sText = ""+FindRussianQtyString(iTotalTemp)+" вот этот красивый жемчужина";
 			}
 			else
 			{
 				npchar.quest.item = "jewelry"+(drand(2)+2);
 				iTotalTemp = drand(2)+5;
-				sText = ""+FindRussianQtyString(iTotalTemp)+"  this beautiful stone";
+				sText = ""+FindRussianQtyString(iTotalTemp)+" вот этот красивый камень";
 			}
-			dialog.text = "Hey-ho! Mighty weapon! Many-many enemy kill! We give you for it "+sText+".";
-			link.l1 = "Deal!";
+			dialog.text = "О-ей! Это сильный оружие! Бить сразу много-много врагов! Мы дать тебе за него "+sText+".";
+			link.l1 = "По рукам!";
 			link.l1.go = "war_indian_trade_agree";
-			link.l2 = "No. That won't do.";
+			link.l2 = "Нет. Не пойдет.";
 			link.l2.go = "war_indian_trade_bad";
 		break;
 		
@@ -221,18 +221,18 @@ void ProcessDialogEvent()
 				qty = rand(1)+1;
 				npchar.quest.item = "jewelry"+(qty+4);
 				iTotalTemp = drand(10)+qty*30;
-				sText = ""+FindRussianQtyString(iTotalTemp)+" piece of metal which paleface love more than life";
+				sText = ""+FindRussianQtyString(iTotalTemp)+" кусок этот металл, который бледнолицый любить больше жизни";
 			}
 			else
 			{
 				npchar.quest.item = "obereg_"+(drand(10)+1);
 				iTotalTemp = 1;
-				sText = "this amulet";
+				sText = "вот этот амулет";
 			}
-			dialog.text = "Hey-ho! Fearful weapon... We give you for it "+sText+".";
-			link.l1 = "Deal!";
+			dialog.text = "О-ей! Страшный оружие! Мы дать тебе за него "+sText+".";
+			link.l1 = "По рукам!";
 			link.l1.go = "war_indian_trade_agree";
-			link.l2 = "No. That won't do.";
+			link.l2 = "Нет. Не пойдет.";
 			link.l2.go = "war_indian_trade_bad";
 		break;
 		
@@ -254,18 +254,18 @@ void ProcessDialogEvent()
 				npchar.quest.item = "jewelry"+(qty+6);
 				if (qty == 1) iTotalTemp = 2;
 				else iTotalTemp = drand(5)+qty*15;
-				sText = ""+FindRussianQtyString(iTotalTemp)+" this beautiful and precious petrified tar";
+				sText = ""+FindRussianQtyString(iTotalTemp)+" вот этот красивый и ценный каменный смола";
 			}
 			else
 			{
 				npchar.quest.item = "indian_"+(drand(10)+1);
 				iTotalTemp = 1;
-				sText = "this amulet";
+				sText = "вот этот амулет";
 			}
-			dialog.text = "Hey-ho! Beautiful and mighty weapon! Many-many enemy kill! We give you for it "+sText+".";
-			link.l1 = "Deal!";
+			dialog.text = "О-ей! Красивый и мощный оружие! Мы дать тебе за него "+sText+".";
+			link.l1 = "По рукам!";
 			link.l1.go = "war_indian_trade_agree";
-			link.l2 = "No. That won't do.";
+			link.l2 = "Нет. Не пойдет.";
 			link.l2.go = "war_indian_trade_bad";
 		break;
 		
@@ -276,18 +276,18 @@ void ProcessDialogEvent()
 				qty = rand(1)+1;
 				npchar.quest.item = "jewelry"+(qty+4);
 				iTotalTemp = drand(8)+qty*20;
-				sText = ""+FindRussianQtyString(iTotalTemp)+" piece of metal which paleface love more than life";
+				sText = ""+FindRussianQtyString(iTotalTemp)+" кусок этот металл, который бледнолицый любить больше жизни";
 			}
 			else
 			{
 				npchar.quest.item = "amulet_"+(drand(10)+1);
 				iTotalTemp = 1;
-				sText = "this amulet";
+				sText = "вот этот амулет";
 			}
-			dialog.text = "Hey-ho! Handy weapon... We give you for it "+sText+".";
-			link.l1 = "Deal!";
+			dialog.text = "О-ей! Удобный оружие! Мы дать тебе за него "+sText+".";
+			link.l1 = "По рукам!";
 			link.l1.go = "war_indian_trade_agree";
-			link.l2 = "No. That won't do.";
+			link.l2 = "Нет. Не пойдет.";
 			link.l2.go = "war_indian_trade_bad";
 		break;
 		
@@ -296,31 +296,31 @@ void ProcessDialogEvent()
 			npchar.quest.count = sti(npchar.quest.count)+1;
 			TakeNItems(pchar, npchar.quest.item, iTotalTemp);
 			RemoveItems(pchar, npchar.quest.gun, 1);
-			Log_Info("You have given "+XI_ConvertString(npchar.quest.gun)+"");
-			Log_Info("You have received "+XI_ConvertString(npchar.quest.item)+" in amount of "+FindRussianQtyString(iTotalTemp)+"");
+			Log_Info("Вы отдали "+XI_ConvertString(npchar.quest.gun)+"");
+			Log_Info("Вы получили "+XI_ConvertString(npchar.quest.item)+" в количестве "+FindRussianQtyString(iTotalTemp)+"");
 			PlaySound("interface\important_item.wav");
 			if (sti(npchar.quest.count) > 3+drand(2));
 			{
-				dialog.text = "Good. Here your goods. We no trade more. Bring later. The gooder fiery weapon the more we give for it. Now go!";
-				link.l1 = "Farewell, red-skinned warrior.";
+				dialog.text = "Хорошо. Вот твой товар. Больше мы не менять. Приносить потом. Чем лучше огненный оружие - тем дороже мы его купить. Ступай!";
+				link.l1 = "Прощай, краснокожий воин.";
 				link.l1.go = "exit_peace";
 			}
 			else
 			{
-				dialog.text = "Okay. Here you goods. You have more fiery weapon to trade?";
+				dialog.text = "Хорошо. Вот твой товар. У тебя есть еще огненный оружие на менять?";
 				if (CheckCaribGuns())
 				{
-					link.l1 = "I have. Will you buy?";
+					link.l1 = "Есть. Будешь покупать?";
 					link.l1.go = "war_indian_trade";
 				}
-				link.l2 = "No. Next time I'll bring more.";
+				link.l2 = "Пока нет. В следующий раз принесу еще.";
 				link.l2.go = "war_indian_trade_exit";
 			}
 		break;
 		
 		case "war_indian_trade_exit":
-			dialog.text = "Bring. The gooder fiery weapon the more we give for it. Now go!";
-			link.l1 = "Until we meet again, warrior...";
+			dialog.text = "Приносить. Чем лучше огненный оружие - тем дороже мы его купить. Ступай!";
+			link.l1 = "До встречи, воин...";
 			link.l1.go = "exit_peace";
 		break;
 		
@@ -340,8 +340,8 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				dialog.text = "Then we take everything free, paleface!";
-				link.l1 = "You may try...";
+				dialog.text = "Тогда мы забрать всё и просто так, яланауи!";
+				link.l1 = "Ну, попробуй...";
 				link.l1.go = "exit_fight";
 			}
 		break;
@@ -355,22 +355,22 @@ void ProcessDialogEvent()
 				LAi_RemoveCheckMinHP(sld);
 				LAi_SetImmortal(sld, false);
 			}
-			dialog.text = LinkRandPhrase("Hail, white man. What you need in our jungle?","Our jungle very dangerous. What you do here?","What bring you here, brave paleface?");
-			link.l1 = RandPhraseSimple("I was just passing by, my red-skinned friend. I believe there's enough room on this path for both of us?","Greetings, son of the jungle! I am here on business, and I bear no grudge against Indians.");
+			dialog.text = LinkRandPhrase("Здравствуй, белый человек. Что тебе нужно в наши джунгли?","Наши джунгли много опасность. Что ты делать тут?","Что привести тебя сюда, храбрый бледнолицый?");
+			link.l1 = RandPhraseSimple("Я просто прохожу мимо, краснокожий друг. Надеюсь, на этой тропе нам обоим хватит места?","Приветствую, сын джунглей! Дела привели меня сюда. Но я не враждую с индейцами.");
 			link.l1.go = "peace_indian_1";
-			link.l2 = RandPhraseSimple("And why do you need to know? Go your own way and stay away from trouble!","Go your own way, red-skinned one. I have no time to talk to you.");
+			link.l2 = RandPhraseSimple("А тебе до этого какое дело? Иди своей дорогой и не нарывайся!","Топай себе дальше, краснокожий. Мне не до бесед с тобой.");
 			link.l2.go = "peace_indian_2";
 		break;
 		
 		case "peace_indian_1":
-			dialog.text = RandPhraseSimple("We peaceful people. We not enemies with white man. Go, but be careful on our path!","I glad meet palefaced friend of Indians. Go in peace, son of sea!");
-			link.l1 = RandPhraseSimple("Good luck to you, too, son of the selva...","Farewell, red-skinned friend.");
+			dialog.text = RandPhraseSimple("Мы мирный народ. Мы не враждовать белый человек. Ступай, но будь острожен на наши тропы!","Я рад видеть бледнолицый - друг индеец. Ступать с мир, сын моря!");
+			link.l1 = RandPhraseSimple("И тебе удачи, сын сельвы...","Прощай, краснокожий друг.");
 			link.l1.go = "exit_peace";
 		break;
 		
 		case "peace_indian_2":
-			dialog.text = RandPhraseSimple("We just peaceful hunters. But we not stand when someone talk to us like that on our land!","We not fight with white man, but if white man offend us, we answer like our forefathers teach us!");
-			link.l1 = RandPhraseSimple("You still won't quite down, painted scarecrow? I will drive you back to the jungle whence you came!","You dare to threaten me, scum?! Now you will climb the tree you just came down from!");
+			dialog.text = RandPhraseSimple("Мы просто мирный охотники. Но не терпеть, чтобы нам так говорить на наш земля!","Мы не воевать с белый, но если белый обнажить против нас топор или слово - мы ответить ему, как учить наши предки!");
+			link.l1 = RandPhraseSimple("Ты все не уймешься, краснокожая образина? Ну, я сейчас загоню тебя назад в джунгли, из которых ты выполз...","Ты смеешь мне угрожать, мразь? Сейчас ты побежишь на дерево, с которого только вчера слез...");
 			link.l1.go = "exit_fight";
 		break;
 	}

@@ -11,8 +11,8 @@ int CreatePanamaCharacters(int n)
 	ch.id		= "Panama_Mayor";
 	ch.model	= "huber_21";
 	ch.sex = "man";
-	ch.name 	= "Pedro Carrilia";
-    ch.lastname = "de Gusman";
+	ch.name 	= "Педро Каррилья";
+    ch.lastname = "де Гусман";
 	ch.City = "Panama";
 	ch.location	= "Panama_townhall";
 	ch.greeting = "mayor_1";
@@ -169,7 +169,7 @@ int CreatePanamaCharacters(int n)
 
 	makeref(ch,Characters[n]);			//Хозяйка борделя
 	ch.id		= "Panama_Hostess";
-	ch.name		= "Dolores"
+	ch.name		= "Долорес"
 	ch.lastname = "";
 	ch.model	= "maman_8";
 	ch.model.animation = "woman_B";

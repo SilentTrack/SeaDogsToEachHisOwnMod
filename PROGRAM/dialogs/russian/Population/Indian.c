@@ -13,20 +13,20 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			dialog.text = NPCStringReactionRepeat(""+ GetSexPhrase("Paleface","White squaw") +" want to talk?", 
-				"You again, "+ GetSexPhrase("paleface","white squaw") +".", 
-				""+ GetSexPhrase("Paleface loves to talk. Like a squaw.","White squaw love to talk.") +"",
-                "Spirits brought my paleface" + GetSexPhrase("brother","sister") + " to me.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Yes.", 
-				"Yes, me again.",
-                "Poetic.", 
-				"I am glad too to see you.", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(""+ GetSexPhrase("Бледнолицый","Белая скво") +" хочет говорить?", 
+				"Снова ты, "+ GetSexPhrase("бледнолицый","белая скво") +".", 
+				""+ GetSexPhrase("Бледнолицый любит говорить. Он похож на скво.","Белая скво любит говорить.") +"",
+                "Духи привели ко мне бледнолиц"+ GetSexPhrase("его брата","ую сестру") +".", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Да.", 
+				"Да, снова я.",
+                "Очень поэтично.", 
+				"Я тоже рад"+ GetSexPhrase("","а") +" тебя видеть.", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = "Good day to you, white brother. You want talk Indian man?";
-				link.l1 = "Greeting, son  of jungles. I am glad to see you but I have to go.";
+				dialog.text = "Здравствуй, белый брат. Ты хотеть говорить индеец?";
+				link.l1 = "Приветствую, сын джунглей. Я рад тебя видеть, но мне пора продолжить свой путь.";
 				link.l1.go = "exit";
 				npchar.quest.meeting = "1";
 			}
@@ -35,8 +35,8 @@ void ProcessDialogEvent()
 
 		//замечание по обнаженному оружию от персонажей типа citizen
 		case "CitizenNotBlade":
-			dialog.text = NPCharSexPhrase(NPChar, "Don't tempt your fate, paleface! Sword away!", "Listen, I am the citizen of this town and I'd ask you to hold down your blade.");
-			link.l1 = LinkRandPhrase("Fine.", "Whatever.", "Whatever you say...");
+			dialog.text = NPCharSexPhrase(NPChar, "Не искушать судьбу, бледнолицый! Убери свой сабля!", "Знаете, я, как гражданка этого города, прошу вас не ходить у нас с обнаженным клинком.");
+			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
 		break;
 

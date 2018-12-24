@@ -11,8 +11,8 @@ int CreateCumanaCharacters(int n)
 	ch.id		= "Cumana_Mayor";
 	ch.model	= "huber_26";
 	ch.sex = "man";
-	ch.name 	= "Fernando";
-    ch.lastname = "de Vilyegas";
+	ch.name 	= "Фернандо";
+    ch.lastname = "де Вильегас";
 	ch.City = "Cumana";
 	ch.location	= "Cumana_townhall";
 	ch.location.group = "sit";
@@ -32,7 +32,6 @@ int CreateCumanaCharacters(int n)
 	LAi_SetHuberType(ch);
 	LAi_RemoveLoginTime(ch);
 	LAi_group_MoveCharacter(ch, "SPAIN_CITIZENS");
-	LAi_SetImmortal(ch, true);
     LAi_LoginInCaptureTown(ch, true); //TO_DO eddy, снести
 	n = n + 1;
 
@@ -171,7 +170,7 @@ int CreateCumanaCharacters(int n)
 	n = n + 1;
 
     makeref(ch,Characters[n]);
-	ch.name 	= "Smuggler";
+	ch.name 	= "Контрабандист";
 	ch.lastname = "";
 	ch.id		= "Cumana_Smuggler";
 	ch.model    = "citiz_30";
@@ -192,8 +191,8 @@ int CreateCumanaCharacters(int n)
 	ch.id		= "Minentown_Mayor";
 	ch.model	= "off_spa_6";
 	ch.sex = "man";
-	ch.name 	= "Esteban";
-    ch.lastname = "Garsia";
+	ch.name 	= "Эстебан";
+    ch.lastname = "Гарсия";
 	ch.City = "Minentown";
 	ch.location	= "Minentown_townhall";
 	ch.location.group = "sit";
@@ -221,8 +220,8 @@ int CreateCumanaCharacters(int n)
 	ch.model	= "off_spa_3";
 	ch.greeting = "store_2";
 	ch.sex = "man";
-	ch.name 	= "Carlos";
-    ch.lastname = "Estrada";
+	ch.name 	= "Карлос";
+    ch.lastname = "Эстрада";
 	ch.City = "Minentown";
 	ch.location	= "Minentown_Store";
 	ch.location.group = "barmen";
@@ -244,8 +243,8 @@ int CreateCumanaCharacters(int n)
 	ch.model	= "barmen_14";
 	ch.greeting = "barmen_1";
 	ch.sex = "man";
-	ch.name 	= "Ignasio";
-    ch.lastname = "Ortega";
+	ch.name 	= "Игнасио";
+    ch.lastname = "Ортега";
 	ch.City = "Minentown";
 	ch.location	= "Minentown_Tavern";
 	ch.location.group = "barmen";

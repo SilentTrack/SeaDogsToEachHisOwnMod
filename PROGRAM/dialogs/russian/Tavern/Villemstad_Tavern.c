@@ -4,86 +4,86 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat("All the rumors of "+ GetCityName(npchar.city) +" at your service. What would you like to find out?",
-                          "We were just talking about that. You must have forgotten...", "This is the third time today you're talking about some question...",
-                          "you're harping like a parrot the same...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("You know, " + NPChar.name + ", maybe next time.", "Right, I've forgotten for some reason...",
-                      "Yes, it really is the third time...", "Yep...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat("Все сплетни города "+ GetCityName(npchar.city) +" к вашим услугам. Что бы вы хотели узнать?",
+                          "Мы только что поднимали это тему. Вы, вероятно, запамятовали...", "Сегодня вы уже третий раз говорите о каком-то вопросе...",
+                          "Что ты "+ GetSexPhrase("заладил","заладила") +" как попугай одно и то же...", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat("Знаешь, " + NPChar.name + ", как-нибудь в следующий раз.", "Точно, "+ GetSexPhrase("забыл","забыла") +" что-то...",
+                      "Да уж, действительно в третий раз...", "Да уж...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			//работорговец
 			if (pchar.questTemp.Slavetrader == "EscapeSlave_Villemstad")
             {
-                link.l1 = "I heard that there was a serious mess on the island... Slaves?";
+                link.l1 = "Слышал"+ GetSexPhrase("","а") +", у вас на острове заваруха была серьезная... Рабы, вроде, восстали.";
                 link.l1.go = "EscapeSlaveVillemstad_T1";
             }
 			//Португалец
 			if (CheckAttribute(pchar, "questTemp.Portugal") && pchar.questTemp.Portugal == "SeekPortVillemstad")
             {
-                link.l1 = "I've heard that distasteful scoundrel Bart the Portuguese has finally met colonel justice! Is he in your prison? When will his execution be, do you know? I'd come watch, I have some bones with that scumbag...";
+                link.l1 = "Слышал, что гнусный негодяй - Барт Португалец - наконец-таки попался в руки правосудия! Он у вас в тюрьме? А когда состоится его казнь, не в курсе? Я бы пришел посмотреть, у меня с этим мерзавцем свои счеты...";
                 link.l1.go = "Portugal";
             }
  		break;
 
 		//работорговец
 		case "EscapeSlaveVillemstad_T1":
-			dialog.text = "Yep, there aint never been such an animal... More than a thousand slaves have participated in a mutiny. Two plantations been have burnt down to the ground and almost each of their masters were murdered. The commandant was worried that they'd come attack the city, so he has enforced martial law. And it all started because of the story of two slaves Tamango and Isauri...";
-			link.l1 = "Wow! Tell me the whole story! Who are they?";
+			dialog.text = "Да уж, такого никогда не бывало... Больше тысячи рабов участвовали в бунте. Две плантации сожгли дотла, а хозяев убили почти всех поголовно. Комендант опасался, что они на город пойдут - ввел военное положение. А все началось с истории любви двух невольников - Таманго и Изауры...";
+			link.l1 = "Интересно! Расскажи подробнее, кто это?";
 			link.l1.go = "EscapeSlaveVillemstad_T2";
 		break;
 		
 		case "EscapeSlaveVillemstad_T2":
-				dialog.text = "Tamango and Izaura - slaves of Blenheim plantation, the first plantation burnt. They loved each other. But a son of planter, Leonsio, arrived from Europe. He wanted to make Izaura his personal concubine. Tamango didn't like the idea and so did Izaura, she really did loved the black devil\nI must say that Tamango was some sort of war chief back in Africa... A giant with deadly skills of fighting with an axe, slaves respected him. So they attacked the guards at night, killed every Dutch in Blenheim\nThen Izaura had opened the mansion's gates and they slayed everyone there. Blenburg was burnt to the ground too. Then they fled to the jungles and disappeared...";
-			link.l1 = "Well, how's that for a story! Sounds like a plot for a novel! How did you find all that out, by the way?";
+				dialog.text = "Таманго и Изаура - это рабы с плантации Бленхейм, ну, с той, которую сожгли первой. Любовь у них была. А потом приехал из Европы сын хозяина плантации, Леонсио, и положил глаз на Изауру. В общем, решил наложницей своей сделать. Это очень не понравилось Таманго, да и Изаура была не в восторге - любила она этого черномазого\nА надо сказать, что Таманго у себя в Африке был каким-то не то вождем, не то царьком... Здоров он, как бык, топором махать мастер, да и среди рабов авторитет. Вот и подбил их на восстание\nНочью напали на охрану и вырезали всех голландцев в Бленхейме. Изаура открыла им ворота усадьбы - они и там всех перебили. Потом пошли всей толпой на соседнюю плантацию, Бленбург, и устроили там такую же резню. Затем ушли в джунгли и исчезли без следа...";
+			link.l1 = "Вот так история! Прямо сюжет для романа! И откуда ты все это знаешь?";
 			link.l1.go = "EscapeSlaveVillemstad_T3";
 		break;
 		
 		case "EscapeSlaveVillemstad_T3":
-			dialog.text = "Rumors, mynheer, the Earth is teeming with rumors. Rum loosens tongues, all you have to do is listen...";
-			link.l1 = "And how did that all end? Did they find those darkies?";
+			dialog.text = "Слухи, "+ GetSexPhrase("минхер","госпожа") +", слухами земля полнится. Ром развязывает языки, достаточно просто слушать...";
+			link.l1 = "И чем все закончилось? Нашли этих черномазых?";
 			link.l1.go = "EscapeSlaveVillemstad_T4";
 		break;
 		
 		case "EscapeSlaveVillemstad_T4":
-				dialog.text = "Not a chance! Until the reinforcements finally managed to arrive, nobody took a step into the jungle. Then a warship arrived with a unit of soldiers and they searched the island and none of them ever came back.";
-			link.l1 = "Well how about that! A thousand men and they all vanished into thin air!";
+				dialog.text = "Какое там! Пока не подоспело подкрепление, никто и шагу в джунгли не делал. Потом прибыл военный корабль с отрядом солдат, обыскали они остров - никого нет.";
+			link.l1 = "Ну ты подумай! Тысяча человек - и все как в воду канули!";
 			link.l1.go = "EscapeSlaveVillemstad_T5";
 		break;
 		
 		case "EscapeSlaveVillemstad_T5":
-			dialog.text = "Exactly! They vanished into thin air!";
-			link.l1 = "What are you talking about, " + npchar.name + "? I don't get it...";
+			dialog.text = "Именно, "+ GetSexPhrase("минхер","госпожа") +"! В воду они и канули!";
+			link.l1 = "Ты это о чем сейчас, " + npchar.name + "? Не понимаю что-то...";
 			link.l1.go = "EscapeSlaveVillemstad_T6";
 		break;
 		
 		case "EscapeSlaveVillemstad_T6":
-			dialog.text = "He he... I bet they swam off the island. The thing is the next night after the mutiny a bark went missing from the ship riding. You can slap me silly and call me Diana if it wasn't at the hands of Tamango and his brethren! That's why they're not on the island.";
-			link.l1 = "All right, thanks for the intriguing story, " + npchar.name + ". Although I can't even picture negros being about to handle sails.";
+			dialog.text = "Хе-хе... Бьюсь об заклад - уплыли они с острова. Дело в том, что на следующую ночь после восстания со стоянки кораблей пропал барк. Не пить мне рому до конца дней моих, если это не дело рук Таманго и его братии! Поэтому и нет их на острове.";
+			link.l1 = "Ладно, спасибо за интересный рассказ, " + npchar.name + ". Хотя не представляю, как негры могут управляться с парусами.";
 			link.l1.go = "EscapeSlaveVillemstad_T7";
 		break;
 		
 		case "EscapeSlaveVillemstad_T7":
-			dialog.text = "Well, I believe they can. Maybe one of them used to serve as a sailor. Stop by and visit me again, " + pchar.name + ", don't forget and I'll get some more stories for you.";
-			link.l1 = "Thanks!! Well, it's time for me to get going.";
+			dialog.text = "Ну, видать могут... Может, кто из них раньше матросом ходил. Заглядывайте ко мне еще, " + pchar.name + ", не забывайте, а я вам еще историй приготовлю.";
+			link.l1 = "Спасибо! Ну, мне пора.";
 			link.l1.go = "exit";
 			AddQuestRecord("Slavetrader", "22_2");
 			pchar.questTemp.Slavetrader = "EscapeSlaveVillemstad_P";
 		break;						
 
 		case "Portugal":
-			dialog.text = "Yes, that's correct. They caught that pirate. And can you believe how? He was picked up on a cockboat alone in the middle of the sea.  He didn't even make a peep before he was sent into the hold for the rats. It really is amusing, you know such a dangerous pirate got caught like such a dummy!";
-			link.l1 = "And why was he all alone in the sea?";
+			dialog.text = "Да, отловили этого пирата, всё верно. И вы можете себе представить как? Его подобрали на шлюпке, одного, посреди моря. Он даже пикнуть не успел, как отправился в трюм к крысам. Забавно, правда - такой опасный пират и так глупо попасться!";
+			link.l1 = "И чего его в одиночку в море понесло?";
 			link.l1.go = "Portugal_1";
 		break;
 		
 		case "Portugal_1":
-			dialog.text = "He probably decided to part ways with his henchmen, no doubt... They couldn't split something. Now he's in the hands of the Company itself and those guys don't take well to jokes. They say he took possession of one of the Company's boats with something valuable. Apparently it's just because they want to squeeze some information out of him that he's still not dangling on a noose already.";
-			link.l1 = "So, when will his execution be, do you know?";
+			dialog.text = "Наверно, решил слинять от своих подельничков, не иначе... не поделили чего-то. А теперь им занялась сама Компания - а с этими ребятами шутки плохи. Говорят, он не так давно захватил судно Компании с чем-то ценным. Видимо, только потому, что из него хотят выудить некие сведения, он до сих пор не болтается на виселице.";
+			link.l1 = "Так когда состоится его казнь, ты не знаешь?";
 			link.l1.go = "Portugal_2";
 		break;
 		
 		case "Portugal_2":
-			dialog.text = "Nobody knows. I think once the Company finds out what it wants, they'll fasten a hemp tie around his neck. The Portuguese is in prison right now under a reliable guard. Recently they brought his boatswain over to us as well. His story was even more surprising he turned himself in to the Dutch in Philipsburg. So, they've set him up with a spot right next to his ex-captain, he he...";
-			link.l1 = "Miracles do happen! All right, I'll be watching out for news. I don't want to miss that image. Bye, "+npchar.name+"!";
+			dialog.text = "Этого никто не знает. Думаю - как узнает Компания, что хочет, так и повяжут ему пеньковый галстук. Португалец сейчас в тюрьме под надежной охраной. Недавно к нам привезли еще и его боцмана - с тем так еще удивительнее - он сам сдался голландцам в Филипсбурге. Ну, они его и пристроили по соседству с бывшим капитаном, хе-хе...";
+			link.l1 = "Чудеса да и только! Ладно, буду следить за новостями. Не хочу пропустить это представление. Бывай, "+npchar.name+"!";
 			link.l1.go = "Portugal_3";
 		break;
 		

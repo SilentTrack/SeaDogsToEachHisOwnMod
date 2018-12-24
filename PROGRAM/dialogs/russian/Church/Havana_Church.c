@@ -4,40 +4,40 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What kind of questions, "+ GetSexPhrase("my son","my daughter") +"?", "Ask, I am listening to you..."), "I am listening, speak, "+ GetSexPhrase("my son","my daughter") +"...", "And it's the third time I say to you, "+ GetSexPhrase("my son","my daughter") +", ask your question.",
-                          "A clergyman has a lot of work... and you are bothering me, "+ GetSexPhrase("my son","my daughter") +"...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "Not now, padre..."), "Have nothing to say really...",
-                      "I'll ask, I'll ask... a bit later though...", "Pardon me, holy father...", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы, "+ GetSexPhrase("сын мой","дочь моя") +"?", "Спрашивай, я слушаю тебя..."), "Я слушаю тебя, говори, "+ GetSexPhrase("сын мой","дочь моя") +"...", "И в третий раз говорю тебе, "+ GetSexPhrase("сын мой","дочь моя") +": задавай свой вопрос.",
+                          "Столько обязанностей у церковнослужителя, а тут еще и ты донимаешь, "+ GetSexPhrase("сын мой","дочь моя") +"...", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я "+ GetSexPhrase("передумал","передумала") +"...", "Не сейчас, падре..."), "Да, пока особо и нечего сказать...",
+                      "Задам, задам... Только позже...", "Простите, святой отец...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			// калеуче
 			if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "havana")
 			{
 				ref sld = characterFromId("Villemstad_Priest");
-				link.l1 = "Father superior "+sld.name+" from the church of Willemstad sent me. You told him that in a cave on Cuba, strange things have been seen...";
+				link.l1 = "Меня прислал отец "+sld.name+", это настоятель церкви Виллемстада. Вы сообщили ему о том, что в пещере на Кубе были замечены...";
 				link.l1.go = "caleuche";
 			}
 			if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "havana1")
 			{
-				link.l1 = "I have visited the cave in the jungle, Father.";
+				link.l1 = "Я посетил пещеру в джунглях, святой отец.";
 				link.l1.go = "caleuche_4";
 			}
 		break;
 		
 		case "caleuche":
-			dialog.text = "Thank God he paid heed to it! Once the gossips about the living dead had reached my ears, I immediately notified His Reference father Vincento, the inquisitor of Santiago. He promised to look into it, but so far no action was undertaken! I am afraid, His Reverence has been very busy lately...";
-			link.l1 = "I'll look into it myself. Perhaps all these gossips are but the ramblings of drunken hunters - therefore the Inquisition hasn’t taken them seriously. I'll head into the jungle to see it all with my own eyes.";
+			dialog.text = "Слава Богу, что он откликнулся на это! Едва слухи об оживших мертвецах достигли моих ушей, я поставил в известность Его Преподобие отца Винсенто, инквизитора Сантьяго. Он обещал разобраться, но до сих пор не было предпринято никаких действий! Боюсь, что у Его Святейшества более важные дела...";
+			link.l1 = "Я займусь этим делом. Возможно, все эти слухи - не более, чем россказни подгулявших охотников, поэтому инквизиция и не восприняла их всерьез. Я лично отправлюсь в джунгли и посмотрю на все собственными глазами.";
 			link.l1.go = "caleuche_1";
 		break;
 		
 		case "caleuche_1":
-			dialog.text = "I assure you, my son, it's very serious. The man who told me about the walking dead, deserves my full trust.";
-			link.l1 = "Alright. I'll be ready for battle, and if the unholy creatures have indeed taken root in the cavern, I'll purge it of them.";
+			dialog.text = "Уверяю тебя, сын мой, это не шутки! Человек, который поведал мне о ходячих мертвецах, заслуживает самого полного доверия!";
+			link.l1 = "Хорошо. Я буду готов к схватке. И если нечисть действительно угнездилась в пещере - я выбью ее оттуда.";
 			link.l1.go = "caleuche_2";
 		break;
 		
 		case "caleuche_2":
-			dialog.text = "May our Lord be with you! Here, take this sanctified amulet. It shall help you in your battle. Destroy the spawns of the devil!";
-			link.l1 = "Until we meet again, Father "+npchar.name+". Once I am done with that, I'll return to you immediately.";
+			dialog.text = "Да пребудет с тобой сила Господа нашего! Вот, возьми этот освященный оберег. Он поможет тебе в схватке. Уничтожь дьявольское отродье!";
+			link.l1 = "До встречи, отец "+npchar.name+". По возвращении назад я немедленно приду к вам.";
 			link.l1.go = "caleuche_3";
 		break;
 		
@@ -45,7 +45,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			DialogExit();
 			AddQuestRecord("Caleuche", "27");
 			pchar.questTemp.Caleuche = "cave";
-			Log_Info("You have received a church amulet");
+			Log_Info("Вы получили церковный оберег");
 			PlaySound("interface\important_item.wav");
 			GiveItem2Character(pchar, "amulet_7"); 
 			if (GetCharacterIndex("cavehunter") != -1)
@@ -63,57 +63,57 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "caleuche_4":
-			dialog.text = "What have you found there, my son? Perhaps, our fears were unfounded?";
-			link.l1 = "Unfortunately, not. The cave was crawling with undead. With God's help I destroyed all the living dead there. They will not bother anyone anymore.";
+			dialog.text = "Что ты там нашел, сын мой? Быть может, наши страхи были напрасны?";
+			link.l1 = "Увы, не напрасны. Пещера буквально кишела нечистью. С Божьей помощью я уничтожил всех оживших мертвецов. Больше они не будут беспокоить людей.";
 			link.l1.go = "caleuche_5";
 		break;
 		
 		case "caleuche_5":
-			dialog.text = "Praise the Lord! You're indeed His chastising sword, my son! Please allow me to express my deepest gratitude on behalf of the entire parish of Havana. Please accept these sanctified amulets as your reward. Surely you will find them useful in your perilous journeys.";
-			link.l1 = "Thank you, Father "+npchar.name+".";
+			dialog.text = "Слава Всевышнему! Ты воистину карающий меч Господень, сын мой! Позволь выразить тебе глубокую признательность от всего прихода Гаваны, и прими мою награду: вот эти освященные обереги. Они наверняка пригодятся тебе в твоих нелегких странствиях.";
+			link.l1 = "Спасибо, отец "+npchar.name+".";
 			link.l1.go = "caleuche_6";
 		break;
 		
 		case "caleuche_6":
-			Log_Info("You have received church amulets");
+			Log_Info("Вы получили церковные обереги");
 			PlaySound("interface\important_item.wav");
 			GiveItem2Character(pchar, "amulet_3"); 
 			GiveItem2Character(pchar, "amulet_9"); 
 			GiveItem2Character(pchar, "obereg_7"); 
 			GiveItem2Character(pchar, "obereg_11"); 
-			dialog.text = "Also I'll make sure that both common people and those in power knew about your heroic deed. And I will pray fro you day and night.";
-			link.l1 = "Thank you, Father. I have one more question for you.";
+			dialog.text = "Также я позабочусь, чтобы о твоем подвиге узнали и простые горожане, и власть придержащие. И буду неустанно молиться за тебя.";
+			link.l1 = "Благодарю, святой отец. Но у меня есть еще вопрос к вам.";
 			link.l1.go = "caleuche_7";
 		break;
 		
 		case "caleuche_7":
-			dialog.text = "Ask, my son.";
-			link.l1 = "Tell me, Father "+npchar.name+", has a man by the name of Joachim Merryman recently arrived at your town? A middle-aged senor, Portuguese, with moustache and imperial beard and piercing eyes?";
+			dialog.text = "Спрашивай, сын мой.";
+			link.l1 = "Скажите, отец "+npchar.name+", к вам в город не прибывал человек по имени Жоаким Мерриман? Немолодой сеньор, португалец, носит усы и эспаньолку, с пронзительным взглядом?";
 			link.l1.go = "caleuche_8";
 		break;
 		
 		case "caleuche_8":
 			sld = characterFromId("Villemstad_Priest");
-			dialog.text = "That name or description do not ring a bell, I am sorry. Who is this man?";
-			link.l1 = "Merryman is a warlock. The Inquisition has been hunting him for a very long time already. Me and Father "+sld.name+" suspect that the emergence of the living dead on Cuba is his work. Not long ago he had been living in Willemstad, then he suddenly disappeared, and the woman who had rented him a room was turned into the walking skeleton shortly thereafter.";
+			dialog.text = "Это имя, как и описание, ничего не говорит мне. А кто он такой, этот человек?";
+			link.l1 = "Мерриман - колдун, которого уже много лет преследует инквизиция. Я и отец "+sld.name+" подозреваем, что появление на Кубе оживших мертвецов - его рук дело. Он не так давно проживал в Виллемстаде, потом уехал, а женщина, сдававшая ему комнату, через некоторое время превратилась в ужасный ходячий скелет.";
 			link.l1.go = "caleuche_9";
 		break;
 		
 		case "caleuche_9":
-			dialog.text = "You don't say! I will immediately tell that to the inquisitors, to Father Vincento himself! He must know what's happening there! Tell me, son, you think that people who were gone missing in the jungle...";
-			link.l1 = "Yes! I am certain that those living dead in the cavern are your former missing citizens. And I want to look for that Portuguese on Cuba and find him! That scoundrel managed to get a hold of an old heathen relic - a jade skull of Yum Cimil. I am afraid that with that artifact and Indian witchery Merryman will cause even more trouble, if not stopped soon.";
+			dialog.text = "Какой кошмар! Я немедленно сообщу в инквизицию, самому отцу Винсенто! Он должен знать, что у нас происходит! Скажи, сын мой, ты подозреваешь, что пропавшие в джунглях люди...";
+			link.l1 = "Да! Я думаю, что мертвецы, нечисть в пещере - это то, во что превратились ваши исчезнувшие граждане. И хочу хорошенько поискать на Кубе этого португальца. Мерзавец заполучил в свои руки древний языческий артефакт, нефритовый череп Юм Симиля. Боюсь, что с его помощью и помощью индейского колдовства, Мерриман натворит еще немало бед, если его не остановить.";
 			link.l1.go = "caleuche_10";
 		break;
 		
 		case "caleuche_10":
-			dialog.text = "You think that the story with the undead in the cave can repeat once more?";
-			link.l1 = "Almost certainly. I am not sure what drives him, but surely his aspirations are far from being virtuous.";
+			dialog.text = "Ты хочешь сказать, что история с заселением пещеры нечистью может повториться?";
+			link.l1 = "Я почти уверен в этом. Не знаю, что движет Жоакимом Мерриманом, но его замыслы далеки от благодетельных.";
 			link.l1.go = "caleuche_11";
 		break;
 		
 		case "caleuche_11":
-			dialog.text = "May the Almighty show mercy on us! Seek him out, my son! I allow you to take any measures against him in the name of our Holy Church! And I will immediately dispatch a messenger to Santiago with a report for Father Vincento.";
-			link.l1 = "Good idea. Farewell, Father "+npchar.name+".";
+			dialog.text = "Да смилуется над нами Всевышний! Ищи, сын мой, благословляю тебя и разрешаю любые действия во имя нашей Церкви! И я немедленно отправляю гонца в Сантьяго с депешей к отцу Винсенто.";
+			link.l1 = "Отправляйте. Всего доброго, отец "+npchar.name+".";
 			link.l1.go = "caleuche_12";
 		break;
 		

@@ -4,34 +4,35 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What kind of questions?", "What do you want, " + GetAddress_Form(NPChar) + "?"), "You've already tried to ask me a question " + GetAddress_Form(NPChar) + "...", "You have been talking about some question for the third time today...",
-                          "Look, if you have nothing to tell me about the port's matters then don't bother me with your questions.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind.", "Sorry!"), "Sorry!", "Sorry!", "Sorry!", npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("Какие вопросы?", "Что вам угодно, " + GetAddress_Form(NPChar) + "?"), "Совсем недавно вы пытались задать мне вопрос " + GetAddress_Form(NPChar) + "...", "В течение этого дня вы уже третий раз говорите о каком-то вопросе...",
+                          "Послушайте, если вы не по делам порта, то не стоит меня вопросами донимать.", "block", 1, npchar, Dialog.CurrentNode);
+			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("Я передумал"+ GetSexPhrase("","а") +"...", "Сейчас мне не о чем говорить"), "Хм, что-то с памятью моей стало...",
+                      "Да уж, действительно в третий раз...", "Извините, но портовые дела меня сейчас не интересуют.", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			//--> Бремя гасконца
 		if (CheckAttribute(pchar, "questTemp.Sharlie") && pchar.questTemp.Sharlie == "ship" && !CheckAttribute(npchar, "quest.RescueDaughter"))
 		{
-			link.l1 = "Sir, I am looking for a job. But not a porter job, something more suitable for my rank. Mission, service, help in the delicate matter... I will take any assignment you have got.";
+			link.l1 = "Сударь, я ищу работу. Но не портового грузчика, а что-то более достойное моего положения. Поручение, услуга, помощь в деликатном вопросе... Возьмусь за любое дело.";
 			link.l1.go = "Sharlie";
 		}
 		//<-- Бремя гасконца
 		break;
 		
 		case "Sharlie":
-			dialog.text = "Help? Hm. I am doing fine, thank God. But one my friend is really in need of help and it's urgent. He intends to go the jungles alone to fight the Indians, this is madness!\nI tried to reason him but he didn't listen… He worries to much about his daughter and even ready to give his life for her!";
-			link.l1 = "Listen, I don't get it. Let's start again: who is your friend, where can I find him and what kind of help does he need?";
+			dialog.text = "Помощь? Хм. У меня слава Богу, всё хорошо. Но вот одному моему хорошему другу действительно требуется помощь, причем срочно. Он собирается в одиночку идти в джунгли воевать с индейцами - абсолютное безрассудство!\nЯ пытался отговорить его, упрашивал - он уперся и ни в какую... Он так переживает за свою дочь, готов пожертвовать всем ради нее, даже своей жизнью!";
+			link.l1 = "Послушайте, я что-то ничего не понимаю. Давайте по порядку: кто ваш друг, где его найти и чем именно ему нужно помочь?";
 			link.l1.go = "Sharlie_1";			
 		break;
 		
 		case "Sharlie_1":
-			dialog.text = "Ah, pardon me, I am just too anxious… Prosper… He is going to die for sure! And I can't help him - I am not a soldier. His name? Prosper Troubale. His daughter is missing and he believes that the Indians are responsible\nImagine that, he plans to kill some Indian band on his own! They will cut him in pieces... At this moment he is buying a musket and getting ready to go to the selva!";
-			link.l1 = "Oh, you are not the best talker... Where can I find your friend...what was his name... Prosper?";
+			dialog.text = "Ах, простите, я очень взволнован... Проспер... Он ведь идет на верную смерть! А я ничем не могу ему помочь - я ведь не солдат. Как его зовут? Его имя Проспер Трубаль. У него пропала дочь, и он считает, что к этому приложили руку краснокожие дикари\nИ он решил - представляете - самостоятельно расправиться с какой-то шайкой индейцев! Они же порубят его на куски... Он сейчас покупает мушкет и боеприпасы, чтобы отправиться в сельву!";
+			link.l1 = "Ох, как же тяжело с вами... Где мне найти этого вашего друга... как его... Проспера?";
 			link.l1.go = "Sharlie_2";			
 		break;
 		
 		case "Sharlie_2":
-			dialog.text = "I have just talked with him and was trying to make him change his mind. He is not far from here, near the well. It's left from the door. Speak to him and do something! He won't get away from the jungles alone, I am sure in that. Red skinned devils will torn his...";
-			link.l1 = "Enough, stop your complaining. I am heading to your friend immediately. I hope that I will be able to help him.";
+			dialog.text = "Я только что с ним разговаривал, пытался отговорить от этого безумия. Он сейчас недалеко от нашего управления, у колодца. Это налево от выхода. Идите к нему, и сделайте что-нибудь! Если он пойдет в джунгли один, то назад уже не вернется, я в этом уверен. Краснокожие дьяволы сдерут с него...";
+			link.l1 = "Все, довольно причитаний. Я немедленно иду к вашему другу. Надеюсь, я смогу ему помочь.";
 			link.l1.go = "Sharlie_3";			
 		break;
 		

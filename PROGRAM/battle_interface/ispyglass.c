@@ -238,62 +238,62 @@ void SetSpyGlassData()
 		switch (sti(chref.Ship.Cannons.Type))
 		{
             case  CANNON_TYPE_CANNON_LBS3:
-			      CannonTypeName = " Falconets";
+			      CannonTypeName = " Пушки 3ф";
 			      break;
 				
             case  CANNON_TYPE_CANNON_LBS6:
-			      CannonTypeName = " Light demi-cannons";
+			      CannonTypeName = " Пушки 6ф";
 			      break;
 			      
 			case  CANNON_TYPE_CANNON_LBS12:
-			      CannonTypeName = " Light demi-cannons";
+			      CannonTypeName = " Пушки 12ф";
 			      break;
 			      
 			case  CANNON_TYPE_CANNON_LBS16:
-			      CannonTypeName = " Naval demi-cannons";
+			      CannonTypeName = " Пушки 16ф";
 			      break;
 			
 			case  CANNON_TYPE_CANNON_LBS20:
-			      CannonTypeName = " Small cannons";
+			      CannonTypeName = " Пушки 20ф";
 			      break;			
 				  
 			case  CANNON_TYPE_CANNON_LBS24:
-			      CannonTypeName = " Ship cannons";
+			      CannonTypeName = " Пушки 24ф";
 			      break;
 			      
 			case  CANNON_TYPE_CANNON_LBS32:
-			      CannonTypeName = " Battery cannons";
+			      CannonTypeName = " Пушки 32ф";
 			      break;
 			      
 			case  CANNON_TYPE_CANNON_LBS36:
-			      CannonTypeName = " Coastal cannons";
+			      CannonTypeName = " Пушки 36ф";
 			      break;	  
 				  
 		    case CANNON_TYPE_CANNON_LBS42:
-		         CannonTypeName = " Siege cannons";
+		         CannonTypeName = " Пушки 42ф";
 			     break;
 			     
 			case CANNON_TYPE_CANNON_LBS48:
-		         CannonTypeName = " Bombards";
+		         CannonTypeName = " Пушки 48ф";
 			     break;     
 			     
 			case CANNON_TYPE_CULVERINE_LBS8:
-			     CannonTypeName = " Demi-couleuvrines";
+			     CannonTypeName = " Полукулеврины";
 			     break;			     
 			     
 			case CANNON_TYPE_CULVERINE_LBS18:
-			     CannonTypeName = " Couleuvrines";
+			     CannonTypeName = " Кулеврины";
 			     break;			     
 			     
 		    case CANNON_TYPE_CULVERINE_LBS36:
-		         CannonTypeName = " Full couleuvrines";
+		         CannonTypeName = " Полные кулеврины";
 			     break;
 		}
 	}	
 	
 	if (CheckAttribute(arScopeItm,"scope.show.mushketshot") && sti(arScopeItm.scope.show.mushketshot) != 0  && CheckCharacterPerk(chref, "MusketsShoot") && !isFort)	
 	{
-		sCaptainName = CannonTypeName + "  Musket salvo   " + sCaptainName;
+		sCaptainName = CannonTypeName + "  Мушкетный залп   " + sCaptainName;
 		sBackCapTextureName = "battle_interface\shipbackicon2.tga";
 	}
 	else
@@ -368,8 +368,10 @@ void SetSpyGlassData()
 		if (CheckAttribute(chref, "Ship.LastBallCharacter")) Log_Info("LastBallCharacter = " + chref.Ship.LastBallCharacter);
 		if (CheckAttribute(arScopeItm,"scope.show.mushketshot") && sti(arScopeItm.scope.show.mushketshot) != 0  && CheckOfficersPerk(chref, "MusketsShoot")) Log_Info("MushketShot enabled");		
 		if (CheckAttribute(chref,"Situation")) Log_Info("Cap. Situation : " + chref.situation +" type :" + chref.situation.type);
-		if (CheckAttribute(chref, "DontRansackCaptain")) Log_Info("Not surrender!");
-		if (CheckAttribute(chref, "surrendered")) Log_Info("Already surrender!");
+		if (CheckAttribute(chref, "DontRansackCaptain")) Log_Info("Не сдастся!");
+		if (CheckAttribute(chref, "surrendered")) Log_Info("Уже сдался!");
+		if (CheckAttribute(chref, "ShipHideImmortal")) Log_Info("Непотопляемый!");
+		if (CheckAttribute(chref, "SeaBoss")) Log_Info("Морской босс: урон - "+stf(chref.SeaBoss)+"");
 		
 //		Log_Info("ShipEnemyDisable = " + CheckAttribute(chref, "ShipEnemyDisable"));
 		Log_Info("AlwaysFriend = " + CheckAttribute(chref, "AlwaysFriend"));

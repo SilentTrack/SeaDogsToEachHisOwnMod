@@ -22,63 +22,63 @@ void ProcessDialogEvent()
 			if (LAi_grp_playeralarm > 0)
 			{
        			dialog.text = NPCharRepPhrase(pchar,
-					LinkRandPhrase("There's been an alarm raised in the town. Everyone's looking for you! I wouldn't wait around here for too long if I were you.", "The whole city guardian is scouring the city trying to find you. I'm no idiot and I'm not about to talk to you!", "Run, buddy, before the soldiers make mincemeat out of you..."),
-					LinkRandPhrase("What do you need, scoundrel?! The city guardian is already on your trails. You won't get far , dirty pirate!", "dirty killer, get out of my house! Guards!!", "I'm not afraid of you, hoodlum! The noose is calling you, you won't get far..."));
+					LinkRandPhrase("В городе поднята тревога, тебя всюду ищут! На твоем месте я бы не стал здесь задерживаться.", "Вся городская стража рыщет по городу в поисках тебя. Я не идиот и разговаривать с тобой не буду!", "Беги, "+ GetSexPhrase("приятель","подруга") +", пока солдаты не сделали из тебя решето..."),
+					LinkRandPhrase("Что тебе нужно, "+ GetSexPhrase("негодяй","мерзавка") +"?! Городская стража уже взяла твой след, далеко тебе не уйти"+ GetSexPhrase(", грязный пират!","") +"", "Грязн"+ GetSexPhrase("ый","ая") +" убийца, вон из моего дома! Стража!!", "Я не боюсь тебя, мерзав"+ GetSexPhrase("ец","ка") +"! Скоро тебя повесят, далеко тебе не уйти..."));
 				link.l1 = NPCharRepPhrase(pchar,
-					RandPhraseSimple("Heh, I'm not worried about the alarm...", "They have no chance of catching me."),
-					RandPhraseSimple("Shut your pie hole, " + GetWorkTypeOfMan(npchar, "") + ", or I will tear your bloody tongue!", "Heh, " + GetWorkTypeOfMan(npchar, "") + ", you too want to hunt a pirate! Listen, pal, keep calm and you'll live..."));
+					RandPhraseSimple("Хех, тревога для меня не проблема...", "Им меня ни за что не поймать."),
+					RandPhraseSimple("Заткни свою пасть, " + GetWorkTypeOfMan(npchar, "") + ", а не то вырву твой поганый язык!", "Хех, " + GetWorkTypeOfMan(npchar, "") + ", а все туда же - пиратов ловить! Вот что я тебе скажу, приятель: сиди тихо и будешь жить..."));
 				link.l1.go = "exit";
 				break;
 			}
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = TimeGreeting() + "! Welcome, " + GetAddress_Form(NPChar) + " to Los-Teques mine saloon. Food, drinks an...girls –all at affordable prices! My name is "+GetFullName(npchar)+" and I am always at your service.";
-				Link.l1 = "Let's see... I'm " + GetFullName(pchar) + ". Pleased to meet you, "+npchar.name+".";
+				dialog.text = TimeGreeting() + "! Добро пожаловать, " + GetAddress_Form(NPChar) + " в таверну рудника Лос-Текес. Еда, выпивка и... девочки - все по умеренным ценам! Меня зовут "+GetFullName(npchar)+" и я всегда к вашим услугам.";
+				Link.l1 = "Посмотрим... Я " + GetFullName(pchar) + ". Рад с вами познакомиться, "+npchar.name+".";
 				Link.l1.go = "meeting";
 				npchar.quest.meeting = "1";
 			}
 			else
 			{
-				dialog.text = "Aha, it's my old acquaintance, captain "+GetFullName(pchar)+"! Glad to see you, old man! Rum, girls?";
+				dialog.text = "А-а, это же мой старый знакомый, капитан "+GetFullName(pchar)+"! Рад вас видеть, старина! Рому, девочек?";
 				if (makeint(pchar.money) >= 5)
 				{
-					link.l1 = "Pour me some rum, "+npchar.name+".";
+					link.l1 = "Налей мне рому, "+npchar.name+".";
 					link.l1.go = "drink";
 				}
-				link.l2 = "I'd like to get some shut eye. Do you have a free room?";
+				link.l2 = "Я бы хотел отдохнуть. У тебя есть свободная комната?";
 				link.l2.go = "room";
-				link.l3 = LinkRandPhrase("Do you have any current news?","What's new in these parts?","How's life coming along on dry land?");
+				link.l3 = LinkRandPhrase("Расскажи мне последние новости?","Что новенького в этих краях?","Как течет жизнь на суше?");
 				link.l3.go = "rumours_tavern";
-				link.l4 = "No, I don't need anything, "+npchar.name+". I just stopped by to say hello to you.";
+				link.l4 = "Нет, ничего не надо, "+npchar.name+". Я просто зашел поздороваться с тобой.";
 				link.l4.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "meeting":
-			dialog.text = "Oh, I'm so happy! New faces are a rarity in our city. How about I pour you sum rum and we'll have a chat...";
-			link.l1 = "This is my first time here and I'd like to find out a little bit more about this settlement.";
+			dialog.text = "О, а я-то как рад! Новые лица редкость в нашем городке. Давайте я налью вам рому, поболтаем...";
+			link.l1 = "Я здесь впервые, и хотел бы немного больше узнать об этом поселении.";
 			link.l1.go = "info";
 			if (makeint(pchar.money) >= 5)
 			{
-				link.l2 = "Pour me some rum, "+npchar.name+".";
+				link.l2 = "Налей мне рому, "+npchar.name+".";
 				link.l2.go = "drink";
 			}
-			link.l3 = "I'd like to get some shut eye. Do you have a free room?";
+			link.l3 = "Я бы хотел отдохнуть. У тебя есть свободная комната?";
 			link.l3.go = "room";
 		break;
 		
 		case "info":
-			dialog.text = "Nothing interesting to tell. Same crap everyday: boredom, sun and dust. Only soldiers and Indians live here. You may also find a few adventures hungry for gold\nSometimes gentlemen, captains like yourself, visit us in order to sell slaves for ingots and to buy valuable metals. Our merchant is quite interesting man, he sells not only golden and silver nuggets, but also some gems. Not precious ones\nHe claims that people with special knowledge may find those cobblestones very useful. So check our store. The mine itself is located further beneath the mountain. You may attend it if you wish, but I recommend to avoid making guard upset\nDon't talk to convicts and God save you from stealing. Anyways, the best place in this city is my tavern, the only place to rest from this burning hell!";
-			link.l1 = "Thanks for the information!";			
+			dialog.text = "А о чем тут узнавать-то? У нас изо дня в день одно и то же: скука, палящее солнце и пыль. Население сплошь состоит из солдат и индейцев. Также у нас всегда можно найти пару-тройку искателей приключений и прочих авантюристов и проходимцев, которых сюда привлекают золотые копи\nЗаходят сюда и джентльмены, капитаны кораблей, вроде вас: продать рабов за золотые слитки или купить драгоценные металлы. Наш интендант - занятный человек, торгует не только золотыми и серебряными самородками, но и какими-то камнями\nПричем не драгоценными - так, ерунда какая-то, но при этом утверждает, что знающему человеку эти булыжники пригодятся. Так что обязательно загляните в наш магазин\nШахта находится в глубине города, у гор. Если хотите - можете посетить и ее, но крайне не рекомендую раздражать охрану, вести разговоры с каторжниками, и, Боже вас упаси, попытаться что-нибудь украсть\nОднако самое лучшее место в городе - это моя таверна. Только здесь можно отдохнуть душой и телом от этого знойного ада!";
+			link.l1 = "Благодарю за информацию!";			
 			link.l1.go = "exit";
 		break;
 		
 		case "drink":
 			if (CheckAttribute(pchar, "questTemp.Rum") && sti(pchar.questTemp.Rum) > 3)
 			{
-				dialog.text = "Captain, I think you'd be better off stopping. God forbid you raise hell while your under the influence. We're really strict about that here even your authority won't help you.";
-				link.l1 = "Hm... I suppose you're right –I've already had enough. Thanks for the concern!";			
+				dialog.text = "Капитан, по-моему, вам следует остановиться. Не дай Бог беды пьяным натворите. У нас здесь с этим строго - не поможет даже ваш авторитет.";
+				link.l1 = "Хм... Пожалуй, ты прав - я уже достаточно выпил. Спасибо за заботу!";			
 				link.l1.go = "exit";
 			}
 			else
@@ -98,8 +98,8 @@ void ProcessDialogEvent()
 				}				
 				WaitDate("",0,0,0, 0, 30);
 				
-				dialog.text = "You're welcome, captain. Just five pesos –for a pint of my best black Jamaican rum!";
-				link.l1 = RandPhraseSimple(LinkRandPhrase("All right, to your health and the prosperity of your establishment, buddy!","All right, to those at sea!","All right, to the augmented well-being of your town!"), LinkRandPhrase("All right, to a gust of production, to a gust of luck, that we all live more light-hearted and wealthy!","All right, to the wind always blowing in our backs in all affairs!","All right, to happiness, luck, joy, and... women!"));		
+				dialog.text = "Пожалуйста, капитан. Всего за пять песо - пинта моего лучшего черного ямайского рома!";
+				link.l1 = RandPhraseSimple(LinkRandPhrase("Ну, за твое здоровье и процветание твоего заведения, дружище!","Ну, за тех, кто в море!","Ну, за приумножение благосостояния вашего города!"), LinkRandPhrase("Ну, за ветер добычи, за ветер удачи, чтоб все мы зажили веселей и богаче!","Ну, за то, чтобы ветер всегда был попутным во всех делах!","Ну, за счастье, удачу, радости и... женщин!"));		
 				link.l1.go = "drink_1";
 			}
 		break;
@@ -122,83 +122,83 @@ void ProcessDialogEvent()
 		case "room":
 			if (CheckAttribute(pchar, "GenQuest.MinentownSex"))
 			{
-				dialog.text = "Senior, you've paid for a room and a girl. Go on upstairs, she's been waiting for you for a while.";
-				link.l1 = "All right.";
+				dialog.text = "Сеньор, вы ведь уже оплатили и комнату, и девочку. Ступайте наверх, она вас уже заждалась.";
+				link.l1 = "Хорошо.";
 				link.l1.go = "exit";
 				break;
 			}
-			dialog.text = "We do. How long were you planning to stay?";
+			dialog.text = "Есть. На какой срок вы планируете остановиться?";
 			if(!isDay())
 			{
-				link.l1 = "Til the morning.";
+				link.l1 = "До утра.";
 				link.l1.go = "room_day";
 			}
 			else
 			{
-				link.l1 = "Til the night time.";
+				link.l1 = "До ночи.";
 				link.l1.go = "room_night";
-				link.l2 = "Until the next morning.";
+				link.l2 = "До следующего утра.";
 				link.l2.go = "room_day_next";
 			}
 		break;
 
 		case "room_day":
-			dialog.text = "That'll be ten pesos. Would you like a girl for the room along with it? Only ten pesos for the date.";
+			dialog.text = "Это обойдется вам в десять песо. Не желаете ли девочку заодно к комнате? Всего тысячу песо за свидание.";
 			if (makeint(pchar.money) >= 10)
 			{
-				link.l1 = "No, I don't need a girl. Here, take this for the room.";
+				link.l1 = "Нет, девочки мне не надо. Вот, возьми деньги за комнату.";
 				link.l1.go = "room_day_wait";
 			}
 			if (makeint(pchar.money) >= 1010)
 			{
 				if (IsOfficer(characterFromId("Mary")) || !bLock || !bLock1)
 				{
-					link.l2 = "Okay. Let's do the room and the girl. Here's the money.";
+					link.l2 = "Хорошо. Давай и комнату, и девочку. Вот твои деньги.";
 					link.l2.go = "room_girl";
 					sTotalTemp = "wait_day";
 				}
 			}
-			link.l3 = "Alas, I cannot afford the room.";
+			link.l3 = "Увы, но твоя комната мне не по карману.";
 			link.l3.go = "exit";
 		break;
 
 		case "room_day_next":
-			dialog.text = "That'll be ten pesos. Would you like a girl for the room along with it? Only ten pesos for the date.";
+			dialog.text = "Это обойдется вам в десять песо. Не желаете ли девочку заодно к комнате? Всего тысячу песо за свидание.";
 			if (makeint(pchar.money) >= 10)
 			{
-				link.l1 = "No, I don't need a girl. Here, take this for the room.";
+				link.l1 = "Нет, девочки мне не надо. Вот, возьми деньги за комнату.";
 				link.l1.go = "room_day_wait_next";
 			}
 			if (makeint(pchar.money) >= 1010)
 			{
 				if (IsOfficer(characterFromId("Mary")) || !bLock || !bLock1)
 				{
-					link.l2 = "Okay. Let's do the room and the girl. Here's the money.";
+					link.l2 = "Хорошо. Давай и комнату, и девочку. Вот твои деньги.";
 					link.l2.go = "room_girl";
 					sTotalTemp = "wait_day";
 				}
 			}
-			link.l3 = "Alas, I cannot afford the room.";
+			link.l3 = "Увы, но твоя комната мне не по карману.";
 			link.l3.go = "exit";
 		break;
 
 		case "room_night":
-			dialog.text = "That'll be ten pesos. Would you like a girl for the room along with it? Only ten pesos for the date.";
+			dialog.text = "Это обойдется вам в десять песо. Не желаете ли девочку заодно к комнате? Всего тысячу песо за свидание.";
 			if (makeint(pchar.money) >= 10)
 			{
-				link.l1 = "No, I don't need a girl. Here, take this for the room.";
+				link.l1 = "Нет, девочки мне не надо. Вот, возьми деньги за комнату.";
 				link.l1.go = "room_night_wait";
 			}
 			if (makeint(pchar.money) >= 1010)
 			{
 				if (IsOfficer(characterFromId("Mary")) || !bLock || !bLock1)
 				{
-					link.l2 = "Okay. Let's do the room and the girl. Here's the money.";
+					link.l2 = "Хорошо. Давай и комнату, и девочку. Вот твои деньги.";
 					link.l2.go = "room_girl";
 					sTotalTemp = "wait_night";
 				}
 			}
-			link.l3 = "Alas, I cannot afford the room.";
+			link.l3 = "Увы, но твоя комната мне не по карману.";
 			link.l3.go = "exit";
 		break;
 
@@ -228,8 +228,8 @@ void ProcessDialogEvent()
 		
 		case "room_girl":
 			AddMoneyToCharacter(pchar, -1010);
-			dialog.text = "Go on upstairs, senior. The girl will be waiting for you. Have a nice stay!";
-			link.l1 = "Thanks, buddy...";
+			dialog.text = "Поднимайтесь по лестнице наверх, сеньор. Девочка будет ждать вас. Приятного отдыха!";
+			link.l1 = "Спасибо, приятель...";
 			link.l1.go = "room_girl_1";
 		break;
 		
@@ -251,8 +251,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "MineFuckGirl":
-			dialog.text = "Glad to see you, white senior. And don't look at "+npchar.name+" like that, "+npchar.name+" know how to do everything no worse than white girls from brothel. Ah, senior so cute... Promise, you be happy.";
-			link.l1 = "All right, doll, let's see...";
+			dialog.text = "Рада вас видеть, белый сеньор. И не смотреть на "+npchar.name+" так, "+npchar.name+" уметь делать все не хуже белых девок из бордель. Ах, сеньор такой симпатичный... Обещать, вы остаться доволен.";
+			link.l1 = "Ну что же, малышка, давай посмотрим...";
 			link.l1.go = "MineFuckGirl_sex";
 		break;
 		
@@ -268,8 +268,8 @@ void ProcessDialogEvent()
 
 		// ============== Грабеж среди бела дня, попытка залезть в сундуки =========================
 		case "Man_FackYou":
-			dialog.text = LinkRandPhrase("Robbery in broad day light!!! What's going on here?! Wait, hold on, buddy...", "Hey, what are doing there?! Trying to rob me? Now you are screwed...", "Wait, what the hell are you doing? Turns out that you are a thief! Consider this the end of the line, good man...");
-			link.l1 = LinkRandPhrase("Devil!!", "Caramba!!", "Ah, shit!");
+			dialog.text = LinkRandPhrase("Грабеж среди бела дня!!! Это что же такое делается?! Ну, погоди, "+ GetSexPhrase("приятель","подруга") +"...", "Эй, ты чего это там копаешься?! Никак, вздумал"+ GetSexPhrase("","а") +" ограбить меня? Ну, тогда тебе конец...", "Постой, ты куда это полез"+ GetSexPhrase("","ла") +"? Да ты вор"+ GetSexPhrase("","овка") +", оказывается! Ну, считай, что ты приплыл"+ GetSexPhrase("","а") +", родн"+ GetSexPhrase("ой","ая") +"...");
+			link.l1 = LinkRandPhrase("Дьявол!!", "Каррамба!!", "А-ать, черт!");
 			link.l1.go = "PL_Q3_fight";
 		break;
 		

@@ -16,16 +16,16 @@ void ProcessDialogEvent()
 			// --> Страж истины
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "jino1")
 			{
-				dialog.text = "Oh! Good day, sir. How did you get here?";
-				link.l1 = "Good day, Gino. Let's get to know each other. I am captain "+GetFullName(pchar)+" and I am here with John's permission. I am going to make it clear - I need your help, but I also can help you.";
+				dialog.text = "О! Здравствуйте, сударь. Как вы сюда попали?";
+				link.l1 = "Здравствуй, Джино. Давай познакомимся. Я - капитан "+GetFullName(pchar)+", и поднялся в твою комнату с разрешения Джона. Сразу оговорюсь - я пришел за помощью, но... также и для того, чтобы помочь тебе.";
 				link.l1.go = "guardoftruth_0";
 				npchar.quest.meeting = "1";
 				break;
 			}
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = "Oh! Good day, sir. How did you get here? And where is John?";
-				link.l1 = "Well, well... And that's who was always hiding behind this closed door! Interesting... About John... He has gone away. And this house is mine now. But don't worry. Let's get to know each other, who are you and what are you doing here?";
+				dialog.text = "О! Здравствуйте, сударь. Как вы сюда попали? А где Джон?";
+				link.l1 = "Так-так... Вот кто скрывался за этой запертой дверью! Очень интересно... Касательно Джона - то он... уехал. И этот дом теперь принадлежит мне. Но ты не волнуйся. Давай познакомимся: кто ты, и что здесь делаешь?";
 				link.l1.go = "meeting";
 				npchar.quest.meeting = "1";
 			}
@@ -34,33 +34,33 @@ void ProcessDialogEvent()
 				// --> Страж истины
 				if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "threeitems")
 				{
-					dialog.text = "Hello, " + pchar.name + ". Your face tells me that you have found something important. Have you found all components of the Guardian of Truth?";
-					link.l1 = "Exactly! I have got all three items with me: the dagger, the map and the compass!";
+					dialog.text = "Здравствуйте, " + pchar.name + ". По вашему выражению лица я вижу, что вы хотите сказать мне нечто важное. Неужно нашли все компоненты Стража Истины?";
+					link.l1 = "Именно! Все три предмета: дага, карта и компас у меня!";
 					link.l1.go = "guardoftruth_34";
 					break;
 				}
 				if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "jino")
 				{
-					dialog.text = "Hello, " + pchar.name + ". What happened? You look strange...";
-					link.l1 = "I have got something to talk with you about, Gino. It's big.";
+					dialog.text = "Здравствуйте, " + pchar.name + ". Что-то случилось? У вас какой-то странный вид...";
+					link.l1 = "У меня к тебе разговор, Джино. Важный разговор.";
 					link.l1.go = "guardoftruth";
 					break;
 				}
 				// Ксочитэм
 				if (CheckAttribute(pchar, "questTemp.Ksochitam") && pchar.questTemp.Ksochitam == "begin")
 				{
-					dialog.text = TimeGreeting()+", "+pchar.name+". Yes, I remember, two days has passed and you want to know about the Guardian of Truth, am I right?";
-					link.l1 = "Yes, you are! Were you able to dig up anything?";
+					dialog.text = TimeGreeting()+", "+pchar.name+". Да, я помню: два дня прошли, и вы хотите узнать, что там со Стражем Истины, так?";
+					link.l1 = "Конечно! Тебе удалось что-нибудь раскопать?";
 					link.l1.go = "ksochitam";
 					break;
 				}
 				//--> Португалец
 				if (CheckAttribute(pchar, "questTemp.Portugal.Nomoney"))
 				{
-					dialog.text = "Have you brought 5 000 pesos, " + pchar.name + "?";
+					dialog.text = "Вы принесли 5 000 песо, " + pchar.name + "?";
 					if (sti(pchar.money) >= 5000)
 					{
-						link.l1 = "Sure. Here, take the money and buy all you need.";
+						link.l1 = "Конечно. Вот, держи деньги и купи все, что тебе требуется.";
 						link.l1.go = "Portugal_3";
 						SetFunctionTimerCondition("Portugal_TreatmentOver", 0, 0, 3, false);
 						DeleteAttribute(pchar, "questTemp.Portugal.Nomoney");
@@ -74,15 +74,15 @@ void ProcessDialogEvent()
 					}
 					else
 					{
-						link.l1 = "Unfortunately, I don't have money now.";
+						link.l1 = "К сожалению, у меня сейчас нет денег.";
 						link.l1.go = "Portugal_nomoney";
 					}
 					break;
 				}
 				if (CheckAttribute(pchar, "questTemp.Portugal.Die"))
 				{
-					dialog.text = "Alas, " + pchar.name + ", I am so sorry - the patient is dead. He suddenly got worse and he passed away very fast.";
-					link.l1 = "Too bad... May the God have mercy on his soul!";
+					dialog.text = "Увы, " + pchar.name + ", мне очень жаль - больной умер. Ему внезапно стало хуже и он быстро скончался.";
+					link.l1 = "Действительно жаль... Да смилуется Господь над его душой!";
 					link.l1.go = "exit";
 					DeleteAttribute(pchar, "questTemp.Portugal.Die");
 					pchar.quest.Remove_Avendel.win_condition.l1 = "Location_Type";
@@ -95,30 +95,30 @@ void ProcessDialogEvent()
 				}
 				if (CheckAttribute(pchar, "questTemp.Portugal") && pchar.questTemp.Portugal == "ToAntigua")
 				{
-					dialog.text = "Hello, " + pchar.name + ". Has something happened? You look very worried...";
-					link.l1 = "Gino, I have got an unusual ask for you! There is man in fever on my ship. He is delirious and unconscious... can you help him?";
+					dialog.text = "Здравствуйте, " + pchar.name + ". Что-то случилось? Вы выглядите взволнованным...";
+					link.l1 = "Джино, у меня к тебе необычная просьба! На моем судне человек в лихорадке. Он бредит, и совсем не приходит в сознание... ты можешь помочь?";
 					link.l1.go = "Portugal";
 					break;
 				}
 				if (CheckAttribute(pchar, "questTemp.Portugal") && pchar.questTemp.Portugal == "Portugal_wait")
 				{
-					dialog.text = "" + pchar.name + ", I am waiting for the patient. Hurry up, the sooner you will bring him here, then more chances I'll have to save him.";
-					link.l1 = "Yes, yes, he will be delivered here at once.";
+					dialog.text = "" + pchar.name + ", я жду вашего больного. Чем быстрее вы его доставите - тем больше шансов, что его удасться спасти.";
+					link.l1 = "Да-да, его сейчас доставят.";
 					link.l1.go = "exit";
 					break;
 				}
 				if (CheckAttribute(pchar, "questTemp.Portugal") && pchar.questTemp.Portugal == "TreatmentStart")
 				{
-					dialog.text = "You have brought him just in time, " + pchar.name + ". Critical conditions, yet there is still a chance\nCaptain, I am running out of ingredients and we don't have time to gather them in the jungles. I have to buy them all from the local herbalists for 5 000 pesos. Can you provide the sum?";
+					dialog.text = "Вы вовремя его доставили, " + pchar.name + ". Состояние критическое, но я думаю, шансы у нас есть\nКапитан, у меня на исходе некоторые ингридиенты для настоек, а идти самому собирать нужное в джунглях совершенно нет времени. Нужно приобрести все у местного травника - мне необходима сумма в 5 000 песо. Вы можете мне ее предоставить?";
 					if (sti(pchar.money) >= 5000)
 					{
-					link.l1 = "Sure. Here, take money and buy all you need.";
+					link.l1 = "Конечно. Вот, держи деньги и купи все, что тебе требуется.";
 					link.l1.go = "Portugal_3";
 					SetFunctionTimerCondition("Portugal_TreatmentOver", 0, 0, 3, false);
 					}
 					else
 					{
-						link.l1 = "Unfortunately,  I don't have money now.";
+						link.l1 = "К сожалению, у меня сейчас нет денег.";
 						link.l1.go = "Portugal_nomoney";
 						pchar.quest.Portugal_Ill.over = "yes";
 						pchar.quest.Portugal_Ill1.win_condition.l1 = "Timer";
@@ -132,61 +132,61 @@ void ProcessDialogEvent()
 				}
 				if (CheckAttribute(pchar, "questTemp.Portugal") && pchar.questTemp.Portugal == "TreatmentCurrent")
 				{
-					dialog.text = "I have nothing to say now, " + pchar.name + ". I am fighting for the patient's life. There is still some hope. Come and see me later, I suppose that I will be able to tell you something more specific soon.";
-					link.l1 = "Fine, Gino, I will be back later.";
+					dialog.text = "Пока ничего не могу сказать, " + pchar.name + ". Я борюсь за жизнь пациента. Надежда есть. Зайдите позже, думаю, скоро я смогу сказать вам что-то определенное.";
+					link.l1 = "Хорошо, Джино, загляну через некоторое время.";
 					link.l1.go = "exit";
 					break;
 				}
 				if (CheckAttribute(pchar, "questTemp.Portugal") && pchar.questTemp.Portugal == "TreatmentFinish")
 				{
 					pchar.quest.Portugal_Ill.over = "yes";
-					dialog.text = "I have got news," + pchar.name + ". I won't say that your man is alright, but he lives. The illness is retreating and there is a progress to see. To be honest, I didn't expect that my potions will help him that good.";
-					link.l1 = "It is a very interesting information, Gino, but tell me when will I be able to take him? We have got a long way to sail and clocks are ticking.";
+					dialog.text = "У меня есть новости, " + pchar.name + ". Не скажу, что с вашим человеком все в порядке, но жить он будет. Болезнь отступает, и прогресс налицо. Честно сказать, я и не думал, что мои средства окажут такое воздействие.";
+					link.l1 = "Это все очень интересно, Джино, но скажи мне, когда я смогу его забрать? Нам предстоит неблизкий путь, а время уходит.";
 					link.l1.go = "Portugal_4";
 					break;
 				}
 				if (CheckAttribute(pchar, "questTemp.Portugal") && pchar.questTemp.Portugal == "TreatmentComplete")
 				{
-					dialog.text = "Good day, captain. Glad to see you.";
-					link.l1 = "How is our patient, Gino?";
+					dialog.text = "Здравствуйте, капитан. Рад вас видеть.";
+					link.l1 = "Как там наш пациент, Джино?";
 					if (GetQuestPastDayParam("questTemp.Portugal_threedays") > 2) link.l1.go = "Portugal_9";
 					else link.l1.go = "Portugal_threedays";
 					break;
 				}
 				// <--Португалец
-				dialog.text = "Good day, captain. How are you doing? Need my help?";
+				dialog.text = "Добрый день, капитан. Как у вас дела? Требуется моя помощь?";
 				if (!CheckAttribute(npchar, "quest.rome"))
 				{
-					link.l1 = "Yes. Gino, I take it that you are an erudite man and perhaps you must even know Latin...";
+					link.l1 = "Да. Джино, ты как я понимаю, ученый человек, и даже знаешь латынь, наверное...";
 					link.l1.go = "rome";
 				}
 				if (CheckCharacterItem(pchar, "chemistry"))
 				{
-					link.l2 = "I have got something different. A small present for you. Here, take a look at this book.";
+					link.l2 = "Тут немного другое. У меня для тебя небольшой подарок. Вот, посмотри на эту книгу.";
 					link.l2.go = "chemistry";
 				}
 				if (CheckAttribute(npchar, "quest.colt") && CheckCharacterItem(pchar, "pistol7"))
 				{
-					link.l2 = "Yes, Gino. I want to show you this pistol. Have you ever seen anything like it?";
+					link.l2 = "Да, Джино. Я хочу показать тебе вот этот пистолет. Видел ли ты когда-нибудь что-то подобное?";
 					link.l2.go = "colt";
 				}
 				if (CheckAttribute(npchar, "quest.sample") && CheckCharacterItem(pchar, "pistol7") && CheckCharacterItem(pchar, "GunCap_colt") && CheckCharacterItem(pchar, "shotgun_cartridge"))
 				{
-					link.l2 = "I have brought an example of the charge for my pistol.";
+					link.l2 = "Я принес образец заряда для моего пистолета.";
 					link.l2.go = "colt_1";
 				}
 				if (CheckAttribute(npchar, "quest.cartridge"))
 				{
-					link.l2 = "What about charges for the pistol? Got any ideas already?";
+					link.l2 = "Что насчет зарядов к пистолету? Удалось что-нибудь понять?";
 					link.l2.go = "cartridge";
 				}
 				// Addon 2016-1 Jason Пиратская линейка
 				if (CheckAttribute(pchar, "questTemp.Mtraxx.Gord"))
 				{
-					link.l3 = "Gino I've found an unknown word 'gord' in one captain's log. Do you know what it means?";
+					link.l3 = "Джино, в записях одного капитана постоянно упоминается непонятное слово 'горд'. Не мог бы ты разъяснить мне, что это такое?";
 					link.l3.go = "mtraxx";
 				}
-				link.l9 = "Good day, Gino. I am doing fine, no help is needed. Just wanted to check on you and to talk a bit.";
+				link.l9 = "Здравствуй, Джино. Дела - нормально, со всем справляюсь пока сам. Просто зашел проведать тебя и поговорить.";
 				link.l9.go = "exit";	
 			}
 			NextDiag.TempNode = "First time";
@@ -194,93 +194,93 @@ void ProcessDialogEvent()
 
 		case "meeting":
 			pchar.questTemp.HWIC.Jino = "true"; // Addon 2016-1 Jason Пиратская линейка
-			dialog.text = "My name is Gino. Gino Gvineili. I am a scientist. My job is to make powders, mixtures and other medicines for mister Murdock. But since he is gone...";
-			link.l1 = "Well, I am "+GetFullName(pchar)+". A captain of my own ship. So, you are an alchemist then?";
+			dialog.text = "Меня зовут Джино. Джино Гвинейли. Я ученый. Занимаюсь тем, что готовлю порошки, микстуры и прочие лекарства для нужд мистера Мердока. Но раз теперь он уехал, то...";
+			link.l1 = "Ну а я - "+GetFullName(pchar)+". Капитан собственного корабля. Значит, ты - алхимик?";
 			link.l1.go = "meeting_1";
 		break;
 		
 		case "meeting_1":
-			dialog.text = "Not only an alchemist, but also a physician. I posses quite a knowledge of medicine. I know many things about healing herbs and I am able to brew mixtures and potions from them. But chemistry is my calling, I do a lot of experimenting and some of my inventions might help such person like you.\nI know Latin, French, English and Italian. My help will be indispensable if you are planning to run a drugstore like mister Murdock did...";
-			link.l1 = "Oho! It is not every day you meet such an erudite man. Pharmacy's business is fine for sure, but I am a sailor...hm, that sounds strange even to me... anyway, I am sure that we will become friends, Gino. You can continue living here and do your science things...";
+			dialog.text = "Не только алхимик, но также и лекарь. У меня неплохие познания в медицине. Знаю свойства лечебных трав и умею готовить из них отвары, настойки и микстуры. Но мое призвание - познание химической природы веществ, я постоянно экспериментирую и открываю новые и новые соединения, которые могут оказаться очень полезными, в том числе и для вас\nЗнаю латынь, английский, французский и итальянский языки. Если вы собираетесь, как и мистер Мердок, вести аптечное дело - вам без моей помощи не обойтись...";
+			link.l1 = "Ого! Не каждый день встречаешь столь ученого человека. Аптечное дело - это, конечно, хорошо, но я моряк... кхм, как необычно звучит для самого... однако я совершенно уверен в том, что мы поладим, Джино. Ты будешь спокойно, как и раньше, жить в этом доме и заниматься своей наукой...";
 			link.l1.go = "meeting_2";
 		break;
 		
 		case "meeting_2":
 			dialog.text = "";
-			link.l1 = "And if I will ever need a help from an alchemist, a healer or a scientist - I will know who to ask... Tell me, why do you always live inside? Don't you even go out?";
+			link.l1 = "А если мне понадобится помощь алхимика, лекаря или просто ученого человека - я буду знать, к кому обращаться, и далеко идти не потребуется... Скажи, а почему ты постоянно живешь взаперти? Ты даже не выходишь в город?";
 			link.l1.go = "meeting_3";
 		break;
 		
 		case "meeting_3":
-			dialog.text = "I do go outside when I need to buy some ingredients or herbs for my experiments. I like living alone, that is my way. I have dedicated my life to the science and find no interest in ordinary life. Books, writings, test tubes, retorts…\nMister Murdock gave me such opportunity in exchange of helping him to make drugs.";
-			link.l1 = "Now you will have even more time, Gino. But you will have to give up some of your experiment's time to me in case I would need your help, deal?";
+			dialog.text = "Ну почему же... выхожу, когда мне нужно купить трав или каких-то ингредиентов для моих опытов. А живу затворником... мне так нравится. Я посвятил свою жизнь науке, и мирская суета меня мало интересует. Мне больше нравится проводить все свое время в окружении моих книг, рукописей, пробирок, колб и реторт\nМистер Мердок предоставил мне такую возможность в обмен на мою помощь в приготовлении лекарств. Часть своего дня я посвящал работе на мистера Мердока, а оставшееся время у меня уходило на научные исследования.";
+			link.l1 = "Теперь у тебя его будет еще больше, Джино. Но если мне потребуется твоя помощь - то тебе придется поступиться своим временем, которое ты тратишь на свои эксперименты, договорились?";
 			link.l1.go = "meeting_4";
 		break;
 		
 		case "meeting_4":
-			dialog.text = "Sure, captain. I will call you captain, "+GetAddress_Form(NPChar)+", if you don't mind? I will leave all my researches in case you will need my practical skills or theoretical knowledge.";
-			link.l1 = "Splendid. I am glad that we have understood each other that fast. Don't worry about your board, me or my purser will leave you reasonable sums from time to time.";
+			dialog.text = "Безусловно, капитан. Я буду звать вас 'капитан', "+GetAddress_Form(NPChar)+", хорошо? Как только вам потребуются мои практические навыки или теоретические знания - я оставлю все свои исследования и буду заниматься только вашими делами.";
+			link.l1 = "Прекрасно. Я рад, что мы так быстро нашли общий язык. Насчет своего пансиона не беспокойся - я или мой казначей будем периодически оставлять тебе достаточные суммы денег.";
 			link.l1.go = "meeting_5";
 		break;
 		
 		case "meeting_5":
-			dialog.text = "Thanks, captain. I don't need much... Yes, captain, I have an idea... why don't you learn some alchemy skills? It can be really useful for you.";
-			link.l1 = "Hm. As my brother has told me once - don't be squeamish about learning how to do things with your own hands. Sure I want. What can you show me?";
+			dialog.text = "Спасибо, капитан. Мне много не нужно... Да, капитан, я тут подумал... а не хотите ли вы тоже немного приобщиться к искусству алхимии? Это вам может очень и очень пригодиться.";
+			link.l1 = "Хм. Как говорил мой братец - не стоит брезговать научиться делать что-либо собственными руками. Конечно, хочу. А что ты можешь мне показать?";
 			link.l1.go = "meeting_6";
 		break;
 		
 		case "meeting_6":
-			dialog.text = "Well, certainly, you won't be able to turn iron into gold, it is impossible... yet, but you can learn how to mix ingredients according to instructions and in order to get potions or other useful items as the result. Here, take this bag. Everything that the beginner alchemist will need. Test tubes, flasks, retorts, still, spatulas, glass tubes, burner and so on...";
-			link.l1 = "Fascinating!";
+			dialog.text = "Ну, конечно, превратить железо в золото у вас не получится - впрочем, это пока еще никому не удалось - но смешивать ингредиенты согласно рецептам и получать на выходе зелья и другие полезные предметы вы точно сможете. Вот, возьмите этот саквояж. В нем есть все, что нужно начинающему алхимику - пробирки, колбы, реторты, перегонный куб, шпатели, стеклянные трубки, горелка и прочее...";
+			link.l1 = "Как интересно!";
 			link.l1.go = "meeting_7";
 		break;
 		
 		case "meeting_7":
-			Log_Info("You have received an alchemist's kit");
+			Log_Info("Вы получили набор алхимика");
 			GiveItem2Character(pchar, "alchemy_tool");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "You must know a recipe in order to make a potion or an item. Recipes can be bought from merchants or be found anywhere. Once you have studied a recipe, you should collect every ingredient needed and do exactly what is written there\n Use your alchemy tools, find or buy mortar and pestle, look for a crucible, alas, I don't posses an extra one to give you. Herbs, spirits, potions, minerals, garbage - everything will do, providing you have right recipe and tools.";
-			link.l1 = "I see. I will try to mix something in my spare time. Thanks, Gino! Can you give me any simple recipe? Something to start with? ";
+			dialog.text = "Для того, чтобы приготовить собственное зелье или предмет, вы должны знать его рецепт. Рецепты вы можете купить у торговцев травами и амулетами, или найти где-либо еще. Затем, изучив рецепт, вы должны собрать все нужные ингредиенты и выполнить действия в строгой последовательности, как указано в рецепте\nЕсли вы собираетесь приготовить зелье - вам потребуется пустой пузырек, чтобы поместить туда приготовленное. Для нагревания используйте горелку, для взятия навесок веществ - шпатель, для простого кипячения - колбу, для испарения с конденсацией - перегонный куб\nТакже вам наверняка потребуется ступка и пестик для измельчения твердых компонентов, но эти предметы вы сможете приобрести у лоточников за приемлемую цену. Также вам может понадобиться тигель - для нагревания веществ до очень высоких температур - но лишнего тигеля у меня сейчас нет\nТак что если вам вдруг попадется такая штука, берите даже не думая - пригодится. В общем, надо пробовать, пытаться - и все получится. Компоненты - это как правило травы, спиртосодержащие жидкости, готовые зелья, минералы, а также вообще любые предметы.";
+			link.l1 = "Ясно. Буду пробовать на досуге. Спасибо, Джино! А хоть какой-нибудь простенький рецепт ты мне можешь дать? Чтобы я сразу приступил к практике?";
 			link.l1.go = "meeting_8";
 		break;
 		
 		case "meeting_8":
-			dialog.text = "I don't have simple ones... but here, take this recipe of an antidote. I suppose that you are able to handle this task. Take it.";
-			link.l1 = "Gratitude! I will learn. Goodbye now, Gino! Watch after my house, I fear that I won't visit this place very often so you are welcome to use not only your room, but also the rest of the building.";
+			dialog.text = "Простых у меня нет... но вот, возьмите вот этот рецепт противоядия. Думаю, вы вполне сможете справиться с данной задачей. Держите.";
+			link.l1 = "Благодарю! Буду потихоньку учиться. Ну а пока - до встречи, Джино! Присматривай за моим домом - боюсь, я тут буду бывать нечасто, так что смело распоряжайся не только в своей комнате, но и за ее пределами. Увидимся!";
 			link.l1.go = "meeting_9";
 		break;
 		
 		case "meeting_9":
 			DialogExit();
 			GiveItem2Character(pchar, "recipe_potion3");
-			Log_Info("You have received an antidote recipe");
+			Log_Info("Вы получили рецепт противоядия");
 			PlaySound("interface\notebook.wav");
-			Log_Info("You need to have Alchemy skill in order to craft your potions, amulets and items!");
+			Log_Info("Для создания собственных зелий и амулетов вы должны владеть навыком 'Алхимия'!");
 			NextDiag.CurrentNode = "First time";
 		break;
 		
 		case "rome":
-			dialog.text = "Yes, captain, I know the language of ancient Romans. Every scientist, especially a healer or an alchemist, must know Latin. Do you need something of my Latin knowledge?";
-			link.l1 = "Yes. Gino, don't consider me as a fool but... well, how to explain...";
+			dialog.text = "Да, капитан, я изучил язык древних римлян. Каждый ученый, особенно лекарь или алхимик, обязан знать латынь. Вам нужно что-то из моих познаний в латыни?";
+			link.l1 = "Да. Джино, не сочти меня за глупца, но... как тебе лучше объяснить...";
 			link.l1.go = "rome_1";
 		break;
 		
 		case "rome_1":
-			dialog.text = "Speak as it is, captain. Don't be shy.";
-			link.l1 = "Fine. Can you make a list of scholar Latin aphorisms for me? You see, there is... a man who likes to boast of his 'erudition' and sometimes he uses that Latin phrases to show me my ignorance compared to him. Something like... 'pasem-bellum'...";
+			dialog.text = "Говорите как есть, капитан. Не стесняйтесь.";
+			link.l1 = "Хорошо. Не мог бы ли ты мне составить список ученых латинских изречений? Понимаешь, есть тут у меня один... человек, который любит хвалиться своей 'ученостью', и время от времени в разговорах вворачивает латинские фразочки, дабы показать, какой я неуч по сравнению с ним. Ну, что-то вроде, 'пасем-беллум'...";
 			link.l1.go = "rome_2";
 		break;
 		
 		case "rome_2":
-			dialog.text = "'Si vis pacem, para bellum', you mean?";
-			link.l1 = "Yes, yes. I want to learn them to beat my arrogant br... my friend.";
+			dialog.text = "'Си вис пасем, пара беллум', вы хотели сказать?";
+			link.l1 = "Вот-вот. Я хочу выучить их и при случае утереть нос заносчивому бра... знакомому.";
 			link.l1.go = "rome_3";
 		break;
 		
 		case "rome_3":
 			AddQuestRecordInfo("Rome", "1");
-			dialog.text = "There is nothing strange or shameful in your ask, captain. Knowing the aphorisms of ancients which went down in history, makes you an educated man. Here, take this text. It is what you have asked.";
-			link.l1 = "Thanks, Gino! Appreciate it! I will read it in my spare time...";
+			dialog.text = "В вашей просьбе нет ничего странного или зазорного, капитан. Знать изречения древних, вошедшие в историю - значит, быть образованным человеком. Вот, возьмите этот рукописный текст. Здесь то, что вы просили.";
+			link.l1 = "Спасибо, Джино! Ты просто выручил меня! Займусь на досуге изучением...";
 			link.l1.go = "exit";
 			npchar.quest.rome = true;
 			NextDiag.TempNode = "First time";
@@ -288,52 +288,52 @@ void ProcessDialogEvent()
 		
 		case "chemistry":
 			RemoveItems(pchar, "chemistry", 1);
-			Log_Info("You have given Lavoisier's chemistry textbook");
-			dialog.text = "Show me... (reading) Impossible! A 'small present' you say? This book is priceless! Where did you get it?! This is... a real treasure!";
-			link.l1 = "I am glad that you like it.";
+			Log_Info("Вы отдали учебник химии Лавуазье");
+			dialog.text = "Покажите... (смотрит) Уму непостижимо! 'Небольшой подарок', вы говорите?! Да этой книге цены нет! Где вы ее достали?! Это же... настоящее сокровище!";
+			link.l1 = "Я очень рад, что она тебе пригодится.";
 			link.l1.go = "chemistry_1";
 		break;
 		
 		case "chemistry_1":
-			dialog.text = "(Reading) Incredible! I have never even heard about that... and this? I don't understand a thing here... but I will, damn it! Oh, soon the work will be boiling in my lab! "+pchar.name+", you don't even realize WHAT have you given to me...";
-			link.l1 = "Why don't I? I do. The scientific book for the scientist...";
+			dialog.text = "(листает) Невероятно! А вот об этом я даже и не слышал... а это? А вот тут я ничего не понимаю... но разберусь, черт побери! Ох, и закипит же скоро работа в моей лаборатории! "+pchar.name+", вы даже не осознаете, ЧТО вы мне подарили...";
+			link.l1 = "Почему не осознаю? Осознаю. Ученую книгу для ученого мужа...";
 			link.l1.go = "chemistry_2";
 		break;
 		
 		case "chemistry_2":
-			dialog.text = "But who is the author of this miracle? Antoine-Laurent de Lavoisier, France... Never heard of him. But wait! How is it possible! The year of printing is 1789? But how...";
-			link.l1 = "I don't know why is that year is written there too. Well, maybe I do. But I won't advice you to think to much over it. The book is useful and that is all what matters.";
+			dialog.text = "Но кто же автор этого чуда? Антуан Лоран Лавуазье, Франция... Никогда не слышал о таком. Но позвольте! Как же так! Год издания - 1789 год? Но ведь...";
+			link.l1 = "Я тоже не знаю, почему на ней стоит этот год. И тебе задумываться над этим не советую. Если книга толковая - то что еще нужно?";
 			link.l1.go = "chemistry_3";
 		break;
 		
 		case "chemistry_3":
-			dialog.text = "It is promising beyond measure and that year must be a printing mistake of some sort... Whatever. Thank you very much, captain!";
-			link.l1 = "You are welcome, Gino. It is all yours.";
+			dialog.text = "Книга очень толковая, а с годом наверное опечатались... Неважно. Спасибо большое, капитан!";
+			link.l1 = "Пожалуйста, Джино. Изучай на здоровье.";
 			link.l1.go = "exit";
 			if (CheckCharacterItem(pchar, "pistol7"))
 			{
-				link.l1 = "It is not all, Gino. I want to show you this pistol. Have you ever seen anything like that?";
+				link.l1 = "Это не всё, Джино. Я хочу показать тебе вот этот пистолет. Видел ли ты когда-нибудь что-то подобное?";
 				link.l1.go = "colt";
 			}
 			npchar.quest.colt = true;
 		break;
 		
 		case "colt":
-			dialog.text = "I am no gunsmith, but I will take a look... no, I have never seen anything like it. And why do you ask?";
-			link.l1 = "This pistol is powerful and destructive, but there are special charges needed to shoot it. Nothing else would work. And I have no idea how to make more rounds for it. So I came here for your advice.";
+			dialog.text = "Я не оружейник, но все же взгляну... нет, никогда с таким не сталкивался. А что?";
+			link.l1 = "Этот пистоль очень мощный и убойный, но к нему нужны специальные заряды. Ничего другого к нему не подходит. А как изготовить такие патроны - я понятия не имею. Вот я и пришел к тебе за советом.";
 			link.l1.go = "colt_1";
 		break;
 		
 		case "colt_1":
-			dialog.text = "Do you have got at least one round to show me as an example? If you don't, then I fear that I would not be able to help.";
+			dialog.text = "У вас есть хоть один такой патрон показать мне для образца? Если нет, ничем помочь не смогу, я не представляю, что в него нужно засовывать.";
 			if (CheckCharacterItem(pchar, "GunCap_colt") && CheckCharacterItem(pchar, "shotgun_cartridge"))
 			{
-				link.l1 = "I do. The charge is made of two parts: the round itself with a bullet and this thing which explodes the powder.";
+				link.l1 = "Есть. Заряд состоит из двух частей: самого патрона с пулей и вот этой штуковины, без которой порох не взрывается.";
 				link.l1.go = "colt_2";
 			}
 			else
 			{
-				link.l1 = "Such a fail! What a shame! Fine, perhaps, I will find more and bring them to you.";
+				link.l1 = "Вот незадача! Эх, досада-то какая! Ладно, может, отыщу, тогда и принесу.";
 				link.l1.go = "exit";
 				npchar.quest.sample = true;
 			}
@@ -344,17 +344,17 @@ void ProcessDialogEvent()
 			RemoveItems(pchar, "pistol7", 1);
 			RemoveItems(pchar, "GunCap_colt", 1);
 			RemoveItems(pchar, "shotgun_cartridge", 1);
-			Log_Info("You have given a revolver's cartridge");
-			Log_Info("You have given a capsule");
+			Log_Info("Вы отдали револьверный картридж");
+			Log_Info("Вы отдали капсюль");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Interesting! That looks simple, there is a powder inside, a bullet goes from above, but it looks a bit strange. And this 'thing'... hm. Powder doesn't explode without it, right? Curious... Look, captain, leave all of this to me: the pistol and charges. Come and see me in a month, I need time to deal with it.";
-			link.l1 = "Great! Try to understand how it works I really want to shoot this pistol.";
+			dialog.text = "Очень интересно! Тут все понятно, внутри находится порох, сверху - пуля, правда, какая-то необычная. А вот с этой 'штуковиной'... хм. Без него порох не взрывается, говорите? Занятно... Вот что, капитан, оставьте мне всё это для изучения - и пистолет, и заряды, и приходите через месяц, чтобы я спокойно смог разобраться.";
+			link.l1 = "Договорились! Постарайся понять, что к чему, уж очень хочется пострелять из этого пистоля.";
 			link.l1.go = "colt_3";
 		break;
 		
 		case "colt_3":
-			dialog.text = "The main problem is to find out what this substance, which explodes powder, is made of. This book will come in handy. I will try.";
-			link.l1 = "Fine. Farewell, Gino!";
+			dialog.text = "Главное проблема - узнать, из чего состоит вещество, использующееся для взрыва пороха. Очень пригодится ваша книга, которую вы подарили. Я постараюсь.";
+			link.l1 = "Хорошо. До встречи, Джино!";
 			link.l1.go = "colt_4";
 		break;
 		
@@ -365,81 +365,81 @@ void ProcessDialogEvent()
 		break;
 		
 		case "cartridge":
-			dialog.text = "Yes, I dealt with the charges to the pistol. I have to give a credit to the book you have presented to me. It wouldn't have worked without it. But I have to warn you, captain, it won't be easy to create rounds and capsules to you weapon.";
-			link.l1 = "Capsules?";
+			dialog.text = "Да, я разобрался с зарядами к вашему пистолю. Надо отдать должное вашей подаренной книге - без нее у меня бы ничего не вышло. Но должен сразу предупредить, капитан: изготовление патронов и капсюлей к вашему оружию - дело непростое.";
+			link.l1 = "Капсюлей?";
 			link.l1.go = "cartridge_1";
 		break;
 		
 		case "cartridge_1":
-			dialog.text = "It is that 'thing', as you said, which explodes powder. But let's go in a succession. Are you ready?";
-			link.l1 = "Yes! I am listening to you very carefully.";
+			dialog.text = "Это та самая 'штуковина', как вы выразились, которая подрывает порох в патроне. Но давайте все по порядку. Вы готовы?";
+			link.l1 = "Да! Я внимательно тебя слушаю.";
 			link.l1.go = "cartridge_2";
 		break;
 		
 		case "cartridge_2":
 			AddQuestRecordInfo("Recipe", "shotgun_bullet");
 			SetAlchemyRecipeKnown("shotgun_bullet");
-			dialog.text = "So, first, you need to craft a special bullet. Common bullets won't work. It must have some special conic form. You will have to find a mould for such bullets, the bullet mold as I have called it. Take an ordinary lead bullets, melt them in crucible and pour melted lead in the bullet mold, freeze it and take a ready bullet.";
-			link.l1 = "And where can I find such bullet mold?";
+			dialog.text = "Итак, для самого патрона вам надо отлить специальную пулю. Другая для данного пистоля не годится. Она должна быть особой конической формы. Для этого вам потребуется найти матрицу для таких пуль - пулелейку, как я ее назвал. Берете обычные свинцовые пули, расплавляете их в тигле на огне, затем жидкий свинец вливаете в форму, остужаете и извлекаете готовую пулю.";
+			link.l1 = "И где мне взять эту пулелейку?";
 			link.l1.go = "cartridge_3";
 		break;
 		
 		case "cartridge_3":
-			dialog.text = "I don't know, captain. I am an alchemist, not a blacksmith. Take this bullet as an example perhaps you will find out what to do.";
-			link.l1 = "Fine. Go on...";
+			dialog.text = "Не знаю, капитан. Я все-таки алхимик, а не кузнец. Возьмите за образец пулю из патрона, который вы мне дали. Может, что и придумаете.";
+			link.l1 = "Ладно. Продолжаем...";
 			link.l1.go = "cartridge_4";
 		break;
 		
 		case "cartridge_4":
 			AddQuestRecordInfo("Recipe", "shotgun_cartridge");
 			SetAlchemyRecipeKnown("shotgun_cartridge");
-			dialog.text = "Then you have to make a container for powder. You inject a bullet there. I have written a nice instruction for you. Read it carefully and give it a try.";
-			link.l1 = "Good...";
+			dialog.text = "Далее вам нужно изготовить вместилище для пороха, куда будете вставлять пулю. Подробную инструкцию я для вас написал - думаю, следуя моим советам, у вас все получится. Изучите внимательно и пробуйте.";
+			link.l1 = "Хорошо...";
 			link.l1.go = "cartridge_5";
 		break;
 		
 		case "cartridge_5":
 			AddQuestRecordInfo("Recipe", "GunCap_colt");
 			SetAlchemyRecipeKnown("GunCap_colt");
-			dialog.text = "Now we have got capsules on the row. You will need a very thin copper sheet - craft it yourself of the copper nugget of whatever. Carve circles on it the same size as rounds. Then put inside them a fulminating silver using wax.";
-			link.l1 = "A fulminating silver? What is that?";
+			dialog.text = "Теперь капсюли. Для заготовки потребуется очень тонкий медный лист - вы должны сами изготовить его из меди. Из листа вырезаются кружки по диаметру патрона, в них при помощи размягченного воска помещается гремучее серебро.";
+			link.l1 = "Гремучее серебро? А что это такое?";
 			link.l1.go = "cartridge_6";
 		break;
 		
 		case "cartridge_6":
-			dialog.text = "I didn't know about it myself, learnt the secret from your book. It is a white powder which can be made of silver, spirit and nitric acid. It explodes from any rubber or shake that is why it serves to fire a gunpowder in your pistol's rounds. An unpleasant thing, it has exploded twice during my tests until I came up with the recipe.";
-			link.l1 = "I was lucky to have this book with me!";
+			dialog.text = "Я тоже о таком не знал - вычитал секрет изготовления из вашей книги. Это белый порошок, получающийся из серебра, азотной кислоты и спирта. Взрывается при ударе и трении, поэтому и послужит для воспламенения пороха в патроне для вашего пистолета. Неприятная штука, он дважды взрывался у меня во время опытов, пока я разработал точный рецепт приготовления.";
+			link.l1 = "Вот как хорошо, что у меня оказалась эта книга!";
 			link.l1.go = "cartridge_7";
 		break;
 		
 		case "cartridge_7":
-			dialog.text = "Be strongly careful, this thing is explosive as hell! I could make some amount by myself, but it is too dangerous to store the fulminating silver, it is vital to put it in capsules right after it's creation. I can't craft copper capsules, I am no blacksmith as I've told you once.";
-			link.l1 = "Fine. Give me the recipe, I will learn myself.";
+			dialog.text = "Будьте крайне аккуратны: это взрывчатое вещество! Я мог бы и сам вам приготовить какое-то количество, но хранить гремучее серебро опасно: нужно сразу после изготовления поместить в капсюль и более не трогать. А медные капсюли я изготовить сам не могу - кузнечному делу не обучен.";
+			link.l1 = "Хорошо. Давай рецепт, буду сам учиться.";
 			link.l1.go = "cartridge_8";
 		break;
 		
 		case "cartridge_8":
 			AddQuestRecordInfo("Recipe", "OxyHydSilver");
 			SetAlchemyRecipeKnown("OxyHydSilver");
-			dialog.text = "You are welcome. Accurately follow the recipe and be careful with an order of process or you will fly sky high with your flasks.";
-			link.l1 = "I will be careful.";
+			dialog.text = "Пожалуйста. Строго следуйте рецептуре и соблюдайте правильность процесса, иначе взлетите на воздух вместе со своими колбами.";
+			link.l1 = "Я буду крайне осторожным.";
 			link.l1.go = "cartridge_9";
 		break;
 		
 		case "cartridge_9":
-			dialog.text = "Also, take these two flasks. This one has nitric acid inside and this one has spirit. You will be able to make fulminating silver enough for filling about 20 capsules.";
-			link.l1 = "Thank you, Gino!";
+			dialog.text = "Также возьмите две склянки: вот эта - с азотной кислотой, а вот эта - со спиртом. Из этого количества вы сможете получить гремучего серебра на 20 капсюлей.";
+			link.l1 = "Спасибо, Джино!";
 			link.l1.go = "cartridge_10";
 		break;
 		
 		case "cartridge_10":
 			GiveItem2Character(pchar, "Mineral29");
 			GiveItem2Character(pchar, "Mineral28");
-			Log_Info("You have received a flask of nitric acid");
-			Log_Info("You have received a flask of spirit");
+			Log_Info("Вы получили склянку с азотной кислотой");
+			Log_Info("Вы получили склянку со спиртом");
 			PlaySound("interface\important_item.wav");
-			dialog.text = "Also take your pistol and the example charge. Good luck, captain, in your crafting of charges. I hope that you will stay alive and in one piece.";
-			link.l1 = "I will do what I can to protect myself. And, Gino, have I told you that you are genius?";
+			dialog.text = "Также заберите ваш пистолет и образцовый патрон. Удачи, капитан, в изготовлении зарядов. Надеюсь, вы останетесь целы и невредимы.";
+			link.l1 = "Я приму для этого все возможные меры. И, Джино: я не говорил тебе, что ты - гений?";
 			link.l1.go = "cartridge_11";
 		break;
 		
@@ -447,8 +447,8 @@ void ProcessDialogEvent()
 			TakeNItems(pchar, "pistol7", 1);
 			TakeNItems(pchar, "shotgun_cartridge", 3);
 			TakeNItems(pchar, "GunCap_colt", 1);
-			dialog.text = "You are making me blush, captain, I am serious...";
-			link.l1 = "Fine. Goodbye, Gino! You are my best alchemist!";
+			dialog.text = "Вы вгоняете меня в краску, капитан, право...";
+			link.l1 = "Ладно. Пока, Джино! Ты самый лучший алхимик!";
 			link.l1.go = "cartridge_12";
 		break;
 		
@@ -459,34 +459,34 @@ void ProcessDialogEvent()
 		
 		// Addon 2016-1 Jason Пиратская линейка
 		case "mtraxx":
-            dialog.text = "Gord, gord... Would you tell me more about the captain? Where is he from?";
-			link.l1 = "No idea, although he was born somewhere in the North, they called him a Viking sometimes.";
+            dialog.text = "Горд, горд... Можете еще что-то сообщить об этом капитане? Откуда он, какой национальности?";
+			link.l1 = "Нацию его не знаю, а родом он откуда-то с севера Европы... викингом его еще называли иногда.";
 			link.l1.go = "mtraxx_1";
 		break;
 		
 		case "mtraxx_1":
-            dialog.text = "A Viking! Yes-yes, I remember, I've read about this in a history book. Gord is fortified settlement of a free jarl.";
-			link.l1 = "A free jarl? Who would be that?";
+            dialog.text = "Викинг! Да-да, я вспомнил, я читал об этом в одном историческом трактате. Горд - это укрепленный поселок свободного ярла.";
+			link.l1 = "Свободного ярла? Кто это?";
 			link.l1.go = "mtraxx_2";
 		break;
 		
 		case "mtraxx_2":
-            dialog.text = "It's a prince of the Northmen. Free jarls with their war bands used to raid and plunder Europe centuries ago on their ships, Drakkars. You could call them pirates, I suppose. Gords were their bases and homes, places where they could rest, farm and feast.";
-			link.l1 = "I see. This gord must be his pirate lair then... Thanks, Gino!";
+            dialog.text = "Это вроде князя у норманнов, жителей севера. Свободные ярлы с дружиной - викингами, отправлялись на кораблях, драккарах, в путешествия, точнее - набеги. Грабили, разбойничали, захватывали рабов... пираты, короче. А горды - это поселки викингов, где они отдыхали, где жили их семьи, где они занимались хозяйством. Но это было давно, около шести веков назад. Потом свободных ярлов вместе с их дружинами изгнал свой же собственный народ - бондэры, или земледельцы, которым ярлы были как кость в горле.";
+			link.l1 = "Все ясно. Значит, горд - это его сухопутная база... Спасибо, Джино!";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("Mtraxx_WolfreekReadLogbookFourth");
 		break;
 		
 	// ----------------------------------------- Португалец ----------------------------------------------------
 		case "Portugal":
-			dialog.text = "Fever and delusions, you say, that is intriguing. Deliver him here immediately! I will see what I can do. But I can't promise you anything if his condition is too bad... Is he your officer?";
-			link.l1 = "No, thanks God, he is not. Gino, listen, don't ask who he is, just do what you can, it is really important for me!";
+			dialog.text = "Лихорадка и бред, говорите – это любопытно. Немедленно везите его на берег! Я посмотрю, что можно сделать. Но ничего не могу обещать, если состояние слишком запущенное... Он ваш офицер?";
+			link.l1 = "Нет, слава Богу, не мой. Джино, послушай, не спрашивай кто он, просто сделай все что возможно, это очень, очень важно!";
 			link.l1.go = "Portugal_1";
 		break;
 		
 		case "Portugal_1":
-			dialog.text = "All right, bring him in the house to your room. I will prepare some mixtures... perhaps this root will...";
-			link.l1 = "I am going to deliver him here immediately!";
+			dialog.text = "Хорошо, доставьте его в дом, в вашу комнату. Я пока подготовлю кое-какие микстуры... возможно, сможет помочь корень...";
+			link.l1 = "Я сейчас же распоряжусь его доставить!";
 			link.l1.go = "Portugal_2";
 		break;
 		
@@ -503,42 +503,42 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Portugal_nomoney":
-			dialog.text = "Then try to find them as soon as possible I won't be able to heal him without medicines and it might get too late if you will not hurry.";
-			link.l1 = "Fine, I will find the money.";
+			dialog.text = "Тогда постарайтесь их побыстрее найти - без лекарств я не смогу поставить больного на ноги, а если затянуть - будет уже поздно.";
+			link.l1 = "Хорошо, я разыщу деньги.";
 			link.l1.go = "exit";
 			pchar.questTemp.Portugal.Nomoney = "true";
 		break;
 		
 		case "Portugal_3":
 			AddMoneyToCharacter(pchar, -5000);
-			dialog.text = "Splendid, captain. Now I will deal with preparing mixtures and you'd better leave my patient. Come back here tomorrow.";
-			link.l1 = "Fine, Gino. I trust in your mixtures and in your genius.";
+			dialog.text = "Отлично, капитан. Теперь я займусь приготовлением нужных лекарств, а вам лучше оставить больного. Заходите завтра.";
+			link.l1 = "Хорошо, Джино. Я верю в твои микстуры и в твоего гения.";
 			link.l1.go = "exit";
 			pchar.questTemp.Portugal = "TreatmentCurrent";
 			pchar.GenQuest.CannotWait = true;//запрет ожидания
 		break;
 		
 		case "Portugal_4":
-			dialog.text = "Well, I think, that he will be fine in two weeks. I can't promise that he will be able to dance but at least he will stand on his feet himself, that is for sure.";
-			link.l1 = "Damn it, I don't have these two weeks! I need... to set sail as soon as possible!";
+			dialog.text = "Ну, думаю, еще пару недель и он будет в полном порядке. Плясать, конечно, еще не сможет, но на ногах стоять будет, это точно.";
+			link.l1 = "Проклятье, у меня нет двух недель! Мне нужно.. отправляться как можно скорее!";
 			link.l1.go = "Portugal_5";
 		break;
 		
 		case "Portugal_5":
-			dialog.text = "Captain, I am not a mage and I tell you that the man is too weak for now. I am not sure that he will survive few days on the ship, you can't move him!";
-			link.l1 = "Fine-fine, but two weeks, no, even one week is too much!";
+			dialog.text = "Капитан, я не волшебник, и говорю вам – этот человек все еще слишком слаб, и, иногда приступы возвращаются. Я не уверен, что он протянет и несколько дней на корабле – его нельзя перемещать!";
+			link.l1 = "Хорошо-хорошо, но две недели, даже неделя, это слишком много!";
 			link.l1.go = "Portugal_6";
 		break;
 		
 		case "Portugal_6":
-			dialog.text = "Three days... yes, I suppose in three days you may try to sail, but he will need a care, medicines and you will have to do stops.";
-			link.l1 = "I have got a doctor, he will take care of him. I will be back in three days and we will take him, it is the most I can afford. We have to move, even with stops...yes, and one more thing - Gino, you are a genius!";
+			dialog.text = "Три дня... да, думаю, через три дня, можете попробовать отплыть, но больному тогда потребуется постоянный присмотр, лекарства, и, вам придется делать остановки.";
+			link.l1 = "У меня есть доктор, который за ним приглядит. Через три дня, я вернусь, и мы его заберем – это самое большее, что я могу себе позволить. Лучше с остановками, но двигаться... да, и, еще одно: Джино – ты гений!";
 			link.l1.go = "Portugal_7";
 		break;
 		
 		case "Portugal_7":
-			dialog.text = "Thanks, captain. Come back in three days for your friend, but don't bother him until then. He needs a full rest.";
-			link.l1 = "Fine, I got it. I will take him in three days.";
+			dialog.text = "Спасибо, капитан. Приходите через три дня за своим другом, а пока не тревожьте его - ему нужен полный покой.";
+			link.l1 = "Хорошо. Я все понял. Заберу его через три дня.";
 			link.l1.go = "Portugal_8";
 		break;
 		
@@ -558,33 +558,33 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Portugal_threedays":
-			dialog.text = "He is doing well, but the progress is slow. He can't be taken yet.";
-			link.l1 = "Yes - yes, Gino, I remember. Three days...";
+			dialog.text = "Поправляется, но очень медленно. В путь отправиться он пока не может.";
+			link.l1 = "Да-да, я помню, Джино. Три дня еще не прошли...";
 			link.l1.go = "exit";
 		break;
 		
 		case "Portugal_9":
 			pchar.quest.Portugal_Ill2.over = "yes";
-			dialog.text = "No deterioration, but he didn't get better really. He is still unconscious, he doesn't understand where is he and why is he here, though it doesn't seem to concern him that much. He still got fever so I am not sure that taking him aboard now is a good idea.";
-			link.l1 = "I can't wait any longer, we have been here for too long already. Pack your mixtures which will help him in voyage and we are leaving. I hope that this bastard is strong enough to survive long enough to face his death sentence...";
+			dialog.text = "Ухудшения нет, но и полегчало ему не слишком. Он все еще не до конца в сознании – не понимает где он и зачем, впрочем. Это его и не беспокоит, кажется, другое дело – приступы жара – они еще продолжаются время от времени, я не уверен, что везти его сейчас такая хорошая идея.";
+			link.l1 = "Я больше не могу ждать, итак мы пробыли тут слишком долго. Собирай микстуры, которыми его придется пичкать по дороге, и мы уходим. Надеюсь, этот негодяй достаточно крепок, и не умрет раньше, чем его приговорят...";
 			link.l1.go = "Portugal_10";
 		break;
 		
 		case "Portugal_10":
-			dialog.text = "Wait, captain! Have I been treating the condemned? What the hell? The huge work was done here, do you have any idea how difficult is it to make the dry powder...";
-			link.l1 = "Gino, you didn't need to know that. Don't worry too much, he is a pirate and one of the most terrible of the kind. I have to take him to Curacao for a date with the Company's authorities as soon as possible. Period.";
+			dialog.text = "Постойте, капитан! Я что - лечил приговоренного к смерти? Какого черта? Столько сил, а вы знаете, как сложно изготовить сушеный порошок...";
+			link.l1 = "Джино, тебе не следовало этого знать. Не бери в голову – он пират, причем один из самых неприглядных представителей этого ремесла. Я должен доставить его на Кюрасао на свидание с властями Компании, как можно скорее, и точка.";
 			link.l1.go = "Portugal_11";
 		break;
 		
 		case "Portugal_11":
-			dialog.text = "Fine, you know better. Pirate then... Curacao. Whatever, but listen to me, he will be sleeping most of the time, but the ship's rolling and stuffy heat can backward all process. I recommend to make a stop after a few days of sail and to let your... prisoner to rest on the land. Otherwise there is a risk that they will have to hang a corpse at Curacao... ";
-			link.l1 = "Fine, I'll do that. Martinique will do fine, it is almost a half of the way. I hope that the wind will be fair. I am going to take him now and we will leave. Thank you again, Gino.";
+			dialog.text = "Хорошо, вам виднее. Пират, значит... на Кюрасао. Ладно, но скажу вам вот еще что – первое время он будет все больше спать, но корабельная качка и духота могут повернуть процесс вспять. Я рекомендую вам сделать остановку не позднее чем через несколько дней, и дать вашему... пленнику передохнуть на суше. Иначе – велик риск, что на Кюрасао его повесят посмертно...";
+			link.l1 = "Хорошо, я так и сделаю. Мартиника будет в самый раз – почти середина пути. Надеюсь, ветер будет попутный – я забираю его, и мы уходим. Спасибо еще раз, Джино.";
 			link.l1.go = "Portugal_12";
 		break;
 		
 		case "Portugal_12":
-			dialog.text = "You are welcome, captain. Remember that you have four days, well, five but not more. And one last thing... you know, I usually heal people not because I want them be hanged after my treatment. The doctor is responsible for his patients no matter who are they. And I am feeling really bad...";
-			link.l1 = "I am sorry for dragging you in all of this, but we had no chance without you. We have to set sail now or the Portuguese's lads will manage to assemble at our doors to meet their boss otherwise.";
+			dialog.text = "Не за что, капитан. Помните – четыре дня, ну пять, не больше. И еще одно... знаете, обычно, я спасаю жизни людям, не для того, чтобы их потом повесили. Врач в ответе за своих пациентов, какими бы они ни были. И мне крайне неприятно...";
+			link.l1 = "Прости, что втянул в эту историю, но, без тебя у нас не было бы и шанса. А теперь, нам пора – иначе все ребята Португальца успеют собраться у парадных дверей встречать своего вожака.";
 			link.l1.go = "Portugal_13";
 		break;
 		
@@ -609,227 +609,227 @@ void ProcessDialogEvent()
 		break;
 		// <-- Португалец
 		case "guardoftruth_0":
-			dialog.text = "Intriguing... And how you can help me? I don't need help and I didn't ask for it...";
-			link.l1 = "But you will need it. Listen to me first and then conclude.";
+			dialog.text = "Очень интересно... И чем же вы можете мне помочь? Я не нуждаюсь в помощи и не просил ее...";
+			link.l1 = "И все же она тебе понадобится. Ты послушай, что я тебе скажу, а потом уже делай выводы.";
 			link.l1.go = "guardoftruth";
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "I am all ears.";
-			link.l1 = "I have been in Santiago recently... visiting father Vincento. So, he was looking for his missed secretary named... Jesus, why have you gone so pale, Gino?";
+			dialog.text = "Внимательно вас слушаю.";
+			link.l1 = "Я недавно был в Сантьяго... у отца Винсенто. Так вот, он ищет своего пропавшего секретаря по имени... Господи, да что ты так сильно побледнел, Джино!";
 			link.l1.go = "guardoftruth_1";
 		break;
 		
 		case "guardoftruth_1":
-			dialog.text = "You... have you seen the inquisitor? Is he...";
-			link.l1 = "Don't worry, Gino. No chance I will give you to him, though that was his order: to find you and to bring you to him. I need acquire some information regarding one Indian of Itza people. Tell me about Tayasal, it's treasures and the 'evil' about it.";
+			dialog.text = "Вы... вы были у инквизитора? Он...";
+			link.l1 = "Не волнуйся, Джино. Я ни за что не выдам тебя отцу Винсенто, хотя именно это он мне и поручил: найти тебя и доставить к нему. Мне нужно узнать от тебя кое-что касательно информации, полученной тобой и отцом Винсенто от некого индейца племени ица. О Тайясале, о сокровищах, о каком-то 'зле'.";
 			link.l1.go = "guardoftruth_2";
 		break;
 		
 		case "guardoftruth_2":
-			dialog.text = "I see that you are well informed. Did father Vincento tell you this?";
-			link.l1 = "I got something from him and something from other people. But I'd like to hear you out. You once were his secretary, so you must have been recording a protocol of interrogation, am I right?";
+			dialog.text = "Вижу, вы хорошо осведомлены. Это отец Винсенто вам все рассказал?";
+			link.l1 = "Что-то - он, а что-то я узнал из третьих уст. Но мне гораздо важнее услышать все от тебя - как секретарь, ты, вероятно, вел протокол допроса?";
 			link.l1.go = "guardoftruth_3";
 		break;
 		
 		case "guardoftruth_3":
-			dialog.text = "You can't imagine what was he doing to that poor Indian!.. It  makes my flesh creep every time I recall that interrogation in my mind.";
-			link.l1 = "Still, let's talk about it. Who was that Indian? How did he get to father's Vincento hands?";
+			dialog.text = "Видели бы вы, капитан, что он сделал с этим несчастным индейцем!.. У меня просто мороз по коже при одном воспоминании об этом допросе.";
+			link.l1 = "И все-таки давай поговорим об этом. Кто этот индеец? Как он попал в руки отцу Винсенто?";
 			link.l1.go = "guardoftruth_4";
 		break;
 		
 		case "guardoftruth_4":
-			dialog.text = "He was among the Indians of Itza people who traveled from Tayasal in a search of the Kukulcan Mask - an artefact of ancient Maya god - Kukulcan. Those Indians faced a band of white adventurers lead by Archibald Calhoun - a treasure hunter from Scotland. Only one Indian survived, his name was Ksatl Cha. He had three interesting items on him, I will tell you about them later.\Calhoun had tried to force the prisoner to tell him about treasures, but he kept silence. So the Scot delivered him to Santiago, to father Vincento in exchange for permission to visit Spanish cities during a year. He knew that the inquisitor is very interested in all kinds of local mysteries and legends. Vincento made the Indian talk. He was talking a lot, he told us everything he knew and the information we got out of him shocked the inquisitor himself.";
-			link.l1 = "You don't say? And what could make His Grace to tremble?";
+			dialog.text = "Он был в отряде индейцев ица, вышедшем из Тайясаля на поиски Маски Кукулькана - артефакта бога индейцев майя - Кукулькана. Отряд столкнулся с шайкой белых авантюристов, искателями кладов под командованием шотландца Арчибальда Колхауна. После стычки в живых остался только этот индеец, Ксатл Ча. При нем были три занятных предмета, к которым я вернусь позже\nКолхаун попытался выведать у пленника что-либо о сокровищах, но тот был нем, как рыба. Тогда шотландец отвез индейца в Сантьяго отцу Винсенто, так как знал, что инквизитор очень интересуется всякими туземными тайнами и легендами, и обменял его на грамоту, разрешающую ему посещать испанские поселения сроком на год\nПотом отец Винсенто взялся за индейца, и уже в его руках бедняга заговорил. Он рассказал много, очень много интересного. Услышанное повергло в шок самого инквизитора.";
+			link.l1 = "Да ну? Что же могло заставить трепетать Его Преосвященство?";
 			link.l1.go = "guardoftruth_5";
 		break;
 		
 		case "guardoftruth_5":
-			dialog.text = "I will tell you everything in order. There is an ancient Maya city called Tayasal in the depths of Yucatan's jungles. It is inhabited by the offsprings of Maya - the Itza people. They try to live their lifes according to the rules and traditions of their ancestors. Surely, they don't like the state of the modern world - I mean the dominance of white men.\nThey dream about good old times. And here comes the most interesting part. A bunch of white adventurers accidentally got close to Tayasal and kidnapped a daughter of supreme chief of the Itza people. It happened almost a quarter of century ago\nThis was the last straw and Kanek, the chief, was enraged. He decided to conduct most dangerous and secret rituals of Maya - to summon an Indian god in order to erase all offsprings of white conquerors...";
-			link.l1 = "Hm... That must be the demon of which father Vincento was talking about. But how should this Indian god deal with white colonists? To show itself in a form of dragon and burn them all?";
+			dialog.text = "Я расскажу по порядку. В глубине джунглей Юкатана стоит старый город майя - Тайясаль. Сейчас его населяют индейцы ица, прямые потомки майя, и пытаются следовать традициям и культуре своих предков. Безусловно, индейцы недовольны творящимся на архипелаге - я имею в виду засилие белых и захват ими земель коренных народов\nОднако ни у одного индейского племени нет такого богатого наследия, как у майя. Ица, их потомки, гордятся своим прошлым и мечтают о возвращении славных времен. А вот теперь - самое интересное. Около четверти века тому назад белыми авантюристами, случайно оказавшимися у Тайясаля, была похищена дочь верховного жреца ица\nЭто стало последней каплей, и Канек - верховный жрец - впал в ярость. Он решил провести один из самых таинственных, жутких и опасных ритуалов майя - призвать на землю индейское божество, чтобы стереть с земли предков белых завоевателей...";
+			link.l1 = "Гм... Видимо, об этом 'демоне' и говорил отец Винсенто. Но каким образом это индейское божество должно было расправиться с белыми поселенцами? Явиться в образе дракона и испепелить всех?";
 			link.l1.go = "guardoftruth_6";
 		break;
 		
 		case "guardoftruth_6":
-			dialog.text = "Oh, "+pchar.name+", leave these fire monsters tales to the old grannies! Actually, you were not so wrong, but our case is more difficult and serious. Even the Flood won't be able to stop Europe from expanding in the New World. Ten more alive will come to replace one dead. Kanek needed to destroy the possibility of European colonization itself.";
-			link.l1 = "Well, it did happen already.";
+			dialog.text = "О, "+pchar.name+", оставьте эти сказки об огнедышащих чудищах старушкам, нянчащим детей! Хотя вы почти угадали, но все намного сложнее и... серьезнее. Даже потоп не может ныне остановить экспансию европейцев в Новый Свет - на место одного погибшего явится десять других. Канеку нужно было уничтожить саму возможность прихода и укрепления белых на земле индейцев.";
+			link.l1 = "Но как же он собирался это сделать, если вторжение УЖЕ произошло?";
 			link.l1.go = "guardoftruth_7";
 		break;
 		
 		case "guardoftruth_7":
-			dialog.text = "You are thinking in the right direction, captain... The purpose of the Kanek's rite wasn't only in calling the high being, but also to create the spatio-temporal hole.";
-			link.l1 = "What?";
+			dialog.text = "Верно мыслите, капитан... Обряд Канека, кроме призвания в помощь высшего существа, также осуществлял создание пространственно-временной воронки.";
+			link.l1 = "Что ты сейчас сказал? Какой еще воронки?";
 			link.l1.go = "guardoftruth_8";
 		break;
 		
 		case "guardoftruth_8":
-			dialog.text = "Ancients of Maya people possessed quite a knowledge, captain. Kanek found a description of the rite which allows to control the time.";
-			link.l1 = "Whoa! Incredible!";
+			dialog.text = "Майя - великие мудрецы, капитан... Канек нашел описание обряда, способного управлять временем.";
+			link.l1 = "Вот это да! Невероятно!";
 			link.l1.go = "guardoftruth_9";
 		break;
 		
 		case "guardoftruth_9":
-			dialog.text = "Listen. The ultimate goal of the ritual is to alter the past to make the appearance of white men in the New World impossible. In order to do such a thing, they are going to send someone in the past, someone who holds authority, power and ability to change people's fates. But most importantly, such person must posses modern knowledges\nThink about it, "+pchar.name+", what would had happened to Columbus if his caravels were met by Indian fleet of frigates and galleons armed with modern cannons? And hackbut's of white soldiers would be opposed not to bows and spears, but to mortars and muskets?";
-			link.l1 = "I suppose that the Americas would not be discovered at all....";
+			dialog.text = "Слушайте дальше. Конечная цель обряда - измененить прошлое так, чтобы сделать невозможным появление белых в Новом Свете. А для этого нужно отправить в прошлое некого человека, обладающего авторитетом, силой, способностью вершить судьбы, но самое главное - наделенного современными знаниями\nКак вы думаете, "+pchar.name+", что было бы с Колумбом, если бы его каравеллы были встречены у берегов Эспаньолы индейским флотом из фрегатов и галеонов, которые отдали бы салют прибывшим из нынешних орудий, а аркебузам белых солдат противостояли бы не луки и копья, а мортиры и мушкеты?";
+			link.l1 = "Думаю, Америку бы так и не открыли...";
 			link.l1.go = "guardoftruth_10";
 		break;
 		
 		case "guardoftruth_10":
-			dialog.text = "Exactly! And perhaps some Indian 'Columbus' would have discovered Europe...";
-			link.l1 = "Interesting, and who Kanek is going to send to the past? One of his naked warriors? I doubt that he will be able to teach his ancestors...";
+			dialog.text = "Именно! А возможно, еще и какой-нибудь индейский 'Колумб' открыл бы Европу...";
+			link.l1 = "Интересно, и кого же Канек собрался отправить в прошлое? Какого-нибудь своего голопузого воина? Сомневаюсь, что он сумеет многому научить своих пращуров...";
 			link.l1.go = "guardoftruth_11";
 		break;
 		
 		case "guardoftruth_11":
-			dialog.text = "Don't laugh, captain. Kanek wasn't wasting years in Maya's temples reading their writings. An Indian God must be sent to the past in a human form...";
-			link.l1 = "Gino, what the nonsense are talking about? Are you....";
+			dialog.text = "Не смейтесь, капитан. Канек не зря провел много лет в храмах майя, изучая их письмена. В прошлое должно отправится вызванное этим обрядом индейское божество, воплощенное в человеческом облике...";
+			link.l1 = "Джино, что за чушь ты порешь? От кого-кого, но от тебя...";
 			link.l1.go = "guardoftruth_12";
 		break;
 		
 		case "guardoftruth_12":
-			dialog.text = "Even the Son of our Lord, Jesus Christ, has come to our earth in human form and was born by the human woman, the Holy Virgin Mary...";
-			link.l1 = "Jesus, Gino... are you serious?";
+			dialog.text = "Даже Сын Господа нашего, Спаситель, Иисус Христос, явился на землю в человеческом обличии и был рожден от женщины, Пресвятой Девы Марии...";
+			link.l1 = "Господи, Джино... ты серьезно?";
 			link.l1.go = "guardoftruth_13";
 		break;
 		
 		case "guardoftruth_13":
-			dialog.text = "Sure I am. Ksatl Cha was very persuasive...";
-			link.l1 = "But which God Kanek decided to choose for such 'noble' mission?";
+			dialog.text = "Более чем. Ксатл Ча рассказывал очень убедительно...";
+			link.l1 = "Но что за божество решил призвать Канек?";
 			link.l1.go = "guardoftruth_14";
 		break;
 		
 		case "guardoftruth_14":
-			dialog.text = "The rite was meant to call only the one High Being. The feathered serpent, Quetzalcoatl, Kukulcan...";
-			if (CheckAttribute(pchar, "questTemp.Dolly")) link.l1 = "Kukulcan?! I have already had an imprudence to meet with his 'spirit' which is living in statues. Now I see... go on!";
-			else link.l1 = "Hm. Interesting. I have already heard that name from father Vincento... go on!";
+			dialog.text = "Обряд предусматривал вызов только одного высшего существа. Крылатый змей, Кетцалькоатль, Кукулькан...";
+			if (CheckAttribute(pchar, "questTemp.Dolly")) link.l1 = "Кукулькан?! Я уже имел неосторожность близко познакомиться с его 'духом', живущим в статуях. Так вот оно что... продолжай!";
+			else link.l1 = "Хм. Интересно. Я уже слышал это имя от отца Винсенто... продолжай!";
 			link.l1.go = "guardoftruth_15";
 		break;
 		
 		case "guardoftruth_15":
-			dialog.text = "Kanek decided to summon Kukulcan, since the Itza already had an ancient artifact of this god - the Mask of Kukulcan. One who has the mask is able to go through the portal and only the owner of the mask will be accepted by the ancient Maya as a living god.\nThe priest conducted the ritual, summoned Kukulcan to incarnate in the body of some mortal. He also created a time hole which extracted several random people from the future.\nThe goal of such extraction was to present Kukulcan's incarnation not only knowledge of modern times, but also of the future. But something went wrong and all those people got elsewhere but Tayasal. I never met any of them.\nSeveral portals were created within the archipelago, they were supposed to transport owners of future knowledge and Itza agents all across the area and to Tayasal. But these portals failed their purpose, no one had been ever delivered to Tayasal for the last 25 years...";
+			dialog.text = "Канек решил призвать Кукулькана, поскольку ица обладали древним артефактом этого божества - Маской Кукулькана. Только тот, кто владеет Маской, сможет пройти через временной портал в Тайясаль многовековой давности, и только ее обладатель будет признан индейцами майя воплощением Кукулькана на земле. Без этого артефакта древние майя примут любого пришельца за чужака и расправятся с ним на жертвенном алтаре\nЖрец провел ритуал: призвал Кукулькана воплотиться в теле смертного на земле и создал пространственно-временную воронку. В момент ритуала эта воронка на мгновение открыла врата в разные места пространства и времени и затянула в нашу реальность некоторое количество людей из будущего\nЭто делалось для того, чтобы принести воплощению Кукулькана знания не только современности, но даже будущего, чтобы увеличить его силу. Правда, в Тайясаль эти жертвы почему-то не попали, а рассеялись неведомо где. В Тайясале на месте свершения ритуала образовался портал Кукулькана, через который тот, когда явится в Тайясаль, сможет отправиться в прошлое вместе со своими знаниями\nТакже на архипелаге появились порталы для захвата людей и доставки их в Тайясаль, как потенциальных источников знаний и опыта. Однако эти порталы не выполнили своего предназначения за четверть века ни разу: никто не был захвачен и перенесен в Тайясаль...";
 			if (CheckAttribute(pchar, "questTemp.Dolly"))
 			{
-				link.l1 = "Sure... Because these portals transfer captured people only to each other. Incredible!";
+				link.l1 = "Конечно... Потому что эти порталы перекидывают захваченных ими людей по кругу друг к дружке... Невероятно!";
 				link.l1.go = "guardoftruth_15a";
 			}
 			else
 			{
-				link.l1 = "Interesting...";
+				link.l1 = "Очень занятно...";
 				link.l1.go = "guardoftruth_16";
 			}
 		break;
 		
 		case "guardoftruth_15a":
-			dialog.text = "Have you seen those portals? Tell me!";
-			link.l1 = "Maybe later, Gino... I am more interested in your story at the moment. Go on!";
+			dialog.text = "Вы что, видели эти порталы? Расскажите!";
+			link.l1 = "Как-нибудь потом, Джино... Сейчас меня больше интересует твой рассказ. Продолжай!";
 			link.l1.go = "guardoftruth_16";
 		break;
 		
 		case "guardoftruth_16":
-			dialog.text = "Father Vincento is aware of everything I have told you. This made him worry, of course. If Kukulcan, incarnated in human form, will get to the portal along with the Mask and all the knowledge he gathered… End of times. Apocalypse\nIf the past alters - future does the same thing. Our reality will change, it will disappear, dissolve. You and I may never be born. Or we shall be different. Once Kukulcan reaches the past - we shall seize to exist.";
-			link.l1 = "And who is the Kukulcan's incarnation?";
+			dialog.text = "Все, что я сейчас рассказал, известно и отцу Винсенто. Немудрено, что он забеспокоился. Ведь если Кукулькан, ныне воплощенный в человека, доберется с накопленными знаниями до портала в Тайясале, то последствия будут печальны. Это фактически конец света для нас с вами\nИзменится прошлое - изменится и будущее. Наша реальность претерпит изменения, фактически - исчезнет, заменившись другой. Возможно, мы с вами даже и не родимся, капитан. Или в лучшем случае - появимся в других условиях. Так что как только Кукулькан окажется в прошлом - мы с вами перестанем существовать.";
+			link.l1 = "А в ком воплощен Кукулькан?";
 			link.l1.go = "guardoftruth_17";
 		break;
 		
 		case "guardoftruth_17":
-			dialog.text = "Who knows. He might be in anyone who was born a quarter of century ago, when the ritual was conducted. In you, for example… just kidding. But we still have a chance. First, Kukulcan's incarnation is just a mortal person, he can drown, be stabbed, be shot or die of fever. And in such case, no apocalypse will ever happen.\nSecond, it is impossible to reach the past absent the mask, Kanek stashed it very well, maybe too well so it seems. It might be, that even incarnated Kukulcan will fail to find it.";
-			link.l1 = "Tell me more.";
+			dialog.text = "А кто же его знает. Он может быть в любом человеке, кто родился четверть века назад, когда был совершен обряд. В вас, например... шучу, шучу. Но для нас не все потеряно. Во-первых, воплощение Кукулькана - обычный смертный, а значит он может заболеть, утонуть, погибнуть от шальной пули, и конец света не состоится\nА во-вторых, в прошлое невозможно отправиться без Маски Кукулькана, а ее Канек надежно припрятал... похоже, даже слишком надежно. Быть может, и сам воплощенный Кукулькан не найдет ее.";
+			link.l1 = "Ну-ка, давай поподробнее!";
 			link.l1.go = "guardoftruth_18";
 		break;
 		
 		case "guardoftruth_18":
-			dialog.text = "Some time after the ritual, a group of Spanish conquistadors almost reached Tayasal and almost made it to the treasury. Itza managed to kill them all except one - a strong giant seven feet tall\nKanek was worried that the Mask could be stolen by any stranger, so he decided to protect the relic. He had invented his own ritual, using the ancient Maya's knowledge. He took three items which, as he believed, held power of white men. A dagger which once was a property of Cortez himself and a compass. He also used that dagger to carve out a piece of skin from the back of captured Spanish giant. The man himself was sacrificed on the altar of Kukulcan. Three items were used in the ritual\nAnd from this ritual a new island was born, in the open sea, not far from Yucatan. No one know it's location, but the Mask is stashed there. In order to find it, one must use the dagger, the compass and the piece of skin. Besides, all items from the treasury are cursed, not a single one of them can leave the archipelago.\nAn attempt to do so will cause a storm which will take the ship right to rocks of the island. It is called Ksocheatem. Smart, isn't it?";
-			link.l1 = "Maybe too samrt. No arguing on that. But how in the world was Ksatl Cha so well informed? I doubt that Kanek was sharing such knowledge with common warriors...";
+			dialog.text = "Спустя какое-то время после обряда к Тайясалю проникла группа испанских конкистадоров и почти добралась до сокровищницы. Ица сумели остановить кастильцев, перебив их, а одного взяли в плен - гиганта ростом почти семь футов и огромной силы\nКанек, обеспокоенный, что Маской Кукулькана может завладеть чужак, выкрав из сокровищницы, и тем самым помешать великому плану, решил защитить реликвию. Он придумал свой собственый ритуал, пользуясь знаниями майя. Для этого ритуала он взял вещи, которые, по его мнению, были наделены магией белых людей\nЭто была дага, принадлежавшая самому Кортесу, и корабельный компас. Кроме того, этой дагой из спины испанца-гиганта вырезали большой кусок кожи, а его самого принесли в жертву Кукулькану на алтаре. Вот эти предметы - дага, компас и кусок кожи, были задействованы в ворожбе\nПосле ритуала в море недалеко от Юкатана образовался новый остров, на котором теперь и находится Маска Кукулькана. Где он - никто не знает. А найти его можно только при помощи даги, компаса и куска кожи, совместив определенным способом. И кроме того, на все предметы сокровищницы наложилось заклятие: ни один из них не может покинуть пределы архипелага!\nПри попытке вывоза судно будет захвачено штормом и выброшено на тот самый дикий остров, Ксочитэм, где спрятана Маска. Умно, правда?";
+			link.l1 = "Не спорю. Но откуда же этот Ксатл Ча так подробно был обо всем осведомлен? Что-то не верится, что Канек делился тайными знаниями с простыми воинами...";
 			link.l1.go = "guardoftruth_19";
 		break;
 		
 		case "guardoftruth_19":
-			dialog.text = "Thing is, that the current chief of Itza, Urakan, the son of Kanek, had told this warrior everything. He sent Ksatl Cha with a group of warriors to find the secret island and the Mask of Kukulcan. He had given him the Guardian of Truth to do that, it is the name of three items together - the dagger, the compass and the map made of human skin.";
-			link.l1 = "The map? And why did Urakan need the Mask? He decided to alter the past himself?";
+			dialog.text = "Дело в том, что все это ему поведал нынешний вождь ица, Уракан, сын Канека. Он и отправил Ксатл Ча с отрядом воинов, чтобы тот нашел тайный остров и Маску Кукулькана. Для этого он дал ему Стража Истины - так называются в совокупности дага, компас и кожаная карта...";
+			link.l1 = "Почему - карта? И зачем Уракану понадобилась Маска? Он решил сам отправится в прошлое?";
 			link.l1.go = "guardoftruth_20";
 		break;
 		
 		case "guardoftruth_20":
-			dialog.text = "The skin has contours of the archipelago on it, so they call it the map. Urakan wanted the Mask for a very simple reason - he does not want to destroy the existing reality and to sacrifice his life and lifes of his people for the glory of the ancients.\nThat is why he was going to destroy the Mask at all costs. But Ksatl Cha was captured by Calhoun and... well, you know the rest of the story. He never reached Ksocheatem.";
-			link.l1 = "So it is possible to prevent the end of times by finding and destroying the Mask? And where is that... Guardian of Truth now?";
+			dialog.text = "Карта - потому что после ритуала на куске кожи появились контуры архипелага, словно карта. А Маска Уракану понадобилась по простой причине: он, в отличие от своего отца, не хочет разрушать существующую реальность - похоже, она его весьма устраивает. Он не хочет приносить себя в жертву ради славного будущего народа майя\nВидимо, Уракан вознамерился уничтожить Маску, и тем самым сделать для Кукулькана путешествие в прошлое невозможным. Но Ксатл Ча захватил Колхаун, а дальше - вы знаете. Так что посланец Уракана так и не добрался до Ксочитэма.";
+			link.l1 = "Значит, конец света можно предотвратить, если найти и уничтожить Маску Кукулькана? А где сейчас этот... Страж Истины?";
 			link.l1.go = "guardoftruth_21";
 		break;
 		
 		case "guardoftruth_21":
-			dialog.text = "The dagger 'Chief's claw' and the compass 'Arrow of the Way' were left to Calhoun and the skin map 'Of two appearances' is still somewhere in the inquisition. Calhoun used it as a gag to shut the prisoner's mouth. He had no idea what were these items for.";
-			link.l1 = "What did you just say? 'Chief's claw'? Damn it, but this dagger is on me right now! Fadey has given it to me as a repayment of his debt to my brother! Take a look!";
+			dialog.text = "Дага 'Коготь вождя' и компас 'Стрела пути' остались у Колхауна, а кожаная карта 'Двух появлений' скорее всего лежит где-то в инквизиции. Колхаун заткнул ей пленнику рот, использовав как кляп. Он понятия не имел, что это за предметы.";
+			link.l1 = "Как ты сейчас сказал? 'Коготь вождя'? Черт возьми, но эта дага у меня! Мне ее отдал Фадей в уплату долга моему брату! Смотри!";
 			link.l1.go = "guardoftruth_22";
 		break;
 		
 		case "guardoftruth_22":
-			dialog.text = "Incredible... It really is. I remember it.";
-			link.l1 = "Gino, tell me, what exactly does father Vincento know of your story?";
+			dialog.text = "Поразительно... Это и впрямь она. Я помню ее.";
+			link.l1 = "Джино, скажи: что именно из твоего рассказа известно отцу Винсенто?";
 			link.l1.go = "guardoftruth_23";
 		break;
 		
 		case "guardoftruth_23":
-			dialog.text = "Everything, except information concerning the Guardian of Truth and how to make it give out the location of the secret island with the Mask of Kukulcan. Ksatl Cha told me when we were alone right before I gave him a poison mixture to end his suffering. He died with a smile on his face.\nSurely, I couldn't stay in Santiago any longer. I had serious suspicions that I became a too important and dangerous witness for the inquisitor. Father Vincento always gets what he wants, no matter the cost. Ksatl Cha told him about the treasury in Tayasal.";
-			link.l1 = "These treasures were already found by one adventurer named Miguel Dichoso. Have you heard of him?";
+			dialog.text = "Все, кроме того, что касается Стража Истины. А также того, как его заставить работать, чтобы найти таинственный остров с Маской Кукулькана. Это Ксатл Ча рассказал мне с глазу на глаз, перед тем, как я дал ему микстуру, упокоившую его навеки. Я не мог смотреть на то, как он страдает, и помог ему избавиться от мучений. Он умер с улыбкой на лице\nКонечно, я не мог после этого оставаться в Сантьяго. Да и были у меня серьезные опасения, что я стал слишком важным и опасным свидетелем для инквизитора, а отец Винсенто не церемонится в выборе средств\nВедь кроме всего прочего, Ксатл Ча рассказал и о сокровищнице ица в Тайясале.";
+			link.l1 = "До этих сокровищ уже добрался один искатель приключений по имени Мигель Дичозо. Не слышал о таком?";
 			link.l1.go = "guardoftruth_24";
 		break;
 		
 		case "guardoftruth_24":
-			dialog.text = "No. And where is he now with his treasures?";
-			link.l1 = "I want to know it myself. That is why I came to you, I am looking for that Indian gold. Dichoso has taken the treasures to Europe and disappeared with them.";
+			dialog.text = "Нет. И где же сейчас Дичозо с этими сокровищами?";
+			link.l1 = "А вот это я и сам хочу узнать. Я, собственно, и пришел к нашему с тобой разговору, отправившись по следу индейского золота. Дичозо повез эти сокровища в Европу, но канул в никуда вместе с ними.";
 			link.l1.go = "guardoftruth_25";
 		break;
 		
 		case "guardoftruth_25":
-			dialog.text = "I will tell you where are the treasures and Dichoso himself.";
-			link.l1 = "Gino, you are surprising me. How'd you know that?!";
+			dialog.text = "Я скажу вам, где сокровища и сам Дичозо.";
+			link.l1 = "Джино, ты меня поражаешь. Откуда тебе известно?!";
 			link.l1.go = "guardoftruth_26";
 		break;
 		
 		case "guardoftruth_26":
-			dialog.text = "You could already figure this out yourself from my story, captain. The treasures of Tayasal were cursed - not a single item is able to be taken away from the archipelago. Any ship...";
-			link.l1 = "... will be caught by the storm and thrown on the island where the Mask of Kukulcan is hidden! I was blind, but now I see. It seems that I know enough to find Ksocheatem, the treasures and the Mask itself!";
+			dialog.text = "Вы могли это и сами понять из моего рассказа, капитан. На сокровища Тайясаля наложено заклятие - ни один предмет не может покинуть архипелаг. Любой корабль...";
+			link.l1 = "...будет захвачен штормом и выброшен на остров с Маской Кукулькана! Как же я сразу не догадался! Значит, достаточно найти этот... Ксочитэм, чтобы завладеть и сокровищами, и самой Маской!";
 			link.l1.go = "guardoftruth_27";
 		break;
 		
 		case "guardoftruth_27":
-			dialog.text = "Want to save th world, captain?";
-			link.l1 = "I want to find my prodigal brother... Gino, how to make the Guardian of Truth to show a location of the island? You said that you know how!";
+			dialog.text = "Вы решили спасти мир, капитан?";
+			link.l1 = "Я решил найти своего блудного брата... Джино, как заставить Стража Истины показать, где находится остров? Ты сказал, что знаешь!";
 			link.l1.go = "guardoftruth_28";
 		break;
 		
 		case "guardoftruth_28":
-			dialog.text = "I know the method, but I don't know the details. I won't be able to help you until I have all components of the Guardian.";
-			link.l1 = "Hm. We have already got the dagger. Only compass and map are left. Calhoun has the compass and father Vincento has the map...";
+			dialog.text = "Я только образно понял, как он работает. До тех пор, пока у меня не будут все компоненты Стража - я ничего не смогу сказать вам.";
+			link.l1 = "Хм. Дага у нас уже есть. Осталось найти компас и карту. Компас - надо искать у Колхауна, а карту - у отца Винсенто в инквизиции...";
 			link.l1.go = "guardoftruth_29";
 		break;
 		
 		case "guardoftruth_29":
-			dialog.text = "Are you going to return to the inquisitor? But how are you going to report about...";
-			link.l1 = "I have to convince father Vincento that you are dead, Gino. Only then he will stop his searches. Let's say that you have had a sudden stroke once you saw me. You should give me some item which I will be able to use as a proof of your death.";
+			dialog.text = "Вы собираетесь назад к инквизитору? Но как же вы доложите ему про...";
+			link.l1 = "Надо убедить отца Винсенто, что ты умер, Джино. Тогда он прекратит преследования. Скажем, тебя хватил удар при моем появлении. А в качестве доказательства ты мне дашь какую-нибудь вещь, которая знакома инквизитору.";
 			link.l1.go = "guardoftruth_30";
 		break;
 		
 		case "guardoftruth_30":
-			dialog.text = "Vincento won't believe in heart attack version, but he will do believe if you tell him that I committed a suicide by drinking some poison with a smell of almond. Give him my almanac, he knows that I never part with it.";
-			link.l1 = "Fine. Because I need that connection with the inquisitor. He probably knows a lot about our business.";
+			dialog.text = "В версию 'удара' Винсенто не поверит, а вот в то, что я на ваших глазах выпил яд - будет правдоподобно. Расскажете инквизитору, что при упоминании его имени я схватил мензурку с прозрачной жидкостью и выпил ее, после чего покраснел, посинел и упал на пол, задыхаясь, и через минуту отдал Богу душу\nСкажете, что при этом в комнате стоял запах миндаля - отец Винсенто сразу поймет, что это за яд. А отдадите ему вот этот альманах - мои записи различных исследований, я никогда с ним не расставался.";
+			link.l1 = "Замечательно. Потому как я намерен поддерживать контакт с инквизитором. Он наверняка знает многое, что касается нашего дела.";
 			link.l1.go = "guardoftruth_31";
 		break;
 		
 		case "guardoftruth_31":
-			dialog.text = "Be careful with the father Vincento. He is dangerous as a tiger and he runs a game of his own. He won't share neither treasures nor fame with you.";
-			link.l1 = "I understand that. Fine, Gino, give me your almanac and try to remember what had Indian told you about the Guardian of Truth, because I want to assemble it. I need to find Ksocheatem, I am sure that I will find there not only the mask and the treasures, but also my dear brother.";
+			dialog.text = "Будьте острожны с отцом Винсенто. Он опасен, как тигр, и ведет свою игру. Делиться с вами он не станет - ни сокровищами, ни славой.";
+			link.l1 = "Я понимаю. Ладно, Джино, давай свой альманах и постарайся вспомнить, что тебе говорил индеец по поводу Стража Истины, ибо я намерен собрать его полностью. Я должен найти Ксочитэм, ибо уверен, что там отыщутся не только сокровища и артефакт майя, но и мой дорогой братец.";
 			link.l1.go = "guardoftruth_32";
 		break;
 		
 		case "guardoftruth_32":
-			dialog.text = "Take it. Good luck, captain!";
-			link.l1 = "I am not saying farewells, Gino...";
+			dialog.text = "Держите. Удачи вам, капитан!";
+			link.l1 = "Я не прощаюсь, Джино...";
 			link.l1.go = "guardoftruth_33";
 		break;
 		
 		case "guardoftruth_33":
 			DialogExit();
-			Log_Info("You have received an almanac");
+			Log_Info("Вы получили альманах");
 			PlaySound("interface\important_item.wav");
 			GiveItem2Character(pchar, "Almanac");
 			ChangeItemDescribe("Almanac", "itmdescr_jinobook");
@@ -838,32 +838,32 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guardoftruth_34":
-			dialog.text = "Was it hard, captain?";
-			link.l1 = "Let's not talk about it... There were too many people willing to get these items. Too many. It seems that I am not the only one who is eager to find mysterious Ksocheatem. ";
+			dialog.text = "Это было трудно, капитан?";
+			link.l1 = "Давай не будем об этом... Уж больно много было желающих завладеть этими вещами. Видать, не мне одному не дает покоя таинственный Ксочитэм.";
 			link.l1.go = "guardoftruth_35";
 		break;
 		
 		case "guardoftruth_35":
-			dialog.text = "I can imagine... By the way, how is father Vincento? Do you communicate regularly with him?";
-			link.l1 = "So far I do, but I think that there is no need to do that anymore. I have all components of the Guardian of Truth which means that I own a key to the location of Ksocheatem. I am not eager to report His Grace about my success for some reason.";
+			dialog.text = "Могу себе представить... Кстати, как отец Винсенто? Вы поддерживаете с ним связь?";
+			link.l1 = "Пока да, но, думаю, дальнейшее сотрудничество уже ни к чему. Компоненты Стража Истины у меня, а, значит, и ключ к местонахождению Ксочитэма. Что-то мне не хочется осведомлять Его Преосвященство о моих успехах.";
 			link.l1.go = "guardoftruth_36";
 		break;
 		
 		case "guardoftruth_36":
-			dialog.text = "Be careful, "+pchar.name+". Father Vincento has hundreds of eyes and hundreds of hands. Very long hands...";
-			link.l1 = "I have went through a lot for the last few months and at this moment I am certainly not afraid neither of father Vincento nor of his eyes and hands. Whatever. It is time for us to find Ksocheatem using components of the Guardian. Do you know how to perform that? ";
+			dialog.text = "Будьте осторожны, "+pchar.name+". У отца Винсенто сотни глаз и сотни рук. Длинных рук...";
+			link.l1 = "Я за последнее время пережил столько, что теперь точно не боюсь ни отца Винсенто, ни его ищеек, ни его наймитов. Ладно. Пора бы нам с тобой заняться поиском Ксочитэма при помощи компонентов Стража. Ты знаешь, как это сделать?";
 			link.l1.go = "guardoftruth_37";
 		break;
 		
 		case "guardoftruth_37":
-			dialog.text = "Not really. Ksatl Cha was quite vague. I think that the Indian didn't really know how to make the Guardian to work. Leave components to me and I will try to figure that out. Come and see me in two days and perhaps I will see this riddle solved.";
-			link.l1 = "Fine, Gino. I count on you. Here, take them.";
+			dialog.text = "Не совсем. Слова Ксатл Ча были довольно расплывчатыми. Сдается мне, что индеец и сам толком не знал, как заставить Стража работать. Оставьте мне компоненты, а я поломаю голову над решением этой задачи. Зайдите ко мне через два дня - возможно, я разгадаю тайну.";
+			link.l1 = "Хорошо, Джино. Буду надеяться на тебя. Вот, возьми: дага, карта и компас.";
 			link.l1.go = "guardoftruth_38";
 		break;
 		
 		case "guardoftruth_38":
-			dialog.text = "You can be sure that they will stay safe and in one piece.";
-			link.l1 = "I don't doubt in that. Well, I won't bother you now, Gino. Good luck with your research!";
+			dialog.text = "Можете быть уверены - они останутся в целости и сохранности.";
+			link.l1 = "Не сомневаюсь. Ну а теперь не буду тебе мешать, Джино. Удачных поисков!";
 			link.l1.go = "guardoftruth_39";
 		break;
 		
@@ -880,27 +880,27 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ksochitam":
-			dialog.text = "Partly. I mean, I have got something, but I don't know how to make it all work for real. Let's try to solve this puzzle together.";
-			link.l1 = "Let's try! Give me your ideas.";
+			dialog.text = "Частично. То есть, что-то есть, но как это привязать к жизненным реалиям - я пока не совсем понимаю. Давайте попробуем разобраться вместе.";
+			link.l1 = "Давай! Рассказывай, какие у тебя догадки?";
 			link.l1.go = "ksochitam_1";
 		break;
 		
 		case "ksochitam_1":
-			dialog.text = "Ksatl Cha said something like that: 'The Chief's claw will make the map to reveal itself. The Arrow of the Way will show direction at the appearances.";
-			link.l1 = "And what have you managed to do?";
+			dialog.text = "Индеец, Ксатл Ча, по поводу Стража Истины сказал следующее: 'Коготь вождя заставит карту открыться. Стрела пути укажет нужное направление из каждого проявления'.";
+			link.l1 = "И что тебе удалось сделать?";
 			link.l1.go = "ksochitam_2";
 		break;
 		
 		case "ksochitam_2":
-			dialog.text = "I have guessed how to make the map to 'reveal' itself. Have you taken a look at the map of Two Appearances?";
-			link.l1 = "Hm. And was there anything special? Some obscured contours of the archipelago.";
+			dialog.text = "Я догадался, как заставить 'карту открыться'. Вы смотрели карту Двух Появлений?";
+			link.l1 = "Хм. А что там такого? Невнятные контуры архипелага.";
 			link.l1.go = "ksochitam_3";
 		break;
 		
 		case "ksochitam_3":
 			GiveItem2Character(pchar, "skinmap");
-			dialog.text = "Take it and have a look again. Be attentive.";
-			link.l1 = "Well, let's do that if you insist.";
+			dialog.text = "Возьмите ее и посмотрите еще раз, внимательно.";
+			link.l1 = "Ну, давай посмотрим, раз ты так настаиваешь.";
 			link.l1.go = "ksochitam_4";
 		break;
 		
@@ -912,21 +912,21 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ksochitam_wait":
-			dialog.text = "You haven't taken a look at the map, "+pchar.name+"...";
-			link.l1 = "Yes-yes, I will do it now...";
+			dialog.text = "Вы не посмотрели карту, "+pchar.name+"...";
+			link.l1 = "Да-да, сейчас гляну...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "ksochitam_wait";
 		break;
 		
 		case "ksochitam_5":
 			dialog.text = "";
-			link.l1 = "I have. I didn't see anything new. Just some obscured shapes of islands and Main. What am I supposed to see there?";
+			link.l1 = "Посмотрел. И ничего нового не увидел: нечеткие очертания островов и Мэйна. А что там должно быть?";
 			link.l1.go = "ksochitam_6";
 		break;
 		
 		case "ksochitam_6":
-			dialog.text = "Wait a second. Now you have to make this map to reveal itself. Take the dagger and smoothly touch the map with it's edge. Don't push, we don't need avoid any damage. Take the dagger. And watch it carefully!";
-			link.l1 = "Interesting! Let's see...";
+			dialog.text = "Погодите. Теперь вы должны заставить карту открыться. Для этого возьмите дагу Коготь вождя и легонько проведите острием по карте. Только несильно, чтобы не повредить. Держите кинжал. И смотрите внимательно!";
+			link.l1 = "Как интересно! Сейчас посмотрим...";
 			link.l1.go = "ksochitam_7";
 		break;
 		
@@ -940,97 +940,97 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ksochitam_8":
-			dialog.text = "Well, do you see any differences now?";
-			link.l1 = "Yes. When you touch the map with the dagger two marks of skulls appear and always at the same places...";
+			dialog.text = "Ну, заметили разницу?";
+			link.l1 = "Да. Когда прикасаешься дагой к карте, на ней появляются две пометки, в виде черепов, причем все время в одних и тех же местах...";
 			link.l1.go = "ksochitam_9";
 		break;
 		
 		case "ksochitam_9":
-			dialog.text = "At the TWO same places, "+pchar.name+"! That is why it was called as the map of Two Appearances!";
-			link.l1 = "And what does it mean?";
+			dialog.text = "В одних и тех же ДВУХ местах, "+pchar.name+"! Вот почему ее назвали картой Двух Появлений!";
+			link.l1 = "И что это значит?";
 			link.l1.go = "ksochitam_10";
 		break;
 		
 		case "ksochitam_10":
-			dialog.text = "A lot, I think... But more puzzles coming next. I take it that these skulls are the appearances of which Ksatl Cha was talking about. So the compass must show the right direction to the Ksocheatem from them. Have you seen the compass, "+pchar.name+"?";
-			link.l1 = "Yes. It looks like an ordinary naval compass, but it behaves strange, it's arrow twitches in different directions or starts to turn around with a wild speed.";
+			dialog.text = "Наверняка - многое... Вот только дальше начинаются лишь догадки. Эти черепа, как я понимаю, и есть 'проявления', о которых сказал Ксатл Ча. Значит, именно в них компас Стрела Пути укажет направление на Ксочитэм. Вы рассматривали этот компас, "+pchar.name+"?";
+			link.l1 = "Да. На вид обычный корабельный компас, но вот ведет себя, как ошалелый: стрелка все время дергается в разных направлениях, или вообще начинает вращаться с дикой скоростью.";
 			link.l1.go = "ksochitam_11";
 		break;
 		
 		case "ksochitam_11":
-			dialog.text = "I thought that planting the compass on skulls will stop it's arrows and will show some clear direction on the map. To perform that I have planted it on one skull and then to another while touching the map with the dagger.";
-			link.l1 = "So what?";
+			dialog.text = "Я думал, что при установке компаса на карту в проявившиеся черепа стрелка компаса перестанет хаотически крутиться и укажет четкое направление на карте. Для этого я, прикасаясь дагой к кожаной карте, установил компас сначала в одно проявление, потом во второе...";
+			link.l1 = "И что?";
 			link.l1.go = "ksochitam_12";
 		break;
 		 
 		case "ksochitam_12":
-			dialog.text = "Fruitlessly. The compass didn't change it's behaviour. The arrow is still turning  wildly. It seems that I am doing something wrong. Or I didn't understand Ksatl Cha's words correctly.";
-			link.l1 = "So the dagger and the map work and the compass doesn't?";
+			dialog.text = "Безрезультатно. Компас не изменил своего поведения. Как крутилась стрелка, словно ненормальная, так и крутится. Видимо, я что-то делаю не так. Или неверно понимаю слова Ксатл Ча.";
+			link.l1 = "Получается, дага и карта - работают, а компас - нет?";
 			link.l1.go = "ksochitam_13";
 		break;
 		
 		case "ksochitam_13":
-			dialog.text = "The Arrow of the Way must be operational for sure, we just don't know yet how to make it work. "+pchar.name+",  you know the archipelago's geography better than I do... Tell me, what places are revealed by the map of two appearances?";
-			link.l1 = "Just a second! (taking a look)...Well-well... The appearance on the left is the western Main. The right one looks like Dominica island. Something like that.";
+			dialog.text = "Стрела пути наверняка тоже работает, просто мы не знаем, как его заставить это сделать. "+pchar.name+", вы лучше меня разбираетесь в географии архипелага... Скажите, где находятся на Карибах места, обозначенные на карте Двух Появлений?";
+			link.l1 = "Один момент! (смотрит)... Так-так... Проявление слева - это Западный Мэйн. Справа - похоже на остров Доминика. Вроде так.";
 			link.l1.go = "ksochitam_14";
 		break;
 		
 		case "ksochitam_14":
-			dialog.text = "And tell me now: is there... anything remarkable at those places?";
-			link.l1 = "What do you mean?";
+			dialog.text = "А вот теперь скажите: есть ли в этих краях что-нибудь такое... примечательное?";
+			link.l1 = "В смысле?";
 			link.l1.go = "ksochitam_15";
 		break;
 		
 		case "ksochitam_15":
-			dialog.text = "I am not sure myself... Well, something special?";
-			link.l1 = "Gino, don't talk riddles. Explain simply.";
+			dialog.text = "Да я и сам не знаю... Ну что-то особенное?";
+			link.l1 = "Джино, перестань говорить загадками. Объясни популярно.";
 			link.l1.go = "ksochitam_16";
 		break;
 		
 		case "ksochitam_16":
-			dialog.text = "I can only suppose that these skulls show us some real places. The Arrow of the Way doesn't work while planted on the map's appearance perhaps it will work close to the real geographic appearances which were revealed by the map?";
-			link.l1 = "Gino, you are a genius! Western Main, Dominica? Skulls are too big to show the exact locations.";
+			dialog.text = "Я могу предположить, что черепа на карте показывают некие места на реальной местности. Раз Стрела Пути не работает при установке ее на карту в 'проявление', быть может, он заработает, оказавшись географически в месте, указанном 'проявлением' на карте?";
+			link.l1 = "Джино, ты - гений! Но вот что это за места?.. Западный Мэйн, Доминика? Черепа очень большие, чтобы указать точно.";
 			link.l1.go = "ksochitam_17";
 		break;
 		
 		case "ksochitam_17":
 			chrDisableReloadToLocation = false;//открыть локацию
-			dialog.text = ""+pchar.name+", let's do the following: bring here a paper map of the archipelago, combine it with the map of Two Appearances and mark with crosses the appearances. Perhaps this will give you some suppositions?";
+			dialog.text = ""+pchar.name+", давайте сделаем так: принесите бумажную карту архипелага, совместите ее с картой Двух Появлений и отметьте на бумаге крестиками 'проявления'. Может, это натолкнет вас на какое-то предположение?";
 			if (CheckCharacterItem(pchar, "map_bad"))
 			{
-				link.l1 = "I have got this old map of the archipelago.";
+				link.l1 = "У меня есть вот эта потертая карта архипелага.";
 				link.l1.go = "ksochitam_17_1";
 			}
 			if (CheckCharacterItem(pchar, "map_normal"))
 			{
-				link.l2 = "I have got this fine map of the archipelago.";
+				link.l2 = "У меня есть вот эта весьма толковая карта архипелага.";
 				link.l2.go = "ksochitam_17_2";
 			}
 			if (CheckCharacterItem(pchar, "Map_Best"))
 			{
-				link.l3 = "I have got this excellent map of the archipelago.";
+				link.l3 = "У меня есть вот эта отличная карта архипелага.";
 				link.l3.go = "ksochitam_17_3";
 			}
-			link.l4 = "Deal. I will bring here a map and we will continue...";
+			link.l4 = "Договорились. Я принесу карту и мы продолжим...";
 			link.l4.go = "ksochitam_17_4";
 		break;
 		
 		case "ksochitam_17_1":
-			dialog.text = "Oh, come on, "+pchar.name+"! This parchment from the time of Columbus is not much better than the skin map. I am sure that there is something better than this rubbish in the world. Bring me another map, younger one!";
-			link.l1 = "Fine...";
+			dialog.text = "Ну же, "+pchar.name+"! Этот пергамент времен Колумба немногим информативнее кожаной карты. Я уверен, что есть что-то получше этого старья. Принесите другую карту, поновее!";
+			link.l1 = "Хорошо...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "ksochitam_map_wait";
 		break;
 		
 		case "ksochitam_17_2":
-			dialog.text = "Splendid! Now mark the places of the appearances on it. It will make it easier to build suppositions.";
-			link.l1 = "Just in a second, Gino!";
+			dialog.text = "Превосходно! Теперь отметьте на этой карте места проявлений крестом. Так нам будет проще строить предположения.";
+			link.l1 = "Сейчас сделаем, Джино!";
 			link.l1.go = "ksochitam_18";
 		break;
 		
 		case "ksochitam_17_3":
-			dialog.text = "No way we ruin such a wonderful map with our markings. You will need it yourself, "+pchar.name+". Bring here another map, a bit more modest!";
-			link.l1 = "Fine...";
+			dialog.text = "Жалко уродовать такую великолепную карту нашими пометками. Вам она еще пригодится, "+pchar.name+". Принесите другую карту, попроще!";
+			link.l1 = "Хорошо...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "ksochitam_map_wait";
 		break;
@@ -1041,23 +1041,23 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ksochitam_map_wait":
-			dialog.text = "Have you brought a map of the archipelago, "+pchar.name+"?";
+			dialog.text = "Вы принесли карту архипелага, "+pchar.name+"?";
 			if (CheckCharacterItem(pchar, "map_bad"))
 			{
-				link.l1 = "I have got this old map of the archipelago.";
+				link.l1 = "У меня есть вот эта потертая карта архипелага.";
 				link.l1.go = "ksochitam_17_1";
 			}
 			if (CheckCharacterItem(pchar, "map_normal"))
 			{
-				link.l2 = "I have got this fine map of the archipelago.";
+				link.l2 = "У меня есть вот эта весьма толковая карта архипелага.";
 				link.l2.go = "ksochitam_17_2";
 			}
 			if (CheckCharacterItem(pchar, "Map_Best"))
 			{
-				link.l3 = "I have got this excellent map of the archipelago.";
+				link.l3 = "У меня есть вот эта отличная карта архипелага.";
 				link.l3.go = "ksochitam_17_3";
 			}
-			link.l4 = "Not yet, but I have ordered it already. Soon I will have it and we will continue...";
+			link.l4 = "Пока нет, но я уже договорился о покупке. Скоро карта будет у меня, и мы продолжим...";
 			link.l4.go = "ksochitam_17_4";
 		break;
 		
@@ -1071,25 +1071,25 @@ void ProcessDialogEvent()
 		
 		case "ksochitam_19":
 			dialog.text = "";
-			link.l1 = "Done... I have done the markings, but it is still inaccurate information. The first place is somewhere Northwest of Blueweld. The second one is at the centre of Dominica island.";
+			link.l1 = "Готово... Пометки я сделал, но все равно о точности говорить не приходится. Первое место получилось где-то на северо-запад от Блювельда, в джунглях, а второе - центр острова Доминика.";
 			link.l1.go = "ksochitam_20";
 		break;
 		
 		case "ksochitam_20":
-			dialog.text = "Any ideas?";
-			link.l1 = "No. But I think that we should bring the Arrow of the Way there and watch it's behaviour. Of course, it is like searching for a needle in a haystack, but we don't have any better ideas anyway.";
+			dialog.text = "У вас есть предположения, что это за места могут быть?";
+			link.l1 = "Понятия не имею. Но думаю, что надо отправляться туда, держа в руках Стрелу Пути, и смотреть за его поведением. Это, конечно, поиски черной кошки в темной комнате, но других предположений у нас все равно нет.";
 			link.l1.go = "ksochitam_21";
 		break;
 		
 		case "ksochitam_21":
-			dialog.text = "I agree with you, "+pchar.name+". Will you let me sail with you?";
-			link.l1 = "Are you interested to check your suppositions? It would be an honour to have you on my ship's decks, Gino. Pack your things!";
+			dialog.text = "Я согласен с вами, "+pchar.name+". Позволите, я поплыву вместе с вами?";
+			link.l1 = "Тебе интересно, верно ли твое предположение? Я буду только рад, Джино, если ты ступишь на палубу моего корабля. Собирайся в путь!";
 			link.l1.go = "ksochitam_22";
 		break;
 		
 		case "ksochitam_22":
-			dialog.text = "It won't take much time. I will be ready in a few hours. Here, take Arrow of the Way.";
-			link.l1 = "Welcome aboard!";
+			dialog.text = "Это не займет много времени. Я буду готов через несколько часов. Вот, возьмите вашу Стрелу Пути.";
+			link.l1 = "Добро пожаловать на борт!";
 			link.l1.go = "ksochitam_23";
 		break;
 		
@@ -1110,27 +1110,27 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ksochitam_24":
-			dialog.text = "Yes-yes, "+pchar.name+", I am preparing myself. I will be ready soon.";
+			dialog.text = "Да-да, "+pchar.name+", я уже собираюсь. Скоро буду готов.";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "ksochitam_24";
 		break;
 		
 		case "ksochitam_25":
-			dialog.text = "So what, "+pchar.name+", are you lucky in our searches?";
-			link.l1 = "We were right. This is it. The Indian idol is one of the appearances.";
+			dialog.text = "Ну что, "+pchar.name+", как успехи в поисках?";
+			link.l1 = "Наша догадка подтвердилась. Я нашел то, на что указывало 'проявление' на карте. Это индейский истукан в джунглях.";
 			link.l1.go = "ksochitam_26";
 		break;
 		
 		case "ksochitam_26":
-			dialog.text = "Oh! It must be one of those idols which were supposed to teleport people to Tayasal! I was telling you about them, remember? So what, where to the Arrow of the Way is pointed?";
-			link.l1 = "It is pointed Northwest. I have marked the direction on a map. Though the drawn line crosses almost the whole Caribbean sea. We have to find another appearance on Dominica to find Ksocheatem.";
+			dialog.text = "О! Вероятно, это один из тех истуканов, призванных переносить людей в Тайясаль! Помните, я вам рассказывал? Ну, и что показал компас Стрела Пути?";
+			link.l1 = "Он указал на северо-восток. Я отметил на карте направление. Однако нарисованная линия пересекает чуть ли не все Карибское море. Чтобы найти Ксочитэм, надо отправляться ко второму 'проявлению', на Доминике.";
 			link.l1.go = "ksochitam_27";
 		break;
 		
 		case "ksochitam_27":
-			dialog.text = "I am sure that we will find there another idol... do you agree with my hypothesis, "+pchar.name+"?";
-			link.l1 = "I do, Gino. Now let's not waste time and start searching.";
+			dialog.text = "Уверен, это будет еще один истукан... вы согласны с моей гипотезой, "+pchar.name+"?";
+			link.l1 = "Вполне, Джино. А теперь не будем терять времени и отправимся на поиски.";
 			link.l1.go = "ksochitam_28";
 		break;
 		
@@ -1142,79 +1142,79 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ksochitam_29":
-			dialog.text = "So what, "+pchar.name+", have you found anything of interest?";
-			link.l1 = "We were right. This is it. The Indian idol is one of the appearances.";
+			dialog.text = "Ну что, "+pchar.name+", удалось отыскать что-нибудь интересное?";
+			link.l1 = "Да. Наша догадка подтвердилась. Я нашел то, на что указывало 'проявление' на карте. Это индейский истукан в джунглях.";
 			link.l1.go = "ksochitam_30";
 		break;
 		
 		case "ksochitam_30":
-			dialog.text = "Oh! It must be one of those idols which were supposed to teleport people to Tayasal! I was telling you about them, remember? So what, where to the Arrow of the Way is pointed?";
-			link.l1 = "Northwest. I have marked the direction on a map. Though the drawn line crosses almost the whole Caribbean sea. We have to find another appearance at the Main to find Ksocheatem.";
+			dialog.text = "О! Вероятно, это один из тех истуканов, призванных переносить людей в Тайясаль! Помните, я вам рассказывал? Ну, и что показал компас Стрела Пути?";
+			link.l1 = "Он указал на западо-северо-запад. Я отметил на карте направление. Однако нарисованная линия пересекает чуть ли не все Карибское море. Чтобы найти Ксочитэм, надо отправляться ко второму 'проявлению', на Мэйне.";
 			link.l1.go = "ksochitam_27";
 		break;
 		
 		case "ksochitam_31":
-			dialog.text = "So what, "+pchar.name+", have you found the second idol?";
-			link.l1 = "Yes. I have drawn the direction which was shown by the Arrow of the Way. Now we know the location of Ksocheatem, it is not the exact location but we know where to search! I will search the whole area where the lines are crossed and I will find that damn island!";
+			dialog.text = "Ну как, "+pchar.name+", отыскали второго истукана?";
+			link.l1 = "Да. Отыскал и начертил на карте направление, указанное Стрелой Пути. Теперь мы знаем местоположение Ксочитэма, пусть и не идеально точное, но знаем! Я обыщу весь район в месте, где пересеклись линии, но найду этот чертов остров!";
 			link.l1.go = "ksochitam_32";
 		break;
 		
 		case "ksochitam_32":
-			dialog.text = "I am glad to hear so much enthusiasm in your voice. But we have to prepare well for the upcoming expedition, it is unknown what we will face there. I doubt that we will get a welcome reception there...";
-			link.l1 = "Are you worrying about something specific or are you just expressing concerns?";
+			dialog.text = "Рад слышать столько энтузиазма в вашем голосе. Однако имеет смысл хорошенько подготовиться к предстоящей экспедиции - неизвестно, что нас ждет на этом острове. Что-то я сомневаюсь, что нас ожидает там радушный прием...";
+			link.l1 = "Ты опасаешься чего-то конкретного, или просто высказываешь беспокойство?";
 			link.l1.go = "ksochitam_33";
 		break;
 		
 		case "ksochitam_33":
-			dialog.text = "Think about it, "+pchar.name+".. Ksocheatem was created by the Mayan magic performed by Kanek. It is not a natural formation and it has evil and destructive powers on it. It is unknown what is waiting for us there, I doubt that we will find there sun shine, peaceful sea, whores and a calm wind.";
-			link.l1 = "Fine, Gino. I will consider your words and prepare myself for the expedition. I will get my ship ready and take care about potions and ammo...";
+			dialog.text = "Подумайте сами, "+pchar.name+". Ксочитэм возник в результате применения Канеком магии индейцев майя. Это неестественное образование, и к тому же обладающее злой и разрушительной силой. Неизвестно, что ожидает нас там, но навряд ли это будет ясное солнышко, ласковое море и тихий ветерок.";
+			link.l1 = "Хорошо, Джино. Я учту твои слова и как следует подготовлюсь перед походом: снаряжу корабль, запасусь зельями и боеприпасами...";
 			link.l1.go = "ksochitam_34";
 		break;
 		
 		case "ksochitam_34":
-			dialog.text = "A very wise decision. Well, shall get back to the ship?";
-			link.l1 = "Sure! Let's go!";
+			dialog.text = "Это очень разумное решение. Ну что же, а теперь - на корабль?";
+			link.l1 = "Точно! И - в путь!";
 			link.l1.go = "ksochitam_28";
 		break;
 		
 		case "ksochitam_35":
-			dialog.text = "We have arrived, "+pchar.name+"! Uh, the wind is howling!";
-			link.l1 = "Yes, Gino, you were right, there is no sun shine to greet us... I don't see any whores either. Actually, it is unknown what is waiting for us here at all.";
+			dialog.text = "Прибыли, "+pchar.name+"! Ух, какой ветер завывает!";
+			link.l1 = "Да, Джино, ты был прав насчет того, что нас тут не ждет ясное солнышко... Да и вообще неизвестно, что нас тут ждет.";
 			link.l1.go = "ksochitam_36";
 		break;
 		
 		case "ksochitam_36":
-			dialog.text = "Well, such a place you have chosen to land, captain! Just rocks and cliffs everywhere! And how are you going to get inside the island from here?";
-			link.l1 = "I didn't see any more suitable bay to land on this island because of this damn storm! Whatever, this is better than nothing. I will manage to find the way within these rocks, it's been worse sometimes. Don't panic, friend!";
+			dialog.text = "Ну и выбрали же вы местечко для высадки, капитан! Сплошные скалы да утесы! И как пробираться в глубь острова отсюда?";
+			link.l1 = "Ни одной удобной бухты для высадки не видно на этом острове из-за шторма! Хоть эту нашли, и то ладно! А проход в этих утесах как-нибудь найду, и не в таких переделках бывали. Так что не дрейфь, дружище!";
 			link.l1.go = "ksochitam_37";
 		break;
 		
 		case "ksochitam_37":
-			dialog.text = "I don't like this island, "+pchar.name+"! It is creepy. An this storm must be attached to the island. This place is doomed that's for sure!";
-			link.l1 = "I don't really like this place either, Gino! But this island does exist and which means that the story of Kukulcan is true. We will be all in danger if he will manage to get to Tayasal with the Mask...";
+			dialog.text = "Не нравится мне это остров, "+pchar.name+"! Какой-то он жуткий. И шторм этот, похоже, только вокруг этого кусочка суши и наблюдается. Определенно проклятое место!";
+			link.l1 = "Мне тоже здесь не по себе, Джино. Но надо же что-то выяснить по поводу 'Санта-Квитерии' и маски Кукулькана! Раз остров существует - значит, история с Кукульканом вовсе не сказки, и нам всем угрожает гибель, если он доберется до Тайясаля с маской...";
 			link.l1.go = "ksochitam_38";
 		break;
 		
 		case "ksochitam_38":
-			dialog.text = "Try to find the Mask, captain! It is more important than all of treasures in the world! It must be somewhere around! Once we have it, we will destroy Kukulcan's plans and won't let him alter the past!";
-			link.l1 = "And how does this mask look like, don't you know?";
+			dialog.text = "Попытайтесь найти маску, капитан! Это важнее всех сокровищ мира вместе взятых! Она точно должна быть где-то здесь! Тогда мы разрушим планы Кукулькана - не позволим ему отправиться в прошлое!";
+			link.l1 = "А как она выглядит эта маска - ты не знаешь?";
 			link.l1.go = "ksochitam_39";
 		break;
 		
 		case "ksochitam_39":
-			dialog.text = "No clue! But I think that you will recognize it, it is an ancient Indian artefact, it is hard to be mixed up with something else!";
-			link.l1 = "I see. I will keep my eyes open! Fine, Gino, get back to the ship! You don't have to walk around the island, your head is too valuable to risk it!";
+			dialog.text = "Понятия не имею! Но думаю, вы сразу узнаете ее - это древний индейский артефакт, его трудно с чем-то перепутать!";
+			link.l1 = "Понятно. Буду смотреть в оба! Ладно, Джино, возвращайся назад на корабль! Не стоит тебе разгуливать по этому острову - твоя голова слишком дорого стоит, чтобы ей рисковать!";
 			link.l1.go = "ksochitam_40";
 		break;
 		
 		case "ksochitam_40":
-			dialog.text = "I won't lie, captain, I am a crappy fighter and I don't feel comfortable about this place. Care to hear an advice? Every component of the Guardian is connected to the magic of this island. Ksatl Cha mentioned that the dagger has power over the local inhabitants, I don't know he meant though.\nI will stay aboard. See me there if you need my help.";
-			link.l1 = "Good. And now wish me luck, Gino!";
+			dialog.text = "Не буду перечить, капитан: мне и в самом деле здесь жутко, да и боец из меня никудышный. И вдогонку совет: компоненты Стража Истины обладают некой магией, напрямую связанной с Ксочитэмом. Ксатл Ча упомянул, что дага Коготь вождя имеет власть над существами, населяющими этот остров. Что это конкретно означает - я не понял. Но может вы разберетесь\nЯ буду в кают-компании. Если у вас вдруг возникнет тупиковая ситуация - возвращайтесь на корабль и расскажите мне, может, я смогу дать совет.";
+			link.l1 = "Хорошо. А теперь, Джино, пожелай мне удачи!";
 			link.l1.go = "ksochitam_41";
 		break;
 		
 		case "ksochitam_41":
-			dialog.text = "Good luck, "+pchar.name+"! God favour and preserve you!";
+			dialog.text = "Удачи, "+pchar.name+"! И да хранит вас Господь!";
 			link.l1 = "...";
 			link.l1.go = "ksochitam_42";
 		break;
@@ -1228,136 +1228,136 @@ void ProcessDialogEvent()
 		break;
 		
 		case "adversary":
-			dialog.text = "How are you doing, "+pchar.name+"? Need an advice?";
+			dialog.text = "Как успехи, "+pchar.name+"? Требуется совет?";
 			if (CheckAttribute(pchar, "questTemp.Ksochitam.Adversary.L1"))
 			{
-				link.l1 = "This fucking island is crawling with the undead and damn skeletons are surprisingly tough. I have no idea how to fight them.";
+				link.l1 = "Этот проклятый остров буквально кишит нечистью, причем мерзкие скелеты на удивление крепкие орешки. Ума не приложу, как с ними воевать.";
 				link.l1.go = "adversary_1";
 			}
 			if (CheckAttribute(pchar, "questTemp.Ksochitam.Adversary.L2"))
 			{
-				link.l1 = "If you go left from the fork you will eventually get the cavern. And where to go next? I fear that the cavern is a deadlock...";
+				link.l1 = "Если от развилки пойти левее, то попадаешь в пещеру. А вот куда идти дальше? Боюсь, это тупик...";
 				link.l1.go = "adversary_2";
 			}
 			if (CheckAttribute(pchar, "questTemp.Ksochitam.Adversary.L3"))
 			{
-				link.l1 = "I have found the way inside the wet cavern, you can dive into it's underwater part. But I don't see any exit from there...";
+				link.l1 = "Я нашел проход в мокрой пещере - можно поднырнуть в ее подводную часть. Но что-то я никак не могу найти оттуда никакого выхода...";
 				link.l1.go = "adversary_3";
 			}
 			if (CheckAttribute(pchar, "questTemp.Ksochitam.Adversary.L4"))
 			{
-				link.l1 = "If you go left from the fork you will get to the cavern. And where to go next? I fear that the cavern is a deadlock...";
+				link.l1 = "Если от развилки пойти левее, то попадаешь в пещеру. А вот куда идти дальше? Боюсь, это тупик...";
 				link.l1.go = "adversary_4";
 			}
 			if (CheckAttribute(pchar, "questTemp.Ksochitam.Adversary.L5"))
 			{
-				link.l1 = "There is a place in the large cavern where you can dive into the flooded part. But it seems that there is no way out of there...";
+				link.l1 = "В большой пещере есть место, где можно нырнуть под воду и попасть в затопленную часть. Вот только похоже, что она никуда не ведет...";
 				link.l1.go = "adversary_5";
 			}
-			link.l10 = "It is alright so far, Gino, I am fine.";
+			link.l10 = "Пока все нормально, Джино, пытаюсь справиться сам.";
 			link.l10.go = "exit";
 			NextDiag.TempNode = "adversary";
 		break;
 		
 		case "adversary_1":
-			dialog.text = "Ksatl Cha mentioned the Chief's claw. Try to use it against skeletons, the Indian said that this dagger has power over the inhabitants of Ksocheatem.";
-			link.l1 = "I will try for sure!";
+			dialog.text = "Я как раз вспомнил слова Ксатл Ча про Коготь вождя. Попробуйте вооружиться ей в битве против скелетов - недаром индеец сказал, что эта дага имеет власть над обитателями Ксочитэма.";
+			link.l1 = "Обязательно попробую!";
 			link.l1.go = "exit";
 			DeleteAttribute(pchar, "questTemp.Ksochitam.Adversary.L1");
 		break;
 		
 		case "adversary_2":
-			dialog.text = "And how does this cave look like?";
-			link.l1 = "Well, there is a small cave in a rock, it is wet and the water sways in the bottom just like the surf...";
+			dialog.text = "Как выглядит эта пещера?";
+			link.l1 = "Ну, не очень большая полость в скале, мокрая, на дне вода колышется, словно от прибоя...";
 			link.l1.go = "adversary_2_1";
 		break;
 		
 		case "adversary_2_1":
-			dialog.text = "If the water sways then the cavern has got a connection with the sea and it can't be a deadlock. Search for the passage, it must be there.";
-			link.l1 = "On my way...";
+			dialog.text = "Если вода колышется волнами - значит, пещера имеет связь с морем, и не может быть тупиковой. Ищите проход, он точно должен быть.";
+			link.l1 = "Пойду искать...";
 			link.l1.go = "exit";
 			DeleteAttribute(pchar, "questTemp.Ksochitam.Adversary.L2");
 		break;
 		
 		case "adversary_3":
-			dialog.text = "If there is a way to the flooded cavern from the main one and if the water sways like a surf in the main cavern then the flood cave has the second passage. Search better but be careful or you will drown.";
-			link.l1 = "I am going to dive...";
+			dialog.text = "Если в затопленную пещеру можно пройти из основной, и в основной каверне вода колышется, как от прибоя - значит, подводная пещера обязательно имеет второй выход. Ищите получше, но будьте осторожны, не утоните!";
+			link.l1 = "Пойду нырять...";
 			link.l1.go = "exit";
 			DeleteAttribute(pchar, "questTemp.Ksochitam.Adversary.L3");
 		break;
 		
 		case "adversary_4":
-			dialog.text = "And how does this cave look like?";
-			link.l1 = "Well, it is pretty big with a few caverns, it is wet and there is small lack with the still water...";
+			dialog.text = "Как выглядит эта пещера?";
+			link.l1 = "Ну, довольно большая, с несколькими кавернами, мокрая, есть озерцо со стоячей водой...";
 			link.l1.go = "adversary_4_1";
 		break;
 		
 		case "adversary_4_1":
-			dialog.text = "If the water is still then the cave doesn't have connection with the sea and it might be a deadlock.";
-			link.l1 = "I thought the same. I have been searching there for a long time and there is the only one entrance which is also an exit...";
+			dialog.text = "Если вода стоячая - значит, пещера не имеет прямой связи с морем и вполне может быть тупиковой. Возможно, второго выхода в ней нет.";
+			link.l1 = "Я тоже так подумал. Сколько ни искал - в нее всего один вход, он же выход...";
 			link.l1.go = "exit";
 			DeleteAttribute(pchar, "questTemp.Ksochitam.Adversary.L4");
 		break;
 		
 		case "adversary_5":
-			dialog.text = "If the water is still in the cavern then, perhaps, you are right. Search a bit more, but don't be sad if you won't find a thing. It is likely that it is a deadlock.";
-			link.l1 = "I see...";
+			dialog.text = "Если в основной пещере вода стоячая - то вполне возможно, что так оно и есть. Поищите еще, но не огорчайтесь, если ничего не найдете. Вполне вероятно, что пещера окажется тупиковой.";
+			link.l1 = "Ясно...";
 			link.l1.go = "exit";
 			DeleteAttribute(pchar, "questTemp.Ksochitam.Adversary.L5");
 		break;
 		
 		case "adversary_6":
-			dialog.text = ""+pchar.name+", Spanish ships are on us! It is not the best time to talk!";
-			link.l1 = "Yes, sure...";
+			dialog.text = ""+pchar.name+", нас атакуют испанские корабли! Сейчас не лучшее время для бесед!";
+			link.l1 = "Да, конечно...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "adversary_6";
 		break;
 		
 		case "ksochitam_43":
-			dialog.text = "Your happy eyes tell me that you have found what you were looking for.";
-			link.l1 = "Yes. Treasures of Miguel Dichoso and the mask of Kukulcan. Now his incarnation will never be able to change the future!";
+			dialog.text = "Судя по вашим горящим глазам, вы нашли, что искали?";
+			link.l1 = "Да. И сокровища Мигеля Дичозо, и маску Кукулькана. Теперь его воплощению никогда не изменить будущее!";
 			link.l1.go = "ksochitam_44";
 		break;
 		
 		case "ksochitam_44":
-			dialog.text = "Incredible! You are a hero, "+pchar.name+"...";
-			link.l1 = "Gino, are you sure that this is enough to stop Kukulcan?";
+			dialog.text = "Невероятно! Вы герой, "+pchar.name+"...";
+			link.l1 = "Джино, ты уверен, что для того, чтобы разрушить планы Кукулькана, достаточно не дать ему завладеть маской?";
 			link.l1.go = "ksochitam_45";
 		break;
 		
 		case "ksochitam_45":
-			dialog.text = "According to Ksatl Cha - yes. And he was quoting Urakan. His father Kanek was the one who started all this mess. Any doubts?";
-			link.l1 = "I have been met at the bay by a guest from the past - Alonso de Maldonado. He was in Tayasal when Kanek was performing the ritual to create the Guardian of Truth. He was dragged into the spatio-temporal hole, yet he stayed alive... Until today.";
+			dialog.text = "Со слов Ксатл Ча - да. А он цитировал Уракана, сына Канека, который и вызвал Кукулькана. А у вас есть сомнения?";
+			link.l1 = "В бухте меня встретил гость из прошлого - Алонсо де Мальдонадо. Он был в Тайясале, когда Канек проводил ритуал создания Стража Истины. Его затянуло в пространственно-временную воронку, таким образом он остался жив...";
 			link.l1.go = "ksochitam_46";
 		break;
 		
 		case "ksochitam_46":
 			dialog.text = "";
-			link.l1 = "He said that I have to shut down the portal itself to protect our world for good. In order to do that I have to destroy the Mask on some altar in Tayasal.";
+			link.l1 = "Так вот, он утверждал, что для того, чтобы обезопасить наш мир полностью, нужно закрыть Кукулькану доступ в прошлое в принципе - закрыть портал. Для этого необходимо уничтожить маску на каком-то алтаре в Тайясале.";
 			link.l1.go = "ksochitam_47";
 		break;
 		
 		case "ksochitam_47":
-			dialog.text = "And you are going to go to Tayasal? This is madness! "+pchar.name+", you have got the mask and the incarnation of Kukulcan won't be able to do anything! And Kanek himself is confident in that! And that is why Urakan has sent Ksatl Cha to find Ksocheatem - to get the Mask and to destroy it.";
-			link.l1 = "And what if this Urakan was planning to destroy the mask in Tayasal?";
+			dialog.text = "И вы что, намерены отправиться в Тайясаль? Это безумие! "+pchar.name+", у вас есть маска, без нее воплощение Кукулькана бессилен что-либо сделать! В этом был уверен сам Канек! И Уракан именно для этого отправил Ксатл Ча на поиск Ксочитэма - завладеть маской.";
+			link.l1 = "А если этот Уракан планировал уничтожить маску в Тайясале?";
 			link.l1.go = "ksochitam_48";
 		break;
 		
 		case "ksochitam_48":
-			dialog.text = ""+pchar.name+", only one man has managed escaped Tayasal alive so far and it was Miguel Dichoso. And Maldonado, but he was an exception. Even if the incarnation of Kukulcan will get to the past he will get killed by the ancient Maya!";
-			link.l1 = "What if they won't kill him but recognize him?";
+			dialog.text = ""+pchar.name+", еще ни один человек, кроме Дичозо, не вышел из Тайясаля живым. Ну, и Мальдонадо, но это исключение. Даже если воплощение Кукулькана перенесется в прошлое, он будет убит древними майя!";
+			link.l1 = "А если нет? А если они его не убьют и признают?";
 			link.l1.go = "ksochitam_49";
 		break;
 		
 		case "ksochitam_49":
-			dialog.text = "So are you planning an expedition to Tayasal?";
-			link.l1 = "I don't know, Gino. I really don't...";
+			dialog.text = "Так вы намерены отправиться в Тайясаль?";
+			link.l1 = "Не знаю, Джино. Я не знаю...";
 			link.l1.go = "ksochitam_50";
 		break;
 		
 		case "ksochitam_50":
-			dialog.text = "Then think about it, why should you do that? You have heard my opinion. It is up for you now..."+pchar.name+", will you take me to St. John's?";
-			link.l1 = "Sure, Gino. Let's set sail as soon as possible. I had enough of this horrible island.";
+			dialog.text = "Тогда подумайте хорошенько, стоит ли это делать. Свое мнение я высказал. Дальше решайте сами... "+pchar.name+", вы отвезете меня домой в Сент-Джонс?";
+			link.l1 = "Конечно, Джино. Отправляемся в путь как можно скорее. Мне уже осточертел этот кошмарный остров.";
 			link.l1.go = "ksochitam_51";
 		break;
 		
@@ -1375,33 +1375,33 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ksochitam_52":
-			dialog.text = "Will we be home soon, "+pchar.name+"? I really miss my flasks and tubes...";
-			link.l1 = "Yes-yes, Gino, soon we will be at Antigua.";
+			dialog.text = "Мы скоро будем дома, "+pchar.name+"? Я уже соскучился по своим колбам и пробиркам...";
+			link.l1 = "Да-да, Джино, скоро мы прибудем на Антигуа.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "ksochitam_52";
 		break;
 		
 		case "ksochitam_53":
-			dialog.text = "I am glad that we are back at last! I can't imagine how you, sailors, spend so much time on your ships...";
-			link.l1 = "It is a matter of habit, Gino.";
+			dialog.text = "Я рад, что мы наконец-то вернулись домой! Не представляю, как вы, моряки, столько времени проводите на кораблях...";
+			link.l1 = "Дело привычки, Джино.";
 			link.l1.go = "ksochitam_54";
 		break;
 		
 		case "ksochitam_54":
-			dialog.text = "I will lay on my bed standing on the solid ground with a great pleasure... I hope, "+pchar.name+", that you have spared you head from the idea of visiting Tayasal?";
-			link.l1 = "I don't know yet, Gino. To be honest, I am still not sure.";
+			dialog.text = "С огромным удовольствием сейчас прилягу на кровать, которая стоит на твердой земле... Надеюсь, "+pchar.name+", вы выбросили из головы мысли о походе на Тайясаль?";
+			link.l1 = "Не знаю, Джино. Честно сказать - до сих пор терзают сомнения.";
 			link.l1.go = "ksochitam_55";
 		break;
 		
 		case "ksochitam_55":
-			dialog.text = "Destroy the mask of Kukulcan and live with no worry, captain. If you want, we will dissolve the mask in the most powerful acid I have got. I won't be grudge for such a matter.";
-			link.l1 = "You know, I will wait for a while. We will always have time to destroy it.";
+			dialog.text = "Уничтожьте маску Кукулькана и живите спокойно, капитан. Хотите, мы прямо сейчас растворим ее в самой сильной кислоте? Я не пожалею ради такого дела.";
+			link.l1 = "Знаешь, я повременю с этим. Уничтожить всегда успеем.";
 			link.l1.go = "ksochitam_56";
 		break;
 		
 		case "ksochitam_56":
-			dialog.text = "It's your call. If you decide to spare this world from this artifact - call me then. Gratitude for a wonderful travel, captain!";
-			link.l1 = "Any time, Gino. See you around!";
+			dialog.text = "Как знаете. Если решите избавить мир от этого артефакта - обращайтесь... Спасибо за увлекательное путешествие, капитан!";
+			link.l1 = "Не за что, Джино. Еще увидимся!";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "first time";
 			AddDialogExitQuestFunction("Ksochitam_TripComplete");
@@ -1414,8 +1414,8 @@ void ProcessDialogEvent()
 		
 		//--> блок реагирования на попытку залезть в сундук
 		case "Man_FackYou":
-			dialog.text = LinkRandPhrase("You are a "+ GetSexPhrase("thief, mister! Guards, take him","thief, girl! Guards, take her ") +"!!!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest! Take the thief!!!", "Guards! Robbery! Take the thief!!!");
-			link.l1 = "Damn it!";
+			dialog.text = LinkRandPhrase("Да ты "+ GetSexPhrase("вор, милейший! Стража, держи его","воровка! Стража, держи ее") +"!!!", "Вот это да! Чуть я загляделся, а ты сразу в сундук с головой! Держи "+ GetSexPhrase("вора","воровку") +"!!!", "Стража! Грабят!!! Держи "+ GetSexPhrase("вора","воровку") +"!!!");
+			link.l1 = "А-ать, дьявол!!!";
 			link.l1.go = "exit";
 			LAi_group_Attack(NPChar, Pchar);
 		break;

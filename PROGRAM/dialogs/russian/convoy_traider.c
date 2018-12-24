@@ -22,32 +22,32 @@ void ProcessDialogEvent()
 		case "prepare_convoy_quest":
 			if (isBadReputation(pchar, 40)) 
 			{
-				dialog.text = RandPhraseSimple("Ahhh, hell! I know who you are! Only a total idiot would hire you to escort his ship. Farewell!", "Oh, I know who you are! Hiring you as an escort, you say? I am no fool...");
-				link.l1 = RandPhraseSimple("Heh, what a sissy!", "People are certainly too easily scared these days!");
+				dialog.text = RandPhraseSimple("О-о-о, черт!! Я знаю, кто ты "+ GetSexPhrase("такой","такая") +"! Только законченный кретин может нанять тебя в сопровождение своего корабля. Прощай!", "А-а, я знаю, кто ты есть! Тебя нанять в качестве сопровождающего?! Ищи дурака...");
+				link.l1 = RandPhraseSimple("Хех, боязливый какой...", "Пугливый какой народ пошел!");
 				link.l1.go = "convoy_refused";
 			}
 			else
 			{
-				dialog.text = TimeGreeting() + ", "+GetAddress_Form(NPChar) + "! I am "+ GetFullName(NPChar) + ", a merchant. I heard you were looking for a job?";
-				link.l1 = "Something like that. And, you, as I have heard, looking for the captain, who would escort you and your ship to your destination?";
+				dialog.text = TimeGreeting() + ", "+GetAddress_Form(NPChar) + "! Я "+ GetFullName(NPChar) + ", торговец. Я слышал, что вы ищете работу?";
+				link.l1 = "Что-то вроде того. А вы, как я слышал"+ GetSexPhrase("","а") +", ищете капитана, который бы сопроводил вас и ваше судно к месту назначения?";
 				link.l1.go = "prepare_convoy_quest_2";
 			}
 		break;
 		
 		case "prepare_convoy_quest_2":
-			dialog.text = "Exactly. Moreover, I believe you're just the right person for my escorting. What do you say?";
-			link.l1 = "I say - make me an offer, and perhaps you'll get a deal.";
+			dialog.text = "Совершенно верно. Более того, думаю, что вы мне подходите в качестве сопровождающего. Что скажете?";
+			link.l1 = "Я скажу - назови мне сумму и, возможно, мы договоримся.";
 			link.l1.go = "prepare_convoy_quest_3";
 		break;
 		
 		case "prepare_convoy_quest_3":
 			LookShipConvoy();
 			GenerateConvoyQuest(npchar);
-			dialog.text = "I need to be escorted to " + XI_ConvertString("Colony" + pchar.quest.destination + "Gen") + ", that in " + XI_ConvertString(GetIslandByCityName(pchar.quest.destination) + "Dat") +
-				", per " + FindRussianDaysString(sti(pchar.ConvoyQuest.iDay)) +", and for that I'll be paying you " + FindRussianMoneyString(sti(pchar.ConvoyQuest.convoymoney)) + ". What do you say?";
-			link.l1 = "I agree.";
+			dialog.text = "Мне нужно, чтобы меня сопроводили до " + XI_ConvertString("Colony" + pchar.quest.destination + "Gen") + ", что на " + XI_ConvertString(GetIslandByCityName(pchar.quest.destination) + "Dat") +
+				", за " + FindRussianDaysString(sti(pchar.ConvoyQuest.iDay)) +", и за это я заплачу вам " + FindRussianMoneyString(sti(pchar.ConvoyQuest.convoymoney)) + ". Что скажете?";
+			link.l1 = "Я "+ GetSexPhrase("согласен","согласна") +".";
 			link.l1.go = "convoy_agreeded";
-			link.l2 = "I don't think it's an interesting proposition.";
+			link.l2 = "Не думаю, что мне это интересно.";
 			link.l2.go = "convoy_refused";
 		break;
 		
@@ -68,13 +68,13 @@ void ProcessDialogEvent()
 		break;
 		
 		case "complete_convoy_quest":
-			dialog.text = "Oh! Thank you. Under your protection I felt as safe as ever. Here's your well-deserved reward.";
-			Link.l1 = "You're welcome.";
+			dialog.text = "О! Спасибо вам. Под вашей защитой я чувствовал себя как никогда спокойно. Вот ваша награда.";
+			Link.l1 = "Благодарю вас.";
 			link.l1.go = "exit";
 			//слухи
-			AddSimpleRumour(LinkRandPhrase("A merchant captain by the name of " + GetFullName(npchar) + " says that captain " + GetMainCharacterNameDat() + " can be trusted when one needs an escort.", 
-				"Negociant named " + GetFullName(npchar) + " says that captain " + GetMainCharacterNameDat() + " can be trusted. "+ GetSexPhrase("He","She") +" protected his ship in a best possible way while escorting him to " + XI_ConvertString("Colony" + pchar.quest.destination + "Gen") + ".", 
-				"I heard that you keep the word escort ships, which give trading captains. A trader named " + GetFullName(npchar) + " is very good of you responds."), sti(npchar.nation), 40, 1);
+			AddSimpleRumour(LinkRandPhrase("Некий торговый кэп по имени " + GetFullName(npchar) + " говорит, что можно доверять " + GetMainCharacterNameDat() + " в плане сопровождения торговых судов.", 
+				"Негоциант по имени " + GetFullName(npchar) + " говорит, что капитану " + GetMainCharacterNameDat() + " можно верить. "+ GetSexPhrase("Тот защищал","Та защищала") +" его корабль наилучшим образом при сопровождении до " + XI_ConvertString("Colony" + pchar.quest.destination + "Gen") + ".", 
+				"Я слышал, что вы держите слово по сопровождению кораблей, данное торговым капитанам. Некий торговец по имени " + GetFullName(npchar) + " очень хорошо о вас отзывается."), sti(npchar.nation), 40, 1);
 			pchar.quest.generate_convoy_quest_progress = "completed";
 			chrDisableReloadToLocation = false;
 			npchar.LifeDay = 0;

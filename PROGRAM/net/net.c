@@ -12,7 +12,7 @@ object Net;
 object NetServer;
 object NetClient;
 
-string	sMasterServerAddress = "192.168.0.15";
+string	sMasterServerAddress = "192.168.1.37";
 int		iMasterServerPort = 29029;
 
 extern void NetInterface_AddLocalServerToList(string sName, string sIP, int wPort, bool bSecure, string sGameType, int iCredit, int iMaxClass, string sWeatherID, string sIslandID, int iNumClients, int iMaxClients, int iPing);
@@ -104,6 +104,8 @@ void Net_Start()
 		LayerAddObject("net_execute", &Net, -1);
 		LayerAddObject("net_realize", &Net, -1);
 	}
+	
+	trace("Start net init");
 
 	Net_InitShips();
 	Net_InitGoods();
@@ -113,6 +115,8 @@ void Net_Start()
 	Net_InitPerks();
 	Net_InitRewards();
 	Net_InitUpgrades();
+	
+	trace("Stop net init");
 
 	if (!IsEntity(&NetClient)) { Net_CreateClient(); }
 
@@ -132,12 +136,14 @@ string Net_GetControlGroup()
 
 void Net_StartServer()
 {
+	trace("Start server (0)");
 	int iSMsg = NMCreate();
 	NMAddClientID(iSMsg, wClientID);
 	NMAddByte(iSMsg, NC_COMMAND);
 	NMAddByte(iSMsg, NSC_COMMAND_STARTGAME);
 	NetClient_SendMessage(iSMsg, true);
 	NMDelete(iSMsg);
+	trace("Start server (0)");
 }
 
 void ntrace(string sTrace)

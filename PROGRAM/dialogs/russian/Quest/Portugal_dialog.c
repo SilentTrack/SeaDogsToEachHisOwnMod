@@ -19,29 +19,29 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-		dialog.text = "Bug. Tell the devs.";
-		link.l1 = "Sure.";
+		dialog.text = "Явный баг. Сообщите об этом Jason'у, как и при каких обстоятельствах его получили.";
+		link.l1 = "Обязательно сообщу!";
 		link.l1.go = "exit";
 		break;
 		
 		case "Avendel_tavern":
 			pchar.quest.Portugal_BeginOver.over = "yes";
-			dialog.text = "Oh, another brave sailor! I know your kind, my God damned eye is acquired for you, ha! Ask me why?";
-			link.l1 = "I will ask you about different matter, it is about your debt which you owe to the mistress of the local... Hm, establishment. She has asked me to remind you about your debt, I suggest you do something about it, otherwise she will have to address the guards to do the same tomorrow.";
+			dialog.text = "О, еще один бывалый моряк! Я вашего брата издалека примечаю, мой распроклятый глаз на вас наметан, хе! Спросите почему?";
+			link.l1 = "Мой вопрос о другом – о вашем долге,  хозяйке местного... гм, заведения. Она просила меня напомнить о деньгах, иначе – завтра она вынуждена будет обратиться к страже.";
 			link.l1.go = "Avendel_tavern_1";
 		break;
 		
 		case "Avendel_tavern_1":
-			dialog.text = "Local est.... oh, fuck it! Johanna, she can't do that to me! Are you sure? Has she really said that she will send me to the casemates for a few god damned coins?";
-			link.l1 = "Absolutely. That is what she has said. I suppose that my mission is over, farewell, mynheer Avendell.";
+			dialog.text = "Потому что я... ох, проклятье! Йоханна, она не может так со мной поступить? Вы уверены? Она так и сказала – отправит меня в казематы за какие-то растреклятые гроши?";
+			link.l1 = "Несомненно. Так она и сказала. Полагаю, на этом моя миссия выполнена, всего доброго, минхер Авендел.";
 			link.l1.go = "Avendel_tavern_2";
 		break;
 		
 		case "Avendel_tavern_2":
-			dialog.text = "Wait! Please, wait! You look like an experienced captain. Surely, you have got some coins, I am broke, only good old bartender fills my cup on credit for our old friendship's sake. Listen to my pro... proposal! You pay my debt and I will cut you a slice\nThere is a business... a profitable business, screw me and my ass! I swear to my bloody anchor, just trust me, captain - whatever you name is!\nJust redeem one small debt, ten thousand pesos and you shall have a chance to make enough coins to buy all brothels of the New -bloody- World! What say you? You give me, I give you, like honest folk do...";
-			link.l1 = "A ragged fellow who promises treasures.. Spare me from that crap, I don't do charity for the people like you. Find the money or you will be living in the fort's casemates quite soon. Farewell!";
+			dialog.text = "Постойте! Подождите, я прошу вас! Вы выглядите опытным капитаном. У вас наверняка найдется горсть монет – я совсем на мели, и только местный добряк корчмарь наливает мне по старой памяти в долг. Выслушайте мое предло.. ик, предложение! Если вы отдадите за меня этот долг, я возьму вас в долю\nЕсть одно дело... прибыльное дело, чтоб его якорем да под килем! Клянусь своей проклятой селезенкой – поверьте, капитан, как вас там!\nВсего один маленький долг, всего лишь десять тысяч монет, и вы сможете заработать столько, что хватит скупить все бордели Нового, будь он неладен, Света, и портовые притоны впридачу! Что скажете? Вы мне – я вам, все честно... ик!";
+			link.l1 = "Оборванец, сулящий золотые горы... Увольте – я не подаю милостыню таким как вы. Ищите деньги, или будете обживать тюремные казематы. Прощайте!";
 			link.l1.go = "Avendel_tavern_3";
-			link.l2 = "A slice? And why should I trust the word of drunken idiot? Because of fantastic promises?";
+			link.l2 = "Заработать? И я должен поверить слову спившегося бродяги, ради фантастических обещаний?";
 			link.l2.go = "Avendel_tavern_4";
 		break;
 		
@@ -53,16 +53,16 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Avendel_tavern_4":
-			dialog.text = "Listen to me, captain! Hic, shoot me if I am lying! I am telling the truth! Think about that, if you catch me on lying, then you will cut off my guts with that beauty you carrying on your belt! Damn, her hilt costs five times more than my miserable debt! So what? You have got nothing to loose!";
-			link.l1 = "I had enough of your speech. Farewell.";
+			dialog.text = "Выслушайте меня, капитан! Ик, чтоб мне провалится на этом месте, если вру! Я говорю правду! Судите сами – если вру, вы выпустите мне проклятые потроха этой вашей красоткой, что таскаете на бедре! Да один ее эфес стоит в пять раз больше моего никчемного долга, проглоти его селедка! Ну же? Вы ничего не теряете!";
+			link.l1 = "Вы меня утомили своей болтовней. Прощайте.";
 			link.l1.go = "Avendel_tavern_3";
-			link.l2 = "Fine, Hugo... I will risk to trust in that nonsense you speak. But remember that you will have to persuade me that my money wasn't wasted for nothing when I will be back, otherwise it's your ass on the line.";
+			link.l2 = "Ладно, Хьюго... я рискну поверить в этот бред. Но учтите – если, когда я вернусь, вы не убедите меня что деньги потрачены не зря, пеняйте на себя.";
 			link.l2.go = "Avendel_tavern_5";
 		break;
 		
 		case "Avendel_tavern_5":
-			dialog.text = "No threats needed, I understand. I have given you my word, captain! We will be rich! Come back when this damn debt is repaid and we shall t.. talk! Yes, we shall! You won't be left aside!";
-			link.l1 = "Fine, I will wipe away your debt, but you better pray, Hugo Avendell, that your 'proposal' will satisfy me.";
+			dialog.text = "Не надо угроз – я и так все понимаю. Я же поклялся, капитан! Мы разбогатеем! Возвращайтесь, как только этот проклятый долг будет улажен, и мы все обго... ик! Обговорим! Вы не останетесь за бортом!";
+			link.l1 = "Хорошо, я отдам долг, но молись, Хьюго Авендел, чтобы твое 'предложение' и впрямь себя оправдало.";
 			link.l1.go = "Avendel_tavern_6";
 		break;
 		
@@ -73,54 +73,54 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Avendel_repeat":
-			dialog.text = "Captain, come back as fast as you can - I am so eager to tell you about our business.";
-			link.l1 = "Yes, yes, I will repay your debt soon.";
+			dialog.text = "Капитан, возвращайтесь поскорее - мне не терпится изложить вам суть дела.";
+			link.l1 = "Да-да, сейчас отдам твой долг и приду.";
 			link.l1.go = "exit";
 			Nextdiag.TempNode = "Avendel_repeat";
 		break;
 		
 		case "Avendel_tavern_7":
 			pchar.quest.Portugal_BeginOver.over = "yes";
-			dialog.text = "You are back, captain! By the storm and God damn thunder, I am so glad to see you! What about my debt?";
-			link.l1 = "I've dealt with it, now it is your turn, Hugo. Tell me your story and try to make it just a bit truthful!";
+			dialog.text = "Вы вернулись, капитан! Гром и проклятая молния, я рад вас видеть! Как там долг?";
+			link.l1 = "Дело улажено, теперь твой черед, Хьюго. Выкладывай свою историю, и постарайся, чтобы она выглядела хоть немного правдиво!";
 			link.l1.go = "Avendel_tavern_8";
 		break;
 		
 		case "Avendel_tavern_8":
-			dialog.text = "Don't worry, captain! Do you know that I am a bounty hunter? Or I was. I wasn't lucky enough. Perhaps the Devil himself with all of his deeds wasn't that looser as I was. I have lost everything on my last job... The crew has run away and I have had to sell my ship because of debts...";
-			link.l1 = "I am already informed about your heroic past. Straight to the business, Hugo, don't challenge my patience.";
+			dialog.text = "Не беспокойтесь, капитан! Вы знаете, что я охотник за головами? Вернее, я был им. Мне просто не везло. Наверное, сам Дьявол, со всеми его авантюрами, не был большим неудачником, чем я. А на последнем деле я потерял все – команда разбежалась, корабль пришлось продать в счет долгов...";
+			link.l1 = "О вашем героическом прошлом, я уже осведомлен. К делу, Хьюго, не испытывайте мое терпение.";
 			link.l1.go = "Avendel_tavern_9";
 		break;
 		
 		case "Avendel_tavern_9":
-			dialog.text = "Yes, yes, captain..."+GetFullName(pchar)+", am I right? I know something about you too. But damn me if it is important. Have you heard the name of Bartolomeo the Portuguese?";
-			link.l1 = "Bart the Portuguese? Of course I have heard of him. Everyone has. He is a pirate, a butcher and a scum as far as I am informed. And what is his part in your story?";
+			dialog.text = "Да-да, капитан... "+GetFullName(pchar)+", правильно? Видите, я тоже кое-что о вас поразузнал. Но, провалиться мне, если это важно. Слыхали такое имя - Бартоломью Португалец?";
+			link.l1 = "Барт Португалец? Конечно, кто о нем не слышал, хотел бы я знать! Пират, мясник и мерзавец, насколько мне известно, а причем он в вашей истории?";
 			link.l1.go = "Avendel_tavern_10";
 		break;
 		
 		case "Avendel_tavern_10":
-			dialog.text = "He is taking a God damn main part in it! I have been tracking him down for the last year and a half. The Dutch Company has put a great price for his head. But I have failed and lost everything. And the Company has tripled the price recently for him alive and alive only damn him!";
-			link.l1 = "For a good reason, it is not a piece of cake to capture him alive. Anyway, why should I care about that, Hugo? It looks like you are trying to screw me!";
+			dialog.text = "Самым распроклятым образом причем! Я выслеживал его последние полтора года - Голландская Компания дала за его голову неплохую цену. Но я не преуспел и потерял все. А не так давно Компания утроила сумму, причем, с условием того, что треклятого пирата, сожри его селедка, доставят к ним живьем и никак иначе!";
+			link.l1 = "Насколько я знаю, это не так-то просто. В любом случае, какое мне до этого дело, Хьюго? Возникает ощущение, что ты водишь меня за нос!";
 			link.l1.go = "Avendel_tavern_11";
 		break;
 		
 		case "Avendel_tavern_11":
-			dialog.text = "I wasn't even going to, captain! You know, the local doctor Peter Van Stal, a very nice man, has given me one potion to cure my headaches! So, there is no doctor in his house for almost three days and...";
-			link.l1 = "Hugo, my patience is almost gone! I have promised the dame that I won't stab you with my blade, but my fists will do just fine! I swear that no potion will be able to cure your head tomorrow!";
+			dialog.text = "И не думал капитан, и не думал! Знаете, местный доктор – Питер Ван Шталь, милейший человек – он выдавал мне настойку, когда распроклятая голова по утрам трещала как от бортового залпа. Так вот, доктора уже второй день нет дома, и...";
+			link.l1 = "Хьюго, мое терпение на исходе! Я обещал даме, что не буду дырявить тебя шпагой, но сойдут и кулаки! Клянусь – завтра твоя голова будет трещать так, что никакая настойка не поможет!";
 			link.l1.go = "Avendel_tavern_12";
 		break;
 		
 		case "Avendel_tavern_12":
-			dialog.text = "Wait, captain! Listen to me, I have seen a few guys near the doctor's home and I have recognized them. They are from the Albatross, a frigate of the damn Portuguese! And one of them has been talking about their captain's health! See now, " + pchar.name + ", Bartolomeo is here, in this city! Right under our noses, he is either wounded or ill, that is why they need a blasted physician!\nI doubt that the Portuguese has brought his whole crew here, but I won't start this mess alone! Surely, you damn know how to handle your cursed sword! Take a few tough guys with you and we shall find the rat! Then we capture him and deliver him to the authorities!\nAnd two thousand good gold doubloons are in our pockets!";
-			link.l1 = "No, Hugo, I had enough of your talk. I won't take part in this mess, even if you are right. Farewell.";
+			dialog.text = "Да постойте же, капитан! Послушайте: возле дома доктора, я видел пару человек, и узнал их – они с 'Альбатроса' - проклятого фрегата Португальца! И один из них говорил что-то о здоровье капитана! Понимаете, " + pchar.name + ", Бартоломью здесь, в Филипсбурге! Прямо у нас под носом, и он ранен, или нездоров, вот зачем им проклятый доктор!\nВряд ли Португалец, лопни его потроха, привел сюда всю команду, но один я туда все одно не сунусь! А вы явно знаете, с какой стороны у треклятой шпаги рукоять! Возьмите пару молодчиков покрепче, и мы найдем, где он прячется! Схватим его и сдадим властям!\nИ две тысячи полновесных, распроклятых дублонов, почитай у нас в кармане!";
+			link.l1 = "Нет, Хьюго, с меня довольно болтовни. Даже если ты прав, я не буду в этом участвовать. Прощай.";
 			link.l1.go = "Avendel_tavern_3";
-			link.l2 = "And that's interesting. Do you know where is he hiding? If it works out we will discuss shares, but we have to hurry now!";
+			link.l2 = "А вот это уже интересно. Ты знаешь, где он прячется? Если все выгорит, долю обсудим позже – медлить нельзя!";
 			link.l2.go = "Avendel_tavern_13";
 		break;
 		
 		case "Avendel_tavern_13":
-			dialog.text = "No, captain, I was too scared to track down these lads. If the One-eyed would have seen me...fuh! But together, plus your lads, we will be able to comb this town, call you men and let's get started! Damn, the Dutch doubloons are waiting for us! Such a God damn chance happens only once in a lifetime, bite me a herring!";
-			link.l1 = "A commendable enthusiasm... I hope that you are able to get from the table, bandit. I am going to search immediately and you can follow me if you want, just don't bother me too much.";
+			dialog.text = "Нет, капитан, я побоялся следить за этими ребятами. Если бы Одноглазый Пес меня заметил... бр-р! Но с вашими-то парнями мы быстро прочешем город – собирайте людей, и вперед! Проклятье, голландские дублоны уже нас заждались! Такой распроклятый шанс выпадает раз в жизни, укуси меня селедка!";
+			link.l1 = "Похвальный энтузиазм... надеюсь, ты хоть из-за стола встать сможешь, головорез. Я отправляюсь на поиски немедленно, если хочешь – плетись следом, только не путайся под ногами.";
 			link.l1.go = "Avendel_tavern_14";
 		break;
 		
@@ -135,21 +135,21 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Avendel_tavern_repeat":
-			dialog.text = "Yes, yes, captain, just let me finish my treat and I will join you... Where shall we start?";
-			link.l1 = "Whatever, just sit here... helper.";
+			dialog.text = "Да-да, капитан, сейчас допью ром и присоединюсь к вам... Откуда начнем поиски?";
+			link.l1 = "Ладно, сиди уже тут... помощник.";
 			link.l1.go = "exit";
 			Nextdiag.TempNode = "Avendel_tavern_repeat";
 		break;
 		
 		case "Portugal_guard":
-			dialog.text = "Wrong house, pal. Now get out of here!";
-			link.l1 = "Hm. And I think that it's the right house...";
+			dialog.text = "Ты, дружок, ошибся адресом. Давай, проваливай отсюда, живо!";
+			link.l1 = "Хм. А вот мне кажется, что я как раз попал туда, куда надо...";
 			link.l1.go = "Portugal_guard_1";
 		break;
 		
 		case "Portugal_guard_1":
-			dialog.text = "Well, If you say so...";
-			link.l1 = "Yup.";
+			dialog.text = "Ну, раз ты так считаешь - возражать не буду...";
+			link.l1 = "...";
 			link.l1.go = "Portugal_guard_2";
 		break;
 		
@@ -172,28 +172,28 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Bart_lay":
-			dialog.text = "Full and by, sons of... prepare cannons on the...ah-ha-ha, my beauty!";
-			link.l1 = "You don't say.";
+			dialog.text = "Круче к ветру, курвины дети... готовь бортовые... ах-ха-ха, моя красотка!";
+			link.l1 = "Понятно...";
 			link.l1.go = "exit";
 			Nextdiag.TempNode = "Bart_lay";
 		break;
 		
 		case "Portugal_doctor":
 			pchar.quest.Portugal_DoctorOver.over = "yes";
-			dialog.text = "Oh God, who are you? Please put down your weapon! There is an ill man here!";
-			link.l1 = "This 'ill man' of yours has killed more people than you've seen in your life, doctor. Get away!";
+			dialog.text = "Господи, кто вы? Уберите, ради Бога, оружие! Здесь же больной человек!";
+			link.l1 = "Этот ваш 'человек' убил больше людей, чем вы видели за всю жизнь, доктор. С дороги!";
 			link.l1.go = "Portugal_doctor_1";
 		break;
 		
 		case "Portugal_doctor_1":
-			dialog.text = "He is my patient and he is even unable to stand! Don't you see that? Please, put your blade down!";
-			link.l1 = "And what is wrong with him, damn it?";
+			dialog.text = "Он мой пациент, и не может даже встать, не то что защищаться! Неужели не видите? Прошу вас, уберите свою шпагу!";
+			link.l1 = "А что с ним, черт возьми?";
 			link.l1.go = "Portugal_doctor_2";
 		break;
 		
 		case "Portugal_doctor_2":
-			dialog.text = "I suppose it is all because of his wound, a blow dealt by a poisoned Carib's weapon... and the men who have brought him here said that if he dies I die! But I am doing all I can, tell them that!";
-			link.l1 = "Don't worry about those men, doctor. My lads will keep an eye on your house and I have to go to see the governor. I suppose that he will piss himself of joy. Don't leave this place until I return, doc.";
+			dialog.text = "Полагаю, это следствие ранения, возможно – оружие карибов, смазанное каким-то ядом... Он все время в бреду, не может ни двигаться, ни говорить... а те люди, что приволокли меня сюда, сказали, что если он умрет – я отправлюсь следом! Но я делаю все что могу, скажите же им!";
+			link.l1 = "Вам незачем более беспокоиться об этих людях, доктор. Мои ребята присмотрят за домом на всякий случай, а мне пора к губернатору. Полагаю, он будет рад. Не отлучайтесь, пока я не вернусь, док.";
 			link.l1.go = "Portugal_doctor_3";
 		break;
 		
@@ -208,33 +208,33 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Doctor_repeat":
-			dialog.text = "I won't leave, don't worry about that. Let's just give him to the authorities already and end this nightmare.";
-			link.l1 = "Of course, I am on my way.";
+			dialog.text = "Я никуда не уйду, не беспокойтесь. Давайте уже быстрее сдадим его властям и покончим с этим кошмаром.";
+			link.l1 = "Конечно, я уже иду.";
 			link.l1.go = "exit";
 			Nextdiag.TempNode = "Doctor_repeat";
 		break;
 		
 		case "Avendel_house":
-			dialog.text = "We did it, captain! We have found him and we will be rich, just as I have told you! What is our plan?";
-			link.l1 = "I hope so, Hugo. Anyway, it is not over yet. I suppose I have to go to the governor and discuss our reward.";
+			dialog.text = "У нас получилось, капитан! Мы нашли его – я же говорил, мы разбогатеем! Что будем делать дальше?";
+			link.l1 = "Надеюсь, что так, Хьюго. В любом случае, пленный Португалец - это еще не все. Полагаю, мне следует отправится к губернатору и обсудить вопрос нашего вознаграждения.";
 			link.l1.go = "Avendel_house_1";
 		break;
 		
 		case "Avendel_house_1":
-			dialog.text = "No-no, captain, don't go to this damned Thomas! Trust me, this scoundrel will take away our prisoner and luckily will treat us with a cup of coffee! His Excellency is a fishy type, so if you want to get a full reward you have to sail to Curacao! Otherwise the Portuguese will be taken from us to the fort and they will drive us away like beggars!";
-			link.l1 = "Well, if you are really sure of that...";
+			dialog.text = "Нет-нет, капитан, только не к распроклятому Томасу! Поверьте мне, этот пройдоха заберет нашего пленника и, в лучшем случае, угостит вас чашечкой кофе! Его светлость та еще рыбина – если вы хотите получить вознаграждение сполна, то нужно брать курс сразу на Кюрасао! Иначе – опомнится не успеете, как Португалец будет за семью треклятыми замками под надзором гарнизона – а нас с вами выпрут взашей, как попрошаек!";
+			link.l1 = "Что же, если ты так в этом уверен...";
 			link.l1.go = "Avendel_house_2";
 		break;
 		
 		case "Avendel_house_2":
-			dialog.text = "I am, captain, damn sure I am! But remember that Bartolomeo's men must be somewhere in the town and we don't want to attract garrison's attention either, that is for damn sure! We have to decide how to get the Portuguese to your ship and how to do it in unnoticeable way.";
-			link.l1 = "Fine... I don't want to fight his frigate on the way to Willemstad. Got any ideas?";
+			dialog.text = "Уверен, капитан, проглоти распроклятая селедка, уверен! Но помните: люди Бартоломью могут еще быть в городе, да и внимание гарнизона, чтоб его якорем, привлекать не стоит. Нам надо решить, как незаметно вывезти Португальца на ваше судно.";
+			link.l1 = "Хорошо... не хотелось бы, по дороге в Виллемстад отстреливаться от его фрегата. Есть предложения?";
 			link.l1.go = "Avendel_house_3";
 		break;
 		
 		case "Avendel_house_3":
-			dialog.text = "Yes, I have got one. We need to find a more noble suit for him first, then we drag him through the rear entrance as a drunken officer! No one will suspect this damn pirate, trust me!";
-			link.l1 = "I am not sure, but we don't have a better plan yet anyway. I will try to get some pretty cloth for our passenger. You stay here and watch over Bart and doc.";
+			dialog.text = "Да, есть одна мыслишка – переоденем его в во что-нибудь поприличнее, и выволочем через заднюю дверь, как перебравшего чертова рому офицера! Никто и не заподозрит растреклятого пирата, поверьте!";
+			link.l1 = "Не уверен, но лучшего плана у меня пока что нет. Попробую раздобыть какую-нибудь приличную одежду для нашего пассажира. А ты будь здесь - присматривай за Бартом и доком.";
 			link.l1.go = "Avendel_house_4";
 		break;
 		
@@ -254,27 +254,27 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Avendel_house_guard":
-			dialog.text = "Don't worry , captain. The Portuguese is under my reliable guard, he-he...";
-			link.l1 = "I want to believe...";
+			dialog.text = "Не беспокойтесь, капитан, Португалец под надежной охраной, хе-хе...";
+			link.l1 = "Хотелось бы в это верить...";
 			link.l1.go = "exit";
 			Nextdiag.TempNode = "Avendel_house_guard";
 		break;
 		
 		case "Portugal_doctor_4":
-			dialog.text = "I don't see soldiers, mynheer. Where are they? You have said that he will be arrested as soon as you tell about the situation to the authorities. So why there are no soldiers here?";
-			link.l1 = "There won't be any soldiers, mynheer Van Stal. I am going to do the job myself and I have to take your patient to Curacao as soon as possible.";
+			dialog.text = "Я не вижу солдат, минхер. Где они? Вы сказали, что его арестуют, как только вы сообщите о том что случилось властям, так почему же нет солдат до сих пор?";
+			link.l1 = "Их и не будет, минхер Ван Шталь. Я собираюсь обойтись своими силами, и как можно быстрее отплываю на Кюрасао с вашим пациентом. А теперь нужно переодеть... больного. Его слишком опасно вести через город в таком виде, а время нас не ждет.";
 			link.l1.go = "Portugal_doctor_5";
 		break;
 		
 		case "Portugal_doctor_5":
-			dialog.text = "Captain, listen, I can't handle his wound, all I can do is just to lower a fever a bit. He is mostly unconscious and delirious, there is no doubt that he will die even without any interference and the sea rolling will kill him in a few days. I will give you some mixture to help...";
-			link.l1 = "No, doc, you are sailing with us. First, I suck at medicine and second, I doubt that you want to stay here and explain the Portuguese's men where has their captain gone?";
+			dialog.text = "Капитан, послушайте, я не могу справиться с его приступами – лишь облегчить жар на какое-то время. Он почти не приходит в сознание, все время в бреду – нет сомнений, он умрет и без прочих вмешательств, а корабельная качка убьет его в считанные дни! Я дам вам микстуры, чтобы в дороге, вы могли...";
+			link.l1 = "Нет, док, вы отправляетесь с нами. Во-первых, я не силен в медицине, а во-вторых, неужели вы хотите остаться и объяснять головорезам Португальца, куда исчез их капитан?";
 			link.l1.go = "Portugal_doctor_6";
 		break;
 		
 		case "Portugal_doctor_6":
-			dialog.text = "Yes, you are right, I suppose. But be aware that this pirate is very resilient, I have seen people with only small scratches made by Indian weapons and all of them died in less than three days. And according to his friends, he has been in this state for a week already! Nevertheless, I affirm that he will survive for a short period of time on a ship in the open sea. Three days, not longer!\nThat's all the time we have.";
-			link.l1 = "Even the bird won't reach Curacao in three days. But I think I know what to do! There is my... friend in St. John's at Antigua and he knows how to heal people. He is the only person who can help us. Our goal is simple - to get there before the Portuguese dies. Pack up your things, doc, we will sail immediately and your patient will be transferred next!";
+			dialog.text = "Да... вы правы, пожалуй. Но, учтите – этот пират крепкий орешек, я видел людей, что не протянули и трех дней, с простыми царапинами от индейского оружия. А, по словам притащивших меня головорезов, он в таком состоянии уже почти неделю! Тем не менее, готов утверждать - он не протянет долго в море, по самым смелым прогнозам, у нас есть не более трех дней!\nПотом – я умываю руки. ";
+			link.l1 = "За три дня до Кюрасао даже птица не долетит. Но, кажется, я знаю что делать! В Сент-Джонсе, на Антигуа, у меня есть один... гм, знакомый, он разбирается в медицине, и, если кто и сможет помочь нам, то это он. Дело за малым – успеть добраться туда прежде, чем Португалец отдаст концы. Собирайтесь док, мы отправляемся немедленно, а вашего пациента переправят следом!";
 			link.l1.go = "Portugal_doctor_7";
 		break;
 		
@@ -302,8 +302,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Avendel_goodbye":
-			dialog.text = "What a shame, captain. But we have lost and we won't see that damn gold. Farewell.";
-			link.l1 = "Farewell, Hugo.";
+			dialog.text = "Жаль, что так вышло, капитан. Но – мы проиграли, и не видать нам распроклятого золотишка. Прощайте.";
+			link.l1 = "Прощай, Хьюго.";
 			link.l1.go = "Avendel_goodbye_1";
 		break;
 		
@@ -316,12 +316,12 @@ void ProcessDialogEvent()
 		
 		case "Portugal_doctor_9":
 			dialog.text = "...";
-			link.l1 = "Doc, prepare your patient for landing. The ship's longboat is ready. Hurry up!";
+			link.l1 = "Док, немедленно подготовьте больного к перевозке на берег. Шлюпка уже спущена на воду. Поторопитесь!";
 			link.l1.go = "Portugal_doctor_10";
 		break;
 		
 		case "Portugal_doctor_10":
-			dialog.text = "I am on my way, mynheer.";
+			dialog.text = "Уже бегу, минхер.";
 			link.l1 = "...";
 			link.l1.go = "Portugal_doctor_11";
 		break;
@@ -346,21 +346,21 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Avendel_Room":
-			dialog.text = "This house is stinking with fucking mixtures! It would be a big surprise if the Portuguese will die here, even breathing this smell can heal any disease!\nAnd the man's crew can find us easily thanks to the stench!";
-			link.l1 = "Hugo, spare me from you jokes. I have left a few men on the streets to watch over the house, but a one more guard won't be unnecessary to our guest. Keep an eye on him and try to stop swearing like that or Gino will make you drink some mixture of his, I am sure that he can cure that.";
+			dialog.text = "В этом доме все насквозь провоняло треклятыми микстурами! Если Португалец тут отдаст Богу душу, будет вовсе удивительно – тут можно просто глубоко вздохнуть и вылечишься от всех чертовых хворей!\nА его парни найдут нас по запаху через половину проклятого Архипелага!";
+			link.l1 = "Хьюго, оставь при себе свои шутки. Я поставил людей на улице, приглядывать за домом, но еще один сторож нашему гостю не помешает. Следи за ним в оба, и постарайся не так сквернословить, иначе, Джино выдаст тебе какую-нибудь микстуру - я уверен, это лечится.";
 			link.l1.go = "Avendel_Room_1";
 		break;
 		
 		case "Avendel_Room_1":
-			dialog.text = "Don't worry, captain! I will watch over our money in the most vigilant way, he won't run away even in case he was healthy! And I beg you, please, no more mixtures!";
-			link.l1 = "See, you can when you want. Be on the alert, I have to go.";
+			dialog.text = "Не стоит беспокойства, капитан! Я буду неусыпно следить за нашими денежками – никуда они не сбегут, даже если полностью поправятся! И умоляю, не нужно никаких лекарств!";
+			link.l1 = "Можешь ведь, когда захочешь. Будь начеку, мне пора.";
 			link.l1.go = "exit";
 			chrDisableReloadToLocation = false;
 		break;
 		
 		case "Avendel_Room_2":
-			dialog.text = "Leaving already, captain? Nice! It is time! There were a few f... suspicious lads on a street. They don't look like the Portuguese men, though they were searching for something, we have to be careful, captain!";
-			link.l1 = "Fine, thanks for your warning, Hugo. Let's go to the ship.";
+			dialog.text = "Уходим, капитан? Отлично! Давно пора! Сегодня весь день тут по улице шастают черто... какие-то подозрительные ребята. Они не похожи на людей Португальца, но явно что-то вынюхивали – надо быть настороже, капитан!";
+			link.l1 = "Хорошо, спасибо за предупреждение, Хьюго. Отправляемся на корабль.";
 			link.l1.go = "Avendel_Room_3";
 		break;
 		
@@ -376,14 +376,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Portugal_hunter":
-			dialog.text = "Captain, we have been waiting for this meeting far too long! And who is that with you? Bartolomeo the Portuguese himself, ha, the Bold Pierre was right - that was him! Stay away, captain, we are going to take him with us and no one will get hurt.";
-			link.l1 = "Who the hell are you?! Get away from here or someone will get hurt right now!";
+			dialog.text = "Капитан, как долго мы ждали этой встречи! А кто это за вами? Никак сам Бартоломэо Португалец собственной бородатой рожей, ха, а Лысый Пьер был прав – это он! Отойдите в сторонку, кэп, мы его заберем и никто не пострадает.";
+			link.l1 = "Кто вы такие, черт возьми! Прочь с дороги, или пострадавшие буду прямо сейчас!";
 			link.l1.go = "Portugal_hunter_1";
 		break;
 		
 		case "Portugal_hunter_1":
-			dialog.text = "Oh, such a menacing fellow, just look at him, lads! Listen to me, pup, don't stay between Leo Cord and his money! We have been tracking down the Portuguese for almost a half of year and now we have finally got him. So put down that toothpick of yours and get lost while you are still breathing! We are not that greedy, dead man will do just fine, ha-ha!";
-			link.l1 = "Enough. Let's dance, gentlemen!";
+			dialog.text = "Какой грозный, глядите-ка парни! Послушай меня, щенок – не стой между Лео Кордом и его деньгами! Мы выслеживали Португальца почти полгода, и вот он у нас в руках, а ты отпусти эту зубочистку, и отваливай, пока цел! Мы не жадные, нам он сойдет и мертвым, ха-ха!";
+			link.l1 = "Ну это уже слишком! Защищайтесь, господа оборванцы!";
 			link.l1.go = "Portugal_hunter_2";
 		break;
 		
@@ -410,14 +410,14 @@ void ProcessDialogEvent()
 			sld = characterFromId("Portugal");
 			if (LAi_GetCharacterHP(sld) > 0)
 			{
-				dialog.text = "I knew that something was wrong here! Well done, captain! But it is time to go, that damn Leo Cord has a lot of bandits around here and a fine ship! We have to get away from this island!";
-				link.l1 = "You have a point, Hugo, and I am very glad that no bullet was shot at the hole where you were hiding.";
+				dialog.text = "Так и знал, что что-то тут не чисто! А лихо вы их, капитан! Но, нам пора – у Лео Корда, гореть ему на сковородке, полно головорезов и неплохой корабль! Нужно быстрее убираться с острова!";
+				link.l1 = "Верно подмечено, Хьюго, и я рад, что в ту щель, куда ты забился на время драки не залетела шальная пуля.";
 				link.l1.go = "Avendel_street_1";
 			}
 			else
 			{
-				dialog.text = "What a shame, captain. But we have lost and we won't see that damn gold. Farewell.";
-				link.l1 = "Farewell, Hugo.";
+				dialog.text = "Жаль, что так вышло, капитан. Но – мы проиграли, и не видать нам распроклятого золотишка. Прощайте.";
+				link.l1 = "Прощай, Хьюго.";
 				link.l1.go = "Avendel_goodbye_1";
 				sld = characterFromId("PortugalDoctor");
 				RemovePassenger(Pchar, sld);
@@ -430,8 +430,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Avendel_street_1":
-			dialog.text = "I... I was securing our rear, captain! You were doing fine, but what if someone would have attacked us from other side of the street?";
-			link.l1 = "Perhaps that is why you did not succeed in your line of work? Whatever, enough talking, we have to get to the ship! Time is running out!";
+			dialog.text = "Я... я прикрывал тыл, капитан! Вы неплохо справлялись, но вдруг кто-нибудь зашел бы с другой стороны улицы?";
+			link.l1 = "Может поэтому ты и не преуспел в своем деле? Все, хватит болтать – на корабль! Время не ждет!";
 			link.l1.go = "Avendel_street_2";
 		break;
 		
@@ -448,8 +448,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Portugal_doctor_12":
-			dialog.text = "Captain, the Portuguese is feeling really bad, we need a stop!";
-			link.l1 = "That is why we are here, mynheer van Stal, our trip is almost over. I will rent a room in the tavern and our prisoner will stay there for a few days.";
+			dialog.text = "Капитан, Португалец совсем плох, нам нужна остановка!";
+			link.l1 = "Затем мы сюда и прибыли, не беспокойтесь, минхер ван Шталь, наше путешествие почти окончено. Я сниму комнату в таверне, наш пленник полежит там пару дней, и мы продолжим путь.";
 			link.l1.go = "Portugal_doctor_13";
 		break;
 		
@@ -459,8 +459,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Portugal_doctor_14":
-			dialog.text = "Mynheer captain, I will be looking after the Portuguese, he needs a full rest.";
-			link.l1 = "I got it, doc, it is alright. Damn it, for how long should I take care of this pirate? That is bad for him, that is not what he needs! It seems that I was hired as a babysitter and... hm, pardon me, doctor, it was just too much.... Good day to you.";
+			dialog.text = "Минхер капитан, я присмотрю за Португальцем, ему сейчас нужен полный покой.";
+			link.l1 = "Понял, я вас оставляю, все в порядке, док. Проклятье – да сколько мне еще носится с этим пиратом, как с больной тетушкой? То ему вредно, то ему нужно! Можно подумать, я нанимался в няньки, а не... хм, простите, доктор, накипело... Всего доброго.";
 			link.l1.go = "Portugal_doctor_15";
 		break;
 		
@@ -473,14 +473,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Portugal_patrol":
-			dialog.text = "Monsieur, are you captain "+GetFullName(pchar)+", whose ship has arrived in our harbour today?";
-			link.l1 = "You are correct, how can I help you?";
+			dialog.text = "Месье, это вы капитан "+GetFullName(pchar)+", чей корабль сегодня прибыл в гавань?";
+			link.l1 = "Вы не ошиблись, чем могу быть полезен?";
 			link.l1.go = "Portugal_patrol_1";
 		break;
 		
 		case "Portugal_patrol_1":
-			dialog.text = "His Excellency Jacque Dille do Parque, the governor of our colony is waiting for you. The matter is urgent!";
-			link.l1 = "Fine, monsieur, I will visit his Excellency today.";
+			dialog.text = "Вас срочно желает видеть его светлость Жак Дил ду Парке, губернатор нашей колонии. Дело не терпит отлагательств!";
+			link.l1 = "Хорошо, мсье, я навещу его превосходительство сегодня же.";
 			link.l1.go = "Portugal_patrol_2";
 		break;
 		
@@ -493,26 +493,26 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Avendel_seapatrol":
-			dialog.text = "We have reached Martinique, captain! Our money is not that far now...";
-			link.l1 = "Only if the Portuguese will live until we reach Willemstad. Hugo, I have to go to the ship, so you will have to watch over doc and his patient.";
+			dialog.text = "Вот мы и на Мартинике, капитан! Наши денежки уже не за горами...";
+			link.l1 = "Если Португалец доживет до Виллемстада, конечно. Хьюго, мне нужно будет отлучится на корабль, так что охранять дока и его пациента предстоит тебе.";
 			link.l1.go = "Avendel_seapatrol_1";
 		break;
 		
 		case "Avendel_seapatrol_1":
-			dialog.text = "To go to the ship? Why? Will you lend a few men for me to help?";
-			link.l1 = "I am sorry, but no. I doubt that anything can threaten you here. The garrison is alerted and there are more soldiers on the streets than usually. They have seen a big ship not far from this island, a pirate one, perhaps. And his Excellency the governor has asked me to fortify patrolling by my ship.";
+			dialog.text = "Отлучится? Зачем? Оставите пару матросов в помощь?";
+			link.l1 = "Увы, нет. Не думаю, что тут, посреди города, вам что-то будет грозить – гарнизон поднят по тревоге, и солдат на улицах больше обычного. Возле острова видели большое судно... предположительно – пиратское. И его светлость губернатор, попросил меня усилить патрули своим кораблем.";
 			link.l1.go = "Avendel_seapatrol_2";
 		break;
 		
 		case "Avendel_seapatrol_2":
-			dialog.text = "A ship? Pirate one? It can be the Albatross! Or a colleague of our old friend Leo Cord!";
-			link.l1 = "Or perhaps it is just an ordinary pirate ship. Nevertheless, Hugo, if this vessel is here for our heads then I'd better face her with the local patrol ships on my side and for the governor's gold. It is much better than watching over our rear for the rest of the trip. If this alarm is false, then it will simply spare me from sitting my ass in the tavern for a few days.";
+			dialog.text = "Судно? Пиратское? Это ведь может быть 'Альбатрос'? Или кто-нибудь из коллег нашего знакомого, Лео Корда!";
+			link.l1 = "А может, это обычное пиратское корыто. Так или иначе, Хьюго, если этот корабль по наши души, то лучше я его встречу наперед, в компании местных сторожевых судов, да еще и за казенное золото, чем всю дорогу до Кюрасао озираться через корму. А если тревога ложная – то хоть не придется просиживать штаны в таверне несколько дней.";
 			link.l1.go = "Avendel_seapatrol_3";
 		break;
 		
 		case "Avendel_seapatrol_3":
-			dialog.text = "Think about it, captain, is it wise to leave the dam... the Portuguese unprotected while there might be his frigate cruising around? You are risking our reward by accepting the governor's fee!";
-			link.l1 = "Enough talking, Hugo Avendell! I am the captain here and the final decision is mine! So do as I command you. Go to the tavern and keep an eye on the doctor and the Portuguese until I am be back.";
+			dialog.text = "Подумайте, капитан – разумно ли оставлять про... Португальца почти без присмотра, если в округе, возможно, болтается его фрегат? Приняв гонорар губернатора, вы рискуете нашим вознаграждением!";
+			link.l1 = "Хватит болтать, Хьюго Авендел! Капитан здесь я, и решаю тоже я. Так что изволь делать то, что тебе прикажут. Отправляйся в таверну и не спускай глаз с доктора и Португальца, пока я не вернусь на берег.";
 			link.l1.go = "Avendel_seapatrol_4";
 		break;
 		
@@ -525,20 +525,20 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Avendel_seapatrol_5":
-			dialog.text = "You are back, captain, at last! I have got bad news for you - the Portuguese is gone and so is doc!";
-			link.l1 = "How?! And what you were doing then, blockhead?!";
+			dialog.text = "Вы вернулись, капитан – наконец-то! У нас плохие новости – Португалец пропал, а с ним и док!";
+			link.l1 = "Как пропал?! Куда ты смотрел, остолоп!";
 			link.l1.go = "Avendel_seapatrol_6";
 		break;
 		
 		case "Avendel_seapatrol_6":
-			dialog.text = "I can bet that ship was the Albatross. I have seen the Portuguese men, they had entered the tavern and I... I run away. I am sorry, but meeting the One-eyed Dog was too much even for that much money!";
-			link.l1 = "Damn it! Tell me at least what had happened in the tavern?";
+			dialog.text = "Готов биться об заклад – то судно из-за которого весь шум поднялся – 'Альбатрос'. Я видел людей Португальца – они ввалились в таверну и я... я сбежал. Простите, но встретится с Одноглазым Псом лицом к лицу – это слишком, даже за такие деньги!";
+			link.l1 = "Проклятье! Расскажи, хоть что произошло в таверне?";
 			link.l1.go = "Avendel_seapatrol_7";
 		break;
 		
 		case "Avendel_seapatrol_7":
-			dialog.text = "I have told you that I saw nothing. I have run away through a kitchen as soon as I saw Franz Garcke and his men... Too close! It happened yesterday evening and I didn't know how to let you know...";
-			link.l1 = "Yes, you are a very brave and resourceful man... Fine, let's give you one more chance, we are going to find them. I have been saving this scoundrel for too long and now I consider him as my property. We still have some time to catch them, so let's start from the tavern, perhaps someone have seen more than your running heels. Go, prepare yourself!";
+			dialog.text = "Говорю же – я ничего не видел – только заметил через окно Франца Гарке и его ребят, поднимающихся на крыльцо – сразу побежал в кухню и выскочил через заднюю дверь... И то – едва успел! Это случилось вчерашним вечером – и я не знал, как подать вам весточку в море-то...";
+			link.l1 = "Да, смелости тебе действительно не занимать... Ладно, дам тебе еще один шанс – мы отправляемся на поиски. Я слишком долго спасал шкуру этого негодяя, и, уже начал считать ее почти что собственностью! У нас еще есть время попробовать их перехватить - начнем с таверны, может кто-то видел больше, чем твои пятки. Иди, собирайся!";
 			link.l1.go = "Avendel_seapatrol_8";
 		break;
 		
@@ -559,8 +559,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Avendel_seapatrol_9":
-			dialog.text = "Have you heard him, captain, he was talking about the One-eyed Dog, I have told you about him recently. And the lisping Castilian is Hernando Vasquez, the bloody Don - the butcher of Vera Cruz, I didn't see him!";
-			link.l1 = "Relax, Hugo. I am sure that Bartholomeo is still on the island, he might have gotten better, but he is still too weak. And I think I know where to find him! We will get them, I won't step away from my reward. If you are no coward then follow me, it is not over yet.";
+			dialog.text = "Слышали, капитан – он же описал Одноглазого Пса – Франца Гарке, о котором я вам говорил. А кастилец шепелявый – Эрнандо Васкес, Кровавый дон – мясник из Веракрус – его-то я не успел заметить!";
+			link.l1 = "Успокойся, Хьюго. Я уверен, Бартоломью еще на острове, он слишком слаб, даже если ему и полегчало. И я, кажется, даже знаю, где его искать! Мы настигнем их – от своей награды я так просто не отступлюсь! Если не струсишь – следуй за мной, еще не все потеряно.";
 			link.l1.go = "Avendel_seapatrol_10";
 		break;
 		
@@ -573,8 +573,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "LeFransua_pirate":
-			dialog.text = "You ask too many questions, captain... Wait, aren't you that sneaky guy from Philipsburg? You have been running from us for too long and now look - here you are...";
-			link.l1 = "Too bad for you, scum!";
+			dialog.text = "Много вопросов задаешь, капитан... Постой-ка, а не тот ли ты вертлявый субчик, из Филипсбурга? Бегал, бегал от нас, и гляди - сам пришел...";
+			link.l1 = "Не спеши радоваться, собака!";
 			link.l1.go = "LeFransua_pirate_1";
 		break;
 		
@@ -596,8 +596,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "FranzGarke":
-			dialog.text = "... you, a crab's gut, you will tell us everything, trust me in that, rat! Then you will be hanged on a yardarm instead of a topsail... And who the hell are you? Damn, those apes can't be trusted! Always have to do everything myself...";
-			link.l1 = "Am I bothering you, gentlemen?";
+			dialog.text = "...ты, крабий потрох, все нам расскажешь, попомни мое слово, крыса, все! До, или после того, как с тебя сдерут шкуру и повесят на рее вместо марселя... А ты еще кто такой? Тысяча акул, ни в чем на этих обезьян нельзя положится! Придется самому...";
+			link.l1 = "Кажется, я вам помешал, господа?";
 			link.l1.go = "FranzGarke_1";
 		break;
 		
@@ -614,16 +614,16 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Portugal_LFTalk":
-			dialog.text = "I like your timing... I suppose I have to thank you for keeping me alive until today?";
-			link.l1 = "You are correct. My name is " + GetFullName(pchar) + " and you, the Portuguese, are still my prisoner. So don't ask me questions, we have to go.";
+			dialog.text = "Вы как нельзя вовремя... полагаю, именно вам я обязан тем, что дожил до этого дня?";
+			link.l1 = "Ты не ошибся. Мое имя - " + GetFullName(pchar) + ", и ты, Португалец, все еще мой пленник. Так что не задавай лишних вопросов – нам пора.";
 			link.l1.go = "Portugal_LFTalk_1";
 		break;
 		
 		case "Portugal_LFTalk_1":
-			dialog.text = "Wait, captain... there are a lot of Vasquez's men in the village, they won't let us go just like that. Give me a sword and we shall have better chances.";
-			link.l1 = "You are not on good terms with your partners, huh? Fine, an extra blade is always welcome, take the corpse's weapon and stay close to me!";
+			dialog.text = "Постойте, капитан... В поселке полно людей Васкеса, и нам не дадут так просто уйти. Если вы дадите мне саблю – будет немного проще.";
+			link.l1 = "А ты не очень то ладишь с бывшими подельниками, да? Хорошо, лишний клинок не помешает – возьми оружие Одноглазого, и будь на виду!";
 			link.l1.go = "Portugal_LFTalk_2";
-			link.l2 = "Don't you think that I will give you a weapon and turn my back to you?! Just stay close to me.";
+			link.l2 = "Не думаешь же ты, что я и впрямь дам тебе оружие и повернусь спиной?! Просто держись позади.";
 			link.l2.go = "Portugal_LFTalk_4";
 			pchar.quest.Portugal_LeFransua.win_condition.l1 = "location";
 			pchar.quest.Portugal_LeFransua.win_condition.l1.location = "LeFransua_town";
@@ -632,8 +632,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Portugal_LFTalk_2":
-			dialog.text = "Don't worry, captain, I'd better die than fall into Vasquez' hands again.";
-			link.l1 = "I don't want you dead for now. Go, time is running.";
+			dialog.text = "Не переживайте, капитан, я скорее сдохну, чем попаду в руки Васкеза снова.";
+			link.l1 = "Хочется верить. Пошли, нельзя терять время.";
 			link.l1.go = "Portugal_LFTalk_3";
 		break;
 		
@@ -653,8 +653,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Portugal_LFTalk_4":
-			dialog.text = "Too bad, I would have helped the One-eyed if I wanted you dead...";
-			link.l1 = "But you hadn't helped me either, so shut up and move!";
+			dialog.text = "Зря, желай я вам смерти, помог бы Одноглазому...";
+			link.l1 = "Но ты и мне не помог, так что прекращай болтать и вперед!";
 			link.l1.go = "Portugal_LFTalk_5";
 		break;
 		
@@ -666,7 +666,7 @@ void ProcessDialogEvent()
 		
 		case "Vaskezs_pirate":
 			PlaySound("VOICE\Russian\EvilPirates01.wav");
-			dialog.text = "Damn! That's them! Get them!";
+			dialog.text = "А-ать! Вот они! Держи их!";
 			link.l1 = "...";
 			link.l1.go = "Vaskezs_pirate_1";
 		break;
@@ -699,14 +699,14 @@ void ProcessDialogEvent()
 			sld = characterFromId("Portugal");
 			if (LAi_GetCharacterHP(sld) > 0)
 			{
-				dialog.text = "Splendid! You have killed the One-eyed Dog, that's what I call a masterpiece! How many of his men did you sent to burn in hell?";
-				link.l1 = "I was fighting not counting. And where have you been, Hugo?";
+				dialog.text = "Отличная работа! Вы свалили Одноглазого Пса – вот это я понимаю - мастер! Скольких еще его ребят вы отправили на сковородки?";
+				link.l1 = "Я не считал, я дрался. А где был ты, Хьюго?";
 				link.l1.go = "Avendel_LeFransua_1";
 			}
 			else
 			{
-				dialog.text = "What a shame, captain. But we have lost and we won't see that damn gold. Farewell.";
-				link.l1 = "Farewell, Hugo.";
+				dialog.text = "Жаль, что так вышло, капитан. Но – мы проиграли, и не видать нам распроклятого золотишка. Прощайте.";
+				link.l1 = "Прощай, Хьюго.";
 				link.l1.go = "Avendel_goodbye_1";
 				RemovePassenger(Pchar, npchar);
 				CloseQuestHeader("Portugal");
@@ -715,26 +715,26 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Avendel_LeFransua_1":
-			dialog.text = "I... was securing the safe withdrawal... protecting our rear so to speak.";
-			link.l1 = "Well, this is the limit... Hugo Avendell, your cowardice has surpassed all my expectations, have you got any idea how tough this fight was for us? We barely made it!";
+			dialog.text = "Я... обеспечивал безопасный отход... тыл прикрывал, в общем.";
+			link.l1 = "Ну, это уже ни в какой фарватер... Хью Авендел, твоя трусость превзошла все мои представления – ты знаешь, как нелегко нам пришлось? Мы справились просто чудом!";
 			link.l1.go = "Avendel_LeFransua_2";
 		break;
 		
 		case "Avendel_LeFransua_2":
-			dialog.text = "Calm down, captain... I admit I was hiding. But I have found this opportunity for you! Remember, it was me who has lead you to the Portuguese! Well... considering your fair indignation, I agree on only a one third of the reward.";
-			link.l1 = "That's just glorious! Are you bargaining now? No, my friend, your part in this business is over! You have lost your money in the tavern of Saint-Pierre. You have left it there and run away so it is over for you now.";
+			dialog.text = "Не горячитесь, капитан... да, сознаюсь – спрятался. Но ведь я нашел вам это дельце! Вспомните – я вас привел к нему! Впрочем... имея в виду ваше справедливое негодование, я согласен на треть от суммы награды.";
+			link.l1 = "Прекрасно! Теперь ты еще и торгуешься? Нет, друг мой – твое участие в этом деле закончилось! Свои деньги ты упустил в таверне Сен-Пьера. Ты бросил их там и сбежал, так что говорить более не о чем.";
 			link.l1.go = "Avendel_LeFransua_3";
 		break;
 		
 		case "Avendel_LeFransua_3":
-			dialog.text = "Captain, you are clearly exaggerating... Fine, I agree for a quarter... for a fifth! Ten percent!";
-			link.l1 = "Don't test my patience! Get lost! I don't need a coward in my crew, especially now when the clock is ticking!";
+			dialog.text = "Капитан, вы явно преувеличиваете... Хорошо – я согласен на четверть... пятую часть! Десять процентов!!";
+			link.l1 = "Не испытывай мое терпение! Убирайся с глаз долой! Мне не нужен в команде трус, особенно сейчас, когда счет пойдет на часы!";
 			link.l1.go = "Avendel_LeFransua_4";
 		break;
 		
 		case "Avendel_LeFransua_4":
-			dialog.text = ""+pchar.name+", don't you think that it is a bit unfair?";
-			link.l1 = "Cause and effect, Hugo... You have made your choice, so farewell. Draw a conclusion and don't plunge into adventures like that, this is clearly not for you.";
+			dialog.text = ""+pchar.name+", вы не находите это несколько нечестным?";
+			link.l1 = "Причина и следствие, Хьюго... Ты свой выбор сделал, так что прощай. И напоследок: сделай выводы и не лезь больше в подобные авантюры, это явно не твое.";
 			link.l1.go = "Avendel_LeFransua_5";
 		break;
 		
@@ -747,8 +747,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Portugal_LeFransua":
-			dialog.text = "Dropping away the ballast, captain? So true, ha... Vasquez is still free and there are a lot of men and guns on the Albatross, I bet my fine pants against an old kerchief that Hernando won't let us escape.";
-			link.l1 = "Well, it seems that we have to go and greet him ourselves. Go, monsieur Portuguese, and try to keep you mouth shut. We are going to weigh anchor as soon as possible.";
+			dialog.text = "Сбрасываете балласт, капитан? Оно и верно, хе... Васкез еще на свободе, а на 'Альбатросе' полно пушек и людей – ставлю эти шикарные штаны против старого платка, что Эрнандо не даст нам уйти из этих вод.";
+			link.l1 = "Что же, значит придется лично его поприветствовать. Шагайте, мсье Португалец, и постарайтесь поменьше болтать – мы снимаемся с якоря при первой возможности.";
 			link.l1.go = "Portugal_LeFransua_1";
 		break;
 		
@@ -762,14 +762,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "VaskezsHelper_abordage":
-			dialog.text = "What are you waiting for, damn it?!";
-			link.l1 = "Where is Hernando Vasquez? Speak and I will spare your life.";
+			dialog.text = "Ну, чего ты ждешь, лопни твои потроха!";
+			link.l1 = "Где Эрнандо Васкез? Говори, и я сохраню тебе жизнь.";
 			link.l1.go = "VaskezsHelper_abordage_1";
 		break;
 		
 		case "VaskezsHelper_abordage_1":
-			dialog.text = "Go to hell with your questions!";
-			link.l1 = "After you...";
+			dialog.text = "Убирайся к Дьяволу со своими вопросами!";
+			link.l1 = "После вас, сударь...";
 			link.l1.go = "VaskezsHelper_abordage_2";
 		break;
 		
@@ -783,35 +783,35 @@ void ProcessDialogEvent()
 			bQuestDisableMapEnter = false;
 			if (CheckAttribute(pchar, "questTemp.Portugal.Condition1") && CheckAttribute(pchar, "questTemp.Portugal.Condition2"))
 			{
-				dialog.text = "And here you are, my brave friend, we can have a decent talk at last! Congratulations, captain - killing the One-eyed Dog and destroying the Albatross wasn't an easy job! Actually, you have done so much for saving my life... Perhaps, I should thank you?";
-				link.l1 = "You will thank me when you are dancing on the gallows or whatever they have prepared for you in Willemstad.";
+				dialog.text = "А вот и мой отчаянный друг, наконец-то мы можем побеседовать! Поздравляю, капитан – уложить Одноглазого Пса, а потом разнести 'Альбатрос' - это не каждому по плечу! Вообще, вы столько сделали в последнее время во имя спасения моей шкуры... Наверное, я должен сказать вам спасибо?";
+				link.l1 = "Скажешь, когда спляшешь на виселице, или что там тебе приготовили в Виллемстаде.";
 				link.l1.go = "Portugal_treasure_6";
 			}
 			else
 			{
-				dialog.text = "And here you are my brave friend, we can have a talk at last! Congratulations, captain - killing the One-eyed Dog is worth of an honourable song! Actually, you have done so much for saving my life... Perhaps, I should thank you?";
-				link.l1 = "You will thank me when you are dancing on the gallows or whatever they have prepared for you in Willemstad.";
+				dialog.text = "А вот и мой отчаянный друг, наконец-то мы можем побеседовать! Поздравляю, капитан – уложить Одноглазого Пса один на один, само по себе деяние достойное какой-нибудь занюханной песни, ха! Вообще, вы столько сделали в последнее время, во имя спасения моей шкуры, наверное, я должен сказать вам спасибо?";
+				link.l1 = "Скажешь, когда спляшешь на виселице, или что там тебе приготовили в Виллемстаде.";
 				link.l1.go = "Portugal_treasure_1";
 			}
 		break;
 		
 		case "Portugal_treasure_1":
-			dialog.text = "Incredible! You have been saving my life for the last two weeks, you have brought me to your home and protected me in fights... and now you are going to send me to death? I can hardly believe in that... Actually, I almost consider you my friend now, ha-ha.";
-			link.l1 = "A pirate who is appealing for honour? Portuguese, are you joking on me? I was saving you for only one purpose - to let the murderer and scoundrel face the just court!";
+			dialog.text = "Удивительно! Вы почти две недели только и делаете, что спасаете жизнь совершенно незнакомому человеку, привозите его в свой дом, защищаете его с клинком в руках, а теперь спокойно отправите на эшафот? С трудом верится... я вот склонен считать вас почти своим другом, хе-хе.";
+			link.l1 = "Пират, взывающий к благородству? Португалец, ты надо мной насмехаешься? Я спасал тебя с единственной целью – позволить убийце и разбойнику предстать перед справедливым судом!";
 			link.l1.go = "Portugal_treasure_2_1";
-			link.l2 = "Friend of mine... sounds like a mockery. But nevertheless you are right. It would be strange of me to do that, Portuguese...";
+			link.l2 = "Другом... звучит, как насмешка. Но, тем не менее, в чем-то ты прав. Это будет бесчестно с моей стороны, Португалец...";
 			link.l2.go = "Portugal_treasure_2_2";
 		break;
 		
 		case "Portugal_treasure_2_1":
-			dialog.text = "Oh, enough, captain. I bet that you were doing all of that only to get money which was promised by the Company for the pleasure to see me alive! Don't try to be more honest than you actually are, sir, it doesn't suit you.";
-			link.l1 = "Only I can judge myself. So let's end this conversation. It is time to sail to Willemstad.";
+			dialog.text = "Да уж, заливайте, капитан! Готов поспорить на все те же кружевные штаны, что сейчас на мне – деньги Компании, обещанные за удовольствие принимать в гостях мою особу – вот, что вас прельстило! Не пытайтесь казаться честнее, чем вы есть, сударь мой – вам это не идет.";
+			link.l1 = "А вот это уже мне судить. Пожалуй, закончим наш разговор. Пора отправляться в Виллемстад.";
 			link.l1.go = "Portugal_treasure_3";
 		break;
 		
 		case "Portugal_treasure_2_2":
-			dialog.text = "It seems that still some honesty can be found in people these days... Too bad that money always interferes - eh, captain?";
-			link.l1 = "Strange to hear that from the gallows-bird pirate, Portuguese. I will let you go... don't ask me why, just get the hell away in the very first port. And remember that I won't be that kind if we ever meet again.";
+			dialog.text = "Видимо, благородство еще иногда встречается в наши дни... Жаль, что оно сильно стеснено деньгами, да, капитан?";
+			link.l1 = "Странно слышать такое от висельника и пирата, Португалец. Я отпущу тебя... не спрашивай почему, просто убирайся к черту в первом же порту. И запомни: если когда-нибудь придет день, и мы с тобой еще встретимся - я закончу начатое без сожалений.";
 			link.l1.go = "Portugal_treasure_4";
 		break;
 		
@@ -823,8 +823,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Portugal_treasure_4":
-			dialog.text = "Really? I like it, captain! Won't you order to bring here some rum? You know, just to celebrate your knightly qualities, our relationship and the deferment of my sentence?";
-			link.l1 = "Don't crack wicked jokes, you are still my prisoner until the first shore. Farewell.";
+			dialog.text = "Вот как! Это мне по душе, капитан! Не прикажите подать в трюм немного рому? Ну, знаете – отпраздновать ваши рыцарские качества, наше взаимопонимание и отсрочку моего приговора?";
+			link.l1 = "Не ерничай – ты все еще пленник. До первого берега. Прощай.";
 			link.l1.go = "Portugal_treasure_5";
 		break;
 		
@@ -838,50 +838,50 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Portugal_treasure_6":
-			dialog.text = "I see... so it is the gallows then. That was expected. Then listen what I will tell you, captain. You were so eager to keep me alive in order to execute me properly later and I appreciate it. I suppose that it will be stupid of me to ask you to change your mind just like that, right? And what will you say if I offer you something in exchange? A deal so to speak, huh?";
-			link.l1 = "I won't say anything, Portuguese. You are a pirate and a bastard. You will answer for your crimes in Willemstad.";
+			dialog.text = "Вот значит как... виселица. Ну что же, вполне ожидаемо. Да только выслушайте, что я скажу, капитан. Вы так тряслись, чтобы я дожил до веревки, и я не могу это не оценить. Но и просить вас изменить свое решение просто так, будет, по меньшей мере глупо, да? Тогда, что вы скажете, если я предложу кое-что взамен? Так сказать, сделку, а?";
+			link.l1 = "Ничего не скажу, Португалец. Ты пират и негодяй, и в Виллемстаде, ты ответишь за свои преступления.";
 			link.l1.go = "Portugal_treasure_2_1";
-			link.l2 = "A deal? What can you offer?";
+			link.l2 = "Сделка? А что ты можешь предложить мне?";
 			link.l2.go = "Portugal_treasure_7";
-			link.l3 = "I don't need your deal, just get lost in the very first port. It's your lucky day.";
+			link.l3 = "Не нужна мне твоя сделка... просто проваливай с глаз моих в первом же порту. У тебя сегодня счастливый день.";
 			link.l3.go = "Portugal_treasure_4";
 		break;
 		
 		case "Portugal_treasure_7":
-			dialog.text = "You know, such persistent saving of my life despite the unpleasant reasons behind it still deserves some gratitude. And Bartolomeo the Portuguese knows something of being grateful. Now listen, a month before you and I met, we captured a ship of the Company. They fought like devils to the last men. But their holds had only cannon balls and rats\nMy crew didn't like it, yet I have found a very interesting chest and papers inside a captain's cabin. She was a courier ship, delivering samples from mines somewhere at Amazonia. Pure diamonds and rubies, a fortune!";
-			link.l1 = "An interesting prize... Now I see why the Company is so interested in you, but what is the point of your story?";
+			dialog.text = "Знаете, такое упорное спасение моей жизни, пусть и с не очень приятными мне целями, все равно заслуживает некой признательности. А Бартоломео Португальцу не чужда благодарность. Послушайте – за месяц до нашей... встречи с вами мы взяли одно судно Голландской Компании. Они дрались до последнего, но в трюмах были лишь ядра и крысы\nМоим ребятам это пришлось не по нраву, но в капитанской каюте я обнаружил весьма занятный сундучок и письменный приказ. Это был курьерский корабль, доставляющий в Европу пробные образцы с приисков где-то в Гайяне за Амазонией... в сундучке были чистейшие алмазы и рубины – целое состояние!";
+			link.l1 = "Занятный приз... теперь я понимаю, откуда у Компании такой к тебе интерес, но в чем суть истории?";
 			link.l1.go = "Portugal_treasure_8";
 		break;
 		
 		case "Portugal_treasure_8":
-			dialog.text = "My first mate Vazquez and Franz Garcke had been keeping the crew in order, so I decided to take my chances. I hid the stones from them and burnt the papers. The Dutch had badly damaged our rigging during the boarding and we had to take the Albatross inside a small bay of a small Island in the north. I went deeper in the jungles alone while the whole crew were repairing the frigate\nI buried the stones, keeping them aboard was too risky considering the circumstances. My plan was to escape from my beloved crew in the very first port, buy or steal a small boat and sail to the island, collect my prize, and then... farewells to my old life! Europe, a decent mansion, a hot wife, you know...";
-			link.l1 = "Let me guess, something went wrong.";
+			dialog.text = "Васкез – мой старпом, и Франц Гарке уже давно держали команду в кулаке, и я решил воспользоваться выпавшим мне шансом. Я скрыл камни от них, и сжег письмо. Голландец сильно потрепал нашу оснастку во время абордажа, и 'Альбатрос' пришлось завести в одну бухточку на маленьком островке на севере архипелага. Там, пока все искали дерево для укрепления мачты и латали дыры в борту, я ненадолго отлучился\nПрипрятал камушки – сами понимаете, хранить их на судне было весьма опасно, учитывая обстоятельства. Я планировал сбежать в первом же порту – угнать или купить лодчонку и смотаться на островок за своим призом – а там... прости-прощай прежняя жизнь! Европа, тихий особнячок и все прочее...";
+			link.l1 = "И что не заладилось?";
 			link.l1.go = "Portugal_treasure_9";
 		break;
 		
 		case "Portugal_treasure_9":
-			dialog.text = "Everything went wrong! The damn island turned out to be homeland to a horde of local cannibals. They had attacked us as soon as returned to the shore. We had to sail away as soon as possible, it was then when I got hit. I thought that it was only a scratch.\nFew days later I was lying half-dead in fever and apparently said something about the stones. Franz and Vazquez realized that I had hid something on the island, yet they didn't know the exact location. They didn't like an idea of wandering there and being constantly shot by the Indians. So the bastards dragged me to the nearest port, since our physician got killed during our fight with the Dutch, they needed a new one.\nThat's how I ended up at that doctor's place, they wanted to return me my consciousness for a time enough to torture me and to find out the location of the stones. I believe, that later they would cut me and feed crabs with my juicy meat.";
-			link.l1 = "I can't say that I judge them - you were trying to screw your men. So I ask again, why are you telling me about that?";
+			dialog.text = "Да практически все! На этом чертовом островке оказалась целая орава местных людоедов – то ли приплыли поохотиться, то ли живут там – не знаю. Они напали на нас, когда я вернулся на побережье. Пришлось спешно отчаливать, отбиваясь от разъяренных дикарей – там-то меня и зацепило. Думал, царапина – а оно вон как вышло\nЧерез день я слег в лихорадке, и, подозреваю, метаясь в бреду, и выболтал что-то про камни. Франц и Васкез смекнули, что я припрятал на островке, но не знали где, а блуждать там под стрелами канибов и копать каждую кочку им не улыбалось. Вот мерзавцы и потащили меня в ближайший порт в поисках доктора – нашего-то ядром зашибло, когда брали Голландца\nТак я и попал к тому докторишке в Филипсбурге - они хотели лишь привести меня в сознание, чтобы выпытать где и закопал камешки, а после – порезать на корм крабам... Их очень расстроило известие об уплывших из-под самого носа денежках, хе-хе...";
+			link.l1 = "Не могу сказать, что я их осуждаю – ты пытался провести своих людей. Итак – к чему вся эта история?";
 			link.l1.go = "Portugal_treasure_10";
 		break;
 		
 		case "Portugal_treasure_10":
-			dialog.text = "These dogs were not people, trust me, by the way there are all now in their deserved place - the hell, ha-ha! As a payment for my freedom and my life, I can tell the exact location of the Dutch treasures.";
-			link.l1 = "No, Bartholomew, your betrayal has totally convinced me in your meanness. Willemstad and a lawful retribution are waiting for you. No deal.";
+			dialog.text = "Это шакалье - не люди, поверьте, тем более, все они теперь на своем месте... на сковородке у чертей, ха-ха! А я могу назвать вам место и островок, где все случилось – в уплату, скажем так, моего долга за ваши хлопоты. ";
+			link.l1 = "Нет, Бартоломью – твое предательство соратников меня окончательно убедило в твоей низости. Виллемстад и законное возмездие – вот что тебя ждет. Никаких сделок.";
 			link.l1.go = "Portugal_treasure_2_1";
-			link.l2 = "And am I supposed to believe that those gems do exist? Whatever, I won't loose a thing anyway... The deal was the start of this story and the deal will be it's end. I accept your terms, Portuguese.";
+			link.l2 = "И я должен поверить, что эти камни действительно есть, и лежат там, где ты укажешь? Впрочем – что я теряю... Сделкой эта история началась, будет справедливо, если она ею и закончится. Я принимаю твои условия, Португалец.";
 			link.l2.go = "Portugal_treasure_11";
 		break;
 		
 		case "Portugal_treasure_11":
-			dialog.text = "Consider this to be my modest gratitude. Eh, I wish I knew how much the skin of Bartolomeo the Portuguese costs in shiny pesos, ha! I understand that your goals were strictly practical, but still, thank you, captain, for everything, ha-ha\nIt's Turks, the jungles not far from it's shores. Find a dry, crooked tree, there is only one such tree there. I have buried the chest close to it. So don't forget to take a shovel. Happy hunting...";
-			link.l1 = "Fine, I will remember that and you can take a longboat right now and get away from my ship. Farewell.";
+			dialog.text = "Считайте это скромной благодарностью. Эх, узнать бы потом, сколько стоила шкура Бартоломео Португальца в пересчете на звонкие песо, ха! Хотя и хотелось бы мне верить, что дело не в деньгах, но все равно – я признателен вам капитан... за все, хе-хе\nОстровок этот - Теркс, а камни я спрятал в джунглях недалеко от побережья. Найдите корявое высохшее дерево - оно одно там такое. У его ствола я и закопал сундучок. Так что не забудьте захватить лопату. Удачной охоты...";
+			link.l1 = "Хорошо, я запомню, а ты можешь взять шлюпку прямо сейчас и отправлятся прочь с моего судна. Прощай.";
 			link.l1.go = "Portugal_treasure_12";
 		break;
 		
 		case "Portugal_treasure_12":
-			dialog.text = "One last thing, captain. I suppose that there are still a lot of savages, but it's not only them you should worry about. Vasquez wasn't on the Albatross, right? The Bloody Don is too smart... watch your back until you see him hanged or with a bullet in his head.";
-			link.l1 = "Thanks for your warning, Portuguese. Now would be kindly to leave my ship already... don't test your my patience.";
+			dialog.text = "И еще одно, напоследок, капитан. Полагаю, там все еще полно этих проклятущих дикарей, но вам следует опасаться не только их. Васкеза ведь не было на борту 'Альбатроса', когда вы его разносили по щепкам, так? Кровавый Дон слишком хитер... оглядывайтесь почаще, пока не увидите его в петле или с пулей в голове.";
+			link.l1 = "Спасибо за предупреждение Португалец, а теперь – соизволь все же покинуть мой корабль... не искушай судьбу.";
 			link.l1.go = "Portugal_treasure_13";
 		break;
 		
@@ -898,116 +898,116 @@ void ProcessDialogEvent()
 		
 		case "Avendel_Marigo":
 			pchar.quest.SetAvendelMarigoOver.over = "yes"; //снять таймер
-			dialog.text = "Oh, and who is this! Captain "+pchar.name+" himself! Want to drink?";
-			link.l1 = "You know, I am that happy to see you again. But perhaps I was to tough with you on Martinique.";
+			dialog.text = "О, кого я вижу! Капитан "+pchar.name+" собственной персоной! Не желаете пропустить кружечку?";
+			link.l1 = "Знаешь, не сказал бы, что я рад тебя видеть. Но, возможно тогда на Мартинике я несколько... погорячился, да.";
 			link.l1.go = "Avendel_Marigo_1";
 		break;
 		
 		case "Avendel_Marigo_1":
-			dialog.text = "Whatever, captain! What was there, was there. By the way, I had really given you a reason. But you won't believe who is a guest in Phillipsburg today!";
-			link.l1 = "Don't tell me that it is ...";
+			dialog.text = "Пустое, капитан! Что было – то было. В конце концов, я действительно дал вам повод. Однако, вы не представляете, кто гостит нынче в Филипсбурге!";
+			link.l1 = "Только не говори мне что...";
 			link.l1.go = "Avendel_Marigo_2";
 		break;
 		
 		case "Avendel_Marigo_2":
-			dialog.text = "No-no, captain, it is not the Portuguese. And it is not some wounded bastard again. It is much more incredible! It is Hernando Vasquez... The Bloody Don himself! He is being a guest of the local governor for a few last days.";
-			link.l1 = "Vasquez? The guest of the governor? I see now. Hugo, tell me more about that, what the hell is going on here?";
+			dialog.text = "Нет-нет, капитан, это не Португалец, ха! И не еще какой-нибудь подраненный негодяй. Все гораздо удивительней! Это Эрнандо Васкез... Кровавый Дон собственной персоной! Он гостит у губернатора уже несколько дней.";
+			link.l1 = "Васкез? У губернатора? Так, это кое-что проясняет. Хьюго, расскажи мне поподробнее – что, черт подери, тут происходит?";
 			link.l1.go = "Avendel_Marigo_3";
 		break;
 		
 		case "Avendel_Marigo_3":
 			pchar.questTemp.Portugal.AvMoney = 10000;
-			dialog.text = "Well, I know a lot... but thanks to our voyage, I am a bankrupt again. Perhaps your need of this information is worth a few pesos?";
-			link.l1 = "Hugo, you are still a extortioner and a scoundrel! Speak what you have got, take 5000 pesos just for the sake of our old friendship.";
+			dialog.text = "Ну, знаю я много... но, благодаря нашей с вами поездке, я опять на мели. Возможно, ваша нужда в информации будет стоить несколько песо?";
+			link.l1 = "Хьюго, ты вымогатель и прохвост, ни капельки не изменился! Выкладывай, что у тебя там – даю 5 000 песо, и то, только по старой дружбе.";
 			link.l1.go = "Avendel_Marigo_4_1";
 			if (sti(pchar.money) >= 10000)
 			{
-			link.l2 = "Somehow I am not surprised. Here, take 10000 pesos and you better hope that your information costs that much money!";
+			link.l2 = "Отчего-то я не удивлен. Вот, держи 10 000 песо, и лучше бы твоей информации стоить этих денег!";
 			link.l2.go = "Avendel_Marigo_4_2";
 			}
-			link.l3 = "I have got a better proposal for you. How about to join my crew? I take it that you have a talent of accounting and trade, so if you are fed up to pretend yourself as a brave fighter - you are welcome to take a position of my purser.";
+			link.l3 = "У меня есть предложение получше. Как насчет места в моей команде? Мне кажется, у тебя талант к цифирям, так что если надоело строить из себя бравого вояку -  мне бы пригодился толковый каптенармус.";
 			link.l3.go = "Avendel_Marigo_4_3";
 		break;
 		
 		case "Avendel_Marigo_4_1":
 			pchar.questTemp.Portugal.AvMoney = 15000;
-			dialog.text = "No, captain, it is not going to work like that! You have snatched a large sum with that damned Portuguese, I am sure. So consider that to be my share, don't be that greedy. 15000 coins and not single peso less!";
+			dialog.text = "Нет, капитан, так не пойдет! Вы ведь наверняка, сорвали куш с этим треклятым Португальцем – так что считайте это моей долей в деле, и не скупитесь. 15 000 и не грошом меньше!";
 			if (sti(pchar.money) >= 15000)
 			{
-			link.l1 = "Hell with you, take them!";
+			link.l1 = "Черт с тобой, держи!";
 			link.l1.go = "Avendel_Marigo_4_2";
 			}
-			link.l2 = "Well, and they say that greed is good... Isn't that too much for you, huh?";
+			link.l2 = "Да уж, а еще говорят, что жадность - не порок. Не слишком ли жирно тебе будет, а?";
 			link.l2.go = "Avendel_Marigo_wait";
 		break;
 		
 		case "Avendel_Marigo_4_2":
 			AddMoneyToCharacter(pchar, -sti(pchar.questTemp.Portugal.AvMoney));
-			dialog.text = "Now that's the price for me! Now listen, Vasquez was sailing with me on the same ship, yet while I was cleaning decks as a payment for the trip, he was resting in a cabin so thank God we have been rarely seeing each other and he didn't recognized me. But I have started to follow this devil immediately... An interesting story has happened with him.";
-			link.l1 = "Go on! What is he doing in the governor's palace?";
+			dialog.text = "Вот это цена по мне, капитан! Слушайте: Васкез плыл со мной на одном судне сюда, в Филипсбург, только мне пришлось драить палубу за проезд, а он прохлаждался в пассажирской каюте, так что слава Богу, мы виделись лишь мельком, и он меня не узнал. Зато я его сразу приметил, и, когда мы прибыли, стал приглядывать за этим дьяволом... Весьма любопытная вышла с ним история.";
+			link.l1 = "Давай, не тяни! Что он делает у губернатора?";
 			link.l1.go = "Avendel_Marigo_5";
 		break;
 		
 		case "Avendel_Marigo_5":
-			dialog.text = "I don't know much, but the garrison have been alerted for a few days after his arrival and the huge warship had suddenly up-anchored and gone in a great hurry. The whole town was lost in guesses and gossips...";
-			link.l1 = "So that was the ship I have met! Intriguing... Don't digress from the topic, Hugo, continue your story.";
+			dialog.text = "Понятия не имею, но, после его прибытия весь гарнизон стоял на ушах пару дней, а потом большое военное судно, стоявшее в гавани, вдруг снялось с якоря и отбыло в крайней спешке – весь город терялся в догадках и слухах...";
+			link.l1 = "Так вот кто меня встретил! Занятно... Не отвлекайся, Хьюго, рассказывай дальше.";
 			link.l1.go = "Avendel_Marigo_6";
 		break;
 		
 		case "Avendel_Marigo_6":
-			dialog.text = "Well, as I have said, the ship was gone and Vasquez had become some sort of a guest of our governor Martin Thomas. I see him sometimes in the town, he is always in a company of few soldiers. I don't know if it is his escort or convoy, ha-ha. But only people in residence could to tell you more regarding the Don.";
+			dialog.text = "Ну, так вот, я и говорю – ушел корабль, а Васкез с той поры вроде как гость при особе Мартина Томаса – губернатора нашего, стало быть. Время от времени вижу его в городе – всегда в обществе пары-тройки солдат. И не поймешь – то ли почетный экскорт, то ли конвой, хе-хе. Но это сказать вам только в резиденции смогут, если захотят, конечно.";
 			if (CheckAttribute(pchar, "questTemp.Portugal.AvOfficer"))
 			{
-				link.l1 = "Perhaps, you are right. But we have had a deal, remember? Don't play a hero, go to my ship and wait for my return. I will try to talk with our hospitable governor.";
+				link.l1 = "Возможно ты прав. Но, мы договорились – помнишь? Никакого геройства, так что отправляйся на судно и жди моего возвращения. Попробую разговорить нашего гостеприимного губернатора.";
 				link.l1.go = "Avendel_hire";
 			}
 			else
 			{
-				link.l1 = "Well, that was interesting. You have really helped me, Hugo. Drink your rum, the rest is out of your concern.";
+				link.l1 = "Что ж, занятно. Ты мне действительно помог, Хьюго. Пей свой ром, остальное тебя уже не касается.";
 				link.l1.go = "Avendel_Marigo_del";
 			}
 			AddDialogExitQuestFunction("InMarigoResidence");
 		break;
 		
 		case "Avendel_Marigo_4_3":
-			dialog.text = "Are you serious, captain? What is wrong with you? You have driven me away by pointing a gun at my face and now you are coming with such proposals?";
+			dialog.text = "Вот так дела, капитан! Что это с вами? То прогоняете чуть не в рыло пистолетом тыча, а теперь вот такие предложения?";
 			if (sti(pchar.money) >= 10000)
 			{
-			link.l1 = "Forget about that, I have must made a slip of the tongue. Here, take 10000 pesos and tell me what you know about Vasquez, I am in a hurry.";
+			link.l1 = "Забудь, я наверное оговорился. Вот, возьми 10 000 песо, и выкладывай все, что знаешь про Васкеза, я спешу.";
 			link.l1.go = "Avendel_Marigo_4_2";
 			}
-			link.l2 = "Perhaps, I should apologize for that matter. You are a pathetic fighter, but you do fine with coins. I repeat my proposal, what say you?";
+			link.l2 = "Возможно, мне стоит извиниться за тот случай. Боец из тебя, видно, никудышный, но со счетом все в порядке. Я повторяю свое предложение, что скажешь?";
 			link.l2.go = "Avendel_Marigo_7";
 		break;
 		
 		case "Avendel_Marigo_7":
 			pchar.questTemp.Portugal.AvMoney = 20000;
 			pchar.questTemp.Portugal.AvOfficer = "true";
-			dialog.text = "What can I say... I will agree, but only after I get my share, captain. Ten percent, remember? You have received two thousands for that scoundrel, so if you are asking me to join your crew you'd better start from wiping away your debts. Ten percent and no arguing!";
-			link.l1 = "You are such a swindler, Hugo. I don't have that much on me now, but I will be back soon. Stay here.";
+			dialog.text = "Что тут сказать... соглашусь, но, не раньше, чем получу свою долю, капитан. Помните – мы расстались на десятой части? Вы ведь выручили две тысячи золотых дублонов за шкуру этого пройдохи – так что если зовете меня в команду, начните с выплаты долгов. Десятую часть и без обмана!";
+			link.l1 = "Ты настоящий аферист, Хьюго. Сейчас у меня нет нужной суммы, я вернусь позже. Никуда не уходи.";
 			link.l1.go = "Avendel_Marigo_wait";
 			if (sti(pchar.money) >= 20000)
 			{
-			link.l2 = "I hope, that you will justify my expectations with that business grip of yours, ha! Take your cut!";
+			link.l2 = "Надеюсь, ты оправдаешь мои ожидания, с такой-то хваткой, ха! Держи свою долю!";
 			link.l2.go = "Avendel_Marigo_4_2";
 			}
 		break;
 		
 		case "Avendel_Marigo_wait":
-			dialog.text = "It is your call, captain. I will stay here for a while. Come back if you change your mind.";
-			link.l1 = "Fine, Hugo.";
+			dialog.text = "Ну, как знаете, капитан. Я буду здесь и пока никуда не ухожу. Надумаете - возвращайтесь.";
+			link.l1 = "Хорошо, Хьюго.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Avendel_Marigo_repeat";
 		break;
 		
 		case "Avendel_Marigo_repeat":
-			dialog.text = "Have you changed your mind, captain? I wait for my money then.";
+			dialog.text = "Не передумали, капитан? Тогда я жду свои деньги.";
 			if (sti(pchar.money) >= sti(pchar.questTemp.Portugal.AvMoney))
 			{
-				link.l1 = "Take your coins, scoundrel!";
+				link.l1 = "Держи свои монеты, пройдоха!";
 				link.l1.go = "Avendel_Marigo_4_2";
 			}
-			link.l2 = "I don't have such sum yet.";
+			link.l2 = "Нет у меня пока такой суммы.";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "Avendel_Marigo_repeat";
 		break;
@@ -1032,26 +1032,26 @@ void ProcessDialogEvent()
 		
 		case "Servant":
 			pchar.quest.InMarigoResidenceOver.over = "yes"; //снять таймер
-			dialog.text = "Good day, captain. Want something?";
-			link.l1 = "No-no, I am just waiting when mynheer Thomas will be free. Waiting for an audience... yes. Tell me, does his Excellency really consider a famous pirate Hernando Vasquez his friend?";
+			dialog.text = "Здраствуйте, капитан, вы что-то хотели?";
+			link.l1 = "Нет-нет, я просто жду, пока освободится минхер Томас. Жду аудиенции... да. Скажи, неужели правда, что его превосходительство привечает известного корсара Эрнандо Васкеза?";
 			link.l1.go = "Servant_1";
 		break;
 		
 		case "Servant_1":
-			dialog.text = "Of course not, mynheer! This bandit has surrendered to the authorities, but somehow he wasn't hanged. Perhaps bought his life through betraying his old partners in crime... I am not sure. He has been imprisoned for several days here... That was a nightmare, mynheer! That beast in a human form was living in our mansion!";
-			link.l1 = "A nightmare it is! What could that beast tell to mynheer Thomas in order to avoid the gallows? I can't even imagine that!";
+			dialog.text = "Что вы, минхер! Этот негодяй сдался властям, но почему-то не был казнен. Возможно – ему удалось купить жизнь, сдав своих бывших подельников... не знаю. Он содержался тут под стражей несколько дней... это был ужас, минхер! Этот зверь в человеческом обличии прямо в особняке!";
+			link.l1 = "Действительно ужасно! Что же он должен был разболтать, что помешало минхеру Томасу сразу отправить его на виселицу – представить не могу!";
 			link.l1.go = "Servant_2";
 		break;
 		
 		case "Servant_2":
-			dialog.text = "I don't know either, but I can secretly tell you that all servants were glad when his Excellency got rid of such guest...";
-			link.l1 = "Got rid of him? Did he get what he deserved at last?";
+			dialog.text = "Не знаю уж в чем там дело, но скажу вам по секрету – вся прислуга была счастлива, когда его светлость наконец избавился от такого гостя...";
+			link.l1 = "Избавился? Он все же попал на заслуженную плаху?";
 			link.l1.go = "Servant_3";
 		break;
 		
 		case "Servant_3":
-			dialog.text = "Not quite so. Yet. A few days ago he was taken to a military brig which sailed to Willemstad. See, mynheer Thomas had lost an interest in the scoundrel, it seems that he tried to fool him\nAlso, they say that his ex captain was caught - Bartolomeo the Portuguese! Just think about it! Looks like the Company wants to hang them together at once. Birds say that the trial will be in a month, but why wait that long?";
-			link.l1 = "The Portuguese?! Hm... thanks, my friend... it seems that mynheer Thomas is free now, I have to go.";
+			dialog.text = "Нет... пока что. Пару дней назад, ночью, его перевезли на военный бриг и отправили прямиком в Виллемстад. Знаете, что-то минхер Томас внезапно охладел к негодяю - не иначе, как обманул его этот мерзавец\nА еще ходят слухи, что поймали его бывшего капитана – Бартоломео Португальца, только подумайте! Видимо, власти Компании хотят повесить их рядышком, в назидание прочим мерзавцам. Говорят, через месяц будет суд, только не знаю – к чему так тянуть?";
+			link.l1 = "Португальца?! Кхм... спасибо, мой друг... кажется, минхер Томас уже освободился – мне надо идти.";
 			link.l1.go = "Servant_4";
 		break;
 		
@@ -1079,7 +1079,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Vaskez":
-			dialog.text = "Now you are dead... both of you!";
+			dialog.text = "Теперь вам конец... обоим!";
 			link.l1 = "...";
 			link.l1.go = "Vaskez_1";
 		break;
@@ -1092,13 +1092,13 @@ void ProcessDialogEvent()
 		case "Portugal_free":
 			if (LAi_group_GetTarget(pchar) <= 0)
 			{
-				dialog.text = "Now that is whom I wasn't expected to see, captain! But it doesn't look like a friendly visit, all of this blood, noise and a gunfight, eh?";
-				link.l1 = "Stop cracking your wicked jokes, Portuguese. I just don't like how you have used your freedom which you bought from me. I have put too much effort on saving you pathetic arse to let you be that stupidly catched right after our parting!";
+				dialog.text = "Вот уж кого я действительно не ожидал увидеть, капитан! Что-то не похоже на дружеский визит – кровь, шум, выстрелы, а?";
+				link.l1 = "Не ерничай, Португалец – мне просто не понравилось, как ты распорядился выкупленной у меня жизнью. Я слишком долго упорствовал ради ее спасения, чтобы позволить тебе так бездарно попасться сразу после нашего расставания!";
 				link.l1.go = "Portugal_free_1";
 			}
 			else
 			{
-				dialog.text = "Be careful, friend! Eh, too bad I can't help you!";
+				dialog.text = "Осторожнее, дружище! Эх, жаль, не могу помочь тебе!";
 				link.l1 = "...";
 				link.l1.go = "exit";
 				NextDiag.TempNode = "Portugal_free";
@@ -1106,22 +1106,22 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Portugal_free_1":
-			dialog.text = "So the nobleness is sometimes not affected by coins, huh? Ha... WATCH IT, RIGHT BEHIND YOU!";
-			link.l1 = "Not this shit again!";
+			dialog.text = "Значит благородство бывает не только за деньги, да? Ха... осторожно, сзади!";
+			link.l1 = "Проклятье!";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("CreateErnandoVaskez");
 			NextDiag.TempNode = "Portugal_free";
 		break;
 		
 		case "Portugal_free_2":
-			dialog.text = "And I have warned you that this guy was a trouble!";
-			link.l1 = "He almost managed to shoot me dead in the back! How did he get through?";
+			dialog.text = "А я предупреждал, что этот парень еще доставит хлопот!";
+			link.l1 = "Он чуть не пристрелил меня со спины! Как он выбрался?";
 			link.l1.go = "Portugal_free_3";
 		break;
 		
 		case "Portugal_free_3":
-			dialog.text = "I saw that he had a lock pick, it seems that someone has given it to him... he always had connections in the lower strata. Well, captain, I believe that we should leave this place, do you agree?";
-			link.l1 = "You don't say! Fine, lets hurry up before the whole garrison has arrived here. I will break your lock in a second...";
+			dialog.text = "Я видел, он давненько припас отмычки – передал поди кто-то... у него всегда были связи в самом низу. Что же, капитан, теперь мы отчасти квиты...";
+			link.l1 = "Да ну! Ладно, поспешим, пока сюда не сбежался весь гарнизон. Сейчас я сломаю твой замок...";
 			link.l1.go = "Portugal_free_4";
 		break;
 		
@@ -1133,26 +1133,26 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Portugal_free_5":
-			dialog.text = "You know, captain, this fresh air... you start to value it only after spending a few weeks in a dungeon right after your ship's boat was found by the local patrol. I suppose, that I still owe you for my rescue.";
-			link.l1 = "No need, Portuguese. I am not an honourable knight, I just... I do what I think is right and need to be done.";
+			dialog.text = "Знаете, капитан, свежий воздух... начинаешь его ценить после нескольких недель в подземелье, с тех пор, как на вашу шлюпку наткнулся местный сторожевой корабль. Полагаю, за мной все же остался долг за спасение.";
+			link.l1 = "Оставь это, Португалец. Я не благородный рыцарь, просто... поступаю так, как считаю нужным.";
 			link.l1.go = "Portugal_free_6";
 		break;
 		
 		case "Portugal_free_6":
-			dialog.text = "Ha, and that is a perfect quality! But I insist, here, take it... this is the only thing I was able to hide in the prison... Yeah, you get it right. This is my talisman. It was always giving me luck in the sea. You are a fine sailor and you or your navigator will be able to use it, I am sure.";
-			link.l1 = "Yes, and you was lucky enough to get straight in the hands of the Dutch?";
+			dialog.text = "Ха, и это отменное качество! Но, я все же настаиваю – вот, возьмите... это единственное, что мне удалось утаить в тюрьме... Мой талисман. Он всегда приносил мне удачу в море. Вы отличный моряк, так что он вам точно пригодится.";
+			link.l1 = "Хороша же его удача, если ты угодил прямехонько в лапы голландцам?";
 			link.l1.go = "Portugal_free_7";
 		break;
 		
 		case "Portugal_free_7":
-			dialog.text = "Hey! I am still alive, huh? And for you to know, I am not in prison any longer. Take it, captain, it is time for the talisman to serve you. And I thank you again!";
-			link.l1 = "Farewell then, Portuguese. And, please, try not to come to the gallows! Just for the sake of my hard work, ha-ha!";
+			dialog.text = "Эй! Я ведь жив, а? И, заметьте – больше не за решеткой... Берите, капитан, пусть он теперь послужит вам. И благодарю еще раз!";
+			link.l1 = "Ну, прощай, Португалец. И постарайся не окончить свои дни на виселице! Хотя бы из уважения к моим мытарствам, ха-ха!";
 			link.l1.go = "Portugal_free_8";
 		break;
 		
 		case "Portugal_free_8":
 			TakeNItems(pchar, "talisman2", 1);
-			Log_Info("You have received the talisman");
+			Log_Info("Вы получили талисман");
 			PlaySound("interface\important_item.wav");
 			DialogExit();
 			LAi_ActorRunToLocation(npchar, "reload", "reload1", "none", "", "", "", 10.0);

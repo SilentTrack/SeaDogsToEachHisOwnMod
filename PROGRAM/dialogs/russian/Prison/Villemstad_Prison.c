@@ -4,27 +4,27 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
  	switch(Dialog.CurrentNode)
 	{
         case "quests":
-            dialog.text = "Speak, I am listening";
-			link.l1 = "I was mistaken. Farewell.";
+            dialog.text = "Говорите, я слушаю.";
+			link.l1 = "Я "+ GetSexPhrase("ошибся","ошиблась") +". Прощайте.";
 			link.l1.go = "Exit";
 			//Португалец
 			if (CheckAttribute(pchar, "questTemp.Portugal") && pchar.questTemp.Portugal == "PortugalInPrison")
             {
-                link.l1 = "Officer, you've got a prisoner here named Bartolomeo the Portuguese...";
+                link.l1 = "Офицер, у вас содержится пленник - Бартоломео Португалец...";
                 link.l1.go = "Portugal";
             }
 		break;
 		
 		//Португалец
 		case "Portugal":
-			dialog.text = "We have got him. And why do you care? Only envoys of the Dutch West India Company are allowed to see him and only by the written order of the governor. One of the Company's officer is interrogating this pirate right now. So if you've come here just to see him, you'd better go away and quickly.";
-			link.l1 = "I have come here not to see him.";
+			dialog.text = "Содержится. А вам какое дело? К нему допускаются только представители Голландской Вест-Индской Компании, и то - только с письменного разрешения губернатора. Один из офицеров Компании как раз допрашивает этого пирата. Так что если вы явились, чтобы его увидеть - вам лучше уйти, и побыстрее.";
+			link.l1 = "Я явился не для того, чтобы его увидеть.";
 			link.l1.go = "Portugal_1";
 		break;
 		
 		case "Portugal_1":
-			dialog.text = "Why then, allow me to ask?";
-			link.l1 = "To take him!";
+			dialog.text = "А для чего же, позвольте спросить?";
+			link.l1 = "Для того, чтобы забрать его!";
 			link.l1.go = "fight";
 			chrDisableReloadToLocation = true;
 			pchar.quest.InMarigoResidenceOver.over = "yes"; //снять таймер

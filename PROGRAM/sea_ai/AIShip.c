@@ -486,6 +486,7 @@ float Ship_MastDamage()
 	{
 		fDamage = fDamage/2;
 	}
+	
 	fDamage = Clampf(fDamage);
 
 	if (fDamage >= 1.0)
@@ -557,7 +558,7 @@ float Ship_HullDamage()
 		if(HasSubStr(HullName, "baller")) // потеряли перо руля
 		{
 			rCharacter.Ship.hulls.baller_destroyed = true; // признак поломки руля
-			string sDamagedString = "They damaged a helm of '" + rCharacter.Ship.Name + "', she is out of control now.";
+			string sDamagedString = "На судне '" + rCharacter.Ship.Name + "' поврежден руль, судно потеряло управление.";
 			Log_SetStringToLog(sDamagedString);
 		}
 	}
@@ -1087,7 +1088,7 @@ void Ship_SetSurrendered(ref rCharacter)
 	
 	string sSurrenderString;
 	string sSurrenderShipType = XI_ConvertString(rBaseShip.BaseName);
-	sSurrenderString = sSurrenderShipType + " '" + rCharacter.Ship.Name + "' " +GetShipSexWord(rBaseShip.BaseName, "raised", "raised") + " white flag";
+	sSurrenderString = sSurrenderShipType + " '" + rCharacter.Ship.Name + "' " +GetShipSexWord(rBaseShip.BaseName, "выбросил ", "выбросила ") + " белый флаг";
 	Log_SetStringToLog(sSurrenderString);
 	
 	Ship_SetTaskRunaway(SECONDARY_TASK, sti(rCharacter.index), GetMainCharacterIndex());
@@ -1226,9 +1227,9 @@ void Ship_CheckSituation()
     if (Ship_AutoAbordage(rCharacter, fMinEnemyDistance)) { return; }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-	// ugeen ->  проверка на возможность выбросить белый флаг
+	// ugeen ->  проверка на возможность выбросить белый флаг // комменчу нафик ибо толком не работает - 27.11.17
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
-	if(!CheckAttribute(rCharacter,"surrendered") && Ship_CheckSurrendered(rCharacter)) Ship_SetSurrendered(rCharacter);
+	//if(!CheckAttribute(rCharacter,"surrendered") && Ship_CheckSurrendered(rCharacter)) Ship_SetSurrendered(rCharacter);
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	// Warship 08.07.09 Запрет спуска парусов
@@ -1356,7 +1357,7 @@ void Ship_CheckSituation()
 				{
 					// fire ship
 					Ship_SetExplosion(rCharacter, rShipObject); //boal 27.09.05
-					Log_Info("" + XI_ConvertString(rBaseShip.BaseName) + " '" + rCharacter.Ship.Name + "' " + GetShipSexWord(rBaseShip.BaseName, "exploded", "exploded") + " a powder-magazine.");
+					Log_Info("" + XI_ConvertString(rBaseShip.BaseName) + " '" + rCharacter.Ship.Name + "' " + GetShipSexWord(rBaseShip.BaseName, "взорвал", "взорвала") + " крюйт камеру.");
 					return;
 				}
 				//Trace("test1 rCharacter2Brander = " + rCharacter2Brander.index);
@@ -1659,7 +1660,7 @@ void Ship_CheckSituation()
 									BigPearlQty = rand(20) + 15;
 									TakeNItems(pchar, "jewelry8", SmallPearlQty);
 									TakeNItems(pchar, "jewelry7", BigPearlQty);
-									Log_SetStringToLog("Fishers of " + rCharacter.ship.name + " gave you " + SmallPearlQty + " of amber and " + BigPearlQty + " of blue amber.");
+									Log_SetStringToLog("Ловцы на баркасе " + rCharacter.ship.name + " отдали вам " + SmallPearlQty + " янтаря и " + BigPearlQty + " голубого янтаря.");
 									pchar.questTemp.Mtraxx.JewQty = sti(pchar.questTemp.Mtraxx.JewQty)+BigPearlQty;
 								}
 								else
@@ -1676,19 +1677,19 @@ void Ship_CheckSituation()
 						}
 						else
 						{
-							if (!CheckAttribute(rCharacter, "PearlTartane"))
-							{
-								Ship_SetTaskAttack(SECONDARY_TASK, sti(rCharacter.index), GetMainCharacterIndex());
-							}
+						if (!CheckAttribute(rCharacter, "PearlTartane"))
+						{
+							Ship_SetTaskAttack(SECONDARY_TASK, sti(rCharacter.index), GetMainCharacterIndex());
+						}
 							// Addon-2016-1 Jason, пиратская линейка
 							if (rCharacter.id == "Losada_Seacap_1")
 							{
 								if (Ship_GetDistance2D(GetMainCharacter(), rCharacter) > 3000 && CheckAttribute(pchar, "questTemp.Mtraxx.LosadaEscape")) Mtraxx_IgnasioOpenMap();		
 							}
-						}
 					}
 		        }
 	        }
+	    }
 	    }
 	    else
 	    {
@@ -1884,7 +1885,7 @@ void Ship_CheckFlagEnemy(ref rCharacter)
 	        SetNationToOfficers(iNationToChange);
 	        SetNationRelation2MainCharacter(sti(rCharacter.nation), RELATION_ENEMY);
 	        */
-			Log_Info("You failed to be taken for a friend - "+ NationNamePeople(sti(rCharacter.nation)) + " recognized you as an enemy.");
+			Log_Info("Сойти за друга не удалось - "+ NationNamePeople(sti(rCharacter.nation)) + " распознали в нас врага.");
 			SetCharacterRelationBoth(sti(rCharacter.index), GetMainCharacterIndex(), RELATION_ENEMY);
 			DoQuestCheckDelay(NationShortName(iNationToChange) + "_flag_rise", 0.1); // применение нац отношений флага
 			if (sti(pchar.questTemp.stels.sea) != GetDataDay())
@@ -1905,7 +1906,7 @@ void Ship_CheckFlagEnemy(ref rCharacter)
 	}
 	if(sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_MIRAGE && sti(rCharacter.nation) == ENGLAND && CheckAttribute(pchar, "questTemp.HWIC.Holl"))//Мираж для англичан враг
 	{
-		Log_Info("Englishmen have recognized 'Mirage', they believe that we are their enemies!");
+		Log_Info("Англичане узнали 'Мираж' и приняли нас за врага!");
 		SetNationRelation2MainCharacter(ENGLAND, RELATION_ENEMY);
 		LAi_group_ClearAllTargets();
 		DoQuestCheckDelay("NationUpdate", 3.0);
@@ -1914,7 +1915,7 @@ void Ship_CheckFlagEnemy(ref rCharacter)
 	}
 	if (LineShips_CheckAndIdentify(sti(rCharacter.nation))) // если пришел на линейнике этой нации
 	{
-		Log_Info("Alarm, "+ NationNamePeople(sti(rCharacter.nation)) + " recognized their ship of the line which you captured from them!");
+		Log_Info("Тревога, "+ NationNamePeople(sti(rCharacter.nation)) + " узнали свой линейный корабль, который вы у них захватили!");
 		SetNationRelation2MainCharacter(sti(rCharacter.nation), RELATION_ENEMY);
 		LAi_group_ClearAllTargets();
 		DoQuestCheckDelay("NationUpdate", 3.0);
@@ -2310,16 +2311,16 @@ void Ship_ApplyHullHitpoints(ref rOurCharacter, float fHP, int iKillStatus, int 
 	}
 	if (fCurHP <= 0.0)
 	{
-		if (CheckAttribute(rOurCharacter, "ShipHideImmortal"))
-		{
+	if (CheckAttribute(rOurCharacter, "ShipHideImmortal"))
+	{
 			fCurHP = 200.0;
 			LAi_SetImmortal(rOurCharacter, true);
 		}
 		else
-		{
-			fCurHP = 0.0;
-			ShipDead(sti(rOurCharacter.index), iKillStatus, iKillerCharacterIndex);
-		}
+	{
+		fCurHP = 0.0;
+		ShipDead(sti(rOurCharacter.index), iKillStatus, iKillerCharacterIndex);
+	}
 	}
 	
     if(fCurHP > sti(RealShips[sti(rOurCharacter.ship.type)].HP))
@@ -2493,17 +2494,17 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 		}
 		if (bCompanion && !bDeadCompanion && bRealKill)
 		{
-            sSunkString = sSunkShipType + " '" + rDead.Ship.Name + "' " + GetShipSexWord(rBaseShip.BaseName, "was sunk by ", "was sunk by ") + GetFullName(rKillerCharacter);
+            sSunkString = sSunkShipType + " '" + rDead.Ship.Name + "' " + GetShipSexWord(rBaseShip.BaseName, "был потоплен ", "была потоплена ") + GetFullName(rKillerCharacter);
         }
         else
         {
             if (sKillShipName == "")
             {
-            	sSunkString = sSunkShipType + " '" + rDead.Ship.Name + "' " + GetShipSexWord(rBaseShip.BaseName, "was sunk.", "was sunk.");
+            	sSunkString = sSunkShipType + " '" + rDead.Ship.Name + "' " + GetShipSexWord(rBaseShip.BaseName, "был потоплен.", "была потоплена.");
             }
             else
             {
-				sSunkString = sSunkShipType + " '" + rDead.Ship.Name + "' " +GetShipSexWord(rBaseShip.BaseName, "was sunk by ", "was sunk by ") + sKillShipType + " '" + sKillShipName + "'";
+				sSunkString = sSunkShipType + " '" + rDead.Ship.Name + "' " +GetShipSexWord(rBaseShip.BaseName, "был потоплен ", "была потоплена ") + sKillShipType + " '" + sKillShipName + "'";
 			}
         }
 		Log_SetStringToLog(sSunkString);
@@ -2565,7 +2566,7 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
             //homo 22/06/07
             AISeaGoods_AddGood(rDead, "boat", "lo_boat", 1000.0, 1);
             RemoveCharacterCompanion(pchar, rDead);
-            Log_Info(GetFullName(rDead) + " used a rowboat.");
+            Log_Info(GetFullName(rDead) + " спасся на шлюпке.");
         }
 	}
 	// спасем офицеров boal 07/02/05
@@ -2624,7 +2625,7 @@ void ShipTaken(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInd
 
 		if(bCompanion && !bDeadCompanion)
 		{
-            Log_SetStringToLog(sSunkShipType + " '" + rDead.Ship.Name + "' " + "was captured!");
+            Log_SetStringToLog(sSunkShipType + " '" + rDead.Ship.Name + "' " + "был захвачен!");
         }
 	}
     if (rand(8) < 3 && !bDeadCompanion && sti(rDead.nation) != PIRATE)  // 30% повышаем награду
@@ -2676,7 +2677,7 @@ void ShipTakenFree(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacte
 		string sSunkShipType = XI_ConvertString(rBaseShip.BaseName);
 		string sKillShipType = XI_ConvertString(rKillerBaseShip.BaseName);
 
-        Log_SetStringToLog(sSunkShipType + " '" + rDead.Ship.Name + "' " + "was captured but released after the plunder.");
+        Log_SetStringToLog(sSunkShipType + " '" + rDead.Ship.Name + "' " + "был захвачен, но отпущен после грабежа.");
 		if (CheckAttribute(pchar, "GenQuest.Detonation"))
 		{
 			DoQuestCheckDelay("CanNotEnterToMap", 0.2); // patch-4
@@ -2857,7 +2858,7 @@ void Ship_HullHitEvent()
 		if ((GetCargoGoods(rOurCharacter, GOOD_POWDER) / 20.0) > (GetCargoMaxSpace(rOurCharacter) * 0.25) && rand(1) == 1)
 		{
 			Ship_SetExplosion(rOurCharacter, rShipObject);
-			Log_Info("Whole powder supply got exploded on " + rOurCharacter.Ship.Name + ".");
+			Log_Info("На корабле " + rOurCharacter.Ship.Name + " сдетонировал весь пороховой запас.");
 		}
 		//boal 27.09.05 <--
 	}
@@ -2887,10 +2888,10 @@ void Ship_HullHitEvent()
 		if (btrade || bhol)
 		{
 			TakeNationLicence(HOLLAND);
-			log_info("A trade license was annulled!");
+			log_info("Торговая лицензия аннулирована!");
 		}
 	}
-	/* if (rOurCharacter.id == "TortugaBranderCap_2" || rOurCharacter.id == "TortugaBranderCap_3") //Jason: атака брандеров у Тортуги
+	/* if (rOurCharacter.id == "TortugaBranderCap_2" || rOurCharacter.id == "TortugaBranderCap_3") //Jason: атака брандеров у Тортуги 2015
 	{
 		if (sti(rOurCharacter.Ship.LastBallCharacter) == GetMainCharacterIndex() && CheckAttribute(rOurCharacter, "checkattack")) Tortuga_ShipGuardAttack();
 	} */

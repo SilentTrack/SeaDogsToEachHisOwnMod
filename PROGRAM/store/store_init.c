@@ -156,6 +156,11 @@ void StoreInit()
 	Stores[SanAndres_STORE].group	= "SanAndres";
 	Stores[SanAndres_STORE].StoreSize = "medium";
 
+	// 
+	Stores[IslaMona_STORE].Colony	= "IslaMona";
+	Stores[IslaMona_STORE].group	= "IslaMona";
+	Stores[IslaMona_STORE].StoreSize = "small";
+
 	// ship store	
 	Stores[SHIP_STORE].Colony	= "none";
 	Stores[SHIP_STORE].group	= "none";

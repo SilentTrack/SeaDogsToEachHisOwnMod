@@ -17,27 +17,27 @@ void ProcessDialogEvent()
 			{
 				if (pchar.questTemp.HWIC.Holl == "AbbyInHouse")
 				{
-					dialog.text = "Good day, mynheer. I am glad to see you. What brings you to our home?";
-					link.l1 = "Good day, Abigail. My name is " + GetFullName(pchar) + ". I am a captain and I serve for the good of the Dutch Republic and for the Dutch West Indian Company.";
+					dialog.text = "Здравствуйте, минхер. Рада вас видеть. Что привело вас в наше скромное жилище?";
+					link.l1 = "Добрый день, Абигайль. Меня зовут " + GetFullName(pchar) + ". Я капитан, и служу на благо Республики Свободных Провинций в целом и Голландской Вест-Индской Компании в частности.";
 					link.l1.go = "AbbyAndLucas";
 					break;
 				}
 				if (pchar.questTemp.HWIC.Holl == "AbbyFindScull" && makeint(Pchar.money) >= 200000)
 				{
-					dialog.text = "Have you found my father's money? Is it true? Ah, I am so glad... Quickly go to my papa, he wants to talk with you. Go and see him!";
-					link.l1 = "I am on my way, mistress.";
+					dialog.text = "Вы нашли деньги моего отца? Это правда? Ах, как же я счастлива... Быстрее идите к моему папе, он хочет с вами поговорить. Ступайте к нему, скорее!";
+					link.l1 = "Уже иду, госпожа.";
 					link.l1.go = "exit";
 					break;
 				}
 				if (pchar.questTemp.HWIC.Holl == "AbbyLeavesMarried")
 				{
-					dialog.text = "You have saved us from misery, captain! I am so grateful to you! Now the good name of the Shneurs is restored.";
-					link.l1 = "It is my job, Abigail. I hope that there is nothing left to hold you from marrying my patron.";
+					dialog.text = "Вы спасли нас от нищеты, капитан! Как же я вам благодарна! Теперь доброе имя семьи Шнеуров будет восстановлено.";
+					link.l1 = "Это моя работа, Абигайль. Я надеюсь, более ничего не сдерживает вас от того, чтобы выйти замуж за моего патрона. Я думаю, он вполне доказал свои наиблагие намерения в отношении вас и вашей семьи.";
 					link.l1.go = "AbbyAndLucas_8";
 					break;
 				}
-				dialog.text = "Wanted to tell me something, captain?";
-				link.l1 = "No, mistress. I am leaving already.";
+				dialog.text = "Вы еще что-то хотели мне сказать, капитан?";
+				link.l1 = "Нет, госпожа. Я уже ухожу.";
 				link.l1.go = "exit";
 				break;
 			}
@@ -45,13 +45,13 @@ void ProcessDialogEvent()
 			{
 				if (pchar.questTemp.HWIC.Eng == "AbigileInChurch")
 				{
-					dialog.text = "I am glad to see you, mynheer. What brings you to the poor girl?";
-					link.l1 = "Good day, Abigail. I am from Richard Fleetwood...";
+					dialog.text = "Рада вас видеть, минхер. Какое дело привело вас к бедной девушке?";
+					link.l1 = "Здравствуйте, Абигайль. Я пришел от Ричарда Флитвуда...";
 					link.l1.go = "Seek_Island";
 					break;
 				}
-				dialog.text = "Wanted to tell me something, captain?";
-				link.l1 = "No, mistress. I am leaving already.";
+				dialog.text = "Вы еще что-то хотели мне сказать, капитан?";
+				link.l1 = "Нет, госпожа. Я уже ухожу.";
 				link.l1.go = "exit";
 				break;
 			}
@@ -59,49 +59,49 @@ void ProcessDialogEvent()
 			{
 				if (pchar.questTemp.HWIC.Self == "toVillemstad")
 				{
-					dialog.text = "What is going on here? What is the noise? Papa, who is this?";
-					link.l1 = "Good day, mistress. I take it that you are Abigail? I am really glad to see you! Forgive me my impudence, but I have to give you a letter from... but your father doesn't trust me and asks me to leave home. I assure you that I really do have a message for you.";
+					dialog.text = "Что здесь происходит? Что за шум? Папа, кто это?";
+					link.l1 = "Здравствуйте, госпожа. Вы, как я понимаю, и есть Абигайль? Очень рад вас видеть! Простите мою дерзость, но я должен передать вам письмо от... но ваш отец мне не верит и просит покинуть дом. Уверяю, я действительно принес для вас послание и хочу вручить его вам.";
 					link.l1.go = "Abigile_kidnapping";
 					break;
 				}
 				if (pchar.questTemp.HWIC.Self == "AbigileNextDay")
 				{
-					dialog.text = "Ah, here you are, Charlie. I am ready to follow you.";
-					link.l1 = "Let's go!";
+					dialog.text = "Ах, вот и вы, Чарли. Я готова следовать за вами.";
+					link.l1 = "Отправляемся в путь!";
 					link.l1.go = "Abigile_kidnapping_7";
 					break;
 				}
 				if (pchar.questTemp.HWIC.Self == "AbigileInCabin")
 				{
-					dialog.text = "Aren't we in St. John's already, Charlie? Will I see Richard soon?";
-					link.l1 = "Yes, miss, we are in St. John's. But unfortunately Richard is not in the town ar the moment, he was ordered to patrol Barbados's shores two days ago. But don't be sad, he should return in a week.";
+					dialog.text = "Мы уже в Сент-Джонсе, Чарли? Я скоро увижу Ричарда?";
+					link.l1 = "Да, мисс, мы уже в Сент-Джонсе. Но Ричарда к сожалению нет в городе - по приказу губернатора он на своем корабле буквально два дня назад выдвинулся в патрульный рейд к берегам Барбадоса. Но не расстраивайтесь, он должен вернуться не позже, чем через неделю.";
 					link.l1.go = "Abigile_kidnapping_8";
 					break;
 				}
 				if (pchar.questTemp.HWIC.Self == "AbigileLie")
 				{
-					dialog.text = "Charlie! I am so glad to see you! Tell me, are there any news from Richard?";
-					link.l1 = "Alas, my dear miss. Richard had to stay in Bridgetown for a while for a secret and important business, it is something about reconnaissance against Holland. I take it that Richard has told you about his job?";
+					dialog.text = "Чарли! Как я рада вас видеть! Скажите, есть ли вести от Ричарда?";
+					link.l1 = "Увы, моя дорогая мисс. Ричард вынужден был задержаться в Бриджтауне - какие-то важные и очень секретные дела, что-то связанное с разведкой против голландцев. Вам же, наверное, Ричард рассказывал о своей службе?";
 					link.l1.go = "Abigile_kidnapping_13";
 					break;
 				}
 				if (pchar.questTemp.HWIC.Self == "AbiReturnHome")
 				{
-					dialog.text = "Charlie! It is you! You are finally back!";
-					link.l1 = "Greetings, dear miss. I am glad to see you.";
+					dialog.text = "Чарли! Это вы! Наконец вы вернулись!";
+					link.l1 = "Здравствуйте, дорогая мисс. Рад вас видеть.";
 					link.l1.go = "Abigile_return";
 					break;
 				}
 				if (pchar.questTemp.HWIC.Self == "AbiReturnHomeGo")
 				{
-					dialog.text = "Ah, I am home finally! I am so glad to see papa! Charlie, thank you for everything you have done for me!";
-					link.l1 = "Please, there is no need for such expressions, dear miss...";
+					dialog.text = "Ах, наконец-то я дома! Как я рада снова видеть папу! Чарли, спасибо вам огромное за все, что вы для меня сделали!";
+					link.l1 = "Право, не стоит, дорогая мисс...";
 					link.l1.go = "Abigile_return_6";
 					break;
 				}
 				if (pchar.questTemp.HWIC.Self == "SolomonHistoryNext")
 				{
-					dialog.text = "Papa, if you remember something, please say it! Charlie, he is... he can be trusted. Perhaps, he is the only one who can help us!";
+					dialog.text = "Папочка, если ты что-то помнишь - скажи это! Чарли - он... ему можно доверять. Возможно, кроме него, никто не сможет нам помочь!";
 					link.l1 = "";
 					link.l1.go = "Abigile_return_12";
 					pchar.questTemp.HWIC.Self = "SolomonHistoryAfter";
@@ -109,30 +109,30 @@ void ProcessDialogEvent()
 				}
 				if (pchar.questTemp.HWIC.Self == "SolomonHistoryEnd")
 				{
-					dialog.text = "I will pray for you, Charlie! Tell me... tell me that you will do it! That you will find the island!";
-					link.l1 = "I will do what I can, dear miss.";
+					dialog.text = "Я буду молиться за вас, Чарли! Скажите.. скажите, что вы сделате это! Что вы найдете остров!";
+					link.l1 = "Я сделаю все, что будет в моих силах, дорогая мисс.";
 					link.l1.go = "Abigile_return_13";
 					break;
 				}
 				if (pchar.questTemp.HWIC.Self == "final" || pchar.questTemp.HWIC.Self == "VanbergDestroyed")
 				{
-					dialog.text = "Ah, Charlie! You are back! What will you say? Have you found the island?";
+					dialog.text = "Ах, Чарли! Вы вернулись! Что скажете? Вы нашли остров?";
 					if (makeint(Pchar.money) >= 200000)
 					{
-						link.l1 = "Yes, Abi. I have found the island and your father's money. I am here to return them to you.";
+						link.l1 = "Да, Аби. И остров, и деньги вашего отца. Я пришел, чтобы вернуть их вам.";
 						link.l1.go = "Abigile_GiveMoney";
 					}
-					link.l2 = "Alas, miss. I have failed to find neither captain Keller nor the island. I did what I could.";
+					link.l2 = "Увы, мисс. Мне не удалось разыскать ни капитана Келлера, ни остров. Я сделал все, что мог.";
 					link.l2.go = "Abigile_NoMoney";
 				break;
 				}
-				dialog.text = "Ah, it is you , Charlie! Want to ask me something?";
-				link.l1 = "No, it is nothing. I am leaving already.";
+				dialog.text = "Ах, это вы, Чарли! Вы что-то хотели спросить?";
+				link.l1 = "Нет, ничего. Я уже ухожу.";
 				link.l1.go = "exit";
 				break;
 			}
-			dialog.text = "Good day. Want something?";
-			link.l1 = "No, mistress. I beg your pardon. Farewell.";
+			dialog.text = "Добрый день. Вы что-то хотели?";
+			link.l1 = "Нет, госпожа. Прошу меня извинить. До свидания.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
@@ -144,44 +144,44 @@ void ProcessDialogEvent()
 
 //-------------------------------------------------за Голландию-----------------------------------------------
 		case "AbbyAndLucas":
-			dialog.text = "Glad to meet you, captain " + GetFullName(pchar) + ". I have heard about you. It was you who has captured the pirate ghost-ship and brought it to Willemstad. Tell me, captain, is it true that this ship was under the command of... Richard Fleetwood?";
-			link.l1 = "Precisely, mistress. We were really shocked. Just think about it, English royal officer who has been plundering merchants of his own nation... And that bastard was covering himself by the action of the ghost-ship. He used it to blame the Company and to attack the Holland ships as well!";
+			dialog.text = "Очень приятно познакомиться, капитан " + GetFullName(pchar) + ". Я про вас слышала. Ведь это вы захватили пиратский корабль-призрак и доставили его в Виллемстад. Скажите, капитан, это правда... что этим кораблем командовал... Ричард Флитвуд?";
+			link.l1 = "Именно так, госпожа. Мы все были буквально поражены. Подумать только - английский офицер на службе короля, уничтожающий собственных торговцев... И ведь каков негодяй: прикрываясь деяниями 'корабля-призрака', он обвинял в преступлениях Компанию и нападал на голландские суда!";
 			link.l1.go = "AbbyAndLucas_1";
 		break;
 		
 		case "AbbyAndLucas_1":
-			dialog.text = "It is hard to hear such things, captain... I knew Richard Fleetwood personally and I'd have never thought that he...";
-			link.l1 = "Mistress, I am informed by my patron Lucas Rodenburg about your voyage to Curacao from Recife. Now it is clear. Fleetwood had sunken your ship and then returned and 'saved' you and your father from the island. I read the pirate's journal, he wasn't afraid to trust this information to paper...";
+			dialog.text = "Мне тяжело это слышать, капитан... Я лично знала Ричарда Флитвуда, и никогда бы не подумала, что он...";
+			link.l1 = "Госпожа, мне известна в общих чертах история вашего путешествия до Кюрасао из Ресифии, от моего патрона, Лукаса Роденбурга. Теперь все стало на свои места. Флитвуд сначала потопил ваше судно, а потом вернулся и 'спас' вас с отцом с острова. Я читал судовой журнал этого пирата - он не побоялся доверить эту информацию бумаге...";
 			link.l1.go = "AbbyAndLucas_2";
 		break;
 		
 		case "AbbyAndLucas_2":
-			dialog.text = "Such a nightmare... It seems that my papa was right. He has been telling me that Richard was that pirate. It is good that it all got clear now and nothing fatal has happened... ah, I am sorry, captain. So what does such an important man like you want from a common girl?";
-			link.l1 = "Abigail, I am here because of a very complicated and delicate matter. I ask you to listen to me.";
+			dialog.text = "Какой кошмар... Значит, мой папа был прав. Он с самого начала говорил, что Ричард и есть тот пират. Хорошо, что все разрешилось вовремя и не произошло непоправимого... ах, извините, капитан. Так что же нужно такому значительному человеку, как вы, от простой девушки?";
+			link.l1 = "Абигайль, я пришел к вам по одному очень непростому и деликатному вопросу. Прошу вас выслушать меня.";
 			link.l1.go = "AbbyAndLucas_3";
 		break;
 		
 		case "AbbyAndLucas_3":
-			dialog.text = "Of course, mynheer. I am all ears.";
-			link.l1 = "As I have said, I serve to the Company and Lucas Rodenburg is not only my military commander, but a good friend too. And it would be the greatest happiness for him to get your consent to his proposal of marriage. I am here to ask you to marry my patron. He is ready to do everything for you.";
+			dialog.text = "Конечно, минхер. Я вас слушаю.";
+			link.l1 = "Как я уже сказал, я служу Компании, и Лукас Роденбург - не только мой боевой командир, но также и хороший друг. И для него высшим счастьем явилось бы ваше одобрение его предложения руки и сердца. Я пришел просить вас согласиться стать женой моего патрона. Ради вас он готов на все.";
 			link.l1.go = "AbbyAndLucas_4";
 		break;
 		
 		case "AbbyAndLucas_4":
-			dialog.text = "Ah, captain! I see now why mynheer Rodenburg wasn't ready to do that himself... My poor papa would be really glad for sure but...";
-			link.l1 = "Mistress, I see, that something is bothering you. What matter has made you to doubt in my commander's sincerity? Perhaps, I am able to make you change your mind?";
+			dialog.text = "Ах, капитан! Кажется, я понимаю, почему минхер Роденбург сам не решался сделать это предложение... Мой бедный папа будет наверняка обрадован, но...";
+			link.l1 = "Госпожа, я вижу, что вас что-то тревожит. Какая причина заставляет вас сомневаться в искренности чувств моего командира? Может, я смогу убедить вас в обратном?";
 			link.l1.go = "AbbyAndLucas_5";
 		break;
 		
 		case "AbbyAndLucas_5":
-			dialog.text = "Captain, I have no doubts in mynheer Rodenburg's sincerity. Lucas has done so much for me and my daddy, I don't know what would happen to us if it wasn't his patronage. But, please, understand my position!\nWe had never been poor, the Shneur family was always known for ours fortune... this unfortunate thing with that pirate. I can not listen to these dirty talks behind my back, not any longer. All citizens believe that I am only interested in mynheer Rodenburg's money. Ah, I wish my dad remembered exact location of the island! He stashed all family money there to save them from hands of pirates who murdered my sisters and my brother!\nBut my poor father is not a sailor, he simply doesn't know where this piece of land lies. Talk to my dad, captain! Maybe he will recall anything. I wish you find the island and our money!";
-			link.l1 = "Fine, Abigail. I will speak with your father. Perhaps it is not over yet. I will do what I can.";
+			dialog.text = "Капитан, я не сомневаюсь в искренности минхера Роденбурга. Лукас сделал для меня и моего папы столько всего... я даже не знаю, как бы мы смогли прожить без его покровительства. Но я прошу вас, поймите меня!\nМы ведь не были нищими, семья Шнеуров вполне могла гордиться своим состоянием... если бы не этот злосчастный пират. Я не могу слышать этих перешептываний за спиной... Все жители этого городка убеждены, что меня интересуют только деньги минхера Роденбурга и ничего более. Ах, если бы только мой отец вспомнил, что это за остров! Он спрятал там все деньги нашей семьи, чтобы они не достались пиратам, погубившим моих сестер и брата!\nНо мой бедный отец не моряк, он просто не знает, где этот злополучный клочок земли. Поговорите с папой, капитан! Может, он вспомнит. Если бы вы только смогли найти этот остров и наши деньги!";
+			link.l1 = "Хорошо, Абигайль. Я поговорю с вашим отцом. Может, еще не все потеряно. Я сделаю все, что будет только возможно.";
 			link.l1.go = "AbbyAndLucas_6";
 		break;
 		
 		case "AbbyAndLucas_6":
-			dialog.text = "Thanks, mynheer. I will pray for you. May God speed you!";
-			link.l1 = "Farewell, Abigail. Expect me with good news.";
+			dialog.text = "Спасибо, минхер. Я буду молиться за вас. Да поможет вам Господь!";
+			link.l1 = "До свидания, Абигайль. Ждите меня с добрыми вестями.";
 			link.l1.go = "AbbyAndLucas_7";
 		break;
 		
@@ -192,8 +192,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "AbbyAndLucas_8":
-			dialog.text = "Oh, yes! Mynheer Rodenburg is the most honorable man. I give him my consent unhesitatingly and I will be happy to call him my husband.";
-			link.l1 = "Then I consider my mission is complete. I have to go now to my commander and tell him the news. And, mistress, I sincerely wish you happiness!";
+			dialog.text = "О, да! Минхер Роденбург - благороднейший человек. Я без колебаний даю согласие и буду счастлива назвать его своим мужем.";
+			link.l1 = "Тогда я считаю свою миссию выполненной. Позвольте откланяться, я должен поспешить к командиру и обрадовать его. И, госпожа: я искренне желаю вам счастья!";
 			link.l1.go = "AbbyAndLucas_9";
 		break;
 		
@@ -205,20 +205,20 @@ void ProcessDialogEvent()
 		
 //-------------------------------------------------за Англию-----------------------------------------
 		case "Seek_Island":
-			dialog.text = "From Richard?! Ah, mynheer! I have heard that he was wounded. Is it true, tell me?! Is he alright?";
-			link.l1 = "Richard is alive and mostly healthy. There are a few problems left with his sight, but he is doing well. Richard asks you to sail with him to England where you could marry. His mission is over and he is only waiting for your answer.";
+			dialog.text = "От Ричарда?! Ах, минхер! Я слышала, что он был ранен. Это так, скажите мне?! С ним все в порядке?";
+			link.l1 = "Ричард жив и уже почти здоров. Остались некоторые проблемы со зрением, но он явно идет на поправку. Ричард предлагает вам уехать с ним в Англию, где вы сможете обвенчаться. Его командировка закончена, и он ждет только вашего ответа.";
 			link.l1.go = "Seek_Island_1";
 		break;
 		
 		case "Seek_Island_1":
-			dialog.text = "Ah, my dear messenger, tell Richard that for our happiness I am ready to go with him wherever he wants. But I fear that my runaway will kill my poor father. I am desperate and I don't know what to do. If Richard could find that ill-fated island and the chest with our family gold... Perhaps it would somehow comfort my papa.";
-			link.l1 = "I see... My mission was to deliver you to Antigua. So I should find the island and the chest, I will bring it to you and then you will go with me to St. John's to Richard.";
+			dialog.text = "Ах, милый вестник, передайте Ричарду, что ради нашего счастья я была бы готова бежать с ним на край света. Но боюсь, что мой побег убьет моего бедного отца. Я в отчаянии и не знаю, что мне делать. Если бы Ричард смог найти тот злосчастный остров и сундук с нашим семейным золотом... Возможно, это хоть как-то бы утешило папу.";
+			link.l1 = "Хорошо... В мою задачу входило доставить вас на Антигуа. Значит, я найду этот остров, и этот сундук со всем его содержимым, и привезу его вам, а затем вы отправитесь со мной в Сент-Джонс к Ричарду.";
 			link.l1.go = "Seek_Island_2";
 		break;
 		
 		case "Seek_Island_2":
-			dialog.text = "Ah, you are so generous! Thank you very much, captain! I will pray for you! Go and God help you!";
-			link.l1 = "I won't make you wait me for too long, mistress. See you soon!";
+			dialog.text = "Ах, вы так великодушны! Спасибо вам огромное, капитан! Я буду молиться за вас! Ступайте, и да поможет вам Господь!";
+			link.l1 = "Я не заставлю вас долго ждать, госпожа. До скорой встречи!";
 			link.l1.go = "Seek_Island_3";
 		break;
 		
@@ -233,8 +233,8 @@ void ProcessDialogEvent()
 		
 //--------------------------------------------против всех------------------------------------------------
 		case "Abigile_kidnapping":
-			dialog.text = "Oh... You have got a letter from him... yes? Ah, papa, don't be that unbearable! You are always haunted by fears! Mynheer, please, follow me, I want to talk with you.";
-			link.l1 = "Thank you, mistress.";
+			dialog.text = "Ох... Вы принесли письмо от него... да? Ах, папа, да что же вы такой несносный! Всюду вам страхи мерещатся! Минхер, прошу вас, идите за мной, я хочу поговорить с вами.";
+			link.l1 = "Спасибо, благородная госпожа.";
 			link.l1.go = "Abigile_kidnapping_1";
 		break;
 		
@@ -248,27 +248,27 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Abigile_kidnapping_2":
-			dialog.text = "Forgive my father, mynheer. He is good and kind man just... our misfortunes have broken him.";
-			link.l1 = "It is alright, mistress. Let me introduce myself, I am Charlie... the Knippel. I am here by the orders of Richard Fleetwood, he wants me to bring you to him. Here, please, read the letter.";
+			dialog.text = "Извините моего отца, минхер. Он добрый и хороший человек, просто... выпавшие на нашу долю несчастья надломили его.";
+			link.l1 = "Все в порядке, госпожа. Позвольте представится - Чарли... Книппель. Я пришел по приказу Ричарда Флитвуда, чтобы отвезти вас к нему. Вот, пожалуйста, прочтите это письмо.";
 			link.l1.go = "Abigile_kidnapping_3";
 		break;
 		
 		case "Abigile_kidnapping_3":
 			RemoveItems(PChar, "NPC_Letter", 1);
-			dialog.text = "Ah, Richard...(reading). Oh, God! He has decided... to grant to my father all of his lost money! Such generosity! Dear Richard! Mynheer, you are such a good herald! Richard, where is he? Is he on Curacao?";
-			link.l1 = "No, mistress. There was an attempt on his life, he got a serious injury. He is on Antigua now... you haven't finished the letter.";
+			dialog.text = "Ах, Ричард...(читает). О, Боже! Он решил... решил подарить отцу все потерянные им деньги! Какое благородство! Милый Ричард! Минхер, вы - добрый вестник! Ричард - где он? Он на Кюрасао?";
+			link.l1 = "Нет, госпожа. На Ричарда было совершено покушение, он получил серьезное ранение. Он сейчас на Антигуа... вы не дочитали.";
 			link.l1.go = "Abigile_kidnapping_4";
 		break;
 		
 		case "Abigile_kidnapping_4":
-			dialog.text = "Oh, holy Lady! Tell me, is he safe? Is his wound bad?";
-			link.l1 = "Don't worry like that, mistress! Richard is not a man who would let some bastards to kill him just like that. He is restoring now. And my mission is to take you to him. Then you two will sail to London... please, finish the letter, lady.";
+			dialog.text = "Пресвятая Дева! Скажите, он в безопасности? Рана тяжелая?";
+			link.l1 = "Не волнуйтесь так, госпожа! Ричард не таков, чтобы дать себя вот так просто убить каким-то негодяям. Он уже идет на поправку. А в мою задачу входит привезти вас к нему в Сент-Джонс, и чтобы ни один волосок не упал с вашей прелестной головки. Затем вы отбудете в Лондон... дочитайте письмо, благородная... леди.";
 			link.l1.go = "Abigile_kidnapping_5";
 		break;
 		
 		case "Abigile_kidnapping_5":
-			dialog.text = "Lady? Ah, yes...(reading). Charlie, I am ready to sail with you. I need one day to pack my things and to talk with my papa. Come here tomorrow and I will get on your ship.";
-			link.l1 = "All right, lady. I will be here tomorrow. And don't worry about yourself, me and my crew will protect you from any dangers during our voyage.";
+			dialog.text = "Леди? Ах, ну да...(читает). Чарли, я готова с вами отплыть. Мне нужен день, чтобы собрать свои вещи и объясниться с папой. Приходите завтра, и я поднимусь на ваш корабль.";
+			link.l1 = "Хорошо, леди. Я буду завтра. И не беспокойтесь за себя - я моя команда оградим вас от любых неприятностей в пути.";
 			link.l1.go = "Abigile_kidnapping_6";
 		break;
 		
@@ -306,14 +306,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Abigile_kidnapping_8":
-			dialog.text = "Ah, what a pity. But I think that I can wait a week more as I have been waiting before...";
-			link.l1 = "Well said, miss. And to make your waiting easier I offer you to change this tight cabin for my friend's house. There will be a soft bed and a nice food prepared only for you.";
+			dialog.text = "Ах, как жаль! Но я думаю, что я вполне в состоянии подождать еще неделю, раз ждала столько времени до этого...";
+			link.l1 = "Вы очень правильно сказали, мисс. Ну, а чтобы ожидание ваше не было столь тяжким в узких стенах каюты, я предлагаю вам пройти в дом моего друга - там для вас будет приготовлена вкусная еда и мягкая постель.";
 			link.l1.go = "Abigile_kidnapping_9";
 		break;
 		
 		case "Abigile_kidnapping_9":
-			dialog.text = "You are so caring, Charlie. Thank you. I really feel myself not so good after all of this regular tossing.";
-			link.l1 = "Follow me, my dear lady!";
+			dialog.text = "Вы такой заботливый, Чарли. Спасибо вам. Я и впрямь неважно себя чувствую от этой постоянной качки.";
+			link.l1 = "Следуйте за мной, дорогая леди!";
 			link.l1.go = "Abigile_kidnapping_10";
 		break;
 		
@@ -325,7 +325,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Abigile_kidnapping_11":
-			dialog.text = "I am glad to meet you, John. Thank you for your hospitality, gentlemen!";
+			dialog.text = "Рада познакомиться, Джон. Спасибо за ваше гостеприимство, джентльмены!";
 			link.l1 = "...";
 			link.l1.go = "Abigile_kidnapping_12";
 		break;
@@ -343,44 +343,44 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Abigile_kidnapping_13":
-			dialog.text = "Ah, Charlie, I have seen Richard just a few times and he didn't tell me much about himself.";
-			link.l1 = "Well, I don't think that he would hide it from you... Miss, Richard is not just an ordinary captain. He is an agent of the English intelligence. A very important person who deal with missions received right from the English government, it is mostly all about destroying trading connections of Holland merchants at the archipelago.";
+			dialog.text = "Ах, Чарли, мы так мало виделись с Ричардом, что он мне почти ничего о себе и не рассказал толком.";
+			link.l1 = "Ну, не думаю, что он бы стал это от вас скрывать... Мисс, Ричард - не просто капитан. Он агент английской разведки. Очень важная персона, выполняет задания английской короны, большей частью связанные с подрывом торговой деятельности голландских купцов на архипелаге.";
 			link.l1.go = "Abigile_kidnapping_14"
 		break;
 		
 		case "Abigile_kidnapping_14":
-			dialog.text = "You don't say?!";
-			link.l1 = "Yes, miss. Your fianc?e and my friend is a very important man. I was always proud to be his friend, but he has become very secretive even with me. It is obvious that he is on some secret mission. I was really upset that this mission didn't let him to meet you.";
+			dialog.text = "Да что вы такое говорите?!";
+			link.l1 = "Да, мисс. Ваш жених и мой друг - большой человек... Я всегда гордился дружбой с ним, но в последнее время он стал очень скрытен, в том числе и со мной. Очевидно, он выполняет некое секретное поручение. Я очень расстроен, что выполнение этого задания не позволило ему встретится с вами.";
 			link.l1.go = "Abigile_kidnapping_15";
 		break;
 		
 		case "Abigile_kidnapping_15":
-			dialog.text = "Charlie, you are scaring me. Are you sure that he is alright?";
-			link.l1 = "I am totally sure in that. I just... I don't approve how he deals with you now, I understand though that the service is vital and he can't betray his duty even for you.";
+			dialog.text = "Чарли, вы меня пугаете. Вы уверены, что с ним все в порядке?";
+			link.l1 = "Насчет этого уверен полностью. Просто я... ну, немного не одобряю то, как он сейчас поступает с вами, хотя понимаю - служба есть служба и он не вправе отказать долгу, даже ради вас. ";
 			link.l1.go = "Abigile_kidnapping_16";
 		break;
 		
 		case "Abigile_kidnapping_16":
-			dialog.text = "Ah, my kind Charlie... I will wait Richard for as long as needed. Perhaps you can tell me where to stay in St. John's? I can't abuse John hospitality for that long.";
-			link.l1 = "What are you saying, lady! Your presence itself honours us and I won't be Charlie the Knippel if I will reject to give home and food for a bride of my friend and my patron!";
+			dialog.text = "Ах, добрый Чарли... Я буду ждать Ричарда, сколько потребуется. Может, подскажете, где можно остановиться в Сент-Джонсе? Я не могу злоупотреблять более гостеприимством Джона.";
+			link.l1 = "Да что вы такое говорите, леди! Вы своим присутствием оказываете нам честь, и не будь я Чарли Книппель, если я посмею отказать в крове и еде невесте моего друга и патрона!";
 			link.l1.go = "Abigile_kidnapping_17";
 		break;
 		
 		case "Abigile_kidnapping_17":
-			dialog.text = "Charlie... I am really touched by your attitude towards me. I am only just a common girl and...";
-			link.l1 = "Miss! Don't even think about taverns! I will never forgive myself if you would be unpleased with my service to Richard and to you.";
+			dialog.text = "Чарли... Я действительно тронута вашим отношением ко мне. Я всего лишь простая девушка, и...";
+			link.l1 = "Мисс! И думать забудьте о каких-то постоялых дворах. Я никогда себе не прощу, если вы окажетесь недовольны моей службой Ричарду и вам.";
 			link.l1.go = "Abigile_kidnapping_18";
 		break;
 		
 		case "Abigile_kidnapping_18":
-			dialog.text = "Thank you, Charlie. I am glad that you are such a... good man.";
-			link.l1 = "It is my duty, miss. Now I am sorry, but I have to go. Yes, and you can freely walk around the town now, you must be feeling lonely in this house, am I right?";
+			dialog.text = "Спасибо, Чарли. Я рада, что вы такой... хороший человек.";
+			link.l1 = "Это мой долг, мисс. А теперь позвольте откланяться. Да, вы можете без опаски гулять по городу - вам же наверно одиноко в этом доме?";
 			link.l1.go = "Abigile_kidnapping_19";
 		break;
 		
 		case "Abigile_kidnapping_19":
-			dialog.text = "Well... John is a very interesting company. He can talk about his powders, mixtures and various diseases for hours. He is a polite and kind man. I visit church...but, of course, I really miss Richard.";
-			link.l1 = "I think he will be back soon. Charlie the Knippel at your service in case you need anything.";
+			dialog.text = "Ну... Джон очень хороший и интересный собеседник. Он может часами рассказывать о своих порошках и микстурах, и всевозможных болезнях. Он вежливый и милый человек. Я хожу в церковь... но, конечно, я очень скучаю по Ричарду.";
+			link.l1 = "Я думаю, он скоро вернется. Если вам что-то понадобится - Чарли Книппель всегда к вашим услугам.";
 			link.l1.go = "Abigile_kidnapping_20";
 		break;
 		
@@ -393,32 +393,32 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Abigile_return":
-			dialog.text = "I heard rumours about Richard... he has disappeared. Do you know anything about it, Charlie?";
-			link.l1 = "I do, Abigail. I am sorry... Richard Fleetwood has gone to Europe and he won't be back. He got a promotion or transfer, something like that... anyway, after what he has done to you, I don't want to know him.";
+			dialog.text = "До меня доходили слухи о Ричарде... он исчез. Вы не знаете, что с ним, Чарли?";
+			link.l1 = "Знаю, Абигайль. Простите... Ричард Флитвуд отбыл в Европу и более на Карибы не вернется. Он получил то ли повышение, то ли перевод, то ли еще что-то... в общем, после того, как он поступил с вами, я его не знаю и знать не хочу.";
 			link.l1.go = "Abigile_return_1";
 		break;
 		
 		case "Abigile_return_1":
-			dialog.text = "Ah, I knew that it will end like that.. I had to listen papa... At least, he would be glad if I'd married Lucas Rodenburg.";
-			link.l1 = "Forgive me again, miss...";
+			dialog.text = "Ах, я так и знала, что все этим кончится... Надо было слушать папу... По крайней мере, он был бы счастлив, выйди я замуж за Лукаса Роденбурга.";
+			link.l1 = "Еще раз простите, меня мисс...";
 			link.l1.go = "Abigile_return_2";
 		break;
 		
 		case "Abigile_return_2":
-			dialog.text = "For what, Charlie? You are not guilty at all.";
-			link.l1 = "For me telling you another bad news: Lucas Rodenburg was arrested for the try of coup in Willemstad. He will be sent to Netherlands and judged. I am just off Curacao. He tried to kill a director of the Company Peter Stuyvesant and another man, so the sentence won't likely be soft.";
+			dialog.text = "За что, Чарли? Вы ни в чем не виноваты.";
+			link.l1 = "За то, что скажу вам очередную неприятную новость: Лукас Роденбург арестован за попытку совершения переворота в Виллемстаде, будет отправлен в Нидерланды и отдан под суд. Я только что прибыл с Кюрасао. С учетом того, что он пытался убить директора Компании Питера Стайвесанта, да и уличен еще как минимум в одном убийстве, приговор вряд ли будет мягким.";
 			link.l1.go = "Abigile_return_3";
 		break;
 		
 		case "Abigile_return_3":
-			dialog.text = "Oh, God! A nightmare! Charlie, is it true? No, please say that it is not!";
-			link.l1 = "Alas, my dear miss. I will add even more: it was revealed, during investigation of Lucas's actions, that the pirate who had sunken your flute was acting under Rodengburg's orders. I am so sorry, Abigail, that you have faced to liars and bastards right after your arrival here.";
+			dialog.text = "О, Боже! Какой ужас! Чарли, это правда? Нет, скажите, что это не так!";
+			link.l1 = "Увы. Дорогая мисс, добавлю более того: в результате расследования деятельности Лукаса было установлено, что пират, потопивший ваш флейт на пути в Виллемстад, выполнял приказы Роденбурга. Мне очень жаль, Абигайль, что сразу же после прибытия на архипелаг вы так близко столкнулись с обманщиками и негодяями.";
 			link.l1.go = "Abigile_return_4";
 		break;
 		
 		case "Abigile_return_4":
-			dialog.text = "Oh... I have got nothing to say. I am completely ruined. Charlie...please...Take me back home to Willemstad. I need my papa....";
-			link.l1 = "Sure, dear miss. Unfortunately, there is nothing to do here for you in Bridgetown. Go, pack your things, say goodbye to John and we will set sail immediately.";
+			dialog.text = "Ох... У меня нет слов. Я полностью уничтожена. Чарли... пожалуйста... Отвезите меня домой, в Виллемстад. Я хочу к папе...";
+			link.l1 = "Конечно, дорогая мисс. Я сделал бы это и без вашей просьбы. К сожалению, в Сент-Джонсе вам больше делать нечего. Идите, соберите свои вещи, попрощайтесь с Джоном, и мы отправимся в путь.";
 			link.l1.go = "Abigile_return_5";
 		break;
 		
@@ -437,38 +437,38 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Abigile_return_6":
-			dialog.text = "No, Charlie, there is no need. If it wasn't for you and John, I don't even know what would happen to me. You are the only honest men who I have met at the archipelago.";
-			link.l1 = "Hm... you are making me blush, Abigail. I was glad to help you. And I am very sorry for all of this mess.";
+			dialog.text = "Нет, Чарли, стоит. Если бы не вы и Джон - не знаю, что бы со мной было. Вы единственные достойные люди, кого я встретила на архипелаге.";
+			link.l1 = "Гхм... Вы вгоняете меня в краску, Абигайль. Рад был вам помочь. И мне очень жаль, что все так вышло.";
 			link.l1.go = "Abigile_return_7";
 		break;
 		
 		case "Abigile_return_7":
-			dialog.text = "You know, Charlie, I had been thinking a lot during our voyage to Curacao. Everything is clear now - Richard Fleetwood, mynheer Rodenburg - everything seems to be just a bad dream which has finally ended. I am with my dad again and we shall continue with our normal life\nIt won't be easy though - we don't have money. But we shall manage.";
-			link.l1 = "Miss, I'd like to talk with you about it. I... well, understand me correctly I really want to help you.";
+			dialog.text = "Знаете, Чарли, за время путешествия до Кюрасао я многое обдумала... Теперь все произошедшее - Ричард Флитвуд, минхер Роденбург - кажется мне кошмарным сном, который наконец закончился. Я теперь снова с папой, и мы продолжим нормальную жизнь\nПравда, будет нелегко - у нас практически нет денег. Но мы справимся.";
+			link.l1 = "Мисс, хотел как раз поговорить с вами на эту тему. Я... ну, поймите меня правильно - я хочу вам помочь.";
 			link.l1.go = "Abigile_return_8";
 		break;
 		
 		case "Abigile_return_8":
-			dialog.text = "To help? But how, Charlie?";
-			link.l1 = "Richard has told me the story of your shipwreck and your rescue. Also, I know that your father has stashed his belongings on some mystic island. I want to try to find it.";
+			dialog.text = "Помочь? Но чем, Чарли?";
+			link.l1 = "От Ричарда я знаю историю вашего крушения и вашего спасения. Также я знаю, что ваш отец спрятал от пиратов свои сбережения на этом таинственном острове. Я хочу попробовать найти его.";
 			link.l1.go = "Abigile_return_9";
 		break;
 		
 		case "Abigile_return_9":
-			dialog.text = "Ah, Charlie. Neither me nor my father are able to tell you where is that ill-fated island even roughly. We are not sailors. I was really scared then, so I don't remember a thing.";
-			link.l1 = "Abigail, try to remember details even the smallest ones. Maybe something had happened before the attack? What does this island look like?";
+			dialog.text = "Ах, Чарли... Ни я, ни мой отец, не сможем даже приблизительно подсказать, где находится этот злосчастный остров. Мы же не моряки. Я была так напугана тогда, что ничего толком и не помню.";
+			link.l1 = "Абигайль, постарайтесь вспомнить хоть какие-то факты, мелкие подробности. Может, что-то предшествовало нападению на вас пирата? Какой из себя этот остров?";
 			link.l1.go = "Abigile_return_10";
 		break;
 		
 		case "Abigile_return_10":
-			dialog.text = "Island... It looks like island. A bay, jungles. Nothing special. Oh, I remember! Perhaps it will help you. Not long before the pirate attack we had met a flute of some merchant. He was invited to our ship and had a dinner with our captain. We were there too. Perhaps, he knows about this island.";
-			link.l1 = "That is something! What were the names of the flute and her captain?";
+			dialog.text = "Остров... Остров и остров. Пляж, джунгли. Как везде. Вспомнила! Может, это вам поможет. Незадолго до нападения пирата мы встретили флейт какого-то торговца. Он был приглашен на наш корабль и отобедал с нашим капитаном. Мы тоже были там. Возможно, он знает, где этот остров.";
+			link.l1 = "Уже что-то! Как назывался этот флейт, и как звали капитана?";
 			link.l1.go = "Abigile_return_11";
 		break;
 		
 		case "Abigile_return_11":
-			dialog.text = "I don't remember, Charlie. I really don't...";
-			link.l1 = "Hm... Try to remember, Abi!";
+			dialog.text = "Я не помню, Чарли. Совершенно...";
+			link.l1 = "Гм... Постарайтесь вспомнить, Аби!";
 			link.l1.go = "Abigile_return_12";
 			pchar.questTemp.HWIC.Self = "SolomonHistory";
 		break;
@@ -482,8 +482,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Abigile_return_13":
-			dialog.text = "We will be waiting for you, Charlie. You are the last hope for us. I will pray for you! God speed!";
-			link.l1 = "I am on my way. Farewell, Abi. Farewell, Solomon.";
+			dialog.text = "Мы будем ждать вас, Чарли. Вы - наша поледняя надежда. Я буду молиться за вас. Да поможет вам Господь!";
+			link.l1 = "Я уже отправляюсь в путь. До свидания, Абигайль! До свидания, Соломон.";
 			link.l1.go = "Abigile_return_14";
 		break;
 		
@@ -496,15 +496,15 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Abigile_NoMoney":
-			dialog.text = "Ah, what a pity. We were hoping, but... thank you anyway, Charlie, for your try to help us. It seems that is my fate.";
-			link.l1 = "Farewell, Abigail. I hope that you will be fine.";
+			dialog.text = "Ах, какая жалость... Мы так надеялись, но... все равно спасибо вам, Чарли, за то, что вы хотя бы попытались нам помочь. Видимо, такова судьба.";
+			link.l1 = "Прощайте, Абигайль. Надеюсь, у вас все наладится.";
 			link.l1.go = "exit";
 			npchar.dialog.currentnode = "Abigile_Poor";
 		break;
 		
 		case "Abigile_GiveMoney":
-			dialog.text = "Is it... is it true? Have you really brought the lost money to us? Oh, Charlie!";
-			link.l1 = "Yes, it is true. I have them. I am ready to give them to you right now. Here, take them. There are all yours.";
+			dialog.text = "Это... это правда? Вы действительно привезли нам потерянные деньги? О, Чарли!";
+			link.l1 = "Да, правда. Они у меня. Я готов вам их вернуть прямо сейчас. Вот, возьмите. Они ваши.";
 			link.l1.go = "Abigile_GiveMoney_1";
 		break;
 		
@@ -512,14 +512,14 @@ void ProcessDialogEvent()
 			AddMoneyToCharacter(pchar, -200000);
 			pchar.quest.MakeAbiPoor.over = "yes"; //снять прерывание
 			ChangeCharacterComplexReputation(pchar, "nobility", 10);
-			dialog.text = "How should I thank you?! How?!";
-			link.l1 = "I don't need any thanks, Abi. It is the smallest thing I could do for you. Now you will start a new life without any rodenburgs, fleetwoods and other strange people. I suppose that your father will find a way to enlarge these money.";
+			dialog.text = "Как мне вас благодарить!? Как!?";
+			link.l1 = "Не нужно никаких благодарностей, Аби. Это самое малое, что я смог для вас сделать. Теперь вы начнете новую жизнь, без всяких флитвудов, роденбургов и прочих сомнительных личностей. Думаю, ваш отец найдет способ, как приумножить этот капитал.";
 			link.l1.go = "Abigile_GiveMoney_2";
 		break;
 		
 		case "Abigile_GiveMoney_2":
-			dialog.text = "Charlie! You did so much for me, for me and for my poor father. I has got accustomed to your presence in my life. I was praying for you everyday. You are my guardian angel. The Lord himself has sent you to our family, believe it or not\nBefore you go, I want you to know that the doors of our house will be always open for you any time. And... please, let me kiss you, my dear Charlie...";
-			link.l1 = "Well...yes, sure... Abi.";
+			dialog.text = "Чарли... Вы столько для меня сделали, для меня и для моего бедного отца. Я уже даже привыкла, что вы есть в моей жизни. Я неустанно молилась за вас ежедневно. Вы - мой ангел-хранитель. Вас послал нашей семье сам Господь, хотите вы в это верить, или нет\nПрежде, чем вы уйдете, я хочу, чтобы вы знали: двери этого дома открыты для вас в любое время дня и ночи. И... разрешите мне вас поцеловать, дорогой Чарли...";
+			link.l1 = "Ну... да, конечно... Аби.";
 			link.l1.go = "Abigile_GiveMoney_3";
 		break;
 		
@@ -535,23 +535,23 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Abigile_Poor":
-			dialog.text = "Glad to see you, Charlie. Nothing has changed for us... poverty is so hard...";
-			link.l1 = "Keep up, miss. Don't collapse.";
+			dialog.text = "Рада вас видеть, Чарли. У нас все по-прежнему... бедность - это так тяжело...";
+			link.l1 = "Держитесь, мисс. Не падайте духом.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Abigile_Poor";
 		break;
 		
 		case "Abigile_AllRight":
-			dialog.text = "Charlie, it is you! I am so glad to see you! Please share a meal with us.";
-			link.l1 = "I am glad to see you too, Abi. And I am glad that you are doing fine.";
+			dialog.text = "Чарли! Это вы! Я рада вас видеть! Присядьте, отобедайте с нами.";
+			link.l1 = "Я тоже рад вас видеть, Аби. И рад, что у вас все хорошо.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Abigile_AllRight";
 		break;
 		
 		//--> блок реагирования на попытку залезть в сундук
 		case "Woman_FackYou":
-			dialog.text = "Ah, so that is just like that?! I have received you as my guest and you decided to loot chests?! Guards!!!";
-			link.l1 = "Shut up, foolish girl...";
+			dialog.text = "Ах, вот, значит, как?! Я вас пустила в дом как гост"+ GetSexPhrase("я","ью") +", а вы по сундуками шарить вздумали?! Стража-а-а!!!";
+			link.l1 = "Заткнись, дура...";
 			link.l1.go = "exit";
 			LAi_group_Attack(NPChar, Pchar);
 		break;

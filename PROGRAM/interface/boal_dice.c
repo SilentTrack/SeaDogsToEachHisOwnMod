@@ -405,12 +405,12 @@ void StartGame()
 	if (dir_i == -1) // комп первый
 	{
         PlaySound("interface\dice_mix.wav");
-		SetFormatedText("INFO_TEXT","I start.");
+		SetFormatedText("INFO_TEXT","Я первый.");
 		PostEvent("My_eventMoveImg", 100);
     }
 	else
 	{
-	    SetFormatedText("INFO_TEXT","You first. Roll dammit!");
+	    SetFormatedText("INFO_TEXT","Ты перв"+ GetSexPhrase("ый","ая") +". Ходи, не задерживай.");
 	    bLockClick = false;
 	}
 	// оба ставят
@@ -444,11 +444,11 @@ void NewGameBegin(bool _newGame)
     bStartGame = 0;
     if (_newGame)
     {
-    	SetFormatedText("INFO_TEXT","Let's roll. "+NewStr()+"Bid!");
+    	SetFormatedText("INFO_TEXT","Начинаем игру. "+NewStr()+"Делаем ставки.");
     }
     else
     {
-        SetFormatedText("INFO_TEXT","Keep'em rolling! "+NewStr()+"Bid!");
+        SetFormatedText("INFO_TEXT","Продолжаем игру. "+NewStr()+"Делаем ставки.");
     }
     bSetRandDice = true;
     PostEvent("My_eStartGame", 1000);
@@ -657,11 +657,11 @@ bool CheckGame()
 		bLockClick = false;
 		if (bStartGame <1 )// первый заход
 		{
-			SetFormatedText("INFO_TEXT","Your turn. ");
+			SetFormatedText("INFO_TEXT","Теперь твой ход. Ходи, не задерживай.");
 		}
 		else
 		{
-			SetFormatedText("INFO_TEXT","Make your re-rolls.");
+			SetFormatedText("INFO_TEXT","Делай свой выбор. Решай, что перебросить.");
 		}
 	}
 	else
@@ -670,7 +670,7 @@ bool CheckGame()
         bLockClick = true;
 		if (bStartGame <1 )// первый заход
 		{
-			SetFormatedText("INFO_TEXT","My turn.");
+			SetFormatedText("INFO_TEXT","Так, теперь мой ход.");
 			move_i = 0;
 	        PlaySound("interface\dice_mix.wav");
 	        PostEvent("My_eventMoveImg", 500);
@@ -680,7 +680,7 @@ bool CheckGame()
 			if (bStartGame <3)
 			{
 				// решаем ходить ли вообще
-	            SetFormatedText("INFO_TEXT","Hm... I'll re-roll these...");
+	            SetFormatedText("INFO_TEXT","Так, подожди... я решаю, что перебросить.");
 	            PostEvent("My_eCompTurn", 800);
             }
         }
@@ -1039,20 +1039,20 @@ bool EndTurnGame()
     bool  ret = true;
 
 	ok = GetResult();
-	sTemp = "I have " + GetTypeName(sti(DiceState.Comp.Result.Type)) + ". You have " + GetTypeName(sti(DiceState.Hero.Result.Type)) + ".";
+	sTemp = "У меня " + GetTypeName(sti(DiceState.Comp.Result.Type)) + ". У тебя " + GetTypeName(sti(DiceState.Hero.Result.Type)) + ".";
     if (ok == 0)
     {
-        sTemp += NewStr() + "A tie !! This is getting interesting...";
+        sTemp += NewStr() + "Ха! Да у нас ничья!! Продолжим.";
 		ret = false;
     }
     if (ok == -1)
     {
-        sTemp += NewStr() + "I won.";
+        sTemp += NewStr() + "Я выиграл.";
         iHeroLose++;
     }
     if (ok == 1)
     {
-        sTemp += NewStr() +  RandSwear() + "You won.";
+        sTemp += NewStr() +  RandSwear() + "Ты выиграл"+ GetSexPhrase("","а") +".";
         iHeroWin++;
     }
     EndGameCount(ok);
@@ -1073,14 +1073,14 @@ void ContinueGame()
 	{
         if (iRate*6 > iMoneyP)
     	{
-    	    ResultStr = "I won!" + NewStr() + "Game's over...";
+    	    ResultStr = "Ты на мели, я выиграл!" + NewStr() + "Все, с меня хватит!";
 			SetFormatedText("INFO_TEXT",ResultStr);
     	    EndGameCount(-1);
     	    iHeroLose++;
     	}
 		else//if (iRate*6 > iMoneyN)
 	    {
-	        ResultStr = "You won!" + NewStr() + "Fuck! I am out.";
+	        ResultStr = "Я на мели, ты выиграл"+ GetSexPhrase("","а") +"!" + NewStr() + "Все, с меня хватит!";
 	        SetFormatedText("INFO_TEXT",ResultStr);
 	        EndGameCount(1);
 	        iHeroWin++;
@@ -1097,12 +1097,12 @@ void NewNextGame()
     openExit = true;
 	if (CheckNextGame() && rand(10) < 10) // есть деньги на игру
     {
-        ResultStr += NewStr() + "One more roll?";
+        ResultStr += NewStr() + "Еще разок?";
 		bLockClick = false;
 	}
 	else
 	{
-        ResultStr += NewStr() + "I am out.";
+        ResultStr += NewStr() + "Все, с меня хватит!";
 		bLockClick = true;
 	}
 	SetFormatedText("INFO_TEXT",ResultStr);
@@ -1110,36 +1110,36 @@ void NewNextGame()
 
 string GetTypeName(int _type)
 {
-	string ret = "nothing";
+	string ret = "ничего нет";
 	
 	switch (_type)
 	{
 	    case 1:
-	        ret = "poker";
+	        ret = "покер";
 	    break;
 	    
 	    case 2:
-	        ret = "street";
+	        ret = "стрит";
 	    break;
 	    
 	    case 3:
-	        ret = "care";
+	        ret = "каре";
 	    break;
 	    
 	    case 4:
-	        ret = "full";
+	        ret = "фул";
 	    break;
 	    
 	    case 5:
-	        ret = "triad";
+	        ret = "триада";
 	    break;
 	    
 	    case 6:
-	        ret = "two pairs";
+	        ret = "две пары";
 	    break;
 	    
 	    case 7:
-	        ret = "pair";
+	        ret = "пара";
 	    break;
 	}
 	return ret;
@@ -1175,7 +1175,7 @@ void CompTurn()
     	if (sti(DiceState.Comp.Result.Type) == 8 && sti(DiceState.Hero.Result.Type) >= 2)
     	{
             //перебросим всегда первую фишку (это 100% 1)
-            SetFormatedText("INFO_TEXT","I transferred one die...");
+            SetFormatedText("INFO_TEXT","Я переброшу один кубик...");
     		// for test
     		ClickCompDice(1);
     		move_i = 0;
@@ -1199,7 +1199,7 @@ void CompTurn()
         if (ok || ok2 || ok3)
         {
             ok = false;
-            SetFormatedText("INFO_TEXT","I transferred these...");
+            SetFormatedText("INFO_TEXT","Я переброшу эти...");
             for (i = 1; i<=6; i++)
     		{
     	        sGlobalTemp = "d"+i;
@@ -1235,7 +1235,7 @@ void CompTurn()
 			if (!CheckAttribute(npchar, "Quest.DiceCheats")) npchar.Quest.DiceCheats = 0;
 			npchar.Quest.DiceCheats = sti(npchar.Quest.DiceCheats) + 1;
 			//navy <--
-            SetFormatedText("INFO_TEXT","Re-rolling...");
+            SetFormatedText("INFO_TEXT","Я переброшу эти...");
             ok = false;
             if (sti(DiceState.Hero.Result.Type) == 1)
             {
@@ -1268,7 +1268,7 @@ void CompTurn()
         // жухло!!!!! <--
     }
 	// решаем не перебрасывать
-	SetFormatedText("INFO_TEXT","I am good.");
+	SetFormatedText("INFO_TEXT","Не буду перебрасывать.");
 	PostEvent("My_eCheckGame", 800);
 }
 
