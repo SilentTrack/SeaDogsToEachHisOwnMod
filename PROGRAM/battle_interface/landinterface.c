@@ -781,23 +781,23 @@ void BLI_SetPossibleCommands()
 		// boal запрет всех переходов
 		if (chrDisableReloadToLocation) bTmpBool = false;
 		if (!CheckAttribute(loadedLocation,"fastreload")) bTmpBool = false;  // в каюте некуда переходить
-		if (bTmpBool) // все еще можно переходить, проверяем город враг
-		{
-		    string sNation = Colonies[FindColony(loadedLocation.fastreload)].nation;
-			if (sNation != "none")
-			{
-				i = sti(sNation);
-				bTmpBool = (GetNationRelation2MainCharacter(i) == RELATION_ENEMY) || GetRelation2BaseNation(i) == RELATION_ENEMY;
-				if (bTmpBool && (i != PIRATE))// && !CheckAttribute(pchar, "CheckStateOk"))
-				{
-					bTmpBool = false;
-				}
-				else
-				{
-		    		bTmpBool = true;
-				}
-			}
-		}
+		// if (bTmpBool) // все еще можно переходить, проверяем город враг
+		// {
+		//     string sNation = Colonies[FindColony(loadedLocation.fastreload)].nation;
+		// 	if (sNation != "none")
+		// 	{
+		// 		i = sti(sNation);
+		// 		bTmpBool = (GetNationRelation2MainCharacter(i) == RELATION_ENEMY) || GetRelation2BaseNation(i) == RELATION_ENEMY;
+		// 		if (bTmpBool && (i != PIRATE))// && !CheckAttribute(pchar, "CheckStateOk"))
+		// 		{
+		// 			bTmpBool = false;
+		// 		}
+		// 		else
+		// 		{
+		//     		bTmpBool = true;
+		// 		}
+		// 	}
+		// }
 		objLandInterface.Commands.FastReload.enable	= bTmpBool;
 		///// boal -->
 		i = -1;

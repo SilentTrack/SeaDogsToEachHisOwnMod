@@ -5831,12 +5831,12 @@ void LSC_ReturnCheckShips(string qName) //проверяем правильность кораблей и нали
 			Island_SetReloadEnableGlobal("LostShipsCity", true);//открыть остров, если был закрыт
 			log_Testinfo("Проверка пройдена!!");
 		}
-		else
-		{
-			Island_SetReloadEnableGlobal("LostShipsCity", false);//закрыть остров
-			PlaySound("interface\notebook.wav");
-			log_info("You can not pass through the Island's reefs without sailing directions!");
-		}
+		// else
+		// {
+		// 	Island_SetReloadEnableGlobal("LostShipsCity", false);//закрыть остров
+		// 	PlaySound("interface\notebook.wav");
+		// 	log_info("You can not pass through the Island's reefs without sailing directions!");
+		// }
 	}
 	else
 	{
