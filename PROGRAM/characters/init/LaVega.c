@@ -3,9 +3,9 @@ int CreateLaVegaCharacters(int n)
 {
 	ref ch;
 	
-	///////////////////////////////////////////////////////////////////////////////
-	// ОСНОВНЫЕ ПЕРСОНАЖИ
-	///////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 
 	makeref(ch,Characters[n]);			
 	ch.id		= "Terrax";
@@ -29,14 +29,14 @@ int CreateLaVegaCharacters(int n)
 	EquipCharacterbyItem(ch, BLADE_LONG); 
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetHuberType(ch);
 	LAi_RemoveLoginTime(ch);
 	LAi_group_MoveCharacter(ch, "PIRATE_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);		// ОФициантка
+	makeref(ch,Characters[n]);		
 	ch.id		= "LaVega_waitress";
 	ch.model	= "women_8";
 	ch.sex = "woman";
@@ -53,7 +53,7 @@ int CreateLaVegaCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Трактирщик
+	makeref(ch,Characters[n]);			
 	ch.id		= "LaVega_tavernkeeper";
 	ch.model	= "barmen_14";
 	ch.greeting = "barmen_1";
@@ -71,7 +71,7 @@ int CreateLaVegaCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Торговец
+	makeref(ch,Characters[n]);			
 	ch.id		= "LaVega_trader";
 	ch.model	= "trader_14";
 	ch.greeting = "store_2";
@@ -91,3 +91,4 @@ int CreateLaVegaCharacters(int n)
 
 	return n;
 }
+

@@ -16,10 +16,11 @@ void NetServer_OnPing(int wNetClientID, int iMsg)
 
 			ref rClient = NetServer_GetClient(wNetClientID);
 			rClient.LastPingTime = iPingTime;
-			//Trace("Server: got ping code = " + iPingCode + ", client = " + wNetClientID);
+			
 		break;
 		case NSC_PONG:	
 			Trace("Server: got pong");
 		break;
 	}
 }
+

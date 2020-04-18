@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
  	switch(Dialog.CurrentNode)
@@ -7,7 +7,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             dialog.text = "Speak, I am listening";
 			link.l1 = "I was mistaken. Farewell.";
 			link.l1.go = "Exit";
-			//Цена чахотки
+			
 			if (!CheckAttribute(npchar, "quest.Consumption") && CheckAttribute(pchar, "questTemp.Consumption") && pchar.questTemp.Consumption == "begin")
 			{
 				link.l1 = "A bird said that you have an epidemic here, am I correct?";
@@ -15,7 +15,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		
-		//--> Цена чахотки
+		
 		case "Consumption":
 			dialog.text = "Correct, so avoid visiting the dungeons without a serious reason. Why?";
 			link.l1 = "Just curious. So if my boys will get too drunk and end up here - should I prepare some yellow linen then?";
@@ -56,5 +56,6 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.quest.Consumption.function = "Consumption_CommandantHouse";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+

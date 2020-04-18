@@ -23,21 +23,21 @@ void Net_InitRewards()
 	Net_InitRank(7, "Rear_Admiral", 200, 40);
 	Net_InitRank(8, "Vice_Admiral", 300, 50);
 	Net_InitRank(9, "Admiral", 1000, 100);
-	Net_InitRank(10, "Navarch", 1000000000, 250);	// stupid tricks
+	Net_InitRank(10, "Navarch", 1000000000, 250);	
 
 	iNetRanksNum = 11;
 
-	// Rewards: Accuracy
-	NetRewardAccuracy[0] = 0.55;	// 1st rank
-	NetRewardAccuracy[1] = 0.45;	// 2nd rank
-	NetRewardAccuracy[2] = 0.35;	// 3rd rank
+	
+	NetRewardAccuracy[0] = 0.55;	
+	NetRewardAccuracy[1] = 0.45;	
+	NetRewardAccuracy[2] = 0.35;	
 
-	// Rewards: Vitality
+	
 	NetRewardVitality[0] = 0.95;
 	NetRewardVitality[1] = 0.85;
 	NetRewardVitality[2] = 0.75;
 
-	// Rewards: Victorious
+	
 	NetRewardVictorious[0] = 0.95;
 	NetRewardVictorious[1] = 0.85;
 	NetRewardVictorious[2] = 0.75;
@@ -82,4 +82,5 @@ int Net_GetRankNum(int iSunk, int iWon)
 
 	return 10;
 }
+
 

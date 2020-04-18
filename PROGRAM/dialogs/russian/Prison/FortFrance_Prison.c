@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
  	switch(Dialog.CurrentNode)
@@ -7,7 +7,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             dialog.text = "Speak, I am listening";
 			link.l1 = "I was mistaken. Farewell.";
 			link.l1.go = "Exit";
-			//--> Бремя гасконца
+			
 			if (CheckAttribute(pchar, "questTemp.Sharlie") && pchar.questTemp.Sharlie == "jailskiper")
 			{
 				link.l1 = "Officer, I have heard that there is man name Folke Deluc in your prison. Is there anything I can do to release him?";
@@ -18,10 +18,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1 = "Officer, it is me again about prisoner Folke Deluc. I have bought a right on his debt and I want this man released and given to me. Here are his business papers, take a look.";
                 link.l1.go = "Sharlie_3";
 			}	
-			//<-- Бремя гасконца
+			
 		break;
 		
-		//--> Бремя гасконца
+		
 		case "Sharlie":
 			dialog.text = "Ah, that sailor? He has loaned a significant sum from our banker, haven't returned it and even gone rogue. But he was found quickly. He has been under arrest since then and he will stay here until he will repay his debt.";
 			link.l1 = "Hm. And how he would do that while staying in prison?";
@@ -64,12 +64,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "Sharlie_6":
 			DialogExit();
-			chrDisableReloadToLocation = true;//закрыть локацию
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);//запретить драться
-			// замораживаем ГГ
+			chrDisableReloadToLocation = true;
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);
+			
 			LAi_SetActorType(pchar);
-			LAi_ActorTurnToLocator(pchar, "goto", "goto17"); // 170712
-			//создаем штурмана
+			LAi_ActorTurnToLocator(pchar, "goto", "goto17"); 
+			
 			ref sld = GetCharacter(NPC_GenerateCharacter("Folke", "DeLuck", "man", "man", 1, FRANCE, -1, false, "quest"));
 			sld.name = "Folke";
 			sld.lastname = "Deluc";
@@ -94,7 +94,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			LAi_ActorGoToLocator(sld, "reload", "reload1", "FolkeStay", -1);
 			pchar.questTemp.Sharlie = "takeskiper";
 		break;
-		//<-- Бремя гасконца
+		
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+

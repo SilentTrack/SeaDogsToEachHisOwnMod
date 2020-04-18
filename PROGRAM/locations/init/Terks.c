@@ -1,24 +1,24 @@
 
 int LocationInitTerks(int n)
 {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Остров Теркс
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Пляж57
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Shore57";
 	locations[n].id.label = "Shore57";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "Terks";
-	//Sound
+	
 	locations[n].type = "seashore";
 	locations[n].islandId = "Terks";
-	//locations[n].DisableEncounters = true;
+	
 	locations[n].onUninhabitedIsland = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore09";
 	Locations[n].models.always.shore09 = "shore09";
 	locations[n].models.always.shore09.sea_reflection = 1;
@@ -37,14 +37,14 @@ int LocationInitTerks(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore09_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore09_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Terks_Jungle_01";
 	locations[n].reload.l1.emerge = "reload1";
@@ -60,19 +60,19 @@ int LocationInitTerks(int n)
     locations[n].locators_radius.reload.boat = 9.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Terks_Jungle_01";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Terks";
 	locations[n].DisableEncounters = true;
 	locations[n].onUninhabitedIsland = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle6";
 	Locations[n].models.always.jungle = "jungle6";	
 	Locations[n].models.always.locators = "jungle6_locators";		
@@ -87,14 +87,14 @@ int LocationInitTerks(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle6_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle6_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Shore57";
 	locations[n].reload.l1.emerge = "reload1";
@@ -117,20 +117,20 @@ int LocationInitTerks(int n)
 	locations[n].locators_radius.reload.reload3_back = 2;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Пляж57
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Shore56";
 	locations[n].id.label = "Shore56";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "Terks";
-	//Sound
+	
 	locations[n].type = "seashore";
 	locations[n].islandId = "Terks";
-	//locations[n].DisableEncounters = true;
+	
 	locations[n].onUninhabitedIsland = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore08";
 	Locations[n].models.always.shore08 = "shore08";
 	locations[n].models.always.shore08.sea_reflection = 1;
@@ -147,14 +147,14 @@ int LocationInitTerks(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore08_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore08_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Terks_Jungle_01";
 	locations[n].reload.l1.emerge = "reload2";
@@ -170,19 +170,19 @@ int LocationInitTerks(int n)
     locations[n].locators_radius.reload.boat = 9.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Вход в грот
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Terks_CaveEntrance";
 	locations[n].id.label = "Cave entrance";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Terks";
 	locations[n].DisableEncounters = true;
 	locations[n].onUninhabitedIsland = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt1";
 	Locations[n].models.always.caveEnt1 = "caveEnt1";	
 	Locations[n].models.always.locators = "caveEnt1_locators";		
@@ -197,14 +197,14 @@ int LocationInitTerks(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "caveEnt1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "caveEnt1_patch";	
-	//Environment	
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l3.name = "reload1_back";
 	locations[n].reload.l3.go = "Terks_Grot";
 	locations[n].reload.l3.emerge = "reload1";
@@ -220,18 +220,18 @@ int LocationInitTerks(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Грот
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Terks_Grot";
 	locations[n].id.label = "Grot";
     locations[n].image = "loading\inside\cave.tga";
-	//Sound
+	
 	locations[n].type = "cave";
 	locations[n].islandId = "Terks";
 	locations[n].onUninhabitedIsland = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\grotto1";
 	locations[n].models.always.grotto1 = "grotto1";
 	locations[n].models.always.grotto1alpha = "grotto1_alpha";
@@ -241,22 +241,16 @@ int LocationInitTerks(int n)
 	locations[n].models.always.locators = "grotto1_locators";
 
 	locations[n].locators_radius.item.duhi1 = 0.0;
-/*	
-	Locations[n].models.always.rays = "grotto1_rays";
-	Locations[n].models.always.rays.level = 49;
-	Locations[n].models.always.rays.tech= "LocVisRays";
-	Locations[n].models.always.rays.uvslide.u1 = -0.03;
-	Locations[n].models.always.rays.uvslide.v1 = -0.03;	
-*/	
-	//Day
+ 	
+	
 	locations[n].models.day.charactersPatch = "grotto1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "grotto1_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Terks_CaveEntrance";
 	locations[n].reload.l1.emerge = "reload1";
@@ -267,3 +261,4 @@ int LocationInitTerks(int n)
 
 	return n;
 }
+

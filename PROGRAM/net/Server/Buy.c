@@ -67,10 +67,10 @@ void NetServer_OnBuy_Ready(int wNetClientID)
 {
 	int i;
 
-	// countdown already started
+	
 	if (iSecondsToStartGame >= 0) { return; }
 
-	// if client alone on server - dont start countdown
+	
 	if ((!NET_DEBUG) && NetServer_GetNumClients() == 1) { return; }
 
 	ref rClient = NetServer_GetCLient(wNetClientID);
@@ -90,7 +90,7 @@ void NetServer_OnBuy_Ready(int wNetClientID)
 		if (!sti(NSClients[i].BuyReady)) { return; }
 	}
 
-	// if team game and only one team here - dont start countdown
+	
 	if ((!NET_DEBUG) && sti(NetServer.GameType) != NETGAME_DEATHMATCH && NetServer_GetNumTeams() <= 1) { return; }
 
 	if (NET_DEBUG) 
@@ -115,7 +115,7 @@ void NetServer_StartServerCountDown()
 {
 	iSecondsToStartGame = iSecondsToStartGame - 250;
 
-	// check players/teams numbers (if only 1 player or 1 team, or zero players - stop countdown and return to wait state)
+	
 	bool bStopCountdown = false;
 	if (!NET_DEBUG)
 	{
@@ -151,7 +151,7 @@ void NetServer_OnBuy_FullInfo(int wNetClientID, int iMsg)
 
 	ref rClient = NetServer_GetCLient(wNetClientID);
 
-	// receive and calculates all 
+	
 	int iShipType = NMGetWord(iMsg);
 	int iShipUpgradeHull = NMGetByte(iMsg);
 	int iShipUpgradeRigging = NMGetByte(iMsg);
@@ -161,21 +161,21 @@ void NetServer_OnBuy_FullInfo(int wNetClientID, int iMsg)
 
 	int iSkills[5], iPerks[6], iGoods[6];
 
-	// add skills money
+	
 	for (i=0; i<5; i++) 
 	{ 
 		iSkills[i] = NMGetByte(iMsg); 
 		iCredit = iCredit + Net_GetSkillCost(i, iSkills[i]);
 	}
 
-	// add perks money
+	
 	for (i=0; i<6; i++) 
 	{ 
 		iPerks[i] = NMGetByte(iMsg); 
 		if (iPerks[i]) { iCredit = iCredit + Net_GetPerkCost(i); }
 	}
 
-	// add goods money
+	
 	for (i=0; i<6; i++) 
 	{ 
 		iGoods[i] = NMGetWord(iMsg); 
@@ -199,7 +199,7 @@ void NetServer_OnBuy_FullInfo(int wNetClientID, int iMsg)
 	rClient.Ship.Cannons.Borts = "";
 	rClient.Ship.Cannons.Type = iCannonsType;
 	rClient.Ship.Upgrades.Cannons = iCannonsUpgrade;
-	rClient.Ship.Cannons.Charge.Type = 0;				// balls // but check first available
+	rClient.Ship.Cannons.Charge.Type = 0;				
 	rClient.Ship.Crew.Quantity = sti(rShip.MaxCrew);
 	rClient.Skills.Accuracy = iSkills[0];
 	rClient.Skills.Cannons = iSkills[1];
@@ -207,7 +207,7 @@ void NetServer_OnBuy_FullInfo(int wNetClientID, int iMsg)
 	rClient.Skills.Defence = iSkills[3];
 	rClient.Skills.Repair = iSkills[4];
 	rClient.Skills.Repair.Active = 0;
-	rClient.Skills.Repair.Cooldown = iServerTime - 60 * 1000;		// FIX-ME
+	rClient.Skills.Repair.Cooldown = iServerTime - 60 * 1000;		
 
 	rClient.Ship.SpeedRateModifier = 1.0 + (stf(NetShipHullUpgrades[iShipUpgradeHull - 1].speedrate) + stf(NetShipSailUpgrade[iShipUpgradeRigging - 1].speedrate)) / 100.0;
 	rClient.Ship.TurnRateModifier = 1.0 + (stf(NetShipHullUpgrades[iShipUpgradeHull - 1].turnrate) + stf(NetShipSailUpgrade[iShipUpgradeRigging - 1].turnrate)) / 100.0;
@@ -219,7 +219,7 @@ void NetServer_OnBuy_FullInfo(int wNetClientID, int iMsg)
 
 	rClient.StartReady = true;
 
-	// check for all clients ready
+	
 	bool bAllClientsReady = true;
 	for (i=0; i<NET_MAXCLIENTS; i++) 
 	{ 
@@ -230,7 +230,7 @@ void NetServer_OnBuy_FullInfo(int wNetClientID, int iMsg)
 		}
 	}
 
-	// send message to all 
+	
 	int iSMsg = NMCreate();
 	NMAddByte(iSMsg, NC_PLAYERINFO);
 	NMAddByte(iSMsg, NSC_PLAYERINFO_STARTREADY);
@@ -245,3 +245,4 @@ void NetServer_OnBuy_FullInfo(int wNetClientID, int iMsg)
 		return;
 	}
 }
+

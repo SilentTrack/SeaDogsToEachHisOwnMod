@@ -1,4 +1,4 @@
-// диалог коменданта форта
+
 void ProcessDialogEvent()
 {
 	int amount, iGunQty, iGunGoods, iGunPrice, iTemp;
@@ -17,14 +17,9 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 
-    // вызов диалога по городам -->
-   /*NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Prison\" + NPChar.City + "_Prison.c";
-    if (LoadSegment(NPChar.FileDialog2))
-	{
-        ProcessCommonDialog(NPChar, Link, NextDiag);
-		UnloadSegment(NPChar.FileDialog2);
-	}*/
-    // вызов диалога по городам <--
+    
+    
+    
 
 	switch(Dialog.CurrentNode)
 	{
@@ -61,20 +56,20 @@ void ProcessDialogEvent()
 			dialog.text = RandPhraseSimple("I am the commandant of the fort. What do you need here?", "What do you need? What have you come here for?");
 			link.l1 = "Oh, nothing, just looking around. I dropped in here just by a lucky chance.";
 			link.l1.go = "exit";
-			//Jason --> мини-квест Дефицитный товар
+			
 			if (CheckAttribute(pchar, "questTemp.Wine.bottle") && NPChar.location == pchar.questTemp.Wine.City + "_ammo" && GetQuestPastDayParam("questTemp.Wine_bottle") < 5)
 			{
 				link.l11 = "I have business with you, officer. It might be of some interest to you. One of your soldiers, "+pchar.questTemp.Wine.SName+" attempted to purchase wine in the city through my mediation. Considering your orders...";
 				link.l11.go = "Wine_prison";
 			}
-			// <-- мини-квест Дефицитный товар
-			// Карибские нравы
+			
+			
 			if (CheckAttribute(pchar, "questTemp.Trial") && pchar.questTemp.Trial == "fraht" && NPChar.location == "portpax_ammo")
 			{
 				link.l11 = "Hello, officer. I came from the colony of Basse-Terre, from a man by the name of Gerard LeCroix. There is a cargo of gunpowder and bombs for you in my hold...";
 				link.l11.go = "trial";
 			}
-			// Опасный груз -->
+			
 			if (pchar.location == "Cumana_Ammo")
 			{
 				if (pchar.questTemp.zpq != "begin" && pchar.questTemp.zpq != "failed" && pchar.questTemp.zpq != "completed")
@@ -93,11 +88,11 @@ void ProcessDialogEvent()
 					link.l3.go = "zpq_fld2";
 				}
 			}
-			// <-- Опасный груз
+			
 			NextDiag.TempNode = "First time";
 		break;
 
-		// --> Орудия для форта
+		
 		case "GiveTaskGun":
 			dialog.Text = LinkRandPhrase("You see, the fort cannons are quite worn out. The treasury assigned funds to replace them, but I simply have no idea, where to purchase the new ones: there's simply no way to find them in our colony in the amount required. So, I thought that the guns from the ships we'd boarded could be quite useful to you.","I need to replace the gun battery of the fort. The funds have already been allocated, but, you know... It's just impossible to purchase the necessary amount in our colony.","I was tasked with the replacement of the worn fort cannons, but I just don't seem to be able to find enough anywhere.");
 			Link.l1 = "Hmm... Can you go into a little bit more detail? Calibre, amount, price?";
@@ -160,7 +155,7 @@ void ProcessDialogEvent()
 			iGunGoods = pchar.questTemp.PrisonGun.Goods;
 			amount = GetSquadronGoods(Pchar, iGunGoods) - sti(pchar.questTemp.PrisonGun.Qty);
 			sTemp = sti(pchar.questTemp.PrisonGun.Qty);
-			iTest = FindColony(NPChar.City); // город
+			iTest = FindColony(NPChar.City); 
 			
 			if (iTest != -1)
 			{
@@ -219,7 +214,7 @@ void ProcessDialogEvent()
 			Link.l1 = "Oh, that was simply a waste of time...";
             Link.l1.go = "exit";
 			AddQuestRecord("PrisonGun", "4");
-			AddQuestUserData("PrisonGun", "sSex", GetSexPhrase("ся","ась"));
+			AddQuestUserData("PrisonGun", "sSex", GetSexPhrase("пїЅпїЅ","пїЅпїЅпїЅ"));
 			AddQuestUserData("PrisonGun", "sName", GetFullName(npchar));
 			CloseQuestHeader("PrisonGun");
 			DeleteAttribute(pchar, "questTemp.PrisonGun");
@@ -244,14 +239,14 @@ void ProcessDialogEvent()
 			Link.l1 = "Of course. Best wishes to you.";
             Link.l1.go = "exit";
 			AddQuestRecord("PrisonGun", "2");
-			AddQuestUserData("PrisonGun", "sSex", GetSexPhrase("","а"));
+			AddQuestUserData("PrisonGun", "sSex", GetSexPhrase("","пїЅ"));
 			CloseQuestHeader("PrisonGun");
 			DeleteAttribute(pchar, "questTemp.PrisonGun");
 			NextDiag.TempNode = "First time";
 		break;
-		// <-- орудия для форта
+		
 
-		//Jason --> мини-квест Дефицитный товар
+		
 		case "Wine_prison":
 			dialog.text = "What?! I have strictly prohibited any drinking on the territory of the fort! Well, he will have to pay for this. I will deduct 1000 pesos from his allowance and will now hand them to you as a reward for your vigilance. And this guy will sit in detention for three days.";
 			link.l1 = "Thank you, " + GetAddress_FormToNPC(NPChar) + ". Stopping such violations is our common duty.";
@@ -259,17 +254,17 @@ void ProcessDialogEvent()
 			AddMoneyToCharacter(pchar, 1000);
 			ChangeCharacterComplexReputation(pchar,"nobility", -1); 
 			DeleteAttribute(pchar, "questTemp.Wine.bottle");
-			pchar.quest.Wine_Exchange.over = "yes";//снять прерывание
+			pchar.quest.Wine_Exchange.over = "yes";
 			sld = characterFromId(pchar.questTemp.Wine.id);
 			sld.lifeday = 0;
 			CloseQuestHeader("Wine");
 			NextDiag.TempNode = "First time";
 		break;
-		// <-- мини-квест Дефицитный товар
 		
-		// Карибские нравы
+		
+		
 		case "trial":
-			iTest = FindColony(NPChar.City); // город
+			iTest = FindColony(NPChar.City); 
 			if (iTest != -1)
 			{
 				rColony = GetColonyByIndex(iTest);
@@ -299,7 +294,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "trial_1":
-			pchar.quest.Trial_FrahtFail.over = "yes"; //снять таймер
+			pchar.quest.Trial_FrahtFail.over = "yes"; 
 			dialog.text = "Alright, bombs and gunpowder, 2500 units each... Good. The soldiers will unload the cargo, your men can take a break. Here's your payment for the freight - five thousand pesos.";
 			link.l1 = "Thanks! What am I to do next? Monsieur LeCroix said...";
 			link.l1.go = "trial_2";
@@ -357,15 +352,15 @@ void ProcessDialogEvent()
 			DialogExit();
 			AddQuestRecord("Trial", "7");
 			pchar.questTemp.Trial = "cannon";
-			SetFunctionTimerCondition("Trial_CannonFail", 0, 0, 14, false); // таймер
+			SetFunctionTimerCondition("Trial_CannonFail", 0, 0, 14, false); 
 			SetCharacterGoods(pchar, GOOD_CANNON_24, GetCargoGoods(pchar, GOOD_CANNON_24)+15);
-			EnemyNationHunterOnMap(true);//запуск перехватчиков
+			EnemyNationHunterOnMap(true);
 			pchar.quest.Trial_cannon.win_condition.l1 = "location";
 			pchar.quest.Trial_cannon.win_condition.l1.location = "Portobello";
 			pchar.quest.Trial_cannon.function = "Trial_CreateFlorianFrigate";
 		break;
 		
-		// Опасный груз -->
+		
 		case "zpq_prs1":
 			if(!isBadReputation(pchar, 70))
 			{
@@ -398,7 +393,7 @@ void ProcessDialogEvent()
 			if (pchar.questTemp.zpq == "begin")
 			{
 				AddQuestRecord("zpq", "6");
-				AddQuestUserData("zpq", "sSex", GetSexPhrase("","а"));
+				AddQuestUserData("zpq", "sSex", GetSexPhrase("","пїЅ"));
 				CloseQuestHeader("zpq");
 			}
 			pchar.questTemp.zpq = "failed";
@@ -436,7 +431,7 @@ void ProcessDialogEvent()
 			pchar.questTemp.zpq = "begin";
 			pchar.questTemp.zpq.time = 20;
 			AddQuestRecord("zpq", "1");
-			AddQuestUserData("zpq", "sSex", GetSexPhrase("","а"));
+			AddQuestUserData("zpq", "sSex", GetSexPhrase("","пїЅ"));
 			SaveCurrentQuestDateParam("pchar.questTemp.zpq");
 		break;
 		
@@ -471,7 +466,7 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				pchar.questTemp.zpq = "completed";
             	AddQuestRecord("zpq", "2");
-				AddQuestUserData("zpq", "sSex", GetSexPhrase("","а"));
+				AddQuestUserData("zpq", "sSex", GetSexPhrase("","пїЅ"));
 				CloseQuestHeader("zpq");
 				pchar.questTemp.zpq.sum = 300000;
 				AddMoneyToCharacter(pchar, makeint(pchar.questTemp.zpq.sum));
@@ -487,7 +482,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "zpq_ex4":
-				dialog.text = "Such sauce! I am not mentally diseased and I precisely remember offering 300 000 pesos\nЕDamn it! You won't screw me!";
+				dialog.text = "Such sauce! I am not mentally diseased and I precisely remember offering 300 000 pesos\nпїЅDamn it! You won't screw me!";
 				link.l1 = "Calm yourself. Think about the ready brander filled with powder right in front of your fort. If say a just a word than your fort will turn into the ruins.";
 				link.l1.go = "zpq_ex6";
 		break;
@@ -518,7 +513,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			pchar.questTemp.zpq = "completed";
             AddQuestRecord("zpq", "3");
-			AddQuestUserData("zpq", "sSex", GetSexPhrase("","а"));
+			AddQuestUserData("zpq", "sSex", GetSexPhrase("","пїЅ"));
 			CloseQuestHeader("zpq");
 			pchar.questTemp.zpq.sum = 150000;
 			AddMoneyToCharacter(pchar, makeint(pchar.questTemp.zpq.sum));
@@ -551,17 +546,17 @@ void ProcessDialogEvent()
 			LAi_group_SetCheck(slai_group, "OpenTheDoors");
 			AddSimpleRumour("Such things happen here!! They say that some prisoner has escaped from the casemates, slaughtered all the guards and stolen the treasury and just gone! Wow!", SPAIN, 5, 1);
 		break;
-		// <-- Опасный груз
+		
 	}
 }
 
 void GetGunType()
 {
 	int iGunType;
-	if(makeint(pchar.rank) < 6) iGunType = rand(1);	//18&&24
-	if(makeint(pchar.rank) >= 6 && makeint(pchar.rank) < 15) iGunType = rand(2); //24&&32	
-	if(makeint(pchar.rank) >= 15 && makeint(pchar.rank) < 24) iGunType = rand(2)+2; //32&&36&&42
-	if(makeint(pchar.rank) >= 24) iGunType = 5-rand(1); //36clv&&42
+	if(makeint(pchar.rank) < 6) iGunType = rand(1);	
+	if(makeint(pchar.rank) >= 6 && makeint(pchar.rank) < 15) iGunType = rand(2); 
+	if(makeint(pchar.rank) >= 15 && makeint(pchar.rank) < 24) iGunType = rand(2)+2; 
+	if(makeint(pchar.rank) >= 24) iGunType = 5-rand(1); 
 	int iAdd = makeint(GetSummonSkillFromName(pchar, SKILL_COMMERCE)/20);
 	
 	switch (iGunType)

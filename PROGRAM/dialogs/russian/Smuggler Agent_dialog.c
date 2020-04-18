@@ -8,13 +8,13 @@ void ProcessDialogEvent()
 	int Sum, nRel, nDay, iChurchQuest2_Summ;
 	ref sld;
 	
-	// ��������� ����� � 2 -->
+	
 	if(CheckAttribute(PChar, "GenQuest.ChurchQuest_2.AskContra_1") && !CheckAttribute(PChar, "GenQuest.ChurchQuest_2.Summ_To_Contra"))
 	{
 		iChurchQuest2_Summ = sti(PChar.rank)*100 + (rand(3)+1)*100;
 		PChar.GenQuest.ChurchQuest_2.Summ_To_Contra = sti(iChurchQuest2_Summ);
 	}
-	// <-- ��������� ����� � 2
+	
 	
 	string sColony;
 	
@@ -34,7 +34,7 @@ void ProcessDialogEvent()
         npchar.quest.trade_date = "";
     }
 
-	//������ ����� �������� ��� ���������� ���� (navy fix)
+	
 	if (CheckAttribute(pchar, "GenQuest.contraTravel.days") && GetQuestPastDayParam("contraTravel") > sti(PChar.GenQuest.contraTravel.days))
 	{
 		DeleteAttribute(pchar, "GenQuest.contraTravel");
@@ -71,7 +71,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "First time":											
-			//--> Jason ���� ���� ������ ����� ������ �����
+			
 			if (CheckAttribute(pchar, "questTemp.Sharlie.Lock"))
             {
 				dialog.text = "Monsieur, leave this place. I doubt that we have anything to talk about.";
@@ -79,8 +79,8 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				break;
 			}
-			//<-- ���� ������ ����� ������ �����
-			//--> Addon-2016 Jason ���������� ������ �� ��������� ���������� � ��������
+			
+			
 			if (CheckAttribute(pchar, "GenQuest.SmugglersBlock") && pchar.GenQuest.SmugglersBlock == npchar.location)
             {
 				dialog.text = "������� ������� ������ �� �����.";
@@ -89,7 +89,7 @@ void ProcessDialogEvent()
 				break;
 			}
 			
-			//--> Jason ���� �������
+			
 			if (CheckAttribute(pchar, "questTemp.Consumption.Contra"))
             {
 				dialog.text = "What do you want, captain?";
@@ -97,7 +97,7 @@ void ProcessDialogEvent()
 				link.l1.go = "Consumption";
 				break;
 			}
-			//<-- ���� �������
+			
 			
 			if(NPChar.quest.meeting == "0")
 			{
@@ -161,22 +161,22 @@ void ProcessDialogEvent()
 					}	
 				}				
 
-				//Jason --> ����-����� ���������� ���������
+				
 				if(CheckAttribute(PChar, "questTemp.Shadowtrader.seeksmugglers") && NPChar.location == pchar.questTemp.Shadowtrader.City + "_tavern")
 				{
 					Link.l8 = "I have got an unusual business for you.";
 					Link.l8.go = "Shadowtrader_smugglers";
 				}
-				// <-- ����-����� ���������� ���������
-				//Jason --> ��������� ����� �������
+				
+				
 				if(NPChar.location == "Marigo_tavern" && CheckAttribute(PChar, "GenQuest.Bakaut") && !CheckAttribute(PChar, "GenQuest.Bakaut.Info"))
 				{
 					Link.l9 = "I need to meet with Michael Rosenkraft. I've got the cargo which is interesting for him.";
 					Link.l9.go = "bakaut";
 				}
-				// <-- ��������� ����� �������
 				
-				// ��������� ��������� �2 -->
+				
+				
 				if(CheckAttribute(PChar, "GenQuest.ChurchQuest_2.AskContra_1") && NPChar.location == PChar.GenQuest.ChurchQuest_2.QuestTown + "_tavern")
 				{
 					Link.l4 = "I need to find one thing out, pal.";
@@ -188,7 +188,7 @@ void ProcessDialogEvent()
 					Link.l5 = "A colleague of yours and my good friend from  " + XI_ConvertString("Colony" + PChar.GenQuest.ChurchQuest_2.QuestTown + "Gen") + " told that you are aware of some business.";
 					Link.l5.go = "Contra_GenQuest_Church_2_Contra2_1";
 				}
-				// <-- ��������� ��������� �2
+				
 				
 				Link.l7 = "Nothing. See you.";
 				Link.l7.go = "Exit";				
@@ -313,7 +313,7 @@ void ProcessDialogEvent()
 				OfficersReaction("bad"); 
 			}	
 			pchar.questTemp.different = "free";
-			pchar.quest.GiveShipLetters_null.over = "yes"; //������� ������ 
+			pchar.quest.GiveShipLetters_null.over = "yes"; 
 			AddQuestRecord("GiveShipLetters", "7");			
 			CloseQuestHeader("GiveShipLetters");
 			DeleteAttribute(pchar, "questTemp.different.GiveShipLetters");
@@ -360,22 +360,22 @@ void ProcessDialogEvent()
 			Link.l2 = "I need to get to one place.";
 			Link.l2.go = "Travel";				
 			
-			//Jason --> ����-����� ���������� ���������
+			
 			if(CheckAttribute(PChar, "questTemp.Shadowtrader.seeksmugglers") && NPChar.location == pchar.questTemp.Shadowtrader.City + "_tavern")
 			{
 				Link.l8 = "I've got a quite unusual business for ya.";
 				Link.l8.go = "Shadowtrader_smugglers";
 			}
-			// <-- ����-����� ���������� ���������
-			//Jason --> ��������� ����� �������
+			
+			
 			if(NPChar.location == "Marigo_tavern" && CheckAttribute(PChar, "GenQuest.Bakaut") && !CheckAttribute(PChar, "GenQuest.Bakaut.Info"))
 			{
 				Link.l9 = "I need to meet with Michael Rosenkraft. I've got the cargo which is interesting for him.";
 				Link.l9.go = "bakaut";
 			}
-			// <-- ��������� ����� �������
 			
-			// ��������� ��������� �2 -->
+			
+			
 			if(CheckAttribute(PChar, "GenQuest.ChurchQuest_2.AskContra_1") && NPChar.location == PChar.GenQuest.ChurchQuest_2.QuestTown + "_tavern")
 			{
 				Link.l3 = "I need to find one thing out, pal.";
@@ -387,13 +387,13 @@ void ProcessDialogEvent()
 				Link.l3 = "A colleague of yours and my good friend from  " + XI_ConvertString("Colony" + PChar.GenQuest.ChurchQuest_2.QuestTown + "Gen") + " told that you are aware of some business.";
 				Link.l3.go = "Contra_GenQuest_Church_2_Contra2_1";
 			}
-			// <-- ��������� ��������� �2
+			
 
 			Link.l5 = "Nothing. See you.";
 			Link.l5.go = "Exit";				
 		break;
 
-		// ��������� ��������� �2 -->
+		
 		case "Contra_GenQuest_Church_2_1":
 			iChurchQuest2_Summ = PChar.GenQuest.ChurchQuest_2.Summ_To_Contra;
 			dialog.text = "I am not a friend for ya. And it can cost you.";
@@ -461,7 +461,7 @@ void ProcessDialogEvent()
 			SetFunctionTimerCondition("Church_GenQuest2_TimeIsLeft", 0, 0, 1, false);
 			DeleteAttribute(PChar, "GenQuest.ChurchQuest_2.AskContra_2");
 		break;
-		// <-- ��������� ��������� �2
+		
 
 		case "Meeting_1":
 			Dialog.Text = "Hm... and how does it concern me? You have probably lost yourself, captain. Go to the shop and sell or buy there whatever you wish.";
@@ -481,7 +481,7 @@ void ProcessDialogEvent()
 			int iTmp = false;
 			int iChIdx, i;
 
-			// ����� ���.  �� �������� ������
+			
 			for (i=0; i<COMPANION_MAX; i++)
 			{
 				iChIdx = GetCompanionIndex(GetMainCharacter(), i);
@@ -511,14 +511,14 @@ void ProcessDialogEvent()
 			if (bOk)
 			{
 			    if (GetQuestPastDayParam("contraTravel") > sti(PChar.GenQuest.contraTravel.days))
-				{  // ���������
+				{  
 					DeleteAttribute(PChar, "GenQuest.contraTravel");
 					CloseQuestHeader("Gen_ContrabandTravel");
 					bOk = false;
 				}
 			}
 
-//navy --> PGG
+
 			if (CheckFreeServiceForNPC(NPChar, "Smugglers") != -1)
 			{
 				Dialog.Text = "Sorry, "+ GetSexPhrase("pal","girl") +", we are busy already. Come back in a few days.";
@@ -526,7 +526,7 @@ void ProcessDialogEvent()
 				Link.l1.go = "Exit";		
 				break;
 			}
-//navy <--
+
 
 			if (bOk || bOk2 || bOk3)
 			{
@@ -544,7 +544,7 @@ void ProcessDialogEvent()
                     {
                         Pchar.quest.contraband.CurrentPlace = SelectSmugglingLocation();
 						Pchar.quest.contraband.City = NPChar.city;
-                        if (Pchar.quest.contraband.CurrentPlace != "None")//boal fix
+                        if (Pchar.quest.contraband.CurrentPlace != "None")
                         {
                             if (ChangeContrabandRelation(pchar, 0) >= 70)
                             {
@@ -558,7 +558,7 @@ void ProcessDialogEvent()
             				Link.l1.go = "Smuggling_exit";
         				}
         				else
-        				{   //boal fix
+        				{   
                             Dialog.Text = "No business today. Come here tomorrow.";
             				Link.l1 = "Fine.";
             				Link.l1.go = "Exit";
@@ -579,11 +579,11 @@ void ProcessDialogEvent()
 				}
 			}
 		break;
-////////////////////////////////////////////////////////////////////////////////
-//	���������� �����
-////////////////////////////////////////////////////////////////////////////////
+
+
+
 		case "Travel":
-//navy --> PGG
+
 			if (CheckFreeServiceForNPC(NPChar, "Smugglers") != -1)
 			{
 				Dialog.Text = "Sorry, "+ GetSexPhrase("pal","girl") +", we are busy already. Come back in a few days.";
@@ -591,20 +591,20 @@ void ProcessDialogEvent()
 				Link.l1.go = "Exit";		
 				break;
 			}
-//navy <--
-			//���� ��� ������� � �� � ��� ����������� ��� ��
+
+			
 			if (sti(pchar.ship.type) == SHIP_NOTUSED && GetCompanionQuantity(pchar) == 1 && GetPassengersQuantity(pchar) == 0)
 			{
-				//������ ���� ��� ���� ����
+				
 				if (CheckAttribute(pchar, "GenQuest.contraTravel.active") && sti(pchar.GenQuest.contraTravel.active) == true)
 				{
-					//������ ���
+					
 					if (CheckAttribute(pchar, "GenQuest.contraTravel.payed") && sti(pchar.GenQuest.contraTravel.payed) == true)
 					{
 						Dialog.Text = "I thought that we have already arranged the deal?";
 						Link.l2 = "Indeed!";
 					}
-					//�� ������, ������ ����� ���������� ���� �� ����� ����.
+					
 					else
 					{
 						if(GetQuestPastDayParam("contraTravel") == sti(PChar.GenQuest.contraTravel.days))
@@ -625,7 +625,7 @@ void ProcessDialogEvent()
 								Link.l1 = "I've changed my mind...";
 								Link.l1.go = "Travel_abort";
 							}
-							else // ���������
+							else 
 							{
 							    Dialog.Text = "Can't help you today. Come in a two days and maybe we will get something for you.";
 								Link.l2 = "Too bad.";
@@ -635,21 +635,21 @@ void ProcessDialogEvent()
 						}
 					}
 				}
-				//���� �� ���� ��������, ������������ �������
+				
 				else
 				{
 					nRel = ChangeContrabandRelation(pchar, 0);
-					//���� ���������� ��������� � ���������� ������� ������ 20, ��������....
+					
 					if (nRel > 0 && Statistic_AddValue(PChar, "contr_TravelKill", 0) < 20)
 					{
-						//�����...
+						
 						pchar.GenQuest.contraTravel.CurrentPlace = SelectSmugglingLocation();
 						aref arTmp; makearef(arTmp, pchar.GenQuest.contraTravel);
 						SetSmugglersTravelDestination(arTmp);
-						//�� ������� �������� 
+						
 						pchar.GenQuest.contraTravel.price = (sti(PChar.rank)*250 + (100 - nRel)*10 + rand(30)*20) + sti(arTmp.destination.days)*100;
 						
-						//���� ����� �������, � ��� ���������� � ��, � ��� ������� �� ��������, ���� ��������� �����, � ���� ...
+						
 						bOk = !bPauseContrabandMetro && CheckNPCQuestDate(npchar, "Travel_Talk") && 
 							Pchar.GenQuest.contraTravel.CurrentPlace != "None" && rand(50) < nRel;
                         bOk2 = CheckAttribute(Pchar, "quest.Contraband.Active") && (sti(Pchar.quest.Contraband.Active) == true);
@@ -675,7 +675,7 @@ void ProcessDialogEvent()
 							Link.l2 = "Too bad.";
 						}
 					}
-					//���, �������� � ���
+					
 					else
 					{
                         Dialog.Text = "Do you really think that anyone will want to work with you after all of that? You'd better be glad that we didn't send the bounty hunters for you. Get away!";
@@ -684,7 +684,7 @@ void ProcessDialogEvent()
 
 				}
 			}
-			//������� ����, �������� � ���...
+			
 			else 
 			{
 				if(GetPassengersQuantity(pchar) != 0)
@@ -701,7 +701,7 @@ void ProcessDialogEvent()
 			Link.l2.go = "Exit";
 			break;
 
-		//������
+		
 		case "Travel_abort":
 			ChangeContrabandRelation(pchar, -2);
 			DeleteAttribute(PChar, "GenQuest.contraTravel");
@@ -711,7 +711,7 @@ void ProcessDialogEvent()
 			Link.l1.go = "Exit";
 			break;
 
-		//�� �������� �����
+		
 		case "Travel_agree":
 			ReOpenQuestHeader("Gen_ContrabandTravel");
 			AddQuestRecord("Gen_ContrabandTravel", "1");
@@ -722,32 +722,32 @@ void ProcessDialogEvent()
 			AddQuestUserData("Gen_ContrabandTravel", "sDays", FindRussianDaysString(sti(pchar.GenQuest.contraTravel.days)));
 			AddQuestUserData("Gen_ContrabandTravel", "sPrice", pchar.GenQuest.contraTravel.price);
 
-			//���������� �����
+			
 			pchar.GenQuest.contraTravel.active = true;
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 			break;
 
-		//�� �������� �������
+		
 		case "Travel_pay":
-			//����� �������?
+			
 			Sum = sti(pchar.GenQuest.contraTravel.price);
 			if (sti(pchar.money) >= Sum)
 			{
 				AddMoneyToCharacter(pchar, -1*Sum);
-				//������ ���� ������
+				
 				pchar.GenQuest.contraTravel.payed = true;
 				Dialog.Text = "Nice doing business with you. Don't be late on the ship.";
 				Link.l1 = "I'll try.";
 				AddQuestRecord("Gen_ContrabandTravel", "2");
 				AddQuestUserData("Gen_ContrabandTravel", "sSex", GetSexPhrase("",""));
 				
-				//������ ������.
+				
 				PlaceSmugglersOnShore(PChar.GenQuest.contraTravel.CurrentPlace);
-				//������� �� ������ � �����....
+				
 				Sum = sti(pchar.GenQuest.contraTravel.destination.days);
 				sld = GetCharacter(NPC_GenerateCharacter("Abracham_Gray", "citiz_46", "man", "man", 5, PIRATE, Sum + 2, true, "hunter"));
-				//���������...
+				
 				sld.nation = PIRATE;
 				SetRandomNameToCharacter(sld);
 				SetMerchantShip(sld, rand(GOOD_PAPRIKA));
@@ -757,7 +757,7 @@ void ProcessDialogEvent()
 
 				SetTimerCondition("RemoveTravelSmugglers", 0, 0, 1, false);
 			}
-			//���, �������� � ���...
+			
 			else
 			{
 				Dialog.Text = "It looks like you don't have enough coin."
@@ -765,11 +765,11 @@ void ProcessDialogEvent()
 			}
 			Link.l1.go = "Exit";
 		break;  
-////////////////////////////////////////////////////////////////////////////////
-//	END OF ���������� �����
-////////////////////////////////////////////////////////////////////////////////
+
+
+
 				
-		//Jason --> ����-����� ���������� ���������
+		
 		case "Shadowtrader_smugglers":
 			dialog.text = "Very interesting. Show what you have got.";
 			link.l1 = "I have heard that there is an underground shop where you can trade very 'special' goods with a tempting price and you have helped to start this shop. I'd like to talk with it's owner.";
@@ -820,9 +820,9 @@ void ProcessDialogEvent()
 			pchar.quest.Shadowtrader_SMG.function = "ShadowAgent";
 			DialogExit();
 		break;
-		// <-- ���������� ���������
+		
 			
-		//--> ���� �������
+		
 		case "Consumption":
 			dialog.text = "There are plenty of revelers here and if you've got no business, sir, drink or prate with them. This place is busy.";
 			link.l1 = "Let's try again.  I will pay you for your time and my curiosity. I need answers.";
@@ -882,9 +882,9 @@ void ProcessDialogEvent()
 			pchar.questTemp.Consumption = "current";
 			AddQuestRecord("Consumption", "6");
 		break;
-		//<-- ���� �������
 		
-		//Jason --> ��������� ����� �������
+		
+		
 		case "bakaut":
 			dialog.text = "Is that so? Fine. Mynheer Rosenkraft need a batch of ironwood but not less than "+FindRussianQtyString(sti(pchar.GenQuest.Bakaut.Value))+". Do you have enough cargo?";
 			if (GetSquadronGoods(pchar, GOOD_SANDAL) >= sti(pchar.GenQuest.Bakaut.Value))
@@ -915,14 +915,14 @@ void ProcessDialogEvent()
 			DialogExit();
 			sld = characterFromId("Rozencraft");
 			sld.DeckDialogNode = "bakaut";
-			DeleteAttribute(sld, "DontDeskTalk"); // ����� ������� ������
+			DeleteAttribute(sld, "DontDeskTalk"); 
 			pchar.GenQuest.Bakaut.Info = "true";
 			ReOpenQuestHeader("Bakaut");
 			AddQuestRecord("Bakaut", "1");
 			AddQuestUserData("Bakaut", "sIsland", XI_ConvertString(pchar.GenQuest.Bakaut.Island+"Gen"));
 			AddQuestUserData("Bakaut", "sDays", FindRussianDaysString(sti(pchar.GenQuest.Bakaut.DaysQty)));
 			AddQuestUserData("Bakaut", "sQty", FindRussianQtyString(sti(pchar.GenQuest.Bakaut.Value)));
-			// ������
+			
 			pchar.quest.Bakaut_Rozencraft_Find.win_condition.l1 = "Timer";
 			pchar.quest.Bakaut_Rozencraft_Find.win_condition.l1.date.hour  = sti(GetTime());
 			pchar.quest.Bakaut_Rozencraft_Find.win_condition.l1.date.day   = GetAddingDataDay(0, 0, sti(pchar.GenQuest.Bakaut.DaysQty));
@@ -930,6 +930,7 @@ void ProcessDialogEvent()
 			pchar.quest.Bakaut_Rozencraft_Find.win_condition.l1.date.year  = GetAddingDataYear(0, 0, sti(pchar.GenQuest.Bakaut.DaysQty));
 			pchar.quest.Bakaut_Rozencraft_Find.function = "Bakaut_RozencraftRemove";
 		break;
-		// <-- ��������� ����� �������
+		
 	}
 }
+

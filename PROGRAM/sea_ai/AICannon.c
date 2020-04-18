@@ -1,6 +1,6 @@
 #define MAX_CANNON_DAMAGE_DISTANCE				3.0
 
-#define MAX_HEEL_ANGLE							0.262 // в радианах = 15 гр. - максимальный угол крена при потере всех орудий с одного борта и всех целых другого борта
+#define MAX_HEEL_ANGLE							0.262 
 #define MAX_VOLLEY_HEEL_ANGLE					0.10  
 
 void DeleteCannonsEnvironment()
@@ -26,7 +26,7 @@ void CreateCannonsEnvironment()
 	SetEventHandler(CANNON_RECALCULATE_PARAMETERS, "Cannon_RecalculateParametersEvent", 0);
 	SetEventHandler(CANNON_DAMAGE, "Cannon_DamageEvent", 0);
 
-	SendMessage(&AISea, "lff", AI_MESSAGE_CANNONS_PARAMS, MAX_CANNON_DAMAGE_DISTANCE, 1.0);	// fMaxCannonDamageDistance, fMaxCannonDamageRadiusPoint
+	SendMessage(&AISea, "lff", AI_MESSAGE_CANNONS_PARAMS, MAX_CANNON_DAMAGE_DISTANCE, 1.0);	
 }
 
 bool Cannon_LoadBall()
@@ -35,13 +35,13 @@ bool Cannon_LoadBall()
 
 	int iBallType = sti(aCharacter.Ship.Cannons.Charge.Type);
 	int iNumBalls = GetCargoGoods(aCharacter, iBallType);
- 	// boal -->
+ 	
 	int iNumPowder = GetCargoGoods(aCharacter, GOOD_POWDER);
 	if (iNumBalls > 0 && iNumPowder > 0)
 	{
 		AddCharacterGoodsCannon(aCharacter, iBallType, -1);
 		AddCharacterGoodsCannon(aCharacter, GOOD_POWDER, -1);
-		// boal <--
+		
 		return true;
 	}
 	return false;
@@ -54,9 +54,9 @@ void Cannon_UnloadBall()
 	{
 		AddCharacterGoodsCannon(aCharacter, sti(aCharacter.Ship.Cannons.Charge.Type), 1);
 	}	
-	// boal -->
+	
 	AddCharacterGoodsCannon(aCharacter, GOOD_POWDER, 1);
-	// boal <--
+	
 }
 
 void AddCharacterGoodsCannon(aref aCharacter, int iGood, int iQuantity)
@@ -81,7 +81,7 @@ void Cannon_RecalculateParameters(int iCharacterIndex)
 	ref	rBall = GetGoodByType(sti(rCharacter.Ship.Cannons.Charge.Type));
 	if (CheckAttribute(rCharacter, "TmpPerks.LongRangeShoot"))
 	{
-		rCharacter.Ship.Cannons.SpeedV0 = stf(rCannon.SpeedV0) * stf(rBall.SpeedV0) * AIShip_isPerksUse(rCharacter.TmpPerks.LongRangeShoot, 1.0, 1.15); //slib
+		rCharacter.Ship.Cannons.SpeedV0 = stf(rCannon.SpeedV0) * stf(rBall.SpeedV0) * AIShip_isPerksUse(rCharacter.TmpPerks.LongRangeShoot, 1.0, 1.15); 
 	}
 	else
 	{
@@ -105,13 +105,13 @@ float Cannon_GetFireHeight()
 	Y = stf(rEnemyShip.Height.(sBallName).Y);
 	DY = stf(rEnemyShip.Height.(sBallName).DY);
 
-    // charge/ship depend
-	// boal new goals -->
-	//return (Y + (frnd()-0.5) * DY * 2);
-	// введем логику и учет от расстояния. также учет что, бомбы тяжелее ядер
+    
+	
+	
+	
 	float dist = Ship_GetDistance2D(aCharacter, aEnemy);
-	// Y- высоты прицела, задана для борта от типа корабля противника 1-3 для ядер 10-20 для книпперей 2-4 картеч DY - дисперсия
-	// Будем исходить из подобия треугольников и того, что высота подобрана Акеллой на середину радиура выстрела
+	
+	
 	ref	rCannon = GetCannonByType(sti(aCharacter.Ship.Cannons.Type));
 	if (sBallName == "Bombs" || sBallName == "Grapes")
 	{
@@ -132,10 +132,10 @@ float Cannon_GetFireHeight()
 	   RY = 55;
 	}
 	return RY;
-	// boal <--
+	
 }
 
-// calculate recharge time for cannon
+
 float Cannon_GetRechargeTime()
 {
 	aref	aCharacter = GetEventData();
@@ -143,10 +143,10 @@ float Cannon_GetRechargeTime()
 	float	fCannonSkill = 1.0 - stf(aCharacter.TmpSkill.Cannons) / 3.0;
 
 	ref		rCannon = GetCannonByType(sti(aCharacter.Ship.Cannons.Type));
-	float	fReloadTime = GetCannonReloadTime(rCannon); // boal 28.01.03 - 09.02.05
+	float	fReloadTime = GetCannonReloadTime(rCannon); 
 
 	float fMultiply = 1.0;
-	// boal -->
+	
     fMultiply = AIShip_isPerksUse(aCharacter.TmpPerks.FastReload, 1.0, 0.9);
 	fMultiply = AIShip_isPerksUse(aCharacter.TmpPerks.ImmediateReload, fMultiply, 0.5); 
 	fMultiply = isEquippedArtefactUse(aCharacter, "amulet_5", fMultiply, 0.85);
@@ -154,19 +154,19 @@ float Cannon_GetRechargeTime()
 	ref refBaseShip = GetRealShip(sti(aCharacter.ship.Type));
 	if (sti(refBaseShip.BaseType) != SHIP_FORT)
 	{
-        // boal 060804 для компа поблажки
+        
 		if (sti(aCharacter.index) != GetMainCharacterIndex())
 		{
-		    fReloadTime -= MOD_SKILL_ENEMY_RATE; // -10c на невозможном
-			if (fReloadTime < 5.0) fReloadTime = 5.0; //Jason - фикс пулеметов 3 калибра
+		    fReloadTime -= MOD_SKILL_ENEMY_RATE; 
+			if (fReloadTime < 5.0) fReloadTime = 5.0; 
 		}
-		// boal <--
+		
 		float crewQty  = GetCrewQuantity(aCharacter);
 	    float OptCrew  = GetOptCrewQuantity(aCharacter); 
 	    float MaxCrew  = GetMaxCrewQuantity(aCharacter); 
 	    float fMorale  = GetCharacterCrewMorale(aCharacter); 
 	    
-	    if (crewQty > MaxCrew) crewQty = MaxCrew; // fix 14/03/05
+	    if (crewQty > MaxCrew) crewQty = MaxCrew; 
 	    if (OptCrew > 0)
 	    {
             float  fExp;
@@ -178,26 +178,26 @@ float Cannon_GetRechargeTime()
 	    
         if (crewQty <= (GetMinCrewQuantity(aCharacter)))
         {
-            fReloadTime = fReloadTime * 3.0; //меньше команды - тормозим
+            fReloadTime = fReloadTime * 3.0; 
         } 
-    // boal  корректный учет команды <--
+    
     }
 	return  fMultiply * fReloadTime * fCannonSkill;
 }
 
-// calculate delay before fire
+
 float Cannon_GetFireTime()
 {
-	//aref aCharacter = GetEventData();
+	
 	aref aCharacter = GetEventData();
 	ref refBaseShip = GetRealShip(sti(aCharacter.ship.Type));
 
-	// make 10 seconds random delay between fire from fort cannons
-	if (refBaseShip.Name == ShipsTypes[SHIP_FORT].Name) { return frnd() * 20.0; }   // иначе пулеметный залп
+	
+	if (refBaseShip.Name == ShipsTypes[SHIP_FORT].Name) { return frnd() * 20.0; }   
 
 	float fCannonSkill = stf(aCharacter.TmpSkill.Cannons);
 	float fFireTime = 1.3 - fCannonSkill;
-	//fFireTime = fFireTime * Bring2RangeNoCheck(3.0, 1.0, 0.0, 1.0, stf(aCharacter.Ship.Crew.MinRatio));
+	
 	fFireTime = frnd() * fFireTime * 6.0;
 	if (iArcadeSails) { fFireTime = fFireTime * 0.5; }
 				   
@@ -224,7 +224,7 @@ void Cannon_FireCannon()
 
 	aref aCharacter = GetEventData();
 
-	DeleteAttribute(aCharacter, "Sea_AI.Cannon.Charge"); //должно располагаться здесь, а не выше
+	DeleteAttribute(aCharacter, "Sea_AI.Cannon.Charge"); 
 
 	fX = GetEventData();
 	fY = GetEventData();
@@ -235,19 +235,19 @@ void Cannon_FireCannon()
 	fCannonDirAng = GetEventData();
 	fMaxFireDistance = GetEventData();
 		
-	 // boal навел порядок по оптимизации
+	 
 	Ball_AddBall(aCharacter, fX, fY, fZ, fSpeedV0, fDirAng, fHeightAng, fCannonDirAng, fMaxFireDistance);
 }
 
-// Damage 2 cannon from balls
+
 float Cannon_DamageEvent()
 {
-	//return 0.0;
+	
 	aref	aCharacter = GetEventData();
-	float	fBallDamage = GetEventData();	// ball damage
-	float	fCurDamage = GetEventData();	// current cannon damage (0.0 .. 1.0)
-	float	fDistance = GetEventData();		// distance from ball 2 cannon
-	float	x = GetEventData();				// x, y, z - cannon position
+	float	fBallDamage = GetEventData();	
+	float	fCurDamage = GetEventData();	
+	float	fDistance = GetEventData();		
+	float	x = GetEventData();				
 	float	y = GetEventData();
 	float	z = GetEventData();
 	
@@ -266,13 +266,13 @@ float Cannon_DamageEvent()
 	ref	rCannon = GetCannonByType(sti(aCharacter.Ship.Cannons.Type));
 	
 	float fMaxCHP = stf(rCannon.hp);
-	//fCurDamage = (fCurDamage * fMaxCHP + fBallDamage * (1.0 - fDistance / MAX_CANNON_DAMAGE_DISTANCE)) / fMaxCHP;
-    //Log_TestInfo("fBallDamage "  + fBallDamage + " fCurDamage " +fCurDamage + " fMaxCHP " + fMaxCHP + " fDistance " +fDistance);
+	
+    
     fBallDamage *= 0.1 / fDistance;
-    fCurDamage =  fCurDamage  + fBallDamage / fMaxCHP;  // TO_DO
+    fCurDamage =  fCurDamage  + fBallDamage / fMaxCHP;  
 	if (IsCharacterPerkOn(aCharacter, "HT4")) fCurDamage = fCurDamage/2.0;
     
-	//fCurDamage = fCurDamage - fCurDamage/100*(sti(aCharacter.ship.upgrades.cannons)-1)*20;
+	
 	if (fCurDamage >= 1.0)
 	{
 		fCurDamage = 1.0;
@@ -283,13 +283,8 @@ float Cannon_DamageEvent()
 		{
 		    Log_Info(XI_ConvertString("Cannon_DamageEvent"));
 		}
-		aCharacter.Ship.Cargo.RecalculateCargoLoad = true; // boal 27.07.06 пушки - груз
-/*		
-		if(SetHeel_XZ(aCharacter,  &ax, &az))
-		{
-			SendMessage(aCharacter, "lff", MSG_SHIP_SET_HEEL_XZ, ax, az); 
-		}	
-*/		
+		aCharacter.Ship.Cargo.RecalculateCargoLoad = true; 
+ 		
 	}
 
 	return fCurDamage;
@@ -323,9 +318,9 @@ int GetBortCannonsQtyMax(ref rCharacter, string sBort)
 	int 	nShipType = sti(rCharacter.ship.type);	
 	ref 	refBaseShip = GetRealShip(nShipType);	
 	
-	iCannons = sti(refBaseShip.(sBort));	// это теоретический максимум !
+	iCannons = sti(refBaseShip.(sBort));	
 	
-	// ищем задизейбленные орудия
+	
 	if (CheckAttribute(rCharacter, "Ship.Cannons.Borts." + sBort + ".damages"))		
 	{
 		aref arDamages;	
@@ -367,9 +362,10 @@ bool SetHeel_XZ(ref rCharacter,  ref float_x, ref float_z)
 	int iDelta = iIntactRCannon - iIntactLCannon;
 	
 	ang_z = MAX_HEEL_ANGLE * makefloat(iDelta)/makefloat(iRCannon);
-	ang_x = 0.0; // TODO
+	ang_x = 0.0; 
 	
 	float_x = ang_x; float_z = ang_z;
 	return true;
 }
+
 

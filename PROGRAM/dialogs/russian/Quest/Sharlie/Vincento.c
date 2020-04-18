@@ -1,4 +1,4 @@
-// отец Винсенто
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -351,7 +351,7 @@ void ProcessDialogEvent()
 		case "guardoftruth_22":
 			DialogExit();
 			AddQuestRecord("Guardoftruth", "59");
-			// проверяем, жив ли Акула и где он, если жив
+			
 			if (GetCharacterIndex("Dodson") != -1)
 			{
 				sld = characterFromId("Dodson");
@@ -359,7 +359,7 @@ void ProcessDialogEvent()
 				else pchar.questTemp.Guardoftruth.Archy = "islatesorotavern";
 			}
 			else pchar.questTemp.Guardoftruth.Archy = "islatesorotavern";
-			SetTimerCondition("Map_SetNationCoolHanters", 0, 0, 5, false); // немного развлечений
+			SetTimerCondition("Map_SetNationCoolHanters", 0, 0, 5, false); 
 		break;
 		
 		case "tieyasal":

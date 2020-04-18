@@ -1,5 +1,5 @@
-#include "DIALOGS\russian\Common_Duel.c" //navy
-#include "DIALOGS\russian\Rumours\Common_rumours.c"  //homo 25/06/06
+#include "DIALOGS\russian\Common_Duel.c" 
+#include "DIALOGS\russian\Rumours\Common_rumours.c"  
 void ProcessDialogEvent()
 {
     ref NPChar, d;
@@ -7,8 +7,8 @@ void ProcessDialogEvent()
 	string NPC_Meeting, TempInfoCharacterID_1, TempInfoCharacterID_2, sQuestTitle;
 	int DonationSize;
     	
-	// Warship 18.05.08
-	int iLa_Puesta; // La puesta - это ставка по-испански
+	
+	int iLa_Puesta; 
     	
 	DeleteAttribute(&Dialog,"Links");
 
@@ -17,8 +17,8 @@ void ProcessDialogEvent()
 	makeref(d, Dialog);
 	makearef(Diag, NPChar.Dialog);
 	
-    ProcessCommonDialogRumors(NPChar, Link, Diag);//homo 25/06/06
-    ProcessDuelDialog(NPChar, Link, Diag); //navy
+    ProcessCommonDialogRumors(NPChar, Link, Diag);
+    ProcessDuelDialog(NPChar, Link, Diag); 
 
 	int iEnemyDice, iPCDice;
 	int d1,d2,d3,d4;
@@ -37,7 +37,7 @@ void ProcessDialogEvent()
 	}
 	switch (Dialog.CurrentNode)
 	{
-		// -----------------------------------Диалог первый - первая встреча
+		
 		case "exit":
 			Diag.CurrentNode = Diag.TempNode;
 			DialogExit();
@@ -85,7 +85,7 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				break;
 			}
-			if(CheckAttribute(pchar,"questTemp.HabitueSpeakDisable") && rand(1) == 0) // если дуэлянт то каждый второй посылает нафик
+			if(CheckAttribute(pchar,"questTemp.HabitueSpeakDisable") && rand(1) == 0) 
 			{
 				dialog.text = "Ha, mis"+ GetSexPhrase("ter","s") +", surely, I heard of you, he-he. People at the taverns are saying that you're a tease and a duelist. I say that our folk is not easily scared but no one wants to die for a cup of rum. I find it fearful to even sit close to you, so I'd better pass.";
 				link.l1 = LinkRandPhrase("God riddance, then!","Get lost, while I am still in good mood...","Go, go! Get lost, fish food!");
@@ -104,12 +104,12 @@ void ProcessDialogEvent()
 		    {
 	            switch (npchar.quest.last_theme)
 				{
-					case "0": //пьяный.
+					case "0": 
 						dialog.text = "Hic! Oh, "+ GetSexPhrase("buddy, surely you look like a seasoned old salt","lass, surely you look like a seasoned old salt") +"! Perhaps you would buy me a glass of rum?";
 						link.l1 = "I might be an old salt, but that doesn't mean that I am buying booze for riffraff...";
 						link.l1.go = "exit";
 
-						if (makeint(pchar.money) >= 100 && ok) // только старые острова окучены на сесть
+						if (makeint(pchar.money) >= 100 && ok) 
 						{
 							link.l2 = "I'd gladly join your company.";
 							link.l2.go = "talk_with_alchogol";
@@ -127,7 +127,7 @@ void ProcessDialogEvent()
 							switch (sti(npchar.quest.last_theme_game))
 							{
 							    case 0 :
-									// Игра в карты boal 20/05/05 -->
+									
 	                                if (CheckNPCQuestDate(npchar, "Card_date_begin"))
 									{
 										Dialog.text = RandPhraseSimple("A game of cards, maybe? A very interesting game!", "I suggest we play a game of cards. What say you?");
@@ -144,12 +144,12 @@ void ProcessDialogEvent()
 						    			link.l1 = "As you say.";
 						    			link.l1.go = "exit";
 									}
-			                        // Игра в карты boal 20/05/05 <--
+			                        
 		                        break;
 
 								case 1:
-								// кости
-		    						// Игра в кости boal 13/07/05 -->
+								
+		    						
 	                                if (CheckNPCQuestDate(npchar, "Dice_date_begin"))
 									{
 										Dialog.text = RandPhraseSimple("A game of dice, maybe? A very interesting game!", "I suggest we roll some dice. What say you?");
@@ -166,14 +166,14 @@ void ProcessDialogEvent()
 					    				link.l1 = "As you say.";
 					    				link.l1.go = "exit";
 									}
-			                        // Игра в кости boal 13/07/05 <--
-			                        //navy --> Дуэли
+			                        
+			                        
 									if (CheckAttribute(NPchar, "Quest.DiceCheats") && sti(NPchar.Quest.DiceCheats) >= 1) 
 									{
 					    				link.l9 = RandSwear() + " You were cheating!!!";
 					    				link.l9.go = "outraged";
 									}
-									//navy <--
+									
 			    				break;
 	    					} 
 						}
@@ -197,7 +197,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 		break;
 		
-	    // карты -->
+	    
 	    case "Cards_Rule":
    			dialog.text = CARDS_RULE;
 			link.l1 = "Well, let's start, then...";
@@ -290,13 +290,13 @@ void ProcessDialogEvent()
 		break;
 							
 		case "Cards_begin_go":
-            // анлим игры в день SetNPCQuestDate(npchar, "Card_date_begin");
+            
 			Diag.CurrentNode = Diag.TempNode;
 			DialogExit();
             LaunchCardsGame();
 		break;
-	    // карты <--
-	    // КОСТИ -->
+	    
+	    
 	    case "Dice_Rule":
    			dialog.text = DICE_RULE;
 			link.l1 = "Well, let's start, then...";
@@ -388,16 +388,16 @@ void ProcessDialogEvent()
 			break;
 
 		case "Dice_begin_go":
-            // анлим игры в день SetNPCQuestDate(npchar, "Dice_date_begin");
+            
 			Diag.CurrentNode = Diag.TempNode;
 			DialogExit();
             LaunchDiceGame();
 		break;
-	    // КОСТИ <--
+	    
 
-		/////////////////////////////////////////////
+		
         case "talk_with_alchogol_song":
-			dialog.text = "Well, h-hic! Things are good… Hic! You don't see it coming… Hi-ic! This rum is fine… Jamaica black rum… hic!\nHere, put and pour!";
+			dialog.text = "Well, h-hic! Things are goodпїЅ Hic! You don't see it comingпїЅ Hi-ic! This rum is fineпїЅ Jamaica black rumпїЅ hic!\nHere, put and pour!";
 			link.l1 = "And then what?";
 			link.l1.go = "talk_with_alchogol_song_2";
 			link.l2 = "Oh, screw you!";
@@ -436,7 +436,7 @@ void ProcessDialogEvent()
 			link.l1.go = "sit_2";
 		break;
 
-		// Церковный генератор. Квест №2 -->
+		
 		case "Alcogol_GenQuest_Church_2_1":
 			dialog.text = "Sure! Have you heard - bandits even plunder churches!";
 				link.l1 = "Well, that sound like pirates - who else...";
@@ -478,16 +478,16 @@ void ProcessDialogEvent()
 			PChar.GenQuest.ChurchQuest_2.QuestGangJungle = sGenLocation;
 			SetFunctionLocationCondition("Church_GenQuest2_GenerateBandits", sGenLocation, false);
 			locations[FindLocation(sGenLocation)].DisableEncounters = true;
-			PChar.GenQuest.ChurchQuest_2.WayOfShortVariant = true; // Нужно для проверки при убийстве банды
+			PChar.GenQuest.ChurchQuest_2.WayOfShortVariant = true; 
 			SetFunctionTimerConditionParam("Church_GenQuest2_TimeIsLeft", 0, 0, 1, MakeInt(24 - GetHour()), false);
 			Log_TestInfo("The bandits who raided the church shall be in location - " + sGenLocation + " Time to search for them - 1 day");
 			sQuestTitle = PChar.GenQuest.ChurchQuest_2.QuestTown + "ChurchGenQuest2";
 			AddQuestRecordEx(sQuestTitle, "ChurchGenQuest2", "2");
 			break;
-		// <-- Церковный генератор. Квест №2
-		//--> работорговец
+		
+		
 			case "Jamaica_ratH_1":
-				dialog.text = "Oh, Franсois! Sure, I remember that guy... No, I don't know. But, you know, you can ask our waitress about him. For as long as he'd lived here, she spent every night with him. A bitch she is, that's for sure. Perhaps he'd blabbed out something to her.";
+				dialog.text = "Oh, FranпїЅois! Sure, I remember that guy... No, I don't know. But, you know, you can ask our waitress about him. For as long as he'd lived here, she spent every night with him. A bitch she is, that's for sure. Perhaps he'd blabbed out something to her.";
 				link.l1 = "Thanks for an advice, buddy. I'll go talk to her.";
 				link.l1.go = "exit_sit";
 				pchar.questTemp.Slavetrader = "FindRatJamaica_W";
@@ -512,7 +512,7 @@ void ProcessDialogEvent()
 			break;
 			
 			case "EscapeSlave_Villemstad_H4":
-				dialog.text = "Oh-hoe, I say that I saw it with my own eyes. It was storming. Couldn't see a thing, and then the ship appeared from nowhere… Torn sails. She had her foresail broken… and mainsail, and pot and… damn it she had everything broken! And yet she was rushing upwind!\nAnd there were apes on her deck... a lot of them like... seal rookery! And a pure gorilla was standing at the wheel! nine feet, red shirt and shark teeth instead of the cross at it's chest... Eyes are red, fangs flashing, it saw us and cried something out...";
+				dialog.text = "Oh-hoe, I say that I saw it with my own eyes. It was storming. Couldn't see a thing, and then the ship appeared from nowhereпїЅ Torn sails. She had her foresail brokenпїЅ and mainsail, and pot andпїЅ damn it she had everything broken! And yet she was rushing upwind!\nAnd there were apes on her deck... a lot of them like... seal rookery! And a pure gorilla was standing at the wheel! nine feet, red shirt and shark teeth instead of the cross at it's chest... Eyes are red, fangs flashing, it saw us and cried something out...";
 				link.l1 = "You're lying through your teeth, friend. You know, you can see things when you're drunk. Next you gonna tell me that was the Flying Dutchman.";
 				link.l1.go = "EscapeSlave_Villemstad_H5";
 			break;
@@ -535,7 +535,7 @@ void ProcessDialogEvent()
 				pchar.questTemp.Slavetrader = "FindMayak";
 			break;
 		
-		//Голландский Гамбит, против всех
+		
 		case "Lucas_Tavern":
 			dialog.text = "No, captain. A sailor's life is not for me. You know, I, too, used to have a ship once, but... I had a stroke of a really bad luck.";
 			link.l1 = "Listen - I've seen an unusual ship lying off - 'Meifeng' was her name. I've never seen a ship like that one before. Who is the owner? Perhaps, it's up for sale? I'd take a look.";
@@ -584,20 +584,20 @@ void ProcessDialogEvent()
 			link.l1.go = "exit_sit";
 			AddQuestRecord("Holl_Gambit", "3-44");
 			pchar.questTemp.HWIC.Self = "AttackMeifeng";
-			//ставим прерывание на выход в море Мейфенг
+			
 			pchar.quest.HWIC_Meifeng.win_condition.l1 = "Timer";
 			pchar.quest.HWIC_Meifeng.win_condition.l1.date.hour  = sti(GetTime());
 			pchar.quest.HWIC_Meifeng.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 1);
 			pchar.quest.HWIC_Meifeng.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 1);
 			pchar.quest.HWIC_Meifeng.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
 			pchar.quest.HWIC_Meifeng.function = "CreateMeifengOnMap";
-			SetFunctionTimerCondition("QuestShipsTerms_Over", 0, 0, 12, false); // таймер
-			pchar.quest.Meifeng_fail.over = "yes"; //снять прерывание
+			SetFunctionTimerCondition("QuestShipsTerms_Over", 0, 0, 12, false); 
+			pchar.quest.Meifeng_fail.over = "yes"; 
 			Group_DelCharacter("Meifeng_Empty", "Longway");
-			Group_DeleteGroup("Meifeng_Empty");//удалить Мейфенг из порта
+			Group_DeleteGroup("Meifeng_Empty");
 		break;
 		
-			//Jason --> поиск дезертира
+			
 		case "FindFugitiveHb":
 			npchar.quest.fugitive = "true";
 			if (npchar.location == pchar.GenQuest.FindFugitive.City+"_tavern" && sti(pchar.GenQuest.FindFugitive.Chance) == 2)
@@ -619,7 +619,7 @@ void ProcessDialogEvent()
 			dialog.text = "Of course, I can! Every morning he can be found on the shore, at "+XI_ConvertString(pchar.GenQuest.FindFugitive.Shore+"Gen")+". Just come as early as possible otherwise he will set sails and you will have to wait for next morning.";
 			link.l1 = "Thanks! You've helped me out a lot, friend! See ya!";
 			link.l1.go = "exit_sit";
-			pchar.GenQuest.FindFugitive.Chance = 3; // чтобы никто больше не говорил
+			pchar.GenQuest.FindFugitive.Chance = 3; 
 			AddQuestRecord("MayorsQuestsList", "12-3");
 			AddQuestUserData("MayorsQuestsList", "sShore", XI_ConvertString(pchar.GenQuest.FindFugitive.Shore+"Gen"));
 			sld = characterFromId("Fugitive");
@@ -629,9 +629,9 @@ void ProcessDialogEvent()
 			LAi_SetLoginTime(sld, 4.0, 6.0);
 			ChangeCharacterAddressGroup(sld, pchar.GenQuest.FindFugitive.Shore, "goto", "goto1");
 		break;
-		//<-- поиск дезертира
 		
-		// Карибские нравы
+		
+		
 		case "trial_spy":
 			dialog.text = "He was hanging about in our shipyard, asking the shipwrights about this and that. And that's what played a mean trick on him. Some people alerted the commandant about suspicious people hanging around in the town, so he detained him - and then it was found out that he actually was no merchant at all.";
 			link.l1 = "I take it, he was going to steal some secret project  of your shipwright?";
@@ -655,7 +655,7 @@ void ProcessDialogEvent()
 		case "sit_2":
 			Statistic_AddValue(pchar, "TavernDrink", 1);
 			AddMoneyToCharacter(pchar, -2);
-			//navy --> Alcohol - rum count;
+			
 			if(!IsEquipCharacterByArtefact(pchar, "totem_01"))
 			{
 				if (CheckAttribute(pchar, "questTemp.Rum"))
@@ -668,7 +668,7 @@ void ProcessDialogEvent()
 			{
 				if(CheckAttribute(pchar, "questTemp.Rum")) DeleteAttribute(pchar, "questTemp.Rum");
 			}				
-			//<-- navy
+			
 			WaitDate("",0,0,0, 0, 30);
 			
 			if (CheckAttribute(pchar, "questTemp.Rum"))
@@ -678,7 +678,7 @@ void ProcessDialogEvent()
 				else
 				{
 					LAi_AlcoholSetDrunk(pchar, 71, sti(pchar.questTemp.Rum)*2800);
-					Pchar.GenQuest.CamShuttle = makeint(sti(pchar.questTemp.Rum)/2); // Jason
+					Pchar.GenQuest.CamShuttle = makeint(sti(pchar.questTemp.Rum)/2); 
 				}
 			}
 			
@@ -695,7 +695,7 @@ void ProcessDialogEvent()
 			}
 
 			link.l4 = LinkRandPhrase("Feels like I have spent an eternity in the sea. Any news?",
-									"What people say? Surely, I have reasons to buy you drinks…",
+									"What people say? Surely, I have reasons to buy you drinksпїЅ",
 									"Tell me, pal, what tales are popular in taverns now?");
 			link.l4.go = "rumours_habitue";
 		break;
@@ -715,7 +715,7 @@ void ProcessDialogEvent()
 				case 1:
 					dialog.text = "To you! Oh, hell! Who is that?";
 					link.l1 = "Huh? What? Where? I must be seeing things.";
-					link.l1.go = "sit_2";// to_do "sit_case_5_exit";
+					link.l1.go = "sit_2";
 				break;
 				
                 case 2:
@@ -776,7 +776,7 @@ void ProcessDialogEvent()
 			}
 		break;
 
-		case "sit_case_5_exit": // дуэль
+		case "sit_case_5_exit": 
 			Diag.CurrentNode = Diag.TempNode;
 			DialogExit();
 			AddDialogExitQuest("fighting");
@@ -887,7 +887,7 @@ void ProcessDialogEvent()
 
 bool CheckFreeSitFront(ref _npchar)
 {
- 	ref rCharacter; //ищем
+ 	ref rCharacter; 
 	int n;
 
 	if (!CheckAttribute(_npchar, "Default.ToLocator")) return false;
@@ -903,3 +903,4 @@ bool CheckFreeSitFront(ref _npchar)
     }
     return  true;
 }
+

@@ -1,4 +1,4 @@
-// Addon-2016 Jason, французские миниквесты (ФМК) Тортуга
+
 void ProcessDialogEvent()
 {
 	ref sld, NPChar;
@@ -180,14 +180,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "wife_5":
-			pchar.questTemp.FMQT.Honour = "true"; // вар 1
+			pchar.questTemp.FMQT.Honour = "true"; 
 			dialog.text = ".. I didn't expect this from you... The chest... Leave it for later, first, we should return a duplicate key which was stolen by some filthy pirate. He is having a good time in a local den, drinking like a pig. Make haste and bring the duplicate to me. I will be waiting for you.";
 			link.l1 = "No wasting time then!";
 			link.l1.go = "wife_7";
 		break;
 		
 		case "wife_6":
-			pchar.questTemp.FMQT.Bed = "true"; // вар 2 
+			pchar.questTemp.FMQT.Bed = "true"; 
 			dialog.text = "You won't regret this, captain. And you are right, what man can decline such an offer? First, we should return a duplicate key which was stolen by some filthy pirate. He is having a good time in a local den, drinking like a pig. Make haste and bring the duplicate to me. I will be waiting for you.";
 			link.l1 = "No wasting time then!";
 			link.l1.go = "wife_7";
@@ -244,14 +244,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "wife_13":
-			pchar.questTemp.FMQT.Honour = "true"; // вар 1
+			pchar.questTemp.FMQT.Honour = "true"; 
 			dialog.text = "Oh... I like you more and more... First, we should return a duplicate key which was stolen by some filthy pirate. He is having a good time in a local den, drinking like a pig. Make haste and bring the duplicate to me. I will be waiting for you.";
 			link.l1 = "No wasting time then!";
 			link.l1.go = "wife_7";
 		break;
 		
 		case "wife_14":
-			pchar.questTemp.FMQT.Bed = "true"; // вар 2 
+			pchar.questTemp.FMQT.Bed = "true"; 
 			dialog.text = "Keep your cool, sweetie. (giggle) First, we should return a duplicate key which was stolen by some filthy pirate. He is having a good time in a local den, drinking like a pig. Make haste and bring the duplicate to me. I will be waiting for you. You sure you can manage that?";
 			link.l1 = "Have any doubt? Don't! I am already on my way.";
 			link.l1.go = "wife_7";
@@ -307,7 +307,7 @@ void ProcessDialogEvent()
 			LAi_CharacterDisableDialog(npchar);
 			AddQuestRecord("FMQ_Tortuga", "11");
 			sld = &Locations[FindLocation("Tortuga_townhallRoom")];
-			sld.private2.key = "kaleuche_key"; // допуск к сундуку
+			sld.private2.key = "kaleuche_key"; 
 			pchar.questTemp.FMQT = "chest";
 		break;
 		
@@ -479,7 +479,7 @@ void ProcessDialogEvent()
 		case "pirate_duel":
 			DialogExit();
 			LAi_SetSitType(npchar);
-			// ключ квестовый от Калеуче - вернуть назад
+			
 			GiveItem2Character(npchar, "kaleuche_key");
 			ChangeItemDescribe("kaleuche_key", "itmdescr_kaleuche_key_FMQT");
 			i = makeint(MOD_SKILL_ENEMY_RATE/4);
@@ -538,7 +538,7 @@ void ProcessDialogEvent()
 		
 		case "pirate_8":
 			RemoveItems(pchar, "gold_dublon", 50);
-			//Log_Info("Вы отдали 50 дублонов");
+			
 			PlaySound("interface\important_item.wav");
 			dialog.text = "Good. Use your brains and you might get out of this alive and with profit. Take the key and hear an advice. Free of charge. The Levasseur's girl is dumb as a fish yet she believes herself to be cunning. Don't trust her. Keep you balls under control and watch your pockets. She is not much of an opponent, just be careful and avoid bringing her husband into this\nOne last thing - there is a chest in her bower where she keeps her trinkets, easy to lock pick. She will bring her cut there. You heard me. Be safe at sea brother.";
 			link.l1 = "See you pal...";
@@ -561,7 +561,7 @@ void ProcessDialogEvent()
 			pchar.quest.FMQT_late3.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
 			pchar.quest.FMQT_late3.function = "FMQT_KeyTime";
 			AddQuestRecord("FMQ_Tortuga", "10");
-			// ключ квестовый от Калеуче - вернуть назад
+			
 			GiveItem2Character(pchar, "kaleuche_key");
 			ChangeItemDescribe("kaleuche_key", "itmdescr_kaleuche_key_FMQT");
 		break;
@@ -639,3 +639,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

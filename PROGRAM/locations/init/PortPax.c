@@ -2,9 +2,9 @@
 int LocationInitPortPax(int n)
 {
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ГОРОД
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortPax_town";
 	locations[n].id.label = "Street";
 	locations[n].worldmap = "PortPax";
@@ -18,14 +18,14 @@ int LocationInitPortPax(int n)
 	locations[n].citizens = true;
 	locations[n].soldiers = true;
 	locations[n].carrier = true;
-	//==> флаг генерации квестодателя по розыску кэпов, int значение - шанс что сам заговорит(1-10)
+	
 	locations[n].questSeekCap = 5; 
-	//Sound
+	
 	locations[n].type = "town";
 	LAi_LocationFantomsGen(&locations[n], true);
-	locations[n].houseEnc = true; //для энкаунтеров в домах
-	//Models
-	//Always
+	locations[n].houseEnc = true; 
+	
+	
 	locations[n].models.always.town = "PortPax";
 	locations[n].models.always.town.sea_reflection = 1;
 	locations[n].models.always.L1 = "PortPax_signsA";
@@ -35,7 +35,7 @@ int LocationInitPortPax(int n)
 	
 	locations[n].models.always.plan = "plan1";
 	locations[n].models.always.plan.level = 9;
-	//Fontain
+	
 	locations[n].models.always.Waterfall1 = "fontain1";
 	locations[n].models.always.Waterfall1.uvslide.v0 = 0.5;
     locations[n].models.always.Waterfall1.uvslide.v1 = 0.0;
@@ -48,7 +48,7 @@ int LocationInitPortPax(int n)
 	locations[n].models.always.Waterfall2.tech = "LocationWaterFall";
 	locations[n].models.always.Waterfall2.level = 49;
 
-	//WindMill Fan
+	
 	locations[n].models.always.MillFan = "MillFan";
 	Locations[n].models.always.MillFan.locator.group = "WindMill";
 	Locations[n].models.always.MillFan.locator.name ="Fan";	
@@ -61,19 +61,19 @@ int LocationInitPortPax(int n)
     locations[n].models.always.L2.tech = "DLightModel";
     locations[n].models.always.L3.tech = "DLightModel";
 
-	//Day
+	
 	locations[n].models.day.fonar = "PortPax_fd";
 	locations[n].models.day.charactersPatch = "PortPax_patch_day";
 	locations[n].models.day.rinok = "PortPax_rinok";
-	//Night
+	
 	locations[n].models.night.fonar = "PortPax_fn";
 	locations[n].models.night.charactersPatch = "PortPax_patch_night";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 
-    // --> Типовые городские локации, четкаљ фиксациљ на 10 номеров.
+    
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Hispaniola2";
 	locations[n].reload.l1.emerge = "reload_1";
@@ -113,7 +113,7 @@ int LocationInitPortPax(int n)
 	locations[n].reload.l7.emerge = "reload1";
 	locations[n].reload.l7.autoreload = "0";
 	locations[n].reload.l7.label = "Church";
-	//locations[n].reload.l7.close_for_night = 1;
+	
 
 	locations[n].reload.l8.name = "reload8_back";
 	locations[n].reload.l8.go = "PortPax_Bank";
@@ -141,9 +141,9 @@ int LocationInitPortPax(int n)
 	locations[n].reload.jail.autoreload = "0";
 	locations[n].reload.jail.label = "Prison";
 
-    // --> Квестовые локации.
+    
 
-    // --> Комоны, загрушки. Номера с начинаютсљ с 20.
+    
 	locations[n].reload.l20.name = "houseSp3";
 	locations[n].reload.l20.go = "CommonDoubleflourHouse_1";
 	locations[n].reload.l20.emerge = "reload1";
@@ -247,23 +247,23 @@ int LocationInitPortPax(int n)
 	locations[n].reload.l36.label = "House";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ТАВЕРНА
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortPax_tavern";
 	locations[n].id.label = "Tavern";
 	locations[n].filespath.models = "locations\inside\tavern01\";
 	locations[n].image = "loading\inside\tavern.tga";
 	locations[n].habitues = 1;
-	//Town sack
+	
 	locations[n].townsack = "PortPax";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "tavern";
 	locations[n].fastreload = "PortPax";
 	locations[n].islandId = "Hispaniola";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.tavern = "Tavern01";
 	locations[n].models.always.tavern.level = 65538;
 	locations[n].models.always.locators = "Tavern01_locators";
@@ -272,14 +272,14 @@ int LocationInitPortPax(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.window.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "tavern01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "tavern01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortPax_town";
 	locations[n].reload.l1.emerge = "reload4";
@@ -291,26 +291,26 @@ int LocationInitPortPax(int n)
 	locations[n].reload.l2.emerge = "reload1";
 	locations[n].reload.l2.autoreload = "0";
 	locations[n].reload.l2.label = "Tavern upstairs";
-	locations[n].reload.l2.disable = 1; // закроем, но свљзку сделаем длљ квестовых нужд.
+	locations[n].reload.l2.disable = 1; 
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// КОМНАТА В ТАВЕРНЕ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortPax_tavern_upstairs";
 	locations[n].id.label = "Tavern upstairs";
 	locations[n].filespath.models = "locations\inside\Tavern_room";
 	locations[n].image = "loading\inside\tavern.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortPax";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "PortPax";
  	locations[n].islandId = "Hispaniola";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Tavern_room_locators";
 	locations[n].models.always.tavern = "Tavern_room";
 	locations[n].models.always.tavern.level = 65538;
@@ -320,14 +320,14 @@ int LocationInitPortPax(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Tavern_room_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Tavern_room_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortPax_tavern";
 	locations[n].reload.l1.emerge = "reload2";
@@ -336,22 +336,22 @@ int LocationInitPortPax(int n)
 	locations[n].locators_radius.reload.reload1 = 0.8;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// МАГАЗИН
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "PortPax_store";
 	locations[n].id.label = "Store";
 	locations[n].filespath.models = "locations\inside\Store03\";
 	locations[n].image = "loading\inside\shop.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortPax";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shop";
 	locations[n].fastreload = "PortPax";
 	locations[n].islandId = "Hispaniola";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Store03_locators";
 	locations[n].models.always.store = "Store03";
 	locations[n].models.always.store.level = 65538;
@@ -360,22 +360,22 @@ int LocationInitPortPax(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Store03_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Store03_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//locations[n].models.back = "back\redms_";
-	//Reload map
+	
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortPax_town";
 	locations[n].reload.l1.emerge = "reload6";
 	locations[n].reload.l1.autoreload = "0";
 	locations[n].reload.l1.label = "Street";
 	locations[n].locators_radius.camdetector.camera1 = 5;
-    ////////////////////////==> комната в магазине
+    
 	locations[n].reload.l2.name = "reload2";
 	locations[n].reload.l2.go = "CommonPackhouse_1";
 	locations[n].reload.l2.emerge = "reload1";
@@ -384,22 +384,22 @@ int LocationInitPortPax(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// РОСТОВЩИК
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "PortPax_Bank";
 	locations[n].id.label = "Usurer House";
 	locations[n].filespath.models = "locations\inside\Bank01\";
 	locations[n].image = "loading\inside\bank.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortPax";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shop";
 	locations[n].fastreload = "PortPax";
  	locations[n].islandId = "Hispaniola";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Bank01_locators";
 	locations[n].models.always.store = "Bank01";
 	locations[n].models.always.store.level = 65538;
@@ -408,14 +408,14 @@ int LocationInitPortPax(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Bank01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Bank01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortPax_town";
 	locations[n].reload.l1.emerge = "reload8";
@@ -430,22 +430,22 @@ int LocationInitPortPax(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ВЕРФЬ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "PortPax_Shipyard";
 	locations[n].id.label = "Shipyard";
 	locations[n].filespath.models = "locations\inside\Shipyard01\";
 	locations[n].image = "loading\inside\shipyard.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortPax";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shipyard";
 	locations[n].fastreload = "PortPax";
 	locations[n].islandId = "Hispaniola";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Shipyard01_locators";
 	locations[n].models.always.shipyard = "Shipyard01";
 	locations[n].models.always.shipyard.level = 65538;
@@ -454,14 +454,14 @@ int LocationInitPortPax(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Shipyard01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Shipyard01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortPax_town";
 	locations[n].reload.l1.emerge = "reload5";
@@ -476,25 +476,25 @@ int LocationInitPortPax(int n)
 	locations[n].locators_radius.item.item1 = 1.0;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// РЕЗИДЕНЦИЯ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "PortPax_townhall";
 	locations[n].id.label = "Townhall";
 	locations[n].filespath.models = "locations\inside\Residence04";
 	locations[n].image = "loading\inside\residence.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortPax";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "residence";
 	locations[n].fastreload = "PortPax";
  	locations[n].islandId = "Hispaniola";
- 	// стража
+ 	
 	locations[n].soldiers = true;
 	LAi_LocationFantomsGen(&locations[n], true);
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Residence04_locators";
 	locations[n].models.always.l1 = "Residence04";
 	locations[n].models.always.l1.level = 65538;
@@ -503,14 +503,14 @@ int LocationInitPortPax(int n)
 	locations[n].models.always.window.level = 65539;	
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Residence04_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Residence04_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortPax_town";
 	locations[n].reload.l1.emerge = "reload3";
@@ -518,22 +518,22 @@ int LocationInitPortPax(int n)
 	locations[n].reload.l1.label = "Street";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ЦЕРКОВЬ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortPax_church";
 	locations[n].id.label = "Church";
 	locations[n].filespath.models = "locations\inside\Church01";
 	locations[n].image = "loading\inside\church.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortPax";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "church";
 	locations[n].fastreload = "PortPax";
 	locations[n].islandId = "Hispaniola";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Church01_locators";
 	locations[n].models.always.tavern = "Church01";
 	locations[n].models.always.tavern.level = 65538;
@@ -542,14 +542,14 @@ int LocationInitPortPax(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Church01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Church01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortPax_town";
 	locations[n].reload.l1.emerge = "reload7";
@@ -558,21 +558,21 @@ int LocationInitPortPax(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ПОРТОВЫЙ ОФИС
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "PortPax_PortOffice";
 	locations[n].id.label = "PortOffice";
 	locations[n].image = "loading\inside\portoffice.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortPax";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "PortPax";
  	locations[n].islandId = "Hispaniola";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\PortOffice";
 	locations[n].models.always.housePortOffice = "PortOffice";
 	locations[n].models.always.housePortOffice.level = 65538;
@@ -584,14 +584,14 @@ int LocationInitPortPax(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "PortOffice_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "PortOffice_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "PortPax_town";
 	locations[n].reload.l1.emerge = "reload10";
@@ -600,7 +600,7 @@ int LocationInitPortPax(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 	
-	////////////////////// prison ////////////////////////////
+	
 	Locations[n].id = "PortPax_prison";
 	locations[n].id.label = "Prison";
 	Locations[n].image = "loading\inside\prison.tga";
@@ -608,26 +608,26 @@ int LocationInitPortPax(int n)
     locations[n].parent_colony = "PortPax";
  	locations[n].fastreload = "PortPax";
 	locations[n].islandId = "Hispaniola";
-	//Sound
+	
 	locations[n].type = "jail";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\prison1";
 	locations[n].models.always.prison1 = "prison1";
 	locations[n].models.always.lamps = "prison1_lamps";
 	locations[n].models.always.locators = "prison1_locators";	
 	locations[n].models.always.chest = "chest1";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "prison1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "prison1_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-    //Reload map
+    
 	Locations[n].reload.l1.name = "reload1";
 	Locations[n].reload.l1.go = "PortPax_town";
 	Locations[n].reload.l1.emerge = "reload_jail";
@@ -638,20 +638,20 @@ int LocationInitPortPax(int n)
 	n = n + 1;
 
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Выход из города
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
     locations[n].id = "PortPax_ExitTown";
 	locations[n].id.label = "ExitTown";
 	locations[n].image = "loading\Gate" + rand(1) + ".tga";
-	//Town sack
+	
 	locations[n].townsack = "PortPax";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Hispaniola";
 	locations[n].islandIdAreal = "Hispaniola2";
-    //Models
-	//Always
+    
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\TownExitT";
 	Locations[n].models.always.townExit = "townExitT";
 	Locations[n].models.always.townWalls = "townExitT_stucco";
@@ -670,16 +670,16 @@ int LocationInitPortPax(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "townExitT_patch";
 	locations[n].models.day.fonars = "townExitT_fd";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "townExitT_patch";
 	locations[n].models.night.fonars = "townExitT_fn";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload3";
 	locations[n].reload.l1.go = "PortPax_town";
 	locations[n].reload.l1.emerge = "gate_back";
@@ -701,20 +701,20 @@ int LocationInitPortPax(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Маяк Порт-о-Принса
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Mayak7";
 	locations[n].id.label = "Mayak7";
 	locations[n].worldmap = "Mayak7";
 	locations[n].image = "loading\outside\lighthouse.tga";
-	//Sound
+	
 	locations[n].type = "mayak";
 	locations[n].islandId = "Hispaniola";
 	locations[n].islandIdAreal = "Hispaniola2";
 	locations[n].questflower = 1;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Lighthouse";
 	Locations[n].models.always.lighthouse = "lighthouse";
 	locations[n].models.always.lighthouse.sea_reflection = 1;
@@ -737,7 +737,7 @@ int LocationInitPortPax(int n)
 	Locations[n].models.always.l2 = "plan2";
 	Locations[n].models.always.l2.level = 8;
 	Locations[n].models.always.l2.tech = "LocationModelBlend";		
-	//Day
+	
 	locations[n].models.day.winday = "lighthouse_winday";
 	locations[n].models.day.fonar = "lighthouse_fd";
 	locations[n].models.day.charactersPatch = "lighthouse_patch";
@@ -750,7 +750,7 @@ int LocationInitPortPax(int n)
 	locations[n].models.day.glassonday = "lighthouse_glassonday";
 	Locations[n].models.day.glassonday.tech = "LocationWindows";
 	locations[n].models.day.glassonday.level = 66532;	
-	//Night
+	
 	locations[n].models.night.volumeLight= "lighthouse_volumeLight";
 	locations[n].models.night.volumeLight.tech = "LighthouseLight";
 	locations[n].models.night.volumeLight.level = 66529;	
@@ -771,10 +771,10 @@ int LocationInitPortPax(int n)
 	locations[n].models.night.glassonnight.level = 66532;
 	
 	locations[n].models.night.fonaronnight = "lighthouse_fonaronnight";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 
 	locations[n].reload.l2.name = "boat";
 	locations[n].reload.l2.go = "Hispaniola2";
@@ -789,20 +789,20 @@ int LocationInitPortPax(int n)
 	locations[n].locators_radius.reload.reload2 = 1.0;
 	n = n + 1;
 	
-	////////////////////////////////////////////////////////////////////////////////
-	//////////комната на маяке
-	////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	
 	locations[n].id = "Mayak7_Lighthouseroom";
 	locations[n].id.label = "House";
 	locations[n].image = "loading\inside\mediumhouse10.tga";
-	//Town sack
+	
 	locations[n].townsack = "Portpax";
 	locations[n].islandId = "Hispaniola2";
-	//Sound
+	
 	locations[n].type = "house";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\mediumhouse09";
 	locations[n].models.always.house = "mediumhouse09";
 	locations[n].models.always.house.level = 65538;
@@ -815,15 +815,15 @@ int LocationInitPortPax(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	Locations[n].models.day.mediumhouse09rand= "mediumhouse09_rand";
 	locations[n].models.day.charactersPatch = "mediumhouse09_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "mediumhouse09_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Mayak7";
 	locations[n].reload.l1.emerge = "reload2";
@@ -831,19 +831,19 @@ int LocationInitPortPax(int n)
 	locations[n].reload.l1.label = "Mayak7";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// бухта Гонаив
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Shore34";
 	locations[n].id.label = "Shore34";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "Shore34";
-	//Sound
+	
 	locations[n].type = "seashore";
 	locations[n].islandId = "Hispaniola";
 	locations[n].islandIdAreal = "Hispaniola2";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore07";
 	Locations[n].models.always.shore07 = "shore07";
 	locations[n].models.always.shore07.sea_reflection = 1;
@@ -862,14 +862,14 @@ int LocationInitPortPax(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore07_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore07_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Hispaniola_Jungle_06";
 	locations[n].reload.l1.emerge = "reload2";
@@ -885,18 +885,18 @@ int LocationInitPortPax(int n)
     locations[n].locators_radius.reload.boat = 9.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Hispaniola_Jungle_06";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Hispaniola";
 	locations[n].islandIdAreal = "Hispaniola2";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle4";
 	Locations[n].models.always.jungle = "jungle4";	
 	Locations[n].models.always.locators = "jungle4_locators";		
@@ -911,14 +911,14 @@ int LocationInitPortPax(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle4_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle4_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortPax_ExitTown";
 	locations[n].reload.l1.emerge = "reload1";
@@ -943,3 +943,4 @@ int LocationInitPortPax(int n)
 
 	return n;
 }
+

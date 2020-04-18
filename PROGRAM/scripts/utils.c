@@ -1,7 +1,7 @@
 #include "scripts\colony.c"
 #include "scripts\food.c"
 #include "scripts\time_events.c"
-#include "scripts\Rumour_Init.c" // homo 23/06/06
+#include "scripts\Rumour_Init.c" 
 #include "scripts\islandships.c"
 #include "scripts\officers.c"
 #include "scripts\companions.c"
@@ -11,16 +11,16 @@
 #include "scripts\tavern.c"
 #include "scripts\idioms.c"
 #include "scripts\smuggling.c"
-#include "scripts\PsHero.c" // navy
-#include "scripts\duel.c" // navy
-#include "scripts\MerchantOnMap.c" // homo 29/07/06
-#include "scripts\Siege.c" // homo 09/09/06 ï¿½ï¿½ï¿½ï¿½ï¿½
-#include "scripts\Treasure.c"  // boal 02.09.06 ï¿½ï¿½ï¿½ï¿½ï¿½
-#include "scripts\Other_Quests.c" // Warship 09.05.08 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-#include "scripts\GenQuests.c" // Warship 16.05.08 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-#include "scripts\CompanionTravel.c" // Warship 17.07.08 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-#include "scripts\GameModeCondition.c" // Warship. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-#include "scripts\GenQuests_common.c" // Ugeen 12.01.10 ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+#include "scripts\PsHero.c" 
+#include "scripts\duel.c" 
+#include "scripts\MerchantOnMap.c" 
+#include "scripts\Siege.c" 
+#include "scripts\Treasure.c"  
+#include "scripts\Other_Quests.c" 
+#include "scripts\GenQuests.c" 
+#include "scripts\CompanionTravel.c" 
+#include "scripts\GameModeCondition.c" 
+#include "scripts\GenQuests_common.c" 
 
 #define MAN 			0
 #define WOMAN 			1
@@ -86,7 +86,7 @@ void SetNationRelations()
     SetNationRelationBoth(HOLLAND, ENGLAND, RELATION_ENEMY);
     SetNationRelationBoth(HOLLAND, FRANCE, RELATION_FRIEND);
     
-	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+	
 	pchar = GetMainCharacter();
 	SetNationRelation2MainCharacter(ENGLAND, GetNationRelation(sti(pchar.nation), ENGLAND));
 	SetNationRelation2MainCharacter(FRANCE,  GetNationRelation(sti(pchar.nation), FRANCE));
@@ -95,7 +95,7 @@ void SetNationRelations()
     SetNationRelation2MainCharacter(HOLLAND, GetNationRelation(sti(pchar.nation), HOLLAND));
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 void ChangeNationRelationFromRelationAgent(aref chr)
 {
 	int iNation = sti(chr.quest.relation);
@@ -115,7 +115,7 @@ void ChangeNationRelationFromRelationAgentComplete(string sQuest)
     
 	SetNationRelation2MainCharacter(iNation, RELATION_NEUTRAL);
 	ChangeCharacterNationReputation(pchar, iNation, sti(Pchar.GenQuest.(sNation)));
-	sti(Pchar.GenQuest.(sNation)) = 0; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	sti(Pchar.GenQuest.(sNation)) = 0; 
 	sNation = "RelationAgent" + GetNationNameByType(iNation);
     Pchar.GenQuest.(sNation) = false;
     
@@ -149,10 +149,10 @@ void ChangeNationRelationFromFadeyComplete(string sQuest)
 	if (CheckAttribute(sld, "quest.relation")) DeleteAttribute(sld, "quest.relation");
 	if (CheckAttribute(pchar, "GenQuest.FadeyNation")) DeleteAttribute(pchar, "GenQuest.FadeyNation");
 	
-	Log_Info("Fadey has done his job."); // patch-10
+	Log_Info("Fadey has done his job."); 
 }
 
-void ChangeNationRelationFromBenuaComplete(string sQuest) // 141012
+void ChangeNationRelationFromBenuaComplete(string sQuest) 
 {
 	int iNation = sti(pchar.GenQuest.BenuaNation);
 	int rate = sti(pchar.GenQuest.BenuaNation.Rate);
@@ -174,7 +174,7 @@ void ChangeNationRelationFromBenuaComplete(string sQuest) // 141012
 	if (CheckAttribute(sld, "quest.relation")) DeleteAttribute(sld, "quest.relation");
 	if (CheckAttribute(pchar, "GenQuest.BenuaNation")) DeleteAttribute(pchar, "GenQuest.BenuaNation");
 	
-	Log_Info("Abbot Benoit has done his job."); // patch-10
+	Log_Info("Abbot Benoit has done his job."); 
 }
 
 int CalculateRelationSum(int iNation)
@@ -183,12 +183,12 @@ int CalculateRelationSum(int iNation)
 	Pchar.GenQuest.(sNation) = abs(ChangeCharacterNationReputation(pchar, iNation, 0))
 	int iSumm = sti(Pchar.GenQuest.(sNation)) * 1500 +  makeint(stf(Pchar.rank)/stf(Pchar.reputation.nobility)*100000);
 
-	//iSumm = iSumm * (1.0 + (0.1 * MOD_SKILL_ENEMY_RATE));
+	
 	
 	return iSumm;
 }
 
-int CalculateRelationLoyerSum(int iNation) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+int CalculateRelationLoyerSum(int iNation) 
 {
 	string sNation = "RelationAgentRate" + GetNationNameByType(iNation);
 	Pchar.GenQuest.(sNation) = abs(ChangeCharacterNationReputation(pchar, iNation, 0));
@@ -196,7 +196,7 @@ int CalculateRelationLoyerSum(int iNation) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï
 	
 	return iSumm;
 }
-// to_do del ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 bool CreateParticleSystemOnLocator(string _location_id, string _locatorName, string _particleName)
 {
 	aref locator;
@@ -212,7 +212,7 @@ void GenerateMaps(aref ch, int iProbability1, int iProbability2)
 	int rank = sti(PChar.rank);
 	
 	if(rand(4) == 1) AddItems(ch, "map_bad", 1); 
-	if(rand(6) == 1 && rank >= 10) AddItems(ch, "map_normal", 1); // patch-5
+	if(rand(6) == 1 && rank >= 10) AddItems(ch, "map_normal", 1); 
 	if(rand(iProbability1) == 1 && !CheckMainHeroMap("map_jam")) AddItems(ch, "map_jam", 1);
 	if(rand(iProbability2) == 1 && !CheckMainHeroMap("map_cayman")) AddItems(ch, "map_cayman", 1);
 	if(rand(iProbability1) == 1 && !CheckMainHeroMap("map_barbados")) AddItems(ch, "map_barbados", 1);
@@ -244,20 +244,20 @@ void GiveItemToTrader(aref ch)
 {
 	int 		i, j, irand;
 	string 		itemID, merType;
-	int 		rank = sti(PChar.rank); // makeint(pchar.rank) - ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½... ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½
-	ref 		itm; 					// ref itm = ItemsFromID("map_LSC"); - ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½... ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½?
+	int 		rank = sti(PChar.rank); 
+	ref 		itm; 					
 	
 	DeleteAttribute(ch, "items");
 
-	// boal ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?  ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  -->
+	
 	if(bBettaTestMode)
 	{
     	for(i = 0; i < ITEMS_QUANTITY; i++)
     	{
 			itemID = Items[i].ID;
 			irand = rand(2) + 1;			
-			// Warship ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-			if(IsGenerableItem(itemID)) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
+			if(IsGenerableItem(itemID)) 
 			{
 				GenerateAndAddItems(ch, itemID, irand);
 				continue;
@@ -268,12 +268,12 @@ void GiveItemToTrader(aref ch)
 	}
 	
 	if(CheckAttribute(ch,"Merchant.type"))  merType = ch.Merchant.type;
-	else 									merType = "veteran"; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	// 170912 Jason ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-8
+	else 									merType = "veteran"; 
+	
 	
 	switch (merType)
 	{
-		case "potion" 		: // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ + ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		case "potion" 		: 
 			AddItems(ch, "mineral17", 	Rand(40) + 2);	
 			AddItems(ch, "potion1", 	Rand(80) + 1);
 			if (ch.id == "Merdok")
@@ -300,7 +300,7 @@ void GiveItemToTrader(aref ch)
 			AddItems(ch, "cannabis5", Rand(100) + 1);
 			AddItems(ch, "cannabis6", Rand(100) + 1);
 
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			AddItems(ch, "recipe_potion2", 1);
 			AddItems(ch, "recipe_potion3", 1);
 			AddItems(ch, "recipe_berserker_potion", 1);
@@ -319,7 +319,7 @@ void GiveItemToTrader(aref ch)
 			AddItems(ch, "recipe_totem_13", 1);
 		break;
 		
-		case "veteran" 		: // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		case "veteran" 		: 
 			AddItems(ch, "mineral1", 	Rand(3) + 2);	
 			AddItems(ch, "mineral2", 	Rand(1) + 1);	
 			
@@ -355,24 +355,24 @@ void GiveItemToTrader(aref ch)
 			if(irand == 7) AddItems(ch, "mineral33", 	Rand(1) + 1);
 			if(irand == 9) AddItems(ch, "mineral35", 	1);
 			
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			irand = drand(25); 
 			if(irand == 1) AddItems(ch, "obereg_5", 1);
 			if(irand == 15) AddItems(ch, "obereg_4", 1);
 			if(irand == 25) AddItems(ch, "obereg_3", 1);
 		break;
 		
-		case "armourer": // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		case "armourer": 
 			AddItems(ch, "bullet", 		Rand(200) + 10);	
 			AddItems(ch, "grapeshot", 	Rand(50) + 5);    
-			AddItems(ch, "gunpowder", 	Rand(100) + 5); // Warship. ï¿½ï¿½ï¿½ï¿½ï¿½
-			// ï¿½ï¿½ï¿½ï¿½ï¿½
+			AddItems(ch, "gunpowder", 	Rand(100) + 5); 
+			
 			irand = drand(10);
 			if(irand == 1) AddItems(ch, "spyglass1", 1);
 			irand = drand(15);
-			if(irand == 1 && rank >=6) AddItems(ch, "spyglass2", 1); // fix 160912
+			if(irand == 1 && rank >=6) AddItems(ch, "spyglass2", 1); 
 			irand = drand(4);
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			if(irand == 1)
 			{
 				AddItems(ch, "pistol1", Rand(2) + 1);
@@ -412,7 +412,7 @@ void GiveItemToTrader(aref ch)
 			} 
 			
 			
-			// ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			irand = drand(3);
 			if(irand == 1) GenerateAndAddItems(ch, "slave_01", Rand(2) + 1); 
 			if(irand == 2) GenerateAndAddItems(ch, "slave_02", Rand(2) + 1); 
@@ -428,7 +428,7 @@ void GiveItemToTrader(aref ch)
 				if(irand == 4) GenerateAndAddItems(ch, "blade_08", Rand(1) + 1);
 				if(irand == 5) GenerateAndAddItems(ch, "blade_09", Rand(1) + 1);
 			}
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			irand = drand(10);
 			if (irand == 1 && rank >= 4) 	AddItems(ch, "cirass1", 1);
 			if (irand == 5 && rank >= 6) 	AddItems(ch, "cirass5", 1);
@@ -445,7 +445,7 @@ void GiveItemToTrader(aref ch)
 				if(irand == 3) GenerateAndAddItems(ch, "blade_12", Rand(1) + 1);
 				if(irand == 5) GenerateAndAddItems(ch, "blade_14", Rand(1) + 1);
 			}
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			if(rank >= 10)
 			{
 				irand = drand(12);
@@ -455,17 +455,17 @@ void GiveItemToTrader(aref ch)
 				if(irand == 10) GenerateAndAddItems(ch, "blade_10", 1);
 				if(irand == 12) GenerateAndAddItems(ch, "blade_13", 1);
 			}
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			irand = drand(16);
 			if(irand == 5 && rank >=5) AddItems(ch, "compass1", 1);
 			if(irand == 1 && rank >=5) AddItems(ch, "sand_clock", 1);
 			if(irand == 10 && rank >=7) AddItems(ch, "astrolab", 1);
 			if(irand == 15 && rank >=7) AddItems(ch, "clock1", 10);
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			AddItems(ch, "recipe_powder_pellet", 1);
 			AddItems(ch, "recipe_grenade", 1);
 			AddItems(ch, "recipe_harpoon", 1);
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			irand = drand(30); 
 			if(irand == 5) AddItems(ch, "obereg_1", 1);
 			if(irand == 15) AddItems(ch, "obereg_2", 1);
@@ -476,9 +476,9 @@ void GiveItemToTrader(aref ch)
 			if(irand == 6) AddItems(ch, "Mineral30", drand(5)+1);
 		break;
 
-		case "monk" 		: //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
-			AddItems(ch, "Mineral3", drand(5)+1); // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		case "monk" 		: 
+			AddItems(ch, "Mineral3", drand(5)+1); 
+			
 			irand = drand(10);
 			if(irand == 1) AddItems(ch, "Mineral5", 1);
 			irand = drand(5);
@@ -500,7 +500,7 @@ void GiveItemToTrader(aref ch)
 			if(irand == 1) AddItems(ch, "jewelry50", 1);
 			if(irand == 2) AddItems(ch, "jewelry49", 1);
 			if(irand == 3) AddItems(ch, "jewelry47", 1);
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			AddItems(ch, "amulet_2", 1);
 			AddItems(ch, "amulet_3", 1);
 			AddItems(ch, "amulet_6", 1);
@@ -514,13 +514,13 @@ void GiveItemToTrader(aref ch)
 			if(irand == 10) AddItems(ch, "obereg_10", 1);
 			irand = drand(40-GetCharacterSPECIALSimple(PChar, SPECIAL_L)*2);
 			if(irand == 1) AddItems(ch, "obereg_7", 1);
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			AddItems(ch, "recipe_potion2", 1);
 			AddItems(ch, "recipe_potion3", 1);
-			//GenerateMaps(ch, 35, 80);
+			
 		break;	
 		
-		case "indian" 		: // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		case "indian" 		: 
 			AddItems(ch, "mineral4", 	Rand(20) + 1);
 			AddItems(ch, "mineral11", 	Rand(40) + 7);
 			AddItems(ch, "mineral12", 	Rand(30) + 7);		
@@ -554,11 +554,11 @@ void GiveItemToTrader(aref ch)
 			if(irand == 1) AddItems(ch, "indian_11", 1);
 		break;
 		
-		case "jeweller" 	:// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		case "jeweller" 	:
 		
-			AddItems(ch, "gold_dublon", Rand(USURER_MAX_DUBLONS - USURER_MIN_DUBLONS) + USURER_MIN_DUBLONS); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			AddItems(ch, "gold_dublon", Rand(USURER_MAX_DUBLONS - USURER_MIN_DUBLONS) + USURER_MIN_DUBLONS); 
 			irand = rand(2);
-			if(irand == 1) AddItems(ch, "chest_open", Rand(30) + 1); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			if(irand == 1) AddItems(ch, "chest_open", Rand(30) + 1); 
 			
 			AddItems(ch, "jewelry1", Rand(4) + 1);
 			AddItems(ch, "jewelry2", Rand(4) + 1);
@@ -567,7 +567,7 @@ void GiveItemToTrader(aref ch)
 			AddItems(ch, "jewelry5", Rand(4) + 1);
 			AddItems(ch, "jewelry6", Rand(4) + 1);
 			
-			// Used to be uncertain. Fuck Blackmark :)
+			
 			AddItems(ch, "jewelry7", 10);
 			AddItems(ch, "jewelry8", 10);
 			AddItems(ch, "jewelry9", 10);
@@ -587,7 +587,7 @@ void GiveItemToTrader(aref ch)
 			AddItems(ch, "jewelry23", Rand(40) + 1);
 		break;
 		
-		case "lightman": //Jason - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		case "lightman": 
 			AddItems(ch, "jewelry52", 	dRand(80)+7);	
 			AddItems(ch, "jewelry53", 	dRand(150)+15);
 			AddItems(ch, "jewelry8", 	dRand(30));
@@ -632,14 +632,14 @@ void GiveItemToTrader(aref ch)
 			if(irand == 9 && rank > 6) GenerateAndAddItems(ch, "blade_06", 1);
 			if(irand == 49 && rank > 6) GenerateAndAddItems(ch, "blade_10", 1);
 			if(irand == 99 && rank > 6) GenerateAndAddItems(ch, "blade_15", 1);
-			irand = drand(250); // 170912
+			irand = drand(250); 
 			if(irand == 6 && rank > 15) GenerateAndAddItems(ch, "blade_17", 1);
 			if(irand == 96 && rank > 15) GenerateAndAddItems(ch, "blade_19", 1);
 			if(irand == 226 && rank > 15) GenerateAndAddItems(ch, "blade_21", 1);
 		break;
 		
-		case "minentown": //Jason - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		// Who is this Jason... He seems to be the only decent dev here IMO
+		case "minentown": 
+		
 			AddItems(ch, "jewelry5", 	dRand(30)+20);	
 			AddItems(ch, "jewelry6", 	dRand(45)+30);
 			AddItems(ch, "bullet", 		Rand(20) + 20);	
@@ -670,53 +670,53 @@ void GiveItemToTrader(aref ch)
 			if(irand == 10) AddItems(ch, "jewelry9", 1);
 		break;
 		
-		case "LSC_trader": //Jason - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ LSC. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ jewelry, ï¿½ï¿½ ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
-			// And WTF is this LSC???
-			// Okay, Lost Ship City :o
-			// ï¿½ï¿½ï¿½ï¿½ï¿½:
+		case "LSC_trader": 
+			
+			
+			
 			AddItems(ch, "potion1", 	dRand(5)+1);	
 			AddItems(ch, "potion2", 	dRand(2));
 			AddItems(ch, "potion3", 	dRand(2));
 			AddItems(ch, "potion4", 	dRand(1));	
 			AddItems(ch, "potionrum", 	dRand(1));    
 			AddItems(ch, "potionwine", 	dRand(1));
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:
+			
 			AddItems(ch, "bullet", 		dRand(12)+5);
 			AddItems(ch, "grapeshot", 	dRand(8)+5);
 			AddItems(ch, "GunPowder", 	dRand(10)+5);
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			irand = drand(6);
 			if(irand == 0) GenerateAndAddItems(ch, "blade_05", rand(1));
 			if(irand == 2) GenerateAndAddItems(ch, "blade_07", rand(1));
 			if(irand == 4) GenerateAndAddItems(ch, "blade_08", rand(1));
 			if(irand == 6) GenerateAndAddItems(ch, "blade_11", rand(1));
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			irand = drand(15);
 			if(irand == 1) GenerateAndAddItems(ch, "blade_15", rand(1));
 			if(irand == 7) GenerateAndAddItems(ch, "blade_13", rand(1));
 			if(irand == 14) GenerateAndAddItems(ch, "blade_10", rand(1));
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			irand = drand(100);
 			if(irand == 5) GenerateAndAddItems(ch, "blade_19", rand(1));
 			if(irand == 40) GenerateAndAddItems(ch, "blade_21", rand(1));
 			if(irand == 95) GenerateAndAddItems(ch, "blade_18", rand(1));
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			irand = drand(12);
 			if(irand == 1) AddItems(ch, "pistol1", rand(1));
 			if(irand == 3) AddItems(ch, "pistol3", rand(1));
 			if(irand == 6) AddItems(ch, "pistol4", rand(1));
 			if(irand == 9) AddItems(ch, "pistol6", rand(1));
 			if(irand == 12) AddItems(ch, "pistol2", rand(1));
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			irand = drand(99);
 			AddItems(ch, "mushket1", rand(1));
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			irand = drand(40);
 			if(irand == 1) AddItems(ch, "cirass1", rand(1));
 			if(irand == 6) AddItems(ch, "cirass2", rand(1));
 			if(irand == 12) AddItems(ch, "cirass5", rand(1));
 			if(irand == 18) AddItems(ch, "cirass6", rand(1));
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			irand = drand(130);
 			if(irand == 7) AddItems(ch, "indian_1", 1);
 			if(irand == 17) AddItems(ch, "indian_2", 1);
@@ -752,7 +752,7 @@ void GiveItemToTrader(aref ch)
 			if(irand == 85) AddItems(ch, "obereg_9", 1);
 			if(irand == 95) AddItems(ch, "obereg_10", 1);
 			if(irand == 105) AddItems(ch, "obereg_11", 1);
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ jewelry
+			
 			irand = drand(8);
 			if(irand == 0) AddItems(ch, "jewelry1", rand(3));
 			if(irand == 1) AddItems(ch, "jewelry2", rand(5));
@@ -770,7 +770,7 @@ void GiveItemToTrader(aref ch)
 			if(irand == 6) AddItems(ch, "jewelry53", rand(7));
 		break;
 		
-		case "LSC_indian": //Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ LSC
+		case "LSC_indian": 
 			AddItems(ch, "jewelry53", 	dRand(4)+1);	
 			AddItems(ch, "jewelry52", 	dRand(2)+1);
 			AddItems(ch, "jewelry8", 	dRand(2));
@@ -781,13 +781,13 @@ void GiveItemToTrader(aref ch)
 			if(irand == 5) AddItems(ch, "jewelry11", 1);
 		break;
 		
-		case "company": //Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
-			AddItems(ch, "sand_clock", 	1);	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-			irand = drand(2); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 33%
+		case "company": 
+			AddItems(ch, "sand_clock", 	1);	
+			irand = drand(2); 
 			if(irand == 2) AddItems(ch, "clock1", 1+(rand(1)));
-			irand = drand(3); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 25%
+			irand = drand(3); 
 			if(irand == 3) AddItems(ch, "compass1", 1);
-			irand = drand(9); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 10%
+			irand = drand(9); 
 			if(irand == 5) AddItems(ch, "astrolab", 1);
 			irand = drand(4); 
 			if(irand == 3) AddItems(ch, "spyglass1", 1);
@@ -795,10 +795,10 @@ void GiveItemToTrader(aref ch)
 			if(irand == 6) AddItems(ch, "spyglass2", 1);
 			irand = drand(100);
 			if(sti(pchar.rank) > 7) AddItems(ch, "spyglass3", 1);
-			GenerateMaps(ch, 20, 50); // patch-5
+			GenerateMaps(ch, 20, 50); 
 		break;
 		
-		case "cemeteryman": //Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		case "cemeteryman": 
 			irand = drand(1);
 			if(irand == 0) AddItems(ch, "cannabis1", 1+(rand(3)));
 			if(irand == 1) AddItems(ch, "cannabis2", 1+(rand(3)));
@@ -832,8 +832,8 @@ void GiveItemToTrader(aref ch)
 	}	
 }
 
-string PlaceCharacter(aref ch, string group, string location) //boal change
-{  // location = "random"  "random_free"  ï¿½ "random_must_be" - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  random_must_be_near - ï¿½ï¿½ï¿½ï¿½ï¿½
+string PlaceCharacter(aref ch, string group, string location) 
+{  
 	float locx;
 	float locy;
 	float locz;
@@ -841,19 +841,19 @@ string PlaceCharacter(aref ch, string group, string location) //boal change
 	bool ok;
 	
 	GetCharacterPos(GetMainCharacter(), &locx, &locy, &locz);
-	if (location == "random_free") location = "random"; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	if (location == "random_free") location = "random"; 
 	
 	if (location == "random" || location == "random_must_be")
 	{
 		homelocator = LAi_FindFreeRandomLocator(group);
-		ChangeCharacterAddressGroup(ch, pchar.location, group, homelocator);  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ ï¿½ï¿½
+		ChangeCharacterAddressGroup(ch, pchar.location, group, homelocator);  
 	}
 	else
 	{
 		homelocator = LAi_FindNearestFreeLocator(group, locx, locy, locz);
 		if (location == "random_must_be_near")
 		{
-		    ChangeCharacterAddressGroup(ch, pchar.location, group, homelocator);  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ ï¿½ï¿½
+		    ChangeCharacterAddressGroup(ch, pchar.location, group, homelocator);  
 		}
 		else
 		{
@@ -861,17 +861,17 @@ string PlaceCharacter(aref ch, string group, string location) //boal change
 		}
 	}
 
-	if (homelocator == "" && location == "random_must_be") // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½-ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	if (homelocator == "" && location == "random_must_be") 
 	{
 	    homelocator = LAi_FindFarLocator(group, locx, locy, locz);
-		ChangeCharacterAddressGroup(ch, pchar.location, group, homelocator);  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ ï¿½ï¿½
+		ChangeCharacterAddressGroup(ch, pchar.location, group, homelocator);  
 	}
-	if (homelocator == "" && location == "random_must_be_near") // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½-ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	if (homelocator == "" && location == "random_must_be_near") 
 	{
 	    homelocator = LAi_FindNearestLocator(group, locx, locy, locz);
-		ChangeCharacterAddressGroup(ch, pchar.location, group, homelocator);  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ ï¿½ï¿½
+		ChangeCharacterAddressGroup(ch, pchar.location, group, homelocator);  
 	}
-    return homelocator; // boal ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    return homelocator; 
 }
 
 void PrepareVisitCity()
@@ -897,7 +897,7 @@ void FirstVisitCity(string sQuest)
 	Colonies[FindColony(sColony)].visited = true;
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 25.09.06 ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+
 int SearchForMaxShip(aref chr, int isLock, int _tmp)
 {
 	int iType;
@@ -934,7 +934,7 @@ int FindFirstEmptyCharacter()
 	{
 		if (characters[i].id == "0")
 		{
-			if (i >= MAX_CHARACTERS) MAX_CHARACTERS = i+1; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+			if (i >= MAX_CHARACTERS) MAX_CHARACTERS = i+1; 
 			return i;
 		}
 	}		
@@ -965,7 +965,7 @@ void RemoveGeometryFromLocation(string LocationID, string ModelName)
 	ref LocationRef;
 	int n = 1;
 	string str;
-	//trace("FUNCTION RemoveGeometryFromLocation reports: Current location ID is " + LocationID + " and geometry " + ModelName + " should be removed");
+	
 	if(FindLocation(LocationID) != -1)
 	{
 		locationRef = &locations[FindLocation(LocationID)];
@@ -978,7 +978,7 @@ void RemoveGeometryFromLocation(string LocationID, string ModelName)
 	for(n = 1; n < 10; n++)
 	{
 		str = "l" + n;
-		//trace("FUNCTION RemoveGeometryFromLocation reports: Checking Geometry name for n = " + str + ". It is " + LocationRef.models.always.(str));
+		
 		if(CheckAttribute(LocationRef, "models.always." + str) && LocationRef.models.always.(str) == ModelName)
 		{
 			DeleteAttribute(LocationRef, "models.always." + str);
@@ -1029,7 +1029,7 @@ void CreateModel(int iChar, string sType, int iSex)
 
 		case "trader":
 			sBody = "trader";
-			iNumber = rand(13)+1; // 170712
+			iNumber = rand(13)+1; 
 		break;
 		
 		case "monk":
@@ -1042,7 +1042,7 @@ void CreateModel(int iChar, string sType, int iSex)
 			iNumber = rand(4) + 7;
 		break;
 				
-		case "citizen": //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		case "citizen": 
 			if(iSex == MAN)
 			{
 				sBody = "citiz";
@@ -1060,13 +1060,13 @@ void CreateModel(int iChar, string sType, int iSex)
 			iNumber = rand(3) + 1;
 		break;
 		
-		//Jason --> ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		case "marginal": //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		
+		case "marginal": 
 			sBody = "citiz";
 			iNumber = rand(9)+21;
 		break;
 		
-		case "captain": //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		case "captain": 
 			if (rand(1) == 0)
 			{
 				sBody = "citiz";
@@ -1079,7 +1079,7 @@ void CreateModel(int iChar, string sType, int iSex)
 			}
 		break;
 		
-		case "noble": //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		case "noble": 
 			if(iSex == MAN)
 			{
 				sBody = "citiz";
@@ -1092,17 +1092,17 @@ void CreateModel(int iChar, string sType, int iSex)
 			}
 		break;
 		
-		case "gipsy": //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		case "gipsy": 
 			sBody = "gipsy";
 			iNumber = rand(3)+1;
 		break;
 		
-		case "sailor": //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		case "sailor": 
 			sBody = "citiz";
 			iNumber = rand(9)+31;
 		break;
 		
-		case "indian": //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		case "indian": 
 			if(iSex == MAN)
 			{
 			sBody = "Miskito";
@@ -1115,13 +1115,13 @@ void CreateModel(int iChar, string sType, int iSex)
 			}
 		break;
 		
-		case "convict": //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		case "convict": 
 			sBody = "prizon";
 			iNumber = rand(3)+5;
 		break;
-		//<-- ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
-		case "spa_soldier": //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		
+		case "spa_soldier": 
 			if (rand(4) < 4)
 			{
 				sBody = "sold_spa";
@@ -1173,7 +1173,7 @@ void CreateModel(int iChar, string sType, int iSex)
 	CirassMaker(&characters[iChar]);
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ iNation ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  sBeginColony _checkPort - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+
 int FindNonEnemyColonyForAdventure(int iNation, string sBeginColony, bool _checkPort)
 {
 	int iArray[MAX_COLONIES];
@@ -1183,7 +1183,7 @@ int FindNonEnemyColonyForAdventure(int iNation, string sBeginColony, bool _check
 	{
 		if (colonies[i].nation != "none")
 		{
-			if (_checkPort && CheckAttribute(&Colonies[i], "HasNoFort")) continue;  // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+			if (_checkPort && CheckAttribute(&Colonies[i], "HasNoFort")) continue;  
 			
 			if (GetNationRelation(sti(Colonies[i].nation), iNation) != RELATION_ENEMY && Colonies[i].id != sBeginColony)
 			{
@@ -1218,7 +1218,7 @@ string FindAlliedColonyForNation(int iNation, bool _checkPort)
 	{
 		if (colonies[i].nation != "none" && colonies[i].id != "Panama" && colonies[i].id != "SanAndres")
 		{
-			if (_checkPort && CheckAttribute(&Colonies[i], "HasNoFort")) continue;  // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+			if (_checkPort && CheckAttribute(&Colonies[i], "HasNoFort")) continue;  
 			if (sti(Colonies[i].nation)== iNation)
 			{
 				iArray[m] = i;
@@ -1314,7 +1314,7 @@ string SelectQuestDestinationAnyNationExceptColony(string sColony)
 	return sTempColony;
 }
 
-// ugeen --> ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+
 string SelectQuestShoreLocation() 
 {
     ref CurIsland;
@@ -1372,7 +1372,7 @@ string SelectQuestShoreLocationFromSea(string CurIsland)
 	Log_QuestInfo("TargetLocation = " + TargetLocation);
 	return TargetLocation;
 } 
-// ugeen
+
 
 void EmptyAbordageCharacters()
 {
@@ -1384,14 +1384,14 @@ void EmptyAbordageCharacters()
 
 void EmptyAllFantomCharacter()
 {
-	if (bAbordageStarted) return; // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+	if (bAbordageStarted) return; 
 	int cn = -1;
 	for (int i=GlobalCharacters; i<MAX_CHARACTERS; i++)
 	{
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ boal -->
+		
 		if (LAi_IsDead(&characters[i]) && !CheckAttribute(&characters[i], "RebirthPhantom"))
 		{
-      			if(GetCompanionQuantity(&characters[i]) > 1) // ï¿½ï¿½, ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
+      			if(GetCompanionQuantity(&characters[i]) > 1) 
 				{
 					for(int k = 0; k < COMPANION_MAX; k++)
 					{
@@ -1411,23 +1411,23 @@ void EmptyAllFantomCharacter()
 		{
 			if (CheckAttribute(&characters[i], "LifeDay") &&
 			    GetNpcQuestPastDayParam(&characters[i], "LifeTimeCreate") >= sti(characters[i].LifeDay) &&
-				characters[i].location != pchar.location) // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-			{ // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
-				InitCharacter(&characters[i], i);  // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				characters[i].location != pchar.location) 
+			{ 
+				InitCharacter(&characters[i], i);  
 			}
 		}
-		// boal <--
+		
 	}
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½3
+
 int GenerateCharacter(int iNation, int isShip, string sModel, int iSex, int isLock, int CharacterType)
 {
-    int iChar = NPC_GeneratePhantomCharacter(sModel, iNation, iSex, -isLock); // -isLock) == -1 || 0
+    int iChar = NPC_GeneratePhantomCharacter(sModel, iNation, iSex, -isLock); 
 
 	if (IsShip == WITH_SHIP)
 	{
-		// to_do del
+		
 		if(CharacterType == FORT_COMMANDER)
 		{
 			characters[iChar].ship.type = GenerateShip(SHIP_FORT, isLock);
@@ -1453,7 +1453,7 @@ int GenerateCharacter(int iNation, int isShip, string sModel, int iSex, int isLo
 }
 
 int GetRandomNationForMapEncounter(string sIslandID, bool bMerchant)
-{   // boal: ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 1.0, ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+{   
 	int iNation = -1;
 	if(sIslandID != "")
 	{
@@ -1477,7 +1477,7 @@ int GetRandomNationForMapEncounter(string sIslandID, bool bMerchant)
 	float fHolland  = 1.0;
 	float fPirate   = 1.0;
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+	
 	if(iNation != -1)
 	{
 	    switch (iNation )
@@ -1541,7 +1541,7 @@ int GetRandomNationForMapEncounter(string sIslandID, bool bMerchant)
 	}
 	else
 	{
-		if (rand(2) == 1) return HOLLAND; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+		if (rand(2) == 1) return HOLLAND; 
 		
 		if(fProbablyNation >= fFrance && fProbablyNation < fSpain)
 		{
@@ -1578,7 +1578,7 @@ string CheckingTranslate(int idLngFile, string idString)
 	return retString;
 }
 
-// to_do
+
 void LaunchMoneyGraphCollect()
 {
 	string sYear = "year" + worldMap.date.year;
@@ -1650,36 +1650,36 @@ void CheckQuestForCharacter(aref chr)
 
 }
 
-////////////////////////// boal ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-// boal -->
+
+
 void InitCharacter(ref ch, int n)
 {
-    //DeleteAttribute(ch,"act");
+    
 	DeleteAttribute(ch,"");
-	//Logic data
+	
 	ch.id = "0";
 	ch.index = n;
 	ch.name 	= "none";
 	ch.lastname = "none";
 	ch.sex = "man";
-	//Model data
+	
 	ch.model = "none";
 	ch.model.entity = "NPCharacter";
 	ch.model.animation = "";
-	//Address
+	
 	ch.location = "none";
 	ch.location.group = "";
 	ch.location.locator = "";
 	ch.location.from_sea = "";
-	//Ship data
+	
 	ch.Ship.Type = SHIP_NOTUSED;
-	//Quest data
+	
 	ch.Dialog.CurrentNode = "First time";
 	ch.Dialog.TempNode = "First time";
 	ch.quest.meeting = "0";
 	ch.quest = "True";
 	ch.quest_date = 0;
-	//Misc data
+	
 	ch.nation = ENGLAND;
 	ch.skill.freeskill = 0;
 	ch.perks.freepoints = 0;
@@ -1696,23 +1696,23 @@ void InitCharacter(ref ch, int n)
 	ch.reputation.smuggler = 0;
 	ch.reputation.trader = 0;
 	ch.fame = 1;
-	// boal -->
+	
     SetRandSPECIAL(ch);
-    //InitStartParam(ch);
+    
     SetSelfSkill(ch, 1, 1, 1, 1, 1);
     SetShipSkill(ch, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 
 	ch.Skill.FreeSPECIAL  = 0;
-    ch.Health.HP        = 60.0; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    ch.Health.HP        = 60.0; 
 	ch.Health.maxHP     = 60.0;
 	ch.Health.Damg      = 0.0;
 	ch.Health.weekDamg  = 0.0;
 	ch.Health.TotalDamg = 0.0;
-	// <--
+	
 	ch.rank = 1;
 	ch.experience = 0;
 
-	ch.Fellows.Passengers.id0 = n; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	ch.Fellows.Passengers.id0 = n; 
 
 	ch.Fellows.Passengers.boatswain = "-1";
 	ch.Fellows.Passengers.navigator = "-1";
@@ -1721,20 +1721,20 @@ void InitCharacter(ref ch, int n)
 	ch.Fellows.Passengers.treasurer = "-1";
 	ch.Fellows.Passengers.carpenter = "-1";
 
-	//ch.prisoned = false;
+	
 
 	ch.money = "0";
 	ch.dublon = "0";
-	// battle hp
+	
 	ch.headModel = "";
-	//LAi_SetLoginTime(ch, 6.0, 21.98333);
-	LAi_SetLoginTime(ch, 0.0, 24.0); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	
+	LAi_SetLoginTime(ch, 0.0, 24.0); 
  	LAi_SetHP(ch, LAI_DEFAULT_HP, LAI_DEFAULT_HP_MAX);
 	
 	ch.BaseCRC = 1 + rand(5);
 	ch.SystemInfo.itemsCRC = CheckItemsCRC(ch);
 	
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	
 	ch.equip_item = "";
 	ch.equip_item.slot1 = SLOT_NOT_USED;
 	ch.equip_item.slot1.time = -1;
@@ -1743,13 +1743,13 @@ void InitCharacter(ref ch, int n)
 	ch.equip_item.slot3 = SLOT_NOT_USED;
 	ch.equip_item.slot3.time = -1;
 }
-// boal <--
-// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ID. ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+
 int NPC_FindOrCreateCharacter(string _id)
 {
 	int ci = GetCharacterIndex(_id);
 	if (ci == -1)
-    { // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+    { 
         ci = FindFirstEmptyCharacter();
         if (ci != -1)
 		{
@@ -1759,26 +1759,11 @@ int NPC_FindOrCreateCharacter(string _id)
     }
     return ci;
 }
-// _ani ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ + ï¿½3
-// _LifeDay - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ -1, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ 0, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-// _equip - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-// _type - ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-/*
-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-"slave" - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-"native" - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-"marginal" - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-"pirate" - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-"citizen" - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
-"skeleton" - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-"soldier" - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ 6-4 ï¿½ï¿½ï¿½ï¿½ï¿½
-"officer" - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½), ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 6-2 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ 1-3 ï¿½ï¿½ï¿½ï¿½ï¿½
-"hunter" - ï¿½ï¿½ï¿½, ï¿½ï¿½
-"mercenary" - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-"governor" - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1-ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-"itza" - ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
-"quest" - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-*/
+
+
+
+
+ 
 int NPC_GenerateCharacter(string _id, string _model, string _sex, string _ani, int _rank, int _nation, int _LifeDay, bool _equip, string _type)
 {
     int iChar = NPC_FindOrCreateCharacter(_id);
@@ -1813,8 +1798,8 @@ int NPC_GenerateCharacter(string _id, string _model, string _sex, string _ani, i
 	}
 	return  iChar;
 }
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
-ref GetOurSailor(string _id) // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+ref GetOurSailor(string _id) 
 {
     string  smodel;
     ref     CrOur;
@@ -1831,7 +1816,7 @@ ref GetOurSailor(string _id) // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½
 	return CrOur;
 }
 
-int NPC_GeneratePhantomCharacter(string sType, int iNation, int iSex, int _LifeDay)//, int CharacterType)
+int NPC_GeneratePhantomCharacter(string sType, int iNation, int iSex, int _LifeDay)
 {
     int iChar = FindFirstEmptyCharacter();
     ref ch;
@@ -1850,7 +1835,7 @@ int NPC_GeneratePhantomCharacter(string sType, int iNation, int iSex, int _LifeD
      	DeleteAttribute(ch, "LifeDay");
 	}
 	
-	ch.PhantomType = sType; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½
+	ch.PhantomType = sType; 
 
 	if(iSex == MAN)
 	{
@@ -1870,7 +1855,7 @@ int NPC_GeneratePhantomCharacter(string sType, int iNation, int iSex, int _LifeD
 	ch.nation = iNation;
 
 	SetRandomNameToCharacter(ch);
-    ch.reputation = (1 + rand(44) + rand(44));// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    ch.reputation = (1 + rand(44) + rand(44));
 	ch.id = "GenChar_" + iChar;
 	
     CreateModel(iChar, sType, iSex);
@@ -1888,7 +1873,7 @@ int NPC_GeneratePhantomCharacter(string sType, int iNation, int iSex, int _LifeD
 	return  iChar;
 }
 
-// boal prison count -->
+
 int GetPrisonerQty()
 {
     ref offref;
@@ -1905,7 +1890,7 @@ int GetPrisonerQty()
             offref = GetCharacter(cn);
             if(CheckAttribute(offref,"prisoned"))
             {
-	            if(sti(offref.prisoned)==true && GetRemovable(offref)) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	            if(sti(offref.prisoned)==true && GetRemovable(offref)) 
 	            {
                     qty++;
                 }
@@ -1927,14 +1912,14 @@ int SetCharToPrisoner(ref refEnemyCharacter)
 	    rChTo = &Characters[iNextPrisoner];
 	    InitCharacter(rChTo, iNextPrisoner);
 
-		ChangeAttributesFromCharacter(rChTo, refEnemyCharacter, false);   // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½-ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		ChangeAttributesFromCharacter(rChTo, refEnemyCharacter, false);   
 	    rChTo.index = iNextPrisoner;
 	    rChTo.id = "prisoner_" + iNextPrisoner;
 	    rChTo.Dialog.Filename = "Ransack_captain_dialog.c";
 	    rChTo.Dialog.CurrentNode = "First time";
 	    DeleteAttribute(rChTo, "items");
 		DeleteAttribute(rChTo, "equip");
-		DeleteAttribute(rChTo, "LifeDay"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		DeleteAttribute(rChTo, "LifeDay"); 
 		DeleteAttribute(rChTo, "ship");
 		DeleteAttribute(rChTo, "ShipSails.gerald_name");
 
@@ -1964,14 +1949,14 @@ int SetCharToPrisoner(ref refEnemyCharacter)
 
 void ReleasePrisoner(ref NPChar)
 {
-    DeleteAttribute(NPChar,"prisoned"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    DeleteAttribute(NPChar,"prisoned"); 
 	RemovePassenger(PChar, NPChar);
-	NPChar.LifeDay = 0; // ï¿½ï¿½ï¿½ï¿½
+	NPChar.LifeDay = 0; 
 }
 
 void FreeSitLocator(string location, string locator)
 {	
-	ref rCharacter; //ï¿½ï¿½ï¿½ï¿½
+	ref rCharacter; 
 	int n;
 
 	for (n=0; n<MAX_CHARACTERS; n++)
@@ -1981,13 +1966,13 @@ void FreeSitLocator(string location, string locator)
 		{
             if (rCharacter.location == location && rCharacter.location.locator == locator)
             {
-            	ChangeCharacterAddressGroup(rCharacter, "none", "none", "none"); // ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            	ChangeCharacterAddressGroup(rCharacter, "none", "none", "none"); 
             }
             else
             {
-            	if (rCharacter.location == "none") // ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+            	if (rCharacter.location == "none") 
             	{
-            		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            		
 					LogoffCharacter(rCharacter);
             	}
             }
@@ -1998,23 +1983,9 @@ void FreeSitLocator(string location, string locator)
 bool CheckFreeLocator(string location, string locator, int idxDontSee)
 {
 	return LAi_CheckLocatorFree("sit", locator);
-	/*ref rCharacter; //ï¿½ï¿½ï¿½ï¿½
-	int n;
-
-	for (n=0; n<MAX_CHARACTERS; n++)
-	{
-		makeref(rCharacter,Characters[n]);
-		if (CheckAttribute(rCharacter, "location") && n != idxDontSee) // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
-		{
-            if (rCharacter.location == location && rCharacter.location.locator == locator)
-            {
-				return false;
-            }
-		}
-    }
-    return true;*/
+	 
 }
-// boal <--
+
 
 int RandFromThreeDight(int _Num1, int _Num2, int _Num3)
 {
@@ -2039,14 +2010,14 @@ int RandFromFiveDight(int _Num1, int _Num2, int _Num3, int _Num4, int _Num5)
 }
 
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+
 void MakeFortDead(string _ColonyFort)
 {
 	int ind = GetCharacterIndex(_ColonyFort + " Fort Commander");
 	if(ind == -1) return;
 	ref FC = &Characters[ind];
 	FC.Fort.Mode = FORT_DEAD;
-	// data of fort die
+	
 	FC.Fort.DieTime.Year = GetDataYear();
 	FC.Fort.DieTime.Month = GetDataMonth();
 	FC.Fort.DieTime.Day = GetDataDay();
@@ -2054,7 +2025,7 @@ void MakeFortDead(string _ColonyFort)
 	Event(FORT_DESTROYED, "l", sti(FC.index));
 }
 
-// ugeen --> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 string GetSeaQuestShipFarLocator(ref _loc, string group, float x, float y, float z)
 {
 	if(CheckAttribute(_loc, group) == 0) return "";
@@ -2089,7 +2060,7 @@ string GetSeaQuestShipFarLocator(ref _loc, string group, float x, float y, float
 	return GetAttributeName(GetAttributeN(grp, j));
 }
 
-// ugeen --> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 string GetSeaQuestShipNearestLocator(ref _loc, string group, float x, float y, float z)
 {
 	if(CheckAttribute(_loc, group) == 0) return "";
@@ -2123,3 +2094,4 @@ string GetSeaQuestShipNearestLocator(ref _loc, string group, float x, float y, f
 	if(j < 0) return "";
 	return GetAttributeName(GetAttributeN(grp, j));
 }
+

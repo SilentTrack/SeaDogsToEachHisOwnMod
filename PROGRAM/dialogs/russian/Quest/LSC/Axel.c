@@ -1,4 +1,4 @@
-// торговец Аксель Йост
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -48,7 +48,7 @@ void ProcessDialogEvent()
 			else
 			{
 				dialog.text = "Ah, "+pchar.name+"! Glad to see you. Want to buy or sell something?";
-				// квестовые ветки
+				
 				if (CheckAttribute(pchar, "questTemp.Saga.SharkHunt") && pchar.questTemp.Saga.SharkHunt == "search_mush_1")
 				{
 					link.l4 = "Listen, Axel, do you have a fine musket to sell? Not a casual soldier's gun, but something for sniping - accurate and long-range?";
@@ -93,7 +93,7 @@ void ProcessDialogEvent()
 			LaunchItemsTrade(npchar, 0);
 		break;
 		
-		// наводка на Адольфа
+		
 		case "adolf":
 			dialog.text = "This must some kind of a joke. You are already the third to ask. I don't have such weapon. But several months ago Adolf Barbier tried to sell me his hunting scoped rifle. A wonderful weapon, I tell you. Exactly what are you looking for\nBut Barbier asked a hell of price for it, it seems that it is made of pure gold and shoots with diamonds. So, I had to reject his offer.";
 			link.l1 = "Interesting! And where can I find Barbier?";
@@ -114,13 +114,13 @@ void ProcessDialogEvent()
 		
 		case "adolf_3":
 			DialogExit();
-			pchar.questTemp.Saga.SharkHunt = "search_mush_2"; //флаг на таверну
+			pchar.questTemp.Saga.SharkHunt = "search_mush_2"; 
 			AddQuestRecord("SharkHunt", "12");
 			sld = characterFromId("LSC_Adolf");
-			sld.lifeday = 0; // убираем настоящего Адольфа
+			sld.lifeday = 0; 
 		break;
 		
-		// бусинка для Белого Мальчика - просто инфа
+		
 		case "ole_pearl":
 			dialog.text = "Everybody knows that, mister! He asks everyone for these beads, that is how he calls big pearls. Give him one, and you will become his best friend.";
 			link.l1 = "Now I see. Thank you, Axel, I would never have guessed it myself.";
@@ -128,7 +128,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(npchar, "quest.ole_pearl");
 		break;
 		
-		// виски для Акулы
+		
 		case "whiskey":
 			dialog.text = "Yes, pal, he did. But I will disappoint you in case you want to buy a barrel of Bushmills too. I had only one barrel and Chad has bought it. I can offer you Scottish Whiskey - it's as good as Irish, and, actually, I like it's taste much better.";
 			link.l1 = "Perhaps, later. Has Chad bought anything else from you?";
@@ -150,7 +150,7 @@ void ProcessDialogEvent()
 		case "whiskey_3":
 			DialogExit();
 			AddQuestRecord("SharkHunt", "36");
-			pchar.questTemp.Saga.SharkHunt = "barmen_whiskey"; // флаг на таверну - поиск мышьяка
+			pchar.questTemp.Saga.SharkHunt = "barmen_whiskey"; 
 		break;
 		
 		case "":

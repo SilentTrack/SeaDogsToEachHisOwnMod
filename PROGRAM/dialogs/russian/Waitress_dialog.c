@@ -1,4 +1,4 @@
-// диалог официантки
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -9,14 +9,14 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-    // вызов диалога по городам -->
+    
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Tavern\" + NPChar.City + "_Waitress.c";
     if (LoadSegment(NPChar.FileDialog2))
 	{
         ProcessCommonDialog(NPChar, Link, NextDiag);
 		UnloadSegment(NPChar.FileDialog2);
 	}
-    // вызов диалога по городам <--
+    
 	switch(Dialog.CurrentNode)
 	{
         case "Exit":
@@ -25,7 +25,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "First time":
-			//--> Jason ÷ена чахотки
+			
 			if (sti(pchar.rank) > 6 && npchar.location == "PortSpein_tavern" && !CheckAttribute(npchar, "quest.Consumption"))
             {
 				dialog.text = "What do you wish, senor? I am sorry I am just... oh...";
@@ -33,9 +33,9 @@ void ProcessDialogEvent()
 				link.l1.go = "Consumption";
 				break;
 			}
-			//<-- ÷ена чахотки
 			
-			// Addon-2016 Jason, французские миниквесты (ФМК) Порт Пренс
+			
+			
 			if (npchar.location == "PortPax_tavern" && CheckAttribute(pchar, "questTemp.FMQP") && pchar.questTemp.FMQP == "begin")
             {
 				PlaySound("VOICE\Russian\Enc_RapersGirl_1.wav");
@@ -88,12 +88,12 @@ void ProcessDialogEvent()
 				break;
 
 				case 2:
-					if (drand(1) == 0) // Addon-2016 Jason
+					if (drand(1) == 0) 
 					{
 						dialog.text = ""+ GetSexPhrase("Oh, captain! Would you like to share a bed with me today? I don't like to boast myself but...","Take your sit, captain. It's always a pleasure to meet a real sea wolf like you.") +"";
 						link.l1 = "Too bad that I am in hurry now. Next time!";
 						link.l1.go = "exit";
-						bool bOk = (CheckAttribute(pchar, "questTemp.Saga.Helena_officer")) || (CheckAttribute(pchar, "questTemp.LSC.Mary_officer")); // 291112
+						bool bOk = (CheckAttribute(pchar, "questTemp.Saga.Helena_officer")) || (CheckAttribute(pchar, "questTemp.LSC.Mary_officer")); 
 						if (pchar.questTemp.different == "free" && !CheckAttribute(pchar, "questTemp.different.FackWaitress") && PChar.sex != "woman" && pchar.GenQuest.EncGirl != "HorseToTavern" && !bOk)
 						{
 							link.l2 = "My pleasure, pretty thing!";
@@ -121,7 +121,7 @@ void ProcessDialogEvent()
 				break;
 			}			
 			link.l9 = "I want to ask you a few questions.";
-			link.l9.go = "quests";//(перессылка в файл города)
+			link.l9.go = "quests";
 		break;
 		
         case "Love_1":
@@ -129,12 +129,12 @@ void ProcessDialogEvent()
 			link.l1 = "Ha! I'll make it done, honey! Looking forward!";
 			link.l1.go = "exit";
 			pchar.questTemp.different = "FackWaitress_toRoom";
-			SetTimerFunction("WaitressFack_null", 0, 0, 1); //освобождаем разрешалку на миниквесты на след. день
-			//Ўанс, что ограб€т, если рендом выпадет на 0. он же делитель сколько она вытащит из кармана
+			SetTimerFunction("WaitressFack_null", 0, 0, 1); 
+			
 			pchar.questTemp.different.FackWaitress.Kick = dRand(2); 
-			pchar.questTemp.different.FackWaitress.Name = GetFullName(npchar); //запомним им€ официантки
+			pchar.questTemp.different.FackWaitress.Name = GetFullName(npchar); 
 			pchar.questTemp.different.FackWaitress.City = npchar.city;
-			//делаем клона официантки
+			
 			sld = GetCharacter(NPC_GenerateCharacter("WairessQuest", npchar.model, "woman", npchar.model.animation, 5, sti(npchar.nation), 3, false, "citizen"));
 			sld.name = npchar.name;
 			sld.lastname = npchar.lastname;
@@ -189,7 +189,7 @@ void ProcessDialogEvent()
 			link.l2.go = "exit";
 		break;
 		
-		//--> Jason ÷ена чахотки
+		
 		case "Consumption":
 			npchar.quest.Consumption = "true";
 			dialog.text = "No, It's nothing, senor... thank you for your kindness but I ... (crying)";
@@ -254,7 +254,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Consumption_7":
-			dialog.text = "NoЕ not! (weeping) I know it sounds stupid, but I am sure that I would know if he died. See, Angelo was always strong, tough - a real sailor. But there is one more thing\nMy granddad died of consumption when I was a kid and he, an old man, had been fighting it for years. I know it works, consumption doesn't kill people in days, trust me!";
+			dialog.text = "Noпњљ not! (weeping) I know it sounds stupid, but I am sure that I would know if he died. See, Angelo was always strong, tough - a real sailor. But there is one more thing\nMy granddad died of consumption when I was a kid and he, an old man, had been fighting it for years. I know it works, consumption doesn't kill people in days, trust me!";
 			link.l1 = "Hm... You've made me hesitated too, something is very wrong here. I can't promise you a thing but I'll try to learn more.";
 			link.l1.go = "Consumption_8";
 		break;
@@ -272,9 +272,9 @@ void ProcessDialogEvent()
 			pchar.questTemp.Consumption = "begin";
 			AddQuestRecord("Consumption", "1");
 		break;
-		//<-- ÷ена чахотки
 		
-		// Addon-2016 Jason, французские миниквесты (ФМК) Порт Пренс
+		
+		
 		case "FMQP":
 			dialog.text = "No, no jokes! Upstairs! Two thugs are murdering a noble gentleman! Help him captain, you are the only armed man here!";
 			link.l1 = "Run outside, call the guards! I am going upstairs!!";

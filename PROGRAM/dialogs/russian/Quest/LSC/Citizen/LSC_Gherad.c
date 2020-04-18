@@ -1,4 +1,4 @@
-// Гхерад Смиитс - матрос
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -32,18 +32,18 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				dialog.text = "Аh, "+GetFullName(pchar)+"! "+TimeGreeting()+"! Want something?";
+				dialog.text = "пїЅh, "+GetFullName(pchar)+"! "+TimeGreeting()+"! Want something?";
 				link.l1 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
 				link.l1.go = "rumours_LSC";
 				link.l2 = "I want to ask you a few questions about the island.";
-				link.l2.go = "int_quests"; //информационный блок
+				link.l2.go = "int_quests"; 
 				link.l5 = "Just wanted to know how are you doing. See you!";
 				link.l5.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
-		case "meeting": // первая встреча
+		case "meeting": 
 			dialog.text = "Sure, you don't, but it is easy to fix, right? I am Gerard Smeets, sailor, a seaman from Rotterdam. And you look like a quartermaster not less...";
 			link.l1 = "Something like that. My name is "+GetFullName(pchar)+". Nice to meet you.";
 			link.l1.go = "meeting_1";
@@ -68,11 +68,11 @@ void ProcessDialogEvent()
 			link.l2 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
 			link.l2.go = "rumours_LSC";
 			link.l3 = "I want to ask you a few questions about the island.";
-			link.l3.go = "int_quests"; //информационный блок
+			link.l3.go = "int_quests"; 
 			NextDiag.TempNode = "First time";
 		break;
 		
-//--------------------------------------- блок вопросов и ответов ---------------------------------------------
+
 		case "int_quests":
 			dialog.text = "Sure, friend. I am listening.";
 			if (!CheckAttribute(npchar, "quest.answer_1"))
@@ -126,10 +126,10 @@ void ProcessDialogEvent()
 			link.l1.go = "int_quests";
 			npchar.quest.answer_4 = "true";
 		break;
-// <-- блок вопросов и ответов
+
 		
-//----------------------------------------- специальные реакции -----------------------------------------------
-		//обнаружение ГГ в сундуках
+
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
 			link.l1 = "Damn it!";
@@ -157,7 +157,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//замечание по обнаженному оружию
+		
 		case "LSCNotBlade":
 			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
 			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
@@ -179,7 +179,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;
-// <-- специальные реакции
+
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

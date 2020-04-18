@@ -32,7 +32,7 @@ void ProcessDialogEvent()
 			if (rand(3) != 1) SetNationRelation2MainCharacter(sti(npchar.nation), RELATION_ENEMY);
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
-		//--------------------------------- леди в резиденции ---------------------------------
+		
 		case "ResWoman":
 			NextDiag.TempNode = "ResWoman";
 			if (isBadReputation(pchar, 30))
@@ -55,7 +55,7 @@ void ProcessDialogEvent()
 			LAi_group_Attack(NPChar, Pchar);
 			if (rand(3) != 1) SetNationRelation2MainCharacter(sti(npchar.nation), RELATION_ENEMY);
 		break;
-		//--------------------------------- слуга в резиденции ---------------------------------
+		
 		case "ResMan":
 			NextDiag.TempNode = "ResMan";
 			if (isBadReputation(pchar, 30))
@@ -78,7 +78,7 @@ void ProcessDialogEvent()
 			LAi_group_Attack(NPChar, Pchar);
 			if (rand(3) != 1) SetNationRelation2MainCharacter(sti(npchar.nation), RELATION_ENEMY);
 		break;
-		//--------------------------------- солдат в резиденции ---------------------------------
+		
 		case "ResGuard":
 			NextDiag.TempNode = "ResGuard";
 			if (isBadReputation(pchar, 30))
@@ -96,3 +96,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

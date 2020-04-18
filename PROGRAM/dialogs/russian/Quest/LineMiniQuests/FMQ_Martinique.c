@@ -1,4 +1,4 @@
-// Addon-2016 Jason, французские миниквесты (ФМК) Мартиника
+
 void ProcessDialogEvent()
 {
 	ref sld, NPChar;
@@ -21,7 +21,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// квестодатель
+		
 		case "carpenter":
 			dialog.text = TimeGreeting()+", captain. Allow me to introduce myself - "+GetFullName(npchar)+". Although we've already met not long ago, I doubt you remembered me.";
 			link.l1 = "Greeting, monsieur. And where could I see you before?";
@@ -320,3 +320,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

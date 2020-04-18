@@ -1,4 +1,4 @@
-// диалог индейцев в поселениях
+
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -27,7 +27,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 
-		// ==> индейцы в поселении
+		
 		case "IndianMan":
 			NextDiag.TempNode = "IndianMan";
 			dialog.text = NPCStringReactionRepeat(""+ GetSexPhrase("Paleface","White squaw") +" wants to talk?", 
@@ -132,7 +132,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "gift_exit":
-			if (CheckAttribute(pchar, "questTemp.Mtraxx.Merida.Women")) // Addon 2016-1 Jason Пиратская линейка
+			if (CheckAttribute(pchar, "questTemp.Mtraxx.Merida.Women")) 
 			{
 				dialog.text = "Wanted to ask "+npchar.name+" something, son of the sea?";
 				link.l1 = "You are right, pretty one. Me and my fearsome warriors are going to selva, to the Spanish settlement among the mountains and we are looking for a guide. I will be generous to the man himself and also to his wife. I have many riches: beautiful guns, magic glasses, mirrors, necklaces, bracelets and rings. Perhaps your husband can be the guide we are looking for?";
@@ -146,8 +146,8 @@ void ProcessDialogEvent()
 			npchar.quest.gift = true;
 		break;
 		
-		// Addon 2016-1 Jason Пиратская линейка
-		// Кумвана, вождь деревни араваков
+		
+		
 		case "cumvana":
 			dialog.text = "Greetings, son of the sea. Me is Kumwana, chief of the Turtle clan of Locono people. What business brings you my village?";
 			if (GetCharacterFreeItem(pchar, "pistol5") > 0 || CheckCharacterItem(pchar, "compass1") || GetCharacterFreeItem(pchar, "spyglass1") > 0 || GetCharacterFreeItem(pchar, "spyglass2") > 0 || GetCharacterFreeItem(pchar, "spyglass3") > 0)
@@ -203,10 +203,10 @@ void ProcessDialogEvent()
 			dialog.text = "Locono are always glad to see good friends.";
 			if (GetCharacterFreeItem(pchar, "pistol5") > 0)
 			{
-				link.l1 = "Gift a handgun."; // 5
+				link.l1 = "Gift a handgun."; 
 				link.l1.go = "cumvana_2_1";
 			}
-			if (CheckCharacterItem(pchar, "compass1")) // 3
+			if (CheckCharacterItem(pchar, "compass1")) 
 			{
 				link.l2 = "Gift a compass.";
 				link.l2.go = "cumvana_2_2";
@@ -218,12 +218,12 @@ void ProcessDialogEvent()
 			}
 			if (GetCharacterFreeItem(pchar, "spyglass2") > 0)
 			{
-				link.l4 = "Gift a common spy glass."; // 2
+				link.l4 = "Gift a common spy glass."; 
 				link.l4.go = "cumvana_2_4";
 			}
 			if (GetCharacterFreeItem(pchar, "spyglass3") > 0)
 			{
-				link.l5 = "Gift a decent spy glass."; // 4
+				link.l5 = "Gift a decent spy glass."; 
 				link.l5.go = "cumvana_2_5";
 			}
 		break;
@@ -372,7 +372,7 @@ void ProcessDialogEvent()
 			pchar.questTemp.Mtraxx = "merida_advice";
 		break;
 		
-		// Хайами
+		
 		case "hayamee":
 			if (npchar.id == "Hayamee")
 			{
@@ -472,8 +472,8 @@ void ProcessDialogEvent()
 			DialogExit();
 			AddQuestRecord("Roger_5", "10");
 			LAi_CharacterDisableDialog(npchar);
-			SetFunctionTimerCondition("Mtraxx_MeridaHayameeLate", 0, 0, 15, false); // таймер
-			// Тагофу в сидячее положение
+			SetFunctionTimerCondition("Mtraxx_MeridaHayameeLate", 0, 0, 15, false); 
+			
 			pchar.quest.mtraxx_merida_wait2.win_condition.l1 = "Timer";
 			pchar.quest.mtraxx_merida_wait2.win_condition.l1.date.hour  = 9.0;
 			pchar.quest.mtraxx_merida_wait2.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 1);
@@ -527,3 +527,4 @@ void ProcessDialogEvent()
 
 	}
 }
+

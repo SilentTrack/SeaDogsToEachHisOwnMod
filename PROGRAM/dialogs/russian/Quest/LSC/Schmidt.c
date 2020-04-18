@@ -1,4 +1,4 @@
-// Юрген Шмидт - оружейник
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -30,9 +30,9 @@ void ProcessDialogEvent()
 			}
 			if (npchar.quest.meeting == "0")
 			{
-				if (CheckAttribute(pchar, "questTemp.LSC.nrv_friend")) // стал другом нарвалов
+				if (CheckAttribute(pchar, "questTemp.LSC.nrv_friend")) 
 				{
-					dialog.text = "Аh, "+GetFullName(pchar)+"! I have heard about your deeds. It is good that you have become a Donald's friend and our ally. Narwhals can appreciate friendship, I can tell you that for sure.";
+					dialog.text = "пїЅh, "+GetFullName(pchar)+"! I have heard about your deeds. It is good that you have become a Donald's friend and our ally. Narwhals can appreciate friendship, I can tell you that for sure.";
 					link.l1 = "I hope so. Can I count on your services now?";
 					link.l1.go = "friend";
 				}
@@ -46,15 +46,15 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				if (CheckAttribute(pchar, "questTemp.LSC.nrv_friend")) // стал другом нарвалов
+				if (CheckAttribute(pchar, "questTemp.LSC.nrv_friend")) 
 				{
-					dialog.text = "Аh, "+GetFullName(pchar)+"! I have heard about your deeds. It is good that you have become a Donald's friend and our ally. Narwhals can appreciate friendship, I can tell you that for sure.";
+					dialog.text = "пїЅh, "+GetFullName(pchar)+"! I have heard about your deeds. It is good that you have become a Donald's friend and our ally. Narwhals can appreciate friendship, I can tell you that for sure.";
 					link.l1 = "I hope so. Can I count on your services now?";
 					link.l1.go = "friend";
 				}
 				else
 				{
-					dialog.text = "Аh, "+GetFullName(pchar)+"! Want to chat again? I have to disappoint you, I have got no time and no wish for that.";
+					dialog.text = "пїЅh, "+GetFullName(pchar)+"! Want to chat again? I have to disappoint you, I have got no time and no wish for that.";
 					link.l1 = "Fine, I won't bother you.";
 					link.l1.go = "exit";
 				}
@@ -62,7 +62,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		case "meeting": // первая встреча
+		case "meeting": 
 			dialog.text = "Exactly! You are bothering me, mister. I am Jurgen Schmidt, gunsmith and blacksmith of Narwhal clan. I provide our people with weapons. But it takes time to make a good blade, key, lock or to repair the mechanism of tower mousqueton. It takes a lot of time, patience and attentiveness. That is why because I don't like when people bother me.";
 			link.l1 = "Do you make weapons? Can I order something from you?";
 			link.l1.go = "meeting_1";
@@ -99,7 +99,7 @@ void ProcessDialogEvent()
 				NextDiag.TempNode = "Jurgen";
 				break;
 			}
-			dialog.text = "Аh, "+GetFullName(pchar)+"! What do you want?";
+			dialog.text = "пїЅh, "+GetFullName(pchar)+"! What do you want?";
 			if (CheckAttribute(npchar, "quest.narval_blade") && npchar.quest.narval_blade == "ferrum")
 			{
 				if (GetCharacterItem(pchar, "jewelry11") >= 3)
@@ -124,7 +124,7 @@ void ProcessDialogEvent()
 				link.l1 = "I have brought you more doubloons as a payment for the blade.";
 				link.l1.go = "blade_3";
 			}
-			if (CheckAttribute(npchar, "quest.narval_blade") && pchar.questTemp.LSC.Mary == "alive" && npchar.quest.narval_blade == "begin" && pchar.questTemp.LSC != "return") // patch-9
+			if (CheckAttribute(npchar, "quest.narval_blade") && pchar.questTemp.LSC.Mary == "alive" && npchar.quest.narval_blade == "begin" && pchar.questTemp.LSC != "return") 
 			{
 				link.l2 = "I have heard that you have made a special blade for late Alan Milrow. I have seen that broadsword, it is a great weapon. Can I order something like that?";
 				link.l2.go = "narval";
@@ -139,7 +139,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Jurgen";
 		break;
 		
-		// --> заказ клинков
+		
 		case "blade":
 			dialog.text = "Fine. But I have some special requirements for any order, so listen carefully first.";
 			link.l1 = "I am all ears.";
@@ -183,16 +183,16 @@ void ProcessDialogEvent()
 			link.l1.go = "blade_3";
 		break;
 		
-		case "blade_pay": // оплата
-			if (sti(npchar.quest.blade_dublon) < sti(npchar.quest.blade_pay)) // полная сумма
+		case "blade_pay": 
+			if (sti(npchar.quest.blade_dublon) < sti(npchar.quest.blade_pay)) 
 			{
 				npchar.quest.blade_pay = sti(npchar.quest.blade_dublon);
 				iTemp = 0;
 			}
 			else iTemp = sti(npchar.quest.blade_dublon)-sti(npchar.quest.blade_pay);
-			npchar.quest.blade_dublon = iTemp; // запоминаем остаток
+			npchar.quest.blade_dublon = iTemp; 
 			RemoveItems(pchar, "gold_dublon", sti(npchar.quest.blade_pay));
-			Log_Info("You have given "+sti(npchar.quest.blade_pay)+" дублонов");
+			Log_Info("You have given "+sti(npchar.quest.blade_pay)+" пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 			PlaySound("interface\important_item.wav");
 			if (iTemp == 0)
 			{
@@ -262,7 +262,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(npchar, "blade_date");
 		break;
 		
-		// заказ палаша Нарвал для Мэри
+		
 		case "narval":
 			dialog.text = "Alas, my friend, I have two reject, because of two reasons. First, I will make such a broadsword only for a member of Narwhal clan and only for someone special. Secondly, I don't have materials for it.";
 			link.l1 = "And what is that special iron you need? I have heard that they got it from the bottom...";
@@ -303,12 +303,12 @@ void ProcessDialogEvent()
 			DialogExit();
 			npchar.quest.narval_blade = "ferrum";
 			NextDiag.CurrentNode = "Jurgen";
-			// кладем гигантский кусок метеорита на дно
+			
 			sld = ItemsFromID("meteorite");
 			sld.shown = true;
 			sld.startLocation = "underwater";
 			sld.startLocator = "item"+(rand(7)+1);
-			Log_TestInfo("Метеорит в локаторе" + sld.startLocator);
+			Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" + sld.startLocator);
 			pchar.quest.LSC_narval_ferrum.win_condition.l1 = "item";
 			pchar.quest.LSC_narval_ferrum.win_condition.l1.item = "meteorite";
 			pchar.quest.LSC_narval_ferrum.function = "LSC_NarvalFerrum";
@@ -321,7 +321,7 @@ void ProcessDialogEvent()
 			dialog.text = "Let me see... Yes it is! Was it difficult to search such a small pieces at the bottom?";
 			link.l1 = "Well, what can I say... Mary is worth such troubles, isn't she?";
 			link.l1.go = "narval_8";
-			pchar.quest.LSC_narval_ferrum.over = "yes"; //снять прерывание
+			pchar.quest.LSC_narval_ferrum.over = "yes"; 
 		break;
 		
 		case "narval_7_1":
@@ -342,7 +342,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			npchar.quest.narval_blade = "work";
 			NextDiag.CurrentNode = "narval_10";
-			SetFunctionTimerCondition("LSC_NarvalBladeForMary", 0, 0, 2, false); // таймер
+			SetFunctionTimerCondition("LSC_NarvalBladeForMary", 0, 0, 2, false); 
 			AddQuestRecord("LSC", "21");
 		break;
 		
@@ -353,8 +353,8 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "narval_10";
 		break;
 		
-//----------------------------------------- специальные реакции -----------------------------------------------
-		//обнаружение ГГ в сундуках
+
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
 			link.l1 = "Damn it!";
@@ -382,7 +382,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//замечание по обнаженному оружию
+		
 		case "LSCNotBlade":
 			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
 			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
@@ -404,7 +404,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;
-// <-- специальные реакции
+
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

@@ -1,4 +1,4 @@
-// диалоги НПС по квесту 'В поисках Стража Истины'
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -21,7 +21,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// пленный испанец
+		
 		case "spa_prisoner":
 			PlaySound("VOICE\Russian\Ransack_1.wav");
 			dialog.text = "What do you want? Another interrogation?";
@@ -188,7 +188,7 @@ void ProcessDialogEvent()
 		case "spa_prisoner_27":
 			DialogExit();
 			pchar.questTemp.Guardoftruth = "think";
-			LAi_CharacterDisableDialog(npchar);//запрет диалога
+			LAi_CharacterDisableDialog(npchar);
 			LAi_SetActorType(pchar);
 			LAi_ActorGoToLocator(pchar, "goto", "goto3", "GuardOT_MCthink", -1);
 		break;
@@ -215,8 +215,8 @@ void ProcessDialogEvent()
 		case "spa_prisoner_31":
 			DialogExit();
 			pchar.questTemp.Guardoftruth = "cuba";
-			LAi_CharacterDisableDialog(npchar);//запрет диалога
-			chrDisableReloadToLocation = false;//открыть локацию
+			LAi_CharacterDisableDialog(npchar);
+			chrDisableReloadToLocation = false;
 			pchar.quest.GuardOT_exitbase.win_condition.l1 = "ExitFromLocation";
 			pchar.quest.GuardOT_exitbase.win_condition.l1.location = pchar.location;
 			pchar.quest.GuardOT_exitbase.function = "GuardOT_ExitFrombase";
@@ -266,7 +266,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			RemovePassenger(pchar, npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload1_back", "none", "", "", "", -1);
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			AddQuestRecord("Guardoftruth", "5");
 			pchar.quest.GuardOT_mayak.win_condition.l1 = "Timer";
 			pchar.quest.GuardOT_mayak.win_condition.l1.date.hour  = sti(GetTime()-(rand(4)));
@@ -392,7 +392,7 @@ void ProcessDialogEvent()
 			LAi_ActorDialogNow(sld, pchar, "", -1);
 		break;
 		
-		// посланец Винсенто
+		
 		case "vinsentoagent":
 			PlaySound("VOICE\Russian\other\OZGi-02.wav");
 			dialog.text = "Hey, you! Yeah, yeah. You! "+GetFullName(pchar)+"?";
@@ -442,10 +442,10 @@ void ProcessDialogEvent()
 			DialogExit();
 			npchar.lifeday = 0;
 			LAi_ActorRunToLocation(npchar, "reload", "reload1_back", "none", "", "", "", -1);
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 		break;
 		
-		// боцман Гая Марше
+		
 		case "boatsvandega":
 			dialog.text = "Welcome on board of the Admirable, captain "+GetFullName(pchar)+"!";
 			link.l1 = TimeGreeting()+"! Surprising. Do you know me?";
@@ -492,7 +492,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.currentnode = "boatsvandega_8";
 			npchar.DeckDialogNode = "boatsvandega_8";
-			// активируем каракку
+			
 			sld = characterFromId("GOT_Gevarra");
 			sld.Dialog.Filename = "Quest\Sharlie\Guardoftruth.c";
 			sld.DeckDialogNode = "gevarra";
@@ -506,7 +506,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "boatsvandega_8";
 		break;
 		
-		// Гай Марше
+		
 		case "marshe_tavern":
 			PlaySound("VOICE\Russian\tavern\Kontrabandisti-08.wav");
 			dialog.text = NPCStringReactionRepeat("Ho! You don't happen to be from the merchant ship are you? Oh, my apologies. Of course, not... My mistake.", "I'm not in the mood, monsieur, so find yourself somebody else to talk to.", "Ah, you again? For crying out loud?!", "Ahem...", "block", 1, npchar, Dialog.CurrentNode);
@@ -573,7 +573,7 @@ void ProcessDialogEvent()
 			pchar.quest.GuardOT_marchfromgaleon.function = "GuardOT_ExitGaleon";
 		break;
 		
-		// капитан каракки - Карлос Геварра
+		
 		case "gevarra":
 			dialog.text = "How can I help you, sir?";
 			link.l1 = "How are things, captain? What brings you to Basse-Terre? As I understand, you're a Spaniard albeit under the Dutch flag?";
@@ -730,7 +730,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.currentnode = "gevarra_time";
 			npchar.DeckDialogNode = "gevarra_time";
-			AddMoneyToCharacter(pchar, -iTemp); // деньги сразу списываем
+			AddMoneyToCharacter(pchar, -iTemp); 
 			bQuestDisableMapEnter = true;
 			pchar.GenQuest.MapClosedNoBattle = true;
 			AddQuestRecord("Guardoftruth", "17");
@@ -764,7 +764,7 @@ void ProcessDialogEvent()
 			npchar.DeckDialogNode = "gevarra_exit";
 			bQuestDisableMapEnter = true;
 			pchar.GenQuest.MapClosedNoBattle = true;
-			pchar.GenQuest.CannotWait = true;//запрет ожидания
+			pchar.GenQuest.CannotWait = true;
 			AddQuestRecord("Guardoftruth", "18");
 			pchar.quest.GuardOT_gotoshore.win_condition.l1 = "ExitFromSea";
 			pchar.quest.GuardOT_gotoshore.function = "GuardOT_TradeComplete";
@@ -777,7 +777,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "gevarra_exit";
 		break;
 		
-		// матросы Марше
+		
 		case "marshe_sailor":
 			dialog.text = LinkRandPhrase("Hiic! C-capt-tain, f-finally has g-given us our allowances! Yahoo!","And I j-just s-started... Hic!","Face against the table... body under the fence... yo-ho! And a bottle 'o rum!");
 			link.l1 = LinkRandPhrase("Yep... Aha.","Gotcha... Time to wrap things up with the rum, don't you think?","It's tough...");
@@ -808,7 +808,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");	
 		break;
 		
-		// англичане в бухте
+		
 		case "dominica_hunter":
 			dialog.text = "Haw haw! You come for Rollie the Cap's treasure too? We've been looking and looking and looking and we just couldn't find it. You'd think at least one of these imbecile's would guess to swim behind the waterfall onto the ledge!";
 			link.l1 = "You're one of Colonel Fox's, aren't you?";
@@ -842,7 +842,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");	
 		break;
 		
-		// Белинда Риберо
+		
 		case "belinda":
 			dialog.text = TimeGreeting()+", senor. How can I help you?";
 			link.l1 = "Hello. Is that you, Donna Belinda de Ribero?";
@@ -938,8 +938,8 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.CurrentNode = "belinda_16";
 			AddQuestRecord("Guardoftruth", "31");
-			bQuestDisableMapEnter = true;//закрыть карту
-			locations[FindLocation("Cumana_CaveEntrance")].DisableEncounters = true; //энкаутеры закрыть
+			bQuestDisableMapEnter = true;
+			locations[FindLocation("Cumana_CaveEntrance")].DisableEncounters = true; 
 			LAi_LocationDisableOfficersGen("Cumana_CaveEntrance", true);
 			LAi_LocationDisableOfficersGen("Cumana_Cave", true);
 			pchar.quest.GuardOT_gotocave.win_condition.l1 = "location";
@@ -1031,7 +1031,7 @@ void ProcessDialogEvent()
 			}
 		break;
 		
-		// бандит Эстебана
+		
 		case "bandos_mush":
 			PlaySound("VOICE\Russian\other\OZGi-04.wav");
 			dialog.text = "Stop right there, buddy!";
@@ -1053,17 +1053,17 @@ void ProcessDialogEvent()
 		
 		case "bandos_mush_3":
 			DialogExit();
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			LocatorReloadEnterDisable("Cumana_CaveEntrance", "reload2_back", true);
 			LAi_SetWarriorType(npchar);
 			LAi_CharacterDisableDialog(npchar);
-			pchar.GenQuest.CannotWait = true;//запрет ожидания
+			pchar.GenQuest.CannotWait = true;
 			pchar.quest.GuardOT_incave.win_condition.l1 = "location";
 			pchar.quest.GuardOT_incave.win_condition.l1.location = "Cumana_Cave";
 			pchar.quest.GuardOT_incave.function = "GuardOT_InCumanaCave";
 		break;
 		
-		// Эстебан-Барти
+		
 		case "barty":
 			PlaySound("VOICE\Russian\other\OZGi-03.wav");
 			dialog.text = "I had to wait for you a long time... You got the money with you?";
@@ -1105,8 +1105,8 @@ void ProcessDialogEvent()
 			LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
 			LAi_group_SetCheck("EnemyFight", "GuardOT_CumanaCaveBandosDie");
 			AddDialogExitQuest("MainHeroFightModeOn");
-			// офицеров насильно
-			LAi_LocationDisableOfficersGen("Cumana_Cave", false); //офицеров пускать
+			
+			LAi_LocationDisableOfficersGen("Cumana_Cave", false); 
 			DoQuestFunctionDelay("GuardOT_SetOfficerCumanaCave", 3.0);
 		break;
 		
@@ -1176,12 +1176,12 @@ void ProcessDialogEvent()
 			GiveItem2Character(pchar, "jewelry29");
 			Log_Info("You received a turquoise ring");
 			PlaySound("interface\important_item.wav");
-			chrDisableReloadToLocation = false;//открыть локацию
-			LAi_LocationDisableOfficersGen("Cumana_CaveEntrance", false);//офицеров пускать
-			locations[FindLocation("Cumana_CaveEntrance")].DisableEncounters = false; //энкаутеры открыть
-			locations[FindLocation("Cumana_Cave")].DisableEncounters = false; // patch
-			LAi_LocationFightDisable(&Locations[FindLocation("Cumana_CaveEntrance")], false);//разрешить драться
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
+			chrDisableReloadToLocation = false;
+			LAi_LocationDisableOfficersGen("Cumana_CaveEntrance", false);
+			locations[FindLocation("Cumana_CaveEntrance")].DisableEncounters = false; 
+			locations[FindLocation("Cumana_Cave")].DisableEncounters = false; 
+			LAi_LocationFightDisable(&Locations[FindLocation("Cumana_CaveEntrance")], false);
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
 			LocatorReloadEnterDisable("Cumana_CaveEntrance", "reload2_back", false);
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload1_back", "none", "", "", "", -1);
@@ -1191,7 +1191,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("Guardoftruth", "32");
 		break;
 		
-		// охотники
+		
 		case "spa_hunter":
 			dialog.text = "You've got what we need, buddy...";
 			link.l1 = "Hm. Really.... And what would that be?";
@@ -1239,7 +1239,7 @@ void ProcessDialogEvent()
 		
 		case "cabin_hunter_2":
 			DialogExit();
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			for(i=1; i<=2; i++)
 			{
 				sld = CharacterFromID("GOT_cabinband_"+i);
@@ -1252,7 +1252,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");	
 		break;
 		
-		// командир абордажников
+		
 		case "batabano_officer":
 			dialog.text = "Awaiting orders, captain!";
 			link.l1 = "Move through the jungle toward San Antonio cape. Take the trail left and keep going straight. Keep your heads down and get ready for an ambush on the shore. Be ready. I'll be going there by sea. How long will it to take you to relocate?";
@@ -1275,11 +1275,11 @@ void ProcessDialogEvent()
 				LAi_ActorGoToLocation(sld, "reload", "reload1", "none", "", "", "OpenTheDoors", 20.0);
 			}
 			AddQuestRecord("Guardoftruth", "48");
-			// на мыс
+			
 			pchar.quest.GuardOT_sanantonio.win_condition.l1 = "Ship_location";
 			pchar.quest.GuardOT_sanantonio.win_condition.l1.location = "Shore15";
 			pchar.quest.GuardOT_sanantonio.function = "GuardOT_SanantonioArrive";
-			// на время, специально для дебилов, не читающих диалоги и СЖ
+			
 			pchar.quest.GuardOT_sanantoniotimer.win_condition.l1 = "Timer";
 			pchar.quest.GuardOT_sanantoniotimer.win_condition.l1.date.hour  = sti(GetTime()+6);
 			pchar.quest.GuardOT_sanantoniotimer.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 0);
@@ -1288,7 +1288,7 @@ void ProcessDialogEvent()
 			pchar.quest.GuardOT_sanantoniotimer.function = "GuardOT_SanAntonio_Timer";
 		break;
 		
-		// наемник Патерсона
+		
 		case "housemercen":
 			dialog.text = "Tenacious bastard! He's still alive... We should've put some more gun powder in. All right, I'll finish you, son of a gun...";
 			link.l1 = "...";
@@ -1297,8 +1297,8 @@ void ProcessDialogEvent()
 		
 		case "housemercen_1":
 			DialogExit();
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
-			bDisableCharacterMenu = false;//разлочим F2
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
+			bDisableCharacterMenu = false;
 			LAi_SetWarriorType(npchar);
 			LAi_group_MoveCharacter(npchar, "EnemyFight");
 			LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);

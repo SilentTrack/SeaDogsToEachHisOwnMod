@@ -14,15 +14,11 @@ void NetServer_DropClient(int wNetClientID)
 	ref rClient = NetServer_GetClient(wNetClientID);
 	rClient.Use = false;
 
-	/*if (bServerGameStarted)
-	{
-		NetServer_UpdateGlobalPlayerStatistics(rClient);
-		DeleteClass(&NSClients[sti(rClient.index)]);
-	}*/
+	 
 
 	NetServer_DelClient(wNetClientID);
 
-	// send to all
+	
 	int iSMsg = NMCreate();
 	NMAddByte(iSMsg, NC_CLIENT);
 	NMAddByte(iSMsg, NSC_CLIENT_DROP);
@@ -48,7 +44,7 @@ bool NetServer_IsLocalIP(int dwIP)
 	if (dw1 == 172 && dw2 >= 16 && dw2 <= 31) { return true; }
 	if (dw1 == 169 && dw2 == 254) { return true; }
 	if (dw1 == 127 && dw2 == 0 && dw2 == 0 && dw2 == 1) { return true; }
-	// maybe 169.254
+	
 
 	return false;
 }
@@ -106,9 +102,9 @@ void NetServer_OnConnect(int dwIP, int wPort, int iMsg)
 	string sSailImage = NMGetString(iMsg);
 	int iSailColor = NMGetDword(iMsg);
 
-	// check for already connect(maybe if big lag)
+	
 
-	// check for connecting to already played game
+	
 	if (bServerGameStarted || (iSecondsToStartGame >= 0))
 	{
 		iSMsg = NMCreate();
@@ -119,7 +115,7 @@ void NetServer_OnConnect(int dwIP, int wPort, int iMsg)
 		return;
 	}
 
-	// check password
+	
 	if (NetServer.ServerPassword != "" && sServerPassword != NetServer.ServerPassword)
 	{
 		iSMsg = NMCreate();
@@ -130,7 +126,7 @@ void NetServer_OnConnect(int dwIP, int wPort, int iMsg)
 		return;
 	}
 
-	// check for maxclients
+	
 	if (NetServer_GetClientsNum() >= sti(NetServer.MaxClients))
 	{
 		iSMsg = NMCreate();
@@ -141,7 +137,7 @@ void NetServer_OnConnect(int dwIP, int wPort, int iMsg)
 		return;
 	}
 
-	// find new client id
+	
 	int wNetClientID = NetServer_FindFreeClientID();
 	if (wNetClientID == DST_INVALID)
 	{
@@ -153,7 +149,7 @@ void NetServer_OnConnect(int dwIP, int wPort, int iMsg)
 		return;
 	}
 	
-	// if find client in NSPlayers, check password
+	
 	if (CheckAttribute(NSPlayers, "Players." + sNickName))
 	{
 		if (NSPlayers.Players.(sNickName).NickPassword != sNickPassword)
@@ -167,7 +163,7 @@ void NetServer_OnConnect(int dwIP, int wPort, int iMsg)
 		}
 	}
 
-	// add new client
+	
 	NetServer_AddClient(wNetClientID, dwIP, wPort);
 
 	ref rClient = NetServer_GetCLient(wNetClientID);
@@ -208,13 +204,8 @@ void NetServer_OnConnect(int dwIP, int wPort, int iMsg)
 
 	rClient.Ship.Sails.Color = iSailColor;
 
-	// setup goods
-/*	for (int i=0; i<Net_GetGoodsNum(); i++)
-	{
-		ref rGood = Net_GetGoodByIndex(i);
-		string sGood = rGood.Name;
-		rClient.Ship.Goods.(sGood) = (i + 1) * 1350;
-	}*/
+	
+ 
 
 	iSMsg = NMCreate();
 	NMAddByte(iSMsg, NC_CONNECT);
@@ -224,22 +215,22 @@ void NetServer_OnConnect(int dwIP, int wPort, int iMsg)
 	Trace("Client with IP " + inet_ntoa(dwIP) + ":" + ntohs(wPort) + " accepted. wNetClientID = " + wNetClientID);
 	NMDelete(iSMsg);
 
-	// send to all
+	
 	iSMsg = NMCreate();
 	NMAddByte(iSMsg, NC_CLIENT);
 	NMAddByte(iSMsg, NSC_CLIENT_CONNECTED);
 	NMAddClientID(iSMsg, wNetClientID);
-	NMAddString(iSMsg, rClient.NickName, 24);	// nick name
-	NMAddString(iSMsg, rClient.Ship.Name, 24);	// nick name
-	NMAddString(iSMsg, sFaceImage, 12);							// client face
-	NMAddString(iSMsg, sFlagImage, 12);							// client flag
-	NMAddString(iSMsg, sSailImage, 12);							// client sail emblem
-	NMAddDword(iSMsg, iSailColor);								// client sail color
-	NMAddByte(iSMsg, sti(rClient.BuyReady));					// Buy Ready
+	NMAddString(iSMsg, rClient.NickName, 24);	
+	NMAddString(iSMsg, rClient.Ship.Name, 24);	
+	NMAddString(iSMsg, sFaceImage, 12);							
+	NMAddString(iSMsg, sFlagImage, 12);							
+	NMAddString(iSMsg, sSailImage, 12);							
+	NMAddDword(iSMsg, iSailColor);								
+	NMAddByte(iSMsg, sti(rClient.BuyReady));					
 	NetServer_SendMessage(DST_ALL, iSMsg, true);
 	NMDelete(iSMsg);
 
-	// send to new client all other clients
+	
 	for (i=0; i<NET_MAXCLIENTS; i++) 
 	{
 		ref rOldClient = &NSClients[i];
@@ -250,19 +241,20 @@ void NetServer_OnConnect(int dwIP, int wPort, int iMsg)
 		NMAddByte(iSMsg, NC_CLIENT);
 		NMAddByte(iSMsg, NSC_CLIENT_CONNECTED);
 		NMAddClientID(iSMsg, sti(rOldClient.ID));
-		NMAddString(iSMsg, rOldClient.NickName, 24);			// nick name
-		NMAddString(iSMsg, rOldClient.Ship.Name, 24);			// nick name
-		NMAddString(iSMsg, rOldClient.UserData.Face, 12);		// client face
-		NMAddString(iSMsg, rOldClient.UserData.Flag, 12);		// client flag
-		NMAddString(iSMsg, rOldClient.UserData.Sail, 12);		// client sail emblem
-		NMAddDword(iSMsg, sti(rOldClient.Ship.Sails.Color));	// client sail color
-		NMAddByte(iSMsg, sti(rOldClient.BuyReady));				// Buy Ready
+		NMAddString(iSMsg, rOldClient.NickName, 24);			
+		NMAddString(iSMsg, rOldClient.Ship.Name, 24);			
+		NMAddString(iSMsg, rOldClient.UserData.Face, 12);		
+		NMAddString(iSMsg, rOldClient.UserData.Flag, 12);		
+		NMAddString(iSMsg, rOldClient.UserData.Sail, 12);		
+		NMAddDword(iSMsg, sti(rOldClient.Ship.Sails.Color));	
+		NMAddByte(iSMsg, sti(rOldClient.BuyReady));				
 		NetServer_SendMessage(wNetClientID, iSMsg, true);
 		NMDelete(iSMsg);
 	}
 
-	//NetServer_DownloadClientFile(wNetClientID, "resource\textures\" + sUserFacesPath + sFaceImage + "tga.tx");
-	//NetServer_DownloadClientFile(wNetClientID, "resource\textures\" + sUserSailsPath + sSailImage + "tga.tx");
-	//NetServer_DownloadClientFile(wNetClientID, "resource\textures\" + sUserFlagsPath + sFlagImage + "tga.tx");
+	
+	
+	
 }
+
 

@@ -12,7 +12,7 @@ void SeaAIGroupsInit()
 	}
 }
 
-// delete group by index
+
 void Group_DeleteGroupIndex(int iGroupIndex)
 {
 	if (iGroupIndex < 0 || iGroupIndex >= MAX_SHIP_GROUPS)
@@ -20,7 +20,7 @@ void Group_DeleteGroupIndex(int iGroupIndex)
 		Trace("Group_DeleteGroupIndex iGroupIndex is out of range = " + iGroupIndex);
 		return;
 	}
-	// boal super fix 03/02/2005 -->
+	
 	for (int i=0; i<MAX_SHIP_GROUPS; i++)
 	{
 		if (CheckAttribute(&AIGroups[i], "id") && CheckAttribute(&AIGroups[i], "Task.Target"))
@@ -31,12 +31,12 @@ void Group_DeleteGroupIndex(int iGroupIndex)
 			}
 		}
 	}
-	// boal super fix 03/02/2005 <--
+	
 
 	DeleteAttribute(&AIGroups[iGroupIndex], "");
 }
 
-// delete group by ID
+
 void Group_DeleteGroup(string sGroupID)
 {
 	int iGroupIndex = Group_FindGroup(sGroupID);
@@ -48,14 +48,14 @@ void Group_DeleteGroup(string sGroupID)
 	Group_DeleteGroupIndex(iGroupIndex);
 }
 
-// if you call Group_DeleteUnusedGroup() all group marked this will be deleted
+
 void Group_DeleteAtEnd(string sGroupID)
 {
 	ref rGroup = Group_GetGroupByID(sGroupID);
 	rGroup.DelAtEnd = true;
 }
 
-// return group type
+
 string Group_GetTypeR(ref rGroup) 
 {
 	if (!CheckAttribute(rGroup, "Type")) return "trade"; 
@@ -68,7 +68,7 @@ string Group_GetType(string sGroupID)
 	return Group_GetTypeR(rGroup);
 }
 
-// set group type: "war" | "trade" | "pirate"
+
 void Group_SetType(string sGroupID, string sGroupType)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
@@ -80,14 +80,14 @@ void Group_SetType(string sGroupID, string sGroupType)
 	}
 }
 
-// create a new AI group for ships, return -1 if can't create
+
 int Group_CreateGroup(string sGroupID)
 {
 	for (int i=0;i<MAX_SHIP_GROUPS;i++)
 	{
 		if (!CheckAttribute(&AIGroups[i],"id"))
 		{
-			//Trace("Group_CreateGroup create = " + sGroupID);
+			
 			AIGroups[i].id = sGroupID;
 			Group_SetTaskNone(sGroupID);
 			Group_SetType(sGroupID, "war");
@@ -96,10 +96,10 @@ int Group_CreateGroup(string sGroupID)
 		}
 	}
 	Trace("All slots in AIGroups are used, need to resize array!!!");
-	if (MOD_BETTATESTMODE == "On") Log_Info("Error: Group_CreateGroup нет места в массиве");
+	if (MOD_BETTATESTMODE == "On") Log_Info("Error: Group_CreateGroup пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 	return -1;
 }
-// boal потереть мертвые
+
 void Group_FreeAllDead()
 {
 	if (!bSeaActive)
@@ -114,7 +114,7 @@ void Group_FreeAllDead()
 				}
 				else
 				{
-				    // таймер to_do
+				    
 				}
 			}
 		}
@@ -124,22 +124,22 @@ void Group_FreeAllDead()
 ref Group_GetGroupByID(string sGroupID)
 {
 	int	iGroupIndex = Group_FindGroup(sGroupID);
-	//trace("iGroupIndex : " + iGroupIndex);
-	// if (iGroupIndex < 0)
+	
+	
 	return Group_GetGroupByIndex(iGroupIndex);
 }
 
 ref	Group_GetGroupByIndex(int iGroupIndex)
 {
-    if (iGroupIndex < 0) // fix
+    if (iGroupIndex < 0) 
     {
-        if (MOD_BETTATESTMODE == "On") Log_Info("Error: Group_GetGroupByIndex нет группы");
+        if (MOD_BETTATESTMODE == "On") Log_Info("Error: Group_GetGroupByIndex пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
         return &NullCharacter;
     }
     return &AIGroups[iGroupIndex];
 }
 
-// find AI group for ships
+
 int	Group_FindGroup(string sGroupID)
 {
 	for (int i=0;i<MAX_SHIP_GROUPS;i++)
@@ -147,18 +147,18 @@ int	Group_FindGroup(string sGroupID)
 		if (!CheckAttribute(&AIGroups[i],"id")) { continue; }
 		if (sGroupID == AIGroups[i].id) { return i; }
 	}
-//	Trace("Can't find SeaAI group = " + sGroupID);
-//	if (bQuestLogShow) Log_Info("Error: Group_FindGroup нет группы "+sGroupID);
+
+
 	return -1;
 }
 
 ref	Group_FindOrCreateGroup(string sGroupID)
 {
-	//trace("sGroupID = " + sGroupID);
+	
 	if(strlen(sGroupID) == 0)
 	{
 		Trace("sGroupID have no name!");
-		//AIGroups[iGroupIndex].Task.Lock = false;
+		
 		return &AIGroups[0];
 	}
 	int iGroupIndex = Group_FindGroup(sGroupID);
@@ -168,8 +168,8 @@ ref	Group_FindOrCreateGroup(string sGroupID)
 		if (iGroupIndex < 0) 
 		{
 			Trace("Group_FindOrCreateGroup sGroupID = " + sGroupID + ", can't create group ");
-			if (MOD_BETTATESTMODE == "On") Log_Info("Error: Group_FindOrCreateGroup не создалась группа " + sGroupID);
-			// бред - просто плодили еррор AIGroups[iGroupIndex].Task.Lock = false;
+			if (MOD_BETTATESTMODE == "On") Log_Info("Error: Group_FindOrCreateGroup пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ " + sGroupID);
+			
 			return &AIGroups[0];
 		}
 	}
@@ -177,7 +177,7 @@ ref	Group_FindOrCreateGroup(string sGroupID)
 	return &AIGroups[iGroupIndex];
 }
 
-// set group address to none
+
 void Group_SetAddressNone(string sGroupID)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
@@ -185,7 +185,7 @@ void Group_SetAddressNone(string sGroupID)
 	rGroup.Location = "none";
 }
 
-// set location near other group
+
 void Group_SetPursuitGroup(string sGroupID, string sPursuitGroupID)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
@@ -197,7 +197,7 @@ void Group_SetPursuitGroup(string sGroupID, string sPursuitGroupID)
 	}
 }
 
-// set new address for group
+
 void Group_SetAddress(string sGroupID, string sLocationID, string sLocationGroup, string sLocationLocator)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
@@ -219,11 +219,11 @@ void Group_DeleteUnusedGroup()
 	}
 }
 
-// ======================================================================================================
-// =										CHARACTER MANAGER											=
-// ======================================================================================================
 
-// Get main character for group
+
+
+
+
 ref Group_GetGroupCommanderR(ref rGroup) 
 { 
 	if (CheckAttribute(rGroup, "MainCharacter")) 
@@ -250,13 +250,13 @@ ref Group_GetGroupCommander(string sGroupID)
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
 	if (!CheckAttribute(rGroup, "MainCharacter") && MOD_BETTATESTMODE == "On")
 	{
-		trace("ERROR: Group_GetGroupCommander нет коммандера для " + sGroupID);
-		Log_Info("ERROR: Group_GetGroupCommander нет коммандера для " + sGroupID);
+		trace("ERROR: Group_GetGroupCommander пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ " + sGroupID);
+		Log_Info("ERROR: Group_GetGroupCommander пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ " + sGroupID);
 	}
 	return Group_GetGroupCommanderR(rGroup);
 }
 
-// Set group commander
+
 void Group_SetGroupCommander(string sGroupID, string sCharacterID)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
@@ -270,7 +270,7 @@ void Group_SetGroupCommander(string sGroupID, string sCharacterID)
 	}
 }
 
-// ugeen 
+
 string GetGroupIDFromCharacter(ref chr)
 {
 	ref rGroup;
@@ -289,9 +289,9 @@ string GetGroupIDFromCharacter(ref chr)
 	}
 	return "";
 }
-// <-- ugeen
 
-// delete character from others group, add character to new group
+
+
 void Group_ChangeCharacter(string sGroupID, string sCharacterID)
 {
 	for (int i=0;i<MAX_SHIP_GROUPS;i++)	
@@ -306,21 +306,21 @@ void Group_ChangeCharacter(string sGroupID, string sCharacterID)
 	Group_AddCharacter(sGroupID, sCharacterID);
 }
 
-// add new character to group
+
 void Group_AddCharacter(string sGroupID, string sCharacterID)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
 	
-	// add new character to list
+	
 	int iCharacterIndex = GetCharacterIndex(sCharacterID);
 	string sTemp = "id_" + iCharacterIndex;
 	rGroup.Quest.(sTemp) = sCharacterID;
 	rGroup.Quest.(sTemp).index = iCharacterIndex;
 
-	// DANGER 
+	
 	Characters[iCharacterIndex].SeaAI.Group.Name = sGroupID;
 }
-// boal 03/08/06 метод числа живых в группе
+
 int Group_GetLiveCharactersNum(string sGroupID)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
@@ -336,7 +336,7 @@ int Group_GetDeadCharactersNumR(ref rGroup)
 	{
 		int iCharacterIndex = Group_GetCharacterIndexR(rGroup, i);
 		if (iCharacterIndex < 0) { iDeads++; }
-		if (sti(Characters[iCharacterIndex].Ship.Type) == SHIP_NOTUSED || LAi_IsDead(&Characters[iCharacterIndex])) { iDeads++; }  // fix фантомов
+		if (sti(Characters[iCharacterIndex].Ship.Type) == SHIP_NOTUSED || LAi_IsDead(&Characters[iCharacterIndex])) { iDeads++; }  
 	}
 	return iDeads;
 }
@@ -361,7 +361,7 @@ int Group_GetCharacterIndexR(ref rGroup, int iIndex)
 	return sti(arAttr.index);
 }
 
-// delete character from group
+
 void Group_DelCharacter(string sGroupID, string sCharacterID)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
@@ -374,9 +374,9 @@ void Group_DelCharacter(string sGroupID, string sCharacterID)
 	}
 }
 
-// ======================================================================================================
-// =											GROUP UTILS												=
-// ======================================================================================================
+
+
+
 
 bool Group_isDeadR(ref rGroup)
 {
@@ -386,7 +386,7 @@ bool Group_isDeadR(ref rGroup)
 	{
 		int iCharacterIndex = Group_GetCharacterIndexR(rGroup, i);
 		if (iCharacterIndex < 0) { break; }
-		if (sti(Characters[iCharacterIndex].Ship.Type) == SHIP_NOTUSED || LAi_IsDead(&Characters[iCharacterIndex])) { iNumDeadCharacters++; }  // стертый тоже труп
+		if (sti(Characters[iCharacterIndex].Ship.Type) == SHIP_NOTUSED || LAi_IsDead(&Characters[iCharacterIndex])) { iNumDeadCharacters++; }  
 		i++;
 	}
 	if (iNumDeadCharacters == i) { return true; }
@@ -396,13 +396,13 @@ bool Group_isDeadR(ref rGroup)
 bool Group_isDead(string sGroupID)
 {
 	int	iGroupIndex = Group_FindGroup(sGroupID);
-	if (iGroupIndex < 0) { return true; } // fc! вот тут был БАГ!!! нет групы - она мертва - а возвращали false..
+	if (iGroupIndex < 0) { return true; } 
 
 	ref rGroup = Group_GetGroupByIndex(iGroupIndex);
 	return Group_isDeadR(rGroup);
 }
 
-// set start position
+
 void Group_SetXZ_AY(string sGroupID, float x, float z, float ay)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
@@ -442,21 +442,21 @@ float Group_GetPowerHP_R(ref rGroup)
 	{
 		int iCharacterIndex = Group_GetCharacterIndexR(rGroup, i); i++;
 		if (iCharacterIndex < 0) { break; }
-		if (CheckAttribute(&Characters[iCharacterIndex], "Ship.HP")) // fix может быть убитый фантом
+		if (CheckAttribute(&Characters[iCharacterIndex], "Ship.HP")) 
 		{
 			fHP = fHP + stf(Characters[iCharacterIndex].Ship.HP);
 		}
 		else
 		{
-		  // не факт что это хорошо, сам написал сам пока убрал (boal)  rGroup.DelAtEnd = true; // стереть, тк командера уже нет
+		  
 		}
 	}	
 	return fHP;
 }
 
-// ======================================================================================================
-// =											TASK SECTION											=
-// ======================================================================================================
+
+
+
 
 bool Group_isTaskLockR(ref rGroup) { return sti(rGroup.Task.Lock); }
 bool Group_isTaskLock(string sGroupID)
@@ -465,21 +465,21 @@ bool Group_isTaskLock(string sGroupID)
 	return Group_isTaskLockR(rGroup);
 }
 
-// lock task, group can't change task before end current
+
 void Group_LockTask(string sGroupID)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
 	rGroup.Task.Lock = true;
 }
 
-// unlock task, group can change tasks 
+
 void Group_UnlockTask(string sGroupID)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
 	rGroup.Task.Lock = false;
 }
 
-// Task: Defend
+
 void Group_SetTaskDefend(string sGroupID, string sDefendedGroupID)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
@@ -487,7 +487,7 @@ void Group_SetTaskDefend(string sGroupID, string sDefendedGroupID)
 	rGroup.Task.Target = sDefendedGroupID;
 }
 
-// Task: Runaway
+
 void Group_SetTaskRunaway(string sGroupID, string sGroupAwayFrom)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
@@ -497,7 +497,7 @@ void Group_SetTaskRunaway(string sGroupID, string sGroupAwayFrom)
 	if (bSeaActive)	{ AIRunaway_GroupRunaway(sGroupID, sGroupAwayFrom); }
 }
 
-// Task: Attack
+
 void Group_SetTaskAttack(string sGroupID, string sAttackedGroup) { Group_SetTaskAttackEx(sGroupID, sAttackedGroup, true); }
 void Group_SetTaskAttackEx(string sGroupID, string sAttackedGroup, bool bTaskBoth)
 {
@@ -505,32 +505,32 @@ void Group_SetTaskAttackEx(string sGroupID, string sAttackedGroup, bool bTaskBot
 
 	rGroup.Task = AITASK_ATTACK;
 	rGroup.Task.Target = sAttackedGroup;
-	// fix --> //navy тогда уж так ;)
+	
 	if (bTaskBoth)
 	{
 		rGroup = Group_FindOrCreateGroup(sAttackedGroup);
 		rGroup.Task = AITASK_ATTACK;
 		rGroup.Task.Target = sGroupID;
 	}
-	// fix <--	
+	
 	if (bSeaActive) { AIAttack_GroupAttack(sGroupID, sAttackedGroup, bTaskBoth); }	
 }
-// boal иначе вылеты, если в каюте дела
+
 void Group_SetTaskAttackInMap(string sGroupID, string sAttackedGroup)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
 
 	rGroup.Task = AITASK_ATTACK;
 	rGroup.Task.Target = sAttackedGroup;
-	// fix -->
+	
 	rGroup = Group_FindOrCreateGroup(sAttackedGroup);
 
 	rGroup.Task = AITASK_ATTACK;
 	rGroup.Task.Target = sGroupID;
-	// fix <--
+	
 }
 
-// Task: Move
+
 void Group_SetTaskMove(string sGroupID, float x, float z)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
@@ -550,7 +550,7 @@ void Group_SetTaskMove(string sGroupID, float x, float z)
 	}
 }
 
-// Task: Reset to none
+
 void Group_SetTaskNone(string sGroupID)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
@@ -559,7 +559,7 @@ void Group_SetTaskNone(string sGroupID)
 	rGroup.Task.Target = "";
 	rGroup.Task.Lock = false;
 	
-	// boal fix!! 03/02/2005
+	
 	int iIndex;
 	int iCharacterIndex;
 	iIndex = 0;
@@ -614,9 +614,9 @@ void Group_CheckTask()
 	string sGroupID = GetEventData();
 	if (sGroupID == PLAYER_GROUP) { return; }
 	ref rGroup = Group_GetGroupByID(sGroupID);
-    if (!CheckAttribute(rGroup, "Task")) // fix
+    if (!CheckAttribute(rGroup, "Task")) 
     {
-        if (MOD_BETTATESTMODE == "On") Log_Info("Error: Group_CheckTask нет группы");
+        if (MOD_BETTATESTMODE == "On") Log_Info("Error: Group_CheckTask пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
         return;
     }
 	switch (sti(rGroup.Task))

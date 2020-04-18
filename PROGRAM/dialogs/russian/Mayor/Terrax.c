@@ -1,4 +1,4 @@
-// Маркус Тиракс, барон Ла Веги
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -12,11 +12,11 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 
-// ------------------------------------------блок angry-----------------------------------------------
+
     if (CheckAttribute(npchar, "angry") && !CheckAttribute(npchar, "angry.ok"))
     {
         npchar.angry.ok = 1;
-        if (!CheckAttribute(npchar, "angry.first")) //ловушка первого срабатывания
+        if (!CheckAttribute(npchar, "angry.first")) 
         {
             NextDiag.TempNode = NextDiag.CurrentNode;
             Dialog.CurrentNode = "AngryExitAgain";
@@ -24,7 +24,7 @@ void ProcessDialogEvent()
         }
         else
         {
-            switch (npchar.angry.kind) //сюда расписываем реакцию ангри. В npchar.angry.name пробелы удалены!!!
+            switch (npchar.angry.kind) 
             {
                 case "repeat":
                     if (npchar.angry.name == "Firsttime") Dialog.CurrentNode = "AngryRepeat_1";
@@ -33,13 +33,13 @@ void ProcessDialogEvent()
             }
         }
     }
-// ------------------------------------------блок angry-----------------------------------------------
+
 
 	switch(Dialog.CurrentNode)
 	{
-		// ----------------------------------- Диалог первый - первая встреча
+		
 		case "First time":
-			// Addon 2016-1 Jason пиратская линейка патч 17/1
+			
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && !CheckAttribute(npchar, "quest.mtraxx_complete")) 
 			{
 				if (pchar.questTemp.Mtraxx == "full_complete_end" || pchar.questTemp.Mtraxx == "full_complete")
@@ -50,8 +50,8 @@ void ProcessDialogEvent()
 					break;
 				}
 			}
-			// Jason НСО
-			// если Сага завалена, то у Маркуса ноды в двух местах и оплата вперед
+			
+			
 			if(CheckAttribute(pchar, "questTemp.Patria.Pirate.Terrax") && pchar.questTemp.Patria == "epizode_12_pirates")
 			{
 				dialog.text = "Got any business for me?";
@@ -87,7 +87,7 @@ void ProcessDialogEvent()
 				link.l1.go = "patria_x29";
 				break;
 			}
-            dialog.text = NPCStringReactionRepeat(""+ GetSexPhrase("У тебя дело ко мне? Нет? Тогда вали отсюда!","Ха, " + pchar.name + "! У тебя дело ко мне? Нет? Тогда не отвлекай меня.") +"",
+            dialog.text = NPCStringReactionRepeat(""+ GetSexPhrase("пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ? пїЅпїЅпїЅ? пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ!","пїЅпїЅ, " + pchar.name + "! пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ? пїЅпїЅпїЅ? пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.") +"",
                          "I trust that I have made myself clear... Although I've made myself clear, you keep annoying me!",
                          "Right, I am getting tired of this rudeness.", "repeat", 3, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat("I am leaving already.",
@@ -99,15 +99,15 @@ void ProcessDialogEvent()
 			
 			if (sti(pchar.GenQuest.Piratekill) > 20)
 			{
-				dialog.text = RandPhraseSimple("Are you insane? Wanted to play a butcher? All pirates are angry with you, pal, so you better leave this place…Are you insane? Wanted to play a butcher? All pirates are angry with you, pal, so you better leave this place.", "It seems, pal, that you got mad. Wanted to stretch your hands a bit? No offence, but you have nothing to do here. Get lost!");
+				dialog.text = RandPhraseSimple("Are you insane? Wanted to play a butcher? All pirates are angry with you, pal, so you better leave this placeпїЅAre you insane? Wanted to play a butcher? All pirates are angry with you, pal, so you better leave this place.", "It seems, pal, that you got mad. Wanted to stretch your hands a bit? No offence, but you have nothing to do here. Get lost!");
 				link.l1 = RandPhraseSimple("Listen, I want to fix the situation.", "Help me to solve the problem.");
 				link.l1.go = "pirate_town";
 				break;
 			}
-			// Сага - завершаем искушение барбазона
+			
 			if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation") && pchar.questTemp.Saga.BarbTemptation == "terrax")
 			{
-				// Addon 2016-1 Jason пиратская линейка патч 17/1
+				
 				if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "full_complete_end")
 				{
 					link.l1 = "Marcus will you ever stop being mad with me? I have saved your friend Vincent who once accompanied us in our raid on Cartagena, by the way I also saved your ass too! Or didn't Bernard even tell you?";
@@ -119,7 +119,7 @@ void ProcessDialogEvent()
 					link.l1.go = "Temptation";
 				}
 			}
-			// Addon 2016-1 Jason пиратская линейка
+			
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "to_lavega")
 			{
 				link.l2 = "I want a job... Have anything profitable on your mind?";
@@ -145,7 +145,7 @@ void ProcessDialogEvent()
 				link.l1.go = "pirate_town";
 				break;
 			}
-			// Jason НСО
+			
 			if(!CheckAttribute(pchar, "questTemp.Patria.Pirate.Terrax") && CheckAttribute(pchar, "questTemp.Patria.DodsonFail"))
 			{
 				dialog.text = "Charles, what the hell!..";
@@ -174,7 +174,7 @@ void ProcessDialogEvent()
 				link.l1.go = "patria_10";
 				break;
 			}
-			// если Сага завалена, то у Маркуса ноды в двух местах и оплата вперед
+			
 			if(CheckAttribute(pchar, "questTemp.Patria.Pirate.Terrax") && pchar.questTemp.Patria == "epizode_12_pirates")
 			{
 				dialog.text = "Got any business for me?";
@@ -198,7 +198,7 @@ void ProcessDialogEvent()
 			}
 			if(CheckAttribute(pchar, "questTemp.Patria.Pirate.Terrax") && CheckAttribute(pchar, "questTemp.Patria.DodsonFail"))
 			{
-				dialog.text = "Какого дьявола!..";
+				dialog.text = "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!..";
 				link.l1 = "Marcus, there was an overlap. I could neither come nor inform you about my abscence...";
 				link.l1.go = "patria_x33";
 				break;
@@ -210,7 +210,7 @@ void ProcessDialogEvent()
 				link.l1.go = "patria_x29";
 				break;
 			}
-			// Тени прошлого
+			
 			if(CheckAttribute(pchar, "questTemp.Saga.Shadows") && pchar.questTemp.Saga.Shadows == "islatesoro" && npchar.location == "Pirates_townhall")
 			{
 				dialog.text = "Glad to see you, pal! How can I help you?";
@@ -225,7 +225,7 @@ void ProcessDialogEvent()
 				link.l1.go = "terrapin";
 				break;
 			}
-			// Addon 2016-1 Jason пиратская линейка
+			
 			if (CheckAttribute(pchar, "questTemp.Mtraxx.SilkTrade") && GetSquadronGoods(pchar, GOOD_SHIPSILK) >= 20)
 			{
 				link.l2 = "I have a silk to sell.";
@@ -242,19 +242,19 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "I_know_you_good";
 		break;
 
-		// ============== Грабеж среди бела дня, попытка залезть в сундуки =========================
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("Robbery!!! That is unacceptable! Prepare yourself, rat...", "Hey, what are you doing there?! Thought that you could rob me? You are done...", "Wait, what the hell? Turns out that you are a thief! End of the line, good man...");
 			link.l1 = LinkRandPhrase("Damn!", "Carramba!", "Ah, damn it!");
 			link.l1.go = "PL_Q3_fight";
 		break;
 					
-		// ======================== блок нод angry ===============>>>>>>>>>>>>>>>
+		
 		case "AngryRepeat_1":
             dialog.text = RandPhraseSimple(""+ GetSexPhrase("Go away","Get away") +" from here!", "Get away from my home!");
 			link.l1 = "Oups...";
 		    link.l1.go = "AngryExitAgainWithOut";
-            if (CheckAttribute(npchar, "angry.terms")) //примиряемся через 10 дней.
+            if (CheckAttribute(npchar, "angry.terms")) 
             {
                 if (GetNpcQuestPastDayParam(npchar, "angry.terms") > sti(npchar.angry.terms))
                 {
@@ -269,7 +269,7 @@ void ProcessDialogEvent()
             dialog.text = RandPhraseSimple("I am tired of you.", "I don't want to talk with you, so you better keep distance from me.");
 			link.l1 = RandPhraseSimple("Whatever...", "Hm, fine then...");
 		    link.l1.go = "AngryExitAgain";
-            if (CheckAttribute(npchar, "angry.terms")) //примиряемся через 10 дней.
+            if (CheckAttribute(npchar, "angry.terms")) 
             {
                 if (GetNpcQuestPastDayParam(npchar, "angry.terms") > sti(npchar.angry.terms))
                 {
@@ -289,9 +289,9 @@ void ProcessDialogEvent()
             DeleteAttribute(npchar, "angry.ok");
             DoReloadCharacterToLocation("Lavega_town","reload","reload6");
 		break;
-		// <<<<<<<<<<<<============= блок нод angry =============================
 		
-//--> -----------------------------Сага - Искушение Барбазона завершающие этапы---------------------------
+		
+
 		case "Temptation":
 			dialog.text = "Ha! The hero of Turks? Sorry for the rough greeting, pal. Bernard has already told me about your wonderful involvement and said something about a trap for me. I'd like to hear the details...";
 			link.l1 = "It was a trap. They were after you not Bernard.";
@@ -314,7 +314,7 @@ void ProcessDialogEvent()
 			dialog.text = "I don't get it! What's your role in all of this?";
 			link.l1 = "I've been watching that bastard Jackman for a long time.  I work with Jan Svensson if you don't know. Me and the Wood Devil have decided to expose him. Jan is sure that he is responsible for Blaze's death and Steven was accused for nothing.";
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "full_complete_end") link.l1.go = "Temptation_14";
-			else link.l1.go = "Temptation_4"; //патч 17/1
+			else link.l1.go = "Temptation_4"; 
 		break;
 		
 		case "Temptation_4":
@@ -331,7 +331,7 @@ void ProcessDialogEvent()
 		
 		case "Temptation_6":
 			dialog.text = "Where is this bastard?! I will torn him apart!";
-			if (!CheckAttribute(pchar, "questTemp.Saga.DodsonDie")) // Акула жив
+			if (!CheckAttribute(pchar, "questTemp.Saga.DodsonDie")) 
 			{
 				link.l1 = "Jackman and his brother are dead as well as the rest of hunters. I have personally dealt with them. The bastard won't harm anyone anymore. Marcus, would you vote for Steven Dodson? This is my personal ask.";
 				link.l1.go = "Temptation_7";
@@ -350,7 +350,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Temptation_8":
-			GiveItem2Character(pchar, "splinter_mt"); // дать осколок
+			GiveItem2Character(pchar, "splinter_mt"); 
 			dialog.text = "True... I understand, that you represent the Shark's interests?";
 			link.l1 = "Yes. Me and Jan Svensson. Fine, Marcus, see you there!";
 			link.l1.go = "Temptation_9";
@@ -369,7 +369,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Temptation_12":
-			GiveItem2Character(pchar, "splinter_mt"); // дать осколок
+			GiveItem2Character(pchar, "splinter_mt"); 
 			dialog.text = "Here, take my shard. Deliver it to Svensson. I take it that he is in charge?";
 			link.l1 = "Yes, he is. Fine, Marcus, see you there!";
 			link.l1.go = "Temptation_9";
@@ -392,7 +392,7 @@ void ProcessDialogEvent()
 			ChangeCharacterComplexReputation(pchar, "fame", 1);
 		break;
 		
-		// Addon 2016-1 Jason пиратская линейка патч 17/1
+		
 		case "Temptation_13":
 			dialog.text = "Yeah, he told me about a magnificent arrival of Charlie Prince at Turks... Saved my ass you say? How? Bernard told me something about a trap...";
 			link.l1 = "It was a trap. You was the target, Bernard was a bait...";
@@ -411,7 +411,7 @@ void ProcessDialogEvent()
 			link.l1.go = "Temptation_4";
 		break;
 		
-		// Тени прошлого
+		
 		case "shadows":
 			dialog.text = "Sure, I'll help you as I can! Go on.";
 			link.l1 = "Take a look, Marcus... Here is a shark's tooth. What can you tell me about it?";
@@ -447,7 +447,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			SetLaunchFrameFormParam("One hour later", "Saga_FinalLedbitterStory", 0, 4);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 1, 10); //крутим время
+			WaitDate("", 0, 0, 0, 1, 10); 
 			RecalculateJumpTable();
 		break;
 		
@@ -513,7 +513,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "shadows_16":
-			dialog.text = "Hm… I guess. According to Blaze's notes, he had been trying to find the island where his sister died. There are papers concerning Leadbeater's punitive expedition. Nothing interesting, except for a few numbers of latitude\nThis parallel crosses Caribbean sea in it's Northern part. But there is no sign of longitude. Obviously, Blaze's searches failed, you can not even imaging how many small islands at that latitude.";
+			dialog.text = "HmпїЅ I guess. According to Blaze's notes, he had been trying to find the island where his sister died. There are papers concerning Leadbeater's punitive expedition. Nothing interesting, except for a few numbers of latitude\nThis parallel crosses Caribbean sea in it's Northern part. But there is no sign of longitude. Obviously, Blaze's searches failed, you can not even imaging how many small islands at that latitude.";
 			link.l1 = "And what's the latitude?";
 			link.l1.go = "shadows_17";
 		break;
@@ -532,21 +532,21 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = "I_know_you_good";
 			sld = characterFromId("Svenson");
 			sld.quest.jessika = "true";
-			// рифы доступны для посещения
+			
 			i = FindIsland("RockIsland");
 			Islands[i].visible = true;
 			Islands[i].reload_enable = true;
-			// для любителей самостоятельно добавлять локаторы
-			LAi_LocationDisableOfficersGen("Shore67", true);//офицеров не пускать
-			// и сразу прерывание
+			
+			LAi_LocationDisableOfficersGen("Shore67", true);
+			
 			pchar.quest.Saga_Jess_Island.win_condition.l1 = "location";
 			pchar.quest.Saga_Jess_Island.win_condition.l1.location = "Shore67";
 			pchar.quest.Saga_Jess_Island.function = "Saga_JessikaIsland"; 
-			// активируем квест хронометра Алекса
-			pchar.questTemp.AlexClock = "terrax"; // 280912
+			
+			pchar.questTemp.AlexClock = "terrax"; 
 		break;		
 		
-		// суп из черепахи
+		
 		case "terrapin":
 			dialog.text = "Well, I can do something for you. As you know, Tortuga's security is not only provided by fort La Roche but also by a pirate squadron constantly guarding the shores of the island. The port of Tortuga is safe, these lads know their business and they have powerful ships. Levasseur has been buttering the captains for a long time\nThey are capable of fighting even against a line squadron and they will be serious opponents. So, being the keeper of the Code and also the leader of Brethren of the Coast I can make these watch dogs leave Tortuga's shores.";
 			link.l1 = "And that's it?";
@@ -567,12 +567,12 @@ void ProcessDialogEvent()
 		
 		case "terrapin_3":
 			DialogExit();
-			// Левассера - к барьеру!
+			
 			sld = characterFromId("Tortuga_Mayor");
 			LAi_LoginInCaptureTown(sld, true);
 			pchar.questTemp.Sharlie.Hardcore_Tortuga = "true";
 			pchar.questTemp.Terrapin = "hardcore";
-			pchar.questTemp.Sharlie.DelTerGuard = "true"; // убираем пиратскую эскадру
+			pchar.questTemp.Sharlie.DelTerGuard = "true"; 
 		break;
 		
 		case "pirate_town":
@@ -588,7 +588,7 @@ void ProcessDialogEvent()
 		
 		case "pirate_town_exit":
 			DialogExit();
-            bDisableFastReload = true;//закрыть переход
+            bDisableFastReload = true;
 			pchar.quest.pirate_in_town.win_condition.l1 = "ExitFromLocation";
 			pchar.quest.pirate_in_town.win_condition.l1.location = pchar.location;
 			pchar.quest.pirate_in_town.function = "TownPirate_battle";
@@ -602,7 +602,7 @@ void ProcessDialogEvent()
 			pchar.GenQuest.Piratekill = 0;
 		break;
 		
-		// Addon 2016-1 Jason ------------------------- пиратская линейка --------------------------
+		
 		case "Mtraxx":
 			if (pchar.Ship.Type == SHIP_NOTUSED)
 			{
@@ -662,7 +662,7 @@ void ProcessDialogEvent()
 		case "mtraxx_6":
             DialogExit();
 			pchar.questTemp.Mtraxx = "jewelry_1";
-			pchar.questTemp.Mtraxx.AffairOfHonor = "true"; // конфликт с делом чести
+			pchar.questTemp.Mtraxx.AffairOfHonor = "true"; 
 			npchar.dialog.currentnode = "mtraxx_wait";
 			AddQuestRecord("Roger_1", "1");
 			Mtraxx_JewelryBegin();
@@ -741,7 +741,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_13":
-            dialog.text = "That's great, my friend! Nicely done. It is hard to find a man capable of using both hands and a head. See me in 20 days to collect you reward."; // правки прогона 3
+            dialog.text = "That's great, my friend! Nicely done. It is hard to find a man capable of using both hands and a head. See me in 20 days to collect you reward."; 
 			link.l1 = "Very well, Marcus. See you soon. Hope you shall have another job for by then.";
 			link.l1.go = "mtraxx_14";
 		break;
@@ -759,7 +759,7 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				SetFunctionTimerCondition("Mtraxx_SilkPay", 0, 0, 20, false); // правки прогона 3
+				SetFunctionTimerCondition("Mtraxx_SilkPay", 0, 0, 20, false); 
 				SetFunctionTimerCondition("Mtraxx_SilkPayLate", 0, 0, 30, false);
 				AddQuestRecord("Roger_2", "24");
 			}
@@ -803,7 +803,7 @@ void ProcessDialogEvent()
 			SetFunctionTimerCondition("Mtraxx_SilkTradeOver", 0, 0, 60, false);
 		break;
 		
-		// торговля шелком
+		
 		case "mtraxx_silktrade":
 			iTotalTemp = GetSquadronGoods(pchar, GOOD_SHIPSILK);
             dialog.text = "How much do you have?";
@@ -815,7 +815,7 @@ void ProcessDialogEvent()
 		case "mtraxx_silktrade_1":
 			RemoveCharacterGoods(pchar, GOOD_SHIPSILK, iTotalTemp);
 			TakeNItems(pchar, "gold_dublon", iTotalTemp*24);
-            dialog.text = "ЋVery good. Take the gold - 24 doubloons for a roll as we agreed on.";
+            dialog.text = "пїЅVery good. Take the gold - 24 doubloons for a roll as we agreed on.";
 			link.l1 = "Gratitude!";
 			link.l1.go = "mtraxx_silktrade_3";
 		break;
@@ -931,14 +931,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_34":
-			if (GetNpcQuestPastDayParam(npchar, "task_date") >= 35) // опоздал
+			if (GetNpcQuestPastDayParam(npchar, "task_date") >= 35) 
 			{
 				dialog.text = "Damn it  "+pchar.name+", where have you been?! I told you to see me in a month! It's not a military here but some discipline is fucking expected! Get lost, I will not work with you anymore!";
 				link.l1 = "Well now...";
 				link.l1.go = "mtraxx_33";
 				break;
 			}
-			if (GetNpcQuestPastDayParam(npchar, "task_date") < 28) // рано пришел
+			if (GetNpcQuestPastDayParam(npchar, "task_date") < 28) 
 			{
 				dialog.text = ""+pchar.name+", I told you - see me in a month. I have no time to spare on you right now.";
 				link.l1 = "Fine...";
@@ -967,8 +967,8 @@ void ProcessDialogEvent()
 			}
 			if (pchar.questTemp.Mtraxx == "pasq_late" || pchar.questTemp.Mtraxx == "pasq_sink" || pchar.questTemp.Mtraxx == "pasq_esc")
 			{
-				pchar.questTemp.Mtraxx.CharleePrince = "true"; // атрибут - ГГ известный пират // правки прогона 3
-				dialog.text = "Ha! Charlie Prince, a brave captain! It's your new name in La Vega in case you didn't knowЙ So, did you enjoy being a brute? No? Figures. This is how my brainless agents like Cutlass live: today he parties in a brothel, wasting all he made, next day he is at my doorsteps begging a couple of thousands to pay his crew filled with idiots, just like he is. Whatever. Ready to hear it?";
+				pchar.questTemp.Mtraxx.CharleePrince = "true"; 
+				dialog.text = "Ha! Charlie Prince, a brave captain! It's your new name in La Vega in case you didn't knowпїЅ So, did you enjoy being a brute? No? Figures. This is how my brainless agents like Cutlass live: today he parties in a brothel, wasting all he made, next day he is at my doorsteps begging a couple of thousands to pay his crew filled with idiots, just like he is. Whatever. Ready to hear it?";
 				link.l1 = "Sure!";
 				link.l1.go = "mtraxx_36";
 				break;
@@ -979,7 +979,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_35":
-			pchar.questTemp.Mtraxx.Pasquale.Continue = "true"; // правки прогона 3
+			pchar.questTemp.Mtraxx.Pasquale.Continue = "true"; 
             dialog.text = "Remember what I said about brainless brutes and buyers of stolen goods? Right. Never take a job like this in the future. Leave it to Cutlass and people like him. Whatever. Ready to hear it?";
 			link.l1 = "Sure!";
 			link.l1.go = "mtraxx_36";
@@ -995,7 +995,7 @@ void ProcessDialogEvent()
             DialogExit();
             npchar.dialog.currentnode = "mtraxx_38";
 			chrDisableReloadToLocation = true;
-			// преобразуем Пикара
+			
 			sld = characterFromId("Mrt_Rocur");
 			sld.model = "Jan_Pikar";
 			SetCharacterPerk(sld, "SwordplayProfessional");
@@ -1127,7 +1127,7 @@ void ProcessDialogEvent()
 		
 		case "mtraxx_52":
             dialog.text = "I bet you did it.";
-			link.l1 = "Yeah. There was a caravan, we did the job nice and clean. Then we split the spoils of it on a shoreЙ but first I put a watchman with a spyglass on a hill. And it paid off since a Spanish squadron had appeared shortly lead by a heavy galleon.";
+			link.l1 = "Yeah. There was a caravan, we did the job nice and clean. Then we split the spoils of it on a shoreпїЅ but first I put a watchman with a spyglass on a hill. And it paid off since a Spanish squadron had appeared shortly lead by a heavy galleon.";
 			link.l1.go = "mtraxx_53";
 		break;
 		
@@ -1159,7 +1159,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_54":
-            dialog.text = "I'll take care of it. We should learn more about Ignacio Marco. He might be working for someoneЙ His 'interest' in my men is suspicious. What ship he flies?";
+            dialog.text = "I'll take care of it. We should learn more about Ignacio Marco. He might be working for someoneпїЅ His 'interest' in my men is suspicious. What ship he flies?";
 			link.l1 = "A polacre, the Torero. A unique vessel, must be an original design.";
 			link.l1.go = "mtraxx_55";
 		break;
@@ -1171,7 +1171,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_56":
-            dialog.text = "Listen thenЙ Very recently we had a curious pirate in our region. Name's Wulfric Iogansen also known as Red Wolf. A very colorful character. He came here from the North of Europe a couple of years ago. This Viking were paying Levasseur a protection fee, didn't make friends and stayed on his own. A very secretive type, no one had ever left his crew alive\nUnlike most of our kind, Wulfric never wasted money on whores and drinks. Never sold his plunder for pennies. Never trusted bankers. He had a fine corvette, the Freyja and a loyal crew he paid well to. I believe he was planning to stash as much gold as possible and then return to Europe and live there like a king.\nIt didn't work out for him thanks to the Spanish hunters. The man had inflicted a colossal damage and losses to Spain, they sank the Freyja and killed the whole crew along with Wolf.\nThing is, they never found his treasures. He must had a huge one stashed somewhere. Now the interesting part comes: I have his log. It has no obvious leads to the treasure but you may try to find them between words. If you succeed - two thirds are yours. Are you in?";
+            dialog.text = "Listen thenпїЅ Very recently we had a curious pirate in our region. Name's Wulfric Iogansen also known as Red Wolf. A very colorful character. He came here from the North of Europe a couple of years ago. This Viking were paying Levasseur a protection fee, didn't make friends and stayed on his own. A very secretive type, no one had ever left his crew alive\nUnlike most of our kind, Wulfric never wasted money on whores and drinks. Never sold his plunder for pennies. Never trusted bankers. He had a fine corvette, the Freyja and a loyal crew he paid well to. I believe he was planning to stash as much gold as possible and then return to Europe and live there like a king.\nIt didn't work out for him thanks to the Spanish hunters. The man had inflicted a colossal damage and losses to Spain, they sank the Freyja and killed the whole crew along with Wolf.\nThing is, they never found his treasures. He must had a huge one stashed somewhere. Now the interesting part comes: I have his log. It has no obvious leads to the treasure but you may try to find them between words. If you succeed - two thirds are yours. Are you in?";
 			link.l1 = "Hm... it's is like looking for a black cat in a dark room. Where's the log?";
 			link.l1.go = "mtraxx_57";
 		break;
@@ -1191,7 +1191,7 @@ void ProcessDialogEvent()
 			pchar.questTemp.Mtraxx = "wolfreek_start";
 			pchar.questTemp.Mtraxx.Logbook.CanRead = "true";
 			pchar.questTemp.Mtraxx.Logbook.Page1 = "true";
-			bQuestDisableMapEnter = true;//закрыть карту
+			bQuestDisableMapEnter = true;
 			pchar.GenQuest.MapClosedNoBattle = true;
 		break;
 		
@@ -1322,7 +1322,7 @@ void ProcessDialogEvent()
 		break;
 			
 		case "mtraxx_73":
-			if (GetNpcQuestPastDayParam(npchar, "task_date") >= 22) // опоздал
+			if (GetNpcQuestPastDayParam(npchar, "task_date") >= 22) 
 			{
 				dialog.text = "Damn it Prince! You could have a revenge and helluva lot of money if you weren't so slow! Didn't expect this from you but since you are a good kid I forgive you. You'll have a chance to regain your reputation in my eyes in a month. I am gathering everyone for a raid!\nGet to me in a month on a single but powerful ship. Luke, Cutlass, Geffrey and Jan will take part in this too. Don't be late even for day!";
 				link.l1 = "I understand Marcus. Won't happen again!";
@@ -1345,7 +1345,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_74":
-            dialog.text = "It's fine. Now I see the whole picture. These two devils you saw are working for Barbason and Jackman. They are almost just like my Luke and Cutlass although they fight better. The red is called Prowler, he is a captain of the ‘cuttlefish, a corvette, and the guy with moustaches is Ghoul, he sails the Merciless, a frigate. As for our friend Ignacio - he is working not only for the Brits and a Spanish don Losad but also for Barbason. This is why he tried to fuck you and Picard.";
+            dialog.text = "It's fine. Now I see the whole picture. These two devils you saw are working for Barbason and Jackman. They are almost just like my Luke and Cutlass although they fight better. The red is called Prowler, he is a captain of the пїЅcuttlefish, a corvette, and the guy with moustaches is Ghoul, he sails the Merciless, a frigate. As for our friend Ignacio - he is working not only for the Brits and a Spanish don Losad but also for Barbason. This is why he tried to fuck you and Picard.";
 			link.l1 = "Why?";
 			link.l1.go = "mtraxx_75";
 		break;
@@ -1438,7 +1438,7 @@ void ProcessDialogEvent()
 			pchar.quest.mtraxx_corrida_torero.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 1);
 			pchar.quest.mtraxx_corrida_torero.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
 			pchar.quest.mtraxx_corrida_torero.function = "Mtraxx_CorridaToreroOnMap";
-			SetFunctionTimerCondition("Mtraxx_CorridaTimeFindTorero", 0, 0, 7, false); // время на перехват Тореро, снимать при потоплении или захвате
+			SetFunctionTimerCondition("Mtraxx_CorridaTimeFindTorero", 0, 0, 7, false); 
 		break;
 		
 		case "mtraxx_87":
@@ -1466,7 +1466,7 @@ void ProcessDialogEvent()
 		
 		case "mtraxx_board":
             dialog.text = "Ho-ho, greetings to brave corsair! Didn't expect to see me here, right? Ha-ha-ha! We've found the Spanish caravan after all...";
-			if (CheckAttribute(pchar, "questTemp.Mtraxx.Corrida.Gold")) // был абордаж
+			if (CheckAttribute(pchar, "questTemp.Mtraxx.Corrida.Gold")) 
 			{
 				link.l1 = "Yes boss we did, although it wasn't easy.";
 				link.l1.go = "mtraxx_board_1";
@@ -1481,7 +1481,7 @@ void ProcessDialogEvent()
 		case "mtraxx_board_1":
 			iTotalTemp = GetSquadronGoods(pchar, GOOD_GOLD);
             dialog.text = "How much gold did we get, Prince?";
-			if (iTotalTemp < 1) link.l1 = "Ќeh... Nothing.";
+			if (iTotalTemp < 1) link.l1 = "пїЅeh... Nothing.";
 			else link.l1 = "Heh... "+iTotalTemp+"...";
 			link.l1.go = "mtraxx_board_2";
 		break;
@@ -1555,7 +1555,7 @@ void ProcessDialogEvent()
 			npchar.DeckDialogNode = "mtraxx_board_6x";
 			npchar.DontDeskTalk = true;
 			Ship_SetTaskRunAway(SECONDARY_TASK, sti(npchar.index), sti(pchar.index));
-			bQuestDisableMapEnter = false;//открыть карту
+			bQuestDisableMapEnter = false;
 			DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
 			pchar.quest.mtraxx_corrida_complete.win_condition.l1 = "MapEnter";
 			pchar.quest.mtraxx_corrida_complete.function = "Mtraxx_CorridaComplete";
@@ -1599,7 +1599,7 @@ void ProcessDialogEvent()
 				link.l1.go = "mtraxx_90x";
 				break;
 			}
-			if (RealShips[sti(pchar.Ship.Type)].Type.Merchant) // торговые
+			if (RealShips[sti(pchar.Ship.Type)].Type.Merchant) 
 			{
 				dialog.text = "Prince have you decided to be my second Cutlass? Why did you bring a trade vessel to me? I was counting on you! Go bring here a decent warship! Now!";
 				link.l1 = "Hm...";
@@ -1651,7 +1651,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_95":
-            dialog.text = "You heard right. My warship will deal with the fort with your help of course. Bold Jeffrey will be carrying ground troops on his ost-indian. Pelly got a decent corvetteЙ not without my financial aid. Paul Chant and you are responsible for taking out patrol fleet.\nJan Picard didn't show up which is odd since his vessel was seen in Port Royal. His problems, so fuck him. Instead of him, my friend will join the raid, Bernard Vensan. Plus, Leprechaun with his buccaneers will assist our troops. We will take the gold from the fort and ransom from the city. They won't forget it, ha-ha!\nCome join me and other captains in the tavern this evening! We should drink for our cause!";
+            dialog.text = "You heard right. My warship will deal with the fort with your help of course. Bold Jeffrey will be carrying ground troops on his ost-indian. Pelly got a decent corvetteпїЅ not without my financial aid. Paul Chant and you are responsible for taking out patrol fleet.\nJan Picard didn't show up which is odd since his vessel was seen in Port Royal. His problems, so fuck him. Instead of him, my friend will join the raid, Bernard Vensan. Plus, Leprechaun with his buccaneers will assist our troops. We will take the gold from the fort and ransom from the city. They won't forget it, ha-ha!\nCome join me and other captains in the tavern this evening! We should drink for our cause!";
 			link.l1 = "Aye, aye, chief!..";
 			link.l1.go = "mtraxx_96";
 		break;
@@ -1665,7 +1665,7 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			ChangeCharacterAddressGroup(npchar, "LaVega_townhall", "goto", "goto3");
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "Mtraxx_CartahenaReloadInTavern", 10.0);
-			pchar.worldmapencountersoff = "1"; // уберем враждебные энкаунтеры
+			pchar.worldmapencountersoff = "1"; 
 		break;
 		
 		case "mtraxx_97":
@@ -1748,7 +1748,7 @@ void ProcessDialogEvent()
 			LAi_SetActorType(sld);
 			LAi_ActorFollowEverywhere(sld, "", -1);
 			AddQuestRecord("Roger_9", "6");
-			// запрещаем драки в городе, резиденции, форте
+			
 			LAi_LocationFightDisable(&Locations[FindLocation("Cartahena_fort")], true);
 			LAi_LocationFightDisable(&Locations[FindLocation("Cartahena_town")], true);
 			LAi_LocationFightDisable(&Locations[FindLocation("Cartahena_townhall")], true);
@@ -1827,7 +1827,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuestFunction("Mtraxx_CartahenaFinal");
 		break;
 		
-		// Addon 2016-1 Jason пиратская линейка патч 17/1
+		
 		case "mtraxx_113":
             dialog.text = "What?! Jan is now a bitch of the Englishmen, Bold and Cutlass have disappeared, Leprechaun and his men are nowhere to be found!! And now you?!";
 			link.l1 = "Marcus I've made a decision. I made a good coin, you made quite a fortune on me  too. Time to part our ways. I am leaving.";
@@ -1845,7 +1845,7 @@ void ProcessDialogEvent()
 		    npchar.quest.mtraxx_complete = "true";
 		break;
 		
-		// Jason НСО
+		
 		case "patria":
 			dialog.text = "Ho-ho! You've come to the right place! Spit it out!";
 			link.l1 = "There is a fella that has no fear of pirates. He doesn't take them seriously. He needs to be taught a lesson om respect. Remember, don't kill him.";
@@ -1981,7 +1981,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "patria_15":
-			pchar.quest.Patria_CondotierTerksOver.over = "yes"; //снять таймер
+			pchar.quest.Patria_CondotierTerksOver.over = "yes"; 
 			dialog.text = "Hey, frog! Halt!";
 			link.l1 = "I'm not moving";
 			link.l1.go = "patria_16";
@@ -2037,7 +2037,7 @@ void ProcessDialogEvent()
 			if (CheckAttribute(pchar, "questTemp.Patria.Saga.Terrax"))
 			{
 				LAi_ActorRunToLocation(npchar, "reload", "reload1", "none", "", "", "Patria_CondotierDodsonNorm", 10.0);
-				Island_SetReloadEnableGlobal("Bermudes", false); // закрыть остров до отвоза барона
+				Island_SetReloadEnableGlobal("Bermudes", false); 
 			}
 			else LAi_ActorRunToLocation(npchar, "reload", "reload1", "none", "", "", "Patria_CondotierTerraxNorm", 10.0);
 			sld = CharacterFromID("Terks_pirat");
@@ -2046,12 +2046,12 @@ void ProcessDialogEvent()
 			pchar.questTemp.Patria = "epizode_12_baronalive";
 			pchar.questTemp.Patria.DodsonAgain = "true";
 			sld = CharacterFromID("Noel");
-			AddPassenger(pchar, sld, false);//добавить пассажира
+			AddPassenger(pchar, sld, false);
 			SetCharacterRemovable(sld, false);
 			pchar.quest.Patria_Condotier_toPuancie.win_condition.l1 = "location";
 			pchar.quest.Patria_Condotier_toPuancie.win_condition.l1.location = "Charles_town";
 			pchar.quest.Patria_Condotier_toPuancie.function = "Patria_CondotierEnCapstervil";
-			// Теркс в норму
+			
 			LAi_LocationFightDisable(&Locations[FindLocation("Shore56")], false);
 			LAi_LocationDisableOfficersGen("Shore56", false);
 		break;
@@ -2117,7 +2117,7 @@ void ProcessDialogEvent()
 			LAi_SetActorType(sld);
 			LAi_ActorRunToLocation(sld, "reload", "reload1", "none", "", "", "", 8.0);
 			pchar.questTemp.Patria = "epizode_12_barondie";
-			// Теркс в норму
+			
 			LAi_LocationFightDisable(&Locations[FindLocation("Shore56")], false);
 			LAi_LocationDisableOfficersGen("Shore56", false);
 		break;

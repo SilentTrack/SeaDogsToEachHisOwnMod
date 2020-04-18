@@ -2,8 +2,8 @@ void NetServer_OnCommand(int wNetClientID, int iMsg)
 {
 	ref rClient = NetServer_GetClient(wNetClientID);
 
-	// check client for admin password
-	//rClient.
+	
+	
 
 	int iSubCode = NMGetByte(iMsg);
 	switch (iSubCode)
@@ -21,3 +21,4 @@ void NetServer_OnCommand(int wNetClientID, int iMsg)
 		break;
 	}
 }
+

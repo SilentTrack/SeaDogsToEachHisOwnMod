@@ -43,7 +43,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "FalseTrace_1":
-			//выбираем целевой пункт
+			
 			switch (drand(2))
 			{
 				case 0: 
@@ -101,21 +101,21 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload1_back", "none", "", "", "", -1);
 			AddPassenger(pchar, npchar, false);
-			//LAi_ActorFollowEverywhere(npchar, "", -1);
+			
 			chrDisableReloadToLocation = false;
 			bDisableFastReload = false;
 			AddQuestRecord("FalseTrace", "1");
 			AddQuestUserData("FalseTrace", "sCity1", XI_ConvertString("Colony"+pchar.questTemp.FalseTrace.StartCity+"Gen"));
 			AddQuestUserData("FalseTrace", "sCity2", XI_ConvertString("Colony"+pchar.questTemp.FalseTrace.TargetCity));
 			AddQuestUserData("FalseTrace", "sShip", pchar.questTemp.FalseTrace.ShipName);
-			//установим таймер на генерацию энкаунтера
+			
 			pchar.quest.False_Trace_2.win_condition.l1 = "Timer";
 			pchar.quest.False_Trace_2.win_condition.l1.date.hour  = sti(GetTime());
 			pchar.quest.False_Trace_2.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 2);
 			pchar.quest.False_Trace_2.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 2);
 			pchar.quest.False_Trace_2.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 2);
 			pchar.quest.False_Trace_2.function = "CreateFalseTraceGaleonOnMap";
-			SetFunctionTimerCondition("FalseTraceGaleonOver", 0, 0, sti(pchar.questTemp.FalseTrace.DayQty)+2, false);//таймер
+			SetFunctionTimerCondition("FalseTraceGaleonOver", 0, 0, sti(pchar.questTemp.FalseTrace.DayQty)+2, false);
 		break;
 		
 		case "FalseTrace_officer":
@@ -195,7 +195,7 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			pchar.questTemp.FalseTrace = "TalkCabinWoman";
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "TalkSelf_Quest", 3.0);
-			SetFunctionTimerCondition("FalseTraceSollyOver", 0, 0, 15, false);//таймер
+			SetFunctionTimerCondition("FalseTraceSollyOver", 0, 0, 15, false);
 			AddQuestRecord("FalseTrace", "5");
 			AddQuestUserData("FalseTrace", "sCity", XI_ConvertString("Colony"+pchar.questTemp.FalseTrace.QuestCity));
 		break;
@@ -252,14 +252,14 @@ void ProcessDialogEvent()
 			RemoveCharacterEquip(npchar, GUN_ITEM_TYPE);
 			RemoveCharacterEquip(npchar, CIRASS_ITEM_TYPE);
 			sld = &Characters[sti(Pchar.questTemp.FalseTrace.PrisonerIDX)];
-			ReleasePrisoner(sld); //освободили пленника
+			ReleasePrisoner(sld); 
 			AddPassenger(pchar, sld, false);
 			SetCharacterRemovable(sld, false);
-			DeleteAttribute(sld, "LifeDay") //постоянный персонаж
+			DeleteAttribute(sld, "LifeDay") 
 			GiveItem2Character(sld, "blade_10");
 			EquipCharacterbyItem(sld, "blade_10");
 			GiveItem2Character(sld, "pistol1");
-			EquipCharacterbyItem(sld, "pistol1");//патроны не даю - все одно для антуражу
+			EquipCharacterbyItem(sld, "pistol1");
 			DeleteAttribute(pchar, "GenQuest.DontSetCabinOfficer");
 			AddComplexSelfExpToScill(40, 40, 40, 40);
 			AddQuestRecord("FalseTrace", "11");
@@ -268,11 +268,11 @@ void ProcessDialogEvent()
 		break;
 		
 		case "FalseTrace_23":
-			pchar.quest.FalseTraceSollyOver.over = "yes"; //снять таймер
+			pchar.quest.FalseTraceSollyOver.over = "yes"; 
 			dialog.text = "Thank you, captain, for helping to return my wife! Adam Rayner is in your debt, he will not forget about it, ha-ha, I swear to... kha! Damn mines! Now about Squint-eyed Solly. My man have already given me all details. Solly has left all his goodies in a grotto of San Juan del Norte bay. The man himself is in Blueweld now\nYou should hurry, you have got only five days, according to my pal. Take your men with you, Solly's bandits are tough, they will give you some heat\nTime to say farewells. Thank you again, captain, Godspeed!";
 			link.l1 = "Good luck to you, Adam. Do not offend your wife!";
 			link.l1.go = "FalseTrace_Remove_exit";
-			SetFunctionTimerCondition("FalseTraceBonanzaOver", 0, 0, 5, false);//таймер
+			SetFunctionTimerCondition("FalseTraceBonanzaOver", 0, 0, 5, false);
 			pchar.quest.False_Trace_4.win_condition.l1 = "location";
 			pchar.quest.False_Trace_4.win_condition.l1.location = "Shore55";
 			pchar.quest.False_Trace_4.function = "FalseTrace_SollyBonanza";
@@ -282,7 +282,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "FalseTrace_24":
-			pchar.quest.FalseTraceSollyOver.over = "yes"; //снять таймер
+			pchar.quest.FalseTraceSollyOver.over = "yes"; 
 			dialog.text = "Ha! Why on earth, captain, have we gone ashore in this bay? I told you that my man was waiting for me in the port of "+XI_ConvertString("Colony"+pchar.questTemp.FalseTrace.QuestCity+"Gen")+"! Are you planning to go there on foot through jungles?";
 			link.l1 = "Bad guess, Adam. Did you really think that I would believe your crap once again? Do you think I am a total fool? This time I've made a deal with your wife.";
 			link.l1.go = "FalseTrace_25";
@@ -345,7 +345,7 @@ void ProcessDialogEvent()
 		
 		case "FalseTrace_abordage_4":
 			DialogExit();
-			pchar.questTemp.FalseTrace.KillCaptain = "true";//атрибут квеста
+			pchar.questTemp.FalseTrace.KillCaptain = "true";
 			Lai_SetPlayerType(pchar);
 			QuestAboardCabinDialogFree();
 			LAi_group_SetRelation(LAI_GROUP_BRDENEMY, LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
@@ -358,7 +358,7 @@ void ProcessDialogEvent()
 		
 		case "FalseTrace_abordage_5":
 			DialogExit();
-			pchar.questTemp.FalseTrace.CapPrisoner = "true";//атрибут квеста
+			pchar.questTemp.FalseTrace.CapPrisoner = "true";
 			Lai_SetPlayerType(pchar);
 			DeleteAttribute(npchar, "DontRansackCaptain");
 			LAi_SetActorType(npchar);
@@ -440,7 +440,7 @@ void ProcessDialogEvent()
 			link.l1.go = "FalseTrace_wife_8";
 		break;
 		
-		case "FalseTrace_wife_8"://ноды пересечения - старт
+		case "FalseTrace_wife_8":
 			dialog.text = "";
 			link.l1 = "Quiet now? Great. Now listen to me! I attacked the ship, because I had information that she was carrying a decent load of sliver. And I got this information from Adam Rayner.";
 			link.l1.go = "FalseTrace_wife_9";
@@ -482,7 +482,7 @@ void ProcessDialogEvent()
 			link.l1.go = "FalseTrace_wife_15";
 		break;
 		
-		case "FalseTrace_wife_15"://ноды пересечения - конец
+		case "FalseTrace_wife_15":
 			if (CheckAttribute(pchar, "questTemp.FalseTrace.KillCaptain"))
 			{
 				dialog.text = "What to do? I know what to do. You are tool of sin, thanks to my husband's deeds. You have killed an innocent man, the only man who treated me well. Atone for your sins, captain. Slay Adam. Right in front of my eyes. I want to see this scum dying, I want to spit on his corpse\nWhen he is dead, I will tell you where he hides his treasures. Drunk idiot told me about his stash once, ha-ha, he don't even remember it!";
@@ -599,9 +599,9 @@ void ProcessDialogEvent()
 		case "FalseTrace_wife_30":
 			DialogExit();
 			LAi_ActorGoToLocation(npchar, "reload", "reload1_back", "none", "", "", "", 15);
-			LAi_LocationDisableOfficersGen(pchar.questTemp.FalseTrace.QuestShore, false);//офицеров пускать
-			LAi_LocationDisableOfficersGen("Mayak7", true);//офицеров не пускать
-			locations[FindLocation("Mayak7")].DisableEncounters = true;//энкаунтеры закрыть
+			LAi_LocationDisableOfficersGen(pchar.questTemp.FalseTrace.QuestShore, false);
+			LAi_LocationDisableOfficersGen("Mayak7", true);
+			locations[FindLocation("Mayak7")].DisableEncounters = true;
 			chrDisableReloadToLocation = false;
 			bDisableFastReload = false;
 			pchar.quest.False_Trace_7.win_condition.l1 = "location";
@@ -650,8 +650,8 @@ void ProcessDialogEvent()
 			LAi_ActorGoToLocation(npchar, "goto", "goto33", "none", "", "", "", -1);
 			LAi_SetPlayerType(pchar);
 			chrDisableReloadToLocation = false;
-			LAi_LocationDisableOfficersGen("Mayak7", false);//офицеров пускать
-			locations[FindLocation("Mayak7")].DisableEncounters = false;//энкаунтеры открыть
+			LAi_LocationDisableOfficersGen("Mayak7", false);
+			locations[FindLocation("Mayak7")].DisableEncounters = false;
 			AddQuestRecord("FalseTrace", "25");
 			ChangeCharacterComplexReputation(pchar, "nobility", 5);
 			OfficersReaction("good");
@@ -682,7 +682,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "FalseTrace_Bandits_4":
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешим драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			DialogExit();
 			for (i=1; i<=4; i++)
 			{
@@ -732,7 +732,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "FalseTrace_Solly_2":
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешим драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			DialogExit();
 			for (i=1; i<=6; i++)
 			{
@@ -776,7 +776,7 @@ void ProcessDialogEvent()
 		
 		case "FalseTrace_GoldShip_3":
 			DialogExit();
-			locations[FindLocation(pchar.questTemp.FalseTrace.TargetShore)].DisableEncounters = false; //энкаутеры открыть
+			locations[FindLocation(pchar.questTemp.FalseTrace.TargetShore)].DisableEncounters = false; 
 			LAi_ActorGoToLocation(npchar, "reload", "reload1_back", "none", "", "", "FalseTraceDouble_Remove", -1);
 			pchar.quest.False_Trace_6.win_condition.l1 = "Timer";
 			pchar.quest.False_Trace_6.win_condition.l1.date.hour  = sti(GetTime());
@@ -795,3 +795,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

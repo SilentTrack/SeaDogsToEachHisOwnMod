@@ -3,7 +3,7 @@ int iServerEnvSMsg;
 
 void NetServer_EndGame(bool bReconnect)
 {
-	//if (!bServerGameStarted) { return; }
+	
 	bServerGameStarted = false;
 
 	NetServer_ClearPacketsQueue();
@@ -45,7 +45,7 @@ void NetServer_EndGame(bool bReconnect)
 		}
 	}
 
-	// disconnect clients
+	
 	for (int i=0; i<NET_MAXCLIENTS; i++)
 	{
 		if (!sti(NSClients[i].Use)) { continue; }
@@ -73,11 +73,11 @@ void NetServer_OnCheckGameOverFrame()
 {
 	int i;
 
-	// check the game over - only if game started
+	
 	if (!sti(NetServer.GameOver))
 	{
-		NetServer.wWinnerClientID = DST_INVALID;		// for deathmatch
-		NetServer.iWinnerTeam = -1;						// for all other modes
+		NetServer.wWinnerClientID = DST_INVALID;		
+		NetServer.iWinnerTeam = -1;						
 
 		bool bCurrentGameOver = false;
 		switch (sti(NetServer.GameType))
@@ -98,7 +98,7 @@ void NetServer_OnCheckGameOverFrame()
 
 		if (!NET_DEBUG && bCurrentGameOver)
 		{
-			// game is over
+			
 			NetServer.GameOver = true;
 			int iSMsg = NMCreate();
 			NMAddByte(iSMsg, NC_STARTGAME);
@@ -116,7 +116,7 @@ void NetServer_RestartGame()
 {
 	Net_DeleteServer();
 
-	//Net_CreateServer();
+	
 }
 
 void NetServer_StartGame()
@@ -132,13 +132,13 @@ void NetServer_StartServerGame()
 {
 	int		iSMsg;
 	int		i;
-	int		iTeams[4];	// 
-	object	oTeams[4];	// team positions
+	int		iTeams[4];	
+	object	oTeams[4];	
 
 	for (i=0; i<4; i++) { iTeams[i] = 0; }
 
 	if (bServerGameStarted) { return; }
-	//DelEventHandler("NetServer_StartServerGame", "NetServer_StartServerGame");
+	
 
 	bServerGameStarted = true;
 
@@ -146,7 +146,7 @@ void NetServer_StartServerGame()
 		NMAddByte(iServerEnvSMsg, NC_STARTGAME);
 		NMAddByte(iServerEnvSMsg, NSC_STARTGAME_ENVIRONMENT);
 
-	// create all environments
+	
 		NetServer_CreateWeatherEnvironment(iServerEnvSMsg);
 		NetServer_CreateIslandEnvironment(iServerEnvSMsg);
 		NetServer_CreateBallsEnvironment(iServerEnvSMsg);
@@ -156,11 +156,11 @@ void NetServer_StartServerGame()
 		NetServer_CreateFortEnvironment(iServerEnvSMsg);
 		NetServer_CreateTimeEnvironment(iServerEnvSMsg);
 
-	// send message to all client's for start game and load environment
+	
 		NetServer_SendMessage(DST_ALL, iServerEnvSMsg, true);
 		NMDelete(iServerEnvSMsg);
 
-	// setup group positions
+	
 	if (NetServer.IslandID == "")
 	{
 		switch (sti(NetServer.GameType))
@@ -240,18 +240,18 @@ void NetServer_StartServerGame()
 		}
 	}
 
-	// load players
 	
-	// send message to all client's for load clients
+	
+	
 
-	// client
-	// 1. Ship Type
-	//		a. Ship Name
-	//		b. Ship Upgrade
-	// 2. Cannons Type
-	// 3. Crew quantity
-	// 4. Skills
-	// 5. Perks
+	
+	
+	
+	
+	
+	
+	
+	
 
 	for (i=0; i<NET_MAXCLIENTS; i++)
 	{
@@ -269,26 +269,26 @@ void NetServer_StartServerGame()
 		iSMsg = NMCreate();
 		NMAddByte(iSMsg, NC_CLIENT);
 		NMAddByte(iSMsg, NSC_CLIENT_LOAD);
-		NMAddClientID(iSMsg, i);									// clientID
-		NMAddString(iSMsg, NSClients[i].NickName, 24);				// Nick Name
-		NMAddWord(iSMsg, sti(NSClients[i].Ship.Type));				// Ship Type
-		NMAddFloat(iSMsg, stf(NSClients[i].Ship.HP));				// Ship HP
-		NMAddByte(iSMsg, sti(NSClients[i].Ship.Upgrades.Hull));		// Ship Upgrade: Hull
-		NMAddByte(iSMsg, sti(NSClients[i].Ship.Upgrades.Sails));	// Ship Upgrade: Masts
-		NMAddByte(iSMsg, sti(NSClients[i].Ship.Cannons.Type));		// Cannons Type
-		NMAddByte(iSMsg, sti(NSClients[i].Ship.Upgrades.Cannons));	// Cannons Upgrade
-		NMAddWord(iSMsg, sti(NSClients[i].Ship.Crew.Quantity));		// Crew quantity
+		NMAddClientID(iSMsg, i);									
+		NMAddString(iSMsg, NSClients[i].NickName, 24);				
+		NMAddWord(iSMsg, sti(NSClients[i].Ship.Type));				
+		NMAddFloat(iSMsg, stf(NSClients[i].Ship.HP));				
+		NMAddByte(iSMsg, sti(NSClients[i].Ship.Upgrades.Hull));		
+		NMAddByte(iSMsg, sti(NSClients[i].Ship.Upgrades.Sails));	
+		NMAddByte(iSMsg, sti(NSClients[i].Ship.Cannons.Type));		
+		NMAddByte(iSMsg, sti(NSClients[i].Ship.Upgrades.Cannons));	
+		NMAddWord(iSMsg, sti(NSClients[i].Ship.Crew.Quantity));		
 
-		// sails parameters
+		
 
-		// skills
-		NMAddByte(iSMsg, sti(NSClients[i].Skills.Accuracy));	// Skills: Accuracy
-		NMAddByte(iSMsg, sti(NSClients[i].Skills.Cannons));		// Skills: Cannons
-		NMAddByte(iSMsg, sti(NSClients[i].Skills.Sailing));		// Skills: Sailing
-		NMAddByte(iSMsg, sti(NSClients[i].Skills.Defence));		// Skills: Defence
-		NMAddByte(iSMsg, sti(NSClients[i].Skills.Repair));		// Skills: Repair
+		
+		NMAddByte(iSMsg, sti(NSClients[i].Skills.Accuracy));	
+		NMAddByte(iSMsg, sti(NSClients[i].Skills.Cannons));		
+		NMAddByte(iSMsg, sti(NSClients[i].Skills.Sailing));		
+		NMAddByte(iSMsg, sti(NSClients[i].Skills.Defence));		
+		NMAddByte(iSMsg, sti(NSClients[i].Skills.Repair));		
 	
-		//NMAddBytes(iSMsg, 0);									// Perks: 
+		
 
 		float fRadius = 60.0;
 		if (sti(NetServer.GameType) == NETGAME_DEATHMATCH) { fRadius = 350 * (1.0 + stf(NetServer.StartPosition)); }
@@ -298,7 +298,7 @@ void NetServer_StartServerGame()
 		else
 			{ NSClients[i].FriendlyTeam = iTeam; }
 
-		// select ship position
+		
 		float x = stf(oTeams[iTeam].Pos.x);
 		float z = stf(oTeams[iTeam].Pos.z);
 		float dx = makefloat(iTeams[iTeam] - (makeint(iTeams[iTeam] / 4) * 4)) * fRadius;
@@ -315,11 +315,11 @@ void NetServer_StartServerGame()
 		NSClients[i].Ship.TurnState = 0.0;
 		NSClients[i].Ship.SailState = 0.0;
 
-		// load ship for server
+		
 		ref rShip = Net_GetShipByIndex(sti(NSClients[i].Ship.Type));
 		NSClients[i].Model = rShip.Name + "1";
 
-		// when ship create, he trying to check - can he be placed there, or not, if not he must found new point to spawn
+		
 		CreateEntity(&NSClients[i], "NetShip");
 		SendMessage(&NSClients[i], "la", MSG_SHIP_CREATE, rShip);
 
@@ -330,13 +330,13 @@ void NetServer_StartServerGame()
 
 		iTeams[iTeam] = iTeams[iTeam] + 1;
 		
-		// 
-		NMAddFloat(iSMsg, stf(NSClients[i].Ship.Pos.x));		// pos.x
-		NMAddFloat(iSMsg, stf(NSClients[i].Ship.Pos.y));		// pos.y
-		NMAddFloat(iSMsg, stf(NSClients[i].Ship.Pos.z));		// pos.z
-		NMAddFloat(iSMsg, stf(NSClients[i].Ship.Ang.y));		// ang.y
+		
+		NMAddFloat(iSMsg, stf(NSClients[i].Ship.Pos.x));		
+		NMAddFloat(iSMsg, stf(NSClients[i].Ship.Pos.y));		
+		NMAddFloat(iSMsg, stf(NSClients[i].Ship.Pos.z));		
+		NMAddFloat(iSMsg, stf(NSClients[i].Ship.Ang.y));		
 
-		// add goods
+		
 		for (int j=0; j<iNetGoodsNum; j++)
 		{
 			ref rGood = Net_GetGoodByIndex(j);
@@ -344,12 +344,12 @@ void NetServer_StartServerGame()
 			NMAddWord(iSMsg, sti(NSClients[i].Ship.Goods.(sGoodName)));
 		}
 
-		// send message
+		
 		NetServer_SendMessage(DST_ALL, iSMsg, true);
 		NMDelete(iSMsg);
 	}
 
-	// send some game info
+	
 	if (sti(NetServer.GameType) == NETGAME_CONVOY)
 	{
 		iSMsg = NMCreate();
@@ -368,7 +368,7 @@ void NetServer_StartServerGame()
 void NetServer_DownloadClientFile(int wClientID, string sFileName)
 {
 	if (!sti(NetServer.AllowDownload)) { return; }
-	//if (NFExist(sFileName)) { return; }
+	
 
 	int iFileID1 = NFRCreateFile(wClientID, sFileName, -1, -1);
 

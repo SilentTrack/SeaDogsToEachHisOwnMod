@@ -3,12 +3,12 @@ int CreateMartiniqueCharacters(int n)
 {
 	ref ch;
 	
-	///////////////////////////////////////////////////////////////////////////////
-	// ОСНОВНЫЕ ПЕРСОНАЖИ
-	///////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 
-    // FortFrance -->
-	makeref(ch,Characters[n]);			//Губернатор
+    
+	makeref(ch,Characters[n]);			
 	ch.id		= "FortFrance_Mayor";
 	ch.model	= "huber_4";
 	ch.sex = "man";
@@ -28,7 +28,7 @@ int CreateMartiniqueCharacters(int n)
 	EquipCharacterbyItem(ch, BLADE_LONG); 
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetImmortal(ch, true);
 	LAi_SetHuberType(ch);
 	LAi_RemoveLoginTime(ch);
@@ -36,7 +36,7 @@ int CreateMartiniqueCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Священик
+	makeref(ch,Characters[n]);			
 	ch.id		= "FortFrance_Priest";
 	ch.model	= "priest_4";
 	ch.model.animation = "man";
@@ -48,13 +48,13 @@ int CreateMartiniqueCharacters(int n)
 	ch.Dialog.Filename = "Common_church.c";
 	ch.greeting = "padre_1";
 	ch.nation = FRANCE;
-//	LAi_SetLoginTime(ch, 6.0, 21.99);
+
 	LAi_SetPriestType(ch);
 	LAi_group_MoveCharacter(ch, "FRANCE_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);		// ОФициантка
+	makeref(ch,Characters[n]);		
 	ch.id		= "FortFrance_waitress";
 	ch.model	= "women_15";
 	ch.sex = "woman";
@@ -71,7 +71,7 @@ int CreateMartiniqueCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Трактирщик
+	makeref(ch,Characters[n]);			
 	ch.id		= "FortFrance_tavernkeeper";
 	ch.model	= "barmen_8";
 	ch.greeting = "barmen_3";
@@ -90,7 +90,7 @@ int CreateMartiniqueCharacters(int n)
 	n = n + 1;
 
 
-	makeref(ch,Characters[n]);			//Торговец
+	makeref(ch,Characters[n]);			
 	ch.id		= "FortFrance_trader";
 	ch.model	= "trader_8";
 	ch.greeting = "store_3";
@@ -108,7 +108,7 @@ int CreateMartiniqueCharacters(int n)
 	ch.item_date = "";
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Корабел
+	makeref(ch,Characters[n]);			
 	ch.id		= "FortFrance_shipyarder";
 	ch.model	= "shipowner_8";
 	ch.greeting = "shipyarder_3";
@@ -126,14 +126,14 @@ int CreateMartiniqueCharacters(int n)
 	EquipCharacterbyItem(ch, "topor_02"); 
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetLoginTime(ch, 6.0, 21.99);
 	LAi_SetHuberType(ch);
 	LAi_group_MoveCharacter(ch, "FRANCE_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Банкир
+	makeref(ch,Characters[n]);			
 	ch.id		= "FortFrance_usurer";
 	ch.model	= "banker_8_2";
 	ch.sex = "man";
@@ -148,14 +148,14 @@ int CreateMartiniqueCharacters(int n)
 	ch.nation = FRANCE;
 	ch.greeting = "usurer_4";
 	ch.quest.shiping = "0";
-	ch.UsurerDeposit = 7000; // *1000 денег
+	ch.UsurerDeposit = 7000; 
 	ch.money = USURER_MIN_MONEY + rand(USURER_NORM);
 	LAi_SetOwnerType(ch);
 	LAi_group_MoveCharacter(ch, "FRANCE_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Начальник порта
+	makeref(ch,Characters[n]);			
 	ch.id		= "FortFrance_PortMan";
 	ch.model	= "citiz_2";
 	ch.sex = "man";
@@ -172,7 +172,7 @@ int CreateMartiniqueCharacters(int n)
 	ch.item_date = "";
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Хозяйка борделя
+	makeref(ch,Characters[n]);			
 	ch.id		= "FortFrance_Hostess";
 	ch.name		= "Aurora"
 	ch.lastname = "";
@@ -186,7 +186,7 @@ int CreateMartiniqueCharacters(int n)
 	ch.Dialog.Filename = "Common_Brothel.c";
 	ch.greeting = "maman_3";
 	ch.nation = FRANCE;
-	ch.questChurch = ""; //флаг для пожертвований
+	ch.questChurch = ""; 
 	LAi_SetOwnerType(ch);
 	LAi_group_MoveCharacter(ch, "FRANCE_CITIZENS");
 	n = n + 1;
@@ -201,16 +201,16 @@ int CreateMartiniqueCharacters(int n)
 	ch.nation = PIRATE;
 	GiveItem2Character(ch, BLADE_SABER);
 	EquipCharacterbyItem(ch, BLADE_SABER);
-	// посадим в генераторе
+	
 	ch.Dialog.Filename = "Smuggler Agent_dialog.c";
 	LAi_SetSitType(ch);
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.greeting = "smuggler";
 	n = n + 1;
 	
-    //============== LeFransua ===============
+    
 
-	makeref(ch,Characters[n]);			//Губернатор
+	makeref(ch,Characters[n]);			
 	ch.id		= "Barbazon";
 	ch.model	= "Barbazon";
 	ch.name 	= "Jacques";
@@ -230,14 +230,14 @@ int CreateMartiniqueCharacters(int n)
 	EquipCharacterbyItem(ch, BLADE_LONG); 
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetHuberType(ch);
 	LAi_RemoveLoginTime(ch);
 	LAi_group_MoveCharacter(ch, "PIRATE_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 	
-	makeref(ch,Characters[n]);		// ОФициантка
+	makeref(ch,Characters[n]);		
 	ch.id		= "LeFransua_waitress";
 	ch.model	= "women_10";
 	ch.sex = "woman";
@@ -254,7 +254,7 @@ int CreateMartiniqueCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Трактирщик
+	makeref(ch,Characters[n]);			
 	ch.id		= "LeFransua_tavernkeeper";
 	ch.model	= "barmen_13";
 	ch.name 	= "Cesare";
@@ -274,7 +274,7 @@ int CreateMartiniqueCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 	
-	makeref(ch,Characters[n]);			//Торговец
+	makeref(ch,Characters[n]);			
 	ch.id		= "LeFransua_trader";
 	ch.model	= "trader_13_1";
 	ch.name 	= "Ian";
@@ -296,3 +296,4 @@ int CreateMartiniqueCharacters(int n)
 
 	return n;
 }
+

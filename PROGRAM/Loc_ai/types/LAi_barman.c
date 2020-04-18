@@ -1,25 +1,11 @@
-/*
-Тип: стоячий, всегда стоит, отвечает на диалоги, никогда не боится
-
-	Используемые шаблоны:
-		stay
-		dialog
-
-
-
-	группа: barmen
-		локатор основного стояния локатора: stay
-		локатор возле шкафа за спиной (справа): bar1
-		локатор возле шкафа справа (если нет то дальше от bar1): bar2
-
-*/
+ 
 
 
 
 #define LAI_TYPE_BARMAN		"barman"
 
 
-//Инициализация
+
 void LAi_type_barman_Init(aref chr)
 {
 	DeleteAttribute(chr, "location.follower");
@@ -32,12 +18,12 @@ void LAi_type_barman_Init(aref chr)
 	chr.chr_ai.type.locator = "stay";
 	chr.chr_ai.type.wait = 5.0;
 	LAi_tmpl_stay_InitTemplate(chr);
-	//Установим анимацию персонажу
+	
 	LAi_SetDefaultStayAnimation(chr);
 	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", false);
 }
 
-//Процессирование типа персонажа
+
 void LAi_type_barman_CharacterUpdate(aref chr, float dltTime)
 {	
 	float time, tw;
@@ -51,7 +37,7 @@ void LAi_type_barman_CharacterUpdate(aref chr, float dltTime)
 	}
 	if(chr.chr_ai.tmpl == LAI_TMPL_STAY)
 	{
-		//Смотрим близко проходящих персонажей
+		
 		int num = FindNearCharacters(chr, 3.0, -1.0, -1.0, 0.001, false, true);
 		if(num > 0)
 		{
@@ -61,13 +47,13 @@ void LAi_type_barman_CharacterUpdate(aref chr, float dltTime)
 				{
 					if(nMainCharacterIndex == sti(chrFindNearCharacters[i].index))
 					{					
-						//нашли ГГ, проверяем, не в сундуке ли.						
+						
 						if (bMainCharacterInBox && chr.chr_ai.type.state != "afraid")
 						{
 							if (chr.sex == "man") chr.greeting = "VOICE\Russian\soldier_arest_1.wav";
 							else chr.greeting = "VOICE\Russian\Gr_Woman_Citizen_11.wav";
 							chr.dialog.currentnode = chr.sex  + "_FackYou";
-							LAi_SetActorTypeNoGroup(chr); //временно актер, чтобы темплейт диалога не слетал. кодить это еще и в этом типе - геморой. 
+							LAi_SetActorTypeNoGroup(chr); 
 							LAi_ActorDialog(chr, pchar, "", 0.0, 0);
 							return;
 						}
@@ -92,7 +78,7 @@ void LAi_type_barman_CharacterUpdate(aref chr, float dltTime)
 					if(Characters[ichr].chr_ai.type == LAI_TYPE_WAITRESS)
 					{
 						isTrp = false;
-						//Трепимся с официнткой
+						
 						if(rand(100) == 55)
 						{
 							LAi_CharacterPlaySound(chr, "barman_wtrs");
@@ -101,7 +87,7 @@ void LAi_type_barman_CharacterUpdate(aref chr, float dltTime)
 				}
 				if(isTrp)
 				{
-					//Трепимся с подошедшим
+					
 					time = stf(chr.chr_ai.type.time);
 					time = time + dltTime;
 					chr.chr_ai.type.time = time;
@@ -119,7 +105,7 @@ void LAi_type_barman_CharacterUpdate(aref chr, float dltTime)
 						{
 							if(rand(100) < 30)
 							{
-								//Запустим режим заманивания покупателей
+								
 								LAi_type_barman_Ask(chr);
 								chr.chr_ai.type.timewait = "0";
 								CharacterTurnByChr(chr, &Characters[ichr]);
@@ -137,7 +123,7 @@ void LAi_type_barman_CharacterUpdate(aref chr, float dltTime)
 					if(rand(100) < 10) LAi_type_barman_PlayWaitAni(chr);
 				}
 			}else{
-				//Боимся
+				
 				chr.chr_ai.type.state = "afraid";
 				LAi_tmpl_ani_PlayAnimation(chr, "afraid", -1.0);
 				LAi_SetAfraidDead(chr);
@@ -161,7 +147,7 @@ void LAi_type_barman_CharacterUpdate(aref chr, float dltTime)
 			chr.chr_ai.type.who = "-1";
 			chr.chr_ai.type.timewait = "3";
 		}else{
-			//Смотрим близко проходящих персонажей
+			
 			time = stf(chr.chr_ai.type.time);
 			num = FindNearCharacters(chr, 4.5, -1.0, -1.0, 0.001, false, false);
 			if(num > 0)
@@ -182,19 +168,19 @@ void LAi_type_barman_CharacterUpdate(aref chr, float dltTime)
 	}
 }
 
-//Загрузка персонажа в локацию
+
 bool LAi_type_barman_CharacterLogin(aref chr)
 {
 	return true;
 }
 
-//Выгрузка персонажа из локацию
+
 bool LAi_type_barman_CharacterLogoff(aref chr)
 {
 	return true;
 }
 
-//Завершение работы темплейта
+
 void LAi_type_barman_TemplateComplite(aref chr, string tmpl)
 {
 	switch(chr.chr_ai.type.state)
@@ -204,7 +190,7 @@ void LAi_type_barman_TemplateComplite(aref chr, string tmpl)
 		chr.chr_ai.type.state = "stay";
 		break;
 	case "goto":
-		//Дадим новое задание
+		
 		LAi_type_barman_SetAfterGoto(chr);
 		break;
 	case "work":
@@ -216,30 +202,30 @@ void LAi_type_barman_TemplateComplite(aref chr, string tmpl)
 	}
 }
 
-//Сообщить о желании завести диалог
+
 void LAi_type_barman_NeedDialog(aref chr, aref by)
 {
 }
 
-//Запрос на диалог, если возвратить true то в этот момент можно начать диалог
+
 bool LAi_type_barman_CanDialog(aref chr, aref by)
 {
-	//Согласимся на диалог
+	
 	if(chr.chr_ai.type.state == "afraid") return false;
 	if(chr.chr_ai.tmpl == LAI_TMPL_STAY || chr.chr_ai.tmpl == LAI_TMPL_GOTO || chr.chr_ai.tmpl == LAI_TMPL_ANI) return true;
 	return false;
 }
 
-//Начать диалог
+
 void LAi_type_barman_StartDialog(aref chr, aref by)
 {
-	//Если мы пасивны, запускаем шаблон без времени завершения
+	
 	LAi_CharacterSaveAy(chr);
 	CharacterTurnByChr(chr, by);
 	LAi_tmpl_SetActivatedDialog(chr, by);
 }
 
-//Закончить диалог
+
 void LAi_type_barman_EndDialog(aref chr, aref by)
 {
 	if(chr.chr_ai.type.state == "goto")
@@ -252,23 +238,23 @@ void LAi_type_barman_EndDialog(aref chr, aref by)
 	}
 }
 
-//Персонаж выстрелил
+
 void LAi_type_barman_Fire(aref attack, aref enemy, float kDist, bool isFindedEnemy)
 {
 
 }
 
 
-//Персонаж атакован
+
 void LAi_type_barman_Attacked(aref chr, aref by)
 {
 	
 }
 
-//Проиграть анимацию зазывания покупанелей
+
 void LAi_type_barman_Ask(aref chr)
 {
-	//Выбираем анимацию
+	
 	string animation;
 	switch(rand(3))
 	{
@@ -286,17 +272,17 @@ void LAi_type_barman_Ask(aref chr)
 		break;
 	}
 	LAi_tmpl_ani_PlayAnimation(chr, animation, 4.0 + frand(3.0));
-	//Выбираем проигрываемый звук
+	
 	LAi_CharacterPlaySound(chr, "barman");
 }
 
-//Ориентироваться по текущему локатору
+
 void LAi_type_barman_RestoreAngle(aref chr)
 {
 	CharacterTurnByLoc(chr, "barmen", chr.chr_ai.type.locator);
 }
 
-//Найти врага
+
 int LAi_type_barman_FindEnemy(aref chr, int num)
 {
 	if(LAi_grp_alarmactive == true)
@@ -310,20 +296,20 @@ int LAi_type_barman_FindEnemy(aref chr, int num)
 	return -1;
 }
 
-//С заданой вероятностью запустить анимацию облакачивания на стол
+
 void LAi_type_barman_PlayWaitAni(aref chr)
 {
 	if(chr.chr_ai.type.state != "stay") return;
 	if(rand(100) > 20) return;
 	if(stf(chr.chr_ai.type.wait) > 0.0) return;
-	//Решили оперется на стойку
+	
 	chr.chr_ai.type.state = "waiting";
 	float wait = 20.0;
 	LAi_tmpl_ani_PlayAnimation(chr, "Barman_look_around", wait);
 	chr.chr_ai.type.wait = wait;
 }
 
-//Отправить бармена в другой локатор
+
 void LAi_type_barman_SetGoto(aref chr)
 {
 	if(chr.chr_ai.type.locator == "stay")
@@ -342,7 +328,7 @@ void LAi_type_barman_SetGoto(aref chr)
 	chr.chr_ai.type.state = "goto";
 }
 
-//Установить задание после прихода в локатор
+
 void LAi_type_barman_SetAfterGoto(aref chr)
 {
 	LAi_type_barman_RestoreAngle(chr);
@@ -374,3 +360,4 @@ void LAi_type_barman_SetAfterGoto(aref chr)
 		chr.chr_ai.type.state = "stay";
 	}
 }
+

@@ -24,7 +24,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 		break;
 		
-		// шаман карибов Туттуатхапак
+		
 		case "Tuttuat":
 			dialog.text = "Why have you come to my hut, white man? Tuttuathapak not think you his dear guest.";
 			if (GetCharacterFreeItem(pchar, "mushket1") || GetCharacterFreeItem(pchar, "mushket2"))
@@ -540,7 +540,7 @@ void ProcessDialogEvent()
 			PlaySound("interface\important_item.wav");
 			GiveItem2Character(pchar, "kaleuche_amulet2");
 			GiveItem2Character(pchar, "kaleuche_amulet3");
-			// преобразуем амулеты
+			
 			ChangeItemDescribe("kaleuche_amulet2", "itmdescr_kaleuche_amulet2_sword");
 			ChangeItemDescribe("kaleuche_amulet3", "itmdescr_kaleuche_amulet3_shield");
 			sld = ItemsFromID("kaleuche_amulet2");
@@ -555,8 +555,8 @@ void ProcessDialogEvent()
 			sld.groupID = TALISMAN_ITEM_TYPE;
 			sld.unique = true;	
 			sld.ItemType = "ARTEFACT";
-			SetFunctionTimerCondition("Caleuche_TuttuatAmuletOver", 0, 0, 30, false); // таймер
-			// делаем доступным Хаэль Роа
+			SetFunctionTimerCondition("Caleuche_TuttuatAmuletOver", 0, 0, 30, false); 
+			
 			n = FindIsland("KhaelRoa");
 			Islands[n].visible = true;
 			Island_SetReloadEnableGlobal(Islands[n].id, true);
@@ -610,7 +610,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Tuttuat_63":
-			pchar.quest.Caleuche_TuttuatAmuletOver.over = "yes"; //снять таймер
+			pchar.quest.Caleuche_TuttuatAmuletOver.over = "yes"; 
 			if(IsEquipCharacterByArtefact(pchar, "kaleuche_amulet2")) RemoveCharacterEquip(pchar, TALISMAN_ITEM_TYPE);
 			if(IsEquipCharacterByArtefact(pchar, "kaleuche_amulet3")) RemoveCharacterEquip(pchar, TALISMAN_ITEM_TYPE);
 			dialog.text = "You lifted curse from the Caleuche. She find you thereafter?";
@@ -668,7 +668,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Tuttuat_69":
-			dialog.text = "Manga Rosa is rare herb in Caribbean. It grows where peoplу walk not a lot. Stupid people pick it, dry it and smoke it. It is very stupid. NO SMOKE IT! Seek jungle and coves, secluded places where silly people not thread. Look carefully. For each potion I need five stems of Manga Rosa.";
+			dialog.text = "Manga Rosa is rare herb in Caribbean. It grows where peoplпїЅ walk not a lot. Stupid people pick it, dry it and smoke it. It is very stupid. NO SMOKE IT! Seek jungle and coves, secluded places where silly people not thread. Look carefully. For each potion I need five stems of Manga Rosa.";
 			link.l1 = "Alright, great shaman. I'll come back to you once I have enough Manga Rosa.";
 			link.l1.go = "Tuttuat_70";
 		break;
@@ -915,7 +915,7 @@ void ProcessDialogEvent()
 			sld.price = 10000;
 		break;
 
-		// капитан Калеуче
+		
 		case "CaleucheCap":
 			PlaySound("Types\skel.wav");
 			dialog.text = "It's all in vain, sailor. You will not best me. And all my men lying on the deck will put together their bones and rise again before dawn. We cannot be killed, for death abandoned us.";
@@ -970,7 +970,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
 		
-		// --> // наш матрос на берегу
+		
 		case "on_coast":
 			dialog.text = "Finally you woke up, captain... How do you feel?";
 			link.l1 = "Goddammit, what happened? My head is splitting...";
@@ -1020,7 +1020,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "on_coast_8":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			DialogExit();
 			LAi_CharacterDisableDialog(npchar);
 			LAi_SetWarriorType(npchar);
@@ -1028,7 +1028,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("Caleuche", "5");
 		break;
 		
-		// Фергус Хупер
+		
 		case "fergus":
 			dialog.text = "Hey! I haven't yet collected enough snake skins to sell them to you, so piss off!";
 			link.l1 = "Hmm... Are you Fergus Hooper?";
@@ -1098,7 +1098,7 @@ void ProcessDialogEvent()
 			npchar.lifeday = 0;
 		break;
 		
-		// бандит в городе
+		
 		case "Beliz_townbandos":
 			dialog.text = "Hey! What do you need? I don't expect any guests. Get lost!";
 			link.l1 = "Why so rude, friend? I just wanted to ask...";
@@ -1126,7 +1126,7 @@ void ProcessDialogEvent()
 		case "Beliz_townbandos_4":
 			DialogExit();
 			DeleteAttribute(npchar, "CityType");
-			DeleteAttribute(npchar, "city"); // чтобы не было НЗГ
+			DeleteAttribute(npchar, "city"); 
 			LAi_SetImmortal(npchar, false);
 			LAi_SetWarriorType(npchar);
 			LAi_group_MoveCharacter(npchar, "EnemyFight");
@@ -1139,7 +1139,7 @@ void ProcessDialogEvent()
 			pchar.quest.Caleuche_letter.function = "Caleuche_FindLetter";
 		break;
 		
-		// главарь лесных бандосов
+		
 		case "Beliz_forestbandos":
 			dialog.text = "Hey, traveller! Welcome, welcome... Supper, lodging - everything for your money. So, get ready to turn your pockets inside out!";
 			link.l1 = "Not so fast, my good man. I have business with you.";
@@ -1182,7 +1182,7 @@ void ProcessDialogEvent()
 		case "Beliz_forestbandos_6":
 			DialogExit();
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
-			pchar.GenQuest.CannotWait = true;//запрет ожидания
+			pchar.GenQuest.CannotWait = true;
 			LocatorReloadEnterDisable(pchar.location, "reload2_back", true);
 			LocatorReloadEnterDisable(pchar.location, "reload3_back", true);
 			for (i=1; i<=6; i++)
@@ -1252,10 +1252,10 @@ void ProcessDialogEvent()
 			LAi_SetImmortal(npchar, false);
 			LocatorReloadEnterDisable("Beliz_Jungle_01", "reload2_back", false);
 			LocatorReloadEnterDisable("Beliz_Jungle_01", "reload3_back", false);
-			LocatorReloadEnterDisable("Beliz_CaveEntrance_2", "reload1_back", true); // закрываем пещеру
-			SetFunctionTimerCondition("Caleuche_CaveOpen", 0, 0, 1, false); // таймер
-			SetFunctionTimerCondition("Caleuche_BelizbandosClear", 0, 0, 4, false); // таймер
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
+			LocatorReloadEnterDisable("Beliz_CaveEntrance_2", "reload1_back", true); 
+			SetFunctionTimerCondition("Caleuche_CaveOpen", 0, 0, 1, false); 
+			SetFunctionTimerCondition("Caleuche_BelizbandosClear", 0, 0, 4, false); 
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
 			for (i=1; i<=6; i++)
 			{
 				if (GetCharacterIndex("Beliz_forestbandos_"+i) != -1)
@@ -1267,17 +1267,17 @@ void ProcessDialogEvent()
 				}
 			}
 			AddQuestRecord("Caleuche", "13");
-			// костер
+			
 			ref location = &Locations[FindLocation("Beliz_Jungle_01")];
 			DeleteAttribute(location, "fire");
 			sld = ItemsFromID("fire");
 			sld.shown = false;
-			// пакуем схрон в пещере
+			
 			pchar.GenQuestBox.Beliz_Cave_2 = true;
 			pchar.GenQuestBox.Beliz_Cave_2.box1.items.kaleuche_amulet2 = 1;
 			pchar.GenQuestBox.Beliz_Cave_2.box1.items.suit4 = 1;
-			pchar.GenQuestBox.Beliz_Cave_2.box1.items.purse1 = 7; // Addon-2016 Jason
-			pchar.GenQuestBox.Beliz_Cave_2.box1.items.purse2 = 3; // Addon-2016 Jason
+			pchar.GenQuestBox.Beliz_Cave_2.box1.items.purse1 = 7; 
+			pchar.GenQuestBox.Beliz_Cave_2.box1.items.purse2 = 3; 
 			pchar.GenQuestBox.Beliz_Cave_2.box1.items.potion2 = 10;
 			pchar.GenQuestBox.Beliz_Cave_2.box1.items.potionrum = 55;
 			pchar.GenQuestBox.Beliz_Cave_2.box1.items.indian_3 = 1;
@@ -1285,12 +1285,12 @@ void ProcessDialogEvent()
 			pchar.GenQuestBox.Beliz_Cave_2.box1.items.berserker_potion = 1;
 			pchar.GenQuestBox.Beliz_Cave_2.box1.items.jewelry2 = 15;
 			pchar.GenQuestBox.Beliz_Cave_2.box1.items.jewelry3 = 33;
-			// меняем флаг
+			
 			pchar.questTemp.Caleuche.Bandos = "know";
 			SaveCurrentQuestDateParam("questTemp.Caleuche.belizbandos");
 		break;
 		
-		// спалили бандосы в пещере
+		
 		case "Beliz_cavebandos":
 			dialog.text = "What! I take it you decided to appropriate some of our property? You will not get away with it, you filthy worm!";
 			link.l1 = "Whom did you just call a worm, scum?!";
@@ -1321,7 +1321,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");	
 		break;
 		
-		// капитан гарпии
+		
 		case "reginald":
 			dialog.text = "Hello, colleague! What has brought you here?";
 			link.l1 = TimeGreeting()+", mynheer Jackson. I am glad to finally find you.";
@@ -1415,7 +1415,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(pchar, "questTemp.Garpiya");
 			GiveItem2Character(pchar, "kaleuche_key"); 
 			AddQuestRecord("Caleuche", "20");
-			// сундук со схроном
+			
 			i = Findlocation("Mayak2");
 			Locations[i].models.always.locators = "lighthouse_Blocators";
 			locations[i].private1.key = "kaleuche_key";
@@ -1442,7 +1442,7 @@ void ProcessDialogEvent()
 			pchar.quest.caleuche_amulet3.function = "Caleuche_ThirdAmuletFind";
 		break;
 		
-		// монах в Виллемстаде
+		
 		case "monk_caleuche":
 			dialog.text = "Hello, captain "+GetFullName(pchar)+". Glad to welcome you in Willemstad.";
 			link.l1 = "Hello, Father. I don't remember you. Do we know each other?";
@@ -1496,7 +1496,7 @@ void ProcessDialogEvent()
 		
 		case "monk_caleuche_7":
 			DialogExit();
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload7_back", "none", "", "", "", -1);
 			AddQuestRecord("Caleuche", "24");
@@ -1513,7 +1513,7 @@ void ProcessDialogEvent()
 			pchar.quest.Caleuche_villemstadhouse.function = "Caleuche_CreateJoakimSkel";
 		break;
 		
-		// охотник у пещеры
+		
 		case "cavehunter":
 			dialog.text = "Hold on, buddy. You'd better not go there, if you cherish your life.";
 			link.l1 = "And what's the deal?";
@@ -1609,7 +1609,7 @@ void ProcessDialogEvent()
 			npchar.quest.caleuche = true;
 			npchar.dialog.currentnode = "cavehunter_10";
 			LAi_group_MoveCharacter(npchar, LAI_GROUP_PLAYER);
-			// закрываем локаторы выхода
+			
 			LocatorReloadEnterDisable("Cuba_Jungle_07", "reload1_back", true);
 			LocatorReloadEnterDisable("Cuba_Jungle_07", "reload3_back", true);
 		break;
@@ -1631,7 +1631,7 @@ void ProcessDialogEvent()
 			link.l1.go = "cavehunter_exit";
 		break;
 		
-		// солдат в крипте при провале
+		
 		case "cryptguard":
 			dialog.text = "Stand where you are! This place is off-limits!";
 			link.l1 = "Ehh... And what is in there?";
@@ -1658,7 +1658,7 @@ void ProcessDialogEvent()
 			pchar.questTemp.Caleuche = "end";
 		break;
 		
-		// чавинави-вождь
+		
 		case "Chavinavi":
 			PlaySound("VOICE\Russian\TopChavinavi-01.wav");
 			dialog.text = "Hold still, human! You're in the very heart of the temple, and you have gone too far to turn back.";

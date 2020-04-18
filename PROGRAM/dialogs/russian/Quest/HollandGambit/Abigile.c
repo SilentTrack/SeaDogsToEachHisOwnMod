@@ -1,4 +1,4 @@
-// Абигайль Шнеур
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -142,7 +142,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 
-//-------------------------------------------------за Голландию-----------------------------------------------
+
 		case "AbbyAndLucas":
 			dialog.text = "Glad to meet you, captain " + GetFullName(pchar) + ". I have heard about you. It was you who has captured the pirate ghost-ship and brought it to Willemstad. Tell me, captain, is it true that this ship was under the command of... Richard Fleetwood?";
 			link.l1 = "Precisely, mistress. We were really shocked. Just think about it, English royal officer who has been plundering merchants of his own nation... And that bastard was covering himself by the action of the ghost-ship. He used it to blame the Company and to attack the Holland ships as well!";
@@ -200,10 +200,10 @@ void ProcessDialogEvent()
 		case "AbbyAndLucas_9":
 			DialogExit();
 			AddQuestRecord("Holl_Gambit", "1-33");
-			pchar.questTemp.HWIC.Holl = "AbbyAgreeMarried";//теперь к Лукасу
+			pchar.questTemp.HWIC.Holl = "AbbyAgreeMarried";
 		break;
 		
-//-------------------------------------------------за Англию-----------------------------------------
+
 		case "Seek_Island":
 			dialog.text = "From Richard?! Ah, mynheer! I have heard that he was wounded. Is it true, tell me?! Is he alright?";
 			link.l1 = "Richard is alive and mostly healthy. There are a few problems left with his sight, but he is doing well. Richard asks you to sail with him to England where you could marry. His mission is over and he is only waiting for your answer.";
@@ -227,11 +227,11 @@ void ProcessDialogEvent()
 			AddQuestRecord("Holl_Gambit", "2-18");
 			pchar.questTemp.HWIC.Eng = "SeekIsland";
 			LAi_SetActorType(npchar);
-			LAi_ActorGoToLocation(npchar, "reload", "reload1", "Villemstad_houseSp2_bedroom", "goto", "goto1", "", -1);//Аби домой
-			pchar.questTemp.HWIC_Coordinates = "true"; //атрибут координат на поиск острова через каюту
+			LAi_ActorGoToLocation(npchar, "reload", "reload1", "Villemstad_houseSp2_bedroom", "goto", "goto1", "", -1);
+			pchar.questTemp.HWIC_Coordinates = "true"; 
 		break;
 		
-//--------------------------------------------против всех------------------------------------------------
+
 		case "Abigile_kidnapping":
 			dialog.text = "Oh... You have got a letter from him... yes? Ah, papa, don't be that unbearable! You are always haunted by fears! Mynheer, please, follow me, I want to talk with you.";
 			link.l1 = "Thank you, mistress.";
@@ -286,7 +286,7 @@ void ProcessDialogEvent()
 			pchar.quest.Abigile_Kidnap.win_condition.l2.location = "Villemstad_houseSp2";
 			pchar.quest.Abigile_Kidnap.function = "AbigileGoToShip";
 			pchar.questTemp.HWIC.Self = "AbigileWaitNextDay";
-			SetFunctionTimerCondition("AbigileGoToShipOver", 0, 0, 3, false);//таймер 3 дня, ибо нефиг
+			SetFunctionTimerCondition("AbigileGoToShipOver", 0, 0, 3, false);
 		break;
 		
 		case "Abigile_kidnapping_7":
@@ -295,14 +295,14 @@ void ProcessDialogEvent()
 			AddPassenger(pchar, npchar, false);
 			SetCharacterRemovable(npchar, false);
 			LAi_SetActorType(sld);
-			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "SetAbigileToCabin", -1);//Аби в каюту к ГГ поставим
+			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "SetAbigileToCabin", -1);
 			AddQuestRecord("Holl_Gambit", "3-23");
 			pchar.questTemp.HWIC.Self = "AbigileOnShip";
-			pchar.quest.AbigileGoToShipOver.over = "yes";//снять таймер
-			SetFunctionTimerCondition("RemoveAbigileOver", 0, 0, 30, false);//таймер на 1 месяц, ибо нефиг
+			pchar.quest.AbigileGoToShipOver.over = "yes";
+			SetFunctionTimerCondition("RemoveAbigileOver", 0, 0, 30, false);
 			pchar.quest.Abigile_died.win_condition.l1 = "NPC_Death";
 			pchar.quest.Abigile_died.win_condition.l1.character = "Abigile";
-			pchar.quest.Abigile_died.function = "AbigileDied";//специально для особо упоротых
+			pchar.quest.Abigile_died.function = "AbigileDied";
 		break;
 		
 		case "Abigile_kidnapping_8":
@@ -337,9 +337,9 @@ void ProcessDialogEvent()
 			pchar.questTemp.HWIC.Self = "AbigileInRoom";
 			NextDiag.CurrentNode = "First time";
 			RemovePassenger(Pchar, npchar);
-			pchar.quest.RemoveAbigileOver.over = "yes";//снять таймер
+			pchar.quest.RemoveAbigileOver.over = "yes";
 			sld = characterFromId("Merdok");
-			LAi_SetActorType(sld);//чтобы геймер сам с ним не заговорил
+			LAi_SetActorType(sld);
 		break;
 		
 		case "Abigile_kidnapping_13":
@@ -427,7 +427,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("Holl_Gambit", "3-57");
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "", -1);
-			LocatorReloadEnterDisable("SentJons_HouseF3", "reload4", false);//откроем комнату Аби
+			LocatorReloadEnterDisable("SentJons_HouseF3", "reload4", false);
 			AddPassenger(pchar, npchar, false);
 			SetCharacterRemovable(npchar, false);
 			pchar.questTemp.HWIC.Self = "AbiReturnHomeGo";
@@ -510,7 +510,7 @@ void ProcessDialogEvent()
 		
 		case "Abigile_GiveMoney_1":
 			AddMoneyToCharacter(pchar, -200000);
-			pchar.quest.MakeAbiPoor.over = "yes"; //снять прерывание
+			pchar.quest.MakeAbiPoor.over = "yes"; 
 			ChangeCharacterComplexReputation(pchar, "nobility", 10);
 			dialog.text = "How should I thank you?! How?!";
 			link.l1 = "I don't need any thanks, Abi. It is the smallest thing I could do for you. Now you will start a new life without any rodenburgs, fleetwoods and other strange people. I suppose that your father will find a way to enlarge these money.";
@@ -548,13 +548,13 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Abigile_AllRight";
 		break;
 		
-		//--> блок реагирования на попытку залезть в сундук
+		
 		case "Woman_FackYou":
 			dialog.text = "Ah, so that is just like that?! I have received you as my guest and you decided to loot chests?! Guards!!!";
 			link.l1 = "Shut up, foolish girl...";
 			link.l1.go = "exit";
 			LAi_group_Attack(NPChar, Pchar);
 		break;
-		//<-- блок реагирования на попытку залезть в сундук
+		
 	}
 }

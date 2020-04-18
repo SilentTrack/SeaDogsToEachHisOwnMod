@@ -2,10 +2,10 @@ int CreateAntiguaCharacters(int n)
 {
 	ref ch;
 	
-	///////////////////////////////////////////////////////////////////////////////
-	// ОСНОВНЫЕ ПЕРСОНАЖИ
-	///////////////////////////////////////////////////////////////////////////////
-    makeref(ch,Characters[n]);			//Персонаж который фиксит багу
+	
+	
+	
+    makeref(ch,Characters[n]);			
 	ch.id		= "Bug Fixer";
 	ch.model	= "usurer_8";
 	ch.sex = "man";
@@ -15,7 +15,7 @@ int CreateAntiguaCharacters(int n)
 	ch.Dialog.Filename = "Common_Mayor.c";
 	ch.nation = ENGLAND;
 	ch.quest.type = "hovernor";
-	ch.money = 100000; // boal test
+	ch.money = 100000; 
 	TakeNItems(ch, "bullet", 20);
 	AddItems(ch, "GunPowder", 20);
 	TakeNItems(ch, "potion2", 3);
@@ -26,11 +26,11 @@ int CreateAntiguaCharacters(int n)
     TakeNItems(ch, "SpyGlass5", 1);
 	LAi_SetHuberType(ch);
 	LAi_RemoveLoginTime(ch);
-	//LAi_group_MoveCharacter(ch, "NONE_CITIZENS");
-	LAi_SetImmortal(ch, true);
-	n = n + 1;   // boal зачем рн тут не ведаю. Но, зная шаманство К3, пусть будет имено тут (те за номером 2)
 	
-	makeref(ch,Characters[n]);			//губернатор
+	LAi_SetImmortal(ch, true);
+	n = n + 1;   
+	
+	makeref(ch,Characters[n]);			
 	ch.id		= "SentJons_Mayor";
 	ch.model	= "huber_10";
 	ch.name 	= "Cristofer";
@@ -50,7 +50,7 @@ int CreateAntiguaCharacters(int n)
 	EquipCharacterbyItem(ch, BLADE_LONG); 
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetImmortal(ch, true);
 	LAi_SetHuberType(ch);
 	LAi_RemoveLoginTime(ch);
@@ -58,7 +58,7 @@ int CreateAntiguaCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//денщик Фокса
+	makeref(ch,Characters[n]);			
 	ch.id		= "BenjaminJons";
 	ch.model	= "Addington";
 	ch.name 	= "Benjamin";
@@ -79,14 +79,14 @@ int CreateAntiguaCharacters(int n)
 	EquipCharacterbyItem(ch, BLADE_LONG); 
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetHuberType(ch);
 	LAi_RemoveLoginTime(ch);
 	LAi_group_MoveCharacter(ch, "ENGLAND_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Священик
+	makeref(ch,Characters[n]);			
 	ch.id		= "SentJons_Priest";
 	ch.model	= "priest_2";
 	ch.model.animation = "man";
@@ -98,13 +98,13 @@ int CreateAntiguaCharacters(int n)
 	ch.Dialog.Filename = "Common_church.c";
 	ch.greeting = "padre_1";
 	ch.nation = ENGLAND;
-//	LAi_SetLoginTime(ch, 6.0, 21.99);
+
 	LAi_SetPriestType(ch);
 	LAi_group_MoveCharacter(ch, "ENGLAND_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);		// ОФициантка
+	makeref(ch,Characters[n]);		
 	ch.id		= "SentJons_waitress";
 	ch.model	= "women_11";
 	ch.sex = "woman";
@@ -121,7 +121,7 @@ int CreateAntiguaCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Трактирщик
+	makeref(ch,Characters[n]);			
 	ch.id		= "SentJons_tavernkeeper";
 	ch.model	= "barmen_11";
 	ch.sex = "man";
@@ -139,7 +139,7 @@ int CreateAntiguaCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Торговец
+	makeref(ch,Characters[n]);			
 	ch.id		= "SentJons_trader";
 	ch.model	= "trader_11";
 	ch.greeting = "store_1";
@@ -155,13 +155,13 @@ int CreateAntiguaCharacters(int n)
 	LAi_group_MoveCharacter(ch, "ENGLAND_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	ch.item_date = "";
-	// настройка магазина -->
+	
 	ch.StoreNum   = SentJons_STORE;
 	ch.from_sea   = "SentJons_town";
-	// настройка магазина <--
+	
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Корабел
+	makeref(ch,Characters[n]);			
 	ch.id		= "SentJons_shipyarder";
 	ch.model	= "shipowner_11";
 	ch.greeting = "shipyarder_1";
@@ -179,14 +179,14 @@ int CreateAntiguaCharacters(int n)
 	EquipCharacterbyItem(ch, "topor_02"); 
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetHuberType(ch);
 	LAi_SetLoginTime(ch, 6.0, 21.99);
 	LAi_group_MoveCharacter(ch, "ENGLAND_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Банкир
+	makeref(ch,Characters[n]);			
 	ch.id		= "SentJons_usurer";
 	ch.model	= "banker_11";
 	ch.sex = "man";
@@ -199,14 +199,14 @@ int CreateAntiguaCharacters(int n)
 	ch.nation = ENGLAND;
 	ch.greeting = "usurer_1";
 	ch.quest.shiping = "0";
-	ch.UsurerDeposit = 10000; // *1000 денег
+	ch.UsurerDeposit = 10000; 
 	ch.money = USURER_MIN_MONEY + rand(USURER_NORM);
 	LAi_SetOwnerType(ch);
 	LAi_group_MoveCharacter(ch, "ENGLAND_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Начальник порта
+	makeref(ch,Characters[n]);			
 	ch.id		= "SentJons_PortMan";
 	ch.model	= "citiz_6";
 	ch.sex = "man";
@@ -233,7 +233,7 @@ int CreateAntiguaCharacters(int n)
 	ch.nation = PIRATE;
 	GiveItem2Character(ch, BLADE_SABER);
 	EquipCharacterbyItem(ch, BLADE_SABER);
-	// посадим в генераторе
+	
 	ch.Dialog.Filename = "Smuggler Agent_dialog.c";
 	LAi_SetSitType(ch);
 	LAi_SetHP(ch, 80.0, 80.0);
@@ -242,3 +242,4 @@ int CreateAntiguaCharacters(int n)
 	
 	return n;
 }
+

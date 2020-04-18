@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,7 +9,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
                       "Yes, it really is the third time...", "No, what questions?...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";						
-			//Jason, Бремя гасконца
+			
 			if (CheckAttribute(PChar, "questTemp.Sharlie.Storehelper") && pchar.questTemp.Sharlie.Storehelper == "hire" && !CheckAttribute(npchar, "quest.storehelper"))
 			{
 				link.l1 = "Listen, " + npchar.name + ", I've come to you on an unusual matter. I need to find a man who would like a quiet, peaceful life on the bay as a merchant's assistant in a Saint-Pierre store. The salary is good and he'll have a roof over his head taken care of. Would you be able to suggest who I could turn to?";
@@ -20,14 +20,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1 = "I'm here about the barrels of wine that you're about to load onto my ship for delivery to Guadeloupe...";
 				link.l1.go = "seabattle";
 			}
-			//Бремя гасконца
-			//Jason, Португалец
+			
+			
 			if (CheckAttribute(PChar, "questTemp.Portugal") && pchar.questTemp.Portugal == "PortugalLeFransua" && !CheckAttribute(npchar, "quest.portugal") && Pchar.location.from_sea == "LeFransua_port")
 			{
 				link.l1 = "You know, " + npchar.name + ", I'm looking for a friend of mine. He was supposed to arrive here and he was feeling off color. Perhaps his friends helped him out...";
 				link.l1.go = "Portugal";
 			}
-			//Португалец
+			
 		break;
 		
 		case "storehelper":
@@ -121,6 +121,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.portugal = "true";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

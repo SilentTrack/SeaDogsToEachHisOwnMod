@@ -1,4 +1,4 @@
-// диалоги НПС по квесту 'Карибские нравы'
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld, rColony;
@@ -21,9 +21,9 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// Жерар Лекруа
+		
 		case "lecrua":
-			pchar.quest.Trial_LineOver.over = "yes"; //снять таймер
+			pchar.quest.Trial_LineOver.over = "yes"; 
 			dialog.text = "Good afternoon. You must be "+GetFullName(pchar)+". Unless I'm mistaken?";
 			link.l1 = "You're correct, monsieur LeCroix. Captain "+GetFullName(pchar)+" at your service. I've been recommended to you by Fadey the Muscovite...";
 			link.l1.go = "lecrua_1";
@@ -109,16 +109,16 @@ void ProcessDialogEvent()
 			AddQuestRecord("Trial", "4");
 			CoolTraderHunterOnMap();
 			pchar.questTemp.Trial = "fraht";
-			SetFunctionTimerCondition("Trial_FrahtFail", 0, 0, 10, false); // таймер
-			SetFunctionTimerCondition("Trial_LecruaHide", 0, 0, 1, false); // таймер
-			// груз
+			SetFunctionTimerCondition("Trial_FrahtFail", 0, 0, 10, false); 
+			SetFunctionTimerCondition("Trial_LecruaHide", 0, 0, 1, false); 
+			
 			SetCharacterGoods(pchar, GOOD_BOMBS, GetCargoGoods(pchar, GOOD_BOMBS)+2500);
 			SetCharacterGoods(pchar, GOOD_POWDER, GetCargoGoods(pchar, GOOD_POWDER)+2500);
 		break;
 		
-		// Флориан Шоке
+		
 		case "florian_deck":
-			pchar.quest.Trial_CannonFail.over = "yes"; //снять таймер
+			pchar.quest.Trial_CannonFail.over = "yes"; 
 			dialog.text = "What could I help you with, sir?";
 			link.l1 = "Good afternoon, captain. You're Florian Shoke, I presume?";
 			link.l1.go = "florian_deck_1";
@@ -188,7 +188,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "florian_deck_6":
-			dialog.text = "I won't lie, it is dangerous. As you may already know, I am waiting for a Spanish heavy galleon with a valuable cargo. The ship was put in the docks for a repair. According to my information, she was supposed to set sail yesterday but it didn’t happen\nBesides, my agent in Portobello didn't come to rendezvous point to deliver an information he gathered. I suspect that the Spanish arrested him. You should sneak in Portobello and find out why the galleon is still there and what happened to my agent. Are you in?";
+			dialog.text = "I won't lie, it is dangerous. As you may already know, I am waiting for a Spanish heavy galleon with a valuable cargo. The ship was put in the docks for a repair. According to my information, she was supposed to set sail yesterday but it didnпїЅt happen\nBesides, my agent in Portobello didn't come to rendezvous point to deliver an information he gathered. I suspect that the Spanish arrested him. You should sneak in Portobello and find out why the galleon is still there and what happened to my agent. Are you in?";
 			link.l1 = "I'm afraid I lack the proper training for such a operation. I might get into trouble myself and I won't be able to help you. Alas, I cannot help you.";
 			link.l1.go = "florian_deck_bye";
 			link.l2 = "The danger level is high, but I'll risk it anyway. What's your man's name and what is the name of the galleon?";
@@ -220,8 +220,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "florian_deck_8":
-			bQuestDisableMapEnter = true;//закрыть карту
-			pchar.GenQuest.MapClosedNoBattle = true; // доступно ожидание и sailto
+			bQuestDisableMapEnter = true;
+			pchar.GenQuest.MapClosedNoBattle = true; 
 			DialogExit();
 			npchar.DeckDialogNode = "florian_deck_repeat";
 			NextDiag.CurrentNode = "florian_deck_repeat";
@@ -243,7 +243,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "florian_failspy":
-			pchar.quest.trial_spy_over.over = "yes"; //снять прерывание
+			pchar.quest.trial_spy_over.over = "yes"; 
 			dialog.text = "How are things coming along, captain? What have you managed to find out?";
 			link.l1 = "Things are coming along quite moderately, Monsieur Shoke. I'm not much of a spy I was disclosed fairly quickly. I had to escape the city by battle. The only thing I managed to discover is that your man, Sylvan Laforet has been arrested and is being held in jail.";
 			link.l1.go = "florian_failspy_1";
@@ -283,7 +283,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "florian_failspy_5":
-			pchar.quest.trial_spy_over.over = "yes"; //снять прерывание
+			pchar.quest.trial_spy_over.over = "yes"; 
 			dialog.text = "How are things coming along, captain? What have you managed to find out?";
 			link.l1 = "Things are coming along quite moderately, Monsieur Shoke. I'm not much of a spy, I was disclosed fairly quickly. The only thing I managed to discover was that your man, Sylvan Laforet has been arrested and is being held.";
 			link.l1.go = "florian_failspy_1";
@@ -303,7 +303,7 @@ void ProcessDialogEvent()
 		
 		case "florian_11":
 			DialogExit();
-			Island_SetReloadEnableGlobal("Portobello", false);//закрыть остров	
+			Island_SetReloadEnableGlobal("Portobello", false);
 			npchar.DeckDialogNode = "florian_deck_wait";
 			NextDiag.CurrentNode = "florian_deck_wait";
 			pchar.questTemp.Trial = "spy_wait";
@@ -325,7 +325,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "florian_12":
-			pchar.quest.trial_spy_over.over = "yes"; //снять прерывание
+			pchar.quest.trial_spy_over.over = "yes"; 
 			dialog.text = "How are things coming along, captain? What have you managed to find out?";
 			link.l1 = "It's done. Your man, Sylvan Laforet, was arrested and is being held in jail. It is over for him.";
 			link.l1.go = "florian_13";
@@ -372,8 +372,8 @@ void ProcessDialogEvent()
 		
 		case "florian_19":
 			DialogExit();
-			Island_SetReloadEnableGlobal("Portobello", true); // открыть остров
-			bQuestDisableMapEnter = false;//открыть карту
+			Island_SetReloadEnableGlobal("Portobello", true); 
+			bQuestDisableMapEnter = false;
 			DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
 			LAi_CharacterDisableDialog(npchar);
 			npchar.DontDeskTalk = true; 
@@ -383,7 +383,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("Trial", "19");
 		break;
 		
-		// испанский офицер в таверне
+		
 		case "tavern_officer":
 			dialog.text = "So, who do we have here? Another French heeler? How interesting! Would you like to see Jaime Silicio? Well then, I'll introduce you to him right inside our prison. Take him, boys!";
 			link.l1 = "Ah-argh! Just go ahead and try!";
@@ -392,7 +392,7 @@ void ProcessDialogEvent()
 		
 		case "tavern_officer_1":
 			DialogExit();
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			LAi_SetWarriorTypeNoGroup(npchar);
             LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);

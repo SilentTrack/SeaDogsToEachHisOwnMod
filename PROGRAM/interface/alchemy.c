@@ -1,4 +1,4 @@
-// Ugeen 26.08.10 - интерфейс мультиобъектов (на базе интерфейса обыска) 
+
 
 int 	nCurScrollNum = 0;
 ref 	refCharacter, rItem, nulChr;
@@ -52,8 +52,8 @@ void InitInterface(string iniName)
 	
 	SetNodeUsing("GETALL_BUTTON", true);
 	SetSelectable("GETALL_BUTTON", false);
-	//SendMessage(&GameInterface, "lslllll", MSG_INTERFACE_MSG_TO_NODE, "GETALL_BUTTON", 1, 345, 540, 470, 565);
-	//SendMessage(&GameInterface, "lslllll", MSG_INTERFACE_MSG_TO_NODE, "GETALL_BUTTON", 1, 345 + 80, 540, 470 + 80, 565);
+	
+	
 	
 	SetEventHandler("InterfaceBreak","ProcessBreakExit",0);
 	SetEventHandler("exitCancel","ProcessCancelExit",0);
@@ -246,7 +246,7 @@ void ShowHelpHint()
 	}
 	else
 	{
-		if(!bShowChangeWin) // покажем помощь по работе с формой
+		if(!bShowChangeWin) 
 		{
 			sHeader = XI_ConvertString("titleAlchemy");
 			sText1 = "";			
@@ -355,7 +355,7 @@ void ProcessFrame()
 		GameInterface.TABLE_LIST.top = 0;
 		SetItemsName();
 		
-		// Стрелочки на первую позицию
+		
 		SendMessage(&GameInterface,"lsllllll", MSG_INTERFACE_MSG_TO_NODE, "TABLE_ADD_ALL_BUTTON", 0, iTableAddAllBtnX, iTableAddAllBtnY, iTableAddAllBtnX + 30, iTableAddAllBtnY + 30, 0);
 		SendMessage(&GameInterface,"lsllllll", MSG_INTERFACE_MSG_TO_NODE, "TABLE_REMOVE_ALL_BUTTON", 0, iTableRemoveAllBtnX, iTableRemoveAllBtnY, iTableRemoveAllBtnX + 30, iTableRemoveAllBtnY + 30, 0);
 	}
@@ -381,7 +381,7 @@ void AddToTable(ref rItem)
 	makearef(rType, rItem.component);
 	iNum = GetAttributesNum(rType);
 	
-	for(i = 0; i < iNum; i++) // кол-во компонентов и прочего
+	for(i = 0; i < iNum; i++) 
 	{	
 		sAttr 		= GetAttributeName(GetAttributeN(rType, i));
 		sItmId 		= rItem.component.(sAttr).id;
@@ -434,7 +434,7 @@ void CS_TableSelectChange()
 	int iSelected = GetEventData();
 	int iCol = GetEventData();
 	
-	// Warship 26.04.09 fix - при прокрутке могло вылазить за экран, неправильно определялась текущая линия
+	
 	int iSelLine = iSelected;
 	
 	if(CheckAttribute(&GameInterface, "TABLE_LIST.top"))
@@ -461,7 +461,7 @@ void OnTableClick()
 
 void EndTooltip()
 {
-	CloseTooltip(); // всегда убирать, если был
+	CloseTooltip(); 
 	GameInterface.qty_edit.str = 0;
 	SetCurrentNode("TABLE_LIST");
  	XI_WindowDisable("QTY_WINDOW", true);
@@ -471,7 +471,7 @@ void EndTooltip()
 
 void ShowItemInfo()
 {
-	if(bShowChangeWin) // жмем окей, когда курсор на таблице
+	if(bShowChangeWin) 
 	{
 		TransactionOK();
 	}
@@ -500,7 +500,7 @@ int CheckAlchemy(string sItemID)
 	makearef(rType, rItem.component);
 	iNum = GetAttributesNum(rType);
 	
-	for(int i = 0; i < iNum; i++) // кол-во компонентов и прочего
+	for(int i = 0; i < iNum; i++) 
 	{	
 		sAttr 		= GetAttributeName(GetAttributeN(rType, i));
 		sItmId 		= rItem.component.(sAttr).id;
@@ -538,7 +538,7 @@ int CheckAlchemy(string sItemID)
 	return Qty;
 }
 
-// Жмакнули по кнопке "взять все"
+
 void onGetAllBtnClick()
 {
 	aref 	rType;
@@ -551,7 +551,7 @@ void onGetAllBtnClick()
 	makearef(rType, rItem.component);
 	iNum = GetAttributesNum(rType);
 	
-	for(int i = 0; i < iNum; i++) // кол-во компонентов и прочего
+	for(int i = 0; i < iNum; i++) 
 	{
 		sAttr 		= GetAttributeName(GetAttributeN(rType, i));
 		sItmId 		= rItem.component.(sAttr).id;
@@ -573,7 +573,7 @@ void onGetAllBtnClick()
 	Statistic_AddValue(refCharacter, "Alchemy", Qty);
 	Achievment_SetStat(refCharacter, 7, Qty);
 	
-	// ugeen 2016
+	
 	if(rItem.id == "mangarosapower")
 	{
 		if (!CheckAttribute(refCharacter, "Mangarosa.Alchemy.MP"))
@@ -596,7 +596,7 @@ void onGetAllBtnClick()
 		}		
 	}
 	
-	AddToTable(ItemsFromId(sCurItem)); // Рефрешь таблицы
+	AddToTable(ItemsFromId(sCurItem)); 
 	
 	if(CheckAlchemy(sCurItem) > 0) 	SetSelectable("GETALL_BUTTON", true);
 	else							SetSelectable("GETALL_BUTTON", false);
@@ -604,19 +604,19 @@ void onGetAllBtnClick()
 	GameInterface.TABLE_LIST.top = 0;
 	GameInterface.TABLE_LIST.select = 1;
 
-	// Рефреш позиции стрелочек
+	
 	SendMessage(&GameInterface,"lsllllll", MSG_INTERFACE_MSG_TO_NODE, "TABLE_ADD_ALL_BUTTON", 0, iTableAddAllBtnX, iTableAddAllBtnY, iTableAddAllBtnX + 30, iTableAddAllBtnY + 30, 0);
 	SendMessage(&GameInterface,"lsllllll", MSG_INTERFACE_MSG_TO_NODE, "TABLE_REMOVE_ALL_BUTTON", 0, iTableRemoveAllBtnX, iTableRemoveAllBtnY, iTableRemoveAllBtnX + 30, iTableRemoveAllBtnY + 30, 0);
-	// <-- Warship fix 10.06.09	
+	
 }
 
-// Нажали на табличной стрелочке "взять все предметы одного типа"
+
 void onTableAddAllBtnClick()
 {
 	String item = Items[iCurGoodsIdx].id;
 	int iItemsQty = GetCharacterFreeItem(alchemy, item);
 		
-	if(iItemsQty > 0) // fix
+	if(iItemsQty > 0) 
 	{
 		RemoveItems(alchemy, item, iItemsQty);
 		AddItems(refCharacter, item, iItemsQty);
@@ -630,7 +630,7 @@ void onTableAddAllBtnClick()
 	}
 }
 
-// Нажали на табличной стрелочке "отдать все предметы одного типа"
+
 void onTableRemoveAllBtnClick()
 {
 	String item = Items[iCurGoodsIdx].id;
@@ -650,7 +650,7 @@ void onTableRemoveAllBtnClick()
 	}		
 }
 
-// инфа о предмете
+
 void ShowGoodsInfo(int iGoodIndex)
 {
 	string GoodName = Items[iGoodIndex].name;
@@ -697,12 +697,12 @@ void TransactionOK()
 	    return;
 	}
 
- 	if(BuyOrSell == 1) // Забираем
+ 	if(BuyOrSell == 1) 
 	{
 		RemoveItems(alchemy, Items[iCurGoodsIdx].id, nTradeQuantity);
 		AddItems(refCharacter, Items[iCurGoodsIdx].id, nTradeQuantity);
 	}
- 	else // Отдаем
+ 	else 
 	{
 		AddItems(alchemy, Items[iCurGoodsIdx].id, nTradeQuantity);
 		RemoveItems(refCharacter, Items[iCurGoodsIdx].id, nTradeQuantity);
@@ -713,7 +713,7 @@ void TransactionOK()
 	else							SetSelectable("GETALL_BUTTON", false);
 	EndTooltip();
 	
-	ShowGoodsInfo(iCurGoodsIdx); //сбросим все состояния	
+	ShowGoodsInfo(iCurGoodsIdx); 
 }
 
 void confirmChangeQTY_EDIT()
@@ -742,7 +742,7 @@ void ChangeQTY_EDIT()
 			
 		    BuyOrSell = -1;
 			
-		    // проверка на колво доступное -->
+		    
 		    if (sti(GameInterface.qty_edit.str) > iCharQty)
 		    {
 		        GameInterface.qty_edit.str = iCharQty;
@@ -754,7 +754,7 @@ void ChangeQTY_EDIT()
 		{
 			BuyOrSell = 1;
 			
-	        // проверка на колво доступное -->
+	        
 		    if (sti(GameInterface.qty_edit.str) > iStoreQty)
 		    {
 		        GameInterface.qty_edit.str = iStoreQty;
@@ -762,7 +762,7 @@ void ChangeQTY_EDIT()
 			SetFormatedText("QTY_TypeOperation", "Pick up");
 		}
 	}
-	// если получили ноль
+	
 	if (sti(GameInterface.qty_edit.str) == 0)
 	{
 	    SetFormatedText("QTY_TypeOperation", "");
@@ -847,3 +847,4 @@ void ADD_BUTTON()
 	
 	ChangeQTY_EDIT();	
 }
+

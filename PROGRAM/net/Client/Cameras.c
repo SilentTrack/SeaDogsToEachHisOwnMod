@@ -11,7 +11,7 @@ void NetClient_DeleteCamerasEnvironment()
 
 void NetClient_CreateCamerasEnvironment(int iMsg)
 {
-	// for init
+	
 	NCDeckCamera.Perspective = 1.285;
 
 	NCDeckCamera.Server = false;
@@ -25,7 +25,7 @@ void NetClient_CreateCamerasEnvironment(int iMsg)
 	LayerAddObject("net_execute", &NCShipCamera, iClientShipPriorityExecute + 5);
 	LayerAddObject("net_realize", &NCShipCamera, 1000000);
 
-	// DeckCamera paramerets
+	
 	NCDeckCamera.Perspective = 1.285;
 	NCDeckCamera.ZoomPerspective = 0.2;
 	NCDeckCamera.SensivityDistance = 0.01;
@@ -64,7 +64,7 @@ void NetClient_CreateCamerasEnvironment(int iMsg)
 	NCDeckCamera.Dir.z = 0.0;
 	NCDeckCamera.IsCanFire = 0;
 
-	// ShipCamera paramerets
+	
 	NCShipCamera.Perspective = 1.285;
 	NCShipCamera.SensivityDistance = 30.0;
 	NCShipCamera.SensivityHeightAngle = 0.02;
@@ -167,7 +167,7 @@ void NetClient_CameraSwitch()
 	{
 		DelEventHandler("NetClient_SetDieCameraEvent", "NetClient_SetDieCameraEvent");
 		NetClient_SetShipCameraOn();
-		// find next ClientID
+		
 		return;
 	}
 
@@ -179,3 +179,4 @@ void NetClient_CameraSwitch()
 	else
 		{ NetClient_SetDeckCameraOn(); }
 }
+

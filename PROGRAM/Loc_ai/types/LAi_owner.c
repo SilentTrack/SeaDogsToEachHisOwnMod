@@ -1,27 +1,11 @@
-/*
-Тип: стоячий, всегда стоит, отвечает на диалоги, боится если безоружен враг рядом,
-	 нападает на врага, если мужик и с оружием, проверяет лазы ГГ в сундуки
-
-	Используемые шаблоны:
-		stay
-		dialog
-
-
-
-	группа: owner
-		локаторы группы barmen
-		локатор основного стояния локатора: stay
-		локатор где смотреть: bar1
-		локатор где смотреть: bar2
-
-*/
+ 
 
 
 
 #define LAI_TYPE_OWNER		"owner"
 
 
-//Инициализация
+
 void LAi_type_owner_Init(aref chr)
 {
 	DeleteAttribute(chr, "location.follower");
@@ -34,12 +18,12 @@ void LAi_type_owner_Init(aref chr)
 	chr.chr_ai.type.locator = "stay";
 	chr.chr_ai.type.wait = stf(5.0 + frnd() * 5.0);;
 	LAi_tmpl_stay_InitTemplate(chr);
-	//Установим анимацию персонажу
+	
 	LAi_SetDefaultStayAnimation(chr);
 	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", false);
 }
 
-//Процессирование типа персонажа
+
 void LAi_type_owner_CharacterUpdate(aref chr, float dltTime)
 {
 	int iNumEnemy, i, num;
@@ -54,7 +38,7 @@ void LAi_type_owner_CharacterUpdate(aref chr, float dltTime)
 	if (chr.chr_ai.tmpl == LAI_TMPL_ANI)
 	{
 		if (chr.chr_ai.tmpl.animation == "")
-		{	//если враг рядом - еще боимся
+		{	
 			num = FindNearCharacters(chr, 20.0, -1.0, 180.0, 0.01, true, true);
 			iNumEnemy = LAi_type_owner_FindEnemy(chr, num);
 			if (iNumEnemy < 0) LAi_type_owner_SetGoto(chr);
@@ -65,16 +49,16 @@ void LAi_type_owner_CharacterUpdate(aref chr, float dltTime)
 				return;
 			}
 		}
-		else return; //режем анимацию
+		else return; 
 	}
 	num = FindNearCharacters(chr, 20.0, -1.0, 180.0, 0.01, true, true);
 	iNumEnemy = LAi_type_owner_FindEnemy(chr, num);
 	if(iNumEnemy < 0)
-	{	//нет врагов
+	{	
 		if(chr.chr_ai.tmpl != LAI_TMPL_ANI)
 		{
 			if (num <= 0)
-			{ //не видит никого
+			{ 
 				if(chr.chr_ai.tmpl == LAI_TMPL_STAY)
 				{					
 					LAi_type_owner_RestoreAngle(chr);
@@ -86,39 +70,39 @@ void LAi_type_owner_CharacterUpdate(aref chr, float dltTime)
 			}
 			else
 			{
-				//Смотрим на персонажей
+				
 				for(i = 0; i < num; i++)
 				{
 					if(nMainCharacterIndex == sti(chrFindNearCharacters[i].index))
 					{					
-						//нашли ГГ, проверяем, не в сундуке ли.						
+						
 						if (bMainCharacterInBox && chr.chr_ai.type.state != "afraid")
 						{
-							//--> снимаем если есть флаг на таймер ссоры у хозяина - снимаем
+							
 							if (CheckAttribute(pchar, "questTemp.HouseEncTimer"))
 							{
 								DeleteAttribute(pchar, "questTemp.HouseEncTimer");
 							}
-							//<-- снимаем если есть флаг на таймер ссоры у хозяина - снимаем
+							
 							if (chr.sex == "man") chr.greeting = "VOICE\Russian\soldier_arest_1.wav";
 							else chr.greeting = "VOICE\Russian\Gr_Woman_Citizen_11.wav";
 							chr.dialog.currentnode = chr.sex  + "_FackYou";
-							LAi_SetActorTypeNoGroup(chr); //временно актер, чтобы темплейт диалога не слетал. кодить это еще и в этом типе - геморой. 
+							LAi_SetActorTypeNoGroup(chr); 
 							LAi_ActorDialog(chr, pchar, "", 0.0, 0);
 						}
 						else
 						{
 							if(chr.chr_ai.tmpl == LAI_TMPL_STAY)
 							{
-								//проверка на обнаженку оружия -->
+								
 								if (LAi_CheckFightMode(pchar))
 								{
 									if (LAi_IsSetBale(chr))
-									{	//Нападаем
+									{	
 										chr.chr_ai.type.state = "fight";
 										if(!LAi_tmpl_SetFight(chr, pchar))
 										{
-											//Несмогли инициировать шаблон
+											
 											LAi_tmpl_stay_InitTemplate(chr);
 											chr.chr_ai.type.state = "stay";
 										}
@@ -131,9 +115,9 @@ void LAi_type_owner_CharacterUpdate(aref chr, float dltTime)
 									}							
 									return;
 								}
-								//<-- проверка на обнаженку оружия
+								
 								if(stf(chrFindNearCharacters[i].dist) < 2.0)
-								{ //поворачиваемся фейсом к ГГ
+								{ 
 									CharacterTurnByChr(chr, &Characters[sti(chrFindNearCharacters[i].index)]);				
 								}
 								else
@@ -151,22 +135,22 @@ void LAi_type_owner_CharacterUpdate(aref chr, float dltTime)
 			}
 		}
 	}else{
-		//враги есть
+		
 		if(chr.chr_ai.tmpl != LAI_TMPL_ANI)
 		{
-			//атакуем
+			
 			if (chr.sex == "man" && LAi_IsSetBale(chr))
 			{
 				chr.chr_ai.type.state = "fight";
 				if(!LAi_tmpl_SetFight(chr, &Characters[sti(chrFindNearCharacters[iNumEnemy].index)]))
 				{
-					//Несмогли инициировать шаблон
+					
 					LAi_tmpl_stay_InitTemplate(chr);
 					chr.chr_ai.type.state = "stay";
 				}
 			}
 			else
-			{	//Боимся				
+			{	
 				if(stf(chrFindNearCharacters[iNumEnemy].dist) < 3.0)
 				{
 					LAi_tmpl_ani_PlayAnimation(chr, "afraid", -1.0);
@@ -193,19 +177,19 @@ void LAi_type_owner_CharacterUpdate(aref chr, float dltTime)
 		}
 	}
 }
-//Загрузка персонажа в локацию
+
 bool LAi_type_owner_CharacterLogin(aref chr)
 {
 	return true;
 }
 
-//Выгрузка персонажа из локацию
+
 bool LAi_type_owner_CharacterLogoff(aref chr)
 {
 	return true;
 }
 
-//Завершение работы темплейта
+
 void LAi_type_owner_TemplateComplite(aref chr, string tmpl)
 {
 	switch(chr.chr_ai.type.state)
@@ -215,7 +199,7 @@ void LAi_type_owner_TemplateComplite(aref chr, string tmpl)
 		chr.chr_ai.type.state = "stay";
 		break;
 	case "goto":
-		//Дадим новое задание
+		
 		LAi_type_owner_SetAfterGoto(chr);
 		break;
 	case "work":
@@ -227,30 +211,30 @@ void LAi_type_owner_TemplateComplite(aref chr, string tmpl)
 	}
 }
 
-//Сообщить о желании завести диалог
+
 void LAi_type_owner_NeedDialog(aref chr, aref by)
 {
 }
 
-//Запрос на диалог, если возвратить true то в этот момент можно начать диалог
+
 bool LAi_type_owner_CanDialog(aref chr, aref by)
 {
-	//Согласимся на диалог
+	
 	if(chr.chr_ai.type.state == "afraid") return false;
 	if(chr.chr_ai.tmpl == LAI_TMPL_STAY || chr.chr_ai.tmpl == LAI_TMPL_GOTO || chr.chr_ai.tmpl == LAI_TMPL_ANI) return true;
 	return false;
 }
 
-//Начать диалог
+
 void LAi_type_owner_StartDialog(aref chr, aref by)
 {
-	//Если мы пасивны, запускаем шаблон без времени завершения
+	
 	LAi_CharacterSaveAy(chr);
 	CharacterTurnByChr(chr, by);
 	LAi_tmpl_SetActivatedDialog(chr, by);
 }
 
-//Закончить диалог
+
 void LAi_type_owner_EndDialog(aref chr, aref by)
 {
 	if(chr.chr_ai.type.state == "goto")
@@ -263,14 +247,14 @@ void LAi_type_owner_EndDialog(aref chr, aref by)
 	}
 }
 
-//Персонаж выстрелил
+
 void LAi_type_owner_Fire(aref attack, aref enemy, float kDist, bool isFindedEnemy)
 {
 
 }
 
 
-//Персонаж атакован
+
 void LAi_type_owner_Attacked(aref chr, aref by)
 {
 	if(!LAi_group_IsEnemy(chr, by)) return;
@@ -282,13 +266,13 @@ void LAi_type_owner_Attacked(aref chr, aref by)
 	}
 }
 
-//Ориентироваться по текущему локатору
+
 void LAi_type_owner_RestoreAngle(aref chr)
 {
 	CharacterTurnByLoc(chr, "barmen", chr.chr_ai.type.locator);
 }
 
-//Найти врага
+
 int LAi_type_owner_FindEnemy(aref chr, int num)
 {
 	int idx;
@@ -303,7 +287,7 @@ int LAi_type_owner_FindEnemy(aref chr, int num)
 	return -1;
 }
 
-//Отправить хозяина в другой локатор
+
 void LAi_type_owner_SetGoto(aref chr)
 {
 	if(chr.chr_ai.type.locator == "stay")
@@ -318,7 +302,7 @@ void LAi_type_owner_SetGoto(aref chr)
 	chr.chr_ai.type.state = "goto";
 }
 
-//Установить задание после прихода в локатор
+
 void LAi_type_owner_SetAfterGoto(aref chr)
 {
 	if(rand(100) < 80 && chr.chr_ai.type.locator != "stay")
@@ -347,3 +331,4 @@ void LAi_type_owner_TestControl(aref chr)
 		chr.chr_ai.type.wait = 10.0;
 	}
 }
+

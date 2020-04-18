@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
  	switch(Dialog.CurrentNode)
@@ -7,7 +7,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             dialog.text = "Speak, I am listening";
 			link.l1 = "I was mistaken. Farewell.";
 			link.l1.go = "Exit";
-			// Калеуче
+			
 			if (CheckAttribute(pchar, "questTemp.Caleuche.Bandos") && pchar.questTemp.Caleuche.Bandos == "start")
 			{
 				link.l1 = "I heard about a gang of thieves and robbers operating in the vicinity of Beliz and in the town itself.";
@@ -25,7 +25,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		
-		// Калеуче
+		
 		case "caleuche":
 			dialog.text = "Your source was telling the truth. These bandits have become a real pain in the butt for us. Can you tell anything about them?";
 			link.l1 = "Beside that they stole one important thing for me - nothing. Frankly, I hoped that you would be able to tell me something about them. If, say, one of them was caught and is now ready to testify ...";
@@ -61,7 +61,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "caleuche_5":
-			dialog.text = "Alright. That’s fine.";
+			dialog.text = "Alright. ThatпїЅs fine.";
 			link.l1 = "Until we meet again, officer.";
 			link.l1.go = "caleuche_6";
 		break;
@@ -71,7 +71,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddQuestRecord("Caleuche", "15");
 			pchar.questTemp.Caleuche.Bandos = "comendant";
 			pchar.questTemp.Caleuche.BelizChance = drand(3);
-			SetFunctionTimerCondition("Caleuche_BelizRegard", 0, 0, 3, false); // таймер
+			SetFunctionTimerCondition("Caleuche_BelizRegard", 0, 0, 3, false); 
 		break;
 		
 		case "caleuche_7":
@@ -83,7 +83,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 			else
 			{
-				dialog.text = "Hmm… My soldiers had been waiting for them at the cave for the whole night, but no one ever showed up. The sergeant was really furious. It's good that he didn't catch sight of you.";
+				dialog.text = "HmmпїЅ My soldiers had been waiting for them at the cave for the whole night, but no one ever showed up. The sergeant was really furious. It's good that he didn't catch sight of you.";
 				link.l1 = "Goddammit! That just can't be! At which cave have you set the ambush? There are two of them!";
 				link.l1.go = "caleuche_8";
 			}
@@ -135,10 +135,11 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			ChangeCharacterComplexReputation(pchar, "fame", 3);
 			OfficersReaction("good");
 			ChangeCharacterNationReputation(pchar, ENGLAND, 8);
-			AddCharacterExpToSkill(pchar, "Leadership", 300);//авторитет
-			AddCharacterExpToSkill(pchar, "Fortune", 200);//везение
-			AddCharacterExpToSkill(pchar, "Sneak", 200);//скрытность
+			AddCharacterExpToSkill(pchar, "Leadership", 300);
+			AddCharacterExpToSkill(pchar, "Fortune", 200);
+			AddCharacterExpToSkill(pchar, "Sneak", 200);
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+

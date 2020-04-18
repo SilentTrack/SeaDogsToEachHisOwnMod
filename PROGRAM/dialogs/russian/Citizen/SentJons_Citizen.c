@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -7,7 +7,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             dialog.text = RandPhraseSimple("What kind of questions?", "What would you like?");
 			link.l1 = RandPhraseSimple("I have changed my mind...", "I have got nothing to say now.");
 		    link.l1.go = "exit";
-			//Jason, суп из черепахи
+			
 			if (CheckAttribute(PChar, "questTemp.Terrapin") && pchar.questTemp.Terrapin == "baster" && !CheckAttribute(npchar, "quest.terrapin") && CheckAttribute(PChar, "questTemp.Terrapin.SJ_count"))
 			{
 				link.l1 = "I am looking for mister Johns. Do you know him?";
@@ -16,7 +16,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "terrapin":
-			if (sti(pchar.questTemp.Terrapin.SJ_count) == 5 || rand(9) == 1) // 10% или числом
+			if (sti(pchar.questTemp.Terrapin.SJ_count) == 5 || rand(9) == 1) 
 			{
 				dialog.text = "There are a lot of Johnses here. The most renowned I know is the colonel Fox's batman, Benjamin Johns. He usually meets visitors in the regiment's headquarters.";
 				link.l1 = "Has he got a sister Molly?";
@@ -52,7 +52,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "info":
-        // заменить на описание неких Ќѕ—, по квестам
+        
 			dialog.text = "Do I work for the secret service of "+NationNameGenitive(sti(NPChar.nation))+"?";
 			link.l1 = "Well... farewell then.";
 			link.l1.go = "exit";
@@ -61,7 +61,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "town":
-        // заменить на описание как пройти, по квестам
+        
 			dialog.text = "Do I work on an enquiry position? Don't know. Don't know a thing.";
 
             link.l1 = "Such a muddle-head! See you.";
@@ -70,6 +70,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l2.go = "new question";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

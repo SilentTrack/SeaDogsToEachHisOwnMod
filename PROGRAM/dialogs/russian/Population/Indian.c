@@ -1,4 +1,4 @@
-//Jason общий диалог индейцев на улицах
+
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -33,7 +33,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 
-		//замечание по обнаженному оружию от персонажей типа citizen
+		
 		case "CitizenNotBlade":
 			dialog.text = NPCharSexPhrase(NPChar, "Don't tempt your fate, paleface! Sword away!", "Listen, I am the citizen of this town and I'd ask you to hold down your blade.");
 			link.l1 = LinkRandPhrase("Fine.", "Whatever.", "Whatever you say...");
@@ -46,3 +46,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

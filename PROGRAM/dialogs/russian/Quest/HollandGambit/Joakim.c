@@ -1,4 +1,4 @@
-// ∆оаким ћерриман - португальский сумрачный гений
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -61,21 +61,21 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 
-		case "Landlady"://хоз€йка дома
+		case "Landlady":
 			dialog.text = "If you are here for senor Joachim, then I have to tell you that he is not here.  He doesn't live here anymore.";
 			link.l1 = "I see.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Landlady";
 		break;
 		
-		case "Landlady_1"://хоз€йка дома
+		case "Landlady_1":
 			dialog.text = "If you are here for senor Joachim, then I have to tell you that he is not here. He is away and he didn't tell me when he will return.";
 			link.l1 = "I see.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Landlady_1";
 		break;
 		
-		case "Landlady_2"://хоз€йка дома
+		case "Landlady_2":
 			dialog.text = "If you are here for senor Joachim, then I have to tell you that he is not here.  He doesn't live here anymore.";
 			link.l1 = "I see.";
 			link.l1.go = "exit";
@@ -131,7 +131,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			npchar.quest.HWICHoll.Task = "true";
 			LAi_SetOwnerType(npchar);
-			AddDialogExitQuestFunction("CheckIslandCoordinates");//вот тут-то мы и проверим, есть ли у нас координаты острова, и далее будем исходить из результата.
+			AddDialogExitQuestFunction("CheckIslandCoordinates");
 		break;
 		
 		case "JoakimFindSkull":
@@ -168,7 +168,7 @@ void ProcessDialogEvent()
 			sld = characterFromId("Landlady");
 			sld.Dialog.Filename = "Quest\HollandGambit\Joakim.c";
 			sld.dialog.currentnode = "Landlady_2";
-			SetFunctionTimerCondition("Caleuche_StartTotal", 0, 0, 180, false); // таймер на  алеуче
+			SetFunctionTimerCondition("Caleuche_StartTotal", 0, 0, 180, false); 
 		break;
 		
 		case "JoakimSeekSkull_8":
@@ -212,13 +212,13 @@ void ProcessDialogEvent()
 			DialogExit();
 			pchar.questTemp.HWIC.Self = "SeekAbiIsland";
 			AddQuestRecord("Holl_Gambit", "3-55");
-			LocatorReloadEnterDisable("SentJons_HouseF3", "reload3", true);//закроем комнату јби
+			LocatorReloadEnterDisable("SentJons_HouseF3", "reload3", true);
 			npchar.quest.HWICHoll.Task = "true";
 			LAi_SetOwnerType(npchar);
 			NextDiag.CurrentNode = "First time";
 		break;
 		
-		// калеуче
+		
 		case "caleuche":
 			PlaySound("VOICE\Russian\LSC\Chymiset-03.wav");
 			dialog.text = "The sacrificial stones are red with the blood of my enemies! Yum Cimil granted me his power over the dead! With this power in my hands I shall soon rule the living!";
@@ -270,13 +270,13 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//--> блок реагировани€ на попытку залезть в сундук
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("You are a "+ GetSexPhrase("thief, mister! Guards, take him","thief, girl! Guards, take her") +"!!!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest! Take the thief!!!", "Guards! Robbery! Take the thief!!!");
 			link.l1 = "Damn it!";
 			link.l1.go = "exit";
 			LAi_group_Attack(NPChar, Pchar);
 		break;
-		//<-- блок реагировани€ на попытку залезть в сундук
+		
 	}
 }

@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -7,7 +7,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             dialog.text = RandPhraseSimple("What kind of questions?", "What would you like?");
 			link.l1 = RandPhraseSimple("I have changed my mind...", "I have got nothing to say now.");
 		    link.l1.go = "exit";
-			//Бремя гасконца
+			
 			if (CheckAttribute(pchar, "questTemp.Sharlie.Citcount") && !CheckAttribute(npchar, "quest.Sharlie"))
 			{
 				link.l1 = "Excuse me, "+GetAddress_FormToNPC(NPChar)+" can you tell me where can I find Michel de Monper? He has to be somewhere in your town.";
@@ -18,11 +18,11 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1 = "Listen, "+GetAddress_FormToNPC(NPChar)+", I want to ask something... I am looking for a navigator to serve on my ship, do you know someone in your town?";
                 link.l1.go = "Sharlie_1";
 			}
-			//Бремя гасконца
+			
 		break;
 		
 		case "info":
-        // заменить на описание неких НПС, по квестам
+        
 			dialog.text = "Do I work for the secret service of "+NationNameGenitive(sti(NPChar.nation))+"?";
 			link.l1 = "Well... farewell then.";
 			link.l1.go = "exit";
@@ -31,7 +31,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "town":
-        // заменить на описание как пройти, по квестам
+        
 			dialog.text = "Do I work on an enquiry position? Don't know. Don't know a thing.";
             link.l1 = "Such a muddle-head! See you.";
 			link.l1.go = "exit";
@@ -39,7 +39,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l2.go = "new question";
 		break;
 		
-		//--> Бремя гасконца
+		
 		case "Sharlie":
 			if (sti(pchar.questTemp.Sharlie.Citcount) == 3)
 			{
@@ -65,7 +65,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.Sharlie1 = "true";
 			npchar.dialog.currentnode = "first time";
 		break;
-		//<-- Бремя Гасконца
+		
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }

@@ -1,4 +1,4 @@
-// Заставка А в это время... BOAL 15/01/2006
+
 bool bNeedResetSound;
 void InitInterface(string iniName)
 {
@@ -8,7 +8,7 @@ void InitInterface(string iniName)
     SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
 
     bNeedResetSound = false;
-	if (CheckAttribute(pchar, "AutoQuest.FramePic")) // признак картинки
+	if (CheckAttribute(pchar, "AutoQuest.FramePic")) 
 	{
 	    SetNewPicture("SCROLLPICT", pchar.AutoQuest.FramePic);
 	    DeleteAttribute(pchar, "AutoQuest.FramePic");
@@ -25,10 +25,10 @@ void InitInterface(string iniName)
 	SetFormatedText("INFO_TEXT", pchar.AutoQuest.FrameText);
 	SendMessage(&GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"INFO_TEXT",5);
 
-	if (!CheckAttribute(pchar, "GenQuest.FrameLockEsc")) // блокировка эскейпа
+	if (!CheckAttribute(pchar, "GenQuest.FrameLockEsc")) 
 	{
 	SetEventHandler("InterfaceBreak","ProcessBreakExit",0);
-	SetEventHandler("exitCancel","ProcessCancelExit",0); // Выход на море по крестику или Esc
+	SetEventHandler("exitCancel","ProcessCancelExit",0); 
 	SetEventHandler("ievnt_command","ProcCommand",0);
 	SetEventHandler("evntDoPostExit","DoPostExit",0);
 	}
@@ -86,7 +86,7 @@ void IDoExit(int exitCode)
 
 	interfaceResultCommand = exitCode;
 	EndCancelInterface(true);
-	//PostEvent("StopQuestCheckProcessFreeze", 50);
+	
 }
 
 void ProcCommand()

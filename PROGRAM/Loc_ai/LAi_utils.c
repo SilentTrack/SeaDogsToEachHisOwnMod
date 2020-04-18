@@ -1,5 +1,5 @@
 
-//Проверить ссылку на персонажа
+
 bool LAi_CheckCharacter(aref chr, string out)
 {
 	if(!TestRef(chr))
@@ -25,7 +25,7 @@ bool LAi_CheckCharacter(aref chr, string out)
 	return true;
 }
 
-//Зарядился ли пистолет у персонажа
+
 bool LAi_CharacterCanFrie(aref chr)
 {
 	if(!CheckAttribute(chr, "chr_ai.chargeprc"))
@@ -34,14 +34,14 @@ bool LAi_CharacterCanFrie(aref chr)
 		chr.chr_ai.charge = 0;
 		return false;
 	}
-	//if(stf(chr.chr_ai.chargeprc) == 0) // boal fix can fire any time if have charge
-	//{
+	
+	
 		if(stf(chr.chr_ai.charge) >= 1.0) return true;
-	//}
+	
 	return false;
 }
 
-//Получить количество энергии у персонажа 0..100
+
 float Lai_CharacterGetEnergy(aref chr)
 {
 	if(CheckAttribute(chr, "chr_ai.energy"))
@@ -51,7 +51,7 @@ float Lai_CharacterGetEnergy(aref chr)
 	return 0.0;
 }
 
-//Изменить количество энергии у персонажа 0..100
+
 void Lai_CharacterChangeEnergy(aref chr, float dlt)
 {
 	if(CheckAttribute(chr, "chr_ai.energy"))
@@ -59,7 +59,7 @@ void Lai_CharacterChangeEnergy(aref chr, float dlt)
 		float cur = stf(chr.chr_ai.energy);
 		cur = cur + dlt;
 		if(cur < 0.0) cur = 0.0;
-		if(cur > LAi_GetCharacterMaxEnergy(chr)) cur = LAi_GetCharacterMaxEnergy(chr); //boal
+		if(cur > LAi_GetCharacterMaxEnergy(chr)) cur = LAi_GetCharacterMaxEnergy(chr); 
 		chr.chr_ai.energy = cur;
 	}else{
 		if(dlt < 0.0) dlt = 0.0;
@@ -68,7 +68,7 @@ void Lai_CharacterChangeEnergy(aref chr, float dlt)
 	}
 }
 
-//Может ли сражаться персонаж в заданной локации
+
 bool LAi_LocationCanFight()
 {
 	if(IsEntity(loadedLocation) != true) return true;
@@ -77,7 +77,7 @@ bool LAi_LocationCanFight()
 	return true;
 }
 
-//Найт кол-во локаторов в заданной группе <-- ugeen 
+
 int LAi_GetLocatorNum(string group)
 {
 	if(IsEntity(loadedLocation) != true) return -1;
@@ -88,7 +88,7 @@ int LAi_GetLocatorNum(string group)
 	return GetAttributesNum(grp);
 }
 
-//Найти случайный локатор в заданной группе локаторов
+
 string LAi_FindRandomLocator(string group)
 {
 	if(IsEntity(loadedLocation) != true) return "";
@@ -102,7 +102,7 @@ string LAi_FindRandomLocator(string group)
 	return GetAttributeName(GetAttributeN(grp, num));
 }
 
-//Найти дальний локатор в заданной группе локаторов
+
 string LAi_FindFarLocator(string group, float x, float y, float z)
 {
 	if(IsEntity(loadedLocation) != true) return "";
@@ -137,7 +137,7 @@ string LAi_FindFarLocator(string group, float x, float y, float z)
 	return GetAttributeName(GetAttributeN(grp, j));
 }
 
-//Найти дальний свободный локатор в заданной группе локаторов
+
 string LAi_FindFarFreeLocator(string group, float x, float y, float z)
 {
 	if(IsEntity(loadedLocation) != true) return "";
@@ -178,7 +178,7 @@ string LAi_FindFarFreeLocator(string group, float x, float y, float z)
 	return GetAttributeName(GetAttributeN(grp, j));
 }
 
-//Найти ближайший свободный локатор
+
 string LAi_FindNearestFreeLocator(string group, float x, float y, float z)
 {
 	if(IsEntity(loadedLocation) != true) return "";
@@ -218,7 +218,7 @@ string LAi_FindNearestFreeLocator(string group, float x, float y, float z)
 	if(j < 0) return "";
 	return GetAttributeName(GetAttributeN(grp, j));
 }
-// boal
+
 string LAi_FindNearestLocator(string group, float x, float y, float z)
 {
 	if(IsEntity(loadedLocation) != true) return "";
@@ -258,7 +258,7 @@ string LAi_FindNearestFreeLocator2Pchar(string group)
     GetCharacterPos(Pchar, &locx, &locy, &locz);
     return LAi_FindNearestFreeLocator(group, locx, locy, locz);
 }
-//Найти ближайшего видимого персонажа в заданном радиусе
+
 int LAi_FindNearestCharacter(aref chr, float radius)
 {
 	int res = FindNearCharacters(chr, radius, -1.0, -1.0, 0.01, false, true);
@@ -266,7 +266,7 @@ int LAi_FindNearestCharacter(aref chr, float radius)
 	return sti(chrFindNearCharacters[0].index);
 }
 
-//Найти ближайшего видимого персонажа в заданном радиусе
+
 int LAi_FindNearestVisCharacter(aref chr, float radius)
 {
 	int res = FindNearCharacters(chr, radius, -1.0, -1.0, 0.01, true, true);
@@ -274,10 +274,10 @@ int LAi_FindNearestVisCharacter(aref chr, float radius)
 	return sti(chrFindNearCharacters[0].index);
 }
 
-//Получить уровень драки приведёный к 0..1
+
 float LAi_GetCharacterFightLevel(aref character)
 {
-	//Fencing skill
+	
 	float fgtlevel = 0.0;
 	if (CheckAttribute(character,"model.animation") && character.model.animation == "mushketer")
 	{
@@ -287,15 +287,15 @@ float LAi_GetCharacterFightLevel(aref character)
 	{	
 		fgtlevel = GetCharacterSkill(character, LAi_GetBladeFencingType(character)); 
 	}
-	//Level
+	
 	fgtlevel = fgtlevel/SKILL_MAX;
 	return fgtlevel;
 }
-// boal skill -->
-//Получить уровень pistol приведёный к 0..1
+
+
 float LAi_GetCharacterGunLevel(aref character)
 {
-	//pistol skill
+	
 	float fgtlevel = 0.0;
 	fgtlevel = GetCharacterSkill(character, SKILL_PISTOL);
 	fgtlevel = fgtlevel/SKILL_MAX;
@@ -309,14 +309,14 @@ float LAi_GetCharacterLuckLevel(aref character)
 	fgtlevel = fgtlevel/SKILL_MAX;
 	return fgtlevel;
 }
-// boal skill <--
 
-//Применить повреждение к персонажу
+
+
 void LAi_ApplyCharacterDamage(aref chr, int dmg, string DamageType)
 {
 	float damage    = MakeFloat(dmg);
 	bool  bIsOfficer = false;
-	//Офицерам ослабляем поврежрение
+	
 	if(CheckAttribute(chr, "chr_ai.type"))
 	{
 		if(chr.chr_ai.type == LAI_TYPE_OFFICER)
@@ -325,63 +325,63 @@ void LAi_ApplyCharacterDamage(aref chr, int dmg, string DamageType)
 			bIsOfficer = true;
 		}
 	}
-	//Получаем текущие параметры
+	
 	if(!CheckAttribute(chr, "chr_ai.hp"))     chr.chr_ai.hp     = LAI_DEFAULT_HP;
 	if(!CheckAttribute(chr, "chr_ai.hp_max")) chr.chr_ai.hp_max = LAI_DEFAULT_HP_MAX;
 	float maxhp = stf(chr.chr_ai.hp_max);
 	float hp    = stf(chr.chr_ai.hp);
-	//Пересчитываем
+	
 	if (damage > hp)  damage = hp;
 	hp = hp - damage;
 	if(hp < 1.0) hp = 0.0;
 	chr.chr_ai.hp = hp;
-	//Проверим квест
+	
 	LAi_ProcessCheckMinHP(chr);
 	
 	bool bloodSize = false;
 	if (damage > 30.0) bloodSize = true;
 	float fRange = 1.0 + frand(0.6);
-	if(CheckAttribute(chr,"model.animation") && chr.sex != "skeleton") // 280712
+	if(CheckAttribute(chr,"model.animation") && chr.sex != "skeleton") 
 	{		
 		if(DamageType == "fire" || DamageType == "fight")
 		{
 			LaunchBlood(chr, fRange, bloodSize, DamageType);	
 		}	
 	}	
-	if(CheckAttribute(chr,"model.animation") && chr.model.animation == "giant" && damage > 50.0) // 280712
+	if(CheckAttribute(chr,"model.animation") && chr.model.animation == "giant" && damage > 50.0) 
 	{
 		LaunchIncasFire(chr, false);
 	}	
 
 	if(sti(pchar.index) == sti(chr.index)) 
 	{
-		// здоровье -->
+		
         pchar.Health.Damg      = stf(pchar.Health.Damg) + damage;
 	    pchar.Health.weekDamg  = stf(pchar.Health.weekDamg) + damage;
         pchar.Health.TotalDamg = stf(pchar.Health.TotalDamg) + damage;
 		
 		Achievment_SetStat(pchar, 6, makeint(damage));
-        // здоровье <--
+        
         return;
 	}
 	if (bIsOfficer)
     {
-        chr.Health.TotalDamg = stf(chr.Health.TotalDamg) + damage; // статистика
+        chr.Health.TotalDamg = stf(chr.Health.TotalDamg) + damage; 
         return;
     }
-	//Напишем о нанесённом повреждении
+	
 	if(bDrawBars) SendMessage(chr, "lfff", MSG_CHARACTER_VIEWDAMAGE, dmg, MakeFloat(MakeInt(hp)), MakeFloat(MakeInt(maxhp)));
 }
 
-//Убить персонажа, если закончились hp
+
 void LAi_CheckKillCharacter(aref chr)
 {
 	if(SendMessage(chr, "ls", MSG_CHARACTER_EX_MSG, "IsDead")) return;
 	if(!CheckAttribute(chr, "chr_ai.hp")) chr.chr_ai.hp = 0.0;
-	//Проверяем
+	
 	if(stf(chr.chr_ai.hp) < 1.0)
 	{
-		//Убиваем, если смертен
+		
 		if(CheckAttribute(chr, "chr_ai.immortal"))
 		{
 			if(sti(chr.chr_ai.immortal) != 0)
@@ -394,12 +394,12 @@ void LAi_CheckKillCharacter(aref chr)
 		DeleteAttribute(chr, "quest.questflag");
 
 		chr.chr_ai.hp = 0.0;		
-		// boal dead can be searched 14.12.2003 -->
-		Dead_AddLoginedCharacter(chr); // записали еще живого в список трупов
-		// boal dead can be searched 14.12.2003 <--
+		
+		Dead_AddLoginedCharacter(chr); 
+		
 		SetCharacterTask_Dead(chr);
 		Postevent(EVENT_CHARACTER_DEAD, 1, "a", chr);
-		//Переинициируем параметры
+		
 		if(CheckAttribute(chr, "chr_ai.type"))
 		{
 			string func = chr.chr_ai.type;
@@ -412,23 +412,23 @@ void LAi_CheckKillCharacter(aref chr)
 			}
 			if(sti(chr.index) == nMainCharacterIndex)
 			{
-				//Если убили игрока, то запретим интерфейс
+				
 				InterfaceStates.Launched = true;
 			}
 		}
 		LAi_Character_Dead_Process(chr);
-		//Jason: самовосстанавливающийся абордажник
+		
 		if(CheckAttribute(chr, "HalfImmortal"))
 		{
 				if(!IsOfficer(chr)) return;
-				Dead_DelLoginedCharacter(chr);//не обыскивается
+				Dead_DelLoginedCharacter(chr);
 				ref rOff = GetCharacter(NPC_GenerateCharacter("Clon", "none", chr.sex, chr.model.animation, 1, sti(chr.nation), -1, false, "officer"));
 				ChangeAttributesFromCharacter(rOff, chr, true);
 				rOff.id = chr.id;
 				rOff.HalfImmortal = true;
 				int ihpm = sti(rOff.chr.chr_ai.hp_max)-40;
 				if (ihpm < 40) ihpm = 40;
-				LAi_SetHP(rOff, ihpm, ihpm); // штраф в НР
+				LAi_SetHP(rOff, ihpm, ihpm); 
 				LAi_SetCurHPMax(rOff);
 				AddPassenger(pchar, rOff, false);
 				Log_Info("Boarding officer " + GetFullName(rOff) + " is unconscious! Character's capabilities will be crippled forever!");
@@ -436,16 +436,16 @@ void LAi_CheckKillCharacter(aref chr)
 	}
 }
 
-//Создать фантомного персонажа
+
 ref LAi_CreateFantomCharacter(string model, string group, string locator)
 {
 	return LAi_CreateFantomCharacterEx(model, "man", group, locator);
 }
 
-//Создать фантомного персонажа
+
 ref LAi_CreateFantomCharacterEx(string model, string ani, string group, string locator)
 {
-	//Ищем свободное место для персонажа
+	
 	for(int i = 0; i < MAX_CHARS_IN_LOC; i++)
 	{
 		if(CheckAttribute(&Characters[LOC_FANTOM_CHARACTERS + i], "id") == false) break;
@@ -461,10 +461,10 @@ ref LAi_CreateFantomCharacterEx(string model, string ani, string group, string l
 	}
 	ref chr = &Characters[LOC_FANTOM_CHARACTERS + i];
 
-	//Заполняем поля персонажа
+	
 	chr.id = "Location fantom character <" + i + ">";
 	chr.index = LOC_FANTOM_CHARACTERS + i;
-	//address
+	
 	if(IsEntity(loadedLocation) != true)
 	{
 		chr.location = "none";
@@ -475,11 +475,11 @@ ref LAi_CreateFantomCharacterEx(string model, string ani, string group, string l
 	chr.location.locator = "";
 	chr.location.from_sea = "";
 	chr.location.fantom = "1";
-	//model
+	
 	if(model != "") chr.model = model; else chr.model = "man1";
 	chr.model.entity = "NPCharacter";
 	chr.model.animation = ani;
-	// fix -->
+	
     if (chr.model.animation == "towngirl" || chr.model.animation == "towngirl3" || chr.model.animation == "towngirl2")
     {
        chr.model.height = 1.75;
@@ -490,12 +490,12 @@ ref LAi_CreateFantomCharacterEx(string model, string ani, string group, string l
 	   chr.model.height = 1.8;
 	   chr.sex = "man";
 	}
-	// fix <--
+	
 	chr.FaceId = "0";
 	chr.headModel = "h_" + chr.model;
 	FaceMaker(chr);
 	CirassMaker(chr);
-	//game params
+	
  	CalculateAppropriateSkills(chr);
     SetFantomHP(chr);
 	chr.money = 100 + rand(500);
@@ -503,18 +503,18 @@ ref LAi_CreateFantomCharacterEx(string model, string ani, string group, string l
 	chr.skill.freeskill = 0;
 	chr.experience = 0;
 	chr.spyglass.itemID = COMMON_SPYGLASS;
-	//Quest data
+	
 	chr.Dialog.CurrentNode = "First time";
 	chr.Dialog.TempNode = chr.Dialog.CurrentNode;
 	chr.quest.meeting = "0";
 	chr.quest = "True";
-	//blade
-	//GiveItem2Character(chr, BLADE_SABER); //boal потом дадим!
-	//chr.equip.blade = BLADE_SABER;
-    //  boal не нужно тут - будет выдан в LAi_NPC_Equip с учетом сложности и ранга  GiveItem2Character(chr, GUN_COMMON);
-	//chr.equip.gun = GUN_COMMON;
+	
+	
+	
+    
+	
     TakeNItems(chr,"potion1", Rand(4)+1);
-	//nation
+	
 	int nat = GetLocationNation(loadedLocation);
 	if(nat >= 0)
 	{
@@ -522,34 +522,34 @@ ref LAi_CreateFantomCharacterEx(string model, string ani, string group, string l
 	}else{
 		chr.nation = pchar.nation;
 	}
-	//name
+	
 	SetRandomNameToCharacter(chr);
 	
-	//Логинем персонажа в локацию
+	
 	chr.chr_ai.type    = LAI_DEFAULT_TYPE;
 	chr.chr_ai.tmpl    = LAI_DEFAULT_TEMPLATE;
 	chr.chr_ai.group   = LAI_DEFAULT_GROUP;
 	chr.chr_ai.alarmreact = LAI_DEFAULT_ALARMREACT;
 	chr.chr_ai.grpalarmr  = LAI_DEFAULT_GRPALARMR;
-	//chr.chr_ai.hp      = LAI_DEFAULT_HP;
-	//chr.chr_ai.hp_max  = LAI_DEFAULT_HP_MAX;
+	
+	
 	chr.chr_ai.charge  = LAI_DEFAULT_CHARGE;
-	chr.chr_ai.FencingType  = "FencingS"; //fix
-	//chr.chr_ai.energy = LAI_DEFAULT_ENERGY;
-	SetEnergyToCharacter(chr); // boal
+	chr.chr_ai.FencingType  = "FencingS"; 
+	
+	SetEnergyToCharacter(chr); 
 	if(LAi_numloginedcharacters >= MAX_CHARS_IN_LOC)
 	{
 		Trace("LAi_CreateFantomCharacter -> many logined characters in location > " + MAX_CHARS_IN_LOC);
 		return chr;
 	}
 	LAi_AddLoginedCharacter(chr);
-	// boal del lag Event("Fantom_FillSkills", "a", chr);
+	
 	if(!CreateCharacter(chr))
 	{
 		Trace("LAi_CreateFantomCharacter -> CreateCharacter return false");
 		return chr;
 	}
-	//Поставим персонажа на локатор
+	
 	if(group == "")
 	{
 		group = "goto";
@@ -557,7 +557,7 @@ ref LAi_CreateFantomCharacterEx(string model, string ani, string group, string l
 	}
 	if(locator == "")
 	{
-		//Выбираем дальний локатор
+		
 		locator = LAi_FindNPCLocator(group);
 	}
 	chr.location.group = group;
@@ -568,11 +568,11 @@ ref LAi_CreateFantomCharacterEx(string model, string ani, string group, string l
 	}
 	return chr;
 }
-// boal
+
 string LAi_FindNPCLocator(string group)
 {
     string  locator = "";
-	//Выбираем дальний локатор
+	
 	float posX, posY, posZ;
 	posX = 0.0; posY = 0.0; posZ = 0.0;
 	
@@ -580,14 +580,14 @@ string LAi_FindNPCLocator(string group)
 
 	if(GetCharacterPos(MnChar, &posX, &posY, &posZ))
 	{
-		// boal -->
+		
 		if (sti(MnChar.GenQuestFort.FarLocator) == true)
 		{
 			locator = LAi_FindFarFreeLocator(group, posX, posY, posZ);
 		}
 		else
 		{
-			locator = LAi_FindNearestFreeLocator(group, posX, posY, posZ);  // ближайший
+			locator = LAi_FindNearestFreeLocator(group, posX, posY, posZ);  
             if(locator == "")
 			{
 				locator = LAi_FindRandomLocator(group);
@@ -618,31 +618,31 @@ string LAi_QuestDelay(string quest, float delayTime)
 	{
 		atr = "e" + i;
 		if(!CheckAttribute(&lai_questdelays, atr)) break;
-		if (lai_questdelays.(atr).quest == quest) break; // boal Это уже сущ квест, нам нужно его переназначить
+		if (lai_questdelays.(atr).quest == quest) break; 
 	}
 	lai_questdelays.(atr) = delayTime;
 	lai_questdelays.(atr).quest = quest;
 	
-	return atr; //boal
+	return atr; 
 }
-//boal -->
+
 void LAi_MethodDelay(string quest, float delayTime)
 {
 	string atr = LAi_QuestDelay(quest, delayTime);
 	lai_questdelays.(atr).method = true;
 }
-// boal <--
+
 void LAi_QuestDelayProcess(float dltTime)
 {
 	string atr;
 	int num = GetAttributesNum(&lai_questdelays);
-	//Обсчитываем времена
+	
 	for(int i = 0; i < num; i++)
 	{
 		atr = GetAttributeName(GetAttributeN(&lai_questdelays, i));
 		lai_questdelays.(atr) = stf(lai_questdelays.(atr)) - dltTime;
 	}
-	//Проверяем исполнение и вызываем обработку
+	
 	for(i = 0; i < num; i++)
 	{
 		atr = GetAttributeName(GetAttributeN(&lai_questdelays, i));
@@ -760,7 +760,7 @@ void LAi_SetDefaultLayAnimation(aref chr)
 }
 
 
-//Вывести экран в темноту, выполнить квест questFadeOut, вернуть всё обратно, выполнить квест questFadeIn
+
 object LAi_QuestFader;
 void LAi_Fade(string questFadeOut, string questFadeIn)
 {
@@ -772,7 +772,7 @@ void LAi_Fade(string questFadeOut, string questFadeIn)
 		Trace("LAi_Fade -> previous fade operation not ended!");
 		return;
 	}
-	//Fader
+	
 	SetEventHandler("FaderEvent_EndFade", "LAi_FadeEndFadeOut", 0);
 	SetEventHandler("FaderEvent_EndFadeIn", "LAi_FadeEndFadeIn", 0);
 	CreateEntity(&LAi_QuestFader, "fader");
@@ -793,12 +793,12 @@ void LAi_FadeEndFadeIn()
 	InterfaceStates.Buttons.Save.enable = LAi_QuestFader.oldSaveState;
 }
 
-//Вывести экран в темноту, через указанное время вернуть
+
 void LAi_FadeDelay(float _delayTime, string sPath)
 {
     pchar.GenQuest.CallFunctionParam = "FadeDelay";
     DoQuestCheckDelay("CallFunctionParam", _delayTime);
-	//Fader
+	
 	CreateEntity(&LAi_QuestFader, "fader");
 	SendMessage(&LAi_QuestFader, "ls", FADER_PICTURE0, "loading\ImgBack.tga");
 	SendMessage(&LAi_QuestFader, "ls", FADER_PICTURE, sPath);
@@ -806,37 +806,37 @@ void LAi_FadeDelay(float _delayTime, string sPath)
 	LAi_QuestFader.oldSaveState = InterfaceStates.Buttons.Save.enable;
 	InterfaceStates.Buttons.Save.enable = 0;
 }
-void FadeDelay()    // относится к методу выше.
+void FadeDelay()    
 {
 	LAi_FadeEndFadeIn();
 	LAi_FadeEndFadeOut();
 }
 
-//Есть ли оружие у персонада
+
 bool LAi_IsSetBale(aref chr)
 {
 	return (SendMessage(chr, "ls", MSG_CHARACTER_EX_MSG, "IsSetBalde") != 0);
 }
 
-//В режиме боя
+
 bool LAi_IsFightMode(aref chr)
 {
-	// boal fix -->
+	
 	if ((bLandInterfaceStart) && CheckAttribute(chr, "equip.blade"))
     {
         return (SendMessage(&chr, "ls", MSG_CHARACTER_EX_MSG, "IsFightMode") != 0);
     }
     return false;
-    // boal fix <--
+    
 }
 
-//Установить флажёк для востановления хитпойнтов и отношений
+
 #event_handler("EventWorldMapInit", "LAi_SetRestoreStates");
 #event_handler(EVENT_SEA_LOGIN, "LAi_SetRestoreStates");
 void LAi_SetRestoreStates()
 {
 	LAi_restoreStates = true;
-	// boal 04/02/2005 FIX
+	
 	QuestsCheck();
 }
 
@@ -856,7 +856,7 @@ bool LAi_IsBottleWork(aref chr)
 	return false;
 }
 
-//Найти в близи врагов
+
 bool LAi_CanNearEnemy(aref chr, float radius)
 {
 	int num = FindNearCharacters(chr, radius, -1.0, -1.0, 0.001, false, false);
@@ -864,18 +864,12 @@ bool LAi_CanNearEnemy(aref chr, float radius)
 	for(int i = 0; i < num; i++)
 	{
 		int idx = sti(chrFindNearCharacters[i].index);
-		/*if(characters[idx].id == pchar.id)   // to_do boal
-		{
-			if(LAi_grp_alarmactive == false)
-			{
-				return false;
-			}
-		}	  */
+		 
 		if(LAi_group_IsEnemy(chr, &Characters[idx])) return true;
 	}	
 	return false;
 }
-// boal dead can be searched 14.12.2003 -->
+
 object	Dead_Characters[100];
 int     Dead_Char_num = 0;
 
@@ -891,7 +885,7 @@ void Dead_AddLoginedCharacter(aref chr)
     int     value, count;
     aref    typeRef;
 	string  sBullet, sGunPowder;
-	//trace("Dead_AddLoginedCharacter nLuck = " + nLuck);
+	
 	
 	if(GetCharacterPos(chr, &x, &y, &z) == true && Dead_Char_num < (100))
 	{
@@ -906,19 +900,19 @@ void Dead_AddLoginedCharacter(aref chr)
 		chref = &Dead_Characters[Dead_Char_num];
 		DeleteAttribute(chref, "items");
 		DeleteAttribute(chref, "Money");
-		if (IsOfficer(chr) || CheckAttribute(chr, "SaveItemsForDead"))// для офицеров и НПС сохраняем все вещи
+		if (IsOfficer(chr) || CheckAttribute(chr, "SaveItemsForDead"))
 		{
 		    chref.Money = chr.Money;
             makearef(arToChar, chref.items);
             makearef(arFromChar, chr.items);
 	        CopyAttributes(arToChar, arFromChar);
-	        DeleteAttribute(chref,"items.unarmed"); // 18.06.05 убираем безоружность с трупа офицера
-	        DelBakSkillAttr(mchr); // boal оптимизация скилов
+	        DeleteAttribute(chref,"items.unarmed"); 
+	        DelBakSkillAttr(mchr); 
 	        ClearCharacterExpRate(mchr);
-	        DeleteAttribute(chr, "SaveItemsForDead");// убрать чтоб не было случайно потом
-	        //BLI_UpdateOfficers();// fix проверки на офов, не пропадала иконка
+	        DeleteAttribute(chr, "SaveItemsForDead");
+	        
 			
-			// Генерим предметы
+			
 			for(value = 0; value < ITEMS_QUANTITY; value++)
 			{
 				itemID = Items[value].ID;
@@ -926,36 +920,36 @@ void Dead_AddLoginedCharacter(aref chr)
 				if(IsGenerableItem(itemID) && CheckCharacterItem(chr, itemID))
 				{
 					count = GetCharacterItem(chr, itemID);
-					RemoveItems(chr, itemID, count); // Забираетм обычные
-					GenerateAndAddItems(chr, itemID, count); // Даем сгенеренные
+					RemoveItems(chr, itemID, count); 
+					GenerateAndAddItems(chr, itemID, count); 
 				}
 			}
 	    }
 	    else
 	    {
-		    // матрос с ЧЖ -->
+		    
 		    if (CheckAttribute(chr, "GhostShipCrew"))
 		    {
-                //TakeNItems(chref, "Coins", Rand(9) + 3);
-                // обыск скелетов давал вылет, даем сразу в ГГ
+                
+                
                 TakeNItems(pchar, "Coins", Rand(9) + 3);
-                Log_Info("Собраны черные жемчужины");
+                Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 		    }
 		    else
-		    // матрос с ЧЖ <--
+		    
 		    {
     		    if (makeint(nLuck + 0.5) > rand(15))
     			{
     				chref.Money = rand(9) + rand(makeint(nLuck))*5 + rand(makeint(nLuck))*20;
     			}
-    		    // вернем саблю и пистоль -->
+    		    
     		    if(CheckAttribute(chr, "equip.blade"))
 				{
-					if(rand(MOD_SKILL_ENEMY_RATE + 5) == 1 && chr.equip.blade != "unarmed") // 20% for 3+2=5
+					if(rand(MOD_SKILL_ENEMY_RATE + 5) == 1 && chr.equip.blade != "unarmed") 
 					{
 						rItem = ItemsFromID(chr.equip.blade);
-						if(CheckAttribute(rItem,"quality") && sti(rItem.quality) < B_EXCELLENT) // ugeen --> на обычных трупах топовое оружие не даем !!!
-						{	// Даем трупу сгенеренное оружие
+						if(CheckAttribute(rItem,"quality") && sti(rItem.quality) < B_EXCELLENT) 
+						{	
 							if(sti(rItem.quality) == B_POOR)
 							{
 								AddItems(chref, GetGeneratedItem(chr.equip.blade), 1); 
@@ -976,42 +970,42 @@ void Dead_AddLoginedCharacter(aref chr)
 					if(rand(MOD_SKILL_ENEMY_RATE + 10) == 2)
 					{
 						rItem = ItemsFromID(chr.equip.gun);
-						if(CheckAttribute(rItem,"quality") && rItem.quality != "excellent" && rItem.quality != B_UNIQUE) // ugeen --> на обычных трупах топовое оружие не даем !!!
+						if(CheckAttribute(rItem,"quality") && rItem.quality != "excellent" && rItem.quality != B_UNIQUE) 
 						{
 							if(CheckAttribute(rItem,"quality") && rItem.quality == B_GOOD)
-							{ // залупу на воротник, а не кучи мушкетов
+							{ 
 								if(rand(MOD_SKILL_ENEMY_RATE*5+50) == 50) GiveItem2Character(chref, chr.equip.gun);
 							}
 							else GiveItem2Character(chref, chr.equip.gun);
 						}	
 						sBullet = LAi_GetCharacterBulletType(chr);						
 						sGunPowder = LAi_GetCharacterGunpowderType(chr);							
-						if (chr.model.animation != "mushketer") //с мушкетеров пуль меньше, слишком у них их много - халява
+						if (chr.model.animation != "mushketer") 
 						{							
-							TakeNItems(chref, sBullet, GetCharacterItem(chr, sBullet));// boal gun bullet													
+							TakeNItems(chref, sBullet, GetCharacterItem(chr, sBullet));
 							if(sGunPowder != "")
 							{
-								AddItems(chref, sGunPowder, GetCharacterItem(chr, sGunPowder)); // 21.03.09 Warship fix Порох
+								AddItems(chref, sGunPowder, GetCharacterItem(chr, sGunPowder)); 
 							}	
 						}
 						else
 						{							
-							TakeNItems(chref, sBullet, makeint(GetCharacterItem(chr, sBullet)/2));// boal gun bullet											
+							TakeNItems(chref, sBullet, makeint(GetCharacterItem(chr, sBullet)/2));
 							if(sGunPowder != "")
 							{
-								AddItems(chref, sGunPowder, makeint(GetCharacterItem(chr, sGunPowder)/2)); // 21.03.09 Warship fix Порох
+								AddItems(chref, sGunPowder, makeint(GetCharacterItem(chr, sGunPowder)/2)); 
 							}	
 						}
 					}
 				}
-    		    // вернем саблю и пистоль <--
-                //fill box with new items
+    		    
+                
                 int j, howI;
                 ref    itm;
                 string name = "";
                 string  sModel = chr.model;
                 howI = 0;
-                // выясняем тип -->
+                
                 if (chr.sex != "man")
                 {
     		        name = "Citizen_f";
@@ -1027,9 +1021,9 @@ void Dead_AddLoginedCharacter(aref chr)
                 {
                     name = GetCharType(chr);
             	}
-            	// выясняем тип <--
+            	
 
-                for (j= ItemDeadStartCount; j<ITEMS_QUANTITY; j++) // нужно оптимизировать!!! 137 - это много  начало с опред места
+                for (j= ItemDeadStartCount; j<ITEMS_QUANTITY; j++) 
     			{
 					if (howI >= (11 - MOD_SKILL_ENEMY_RATE))
 					{
@@ -1039,8 +1033,8 @@ void Dead_AddLoginedCharacter(aref chr)
 					if (CheckAttribute(itm, name))
 					{
 						makearef(typeRef, itm.(name));
-                        //attrName = name+".rare";
-                        if (!CheckAttribute(typeRef, "rare") && MOD_BETTATESTMODE == "On") Log_Info("Error: Не найдет RARE для предмета = "+itm.id + " тип = " + name);
+                        
+                        if (!CheckAttribute(typeRef, "rare") && MOD_BETTATESTMODE == "On") Log_Info("Error: пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ RARE пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ = "+itm.id + " пїЅпїЅпїЅ = " + name);
 
                         if ( rand(1000) < (((stf(typeRef.rare) + stf(typeRef.rare)*nLuck / 20.0) / makefloat(MOD_SKILL_ENEMY_RATE))*930.0))
                         {
@@ -1053,7 +1047,7 @@ void Dead_AddLoginedCharacter(aref chr)
 					}
     			}
 			}
-			// заполнили по списку
+			
 	    }
 		Dead_Characters[Dead_Char_num].px = x;
 		Dead_Characters[Dead_Char_num].pz = z;
@@ -1069,7 +1063,7 @@ void Dead_DelLoginedCharacter(aref chr)
 	{
 		if(CheckAttribute(chr, "index") && Dead_Characters[i].index == chr.index)
 		{
-            Dead_Characters[i].px = 30000; // локация -2000 до 2000
+            Dead_Characters[i].px = 30000; 
 			Dead_Characters[i].pz = 30000;
 		}		
 	}
@@ -1081,7 +1075,7 @@ int Dead_FindCloseBody()
 	ref mainChr = GetMainCharacter();
 	int dchr_index = -1;
 	float x, y, z;
-	float x1, y1, z1, rd, min_rd = 100; // 100 - is super max
+	float x1, y1, z1, rd, min_rd = 100; 
 	GetCharacterPos(mainChr, &x, &y, &z);
 	
     for(int i = 0; i < Dead_Char_num; i++)
@@ -1107,7 +1101,7 @@ void Dead_OpenBoxProcedure()
     ref deadCh;
     dchr_index = Dead_FindCloseBody();
     if (dchr_index == -1) return;
-	if (CheckAttribute(pchar, "GenQuest.Notsearchbody")) return;//Jason
+	if (CheckAttribute(pchar, "GenQuest.Notsearchbody")) return;
     
 	deadCh = &Dead_Characters[dchr_index];
 	
@@ -1124,7 +1118,7 @@ void Dead_LaunchCharacterItemChange(ref chref)
 	}
 }
 
-// boal dead can be searched 14.12.2003 <--
+
 
 void MakePoisonAttack(aref attack, aref enemy)
 {
@@ -1133,7 +1127,7 @@ void MakePoisonAttack(aref attack, aref enemy)
 		if (enemy.index == GetMainCharacterIndex()) Log_SetStringToLog(XI_ConvertString("You've been poisoned"));
 		else Log_SetStringToLog(GetFullName(enemy) + XI_ConvertString("is poisoned"));
 	}
-	//Отравляем персонажа
+	
 	float poison = 0.0;
 	if(CheckAttribute(enemy, "chr_ai.poison"))
 	{
@@ -1145,7 +1139,7 @@ void MakePoisonAttack(aref attack, aref enemy)
 
 void MakePoisonAttackCheckSex(aref attacked, aref enemy)
 {
-	if (IsCharacterEquippedArtefact(attacked, "kaleuche_amulet3")) return; // калеуче
+	if (IsCharacterEquippedArtefact(attacked, "kaleuche_amulet3")) return; 
 	if (enemy.sex == "skeleton" || enemy.sex == "crab" || IsCharacterEquippedArtefact(enemy, "indian_10") || CheckAttribute(enemy, "viper"))
 	{
 		if (rand(1000) < 150) MakePoisonAttack(enemy, attacked);
@@ -1227,14 +1221,7 @@ void LaunchBlood(aref chr, float addy, bool isBig, string DamageType)
 		{
 			if(DamageType == "fire")
 			{
-/*			
-				if(rand(1) == 0) 	CreateParticleSystem("blood", x, y, z, 0,1.0,0,0);
-				else
-				{	
-					if(rand(1) == 0) CreateParticleSystem("blood_singleshoot", x, y, z, 0,1.0,0,0);
-					else			 CreateParticleSystem("blood_massshoot", x, y, z, 0,1.0,0,0);
-				}
-*/
+ 
 				if(rand(1) == 0) 	CreateParticleSystem("blood_fire1", x, y, z, 0,1.0,0,0);
 				else
 				{	
@@ -1248,7 +1235,7 @@ void LaunchBlood(aref chr, float addy, bool isBig, string DamageType)
 	}
 }
 
-void LaunchIncasFire(aref chr, bool isBig) // 280712
+void LaunchIncasFire(aref chr, bool isBig) 
 {
 	float x, y, z;
 	GetCharacterPos(chr, &x, &y, &z);
@@ -1257,7 +1244,7 @@ void LaunchIncasFire(aref chr, bool isBig) // 280712
 	else CreateParticleSystem("incas_blood", x, y, z, 0,1.0,0,0);
 }
 
-void LaunchBlast(aref chr) // 280812
+void LaunchBlast(aref chr) 
 {
 	float x, y, z;
 	GetCharacterPos(chr, &x, &y, &z);
@@ -1265,7 +1252,7 @@ void LaunchBlast(aref chr) // 280812
 	CreateParticleSystem("blast_inv", x, y, z, 0,1.0,0,0);
 }
 
-void LaunchBlastPellet(aref chr) // 
+void LaunchBlastPellet(aref chr) 
 {
 	float x, y, z;
 	GetCharacterPos(chr, &x, &y, &z);
@@ -1278,7 +1265,7 @@ void LaunchBlastPellet(aref chr) //
 	Play3DSound("pellet", x, y, z);
 }
 
-void LaunchBlastGrenade(aref chr) // 
+void LaunchBlastGrenade(aref chr) 
 {
 	float x, y, z;
 	GetCharacterPos(chr, &x, &y, &z);
@@ -1326,3 +1313,4 @@ void LAi_Explosion(ref chr, int damage)
 	LAi_ApplyCharacterDamage(chr, damage, "fire");	
 	if (sti(LAi_GetCharacterHP(chr)) < damage + 1) Lai_KillCharacter(chr);
 }
+

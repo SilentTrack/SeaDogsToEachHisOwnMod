@@ -1,4 +1,4 @@
-// Фадей Московит
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -97,7 +97,7 @@ void ProcessDialogEvent()
 				}
 				dialog.text = "Is there something you need, "+pchar.name+"?";
 				if (CheckAttribute(pchar, "questTemp.Persian") && pchar.questTemp.Persian == "start" && CheckNCountPersian() > 0)
-				{// персидские клинки
+				{
 					link.l2 = "Take a look at what I have here, Fadey. Would I be far off to say it's a Persian sword blade and possibly one of the ones that were stolen from your home?";
 					link.l2.go = "persian";
 				}
@@ -116,7 +116,7 @@ void ProcessDialogEvent()
 					link.l2 = "I'm here concerning the light armour we talked about.";
 					link.l2.go = "persian_13";
 				}
-				if(CheckAttribute(npchar, "quest.ropes") && GetDataDay() == 20) // торговля канатами
+				if(CheckAttribute(npchar, "quest.ropes") && GetDataDay() == 20) 
 				{
 					link.l3 = "Fadey, I would like to buy in on some of your ropes.";
 					link.l3.go = "ropes";
@@ -226,7 +226,7 @@ void ProcessDialogEvent()
 			link.l1 = "You think he's one of the guys that snagged your cavalry swords?";
 			link.l1.go = "Sharlie_14";
 			pchar.questTemp.Persian = "start";
-			// --> скимитар 021012
+			
 			pchar.questTemp.Persian.skimitar = "true";
 			pchar.quest.Persian.win_condition.l1 = "item";
 			pchar.quest.Persian.win_condition.l1.item = "blade_23";
@@ -241,7 +241,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Sharlie_14":
-			dialog.text = "Nah, I don't think so. He was interested only in coins. Imagine a scarecrow in my room picking my chests\nAn Indian from some deep jungles, that's ridiculous. Coloured and in costume… You may visit our dungeons and see that jester for yourself if you want while he still lives.";
+			dialog.text = "Nah, I don't think so. He was interested only in coins. Imagine a scarecrow in my room picking my chests\nAn Indian from some deep jungles, that's ridiculous. Coloured and in costumeпїЅ You may visit our dungeons and see that jester for yourself if you want while he still lives.";
 			link.l1 = "Hm... Maybe I'll drop by.";
 			link.l1.go = "Sharlie_15";
 		break;
@@ -407,7 +407,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "vodka_11":
-			dialog.text = "Well, if you want to drink and not to get drunk you should follow a few rules. Most importantly, never drink if your stomach is empty. Eat something decent before the libation starts\nSecond, don’t forget to eat after every glass. Meat or fish will do the best. Third, don't wash your mouth with the drink, swallow at once\nAlso, having a small - not more than a half pint - shot prior the main libation will prepare you poor body for receiving big doses of liquor. Don't overdo it, otherwise the effect will be quite the opposite\Finally, training is the key, drinking moderate amounts of rum or other types of liquors on a regular basis will make you more resistant to them.";
+			dialog.text = "Well, if you want to drink and not to get drunk you should follow a few rules. Most importantly, never drink if your stomach is empty. Eat something decent before the libation starts\nSecond, donпїЅt forget to eat after every glass. Meat or fish will do the best. Third, don't wash your mouth with the drink, swallow at once\nAlso, having a small - not more than a half pint - shot prior the main libation will prepare you poor body for receiving big doses of liquor. Don't overdo it, otherwise the effect will be quite the opposite\Finally, training is the key, drinking moderate amounts of rum or other types of liquors on a regular basis will make you more resistant to them.";
 			link.l1 = "Hm-mm... S-so that's how you do it! I'll d-definitely...hic!.. remember all your ins-structions, Fadey. Th-thank you. And n-now I think it'd b-be a g-good idea for me to g-get some shuteye, cuz I aint f-feelin too hot today.";
 			link.l1.go = "vodka_12";
 		break;
@@ -424,14 +424,14 @@ void ProcessDialogEvent()
 			sld.shown = false;
 			sld = ItemsFromID("lcheer");
 			sld.shown = false;
-			pchar.questTemp.CanDrink = true; // Шарль теперь знает секреты выпивки, это ему потом пригодится
+			pchar.questTemp.CanDrink = true; 
 			LAi_SetSitType(npchar);
 			LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
 			NextDiag.CurrentNode = "First time";
 		break;
 		
 		case "trial":
-			pchar.quest.Sharlie_TrialOver.over = "yes"; //снять таймер
+			pchar.quest.Sharlie_TrialOver.over = "yes"; 
 			dialog.text = "What did he actually say that I would definitely help you?";
 			link.l1 = "Well, pretty much. Won't you lend a hand to the brother of your longtime friend? It's not like I'm asking for money from you. I'm asking you to present me an opportunity to make it.";
 			link.l1.go = "trial_1";
@@ -451,7 +451,7 @@ void ProcessDialogEvent()
 		
 		case "trial_3":
 			DialogExit();
-			SetFunctionTimerCondition("Trial_StartLine", 0, 0, 1, false); // таймер
+			SetFunctionTimerCondition("Trial_StartLine", 0, 0, 1, false); 
 			pchar.questTemp.Trial = "start";
 			AddQuestRecord("Trial", "1");
 		break;
@@ -602,14 +602,14 @@ void ProcessDialogEvent()
 			DialogExit();
 			pchar.questTemp.Guardoftruth.Archy = "portroyal";
 			AddQuestRecord("Guardoftruth", "62");
-			// эскадру Патерсона - в Порт-Рояль
+			
 			Group_SetAddress("Willy_group", "Jamaica", "quest_ships", "quest_ship_1");
 			pchar.quest.GuardOT_jamaica.win_condition.l1 = "location";
 			pchar.quest.GuardOT_jamaica.win_condition.l1.location = "Jamaica";
 			pchar.quest.GuardOT_jamaica.function = "GuardOT_PortRoyalArrive";
 		break;
 		
-		// персидские клинки
+		
 		case "persian":
 			dialog.text = "Let's have a look, "+pchar.name+"... Oh yeah, it's one of them! Where did you find it, my friend?";
 			link.l1 = "Irrelevant. The important thing is that it has found its way back to you.";
@@ -719,7 +719,7 @@ void ProcessDialogEvent()
 			ChangeCharacterComplexReputation(pchar, "authority", 2);
 			ChangeCharacterComplexReputation(pchar, "nobility", 2);
 			ChangeCharacterNationReputation(pchar, FRANCE, 3);
-			Achievment_SetStat(pchar, 65, 1); // ugeen 2016
+			Achievment_SetStat(pchar, 65, 1); 
 			dialog.text = "My collection is back to me! No one will dare to steal it from me again, I will make sure of that! And I have a very special reward for you, good man: they will bring me an excellent fencing armour from Europe in two weeks. An order of one nobleman, it is a quite unique piece of armour\nSo, if you want, you can buy it for only seven hundreds golden doubloons. I will tell the nobleman that they are still making it.";
 			link.l1 = "What's so good about this armour?";
 			link.l1.go = "persian_11";
@@ -734,7 +734,7 @@ void ProcessDialogEvent()
 		case "persian_12":
 			DialogExit();
 			pchar.questTemp.Persian = "time";
-			SetFunctionTimerCondition("Persian_CirassLamport", 0, 0, 14, false); // таймер
+			SetFunctionTimerCondition("Persian_CirassLamport", 0, 0, 14, false); 
 		break;
 		
 		case "persian_13":
@@ -772,10 +772,10 @@ void ProcessDialogEvent()
 		case "persian_16":
 			DialogExit();
 			pchar.questTemp.Persian = "end";
-			pchar.quest.Persian_CirassLamportOver.over = "yes"; //снять прерывание
+			pchar.quest.Persian_CirassLamportOver.over = "yes"; 
 		break;
 		
-		// торговля канатами
+		
 		case "ropes":
 			dialog.text = "Come in, my dear friend. The merchandise is ready for you to purchase. Five hundred doubloons for fifty pieces.";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 500)
@@ -805,11 +805,11 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			AddCharacterGoods(pchar, GOOD_ROPES, 50);
 			DeleteAttribute(npchar, "quest.ropes");
-			SetFunctionTimerCondition("Ropes_FadeyAttrReturn", 0, 0, 1, false); // таймер
+			SetFunctionTimerCondition("Ropes_FadeyAttrReturn", 0, 0, 1, false); 
 			AddCharacterExpToSkill(pchar, "Commerce", 200);
 		break;
 		
-		// уменьшение НЗГ
+		
 		case "help":
 			if (!CheckAttribute(npchar, "quest.relation_info"))
 			{
@@ -907,7 +907,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "contraband":
-			dialog.Text = "Why, my good man? The smugglers are not the worst folk in our world and they can make you a good profit. Fine, I will help you, I know how to grease some wheels… Prepare seven hundred doubloons, no bargaining.";
+			dialog.Text = "Why, my good man? The smugglers are not the worst folk in our world and they can make you a good profit. Fine, I will help you, I know how to grease some wheelsпїЅ Prepare seven hundred doubloons, no bargaining.";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 700)
 			{
 				Link.l1 = "Very well, Fadey, I agree. Take your gold.";

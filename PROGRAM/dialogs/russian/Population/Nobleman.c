@@ -1,4 +1,4 @@
-//Jason общий диалог дворян
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -14,18 +14,18 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 	
-	// вызов диалога по городам -->
+	
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Citizen\" + NPChar.City + "_Citizen.c";
     if (LoadSegment(NPChar.FileDialog2))
 	{
         ProcessCommonDialog(NPChar, Link, NextDiag);
 		UnloadSegment(NPChar.FileDialog2);
 	}
-    // вызов диалога по городам <--
+    
 	
 	ProcessCommonDialogRumors(NPChar, Link, NextDiag);
 	
-	iTest = FindColony(NPChar.City); // 170712
+	iTest = FindColony(NPChar.City); 
     ref rColony;
 	if (iTest != -1)
 	{
@@ -35,7 +35,7 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			//--> проверка межнациональных отношений
+			
 				if (sti(NPChar.nation) != PIRATE && GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY)
 				{
 				dialog.text = NPCStringReactionRepeat("Hm. You are sailing under the flag of"+NationNameGenitive(sti(pchar.nation))+", pal. What the hell are you doing here, in our town? Get lost!", 
@@ -50,7 +50,7 @@ void ProcessDialogEvent()
 			break;
 			}
 			
-			//--> проверка репутации - дворяне гнобят супернегодяев
+			
 			if (sti(pchar.reputation.nobility) < 10)
 			{
 				dialog.text = NPCStringReactionRepeat("Look at that! And how do our guards let such bastards as you just walk around the town? Impossible...", 
@@ -65,12 +65,12 @@ void ProcessDialogEvent()
 			break;
 			}
 			
-			//--> диалог первой встречи
+			
             if(NPChar.quest.meeting == "0")
 			{
-				// проверка наличия корабля в порту
+				
 				bool ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
-				if (ok && sti(Pchar.Ship.Type) != SHIP_NOTUSED && CheckAttribute(npchar, "quest.passenger") && !CheckAttribute(pchar, "GenQuest.Noblepassenger") && 4-sti(RealShips[sti(Pchar.Ship.Type)].Class) > 0)//дворянин-пассажир
+				if (ok && sti(Pchar.Ship.Type) != SHIP_NOTUSED && CheckAttribute(npchar, "quest.passenger") && !CheckAttribute(pchar, "GenQuest.Noblepassenger") && 4-sti(RealShips[sti(Pchar.Ship.Type)].Class) > 0)
 				{
 					dialog.text = "Greeting, "+GetAddress_Form(NPChar)+". I see that you are a captain of the solid ship. I have got something to ask you. Deal if you want...";
 					link.l1 = "I am listening, "+GetAddress_FormToNPC(NPChar)+". What do you mean?";
@@ -78,10 +78,10 @@ void ProcessDialogEvent()
 					link.l2 = "Pardon me, "+GetAddress_FormToNPC(NPChar)+", but I am in hurry.";
 					link.l2.go = "exit";
 					npchar.quest.meeting = "1";
-					DeleteAttribute(npchar, "talker"); //снимаем говорилку
+					DeleteAttribute(npchar, "talker"); 
 					break;
 				}
-				if (CheckAttribute(npchar, "quest.donation"))//клянчит деньги
+				if (CheckAttribute(npchar, "quest.donation"))
 				{
 					dialog.text = "Aha, it is good to see such a decent man in our beyond! I am sure that you are just from Europe. Listen, I want to ask you to help me as nobleman to nobleman. I hope that you will understand me correctly.";
 					link.l1 = "Good day to you, sir. I am listening.";
@@ -89,7 +89,7 @@ void ProcessDialogEvent()
 					npchar.quest.meeting = "1";
 					break;
 				}
-				if (CheckAttribute(npchar, "quest.lombard") && !CheckAttribute(pchar, "GenQuest.Noblelombard"))//семейная реликвия
+				if (CheckAttribute(npchar, "quest.lombard") && !CheckAttribute(pchar, "GenQuest.Noblelombard"))
 				{
 					dialog.text = "Good day, "+GetAddress_Form(NPChar)+"! It's good to meet a nobleman at the streets of our town! Will you let me to take a few minutes from you?";
 					link.l1 = "Sure, sir. I am listening.";
@@ -97,7 +97,7 @@ void ProcessDialogEvent()
 					npchar.quest.meeting = "1";
 					break;
 				}
-				if (CheckAttribute(npchar, "quest.slaves") && !CheckAttribute(Colonies[FindColony(npchar.city)], "questslaves"))//привезти рабов
+				if (CheckAttribute(npchar, "quest.slaves") && !CheckAttribute(Colonies[FindColony(npchar.city)], "questslaves"))
 				{
 					dialog.text = "Good day to you, captain! I am glad to see you because you look like a man who is able to solve my problem.";
 					link.l1 = ""+GetAddress_FormToNPC(NPChar)+"?";
@@ -109,10 +109,10 @@ void ProcessDialogEvent()
 				link.l1 = TimeGreeting()+", "+GetAddress_FormToNPC(NPChar)+". I won't take much of your time, just want to ask...";
 				link.l1.go = "question";
 				link.l2 = RandPhraseSimple("I need information about your colony.", "I need information.");
-				link.l2.go = "quests";//(перессылка в файл города)
+				link.l2.go = "quests";
 				npchar.quest.meeting = "1";
 			}
-			else //--> повторные обращения
+			else 
 			{
 				dialog.text = NPCStringReactionRepeat("What? Again? I don't have time for you. Look for someone else to talk. There are a lot of marginals walking around the streets. And I have to go, there will be a party tonight in the governor's residence and I have to prepare myself...", 
 					"No, now it is really annoying! Don't you just get it? Or are you a slow minded?", 
@@ -134,7 +134,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 
-//--------------------------------------------дворянин-пассажир---------------------------------------------------
+
 		case "passenger":
 			if (drand(19) > 9) SetPassengerParameter("Noblepassenger", false);
 			else SetPassengerParameter("Noblepassenger", true);
@@ -164,7 +164,7 @@ void ProcessDialogEvent()
 			LAi_SetImmortal(npchar, true);
 			DeleteAttribute(npchar, "LifeDay");
 			LAi_RemoveLoginTime(npchar);
-			DeleteAttribute(npchar, "CityType");//удалить признак фантома, иначе - пустые города
+			DeleteAttribute(npchar, "CityType");
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload1_back", "none", "", "", "", 20.0);
 			AddPassenger(pchar, npchar, false);
@@ -187,14 +187,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "passenger_3":
-			pchar.quest.Noblepassenger_Over.over = "yes"; //снять таймер
+			pchar.quest.Noblepassenger_Over.over = "yes"; 
 			dialog.text = "Here we are, most excellent! This travel on your ship was quite satisfying. My thanks. Take your money, sir.";
-			link.l1 = "Удачи, "+GetAddress_FormToNPC(NPChar)+"! Farewell.";
+			link.l1 = "пїЅпїЅпїЅпїЅпїЅ, "+GetAddress_FormToNPC(NPChar)+"! Farewell.";
 			link.l1.go = "passenger_4";
 		break;
 		
 		case "passenger_4":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			DialogExit();
 			npchar.lifeday = 0;
 			RemovePassenger(Pchar, npchar);
@@ -212,9 +212,9 @@ void ProcessDialogEvent()
 			CloseQuestHeader(sTitle);
 			DeleteAttribute(Pchar, "GenQuest.Noblepassenger");
 		break;
-//<-- дворянин-пассажир
 
-//-------------------------------------------------помощь деньгами------------------------------------------------
+
+
 		case "donation":
 			sTemp = DonationText();
 			dialog.text = "I have got a quite delicate business..."+sTemp+" I need money now or things will fall apart for me. I would never ask you for coins but the situation is really bad.";
@@ -258,9 +258,9 @@ void ProcessDialogEvent()
 			npchar.lifeday = 0;
 			DeleteAttribute(pchar, "GenQuest.Nobledonation");
 		break;
-//<-- помощь деньгами
 
-//-------------------------------------------------семейная реликвия---------------------------------------------
+
+
 		case "lombard":
 			LombardText();
 			dialog.text = "I need your help. You are wealthy and noble man, so I hope that you will understand. I had a strong need for money not long ago so I had to go to the banker and to pawn "+pchar.GenQuest.Noblelombard.Item+"\nHe offered good terms. Ten percents for each month, three months in total. But the time is off and I don't possess money to redeem the item due to unfortunate course of events.";
@@ -299,13 +299,13 @@ void ProcessDialogEvent()
 			pchar.GenQuest.Noblelombard.Percent = makeint(sti(pchar.GenQuest.Noblelombard.Money)*0.3);
 			pchar.GenQuest.Noblelombard.Summ = sti(pchar.GenQuest.Noblelombard.Money)+sti(pchar.GenQuest.Noblelombard.Percent);
 			pchar.GenQuest.Noblelombard.Chance = drand(9);
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			LAi_SetActorType(npchar);
 			LAi_RemoveLoginTime(npchar);
-			DeleteAttribute(npchar, "CityType");//удалить признак фантома
+			DeleteAttribute(npchar, "CityType");
 			FreeSitLocator(pchar.GenQuest.Noblelombard.City + "_tavern", "sit1");
 			LAi_ActorRunToLocation(npchar, "reload", "reload4_back", pchar.GenQuest.Noblelombard.City+"_tavern", "sit", "sit1", "Nobleman_lombardTavern", 10);
-			SetFunctionTimerCondition("Noblelombard_Over", 0, 0, 1, false); //таймер до конца суток
+			SetFunctionTimerCondition("Noblelombard_Over", 0, 0, 1, false); 
 			ReOpenQuestHeader("Noblelombard");
 			AddQuestRecord("Noblelombard", "1");
 			AddQuestUserData("Noblelombard", "sCity", XI_ConvertString("Colony"+pchar.GenQuest.Noblelombard.City));
@@ -315,7 +315,7 @@ void ProcessDialogEvent()
 		case "lombard_4":
 			if (CheckAttribute(pchar, "GenQuest.Noblelombard.Regard"))
 			{
-				pchar.quest.Noblelombard_Over.over = "yes"; //снять таймер
+				pchar.quest.Noblelombard_Over.over = "yes"; 
 				dialog.text = "What can you say, "+GetAddress_Form(NPChar)+"? Have you been in bank? Got good news or bad ones?";
 				if (pchar.GenQuest.Noblelombard == "full") link.l1 = "I have. I have repaid all of the interest and the debt itself. You can go there and take back your relic.";
 				if (pchar.GenQuest.Noblelombard == "maxpercent") link.l1 = "I have. I have repaid all of the interest for the last three month and although for the next tree. You can serenely wait for your money. Just don't forget to repay your main debt in three month.";
@@ -339,7 +339,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "lombard_fail":
-			pchar.quest.Noblelombard_Over.over = "yes"; //снять таймер
+			pchar.quest.Noblelombard_Over.over = "yes"; 
 			dialog.text = "Meh, "+GetAddress_Form(NPChar)+"... And you've also witnessed the irrepressible greed of this damned bloodthirsty usurers. Remember that when you will be willing to borrow money from them like I did. Thank you for your trying at least...";
 			link.l1 = "Never liked them. Well, who likes usurers? I am sorry for that, "+GetAddress_FormToNPC(NPChar)+". Farewell.";
 			link.l1.go = "lombard_fail_1";
@@ -377,14 +377,14 @@ void ProcessDialogEvent()
 			ChangeOfficersLoyality("good_all", 1);
 			AddQuestRecord("Noblelombard", "5");
 			AddQuestUserData("Noblelombard", "sName", pchar.GenQuest.Noblelombard.Name);
-			SetFunctionTimerCondition("Noblelombard_Regard", 0, 0, 90, false); //таймер
+			SetFunctionTimerCondition("Noblelombard_Regard", 0, 0, 90, false); 
 		break;
-//<-- семейная реликвия
 
-//------------------------------------------привезти рабов под заказ--------------------------------------------
+
+
 		case "slaves":
-			npchar.quest.slaves.price = 3+drand(1);//цена на рабов в дублонах
-			npchar.quest.slaves.qty = 50+drand(5)*10;//количество
+			npchar.quest.slaves.price = 3+drand(1);
+			npchar.quest.slaves.qty = 50+drand(5)*10;
 			npchar.quest.slaves.money = sti(npchar.quest.slaves.qty)*sti(npchar.quest.slaves.price);
 			dialog.text = "I own a "+LinkRandPhrase("factory","mine","plantation")+" and I always need slaves. Right now I need "+sti(npchar.quest.slaves.qty)+"heads. I am willing to order a batch of them. I am paying in gold for each head "+sti(npchar.quest.slaves.price)+".\nNo rush, I don't limit you in a matter of time. Well, within reason of course, don't prolong it for more then half a year. So what say you? Deal?";
 			link.l1 = "Deal! It's going to be messy business but it worths the risk.";
@@ -409,11 +409,11 @@ void ProcessDialogEvent()
 			DialogExit();
 			sGlobalTemp = npchar.id;
 			DeleteAttribute(npchar, "LifeDay");
-			DeleteAttribute(npchar, "CityType");//удалить признак фантома, иначе - пустые города
-			SaveCurrentNpcQuestDateParam(npchar, "slaves_date");//запоминаем дату
+			DeleteAttribute(npchar, "CityType");
+			SaveCurrentNpcQuestDateParam(npchar, "slaves_date");
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload4_back", npchar.city+"_church", "sit", "sit"+(1+rand(5)), "Nobleslaves_Place", 10.0);
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			Colonies[FindColony(npchar.city)].questslaves = true;
 			sTitle = npchar.city+"Nobleslaves";
 			ReOpenQuestHeader(sTitle);
@@ -479,9 +479,9 @@ void ProcessDialogEvent()
 			GetCharacterPos(pchar, &locx, &locy, &locz);
          	ChangeCharacterAddressGroup(npchar, npchar.city+"_church", "goto", LAi_FindNearestFreeLocator("goto", locx, locy, locz));
 			LAi_ActorGoToLocation(npchar, "reload", "reload1_back", "none", "", "", "", 10.0);
-			AddCharacterExpToSkill(pchar, "Commerce", 150);//торговля
-			AddCharacterExpToSkill(pchar, "Sailing", 50);//навигация
-			AddCharacterExpToSkill(pchar, "Fortune", 30);//везение
+			AddCharacterExpToSkill(pchar, "Commerce", 150);
+			AddCharacterExpToSkill(pchar, "Sailing", 50);
+			AddCharacterExpToSkill(pchar, "Fortune", 30);
 			ChangeCharacterComplexReputation(pchar, "nobility", -1);
 			sTitle = npchar.city+"Nobleslaves";
 			AddQuestRecordEx(sTitle, "Nobleslaves", "2");
@@ -497,9 +497,9 @@ void ProcessDialogEvent()
 			AddQuestRecordEx(sTitle, "Nobleslaves", "3");
 			CloseQuestHeader(sTitle);
 		break;
-//<-- привезти рабов под заказ
 
-		//замечание по обнаженному оружию от персонажей типа citizen
+
+		
 		case "CitizenNotBlade":
 			dialog.text = NPCharSexPhrase(NPChar, "Listen, I am the citizen of this town and I'd ask you to hold down your blade.", "Listen, I am the citizen of this town and I'd ask you to hold down your blade.");
 			link.l1 = LinkRandPhrase("Fine.", "Whatever.", "Whatever you say...");

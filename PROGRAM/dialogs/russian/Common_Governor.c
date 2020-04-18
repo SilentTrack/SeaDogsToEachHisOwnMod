@@ -1,4 +1,4 @@
-// boal 25/04/04 общий диалог Governor
+
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -10,14 +10,14 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 
-    // вызов диалога по городам -->
+    
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Governor\" + NationShortName(sti(NPChar.nation)) + "_Governor.c";
     if (LoadSegment(NPChar.FileDialog2))
 	{
         ProcessCommonDialog(NPChar, Link, NextDiag);
 		UnloadSegment(NPChar.FileDialog2);
 	}
-    // вызов диалога по городам <--
+    
     
     ref offref, sld;
     int i, cn;
@@ -25,7 +25,7 @@ void ProcessDialogEvent()
     int iSumm;
     string attrLoc;
 
-    /// выкуп колонии
+    
     ref CaptGovenor, FortColony;
     int f, colony_money;
 
@@ -40,7 +40,7 @@ void ProcessDialogEvent()
 	if (findsubstr(attrLoc, "CityGive_" , 0) != -1)
  	{
         i = findsubstr(attrLoc, "_" , 0);
-	 	NPChar.quest.CityIdx = strcut(attrLoc, i+1, strlen(attrLoc)-1); // индех в конце
+	 	NPChar.quest.CityIdx = strcut(attrLoc, i+1, strlen(attrLoc)-1); 
  	    Dialog.CurrentNode = "ColonyGive";
  	}
  	
@@ -87,14 +87,14 @@ void ProcessDialogEvent()
 				link.l1 = "I wanted to talk to you about work in the name of the Crown of " + NationNameGenitive(sti(NPChar.nation));
 				link.l1.go = "work";
 				link.l2 = "I was going to talk to you bout one important affair.";
-				link.l2.go = "quests"; // файл нации
-				//Jason --> Регата
+				link.l2.go = "quests"; 
+				
 				if (CheckAttribute(pchar, "questTemp.Regata.ToPortRoyal") && NPChar.location == "Portroyal_townhall")
 				{
 					link.l3 = "I came on an invitation to participate in the regatta. Here's my invitation.";
 					link.l3.go = "Regata";
 				}
-				//<-- Регата
+				
 				link.l10 = "I am sorry, but I have some business to do.";
 				link.l10.go = "exit";
 			}
@@ -106,13 +106,13 @@ void ProcessDialogEvent()
 			link.l1.go = "work";
 			link.l2 = "I was going to talk to you bout one important affair.";
 			link.l2.go = "quests";
-			//Jason --> Регата
+			
 			if (CheckAttribute(pchar, "questTemp.Regata.ToPortRoyal") && NPChar.location == "Portroyal_townhall")
 			{
 				link.l3 = "I came on an invitation to participate in the regatta. Here's my invitation.";
 				link.l3.go = "Regata";
 			}
-			//<-- Регата
+			
 			link.l10 = "It was just a courtesy visit and nothing more, "+GetAddress_FormToNPC(NPChar);
 			link.l10.go = "node_2";
 		break;
@@ -129,14 +129,14 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 		break;
 		
-		//--> Jason регата
+		
 		case "Regata":
 			dialog.text = "Oh, great, glad to see you, captain! You've arrived just in time - the regatta is about to start in a few days. Have you read through the rules of the regatta, which must have been handed to you by an orderly?";
 			link.l1 = "Yes, sir, I did.";
 			link.l1.go = "Regata_1";
-			RemoveItems(PChar, "letter_open", 1);//уберем письмо
-			TakeNationLicence(HOLLAND);//уберем лицензию
-			DeleteAttribute(pchar, "questTemp.Regata.ToPortRoyal"); // patch-5
+			RemoveItems(PChar, "letter_open", 1);
+			TakeNationLicence(HOLLAND);
+			DeleteAttribute(pchar, "questTemp.Regata.ToPortRoyal"); 
 		break;
 		
 		case "Regata_1":
@@ -170,7 +170,7 @@ void ProcessDialogEvent()
 			pchar.questTemp.Regata.nomoney = "true";
 		break;
 		
-		//регата-финал
+		
 		case "Regata_Final":
 			dialog.text = "And here we have the winner of the regatta! Hi, captain " + GetFullName(pchar) + "! Allow me to congratulate you on this well-deserved success! The winners of the regatta have always been popular in English colonies - and for good reason. ";
 			link.l1 = "Thank you, sir!";
@@ -194,29 +194,29 @@ void ProcessDialogEvent()
 			switch (iGift)
 			{
 				case 0:
-					sItem1 = "blade_10";//корд
+					sItem1 = "blade_10";
 					sItem2 = "cirass6";
 					sItem3 = "bussol";
 					sAdd = "cord, duelist's vest and boussole";
 				break;
 				
 				case 1:
-					sItem1 = "blade_15";//маринера
-					sItem2 = "cirass2";//рейтарский панцирь
+					sItem1 = "blade_15";
+					sItem2 = "cirass2";
 					sItem3 = "bussol";
 					sAdd = "marinera, reiter's armour and boussole";
 				break;
 				
 				case 2:
-					sItem1 = "blade_17";//бретта
-					sItem2 = "cirass7";//карацена
+					sItem1 = "blade_17";
+					sItem2 = "cirass7";
 					sItem3 = "bussol";
 					sAdd = "bretta, karacena and boussole";
 				break;
 				
-				case 3://
-					sItem1 = "blade_20";//мадонна
-					sItem2 = "cirass2";//офицерская кираса
+				case 3:
+					sItem1 = "blade_20";
+					sItem2 = "cirass2";
 					sItem3 = "bussol";
 					sAdd = "'Madonna', officer's cuirass and boussole";
 				break;
@@ -239,6 +239,6 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.CurrentNode = "First time";
 		break;
-		//<-- регата
+		
 	}
 }

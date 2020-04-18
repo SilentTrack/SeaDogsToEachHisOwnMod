@@ -1,6 +1,6 @@
-//navy
+
 #include "DIALOGS\russian\Common_Duel.c" 
-// boal 29.05.04 даем карту клада
+
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -26,7 +26,7 @@ void ProcessDialogEvent()
         npchar.quest.trade_date = "";
     }
 
-	ProcessDuelDialog(NPChar, link, Diag); //navy
+	ProcessDuelDialog(NPChar, link, Diag); 
 
 	switch(Dialog.CurrentNode)
 	{
@@ -81,9 +81,9 @@ void ProcessDialogEvent()
 		    {
                 npchar.quest.trade_date      = lastspeak_date;
             }
-            dialog.Text = "It costs only "+Pchar.GenQuest.TreasureMoney+" doubloons."; // Addon-2016 Jason
+            dialog.Text = "It costs only "+Pchar.GenQuest.TreasureMoney+" doubloons."; 
 			Link.l1 = "Alright. And wrap it in a nice piece of cloth.";
-			if (GetCharacterItem(pchar, "gold_dublon") >= sti(Pchar.GenQuest.TreasureMoney)) // Addon-2016 Jason
+			if (GetCharacterItem(pchar, "gold_dublon") >= sti(Pchar.GenQuest.TreasureMoney)) 
 			{
 			   Link.l1.go = "map_treasure_buy";
 			}
@@ -99,10 +99,10 @@ void ProcessDialogEvent()
             dialog.Text = "Here you go. No you're bound to become rich!";
 			Link.l1 = "Thanks!";
 			Link.l1.go = "exit";
-			RemoveItems(pchar, "gold_dublon", sti(Pchar.GenQuest.TreasureMoney)); // Addon-2016 Jason
+			RemoveItems(pchar, "gold_dublon", sti(Pchar.GenQuest.TreasureMoney)); 
 			GiveItem2Character(pchar, "map_full");
 			Diag.TempNode = "Temp_treasure";
-			npchar.LifeDay = 0; // продал и свалил, если дуэль, то продлится у него жизнь
+			npchar.LifeDay = 0; 
 		break;
 		
 		case "Temp_treasure":
@@ -112,7 +112,7 @@ void ProcessDialogEvent()
 			ok = (GetCharacterItem(Pchar, "map_part1")>0)  || (GetCharacterItem(Pchar, "map_part2")>0);
             if (GetCharacterItem(Pchar, "map_full") == 0 && !ok)
             {
-				Achievment_SetStat(pchar, 68, 1); // ugeen 2016
+				Achievment_SetStat(pchar, 68, 1); 
     			Link.l2 = "You sold me a fake map!";
     			Link.l2.go = "Temp_treasure_1";
 			}
@@ -124,9 +124,9 @@ void ProcessDialogEvent()
 			Link.l1 = "Whatever...";
 			Link.l1.go = "exit";
 			Link.l2 = "You sold me this forgery! I will beat the crap out of you...";
-			Link.l2.go = "outraged"; //navy -- дуэли!!!
+			Link.l2.go = "outraged"; 
 			Diag.TempNode = "let_s_duel";
-			npchar.LifeDay = 1; // чтоб не слетел на выходе
+			npchar.LifeDay = 1; 
 			SaveCurrentNpcQuestDateParam(npchar, "LifeTimeCreate");
 		break;
 		

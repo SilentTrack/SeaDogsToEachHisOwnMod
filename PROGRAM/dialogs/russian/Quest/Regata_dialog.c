@@ -24,7 +24,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 		break;
 		
-		//вестовой
+		
 		case "Regata_Cureer":
 			dialog.text = "Good day. Are you captain " + GetFullName(pchar) + "?";
 			link.l1 = "Yes, it is me. And what is the deal?";
@@ -72,7 +72,7 @@ void ProcessDialogEvent()
 			SetFunctionTimerCondition("RegataToPortRoyalTimeOver", 0, 0, 31, false);
 		break;
 		
-		//распорядитель регаты
+		
 		case "Regata_Head":
 			if (CheckAttribute(pchar, "questTemp.Regata.Begin"))
 			{
@@ -96,7 +96,7 @@ void ProcessDialogEvent()
 				rColony = GetColonyByIndex(iTest);
 			}
 			ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
-			if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)//проверка на наличие корабля в порту
+			if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)
 			{
 				dialog.text = "I am glad to meet you, captain " + GetFullName(pchar) + ". Let's start then.  You are already aware about the basics from the letter, right? Luggers only and she has to be the one vessel in your squadron in order to participate in the regatta. Have you fulfilled these terms?";
 				if ((GetCompanionQuantity(pchar) > 1) || sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LUGGER)
@@ -129,7 +129,7 @@ void ProcessDialogEvent()
 					rColony = GetColonyByIndex(iTest);
 				}
 				ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
-				if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)//проверка на наличие корабля в порту
+				if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)
 				{
 					dialog.text = "Ah, it is you again. Have you done everything to fulfil terms of the regatta?";
 					if ((GetCompanionQuantity(pchar) > 1) || sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LUGGER)
@@ -181,7 +181,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Regata_Head_5":
-// 10Aug17 change "provide your" to "provide you"
+
 			dialog.text = "Now let's talk about the regatta itself. Listen carefully. I will also provide you with a rule paper.\nThe regatta starts and ends in Port Royal. There are five passages\nFirst one is Port Royal to Belize, West Main\nSecond is Belize to Port-au-Prince, Hispaniola\Third is Port-au-Prince to St.John's, Antigua\nFourth is St.John's to Bridgetown, Barbados\nAnd the last one is Bridgetown to Port Royal\nAm I clear?";
 			link.l1 = "Sure, sir.";
 			link.l1.go = "Regata_Head_6";
@@ -240,7 +240,7 @@ void ProcessDialogEvent()
 		
 		case "Regata_Head_12":
 			DialogExit();
-			pchar.quest.RegataToPortRoyalTimeOver.over = "yes";//снять таймер
+			pchar.quest.RegataToPortRoyalTimeOver.over = "yes";
 			SetFunctionTimerCondition("Regata_SetTime", 0, 0, 3, false);
 			pchar.quest.Regata_Lost.win_condition.l1 = "Timer";
 			pchar.quest.Regata_Lost.win_condition.l1.date.hour  = 13.0;
@@ -309,7 +309,7 @@ void ProcessDialogEvent()
 		
 		case "Regata_rate_2":
 			AddMoneyToCharacter(pchar, -sti(pchar.questTemp.Regata.Rate));
-			pchar.questTemp.Regata.Advantage = sti(pchar.questTemp.Regata.Rate)*(1.5+frand(1.5)); // dlc
+			pchar.questTemp.Regata.Advantage = sti(pchar.questTemp.Regata.Rate)*(1.5+frand(1.5)); 
 			dialog.text = "Splendid! Now all you need is to be the first and the prize is yours. It's final value could vary, it all depends on how many people will stake on you in the end.";
 			if (!CheckAttribute(pchar, "questTemp.Regata.Ratenext"))
 			{
@@ -337,7 +337,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Regata_Prepare";
 		break;
 		
-		//старт регаты
+		
 		case "Regata_CitMan":
 			dialog.text = RandPhraseSimple(LinkRandPhrase("Captain, are you first-timer? Let me tell you that you should be careful. Your competitors might set up a very unpleasant surprises for you...","Captain, I have made a stake on you. Don't disappoint me!","Captain, the locals in the ports of the regatta might offer you to buy something. It is often can be really useful. Consider that."), LinkRandPhrase("Have a safe sail, captain!","Captain, please be careful, Castilians often hunt the luggers of participants in the Spanish waters.","I have heard that some shady characters often offer their 'services' to the regatta captains. It is your call to accept their offers or not."));
 			link.l1 = "Yes, yes, of course...";
@@ -390,9 +390,9 @@ void ProcessDialogEvent()
 				sld = characterFromId("Regata_Cap_F"+i);
 				LAi_ActorGoToLocation(sld, "reload", "reload1_back", "none", "", "", "", -1);
 			}
-			Island_SetReloadEnableGlobal("Jamaica", false);//на остров нельзя
-			SetFunctionTimerCondition("ReturnJamaicaNorm", 0, 0, 1, false);//таймер на возврат нормы
-			LocatorReloadEnterDisable("Portroyal_town", "reload1_back", false);//откроем выход в море
+			Island_SetReloadEnableGlobal("Jamaica", false);
+			SetFunctionTimerCondition("ReturnJamaicaNorm", 0, 0, 1, false);
+			LocatorReloadEnterDisable("Portroyal_town", "reload1_back", false);
 			DeleteAttribute(pchar, "questTemp.Regata.Prepare");
 			pchar.questTemp.Regata.Go = "true";
 			pchar.questTemp.Regata.Town = "Beliz";
@@ -401,17 +401,17 @@ void ProcessDialogEvent()
 			pchar.quest.Regata_PU.win_condition.l1.locator_group = "reload";
 			pchar.quest.Regata_PU.win_condition.l1.locator = "reload10_back";
 			pchar.quest.Regata_PU.win_condition.l2 = "Night";
-			pchar.quest.Regata_PU.function = "RegataPU_Open";//вход в ПУ ночью
-			//ситуации
+			pchar.quest.Regata_PU.function = "RegataPU_Open";
+			
 			pchar.quest.Regata_ShYarder.win_condition.l1 = "location";
 			pchar.quest.Regata_ShYarder.win_condition.l1.location = "Beliz_town";
 			pchar.quest.Regata_ShYarder.function = "RegataShipyarder";
 			sld = characterFromId("Beliz_shipyarder");
 			LAi_RemoveLoginTime(sld);
 		break;
-		//старт регаты
 		
-		//верфист с парусами
+		
+		
 		case "Regata_Shipyarder":
 			dialog.text = "Greeting, captain! I am informed that you are taking part in the Caribbean regatta...";
 			link.l1 = "It is true. News are truly spread across the archipelago faster than a wind.";
@@ -453,7 +453,7 @@ void ProcessDialogEvent()
 				if (i==3) sTemp = "c";
 				if (i==4) sTemp = "d";
 				if (i==5) sTemp = "e";
-				pchar.questTemp.Regata.AdversarySecondTransition.Time.(sTemp) = sti(pchar.questTemp.Regata.AdversarySecondTransition.Time.(sTemp))+12;//выиграл 12 часов у всех
+				pchar.questTemp.Regata.AdversarySecondTransition.Time.(sTemp) = sti(pchar.questTemp.Regata.AdversarySecondTransition.Time.(sTemp))+12;
 				log_testinfo(FindRussianDaysString(pchar.questTemp.Regata.AdversarySecondTransition.Time.(sTemp)));
 			}
 			RealShips[sti(Pchar.Ship.Type)].ship.upgrades.sails = 3;
@@ -464,7 +464,7 @@ void ProcessDialogEvent()
 			dialog.text = "What a shame. Well, it is your call. Farewell, captain.";
 			link.l1 = "Goodbye!";
 			link.l1.go = "Shipyarder_exit";
-			pchar.questTemp.Regata.AdversarySecondTransition.Time.d = sti(pchar.questTemp.Regata.AdversarySecondTransition.Time.d)-16;//четвертый соперник выиграл 16 часов
+			pchar.questTemp.Regata.AdversarySecondTransition.Time.d = sti(pchar.questTemp.Regata.AdversarySecondTransition.Time.d)-16;
 			log_testinfo(FindRussianDaysString(pchar.questTemp.Regata.AdversarySecondTransition.Time.e));
 		break;
 		
@@ -473,9 +473,9 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload5_back", "Beliz_Shipyard", "sit", "sit1", "ReturnRegataSYNorm", 5);
 		break;
-		//верфист с парусами
 		
-		//контрики с пушками
+		
+		
 		case "Regata_Contra":
 			dialog.text = "Hello, captain " + GetFullName(pchar) + ". We have a talk to you... actually, a business proposal.";
 			link.l1 = "Hm. Interesting and how do you know who I am?";
@@ -547,13 +547,13 @@ void ProcessDialogEvent()
 			{
 				AddMoneyToCharacter(pchar, -50000);
 				sTemp = pchar.questTemp.Regata.ContraIndex;
-				pchar.questTemp.Regata.AdversaryThirdTransition.Time.(sTemp) = sti(pchar.questTemp.Regata.AdversaryThirdTransition.Time.(sTemp))+48;//задержка на 48 часов
+				pchar.questTemp.Regata.AdversaryThirdTransition.Time.(sTemp) = sti(pchar.questTemp.Regata.AdversaryThirdTransition.Time.(sTemp))+48;
 				log_testinfo(FindRussianDaysString(pchar.questTemp.Regata.AdversaryThirdTransition.Time.(sTemp)));
 			}
 			else
 			{
 				AddMoneyToCharacter(pchar, -30000);
-				pchar.questTemp.Regata.AdversaryThirdTransition.Time.b = sti(pchar.questTemp.Regata.AdversaryThirdTransition.Time.b)+36;//задержка на 36 часов
+				pchar.questTemp.Regata.AdversaryThirdTransition.Time.b = sti(pchar.questTemp.Regata.AdversaryThirdTransition.Time.b)+36;
 				log_testinfo(FindRussianDaysString(pchar.questTemp.Regata.AdversaryThirdTransition.Time.b));
 			}
 		break;
@@ -567,9 +567,9 @@ void ProcessDialogEvent()
 				LAi_ActorRunToLocation(sld, "quest", "quest2", "none", "", "", "", 10.0);
 			}
 		break;
-		//контрики с пушками
 		
-		//падре
+		
+		
 		case "Regata_Padre":
 			pchar.questTemp.Regata.BranderName = GenerateRandomNameToShip(ENGLAND);
 			dialog.text = "Good day to you, my son. I am to greet you and to humbly ask you: don't you want to contribute to the parish treasury as a loyal servant of England and our great Lord?";
@@ -596,28 +596,28 @@ void ProcessDialogEvent()
 				ChangeCharacterComplexReputation(pchar, "nobility", -3);
 				break;
 			}
-			if (iTemp > 0 && iTemp <= 1000)//ничего не скажет
+			if (iTemp > 0 && iTemp <= 1000)
 			{
 				dialog.text = "Our parish and I thank you for this modest gift.";
 				link.l1 = "You are welcome, holy father.";
 				link.l1.go = "Padre_exit";
 				AddMoneyToCharacter(pchar, -iTemp);
 			}
-			if (iTemp > 1000 && iTemp <= 5000)//1 категория - намекнет
+			if (iTemp > 1000 && iTemp <= 5000)
 			{
 				dialog.text = "Our parish and I thank you for this gift. And I want to warn you, my son, that some bad people are intend to harm you. Be careful in the sea!";
 				link.l1 = "Padre, every day people are planning to do something against me... But thank you for your concerns about my fate.";
 				link.l1.go = "Padre_exit";
 				AddMoneyToCharacter(pchar, -iTemp);
 			}
-			if (iTemp > 5000 && iTemp <= 10000)//2 категория - скажет
+			if (iTemp > 5000 && iTemp <= 10000)
 			{
 				dialog.text = "I thank you in the name of our parish for this valuable gift. In return, I want to warn you that bad people are conspiring against you. I heard that these vile apostates are going to sink your vessel at this very harbour\nThey have already prepared a ship for this evil deed. Be careful, my son, these lost souls are serious about their vile intentions. Bless you!";
 				link.l1 = "Thank you, holy father. I will be attentive.";
 				link.l1.go = "Padre_exit";
 				AddMoneyToCharacter(pchar, -iTemp);
 			}
-			if (iTemp > 10000)//3 категория - расскажет полностью
+			if (iTemp > 10000)
 			{
 				dialog.text = "You are very generous, my son. A modesty of a humble servant of the God doesn't allow me to accept the whole sum you are willing to give away for the good our of church. I shall take only 10 000 pesos\nIn return, I want to warn you that bad people are conspiring against you. I heard that these vile apostates are going to sink your vessel at this very harbor\nThey have prepared a lugger '"+pchar.questTemp.Regata.BranderName+"', she is flying English in order to approach you without causing suspicions. Be careful, my son, these lost souls are serious about their vile intentions.\nDestroy them, I give you absolution for this sin. Bless you! I will pray for you, my son.";
 				link.l1 = "Thank you, holy father. If these bastards will dare to do something bad, I will send them right to hell!";
@@ -653,28 +653,28 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Regata_Spyglass_2":
-			if(drand(11) > 10)//отличная труба
+			if(drand(11) > 10)
 			{
 				pchar.questTemp.Regata.Spy = "spyglass4";
 				sTemp = "an excellent spyglass";
 				pchar.questTemp.Regata.SpyPrice = 20000;
-				pchar.questTemp.Regata.SpyIndex = 12;//выигрыш - 12 часов
+				pchar.questTemp.Regata.SpyIndex = 12;
 			}
 			else
 			{
-				if(drand(11) < 6)//обычная труба
+				if(drand(11) < 6)
 				{
 					pchar.questTemp.Regata.Spy = "spyglass2";
 					sTemp = "an ordinary spyglass";
 					pchar.questTemp.Regata.SpyPrice = 1800;
-					pchar.questTemp.Regata.SpyIndex = 4;//выигрыш - 4 часа
+					pchar.questTemp.Regata.SpyIndex = 4;
 				}
-				else//хорошая труба - как пригодится
+				else
 				{
 					pchar.questTemp.Regata.Spy = "spyglass3";
 					sTemp = "a good spyglass";
 					pchar.questTemp.Regata.SpyPrice = 10000;
-					pchar.questTemp.Regata.SpyIndex = 8;//выигрыш - 8 часов
+					pchar.questTemp.Regata.SpyIndex = 8;
 				}
 			}
 			dialog.text = "Here, take a look. I have inherited it from my father. He also was a sailor just like you are. I don't need it, but you can find it useful. I ask only "+FindRussianMoneyString(sti(pchar.questTemp.Regata.SpyPrice))+" for it.";
@@ -700,7 +700,7 @@ void ProcessDialogEvent()
 				if (i==3) sTemp = "c";
 				if (i==4) sTemp = "d";
 				if (i==5) sTemp = "e";
-				pchar.questTemp.Regata.AdversaryFourthTransition.Time.(sTemp) = sti(pchar.questTemp.Regata.AdversaryFourthTransition.Time.(sTemp))+sti(pchar.questTemp.Regata.SpyIndex);//купил трубу - выиграл время
+				pchar.questTemp.Regata.AdversaryFourthTransition.Time.(sTemp) = sti(pchar.questTemp.Regata.AdversaryFourthTransition.Time.(sTemp))+sti(pchar.questTemp.Regata.SpyIndex);
 				log_testinfo(FindRussianDaysString(pchar.questTemp.Regata.AdversaryFourthTransition.Time.(sTemp)));
 			}
 		break;
@@ -709,7 +709,7 @@ void ProcessDialogEvent()
 			dialog.text = "What a pity, captain. I was hoping that it will be useful for you. Well, I will try to sell it to someone else. Farewell!";
 			link.l1 = "Goodbye, " + npchar.name + ".";
 			link.l1.go = "Spyglass_exit";
-			pchar.questTemp.Regata.AdversaryFourthTransition.Time.c = sti(pchar.questTemp.Regata.AdversaryFourthTransition.Time.c)-sti(pchar.questTemp.Regata.SpyIndex);//третий соперник выиграл время
+			pchar.questTemp.Regata.AdversaryFourthTransition.Time.c = sti(pchar.questTemp.Regata.AdversaryFourthTransition.Time.c)-sti(pchar.questTemp.Regata.SpyIndex);
 		break;
 		
 		case "Spyglass_exit":
@@ -821,38 +821,38 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Regata_Hovernor_exit":
-			dialog.text = "This… this is unbelievable. You are not going to even try? Well, you are in your right. I can't demand anything from you. If you were just an ordinary captain, I would confiscate your ship for the sake of hundred women, but… you participate in the regatta, therefore you are under protection of general-governor of English colonies\nI was hoping that your conscience will take better of you, yet I was wrong. Go and let God be merciful on your soul!";
+			dialog.text = "ThisпїЅ this is unbelievable. You are not going to even try? Well, you are in your right. I can't demand anything from you. If you were just an ordinary captain, I would confiscate your ship for the sake of hundred women, butпїЅ you participate in the regatta, therefore you are under protection of general-governor of English colonies\nI was hoping that your conscience will take better of you, yet I was wrong. Go and let God be merciful on your soul!";
 			link.l1 = "Farewell, sir.";
 			link.l1.go = "Hovernor_exit";
 		break;
 		
 		case "Hovernor_exit":
 			DialogExit();
-			pchar.questTemp.Regata.AdversaryFifthTransition.Time.e = sti(pchar.questTemp.Regata.AdversaryFifthTransition.Time.e)-36;//пятый противник выиграл 36 часов
+			pchar.questTemp.Regata.AdversaryFifthTransition.Time.e = sti(pchar.questTemp.Regata.AdversaryFifthTransition.Time.e)-36;
 			ChangeCharacterComplexReputation(pchar, "nobility", -8);
 			ChangeCharacterNationReputation(pchar, ENGLAND, -5);
-			//вертаем губера в норму
+			
 			npchar.Dialog.Filename = "Common_Mayor.c";
 			npchar.dialog.currentnode = "First time";
-			//удаляем лейтенанта
+			
 			sld = characterFromId("SiegeOfficer");
 			sld.lifeday = 0;
-			//открываем ворота и выход в море
+			
 			bDisableFastReload = false;
 			LocatorReloadEnterDisable("Bridgetown_town", "reload1_back", false);
 			LocatorReloadEnterDisable("Bridgetown_town", "reload2_back", false);
 			LocatorReloadEnterDisable("Bridgetown_town", "gate1_back", false);
 			LocatorReloadEnterDisable("Bridgetown_town", "gate_back", false);
 			LocatorReloadEnterDisable("Bridgetown_Exittown", "reload3", false);
-			//остров в норму
+			
 			n = FindIsland("Barbados");	
 			DeleteAttribute(Islands[n], "DontSetShipInPort");
-			//осаду снимем через 5 дней
+			
 			SetFunctionTimerCondition("RegataSiegeDelete", 0, 0, 5, false);
-			for (i=1; i <=9; i++)//девок счистим
+			for (i=1; i <=9; i++)
 			{
 				sld = characterFromId("RegataBridgWom_"+i);
-				sld.lifeday = 0; // patch-7
+				sld.lifeday = 0; 
 				LAi_CharacterDisableDialog(sld);
 			}
 		break;
@@ -919,28 +919,28 @@ void ProcessDialogEvent()
 			ChangeCharacterNationReputation(pchar, ENGLAND, 10);
 			LAi_SetStayType(npchar);
 			LAi_CharacterDisableDialog(npchar);
-			npchar.lifeday = 0; // patch-8
+			npchar.lifeday = 0; 
 			for (i=1; i <=9; i++)
 			{
 				sld = characterFromId("RegataBridgWom_"+i);
 				LAi_SetStayType(sld);
 				LAi_CharacterDisableDialog(sld);
-				sld.lifeday = 0; // patch-8
+				sld.lifeday = 0; 
 			}
-			//вертаем губера в норму
+			
 			sld = characterFromId("Bridgetown_Mayor");
 			sld.Dialog.Filename = "Common_Mayor.c";
 			sld.dialog.currentnode = "First time";
-			//открываем ворота и выход в море
+			
 			LocatorReloadEnterDisable("Shore4", "boat", false);
 			LocatorReloadEnterDisable("Bridgetown_town", "gate1_back", false);
 			LocatorReloadEnterDisable("Bridgetown_town", "gate_back", false);
 			LocatorReloadEnterDisable("Bridgetown_Exittown", "reload3", false);
 			LocatorReloadEnterDisable("Barbados_cave", "reload1", false);
 			bQuestDisableMapEnter = false;
-			//осаду снимем через 5 дней
+			
 			SetFunctionTimerCondition("RegataSiegeDelete", 0, 0, 5, false);
-			RegataSiegeSkiper();//поставим Вудро в церковь
+			RegataSiegeSkiper();
 		break;
 		
 		case "Regata_SiegeSkiper":
@@ -961,7 +961,7 @@ void ProcessDialogEvent()
 			link.l1.go = "Regata_SiegeSkiper_3";
 		break;
 		
-		case "Regata_SiegeSkiper_3"://а тут - как уж свезет
+		case "Regata_SiegeSkiper_3":
 			if(drand(2) != 2)
 			{
 				dialog.text = "From "+pchar.questTemp.Regata.Name+"? I see now, sure. Alright, captain, I will help you to sail the shortest way to Port Royal. Are you going to set sail now?";
@@ -996,17 +996,17 @@ void ProcessDialogEvent()
 		break;
 		
 		case "SiegeSkiper_hire":
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload1_back", "none", "", "", "OpenTheDoors", 10.0);
 			npchar.quest.OfficerPrice = sti(pchar.rank)*500;
 			Pchar.questTemp.HiringOfficerIDX = GetCharacterIndex(npchar.id);
-			npchar.OfficerWantToGo.DontGo = true; //не пытаться уйти
+			npchar.OfficerWantToGo.DontGo = true; 
 			npchar.loyality = 25;
 			npchar.Dialog.Filename = "Enc_Officer_dialog.c";
 			AddDialogExitQuestFunction("LandEnc_OfficerHired");
 			NextDiag.CurrentNode = NextDiag.TempNode;
-			//пересчитываем время пятого перехода
+			
 			for (i=1; i <=5; i++)
 			{
 				if (i==1) sTemp = "a";
@@ -1014,10 +1014,10 @@ void ProcessDialogEvent()
 				if (i==3) sTemp = "c";
 				if (i==4) sTemp = "d";
 				if (i==5) sTemp = "e";
-				pchar.questTemp.Regata.AdversaryFifthTransition.Time.(sTemp) = sti(pchar.questTemp.Regata.AdversaryFifthTransition.Time.(sTemp))+18+(rand(18));//выигрыш до 1.5 суток
+				pchar.questTemp.Regata.AdversaryFifthTransition.Time.(sTemp) = sti(pchar.questTemp.Regata.AdversaryFifthTransition.Time.(sTemp))+18+(rand(18));
 				log_testinfo(FindRussianDaysString(pchar.questTemp.Regata.AdversaryFourthTransition.Time.(sTemp)));
 			}
-			SetFunctionTimerCondition("SiegeSkiperOver", 0, 0, 15, false);//чтобы не присвоил офицера
+			SetFunctionTimerCondition("SiegeSkiperOver", 0, 0, 15, false);
 			DialogExit();
 		break;
 		
@@ -1029,11 +1029,11 @@ void ProcessDialogEvent()
 			sFrom_sea = rColony.from_sea;
 		}
 		ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
-		if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)//проверка на наличие корабля в порту
+		if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)
 		{
-			//снимаем запреты
-			bQuestDisableMapEnter = false;//открыть карту
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
+			
+			bQuestDisableMapEnter = false;
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
 			if (CheckAttribute(pchar, "questTemp.Regata.Breach") || !CheckAttribute(pchar, "questTemp.Regata.Bridgetown") || GetCompanionQuantity(pchar) > 1 || sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LUGGER || pchar.Ship.Name != "Santa Catherina")
 			{
 				dialog.text = "You have broken the rules of regatta on the very last stage. Your result was disqualified. I have nothing more to say you, captain.";
@@ -1053,7 +1053,7 @@ void ProcessDialogEvent()
 					if (i==4) sTemp = "d";
 					if (i==5) sTemp = "e";
 					if (pchar.questTemp.Regata.AdversaryFifthTransition.Time.(sTemp) < sti(pchar.questTemp.Regata.FifthTransitionTime)) n++;
-					pchar.questTemp.Regata.Result = n;//место в регате
+					pchar.questTemp.Regata.Result = n;
 				}
 				if (n==1)
 				{
@@ -1082,9 +1082,9 @@ void ProcessDialogEvent()
 			CheckForReleaseOfficer(sti(Pchar.questTemp.FiringOfficerIDX));
 			RemovePassenger(Pchar, sld);
 			DeleteAttribute(sld, "Payment");
-			DeleteAttribute(Pchar, "questTemp.FiringOfficerIDX");//удаляем из офицеров
+			DeleteAttribute(Pchar, "questTemp.FiringOfficerIDX");
 			log_info("Woodrow Dougherty has landed");
-			pchar.quest.SiegeSkiperOver.over = "yes"; //снять таймер
+			pchar.quest.SiegeSkiperOver.over = "yes"; 
 		}
 		else
 		{
@@ -1105,7 +1105,7 @@ void ProcessDialogEvent()
 		
 		case "First_result_1":
 			DialogExit();
-			//npchar.lifeday = 7;
+			
 			Achievment_SetStat(pchar, 9, 1);
 			npchar.dialog.currentnode = "Other_result_repeat";
 			pchar.questTemp.Regata.Win = "true";
@@ -1115,8 +1115,8 @@ void ProcessDialogEvent()
 			pchar.quest.Regata_Final.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 1);
 			pchar.quest.Regata_Final.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
 			pchar.quest.Regata_Final.function = "RegataFinal";
-			SetFunctionTimerCondition("RegataFinalOver", 0, 0, 8, false);//таймер не снимаем - через 8 дней подчистится все автоматически
-			// слухи
+			SetFunctionTimerCondition("RegataFinalOver", 0, 0, 8, false);
+			
 			AddSimpleRumour("Ah, you are the legendary captain, the winner of the regatta! It's such a pleasure to see you in flesh!", ENGLAND, 60, 10);
 			AddSimpleRumour("Ha, look at this, a master of wind and waves, the winner of the regatta! You have my respects...", ENGLAND, 60, 10);
 			AddSimpleRumour("Oh, a great sailor, a king of wind and sea, the winner of the regatta has visited our city! We are glad to see you, captain!", ENGLAND, 60, 10);
@@ -1125,11 +1125,11 @@ void ProcessDialogEvent()
 			AddSimpleRumour("Ha, aren't you the master of wind and waves, the winner of the regatta! You have my respects...", FRANCE, 60, 10);
 			AddSimpleRumour("Oh, a great sailor, a king of wind and sea, the winner of the regatta has visited our city! We are glad to see you, captain!", FRANCE, 60, 10);
 			AddSimpleRumour("Oh, yes I was lucky to chat with a living legend, the captain capable of crossing the archipelago in three days even facing a headwind! My respects, captain!", FRANCE, 60, 10);
-			// экспа
+			
 			AddComplexSeaExpToScill(2000, 300, 300, 0, 500, 500, 0);
-			AddCharacterExpToSkill(pchar, "Leadership", 2000);//авторитет
-			AddCharacterExpToSkill(pchar, "Fortune", 1000);//везение
-			AddCharacterExpToSkill(pchar, "Sneak", 300);//скрытность
+			AddCharacterExpToSkill(pchar, "Leadership", 2000);
+			AddCharacterExpToSkill(pchar, "Fortune", 1000);
+			AddCharacterExpToSkill(pchar, "Sneak", 300);
 			ChangeCharacterComplexReputation(pchar, "authority", 10);
 			ChangeCharacterComplexReputation(pchar, "fame", 15);
 			ChangeOfficersLoyality("good_all", 3);
@@ -1145,11 +1145,11 @@ void ProcessDialogEvent()
 			DialogExit();
 			npchar.dialog.currentnode = "Other_result_repeat";
 			SetFunctionTimerCondition("RegataFinalOver", 0, 0, 1, false);
-			// экспа
+			
 			AddComplexSeaExpToScill(500, 100, 100, 0, 100, 100, 0);
-			AddCharacterExpToSkill(pchar, "Leadership", 200);//авторитет
-			AddCharacterExpToSkill(pchar, "Fortune", 100);//везение
-			AddCharacterExpToSkill(pchar, "Sneak", 100);//скрытность
+			AddCharacterExpToSkill(pchar, "Leadership", 200);
+			AddCharacterExpToSkill(pchar, "Fortune", 100);
+			AddCharacterExpToSkill(pchar, "Sneak", 100);
 			ChangeCharacterComplexReputation(pchar, "authority", 1);
 			ChangeCharacterComplexReputation(pchar, "fame", 1);
 		break;

@@ -54,14 +54,14 @@ void NetClient_Pong(int iMsg, int iPingCode)
 
 	if (iPingCode == iClientLastPingCode)
 	{
-		// calculate 
+		
 		iClientLastPingTime = (Net_GetTickCount() - iClientLastPingCodeTime) / 2;
 		if (iClientServerTime > 0)
 		{
 			iClientServerTime = iClientServerTime - iClientLastPingTime;
 		}
 
-		//Trace("Ping = " + iClientLastPingTime + ", delta = " + (iClientTime - iClientServerTime));
+		
 	}
 	else
 	{

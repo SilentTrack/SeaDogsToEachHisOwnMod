@@ -1,4 +1,4 @@
-// Warship. В этом скрипте идет обработка прерывания, выполняющегося в каждом фрейме
+
 
 #define MAX_GAMEMODE_CONDITIONS 10
 
@@ -17,7 +17,7 @@ void SetGameModeCondition(string _sQuest)
 		
 		if(GameModeConditions[i] == "")
 		{
-			SetEventHandler(_sQuest, _sQuest, 0); // Ставим евент
+			SetEventHandler(_sQuest, _sQuest, 0); 
 			GameModeConditions[i] = _sQuest;
 			return;
 		}
@@ -26,7 +26,7 @@ void SetGameModeCondition(string _sQuest)
 	Log_TestInfo("Critical Error: No more empty GameMode conditions.");
 }
 
-void CheckGameModeConditions() // Процессирование всего
+void CheckGameModeConditions() 
 {
 	for(int i=0; i<MAX_GAMEMODE_CONDITIONS; i++)
 	{
@@ -36,8 +36,8 @@ void CheckGameModeConditions() // Процессирование всего
 	}
 }
 
-// Работа с предметами -->
-void CheckItemsGameModeConditions() // Процессирование предметов
+
+void CheckItemsGameModeConditions() 
 {
 	if(iScriptItemCount == 0) return;
 	int i;
@@ -50,9 +50,9 @@ void CheckItemsGameModeConditions() // Процессирование предметов
 		sItem = items[i].id;
 		if(CheckAttribute(rItem, "Script") && CheckCharacterItem(PChar, sItem))
 		{
-			Log_TestInfo("Игрок подобрал заскриптованный предмет. Скрипт - "+rItem.Script);
+			Log_TestInfo("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ - "+rItem.Script);
 			SetGameModeCondition(rItem.Script);
-			DeleteGameModeConditionFromItem(sItem); // Удаляем скрипт с предмета
+			DeleteGameModeConditionFromItem(sItem); 
 		}
 	}
 }
@@ -61,9 +61,9 @@ void DeleteGameModeConditionFromItem(string sItemID)
 {
 	ref rItem = ItemsFromID(sItemID);
 	DeleteAttribute(rItem, "Script");
-	iScriptItemCount--; // Заскриптованных предметов стало меньше
+	iScriptItemCount--; 
 }
-// <-- Работа с предметами
+
 
 void DeleteGameModeCondition(string _sQuest)
 {
@@ -72,8 +72,9 @@ void DeleteGameModeCondition(string _sQuest)
 		if(GameModeConditions[i] == _sQuest)
 		{
 			GameModeConditions[i] = "";
-			DelEventHandler(_sQuest, _sQuest); // Удалим евент
+			DelEventHandler(_sQuest, _sQuest); 
 			return;
 		}
 	}
 }
+

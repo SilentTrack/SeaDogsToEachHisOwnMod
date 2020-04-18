@@ -1,9 +1,9 @@
-////    boal 30.07.06 найм матросов
+
 int	nCurScrollNum = 0;
 ref refCharacter;
 ref refTown;
 
-int  BuyOrSell = 0; // 1-buy -1 sell
+int  BuyOrSell = 0; 
 int  iPriceSailor;
 int	 QtyMax = 0; 	 
 int	 CrewQty = 0;
@@ -14,7 +14,7 @@ void InitInterface(string iniName)
 
 	refCharacter = pchar;
 
-	// город, где ГГ
+	
 	refTown = GetColonyByIndex(FindColony(loadedLocation.fastreload));
     FillShipsScroll();
 
@@ -83,7 +83,7 @@ void IDoExit(int exitCode)
 {
     EndAboveForm(true);
 	RecalculateCargoLoad(refCharacter);
-    GetBackupQty(); // если неожиданно вышли
+    GetBackupQty(); 
 	DelEventHandler("InterfaceBreak","ProcessBreakExit");
 	DelEventHandler("exitCancel","ProcessCancelExit");
 	DelEventHandler("ievnt_command","ProcCommand");
@@ -216,14 +216,14 @@ void SetVariable()
 	SetNewGroupPicture("CREW_MORALE_PIC", "MORALE_SMALL", GetMoraleGroupPicture(stf(refCharacter.ship.crew.morale)));
 	SetFormatedText("CREW_MORALE_TEXT", XI_ConvertString("CrewMorale") + ": " + XI_ConvertString(GetMoraleName(sti(refCharacter.Ship.crew.morale))));
 		
-	//RecalculateCargoLoad(refCharacter);
+	
 
-	// на одном корабле
+	
 	SetFoodShipInfo(refCharacter, "FOOD_SHIP");
 	
 	SetFormatedText("INFO_SHIP", XI_ConvertString(refBaseShip.BaseName) + ", class " + refBaseShip.Class +", crew: min. "+GetMinCrewQuantity(refCharacter) + ", max. " + GetOptCrewQuantity(refCharacter));
 	SetFormatedText("MONEY_SHIP", "Maintenance of the ship: " + NewStr() + FindRussianMoneyString(GetSalaryForShip(refCharacter)));
-	////  заполнялка города
+	
 	SetCrewExpTable(refTown, "TABLE_CREW2", "BAR_Sailors2", "BAR_Cannoners2", "BAR_Soldiers2");
 	
 	SetFormatedText("CREW_QTY2", ""+GetCrewQuantity(refTown));
@@ -243,7 +243,7 @@ void ProcessFrame()
 	{
 		if(sti(GameInterface.SHIPS_SCROLL.current)!=nCurScrollNum)
 		{
-			GetBackupQty(); // если неожиданно вышли
+			GetBackupQty(); 
 			nCurScrollNum = sti(GameInterface.SHIPS_SCROLL.current);
 			SetDescription();
 			GameInterface.qty_edit.str = 0;
@@ -315,7 +315,7 @@ void HideInfoWindow()
 {
 	CloseTooltip();
 }
-// бакап значений, до применения
+
 void SetBackupQty()
 {
 	aref    arTo, arFrom;
@@ -347,7 +347,7 @@ void GetBackupQty()
 void TransactionCancel()
 {
 	if (sti(GameInterface.qty_edit.str) == 0)
-	{   // выход
+	{   
 		ProcessCancelExit();	
 	}
 	else
@@ -377,7 +377,7 @@ void TransactionOK()
 
     if (!GetRemovable(refCharacter)) return;
     
- 	if (BuyOrSell == 1) // BUY  нанять
+ 	if (BuyOrSell == 1) 
 	{
 		moneyback = makeint(iPriceSailor*stf(GameInterface.qty_edit.str));
 		pchar.money = sti(pchar.money)  - moneyback;
@@ -386,11 +386,11 @@ void TransactionOK()
 		Statistic_AddValue(Pchar, "Money", moneyback);
 	}
  	else
-	{ // SELL
-		//moneyback = makeint(iPriceSailor*stf(GameInterface.qty_edit.str));
-  		//pchar.money = sti(pchar.money)  + moneyback;
+	{ 
+		
+  		
 	}
-	SetBackupQty(); // применим и согласимся
+	SetBackupQty(); 
 	CancelQty();
 }
 
@@ -403,8 +403,8 @@ void confirmChangeQTY_EDIT()
 void ChangeQTY_EDIT()
 {
 	float fQty;
-	GameInterface.qty_edit.str = sti(GameInterface.qty_edit.str); // приведение к целому
-	GetBackupQty();	 // обновим как было до правок
+	GameInterface.qty_edit.str = sti(GameInterface.qty_edit.str); 
+	GetBackupQty();	 
 	if (sti(GameInterface.qty_edit.str) == 0)
 	{
 	    SetFormatedText("QTY_TypeOperation", "");
@@ -414,25 +414,25 @@ void ChangeQTY_EDIT()
 	else
 	{
 		if (sti(GameInterface.qty_edit.str) < 0 || BuyOrSell == -1)
-		{  // уволить
+		{  
 			if (BuyOrSell != -1)
 			{
 		    	GameInterface.qty_edit.str = -sti(GameInterface.qty_edit.str);
 		    }
             BuyOrSell = -1;
-		    // проверка на колво доступное -->
+		    
 		    if (sti(GameInterface.qty_edit.str) > GetCrewQuantity(refCharacter))
 		    {
 		        GameInterface.qty_edit.str = GetCrewQuantity(refCharacter);
 		    }
-		    // проверка на колво доступное <--
+		    
 		    SetFormatedText("QTY_TypeOperation", "Dismiss");
 		    SetFormatedText("QTY_Result", "");
 		}
 		else
-		{  // нанять
+		{  
 			BuyOrSell = 1;
-         	// проверка на колво доступное -->
+         	
 		    if (sti(GameInterface.qty_edit.str) > GetCrewQuantity(refTown))
 		    {
 		        GameInterface.qty_edit.str = GetCrewQuantity(refTown);
@@ -457,12 +457,12 @@ void ChangeQTY_EDIT()
 			}
 			else GameInterface.qty_edit.str = 0;
 						
-		    // проверка на колво доступное <--
+		    
 
 			SetFormatedText("QTY_TypeOperation", "Hire");
 			SetFormatedText("QTY_Result", "The cost of hiring " + makeint(iPriceSailor*stf(GameInterface.qty_edit.str)));
 		}
-		// если получили ноль
+		
 		if (sti(GameInterface.qty_edit.str) == 0)
 		{
 		    SetFormatedText("QTY_TypeOperation", "");
@@ -471,10 +471,10 @@ void ChangeQTY_EDIT()
 		}
 	}
 	if (sti(GameInterface.qty_edit.str) > 0)
-	{ // применение кол-ва
+	{ 
 		
 		if (BuyOrSell == 1)
-		{   // найм меняет опыт и мораль корабля
+		{   
 			fQty = stf(GetCrewQuantity(refCharacter) + sti(GameInterface.qty_edit.str));
 			refCharacter.Ship.Crew.Exp.Sailors   = (stf(refCharacter.Ship.Crew.Exp.Sailors)*GetCrewQuantity(refCharacter) + 
 			                                        stf(refTown.Ship.Crew.Exp.Sailors)*sti(GameInterface.qty_edit.str)) / fQty; 
@@ -486,7 +486,7 @@ void ChangeQTY_EDIT()
 			                                        stf(refTown.Ship.Crew.Morale)*sti(GameInterface.qty_edit.str)) / fQty;																													                                        
 		}
 		else
-		{ // увольнение меняет таверну
+		{ 
 			fQty = stf(GetCrewQuantity(refTown) + sti(GameInterface.qty_edit.str));
 			refTown.Ship.Crew.Exp.Sailors   = (stf(refTown.Ship.Crew.Exp.Sailors)*GetCrewQuantity(refTown) + 
 			                                        stf(refCharacter.Ship.Crew.Exp.Sailors)*sti(GameInterface.qty_edit.str)) / fQty;
@@ -500,28 +500,28 @@ void ChangeQTY_EDIT()
 		SetCrewQuantity(refCharacter, GetCrewQuantity(refCharacter) + BuyOrSell*sti(GameInterface.qty_edit.str));
 		refTown.Ship.Crew.Quantity = sti(refTown.Ship.Crew.Quantity) - BuyOrSell*sti(GameInterface.qty_edit.str));	
 	}
-    SetVariable(); // обновим экран
+    SetVariable(); 
 }
 
-void REMOVE_ALL_BUTTON()  // продать все (уволить)
+void REMOVE_ALL_BUTTON()  
 {
-	GetBackupQty();	// вернем все как было
+	GetBackupQty();	
 	if (!GetRemovable(refCharacter)) return;
 	GameInterface.qty_edit.str = -GetCrewQuantity(refCharacter);
 	BuyOrSell = 0;
 	ChangeQTY_EDIT();
 }
 
-void ADD_ALL_BUTTON()  // купить все
+void ADD_ALL_BUTTON()  
 {
-	GetBackupQty();	// вернем все как было
+	GetBackupQty();	
 	if (!GetRemovable(refCharacter)) return;
 	GameInterface.qty_edit.str = GetCrewQuantity(refTown);
 	BuyOrSell = 0;
 	ChangeQTY_EDIT();
 }
 
-void REMOVE_BUTTON()  // продать
+void REMOVE_BUTTON()  
 {
 	if (!GetRemovable(refCharacter)) return;
 	if (BuyOrSell == 0)
@@ -543,7 +543,7 @@ void REMOVE_BUTTON()  // продать
 	ChangeQTY_EDIT();
 }
 
-void ADD_BUTTON()  // купить
+void ADD_BUTTON()  
 {
 	if (!GetRemovable(refCharacter)) return;
 	if (BuyOrSell == 0)

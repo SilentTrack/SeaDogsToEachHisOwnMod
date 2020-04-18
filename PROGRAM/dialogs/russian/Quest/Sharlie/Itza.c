@@ -1,4 +1,4 @@
-// диалоги Уракана, Канека и прочих индейцев ица
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -21,7 +21,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// ица-горожане
+		
 		case "itza_ctz":
 			dialog.text = LinkRandPhrase("Another pale-faced... The great priest will be overjoyed to carve out your heart...","Pale-faced know how come to Tayasal, but no one leaves our city!","I'm surprised, pale-faced: you still not go to spirit land... Walk you still can for now, soon you see your ancestors.");
 			link.l1 = LinkRandPhrase("Well, well. We'll see...","Don't scare me, red-skinned warrior. We've seen worse than that.","Go, go. You'll frighten your children.");
@@ -36,7 +36,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "itza_ctz_1";
 		break;
 		
-		// Уракан - вождь ица
+		
 		case "urakan":
 			dialog.text = "You are great warrior, pale-faced. We bring your blood to gods. You die with dignity.";
 			link.l1 = "Easy there, red-skinned warrior. I'm not planning on letting your Kanek bring me as a sacrifice to Kukulcan or anybody else for that matter. Your warriors were not able not capture me and every one of them has fallen in batten.";
@@ -75,7 +75,7 @@ void ProcessDialogEvent()
 		
 		case "urakan_6":
 			dialog.text = "Every Itza warrior happy great Kukulcan come, white warrior. You must stand before Kukulcan. He wait for you many nights. He is great prophet. He know everything ahead of time. Go to Flying Snake, you have no other path. We not allow you leave Tayasal.";
-			link.l1 = "Don't you understand that as soon as Kukulcan leaves through the gates of time, all of you, as well as you personally – will cease to exist? And the best part is that you will be reborn in another image, another body... Maybe a simple warrior. Or maybe a cripple or a beggar...";
+			link.l1 = "Don't you understand that as soon as Kukulcan leaves through the gates of time, all of you, as well as you personally пїЅ will cease to exist? And the best part is that you will be reborn in another image, another body... Maybe a simple warrior. Or maybe a cripple or a beggar...";
 			link.l1.go = "urakan_7";
 		break;
 		
@@ -97,7 +97,7 @@ void ProcessDialogEvent()
 			pchar.quest.Tieyasal_Templegreat.win_condition.l1 = "location";
 			pchar.quest.Tieyasal_Templegreat.win_condition.l1.location = "Temple_great";
 			pchar.quest.Tieyasal_Templegreat.function = "Tieyasal_InGreatTemple";
-			// экспа за бой
+			
 			AddComplexSelfExpToScill(300, 300, 300, 300);
 			AddCharacterExpToSkill(pchar, "Leadership", 500);
 			AddCharacterExpToSkill(pchar, "Fortune", 300);
@@ -119,7 +119,7 @@ void ProcessDialogEvent()
 		
 		case "urakan_11":
 			dialog.text = "Nothing hide from eyes of great Cavil. Forgive Urakan that he not understand who you are right away.";
-			link.l1 = "Don't worry about it, chief. I've defeated the mortal embodiment of Kukulcan, but we have a second important task lying ahead – to close the gates to the past. This unnatural hole in time must be eliminated. Will you help me?";
+			link.l1 = "Don't worry about it, chief. I've defeated the mortal embodiment of Kukulcan, but we have a second important task lying ahead пїЅ to close the gates to the past. This unnatural hole in time must be eliminated. Will you help me?";
 			link.l1.go = "urakan_12";
 		break;
 		
@@ -169,7 +169,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("Tieyasal", "26");
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocator(npchar, "quest", "urakan", "", -1);
-			// экспа за бой
+			
 			AddComplexSelfExpToScill(1000, 1000, 1000, 1000);
 			AddCharacterExpToSkill(pchar, "Leadership", 3000);
 			AddCharacterExpToSkill(pchar, "Fortune", 1500);
@@ -208,7 +208,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "treasure_1":
-			dialog.text = "My father said: 'Any riches have two side. Only he who know these two side enter to treasures of Tayasal.' What this mean – I not know. Maybe, Cavil solve?";
+			dialog.text = "My father said: 'Any riches have two side. Only he who know these two side enter to treasures of Tayasal.' What this mean пїЅ I not know. Maybe, Cavil solve?";
 			link.l1 = "We'll figure this one out too...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "urakan_adv";
@@ -231,7 +231,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuestFunction("Tieyasal_Win_IndianBead");
 		break;
 		
-		// Канек - жрец ица
+		
 		case "kanek":
 			dialog.text = "You stand before the Winged Serpent, paleface. Spirit of mighty Kukulcan in human flesh. You lucky to be brother through father of his embodiment as I lucky to be father of mother gave him birth. Great honour. Perhaps that is why you become a strong warrior and still alive\nBut your time run out, paleface. We start new time, time of great Maya. We establish our own power and never let palefaces to come our world. Soon. I, Kanek the priest, go to start the ritual!";
 			link.l1 = "Strike me pink...";

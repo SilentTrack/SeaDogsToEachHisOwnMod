@@ -1,4 +1,4 @@
-// Диалог начала игры (туториал) 03.10.06 boal
+
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -23,7 +23,7 @@ void ProcessDialogEvent()
             DoQuestFunctionDelay("Tut_locCamera_2", 0.1);
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
-			LAi_RemoveCheckMinHP(Pchar); // снимем проверки
+			LAi_RemoveCheckMinHP(Pchar); 
 			LAi_SetImmortal(pchar, false);
 			LAi_SetPlayerType(pchar);
 			InterfaceStates.Buttons.Save.enable = true;
@@ -67,7 +67,7 @@ void ProcessDialogEvent()
 				dialog.text = "You are back, captain, at last! Thanks God, we have almost lost any hope.";
 				if (bBettaTestMode)
 				{
-					link.l0 = "BetaTest - пропустить и начать игру";
+					link.l0 = "BetaTest - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ";
 					link.l0.go = "Finish_2";
 				}
 				link.l1 = "Sandro? What the hell has happened? And why I have got so terrible headache?";
@@ -78,7 +78,7 @@ void ProcessDialogEvent()
 				dialog.text = "Well, captain, now you look like yourself. How do you feel?";
 				if (bBettaTestMode)
 				{
-					link.l0 = "BetaTest - пропустить и начать игру";
+					link.l0 = "BetaTest - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ";
 					link.l0.go = "Finish_2";
 				}
 				link.l1 = "Hm... and how was I looking before?";
@@ -155,7 +155,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Finish_1":
-			if (pchar.name == "Джессика")
+			if (pchar.name == "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
 			{
 				dialog.text = "....";
 				link.l1     = "Well, this means to the new dream! I won't let you down to disappoint you. It is all, I need to land.";
@@ -250,7 +250,7 @@ void ProcessDialogEvent()
 			link.l1     = "Thanks. I have got to land.";
 			link.l1.go  = "Finish_2";
 		break;
-		/////   фехт 
+		
 		case "Teach_1":
 			dialog.text = "Well, let's start then. You were always good in that but I will remind you. There are three attacking moves - normal blow, longe and piercing blow. There is also a protective-attacking circle blow. And a pistol, of course, just to greet your opponent from distance.";
 			link.l1     = "Fine, fine, lets get straight to business.";
@@ -310,7 +310,7 @@ void ProcessDialogEvent()
 			Tut_RestoreState();
 			dialog.text = LinkRandPhrase("Well... You are really weak now. Be attentive, block and parry more. Watch for the pierce attack, your block won't save you from it, use feint, parry or try to snap back.","Don't let to hit yourself, catch enemy's blow with you longes or try to parry. Be careful and watch for feints or your lunge will be catched and turned against you.", "Run or jump away if your energy is low. You can try to feint your opponent. Know that it is not easy to feint enemy's blow but you fool him. If you will succeed you will avoid his blow and hit him back.") +
 										 "Let's try again?";
-			if (sti(pchar.rank) < 3) // чтоб не качались до упора
+			if (sti(pchar.rank) < 3) 
 			{
 				link.l1     = "Sure!";
 				link.l1.go  = "Teach_battle_1";
@@ -334,7 +334,7 @@ void ProcessDialogEvent()
 			Tut_RestoreState();
 			sld = characterFromID("Sailor_2");
 			LAi_SetCitizenType(sld);
-			if (pchar.name == "Джессика")
+			if (pchar.name == "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
 			{
 				dialog.text = "Well done, captain! Beltrope's lessons was not wasted, he was a good teacher. Now, the last advice. Fighting with the one type of weapon will greatly raise your skill. If you want to restore your skills with every type of blades then change them more often.";
 			}
@@ -351,7 +351,7 @@ void ProcessDialogEvent()
 			sld = characterFromID("Sailor_2");
 			LAi_SetCitizenType(sld);
 			dialog.text = "Well, not bad. You have got one opponent but there were two of them. It needs some practice. Enemies can attack by three or four at once. Lets try again?";
-   			if (sti(pchar.rank) < 3) // чтоб не качались до упора
+   			if (sti(pchar.rank) < 3) 
 			{
 				link.l1     = "Sure!";
 				link.l1.go  = "Teach_battle_1";
@@ -361,3 +361,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

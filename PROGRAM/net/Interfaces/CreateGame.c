@@ -25,7 +25,7 @@ void InitInterface(string iniName)
 
 	SendMessage(&GameInterface, "ls", MSG_INTERFACE_INIT, iniName);
 
-	// select checkbox LAN game
+	
 	CheckButton_SetState("CHECKBUTTON_LAN", 1, true);
 
 	iMaxNumPlayers = NET_MAXCLIENTS;		
@@ -74,16 +74,16 @@ void InitInterface(string iniName)
 
 	FillIslandsList();
 
-	// disable OK window
+	
 	XI_WindowShow("WND_OK", false);
 	XI_WindowDisable("WND_OK", true);
 
-	// disable RECREATE window
+	
 	XI_WindowShow("WND_RECREATE", false);
 	XI_WindowDisable("WND_RECREATE", true);
 
 	CheckButton_SetDisable("CHECKBUTTON_DEDICATED", 1, true);
-	//CheckButton_SetDisable("CHECKBUTTON_INET", 1, true);
+	
 }
 
 int CS_IsShift(int iShift, int iNoShift, int iAlt)
@@ -115,7 +115,7 @@ void CS_SetNumPlayers()
 	if (iMaxNumPlayers < 2) { iMaxNumPlayers = 2; }
 
 	StringCollection_SetTextValue("STRINGS_VALUE", 2, iMaxNumPlayers);
-	//Gameinterface.strings.MaxPlayers = iMaxNumPlayers;
+	
 }
 void CS_AddPlayer() { iMaxNumPlayers++; CS_SetNumPlayers(); }
 void CS_DecPlayer() { iMaxNumPlayers--; CS_SetNumPlayers(); }
@@ -126,7 +126,7 @@ void CS_SetGameSpeed()
 	if (iGameSpeed < 1) { iGameSpeed = 1; }
 
 	StringCollection_SetText("STRINGS_VALUE", 3, "#" + iGameSpeed + "x");
-	//Gameinterface.strings.GameSpeed = iGameSpeed + "x";
+	
 }
 void CS_AddGameSpeed() { iGameSpeed++; CS_SetGameSpeed(); }
 void CS_DecGameSpeed() { iGameSpeed--; CS_SetGameSpeed(); }
@@ -142,7 +142,7 @@ void CS_SetTimeLimit()
 	{
 		StringCollection_SetTextValue("STRINGS_VALUE", 4, iTimeLimit);
 	}
-	//Gameinterface.strings.TimeLimit = iTimeLimit;
+	
 }
 void CS_AddTimeLimit() { iTimeLimit = iTimeLimit + 5; CS_SetTimeLimit(); }
 void CS_DecTimeLimit() { iTimeLimit = iTimeLimit - 5; CS_SetTimeLimit(); }
@@ -152,7 +152,7 @@ void CS_SetStartPosition()
 	if (iStartPosition < 0) { iStartPosition = 0; }
 	if (iStartPosition > 2) { iStartPosition = 2; }
 	StringCollection_SetText("STRINGS_VALUE", 5, "#" + XI_ConvertString("txtNetCS_StartPosition" + iStartPosition));
-	//Gameinterface.strings.StartPosition = XI_ConvertString("txtNetCS_StartPosition" + iStartPosition);
+	
 }
 void CS_AddStartPosition() { iStartPosition++; CS_SetStartPosition(); }
 void CS_DecStartPosition() { iStartPosition--; CS_SetStartPosition(); }
@@ -161,7 +161,7 @@ void CS_SetCredit()
 {
 	if (iCredit < 5000) { iCredit = 5000; }
 	StringCollection_SetTextValue("STRINGS_VALUE", 6, iCredit);
-	//Gameinterface.strings.Credit = iCredit;
+	
 }
 void CS_AddCredit() { iCredit = iCredit + 1000 * CS_IsShift(10, 1, 100); CS_SetCredit(); }
 void CS_DecCredit() { iCredit = iCredit - 1000 * CS_IsShift(10, 1, 100); CS_SetCredit(); }
@@ -171,7 +171,7 @@ void CS_SetMaxShipClass()
 	if (iMaxShipClass < 1) { iMaxShipClass = 1; }
 	if (iMaxShipClass > 7) { iMaxShipClass = 7; }
 	StringCollection_SetTextValue("STRINGS_VALUE", 7, iMaxShipClass);
-	//Gameinterface.strings.MaxShipClass = iMaxShipClass;
+	
 }
 void CS_AddMaxShipClass() { iMaxShipClass++; CS_SetMaxShipClass(); }
 void CS_DecMaxShipClass() { iMaxShipClass--; CS_SetMaxShipClass(); }
@@ -302,7 +302,7 @@ void CS_CheckButtonChange()
 	
 	if (sNode == "CHECKBUTTON_LAN" && !bChecked)
 	{
-		//CheckButton_SetState("CHECKBUTTON_LAN", 1, true);
+		
 	}
 }
 
@@ -436,7 +436,7 @@ void OnCreate()
 {
 	bool bError = false;
 
-	// if server name not exist
+	
 	if (GameInterface.EDITBOX_GAMENAME.str == "")
 	{
 		bError = true;
@@ -453,7 +453,7 @@ void OnCreate()
 		return;
 	}
 
-	// if LanServer == false && InetServer == false 
+	
 	if (sti(GameInterface.CHECKBUTTON_LAN.state1) == false && sti(GameInterface.CHECKBUTTON_INET.state1) == false)
 	{
 		SetFormatedText("TEXT_OK", XI_ConvertString("Net_YouNeedtoChoseServerMode"));

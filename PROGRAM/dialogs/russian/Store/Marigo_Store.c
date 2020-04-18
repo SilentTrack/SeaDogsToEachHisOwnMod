@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
 
@@ -11,13 +11,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat("You know, " + NPChar.name + ", maybe next time.", "Right, I've forgotten for some reason...",
                       "Yes, it really is the third time...", "Hm, I wont...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//Jason --> Португалец
+			
 			if (CheckAttribute(pchar, "questTemp.Portugal") && pchar.questTemp.Portugal == "Findcloves" && !CheckAttribute(npchar, "quest.Portugal"))
 			{
    				link.l1 = "Listen, I need some good clothing. Expensive so that I'd barely be distinguished from a noble. Do you have anything of the sort?";
 				link.l1.go = "Portugal_cloves";
 			}
-			//<-- Португалец
+			
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "maarten")
 			{
 				link.l1 = "A galleon brought you cargo recently from Tortuga by the name 'Admirable'. Do you recall that?";
@@ -25,7 +25,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		
-		//Jason --> Португалец
+		
 		case "Portugal_cloves":
 			dialog.text = "Noble clothing? Sure, I've got a set lying here pants, a jerkin, a silk shirt, and boots. It costs 20 000 pesos. The clothing is very high quality, it's comfortable, and it has a remarkable look to it, so I won't go any less for it.";
 			if (sti(pchar.money) >= 20000)
@@ -55,7 +55,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			sld = characterFromId("PortugalDoctor");
 			sld.dialog.currentnode = "Portugal_doctor_4";
 		break;
-		//<-- Португалец
+		
 		case "guardoftruth":
 			dialog.text = "Yes. He arrived on time, hauled out the merchandise, and I paid for it as we had agreed. Why?";
 			link.l1 = "The captain of that ship is Gaius Marchais, my old acquaintance. So I'm trying to find him. Would you be able to tell me what he did after that? Maybe you provided him some additional freight or he mentioned where he was going to take off to?";
@@ -63,7 +63,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "guardoftruth_1":
-			dialog.text = "Nothing of the sort. I didn't offer him any freight; he didn't even ask for it. He didn't share his plans for the future with me. I don't even remember all the details –you know how many people have come in and out of here since that time? He basically debarked and took off and that's all I can say about him.";
+			dialog.text = "Nothing of the sort. I didn't offer him any freight; he didn't even ask for it. He didn't share his plans for the future with me. I don't even remember all the details пїЅyou know how many people have come in and out of here since that time? He basically debarked and took off and that's all I can say about him.";
 			link.l1 = "All right. Well, thanks anyway. All the best!";
 			link.l1.go = "guardoftruth_2";
 		break;
@@ -76,4 +76,5 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 	}
 	UnloadSegment(NPChar.FileDialog2);
 }
+
 

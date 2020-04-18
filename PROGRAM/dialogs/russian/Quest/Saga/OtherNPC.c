@@ -1,4 +1,4 @@
-// диалог прочих НПС по квесту Саги
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -21,7 +21,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-//---------------------------------------------Джимми в доме в Марун-Тауне------------------------------------
+
 		case "Jimmy":
 			dialog.text = "What do you want? Don't you see that I am in grief! Get lost before I kick you downstairs!";
 			link.l1 = "First, buy yourself a bigger house with stairs in it and only then kick people downstairs, hero...";
@@ -37,7 +37,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Jimmy_fight":
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			DialogExit();
 			LAi_SetImmortal(npchar, false);
 			LAi_SetWarriorType(npchar);
@@ -106,10 +106,10 @@ void ProcessDialogEvent()
 			npchar.lifeday = 0;
 			AddQuestRecord("Saga", "4_1");
 		break;
-// <-- Джимми 
+
 		
-//-------------------------------------------корвет Донована, абордаж-----------------------------------------
-		//Донован
+
+		
 		case "Donovan_abordage":
 			PlaySound("VOICE\Russian\saga\Artur Donovan.wav");
 			dialog.text = "Argh, you, mean creature!";
@@ -130,7 +130,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Donovan_abordage_3":
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			DialogExit();
 			LAi_SetCurHPMax(npchar);
 			QuestAboardCabinDialogFree();
@@ -138,10 +138,10 @@ void ProcessDialogEvent()
 			LAi_group_FightGroups(LAI_GROUP_BRDENEMY, LAI_GROUP_PLAYER, true);
 			LAi_group_SetCheck(LAI_GROUP_BRDENEMY, "Saga_AfterDonovanBoarding");
 			AddDialogExitQuest("MainHeroFightModeOn");
-			pchar.questTemp.Saga.Takehelen = "true";//признак, что абордировали судно
+			pchar.questTemp.Saga.Takehelen = "true";
 		break;
 		
-		//наш матрос
+		
 		case "Tempsailor":
 			dialog.text = "Captain, we have searched cabins and the cargo hold as you've told us. We have found a chained girl in cargo hold...";
 			link.l1 = "Such a bastard! Just as I thought... Have you unchained the girl?";
@@ -165,10 +165,10 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "OpenTheDoors", 10.0);
 		break;
-		//<-- абордаж корвета Донована
 		
-//----------------------------------------поиск Энрике Гонсалеса, Картахена----------------------------------
-		//фальшивый Гонсалес №1, дом
+		
+
+		
 		case "GonsalesA":
 			dialog.text = "Want something?";
 			link.l1 = "Hello, Hangman! Best regards from captain Butcher.";
@@ -208,11 +208,11 @@ void ProcessDialogEvent()
 		case "GonsalesA_2_2":
 			DialogExit();
 			LAi_CharacterDisableDialog(npchar);
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			AddQuestRecord("Saga", "17");
 		break;
 		
-		// фальшивый Гонсалес №2, улицы
+		
 		case "GonsalesB":
 			PlaySound("VOICE\Russian\citizen\Pirati v Gorode-08.wav");
 			dialog.text = "I see that you like my cutlass. I can sell it if you want. I won't ask too much, I need a drink and my pockets are empty.";
@@ -278,7 +278,7 @@ void ProcessDialogEvent()
 			Saga_SetOrtega();
 		break;
 		
-		//настоящий Гонсалес - Ортега, маяк
+		
 		case "Ortega":
 			dialog.text = "I don't expect any guests neither today nor any other day. What do you want?";
 			link.l1 = "Hello, Hangman. Wood Devil has sent me to you. It is good that I have found you before Jackman's lads. His men are looking for you across all the Caribbean. Lucky for you, Henry, only Svensson knows where you were born. He asked me to warn you.";
@@ -335,10 +335,10 @@ void ProcessDialogEvent()
 			pchar.questTemp.Saga = "svenson1";
 			PlaySound("interface\important_item.wav");
 			GiveItem2Character(pchar, "chest");
-			GiveItem2Character(pchar, "bucher_ring"); //перстень Бучера
-			//таймер на возврат смотрителя
+			GiveItem2Character(pchar, "bucher_ring"); 
+			
 			SetFunctionTimerCondition("Saga_LightmanReturn", 0, 0, 10, false);
-			//ставим прерывания, если ГГ наследил в городе
+			
 			if (CheckAttribute(pchar, "questTemp.Saga.Trap"))
 			{
 				pchar.quest.Saga_Trap.win_condition.l1 = "location";
@@ -346,10 +346,10 @@ void ProcessDialogEvent()
 				pchar.quest.Saga_Trap.function = "Saga_CreateTrapBandos";
 				CoolTraderHunterOnMap();
 			}
-			AddCharacterExpToSkill(pchar, "Sneak", 50);//скрытность
+			AddCharacterExpToSkill(pchar, "Sneak", 50);
 		break;
 		
-		//бандиты в поисках Гонсалеса, маяк
+		
 		case "saga_trap":
 			dialog.text = "A-ah, there is our curious friend! Have you found Gonzales at last? Well done, you have brought us to him... we don't need you now. Lads, kill this fop!";
 			link.l1 = "Time to die, plucks!";
@@ -358,7 +358,7 @@ void ProcessDialogEvent()
 		
 		case "saga_trap_1":
 			DialogExit();
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			int n = makeint(MOD_SKILL_ENEMY_RATE/3);
 			for (i=1; i<=3+n; i++)
 			{	
@@ -371,11 +371,11 @@ void ProcessDialogEvent()
 			LAi_group_SetCheck("EnemyFight", "OpenTheDoors");
 			AddDialogExitQuest("MainHeroFightModeOn");	
 		break;
-		//<-- поиск Гонсалеса, Картахена
 		
-//--------------------------------------------НПС по квесту Возвращение барона---------------------------------
 		
-		// доминиканский вождь
+
+		
+		
 		case "DominicaHead":
 			dialog.text = "Ahoy! Ahoy! Great Kukulcan demands new victim! O-eh! Spirit of the mighty warrior of the past has come our village to be sacrificed to great Kukulcan! O-eh! All bow to mighty warrior spirit!";
 			link.l1 = "(faintly) What the fuck, where am I?";
@@ -417,7 +417,7 @@ void ProcessDialogEvent()
 		
 		case "DominicaHead_5":
 			DialogExit();
-			bDisableCharacterMenu = true;//лочим Ф2
+			bDisableCharacterMenu = true;
 			AddQuestRecord("BaronReturn", "7");
 			LAi_SetActorType(pchar);
 			DoQuestCheckDelay("Saga_DominicaDollyWait", 5.0);
@@ -432,7 +432,7 @@ void ProcessDialogEvent()
 		
 		case "DominicaHead_7":
 			DialogExit();
-			bDisableCharacterMenu = false;//разлочим Ф2
+			bDisableCharacterMenu = false;
 			AddQuestRecord("BaronReturn", "8");
 			for (i=2; i<=10; i++)
 			{
@@ -441,8 +441,8 @@ void ProcessDialogEvent()
 			}
 		break;
 		
-//----------------------------------------НПС по квесту Искушение Барбазона----------------------------------
-		// капитан рыболовного баркаса, стыривший шелк, море
+
+		
 		case "BarbCapBarkas":
 			dialog.text = "How can I help you, mynheer?";
 			link.l1 = "Well, well..  Now tell me, pal, what are you doing here?";
@@ -485,13 +485,13 @@ void ProcessDialogEvent()
 			npchar.DontDeskTalk = true;
 			npchar.lifeday = 0;
 			LAi_SetStayType(npchar);
-			pchar.quest.BarbBarkas_Sink.over = "yes"; //снять прерывание
-			pchar.quest.BarbBarkas_Abordage.over = "yes"; //снять прерывание
+			pchar.quest.BarbBarkas_Sink.over = "yes"; 
+			pchar.quest.BarbBarkas_Abordage.over = "yes"; 
 			NextDiag.CurrentNode = "BarbCapBarkas_7";
 			AddQuestRecord("BarbTemptation", "6");
 			pchar.questTemp.Saga.BarbTemptation = "give_silk";
-			AddCharacterExpToSkill(pchar, "Fortune", 100);//везение
-			AddCharacterExpToSkill(pchar, "Sneak", 50);//скрытность
+			AddCharacterExpToSkill(pchar, "Fortune", 100);
+			AddCharacterExpToSkill(pchar, "Sneak", 50);
 		break;
 		
 		case "BarbCapBarkas_7":
@@ -501,7 +501,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "BarbCapBarkas_7";
 		break;
 		
-		// Моррель, капитан потопленного судна, тюрьма
+		
 		case "Morelle":
 			dialog.text = "If you are from Barbazon then tell him that I don't want to leave prison myself. I'd better wait for the trial. Even the Dutch hemp on my neck is better than his kindness.";
 			link.l1 = "Don't break wind yet. Your navigator told Jaques that you are dead. He sent me to find the silk you've thrown away. How much of it was in your brigantine?";
@@ -517,21 +517,21 @@ void ProcessDialogEvent()
 		case "Morelle_2":
 			DialogExit();
 			LAi_CharacterDisableDialog(npchar);
-			// тайник - модель
-			//int m = Findlocation("Shore40");
-			//locations[m].models.always.Roll = "Roll_of_rolls";
-			//Locations[m].models.always.Roll.locator.group = "quest";
-			//Locations[m].models.always.Roll.locator.name = "quest1";
+			
+			
+			
+			
+			
 			pchar.quest.Saga_MorelGoods.win_condition.l1 = "locator";
 			pchar.quest.Saga_MorelGoods.win_condition.l1.location = "Shore40";
 			pchar.quest.Saga_MorelGoods.win_condition.l1.locator_group = "quest";
 			pchar.quest.Saga_MorelGoods.win_condition.l1.locator = "quest1";
 			pchar.quest.Saga_MorelGoods.function = "Saga_SetMorelGoods";
-			AddCharacterExpToSkill(pchar, "Fortune", 200);//везение
-			AddCharacterExpToSkill(pchar, "Sneak", 200);//скрытность
+			AddCharacterExpToSkill(pchar, "Fortune", 200);
+			AddCharacterExpToSkill(pchar, "Sneak", 200);
 		break;
 		
-		// Валет, брат Джекмана в Капстервиле
+		
 		case "valet":
 			dialog.text = "I am waiting for the man who knows when the hunt for white shark will begin.";
 			link.l1 = "The hunt has begun.";
@@ -563,8 +563,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "valet_5":
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
-			chrDisableReloadToLocation = true;//закрыть локацию
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
+			chrDisableReloadToLocation = true;
 			DialogExit();
 			LAi_SetWarriorType(npchar);
 			LAi_group_MoveCharacter(npchar, "EnemyFight");
@@ -575,7 +575,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "vensan":
-			// Addon 2016-1 Jason пиратская линейка патч 17/1
+			
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "full_complete_end")
 			{
 				dialog.text = "Charley Prince? What are you doing here? A-argh, dammit, it was you! This is all your doing!";
@@ -642,15 +642,15 @@ void ProcessDialogEvent()
 				ChangeCharacterAddressGroup(sld, pchar.location, "goto", "goto6");
 				LAi_ActorDialog(sld, pchar, "", -1, 0);
 			}
-			AddCharacterExpToSkill(pchar, "Leadership", 100);//авторитет
-			AddCharacterExpToSkill(pchar, "Fortune", 100);//везение
-			AddCharacterExpToSkill(pchar, "Sneak", 50);//скрытность
+			AddCharacterExpToSkill(pchar, "Leadership", 100);
+			AddCharacterExpToSkill(pchar, "Fortune", 100);
+			AddCharacterExpToSkill(pchar, "Sneak", 50);
 			sld = characterFromId("Cap_Vensan");
 			sld.lifeday = 1;
 			sld.DontDeskTalk = true;
 		break;
 		
-		// Addon 2016-1 Jason пиратская линейка патч 17/1
+		
 		case "vensan_8":
 			dialog.text = "Really? Look, I am sorry, brother...";
 			link.l1 = "Forget it. Just let me cut the ropes and set you free.";
@@ -682,8 +682,8 @@ void ProcessDialogEvent()
 			link.l1.go = "vensan_7";
 		break;
 		
- //--------------------------------------НПС по Завещанию Шарпа--------------------------------------------------
-		// Устрица, Поль Моллиган
+ 
+		
 		case "molligan":
 			dialog.text = "What do you need on my ship, sir?";
 			link.l1 = "Good day, Paul. Your name is Paul Molligan, right?";
@@ -734,26 +734,26 @@ void ProcessDialogEvent()
 		
 		case "molligan_7":
 			DialogExit();
-			// ставим проверку скрытности
+			
 			if (GetSummonSkillFromName(pchar, SKILL_SNEAK) > (10+drand(50)))
 			{
-				pchar.questTemp.Saga.Molligan.friend = "true"; // будет шанс критического залпа картечью
+				pchar.questTemp.Saga.Molligan.friend = "true"; 
 				sTemp = "Scoundrel is still unsuspicious. I should come closer and shoot at him with grapeshot. The sudden strike is always a win in any battle. ";
-				log_Testinfo("Друзья");
-				AddCharacterExpToSkill(pchar, "Fortune", 200);//везение
-				AddCharacterExpToSkill(pchar, "Sneak", 300);//скрытность
+				log_Testinfo("пїЅпїЅпїЅпїЅпїЅпїЅ");
+				AddCharacterExpToSkill(pchar, "Fortune", 200);
+				AddCharacterExpToSkill(pchar, "Sneak", 300);
 			}
 			else
 			{
-				pchar.questTemp.Saga.Molligan.enemy = "true"; // нападет
+				pchar.questTemp.Saga.Molligan.enemy = "true"; 
 				sTemp = "";
-				log_Testinfo("Враги");
-				AddCharacterExpToSkill(pchar, "Sneak", 150);//скрытность
+				log_Testinfo("пїЅпїЅпїЅпїЅпїЅ");
+				AddCharacterExpToSkill(pchar, "Sneak", 150);
 			}
 			AddQuestRecord("Testament", "7");
 			AddQuestUserData("Saga", "sText", sTemp);
 			NextDiag.CurrentNode = "molligan_8";
-			npchar.DontDeskTalk = true; // patch-5
+			npchar.DontDeskTalk = true; 
 		break;
 		
 		case "molligan_8":
@@ -763,8 +763,8 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "molligan_8";
 		break;
 		
-	//-----------------------------------------НПС по Теням прошлого--------------------------------------------
-		// Джим Бенсон, плешивая мэгги
+	
+		
 		case "benson":
 			dialog.text = "What do you want from me? I don't like gossips and gambling. And I drink rum alone. Besides, I am in a bad mood after last cruise.";
 			link.l1 = "And what special has happened during your last cruise?";
@@ -813,7 +813,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "benson_6";
 		break;
 		
-	//---------------------------------------бандиты у джекмановского рудника-------------------------------
+	
 		case "mine_bandit":
 			if (CheckAttribute(pchar, "questTemp.Saga.MineAttack"))
 			{
@@ -856,7 +856,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			LAi_SetGuardianType(npchar);
 			LAi_group_MoveCharacter(npchar, "PIRATE_CITIZENS");
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			DoQuestReloadToLocation("Mine_02", "reload", "reload3", "");
 		break;
 		
@@ -1041,7 +1041,7 @@ void ProcessDialogEvent()
 			pchar.quest.Saga_MineAttack_07.function = "Saga_SvensonMineexitAttack";
 		break;
 		
-	// ----------------------------- диалоги НПС при штурме бандитского рудника -------------------------------
+	
 		case "Svensons_off":
 			dialog.text = LinkRandPhrase("We will tear those bastards!","I am looking forward to beat those scum's!","Jackman's minions have nothing to do at the Western Main! We will beat them of here!");
 			link.l1 = "...";
@@ -1085,7 +1085,7 @@ void ProcessDialogEvent()
 		
 		case "gunner_1_1":
 			PlaySound("interface\_bombs_npc.wav");
-			dialog.text = "Commander, we did hit something or someone, but I can't be more specific… this blasted hill is blocking the sight. I'll change the angle\nReady! Fire!";
+			dialog.text = "Commander, we did hit something or someone, but I can't be more specificпїЅ this blasted hill is blocking the sight. I'll change the angle\nReady! Fire!";
 			link.l1 = "...";
 			link.l1.go = "gunner_0_2";
 			npchar.quest.canonada = "2";
@@ -1125,7 +1125,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "gunner_3_1":
-			PlaySound("interface\_bombs_npc.wav");//
+			PlaySound("interface\_bombs_npc.wav");
 			dialog.text = "Aye-aye, commander! Load a bomb! Ready! Fire at my command!";
 			link.l1 = "...";
 			link.l1.go = "gunner_3_2";
@@ -1185,11 +1185,11 @@ void ProcessDialogEvent()
 			LAi_group_SetCheck("EnemyFight", "Saga_MineBandos_05Die");
 			AddDialogExitQuest("MainHeroFightModeOn");	
 			DoQuestCheckDelay("Saga_MineSetMusic", 0.3);
-			// запусткаем автобабахалку на 10 выстрелов
+			
 			iTotalTemp = 0;
 			DoQuestCheckDelay("Saga_GunAutoFire", 7.0);
-			bDisableCharacterMenu = false;//разлочим интерфейсы
-			InterfaceStates.Buttons.Save.enable = true;//разрешим сохраняться
+			bDisableCharacterMenu = false;
+			InterfaceStates.Buttons.Save.enable = true;
 		break;
 		
 		case "convict":
@@ -1208,7 +1208,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "convict";
 		break;
 		
-		// жена Яна Свенсона
+		
 		case "js_girl":
 			if (LAi_grp_playeralarm > 0)
 			{
@@ -1288,7 +1288,7 @@ void ProcessDialogEvent()
 		case "js_girl_7":
 			DialogExit();
 			NextDiag.CurrentNode = "js_girl_8";
-			sld = characterFromId("Gladis"); //устанавливаем Глэдис на форт
+			sld = characterFromId("Gladis"); 
 			ChangeCharacterAddressGroup(sld, "SantaCatalina_fort", "goto", "goto53");
 			LAi_SetStayType(sld);
 			sld.dialog.currentnode = "FindHelena";
@@ -1302,7 +1302,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "js_girl_8";
 		break;
 		
-		// хронометр Алекса
+		
 		case "Alexs_bandos":
 			dialog.text = "Hey! What are you doing here?";
 			link.l1 = "I'd like to ask you the same - what you and your pals are doing here, in my dungeon?";

@@ -1,4 +1,4 @@
-/// BOAL 01.08.06 форма обмена-грабежа корабля
+
 #define FOOD_BY_ENEMY_CREW 			10
 #define RUM_BY_ENEMY_CREW 			20
 #define MEDICAMENT_BY_ENEMY_CREW 	30
@@ -11,9 +11,9 @@ ref xi_refCharacter, refEnemyCharacter;
 ref refCharacter;
 
 string CurTable, CurRow;
-int iSelected; // курсор в таблице
+int iSelected; 
 
-// для выкидывания
+
 int iShipQty, iUnits, iCurGoodsIdx;
 
 int	iCrewQty = 0;
@@ -23,13 +23,13 @@ int iGetHired = 0;
 string sMessageMode;
 bool  bTransferMode;
 bool  bSwap;
-// pchar - ГГ, xi_refCharacter - враг или наш компаньон, гг всегда слева  
+
 void InitInterface_RS(string iniName, ref _chr, string _type)
 {
     bQuestCheckProcessFreeze = true;
     
 	xi_refCharacter   = _chr;
-	refEnemyCharacter = _chr; // изначальный кэп
+	refEnemyCharacter = _chr; 
 	refCharacter = pchar;
 	
 	if(refEnemyCharacter.id == "ShipWreck_BadPirate") 
@@ -55,14 +55,14 @@ void InitInterface_RS(string iniName, ref _chr, string _type)
 	}
 	else
 	{
-		DeleteAttribute(pchar, "abordage_active"); // от к3, хотя трется до этой формы
+		DeleteAttribute(pchar, "abordage_active"); 
 		GameInterface.title = "titleRansack";
 		bTransferMode = false;
-		if (_type == "") // дошли до логического конца абордажа, кэп помер
+		if (_type == "") 
 		{
 			if(xi_refCharacter.Id != "PiratesOnUninhabited_BadPirate" && !CheckAttribute(refCharacter,"GenQuest.ShipSituation.Explosion"))
 			{
-				LAi_SetCurHP(xi_refCharacter, 0.0); // умер, чтоб на форме обмена не жил
+				LAi_SetCurHP(xi_refCharacter, 0.0); 
 			}
 		}
 		
@@ -107,12 +107,12 @@ void InitInterface_RS(string iniName, ref _chr, string _type)
 	SetEventHandler("HIRE_REMOVE_BUTTON", "HIRE_REMOVE_BUTTON", 0);
 	SetEventHandler("HIRE_REMOVE_ALL_BUTTON", "HIRE_REMOVE_ALL_BUTTON", 0);
 	
-    //////////////////
-    EI_CreateFrame("SHIP_BIG_PICTURE_BORDER",9,53,219,313); // tak from SHIP_BIG_PICTURE
+    
+    EI_CreateFrame("SHIP_BIG_PICTURE_BORDER",9,53,219,313); 
     EI_CreateHLine("SHIP_BIG_PICTURE_BORDER", 14,284,214,1, 4);
     EI_CreateHLine("SHIP_BIG_PICTURE_BORDER", 14,78,214,1, 4);
     
-    EI_CreateFrame("SHIP_BIG_PICTURE_BORDER2",582,53,792,313); // tak from SHIP_BIG_PICTURE2
+    EI_CreateFrame("SHIP_BIG_PICTURE_BORDER2",582,53,792,313); 
     EI_CreateHLine("SHIP_BIG_PICTURE_BORDER2", 586,284,788,1, 4);
     EI_CreateHLine("SHIP_BIG_PICTURE_BORDER2", 586,78,788,1, 4);
     
@@ -145,9 +145,9 @@ void InitInterface_RS(string iniName, ref _chr, string _type)
 	OnShipScrollChange();
 	sMessageMode = "";
 	SetGoodsArrows();
-	// сообщение о захвате
+	
 	if(!bTransferMode && !LAi_IsDead(xi_refCharacter) && _type != "MaryCelesteTransfer" && xi_refCharacter.Id != "ShipWreck_0" &&
-		xi_refCharacter.Id != "PiratesOnUninhabited_BadPirate" && !CheckAttribute(refCharacter,"GenQuest.ShipSituation")) //пленный
+		xi_refCharacter.Id != "PiratesOnUninhabited_BadPirate" && !CheckAttribute(refCharacter,"GenQuest.ShipSituation")) 
 	{
 		SetFormatedText("REMOVE_WINDOW_CAPTION", XI_ConvertString("Surrendered_caption_1"));
 		iGetHired = GetEnemyHiredCrew();
@@ -172,49 +172,49 @@ void ProcessExitCancel()
 {
 	ref realShip;
 
-	// Warship 09.07.09 Мэри Селест
+	
 	if(xi_refCharacter.id == "MaryCelesteCapitan")
 	{
 		realShip = GetRealShip(GetCharacterShipType(xi_refCharacter));
-		realShip.TurnRate = 1; // Понижаем маневренность, чтобы не крутилась сильно
+		realShip.TurnRate = 1; 
 		IDoExit(-1);
 		return;
 	}
 
-	// Warship 20.08.09 Генер "Пираты на необитайке"
+	
 	if(xi_refCharacter.Id == "PiratesOnUninhabited_BadPirate")
 	{
 		sMessageMode = "ShipGoFreeAsk";
-		GoToShipChange(); // Выход там
+		GoToShipChange(); 
 		return;
 	}
 	
 	if(xi_refCharacter.Id == "ShipWreck_0")
 	{
 		sMessageMode = "ShipGoFreeAsk";
-		GoToShipChange(); // Выход там	
+		GoToShipChange(); 
 		return;
 	}
 	
-	// Ugeen - ситуация "Взрыв на вражеском корабле"
+	
 	if(CheckAttribute(refCharacter,"GenQuest.ShipSituation.Explosion") || CheckAttribute(refCharacter,"GenQuest.ShipSituation.Epidemy"))
 	{
 		sMessageMode = "ShipGoFreeAsk";
-		GoToShipChange(); // Выход там
+		GoToShipChange(); 
 		return;		
 	}
 
-	 if(xi_refCharacter.Id == "CureerCap")//Jason, Голландский гамбит
+	 if(xi_refCharacter.Id == "CureerCap")
 	{
 		sMessageMode = "ShipGoFreeAsk";
-		GoToShipChange(); // Выход там	
+		GoToShipChange(); 
 		return;
 	}
 
-	if(xi_refCharacter.Id == "Jackman")//Jason, Сага
+	if(xi_refCharacter.Id == "Jackman")
 	{
 		sMessageMode = "ShipGoFreeAsk";
-		GoToShipChange(); // Выход там	
+		GoToShipChange(); 
 		return;
 	}
 
@@ -225,34 +225,34 @@ void ProcessExitCancel()
 	}
 		
 	if (!isCompanion(xi_refCharacter))
-	{ // не наш корабль, соотв топим, но сперва спросим
+	{ 
 		if (LAi_IsDead(xi_refCharacter))
 		{
 			SetFormatedText("REMOVE_WINDOW_CAPTION", XI_ConvertString("Capture Ship"));
-			SetFormatedText("REMOVE_WINDOW_TEXT", XI_ConvertString("Surrendered_exit_1")); // Корабль остался без капитана. Потопить его?
+			SetFormatedText("REMOVE_WINDOW_TEXT", XI_ConvertString("Surrendered_exit_1")); 
 			SetSelectable("REMOVE_ACCEPT_OFFICER", true);
 			sMessageMode = "ShipDeadAsk";
 			ShowShipChangeMenu();
 		}
 		else
-		{//пленный кэп, живой еще
+		{
 			SetFormatedText("REMOVE_WINDOW_CAPTION", XI_ConvertString("Surrendered_caption_2"));
-			SetFormatedText("REMOVE_WINDOW_TEXT", XI_ConvertString("Surrendered_exit_2")); // Закончить грабеж и отпустить сдавшегося капитана и его экипаж? 
+			SetFormatedText("REMOVE_WINDOW_TEXT", XI_ConvertString("Surrendered_exit_2")); 
 			SetSelectable("REMOVE_ACCEPT_OFFICER", true);
 			sMessageMode = "ShipGoFreeAsk";
 			ShowShipChangeMenu();
 		}
 	}
 	else
-	{  // наш компаньон, корабль наш, все ок
+	{  
 	    if (bSwap) SeaAI_SwapShipAfterAbordage(pchar, refEnemyCharacter);
-	    if (xi_refCharacter.id != refEnemyCharacter.id) // новый назначенец
+	    if (xi_refCharacter.id != refEnemyCharacter.id) 
 	    {
-			SeaAI_SetOfficer2ShipAfterAbordage(xi_refCharacter, refEnemyCharacter); // to_do делать один раз на закрытии могут быть баги со множественой сменой в море
-			//DeleteAttribute(xi_refCharacter, "ship"); // трем корабль
-			//refEnemyCharacter.ship.type = SHIP_NOTUSED;  // если это был фантом, то он сам подохнет позже
+			SeaAI_SetOfficer2ShipAfterAbordage(xi_refCharacter, refEnemyCharacter); 
 			
-			// сам стотрется, тк НР == 0 будет, а это нельзя, иначе наш офф потрется refEnemyCharacter.LifeDay = 0; // стереть при выходе, если был кэп по захвату корабля
+			
+			
+			
 		    refEnemyCharacter.location = "none"; 
 		    
 			if (bSeaActive)
@@ -265,8 +265,8 @@ void ProcessExitCancel()
 					RefreshBattleInterface();
 				}
 			}
-			//DeleteAttribute(refEnemyCharacter,"ship");
-			//refEnemyCharacter.ship.type = SHIP_NOTUSED;
+			
+			
 			ClearShipTypeForPassenger();
 		}
 		if (bTransferMode)
@@ -422,11 +422,11 @@ void ProcessCommandExecute()
 			}
 			if(comName=="speedleft")
 			{
-				TakeCrew(9000); // очень много
+				TakeCrew(9000); 
 			}
 			if(comName=="speedright")
 			{
-				GiveCrew(9000); // очень много
+				GiveCrew(9000); 
 			}
 		break;
 					
@@ -463,14 +463,14 @@ void ProcessCommandExecute()
 			}
 			if(comName=="speedleft")
 			{
-				TakeGoods(9000000); // очень много
+				TakeGoods(9000000); 
 			}
 			if(comName=="speedright")
 			{
-				GiveGoods(9000000); // очень много
+				GiveGoods(9000000); 
 			}
 		break;
-		////////////////
+		
 		case "QTY_OK_BUTTON":
 			if(comName=="leftstep")
 			{
@@ -533,7 +533,7 @@ void ProcessCommandExecute()
 		case "CAPTAN_BUTTON":
 			if(comName=="click" || comName=="activate")
 			{
-				ExitCrewWindow(); // для профигактики
+				ExitCrewWindow(); 
 				ShipChangeCaptan();
 			}
 		break;
@@ -615,15 +615,15 @@ void OnShipScrollChange()
 	ShowShipInfo(xi_refCharacter, "2");
 	ShowShipFoodInfo(pchar);
 	FillGoodsTable();
-	//Ship info window
+	
 	SetFormatedText("Money_TEXT", MakeMoneyShow(sti(pchar.Money), MONEY_SIGN,MONEY_DELIVER));
 	if (isCompanion(xi_refCharacter))
-	{ // наш товарищ
+	{ 
 	
 		SetNodeUsing("MAIN_CHARACTER_PICTURE2", true);
 		SendMessage(&GameInterface,"lsls",MSG_INTERFACE_MSG_TO_NODE,"CAPTAN_BUTTON",0, "#"+XI_ConvertString("Remove Captain"));
 		if (GetRemovable(xi_refCharacter))
-		{ // обмен с квестовыми
+		{ 
 		    if (GetShipRemovable(xi_refCharacter))
 		    {
 				SetSelectable("CAPTAN_BUTTON", true);
@@ -646,10 +646,10 @@ void OnShipScrollChange()
 		}
 	}
 	else
-	{  // не наш, значит убит или сдался
-		// Warship 09.07.09 Мэри Селест и (20.08.09) генер "Пираты на необитайке"
-		// ugeen Ситуация на захваченном корабле
-		//Jason Голландский гамбит
+	{  
+		
+		
+		
 		if(xi_refCharacter.id == "MaryCelesteCapitan" || xi_refCharacter.Id == "PiratesOnUninhabited_BadPirate" || CheckAttribute(pchar,"GenQuest.ShipSituation.Explosion") || xi_refCharacter.Id == "ShipWreck_0" || xi_refCharacter.id == "CureerCap" || xi_refCharacter.id == "Cap_Utreht" || CheckAttribute(pchar,"GenQuest.CannotTakeShip"))
 		{
 			SetSelectable("CAPTAN_BUTTON", false);
@@ -660,13 +660,13 @@ void OnShipScrollChange()
 		{
 			if (LAi_IsDead(xi_refCharacter))
 			{
-				SetNodeUsing("MAIN_CHARACTER_PICTURE2", false); // убитый кэп
+				SetNodeUsing("MAIN_CHARACTER_PICTURE2", false); 
 				SendMessage(&GameInterface,"lsls",MSG_INTERFACE_MSG_TO_NODE,"CAPTAN_BUTTON",0, "#"+XI_ConvertString("Set Captain"));
 				SetSelectable("SWAP_BUTTON", true);
 			}
 			else
 			{
-				SetNodeUsing("MAIN_CHARACTER_PICTURE2", true); // живой враг
+				SetNodeUsing("MAIN_CHARACTER_PICTURE2", true); 
 				SendMessage(&GameInterface,"lsls",MSG_INTERFACE_MSG_TO_NODE,"CAPTAN_BUTTON",0, "#"+XI_ConvertString("Remove Captain"));
 				SetSelectable("SWAP_BUTTON", false);
 			}
@@ -695,15 +695,15 @@ void ShowShipInfo(ref chr, string sAdd)
 void ShowShipFoodInfo(ref chr)
 {
 	SetFormatedText("FOOD", chr.ship.name);
-	// еда -->
-	// на одном корабле
+	
+	
 	SetFoodShipInfo(chr, "FOOD_SHIP");
-	// еда <--
+	
 	SetFormatedText("MONEY_SHIP", "");
 	
-	if (GetRemovable(chr) && isCompanion(chr)) // считаем только своих, а то вских сопровождаемых кормить!!!
+	if (GetRemovable(chr) && isCompanion(chr)) 
 	{
-	    // для каждого корабля учитываем класс и считаем отдельно
+	    
 	    SetFormatedText("MONEY_SHIP", "Maintenance of the ship: " + NewStr() + FindRussianMoneyString(GetSalaryForShip(chr)));
 	}
 }
@@ -740,13 +740,13 @@ void ShowInfoWindow()
 		break;
 		
 		case "MAIN_CHARACTER_PICTURE":
-			// отдельная форма
+			
 			bShowHint = false;
 			ShowRPGHint();
 		break;  
 		
 		case "MAIN_CHARACTER_PICTURE2":
-			// отдельная форма
+			
 			bShowHint = false;
 			ShowRPGHint2();
 		break;  
@@ -773,8 +773,8 @@ void ShowInfoWindow()
 		    	sText2 = sText2 + NewStr() + "Caliber: " + XI_ConvertString("caliber" + GetCannonCaliber(sti(pchar.Ship.Cannons.Type)));
 		    	sText2 = sText2 + NewStr() + "Range: "  + sti(Cannon.FireRange);
 		    	sText2 = sText2 + NewStr() + "Damage: x"  + FloatToString(stf(Cannon.DamageMultiply), 1);
-		    	sText2 = sText2 + NewStr() + "Recharge: "  + sti(GetCannonReloadTime(Cannon)) + " сек.";
-		    	sText2 = sText2 + NewStr() + "Weight: "  + sti(Cannon.Weight) + " ц.";
+		    	sText2 = sText2 + NewStr() + "Recharge: "  + sti(GetCannonReloadTime(Cannon)) + " пїЅпїЅпїЅ.";
+		    	sText2 = sText2 + NewStr() + "Weight: "  + sti(Cannon.Weight) + " пїЅ.";
 		    	
 		    	sGroup = "GOODS";
 				sGroupPicture = GetCannonType(sti(pchar.Ship.Cannons.Type)) + "_" + GetCannonCaliber(sti(pchar.Ship.Cannons.Type));
@@ -784,7 +784,7 @@ void ShowInfoWindow()
 				sText2 = "Teams may be greater than the maximum, but it causes an overload and living conditions on the ship are terrible, which entails daily drop of morality. On average, you can carry up to 25% more sailors."; 
 				sText2 = sText2 + NewStr() + "The maximum number of crew based overdrive: " + GetMaxCrewQuantity(pchar);
 			} 
-			// процент ремонта
+			
 			if (GameInterface.(CurTable).(CurRow).UserData.ID == "Hull" && sti(pchar.ship.type) != SHIP_NOTUSED)
 			{
 				sText3 = xiStr("Hull") + ": " + FloatToString(GetHullPercent(pchar), 1)  + " %";
@@ -793,7 +793,7 @@ void ShowInfoWindow()
 			{
 				sText3 = xiStr("Sails") + ": " + FloatToString(GetSailPercent(pchar), 1) + " %";
 			}
-			// трюм
+			
 			if (GameInterface.(CurTable).(CurRow).UserData.ID == "Capacity" && sti(pchar.ship.type) != SHIP_NOTUSED)
 			{
 				sText3 = "Engaged: " + FloatToString((stf(GetCargoLoad(pchar))  /  stf(GetCargoMaxSpace(pchar))) * 100.0, 1)+ " %";
@@ -810,8 +810,8 @@ void ShowInfoWindow()
 		    	sText2 = sText2 + NewStr() + "Caliber: " + XI_ConvertString("caliber" + GetCannonCaliber(sti(xi_refCharacter.Ship.Cannons.Type)));
 		    	sText2 = sText2 + NewStr() + "Range: "  + sti(Cannon.FireRange);
 		    	sText2 = sText2 + NewStr() + "Damage: x"  + FloatToString(stf(Cannon.DamageMultiply), 1);
-		    	sText2 = sText2 + NewStr() + "Recharge: "  + sti(GetCannonReloadTime(Cannon)) + " сек.";
-		    	sText2 = sText2 + NewStr() + "Weight: "  + sti(Cannon.Weight) + " ц.";
+		    	sText2 = sText2 + NewStr() + "Recharge: "  + sti(GetCannonReloadTime(Cannon)) + " пїЅпїЅпїЅ.";
+		    	sText2 = sText2 + NewStr() + "Weight: "  + sti(Cannon.Weight) + " пїЅ.";
 		    	
 		    	sGroup = "GOODS";
 				sGroupPicture = GetCannonType(sti(xi_refCharacter.Ship.Cannons.Type)) + "_" + GetCannonCaliber(sti(xi_refCharacter.Ship.Cannons.Type));
@@ -821,7 +821,7 @@ void ShowInfoWindow()
 				sText2 = "Teams may be greater than the maximum, but it causes an overload and living conditions on the ship are terrible, which entails daily drop of morality. On average, you can carry up to 25% more crewmen."; 
 				sText2 = sText2 + NewStr() + "The maximum number of crew based overdrive: " + GetMaxCrewQuantity(xi_refCharacter);
 			} 
-			// процент ремонта
+			
 			if (GameInterface.(CurTable).(CurRow).UserData.ID == "Hull" && sti(xi_refCharacter.ship.type) != SHIP_NOTUSED)
 			{
 				sText3 = xiStr("Hull") + ": " + FloatToString(GetHullPercent(xi_refCharacter), 1)  + " %";
@@ -830,7 +830,7 @@ void ShowInfoWindow()
 			{
 				sText3 = xiStr("Sails") + ": " + FloatToString(GetSailPercent(xi_refCharacter), 1) + " %";
 			}
-			// трюм
+			
 			if (GameInterface.(CurTable).(CurRow).UserData.ID == "Capacity" && sti(xi_refCharacter.ship.type) != SHIP_NOTUSED)
 			{
 				sText3 = "Load: " + FloatToString((stf(GetCargoLoad(xi_refCharacter))  /  stf(GetCargoMaxSpace(xi_refCharacter))) * 100.0, 1)+ " %";
@@ -945,7 +945,7 @@ void FillGoodsTable()
 		sGood = Goods[i].name;
 		qty1 = GetCargoGoods(pchar, i);
 		qty2 = GetCargoGoods(xi_refCharacter, i);
-		if (qty2 <= 0 && qty1 <= 0) continue; // только не нули
+		if (qty2 <= 0 && qty1 <= 0) continue; 
 
 		GameInterface.TABLE_LIST.(row).index = i;
 		
@@ -984,7 +984,7 @@ void NullSelectTable(string sControl)
 
 void ShowItemInfo()
 {
-	if (CheckAttribute(&GameInterface, CurTable + "." + CurRow + ".index")) // нет товара вообще
+	if (CheckAttribute(&GameInterface, CurTable + "." + CurRow + ".index")) 
 	{
 	    ShowGoodsInfo(sti(GameInterface.(CurTable).(CurRow).index));
 		XI_WindowDisable("QTY_WINDOW", false);
@@ -1001,10 +1001,10 @@ void GoodsExitCancel()
 	XI_WindowShow("QTY_WINDOW", false);
 	XI_WindowDisable("MAIN_WINDOW", false);
 	SetCurrentNode("TABLE_LIST");
-	// пересчитаем новые пареметры от веса
+	
 	if (iShipQty != GetCargoGoods(pchar, iCurGoodsIdx))
 	{
-		SetCharacterGoods(pchar, iCurGoodsIdx, iShipQty); // вернем обратно
+		SetCharacterGoods(pchar, iCurGoodsIdx, iShipQty); 
 		OnShipScrollChange();
 	}
 }
@@ -1022,7 +1022,7 @@ void ShowGoodsInfo(int iGoodIndex)
 	              ", packet " + Goods[iGoodIndex].Units + " " + XI_ConvertString("units");
 
 	iUnits  = sti(Goods[iGoodIndex].Units);
-	//fWeight = stf(Goods[iGoodIndex].weight);
+	
 	if(checkAttribute(pchar, "ship.cargo.goods." + GoodName + ".isquest"))
 	{
 		string sTradeQ = pchar.ship.cargo.goods.(GoodName).isquest.quantity;
@@ -1056,13 +1056,13 @@ void TransactionOK()
     SetCharacterGoods(pchar, iCurGoodsIdx, iShipQty);
 	if (nTradeQuantity > 0)
 	{
-		DropGoodsToSeaFromInterface(iCurGoodsIdx, nTradeQuantity); // остается плавать в море
+		DropGoodsToSeaFromInterface(iCurGoodsIdx, nTradeQuantity); 
 		iShipQty = GetCargoGoods(pchar, iCurGoodsIdx);
 	}
 	ShipSituation_SetQuestSituation(ShipSituation_1);
 	GoodsExitCancel();
 	
-	//SetShipOTHERTable("TABLE_OTHER", xi_refCharacter);
+	
 }
 
 void confirmChangeQTY_EDIT()
@@ -1074,18 +1074,18 @@ void confirmChangeQTY_EDIT()
 void ChangeQTY_EDIT()
 {
 	int  iWeight;
-	GameInterface.qty_edit.str = abs(sti(GameInterface.qty_edit.str));  // приведение к числу
+	GameInterface.qty_edit.str = abs(sti(GameInterface.qty_edit.str));  
 	
 	string GoodName = goods[iCurGoodsIdx].name;
 	
-    // проверка на колво доступное -->
+    
     if (sti(GameInterface.qty_edit.str) > iShipQty)
     {
         GameInterface.qty_edit.str = iShipQty;
     }
     SetFormatedText("QTY_INFO_SHIP_QTY", its(iShipQty - sti(GameInterface.qty_edit.str)))
 	SetFormatedText("QTY_INFO_STORE_QTY", its(GetGoodWeightByType(iCurGoodsIdx, (iShipQty - sti(GameInterface.qty_edit.str)))));
-	// прикидываем место в трюме
+	
 	iWeight = sti(GameInterface.qty_edit.str);
 	SetCharacterGoods(pchar, iCurGoodsIdx, iShipQty);
 	if (iWeight > 0)
@@ -1093,30 +1093,30 @@ void ChangeQTY_EDIT()
 		RemoveCharacterGoods(pchar, iCurGoodsIdx, iWeight);
 	}
 	OnShipScrollChange();
-	///iWeight = GetGoodWeightByType(iCurGoodsIdx, sti(GameInterface.qty_edit.str));
-	//GameInterface.TABLE_OTHER.tr6.td3.str = (GetCargoLoad(xi_refCharacter) - iWeight) + " / " + GetCargoMaxSpace(xi_refCharacter);
-	//Table_UpdateWindow("TABLE_OTHER");
+	
+	
+	
 }
 
-void REMOVE_ALL_BUTTON()  // продать все
+void REMOVE_ALL_BUTTON()  
 {
 	GameInterface.qty_edit.str = iShipQty;
 	ChangeQTY_EDIT();
 }
 
-void ADD_ALL_BUTTON()  // купить все
+void ADD_ALL_BUTTON()  
 {
 	GameInterface.qty_edit.str = 0;
 	ChangeQTY_EDIT();
 }
 
-void REMOVE_BUTTON()  // продать
+void REMOVE_BUTTON()  
 {
 	GameInterface.qty_edit.str = (sti(GameInterface.qty_edit.str) + iUnits);
 	ChangeQTY_EDIT();
 }
 
-void ADD_BUTTON()  // купить
+void ADD_BUTTON()  
 {
 	GameInterface.qty_edit.str = (sti(GameInterface.qty_edit.str) - iUnits);
 	if (sti(GameInterface.qty_edit.str) < 0) GameInterface.qty_edit.str = 0;
@@ -1133,7 +1133,7 @@ void DropGoodsToSeaFromInterface(int iGoodIndex, int iQuantity)
 	if (CheckAttribute(pchar, "Ship.Cargo.Goods."+sGood))
 	{		
 		RemoveCharacterGoods(pchar, iGoodIndex, iQuantity);
-		if (bSeaActive && !bAbordageStarted)  // море, но не каюта
+		if (bSeaActive && !bAbordageStarted)  
 		{
 			iQuantity = iQuantity / sti(Goods[iGoodIndex].Units);
 	
@@ -1162,8 +1162,8 @@ void DropGoodsToSeaFromInterface(int iGoodIndex, int iQuantity)
 void ShipChangeCaptan()
 {
 	if (isCompanion(xi_refCharacter))
-	{ // наш товарищ
-		if (!CheckAttribute(xi_refCharacter, "Tasks.Clone")) //zagolski. баг с двойниками в каюте
+	{ 
+		if (!CheckAttribute(xi_refCharacter, "Tasks.Clone")) 
 		{
 		SetFormatedText("REMOVE_WINDOW_CAPTION", XI_ConvertString("Captain"));
 		SetFormatedText("REMOVE_WINDOW_TEXT", "Displace the captain?");
@@ -1181,7 +1181,7 @@ void ShipChangeCaptan()
 	}
 	else
 	{
-		// если пленный
+		
 		if (!LAi_IsDead(xi_refCharacter))
 		{
 			SetFormatedText("REMOVE_WINDOW_CAPTION", XI_ConvertString("Surrendered_caption_2"));
@@ -1193,7 +1193,7 @@ void ShipChangeCaptan()
 		}
 		else
 		{
-			/// проверка мин команд
+			
 			if ((GetCrewQuantity(xi_refCharacter) + GetCrewQuantity(pchar)) < (GetMinCrewQuantity(xi_refCharacter) + GetMinCrewQuantity(pchar)))
 			{
 				SetFormatedText("REMOVE_WINDOW_CAPTION", XI_ConvertString("Capture Ship"));
@@ -1203,7 +1203,7 @@ void ShipChangeCaptan()
 			}
 			else
 			{
-				// проверка на 5 кораблей
+				
 				if (GetCompanionQuantity(PChar) < COMPANION_MAX)
 				{
 					FillPassengerScroll();
@@ -1234,73 +1234,73 @@ void ExitShipChangeMenu()
 	XI_WindowDisable("REMOVE_OFFICER_WINDOW", true);
 	XI_WindowDisable("MAIN_WINDOW", false);
    
-    if (1)//sMessageMode == "ShipChangeCaptanMessage")
+    if (1)
     {
 		SetCurrentNode("CAPTAN_BUTTON");
 	}
 	sMessageMode = "";
 }
 
-void GoToShipChange() // нажатие ОК на табличке ок-отмена
+void GoToShipChange() 
 {
 	ref     sld;
 	aref    arTo, arFrom;
 	
 	switch (sMessageMode)
 	{
-		case "SurrenderedCaptanRemove":  // убрать сдавшегося капитана
+		case "SurrenderedCaptanRemove":  
 			ExitShipChangeMenu();
-			// первый проход - кэп еще жив
+			
 			SetFormatedText("CAPTURE_TEXT", XI_ConvertString("Surrendered_captain_capture"));
 			SetNewPicture("CAPTUR_PICTURE", "interfaces\portraits\128\face_" + xi_refCharacter.FaceId + ".tga");
 			ShowCaptureWindow();
 			SetCurrentNode("CAPTURE_CANCEL");
 		break;
 		
-		case "ShipChangeCaptanRemove":  // снять кэпа
-			sld = GetCharacter(NPC_GenerateCharacter("DeadShipCap", "off_hol_2", "man", "man", 60, sti(pchar.nation), 0, true, "citizen")); // фантом, на время 
+		case "ShipChangeCaptanRemove":  
+			sld = GetCharacter(NPC_GenerateCharacter("DeadShipCap", "off_hol_2", "man", "man", 60, sti(pchar.nation), 0, true, "citizen")); 
 			sld.faceId = 666;
 			sld.name = "";
 			sld.lastname = "";
 			DeleteAttribute(sld,"ship");
 			sld.ship = "";
-			LAi_SetCurHP(sld, 0.0); // умер
+			LAi_SetCurHP(sld, 0.0); 
 			 
 			makearef(arTo,   sld.ship);
 			makearef(arFrom, xi_refCharacter.Ship);
 			CopyAttributes(arTo, arFrom);
 						
-			//SeaAI_SetOfficer2ShipAfterAbordage(sld, xi_refCharacter); // to_do делать один раз на закрытии могут быть баги со множественой сменой в море
-			// убить на выходе
-			//DeleteAttribute(xi_refCharacter,"ship"); // трем корабль
-			//xi_refCharacter.ship.type = SHIP_NOTUSED;
-			// снимем компаньона в офы -->
+			
+			
+			
+			
+			
 			RemoveCharacterCompanion(pchar, xi_refCharacter);
 			AddPassenger(pchar, xi_refCharacter, false);
 			DelBakSkill();
-			// снимем компаньона в офы <--
+			
 			xi_refCharacter = sld;
 			ExitShipChangeMenu();
 			CheckQuestAboardCabinSituation(xi_refCharacter);
 			OnShipScrollChange();
 		break;
 		
-		case "ShipDeadAsk": // выход с убиением корабля
+		case "ShipDeadAsk": 
             if (bSwap) {
 				ShipSituation_SetQuestSituation(ShipSituation_3);
 				SeaAI_SwapShipAfterAbordage(pchar, refEnemyCharacter);
 			}	
-			if (xi_refCharacter.id != refEnemyCharacter.id) // новый назначенец
+			if (xi_refCharacter.id != refEnemyCharacter.id) 
 			{
 				ShipSituation_SetQuestSituation(ShipSituation_2);
-				SeaAI_SetOfficer2ShipAfterAbordage(xi_refCharacter, refEnemyCharacter); // to_do делать один раз на закрытии могут быть баги со множественой сменой в море
+				SeaAI_SetOfficer2ShipAfterAbordage(xi_refCharacter, refEnemyCharacter); 
 			}
-			// убить на выходе
+			
 			if (bSeaActive)
 			{
 				if (bTransferMode)
 				{
-					ShipDead(sti(xi_refCharacter.index), KILL_BY_SELF, sti(pchar.index));  // сами же и топим
+					ShipDead(sti(xi_refCharacter.index), KILL_BY_SELF, sti(pchar.index));  
 				}
 				else
 				{
@@ -1308,8 +1308,8 @@ void GoToShipChange() // нажатие ОК на табличке ок-отмена
 				}
 			}
 			CheckQuestAboardCabinSituation(xi_refCharacter);
-			//DeleteAttribute(refEnemyCharacter,"ship");
-			//refEnemyCharacter.ship.type = SHIP_NOTUSED;
+			
+			
 			ClearShipTypeForPassenger();
 			if (bTransferMode)
 			{
@@ -1325,9 +1325,9 @@ void GoToShipChange() // нажатие ОК на табличке ок-отмена
 		
 		break;
 		
-		// отпустить кэпа
+		
 		case "ShipGoFreeAsk":
-			sld = GetCharacter(NPC_GenerateCharacter(refEnemyCharacter.id + "_free", "off_hol_2", "man", "man", 60, sti(refEnemyCharacter.nation), 0, true, "citizen")); // фантом, на время 
+			sld = GetCharacter(NPC_GenerateCharacter(refEnemyCharacter.id + "_free", "off_hol_2", "man", "man", 60, sti(refEnemyCharacter.nation), 0, true, "citizen")); 
 			ChangeAttributesFromCharacter(sld, refEnemyCharacter, false);
 			DeleteAttribute(sld, "ship");
 			sld.ship = "";
@@ -1339,8 +1339,8 @@ void GoToShipChange() // нажатие ОК на табличке ок-отмена
 			if(CheckAttribute(refCharacter,"GenQuest.ShipSituation.Explosion")){ LAi_SetCurHP(refEnemyCharacter, 0.0); }
 
 			sld.AlwaysFriend = true;
-			sld.Abordage.Enable    = false; // запрет абордажа
-			// Jason: идет квест Саги, возврат фрегата Даниэль
+			sld.Abordage.Enable    = false; 
+			
 			if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation") && pchar.questTemp.Saga.BarbTemptation == "after_boarding")
 			{
 				sld.name = "Danielle";
@@ -1350,14 +1350,14 @@ void GoToShipChange() // нажатие ОК на табличке ок-отмена
 				sld.ShipEnemyDisable  = true;
 				LAi_SetImmortal(sld, true);
 			}
-			// Голлндский гамбит, против всех, курьерская бригантина 260912
+			
 			if (CheckAttribute(pchar, "questTemp.HWIC.Self") && pchar.questTemp.HWIC.Self == "LetterToLucasSent")
 			{
 				sld.DontDeskTalk = true;
 				sld.ShipEnemyDisable  = true;
 				LAi_SetImmortal(sld, true);
 			}
-			// на случай диалдога на палубе потом
+			
 			if(xi_refCharacter.Id == "PiratesOnUninhabited_BadPirate")
 			{
 				sld.Dialog.Filename = "GenQuests_Dialog.c";
@@ -1372,8 +1372,8 @@ void GoToShipChange() // нажатие ОК на табличке ок-отмена
 			}
 		    
 			xi_refCharacter = sld;
-			// обмена кораблями тут нет
-			//SeaAI_SetOfficer2ShipAfterAbordage(xi_refCharacter, refEnemyCharacter);
+			
+			
 			SeaAI_SetCaptainFree(xi_refCharacter, refEnemyCharacter);
 		    refEnemyCharacter.location = "none"; 
 		    
@@ -1382,7 +1382,7 @@ void GoToShipChange() // нажатие ОК на табличке ок-отмена
 				if (!bTransferMode)
 				{
 					PostEvent("evntQuestsCheck", 400);
-					ShipTakenFree(sti(refEnemyCharacter.index), KILL_BY_ABORDAGE, sti(pchar.index)); // тут умер реальный кэп, апдайтим еще
+					ShipTakenFree(sti(refEnemyCharacter.index), KILL_BY_ABORDAGE, sti(pchar.index)); 
 					SetCharacterRelationBoth(sti(xi_refCharacter.index), GetMainCharacterIndex(), RELATION_FRIEND);
 					UpdateRelations();
 					RefreshBattleInterface();
@@ -1431,7 +1431,7 @@ void ShowOkMessage()
 
 void ShowOtherClick()
 {
-	// test не работает  :( CreateMessageBox("sCaptionID", "sMessageID", "", "", "", "");
+	
 }
 
 void SwapProcess()
@@ -1439,17 +1439,17 @@ void SwapProcess()
 	SeaAI_SwapShipsAttributes(pchar, xi_refCharacter);
 	if (xi_refCharacter.id == refEnemyCharacter.id)
 	{
-	//	SeaAI_SwapShipAfterAbordage(pchar, xi_refCharacter);
+	
 	}
     bSwap = !bSwap;
-    // оптимизация скилов -->
+    
     DelBakSkill();
-    // оптимизация скилов <--
+    
 	OnShipScrollChange();
-	ExitCrewWindow(); // для профигактики
+	ExitCrewWindow(); 
 }
 
-//////////////
+
 void ExitOfficerMenu()
 {
 	XI_WindowShow("OFFICERS_WINDOW", false);
@@ -1467,7 +1467,7 @@ void AcceptAddOfficer()
     if (checkAttribute(GameInterface, "PASSENGERSLIST."+attributeName2 + ".character"))
     {
 		int iChar = sti(GameInterface.PASSENGERSLIST.(attributeName2).character);
-        // назначение нового кэпа, возможно, если там уже не наш, те или враг или снят
+        
         sld = GetCharacter(iChar);
 		DeleteAttribute(sld,"ship");
 		sld.ship = "";
@@ -1475,19 +1475,19 @@ void AcceptAddOfficer()
 		makearef(arTo,   sld.ship);
 		makearef(arFrom, xi_refCharacter.Ship);
 		CopyAttributes(arTo, arFrom);
-		// снимем пассажира -->
+		
 		CheckForReleaseOfficer(iChar); 
 		RemovePassenger(pchar, sld);
-		// снимем пассажира <--
+		
 		SetCompanionIndex(pchar, -1, iChar);
 			
 		xi_refCharacter = sld;
 		DelBakSkill();
 	}
 	ExitOfficerMenu();
-	// оптимизация скилов -->
+	
     DelBakSkill();
-    // оптимизация скилов <--
+    
 	OnShipScrollChange();
 }
 
@@ -1535,7 +1535,7 @@ void FillPassengerScroll()
 
 	GameInterface.PASSENGERSLIST.ImagesGroup.t0 = "EMPTYFACE";
 
-	FillFaceList("PASSENGERSLIST.ImagesGroup", pchar, 2); // passengers
+	FillFaceList("PASSENGERSLIST.ImagesGroup", pchar, 2); 
 
 	GameInterface.PASSENGERSLIST.BadTex1 = 0;
 	GameInterface.PASSENGERSLIST.BadPic1 = "emptyface";
@@ -1558,7 +1558,7 @@ void FillPassengerScroll()
 			}
 		}
 	}
-	GameInterface.PASSENGERSLIST.ListSize = m + 2; // не знаю зачем, но для совместимости с 'было'
+	GameInterface.PASSENGERSLIST.ListSize = m + 2; 
 }
 
 void DelBakSkill()
@@ -1581,11 +1581,11 @@ void ClearShipTypeForPassenger()
 	int iPassenger;
 	
 	for (int io = 0; io<GetPassengersQuantity(pchar); io++)
-	{   // любой пассажир у кого есть пристрастие может свалить если наши дела ему не по душе
+	{   
 		iPassenger = GetPassenger(pchar, io);
 		if (iPassenger != -1)
 		{
-			characters[iPassenger].ship.type = SHIP_NOTUSED; //пассажиры по определению не могут иметь корабли
+			characters[iPassenger].ship.type = SHIP_NOTUSED; 
 		}
 	}
 }
@@ -1603,7 +1603,7 @@ void TakeAllGoods()
 		{
 			if (GetCargoGoods(xi_refCharacter, i) > 0)
 			{
-				if (fMaxCost < stf(Goods[i].Cost)/stf(Goods[i].Weight)) // поиск ликвидного товара
+				if (fMaxCost < stf(Goods[i].Cost)/stf(Goods[i].Weight)) 
 				{
 					fMaxCost = stf(Goods[i].Cost)/stf(Goods[i].Weight);
 					idx = i;
@@ -1618,7 +1618,7 @@ void TakeAllGoods()
 				RemoveCharacterGoodsSelf(xi_refCharacter, idx, qty);
 			}
 			else
-			{   // нет места
+			{   
 				OnShipScrollChange();
 				ShipSituation_SetQuestSituation(ShipSituation_1);
 				return;
@@ -1627,7 +1627,7 @@ void TakeAllGoods()
 	}
 	OnShipScrollChange();
 	ShipSituation_SetQuestSituation(ShipSituation_1);
-	ExitCrewWindow(); // для профилактики
+	ExitCrewWindow(); 
 }
 
 void SetGoodsArrows()
@@ -1636,7 +1636,7 @@ void SetGoodsArrows()
     int  iLine;
 	if (CurTable == "TABLE_LIST")
 	{
-	    if (GetRemovable(xi_refCharacter) && CheckAttribute(&GameInterface, CurTable + "." + CurRow + ".index")) // с купцами нельзя
+	    if (GetRemovable(xi_refCharacter) && CheckAttribute(&GameInterface, CurTable + "." + CurRow + ".index")) 
 	    {
 			idx = sti(GameInterface.(CurTable).(CurRow).index);
 		    iLine = iSelected - 1 - sti(GameInterface.TABLE_LIST.top);
@@ -1666,11 +1666,11 @@ void SetGoodsArrows()
 }
 
 void TakeGoods(int inc)
-{  // лево
+{  
 	int  idx;
 	int  qty; 
 	
-	if (!GetRemovable(xi_refCharacter)) return; // с купцами нельзя
+	if (!GetRemovable(xi_refCharacter)) return; 
 	
 	if (CurTable == "TABLE_LIST")
 	{
@@ -1692,11 +1692,11 @@ void TakeGoods(int inc)
 }
 
 void GiveGoods(int inc)
-{  // право
+{  
 	int  idx;
 	int  qty; 
 	
-	if (!GetRemovable(xi_refCharacter)) return; // с купцами нельзя
+	if (!GetRemovable(xi_refCharacter)) return; 
 	
 	if (CurTable == "TABLE_LIST")
 	{
@@ -1716,7 +1716,7 @@ void GiveGoods(int inc)
 		}
 	}	
 }
-////////////////////////////// crew ///////////////
+
 void ShowCrewWindow()
 {
 	if (sMessageMode == "CREW_WINDOW")
@@ -1725,10 +1725,10 @@ void ShowCrewWindow()
 	}
 	else
 	{
-		if (!isCompanion(xi_refCharacter) && !LAi_IsDead(xi_refCharacter))// пленный кэп
+		if (!isCompanion(xi_refCharacter) && !LAi_IsDead(xi_refCharacter))
 		{
 			SetFormatedText("REMOVE_WINDOW_CAPTION", XI_ConvertString("Surrendered_caption_1"));
-			SetFormatedText("REMOVE_WINDOW_TEXT", XI_ConvertString("Surrendered_text_1")); // Невозможно перемещать экипаж между не своими кораблями. ...
+			SetFormatedText("REMOVE_WINDOW_TEXT", XI_ConvertString("Surrendered_text_1")); 
 			sMessageMode = "SurrenderedCrewOkMessage";
 			ShowOkMessage();
 		}
@@ -1764,7 +1764,7 @@ void SetCrewVariable()
 	SetNewGroupPicture("CREW_MORALE_PIC", "MORALE_SMALL", GetMoraleGroupPicture(stf(pchar.ship.crew.morale)));
 	SetFormatedText("CREW_MORALE_TEXT", XI_ConvertString("CrewMorale") + ": " + XI_ConvertString(GetMoraleName(sti(pchar.Ship.crew.morale))));
 	
-	////  заполнялка 2
+	
 	SetCrewExpTable(xi_refCharacter, "TABLE_CREW2", "BAR_Sailors2", "BAR_Cannoners2", "BAR_Soldiers2");
 	
 	SetFormatedText("CREW_QTY2", ""+GetCrewQuantity(xi_refCharacter));
@@ -1791,7 +1791,7 @@ void ExitCrewWindow()
 }
 
 void TakeCrew(int inc)
-{  // лево
+{  
     float fTemp;
 	if (inc > GetCrewQuantity(xi_refCharacter)) inc = GetCrewQuantity(xi_refCharacter);
 	if ( (GetCrewQuantity(pchar) + inc) > GetMaxCrewQuantity(pchar)) inc = GetMaxCrewQuantity(pchar) - GetCrewQuantity(pchar); 
@@ -1817,7 +1817,7 @@ void TakeCrew(int inc)
 }
 
 void GiveCrew(int inc)
-{  // право
+{  
 	float fTemp;
 	if (inc > GetCrewQuantity(pchar)) inc = GetCrewQuantity(pchar);
 	if ( (GetCrewQuantity(xi_refCharacter) + inc) > GetMaxCrewQuantity(xi_refCharacter)) inc = GetMaxCrewQuantity(xi_refCharacter) - GetCrewQuantity(xi_refCharacter); 
@@ -1841,7 +1841,7 @@ void GiveCrew(int inc)
 		SetCrewVariable();
 	}	
 }
-/////////////////////////////// capture_window
+
 void ExitCaptureWindow()
 {
 	XI_WindowShow("CAPTURE_WINDOW", false);
@@ -1902,21 +1902,21 @@ void SetEnemyToPrisoner()
 {
 	ExitCaptureWindow();
 	SetCharToPrisoner(xi_refCharacter); 
-	LAi_SetCurHP(xi_refCharacter, 0.0); // умер
-	// нет изменений репы - будет при судьбе пленного
+	LAi_SetCurHP(xi_refCharacter, 0.0); 
+	
 	OnShipScrollChange();
-	// второй проход - судьба команды
+	
 	ShowCrewCaptureAsk();
 }
 
 void SetEnemyToKilled()
 {
 	ExitCaptureWindow();
-	LAi_SetCurHP(xi_refCharacter, 0.0); // умер
-	ChangeCharacterComplexReputation(pchar,"nobility", -2); // плохое дело
+	LAi_SetCurHP(xi_refCharacter, 0.0); 
+	ChangeCharacterComplexReputation(pchar,"nobility", -2); 
 	OfficersReaction("bad");
 	OnShipScrollChange();
-	// второй проход - судьба команды
+	
 	ShowCrewCaptureAsk();
 }
 
@@ -1934,7 +1934,7 @@ void ShowCrewCaptureAsk()
 {
 	if (GetCrewQuantity(xi_refCharacter) > 0)
 	{
-		// второй проход - Команда
+		
 		SetFormatedText("CAPTURE_TEXT_CREW", XI_ConvertString("Surrendered_crew_capture"));
 		SetNewGroupPicture("CAPTUR_CREW_PICTURE", "SHIP_STATE_ICONS", "Crew");
 		ShowCaptureCrewWindow();
@@ -1959,10 +1959,10 @@ void ShowCrewCaptureAsk()
 void SetEnemyCrewToPrisoner()
 {
 	ExitCaptureCrewWindow();
-	ChangeCharacterComplexReputation(pchar,"nobility", -1); // плохое дело
-	ChangeCharacterComplexReputation(pchar,"authority", 0.5); // но команде это вряд ли понравится
+	ChangeCharacterComplexReputation(pchar,"nobility", -1); 
+	ChangeCharacterComplexReputation(pchar,"authority", 0.5); 
 	OfficersReaction("bad");
-	SetCharacterGoods(pchar, GOOD_SLAVES, (GetCargoGoods(pchar, GOOD_SLAVES) + sti(xi_refCharacter.Ship.Crew.Quantity))); // в перегруз, потом сам выкинет
+	SetCharacterGoods(pchar, GOOD_SLAVES, (GetCargoGoods(pchar, GOOD_SLAVES) + sti(xi_refCharacter.Ship.Crew.Quantity))); 
 	xi_refCharacter.Ship.Crew.Quantity = 0;
 	OnShipScrollChange();
 }
@@ -1970,8 +1970,8 @@ void SetEnemyCrewToPrisoner()
 void SetEnemyCrewToKilled()
 {
 	ExitCaptureCrewWindow();
-	ChangeCharacterComplexReputation(pchar,"nobility", -3); // плохое дело
-	ChangeCharacterComplexReputation(pchar,"authority", -0.5); // но команде это вряд ли понравится
+	ChangeCharacterComplexReputation(pchar,"nobility", -3); 
+	ChangeCharacterComplexReputation(pchar,"authority", -0.5); 
 	OfficersReaction("bad");
 	xi_refCharacter.Ship.Crew.Quantity = 0;
 	OnShipScrollChange();
@@ -1982,8 +1982,8 @@ void SetEnemyCrewToFree()
 	ExitCaptureCrewWindow();
 	if(SetEnemyCrewGoods() == true)
 	{
-		ChangeCharacterComplexReputation(pchar,"nobility", 1); // хорошее дело
-		ChangeCharacterComplexReputation(pchar,"authority", -0.5); // но команде это вряд ли понравится
+		ChangeCharacterComplexReputation(pchar,"nobility", 1); 
+		ChangeCharacterComplexReputation(pchar,"authority", -0.5); 
 		OfficersReaction("good");
 	}
 	RemoveEnemyShipHPFree();	
@@ -1991,7 +1991,7 @@ void SetEnemyCrewToFree()
 	OnShipScrollChange();
 }
 
-// ugeen --> снабжение сдавшихся врагов, отпущенных  на шлюпках
+
 bool SetEnemyCrewGoodOne(int iGood, int iGoodRateEat)
 {
 	int iQty, iGoodQty;
@@ -2001,7 +2001,7 @@ bool SetEnemyCrewGoodOne(int iGood, int iGoodRateEat)
 	iQty = GetCargoGoods(xi_refCharacter, iGood);
 	if(iQty >= iGoodQty) 
 	{
-		iQty = RemoveCharacterGoodsSelf(xi_refCharacter,iGood,iGoodQty); // сначала на корабле противника
+		iQty = RemoveCharacterGoodsSelf(xi_refCharacter,iGood,iGoodQty); 
 		return iQty;
 	}
 	else
@@ -2009,7 +2009,7 @@ bool SetEnemyCrewGoodOne(int iGood, int iGoodRateEat)
 		iQty = GetCargoGoods(pchar, iGood);
 		if(iQty >= iGoodQty)	
 		{
-			iQty = RemoveCharacterGoodsSelf(pchar,iGood,iGoodQty); // если нет у врага - спишем  с флагмана ГГ
+			iQty = RemoveCharacterGoodsSelf(pchar,iGood,iGoodQty); 
 			return iQty;
 		}
 	}	
@@ -2020,18 +2020,18 @@ int CheckEnemyShipHPFree()
 {
 	int iHP = makeint(GetCrewQuantity(xi_refCharacter)/HP_BY_ENEMY_CREW + 1) * HP_PER_BOAT;
 	if(stf(xi_refCharacter.ship.hp) > iHP + 100) 
-	{   // списываем HP у абордируемого
+	{   
 		return 1;
 	}
 	else 
 	{
-		// cписываем HP у абордирующего
+		
 		if(stf(pchar.ship.hp) > iHP + 200)
 		{
 			return 2;
 		}		
 	}
-	return 0; // блокируем кнопку 
+	return 0; 
 }
 
 void RemoveEnemyShipHPFree()
@@ -2048,7 +2048,7 @@ void RemoveEnemyShipHPFree()
 	}
 }
 
-bool SetEnemyCrewGoods() // снабдим отпущенных всем необходимым 
+bool SetEnemyCrewGoods() 
 {
 	bool bOk;
 	
@@ -2059,7 +2059,7 @@ bool SetEnemyCrewGoods() // снабдим отпущенных всем необходимым
 		
 	return bOk;
 }
-// ugeen <--
+
 
 int GetEnemyHiredCrew()
 {
@@ -2071,12 +2071,12 @@ int GetEnemyHiredCrew()
 	{
 		iEnemyHiredCrew = makeint(GetCrewQuantity(xi_refCharacter) * rand( makeint(GetSummonSkillFromName(pchar, SKILL_LEADERSHIP)*0.2))/100.0 + GetCrewQuantity(xi_refCharacter) * rand( makeint(GetSummonSkillFromName(pchar, SKILL_FORTUNE)*0.2))/100.0 );
 	}
-	else // все остальные
+	else 
 	{
 		iEnemyHiredCrew = makeint(GetCrewQuantity(xi_refCharacter) * rand(makeint(GetSummonSkillFromName(pchar, SKILL_LEADERSHIP)*0.7))/100.0);
 	}
 	int iDiffCrew = GetMaxCrewQuantity(refCharacter) - GetCrewQuantity(refCharacter);
-	// учет веса экипажа -- если нет места на корабле, то в команду не пойдут :(
+	
 	if(iDiffCrew > GetCargoFreeSpace(refCharacter))
 	{
 		iDiffCrew = GetCargoFreeSpace(refCharacter);
@@ -2156,19 +2156,19 @@ void SetVariable()
 	SetNewGroupPicture("HIRE_CREW_MORALE_PIC", "MORALE_SMALL", GetMoraleGroupPicture(stf(refCharacter.ship.crew.morale)));
 	SetFormatedText("HIRE_CREW_MORALE_TEXT", XI_ConvertString("CrewMorale") + ": " + XI_ConvertString(GetMoraleName(sti(refCharacter.Ship.crew.morale))));
 	
-	// провиант на корабле ГГ
+	
 	sText = "Provision on the ship:\nat ";
 	int iFood = CalculateShipFood(refCharacter);
 	sText = sText + FindRussianDaysString(iFood);
 	SetFormatedText("HIRE_FOOD_SHIP", sText);
 
-	// ром на корабле ГГ
+	
 	sText = "Rum on the ship:\nat ";
 	int iRum = CalculateShipRum(refCharacter);
 	sText = sText + FindRussianDaysString(iRum);
 	SetFormatedText("HIRE_RUM_SHIP", sText);
 	
-	//  заполнялка противника
+	
 	SetCrewExpTable(xi_refCharacter, "HIRE_TABLE_CREW2", "HIRE_BAR_Sailors2", "HIRE_BAR_Cannoners2", "HIRE_BAR_Soldiers2");
 	
 	SetFormatedText("HIRE_CREW_QTY2", ""+GetCrewQuantity(xi_refCharacter));
@@ -2178,7 +2178,7 @@ void SetVariable()
 	SetFormatedText("HIRED_CREW", ""+sti(xi_refCharacter.Ship.Crew.Hire));	
 }
 
-// бакап значений, до применения
+
 void SetBackupQty()
 {
 	aref    arTo, arFrom;
@@ -2315,8 +2315,7 @@ void HIRE_ADD_BUTTON()
 	}
 }
 
-/* Vorius 09/06/2009 -- взято с PiratesAhoy
-   returns a string representing the given officer's position */
+ 
 string GetOfficerPosition(string sCharacter)
 {	
 	if (CheckAttribute(pchar,"Fellows.Passengers.navigator") && sCharacter == sti(pchar.Fellows.Passengers.navigator))

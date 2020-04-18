@@ -3,11 +3,11 @@ int CreateSentMartinCharacters(int n)
 {
 	ref ch;
 	
-	///////////////////////////////////////////////////////////////////////////////
-	// ОСНОВНЫЕ ПЕРСОНАЖИ
-	///////////////////////////////////////////////////////////////////////////////
 	
-	makeref(ch,Characters[n]);			//Губернатор
+	
+	
+	
+	makeref(ch,Characters[n]);			
 	ch.id		= "Marigo_Mayor";
 	ch.model	= "huber_27";
 	ch.name 	= "Martin";
@@ -27,7 +27,7 @@ int CreateSentMartinCharacters(int n)
 	EquipCharacterbyItem(ch, BLADE_LONG);
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetImmortal(ch, true);
 	LAi_SetHuberType(ch);
 	LAi_RemoveLoginTime(ch);
@@ -35,7 +35,7 @@ int CreateSentMartinCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Священик
+	makeref(ch,Characters[n]);			
 	ch.id		= "Marigo_Priest";
 	ch.model	= "priest_4";
 	ch.model.animation = "man"; 
@@ -47,13 +47,13 @@ int CreateSentMartinCharacters(int n)
 	ch.Dialog.Filename = "Common_church.c";
 	ch.greeting = "padre_1";
 	ch.nation = HOLLAND;
-//	LAi_SetLoginTime(ch, 6.0, 21.99);
+
 	LAi_SetPriestType(ch);
 	LAi_group_MoveCharacter(ch, "HOLLAND_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);		// ОФициантка
+	makeref(ch,Characters[n]);		
 	ch.id		= "Marigo_waitress";
 	ch.model	= "women_13";
 	ch.sex = "woman";
@@ -70,7 +70,7 @@ int CreateSentMartinCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Трактирщик
+	makeref(ch,Characters[n]);			
 	ch.id		= "Marigo_tavernkeeper";
 	ch.model	= "barmen_12";
 	ch.greeting = "barmen_1";
@@ -89,7 +89,7 @@ int CreateSentMartinCharacters(int n)
 	n = n + 1;
 
 
-	makeref(ch,Characters[n]);			//Торговец
+	makeref(ch,Characters[n]);			
 	ch.id		= "Marigo_trader";
 	ch.model	= "trader_12";
 	ch.greeting = "store_1";
@@ -107,7 +107,7 @@ int CreateSentMartinCharacters(int n)
 	ch.item_date = "";
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Корабел
+	makeref(ch,Characters[n]);			
 	ch.id		= "Marigo_shipyarder";
 	ch.model	= "shipowner_12";
 	ch.greeting = "shipyarder_3";
@@ -125,14 +125,14 @@ int CreateSentMartinCharacters(int n)
 	EquipCharacterbyItem(ch, "topor_02"); 
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetLoginTime(ch, 6.0, 21.99);
 	LAi_SetHuberType(ch);
 	LAi_group_MoveCharacter(ch, "HOLLAND_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Банкир
+	makeref(ch,Characters[n]);			
 	ch.id		= "Marigo_usurer";
 	ch.model	= "banker_12";
 	ch.sex = "man";
@@ -145,14 +145,14 @@ int CreateSentMartinCharacters(int n)
 	ch.nation = HOLLAND;
 	ch.greeting = "usurer_2";
 	ch.quest.shiping = "0";
-	ch.UsurerDeposit = 7000; // *1000 денег
+	ch.UsurerDeposit = 7000; 
 	ch.money = USURER_MIN_MONEY + rand(USURER_NORM);
 	LAi_SetOwnerType(ch);
 	LAi_group_MoveCharacter(ch, "HOLLAND_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Начальник порта
+	makeref(ch,Characters[n]);			
 	ch.id		= "Marigo_PortMan";
 	ch.model	= "citiz_8";
 	ch.sex = "man";
@@ -169,7 +169,7 @@ int CreateSentMartinCharacters(int n)
 	ch.item_date = "";
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Хозяйка борделя
+	makeref(ch,Characters[n]);			
 	ch.id		= "Marigo_Hostess";
 	ch.name		= "Johanna"
 	ch.lastname = "";
@@ -183,7 +183,7 @@ int CreateSentMartinCharacters(int n)
 	ch.Dialog.Filename = "Common_Brothel.c";
 	ch.greeting = "maman_1";
 	ch.nation = HOLLAND;
-	ch.questChurch = ""; //флаг для пожертвований
+	ch.questChurch = ""; 
 	LAi_SetOwnerType(ch);
 	LAi_group_MoveCharacter(ch, "HOLLAND_CITIZENS");
 	n = n + 1;
@@ -198,7 +198,7 @@ int CreateSentMartinCharacters(int n)
 	ch.nation = PIRATE;
 	GiveItem2Character(ch, BLADE_SABER);
 	EquipCharacterbyItem(ch, BLADE_SABER);
-	// посадим в генераторе
+	
 	ch.Dialog.Filename = "Smuggler Agent_dialog.c";
 	LAi_SetSitType(ch);
 	LAi_SetHP(ch, 80.0, 80.0);
@@ -207,3 +207,4 @@ int CreateSentMartinCharacters(int n)
 	
 	return n;
 }
+

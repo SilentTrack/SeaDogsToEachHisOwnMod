@@ -1,4 +1,4 @@
-// Рамона Лоцано - горячая испанская сеньорита
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -32,18 +32,18 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				dialog.text = "Аh, "+pchar.name+"! "+TimeGreeting()+"! I am glad to see you! What say you";
+				dialog.text = "пїЅh, "+pchar.name+"! "+TimeGreeting()+"! I am glad to see you! What say you";
 				link.l1 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
 				link.l1.go = "rumours_LSC";
 				link.l2 = "I want to ask you a few questions about the island.";
-				link.l2.go = "int_quests"; //информационный блок
+				link.l2.go = "int_quests"; 
 				link.l5 = "Just wanted to know how are you doing. See you!";
 				link.l5.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
-		case "meeting": // первая встреча
+		case "meeting": 
 			dialog.text = "Well, let's get to know each other then... captain. I am Ramona Lozano, but don't even try to call me senora Lozano, I hate it. What is your name?";
 			link.l1 = ""+GetFullName(pchar)+". Pleasure to meet you, Ramona.";
 			link.l1.go = "meeting_1";
@@ -86,7 +86,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-//--------------------------------------- блок вопросов и ответов ---------------------------------------------
+
 		case "int_quests":
 			dialog.text = "You don't say! Well, ask, I will answer if I can...";
 			if (!CheckAttribute(npchar, "quest.answer_1"))
@@ -131,7 +131,7 @@ void ProcessDialogEvent()
 			link.l1 = "We will see. The time will come...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_2 = "true";
-			// сюда направление на квест
+			
 		break;
 		
 		case "ansewer_3":
@@ -147,10 +147,10 @@ void ProcessDialogEvent()
 			link.l1.go = "int_quests";
 			npchar.quest.answer_4 = "true";
 		break;
-// <-- блок вопросов и ответов
+
 		
-//----------------------------------------- специальные реакции -----------------------------------------------
-		//обнаружение ГГ в сундуках
+
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
 			link.l1 = "Damn it!";
@@ -178,7 +178,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//замечание по обнаженному оружию
+		
 		case "LSCNotBlade":
 			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
 			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
@@ -200,7 +200,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;
-// <-- специальные реакции
+
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

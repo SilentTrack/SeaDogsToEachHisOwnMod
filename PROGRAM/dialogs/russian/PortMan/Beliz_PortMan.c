@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
 	bool ok;
@@ -8,7 +8,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			//регата
+			
 			if (CheckAttribute(pchar, "questTemp.Regata.Go") && !CheckAttribute(npchar, "quest.regatatalk"))
 			{
 				dialog.text = "What do you want? A-ha, you are the participant of the regatta! Am I right?";
@@ -16,14 +16,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1.go = "Regata_check";
 				break;
 			}
-			//регата
+			
 			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What kind of questions?", "What do you want, " + GetAddress_Form(NPChar) + "?"), "You've already tried to ask me a question " + GetAddress_Form(NPChar) + "...", "You have been talking about some question for the third time today...",
                           "Look, if you have nothing to tell me about the port's matters then don't bother me with your questions.", "block", 1, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind.", "Sorry!"), "Sorry!", "Pardon!", "Sorry!", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 		break;
 
-		//регата
+		
 		case "Regata_check":
 		iTest = FindColony(npchar.city); 
 		if (iTest != -1)
@@ -32,7 +32,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			sFrom_sea = rColony.from_sea;
 		}
 		ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
-		if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)//проверка на наличие корабля в порту
+		if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)
 		{
 			if (CheckAttribute(pchar, "questTemp.Regata.Breach") || GetCompanionQuantity(pchar) > 1 || sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LUGGER || pchar.Ship.Name != "Santa Catherina")
 			{
@@ -43,7 +43,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 			else
 			{
-			pchar.questTemp.Regata.FirstTransitionTime = GetPastTime("hour", sti(pchar.questTemp.Regata.StartYear), sti(pchar.questTemp.Regata.StartMonth), sti(pchar.questTemp.Regata.StartDay), stf(pchar.questTemp.Regata.StartTime), GetDataYear(), GetDataMonth(), GetDataDay(), GetTime());//истратил ГГ в часах на 1 переход
+			pchar.questTemp.Regata.FirstTransitionTime = GetPastTime("hour", sti(pchar.questTemp.Regata.StartYear), sti(pchar.questTemp.Regata.StartMonth), sti(pchar.questTemp.Regata.StartDay), stf(pchar.questTemp.Regata.StartTime), GetDataYear(), GetDataMonth(), GetDataDay(), GetTime());
 			dialog.text = "Let's register: captain "+ GetFullName(pchar) +", ship is - "+pchar.Ship.Name+"... Regatta's time in hours is "+sti(pchar.questTemp.Regata.FirstTransitionTime)+". Done, your result if registered, you can continue your way.";
 			link.l1 = "Tell me my rank.";
 			link.l1.go = "Regata_info";
@@ -70,8 +70,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				if (pchar.questTemp.Regata.AdversaryFirstTransition.Time.(sTemp) < sti(pchar.questTemp.Regata.FirstTransitionTime))
 				{
 					n++;
-					sName = pchar.questTemp.Regata.AdversaryName.(sTemp);//имя ближайшего противника
-					sShip = pchar.questTemp.Regata.AdversaryShipName.(sTemp);//его корабль
+					sName = pchar.questTemp.Regata.AdversaryName.(sTemp);
+					sShip = pchar.questTemp.Regata.AdversaryShipName.(sTemp);
 				}
 			}
 			if (n==1)
@@ -104,37 +104,38 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 					}
 				}
 			}
-			AddCharacterExpToSkill(pchar, "Sailing", 50);//навигация
+			AddCharacterExpToSkill(pchar, "Sailing", 50);
 			npchar.quest.regatatalk = "true";
-			pchar.questTemp.Regata.Beliz = "true";//отметка Белиза
+			pchar.questTemp.Regata.Beliz = "true";
 			pchar.quest.Regata_Check1.win_condition.l1 = "location";
 			pchar.quest.Regata_Check1.win_condition.l1.location = "Cuba1";
-			pchar.quest.Regata_Check1.function = "RegataCheck";//проверка 1
+			pchar.quest.Regata_Check1.function = "RegataCheck";
 			pchar.quest.Regata_Check2.win_condition.l1 = "location";
 			pchar.quest.Regata_Check2.win_condition.l1.location = "Cuba2";
-			pchar.quest.Regata_Check2.function = "RegataCheck";//проверка 2
+			pchar.quest.Regata_Check2.function = "RegataCheck";
 			pchar.quest.Regata_Check.win_condition.l1 = "location";
 			pchar.quest.Regata_Check.win_condition.l1.location = "Hispaniola2";
-			pchar.quest.Regata_Check.function = "RegataCheck";//проверка 3
+			pchar.quest.Regata_Check.function = "RegataCheck";
 			pchar.questTemp.Regata.AttackIsland = "Cuba1";
 			pchar.questTemp.Regata.AttackNation = SPAIN;
 			pchar.quest.Regata_Attack.win_condition.l1 = "location";
 			pchar.quest.Regata_Attack.win_condition.l1.location = "Cuba1";
-			pchar.quest.Regata_Attack.function = "RegataAttack_Lugger";//первая засада у Сантьяго
+			pchar.quest.Regata_Attack.function = "RegataAttack_Lugger";
 			pchar.quest.Regata_Hunter.win_condition.l1 = "location";
 			pchar.quest.Regata_Hunter.win_condition.l1.location = "Cuba2";
-			pchar.quest.Regata_Hunter.function = "RegataAttack_Hunter";//ДУ у Гаваны
+			pchar.quest.Regata_Hunter.function = "RegataAttack_Hunter";
 			pchar.questTemp.Regata.Town = "Portpax";
 			pchar.quest.Regata_PU.win_condition.l1 = "locator";
 			pchar.quest.Regata_PU.win_condition.l1.location = "Portpax_town";
 			pchar.quest.Regata_PU.win_condition.l1.locator_group = "reload";
 			pchar.quest.Regata_PU.win_condition.l1.locator = "reload10_back";
 			pchar.quest.Regata_PU.win_condition.l2 = "Night";
-			pchar.quest.Regata_PU.function = "RegataPU_Open";//вход в ПУ ночью
+			pchar.quest.Regata_PU.function = "RegataPU_Open";
 		break;
-		//регата
+		
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 
 

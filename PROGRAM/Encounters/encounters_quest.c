@@ -1,4 +1,4 @@
-// Map quest encounters
+
 #define MAX_QUEST_MAP_ENCOUNTERS	20
 object QuestMapEncounters[MAX_QUEST_MAP_ENCOUNTERS];
 
@@ -44,14 +44,9 @@ void Encounter_DeleteQuestMapEncounter(string sGroupID)
 	if (iEncounter < 0) { return; }
 
 	DeleteAttribute(&QuestMapEncounters[iEncounter], "");
-	//рэйнжер продолжает путь
 	
-	/*
-	if (characters[GetCharacterIndex(sGroupID)].adventure.type == "trade")
-	{
-		TradeQuest(sGroupID, rand(10)+1);
-	}
-	*/
+	
+	 
 }
 
 void Encounter_DeleteDeadQuestMapEncounters()
@@ -61,7 +56,7 @@ void Encounter_DeleteDeadQuestMapEncounters()
 		if (!CheckAttribute(&QuestMapEncounters[i], "id")) { continue; }
 		if (Group_isDead(QuestMapEncounters[i].id))
 		{
-//			CheckForDeadRanger(QuestMapEncounters[i].id);
+
 			DeleteAttribute(&QuestMapEncounters[i], "");
 		}
 	}
@@ -75,7 +70,7 @@ int FindFreeQuestMapEncounterSlot()
 	}
 	return -1;
 }
-// boal -->
+
 int FindFreeOrExistsQuestMapEncounterSlot(string newId)
 {
 	for (int i=0; i<MAX_QUEST_MAP_ENCOUNTERS; i++)
@@ -84,12 +79,12 @@ int FindFreeOrExistsQuestMapEncounterSlot(string newId)
 	}
 	return FindFreeQuestMapEncounterSlot();
 }
-// boal <--
 
-// не работает!!!  теперь все иначе, через Map_CreateWarrior
+
+
 void Encounter_SetQuestMapEncounter(string sGroupID, int iEncType, bool bPermanent, int iRandomMeeting)
 {
-	int iEncounter = FindFreeOrExistsQuestMapEncounterSlot(sGroupID);//fix 09/01/05 boal
+	int iEncounter = FindFreeOrExistsQuestMapEncounterSlot(sGroupID);
 	if (iEncounter == -1)
 	{
 		Trace("Encounter_SetQuestMapEncounter: Not enought Quest Map Encounters slots = " + MAX_QUEST_MAP_ENCOUNTERS);
@@ -97,7 +92,7 @@ void Encounter_SetQuestMapEncounter(string sGroupID, int iEncType, bool bPermane
 	}
 	ref rEnc = &QuestMapEncounters[iEncounter];
 
-    DeleteAttribute(rEnc, ""); //fix
+    DeleteAttribute(rEnc, ""); 
     
 	if (iRandomMeeting > 100)	{ iRandomMeeting = 100; }
 	if (iRandomMeeting < 0)		{ iRandomMeeting = 0; }

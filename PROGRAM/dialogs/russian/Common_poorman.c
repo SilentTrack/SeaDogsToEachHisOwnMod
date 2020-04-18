@@ -10,12 +10,12 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 
-	ProcessCommonDialogRumors(NPChar, Link, NextDiag);//homo 25/06/06
+	ProcessCommonDialogRumors(NPChar, Link, NextDiag);
 
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			// --> �������
+			
 			if (CheckAttribute(pchar, "questTemp.Caleuche.SeekAmulet") && drand(1) == 0 && sti(Pchar.money) >= 2000) 
 			{
 				dialog.text = "Look, sir, do not want to buy one amusing little thing? Take inexpensive, just some few thousand pesos...";
@@ -23,7 +23,7 @@ void ProcessDialogEvent()
 				link.l1.go = "caleuche";
 				break;
 			}
-			// <-- �������
+			
 			if (npchar.quest.meeting == "0")
 			{
 				dialog.text = LinkRandPhrase("Hello. My name is " + GetFullName(npchar) + ". I do not hope that you would like to meet me, but, perhaps, you will remember this name...", 
@@ -31,7 +31,7 @@ void ProcessDialogEvent()
 					"My name is " + GetFullName(npchar) + ", " + GetAddress_Form(NPChar) + ". Nice meeting you.");
 				link.l1 = RandPhraseSimple("Greetings.", "Hello.");
 				link.l1.go = "First time";
-				// ��������� �����
+				
 				if (CheckAttribute(pchar, "questTemp.Trial") && pchar.questTemp.Trial == "spy_drink" && pchar.location == "portobello_town")
 				{
 					link.l2 = "Hey, listen, would you like to earn a couple thousand pesos instead of this pitiful alms?";
@@ -53,7 +53,7 @@ void ProcessDialogEvent()
 				link.l1.go = DialogGoNodeRepeat("exit", "exit", "exit", "pester", npchar, Dialog.CurrentNode);
 				link.l2 = RandPhraseSimple("What do you need?", "What do you want?");
 				link.l2.go = "Whants";
-				// ��������� �����
+				
 				if (CheckAttribute(pchar, "questTemp.Trial") && pchar.questTemp.Trial == "spy_drink" && pchar.location == "portobello_town")
 				{
 					link.l2 = "Hey, listen, would you like to earn a couple thousand pesos instead of this pitiful alms?";
@@ -71,12 +71,12 @@ void ProcessDialogEvent()
 			link.l1 = "Heh, I see...";
 			link.l1.go = "exit";
 		break;
-		//������
+		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		//���������
+		
 		case "Whants":
 			if (!CheckAttribute(npchar, "wants_date") || GetNpcQuestPastDayParam(npchar, "wants_date") >= 1 || bBettaTestMode)
     		{
@@ -195,7 +195,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "trial_5":
-			chrDisableReloadToLocation = true;//������� �������
+			chrDisableReloadToLocation = true;
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload5_back", "none", "", "", "OpenTheDoors", 10.0);
@@ -238,7 +238,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "trial_fail_1":
-			chrDisableReloadToLocation = true;//������� �������
+			chrDisableReloadToLocation = true;
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload4_back", "none", "", "", "OpenTheDoors", 10.0);
@@ -268,7 +268,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "trial_11":
-			chrDisableReloadToLocation = true;//������� �������
+			chrDisableReloadToLocation = true;
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload4_back", "none", "", "", "OpenTheDoors", 10.0);
@@ -278,7 +278,7 @@ void ProcessDialogEvent()
 			sld.DeckDialogNode = "florian_12";
 		break;
 		
-		// --> �������
+		
 		case "Caleuche":
 			dialog.text = "Pardon me, good sir... I won it the other day in the bone at some passer thought - charmed healing amulet, but lost: and it does not cure ailments, and market traders interested. And here you are - the sailor, captain, a learned man - look, you and she would be useful\nYes, is for you these couple of thousand - a mere trifle, and me - a piece of bread and a sip of rum for a month. Look, mister...";
 			link.l1 = "Okay, show...";
@@ -304,6 +304,6 @@ void ProcessDialogEvent()
 			DialogExit();
 			GiveItem2Character(pchar, "kaleuche_amulet1"); 
 		break;
-		// <-- �������
+		
 	}
 }

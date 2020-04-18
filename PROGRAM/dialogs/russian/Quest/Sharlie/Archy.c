@@ -1,4 +1,4 @@
-// Àð÷èáàëüä Êîëõàóí
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -45,19 +45,19 @@ void ProcessDialogEvent()
 		break;
 		
 		case "portroyal_4":
-			dialog.text = "Yep, I've heard quite a few legends about captain Charles de Maure's heroics –now I've seen it with my own eyes...";
+			dialog.text = "Yep, I've heard quite a few legends about captain Charles de Maure's heroics ï¿½now I've seen it with my own eyes...";
 			link.l1 = "Yeah, I've heard a few things about William Patterson's velour as well. You're lucky to have a captain like him.";
 			link.l1.go = "portroyal_5";
 		break;
 		
 		case "portroyal_5":
-			dialog.text = "Lucky me, that's true. Though he has become such an important man these days, a man of high society, audiences, balls, parades and private parties… You can't lure him out of the governor's palace every time we arrive at Port Royal. Actually he is right there now again\nCaptain Charles de Maure, can you do a favour for the Scottish drunkard? Join my company and let's have a chat! I am sick of these always the same faces and you seem to be a good person to talk with. Come to my place, let's relax and have a barrel of excellent whiskey. I'll buy!";
+			dialog.text = "Lucky me, that's true. Though he has become such an important man these days, a man of high society, audiences, balls, parades and private partiesï¿½ You can't lure him out of the governor's palace every time we arrive at Port Royal. Actually he is right there now again\nCaptain Charles de Maure, can you do a favour for the Scottish drunkard? Join my company and let's have a chat! I am sick of these always the same faces and you seem to be a good person to talk with. Come to my place, let's relax and have a barrel of excellent whiskey. I'll buy!";
 			link.l1 = "Hm... Tempting, but...";
 			link.l1.go = "portroyal_6";
 		break;
 		
 		case "portroyal_6":
-			dialog.text = "Oh stop, captain –you need to rest sometimes too. I've got some fine hors-d'oeuvres by the way, right out of a local merchant's store –I'm renting a room right above the store. Whenever you feel like getting a bite to eat or a drink, you just take a walk downstairs and it's ready, haha!  Convenient, isn't it? Come on, let's go!";
+			dialog.text = "Oh stop, captain ï¿½you need to rest sometimes too. I've got some fine hors-d'oeuvres by the way, right out of a local merchant's store ï¿½I'm renting a room right above the store. Whenever you feel like getting a bite to eat or a drink, you just take a walk downstairs and it's ready, haha!  Convenient, isn't it? Come on, let's go!";
 			link.l1 = "You've talked me into it!";
 			link.l1.go = "portroyal_7";
 		break;
@@ -103,7 +103,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "portroyal_13":
-			dialog.text = "I sure did, cursed place! Good thing there was freshwater over there. I nourished myself with crabs, barnacles, fish, and birds. That's what I named it – Crab Island. I didn't have any weapons – I mastered the harpoon, spear, and arrow like a savage man! Ohoo! Drink, drink, captain! I don't mind wetting my whistle as well...";
+			dialog.text = "I sure did, cursed place! Good thing there was freshwater over there. I nourished myself with crabs, barnacles, fish, and birds. That's what I named it ï¿½ Crab Island. I didn't have any weapons ï¿½ I mastered the harpoon, spear, and arrow like a savage man! Ohoo! Drink, drink, captain! I don't mind wetting my whistle as well...";
 			link.l1 = "Yeah... I don't envy you.";
 			link.l1.go = "portroyal_14";
 		break;
@@ -127,7 +127,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "portroyal_17":
-			dialog.text = "Yes, yes, the island is not marked on any map. But Willy – he's old Willy! He can do anything! And he found that god damn island and saved me, for which I am grateful to the grave to him.  Yeah...";
+			dialog.text = "Yes, yes, the island is not marked on any map. But Willy ï¿½ he's old Willy! He can do anything! And he found that god damn island and saved me, for which I am grateful to the grave to him.  Yeah...";
 			link.l1 = "Do you like serving mister Patterson? Would you go again on your own resources?";
 			link.l1.go = "portroyal_18";
 		break;
@@ -139,7 +139,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "portroyal_19":
-			dialog.text = "Who told you that? Well, no sense trying to hide it. I used to. Didn't turn out well though, such treasure hunting had led me to the blasted Jesuits and to the island. Holy fathers had tortured a man to death because of me, and I myself… oh, let's keep the past in past\nI have paid enough for my sins and I hope to never repeat such in the future. No, Willy won't let that happen, I am sure!";
+			dialog.text = "Who told you that? Well, no sense trying to hide it. I used to. Didn't turn out well though, such treasure hunting had led me to the blasted Jesuits and to the island. Holy fathers had tortured a man to death because of me, and I myselfï¿½ oh, let's keep the past in past\nI have paid enough for my sins and I hope to never repeat such in the future. No, Willy won't let that happen, I am sure!";
 			link.l1 = "Listen, Archibald. Have you ever heard of a man named Miguel Dichoso?";
 			link.l1.go = "portroyal_20";
 		break;

@@ -1,21 +1,21 @@
-// DEFINES
+
 #define MUSIC_CHANGE_TIME  3000
 #define MUSIC_SILENCE_TIME 180000.0
 #define SOUNDS_FADE_TIME   200
 
 #event_handler ("LoadSceneSound", "LoadSceneSound")
-// PLAY
+
 int Play3DSound(string name, float x, float y, float z)
 {
 	InitSound();
-	//Trace("Play3DSound : "+name);
+	
 	return SendMessage(Sound,"lsllllllfff",MSG_SOUND_PLAY, name, SOUND_WAV_3D, VOLUME_FX, false, false, false, 0, x, y, z);
 }
 
 int Play3DSoundCached(string name, float x, float y, float z)
 {
 	InitSound();
-	//Trace("Play3DSoundCached : "+name);
+	
 	return SendMessage(Sound,"lsllllllfff",MSG_SOUND_PLAY, name, SOUND_WAV_3D, VOLUME_FX, false, false, true, 0, x, y, z);
 }
 
@@ -28,79 +28,76 @@ int Play3DSoundComplex(string name, float x, float y, float z, bool bLooped, boo
 int PlayStereoSound(string name)
 {
 	InitSound();
-	//Trace("PlayStereoSound : "+name);
+	
 	return SendMessage(Sound,"lslllll",MSG_SOUND_PLAY, name, SOUND_WAV_STEREO, VOLUME_FX, false, false, false);
 }
 
 int PlayStereoSoundLooped(string name)
 {
 	InitSound();
-	//Trace("PlayStereoSoundLooped : "+name);
+	
 	return SendMessage(Sound,"lsllll",MSG_SOUND_PLAY, name, SOUND_WAV_STEREO, VOLUME_FX, false, true, false);
 }
 
 int PlayStereoSoundLooped_JustCache(string name)
 {
 	InitSound();
-	//Trace("PlayStereoSoundLooped : "+name);
+	
 	return SendMessage(Sound,"lslllll",MSG_SOUND_PLAY, name, SOUND_WAV_STEREO, VOLUME_FX, true, true, false);
 }
 
 int PlayStereoOGG(string name)
 {
 	InitSound();
-	//Trace("PlayStereoSound : "+name);
-	return SendMessage(Sound,"lsllllll",MSG_SOUND_PLAY, name, SOUND_MP3_STEREO, VOLUME_FX, false, false, false, 0); //fix boal
+	
+	return SendMessage(Sound,"lsllllll",MSG_SOUND_PLAY, name, SOUND_MP3_STEREO, VOLUME_FX, false, false, false, 0); 
 }
 
-// OTHER METHODS
+
 void StopSound(int id, int fade)
 {
 	InitSound();
-	//Trace("StopSound : "+id);
+	
 	SendMessage(Sound, "lll", MSG_SOUND_STOP, id, fade);
 }
 
 void ResumeSound(int id, int fade)
 {
 	InitSound();
-	//Trace("ResumeSound : "+id);
+	
 	SendMessage(Sound, "lll", MSG_SOUND_RESUME, id, fade);
 }
 
 void ReleaseSound(int id)
 {
 	InitSound();
-	//Trace("ReleaseSound : "+id);
+	
 	SendMessage(Sound, "ll", MSG_SOUND_RELEASE, id);
 }
 
-// SOUND SCHEMES
+
 void ResetSoundScheme()
 {
 	InitSound();
-	//Trace("ResetSoundScheme");
+	
 	SendMessage(Sound,"l",MSG_SOUND_SCHEME_RESET);
 }
 
 void SetSoundScheme(string schemeName)
 {
 	InitSound();
-	//Trace("SetSoundScheme: "+schemeName);
+	
 	SendMessage(Sound,"ls",MSG_SOUND_SCHEME_SET,schemeName);
 }
 
 void AddSoundScheme(string schemeName)
 {
 	InitSound();
-	//Trace("AddSoundScheme: "+schemeName);
+	
 	SendMessage(Sound,"ls",MSG_SOUND_SCHEME_ADD,schemeName);
 }
 
-/* Тепер эта функция опередляет звуковые схемы в игре на СУШЕ!. Внутри проверяется
-как погода, так и время. Сделано для того, что бы не было схем, которые
-бы игрались независимо от погоды или времени, ибо это всё-таки неудобно
-в использовании */
+ 
 
 void SetWeatherScheme(string scheme)
 {
@@ -142,28 +139,17 @@ void SetWeatherScheme(string scheme)
 	}
 }
 
-/* void SetTimeScheme(string scheme)
-{
-	if (Whr_IsNight())
-	{
-		AddSoundScheme(scheme+"_night");
-	}
-	else
-	{
-		AddSoundScheme(scheme+"_day");
-	}
-}
-*/
+ 
 void SetSchemeForLocation (ref loc)
 {
     ref mchref = GetMainCharacter();
-    mchref.GenQuest.God_hit_us = false; // нефиг воровать :)  (только в домах)
-    int iColony = -1; //boal music
+    mchref.GenQuest.God_hit_us = false; 
+    int iColony = -1; 
     
     if(CheckAttribute(loc,"type"))
 	{
 		ResetSoundScheme();
-		SetMusicAlarm(""); // иузыка не играла, если переходили меж локациями одной схемы - багфиx boal 28.06.06
+		SetMusicAlarm(""); 
 		switch (loc.type)
 		{
 			case "town":
@@ -191,7 +177,7 @@ void SetSchemeForLocation (ref loc)
 				}
 			break;
 			
-			case "land": // дуэльное поле, лэндфорт и так далее
+			case "land": 
 				SetWeatherScheme("land");
 				SetMusicAlarm("music_jungle");
 			break;
@@ -219,7 +205,7 @@ void SetSchemeForLocation (ref loc)
 					if (Whr_IsDay()) SetMusicAlarm("music_jungle");
 					else SetMusicAlarm("music_nightjungle");
 				}
-				DeleteAttribute(pchar, "CheckStateOk"); // убрать флаг проверенности протектором
+				DeleteAttribute(pchar, "CheckStateOk"); 
 			break;
 			
 			case "mayak":
@@ -232,19 +218,19 @@ void SetSchemeForLocation (ref loc)
 				ResetSoundScheme();
 				SetWeatherScheme("seashore");
 				SetMusicAlarm("music_shore");
-				DeleteAttribute(pchar, "CheckStateOk"); // убрать флаг проверенности протектором
+				DeleteAttribute(pchar, "CheckStateOk"); 
 			break;
 			
 			case "cave": 
 				SetSoundScheme("cave");
 				SetMusicAlarm("music_cave");
-				bMonstersGen = false; //сбросить флаг монстров
+				bMonstersGen = false; 
 			break;
 			
 			case "dungeon": 
 				SetSoundScheme("dungeon");
 				SetMusicAlarm("music_cave");
-				bMonstersGen = false; //сбросить флаг монстров
+				bMonstersGen = false; 
 			break;
 			
 			case "reef":
@@ -259,7 +245,7 @@ void SetSchemeForLocation (ref loc)
 				SetMusicAlarm("music_cave");
 			break;
 			
-			case "inca_temple": // не используется
+			case "inca_temple": 
 				SetSoundScheme("inca_temple");
 				SetMusicAlarm("music_coridor");
 			break;
@@ -306,7 +292,7 @@ void SetSchemeForLocation (ref loc)
 						SetMusicAlarm("music_gorod");
 					}
 				}
-				mchref.GenQuest.God_hit_us = true; // нефиг воровать :)
+				mchref.GenQuest.God_hit_us = true; 
 			break;
 			
 			case "tavern":
@@ -339,7 +325,7 @@ void SetSchemeForLocation (ref loc)
 			
 			case "residence":
 				SetSoundScheme("residence");
-				if (CheckAttribute(loc,"fastreload"))   // boal
+				if (CheckAttribute(loc,"fastreload"))   
 				{
 					iColony = FindColony(loc.fastreload);
 				}
@@ -374,12 +360,12 @@ void SetSchemeForLocation (ref loc)
 				SetMusicAlarm("music_shipyard");
 			break;
 			
-			case "fort_attack": // атакуем форт, внутренняя локация			
+			case "fort_attack": 
 				SetSoundScheme("fort_attack");
 				SetMusicAlarm("music_bitva");
 			break;
 			
-			case "fort": // форт для мирных прогулок
+			case "fort": 
 				SetWeatherScheme("seashore");
 				if (CheckAttribute(loc, "parent_colony"))
 				{
@@ -396,20 +382,20 @@ void SetSchemeForLocation (ref loc)
 				}
 			break;
 			
-			case "deck": // мирная палуба
+			case "deck": 
 				SetSoundScheme("deck");
 				if (Whr_IsDay()) SetMusic("music_sea_day");
 				else SetMusic("music_sea_night");
 			break;
 			
-			case "deck_fight": // боевая полуба
+			case "deck_fight": 
 				SetSoundScheme("deck_fight");
 				SetMusic("music_abordage");
 			break;
 			
-			case "slave_deck": // квестовая палуба
+			case "slave_deck": 
 				SetSoundScheme("slave_deck");
-				//SetMusicAlarm("music_spokplavanie");
+				
 			break;
 			
 			case "boarding_cabine":
@@ -463,17 +449,17 @@ void SetSchemeForLocation (ref loc)
 				SetMusicAlarm("music_teno_inside");
 			break;
 			
-			case "Alcove": // калеуче
+			case "Alcove": 
 				SetSoundScheme("teno_inside");
 				SetMusicAlarm("music_alcove");
 			break;
 			
-			case "Alcove_1": // калеуче
+			case "Alcove_1": 
 				SetSoundScheme("teno_inside");
 				SetMusicAlarm("music_alcove_1");
 			break;
 			
-			case "Judgement_dungeon": // Addon 2016-1 Jason пиратская линейка
+			case "Judgement_dungeon": 
 				SetSoundScheme("dungeon");
 				SetMusicAlarm("music_alcove");
 			break;
@@ -523,7 +509,7 @@ void SetStaticSounds (ref loc)
 			continue;
    		}
 
-		//trace("Create 3D Sound <"+locatorType+ "> for locator <"+locatorName+ "> into pos:("+locator.x+","+locator.y+","+locator.z+")" );
+		
 		SendMessage(Sound, "lsllllllfff", MSG_SOUND_PLAY, locatorType, SOUND_WAV_3D, VOLUME_FX, 0, 1, 0, 0, stf(locator.x), stf(locator.y), stf(locator.z));
 	}
 	
@@ -533,7 +519,7 @@ void SetSchemeForSea ()
 {
 	ResetSoundScheme();
 
-	// AddSoundScheme("sea");
+	
 	if (Whr_IsNight())
 	{
 		if (Whr_IsStorm())
@@ -562,7 +548,7 @@ void SetSchemeForSea ()
 			}
 		}
 	}
-	else // if Whr_IsDay
+	else 
 	{
 		if (Whr_IsStorm())
 		{
@@ -599,10 +585,10 @@ void SetSchemeForMap ()
 	AddSoundScheme("sea_map");
 	SetMusic("music_map");
 	ResumeAllSounds();
-	bFortCheckFlagYet = false; //eddy. уберем флаг распознавания фортом врага
+	bFortCheckFlagYet = false; 
 }
 
-// MUSIC
+
 int musicID = -1;
 int oldMusicID = -1;
 int boardM = -1;
@@ -610,9 +596,9 @@ string musicName = "";
 string oldMusicName = "";
 void SetMusic(string name)
 {
-	if (pchar.location == "UnderWater") return; //не играть музон под водой
+	if (pchar.location == "UnderWater") return; 
 	InitSound();
-	//Trace("SETTING MUSIC: " + name);
+	
 
 	if (name == musicName)
 	{
@@ -620,7 +606,7 @@ void SetMusic(string name)
 		return;
 	}
 
-	//Trace("SetMusic : "+name);
+	
 	if (oldMusicID >= 0)
 	{
 		SendMessage(Sound, "ll", MSG_SOUND_RELEASE, oldMusicID);
@@ -633,10 +619,10 @@ void SetMusic(string name)
 		oldMusicID = musicID;
 	}
 
-	//int silenceTime = 20000 + MakeInt(frnd() * MUSIC_SILENCE_TIME);
-	//musicID = SendMessage(Sound, "lslllllll", MSG_SOUND_PLAY, name, SOUND_MP3_STEREO, VOLUME_MUSIC, true, true, false, MUSIC_CHANGE_TIME, silenceTime);
-	//SendMessage(Sound, "llf", MSG_SOUND_SET_VOLUME, musicID, 1.0);
-	// fix поседнее - это громкость звука
+	
+	
+	
+	
 	musicID = SendMessage(Sound, "lslllllllf", MSG_SOUND_PLAY, name, SOUND_MP3_STEREO, VOLUME_MUSIC, true, true, false, 0, MUSIC_CHANGE_TIME, 1.0);
 	SendMessage(Sound, "lll", MSG_SOUND_RESUME, musicID, MUSIC_CHANGE_TIME);
 	
@@ -644,10 +630,10 @@ void SetMusic(string name)
 	musicName = name;
 }
 
-// Jason однократное исполнение трека dlc
+
 void SetMusicOnce(string name)
 {
-	if (pchar.location == "UnderWater") return; //не играть музон под водой
+	if (pchar.location == "UnderWater") return; 
 	InitSound();
 	
 	if (name == musicName)
@@ -684,20 +670,20 @@ void FadeOutMusic(int _time)
 	}
 }
 
-// RELOAD
+
 void PauseAllSounds()
 {
-	//Trace("PauseAllSounds");
+	
 	SendMessage(Sound,"lll",MSG_SOUND_STOP, 0, SOUNDS_FADE_TIME);
 }
 
 void ResumeAllSounds()
 {
-	//Trace("ResumeAllSounds");
+	
 	SendMessage(Sound,"lll",MSG_SOUND_RESUME, musicID, SOUNDS_FADE_TIME);
 }
 
-// OLD VERSIONS
+
 int PlaySoundDist3D(string name, float x, float y, float z)
 {
 	return Play3DSound(name, x,y,z);
@@ -735,9 +721,9 @@ void StopMusic()
 void PlayMusic(string n)
 {
 }
-//--------------------------------------------------------------------
-// Sound Section
-//--------------------------------------------------------------------
+
+
+
 object Sound;
 
 int alarmed = 0;
@@ -752,7 +738,7 @@ void SetMusicAlarm(string name)
 	}
 	else
 	{
-  		if (loadedLocation.type == "x_jungle" || loadedLocation.type == "x_seashore" || loadedLocation.id.label == "Maze") SetMusic("music_teno"); // калеуче
+  		if (loadedLocation.type == "x_jungle" || loadedLocation.type == "x_seashore" || loadedLocation.id.label == "Maze") SetMusic("music_teno"); 
 		else
 		{
 			if (loadedLocation.id.label == "Alcove")
@@ -770,7 +756,7 @@ void SetMusicAlarm(string name)
 		{
 			if (!CheckAttribute(loadedLocation, "CabinType"))
 			{
-				boardM = 1; // потом сбросим звук и схему
+				boardM = 1; 
 			}
 		}
 	}
@@ -793,12 +779,12 @@ void Sound_OnAlarm(bool _alarmed)
 		return;
 
 	if (alarmed != 0)
-	{ //alarm on!
+	{ 
 		if (loadedLocation.id == "shore67") SetMusic("music_q_battle");
 		else SetMusic("music_bitva");
 	}
 	else
-	{ //alarm off
+	{ 
 		SetMusic(oldMusicName);
 	}
 	oldAlarmed = alarmed;
@@ -811,17 +797,17 @@ void Sound_OnSeaAlarm(bool _seaAlarmed)
 		return;
 
 	if (seaAlarmed)
-	{ //alarm on!
+	{ 
 		SetMusic("music_sea_battle");
 	}
 	else
-	{ //alarm off
+	{ 
 		SetMusic(oldMusicName);
 	}
 	oldSeaAlarmed = seaAlarmed;
 }
 
-// set music without any checks
+
 void Sound_OnSeaAlarm555(bool _seaAlarmed, bool bHardAlarm)
 {
 	if (bHardAlarm) { oldSeaAlarmed = !_seaAlarmed; }
@@ -831,18 +817,18 @@ void Sound_OnSeaAlarm555(bool _seaAlarmed, bool bHardAlarm)
 
 void InitSound()
 {
-	//Trace("InitSound");
+	
 	if (!IsEntity(&Sound))
 	{
 		CreateEntity(&Sound, "Sound");
 		SetEventHandler("eventAllarm", "Sound_OnAllarm", 0);
 	}
-	//SendMessage(Sound,"lf",MSG_SOUND_SET_MASTER_VOLUME,1.0);
+	
 }
 
 void ResetSound()
 {
-	// fix -->
+	
 	if (musicID > 0)
 	{
 		StopSound(musicID,0);
@@ -852,12 +838,12 @@ void ResetSound()
 		StopSound(oldMusicID,0);
 	}
 	ResetSoundScheme();
-	// fix <--
+	
 	StopSound(0,0);
 	ReleaseSound(0);
 	musicName = "";
 	oldMusicName = "";
-	musicID = -1;    //fix boal не было нуления ИД
+	musicID = -1;    
     oldMusicID = -1;
 }
 

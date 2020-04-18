@@ -19,14 +19,14 @@
 #define BI_ICONS_TEXTURE_SHIP1		1
 #define BI_ICONS_TEXTURE_ABILITY	2
 
-#define FLAG_CMN		0	// ����� �����
-#define FLAG_SHP		1	// ������������ �����
-#define FLAG_FRT		2	// ����� ��� ������ � ��������� �������������
-#define FLAG_MER		3	// �������� �����
-#define FLAG_WHT		4	// ����� �����
-#define FLAG_QST		5	// ��������� �����
-#define FLAG_PER		6	// ������������ �����
-#define	FLAG_PIR		7	// ��������� �����
+#define FLAG_CMN		0	
+#define FLAG_SHP		1	
+#define FLAG_FRT		2	
+#define FLAG_MER		3	
+#define FLAG_WHT		4	
+#define FLAG_QST		5	
+#define FLAG_PER		6	
+#define	FLAG_PIR		7	
 
 int bi_icons_ShowType;
 int bi_icons_CommandMode;
@@ -46,9 +46,9 @@ bool bAttack=false;
 bool bAbordage = false;
 bool bDefend=false;
 
-//speak interface
-//bool bCanSpeak = false;
-//bool bCanSneak = false;
+
+
+
 
 bool bEnableIslandSailTo = false;
 
@@ -61,13 +61,13 @@ int BI_intNRetValue[8];
 
 object BI_objRetValue;
 object objShipPointer;
-// boal -->
+
 bool boal_soundOn = true;
-// boal <--
+
 
 #event_handler("evntRandomSailDmg","ProcessRandomSailDmg");
 #event_handler("evntGetSailStatus","procGetSailStatus");
-//#event_handler("NextDay","ProcessDayRepair");
+
 #event_handler("GetSailTextureData","procGetSailTextureData");
 #event_handler("EventMastFall","procMastFall");
 #event_handler("evntGetSmallFlagData","procGetSmallFlagData");
@@ -133,12 +133,12 @@ void InitBattleInterface()
 	SetEventHandler("DoSailHole","ProcessSailDamage",0);
 	SetEventHandler("evntBISelectShip","procBISelectShip",0);
 
-	procLoadIntoNew(); // ��������� ������� �������� ������
+	procLoadIntoNew(); 
 	SetEventHandler("Control Activation","BI_ProcessControlPress",0);
 	
 	CreateILogAndActions(LOG_FOR_SEA);
 	Log_SetActiveAction("Nothing");
-	ResetTimeScale(); // boal
+	ResetTimeScale(); 
 }
 
 ref BI_GetFortRelation()
@@ -155,11 +155,7 @@ ref BI_GetFortRelation()
 		case RELATION_ENEMY:	BI_intRetValue = BI_RELATION_ENEMY;		break;
 		}
 	}
-	/*string sColony = arLoc.colonyname;
-	if (BI_intRetValue == BI_RELATION_ENEMY || CheckForDeclineLoadToColony(sColony) == 1)
-	{
-		bCanSneak = true;
-	}      */
+	 
 	return &BI_intRetValue;
 }
 
@@ -241,25 +237,25 @@ void BI_Frame()
 	if(bAbordageShipCanBe)
 	{
 		Log_SetActiveAction("Board");
-		// boal -->
+		
 		if (boal_soundOn)
 		{
 		    boal_soundOn = false;
             PlaySound("interface\_GTBoard0.wav");
 		}
-		// boal <--
+		
 		return;
 	}
 	if(bAbordageFortCanBe)
 	{
 		Log_SetActiveAction("LandTroops");
-		// boal -->
+		
 		if (boal_soundOn)
 		{
 		    boal_soundOn = false;
             PlaySound("interface\_Abandon0.wav");
 		}
-		// boal <--
+		
 		return;
 	}
 	if(bReloadCanBe)
@@ -270,18 +266,18 @@ void BI_Frame()
 	if(bCanEnterToLand)
 	{
 		Log_SetActiveAction("Moor");
-		// boal -->
+		
 		if (boal_soundOn)
 		{
 		    boal_soundOn = false;
             PlaySound("interface\_Yakordrop.wav");
 		}
-		// boal <--
+		
 		return;
 	}
-	// boal -->
+	
 	boal_soundOn = true;
-	// boal <--
+	
 	if(bMapEnter)
 	{
 		Log_SetActiveAction("Map");
@@ -313,7 +309,7 @@ void RefreshBattleInterface()
 
 void DeleteBattleInterface()
 {
-    ResetTimeScale(); // boal
+    ResetTimeScale(); 
     
 	Log_SetActiveAction("Nothing");
 	InterfaceSpyGlassRelease();
@@ -347,10 +343,10 @@ void DeleteBattleInterface()
 	DelEventHandler("DoSailHole","ProcessSailDamage");
 	DelEventHandler("evntBISelectShip","procBISelectShip");
 
-	// ��� ����� �������, ���� ������
+	
 
-	//DeleteClass(&BattleInterface);
-	//DeleteClass(&objShipPointer);
+	
+	
 }
 
 ref BI_CommandEndChecking()
@@ -360,11 +356,11 @@ ref BI_CommandEndChecking()
 
 	switch(comName)
 	{
-	// �����
+	
     case "BI_Cabin":
 		BI_retComValue = 0;
 		break;
-	// ������� ������ ��� ��������� --
+	
 	case "BI_Boat":
 		BI_retComValue = BI_COMMODE_NEUTRAL_SHIP_SELECT+BI_COMMODE_FRIEND_SHIP_SELECT;
         BattleInterface.Commands.Boat.EffectRadius = DistanceToShipTalk;
@@ -385,9 +381,9 @@ ref BI_CommandEndChecking()
 			bEnableIslandSailTo	= false;
 		}
 		if(bEnableIslandSailTo) {
-			BI_retComValue = BI_COMMODE_MY_SHIP_SELECT+BI_COMMODE_NEUTRAL_SHIP_SELECT+BI_COMMODE_FRIEND_SHIP_SELECT+BI_COMMODE_ENEMY_SHIP_SELECT+BI_COMMODE_FRIEND_FORT_SELECT+BI_COMMODE_NEUTRAL_FORT_SELECT+BI_COMMODE_ENEMY_FORT_SELECT+BI_COMMODE_DISEASED_TOWN+BI_COMMODE_NOTDISEASED_TOWN+BI_COMMODE_LAND_SELECT; //+BI_COMMODE_ALLLOCATOR_SELECT;
+			BI_retComValue = BI_COMMODE_MY_SHIP_SELECT+BI_COMMODE_NEUTRAL_SHIP_SELECT+BI_COMMODE_FRIEND_SHIP_SELECT+BI_COMMODE_ENEMY_SHIP_SELECT+BI_COMMODE_FRIEND_FORT_SELECT+BI_COMMODE_NEUTRAL_FORT_SELECT+BI_COMMODE_ENEMY_FORT_SELECT+BI_COMMODE_DISEASED_TOWN+BI_COMMODE_NOTDISEASED_TOWN+BI_COMMODE_LAND_SELECT; 
 		} else {
-			BI_retComValue = BI_COMMODE_MY_SHIP_SELECT+BI_COMMODE_NEUTRAL_SHIP_SELECT+BI_COMMODE_FRIEND_SHIP_SELECT+BI_COMMODE_ENEMY_SHIP_SELECT;//+BI_COMMODE_ALLLOCATOR_SELECT;
+			BI_retComValue = BI_COMMODE_MY_SHIP_SELECT+BI_COMMODE_NEUTRAL_SHIP_SELECT+BI_COMMODE_FRIEND_SHIP_SELECT+BI_COMMODE_ENEMY_SHIP_SELECT;
 		}
 		if (bBettaTestMode)
 		{
@@ -407,7 +403,7 @@ ref BI_CommandEndChecking()
 					ref rItm = ItemsFromID(sSpyGlass);
 					BattleInterface.Commands.SailTo.EffectRadius	= 5000 + 10 * sti(rItm.radius);
 				}
-				else BattleInterface.Commands.SailTo.EffectRadius	= 5000; //boal
+				else BattleInterface.Commands.SailTo.EffectRadius	= 5000; 
 			}	
 		}
 		break;
@@ -422,15 +418,15 @@ ref BI_CommandEndChecking()
 		break;
 	case "BI_Attack":
 		BI_retComValue = BI_COMMODE_ENEMY_SHIP_SELECT+BI_COMMODE_ENEMY_FORT_SELECT+BI_COMMODE_ALLLOCATOR_SELECT;
-        BattleInterface.Commands.Attack.EffectRadius	= 2000; //boal
+        BattleInterface.Commands.Attack.EffectRadius	= 2000; 
 		break;
 	case "BI_Abordage":
 		BI_retComValue = BI_COMMODE_ENEMY_SHIP_SELECT;
-		BattleInterface.Commands.Abordage.EffectRadius	= 2000; //boal
+		BattleInterface.Commands.Abordage.EffectRadius	= 2000; 
 		break;
 	case "BI_Defend":
 		BI_retComValue = BI_COMMODE_MY_SHIP_SELECT+BI_COMMODE_FRIEND_SHIP_SELECT+BI_COMMODE_FRIEND_FORT_SELECT+BI_COMMODE_ALLLOCATOR_SELECT;
-		BattleInterface.Commands.Defend.EffectRadius	= 2000; //boal
+		BattleInterface.Commands.Defend.EffectRadius	= 2000; 
 		break;
 	case "BI_SailAway":
 		BI_retComValue = 0;
@@ -520,8 +516,8 @@ void BI_LaunchCommand()
         Sea_CabinStartNow();
 		break;
 	case "BI_Boat":
-		// Warship 09.07.09 ���� ������
-		// ������ ��� �� ��� ������� ������ ����
+		
+		
 		if(Characters[targetNum].id != "MaryCelesteCapitan" || PChar.QuestTemp.MaryCeleste != "OnDeck")
 		{
 			Sea_DeckBoatLoad(targetNum);
@@ -533,7 +529,7 @@ void BI_LaunchCommand()
     break;
 	
 	 case "BI_Bomb":
-        if (GetCargoGoods(chRef, GOOD_POWDER) >= 200 && GetRemovable(chRef)) SetMineFree(chRef, 1); // fix ugeen 21.12.13
+        if (GetCargoGoods(chRef, GOOD_POWDER) >= 200 && GetRemovable(chRef)) SetMineFree(chRef, 1); 
 		else PlaySound("interface\knock.wav");
 		break;
 		
@@ -542,34 +538,34 @@ void BI_LaunchCommand()
 		switch(targetNum)
 		{
 		case 1:
-			//Log_SetStringToLog("Cannonballs");
+			
 			PlaySound("interface\_balls.wav");
 			chargeType=GOOD_BALLS;
 			break;
 		case 2:
-			//Log_SetStringToLog("Grapes");
+			
 			PlaySound("interface\_grapes.wav");
 			chargeType=GOOD_GRAPES;
 			break;
 		case 3:
-			//Log_SetStringToLog("Knippels");
+			
 			PlaySound("interface\_chain.wav");
 			chargeType=GOOD_KNIPPELS;
 			break;
 		case 4:
-			//Log_SetStringToLog("Bombs");
+			
 			PlaySound("interface\_bombs.wav");
 			chargeType=GOOD_BOMBS;
 			break;
 		}
 		Ship_ChangeCharge(chRef, chargeType);
-		// ������� �� ����, ��� ������� ����� ������� ���� ���� �� � ��� ����, ��� �������� ����� ������, ������� ������� ���������� ��� ���
+		
 		chRef.ShipCannonChargeType = chargeType;
 		break;
 	case "BI_Map":
-		if (bMapEnter)  // boal �� ����� ��� �����, � ��� ����
+		if (bMapEnter)  
         {
-            //pchar.location = "";
+            
 			Sea_MapLoad();
         }
         else
@@ -587,13 +583,13 @@ void BI_LaunchCommand()
 		Sea_AbordageLoad(FORT_ABORDAGE,true);
 		break;
 	case "BI_SailAway":
-		if (CheckAttribute(&characters[charIdx], "SeaAI.Task.Target"))  //fix
+		if (CheckAttribute(&characters[charIdx], "SeaAI.Task.Target"))  
 		{
 			Ship_SetTaskRunAway(SECONDARY_TASK, charIdx, sti(characters[charIdx].SeaAI.Task.Target));
 		}
 		else
 		{
-			Ship_SetTaskRunAway(SECONDARY_TASK, charIdx, GetMainCharacterIndex()); // boal fix ���� ����� ���, �� �� �� ���������
+			Ship_SetTaskRunAway(SECONDARY_TASK, charIdx, GetMainCharacterIndex()); 
 		}
 	break;
 	case "BI_HeaveToDrift":
@@ -601,11 +597,11 @@ void BI_LaunchCommand()
 		break;
 	case "BI_Defend":
 		Ship_SetTaskDefend(SECONDARY_TASK,charIdx,GetTargChrIndex(targetNum,locName));
-		DeleteAttribute(chRef, "ShipCannonChargeType"); // ���� ����, ��� ������ ���������, �������� ������� ���������, �� ���� ������� ����� ��� ����� ��������
+		DeleteAttribute(chRef, "ShipCannonChargeType"); 
 		break;
 	case "BI_Attack":
 		Ship_SetTaskAttack(SECONDARY_TASK,charIdx,GetTargChrIndex(targetNum,locName));
-		DeleteAttribute(chRef, "ShipCannonChargeType"); // ���� ����, ��� ������ ���������, �������� ������� ���������, �� ���� ������� ����� ��� ����� ��������
+		DeleteAttribute(chRef, "ShipCannonChargeType"); 
 	break;
 	case "BI_Abordage":
 		Ship_SetTaskAbordage(SECONDARY_TASK,charIdx,GetTargChrIndex(targetNum,locName));
@@ -617,28 +613,21 @@ void BI_LaunchCommand()
 		}
 		break;
 	case "BI_SailTo":
-		/*if(targetNum==-1)
-		{ // �������� � ������� � ������ locName
-			if( !IsEntity(&SailToFader) ) {SeaAI_SailToLocator(locName);}
-		}
-		else
-		{ // ������� ����� � �������� targetNum
-			if( !IsEntity(&SailToFader) ) {SeaAI_SailToCharacter(targetNum);}
-		} */
-		// boal 09.02.2004 -->
-	    if (bDisableMapEnter && !bBettaTestMode && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && !CheckAttribute(pchar, "GenQuest.MapClosedNoBattle"))//Jason
+		 
+		
+	    if (bDisableMapEnter && !bBettaTestMode && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && !CheckAttribute(pchar, "GenQuest.MapClosedNoBattle"))
 	    {
            PlaySound("interface\knock.wav");
 	       break;
 	    }
-	    if (!CheckEnemyCompanionDistance2GoAway(false) && !bBettaTestMode)  // ��������� � ����
+	    if (!CheckEnemyCompanionDistance2GoAway(false) && !bBettaTestMode)  
 	    {
            PlaySound("interface\knock.wav");
 	       break;
 	    }
-	    // boal 09.02.2004 <--
+	    
 		if (targetNum == -1)
-		{ // �������� � ������� � ������ locName
+		{ 
             bOk = true;
 
 			if (MOD_SKILL_ENEMY_RATE >= 2 && !bBettaTestMode)
@@ -646,7 +635,7 @@ void BI_LaunchCommand()
                 targetNum = Fort_FindCharacter(AISea.Island,"reload",locName);
                 if (targetNum == -1)
                 {
-                    // ��� ����� �������� �� �����-���� ���� ���� �� �����
+                    
                     targetNum = Fort_FindCharacterByPort(AISea.Island, locName);
                 }
             }
@@ -670,8 +659,8 @@ void BI_LaunchCommand()
 			}
 		}
 		else
-		{ // ������� ����� � �������� targetNum
-		    // boal ������ ������ � ������� ��� ���� ������ (�������� ������) -->
+		{ 
+		    
             if (GetRelation(sti(pchar.index), targetNum) != RELATION_ENEMY || CheckAttribute(&Characters[targetNum], "CanBeSailTo") || bBettaTestMode)
             {
 			    if( !IsEntity(&SailToFader) ) {SeaAI_SailToCharacter(targetNum); }
@@ -680,7 +669,7 @@ void BI_LaunchCommand()
 			{
                 PlaySound("interface\knock.wav");
 			}
-			// boal ������ ������ � ������� ��� ���� ������ (�������� ������) <--
+			
 		}
 		break;
 	case "BI_Speed":
@@ -703,7 +692,7 @@ void BI_LaunchCommand()
 		break;
 	case "BI_ImmDeath":
 		if(targetNum==-1)
-		{ // ������ �����
+		{ 
 			targetNum = Fort_FindCharacter(AISea.Island,"reload",locName);
 			if(targetNum>=0)
 			{
@@ -729,7 +718,7 @@ void BI_LaunchCommand()
 		break;
 
 	case "BI_Brander":
-		//ActivateCharacterPerk(pchar,"Brander"); - ������������ ������
+		
 		Ship_SetTaskBrander(SECONDARY_TASK, charIdx, targetNum);
 		break;
 	case "BI_ImmediateReload":
@@ -748,17 +737,15 @@ void BI_LaunchCommand()
 		Ship_Turn180(GetCharacter(charIdx));
 		break;
 
-	// items abilities
+	
 	case "BI_UseItemAbilitie":
 		CompleteQuestName( BattleInterface.AbilityIcons.(alternativeCommand).quest, "");
 	break;
 	
-	/*case "BI_Ability":
-  		Event("evntSetUsingAbility","l", charIdx);
-	break;*/
+	 
 	}
 
-	//BI_SetCommandMode(BI_COMMODE_MY_SHIP_SELECT,-1,-1,-1);
+	
 	BI_SetSpecCommandMode(BI_COMMODE_MY_SHIP_SELECT,-1,-1,-1, 0);
 }
 
@@ -767,7 +754,7 @@ void BI_SetIslandData()
     if( !CheckAttribute(AISea,"Island"))
 	{
 		trace("BI_SetIslandData - has bug");
-		return; // boal 26.03.04 fix
+		return; 
 	}
 	int isln = FindIsland(AISea.Island);
 	if(isln==-1) return;
@@ -834,16 +821,13 @@ void AddShipToInterface(int charIndex)
 			return;
 	}
 
-	/*if (myShip != true)
-	{
-		bCanSpeak = true;
-	}*/
-	//��������, ��������� ��������� ���������� � ����.
-	//���� �� ���������� ����� ��������� �������� ������� ���������� � ���� - ��������������
-	//� � ��� ��������� ����� �������, ���������� � �������, � � �������� �� ������� ��� ���������
-	//� ���������, ��� ��������� ���� �������������
-	//��� ������� �������� ������� ��� ��������� �������
-	//bCanSpeak = false;
+	 
+	
+	
+	
+	
+	
+	
 
 	SendMessage(&BattleInterface,"llaall",BI_IN_CREATE_SHIP,charIndex,chRef,shipRef,myShip,shipRelation);
 }
@@ -907,53 +891,50 @@ void BI_SetPossibleCommands()
 			arcur = GetAttributeN(aroot,i);
 			arcur.enable = false;
 		}
-		//BattleInterface.Commands.Cancel.enable = true;
+		
 		return;
 	}
 
-	// ��� �������� ���������
+	
 	if(mainIdx==chIdx)
 	{
-		//speak interface
-		BattleInterface.Commands.ImmediateDeath.enable	= bBettaTestMode; // boal cheat
-		BattleInterface.Commands.InstantBoarding.enable	= bBettaTestMode; // boal cheat
-		//BattleInterface.Commands.Speak.enable			= bCanSpeak;
-		//BattleInterface.Commands.Sneak.enable			= bCanSneak;
+		
+		BattleInterface.Commands.ImmediateDeath.enable	= bBettaTestMode; 
+		BattleInterface.Commands.InstantBoarding.enable	= bBettaTestMode; 
+		
+		
 		
 		BattleInterface.Commands.Moor.enable			= bCanEnterToLand;
 		BattleInterface.Commands.Board.enable			= bAbordageShipCanBe;
 		BattleInterface.Commands.SailAway.enable		= false;
 		BattleInterface.Commands.HeaveToDrift.enable	= false;
-		BattleInterface.Commands.Charge.enable			= false;//CheckAttribute(pchar,"Ship.Cannons.Charge.Type"); // 
+		BattleInterface.Commands.Charge.enable			= false;
 		BattleInterface.Commands.LandTroops.enable		= bAbordageFortCanBe;
 		BattleInterface.Commands.Attack.enable			= false;
 		BattleInterface.Commands.Defend.enable			= false;
 		BattleInterface.Commands.Reload.enable			= bReloadCanBe;
 		BattleInterface.Commands.Abordage.enable		= false;
 		BattleInterface.Commands.SailTo.enable			= !bDisableSailTo && bSailTo;
-		/*if( !bEnableIslandSailTo && iArcadeSailTo != 1)
-		{
-			BattleInterface.Commands.SailTo.enable		= false;
-		}*/
+		 
 		BattleInterface.Commands.Map.enable				= bMapEnter;
-		BattleInterface.Commands.Speed.enable			= false;//true;
-		//BattleInterface.Commands.CCommand.enable		= GetCompanionQuantity(pchar)>1;
-		//BattleInterface.Commands.Ability.enable			= true;
-		//  �������� �� 7 �����
+		BattleInterface.Commands.Speed.enable			= false;
+		
+		
+		
 		if (sti(RealShips[sti(pchar.Ship.Type)].BaseType) > SHIP_WAR_TARTANE)
         {
             BattleInterface.Commands.Cabin.enable		= true;
         }
         BattleInterface.Commands.Boat.enable           = true;
 	}
-	// ��� ���������
+	
 	else
 	{
 		BattleInterface.Commands.Moor.enable			= false;
 		BattleInterface.Commands.Board.enable			= false;
 		BattleInterface.Commands.SailAway.enable		= true;
 		BattleInterface.Commands.HeaveToDrift.enable	= true;
-		BattleInterface.Commands.Charge.enable			= CheckAttribute(GetCharacter(chIdx), "Ship.Cannons.Charge.Type"); // 1.2.4
+		BattleInterface.Commands.Charge.enable			= CheckAttribute(GetCharacter(chIdx), "Ship.Cannons.Charge.Type"); 
 		BattleInterface.Commands.LandTroops.enable		= false;
 		BattleInterface.Commands.Attack.enable			= bAttack;
 		BattleInterface.Commands.Abordage.enable		= bAbordage;
@@ -962,14 +943,14 @@ void BI_SetPossibleCommands()
 		BattleInterface.Commands.SailTo.enable			= false;
 		BattleInterface.Commands.Map.enable				= false;
 		BattleInterface.Commands.Speed.enable			= false;
-		//BattleInterface.Commands.CCommand.enable		= false;
-		//BattleInterface.Commands.Ability.enable			= true;
-		//BattleInterface.Commands.Speak.enable			= false;
-		//BattleInterface.Commands.Sneak.enable			= false;
-		BattleInterface.Commands.ImmediateDeath.enable  = false; // boal
-		BattleInterface.Commands.InstantBoarding.enable  = false; // boal
+		
+		
+		
+		
+		BattleInterface.Commands.ImmediateDeath.enable  = false; 
+		BattleInterface.Commands.InstantBoarding.enable  = false; 
 		BattleInterface.Commands.Cabin.enable			= false;
-        BattleInterface.Commands.Boat.enable			= false; //boal
+        BattleInterface.Commands.Boat.enable			= false; 
 	}
     Event("evntSetUsingAbility","l", chIdx);
 }
@@ -994,105 +975,100 @@ void BI_InitializeCommands()
 	BattleInterface.Commands.Moor.texNum			= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Moor.event				= "BI_Moor";
 	BattleInterface.Commands.Moor.note				= LanguageConvertString(idLngFile, "sea_Moor");
-	//
+	
 	BattleInterface.Commands.SailTo.enable			= false;
 	BattleInterface.Commands.SailTo.picNum			= 16;
 	BattleInterface.Commands.SailTo.selPicNum		= 0;
 	BattleInterface.Commands.SailTo.texNum			= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.SailTo.event			= "BI_SailTo";
 	BattleInterface.Commands.SailTo.note			= LanguageConvertString(idLngFile, "sea_SailTo");
-	//
+	
 	BattleInterface.Commands.Board.enable			= false;
 	BattleInterface.Commands.Board.picNum			= 30;
 	BattleInterface.Commands.Board.selPicNum		= 14;
 	BattleInterface.Commands.Board.texNum			= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Board.event			= "BI_Board";
 	BattleInterface.Commands.Board.note				= LanguageConvertString(idLngFile, "sea_Board");
-	//
+	
 	BattleInterface.Commands.LandTroops.enable		= false;
 	BattleInterface.Commands.LandTroops.picNum		= 42;
 	BattleInterface.Commands.LandTroops.selPicNum	= 45;
 	BattleInterface.Commands.LandTroops.texNum		= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.LandTroops.event		= "BI_LandTroops";
 	BattleInterface.Commands.LandTroops.note		= LanguageConvertString(idLngFile, "sea_LandTroops");
-	//
+	
 	BattleInterface.Commands.Map.enable				= false;
 	BattleInterface.Commands.Map.picNum				= 28;
 	BattleInterface.Commands.Map.selPicNum			= 12;
 	BattleInterface.Commands.Map.texNum				= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Map.event				= "BI_Map";
 	BattleInterface.Commands.Map.note				= LanguageConvertString(idLngFile, "sea_Map");
-	//
+	
 	BattleInterface.Commands.Attack.enable			= false;
 	BattleInterface.Commands.Attack.picNum			= 49;
 	BattleInterface.Commands.Attack.selPicNum		= 33;
 	BattleInterface.Commands.Attack.texNum			= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Attack.event			= "BI_Attack";
 	BattleInterface.Commands.Attack.note			= LanguageConvertString(idLngFile, "sea_Attack");
-	//
+	
 	BattleInterface.Commands.Abordage.enable		= false;
 	BattleInterface.Commands.Abordage.picNum		= 30;
 	BattleInterface.Commands.Abordage.selPicNum		= 14;
 	BattleInterface.Commands.Abordage.texNum		= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Abordage.event			= "BI_Abordage";
 	BattleInterface.Commands.Abordage.note			= LanguageConvertString(idLngFile, "sea_Abordage");
-	//
+	
 	BattleInterface.Commands.Defend.enable			= false;
 	BattleInterface.Commands.Defend.picNum			= 51;
 	BattleInterface.Commands.Defend.selPicNum		= 35;
 	BattleInterface.Commands.Defend.texNum			= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Defend.event			= "BI_Defend";
 	BattleInterface.Commands.Defend.note			= LanguageConvertString(idLngFile, "sea_Defend");
-	//
+	
 	BattleInterface.Commands.SailAway.enable		= false;
 	BattleInterface.Commands.SailAway.picNum		= 50;
 	BattleInterface.Commands.SailAway.selPicNum		= 34;
 	BattleInterface.Commands.SailAway.texNum		= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.SailAway.event			= "BI_SailAway";
 	BattleInterface.Commands.SailAway.note			= LanguageConvertString(idLngFile, "sea_SailAway");
-	//
+	
 	BattleInterface.Commands.HeaveToDrift.enable	= false;
 	BattleInterface.Commands.HeaveToDrift.picNum	= 25;
 	BattleInterface.Commands.HeaveToDrift.selPicNum	= 9;
 	BattleInterface.Commands.HeaveToDrift.texNum	= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.HeaveToDrift.event		= "BI_HeaveToDrift";
 	BattleInterface.Commands.HeaveToDrift.note		= LanguageConvertString(idLngFile, "sea_HeaveToDrift");
-	//
+	
 	BattleInterface.Commands.Reload.enable			= false;
 	BattleInterface.Commands.Reload.picNum			= 48;
 	BattleInterface.Commands.Reload.selPicNum		= 32;
 	BattleInterface.Commands.Reload.texNum			= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Reload.event			= "BI_Reload";
 	BattleInterface.Commands.Reload.note			= LanguageConvertString(idLngFile, "sea_Reload");
-	//
+	
 	BattleInterface.Commands.Charge.enable			= false;
 	BattleInterface.Commands.Charge.picNum			= 17;
 	BattleInterface.Commands.Charge.selPicNum		= 1;
 	BattleInterface.Commands.Charge.texNum			= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Charge.event			= "BI_Charge";
 	BattleInterface.Commands.Charge.note			= LanguageConvertString(idLngFile, "sea_Charge");
-	//
+	
 	BattleInterface.Commands.Speed.enable			= false;
 	BattleInterface.Commands.Speed.picNum			= 22;
 	BattleInterface.Commands.Speed.selPicNum		= 6;
 	BattleInterface.Commands.Speed.texNum			= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Speed.event			= "BI_Speed";
 	BattleInterface.Commands.Speed.note				= LanguageConvertString(idLngFile, "sea_Speed");
-	//
-	/*BattleInterface.Commands.CCommand.enable		= false;
-	BattleInterface.Commands.CCommand.picNum		= 22;
-	BattleInterface.Commands.CCommand.selPicNum		= 30;
-	BattleInterface.Commands.CCommand.texNum		= BI_ICONS_TEXTURE_COMMAND;
-	BattleInterface.Commands.CCommand.event			= "BI_CompanionCommand";
-	BattleInterface.Commands.CCommand.note			= LanguageConvertString(idLngFile, "sea_CCommand");*/
-	//
+	
+	 
+	
 	BattleInterface.Commands.Ability.enable			= false;
 	BattleInterface.Commands.Ability.picNum			= 27;
 	BattleInterface.Commands.Ability.selPicNum		= 11;
 	BattleInterface.Commands.Ability.texNum			= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Ability.event			= "BI_Ability";
 	BattleInterface.Commands.Ability.note			= LanguageConvertString(idLngFile, "sea_Ability");
-	//
+	
 	
 	BattleInterface.Commands.Boat.enable	= false;
 	BattleInterface.Commands.Boat.picNum	= 26;
@@ -1116,7 +1092,7 @@ void BI_InitializeCommands()
 	BattleInterface.Commands.Bomb.note	    = "Drop a mine";
 	
 	BattleInterface.Commands.ImmediateDeath.enable	= false;
-	BattleInterface.Commands.ImmediateDeath.picNum	= 43;    // ��� ���
+	BattleInterface.Commands.ImmediateDeath.picNum	= 43;    
 	BattleInterface.Commands.ImmediateDeath.selPicNum	= 43;
 	BattleInterface.Commands.ImmediateDeath.texNum	= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.ImmediateDeath.event	= "BI_ImmDeath";
@@ -1137,7 +1113,7 @@ void BI_InitializeCommands()
     BattleInterface.Commands.ImmediateReload.note	= GetConvertStr("ImmediateReload", "AbilityDescribe.txt");
     
 	BattleInterface.Commands.InstantBoarding.enable			= false;
-	BattleInterface.Commands.InstantBoarding.picNum			= 30;   // ��� ���
+	BattleInterface.Commands.InstantBoarding.picNum			= 30;   
 	BattleInterface.Commands.InstantBoarding.selPicNum		= 14;
 	BattleInterface.Commands.InstantBoarding.texNum			= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.InstantBoarding.event			= "BI_InstantBoarding";
@@ -1248,242 +1224,242 @@ void BI_SetSeaState()
 	bEnableIslandSailTo = bMapEnter;
 	if(bDisableMapEnter)	bMapEnter = false;
 
-	// boal ���� ��� ������� - ������ ��� ����� � ���� bReloadCanBe = 0;//������� �������� ������ ����� ��� ����� ����.
+	
 }
 
 void SetShipPictureDataByShipTypeName(string sType)
 {
 	switch(sType)
 	{
-		case "tartane": 		// ������
+		case "tartane": 		
 			BI_intNRetValue[0] = 0+0*16;
 			BI_intNRetValue[1] = 0+0*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "WarTartane":  	// �������
+		case "WarTartane":  	
 			BI_intNRetValue[0] = 2+0*16;
 			BI_intNRetValue[1] = 2+0*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "barque":			// ����
+		case "barque":			
 			BI_intNRetValue[0] = 4+0*16;
 			BI_intNRetValue[1] = 4+0*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "schooner":		// �������� �����
+		case "schooner":		
 			BI_intNRetValue[0] = 6+0*16;
 			BI_intNRetValue[1] = 6+0*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "barkentine":		// ����������
+		case "barkentine":		
 			BI_intNRetValue[0] = 8+0*16;
 			BI_intNRetValue[1] = 8+0*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "shnyava":			// �����
+		case "shnyava":			
 			BI_intNRetValue[0] = 10+0*16;
 			BI_intNRetValue[1] = 10+0*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "fleut":			// �����
+		case "fleut":			
 			BI_intNRetValue[0] = 12+0*16;
 			BI_intNRetValue[1] = 12+0*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "caravel":			// ���������
+		case "caravel":			
 			BI_intNRetValue[0] = 14+0*16;
 			BI_intNRetValue[1] = 14+0*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "pinnace":			// ������
+		case "pinnace":			
 			BI_intNRetValue[0] = 0+1*16;
 			BI_intNRetValue[1] = 0+1*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "caracca":			// �������
+		case "caracca":			
 			BI_intNRetValue[0] = 2+1*16;
 			BI_intNRetValue[1] = 2+1*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "Navio":			// �����
+		case "Navio":			
 			BI_intNRetValue[0] = 4+1*16;
 			BI_intNRetValue[1] = 4+1*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "EastIndiaMan":	// ���-�����
+		case "EastIndiaMan":	
 			BI_intNRetValue[0] = 6+1*16;
 			BI_intNRetValue[1] = 6+1*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 				
-		case "LuggerQuest":	// ���������� ������
+		case "LuggerQuest":	
 			BI_intNRetValue[0] = 8+1*16;
 			BI_intNRetValue[1] = 8+1*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "lugger":			// ������
+		case "lugger":			
 			BI_intNRetValue[0] = 10+1*16;
 			BI_intNRetValue[1] = 10+1*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "sloop":			// ����
+		case "sloop":			
 			BI_intNRetValue[0] = 12+1*16;
 			BI_intNRetValue[1] = 12+1*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "brigantine":		// ����������
+		case "brigantine":		
 			BI_intNRetValue[0] = 14+1*16;
 			BI_intNRetValue[1] = 14+1*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "brig":			// ����
+		case "brig":			
 			BI_intNRetValue[0] = 0+2*16;
 			BI_intNRetValue[1] = 0+2*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "schooner_w":		// ������� �����
+		case "schooner_w":		
 			BI_intNRetValue[0] = 2+2*16;
 			BI_intNRetValue[1] = 2+2*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "galeon_l":		// ������
+		case "galeon_l":		
 			BI_intNRetValue[0] = 4+2*16;
 			BI_intNRetValue[1] = 4+2*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "corvette":		// ������
+		case "corvette":		
 			BI_intNRetValue[0] = 6+2*16;
 			BI_intNRetValue[1] = 6+2*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "XebekVML":		// ������
+		case "XebekVML":		
 			BI_intNRetValue[0] = 8+2*16;
 			BI_intNRetValue[1] = 8+2*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "Polacre":			// ������
+		case "Polacre":			
 			BI_intNRetValue[0] = 10+2*16;
 			BI_intNRetValue[1] = 10+2*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 				
-		case "Galeon_h":		// ������� ������
+		case "Galeon_h":		
 			BI_intNRetValue[0] = 12+2*16;
 			BI_intNRetValue[1] = 12+2*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "frigate":			// ������
+		case "frigate":			
 			BI_intNRetValue[0] = 14+2*16;
 			BI_intNRetValue[1] = 14+2*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "frigate_h":		// ������� ������
+		case "frigate_h":		
 			BI_intNRetValue[0] = 0+3*16;
 			BI_intNRetValue[1] = 0+3*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "lineship":		// ������� �������
+		case "lineship":		
 			BI_intNRetValue[0] = 2+3*16;
 			BI_intNRetValue[1] = 2+3*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "warship":			// ����������� ������� �������
+		case "warship":			
 			BI_intNRetValue[0] = 4+3*16;
 			BI_intNRetValue[1] = 4+3*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "battleship":		// ����������� ������� �������
+		case "battleship":		
 			BI_intNRetValue[0] = 6+3*16;
 			BI_intNRetValue[1] = 6+3*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "manowar":			// ��������� ������� �������
+		case "manowar":			
 			BI_intNRetValue[0] = 8+3*16;
 			BI_intNRetValue[1] = 8+3*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "manowar_e":		// ���������� ������� �������
+		case "manowar_e":		
 			BI_intNRetValue[0] = 10+3*16;
 			BI_intNRetValue[1] = 10+3*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "Mayfang":			// ������ ������ "�������"
+		case "Mayfang":			
 			BI_intNRetValue[0] = 12+3*16;
 			BI_intNRetValue[1] = 12+3*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "Mirage":			// ������������ ��� "�����"
+		case "Mirage":			
 			BI_intNRetValue[0] = 14+3*16;
 			BI_intNRetValue[1] = 14+3*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "Valciria":		// ���������� ���� "���������"
+		case "Valciria":		
 			BI_intNRetValue[0] = 0+4*16;
 			BI_intNRetValue[1] = 0+4*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "Corvette_quest":	// ����� ������ "����������"
+		case "Corvette_quest":	
 			BI_intNRetValue[0] = 2+4*16;
 			BI_intNRetValue[1] = 2+4*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "ArabellaShip":	// ������� ������ "�����"
+		case "ArabellaShip":	
 			BI_intNRetValue[0] = 4+4*16;
 			BI_intNRetValue[1] = 4+4*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "Flyingdutchman":	// ��������� "�������"
+		case "Flyingdutchman":	
 			BI_intNRetValue[0] = 6+4*16;
 			BI_intNRetValue[1] = 6+4*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 
-		case "Flyingdutchman_l":// ����� "�������"
+		case "Flyingdutchman_l":
 			BI_intNRetValue[0] = 8+4*16;
 			BI_intNRetValue[1] = 8+4*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "Santisima":		// �������� ������� "���� �� ���-�����"
+		case "Santisima":		
 			BI_intNRetValue[0] = 10+4*16;
 			BI_intNRetValue[1] = 10+4*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
 		break;
 		
-		case "Polacre_q":			// ������ "������" // Addon 2016-1 Jason ��������� �������
+		case "Polacre_q":			
 			BI_intNRetValue[0] = 12+4*16;
 			BI_intNRetValue[1] = 12+4*16 + 1;
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_SHIP1;
@@ -1509,13 +1485,13 @@ ref BI_GetData()
 
 	switch(dataType)
 	{
-	// �������� ����� �������� �������
+	
 	case BIDT_SHIPPICTURE:
 		chRef = GetCharacter(GetEventData());
 		if( CharacterIsDead(chRef) )
 		{
 			BI_intNRetValue[0] = 65;
-			BI_intNRetValue[1] = 64; // ��������� ���������
+			BI_intNRetValue[1] = 64; 
 			BI_intNRetValue[2] = BI_ICONS_TEXTURE_COMMAND;
 			BI_intNRetValue[3] = true;
 			break;
@@ -1547,9 +1523,9 @@ ref BI_GetData()
 			BI_intNRetValue[2] = 8;
 			switch( sti(chRef.nation) )
 			{
-				//case SMUGGLER:
-				//	BI_intNRetValue[3] = 1;
-				//break;
+				
+				
+				
 				case ENGLAND:		
 					BI_intNRetValue[3] = 3; 
 				break;
@@ -1591,13 +1567,13 @@ void SetParameterData()
 	BattleInterface.CommandTextures.list.t3.xsize = 8;
 	BattleInterface.CommandTextures.list.t3.ysize = 1;
 
-	BattleInterface.charge.charge1.picNum = 19; // balls
+	BattleInterface.charge.charge1.picNum = 19; 
 	BattleInterface.charge.charge1.selPicNum = 3;
-	BattleInterface.charge.charge2.picNum = 18; // grapes
+	BattleInterface.charge.charge2.picNum = 18; 
 	BattleInterface.charge.charge2.selPicNum = 2;
-	BattleInterface.charge.charge3.picNum = 21; // "Knippels"
+	BattleInterface.charge.charge3.picNum = 21; 
 	BattleInterface.charge.charge3.selPicNum = 5;
-	BattleInterface.charge.charge4.picNum = 20; // bombs
+	BattleInterface.charge.charge4.picNum = 20; 
 	BattleInterface.charge.charge4.selPicNum = 4;
 
 	BattleInterface.CommandTextures.ChargeTexNum = 0;
@@ -1632,20 +1608,20 @@ void SetParameterData()
 	BattleInterface.UserIcons.ui1.selpic = 9;
 	BattleInterface.UserIcons.ui1.tex = 0;
 	BattleInterface.UserIcons.ui1.name = "sail_none";
-	//----------------------------------------------
+	
 	BattleInterface.UserIcons.ui2.enable = true;
 	BattleInterface.UserIcons.ui2.pic = 24;
 	BattleInterface.UserIcons.ui2.selpic = 8;
 	BattleInterface.UserIcons.ui2.tex = 0;
 	BattleInterface.UserIcons.ui2.name = "sail_midi";
-	//----------------------------------------------
+	
 	BattleInterface.UserIcons.ui3.enable = true;
 	BattleInterface.UserIcons.ui3.pic = 23;
 	BattleInterface.UserIcons.ui3.selpic = 7;
 	BattleInterface.UserIcons.ui3.tex = 0;
 	BattleInterface.UserIcons.ui3.name = "sail_fast";
 
-	//===============================================
+	
 	BattleInterface.MessageIcons.IconWidth = RecalculateHIcon(64);
 	BattleInterface.MessageIcons.IconHeight = RecalculateVIcon(24);
 	BattleInterface.MessageIcons.IconDist = RecalculateVIcon(2);
@@ -1666,12 +1642,12 @@ void SetParameterData()
 	BattleInterface.navigation.navigatorHeight			= RecalculateVIcon(256);
 	BattleInterface.navigation.rightPos					= sti(showWindow.right) + RecalculateHIcon(24);
 	BattleInterface.navigation.topPos					= sti(showWindow.top) - RecalculateVIcon(24);
-	//BattleInterface.navigation.speedShowFont			= "bold_numbers";
+	
 	BattleInterface.navigation.speedShowFont			= "interface_normal";
 	BattleInterface.navigation.speedOutYOffset			= RecalculateVIcon(196);
 	BattleInterface.navigation.shipSpeedXOffset			= RecalculateHIcon(30);
 	BattleInterface.navigation.windSpeedXOffset			= RecalculateHIcon(-30);
-	//BattleInterface.navigation.fontScale				= 0.6;
+	
 	BattleInterface.navigation.fontScale				= 0.9;
 	BattleInterface.navigation.windWidth				= 32;
 	BattleInterface.navigation.windHeight				= 128;
@@ -1706,72 +1682,49 @@ void SetParameterData()
 	BattleInterface.navigation.argbBackMaxColor			= argb(255,0,0,128);
 	BattleInterface.navigation.argbBackMinColor			= argb(0,0,0,128);
 	BattleInterface.navigation.shipShowRadius			= 8.0;
-	//
+	
 	BattleInterface.navigation.chargeTexture			= "battle_interface\list_icon2.tga";
 	BattleInterface.navigation.chargeTextureGreed		= "8,8";
 	BattleInterface.navigation.chargePos				= "0,"+RecalculateVIcon(270);
 	BattleInterface.navigation.chargePictureSize		= RecalculateHIcon(48)+","+RecalculateVIcon(48);
-	//
+	
 	BattleInterface.navigation.sailstateTexture			= "battle_interface\list_icon2.tga";
 	BattleInterface.navigation.sailstateTextureGreed	= "8,8";
 	BattleInterface.navigation.sailstatePos				= RecalculateHIcon(30)+","+RecalculateVIcon(170);
 	BattleInterface.navigation.sailstatePictureSize		= RecalculateHIcon(48)+","+RecalculateVIcon(48);
-	//
+	
 	BattleInterface.navigation.windStateTexture			= "battle_interface\list_icon2.tga";
 	BattleInterface.navigation.windTextureGreed			= "8,8";
 	BattleInterface.navigation.windPos					= RecalculateHIcon(-30)+","+RecalculateVIcon(170);
 	BattleInterface.navigation.windPictureSize			= RecalculateHIcon(48)+","+RecalculateVIcon(48);
 
-	/*BattleInterface.imageslist.textinfoback1.texture = "battle_interface\textinfo_back.tga";
-	BattleInterface.imageslist.textinfoback1.color = argb(96,64,64,64);
-	BattleInterface.imageslist.textinfoback1.uv = "0.0,0.0,1.0,0.125";
-	BattleInterface.imageslist.textinfoback1.pos = (sti(showWindow.right) - RecalculateHIcon(198)) + "," +
-		RecalculateVIcon(192) + "," +
-		(sti(showWindow.right) - RecalculateHIcon(10)) + "," +
-		RecalculateVIcon(200);
-	//
-	BattleInterface.imageslist.textinfoback2.texture = "battle_interface\textinfo_back.tga";
-	BattleInterface.imageslist.textinfoback2.color = argb(96,64,64,64);
-	BattleInterface.imageslist.textinfoback2.uv = "0.0,0.125,1.0,0.875";
-	BattleInterface.imageslist.textinfoback2.pos = (sti(showWindow.right) - RecalculateHIcon(198)) + "," +
-		RecalculateVIcon(200) + "," +
-		(sti(showWindow.right) - RecalculateHIcon(10)) + "," +
-		RecalculateVIcon(420);
-	//
-	BattleInterface.imageslist.textinfoback3.texture = "battle_interface\textinfo_back.tga";
-	BattleInterface.imageslist.textinfoback3.color = argb(96,64,64,64);
-	BattleInterface.imageslist.textinfoback3.uv = "0.0,0.875,1.0,1.0";
-	BattleInterface.imageslist.textinfoback3.pos = (sti(showWindow.right) - RecalculateHIcon(198)) + "," +
-		RecalculateVIcon(420) + "," +
-		(sti(showWindow.right) - RecalculateHIcon(10)) + "," +
-		RecalculateVIcon(428);
-	*/
+	 
 
 	BattleInterface.textinfo.Date.font = "interface_normal";
 	BattleInterface.textinfo.Date.scale = 0.9;
 	BattleInterface.textinfo.Date.pos.x = sti(showWindow.right) - RecalculateHIcon(104);
 	BattleInterface.textinfo.Date.pos.y = RecalculateVIcon(200);
-	BattleInterface.textinfo.Date.text = XI_convertString("Date:")+GetQuestBookData();//GetDataDay()+" "+XI_ConvertString("target_month_" + GetDataMonth())+" "+GetDataYear();
+	BattleInterface.textinfo.Date.text = XI_convertString("Date:")+GetQuestBookData();
 	BattleInterface.textinfo.Date.refreshable = true;
-	//
+	
 	BattleInterface.textinfo.Location.font = "interface_normal";
 	BattleInterface.textinfo.Location.scale = 0.9;
 	BattleInterface.textinfo.Location.pos.x = sti(showWindow.right) - RecalculateHIcon(104);
 	BattleInterface.textinfo.Location.pos.y = RecalculateVIcon(218);
 	BattleInterface.textinfo.Location.text = XI_convertString("Open Sea");
-	//
+	
 	BattleInterface.textinfo.Speed.font = "interface_normal";
 	BattleInterface.textinfo.Speed.scale = 0.9;
 	BattleInterface.textinfo.Speed.color = argb(255,255,255,255);
-	//BattleInterface.textinfo.Speed.shadow = false;
+	
 	BattleInterface.textinfo.Speed.pos.x = sti(showWindow.right) - RecalculateHIcon(104);
 	BattleInterface.textinfo.Speed.pos.y = RecalculateVIcon(315);
 	BattleInterface.textinfo.Speed.text = XI_convertString("Speed");
-	//
+	
 	BattleInterface.textinfo.Ammo.font = "interface_normal";
 	BattleInterface.textinfo.Ammo.scale = 0.9;
 	BattleInterface.textinfo.Ammo.color = argb(255,255,255,255);
-	//BattleInterface.textinfo.Ammo.shadow = false;
+	
 	BattleInterface.textinfo.Ammo.pos.x = sti(showWindow.right) - RecalculateHIcon(104);
 	BattleInterface.textinfo.Ammo.pos.y = RecalculateVIcon(399);
 	BattleInterface.textinfo.Ammo.text = XI_convertString("Ammunition");
@@ -1782,7 +1735,7 @@ void SetParameterData()
 	BattleInterface.LineInfo.speed.begin.y = RecalculateVIcon(334);
 	BattleInterface.LineInfo.speed.end.x = RecalculateHIcon(128);
 	BattleInterface.LineInfo.speed.end.y = 0;
-	//
+	
 	BattleInterface.LineInfo.Ammo.color = argb(255,0,0,0);
 	BattleInterface.LineInfo.Ammo.begin.x = sti(showWindow.right) - RecalculateHIcon(168);
 	BattleInterface.LineInfo.Ammo.begin.y = RecalculateVIcon(418);
@@ -1811,7 +1764,7 @@ void SetParameterData()
 	BattleInterface.battleborder.texture = "battle_interface\battleborder.tga";
 
 	BattleInterface.ShipIcon.sailorfontid			= "interface_normal";
-	BattleInterface.ShipIcon.sailorfontcolor		= argb(255,255,255,168); //argb(255,255,255,255);
+	BattleInterface.ShipIcon.sailorfontcolor		= argb(255,255,255,168); 
 	BattleInterface.ShipIcon.sailorfontscale		= 1.1;
 
 	BattleInterface.ShipIcon.shipnamefontid			= "interface_normal";
@@ -1834,11 +1787,11 @@ void SetParameterData()
 	BattleInterface.ShipIcon.shipspiconsize			= "64,74";
 
 	BattleInterface.ShipIcon.shipclasstexturename	= "battle_interface\ShipClass.tga";
-	BattleInterface.ShipIcon.shipclasscolor			= argb(255,102,102,102); //argb(255,128,128,128);
+	BattleInterface.ShipIcon.shipclasscolor			= argb(255,102,102,102); 
 	BattleInterface.ShipIcon.shipclassuv			= "0.0,0.0,1.0,1.0";
 	BattleInterface.ShipIcon.shipclassoffset		= "-14,-52";
 	BattleInterface.ShipIcon.shipclassiconsize		= "64,16";
-	BattleInterface.ShipIcon.gunchargeprogress		= "0.0625, 0.211, 0.359, 0.5, 0.633, 0.781, 0.983"; //Tymofei: �������� ��� ������ �������, � ���� �� �����, �� ������� ��� �������� - �����!
+	BattleInterface.ShipIcon.gunchargeprogress		= "0.0625, 0.211, 0.359, 0.5, 0.633, 0.781, 0.983"; 
 
 	BattleInterface.ShipIcon.shiptexturename		= "battle_interface\ship_icons2.tga";
 	BattleInterface.ShipIcon.shipcolor				= argb(255,128,128,128);
@@ -1853,9 +1806,9 @@ void SetParameterData()
 	BattleInterface.ShipIcon.iconoffset4 = "70,454";
 	BattleInterface.ShipIcon.iconoffset5 = "70,582";
 
-	BattleInterface.CommandList.CommandMaxIconQuantity = 10; //boal
+	BattleInterface.CommandList.CommandMaxIconQuantity = 10; 
 	BattleInterface.CommandList.CommandIconSpace = 1;
-	BattleInterface.CommandList.CommandIconLeft = 108;//157;
+	BattleInterface.CommandList.CommandIconLeft = 108;
 	BattleInterface.CommandList.CommandIconWidth = RecalculateHIcon(48);
 	BattleInterface.CommandList.CommandIconHeight = RecalculateVIcon(48);
 
@@ -1871,41 +1824,36 @@ void SetParameterData()
 	BattleInterface.CommandList.UDArrow_Offset_Up = RecalculateHIcon(-41) + "," + RecalculateVIcon(-30);
 	BattleInterface.CommandList.UDArrow_Offset_Down = RecalculateHIcon(-41) + "," + RecalculateVIcon(46);
 
-	/*BattleInterface.CommandList.ActiveIcon_Texture = "battle_interface\enter_list.tga";
-	BattleInterface.CommandList.ActiveIcon_Offset = RecalculateHIcon(-49) + ",0";
-	BattleInterface.CommandList.ActiveIcon_Size = RecalculateHIcon(48) + "," + RecalculateVIcon(48);
-	BattleInterface.CommandList.ActiveIcon_UV1 = "0.5,0.0,1.0,1.0";
-	BattleInterface.CommandList.ActiveIcon_UV2 = "0.0,0.0,0.5,1.0";
-	BattleInterface.CommandList.ActiveIcon_Note = XI_ConvertString("MenuNote"); */
+	 
 
 	BattleInterface.ShipInfoImages.RelationTexture = "battle_interface\ship_arrows1.tga";
 	BattleInterface.ShipInfoImages.RelationOffset.x = 0.0;
 	BattleInterface.ShipInfoImages.RelationOffset.y = 0.3;
 	BattleInterface.ShipInfoImages.RelationOffset.z = 0.0;
 	BattleInterface.ShipInfoImages.RelationSize = "0.75,0.5";
-	BattleInterface.ShipInfoImages.RelationUV1 = "0.0,0.0,0.25,1.0"; // friend
-	BattleInterface.ShipInfoImages.RelationUV2 = "0.25,0.0,0.5,1.0"; // enemy
-	BattleInterface.ShipInfoImages.RelationUV3 = "0.5,0.0,0.75,1.0"; // neutral
+	BattleInterface.ShipInfoImages.RelationUV1 = "0.0,0.0,0.25,1.0"; 
+	BattleInterface.ShipInfoImages.RelationUV2 = "0.25,0.0,0.5,1.0"; 
+	BattleInterface.ShipInfoImages.RelationUV3 = "0.5,0.0,0.75,1.0"; 
 
 	BattleInterface.ShipInfoImages.ProgressTexture = "battle_interface\indicators.tga";
 	BattleInterface.ShipInfoImages.ProgressSize = "2.0,0.1";
-	//
+	
 	BattleInterface.ShipInfoImages.ProgressBackOffset.x = 0.0;
 	BattleInterface.ShipInfoImages.ProgressBackOffset.y = 0.65;
 	BattleInterface.ShipInfoImages.ProgressBackOffset.z = 0.0;
 	BattleInterface.ShipInfoImages.ProgressBackSize = "2.0,0.3";
 	BattleInterface.ShipInfoImages.ProgressBackUV = "0.0,0.5,1.0,1.0";
-	//
+	
 	BattleInterface.ShipInfoImages.HullOffset.x = 0.0;
 	BattleInterface.ShipInfoImages.HullOffset.y = 0.75;
 	BattleInterface.ShipInfoImages.HullOffset.z = 0.0;
 	BattleInterface.ShipInfoImages.HullUV = "0.0,0.333,1.0,0.5";
-	//
+	
 	BattleInterface.ShipInfoImages.SailOffset.x = 0.0;
 	BattleInterface.ShipInfoImages.SailOffset.y = 0.65;
 	BattleInterface.ShipInfoImages.SailOffset.z = 0.0;
 	BattleInterface.ShipInfoImages.SailUV = "0.0,0.167,1.0,0.333";
-	//
+	
 	BattleInterface.ShipInfoImages.CrewOffset.x = 0.0;
 	BattleInterface.ShipInfoImages.CrewOffset.y = 0.55;
 	BattleInterface.ShipInfoImages.CrewOffset.z = 0.0;
@@ -1916,20 +1864,20 @@ void SetParameterData()
 
 ref ProcessSailDamage()
 {
-	// �� ���� ����
+	
 	int shootIdx = GetEventData();
-	// ����
+	
 	int chrIdx = GetEventData();
 
 	string sMastName = GetEventData();
-	// ���������� ������
+	
 	string reyName = GetEventData();
 	int groupNum = GetEventData();
-	// ������ � ������
+	
 	int holeCount = GetEventData();
 	int holeData = GetEventData();
 	int maxHoleCount = GetEventData();
-	// �������� ������
+	
 	float sailPower = GetEventData();
 
 	ref chref = GetCharacter(chrIdx);
@@ -1982,14 +1930,14 @@ ref ProcessSailDamage()
 	return &BI_g_fRetVal;
 }
 
-// ugeen -> ���� ������������� ����� �������
+
 void ProcessHullDecrease()
 {
 	int i, cn, hp;
 	ref chref;
 	ref mchar = GetMainCharacter();
 	
-	if (!bSeaActive || mchar.location == mchar.SystemInfo.CabinType) // ���� � �����
+	if (!bSeaActive || mchar.location == mchar.SystemInfo.CabinType) 
 	{
 		for (i=0; i<COMPANION_MAX; i++)
 		{
@@ -1999,7 +1947,7 @@ void ProcessHullDecrease()
 	
 			if(CheckAttribute(chref, "Ship.HP_penalty"))
 			{
-				hp = sti(RealShips[sti(chref.ship.type)].HP);	// ������� ��������
+				hp = sti(RealShips[sti(chref.ship.type)].HP);	
 				if(hp > makeint(stf(chref.Ship.HP_penalty)) ) RealShips[sti(chref.ship.type)].HP = hp - makeint(stf(chref.Ship.HP_penalty)); 
 				else RealShips[sti(chref.ship.type)].HP = 1;
 				if( GetCurrentShipHP(chref) > sti(RealShips[sti(chref.ship.type)].HP) )
@@ -2011,7 +1959,7 @@ void ProcessHullDecrease()
 		}
 	}	
 }
-// <-- ugeen
+
 
 bool CheckRepairPerks(ref chref)
 {	
@@ -2022,16 +1970,16 @@ bool CheckRepairPerks(ref chref)
 	return false;	
 }
 
-// ������� �� ��� 25/09/06
+
 void ProcessDayRepair()
 {
 	int i, cn;
 	float matQ, tmpf, repPercent;
 	ref chref;
 	ref mchar = GetMainCharacter();
-	// boal 21.01.2004 �� ���� � ���� �� �����, �� ���� ��� ���� � ���� -->
-	//if (bSeaActive == false || mchar.location == mchar.SystemInfo.CabinType) // ���� � �����
-	if (!bSeaActive || mchar.location != mchar.SystemInfo.CabinType) // ��� ������ � ����� �� �������
+	
+	
+	if (!bSeaActive || mchar.location != mchar.SystemInfo.CabinType) 
 	{		
 		for (i=0; i<COMPANION_MAX; i++)
 		{
@@ -2040,7 +1988,7 @@ void ProcessDayRepair()
 			chref = GetCharacter(cn);
 			if(CheckRepairPerks(chref))
 			{	
-				// ������ ������� �������
+				
 				if (GetHullPercent(chref) < 100.0 )
 				{
 					repPercent = GetHullRPD(chref);
@@ -2052,13 +2000,13 @@ void ProcessDayRepair()
 						repPercent = ProcessHullRepair(chref, repPercent);
 						matQ = repPercent*GetHullPPP(chref);
 						RemoveRepairGoods(true,chref,matQ);
-						// boal  check skill -->
+						
 						AddCharacterExpToSkill(chref, "Repair", matQ / 3.0);
-						// boal <--
+						
 					}
 				}
 				
-				// ������ ������� �������
+				
 				if (GetSailPercent(chref) < GetAllSailsDamagePercent(chref) )
 				{
 					repPercent = GetSailRPD(chref);
@@ -2071,15 +2019,15 @@ void ProcessDayRepair()
 						repPercent = ProcessSailRepair(chref,repPercent);
 						matQ = repPercent*GetSailSPP(chref);
 						RemoveRepairGoods(false,chref,matQ);
-						// boal  check skill -->
+						
 						AddCharacterExpToSkill(chref, "Repair", matQ / 4.0);
-						// boal <--
+						
 					}
 				}
 			}
 		}
 	}
-	// boal 21.01.2004 <--
+	
 }
 
 ref procGetSailTextureData()
@@ -2097,25 +2045,14 @@ ref procGetSailTextureData()
 		st = GetCharacterShipType(GetCharacter(chrIdx));
 		if (st != SHIP_NOTUSED)
 		{
-			//string sUpgrade = "common";
+			
 			string sUpgrade = "usual0";
 		
 			shref = GetRealShip(st); 
 		
 			int iUpgrade = sti(shref.ship.upgrades.sails);  
-			/*switch(iUpgrade)
-			{
-				case 1:
-					sUpgrade = "common";
-				break;
-				case 2: 
-					sUpgrade = "pat";
-				break;
-				case 3:
-					sUpgrade = "silk";
-				break;
-			}*/
-			// Jason: ����� ���� �������, ����������� � ���� �����
+			 
+			
 			switch(iUpgrade)
 			{
 				case 1:
@@ -2134,28 +2071,28 @@ ref procGetSailTextureData()
 					sUpgrade = "usual4";
 				break;
 				case 6:
-					sUpgrade = "wing"; // �����
+					sUpgrade = "wing"; 
 				break;
 				case 7:
-					sUpgrade = "win0"; // ����� �������
+					sUpgrade = "win0"; 
 				break;
 				case 8:
-					sUpgrade = "win1"; // ������� �������
+					sUpgrade = "win1"; 
 				break;
 				case 9:
-					sUpgrade = "win2"; // ����-������� �����
+					sUpgrade = "win2"; 
 				break;
 				case 10:
-					sUpgrade = "win3"; // �����������
+					sUpgrade = "win3"; 
 				break;
 				case 11:
-					sUpgrade = "win4"; // ������� �����
+					sUpgrade = "win4"; 
 				break;
 				case 12:
-					sUpgrade = "torn"; // �������
+					sUpgrade = "torn"; 
 				break;
 				case 13:
-					sUpgrade = "silk"; // ����
+					sUpgrade = "silk"; 
 				break;
 			}
 		
@@ -2163,46 +2100,26 @@ ref procGetSailTextureData()
 			string tmpStr;
 		
 			BI_objRetValue.normalTex = nationFileName;
-			BI_objRetValue.geraldTex = "";//"ships\gerald\chuckskull.tga";
-			BI_objRetValue.sailscolor = argb(255,255,255,255);  // ����� �����
+			BI_objRetValue.geraldTex = "";
+			BI_objRetValue.sailscolor = argb(255,255,255,255);  
 		
-			//BI_objRetValue.geraldTexPointer = 0; // (IDirect3DTexture8*)
 			
-			//if (CheckAttribute(&characters[chrIdx], "ShipSails.SailsColor"))
-			if (CheckAttribute(shref, "ShipSails.SailsColor")) // 1.2.3 ���� ������ ������� �������, � �� ���
+			
+			
+			if (CheckAttribute(shref, "ShipSails.SailsColor")) 
 			{
 				BI_objRetValue.sailscolor = sti(shref.ShipSails.SailsColor);
 			}
-			//if( CheckAttribute(&characters[chrIdx],"ShipSails.gerald_name") ) // �� ����������� ��� ������ ��������, ������ �� �  ship.
-			if( CheckAttribute(shref,"ShipSails.gerald_name") ) // 1.2.3 ���� ������ ������� �������, � �� ���
+			
+			if( CheckAttribute(shref,"ShipSails.gerald_name") ) 
 			{
 				BI_objRetValue.geraldTex = "Ships\Gerald\" + shref.ShipSails.gerald_name + ".tga";
 			}
-			/*
-			switch(sti(Characters[chrIdx].nation))  // �� �������� ��� :(
-			{
-				case ENGLAND:	
-					nationFileName = "ships\parus_" + sUpgrade + "_england.tga";		
-				break;
-				case FRANCE:	
-					nationFileName = "ships\parus_" + sUpgrade + "_france.tga";		
-				break;
-				case SPAIN:		
-					nationFileName = "ships\parus_" + sUpgrade + "_spain.tga";	
-				break;
-				case PIRATE:
-					nationFileName = "ships\parus_" + sUpgrade + "_pirate.tga";
-					//BI_objRetValue.normalTex = "ships\sail_Pirates.tga";
-				break;
-				case HOLLAND:	
-					nationFileName = "ships\parus_" + sUpgrade + "_holland.tga";	
-				break;
-			}
-			*/
+			 
 			
 			BI_objRetValue.maxSP = shref.sp;
-			// boal -->
-			if (CheckAttribute(shref, "EmblemedSails.normalTex")) // ��������� � ���� �����
+			
+			if (CheckAttribute(shref, "EmblemedSails.normalTex")) 
 		    {
 		        BI_objRetValue.normalTex = shref.EmblemedSails.normalTex;
 		        nationFileName           = shref.EmblemedSails.normalTex;
@@ -2213,10 +2130,8 @@ ref procGetSailTextureData()
 			} else {
 				makearef(arEmbl,shref.EmblemedSails);
 			} 
-			/*if (CheckAttribute(shref, "GeraldSails"))
-		    {
-		        makearef(arEmbl, shref.GeraldSails);  */
-				// boal <--
+			 
+				
 			sq = GetAttributesNum(arEmbl);
 			for(i=0; i<sq; i++)
 			{
@@ -2230,16 +2145,16 @@ ref procGetSailTextureData()
 					BI_objRetValue.(attrName).vscale = arSail.vscale;
 				}
 				if(tmpStr=="1") {
-					//BI_objRetValue.(attrName).Gerald = nationFileName;  
+					
 					BI_objRetValue.(attrName) = nationFileName;
 				} else {
 					BI_objRetValue.(attrName).Gerald = tmpStr;
 				}
-				//BI_objRetValue.(attrName).Gerald = "ships\chuckskull.tga"; // �������� ����� (���� �� �������, �� ������� BI_objRetValue.geraldTex ��� BI_objRetValue.geraldTexPointer)
-				//BI_objRetValue.(attrName).hscale = 0.5; // ������� � ������� ������ (0.5 - ���� �������� �������� ������)
-				//BI_objRetValue.(attrName).vscale = 0.5; // ���� ��� vscale, �� ������������ = scale
+				
+				
+				
 			}
-			//}
+			
 		}
 	}
 
@@ -2253,7 +2168,7 @@ ref procGetRiggingData()
 	string datName = GetEventData();
 	i = GetEventData();
 	n = GetEventData();
-	s = GetEventData();	// isSpecial Flag ??	
+	s = GetEventData();	
 	
 	if(datName == "GetShipFlagTexNum")
 	{
@@ -2294,13 +2209,13 @@ ref procGetRiggingData()
 		if(n != PIRATE)
 		{	
 			if(s == 1) BI_intNRetValue[1] = FLAG_FRT; 
-			else	   BI_intNRetValue[1] = FLAG_FRT; 	// ���������� ��� ��� ��� ����������, �� �� ��� ������ ����� �������� :( 
+			else	   BI_intNRetValue[1] = FLAG_FRT; 	
 		}				
 	}	
 	return &BI_intNRetValue;
 }
 
-// --> ugeen
+
 void SetTownFlag(ref loc, object mdl)
 {
 	if (!CheckAttribute(loc, "townsack")) return;
@@ -2370,24 +2285,24 @@ int GetShipFlagTextureNum(ref chr)
 	if(iNation == PIRATE) return FLAG_PIR;
 	else
 	{		
-		//���� ������ - ����������� ����� ����
+		
 		if(CheckAttribute(chr,"surrendered")) return FLAG_WHT;			
 		else
 		{		
-			if(IsCompanion(chr) || IsMainCharacter(chr) || chr.id == "BoatChar") // �� , ����������, ������ � ������
+			if(IsCompanion(chr) || IsMainCharacter(chr) || chr.id == "BoatChar") 
 			{
 				if(iNation != PIRATE) return FLAG_PER;								
 				else				  return FLAG_PIR; 	
 			}			
 			else
 			{			
-				// ����������� ���������
+				
 				if(IsShipCommander(chr)) return FLAG_SHP;								
 				else
 				{
-					// ��������
+					
 					if(IsShipMerchant(chr)) return FLAG_MER;								
-					// ��� ������ .. ������� �������, ������� � �.�.
+					
 					else 					return FLAG_FRT;									
 				}				
 			}			
@@ -2395,7 +2310,7 @@ int GetShipFlagTextureNum(ref chr)
 	}		
 	return FLAG_CMN;
 }
-// <-- ugeen
+
 
 void procBISelectShip()
 {
@@ -2427,7 +2342,7 @@ ref procGetSmallFlagData()
 		case SPAIN: BI_intNRetValue[1]=0; break;
 		case HOLLAND: BI_intNRetValue[1]=4; break;
 		case PIRATE: BI_intNRetValue[1]=5; break;
-		//case SMUGGLER: BI_intNRetValue[1]=1; break;
+		
 		}
 
 		BI_intNRetValue[2] = 7;
@@ -2450,23 +2365,23 @@ void procMastFall()
 	if(chrIdx<0) return;
 	int mastNum = strcut(mastName,4,strlen(mastName)-1);
 
-	//trace("For character "+chrIdx+" fall Mast name "+mastName+" has index "+mastNum);
+	
 	SendMessage(&Sailors, "lal", MSG_PEOPLES_ON_SHIP_MASTFALL, GetCharacter(chrIdx), mastNum);
 }
 
 bool CheckInstantRepairCondition(ref chref)
 {
-//boal -->
+
 	if(MOD_SKILL_ENEMY_RATE > 5) return false;
-    if (CheckOfficersPerk(chref,"InstantRepair")) return false;  // ��� � ����
-    if (!GetOfficersPerkUsing(chref,"InstantRepair")) return false;  // ����� ��������?
-//boal <--
+    if (CheckOfficersPerk(chref,"InstantRepair")) return false;  
+    if (!GetOfficersPerkUsing(chref,"InstantRepair")) return false;  
+
 
 	float chrShipHP = GetHullPercent(chref);
 	float chrShipSP = GetSailPercent(chref);
 
-	bool bYesHPRepair = chrShipHP < InstantRepairRATE;// boal 23.01.2004
-	bool bYesSPRepair = chrShipSP < InstantRepairRATE; // boal 23.01.2004
+	bool bYesHPRepair = chrShipHP < InstantRepairRATE;
+	bool bYesSPRepair = chrShipSP < InstantRepairRATE; 
 
 	if( bYesHPRepair )	{ bYesHPRepair = GetCargoGoods(chref,GOOD_PLANKS)>0; }
 	if( bYesSPRepair )	{ bYesSPRepair = GetCargoGoods(chref,GOOD_SAILCLOTH)>0; }
@@ -2486,7 +2401,7 @@ float GetRepairGoods(bool bIsHull, ref chref)
 	if( bIsHull )
 	{
 		fGoodsQ = GetCargoGoods(chref,GOOD_PLANKS);
-		if( CheckAttribute(chref,"RepairMaterials.forHull") )   // ����������� ���������� �������� ����� ����� �� �������
+		if( CheckAttribute(chref,"RepairMaterials.forHull") )   
 		{	
 			fGoodsQ += stf(chref.RepairMaterials.forHull);
 		}
@@ -2538,7 +2453,7 @@ float GetRigDamage(int shootIdx, int iBallType, ref damage_chr)
 	ref rBall = GetGoodByType(iBallType);
 	float fDistanceDamageMultiply = Bring2Range(1.2, 0.25, 0.0, stf(AIBalls.CurrentMaxBallDistance), stf(AIBalls.CurrentBallDistance));
 	float fDmgRig = fDistanceDamageMultiply * stf(rBall.DamageRig);
-	//float fDmgRig = stf(rBall.DamageRig);
+	
     if (shootIdx>=0 )
 	{
 		ref shoot_chr = GetCharacter(shootIdx);
@@ -2549,19 +2464,19 @@ float GetRigDamage(int shootIdx, int iBallType, ref damage_chr)
 		}
 	}
 	
-	if (CheckOfficersPerk(damage_chr,"ShipDefenseProfessional") )	{ fDmgRig *= 0.65; } // fix
+	if (CheckOfficersPerk(damage_chr,"ShipDefenseProfessional") )	{ fDmgRig *= 0.65; } 
 	else
 	{
-		if (CheckOfficersPerk(damage_chr,"AdvancedBattleState") )	{ fDmgRig *= 0.75; } // fix
+		if (CheckOfficersPerk(damage_chr,"AdvancedBattleState") )	{ fDmgRig *= 0.75; } 
 		else
 		{
-			if (CheckOfficersPerk(damage_chr,"BasicBattleState") )	{ fDmgRig *= 0.85; } // fix
+			if (CheckOfficersPerk(damage_chr,"BasicBattleState") )	{ fDmgRig *= 0.85; } 
 		}
 	}
 	
 	fDmgRig = isEquippedAmuletUse(shoot_chr, "indian_8", fDmgRig, 1.05 );
 	fDmgRig = isEquippedAmuletUse(damage_chr, "amulet_9", fDmgRig, 0.95 );
-	// Addon 2016-1 Jason ��������� �������
+	
 	if (CheckAttribute(damage_chr, "SeaBoss")) { fDmgRig *= 0.1; }
 		
 	return fDmgRig;
@@ -2579,7 +2494,7 @@ void MakeSailDmg(int chrIdx, float dmg)
 	{
 		characters[chrIdx].upgrades.sails = 1;
 	}
-	//������� 1 ������� �������� (������ �� ���������))
+	
 	iSailsUpgrade = sti(characters[chrIdx].upgrades.sails) - 1;
 	dmg = dmg + ((dmg/100)*iSailsUpgrade*5);
 	SendMessage(&objSail,"lslf", MSG_SAIL_SCRIPT_PROCESSING,"RandomSailsDmg", chrIdx,dmg);
@@ -2588,7 +2503,7 @@ void MakeSailDmg(int chrIdx, float dmg)
 ref ProcessRandomSailDmg()
 {
 	BI_g_fRetVal = 0.0;
-	//"lslfflll"
+	
 	int chrIdx = GetEventData();
 	string nodeName = GetEventData();
 	int grNum = GetEventData();
@@ -2680,7 +2595,7 @@ void procGetSailStatus()
 
 void procSetUsingAbility()
 {
-	//Log_Info("procSetUsingAbility");
+	
 	int q;
 	int chIdx = GetEventData();
 	int mainIdx = sti(pchar.index);
@@ -2699,17 +2614,17 @@ void procSetUsingAbility()
 		return;
 	}
 
-	// ��� �������� ���������
+	
 	if(mainIdx==chIdx)
 	{
 		
         BattleInterface.Commands.Bomb.enable = true;
 		BattleInterface.Commands.Brander.enable			= false;
-		//BattleInterface.AbilityIcons.Troopers.enable		= false;
+		
 
-        //if (bBettaTestMode) BattleInterface.AbilityIcons.InstantBoarding.enable	= bAttack;
-		////////////////////////////////////////////
-		BattleInterface.Commands.ImmediateReload.enable	= false; //GetCharacterPerkUsing
+        
+		
+		BattleInterface.Commands.ImmediateReload.enable	= false; 
         if (!CheckOfficersPerk(pchar, "ImmediateReload") && GetOfficersPerkUsing(pchar, "ImmediateReload"))
         {
             BattleInterface.Commands.ImmediateReload.enable = true;
@@ -2728,7 +2643,7 @@ void procSetUsingAbility()
         {
 			BattleInterface.Commands.Turn180.enable = true;
         }
-		// Set items abilities
+		
 		q = FindQuestUsableItem(&arcur,0);
 		while( q>0 )
 		{
@@ -2757,12 +2672,12 @@ void procSetUsingAbility()
 		{
 			BattleInterface.Commands.Brander.enable		= true;
 		}
-		//BattleInterface.AbilityIcons.Troopers.enable		= GetCharacterPerkUsing(pchar,"Troopers");
+		
 
 		BattleInterface.Commands.InstantRepair.enable	= CheckInstantRepairCondition(GetCharacter(chIdx));		
-		BattleInterface.Commands.ImmediateReload.enable	= GetCharacterPerkUsing(GetCharacter(chIdx), "ImmediateReload");//false;
+		BattleInterface.Commands.ImmediateReload.enable	= GetCharacterPerkUsing(GetCharacter(chIdx), "ImmediateReload");
 		BattleInterface.Commands.InstantBoarding.enable	= false;
-		BattleInterface.Commands.LightRepair.enable		= GetCharacterPerkUsing(GetCharacter(chIdx), "LightRepair");//false;
+		BattleInterface.Commands.LightRepair.enable		= GetCharacterPerkUsing(GetCharacter(chIdx), "LightRepair");
 		if (GetCharacterPerkUsing(GetCharacter(chIdx),"LightRepair"))
 		{
             if(GetHullPercent(GetCharacter(chIdx))<10.0 || GetSailPercent(GetCharacter(chIdx))<10.0)
@@ -2770,7 +2685,7 @@ void procSetUsingAbility()
                 BattleInterface.Commands.LightRepair.enable = true;
 			}
 		}
-		BattleInterface.Commands.Turn180.enable			= GetCharacterPerkUsing(GetCharacter(chIdx), "Turn180");//false;
+		BattleInterface.Commands.Turn180.enable			= GetCharacterPerkUsing(GetCharacter(chIdx), "Turn180");
 	}
 }
 
@@ -2809,9 +2724,7 @@ ref procCheckEnableShip()
 			BI_intRetValue = true;
 		break;
 		
-		/*case "BI_Speak":
-			BI_intRetValue = true;
-		break;*/
+		 
 		}
 	}
 
@@ -2846,7 +2759,7 @@ void BI_ProcessControlPress()
 		break;
 		
 		case "BICommandsActivate": 
-			PlaySound("interface\ok.wav"); // boal ����� �����!
+			PlaySound("interface\ok.wav"); 
 		break;
 	}
 }
@@ -2858,35 +2771,35 @@ ref procGetSRollSpeed()
 	if(chrIdx>=0) BI_g_fRetVal = GetRSRollSpeed(GetCharacter(chrIdx));
 	return &BI_g_fRetVal;
 }
-// �������� ������� ������
+
 float GetRSRollSpeed(ref chref)
 {
 	int iShip = sti(chref.ship.type);
 	if( iShip<0 || iShip>=REAL_SHIPS_QUANTITY ) {return 0.0;}
 	
-	float fRollSpeed = 0.5 + 0.05 * makefloat( GetSummonSkillFromNameToOld(chref,SKILL_SAILING) ); //fix skill
+	float fRollSpeed = 0.5 + 0.05 * makefloat( GetSummonSkillFromNameToOld(chref,SKILL_SAILING) ); 
 	int crewQ = GetCrewQuantity(chref);
-	//int crewMin = sti(RealShips[iShip].MinCrew);
+	
 	if (!CheckAttribute(&RealShips[iShip], "MaxCrew"))
 	{
 		Log_TestInfo("GetRSRollSpeed ��� MaxCrew � ������� ��� ID=" + chref.id);
 		return 0.0;
 	}
  	int crewMax = sti(RealShips[iShip].MaxCrew);
- 	int crewOpt = sti(RealShips[iShip].OptCrew);//boal
- 	if (crewMax < crewQ) crewQ  = crewMax; // boal
-	//if(crewQ < crewMin) fRollSpeed *= makefloat(crewQ)/makefloat(2*crewMin);
-	//fRollSpeed = fRollSpeed * (0.5 + makefloat(crewQ)/makefloat(2*crewMax)); // ���������� �������� ��������� �� �������
-	//fRollSpeed = fRollSpeed * makefloat(crewQ)/makefloat(crewMax);
-	// ���� �������� 
+ 	int crewOpt = sti(RealShips[iShip].OptCrew);
+ 	if (crewMax < crewQ) crewQ  = crewMax; 
+	
+	
+	
+	
 	float  fExp;
 	
-	if (crewOpt <= 0) crewOpt = 0; // fix ��� ������������ ������� �� ����
+	if (crewOpt <= 0) crewOpt = 0; 
 	
 	fExp = 0.05 + stf(GetCrewExp(chref, "Sailors") * crewQ) / stf(crewOpt * GetCrewExpRate());
 	if (fExp > 1) fExp = 1;
 	fRollSpeed = fRollSpeed * fExp;
-	// ������
+	
 	float  fMorale = stf(stf(GetCharacterCrewMorale(chref)) / MORALE_MAX);
 	fRollSpeed = fRollSpeed * (0.7 + fMorale / 2.0);
 
@@ -2896,7 +2809,7 @@ float GetRSRollSpeed(ref chref)
 	}
 	if(CheckOfficersPerk(chref, "SailsMan"))
 	{
-		fRollSpeed = fRollSpeed * 1.1; // 10%
+		fRollSpeed = fRollSpeed * 1.1; 
 	}
 	return fRollSpeed;
 }
@@ -2918,7 +2831,7 @@ ref BI_GetLandData()
 
 	if( CheckAttribute(arLoc,"fort.model") )
 	{
-		BI_intNRetValue[0] = 1; // ��� ����
+		BI_intNRetValue[0] = 1; 
 		int chrIdx = Fort_FindCharacter(AISea.Island,"reload",arLoc.name);
 		if(chrIdx>=0)
 		{
@@ -2939,7 +2852,7 @@ ref BI_GetLandData()
 			if( iTmp>=0 ) {
 				iTmp = FindColony( Locations[iTmp].fastreload );
 				if( iTmp>=0 ) {
-					BI_intNRetValue[0] = 2; // ��� �����
+					BI_intNRetValue[0] = 2; 
 					switch( GetNationRelation2MainCharacter(sti(Colonies[iTmp].nation)) )
 					{
 					case RELATION_FRIEND:	BI_intNRetValue[1] = BI_RELATION_FRIEND; break;
@@ -2951,21 +2864,11 @@ ref BI_GetLandData()
 			}
 		}
 		else
-		{// �� ����, �� ����� - �����!
-			BI_intNRetValue[0] = 3; // ��� �����
+		{
+			BI_intNRetValue[0] = 3; 
 		}
 	}
-	/*if( CheckAttribute(arLoc,"tex") && CheckAttribute(arLoc,"pic") )
-	{
-		makearef( arIsl, Islands[FindIsland(AISea.Island)] );
-		attrName = "InterfaceTextures." + arLoc.tex;
-		if( CheckAttribute(arIsl,attrName) )
-		{
-			BI_intNRetValue[2] = AddTextureToList( &BattleInterface, arIsl.(attrName), sti(arIsl.(attrName).h)*2, sti(arIsl.(attrName).v) );
-			BI_intNRetValue[3] = sti(arLoc.pic);
-			BI_intNRetValue[4] = sti(arLoc.pic) + sti(arIsl.(attrName).h);
-		}
-	}*/
+	 
 
 	int g_LocLngFileID = LanguageOpenFile("LocLables.txt");
 	if( CheckAttribute(arLoc,"label") ) {
@@ -2978,18 +2881,18 @@ ref BI_GetLandData()
 
 	if( BI_intNRetValue[2]<0 || BI_intNRetValue[3]<0 )
 	{
-		BI_intNRetValue[2] = 0;//AddTextureToList( &BattleInterface, "battle_interface\cicons_locators.tga", 8, 1 );
+		BI_intNRetValue[2] = 0;
 		switch (BI_intNRetValue[0])
 		{
-			case 1: // ����
+			case 1: 
 				BI_intNRetValue[3] = 62;
 				BI_intNRetValue[4] = 46;
 			break;
-			case 2: // �����
+			case 2: 
 				BI_intNRetValue[3] = 63;
 				BI_intNRetValue[4] = 47;
             break;
-            case 3: // �����
+            case 3: 
 				BI_intNRetValue[3] = 31;
 				BI_intNRetValue[4] = 15;
             break;
@@ -3011,26 +2914,26 @@ int GetTargChrIndex(int targNum, string locName)
 bool CheckSuccesfullBoard(ref rBoarderChr, ref rSieger)
 {
 	if (bBettaTestMode) return true;
-	if (LAi_IsDead(rSieger)) return false;  // fix
-	// skill = 1 -> k = 0.5; skill = 10 -> k = 2.0
+	if (LAi_IsDead(rSieger)) return false;  
+	
 	float k = 0.333 + GetSummonSkillFromNameToOld(rBoarderChr, SKILL_SNEAK)*0.167;
 
-	// skill = 1 -> limit = 0.45 -> 0.2^0.5 (20%);   skill = 10 -> limit = 0.81 -> 0.9^2 (90%)
+	
 	float topLimit = 0.41 + GetSummonSkillFromNameToOld(rBoarderChr, SKILL_GRAPPLING)*0.04;
 
 	if( pow(rand(1000)/1000.0, k) < topLimit ) return true;
 	return false;
 }
 
-// ����� ��� ���� 1.2.3
-// ��������� ���� �� �����
+
+
 void SetRandGeraldSail(ref chr, int nation)
 {
 	string ret = "";
 	int    st = GetCharacterShipType(chr);
 	ref    shref;
 	
-	// 1.2.3 ��������� �� ���� �������� � �������, �� ���� ��� ������ ����������
+	
 	if (st != SHIP_NOTUSED)
 	{
 		shref = GetRealShip(st); 
@@ -3074,15 +2977,16 @@ void SetSailsColor(ref chr, int col)
 	}		
 }
 
-// Warship 04.06.09 ��������, ����� �� �� ������ ������� ��������� ��������� ����
+
 bool CanSetSailsGerald(ref _char)
 {
-	int shipClass = GetCharacterShipClass(_char); // ���� ������� ���, ������ 7 (�����)
+	int shipClass = GetCharacterShipClass(_char); 
 	
-	// if(shipClass > 4) // �������� �� ����� ������� > 4
-	// {
-	// 	return false;
-	// }
+	
+	
+	
+	
 
 	return true;
 }
+

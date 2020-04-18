@@ -1,4 +1,4 @@
-// Ричард Флитвуд - английский капитан
+
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -38,9 +38,9 @@ void ProcessDialogEvent()
 					}
 					break;
 				}
-				if (pchar.questTemp.HWIC.Eng == "MirageTake")//а вот теперь начинается перебор кораблей
+				if (pchar.questTemp.HWIC.Eng == "MirageTake")
 				{
-					pchar.quest.ToAntiguaMirageOver.over = "yes"; //снять таймер
+					pchar.quest.ToAntiguaMirageOver.over = "yes"; 
 					int iMir = 0;
 					int iVal = 0;
 					for(i = 0; i < COMPANION_MAX; i++)
@@ -53,30 +53,30 @@ void ProcessDialogEvent()
 							if(sti(RealShips[sti(sld.ship.type)].basetype) == SHIP_MIRAGE)
 							{
 							iMir = 1;
-							RealShips[sti(sld.Ship.Type)].ship.upgrades.hull = 1;//чистый корпус
+							RealShips[sti(sld.Ship.Type)].ship.upgrades.hull = 1;
 							SetShipSailsFromFile(sld, "ships/parus_silk.tga");
-							SetSailsColor(sld, 0);//белый хлопковый парус
-							DeleteAttribute(sld, "ship.sails");//починить паруса
-							DeleteAttribute(sld, "ship.masts");//вернуть мачты
+							SetSailsColor(sld, 0);
+							DeleteAttribute(sld, "ship.sails");
+							DeleteAttribute(sld, "ship.masts");
 							}
 							if(sti(RealShips[sti(sld.ship.type)].basetype) == SHIP_VALCIRIA) iVal = 1;
 						}
-					}//установили признак наличия кораблей в эскадре.
-					if (iMir == 1 && iVal == 0)//потеряли Валькирию
+					}
+					if (iMir == 1 && iVal == 0)
 					{
 						dialog.text = "You are back, captain... I already know everything about your voyage.";
 						link.l1 = "Do you? So you must know that...";
 						link.l1.go = "Fleetwood_lostVal";
 						break;
 					}
-					if (iMir == 0 && iVal == 1)//потеряли Мираж
+					if (iMir == 0 && iVal == 1)
 					{
 						dialog.text = "You are back, captain... I already know everything about your voyage.";
 						link.l1 = "Do you? So you must know that...";
 						link.l1.go = "Fleetwood_lostMir";
 						break;
 					}
-					if (iMir == 0 && iVal == 0)//а это вообще плохо
+					if (iMir == 0 && iVal == 0)
 					{
 						dialog.text = "You are back, captain... I already know everything about your voyage.";
 						link.l1 = "Do you? So you must know that...";
@@ -125,7 +125,7 @@ void ProcessDialogEvent()
 			DialogExit();	
 			AddDialogExitQuest("MainHeroFightModeOn");
 			pchar.questTemp.HWIC.Holl = "FleetwoodCapture";
-			pchar.GenQuest.Detonation = true; // patch-4
+			pchar.GenQuest.Detonation = true; 
 		break;
 		
 		case "First_Task":
@@ -145,24 +145,24 @@ void ProcessDialogEvent()
 			link.l1 = "I got it, mister Fleetwood. I am going to see the harbour master.";
 			link.l1.go = "exit";	
 			pchar.questTemp.HWIC.Eng = "GotoPortoffice";
-			bDisableFastReload = false;//откроем быстрый переход
-			DeleteAttribute(pchar, "questTemp.HWIC.CanTake");//иные варианты более невозможны
+			bDisableFastReload = false;
+			DeleteAttribute(pchar, "questTemp.HWIC.CanTake");
 		break;
 		
 		case "First_Task_3":
 			DialogExit();
-			pchar.questTemp.HWIC.TakeQuestShip = "true";//все ПУ недоступны для стоянки до поры, также корабль нельзя продать
-			pchar.questTemp.HWIC.EngEquip = "true"; //форма солдат
+			pchar.questTemp.HWIC.TakeQuestShip = "true";
+			pchar.questTemp.HWIC.EngEquip = "true"; 
 			pchar.questTemp.HWIC.Eng = "GotoBridgetown";
 			GetValckiriaToCharacter(pchar);
 			pchar.quest.Knippel_Officer.win_condition.l1 = "location";
 			pchar.quest.Knippel_Officer.win_condition.l1.location = "SentJons_houseSP3";
 			pchar.quest.Knippel_Officer.function = "KnippelToOfficer";
-			pchar.questTemp.HWIC.Eng.BridgeCounter = 0;//счетчик посещений неписей Бриджтауна по квесту
+			pchar.questTemp.HWIC.Eng.BridgeCounter = 0;
 			AddQuestRecord("Holl_Gambit", "2-5");
 		break;
 		
-		//изымаем корабль
+		
 		case "Fleetwood_lostMir":
 			dialog.text = "Yes, I am aware that you have failed your mission to capture the pirate vessel. All my plans are ruined. I am taking away Valkyrie from you. You can go now, I don't need your services.";
 			link.l1 = "I am so sorry for that. Farewell, mister Fleetwood.";
@@ -182,12 +182,12 @@ void ProcessDialogEvent()
 			link.l1 = "I am so sorry for that. Farewell, mister Fleetwood.";
 			link.l1.go = "exit";
 			Pchar.questTemp.FiringOfficerIDX = GetCharacterIndex("Knippel");
-			AddDialogExitQuestFunction("LandEnc_OfficerFired");//Книппеля из офицеров
+			AddDialogExitQuestFunction("LandEnc_OfficerFired");
 			sld = characterFromId("Knippel");
-			ChangeCharacterAddressGroup(sld, "SentJons_houseH1", "goto", "goto1");//Книппеля домой
+			ChangeCharacterAddressGroup(sld, "SentJons_houseH1", "goto", "goto1");
 			pchar.questTemp.HWIC.Eng = "end";
 			CloseQuestHeader("Holl_Gambit");
-			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");//ПУ откроем
+			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");
 			DeleteAttribute(pchar, "questTemp.HWIC.EngEquip");
 			pchar.questTemp.HWIC.Detector = "eng_fail";
 			AddSimpleRumourCity("They say that you have failed some secret assignment of Richard Fleetwood. Well, you have got nothing to do on Antigua now...", "SentJons", 20, 3, "");
@@ -198,7 +198,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuestFunction("Fleetwood_RemoveShip");
 			pchar.questTemp.HWIC.Eng = "end";
 			CloseQuestHeader("Holl_Gambit");
-			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");//ПУ откроем
+			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");
 			DeleteAttribute(pchar, "questTemp.HWIC.EngEquip");
 			pchar.questTemp.HWIC.Detector = "eng_fail";
 			AddSimpleRumourCity("They say that you have failed some secret assignment of Richard Fleetwood. Well, you have got nothing to do on Antigua now...", "SentJons", 20, 3, "");
@@ -207,25 +207,25 @@ void ProcessDialogEvent()
 		case "Fleetwood_complete":
 			pchar.questTemp.HWIC.Eng.ShipType = SHIP_VALCIRIA;
 			AddDialogExitQuestFunction("Fleetwood_RemoveShip");	
-			if (CheckCharacterItem(pchar, "JacobJournal"))//проверяем журнал
+			if (CheckCharacterItem(pchar, "JacobJournal"))
 			{
 				dialog.text = "Yes, I am aware that you have succeeded in our plan. You have eliminated the insolent pirate and captured his ship. By the way, what is the real name of her?";
 				link.l1 = "Mirage.";
 				link.l1.go = "Abigile";
 			}
-			else//нет журнала - нет продолжения квеста
+			else
 			{
 				dialog.text = "Yes, I am aware that you have succeeded in our plan. You have eliminated the insolent pirate and captured his ship. I am going to take my Valkyrie from you and you can keep the pirate vessel as a prize... she will also serve as some sort of a compensation, there was a fire in the docks and you ship got burned. I am sorry, " + pchar.name + "... I hope the  ghost ship will serve you better\nI have ordered to clean your new vessel from that masquerade dirt and seaweeds. They will also dress your beauty in new sails of best cotton\nFinally, accept your reward - 100 000 pesos and this navigation tool, I always wanted to present it to a worthy sailor... You did a good jot out there and I am proud of you! Well, the time has come to say farewells, I have done my business here, I should return to Europe. Good fortune to you, captain!";
 				link.l1 = "Same to you, Richard!";
 				link.l1.go = "exit";
-				LocatorReloadEnterDisable("SentJons_houseSP3", "reload2", true);//закроем Флитвуда в комнате и пусть там сидит
+				LocatorReloadEnterDisable("SentJons_houseSP3", "reload2", true);
 				pchar.questTemp.HWIC.Eng = "end";
 				pchar.questTemp.HWIC.Detector = "eng_win_half";
 				CloseQuestHeader("Holl_Gambit");
 			}
 			AddMoneyToCharacter(pchar, 100000);
 			GiveItem2Character(pchar, "bussol");
-			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");//ПУ откроем
+			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");
 			DeleteAttribute(pchar, "questTemp.HWIC.EngEquip");
 			AddSimpleRumourCity("They say that you and Richard Fleetwood has planned some military operation and you have personally destroyed that elusive pirate who has been robbing our trade ships. You are a real hero, captain!", "SentJons", 20, 3, "");
 		break;
@@ -244,7 +244,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Abigile_2":
-			dialog.text = "There are always political strings to pull, my dear friend… Holland will have to admit that it was them who started a trade war against England. But it's unlikely that they will, they will blame Rodenburg for everything. Lucas might lose his position, or not. Anyways, his career will suffer a heavy blow\nNevermind, it's not our business now, captain. You did your part of the job and you did it well. That is I why I have another very delicate matter for you.";
+			dialog.text = "There are always political strings to pull, my dear friendпїЅ Holland will have to admit that it was them who started a trade war against England. But it's unlikely that they will, they will blame Rodenburg for everything. Lucas might lose his position, or not. Anyways, his career will suffer a heavy blow\nNevermind, it's not our business now, captain. You did your part of the job and you did it well. That is I why I have another very delicate matter for you.";
 			link.l1 = "I am listening, Richard. Who will be the next enemy of English crown to be destroyed this time?";
 			link.l1.go = "Abigile_3";			
 		break;
@@ -271,14 +271,14 @@ void ProcessDialogEvent()
 		case "Abigile_6":
 			DialogExit();
 			npchar.greeting = "fleetwood_2";
-			LocatorReloadEnterDisable("Villemstad_town", "houseSP2", false);//откроем дом Аби
-			LocatorReloadEnterDisable("Villemstad_houseSp2", "reload2", true);//закроем спальню Аби
+			LocatorReloadEnterDisable("Villemstad_town", "houseSP2", false);
+			LocatorReloadEnterDisable("Villemstad_houseSp2", "reload2", true);
 			AddQuestRecord("Holl_Gambit", "2-16");
 			pchar.questTemp.HWIC.Eng = "toAbigile";
 			sld = characterFromId("Bridgetown_tavernkeeper");
 			sld.model = "barmen_3";
 			sld.name = "Harry";
-			sld.lastname = "Fletcher";//перерисуем бармена Бриджтауна
+			sld.lastname = "Fletcher";
 			sld.greeting = "barmen_1";
 			sld = characterFromId("Solomon");
 			sld.greeting = "solomon_2";
@@ -337,14 +337,14 @@ void ProcessDialogEvent()
 			DialogExit();
 			pchar.questTemp.HWIC.Eng = "toBarbados";
 			AddQuestRecord("Holl_Gambit", "2-21");
-			SetFunctionTimerCondition("HWICEng_toBarbadosOver", 0, 0, 20, false);//чтобы не тянули
+			SetFunctionTimerCondition("HWICEng_toBarbadosOver", 0, 0, 20, false);
 			AddSimpleRumourCity("Oh, captain, I have heard that Richard Fleetwood really admires you. Trust me, his praise costs a lot. You must be a very important person...", "SentJons", 20, 3, "");
 		break;
 		
-//---------------------------------------------против всех-----------------------------------------------
+
 		
 		case "InTerksShore":
-			pchar.quest.Fleetwood_ShoreOver.over = "yes";//снять таймер
+			pchar.quest.Fleetwood_ShoreOver.over = "yes";
 			dialog.text = "I take it that you are the bastard who has kidnapped my Abigail. Charlie didn't return to me so it also must be you to be blamed.";
 			link.l1 = "You are right, mister Fleetwood. It is me. Charlie has helped to worm me into Abigail's confidence thanks to the letter you wrote to her. But straight to the business... Have you brought the money?";
 			link.l1.go = "InTerksShore_1";
@@ -374,17 +374,17 @@ void ProcessDialogEvent()
 			link.l1.go = "InTerksShore_5";
 		break;
 		
-		case "InTerksShore_5"://массовая драка на необитаемом острове
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешим драться
+		case "InTerksShore_5":
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			LAi_SetWarriorType(npchar);
 			LAi_group_MoveCharacter(npchar, "EnemyFight");
-			for (i=1; i<=3; i++)//офицеры Флитвуда
+			for (i=1; i<=3; i++)
 			{
 				sld = characterFromId("FlOfficer_"+i);
 				LAi_SetWarriorType(sld);
 				LAi_group_MoveCharacter(sld, "EnemyFight");
 			}
-			for (i=1; i<=7; i++)//засада Флитвуда
+			for (i=1; i<=7; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("EnemySailor_"+i, "sold_eng_"+i, "man", "man", 18, ENGLAND, -1, false, "soldier"));
 				FantomMakeCoolFighter(sld, 18, 30, 30, "blade_19", "pistol2", "bullet", 40);
@@ -393,7 +393,7 @@ void ProcessDialogEvent()
 				if (i >= 1 && i < 3) ChangeCharacterAddressGroup(sld, "Shore56", "goto", "goto2");
 				else ChangeCharacterAddressGroup(sld, "Shore56", "goto", "goto9");
 			}
-			for (i=1; i<=7; i++)//наши - к бою!
+			for (i=1; i<=7; i++)
 			{
 				sld = characterFromId("OwrSailor_"+i);
 				LAi_SetWarriorType(sld);

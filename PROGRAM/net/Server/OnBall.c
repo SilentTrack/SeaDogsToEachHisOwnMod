@@ -53,7 +53,7 @@ void NetServer_CreateBallsEnvironment(int iSMsg)
 void NetServer_OnCannonFire()
 {
 	aref arClient = GetEventData();
-	//int wFireClientID = GetEventData();
+	
 	float x = GetEventData();
 	float y = GetEventData();
 	float z = GetEventData();
@@ -81,7 +81,7 @@ void NetServer_OnCannonFire()
 	float fTempDispersionX = Degree2Radian(10.0);
 
 	fDirAng = fDirAng + fK * fTempDispersionY * (frnd() - 0.5);
-	fSpeedV0 = fSpeedV0;// + fAccuracy * (10.0 * fTempDispersionY) * (frnd() - 0.5);
+	fSpeedV0 = fSpeedV0;
 	fHeightAng = fHeightAng + fAccuracy * (fTempDispersionX) * (frnd() - 0.5);
 
 	NSBalls.Dir = fDirAng;
@@ -129,3 +129,4 @@ void NetServer_OnBallWaterHit()
 	NetServer_SendMessage(DST_ALL, iSMsg, false);
 	NMDelete(iSMsg);
 }
+

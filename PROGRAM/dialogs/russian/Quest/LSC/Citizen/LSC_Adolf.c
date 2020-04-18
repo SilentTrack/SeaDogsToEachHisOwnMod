@@ -1,4 +1,4 @@
-// Адольф Барбье - авантюрист
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -32,29 +32,29 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				dialog.text = "Аh, "+GetFullName(pchar)+"! "+TimeGreeting()+"! Want something?";
+				dialog.text = "пїЅh, "+GetFullName(pchar)+"! "+TimeGreeting()+"! Want something?";
 				link.l1 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
 				link.l1.go = "rumours_LSC";
 				link.l2 = "I want to ask you a few questions about the island.";
-				link.l2.go = "int_quests"; //информационный блок
+				link.l2.go = "int_quests"; 
 				link.l5 = "Just wanted to know how are you doing. See you!";
 				link.l5.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
-		case "meeting": // первая встреча
+		case "meeting": 
 			dialog.text = "Ha, just like me. I am not a sailor though, but my passion for adventures has lead me here. Now I have to rot on this ship's cemetery just like the others. By the way, my name is Adolf Barbier.";
 			link.l1 = "It was good to meet you, Adolf. See you.";
 			link.l1.go = "exit";
 			link.l2 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
 			link.l2.go = "rumours_LSC";
 			link.l3 = "I want to ask you a few questions about the island.";
-			link.l3.go = "int_quests"; //информационный блок
+			link.l3.go = "int_quests"; 
 			NextDiag.TempNode = "First time";
 		break;
 		
-		//----------------------------------Адольф Барбье----------------------------------------
+		
 		case "Adolf":
 			dialog.text = "Why the hell have you invaded in my place without my permission?";
 			link.l1 = "You are showing bad manners to your guest, Adolf. And I have got a business for you.";
@@ -98,8 +98,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Adolf_7":
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
-			chrDisableReloadToLocation = true;//закрыть локацию
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
+			chrDisableReloadToLocation = true;
 			DialogExit();
 			LAi_SetWarriorType(npchar);
 			ChangeCharacterAddressGroup(npchar, pchar.location, "barmen", "stay");
@@ -111,7 +111,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");	
 		break;
 		
-//--------------------------------------- блок вопросов и ответов ---------------------------------------------
+
 	case "int_quests":
 			dialog.text = "Well, let's have a talk. What do you want to know?";
 			if (!CheckAttribute(npchar, "quest.answer_1"))
@@ -165,10 +165,10 @@ void ProcessDialogEvent()
 			link.l1.go = "int_quests";
 			npchar.quest.answer_4 = "true";
 		break;
-// <-- блок вопросов и ответов
+
 		
-//----------------------------------------- специальные реакции -----------------------------------------------
-		//обнаружение ГГ в сундуках
+
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
 			link.l1 = "Damn it!";
@@ -196,7 +196,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//замечание по обнаженному оружию
+		
 		case "LSCNotBlade":
 			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
 			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
@@ -218,7 +218,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;
-// <-- специальные реакции
+
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

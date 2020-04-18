@@ -32,7 +32,7 @@ void ProcessDialogEvent()
 			}
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = TimeGreeting() + "! Welcome, " + GetAddress_Form(NPChar) + " to Los-Teques mine saloon. Food, drinks an...girls –all at affordable prices! My name is "+GetFullName(npchar)+" and I am always at your service.";
+				dialog.text = TimeGreeting() + "! Welcome, " + GetAddress_Form(NPChar) + " to Los-Teques mine saloon. Food, drinks an...girls пїЅall at affordable prices! My name is "+GetFullName(npchar)+" and I am always at your service.";
 				Link.l1 = "Let's see... I'm " + GetFullName(pchar) + ". Pleased to meet you, "+npchar.name+".";
 				Link.l1.go = "meeting";
 				npchar.quest.meeting = "1";
@@ -78,7 +78,7 @@ void ProcessDialogEvent()
 			if (CheckAttribute(pchar, "questTemp.Rum") && sti(pchar.questTemp.Rum) > 3)
 			{
 				dialog.text = "Captain, I think you'd be better off stopping. God forbid you raise hell while your under the influence. We're really strict about that here even your authority won't help you.";
-				link.l1 = "Hm... I suppose you're right –I've already had enough. Thanks for the concern!";			
+				link.l1 = "Hm... I suppose you're right пїЅI've already had enough. Thanks for the concern!";			
 				link.l1.go = "exit";
 			}
 			else
@@ -98,7 +98,7 @@ void ProcessDialogEvent()
 				}				
 				WaitDate("",0,0,0, 0, 30);
 				
-				dialog.text = "You're welcome, captain. Just five pesos –for a pint of my best black Jamaican rum!";
+				dialog.text = "You're welcome, captain. Just five pesos пїЅfor a pint of my best black Jamaican rum!";
 				link.l1 = RandPhraseSimple(LinkRandPhrase("All right, to your health and the prosperity of your establishment, buddy!","All right, to those at sea!","All right, to the augmented well-being of your town!"), LinkRandPhrase("All right, to a gust of production, to a gust of luck, that we all live more light-hearted and wealthy!","All right, to the wind always blowing in our backs in all affairs!","All right, to happiness, luck, joy, and... women!"));		
 				link.l1.go = "drink_1";
 			}
@@ -114,7 +114,7 @@ void ProcessDialogEvent()
 				else
 				{
 					LAi_AlcoholSetDrunk(pchar, 71, sti(pchar.questTemp.Rum)*2800);
-					Pchar.GenQuest.CamShuttle = makeint(sti(pchar.questTemp.Rum)/2); // Jason
+					Pchar.GenQuest.CamShuttle = makeint(sti(pchar.questTemp.Rum)/2); 
 				}
 			}
 		break;
@@ -237,13 +237,13 @@ void ProcessDialogEvent()
 			DialogExit();
 			pchar.GenQuest.CannotWait = true;
 			pchar.GenQuest.MinentownSex = "true";
-			LocatorReloadEnterDisable("Minentown_tavern", "reload1_back", true); //закрыть таверну
-			LocatorReloadEnterDisable("Minentown_tavern", "reload2_back", false); //открыть комнату
-			bDisableFastReload = true;//закрыть переход
+			LocatorReloadEnterDisable("Minentown_tavern", "reload1_back", true); 
+			LocatorReloadEnterDisable("Minentown_tavern", "reload2_back", false); 
+			bDisableFastReload = true;
 			sld = GetCharacter(NPC_GenerateCharacter("MineFuckGirl" , "squaw_"+(rand(2)+1), "woman", "woman_B", 1, SPAIN, 1, true, "quest"));
 			sld.dialog.FileName = "Tavern\Minentown_Tavern.c";
 			sld.dialog.currentnode = "MineFuckGirl";
-			//sld.greeting = "";
+			
 			sld.name = GetIndianName(WOMAN);
 			sld.lastname = "";
 			LAi_SetStayType(sld);
@@ -266,7 +266,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 		break;
 
-		// ============== Грабеж среди бела дня, попытка залезть в сундуки =========================
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("Robbery in broad day light!!! What's going on here?! Wait, hold on, buddy...", "Hey, what are doing there?! Trying to rob me? Now you are screwed...", "Wait, what the hell are you doing? Turns out that you are a thief! Consider this the end of the line, good man...");
 			link.l1 = LinkRandPhrase("Devil!!", "Caramba!!", "Ah, shit!");
@@ -281,10 +281,10 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
 
-			LAi_LockFightMode(Pchar, true); // ножками путь убегает
+			LAi_LockFightMode(Pchar, true); 
 		    LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
-		    LAi_group_Attack(NPChar, Pchar); // не работает на бессмертного мера :(
-			i = GetCharIDXByParam("CityType", "location", Pchar.location); // фантом солдат
+		    LAi_group_Attack(NPChar, Pchar); 
+			i = GetCharIDXByParam("CityType", "location", Pchar.location); 
 			if (i != -1)
 			{
 			    LAi_group_Attack(&Characters[i], Pchar);
@@ -292,3 +292,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

@@ -19,7 +19,7 @@ void InitInterface(string iniName)
 
 	SetEventHandler("frame", "PS_CheckButtons", 0);
 
-	// fill colors list
+	
 	for (i=0; i<SAILS_COLOR_QUANTITY; i++)
 	{
 		string attrName = "pic" + (i + 1);
@@ -40,7 +40,7 @@ void PS_FillProfilesTable()
 	string sCurProfileName = ""
 	if (CheckAttribute(&NCProfiles, "CurProfile")) { sCurProfileName = NCProfiles.CurProfile; }
 
-	// fill profiles table
+	
 	if (CheckAttribute(&NCProfiles, "Profiles"))
 	{
 		aref arProfiles;	makearef(arProfiles, NCProfiles.Profiles);
@@ -56,8 +56,8 @@ void PS_FillProfilesTable()
 
 	Table_UpdateWindow("TABLE_PROFILES");
 
-	// select current profile
-	//if (iCurProfileIndex >= 0) { Event("TableSelectChange", "sl", "TABLE_PROFILES", iCurProfileIndex); }
+	
+	
 }
 
 void PS_TableSelectChange()
@@ -72,16 +72,16 @@ void PS_TableSelectChange()
 	GameInterface.EDITBOX_PLAYERPASSWORD.str = arProfile.Password;
 	GameInterface.EDITBOX_PLAYERSHIPNAME.str = arProfile.ShipName;
 
-	// select saved sail color
+	
 	ScrollImage_SetPosition("COLORSLIST", sti(arProfile.ColorSail));
 
-	// select saved face
+	
 	ScrollImage_SetPosition("FACESLIST", PS_FindIndex("FACESLIST", arProfile.ImageFace));
 
-	// select saved flag
+	
 	ScrollImage_SetPosition("FLAGSLIST", PS_FindIndex("FLAGSLIST", arProfile.ImageFlag));
 
-	// select sail
+	
 	ScrollImage_SetPosition("SAILSLIST", PS_FindIndex("SAILSLIST", arProfile.ImageSail));
 }
 
@@ -99,16 +99,16 @@ int PS_FindIndex(string sControl, string sName)
 
 void PS_CheckButtons()
 {
-	// check for Save button
+	
 	bool bSave = true;
 	if (GameInterface.EDITBOX_PLAYERNAME.str == "") { bSave = false; }
 	if (GameInterface.EDITBOX_PLAYERSHIPNAME.str == "") { bSave = false; }
 	Button_SetEnable("BUTTON_SAVE", bSave);
 
-	// check for Select button
+	
 	Button_SetEnable("BUTTON_SELECT", bSave);
 
-	// check for Delete button
+	
 	int iSelected = GameInterface.TABLE_PROFILES.select;
 	Button_SetEnable("BUTTON_DELETE", iSelected >= 1);
 }
@@ -198,7 +198,7 @@ void IDoExit(int exitCode)
 	EndCancelInterface(true);
 	
 	Net_SaveFile(false, &NCProfiles, "Profiles.nsv");
-	//DeleteAttribute(&NCProfiles, "");
+	
 }
 
 int ScrollGetTexture()
@@ -211,3 +211,4 @@ int ScrollGetTexture()
 	
 	return iTexture;
 }
+

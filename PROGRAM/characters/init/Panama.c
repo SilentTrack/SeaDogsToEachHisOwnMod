@@ -3,11 +3,11 @@ int CreatePanamaCharacters(int n)
 {
 	ref ch;
 	
-	///////////////////////////////////////////////////////////////////////////////
-	// ОСНОВНЫЕ ПЕРСОНАЖИ
-	///////////////////////////////////////////////////////////////////////////////
 	
-	makeref(ch,Characters[n]);			//Губернатор
+	
+	
+	
+	makeref(ch,Characters[n]);			
 	ch.id		= "Panama_Mayor";
 	ch.model	= "huber_21";
 	ch.sex = "man";
@@ -27,7 +27,7 @@ int CreatePanamaCharacters(int n)
 	EquipCharacterbyItem(ch, BLADE_LONG); 
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetImmortal(ch, true);
 	LAi_SetHuberType(ch);
 	LAi_RemoveLoginTime(ch);
@@ -35,7 +35,7 @@ int CreatePanamaCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Священик
+	makeref(ch,Characters[n]);			
 	ch.id		= "Panama_Priest";
 	ch.model	= "priest_4";
 	ch.model.animation = "man";
@@ -47,13 +47,13 @@ int CreatePanamaCharacters(int n)
 	ch.Dialog.Filename = "Common_church.c";
 	ch.greeting = "padre_1";
 	ch.nation = SPAIN;
-//	LAi_SetLoginTime(ch, 6.0, 21.99);
+
 	LAi_SetPriestType(ch);
 	LAi_group_MoveCharacter(ch, "SPAIN_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);		// ОФициантка
+	makeref(ch,Characters[n]);		
 	ch.id		= "Panama_waitress";
 	ch.model	= "women_12";
 	ch.sex = "woman";
@@ -70,7 +70,7 @@ int CreatePanamaCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Трактирщик
+	makeref(ch,Characters[n]);			
 	ch.id		= "Panama_tavernkeeper";
 	ch.model	= "barmen_3";
 	ch.greeting = "barmen_1";
@@ -89,7 +89,7 @@ int CreatePanamaCharacters(int n)
 	n = n + 1;
 
 
-	makeref(ch,Characters[n]);			//Торговец
+	makeref(ch,Characters[n]);			
 	ch.id		= "Panama_trader";
 	ch.model	= "trader_3";
 	ch.greeting = "store_2";
@@ -107,30 +107,9 @@ int CreatePanamaCharacters(int n)
 	ch.item_date = "";
 	n = n + 1;
 
-	/*makeref(ch,Characters[n]);			//Корабел
-	ch.id		= "Panama_shipyarder";
-	ch.model	= "shipowner_16";
-	ch.greeting = "shipyarder_";
-	ch.sex = "man";
-	ch.City = "Panama";
-	ch.location	= "Panama_Shipyard";
-	ch.location.group = "sit";
-	ch.location.locator = "sit1";
-	ch.Dialog.Filename = "Common_Shipyard.c";
-	ch.nation = SPAIN;
-	ch.quest.shiping = "0";
-	GiveItem2Character(ch, GUN_COMMON);
-	GiveItem2Character(ch, "topor1");
-	SetRandSPECIAL(ch);
-    SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
-	LAi_SetLoginTime(ch, 6.0, 21.99);
-	LAi_SetHuberType(ch);
-	LAi_group_MoveCharacter(ch, "SPAIN_CITIZENS");
-	LAi_SetImmortal(ch, true);
-	n = n + 1;*/
+	 
 
-	makeref(ch,Characters[n]);			//Банкир
+	makeref(ch,Characters[n]);			
 	ch.id		= "Panama_usurer";
 	ch.model	= "banker_3";
 	ch.sex = "man";
@@ -143,14 +122,14 @@ int CreatePanamaCharacters(int n)
 	ch.nation = SPAIN;
 	ch.greeting = "usurer_2";
 	ch.quest.shiping = "0";
-	ch.UsurerDeposit = 18000; // *1000 денег
+	ch.UsurerDeposit = 18000; 
 	ch.money = USURER_MIN_MONEY + rand(USURER_NORM);
 	LAi_SetOwnerType(ch);
 	LAi_group_MoveCharacter(ch, "SPAIN_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Начальник порта
+	makeref(ch,Characters[n]);			
 	ch.id		= "Panama_PortMan";
 	ch.model	= "citiz_4";
 	ch.sex = "man";
@@ -167,7 +146,7 @@ int CreatePanamaCharacters(int n)
 	ch.item_date = "";
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Хозяйка борделя
+	makeref(ch,Characters[n]);			
 	ch.id		= "Panama_Hostess";
 	ch.name		= "Dolores"
 	ch.lastname = "";
@@ -181,10 +160,11 @@ int CreatePanamaCharacters(int n)
 	ch.Dialog.Filename = "Common_Brothel.c";
 	ch.greeting = "maman_2";
 	ch.nation = SPAIN;
-	ch.questChurch = ""; //флаг для пожертвований
+	ch.questChurch = ""; 
 	LAi_SetOwnerType(ch);
 	LAi_group_MoveCharacter(ch, "SPAIN_CITIZENS");
 	n = n + 1;
 
 	return n;
 }
+

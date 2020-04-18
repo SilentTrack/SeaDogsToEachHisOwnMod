@@ -109,7 +109,7 @@ void ProcessDialogEvent()
 			Link.l1.go = "Exit";			
 		break;
 		
-		// генератор "A reason to hurry"
+		
 		case "Reason_To_Fast_1":
 				if(Pchar.Location == Pchar.location.from_sea)
 				{
@@ -229,7 +229,7 @@ void ProcessDialogEvent()
 			GiveItem2Character(pchar, "mapQuest"); 
 			arItem = ItemsFromID("mapQuest");
 			ReasonToFast_GenerateTreasureMap(arItem);	
-			DeleteAttribute(pchar, "questTemp.ReasonToFast.cantSpeakOther");//можем говорить с губером 
+			DeleteAttribute(pchar, "questTemp.ReasonToFast.cantSpeakOther");
 			AddDialogExitQuest("pchar_back_to_player");	
 			LAi_LocationFightDisable(&locations[FindLocation(pchar.questTemp.ReasonToFast.PatrolLocation)], false);	
 		break;
@@ -244,13 +244,13 @@ void ProcessDialogEvent()
 		case "Reason_To_Fast_17":
 			pchar.questTemp.ReasonToFast = "PatrolSuccess_1";
 			AddMoneyToCharacter(pchar, -makeint(sti(pchar.questTemp.ReasonToFast.p5)));
-			pchar.GenQuest.CannotWait = 1; // лочим интерфейс отдыха
+			pchar.GenQuest.CannotWait = 1; 
 			if(CheckAttribute(pchar,"questTemp.ReasonToFast.chain")) DeleteAttribute(pchar,"questTemp.ReasonToFast.chain");
 			if(CheckAttribute(pchar,"questTemp.ReasonToFast.ShipName")) DeleteAttribute(pchar,"questTemp.ReasonToFast.ShipName");
 			if(CheckAttribute(pchar,"questTemp.ReasonToFast.ShipTypeName")) DeleteAttribute(pchar,"questTemp.ReasonToFast.TypeName");
 			switch (sti(pchar.questTemp.ReasonToFast.target))
 			{
-				case 0: // корабль с товаром
+				case 0: 
 					sTemp1 = generateRandomNameToShip(sti(pchar.questTemp.ReasonToFast.GuardNation));
 					iShipType = ReasonToFast_GetVictimShipType();
 					iShipGoods = ReasonToFast_GetVictimShipGoods();
@@ -259,7 +259,7 @@ void ProcessDialogEvent()
 					link.l1.go = "Reason_To_Fast_GoodBye_0";
 					pchar.questTemp.ReasonToFast.chain = "A0";
 					pchar.questTemp.ReasonToFast.ShipName = sTemp1;										
-					DeleteAttribute(pchar, "questTemp.ReasonToFast.cantSpeakOther");//можем говорить с губером
+					DeleteAttribute(pchar, "questTemp.ReasonToFast.cantSpeakOther");
 					AddQuestRecord("ReasonToFast", "11");
 					AddQuestUserData("ReasonToFast", "sShipType", pchar.questTemp.ReasonToFast.ShipTypeName);					
 					AddQuestUserData("ReasonToFast", "sShipName", sTemp1);
@@ -267,7 +267,7 @@ void ProcessDialogEvent()
 					ReasonToFast_GenerateVictimShip(iShipType, iShipGoods);					
 				break;
 
-				case 1: // сокровища губернатора
+				case 1: 
 					switch(rand(3))
 					{
 						case 0:
@@ -306,7 +306,7 @@ void ProcessDialogEvent()
 					pchar.questTemp.ReasonToFast.chain = "A1";
 					AddQuestRecord("ReasonToFast", "12");
 					pchar.questTemp.ReasonToFast.ShipName = sTemp2;
-					DeleteAttribute(pchar, "questTemp.ReasonToFast.cantSpeakOther");//можем говорить с губером
+					DeleteAttribute(pchar, "questTemp.ReasonToFast.cantSpeakOther");
 					
 					pchar.quest.ReasonToFast_ClearLakey.win_condition.l1 = "Timer";
 					pchar.quest.ReasonToFast_ClearLakey.win_condition.l1.date.day = GetAddingDataDay(0, 0, 2);
@@ -362,8 +362,8 @@ void ProcessDialogEvent()
 			pchar.questTemp.ReasonToFast.relation = GetNationRelation2MainCharacter(sti(pchar.questTemp.ReasonToFast.GuardNation));
 			SetNationRelation2MainCharacter(sti(pchar.questTemp.ReasonToFast.GuardNation), RELATION_ENEMY); 
 			
-			pchar.GenQuest.HunterScore2Pause = 1; //Ќ«√ не начисл€ютс€
-			pchar.GenQuest.ReputationNotChange = 1; //репутацию не мен€ть
+			pchar.GenQuest.HunterScore2Pause = 1; 
+			pchar.GenQuest.ReputationNotChange = 1; 
 			
 			chrDisableReloadToLocation = true;
 			LAi_SetPlayerType(pchar);
@@ -412,6 +412,6 @@ void ProcessDialogEvent()
 			link.l1.go = "Reason_To_Fast_ExitFight";
 			pchar.questTemp.ReasonToFast = "PatrolAngry";	
 		break;
-		// генератор "A reason to hurry"
+		
 	}
 }

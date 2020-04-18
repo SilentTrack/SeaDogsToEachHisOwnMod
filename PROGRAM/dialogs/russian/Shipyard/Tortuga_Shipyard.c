@@ -1,10 +1,10 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me a question a little while ago...", "At his dock, and you know what–I've never seen such flat, curious people before in town.",
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me a question a little while ago...", "At his dock, and you know whatпїЅI've never seen such flat, curious people before in town.",
                           "What's with all the questions? My job is to build ships. Let's take care about that.", "block", 1, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where did my memory go...",
                       "Hm, well...", "Go ahead...", npchar, Dialog.CurrentNode);
@@ -23,25 +23,26 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "guardoftruth_1":
-			dialog.text = "'Admirable'... No wonder –he would just run around his galleon as if he was chasing his wife, just plain admiring it.";
+			dialog.text = "'Admirable'... No wonder пїЅhe would just run around his galleon as if he was chasing his wife, just plain admiring it.";
 			link.l1 = "I see. Is Gaius on Tortuga right now?";
 			link.l1.go = "guardoftruth_2";
 		break;
 		
 		case "guardoftruth_2":
-			dialog.text = "No. He's set sail on his new ship and still hasn't returned to Tortuga. Where he took off –I have no clue. He didn't fill me in on that question.";
+			dialog.text = "No. He's set sail on his new ship and still hasn't returned to Tortuga. Where he took off пїЅI have no clue. He didn't fill me in on that question.";
 			link.l1 = "What an inconvenience... I really need him. We should even have a round of drinks for his 'admirable' ship. Anyway, thanks for the information.";
 			link.l1.go = "guardoftruth_3";
 		break;
 		
 		case "guardoftruth_3":
-			dialog.text = "Oh, no problem. Stop by again, captain. And don't forget –there's always a space saved in my docks waiting for you ship next time you need some repairs!";
+			dialog.text = "Oh, no problem. Stop by again, captain. And don't forget пїЅthere's always a space saved in my docks waiting for you ship next time you need some repairs!";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			AddQuestRecord("Guardoftruth", "9");
 			pchar.questTemp.Guardoftruth = "tortuga2";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

@@ -86,13 +86,13 @@ void ProcessDialogEvent()
 		case "Step_5":
 			switch (sti(pchar.questTemp.jailCanMove.Deliver.good))
 			{
-				case 0://попытка грабежа
+				case 0:
 					dialog.text = "Well-well, whatever, "+ GetSexPhrase("you were fooled, idiot","you were fooled, stupid girl") +". Now pay the cash down!";
 					link.l1 = "Go screw yourself with an anchor... And your friend has told me that his pals are generous.";
 					link.l1.go = "Step_fight";
 				break;
 				
-				case 1://кидалово
+				case 1:
 					if (iTotalTemp == 0) AddMoneyToCharacter(pchar, -50000);
 					else RemoveItems(pchar, "gold_dublon", iTotalTemp);
 					GetBandersTradeShore();
@@ -106,7 +106,7 @@ void ProcessDialogEvent()
 					link.l1.go = "Step_lay";
 				break;
 				
-				case 2://наведем на торговый корабль
+				case 2:
 					if (iTotalTemp == 0) AddMoneyToCharacter(pchar, -50000);
 					else RemoveItems(pchar, "gold_dublon", iTotalTemp);
 					GetBandersTradeShore();
@@ -121,7 +121,7 @@ void ProcessDialogEvent()
 					link.l1.go = "Step_trader";
 				break;
 				
-				case 3://наведем на курьерский корабль
+				case 3:
 					if (iTotalTemp == 0) AddMoneyToCharacter(pchar, -50000);
 					else RemoveItems(pchar, "gold_dublon", iTotalTemp);
 					GetBandersTradeShore();
@@ -150,7 +150,7 @@ void ProcessDialogEvent()
 			if (iTotalTemp == 0) AddMoneyToCharacter(pchar, -50000);
 			else RemoveItems(pchar, "gold_dublon", 300);
 			AddQuestRecord("GivePrisonFree", "17");
-			AddQuestUserData("GivePrisonFree", "sSex", GetSexPhrase("","а"));
+			AddQuestUserData("GivePrisonFree", "sSex", GetSexPhrase("","пїЅ"));
 			CloseQuestHeader("GivePrisonFree");
 			LAi_SetWarriorTypeNoGroup(npchar);
 			chrDisableReloadToLocation = false;
@@ -168,9 +168,9 @@ void ProcessDialogEvent()
 			AddQuestUserData("GivePrisonFree", "sShipName2", pchar.questTemp.jailCanMove.Deliver.ShipName2);
 			AddQuestUserData("GivePrisonFree", "sShoreName", pchar.questTemp.jailCanMove.Deliver.Island.Areal);
 			pchar.quest.jailCanMoveDeliver_ShipsAttack.win_condition.l1 = "location";
-            pchar.quest.jailCanMoveDeliver_ShipsAttack.win_condition.l1.location = pchar.questTemp.jailCanMove.Deliver.Island;//отправляем в локацию
-            pchar.quest.jailCanMoveDeliver_ShipsAttack.function = "Deliver_lay";//придем - а там пусто
-			SetFunctionTimerCondition("Deliver_TraderShipsOver", 0, 0, sti(pchar.questTemp.jailCanMove.Deliver.terms), false);//таймер
+            pchar.quest.jailCanMoveDeliver_ShipsAttack.win_condition.l1.location = pchar.questTemp.jailCanMove.Deliver.Island;
+            pchar.quest.jailCanMoveDeliver_ShipsAttack.function = "Deliver_lay";
+			SetFunctionTimerCondition("Deliver_TraderShipsOver", 0, 0, sti(pchar.questTemp.jailCanMove.Deliver.terms), false);
 			LAi_SetWarriorTypeNoGroup(npchar);
 			chrDisableReloadToLocation = false;
 		break;
@@ -186,9 +186,9 @@ void ProcessDialogEvent()
 			AddQuestUserData("GivePrisonFree", "sShipName2", pchar.questTemp.jailCanMove.Deliver.ShipName2);
 			AddQuestUserData("GivePrisonFree", "sShoreName", pchar.questTemp.jailCanMove.Deliver.Island.Areal);
 			pchar.quest.jailCanMoveDeliver_ShipsAttack.win_condition.l1 = "location";
-            pchar.quest.jailCanMoveDeliver_ShipsAttack.win_condition.l1.location = pchar.questTemp.jailCanMove.Deliver.Island;//отправляем в локацию
-            pchar.quest.jailCanMoveDeliver_ShipsAttack.function = "Deliver_CreateTraderShips";//создание кораблей
-			SetFunctionTimerCondition("Deliver_TraderShipsOver", 0, 0, sti(pchar.questTemp.jailCanMove.Deliver.terms), false);//таймер
+            pchar.quest.jailCanMoveDeliver_ShipsAttack.win_condition.l1.location = pchar.questTemp.jailCanMove.Deliver.Island;
+            pchar.quest.jailCanMoveDeliver_ShipsAttack.function = "Deliver_CreateTraderShips";
+			SetFunctionTimerCondition("Deliver_TraderShipsOver", 0, 0, sti(pchar.questTemp.jailCanMove.Deliver.terms), false);
 			LAi_SetWarriorTypeNoGroup(npchar);
 			chrDisableReloadToLocation = false;
 		break;
@@ -203,9 +203,9 @@ void ProcessDialogEvent()
 			AddQuestUserData("GivePrisonFree", "sShipName", pchar.questTemp.jailCanMove.Deliver.ShipName);
 			AddQuestUserData("GivePrisonFree", "sShoreName", pchar.questTemp.jailCanMove.Deliver.Island.Areal);
 			pchar.quest.jailCanMoveDeliver_ShipsCAttack.win_condition.l1 = "location";
-            pchar.quest.jailCanMoveDeliver_ShipsCAttack.win_condition.l1.location = pchar.questTemp.jailCanMove.Deliver.Island;//отправляем в локацию
-            pchar.quest.jailCanMoveDeliver_ShipsCAttack.function = "Deliver_CreateCureerShips";//создание кораблей
-			SetFunctionTimerCondition("Deliver_CureerShipsOver", 0, 0, sti(pchar.questTemp.jailCanMove.Deliver.terms), false);//таймер
+            pchar.quest.jailCanMoveDeliver_ShipsCAttack.win_condition.l1.location = pchar.questTemp.jailCanMove.Deliver.Island;
+            pchar.quest.jailCanMoveDeliver_ShipsCAttack.function = "Deliver_CreateCureerShips";
+			SetFunctionTimerCondition("Deliver_CureerShipsOver", 0, 0, sti(pchar.questTemp.jailCanMove.Deliver.terms), false);
 			LAi_SetWarriorTypeNoGroup(npchar);
 			chrDisableReloadToLocation = false;
 		break;
@@ -238,7 +238,7 @@ void ProcessDialogEvent()
 	}
 }
 
-void GetBandersTradeShore()//выберем остров для торгашей и курьера
+void GetBandersTradeShore()
 {
 	pchar.questTemp.jailCanMove.Deliver.Island = GetRandomIslandId();
 	pchar.questTemp.jailCanMove.Deliver.Island.Shore = GetIslandRandomShoreId(pchar.questTemp.jailCanMove.Deliver.Island);
@@ -259,7 +259,7 @@ void GetBandersTradeShore()//выберем остров для торгашей и курьера
 	}
 }
 
-void GetBandersTradeGoods()//выберем товар для торгашей
+void GetBandersTradeGoods()
 {
 	switch (rand(6))
 	{
@@ -300,7 +300,7 @@ void GetBandersTradeGoods()//выберем товар для торгашей
 	}
 }
 
-void GetBandersTradeNation()//выберем нацию торгаша и курьера
+void GetBandersTradeNation()
 {
 	switch (rand(3))
 	{

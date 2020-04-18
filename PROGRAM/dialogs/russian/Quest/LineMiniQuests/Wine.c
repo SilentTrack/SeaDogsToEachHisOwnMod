@@ -114,16 +114,16 @@ void ProcessDialogEvent()
 			DialogExit();
 			PlaySound("interface\important_item.wav");
 			Log_Info ("You have given the wine");
-			pchar.quest.Soldier_wait.over = "yes";//снять прерывание
+			pchar.quest.Soldier_wait.over = "yes";
 			DeleteAttribute(pchar, "questTemp.Wine.City");
 			sld = characterFromId(pchar.questTemp.Wine.id);
 			LAi_SetActorType(sld);
 			LAi_ActorGoToLocation(sld, "reload", "reload2", "none", "", "", "", -1);
 			sld.lifeday = 0;
 			CloseQuestHeader("Wine");
-			AddCharacterExpToSkill(pchar, "Commerce", 150);//торговля
-			AddCharacterExpToSkill(pchar, "Leadership", 50);//авторитет
-			AddCharacterExpToSkill(pchar, "Fortune", 50);//везение
+			AddCharacterExpToSkill(pchar, "Commerce", 150);
+			AddCharacterExpToSkill(pchar, "Leadership", 50);
+			AddCharacterExpToSkill(pchar, "Fortune", 50);
 		break;
 		
 		case "Exit":
@@ -132,3 +132,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

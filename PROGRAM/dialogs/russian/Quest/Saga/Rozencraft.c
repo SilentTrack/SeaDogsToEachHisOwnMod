@@ -1,4 +1,4 @@
-// Михаэль Розенкрафт - голландский капитан, квестовый покупатель бакаута
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -81,7 +81,7 @@ void ProcessDialogEvent()
 				dialog.text = "Splendid. It is more than I have expected. Here, take the gold. If you'll get more ironwood then come at Saint-Martin's tavern and talk to... you know who. He will set a meeting for us. I see that you are a much better partner than that idiot Molligan.";
 				link.l1 = "Fine. Consider we had a deal.";
 				link.l1.go = "rozencraft_5";
-				pchar.GenQuest.Bakaut = "true"; // генератор сбыта бакаута
+				pchar.GenQuest.Bakaut = "true"; 
 				break;
 			}
 			if(iTemp >= 70 && iTemp < 90)
@@ -89,7 +89,7 @@ void ProcessDialogEvent()
 				dialog.text = "Good. Here, take the gold. If you'll get more ironwood then come at Philipsburg's tavern and talk with... you know who. He will contact you with me. I see that we can do business with you, not worse than with that idiot Molligan.";
 				link.l1 = "Fine. Consider we had a deal.";
 				link.l1.go = "rozencraft_5";
-				pchar.GenQuest.Bakaut = "true"; // генератор сбыта бакаута
+				pchar.GenQuest.Bakaut = "true"; 
 				break;
 			}
 			if(iTemp >= 40 && iTemp < 70)
@@ -106,26 +106,26 @@ void ProcessDialogEvent()
 		
 		case "rozencraft_5":
 			DialogExit();
-			npchar.DontDeskTalk = true; // чтоб не доставал, в генераторе - снимаем
+			npchar.DontDeskTalk = true; 
 			iTemp = sti(npchar.quest.bakaut);
 			if (iTemp < 40) DeleteAttribute(npchar, "quest.bakaut");
 			else 
 			{
 				TakeNItems(pchar, "gold_dublon", iTemp*40);
 				RemoveCharacterGoods(pchar, GOOD_SANDAL, iTemp);
-				// считаем, сколько мы должны Свенсону
+				
 				int ibak = makeint((iTemp*40-1500)/2);
 				sld = characterFromId("Svenson");
-				sld.quest.bakaut_sum = ibak; // доля Яна
+				sld.quest.bakaut_sum = ibak; 
 				AddQuestRecord("Testament", "9");
 				AddQuestUserData("Testament", "sSum", iTemp*40);
 				AddQuestUserData("Testament", "sSum1", ibak);
-				if (CheckAttribute(pchar, "GenQuest.Bakaut")) AddQuestUserData("Testament", "sText", "Кроме того, если я еще добуду бакаут - я смогу сбыть эту ценную древесину Михаэлю Розенкрафту, договорившись через его человека в таверне Филипсбурга.");
+				if (CheckAttribute(pchar, "GenQuest.Bakaut")) AddQuestUserData("Testament", "sText", "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
 				pchar.questTemp.Saga = "removebakaut";
-				// корабль Розенкрафта сохраняем, в АИ на него будет стоять проверка на попадание
-				pchar.quest.Saga_Rozencraft_GetOut.over = "yes"; //снять прерывание
-				pchar.quest.Saga_Rozencraft_AfterBattle.over = "yes"; //снять прерывание
-				// ставим новое прерывание на потопление Розенкрафта
+				
+				pchar.quest.Saga_Rozencraft_GetOut.over = "yes"; 
+				pchar.quest.Saga_Rozencraft_AfterBattle.over = "yes"; 
+				
 				pchar.quest.Bakaut_Rozencraft_Die.win_condition.l1 = "Group_Death";
 				pchar.quest.Bakaut_Rozencraft_Die.win_condition.l1.group = "Rozencraft_Group";
 				pchar.quest.Bakaut_Rozencraft_Die.function = "Bakaut_RozencraftDie";
@@ -135,7 +135,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = "rozencraft_no_repeat";
 		break;
 		
-	// ------------------------------------генератор сбыта бакаута-----------------------------------------------
+	
 		case "bakaut":
 			dialog.text = "A, my old friend! Got some ironwood to sell?";
 			link.l1 = "Exactly, Michael. Let's trade.";
@@ -179,7 +179,7 @@ void ProcessDialogEvent()
 				}
 			}
 			npchar.DontDeskTalk = true;
-			pchar.quest.Bakaut_Rozencraft_Find.over = "yes"; //снять прерывание
+			pchar.quest.Bakaut_Rozencraft_Find.over = "yes"; 
 		break;
 		
 		case "bakaut_no_1":
@@ -205,7 +205,7 @@ void ProcessDialogEvent()
 		case "bakaut_1":
 			iTemp = GetSquadronGoods(pchar, GOOD_SANDAL);
 			if (iTemp > sti(pchar.GenQuest.Bakaut.Value)+20)
-			{ // перебор
+			{ 
 				dialog.text = "Wow! I am sorry, friend, but I can buy only "+FindRussianQtyString(sti(pchar.GenQuest.Bakaut.Value)+20)+"  , I don't have money for all of the cargo. I was expecting for a batch of "+FindRussianQtyString(sti(pchar.GenQuest.Bakaut.Value))+" pieces for forty doubloons each...";
 				link.l1 = "Fine. Take "+FindRussianQtyString(sti(pchar.GenQuest.Bakaut.Value)+20)+" now and the rest I will sell you next time.";
 				link.l1.go = "bakaut_2";
@@ -234,7 +234,7 @@ void ProcessDialogEvent()
 			TakeNItems(pchar, "gold_dublon", iTemp*40);
 			RemoveCharacterGoods(pchar, GOOD_SANDAL, iTemp);
 			npchar.DontDeskTalk = true;
-			pchar.quest.Bakaut_Rozencraft_Find.over = "yes"; //снять прерывание
+			pchar.quest.Bakaut_Rozencraft_Find.over = "yes"; 
 			pchar.quest.Bakaut_Rozencraft_Reset.win_condition.l1 = "MapEnter";
 			pchar.quest.Bakaut_Rozencraft_Reset.function = "Bakaut_RozencraftRemove";
 			NextDiag.CurrentNode = "rozencraft_no_repeat";

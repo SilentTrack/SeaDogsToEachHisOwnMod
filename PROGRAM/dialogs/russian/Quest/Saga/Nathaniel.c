@@ -1,4 +1,4 @@
-// Натаниэль Хоук - пиратский барон Марун-Тауна
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -33,7 +33,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "diffindoor_2":
-			dialog.text = "How could you, lad, if you don't even realize what I am talking about? A-kha… Do you even know how it feels to turn into a half dead old man from being healthy and strong within a minute?\nI've seen a lot of things, I thought that ancient Indian temple killed my ability to get surprised, but this... I had to see it coming! The blasted statue looked the same as the old idol which opened the door to the temple!";
+			dialog.text = "How could you, lad, if you don't even realize what I am talking about? A-khaпїЅ Do you even know how it feels to turn into a half dead old man from being healthy and strong within a minute?\nI've seen a lot of things, I thought that ancient Indian temple killed my ability to get surprised, but this... I had to see it coming! The blasted statue looked the same as the old idol which opened the door to the temple!";
 			link.l1 = "Fine, Nathan, let's have a talk. Let me introduce myself, I am "+GetFullName(pchar)+". First, I understand you very well because I came here the same way you did - using the Kukulcan portal.";
 			link.l1.go = "diffindoor_3";
 		break;
@@ -130,7 +130,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "diffindoor_18":
-			dialog.text = "Eh, my dear Dannie! She hasn't changed a bit... As reckless as always… You can't even imagine how badly I want to see and hug her now! I thought a lot while procrastinating here. See, pal, you start to see things in a different light when you are close to death. I have spent so little time with my wife!\nRaiding, Brethren's of the Coast official businesses, ruling Maroon Town. And she always supported me in everything: stayed alone for weeks, had quarrels with other pirates while I was gone, commanded our ship... My Dannie is the best woman in the world! And I... I should had said that I love her more often!\nI remember the day we decided to be together! Actually, that was the day I first met and fought supernatural things. It all happened because of that blasted idol which looked like the statues. Do you mind to hear a story? It is quite interesting.";
+			dialog.text = "Eh, my dear Dannie! She hasn't changed a bit... As reckless as alwaysпїЅ You can't even imagine how badly I want to see and hug her now! I thought a lot while procrastinating here. See, pal, you start to see things in a different light when you are close to death. I have spent so little time with my wife!\nRaiding, Brethren's of the Coast official businesses, ruling Maroon Town. And she always supported me in everything: stayed alone for weeks, had quarrels with other pirates while I was gone, commanded our ship... My Dannie is the best woman in the world! And I... I should had said that I love her more often!\nI remember the day we decided to be together! Actually, that was the day I first met and fought supernatural things. It all happened because of that blasted idol which looked like the statues. Do you mind to hear a story? It is quite interesting.";
 			link.l1 = "And why not? Tell me!";
 			link.l1.go = "story";
 			link.l2 = "Nathan, I don't have time for that. You will tell me about it later, when we will be sitting at Miskito village with a bottle of wine.";
@@ -188,7 +188,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "story_7";
 		break;
 		
-		// вот тут делаем развилку, в зависимости прошел ли игрок Калеуче
+		
 		case "story_7":
 			dialog.text = "... Van der Decken himself!!";
 			if (CheckAttribute(pchar, "questTemp.KhaelRoa"))
@@ -237,7 +237,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "story_12":
-			dialog.text = "Dannie raised the artifact and let it fly. I have no idea why. She said something about her female intuition… The artifact turned back into a glowing sphere, exploded, critically damaged the ghost ship and demoralized it's crew. I ordered to open fire\nFirst volley made them shudder. We performed an over stag and shot their rotten hull again before they recovered from the artifact's influence and returned fire...";
+			dialog.text = "Dannie raised the artifact and let it fly. I have no idea why. She said something about her female intuitionпїЅ The artifact turned back into a glowing sphere, exploded, critically damaged the ghost ship and demoralized it's crew. I ordered to open fire\nFirst volley made them shudder. We performed an over stag and shot their rotten hull again before they recovered from the artifact's influence and returned fire...";
 			link.l1 = "But you had to fight them anyway?";
 			link.l1.go = "story_13";
 		break;
@@ -376,7 +376,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			LAi_SetGroundSitTypeNoGroup(npchar);
 			NextDiag.CurrentNode = "diffindoor_wait";
-			pchar.questTemp.LSC.NatanTalk = "true"; // атрибут - разговор с Натаном состоялся
+			pchar.questTemp.LSC.NatanTalk = "true"; 
 			AddQuestRecord("BaronReturn", "10");
 			npchar.greeting = "nathaniel_1";
 		break;
@@ -395,7 +395,7 @@ void ProcessDialogEvent()
 			link.l1.go = "danny_1";
 		break;
 		
-		case "danny_1": // перекидываем pchar
+		case "danny_1": 
 			DialogExit();
 			LAi_SetActorType(pchar);
 			SetMainCharacterIndex(GetCharacterIndex("Nathaniel"));
@@ -415,7 +415,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "danny_2";
 		break;
 		
-		// в Марун-Тауне
+		
 		case "marun_town":
 			dialog.text = "Look who's just dropped in! It's "+GetFullName(pchar)+"  himself! Come in, come in, friend! How are you?";
 			link.l1 = "I am fine. And you, Nathan? I see that there is no spleen left. You look good. Snake Eye has done really well!";
@@ -449,7 +449,7 @@ void ProcessDialogEvent()
 		
 		case "marun_town_4":
 			dialog.text = "Ah, my friend "+GetFullName(pchar)+"! Come in, come in, captain! How are you? Need any help?";
-			// калеуче
+			
 			if (CheckAttribute(pchar, "questTemp.Caleuche.NatanInfo"))
 			{
 				link.l2 = "Nathan, I've come to you on a very important business. Do you remember telling me on the Island of Dead Ships, how you and Dannie sneaked into an Indian temple and then sunk the 'Flying Dutchman'?";
@@ -480,7 +480,7 @@ void ProcessDialogEvent()
 		
 		case "caleuche_3":
 			dialog.text = "Oh well... I cannot turn you down, but... You have no idea, what me and Dannie experienced there! Khael Roa is located east of Antigua. I found its map right when I got back to Maroon Town, it's there... (looking) The coordinates: 19 degrees 32' North, 62 degrees 25' West.";
-			link.l1 = "I'll write it down in my journal… Thanks, Nathan!";
+			link.l1 = "I'll write it down in my journalпїЅ Thanks, Nathan!";
 			link.l1.go = "caleuche_4";
 		break;
 		

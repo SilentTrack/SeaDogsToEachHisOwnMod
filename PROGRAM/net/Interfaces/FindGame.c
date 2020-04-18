@@ -1,4 +1,4 @@
-// 
+
 int iCurrentLanServer, iCurrentInternetServer, iCurrentFavoriteServer;
 string sCurrentIP = "";
 string sCurrentName = ""; 
@@ -15,9 +15,9 @@ int iCurrentInternetServersLoaded = 0;
 
 void InitInterface(string iniName)
 {
-	// init some clients data, maybe need place it in another fuction
+	
 	NetClient.ClientLastPacketIndex = 0;
-	// init some clients data, maybe need place it in another fuction
+	
 
 	DeleteAttribute(&NCFavorites, "");
 	Net_LoadFile(false, &NCFavorites, "Favorites.nsv");
@@ -116,12 +116,12 @@ void InitInterface(string iniName)
 
 	StringCollection_SetText("STRINGS_PROFILE", 2, "#" + NetClient.NickName);
 	
-	// 
+	
 	StringCollection_SetTextValue("STRINGS_FILTERS_VALUE", 1, iFG_MaxShipClass);
 	StringCollection_SetTextValue("STRINGS_FILTERS_VALUE", 2, iFG_Credit);
 	StringCollection_SetTextValue("STRINGS_FILTERS_VALUE", 3, iFG_Ping);
 
-	// set state for check buttons
+	
 	CheckButton_SetState("CHECKBUTTONS_WO_PASSWORD", 1, bFG_WOPassword);
 	CheckButton_SetState("CHECKBUTTONS_FREE_SERVERS", 1, bFG_FreeServers);
 
@@ -132,39 +132,39 @@ void InitInterface(string iniName)
 	CheckButton_SetState("CHECKBUTTONS_GAMETYPES", 3, bFG_DefendConvoy);
 	CheckButton_SetState("CHECKBUTTONS_GAMETYPES", 4, bFG_CaptureTheFort);
 
-	// disable addfav window
+	
 	XI_WindowShow("WND_ADDFAVORITES", false);
 	XI_WindowDisable("WND_ADDFAVORITES", true);
 
-	// need password window
+	
 	XI_WindowShow("WND_NEEDPASSWORD", false);
 	XI_WindowDisable("WND_NEEDPASSWORD", true);
 
-	// rejected window
+	
 	XI_WindowShow("WND_REJECTED", false);
 	XI_WindowDisable("WND_REJECTED", true);
 
-	// connect window
+	
 	XI_WindowShow("WND_CONNECT", false);
 	XI_WindowDisable("WND_CONNECT", true);
 
-	// tryconnect window
+	
 	XI_WindowShow("WND_TRYCONNECT", false);
 	XI_WindowDisable("WND_TRYCONNECT", true);
 
-	// account window
+	
 	XI_WindowShow("WND_ACCOUNTS", false);
 	XI_WindowDisable("WND_ACCOUNTS", true);
 
-	// inet servers loading window
+	
 	XI_WindowShow("WND_INETSERVERSLOADING", false);
 	XI_WindowDisable("WND_INETSERVERSLOADING", true);
 
-	// inet servers loading window
+	
 	XI_WindowShow("WND_YESNO", false);
 	XI_WindowDisable("WND_YESNO", true);
 
-	// MAGIC FIX
+	
 	DeleteParticles();
 }
 
@@ -206,7 +206,7 @@ void FG_ConnectToMasterServer()
 
 void FG_MasterServerTryConnectTimer()
 {
-	// try connect again if 5 seconds no response
+	
 	FG_ConnectToMasterServer();
 
 	PostEvent("FG_MasterServerTryConnectTimer", 1000);
@@ -226,7 +226,7 @@ void FG_MasterServerOnConnect()
 	StringCollection_SetText("STRINGS_INETSERVERLOADING_STATUS", 3, "capNetFG_MS_LoadingServersList");
 	StringCollection_SetText("STRINGS_INETSERVERLOADING_QUANTITY", 2, "#" + "0 / " + iNumInternetServerToLoad);
 
-	// delete current servers list
+	
 	DeleteAttribute(&NCInetServers, "");
 }
 
@@ -415,10 +415,10 @@ void FG_TableSelectChangeEvent()
 
 void FG_SelectEmptyServer()
 {
-	//sCurrentIP = "";
-	//sCurrentPort = "";
-	//sCurrentName = "";
-	//bCurrentProtected = false;
+	
+	
+	
+	
 
 	Picture_SetPicture("SERVER_MAP_PICTURE", "");
 
@@ -518,7 +518,7 @@ void FG_ClientNeedPasswordCancel()
 
 void FG_WindowShow(int iNewMode, bool bFirstSet)
 {
-	//if (iCurrentServersList == iNewMode) { return; }
+	
 
 	iCurrentServersList = iNewMode;
 
@@ -554,17 +554,17 @@ void FG_TabInet()
 	FG_WindowShow(NET_FG_INTERNET, false);
 	FG_FilterChange();
 
-	// check if first time
+	
 	if (iNumInternetServers == 0)
 	{
 		FG_FindInternetServers();
 	}
 	else
 	{
-		// check if list not updated - getting info from servers
+		
 		if (iNumInternetServersList == 0)
 		{
-			//iCurrentInternetServer2GetInfo = 0;
+			
 			Event("FG_GetInfoFromInternetServer");
 		}
 	}
@@ -572,8 +572,8 @@ void FG_TabInet()
 
 void FG_GetInfoFromInternetServer()
 {
-	// send packet to next 5 servers
-	//iCurrentInternetServer2GetInfo
+	
+	
 
 	PostEvent("FG_GetInfoFromInternetServer", 500);
 }
@@ -683,24 +683,24 @@ bool IsFilterOk(ref rServer)
 	if (bFG_WOPassword && sti(rServer.Secure)) { return false; }
 	if (bFG_FreeServers && (sti(rServer.NumClients) >= sti(rServer.MaxClients))) { return false; }
 
-	// check gametypes
+	
 	if (sti(rServer.GameType) == NETGAME_DEATHMATCH && !bFG_Deathmatch) { return false; }
 	if (sti(rServer.GameType) == NETGAME_NAVAL && !bFG_TeamDeathmatch) { return false; }
 	if (sti(rServer.GameType) == NETGAME_CONVOY && !bFG_DefendConvoy) { return false; }
 	if (sti(rServer.GameType) == NETGAME_FORT && !bFG_CaptureTheFort) { return false; }
 
-	// check credit
+	
 	if (sti(rServer.Credit) < iFG_Credit) { return false; }
-	// check max ship class
+	
 	if (sti(rServer.MaxClass) < iFG_MaxShipClass) { return false; }
-	// check ping
+	
 	if (sti(rServer.Ping) > iFG_Ping) { return false; }
 
-	// check map/island
+	
 	if (iMapListSelected != 0) 
 	{
-		if (rServer.IslandID == "" && iMapListSelected != 1) { return false; }	// check for open sea
-		// check for island
+		if (rServer.IslandID == "" && iMapListSelected != 1) { return false; }	
+		
 		string sRow = "tr" + (iMapListSelected + 1);
 		
 		if (rServer.IslandID != GameInterface.TABLE_MAPLIST.(sRow).td1.IslandID) { return false; }
@@ -846,7 +846,7 @@ void FG_OnRefresh()
 			iNumInternetServers = 0; 
 			iNumInternetServersList = 0;
 
-			// if we have first ask
+			
 		break;
 		case NET_FG_FAVORITE:
 		break;
@@ -870,7 +870,7 @@ void FG_OnPlayerSettings()
 
 void FG_OnFrame()
 {
-	//Button_SetEnable("BTN_JOINGAME", iCurrentLanServer != -1);
+	
 
 	string sNumServers = "#0 / 0";
 	switch (iCurrentServersList)
@@ -899,7 +899,7 @@ void FG_AddFavOnOk()
 	string sLink;
 	string sAddress = GameInterface.EDITBOX_SERVERIP.str;
 
-	// add record to favorites
+	
 	string sIP, sPort;
 	FG_ParseIPPort(sAddress, &sIP, &sPort);
 
@@ -932,7 +932,7 @@ void FG_AddFavOnOk()
 
 void FG_AddFavOnDelete()
 {
-	// delete record from favorites
+	
 	string sAddress = GameInterface.EDITBOX_SERVERIP.str;
 	DeleteAttribute(NCFavorites, sAddress);
 
@@ -989,7 +989,7 @@ void FG_OnAddFavorites()
 			Button_SetEnable("BTN_ADDFAV_DELETE", false);	
 		break;
 		case NET_FG_FAVORITE:
-			//Button_SetEnable("BTN_ADDFAV_DELETE", iCurrentFavoriteServer >= 0);
+			
 		break;
 	}
 
@@ -1031,7 +1031,7 @@ void FG_OnConnectOk()
 	XI_WindowShow("WND_CONNECT", false);
 	XI_WindowDisable("WND_CONNECT", true);
 
-	// show tryconnect window
+	
 	XI_WindowShow("WND_TRYCONNECT", true);
 	XI_WindowDisable("WND_TRYCONNECT", false);
 
@@ -1044,7 +1044,7 @@ void FG_OnConnectOk()
 	SetEventHandler("OnTryConnectCancel", "FG_OnTryConnectCancel", 0);
 	iTryConnectDeltaTime = 0;
 
-	//FG_ShowMainWindow();
+	
 }
 
 void FG_OnTryConnectFrame()
@@ -1102,28 +1102,12 @@ void FG_OnJoinGame()
 	GameInterface.EDITBOX_CONNECT_NICK.str = NetClient.NickName;
 	GameInterface.EDITBOX_CONNECT_PASSWORD.str = NetClient.Password;
 
-	/*NetClient.NickName = GameInterface.EDITBOX_PLAYERNAME.str;
-	NetClient.Password = GameInterface.EDITBOX_PLAYERPASSWORD.str;
-	NetClient.ShipName = GameInterface.EDITBOX_PLAYERSHIPNAME.str;*/
+	 
 
-	/*if (sti(GameInterface.FACESLIST.ListSize))
-	{
-		sImage = "pic" + (sti(GameInterface.FACESLIST.current) + 1);
-		NetClient.FaceImage = GameInterface.FACESLIST.(sImage).FileName.Name;
-	}
-	if (sti(GameInterface.SAILSLIST.ListSize))
-	{
-		sImage = "pic" + (sti(GameInterface.SAILSLIST.current) + 1);
-		NetClient.SailImage = GameInterface.SAILSLIST.(sImage).FileName.Name;
-	}
-	if (sti(GameInterface.FLAGSLIST.ListSize))
-	{
-		sImage = "pic" + (sti(GameInterface.FLAGSLIST.current) + 1);
-		NetClient.FlagImage = GameInterface.FLAGSLIST.(sImage).FileName.Name;
-	}*/
+	 
 
-	//NetClient_TryConnect(sCurrentIP, sti(sCurrentPort));
-	//IDoExit(RC_INTERFACE_NET_EXIT);
+	
+	
 }
 
 void FG_OnCancel()
@@ -1162,7 +1146,7 @@ bool AddServerToList(string sTableName, ref rServer, int iIndex)
 		arTable.td1.icon.offset = "-2,0";
 		arTable.td1.icon.width = 16;
 		arTable.td1.icon.height = 16;
-		//arTable.td1.icon.cellsize = true;
+		
 	}
 	arTable.td2.str = rServer.Name;
 	arTable.td3.str = "";

@@ -27,7 +27,7 @@ void ProcessDialogEvent()
 							"Oh, no, Father......", "No, padre, I just wanted to speak...", RandPhraseSimple("Hmm...", "Well, as you wish, Father..."), npchar, Dialog.CurrentNode);
 				link.l1.go = DialogGoNodeRepeat("exit", "none", "none", "NoMoreTalkExit", npchar, Dialog.CurrentNode);				
 			}
-			if (CheckAttribute(npchar, "protector.CheckAlways")) //гарды на камерах
+			if (CheckAttribute(npchar, "protector.CheckAlways")) 
 			{
 				if (GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY)
 				{					
@@ -42,7 +42,7 @@ void ProcessDialogEvent()
 					link.l1.go = "exit";
 				}
 			}
-			if (findsubstr(npchar.id, "Prisoner", 0) != -1) //заключенные
+			if (findsubstr(npchar.id, "Prisoner", 0) != -1) 
 			{
 				if (LAi_group_IsActivePlayerAlarm())
 				{
@@ -76,3 +76,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

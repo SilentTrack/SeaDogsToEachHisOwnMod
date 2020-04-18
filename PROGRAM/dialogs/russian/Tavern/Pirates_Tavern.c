@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -11,7 +11,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1.go = "exit";
 			if (CheckAttribute(PChar, "questTemp.Guardoftruth.Archy") && pchar.questTemp.Guardoftruth.Archy == "islatesorotavern")
 			{
-				link.l1 = "Послушай, "+npchar.name+", ты ничего не слыхал про человека по имени Мигель Дичозо? Говорят, его корабль видали у Исла Тесоро...";
+				link.l1 = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, "+npchar.name+", пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ? пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ...";
 				link.l1.go = "guardoftruth";
 			}
 			if(CheckAttribute(pchar, "questTemp.Tieyasal") && pchar.questTemp.Tieyasal == "begin" && !CheckAttribute(npchar, "quest.Tieyasal"))
@@ -46,7 +46,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "guardoftruth_4":
-			dialog.text = "A dark story, it is… When Blaze was murdered, everyone suspected Shark because his trinket, a shark's tooth, was found on the corpse. Plus, some people saw Shark in Blaze's residence that night\nShark had escaped Isla Tesoro before they gave him a black mark. He paid a visit to Dark Pastor and exchanged his frigate for a brig. No clue where the man is now. Zachary has sold the frigate to William Patterson later.";
+			dialog.text = "A dark story, it isпїЅ When Blaze was murdered, everyone suspected Shark because his trinket, a shark's tooth, was found on the corpse. Plus, some people saw Shark in Blaze's residence that night\nShark had escaped Isla Tesoro before they gave him a black mark. He paid a visit to Dark Pastor and exchanged his frigate for a brig. No clue where the man is now. Zachary has sold the frigate to William Patterson later.";
 			link.l1 = "Who is this Patterson?";
 			link.l1.go = "guardoftruth_5";
 		break;
@@ -73,7 +73,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			DialogExit();
 			AddQuestRecord("Guardoftruth", "60_1");
 			pchar.questTemp.Guardoftruth.Archy = "guadeloupe";
-			// маленькая развлекуха
+			
 			pchar.quest.GuardOT_cabinattack.win_condition.l1 = "EnterToSea";
 			pchar.quest.GuardOT_cabinattack.function = "GuardOT_PrepareCreateBandosInCabin";
 		break;
@@ -105,5 +105,5 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.quest.Tieyasal_ITAttack.function = "Tieyasal_CreateITShips";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }

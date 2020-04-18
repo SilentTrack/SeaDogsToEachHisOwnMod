@@ -1,4 +1,4 @@
-// Ришард Шамбон - контрабандист
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -24,7 +24,7 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				break;
 			}
-			// --> кольцо
+			
 			if (CheckAttribute(pchar, "questTemp.Saga.SharkHunt") && pchar.questTemp.Saga.SharkHunt == "find" && CheckAttribute(npchar, "quest.answer_2") && GetNpcQuestPastDayParam(npchar, "quest_date") >= 3 && !CheckAttribute(npchar, "quest.ring"))
 			{
 				dialog.text = "Oh! Here you are, pal. And I was thinking about finding you myself. I need you, friend.";
@@ -32,7 +32,7 @@ void ProcessDialogEvent()
 				link.l1.go = "ring";
 				break;
 			}
-			// <-- кольцо
+			
 			if (npchar.quest.meeting == "0")
 			{
 				dialog.text = "What do you want? To be honest, I am not in a good mood today. Actually I have forgotten when I was in it last time.";
@@ -42,18 +42,18 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				dialog.text = "Аh, "+GetFullName(pchar)+"! "+TimeGreeting()+"! Want something?";
+				dialog.text = "пїЅh, "+GetFullName(pchar)+"! "+TimeGreeting()+"! Want something?";
 				link.l1 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
 				link.l1.go = "rumours_LSC";
 				link.l2 = "I want to ask you a few questions about the island.";
-				link.l2.go = "int_quests"; //информационный блок
+				link.l2.go = "int_quests"; 
 				link.l5 = "Just wanted to know how are you doing. See you!";
 				link.l5.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
-		case "meeting": // первая встреча
+		case "meeting": 
 			dialog.text = "Bad? No, it is not bad. I am just not in a right mood. So what did you want?";
 			link.l1 = "Just wanted to know you. I am a newcomer here, so I am just walking around the Island and getting to know people.";
 			link.l1.go = "meeting_1";
@@ -84,11 +84,11 @@ void ProcessDialogEvent()
 			link.l2 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
 			link.l2.go = "rumours_LSC";
 			link.l3 = "I want to ask you a few questions about the island.";
-			link.l3.go = "int_quests"; //информационный блок
+			link.l3.go = "int_quests"; 
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// Кольцо
+		
 		case "ring":
 			dialog.text = "And was I different before? Come on, I had bad days, everybody sometimes have them! Tell me, there are gossips among the Island that you are an excellent fighter. Is it true?";
 			link.l1 = "I don't know what they say, but I know how to handle a sword if that is what you are asking.";
@@ -167,13 +167,13 @@ void ProcessDialogEvent()
 			pchar.quest.LSC_Ring_Start.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 1);
 			pchar.quest.LSC_Ring_Start.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 1);
 			pchar.quest.LSC_Ring_Start.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
-			pchar.quest.LSC_Ring_Start.function = "LSC_RingStart"; // готовы
+			pchar.quest.LSC_Ring_Start.function = "LSC_RingStart"; 
 			pchar.quest.LSC_Ring_Over.win_condition.l1 = "Timer";
 			pchar.quest.LSC_Ring_Over.win_condition.l1.date.hour  = 10.0;
 			pchar.quest.LSC_Ring_Over.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 1);
 			pchar.quest.LSC_Ring_Over.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 1);
 			pchar.quest.LSC_Ring_Over.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
-			pchar.quest.LSC_Ring_Over.function = "LSC_RingOver"; // опоздание
+			pchar.quest.LSC_Ring_Over.function = "LSC_RingOver"; 
 			AddQuestRecord("LSC_Ring", "1");
 		break;
 		
@@ -230,7 +230,7 @@ void ProcessDialogEvent()
 			pchar.quest.LSC_Ring_enter.win_condition.l1.locator_group = "reload";
 			pchar.quest.LSC_Ring_enter.win_condition.l1.locator = "reload_ring";
 			pchar.quest.LSC_Ring_enter.function = "LSC_RingEnter";
-			LSC_RingSetItems(); // раскладка итемзов
+			LSC_RingSetItems(); 
 			AddQuestRecord("LSC_Ring", "3");
 		break;
 		
@@ -258,7 +258,7 @@ void ProcessDialogEvent()
 			LAi_SetWarriorType(npchar);
 			LAi_warrior_DialogEnable(npchar, true);
 			LAi_group_MoveCharacter(npchar, "TMP_FRIEND");
-			DoQuestCheckDelay("LSC_RingDialog", 60.0); // 1 минуту на пошариться
+			DoQuestCheckDelay("LSC_RingDialog", 60.0); 
 			npchar.quest.diagnode = "ring_19";
 			AddQuestRecord("LSC_Ring", "4");
 		break;
@@ -336,7 +336,7 @@ void ProcessDialogEvent()
 			LAi_SetWarriorType(npchar);
 			LAi_warrior_DialogEnable(npchar, true);
 			LAi_group_MoveCharacter(npchar, "TMP_FRIEND");
-			DoQuestCheckDelay("LSC_RingDialog", 80.0); // 1.3 минуты на пошариться
+			DoQuestCheckDelay("LSC_RingDialog", 80.0); 
 			npchar.quest.diagnode = "ring_28";
 			AddQuestRecord("LSC_Ring", "5");
 		break;
@@ -362,7 +362,7 @@ void ProcessDialogEvent()
 			pchar.quest.LSC_Ring_cabin.win_condition.l1 = "location";
 			pchar.quest.LSC_Ring_cabin.win_condition.l1.location = "ExternalRingCabin1";
 			pchar.quest.LSC_Ring_cabin.win_condition = "LSC_RingEnterCabin";
-			sld = ItemsFromID("RingCapBook"); // кладем журнал 'Санта-Люсии'
+			sld = ItemsFromID("RingCapBook"); 
 			sld.shown = true;
 			sld.startLocation = "ExternalRingCabin1";
 			sld.startLocator = "item1";
@@ -379,7 +379,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = "ring_wait";
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocator(npchar, "goto", "goto2", "LSC_RingSetToBarman", -1);
-			DoQuestCheckDelay("LSC_RingDialog", 30.0); // 30 сек на пошариться
+			DoQuestCheckDelay("LSC_RingDialog", 30.0); 
 			npchar.quest.diagnode = "ring_33";
 		break;
 		
@@ -411,14 +411,14 @@ void ProcessDialogEvent()
 		
 		case "ring_36":
 			dialog.text = "Keep it for yourself. You have done the most risky job after all.";
-			if (CheckAttribute(pchar, "questTemp.LSC.Ring.ReadCapBook")) // прочел журнал
+			if (CheckAttribute(pchar, "questTemp.LSC.Ring.ReadCapBook")) 
 			{
 				link.l1 = "Fine. And I have found something else which such a treasure hunter like yourself might find useful. Here, there were a captain's log lying on the desk. The story which is written there is very sad... but it concerns us in a some way. There is a box hidden in the cargo hold and it is filled with gold! Read it!";
 				link.l1.go = "ring_41";
 			}
 			else
 			{
-				if (CheckCharacterItem(pchar, "RingCapBook")) // взял журнал
+				if (CheckCharacterItem(pchar, "RingCapBook")) 
 				{
 					link.l1 = "Fine. But I have found one more thing - captain's log.";
 					link.l1.go = "ring_38";
@@ -459,7 +459,7 @@ void ProcessDialogEvent()
 		
 		case "book_wait":
 			dialog.text = "Did you read it? What is there?";
-			if (CheckAttribute(pchar, "questTemp.LSC.Ring.ReadCapBook")) // прочел журнал
+			if (CheckAttribute(pchar, "questTemp.LSC.Ring.ReadCapBook")) 
 			{
 				link.l1 = "Well, listen then... The story is very sad... but it concerns us now in a some way. Your treasure hunting skills might be able to help us. There is a hidden box filled with gold in the cargo hold! Read it!";
 				link.l1.go = "ring_41";
@@ -505,11 +505,11 @@ void ProcessDialogEvent()
 		case "ring_cabin_exit":
 			DialogExit();
 			chrDisableReloadToLocation = false;
-			LocatorReloadEnterDisable("ExternalRingInside", "reload1", false); // открываем выход
-			LocatorReloadEnterDisable("LostShipsCity_town", "reload_ring", false); // открываем вход // patch-2
+			LocatorReloadEnterDisable("ExternalRingInside", "reload1", false); 
+			LocatorReloadEnterDisable("LostShipsCity_town", "reload_ring", false); 
 			DoQuestReloadToLocation("ExternalRingDeck", "reload", "reload2", "LSC_RingFinalStage");
 			sld = ItemsFromID("RingCapBook");
-			sld.shown = false; // убираем журнал
+			sld.shown = false; 
 			AddQuestRecord("LSC_Ring", "6");
 		break;
 		
@@ -518,13 +518,13 @@ void ProcessDialogEvent()
 			chrDisableReloadToLocation = false;
 			LAi_SetActorType(npchar);
 			LAi_ActorFollowEverywhere(npchar, "", -1);
-			// ставим прерывание на локатор
+			
 			pchar.quest.LSC_Ring_gold.win_condition.l1 = "locator";
 			pchar.quest.LSC_Ring_gold.win_condition.l1.location = "ExternalRingInside";
 			pchar.quest.LSC_Ring_gold.win_condition.l1.locator_group = "quest";
 			pchar.quest.LSC_Ring_gold.win_condition.l1.locator = "gold";
 			pchar.quest.LSC_Ring_gold.win_condition = "LSC_RingFindGold";
-			// подменяем состав бокса
+			
 			pchar.GenQuestBox.ExternalRingInside = true;
 			pchar.GenQuestBox.ExternalRingInside.box1.items.jewelry5 = 2522;
 			AddQuestRecord("LSC_Ring", "7");
@@ -550,7 +550,7 @@ void ProcessDialogEvent()
 		
 		case "ring_49":
 			DialogExit();
-			SetLaunchFrameFormParam("Two hours later..."+ NewStr() +"The gold was shared!", "", 0, 5);//табличка
+			SetLaunchFrameFormParam("Two hours later..."+ NewStr() +"The gold was shared!", "", 0, 5);
 			WaitDate("", 0, 0, 0, 2, 10);
 			LaunchFrameForm();
 			RecalculateJumpTable();
@@ -560,20 +560,20 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ring_50":
-			dialog.text = "Done… Thank you, "+pchar.name+", for coming with me. I couldn't do this without you. Now I should consider building a tartan... ah, whatever. I'll think about it later\nI have got a work to do - moving the gold to safe places. Farewell, friend, I wish you use your cut wisely!";
+			dialog.text = "DoneпїЅ Thank you, "+pchar.name+", for coming with me. I couldn't do this without you. Now I should consider building a tartan... ah, whatever. I'll think about it later\nI have got a work to do - moving the gold to safe places. Farewell, friend, I wish you use your cut wisely!";
 			link.l1 = "Bye, Richard. It was a very nice day today. See you!";
 			link.l1.go = "ring_51";
 		break;
 		
 		case "ring_51":
 			DialogExit();
-			LocatorReloadEnterDisable("ExternalRingInside", "reload1", false); // открываем выход
-			LocatorReloadEnterDisable("LostShipsCity_town", "reload_ring", false); // открываем вход
+			LocatorReloadEnterDisable("ExternalRingInside", "reload1", false); 
+			LocatorReloadEnterDisable("LostShipsCity_town", "reload_ring", false); 
 			DoQuestCheckDelay("LSC_RingFinalStage", 0.5);
 			DeleteAttribute(pchar, "questTemp.LSC.Ring.ReadCapBook");
 			AddQuestRecord("LSC_Ring", "8");
 		break;
-//--------------------------------------- блок вопросов и ответов ---------------------------------------------
+
 		case "int_quests":
 			dialog.text = "Questions? Oh, fine, if you really need that...";
 			if (!CheckAttribute(npchar, "quest.answer_1"))
@@ -628,10 +628,10 @@ void ProcessDialogEvent()
 			link.l1.go = "int_quests";
 			npchar.quest.answer_4 = "true";
 		break;
-// <-- блок вопросов и ответов
+
 		
-//----------------------------------------- специальные реакции -----------------------------------------------
-		//обнаружение ГГ в сундуках
+
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
 			link.l1 = "Damn it!";
@@ -659,7 +659,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//замечание по обнаженному оружию
+		
 		case "LSCNotBlade":
 			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
 			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
@@ -681,7 +681,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;
-// <-- специальные реакции
+
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

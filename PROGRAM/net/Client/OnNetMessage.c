@@ -8,7 +8,7 @@ void NetClient_OnNetMessage()
 
 	if (iPacketIndex)
 	{
-		// callback garanted message
+		
 		int iSMsg = NMCreate();
 		NMAddClientID(iSMsg, wClientID);
 		NMAddByte(iSMsg, NC_GARANTED);
@@ -16,8 +16,8 @@ void NetClient_OnNetMessage()
 		NetClient_SendMessageDirect(iSMsg);
 		NMDelete(iSMsg);
 
-		// skip duplicated packets
-		if (iPacketIndex <= sti(NetClient.ClientLastPacketIndex)) { return; }	// check for 32767 << 1
+		
+		if (iPacketIndex <= sti(NetClient.ClientLastPacketIndex)) { return; }	
 
 		NetClient.ClientLastPacketIndex = iPacketIndex;
 	}
@@ -151,3 +151,4 @@ void NetClient_OnStatistics(int iMsg)
 
 	Event("NCEvent_PlayerStatistic", "lssllllllllfl", iPIndex, sNickName, sFaceImage, iRank, iRewardAccuracy, iRewardVitality, iRewardVictorious, iWon, iLost, iWrecks, iSunk, fAccuracy, iTotalDamage);
 }
+

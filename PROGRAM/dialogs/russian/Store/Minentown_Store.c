@@ -71,7 +71,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 		break;
 
-		// ============== Грабеж среди бела дня, попытка залезть в сундуки =========================
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("Robbery in broad daylight!!! What's going on here?! Wait, hold on, pal...", "Hey, what are doing there?! Trying to rob me? Now you are screwed...", "Wait, what the hell are you doing? Turns out that you are a thief! Consider this the end of the line, good man...");
 			link.l1 = LinkRandPhrase("Devil!!", "Caramba!!", "Ah, shit!");
@@ -86,10 +86,10 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
 
-			LAi_LockFightMode(Pchar, true); // ножками путь убегает
+			LAi_LockFightMode(Pchar, true); 
 		    LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
-		    LAi_group_Attack(NPChar, Pchar); // не работает на бессмертного мера :(
-			i = GetCharIDXByParam("CityType", "location", Pchar.location); // фантом солдат
+		    LAi_group_Attack(NPChar, Pchar); 
+			i = GetCharIDXByParam("CityType", "location", Pchar.location); 
 			if (i != -1)
 			{
 			    LAi_group_Attack(&Characters[i], Pchar);
@@ -97,3 +97,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

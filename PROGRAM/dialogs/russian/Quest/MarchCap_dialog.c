@@ -19,19 +19,19 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 		break;
 		
-		//разговор на палубе
+		
 		case "MarchCap":
-			pchar.quest.MarchCapOver.over = "yes"; //снять прерывание
+			pchar.quest.MarchCapOver.over = "yes"; 
 			dialog.text = "Here you are, captain. Let's talk details. You will understand why I didn't want to talk about this in public.";
 			link.l1 = "Go on, sir. I am listening.";
 			link.l1.go = "MarchCap_1";
 		break;
 		
 		case "MarchCap_1":
-			pchar.GenQuest.MarchCap.Goods = SelectMarchCapGoods1();//целевой товар
+			pchar.GenQuest.MarchCap.Goods = SelectMarchCapGoods1();
 			switch (rand(2))
 			{
-				case 0: //конвой у острова, установка параметров
+				case 0: 
 					pchar.GenQuest.MarchCap.Island = GetRandomIslandId();
 					while(pchar.GenQuest.MarchCap.Island == pchar.GenQuest.MarchCap.Startisland)
 					{
@@ -52,7 +52,7 @@ void ProcessDialogEvent()
 					link.l2.go = "MarchCap_exit";
 				break;
 				
-				case 1: //энкаунтер на глобалке, установка параметров
+				case 1: 
 					pchar.GenQuest.MarchCap.Startcity = SelectAnyColony(pchar.GenQuest.MarchCap.basecity);
 					pchar.GenQuest.MarchCap.Finishcity = SelectAnyColony2(pchar.GenQuest.MarchCap.basecity, pchar.GenQuest.MarchCap.Startcity);
 					pchar.GenQuest.MarchCap.DaysQty = 5+drand(5);
@@ -63,7 +63,7 @@ void ProcessDialogEvent()
 					link.l2.go = "MarchCap_exit";
 				break;
 				
-				case 2: //одиночный пиратский кулсейлор у бухты, установка параметров
+				case 2: 
 					pchar.GenQuest.MarchCap.Goods = GOOD_GOLD + drand(makeint(GOOD_SILVER - GOOD_GOLD));
 					pchar.GenQuest.MarchCap.GoodsQty = sti(pchar.rank)*50+170+rand(30);
 					if (sti(pchar.GenQuest.MarchCap.GoodsQty) > 1600) pchar.GenQuest.MarchCap.GoodsQty = 1500+rand(100);
@@ -80,7 +80,7 @@ void ProcessDialogEvent()
 						if (!isLocationFreeForQuests(pchar.GenQuest.MarchCap.Island) || !isLocationFreeForQuests(pchar.GenQuest.MarchCap.Island.Shore)) pchar.GenQuest.MarchCap.Island.Shore = "";
 					}
 					pchar.GenQuest.MarchCap.DaysQty = GetMaxDaysFromIsland2Island(pchar.GenQuest.MarchCap.Startisland, pchar.GenQuest.MarchCap.Island)+1;
-					pchar.GenQuest.MarchCap.PirateName = "l" + rand(GetNamesCount(NAMETYPE_ORIG) - 1);//пират
+					pchar.GenQuest.MarchCap.PirateName = "l" + rand(GetNamesCount(NAMETYPE_ORIG) - 1);
 					pchar.GenQuest.MarchCap.ShipType = SelectPirateShipType();
 					pchar.GenQuest.MarchCap.Cannon = SelectLevelCannonParameter(sti(pchar.GenQuest.MarchCap.ShipType));
 					dialog.text = "I was informed about one pirate named "+GetName( NAMETYPE_ORIG, pchar.GenQuest.MarchCap.PirateName, NAME_NOM)+". This bandit has recently pinched "+RandPhraseSimple(RandPhraseSimple("English","French"), RandPhraseSimple("Spanish","Dutch"))+" and loaded his cargo with "+GetGoodsNameAlt(sti(pchar.GenQuest.MarchCap.Goods))+". But, what a shame, his ship "+GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(pchar.GenQuest.MarchCap.ShipType), "Name")+"Acc"))+" was badly damaged, so he had to take time to repair her.\nHe is currently at "+XI_ConvertString(pchar.GenQuest.MarchCap.Island.Shore+"Gen")+" of "+XI_ConvertString(pchar.GenQuest.MarchCap.Island+"Gen")+". I think that it will take around "+FindRussianDaysString(sti(pchar.GenQuest.MarchCap.DaysQty))+" for him to fix masts and holes in the hull. We can get there in time if we hurry and all of "+GetGoodsNameAlt(sti(pchar.GenQuest.MarchCap.Goods))+" will be ours\nI will not be able to deal with this pirate on my own, he is a very good sailor and fighter, but two of us can face him successfully despite of his experience. So, are you in or not?";
@@ -106,7 +106,7 @@ void ProcessDialogEvent()
 			npchar.loyality = MAX_LOYALITY;
 			SetCharacterRemovable(npchar, false);
 			Character_SetAbordageEnable(npchar, false);
-			npchar.Tasks.CanBoarding = false; // запрет идти на абордаж // Addon 2016-1 Jason Пиратская линейка
+			npchar.Tasks.CanBoarding = false; 
 			pchar.quest.MarchCap1_1.win_condition.l1 = "Timer";
 			pchar.quest.MarchCap1_1.win_condition.l1.date.hour  = sti(GetTime()+rand(10));
 			pchar.quest.MarchCap1_1.win_condition.l1.date.day   = GetAddingDataDay(0, 0, sti(pchar.GenQuest.MarchCap.DaysQty));
@@ -115,7 +115,7 @@ void ProcessDialogEvent()
 			pchar.quest.MarchCap1_1.win_condition.l2 = "location";
 			pchar.quest.MarchCap1_1.win_condition.l2.location = pchar.GenQuest.MarchCap.Island;
 			pchar.quest.MarchCap1_1.function = "MarchCap1_CreateConvoy";
-			SetFunctionTimerCondition("MarchCap_Attack_Over", 0, 0, sti(pchar.GenQuest.MarchCap.DaysQty)+2, false); //таймер на нахождение
+			SetFunctionTimerCondition("MarchCap_Attack_Over", 0, 0, sti(pchar.GenQuest.MarchCap.DaysQty)+2, false); 
 			pchar.quest.MarchCap1_fail.win_condition.l1 = "NPC_Death";
 			pchar.quest.MarchCap1_fail.win_condition.l1.character = "MarchCap";
 			pchar.quest.MarchCap1_fail.function = "MarchCap_fail";
@@ -136,9 +136,9 @@ void ProcessDialogEvent()
 		break;
 		
 		case "MarchCap_Talk_exit":
-			pchar.quest.MarchCap1_fail2.over = "yes"; //снять прерывание
-			pchar.quest.MarchCap1_fail1.over = "yes"; //снять прерывание
-			pchar.quest.MarchCap1_fail.over = "yes"; //снять прерывание
+			pchar.quest.MarchCap1_fail2.over = "yes"; 
+			pchar.quest.MarchCap1_fail1.over = "yes"; 
+			pchar.quest.MarchCap1_fail.over = "yes"; 
 			DialogExit();
 			npchar.lifeday = 0;
 			LAi_SetActorType(npchar);
@@ -207,7 +207,7 @@ void ProcessDialogEvent()
 			pchar.GenQuest.MarchCap = "exellent";
 		break;
 		
-		//если будет время - здесь создаем еще одного клона с уникальным ИД для продолжения квеста
+		
 		case "MarchCap_Deck_continue":
 			dialog.text = "There is a possibility, captain. I will find you if I would get another profitable lead which I won't be able to do on my own. You look like a reliable battle companion for me as well.";
 			link.l1 = "Nice! Farewell, captain. Good luck!";
@@ -228,7 +228,7 @@ void ProcessDialogEvent()
 			npchar.loyality = MAX_LOYALITY;
 			SetCharacterRemovable(npchar, false);
 			Character_SetAbordageEnable(npchar, false);
-			npchar.Tasks.CanBoarding = false; // запрет идти на абордаж // Addon 2016-1 Jason Пиратская линейка
+			npchar.Tasks.CanBoarding = false; 
 			pchar.quest.MarchCap1_1.win_condition.l1 = "Timer";
 			pchar.quest.MarchCap1_1.win_condition.l1.date.hour  = sti(GetTime()+rand(10));
 			pchar.quest.MarchCap1_1.win_condition.l1.date.day   = GetAddingDataDay(0, 0, sti(pchar.GenQuest.MarchCap.DaysQty));
@@ -262,11 +262,11 @@ void ProcessDialogEvent()
 			npchar.loyality = MAX_LOYALITY;
 			SetCharacterRemovable(npchar, false);
 			Character_SetAbordageEnable(npchar, false);
-			npchar.Tasks.CanBoarding = false; // запрет идти на абордаж // Addon 2016-1 Jason Пиратская линейка
+			npchar.Tasks.CanBoarding = false; 
 			pchar.quest.MarchCap1_1.win_condition.l1 = "location";
 			pchar.quest.MarchCap1_1.win_condition.l1.location = pchar.GenQuest.MarchCap.Island;
 			pchar.quest.MarchCap1_1.function = "MarchCap3_CreatePirate";
-			SetFunctionTimerCondition("MarchCap_Attack_Over", 0, 0, sti(pchar.GenQuest.MarchCap.DaysQty), false); //таймер
+			SetFunctionTimerCondition("MarchCap_Attack_Over", 0, 0, sti(pchar.GenQuest.MarchCap.DaysQty), false); 
 			pchar.quest.MarchCap1_fail.win_condition.l1 = "NPC_Death";
 			pchar.quest.MarchCap1_fail.win_condition.l1.character = "MarchCap";
 			pchar.quest.MarchCap1_fail.function = "MarchCap_fail";

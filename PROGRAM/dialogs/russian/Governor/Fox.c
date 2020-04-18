@@ -1,4 +1,4 @@
-// полковник Фокс - бравый командир морской пехоты 'морские лисы'.
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -27,7 +27,7 @@ void ProcessDialogEvent()
 				link.l1.go = "guardoftruth";
 				break;
 			}
-			// Addon-2016 Jason, французские миниквесты (ФМК) Сент-Кристофер
+			
 			if (CheckAttribute(pchar, "questTemp.FMQN") && pchar.questTemp.FMQN == "eng_reward")
 			{
 				dialog.text = "As far as I understand, you are the French captain who had been assisting my men in their mission on Sint-Maarten? "+TimeGreeting()+"!";
@@ -75,8 +75,8 @@ void ProcessDialogEvent()
 			DialogExit();
 			npchar.quest.utensil = "true";
 			AddQuestRecord("Guardoftruth", "24");
-			Island_SetReloadEnableGlobal("Dominica", true);//patch-7
-			// заполняем сундук
+			Island_SetReloadEnableGlobal("Dominica", true);
+			
 			pchar.GenQuestBox.Shore27 = true;
 			pchar.GenQuestBox.Shore27.box1.money = 30000;
 			pchar.GenQuestBox.Shore27.box1.items.gold_dublon = 100;
@@ -89,7 +89,7 @@ void ProcessDialogEvent()
 			pchar.GenQuestBox.Shore27.box1.items.jewelry44 = 33;
 			pchar.GenQuestBox.Shore27.box1.items.jewelry45 = 16;
 			pchar.GenQuestBox.Shore27.box1.items.jewelry46 = 58;
-			pchar.GenQuestBox.Shore27.box1.items.jewelry35 = 1; // кадило
+			pchar.GenQuestBox.Shore27.box1.items.jewelry35 = 1; 
 			pchar.quest.GuardOT_finddominicachest.win_condition.l1 = "item";
 			pchar.quest.GuardOT_finddominicachest.win_condition.l1.item = "jewelry35";
 			pchar.quest.GuardOT_finddominicachest.function = "GuardOT_DominicaChest";
@@ -146,7 +146,7 @@ void ProcessDialogEvent()
 			ChangeCharacterNationReputation(pchar, ENGLAND, 20);
 		break;
 		
-		// Addon-2016 Jason, французские миниквесты (ФМК) Сент-Кристофер
+		
 		case "FMQN":
 			dialog.text = "I read the report. Your actions were highly evaluated, therefore you must be rewarded. It's thirty thousand pesos for expedition services and weapons for heroism in soldiery. Accept this blade and this arquebus. There are all yours now!";
 			link.l1 = "Thank you, sir.";

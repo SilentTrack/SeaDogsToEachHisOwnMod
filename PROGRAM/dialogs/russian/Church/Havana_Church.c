@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,7 +9,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "Not now, padre..."), "Have nothing to say really...",
                       "I'll ask, I'll ask... a bit later though...", "Pardon me, holy father...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			// калеуче
+			
 			if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "havana")
 			{
 				ref sld = characterFromId("Villemstad_Priest");
@@ -25,7 +25,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "caleuche":
 			dialog.text = "Thank God he paid heed to it! Once the gossips about the living dead had reached my ears, I immediately notified His Reference father Vincento, the inquisitor of Santiago. He promised to look into it, but so far no action was undertaken! I am afraid, His Reverence has been very busy lately...";
-			link.l1 = "I'll look into it myself. Perhaps all these gossips are but the ramblings of drunken hunters - therefore the Inquisition hasn’t taken them seriously. I'll head into the jungle to see it all with my own eyes.";
+			link.l1 = "I'll look into it myself. Perhaps all these gossips are but the ramblings of drunken hunters - therefore the Inquisition hasnпїЅt taken them seriously. I'll head into the jungle to see it all with my own eyes.";
 			link.l1.go = "caleuche_1";
 		break;
 		
@@ -129,8 +129,9 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddCharacterExpToSkill(pchar, "Leadership", 500);
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 
 
 

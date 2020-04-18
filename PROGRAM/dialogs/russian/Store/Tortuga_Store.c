@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
 
@@ -18,7 +18,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "Gaius Marchais? Oh yes, of course I remember him! Only he didn't purchase anything. He offered his ship for freight. I just happened to need a ship with a spacious hold –a large batch of raw skins.";
+			dialog.text = "Gaius Marchais? Oh yes, of course I remember him! Only he didn't purchase anything. He offered his ship for freight. I just happened to need a ship with a spacious hold пїЅa large batch of raw skins.";
 			link.l1 = "And what  was the unloading point?";
 			link.l1.go = "guardoftruth_1";
 		break;
@@ -39,4 +39,5 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 	}
 	UnloadSegment(NPChar.FileDialog2);
 }
+
 

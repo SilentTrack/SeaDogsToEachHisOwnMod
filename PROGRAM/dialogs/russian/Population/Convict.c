@@ -1,4 +1,4 @@
-// диалог освобожденных каторжников рудника
+
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -33,7 +33,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 
-		//замечание по обнаженному оружию от персонажей типа citizen
+		
 		case "CitizenNotBlade":
 			dialog.text = NPCharSexPhrase(NPChar, "Don't challenge your fate, pal! Take away your weapon!", "Listen, I am the citizen of this town and I'd ask you to hold down your blade.");
 			link.l1 = LinkRandPhrase("Fine.", "Fair enough.", "As you say...");
@@ -46,3 +46,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

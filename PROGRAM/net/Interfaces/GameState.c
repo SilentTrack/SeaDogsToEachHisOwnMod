@@ -55,7 +55,7 @@ void INetInterfaceControlProcess()
 
 void UpdateTable()
 {
-	//PostEvent( "eventSetGameState", 1, "l", 0 );
+	
 	object tmpData;
 
 	for( int n=0; n<NET_MAXCLIENTS; n++ )
@@ -66,24 +66,24 @@ void UpdateTable()
 
 		if( rClient.Use == "1" )
 		{
-			//-----
+			
 			tmpData.facetexture = rClient.UserData.Face.Texture;
 			tmpData.playername = rClient.NickName;
 			tmpData.shipname = rClient.Ship.Name;
 			tmpData.shiptype = rClient.Ship.Type;
 			tmpData.Team = rClient.Team;
 
-			//-----
-			tmpData.damage = makeint(rClient.Stat.DamageInflicted);//"51437";
-			tmpData.accuracy = "" + sti(rClient.Stat.Accuracy) + "%";//"73%";
+			
+			tmpData.damage = makeint(rClient.Stat.DamageInflicted);
+			tmpData.accuracy = "" + sti(rClient.Stat.Accuracy) + "%";
 
-			// player kills
+			
 			aref arKills; makearef(arKills, rClient.Stat.Kills);
 			int iNumKills = GetAttributesNum(arKills);
 			for (int u=1; u<iNumKills + 1; u++)
 			{
 				string sKill = "l" + u;
-				tmpData.score.(sKill).facetexture = rClient.Stat.Kills.(sKill).FaceTexture;//"NET\Faces\face1.tga";
+				tmpData.score.(sKill).facetexture = rClient.Stat.Kills.(sKill).FaceTexture;
 				tmpData.score.(sKill).charname = rClient.Stat.Kills.(sKill).NickName;
 				tmpData.score.(sKill).shipname = rClient.Stat.Kills.(sKill).ShipName;
 				tmpData.score.(sKill).shiptype = rClient.Stat.Kills.(sKill).ShipType;
@@ -95,7 +95,7 @@ void UpdateTable()
 		}
 	}
 
-	PostEvent( "evUpdateTable", 1000 ); // запуск обновления данных через 3 сек.
+	PostEvent( "evUpdateTable", 1000 ); 
 }
 
 void EventProcessAddToTable()
@@ -127,9 +127,9 @@ void AddToTable(int wClientID, aref arData)
 	for(n=1; n<NET_TOTALCLIENTS; n++)
 	{
 		row = "tr"+n;
-		if( !CheckAttribute(&GameInterface,"TABLE_LIST."+row+".clientID") ) // нет такого клиента - создаем новую запись
+		if( !CheckAttribute(&GameInterface,"TABLE_LIST."+row+".clientID") ) 
 		{
-			// constant data
+			
 			GameInterface.TABLE_LIST.(row).td1.icon1.offset = "0,1";
 			GameInterface.TABLE_LIST.(row).td1.icon1.width = 26;
 			GameInterface.TABLE_LIST.(row).td1.icon1.height = 26;
@@ -167,7 +167,7 @@ void AddToTable(int wClientID, aref arData)
 	GameInterface.TABLE_LIST.(row).td1.icon2.group = sShipGroup;
 	GameInterface.TABLE_LIST.(row).td1.icon2.image = "ship";
 	GameInterface.TABLE_LIST.(row).td1.str = arData.playername + "\n" + arData.shipname;
-	//GameInterface.TABLE_LIST.(row).td3.icon.texture = arData.teamtexture;
+	
 	if (sti(NCServer.GameType) == NETGAME_DEATHMATCH)
 	{
 		GameInterface.TABLE_LIST.(row).td3.icon.group = "NET_TEAMICONS";
@@ -182,7 +182,7 @@ void AddToTable(int wClientID, aref arData)
 	GameInterface.TABLE_LIST.(row).td5.str = arData.accuracy;
 
 
-	// score sinked ships
+	
 	string aname,siname,siname2;
 	string sScore = "";
 	aref aroot, acur;
@@ -194,14 +194,14 @@ void AddToTable(int wClientID, aref arData)
 		if( sScore!="" ) sScore += "\n";
 		sScore += aroot.(aname).charname + "\n" + aroot.(aname).shipname;
 		
-		// killed face 
+		
 		siname = "icon" + (n*2 + 1);
 		GameInterface.TABLE_LIST.(row).td6.(siname).offset = "0," + (4+n*30);
 		GameInterface.TABLE_LIST.(row).td6.(siname).width = 26;
 		GameInterface.TABLE_LIST.(row).td6.(siname).height = 26;
 		GameInterface.TABLE_LIST.(row).td6.(siname).texturepointer = aroot.(aname).facetexture;
 
-		// killed ship 
+		
 		siname2 = "icon" + (n*2 + 2);
 		rShip = Net_GetShipByIndex(sti(arData.ShipType));
 		sShipGroup = "SHIPS_" + rShip.Name;
@@ -236,3 +236,4 @@ void RefreshTableByFrameEvent()
 	DelEventHandler("frame", "RefreshTableByFrameEvent");
 	SendMessage(&GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"TABLE_LIST", 0 );
 }
+

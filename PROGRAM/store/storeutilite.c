@@ -7,9 +7,7 @@
 #event_handler("NextDay","StoreDayUpdateStart");
 #event_handler("EvStoreDayUpdate","StoreDayUpdate");
 
-/*
- ****************************  утилиты работы с магазином  *************************
-*/
+ 
 
 void SetStoreGoods(ref _refStore,int _Goods,int _Quantity)
 {
@@ -52,7 +50,7 @@ int GetContrabandGoods(ref _refStore, int _Goods)
 	string tmpstr = Goods[_Goods].name;
 	if( CheckAttribute(_refStore,"Goods."+tmpstr+".canbecontraband") )
 	{
-		return sti(_refStore.Goods.(tmpstr).canbecontraband); // 1 or 2
+		return sti(_refStore.Goods.(tmpstr).canbecontraband); 
 	}
 	return 0;	
 }
@@ -99,21 +97,19 @@ bool GetStoreGoodsUsed(ref _refStore,int _Goods)
 	string tmpstr = Goods[_Goods].name;
 	if( !CheckAttribute(_refStore,"Goods."+tmpstr) ) return false;
 	if( sti(_refStore.Goods.(tmpstr).NotUsed)==true ) return false;
-	// --> контрабанда
+	
 	if( sti(_refStore.Goods.(tmpstr).canbecontraband) == CONTRA_SELL || sti(_refStore.Goods.(tmpstr).TradeType) == T_TYPE_CONTRABAND)
 	{
 		if( !CheckOfficersPerk(GetMainCharacter(),"Trustworthy") ) return false;
 	}	
-	// <-- контрабанда
+	
 	return true;
 }
 
-/*
-  *******************************************************************************************************
-*/
+ 
 int GetStoreGoodsPrice(ref _refStore, int _Goods, int _PriceType, ref chref, int _qty)
 {
-	float _TradeSkill = GetSummonSkillFromNameToOld(chref,SKILL_COMMERCE); // 0..10.0
+	float _TradeSkill = GetSummonSkillFromNameToOld(chref,SKILL_COMMERCE); 
 	aref refGoods;
 	string tmpstr = Goods[_Goods].name;
 	int basePrice = MakeInt(Goods[_Goods].Cost);
@@ -157,7 +153,7 @@ int GetStoreGoodsPrice(ref _refStore, int _Goods, int _PriceType, ref chref, int
 	float skillModify;
 	float cModify = 1.0;
 	
-	if(_PriceType == PRICE_TYPE_BUY) // цена покупки товара игроком
+	if(_PriceType == PRICE_TYPE_BUY) 
 	{
 		skillModify = 1.325 - _TradeSkill * 0.005; 
 		if(tradeType == T_TYPE_CANNONS) cModify = 3.0 + MOD_SKILL_ENEMY_RATE/5.0;
@@ -179,7 +175,7 @@ int GetStoreGoodsPrice(ref _refStore, int _Goods, int _PriceType, ref chref, int
 			}				
 		}
 	}
-	else	// цена продажи товара игроком
+	else	
 	{
 		skillModify = 0.675 + _TradeSkill * 0.005; 
 		if(CheckCharacterPerk(chref,"HT2"))
@@ -206,9 +202,9 @@ int GetStoreGoodsPrice(ref _refStore, int _Goods, int _PriceType, ref chref, int
 		}
 	}
 
-	// boal 23.01.2004 -->
+	
 	if (MakeInt(basePrice * tradeModify * skillModify * costCoeff + 0.5) < 1) return 1;
-	// boal 23.01.2004 <--
+	
 	
 	switch (Type)
 	{
@@ -238,7 +234,7 @@ int GetStoreGoodsPrice(ref _refStore, int _Goods, int _PriceType, ref chref, int
     return MakeInt(priceModify * basePrice * tradeModify * skillModify * _qty * costCoeff * cModify + 0.5);
 }
 
-// обратное преобразование цены в RndPriceModify
+
 float GetStoreGoodsRndPriceModify(ref _refStore, int _Goods, int _PriceType, ref chref, int _price)
 {
     float skillModify;
@@ -280,7 +276,7 @@ float GetStoreGoodsRndPriceModify(ref _refStore, int _Goods, int _PriceType, ref
 			break;
 	}
 
-    if(_PriceType == PRICE_TYPE_BUY) // цена покупки товара игроком
+    if(_PriceType == PRICE_TYPE_BUY) 
 	{
 		skillModify = 1.325 - _TradeSkill * 0.005; 
 		if(tradeType == T_TYPE_CANNONS) cModify = 3.0 + MOD_SKILL_ENEMY_RATE/5.0;
@@ -302,7 +298,7 @@ float GetStoreGoodsRndPriceModify(ref _refStore, int _Goods, int _PriceType, ref
 			}				
 		}	
 	}
-	else // цена продажи товара игроком
+	else 
 	{
 		skillModify = 0.675 + _TradeSkill * 0.005; 
 		if(CheckCharacterPerk(chref,"HT2"))
@@ -352,10 +348,10 @@ float GetStoreGoodsRndPriceModify(ref _refStore, int _Goods, int _PriceType, ref
 			tradeModify = tradeModify - 1.00;
 			break;	
 	}
-	 // может быть минусом, а что делать :(
+	 
     return tradeModify;
 }
-// <--
+
 
 void UpdateStore(ref pStore)
 {	
@@ -380,54 +376,54 @@ void UpdateStore(ref pStore)
 		makearef(curref, gref.(tmpstr));
 		delta = 0;
 				
-		// -->>>  новая система затаривания товаром в магазинах 
-		Manufacture = 0.0;					// ежедневное производство
-		Consumption = 0.0;					// ежедневное потребление
-		oldQty 	= sti(curref.Quantity);		// текущее кол-во товара в магазине
-		Norm	= sti(curref.Norm);			// норма товара в магазине
+		
+		Manufacture = 0.0;					
+		Consumption = 0.0;					
+		oldQty 	= sti(curref.Quantity);		
+		Norm	= sti(curref.Norm);			
 		aim = frnd();
-		if(Aim < 0.25) { Aim = 1.0; } 		// товар привезли
+		if(Aim < 0.25) { Aim = 1.0; } 		
 		else 
 		{
-			if(Aim > 0.70)	Aim = -1.0;		// товар увезли
-			else 			Aim =  0.0; 	// увоза-привоза нет
+			if(Aim > 0.70)	Aim = -1.0;		
+			else 			Aim =  0.0; 	
 		}
 		Aim = Aim * Norm * (frnd() * 0.2 + frnd() * 0.2 + 0.1);
 		
-		if(aim >= 0.0) 	     				{Manufacture = 0.2;} 	// производим в любой день, когда товар не вывозили
-        if(oldQty > makeint(0.25 * Norm)) 	{Consumption = 0.1;}	// потребляем
+		if(aim >= 0.0) 	     				{Manufacture = 0.2;} 	
+        if(oldQty > makeint(0.25 * Norm)) 	{Consumption = 0.1;}	
 
-        oldQty = oldQty + makeint(Aim); 						    // учли результаты от морской торговли
-		if(oldQty < 0)        				{oldQty = 0;}			// ибо нехер портить нам наполнение магазина! 
+        oldQty = oldQty + makeint(Aim); 						    
+		if(oldQty < 0)        				{oldQty = 0;}			
 
         if(oldQty < makeint(1.75 * Norm)) 
 		{
-			// проверили, как обстоят дела с лимитом, если всё пучком - обычный оборот
+			
 			curref.Quantity = oldQty + makeint(( Manufacture - Consumption ) * Norm); 			
 		}	
         else
 		{
-			// колония только жрёт наличные запасы		
+			
 			crunch = frnd();  
-            if(crunch < 0.15) 	curref.Quantity = makeint(Norm * frnd()); 	// самосвал или "к нам едет ревизор!!"
+            if(crunch < 0.15) 	curref.Quantity = makeint(Norm * frnd()); 	
             else				curref.Quantity = makeint(Norm * ( 1.75 + frnd() * 0.25 ));
 		}
-		if(sti(curref.Quantity) < 0) curref.Quantity = 0;	// может быть и меньше 0
-		// <<<--  новая система затаривания товаром в магазинах 
+		if(sti(curref.Quantity) < 0) curref.Quantity = 0;	
+		
 				
 		if( sti(Goods[i].type) == T_TYPE_UNIQUE || sti(Goods[i].type) == T_TYPE_CROWN ) curref.Quantity = 0;
 		
 		TradeType 	= sti(pStore.Goods.(tmpstr).TradeType);		
 		Type 		= sti(pStore.Goods.(tmpstr).Type);	
 		
-		pStore.Goods.(tmpstr).canbecontraband = 0; 		// по умолчанию товаров для контры нет
+		pStore.Goods.(tmpstr).canbecontraband = 0; 		
 								
 		if( TradeType == T_TYPE_CANNONS )
 		{
 			pStore.Goods.(tmpstr).canbecontraband = CONTRA_SELL;
 			delta = makeint((oldQty - sti(curref.Norm))/7);
 			curref.Quantity = oldQty - delta + (rand(2) - 1)*rand(sti(sti(curref.Norm) * 3/100));
-			if(sti(Goods[i].NotSale) == 1) // 1.2.5 --> старшие калибры не продаем !!!
+			if(sti(Goods[i].NotSale) == 1) 
 			{
 				curref.Quantity = 0; continue;
 			}		
@@ -436,18 +432,18 @@ void UpdateStore(ref pStore)
 		{
 			if(Type == T_TYPE_EXPORT || Type == T_TYPE_IMPORT )
 			{
-				if(sti(curref.Quantity) < makeint(0.80 * Norm)) // менее 0.80 нормы в магазине
+				if(sti(curref.Quantity) < makeint(0.80 * Norm)) 
 				{
-					pStore.Goods.(tmpstr).canbecontraband = CONTRA_SELL; // можем продать ЛЮБОЙ товар контрабандистам за 0.7 магазинной цены
+					pStore.Goods.(tmpstr).canbecontraband = CONTRA_SELL; 
 				}				
 				if(sti(curref.Quantity) > makeint(1.20 * Norm))
 				{
-					pStore.Goods.(tmpstr).canbecontraband = CONTRA_BUY; // можем купить товар у  контрабандистов по сниженной (относительно магазина) цене
+					pStore.Goods.(tmpstr).canbecontraband = CONTRA_BUY; 
 				}
 			}				
 		}
 
-		if( TradeType == T_TYPE_CONTRABAND )	// и кол-во у игрока должно быть > 0 !!
+		if( TradeType == T_TYPE_CONTRABAND )	
 		{
 			pStore.Goods.(tmpstr).canbecontraband = CONTRA_SELL;	
 		}
@@ -457,19 +453,7 @@ void UpdateStore(ref pStore)
 			rateInc = stf(curref.Quantity) / stf(curref.Norm);
 			curref.AddPriceModify = AddPriceModify(rateInc);
 		}
-/*
-		if(bBettaTestMode)
-		{
-			if(i == GOOD_FOOD )
-			{
-				trace("colony :" + pStore.Colony + " goods name : "+ tmpstr + 
-					" old_qty: " + oldQty + " Aim: " + Aim + " cur_qty: "+ curref.Quantity + " Norm: " + stf(curref.Norm) +
-					" cbc :" + pStore.Goods.(tmpstr).canbecontraband + " RndPriceModify: " + curref.RndPriceModify + " rateInc: " + rateInc);
-				trace("    цена покупки товара игроком : goods name " + tmpstr + " : " + GetStoreGoodsPrice(pStore, i, PRICE_TYPE_BUY,  pchar, 1))	
-				trace("    цена продажи товара игроком : goods name " + tmpstr + " : " + GetStoreGoodsPrice(pStore, i, PRICE_TYPE_SELL, pchar, 1))	
-			}	
-		}								
-*/		
+ 		
 	}
 }
 
@@ -488,9 +472,9 @@ void SetStoresTradeUsed(int StoreNum,int GoodsNum,bool goodsUsed)
 int storeDayUpdateCnt = -1;
 void StoreDayUpdateStart()
 {	
-//---> ugeen (если мотаем сразу несколько дней то должны обновлять все!!)
-	Event("EvSituationsUpdate", "l", 0);   // вызов размазаных вычислений на НехтДай
-//<--- ugeen	
+
+	Event("EvSituationsUpdate", "l", 0);   
+
 
 	if(storeDayUpdateCnt >= 0) return;
 	storeDayUpdateCnt = 0;
@@ -511,7 +495,7 @@ void StoreDayUpdate()
 void FillShipStore( ref chr)
 {
 	ref pRef = &stores[SHIP_STORE];
-	// boal все лишнее убрал, просто сбросить RndPriceModify   в 1 и все, тк иначе затаривание будет
+	
 	int iQuantity = 0;
 	string goodName;
 	
@@ -573,7 +557,7 @@ int GetStoreFreeSpace(object refStore)
 	return iWeight;
 }
 
-// boal -->
+
 string GetGoodsNameAlt(int idx)
 {
     string ret;
@@ -584,8 +568,8 @@ string GetGoodsNameAlt(int idx)
     return ret;
 }
 
-// запоминаем цены в ГГ
-void SetPriceListByStoreMan(ref rchar)   //rchar - это колония
+
+void SetPriceListByStoreMan(ref rchar)   
 {
     ref refStore, nulChr;
     string attr1, sGoods;
@@ -598,7 +582,7 @@ void SetPriceListByStoreMan(ref rchar)   //rchar - это колония
     if (sti(rchar.StoreNum) >= 0)
     {
         refStore = &stores[sti(rchar.StoreNum)];
-        attr1 = rchar.id; // ветка, где храним цены
+        attr1 = rchar.id; 
         for (i = 0; i < GOODS_QUANTITY; i++)
         {
             sGoods = "Gidx" + i;
@@ -609,7 +593,7 @@ void SetPriceListByStoreMan(ref rchar)   //rchar - это колония
         	   makearef(refGoods, refStore.Goods.(tmpstr));
          	   tradeType = MakeInt(refGoods.TradeType);
          	}
-            nulChr.PriceList.(attr1).(sGoods).tradeType = tradeType; // тип торговли            
+            nulChr.PriceList.(attr1).(sGoods).tradeType = tradeType; 
             nulChr.PriceList.(attr1).(sGoods).Buy  = GetStoreGoodsPrice(refStore, i, PRICE_TYPE_BUY,  pchar, 1);            
 			if (tradeType == T_TYPE_CONTRABAND && !bBettaTestMode)
             {
@@ -630,7 +614,7 @@ void SetPriceListByStoreMan(ref rchar)   //rchar - это колония
     }
 }
 
-// нулим магазин при захвате города эскадрой
+
 void SetNull2StoreMan(ref rchar)
 {
     ref refStore;
@@ -652,7 +636,7 @@ void SetNull2StoreMan(ref rchar)
     }
 }
 
-// Jason --> функция занулит определенный товар в определенном магазине
+
 void SetNull2StoreGood(ref rchar, int iGood)
 {
     ref refStore;
@@ -669,7 +653,7 @@ void SetNull2StoreGood(ref rchar, int iGood)
     }
 }
 
-// делим колво товара - остаток для грабежа rchar - это колония
+
 void SetNull2StoreManPart(ref rchar, float part)
 {
     ref refStore;
@@ -691,7 +675,7 @@ void SetNull2StoreManPart(ref rchar, float part)
     }
 }
 
-// нулим ростовщиков
+
 void SetNull2Deposit(string _city)
 {
     if (CheckAttribute(Pchar, "quest.Deposits." + _city))
@@ -701,9 +685,7 @@ void SetNull2Deposit(string _city)
     }
 }
 
-/*
- ****************************  утилиты работы со складом --> ugeen  28.01.10 ********************
-*/
+ 
 void SetStorageGoods(ref _refStore,int _Goods,int _Quantity, float _costCoeff)
 {
 	string tmpstr = Goods[_Goods].name;
@@ -786,4 +768,4 @@ int GetStorage(string sColony)
 	}
 	return -1;
 }
-// <-- ugeen
+

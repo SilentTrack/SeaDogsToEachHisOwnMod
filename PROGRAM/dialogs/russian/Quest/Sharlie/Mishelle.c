@@ -1,4 +1,4 @@
-// Брат Шарля, Мишель де Монпе, он же Дичозо, он же воплощение Кукулькана, он же главный злодей
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -19,53 +19,53 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Welcome, Charles the voyager! I've heard all about how you defeated those pirates at the East coast of Martinique. Now I'm absolutely positive I wasn't wrong about you, brother.";
 				link.l1 = "Sons of bitches caught me in a trap. But they miscalculated. My navigator and my crew came out on top. Although I've got to admit, dear brother, in the beginning... things were looking dim.";
-				link.l1.go = "trial";//промежуточная стадия
+				link.l1.go = "trial";
 				break;
 			}
 			if (pchar.questTemp.Sharlie == "gambitstage")
 			{
 				dialog.text = "Good afternoon, Charles. The sight of you brings joy to my heart: you're definitely changing in a good way.";
 				link.l1 = "Is that so? And how'd you figure that?";
-				link.l1.go = "gambit";//переход на Гамбит
+				link.l1.go = "gambit";
 				break;
 			}
-			if (!CheckAttribute(npchar, "quest.givelink_saga") && CheckAttribute(pchar, "questTemp.HWIC.Detector"))//признак, что Гамбит пройден или провален
+			if (!CheckAttribute(npchar, "quest.givelink_saga") && CheckAttribute(pchar, "questTemp.HWIC.Detector"))
 			{
 				dialog.text = "I see. I see that you have news for me Charles! Well, what's the good word? Hopefully nothing grim?";
 				link.l1 = "I followed the advice you gave me last time...";
-				link.l1.go = "saga";//переход на Сагу
+				link.l1.go = "saga";
 				break;
 			}
-			if (CheckAttribute(pchar, "questTemp.HWIC.Fail1") && CheckAttribute(pchar, "questTemp.HWIC.Fail2") && CheckAttribute(pchar, "questTemp.HWIC.Fail3"))//признак, что Гамбит провален по всем трем вариантам
+			if (CheckAttribute(pchar, "questTemp.HWIC.Fail1") && CheckAttribute(pchar, "questTemp.HWIC.Fail2") && CheckAttribute(pchar, "questTemp.HWIC.Fail3"))
 			{
 				dialog.text = "Finally you're here... What's the good word, dear brother?";
 				link.l1 = "I followed the advice you gave me last time...";
 				link.l1.go = "gambit_fale";
 				break;
 			}
-			if (CheckAttribute(pchar, "questTemp.Saga") && pchar.questTemp.Saga == "mishelle")//Сага готова к старту
+			if (CheckAttribute(pchar, "questTemp.Saga") && pchar.questTemp.Saga == "mishelle")
 			{
 				dialog.text = "Pleased to see you, Charles! Have you seen Chevalier de Poincy? How did your meeting go?";
 				link.l1 = "Yes, dear brother. We've met. And I have two pieces of news for you, good and bad. I'll start with the good. I've taken care of your debt to de Poincy. The bad news is that he won't release you until I fulfil your promise to sort things out with some heretic...";
 				link.l1.go = "saga_5";
 				break;
 			}
-			// Addon 2016-1 Jason пиратская линейка
-			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "fail") // пиратская линейка провалена или пройдена не полностью
+			
+			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "fail") 
 			{
 				dialog.text = "How did you do in La Vega, brother?";
 				link.l1 = "Nothing to boast about really. Tyrex's colorful character and his manner of doing business is not for me.";
 				link.l1.go = "saga_17e";
 				break;
 			}
-			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "fail" && CheckAttribute(pchar, "questTemp.Mtraxx.CharleePrince")) // пиратская линейка провалена или пройдена не полностью, но дальше 4 квеста
+			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "fail" && CheckAttribute(pchar, "questTemp.Mtraxx.CharleePrince")) 
 			{
 				dialog.text = "How did you do in La Vega, brother? I heard rumors and to be completely honest I am not feeling happy about them... Charley Prince.";
 				link.l1 = "I think I know what were those rumors about. But it is all in the past. I am not working with Tyrex again, this job got too dirty for my taste.";
 				link.l1.go = "saga_17f";
 				break;
 			}
-			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "full_complete") // пиратская линейка пройдена полностью
+			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "full_complete") 
 			{
 				dialog.text = "Well, greetings... corsair Charley Prince. Tell me, Charles: how did you fell so low? I can not believe this. My brother who made a squeamish face when I once mentioned plundering a Spanish merchant galleon is now one of the most wanted and dangerous pirate in this region! Even I, sitting deep in this shit, turn red every time you infamousy reaches here. I have cursed the day when I sent you to La Vega. What a shame! A French nobleman has joined pirates and became the worst of them in shot time! What now, brother? Are you looking for a vacancy of a pirate baron?";
 				link.l1 = "No. I am done with piracy once and for all.";
@@ -239,7 +239,7 @@ void ProcessDialogEvent()
 			link.l1 = "That crap again?";
 			link.l1.go = "Mishelle_prisoner_27";
 			link.l2 = "Brother, I don`t have time for this. I want to skip the boring part and get right to the high seas immediately. The sooner I have a ship, the sooner you will be out of this shithole. Or would you prefer to stay longer?";
-			link.l2.go = "Mishelle_prisoner_29"; // Addon 2016-1 Jason пиратская линейка 1
+			link.l2.go = "Mishelle_prisoner_29"; 
 		break;
 		
 		case "Mishelle_prisoner_27":
@@ -250,16 +250,16 @@ void ProcessDialogEvent()
 		
 		case "Mishelle_prisoner_28":
 			DialogExit();
-			pchar.questTemp.Sharlie = "ship";//флаг на старт мини-квестов для сбора денег
-			LocatorReloadEnterDisable("Fortfrance_town", "reload5_back", false);//откроем верфь
-			SaveCurrentQuestDateParam("questTemp.Sharlie_ship");//запомним дату
+			pchar.questTemp.Sharlie = "ship";
+			LocatorReloadEnterDisable("Fortfrance_town", "reload5_back", false);
+			SaveCurrentQuestDateParam("questTemp.Sharlie_ship");
 			NextDiag.CurrentNode = "First time";
 			AddQuestRecord("Sharlie", "5");
-			Sharlie_CreateGigoloMan();//мини-квесты на бордель и на джунгли
+			Sharlie_CreateGigoloMan();
 			ref location = &Locations[FindLocation(pchar.location)];
 			location.first_meeting = true;
 			npchar.greeting = "mishelle_3";
-			// на гида
+			
 			if (GetCharacterIndex("Guide") != -1)
 			{
 				pchar.quest.Guide_next.win_condition.l1 = "location";
@@ -268,7 +268,7 @@ void ProcessDialogEvent()
 			}
 		break;
 		
-		case "Mishelle_prisoner_29": // Addon 2016-1 Jason пиратская линейка 1
+		case "Mishelle_prisoner_29": 
 			dialog.text = "Heh! This `boring part` might save your life one day... Whatever. There is an easy way to get the money right now\nGo to the local church an talk to abbot Benoit. He is old friend of our father. Tell him about the situation, fall onto your knees and beg to lend you enough coins to buy a ship.";
 			link.l1 = "(SKIP TUTORIAL) Much better now! Heading to the abbot.";
 			link.l1.go = "Mishelle_prisoner_31";
@@ -284,16 +284,16 @@ void ProcessDialogEvent()
 		
 		case "Mishelle_prisoner_31":
 			DialogExit();
-			pchar.questTemp.Sharlie = "ship_fast"; // ускоренный старт
+			pchar.questTemp.Sharlie = "ship_fast"; 
 			pchar.questTemp.Sharlie.FastStart = "true";
-			LocatorReloadEnterDisable("Fortfrance_town", "reload5_back", false);//откроем верфь
-			SaveCurrentQuestDateParam("questTemp.Sharlie_ship");//запомним дату
+			LocatorReloadEnterDisable("Fortfrance_town", "reload5_back", false);
+			SaveCurrentQuestDateParam("questTemp.Sharlie_ship");
 			NextDiag.CurrentNode = "First time";
 			AddQuestRecord("Sharlie", "5-1");
 			location = &Locations[FindLocation(pchar.location)];
 			location.first_meeting = true;
 			npchar.greeting = "mishelle_3";
-			// на гида
+			
 			if (GetCharacterIndex("Guide") != -1)
 			{
 				pchar.quest.Guide_next.win_condition.l1 = "location";
@@ -386,7 +386,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "trial_12":
-			dialog.text = "Oh, Charles... I advice you to get rid of your fastidiousness once and for all, it is not appreciated here. And about the Order… don't be naive, brother. Perhaps in Europe the Louvre and the Escorial are in peace of some sort but there is a war here. Any Spanish raider will not hesitate to plunder your ship and to dry up you and your crew on a yardarm\nTherefore, nobody will blame you for plundering a trade ship of the hostile nation, I assure you. And with a letter of marquee you will even get an official support from the authorities...";
+			dialog.text = "Oh, Charles... I advice you to get rid of your fastidiousness once and for all, it is not appreciated here. And about the OrderпїЅ don't be naive, brother. Perhaps in Europe the Louvre and the Escorial are in peace of some sort but there is a war here. Any Spanish raider will not hesitate to plunder your ship and to dry up you and your crew on a yardarm\nTherefore, nobody will blame you for plundering a trade ship of the hostile nation, I assure you. And with a letter of marquee you will even get an official support from the authorities...";
 			link.l1 = "I am beginning to understand your life's principles. Just as I am understanding the methods with which you would be apparently able to 'earn' a million in half a year.";
 			link.l1.go = "trial_13";
 		break;
@@ -454,8 +454,8 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.TempNode = "First time";
 			pchar.questTemp.Sharlie = "trial";
-			pchar.questTemp.Trial = "begin"; // старт промежуточной линейки
-			SetFunctionTimerCondition("Sharlie_TrialOver", 0, 0, 10, false); // таймер
+			pchar.questTemp.Trial = "begin"; 
+			SetFunctionTimerCondition("Sharlie_TrialOver", 0, 0, 10, false); 
 			pchar.quest.Sharlie_trial.win_condition.l1 = "Timer";
 			pchar.quest.Sharlie_trial.win_condition.l1.date.hour  = sti(GetTime());
 			pchar.quest.Sharlie_trial.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 90);
@@ -466,19 +466,19 @@ void ProcessDialogEvent()
 			pchar.quest.Sharlie_trial.win_condition.l2.operation = ">=";
 			pchar.quest.Sharlie_trial.function = "Sharlie_GambitStage";
 			AddQuestRecord("Sharlie", "19");
-			// открываем все острова
+			
 			for (i=0; i<MAX_ISLANDS; i++)
 			{				
 				if (!CheckAttribute(&Islands[i], "hidden")) Island_SetReloadEnableGlobal(Islands[i].id, true);
 			}
-			DeleteAttribute(pchar, "questTemp.Sharlie.Lock"); //снимаем блокировку
-			LocatorReloadEnterDisable("FortFrance_store", "reload2", false); // откроем склад магазина
+			DeleteAttribute(pchar, "questTemp.Sharlie.Lock"); 
+			LocatorReloadEnterDisable("FortFrance_store", "reload2", false); 
 			sld = characterFromId("Benua");
 			sld.quest.help = "true";
 			npchar.greeting = "mishelle_3";
 			i = FindIsland("Martinique");
 			Islands[i].EffectRadius = 5000;
-			// Addon-2016 Jason, французские миниквесты (ФМК)
+			
 			pchar.quest.Sharlie_FMQ.win_condition.l1 = "Rank";
 			pchar.quest.Sharlie_FMQ.win_condition.l1.value = 4;
 			pchar.quest.Sharlie_FMQ.win_condition.l1.operation = ">=";
@@ -572,8 +572,8 @@ void ProcessDialogEvent()
 		case "gambit_9":
 			DialogExit();
 			NextDiag.CurrentNode = "First time";
-			pchar.questTemp.Sharlie = "gambit";//флаг на Голландский Гамбит
-			pchar.questTemp.HWIC.CanTake = "true"; //Голландский Гамбит доступен для взятия
+			pchar.questTemp.Sharlie = "gambit";
+			pchar.questTemp.HWIC.CanTake = "true"; 
 			AddQuestRecord("Sharlie", "20");
 			npchar.greeting = "mishelle_3";
 		break;
@@ -674,7 +674,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			npchar.quest.givelink_saga = "true";
 			NextDiag.TempNode = "First time";
-			pchar.questTemp.Sharlie = "saga";//флаг на Пиратскую Сагу
+			pchar.questTemp.Sharlie = "saga";
 		break;
 		
 		case "saga_5":
@@ -746,12 +746,12 @@ void ProcessDialogEvent()
 		case "saga_16":
 			dialog.text = "You have excellently grasped all of life's lessons, Charles. I am truly happy for you. And I'm glad that you did go ahead and accepted de Poincy's request instead of sailing home to France. I hope everything turns out well for you and that you will be able to carry out what I was not able to do myself.";
 			link.l1 = "I'm afraid I have no choice. I am alone since my first day in the Caribbean. See you later, Michel. I think our next meeting will include an order of your release.";
-			// место под установку проверки купленности 3 ДЛС
+			
 			if (GetDLCenabled(DLC_APPID_3)) link.l1.go = "saga_17a";
 			else 							link.l1.go = "saga_17"; 
 		break;
 		
-		// Addon 2016-1 Jason Пиратская линейка
+		
 		case "saga_17a":
             dialog.text = "Wait a minute! Before you go to Jan Svensson, make sure to pay a visit Marcus Tyrex - the Keeper of the Code. He is a ruler of La Vega on Hispaniola. He has an limitless authority among pirates and the Spanish fear him to the death.";
 			link.l1 = "Could he help me with our matter?";
@@ -809,7 +809,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			AddQuestRecord("Sharlie", "22_1");
 			pchar.questTemp.Saga = "blueveld";
-			LocatorReloadEnterDisable("SantaCatalina_houseS1", "reload2", true); // закрыть кабинет Свенсона
+			LocatorReloadEnterDisable("SantaCatalina_houseS1", "reload2", true); 
 			npchar.greeting = "mishelle_3";
 			DeleteAttribute(pchar, "questTemp.Mtraxx.CharleePrince");
 		break;
@@ -875,7 +875,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_SetImmortal(npchar, false);
-			LAi_SetCheckMinHP(npchar, 10, true, ""); // скрытое бессмертие
+			LAi_SetCheckMinHP(npchar, 10, true, ""); 
 			LAi_SetHP(npchar, 500, 500);
 			LAi_ActorRunToLocation(npchar, "reload", "reload1", "none", "", "", "OpenTheDoors", 30.0);
 			pchar.quest.DefendSP_base2.win_condition.l1 = "location";
@@ -901,7 +901,7 @@ void ProcessDialogEvent()
 				LAi_SetActorType(sld);
 				LAi_ActorFollowEverywhere(sld, "", -1);
 			}
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			LocatorReloadEnterDisable("FortFrance_Exittown", "reload2_back", false);
 			LocatorReloadEnterDisable("FortFrance_Exittown", "reload1_back", true);
 			LocatorReloadEnterDisable("FortFrance_Exittown", "reload3", true);
@@ -941,8 +941,8 @@ void ProcessDialogEvent()
 			LAi_ActorRunToLocation(npchar, "reload", "reload1_back", "none", "", "", "OpenTheDoors", -1);
 			LocatorReloadEnterDisable("FortFrance_Exittown", "reload1_back", false);
 			LocatorReloadEnterDisable("FortFrance_Exittown", "reload3", false);
-			LocatorReloadEnterDisable("Shore38", "boat", false); // выпустить в море
-			// закрываем городские заведения
+			LocatorReloadEnterDisable("Shore38", "boat", false); 
+			
 			for (i=3; i<=10; i++)
 			{
 				LocatorReloadEnterDisable("FortFrance_town", "reload"+i+"_back", true);
@@ -1010,7 +1010,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload3_back", "none", "", "", "DefendSP_OpenExit", -1);
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
 			AddQuestRecord("Sharlie", "39");
 			pchar.quest.DefendSP_final.win_condition.l1 = "Timer";
 			pchar.quest.DefendSP_final.win_condition.l1.date.hour  = 9;
@@ -1018,7 +1018,7 @@ void ProcessDialogEvent()
 			pchar.quest.DefendSP_final.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 0);
 			pchar.quest.DefendSP_final.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 0);
 			pchar.quest.DefendSP_final.function = "DefendSP_finaltalk";
-			// раздача экспы
+			
 			ChangeCharacterNationReputation(pchar, FRANCE, 30);
 			ChangeCharacterComplexReputation(pchar, "nobility", 10);
 			ChangeCharacterComplexReputation(pchar, "authority", 10);
@@ -1150,7 +1150,7 @@ void ProcessDialogEvent()
 			DoQuestFunctionDelay("Tieyasal_TempleFightGuard", 3.0);
 		break;
 		
-		case "kukulkan_twice": // развилка финалов - есть настоящая маска или нет
+		case "kukulkan_twice": 
 			if (CheckCharacterItem(pchar, "mask_true"))
 			{
 				dialog.text = "";

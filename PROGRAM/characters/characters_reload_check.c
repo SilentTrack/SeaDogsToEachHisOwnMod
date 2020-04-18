@@ -1,16 +1,16 @@
 
 
-//Disable reload locator
+
 bool chrEnableReloadLocator(string locationID, string reloadLocatorName, bool isEnable)
 {
 	Event("EnableReloadLocatorEvent", "ssl", locationID, reloadLocatorName, isEnable);
-	//Location
+	
 	int li = FindLocation(locationID);
 	if(li < 0) 
 	{
 		return false;
 	}
-	//Reload locator
+	
 	aref rl, at;
 	makearef(rl, locations[li].reload);
 	int disableVal = 0;
@@ -47,10 +47,10 @@ bool chrEnableReloadLocator(string locationID, string reloadLocatorName, bool is
 }
 
 
-//locatorName
+
 bool chrCheckReload(ref loc, string reloadLocatorName)
 {
-	//Reload locator
+	
 	aref rl, at;
 	makearef(rl, loc.reload);
 	int num = GetAttributesNum(rl);
@@ -61,7 +61,7 @@ bool chrCheckReload(ref loc, string reloadLocatorName)
 		if(at.name == reloadLocatorName)
 		{
 			if(CheckAttribute(at, "disable")) disableVal = sti(at.disable);
-   			if(CheckAttribute(at, "close_for_night") && sti(at.close_for_night)>0 && !IsLocationCaptured(loc.id))//boal fix
+   			if(CheckAttribute(at, "close_for_night") && sti(at.close_for_night)>0 && !IsLocationCaptured(loc.id))
 			{
 				if(GetTime()>21.0 || GetTime()<6.0) disableVal++;
 			}
@@ -75,10 +75,10 @@ bool chrCheckReload(ref loc, string reloadLocatorName)
 	return false;
 }
 
-//locatorName
+
 bool chrCheckReloadLink(ref loc, string reloadLocatorName)
 {
-	//Reload locator
+	
 	aref rl, at;
 	makearef(rl, loc.reload);
 	int num = GetAttributesNum(rl);
@@ -91,12 +91,12 @@ bool chrCheckReloadLink(ref loc, string reloadLocatorName)
 		{
 			if(FindLocation(at.go) > 0) 
 			{
-				// boal -->
+				
 				if (bLocatorShow)
 				{
 				    Log_Info("Reload to: " + at.go + " locator = " + at.emerge);
 				}
-				// boal <--
+				
 				return 1;
 			}
 			int iShip = sti(mc.ship.type);
@@ -115,10 +115,10 @@ bool chrCheckReloadLink(ref loc, string reloadLocatorName)
 }
 
 
-//locatorName
+
 bool chrCheckAutoReload(ref loc, string reloadLocatorName)
 {
-	//Reload locator
+	
 	aref rl, at;
 	makearef(rl, loc.reload);
 	int num = GetAttributesNum(rl);
@@ -133,6 +133,7 @@ bool chrCheckAutoReload(ref loc, string reloadLocatorName)
 	}
 	return false;
 }
+
 
 
 

@@ -1,4 +1,4 @@
-//Jason общий диалог праздношатающихся по улицам капитанов
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -16,17 +16,17 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			//первая встреча
+			
 			if (npchar.quest.meeting == "0")
 			{
-				if (sti(NPChar.nation) != PIRATE && GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY)//проверка межнациональных отношений
+				if (sti(NPChar.nation) != PIRATE && GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY)
 				{
 					dialog.text = "Hm. You sail under the flag of "+NationNameGenitive(sti(pchar.nation))+", pal. I have no wish in talking with you and I don't want problems... Leave me!";
 					link.l1 = "And you, captain...";
 					link.l1.go = "exit";
 					break;
 				}
-				if (CheckAttribute(npchar, "quest.march") && !CheckAttribute(pchar, "questTemp.Sharlie.Lock"))//боевые генераторные квесты
+				if (CheckAttribute(npchar, "quest.march") && !CheckAttribute(pchar, "questTemp.Sharlie.Lock"))
 				{
 					dialog.text = "Ha!  You are just in time, captain... I have a business proposal for you. Do you have a few hours for me?";
 					link.l1 = "I don't. I am in a hurry, colleague. Next time maybe.";
@@ -42,7 +42,7 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				//повторные обращения
+				
 				if (sti(NPChar.nation) != PIRATE && GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY)
 				{
 					dialog.text = "Should I repeat myself? I don't want to be suspected as a friend of "+NationNameAblative(sti(pchar.nation))+"! Get lost or I will call the guards!";
@@ -71,7 +71,7 @@ void ProcessDialogEvent()
 			link.l1.go = DialogGoNodeRepeat("rumours_landcaptain", "rumours_landcaptain", "rumours_landcaptain", "exit", npchar, Dialog.CurrentNode);
 		break;
 		
-		//квестовая часть
+		
 			case "march":
 				dialog.text = "No, captain there are a lot of ears in the tavern and we don't need them, trust me. This proposal is all about taking something from someone so... let's have a talk on my ship.";
 				link.l1 = "Fine... What's your ship and it's name?";
@@ -81,7 +81,7 @@ void ProcessDialogEvent()
 			break;
 			
 			case "march_1":
-				//генерируем и запоминаем параметры в пчар, т.к. через нпчар не хочет нормально работать :(
+				
 				pchar.GenQuest.MarchCap.Startisland = Islands[GetCharacterCurrentIsland(PChar)].id;
 				pchar.GenQuest.MarchCap.Parts = GetCompanionQuantity(pchar)+1;
 				pchar.GenQuest.MarchCap.shiptype = SelectCaptainShipType();
@@ -116,7 +116,7 @@ void ProcessDialogEvent()
 				log_Testinfo(pchar.GenQuest.MarchCap.Startisland);
 			break;
 			
-		//замечание по обнаженному оружию от персонажей типа citizen
+		
 		case "CitizenNotBlade":
 			dialog.text = NPCharSexPhrase(NPChar, "Listen, I am the citizen of this town and I'd ask you to hold down your blade.", "Listen, I am the citizen of this town and I'd ask you to hold down your blade.");
 			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");

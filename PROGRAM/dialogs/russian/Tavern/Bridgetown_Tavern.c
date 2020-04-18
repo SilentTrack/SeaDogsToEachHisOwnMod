@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,7 +9,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
                       "Yes, it really is the third time...", "No, what questions?...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//Голландский гамбит /за Англию/
+			
 			if (CheckAttribute(pchar, "questTemp.HWIC.Eng") && pchar.questTemp.HWIC.Eng == "GotoBridgetown" && !CheckAttribute(npchar, "quest.HWICTalked"))
             {
                 link.l1 = "I'd like a drink. Poor me some of the best rum you have.";
@@ -20,7 +20,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                 link.l1 = "Listen, where is Callow Gaston?";
                 link.l1.go = "Tonzag_Letter";
             }
-			//Голландский гамбит /против всех/
+			
 			if (!CheckAttribute(npchar, "quest.HWICTake") && CheckAttribute(pchar, "questTemp.HWIC.CanTake") && !CheckAttribute(pchar, "questTemp.HWIC.CanTake.Self") && !CheckAttribute(pchar, "questTemp.HWIC.Eng") && !CheckAttribute(pchar, "questTemp.HWIC.Holl"))
 			{
                 link.l1 = "Do you happen to have any kind of work? Or maybe you'd be able to suggest something?";
@@ -31,7 +31,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                 link.l1 = "I've finished the job. Fernando Rodriguez is dead.";
                 link.l1.go = "Task_check";
             }
-			// Страж Истины
+			
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "merdok" && !CheckAttribute(npchar, "quest.jino"))
 			{
 				link.l1 = "Listen, has there been an alchemist that arrived here in this town, a physician? He's Italian, about thirty years old, his name is Gino Gvineili. Have you heard anything about that?";
@@ -39,10 +39,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		
-		//Голландский гамбит /за Англию/
+		
 		case "TavernDone":
 			dialog.text = "Here's your drink. The very best rum for our dear guest! Is this a special occasion or have you just dropped by to rinse your throat?";
-			link.l1 = "You can say it's a special occasion. I'm taking some slaves into Blueweld. I've recently redone his new brig specifically for this purpose. So, I stopped by a plantation and spoke with the overseer –he ordered a decent batch of 'black wood' from me. So you can expect me back visiting soon. I'll take some merchandise to Blueweld  –I'll be taking it to Barbados, he he...";
+			link.l1 = "You can say it's a special occasion. I'm taking some slaves into Blueweld. I've recently redone his new brig specifically for this purpose. So, I stopped by a plantation and spoke with the overseer пїЅhe ordered a decent batch of 'black wood' from me. So you can expect me back visiting soon. I'll take some merchandise to Blueweld  пїЅI'll be taking it to Barbados, he he...";
 			link.l1.go = "TavernDone_1";
 		break;
 		
@@ -57,7 +57,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			{
 				AddQuestRecord("Holl_Gambit", "2-6");
 				pchar.questTemp.HWIC.Eng = "SeekVanBerg";
-				pchar.quest.GotoBridgetownOver.over = "yes";//снять таймер
+				pchar.quest.GotoBridgetownOver.over = "yes";
 				pchar.quest.VanBergAttack_Check.win_condition.l1 = "MapEnter";
 				pchar.quest.VanBergAttack_Check.function = "VanBergAttackCheck";
 			}
@@ -74,17 +74,17 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddQuestRecord("Holl_Gambit", "2-22");
 			AddQuestRecordInfo("LetterFromGaston", "1");
 			pchar.questTemp.HWIC.Eng = "toCuracao";
-			LocatorReloadEnterDisable("SentJons_town", "houseSP3", true);//закрыть дом Флитвуда
-			LocatorReloadEnterDisable("SentJons_town", "HouseF3", true);//закрыть аптеку
-			LocatorReloadEnterDisable("SentJons_town", "basement1_back", true);//закрыть подземелье
+			LocatorReloadEnterDisable("SentJons_town", "houseSP3", true);
+			LocatorReloadEnterDisable("SentJons_town", "HouseF3", true);
+			LocatorReloadEnterDisable("SentJons_town", "basement1_back", true);
 			pchar.quest.Knippel_Shore.win_condition.l1 = "location";
 			pchar.quest.Knippel_Shore.win_condition.l1.location = "Shore24";
 			pchar.quest.Knippel_Shore.function = "KnippelOnCuracao";
 		break;
 		
-		//Голландский гамбит /против всех/
-		case "Tonzag_check"://начинаем проверять нашего ГГ по всем статьям
-			if(sti(pchar.reputation.nobility) > 41)//высокая репа
+		
+		case "Tonzag_check":
+			if(sti(pchar.reputation.nobility) > 41)
 			{
 				PlaySound("VOICE\Russian\hambit\Ercule Tongzag-03.wav");
 				dialog.text = "I don't need the services of some shirkers. I don't have any advice I can offer you.";
@@ -92,14 +92,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1.go = "exit";
 				break;
 			}
-			if(GetSummonSkillFromName(pchar, SKILL_F_LIGHT) < 25 || GetSummonSkillFromName(pchar, SKILL_FENCING) < 25 || GetSummonSkillFromName(pchar, SKILL_F_HEAVY) < 25 || GetSummonSkillFromName(pchar, SKILL_PISTOL) < 25)//слабое фехтование
+			if(GetSummonSkillFromName(pchar, SKILL_F_LIGHT) < 25 || GetSummonSkillFromName(pchar, SKILL_FENCING) < 25 || GetSummonSkillFromName(pchar, SKILL_F_HEAVY) < 25 || GetSummonSkillFromName(pchar, SKILL_PISTOL) < 25)
 			{
 				dialog.text = "Captain, I need a warrior a little more vicious than you. Come back when you learn how to handle that iron dangling on your belt. And a little adroitness wouldn't hurt either.";
 				link.l1 = "I see. Then I'll pay you a visit later.";
 				link.l1.go = "exit";
 				break;
 			}
-			if(sti(Pchar.rank) > 15)//высокий ранг
+			if(sti(Pchar.rank) > 15)
 			{
 				dialog.text = "You're too well-known on the Archipelago, cap. I don't think you'd be interested in my assignments.";
 				link.l1 = "All right, if you don't think I'd be interested, then what can I do. Farewell.";
@@ -115,20 +115,20 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "Tonzag_task":
 			pchar.questTemp.HWIC.Self.SpainCity = FindSpainCity();
 			log_Testinfo(pchar.questTemp.HWIC.Self.SpainCity);
-			dialog.text = "One hidalgo has recently arrived from Castilia with intentions to avoid unwanted consequences of… a duel in Europe. But vengeance has no limits and one Spanish noble family wishes this hidalgo dead. Fulfill their request by any means necessary\nBring the target's finger with a ring on it as a proof. Also, bring all items you'll find on his corpse. Are you ready to take the job?";
+			dialog.text = "One hidalgo has recently arrived from Castilia with intentions to avoid unwanted consequences ofпїЅ a duel in Europe. But vengeance has no limits and one Spanish noble family wishes this hidalgo dead. Fulfill their request by any means necessary\nBring the target's finger with a ring on it as a proof. Also, bring all items you'll find on his corpse. Are you ready to take the job?";
 			link.l1 = "If the payment is dignified, then I'm in.";
 			link.l1.go = "Tonzag_task_1";
 			link.l2 = "Work as a hit man? No way!";
 			link.l2.go = "Tonzag_exit";
 			npchar.quest.HWICTake = "true";
-			pchar.questTemp.HWIC.CanTake.Self = "true";//признак, что против всех уже бралась
+			pchar.questTemp.HWIC.CanTake.Self = "true";
 		break;
 		
 		case "Tonzag_exit":
 			dialog.text = "Then get lost and forget what we talked about.";
 			link.l1 = "Have a nice stay.";
 			link.l1.go = "exit";	
-			DeleteAttribute(pchar, "questTemp.HWIC.Self");//откат к двум другим вариантам
+			DeleteAttribute(pchar, "questTemp.HWIC.Self");
 			pchar.questTemp.HWIC.Fail3 = "true";
 		break;
 		
@@ -141,7 +141,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "Tonzag_task_2":
 			DialogExit();
 			pchar.questTemp.HWIC.Self = "start";
-			SetFunctionTimerCondition("TargetFernandoOver", 0, 0, 60, false); //таймер
+			SetFunctionTimerCondition("TargetFernandoOver", 0, 0, 60, false); 
 			AddQuestRecord("Holl_Gambit", "3-1");
 			Log_TestInfo(""+XI_ConvertString("Colony"+pchar.questTemp.HWIC.Self.SpainCity)+"");
 		break;
@@ -167,7 +167,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.questTemp.HWIC.Fail3 = "true";
 			AddQuestRecord("Holl_Gambit", "3-8");
 			CloseQuestHeader("Holl_Gambit");
-			DeleteAttribute(pchar, "questTemp.HWIC.Self");//зачищаем для возможности отката к голландскому варианту
+			DeleteAttribute(pchar, "questTemp.HWIC.Self");
 		break;
 		
 		case "Task_check_1":
@@ -192,7 +192,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				pchar.questTemp.HWIC.Fail3 = "true";
 				AddQuestRecord("Holl_Gambit", "3-9");
 				CloseQuestHeader("Holl_Gambit");
-				DeleteAttribute(pchar, "questTemp.HWIC.Self");//зачищаем для возможности отката к голландскому варианту
+				DeleteAttribute(pchar, "questTemp.HWIC.Self");
 			}
 		break;
 		
@@ -201,12 +201,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			RemoveItems(PChar, "totem_05", 1);
 			RemoveItems(PChar, "amulet_1", 1);
 			AddMoneyToCharacter(pchar, 30000);
-			dialog.text = "Here is your reward as promised, thirty thousand. And I also have an additional, high-responsibility, high-risk assignment, but the pay will rise accordingly, –40,000 pesos.";
+			dialog.text = "Here is your reward as promised, thirty thousand. And I also have an additional, high-responsibility, high-risk assignment, but the pay will rise accordingly, пїЅ40,000 pesos.";
 			link.l1 = "I'm all ears. Who's the next client?";
 			link.l1.go = "Fleetwood_house";	
 		break;
 		
-		//2 задание
+		
 		case "Fleetwood_house":
 			PlaySound("VOICE\Russian\hambit\Ercule Tongzag-05.wav");
 			dialog.text = "This time you are going to hunt not a man, but an item. You must sneak into Richard Fleetwood's house and his log. He is an English captain. The place is being guarded and Richard himself rarely visits the place\nThe plan is simple. The governor of St. Jones will be organizing a private party in ten days, Fleetwood will attend. You must get inside the house at night between one and three o'clock. There will be only one soldier inside\nGet rid of him. Search for a journal inside Richard's apartment. Take this key.";
@@ -231,13 +231,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			DialogExit();
 			AddQuestRecord("Holl_Gambit", "3-10");
 			pchar.questTemp.HWIC.Self = "theft";
-			DeleteAttribute(pchar, "questTemp.HWIC.CanTake");//иные варианты более невозможны
-			LocatorReloadEnterDisable("SentJons_houseSP3", "reload2", true);//комнату закроем
+			DeleteAttribute(pchar, "questTemp.HWIC.CanTake");
+			LocatorReloadEnterDisable("SentJons_houseSP3", "reload2", true);
 			pchar.GenQuestBox.SentJons_houseSP3_room = true;
-			pchar.GenQuestBox.SentJons_houseSP3_room.box1.items.FleetwoodJournal = 1;//положим в комод СЖ
-			pchar.GenQuestBox.SentJons_houseSP3_room.box1.items.sand_clock = 1;//и песочные часы
-			AddDialogExitQuestFunction("CreateFleetwoodSoldiers");//4 солдат в доме
-			SetFunctionTimerCondition("FleetwoodJournalOver", 0, 0, 11, false);//таймер
+			pchar.GenQuestBox.SentJons_houseSP3_room.box1.items.FleetwoodJournal = 1;
+			pchar.GenQuestBox.SentJons_houseSP3_room.box1.items.sand_clock = 1;
+			AddDialogExitQuestFunction("CreateFleetwoodSoldiers");
+			SetFunctionTimerCondition("FleetwoodJournalOver", 0, 0, 11, false);
 			pchar.quest.Fleetwood_Journal.win_condition.l1 = "Timer";
 			pchar.quest.Fleetwood_Journal.win_condition.l1.date.hour  = sti(GetTime());
 			pchar.quest.Fleetwood_Journal.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 9);
@@ -249,11 +249,11 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.quest.Fleetwood_Journal.win_condition.l3 = "locator";
 			pchar.quest.Fleetwood_Journal.win_condition.l3.location = "SentJons_town";
 			pchar.quest.Fleetwood_Journal.win_condition.l3.locator_group = "reload";
-			pchar.quest.Fleetwood_Journal.win_condition.l3.locator = "houseSP3";//доступно открывание двери
+			pchar.quest.Fleetwood_Journal.win_condition.l3.locator = "houseSP3";
 			pchar.quest.Fleetwood_Journal.function = "FleetwoodHouseEnter";
 			pchar.quest.Fleetwood_Soldier.win_condition.l1 = "location";
 			pchar.quest.Fleetwood_Soldier.win_condition.l1.location = "SentJons_houseSP3";
-			pchar.quest.Fleetwood_Soldier.function = "Fleetwood_Soldier";//если надумает раньше заявиться
+			pchar.quest.Fleetwood_Soldier.function = "Fleetwood_Soldier";
 		break;
 		
 		case "guardoftruth":
@@ -263,10 +263,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.jino = "true";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
 
-string FindSpainCity()//Jason выбрать радномный испанский город - пусть побегает
+string FindSpainCity()
 {
 	int n, nation;
     int storeArray[MAX_COLONIES];

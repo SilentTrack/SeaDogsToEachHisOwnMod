@@ -60,22 +60,22 @@ void SeaAI_SailToEndFade()
 	DelEventHandler("SeaAI_SailToEndFadeEvent", "SeaAI_SailToEndFade");
 	SendMessage(&SailToFader, "lfl", FADER_IN, 0.5, true);
 
-	// delete current cannonballs
+	
 	AIBalls.Clear = "";
 
-	// reset all PLAYER_GROUP ship tracks
+	
 	for (int i=0; i<iNumShips; i++)
 	{
 		int iCharIndex = Ships[i];
-		if (CheckAttribute(&Characters[iCharIndex], "SeaAI.Group.Name") && Characters[iCharIndex].SeaAI.Group.Name ==	PLAYER_GROUP) // fix
+		if (CheckAttribute(&Characters[iCharIndex], "SeaAI.Group.Name") && Characters[iCharIndex].SeaAI.Group.Name ==	PLAYER_GROUP) 
 		{
 			SendMessage(&Characters[iCharIndex], "l", MSG_SHIP_RESET_TRACK);
 		}
 	}
-    // fix -->
+    
 	ClearAllFire();
-	//PauseParticles(true);
-    // fix <--
+	
+    
 	switch (iSailToType)
 	{
 		case SAIL_TO_LOCATOR:
@@ -86,7 +86,7 @@ void SeaAI_SailToEndFade()
 			SendMessage(&AISea, "laff", AI_MESSAGE_SAIL_2_CHARACTER, &Characters[sti(sSailToString)], 40.0 + frnd() * 60.0, frnd() * PIm2);
 		break;
 	}
-	//PauseParticles(false);
+	
 }
 
 void SeaAI_SailToCreateFader()
@@ -115,7 +115,7 @@ void SeaAI_SailToCharacter(int iCharacterIndex)
 	SeaAI_SailToCreateFader();
 }
 
-// нигде не используется в скриптах
+
 void AISea_ReturnFromAbordage()
 {
 	MoveSeaToLayers(SEA_EXECUTE,SEA_REALIZE);
@@ -127,11 +127,11 @@ void AISea_ReturnFromAbordage()
 	LayerFreeze(SEA_EXECUTE,false);
 	LayerFreeze(SEA_REALIZE,false);
 
-	Sea.MaxSeaHeight = fOldMaxSeaHeight;//50.0;
+	Sea.MaxSeaHeight = fOldMaxSeaHeight;
 
 }
 
-void SeaAI_SwapShipsAttributes(ref refMyCharacter, ref refEnemyCharacter) // to_do
+void SeaAI_SwapShipsAttributes(ref refMyCharacter, ref refEnemyCharacter) 
 {
 	aref	arShipMy, arShipEnemy;
 	object	oTmp;
@@ -144,14 +144,8 @@ void SeaAI_SwapShipsAttributes(ref refMyCharacter, ref refEnemyCharacter) // to_
 	CopyAttributes(arShipMy,arShipEnemy);
 	DeleteAttribute(arShipEnemy,"");
 	CopyAttributes(arShipEnemy,&oTmp);
-	// оставляем старую команду на месте, иначе херилась мораль
-	/*float fExp = stf(refMyCharacter.ship.crew.experience);
-	float fMor = stf(refMyCharacter.ship.crew.morale);
-
-	refMyCharacter.ship.crew.experience = refEnemyCharacter.ship.crew.experience;
-	refMyCharacter.ship.crew.morale = refEnemyCharacter.ship.crew.morale;
-	refEnemyCharacter.ship.crew.experience = fExp;
-	refEnemyCharacter.ship.crew.morale = fMor;*/
+	
+	 
 }
 
 bool SeaAI_SwapShipAfterAbordage(ref refMyCharacter, ref refEnemyCharacter)
@@ -188,25 +182,25 @@ void SeaAI_SetCompanionEnemy(ref rCharacter)
 	Event("eSwitchPerks", "l", iCharacterIndex);
 	Event("eSwitchPerks", "l", nMainCharacterIndex);
 
-	Event(SHIP_UPDATE_PARAMETERS, "lf", iCharacterIndex, 1.0);				// Parameters
-	Event(SHIP_UPDATE_PARAMETERS, "lf", nMainCharacterIndex, 1.0);		// Parameters
+	Event(SHIP_UPDATE_PARAMETERS, "lf", iCharacterIndex, 1.0);				
+	Event(SHIP_UPDATE_PARAMETERS, "lf", nMainCharacterIndex, 1.0);		
 
 	UpdateRelations();
 	RefreshBattleInterface();
 }
-// boal перебросить капитана при освобождении
+
 void SeaAI_SetCaptainFree(ref rCharacter, ref refEnemyCharacter)
 {
-	// метод склейка SeaAI_SetOfficer2ShipAfterAbordage    и SeaAI_SetCompanionEnemy   - в начале назначим офа, потом его поругаем :)
+	
 	if (bSeaActive)
 	{
         int		iCharacterIndex = sti(rCharacter.index);
-		if (CheckAttribute(refEnemyCharacter, "SeaAI.Group.Name")) // fix 01/08/06 группы может не быть
+		if (CheckAttribute(refEnemyCharacter, "SeaAI.Group.Name")) 
 		{
 			Group_DelCharacter(refEnemyCharacter.SeaAI.Group.Name, refEnemyCharacter.id);
 		}
 		SendMessage(&AISea, "laa", AI_MESSAGE_SET_OFFICER_2_SHIP, rCharacter, refEnemyCharacter);
-		// это мы назначили офа для ГГ, но он может бытьне оф по сути
+		
 		
 		string	sGroupName = "cmpenemy_" + rCharacter.index;
 
@@ -226,7 +220,7 @@ void SeaAI_SetCaptainFree(ref rCharacter, ref refEnemyCharacter)
 		SetCharacterRelationBoth(iCharacterIndex, nMainCharacterIndex, RELATION_FRIEND);
 
 		Event("eSwitchPerks", "l", iCharacterIndex);
-		Event(SHIP_UPDATE_PARAMETERS, "lf", iCharacterIndex, 1.0);				// Parameters
+		Event(SHIP_UPDATE_PARAMETERS, "lf", iCharacterIndex, 1.0);				
 		
 		UpdateRelations();
 		RefreshBattleInterface();
@@ -239,13 +233,13 @@ bool SeaAI_SetOfficer2ShipAfterAbordage(ref refMyCharacter, ref refEnemyCharacte
 	int iEnemyCharacterIndex = sti(refEnemyCharacter.index);
 	if (bSeaActive)
 	{	
-		if (CheckAttribute(refEnemyCharacter, "SeaAI.Group.Name")) // fix 01/08/06 группы может не быть
+		if (CheckAttribute(refEnemyCharacter, "SeaAI.Group.Name")) 
 		{
 			Group_DelCharacter(refEnemyCharacter.SeaAI.Group.Name, refEnemyCharacter.id);
 		}
 		SendMessage(&AISea, "laa", AI_MESSAGE_SET_OFFICER_2_SHIP, refMyCharacter, refEnemyCharacter);
 		Event("eSwitchPerks", "l", iMyCharacterIndex);
-		Event(SHIP_UPDATE_PARAMETERS, "lf", iMyCharacterIndex, 1.0);		// Parameters
+		Event(SHIP_UPDATE_PARAMETERS, "lf", iMyCharacterIndex, 1.0);		
 				
 		Group_AddCharacter(PLAYER_GROUP, refMyCharacter.id);
 		UpdateRelations();
@@ -257,11 +251,7 @@ bool SeaAI_SetOfficer2ShipAfterAbordage(ref refMyCharacter, ref refEnemyCharacte
 int SeaAI_GetRelation(int iCharacterIndex1, int iCharacterIndex2)
 {
  	int iRelation = RELATION_NEUTRAL;
-	/*if (bSeaActive)
-	{
-		SendMessage(&AISea, "laae", AI_MESSAGE_GET_RELATION, &Characters[iCharacterIndex1], &Characters[iCharacterIndex2], &iRelation);
-		return iRelation;
-	}*/
+	 
 	return GetRelation(iCharacterIndex1, iCharacterIndex2);
 }
 
@@ -270,6 +260,6 @@ void UpdateRelations()
 	if (bSeaActive)
 	{
 		SendMessage(&AISea, "l", AI_MESSAGE_UPDATE_RELATIONS);
-		// не было в ПКМ, помню дает  доп тормоза, если частить RefreshBattleInterface();
+		
 	}
 }

@@ -60,3 +60,4 @@ void BIManager_EndLand()
 	LayerDelObject("execute",&BIManager);
 	LayerDelObject("realize",&BIManager);
 }
+

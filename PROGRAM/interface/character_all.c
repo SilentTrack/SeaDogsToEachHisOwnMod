@@ -1,4 +1,4 @@
-/// BOAL меню персонажи
+
 #include "interface\character_all.h"
 
 int nCurScrollOfficerNum;
@@ -7,7 +7,7 @@ bool bPerkMenuOn = false;
 void InitInterface(string iniName)
 {
     xi_refCharacter = pchar;
-	InterfaceStack.SelectMenu_node = "LaunchMainCharacter"; // запоминаем, что звать по Ф2
+	InterfaceStack.SelectMenu_node = "LaunchMainCharacter"; 
 	GameInterface.title = "titleCharacter";
 	
 	FillCharactersScroll();
@@ -39,7 +39,7 @@ void InitInterface(string iniName)
 
     XI_RegistryExitKey("IExit_F2");
     
-    EI_CreateFrame("CHARACTER_BIG_PICTURE_BORDER",369,78,579,315); // take from CHARACTER_BIG_PICTURE
+    EI_CreateFrame("CHARACTER_BIG_PICTURE_BORDER",369,78,579,315); 
     EI_CreateHLine("CHARACTER_BIG_PICTURE_BORDER", 373,104,575,1, 4);
     
     SetVariable();
@@ -53,7 +53,7 @@ void InitInterface(string iniName)
 	{
 		SetFormatedText("LOYALITY_STR", XI_ConvertString("Loyality"));
 	}	
-    //SetControlsTabMode(1);
+    
     HideSkillChanger();
 }
 
@@ -121,7 +121,7 @@ void ProcessCommandExecute()
 			    DecreaseSkill(5);
 			}
 		break;
-		/////////////////////// menu ///////////////
+		
 		case "I_CHARACTER_2":
 			if(comName=="click")
 			{
@@ -159,7 +159,7 @@ void ProcessCommandExecute()
 			}
 		break;
 	}
-	// boal new menu 31.12.04 -->
+	
 	if (nodName == "I_CHARACTER" || nodName == "I_SHIP" ||
 	    nodName == "I_QUESTBOOK" || nodName == "I_TRADEBOOK" ||
 		nodName == "I_NATIONS" || nodName == "I_ITEMS")
@@ -172,7 +172,7 @@ void ProcessCommandExecute()
 			return;
 		}
 	}
-	// boal new menu 31.12.04 -->
+	
 }
 
 void SetVariable()
@@ -181,7 +181,7 @@ void SetVariable()
 	SetNewPicture("CHARACTER_BIG_PICTURE", "interfaces\portraits\256\face_" + xi_refCharacter.FaceId + ".tga");
 	SetFormatedText("HERO_NAME", GetFullName(xi_refCharacter));
 	
-	//navy --> alcohol
+	
 	if (xi_refCharacter.id == pchar.id && CheckAttribute(xi_refCharacter, "chr_ai.drunk"))
 	{
 		SetNewGroupPicture("CHARACTER_DRUNK_PICTURE", "ITEMS_19", "itm7");
@@ -191,7 +191,7 @@ void SetVariable()
 	{
 		SetNodeUsing("CHARACTER_DRUNK_PICTURE", false);
 	}
-	//navy <--
+	
 	if (xi_refCharacter.id == pchar.id)
 	{
 		SetNewGroupPicture("CHARACTER_NATION_PICTURE", "NATION_ICONS", GetNationNameByType(GetBaseHeroNation()));
@@ -212,7 +212,7 @@ void SetVariable()
                      "INTERFACE_ULTRASMALL",COLOR_NORMAL,10,590, SCRIPT_ALIGN_LEFT,1.0);
     }
     
-    // теперь это Лояльность		
+    
 	if (xi_refCharacter.id == pchar.id)
 	{
 		GameInterface.StatusLine.LOYALITY.Max   = COMPLEX_REPUTATION_MAX;
@@ -299,10 +299,10 @@ void SetButtonsState()
 	if(GameInterface.CHARACTERS_SCROLL.(attributeName).character != "0")
 	{
 		int iCharacter = sti(GameInterface.CHARACTERS_SCROLL.(attributeName).character);
-		//WriteNewData();
+		
 		xi_refCharacter = &characters[iCharacter];
-		//ReMappingSkills();
-		//SetSkills();
+		
+		
 		SetVariable();
 	}
 	else
@@ -413,7 +413,7 @@ void ShowInfoWindow()
 				{
 					if(CheckAttribute(rchr, "quest.convoyquest.money"))
 					{
-						sText3 = "";//SelectEscortQuestInfo(rchr);
+						sText3 = "";
 					}
 					sText1 = GetCharacterFullName(Characters[iCharacter].id);
 					sHeader = XI_ConvertString("companionship");
@@ -486,12 +486,12 @@ void ShowInfoWindow()
 		    sHeader = XI_ConvertString("Nation");
 			sText1 = GetRPGText("Nation_hint");
 		break;
-		//navy-->
+		
 		case "CHARACTER_DRUNK_PICTURE":
 		    sHeader = XI_ConvertString("Alcohol");
 			sText1 = GetRPGText("Drunk_hint");
 		break;
-		//<--navy
+		
 	}
 	CreateTooltip("#" + sHeader, sText1, argb(255,255,255,255), sText2, argb(255,255,192,192), sText3, argb(255,192,255,192), "", argb(255,255,255,255), sPicture, sGroup, sGroupPicture, 64, 64);
 
@@ -508,13 +508,13 @@ void FillSkillTables()
 	string  row, skillName;
     int     diff, skillVal;
     
-    // boal оптимизация скилов -->
+    
     DelBakSkillAttr(xi_refCharacter);
     ClearCharacterExpRate(xi_refCharacter);
     RefreshCharacterSkillExpRate(xi_refCharacter);
     
     SetEnergyToCharacter(xi_refCharacter);
-    // boal оптимизация скилов <--
+    
     
     if (!CheckAttribute(xi_refCharacter,"perks.FreePoints_self") )
 		xi_refCharacter.perks.FreePoints_self = 0;
@@ -528,7 +528,7 @@ void FillSkillTables()
 	
 	GameInterface.TABLE_SPECIAL.select = 0;
 	GameInterface.TABLE_SPECIAL.hr.td1.str = "";
-//	SetFormatedText("STR_1", XI_ConvertString("Characteristics"));
+
 
 	for (i=0; i<=7; i++)
 	{
@@ -538,7 +538,7 @@ void FillSkillTables()
         GameInterface.TABLE_SPECIAL.(row).UserData.ID = skillName;
 		GameInterface.TABLE_SPECIAL.(row).td1.fontidx = 0;
 		GameInterface.TABLE_SPECIAL.(row).td1.textoffset = "0,-6";
-		//GameInterface.TABLE_SPECIAL.(row).td1.align = "center";
+		
 		GameInterface.TABLE_SPECIAL.(row).td1.scale = 0.88;
 		GameInterface.TABLE_SPECIAL.(row).td2.textoffset = "5,0";
 		GameInterface.TABLE_SPECIAL.(row).td2.scale = 0.88;
@@ -550,7 +550,7 @@ void FillSkillTables()
 		GameInterface.TABLE_SPECIAL.(row).td2.str = XI_ConvertString(skillName);
 		skillVal = GetSkillValue(xi_refCharacter, SPECIAL_TYPE, skillName);
 		GameInterface.TABLE_SPECIAL.(row).td4.str = skillVal;
-		// рассчет драйна
+		
 		diff = GetCharacterSPECIAL(xi_refCharacter, skillName) - skillVal;
 		if (diff == 0)
 		{
@@ -598,7 +598,7 @@ void FillSkillTables()
 		GameInterface.TABLE_SKILL_1.(row).td2.str = XI_ConvertString(skillName);
 		skillVal = GetSkillValue(xi_refCharacter, SKILL_TYPE, skillName);
 		GameInterface.TABLE_SKILL_1.(row).td5.str = skillVal;
-		// рассчет драйна
+		
 		diff = GetSummonSkillFromName(xi_refCharacter, skillName) - skillVal;
 		
 		if (skillVal < SKILL_MAX)
@@ -654,7 +654,7 @@ void FillSkillTables()
 		GameInterface.TABLE_SKILL_2.(row).td2.str = XI_ConvertString(skillName);
 		skillVal = GetSkillValue(xi_refCharacter, SKILL_TYPE, skillName);
 		GameInterface.TABLE_SKILL_2.(row).td5.str = skillVal;
-		// рассчет драйна
+		
 		diff = GetSummonSkillFromName(xi_refCharacter, skillName) - skillVal;
 
 		if (skillVal < SKILL_MAX)
@@ -684,7 +684,7 @@ void FillSkillTables()
 	       }
 		}
 	}
-	////  остальное
+	
 	GameInterface.TABLE_OTHER.select = 0;
 	GameInterface.TABLE_OTHER.hr.td1.str = "";
 	for (i=1; i<=8; i++)
@@ -754,17 +754,10 @@ void FillSkillTables()
     GameInterface.TABLE_OTHER.tr5.td1.icon.image = "Money";
 	GameInterface.TABLE_OTHER.tr5.td2.str = XI_ConvertString("Money");
 	GameInterface.TABLE_OTHER.tr5.td3.str = MakeMoneyShow(sti(xi_refCharacter.Money), MONEY_SIGN,MONEY_DELIVER);
-	//GameInterface.TABLE_OTHER.tr5.td3.scale = 0.95;
-	//GameInterface.TABLE_OTHER.tr5.td3.color = SetAlphaIntoColor(COLOR_MONEY, GetAlphaFromSkill(10));
+	
+	
 
-/*	
-    GameInterface.TABLE_OTHER.tr6.UserData.ID = "Reputation";
-	GameInterface.TABLE_OTHER.tr6.td1.icon.group = "ICONS_CHAR";
-    GameInterface.TABLE_OTHER.tr6.td1.icon.image = "Reputation";
-	GameInterface.TABLE_OTHER.tr6.td2.str = XI_ConvertString("Reputation");
-	GameInterface.TABLE_OTHER.tr6.td3.str = XI_ConvertString(GetReputationName(sti(xi_refCharacter.reputation)));
-	GameInterface.TABLE_OTHER.tr6.td3.scale = 0.78;
-*/	
+ 	
 	GameInterface.TABLE_OTHER.tr6.UserData.ID = "weight";
 	GameInterface.TABLE_OTHER.tr6.td1.icon.group = "ICONS_CHAR";
     GameInterface.TABLE_OTHER.tr6.td1.icon.image = "weight";
@@ -805,7 +798,7 @@ void FillSkillTables()
 	GameInterface.TABLE_OTHER.tr8.td2.str = XI_ConvertString("NextExp");
 	GameInterface.TABLE_OTHER.tr8.td3.str = "";
 	
-	// прорисовка
+	
 	Table_UpdateWindow("TABLE_SPECIAL");
     Table_UpdateWindow("TABLE_SKILL_1");
     Table_UpdateWindow("TABLE_SKILL_2");
@@ -819,13 +812,13 @@ void CS_TableSelectChange()
 	iSelected = GetEventData();
     CurTable = sControl;
     CurRow   =  "tr" + (iSelected);
-    //sti(GameInterface.(sControl).(sRow).index);
+    
  	NullSelectTable("TABLE_SPECIAL");
     NullSelectTable("TABLE_SKILL_1");
     NullSelectTable("TABLE_SKILL_2");
     NullSelectTable("TABLE_PERKS");
     NullSelectTable("TABLE_OTHER");
-    // перерисует "порог опыта"
+    
     GameInterface.TABLE_OTHER.tr8.td3.str = "";
     if (CurTable == "TABLE_OTHER" && CurRow == "tr1")
     {
@@ -844,7 +837,7 @@ void CS_TableSelectChange()
 		}
 	}
 	Table_UpdateWindow("TABLE_OTHER");
-	// установим скилчанжер, если нужно
+	
 	HideSkillChanger();
     SetSkillArrows();
 }
@@ -926,10 +919,10 @@ void SetControlsTabMode(int nMode)
 
 	switch (nMode)
 	{
-		case 1: //
+		case 1: 
 			sPic1 = "TabDeSelected";
 			nColor1 = argb(255,255,255,255);
-			// порог опыта
+			
 			if (!CheckAttribute(xi_refCharacter,"perks.FreePoints_self_exp"))
             {
                xi_refCharacter.perks.FreePoints_self_exp = 0;
@@ -939,7 +932,7 @@ void SetControlsTabMode(int nMode)
 		case 2:
 			sPic2 = "TabDeSelected";
 			nColor2 = argb(255,255,255,255);
-			// порог опыта
+			
 			if (!CheckAttribute(xi_refCharacter,"perks.FreePoints_ship_exp"))
             {
                xi_refCharacter.perks.FreePoints_ship_exp = 0;
@@ -947,7 +940,7 @@ void SetControlsTabMode(int nMode)
             GameInterface.TABLE_OTHER.tr8.td3.str = sti(xi_refCharacter.perks.FreePoints_ship_exp)+ "/" + GetFreePoints_ShipRate(xi_refCharacter);
 		break;
 	}
-    Table_UpdateWindow("TABLE_OTHER"); // порог опыта
+    Table_UpdateWindow("TABLE_OTHER"); 
     
 	SetNewGroupPicture("TABBTN_1", "TABS", sPic1);
 	SetNewGroupPicture("TABBTN_2", "TABS", sPic2);
@@ -962,8 +955,8 @@ void FillControlsList(int nMode)
 {
 	switch (nMode)
 	{
-	    case 1: FillPerksTable("Self", true); break;  // Личные перки
-	    case 2: FillPerksTable("Ship", true); break;  // Корабельные перки
+	    case 1: FillPerksTable("Self", true); break;  
+	    case 2: FillPerksTable("Ship", true); break;  
 	}
 }
 
@@ -1023,7 +1016,7 @@ void FillPassengerScroll()
 
 	GameInterface.PASSENGERSLIST.ImagesGroup.t0 = "EMPTYFACE";
 
-	FillFaceList("PASSENGERSLIST.ImagesGroup", pchar, 2); // passengers
+	FillFaceList("PASSENGERSLIST.ImagesGroup", pchar, 2); 
 
 	GameInterface.PASSENGERSLIST.BadTex1 = 0;
 	GameInterface.PASSENGERSLIST.BadPic1 = "emptyface";
@@ -1042,7 +1035,7 @@ void FillPassengerScroll()
 			ok = CheckAttribute(&characters[_curCharIdx], "prisoned") && sti(characters[_curCharIdx].prisoned) == true;
 			if (!ok && GetRemovable(&characters[_curCharIdx]))
 			{
-                // совместители должностей -->
+                
                 howWork = 1;
                 if (CheckCharacterPerk(&characters[_curCharIdx], "ByWorker"))
                 {
@@ -1054,7 +1047,7 @@ void FillPassengerScroll()
                 }
                 ok = !CheckAttribute(&characters[_curCharIdx], "isfree") || sti(characters[_curCharIdx].isfree) < howWork;
                 PsgAttrName = GetOfficerTypeByNum(nCurScrollNum);
-				// совместители должностей <--
+				
 				if (ok && !CheckAttribute(&characters[_curCharIdx], PsgAttrName))
 				{
 					GameInterface.PASSENGERSLIST.(attributeName).character = _curCharIdx;
@@ -1065,7 +1058,7 @@ void FillPassengerScroll()
 			}
 		}
 	}
-	GameInterface.PASSENGERSLIST.ListSize = m + 2; // не знаю зачем, но для совместимости с "было"
+	GameInterface.PASSENGERSLIST.ListSize = m + 2; 
 }
 
 void ExitOfficerMenu()
@@ -1130,9 +1123,9 @@ void AcceptAddOfficer()
 		}
 		else
 		{
-		    characters[iChar].isfree = sti(characters[iChar].isfree) + 1; // совместители
+		    characters[iChar].isfree = sti(characters[iChar].isfree) + 1; 
 		}
-		bOk = (Characters[iChar].location != pchar.location);  // ниже локация перебивается на ГГ
+		bOk = (Characters[iChar].location != pchar.location);  
 		switch (nCurScrollNum)
 		{
 			case 1:
@@ -1175,15 +1168,15 @@ void AcceptAddOfficer()
 			break;
 		}
         attributeName2 = GetOfficerTypeByNum(nCurScrollNum);
-    	characters[iChar].(attributeName2) = true; // совместитель дожности
-    	//SetCharacterTask_FollowCharacter(&Characters[iChar], PChar);
-    	if (!IsEntity(worldMap) && !bSeaActive && bNeedFollow) // только для офов
+    	characters[iChar].(attributeName2) = true; 
+    	
+    	if (!IsEntity(worldMap) && !bSeaActive && bNeedFollow) 
     	{
 	    	if (IsEntity(loadedLocation) && loadedLocation.type == "tavern")
-	    	{   //  пусть всегда будут появляться
+	    	{   
 	    	    PlaceCharacter(&Characters[iChar], "goto", "random_must_be_near");
 	    	}
-			else // Jason: залупу на воротник, а не обмен с офами, где их нет и быть не может. Супердыра закрыта.
+			else 
 			{
 				ref loc = &Locations[FindLocation(pchar.location)];
 				aref grp;
@@ -1221,7 +1214,7 @@ void AcceptRemoveOfficer()
 
 	int iChar = sti(GameInterface.CHARACTERS_SCROLL.(attributeName2).character);
 
-    characters[iChar].isfree = sti(characters[iChar].isfree) - 1; // совместители
+    characters[iChar].isfree = sti(characters[iChar].isfree) - 1; 
 	if (sti(characters[iChar].isfree) <= 0)
 	{
 		DeleteAttribute(&characters[iChar], "isfree");
@@ -1266,7 +1259,7 @@ void AcceptRemoveOfficer()
 		break;
 	}
     attributeName2 = GetOfficerTypeByNum(nCurScrollNum);
-    DeleteAttribute(&characters[iChar], attributeName2); // совместитель дожности
+    DeleteAttribute(&characters[iChar], attributeName2); 
     
 	FillCharactersScroll();
 	GameInterface.CHARACTERS_SCROLL.current = iCurrentNode;
@@ -1354,7 +1347,7 @@ void DecreaseSkill(int _add)
     SetVariable();
     SetSkillArrows();
 }
-///////////////////////////////////////  PERKS /////////////////////////
+
 void FillPerksTable(string _type, bool _refresh)
 {
 	int perksQ, i, n;
@@ -1370,7 +1363,7 @@ void FillPerksTable(string _type, bool _refresh)
 	}
 	SetFormatedText("STR_4", XI_ConvertString("Abilities"));
 
-	makearef(arPerksRoot,ChrPerksList.list); // общий список
+	makearef(arPerksRoot,ChrPerksList.list); 
 	perksQ = GetAttributesNum(arPerksRoot);
 	n = 1;
 	for(i=0; i<perksQ; i++)
@@ -1382,7 +1375,7 @@ void FillPerksTable(string _type, bool _refresh)
         if (xi_refCharacter.id != pchar.id && CheckAttribute(arPerksRoot, perkName + ".PlayerOnly")) continue;
         if (CheckAttribute(arPerksRoot, perkName + ".Hiden")) continue;
         
-        if (!CheckAttribute(arPerksRoot, perkName + ".BaseType")) // to_DO
+        if (!CheckAttribute(arPerksRoot, perkName + ".BaseType")) 
         {
             arPerksRoot.(perkName).BaseType = "self";
         }
@@ -1399,7 +1392,7 @@ void FillPerksTable(string _type, bool _refresh)
             {
                 icoGroup = "PERK_DISABLE";
                 if (xi_refCharacter.id == pchar.id && GetOfficersPerkUsing(pchar, perkName))
-                {   // есть у офа, но нет у ГГ
+                {   
                 	GameInterface.TABLE_PERKS.(row).td2.color = argb(255,196,255,196);
                 }
                 else
@@ -1414,13 +1407,13 @@ void FillPerksTable(string _type, bool _refresh)
 		    GameInterface.TABLE_PERKS.(row).td1.icon.offset = "0, 0";
 
 			GameInterface.TABLE_PERKS.(row).td2.str = GetConvertStr(perkName, "AbilityDescribe.txt");
-			//GameInterface.TABLE_PERKS.(row).td2.textoffset = "0,-6";
+			
 			GameInterface.TABLE_PERKS.(row).td2.scale = 0.80;
 			n++;
 		}
 	}
 
-	// прорисовка
+	
 	Table_UpdateWindow("TABLE_PERKS");
 }
 
@@ -1454,7 +1447,7 @@ void ChoosePerk()
 		SetFormatedText("PERK_TEXT_FREE", XI_ConvertString("Ship abilities") + ": " + xi_refCharacter.perks.FreePoints_ship);
 		if (sti(xi_refCharacter.perks.FreePoints_ship) <= 0) ok = false;
     }
-	// проверка на необходимы перки -->
+	
 	if (CheckAttribute(&ChrPerksList, "list." + perkName + ".condition"))
 	{
         makearef(rootItems, ChrPerksList.list.(perkName).condition);
@@ -1492,7 +1485,7 @@ void ChoosePerk()
 	{
 	    showCondition = false;
 	}
-	// проверка на необходимы перки <--
+	
 	XI_WindowShow("PERK_WINDOW", true);
 	XI_WindowDisable("PERK_WINDOW", false);
 	XI_WindowDisable("MAIN_WINDOW", true);
@@ -1502,7 +1495,7 @@ void ChoosePerk()
 	if (CheckCharacterPerk(xi_refCharacter, perkName))
  	{
  	    SetNodeUsing("PERK_ON", true);
- 	    ok = false; // уже есть
+ 	    ok = false; 
  	}
  	else
  	{
@@ -1538,14 +1531,14 @@ void AcceptPerk()
 		xi_refCharacter.perks.FreePoints_ship = sti(xi_refCharacter.perks.FreePoints_ship) - 1;
     }
     if (SetCharacterPerk(xi_refCharacter, perkName))
-    {   // перерисуем персонажа
+    {   
     	FillSkillTables();	
     }
-    // перерисуем все -->
+    
     SetFormatedText("TABSTR_1", XI_ConvertString("Personal_abilities") + " " +xi_refCharacter.perks.FreePoints_self);
     SetFormatedText("TABSTR_2", XI_ConvertString("Ship_abilities") + " " + xi_refCharacter.perks.FreePoints_ship);
     FillPerksTable(GameInterface.(CurTable).(CurRow).UserData.Type, false);
-    // перерисуем все <--
+    
 	ExitPerkMenu();
 }
 
@@ -1566,4 +1559,5 @@ void ShowSpecialWindow()
 
 	SetCurrentNode("TABLE_SPECIAL");
 }
+
 

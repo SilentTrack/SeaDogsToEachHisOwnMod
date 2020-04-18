@@ -1,4 +1,4 @@
-// Тичингиту - индеец-офицер
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld, rItm, rItem;
@@ -16,7 +16,7 @@ void ProcessDialogEvent()
 	if (findsubstr(sAttr, "SetGunBullets1_" , 0) != -1)
  	{
         i = findsubstr(sAttr, "_" , 0);
-	 	NPChar.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); // индекс в конце
+	 	NPChar.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); 
  	    Dialog.CurrentNode = "SetGunBullets2";
  	}
 	
@@ -88,9 +88,9 @@ void ProcessDialogEvent()
 		
 		case "Tichingitu_8":
 			DialogExit();
-			chrDisableReloadToLocation = false;//открыть локацию
-			DoQuestReloadToLocation("BasTer_exittown", "rld", "aloc9", "TichingituFree"); // 170712
-			pchar.quest.FreeTichingituOver.over = "yes"; //снять таймер
+			chrDisableReloadToLocation = false;
+			DoQuestReloadToLocation("BasTer_exittown", "rld", "aloc9", "TichingituFree"); 
+			pchar.quest.FreeTichingituOver.over = "yes"; 
 		break;
 		
 		case "Tichingitu_9":
@@ -152,7 +152,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(pchar, "questTemp.Sharlie.Tichingitu");
 		break;
 		
-	//--> ----------------------------------- офицерский блок ------------------------------------------
+	
 		case "Tichingitu_officer":
 			dialog.text = "Tichingitu listen to you, captain "+pchar.name+"!";
 			if (CheckAttribute(pchar, "questTemp.Dolly_Tieyasal") && !CheckAttribute(npchar, "quest.Tieyasal"))
@@ -235,7 +235,7 @@ void ProcessDialogEvent()
             Link.l1.go = "Exit";
         break;
 		
-		//--> задать дистанцию стрельбы
+		
 		case "TargetDistance":
 			dialog.text = "How far, captain? Tell Tichingitu how many yards, not more than twenty.";
 			link.l1 = "";
@@ -273,10 +273,10 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			npchar.MusketerDistance = iTemp;
 		break;
-		//<-- задать дистанцию стрельбы
-	//<-- ----------------------------------- офицерский блок ----------------------------------------
+		
 	
-	// на Тайясаль
+	
+	
 		case "tieyasal":
 			dialog.text = "Tichingit's life is long time become life of my captain. Indian not forget for captain do for Tichingitu. Tichingitu follow him where captain say, no questioning, no hesitation.";
 			link.l1 = "Thank you, my friend!";

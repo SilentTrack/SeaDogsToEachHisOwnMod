@@ -21,7 +21,7 @@ void NetClient_WhrCreateSeaEnvironment()
 	NCSea.Clear = "";
 
 	NCSea.Server = false;
-	NCSea.SimpleSea = sti(InterfaceStates.SimpleSea);	// must be before creating
+	NCSea.SimpleSea = sti(InterfaceStates.SimpleSea);	
 	CreateEntity(&NCSea, "NetSea");
 
 	NCSea.Transparency = Whr_GetFloat(aSea,"Transparency");
@@ -35,7 +35,7 @@ void NetClient_WhrCreateSeaEnvironment()
 	NCSea.MaxWaveDistance = MaxWaveDistance;
 	NCSea.MaxDim = 65536;
 	NCSea.MinDim = 128;
-	//NCSea.Sea2.GridStep = GridStepPC;
+	
 	NCSea.Sea2.GridStep = 0.07 + 0.1 * (1.0 - stf(InterfaceStates.SeaDetails));
 
 	NCSea.Lights = aCurWeather.Lights;
@@ -65,7 +65,7 @@ void NetClient_WhrCreateSeaEnvironment()
 
 	NCSea.Sky.Color = Whr_GetColor(aSea, "Sky.Color");
 
-	// Advanced Sea initialize
+	
 	NCSea.Sea2.WaterColor = Whr_GetColor(aSea2, "WaterColor");
 	NCSea.Sea2.SkyColor = Whr_GetColor(aSea2, "SkyColor");
 
@@ -97,3 +97,4 @@ void NetClient_MoveSeaToLayers(string sExecuteLayer, string sRealizeLayer)
 	LayerAddObject(sExecuteLayer, &NCSea, 65530);
 	LayerAddObject(sRealizeLayer, &NCSea, 65530);
 }
+

@@ -25,7 +25,7 @@ void NetClient_WhrCreateSunGlowEnvironment()
 
 	if (sti(aSun.Glow.Enable) == false && sti(aSun.Flare.Enable) == false)) return;
 
-	// create sunglow
+	
 	CreateEntity(&NCSunGlow, "NetSunGlow");
 	LayerAddObject("sea_sunroad", &NCSunGlow, -1);
 

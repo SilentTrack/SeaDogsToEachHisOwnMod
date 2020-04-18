@@ -13,10 +13,10 @@ void NetServer_WhrCreateSeaEnvironment()
 	aref	aSea2; makearef(aSea2, aCurWeather.Sea2);
 
 	NSSea.Server = true;
-	NSSea.SimpleSea = true;	// must be before creating, better to set true, because its eat less video memory
+	NSSea.SimpleSea = true;	
 	CreateEntity(&NSSea, "NetSea");
 
-	// Advanced Sea initialize
+	
 	NSSea.Sea2.WaterColor = Whr_GetColor(aSea2, "WaterColor");
 	NSSea.Sea2.SkyColor = Whr_GetColor(aSea2, "SkyColor");
 
@@ -47,3 +47,4 @@ void NetServer_MoveSeaToLayers(string sExecuteLayer, string sRealizeLayer)
 	LayerAddObject(sExecuteLayer, &NSSea, 65530);
 	LayerAddObject(sRealizeLayer, &NSSea, 65530);
 }
+

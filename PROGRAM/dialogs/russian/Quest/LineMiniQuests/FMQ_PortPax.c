@@ -1,4 +1,4 @@
-// Addon-2016 Jason, французские миниквесты (ФМК) Порт-о-Пренс
+
 void ProcessDialogEvent()
 {
 	ref sld, NPChar;
@@ -551,3 +551,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

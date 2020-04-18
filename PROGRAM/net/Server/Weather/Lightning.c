@@ -26,17 +26,17 @@ void NetServer_Lightning_DoIt()
 
 	int iNextTimeLightning = 200 + rand(2000);
 
-	// next lightning
+	
 	PostEvent("NetServer_Lightning_DoIt", iNextTimeLightning);
 	
 	aref aCurWeather = NetServer_GetCurrentWeather();
 
-	// FIX-ME : about all client ships center
+	
 	float cx = stf(Camera.Pos.x);
 	float cz = stf(Camera.Pos.z);
 
 	float fDist = 1000.0 + frnd() * 2000.0;
-	if (rand(30) == 15) { fDist = 20.0 + frnd() * 200.0; }	// nearest lightning
+	if (rand(30) == 15) { fDist = 20.0 + frnd() * 200.0; }	
 	float fAngle = frnd() * PIm2;
 	int iTimeSound = fDist / 333.0;
 
@@ -59,7 +59,7 @@ void NetServer_Lightning_DoIt()
 	NetServer_SendMessage(DST_ALL, iSMsg, false);
 	NMDelete(iSMsg);
 
-	// find nearest ships and do damage
+	
 	for (int i=0; i<NET_MAXCLIENTS; i++)
 	{
 		if (!sti(NSClients[i].Use)) { continue; }
@@ -89,7 +89,7 @@ void NetServer_Lightning_DoIt()
 				float dx = 0.6 * bx * (frnd() - 0.5);
 				float dz = 0.7 * bz * (frnd() - 0.5);
 				RotateAroundY(&dx, &dz, fCos, fSin);
-				//NetServer_Ship_Serious_Boom(sx + dx, sy + 0.1 * by * frnd(), sz + dz);
+				
 
 				iSMsg = NMCreate();
 				NMAddByte(iSMsg, NC_SHIP);
@@ -105,7 +105,7 @@ void NetServer_Lightning_DoIt()
 			NetServer_ShipApplyHullHitpoints(rClient, iMinBoom * 40.0, NETKILL_BY_LIGHTNING, DST_INVALID);
 			NetServer_ShipApplyCrewHitpoints(rClient, MakeFloat(rand(3)), DST_INVALID);
 
-			// fireplaces test
+			
 			int iNumFirePlaces = sti(rClient.Ship.NumFirePlaces);
 			float fCurr = 0.0;
 			float fFirePlaces = Bring2Range(1.0, 0.1, 0.0, fMinLightningDist, fDist);
@@ -122,8 +122,8 @@ void NetServer_Lightning_DoIt()
 				iSMsg = NMCreate();
 				NMAddByte(iSMsg, NC_SHIP);
 				NMAddByte(iSMsg, NSC_SHIP_ACTIVATE_FIREPLACE);
-				NMAddByte(iSMsg, i);	// ClientID
-				NMAddWord(iSMsg, j);	// Fireplace index
+				NMAddByte(iSMsg, i);	
+				NMAddWord(iSMsg, j);	
 				NMAddDword(iSMsg, iRandStartTime + iServerTime);
 				NMAddFloat(iSMsg, fTotalFireTime);
 				NetServer_SendMessage(DST_ALL, iSMsg, false);
@@ -134,3 +134,4 @@ void NetServer_Lightning_DoIt()
 		}
 	}
 }
+

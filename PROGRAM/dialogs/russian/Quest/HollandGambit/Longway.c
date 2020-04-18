@@ -1,4 +1,4 @@
-// китаец Лонгвэй, подручный Роденбурга
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld, rItm, rItem;
@@ -16,7 +16,7 @@ void ProcessDialogEvent()
 	if (findsubstr(sAttr, "SetGunBullets1_" , 0) != -1)
  	{
         i = findsubstr(sAttr, "_" , 0);
-	 	NPChar.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); // индекс в конце
+	 	NPChar.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); 
  	    Dialog.CurrentNode = "SetGunBullets2";
  	}
 	
@@ -34,34 +34,34 @@ void ProcessDialogEvent()
 			pchar.questTemp.HWIC.Holl.JacobCity = SelectJacobCity();
 		break;
 		
-//-----------------------------------------------за Голландию-----------------------------------------------
+
 		case "Longway_neutral":
 			dialog.text = "I am sure that we will work well together, Longway. Jacob van Berg is currently at "+XI_ConvertString("Colony"+pchar.questTemp.HWIC.Holl.JacobCity+"Gen")+". I have appointed a meeting with him in the local tavern. He will be there.";
 			link.l1 = "Let's set sail!";
 			link.l1.go = "Longway_JacobGo";	
-			pchar.questTemp.HWIC.Holl.LongwayNeutral = "true";//признак враждебности китайца
+			pchar.questTemp.HWIC.Holl.LongwayNeutral = "true";
 		break;
 		
 		case "Longway_enemy":
 			dialog.text = "The order of mynheer Rodenburg is a law for Longway... Jacob van Berg is currently at "+XI_ConvertString("Colony"+pchar.questTemp.HWIC.Holl.JacobCity+"Gen")+". I have appointed a meeting with him in the local tavern. He will be there.";
 			link.l1 = "Let's set sail!";
 			link.l1.go = "Longway_JacobGo";	
-			pchar.questTemp.HWIC.Holl.LongwayEnemy = "true";//признак враждебности китайца
+			pchar.questTemp.HWIC.Holl.LongwayEnemy = "true";
 		break;
 		
 		case "Longway_friend":
 			dialog.text = "Longway will do all he can, captain. And Jacob van Berg is currently at "+XI_ConvertString("Colony"+pchar.questTemp.HWIC.Holl.JacobCity+"Dat")+". I have appointed a meeting with him in the local tavern. He will be there.";
 			link.l1 = "Let's set sail!";
 			link.l1.go = "Longway_JacobGo";	
-			pchar.questTemp.HWIC.Holl.LongwayFriend = "true";//признак враждебности китайца
+			pchar.questTemp.HWIC.Holl.LongwayFriend = "true";
 		break;
 		
 		case "Longway_JacobGo":
-			//Лонгвэя - в офицеры
+			
 			npchar.quest.OfficerPrice = sti(pchar.rank)*500;
 			Pchar.questTemp.HiringOfficerIDX = GetCharacterIndex(npchar.id);
-			npchar.OfficerWantToGo.DontGo = true; //не пытаться уйти
-			npchar.HalfImmortal = true;//полубессмертен
+			npchar.OfficerWantToGo.DontGo = true; 
+			npchar.HalfImmortal = true;
 			npchar.loyality = 18;
 			AddDialogExitQuestFunction("LandEnc_OfficerHired");
 			NextDiag.CurrentNode = NextDiag.TempNode;
@@ -105,7 +105,7 @@ void ProcessDialogEvent()
 			}
 			PChar.quest.Munity = "Deads";
 			LAi_LocationFightDisable(&Locations[FindLocation("Ship_deck")], false);
-			if(sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_MAYFANG)//если сам на Мейфенг
+			if(sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_MAYFANG)
 			{
 			pchar.Ship.Type = GenerateShipExt(SHIP_TARTANE, true, pchar);
 			pchar.Ship.name = "Boat";
@@ -133,7 +133,7 @@ void ProcessDialogEvent()
 			LAi_CharacterDisableDialog(npchar);
 			LAi_SetImmortal(npchar, true);
 			npchar.lifeday = 0;
-			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");//ПУ откроем
+			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");
 			DeleteAttribute(pchar, "questTemp.HWIC.HollEquip");
 			pchar.questTemp.HWIC.Holl = "end";
 			CloseQuestHeader("Holl_Gambit");
@@ -157,7 +157,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("Holl_Gambit", "1-37");
 		break;
 		
-		case "Longway_hire_1"://нанимаем китайца
+		case "Longway_hire_1":
 			DialogExit();
 			DeleteAttribute(npchar, "LifeDay");
 			DeleteAttribute(npchar, "HalfImmortal");
@@ -166,7 +166,7 @@ void ProcessDialogEvent()
 			npchar.loyality = MAX_LOYALITY;
 			AddPassenger(pchar, npchar, false);
 			SetCharacterRemovable(npchar, true);
-			DeleteAttribute(npchar, "CompanionDisable");//теперь можем и в компаньоны
+			DeleteAttribute(npchar, "CompanionDisable");
 			npchar.Payment = true;
 			LAi_SetOfficerType(npchar);
 			NextDiag.CurrentNode = "Longway_officer";
@@ -179,7 +179,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("Holl_Gambit", "1-38");
 		break;
 		
-//---------------------------------------------против всех-------------------------------------------------
+
 		case "Longway_abordage":
 			PlaySound("VOICE\Russian\hambit\Longway-02.wav");
 			dialog.text = "Why stop? Finish, Longway tired, Longway lost.";
@@ -194,7 +194,7 @@ void ProcessDialogEvent()
 			LAi_SetPlayerType(pchar);
 			pchar.questTemp.HWIC.Self = "LongwayPrisoner";
 			npchar.lifeday = 0;
-			SetFunctionTimerCondition("RemoveLongwayOver", 0, 0, 1, false);//таймер до конца суток, ибо нефиг
+			SetFunctionTimerCondition("RemoveLongwayOver", 0, 0, 1, false);
 		break;
 		
 		case "Longway_prisoner":
@@ -259,7 +259,7 @@ void ProcessDialogEvent()
 			sld.dialog.currentnode = "Sailor_deck_7";
 			LAi_SetActorType(sld);
 			LAi_ActorDialog(sld, pchar, "", -1, 0);	
-			pchar.quest.RemoveLongwayOver.over = "yes";//снять таймер
+			pchar.quest.RemoveLongwayOver.over = "yes";
 			pchar.quest.RemoveLongwayTimer.win_condition.l1 = "Timer";
 			pchar.quest.RemoveLongwayTimer.win_condition.l1.date.hour  = sti(GetTime());
 			pchar.quest.RemoveLongwayTimer.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 10);
@@ -364,11 +364,11 @@ void ProcessDialogEvent()
 			pchar.quest.Seek_Piter.win_condition.l1 = "location";
 			pchar.quest.Seek_Piter.win_condition.l1.location = "Nevis";
 			pchar.quest.Seek_Piter.function = "CreatePiterHalleon";
-			pchar.quest.RemoveLongwayTimer.over = "yes";//снять прерывание
-			SetFunctionTimerCondition("QuestShipsTerms_Over", 0, 0, 8, false); // таймер
+			pchar.quest.RemoveLongwayTimer.over = "yes";
+			SetFunctionTimerCondition("QuestShipsTerms_Over", 0, 0, 8, false); 
 		break;
 		
-		//--> ----------------------------------- офицерский блок ------------------------------------------
+		
 		case "Longway_officer":
 			dialog.text = "Longway is listening to you, captain.";
 			if (CheckAttribute(pchar, "questTemp.Dolly_Tieyasal") && !CheckAttribute(npchar, "quest.Tieyasal"))
@@ -445,9 +445,9 @@ void ProcessDialogEvent()
             Link.l1 = "Dismissed.";
             Link.l1.go = "Exit";
         break;
-	//<-- ----------------------------------- офицерский блок ----------------------------------------
 	
-	// на Тайясаль
+	
+	
 		case "tieyasal":
 			dialog.text = "Longway has been following you for a long time. Longway will follow you as always. Longway will not leave his captain.";
 			link.l1 = "Thank you, Longway! I am glad that I was right about you.";

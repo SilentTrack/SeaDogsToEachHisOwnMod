@@ -1,4 +1,4 @@
-// BOAL 27/06/06 переделка под нужны ВМЛ, все стерли и написали заново.
+
 void SeaHunterCheck()
 {
 	int    j, i;
@@ -9,11 +9,11 @@ void SeaHunterCheck()
     for (j=0; j< MAX_NATIONS; j++)
     {
         if (j == PIRATE) continue;
-        // открыть, если не нужны мирные охотники if(NationsRelations2MainCharacter[j] != RELATION_ENEMY) continue;
+        
 
         typeHunter = NationShortName(j);
 
-        if (ChangeCharacterNationReputation(pchar, j, 0) <= -10)// Минус это НЗГ
+        if (ChangeCharacterNationReputation(pchar, j, 0) <= -10)
         {
             sCapId = typeHunter + "Hunter0";
             sGroup = "Sea_" + sCapId + "1";
@@ -24,20 +24,20 @@ void SeaHunterCheck()
             {
                 sld = GetCharacter(NPC_GenerateCharacter(sCapId + i, "off_hol_2", "man", "man", 5, j, 20, true, "hunter"));
                 SetShipHunter(sld);
-                sld.WatchFort = true; //видеть форты
-                SetFantomParamHunter(sld); //крутые парни
+                sld.WatchFort = true; 
+                SetFantomParamHunter(sld); 
                 SetCaptanModelByEncType(sld, "war");
                 sld.AlwaysEnemy = true;
                 sld.DontRansackCaptain = true;
                 sld.mapEnc.type = "war";
                 sld.mapEnc.Name = "Headhunters";
 				sld.hunter = "hunter";
-				//sld.mapEnc.worldMapShip = "Manowar_gold";
+				
                 Group_AddCharacter(sGroup, sCapId + i);
                 
                 if (i == 1 || GetCharacterShipClass(sld) == 1) SetRandGeraldSail(sld, sti(sld.Nation));
                 
-                if (abs(ChangeCharacterNationReputation(pchar, j, 0)) < (i * 15)) break; // добавим капитана только когда положенно
+                if (abs(ChangeCharacterNationReputation(pchar, j, 0)) < (i * 15)) break; 
             }
 
             Group_SetGroupCommander(sGroup, sCapId+ "1");
@@ -67,7 +67,7 @@ void SetShipHunter(ref Hunter)
         ShipsHunter = SHIP_BRIGANTINE + rand(2);
     }
 	
-	if(makeint(pchar.rank) >= 5 && makeint(pchar.rank) < 8) // Addon-2016 Jason
+	if(makeint(pchar.rank) >= 5 && makeint(pchar.rank) < 8) 
     {
         ShipsHunter = SHIP_SCHOONER_W;
     }
@@ -82,7 +82,7 @@ void SetShipHunter(ref Hunter)
     SetBaseShipData(Hunter);
     hcrew = GetMaxCrewQuantity(Hunter);
     SetCrewQuantity(Hunter, hcrew);
-    SetCrewQuantityFull(Hunter); // to_do
+    SetCrewQuantityFull(Hunter); 
     
     DeleteAttribute(Hunter,"ship.sails");
     DeleteAttribute(Hunter,"ship.masts");
@@ -102,37 +102,37 @@ void SetShipHunter(ref Hunter)
 		Fantom_SetUpgrade(Hunter, "war");
     }
 }
-// ОЗГИ на суше (порт и бухта)
-void LandHunterReactionResult(ref loc)  // отработает после входа в локацию, но после квест_реакшна на вход
+
+void LandHunterReactionResult(ref loc)  
 {
 	int    j, i, k;
 	string typeHunter, sTemp, sCapId;
 	ref    sld;
 	bool   ok;
 	
-	//if (actLoadFlag) return; // идет лоад
+	
 	if (LAi_IsCapturedLocation) return;
-	if (chrDisableReloadToLocation) return; // идет некий другой квест с запретом выхода
+	if (chrDisableReloadToLocation) return; 
 	if (loc.type != "town" && loc.type != "seashore" && loc.type != "port") return;   
 	if (CheckAttribute(Pchar, "GenQuest.Hunter2Pause")) 
 	{
 		DeleteAttribute(Pchar, "GenQuest.Hunter2Pause");
 		return; 
 	}
-	if (CheckAttribute(Pchar, "GenQuest.HunterLongPause")) return; // Addon 2016-1 Jason пиратская линейка
-	if (LAi_grp_alarmactive == true)  return;  // уже ГГ кто-то бьет
+	if (CheckAttribute(Pchar, "GenQuest.HunterLongPause")) return; 
+	if (LAi_grp_alarmactive == true)  return;  
 	
-	//if (GetQuestPastDayParam("Land_HunterTimerHasBeen") == 0) return; // сегодня уже были
+	
 	for (j=0; j< MAX_NATIONS; j++)
     {
         if (j == PIRATE) continue;
-        // открыть, если не нужны мирные охотники if(NationsRelations2MainCharacter[j] != RELATION_ENEMY) continue;
+        
 
         typeHunter = NationShortName(j);
         if (GetQuestPastDayParam("Land_HunterTimer" + typeHunter) > (7 + rand(7)))
         {
-			SaveCurrentQuestDateParam("Land_HunterTimer" + typeHunter); // запомним, даже если нет озгов, выход их ФОР отложит озгов до след раза у др нации
-			if (ChangeCharacterNationReputation(pchar, j, 0) <= -10)// Минус это НЗГ
+			SaveCurrentQuestDateParam("Land_HunterTimer" + typeHunter); 
+			if (ChangeCharacterNationReputation(pchar, j, 0) <= -10)
 	        {
 	            Log_QuestInfo("LandHunterReactionResult " + typeHunter);
 				sCapId = typeHunter + "LandHunter0";
@@ -142,13 +142,13 @@ void LandHunterReactionResult(ref loc)  // отработает после входа в локацию, но 
 	            for (i = 1; i <= 8; i++)
 	            {
 	                sld = GetCharacter(NPC_GenerateCharacter(sCapId + i, "off_hol_2", "man", "man", 5, j, 0, true, "hunter"));
-	                SetFantomParamHunter(sld); //крутые парни
+	                SetFantomParamHunter(sld); 
 	                sld.name 	= "Head hunter";
 	                sld.lastname 	= "";
 	                sld.Dialog.CurrentNode = "First time";
 	                sld.dialog.filename = "Hunter_dialog.c";
 	                sld.greeting = "hunter";
-	                sld.location = "none"; // вот где порылась собака!!!!!!!!!!!
+	                sld.location = "none"; 
 	
 	                SetModelPirate(sld);
 	                k = 0;
@@ -161,15 +161,15 @@ void LandHunterReactionResult(ref loc)  // отработает после входа в локацию, но 
 					arrayNPCModelHow++;
 	                LAi_SetActorTypeNoGroup(sld);
 	                LAi_SetCheckMinHP(sld, (LAi_GetCharacterHP(sld) - 1), false, "Battle_Hunters_Land");
-	                if (PlaceCharacter(sld, "goto", "random_must_be_near") == "" && i == 1) // fix если вдруг нет в локации
+	                if (PlaceCharacter(sld, "goto", "random_must_be_near") == "" && i == 1) 
 	                {
 	                    ok = false;
 	                    break;
 	                }
 	                LAi_ActorFollow(sld, pchar, "", 8.0);
-	                //LAi_Actor2WaitDialog(sld, pchar); // ждать диалог, но бежать
+	                
 	                LAi_group_MoveCharacter(sld, sTemp);
-	                if (abs(ChangeCharacterNationReputation(pchar, j, 0)) < (i * 9)) break; // число от НЗГ
+	                if (abs(ChangeCharacterNationReputation(pchar, j, 0)) < (i * 9)) break; 
 	            }
 	            
 				LAi_group_SetRelation(sTemp, LAI_GROUP_PLAYER, LAI_GROUP_NEITRAL);
@@ -180,20 +180,20 @@ void LandHunterReactionResult(ref loc)  // отработает после входа в локацию, но 
 				if (ok)
 	            {
 	                pchar.HunterCost = abs(ChangeCharacterNationReputation(pchar, j, 0));
-	                PChar.HunterCost = makeint(PChar.HunterCost)*2000 + rand(5000); //сразу генерим
+	                PChar.HunterCost = makeint(PChar.HunterCost)*2000 + rand(5000); 
 	                PChar.HunterCost.TempHunterType = typeHunter;
 	                PChar.HunterCost.Qty = i;
-	                //LAi_SetActorType(Pchar);
+	                
 	                sld = characterFromID(sCapId + "1");
 	                LAi_type_actor_Reset(sld);
 	                LAi_ActorDialog(sld, pchar, "", 4.0, 0);
-					//SetActorDialogAny2Pchar(sld.id, "", 0.0, 0.0);
-		    		//LAi_ActorFollow(sld, pchar, "ActorDialog_Any2Pchar", 4.1);
+					
+		    		
 		    		chrDisableReloadToLocation = true;
 		    		DoQuestCheckDelay("OpenTheDoors", 5.0);
 	            }
-	            // запомним и сегодня больше не парим ГГ
-	            //SaveCurrentQuestDateParam("Land_HunterTimerHasBeen");
+	            
+	            
 	            break;
 	        }
         }

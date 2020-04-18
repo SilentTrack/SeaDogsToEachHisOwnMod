@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
 	ref FortChref;
@@ -11,7 +11,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Not now. There is no time."), "True... But later, not now...",
                       "I'll ask, I'll ask... a bit later though...", "I am sorry, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);			  
 			link.l1.go = "exit";
-			// Addon 2016-1 Jason пиратская линейка
+			
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "jewelry_6")
 			{
 				link.l1 = "Your Excellence, I am here on account of the imprisoned officer, Lope Montoro...";
@@ -41,7 +41,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
         break;
 		
 		case "Slavetrader_HavanaAttack_2":
-			if (CheckAttribute(FortChref, "Fort.Mode") && sti(FortChref.Fort.Mode) != FORT_DEAD)//дл€ особо хитрых - нефиг лезть с суши
+			if (CheckAttribute(FortChref, "Fort.Mode") && sti(FortChref.Fort.Mode) != FORT_DEAD)
 			{
 				dialog.text = "Ha! I have suspected that you have come here for them. But they are located in the fort. Our reinforcements are coming here now and your gang will be destroyed in a second.";
 				link.l1 = "Damn it! Fine sit here and don't move... Let's get away from here! Damn...";
@@ -69,15 +69,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			DialogExit();
 			SetReturn_Gover_Dialog_Exit(NPChar);
             Statistic_AddValue(Pchar, NationShortName(sti(NPChar.nation)) + "_GrabbingTown", 1);
-			pchar.quest.Slavetrader_DieHardHavana.over = "yes";//теперь можно на карту
-            SetCharacterGoods(pchar, GOOD_SLAVES, 5000+rand(500));// c перегрузом пойдет
+			pchar.quest.Slavetrader_DieHardHavana.over = "yes";
+            SetCharacterGoods(pchar, GOOD_SLAVES, 5000+rand(500));
             Log_SetStringToLog("Slaves have been put in your ship");
 			Log_SetStringToLog("You have got 30 days to deliver slaves to your employer");
 			chrDisableReloadToLocation = false;
 			sTemp = GetSquadronGoods(Pchar, GOOD_SLAVES);
 			AddQuestRecord("Slavetrader", "27");
 			AddQuestUserData("Slavetrader", "sQty", sTemp);
-			SetFunctionTimerCondition("Slavetrader_FiveTSlavesOver", 0, 0, 30, false);	//таймер
+			SetFunctionTimerCondition("Slavetrader_FiveTSlavesOver", 0, 0, 30, false);	
 			pchar.questTemp.Slavetrader = "Win_HavanaFort";
         break;
 		
@@ -88,15 +88,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			ChangeCharacterComplexReputation(pchar,"nobility", -8);
             Statistic_AddValue(Pchar, NationShortName(sti(NPChar.nation)) + "_GrabbingTown", 1);
 			chrDisableReloadToLocation = false;
-			pchar.quest.Slavetrader_DieHardHavana.over = "yes";//можно на карту
-			pchar.quest.Slavetrader_HavanaAttack.over = "yes";//если из —анть€го по суше пришел - уберем корабли
+			pchar.quest.Slavetrader_DieHardHavana.over = "yes";
+			pchar.quest.Slavetrader_HavanaAttack.over = "yes";
 			AddQuestRecord("Slavetrader", "27_1");
-			AddQuestUserData("Slavetrader", "sSex", GetSexPhrase("","а"));
+			AddQuestUserData("Slavetrader", "sSex", GetSexPhrase("","пњљ"));
 			CloseQuestHeader("Slavetrader");
 			pchar.questTemp.Slavetrader = "End_quest";
         break;
 		
-		// Addon 2016-1 Jason пиратская линейка
+		
 		case "Mtraxx":
             dialog.text = "How curious... more complaints?";
 			link.l1 = "No-no, quite on the contrary, your Excellence. Lope is an old army friend, we fought together back in Europe... I would love to help him out, and came to ask for your assistance.";
@@ -122,6 +122,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			Mtraxx_CreateRosario();
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

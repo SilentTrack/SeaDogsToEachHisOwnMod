@@ -1,4 +1,4 @@
-// диалоги прочих НПС по квесту LSC
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -20,7 +20,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		//-----------------------------------бандосы Акулы в трюме с припасами--------------------------------------
+		
 		case "PantryGuard":
 			dialog.text = "Ho, ho, just look at this, lads! Who has come to visit us! A thief looting people's chests! Come here! And you, pal, don't even try to play stupid and take your blade - I won't miss from such close distance... Chad will be really glad to see you!";
 			link.l1 = "But I... I have just got here!...";
@@ -38,7 +38,7 @@ void ProcessDialogEvent()
 			chrDisableReloadToLocation = false;
 			SetLaunchFrameFormParam("Few hours later...", "", 0, 3);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 7, 10); //крутим время
+			WaitDate("", 0, 0, 0, 7, 10); 
 			RecalculateJumpTable();
 			DoQuestFunctionDelay("LSC_GotoPrison", 3.0);
 		break;
@@ -83,11 +83,11 @@ void ProcessDialogEvent()
 			LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
 			LAi_group_SetCheck("EnemyFight", "LSC_ChadGuard_Die");
 			AddDialogExitQuest("MainHeroFightModeOn");
-			pchar.GenQuest.Notsearchbody = true; // запрет обыска трупов
+			pchar.GenQuest.Notsearchbody = true; 
 		break;
 		
-		// ----------------------------------Марчелло Циклоп--------------------------------
-		// если ждали в каюте
+		
+		
 		case "Cabin":
 			dialog.text = "Hey, what the hell are you doing here, god damn it? Where is Barbier?";
 			link.l1 = "Our friend Adolfo is... ill. He can't go to meeting so he asked me to sit a bit in his cabin and wait for you.";
@@ -120,7 +120,7 @@ void ProcessDialogEvent()
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 		break;
 		
-		// на Церес Смити - спасаем Мэри
+		
 		case "mary":
 			dialog.text = "Damn it! You have tracked me down...";
 			link.l1 = "Yes, scum! You won't lay a hand on her! Prepare to die!";
@@ -128,7 +128,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mary_1":
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			DialogExit();
 			LAi_SetWarriorType(npchar);
 			LAi_group_MoveCharacter(npchar, "EnemyFight");
@@ -138,7 +138,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
 		
-		// посланник от Акулы по варианту N
+		
 		case "SharkCureer":
 			dialog.text = "Are you "+GetFullName(pchar)+"?";
 			link.l1 = "Yes, it is me. What is the matter?";
@@ -152,16 +152,16 @@ void ProcessDialogEvent()
 		break;
 		
 		case "SharkCureer_2":
-			// сюда можно поставить таймер на гибель Акулы, если не придет до конца суток
+			
 			DialogExit();
 			LAi_SetActorType(npchar);
 			npchar.lifeday = 0;
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "", -1);
 			sld = characterFromId("Dodson");
-			sld.dialog.currentnode = "entrance_20"; // ноду Акуле
+			sld.dialog.currentnode = "entrance_20"; 
 		break;
 		
-		// посланник от Акулы по варианту M
+		
 		case "SharkCureer_3":
 			dialog.text = "Are you "+GetFullName(pchar)+"?";
 			link.l1 = "Yes, it is me. What is the matter?";
@@ -196,7 +196,7 @@ void ProcessDialogEvent()
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "", -1);
 		break;
 		
-		// тюремщик вместо Каппера
+		
 		case "Prisonboss":
 			if (npchar.quest.meeting == "0")
 			{
@@ -228,7 +228,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Prisonboss_M";
 		break;
 		
-		// заместитель Акселя в магазине
+		
 		case "AxelHelper":
 			dialog.text = "What do you want, pal?";
 			link.l1 = "Hm. And what is your business here? Where is Axel?";
@@ -254,7 +254,7 @@ void ProcessDialogEvent()
 			link.l1.go = DialogGoNodeRepeat("exit", "", "", "", npchar, Dialog.CurrentNode);
 		break;
 		
-		// мать Белого Мальчика - Агнес Кристиансен
+		
 		case "agnes":
 			dialog.text = "What do you want, mynheer?";
 			link.l1 = "Hm... I am sorry, mistress. Forgive me for my impudence and bad manners, but I want to ask you something: do you know a man named Ole Christiansen?";
@@ -305,9 +305,9 @@ void ProcessDialogEvent()
 		
 		case "agnes_8":
 			DialogExit();
-			SetLaunchFrameFormParam("Прошел час...", "", 0, 5);
+			SetLaunchFrameFormParam("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ...", "", 0, 5);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 1, 10); //крутим время
+			WaitDate("", 0, 0, 0, 1, 10); 
 			RecalculateJumpTable();
 			DoQuestFunctionDelay("LSC_OleGoHome", 5.0);
 		break;
@@ -318,7 +318,7 @@ void ProcessDialogEvent()
 			link.l1.go = "agnes_10";
 		break;
 		
-		case "agnes_10": // перекидываем pchar
+		case "agnes_10": 
 			DialogExit();
 			LAi_SetActorType(pchar);
 			LAi_ActorTurnToCharacter(pchar, characterFromID("Agnes"));
@@ -358,8 +358,8 @@ void ProcessDialogEvent()
 		
 		case "agnes_15":
 			DialogExit();
-			bDisableCharacterMenu = false;//лоченые интерфейсы
-			chrDisableReloadToLocation = false;//открыть локацию
+			bDisableCharacterMenu = false;
+			chrDisableReloadToLocation = false;
 			LAi_SetOwnerType(npchar);
 			LocatorReloadEnterDisable("Marigo_town", "houseSp2", true);
 			NextDiag.CurrentNode = "agnes_16";
@@ -369,7 +369,7 @@ void ProcessDialogEvent()
 			pchar.quest.LSC_Ole_return.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 1);
 			pchar.quest.LSC_Ole_return.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
 			pchar.quest.LSC_Ole_return.function = "LSC_OleAgnesRegard";
-			// удаляем Оле из пассажиров
+			
 			sld = characterFromId("Ole");
 			RemovePassenger(Pchar, sld);
 			DeleteAttribute(pchar, "GenQuest.Ole");
@@ -389,7 +389,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "agnes_18":
-			dialog.text = "I always knew that modesty is what makes noble people noble… I have prepared gifts for what you've done. Yes-yes! And don't you dare to decline! Here, take this… First, there is a chest filled with doubloons. Second, take this enchanted amulet, they call it a Scarab\nMy husband owned it, and I am sure that he would had be glad to know that his treasure will belong to such a noble captain, who returned my son to me. My husband was a carpenter, he used to say that Scarab speeds up his work\nI hope that this ring will serve you well. You deserve to wear it, no doubt!.. And finally, take my tailoring tools. It's a fine set. You will be able to craft a lot of good things with it.";
+			dialog.text = "I always knew that modesty is what makes noble people nobleпїЅ I have prepared gifts for what you've done. Yes-yes! And don't you dare to decline! Here, take thisпїЅ First, there is a chest filled with doubloons. Second, take this enchanted amulet, they call it a Scarab\nMy husband owned it, and I am sure that he would had be glad to know that his treasure will belong to such a noble captain, who returned my son to me. My husband was a carpenter, he used to say that Scarab speeds up his work\nI hope that this ring will serve you well. You deserve to wear it, no doubt!.. And finally, take my tailoring tools. It's a fine set. You will be able to craft a lot of good things with it.";
 			link.l1 = "Oh! These are really valuable gifts for any captain! Thanks, mistress.";
 			link.l1.go = "agnes_19";
 		break;
@@ -434,8 +434,8 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//----------------------------------------- специальные реакции -----------------------------------------------
-		//обнаружение ГГ в сундуках
+		
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
 			link.l1 = "Damn it!";

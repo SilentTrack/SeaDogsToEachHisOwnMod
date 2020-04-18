@@ -1,4 +1,4 @@
-// диалоги по квесту Цена чахотки
+
 void ProcessDialogEvent()
 {
 	ref sld, NPChar;
@@ -17,19 +17,19 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Captain! You went to sea, I heard! What happened? Did you find out anything? Please tell me, spit it out!";
 				if (CheckAttribute(pchar, "questTemp.Consumption.TakeMoney"))
-				{//взял деньги
+				{
 					link.l1 = "No, my beauty, this raid was made at the request of His Grace governor. I am very sorry, but Angelo died in the casemates of the fort - now there is no doubt in that. Stand firm! ";
 					link.l1.go = "Waitress";
 				}
 				else
-				{//убил Хуана
+				{
 					if (CheckAttribute(pchar, "questTemp.Consumption.KillJuan"))
 					{
 						link.l1 = "You were right. Your bother was kidnapped. Commandant had been selling prisoners like cattle to a slaver nicknamed Consumption. But I caught up with his ship, and now he is down below, and your brother Angelo shall come ashore soon. Unfortunately, I do not have as many long boats as needed for all passengers to be delivered ashore at once. ";
 						link.l1.go = "Waitress_2";
 					}
 					else
-					{//отпустил Хуана
+					{
 						link.l1 = "You were right. Your bother was kidnapped. Commandant had been selling prisoners like cattle to a slaver nicknamed Consumption. But I caught up with his ship, and, despite that I failed to kill that bastard, your brother Angelo shall come ashore soon. Unfortunately, I do not have as many long boats as needed for all passengers to delivered ashore at once. ";
 						link.l1.go = "Waitress_2";
 					}
@@ -118,7 +118,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
 		
-		//попытка залезть в сундук
+		
 		case "Man_FackYou":
 			dialog.text = "You are a thief! Or, perhaps, a spy? Guys, here, quickly!";
 			link.l1 = "Hup, devil!";
@@ -165,8 +165,8 @@ void ProcessDialogEvent()
 			pchar.quest.Consumption4.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 1);
 			pchar.quest.Consumption4.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
 			pchar.quest.Consumption4.function = "Consumption_FailSergio";
-			locations[FindLocation("PortSpein_Exittown")].DisableEncounters = true; //энкаутеры закрыть
-			LAi_LocationDisableOfficersGen("PortSpein_Exittown", true);//офицеров не пускать
+			locations[FindLocation("PortSpein_Exittown")].DisableEncounters = true; 
+			LAi_LocationDisableOfficersGen("PortSpein_Exittown", true);
 		break;
 		
 		case "Sergio_5":
@@ -298,11 +298,11 @@ void ProcessDialogEvent()
 			pchar.quest.Consumption6.win_condition.l1 = "HardHour";
 			pchar.quest.Consumption6.win_condition.l1.hour = 13;
 			pchar.quest.Consumption6.function = "Consumption_FailJuan";
-			// Сержио теперь наш друг и будет торговать смолами
-			SetFunctionTimerCondition("Oil_PrepareSergio", 0, 0, 20, false); // таймер
+			
+			SetFunctionTimerCondition("Oil_PrepareSergio", 0, 0, 20, false); 
 		break;
 		
-		// генератор торговли смолами
+		
 		case "Sergio_20":
 			dialog.text = "Oh, what a lucky meeting! Senor "+GetFullName(pchar)+"! I am so glad to see you!";
 			link.l1 = "Senor Sergio! I have not expected to meet you! How are you? How's good old commandant?";
@@ -341,8 +341,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Sergio_26":
-			chrDisableReloadToLocation = true;//закрыть локацию
-			pchar.quest.Oil_SetSergioToMayakOver.over = "yes"; //снять прерывание
+			chrDisableReloadToLocation = true;
+			pchar.quest.Oil_SetSergioToMayakOver.over = "yes"; 
 			dialog.text = "Welcome again, senor. Let me put you in the matter. ";
 			link.l1 = "I am all ears. ";
 			link.l1.go = "Sergio_27";
@@ -411,7 +411,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "oil_trade_2":
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			RemoveItems(pchar, "gold_dublon", 600);
 			Log_Info("You've given 600 doubloons");
 			PlaySound("interface\important_item.wav");
@@ -433,7 +433,7 @@ void ProcessDialogEvent()
 			AddCharacterGoods(pchar, GOOD_OIL, 60);
 			AddCharacterExpToSkill(pchar, "Commerce", 200);
 		break;
-	// <-- генератор смол
+	
 		
 		case "Juan_abordage":
 			dialog.text = "Who the hell are you!?";
@@ -473,7 +473,7 @@ void ProcessDialogEvent()
 			PlaySound("interface\important_item.wav");
 			ChangeCharacterComplexReputation(pchar, "nobility", -10);
 			OfficersReaction("bad");
-			pchar.questTemp.Consumption.TakeMoney = "true"; //атрибут для диалога
+			pchar.questTemp.Consumption.TakeMoney = "true"; 
 		break;
 		
 		case "Juan_abordage_4":
@@ -503,12 +503,12 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Juan_abordage_6":
-			//LAi_SetCurHPMax(NPChar);
-			//LAi_GetCharacterMaxEnergy(NPChar);			
+			
+			
 			QuestAboardCabinDialogExitWithBattle("ConJuan_AfterFight_2"); 
 			DialogExit();	
 			AddDialogExitQuest("MainHeroFightModeOn");
-			pchar.questTemp.Consumption.KillJuan = "true"; //атрибут для диалога
+			pchar.questTemp.Consumption.KillJuan = "true"; 
 		break;
 		
 		case "Waitress":
@@ -542,11 +542,11 @@ void ProcessDialogEvent()
 			link.l1.go = "Waitress_4";
 		break;
 		
-		case "Waitress_4"://благодарность натурой
+		case "Waitress_4":
 			DialogExit();
-			LocatorReloadEnterDisable("PortSpein_tavern", "reload1_back", true); //закрыть таверну
-			LocatorReloadEnterDisable("PortSpein_tavern", "reload2_back", false); //открыть комнату
-			bDisableFastReload = true;//закрыть переход
+			LocatorReloadEnterDisable("PortSpein_tavern", "reload1_back", true); 
+			LocatorReloadEnterDisable("PortSpein_tavern", "reload2_back", false); 
+			bDisableFastReload = true;
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload2_back", "PortSpein_tavern_upstairs", "goto", "goto3", "ConsumptionSexWaitress", -1);
 			pchar.questTemp.Consumption.Sex = "true";

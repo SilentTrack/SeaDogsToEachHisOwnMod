@@ -1,6 +1,6 @@
 #include "net\server\weather\Lightning.c"
 #include "net\server\weather\Sea.c"
-//#include "weather\Tornado.c"
+
 
 object	NSWeather;
 int		iServerCurWeatherNum = -1;
@@ -15,7 +15,7 @@ void NetServer_DeleteWeatherEnvironment()
 {
 	NetServer_WhrDeleteSeaEnvironment();
 	NetServer_WhrDeleteLightningEnvironment();
-	//NetServer_WhrDeleteTornadoEnvironment();
+	
 
 	DelEventHandler("frame", "NetServer_WhrOnWindChange");
 }
@@ -74,7 +74,7 @@ void NetServer_CreateWeatherEnvironment(int iSMsg)
 	
 	NetServer_WhrCreateLightningEnvironment();
 	NetServer_WhrCreateSeaEnvironment();
-	//if (bServerWhrTornado) { NetServer_WhrCreateTornadoEnvironment(); }
+	
 
 	NetServer_MoveWeatherToLayers("net_execute", "net_realize");
 }

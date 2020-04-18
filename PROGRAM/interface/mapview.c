@@ -1,12 +1,12 @@
-// Ugeen && Warship --> интерфейс картографического атласа
+
 
 ref xi_refCharacter; 
 string CurRow;
-int iSelected = 1; // курсор в таблице
+int iSelected = 1; 
 int iStartX = 20;
 int iStartY = 62;
-int iLengthX = 580;//606;
-int iLengthY = 520;//542 
+int iLengthX = 580;
+int iLengthY = 520;
 
 void InitInterface(string iniName)
 {
@@ -51,8 +51,8 @@ void IDoExit(int exitCode)
 	DelEventHandler("SelectRColony","SelectRColony");
 	DelEventHandler("MouseRClickUP", "HideRColony");
 
-	// По всему файлу мне лень править, а здесь оно тоже будет работать прекрасно
-	if(CheckAttribute(PChar, "ShowMapsAtlas")) // Смотрим из меню
+	
+	if(CheckAttribute(PChar, "ShowMapsAtlas")) 
 	{
 		DeleteAttribute(PChar, "ShowMapsAtlas");
 		interfaceResultCommand = RC_INTERFACE_TO_ITEMS;
@@ -105,7 +105,7 @@ void FillMapsTable()
 	SetFormatedText("STR_1", XI_ConvertString("Select map"));
 	Table_UpdateWindow("TABLE_MAPS");
 
-	// Заполним картами
+	
 	makearef(rootItems, xi_refCharacter.Items);
     for (i=0; i<GetAttributesNum(rootItems); i++)
     {
@@ -125,12 +125,12 @@ void FillMapsTable()
 			if (GetCharacterItem(xi_refCharacter, sGood) > 0)
 			{					
 				GameInterface.TABLE_MAPS.(row).index = GetItemIndex(arItem.id);				
-				//GameInterface.TABLE_MAPS.(row).td1.icon.group = arItem.picTexture;
-				//GameInterface.TABLE_MAPS.(row).td1.icon.image = "itm" + arItem.picIndex;
-				//GameInterface.TABLE_MAPS.(row).td1.icon.offset = "0, 0";
-				//GameInterface.TABLE_MAPS.(row).td1.icon.width = 30;
-				//GameInterface.TABLE_MAPS.(row).td1.icon.height = 30;
-				//GameInterface.TABLE_MAPS.(row).td1.textoffset = "31,0";
+				
+				
+				
+				
+				
+				
 				GameInterface.TABLE_MAPS.(row).td1.textoffset = "1,0";
 				GameInterface.TABLE_MAPS.(row).td1.str = LanguageConvertString(idLngFile, arItem.name);
 				GameInterface.TABLE_MAPS.(row).td1.scale = 0.72;				
@@ -232,7 +232,7 @@ void SelectRColony()
 			Y = -makefloat(worldMap.islands.(sColonyIslandID).(sColonyTown).position.z)+1000;
 		}
 		
-		// Оранж и Ла-Вегу придется выставлять ручками
+		
 		if(sColony == "FortOrange")
 		{
 			X = 600;
@@ -279,7 +279,7 @@ void HideRColony()
 
 void ShowColonyInfo(int iColony)
 {
-	// "COLONY_INFO_TEXT" - названия, "COLONY_INFO_TEXT2" - значения
+	
 	string sText;
 	ref sld, rColony;
 	rColony = &colonies[iColony];
@@ -306,8 +306,8 @@ void ShowColonyInfo(int iColony)
 	sText = XI_ConvertString("ColonyDistance") + " - " + iDays + " " + XI_ConvertString("day1") + ".";
 	SetFormatedText("COLONY_TRAVEL_INFO", sText);
 	
-//	ref rFC = CharacterFromID(sColony + " Fort Commander");
-//	DumpAttributes(rColony);
+
+
 
 	sText = XI_ConvertString("ColonyInfo");
 	AddLineToFormatedText("COLONY_INFO_LABEL", sText);
@@ -357,7 +357,7 @@ void ShowColonyInfo(int iColony)
 	for(int i=1; i<=3; i++)
 	{
 		string sGoodNum = "id" + i;
-		// Импорт
+		
 		if(CheckAttribute(islands[iIsland], "Trade.Import." + sGoodNum))
 		{
 			iColor = argb(255,196,196,255);
@@ -374,8 +374,8 @@ void ShowColonyInfo(int iColony)
 			SetNewGroupPicture("IMPORT" + i + "_PICTURE", "", "");
 		}
 		
-		// Экспорт
-		if(CheckAttribute(islands[iIsland], "Trade.Export." + sGoodNum)) // Если есть. На Бермудах третьего товара нету.
+		
+		if(CheckAttribute(islands[iIsland], "Trade.Export." + sGoodNum)) 
 		{
 			iColor = argb(255,196,255,196);
 			iGood = islands[iIsland].Trade.Export.(sGoodNum);
@@ -445,3 +445,4 @@ int GetMaxFortCannons(string _FortCommander)
 	
 	return _iCannons;
 }
+

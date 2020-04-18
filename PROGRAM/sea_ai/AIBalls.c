@@ -1,11 +1,11 @@
 object	AIBalls;
 aref	Grapes, Knippels, Balls, Bombs;
 
-// ------------------- Current Ball Info -------------------
-// AIBalls.CurrentBallType = GOOD_BALLS, GOOD_KNIPPELS, ... etc
-// AIBalls.CurrentBallCannonType = CANNON_TYPE_CULVERINE_LBS8, CANNON_TYPE_CULVERINE_LBS18, ... etc
-// AIBalls.CurrentBallDistance = distance from start
-// AIBalls.CurrentMaxBallDistance = max distance for balls
+
+
+
+
+
 
 void DeleteBallsEnvironment()
 {
@@ -40,22 +40,22 @@ void CreateBallsEnvironment()
 	makearef(Balls,AIBalls.Balls.Balls);
 	makearef(Bombs,AIBalls.Balls.Bombs);
 
-	// Bombs
+	
 	Bombs.SubTexIndex = 0;		Bombs.Size = 0.3;		Bombs.GoodIndex = GOOD_BOMBS;
 	Bombs.Particle = "bomb_smoke";
 
-	// Grapes
+	
 	Grapes.SubTexIndex = 1;		Grapes.Size = 0.2;		Grapes.GoodIndex = GOOD_GRAPES;
 
-	// Balls
+	
 	Balls.SubTexIndex = 2;		Balls.Size = 0.2;		Balls.GoodIndex = GOOD_BALLS;
 
-	// Knippels
+	
 	Knippels.SubTexIndex = 3;	Knippels.Size = 0.2;	Knippels.GoodIndex = GOOD_KNIPPELS;
 
 	AIBalls.isDone = 1;
 
-	// cheat - fire from camera
+	
 	AIBalls.FireBallFromCamera = true;
 
 	SetEventHandler(BALL_WATER_HIT, "Ball_WaterHitEvent", 0);
@@ -97,19 +97,19 @@ void Ball_AddBall(aref aCharacter, float fX, float fY, float fZ, float fSpeedV0,
 	float fTempDispersionY = Degree2Radian(15.0);
 	float fTempDispersionX = Degree2Radian(5.0);
 
-	//float fDamage2Cannons = 100.0;
+	
 
     float fAccuracy = 1.2 - stf(aCharacter.TmpSkill.Accuracy);
 	float fCannons = stf(aCharacter.TmpSkill.Cannons)*10;
 
 	fCannons = 15.0 + MOD_SKILL_ENEMY_RATE - fCannons;
 
-	if (fCannons > 0.0 && RealShips[sti(aCharacter.ship.type)].BaseName != "fort") // fix
+	if (fCannons > 0.0 && RealShips[sti(aCharacter.ship.type)].BaseName != "fort") 
 	{
 		if (fCannons > rand(100) && !IsCharacterEquippedArtefact(aCharacter, "talisman3"))
 		{
             fCannons = (rand(4) + 2.0*(1.65 - stf(aCharacter.TmpSkill.Cannons))) * 10;
-			SendMessage(&AISea, "laffff", AI_MESSAGE_CANNONS_BOOM_CHECK, aCharacter, fCannons, fx, fy, fz);  // fDamage2Cannons  там много делителей, потому много
+			SendMessage(&AISea, "laffff", AI_MESSAGE_CANNONS_BOOM_CHECK, aCharacter, fCannons, fx, fy, fz);  
 		}
 	}
 
@@ -124,7 +124,7 @@ void Ball_AddBall(aref aCharacter, float fX, float fY, float fZ, float fSpeedV0,
 	EntityUpdate(1);
 	AIBalls.Add = "";
 	
-	string sParticleName = "cancloud_fire";		// if (sti(aCharacter.ship.type) < SHIP_CORVETTE)
+	string sParticleName = "cancloud_fire";		
 	
 	if (iCannonType == CANNON_TYPE_CANNON_LBS48)
 	{ 
@@ -144,7 +144,7 @@ void Ball_AddBall(aref aCharacter, float fX, float fY, float fZ, float fSpeedV0,
 			}
 		}
 	}
-	//if (rand(1) == 0) // boal оптимизация дыма
+	
 	CreateParticleSystem(sParticleName, fX, fY, fZ, -fHeightAng - (fCannonHeightMultiply - 1.0) * 0.1, fDirAng, 0.0, 5);
 	Play3DSound(rCannon.Sound, fX, fY, fZ);
 }
@@ -185,7 +185,7 @@ void Ball_FortHit()
 	y = GetEventData();
 	z = GetEventData();
 
-	if (rand(4) == 1) CreateParticleSystem("blast", x, y, z, 0.0, 0.0, 0.0, 0); // boal fix
+	if (rand(4) == 1) CreateParticleSystem("blast", x, y, z, 0.0, 0.0, 0.0, 0); 
 	CreateParticleSystem("blast_newsmoke", x, y, z, 0.0, 0.0, 0.0, 0);
 	SendMessage(&AIFort, "llfff", AI_MESSAGE_FORT_HIT, iCharacterIndex, x, y, z);
 }
@@ -201,10 +201,10 @@ void Ball_IslandHit()
 	y = GetEventData();
 	z = GetEventData();
 
-	if (rand(2) == 1) CreateParticleSystem("blast", x, y, z, 0.0, 0.0, 0.0, 0); // boal fix
+	if (rand(2) == 1) CreateParticleSystem("blast", x, y, z, 0.0, 0.0, 0.0, 0); 
 	CreateParticleSystem("blast_newsmoke", x, y, z, 0.0, 0.0, 0.0, 0);
 	CreateParticleSystem("blast_dirt", x, y, z, 0.0, 0.0, 0.0, 0);
-	//Ship_SetLightsOff(&Characters[1], 15.0, true, true, false);
+	
 }
 
 void Ball_OnFlyUpdate()

@@ -1,4 +1,4 @@
-// гид
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -53,13 +53,13 @@ void ProcessDialogEvent()
 			link.l1.go = "guide_3";			
 		break;
 		
-		case "guide_3": // идем в таверну
+		case "guide_3": 
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_SetActorType(pchar);
 			LAi_ActorGoToLocator(npchar, "officers", "reload4_3", "Guide_tavern", -1);
 			LAi_ActorFollow(pchar, npchar, "", -1);
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 		break;
 		
 		case "guide_4":
@@ -68,7 +68,7 @@ void ProcessDialogEvent()
 			link.l1.go = "guide_5";
 		break;
 		
-		case "guide_5": // к магазину
+		case "guide_5": 
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_SetActorType(pchar);
@@ -82,7 +82,7 @@ void ProcessDialogEvent()
 			link.l1.go = "guide_7";
 		break;
 		
-		case "guide_7": // к тюрьме
+		case "guide_7": 
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_SetActorType(pchar);
@@ -96,7 +96,7 @@ void ProcessDialogEvent()
 			link.l1.go = "guide_9";
 		break;
 		
-		case "guide_9": // на рынок
+		case "guide_9": 
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_SetActorType(pchar);
@@ -110,7 +110,7 @@ void ProcessDialogEvent()
 			link.l1.go = "guide_19";
 		break;
 		
-		case "guide_11": // к резиденции
+		case "guide_11": 
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_SetActorType(pchar);
@@ -145,12 +145,12 @@ void ProcessDialogEvent()
 		case "guide_16":
 			DialogExit();
 			LAi_SetCitizenType(npchar);
-			LAi_CharacterDisableDialog(npchar);//запрет диалога
-			LAi_group_MoveCharacter(npchar, "FRANCE_CITIZENS"); // пока идем заниматься Мишелем
-			chrDisableReloadToLocation = false;//открыть локацию
+			LAi_CharacterDisableDialog(npchar);
+			LAi_group_MoveCharacter(npchar, "FRANCE_CITIZENS"); 
+			chrDisableReloadToLocation = false;
 		break;
 		
-		case "guide_17": // к ростовщику
+		case "guide_17": 
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_SetActorType(pchar);
@@ -164,7 +164,7 @@ void ProcessDialogEvent()
 			link.l1.go = "guide_11";
 		break;
 		
-		case "guide_19": // к борделю
+		case "guide_19": 
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_SetActorType(pchar);
@@ -208,13 +208,13 @@ void ProcessDialogEvent()
 			link.l1.go = "guide_26";
 		break;
 		
-		case "guide_26": // на верфь
+		case "guide_26": 
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_SetActorType(pchar);
 			LAi_ActorGoToLocator(npchar, "reload", "reload5", "Guide_shipyard", -1);
 			LAi_ActorFollow(pchar, npchar, "", -1);
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 		break;
 		
 		case "guide_27":
@@ -223,7 +223,7 @@ void ProcessDialogEvent()
 			link.l1.go = "guide_28";
 		break;
 		
-		case "guide_28": // в порт
+		case "guide_28": 
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_SetActorType(pchar);
@@ -291,7 +291,7 @@ void ProcessDialogEvent()
 			link.l1.go = "guide_39";
 		break;
 		
-		case "guide_39": // к портовому управлению
+		case "guide_39": 
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_SetActorType(pchar);
@@ -317,7 +317,7 @@ void ProcessDialogEvent()
 			link.l1.go = "guide_43";
 		break;
 		
-		case "guide_43": // к воротам
+		case "guide_43": 
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_SetActorType(pchar);
@@ -349,7 +349,7 @@ void ProcessDialogEvent()
 			link.l1.go = "guide_48";
 		break;
 		
-		case "guide_48": // телепортируем за городские ворота
+		case "guide_48": 
 			DialogExit();
 			LAi_SetActorType(npchar);
 			DoQuestReloadToLocation("FortFrance_ExitTown", "goto", "goto19", "Guide_ExitTown");
@@ -414,7 +414,7 @@ void ProcessDialogEvent()
 			npchar.quest.guide_win = 0;
 		break;
 		
-		case "guide_56": // махач
+		case "guide_56": 
 			LAi_SetCurHPMax(pchar); 
 			LAi_GetCharacterMaxEnergy(pchar);
 			LAi_SetCurHPMax(npchar); 
@@ -424,7 +424,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			LAi_SetWarriorType(npchar);
 			LAi_group_MoveCharacter(npchar, "EnemyFight");
-			// ставим проверяльщики
+			
 			LAi_SetCheckMinHP(pchar, 1, true, "Guide_HeroFail");
 			LAi_SetCheckMinHP(npchar, 1, true, "Guide_HeroWin");
 			LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
@@ -432,42 +432,42 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");	
 		break;
 		
-		case "guide_57": // побил гида с первого раза
+		case "guide_57": 
 			dialog.text = "This. This is the man who knows how to hold his sword. Well done, monsieur. You need more practice, but you have all chances to become the master of sword.";
 			link.l1 = "Thank you. What now?";
-			link.l1.go = "guide_62"; // нода на выход
+			link.l1.go = "guide_62"; 
 			AddComplexSelfExpToScill(50, 50, 50, 50);
 			AddCharacterExpToSkill(pchar, "Leadership", 80);
 		break;
 		
-		case "guide_58": // побил гида со второго или третьего раза
+		case "guide_58": 
 			dialog.text = "Much better! See, all you need is to concentrate. You need more practice, one day you will become a decent fencer.";
 			link.l1 = "Thank you. What now?";
-			link.l1.go = "guide_62"; // нода на выход
+			link.l1.go = "guide_62"; 
 			AddComplexSelfExpToScill(20, 20, 20, 20);
 			AddCharacterExpToSkill(pchar, "Leadership", 30);
 		break;
 		
-		case "guide_59": // побили первый раз
+		case "guide_59": 
 			dialog.text = "I won, monseniour. Move faster, parry my stabs, jump back. A rematch?";
 			link.l1 = "Sure! No mercy, monseniour!";
 			link.l1.go = "guide_56";
 			link.l2 = "No, I had enough. Let's finish the lesson. What now?";
-			link.l2.go = "guide_62"; // нода на выход
+			link.l2.go = "guide_62"; 
 		break;
 		
-		case "guide_60": // побили второй раз
+		case "guide_60": 
 			dialog.text = "I won again, "+pchar.name+"! Don't loose your initiative. Catch my hits, feint them. If you see that I am going to hit hard - jump away or parry, don't just guard. Again!";
 			link.l1 = "Come, messere, I shall give you a lesson this time!";
 			link.l1.go = "guide_56";
 			link.l2 = "No, I had enough. Let's finish the lesson. What now?";
-			link.l2.go = "guide_62"; // нода на выход
+			link.l2.go = "guide_62"; 
 		break;
 		
-		case "guide_61": // побили третий раз
+		case "guide_61": 
 			dialog.text = "You need a lot to learn, "+pchar.name+". Don't worry, you still got a lot of time to master you fencing. But be careful, don't take any chances until you know how to hold a weapon.";
 			link.l1 = "I will consider it, monsieur, but I have to say that you were just too fortunate! This blasted heat... the only reason why I didn't beat a heck out of you. Whatever, let's end our fencing lesson. What now?";
-			link.l1.go = "guide_62"; // нода на выход
+			link.l1.go = "guide_62"; 
 		break;
 		
 		case "guide_62":
@@ -485,7 +485,7 @@ void ProcessDialogEvent()
 			LAi_SetCurHPMax(pchar); 
 			LAi_GetCharacterMaxEnergy(pchar);
 			DialogExit();
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			npchar.lifeday = 0;
 			DoQuestReloadToLocation("FortFrance_Town", "quest", "quest2", "");
 		break;

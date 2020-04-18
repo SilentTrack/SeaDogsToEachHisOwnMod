@@ -14,14 +14,14 @@ ref GetRealShip(int iType)
 	{
 		trace ("--- Wrong Ship Index. iType is " + iType);
 		Log_TestInfo("--- Wrong Ship Index. iType is " + iType);
-		return &ShipsTypes[SHIP_TYPES_QUANTITY + 1]; // для отлова
+		return &ShipsTypes[SHIP_TYPES_QUANTITY + 1]; 
 	}
 	return &RealShips[iType]; 
 }
 
-// isLock - рудимент, можно выкидывать (26.05.06 boal)
-// новая жизнь isLock (04.07.06) теперь это признак ворованности (те цены на верфи)
-// если 1 - ворованный, цена копеешная, 0 - честно купленный - можно перепродать.
+
+
+
 int GenerateShip(int iBaseType, bool isLock)
 {
 	int iShip = CreateBaseShip(iBaseType);
@@ -33,16 +33,16 @@ int GenerateShip(int iBaseType, bool isLock)
 	
 	ref rRealShip = GetRealShip(iShip);
 	ref rBaseShip = GetShipByType(sti(rRealShip.BaseType));
-    // boal 26/05/06 изменим
-    rRealShip.ship.upgrades.hull  = 1 + rand(2);  //признак корабля теперь
-	rRealShip.ship.upgrades.sails = 1 + rand(2);  // только визуальная разница
+    
+    rRealShip.ship.upgrades.hull  = 1 + rand(2);  
+	rRealShip.ship.upgrades.sails = 1 + rand(2);  
 	
 	if (!CheckAttribute(rRealShip, "isFort"))
 	{
 	    int iCaliber = sti(rRealShip.MaxCaliber);
-		//string sCannonType = GetCannonType(rRealShip.Cannon);
+		
 	    if (sti(rRealShip.Class) != 6)
-	    {  // чтоб не было баркаса с 16ф				
+	    {  
 		    switch(iCaliber)
 		    {
 				case 3:
@@ -79,7 +79,7 @@ int GenerateShip(int iBaseType, bool isLock)
 					iCaliber = 10;
 				break;
 		    }
-		    iCaliber = iCaliber - rand(1); // фикс перебора калибра орудий
+		    iCaliber = iCaliber - rand(1); 
 		    if (iCaliber < 0) iCaliber = 0;
 			if (sti(rRealShip.Class) == 1)
 		    {
@@ -129,24 +129,24 @@ int GenerateShip(int iBaseType, bool isLock)
 	    }
 	    rRealShip.SpeedRate	       = stf(rRealShip.SpeedRate) + frandSmall(stf(rRealShip.SpeedRate) / 5.0) - stf(rRealShip.SpeedRate) / 10.0;
 	    rRealShip.TurnRate         = stf(rRealShip.TurnRate) + frandSmall(stf(rRealShip.TurnRate) / 5.0) - stf(rRealShip.TurnRate) / 10.0;
-	    //rRealShip.Price            = sti(rRealShip.Price) + rand(makeint(sti(rRealShip.Price)/2)) - makeint(sti(rRealShip.Price)/4);
+	    
 	    rRealShip.HP               = sti(rRealShip.HP) + rand(makeint(sti(rRealShip.HP)/5)) - makeint(sti(rRealShip.HP)/10);
 	    rRealShip.WindAgainstSpeed = stf(rRealShip.WindAgainstSpeed) + frandSmall(stf(rRealShip.WindAgainstSpeed)/5.0) - stf(rRealShip.WindAgainstSpeed)/10.0;
 	}
     rRealShip.Capacity        = sti(rRealShip.Capacity) + rand(makeint(sti(rRealShip.Capacity)/4)) - makeint(sti(rRealShip.Capacity)/8);
     rRealShip.OptCrew         = makeint(sti(rRealShip.OptCrew) + rand(makeint(sti(rRealShip.OptCrew)/3)) - makeint(sti(rRealShip.OptCrew)/6));
-    rRealShip.MaxCrew         = makeint(sti(rRealShip.OptCrew) * 1.25 + 0.5);  // 25% перегруза
+    rRealShip.MaxCrew         = makeint(sti(rRealShip.OptCrew) * 1.25 + 0.5);  
     rRealShip.MinCrew         = makeint(sti(rRealShip.MinCrew) + rand(makeint(sti(rRealShip.MinCrew)/3)) - makeint(sti(rRealShip.MinCrew)/6));
 
 	rRealShip.Weight		  = sti(rRealShip.Weight) + rand(sti(rRealShip.Weight)/20) - rand(sti(rRealShip.Weight)/20);
 	rRealShip.BaseHP		  = sti(rRealShip.HP);
 	
-	// to_do del -->
+	
 	rRealShip.BoardingCrew    = 0;
 	rRealShip.GunnerCrew      = 0;
 	rRealShip.CannonerCrew    = 0;
 	rRealShip.SailorCrew      = sti(rRealShip.OptCrew);
-    // to_do del <--
+    
     
 	int iDiffWeight			= sti(rRealShip.Weight) - sti(rBaseShip.Weight);
 	int iDiffCapacity		= sti(rRealShip.Capacity) - sti(rBaseShip.Capacity);
@@ -160,19 +160,19 @@ int GenerateShip(int iBaseType, bool isLock)
 
 	if (sti(rRealShip.Price) <= 0) rRealShip.Price = 100;
 	
-	rRealShip.Stolen = isLock;  // ворованность
+	rRealShip.Stolen = isLock;  
 
 	return iShip;
 }
 
-// -> added by ugeen 25.01.09 (на основе GenerateShip(.....)) - рандомизируем кол-во стволов на борту
-// 31.01.09 - добавил бонусы к корабельным статам если кол-во орудий на борту < базового
+
+
 int GenerateShipExt(int iBaseType, bool isLock, ref chr)
 {
 	string  attr, sCity;
 	int 	i;
 	aref 	refShip;
-	float	Кdckyrd = 1.0;
+	float	пїЅdckyrd = 1.0;
 	bool	isShipyard = false; 
 	
 	int iShip = CreateBaseShip(iBaseType);
@@ -184,32 +184,32 @@ int GenerateShipExt(int iBaseType, bool isLock, ref chr)
 	
 	ref rRealShip = GetRealShip(iShip);
 	ref rBaseShip = GetShipByType(sti(rRealShip.BaseType));
-	// boal 26/05/06 изменим
-	rRealShip.ship.upgrades.hull  = 1 + rand(2);  //признак корабля теперь
-	rRealShip.ship.upgrades.sails = 1 + rand(4);  // только визуальная разница
+	
+	rRealShip.ship.upgrades.hull  = 1 + rand(2);  
+	rRealShip.ship.upgrades.sails = 1 + rand(4);  
 	
 	rRealShip.Bonus_Capacity 	= 0;
 	rRealShip.Bonus_HP			= 0;
 	rRealShip.Bonus_SpeedRate   = 0.0;
 	rRealShip.Bonus_TurnRate	= 0.0;
 	
-	// ugeen --> если кораблик генерится на верфи, разброс статов более узкий
+	
 	if (CheckAttribute(chr, "City")) 
 	{
 		sCity = chr.City; 
 		if(CheckCharacterID(chr, sCity + "_shipyarder"))
 		{
-			Кdckyrd 	= 0.8;
+			пїЅdckyrd 	= 0.8;
 			isShipyard 	= true;
 		}
 	}	
-	// ugeen
+	
 
 	if (!CheckAttribute(rRealShip, "isFort"))
 	{
 		int iCaliber = sti(rRealShip.MaxCaliber);
 		if (sti(rRealShip.Class) != 6 && !CheckAttribute(rRealShip, "QuestShip"))
-		{  // чтоб не было баркаса с 16ф
+		{  
 			switch(iCaliber)
 			{
 				case 3:
@@ -246,8 +246,8 @@ int GenerateShipExt(int iBaseType, bool isLock, ref chr)
 					iCaliber = 10;
 				break;			
 			}
-			//iCaliber = iCaliber + rand(2) - 1;
-			iCaliber = iCaliber-rand(1); //Jason: согласно новой системе орудий калибр должен быть постоянен, но пока поставим рандом на единицу меньше, а больше - нельзя по определению, на рез. тестов решим, фиксировать или рандомить
+			
+			iCaliber = iCaliber-rand(1); 
 			if (iCaliber < 0) iCaliber = 0;
 			if (sti(rRealShip.Class) == 1)
 			{			
@@ -302,98 +302,98 @@ int GenerateShipExt(int iBaseType, bool isLock, ref chr)
 		switch(rRealShip.BaseName)
 		{
 			case "Barque":
-				iCannonDiff = rand(1);  //  14,12   (0,2,6,6) (0,2,5,5)
+				iCannonDiff = rand(1);  
 			break;		
 			case "Schooner":
-				iCannonDiff = rand(1);  // 12, 10     (5-ый класс)
+				iCannonDiff = rand(1);  
 			break;
 			case "Barkentine":
-				iCannonDiff = rand(1);  // 14, 12   (4-ый класс)
+				iCannonDiff = rand(1);  
 			break;
 		    case "Shnyava":
 				iCannonDiff = rand(1);  
 			break;
 			case "Fleut":
-				iCannonDiff = rand(1);  // 18, 16    (4-ый класс)
+				iCannonDiff = rand(1);  
 			break;
 			case "Caravel":
-				iCannonDiff = rand(1);  // 20, 18, (3-ый класс)
+				iCannonDiff = rand(1);  
 			break;
 			case "Pinnace":
-				iCannonDiff = rand(1);  // 18, 16   (3-ий класс)
+				iCannonDiff = rand(1);  
 			break;
 			case "Caracca":
-				iCannonDiff = rand(1);  // 18, 16   (3-ий класс)
+				iCannonDiff = rand(1);  
 			break;		
 			case "LuggerQuest": 
-				iCannonDiff = rand(1);  // 12, 10      (6-ой класс)
+				iCannonDiff = rand(1);  
 			break;
 			case "Lugger": 
-				iCannonDiff = rand(1);  // 12, 10      (6-ой класс)
+				iCannonDiff = rand(1);  
 			break;			
 			case "Sloop": 
-				iCannonDiff = rand(1);  // 14, 12      (6-ой класс)
+				iCannonDiff = rand(1);  
 			break;			
 			case "Brigantine":
-				iCannonDiff = rand(1);  // 14, 12	   (4-ый класс)
+				iCannonDiff = rand(1);  
 			break;			
 			case "Brig":
-				iCannonDiff = rand(1);  // 16, 14    (4-ый класс)
+				iCannonDiff = rand(1);  
 			break;
 			case "Schooner_W":
-				iCannonDiff = rand(1);  // 20, 18, 16     (5-ый класс)
+				iCannonDiff = rand(1);  
 			break;			
 			case "Galeon_l":
-				iCannonDiff = rand(1);  // 20, 18    (4-ый класс)
+				iCannonDiff = rand(1);  
 			break;			
 			case "Corvette":
-				iCannonDiff = rand(1);  // 20, 18
+				iCannonDiff = rand(1);  
 			break;
 			case "XebekVML":
-				iCannonDiff = rand(1);  // 32, 30, 28     (3-ий класс)
+				iCannonDiff = rand(1);  
 			break;
 			case "Polacre":
-				iCannonDiff = rand(2);  // 22, 20, 18     (3-ий класс)
+				iCannonDiff = rand(2);  
 			break;
 			case "Navio":
-				iCannonDiff = rand(2);  // 36, 34, 32    (3-ий класс)
+				iCannonDiff = rand(2);  
 			break;
 			case "EastIndiaMan":
-				iCannonDiff = rand(2);  // 36, 34, 32    (3-ий класс)
+				iCannonDiff = rand(2);  
 			break;
 			case "Galeon_h":
-				iCannonDiff = rand(4);  // 54, 52, 50, 48, 46    (3-ий класс)
+				iCannonDiff = rand(4);  
 			break;
 			case "Frigate":
-				iCannonDiff = rand(3);  // 46, 44, 42, 40    (2-ой класс)
+				iCannonDiff = rand(3);  
 			break;
 			case "Frigate_h":
-				iCannonDiff = rand(3);  // 46, 44, 42, 40    (2-ой класс)
+				iCannonDiff = rand(3);  
 			break;
 			case "Lineship":
-				iCannonDiff = rand(4);  // 56, 54, 52, 50, 48    (2-ой класс)
+				iCannonDiff = rand(4);  
 			break;			
 			case "Warship":
-				iCannonDiff = rand(4);  // 66, 64, 62, 60, 58   (1-ый класс)
+				iCannonDiff = rand(4);  
 			break;			
 			case "Battleship":
-				iCannonDiff = rand(5);  // 80, 78, 76, 74, 72, 70   (1-ый класс)
+				iCannonDiff = rand(5);  
 			break;
 			case "Manowar":
-				iCannonDiff = rand(5);  // 102, 100, 98, 96, 94, 92  (1-ый класс)
+				iCannonDiff = rand(5);  
 			break;
 			case "Manowar_e":
-				iCannonDiff = rand(5);  // 102, 100, 98, 96, 94, 92  (1-ый класс)
+				iCannonDiff = rand(5);  
 			break;
 		}
 		
 		if(CheckAttribute(rRealShip, "QuestShip") || isShipyard) iCannonDiff = 0;
 				
-		// ---> собственно сам рэндом стволов
+		
 		makearef(refShip, chr.Ship);
 		ResetShipCannonsDamages(chr);
 		
-		// куда-нить запишем максимально возможное и минимальное кол-во орудий (потом нужно будет, если захотим проапгрейдиться на этот счет)		
+		
 		rRealShip.CannonsQuantityMax	= sti(rRealShip.CannonsQuantity);		
 		refShip.CannonsQuantityMax 		= sti(rRealShip.CannonsQuantity);		
 		refShip.CannonsQuantityMin 		= sti(rRealShip.CannonsQuantityMin);		
@@ -432,7 +432,7 @@ int GenerateShipExt(int iBaseType, bool isLock, ref chr)
 		rRealShip.CannonsQuantity 		= sti(rRealShip.Cannons);
 		rRealShip.CannonDiff 			= iCannonDiff;
 		refShip.Cannons 				= sti(rRealShip.Cannons);
-		// <--- собственно сам рэндом стволов
+		
 
 		if(!CheckAttribute(rRealShip, "QuestShip"))
 		{	
@@ -441,32 +441,32 @@ int GenerateShipExt(int iBaseType, bool isLock, ref chr)
 			rRealShip.Bonus_SpeedRate   = (stf(rRealShip.SpeedRate)*iCannonDiff)/(15 * iDiffClass);
 			rRealShip.Bonus_TurnRate    = (stf(rRealShip.TurnRate)*iCannonDiff)/(15 * iDiffClass);
 		
-			rRealShip.SpeedRate	   		= stf(rRealShip.SpeedRate) + Кdckyrd * (frandSmall(stf(rRealShip.SpeedRate) / 5.0) - stf(rRealShip.SpeedRate) / 10.0);
-			rRealShip.TurnRate         	= stf(rRealShip.TurnRate) + Кdckyrd * (frandSmall(stf(rRealShip.TurnRate) / 5.0) - stf(rRealShip.TurnRate) / 10.0);
-			rRealShip.HP               	= sti(rRealShip.HP) + makeint(Кdckyrd * (rand(makeint(sti(rRealShip.HP)/5)) - makeint(sti(rRealShip.HP)/10)));
-			rRealShip.WindAgainstSpeed 	= stf(rRealShip.WindAgainstSpeed) + Кdckyrd * (frandSmall(stf(rRealShip.WindAgainstSpeed)/5.0) - stf(rRealShip.WindAgainstSpeed)/10.0);
+			rRealShip.SpeedRate	   		= stf(rRealShip.SpeedRate) + пїЅdckyrd * (frandSmall(stf(rRealShip.SpeedRate) / 5.0) - stf(rRealShip.SpeedRate) / 10.0);
+			rRealShip.TurnRate         	= stf(rRealShip.TurnRate) + пїЅdckyrd * (frandSmall(stf(rRealShip.TurnRate) / 5.0) - stf(rRealShip.TurnRate) / 10.0);
+			rRealShip.HP               	= sti(rRealShip.HP) + makeint(пїЅdckyrd * (rand(makeint(sti(rRealShip.HP)/5)) - makeint(sti(rRealShip.HP)/10)));
+			rRealShip.WindAgainstSpeed 	= stf(rRealShip.WindAgainstSpeed) + пїЅdckyrd * (frandSmall(stf(rRealShip.WindAgainstSpeed)/5.0) - stf(rRealShip.WindAgainstSpeed)/10.0);
 		}	
 	}
 	
 	if(!CheckAttribute(rRealShip, "QuestShip"))
 	{
-		rRealShip.Capacity        = sti(rRealShip.Capacity) + makeint(Кdckyrd * (rand(makeint(sti(rRealShip.Capacity)/4)) - makeint(sti(rRealShip.Capacity)/8)));
-		rRealShip.OptCrew         = makeint(sti(rRealShip.OptCrew) + Кdckyrd * (rand(makeint(sti(rRealShip.OptCrew)/3)) - makeint(sti(rRealShip.OptCrew)/6)));
-		rRealShip.MaxCrew         = makeint(sti(rRealShip.OptCrew) * 1.25 + 0.5);  // 25% перегруза
-		rRealShip.MinCrew         = makeint(sti(rRealShip.MinCrew) + Кdckyrd * (rand(makeint(sti(rRealShip.MinCrew)/3)) - makeint(sti(rRealShip.MinCrew)/6)));
-		rRealShip.Weight		  = sti(rRealShip.Weight) + makeint(Кdckyrd * (rand(sti(rRealShip.Weight)/20) - rand(sti(rRealShip.Weight)/20)));
+		rRealShip.Capacity        = sti(rRealShip.Capacity) + makeint(пїЅdckyrd * (rand(makeint(sti(rRealShip.Capacity)/4)) - makeint(sti(rRealShip.Capacity)/8)));
+		rRealShip.OptCrew         = makeint(sti(rRealShip.OptCrew) + пїЅdckyrd * (rand(makeint(sti(rRealShip.OptCrew)/3)) - makeint(sti(rRealShip.OptCrew)/6)));
+		rRealShip.MaxCrew         = makeint(sti(rRealShip.OptCrew) * 1.25 + 0.5);  
+		rRealShip.MinCrew         = makeint(sti(rRealShip.MinCrew) + пїЅdckyrd * (rand(makeint(sti(rRealShip.MinCrew)/3)) - makeint(sti(rRealShip.MinCrew)/6)));
+		rRealShip.Weight		  = sti(rRealShip.Weight) + makeint(пїЅdckyrd * (rand(sti(rRealShip.Weight)/20) - rand(sti(rRealShip.Weight)/20)));
 	}	
 	
-	// to_do del -->
+	
 	rRealShip.BoardingCrew    = 0;
 	rRealShip.GunnerCrew      = 0;
 	rRealShip.CannonerCrew    = 0;
 	rRealShip.SailorCrew      = sti(rRealShip.OptCrew);
-	// to_do del <--
 	
-	if(sti(rRealShip.CannonsQuantityMin) > 0) // баркасы не учитываем
+	
+	if(sti(rRealShip.CannonsQuantityMin) > 0) 
 	{
-		if(sti(rRealShip.CannonsQuantityMax) == sti(rRealShip.CannonsQuantity)) // это в основном квестовые корабли, но мало ли .....
+		if(sti(rRealShip.CannonsQuantityMax) == sti(rRealShip.CannonsQuantity)) 
 		{
 			rRealShip.Capacity        = sti(rRealShip.Capacity) + makeint(sti(rRealShip.Capacity)/5);
 			rRealShip.Tuning.Capacity = true;									
@@ -481,7 +481,7 @@ int GenerateShipExt(int iBaseType, bool isLock, ref chr)
 		rRealShip.TurnRate  = stf(rRealShip.TurnRate) + stf(rRealShip.Bonus_TurnRate);
 	}	
 	
-	rRealShip.BaseHP		= sti(rRealShip.HP); // неизменяемая база
+	rRealShip.BaseHP		= sti(rRealShip.HP); 
     
 	int 	iDiffWeight		= sti(rRealShip.Weight) 	- sti(rBaseShip.Weight);
 	int 	iDiffCapacity	= sti(rRealShip.Capacity) 	- sti(rBaseShip.Capacity);
@@ -495,13 +495,13 @@ int GenerateShipExt(int iBaseType, bool isLock, ref chr)
 
 	if (sti(rRealShip.Price) <= 0) rRealShip.Price = 100;
 	
-	rRealShip.Stolen = isLock;  // ворованность
+	rRealShip.Stolen = isLock;  
 
 	return iShip;
 }
-// -> ugeen
 
-//Jason, генерация корабля с заданными статами; кроме числа орудий - всегда макс.
+
+
 int GenerateShipHand(ref chr, int iType, int cc, int cp, int cr, int hp, int pr, float sr, float tr, float aw)
 {
 	aref 	refShip;
@@ -512,8 +512,8 @@ int GenerateShipHand(ref chr, int iType, int cc, int cp, int cr, int hp, int pr,
 
 	ref rRealShip = GetRealShip(iShip);
 	ref rBaseShip = GetShipByType(sti(rRealShip.BaseType));
-    rRealShip.ship.upgrades.hull  = 1;//всегда первый
-	rRealShip.ship.upgrades.sails = 3;// всегда хлопок
+    rRealShip.ship.upgrades.hull  = 1;
+	rRealShip.ship.upgrades.sails = 3;
 	
 	rRealShip.MaxCaliber = cc;	
 	rRealShip.SpeedRate = sr;
@@ -540,12 +540,12 @@ int GenerateShipHand(ref chr, int iType, int cc, int cp, int cr, int hp, int pr,
 	rRealShip.CannonsQuantity 		= sti(rRealShip.Cannons);		
 	refShip.Cannons 				= sti(rRealShip.Cannons);
 	
-	// to_do del -->
+	
 	rRealShip.BoardingCrew    = 0;
 	rRealShip.GunnerCrew      = 0;
 	rRealShip.CannonerCrew    = 0;
 	rRealShip.SailorCrew      = sti(rRealShip.OptCrew);
-    // to_do del <--
+    
 
 	if (sti(rRealShip.Price) <= 0) rRealShip.Price = 100;
 	
@@ -570,21 +570,21 @@ int CreateBaseShip(int iBaseType)
 	CopyAttributes(rRealShip, rBaseShip);
     rRealShip.index = iShip;
     rRealShip.BaseType = iBaseType;
-    if (!CheckAttribute(rRealShip, "ship.upgrades.hull")) // если задано в базе, то квестовый тип, не перебивать
+    if (!CheckAttribute(rRealShip, "ship.upgrades.hull")) 
     {
-    	rRealShip.ship.upgrades.hull = 1;  //признак корабля теперь
+    	rRealShip.ship.upgrades.hull = 1;  
     }
 	rRealShip.ship.upgrades.sails = 1;
 	
-    rRealShip.BaseName = rRealShip.name; // запоминалка для нужд, тк далее идет "странное"
-	if (rRealShip.name != "Fort" && rRealShip.name != "Boat") // не знаю зачем :(
+    rRealShip.BaseName = rRealShip.name; 
+	if (rRealShip.name != "Fort" && rRealShip.name != "Boat") 
 	{
-		rRealShip.name = rRealShip.name + "1"; // без этого вылет, но почему!!!!!!!!!!!!!!
-		// выяснил - папка с моделью имеет на конце 1, вот и ответ
+		rRealShip.name = rRealShip.name + "1"; 
+		
 	}
-    rRealShip.Stolen = 0;  // ворованность - честный
+    rRealShip.Stolen = 0;  
     
-	if (iArcadeSails == 0) // момент инерции ниже для тактики
+	if (iArcadeSails == 0) 
 	{
 	    rRealShip.InertiaAccelerationY = stf(rRealShip.InertiaAccelerationY) / 2.0;
 	}
@@ -650,10 +650,10 @@ void SetShipCannonsDamagesNull(ref refCharacter)
 	refShip.Cannons 			= sti(rRealShip.Cannons);	
 }
 
-// Генерация корабля для верфи
+
 int GenerateStoreShip(int iBaseType)
 {
-	int iShip = GenerateShip(iBaseType, 0); // честный 
+	int iShip = GenerateShip(iBaseType, 0); 
 
 	if (iShip == -1)
 	{
@@ -661,15 +661,15 @@ int GenerateStoreShip(int iBaseType)
 	}
 	
 	ref rRealShip = GetRealShip(iShip);
-    rRealShip.StoreShip = true;  // корабль на верфи, трется отдельным методом
+    rRealShip.StoreShip = true;  
     
 	return iShip;	
 }
 
-// -> ugeen 25.01.09 -> для верфи
+
 int GenerateStoreShipExt(int iBaseType, ref chr)
 {
-	int iShip = GenerateShipExt(iBaseType, 0, chr); // честный 
+	int iShip = GenerateShipExt(iBaseType, 0, chr); 
 
 	if (iShip == -1)
 	{
@@ -677,26 +677,26 @@ int GenerateStoreShipExt(int iBaseType, ref chr)
 	}
 	
 	ref rRealShip = GetRealShip(iShip);
-	rRealShip.StoreShip = true;  // корабль на верфи, трется отдельным методом
+	rRealShip.StoreShip = true;  
     
 	return iShip;	
 }
-// <- ugeen
 
-// переработка метода 26.05.06 boal
-// идея: трем все корабли, где нет НПС-владельца, все галки пофиг
+
+
+
 void EmptyAllFantomShips()
 {
 	int  i;
 	ref  chr;
-	// оптимальный код - два прохода, а не вложенный цикл. В начале всем сносим флаг удаляемости, потом проставляем, где есть НПС
+	
 	for (i = 0; i < REAL_SHIPS_QUANTITY; i++)
 	{
         DeleteAttribute(&RealShips[i], "lock");
 	}
-	// лодку ставим, тк он имеет индекс НПС за пределами MAX_CHARACTERS
-	//RealShips[sti(Characters[BOAT_CHARACTER].ship.type)].lock = true;
-	// теперь НПС-кэпы
+	
+	
+	
 	for (i = 0; i < MAX_CHARACTERS; i++)
 	{
         chr = &Characters[i];
@@ -704,13 +704,13 @@ void EmptyAllFantomShips()
         {
             RealShips[sti(chr.ship.type)].lock = true;
         }
-        // очистка для верфи
+        
 		if (CheckAttribute(chr, "shipyard"))
 		{
 		    FreeShipFromShipyard(chr);
 		}
 	}
-	for (i = FANTOM_CHARACTERS; i < TOTAL_CHARACTERS; i++) // фантомы в море
+	for (i = FANTOM_CHARACTERS; i < TOTAL_CHARACTERS; i++) 
 	{
         chr = &Characters[i];
         if (CheckAttribute(chr, "ship.type") && chr.ship.type != SHIP_NOTUSED)
@@ -719,13 +719,13 @@ void EmptyAllFantomShips()
         }
 		else
 		{
-			InitCharacter(&Characters[i], i);	//ugeen : чистим нафиг все атрибуты пустых фантомов (переиничиваем)
+			InitCharacter(&Characters[i], i);	
 		}
 	}
-	// теперь сборка мусора
+	
 	for (i = 0; i < REAL_SHIPS_QUANTITY; i++)
 	{
-        if (!CheckAttribute(&RealShips[i], "lock") && !CheckAttribute(&RealShips[i], "StoreShip"))  // на верфи корабли не трем
+        if (!CheckAttribute(&RealShips[i], "lock") && !CheckAttribute(&RealShips[i], "StoreShip"))  
         {
 			DeleteAttribute(&RealShips[i], "");
 		}
@@ -733,7 +733,7 @@ void EmptyAllFantomShips()
 }
 
 int GetRealShipsCount()
-{ // метод для отладки
+{ 
 	int result = 0;
 
 	for (int i= 0; i< REAL_SHIPS_QUANTITY; i++)
@@ -747,7 +747,7 @@ int GetRealShipsCount()
 	return result;
 }
 
-// поиск пустого слота
+
 int FindFirstEmptyShip()
 {
 	for(int i = 0; i < REAL_SHIPS_QUANTITY; i++)
@@ -776,13 +776,13 @@ float FindShipSpeed(aref refCharacter)
 	}
 	ref rShip = GetRealShip(nShipType);
 	
-	float fMaxSpeedZ = stf(rShip.SpeedRate);  // базовая скорость
+	float fMaxSpeedZ = stf(rShip.SpeedRate);  
 	float fShipHp = stf(refCharacter.ship.hp);
 	float fShipMaxHp = stf(rShip.HP);
 	float fSpeedFromHp = fShipHp/fShipMaxHp;
 	fSpeedFromHp = 0.8 + fSpeedFromHp*0.3;
 
-	if(fSpeedFromHp > 1.0) // некий запас перед снижением скорости
+	if(fSpeedFromHp > 1.0) 
 	{
 		fSpeedFromHp = 1.0;
 	}
@@ -791,14 +791,14 @@ float FindShipSpeed(aref refCharacter)
 	
 	float fSailsDamage = stf(refCharacter.ship.sp);
 
-	float	fTRFromSailDamage = Bring2Range(0.1, 1.0, 0.1, 100.0, fSailsDamage); //0.3
+	float	fTRFromSailDamage = Bring2Range(0.1, 1.0, 0.1, 100.0, fSailsDamage); 
 
 	float fTRFromShipState = fSpeedFromHp * fTRFromSailDamage;
 	
 	float	fLoad = Clampf(stf(refCharacter.Ship.Cargo.Load) / stf(rShip.Capacity));
 	float	fTRFromWeight = Clampf(1.03 - stf(rShip.SpeedDependWeight) * fLoad);
 	float   fTRFromSkill = SpeedBySkill(refCharacter);
-	// от команды
+	
 	float fCrewMax = stf(rShip.MaxCrew);
 	float fCrewOpt = stf(rShip.OptCrew);
 	float fCrewCur = stf(refCharacter.Ship.Crew.Quantity);
@@ -822,7 +822,7 @@ float SpeedBySkill(aref refCharacter)
 	float fSkill = GetSummonSkillFromNameToOld(refCharacter, SKILL_SAILING);
 	float fTRFromSkill = 0.7 + (0.03 *  fSkill);
 		
-    fSpeedPerk = AIShip_isPerksUse(CheckOfficersPerk(refCharacter, "ShipSpeedUp"), 1.0, 1.15);   //slib
+    fSpeedPerk = AIShip_isPerksUse(CheckOfficersPerk(refCharacter, "ShipSpeedUp"), 1.0, 1.15);   
     fSpeedPerk = AIShip_isPerksUse(CheckOfficersPerk(refCharacter, "SailingProfessional"), fSpeedPerk, 1.20);
 	
 	return fTRFromSKill*fSpeedPerk;
@@ -876,11 +876,11 @@ float FindShipTurnRate(aref refCharacter)
 	}
 	else
 	{
-		fTRFromWeight = Clampf(1.03 - 2.0*stf(rShip.TurnDependWeight) * fLoad); // влияние веса больше
+		fTRFromWeight = Clampf(1.03 - 2.0*stf(rShip.TurnDependWeight) * fLoad); 
 	}
-	// не реализовано, всегда 1 float fTRFromSpeed = 1.0 - stf(rShip.TurnDependSpeed);
-	// от команды
-	//float fCrewMin = stf(rShip.MinCrew);
+	
+	
+	
 	float fCrewMax = stf(rShip.MaxCrew);
 	float fCrewOpt = stf(rShip.OptCrew);
 	float fCrewCur = stf(refCharacter.Ship.Crew.Quantity);
@@ -907,8 +907,8 @@ float FindShipTurnRate(aref refCharacter)
 
 	fTurn = isEquippedArtefactUse(refCharacter, "amulet_5", fTurn, 0.9);
 	
-	if(CheckAttribute(refCharacter, "Ship.hulls.baller_destroyed")) fTurn *= 0.3; // потеряли руль - уменьшаем маневренность
-	//Log_info(refCharacter.id + "  " + fTurn);
+	if(CheckAttribute(refCharacter, "Ship.hulls.baller_destroyed")) fTurn *= 0.3; 
+	
 	return fTurn;	
 }
 
@@ -926,7 +926,7 @@ float TurnBySkill(aref refCharacter)
 		fTRFromSKill = 0.3 + (0.07 * fSkill);
 	}
 	
-    float fSpeedPerk = AIShip_isPerksUse(CheckOfficersPerk(refCharacter, "ShipTurnRateUp"), 1.0, 1.15);   //slib
+    float fSpeedPerk = AIShip_isPerksUse(CheckOfficersPerk(refCharacter, "ShipTurnRateUp"), 1.0, 1.15);   
     fSpeedPerk = AIShip_isPerksUse(CheckOfficersPerk(refCharacter, "SailingProfessional"), fSpeedPerk, 1.20);
     float fFastTurn180 = AIShip_isPerksUse(CheckOfficersPerk(refCharacter, "Turn180"), 1.0, 4.0);
     
@@ -961,15 +961,15 @@ int GetBortCannonsQty(aref chr, string sBort)
 	return GetBortIntactCannonsNum(chr, sBort, iCannonsMax);
 }
 
-///////////////////////  ВЕРФИ //////////////////////
+
 void SetShipyardStore(ref NPChar)
 {
     int    iTest_ship, i;
 	string attrName;
 	
-	if (CheckAttribute(NPChar, "shipyard")) return; // еще есть корабли с того раза
+	if (CheckAttribute(NPChar, "shipyard")) return; 
 	
-	SaveCurrentNpcQuestDateParam(npchar, "shipyardDate"); // дата заполнения верфи
+	SaveCurrentNpcQuestDateParam(npchar, "shipyardDate"); 
     
     if (bBettaTestMode)
     {
@@ -1157,8 +1157,8 @@ void FreeShipFromShipyard(ref NPChar)
 		for (i = 0; i < iNum; i++)
 		{
 	    	arImt = GetAttributeN(arDest, i);
-	    	iShip = sti(arImt.Type); //GetAttributeValue(arImt));
-	    	DeleteAttribute(&RealShips[iShip], "StoreShip"); // можно тереть
+	    	iShip = sti(arImt.Type); 
+	    	DeleteAttribute(&RealShips[iShip], "StoreShip"); 
 	    }		
         DeleteAttribute(NPChar, "shipyard");
 	}
@@ -1167,13 +1167,13 @@ void FreeShipFromShipyard(ref NPChar)
 void RemoveCannonsFromBortShipyard(ref chr, string sBort)
 {
 	int maxQty = GetBortCannonsQtyMax(chr, sBort);
-	// нулим кол-во пушек на борту
+	
 	for (int i = 0; i < maxQty; i++)
 	{
 		string attr = "c" + i;
-		chr.Ship.Cannons.borts.(sBort).damages.(attr) = 1.0;  // поломана на 100%, не палит, те нет ее
+		chr.Ship.Cannons.borts.(sBort).damages.(attr) = 1.0;  
 	}	
-	RecalculateCargoLoad(chr);  // пересчет, тк пушки снялись
+	RecalculateCargoLoad(chr);  
 }
 
 void RemoveAllCannonsShipyardShip(ref NPChar)
@@ -1197,10 +1197,10 @@ void FillShipParamShipyard(ref NPChar, int _iType, string _sShipNum)
     SetCrewQuantity(NPChar, 0);
     if (sti(NPChar.Ship.Cannons.Type) != CANNON_TYPE_NONECANNON)
     {
-    	NPChar.Ship.Cannons.Type = CANNON_TYPE_CANNON_LBS6; // to_do переделать на продажу без орудий вообще
+    	NPChar.Ship.Cannons.Type = CANNON_TYPE_CANNON_LBS6; 
     }
-	RemoveAllCannonsShipyardShip(NPChar);	//нулим пушки .. сами покупайте какие надо
-    DeleteAttribute(NPChar, "Ship.Cargo");  //пустой трюм
+	RemoveAllCannonsShipyardShip(NPChar);	
+    DeleteAttribute(NPChar, "Ship.Cargo");  
     SetGoodsInitNull(NPChar);
     RecalculateCargoLoad(NPChar);
     
@@ -1238,12 +1238,12 @@ int GetSailsTuningPrice(ref _chr, ref _shipyard, float _rate)
 	if (st==SHIP_NOTUSED) return 0;
 	shref = GetRealShip(st);
 
-	return makeint(stf(_shipyard.ShipCostRate) * sti(shref.Price) * _rate / 10) * 10; // кратно 10
+	return makeint(stf(_shipyard.ShipCostRate) * sti(shref.Price) * _rate / 10) * 10; 
 }
 
-// Warship 26.07.09 Вынес сюда
-// int st - GetCharacterShipType(_character)
-// ref _shipyard - референс на верфиста
+
+
+
 int GetShipPriceByType(int st, ref _shipyard)
 {
 	if(st==SHIP_NOTUSED) return 0;
@@ -1252,7 +1252,7 @@ int GetShipPriceByType(int st, ref _shipyard)
 	return makeint(stf(_shipyard.ShipCostRate) * sti(shref.Price));
 }
 
-// Метод вернет цену продажи корабля персонажа с учетом всех скилов (для верфи)
+
 int GetShipSellPrice(ref _chr, ref _shipyard)
 {
 	int st = GetCharacterShipType(_chr);
@@ -1272,22 +1272,22 @@ int GetShipSellPrice(ref _chr, ref _shipyard)
 
 	ref rRealShip = GetRealShip(st);
 
-	if (sti(rRealShip.Stolen) == true) //проверка на ворованный
+	if (sti(rRealShip.Stolen) == true) 
 	{
     	price = makeint(price/3);
     }
     if (price < 100 && sti(_chr.Ship.Type) != SHIP_NOTUSED)
 	{
-	   price = 100;			// символическая цена в 100 песо
+	   price = 100;			
 	}
 
 	return price;
 }
 
-// Метод вернет цену покупки корабля персонажа с учетом всех скилов (для верфи)
+
 int GetShipBuyPrice(int iType, ref _shipyard)
 {
-	// boal учет скилов торговли 22.01.2004 -->
+	
 	float nCommerce   = GetSummonSkillFromNameToOld(GetMainCharacter(), SKILL_COMMERCE);
 
     if(CheckOfficersPerk(pchar,"AdvancedCommerce"))	{ nCommerce += 4; }
@@ -1297,7 +1297,7 @@ int GetShipBuyPrice(int iType, ref _shipyard)
 	}
 	ref shref = GetRealShip(iType);	
     return makeint(GetShipPriceByType(iType, _shipyard) + GetShipPriceByType(iType, _shipyard)/(nCommerce*10)) * (7 - sti(shref.Class));
-    // boal 22.01.2004 <--
+    
 }
 
 int GetSailRepairCost(int shipType, int repairPercent, ref _shipyard)
@@ -1331,8 +1331,8 @@ int GetHullDamagePercent(ref _chr)
 {
 	return 100 - MakeInt(GetHullPercent(_chr));
 }
-///////////////////////////////////////////////////////////////   ВЕРФИ  <--
-// палуба от типа корабля
+
+
 string GetShip_deck(ref chr, bool map2sea)
 {
 	string ret, add;
@@ -1346,14 +1346,14 @@ string GetShip_deck(ref chr, bool map2sea)
 	{
 	    ret = "Deck_Near_Ship_";
 	}
-	add = "Low"; // если нет типа
+	add = "Low"; 
 	if (iType != SHIP_NOTUSED)
 	{
         ref rRealShip = GetRealShip(iType);
         
 		add = rRealShip.DeckType;
 	}
-	if (chr.id == "GOT_boatsvanDega") return "Deck_Galeon_Ship"; // Jason
+	if (chr.id == "GOT_boatsvanDega") return "Deck_Galeon_Ship"; 
 	return ret + add;
 }
 
@@ -1407,7 +1407,7 @@ void MakeCloneFortBoarding(string fromLocId)
     rClone.type = "fort_attack";
 	LAi_LocationFantomsGen(rClone, false);
 	DeleteAttribute(rClone, "reload");
-	//это подкручивание другого файла локаторов. там нет goto, soldiers и пр. есть rld и дополн.сундуки
+	
 	if (rClone.models.always.locators == "fortV_locators") 
 	{
 		rClone.models.always.locators = "fortV_lAttack";
@@ -1420,7 +1420,7 @@ void MakeCloneFortBoarding(string fromLocId)
 	}
 	rClone.boarding.locatorNum = 25;
 	rClone.boarding = "false";
-	rClone.boarding.nextdeck = "Boarding_fortyard"; // Jason
+	rClone.boarding.nextdeck = "Boarding_fortyard"; 
 	rClone.image = "loading\FortShturm_" + rand(2) + ".tga";
 }
 
@@ -1433,31 +1433,24 @@ int GetPortManPrice(int Price, ref NPChar)
 	return makeint(Price * stf(NPChar.PortManPrice) /10 ) * 10;
 }
 
-// ugeen --> альтернативный расчет стоянки корабля в ПУ
+
 int GetPortManPriceExt(ref NPChar, ref chref)
 {
-/*  --> оставим для хардкорного патча если он будет, не вытирать!!!! 
-	float fLeadership 	= 1.5 - GetSummonSkillFromName(pchar, SKILL_LEADERSHIP)/120.0; 	// учитываем авторитет
-	float fCommerce 	= 1.5 - GetSummonSkillFromName(pchar, SKILL_COMMERCE)/120.0; 	// учитываем торговлю
-	float fRelation 	= 1.0; 															// учитываем  - родная нация или нет
-	
-	if(sti(NPChar.nation) == GetBaseHeroNation()) fRelation = 0.5; 						// если нация родная- снижаем цену в два раза
-	int price = makeint(200 * MOD_SKILL_ENEMY_RATE * 1.56 * sqr(6.7 - sti(RealShips[sti(chref.Ship.Type)].Class)) * (1 + 0.5 * GetNationRelation2MainCharacter(sti(NPChar.nation))) * fRelation * fLeadership * fCommerce);
-*/	
+ 	
 	int price = makeint( sti(RealShips[sti(chref.Ship.Type)].Price) * (5 + MOD_SKILL_ENEMY_RATE) * (3 + GetNationRelation2MainCharacter(sti(NPChar.nation)))/360.0 );
 
 	return price;
 }
-//<-- альтернативный расчет стоянки корабля в ПУ
 
-// Warship 31.05.09 Установка на корабль персонажа определенного паруса
-// Путь относительно папки Textures
+
+
+
 bool SetShipSailsFromFile(ref _char, String _sailTexturePath)
 {
 	ref realShip;
 	int shipType = sti(_char.Ship.Type);
 
-	if(shipType == SHIP_NOTUSED) // Есть ли корабль вообще
+	if(shipType == SHIP_NOTUSED) 
 	{
 		return false;
 	}
@@ -1524,4 +1517,5 @@ int GetShipFallMastsQuantity(ref chr)
 	}
 	return ret;
 }
+
 

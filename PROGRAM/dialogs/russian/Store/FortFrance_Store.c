@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
 
@@ -11,7 +11,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat("You know, " + NPChar.name + ", maybe next time.", "Right, I've forgotten for some reason...",
                       "Yes, it really is the third time...", "Hm, I wont...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//--> Бремя гасконца
+			
 			if (!CheckAttribute(npchar, "quest.storehelper") && pchar.questTemp.Sharlie == "ship")
 			{
 				Link.l1 = "Listen, monsieur, I'm looking for a job. Not like a full-time job or labor hauling bags of cargo, but more like running errands, so to speak. Do you happen to need an assistant?";
@@ -37,10 +37,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1 = "Take a lot at these earrings, monsieur. I've found them on the body of a bandit that was killed in the jungle. This is clearly the work of a fine jeweler that couldn't have been out here in this armpit. Is there anything you can say about these earrings?";
                 link.l1.go = "Sharlie_junglejew";
 			}
-			//<-- Бремя гасконца
+			
 		break;
 		
-		//--> Бремя гасконца
+		
 		case "Sharlie_storehelper":
 			dialog.text = "A job? Hm. I suppose, I do have a job you might want. My assistant is missing, he used to work in my warehouse. He has been missing for a week already and this is bloody irritating, because I am forced to do his duties and I don't have time\nPlease, find this idiot and find out why did he abandon his workplace. Or better - bring him to me. Thousand pesos.";
 			link.l1 = "Fine, I am in. Tell me his name and describe his looks. Any ideas where to look for him?";
@@ -136,7 +136,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "Sharlie_storehelper_12":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			pchar.questTemp.Sharlie.Storehelper = "wait";
 			DialogExit();
 			pchar.quest.storehelper5.win_condition.l1 = "Timer";
@@ -160,14 +160,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				
 				case 1:
 					AddMoneyToCharacter(pchar, 5000);
-					dialog.text = "You've managed to find a truly valuable worker! He's even better that that scoundrel Gralam. I'm very, very pleased, sir. Here, take your reward –five thousand pesos.";
+					dialog.text = "You've managed to find a truly valuable worker! He's even better that that scoundrel Gralam. I'm very, very pleased, sir. Here, take your reward пїЅfive thousand pesos.";
 					link.l1 = "Thank you! All the best, monsieur.";
 					link.l1.go = "Sharlie_storehelper_14";
 				break;
 				
 				case 2:
 					AddMoneyToCharacter(pchar, 4000);
-					dialog.text = "You've found a good worker. And although he doesn't know all the tricks of the trade, I'm sure he get a handle on it without much trouble. I'm pleased with you, sir. Here, take your reward –four thousand pesos.";
+					dialog.text = "You've found a good worker. And although he doesn't know all the tricks of the trade, I'm sure he get a handle on it without much trouble. I'm pleased with you, sir. Here, take your reward пїЅfour thousand pesos.";
 					link.l1 = "Thank you! All the best, monsieur.";
 					link.l1.go = "Sharlie_storehelper_14";
 				break;
@@ -199,8 +199,9 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			CloseQuestHeader("SharlieE");
 			DeleteAttribute(pchar, "questTemp.Sharlie.Junglejew");
 		break;
-		//<-- Бремя гасконца
+		
 	}
 	UnloadSegment(NPChar.FileDialog2);
 }
+
 

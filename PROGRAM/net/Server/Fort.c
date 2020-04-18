@@ -14,7 +14,7 @@ void NetServer_CreateFortEnvironment(int iSMsg)
 
 	if (NetServer.GameType != NETGAME_FORT || iIslandIndex < 0)
 	{
-		NMAddByte(iSMsg, false);		// no fort
+		NMAddByte(iSMsg, false);		
 		return;
 	}
 
@@ -55,7 +55,7 @@ void NetServer_CreateFortEnvironment(int iSMsg)
 			NSFortModel.Pos.x = arLocator.x;
 			NSFortModel.Pos.z = arLocator.z;
 
-			rFort.MaxCannonDamageDistance = MIN_CANNON_DAMAGE_DISTANCE;		// in meters
+			rFort.MaxCannonDamageDistance = MIN_CANNON_DAMAGE_DISTANCE;		
 
 			rFort.Fort.Cannons.Type.Cannon = NETCANNON_CANNON;
 			rFort.Fort.Cannons.Type.Culverine = NETCANNON_CULVERINE;
@@ -70,18 +70,18 @@ void NetServer_CreateFortEnvironment(int iSMsg)
 			rFort.Ship.Crew.Morale = 70;
 			rFort.Ship.Name = arLocator.fortname;
 
-			rFort.Ship.Cannons.Charge.Type = 3;	// bombs
+			rFort.Ship.Cannons.Charge.Type = 3;	
 
-			rFort.FriendlyTeam = 0;		// friendly team index
+			rFort.FriendlyTeam = 0;		
 
-			// skills
+			
 			rFort.Skills.Accuracy = 10;
 			rFort.Skills.Cannons = 10;
 			rFort.Skills.Sailing = 5;
 			rFort.Skills.Defence = 5;
 			rFort.Skills.Repair = 5;
 
-			// setup goods for fort
+			
 			for (int j=0; j<Net_GetGoodsNum(); j++)
 			{
 				ref rGood = Net_GetGoodByIndex(j);
@@ -97,7 +97,7 @@ void NetServer_CreateFortEnvironment(int iSMsg)
 
 			SendMessage(rFort, "laaii", MSG_NET_ADD_FORT, rIsland, arLocator, &NSFortModel, &NSFortBlots);
 
-			//SendMessage(&Flag, "lil", MSG_FLAG_INIT, &NSFortModel, iNation); // install flag on fort
+			
 			bSuccess = true;
 			NMAddByte(iSMsg, true);
 			NMAddString(iSMsg, GetAttributeName(arLocator), 16);
@@ -112,7 +112,7 @@ void NetServer_CreateFortEnvironment(int iSMsg)
 
 	if (!bSuccess)
 	{
-		NMAddByte(iSMsg, false);		// no fort
+		NMAddByte(iSMsg, false);		
 	}
 }
 
@@ -163,7 +163,7 @@ float NetServer_OnFortCannonDamage()
 		
 		rFort.Ship.HP = 100.0 * (1.0 - (iDamagedCannons / iTotalCannons));
 
-		// check for fort defeat
+		
 		if (iDamagedCannons >= iTotalCannons / 2)
 		{
 			rFort.Ship.HP = -1.0;

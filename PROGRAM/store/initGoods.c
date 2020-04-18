@@ -2,7 +2,7 @@ void InitGoods()
 {
 	int i;
 	
-	// ����������
+	
 	Goods[GOOD_BALLS].Name					= "Balls";
 	Goods[GOOD_BALLS].Cost					= 40;
 	Goods[GOOD_BALLS].Weight				= 2;
@@ -11,7 +11,7 @@ void InitGoods()
 	Goods[GOOD_BALLS].DamageHull			= 8.0;
 	Goods[GOOD_BALLS].DamageRig				= 0.5;
 	Goods[GOOD_BALLS].DamageCrew			= 0.2;
-	Goods[GOOD_BALLS].AfraidWater 			= 0;    // �������� �� �3
+	Goods[GOOD_BALLS].AfraidWater 			= 0;    
 	Goods[GOOD_BALLS].DontDrop				= 1;	
 	Goods[GOOD_BALLS].type					= T_TYPE_AMMUNITION;
 	Goods[GOOD_BALLS].trade_type			= T_TYPE_AMMUNITION;
@@ -23,7 +23,7 @@ void InitGoods()
 	Goods[GOOD_GRAPES].Cost					= 20;
 	Goods[GOOD_GRAPES].Weight				= 1;
 	Goods[GOOD_GRAPES].Units				= 20;
-	Goods[GOOD_GRAPES].SpeedV0				= 0.6; // boal
+	Goods[GOOD_GRAPES].SpeedV0				= 0.6; 
 	Goods[GOOD_GRAPES].DamageHull			= 1.0;
 	Goods[GOOD_GRAPES].DamageRig			= 2.0;
 	Goods[GOOD_GRAPES].DamageCrew			= 1.5;
@@ -67,7 +67,7 @@ void InitGoods()
 	Goods[GOOD_BOMBS].MediumNorm			= 1.0;
 	Goods[GOOD_BOMBS].SmallNorm				= 0.5;	
 
-	// ������ ������������� ������	
+	
 	Goods[GOOD_FOOD].Name		    		= "Food";
 	Goods[GOOD_FOOD].Weight	        		= 1;
 	Goods[GOOD_FOOD].Cost	        		= 20;
@@ -154,7 +154,7 @@ void InitGoods()
 	Goods[GOOD_FRUITS].MediumNorm			= 0.5;
 	Goods[GOOD_FRUITS].SmallNorm			= 0.5;	
 	
-	// ������������ (����������) ������
+	
 	Goods[GOOD_COFFEE].Name		    		= "Coffee";
 	Goods[GOOD_COFFEE].Weight	    		= 2;
 	Goods[GOOD_COFFEE].Cost		    		= 80;
@@ -285,7 +285,7 @@ void InitGoods()
 	Goods[GOOD_PAPRIKA].MediumNorm			= 0.75;
 	Goods[GOOD_PAPRIKA].SmallNorm			= 0.5;		
 
-	// ��������� ������ �� ������
+	
 	Goods[GOOD_POWDER].Name		    		= "Powder";
 	Goods[GOOD_POWDER].Weight	    		= 1;
 	Goods[GOOD_POWDER].Cost	        		= 60;
@@ -359,7 +359,7 @@ void InitGoods()
 	Goods[GOOD_ALE].MediumNorm				= 1.0;
 	Goods[GOOD_ALE].SmallNorm				= 0.5;		
 	
-	// ���������� ������
+	
 	Goods[GOOD_SHIPSILK].Name		    	= "Shipsilk";
 	Goods[GOOD_SHIPSILK].Weight	    		= 2;
 	Goods[GOOD_SHIPSILK].Cost		    	= 160;
@@ -411,7 +411,7 @@ void InitGoods()
 	Goods[GOOD_OIL].MediumNorm				= 0.5;
 	Goods[GOOD_OIL].SmallNorm				= 0.25;		
 	
-	// �������� ������
+	
 	Goods[GOOD_SLAVES].Name		    		= "Slaves";
 	Goods[GOOD_SLAVES].Weight	    		= 1;
 	Goods[GOOD_SLAVES].Cost		    		= 100;
@@ -448,7 +448,7 @@ void InitGoods()
 	Goods[GOOD_SILVER].SmallNorm			= 0.25;		
 	Goods[GOOD_SILVER].NotSale				= 1;
 		
-	////////////////////////////////////////////////////// ����� ��� ����� - boal 27/07/06	
+	
 	Goods[GOOD_CANNON_3].Name				= "Cannon_3";
 	Goods[GOOD_CANNON_3].CannonIdx			= CANNON_TYPE_CANNON_LBS3;
 	Goods[GOOD_CANNON_3].Cost				= Cannon[CANNON_TYPE_CANNON_LBS3].Cost;
@@ -657,7 +657,7 @@ void InitGoods()
 	Goods[GOOD_CULVERINE_36].MediumNorm		= 1.0;
 	Goods[GOOD_CULVERINE_36].SmallNorm		= 1.0;
 	
-	// boal 24/01/08 ����� ������ � �������� (����� ��������), �� ���� ��������, ���� ����������� ����������
+	
 	for (i = 0; i< GOODS_QUANTITY; i++)
 	{
 		if (!CheckAttribute(&Goods[i], "Norm"))

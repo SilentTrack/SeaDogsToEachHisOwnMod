@@ -1,5 +1,5 @@
-////    boal 31/03/06 STORE
-// ugeen --> переделано в интерфейс склада ГГ  28.01.10
+
+
 string totalInfo = "";
 int  	TableSelect = 0;
 int		nCurScrollNum = 0;
@@ -9,13 +9,13 @@ int 	iMaxGoodsStore = 50000;
 int 	iTotalSpace = iMaxGoodsStore
 
 bool 	bShowChangeWin = false;;
-int  	BuyOrSell = 0; // 1-buy -1 sell
+int  	BuyOrSell = 0; 
 string 	sChrId;
 ref 	refStore, refCharacter, refShipChar;
 int 	iShipQty, iStoreQty, iShipPrice, iStorePrice, iUnits;
 float 	fWeight;
 int  	iCurGoodsIdx;
-bool 	ok; // for if
+bool 	ok; 
 
 void InitInterface_R(string iniName, ref pStore)
 {
@@ -211,14 +211,14 @@ void AddToTable()
 		sShipQ = GetCargoGoods(refCharacter, i);
 		sStoreQ = GetStorageGoodsQuantity(refStore, i); 
 		
-		if(i == GOOD_SLAVES) continue; // рабов низзя !!
+		if(i == GOOD_SLAVES) continue; 
 		
 		if(sti(sStoreQ) < 0)
 		{
 			sStoreQ = 0;
 			refGoods.quantity = 0;
 		}
-		if (sStoreQ == 0 && sShipQ == 0) continue; // только не нули
+		if (sStoreQ == 0 && sShipQ == 0) continue; 
 
 		GameInterface.TABLE_LIST.(row).td1.str = sShipQ;
 		GameInterface.TABLE_LIST.(row).td2.str = GetGoodWeightByType(i, sti(sShipQ));
@@ -275,7 +275,7 @@ void ChangePosTable()
 
 void EndTooltip()
 {
-	CloseTooltip(); // всегда убирать, если был
+	CloseTooltip(); 
     GameInterface.qty_edit.str = 0;
 	SetShipWeight();
 	SetVariable();
@@ -287,7 +287,7 @@ void EndTooltip()
 
 void ShowItemInfo()
 {
-	if (bShowChangeWin) // жмем окей, когда курсор на таблице
+	if (bShowChangeWin) 
 	{
 	    TransactionOK();
 	}
@@ -420,7 +420,7 @@ void SetDescription()
 void SetShipWeight()
 {
     if (CheckAttribute(refCharacter, "Ship.Cargo.RecalculateCargoLoad") && sti(refCharacter.Ship.Cargo.RecalculateCargoLoad))
-	{   // остатки с моря
+	{   
 		RecalculateCargoLoad(refCharacter);
 		refCharacter.Ship.Cargo.RecalculateCargoLoad = 0;
 	}
@@ -470,16 +470,16 @@ void ShowFoodInfo()
 {
 	if(iCurGoodsIdx == GOOD_FOOD)
 	{
-		// чтоб прикинуть как оно будет, скинем на время колво на продажное
+		
 		SetCharacterGoods(refCharacter, GOOD_FOOD, iShipQty + BuyOrSell*sti(GameInterface.qty_edit.str));
 		SetFoodShipInfo(refCharacter, "FOOD_SHIP");
 		SetCharacterGoods(refCharacter, GOOD_FOOD, iShipQty);
 	}
 	else
 	{
-		if(iCurGoodsIdx == GOOD_RUM) // Warship 11.07.09 На сколько хватит рому
+		if(iCurGoodsIdx == GOOD_RUM) 
 		{
-			// чтоб прикинуть как оно будет, скинем на время колво на продажное
+			
 			SetCharacterGoods(refCharacter, GOOD_RUM, iShipQty + BuyOrSell*sti(GameInterface.qty_edit.str));
 			SetRumShipInfo(refCharacter, "FOOD_SHIP");
 			SetCharacterGoods(refCharacter, GOOD_RUM, iShipQty);
@@ -506,21 +506,21 @@ void TransactionOK()
 	trace("CargoCostCoeff() " + GetCargoCostCoeff(GetMainCharacter(), iCurGoodsIdx) + " GetStorageGoodsCostCoeff() " + GetStorageGoodsCostCoeff(refStore, iCurGoodsIdx));
 	
     
- 	if (BuyOrSell == 1) // BUY
+ 	if (BuyOrSell == 1) 
 	{
 		SetStorageGoods(refStore, iCurGoodsIdx, iStoreQty - nTradeQuantity, GetCargoCostCoeff(GetMainCharacter(), iCurGoodsIdx));
 		AddCharacterGoodsCostCoeff(refCharacter, iCurGoodsIdx, nTradeQuantity, GetStorageGoodsCostCoeff(refStore, iCurGoodsIdx));		
     	WaitDate("",0,0,0,0,5);
 	}
  	else
-	{ // SELL
+	{ 
       	SetStorageGoods(refStore, iCurGoodsIdx, iStoreQty + nTradeQuantity, GetCargoCostCoeff(GetMainCharacter(), iCurGoodsIdx));
 		RemoveCharacterGoods(refCharacter, iCurGoodsIdx, nTradeQuantity);				
     	WaitDate("",0,0,0,0,5);        
 	}
 	AddToTable();
 	EndTooltip();
-	ShowGoodsInfo(iCurGoodsIdx); //сбросим все состояния
+	ShowGoodsInfo(iCurGoodsIdx); 
 }
 
 void confirmChangeQTY_EDIT()
@@ -553,7 +553,7 @@ void ChangeQTY_EDIT()
 		    }
             BuyOrSell = -1;
 
-		    // проверка на колво доступное -->
+		    
 		    if (sti(GameInterface.qty_edit.str) > iShipQty)
 		    {
 		        GameInterface.qty_edit.str = iShipQty;
@@ -564,15 +564,15 @@ void ChangeQTY_EDIT()
 		        iWeight = iTotalSpace - fStoreWeight - fWeight;
 		        GameInterface.qty_edit.str = makeint(iWeight / fWeight * iUnits );
 		        iWeight = GetGoodWeightByType(iCurGoodsIdx, sti(GameInterface.qty_edit.str));
-		        GameInterface.qty_edit.str = makeint(iWeight / fWeight * iUnits ); // округление
+		        GameInterface.qty_edit.str = makeint(iWeight / fWeight * iUnits ); 
 		    }
-		    // проверка на колво доступное <--
+		    
 		    SetFormatedText("QTY_TypeOperation", "Unload warehouse");
 		}
 		else
 		{
 			BuyOrSell = 1;
-         	// проверка на колво доступное -->
+         	
 		    if (sti(GameInterface.qty_edit.str) > iStoreQty)
 		    {
 		        GameInterface.qty_edit.str = iStoreQty;
@@ -584,13 +584,13 @@ void ChangeQTY_EDIT()
 				if (iWeight < 0) iWeight = 0;
 		        GameInterface.qty_edit.str = makeint(iWeight / fWeight * iUnits );
 		        iWeight = GetGoodWeightByType(iCurGoodsIdx, sti(GameInterface.qty_edit.str));
-		        GameInterface.qty_edit.str = makeint(iWeight / fWeight * iUnits ); // округление
+		        GameInterface.qty_edit.str = makeint(iWeight / fWeight * iUnits ); 
 		    }
-		    // проверка на колво доступное <--
+		    
 			SetFormatedText("QTY_TypeOperation", "Download to hold");
 		}
 	}
-	// если получили ноль
+	
 	if (sti(GameInterface.qty_edit.str) == 0)
 	{
 	    SetFormatedText("QTY_TypeOperation", "");
@@ -606,7 +606,7 @@ void ChangeQTY_EDIT()
     ShowFoodInfo();
 }
 
-void REMOVE_ALL_BUTTON()  // продать все
+void REMOVE_ALL_BUTTON()  
 {
     if (!GetRemovable(refCharacter)) return;
 	if (!bShowChangeWin)
@@ -619,7 +619,7 @@ void REMOVE_ALL_BUTTON()  // продать все
 	ChangeQTY_EDIT();
 }
 
-void ADD_ALL_BUTTON()  // купить все
+void ADD_ALL_BUTTON()  
 {
     if (!GetRemovable(refCharacter)) return;
 	if (!bShowChangeWin)
@@ -632,7 +632,7 @@ void ADD_ALL_BUTTON()  // купить все
 	ChangeQTY_EDIT();
 }
 
-void REMOVE_BUTTON()  // продать
+void REMOVE_BUTTON()  
 {
     if (!GetRemovable(refCharacter)) return;
 	if (!bShowChangeWin) return;
@@ -655,7 +655,7 @@ void REMOVE_BUTTON()  // продать
 	ChangeQTY_EDIT();
 }
 
-void ADD_BUTTON()  // купить
+void ADD_BUTTON()  
 {
     if (!GetRemovable(refCharacter)) return;
 	if (!bShowChangeWin) return;

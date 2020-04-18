@@ -1,4 +1,4 @@
-// Addon-2016 Jason, французские миниквесты (ФМК) Гваделупа
+
 void ProcessDialogEvent()
 {
 	ref sld, NPChar;
@@ -21,7 +21,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// квестодатель
+		
 		case "citizen":
 			dialog.text = "Greeting, captain! I have a business proposal which you will find very interesting.";
 			link.l1 = "Go on, monsieur.";
@@ -155,9 +155,9 @@ void ProcessDialogEvent()
 			GiveItem2Character(pchar, "chest");
 			log_info("You have receives a chest full of doubloons");
 			PlaySound("interface\important_item.wav");
-			AddCharacterExpToSkill(pchar, "Sailing", 200);//навигация
-			AddCharacterExpToSkill(pchar, "Leadership", 200);//авторитет
-			AddCharacterExpToSkill(pchar, "Sneak", 100);//скрытность
+			AddCharacterExpToSkill(pchar, "Sailing", 200);
+			AddCharacterExpToSkill(pchar, "Leadership", 200);
+			AddCharacterExpToSkill(pchar, "Sneak", 100);
 			dialog.text = "Likewise. Farewell, captain "+GetFullName(pchar)+".";
 			link.l1 = "Farewell!";
 			link.l1.go = "citizen_14";
@@ -195,10 +195,10 @@ void ProcessDialogEvent()
 		break;
 		
 		case "citizen_13a":
-			AddCharacterExpToSkill(pchar, "Sailing", 50);//навигация
-			AddCharacterExpToSkill(pchar, "Leadership", 50);//авторитет
-			AddCharacterExpToSkill(pchar, "Sneak", 50);//скрытность
-			dialog.text = "Anyways, thank you for the service, сcaptain "+GetFullName(pchar)+". Farewell!";
+			AddCharacterExpToSkill(pchar, "Sailing", 50);
+			AddCharacterExpToSkill(pchar, "Leadership", 50);
+			AddCharacterExpToSkill(pchar, "Sneak", 50);
+			dialog.text = "Anyways, thank you for the service, пїЅcaptain "+GetFullName(pchar)+". Farewell!";
 			link.l1 = "Farewell.";
 			link.l1.go = "citizen_14";
 		break;
@@ -211,7 +211,7 @@ void ProcessDialogEvent()
 		
 		case "citizen_16":
 			sld = characterFromId("Baster_usurer");
-			dialog.text = "Why even bother, сaptain?";
+			dialog.text = "Why even bother, пїЅaptain?";
 			link.l1 = "My good sir, there is a man called "+GetFullName(sld)+" and he is very eager to see you. I assume you know why.";
 			link.l1.go = "citizen_17";
 		break;
@@ -338,7 +338,7 @@ void ProcessDialogEvent()
 			CloseQuestHeader("FMQ_Guadeloupe");
 		break;
 		
-		// вестовой к ростовщику
+		
 		case "cureer":
 			dialog.text = "Greeting, monsieur Pinette! You are captain "+GetFullName(pchar)+", correct?";
 			link.l1 = "Correct. What can I do for you?";
@@ -371,13 +371,13 @@ void ProcessDialogEvent()
 			chrDisableReloadToLocation = false;
 			LocatorReloadEnterDisable("Baster_town", "reload1_back", true);
 			LocatorReloadEnterDisable("Baster_town", "reload2_back", true);
-			LocatorReloadEnterDisable("Baster_town", "gate_back", true);//закрыть выходы из города
+			LocatorReloadEnterDisable("Baster_town", "gate_back", true);
 			pchar.questTemp.FMQG = "continue";
 			pchar.quest.FMQG_Block.over = "yes";
 			pchar.quest.FMQG_Block1.over = "yes";
 		break;
 		
-		// Жан Дено
+		
 		case "Juan":
 			dialog.text = "Argh! You scum! No way it is a random meeting...";
 			link.l1 = "True to that, Jean... beg pardon, I mean Juan. I have tracked you down. Now would you kindly move yourself inside my cargo hold? Blow off some steam and we'll talk.";
@@ -436,7 +436,7 @@ void ProcessDialogEvent()
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			pchar.questTemp.FMQG = "headhunter_pinett";
 			AddQuestRecord("FMQ_Guadeloupe", "17");
-			// Пинетта - в Бриджтаун
+			
 			sld = characterFromId("FMQG_pass_1");
 			ChangeCharacterAddressGroup(sld, "Plantation_F2", "goto", "goto1");
 			sld.Dialog.currentnode = "citizen_15";
@@ -463,7 +463,7 @@ void ProcessDialogEvent()
 			LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 			LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
 			LAi_group_SetCheck("EnemyFight", "FMQG_KillersDestroy");
-			//AddDialogExitQuest("MainHeroFightModeOn");
+			
 		break;
 		
 		case "Exit":
@@ -472,3 +472,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

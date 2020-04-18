@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
 	bool ok;
@@ -8,7 +8,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			//регата
+			
 			if (CheckAttribute(pchar, "questTemp.Regata.Go") && !CheckAttribute(npchar, "quest.regatatalk"))
 			{
 				dialog.text = "What do you want? A-ha, you are the participant of the regatta! Am I right?";
@@ -16,24 +16,24 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1.go = "Regata_check";
 				break;
 			}
-			//регата
+			
 			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What kind of questions?", "What do you want, " + GetAddress_Form(NPChar) + "?"), "You've already tried to ask me a question " + GetAddress_Form(NPChar) + "...", "You have been talking about some question for the third time today...",
                           "Look, if you have nothing to tell me about the port's matters then don't bother me with your questions.", "block", 1, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind.", "Sorry!"), "Sorry!", "Sorry!", "Sorry!", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//Голландский гамбит
+			
 			if (CheckAttribute(pchar, "questTemp.HWIC.Eng") && pchar.questTemp.HWIC.Eng == "GotoBridgetown" && !CheckAttribute(npchar, "quest.HWICTalked"))
             {
                 link.l1 = "I am sailing to Blueweld, want to sell some paprika. Tell me, mister, do you have any passengers who are heading to Blueweld? Or to Port-Royale at least. It would be great to lift somebody, it could pay off the crew's wage. ";
                 link.l1.go = "PortofficeDone";
             }
-			// Страж Истины
+			
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "barbados")
 			{
 				link.l1 = "There was a galleon named 'Admirable' freighted in Philipsburg under the command of Gaius Marchais. He had to deliver here a load of paprika. Can you help me to find this captain?";
                 link.l1.go = "guardoftruth";
 			}
-			// калеуче
+			
 			if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "hunting" && !CheckAttribute(npchar, "quest.garpiya"))
 			{
 				if (CheckAttribute(npchar, "questTemp.caleuche"))
@@ -43,13 +43,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				}
 				else
 				{
-					link.l1 = "I heard that a xebec belonging to captain Jack… or Jackson is frequently visiting your port. Could you tell me where to look for him?";
+					link.l1 = "I heard that a xebec belonging to captain JackпїЅ or Jackson is frequently visiting your port. Could you tell me where to look for him?";
 					link.l1.go = "caleuche";
 				}
 			}
 		break;
 
-		//Голландский гамбит
+		
 		case "PortofficeDone":
 			dialog.text = "Unfortunately, there is no passengers to Blueweld nor to Port-Royal. Come back tomorrow or the day after tomorrow.";
 			link.l1 = "Too bad. Farewell then.";
@@ -60,14 +60,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			if (sti(pchar.questTemp.HWIC.Eng.BridgeCounter) == 7) 
 			{
 				AddQuestRecord("Holl_Gambit", "2-6");
-				pchar.quest.GotoBridgetownOver.over = "yes";//снять таймер
+				pchar.quest.GotoBridgetownOver.over = "yes";
 				pchar.questTemp.HWIC.Eng = "SeekVanBerg";
 				pchar.quest.VanBergAttack_Check.win_condition.l1 = "MapEnter";
 				pchar.quest.VanBergAttack_Check.function = "VanBergAttackCheck";
 			}
 		break;
 
-		//регата
+		
 		case "Regata_check":
 		iTest = FindColony(npchar.city); 
 		if (iTest != -1)
@@ -76,7 +76,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			sFrom_sea = rColony.from_sea;
 		}
 		ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
-		if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)//проверка на наличие корабля в порту
+		if(sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)
 		{
 			if (CheckAttribute(pchar, "questTemp.Regata.Breach") || !CheckAttribute(pchar, "questTemp.Regata.Sentjons") || GetCompanionQuantity(pchar) > 1 || sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LUGGER || pchar.Ship.Name != "Santa Catherina")
 			{
@@ -87,7 +87,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 			else
 			{
-				pchar.questTemp.Regata.FourthTransitionTime = GetPastTime("hour", sti(pchar.questTemp.Regata.StartYear), sti(pchar.questTemp.Regata.StartMonth), sti(pchar.questTemp.Regata.StartDay), stf(pchar.questTemp.Regata.StartTime), GetDataYear(), GetDataMonth(), GetDataDay(), GetTime());//истратил ГГ в часах на 1+2+3+4 переход
+				pchar.questTemp.Regata.FourthTransitionTime = GetPastTime("hour", sti(pchar.questTemp.Regata.StartYear), sti(pchar.questTemp.Regata.StartMonth), sti(pchar.questTemp.Regata.StartDay), stf(pchar.questTemp.Regata.StartTime), GetDataYear(), GetDataMonth(), GetDataDay(), GetTime());
 				dialog.text = "You might have noticed, captain, that the city is under the siege. We are expecting the Spanish to attack us and mobilizing our forces. But the regatta is going on.\nLet's register: captain "+ GetFullName(pchar) +", ship is - "+pchar.Ship.Name+"... Regatta's time in hours is "+sti(pchar.questTemp.Regata.FourthTransitionTime)+". Done, your result if registered, you can continue your way.";
 				link.l1 = "Tell me my rank.";
 				link.l1.go = "Regata_info";
@@ -114,8 +114,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				if (pchar.questTemp.Regata.AdversaryFourthTransition.Time.(sTemp) < sti(pchar.questTemp.Regata.FourthTransitionTime))
 				{
 					n++;
-					sName = pchar.questTemp.Regata.AdversaryName.(sTemp);//имя ближайшего противника
-					sShip = pchar.questTemp.Regata.AdversaryShipName.(sTemp);//его корабль
+					sName = pchar.questTemp.Regata.AdversaryName.(sTemp);
+					sShip = pchar.questTemp.Regata.AdversaryShipName.(sTemp);
 				}
 			}
 			if (n==1)
@@ -148,25 +148,25 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 					}
 				}
 			}
-			AddCharacterExpToSkill(pchar, "Sailing", 50);//навигация
-			AddCharacterExpToSkill(pchar, "Defence", 30);//защита
-			AddCharacterExpToSkill(pchar, "Repair", 30);//починка
-			AddCharacterExpToSkill(pchar, "Fortune", 30);//везение
-			AddCharacterExpToSkill(pchar, "Sneak", 30);//скрытность
+			AddCharacterExpToSkill(pchar, "Sailing", 50);
+			AddCharacterExpToSkill(pchar, "Defence", 30);
+			AddCharacterExpToSkill(pchar, "Repair", 30);
+			AddCharacterExpToSkill(pchar, "Fortune", 30);
+			AddCharacterExpToSkill(pchar, "Sneak", 30);
 			npchar.quest.regatatalk = "true";
-			pchar.questTemp.Regata.Bridgetown = "true";//отметка Бриджтауна
+			pchar.questTemp.Regata.Bridgetown = "true";
 			pchar.quest.Regata_Check1.win_condition.l1 = "location";
 			pchar.quest.Regata_Check1.win_condition.l1.location = "Curacao";
-			pchar.quest.Regata_Check1.function = "RegataCheck";//проверка 1
+			pchar.quest.Regata_Check1.function = "RegataCheck";
 			pchar.quest.Regata_Check2.win_condition.l1 = "location";
 			pchar.quest.Regata_Check2.win_condition.l1.location = "Caracas";
-			pchar.quest.Regata_Check2.function = "RegataCheck";//проверка 2
+			pchar.quest.Regata_Check2.function = "RegataCheck";
 			pchar.quest.Regata_Check3.win_condition.l1 = "location";
 			pchar.quest.Regata_Check3.win_condition.l1.location = "PortoBello";
-			pchar.quest.Regata_Check3.function = "RegataCheck";//проверка 3
+			pchar.quest.Regata_Check3.function = "RegataCheck";
 			pchar.quest.Regata_Check.win_condition.l1 = "location";
 			pchar.quest.Regata_Check.win_condition.l1.location = "Jamaica";
-			pchar.quest.Regata_Check.function = "RegataCheck";//проверка 4
+			pchar.quest.Regata_Check.function = "RegataCheck";
 			pchar.questTemp.Regata.AttackIsland = "Curacao";
 			pchar.questTemp.Regata.AttackNation = HOLLAND;
 			pchar.quest.Regata_Attack.win_condition.l1 = "location";
@@ -174,24 +174,24 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.quest.Regata_Attack.function = "RegataAttack_Brigantine";
 			pchar.quest.Regata_Attack1.win_condition.l1 = "location";
 			pchar.quest.Regata_Attack1.win_condition.l1.location = "Curacao";
-			pchar.quest.Regata_Attack1.function = "RegataAttack_Corvette";//третья засада
+			pchar.quest.Regata_Attack1.function = "RegataAttack_Corvette";
 			pchar.quest.Regata_Hunter.win_condition.l1 = "location";
 			pchar.quest.Regata_Hunter.win_condition.l1.location = "Barbados";
-			pchar.quest.Regata_Hunter.function = "RegataAttack_Hunter";//ДУ у Барбадоса
+			pchar.quest.Regata_Hunter.function = "RegataAttack_Hunter";
 			pchar.quest.Regata_Finish.win_condition.l1 = "location";
 			pchar.quest.Regata_Finish.win_condition.l1.location = "Jamaica";
 			pchar.quest.Regata_Finish.function = "RegataFinishSea";
 			pchar.quest.Regata_Finish1.win_condition.l1 = "location";
 			pchar.quest.Regata_Finish1.win_condition.l1.location = "Portroyal_town";
-			pchar.quest.Regata_Finish1.function = "RegataFinishTown";//финиш регаты
-			//ситуации
+			pchar.quest.Regata_Finish1.function = "RegataFinishTown";
+			
 			pchar.quest.Regata_Siege.win_condition.l1 = "location";
 			pchar.quest.Regata_Siege.win_condition.l1.location = "Bridgetown_town";
-			pchar.quest.Regata_Siege.function = "RegataSiegeOfficer";//на квест по вывозу жителей
+			pchar.quest.Regata_Siege.function = "RegataSiegeOfficer";
 		break;
-		//регата
 		
-		// Страж Истины
+		
+		
 		case "guardoftruth":
 			dialog.text = "Yes, this galleon was here, got relieved of his goods and has left our port later. Information about it's destination... hm..none, there is nothing. I am sorry but there is nothing I can do.";
 			link.l1 = "I see. Too bad... I will continue looking for it.";
@@ -204,13 +204,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.questTemp.Guardoftruth = "barbados1";
 		break;
 		
-		// калеуче
+		
 		case "caleuche":
 			dialog.text = "Sir, I need the exact name of the ship. We have tons of Jacks and Jacksons going through our port. So, what's the name?";
 			link.l1 = "";
 			Link.l1.edit = 2;
 			link.l1.go = "caleuche_name";
-			link.l2 = "Trouble is that I don't know the name of his old tub. It's strange - some bird woman, born from…";
+			link.l2 = "Trouble is that I don't know the name of his old tub. It's strange - some bird woman, born fromпїЅ";
 			link.l2.go = "caleuche_1";
 		break;
 		
@@ -250,7 +250,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.garpiya = "true";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 
 

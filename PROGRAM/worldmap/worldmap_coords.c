@@ -1,16 +1,13 @@
-/*
- * Пересчет игровых координат глобальной карты в реальные (условные) географические координаты Карибского архипелага
- * Ugeen - 12.08.09
- */
-//#event_handler("frame", "CheckCoordinateQuest");
  
-#define WDM_RealCoordStartX		60	// начало координат по X - градусы западной долготы
-#define WDM_RealCoordEndX		85	// конец координат по X - градусы западной долготы
-#define WDM_RealCoordStartZ		10	// начало координат по Z - градусы северной широты
-#define WDM_RealCoordEndZ		25	// конец координат по Z - градусы северной широты
 
-float fShiftX = 1024.0; // смещение игровых координат по X
-float fShiftZ = 1024.0; // смещение игровых координат по Z
+ 
+#define WDM_RealCoordStartX		60	
+#define WDM_RealCoordEndX		85	
+#define WDM_RealCoordStartZ		10	
+#define WDM_RealCoordEndZ		25	
+
+float fShiftX = 1024.0; 
+float fShiftZ = 1024.0; 
 
 float fScaleX = 2048.0; 
 float fScaleZ = 2048.0;
@@ -22,11 +19,11 @@ string sCurCoordinateQuest = "";
 
 void SetCoordinateQuest(string _sQuest)
 {
-	SetEventHandler(_sQuest, _sQuest, 0); // Ставим евент
+	SetEventHandler(_sQuest, _sQuest, 0); 
 	sCurCoordinateQuest = _sQuest;
 }
 
-void CheckCoordinateQuest() // Процессирование всего
+void CheckCoordinateQuest() 
 {
 	PostEvent(sCurCoordinateQuest, 100);
 }
@@ -34,31 +31,12 @@ void CheckCoordinateQuest() // Процессирование всего
 void DeleteCoordinateQuest(string _sQuest)
 {
 	sCurCoordinateQuest = "";
-	DelEventHandler(_sQuest, _sQuest); // Удалим евент
+	DelEventHandler(_sQuest, _sQuest); 
 }
 
-/*
---> пример использования координатной сетки для квестов  
-void CheckQuestCoordinates()
-{
-	int coordinateDegreeX = 70;
-	int coordinateDegreeZ = 15;
+ 
 
-	if(IsEntity(worldMap)) // если на глобальной карте
-	{
-		Log_SetStringToLog("X : " + GetMapCoordDegreeX(makefloat(worldMap.playerShipX)) + " Z : " + GetMapCoordDegreeZ(makefloat(worldMap.playerShipZ)));
-		if( (GetMapCoordDegreeX(makefloat(worldMap.playerShipX)) == coordinateDegreeX) &&
-			(GetMapCoordDegreeZ(makefloat(worldMap.playerShipZ)) == coordinateDegreeZ) )
-		{
-			DeleteCoordinateQuest("CheckQuestCoordinates");
-			Log_SetStringToLog("Текущие координаты : " + Map_GetRealCoordZ(makefloat(worldMap.playerShipZ)) + "  " + Map_GetRealCoordX(makefloat(worldMap.playerShipX)));
-			Log_SetStringToLog("Достигли искомой точки - 70 гр. з.д. 15 гр. с.ш.");
-		}
-	}
-}
-*/
 
-// получить масштаб глобальной карты отосительно режима "море"
 int GetSeaToMapScale()
 {
 	int scale = WDM_MAP_TO_SEA_SCALE;
@@ -89,28 +67,28 @@ float GetSeaShipZ(float Z)
 	return ShipZ;
 }
 
-// секунды долготы относительно начала координат (глобальная карта)
+
 int Map_GetRCoordSecondsX(float X)
 {
 	int iSecX = makeint((fShiftX - X)/fScaleX * iSecondsX);
 	return iSecX;
 }
 
-// градусы долготы относительно начала координат (глобальная карта)
+
 int Map_GetRCoordDegreeX(float X)
 {
 	int iDegX = Map_GetRCoordSecondsX(X);
 	return makeint(iDegX/3600.0);
 }
 
-// секунды широты относительно начала координат (глобальная карта)
+
 int Map_GetRCoordSecondsZ(float Z)
 {
 	int iSecZ = makeint((fShiftZ + Z)/fScaleZ * iSecondsZ);
 	return iSecZ;
 }
 
-// градусы широты относительно начала координат (глобальная карта)
+
 int Map_GetRCoordDegreeZ(float Z)
 {
 	int iDegZ = Map_GetRCoordSecondsZ(Z);
@@ -169,7 +147,7 @@ int GetSeaCoordMinutesZ(float Z)
 	return GetMapCoordMinutesZ(Z);
 }
 
-//  строка координат долготы на глобальной карте
+
 string Map_GetRealCoordX(float X)
 {
 	int iRSecX;
@@ -186,7 +164,7 @@ string Map_GetRealCoordX(float X)
 	return sCoordX;
 }
 
-// строка координат широты на глобальной карте
+
 string Map_GetRealCoordZ(float Z)
 {
 	int iRSecZ;
@@ -239,7 +217,7 @@ string wdmGetCoordinates()
 	return sCoordinates;
 }
 
-//  строка координат долготы в режиме "море"
+
 string Sea_GetRealCoordX(float X)
 {
 	float ShipX = GetSeaShipX(X);
@@ -247,7 +225,7 @@ string Sea_GetRealCoordX(float X)
 	return sCoordX;
 }
 
-// строка координат широты в режиме "море" 
+
 string Sea_GetRealCoordZ(float Z)
 {
 	float ShipZ = GetSeaShipZ(Z);

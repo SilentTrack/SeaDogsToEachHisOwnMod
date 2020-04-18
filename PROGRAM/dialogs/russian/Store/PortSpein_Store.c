@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
 
@@ -11,7 +11,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat("You know, " + NPChar.name + ", maybe next time.", "Right, I've forgotten for some reason...",
                       "Yes, it really is the third time...", "Hm, I wont...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//Цена чахотки
+			
 			if (!CheckAttribute(npchar, "quest.Consumption") && CheckAttribute(pchar, "questTemp.Consumption.AskJuan"))
 			{
 				link.l1 = "Tell me, does the name Juan mean anything to you?";
@@ -24,7 +24,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		
-		//Цена чахотки
+		
 		case "Consumption":
 			dialog.text = "Oh, come off it, captain! I've just had two Juans in my store today, and another one yesterday. What, am I supposed to remember each one?";
 			link.l1 = "Okay. Sorry for bothering you...";
@@ -41,4 +41,5 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 	}
 	UnloadSegment(NPChar.FileDialog2);
 }
+
 

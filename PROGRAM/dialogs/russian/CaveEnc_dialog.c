@@ -1,4 +1,4 @@
-// пещерные энкаунтеры
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;

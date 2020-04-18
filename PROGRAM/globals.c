@@ -3,7 +3,7 @@
 #include "sound.c"
 
 string savefile_info = "ver 1.0.7";
-// --------- DLC globals ---------------------------------------------
+
 #define DLC_AVAILABLE	  1
 #define MAIN_APPID		  223330
 #define DLC_APPID_1       240480
@@ -12,9 +12,9 @@ string savefile_info = "ver 1.0.7";
 #define DLC_APPID_4       452522
 #define DLC_APPID_5       452523
 #define DLC_APPID_6       452524
-#define DLC_NAME_1        "Калеуче"
-#define DLC_NAME_2        "Финальный урок"
-#define DLC_NAME_3        "Под черным флагом"
+#define DLC_NAME_1        "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
+#define DLC_NAME_2        "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ"
+#define DLC_NAME_3        "пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ"
 #define DLC_NAME_4        ""
 #define DLC_NAME_5        ""
 #define DLC_NAME_6        ""
@@ -24,34 +24,34 @@ string savefile_info = "ver 1.0.7";
 #define DLC_DATE_4	      ""
 #define DLC_DATE_5	      ""
 #define DLC_DATE_6	      ""
-//--------------------------------------------------------------------
-// --------- Max ships on sea ----------------------------------------
+
+
 #define MAX_SHIPS_ON_SEA	32 
-//--------------------------------------------------------------------
-//--------------------------------------------------------------------
-// Max characters per location
-//--------------------------------------------------------------------
+
+
+
+
 #define MAX_CHARS_IN_LOC	64
 
-//--------------------------------------------------------------------
-// World Config section
-//--------------------------------------------------------------------
 
-// сетевые штучки -->
+
+
+
+
 int iRealDeltaTime = 0;
 int iRealYear = 0;
 int iRealMonth = 0;
 int iRealDay = 0;
-// сетевые штучки <--
 
-int iGrassQuality = 0; //0 full, 1 middle, 2 low, 3 off
 
-int iEncountersRate = 1;   // работает на карте и будет работать для скорости смены отношений и тп
-int	iArcadeSails = 1;   // GetRSRollSpeed
+int iGrassQuality = 0; 
 
-//bool isLoaded = false;
+int iEncountersRate = 1;   
+int	iArcadeSails = 1;   
 
-#define KVL_MODS_FILE "Mods_On_Off_File.txt" // Warship. Глоб. файл для включения/выключения всяких фич игры
+
+
+#define KVL_MODS_FILE "Mods_On_Off_File.txt" 
 #define INVALID_SOUND_ID	0
 
 int ngMusicID = 0;
@@ -59,15 +59,15 @@ string sgMusicName = "?";
 
 ref pchar;
 
-//--------------------------------------------------------------------
-// Bool section
-//--------------------------------------------------------------------
+
+
+
 #define false			0
 #define true			1			
 
-//--------------------------------------------------------------------
-// Nation section
-//--------------------------------------------------------------------
+
+
+
 #define	MAX_NATIONS       5
 #define MAX_NATIONS_SQR   25
 
@@ -83,17 +83,17 @@ int		NationsRelations2MainCharacter[MAX_NATIONS];
 
 object	Render;
 
-//--------------------------------------------------------------------
-// Characters section
-//--------------------------------------------------------------------
-int     GlobalCharacters = 0;  // номер, с которого идут фантомы
+
+
+
+int     GlobalCharacters = 0;  
 int     MAX_CHARACTERS   = 10;
-#define LOC_FANTOM_CHARACTERS		870	//32 max
+#define LOC_FANTOM_CHARACTERS		870	
 #define FANTOM_CHARACTERS           940
-#define TOTAL_CHARACTERS			1200  // прописать в BOAT_CHARACTER  TOTAL_CHARACTERS - 1
+#define TOTAL_CHARACTERS			1200  
 #define BOAT_CHARACTER              1199
 
-#define MAX_LOCATIONS		1001 // boal //700
+#define MAX_LOCATIONS		1001 
 #define MAX_ISLANDS   38
 #define MAX_COLONIES  43
 
@@ -114,15 +114,15 @@ string 	sFrManGenNames[11], sFrWomenGenNames[8], sFrGenFamilies[86];
 string 	sSpManGenNames[21], sSpWomenGenNames[9], sSpGenFamilies[54];
 
 
-// Падежи
-#define NAME_NOM "Nom"  // именительный
-#define NAME_GEN "Gen"  // родительный
-#define NAME_DAT "Dat"  // дательный
-#define NAME_ACC "Acc"  // винительный
-#define NAME_ABL "Abl"  // творительный
-#define NAME_VOC "Voc"  // предложный
 
-// Типы имен
+#define NAME_NOM "Nom"  
+#define NAME_GEN "Gen"  
+#define NAME_DAT "Dat"  
+#define NAME_ACC "Acc"  
+#define NAME_ABL "Abl"  
+#define NAME_VOC "Voc"  
+
+
 #define NAMETYPE_ORIG "Orig"
 #define NAMETYPE_NICK "Nick"
 #define NAMETYPE_VIP "Vip"
@@ -137,7 +137,7 @@ object	Islands[MAX_ISLANDS];
 object	Colonies[MAX_COLONIES];
 
 object  	Environment;
-int		nMainCharacterIndex = 1;//-1;
+int		nMainCharacterIndex = 1;
 int		iNumFantoms;
 
 int		nLocationsNum;
@@ -147,12 +147,12 @@ string  sTeleportLocator;
 
 object SeaParametrs;
 
-int MaxVertices = 32000;//32000;//16000;//8000;//4000
-int MaxIndices = 33200;//33200;//17200;//9200;//5200
+int MaxVertices = 32000;
+int MaxIndices = 33200;
 float GridStepX = 0.1;
 float GridStepPC = 0.1;
-float MaxWaveDistance = 4000.0;//4000.0;//3000.0;//2000.0;//1000.0
-float LodScale = 0.7;//0.7;//1.2;//2.0;//4.0
+float MaxWaveDistance = 4000.0;
+float LodScale = 0.7;
 
 ref GetFantomCharacter(int iIndex)
 { 
@@ -183,12 +183,7 @@ int GetMainCharacterIndex()
 int	GetCharacterIndex(string string_id) 
 {
 	return NativeFindCharacter(&Characters, string_id);
-/*	int n;
-	for(n=0;n<TOTAL_CHARACTERS;n++)
-	{
-		if(string_id == Characters[n].id) return n; 
-	}
-	return -1;*/
+ 
 }
 
 bool CheckCharacterID(ref rChar, string rChar_ID)
@@ -214,17 +209,17 @@ void SetMainCharacterIndex(int index)
 
 int EventReturn_iGrassQuality()
 {
-    //trace("GrassQuality"); - эта хрень работает 5-10 раз в секунду
+    
 	return iGrassQuality;
 }
 
-// boal 13.11.06 спец прерывание ядра, для выбора шейдера подсветки и без
+
 #event_handler("GOpt_isGrassLightsOn","EventReturn_isGrassLightsOn");
 
 int EventReturn_isGrassLightsOn()
 {
-	// trace("EventReturn_isGrassLightsOn"); это я перевел на 1 раз за все время создания травы
-	// 1 - светится, 0 - темная
+	
+	
 	if(CheckAttribute(&WeatherParams, "Rain") && sti(WeatherParams.Rain))
     {
 		return 0;
@@ -241,3 +236,4 @@ int EventReturn_isGrassLightsOn()
 	}
 	return 0;
 }
+

@@ -1,4 +1,4 @@
-// Диего де Монтойя
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;

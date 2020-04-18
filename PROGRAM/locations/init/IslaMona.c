@@ -1,19 +1,19 @@
 
 int LocationInitIslaMona(int n)
 {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Мыс 76
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Shore76";
 	locations[n].id.label = "Shore76";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "IslaMona";
-	//Sound
+	
 	locations[n].type = "questisland";
 	locations[n].islandId = "IslaMona";
 	locations[n].onUninhabitedIsland = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore03";
 	Locations[n].models.always.shore03 = "shore03";
 	locations[n].models.always.shore03.sea_reflection = 1;
@@ -32,14 +32,14 @@ int LocationInitIslaMona(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore03_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore03_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";	
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "IslaMona_CaveEntrance";
 	locations[n].reload.l1.emerge = "reload2";
@@ -50,18 +50,18 @@ int LocationInitIslaMona(int n)
 	Locations[n].DisableEncounters = true;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Вход в пещеру
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "IslaMona_CaveEntrance";
 	locations[n].id.label = "Cave entrance";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "questisland";
 	locations[n].islandId = "IslaMona";
 	locations[n].onUninhabitedIsland = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt1";
 	Locations[n].models.always.caveEnt1 = "caveEnt1";	
 	Locations[n].models.always.locators = "caveEnt1_locators";		
@@ -76,14 +76,14 @@ int LocationInitIslaMona(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "caveEnt1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "caveEnt1_patch";	
-	//Environment	
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "IslaMona_Cave";
 	locations[n].reload.l1.emerge = "reload1";
@@ -100,19 +100,19 @@ int LocationInitIslaMona(int n)
 	Locations[n].DisableEncounters = true;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Пещера
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "IslaMona_Cave";
 	locations[n].id.label = "Cave";
 	locations[n].image = "loading\inside\cave.tga";
-	//Sound
+	
 	locations[n].type = "cave";
  	locations[n].islandId = "IslaMona";
 	locations[n].onUninhabitedIsland = true;
-	locations[n].changeAnimation = "man_A"; //сменить анимацию на обычную
-	//Models
-	//Always
+	locations[n].changeAnimation = "man_A"; 
+	
+	
 	locations[n].filespath.models = "locations\inside\cavernMedium2";
 	locations[n].models.always.cavernMedium2 = "cavernMedium2";
 	locations[n].models.always.locators = "cavernMedium2_IMlocators";
@@ -122,17 +122,17 @@ int LocationInitIslaMona(int n)
 	Locations[n].models.always.well_on.tech = "DLightModel";	
 
 	locations[n].locators_radius.item.duhi1 = 0.0;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "cavernMedium2_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "cavernMedium2_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "IslaMona_CaveEntrance";
 	locations[n].reload.l1.emerge = "reload1";
@@ -155,19 +155,19 @@ int LocationInitIslaMona(int n)
 	locations[n].DisableOfficers = "1";
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Затопленная пещера
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "IslaMona_WaterCave";
 	locations[n].id.label = "";
 	locations[n].image = "loading\inside\cave.tga";
-	//Sound
+	
 	locations[n].islandId = "IslaMona";
 	locations[n].DisableEncounters = true;
 	locations[n].type = "underwater";
-	locations[n].changeAnimation = "swim"; //сменить анимацию на плавание
-	//Models
-	//Always
+	locations[n].changeAnimation = "swim"; 
+	
+	
 	locations[n].filespath.models = "locations\inside\cavernLow2";
 	locations[n].models.always.cavernLow2 = "cavernLow2";
 	
@@ -192,11 +192,11 @@ int LocationInitIslaMona(int n)
 	Locations[n].models.always.chest.locator.group = "box";
 	Locations[n].models.always.chest.locator.name = "private1";
 	Locations[n].models.always.chest.tech = "DLightModel";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "cavernLow2_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "cavernLow2_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
@@ -205,7 +205,7 @@ int LocationInitIslaMona(int n)
 	locations[n].underwater = true;
 	Locations[n].QuestlockWeather = "Underwater";
 	Locations[n].lockWeather = "Inside";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "IslaMona_Cave";
 	locations[n].reload.l1.emerge = "reload3_back";
@@ -219,18 +219,18 @@ int LocationInitIslaMona(int n)
 	locations[n].private1.items.gold_dublon = 900;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Форт
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
     locations[n].id = "IslaMona_fort";
 	locations[n].id.label = "Jungle Fort";
 	locations[n].image = "loading\towns\pearl1.tga";
- 	//Sound
+ 	
 	locations[n].type = "questisland";
 	locations[n].islandId = "IslaMona";
 	locations[n].onUninhabitedIsland = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\PirateFort";
 	Locations[n].models.always.fort = "piratefort";	
 	Locations[n].models.always.locators = "piratefort_locators";		
@@ -251,16 +251,16 @@ int LocationInitIslaMona(int n)
 	locations[n].models.always.mortair = "mortair";
 	Locations[n].models.always.mortair.locator.group = "quest";
 	Locations[n].models.always.mortair.locator.name = "mortair";
-	//Day
+	
 	locations[n].models.day.fonar = "piratefort_fd";
 	locations[n].models.day.charactersPatch = "piratefort_patch";
-	//Night
+	
 	locations[n].models.night.fonar = "piratefort_fn";
 	locations[n].models.night.charactersPatch = "piratefort_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "IslaMona_jungle_01";
 	locations[n].reload.l1.emerge = "reload3";
@@ -302,19 +302,19 @@ int LocationInitIslaMona(int n)
 	Locations[n].DisableEncounters = true;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Двухэтажный дом
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "IslaMona_TwoFloorHouse"; 
 	locations[n].id.label = "House";
 	locations[n].image = "loading\inside\largehouse01.tga";
-	//Town sack
+	
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].islandId = "IslaMona";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\Doubleflour_house";
 	locations[n].models.always.largehouse01 = "LH_Floor1";
 	locations[n].models.always.largehouse01.level = 65538;
@@ -329,15 +329,15 @@ int LocationInitIslaMona(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "LH_Floor1_patch";
-	//Night
+	
 	locations[n].models.night.fonar = "LH_Floor1_fn";
 	locations[n].models.night.charactersPatch = "LH_Floor1_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "IslaMona_fort";
 	locations[n].reload.l1.emerge = "reload6";
@@ -369,19 +369,19 @@ int LocationInitIslaMona(int n)
 	locations[n].private1.items.berserker_potion = 1;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// комната на 2 этаже
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "IslaMona_TwoFloorRoom"; 
 	locations[n].id.label = "Room";
 	locations[n].image = "loading\inside\mediumhouse10.tga";
-	//Town sack
+	
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].islandId = "IslaMona";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\Doubleflour_house";
 	locations[n].models.always.largehouse01 = "LH_Floor2";
 	locations[n].models.always.largehouse01.level = 65538;
@@ -392,15 +392,15 @@ int LocationInitIslaMona(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "LH_Floor2_patch";
-	//Night
+	
 	locations[n].models.night.fonar = "LH_Floor2_fn";
 	locations[n].models.night.charactersPatch = "LH_Floor2_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "IslaMona_TwoFloorHouse";
 	locations[n].reload.l1.emerge = "reload2";
@@ -417,19 +417,19 @@ int LocationInitIslaMona(int n)
 	locations[n].private1.items.obereg_5 = 1;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Подвал
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "IslaMona_Basement";
 	locations[n].id.label = "Basement";
 	locations[n].image = "loading\inside\cave.tga";
-	//Town sack
+	
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "Cave";
 	locations[n].islandId = "IslaMona";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\grotto3";
 	locations[n].models.always.grotto3 = "grotto3";
 	locations[n].models.always.locators = "grotto3_IMlocators";
@@ -442,17 +442,17 @@ int LocationInitIslaMona(int n)
 	Locations[n].models.always.hatch.locator.group = "reload";
 	Locations[n].models.always.hatch.locator.name = "reload2";
 	Locations[n].models.always.hatch.tech = "DLightModel";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "grotto3_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "grotto3_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "IslaMona_TwoFloorHouse";
 	locations[n].reload.l1.emerge = "reload3";
@@ -471,18 +471,18 @@ int LocationInitIslaMona(int n)
 	Locations[n].DisableEncounters = true;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "IslaMona_Jungle_01";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "questisland";
 	locations[n].islandId = "IslaMona";
 	locations[n].onUninhabitedIsland = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle3";
 	Locations[n].models.always.jungle = "jungle3";	
 	Locations[n].models.always.locators = "jungle3_locators";		
@@ -497,14 +497,14 @@ int LocationInitIslaMona(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle3_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle3_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Shore75";
 	locations[n].reload.l1.emerge = "reload1";
@@ -528,19 +528,19 @@ int LocationInitIslaMona(int n)
 	Locations[n].DisableEncounters = true;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Пляж 75
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Shore75";
 	locations[n].id.label = "Shore75";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "Shore75";
-	//Sound
+	
 	locations[n].type = "questisland";
 	locations[n].islandId = "IslaMona";
 	locations[n].onUninhabitedIsland = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore07";
 	Locations[n].models.always.shore07 = "shore07";
 	locations[n].models.always.shore07.sea_reflection = 1;
@@ -559,14 +559,14 @@ int LocationInitIslaMona(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore07_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore07_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "IslaMona_Jungle_01";
 	locations[n].reload.l1.emerge = "reload1";
@@ -583,19 +583,19 @@ int LocationInitIslaMona(int n)
 	Locations[n].DisableEncounters = true;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Бухта77
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Shore77";
 	locations[n].id.label = "Shore77";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "Shore77";
-	//Sound
+	
 	locations[n].type = "questisland";
 	locations[n].islandId = "IslaMona";
 	locations[n].onUninhabitedIsland = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore08";
 	Locations[n].models.always.shore08 = "shore08";
 	locations[n].models.always.shore08.sea_reflection = 1;
@@ -612,14 +612,14 @@ int LocationInitIslaMona(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore08_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore08_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "IslaMona_Jungle_01";
 	locations[n].reload.l1.emerge = "reload2";
@@ -638,3 +638,4 @@ int LocationInitIslaMona(int n)
 
 	return n;
 }
+

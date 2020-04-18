@@ -1,9 +1,9 @@
-//ugeen 12.01.10 --> отдельный файл дл€ функций, общих дл€ всех генераторов
-string GenQuest_GenerateGoodBlade() // генераци€ хороших клинков дл€ призов и подарков
+
+string GenQuest_GenerateGoodBlade() 
 {	
-	//return GetGeneratedItem(SelectGeneratedItem("", B_GOOD , ""));
-	// Jason: вот место, по которому генерировались квестовые клинки в кладах!! 
-	// будет выбор вручную. 020912
+	
+	
+	
 	string itemID;
 	switch(rand(6))
 	{
@@ -29,10 +29,10 @@ string GenQuest_GenerateGoodBlade() // генераци€ хороших клинков дл€ призов и по
 	return itemID;
 }
 
-string GenQuest_GenerateBestBlade() // генераци€ отличных клинков дл€ призов и подарков
+string GenQuest_GenerateBestBlade() 
 {
 	string itemID;
-	switch(rand(5)) // Jason: и тут квестовые клинки... убрал. 020912
+	switch(rand(5)) 
 	{
 		case 0:
 			itemID = GetGeneratedItem("blade_17"); 
@@ -53,7 +53,7 @@ string GenQuest_GenerateBestBlade() // генераци€ отличных клинков дл€ призов и п
 	return itemID;
 }
 
-string GenQuest_GenerateArtefact() // артефакты
+string GenQuest_GenerateArtefact() 
 {
 	string itemID;
 	switch(rand(21))
@@ -128,14 +128,14 @@ string GenQuest_GenerateArtefact() // артефакты
 	return itemID;
 }
 
-string GenQuest_GeneratePrize() // клинок или артефакт
+string GenQuest_GeneratePrize() 
 {
 	string itm;
 	
 	if(rand(12) > 4) itm = GenQuest_GenerateArtefact();
 	else
 	{
-		if (sti(pchar.rank) > 15) itm = GenQuest_GenerateBestBlade(); // Addon 2016 Jason
+		if (sti(pchar.rank) > 15) itm = GenQuest_GenerateBestBlade(); 
 		else itm = GenQuest_GenerateGoodBlade();
 	}
 	return itm;
@@ -164,12 +164,12 @@ string GenQuestCommon_GenerateItem()
 	return itm;
 }
 
-string GenQuest_GetQuestTreasureMapDescription(ref itmRef) // надпись на квестовой карте
+string GenQuest_GetQuestTreasureMapDescription(ref itmRef) 
 {
 	string MapDescription;
 	int i;
 
-	i = FindLocation(itmRef.MapLocId);  // ищем ареал
+	i = FindLocation(itmRef.MapLocId);  
 	if (i != -1 && locations[i].islandId != "Mein")
 	{
 		string MapLocation = GetConvertStr(locations[i].islandId, "LocLables.txt");

@@ -1,4 +1,4 @@
-bool bSeePeoplesOnDeck = false; // Warship 08.06.09 Видеть матросов на палубе при виде от первого лица или нет
+bool bSeePeoplesOnDeck = false; 
 
 object	SeaCameras;
 aref	Crosshair;
@@ -32,7 +32,7 @@ void CreateSeaCamerasEnvironment()
 
 	SeaFreeCamera.Perspective = 1.285;
 
-	// Ship camera paramerets
+	
 	SeaShipCamera.Perspective = 1.285;
 	SeaShipCamera.SensivityDistance = 30.0;
 	SeaShipCamera.SensivityHeightAngle = 0.02;
@@ -48,7 +48,7 @@ void CreateSeaCamerasEnvironment()
 	SeaShipCamera.InvertMouseX = 1.0;
 	SeaShipCamera.InvertMouseY = -1.0;
 
-	// Deck camera paramerets
+	
 	SeaDeckCamera.Perspective = 1.285;
 	SeaDeckCamera.SensivityDistance = 0.01;
 	SeaDeckCamera.SensivityHeightAngle = 0.0015;
@@ -88,7 +88,7 @@ void CreateSeaCamerasEnvironment()
 	SetEventHandler("SeaCameras_Switch", "SeaCameras_Switch", 1);
 	SetEventHandler(TELESCOPE_ACTIVE, "SeaCameras_TelescopeActive", 0);
 
-	// add cameras to list
+	
 	SendMessage(&SeaCameras, "li", AI_CAMERAS_ADD_CAMERA, &SeaShipCamera);
 	SendMessage(&SeaCameras, "li", AI_CAMERAS_ADD_CAMERA, &SeaFreeCamera);
 	SendMessage(&SeaCameras, "li", AI_CAMERAS_ADD_CAMERA, &SeaDeckCamera);
@@ -115,9 +115,9 @@ void SeaCameras_Switch()
 
 	int bSwitch = false;
 	
-	// Коммент - выбираем состояние, ИЗ КОТОРОГО ПЕРЕКЛЮЧАЕМСЯ
-	// Sailors.IsOnDeck = 1; - Флаг, находимя ли мы на палубе
-	// если Sailors.IsOnDeck == 1, значит, мы на палубе, и матросов бегающих мы не увидем
+	
+	
+	
 	switch (SeaCameras.Camera)
 	{
 		case "SeaFreeCamera":
@@ -136,14 +136,14 @@ void SeaCameras_Switch()
 			}
 		break;
 		case "SeaDeckCamera":
-			//SeaCameras.Camera = "SeaFreeCamera"; break;		// Debug : SeaFreeCamera, release : SeaShipCamera
+			
 			SeaCameras.Camera = "SeaShipCamera"; 
-			// boal -->
+			
 			if (locCameraEnableFree)
             {
 			    SeaCameras.Camera = "SeaFreeCamera";
 			}
-			// boal <--
+			
 			Crosshair.OutsideCamera = true;
 			Sailors.IsOnDeck = 0;
 			bSwitch = true;
@@ -178,7 +178,7 @@ void SeaCameras_SetDieCamera()
 		Sailors.IsOnDeck = 0;
 		DeleteClass(&Telescope);
 		SeaCameras_UpdateCamera();
-		SendMessage(&objISpyGlass, "ll", MSG_TELESCOPE_REQUEST,0); // выключить телескоп
+		SendMessage(&objISpyGlass, "ll", MSG_TELESCOPE_REQUEST,0); 
 	}
 }
 
@@ -195,3 +195,4 @@ void SeaCameras_SetShipForSeaCamera(object Character)
 	makeref(SeaShipCharacterForCamera, Character);
 	SeaCameras_UpdateCamera();
 }
+

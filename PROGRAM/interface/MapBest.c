@@ -1,14 +1,14 @@
-// Warship. Доведенный до ума интерфейс бумажной карты из К3. Теперь это интерфейс отличной карты.
-// espkk # ActiveMap 1.3 # 25/Sep/2017 - map with trade assistant for Sea Dogs: TEHO / Теперь действительно доведенный до ума =) 
 
-//settings file
+
+
+
 #include "activemap_settings.h"
 
-//changing this requires frame resizing
+
 #define TRADEASSISTANT_MAXGOODS 5
 
-///espkk. utils -->
-//cuz the game doesn't use built-in language mechanism
+
+
 #define LANG_FILE "activemap"
 string GetLangStr(string sParam) 
 {
@@ -22,13 +22,13 @@ string GetLangStr(string sParam)
 	return GetConvertStr(sParam, sFile);
 }
 
-//float to str conversion with one decimal place
+
 string FloatToStr(float value)
 {
 	if(value == makeint(value))
 		return "" + makeint(value);
 	
-    // LDH 12Jul17 - round value
+    
 	return "" + makefloat(makeint((value+0.5)*10))/10;
 }
 
@@ -42,7 +42,7 @@ void AddImageToImageList(string sImgName, string sPicGroup, string sPic, float X
 	GameInterface.MAP.imagelist.(sImgName).height = Height;
 }
 
-//Whether on worldmap or not. Supports Hook's mod position fix
+
 void GetCorrectShipCoords(ref X, ref Y)
 {
 	if(IsEntity(worldMap))
@@ -52,8 +52,8 @@ void GetCorrectShipCoords(ref X, ref Y)
 	}
 		else
 	{
-		// Compability with Hook's mod (LDH 14Mar17 add check for on dock, display last ship location before docking)
-		// this cannot be implemented without modifying sea.c
+		
+		
 		if (!bSeaActive && CheckAttribute(pchar, "shipx"))
 		{
 			X = GetSeaShipX(stf(pchar.shipx));
@@ -70,7 +70,7 @@ void GetCorrectShipCoords(ref X, ref Y)
 	Y+=1000;
 }
 
-//Correct version of GetDistanceToColony2D
+
 int _GetDistanceToColony2D(string _sColony)
 {
 	ref rColony = GetColonyRefByID(_sColony);
@@ -87,7 +87,7 @@ int _GetDistanceToColony2D(string _sColony)
 	
 	return makeint(GetDistance2D(X1, Z1, X2, Z2));
 }
-///espkk. utils <--
+
 
 void InitInterface(string iniName)
 {
@@ -151,7 +151,7 @@ void InitInterface(string iniName)
 			Y = 829;
 		}
 	
-		//Draw colony on the map
+		
 		AddImageToImageList(sColony, "NATIONS_SMALL", sPic, X, Y, 16, 16);
 
 		ref chref;
@@ -159,7 +159,7 @@ void InitInterface(string iniName)
 		{
 			makeref(chref, Characters[iChar]);
 			
-			//Draw packhouses
+			
 			if (CheckAttribute(chref, "Storage.Activate"))
 			{
 				if (sColony == chref.city)
@@ -168,10 +168,10 @@ void InitInterface(string iniName)
 				}
 			}
 			
-			//Draw ships
+			
     		if (CheckAttribute(chref, "ShipInStockMan"))
     		{
-				bool bIslaMonaShip = (sColony == "IslaMona") && (chref.ShipInStockMan == "Islamona_carpenter"); //stupid compiler >:|
+				bool bIslaMonaShip = (sColony == "IslaMona") && (chref.ShipInStockMan == "Islamona_carpenter"); 
                 if (chref.ShipInStockMan == (sColony + "_PortMan") || bIslaMonaShip) 
 				{
 					AddImageToImageList(sColony + "_shipinstock", "ICONS_SPEC", "ship button", X - 35, Y, 24, 24);
@@ -179,7 +179,7 @@ void InitInterface(string iniName)
 			}
 		}
 		
-		//Draw our moneylenders
+		
 		aref quests;
 		int  nQuestsNum, n;
 		string sQuestName, sType;
@@ -202,14 +202,14 @@ void InitInterface(string iniName)
 					{
 						AddImageToImageList(sColony + "_money", "ICONS", "commerce skill icon", X, Y - 55, 13, 13);
 
-						iType = 2; //stop for
+						iType = 2; 
 						break;
 					}
 				}
 			}
 		}
 		
-		//Draw sieges
+		
 		if(CheckAttribute(rColony, "siege") && sti(rColony.siege) != -1)
 		{
 			sSiegeCol = "SiegeOn" + sColony;
@@ -224,13 +224,13 @@ void InitInterface(string iniName)
 		}
 	}
 	
-	//Draw our ship
+	
 	GetCorrectShipCoords(&X, &Y);
 	AddImageToImageList("PShip", "ICONS", "ship class icon", X, Y, 20, 20);
 
 	SendMessage(&GameInterface, "ls", MSG_INTERFACE_INIT, "RESOURCE\INI\INTERFACES\activemap.ini");
 	
-	//Show boundaries
+	
 	if(SHOW_BOUNDARIES == 1)
 	{
 		SetNewPicture("BOUNDARIES", "interfaces\maps\map_good_boundaries.tga");
@@ -278,28 +278,28 @@ void SelectRColony()
 	float fMouseX = stf(GameInterface.mousepos.x) - 6.0 + 5;
 	float fMouseY = stf(GameInterface.mousepos.y) - 50.0 + 5;
 	
-	//Getting correct image offsets
+	
 	float fOffsetX, fOffsetY;
 	GetXYWindowOffset(&fOffsetX, &fOffsetY);
 
 	fMouseX = (fMouseX - fOffsetX) * stf(GameInterface.MAP.scale.x);
 	fMouseY = (fMouseY - fOffsetY) * stf(GameInterface.MAP.scale.y);
 
-	//Check if clicked on colony
+	
 	string sColony;
 	for(int i = 0; i < MAX_COLONIES; i++)
 	{
 		sColony = colonies[i].id;
 		if(CheckAttribute(&GameInterface, "MAP.imagelist." + sColony))
 		{
-			// LDH 21Mar17 enlarge click spot by 10 each direction
-			if(fMouseX >= stf(GameInterface.MAP.imagelist.(sColony).x) + 20)	// 30
+			
+			if(fMouseX >= stf(GameInterface.MAP.imagelist.(sColony).x) + 20)	
 			{
-				if(fMouseX <= stf(GameInterface.MAP.imagelist.(sColony).x) + 60.0)	// 50
+				if(fMouseX <= stf(GameInterface.MAP.imagelist.(sColony).x) + 60.0)	
 				{
-					if(fMouseY >= stf(GameInterface.MAP.imagelist.(sColony).y - 10))	// 0
+					if(fMouseY >= stf(GameInterface.MAP.imagelist.(sColony).y - 10))	
 					{
-						if(fMouseY <= stf(GameInterface.MAP.imagelist.(sColony).y) + 60.0)	// 50
+						if(fMouseY <= stf(GameInterface.MAP.imagelist.(sColony).y) + 60.0)	
 						{
 							if(sColony != "Panama" && sColony != "IslaMona")
 							{
@@ -331,7 +331,7 @@ void ShowColonyInfo(int iColony)
 	string sColony = colonies[iColony].id;
 	int iColor;
 
-	//Clean up -->
+	
 	sText = XI_ConvertString("Colony" + sColony);
 	SetFormatedText("INFO_CAPTION", sText);
 
@@ -354,16 +354,16 @@ void ShowColonyInfo(int iColony)
 	SetFormatedText("TRADEASSISTANT_SPECIAL", "");
 
 	SendMessage( &GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"GOODS_PICTURES", 2 ); 
-	//Clean up <--
 	
-	//Time to travel
-	//Thanks to LDH
+	
+	
+	
 	sText = XI_ConvertString("ColonyDistance") + " - ";
 	
 	if(TRAVELTIME_MODE == 0)
 	{
-		int iDays1 = makeint(_GetDistanceToColony2D(sColony)/300 + 0.5); //min - sailing on deck
-		int iDays2 = makeint(_GetDistanceToColony2D(sColony)/100 + 0.5); //max - worldmap
+		int iDays1 = makeint(_GetDistanceToColony2D(sColony)/300 + 0.5); 
+		int iDays2 = makeint(_GetDistanceToColony2D(sColony)/100 + 0.5); 
 
 		if (iDays1 < 1)	iDays1 = 1;
 		if (iDays2 < 1) iDays2 = 1;
@@ -409,7 +409,7 @@ void ShowColonyInfo(int iColony)
 						sText += GetLangStr("nautical_miles");
 				}
 			}
-            // LDH 12Jul17 - add direction
+            
             sText += " " + GetMapDir16(_GetDirToColony(sColony));
             sText += " (" + GetMapDir32(_GetDirToColony(sColony)) + ")";				
 			sText += ".";
@@ -445,7 +445,7 @@ void ShowColonyInfo(int iColony)
 	}
 	SetFormatedText("COLONY_TRAVEL_INFO", sText);
 	
-	//Colony info
+	
 	sText = XI_ConvertString("ColonyInfo");
 	AddLineToFormatedText("COLONY_INFO_LABEL", sText);
 	sText = XI_ConvertString("SalaryQuantity");
@@ -482,7 +482,7 @@ void ShowColonyInfo(int iColony)
 		SetFormattedTextLastLineColor("COLONY_INFO_TEXT", argb(255,255,168,168));
 	}
 	
-	///Draw categorized goods
+	
 	int iGood = -1;
 	string sGood = "";
 	int iIsland = FindIsland(rColony.Island);
@@ -541,7 +541,7 @@ void ShowColonyInfo(int iColony)
 			SetFormatedText("AGGRESSIVE_CAPTION", GetLangStr("AGGRESSIVE"));
 	}
 	
-	///Trade assistant
+	
 	string sTown = GetCurrentTown();
 	
 	if(sTown == "" || sTown == sColony)
@@ -549,7 +549,7 @@ void ShowColonyInfo(int iColony)
 	
 	SetFormatedText("TRADEASSISTANT_CAPTION", "Trade assistant");
 	
-	//Find town in trade book
+	
 	bool bFound = true; 
 	if(TRADEASSISTANT_MODE == 0)
 	{
@@ -564,7 +564,7 @@ void ShowColonyInfo(int iColony)
 		return;
 	}
 		
-	//Find our store
+	
 	ref refStore, refStore2;
 	aref arefStore2, refGoods;
 	for(i = 0; i < STORE_QUANTITY; i++)
@@ -573,7 +573,7 @@ void ShowColonyInfo(int iColony)
 		if (refStore.colony == sTown)
 			break;
 	}	
-	//Find target store
+	
 	if(TRADEASSISTANT_MODE == 0)
 	{
 		makearef(arefStore2, NullCharacter.PriceList.(sColony));
@@ -593,9 +593,9 @@ void ShowColonyInfo(int iColony)
 	float fTemp;
 	int nSell, nBuy;
 	
-	bFound = false; //at least one good displayed
+	bFound = false; 
 	
-	//Calculate profit
+	
 	for(iType=0; iType<2; iType++)
 	{
 		if(iType)
@@ -612,7 +612,7 @@ void ShowColonyInfo(int iColony)
 		for(i=0; i<TRADEASSISTANT_MAXGOODS-1; i++)
 			a_fMax[i] = 0.;
 
-		for (i = 0; i < 28; i++) //Skip Shipsilk, Ropes, Sandal, Oil, Gold, Silver, Cannons
+		for (i = 0; i < 28; i++) 
 		{
 			sGood = Goods[i].name;
 			if(refStore.Goods.(sGood).TradeType == T_TYPE_CONTRABAND)
@@ -648,9 +648,9 @@ void ShowColonyInfo(int iColony)
 					nBuy = GetStoreGoodsPrice(refStore2, i, PRICE_TYPE_BUY, pchar, 1);
 			}
 			
-			fTemp = (nSell - nBuy) / stf(Goods[i].weight); //price per pound
+			fTemp = (nSell - nBuy) / stf(Goods[i].weight); 
 			
-			//Sort
+			
 			for(int k=0; k<TRADEASSISTANT_MAXGOODS; k++)
 			{
 				if(fTemp > a_fMax[k])
@@ -667,7 +667,7 @@ void ShowColonyInfo(int iColony)
 			}
 		}
 		
-		//Draw goods
+		
 		iGoods_y = 395;
 		for(i=0; i<TRADEASSISTANT_MAXGOODS; i++)
 		{
@@ -748,11 +748,11 @@ int GetMaxFortCannons(string _FortCommander)
 	
 	return _iCannons;
 }
-// LDH 12Jul17 compass directions -->
-string GetMapDir16(float dir)      // N, NNE, NE
+
+string GetMapDir16(float dir)      
 {
 	dir = Normalize360(Radian2Degree(dir));
-	int index = makeint((dir / 22.5) + 0.5);   // round to nearest compass16 point
+	int index = makeint((dir / 22.5) + 0.5);   
 	if (index >= 16) index = 0;
 
 	switch (index)
@@ -776,10 +776,10 @@ string GetMapDir16(float dir)      // N, NNE, NE
 	}
 }
 
-string GetMapDir32(float dir)      // N, NbE, NNE
+string GetMapDir32(float dir)      
 {
 	dir = Normalize360(Radian2Degree(dir));
-	int index = makeint((dir / 11.25) + 0.5);   // round to nearest compass32 point
+	int index = makeint((dir / 11.25) + 0.5);   
 	if (index >= 32) index = 0;
 
 	switch (index)
@@ -846,4 +846,4 @@ float Normalize360(float dir)
     if (dir > 360.0) dir -= 360.0;
     return dir;
 }
-// LDH 12Jul17 <-									 
+

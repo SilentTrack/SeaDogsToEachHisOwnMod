@@ -1,9 +1,9 @@
-/// BOAL меню предметов
+
 #include "interface\character_all.h"
 
 void InitInterface(string iniName)
 {
-    InterfaceStack.SelectMenu_node = "LaunchItems"; // запоминаем, что звать по Ф2
+    InterfaceStack.SelectMenu_node = "LaunchItems"; 
 	GameInterface.title = "titleItems";
 	
 	xi_refCharacter = pchar;
@@ -107,7 +107,7 @@ void ProcessCommandExecute()
 			}
 		break;
 	}
-	// boal new menu 31.12.04 -->
+	
 	if (nodName == "I_CHARACTER" || nodName == "I_SHIP" ||
 	    nodName == "I_QUESTBOOK" || nodName == "I_TRADEBOOK" ||
 		nodName == "I_NATIONS" || nodName == "I_ITEMS")
@@ -120,7 +120,7 @@ void ProcessCommandExecute()
 			return;
 		}
 	}
-	// boal new menu 31.12.04 -->
+	
 }
 
 void ProcessFrame()
@@ -153,9 +153,9 @@ void SetButtonsState()
 void SetVariable()
 {
 	SetFormatedText("SETUP_FRAME_CAPTION", XI_ConvertString("Equipment") + ": " + GetFullName(xi_refCharacter));
-	// сортировка -->
+	
 	SortItems(xi_refCharacter);
-	// сортировка -->
+	
 	SetControlsTabMode(1);
 	HideItemInfo();
 	SetFormatedText("Weight_TEXT", XI_ConvertString("weight") + ": " + FloatToString(GetItemsWeight(xi_refCharacter), 1) + " / "+GetMaxItemsWeight(xi_refCharacter));
@@ -165,7 +165,7 @@ void SetVariable()
 	SendMessage(&GameInterface,"lsls",MSG_INTERFACE_MSG_TO_NODE,"EQUIP_BUTTON",0, "#"+XI_ConvertString("Equip that"));
 }
 
-void FillItemsTable(int _mode) // 1 - все 2 - оружие 3 - остальное
+void FillItemsTable(int _mode) 
 {
 	int n, i;
 	string row;
@@ -191,7 +191,7 @@ void FillItemsTable(int _mode) // 1 - все 2 - оружие 3 - остальное
 	idLngFile = LanguageOpenFile("ItemsDescribe.txt");
 	Table_Clear("TABLE_ITEMS", false, true, false);
 	
-	// Заполним вещами от нас
+	
 	makearef(rootItems, xi_refCharacter.Items);
     for (i=0; i<GetAttributesNum(rootItems); i++)
     {
@@ -206,36 +206,23 @@ void FillItemsTable(int _mode) // 1 - все 2 - оружие 3 - остальное
 			if(CheckAttribute(arItem,"groupID")) 	groupID 	= arItem.groupID;
 			if(CheckAttribute(arItem,"itemType")) 	itemType	= arItem.itemType;
 
-/*
-			ok = arItem.ItemType == "WEAPON" || arItem.ItemType == "SUPPORT";
-			if(CheckAttribute(arItem,"mapType"))
-			{
-				if(arItem.mapType == "") ok2 = true;
-				else					 ok2 = false;
-			}
-			if (_mode == 1 && arItem.ItemType == "MAP" && ok2) continue
-			ok2 = ok2 && arItem.ItemType == "MAP";
-			if (_mode == 2 && !ok && ok2) continue;
-			ok = ok || arItem.ItemType == "MAP";
-			if (_mode == 3 && ok && ok2) continue;
-			if (_mode == 4 && arItem.ItemType != "MAP") continue;
-*/			
+ 			
 
-			ok = (groupID == BLADE_ITEM_TYPE) || 	// холодное оружие
-				 (groupID == GUN_ITEM_TYPE)	||		// огнестрел
-                 (groupID == SPYGLASS_ITEM_TYPE) || // трубы
-				 (groupID == CIRASS_ITEM_TYPE) ||   // костюмы и доспехи
-				 (groupID == TOOL_ITEM_TYPE) ||     // навигационные приборы котороые можно экипировать в спецслот
-				 (groupID == AMMO_ITEM_TYPE);		// расходники для огнестрела
+			ok = (groupID == BLADE_ITEM_TYPE) || 	
+				 (groupID == GUN_ITEM_TYPE)	||		
+                 (groupID == SPYGLASS_ITEM_TYPE) || 
+				 (groupID == CIRASS_ITEM_TYPE) ||   
+				 (groupID == TOOL_ITEM_TYPE) ||     
+				 (groupID == AMMO_ITEM_TYPE);		
 			
-			ok1 = (groupID == PATENT_ITEM_TYPE)	||	// патенты
-                  (groupID == MAPS_ITEM_TYPE) ||	// карты
-                  (groupID == SPECIAL_ITEM_TYPE) || // спецпредметы
-				  (itemType == "QUESTITEMS"); 	    // квестовые предметы			  
+			ok1 = (groupID == PATENT_ITEM_TYPE)	||	
+                  (groupID == MAPS_ITEM_TYPE) ||	
+                  (groupID == SPECIAL_ITEM_TYPE) || 
+				  (itemType == "QUESTITEMS"); 	    
 			
-			ok2	= (groupID == ITEM_SLOT_TYPE) && (itemType == "ARTEFACT"); // артефакты
+			ok2	= (groupID == ITEM_SLOT_TYPE) && (itemType == "ARTEFACT"); 
 			
-			ok3 = (groupID == TALISMAN_ITEM_TYPE) || ok2; // талисманы
+			ok3 = (groupID == TALISMAN_ITEM_TYPE) || ok2; 
                  
 			if(_mode == 1 && groupID == MAPS_ITEM_TYPE)	continue;	
 			if(_mode == 2 && !ok)  continue;
@@ -285,7 +272,7 @@ void FillItemsSelected()
 	int iLastGunItem;
 	ref rLastGunItem;
 	
-	// Скроем по умолчанию
+	
 	SetNodeUsing("ITEM_1", false);
 	SetNodeUsing("ITEM_2", false);
 	SetNodeUsing("ITEM_3", false);
@@ -321,7 +308,7 @@ void FillItemsSelected()
 		
 		if (GetCharacterItem(xi_refCharacter, sGood) > 0)
 		{		
-			/// экипировка
+			
 			if (IsEquipCharacterByItem(xi_refCharacter, sGood))
 			{
 				switch (Items[i].groupID) 
@@ -334,7 +321,7 @@ void FillItemsSelected()
 						if(CheckAttribute(xi_refCharacter, "IsMushketer"))
 						{
 							iLastGunItem = GetItemIndex(xi_refCharacter.IsMushketer.LastGunID);
-							// Покажем картинку старого пистоля, если он еще есть
+							
 							if(iLastGunItem != -1 && GetCharacterItem(xi_refCharacter, xi_refCharacter.IsMushketer.LastGunID) > 0)
 							{
 								rLastGunItem = &Items[iLastGunItem];
@@ -349,7 +336,7 @@ void FillItemsSelected()
 						{
 							SetNewGroupPicture("ITEM_2", Items[i].picTexture, "itm" + Items[i].picIndex);
 							SetNodeUsing("ITEM_2" , true);
-							SetNodeUsing("ITEM_5" , false); // Мушкет не юзается - уберем картинку
+							SetNodeUsing("ITEM_5" , false); 
 						}
 					break;
 					case SPYGLASS_ITEM_TYPE:
@@ -447,10 +434,7 @@ void ShowInfoWindow()
 	int nChooseNum = -1;
 	switch (sCurrentNode)
 	{
-		/*case "CHARACTER_NATION_PICTURE":
-		    sHeader = XI_ConvertString("Nation");
-			sText1 = GetRPGText("Nation_hint");
-		break;   */
+		 
 	}
 	sHeader = "Items";
 	sText1  = "Equipment management for you and your officers";
@@ -469,7 +453,7 @@ void TableSelectChange()
     CurTable = sControl;
     CurRow   =  "tr" + (iSelected);
     
-    // отрисовка инфы
+    
     SetItemInfo();
 }
 
@@ -552,7 +536,7 @@ void SetControlsTabMode(int nMode)
 
 	switch (nMode)
 	{
-		case 1: //
+		case 1: 
 			sPic1 = "TabDeSelected";
 			nColor1 = argb(255,255,255,255);
 		break;
@@ -585,10 +569,10 @@ void FillControlsList(int nMode)
 {
 	switch (nMode)
 	{
-	    case 1: FillItemsTable(1); break;  // все
-	    case 2: FillItemsTable(2); break;  // снаряжение
-	    case 3: FillItemsTable(3); break;  // остальное
-	    case 4: FillItemsTable(4); break;  // карты
+	    case 1: FillItemsTable(1); break;  
+	    case 2: FillItemsTable(2); break;  
+	    case 3: FillItemsTable(3); break;  
+	    case 4: FillItemsTable(4); break;  
 	}
 }
 
@@ -608,7 +592,7 @@ bool ThisItemCanBeEquip( aref arItem )
 		if(IsMainCharacter(xi_refCharacter)) return true;
 		return false;
 	}
-	// спецпредметы только для ГГ
+	
 	if (arItem.groupID == SPECIAL_ITEM_TYPE && !IsMainCharacter(xi_refCharacter)) 
 	{
 		return false;
@@ -620,7 +604,7 @@ bool ThisItemCanBeEquip( aref arItem )
 	
 	if (xi_refCharacter.id == "Mary" && arItem.groupID == BLADE_ITEM_TYPE)
 	{
-		return false; // чтобы нарвал не отбирали
+		return false; 
 	}
 	
 	if (arItem.groupID == GUN_ITEM_TYPE) 
@@ -641,13 +625,13 @@ bool ThisItemCanBeEquip( aref arItem )
 			return false;
 		}
 				
-		// Для мушкетов нужен соответствующий перк
+		
 		if(HasSubStr(arItem.id, "mushket") && !IsCharacterPerkOn(xi_refCharacter,"Gunman"))
 		{
 			return false;
 		}
 		
-		// Нельзя экипировать мушкет в непредназначенных для этого локациях (Таверна)
+		
 		if(HasSubStr(arItem.id, "mushket") && !CanEquipMushketOnLocation(PChar.Location))
 		{
 			return false;
@@ -679,29 +663,26 @@ bool ThisItemCanBeEquip( aref arItem )
 		{
 			return false;
 		}		
-		//Jason: под водой ничего нельзя снимать
+		
 		if (xi_refCharacter.location == "underwater")
 		{
 		    return false;
 	    }
-		//Jason: запрет снятия кирасы
+		
 		if (arItem.groupID == CIRASS_ITEM_TYPE && CheckAttribute(xi_refCharacter, "GenQuest.CirassExchangeDisable"))
 	    {
 		    return false;
 	    }
 	}
 	else
-	{ // Jason: убираем влияние перка кирасы - кирасу носим без перка
-		/*if (arItem.groupID == CIRASS_ITEM_TYPE && !IsCharacterPerkOn(xi_refCharacter,"Ciras") && arItem.Clothes == false)
-	    {	
-		    return false;
-	    }*/
-		//Jason: под водой ничего нельзя одевать
+	{ 
+		 
+		
 		if (xi_refCharacter.location == "underwater")
 	    {
 		    return false;
 	    }
-		//Jason: запрет одевания кирасы
+		
 		if (arItem.groupID == CIRASS_ITEM_TYPE && CheckAttribute(xi_refCharacter, "GenQuest.CirassExchangeDisable"))
 	    {
 		    return false;
@@ -741,21 +722,21 @@ void EquipPress()
 		string itmGroup = itmRef.groupID;
 		if (itmGroup == MAPS_ITEM_TYPE)
 		{
-			// Warship. Отличная карта, у нее отдельный интерфейс
+			
 			if(itmRef.ID == "Map_Best")
 			{
-				PChar.ShowBestMap = true; // Флаг, что смотрим из интерфейса придметов
+				PChar.ShowBestMap = true; 
 				IDoExit(RC_INTERFACE_BEST_MAP);
 				return;
 			}
-			// Ugeen --> интерфейс атласа карт
-			if(itmRef.ID == "MapsAtlas") // взяли атлас карт
+			
+			if(itmRef.ID == "MapsAtlas") 
 			{
-				PChar.ShowMapsAtlas = true; // Флаг, что смотрим из интерфейса предметов
+				PChar.ShowMapsAtlas = true; 
 				IDoExit(RC_INTERFACE_MAPVIEW);
 				return;
 			}
-			// Ugeen --> специальная квестовая карта
+			
 			if(itmRef.id == "mapQuest")
 			{
 				totalInfo = GenQuest_GetQuestTreasureMapDescription(itmRef);
@@ -765,7 +746,7 @@ void EquipPress()
 				ShowMapWindow();
 				return;
 			}
-			// Addon 2016-1 Jason пиратская линейка
+			
 			if(itmRef.id == "mapEnrico")
 			{
 				totalInfo = "Go west from Laguna de Caratasca. Keep to the right side of the road. Get through a logjam. The path will lead you to the ruins of old town, destroyed by an earthquake 20 years ago. Find treasures in the dungeons below abandoned mines.";
@@ -776,7 +757,7 @@ void EquipPress()
 				return;
 			}
             if (itmRef.id == "map_full" || itmRef.id == "map_part1" || itmRef.id == "map_part2")
-            {// клады
+            {
             	SetNewPicture("MAP_PICTURE", "interfaces\Maps\treasure map2.tga");
             	if (GetCharacterItem(pchar, "map_part1")>0  && GetCharacterItem(pchar, "map_part2")>0)
 			    {
@@ -784,12 +765,12 @@ void EquipPress()
 			        TakeNItems(xi_refCharacter, "map_part2", -1);
 			        TakeNItems(pchar, "map_full",   1);
 			        itmRef = &Items[Items_FindItem("map_full", &itmRef)];
-			        // здесь генерация назначение и типа клада
+			        
 			        pchar.GenQuest.TreasureBuild = true;
 			        FillMapForTreasure(itmRef);
 			        SetVariable();
 			    }
-			    // тут применяем логику двух кусков, из них одна карта <--
+			    
 			    if (itmRef.mapType == "Full")
 			    {
 		            if (sti(itmRef.MapTypeIdx) == -1)
@@ -802,10 +783,10 @@ void EquipPress()
 				    {
 				        if (!CheckAttribute(itmRef, "MapIslId"))
 				        {
-				            FillMapForTreasure(itmRef); //заполним если смотрим карту из сундука
+				            FillMapForTreasure(itmRef); 
 				        }
-                        //totalInfo = GetConvertStr(itmRef.MapIslId, "LocLables.txt");
-                        i = FindLocation(itmRef.MapLocId);  // ищем ареал
+                        
+                        i = FindLocation(itmRef.MapLocId);  
 						if (i != -1 && locations[i].islandId != "Mein")
                         {
                             totalInfo = GetConvertStr(locations[i].islandId, "LocLables.txt");
@@ -839,10 +820,10 @@ void EquipPress()
 		}
 		else
 		{ 
-			if (itmGroup == SPECIAL_ITEM_TYPE) // Jason, спецпредметы
+			if (itmGroup == SPECIAL_ITEM_TYPE) 
 			{
-				if (itmRef.id == "Ultimate_potion") UltimatePotionEffect(); // зелье команчей
-				if (itmRef.id == "berserker_potion") // зелье берсеркера
+				if (itmRef.id == "Ultimate_potion") UltimatePotionEffect(); 
+				if (itmRef.id == "berserker_potion") 
 				{
 					if (GetCharacterPerkUsing(pchar, "Rush"))
 					{
@@ -851,7 +832,7 @@ void EquipPress()
 					}
 					else PlaySound("interface\knock.wav");
 				}
-				if (itmRef.id == "potion7") // слезы Иш-Чель
+				if (itmRef.id == "potion7") 
 				{
 					Log_Info("An Indian healing potion was used");
 					PlaySound("Ambient\Tavern\glotok_001.wav");
@@ -859,11 +840,11 @@ void EquipPress()
 					AddCharacterMaxHealth(pchar, 4);
 					RemoveItems(pchar, "potion7", 1);
 				}
-				// мангароса
-				if (itmRef.id == "mangarosapower") 	MangarosaEffect("power"); 	// зелье силы
-				if (itmRef.id == "mangarosafast") 	MangarosaEffect("fast"); 	// зелье реакции
-				if (itmRef.id == "mangarosatotal") 	MangarosaEffect("total"); 	// комплексное зелье
-				// калеуче
+				
+				if (itmRef.id == "mangarosapower") 	MangarosaEffect("power"); 	
+				if (itmRef.id == "mangarosafast") 	MangarosaEffect("fast"); 	
+				if (itmRef.id == "mangarosatotal") 	MangarosaEffect("total"); 	
+				
 				if (findsubstr(itmRef.id, "kaleuche_amulet", 0) != -1)
 				{
 					Log_Info("A powerful potion was used");
@@ -872,9 +853,9 @@ void EquipPress()
 					RemoveItems(pchar, itmRef.id, 1);
 					Caleuche_MangarosaPotionEffect(itmRef.id); 	
 				}
-				// калеуче - ящик Мерримана
+				
 				if (itmRef.id == "MerrimanBook") Caleuche_MerrimanBoxOpen();
-				if (findsubstr(itmRef.id, "recipe_" , 0) != -1) // рецепты
+				if (findsubstr(itmRef.id, "recipe_" , 0) != -1) 
 				{
 					if (isMultiObjectKnown(itmRef.result))
 					{
@@ -888,25 +869,25 @@ void EquipPress()
 						SetAlchemyRecipeKnown(itmRef.result);
 					}
 				}
-				if (findsubstr(itmRef.id, "purse" , 0) != -1) // кошельки
+				if (findsubstr(itmRef.id, "purse" , 0) != -1) 
 				{
 					RemoveItems(pchar, itmRef.id, 1);
 					TakeNItems(pchar, itmRef.result, sti(itmRef.result.qty));
 					PlaySound("Ambient\Tavern\monetki_taverna_001.wav");
 					log_info("You have acquired "+sti(itmRef.result.qty)+XI_ConvertString("dublon4")+"");
 				}
-				if (itmRef.id == "RingCapBook") // СЖ пинаса 'Санта-Люсия' и дневник Колхауна
+				if (itmRef.id == "RingCapBook") 
 				{
 					RemoveItems(pchar, itmRef.id, 1);
 					AddQuestRecordInfo("RingCapBook", "1");
 					pchar.questTemp.LSC.Ring.ReadCapBook = "true";
 				}
-				if (itmRef.id == "ArchyBook") // // Jason 070712 дневник Колхауна
+				if (itmRef.id == "ArchyBook") 
 				{
 					RemoveItems(pchar, itmRef.id, 1); 
-					GuardOT_ReadArchyBook(); // Jason 050712
+					GuardOT_ReadArchyBook(); 
 				}
-				if (itmRef.id == "specialletter") // спецписьмо
+				if (itmRef.id == "specialletter") 
 				{
 					RemoveItems(pchar, itmRef.id, 1);
 					AddQuestRecordInfo(itmRef.text, "1");
@@ -916,7 +897,7 @@ void EquipPress()
 					if (pchar.GenQuest.specialletter.read == "Letter_Vincento_last") Ksochitam_VinsentoLastLetterRead();
 					if (pchar.GenQuest.specialletter.read == "Letter_Dichoso") Tieyasal_DichosoLetterRead();
 				}
-				if (itmRef.id == "skinmap") // // Jason 120712 карта двух появлений
+				if (itmRef.id == "skinmap") 
 				{
 					int mark = sti(itmRef.mark);
 					SetNewPicture("MAP_PICTURE", "interfaces\Maps\skinmap_"+mark+".tga");
@@ -928,20 +909,20 @@ void EquipPress()
 					}
 					return;
 				}
-				if (itmRef.id == "mark_map") // // Jason 130712 карта с пометками
+				if (itmRef.id == "mark_map") 
 				{
 					mark = sti(itmRef.mark);
 					SetNewPicture("MAP_PICTURE", "interfaces\Maps\map_TM_"+mark+".tga");
 					ShowMapWindow();
 					return;
 				}
-				if (itmRef.id == "SQCapBook") // // Jason 240712 СЖ капитана Санта-Квитерии
+				if (itmRef.id == "SQCapBook") 
 				{
 					RemoveItems(pchar, itmRef.id, 1); 
 					AddQuestRecordInfo("SQCapBook", "1");
 					pchar.questTemp.Ksochitam.SQCapBookRead = "true";
 				}
-				if (itmRef.id == "wolfreeks_book") Mtraxx_WolfreekReadLogbook(); // // Addon 2016-1 Jason Пиратская линейка журнал Вульфрика
+				if (itmRef.id == "wolfreeks_book") Mtraxx_WolfreekReadLogbook(); 
 				SetVariable();
 				return;
 			}
@@ -950,24 +931,24 @@ void EquipPress()
 				bool bCanmakeMushketer = (IsMainCharacter(xi_refCharacter)) || (CheckAttribute(xi_refCharacter, "CanTakeMushket"))
 				if(HasSubStr(itmRef.id, "Mushket") && bCanmakeMushketer)
 				{
-					if (IsMainCharacter(xi_refCharacter)) // ГГ
+					if (IsMainCharacter(xi_refCharacter)) 
 				{
-					if(!CheckAttribute(PChar, "IsMushketer")) // Не мушкетер. Делаем мушкетером
+					if(!CheckAttribute(PChar, "IsMushketer")) 
 					{
 						SetMainCharacterToMushketer(itmRef.id, true);
 					}
-					else // Мушкетер. Делаем обычным фехтовальщиком
+					else 
 					{
 						SetMainCharacterToMushketer("", false);
 					}
 				}
 				else
 				{
-						if(!CheckAttribute(xi_refCharacter, "IsMushketer")) // Не мушкетер. Делаем мушкетером
+						if(!CheckAttribute(xi_refCharacter, "IsMushketer")) 
 						{
 							SetOfficerToMushketer(xi_refCharacter, itmRef.id, true);
 						}
-						else // Мушкетер. Делаем обычным фехтовальщиком
+						else 
 						{
 							SetOfficerToMushketer(xi_refCharacter, itmRef.id, false);
 						}
@@ -987,7 +968,7 @@ void EquipPress()
 						{
 							EquipCharacterByArtefact(xi_refCharacter, itmRef.id);
 						}
-						if (itmRef.id == "indian_poison") // ugeen 2016
+						if (itmRef.id == "indian_poison") 
 						{
 							Achievment_SetStat(xi_refCharacter, 71, 1);
 						}

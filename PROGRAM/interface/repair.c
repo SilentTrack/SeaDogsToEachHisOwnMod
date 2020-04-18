@@ -350,23 +350,23 @@ void GetLimits(ref chr)
 	int mp = GetShipMastsQuantity(chr));
 	int mf = GetShipFallMastsQuantity(chr);
 	
-	// hull
+	
 	i = cur_pAvail / GetHullRepairMathQty(chr, 1);
 	if(i + hp >= 100) 						chr.repair.hull_limit = 100;
 	else 									chr.repair.hull_limit = i + hp;	
 	
-	// sail
+	
 	i = cur_sAvail / GetSailRepairMathQty(chr, 1);
 	if(i + sp >= sti(chr.repair.sailmax)) 	chr.repair.sail_limit = sti(chr.repair.sailmax);
 	else 									chr.repair.sail_limit = i + sp;	
 		
-	// mast
+	
 	float 	repHMathQ, repSMathQ;
 	repHMathQ = makeint(GetMastRepairMathQtyPPP(chr, mf));
 	repSMathQ = makeint(GetMastRepairMathQtySPP(chr, mf, 100 - sti(chr.repair.sailmax)));
 	if(cur_sAvail >= repSMathQ && cur_pAvail >= repHMathQ)
 	{
-		chr.repair.mast_limit = mp + "/" + mp; // :)
+		chr.repair.mast_limit = mp + "/" + mp; 
 	}
 }
 
@@ -679,7 +679,7 @@ void RepairOk()
 	{
 		mc.quest.waithours = ret;
 	}	
-	Achievment_SetStat(mc, 64, 1); // ugeen 2016
+	Achievment_SetStat(mc, 64, 1); 
 }
 
 void RepairAll()
@@ -719,4 +719,5 @@ void RepairAllSquadron()
 		}
 	}	
 }
+
 

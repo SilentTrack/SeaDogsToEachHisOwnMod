@@ -1,4 +1,4 @@
-#include "DIALOGS\russian\Rumours\Common_rumours.c" //Jason
+#include "DIALOGS\russian\Rumours\Common_rumours.c" 
 void ProcessDialogEvent()
 {
  	ref NPChar;
@@ -10,21 +10,21 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 	
-	// вызов диалога по городам -->
+	
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\ItemTrader\" + NPChar.City + "_ItemTrader.c";
     if (LoadSegment(NPChar.FileDialog2))
 	{
         ProcessCommonDialog(NPChar, Link, NextDiag);
 		UnloadSegment(NPChar.FileDialog2);
 	}
-    // вызов диалога по городам <--
+    
 	ProcessCommonDialogRumors(NPChar, Link, NextDiag);
-// ============================================================================
-// ============================= блок angry ==========>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
     if (CheckAttribute(npchar, "angry") && !CheckAttribute(npchar, "angry.ok"))
     {
         npchar.angry.ok = 1;
-        if (!CheckAttribute(npchar, "angry.first")) //ловушка первого срабатывания
+        if (!CheckAttribute(npchar, "angry.first")) 
         {
             NextDiag.TempNode = NextDiag.CurrentNode;
             Dialog.CurrentNode = "AngryExitAgain";
@@ -35,11 +35,11 @@ void ProcessDialogEvent()
 			
         }
     }
-// <<<<<<<<<<<<<<<<<<<<<<======= блок angry ===================================
-// ============================================================================	   
+
+
 	switch(Dialog.CurrentNode)
 	{
-		// -----------------------------------Диалог первый - первая встреча
+		
   		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
@@ -66,7 +66,7 @@ void ProcessDialogEvent()
 			link.l3 = "Thank you, not interested.";
 			link.l3.go = "exit";
 
-			//Jason --> мини-квест Дефицитный товар
+			
 			if (CheckAttribute(pchar, "questTemp.Wine.bottle") && NPChar.location == pchar.questTemp.Wine.City + "_town" && !CheckAttribute(pchar, "questTemp.Wine.fail"))
 			{
    				link.l4 = "Say, can you sell me a bottle of fine European wine?";
@@ -82,15 +82,15 @@ void ProcessDialogEvent()
    				link.l4 = "That's me again. What does it all mean, huh?";
 				link.l4.go = "Wine_Repeat1";
 			}
-			// <-- мини-квест Дефицитный товар
 			
-			//Jason --> генератор Неудачливый вор
+			
+			
 			if (CheckAttribute(pchar, "GenQuest.Device.Shipyarder") && NPChar.location == pchar.GenQuest.Device.Shipyarder.City + "_town" && pchar.GenQuest.Device.Shipyarder == "begin" && !CheckAttribute(npchar, "quest.Device"))
 			{
    				link.l5 = "Listen, you're dealing in all sorts of goods... Yesterday or today - did anyone offer you to buy "+pchar.GenQuest.Device.Shipyarder.Type+"?";
 				link.l5.go = "Device_ItemTrader";
 			}
-			//<-- генератор Неудачливый вор
+			
 
 			NextDiag.TempNode = "First time";
 		break;
@@ -106,7 +106,7 @@ void ProcessDialogEvent()
 			LaunchItemsTrade(npchar, 0);
 		break;
 		
-		//Jason --> мини-квест Дефицитный товар
+		
 		case "Wine_ItemTrader":
 			dialog.text = "Sure. Seven hundred pesos per bottle.";
 			if (makeint(Pchar.money) >= 700)
@@ -223,9 +223,9 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			AddQuestRecord("Wine", "7");
 		break;
-		// <-- мини-квест Дефицитный товар
 		
-		//Jason --> генератор Неудачливый вор
+		
+		
 		case "Device_ItemTrader":
 			dialog.text = "Hmm, "+pchar.GenQuest.Device.Shipyarder.Type+"? Never heard of it before... Just what is it, actually? I've never heard about such a thing in all my time"+ NPCharSexPhrase(npchar, "","") +".";
 			link.l1 = "Well, it's a shipwright's tool, "+pchar.GenQuest.Device.Shipyarder.Describe+". Was anyone offering to you something like that?";
@@ -247,11 +247,11 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 			}
 		break;
-		// <-- генератор Неудачливый вор
 		
-		// Мангароса
+		
+		
 		case "mangarosa":
-			// тут работает везение
+			
 			if (sti(pchar.questTemp.Mangarosa.m_count) == 5 || GetSummonSkillFromName(pchar, SKILL_FORTUNE) > 10+drand(30)+drand(40))
 			{
 				dialog.text = "Show it to me... Yes, that's an interesting plant. And a very, very rare one, too. It is called mangarosa. I don't know what it is used for, but there was an interesting fact relevant to it...";
@@ -286,14 +286,15 @@ void ProcessDialogEvent()
 			AddQuestRecord("Mangarosa", "2");
 		break;
 		
-// ======================== блок нод angry ===============>>>>>>>>>>>>>>>
 
-////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 		case "AngryExitAgain":
             DialogExit();
             DeleteAttribute(npchar, "angry.ok")
 		break;
 
-// <<<<<<<<<<<<============= блок нод angry =============================
+
 	}
 }
+

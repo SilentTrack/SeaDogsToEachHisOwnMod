@@ -23,25 +23,17 @@ bool CheckCharacterPerk(ref chref, string perkName)
 bool SetCharacterPerk(ref chref, string perkName)
 {
 	chref.perks.list.(perkName) = true;
-	// разовые применения при назначении -->
+	
 	switch (perkName)
 	{
-		/*case "HPPlus":
-			LAi_SetHP(chref, LAi_GetCharacterHP(chref) + 20, LAi_GetCharacterMaxHP(chref) + 20);
-			return true; // нужен рефрешь	
-		break;
-		
-		case "EnergyPlus":
-			SetEnergyToCharacter(chref);
-			return true; // нужен рефрешь		
-		break; */
+		 
 		
 		case "Grus":
-			return true; // нужен рефрешь
+			return true; 
 		break;
 	}
-	// разовые применения при назначении <--
-	return false; // нужен рефрешь
+	
+	return false; 
 }
 
 void ActivateCharacterPerk(ref chref, string perkName)
@@ -63,8 +55,8 @@ void ActivateCharacterPerk(ref chref, string perkName)
 	{	timeDelay = sti(ChrPerksList.list.(perkName).TimeDelay);
 		if(timeDuration<=0)	{timeDuration=timeDelay;}
 	}
-    // boal fix
-    // иначе после применения давался ГГ
+    
+    
 	
     int cn;
     if (!CheckCharacterPerk(chref, perkName))
@@ -74,38 +66,38 @@ void ActivateCharacterPerk(ref chref, string perkName)
         if (cn != -1)
         chref = GetCharacter(cn);
     }
-    // <--
+    
 	chref.perks.list.(perkName).delay = timeDelay;
 	chref.perks.list.(perkName).active = timeDuration;
 
-	//if(sti(chref.index) == nMainCharacterIndex)
-	if (sti(chref.index) == nMainCharacterIndex || isOfficerInShip(chref, false)) // наследие перка от офа boal 30.06.06
+	
+	if (sti(chref.index) == nMainCharacterIndex || isOfficerInShip(chref, false)) 
 	{
 		AddPerkToActiveList(perkName);
 	}
 
 	if(timeDelay>0) PostEvent("evntChrPerkDelay",1000,"sl",perkName,sti(chref.index));
 	Event("eSwitchPerks","l",sti(chref.index));
-	// fix boal всегда для ГГ
+	
 	Event("eSwitchPerks","l", GetMainCharacterIndex());
 }
 
 bool GetCharacterPerkUsing(ref chref, string perkName)
-{   // можно ли пользовать умение (задержки нет)
+{   
 	if( !CheckAttribute(chref,"perks.list."+perkName) ) return false;
 	if( CheckAttribute(chref,"perks.list."+perkName+".delay") ) return false;
 	return true;
 }
 
 bool GetOfficersPerkUsing(ref chref, string perkName)
-{ // boal препишем внутрянку под новых офов, че в к3 не было? не ведаю.
+{ 
 	string  sOfficerType;	
 	ref   offc;	   
-	bool  ok = false; // boal fix 25.03.05 проверка на запрет
+	bool  ok = false; 
 	bool  okDelay = true;
 	int   cn;
-	if (GetCharacterPerkUsing(chref, perkName)) {return true;} // босс отдельно
-	if (!CheckAttribute(chref,"perks.list."+perkName))  // у гг нет перка вообще, тогда смотрим офов, иначе выход
+	if (GetCharacterPerkUsing(chref, perkName)) {return true;} 
+	if (!CheckAttribute(chref,"perks.list."+perkName))  
 	{
 		for(int i=1; i<=6; i++)
 		{
@@ -117,19 +109,19 @@ bool GetOfficersPerkUsing(ref chref, string perkName)
 				offc = &Characters[cn];
 				if (CheckAttribute(offc, "perks.list."+perkName) )          ok = true;
 				if (CheckAttribute(offc, "perks.list."+perkName+".delay") ) okDelay = false;
-				//if (GetCharacterPerkUsing(chref, perkName) return true;
+				
 			}
 		}
 	}
 	return (ok) && (okDelay);
 }
 
-// boal
+
 int GetOfficersPerkUsingIdx(ref chref, string perkName)
 {
 	string  sOfficerType;
 	int     cn;
-	if (GetCharacterPerkUsing(chref, perkName)) {return sti(chref.index);} // босс отдельно
+	if (GetCharacterPerkUsing(chref, perkName)) {return sti(chref.index);} 
 	for(int i=1; i<=6; i++)
 	{
 		sOfficerType = GetOfficerTypeByNum(i);
@@ -159,24 +151,24 @@ void CharacterPerkOff(ref chref, string perkName)
 {
 	if (perkName == "Turn180")
 	{
-		chref.Tmp.SpeedRecall = 0; // чтоб маневр применить
+		chref.Tmp.SpeedRecall = 0; 
 	}
 	DeleteAttribute(chref,"perks.list."+perkName+".active");
 	Event("eSwitchPerks","l",sti(chref.index));	 
-	// fix boal всегда для ГГ
+	
 	Event("eSwitchPerks","l", GetMainCharacterIndex());
-	if (sti(chref.index) == nMainCharacterIndex || isOfficerInShip(chref, false)) // наследие перка от офа boal 30.06.06
+	if (sti(chref.index) == nMainCharacterIndex || isOfficerInShip(chref, false)) 
 	{
 		DelPerkFromActiveList(perkName);
 	}
 }
 
 bool CheckOfficersPerk(ref chref, string perkName)
-{ // активность перка в данный момент, для временных - режим активности, а не задержки
+{ 
 	bool ret = CheckOfficersPerkWOSelf(chref, perkName);
 
 	if (ret) return true;
-	// самого НПС
+	
 	if(IsCharacterPerkOn(chref,perkName) == true)
 	{
 		return true;
@@ -192,7 +184,7 @@ bool CheckOfficersPerkWOSelf(ref chref, string perkName)
 	{
 		if (CheckAttribute(&ChrPerksList, "list." + perkName))
 		{
-			// boal новая схема наследования. switch не наш метод
+			
 			if (CheckAttribute(&ChrPerksList, "list." + perkName + ".OfficerType"))
 			{
 				sOfficerType = ChrPerksList.list.(perkName).OfficerType;
@@ -210,7 +202,7 @@ bool CheckOfficersPerkWOSelf(ref chref, string perkName)
 	}
 	return false;
 }
-// нигде не юзан
+
 bool CheckCompanionsPerk(ref chref, string perkName)
 {
 	int i,cn;
@@ -221,7 +213,7 @@ bool CheckCompanionsPerk(ref chref, string perkName)
 		{	if( IsCharacterPerkOn(GetCharacter(cn),perkName) )	{return true;}
 		}
 	}
-	return false; // fix by boal
+	return false; 
 }
 
 void procChrPerkDelay()
@@ -233,7 +225,7 @@ void procChrPerkDelay()
 	makearef(arPerk,Characters[chrIdx].perks.list.(perkName));
 	if( !CheckAttribute(arPerk,"delay") ) return;
 	int delay = sti(arPerk.delay);
- 	// фикс в каюте, палубе, абордаже
+ 	
  	bool ok;
  	ok = (!bAbordageStarted) && (!bSeaReloadStarted);
  	if (ok || perkName == "Rush")
@@ -265,8 +257,8 @@ void procChrPerkDelay()
 
 void EnableUsingAbility(ref chref,string perkName)
 {
-    // boal fix
-    // иначе после применения давался ГГ
+    
+    
 	int cn;
     if (!CheckCharacterPerk(chref, perkName))
     {
@@ -275,14 +267,14 @@ void EnableUsingAbility(ref chref,string perkName)
         if (cn != -1)
         chref = GetCharacter(cn);
     }
-    // <--
+    
     
 	Event("evntChrPerkDelay","sl",perkName, sti(chref.index));
 }
 
 void PerkLoad()
 {
-//	int iRDTSC = RDTSC_B();
+
 	string locName = pchar.location;
 	aref arPerksRoot,arPerk;
 	int i,j,n,tmpi;
@@ -308,19 +300,19 @@ void PerkLoad()
 		}
 	}
 
-//	trace("TIME!!! PerkLoad() = " + RDTSC_E(iRDTSC));
+
 }
-// boal под новые слоты -->
+
 void ClearActiveChrPerks(ref chref)
 {
 	int i,cn;
-    ref offc; // boal
+    ref offc; 
     string  sOfficerType;	
     
     if (bAbordageStarted || bSeaReloadStarted) return; 
 	
-	ClearActive(chref); // босс отдельно
-	if (CheckAttribute(chref, "Fellows.Passengers")) // не у всех есть
+	ClearActive(chref); 
+	if (CheckAttribute(chref, "Fellows.Passengers")) 
 	{
 		for (i=1; i<=6; i++)
 		{
@@ -355,7 +347,7 @@ void ClearActive(ref offic)
 		}
 	}
 }
-// был баг К3, этот перк не работал вовсе
+
 void AcceptWindCatcherPerk(ref refCharacter)
 {
     int  nShipType;
@@ -372,21 +364,21 @@ void AcceptWindCatcherPerk(ref refCharacter)
 		refRealShip.InertiaAccelerationX	= stf(refBaseShip.InertiaAccelerationX) + stf(refBaseShip.InertiaAccelerationX) / 10.0;
 		refRealShip.InertiaAccelerationY	= stf(refBaseShip.InertiaAccelerationY) + stf(refBaseShip.InertiaAccelerationY) / 10.0;
 		refRealShip.InertiaAccelerationZ	= stf(refBaseShip.InertiaAccelerationZ) + stf(refBaseShip.InertiaAccelerationZ) / 10.0;
-		// потмоу что перк помогает только быстрее набирать скорость, нет торможения
+		
 	}
 	else
-	{   // вернем, если перк снят
+	{   
 	    refRealShip.InertiaAccelerationX	= stf(refBaseShip.InertiaAccelerationX);
 		refRealShip.InertiaAccelerationY	= stf(refBaseShip.InertiaAccelerationY);
 		refRealShip.InertiaAccelerationZ	= stf(refBaseShip.InertiaAccelerationZ);
 	}
-	if (iArcadeSails == 0) // момент инерции ниже для тактики
+	if (iArcadeSails == 0) 
 	{
 	    refRealShip.InertiaAccelerationY = stf(refRealShip.InertiaAccelerationY) / 2.0;
 	}
 }
 
-// Jason: зелье берсеркера
+
 void PerkBerserkerReaction()
 {
 	RemoveItems(pchar, "berserker_potion", 1);

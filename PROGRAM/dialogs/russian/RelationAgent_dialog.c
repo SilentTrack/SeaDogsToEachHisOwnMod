@@ -27,29 +27,29 @@ void ProcessDialogEvent()
     if (findsubstr(attrLoc, "SetNationPatent_" , 0) != -1)
  	{
         i = findsubstr(attrLoc, "_" , 0);
-	 	NPChar.nation = strcut(attrLoc, i+1, strlen(attrLoc)-1); // индех в конце
+	 	NPChar.nation = strcut(attrLoc, i+1, strlen(attrLoc)-1); 
  	    Dialog.CurrentNode = "patent_2";
  	}
  	
  	if (findsubstr(attrLoc, "SetNationLicence_" , 0) != -1)
  	{
         i = findsubstr(attrLoc, "_" , 0);
-	 	NPChar.LicenceNation = strcut(attrLoc, i+1, strlen(attrLoc)-1); // индех в конце
+	 	NPChar.LicenceNation = strcut(attrLoc, i+1, strlen(attrLoc)-1); 
  	    Dialog.CurrentNode = "NationLicenceType";
  	}
 
  	if (findsubstr(attrLoc, "NationLicenceType_" , 0) != -1)
  	{
         i = findsubstr(attrLoc, "_" , 0);
-	 	NPChar.LicenceType = strcut(attrLoc, i+1, strlen(attrLoc)-1); // индех в конце
+	 	NPChar.LicenceType = strcut(attrLoc, i+1, strlen(attrLoc)-1); 
  	    Dialog.CurrentNode = "NationLicenceType2";
  	}
  	
  	if (findsubstr(attrLoc, "RelationTo_" , 0) != -1)
  	{
         i = findsubstr(attrLoc, "_" , 0);
-        npchar.quest.relation      = strcut(attrLoc, i+1, strlen(attrLoc)-1); // индех в конце
-		// проверка на уже договор
+        npchar.quest.relation      = strcut(attrLoc, i+1, strlen(attrLoc)-1); 
+		
 		attrLoc = "RelationAgent" + GetNationNameByType(sti(npchar.quest.relation));
 		if (CheckAttribute(Pchar, "GenQuest." + attrLoc) && sti(Pchar.GenQuest.(attrLoc)) == true)
 		{
@@ -65,7 +65,7 @@ void ProcessDialogEvent()
  	if (findsubstr(attrLoc, "CityPay_" , 0) != -1)
  	{
         i = findsubstr(attrLoc, "_" , 0);
-	 	NPChar.quest.CityIdx = strcut(attrLoc, i+1, strlen(attrLoc)-1); // индех в конце
+	 	NPChar.quest.CityIdx = strcut(attrLoc, i+1, strlen(attrLoc)-1); 
  	    Dialog.CurrentNode = "CityInfo";
  	}
  	
@@ -83,7 +83,7 @@ void ProcessDialogEvent()
 			link.l2 = "I should go.";
 			link.l2.go = "exit";
 
-			// генератор  "Найденные документы"
+			
 			if ((pchar.questTemp.different == "GiveShipLetters") && !CheckAttribute(pchar, "questTemp.different.GiveShipLetters.speakAgent"))			
 			{
 				link.l4 = "I want to offer you a deal."
@@ -104,7 +104,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 
-		//*************************** Генератор - "You've found shipping papers." **************		
+		
 		case "D_ShipLetters_1":
 			dialog.text = "What are your terms?";
 			s1 = "Luckily I've found an absolute legit package of the shipping papers. There are not wanted yet.";
@@ -126,7 +126,7 @@ void ProcessDialogEvent()
 			addMoneyToCharacter(pchar, sti(pchar.questTemp.different.GiveShipLetters.price5)); 
 			OfficersReaction("bad"); 
 			pchar.questTemp.different = "free";
-			pchar.quest.GiveShipLetters_null.over = "yes"; //снимаем таймер 
+			pchar.quest.GiveShipLetters_null.over = "yes"; 
 			AddQuestRecord("GiveShipLetters", "9");			
 			CloseQuestHeader("GiveShipLetters");
 			DeleteAttribute(pchar, "questTemp.different.GiveShipLetters");
@@ -238,7 +238,7 @@ void ProcessDialogEvent()
 		
         case "patent_0":
 			dialog.text = "Splendid. First of all you've got to prove your loyalty to the nation" + 
-                          " by an excellent serving for it. Go to any governor" + //NationNameGenitive(sti(NPChar.nation)) +
+                          " by an excellent serving for it. Go to any governor" + 
                           " and complete few of his missions. Then he will grant you a license.";
 			link.l1 = "Tell me, "+GetAddress_FormToNPC(NPChar) + ", can I get around this boring formality?";
 			link.l1.go = "patent_1";
@@ -294,12 +294,12 @@ void ProcessDialogEvent()
 		break;
 		
 		case "patent_2":
-            //pchar.PatentPrice = 8000 + (sti(NPChar.PatentPrice) * sti(pchar.rank));
+            
 			pchar.PatentPrice = 350000 - GetSummonSkillFromName(pchar, SKILL_LEADERSHIP) * 100 + (5000 + rand(1000)) * sti(pchar.rank) * MOD_SKILL_ENEMY_RATE;
             switch (sti(NPChar.nation))
             {
 			    case PIRATE :
-                    dialog.text = "Явный баг, если видите - сообщите ALexusB";
+                    dialog.text = "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ALexusB";
                     link.l1 = "Looks fine for me. I agree with you terms!";
                     break;
                 case HOLLAND :
@@ -364,7 +364,7 @@ void ProcessDialogEvent()
 			ChangeContrabandRelation(pchar, 25);
 			AddMoneyToCharacter(pchar, -sti(Pchar.questTemp.Relations.sum));
 		break;
-        // boal <--
+        
 		case "RelationAny_Done":
 			iSumm = sti(npchar.quest.relation.summ);
 			dialog.text = "Hm... I don't even know what to say. Sure I can fulfill your ask for making peace with "+ XI_ConvertString(Nations[sti(npchar.quest.relation)].Name + "Abl") +", it will be cost " + FindRussianMoneyString(iSumm) + ".";
@@ -434,4 +434,5 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+
 

@@ -1,6 +1,6 @@
 
 
-//#event_handler("Event_ChrSnd_Body", "LAi_ChrSnd_Body");
+
 void LAi_ChrSnd_Body()
 {
 	return;
@@ -26,7 +26,7 @@ void LAi_ChrSnd_Body()
 	}
 }
 
-//#event_handler("Event_ChrSnd_Dead", "LAi_ChrSnd_Dead");
+
 void LAi_ChrSnd_Dead()
 {
 	return;
@@ -53,7 +53,7 @@ void LAi_ChrSnd_Dead()
 	}
 }
 
-//#event_handler("Event_ChrSnd_Attack", "LAi_ChrSnd_Attack");
+
 void LAi_ChrSnd_Attack()
 {
 	return;
@@ -81,7 +81,7 @@ void LAi_ChrSnd_Attack()
 	}
 }
 
-//#event_handler("Event_ChrSnd_Hit", "LAi_ChrSnd_Hit");
+
 void LAi_ChrSnd_Hit()
 {
 	return;
@@ -106,3 +106,4 @@ void LAi_ChrSnd_Hit()
 		}
 	}
 }
+

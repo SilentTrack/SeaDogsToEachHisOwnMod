@@ -1,4 +1,4 @@
-// ������ �� ������ - �������-���������� ����������� �������
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -31,7 +31,7 @@ void ProcessDialogEvent()
 				DeleteAttribute(pchar, "questTemp.Sharlie.LevasserDied");
 				break;
 			}
-			// Jason ���
+			
 			if (GetDLCenabled(DLC_APPID_4) && CheckAttribute(pchar, "questTemp.Guardoftruth") && !CheckAttribute(pchar, "questTemp.Patria"))
 			{
 				if (CheckCharacterItem(pchar, "patent_fra"))
@@ -138,7 +138,7 @@ void ProcessDialogEvent()
 					link.l1.go = "patria_51";
 					break;
 				}
-				if (pchar.questTemp.Patria == "epizode_7_continue" && pchar.model == "Sharle_6" && pchar.location.from_sea == "Charles_town") // add-7
+				if (pchar.questTemp.Patria == "epizode_7_continue" && pchar.model == "Sharle_6" && pchar.location.from_sea == "Charles_town") 
 				{
 					Patria_HunterShipChecker();
 					if (CheckAttribute(pchar, "questTemp.Patria.Hunter.GiveShip"))
@@ -192,7 +192,7 @@ void ProcessDialogEvent()
 				}
 				if (pchar.questTemp.Patria == "epizode_10_return" && pchar.model == "Sharle_6")
 				{
-					if (GetQuestPastDayParam("questTemp.Patria.Curacao.Date") < 30) sTemp = "It will be ready soon"; // � ����������� �� ������� ������� ���������
+					if (GetQuestPastDayParam("questTemp.Patria.Curacao.Date") < 30) sTemp = "It will be ready soon"; 
 					else sTemp = "It is ready";
 					dialog.text = "Have you been successful in your endeavours? Was colonel Doily satisfied?";
 					link.l1 = "Everything went great, Chevalier. The Stuyvesant's caravan was captured, the slaves brought to Jamaica, the squadron of the colonel "+sTemp+" until the march on Curacao.";
@@ -259,7 +259,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// � ������ ��� ������ ����
+		
 		case "Puancie_Jail":
 			dialog.text = "Good day to you, Charles. Let me introduce myself I am Philippe de Poincy and I...";
 			link.l1 = "Why the hell have you put me in prison? It's inappropriate! I am the French nobleman and...";
@@ -321,7 +321,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = "First time";
 		break;
 		
-		// ���������� ������
+		
 		case "saga":
 			bDisableFastReload = false;
 			LocatorReloadEnterDisable("Charles_townhall", "reload1_back", false);
@@ -380,7 +380,7 @@ void ProcessDialogEvent()
 		
 		case "saga_5":
 			DialogExit();
-			pchar.questTemp.Saga = "mishelle";//���� - �����
+			pchar.questTemp.Saga = "mishelle";
 			AddQuestRecord("Sharlie", "21");
 			NextDiag.CurrentNode = "First time";
 		break;
@@ -391,7 +391,7 @@ void ProcessDialogEvent()
 			link.l1.go = "serve_1";	
 			Island_SetReloadEnableGlobal("Tortuga", true);
 			CloseQuestHeader("Terrapin");
-			SetFunctionTimerCondition("Terrapin_SetFontene", 0, 0, 5, false); // ������
+			SetFunctionTimerCondition("Terrapin_SetFontene", 0, 0, 5, false); 
 		break;
 		
 		case "serve_1":
@@ -517,7 +517,7 @@ void ProcessDialogEvent()
 			AddCharacterExpToSkill(pchar, "Fortune", 250);
 		break;
 		
-		// Jason ���
+		
 		case "patria":
 			dialog.text = "And this is only the beginning, monseigneur! I am sure that you will go far, with such military talents! And I already have another errand for an excellent naval officer, with whom, I am sure, you will manage just as well. Moreover, it is directly related to your previous mission.";
 			link.l1 = "I'm all ears, monsiuer";
@@ -603,7 +603,7 @@ void ProcessDialogEvent()
 				ChangeCharacterComplexReputation(pchar, "nobility", -5);
 				ChangeCharacterNationReputation(pchar, FRANCE, -5);
 			}
-			pchar.quest.Patria_SanJoseReturnOver.over = "yes"; // ����� ������
+			pchar.quest.Patria_SanJoseReturnOver.over = "yes"; 
 		break;
 		
 		case "patria_8":
@@ -679,9 +679,9 @@ void ProcessDialogEvent()
 			AddQuestRecord("Patria", "9");
 			pchar.questTemp.Patria = "epizode_2";
 			Patria_VisiterBegin();
-			pchar.quest.Patria_SanJoseReturnOver.over = "yes"; // ����� ������
+			pchar.quest.Patria_SanJoseReturnOver.over = "yes"; 
 			ChangeCharacterNationReputation(pchar, FRANCE, 10);
-			ChangeCharacterComplexReputation(pchar, "nobility", 3); // 14-add
+			ChangeCharacterComplexReputation(pchar, "nobility", 3); 
 			ChangeCharacterComplexReputation(pchar, "authority", 3);
 			ChangeCharacterComplexReputation(pchar, "fame", 3);
 		break;
@@ -695,7 +695,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "patria_15":
-			DialogExit(); // ������������ �� ����������
+			DialogExit(); 
 			LAi_SetActorType(pchar);
 			SetMainCharacterIndex(GetCharacterIndex("Noel"));
 			pchar = GetMainCharacter();			
@@ -705,7 +705,7 @@ void ProcessDialogEvent()
 			LAi_SetActorType(sld);
 			LAi_ActorSetSitMode(sld);
 			LAi_ActorDialogDelay(sld, pchar, "", 1.2);
-			bDisableCharacterMenu = true;//������� ����������
+			bDisableCharacterMenu = true;
 		break;
 		
 		case "patria_16":
@@ -752,11 +752,11 @@ void ProcessDialogEvent()
 		
 		case "patria_23":
 			DialogExit();
-			LAi_SetActorType(pchar); // 17-add
+			LAi_SetActorType(pchar); 
 			SetMainCharacterIndex(GetCharacterIndex("Blaze"));
 			pchar = GetMainCharacter();			
 			LAi_SetPlayerType(pchar);
-			bDisableCharacterMenu = false;//������� ����������
+			bDisableCharacterMenu = false;
 			sld = characterFromId("Puancie");
 			sld.dialog.currentnode = "patria_24";
 			LAi_SetActorType(sld);
@@ -791,7 +791,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("Patria", "15");
 			pchar.questTemp.Patria = "epizode_3";
 			Patria_PortPaxBegin();
-			ChangeCharacterComplexReputation(pchar, "nobility", 1); // 14-add
+			ChangeCharacterComplexReputation(pchar, "nobility", 1); 
 			ChangeCharacterComplexReputation(pchar, "authority", 1);
 			ChangeCharacterComplexReputation(pchar, "fame", 1);
 		break;
@@ -811,7 +811,7 @@ void ProcessDialogEvent()
 			RemoveItems(pchar, "patent_fra", 1);
 			ChangeCharacterComplexReputation(pchar, "nobility", -5);
 			ChangeCharacterNationReputation(pchar, FRANCE, -5);
-			pchar.quest.Patria_PortPaxOver.over = "yes"; // ����� ������
+			pchar.quest.Patria_PortPaxOver.over = "yes"; 
 		break;
 		
 		case "patria_26":
@@ -844,11 +844,11 @@ void ProcessDialogEvent()
 			AddQuestRecord("Patria", "20");
 			pchar.questTemp.Patria = "epizode_4";
 			Patria_CureerBegin();
-			pchar.quest.Patria_PortPaxOver.over = "yes"; // ����� ������
+			pchar.quest.Patria_PortPaxOver.over = "yes"; 
 			GiveItem2Character(pchar, "Reserve_item_01");
 			ChangeItemDescribe("Reserve_item_01", "itmdescr_Reserve_item_01_1");
 			ChangeCharacterNationReputation(pchar, FRANCE, 10);
-			ChangeCharacterComplexReputation(pchar, "nobility", 5); // 14-add
+			ChangeCharacterComplexReputation(pchar, "nobility", 5); 
 			ChangeCharacterComplexReputation(pchar, "authority", 5);
 			ChangeCharacterComplexReputation(pchar, "fame", 5);
 		break;
@@ -883,7 +883,7 @@ void ProcessDialogEvent()
 			npchar.dialog.currentnode = "First time";
 			AddQuestRecord("Patria", "25");
 			pchar.questTemp.Patria = "epizode_5";
-			pchar.quest.Patria_CureerBackOver.over = "yes"; // ����� ������
+			pchar.quest.Patria_CureerBackOver.over = "yes"; 
 			Items[sti(pchar.EquipedPatentId)].TitulCur = 4; 
         	Items[sti(pchar.EquipedPatentId)].TitulCurNext = 0;
 			pchar.quest.Patria_SanMartin_wait.win_condition.l1 = "Timer";
@@ -894,16 +894,16 @@ void ProcessDialogEvent()
 			pchar.quest.Patria_SanMartin_wait.win_condition.l2 = "Location_Type";
 			pchar.quest.Patria_SanMartin_wait.win_condition.l2.location_type = "town";
 			pchar.quest.Patria_SanMartin_wait.function = "Patria_SanMartinBaron";
-			pchar.questTemp.Patria.Goods = "true"; // ������-�����
-			bQuestDisableMapEnter = true;//������� �����
+			pchar.questTemp.Patria.Goods = "true"; 
+			bQuestDisableMapEnter = true;
 			pchar.GenQuest.MapClosedNoBattle = true;
-			ChangeCharacterComplexReputation(pchar, "nobility", 1); // 14-add
+			ChangeCharacterComplexReputation(pchar, "nobility", 1); 
 			ChangeCharacterComplexReputation(pchar, "authority", 1);
 			ChangeCharacterComplexReputation(pchar, "fame", 1);
 		break;
 		
 		case "patria_36":
-			DialogExit(); // ������������ �� ����������
+			DialogExit(); 
 			LAi_SetActorType(pchar);
 			SetMainCharacterIndex(GetCharacterIndex("Noel"));
 			pchar = GetMainCharacter();			
@@ -913,7 +913,7 @@ void ProcessDialogEvent()
 			LAi_SetActorType(sld);
 			LAi_ActorSetSitMode(sld);
 			LAi_ActorDialogDelay(sld, pchar, "", 1.2);
-			bDisableCharacterMenu = true;//������� ����������
+			bDisableCharacterMenu = true;
 		break;
 		
 		case "patria_37":
@@ -936,11 +936,11 @@ void ProcessDialogEvent()
 		
 		case "patria_40":
 			DialogExit();
-			LAi_SetActorType(pchar); // 14-add
+			LAi_SetActorType(pchar); 
 			SetMainCharacterIndex(GetCharacterIndex("Blaze"));
 			pchar = GetMainCharacter();			
 			LAi_SetPlayerType(pchar);
-			bDisableCharacterMenu = false;//������� ����������
+			bDisableCharacterMenu = false;
 			sld = characterFromId("Puancie");
 			sld.dialog.currentnode = "patria_41";
 			LAi_SetActorType(sld);
@@ -961,7 +961,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("Patria", "29");
 			pchar.questTemp.Patria = "epizode_6";
 			Patria_DiplomatBegin();
-			ChangeCharacterComplexReputation(pchar, "nobility", 3); // 14-add
+			ChangeCharacterComplexReputation(pchar, "nobility", 3); 
 			ChangeCharacterComplexReputation(pchar, "authority", 3);
 			ChangeCharacterComplexReputation(pchar, "fame", 3);
 		break;
@@ -1015,8 +1015,8 @@ void ProcessDialogEvent()
 			AddQuestRecord("Patria", "33");
 			pchar.questTemp.Patria = "epizode_7";
 			Patria_HunterBegin();
-			pchar.quest.Patria_DiplomatTimeOver.over = "yes"; // ����� ������
-			ChangeCharacterComplexReputation(pchar, "nobility", 1); // 14-add
+			pchar.quest.Patria_DiplomatTimeOver.over = "yes"; 
+			ChangeCharacterComplexReputation(pchar, "nobility", 1); 
 			ChangeCharacterComplexReputation(pchar, "authority", 1);
 			ChangeCharacterComplexReputation(pchar, "fame", 1);
 		break;
@@ -1049,7 +1049,7 @@ void ProcessDialogEvent()
 		
 		case "patria_55":
 			pchar.questTemp.Patria.Hunter = sti(pchar.questTemp.Patria.Hunter)+1;
-			if (sti(pchar.questTemp.Patria.Hunter) > 4) // ��� ������
+			if (sti(pchar.questTemp.Patria.Hunter) > 4) 
 			{
 				dialog.text = "You have completed the task, captain. Thank you for your excellent service! You ought to receive part of the income from selling the trophies - two hundred thousand Peso.";
 				link.l1 = "Glad to hear it, monsieur!";
@@ -1089,10 +1089,10 @@ void ProcessDialogEvent()
 			pchar.quest.Patria_siege_begin.win_condition.l2 = "location";
 			pchar.quest.Patria_siege_begin.win_condition.l2.location = "Charles_town";
 			pchar.quest.Patria_siege_begin.function = "Patria_SiegeBegin";
-			bQuestDisableMapEnter = true;//������� �����
+			bQuestDisableMapEnter = true;
 			pchar.GenQuest.MapClosedNoBattle = true;
 			ChangeCharacterNationReputation(pchar, FRANCE, 15);
-			ChangeCharacterComplexReputation(pchar, "nobility", 5); // 14-add
+			ChangeCharacterComplexReputation(pchar, "nobility", 5); 
 			ChangeCharacterComplexReputation(pchar, "authority", 5);
 			ChangeCharacterComplexReputation(pchar, "fame", 5);
 		break;
@@ -1173,13 +1173,13 @@ void ProcessDialogEvent()
 			pchar.questTemp.Patria = "epizode_8_end";
 			Patria_SiegeEnd();
 			ChangeCharacterNationReputation(pchar, FRANCE, 20);
-			ChangeCharacterComplexReputation(pchar, "nobility", 10); // 14-add
+			ChangeCharacterComplexReputation(pchar, "nobility", 10); 
 			ChangeCharacterComplexReputation(pchar, "authority", 10);
 			ChangeCharacterComplexReputation(pchar, "fame", 10);
 		break;
 		
 		case "patria_69":
-			pchar.quest.Patria_BastionTimeOver.over = "yes"; //����� ������
+			pchar.quest.Patria_BastionTimeOver.over = "yes"; 
 			dialog.text = "We've had a discussion with Colonel Doily and he agreed to help me. England will help us in the war against the Dutch. You and I need to strike back at the English and restore justice - the isle of Sint-Maarten has to be returned to France. I assign this task to the best navy captain - you, Charles de Maure! The enemy hasn't yet recovered from their squadron's defeat, we will attack Philipsburg and take it.\nThe battle will not be easy. First, we need to destroy the fort, then break the garrison's defense...(whispering) You will also need to make a forced march through the jungle to the salt deposit I told you about, and kill the enemies encamped there...";
 			link.l1 = "The task is quite hard, chevalier...";
 			link.l1.go = "patria_70";
@@ -1238,14 +1238,14 @@ void ProcessDialogEvent()
 			AddQuestUserData("Patria", "sText", sTemp);
 			pchar.questTemp.Patria = "epizode_9_continue";
 			SetFunctionTimerCondition("Patria_BastionSturmTimeOver", 0, 0, 62, false);
-			// ������� ����-������� � �����
+			
 			int n = FindIsland("SentMartin");
 			Islands[n].reload.l1.radius = 600.0;
-			LocatorReloadEnterDisable("Marigo_ExitTown", "reload3", false); // ������� ��������� ������
+			LocatorReloadEnterDisable("Marigo_ExitTown", "reload3", false); 
 			sld = CharacterFromID("Marigo Fort Commander");
 			LAi_SetImmortal(sld, false);
 			Character_SetAbordageEnable(sld, true);
-			// ������� ��������� ������� �������
+			
 			pchar.TempPerks.QuestTroopers = true;
 		break;
 		
@@ -1281,7 +1281,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("Patria", "52");
 			Patria_SlaveShipsStart();
 			ChangeCharacterNationReputation(pchar, FRANCE, 15);
-			ChangeCharacterComplexReputation(pchar, "nobility", 10); // 14-add
+			ChangeCharacterComplexReputation(pchar, "nobility", 10); 
 			ChangeCharacterComplexReputation(pchar, "authority", 10);
 			ChangeCharacterComplexReputation(pchar, "fame", 10);
 		break;
@@ -1321,7 +1321,7 @@ void ProcessDialogEvent()
 			sld.dialog.currentnode = "noel_25";
 			LAi_SetActorType(sld);
 			LAi_ActorDialogDelay(sld, pchar, "", 1.5);
-			ChangeCharacterComplexReputation(pchar, "nobility", 2); // 14-add
+			ChangeCharacterComplexReputation(pchar, "nobility", 2); 
 			ChangeCharacterComplexReputation(pchar, "authority", 2);
 			ChangeCharacterComplexReputation(pchar, "fame", 2);
 		break;
@@ -1340,11 +1340,11 @@ void ProcessDialogEvent()
 		
 		case "patria_87":
 			DialogExit();
-			AddQuestRecord("Patria", "65"); // ����� �������� ������-���������-�����
+			AddQuestRecord("Patria", "65"); 
 			pchar.questTemp.Patria = "epizode_12_start";
 			ChangeCharacterNationReputation(pchar, FRANCE, 15);
 			Patria_CondotierStart();
-			ChangeCharacterComplexReputation(pchar, "nobility", 15); // 14-add
+			ChangeCharacterComplexReputation(pchar, "nobility", 15); 
 			ChangeCharacterComplexReputation(pchar, "authority", 15);
 			ChangeCharacterComplexReputation(pchar, "fame", 15);
 		break;
@@ -1479,7 +1479,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "patria_106":
-			ChangeCharacterComplexReputation(pchar, "nobility", 12); // 14-add
+			ChangeCharacterComplexReputation(pchar, "nobility", 12); 
 			ChangeCharacterComplexReputation(pchar, "authority", 12);
 			ChangeCharacterComplexReputation(pchar, "fame", 12);
 			dialog.text = "Yes, my friend. You are now the governor of Sint-Maarten, which you've protected so diligently.";
@@ -1516,8 +1516,8 @@ void ProcessDialogEvent()
 			DialogExit();
 			AddQuestRecord("Patria", "77");
 			CloseQuestHeader("Patria");
-			pchar.questTemp.Patria = "end"; // ����� �������
-			pchar.questTemp.Patria.Governor = "true"; // ����� ����������
+			pchar.questTemp.Patria = "end"; 
+			pchar.questTemp.Patria.Governor = "true"; 
 			AddQuestRecordInfo("Sharlie_Father_1", "1");
 			sld = CharacterFromID(pchar.questTemp.Patria.SpanishID);
 			SetCharacterRemovable(sld, true);
@@ -1575,7 +1575,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			AddQuestRecord("Patria", "78");
 			CloseQuestHeader("Patria");
-			pchar.questTemp.Patria = "end"; // ����� �������
+			pchar.questTemp.Patria = "end"; 
 			AddQuestRecordInfo("Sharlie_Father_1", "1");
 			sld = CharacterFromID(pchar.questTemp.Patria.SpanishID);
 			SetCharacterRemovable(sld, true);
@@ -1597,9 +1597,9 @@ void ProcessDialogEvent()
 			DialogExit();
 			AddQuestRecord("Patria", "87");
 			pchar.questTemp.Patria = "europe";
-			pchar.questTemp.Patria.Governor = "true"; // ����� ����������
+			pchar.questTemp.Patria.Governor = "true"; 
 			AddQuestRecordInfo("Sharlie_Father_1", "1");
-			SetFunctionTimerCondition("Patria_EuropeTime", 0, 0, 7, false); // ������
+			SetFunctionTimerCondition("Patria_EuropeTime", 0, 0, 7, false); 
 		break;
 		
 		case "patria_prison":
@@ -1617,9 +1617,9 @@ void ProcessDialogEvent()
 		case "patria_prison_2":
 			DialogExit();
 			chrDisableReloadToLocation = false;
-			bDisableFastReload = true;//������� �������
+			bDisableFastReload = true;
 			LAi_SetActorType(npchar);
-			SetFunctionTimerCondition("Patria_EuropePuancieClear", 0, 0, 5, false); // ������
+			SetFunctionTimerCondition("Patria_EuropePuancieClear", 0, 0, 5, false); 
 			pchar.quest.Patria_Europe_final.win_condition.l1 = "location";
 			pchar.quest.Patria_Europe_final.win_condition.l1.location = "Charles_town";
 			pchar.quest.Patria_Europe_final.function = "Patria_EuropeFinal";
@@ -1629,7 +1629,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			pchar.questTemp.Patria = "fail";
 			CloseQuestHeader("Patria");
-			// ������ �������, ���� ����
+			
 			if (CheckAttribute(pchar, "questTemp.Patria.Ecliaton"))
 			{
 				sld = characterFromId("Ecliaton_Cap");

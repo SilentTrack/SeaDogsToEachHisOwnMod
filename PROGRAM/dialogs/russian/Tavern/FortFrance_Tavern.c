@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,7 +9,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
                       "Yes, it really is the third time...", "No, what questions?...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//--> Jason, Бремя гасконца
+			
 			if (!CheckAttribute(npchar, "quest.Rum") && CheckAttribute(pchar, "questTemp.Sharlie.Lock") && pchar.questTemp.Sharlie == "ship" && makeint(environment.time) > 5.0 && makeint(environment.time) < 19.0)
 			{
 				link.l1 = "Monsieur, I'm looking for work. May it be that you have some kind of errand that you could hand over to me?";
@@ -20,9 +20,9 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1 = "I've fulfilled your assignment. The long boat with the rum has been delivered to Le Francois bay and transferred to your people.";
                 link.l1.go = "Sharlie_rum_5";
 			}	
-			//<-- Бремя гасконца
 			
-			//Jason, Португалец
+			
+			
 			if (CheckAttribute(PChar, "questTemp.Portugal") && pchar.questTemp.Portugal == "ToMartinique" && !CheckAttribute(npchar, "quest.Portugal"))
 			{
 				link.l1 = "I need to rent one of your rooms for two or three days. I have a man on board that's wounded. He needs to get some rest and recover.";
@@ -33,10 +33,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1 = "Tell me. My friend that I rented the room for, has he left? He promised to wait for me, but the room is empty.";
 				link.l1.go = "Portugal_2";
 			}
-			//Португалец
+			
 		break;
 		
-		//--> Jason, Бремя гасконца
+		
 		case "Sharlie_rum":
 			dialog.text = "A task? Hm... Looks like you have got something inside your skull, young man. I may have something for you\nThis job may sound easy, but it requires responsibility and brains. I can not trust these idiots to do business, they'll ruin it for sure...";
 			link.l1 = "Listen, can you please just tell me what the heck it is you want to assign me? I swear, I won't let you down or at least I'll do  my damnest.";
@@ -113,7 +113,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "Sharlie_rum_6":
-			dialog.text = "Well, here's your reward –five thousand. You can keep the spyglass. And also, another little present –take these three bottles of rum. After you try it, you'll see right away why there's so much of a demand for it.";
+			dialog.text = "Well, here's your reward пїЅfive thousand. You can keep the spyglass. And also, another little present пїЅtake these three bottles of rum. After you try it, you'll see right away why there's so much of a demand for it.";
 			link.l1 = "Thank you! It was nice working with you! See you later!";
 			link.l1.go = "Sharlie_rum_7";
 		break;
@@ -126,9 +126,9 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			CloseQuestHeader("SharlieB");
 			DeleteAttribute(pchar, "questTemp.Sharlie.Rum");
 		break;
-		//<-- Бремя гасконца
 		
-		//Португалец
+		
+		
 		case "Portugal":
 			dialog.text = "No problem, I have a room. For 50 pesos ,it's yours for three days.";
 			if (sti(pchar.money) >= 50)
@@ -152,7 +152,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.quest.Portugal_Ill3.over = "yes";
 			LocatorReloadEnterDisable("Fortfrance_town", "reload1_back", true);
 			LocatorReloadEnterDisable("Fortfrance_town", "reload2_back", true);
-			LocatorReloadEnterDisable("Fortfrance_town", "gate_back", true);//закрыть выходы из города
+			LocatorReloadEnterDisable("Fortfrance_town", "gate_back", true);
 			sld = characterFromId("Portugal");
 			ChangeCharacterAddressGroup(sld, "FortFrance_tavern_upstairs", "goto", "goto3");
 			sld = characterFromId("PortugalDoctor");
@@ -163,7 +163,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "Portugal_2":
-			dialog.text = "I wouldn't say that he up and took off by himself, monsieur. Some people came by here yesterday. One of them was a one-eyed tall lanky man –an obvious bandit by how he looks, lisping too like a Castilian. I was just surprised and that lisper gave me this look...just like a louse –before a pounding. And so they asked about your friend...and I told them. What else was I supposed to do?";
+			dialog.text = "I wouldn't say that he up and took off by himself, monsieur. Some people came by here yesterday. One of them was a one-eyed tall lanky man пїЅan obvious bandit by how he looks, lisping too like a Castilian. I was just surprised and that lisper gave me this look...just like a louse пїЅbefore a pounding. And so they asked about your friend...and I told them. What else was I supposed to do?";
 			link.l1 = "I know, " + npchar.name + ", you're no hero, that's right. What else did you see? Where did they take off?";
 			link.l1.go = "Portugal_3";
 		break;
@@ -175,13 +175,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1 = "Don't be afraid, they won't hear anything from me besides bullets. You've really helped me, thank you. Here, take your 1000 pesos.";
 				link.l1.go = "Portugal_4";
 			}
-			link.l2 = "It's not a lot, but thanks anyway. Next time –call the guard and don't be such a squab.";
+			link.l2 = "It's not a lot, but thanks anyway. Next time пїЅcall the guard and don't be such a squab.";
 			link.l2.go = "Portugal_5";
 		break;
 		
 		case "Portugal_4":
 			AddMoneyToCharacter(pchar, -1000);
-			dialog.text = "Thank you, monsieur. I can give you my word that your friend has almost recovered. He at least was walking by himself. And the second man, that quiet Dutchman –he came in off the street. He spotted that pack and leaped outside, but he wasn't seen.";
+			dialog.text = "Thank you, monsieur. I can give you my word that your friend has almost recovered. He at least was walking by himself. And the second man, that quiet Dutchman пїЅhe came in off the street. He spotted that pack and leaped outside, but he wasn't seen.";
 			link.l1 = "I'd say he's already departed on the first ship he could take. Thank you for the information, it's time for me to go.";
 			link.l1.go = "Portugal_6";
 		break;
@@ -199,7 +199,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			LAi_SetActorType(sld);
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 		break;
-		//Португалец
+		
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }

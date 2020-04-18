@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,7 +9,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
                       "You've guessed it, I'm sorry...", "I understand...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//Голландский гамбит
+			
 			if (CheckAttribute(pchar, "questTemp.HWIC.Eng") && pchar.questTemp.HWIC.Eng == "GotoBridgetown" && !CheckAttribute(npchar, "quest.HWICTalked"))
             {
                 link.l1 = "I'm taking off to Blueweld with some wine cargo. But I found out from a captain I know that the demand for coffee has sharply shot up in Blueweld and I don't know what's causing it. I'm thinking about selling the wine and stocking up on coffee instead, but I don't have enough money to fill up my hold to the top. Could I borrow some money from you with interest?";
@@ -28,14 +28,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			{
 			AddQuestRecord("Holl_Gambit", "2-6");
 			pchar.questTemp.HWIC.Eng = "SeekVanBerg";
-			pchar.quest.GotoBridgetownOver.over = "yes";//снять таймер
+			pchar.quest.GotoBridgetownOver.over = "yes";
 				pchar.quest.VanBergAttack_Check.win_condition.l1 = "MapEnter";
 				pchar.quest.VanBergAttack_Check.function = "VanBergAttackCheck";
-				//if(sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_VALCIRIA || GetCompanionQuantity(pchar) > 1) AddDialogExitQuestFunction("FailVanBergInWorld");
-				//else AddDialogExitQuestFunction("CreateVanBergInWorld");
+				
+				
 			}
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

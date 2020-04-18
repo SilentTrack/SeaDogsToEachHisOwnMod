@@ -1,4 +1,4 @@
-// файл по методам экипажа, переделка для ВМЛ 29.07.06
+
 int  Part_HeroPart 				= 200;
 int  Part_CompanionShipPerClass = 20;
 int  Part_Gower					= 10; 
@@ -16,7 +16,7 @@ void UpdateCrewExp()
 		if(cn != -1)
 		{
 			chr = &characters[cn];
-			if (bSeaActive || IsEntity(worldMap))  // море или карта
+			if (bSeaActive || IsEntity(worldMap))  
 			{
 				ChangeCrewExp(chr, "Sailors", 1);
 			}
@@ -66,15 +66,12 @@ string GetExpName(int iExp)
 	{
 		sExp = "Exp 9";
 	}
-	/*if(iExp >= 90)
-	{
-		sExp = "Exp 10";
-	} */
+	 
 
 	return sExp;
 }
 
-// boal новый учет зп 16.01.04 -->
+
 int GetMoneyForOfficer(ref Npchar)
 {
     if (CheckAttribute(Npchar, "Payment") && makeint(Npchar.Payment) == true)
@@ -111,31 +108,31 @@ int GetSalaryForShip(ref chref)
 
 	float shClass = GetCharacterShipClass(chref);
 	if (shClass   < 1) shClass   = 6;
-	if (!GetRemovable(chref) && sti(chref.index) != GetMainCharacterIndex()) return 0; // считаем только своих, а то вских сопровождаемых кормить!!!
+	if (!GetRemovable(chref) && sti(chref.index) != GetMainCharacterIndex()) return 0; 
 		
-	// экипаж
-	fExp = (GetCrewExp(chref, "Sailors") + GetCrewExp(chref, "Cannoners") + GetCrewExp(chref, "Soldiers")) / 100.00; // средний коэф опыта 0..3
+	
+	fExp = (GetCrewExp(chref, "Sailors") + GetCrewExp(chref, "Cannoners") + GetCrewExp(chref, "Soldiers")) / 100.00; 
 	nPaymentQ += makeint( fExp * stf((0.5 + MOD_SKILL_ENEMY_RATE/5.0)*200*GetCrewQuantity(chref))/stf(shClass) * (1.05 - (nLeaderShip + nCommerce)/ 40.0) );
     
-    // теперь самого капитана и его офицеров (тут  главный герой не считается) так что пассажиров и оффицеров ниже
+    
     if(sti(chref.index) != GetMainCharacterIndex())
     {
         nPaymentQ += makeint(GetMoneyForOfficer(chref)*2/(nLeaderShip + nCommerce) );
-        // офицеры
-        for(i = 1; i < 4; i++)  // в к3 нет офов у компаньона :(
+        
+        for(i = 1; i < 4; i++)  
 	    {
 	        cn = GetOfficersIndex(chref, i);
 		    if( cn > 0 )
 		    {
 			    offref = GetCharacter(cn);
-			    if (GetRemovable(offref)) // считаем только своих, а то вских сопровождаемых кормить!!!
+			    if (GetRemovable(offref)) 
 			    {
 			        nPaymentQ += makeint(GetMoneyForOfficerFull(offref));
 			    }
 			}
 		}
 	}
-	if(sti(chref.index) == GetMainCharacterIndex()) // все пассажиры и офицеры для гл героя
+	if(sti(chref.index) == GetMainCharacterIndex()) 
 	{
         iMax = GetPassengersQuantity(mchref);
 		for(i=0; i < iMax; i++)
@@ -146,7 +143,7 @@ int GetSalaryForShip(ref chref)
                 if(!IsCompanion(GetCharacter(cn)))
                 {
                     offref = GetCharacter(cn);
-                    if (GetRemovable(offref)) // считаем только своих, а то вских сопровождаемых кормить!!!
+                    if (GetRemovable(offref)) 
 			        {
                         if(CheckAttribute(offref,"prisoned"))
     		            {
@@ -160,7 +157,7 @@ int GetSalaryForShip(ref chref)
     }
     return nPaymentQ;
 }
-// boal новый учет зп <--
+
 
 int AddCrewMorale(ref chr, int add)
 {
@@ -177,9 +174,9 @@ int AddCrewMorale(ref chr, int add)
 int GetCharacterRaiseCrewMoraleMoney(ref chr)
 {
 	float nLeaderShip = GetSummonSkillFromNameToOld(GetMainCharacter(),SKILL_LEADERSHIP);
-	float nCommerce   = GetSummonSkillFromNameToOld(GetMainCharacter(),SKILL_COMMERCE); // boal	
-	int nPaymentQ = makeint(15 + GetCrewQuantity(chr) * (30 + makeint(MOD_SKILL_ENEMY_RATE * GetCharacterCrewMorale(chr)/10.0) - nLeaderShip - nCommerce)); // boal
-	float fExp = (GetCrewExp(chr, "Sailors") + GetCrewExp(chr, "Cannoners") + GetCrewExp(chr, "Soldiers")) / 100.00; // средний коэф опыта 0..3
+	float nCommerce   = GetSummonSkillFromNameToOld(GetMainCharacter(),SKILL_COMMERCE); 
+	int nPaymentQ = makeint(15 + GetCrewQuantity(chr) * (30 + makeint(MOD_SKILL_ENEMY_RATE * GetCharacterCrewMorale(chr)/10.0) - nLeaderShip - nCommerce)); 
+	float fExp = (GetCrewExp(chr, "Sailors") + GetCrewExp(chr, "Cannoners") + GetCrewExp(chr, "Soldiers")) / 100.00; 
 	nPaymentQ = makeint(nPaymentQ * (fExp + 0.5));	
 	if (nPaymentQ < 5) nPaymentQ = 5;
 	return nPaymentQ;
@@ -230,11 +227,11 @@ int GetCharacterCrewMorale(ref chr)
 	return sti(chr.ship.crew.morale);
 }
 
-// пересчет наемников в городах
+
 void UpdateCrewInColonies()  
 {
-	int nNeedCrew = GetCurCrewEscadr(); // всего матросов
-	//int ableCrew = GetMaxCrewAble();   // допустимое число
+	int nNeedCrew = GetCurCrewEscadr(); 
+	
 	ref rTown;    
 	int nPastQ, nPastM;
 	int eSailors, eCannoners, eSoldiers;
@@ -248,24 +245,14 @@ void UpdateCrewInColonies()
 		
 	    if (GetNpcQuestPastDayParam(rTown, "CrewDate") >= (2+rand(2)) || !CheckAttribute(rTown, "CrewDate.control_year"))
 	    {
-	    	//trace("UpdateCrewInColonies " + rTown.id);
+	    	
 			SaveCurrentNpcQuestDateParam(rTown, "CrewDate");
 			nPastQ = 0;
-			//nPastM = MORALE_NORMAL;
+			
 			if (CheckAttribute(rTown,"ship.crew.quantity"))	nPastQ = sti(rTown.ship.crew.quantity);
-			//if (CheckAttribute(rTown,"ship.crew.morale"))	nPastM = sti(rTown.ship.crew.morale);
+			
 
-/*			
-			if (nNeedCrew >= ableCrew )
-		    {
-		        nNeedCrew = 1+rand(20);
-		    }
-		    else
-		    {
-		        nNeedCrew = ableCrew - nNeedCrew - rand(makeint((ableCrew - nNeedCrew)/2.0));
-				if (nNeedCrew < 1) nNeedCrew = 1+rand(20);
-		    }
-*/
+ 
 			nNeedCrew = makeint(abs(REPUTATION_NEUTRAL - sti(pchar.reputation.nobility))/MOD_SKILL_ENEMY_RATE + sti(pchar.rank)/MOD_SKILL_ENEMY_RATE + rand(sti(pchar.rank)/2) + drand(20 + MOD_SKILL_ENEMY_RATE));
 			
 			if(MOD_SKILL_ENEMY_RATE == 2) nNeedCrew *= 3;
@@ -281,10 +268,10 @@ void UpdateCrewInColonies()
 				nPastM = MORALE_NORMAL/5 + rand(makeint(MORALE_NORMAL*1.5));
 			}
 			rTown.Ship.crew.quantity = nNeedCrew;
-			if (CheckAttribute(pchar, "GenQuest.Shipshine")) rTown.Ship.crew.quantity = sti(rTown.Ship.crew.quantity)*2;//Jason
+			if (CheckAttribute(pchar, "GenQuest.Shipshine")) rTown.Ship.crew.quantity = sti(rTown.Ship.crew.quantity)*2;
 			rTown.Ship.crew.morale   = nPastM;
 						
-			// пороги опыта от нации
+			
 			switch (sti(rTown.nation))
 			{
 				case ENGLAND:	
@@ -316,7 +303,7 @@ void UpdateCrewInColonies()
 			rTown.Ship.Crew.Exp.Sailors   = eSailors   + rand(2*eSailors)   + rand(10);
 			rTown.Ship.Crew.Exp.Cannoners = eCannoners + rand(2*eCannoners) + rand(10);
 			rTown.Ship.Crew.Exp.Soldiers  = eSoldiers  + rand(2*eSoldiers)  + rand(10);
-			ChangeCrewExp(rTown, "Sailors", 0);  // приведение к 1-100
+			ChangeCrewExp(rTown, "Sailors", 0);  
 			ChangeCrewExp(rTown, "Cannoners", 0);
 			ChangeCrewExp(rTown, "Soldiers", 0);
 		}
@@ -328,12 +315,12 @@ int GetCrewPriceForTavern(string sColony)
 	int iColony = FindColony(sColony);
 	ref rTown = &colonies[iColony];
 	
-	float fExp = (GetCrewExp(rTown, "Sailors") + GetCrewExp(rTown, "Cannoners") + GetCrewExp(rTown, "Soldiers")) / 100.00; // средний коэф опыта 0..3
-	float fSkill = GetSummonSkillFromNameToOld(GetMainCharacter(),SKILL_LEADERSHIP) + GetSummonSkillFromNameToOld(GetMainCharacter(),SKILL_COMMERCE); // 0-20
+	float fExp = (GetCrewExp(rTown, "Sailors") + GetCrewExp(rTown, "Cannoners") + GetCrewExp(rTown, "Soldiers")) / 100.00; 
+	float fSkill = GetSummonSkillFromNameToOld(GetMainCharacter(),SKILL_LEADERSHIP) + GetSummonSkillFromNameToOld(GetMainCharacter(),SKILL_COMMERCE); 
 	int   nCrewCost = makeint((0.5 + MOD_SKILL_ENEMY_RATE/5.0)*50 * (1.0 - fSkill / 40.0));
 	
 	nCrewCost = makeint(fExp*nCrewCost + 0.5);
-	if (nCrewCost < 10) nCrewCost = 10; // не ниже!
+	if (nCrewCost < 10) nCrewCost = 10; 
 	
 	return nCrewCost;
 }
@@ -364,32 +351,20 @@ void MunityOnShip(string _stat)
 {
 	int i;
 	Statistic_AddValue(pchar, _stat, 1);
-	MakeCloneShipDeck(pchar, true); // подмена палубы
+	MakeCloneShipDeck(pchar, true); 
 	i = FindLocation("Ship_deck");
-	Locations[i].image = "loading\Mutiny_512.tga"; // это клоновая локация, вернется само при перетирании другим
+	Locations[i].image = "loading\Mutiny_512.tga"; 
 	DoQuestReloadToLocation("Ship_deck", "reload", "reload1", "Munity_on_Ship");
 }
-/* 20.01.08 Дележ добычи =======================================================================
-Концепт:
-Делим только награбленное, торговые, квестовые барыши не делим (выпадают сухупутные грабежи)
-Для этого считаем сколько было денег до выхода в море, после моря и баталии, на карте и суше подсчет денег после
-Сравниваем, если убытки, ничего не делаем, если доходы, то к дележу.
-Сумма может быть не выплачена сразу, наличие суммы влияет на мораль как и ЗП.
-Повышение морали погашает задолженность, если долгов нет, то плата просто так
-Наличие долгов делает -1 морали каждый день, ром может спасти, а может и нет, если еще и перегруз
-Долги наследуются, даже, если все умерли. Это условность, но необходимо же как-то с ГГ стрести деньги.
-Товар и корабли считаются по условно-минимальным ценам, то есть ГГ покупает их у команды и платит долю по бросовой цене.
-Общая ЗП при этом сохраняется, так как доходы от торговли и контрабанды не делятся.
-Грабеж города считаем условно поделенным, то есть матросы нахапали свои доли сами и не делим дополнительно (сложно делать и барышей там мало).
-*/
-void Partition_SetValue(string state) // state = "before" || "after" - для сравнения было-стало
+ 
+void Partition_SetValue(string state) 
 {
 	if (CheckAttribute(pchar, "GenQuest.DontPartition"))
 	{
 		DeleteAttribute(pchar, "GenQuest.DontPartition");
-		Log_TestInfo("Дележ добычи не производится!");
+		Log_TestInfo("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
 		return;
-	} // Jason
+	} 
 	
 	int      ret, part;
 	int      i, cn, iMax;
@@ -397,26 +372,26 @@ void Partition_SetValue(string state) // state = "before" || "after" - для сравн
 	int      HowOff, HowComp, HowCrew, HowGower;
 	string   sTemp;
 	
-	// пройтись по всей недвижимости, налику у пассажиров и компаньонов, оценить состав матросов в начале - если 0,
-	// то остальные пришли потом, не положена доля
+	
+	
 	ret = 0;
-	// допуск - не считаем ростовщиков, тк в море их нет и предметы личные, тк это мародерство без дележа
-	// деньги в офах - это деньги ГГ на хранении их считаем, тк потеря их - убыток ГГ
+	
+	
 	HowComp = 0;
 	HowCrew = 0;
 	Partition_GetCargoCostCoeff(state);
-	part = Part_HeroPart + (10 - MOD_SKILL_ENEMY_RATE)*Part_HeroPart; // доля ГГ
+	part = Part_HeroPart + (10 - MOD_SKILL_ENEMY_RATE)*Part_HeroPart; 
 	for (i=0; i<COMPANION_MAX; i++)
 	{
 		cn = GetCompanionIndex(Pchar, i);
 		if (cn >= 0)
 		{
 			chref = GetCharacter(cn);
-			if (GetRemovable(chref)) // считаем только своих
+			if (GetRemovable(chref)) 
 			{
 				ret += sti(chref.Money);
-				ret = ret + Partition_GetCargoValue(chref); // деньги на кармане и корабль
-				HowComp += 1; // ГГ тут же
+				ret = ret + Partition_GetCargoValue(chref); 
+				HowComp += 1; 
 				HowCrew += GetCrewQuantity(chref);
 				part += Part_CompanionShipPerClass * (6 - GetCharacterShipClass(chref));
 			}
@@ -431,7 +406,7 @@ void Partition_SetValue(string state) // state = "before" || "after" - для сравн
 		if(cn != -1)
 		{
 			chref = GetCharacter(cn);
-			if (GetRemovable(chref)) // считаем только своих
+			if (GetRemovable(chref)) 
 			{
 				if(CheckAttribute(chref, "prisoned"))
 				{
@@ -443,7 +418,7 @@ void Partition_SetValue(string state) // state = "before" || "after" - для сравн
 			}
 		}
 	}
-	// предметы в каюте
+	
 	ref loc;
 	if (Pchar.SystemInfo.CabinType != "")
 	{
@@ -472,13 +447,13 @@ void Partition_SetValue(string state) // state = "before" || "after" - для сравн
 	if (state == "after" && CheckAttribute(Pchar, "Partition.before.Money"))
 	{
 		if (sti(Pchar.Partition.before.Money) < sti(Pchar.Partition.after.Money))
-		{  // Делим бабки	
+		{  
 			if(bPartitionSet)
 			{
 				int    TotalAmount, iGowerPart;
 				float  fOffPart, fCrewPart, fHeroPart;
 				TotalAmount = sti(Pchar.Partition.after.Money) - sti(Pchar.Partition.before.Money);
-				Log_TestInfo("Общий доход составил " + TotalAmount);
+				Log_TestInfo("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + TotalAmount);
 				
 				iGowerPart = makeint(HowGower * TotalAmount/100.0);
 												
@@ -505,7 +480,7 @@ void Partition_SetValue(string state) // state = "before" || "after" - для сравн
 				
 				if (isMainCharacterPatented())
 				{
-					Log_TestInfo("Доля губернатора составила " + iGowerPart + " Долг перед губернатором " + Pchar.Partition.MonthPart.Gower);
+					Log_TestInfo("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + iGowerPart + " пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + Pchar.Partition.MonthPart.Gower);
 				}	
 				
 				ret = makeint(fCrewPart * TotalAmount);
@@ -515,7 +490,7 @@ void Partition_SetValue(string state) // state = "before" || "after" - для сравн
 				
 				Pchar.Partition.MonthPart.Hero = sti(Pchar.Partition.MonthPart.Hero) + (TotalAmount - ret);
 				Pchar.Partition.MonthPart = sti(Pchar.Partition.MonthPart) + ret;
-				Log_TestInfo("Доля команды " + ret + ". Долг перед командой " + Pchar.Partition.MonthPart);			
+				Log_TestInfo("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + ret + ". пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + Pchar.Partition.MonthPart);			
 			}
 		}
 	}
@@ -533,19 +508,19 @@ int Partition_GetCargoValue(ref chref)
 	float	 costCoeff;
 	
 	ret = 0;
-	//return 0;
+	
 	st = GetCharacterShipType(chref);
 	
 	if (st != SHIP_NOTUSED)
 	{
 		shref = GetRealShip(st);
 		
-		ret += sti(shref.Price) * 0.2; // 0.2 - понижение стоимости корабля для грабежа
-		// пушки считаем по бортам
+		ret += sti(shref.Price) * 0.2; 
+		
 		if (sti(chref.Ship.Cannons.Type) != CANNON_TYPE_NONECANNON)
 		{
 		    Cannon = GetCannonByType(sti(chref.Ship.Cannons.Type));
-			idx = GetCannonGoodsIdxByType(sti(chref.Ship.Cannons.Type)); // индекс орудия как товара
+			idx = GetCannonGoodsIdxByType(sti(chref.Ship.Cannons.Type)); 
 			sGood = Goods[idx].name;
 			if(CheckAttribute(pchar,"Goods." + (sGood)+ ".costCoeff")) 
 			{
@@ -572,7 +547,7 @@ int Partition_GetCargoValue(ref chref)
 	return makeint(ret);
 }
 
-void Partition_GetCargoCostCoeff(string state) // state = "before" || "after" - для сравнения было-стало
+void Partition_GetCargoCostCoeff(string state) 
 {
 	int 		i, j, cn, st, ret, idx;
 	string   	sGood;
@@ -582,7 +557,7 @@ void Partition_GetCargoCostCoeff(string state) // state = "before" || "after" - 
 	for (i=0; i<GOODS_QUANTITY; i++)
 	{
 		sGood = Goods[i].name;
-		if(i > GOOD_CANNON_3 - 1) // учет пушек - как установленных, так и в виде товара
+		if(i > GOOD_CANNON_3 - 1) 
 		{
 			ret = 0;			
 			for (j=0; j<COMPANION_MAX; j++)
@@ -591,7 +566,7 @@ void Partition_GetCargoCostCoeff(string state) // state = "before" || "after" - 
 				if (cn >= 0)
 				{
 					chref = GetCharacter(cn);
-					if (GetRemovable(chref)) // считаем только своих
+					if (GetRemovable(chref)) 
 					{
 						st = GetCharacterShipType(chref);
 						if (sti(chref.Ship.Cannons.Type) != CANNON_TYPE_NONECANNON)
@@ -616,10 +591,7 @@ void Partition_GetCargoCostCoeff(string state) // state = "before" || "after" - 
 
 void RecalculateCargoCostCoeff(ref _refCharacter, string state, string _goodsName, int _Qty)
 {
-/*
-state = "before" - перед выходом в море или до начала грабежа города - коэффициент цены на все новые товары = 1.0
-state = "after"  - перед выходом на сушу или после грабежа города    - коэффициент цены на все новые товары = 0.80 - MOD_SKILL_ENEMY_RATE * 0.05
-*/
+ 
 	int 	oldQty					= 0;
 	float 	oldPriceCoeff 			= 1.0;
 	float 	newPriceCoeff 			= 1.0;	
@@ -673,10 +645,11 @@ state = "after"  - перед выходом на сушу или после грабежа города    - коэффицие
 	{
 		newPriceCoeff = 1.0;
 	}
-//	trace("goodsName " + _goodsName + " oldQty " + oldQty + " Qty " + _Qty + " oldCostCoeff " + oldPriceCoeff +" newCostCoeff " + newPriceCoeff);
+
 
 	_refCharacter.Goods.(_goodsName).costCoeff = newPriceCoeff;
 }
+
 
 
 

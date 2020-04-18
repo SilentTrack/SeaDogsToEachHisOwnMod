@@ -1,16 +1,16 @@
-/// boal 07/06/06 переделка СЖ под нужны ВМЛ
+
 int curQuestTop;
 string CurTable, CurRow;
 int iMaxGoodsStore = 50000;
 
 void InitInterface(string iniName)
 {
-    InterfaceStack.SelectMenu_node = "LaunchQuestBook"; // запоминаем, что звать по Ф2
+    InterfaceStack.SelectMenu_node = "LaunchQuestBook"; 
 	GameInterface.title = "titleQuestBook";
 
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
 
-	selectJournal(1); // первый режим журнала, только активные
+	selectJournal(1); 
 
 	SetEventHandler("InterfaceBreak","ProcessCancelExit",0);
 	SetEventHandler("exitCancel","ProcessCancelExit",0);
@@ -145,10 +145,10 @@ void QuestTopChange()
 
 void SetQTextShow(aref pA,int qnum)
 {
-	// boal Покраска, выбрали 22.06.07 -->
+	
 	aref arTopic = GetAttributeN(pA, qnum);
 	DeleteQuestHeaderColor(GetAttributeName(arTopic));
-	// boal <--
+	
 	SendMessage(&GameInterface,"lsal",MSG_INTERFACE_INIT_QTEXT_SHOW,"QUEST_TEXT",pA,qnum);
 	SetCurrentNode("QUEST_TEXT");
 }
@@ -297,7 +297,7 @@ void ProcessCommandExecute()
 			}
 		break;
 	}
-	// boal new menu 31.12.04 -->
+	
 	if (nodName == "I_CHARACTER" || nodName == "I_SHIP" ||
 	    nodName == "I_QUESTBOOK" || nodName == "I_TRADEBOOK" ||
 		nodName == "I_NATIONS" || nodName == "I_ITEMS")
@@ -310,7 +310,7 @@ void ProcessCommandExecute()
 			return;
 		}
 	}
-	// boal new menu 31.12.04 -->
+	
 }
 
 void selectJournal(int iMode)
@@ -319,11 +319,11 @@ void selectJournal(int iMode)
     HideCashBook();
     HideShipPlace();
 	HideStoreBook();
-	// подменим квестовую ветку, зависимо от типа режима: журнал, архив, инфа
+	
 	aref arQuestInfo, arTmp;
 	int  i;
 	string attributeName;
-	bool   ok; // копировать ли?
+	bool   ok; 
 	aref   newAttr;
 	makearef(arQuestInfo, pchar.QuestInfo);
 	DeleteAttribute(pchar, "TmpQuestInfo");
@@ -357,7 +357,7 @@ void selectJournal(int iMode)
             break;
         }
         if (ok)
-        { // копируем
+        { 
             pchar.TmpQuestInfo.(attributeName) = "";
             makearef(newAttr, pchar.TmpQuestInfo.(attributeName));
 			CopyAttributes(newAttr, arTmp);
@@ -445,7 +445,7 @@ void ShowInfoWindow(int index)
 		break;
 	}
 
-	// CreateTooltip("#" + sHeader, sText1, argb(255,255,255,255), "", argb(255,255,255,255), "", argb(255,192,255,192), "", argb(255,255,255,255), sPicture, "NATIONS", sGroupPicture, 64, 64);
+	
 }
 
 void procTabChange()
@@ -509,7 +509,7 @@ void SetControlsTabMode(int nMode)
 
 	switch (nMode)
 	{
-		case 1: //
+		case 1: 
 			sPic1 = "TabDeSelected";
 			nColor1 = argb(255,255,255,255);
 		break;
@@ -561,9 +561,9 @@ void FillControlsList(int nMode)
 {
 	switch (nMode)
 	{
-	    case 1: selectJournal(1); break;  // первый режим журнала, только активные
-	    case 2: selectJournal(2); break;  // только закрытые
-	    case 3: selectJournal(3); break;  // только инфа
+	    case 1: selectJournal(1); break;  
+	    case 2: selectJournal(2); break;  
+	    case 3: selectJournal(3); break;  
 	    case 4: selectCashBook(); break;
 	    case 5: selectStatistic(); break;
 	    case 6: selectShipPlace(); break;
@@ -679,8 +679,8 @@ void InitTableHeader()
 	GameInterface.TABLE_NATION.hr.td3.icon.width = 32;
     GameInterface.TABLE_NATION.hr.td3.icon.height = 32;
     GameInterface.TABLE_NATION.hr.td3.icon.offset = "10, 2";
-	//GameInterface.TABLE_NATION.hr.td3.str = "Англия";
-	//GameInterface.TABLE_NATION.hr.td3.scale = 0.9;
+	
+	
  	GameInterface.TABLE_NATION.hr.td4.icon.group = "NATIONS"
 	GameInterface.TABLE_NATION.hr.td4.icon.image      = Nations[2].Name;
 	GameInterface.TABLE_NATION.hr.td4.icon.width = 32;
@@ -780,7 +780,7 @@ void InitTableHeader()
     Table_UpdateWindow("TABLE_NATION");
     Table_UpdateWindow("TABLE_MONEY");
 	
-    //  ростовщики
+    
     GameInterface.TABLE_CREDIT.hr.td1.str = "Credit in";
 	GameInterface.TABLE_CREDIT.hr.td1.scale = 0.9;
 	GameInterface.TABLE_CREDIT.hr.td2.str = "Summ";
@@ -840,7 +840,7 @@ void InitTableHeader()
 	GameInterface.TABLE_DEBIT.hr.td5.scale = 0.9;
 	GameInterface.TABLE_DEBIT.select = 0;
 	i = 1;
-    if (CheckAttribute(pchar, "Quest.Deposits")) // не треться при возврате
+    if (CheckAttribute(pchar, "Quest.Deposits")) 
     {
     	makearef(quests,Characters[GetMainCharacterIndex()].Quest.Deposits);
 
@@ -880,7 +880,7 @@ void InitTableHeader()
     }
 	Table_UpdateWindow("TABLE_DEBIT");
 	
-	FillShipPlaceTable("TABLE_SHIP_PLACE"); // 1.2.3
+	FillShipPlaceTable("TABLE_SHIP_PLACE"); 
 	
 	FillPriceListTown("TABLE_CITY");
 }
@@ -891,7 +891,7 @@ void FillShipPlaceTable(string _tabName)
     string  row;
     ref     rCity, chref;
 
-    // шапка -->
+    
     GameInterface.(_tabName).select = 0;
     GameInterface.(_tabName).hr.td1.str = "N";
     GameInterface.(_tabName).hr.td1.scale = 0.9;
@@ -907,7 +907,7 @@ void FillShipPlaceTable(string _tabName)
 	GameInterface.(_tabName).hr.td6.scale = 0.9;
 	GameInterface.(_tabName).hr.td7.str = "Price/mth.";
 	GameInterface.(_tabName).hr.td7.scale = 0.9;
-    // <--
+    
     cn = 1;
     for (n=0; n<MAX_COLONIES; n++)
 	{
@@ -959,7 +959,7 @@ void FillShipPlaceTable(string _tabName)
     		}
         }
 	}
-	// Addon 2016-1 Jason Пиратская линейка. Стоянка Исла-Моны.
+	
 	for (i=1; i<MAX_CHARACTERS; i++)
 	{
 		makeref(chref, Characters[i]);
@@ -1018,7 +1018,7 @@ void FillPriceListTown(string _tabName)
     ref     rCity;
 	ref		refStorage;
     
-    // шапка -->
+    
     GameInterface.(_tabName).select = 0;
     GameInterface.(_tabName).hr.td1.str = "Nation";
     GameInterface.(_tabName).hr.td1.scale = 0.75;
@@ -1043,7 +1043,7 @@ void FillPriceListTown(string _tabName)
 			StoreNum = GetStorage(CityId);
 			refStorage = &stores[StoreNum];
 			if (n == 0) firstId = rCity.id;
-			if (chref.id == "Islamona_carpenter") // Addon 2016-1 Jason пиратская линейка
+			if (chref.id == "Islamona_carpenter") 
 			{
 				rCity.id = "IslaMona";
 				firstId = "IslaMona";
@@ -1104,7 +1104,7 @@ void FillPriceList(string _tabName, string  attr1)
 	ref 	chref;
     ref		refStorage;
 	
-    // шапка -->
+    
     GameInterface.(_tabName).select = 0;
     GameInterface.(_tabName).hr.td1.str = XI_ConvertString("Good name");
     GameInterface.(_tabName).hr.td1.scale = 0.75;
@@ -1149,3 +1149,4 @@ void FillPriceList(string _tabName, string  attr1)
 	}
     Table_UpdateWindow(_tabName);
 }
+

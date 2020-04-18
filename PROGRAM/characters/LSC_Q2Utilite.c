@@ -1,5 +1,5 @@
-// Warship -->
-// Выставлялка рандомных скиллов
+
+
 void SetRandSelfSkill(ref _ch, int _min, int _max)
 {
 	int iDelta = _max-_min;
@@ -24,7 +24,7 @@ void SetRandShipSkill(ref _ch, int _min, int _max)
 	_ch.skill.Defence = _min + rand(iDelta);
 }
 
-// Установить персу все перки
+
 void SelAllPerksToChar(ref _ch, bool _isOfficer)
 {
 	_ch.perks.list.BasicDefense = "1";
@@ -88,14 +88,14 @@ void SelAllPerksToChar(ref _ch, bool _isOfficer)
 	_ch.perks.list.Doctor1 = "1";
 	_ch.perks.list.Doctor2 = "1";
 	
-	if(_isOfficer) // У офов есть доп. перки
+	if(_isOfficer) 
 	{
 		_ch.perks.list.ByWorker = "1";
 		_ch.perks.list.ByWorker2 = "1";
 	}
 }
 
-// Установить персу половину перков
+
 void SetHalfPerksToChar(ref _ch, bool _isOfficer)
 {
 	_ch.perks.list.BasicDefense = "1";
@@ -127,17 +127,17 @@ void SetHalfPerksToChar(ref _ch, bool _isOfficer)
 	_ch.perks.list.WindCatcher = "1";
 	_ch.perks.list.SailsMan = "1";
 	
-	if(_isOfficer) // У офов есть доп. перки
+	if(_isOfficer) 
 	{
 		_ch.perks.list.ByWorker = "1";
 		_ch.perks.list.ByWorker2 = "1";
 	}
 }
 
-// Отобрать все предметы (кроме квестовых) у выбранного персонажа
+
 void RemoveAllCharacterItems(ref _ch, bool _removemoney)
 {
-	// сносим нафик всю экипировку
+	
 	if(_ch == GetMainCharacter())
 	{
 		StoreEquippedMaps(_ch);
@@ -156,7 +156,7 @@ void RemoveAllCharacterItems(ref _ch, bool _removemoney)
 	RemoveCharacterArtefactEquip(_ch, ITEM_SLOT2_TYPE);
 	RemoveCharacterArtefactEquip(_ch, ITEM_SLOT3_TYPE);
 	
-	//сносим все предметы, кроме квестовых -->
+	
 	aref arItems;
 	string sName;
 	ref rLoc;
@@ -182,7 +182,7 @@ void RemoveAllCharacterItems(ref _ch, bool _removemoney)
 	}		
 	DeleteAttribute(_ch, "questTemp.items");
 	
-	_ch.SystemInfo.itemsCRC = CheckItemsCRC(_ch); // заново пересчитаем контрольную сумму
+	_ch.SystemInfo.itemsCRC = CheckItemsCRC(_ch); 
 	
 	if(_removemoney)
 	{
@@ -190,7 +190,7 @@ void RemoveAllCharacterItems(ref _ch, bool _removemoney)
 	}
 }
 
-// снести всех пассажиров и компаньонов ГГ
+
 void RemoveAllPassengersAndCompanions()
 {
     int iDay = GetPassengersQuantity(pchar);
@@ -202,12 +202,12 @@ void RemoveAllPassengersAndCompanions()
  	while (i < iDay)
 	{
 		i++;
-		idx = GetPassenger(pchar, n); // всегда первый в массиве со смещением, если не трем
+		idx = GetPassenger(pchar, n); 
 		if (idx == -1) break;
 		ch = GetCharacter(idx);
-		if (GetRemovable(ch)) // квестовых не трогаем
+		if (GetRemovable(ch)) 
 		{
-		    ch.LifeDay = 1; // чтоб не сразу потерся
+		    ch.LifeDay = 1; 
 		    RemovePassenger(pchar, ch);
 			ChangeCharacterAddress(ch,"none","");
 		}
@@ -222,9 +222,9 @@ void RemoveAllPassengersAndCompanions()
 		if (idx != -1)
 		{
             ch = GetCharacter(idx);
-			if (GetShipRemovable(ch) && GetRemovable(ch))  // не трогаем квестовых и ПГГ
+			if (GetShipRemovable(ch) && GetRemovable(ch))  
 			{
-			    ch.LifeDay = 1; // чтоб не сразу потерся
+			    ch.LifeDay = 1; 
 			    RemoveCharacterCompanion(pchar, ch);
 			}
 		}
@@ -239,7 +239,7 @@ void CleanAllCabinBoxes()
 	
     if (Pchar.SystemInfo.CabinType != "")
     {
-	    loc = &locations[FindLocation(Pchar.SystemInfo.CabinType)]; //"My_Cabin"
+	    loc = &locations[FindLocation(Pchar.SystemInfo.CabinType)]; 
 
 	    for (n = 1; n <= 4; n++)
 	    {
@@ -261,7 +261,7 @@ void CleanAllCabinBoxes()
     }
 }
 
-// Метод вернет случайный тип корабля, который зависит от класса шипа персонажа
+
 int RandShipFromShipClass(ref _ch)
 {
 	int iShipClass = sti(RealShips[sti(_ch.Ship.Type)].Class);
@@ -296,7 +296,7 @@ int RandShipFromShipClass(ref _ch)
 	return iShipType;
 }
 
-// Проверка, есть ли у ГГ казначей
+
 bool IsPCharHaveTreasurer()
 {
 	ref rOfficer;
@@ -306,7 +306,7 @@ bool IsPCharHaveTreasurer()
 		rOfficer = &characters[i];
 		if(CheckAttribute(rOfficer, "treasurer") && sti(rOfficer.Treasurer) == 1)
 		{
-			return true; // Казначей есть
+			return true; 
 		}
 		
 	}
@@ -314,7 +314,7 @@ bool IsPCharHaveTreasurer()
 	return false;
 }
 
-// Метод вернет ссылку на казначея
+
 ref GetPCharTreasurerRef()
 {
 	if(!IsPCharHaveTreasurer()) return &NullCharacter;
@@ -329,7 +329,7 @@ ref GetPCharTreasurerRef()
 	return &NullCharacter;
 }
 
-// Метод вернет значение атрибута
+
 string GetAttrValue(ref _rChar, string _sAttr)
 {
 	string sTemp;
@@ -339,7 +339,7 @@ string GetAttrValue(ref _rChar, string _sAttr)
 	return sTemp;
 }
 
-// Получить рандомную локацию с указанным типом на заданном острове
+
 string IslandGetLocationFromType(string _island, string _type)
 {
 	ref rLoc;
@@ -362,22 +362,22 @@ string IslandGetLocationFromType(string _island, string _type)
 	return locations[i].id;
 }
 
-// Просто сокращение -->
+
 void DisableAllExits(bool _truefalse)
 {
 	chrDisableReloadToLocation = _truefalse;
 	bDisableFastReload         = _truefalse;
 }
-// Просто сокращение <--
 
-// Warship <--
 
-void LockQuestLine(ref refChar) // Лочим квестовую линейку
+
+
+void LockQuestLine(ref refChar) 
 {
 	refChar.notQuestLine = true;
 }
 
-string QuestGetGangLocation(string _areal)	// Получить локацию для генерации банд и т.д.
+string QuestGetGangLocation(string _areal)	
 {
 	int n;
 	string island = GetArealByCityName(_areal);
@@ -389,7 +389,7 @@ string QuestGetGangLocation(string _areal)	// Получить локацию для генерации бан
 	{				
 		if(GiveArealByLocation(&locations[n]) == island)
 		{			
-			//==> на всякий случай
+			
 			if(CheckAttribute(&locations[n], "DisableEncounters") && locations[n].DisableEncounters == true) continue;
 			LocationId = locations[n].id;
 			if(findsubstr(LocationId, "jungle" , 0) != -1 || findsubstr(LocationId, "Shore" , 0) != -1 || findsubstr(LocationId, "CaveEntrance" , 0) != -1)
@@ -404,7 +404,7 @@ string QuestGetGangLocation(string _areal)	// Получить локацию для генерации бан
 	return locations[n].id;
 }
 
-string QuestGetColony(string _city) // Получить рандомную колонию по аттрибуту NPChar.city, не равную _city
+string QuestGetColony(string _city) 
 {
     int storeArray[MAX_COLONIES];
     int howStore = 0;
@@ -422,7 +422,7 @@ string QuestGetColony(string _city) // Получить рандомную колонию по аттрибуту N
 	return colonies[storeArray[rand(howStore-1)]].id;
 }
 
-string GetColonyExpect2Colonies(string _city1, string _city2) // Исключая две колонии
+string GetColonyExpect2Colonies(string _city1, string _city2) 
 {
 	int storeArray[MAX_COLONIES];
 	int howStore = 0;
@@ -442,7 +442,7 @@ string GetColonyExpect2Colonies(string _city1, string _city2) // Исключая две ко
 	return colonies[storeArray[rand(howStore-1)]].id;
 }
 
-// инициализация мультиобъектов - по дефолту рецепты ГГ не доступны
+
 void InitAlchemy()
 {
 	ref item;		
@@ -453,14 +453,14 @@ void InitAlchemy()
 		{
 			string sGood = item.id;
 			pchar.alchemy.(sGood).isKnown = false;
-			// Jason: закомментировал, т.к. мешает работать. Вынес в дебагер на F22.
-			//if (MOD_BETTATESTMODE == "On")		pchar.alchemy.(sGood).isKnown = true;
-			//else								pchar.alchemy.(sGood).isKnown = false;
+			
+			
+			
 		}
 	}
 }
 
-// проверка - знает ли ГГ рецепт мультиобъекта
+
 bool isMultiObjectKnown(string itemId)
 {
 	ref item;		
@@ -482,109 +482,109 @@ void SetAlchemyRecipeKnown(string Recipe)
 }
 
 void initStartState2Character(ref ch)
-{// метод вызывается в момент новой игры, заполняет главного героя атрибутами, чтоб убрать лишние проверки в if
+{
     NullCharacter.Siege = "";
     
 	ch.SystemInfo.SaveCount = 0;
     ch.SystemInfo.LoadCount = 0;
     ch.SystemInfo.DeadCount = 0;
 
-    ch.SystemInfo.CabinType          = ""; // boal 28.03.05 каюты нет  My_Cabin_Small
+    ch.SystemInfo.CabinType          = ""; 
     
     ch.questTemp.Contraband.relation = 60;
-	ch.questTemp.Indian.relation = 30; // репа у индейцев, от 0 до 100, выше 60 - друг, ниже 20 - враг
+	ch.questTemp.Indian.relation = 30; 
     DeleteAttribute(ch, "quest.meeting");
-    ch.ShipInStock = 0; // кораблей в порту
-	ch.questTemp.abordage = 0;   // двойной абордаж
-	ch.questTemp.donate   = 0; // пожертвование церкви
+    ch.ShipInStock = 0; 
+	ch.questTemp.abordage = 0;   
+	ch.questTemp.donate   = 0; 
 
-	ch.questTemp.friend_in_tavern = ""; // оптимизация boal
-	ch.questTemp.RelationAgentMet = "0"; // оптимизация boal
+	ch.questTemp.friend_in_tavern = ""; 
+	ch.questTemp.RelationAgentMet = "0"; 
 
-	ch.questTemp.NationQuest = ""; // взятая линейка квестов
+	ch.questTemp.NationQuest = ""; 
 
-	ch.GenQuest.BrothelCount = "0"; // счетчик посещений девочек
-	//ch.GenQuest.Hunter2Pause   = false; // признак бойни в форте на суше - не делать ОЗГов
-	ch.I_MAP_SHOW = false;  // boal карты смотрим из предметов
+	ch.GenQuest.BrothelCount = "0"; 
+	
+	ch.I_MAP_SHOW = false;  
 	ch.CameraHoldPos = false;
-	ch.CameraShipNPC = 0;// номер компаньона для камеры 0 - ГГ
-	ch.GenQuestFort.FarLocator = true; // для методов пихания фантомов в город
+	ch.CameraShipNPC = 0;
+	ch.GenQuestFort.FarLocator = true; 
     
     ch.GenQuest.Find_Merchant.lastspeak_date = "";
-    ch.GenQuest.ConvoyPassenger = ""; //структура недовольных по квесту доставки пассажира
+    ch.GenQuest.ConvoyPassenger = ""; 
 
-	// ==> состояние квеста текущей линейки
+	
 	ch.questTemp.State = "";
-	// ==> кол-во дней ожидания выдачи следующего квеста губером, стандарт - два дня
+	
 	ch.questTemp.Waiting_time = "2";
-	// ==> номер текущего квеста, присваиваем сразу второй, т.к. первый берется на момент первого обращения к губеру.
+	
 	ch.questTemp.CurQuestNumber = "2";
-	//параметры островов и бухт для корсарского метро, ПГГ, и много еще чего :)
+	
 	InitTravelMap();
-	// ==> проверка не посещение борделей после свадьбы
+	
 	pchar.RomanticQuest.HorseCheck = -1;
-	// ==> Количество карт в навигационном атласе
+	
 	ch.MapsAtlasCount = 0;
-	// ==> Номер пиратского флага (берется из текстуры персональных флагов ГГ)
+	
 	ch.Flags.Pirate = 3;
-	// ==> работорговец
-	ch.questTemp.Slavetrader = "canTakeQuest"; //сюда же пихаем флаг
-	// ==> выбор ростовщика-работорговца
-	SelectSlavetraderRendom(); //это непосредственно выбор
-	// ==>  нищие
+	
+	ch.questTemp.Slavetrader = "canTakeQuest"; 
+	
+	SelectSlavetraderRendom(); 
+	
 	PoormansInit();
-	// ==>  кол-во лута, отданного шлюхами
+	
 	pchar.questTemp.HorseLoot = 0;
-	// ==>  кол-во перетраха со шлюхами
+	
 	pchar.questTemp.HorseQty = 0;
-	// ==>  установим счетчик для фрахтов
+	
 	pchar.questTemp.WPU.Fraht.count = 0;
 	pchar.questTemp.WPU.Postcureer.count = 0;
 	pchar.questTemp.WPU.Escort.count = 0;
-	// ==> тюремный флаг на проход внутрь
+	
 	ch.questTemp.jailCanMove = false;
-	// ==> набор мелких квестов, дается по одному до закрытия
+	
 	ch.questTemp.different = "free";
 	ch.questTemp.WPU = "0";
-	//ситуации в море
+	
 	ch.CanGenerateShipSituation = true;
-	// ==> установка алхимии (знакомы рецепты или нет - по умолчанию на начало новой игры все рецепты не знакомы)
+	
 	InitAlchemy();
-	//==> Голландский гамбит - ключевые персонажи
+	
 	HollandGambitNpcInit();
-	//==> Бремя Гасконца - ключевые персонажи
+	
 	SharlieNpcInit();
-	//==> Пиратская Сага - ключевые персонажи
+	
 	SagaNpcInit();
-	//==> основные НПС LSC
+	
 	LSC_NpcInit();
-	//--> Мини-квесты, инициализирующиеся по достижении ранга
+	
 	pchar.quest.Red_Chieftain.win_condition.l1 = "Rank";
-	pchar.quest.Red_Chieftain.win_condition.l1.value = 8; // 280313
+	pchar.quest.Red_Chieftain.win_condition.l1.value = 8; 
 	pchar.quest.Red_Chieftain.win_condition.l1.operation = ">=";
 	pchar.quest.Red_Chieftain.function = "RedChieftain_Prepare";
 	pchar.quest.False_Trace.win_condition.l1 = "Rank";
-	pchar.quest.False_Trace.win_condition.l1.value = 15; // may-16
+	pchar.quest.False_Trace.win_condition.l1.value = 15; 
 	pchar.quest.False_Trace.win_condition.l1.operation = ">=";
 	pchar.quest.False_Trace.function = "FalseTrace_Prepare";
-	// --> мангароса
+	
 	pchar.quest.Mangarosa.win_condition.l1 = "item";
 	pchar.quest.Mangarosa.win_condition.l1.item = "cannabis7";
 	pchar.quest.Mangarosa.function = "Mangarosa_Start";
-	// --> пиратский антикач
+	
 	pchar.GenQuest.Piratekill = 0;
-	// --> счетчики посещений таверн и верфей - ugeen 2016, нужно для ачивок
+	
 	pchar.questTemp.TavernVisit.counter = 0;
 	pchar.questTemp.ShipyardVisit.counter = 0;
 }
 
-//==> eddy. квестовая обработка 'ноль часов'.
+
 void QuestActions()
 {
 	ref sld;
 	int i;
-	CompanionTravel_ProcessAllTravellers(); // Warship. Процессирование компаньонов-путешественников
-	// забираем просроченные лицензии
+	CompanionTravel_ProcessAllTravellers(); 
+	
 	for (i=0; i<4; i++)
 	{
 		if (CheckCharacterItem(pchar, NationShortName(i)+"TradeLicence") && GetDaysContinueNationLicence(i) == -1)
@@ -593,20 +593,20 @@ void QuestActions()
 		}		
 	}
 
-	//************** генератор "Продажный патруль" *********************************
+	
 	if(CheckAttribute(pchar, "questTemp.ReasonToFast"))
 	{
-		if(pchar.questTemp.ReasonToFast == "SpeakHorse") // не пришел в бухту
+		if(pchar.questTemp.ReasonToFast == "SpeakHorse") 
 		{
 			AddQuestRecord("ReasonToFast", "2");	
-			AddQuestUserData("ReasonToFast", "sSex", GetSexPhrase("","а"));			
+			AddQuestUserData("ReasonToFast", "sSex", GetSexPhrase("","пїЅ"));			
 			CloseQuestHeader("ReasonToFast");
 			pchar.questTemp.ReasonToFast.end = true;
 		}
-		if(pchar.questTemp.ReasonToFast == "MeetPatrolFail") // в бухту пришел не один или удачи не хватило
+		if(pchar.questTemp.ReasonToFast == "MeetPatrolFail") 
 		{
 			AddQuestRecord("ReasonToFast", "3");		
-			AddQuestUserData("ReasonToFast", "sSex", GetSexPhrase("ся","ась"));		
+			AddQuestUserData("ReasonToFast", "sSex", GetSexPhrase("пїЅпїЅ","пїЅпїЅпїЅ"));		
 			CloseQuestHeader("ReasonToFast");
 			pchar.questTemp.ReasonToFast.end = true;
 		}
@@ -622,12 +622,12 @@ void QuestActions()
 			DeleteAttribute(pchar, "questTemp.ReasonToFast");
 		}	
 	}
-	//************** генератор "Эпидемия на вражеском корабле" **********************
+	
 	if(CheckAttribute(pchar,"GenQuest.ShipSituation.Epidemy"))
 	{
 		ShipSituation_CheckConsequence(sti(pchar.GenQuest.ShipSituation.Epidemy));
 	}
-	//************** поверка нпс-кэпов 5 и 20 числа каждого месяца *******************
+	
 	if (GetDataDay() == 5 || GetDataDay() == 20)
 	{
 		if (CheckAttribute(NullCharacter, "capitainBase"))
@@ -640,29 +640,26 @@ void QuestActions()
     		for (a=0; a<Qty; a++)
     		{
     			arCapBase = GetAttributeN(arBase, a);
-				sName = GetAttributeName(arCapBase); //Id кэпа
+				sName = GetAttributeName(arCapBase); 
 				capIndex = GetCharacterIndex(sName);
-    			//---------- мертв ------------
+    			
 				if (capIndex == -1)
     			{	
-					//страховка. если квест еще открыт - закрываем его
-					/*if (CheckActiveQuest(arCapBase.Tilte1))
-					{
-						CitizCapIsDead_CloseQuest(arCapBase, sName);
-					}*/
+					
+					 
 					DeleteAttribute(arBase, sName);
-					Qty --; //для корректной работы цикла при удалении записи в базе
+					Qty --; 
 					a--;
 				}
-				//---------- жив ------------
+				
 				else
 				{
 					if (GetNpcQuestPastDayParam(arCapBase, "checkTime") >= sti(arCapBase.checkTime))
 					{
-						//if (characters[capIndex].location == "none" && characters[capIndex].quest == "InMap")
-						//{
+						
+						
 							Cap_SetMapAgain(&characters[capIndex], arCapBase);
-						//}
+						
 					}
 				}		
     		}
@@ -670,27 +667,27 @@ void QuestActions()
 	}
 }
 
-//снятие квеста, если энкаунтер кэпа исчез на карте
+
 void CitizCapIsDead_CloseQuest(aref arCapBase, string capId)
 {
 	ref sld;
 	string sTemp;
-	//снимаем установленный таймер
+	
 	sTemp = "SecondTimer_" + capId;
 	if (capId == "MushketCap") sTemp = "MushketTimer";
 	if (capId == "Danielle")   sTemp = "DanielleTimer";
 	pchar.quest.(sTemp).over = "yes";
-	//---------- нпс-квестодатель -------------
+	
 	int iTemp = GetCharacterIndex(arCapBase.questGiver);
 	if (iTemp != -1)
 	{
-		//снимаем прерывание на смерть квестодателя
+		
 		ref npchar = &characters[iTemp];
 		if (CheckAttribute(npchar, "quest.PortmansSeekShip") || CheckAttribute(npchar, "quest.PortmansJornal"))
 		{
 			DeleteAttribute(npchar, "quest.PortmansSeekShip");
 			DeleteAttribute(npchar, "quest.PortmansJornal");
-			npchar.quest = ""; //освобождаем личный флаг квеста для портмана
+			npchar.quest = ""; 
 		}
 		else
 		{
@@ -703,10 +700,10 @@ void CitizCapIsDead_CloseQuest(aref arCapBase, string capId)
 	string sTitle2 = arCapBase.Tilte2;
 }
 
-//переустанавливаем на карте живого, но потерянного кэпа
+
 void Cap_SetMapAgain(ref sld, aref arCapBase) 
 {
-	//в морскую группу кэпа
+	
 	string sGroup = "SeekCapShip_" + sld.index;
 	group_DeleteGroup(sGroup);
 	Group_FindOrCreateGroup(sGroup);
@@ -753,7 +750,7 @@ void Cap_SetMapAgain(ref sld, aref arCapBase)
 		Map_CreateTrader(sld.cityShore, sld.quest.targetShore, sld.id, sti(arCapBase.checkTime)-5);
 		break
 	}
-	//меняем сроки проверки по Id кэпа в базе нпс-кэпов
+	
 	string sTemp = sld.id;
 	NullCharacter.capitainBase.(sTemp).checkTime = iTemp + 5;
     NullCharacter.capitainBase.(sTemp).checkTime.control_day = GetDataDay();
@@ -761,19 +758,19 @@ void Cap_SetMapAgain(ref sld, aref arCapBase)
     NullCharacter.capitainBase.(sTemp).checkTime.control_year = GetDataYear();
 }
 
-// -- нищие --
+
 void PoormansInit()
 {
 	ref sld;
-	//нищий в Сент-Джонсе
+	
 	sld = GetCharacter(NPC_GenerateCharacter("SentJons_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, ENGLAND, -1, false, "slave"));
 	sld.city = "SentJons";	
 	sld.location	= "SentJons_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto6";
-	sld.forStay.locator = "goto6"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto6"; 
 	sld.forSit.locator0 = "goto15";
-	sld.forSit.locator1 = "goto17"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto17"; 
 	sld.forSit.locator2 = "goto4";
 	sld.Dialog.Filename = "Common_poorman.c";
 	LAi_SetPoorType(sld);
@@ -781,15 +778,15 @@ void PoormansInit()
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.greeting = "poorman_male";
 	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
-	//нищий в Бриджтауне
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Bridgetown_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, ENGLAND, -1, false, "slave"));
 	sld.city = "Bridgetown";
 	sld.location	= "Bridgetown_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto12";
-	sld.forStay.locator = "goto12"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto12"; 
 	sld.forSit.locator0 = "goto9";
-	sld.forSit.locator1 = "goto19"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto19"; 
 	sld.forSit.locator2 = "goto4";
 	sld.Dialog.Filename = "Common_poorman.c";
 	LAi_SetPoorType(sld);
@@ -797,15 +794,15 @@ void PoormansInit()
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.greeting = "poorman_male";
 	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
-	//нищий в Белизе
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Beliz_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, ENGLAND, -1, false, "slave"));
 	sld.city = "Beliz";
 	sld.location	= "Beliz_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto9";
-	sld.forStay.locator = "goto9"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto9"; 
 	sld.forSit.locator0 = "goto7";
-	sld.forSit.locator1 = "goto19"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto19"; 
 	sld.forSit.locator2 = "goto3";
 	sld.Dialog.Filename = "Common_poorman.c";
 	LAi_SetPoorType(sld);
@@ -813,15 +810,15 @@ void PoormansInit()
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.greeting = "poorman_male";
 	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
-	//нищий в Каракасе
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Caracas_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, SPAIN, -1, false, "slave"));
 	sld.city = "Caracas";
 	sld.location	= "Caracas_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto20";
-	sld.forStay.locator = "goto20"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto20"; 
 	sld.forSit.locator0 = "goto1";
-	sld.forSit.locator1 = "goto21"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto21"; 
 	sld.forSit.locator2 = "goto23";
 	sld.Dialog.Filename = "Common_poorman.c";
 	LAi_SetPoorType(sld);
@@ -829,15 +826,15 @@ void PoormansInit()
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.greeting = "poorman_male";
 	LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");
-	//нищий в Картахене
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Cartahena_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, SPAIN, -1, false, "slave"));
 	sld.city = "Cartahena";
 	sld.location	= "Cartahena_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto5";
-	sld.forStay.locator = "goto5"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto5"; 
 	sld.forSit.locator0 = "goto18";
-	sld.forSit.locator1 = "goto14"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto14"; 
 	sld.forSit.locator2 = "goto6";
 	sld.Dialog.Filename = "Common_poorman.c";
 	LAi_SetPoorType(sld);
@@ -845,15 +842,15 @@ void PoormansInit()
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.greeting = "poorman_male";
 	LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");
-	//нищий в Кумане
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Cumana_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, SPAIN, -1, false, "slave"));
 	sld.city = "Cumana";
 	sld.location	= "Cumana_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto5";
-	sld.forStay.locator = "goto5"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto5"; 
 	sld.forSit.locator0 = "goto13";
-	sld.forSit.locator1 = "goto15"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto15"; 
 	sld.forSit.locator2 = "goto3";
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.Dialog.Filename = "Common_poorman.c";
@@ -861,16 +858,16 @@ void PoormansInit()
 	LAi_SetHP(sld, 50.0, 50.0);
 	sld.greeting = "poorman_male";
 	LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");	
-	//нищий в Бас-Тере, Гваделупа
+	
 	
 	sld = GetCharacter(NPC_GenerateCharacter("BasTer_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, FRANCE, -1, false, "slave"));
 	sld.city = "BasTer";
 	sld.location	= "BasTer_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto18";
-	sld.forStay.locator = "goto18"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto18"; 
 	sld.forSit.locator0 = "goto24";
-	sld.forSit.locator1 = "goto16"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto16"; 
 	sld.forSit.locator2 = "goto17";
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.Dialog.Filename = "Common_poorman.c";
@@ -879,15 +876,15 @@ void PoormansInit()
 	sld.greeting = "poorman_male";
 	LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
 	
-	//нищий в Гаване
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Havana_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, SPAIN, -1, false, "slave"));
 	sld.city = "Havana";
 	sld.location	= "Havana_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto12";
-	sld.forStay.locator = "goto12"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto12"; 
 	sld.forSit.locator0 = "goto16";
-	sld.forSit.locator1 = "goto22"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto22"; 
 	sld.forSit.locator2 = "goto23";
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.Dialog.Filename = "Common_poorman.c";
@@ -895,15 +892,15 @@ void PoormansInit()
 	LAi_SetHP(sld, 50.0, 50.0);
 	sld.greeting = "poorman_male";
 	LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");
-	//нищий в Порт Рояле
+	
 	sld = GetCharacter(NPC_GenerateCharacter("PortRoyal_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, ENGLAND, -1, false, "slave"));
 	sld.city = "PortRoyal";
 	sld.location	= "PortRoyal_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto15";
-	sld.forStay.locator = "goto15"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto15"; 
 	sld.forSit.locator0 = "goto16";
-	sld.forSit.locator1 = "goto28"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto28"; 
 	sld.forSit.locator2 = "goto7";
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.Dialog.Filename = "Common_poorman.c";
@@ -911,15 +908,15 @@ void PoormansInit()
 	LAi_SetHP(sld, 50.0, 50.0);
 	sld.greeting = "poorman_male";
 	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
-	//нищий в Сен-Пьере, Мартиника
+	
 	sld = GetCharacter(NPC_GenerateCharacter("FortFrance_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, FRANCE, -1, false, "slave"));
 	sld.city = "FortFrance";
 	sld.location	= "FortFrance_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto4";
-	sld.forStay.locator = "goto4"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto4"; 
 	sld.forSit.locator0 = "goto14";
-	sld.forSit.locator1 = "goto10"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto10"; 
 	sld.forSit.locator2 = "goto1";
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.Dialog.Filename = "Common_poorman.c";
@@ -927,15 +924,15 @@ void PoormansInit()
 	LAi_SetHP(sld, 50.0, 50.0);
 	sld.greeting = "poorman_male";
 	LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
-	//нищий на Невисе
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Charles_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, FRANCE, -1, false, "slave"));
 	sld.city = "Charles";
 	sld.location	= "Charles_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto5";
-	sld.forStay.locator = "goto5"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto5"; 
 	sld.forSit.locator0 = "goto19";
-	sld.forSit.locator1 = "goto13"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto13"; 
 	sld.forSit.locator2 = "goto3";
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.Dialog.Filename = "Common_poorman.c";
@@ -943,15 +940,15 @@ void PoormansInit()
 	LAi_SetHP(sld, 50.0, 50.0);
 	sld.greeting = "poorman_male";
 	LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
-	//нищий в Порто Белло
+	
 	sld = GetCharacter(NPC_GenerateCharacter("PortoBello_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, SPAIN, -1, false, "slave"));
 	sld.city = "PortoBello";
 	sld.location	= "PortoBello_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto15";
-	sld.forStay.locator = "goto15"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto15"; 
 	sld.forSit.locator0 = "goto3";
-	sld.forSit.locator1 = "goto25"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto25"; 
 	sld.forSit.locator2 = "goto12";
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.Dialog.Filename = "Common_poorman.c";
@@ -959,15 +956,15 @@ void PoormansInit()
 	LAi_SetHP(sld, 50.0, 50.0);
 	sld.greeting = "poorman_male";
 	LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");
-	//нищий в Порт-о-Принс, Эспаньола
+	
 	sld = GetCharacter(NPC_GenerateCharacter("PortPax_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, FRANCE, -1, false, "slave"));
 	sld.city = "PortPax";
 	sld.location	= "PortPax_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto14";
-	sld.forStay.locator = "goto14"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto14"; 
 	sld.forSit.locator0 = "goto25";
-	sld.forSit.locator1 = "goto13"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto13"; 
 	sld.forSit.locator2 = "goto11";
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.Dialog.Filename = "Common_poorman.c";
@@ -975,15 +972,15 @@ void PoormansInit()
 	LAi_SetHP(sld, 50.0, 50.0);
 	sld.greeting = "poorman_male";
 	LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
-	//нищий в Сантьяго
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Santiago_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, SPAIN, -1, false, "slave"));
 	sld.city = "Santiago";
 	sld.location	= "Santiago_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto6";
-	sld.forStay.locator = "goto6"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto6"; 
 	sld.forSit.locator0 = "goto3";
-	sld.forSit.locator1 = "goto15"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto15"; 
 	sld.forSit.locator2 = "goto28";
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.Dialog.Filename = "Common_poorman.c";
@@ -991,15 +988,15 @@ void PoormansInit()
 	LAi_SetHP(sld, 50.0, 50.0);
 	sld.greeting = "poorman_male";
 	LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");
-	//нищий в Мариго, Сан Мартин
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Marigo_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, HOLLAND, -1, false, "slave"));
 	sld.city = "Marigo";
 	sld.location	= "Marigo_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto16";
-	sld.forStay.locator = "goto16"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto16"; 
 	sld.forSit.locator0 = "goto1";
-	sld.forSit.locator1 = "goto4"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto4"; 
 	sld.forSit.locator2 = "goto9";
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.Dialog.Filename = "Common_poorman.c";
@@ -1007,15 +1004,15 @@ void PoormansInit()
 	LAi_SetHP(sld, 50.0, 50.0);
 	sld.greeting = "poorman_male";
 	LAi_group_MoveCharacter(sld, "HOLLAND_CITIZENS");
-	//нищий в Тортуге
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Tortuga_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, FRANCE, -1, false, "slave"));
 	sld.city = "Tortuga";
 	sld.location	= "Tortuga_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto23";
-	sld.forStay.locator = "goto23"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto23"; 
 	sld.forSit.locator0 = "goto16";
-	sld.forSit.locator1 = "goto18"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto18"; 
 	sld.forSit.locator2 = "goto1";
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.Dialog.Filename = "Common_poorman.c";
@@ -1023,15 +1020,15 @@ void PoormansInit()
 	LAi_SetHP(sld, 50.0, 50.0);
 	sld.greeting = "poorman_male";
 	LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
-	//нищий в Порт Спейне, Тринидад
+	
 	sld = GetCharacter(NPC_GenerateCharacter("PortSpein_Poorman", "panhandler_"+(rand(5)+1), "man", "man", 5, SPAIN, -1, false, "slave"));
 	sld.city = "PortSpein";
 	sld.location	= "PortSpein_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto6";
-	sld.forStay.locator = "goto6"; //где генеримся в случае стояния
+	sld.forStay.locator = "goto6"; 
 	sld.forSit.locator0 = "goto9";
-	sld.forSit.locator1 = "goto14"; //три локатора, где генеримся в случае сидения
+	sld.forSit.locator1 = "goto14"; 
 	sld.forSit.locator2 = "goto1";
 	LAi_SetLoginTime(sld, 9.0, 21.99);
 	sld.Dialog.Filename = "Common_poorman.c";
@@ -1041,7 +1038,7 @@ void PoormansInit()
 	LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");
 }
 
-//ищем город определенной нации, проверять наличие ростовщика и тавернщика
+
 string GetQuestNationsCity(int _nation) 
 {
 	int n, iRes;
@@ -1050,7 +1047,7 @@ string GetQuestNationsCity(int _nation)
 
 	for(n=0; n<MAX_COLONIES; n++)
 	{
-		if (colonies[n].nation != "none"  && colonies[n].id != "Panama" && colonies[n].id != "Minentown" && colonies[n].id != "SanAndres" && sti(colonies[n].nation) == _nation && GiveArealByLocation(loadedLocation) != colonies[n].island) //не на свой остров
+		if (colonies[n].nation != "none"  && colonies[n].id != "Panama" && colonies[n].id != "Minentown" && colonies[n].id != "SanAndres" && sti(colonies[n].nation) == _nation && GiveArealByLocation(loadedLocation) != colonies[n].island) 
 		{
 			if (GetCharacterIndex(colonies[n].id + "_tavernkeeper") > 0 && GetCharacterIndex(colonies[n].id + "_usurer") > 0)
 			{
@@ -1064,7 +1061,7 @@ string GetQuestNationsCity(int _nation)
 	return colonies[iRes].id;
 }
 
-//ищем не вражескую колонию, куда можно доплыть
+
 string SelectNotEnemyColony(ref NPChar)
 {
 	int n, nation;
@@ -1074,7 +1071,7 @@ string SelectNotEnemyColony(ref NPChar)
 	for(n=0; n<MAX_COLONIES; n++)
 	{
 		nation = GetNationRelation(sti(npchar.nation), sti(colonies[n].nation));
-		if (nation != RELATION_ENEMY && colonies[n].id != "Panama" && colonies[n].id != "Minentown" && colonies[n].id != "SanAndres" && colonies[n].id != "FortOrange" && colonies[n].nation != "none" && sti(colonies[n].nation) != PIRATE && GetIslandByCityName(npchar.city) != colonies[n].islandLable) //не на свой остров
+		if (nation != RELATION_ENEMY && colonies[n].id != "Panama" && colonies[n].id != "Minentown" && colonies[n].id != "SanAndres" && colonies[n].id != "FortOrange" && colonies[n].nation != "none" && sti(colonies[n].nation) != PIRATE && GetIslandByCityName(npchar.city) != colonies[n].islandLable) 
 		{
 			storeArray[howStore] = n;
 			howStore++;
@@ -1085,7 +1082,7 @@ string SelectNotEnemyColony(ref NPChar)
 	return colonies[nation].id;
 }
 
-//ищем любую национальную колонию, куда можно доплыть
+
 string SelectAnyColony(string _City)
 {
 	int n, nation;
@@ -1094,7 +1091,7 @@ string SelectAnyColony(string _City)
 
 	for(n=0; n<MAX_COLONIES; n++)
 	{
-		if (colonies[n].id != "Panama" && colonies[n].id != "Minentown" && colonies[n].id != "SanAndres" && colonies[n].id != "FortOrange" && colonies[n].nation != "none" && sti(colonies[n].nation) != PIRATE && GetIslandByCityName(_City) != colonies[n].islandLable) //не на свой остров
+		if (colonies[n].id != "Panama" && colonies[n].id != "Minentown" && colonies[n].id != "SanAndres" && colonies[n].id != "FortOrange" && colonies[n].nation != "none" && sti(colonies[n].nation) != PIRATE && GetIslandByCityName(_City) != colonies[n].islandLable) 
 		{
 			storeArray[howStore] = n;
 			howStore++;
@@ -1113,7 +1110,7 @@ string SelectAnyColony2(string _City1, string _City2)
 
 	for(n=0; n<MAX_COLONIES; n++)
 	{
-		if (colonies[n].id != "Panama" && colonies[n].id != "Minentown" && colonies[n].id != "SanAndres" && colonies[n].id != "FortOrange" && colonies[n].nation != "none" && sti(colonies[n].nation) != PIRATE && GetIslandByCityName(_City1) != colonies[n].islandLable && GetIslandByCityName(_City2) != colonies[n].islandLable) //не на свой остров
+		if (colonies[n].id != "Panama" && colonies[n].id != "Minentown" && colonies[n].id != "SanAndres" && colonies[n].id != "FortOrange" && colonies[n].nation != "none" && sti(colonies[n].nation) != PIRATE && GetIslandByCityName(_City1) != colonies[n].islandLable && GetIslandByCityName(_City2) != colonies[n].islandLable) 
 		{
 			storeArray[howStore] = n;
 			howStore++;
@@ -1124,26 +1121,20 @@ string SelectAnyColony2(string _City1, string _City2)
 	return colonies[nation].id;
 }
 
-//отдать забытый судовой журнал. помещаем в город кэпа, который приплыл к назначенной колонии
+
 void SetCapitainFromSeaToCity(string sChar)
 {
 	ref sld = &characters[GetCharacterIndex(sChar)];
-	sld.quest = "InCity"; //флаг в городе
-	sld.City = sld.quest.targetCity; //аттрибут текущего города пропишем
+	sld.quest = "InCity"; 
+	sld.City = sld.quest.targetCity; 
 	sld.location	= sld.City + "_PortOffice";
 	sld.location.group = "goto";
 	sld.location.locator = "goto"+(rand(2)+1);
 	LAi_SetCitizenType(sld);
 
-	/*int iColony = FindColony(sld.City);
-	string sGroup = "PorpmansShip_" + sld.index;
-	group_DeleteGroup(sGroup);
-	Group_AddCharacter(sGroup, sld.id);			
-	Group_SetGroupCommander(sGroup, sld.id);
-	Group_SetAddress(sGroup, colonies[iColony].island, "quest_ships", "Quest_ship_"+(rand(2)+1));
-	Group_SetTaskNone(sGroup);*/
+	 
 
-	//таймер через сколько опять выйти в море
+	
 	int Qty = rand(4)+3;
 	string name = "Timer_" + sld.id;
 	PChar.quest.(name).win_condition.l1            = "Timer";
@@ -1151,19 +1142,19 @@ void SetCapitainFromSeaToCity(string sChar)
     PChar.quest.(name).win_condition.l1.date.month = GetAddingDataMonth(0, 0, Qty);
     PChar.quest.(name).win_condition.l1.date.year  = GetAddingDataYear(0, 0, Qty);
     PChar.quest.(name).function					= "SetCapitainFromCityToSea";
-	pchar.quest.(name).CapId = sld.id; //в прерывании запомним Id кэпа
-	//обновим дату в базе для контроля кэпов на суше
+	pchar.quest.(name).CapId = sld.id; 
+	
 	string sTemp = sld.id;
 	NullCharacter.capitainBase.(sTemp).checkTime = Qty + 5;
     NullCharacter.capitainBase.(sTemp).checkTime.control_day = GetDataDay();
     NullCharacter.capitainBase.(sTemp).checkTime.control_month = GetDataMonth();
     NullCharacter.capitainBase.(sTemp).checkTime.control_year = GetDataYear();
-	//даем слух, что кэп в городе
+	
 	AddSimpleRumourCity(LinkRandPhrase("Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is in the city. He must be in a harbor office.", 
 		"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is in the city. He must be in a harbor office.", 
 		"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is in the city. He must be in a harbor office."), sld.City, Qty, 1, "none");
 }
-//отдать забытый судовой журнал. записть в квестбук из слухов
+
 void PortmansBook_writeQuestBook(ref rid)
 {
 	int iTemp = GetCharacterIndex(rid.addString)
@@ -1183,14 +1174,14 @@ void PortmansBook_writeQuestBook(ref rid)
 	}
 }
 
-//разыскать кэпа-вора. помещаем в город кэпа, который приплыл к назначенной колонии
+
 void SetRobberFromMapToSea(string sChar)
 {
 	ref sld = &characters[GetCharacterIndex(sChar)];
-	sld.quest = "InPort"; //флаг кэпа стоит в порту
-	sld.City = sld.quest.targetCity; //аттрибут текущего города пропишем
+	sld.quest = "InPort"; 
+	sld.City = sld.quest.targetCity; 
 	int iColony = FindColony(sld.City);
-	sld.nation = colonies[iColony].nation; //нацию дадим, что и у города
+	sld.nation = colonies[iColony].nation; 
 
 	string sGroup = "SeekCapShip_" + sld.index;
 	group_DeleteGroup(sGroup);
@@ -1199,7 +1190,7 @@ void SetRobberFromMapToSea(string sChar)
 	Group_SetAddress(sGroup, colonies[iColony].island, "quest_ships", "Quest_ship_"+(rand(2)+1));
 	Group_SetTaskNone(sGroup);
 
-	//таймер через сколько опять выйти на карту
+	
 	int Qty = rand(5)+4;
 	string name = "SecondTimer_" + sld.id;
 	PChar.quest.(name).win_condition.l1            = "Timer";
@@ -1207,19 +1198,19 @@ void SetRobberFromMapToSea(string sChar)
     PChar.quest.(name).win_condition.l1.date.month = GetAddingDataMonth(0, 0, Qty);
     PChar.quest.(name).win_condition.l1.date.year  = GetAddingDataYear(0, 0, Qty);
     PChar.quest.(name).function					= "SetRobberFromSeaToMap";
-	pchar.quest.(name).CapId = sld.id; //в прерывании запомним Id кэпа
-	//обновим дату в базе для контроля кэпов на суше
+	pchar.quest.(name).CapId = sld.id; 
+	
 	string sTemp = sld.id;
 	NullCharacter.capitainBase.(sTemp).checkTime = Qty + 5;
     NullCharacter.capitainBase.(sTemp).checkTime.control_day = GetDataDay();
     NullCharacter.capitainBase.(sTemp).checkTime.control_month = GetDataMonth();
     NullCharacter.capitainBase.(sTemp).checkTime.control_year = GetDataYear();
-	//даем слух, что кэп на рейде
+	
 	AddSimpleRumourCity(LinkRandPhrase("Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is on his vessel at the port. Odd fellow, I say, never put his steps ashore.", 
 		"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is on his vessel at the port. Odd fellow, I say, never put his steps ashore.", 
 		"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is on his vessel at the port. Odd fellow, I say, never put his steps ashore."), sld.City, Qty, 1, "none");
 }
-//разыскать кэпа-вора. запись в квестбук из слухов
+
 void PortmansSeekShip_writeQuestBook(ref rid)
 {
 	int iTemp = GetCharacterIndex(rid.addString)
@@ -1234,7 +1225,7 @@ void PortmansSeekShip_writeQuestBook(ref rid)
 		AddQuestUserData(sTitle, "sShipName", sld.Ship.name);
 		AddQuestUserData(sTitle, "sCity", XI_ConvertString("Colony" + rid.city + "Gen"));
 		iTemp = RealShips[sti(sld.Ship.Type)].basetype;
-		AddQuestUserData(sTitle, "sSexWord", GetShipSexWord(ShipsTypes[iTemp].name, "ушел", "ушла"));
+		AddQuestUserData(sTitle, "sSexWord", GetShipSexWord(ShipsTypes[iTemp].name, "пїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅ"));
 		AddQuestUserData(sTitle, "sTargetCity", XI_ConvertString("Colony" + sld.quest.targetCity + "Acc"));
 		if (GetIslandByCityName(sld.quest.targetCity) != sld.quest.targetCity)
 		{
@@ -1243,50 +1234,50 @@ void PortmansSeekShip_writeQuestBook(ref rid)
 	}
 }
 
-//розыск кэпов горожанами
+
 void CitizCapFromMapToCity(string sChar)
 {
 	ref sld = &characters[GetCharacterIndex(sChar)];
-	sld.quest = "InCity"; //флаг кэпа ходит по городу
-	sld.City = sld.quest.targetCity; //аттрибут текущего города пропишем
+	sld.quest = "InCity"; 
+	sld.City = sld.quest.targetCity; 
 	int iColony = FindColony(sld.City);
-	sld.nation = colonies[iColony].nation; //нацию дадим, что и у города
+	sld.nation = colonies[iColony].nation; 
 	if (rand(1))
-	{	//ходит в городе
+	{	
 		sld.location	= sld.City + "_town";
 		sld.location.group = "goto";
 		sld.location.locator = "goto"+(rand(5)+1);
 		LAi_SetCitizenType(sld);
 		string slai_group = GetNationNameByType(sti(colonies[iColony].nation))  + "_citizens";
 		LAi_group_MoveCharacter(sld, slai_group);
-		//даем слух, что кэп на рейде
+		
 		AddSimpleRumourCity(LinkRandPhrase("Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is the city. His name is " + GetFullName(sld) + ", I believe.", 
 			"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is the city.", 
-			"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is the city. His name is " + GetFullName(sld) + ", I believe. " + GetFullName(sld) + " вроде бы его зовут..."), sld.City, Qty, 1, "none");
+			"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is the city. His name is " + GetFullName(sld) + ", I believe. " + GetFullName(sld) + " пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ..."), sld.City, Qty, 1, "none");
 	}
 	else
-	{	//стоит на рейде в порту
+	{	
 		string sGroup = "SeekCapShip_" + sld.index;
 		group_DeleteGroup(sGroup);
 		Group_AddCharacter(sGroup, sld.id);			
 		Group_SetGroupCommander(sGroup, sld.id);
 		Group_SetAddress(sGroup, colonies[iColony].island, "quest_ships", "Quest_ship_"+(rand(2)+1));
 		Group_SetTaskNone(sGroup);
-		//даем слух, что кэп на рейде
+		
 		AddSimpleRumourCity(LinkRandPhrase("Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is on his vessel at the port. His name is " + GetFullName(sld) + ", I believe.", 
 			"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is on his vessel at the port.", 
 			"Captain " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "' is on his vessel at the port. His name is " + GetFullName(sld) + ", I believe."), sld.City, Qty, 1, "none");
 	}
-	//таймер через сколько опять выйти на карту
-	int Qty = rand(7)+5; //через сколько дней выйдем на карту
+	
+	int Qty = rand(7)+5; 
 	string name = "SecondTimer_" + sld.id;
 	PChar.quest.(name).win_condition.l1            = "Timer";
     PChar.quest.(name).win_condition.l1.date.day   = GetAddingDataDay(0, 0, Qty);
     PChar.quest.(name).win_condition.l1.date.month = GetAddingDataMonth(0, 0, Qty);
     PChar.quest.(name).win_condition.l1.date.year  = GetAddingDataYear(0, 0, Qty);
     PChar.quest.(name).function					= "CitizCapFromSeaToMap";
-	pchar.quest.(name).CapId = sld.id; //в прерывании запомним Id кэпа
-	//обновим дату в базе для контроля кэпов на суше
+	pchar.quest.(name).CapId = sld.id; 
+	
 	string sTemp = sld.id;
 	NullCharacter.capitainBase.(sTemp).checkTime = Qty + 5;
     NullCharacter.capitainBase.(sTemp).checkTime.control_day = GetDataDay();
@@ -1294,7 +1285,7 @@ void CitizCapFromMapToCity(string sChar)
     NullCharacter.capitainBase.(sTemp).checkTime.control_year = GetDataYear();
 }
 
-//разыск кэпа от горожан. запись в квестбук из слухов
+
 void CitizSeekCap_writeQuestBook(ref rid)
 {
 	int iTemp = GetCharacterIndex(rid.addString)
@@ -1315,7 +1306,7 @@ void CitizSeekCap_writeQuestBook(ref rid)
 	}
 }
 
-//таймер
+
 void SetShowTimer(float time)
 {
 	pchar.showTimer = time + 0.99;
@@ -1330,15 +1321,15 @@ void ClearTimer(string qName)
 	ClearAllLogStrings();
 }
 
-//создание резервной базы на абордажников для юза нефритового черепа
+
 void CopyPassForAztecSkull()
 {
 	if (CheckCharacterItem(pchar, "SkullAztec"))
 	{	
-        //сносим старую базу
+        
 		DeleteAttribute(pchar, "AztecSkull");
 		pchar.AztecSkull = "";
-		//заполняем архивную базу 
+		
 		string sTemp,;
 		aref	arFromBox, arToBox;
     	makearef(arFromBox, pchar.fellows.passengers.officers);
@@ -1364,7 +1355,7 @@ bool IsAztecSkullOfficer(ref sld)
 	return false;
 }
 
-// --> ugeen 20.06.09 - проверка на наличие карт у ГГ
+
 bool CheckMainHeroMap(string itemName)
 {
     if( CheckAttribute(pchar,"Items."+itemName) && sti(pchar.Items.(itemName))>0 )	
@@ -1373,14 +1364,14 @@ bool CheckMainHeroMap(string itemName)
 	}
 	return false;	
 }
-// <-- ugeen
 
-// Инициализация прочих квестов. Warship
+
+
 void OtherQuestCharactersInit()
 {
 }
 
-// Warship 07.07.09 Пасхалка - бригантина "Мэри Селест"
+
 void MaryCelesteInit()
 {
 	ref character, realShip;
@@ -1388,11 +1379,9 @@ void MaryCelesteInit()
 	String seaGroup = "MaryCelesteGroup";
 	int good;
 	
-	// Сцуко.. В функции низя делать как generableGoods[15] = { GOOD_FOOD, GOOD_WEAPON, ... }; - дает ошибку
-	// Если вынести из функции, то все норм
-	/*int generableGoods[15] = { GOOD_FOOD, GOOD_WEAPON, GOOD_MAHOGANY, GOOD_MEDICAMENT, GOOD_ROPES,
-		GOOD_SANDAL, GOOD_COFFEE, GOOD_CLOTHES, GOOD_EBONY, GOOD_TOBACCO,
-		GOOD_CHOCOLATE, GOOD_WINE, GOOD_RUM, GOOD_CINNAMON, GOOD_LEATHER };*/
+	
+	
+	 
 	
 	int generableGoods[15];
 	
@@ -1420,20 +1409,20 @@ void MaryCelesteInit()
 	character.mapEnc.Name = "brigantine 'Mary Celeste'";
 	LAi_SetImmortal(character, true);
 	SetCharacterGoods(character, GOOD_RUM, 700);
-	Character_SetAbordageEnable(character, false); // Низя абордировать
+	Character_SetAbordageEnable(character, false); 
 	
-	SetCrewQuantityOverMax(character, 0); // Никого живого
+	SetCrewQuantityOverMax(character, 0); 
 	
 	realShip = GetRealShip(GetCharacterShipType(character));
 	
 	PChar.QuestTemp.MaryCeleste = "NotFind";
-	PChar.QuestTemp.MaryCeleste.TurnRate = realShip.TurnRate; // Запомним, потом восстановим для интерфейса
+	PChar.QuestTemp.MaryCeleste.TurnRate = realShip.TurnRate; 
 	
-	realShip.lowpolycrew = 0; // Нету никого на палубе
-	realShip.TurnRate = 1; // Чтоб не особо изворотливым был
+	realShip.lowpolycrew = 0; 
+	realShip.TurnRate = 1; 
 	realShip.capacity = 2820;
 	
-	NullCharacterGoods(character); // Нулим товары в трюме
+	NullCharacterGoods(character); 
 	
 	AddCharacterGoodsSimple(character, GOOD_BALLS, 		200 + rand(50));
 	AddCharacterGoodsSimple(character, GOOD_GRAPES, 	200 + rand(50));
@@ -1447,12 +1436,12 @@ void MaryCelesteInit()
 	AddCharacterGoodsSimple(character, GOOD_PLANKS,     20  + rand(30));
 	
 	good = generableGoods[rand(14)];
-	// GetCharacterFreeSpace(ref _refCharacter,int _Goods) - вернет сколько можно положить данного товара в трюм персонажу
+	
 	AddCharacterGoodsSimple(character, good, GetCharacterFreeSpace(character, good) - 1);
 	
-	character.AlwaysFriend = true; // Друзья навек
-	character.ShipEnemyDisable = true; // Флаг не обижаться на выстрелы
-	character.CanDropSails = false; // Низя спускать паруса
+	character.AlwaysFriend = true; 
+	character.ShipEnemyDisable = true; 
+	character.CanDropSails = false; 
 	
 	Group_FindOrCreateGroup(seaGroup);
 	Group_SetTaskAttackInMap(seaGroup, PLAYER_GROUP);
@@ -1461,17 +1450,17 @@ void MaryCelesteInit()
 	Group_SetGroupCommander(seaGroup, capID);
 	SetRandGeraldSail(character, ENGLAND);
 	
-	character.fromCity = SelectAnyColony(""); // Колония, из бухты которой выйдет
+	character.fromCity = SelectAnyColony(""); 
 	character.fromShore = GetIslandRandomShoreId(GetArealByCityName(character.fromCity));
-	character.toCity = SelectAnyColony(character.fromCity); // Колония, в бухту которой придет
+	character.toCity = SelectAnyColony(character.fromCity); 
 	character.toShore = GetIslandRandomShoreId(GetArealByCityName(character.toCity));
 	
 	Map_CreateTrader(character.fromShore, character.toShore, capID, GetMaxDaysFromIsland2Island(GetArealByCityName(character.toCity), GetArealByCityName(character.fromCity)));
 	
-	//trace("Бригантина Мэри Селест вышла из " + character.fromCity + " и направилась в " + character.toShore);
+	
 }
 
-/// -------------------------------------------- для тестовых нужд ! не вытирать !!! --------------------------
+
 void TestShipInCurrentSea()
 {
 	ref sld;
@@ -1482,7 +1471,7 @@ void TestShipInCurrentSea()
 	Group_SetType("Pirate_Attack", "war");
 	
 	sld = GetCharacter(NPC_GenerateCharacter("CaptainAttack_1", "mercen_"+(rand(14)+14), "man", "man", 10, PIRATE, 3, true, "quest"));
-	FantomMakeSmallSailor(sld, SHIP_VALCIRIA, "Валькирия", CANNON_TYPE_CANNON_LBS20, 60+rand(10), 55+rand(20), 55+rand(20), 50+rand(15), 55+rand(25));
+	FantomMakeSmallSailor(sld, SHIP_VALCIRIA, "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ", CANNON_TYPE_CANNON_LBS20, 60+rand(10), 55+rand(20), 55+rand(20), 50+rand(15), 55+rand(25));
 	FantomMakeCoolFighter(sld, iRank, 60, 60, "blade_14", "pistol3", "grapeshot", 100);
 
 	Group_AddCharacter("Pirate_Attack", "CaptainAttack_1");
@@ -1506,6 +1495,7 @@ void TestShipInCurrentSea()
 	SetCharacterRelationBoth(sti(sld.index), GetMainCharacterIndex(), RELATION_ENEMY);
 	
 	Sea_LoginGroupCurrentSea("Pirate_Attack");
-	log_info("Валькирия на горизонте!");
+	log_info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
 	PlaySound("interface\_EvEnemy1.wav");
 }
+

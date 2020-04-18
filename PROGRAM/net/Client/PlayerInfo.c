@@ -40,3 +40,4 @@ void NetClient_OnPlayerInfo(int iMsg)
 		break;
 	}
 }
+

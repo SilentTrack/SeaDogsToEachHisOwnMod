@@ -2,7 +2,7 @@
 
 int LocationInitKhaelRoa(int n)
 {
-	// -------------------------------------------------
+	
 	Locations[n].id = "KhaelRoa_port";
 	Locations[n].worldmap = "Khael Roa";
 	Locations[n].filespath.models = "locations\Incas Temple\Port";
@@ -10,35 +10,25 @@ int LocationInitKhaelRoa(int n)
 	locations[n].id.label = "Shore64";
 	locations[n].islandId = "KhaelRoa";
 	locations[n].onUninhabitedIsland = true;
-	locations[n].Chestgennot = true; // не генерить сундуки
-	//Sound
+	locations[n].Chestgennot = true; 
+	
 	locations[n].type = "seashore";
-	//Models
-	//Always
+	
+	
 	Locations[n].models.always.locators = "KRport_l";
 	Locations[n].models.always.shore = "KRport";
 	Locations[n].models.always.seabed = "KRport_sb";
 	Locations[n].models.always.grasspatch = "KRport_g";	
 	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
-/*	
-	Locations[n].models.always.l1 = "plan1";
-	Locations[n].models.always.l1.level = 9;
-	Locations[n].models.always.l1.tech = "LocationModelBlend";
-	Locations[n].models.always.l2 = "plan2";
-	Locations[n].models.always.l2.level = 8;
-	Locations[n].models.always.l2.tech = "LocationModelBlend";
-	Locations[n].models.always.l3 = "plan3";
-	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";		
-*/	
-	//Day
+ 	
+	
 	Locations[n].models.day.charactersPatch = "KRport_p";	
-	//Night
+	
 	Locations[n].models.night.charactersPatch = "KRport_p";
-	//Environment
+	
 	Locations[n].environment.weather = "true";
 	Locations[n].environment.sea = "true";
-	//Reload map
+	
 	Locations[n].reload.l1.name = "reload2";
 	Locations[n].reload.l1.go = "KhaelRoa";
 	Locations[n].reload.l1.emerge = "reload_1";
@@ -57,30 +47,30 @@ int LocationInitKhaelRoa(int n)
 
 	n = n + 1;
 	
-	// -------------------------------------------------
+	
 	Locations[n].id = "Temple_h";
 	Locations[n].filespath.models = "locations\Incas Temple\Temple\";
-	//Sound
+	
 	locations[n].type = "questisland";
 	Locations[n].image = "loading\outside\temple.tga";
 	locations[n].id.label = "Incas Temple";
-	//Models
-	//Always
+	
+	
 	Locations[n].models.always.locators = "hram_l";
 	Locations[n].models.always.l1 = "Hram";
 	Locations[n].models.always.grasspatch = "hram_g";	
-	//Day
+	
 	Locations[n].models.day.charactersPatch = "Hram_p";
 	Locations[n].models.day.jumppatch = "hram_j";
-	//Night
+	
 	Locations[n].models.night.charactersPatch = "Hram_p";
 	Locations[n].models.night.jumppatch = "hram_j";
 
-	//Environment
+	
 	Locations[n].environment.weather = "true";
 	Locations[n].environment.sea = "false";
 
-	//Reload map
+	
 	Locations[n].reload.l1.name = "reload1";
 	Locations[n].reload.l1.go = "KhaelRoa_port";
 	Locations[n].reload.l1.emerge = "reload1";
@@ -100,27 +90,27 @@ int LocationInitKhaelRoa(int n)
 	n = n + 1;
 
 
-	// -------------------------------------------------
+	
 	Locations[n].id = "Labirint_1";
 	Locations[n].filespath.models = "locations\Incas Temple\Labirint\";
-	//Sound
+	
 	Locations[n].image = "loading\outside\TempleInside.tga";
 	locations[n].type = "teno_inside";
 	locations[n].id.label = "Maze";
-	//Models
-	//Always
+	
+	
 	Locations[n].models.always.locators = "lab1_l";
 	Locations[n].models.always.l1 = "lab1";
-	//Day
+	
 	Locations[n].models.day.charactersPatch = "lab1_p";
-	//Night
+	
 	Locations[n].models.night.charactersPatch = "lab1_p";
-	//Environment
+	
 	Locations[n].environment.weather = "true";
 	Locations[n].environment.sea = "false";
 	Locations[n].lockWeather = "Alcove";
 	
-	//Reload map
+	
 
 	Locations[n].reload.l2.name = "reload4";
 	Locations[n].reload.l2.go = "labirint_2";
@@ -214,27 +204,27 @@ int LocationInitKhaelRoa(int n)
 
 	n = n + 1;
 	
-	// -------------------------------------------------
+	
 	Locations[n].id = "Labirint_2";
 	Locations[n].filespath.models = "locations\Incas Temple\Labirint\";
-	//Sound
+	
 		Locations[n].image = "loading\outside\TempleInside.tga";
 	locations[n].type = "teno_inside";
 	locations[n].id.label = "Maze";
-	//Models
-	//Always
+	
+	
 	Locations[n].models.always.locators = "lab2_l";
 	Locations[n].models.always.l1 = "lab2";
-	//Day
+	
 	Locations[n].models.day.charactersPatch = "lab2_p";
-	//Night
+	
 	Locations[n].models.night.charactersPatch = "lab2_p";
-	//Environment
+	
 	Locations[n].environment.weather = "true";
 	Locations[n].environment.sea = "false";
 	Locations[n].lockWeather = "Alcove";
 	
-	//Reload map
+	
 
 	Locations[n].reload.l2.name = "reload3";
 	Locations[n].reload.l2.go = "labirint_1";
@@ -308,28 +298,28 @@ int LocationInitKhaelRoa(int n)
       
     n = n + 1;
 	
-	// -------------------------------------------------
+	
 	Locations[n].id = "Labirint_3";
 	Locations[n].filespath.models = "locations\Incas Temple\Labirint\";
-	//Sound
+	
 	Locations[n].image = "loading\outside\TempleInside.tga";
 	locations[n].type = "teno_inside";
 	locations[n].id.label = "Maze";
-	//Models
-	//Always
+	
+	
 	Locations[n].models.always.locators = "lab3_l";
 	Locations[n].models.always.l1 = "lab3";
 	Locations[n].models.always.l2 = "lab3_blocks";
-	//Day
+	
 	Locations[n].models.day.charactersPatch = "lab3_p";
-	//Night
+	
 	Locations[n].models.night.charactersPatch = "lab3_p";
-	//Environment
+	
 	Locations[n].environment.weather = "true";
 	Locations[n].environment.sea = "false";
 	Locations[n].lockWeather = "Alcove";
 
-	//Reload map
+	
 	Locations[n].reload.l2.name = "reload13";
 	Locations[n].reload.l2.go = "labirint_2";
 	Locations[n].reload.l2.emerge = "reload14";
@@ -397,24 +387,24 @@ int LocationInitKhaelRoa(int n)
 
 	n = n + 1;
 
-	// -------------------------------------------------
+	
 	Locations[n].id = "Treasure_Alcove";
 	Locations[n].filespath.models = "locations\Incas Temple\Alcove\";
-	//Sound
+	
 	Locations[n].image = "loading\outside\TempleInside.tga";
 	locations[n].type = "Alcove";
 	locations[n].id.label = "Alcove";
-	//Models
-	//Always
+	
+	
 	Locations[n].models.always.locators = "Alcove_l";
 	Locations[n].models.always.l1 = "alcove";
-	//Rays
+	
 	Locations[n].models.always.l2 = "rays";
 	Locations[n].models.always.l2.level = 100;
 	Locations[n].models.always.l2.tech = "LocVisRays";
 	Locations[n].models.always.l2.uvslide.u1 = -0.02;
 	Locations[n].models.always.l2.uvslide.v1 = -0.02;
-	//Artifact
+	
 	Locations[n].models.always.l3 = "artifact";
 	Locations[n].models.always.l3.locator.name = "artifact";
 	Locations[n].models.always.l3.locator.group = "gm";
@@ -423,13 +413,13 @@ int LocationInitKhaelRoa(int n)
 	Locations[n].models.always.l3.rotate.z = 0.0;
 	Locations[n].models.always.l3.tech = "EnvironmentShader";
 	Locations[n].models.always.l3.reflection = 0.4;
-	//Bird
+	
 	Locations[n].models.always.l4 = "Bird";
 	Locations[n].models.always.l4.locator.name = "Bird";
 	Locations[n].models.always.l4.locator.group = "gm";
 	Locations[n].models.always.l4.tech = "EnvironmentShader";
 	Locations[n].models.always.l4.reflection = 0.4;
-	//Blue portal
+	
 	Locations[n].models.always.blue1 = "Blueport";
 	Locations[n].models.always.blue1.level = 100;
 	Locations[n].models.always.blue1.tech = "LocVisRays";
@@ -438,16 +428,16 @@ int LocationInitKhaelRoa(int n)
 	Locations[n].models.always.blue1.uvslide.u1 = 0.16;
 	Locations[n].models.always.blue1.uvslide.v1 = 0.00;
 
-	//Day
+	
 	Locations[n].models.day.charactersPatch = "alcove_p";
-	//Night
+	
 	Locations[n].models.night.charactersPatch = "alcove_p";
-	//Environment
+	
 	Locations[n].environment.weather = "true";
 	Locations[n].environment.sea = "false";
 	Locations[n].lockWeather = "Alcove";
 
-	//Reload map
+	
 	Locations[n].reload.l2.name = "reload1";
 	Locations[n].reload.l2.go = "labirint_3";
 	Locations[n].reload.l2.emerge = "reload30";
@@ -457,3 +447,4 @@ int LocationInitKhaelRoa(int n)
 
 	return n;
 }
+

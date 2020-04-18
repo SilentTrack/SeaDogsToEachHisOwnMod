@@ -3,7 +3,7 @@ bool	bAbordageFortCanBe;
 bool	bAbordagePlaceShipNear = false;
 bool	bMCAbordageInitiator = true;
 string	sAbordageLocator;
-int		iAbordageFortEnemyCharacter; /*, iAbordageOurCharacter*/
+int		iAbordageFortEnemyCharacter;  
 int		iAbordageCharacter;
 int		iAbordageMode;
 float	fOldMaxSeaHeight;
@@ -44,25 +44,25 @@ void Abordage_ReloadStartFade()
 	DelEventHandler("FaderEvent_StartFade", "Abordage_ReloadStartFade");
 
 	fOldMaxSeaHeight = stf(Sea.MaxSeaHeight);
-	Sea.MaxSeaHeight = 1.2;						// set maxinum sea height for ship abordage
+	Sea.MaxSeaHeight = 1.2;						
 }
 
 void Go2LocationAfterAbordage()
 {
-	Sea.MaxSeaHeight = fOldMaxSeaHeight;		// restore old MaxSeaHeight
+	Sea.MaxSeaHeight = fOldMaxSeaHeight;		
 	bAbordageStarted = false;
-	// boal -->
+	
 	bCabinStarted    = false;
 	bDeckBoatStarted = false;
-	// boal <--
+	
 	bSeaReloadStarted = false;
 	Sea.AbordageMode = false;
 	
-    SendMessage(&Particles,"l", PS_CLEAR_CAPTURED); // boal
+    SendMessage(&Particles,"l", PS_CLEAR_CAPTURED); 
 	PauseParticles(false);
 	LayerFreeze("sea_reflection2", false);
 
-	Sea.MaxSeaHeight = fOldMaxSeaHeight;		// restore old MaxSeaHeight
+	Sea.MaxSeaHeight = fOldMaxSeaHeight;		
 	DeleteAttribute(pchar, "abordage_active");
 }
 
@@ -79,7 +79,7 @@ void Return2SeaAfterAbordage()
 	MoveSeaToLayers(SEA_EXECUTE, SEA_REALIZE);
     ShowGrass();
     
-	Sea.MaxSeaHeight = fOldMaxSeaHeight;		// restore old MaxSeaHeight
+	Sea.MaxSeaHeight = fOldMaxSeaHeight;		
 	bAbordageStarted = false;
 	Sea.AbordageMode = false;
 
@@ -89,7 +89,7 @@ void Return2SeaAfterAbordage()
 
 	SetSchemeForSea();
 
-    SendMessage(&Particles,"l", PS_CLEAR_CAPTURED); // boal
+    SendMessage(&Particles,"l", PS_CLEAR_CAPTURED); 
 	PauseParticles(false);
 
 	bSeaReloadStarted = false;
@@ -102,10 +102,10 @@ void Abordage_ReloadEndFade()
 {
 	float fHP, fHP1, fHP2;
 
-	// Delete current cannonballs
+	
 	AIBalls.Clear = "";
 
-    ResetSound(); // new
+    ResetSound(); 
     
 	if (bAbordagePlaceShipNear)
 	{
@@ -113,9 +113,9 @@ void Abordage_ReloadEndFade()
 	}
 
 	PauseParticles(true);
-    //DeleteParticles(); // boal fix костры нах
+    
 
-	// start abordage location
+	
 	int a = GetEventData();
 	aref reload_fader = GetEventData();
 	switch (iAbordageMode)
@@ -126,7 +126,7 @@ void Abordage_ReloadEndFade()
 		break;
 
 		case SHIP_ABORDAGE:
-			// calc & apply abordage damage for ships
+			
 				fHP1 = stf(Characters[iAbordageCharacter].Ship.HP);
 				fHP2 = stf(Characters[nMainCharacterIndex].Ship.HP);
 				fHP = 0.1 + frnd() * 0.2;
@@ -141,7 +141,7 @@ void Abordage_ReloadEndFade()
 				Ship_ApplyHullHitpoints(&Characters[nMainCharacterIndex], AbordageStike/1.5, KILL_BY_TOUCH, -1);
 				bSeaReloadStarted = true;
 
-			// load boarding
+			
 				LAi_StartBoarding(BRDLT_SHIP, &Characters[iAbordageCharacter], bMCAbordageInitiator);
 		break;
 	}
@@ -172,7 +172,7 @@ void Sea_AbordageLoad(int _iAbordageMode, bool _bMCAbordageInitiator)
 				{
 					if(sti(InterfaceStates.EnabledAutoSaveMode) != 0)
 					{
-						//MakeAutoSaveAndGoOnAbord(); //eddy. чтобы глюков не було.
+						
 						MakeAutoSave();
 						SetEventHandler("evntSave","Continue_Sea_AbordageLoadPre", 0);
 					}
@@ -191,7 +191,7 @@ void Sea_AbordageLoad(int _iAbordageMode, bool _bMCAbordageInitiator)
 		}
 	}
 	
-	//PostEvent("Continue_Sea_AbordageLoad", 1, "ll", _iAbordageMode, _bMCAbordageInitiator)
+	
 }
 
 void Sea_AbordageLoad_ActiveCountStart()
@@ -264,15 +264,15 @@ void Sea_AbordageStartNow(int _iAbordageMode, int _iAbordageCharacter, bool _bPl
 	SendMessage(&reload_fader, "lfl", FADER_OUT, 2.0, false);
 	SendMessage(&reload_fader, "l", FADER_STARTFRAME);
 
-	// boal -->
+	
  	ClearAllFire();
-    // boal <--
+    
 	PauseAllSounds();
-   //ResetSoundScheme();
-	//ResetSound(); // new
-    PlaySound("INTERFACE\_GTBoard2.wav"); // boal
-    pchar.abordage_active = 1;  // чтоб два раза подряд не жали
-	//PlayStereoSound("abordage");
+   
+	
+    PlaySound("INTERFACE\_GTBoard2.wav"); 
+    pchar.abordage_active = 1;  
+	
 
 	Event(ABORDAGE_START_EVENT, "ll", nMainCharacterIndex, iAbordageCharacter);
 
@@ -288,7 +288,7 @@ void Sea_AbordageStartNow(int _iAbordageMode, int _iAbordageCharacter, bool _bPl
 void MakeAutoSaveAndGoOnAbord()
 {
     MakeAutoSave();
-	//eddy. задержка вызова абордажа
+	
 	pchar.GenQuest.CallFunctionParam = "Continue_Sea_AbordageLoadPre";
 	DoQuestCheckDelay("CallFunctionParam", 2.0);
 }

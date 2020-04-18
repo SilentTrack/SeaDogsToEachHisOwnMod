@@ -41,7 +41,7 @@ void InitInterface_gm(string iniName)
 		SetSelectable("MB_RESUME", false);
 	}
 
-	if (QuickSaveGameEnabledHardcore()) // boal 09.07.06
+	if (QuickSaveGameEnabledHardcore()) 
 	{
 		SetSelectable("MB_SAVE", true);
 	} 
@@ -65,7 +65,7 @@ void InitInterface_gm(string iniName)
 	SetFormatedText("COPYRIGHTS_TEXT", sText);
 	
 	string sDLC = "";
-//	SetFormatedText("DLC_TEXT", sDLC);
+
 
 	SetNewPicture("LOGO", "Interfaces\SL_logo.tga");
 
@@ -74,17 +74,17 @@ void InitInterface_gm(string iniName)
 	if(bSteamAchievements)
 	{
 			DLCAppID = CheckUpdates();	
-			if(DLCAppID > 0) // есть обновления
+			if(DLCAppID > 0) 
 			{
 				SetSelectable("MB_UPDATES", true);
 			}
 			else
-			{	// обновлений нет
+			{	
 				SetSelectable("MB_UPDATES", false);
 			}
 	}
 	else
-	{ // обновлений нет
+	{ 
 		SetSelectable("MB_UPDATES", false);
 	}	
 }
@@ -146,7 +146,7 @@ void ProcessCommandExecute()
 			{
 				if(DLCAppID > 0 && bSteamAchievements)
 				{
-					DLCState = DLCStartOverlay(MAIN_APPID); // открываем окошко в стиме для главной игры а не для дополнения
+					DLCState = DLCStartOverlay(MAIN_APPID); 
 				}
 			}
 			break;
@@ -219,7 +219,7 @@ void QuitClick()
 
 void ConfirmExitClick()
 {
-    PauseParticles(true); //fix вылета у форта
+    PauseParticles(true); 
 	EngineLayersOffOn(false);
 	QuitProcess();
 }
@@ -259,12 +259,12 @@ void ShowConfirmWindow(bool show)
 
 void QuitProcess()
 {
-    // вылетам у форта НЕТ -->
+    
     if (bSeaActive && !bAbordageStarted)
     {
 		SendMessage(&AIBalls, "l", MSG_MODEL_RELEASE);
 	}
-	// вылетам у форта НЕТ <--
+	
 	IDoExit(-1, false);
 	ExitProgram();
 }
@@ -276,19 +276,19 @@ void UpdateInterface()
 	if(!bSteamAchievements) return;
 	
 	trace("isSteamOverlayEnabled : " + isSteamOverlayEnabled );
-	if(!isSteamOverlayEnabled) // оверлей закрыт
+	if(!isSteamOverlayEnabled) 
 	{
 		DLCAppID = CheckUpdates();	
 		if(DLCAppID > 0) 
-		{   // есть обновления
+		{   
 			SetSelectable("MB_UPDATES", true);
 		}
 		else
-		{	// обновлений нет
+		{	
 			SetSelectable("MB_UPDATES", false);
 		}
 	}
-	else // оверлей открыт, ничего не делаем
+	else 
 	{
 	}
 }
@@ -319,7 +319,7 @@ bool CheckUpdates()
 					switch (i)
 					{
 						case 0:						
-							sText = sText + " + 'The Сaleuche'";
+							sText = sText + " + 'The пїЅaleuche'";
 						break;
 					
 						case 1:
@@ -341,5 +341,6 @@ bool CheckUpdates()
 	}
 	return bOk1;
 }
+
 
 

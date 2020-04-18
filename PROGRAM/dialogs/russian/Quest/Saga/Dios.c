@@ -1,4 +1,4 @@
-// Хосе Диос - картограф
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -110,7 +110,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("SharkHunt", "4");
 			pchar.questTemp.Saga.SharkHunt = "LSC";
 			NextDiag.CurrentNode = "Dios";
-			AddCharacterExpToSkill(pchar, "Fortune", 50);//везение
+			AddCharacterExpToSkill(pchar, "Fortune", 50);
 			pchar.questTemp.AdmiralMap = "true";
 		break;
 		
@@ -126,7 +126,7 @@ void ProcessDialogEvent()
 				link.l3 = TimeGreeting()+"! Senor Dios I have got good news for you. I was able to collect the whole complect of your unique maps just as you wanted. Here, there are all twenty four maps.";
 				link.l3.go = "amap";
 			}
-			if (CheckAttribute(pchar, "questTemp.LSC.Dios")) // был в LSC
+			if (CheckAttribute(pchar, "questTemp.LSC.Dios")) 
 			{
 				link.l4 = TimeGreeting()+"! Yes, I have. I was at that mystic place we had been talking about.";
 				link.l4.go = "LSC";
@@ -199,11 +199,11 @@ void ProcessDialogEvent()
 		case "amap_6":
 			DialogExit();
 			NextDiag.CurrentNode = "Dios";
-			AddCharacterExpToSkill(pchar, "Fortune", 1000);//везение
-			AddCharacterExpToSkill(pchar, "Leadership", 1000); // харизма
-			AddCharacterExpToSkill(pchar, "Sneak", 300);//скрытность (раз телескоп дали)
-			ChangeCharacterComplexReputation(pchar, "nobility", 10);// репутация-известность
-			ChangeCharacterComplexReputation(pchar, "authority", 5);// репутация-авторитет
+			AddCharacterExpToSkill(pchar, "Fortune", 1000);
+			AddCharacterExpToSkill(pchar, "Leadership", 1000); 
+			AddCharacterExpToSkill(pchar, "Sneak", 300);
+			ChangeCharacterComplexReputation(pchar, "nobility", 10);
+			ChangeCharacterComplexReputation(pchar, "authority", 5);
 			ChangeCharacterNationReputation(pchar, SPAIN, 20);
 			ChangeOfficersLoyality("good_all", 5);
 			DeleteAttribute(pchar, "questTemp.AdmiralMap");
@@ -231,7 +231,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			SetLaunchFrameFormParam("Two hours later...", "LSC_FinalDiosStory", 0, 5);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 2, 10); //крутим время
+			WaitDate("", 0, 0, 0, 2, 10); 
 			RecalculateJumpTable();
 		break;
 		
@@ -288,10 +288,10 @@ void ProcessDialogEvent()
 		case "LSC_9":
 			DialogExit();
 			NextDiag.CurrentNode = "Dios";
-			AddCharacterExpToSkill(pchar, "Fortune", 400);//везение
-			AddCharacterExpToSkill(pchar, "Leadership", 500); // харизма
-			ChangeCharacterComplexReputation(pchar, "nobility", 5);// репутация-известность
-			ChangeCharacterComplexReputation(pchar, "authority", 2);// репутация-авторитет
+			AddCharacterExpToSkill(pchar, "Fortune", 400);
+			AddCharacterExpToSkill(pchar, "Leadership", 500); 
+			ChangeCharacterComplexReputation(pchar, "nobility", 5);
+			ChangeCharacterComplexReputation(pchar, "authority", 2);
 			ChangeCharacterComplexReputation(pchar, "fame", 3);
 			ChangeCharacterNationReputation(pchar, SPAIN, 5);
 			DeleteAttribute(pchar, "questTemp.LSC.Dios");
@@ -307,7 +307,7 @@ void ProcessDialogEvent()
 		
 		case "LSC_11":
 			sld = characterFromId("Pirates_shipyarder");
-			sld.quest.sextant = "true"; // атрибут Алексу на хронометр
+			sld.quest.sextant = "true"; 
 			GiveItem2Character(pchar, "sextant1"); 
 			PlaySound("interface\important_item.wav");
 			dialog.text = "I am fond not only of cartography and geography, but also of mathematics and astronomy. It took a year of trying for me to create a universal tool for taking latitude and longitude. And I've made some progress. Here, take a look\nThis is my sextant. I've designed it myself. Problem is, it doesn't work. It requires an extremely accurate chronometer. Even those which were made by the best craftsmen give unacceptable errors over time. Therefore, my tool is worthless\nBut you travel a lot, perhaps you will find a chronometer accurate enough for the sextant to work. Once you find such clocks - you won't need a Boussole, a compass, an astrolabe, sand clocks and crappy chronometers - my tool will replace them all.";

@@ -1,7 +1,4 @@
-/*===================================================================**
-		Типы исполняемых команд и их параметры:
-	- "sass","gotopoint", <референс на персонажа>, <имя группы локаторов>, <имя локатора>
-**===================================================================*/
+ 
 
 #define SCENES_TIMEOUT		90.0
 #define SCENES_DIALOGTIME	15.0
@@ -24,8 +21,8 @@ void procQuestSceneCommand()
 	aref	arTask;
 	switch(command_name)
 	{
-	// идти к локатору (задаем имя группы и имя локатора)
-	case "gotopoint": // "ssass"
+	
+	case "gotopoint": 
 		s1 = GetEventData();
 		s2 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"Goto point");
@@ -34,14 +31,14 @@ void procQuestSceneCommand()
 		if(QuestCheckName!="") arTask.QuestCheck = QuestCheckName;
 		return;
 	break;
-	// принять нормальную стойку в небоевом режиме (нет параметров)
-	case "stay": // "ssa"
+	
+	case "stay": 
 		arTask = PushSceneTask(arCharacter,"Stay");
 		if(QuestCheckName!="") arTask.QuestCheck = QuestCheckName;
 		return;
 	break;
-	// бежать к локатору (задаем имя группы и имя локатора)
-	case "runtopoint": // "ssass"
+	
+	case "runtopoint": 
 		s1 = GetEventData();
 		s2 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"Runto point");
@@ -50,8 +47,8 @@ void procQuestSceneCommand()
 		if(QuestCheckName!="") arTask.QuestCheck = QuestCheckName;
 		return;
 	break;
-	// подойти к персонажу (задаем идентификатор персонажа)
-	case "followcharacter": // "ssas"
+	
+	case "followcharacter": 
 		s1 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"Follow character");
 		arTask.charID = s1;
@@ -59,8 +56,8 @@ void procQuestSceneCommand()
 		if(QuestCheckName!="") arTask.QuestCheck = QuestCheckName;
 		return;
 	break;
-	// бить персонажа (задаем идентификатор персонажа)
-	case "fight": // "ssas"
+	
+	case "fight": 
 		s1 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"Fight");
 		arTask.charID = s1;
@@ -68,8 +65,8 @@ void procQuestSceneCommand()
 		if(QuestCheckName!="") arTask.QuestCheck = QuestCheckName;
 		return;
 	break;
-	// спасаться от персонажа (задаем идентификатор персонажа)
-	case "escape": // "ssas"
+	
+	case "escape": 
 		s1 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"Escape");
 		arTask.charID = s1;
@@ -77,14 +74,14 @@ void procQuestSceneCommand()
 		if(QuestCheckName!="") arTask.QuestCheck = QuestCheckName;
 		return;
 	break;
-	// умереть (без параметров), но персонаж не умирает в действительности и остается в данной локации
-	case "dead": // "ssa"
+	
+	case "dead": 
 		arTask = PushSceneTask(arCharacter,"Dead");
 		if(QuestCheckName!="") arTask.QuestCheck = QuestCheckName;
 		return;
 	break;
-	// повернуться к другому персонажу (задаем идентификатор персонажа)
-	case "TurnByCharacter": // "ssas"
+	
+	case "TurnByCharacter": 
 		s1 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"TurnByCharacter");
 		arTask.charID = s1;
@@ -92,8 +89,8 @@ void procQuestSceneCommand()
 		if(QuestCheckName!="") arTask.QuestCheck = QuestCheckName;
 		return;
 	break;
-	// повернуться по локатору (задаем имена группы и локатора)
-	case "TurnByLocator": // "ssass"
+	
+	case "TurnByLocator": 
 		s1 = GetEventData();
 		s2 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"TurnByLocator");
@@ -102,8 +99,8 @@ void procQuestSceneCommand()
 		if(QuestCheckName!="") arTask.QuestCheck = QuestCheckName;
 		return;
 	break;
-	// поговорить с другим персонажем (задаем идентификатор персонажа)
-	case "Dialog": // "ssas"
+	
+	case "Dialog": 
 		s1 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"Dialog");
 		arTask.charID = s1;
@@ -111,38 +108,38 @@ void procQuestSceneCommand()
 		if(QuestCheckName!="") arTask.QuestCheck = QuestCheckName;
 		return;
 	break;
-	// закончить квестовый ролик (без параметров), в смысле разблокировать управление и перегрузку
-	case "EndQuestMovie": // "ssa"
+	
+	case "EndQuestMovie": 
 		arTask = PushSceneTask(arCharacter,"EndQuestMovie");
 		if(QuestCheckName!="") arTask.QuestCheck = QuestCheckName;
 		return;
 	break;
-	// проиграть анимацию для персонажа (задаем имя анимации)
-	case "action": // "ssas"
+	
+	case "action": 
 		s1 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"Action");
 		arTask.action = s1;
 		if(QuestCheckName!="") arTask.QuestCheck = QuestCheckName;
 		return;
 	break;
-	// проигрывать анимацию для персонажа в цикле (задаем имя типа анимации: "stay" - стоять,
-	// "fightStand" - стоять в режиме боя, "sit" - сидеть , либо имя анимации в остальных случаях )
-	case "loopAction": // "ssas"
+	
+	
+	case "loopAction": 
 		s1 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"loopAction");
 		arTask.action = s1;
 		return;
 	break;
-	// Поместить в руку саблю (задаем флаг перереключения сабли: true - есть сабля, false - нет ее)
-	case "BladeToHand": // "ssal"
+	
+	case "BladeToHand": 
 		b1 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"BladeToHand");
 		arTask.boolHand = b1;
 		if(QuestCheckName!="") arTask.QuestCheck = QuestCheckName;
 		return;
 	break;
-	// Исчезнуть и переместиться в другую локацию (задаем имя новой локации и локатора)
-	case "Teleport": // "ssasss"
+	
+	case "Teleport": 
 		s1 = GetEventData();
 		s2 = GetEventData();
 		s3 = GetEventData();
@@ -153,8 +150,8 @@ void procQuestSceneCommand()
 		if(QuestCheckName!="") arTask.QuestCheck = QuestCheckName;
 		return;
 	break;
-	// перегрузиться в локацию (задаем имя локации, группу и имя локатора)
-	case "ReloadToLocation": // "ssasss"
+	
+	case "ReloadToLocation": 
 		s1 = GetEventData();
 		s2 = GetEventData();
 		s3 = GetEventData();
@@ -165,43 +162,43 @@ void procQuestSceneCommand()
 		if(QuestCheckName!="") arTask.QuestCheck = QuestCheckName;
 		return;
 	break;
-	// подождать пока пройдет заданное число секунд (задаем число секунд, использовать число типа float)
-	case "TimeWait": // "ssaf"
+	
+	case "TimeWait": 
 		f1 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"TimeWait");
 		arTask.time = MakeInt(f1*1000.0);
 		return;
 	break;
-	// сделать фэйд экрана и добавить игровое время на заданное число минут (задаем число игровых минут, число типа int)
-	case "TimeFade": // "ssal"
+	
+	case "TimeFade": 
 		i1 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"TimeFade");
 		arTask.time = i1;
 		return;
 	break;
-	// Установили групповую атаку (задаем имя группы за которую борется персонаж)
-	case "AttackGroup": // "ssas"
+	
+	case "AttackGroup": 
 		s1 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"AttackGroup");
 		arTask.group = s1;
 		return;
 	break;
-	// проиграть музыку (задаем имя музыкального файла)
-	case "PlayMusic": // "ssas"
+	
+	case "PlayMusic": 
 		s1 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"PlayMusic");
 		arTask.name = s1;
 		return;
 	break;
-	// проиграть звук (задаем имя файла озвучки)
-	case "PlayMusic": // "ssas"
+	
+	case "PlayMusic": 
 		s1 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"PlaySound");
 		arTask.name = s1;
 		return;
 	break;
-	// включить исполнение последовательности задач для другого персонажа (задаем идентификатор персонажа)
-	case "StartTaskForOtherChar": // "ssas"
+	
+	case "StartTaskForOtherChar": 
 		s1 = GetEventData();
 		arTask = PushSceneTask(arCharacter,"StartTaskForOtherChar");
 		arTask.charID = s1;
@@ -209,8 +206,8 @@ void procQuestSceneCommand()
 		if(QuestCheckName!="") arTask.QuestCheck = QuestCheckName;
 		return;
 	break;
-	// остановить исполнение потока задач для текущего персонажа
-	case "StopTask": // "ssa"
+	
+	case "StopTask": 
 		if( GetLastTask(arCharacter,&arTask) )	arTask.StopTask = true;
 		return;
 	break;
@@ -312,7 +309,7 @@ void StartSceneExecute(aref character)
 	int i;
 	scnref.Executing = "1";
 
-	// Персонаж становиться актером
+	
 	LAi_SetActorType(character);
 
 	switch(GetAttributeValue(scnref))
@@ -324,7 +321,7 @@ void StartSceneExecute(aref character)
 
 	case "Stay":
 		LAi_ActorStay(ARefChrToRef(character));
-		PostEvent("qprocTaskEnd",1,"a",character); // !!!
+		PostEvent("qprocTaskEnd",1,"a",character); 
 		return;
 	break;
 
@@ -344,26 +341,26 @@ void StartSceneExecute(aref character)
 	break;
 
 	case "Escape":
-		trace("WARNING!!!  Escape не реализована!");
-		PostEvent("qprocTaskEnd",1,"a",character); // !!!
+		trace("WARNING!!!  Escape пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
+		PostEvent("qprocTaskEnd",1,"a",character); 
 		return;
 	break;
 
 	case "Dead":
-		trace("WARNING!!!  Dead не реализована!");
-		PostEvent("qprocTaskEnd",1,"a",character); // !!!
+		trace("WARNING!!!  Dead пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
+		PostEvent("qprocTaskEnd",1,"a",character); 
 		return;
 	break;
 
 	case "TurnByCharacter":
 		LAi_ActorTurnToCharacter(ARefChrToRef(character), CharacterFromID(scnref.charID));
-		PostEvent("qprocTaskEnd",1,"a",character); // !!!
+		PostEvent("qprocTaskEnd",1,"a",character); 
 		return;
 	break;
 
 	case "TurnByLocator":
 		LAi_ActorTurnByLocator(ARefChrToRef(character), scnref.group, scnref.locator);
-		PostEvent("qprocTaskEnd",1,"a",character); // !!!
+		PostEvent("qprocTaskEnd",1,"a",character); 
 		return;
 	break;
 
@@ -372,7 +369,7 @@ void StartSceneExecute(aref character)
 		if(i<0)
 		{
 			trace("SCENE WARNING! Error character id <"+scnref.charID+">  for task Dialog");
-			PostEvent("qprocTaskEnd",1,"a",character); // !!!
+			PostEvent("qprocTaskEnd",1,"a",character); 
 			return;
 		}
 		else
@@ -384,7 +381,7 @@ void StartSceneExecute(aref character)
 
 	case "EndQuestMovie":
 		EndQuestMovie();
-		PostEvent("qprocTaskEnd",1,"a",character); // !!!
+		PostEvent("qprocTaskEnd",1,"a",character); 
 		return;
 	break;
 
@@ -399,8 +396,8 @@ void StartSceneExecute(aref character)
 	break;
 
 	case "BladeToHand":
-		trace("WARNING!!! BladeToHand функция не реализована!!!"); // !!!
-		PostEvent("qprocTaskEnd",1,"a",character); // !!!
+		trace("WARNING!!! BladeToHand пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!!!"); 
+		PostEvent("qprocTaskEnd",1,"a",character); 
 		return;
 	break;
 
@@ -422,27 +419,27 @@ void StartSceneExecute(aref character)
 	break;
 
 	case "TimeFade":
-		//WaitNightPause(false);
+		
 		AddTimeToCurrent(0,sti(scnref.time));
-		PostEvent("qprocTaskEnd",1,"a",character); // !!!
+		PostEvent("qprocTaskEnd",1,"a",character); 
 		return;
 	break;
 
 	case "AttackGroup":
-		trace( "WARNING!!! AttackGroup не реализована" ); // !!!
-		PostEvent("qprocTaskEnd",1,"a",character); // !!!
+		trace( "WARNING!!! AttackGroup пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" ); 
+		PostEvent("qprocTaskEnd",1,"a",character); 
 		return;
 	break;
 
 	case "PlayMusic":
 		PlayMusic(scnref.name);
-		PostEvent("qprocTaskEnd",1,"a",character); // !!!
+		PostEvent("qprocTaskEnd",1,"a",character); 
 		return;
 	break;
 
 	case "PlaySound":
 		PlayMusic(scnref.name);
-		PostEvent("qprocTaskEnd",1,"a",character); // !!!
+		PostEvent("qprocTaskEnd",1,"a",character); 
 		return;
 	break;
 
@@ -531,3 +528,4 @@ ref ARefChrToRef(aref charef)
 {
 	return &Characters[sti(charef.index)];
 }
+

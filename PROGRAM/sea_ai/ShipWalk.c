@@ -41,7 +41,7 @@ void Ship_Walk_Create()
 	int Index= sti(ch.ship.type);
 	int ri= sti(RealShips[Index].basetype);
 
-	SendMessage(&Sailors, "lis", AI_MESSAGE_ADD_SHIP, ship, /*ShipsTypes[ri].name*/RealShips[Index].name);
+	SendMessage(&Sailors, "lis", AI_MESSAGE_ADD_SHIP, ship,  RealShips[Index].name);
 }
 
 void Ship_Walk_Hull_Damage()

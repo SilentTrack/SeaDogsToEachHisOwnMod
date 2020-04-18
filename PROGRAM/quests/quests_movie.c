@@ -19,18 +19,18 @@ void ResetQuestMovie()
 bool StartQuestMovie(bool noReload, bool noSave, bool lockPlayerCtrl)
 {
 	Event("EventStartQuestMovie", "lll", noReload, noSave, lockPlayerCtrl);
-	//Stack level
-	ChangeShowIntarface(); // KK
+	
+	ChangeShowIntarface(); 
 	int prevLevel = questMovieProcess - 1;
 	string level = "L" + questMovieProcess;
 	questMovieStack.(level) = "";
 	aref stk;
 	makearef(stk, questMovieStack.(level));
-	//Set current parameters
+	
 	stk.noReload = noReload;
 	stk.noSave = noSave;
 	stk.lock = lockPlayerCtrl;
-	//Set parameters
+	
 	if(questMovieProcess > 0)
 	{
 		InterfaceStates.Buttons.Save.enable = noSave;
@@ -100,4 +100,5 @@ bool qmIsNoReload()
 	}
 	return false;
 }
+
 

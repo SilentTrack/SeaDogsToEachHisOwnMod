@@ -1,4 +1,4 @@
-// лидер клана ривадос - Черный Эдди
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -40,8 +40,8 @@ void ProcessDialogEvent()
 			AddSimpleRumourCityTip("They say that Narwhals don't like you due to your close relations with Rivados. Is that troubling you?", "LostShipsCity", 10, 1, "LSC", "");
 		break;
 		
-		// --> информационный блок
-		case "Total_info": // стал другом
+		
+		case "Total_info": 
 			if (pchar.questTemp.LSC == "return" && !CheckAttribute(npchar, "quest.return_isl"))
 			{
 				dialog.text = "White brother? Alive? I am glad! So, Narwhals lied when they told everyone that you had drowned...";
@@ -80,7 +80,7 @@ void ProcessDialogEvent()
 			npchar.quest.rivados = "true";
 			NextDiag.TempNode = "Total_info";
 		break;
-		// <-- информационный блок
+		
 		
 		case "capper":
 			dialog.text = "What do you need on Rivados' territories, white man?";
@@ -133,7 +133,7 @@ void ProcessDialogEvent()
 		
 		case "capper_8":
 			DialogExit();
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "LSC_ZikomoNearDoor", 10.0);
 			NextDiag.CurrentNode = "chimiset";
@@ -186,12 +186,12 @@ void ProcessDialogEvent()
 			ChangeItemDescribe("letter_chad", "itmdescr_letter_aeva");
 			GiveItem2Character(pchar, "letter_chad_1");
 			ChangeItemDescribe("letter_chad_1", "itmdescr_letter_axel");
-			pchar.questTemp.LSC.rvd_friend = "true"; //флаг на проход по кораблям ривадос
-			pchar.questTemp.Saga.SharkHunt = "dodson_whiskey"; // к Акуле
+			pchar.questTemp.LSC.rvd_friend = "true"; 
+			pchar.questTemp.Saga.SharkHunt = "dodson_whiskey"; 
 			sld = CharacterFromID("Dodson");
-			sld.dialog.currentnode = "Chad_escape"; // ноду Акуле
+			sld.dialog.currentnode = "Chad_escape"; 
 			AddQuestRecord("SharkHunt", "33");
-			LocatorReloadEnterDisable("LostShipsCity_town", "reload48", true); // закрыть вход к Дональду Гринспи
+			LocatorReloadEnterDisable("LostShipsCity_town", "reload48", true); 
 			AddSimpleRumourCityTip("Have you heard the last news? Rivados insolence is off limits now, they have attacked admiral's prison and released their wizard!", "LostShipsCity", 3, 2, "LSC", "");
 			AddSimpleRumourCityTip("Just think about it - Rivados dared to attack the Tartarus! They say that the jailer, Chad Kapper, has escaped to Narwhals...", "LostShipsCity", 3, 2, "LSC", "");
 			AddSimpleRumourCityTip("This is the height of impudence, isn't it? Attacking a military facility of the admiral! Yeah, looks like Black Eddie is getting stronger...", "LostShipsCity", 3, 2, "LSC", "");

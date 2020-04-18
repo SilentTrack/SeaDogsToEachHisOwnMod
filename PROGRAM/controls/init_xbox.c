@@ -17,24 +17,24 @@ void ExternControlsInit(bool bFirst)
 
 	ExternInitKeyCodes();
 
-	//CI_CreateAndSetControls( "", "Dump", CI_GetKeyCode("BTN_WHITE"), 0, false );
+	
 
-	//	CI_CreateAndSetControls( "", "Tele", CI_GetKeyCode("BTN_Y"), 0, false );
-	// Cameras =====================================================================
-		// character camera
+	
+	
+		
 	CI_CreateAndSetControls( "PrimaryLand", "ChrCamTurnV", CI_GetKeyCode("RIGHT_STICK_Y"), GetStickStateY(INVERSE_CONTROL,bInverse), true );
 	MapControlToGroup("ChrCamTurnV","FightModeControls");
 	CI_CreateAndSetControls( "PrimaryLand", "ChrCamTurnH", CI_GetKeyCode("RIGHT_STICK_X"), GetStickStateX(0,bInverse), true );
 	MapControlToGroup("ChrCamTurnH","FightModeControls");
 	CI_CreateAndSetControls( "PrimaryLand", "ChrCamCameraSwitch", CI_GetKeyCode("LEFT_THUMB"), 0, true );
 
-		// ship follow camera
+		
 	CI_CreateAndSetControls( "Sailing3Pers", "ShipCamera_Turn_V", CI_GetKeyCode("RIGHT_STICK_Y"), GetStickStateY(INVERSE_CONTROL,bInverse), true );
 	CI_CreateAndSetControls( "Sailing3Pers", "ShipCamera_Turn_H", CI_GetKeyCode("RIGHT_STICK_X"), GetStickStateX(0,bInverse), true );
 	CI_CreateAndSetControls( "Sailing3Pers", "ShipCamera_Forward", CI_GetKeyCode("RIGHT_TRIGGER"), 0, true );
 	CI_CreateAndSetControls( "Sailing3Pers", "ShipCamera_Backward", CI_GetKeyCode("LEFT_TRIGGER"), 0, true );
 
-		// deck camera
+		
 	CI_CreateAndSetControls( "Sailing1Pers", "DeckCamera_Turn_V", CI_GetKeyCode("RIGHT_STICK_Y"), GetStickStateY(0,bInverse), true );
 	CI_CreateAndSetControls( "Sailing1Pers", "DeckCamera_Turn_H", CI_GetKeyCode("RIGHT_STICK_X"), GetStickStateX(0,bInverse), true );
 	CI_CreateAndSetControls( "Sailing1Pers", "DeckCamera_Forward", CI_GetKeyCode("LEFT_STICK_Y"), USE_AXIS_AS_BUTTON, false );
@@ -42,7 +42,7 @@ void ExternControlsInit(bool bFirst)
 	CI_CreateAndSetControls( "Sailing1Pers", "DeckCamera_Left", CI_GetKeyCode("LEFT_STICK_X"), USE_AXIS_AS_INVERSEBUTTON, false );
 	CI_CreateAndSetControls( "Sailing1Pers", "DeckCamera_Right", CI_GetKeyCode("LEFT_STICK_X"), USE_AXIS_AS_BUTTON, false );
 
-		// free camera
+		
 	CI_CreateAndSetControls( "", "FreeCamera_Turn_V", CI_GetKeyCode("RIGHT_STICK_Y"), GetStickStateY(INVERSE_CONTROL,bInverse), false );
 	CI_CreateAndSetControls( "", "FreeCamera_Turn_H", CI_GetKeyCode("RIGHT_STICK_X"), GetStickStateX(0,bInverse), false );
 	CI_CreateAndSetControls( "", "FreeCamera_Forward", CI_GetKeyCode("LEFT_STICK_Y"), USE_AXIS_AS_BUTTON, false );
@@ -51,7 +51,7 @@ void ExternControlsInit(bool bFirst)
 	CI_CreateAndSetControls( "", "TimeScale", CI_GetKeyCode("BTN_X"), 0, false );
 
 
-// Character ===================================================================
+
 	CI_CreateAndSetControls( "PrimaryLand", "ChrTurnH", CI_GetKeyCode("LEFT_STICK_X"), GetStickStateX(0,bInverse), true );
 	MapControlToGroup("ChrTurnH","FightModeControls");
 	MapControlToGroup("ChrTurnH","BattleInterfaceControls");
@@ -94,12 +94,12 @@ void ExternControlsInit(bool bFirst)
 	SetControlTreshold(sti(objControlsState.map.controls.ChrRun),12.0);
 
 
-// Ship ========================================================================
+
 	CI_CreateAndSetControls( "Sailing3Pers", "Ship_TurnLeft1", CI_GetKeyCode("LEFT_STICK_X"), USE_AXIS_AS_INVERSEBUTTON, false );
 	CI_CreateAndSetControls( "Sailing3Pers", "Ship_TurnRight1", CI_GetKeyCode("LEFT_STICK_X"), USE_AXIS_AS_BUTTON, false );
 	CI_CreateAndSetControls( "Sailing3Pers", "Ship_SailUp1", CI_GetKeyCode("LEFT_STICK_Y"), USE_AXIS_AS_BUTTON, false );
 	CI_CreateAndSetControls( "Sailing3Pers", "Ship_SailDown1", CI_GetKeyCode("LEFT_STICK_Y"), USE_AXIS_AS_INVERSEBUTTON, false );
-	//
+	
 	CI_CreateAndSetControls( "Sailing1Pers", "Ship_TurnLeft", CI_GetKeyCode("DPAD_LEFT"), 0, false );
 	MapControlToGroup("Ship_TurnLeft","Sailing3Pers");
 	CI_CreateAndSetControls( "Sailing1Pers", "Ship_TurnRight", CI_GetKeyCode("DPAD_RIGHT"), 0, false );
@@ -108,7 +108,7 @@ void ExternControlsInit(bool bFirst)
 	MapControlToGroup("Ship_SailUp","Sailing3Pers");
 	CI_CreateAndSetControls( "Sailing1Pers", "Ship_SailDown", CI_GetKeyCode("DPAD_DOWN"), 0, false );
 	MapControlToGroup("Ship_SailDown","Sailing3Pers");
-	//
+	
 	CI_CreateAndSetControls( "Sailing1Pers", "Ship_Fire", CI_GetKeyCode("BTN_A"), 0, true );
 	MapControlToGroup("Ship_Fire","Sailing3Pers");
 	CI_CreateAndSetControls( "Sailing1Pers", "Sea_CameraSwitch", CI_GetKeyCode("RIGHT_THUMB"), 0, true );
@@ -116,7 +116,7 @@ void ExternControlsInit(bool bFirst)
 	CI_CreateAndSetControls( "Sailing1Pers", "TelescopeIn", CI_GetKeyCode("RIGHT_TRIGGER"), 0, true );
 	CI_CreateAndSetControls( "Sailing1Pers", "TelescopeOut", CI_GetKeyCode("LEFT_TRIGGER"), 0, true );
 
-// World map ===================================================================
+
 	CI_CreateAndSetControls( "WorldMapControls", "WMapTurnH", CI_GetKeyCode("RIGHT_STICK_X"), GetStickStateX(0,bInverse), true );
 	CI_CreateAndSetControls( "WorldMapControls", "WMapTurnV", CI_GetKeyCode("RIGHT_STICK_Y"), GetStickStateY(0,bInverse), true );
 	CI_CreateAndSetControls( "WorldMapControls", "WMapCameraRotate", CI_GetKeyCode("RIGHT_STICK_X"), GetStickStateX(0,bInverse), true );
@@ -135,8 +135,8 @@ void ExternControlsInit(bool bFirst)
 	CI_CreateAndSetControls( "WorldMapControls", "WMapSkipEncounter", CI_GetKeyCode("BTN_B"), 0, false );
 
 
-// Interface ===================================================================
-	//				Main interface
+
+	
 	CI_CreateAndSetControls( "PrimaryLand", "Interface", CI_GetKeyCode("BTN_B"), 0, true );
 	MapControlToGroup("Interface","Sailing3Pers");
 	MapControlToGroup("Interface","Sailing1Pers");
@@ -157,7 +157,7 @@ void ExternControlsInit(bool bFirst)
 	CI_CreateAndSetControls( "", "ILeft2", CI_GetKeyCode("LEFT_STICK_X"), USE_AXIS_AS_INVERSEBUTTON, false );
 	CI_CreateAndSetControls( "", "IContextHelp", CI_GetKeyCode("BTN_X"), 0, false );
 
-	//				Battle interface
+	
 	CI_CreateAndSetControls( "Sailing1Pers", "BICommandsActivate", CI_GetKeyCode("BTN_Y"), 0, true );
 	MapControlToGroup("BICommandsActivate","Sailing3Pers");
 	CI_CreateAndSetControls( "PrimaryLand", "LICommandsActivate", CI_GetKeyCode("BTN_Y"), 0, true );
@@ -171,7 +171,7 @@ void ExternControlsInit(bool bFirst)
 	CI_CreateAndSetControls( "Sailing1Pers", "MiniMapZoomOut", CI_GetKeyCode("BTN_BLACK"), 0, true );
 	MapControlToGroup("MiniMapZoomOut","Sailing3Pers");
 
-// Dialog =====================================================================
+
 	CI_CreateAndSetControls( "DialogControls", "DlgAction", CI_GetKeyCode("BTN_A"), 0, false );
 	CI_CreateAndSetControls( "", "DlgCancel", CI_GetKeyCode("BTN_BACK"), 0, false );
 	CI_CreateAndSetControls( "DialogControls", "DlgUp", CI_GetKeyCode("DPAD_UP"), 0, false );
@@ -238,7 +238,7 @@ void ExternInitKeyCodes()
 	objControlsState.key_codes.RIGHT_STICK_X.stick = true;
 	objControlsState.key_codes.RIGHT_STICK_Y.stick = true;
 
-	// Key groups for controls remapping
+	
 	objControlsState.grouplist.Sailing1Pers = true;
 	objControlsState.grouplist.Sailing3Pers = true;
 	objControlsState.grouplist.FightModeControls = true;
@@ -257,3 +257,4 @@ int GetStickStateY(int state,bool inverse)
 	if(state==INVERSE_CONTROL) return 0;
 	return 0;
 }
+

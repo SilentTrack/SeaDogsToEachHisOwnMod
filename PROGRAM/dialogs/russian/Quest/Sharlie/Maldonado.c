@@ -1,4 +1,4 @@
-// Алонсо де Мальдонадо
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;

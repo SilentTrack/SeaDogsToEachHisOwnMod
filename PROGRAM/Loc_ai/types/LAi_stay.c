@@ -1,17 +1,11 @@
-/*
-Тип: стоячий, всегда стоит, отвечает на диалоги, никогда не боится
-
-	Используемые шаблоны:
-		stay
-		dialog
-*/
+ 
 
 
 
 #define LAI_TYPE_STAY		"stay"
 
 
-//Инициализация
+
 void LAi_type_stay_Init(aref chr)
 {
 	DeleteAttribute(chr, "location.follower");
@@ -19,7 +13,7 @@ void LAi_type_stay_Init(aref chr)
 	chr.chr_ai.type = LAI_TYPE_STAY;
 	chr.chr_ai.type.time = 0;
 	LAi_tmpl_stay_InitTemplate(chr);
-	//Установим анимацию персонажу
+	
 	if (chr.model.animation == "mushketer" && !CheckAttribute(chr, "isMusketer.weapon"))
 	{
         LAi_NPC_MushketerEquip(chr);
@@ -31,7 +25,7 @@ void LAi_type_stay_Init(aref chr)
 	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", false);
 }
 
-//Процессирование типа персонажа
+
 void LAi_type_stay_CharacterUpdate(aref chr, float dltTime)
 {
 	int num = FindNearCharacters(chr, 5.0, -1.0, -1.0, 0.001, true, true);
@@ -75,47 +69,47 @@ void LAi_type_stay_CharacterUpdate(aref chr, float dltTime)
 	}
 }
 
-//Загрузка персонажа в локацию
+
 bool LAi_type_stay_CharacterLogin(aref chr)
 {
 	return true;
 }
 
-//Выгрузка персонажа из локацию
+
 bool LAi_type_stay_CharacterLogoff(aref chr)
 {
 	return true;
 }
 
-//Завершение работы темплейта
+
 void LAi_type_stay_TemplateComplite(aref chr, string tmpl)
 {
 }
 
-//Сообщить о желании завести диалог
+
 void LAi_type_stay_NeedDialog(aref chr, aref by)
 {
 }
 
-//Запрос на диалог, если возвратить true то в этот момент можно начать диалог
+
 bool LAi_type_stay_CanDialog(aref chr, aref by)
 {
-	//Если уже говорим, то откажем
+	
 	if(chr.chr_ai.tmpl != LAI_TMPL_STAY && by.id != "Blaze") return false;
-	//Согласимся на диалог
+	
 	return true;
 }
 
-//Начать диалог
+
 void LAi_type_stay_StartDialog(aref chr, aref by)
 {
-	//Если мы пасивны, запускаем шаблон без времени завершения
+	
 	LAi_CharacterSaveAy(chr); 
 	CharacterTurnByChr(chr, by);
 	LAi_tmpl_SetActivatedDialog(chr, by);
 }
 
-//Закончить диалог
+
 void LAi_type_stay_EndDialog(aref chr, aref by)
 {
 	LAi_tmpl_stay_InitTemplate(chr);
@@ -123,14 +117,15 @@ void LAi_type_stay_EndDialog(aref chr, aref by)
 }
 
 
-//Персонаж выстрелил
+
 void LAi_type_stay_Fire(aref attack, aref enemy, float kDist, bool isFindedEnemy)
 {
 }
 
 
-//Персонаж атакован
+
 void LAi_type_stay_Attacked(aref chr, aref by)
 {
 }
+
 

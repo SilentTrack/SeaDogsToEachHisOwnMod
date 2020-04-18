@@ -1,4 +1,4 @@
-// Лукас Роденбург - вице-директор ГВИК
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -95,7 +95,7 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				break;
 			}
-			if (pchar.questTemp.HWIC.Holl == "MirageTake")//а вот теперь начинается дурдом с перебором кораблей
+			if (pchar.questTemp.HWIC.Holl == "MirageTake")
 			{
 				int iMir = 0;
 				int iMef = 0;
@@ -109,24 +109,24 @@ void ProcessDialogEvent()
 					if(sti(RealShips[sti(sld.ship.type)].basetype) == SHIP_MIRAGE) iMir = 1;
 					if(sti(RealShips[sti(sld.ship.type)].basetype) == SHIP_MAYFANG) iMef = 1;
 				}
-				}//установили признак наличия кораблей в эскадре.
-				RemoveItems(PChar, "JacobJournal", 1);//удалим журнал ван Берга
-				pchar.quest.MirageConvoyOver.over = "yes"; //снять таймер
-				if (iMir == 1 && iMef == 0)//потеряли Мейфенг
+				}
+				RemoveItems(PChar, "JacobJournal", 1);
+				pchar.quest.MirageConvoyOver.over = "yes"; 
+				if (iMir == 1 && iMef == 0)
 				{
 					dialog.text = "Captain... I am already aware about your voyage.";
 					link.l1 = "Oh, really? So you must know that...";
 					link.l1.go = "Jacob_lostMef";
 					break;
 				}
-				if (iMir == 0 && iMef == 1)//потеряли Мираж
+				if (iMir == 0 && iMef == 1)
 				{
 					dialog.text = "Captain... I am already aware about your voyage.";
 					link.l1 = "Is that so? So you must know that...";
 					link.l1.go = "Jacob_lostMir";
 					break;
 				}
-				if (iMir == 0 && iMef == 0)//а это вообще плохо
+				if (iMir == 0 && iMef == 0)
 				{
 					dialog.text = "Captain... I am already aware about your voyage.";
 					link.l1 = "Is that so? So you must know that...";
@@ -146,7 +146,7 @@ void ProcessDialogEvent()
 				break;
 			}
 			if (pchar.questTemp.HWIC.Holl == "FleetwoodSink" || pchar.questTemp.HWIC.Holl == "FleetwoodCapture")
-			{//опять начинаем проверять корабли
+			{
 				iMir = 0;
 				for(i = 0; i < COMPANION_MAX; i++)
 				{
@@ -157,9 +157,9 @@ void ProcessDialogEvent()
 						pchar.questTemp.HWIC.Holl.CompanionIndex = sld.Index;
 						if(sti(RealShips[sti(sld.ship.type)].basetype) == SHIP_MIRAGE) iMir = 1;
 					}
-				}//установили признак наличия Миража в эскадре.
-				pchar.quest.ToAntiguaOver.over = "yes"; //снять таймер
-				if (iMir == 0)//потеряли Мираж
+				}
+				pchar.quest.ToAntiguaOver.over = "yes"; 
+				if (iMir == 0)
 				{
 					dialog.text = "I was reported already about your arrival, captain. I also know, that you have lost the Mirage in battle.";
 					link.l1 = "You are well informed, mynheer Rodenburg. Despite all of my efforts I wasn't able to save her.";
@@ -174,7 +174,7 @@ void ProcessDialogEvent()
 				pchar.quest.Meifeng_fail.over = "yes";
 				Group_DeleteGroup("Meifeng_Empty");
 				sld = characterFromId("MeifengCap");
-				sld.lifeday = 0;//зачистим Мейфенг без китайца
+				sld.lifeday = 0;
 				break;
 			}
 			if (pchar.questTemp.HWIC.Holl == "Abby_prepare" && GetQuestPastDayParam("questTemp.HWIC.Holl.Abby") > 7)
@@ -228,7 +228,7 @@ void ProcessDialogEvent()
 		link.l1.go = "exit";
 		break;
 		
-//------------------------------------------------1 задание--------------------------------------------
+
 		case "Holl_start":
 			dialog.text = "Perhaps the rumours are true. So what?";
 			link.l1 = "I am captain " + pchar.name + ", me and my ship can be useful to you.";
@@ -273,16 +273,16 @@ void ProcessDialogEvent()
 			AddDialogExitQuestFunction("Create_Baltazar");
 			pchar.questTemp.HWIC.Holl = "BaltazarEsc";
 			NextDiag.TempNode = "Second_time";
-			pchar.quest.HWIC_ReturnOfficer.over = "yes";//чтобы офицер не доставал
-			pchar.questTemp.HWIC.CanTake.Holl = "true";//признак, что голландка уже бралась
+			pchar.quest.HWIC_ReturnOfficer.over = "yes";
+			pchar.questTemp.HWIC.CanTake.Holl = "true";
 		break;
 		
-//----------------------------------------------задание 1а--------------------------------------------	
+
 		case "SantiagoTrip":
 			dialog.text = "Ha-ha-ha... Yes, Ridderbrock is greedy that's for sure. Whatever, I am not interested in him any more. Let's talk about you, captain. I like your resoluteness so I am going to offer you another job. Don't worry, this time I will pay for it myself.";
 			link.l1 = "I am listening, mynheer.";
 			link.l1.go = "SantiagoTrip_1";			
-			AddSimpleRumourCity("Ah, so you are the captain who was protecting a ship of our scrub Ridderbrock? I have heard about it... He paid you only five thousands for your job and he was boasting about it in public at the tavern of Philipsburg drunken as a pig. If I were you, captain, I'd shown him.", "Villemstad", 20, 3, "");//слух по 1 заданию
+			AddSimpleRumourCity("Ah, so you are the captain who was protecting a ship of our scrub Ridderbrock? I have heard about it... He paid you only five thousands for your job and he was boasting about it in public at the tavern of Philipsburg drunken as a pig. If I were you, captain, I'd shown him.", "Villemstad", 20, 3, "");
 		break;
 		
 		case "SantiagoTrip_1":
@@ -330,7 +330,7 @@ void ProcessDialogEvent()
 			GiveItem2Character(pchar, "NPC_Letter");
 			ChangeItemDescribe("NPC_Letter", "itmdescr_NPC_Letter4");
 			TakeNItems(pchar, "chest", 5); 
-			SetFunctionTimerCondition("SantiagoTripOver", 0, 0, 16, false); //таймер
+			SetFunctionTimerCondition("SantiagoTripOver", 0, 0, 16, false); 
 			AddQuestRecord("Holl_Gambit", "1-43");
 			pchar.questTemp.HWIC.Holl = "SantiagoTripBegin";
 		break;
@@ -375,13 +375,13 @@ void ProcessDialogEvent()
 			SaveCurrentQuestDateParam("questTemp.HWIC_TaskBerg");
 			AddQuestRecord("Holl_Gambit", "1-46");
 			pchar.questTemp.HWIC.Holl = "SantiagoTripComplete";
-			AddCharacterExpToSkill(pchar, "Sailing", 100);//навигация
-			AddCharacterExpToSkill(pchar, "Sneak", 100);//скрытность
+			AddCharacterExpToSkill(pchar, "Sailing", 100);
+			AddCharacterExpToSkill(pchar, "Sneak", 100);
 			AddCharacterExpToSkill(pchar, "Leadership", 80);
 			AddSimpleRumourCity("The say that mynheer Rodenburg is quite pleased by you, captain. Don't loose your chance, Lucas rarely favors people.", "Villemstad", 10, 3, "");
 		break;
 		
-//-----------------------------------------------2 задание--------------------------------------------
+
 		case "JacobBerg":
 			dialog.text = "You are smart, captain. Exactly. Well, let's talk details of the upcoming mission...";
 			link.l1 = "I am all ears.";
@@ -432,12 +432,12 @@ void ProcessDialogEvent()
 			pchar.quest.Create_Longway.function = "Create_Longway";
 			pchar.questTemp.HWIC.Holl = "JacobLongway";
 			AddQuestRecord("Holl_Gambit", "1-7");
-			pchar.questTemp.HWIC.TakeQuestShip = "true";//все ПУ недоступны для стоянки до поры, также корабль нельзя продать
-			pchar.questTemp.HWIC.HollEquip = "true";//форма солдат
-			DeleteAttribute(pchar, "questTemp.HWIC.CanTake");//иные варианты более невозможны
+			pchar.questTemp.HWIC.TakeQuestShip = "true";
+			pchar.questTemp.HWIC.HollEquip = "true";
+			DeleteAttribute(pchar, "questTemp.HWIC.CanTake");
 		break;
 		
-		//дурдом продолжается
+		
 		case "Jacob_lostMir":
 			dialog.text = "Yes, I am aware that you have failed your mission to capture the pirate vessel. All my plans are ruined. I am taking away Meifeng from you. You can go now, I don't need your services.";
 			link.l1 = "I am so sorry for that. Farewell, mynheer Rodenburg.";
@@ -457,10 +457,10 @@ void ProcessDialogEvent()
 			link.l1 = "I am so sorry for that. Farewell, mynheer Rodenburg.";
 			link.l1.go = "exit";
 			Pchar.questTemp.FiringOfficerIDX = GetCharacterIndex("Longway");
-			AddDialogExitQuestFunction("LandEnc_OfficerFired");//Лонгвэя из офицеров
+			AddDialogExitQuestFunction("LandEnc_OfficerFired");
 			pchar.questTemp.HWIC.Holl = "end";
 			CloseQuestHeader("Holl_Gambit");
-			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");//ПУ откроем
+			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");
 			DeleteAttribute(pchar, "questTemp.HWIC.HollEquip");
 			pchar.questTemp.HWIC.Detector = "holl_fail";
 		break;
@@ -481,13 +481,13 @@ void ProcessDialogEvent()
 			sld.lifeday = 0;
 			pchar.questTemp.HWIC.Holl = "end";
 			CloseQuestHeader("Holl_Gambit");
-			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");//ПУ откроем
+			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");
 			DeleteAttribute(pchar, "questTemp.HWIC.HollEquip");
 			pchar.questTemp.HWIC.Detector = "holl_fail";
 			AddSimpleRumourCity("They say that you have failed some secret assignment of mynheer Rodenburg himself. Well, don't even come close to him after that...", "Villemstad", 20, 3, "");
 		break;
 		
-//----------------------------------------------3 задание-------------------------------------------------
+
 		
 		case "Fleetwood":
 			AddMoneyToCharacter(pchar, 50000);
@@ -513,11 +513,11 @@ void ProcessDialogEvent()
 			pchar.questTemp.HWIC.Holl = "toAntigua";
 			AddQuestRecord("Holl_Gambit", "1-15");
 			DeleteAttribute(pchar, "questTemp.HWIC.HollEquip");
-			SetFunctionTimerCondition("ToAntiguaOver", 0, 0, 60, false); //таймер 2 месяца
+			SetFunctionTimerCondition("ToAntiguaOver", 0, 0, 60, false); 
 		break;
 		
 		case "Fleetwood_complete":
-			if (pchar.questTemp.HWIC.Holl == "FleetwoodSink")//Флитвуд утоп с журналом
+			if (pchar.questTemp.HWIC.Holl == "FleetwoodSink")
 			{
 				dialog.text = "I am glad that you are showing such a conscientiousness, captain... Did you get Richard Fleetwood's logbook?";
 				link.l1 = "Unfortunately, I didn't. Didn't get a chance to board him. I had to shoot down his ship with my cannons.";
@@ -605,7 +605,7 @@ void ProcessDialogEvent()
 			dialog.text = "Yes, captain, I have to frustrate you. Willemstad was attacked by the English privateer while you were gone. We have had to take all ships to protect the town. Your stored ship was also participated in the battle but, unfortunately, it was sunk. Alas! I am sorry.";
 			link.l1 = "Yes, it is really a pity. But there is nothing I can do. Farewell!";
 			link.l1.go = "exit";
-			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");//можно пользоваться ПУ
+			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");
 			DeleteAttribute(pchar, "questTemp.HWIC.HollEquip");
 			CloseQuestHeader("Holl_Gambit");
 			pchar.questTemp.HWIC.Holl = "end";
@@ -637,7 +637,7 @@ void ProcessDialogEvent()
 			link.l1.go = "LucasAward_3";			
 		break;
 		
-		case "LucasAward_3"://наведем порядок
+		case "LucasAward_3":
 			LAi_SetActorType(pchar);
 			DialogExit();
 			AddQuestRecord("Holl_Gambit", "1-25");
@@ -646,7 +646,7 @@ void ProcessDialogEvent()
 			for (i=1; i<=3; i++)
 			{
 				sld = characterFromId("LucasGuard_"+i);
-				sld.lifeday = 0;//подчистим солдат
+				sld.lifeday = 0;
 			}
 			sld = characterFromId("Lucas");
 			LAi_ActorGoToLocator(sld, "reload", "reload1", "LucasReturnInCabinet", -1);
@@ -659,7 +659,7 @@ void ProcessDialogEvent()
 			AddSimpleRumourCity("Oh, they say that you were nominated to a state award by Matias Beck himself! Holland can be proud to have people like you, captain!", "Villemstad", 20, 4, "");
 		break;
 		
-//--------------------------------------------------4 задание----------------------------------------------
+
 		
 		case "Abby":
 			dialog.text = "Let me tell one intriguing story first, it will help you to understand how delicate your next task is. A few months ago a flute under English flag was attacked by well-known to you Jacob van Berg, he sunk the flute not far from some unknown island. Only two Jewish settlers survived - Solomon Shneur and his daughter Abigail. They lost the rest of their family in the fight. Somehow they reached the island\nSolomon even managed to drag a chest with family gold to a shore. Another well-known character, Richard Fleetwood, heard the sounds of fighting and arrived to catch van Berg, but he was too late and the pirate fled. So he decided to check the island for any survivors\nHe saved Solomon and Abigail from eternal life on the desert island, the irony is, that Solomon mistook Richard's ship for Jacob's Mirage and got scared as heck, so he stashed his gold somewhere on the island. As I result, he and his daughter arrived here without a penny, dropped by Fleetwood at Blanca Lagoon\nSolomon told me this story. The Company supports Jewish community here, therefore I made sure they have a roof over their heads, got something to eat and to wear. I visited their place a lot. Abigail is a wonderful young girl. Sincere and naive\nI won't lie to you, captain, I like her and I intend to make her my wife. She likes me too, but something is eating her, and this 'something' interferes with my plans.";
@@ -674,7 +674,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Abby_1":
-			LocatorReloadEnterDisable("Villemstad_town", "houseSP2", false);//откроем дом Аби
+			LocatorReloadEnterDisable("Villemstad_town", "houseSP2", false);
 			DialogExit();
 			pchar.questTemp.HWIC.Holl = "AbbyInHouse";
 			AddQuestRecord("Holl_Gambit", "1-26");
@@ -751,7 +751,7 @@ void ProcessDialogEvent()
 			link.l1.go = "Abby_5";
 		break;
 		
-//-------------------------------------------5 задание-------------------------------------------------
+
 		case "Merdok":
 			dialog.text = "Yes, exactly so. My friend, sometimes it's hard to see who is your friend and who is your enemy. Sometimes you miss the point when your dearest friend turns into arch-enemy. Our mutual acquaintance from St John's, John Murdock also known as Johan van Merden, an ex agent of the Company has sold himself to the English Navy intelligence.\nHis newest mission is to eliminate one of the Company's brightest agents... you.";
 			link.l1 = "I am flattered. Sure, you never see such treachery coming.";
@@ -778,25 +778,25 @@ void ProcessDialogEvent()
 			LocatorReloadEnterDisable("Villemstad_town", "reload2_back", false);
 			LocatorReloadEnterDisable("Villemstad_town", "gate_back", false);
 			bDisableFastReload = false;
-			LocatorReloadEnterDisable("SentJons_HouseF3", "reload2", false);//откроем проход в подземелье из дома
-			LocatorReloadEnterDisable("SentJons_TownCave", "reload1_back", false);//откроем проход в дом из подземелья
-			LocatorReloadEnterDisable("SentJons_town", "HouseF3", true);//аптеку закроем
+			LocatorReloadEnterDisable("SentJons_HouseF3", "reload2", false);
+			LocatorReloadEnterDisable("SentJons_TownCave", "reload1_back", false);
+			LocatorReloadEnterDisable("SentJons_town", "HouseF3", true);
 			pchar.quest.Merdok_inCave.win_condition.l1 = "location";
 			pchar.quest.Merdok_inCave.win_condition.l1.location = "SentJons_TownCave";
 			pchar.quest.Merdok_inCave.function = "MerdokInUndergroundCave";
-			LAi_LocationDisableOfficersGen("SentJons_TownCave", true);//офицеров в шахту не пускать
+			LAi_LocationDisableOfficersGen("SentJons_TownCave", true);
 		break;
 		
 		case "Merdok_4":
 			dialog.text = "Excellent, captain! I am glad, I really do. Have you found an archive?";
-			if (CheckCharacterItem(pchar, "MerdokArchive"))//архив
+			if (CheckCharacterItem(pchar, "MerdokArchive"))
 			{
 				link.l1 = "Yes, here it is. There were no any more ledgers neither on the chemist's corpse nor in his chests.";
 				link.l1.go = "Merdok_book";
 			}
 			link.l2 = "No. I was looking for it everywhere, yet found nothing.";
 			link.l2.go = "Merdok_5";
-			DeleteAttribute("SentJons_TownCave", "box2");//если не нашли шифр - уже и не найдем
+			DeleteAttribute("SentJons_TownCave", "box2");
 		break;
 		
 		case "Merdok_5":
@@ -833,31 +833,31 @@ void ProcessDialogEvent()
 		
 		case "Merdok_9":
 			DialogExit();
-			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");//можно пользоваться ПУ
+			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");
 			DeleteAttribute(pchar, "questTemp.HWIC.HollEquip");
 			pchar.questTemp.HWIC.Holl = "end";
 			AddQuestRecord("Holl_Gambit", "1-41");
 			CloseQuestHeader("Holl_Gambit");
-			sld = characterFromId("Abigile");//уберем Аби
+			sld = characterFromId("Abigile");
 			sld.lifeday = 0;
-			sld = characterFromId("Solomon");//уберем Соломона
+			sld = characterFromId("Solomon");
 			sld.lifeday = 0;
 			pchar.quest.Lucas_quit.win_condition.l1 = "Timer";
 			pchar.quest.Lucas_quit.win_condition.l1.date.hour  = sti(GetTime());
 			pchar.quest.Lucas_quit.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 7);
 			pchar.quest.Lucas_quit.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 7);
 			pchar.quest.Lucas_quit.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 7);
-			pchar.quest.Lucas_quit.function = "LucasQuit";//прерывание на Лукаса
+			pchar.quest.Lucas_quit.function = "LucasQuit";
 			pchar.questTemp.HWIC.Detector = "holl_win";
 			sld = characterFromId("hol_guber");
-			sld.Dialog.Filename = "Common_Mayor.c";//patch-8
+			sld.Dialog.Filename = "Common_Mayor.c";
 			sld.dialog.currentnode = "First time";
 			sld.quest.meeting = "1";
 			AddSimpleRumourCity("Mynheer Rodenburg has sailed to Holland with his young wife and the father-in-law. There is a new vice-director in the Company. Isn't that you, captain?", "Villemstad", 30, 3, "");
 			AddSimpleRumour("They say, that you are highly thought of by our authorities. They say that mynheer Rodenburg has appointed you as his successor in the Company. Is that so, captain?", HOLLAND, 30, 3);
 		break;
 		
-//----------------------------------------------за Англию------------------------------------------------------
+
 		case "Lucas_abordage":
 			dialog.text = "Ha, a friend of Fleetwood's is here! You have won the boarding, but you are about to see that Lucas Rodenburg will slam the door very loudly!";
 			link.l1 = "I don't think that you 'door' will be slammed more loudly than a hatch of the chest with Gaston's head did... Nothing and no one will be able to scare me anymore. Not after that awful day.";
@@ -877,10 +877,10 @@ void ProcessDialogEvent()
 			QuestAboardCabinDialogExitWithBattle("PrepareToBoom1"); 
 			DialogExit();	
 			AddDialogExitQuest("MainHeroFightModeOn");
-			pchar.GenQuest.Detonation = true; // patch-4
+			pchar.GenQuest.Detonation = true; 
 		break;
 		
-//----------------------------------------------против всех--------------------------------------------------
+
 		case "LucasPrisoner":
 			dialog.text = "Why are you here? Want to mock me? Perhaps you will tell me at last what's your interest in all of this? It was you who captured the brigantine, right? Was it your plan from the beginning?";
 			link.l1 = "I am here, Lucas, to give you regards. Best regards from betrayed John Merdock. You was my job and I did it. Farewell now.";
@@ -896,7 +896,7 @@ void ProcessDialogEvent()
 		
 		case "LucasPrisoner_2":
 			DialogExit();
-			pchar.questTemp.jailCanMove = true; //разрешить пройти мимо стражи
+			pchar.questTemp.jailCanMove = true; 
 			LAi_SetPlayerType(pchar);
 			pchar.quest.Login_Joakim.win_condition.l1 = "location";
 			pchar.quest.Login_Joakim.win_condition.l1.location = "Villemstad_town";

@@ -1,5 +1,5 @@
-// boal 08/04/06 общий диалог верфи
-#include "DIALOGS\russian\Rumours\Common_rumours.c"  //homo 25/06/06
+
+#include "DIALOGS\russian\Rumours\Common_rumours.c"  
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -7,7 +7,7 @@ void ProcessDialogEvent()
 	string sTemp;
 	string s2;
 	
-	int iShipClass = GetCharacterShipClass(PChar); // Если корабля нет, вернет 7 (лодка)
+	int iShipClass = GetCharacterShipClass(PChar); 
 	int iRank = sti(PChar.rank);
 	int iSumm, iType;
 	
@@ -23,17 +23,17 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 
-    // вызов диалога по городам -->
+    
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Shipyard\" + NPChar.City + "_Shipyard.c";
     if (LoadSegment(NPChar.FileDialog2))
 	{
         ProcessCommonDialog(NPChar, Link, NextDiag);
 		UnloadSegment(NPChar.FileDialog2);
 	}
-    // вызов диалога по городам <--
-	ProcessCommonDialogRumors(NPChar, Link, NextDiag);//homo 16/06/06
+    
+	ProcessCommonDialogRumors(NPChar, Link, NextDiag);
     bool ok;
-    int iTest = FindColony(NPChar.City); // город магазина
+    int iTest = FindColony(NPChar.City); 
     ref rColony;
 	if (iTest != -1)
 	{
@@ -44,22 +44,22 @@ void ProcessDialogEvent()
 	int amount;
 	int	iCannonDiff;
 	
-	// генератор парусов по кейсу -->
+	
 	string attrLoc   = Dialog.CurrentNode;
 	int i;
   	if (findsubstr(attrLoc, "SailsColorIdx_" , 0) != -1)
  	{
         i = findsubstr(attrLoc, "_" , 0);
-	 	NPChar.SailsColorIdx = strcut(attrLoc, i+1, strlen(attrLoc)-1); // индех в конце
+	 	NPChar.SailsColorIdx = strcut(attrLoc, i+1, strlen(attrLoc)-1); 
  	    Dialog.CurrentNode = "SailsColorDone";
  	}
  	if (findsubstr(attrLoc, "SailsTypeChooseIDX_" , 0) != -1)
  	{
         i = findsubstr(attrLoc, "_" , 0);
-	 	NPChar.SailsTypeChooseIDX = strcut(attrLoc, i+1, strlen(attrLoc)-1); // индех в конце
+	 	NPChar.SailsTypeChooseIDX = strcut(attrLoc, i+1, strlen(attrLoc)-1); 
  	    Dialog.CurrentNode = "SailsTypeChoose2";
  	}
- 	// генератор парусов по кейсу <--
+ 	
 	switch(Dialog.CurrentNode)
 	{
 		case "Exit":
@@ -67,11 +67,11 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		case "ship_tunning_not_now":  // аналог выхода, со старых времен, много переделывать.
+		case "ship_tunning_not_now":  
             LockControl("DlgDown3", false);
 			LockControl("DlgUp3", false);
 			DialogExit();
-			NextDiag.CurrentNode = "First time";  // выход для тюнинга, нужно тут из-за LoadSegment
+			NextDiag.CurrentNode = "First time";  
 		break;
 		
 		case "ship_tunning_not_now_1":  
@@ -101,7 +101,7 @@ void ProcessDialogEvent()
 				break;
 			}
 			
-//Jason ---------------------------------------Бремя гасконца------------------------------------------------
+
 			if (CheckAttribute(pchar, "questTemp.Sharlie.Lock") && pchar.location == "Fortfrance_shipyard")
 			{
 				if (CheckAttribute(pchar, "questTemp.Sharlie.Rum") || CheckAttribute(pchar, "questTemp.Sharlie.Gigolo") || CheckAttribute(pchar, "questTemp.Sharlie.RescueDaughter"))
@@ -111,7 +111,7 @@ void ProcessDialogEvent()
 					Link.l1.go = "exit";
 					break;
 				}
-				if (pchar.questTemp.Sharlie == "ship" || pchar.questTemp.Sharlie == "ship_fast") // Addon 2016-1 Jason пиратская линейка 1
+				if (pchar.questTemp.Sharlie == "ship" || pchar.questTemp.Sharlie == "ship_fast") 
 				{
 					dialog.text = "Did you want anything, monsieur?";
 					Link.l1 = "Listen, I'd like to purchase a ship from you.";
@@ -125,8 +125,8 @@ void ProcessDialogEvent()
 				NPChar.quest.meeting = "1";
 				break;
 			}
-	//<-- Бремя гасконца
-			// Addon-2016 Jason, французские миниквесты (ФМК) ФМК-Мартиника
+	
+			
 			if (CheckAttribute(pchar, "questTemp.FMQM.Oil") && pchar.location == "Fortfrance_shipyard")
 			{
 				if (pchar.questTemp.FMQM == "remove_oil")
@@ -158,7 +158,7 @@ void ProcessDialogEvent()
 					break;
 				}
 			}
-			// Addon 2016-1 Jason пиратская линейка
+			
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "silk_13" && pchar.location == "PortRoyal_shipyard")
 			{
 				dialog.text = "Oh, it's you again! I recognized you, my young man! It was you who recently asked about... increasing ship's speed using silk sailcloth, right?";
@@ -167,7 +167,7 @@ void ProcessDialogEvent()
 				break;
 			}
 			
-			if(NPChar.quest.meeting == "0") // первая встреча
+			if(NPChar.quest.meeting == "0") 
 			{
 				dialog.Text = GetNatPhrase(npchar, LinkRandPhrase("Ha! A real old salt came to my humble workshop! Are you new to the local waters, captain?","Welcome, sir! If you are not alien to the sea and you have a ship - you've come just to the right place!","Hello, sir! You're in luck - this is the best ship workshop in all the British New World."), LinkRandPhrase("Monsieur, I assume you're a dashing captain, aren't you? If you are, you were right by visiting my modest shipyard!","For the first time here, monsieur captain? Come in and meet this old shipwright.","Let's have a pleasure of knowing each other, monsieur! A ship needs caress, just like a woman - and we, Frenchmen, are experts in that! Trust me, you won't regret your coming here!"), LinkRandPhrase("I've never seen you here before, senor. Nice meeting you!","I greet a valiant conqueror of the seas! You're a sailor, aren't you? And I am the local shipwright, we should get to know each other.","Hello, caballero! I am happy to welcome you to my workshop!"),LinkRandPhrase("Good afternoon, mynheer. I haven't met you before, have I? Do you have business with me?","Hello, mynheer captain. Don't be surprised, I've met quite a few captains, so I realized that you're a captain, too, at the first sight.","Come in, mynheer. I am the local shipwright. Pleasure to meet you."));
 				Link.l1 = LinkRandPhrase("I am glad to meet you, too. My name is "+GetFullName(pchar)+", and I am new to these places. So, I decided to drop in.","Just couldn't have passed by - you know, that smell of freshly planed planks... I am "+GetFullName(pchar)+", captain of ship '"+pchar.ship.name+"'.","Allow me to introduce myself - "+GetFullName(pchar)+", captain of ship '"+pchar.ship.name+"', pleased to meet you. So, you are building and repairing ships here, aren't you?");
@@ -193,7 +193,7 @@ void ProcessDialogEvent()
 				
 				link.l15 = "Don't you have a job requiring help of a stranger?";
 			    link.l15.go = "Tasks";
-				//Jason --> генератор Призонер
+				
 				if (CheckAttribute(pchar, "GenQuest.Findship.Shipyarder") && NPChar.location == pchar.GenQuest.Findship.Shipyarder.City + "_shipyard")
 				{
 					ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
@@ -219,35 +219,35 @@ void ProcessDialogEvent()
 					{
 						link.l16 = "I delivered to you "+pchar.GenQuest.Findship.Shipyarder.ShipBaseName+", as you asked.";
 						link.l16.go = "Findship_check";
-					}// <-- генератор Призонер
+					}
 				}
-				//Jason --> генератор Неудачливый вор
+				
 				if (CheckAttribute(pchar, "GenQuest.Device.Shipyarder") && CheckCharacterItem(pchar, "Tool") && NPChar.location == pchar.GenQuest.Device.Shipyarder.City + "_shipyard")
 				{
 					link.l17 = "I managed to seek out the thief and obtain "+pchar.GenQuest.Device.Shipyarder.Type+".";
 					link.l17.go = "Device_complete";
 				}
-				// <-- генератор Неудачливый вор
+				
 				if(RealShips[sti(Pchar.Ship.Type)].BaseType != SHIP_CURSED_FDM)
 				{
 					link.l12 = "I want to change the look of my sails.";
 					link.l12.go = "SailsGerald";
 				}
 				Link.l2 = "I just wanted to talk.";
-				Link.l2.go = "quests"; //(перессылка в файл города)
-				// -->
+				Link.l2.go = "quests"; 
+				
     			if (CheckAttribute(pchar, "GenQuest.LoanChest.TakeChest") && sti(pchar.GenQuest.LoanChest.TargetIdx) == sti(NPChar.index))
 				{
 					link.l3 = "I would like to talk to you about financial matters.";
 					link.l3.go = "LoanForAll";
 				}
-  				if (CheckAttribute(pchar, "GenQuest.Intelligence") && CheckAttribute(pchar, "GenQuest.Intelligence.SpyId") && pchar.GenQuest.Intelligence.SpyId == npchar.id && pchar.GenQuest.Intelligence == "") //квест мэра - на связь с нашим шпионом
+  				if (CheckAttribute(pchar, "GenQuest.Intelligence") && CheckAttribute(pchar, "GenQuest.Intelligence.SpyId") && pchar.GenQuest.Intelligence.SpyId == npchar.id && pchar.GenQuest.Intelligence == "") 
 				{
 					link.l7 = RandPhraseSimple("I am here on request of one certain man. His name is governor " + GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + ".", 
 						GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + " sent me to you. I am supposed to pick up something...");
 					link.l7.go = "IntelligenceForAll";
 				}
-				//Jason, генер почтового курьера 2 уровня
+				
 				if (CheckAttribute(PChar, "questTemp.WPU.Postcureer.LevelUp"))
 				{
 					if (pchar.questTemp.WPU.Postcureer.TargetPortmanID == npchar.id)
@@ -255,7 +255,7 @@ void ProcessDialogEvent()
 						link.l14 = "I brought the drawing of the ship from "+XI_ConvertString("Colony"+pchar.questTemp.WPU.Postcureer.StartCity+"Gen")+".";
 						link.l14.go = "Postcureer_LevelUp_ForAll";
 					}
-				} // patch-6
+				} 
 				if(CheckAttribute(pchar,"GenQuest.EncGirl"))
 				{
 					if(pchar.GenQuest.EncGirl == "toLoverFather" && pchar.GenQuest.EncGirl.LoverFather == "shipyard_keeper" && pchar.GenQuest.EncGirl.LoverCity == npchar.city)
@@ -298,19 +298,19 @@ void ProcessDialogEvent()
 				}
 				Link.l2 = "I just wanted to talk.";		
 				link.l2.go = "quests";
-				// -->
+				
     			if (CheckAttribute(pchar, "GenQuest.LoanChest.TakeChest") && sti(pchar.GenQuest.LoanChest.TargetIdx) == sti(NPChar.index))
 				{
 					link.l3 = "I would like to talk to you about financial matters.";
-					link.l3.go = "LoanForAll";//(перессылка в файл города)
+					link.l3.go = "LoanForAll";
 				}
-  				if (CheckAttribute(pchar, "GenQuest.Intelligence") && pchar.GenQuest.Intelligence.SpyId == npchar.id && pchar.GenQuest.Intelligence == "") //квест мэра - на связь с нашим шпионом
+  				if (CheckAttribute(pchar, "GenQuest.Intelligence") && pchar.GenQuest.Intelligence.SpyId == npchar.id && pchar.GenQuest.Intelligence == "") 
 				{
 					link.l7 = RandPhraseSimple("I am here on request of one certain man. His name is governor " + GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + ".", 
 						GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + " sent me to you. I am supposed to pick up something...");
 					link.l7.go = "IntelligenceForAll";
 				}
-				//Jason, генер почтового курьера 2 уровня
+				
 				if (CheckAttribute(PChar, "questTemp.WPU.Postcureer.LevelUp"))
 				{
 					if (pchar.questTemp.WPU.Postcureer.TargetPortmanID == npchar.id)
@@ -342,7 +342,7 @@ void ProcessDialogEvent()
 					if(CheckAttribute(pchar, "questTemp.different.GiveShipLetters") && (pchar.questTemp.different.GiveShipLetters.city == npchar.city))
 					{
 						link.l10 = "What can you tell me about the owner of these documents?";
-						link.l10.go = "ShipLetters_6";// генератор  "Найденные документы"
+						link.l10.go = "ShipLetters_6";
 					}		
 				}	
 				Link.l11 = "I must leave. Thank you.";
@@ -500,7 +500,7 @@ void ProcessDialogEvent()
 			}			
 		break;
 		
-		////////////////////////////////////////// Capacity ////////////////////////////////////////////////////
+		
 		case "ship_tunning_Capacity":
 			Material 	= GetMaterialQtyUpgrade(pchar, NPChar, 1 );
 			WorkPrice 	= GetMaterialQtyUpgrade(pchar, NPChar, 2 );			
@@ -590,7 +590,7 @@ void ProcessDialogEvent()
 		    AddTimeToCurrent(6, 30);
 		    shTo = &RealShips[sti(Pchar.Ship.Type)];
 		    DeleteAttribute(NPChar, "Tuning");
-		    // изменим
+		    
 			if(!CheckAttribute(shTo, "Bonus_Capacity"))
 			{
 				shTo.Capacity        = sti(shTo.Capacity) + makeint(sti(shTo.Capacity)/5);
@@ -633,7 +633,7 @@ void ProcessDialogEvent()
 
 			shTo.DontTuning.Cannon = true;
 			
-	        // finish <--
+	        
             NextDiag.TempNode = "First time";
 			dialog.Text = "...That seems to be all... You can load your hold fully now, I guarantee the quality of my work.";
 			Link.l1 = "Thanks! I'll test it.";
@@ -648,7 +648,7 @@ void ProcessDialogEvent()
 			CloseQuestHeader("ShipTuning");
 		break;
 		
-		////////////////////////////////////////// SpeedRate ////////////////////////////////////////////////////
+		
 		case "ship_tunning_SpeedRate":
 			Material 	= GetMaterialQtyUpgrade(pchar, NPChar,  1 );			
 			WorkPrice 	= GetMaterialQtyUpgrade(pchar, NPChar,  2 );
@@ -738,7 +738,7 @@ void ProcessDialogEvent()
 		    AddTimeToCurrent(6, 30);
 		    shTo = &RealShips[sti(Pchar.Ship.Type)];
 		    DeleteAttribute(NPChar, "Tuning");
-		    // изменим
+		    
 			if(!CheckAttribute(shTo, "Bonus_SpeedRate"))
 			{
 					shTo.SpeedRate        = (stf(shTo.SpeedRate) + stf(shTo.SpeedRate)/5.0);
@@ -756,7 +756,7 @@ void ProcessDialogEvent()
 			{
 				pchar.achievment.Tuning.stage1 = true;
 			}	
-	        // finish <--
+	        
             NextDiag.TempNode = "First time";
 			dialog.Text = "... Everything is ready, captain. Catch the wind in full sail. Check it out if you'd like to!";
 			Link.l1 = "Thanks! I'll test it.";
@@ -765,7 +765,7 @@ void ProcessDialogEvent()
 			CloseQuestHeader("ShipTuning");
 		break;
 		
-		////////////////////////////////////////// TurnRate ////////////////////////////////////////////////////
+		
 		case "ship_tunning_TurnRate":
 			Material  = GetMaterialQtyUpgrade(pchar, NPChar, 1 );			
 			WorkPrice = GetMaterialQtyUpgrade(pchar, NPChar, 2 );
@@ -855,7 +855,7 @@ void ProcessDialogEvent()
 		    AddTimeToCurrent(6, 30);
 		    shTo = &RealShips[sti(Pchar.Ship.Type)];
 		    DeleteAttribute(NPChar, "Tuning");
-		    // изменим
+		    
 			if(!CheckAttribute(shTo, "Bonus_TurnRate"))
 			{
 				shTo.TurnRate        = (stf(shTo.TurnRate) + stf(shTo.TurnRate)/5.0);
@@ -881,7 +881,7 @@ void ProcessDialogEvent()
 			CloseQuestHeader("ShipTuning");
 		break;
 		
-		////////////////////////////////////////// MaxCrew ////////////////////////////////////////////////////
+		
 		case "ship_tunning_MaxCrew":
 			Material  = GetMaterialQtyUpgrade(pchar, NPChar, 1 );
 			WorkPrice = GetMaterialQtyUpgrade(pchar, NPChar, 2 );				
@@ -994,7 +994,7 @@ void ProcessDialogEvent()
 		break;
 
 		
-		////////////////////////////////////////// MinCrew ////////////////////////////////////////////////////
+		
 		case "ship_tunning_MinCrew":
 			Material 	= GetMaterialQtyUpgrade(pchar, NPChar, 1 );			
 			WorkPrice 	= GetMaterialQtyUpgrade(pchar, NPChar, 2 );				
@@ -1084,7 +1084,7 @@ void ProcessDialogEvent()
 		    AddTimeToCurrent(6, 30);
 		    shTo = &RealShips[sti(Pchar.Ship.Type)];
 		    DeleteAttribute(NPChar, "Tuning");
-		    // изменим
+		    
 	        shTo.MinCrew        = sti(shTo.MinCrew) - makeint(sti(shTo.MinCrew)/5);
 			if(sti(shTo.MinCrew) < 1) shTo.MinCrew = 1;
 	        shTo.Tuning.MinCrew = true;
@@ -1106,7 +1106,7 @@ void ProcessDialogEvent()
 			CloseQuestHeader("ShipTuning");
 		break;
 		
-		////////////////////////////////////////// HP ////////////////////////////////////////////////////
+		
 		case "ship_tunning_HP":
 			Material 	= GetMaterialQtyUpgrade(pchar, NPChar, 1 );
 			WorkPrice 	= GetMaterialQtyUpgrade(pchar, NPChar, 2 );			
@@ -1196,7 +1196,7 @@ void ProcessDialogEvent()
 		    AddTimeToCurrent(6, 30);
 		    shTo = &RealShips[sti(Pchar.Ship.Type)];
 		    DeleteAttribute(NPChar, "Tuning");
-		    // изменим
+		    
 			if(!CheckAttribute(shTo, "Bonus_HP"))
 			{
 				shTo.HP        = sti(shTo.HP) + makeint(sti(shTo.HP)/5);
@@ -1226,7 +1226,7 @@ void ProcessDialogEvent()
 			CloseQuestHeader("ShipTuning");
 		break;
 		
-		////////////////////////////////////////// WindAgainst ////////////////////////////////////////////////////
+		
 		case "ship_tunning_WindAgainst":
 			Material 	= GetMaterialQtyUpgrade(pchar, NPChar, 1 );
 			WorkPrice 	= GetMaterialQtyUpgrade(pchar, NPChar, 2 );
@@ -1318,7 +1318,7 @@ void ProcessDialogEvent()
 		    AddTimeToCurrent(6, 30);
 		    shTo = &RealShips[sti(Pchar.Ship.Type)];
 		    DeleteAttribute(NPChar, "Tuning");
-		    // изменим			
+		    
 	        shTo.WindAgainstSpeed   = stf(shTo.WindAgainstSpeed) - 0.15 * stf(shTo.WindAgainstSpeed);			
 	        shTo.Tuning.WindAgainst = true;
 			
@@ -1329,7 +1329,7 @@ void ProcessDialogEvent()
 			{
 				pchar.achievment.Tuning.stage1 = true;
 			}	
-	        // finish <--
+	        
             NextDiag.TempNode = "First time";
 			dialog.Text = "... Ready, Captain!.. Your ship will sail upwind much quicker now.";
 			Link.l1 = "Thanks! I'll test it.";
@@ -1339,7 +1339,7 @@ void ProcessDialogEvent()
 			CloseQuestHeader("ShipTuning");
 		break;
 						
-		////////////////////////////////////////// только количество орудий  ////////////////////////////////////////////////////	
+		
 		case "ship_c_quantity":
 			Material 	= GetMaterialQtyUpgrade(pchar, NPChar, 1 );			
 			WorkPrice 	= GetMaterialQtyUpgrade(pchar, NPChar, 2 );			
@@ -1487,14 +1487,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Tasks":
-			//--> Jason генератор Поиск корабля
+			
 			if (drand(4) == 2 && !CheckAttribute(pchar, "GenQuest.Findship.Shipyarder") && sti(pchar.rank) < 19)
 			{
 				if (!CheckAttribute(npchar, "Findship") || GetNpcQuestPastDayParam(npchar, "Findship") >= 60) 
 				{
-					SelectFindship_ShipType(); //выбор типа корабля
-					pchar.GenQuest.Findship.Shipyarder.ShipBaseName =  GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(pchar.GenQuest.Findship.Shipyarder.ShipType), "Name") + "Acc")); // new
-					pchar.GenQuest.Findship.Shipyarder.City = npchar.city; //город квестодателя
+					SelectFindship_ShipType(); 
+					pchar.GenQuest.Findship.Shipyarder.ShipBaseName =  GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(pchar.GenQuest.Findship.Shipyarder.ShipType), "Name") + "Acc")); 
+					pchar.GenQuest.Findship.Shipyarder.City = npchar.city; 
 					dialog.text = "I have an issue that needs to be resolved. I have an order for a ship - "+pchar.GenQuest.Findship.Shipyarder.ShipBaseName+". However, in my yard there's no such ship now and in two months I also have no possibility to get one\nIf you can give me such a ship - I will be very grateful, and will pay the sum of one and a half times greater than its selling price.";
 					link.l1 = "An interesting offer. I agree!";
 					link.l1.go = "Findship";
@@ -1504,8 +1504,8 @@ void ProcessDialogEvent()
 					break;
 				}
 				
-			}//<-- генератор Поиск корабля
-			//Jason --> генератор Неудачливый вор
+			}
+			
 			if (drand(6) == 1 && !CheckAttribute(pchar, "GenQuest.Device.Shipyarder") && sti(pchar.rank) < 10 && npchar.city != "Charles")
 			{
 				if (!CheckAttribute(npchar, "Device")) 
@@ -1540,7 +1540,7 @@ void ProcessDialogEvent()
 					link.l2.go = "Device_exit";
 					SaveCurrentNpcQuestDateParam(npchar, "Device");
 					break;
-				}//<-- генератор Неудачливый вор
+				}
 			}
 			dialog.text = "I don't have anything of that kind.";
 			link.l1 = "As you say.";
@@ -1557,7 +1557,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(pchar, "GenQuest.Device.Shipyarder");
 		break;
 		
-		//--> Jason генератор Поиск корабля
+		
 		case "Findship":
 			pchar.GenQuest.Findship.Shipyarder = "begin";
 			pchar.GenQuest.Findship.Shipyarder.Name = GetFullName(npchar);
@@ -1578,7 +1578,7 @@ void ProcessDialogEvent()
 				break;
 		
 		case "Findship_complete":
-			pchar.quest.Findship_Over.over = "yes";//снять прерывание
+			pchar.quest.Findship_Over.over = "yes";
 			sld = GetCharacter(sti(pchar.GenQuest.Findship.Shipyarder.CompanionIndex));
 			RemoveCharacterCompanion(PChar, sld);
 			AddPassenger(PChar, sld, false);
@@ -1591,16 +1591,16 @@ void ProcessDialogEvent()
 			CloseQuestHeader("Findship");
 			DeleteAttribute(pchar, "GenQuest.Findship.Shipyarder");
 		break;
-		//<-- генератор Поиск корабля
 		
-		//Jason --> генератор Неудачливый вор
+		
+		
 		case "Device":
 			pchar.GenQuest.Device.Shipyarder.Chance1 = rand(6);
 			pchar.GenQuest.Device.Shipyarder.Chance2 = rand(3);
 			pchar.GenQuest.Device.Shipyarder.Chance3 = rand(2);
 			pchar.GenQuest.Device.Shipyarder.Chance4 = rand(4);
 			pchar.GenQuest.Device.Shipyarder.Money = 12000+rand(8000);
-			//генерируем тип корабля для бонуса сейчас, чтобы не сливали
+			
 			if (sti(pchar.rank) < 2) iType = SHIP_SCHOONER; 
 			if (sti(pchar.rank) >= 2 && sti(pchar.rank) < 5) iType = SHIP_BRIGANTINE; 
 			if (sti(pchar.rank) >= 5 && sti(pchar.rank) < 7) iType = SHIP_BRIG; 
@@ -1622,7 +1622,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Device_complete":
-			pchar.quest.Device_Over.over = "yes";//снять прерывание
+			pchar.quest.Device_Over.over = "yes";
 			dialog.text = "You've done it! You have no idea how grateful I am! I already lost every hope to see my instrument again.";
 			link.l1 = "Here you go.";
 			link.l1.go = "Device_complete_1";
@@ -1638,9 +1638,9 @@ void ProcessDialogEvent()
 		case "Device_complete_2":
 			AddMoneyToCharacter(pchar, sti(pchar.GenQuest.Device.Shipyarder.Money));
 			ChangeCharacterComplexReputation(pchar,"nobility", 5); 
-			AddCharacterExpToSkill(pchar, "Leadership", 100);//авторитет
-			AddCharacterExpToSkill(pchar, "Fortune", 100);//везение
-			AddCharacterExpToSkill(pchar, "Sneak", 100);//скрытность
+			AddCharacterExpToSkill(pchar, "Leadership", 100);
+			AddCharacterExpToSkill(pchar, "Fortune", 100);
+			AddCharacterExpToSkill(pchar, "Sneak", 100);
 			AddQuestRecord("Device", "10");
 			AddQuestUserData("Device", "sMoney", FindRussianMoneyString(sti(pchar.GenQuest.Device.Shipyarder.Money)));
 			CloseQuestHeader("Device");
@@ -1683,7 +1683,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			DeleteAttribute(pchar, "GenQuest.Device.Shipyarder");
 		break;
-		// <-- генератор Неудачливый вор
+		
 		
 		case "ShipLetters_6":
 			pchar.questTemp.different.GiveShipLetters.speakShipyard = true;
@@ -1709,7 +1709,7 @@ void ProcessDialogEvent()
 			TakeItemFromCharacter(pchar, "CaptainBook"); 
 			addMoneyToCharacter(pchar, sti(pchar.questTemp.different.GiveShipLetters.price2)); 
 			pchar.questTemp.different = "free";
-			pchar.quest.GiveShipLetters_null.over = "yes"; //снимаем таймер 
+			pchar.quest.GiveShipLetters_null.over = "yes"; 
 			AddQuestRecord("GiveShipLetters", "4");		
 			AddQuestUserData("GiveShipLetters", "sSex", GetSexPhrase("",""));		
 			CloseQuestHeader("GiveShipLetters");
@@ -1946,7 +1946,7 @@ void ProcessDialogEvent()
 		case "SailsGeraldChoose":
 			if(GetSailsTuningPrice(Pchar, npchar, SAILSGERALD_PRICE_RATE) <= sti(Pchar.Money))
 			{
-				if(CheckSailsGerald(Pchar) && CanSetSailsGerald(PChar)) // Warship fix 04.06.09
+				if(CheckSailsGerald(Pchar) && CanSetSailsGerald(PChar)) 
 				{
 					NextDiag.CurrentNode = NextDiag.TempNode;
 					DialogExit();
@@ -1967,7 +1967,7 @@ void ProcessDialogEvent()
 			}
 		break;
 
-//--> -------------------------------------------Бремя гасконца---------------------------------------------------
+
 		case "Sharlie":
 			dialog.text = "I'm sorry to disappoint you, monsieur, but right now I don't have any ships for sale.";
 			link.l1 = "That's really strange, 'cause I was told you had a brand new lugger at your shipyard.";
@@ -2012,7 +2012,7 @@ void ProcessDialogEvent()
 				Link.l1.go = "exit";
 				break;
 			}
-			if (pchar.questTemp.Sharlie == "ship" || pchar.questTemp.Sharlie == "ship_fast") // Addon 2016-1 Jason пиратская линейка 1
+			if (pchar.questTemp.Sharlie == "ship" || pchar.questTemp.Sharlie == "ship_fast") 
 			{	
 				if (GetQuestPastDayParam("questTemp.Sharlie_ship") > 3)
 				{
@@ -2050,7 +2050,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			pchar.questTemp.Sharlie.Ship = "lugger";
 			pchar.questTemp.Sharlie = "crew";
-			//стартовый люггер
+			
 			pchar.Ship.Type = GenerateShipHand(pchar, SHIP_LUGGER, 6, 700, 40, 610, 16000, 15.2, 58.8, 1.42);
 			SetBaseShipData(pchar);
 			ResetShipCannonsDamages(pchar);
@@ -2065,16 +2065,16 @@ void ProcessDialogEvent()
 			pchar.Ship.name = "Adeline";
 			pchar.Ship.Cannons.Type = CANNON_TYPE_CANNON_LBS6;
 			AddQuestRecord("Sharlie", "6");
-			bDisableFastReload = false;//открыть переход
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
+			bDisableFastReload = false;
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
 			if (GetCharacterIndex("GigoloMan") != -1)
 			{
 				sld = characterFromId("GigoloMan");
 				sld.lifeday = 0;
 			}
 			pchar.GenQuest.StoreGoods.StoreIdx = Fortfrance_STORE;
-			pchar.GenQuest.StoreGoods.Starting = true; // заполняем магазин
-			bNoEatNoRats  = true; // отменяем еду и крыс
+			pchar.GenQuest.StoreGoods.Starting = true; 
+			bNoEatNoRats  = true; 
 		break;
 		
 		case "Sharlie_6":
@@ -2111,7 +2111,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			pchar.questTemp.Sharlie.Ship = "sloop";
 			pchar.questTemp.Sharlie = "crew";
-			//стартовый шлюп
+			
 			pchar.Ship.Type = GenerateShipHand(SHIP_SLOOP, 6, 700, 50, 790, 20000, 13.1, 50.1, 1.25);
 			SetBaseShipData(pchar);
 			ResetShipCannonsDamages(pchar);
@@ -2127,16 +2127,16 @@ void ProcessDialogEvent()
 			pchar.Ship.name = "Black Hound";
 			pchar.Ship.Cannons.Type = CANNON_TYPE_CANNON_LBS3;
 			AddQuestRecord("Sharlie", "6");
-			bDisableFastReload = false;//открыть переход
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
+			bDisableFastReload = false;
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
 			if (GetCharacterIndex("GigoloMan") != -1)
 			{
 				sld = characterFromId("GigoloMan");
 				sld.lifeday = 0;
 			}
 			pchar.GenQuest.StoreGoods.StoreIdx = Fortfrance_STORE;
-			pchar.GenQuest.StoreGoods.Starting = true; // заполняем магазин
-			bNoEatNoRats  = true; // отменяем еду и крыс
+			pchar.GenQuest.StoreGoods.Starting = true; 
+			bNoEatNoRats  = true; 
 		break;
 		
 		case "Sharlie_shipwait":
@@ -2153,8 +2153,8 @@ void ProcessDialogEvent()
 				NextDiag.TempNode = "Sharlie_shipwait";
 			}
 		break;
-//<-- -----------------------------------------Бремя гасконца-----------------------------------------------------
-		// Addon-2016 Jason, французские миниквесты (ФМК) ФМК-Мартиника
+
+		
 		case "FMQM_oil_1":
 			DialogExit();
 			LAi_SetActorType(npchar);
@@ -2205,7 +2205,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(pchar, "questTemp.FMQM.Oil");
 		break;
 		
-		// Addon 2016-1 Jason пиратская линейка
+		
 		case "mtraxx_x":
             dialog.text = "I'd like to return to that conversation. I am willing to give a decent discount... a very sizable discount for any labor on your ship... if you provide me with some extra silk...";
 			link.l1 = "Master, let us get straight to the point. I promise I am no spy and neither am I one of colonel Doyley's men. Moreover, I work with Marcus Tyrex, the name you should be familiar with. So, let's lay the cards on the table. I know you need a steady supply of silk sailcloth, and Marcus Tyrex is willing to bring it to you. Also steadily. However, only in the case when we agree on the price. Shall we get straight to that then, master?";
@@ -2239,7 +2239,7 @@ void ProcessDialogEvent()
 		case "mtraxx_x_5":
 			DialogExit();
             AddQuestRecord("Roger_2", "21");
-			pchar.questTemp.Mtraxx = "silk_10"; // покупатель найден
+			pchar.questTemp.Mtraxx = "silk_10"; 
 			sld = characterFromId("Jeffry");
 			sld.DeckDialogNode = "Jeffry_9";
 		break;
@@ -2255,7 +2255,7 @@ string findShipyardCity(ref NPChar)
 	for(n=0; n<MAX_COLONIES; n++)
 	{
 		nation = GetNationRelation(sti(npchar.nation), sti(colonies[n].nation));
-		if (sti(colonies[n].nation) != PIRATE && colonies[n].id != "Panama" && colonies[n].nation != "none" && GetIslandByCityName(npchar.city) != colonies[n].islandLable) //не на свой остров
+		if (sti(colonies[n].nation) != PIRATE && colonies[n].id != "Panama" && colonies[n].nation != "none" && GetIslandByCityName(npchar.city) != colonies[n].islandLable) 
 		{
 			if (GetCharacterIndex(colonies[n].id + "_shipyarder") != -1)
 			{
@@ -2269,7 +2269,7 @@ string findShipyardCity(ref NPChar)
 	return colonies[nation].id;
 }
 
-// проверка какой уже цвет есть
+
 bool CheckSailsColor(ref chr, int col)
 {
 	int    st = GetCharacterShipType(chr);
@@ -2279,7 +2279,7 @@ bool CheckSailsColor(ref chr, int col)
 	{
 		shref = GetRealShip(st); 
 		st = -1;
-		if (!CheckAttribute(shref, "ShipSails.SailsColor"))  st = 0; // нету - это белый
+		if (!CheckAttribute(shref, "ShipSails.SailsColor"))  st = 0; 
 		if (CheckAttribute(shref, "SailsColorIdx"))  st = sti(shref.SailsColorIdx);
 		if (st == col) return false;
 	}
@@ -2362,7 +2362,7 @@ void SelectFindship_ShipType()
 	}
 }
 
-// проверка количества материалов для корабельного тюнинга
+
 void checkMatherial(ref Pchar, ref NPChar, int good)
 {
     int amount;
@@ -2380,14 +2380,7 @@ void checkMatherial(ref Pchar, ref NPChar, int good)
     NPChar.Tuning.Matherial = sti(NPChar.Tuning.Matherial) - amount;
 }
 
-/*
-  _chr 		- ГГ
-  NPChar 	- верфист
-  MaterialNum -  номер материала для апгрейда 
-	 1 - товар	 
-	 2 - цена в дублонах
-  Функция возвращает кол-во материала необходимого для данного типа апгрейда	  
-*/
+ 
 
 int GetMaterialQtyUpgrade( ref _chr, ref _nchar, int MaterialNum )
 {
@@ -2412,3 +2405,4 @@ int GetMaterialQtyUpgrade( ref _chr, ref _nchar, int MaterialNum )
 	
 	return 0;
 }
+

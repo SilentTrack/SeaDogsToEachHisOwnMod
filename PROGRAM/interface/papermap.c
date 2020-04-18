@@ -55,7 +55,7 @@ void InitInterface(string iniName)
 
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
 
-	//SendMessage(&GameInterface,"lsllff",MSG_INTERFACE_MSG_TO_NODE, "MAP", -1, 10, x, y);
+	
 
   
 	CreateString(true,"MapsListCaption",XI_ConvertString("MapsList"),FONT_CAPTION,COLOR_NORMAL,714,55,SCRIPT_ALIGN_CENTER,1.0);
@@ -108,11 +108,11 @@ void SelectRColony()
 	float fMouseX = stf(GameInterface.mousepos.x) - 6.0 + 5;
 	float fMouseY = stf(GameInterface.mousepos.y) - 50.0 + 5;
 
-	//iMouseX = iMouseX * 1.6;
+	
 
-	//SendMessage(&GameInterface,"lslff",MSG_INTERFACE_MSG_TO_NODE,"MAP", 10, iMouseX, iMouseY);
+	
 
-	//определяем верхний левый угол картинки
+	
 	float fOffsetX = stf(GameInterface.MAP.offset.x);
 	float fOffsetY = stf(GameInterface.MAP.offset.y);
 
@@ -159,8 +159,8 @@ void FillColonyInfo(int iColony)
 
 	SetFormatedText("INFO_CAPTION", XI_ConvertString("Colony"+sColony));
 
-	//string sNation = GetNationNameByType(sti(colonies[iColony].nation));
-	//SetNewGroupPicture("INFO_NATION_PICTURE", "NATIONS", sNation);
+	
+	
 
 	string sNation = GameInterface.MAP.imagelist.(sColony).pic;
 	SetNewGroupPicture("INFO_NATION_PICTURE", "NATIONS", sNation);
@@ -334,7 +334,7 @@ void SelectColony(int iColony)
 	SendMessage(&GameInterface,"lslll",MSG_INTERFACE_MSG_TO_NODE,"EXPORT_INFO", 8,-1,iColor);
 }
 
-// to_Do del -->
+
 int CalculateDistance(int iColonyNumber)
 {
 	int playership_x, playership_z;
@@ -378,7 +378,7 @@ int CalculateDistance(int iColonyNumber)
 
 	int iDistance = iDist;
 
-	float fDist = 1.0;//  + (0.1 * makefloat(MOD_SKILL_ENEMY_RATE));
+	float fDist = 1.0;
 
 	iDistance = makefloat(iDistance) * fDist;
 

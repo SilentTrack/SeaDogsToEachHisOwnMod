@@ -1,4 +1,4 @@
-// НПС по квесту Суп из черепахи
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -20,7 +20,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// денщик Фокса - Бенджамин Джонс
+		
 		case "BenjaminJons":
 			if (CheckAttribute(PChar, "questTemp.Terrapin.Benjamin") && pchar.questTemp.Terrapin == "baster")
 			{
@@ -72,11 +72,11 @@ void ProcessDialogEvent()
 		case "sister_4":
 			DialogExit();
 			AddQuestRecord("Terrapin", "3");
-			pchar.questTemp.Terrapin.Catherina = "take"; // возможен вариант с Кати
+			pchar.questTemp.Terrapin.Catherina = "take"; 
 			DeleteAttribute(pchar, "questTemp.Terrapin.Benjamin");
 		break;
 		
-		// Робер Мартэн
+		
 		case "Rober":
 			PlaySound("VOICE\Russian\sharlie\Rober Marten-01.wav");
 			dialog.text = "What do you want?!";
@@ -94,7 +94,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "rober_1":
-			pchar.quest.Terrapin_LateBaster.over = "yes"; //снять таймер
+			pchar.quest.Terrapin_LateBaster.over = "yes"; 
 			dialog.text = "The beginning of it sounds quite appealing! And your face looks like I've seen it somewhere too... I just can't remember where I saw you. Lay it on me!";
 			link.l1 = "I'm aware of your business with Thibaut... Chill out! You don't have to fear me. I've got a deal to propose you.";
 			link.l1.go = "rober_2";
@@ -150,7 +150,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "rober_10":
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			DialogExit();
 			LAi_SetActorType(npchar);
 			ChangeCharacterAddressGroup(npchar, "Baster_tavern", "goto", "goto2");
@@ -158,7 +158,7 @@ void ProcessDialogEvent()
 			if(CheckAttribute(pchar, "questTemp.Terrapin.Catherina")) AddQuestRecord("Terrapin", "6");
 			else AddQuestRecord("Terrapin", "5");
 			pchar.questTemp.Terrapin = "tortuga";
-			// создаем Тибо
+			
 			float fMft = MOD_SKILL_ENEMY_RATE/10;
 			sld = GetCharacter(NPC_GenerateCharacter("Tibo", "Tibo", "man", "man", 35, FRANCE, -1, true, "quest"));
 			FantomMakeCoolFighter(sld, 35, 100, 100, "blade_18", "pistol4", "bullet", 250);
@@ -185,8 +185,8 @@ void ProcessDialogEvent()
 			SetCharacterPerk(sld, "SwordplayProfessional");
 			SetCharacterPerk(sld, "Gunman");
 			SetCharacterPerk(sld, "GunProfessional");
-			sld.MultiFighter = 1.0+fMft; // мультифайтер
-			SetFunctionTimerCondition("Terrapin_LateTortuga", 0, 0, 20, false); // таймер
+			sld.MultiFighter = 1.0+fMft; 
+			SetFunctionTimerCondition("Terrapin_LateTortuga", 0, 0, 20, false); 
 		break;
 		
 		case "rober_abordage":
@@ -240,9 +240,9 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
 		
-		// Тибо, вариант без Кати
+		
 		case "tibo":
-			pchar.quest.Terrapin_LateTortuga.over = "yes"; //снять таймер
+			pchar.quest.Terrapin_LateTortuga.over = "yes"; 
 			PlaySound("VOICE\Russian\sharlie\Henry Thibault-02.wav");
 			dialog.text = "What are you doing in my home, sir?";
 			link.l1 = TimeGreeting()+", Monsieur Thibaut. I have arrived from a man you know. His name is captain Robert Martene.";
@@ -293,7 +293,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "tibo_8":
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload1", "none", "", "", "OpenTheDoors", -1);
@@ -311,9 +311,9 @@ void ProcessDialogEvent()
 			SetFunctionTimerCondition("Terrapin_LateDungeon", 0, 0, 2, false);
 		break;
 		
-		// вариант с Кати
+		
 		case "tibo_9":
-			pchar.quest.Terrapin_LateTortuga.over = "yes"; //снять таймер
+			pchar.quest.Terrapin_LateTortuga.over = "yes"; 
 			PlaySound("VOICE\Russian\sharlie\Henry Thibault-02.wav");
 			dialog.text = "What are you doing here, sir? I didn't invite you here.";
 			link.l1 = TimeGreeting()+", Monsieur Thibaut. I have arrived from a man you know. His name is captain Robert Martene.";
@@ -384,22 +384,22 @@ void ProcessDialogEvent()
 		case "tibo_20":
 			dialog.text = "";
 			link.l1 = "Stop, coward!";
-			link.l1.go = "tibo_21"; // patch
+			link.l1.go = "tibo_21"; 
 		break;
 		
 		case "tibo_21":
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			DialogExit();
 			LAi_SetActorType(npchar);
-			LAi_ActorRunToLocation(npchar, "reload", "reload_window", "none", "", "", "Terrapin_LevasserRoomEnter", 5); // patch
+			LAi_ActorRunToLocation(npchar, "reload", "reload_window", "none", "", "", "Terrapin_LevasserRoomEnter", 5); 
 			LAi_SetActorType(pchar);
 			LAi_ActorTurnToLocator(pchar, "reload", "reload_window");
 			LAi_RemoveLoginTime(npchar);
 		break;
 		
 		case "tibo_22":
-			pchar.quest.Terrapin_TiboCallOver.over = "yes"; //снять прерывание
-			pchar.quest.Terrapin_tibo_call.over = "yes"; //снять прерывание
+			pchar.quest.Terrapin_TiboCallOver.over = "yes"; 
+			pchar.quest.Terrapin_tibo_call.over = "yes"; 
 			PlaySound("VOICE\Russian\sharlie\Henry Thibault-04.wav");
 			dialog.text = "Well, finally! Captain "+GetFullName(pchar)+", I'm very pleased you've come. Come on in, have a set. Anything to drink? I've got quite a lucrative business proposition for you, captain...";
 			link.l1 = "Well aren't you in the most courteous of moods today, Monsieur Thibaut... Let's not sit around. Let's get right to the crux of the matter.";
@@ -467,7 +467,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "tibo_33":
-			dialog.text = "Because I have learnt things about you too, "+GetFullName(pchar)+". It was easy, you are a famous man. It is unknown who are you really working for though, either for de Poincy, or for the Dutch, or for the English or for a pirate Jan Svensson… But one thing is clear: you take delicate, well paid jobs and get them done. And you are not connected to the Spanish\nAfterall, you also took part in the events after which I have inherited my uncle's fortune. Don't deny it... Quarter of million is good money. I will tell you where to find Martene. You only should to intercept his ship and board her.";
+			dialog.text = "Because I have learnt things about you too, "+GetFullName(pchar)+". It was easy, you are a famous man. It is unknown who are you really working for though, either for de Poincy, or for the Dutch, or for the English or for a pirate Jan SvenssonпїЅ But one thing is clear: you take delicate, well paid jobs and get them done. And you are not connected to the Spanish\nAfterall, you also took part in the events after which I have inherited my uncle's fortune. Don't deny it... Quarter of million is good money. I will tell you where to find Martene. You only should to intercept his ship and board her.";
 			link.l1 = "Up the fee by another hundred thousand and I'll take to your problem.";
 			link.l1.go = "tibo_34";
 			link.l2 = "Alas, Monsieur Thibaut, you'll have to take care of your problem with Martene and Colonel Fox without my participance. I, for one can promise you that I will not send word to the colonel about the fate of his daughter and those that are guilty of her death. All the best, sir.";
@@ -568,7 +568,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "tibo_over";
 		break;
 		
-		// посланник от Мартэна
+		
 		case "envoy":
 			dialog.text = "Are you captain "+GetFullName(pchar)+"?";
 			link.l1 = "You've come to the right man, buddy. I'm all ears.";
@@ -596,9 +596,9 @@ void ProcessDialogEvent()
 			pchar.quest.Terrapin_cave.function = "Terrapin_LevasserInCave";
 		break;
 		
-		// Левассер в пещере
+		
 		case "levasser_cave":
-			pchar.quest.Terrapin_LateDungeon.over = "yes"; //снять таймер
+			pchar.quest.Terrapin_LateDungeon.over = "yes"; 
 			dialog.text = "What the hell are you loitering around here for? Who are you? Answer me now!";
 			link.l1 = "Who the fuck are you and why are you asking me such stupid questions?";
 			link.l1.go = "levasser_cave_1";
@@ -623,7 +623,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "levasser_cave_4":
-			LAi_LocationFightDisable(&Locations[FindLocation("Tortuga_cave")], false);//разрешить драться
+			LAi_LocationFightDisable(&Locations[FindLocation("Tortuga_cave")], false);
 			DialogExit();
 			LAi_SetWarriorType(npchar);
 			LAi_group_MoveCharacter(npchar, "EnemyFight");
@@ -633,7 +633,7 @@ void ProcessDialogEvent()
 				LAi_SetWarriorType(sld);
 				LAi_group_MoveCharacter(sld, "EnemyFight");
 			}
-			// подкрепление
+			
 			int iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+7;
 			int iScl = 30 + 2*sti(pchar.rank);
 			for (i=5; i<=9; i++)
@@ -650,7 +650,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");	
 		break;
 		
-		// Левассер в комнате таверны
+		
 		case "levasser_room":
 			dialog.text = "What the hell are you loitering around here for? Who are you? Answer me, now!";
 			link.l1 = "How about that! Didn't see that coming... Monsieur Levasseur himself, I presume?";
@@ -676,7 +676,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "levasser_room_4":
-			LAi_LocationFightDisable(&Locations[FindLocation("Tortuga_tavern_upstairs")], false);//разрешить драться
+			LAi_LocationFightDisable(&Locations[FindLocation("Tortuga_tavern_upstairs")], false);
 			DialogExit();
 			LAi_SetWarriorType(npchar);
 			LAi_group_MoveCharacter(npchar, "EnemyFight");
@@ -692,7 +692,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");	
 		break;
 		
-		// девушка на балконе
+		
 		case "roof_girl":
 			dialog.text = "Ouch! A little help here! Help me! Soldiers!";
 			link.l1 = "Quiet down, you imbecile! If you don't scream, I won't do anything to you!";
@@ -730,7 +730,7 @@ void ProcessDialogEvent()
 			DoQuestCheckDelay("Terrapin_GirlShot", 1.0);
 		break;
 		
-		// Кати
+		
 		case "kathy":
 			PlaySound("VOICE\Russian\Armo02.wav");
 			dialog.text = "Who are you? Have you come to kill me or maybe save me, although I wouldn't dare count on it?";
@@ -781,11 +781,11 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload3_back", "none", "", "", "OpenTheDoors", 10.0);
 			npchar.lifeday = 0;
-			SetFunctionTimerCondition("Terrapin_ReturnFox", 0, 0, 3, false); // Фокса на место
-			pchar.questTemp.Terrapin_KathyReward = "true"; // награда за спасение Кати 160912
+			SetFunctionTimerCondition("Terrapin_ReturnFox", 0, 0, 3, false); 
+			pchar.questTemp.Terrapin_KathyReward = "true"; 
 		break;
 		
-		// наш матрос
+		
 		case "terrapin_grot":
 			dialog.text = "There you are, cap! You had us worried sick! A dash like that along the housetops and a jump like that from a gut-wrenching height was hard to expect! We were concerned about you...Welcome on board, cap, the longboat's ready!";
 			link.l1 = "Great. Catherine, follow me!";

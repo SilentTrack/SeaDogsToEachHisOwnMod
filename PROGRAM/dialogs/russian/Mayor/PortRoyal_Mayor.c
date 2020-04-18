@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,7 +9,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Not now. There is no time."), "True... But later, not now...",
                       "I'll ask, I'll ask... a bit later though...", "I am sorry, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			// Addon 2016-1 Jason пиратская линейка
+			
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "silk_8")
 			{
 				link.l1 = "Your Excellence, I would like to report an illegal trading activity on this island.";
@@ -20,7 +20,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1 = "I would like to hear a report on your mission regarding the silk sailcloth smuggling.";
                 link.l1.go = "Mtraxx_4";
 			}
-			// Jason НСО
+			
 			if (CheckAttribute(pchar, "questTemp.Patria") && pchar.questTemp.Patria == "epizode_10_continue" && !CheckAttribute(npchar, "quest.slaveships"))
 			{
 				link.l1 = "I arrived on the behalf of Governor-General Phillip de Poincy. My job was to get you the slaves captured from the Dutch, is that right?";
@@ -43,7 +43,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		
-		// Addon 2016-1 Jason пиратская линейка
+		
 		case "Mtraxx":
             dialog.text = "Interesting. I am all ears.";
 			link.l1 = "I have it on good authority that a Dutch brigantine the 'Utrecht' under English colors is regularly unloading high quantities of silk sailcloth in Portland Bay. They operate for over a year, during night time, between 10th and 15th of each month.";
@@ -98,7 +98,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddCharacterExpToSkill(pchar, "Leadership", 200);
 		break;
 		
-		// Jason НСО
+		
 		case "patria_Sl":
 			if (GetSquadronGoods(pchar, GOOD_SLAVES) < 500)
 			{
@@ -137,11 +137,11 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			RemoveCharacterGoods(pchar, GOOD_SLAVES, GetSquadronGoods(pchar, GOOD_SLAVES));
 			AddQuestRecord("Patria", "57");
 			pchar.questTemp.Patria = "epizode_10_return";
-			pchar.quest.Patria_SlaveShipsJamaicaTimeOver.over = "yes"; //снять таймер на доставку рабов
-			SetFunctionTimerCondition("Patria_CuracaoDoilyReady", 0, 0, 30, false); // таймер на 1 месяц на готовность эскадры Дойли
-			SetFunctionTimerCondition("Patria_CuracaoTimeOver", 0, 0, 62, false); // таймер на 2 месяца на туда-обратно к Пуанси
-			SaveCurrentQuestDateParam("questTemp.Patria.Curacao.Date"); // запоминаем дату
-			// меняем отношение наций
+			pchar.quest.Patria_SlaveShipsJamaicaTimeOver.over = "yes"; 
+			SetFunctionTimerCondition("Patria_CuracaoDoilyReady", 0, 0, 30, false); 
+			SetFunctionTimerCondition("Patria_CuracaoTimeOver", 0, 0, 62, false); 
+			SaveCurrentQuestDateParam("questTemp.Patria.Curacao.Date"); 
+			
 			pchar.questTemp.Patria.Friend = "true";
 			LaunchNationLegend();
 			DeleteAttribute(pchar, "questTemp.Patria.Friend");
@@ -202,13 +202,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			chrDisableReloadToLocation = true;
 			pchar.questTemp.Patria = "epizode_11_continue";
 			AddQuestRecord("Patria", "60");
-			pchar.quest.Patria_CuracaoTimeOver.over = "yes"; // снять таймер 2 месяца
+			pchar.quest.Patria_CuracaoTimeOver.over = "yes"; 
 			LAi_SetActorType(npchar);
 			ChangeCharacterAddressGroup(npchar, "PortRoyal_townhall", "goto", "goto4");
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "OpenTheDoors", 7.0);
 			Patria_CuracaoSail();
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

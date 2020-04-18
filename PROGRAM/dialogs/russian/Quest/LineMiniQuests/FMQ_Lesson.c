@@ -1,4 +1,4 @@
-// Addon-2016 Jason, французские миниквесты (ФМК) Последний урок
+
 void ProcessDialogEvent()
 {
 	ref sld, NPChar;
@@ -166,7 +166,7 @@ void ProcessDialogEvent()
 			pchar.quest.FMQL_goods_timer.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
 			pchar.quest.FMQL_goods_timer.function = "FMQL_MeetingOnLamanten";
 			AddQuestRecord("FMQ_Lesson", "7");
-			LAi_LocationDisableOfficersGen("Shore38", true); // may-16
+			LAi_LocationDisableOfficersGen("Shore38", true); 
 			LAi_LocationFightDisable(&Locations[FindLocation("Shore38")], true);
 			locations[FindLocation("Shore38")].DisableEncounters = true;
 		break;
@@ -374,7 +374,7 @@ void ProcessDialogEvent()
 			npchar.lifeday = 0;
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "", 15.0);
 			chrDisableReloadToLocation = false;
-			InterfaceStates.Buttons.Save.enable = true; // разрешим сохраняться
+			InterfaceStates.Buttons.Save.enable = true; 
 			AddQuestRecord("FMQ_Lesson", "15");
 			CloseQuestHeader("FMQ_Lesson");
 			pchar.questTemp.FMQL = "end";
@@ -392,7 +392,7 @@ void ProcessDialogEvent()
 			link.l1.go = "contra_2";
 		break;
 		
-		case "contra_2":// Addon 2016-1 Jason пиратская линейка
+		case "contra_2":
 			iTotalTemp = 2200*sti(pchar.questTemp.FMQL.Sanl)+1600*sti(pchar.questTemp.FMQL.Silk)+1000*sti(pchar.questTemp.FMQL.Rope)+900*sti(pchar.questTemp.FMQL.Oil);
 			dialog.text = "Very well. 2200 pesos for every piece of ironwood, 900 pesos for resin, 1600 pesos for ship silk and 1000 pesos for ropes. What do we have here... Well-well. "+iTotalTemp+" pesos. Deal?";
 			link.l1 = "Deal!";
@@ -452,7 +452,7 @@ void ProcessDialogEvent()
 			else link.l1.go = "FMQL_beach_4";
 		break;
 		
-		case "FMQL_beach_4": // Проспер жив
+		case "FMQL_beach_4": 
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload_sea", "none", "", "", "FMQL_PirateNormal", 10.0);
@@ -476,7 +476,7 @@ void ProcessDialogEvent()
 				pchar.quest.FMQL_money_20k.function = "FMQL_MoneyForSelina";
 			}
 			chrDisableReloadToLocation = false;
-			InterfaceStates.Buttons.Save.enable = true; // разрешим сохраняться
+			InterfaceStates.Buttons.Save.enable = true; 
 			AddQuestRecord("FMQ_Lesson", "10");
 			CloseQuestHeader("FMQ_Lesson");
 			pchar.questTemp.FMQL = "end";
@@ -488,3 +488,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

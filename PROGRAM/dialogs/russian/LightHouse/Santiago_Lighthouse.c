@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -119,8 +119,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			ChangeItemDescribe("VerifyPaper", "itmdescr_VincentoPaper");
 			pchar.questTemp.Guardoftruth = "santiago";
 			AddQuestRecord("Guardoftruth", "34");
-			AddCharacterExpToSkill(pchar, "Fortune", 200);//везение
-			AddCharacterExpToSkill(pchar, "Sneak", 400);//скрытность
+			AddCharacterExpToSkill(pchar, "Fortune", 200);
+			AddCharacterExpToSkill(pchar, "Sneak", 400);
 			GuardOT_SetPadreVincento();
 		break;
 	}

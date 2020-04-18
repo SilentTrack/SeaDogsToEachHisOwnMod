@@ -5,7 +5,7 @@
 #include "Weather\Init\Night.c"
 #include "Weather\Init\DayStorm.c"
 #include "Weather\Init\Special.c"
-#include "Weather\Init\Rain.c" //navy
+#include "Weather\Init\Rain.c" 
 
 int InitWeather()
 {
@@ -17,7 +17,7 @@ int InitWeather()
 	n = Whr_InitEvening(n);
 	n = Whr_InitDayStorm(n);
 	n = Whr_InitSpecial(n);
-	//n = Whr_InitRain(n);
+	
 
 	Whr_InitCommon();
 
@@ -48,3 +48,4 @@ int InitWeather()
 
 	return n;
 }
+

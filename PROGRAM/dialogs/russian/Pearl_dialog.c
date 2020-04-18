@@ -26,7 +26,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 
-		// ==> пиплы в поселении
+		
 		case "PearlMan":
 			NextDiag.TempNode = "PearlMan";
 			dialog.text = NPCStringReactionRepeat("Hello! My name is  " + GetFullName(npchar) + ". What can I do for you?", 
@@ -68,7 +68,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 		break;
 
-		// ==> индейцы в поселении
+		
 		case "IndPearlMan":
 			NextDiag.TempNode = "IndPearlMan";
 			dialog.text = NPCStringReactionRepeat(""+ GetSexPhrase("Paleface","White squaw") +" wants to talk?", 
@@ -96,3 +96,4 @@ void ProcessDialogEvent()
 
 	}
 }
+

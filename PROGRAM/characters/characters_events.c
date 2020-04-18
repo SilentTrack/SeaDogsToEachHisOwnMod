@@ -110,11 +110,11 @@ void chrCharacterEntryToLocator()
 		break;
 	case "box":	
 		Box_EnterToLocator(loc, locator);
-		//<<-- линейка ГПК, обнаружение сундука со скелетом
-//		if (loc.id == "LostShipsCity_town" && locator == "private10")
-//		{
-//			LSC_enterAdmiralBox();
-//		}		
+		
+
+
+
+
 		break;
 	case "teleport":	
 		if (CheckAttribute(loc, "gotoFire")) 
@@ -155,7 +155,7 @@ bool chrCheckReloadLocatorSkip(aref loc,string locator)
 		if( at.name == locator ) { break; }
 		if( at.name == locator+"_back" ) { break; }
 	}
-	// такого локатора нет в реале - значит скипаем его
+	
 	if( n<num ) return false;
 	return true;
 }
@@ -170,7 +170,7 @@ bool chrCheckCamLocatorSkip(aref loc,string locator)
 	for(n=0; n<num; n++)
 	{
 		at = GetAttributeN(rl, n);
-		// есть такой локатор для перегрузки
+		
 		if(GetAttributeName(at) == locator) { break; }
 	}
 
@@ -184,7 +184,7 @@ bool chrCheckCamLocatorSkip(aref loc,string locator)
 			if( at.name == locator ) { break; }
 			if( at.name == locator+"_back" ) { break; }
 		}
-		// такого локатора нет в реале - значит скипаем его
+		
 		if( n==num ) {return true;}
 	}
 
@@ -262,12 +262,12 @@ void chrCharacterKeys()
 {
 	string controlName = GetEventData();
 	if(controlName != "ChrAction") return;
-	//Skip if interface active
+	
 	if(sti(InterfaceStates.Launched)==true) return;
-	//Skip is disable reload
+	
 	bool noReload = false;
 	if(chrIsNowEnableReload() != true) noReload = true;
-	//Skip free links
+	
 	if(chrWaitReloadIsNoLink != false) noReload = true;
 	if(chrWaitReloadLocator == "") noReload = true;
 	if(noReload)
@@ -278,19 +278,19 @@ void chrCharacterKeys()
 		}
 		return;
 	}
-	//trace(" &&&&&&&&&&&&&&&&&&&&&&&&&&& ");
-	//Remove icon
+	
+	
 	Log_SetActiveAction("Nothing");
-	//Start reload
+	
 	ref mc = GetMainCharacter();
-	// boal 05/04/05 -->
+	
 	if (bCabinStarted)
     {
-        // раставление НПС при переходах - миниквесты
+        
         BOAL_ReloadToLoc(chrWaitReloadRef, chrWaitReloadLocator);
     }
     else
-    // boal <--
+    
 	Reload(chrWaitReloadRef, chrWaitReloadLocator, mc.location);
 	chrWaitReloadLocator = "";
 	chrWaitReloadIsNoLink = false;
@@ -298,16 +298,16 @@ void chrCharacterKeys()
 
 bool chrIsNowEnableReload()
 {
-    if (chrDisableReloadToLocation) return false; // boal
-	//Skip if not set reload locator
+    if (chrDisableReloadToLocation) return false; 
+	
 	if(chrWaitReloadLocator == "") return false;
-	//Skip if active dialog
+	
 	if(DialogRun != 0) return false;
-	//Skip
+	
 	if(chrCheckReload(chrWaitLocationRef, chrWaitReloadLocator) == 0) return false;
-	//Skip if disabled in quest movie
+	
 	if(chrIsEnableReload() != true) return false;
-	if (LAi_IsFightMode(GetMainCharacter())) return false; // boal запрет выхода с саблей
+	if (LAi_IsFightMode(GetMainCharacter())) return false; 
 	return true;
 }
 
@@ -357,4 +357,5 @@ bool chrIsEnableReload()
 	if(qmIsNoReload() != false) return false;
 	return true;
 }
+
 

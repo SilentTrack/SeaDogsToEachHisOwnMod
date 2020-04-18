@@ -1,4 +1,4 @@
-// диалог протекторов, солдат и мушкетеров кланов LSC
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -20,8 +20,8 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-//------------------------------------- фразы гардов нарвалов --------------------------------------------
-		// пост нарвалов на проход на Сан-Габриэль
+
+		
 		case "Narval_warning":
 			if (CheckAttribute(pchar, "GenQuest.NarvalConflict"))
 			{
@@ -41,7 +41,7 @@ void ProcessDialogEvent()
 					link.l2 = "No.";
 					link.l2.go = "Narval_warning_no";
 				}
-				else // если друг нарвалам
+				else 
 				{
 					dialog.text = "A-ah, "+GetFullName(pchar)+"! Hello, friend, we are warned that you can walk freely here. Welcome!";
 					link.l1 = "Thanks, friend!";
@@ -57,7 +57,7 @@ void ProcessDialogEvent()
 					link.l1 = "Don't worry...";
 					link.l1.go = "exit";
 				}
-				else // если друг нарвалам
+				else 
 				{
 					dialog.text = TimeGreeting()+", "+pchar.name+"! How are you doing?";
 					link.l1 = "Fine, thanks!";
@@ -167,7 +167,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Narval_parol_repeat";
 		break;
 		
-		// у резиденции
+		
 		case "Narval_residence":
 			if (CheckAttribute(pchar, "GenQuest.NarvalConflict"))
 			{
@@ -241,7 +241,7 @@ void ProcessDialogEvent()
 		case "negotiations_1":
 			DialogExit();
 			NextDiag.CurrentNode = "negotiations_2";
-			LocatorReloadEnterDisable("LostShipsCity_town", "reload48", false); // открыть вход к Дональду Гринспи
+			LocatorReloadEnterDisable("LostShipsCity_town", "reload48", false); 
 		break;
 		
 		case "negotiations_2":
@@ -251,8 +251,8 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "negotiations_2";
 		break;
 		
-//------------------------------------- фразы гардов ривадос --------------------------------------------
-		// пост ривадос на проход на Фурию и Веласко
+
+		
 		case "Rivados_warning":
 			if (CheckAttribute(pchar, "GenQuest.RivadosConflict"))
 			{
@@ -272,7 +272,7 @@ void ProcessDialogEvent()
 					link.l2 = "No.";
 					link.l2.go = "Rivados_warning_no";
 				}
-				else // если друг ривадос
+				else 
 				{
 					dialog.text = "Ah, "+GetFullName(pchar)+"! Glad to see you! We were informed that you can walk freely here. Welcome!";
 					link.l1 = "Thanks, friend!";
@@ -288,7 +288,7 @@ void ProcessDialogEvent()
 					link.l1 = "Don't worry...";
 					link.l1.go = "exit";
 				}
-				else // если друг ривадос
+				else 
 				{
 					dialog.text = TimeGreeting()+", "+pchar.name+"! How are you doing?";
 					link.l1 = "I am fine, thanks...";
@@ -400,7 +400,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Rivados_parol_repeat";
 		break;
 		
-		// у резиденции
+		
 		case "Rivados_residence":
 			if (CheckAttribute(pchar, "GenQuest.RivadosConflict"))
 			{
@@ -427,7 +427,7 @@ void ProcessDialogEvent()
 				DeleteAttribute(npchar, "protector.CheckAlways");
 				break;
 			}
-			if (GetCharacterIndex("Chimiset") == -1) // Чимисет убит
+			if (GetCharacterIndex("Chimiset") == -1) 
 			{
 				dialog.text = "There is nothing for you to do inside Eddie's cabin! This is his direct order. Get lost!";
 				link.l1 = "Whatever...";
@@ -465,8 +465,8 @@ void ProcessDialogEvent()
 			}
 			NextDiag.TempNode = "Rivados_soldier";
 		break;
-//------------------------------------- фразы гардов пиратов --------------------------------------------	
-		// у склада
+
+		
 		case "Shark_storage":
 			if (CheckAttribute(pchar, "GenQuest.SharkConflict"))
 			{
@@ -481,7 +481,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Shark_storage";
 		break;
 		
-		// у резиденции
+		
 		case "Shark_residence":
 			if (CheckAttribute(pchar, "GenQuest.SharkConflict"))
 			{
@@ -492,7 +492,7 @@ void ProcessDialogEvent()
 			}
 			if (stf(environment.time) >= 6.00 && stf(environment.time) < 21.00)
 			{
-				if (pchar.questTemp.LSC == "begin" || pchar.questTemp.LSC == "mary") // тока прибыл
+				if (pchar.questTemp.LSC == "begin" || pchar.questTemp.LSC == "mary") 
 				{
 					dialog.text = "Stop! You are not one of ours... Is Shark waiting for you or are you just walking around with no purpose?";
 					link.l1 = "Shark? Steve Dodson?";
@@ -507,7 +507,7 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				if (pchar.questTemp.LSC == "begin" || pchar.questTemp.LSC == "mary") // тока прибыл
+				if (pchar.questTemp.LSC == "begin" || pchar.questTemp.LSC == "mary") 
 				{
 					dialog.text = "Where are you rushing to? It is night, don't you see! Or are you really thinking that the admiral will rise to greet you personally? Come in the morning.";
 					link.l1 = "Whatever you say. And where can I have a rest?";
@@ -579,14 +579,14 @@ void ProcessDialogEvent()
 			PlaySound("interface\important_item.wav");
 			npchar.dialog.currentnode = "First time";
 			DialogExit();
-			LSC_OpenSanAvgustinDoors(); // открываем Сан-Августин
-			LocatorReloadEnterDisable("LostShipsCity_town", "reload2", true); //закрываем кладовку со стороны моря
-			pchar.quest.LSC_entry_pantry.over = "yes"; //снять прерывание на арест
-			pchar.quest.LSC_findMary.over = "yes"; //снять прерывание на Мэри
-			pchar.questTemp.LSC = "entrance"; //меняем флаг
+			LSC_OpenSanAvgustinDoors(); 
+			LocatorReloadEnterDisable("LostShipsCity_town", "reload2", true); 
+			pchar.quest.LSC_entry_pantry.over = "yes"; 
+			pchar.quest.LSC_findMary.over = "yes"; 
+			pchar.questTemp.LSC = "entrance"; 
 			sld = characterFromId("Dodson");
 			sld.dialog.currentnode = "entrance";
-			// закрываем вход к Мэри
+			
 			LocatorReloadEnterDisable("LostShipsCity_town", "reload60", true);
 			LocatorReloadEnterDisable("LostShipsCity_town", "reload61", true);
 		break;
@@ -595,7 +595,7 @@ void ProcessDialogEvent()
 			PlaySound("interface\important_item.wav");
 			npchar.dialog.currentnode = "First time";
 			DialogExit();
-			LSC_OpenSanAvgustinDoors(); // открываем Сан-Августин
+			LSC_OpenSanAvgustinDoors(); 
 			sld = characterFromId("Dodson");
 			sld.dialog.currentnode = "entrance";
 		break;

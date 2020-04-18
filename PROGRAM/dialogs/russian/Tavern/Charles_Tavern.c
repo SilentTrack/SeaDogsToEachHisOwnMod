@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,7 +9,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
                       "Yes, it really is the third time...", "No, what questions?...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			// Сага
+			
 			if(CheckAttribute(pchar, "questTemp.Saga.BarbTemptation") && pchar.questTemp.Saga.BarbTemptation == "valet")
 			{
 				link.l1 = "I'm looking for a man by the nickname Valet. Do you know him?";
@@ -20,7 +20,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "valet_1":
-			dialog.text = NPCStringReactionRepeat("No, I don't know, buddy. So there's nothing I can help you with.", "I've already told you –I don't know!", "Are you drunk or are you just messing around?", "Leave me alone!", "block", 1, npchar, Dialog.CurrentNode);
+			dialog.text = NPCStringReactionRepeat("No, I don't know, buddy. So there's nothing I can help you with.", "I've already told you пїЅI don't know!", "Are you drunk or are you just messing around?", "Leave me alone!", "block", 1, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat("I see. That's too bad...", "That's too bad. I thought you'd remember...", "I'm sober! I'm just persistent...", "Hm...", npchar, Dialog.CurrentNode); 
 			link.l1.go = DialogGoNodeRepeat("exit", "", "", "", npchar, Dialog.CurrentNode);
 		break;
@@ -31,6 +31,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1.go = DialogGoNodeRepeat("exit", "", "", "", npchar, Dialog.CurrentNode);
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

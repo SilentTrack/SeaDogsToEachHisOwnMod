@@ -1,4 +1,4 @@
-// SLiB Ќовый файл дл€ ¬ћЋ, все от  3 потерто
+
 
 int ChangeContrabandRelation(ref pchar, int _val)
 {
@@ -9,8 +9,8 @@ int ChangeContrabandRelation(ref pchar, int _val)
    return makeint(pchar.questTemp.Contraband.relation);
 }
 
-// работа с контрабандой
-//Jason -- > функци€ выберет из рандомного интервала в массиве товаров контрабандный товар в текущем магазине, первый в интервале. ≈сли такового не окажетс€, то вернет -1.
+
+
 int SelectContrabandGoods(ref _refCharacter)
 {
 	int i;
@@ -24,7 +24,7 @@ int SelectContrabandGoods(ref _refCharacter)
 		}
 	}
 }
-//<-- выбор рандомного контрабандного товара
+
 
 void SetContraGoods(ref _refCharacter, int _Goods, int _Quantity)
 {
@@ -70,7 +70,7 @@ int GetContraGoodsQuantity(ref _refCharacter, int _Goods)
 	return q;
 }
 
-// установить агенту контриков товары, опира€сь на наличие контрабандного товара в соответсвующем магазине
+
 void SetAllContraGoods(ref _refStore, ref _refCharacter)
 {
     string 	tmpstr;
@@ -82,11 +82,11 @@ void SetAllContraGoods(ref _refStore, ref _refCharacter)
 		if( CheckAttribute(_refStore,"Goods."+tmpstr+".canbecontraband") )		
 		{
 			qty = sti(_refStore.Goods.(tmpstr).Quantity);	
-			if(sti(_refStore.Goods.(tmpstr).canbecontraband) == CONTRA_SELL)  	// можем продать товар  контрикам
+			if(sti(_refStore.Goods.(tmpstr).canbecontraband) == CONTRA_SELL)  	
 			{
 				SetContraGoods(_refCharacter, i, 0);
 			}
-			if(sti(_refStore.Goods.(tmpstr).canbecontraband) == CONTRA_BUY)		// можем купить товар у контриков
+			if(sti(_refStore.Goods.(tmpstr).canbecontraband) == CONTRA_BUY)		
 			{
 				SetContraGoods(_refCharacter, i, makeint(qty/4) + rand(200));
 			}
@@ -153,7 +153,7 @@ int FindFirstContrabandGoods(ref _refCharacter)
 	if(curIslandIdx<0) return -1;
 	aref islRef; makearef(islRef,Islands[curIslandIdx].Trade.Contraband);
 	int n, iMax;
-	iMax   = GetAttributesNum(islRef); //fix
+	iMax   = GetAttributesNum(islRef); 
 	for(i=0; i<iMax; i++)
 	{
 		n = sti(GetAttributeValue(GetAttributeN(islRef,0)));
@@ -202,7 +202,7 @@ int FindNextContrabandGoods(ref _refCharacter)
 				{
 					int curGoodsNum = sti(_refCharacter.FindContrabandGoods.GoodsIdx) + 1;
 					aref islRef; makearef(islRef,Islands[curIslandIdx].Trade.Contraband);
-					for(i=curGoodsNum; i<GetAttributesNum(islRef); i++)      // это мне сомнительно, походу тут баг, но эта ветка не работает, тк магазин есть, тк разговор в таверне идет
+					for(i=curGoodsNum; i<GetAttributesNum(islRef); i++)      
 					{
 						n = GetAttributeValue(GetAttributeN(islRef,i));
 						if( GetSquadronGoods(_refCharacter,n)>0 )
@@ -221,7 +221,7 @@ int FindNextContrabandGoods(ref _refCharacter)
 
 int GetCharacterCurrentStore(ref _refCharacter)
 {
-	bool bOk2 = CheckAttribute(Pchar, "quest.Contraband.Active") && (sti(Pchar.quest.Contraband.Active) == true); // в сделке, значит магазин уже €сен
+	bool bOk2 = CheckAttribute(Pchar, "quest.Contraband.Active") && (sti(Pchar.quest.Contraband.Active) == true); 
 	if (bOk2 && CheckAttribute(Pchar, "GenQuest.Contraband.StoreIdx"))
 	{
 		return sti(Pchar.GenQuest.Contraband.StoreIdx);
@@ -231,7 +231,7 @@ int GetCharacterCurrentStore(ref _refCharacter)
 	if(curLocNum<0) return -1;
 
     idx = -1;
-	if (CheckAttribute(&Locations[curLocNum], "fastreload")) // в таверне должно быть всегда
+	if (CheckAttribute(&Locations[curLocNum], "fastreload")) 
 	{
 		string locGroupId = Locations[curLocNum].fastreload;
 		for (i=0; i<STORE_QUANTITY; i++)
@@ -245,20 +245,20 @@ int GetCharacterCurrentStore(ref _refCharacter)
 	}
 	else
 	{
-        idx = SHIP_STORE; // нет контры там, всегда пошлют, если вдруг нет fastreload в таверне
+        idx = SHIP_STORE; 
 	}
 
-    Pchar.GenQuest.Contraband.StoreIdx = idx; // запомним, дл€ бухты, когда в сделку пойдем
+    Pchar.GenQuest.Contraband.StoreIdx = idx; 
 	return  idx;
 }
-// to_do
+
 int GetCurrentIslandGoodsPrice(int GoodsType)
 {
-	int curStoreIdx = GetCharacterCurrentStore(GetMainCharacter());   // вернет в бухте из запоминалки
+	int curStoreIdx = GetCharacterCurrentStore(GetMainCharacter());   
 	if(curStoreIdx<0) return 0;
 	return GetStoreGoodsPrice(&Stores[curStoreIdx],GoodsType,PRICE_TYPE_SELL,GetMainCharacter(), 1);
 }
-// выбор куда идти
+
 string SelectSmugglingLocation()
 {
     ref CurIsland;
@@ -279,9 +279,9 @@ string SelectSmugglingLocation()
     return TargetLocation;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-//                 онтрабандисты Ќј„јЋќ
-////////////////////////////////////////////////////////////////////////////////
+
+
+
 void PlaceSmugglersOnShore(string LocationId)
 {
 	ref Smuggler, player;
@@ -298,7 +298,7 @@ void PlaceSmugglersOnShore(string LocationId)
 	for (i = 1; i <= 3; i++)
     {
         Model = "citiz_" + (rand(9)+21);
-		Smuggler = GetCharacter(NPC_GenerateCharacter("Rand_Smug0" + i, Model, "man", "man", 5, PIRATE, 4, true, "hunter")); // 4 дн€, потом сами пропадут
+		Smuggler = GetCharacter(NPC_GenerateCharacter("Rand_Smug0" + i, Model, "man", "man", 5, PIRATE, 4, true, "hunter")); 
 		SetFantomParam(Smuggler);
 		LAi_SetWarriorTypeNoGroup(Smuggler);
 		LAi_warrior_DialogEnable(Smuggler, true);
@@ -313,10 +313,10 @@ void PlaceSmugglersOnShore(string LocationId)
 	AddGeometryToLocation(LocationID, "smg");
 	
 	LAi_group_SetRelation(LAI_GROUP_PLAYER, player.GenQuest.Smugglers_Group, LAI_GROUP_NEITRAL);
-	LAi_group_SetRelation(player.GenQuest.Smugglers_Group, "CoastalGuards", LAI_GROUP_NEITRAL); // патруль на берегу
+	LAi_group_SetRelation(player.GenQuest.Smugglers_Group, "CoastalGuards", LAI_GROUP_NEITRAL); 
 
-	SetTimerCondition("Rand_Smuggling", 0, 0, 2, false);  // через 2 дн€ всех убрать
-	// задание на завал контры
+	SetTimerCondition("Rand_Smuggling", 0, 0, 2, false);  
+	
 	if (CheckAttribute(pchar, "GenQuest.KillSmugglers") && pchar.GenQuest.KillSmugglers == "" && pchar.GenQuest.KillSmugglers.Areal == GiveArealByLocation(&locations[FindLocation(pchar.location)]))
 	{
 		pchar.quest.KillSmugglers.win_condition.l1 = "NPC_Death";
@@ -343,7 +343,7 @@ void RemoveSmugglersFromShore()
 	{
 		sLoc = pchar.Quest.SelectedSmugglingLocation;
 	}
-//navy --> PGG
+
 	else
 	{
 		if (CheckAttribute(pchar, "questTemp.PGGContra"))
@@ -356,18 +356,18 @@ void RemoveSmugglersFromShore()
 			DeleteAttribute(pchar, "questTemp.PGGContra");
 			DeleteAttribute(Smuggler, "PGGAi.location.town.back");
 			CloseQuestHeader("Gen_StrangeInfo");
-			//LAi_group_Delete("PGGTmp");
+			
 			pchar.Quest.PGG_WithSmugglers_Dead.Over = "yes";
 			CloseQuestHeader("Gen_StrangeInfo");
 		}
 	}
-//navy <--
+
 	RemoveGeometryFromLocation(sLoc, "smg");
 
 	pchar.quest.KillSmugglers_outShore.win_condition.l1 = "ExitFromLocation";
 	pchar.quest.KillSmugglers_outShore.win_condition.l1.location = pchar.location;
 	pchar.quest.KillSmugglers_outShore.win_condition = "KillSmugglers_outShore";
-	for (i=1; i<=3; i++) //eddy
+	for (i=1; i<=3; i++) 
 	{
 		cn = GetCharacterIndex("Rand_Smug0"+i);
 		if (cn != -1)
@@ -382,16 +382,16 @@ void SetCoastalGuardPursuit()
 {
 	ref Smuggler;
 	int i;
-	int iNation = sti(pchar.GenQuest.Contraband.GuardNation);// Ќаци€ патрул€
+	int iNation = sti(pchar.GenQuest.Contraband.GuardNation);
 	string Model;
 	
 	for (i = 1; i <= 3; i++)
     {
         Model = "off_" + NationShortName(iNation) + "_" + (rand(1) + 1);
-		Smuggler = GetCharacter(NPC_GenerateCharacter("Coastal_Captain0" + i, Model, "man", "man", 5, iNation, 3, true, "officer")); // 3 дн€, потом сами пропадут
+		Smuggler = GetCharacter(NPC_GenerateCharacter("Coastal_Captain0" + i, Model, "man", "man", 5, iNation, 3, true, "officer")); 
 		SetFantomParam(Smuggler);
 		SelectCoastalGuardShip(Smuggler);
-		// 1.2.3 хардкор! Smuggler.Coastal_Captain = true; // если по нему палить, Ќ«√ не будет
+		
 		Smuggler.AlwaysEnemy = true;
 		Smuggler.DontRansackCaptain = true;
 		Smuggler.AlwaysSandbankManeuver = true;
@@ -420,7 +420,7 @@ void StopCoastalGuardPursuit()
 		if (cn != -1)
 		{
 			rCap = GetCharacter(cn);
-			if (rCap.location == Pchar.location && bSeaActive) return; // если в море погон€, то не трем, только на выход на карту.
+			if (rCap.location == Pchar.location && bSeaActive) return; 
 			ChangeCharacterAddressGroup(rCap, "None", "", "");
 			setCharacterShipLocation(rCap, "None");
 		}
@@ -435,7 +435,7 @@ void SelectCoastalGuardShip(ref rCharacter)
 
 int GetContrabandGoodsPrice(ref _refStore, int _Goods, int _PriceType, ref chref, int _qty)
 {
-	float _TradeSkill = GetSummonSkillFromNameToOld(chref,SKILL_COMMERCE); // 0..10.0
+	float _TradeSkill = GetSummonSkillFromNameToOld(chref,SKILL_COMMERCE); 
 	aref refGoods;
 	string tmpstr = Goods[_Goods].name;
 	int basePrice = MakeInt(Goods[_Goods].Cost);
@@ -478,7 +478,7 @@ int GetContrabandGoodsPrice(ref _refStore, int _Goods, int _PriceType, ref chref
 	float skillModify;
 	float cModify = 1.0;
 
-	if(_PriceType == PRICE_TYPE_BUY) // цена покупки товара игроком
+	if(_PriceType == PRICE_TYPE_BUY) 
 	{
 		skillModify = 1.325 - _TradeSkill * 0.005; 
 		if(tradeType == T_TYPE_CANNONS) cModify = 2.0 - MOD_SKILL_ENEMY_RATE/20.0;
@@ -502,7 +502,7 @@ int GetContrabandGoodsPrice(ref _refStore, int _Goods, int _PriceType, ref chref
 				
 		costModify = 1.05;
 	}
-	else	// цена продажи товара игроком
+	else	
 	{
 		skillModify = 0.675 + _TradeSkill * 0.005; 
 		if(tradeType == T_TYPE_CANNONS) cModify = 2.0 - MOD_SKILL_ENEMY_RATE/20.0;
@@ -526,9 +526,9 @@ int GetContrabandGoodsPrice(ref _refStore, int _Goods, int _PriceType, ref chref
 		costModify = 0.85;
 	}
 
-	// boal 23.01.2004 -->
+	
 	if (MakeInt(basePrice * tradeModify * skillModify * costModify + 0.5) < 1) return 1;
-	// boal 23.01.2004 <--
+	
 	
 	switch (Type)
 	{
@@ -557,3 +557,4 @@ int GetContrabandGoodsPrice(ref _refStore, int _Goods, int _PriceType, ref chref
 	
     return MakeInt(priceModify * basePrice * tradeModify * skillModify * _qty * costModify * cModify + 0.5);
 }
+

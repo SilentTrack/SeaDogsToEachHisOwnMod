@@ -3,7 +3,7 @@ bool NetServer_CheckGameOver_Convoy()
 	int i;
 	bool bFlagCarrierAlive = false;
 
-	// calculate survived ppl
+	
 	int iSurvivedTeams[2];
 	for (i=0; i<2; i++) { iSurvivedTeams[i] = 0; }
 	for (i=0; i<NET_MAXCLIENTS; i++) 
@@ -21,14 +21,14 @@ bool NetServer_CheckGameOver_Convoy()
 		if (stf(rConvoyClient.Ship.hp) > 0.0) { bFlagCarrierAlive = true;	} 
 	}
 	
-	// check if flag carrier dead
+	
 	if (!bFlagCarrierAlive)
 	{
 		NetServer.iWinnerTeam = 1;
 		return true;
 	}
 
-	// check if first group(alive flag carrier) reached safe point (30 meters diameter)
+	
 	float fDistance = CONVOY_POINT_RADIUS + 1.0;
 	if (sti(NetServer.ConvoyShipID) != DST_INVALID)
 	{
@@ -45,7 +45,7 @@ bool NetServer_CheckGameOver_Convoy()
 		return true;
 	}
 
-	// check if whole team 1 dead
+	
 	if (iSurvivedTeams[1] == 0)
 	{
 		NetServer.iWinnerTeam = 0;

@@ -1,4 +1,4 @@
-// телохранитель лидера ривадос Ёдди - «икомо
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;

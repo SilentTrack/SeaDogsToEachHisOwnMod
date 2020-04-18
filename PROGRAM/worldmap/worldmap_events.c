@@ -1,7 +1,7 @@
 
-//=========================================================================================
-//Events
-//=========================================================================================
+
+
+
 
 void wdmEvent_EncounterCreate()
 {
@@ -9,17 +9,17 @@ void wdmEvent_EncounterCreate()
 	float playerShipX = GetEventData();
 	float playerShipZ = GetEventData();
 	float playerShipAY = GetEventData();
-	//Skip encounters
+	
 	if(CheckAttribute(worldMap, "noenc") != 0)
 	{
 		if(worldMap.noenc == "true") return;
 	}
-	//Save player ship position
+	
 	worldMap.playerShipX = playerShipX;
 	worldMap.playerShipZ = playerShipZ;
 	worldMap.playerShipAY = playerShipAY;
-	//DeleteAttribute(pchar, "SkipEshipIndex");// boal
-	//Generate encounters
+	
+	
 	wdmStormGen(dltTime, playerShipX, playerShipZ, playerShipAY);
 	wdmShipEncounter(dltTime, playerShipX, playerShipZ, playerShipAY);
 }
@@ -40,7 +40,7 @@ void wdmEvent_ShipEncounter()
 	float playerShipZ = GetEventData();
 	float playerShipAY = GetEventData();
 	int eshipIndex = GetEventData();	
-	if (CheckAttribute(pchar, "SkipEshipIndex") && pchar.SkipEshipIndex == eshipIndex) return; // boal
+	if (CheckAttribute(pchar, "SkipEshipIndex") && pchar.SkipEshipIndex == eshipIndex) return; 
 	pchar.eshipIndex = eshipIndex;
 	LaunchMapScreen();
 
@@ -57,7 +57,7 @@ void wdmEvent_UpdateDate()
 	Environment.time = GetEventData();
 }
 
-//Добавляем по запросу квестовых энкоунтеров
+
 #event_handler("WorldMap_AddQuestEncounters", "wdmEvent_AddQuestEncounters");
 void wdmEvent_AddQuestEncounters()
 {
@@ -71,7 +71,7 @@ void wdmEvent_AddQuestEncounters()
 	{
 		at = GetAttributeN(encs, i);
 		
-		if (CheckAttribute(at, "characterID")) // boal fix 14.09.06
+		if (CheckAttribute(at, "characterID")) 
 		{
 			if(at.type == "trader")
 			{
@@ -80,9 +80,9 @@ void wdmEvent_AddQuestEncounters()
 					PostEvent("Map_TraderSucces", 100, "s", at.characterID);
 					return;
 				}
-				//Создаём в карте энкоунтера
+				
 				encID = "";
-				if (CheckAttribute(at, "XZGoto")) // покоординатный boal 04/10/06
+				if (CheckAttribute(at, "XZGoto")) 
 				{
 					if(!wdmCreateMerchantShipXZByIndex(1.0, idx, &encID, stf(at.x1), stf(at.z1), stf(at.x2), stf(at.z2), sti(at.TimeOut)))
 					{
@@ -98,9 +98,9 @@ void wdmEvent_AddQuestEncounters()
 						return;
 					}
 				}
-				//Путь до энкоунтера
+				
 				encPath = "encounters." + encID;
-				//Сохраняем принадлежность к квестовым энкоунтеров
+				
 				worldMap.(encPath).quest.event = "Map_TraderSucces";
 				worldMap.(encPath).quest.chrID = at.characterID;
 			}
@@ -111,16 +111,16 @@ void wdmEvent_AddQuestEncounters()
 					PostEvent("Map_TraderSucces", 100, "s", at.characterID);
 					return;
 				}
-				//Создаём в карте энкоунтера
+				
 				encID = "";
 				if(!wdmCreateMerchantShipByIndex(stf(at.speed), idx, &encID, at.beginlocator, at.endLocator, sti(at.TimeOut)))
 				{
 					PostEvent("Map_TraderSucces", 100, "s", at.characterID);
 					return;
 				}
-				//Путь до энкоунтера
+				
 				encPath = "encounters." + encID;
-				//Сохраняем принадлежность к квестовым энкоунтеров
+				
 				worldMap.(encPath).quest.event = "Map_TraderSucces";
 				worldMap.(encPath).quest.chrID = at.characterID;
 			}
@@ -131,17 +131,17 @@ void wdmEvent_AddQuestEncounters()
 					PostEvent("Map_WarriorEnd", 100, "s", at.characterID);
 					return;
 				}
-				//Создаём в карте энкоунтера
+				
 				encID = "";
-				//if(!wdmCreateFollowShipByIndex(1.0, idx, &encID, at.beginlocator, sti(at.TimeOut)))
+				
 				if(!wdmCreateRealFollowShipByIndex(1.0, idx, &encID, sti(at.TimeOut)))
 				{
 					PostEvent("Map_WarriorEnd", 100, "s", at.characterID);
 					return;
 				}
-				//Путь до энкоунтера
+				
 				encPath = "encounters." + encID;
-				//Сохраняем принадлежность к квестовым энкоунтеров
+				
 				worldMap.(encPath).quest.event = "Map_WarriorEnd";
 				worldMap.(encPath).quest.chrID = at.characterID;
 			}
@@ -152,29 +152,29 @@ void wdmEvent_AddQuestEncounters()
 					PostEvent("Map_WarriorEnd", 100, "s", at.characterID);
 					return;
 				}
-				//Создаём в карте энкоунтера
+				
 				encID = "";
-				//if(!wdmCreateFollowShipByIndex(1.0, idx, &encID, at.beginlocator, sti(at.TimeOut)))
+				
 				if(!wdmCreateRealFollowShipByIndex(1.7, idx, &encID, sti(at.TimeOut)))
 				{
 					PostEvent("Map_WarriorEnd", 100, "s", at.characterID);
 					return;
 				}
-				//Путь до энкоунтера
+				
 				encPath = "encounters." + encID;
-				//Сохраняем принадлежность к квестовым энкоунтеров
+				
 				worldMap.(encPath).quest.event = "Map_WarriorEnd";
 				worldMap.(encPath).quest.chrID = at.characterID;
 			}
 			if(at.type == "battle")
 			{
-				//wdmQuestCreateBattle(at.characterID, sti(at.iEnemyNation), sti(at.TimeOut));
+				
 			}
 		}
 	}
 	DeleteAttribute(&worldMap, "addQuestEncounters");
 	worldMap.addQuestEncounters = "";
-	//Очищаем массив энкоунтеров
+	
 	ReleaseMapEncounters();
 }
 
@@ -183,7 +183,7 @@ bool wdmSkipReturnBool = false;
 bool wdmIsSkipEnable()
 {
 	wdmSkipReturnBool = false;
-	if(CheckOfficersPerk(pchar, "SailingProfessional")) //to_do del
+	if(CheckOfficersPerk(pchar, "SailingProfessional")) 
 	{
 		if(rand(100) <= 50)
 		{
@@ -213,14 +213,14 @@ ref wdmEncounterDelete()
 	}
 	aref enc;
 	makearef(enc, worldMap.(encPath));
-	//Сохраняем событие
+	
 	bool needEvent = false;
 	string eventName = "";
 	string chrID = "";
 	if(CheckAttribute(enc, "quest.chrID"))
 	{
-    //homo 14/04/07 не ясно если энкоутер еще не доплыл до пункта назанчения значит его нельзя тереть?
-    //Даже если его трет программист?
+    
+    
     	if(CheckAttribute(&enc, "Gotox") && CheckAttribute(&enc, "Gotoz"))
 		{
 
@@ -230,7 +230,7 @@ ref wdmEncounterDelete()
 			if( fRadSqr > 100.0 && stf(enc.livetime) > 1.0) 
 			{
 				BI_intRetValue = false;
-				//return &BI_intRetValue;   убрал
+				
 			}
 		}
 
@@ -240,21 +240,18 @@ ref wdmEncounterDelete()
 			chrID = enc.quest.chrID;
 			needEvent = true;
 		}
-		/*else
-		{
-			return &BI_intRetValue;
-		}*/
+		 
 	}
-	//Отмечаем, что удалён
+	
 	enc.needDelete = "wdmEncounterDelete";
-	//Удаляем квестовую пометку
+	
 	DeleteAttribute(&enc, "quest");
 	if (!IsEntity(worldMap))
 	{
-	   //Трем сам энкаутер сразу homo 10/04/07
+	   
         DeleteAttribute(&worldMap, encPath);
     }
-	//Отправляем квестовый эвент, если надо
+	
 	if(needEvent)
 	{
 		PostEvent(eventName, 100, "s", chrID);
@@ -293,27 +290,27 @@ float wdmGetRum()
 	return makefloat(CalculateShipRum(pchar));
 }
 
-//  квестовый отлов входа в море по начилию НПС в случайке
+
 void wdmEnterSeaQuest(string _chrId)
 {
 	ref NPChar = characterFromID(_chrId);
 	
-	if (findsubstr(_chrId, "Hunter0" , 0) != -1) // ОЗГи
+	if (findsubstr(_chrId, "Hunter0" , 0) != -1) 
 	{
 		AddQuestRecord("HeadHunter", "HeadHunter_Sea");
-		AddQuestUserData("HeadHunter", "sSex", GetSexPhrase("ся","ась"));
+		AddQuestUserData("HeadHunter", "sSex", GetSexPhrase("пїЅпїЅ","пїЅпїЅпїЅ"));
 		AddQuestUserData("HeadHunter", "sNation", NationNameGenitive(sti(NPChar.Nation)));
 	}
-		// homo 19/07/06 GlodFleet
+		
 	if (_chrId == "Head_of_Gold_Squadron")
 	{
         string sQuest = "GoldFleetEncounter";
-        pchar.quest.(sQuest).win_condition.l1 = "EnterToSea";  // fix homo 20/01/07
+        pchar.quest.(sQuest).win_condition.l1 = "EnterToSea";  
         pchar.quest.(sQuest).win_condition = "GoldFleetEncounter";
         pchar.quest.(sQuest).function = "GoldFleetEncounter";
 	}
-	//homo 27/09/06
-	if (findsubstr(_chrId, "SiegeCap_1" , 0) != -1)// Осаждающая эскадра
+	
+	if (findsubstr(_chrId, "SiegeCap_1" , 0) != -1)
 	{
         SiegeSquadronOnMap(_chrId);
 	}
@@ -328,6 +325,7 @@ void wdmGetWindParameters()
 	pchar.WorldMap.WindForce = WindForce;
 	pchar.WorldMap.WindAngle = WindAngle;
 	
-	//trace("WorldMap.WindAngle " + WindAngle + " worldMap.playerShipAY " + worldMap.playerShipAY);
+	
 }
+
 

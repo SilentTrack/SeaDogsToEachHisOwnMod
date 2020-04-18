@@ -1,4 +1,4 @@
-// to_do форма под нож
+
 ref glob_captref;
 string sColonyName;
 
@@ -21,7 +21,7 @@ void InitInterface_R(string iniName,ref captref)
 	SetEventHandler("InterfaceBreak","ProcessCancelExit",0);
 	SetEventHandler("exitCancel","ProcessCancelExit",0);
 
-	TEMP_ExitColony(); // сразу в порт
+	TEMP_ExitColony(); 
 }
 
 void ProcessCancelExit()
@@ -32,5 +32,6 @@ void ProcessCancelExit()
 	interfaceResultCommand = RC_INTERFACE_FORTCAPTURE_EXIT;
 	EndCancelInterface(true);
 }
+
 
 

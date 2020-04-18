@@ -126,12 +126,12 @@ void NetClient_OnBallHitWater(int iMsg, int iBallIndex)
 
 void NetClient_OnBallHitSail(int iMsg, int iBallIndex)
 {
-	int wHitID = NMGetWord(iMsg);	// FIX-ME
+	int wHitID = NMGetWord(iMsg);	
 	int bSailIdx = NMGetByte(iMsg);
 	float x = NMGetFloat(iMsg); 
 	float y = NMGetFloat(iMsg);	
 	float z = NMGetFloat(iMsg);
-	// SendMessage 2 sail
+	
 	Play3DSound("sail_damage", x, y, z);
 }
 
@@ -213,10 +213,10 @@ void NetClient_OnBallHitHull(int iMsg, int iBallIndex)
 		}
 	}
 
-	// if critical hit
+	
 	if (bSeriousBoom)
 	{
-		// fort can do it
+		
 		NetClient_ChatAddGameMessage("Net_CriticalHit", rgbGameMessage, 2, wBallClientID, wOurClientID);
 	}
 
@@ -227,4 +227,5 @@ void NetClient_OnBallHitHull(int iMsg, int iBallIndex)
 
 	NCBalls.ClientDel = iBallIndex;
 }
+
 

@@ -25,3 +25,4 @@ void ICancelProcedure()
 
 	IDoExit( RC_INTERFACE_NET_FINDGAME );
 }
+

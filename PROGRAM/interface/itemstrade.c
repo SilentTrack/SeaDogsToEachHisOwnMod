@@ -1,4 +1,4 @@
-// boal 26/04/06 морма торговли предметами
+
 int	nCurScrollNum = 0;
 int iCharCapacity;
 int iTotalSpace;
@@ -6,15 +6,15 @@ float fCharWeight, fStoreWeight;
 int iMaxGoodsStore = 50000;
 
 bool bShowChangeWin = false;
-int  TradeMode; // 0 - песо, 1 - дублоны
-int  BuyOrSell = 0; // 1-buy -1 sell
+int  TradeMode; 
+int  BuyOrSell = 0; 
 string sChrId;
-//ref refStore,
-ref refCharacter, refStoreChar; // текущий ГГ (оф) и торгаш
+
+ref refCharacter, refStoreChar; 
 int iCharQty, iStoreQty, iCharPrice, iStorePrice;
 float fWeight;
 int  iCurGoodsIdx;
-//----------------------------------------------------------------------------------------------------------------
+
 void InitInterface_RI(string iniName, ref pTrader, int mode)
 {
     StartAboveForm(true);
@@ -22,7 +22,7 @@ void InitInterface_RI(string iniName, ref pTrader, int mode)
 	refCharacter = pchar;
 	refStoreChar = pTrader;
 	TradeMode = mode;
-	//GameInterface.TABLE_LIST.hr.height = 36;
+	
 	GameInterface.TABLE_LIST.hr.td1.str = "Items";
 	GameInterface.TABLE_LIST.hr.td1.scale = 0.9;
 	GameInterface.TABLE_LIST.hr.td2.str = "Wgt";
@@ -33,7 +33,7 @@ void InitInterface_RI(string iniName, ref pTrader, int mode)
 	GameInterface.TABLE_LIST.hr.td4.scale = 0.9;
 	GameInterface.TABLE_LIST.hr.td5.str = XI_ConvertString("Price buy");
 	GameInterface.TABLE_LIST.hr.td5.scale = 0.9;
-	GameInterface.TABLE_LIST.hr.td6.str = "Trader items";//XI_ConvertString("In the store");
+	GameInterface.TABLE_LIST.hr.td6.str = "Trader items";
 	GameInterface.TABLE_LIST.hr.td6.scale = 0.9;
 	GameInterface.TABLE_LIST.hr.td7.str = "Wgt/pcs";
 	GameInterface.TABLE_LIST.hr.td7.scale = 0.9;
@@ -97,11 +97,11 @@ void ProcessCancelExit()
 
 void IDoExit(int exitCode)
 {
-    // boal проверка на перегруз 21.01.2004 -->
+    
 	CheckAndSetOverloadMode(GetMainCharacter());
-	RefreshEquippedMaps(GetMainCharacter()); // рефрешим карты, если купили	
-	// boal 21.01.2004 <--
-	// раздайте патроны, порутчик Голицын -->
+	RefreshEquippedMaps(GetMainCharacter()); 
+	
+	
 	int i, cn;
     for(i=1;i<4;i++)
 	{
@@ -110,10 +110,10 @@ void IDoExit(int exitCode)
 		{
 			refCharacter = GetCharacter(cn);
             CheckAndSetOverloadMode(refCharacter);
-			if (CheckAttribute(refCharacter, "skill.FencingS")) //boal fix иначе не берут саблю при перегрузе
+			if (CheckAttribute(refCharacter, "skill.FencingS")) 
 			{
 	            EquipCharacterByItem(refCharacter, FindCharacterItemByGroup(refCharacter,BLADE_ITEM_TYPE));
-	            EquipCharacterByItem(refCharacter, FindCharacterItemByGroup(refCharacter,CIRASS_ITEM_TYPE)); // boal 08.10.04 броню офицерам
+	            EquipCharacterByItem(refCharacter, FindCharacterItemByGroup(refCharacter,CIRASS_ITEM_TYPE)); 
 	        }
 			if (CheckAttribute(refCharacter, "skill.Pistol") && GetCharacterSkill(refCharacter,"Pistol") > 0.1 )
 			{
@@ -121,7 +121,7 @@ void IDoExit(int exitCode)
 			}
 		}
 	}
-	// раздайте патроны, порутчик Голицын <--
+	
 	
 	CheckTraderItems(refStoreChar);
 	
@@ -238,7 +238,7 @@ void AddToTable()
 	idLngFile = LanguageOpenFile("ItemsDescribe.txt");
 	Table_Clear("TABLE_LIST", false, true, false);
 	
-	// Сначало уникальные предметы
+	
 	for (i = ITEMS_QUANTITY; i < TOTAL_ITEMS; i++)
 	{
         row = "tr" + n;
@@ -248,10 +248,10 @@ void AddToTable()
 			continue;
 		}
 		
-		if(TradeMode == 1) continue; // рандомящиеся предметы за дублоны не продаем
+		if(TradeMode == 1) continue; 
 		
 		sGood = Items[i].id;
-		// проверка на экипировку, их не продаем
+		
 		leftQty  = GetCharacterFreeItem(refCharacter, sGood);
 		rightQty = GetCharacterFreeItem(refStoreChar, sGood);
 		
@@ -289,7 +289,7 @@ void AddToTable()
 		
 		sGood = Items[i].id;
 		
-		if(TradeMode == 1) // тока за дублоны
+		if(TradeMode == 1) 
 		{						
 			if(!CheckAttribute(&Items[i],"PriceDublon")) continue;
 		}
@@ -300,7 +300,7 @@ void AddToTable()
 			}	
 		}
 				
-		// проверка на экипировку, их не продаем
+		
 		leftQty  = GetCharacterFreeItem(refCharacter, sGood);
 		rightQty = GetCharacterFreeItem(refStoreChar, sGood);
 				
@@ -321,7 +321,7 @@ void AddToTable()
 			GameInterface.TABLE_LIST.(row).td4.str = LanguageConvertString(idLngFile, Items[i].name);
 			GameInterface.TABLE_LIST.(row).index = i;
 			GameInterface.TABLE_LIST.(row).td4.scale = 0.9;
-			//GameInterface.TABLE_LIST.(row).td4.color = iColor;
+			
 			if(TradeMode == 0)
 			{
 				GameInterface.TABLE_LIST.(row).td3.str = GetTradeItemPrice(i, PRICE_TYPE_BUY, refStoreChar);
@@ -374,7 +374,7 @@ void ShowHelpHint()
 	sGroupPicture = "none";
 
 	if (!bShowChangeWin)
-	{// покажем помощь по работе с формой
+	{
         sHeader = XI_ConvertString("titleItemsTrade");
 		sText1 = "";
 
@@ -387,7 +387,7 @@ void ShowHelpHint()
 
 void EndTooltip()
 {
-	CloseTooltip(); // всегда убирать, если был
+	CloseTooltip(); 
     GameInterface.qty_edit.str = 0;
 	SetCharWeight();
 	SetVariable();
@@ -399,7 +399,7 @@ void EndTooltip()
 
 void ShowItemInfo()
 {
-	if (bShowChangeWin) // жмем окей, когда курсор на таблице
+	if (bShowChangeWin) 
 	{
 	    TransactionOK();
 	}
@@ -449,7 +449,7 @@ void FillCharactersScroll()
 
 	GameInterface.CHARACTERS_SCROLL.ImagesGroup.t0 = "EMPTYFACE";
 
-	FillFaceList("CHARACTERS_SCROLL.ImagesGroup", pchar, 2); // passengers
+	FillFaceList("CHARACTERS_SCROLL.ImagesGroup", pchar, 2); 
 
 	GameInterface.CHARACTERS_SCROLL.BadTex1 = 0;
 	GameInterface.CHARACTERS_SCROLL.BadPic1 = "emptyface";
@@ -468,8 +468,8 @@ void FillCharactersScroll()
         bOk = CheckAttribute(&characters[_curCharIdx], "prisoned") && sti(characters[_curCharIdx].prisoned) == true;
 		if(_curCharIdx != -1  && !CheckAttribute(&characters[_curCharIdx], "isquest") && !bOk)
 		{
-			if (IsOfficer(&characters[_curCharIdx]) && PChar.location == Characters[_curCharIdx].location)  // boal
-			// Jason: фикс - офицеры только в одной с ГГ локации
+			if (IsOfficer(&characters[_curCharIdx]) && PChar.location == Characters[_curCharIdx].location)  
+			
 			{
 				attributeName = "pic" + (m + 1);
 				GameInterface.CHARACTERS_SCROLL.(attributeName).character = _curCharIdx;
@@ -491,7 +491,7 @@ void SetVariable()
 
 	iTotalSpace = iMaxGoodsStore;
 	string sMaxGoodsStore;
-    sMaxGoodsStore = "Trader"; //XI_ConvertString("store");
+    sMaxGoodsStore = "Trader"; 
 	SetFormatedText("STORE_CAPACITY", sMaxGoodsStore);
 
 	if(!CheckAttribute(refStoreChar,"Merchant.type"))
@@ -528,7 +528,7 @@ void ProcessFrame()
 		string sAttr = "pic" + (nCurScrollNum + 1);
 		refCharacter = &characters[sti(GameInterface.CHARACTERS_SCROLL.(sAttr).character)];
 		SetDescription();
-		//FillEquipInfo();
+		
 		FillCharacterInfo();
 		GameInterface.TABLE_LIST.select = 1;
 		GameInterface.TABLE_LIST.top = 0;
@@ -559,7 +559,7 @@ void SetCharWeight()
 
     fStoreWeight = 0;
 }
-// инфа о предмете
+
 void ShowGoodsInfo(int iGoodIndex)
 {
 	string GoodName = Items[iGoodIndex].name;
@@ -622,7 +622,7 @@ void TransactionOK()
 	    return;
 	}
 
- 	if (BuyOrSell == 1) // BUY
+ 	if (BuyOrSell == 1) 
 	{
 		TakeNItems(refStoreChar, Items[iCurGoodsIdx].id, -nTradeQuantity);
 		TakeNItems(refCharacter, Items[iCurGoodsIdx].id, nTradeQuantity);				
@@ -636,7 +636,7 @@ void TransactionOK()
 				refStoreChar.money = sti(refStoreChar.money) + moneyback;
 			}
 			Statistic_AddValue(Pchar, "Money_spend", moneyback);
-			// boal  check skill -->
+			
 	        AddCharacterExpToSkill(pchar, "Commerce", moneyback / 700.0);
 		}
 		else
@@ -647,10 +647,10 @@ void TransactionOK()
 		}
 		
     	WaitDate("",0,0,0, 0, 5);
-        // boal <--
+        
 	}
  	else
-	{ // SELL
+	{ 
 	    TakeNItems(refStoreChar, Items[iCurGoodsIdx].id, nTradeQuantity);
 		TakeNItems(refCharacter, Items[iCurGoodsIdx].id, -nTradeQuantity);				
 		moneyback = makeint(iStorePrice*stf(GameInterface.qty_edit.str) + 0.5);
@@ -664,7 +664,7 @@ void TransactionOK()
 			}
 			Statistic_AddValue(Pchar, "Money_get", moneyback);
 			Achievment_SetStat(pchar, 39, moneyback);
-			// boal  check skill -->
+			
 	        AddCharacterExpToSkill(pchar, "Commerce", moneyback / 1000.0);
 		}
 		else
@@ -676,11 +676,11 @@ void TransactionOK()
 		
 		
     	WaitDate("",0,0,0, 0, 5);
-        // boal <--
+        
 	}
 	AddToTable();
 	EndTooltip();
-	ShowGoodsInfo(iCurGoodsIdx); //сбросим все состояния
+	ShowGoodsInfo(iCurGoodsIdx); 
 }
 
 void confirmChangeQTY_EDIT()
@@ -709,7 +709,7 @@ void ChangeQTY_EDIT()
 		    	GameInterface.qty_edit.str = -sti(GameInterface.qty_edit.str);
 		    }
 		    BuyOrSell = -1;
-		    // проверка на колво доступное -->
+		    
 		    if (sti(GameInterface.qty_edit.str) > iCharQty)
 		    {
 		        GameInterface.qty_edit.str = iCharQty;
@@ -717,10 +717,10 @@ void ChangeQTY_EDIT()
 		    iWeight = (fWeight * sti(GameInterface.qty_edit.str));
 		    if ((fStoreWeight + iWeight) > iTotalSpace)
 		    {
-		        iWeight = iTotalSpace - fStoreWeight - 0.01; // чуть меньше
+		        iWeight = iTotalSpace - fStoreWeight - 0.01; 
 		        GameInterface.qty_edit.str = makeint(iWeight / fWeight );
 		        iWeight = fWeight * sti(GameInterface.qty_edit.str);
-		        GameInterface.qty_edit.str = makeint(iWeight / fWeight ); // округление
+		        GameInterface.qty_edit.str = makeint(iWeight / fWeight ); 
 		    }
 			if(CheckAttribute(refStoreChar,"Merchant.type"))
 			{
@@ -741,13 +741,13 @@ void ChangeQTY_EDIT()
 					}				
 				}	
 			}	
-		    // проверка на колво доступное <--
-		    // квестовые не продать -->
+		    
+		    
 		    if (IsQuestUsedItem(Items[iCurGoodsIdx].id))
 		    {
 		        GameInterface.qty_edit.str = 0;
 		    }
-		    // квестовые не продать <--
+		    
 		    SetFormatedText("QTY_TypeOperation", "Sell");
 		    SetFormatedText("QTY_Result", "Money " + makeint(iStorePrice*stf(GameInterface.qty_edit.str) + 0.5) +
 			                ", weight " + FloatToString(iWeight, 1) );
@@ -755,7 +755,7 @@ void ChangeQTY_EDIT()
 		else
 		{
 			BuyOrSell = 1;
-	        // проверка на колво доступное -->
+	        
 		    if (sti(GameInterface.qty_edit.str) > iStoreQty)
 		    {
 		        GameInterface.qty_edit.str = iStoreQty;
@@ -763,11 +763,11 @@ void ChangeQTY_EDIT()
 		    iWeight = (fWeight * sti(GameInterface.qty_edit.str));
 		    if ((fCharWeight + iWeight) > iCharCapacity)
 		    {
-		        iWeight = iCharCapacity - fCharWeight - 0.01; // чуть меньше
+		        iWeight = iCharCapacity - fCharWeight - 0.01; 
 				if (iWeight < 0) iWeight = 0;
 		        GameInterface.qty_edit.str = makeint(iWeight / fWeight );
 		        iWeight = fWeight * sti(GameInterface.qty_edit.str);
-		        GameInterface.qty_edit.str = makeint(iWeight / fWeight ); // округдение
+		        GameInterface.qty_edit.str = makeint(iWeight / fWeight ); 
 		    }
 			if(TradeMode == 0)
 			{
@@ -785,14 +785,14 @@ void ChangeQTY_EDIT()
 					iWeight = fWeight * sti(GameInterface.qty_edit.str);
 				}
 			}	
-		    // проверка на колво доступное <--
+		    
 
 			SetFormatedText("QTY_TypeOperation", "Buy");
 			SetFormatedText("QTY_Result", "Money " + makeint(iCharPrice*stf(GameInterface.qty_edit.str) + 0.5) +
 			                ", weight " + FloatToString(iWeight, 1) );
 		}
 	}
-	// если получили ноль
+	
 	if (sti(GameInterface.qty_edit.str) == 0)
 	{
 	    SetFormatedText("QTY_TypeOperation", "");
@@ -807,7 +807,7 @@ void ChangeQTY_EDIT()
     SetVariable();
 }
 
-void REMOVE_ALL_BUTTON()  // продать все
+void REMOVE_ALL_BUTTON()  
 {
 	if (!bShowChangeWin)
 	{
@@ -819,7 +819,7 @@ void REMOVE_ALL_BUTTON()  // продать все
 	ChangeQTY_EDIT();
 }
 
-void ADD_ALL_BUTTON()  // купить все
+void ADD_ALL_BUTTON()  
 {
     if (!bShowChangeWin)
 	{
@@ -831,7 +831,7 @@ void ADD_ALL_BUTTON()  // купить все
 	ChangeQTY_EDIT();
 }
 
-void REMOVE_BUTTON()  // продать
+void REMOVE_BUTTON()  
 {
     if (!bShowChangeWin) return;
 	if (BuyOrSell == 0)
@@ -853,7 +853,7 @@ void REMOVE_BUTTON()  // продать
 	ChangeQTY_EDIT();
 }
 
-void ADD_BUTTON()  // купить
+void ADD_BUTTON()  
 {
     if (!bShowChangeWin) return;
 	if (BuyOrSell == 0)
@@ -900,10 +900,10 @@ int GetTradeItemPrice(int itmIdx, int tradeType, ref chr)
 
 	float skillDelta = GetSummonSkillFromNameToOld(pchar, SKILL_COMMERCE);
 	float skillModify;
-	if(tradeType == PRICE_TYPE_BUY)	// покупка предметов героем
+	if(tradeType == PRICE_TYPE_BUY)	
 	{
 		skillModify = 1.325 - skillDelta * 0.005; 		
-		if(CheckAttribute(chr, "Merchant.type"))//Jason
+		if(CheckAttribute(chr, "Merchant.type"))
 		{
 			if(chr.Merchant.type == "lightman")
 			{
@@ -938,7 +938,7 @@ int GetTradeItemPrice(int itmIdx, int tradeType, ref chr)
 		}								
 		FinalItmPrice = makeint(makefloat(itmprice)*skillModify);
 	}
-	else // продажа предметов героем
+	else 
 	{
 		if(CheckAttribute(&Items[itmIdx],"fixedprice")) return itmprice;
 		
@@ -1081,14 +1081,14 @@ float GetPriceModify(int itmIdx, int itmTradeType, ref _chr)
 					fModify = 0.7;
 				}
 			break;
-			case "lightman"	://Jason
+			case "lightman"	:
 					if(sItemid == "potionrum") fModify = 10.0;
 					else fModify = 0.5;
 			break;
-			case "LSC_indian"	://Jason 230912
+			case "LSC_indian"	:
 					fModify = 0.3;
 			break;
-			case "company"	://Jason 230912
+			case "company"	:
 					fModify = 0.1;
 			break;
 		}						
@@ -1101,7 +1101,7 @@ void CheckTraderItems(ref chr)
 	string 	sMerchantType, sItemType;
 	aref 	rootItems, curItem, arItem;
 	
-	if(CheckAttribute(chr, "Merchant.type")) // уличный торговец или ювелир
+	if(CheckAttribute(chr, "Merchant.type")) 
 	{
 		sMerchantType = chr.Merchant.type;
 		makearef(rootItems, chr.Items);
@@ -1145,3 +1145,4 @@ void CheckTraderItems(ref chr)
 		}
 	}
 }
+

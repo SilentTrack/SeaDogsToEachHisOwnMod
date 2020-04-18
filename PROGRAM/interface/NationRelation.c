@@ -1,14 +1,14 @@
-/// BOAL меню наций
+
 int curNationIdx;
 
 void InitInterface(string iniName)
 {
-    InterfaceStack.SelectMenu_node = "LaunchNationRelation"; // запоминаем, что звать по Ф2
+    InterfaceStack.SelectMenu_node = "LaunchNationRelation"; 
 	GameInterface.title = "titleNationRelation";
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	// boal 18.12.2003 -->
-	// делаем заточку под 5 или 6 наций и любую морду (64) гл. героя - универсальность залог успеха!
-	// введем коэфф. для автопомтроения матрицы
+	
+	
+	
 	int     i;
 	int     dy= 10;
     int     dx=16;
@@ -26,7 +26,7 @@ void InitInterface(string iniName)
     int j;
     
 	if (bBettaTestMode)
-	{   // со столбцом ГГ
+	{   
 		SetNewPicture("ICON_1", "interfaces\PORTRAITS\64\face_" + chref.faceId+ ".tga");
 		SetNewPicture("ICON_2", "interfaces\PORTRAITS\64\face_" + chref.faceId+ ".tga");
 		for (i=0; i< max_nt; i++)
@@ -41,19 +41,19 @@ void InitInterface(string iniName)
 	        CreateImage(picName+picCount, groupName, Nations[i].Name,  sx, deltaY-10 +dy+(dy+sz)*i, sx+sz, deltaY-10 +dy+(dy+sz)*i+sz);
 		    picCount++;
 		}
-		// Y
+		
 		for (i=0; i< max_nt; i++)
 		{
 	        CreateImage(picName+picCount, "relations", GetRelationName(GetNationRelation2MainCharacter(i)), deltaX -sz, deltaY +(dy+sz)*i, deltaX , deltaY +(dy+sz)*i+sz);
 		    picCount++;
 		}
-		//X
+		
 		for (i=0; i< max_nt; i++)
 		{
 	        CreateImage(picName+picCount, "relations", GetRelationName(GetNationRelation2MainCharacter(i)), deltaX +dx+(dx+sz)*i, deltaY-sz-4, deltaX + dx+ (dx+sz)*i+sz, deltaY-4);
 		    picCount++;
 		}
-		//GetNationRelation
+		
 		for (j=0; j< max_nt; j++)
 		{
 		    for (i=0; i< max_nt; i++)
@@ -67,7 +67,7 @@ void InitInterface(string iniName)
 		}
 	}
 	else
-	{// без столбца ГГ
+	{
      	SetNewPicture("ICON_1", "");
 		SetNewPicture("ICON_2", "");
 		sx=75;
@@ -100,7 +100,7 @@ void InitInterface(string iniName)
 		    }
 		}
 	}
-    // boal 18.12.2003 <--
+    
 	SetEventHandler("InterfaceBreak","ProcessExitCancel",0);
 	SetEventHandler("exitCancel","ProcessExitCancel",0);
     SetEventHandler("FlagsPress","FlagsProcess",0);
@@ -108,7 +108,7 @@ void InitInterface(string iniName)
     SetEventHandler("MouseRClickUP","HideInfo",0);
 	SetEventHandler("ShowInfoWindow","ShowInfoWindow",0);
     
-    /////////////
+    
     CreateString(true,"titul", XI_ConvertString("Hunter_type"),"DIALOG2",COLOR_NORMAL,609,100,SCRIPT_ALIGN_LEFT,1.0);
     
     CreateString(true,"EngH","","INTERFACE_ULTRASMALL",COLOR_NORMAL,700,134,SCRIPT_ALIGN_CENTER,1.0);
@@ -204,30 +204,22 @@ void HideInfo()
 
 void FlagsProcess()
 {
-	// boal 04.04.2004 -->
+	
 	bool bTmpBool = true;
 	int i, cn;
 	ref chref;
 	
-	if (CheckAttribute(pchar, "DisableChangeFlagMode")) return; // нефиг менять файл за 3 секунды сразу
+	if (CheckAttribute(pchar, "DisableChangeFlagMode")) return; 
 	
 	if (!bBettaTestMode)
 	{
-    	//if(LAi_group_IsActivePlayerAlarm()) bTmpBool = false;
-    	//if(!LAi_IsCharacterControl(GetMainCharacter())) bTmpBool = false;
-    	if (bLandInterfaceStart)  bTmpBool = false; // на суше нельзя в принципе
-    	if (bSeaActive && !CheckEnemyCompanionDistance2GoAway(false)) bTmpBool = false; // компаньон под ударом
-        // проверка класса кораблей в эскадре -->
-        /*for (i=0; i<4; i++)
-    	{
-    		cn = GetCompanionIndex(GetMainCharacter(), i);
-    		if ( cn>=0 )
-    		{
-    			chref = GetCharacter(cn);
-                if (GetCharacterShipClass(chref) <= 2) bTmpBool = false;
-    		}
-    	}  */
-        // проверка класса кораблей в эскадре <--
+    	
+    	
+    	if (bLandInterfaceStart)  bTmpBool = false; 
+    	if (bSeaActive && !CheckEnemyCompanionDistance2GoAway(false)) bTmpBool = false; 
+        
+         
+        
 	}
 	if (bDisableMapEnter || !bTmpBool)
 	{
@@ -237,10 +229,10 @@ void FlagsProcess()
             return;
         }
 	}
-	// смена флага
-	Sea_ClearCheckFlag(); // сбросить всем в море проверку смотрения на флаг.
-	pchar.DisableChangeFlagMode = true; //закрываем Флаг
-	DoQuestFunctionDelay("FreeChangeFlagMode", 15.0); // ролик + запас
+	
+	Sea_ClearCheckFlag(); 
+	pchar.DisableChangeFlagMode = true; 
+	DoQuestFunctionDelay("FreeChangeFlagMode", 15.0); 
 	
 	switch (curNationIdx)
 	{
@@ -314,7 +306,7 @@ void ProcessCommandExecute()
 			}
 		break;
 	}
-	// boal new menu 31.12.04 -->
+	
 	if (nodName == "I_CHARACTER" || nodName == "I_SHIP" ||
 	    nodName == "I_QUESTBOOK" || nodName == "I_TRADEBOOK" ||
 		nodName == "I_NATIONS" || nodName == "I_ITEMS")
@@ -327,7 +319,7 @@ void ProcessCommandExecute()
 			return;
 		}
 	}
-	// boal new menu 31.12.04 -->
+	
 }
 void SetNewNation(int add)
 {
@@ -337,7 +329,7 @@ void SetNewNation(int add)
     curNationIdx = curNationIdx + add;
     if (curNationIdx < 0) curNationIdx = 4;
     if (curNationIdx > 4) curNationIdx = 0;
-    //CreateImage("FlagPic", "NATIONS",GetNationNameByType(curNationIdx), 648, 455, 715, 522);
+    
     SetNewGroupPicture("FlagPic", "NATIONS", GetNationNameByType(curNationIdx));
     
     if (IsCharacterPerkOn(mchar,"FlagPir")  ||
@@ -371,7 +363,7 @@ void SetNewNation(int add)
 }
 void PirateProcess()
 {
-    //DoQuestCheckDelay("pir_flag_rise", 1.0);
+    
     PChar.GenQuest.VideoAVI        = "Pirate";
     PChar.GenQuest.VideoAfterQuest = "pir_flag_rise";
 
@@ -381,7 +373,7 @@ void PirateProcess()
 
 void EnglandProcess()
 {
-    //DoQuestCheckDelay("eng_flag_rise", 1.0);
+    
     PChar.GenQuest.VideoAVI        = "England";
     PChar.GenQuest.VideoAfterQuest = "eng_flag_rise";
 

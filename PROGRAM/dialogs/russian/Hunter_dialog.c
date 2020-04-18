@@ -22,7 +22,7 @@ void ProcessDialogEvent()
 
 		case "First time":
 			chrDisableReloadToLocation = false;
-			//Lai_SetPlayerType(pchar);
+			
 			
 			dialog.text = GetFullName(PChar) + "! "+"We had been tracking you for quite some time now, and finally you're ours.";
 			Link.l1 = "Who are you and what do you want from me?";
@@ -35,7 +35,7 @@ void ProcessDialogEvent()
 			dialog.text = XI_ConvertString(Nations[sti(NPChar.nation)].Name) + " placed a decent bounty on your head, either dead or alive.";
 			Link.l1 = "I will pay you if you leave me alone.";
 			Link.l1.go = "Cost_Head"; 
-            // boal 08.04.04 -->
+            
             if (GetSummonSkillFromNameToOld(PChar, SKILL_SNEAK) > 2 || bBettaTestMode)
             {
     			TempChar = characterFromID("Bug Fixer");
@@ -69,8 +69,8 @@ void ProcessDialogEvent()
         
         case "lier_2":
             AddDialogExitQuest("GoAway_Hunters_Land");
-            if (CheckAttribute(PChar, "GenQuest.HunterStart")) // только ОЗГи, а не кладоисатели
-            {   // запись в СЖ
+            if (CheckAttribute(PChar, "GenQuest.HunterStart")) 
+            {   
 	            AddQuestRecord("HeadHunter", "HeadHunter_free");
 				AddQuestUserData("HeadHunter", "sSex", GetSexPhrase("",""));
 				AddQuestUserData("HeadHunter", "sNation", NationNameGenitive(sti(NPChar.Nation)));
@@ -79,12 +79,12 @@ void ProcessDialogEvent()
             }
             DialogExit();
         break;
-        // boal <--
+        
         
         case "battle":
-            AddDialogExitQuest("Battle_Hunters_Land");    // BOAL Весь код я перенес сюда по всем нациям, просто не переименовал
-            if (CheckAttribute(PChar, "GenQuest.HunterStart")) // только ОЗГи, а не кладоисатели
-            {   // запись в СЖ
+            AddDialogExitQuest("Battle_Hunters_Land");    
+            if (CheckAttribute(PChar, "GenQuest.HunterStart")) 
+            {   
 	            AddQuestRecord("HeadHunter", "HeadHunter_battle");
 				AddQuestUserData("HeadHunter", "sSex", GetSexPhrase("",""));
 				AddQuestUserData("HeadHunter", "sNation", NationNameGenitive(sti(NPChar.Nation)));
@@ -99,8 +99,8 @@ void ProcessDialogEvent()
 
             AddDialogExitQuest("GoAway_Hunters_Land"); 
             
-            if (CheckAttribute(PChar, "GenQuest.HunterStart")) // только ОЗГи, а не кладоисатели
-            {   // запись в СЖ
+            if (CheckAttribute(PChar, "GenQuest.HunterStart")) 
+            {   
 	            AddQuestRecord("HeadHunter", "HeadHunter_Buy");
 				AddQuestUserData("HeadHunter", "sSex", GetSexPhrase("",""));
 				AddQuestUserData("HeadHunter", "sNation", NationNameGenitive(sti(NPChar.Nation)));
@@ -134,7 +134,7 @@ void ProcessDialogEvent()
 			dialog.text = "Hold on, "+ GetSexPhrase("buddy","lass") +"...I think you have something interesting on you. One should share the treasures with others - don't you think so?";
             Link.l1 = "Alright, I will pay you if you leave me alone.";
 			Link.l1.go = "Cost_Head";
-            // boal 08.04.04 -->
+            
             if (GetSummonSkillFromNameToOld(PChar, SKILL_SNEAK) > 3)
             {
     			TempChar = characterFromID("Bug Fixer");
@@ -171,7 +171,7 @@ void ProcessDialogEvent()
 		
 		case "TreasureCaptain_fight":
 			DialogExit();
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться // patch-6
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			for(i=1; i<=4; i++)
 			{
 				sld = characterFromId("Treasure_sailor_"+i);
@@ -192,7 +192,7 @@ void ProcessDialogEvent()
 		
 		case "TreasureOfficer_fight":
 			DialogExit();
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться // patch-6
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			for(i=1; i<=4; i++)
 			{
 				sld = characterFromId("Treasure_soldier_"+i);
@@ -205,7 +205,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
 		
-		// генератор "A reason to hurry"
+		
 		case "ReasonToFast_THunter_1":
 			if(CheckAttribute(pchar,"GenQuest.CannotWait"))	DeleteAttribute(pchar, "GenQuest.CannotWait");
 			dialog.text = "And here comes our gold. At least our waiting was not in vain.";
@@ -406,7 +406,7 @@ void ProcessDialogEvent()
 				pchar.quest.ReasonToFast_SetPirateShip.function = "ReasonToFast_PreparePirateShip";
 			}
 		break;
-		// генератор "A reason to hurry"
+		
 	}
 }
 
@@ -429,12 +429,12 @@ string GetLocHunterName()
 				ret = "mainland of ";
 			}
 		}
-		//
+		
         if (CheckAttribute(&locations[nLoc],"fastreload"))
 		{
 			ret += " (" +LanguageConvertString(nFile, locations[nLoc].fastreload + " Town") + ")";
 		}
-		//ret += LanguageConvertString(nFile, locations[nLoc].id.label);
+		
 		LanguageCloseFile( nFile );
 	}
 	return ret;	

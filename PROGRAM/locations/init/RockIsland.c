@@ -1,27 +1,27 @@
 
 int LocationInitRockIsland(int n)
 {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Северные рифы
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Риф67
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Shore67";
 	locations[n].id.label = "Shore67";
 	locations[n].image = "loading\RockIsland.tga";
 	locations[n].worldmap = "RockIsland";
 	locations[n].parent_colony = "RockIsland";
-	//Sound
+	
 	locations[n].type = "reef";
 	locations[n].islandId = "RockIsland";
 	locations[n].onUninhabitedIsland = true;
 	locations[n].DisableEncounters = true;
 	locations[n].questflower = 1;
-	locations[n].Chestgennot = true; // не генерить сундуки
-	//Models
-	//Always
+	locations[n].Chestgennot = true; 
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\MountainPathDMChest";
 	Locations[n].models.always.shore = "MountainPathDMChest";
 	locations[n].models.always.shore.sea_reflection = 1;
@@ -43,14 +43,14 @@ int LocationInitRockIsland(int n)
 	Locations[n].models.always.Waterfall2.tech = "LocationWaterFall";
 	Locations[n].models.always.Waterfall2.level = 49;
 	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "MountainPathDMChest_patch_day";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "MountainPathDMChest_patch_day";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";		
-	//Reload map
+	
 	Locations[n].reload.l1.name = "reload1_back";
     Locations[n].reload.l1.go = "RockIsland";
     Locations[n].reload.l1.emerge = "reload_1";
@@ -68,3 +68,4 @@ int LocationInitRockIsland(int n)
 
 	return n;
 }
+

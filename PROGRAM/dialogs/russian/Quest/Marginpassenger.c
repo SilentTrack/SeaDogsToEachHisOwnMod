@@ -19,7 +19,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 		break;
 		
-		//разговор на палубе
+		
 		case "MarginCap":
 			dialog.text = "Greetings, captain. Do you want something from me?";
 			link.l1 = "Yes. Exactly, "+GetAddress_FormToNPC(NPChar)+". There is a passenger on your ship I am quite interested in. Name's "+pchar.GenQuest.Marginpassenger.q1Name+". I want your passenger to become my passenger. If you are okay with that, then we will be parted and will never see each other again.";
@@ -35,7 +35,7 @@ void ProcessDialogEvent()
 		case "MarginCap_2":
 			int MCparam = (6-sti(RealShips[sti(pchar.ship.type)].Class))*100+sti(pchar.ship.Crew.Morale)+sti(pchar.Ship.Crew.Exp.Sailors)+sti(pchar.Ship.Crew.Exp.Cannoners)+sti(pchar.Ship.Crew.Exp.Soldiers);
 			int NPCparam = (6-sti(RealShips[sti(npchar.ship.type)].Class))*100+sti(npchar.ship.Crew.Morale)+sti(npchar.Ship.Crew.Exp.Sailors)+sti(npchar.Ship.Crew.Exp.Cannoners)+sti(npchar.Ship.Crew.Exp.Soldiers);
-			if (MCparam > NPCparam)//отдаст сам
+			if (MCparam > NPCparam)
 			{
 				dialog.text = "I don't have a choice then. The fate of my crew is more valuable to me than a fate of one man. But you won't get away with it just like that! I won't forget it!";
 				link.l1 = "Calm down, save yourself from a heart attack... Bring here my new passenger!!";
@@ -52,7 +52,7 @@ void ProcessDialogEvent()
 		case "MarginCap_3":
 			DialogExit();
 			npchar.Dialog.CurrentNode = "MarginCap_repeat";
-			//отдаем пассажира
+			
 			sld = GetCharacter(NPC_GenerateCharacter("MarginPass", pchar.GenQuest.Marginpassenger.model, pchar.GenQuest.Marginpassenger.sex, pchar.GenQuest.Marginpassenger.ani, 2, sti(pchar.GenQuest.Marginpassenger.Nation), -1, true, "quest"));
 			sld.Dialog.Filename = "Quest\Marginpassenger.c";
 			sld.Dialog.currentnode = "MarginPass";
@@ -63,7 +63,7 @@ void ProcessDialogEvent()
 			LAi_SetActorType(sld);
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 			Map_ReleaseQuestEncounter(npchar.id);
-			npchar.Abordage.Enable = false; // запрет абордажа
+			npchar.Abordage.Enable = false; 
 			npchar.ShipEnemyDisable = true;
 			npchar.AlwaysFriend = true;
 			ChangeCharacterNationReputation(pchar, sti(npchar.Nation), -1);
@@ -200,7 +200,7 @@ void ProcessDialogEvent()
 		}
 		if (iTemp > 0 && iTemp <= iSum)
 		{
-			if (drand(2) > 1) // Addon-2016 Jason уменьшаем раздачу дублонов
+			if (drand(2) > 1) 
 			{
 				dialog.text = "Fine, I agree. I posses the required sum. Where is "+pchar.GenQuest.Marginpassenger.q1Name+"?";
 				link.l1 = "Must be on the pier by now. So you can go and get the passenger.";
@@ -249,7 +249,7 @@ void ProcessDialogEvent()
 			AddQuestUserData("Marginpassenger", "sSum", iTemp);
 			CloseQuestHeader("Marginpassenger");
 			DeleteAttribute(Pchar, "GenQuest.Marginpassenger");
-			AddCharacterExpToSkill(pchar, "Fortune", 100);//везение
+			AddCharacterExpToSkill(pchar, "Fortune", 100);
 		break;
 		
 		case "MarginNeed_peso":
@@ -272,7 +272,7 @@ void ProcessDialogEvent()
 			AddQuestUserData("Marginpassenger", "sSum", FindRussianMoneyString(iTemp));
 			CloseQuestHeader("Marginpassenger");
 			DeleteAttribute(Pchar, "GenQuest.Marginpassenger");
-			AddCharacterExpToSkill(pchar, "Fortune", 80);//везение
+			AddCharacterExpToSkill(pchar, "Fortune", 80);
 		break;
 		
 		case "MarginNeed_dublon_exit":
@@ -315,8 +315,8 @@ void ProcessDialogEvent()
 			LAi_ActorGoToLocation(npchar, "", "", "none", "", "", "", 1.0);
 			AddPassenger(pchar, npchar, false);
 			SetCharacterRemovable(npchar, false);
-			pchar.quest.Marginpassenger_InWorldOver.over = "yes"; //снять прерывание
-			pchar.quest.Marginpassenger_Sink.over = "yes"; //снять прерывание
+			pchar.quest.Marginpassenger_InWorldOver.over = "yes"; 
+			pchar.quest.Marginpassenger_Sink.over = "yes"; 
 			pchar.GenQuest.Marginpassenger = "take";
 			if (rand(2) == 1) pchar.GenQuest.Marginpassenger.lose = "true";
 			else Marginpassenger_CreateNeedman();

@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -10,12 +10,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat("You know, " + NPChar.name + ", maybe next time.", "Right, I've forgotten for some reason...",
                       "Yes, it really is the third time...", "Yep...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			if (pchar.questTemp.Slavetrader == "FindRatTortuga") // работорговец
+			if (pchar.questTemp.Slavetrader == "FindRatTortuga") 
             {
                 link.l1 = "Listen, where can I find Francois Gontier? He was supposed to have arrived at Tortuga already.";
                 link.l1.go = "Tortuga_ratT_1";
             }
-			// суп из черепахи
+			
 			if (CheckAttribute(PChar, "questTemp.Terrapin") && pchar.questTemp.Terrapin == "tortuga")
 			{
 				link.l1 = "I'm looking for Henri Thibaut. Where can I find him?";
@@ -31,7 +31,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1 = "Tell me, has a galleon by the name of 'Santa Margarita' stopped at your colony lately? Maybe as a privateer prize?";
                 link.l1.go = "guardoftruth";
 			}
-			// Addon 2016-1 Jason Пиратская линейка
+			
 			if (CheckAttribute(pchar, "questTemp.Mtraxx.Jeweller"))
 			{
 				link.l1 = "Look pal, I am looking for Gaspard Parmentier. Where can I find him?";
@@ -56,10 +56,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = "Hm... All right then, I see. Thank you, " + npchar.name + ".";
 			link.l1.go = "exit";
 			AddQuestRecord("Slavetrader", "21_8");
-			pchar.questTemp.Slavetrader = "wait1";//затычка
+			pchar.questTemp.Slavetrader = "wait1";
         break;
 		
-		// суп из черепахи
+		
 		case "terrapin":
 			dialog.text = "Well, Monsieur Thibaut is a famous individual on Tortuga. His mansion is located near the port authority. When leaving my saloon, head straight toward the port. Approaching the arch leading to the port, turn left on the crossroads and go all the way down to the end of the street where you'll run into a two-story stone building with a red roof. That is Monsieur Thibaut's mansion.";
 			link.l1 = "Thank you! I'll go visit him...";
@@ -102,10 +102,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			sld.dialog.currentnode = "tibo_9";
 			LAi_SetLoginTime(sld, 20.0, 8.0);
 			ChangeCharacterAddressGroup(sld, "Tortuga_tavern_upstairs", "goto", "goto1");
-			LocatorReloadEnterDisable("Tortuga_tavern", "reload2_back", false); // откроем комнату
-			LAi_LocationFightDisable(&Locations[FindLocation("Tortuga_tavern_upstairs")], true);//запретить драться
+			LocatorReloadEnterDisable("Tortuga_tavern", "reload2_back", false); 
+			LAi_LocationFightDisable(&Locations[FindLocation("Tortuga_tavern_upstairs")], true);
 			LAi_SetStayType(sld);
-			// Addon 2016-1 Jason Пиратская линейка
+			
 			if (GetCharacterIndex("Mary") != -1)
 			{
 				sld = characterFromId("Mary");
@@ -144,14 +144,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.questTemp.Guardoftruth = "tortuga1";
 		break;
 		
-		// Addon 2016-1 Jason Пиратская линейка
+		
 		case "mtraxx_jew":
-            dialog.text = "Seems like Gaspard is getting more and more popular among your kindЙ His house is by the wall. Turn left from the tavern and head to the port, but don't go there, turn left again, go straight and then turn right. A two-storied house.";
+            dialog.text = "Seems like Gaspard is getting more and more popular among your kindпїЅ His house is by the wall. Turn left from the tavern and head to the port, but don't go there, turn left again, go straight and then turn right. A two-storied house.";
 			link.l1 = "Thanks!";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("Mtraxx_WolfreekJewellerHouse");
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

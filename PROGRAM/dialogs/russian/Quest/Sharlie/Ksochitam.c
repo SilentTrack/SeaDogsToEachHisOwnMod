@@ -1,4 +1,4 @@
-// диалоги НПС по квесту Коварный остров Ксочитэм
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -20,7 +20,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// капитан-нежить Санта-Квитерии
+		
 		case "SQC_skeletcap":
 			PlaySound("Types\skel.wav");
 			dialog.text = "You... will still.... Have... to die. He will come... and kill you... as he has killed all of us... as he killed everyone here...";
@@ -54,7 +54,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
 		
-		// Страж маски Кукулькана
+		
 		case "guardmask":
 			PlaySound("VOICE\Russian\sharlie\Hranitel Maski Kukulkana.wav");
 			dialog.text = "I've been waiting for you for so long!..";

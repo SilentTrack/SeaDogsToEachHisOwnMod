@@ -1,4 +1,4 @@
-// Акула: Стивен Додсон
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -14,7 +14,7 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			// Jason НСО
+			
 			if(CheckAttribute(pchar, "questTemp.Patria.DodsonFail"))
 			{
 				dialog.text = "Charles, what the hell!..";
@@ -84,7 +84,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// --------------------------------------вариант R-----------------------------------------------
+		
 		case "Chad_die":
 			dialog.text = "Ha! I take it that you are our night visitor? I was informed about this accident too late. I had checked you belongings and found a letter from Wood Devil. Hell, it almost smelled of Main's jungles\nYour name is "+GetFullName(pchar)+"? Don't be surprised, I read it from the letter. My name is Steven Dodson. Or simply Shark. The Shark. I trust, that you have already heard about me. I currently occupy a position of admiral in this city or island, whatever\nI apologize for the actions of my men last night. It was my order to capture everyone who sneaks inside the hold. Too many thieves among Narwhals and Rivados\nChad let you go, I assume? Odd. I was only going to send him an order to release you. Where is your ship? I hope she is fine?";
 			link.l1 = "Chad? As far as I understand, your boatswain would never let me leave the prison alive. I did it myself and I also set free one black guy of these... Rivados.";
@@ -140,7 +140,7 @@ void ProcessDialogEvent()
 			link.l1.go = "Chad_die_9";
 		break;
 		
-		// ноды пересечения
+		
 		case "Chad_die_9":
 			dialog.text = "What? Hawk? Isn't he at Jamaica? He is a baron of Maroon town, why would he be here?";
 			link.l1 = "No. Jackman is in command there now. I was able to find out that Hawk had gotten there the same way I did - through the portal of Kukulcan.";
@@ -207,7 +207,7 @@ void ProcessDialogEvent()
 			if (pchar.questTemp.LSC == "entrance" || pchar.questTemp.LSC == "mary") link.l1.go = "entrance_4";
 			else link.l1.go = "Chad_die_20";
 		break;
-		// ноды пересечения
+		
 		
 		case "Chad_die_20":
 			dialog.text = "I understand, but I can not help you. Plus, this assassination thing is quite disturbing. Chad is dead, but I doubt that Narwhals will drop their plan. I do not want to live expecting to be shot in the back every day. Since you need me alive and you are already involved in this mess, I offer you to investigate this conspiracy\nYour are a newcomer, it's an advantage. Find Chad's partners and bring them to me or kill them where they stand, I don't care. Talk to Chimiset, old black knows more than he told us already\nBe careful with Narwhals, don't cross their borders unless you have got a password. They change passwords every week.\nOnce the threat is eliminated, I will provide you with sailing directions and all information you need\nGo and find those responsible. Restore order. I will make sure they clean prison after you. And we need a new jailer. And I need some rum, I don't feel well.";
@@ -218,12 +218,12 @@ void ProcessDialogEvent()
 		case "Chad_die_21":
 			DialogExit();
 			NextDiag.CurrentNode = "Total_wait";
-			pchar.questTemp.LSC.rvd_friend = "true"; //флаг на проход по кораблям ривадос
+			pchar.questTemp.LSC.rvd_friend = "true"; 
 			sld = characterFromId("Chimiset");
-			sld.dialog.currentnode = "Friend"; //ноду Чимисету
+			sld.dialog.currentnode = "Friend"; 
 			pchar.quest.LSC_Eddy.win_condition.l1 = "location";
 			pchar.quest.LSC_Eddy.win_condition.l1.location = "ProtectorFisher";
-			pchar.quest.LSC_Eddy.function = "LSC_EddyTalk"; //на разговор с Эдди
+			pchar.quest.LSC_Eddy.function = "LSC_EddyTalk"; 
 			AddQuestRecord("SharkHunt", "10");
 			sld = characterFromId("Facio");
 			sld.quest.parol = true;
@@ -327,7 +327,7 @@ void ProcessDialogEvent()
 			AddSimpleRumourCityTip("They say that you are the admiral's loyal friend. Is that true?", "LostShipsCity", 15, 2, "LSC", "");
 		break;
 		
-		// ----------------------------------------вариант N---------------------------------------------------
+		
 		case "entrance":
 			dialog.text = "What do you want? I don't remember you...";
 			link.l1 = "Of course, you don't - we had never met before, and I came here just recently. Hello, Steven. Such a rare luck! I have found you after all, though it wasn't you who I was expecting to find here!";
@@ -390,14 +390,14 @@ void ProcessDialogEvent()
 			GiveItem2Character(pchar, "key_capper");
 			NextDiag.CurrentNode = "Total_wait";
 			sld = characterFromId("Chimiset");
-			sld.dialog.currentnode = "prisoner"; //даем ноду Чимисету
+			sld.dialog.currentnode = "prisoner"; 
 			sld.quest.chimiset_die = "true";
-			ChangeCharacterAddressGroup(sld, "Tartarusprison", "quest", "prison2"); // в закрытую клетку
+			ChangeCharacterAddressGroup(sld, "Tartarusprison", "quest", "prison2"); 
 			LAi_SetGroundSitTypeNoGroup(sld);
 			sld = characterFromId("Capper");
-			sld.dialog.currentnode = "prisoner"; //даем ноду Капперу
-			LAi_LocationFightDisable(&Locations[FindLocation("Tartarusprison")], true);//запретить драться
-			// прерывания на локаторы тартаруса
+			sld.dialog.currentnode = "prisoner"; 
+			LAi_LocationFightDisable(&Locations[FindLocation("Tartarusprison")], true);
+			
 			pchar.quest.LSC_TartarusEntrance1.win_condition.l1 = "locator";
 			pchar.quest.LSC_TartarusEntrance1.win_condition.l1.location = "LostShipsCity_town";
 			pchar.quest.LSC_TartarusEntrance1.win_condition.l1.locator_group = "reload";
@@ -474,7 +474,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = "Total_wait";
 			sld = characterFromId("Facio");
 			sld.quest.parol = true;
-			// прерывание на вызов к Акуле
+			
 			pchar.quest.LSC_GotoShark.win_condition.l1 = "Timer";
 			pchar.quest.LSC_GotoShark.win_condition.l1.date.hour  = 9.00;
 			pchar.quest.LSC_GotoShark.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 1);
@@ -514,7 +514,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.CurrentNode = "Total_wait";
 			pchar.quest.LSC_GotoShark.win_condition.l1 = "Timer";
-			SetFunctionTimerCondition("LSC_MeetingSharkAugustine", 0, 0, 1, false); // таймер
+			SetFunctionTimerCondition("LSC_MeetingSharkAugustine", 0, 0, 1, false); 
 			AddQuestRecord("SharkHunt", "22");
 		break;
 		
@@ -546,7 +546,7 @@ void ProcessDialogEvent()
 		case "caroline_4":
 			DialogExit();
 			LAi_SetPlayerType(pchar);
-			// запускаем Мэри, Чада и нарвалов - будет лютое рубилово
+			
 			sld = characterFromId("Capper");
 			sld.cirassId = Items_FindItemIdx("cirass1");
 			LAi_SetActorType(sld);
@@ -554,7 +554,7 @@ void ProcessDialogEvent()
 			sld = characterFromId("Mary");
 			sld.greeting = "mary_4";
 			int iScl = MOD_SKILL_ENEMY_RATE*10 + 2*sti(pchar.rank);
-			LAi_SetHP(sld, 250+iScl, 250+iScl); // усилим
+			LAi_SetHP(sld, 250+iScl, 250+iScl); 
 			sld.dialog.currentnode = "caroline";
 			ChangeCharacterAddressGroup(sld, "CarolineBank", "reload", "reload2");
 			LAi_SetActorType(sld);
@@ -637,15 +637,15 @@ void ProcessDialogEvent()
 			Log_Info("You have received 500 doubloons");
 			PlaySound("interface\important_item.wav");
 			AddQuestRecord("SharkHunt", "27");
-			pchar.questTemp.Saga.SharkHunt = "find"; //флаг - покушение предотвращено
+			pchar.questTemp.Saga.SharkHunt = "find"; 
 			sld = characterFromId("Grinspy");
-			sld.dialog.currentnode = "shark_16"; // ноду Дональду Гринспи
-			SetFunctionTimerCondition("LSC_FacioReturn", 0, 0, 1, false); // вертаем на место Фацио через сутки
+			sld.dialog.currentnode = "shark_16"; 
+			SetFunctionTimerCondition("LSC_FacioReturn", 0, 0, 1, false); 
 			AddSimpleRumourCityTip("They say that admiral respects you, mister...", "LostShipsCity", 15, 2, "LSC", "");
 			AddSimpleRumourCityTip("They say that you are the admiral's loyal friend. Is that true?", "LostShipsCity", 15, 2, "LSC", "");
 		break;
 		
-		// ----------------------------------------вариант M----------------------------------------------------
+		
 		case "mary":
 			dialog.text = "In my prison 'Tartarus'. You can go there and see him. I will give you the key and Chad Kapper won't put obstacles in your way...";
 			link.l1 = "Wait, Steven. I think that I should  not go to Chad Kapper yet...";
@@ -667,7 +667,7 @@ void ProcessDialogEvent()
 		case "mary_3":
 			dialog.text = "Well, tell me, then...";
 			link.l1 = "After I had found myself in the drowned cargo hold, I got out through the hole and swam among the ship wrecks to find a safe place. Finally, I climbed on the old flute and got inside the ship. There was a fight between some girl in red jacket and two big guys...";
-			if (pchar.questTemp.LSC.Mary == "alive") link.l1.go = "mary_4"; // Мэри жива
+			if (pchar.questTemp.LSC.Mary == "alive") link.l1.go = "mary_4"; 
 			else link.l1.go = "mary_15";
 		break;
 		
@@ -720,7 +720,7 @@ void ProcessDialogEvent()
 			PlaySound("interface\important_item.wav");
 			TakeNItems(pchar, "gold_dublon", 50);
 			dialog.text = "Take this key. It opens every door on 'Tartarus'. Also, take these fifty doubloons. First you should go to Carolina, buy a password in order to access Rivados territory. Talk to Fazio, he is our mediator, a password will cost you fifty doubloons. Then you should go to Protector\nIt's a residence of Black Eddie. Tell him that Chad Kapper is on the side of Narwhals, stopped following my orders and going to murder Chimiset. Give him the key, tell him to take a decent number of his fighters and to attack Tartarus\nWe shall kill two birds with one stone: Rivados will consider us their allies and Kapper will die by the hands of Negros. Can't say I envy the man. Got it?";
-			if (pchar.questTemp.LSC.Mary == "alive")// Мэри жива
+			if (pchar.questTemp.LSC.Mary == "alive")
 			{
 				link.l1 = "I understand - but where to find Protector and Carolina?";
 				link.l1.go = "mary_12";
@@ -755,10 +755,10 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = "dodson_warwait";
 			AddQuestRecord("SharkHunt", "32");
 			sld = characterFromId("Eddy");
-			sld.dialog.currentnode = "capper"; // ноду Эдди
+			sld.dialog.currentnode = "capper"; 
 			sld = characterFromId("Facio");
 			sld.quest.parol = true;
-			pchar.questTemp.LSC = "mary_go"; //меняем флаг
+			pchar.questTemp.LSC = "mary_go"; 
 		break;
 		
 		case "dodson_warwait":
@@ -780,7 +780,7 @@ void ProcessDialogEvent()
 			link.l1.go = "mary_9";
 		break;
 		
-		// Каппер сбежал
+		
 		case "Chad_escape":
 			dialog.text = "Where have you been for so long? They told me that Rivados have already freed their wizard...";
 			link.l1 = "I was held as a hostage on Protector to ensure their safety from an ambush. They have freed Chimiset, yes, but Chad managed to escape.";
@@ -804,15 +804,15 @@ void ProcessDialogEvent()
 			DialogExit();
 			if (pchar.questTemp.LSC.Mary == "alive") 
 			{
-				pchar.questTemp.Saga.SharkHunt = "mary_whiskey"; // к Мэри
+				pchar.questTemp.Saga.SharkHunt = "mary_whiskey"; 
 				AddQuestRecord("SharkHunt", "34");
 			}
 			else
-			{ // не уберег Мэри - допетривай сам, куда идти
-				pchar.questTemp.Saga.SharkHunt = "trader_whiskey"; // флаг на магазин - поиск виски
+			{ 
+				pchar.questTemp.Saga.SharkHunt = "trader_whiskey"; 
 			}
 			NextDiag.CurrentNode = "Total_wait";
-			// добавим немного атмосферы - уберем Акселя до утра
+			
 			sld = characterFromId("Axel");
 			LAi_SetStayType(sld);
 			ChangeCharacterAddressGroup(sld, "EsmeraldaStoreBig", "goto", "goto5");
@@ -823,7 +823,7 @@ void ProcessDialogEvent()
 			LAi_SetOwnerType(sld);
 			ChangeCharacterAddressGroup(sld, "EsmeraldaStoreBig", "barmen", "stay");
 			LAi_group_MoveCharacter(sld, "LSC_NARVAL");
-			SetFunctionTimerCondition("LSC_AxelReturnStore", 0, 0, 1, false); // таймер на возврат Акселя
+			SetFunctionTimerCondition("LSC_AxelReturnStore", 0, 0, 1, false); 
 		break;
 		
 		case "whiskey":
@@ -864,8 +864,8 @@ void ProcessDialogEvent()
 		
 		case "whiskey_6":
 			DialogExit();
-			pchar.questTemp.LSC.Dodson_warning = "true"; // Акула предупрежден
-			LAi_CharacterDisableDialog(npchar);//запрещаем диалог
+			pchar.questTemp.LSC.Dodson_warning = "true"; 
+			LAi_CharacterDisableDialog(npchar);
 			AddQuestRecord("SharkHunt", "45");
 		break;
 		
@@ -895,14 +895,14 @@ void ProcessDialogEvent()
 		
 		case "whiskey_11":
 			DialogExit();
-			LAi_CharacterDisableDialog(npchar);//запрещаем диалог
-			chrDisableReloadToLocation = true;//закрыть локацию
+			LAi_CharacterDisableDialog(npchar);
+			chrDisableReloadToLocation = true;
 			sld = CharacterFromID("Facio");
 			LAi_CharacterEnableDialog(sld);
 		break;
 		
 		case "poison":
-			pchar.questTemp.LSC.Dodson_poison = "true"; // разговор состоялся
+			pchar.questTemp.LSC.Dodson_poison = "true"; 
 			dialog.text = "Argh... "+pchar.name+", friend, something is very wrong with me..";
 			link.l1 = "Steven! Did you drink the whiskey? Damn it, did you really drink it?!";
 			link.l1.go = "poison_1";
@@ -928,11 +928,11 @@ void ProcessDialogEvent()
 			}
 		break;
 		
-		case "dodson_poison": // Акула умирает
+		case "dodson_poison": 
 			DialogExit();
 			LAi_SetImmortal(npchar, false);
 			LAi_KillCharacter(npchar);
-			SetFunctionTimerCondition("LSC_SetDexterAdmiral", 0, 0, 1, false); // через день Декстера в адмиралы
+			SetFunctionTimerCondition("LSC_SetDexterAdmiral", 0, 0, 1, false); 
 			if (CheckAttribute(pchar, "questTemp.LSC.CapperDie_Aeva"))
 			{
 				AddQuestRecord("SharkHunt", "41");
@@ -942,7 +942,7 @@ void ProcessDialogEvent()
 				sld.quest.poisonnode = 1;
 			}
 			else AddQuestRecord("SharkHunt", "42");
-			pchar.questTemp.Saga.DodsonDie = "true"; // атрибут Саге что Акула погиб
+			pchar.questTemp.Saga.DodsonDie = "true"; 
 		break;
 		
 		case "poison_3":
@@ -982,7 +982,7 @@ void ProcessDialogEvent()
 			sld.dialog.currentnode = "whiskey";
 			sld.greeting = "facio_2";
 			sld.quest.poisonnode = 1;
-			LAi_CharacterDisableDialog(npchar);//запрещаем диалог
+			LAi_CharacterDisableDialog(npchar);
 			AddQuestRecord("SharkHunt", "40");
 		break;
 		
@@ -994,7 +994,7 @@ void ProcessDialogEvent()
 		
 		case "poison_8":
 			DialogExit();
-			LAi_CharacterDisableDialog(npchar);//запрещаем диалог
+			LAi_CharacterDisableDialog(npchar);
 			AddQuestRecord("SharkHunt", "43");
 		break;
 		
@@ -1054,7 +1054,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(pchar, "questTemp.LSC.Whiskey_clear");
 			if (CheckAttribute(pchar, "questTemp.LSC.CyclopDie"))
 			{
-				SetFunctionTimerCondition("LSC_WhiskeyStoryFinal_1", 0, 0, 1, false); // адмирал зовет
+				SetFunctionTimerCondition("LSC_WhiskeyStoryFinal_1", 0, 0, 1, false); 
 				DeleteAttribute(pchar, "questTemp.LSC.CyclopDie");
 			}
 		break;
@@ -1078,7 +1078,7 @@ void ProcessDialogEvent()
 			link.l1.go = "whyskey_final_2";
 		break;
 		
-		case "whyskey_final_2": // перекидываем ноду Декстеру
+		case "whyskey_final_2": 
 			DialogExit();
 			sld = characterFromId("Dexter");
 			sld.greeting = "";
@@ -1141,7 +1141,7 @@ void ProcessDialogEvent()
 		case "whyskey_final_11":
 			DialogExit();
 			sld = characterFromId("Grinspy");
-			sld.dialog.currentnode = "negotiations"; // ноду Гринспи
+			sld.dialog.currentnode = "negotiations"; 
 			sld = characterFromId("Dexter");
 			LAi_SetHuberType(sld);
 			LAi_SetHuberType(npchar);
@@ -1198,9 +1198,9 @@ void ProcessDialogEvent()
 			link.l1 = "Thanks!";
 			link.l1.go = "LSC_navy";
 			AddQuestRecord("SharkHunt", "57");
-			pchar.questTemp.Saga.SharkHunt = "find"; //флаг - покушение предотвращено
+			pchar.questTemp.Saga.SharkHunt = "find"; 
 			sld = characterFromId("Grinspy");
-			sld.dialog.currentnode = "negotiations_17"; // ноду Дональду Гринспи
+			sld.dialog.currentnode = "negotiations_17"; 
 			AddSimpleRumourCityTip("They say that admiral respects you, mister...", "LostShipsCity", 15, 2, "LSC", "");
 			AddSimpleRumourCityTip("They say that you are the admiral's loyal friend. Is that true?", "LostShipsCity", 15, 2, "LSC", "");
 		break;
@@ -1218,7 +1218,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Dodson_wait";
 			AddQuestRecord("LSC", "5");
-			// убираем квестовые предметы
+			
 			sld = ItemsFromID("key_capper");
 			sld.price = 10;
 			if (CheckCharacterItem(pchar, "letter_chad")) RemoveItems(pchar, "letter_chad", 1);
@@ -1231,7 +1231,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Dodson_wait";
 		break;
 		
-		// --> информационный блок
+		
 		case "Total_wait":
 			dialog.text = "Well, what have you got, "+pchar.name+"? Got any interesting news?";
 			
@@ -1288,7 +1288,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Total_wait";
 			ref location = &Locations[FindLocation(pchar.location)];
 			DeleteAttribute(location, "private1.key");
-			for (i=1; i<=10; i++) // можно лезть в сундук
+			for (i=1; i<=10; i++) 
 			{
 				sld = characterFromId("SharkSoldInside_"+i);
 				DeleteAttribute(sld, "watchBoxes");
@@ -1380,13 +1380,13 @@ void ProcessDialogEvent()
 			if (CheckAttribute(pchar, "questTemp.LSC.Mary") && pchar.questTemp.LSC.Mary == "alive")
 			{
 				sld = characterFromId("Schmidt");
-				sld.quest.narval_blade = "begin"; // возможность сделать 'Нарвал' для Мэри
+				sld.quest.narval_blade = "begin"; 
 			}
 		break;
-		// <-- информационный блок
+		
 		
 		case "return":
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			dialog.text = "Ha, I saw your sails on the horizon, "+pchar.name+". Glad to see you, friend! How was the trip?";
 			link.l1 = "It was fine.";
 			link.l1.go = "return_1";
@@ -1427,14 +1427,14 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "houseS1", "none", "", "", "OpenTheDoors", -1);
 			sld = ItemsFromID("LSC_navigation_map");
-			sld.price = 1000; // лоцию можно выкладывать 270912
+			sld.price = 1000; 
 			sld = ItemsFromID("keys_skel");
-			sld.price = 3000; // отмычки можно выкладывать 270912 
-			pchar.questTemp.LSC.Dios = "true"; // можно отдать лоцию Диосу
-			CloseQuestHeader("LSC"); // 280313
+			sld.price = 3000; 
+			pchar.questTemp.LSC.Dios = "true"; 
+			CloseQuestHeader("LSC"); 
 		break;
 		
-		// Тени прошлого
+		
 		case "shadows":
 			dialog.text = "Sure, I'll do what I can! Go on.";
 			link.l1 = "Steve, take a look... A shark's tooth. Don't you tell me that it's unfamiliar to you!";
@@ -1470,7 +1470,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			SetLaunchFrameFormParam("One hour later...", "Saga_FinalLedbitterStory", 0, 4);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 1, 10); //крутим время
+			WaitDate("", 0, 0, 0, 1, 10); 
 			RecalculateJumpTable();
 		break;
 		
@@ -1494,7 +1494,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "shadows_9":
-			dialog.text = "ТJan Svensson. Wood Devil will never admit it, but he had plans about Jessica. That was the time when he had already taken Western Main for himself and his fame was something to envy for, so the tigress was as good as him\nAfter Butcher got rid of Jess, Jan started to visit Barbados suspiciously often giving a shake to English garrison. As you know, Jessica was a daughter of Bridgetown's planter\nAll in all, his plans were well known in private circles, yet no one dared to speak one's mind about it, Jan may sit on his backsides in Blueweld now days, but back then any wrong word in his address could result badly\nIn the end, it didn't work out for them. Jess couldn't live with the way Butcher treated her and she had her revenge a year later with a help of the Mask. This vengeance ended terrible for everyone: for Butcher, for Beatrice, for the Mask and for herself. They all died.";
+			dialog.text = "пїЅJan Svensson. Wood Devil will never admit it, but he had plans about Jessica. That was the time when he had already taken Western Main for himself and his fame was something to envy for, so the tigress was as good as him\nAfter Butcher got rid of Jess, Jan started to visit Barbados suspiciously often giving a shake to English garrison. As you know, Jessica was a daughter of Bridgetown's planter\nAll in all, his plans were well known in private circles, yet no one dared to speak one's mind about it, Jan may sit on his backsides in Blueweld now days, but back then any wrong word in his address could result badly\nIn the end, it didn't work out for them. Jess couldn't live with the way Butcher treated her and she had her revenge a year later with a help of the Mask. This vengeance ended terrible for everyone: for Butcher, for Beatrice, for the Mask and for herself. They all died.";
 			link.l1 = "Not all of them. Butcher is still alive.";
 			link.l1.go = "shadows_10";
 		break;
@@ -1555,21 +1555,21 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = "First time";
 			sld = characterFromId("Svenson");
 			sld.quest.jessika = "true";
-			// рифы доступны для посещения
+			
 			i = FindIsland("RockIsland");
 			Islands[i].visible = true;
 			Islands[i].reload_enable = true;
-			// для любителей самостоятельно добавлять локаторы
-			LAi_LocationDisableOfficersGen("Shore67", true);//офицеров не пускать
-			// и сразу прерывание
+			
+			LAi_LocationDisableOfficersGen("Shore67", true);
+			
 			pchar.quest.Saga_Jess_Island.win_condition.l1 = "location";
 			pchar.quest.Saga_Jess_Island.win_condition.l1.location = "Shore67";
 			pchar.quest.Saga_Jess_Island.function = "Saga_JessikaIsland"; 
-			// активируем квест хронометра Алекса
-			pchar.questTemp.AlexClock = "dodson"; // 280912
+			
+			pchar.questTemp.AlexClock = "dodson"; 
 		break;
 		
-		// суп из черепахи
+		
 		case "terrapin":
 			dialog.text = "You could say that. Now, Tortuga\nThe island was named like this because it looks almost like a turtle. Levasseur had been thickening turtle's shell for twelve years - fort La Roche. A frontal attack is suicidal, fort's heavy cannons will leave no chance. So, cooking a soup of this beauty won't be easy. Spanish have been trying for a very long time and they never succeeded.";
 			link.l1 = "That is why I went to Svensson. So what is your plan? Come on, Steven!";
@@ -1617,10 +1617,10 @@ void ProcessDialogEvent()
 			AddQuestRecord("Terrapin", "1");
 			pchar.questTemp.Terrapin = "baster";
 			pchar.questTemp.Terrapin.SJ_count = 0;
-			// прячем Фокса
+			
 			sld = characterFromId("Fox");	
 			ChangeCharacterAddressGroup(sld, "none", "", "");
-			// садим в таверну Робера Мартэна
+			
 			float fMft = MOD_SKILL_ENEMY_RATE/10;
 			sld = GetCharacter(NPC_GenerateCharacter("Rober", "Marten", "man", "man", 30, FRANCE, -1, true, "quest"));
 			FantomMakeCoolSailor(sld, SHIP_GALEON_L, "Voltigeur", CANNON_TYPE_CANNON_LBS20, 90, 90, 90);
@@ -1660,13 +1660,13 @@ void ProcessDialogEvent()
 			SetCharacterPerk(sld, "SailsMan");
 			SetCharacterPerk(sld, "Doctor1");
 			SetCharacterPerk(sld, "Doctor2");
-			sld.MultiFighter = 1.0+fMft; // мультифайтер
+			sld.MultiFighter = 1.0+fMft; 
 			LAi_SetSitType(sld);
-			UpgradeShipParameter(sld, "SpeedRate");//апгрейдить скорость
-			UpgradeShipParameter(sld, "TurnRate");//маневренность
+			UpgradeShipParameter(sld, "SpeedRate");
+			UpgradeShipParameter(sld, "TurnRate");
 			FreeSitLocator("Baster_tavern", "sit1");
 			ChangeCharacterAddressGroup(sld, "Baster_tavern", "sit", "sit1");
-			SetFunctionTimerCondition("Terrapin_LateBaster", 0, 0, 10, false); // таймер
+			SetFunctionTimerCondition("Terrapin_LateBaster", 0, 0, 10, false); 
 		break;
 		
 		case "terrapin_8":
@@ -1727,7 +1727,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			AddQuestRecord("Terrapin", "7");
 			pchar.questTemp.Terrapin = "tortuga1";
-			pchar.questTemp.Terrapin.Room_close = "true": // не пускать в комнату таверны
+			pchar.questTemp.Terrapin.Room_close = "true": 
 		break;
 		
 		case "guardoftruth":
@@ -1800,7 +1800,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			AddQuestRecord("Guardoftruth", "60");
 			pchar.questTemp.Guardoftruth.Archy = "guadeloupe";
-			// маленькая развлекуха
+			
 			pchar.quest.GuardOT_cabinattack.win_condition.l1 = "EnterToSea";
 			pchar.quest.GuardOT_cabinattack.function = "GuardOT_PrepareCreateBandosInCabin";
 		break;
@@ -1841,7 +1841,7 @@ void ProcessDialogEvent()
 			npchar.quest.tieyasal = "true";
 		break;
 		
-		// Jason НСО
+		
 		case "patria":
 			dialog.text = "Ho-ho! You've come to the right place! Spit it out!";
 			link.l1 = "There is a fella that has no fear of pirates. He doesn't take them seriously. He needs to be taught a lesson om respect. Remember, don't kill him.";
@@ -1937,7 +1937,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "patria_15":
-			pchar.quest.Patria_CondotierTerksOver.over = "yes"; //снять таймер
+			pchar.quest.Patria_CondotierTerksOver.over = "yes"; 
 			dialog.text = "Hey, frog! Halt!";
 			link.l1 = "I'm not moving";
 			link.l1.go = "patria_16";
@@ -1996,14 +1996,14 @@ void ProcessDialogEvent()
 			LAi_ActorRunToLocation(sld, "reload", "reload1", "none", "", "", "", 8.0);
 			pchar.questTemp.Patria = "epizode_12_baronalive";
 			pchar.questTemp.Patria.DodsonAgain = "true";
-			Island_SetReloadEnableGlobal("Bermudes", false); // закрыть остров до отвоза барона
+			Island_SetReloadEnableGlobal("Bermudes", false); 
 			sld = CharacterFromID("Noel");
-			AddPassenger(pchar, sld, false);//добавить пассажира
+			AddPassenger(pchar, sld, false);
 			SetCharacterRemovable(sld, false);
 			pchar.quest.Patria_Condotier_toPuancie.win_condition.l1 = "location";
 			pchar.quest.Patria_Condotier_toPuancie.win_condition.l1.location = "Charles_town";
 			pchar.quest.Patria_Condotier_toPuancie.function = "Patria_CondotierEnCapstervil";
-			// Теркс в норму
+			
 			LAi_LocationFightDisable(&Locations[FindLocation("Shore56")], false);
 			LAi_LocationDisableOfficersGen("Shore56", false);
 		break;
@@ -2055,7 +2055,7 @@ void ProcessDialogEvent()
 			LAi_SetActorType(sld);
 			LAi_ActorRunToLocation(sld, "reload", "reload1", "none", "", "", "", 8.0);
 			pchar.questTemp.Patria = "epizode_12_barondie";
-			// Теркс в норму
+			
 			LAi_LocationFightDisable(&Locations[FindLocation("Shore56")], false);
 			LAi_LocationDisableOfficersGen("Shore56", false);
 		break;

@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -15,7 +15,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                 link.l1 = "Listen, I hear, you've got a privateer by the name of Francois Gontier in your town. Would you happen to know where to find him?";
                 link.l1.go = "Panama_rat_1";
             }
-			// Addon-2016 Jason ”ЊЉ-ѓваделупа
+			
 			if (CheckAttribute(pchar, "questTemp.FMQG") && pchar.questTemp.FMQG == "headhunter_panama")
             {
                 link.l1 = "Look, I am in a search of a man named Bertrand Pinette, have you heard of him? He arrived to Panama not long ago. An imposing gentleman in a curving wig. He might had been here...";
@@ -23,7 +23,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             }
 		break;
 
-		//-->работорговец
+		
 		case "Panama_rat_1":
 			dialog.text = NPCStringReactionRepeat("Yes, we've had a fellow like that in town. He was hiding around dark places...Then some of his buddies came and paid him a visit, looking like a bunch of cutthroats and he left the town with them.", "You've already asked about that and I've answered you.", "I told you, you've already asked about that Gontier.", "Listen, walk away and quit bothering me! Have you completely lost your noggin?", "block", 0, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat("And where did he go, do you know?", "Hm, I guess so...", "Yes, right, I've asked that...", "Sorry, " + npchar.name + "...", npchar, Dialog.CurrentNode);
@@ -31,15 +31,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "Panama_rat_2":
-			dialog.text = "Well, there only one way out of here by foot –to Porto Bello. And he did go by foot. So look for him there.";
+			dialog.text = "Well, there only one way out of here by foot пїЅto Porto Bello. And he did go by foot. So look for him there.";
 			link.l1 = "Thanks, you've been a ton of help!";
 			link.l1.go = "exit";
 			pchar.questTemp.Slavetrader = "FindRatPortobello";
 			AddQuestRecord("Slavetrader", "21_1");
 		break;
-		//<--работорговец
 		
-		// Addon-2016 Jason ”ЊЉ-ѓваделупа
+		
+		
 		case "FMQG":
 			dialog.text = "Bertrand Pinette? French? Never heard of him. No pal, we haven't seen French folk around in a while.";
 			link.l1 = "What a shame... You sure? He is a friend of one important hidalgo named don Carlos de Milyar. They were supposed to arrive here together.";
@@ -58,6 +58,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddQuestRecord("FMQ_Guadeloupe", "8");
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

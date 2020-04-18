@@ -1,4 +1,4 @@
-/////  boal этот файлик рудиент от свободного плавания кэпов. Нужно реанимить
+
 int g_nCompanionTaskQuantity = 0;
 object g_objCompanionTask[4];
 int g_nTaskCheckRetResult;
@@ -7,10 +7,10 @@ int g_nTaskCheckRetResult;
 #event_handler( "evCompanionTaskFault", "procCompanionTaskFault" );
 #event_handler( "evCheckBattleResult", "procCheckCompanionBattleResult" );
 
-//========================================
-// nTaskType : 1 - блокирование колонии
-// nTaskType : 2 - охота на корабли
-//========================================
+
+
+
+
 void BackgroundTask_SetTask( int char_index, int task_period, int difficult, int nTaskType, string sColony )
 {
 	if( g_nCompanionTaskQuantity >= 4 )
@@ -65,27 +65,27 @@ ref procCheckCompanionBattleResult()
 	int nChrIndex = GetEventData();
 	ref chref = &characters[nChrIndex];
 	int nTask = FindCompanionBackTask( nChrIndex );
-	if( nTask < 0 ) // нет такой задачи
+	if( nTask < 0 ) 
 		return &g_nTaskCheckRetResult;
 	int nDifficult = sti( g_objCompanionTask[nTask] );
 
 	int nDice = rand(100);
-	int nCheck = 50; // стандартная проверка на исход битвы: 50/50
-	//============================================================
-	// модификаторы успеха/поражения
-	//============================================================
-		// сложность
+	int nCheck = 50; 
+	
+	
+	
+		
 	if( nDifficult == 1 )
 	{
-		nCheck = nCheck * 60 / 100; // 60% от нормальной
+		nCheck = nCheck * 60 / 100; 
 	}
 	if( nDifficult == 3 )
 	{
-		nCheck = nCheck * 120 / 100; // 120% от нормальной
+		nCheck = nCheck * 120 / 100; 
 	}
-		// удача капитана
+		
 	nDice = nDice + sti( chref.skill.Sneak ) * 2;
-		// умение капитана
+		
 	nDice = nDice + BackgroundTask_SkillModificator( sti( chref.skill.Leadership ), 5 );
 	nDice = nDice + BackgroundTask_SkillModificator( sti( chref.skill.Sailing ), 3 );
 	nDice = nDice + BackgroundTask_SkillModificator( sti( chref.skill.Defence ), 4 );
@@ -93,15 +93,15 @@ ref procCheckCompanionBattleResult()
 	nDice = nDice + BackgroundTask_SkillModificator( sti( chref.skill.Accuracy ), 3 );
 	nDice = nDice + BackgroundTask_SkillModificator( sti( chref.skill.Cannons ), 2 );
 
-	//============================================================
-	// собственно проверка
-	//============================================================
-	if( nDice >= nCheck ) // проверка прошла успешно
+	
+	
+	
+	if( nDice >= nCheck ) 
 	{
 		g_nTaskCheckRetResult = true;
-		if( sti(g_objCompanionTask[nTask].nTaskType) == 1 ) // блокирование колоний
+		if( sti(g_objCompanionTask[nTask].nTaskType) == 1 ) 
 			BackgroundTaskMakeColonyWeaken( nChrIndex, nDifficult );
-		else // охота
+		else 
 			BackgroundTaskAddLoot( nChrIndex, nDifficult );
 		BackgroundTaskAddDamage( nChrIndex, nDifficult );
 		BackgroundTask_CheckReturn( nChrIndex, nTask );
@@ -109,10 +109,10 @@ ref procCheckCompanionBattleResult()
 	else
 	{
 		g_nTaskCheckRetResult = false;
-		// попытка убежать (для сложности 1)
+		
 		if( nDifficult == 1 )
 		{
-			if( rand(1) == 0 ) // убежали
+			if( rand(1) == 0 ) 
 			{
 				g_nTaskCheckRetResult = true;
 				BackgroundTaskAddDamage( nChrIndex, nDifficult );
@@ -128,14 +128,14 @@ void BackgroundTask_CheckReturn( int nChrIndex, int nTaskIndex )
 {
 	bool bReturnStatus = false;
 
-	// check HP
+	
 	int nCurShipHP = GetCurrentShipHP( &Characters[nChrIndex] );
 	int nMaxShipHP = GetCharacterShipHP( &Characters[nChrIndex] );
 	int nDamageProcent = nCurShipHP * 100 / nMaxShipHP;
 	if( nDamageProcent < 30 )
 		bReturnStatus = true;
 
-	// check shiphold
+	
 	int nCargoFreeSpace = GetCargoFreeSpace( &Characters[nChrIndex] );
 	if( nCargoFreeSpace < 3 )
 		bReturnStatus = true;
@@ -151,12 +151,12 @@ int BackgroundTask_SkillModificator( int nSkillValue, int nSkillInfluence )
 	int nRetVal = 0;
 
 	if( nSkillValue < 5 )
-	{ // отрицательное влияние (уменьшает бросок)
+	{ 
 		nRetVal = nSkillInfluence * (nSkillValue - 5) / 4;
 	}
 
 	if( nSkillValue > 5 )
-	{ // положительное влияние (увеличивает бросок)
+	{ 
 		nRetVal = nSkillInfluence * (nSkillValue - 5) / 5;
 	}
 
@@ -174,11 +174,11 @@ void BackgroundTaskAddLoot( int nCharIndex, int nDifficult )
 		nMax = GetGoodQuantityByWeight( n, nFreeSpace );
 		nCur = rand( nMax );
 		if( nDifficult == 2 )
-		{ // половина товара
+		{ 
 			nCur = nCur / 2;
 		}
 		if( nDifficult == 1 )
-		{ // четверть товара
+		{ 
 			nCur = nCur / 4;
 		}
 		nQnt = GetCargoGoods( chref, n ) + nCur;
@@ -200,7 +200,7 @@ void BackgroundTaskAddDamage( int nCharIndex, int nDifficult )
 	case 2: nMaxDamageProcent=75; break;
 	case 3: nMaxDamageProcent=90; break;
 	}
-	// максимальное повреждение не больше имеющегося HP
+	
 	int nHP = GetCurrentShipHP( &Characters[nCharIndex] );
 	nHP = nHP - nHP * nMaxDamageProcent / 100;
 	Characters[nCharIndex].ship.hp = nHP;
@@ -249,3 +249,4 @@ void RemoveCompanionBackTask( int nChrIndex )
 		}
 	}
 }
+

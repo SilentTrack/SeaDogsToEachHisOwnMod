@@ -9,7 +9,7 @@ void NetFileSend_SendData()
 
 	int iSMsg = NMCreate();
 
-	if (wNetClientID < 0)	// send 2 server
+	if (wNetClientID < 0)	
 	{
 		NMAddClientID(iSMsg, wClientID);
 	}
@@ -57,8 +57,9 @@ void NetFileRecv_Done()
 	int iEventID = GetEventData();
 	int iEventSubID = GetEventData();
 
-	if (wNetClientID < 0)	// client recv
+	if (wNetClientID < 0)	
 	{
 		NetClient_OnFileDone(iEventID, iEventSubID);
 	}
 }
+

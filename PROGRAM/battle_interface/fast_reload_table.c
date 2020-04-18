@@ -35,27 +35,27 @@ void initFastReloadTable()
 	aref curTable;
 
 	makearef(curTable,objFastReloadTable.table.SentJons);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "SentJons_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "SentJons_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "SentJons_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "SentJons_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "SentJons_bank";
-	//church
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "SentJons_church";
@@ -69,31 +69,31 @@ void initFastReloadTable()
 	curTable.l8.location = "SentJons_prison";
 
 	makearef(curTable,objFastReloadTable.table.Bridgetown);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "Bridgetown_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "Bridgetown_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "Bridgetown_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "Bridgetown_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "Bridgetown_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "Bridgetown_church";
-	// brothel
+	
 	curTable.l7.pic = FRP_BROTHEL;
 	curTable.l7.tex = FRT_BROTHEL;
 	curTable.l7.location = "Bridgetown_brothel";
@@ -107,31 +107,31 @@ void initFastReloadTable()
 	curTable.l9.location = "Bridgetown_prison";
 
 	makearef(curTable,objFastReloadTable.table.PortRoyal);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "PortRoyal_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "PortRoyal_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "PortRoyal_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "PortRoyal_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "PortRoyal_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "PortRoyal_church";
-	// brothel
+	
 	curTable.l7.pic = FRP_BROTHEL;
 	curTable.l7.tex = FRT_BROTHEL;
 	curTable.l7.location = "PortRoyal_brothel";
@@ -145,59 +145,59 @@ void initFastReloadTable()
 	curTable.l9.location = "PortRoyal_prison";
 
 	makearef(curTable,objFastReloadTable.table.FortOrange);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "FortOrange_store";
-	// tavern
+	
 	curTable.l2.pic = FRP_TAVERN;
 	curTable.l2.tex = FRT_TAVERN;
 	curTable.l2.location = "FortOrange_tavern";
-	// residence
+	
 	curTable.l3.pic = FRP_RESIDENCE;
 	curTable.l3.tex = FRT_RESIDENCE;
 	curTable.l3.location = "FortOrange_townhall";
 
 	makearef(curTable,objFastReloadTable.table.Pirates);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "Pirates_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "Pirates_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "Pirates_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "Pirates_townhall";
 
 	makearef(curTable,objFastReloadTable.table.Villemstad);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "Villemstad_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "Villemstad_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "Villemstad_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "Villemstad_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "Villemstad_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "Villemstad_church";
@@ -211,27 +211,27 @@ void initFastReloadTable()
 	curTable.l8.location = "Villemstad_prison";
 
 	makearef(curTable,objFastReloadTable.table.BasTer);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "BasTer_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "BasTer_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "BasTer_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "BasTer_townhall";
-	// church
+	
 	curTable.l5.pic = FRP_CHURCH;
 	curTable.l5.tex = FRT_CHURCH;
 	curTable.l5.location = "BasTer_church";
-	// usurer
+	
 	curTable.l6.pic = FRP_USURER;
 	curTable.l6.tex = FRT_USURER;
 	curTable.l6.location = "BasTer_bank";
@@ -245,27 +245,27 @@ void initFastReloadTable()
 	curTable.l8.location = "BasTer_prison";
 
 	makearef(curTable,objFastReloadTable.table.Santiago);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "Santiago_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "Santiago_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "Santiago_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "Santiago_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "Santiago_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "Santiago_church";
@@ -279,59 +279,59 @@ void initFastReloadTable()
 	curTable.l8.location = "Santiago_prison";
 
  	makearef(curTable,objFastReloadTable.table.PuertoPrincipe);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "PuertoPrincipe_store";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "PuertoPrincipe_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "PuertoPrincipe_townhall";
 
 	makearef(curTable,objFastReloadTable.table.LaVega);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "LaVega_store";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "LaVega_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "LaVega_townhall";
 
 	makearef(curTable,objFastReloadTable.table.FortFrance);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "FortFrance_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "FortFrance_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "FortFrance_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "FortFrance_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "FortFrance_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "FortFrance_church";
-	// brothel
+	
 	curTable.l7.pic = FRP_BROTHEL;
 	curTable.l7.tex = FRT_BROTHEL;
 	curTable.l7.location = "FortFrance_brothel";
@@ -345,41 +345,41 @@ void initFastReloadTable()
 	curTable.l9.location = "FortFrance_prison";
 
 	makearef(curTable,objFastReloadTable.table.LeFransua);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "LeFransua_store";
-	// tavern
+	
 	curTable.l2.pic = FRP_TAVERN;
 	curTable.l2.tex = FRT_TAVERN;
 	curTable.l2.location = "LeFransua_tavern";
-	// residence
+	
 	curTable.l3.pic = FRP_RESIDENCE;
 	curTable.l3.tex = FRT_RESIDENCE;
 	curTable.l3.location = "LeFransua_townhall";
 
 	makearef(curTable,objFastReloadTable.table.Havana);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "Havana_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "Havana_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "Havana_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "Havana_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "Havana_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "Havana_church";
@@ -393,31 +393,31 @@ void initFastReloadTable()
 	curTable.l8.location = "Havana_prison";
 	
 	makearef(curTable,objFastReloadTable.table.Charles);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "Charles_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "Charles_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "Charles_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "Charles_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "Charles_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "Charles_church";
-	// brothel
+	
 	curTable.l7.pic = FRP_BROTHEL;
 	curTable.l7.tex = FRT_BROTHEL;
 	curTable.l7.location = "Charles_brothel";
@@ -431,27 +431,27 @@ void initFastReloadTable()
 	curTable.l9.location = "Charles_prison";
 
 	makearef(curTable,objFastReloadTable.table.PortPax);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "PortPax_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "PortPax_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "PortPax_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "PortPax_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "PortPax_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "PortPax_church";
@@ -465,27 +465,27 @@ void initFastReloadTable()
 	curTable.l8.location = "PortPax_prison";
 
 	makearef(curTable,objFastReloadTable.table.SanJuan);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "SanJuan_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "SanJuan_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "SanJuan_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "SanJuan_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "SanJuan_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "SanJuan_church";
@@ -499,31 +499,31 @@ void initFastReloadTable()
 	curTable.l8.location = "SanJuan_prison";
 
 	makearef(curTable,objFastReloadTable.table.SantoDomingo);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "SantoDomingo_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "SantoDomingo_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "SantoDomingo_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "SantoDomingo_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "SantoDomingo_Bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "SantoDomingo_church";
-	// brothel
+	
 	curTable.l7.pic = FRP_BROTHEL;
 	curTable.l7.tex = FRT_BROTHEL;
 	curTable.l7.location = "SantoDomingo_brothel";
@@ -537,27 +537,27 @@ void initFastReloadTable()
 	curTable.l9.location = "SantoDomingo_prison";
 
 	makearef(curTable,objFastReloadTable.table.PortSpein);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "PortSpein_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "PortSpein_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "PortSpein_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "PortSpein_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "PortSpein_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "PortSpein_church";
@@ -571,31 +571,31 @@ void initFastReloadTable()
 	curTable.l8.location = "PortSpein_prison";
 
 	makearef(curTable,objFastReloadTable.table.Marigo);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "Marigo_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "Marigo_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "Marigo_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "Marigo_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "Marigo_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "Marigo_church";
-	// brothel
+	
 	curTable.l7.pic = FRP_BROTHEL;
 	curTable.l7.tex = FRT_BROTHEL;
 	curTable.l7.location = "Marigo_brothel";
@@ -609,31 +609,31 @@ void initFastReloadTable()
 	curTable.l9.location = "Marigo_prison";
 
 	makearef(curTable,objFastReloadTable.table.Tortuga);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "Tortuga_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "Tortuga_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "Tortuga_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "Tortuga_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "Tortuga_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "Tortuga_church";
-	// brothel
+	
 	curTable.l7.pic = FRP_BROTHEL;
 	curTable.l7.tex = FRT_BROTHEL;
 	curTable.l7.location = "Tortuga_brothel";
@@ -647,31 +647,31 @@ void initFastReloadTable()
 	curTable.l9.location = "Tortuga_prison";
 
 	makearef(curTable,objFastReloadTable.table.Panama);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "Panama_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "Panama_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "Panama_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "Panama_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "Panama_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "Panama_church";
-	// brothel
+	
 	curTable.l7.pic = FRP_BROTHEL;
 	curTable.l7.tex = FRT_BROTHEL;
 	curTable.l7.location = "Panama_brothel";
@@ -685,27 +685,27 @@ void initFastReloadTable()
 	curTable.l9.location = "Panama_prison";
 
 	makearef(curTable,objFastReloadTable.table.PortoBello);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "PortoBello_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "PortoBello_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "PortoBello_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "PortoBello_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "PortoBello_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "PortoBello_church";
@@ -719,27 +719,27 @@ void initFastReloadTable()
 	curTable.l8.location = "PortoBello_prison";
 	
 	makearef(curTable,objFastReloadTable.table.Cartahena);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "Cartahena_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "Cartahena_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "Cartahena_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "Cartahena_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "Cartahena_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "Cartahena_church";
@@ -753,27 +753,27 @@ void initFastReloadTable()
 	curTable.l8.location = "Cartahena_prison";
 
 	makearef(curTable,objFastReloadTable.table.Maracaibo);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "Maracaibo_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "Maracaibo_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "Maracaibo_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "Maracaibo_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "Maracaibo_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "Maracaibo_church";
@@ -787,27 +787,27 @@ void initFastReloadTable()
 	curTable.l8.location = "Maracaibo_prison";
 	
 	makearef(curTable,objFastReloadTable.table.Caracas);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "Caracas_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "Caracas_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "Caracas_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "Caracas_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "Caracas_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "Caracas_church";
@@ -821,27 +821,27 @@ void initFastReloadTable()
 	curTable.l8.location = "Caracas_prison";
 
 	makearef(curTable,objFastReloadTable.table.Cumana);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "Cumana_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "Cumana_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "Cumana_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "Cumana_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "Cumana_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "Cumana_church";
@@ -855,27 +855,27 @@ void initFastReloadTable()
 	curTable.l8.location = "Cumana_prison";
 
 	makearef(curTable,objFastReloadTable.table.SantaCatalina);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "SantaCatalina_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "SantaCatalina_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "SantaCatalina_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "SantaCatalina_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "SantaCatalina_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "SantaCatalina_church";
@@ -889,27 +889,27 @@ void initFastReloadTable()
 	curTable.l8.location = "SantaCatalina_prison";
 	
 	makearef(curTable,objFastReloadTable.table.Beliz);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "Beliz_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "Beliz_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "Beliz_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "Beliz_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "Beliz_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "Beliz_church";
@@ -923,27 +923,27 @@ void initFastReloadTable()
 	curTable.l8.location = "Beliz_prison";
 
 	makearef(curTable,objFastReloadTable.table.SanAndres);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "SanAndres_store";
-	// shipyard
+	
 	curTable.l2.pic = FRP_SHIPYARD;
 	curTable.l2.tex = FRT_SHIPYARD;
 	curTable.l2.location = "SanAndres_shipyard";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "SanAndres_tavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "SanAndres_townhall";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "SanAndres_bank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "SanAndres_church";
@@ -957,23 +957,23 @@ void initFastReloadTable()
 	curTable.l8.location = "SanAndres_prison";
 	
 	makearef(curTable,objFastReloadTable.table.LostShipsCity);
-	// store
+	
 	curTable.l1.pic = FRP_STORE;
 	curTable.l1.tex = FRT_STORE;
 	curTable.l1.location = "EsmeraldaStoreBig";
-	// tavern
+	
 	curTable.l3.pic = FRP_TAVERN;
 	curTable.l3.tex = FRT_TAVERN;
 	curTable.l3.location = "FleuronTavern";
-	// residence
+	
 	curTable.l4.pic = FRP_RESIDENCE;
 	curTable.l4.tex = FRT_RESIDENCE;
 	curTable.l4.location = "SanAugustineResidence";
-	// usurer
+	
 	curTable.l5.pic = FRP_USURER;
 	curTable.l5.tex = FRT_USURER;
 	curTable.l5.location = "CarolineBank";
-	// chucrh
+	
 	curTable.l6.pic = FRP_CHURCH;
 	curTable.l6.tex = FRT_CHURCH;
 	curTable.l6.location = "GloriaChurch";
@@ -981,7 +981,7 @@ void initFastReloadTable()
 
 void InitTownTable()
 {
-	//loc.townsack
+	
 	objTownStateTable.towns.t1.name = "SentJons";
 	objTownStateTable.towns.t1.captured = false;
 	objTownStateTable.towns.t1.crew.quantity = 200 + Rand(300);

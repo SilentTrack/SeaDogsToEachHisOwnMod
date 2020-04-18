@@ -1,4 +1,4 @@
-// Джино Гвинейли - алхимик
+
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -13,7 +13,7 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			// --> Страж истины
+			
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "jino1")
 			{
 				dialog.text = "Oh! Good day, sir. How did you get here?";
@@ -31,7 +31,7 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				// --> Страж истины
+				
 				if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "threeitems")
 				{
 					dialog.text = "Hello, " + pchar.name + ". Your face tells me that you have found something important. Have you found all components of the Guardian of Truth?";
@@ -46,7 +46,7 @@ void ProcessDialogEvent()
 					link.l1.go = "guardoftruth";
 					break;
 				}
-				// Ксочитэм
+				
 				if (CheckAttribute(pchar, "questTemp.Ksochitam") && pchar.questTemp.Ksochitam == "begin")
 				{
 					dialog.text = TimeGreeting()+", "+pchar.name+". Yes, I remember, two days has passed and you want to know about the Guardian of Truth, am I right?";
@@ -54,7 +54,7 @@ void ProcessDialogEvent()
 					link.l1.go = "ksochitam";
 					break;
 				}
-				//--> Португалец
+				
 				if (CheckAttribute(pchar, "questTemp.Portugal.Nomoney"))
 				{
 					dialog.text = "Have you brought 5 000 pesos, " + pchar.name + "?";
@@ -126,7 +126,7 @@ void ProcessDialogEvent()
 						pchar.quest.Portugal_Ill1.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 1);
 						pchar.quest.Portugal_Ill1.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 1);
 						pchar.quest.Portugal_Ill1.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
-						pchar.quest.Portugal_Ill1.function = "Portugal_ToAntiguaOver";//не принесет через 1 день - Португальцу капут
+						pchar.quest.Portugal_Ill1.function = "Portugal_ToAntiguaOver";
 					}
 					break;
 				}
@@ -153,7 +153,7 @@ void ProcessDialogEvent()
 					else link.l1.go = "Portugal_threedays";
 					break;
 				}
-				// <--Португалец
+				
 				dialog.text = "Good day, captain. How are you doing? Need my help?";
 				if (!CheckAttribute(npchar, "quest.rome"))
 				{
@@ -180,7 +180,7 @@ void ProcessDialogEvent()
 					link.l2 = "What about charges for the pistol? Got any ideas already?";
 					link.l2.go = "cartridge";
 				}
-				// Addon 2016-1 Jason Пиратская линейка
+				
 				if (CheckAttribute(pchar, "questTemp.Mtraxx.Gord"))
 				{
 					link.l3 = "Gino I've found an unknown word 'gord' in one captain's log. Do you know what it means?";
@@ -193,7 +193,7 @@ void ProcessDialogEvent()
 		break;
 
 		case "meeting":
-			pchar.questTemp.HWIC.Jino = "true"; // Addon 2016-1 Jason Пиратская линейка
+			pchar.questTemp.HWIC.Jino = "true"; 
 			dialog.text = "My name is Gino. Gino Gvineili. I am a scientist. My job is to make powders, mixtures and other medicines for mister Murdock. But since he is gone...";
 			link.l1 = "Well, I am "+GetFullName(pchar)+". A captain of my own ship. So, you are an alchemist then?";
 			link.l1.go = "meeting_1";
@@ -212,7 +212,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "meeting_3":
-			dialog.text = "I do go outside when I need to buy some ingredients or herbs for my experiments. I like living alone, that is my way. I have dedicated my life to the science and find no interest in ordinary life. Books, writings, test tubes, retorts…\nMister Murdock gave me such opportunity in exchange of helping him to make drugs.";
+			dialog.text = "I do go outside when I need to buy some ingredients or herbs for my experiments. I like living alone, that is my way. I have dedicated my life to the science and find no interest in ordinary life. Books, writings, test tubes, retortsпїЅ\nMister Murdock gave me such opportunity in exchange of helping him to make drugs.";
 			link.l1 = "Now you will have even more time, Gino. But you will have to give up some of your experiment's time to me in case I would need your help, deal?";
 			link.l1.go = "meeting_4";
 		break;
@@ -361,7 +361,7 @@ void ProcessDialogEvent()
 		case "colt_4":
 			DialogExit();
 			DeleteAttribute(npchar, "quest.sample");
-			SetFunctionTimerCondition("Colt_Timer", 0, 0, 30, false); // таймер
+			SetFunctionTimerCondition("Colt_Timer", 0, 0, 30, false); 
 		break;
 		
 		case "cartridge":
@@ -457,7 +457,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(npchar, "quest.cartridge");
 		break;
 		
-		// Addon 2016-1 Jason Пиратская линейка
+		
 		case "mtraxx":
             dialog.text = "Gord, gord... Would you tell me more about the captain? Where is he from?";
 			link.l1 = "No idea, although he was born somewhere in the North, they called him a Viking sometimes.";
@@ -477,7 +477,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuestFunction("Mtraxx_WolfreekReadLogbookFourth");
 		break;
 		
-	// ----------------------------------------- Португалец ----------------------------------------------------
+	
 		case "Portugal":
 			dialog.text = "Fever and delusions, you say, that is intriguing. Deliver him here immediately! I will see what I can do. But I can't promise you anything if his condition is too bad... Is he your officer?";
 			link.l1 = "No, thanks God, he is not. Gino, listen, don't ask who he is, just do what you can, it is really important for me!";
@@ -515,7 +515,7 @@ void ProcessDialogEvent()
 			link.l1 = "Fine, Gino. I trust in your mixtures and in your genius.";
 			link.l1.go = "exit";
 			pchar.questTemp.Portugal = "TreatmentCurrent";
-			pchar.GenQuest.CannotWait = true;//запрет ожидания
+			pchar.GenQuest.CannotWait = true;
 		break;
 		
 		case "Portugal_4":
@@ -550,7 +550,7 @@ void ProcessDialogEvent()
 			pchar.quest.Portugal_Ill2.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 5);
 			pchar.quest.Portugal_Ill2.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 5);
 			pchar.quest.Portugal_Ill2.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 5);
-			pchar.quest.Portugal_Ill2.function = "Portugal_ToAntiguaOver";//чтобы не тянул
+			pchar.quest.Portugal_Ill2.function = "Portugal_ToAntiguaOver";
 			pchar.questTemp.Portugal = "TreatmentComplete";
 			pchar.quest.Avendel_room.win_condition.l1 = "location";
 			pchar.quest.Avendel_room.win_condition.l1.location = "SentJons_HouseF3";
@@ -591,14 +591,14 @@ void ProcessDialogEvent()
 		case "Portugal_13":
 			DialogExit();
 			LAi_SetActorType(npchar);
-			LAi_ActorGoToLocation(npchar, "reload", "reload1", "SentJons_HouseF3_Room", "goto", "goto2", "Portugal_JinoNorm", -1);//Джино в свою комнату
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
+			LAi_ActorGoToLocation(npchar, "reload", "reload1", "SentJons_HouseF3_Room", "goto", "goto2", "Portugal_JinoNorm", -1);
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
 			pchar.quest.Portugal_Ill3.win_condition.l1 = "Timer";
 			pchar.quest.Portugal_Ill3.win_condition.l1.date.hour  = sti(GetTime());
 			pchar.quest.Portugal_Ill3.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 5);
 			pchar.quest.Portugal_Ill3.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 5);
 			pchar.quest.Portugal_Ill3.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 5);
-			pchar.quest.Portugal_Ill3.function = "Portugal_ToAntiguaOver";//5 дней до Мартиники
+			pchar.quest.Portugal_Ill3.function = "Portugal_ToAntiguaOver";
 			pchar.questTemp.Portugal = "ToMartinique";
 			pchar.quest.Avendel_room1.win_condition.l1 = "location";
 			pchar.quest.Avendel_room1.win_condition.l1.location = "SentJons_HouseF3";
@@ -607,7 +607,7 @@ void ProcessDialogEvent()
 			pchar.quest.Portugal_street.win_condition.l1.location = "SentJons_town";
 			pchar.quest.Portugal_street.function = "PortugalOnStreet";
 		break;
-		// <-- Португалец
+		
 		case "guardoftruth_0":
 			dialog.text = "Intriguing... And how you can help me? I don't need help and I didn't ask for it...";
 			link.l1 = "But you will need it. Listen to me first and then conclude.";
@@ -726,13 +726,13 @@ void ProcessDialogEvent()
 		break;
 		
 		case "guardoftruth_16":
-			dialog.text = "Father Vincento is aware of everything I have told you. This made him worry, of course. If Kukulcan, incarnated in human form, will get to the portal along with the Mask and all the knowledge he gathered… End of times. Apocalypse\nIf the past alters - future does the same thing. Our reality will change, it will disappear, dissolve. You and I may never be born. Or we shall be different. Once Kukulcan reaches the past - we shall seize to exist.";
+			dialog.text = "Father Vincento is aware of everything I have told you. This made him worry, of course. If Kukulcan, incarnated in human form, will get to the portal along with the Mask and all the knowledge he gatheredпїЅ End of times. Apocalypse\nIf the past alters - future does the same thing. Our reality will change, it will disappear, dissolve. You and I may never be born. Or we shall be different. Once Kukulcan reaches the past - we shall seize to exist.";
 			link.l1 = "And who is the Kukulcan's incarnation?";
 			link.l1.go = "guardoftruth_17";
 		break;
 		
 		case "guardoftruth_17":
-			dialog.text = "Who knows. He might be in anyone who was born a quarter of century ago, when the ritual was conducted. In you, for example… just kidding. But we still have a chance. First, Kukulcan's incarnation is just a mortal person, he can drown, be stabbed, be shot or die of fever. And in such case, no apocalypse will ever happen.\nSecond, it is impossible to reach the past absent the mask, Kanek stashed it very well, maybe too well so it seems. It might be, that even incarnated Kukulcan will fail to find it.";
+			dialog.text = "Who knows. He might be in anyone who was born a quarter of century ago, when the ritual was conducted. In you, for exampleпїЅ just kidding. But we still have a chance. First, Kukulcan's incarnation is just a mortal person, he can drown, be stabbed, be shot or die of fever. And in such case, no apocalypse will ever happen.\nSecond, it is impossible to reach the past absent the mask, Kanek stashed it very well, maybe too well so it seems. It might be, that even incarnated Kukulcan will fail to find it.";
 			link.l1 = "Tell me more.";
 			link.l1.go = "guardoftruth_18";
 		break;
@@ -908,7 +908,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.CurrentNode = "ksochitam_wait";
 			pchar.questTemp.Ksochitam = "skinmap_1";
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 		break;
 		
 		case "ksochitam_wait":
@@ -994,7 +994,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ksochitam_17":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			dialog.text = ""+pchar.name+", let's do the following: bring here a paper map of the archipelago, combine it with the map of Two Appearances and mark with crosses the appearances. Perhaps this will give you some suppositions?";
 			if (CheckCharacterItem(pchar, "map_bad"))
 			{
@@ -1062,7 +1062,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ksochitam_18":
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			DialogExit();
 			NextDiag.CurrentNode = "ksochitam_19";
 			LAi_SetActorType(pchar);
@@ -1097,7 +1097,7 @@ void ProcessDialogEvent()
 			LAi_SetOwnerType(npchar);
 			DialogExit();
 			NextDiag.CurrentNode = "ksochitam_24";
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			LAi_SetPlayerType(pchar);
 			GiveItem2Character(pchar, "arrowway");
 			pchar.questTemp.Ksochitam = "seekway";
@@ -1136,7 +1136,7 @@ void ProcessDialogEvent()
 		
 		case "ksochitam_28":
 			DialogExit();
-			locations[FindLocation(pchar.location)].DisableEncounters = false; //энкаутеры открыть
+			locations[FindLocation(pchar.location)].DisableEncounters = false; 
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "sea", "none", "", "", "OpenTheDoors", 20.0);
 		break;
@@ -1364,9 +1364,9 @@ void ProcessDialogEvent()
 		case "ksochitam_51":
 			DialogExit();
 			NextDiag.CurrentNode = "ksochitam_52";
-			bQuestDisableMapEnter = false;//открыть карту
+			bQuestDisableMapEnter = false;
 			DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
 			AddQuestRecord("Ksochitam", "16");
 			pchar.quest.Ksochitam_gohome.win_condition.l1 = "location";
 			pchar.quest.Ksochitam_gohome.win_condition.l1.location = "sentjons_town";
@@ -1412,13 +1412,13 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//--> блок реагирования на попытку залезть в сундук
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("You are a "+ GetSexPhrase("thief, mister! Guards, take him","thief, girl! Guards, take her ") +"!!!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest! Take the thief!!!", "Guards! Robbery! Take the thief!!!");
 			link.l1 = "Damn it!";
 			link.l1.go = "exit";
 			LAi_group_Attack(NPChar, Pchar);
 		break;
-		//<-- блок реагирования на попытку залезть в сундук
+		
 	}
 }

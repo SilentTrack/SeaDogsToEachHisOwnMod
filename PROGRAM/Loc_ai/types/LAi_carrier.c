@@ -3,13 +3,13 @@
 #define LAI_TYPE_CARRY	"carrier"
 
 
-//Инициализация
+
 void LAi_type_carrier_Init(aref chr)
 {
 	DeleteAttribute(chr, "location.follower");
 	DeleteAttribute(chr, "chr_ai.type");
-	//Установим анимацию персонажу
-	//LAi_SetDefaultStayAnimation(chr);
+	
+	
 	string sTemp = chr.model;
 	sTemp =	strcut(sTemp, 0, strlen(sTemp)-2);
 	BeginChangeCharacterActions(chr);
@@ -21,10 +21,10 @@ void LAi_type_carrier_Init(aref chr)
 	chr.actions.turnLeft = sTemp;
 	chr.actions.turnRight = sTemp;
 	EndChangeCharacterActions(chr);
-	//Установим шаблон идти
+	
 	chr.chr_ai.type = LAI_TYPE_CARRY;
 	chr.chr_ai.type.checkFight = rand(5)+2;
-	//определим маршрут и отправим в путь	
+	
 	if (CheckAttribute(chr, "gotoGroup") && CheckAttribute(chr, "gotoLocator"))
 	{
 		LAi_tmpl_goto_InitTemplate(chr);
@@ -34,13 +34,13 @@ void LAi_type_carrier_Init(aref chr)
 	{		
 		LAi_tmpl_stay_InitTemplate(chr);
 	}
-	chr.chr_ai.tmpl.wait = 0;  //таймер ожидания
+	chr.chr_ai.tmpl.wait = 0;  
 	chr.chr_ai.tmpl.time = 0; 
-	chr.chr_ai.tmpl.baseLocator = "";  //откуда идем
+	chr.chr_ai.tmpl.baseLocator = "";  
 	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", false);
 }
 
-//Процессирование типа персонажа
+
 void LAi_type_carrier_CharacterUpdate(aref chr, float dltTime)
 {	
 	float time;
@@ -91,14 +91,14 @@ void LAi_type_carrier_CharacterUpdate(aref chr, float dltTime)
 			chr.chr_ai.tmpl.wait = time;
 			if (time > 40)
 			{
-				if(CheckAttribute(chr, "chr_ai.tmpl.baseLocator")) // Warship fix. Могло не быть
+				if(CheckAttribute(chr, "chr_ai.tmpl.baseLocator")) 
 					ChangeCharacterAddressGroup(chr, chr.location, "reload", chr.chr_ai.tmpl.baseLocator);
 					
 				LAi_tmpl_goto_InitTemplate(chr);
 				LAi_type_carrier_GoTo(chr);
 			}
 		}
-		//--> проверяем не врагов, но дерущихся. 
+		
 		if (stf(chr.chr_ai.type.checkFight) < 0.0)
 		{
 			int num = FindNearCharacters(chr, 5.0, -1.0, -1.0, 0.001, false, true);				
@@ -125,9 +125,9 @@ void LAi_type_carrier_CharacterUpdate(aref chr, float dltTime)
 		{
 			chr.chr_ai.type.checkFight = stf(chr.chr_ai.type.checkFight) - dltTime;
 		}
-		//<-- проверяем не врагов, но дерущихся.
+		
 	}
-	//не должно быть, но мало ли..
+	
 	if(chr.chr_ai.tmpl == LAI_TMPL_STAY)
 	{
 		time = stf(chr.chr_ai.tmpl.wait) + dltTime;
@@ -141,55 +141,55 @@ void LAi_type_carrier_CharacterUpdate(aref chr, float dltTime)
 	}
 }
 
-//Загрузка персонажа в локацию
+
 bool LAi_type_carrier_CharacterLogin(aref chr)
 {
 	return true;
 }
 
-//Выгрузка персонажа из локацию
+
 bool LAi_type_carrier_CharacterLogoff(aref chr)
 {
 	return true;
 }
 
-//Завершение работы темплейта
+
 void LAi_type_carrier_TemplateComplite(aref chr, string tmpl)
 {
 
 }
 
-//Сообщить о желании завести диалог
+
 void LAi_type_carrier_NeedDialog(aref chr, aref by)
 {
 }
 
-//Запрос на диалог, если возвратить true то в этот момент можно начать диалог
+
 bool LAi_type_carrier_CanDialog(aref chr, aref by)
 {
 	return false;
 }
 
-//Начать диалог
+
 void LAi_type_carrier_StartDialog(aref chr, aref by)
 {
 
 }
 
-//Закончить диалог
+
 void LAi_type_carrier_EndDialog(aref chr, aref by)
 {
 
 }
 
-//Персонаж выстрелил
+
 void LAi_type_carrier_Fire(aref attack, aref enemy, float kDist, bool isFindedEnemy)
 {
 
 }
 
 
-//Персонаж атакован
+
 void LAi_type_carrier_Attacked(aref chr, aref by)
 {
 
@@ -238,7 +238,7 @@ void LAi_type_carrier_GoTo(aref chr)
 
 string LAi_type_carrier_SetPath(aref chr)
 {
-	//определим маршрут
+	
 	string locReload[7];
 	locReload[0] = "reload4";
 	locReload[1] = "reload5";
@@ -258,3 +258,4 @@ string LAi_type_carrier_SetPath(aref chr)
 	}
 	return locReload[iNum];
 }
+

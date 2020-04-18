@@ -1,6 +1,6 @@
-// BOAL полностью переделано под нужны ВМЛ
 
-// -> ugeen 27.01.09 - лочим лояльность квестовых офф-ов (всегда максимальная)
+
+
 void OfficersReaction(string alignment)
 {
 	int iPassenger;
@@ -8,7 +8,7 @@ void OfficersReaction(string alignment)
 	ref sld;
 	
 	for (int io = 0; io<GetPassengersQuantity(pchar); io++)
-	{   // любой пассажир у кого есть пристрастие может свалить если наши дела ему не по душе
+	{   
 		iPassenger = GetPassenger(pchar, io);
 		if (iPassenger != -1)
 		{
@@ -40,29 +40,29 @@ void OfficersReaction(string alignment)
 				if (sld.alignment == alignment)
 				{
 					sld.loyality = makeint(sld.loyality) + 1;
-					if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, 1); //navy
+					if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, 1); 
 				}
 				else
 				{
 					sld.loyality = makeint(sld.loyality) - 1;
-					// специально не далею приведение к 0 и мах. потому чтоб был запас минусов для проверок
-					if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, -1); //navy
+					
+					if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, -1); 
 				}
 			}									
 		}
 	}
 }
-//-> ugeen
+
 
 void ChangeOfficersLoyality(string alignment, int iLoyality)
-{ // aliggnment types : "bad" , "good" , "bad_all" , "good_all"
+{ 
 
 	int iPassenger;
 	int i, cn;
 	ref sld;
 	
 	for (int io = 0; io<GetPassengersQuantity(pchar); io++)
-	{   // любой пассажир у кого есть пристрастие может свалить если наши дела ему не по душе	
+	{   
 		iPassenger = GetPassenger(pchar, io);
 		if (iPassenger != -1)
 		{
@@ -102,32 +102,32 @@ void ChangeOfficersLoyality(string alignment, int iLoyality)
 					case "bad":
 						if (sld.alignment == alignment) {
 							sld.loyality = makeint(sld.loyality) + iLoyality;				
-							if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, 1); //navy
+							if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, 1); 
 						}	
 						else 
 						{
 							sld.loyality = makeint(sld.loyality) - iLoyality;				
-							if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, -1); //navy
+							if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, -1); 
 						}	
 					break;
 					case "good":
 						if (sld.alignment == alignment) {
 							sld.loyality = makeint(sld.loyality) + iLoyality;
-							if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, 1); //navy		
+							if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, 1); 
 						}	
 						else 
 						{							
 							sld.loyality = makeint(sld.loyality) - iLoyality;
-							if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, -1); //navy
+							if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, -1); 
 						}	
 					break;
 					case "bad_all":
 						sld.loyality = makeint(sld.loyality) - iLoyality;
-						if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, -1); //navy
+						if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, -1); 
 					break;
 					case "good_all":
 						sld.loyality = makeint(sld.loyality) + iLoyality;
-						if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, 1); //navy
+						if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, 1); 
 					break;
 				}	
 			}									
@@ -135,7 +135,7 @@ void ChangeOfficersLoyality(string alignment, int iLoyality)
 	}	
 }
 
-// результат реакции - действия офа - диалог
+
 void OfficersReactionResult()
 {
 	int iPassenger;
@@ -143,11 +143,11 @@ void OfficersReactionResult()
 	ref sld;
 	
 	if (LAi_IsCapturedLocation) return;
-	if (chrDisableReloadToLocation) return; // идет некий другой квест с запретом выхода
+	if (chrDisableReloadToLocation) return; 
 	if (CheckAttribute(Pchar,"questTemp.MunityOfficerIDX") && Pchar.questTemp.MunityOfficerIDX.begin == "1") return;
 	
 	for (i = 0; i<GetPassengersQuantity(pchar); i++)
-	{   // любой пассажир у кого есть пристрастие может свалить если наши дела ему не по душе
+	{   
 		iPassenger = GetPassenger(pchar, i);
 		if (iPassenger != -1)
 		{
@@ -168,8 +168,8 @@ void OfficersReactionResult()
 	
 						LAi_SetActorType(sld);
 						LAi_ActorDialog(sld, pchar, "", 2.0, 0);
-						//SetActorDialogAny2Pchar(sld.id, "pchar_back_to_player", 0.0, 0.0);
-			    		//LAi_ActorFollow(sld, pchar, "ActorDialog_Any2Pchar", 2.0);
+						
+			    		
 			    		chrDisableReloadToLocation = true;
 			    		DoQuestCheckDelay("OpenTheDoors", 5.0);
 						break; 
@@ -178,20 +178,20 @@ void OfficersReactionResult()
 			}
 		}
 	}
-	if (chrDisableReloadToLocation) return; // уже увольняется
+	if (chrDisableReloadToLocation) return; 
 	
-	if (CheckNPCQuestDate(pchar, "OfficerWantToGo") && rand(1) == 1) // только раз в день
+	if (CheckNPCQuestDate(pchar, "OfficerWantToGo") && rand(1) == 1) 
 	{
 		SetNPCQuestDate(pchar, "OfficerWantToGo");
 		for (i = 0; i<GetPassengersQuantity(pchar); i++)
-		{   // любой пассажир у кого есть пристрастие может свалить если наши дела ему не по душе
+		{   
 			iPassenger = GetPassenger(pchar, i);
 			if (iPassenger != -1)
 			{
 				sld = GetCharacter(iPassenger);
 				if (!CheckAttribute(sld,"prisoned") && !CheckAttribute(sld, "OfficerWantToGo.DontGo") && GetRemovable(sld) && rand(10) == 5 && GetNpcQuestPastDayParam(sld, "HiredDate") > 60)
 				{
-					if (sld.dialog.filename == "Enc_Officer_dialog.c") // квестовые не достают
+					if (sld.dialog.filename == "Enc_Officer_dialog.c") 
 					{
 						if (PlaceCharacter(sld, "goto", "random_must_be_near") != "")
 						{
@@ -200,8 +200,8 @@ void OfficersReactionResult()
 		
 							LAi_SetActorType(sld);
 							LAi_ActorDialog(sld, pchar, "", 2.0, 0);
-							//SetActorDialogAny2Pchar(sld.id, "pchar_back_to_player", 0.0, 0.0);
-				    		//LAi_ActorFollow(sld, pchar, "ActorDialog_Any2Pchar", 2.0);
+							
+				    		
 				    		chrDisableReloadToLocation = true;
 				    		DoQuestCheckDelay("OpenTheDoors", 5.0);
 							break; 
@@ -249,55 +249,55 @@ bool isOfficerInShip(ref _chr, bool _withBoard)
 	}
 	return false;
 }
-// метод увольняет офицера - название левое, наследие к3
+
 void CheckForReleaseOfficer(int iCharIndex)
 {
 	if(sti(pchar.Fellows.Passengers.navigator) == iCharIndex)
 	{
 		pchar.Fellows.Passengers.navigator = -1;
-		DeleteAttribute(&characters[iCharIndex], "navigator"); // совместитель дожности
+		DeleteAttribute(&characters[iCharIndex], "navigator"); 
 	}
 
 	if(sti(pchar.Fellows.Passengers.boatswain) == iCharIndex)
 	{
 		pchar.Fellows.Passengers.boatswain = -1;
-		DeleteAttribute(&characters[iCharIndex], "boatswain"); // совместитель дожности
+		DeleteAttribute(&characters[iCharIndex], "boatswain"); 
 	}
 
 	if(sti(pchar.Fellows.Passengers.cannoner) == iCharIndex)
 	{
 		pchar.Fellows.Passengers.cannoner = -1;
-		DeleteAttribute(&characters[iCharIndex], "cannoner"); // совместитель дожности
+		DeleteAttribute(&characters[iCharIndex], "cannoner"); 
 	}
 
 	if(sti(pchar.Fellows.Passengers.doctor) == iCharIndex)
 	{
 		pchar.Fellows.Passengers.doctor = -1;
-		DeleteAttribute(&characters[iCharIndex], "doctor"); // совместитель дожности
+		DeleteAttribute(&characters[iCharIndex], "doctor"); 
 	}
 
 	if(sti(pchar.Fellows.Passengers.carpenter) == iCharIndex)
 	{
 		pchar.Fellows.Passengers.carpenter = -1;
-		DeleteAttribute(&characters[iCharIndex], "carpenter"); // совместитель дожности
+		DeleteAttribute(&characters[iCharIndex], "carpenter"); 
 	}
 	
     if(sti(pchar.Fellows.Passengers.treasurer) == iCharIndex)
 	{
 		pchar.Fellows.Passengers.treasurer = -1;
-		DeleteAttribute(&characters[iCharIndex], "treasurer"); // совместитель дожности
+		DeleteAttribute(&characters[iCharIndex], "treasurer"); 
 	}
 	
-	//if (IsOfficer(&characters[iCharIndex]) == true)
-	//{
-		// все проверки внутри,  иначе не работает на трупе
+	
+	
+		
 		RemoveOfficersIndex(pchar, iCharIndex);
-		DeleteAttribute(&characters[iCharIndex], "fighter"); // совместитель дожности
-	//}
-	DeleteAttribute(&characters[iCharIndex], "isfree"); // для формы ф2, название странное - обратный смысл, если есть, то занят
+		DeleteAttribute(&characters[iCharIndex], "fighter"); 
+	
+	DeleteAttribute(&characters[iCharIndex], "isfree"); 
 }
 
-bool CheckForAllOfficers() // ugeen 2016 -  возвращает true при наличии всех офицеров в команде ГГ
+bool CheckForAllOfficers() 
 {
 	bool bOk = true;
 
@@ -315,12 +315,12 @@ bool CheckForAllOfficers() // ugeen 2016 -  возвращает true при наличии всех офи
 	return bOk;
 }
 
-//////////////// OFFICER ////////////////
+
 void SetOfficerParam(ref Npchar, int _type)
 {
 	float upSkill = 0.7;
 	
-	ClearCharacterExpRate(Npchar); // трем все пороги экспы на всяк сулчай
+	ClearCharacterExpRate(Npchar); 
 
     Npchar.quest.LeadershipModify  = 0;
 	Npchar.quest.FencingModify     = 0;
@@ -347,8 +347,8 @@ void SetOfficerParam(ref Npchar, int _type)
 			Npchar.quest.DefenseModify     = frandSmall(2.0) + 2;
 			Npchar.quest.SneakModify       = Rand(1);
 			
-			//Npchar.skill.Grappling_rate = makeint(MOD_EXP_RATE * upSkill);
-            //Npchar.skill.Defence_rate   = makeint(MOD_EXP_RATE * upSkill);
+			
+            
 		break;
 
 		case 1:
@@ -357,8 +357,8 @@ void SetOfficerParam(ref Npchar, int _type)
 			Npchar.quest.CannonsModify       = frandSmall(2.0) + 2;
 			Npchar.quest.SneakModify         = Rand(1);
 			
-			//Npchar.skill.Cannons_rate = makeint(MOD_EXP_RATE * upSkill);
-            //Npchar.skill.Accuracy_rate   = makeint(MOD_EXP_RATE * upSkill);
+			
+            
 		break;
 
 		case 2:
@@ -368,8 +368,8 @@ void SetOfficerParam(ref Npchar, int _type)
 			Npchar.quest.CommerceModify      = frandSmall(2.0) + 2;
 			Npchar.quest.SneakModify         = frandSmall(2.0) + 2;
 			
-			//Npchar.skill.Repair_rate = makeint(MOD_EXP_RATE * upSkill);
-            //Npchar.skill.Commerce_rate   = makeint(MOD_EXP_RATE * upSkill);
+			
+            
 		break;
 
 		case 3:
@@ -379,7 +379,7 @@ void SetOfficerParam(ref Npchar, int _type)
 			Npchar.quest.DefenseModify        = frandSmall(2.0) + 1.3;
 			Npchar.quest.SneakModify          = frandSmall(2.0);
 			
-			//Npchar.skill.Sailing_rate = makeint(MOD_EXP_RATE * upSkill);
+			
 		break;
 
         case 4:
@@ -387,37 +387,37 @@ void SetOfficerParam(ref Npchar, int _type)
 			Npchar.quest.FencingModify         = frandSmall(2.0) + 2;
 			Npchar.quest.PistolModify          = frandSmall(2.0) + 2;
 			
-			//Npchar.skill.Fencing_rate = makeint(MOD_EXP_RATE * upSkill);
-            //Npchar.skill.Pistol_rate   = makeint(MOD_EXP_RATE * upSkill);
+			
+            
 		break;
-        // не при делах -->
+        
         case 5:
-			//Npchar.quest.officertype = OFFIC_TYPE_FIRSTMATE;
+			
 			Npchar.quest.LeadershipModify     = frandSmall(3.0) + 2;
 			Npchar.quest.SailingModify        = frandSmall(1.0) + 1;
 			Npchar.quest.SneakModify          = Rand(3) + 1;
 			
-			//Npchar.skill.Leadership_rate = makeint(MOD_EXP_RATE * upSkill);
-            //Npchar.skill.Sneak_rate   = makeint(MOD_EXP_RATE * upSkill);
+			
+            
 		break;
 		
 		case 6:
-			//Npchar.quest.officertype = OFFIC_TYPE_DOCTOR;
+			
 			Npchar.quest.DefenseModify       = Rand(3) + 3;
 			Npchar.quest.SneakModify         = Rand(3);
 		break;
-		// не при делах
+		
 		case 7:
-			//Npchar.quest.officertype = OFFIC_TYPE_CARPENTER;
+			
 			Npchar.quest.RepairModify         = Rand(3) + 3;
 			Npchar.quest.SneakModify          = Rand(3);
 		break;
 	}
 
-	// boal Npchar.rank = makeint(Pchar.rank) - 2 + Rand(4);
-	Npchar.experience = 0;// boal CalculateExperienceFromRank(sti(Npchar.rank));
-    // boal fix 16.12.2003 -->
-	//CalculateAppropriateSkills(NPchar);
+	
+	Npchar.experience = 0;
+    
+	
 	float MiddleK = GetMiddleMainSkill();
 
     Npchar.skill.Leadership    = MiddleK - frandSmall(10*MOD_SKILL_ENEMY_RATE / 1.5) + 7;
@@ -435,8 +435,8 @@ void SetOfficerParam(ref Npchar, int _type)
     Npchar.skill.FencingH      = MiddleK - frandSmall(10*MOD_SKILL_ENEMY_RATE / 1.5) + 7;
     Npchar.skill.Fortune       = MiddleK - frandSmall(10*MOD_SKILL_ENEMY_RATE / 1.5) + 7;
 
-    CorrectSkillParam(Npchar); // привести к 0-1
-    // boal fix 16.12.2003 <--
+    CorrectSkillParam(Npchar); 
+    
 
 	Npchar.skill.Leadership   = makeint(stf(Npchar.skill.Leadership)   + 10*stf(Npchar.quest.LeadershipModify));
 	Npchar.skill.FencingS     = makeint(stf(Npchar.skill.FencingS)     + 10*stf(Npchar.quest.FencingModify));
@@ -453,10 +453,10 @@ void SetOfficerParam(ref Npchar, int _type)
     Npchar.skill.FencingH     = makeint(stf(Npchar.skill.FencingH)     + 10*stf(Npchar.quest.FencingModify));
     Npchar.skill.Fortune      = makeint(stf(Npchar.skill.Fortune)      + 10*stf(Npchar.quest.SneakModify));
 
-    CorrectSkillParam(Npchar); // привести к 0-10
+    CorrectSkillParam(Npchar); 
 
     Npchar.reputation = rand(84) + 5;
-    // пристрастие офицера -->
+    
     Npchar.loyality = 5 + rand(10);
     if (sti(Npchar.reputation) > 41)
     {
@@ -468,41 +468,40 @@ void SetOfficerParam(ref Npchar, int _type)
     }
     SetRankFromSkill(Npchar);
 
-    LAi_NPC_Equip(Npchar, sti(Npchar.rank), true, true); // fix 101104 выдадим все заново!!!!
+    LAi_NPC_Equip(Npchar, sti(Npchar.rank), true, true); 
     
     SetFantomHP(Npchar);
     
     Npchar.quest.OfficerPrice    = (11 + 2*sti(Npchar.rank))*(150 + MOD_SKILL_ENEMY_RATE*20) + rand(5)*10;
     Npchar.quest.OfficerLowPrice = makeint(sti(Npchar.quest.OfficerPrice)/1.5 + 0.5);
 }
-///////////////////////////////////////////////////////////////////////////
+
 
 int FindFreeRandomOfficer()
 {
 	int Counter, OfficerIdx;
 	string OfficerId;
-	// special -->
+	
 	if (GetCharacterMaxOfficersQty(Pchar) <= (GetOfficerPassengerQuantity(Pchar) + GetCompanionQuantity(Pchar) - 1)) return -1;
 	return 1;
 }
 void LandEnc_OfficerHired()
 {
 	ref sld = &Characters[sti(Pchar.questTemp.HiringOfficerIDX)];
-    sld.Money = 0; // деньги
+    sld.Money = 0; 
 
 	AddPassenger(pchar, sld, false);
 
 	sld.location = "None";
 	sld.Dialog.CurrentNode = "hired";
-	/*if (sld.sex == "man") sld.greeting = "Gr_officer";
-	else sld.greeting = "Gr_Danielle";*/
-	// boal новый учет зп -->
-	sld.Payment = true;  // признак офицера для +1 предметов  
-	sld.DontClearDead = true;  // не убирать труп
-	// boal новый учет зп <--
+	 
+	
+	sld.Payment = true;  
+	sld.DontClearDead = true;  
+	
 	DeleteAttribute(Pchar, "questTemp.HiringOfficerIDX");
-	DeleteAttribute(sld, "LifeDay") // постоянный
-	SaveCurrentNpcQuestDateParam(sld, "HiredDate"); // дата найма
+	DeleteAttribute(sld, "LifeDay") 
+	SaveCurrentNpcQuestDateParam(sld, "HiredDate"); 
 }
 
 void LandEnc_OfficerStay()
@@ -524,45 +523,45 @@ void LandEnc_OfficerFired()
 	{
     	sld.greeting = "Gr_Officer_Fired";
     }
-    sld.LifeDay = 0; // стереть при выходе
-    DeleteAttribute(sld, "Payment"); // признак офицера для +1 предметов  
+    sld.LifeDay = 0; 
+    DeleteAttribute(sld, "Payment"); 
 	DeleteAttribute(Pchar, "questTemp.FiringOfficerIDX");
 }			
 
-// Jason: сделать офицера мушкетером. На данный момент возможно только для 3 офицеров-друзей главных героев: Тичингиту, Арчи, Алонсо. Для прочих нет моделей с нужной анимацией.
+
 bool SetOfficerToMushketer(ref rCharacter, string sMushket, bool _ToMushketer) 
 {
 	int iItem;
 	string sLastGun = "";
 	
-	if(_ToMushketer && sMushket != "") // Делаем мушкетером
+	if(_ToMushketer && sMushket != "") 
 	{
 		iItem = GetItemIndex(sMushket);
 		if(iItem == -1) return false;
 		sLastGun = GetCharacterEquipByGroup(rCharacter, GUN_ITEM_TYPE);
 		rCharacter.DefaultAnimation = rCharacter.model.Animation;
-		rCharacter.IsMushketer = true; // Ставим флаг "мушкетер"
-		rCharacter.IsMushketer.MushketID = sMushket; // Запомним, какой мушкет надели
-		rCharacter.IsMushketer.LastGunID = sLastGun; // Запомним ID предыдущего пистоля
+		rCharacter.IsMushketer = true; 
+		rCharacter.IsMushketer.MushketID = sMushket; 
+		rCharacter.IsMushketer.LastGunID = sLastGun; 
 		rCharacter.model = rCharacter.model + "_mush";
-		rCharacter.model.animation = "mushketer"; // Сменим анимацию
-		Characters_RefreshModel(rCharacter); // Обновим модель. Важно: обновлять модель нужно ДО экипировки мушкетом
-		EquipCharacterByItem(rCharacter, sMushket); // Экипируем мушкет
-		rCharacter.Equip.TempGunID = sLastGun; // Пистоль оставляем экипированным, но в другой группе
+		rCharacter.model.animation = "mushketer"; 
+		Characters_RefreshModel(rCharacter); 
+		EquipCharacterByItem(rCharacter, sMushket); 
+		rCharacter.Equip.TempGunID = sLastGun; 
 		if (!CheckAttribute(rCharacter, "MusketerDistance")) rCharacter.MusketerDistance = 10.0;
 		rCharacter.isMusketer = true;
 		rCharacter.isMusketer.weapon = true;
 		LAi_SetOfficerType(rCharacter);
 	}
-	else // Делаем обычным фехтовальщиком
+	else 
 	{
-		rCharacter.model = FindStringBeforeChar(rCharacter.model, "_mush"); // Вернем модель и анимацию
+		rCharacter.model = FindStringBeforeChar(rCharacter.model, "_mush"); 
 		rCharacter.model.Animation = rCharacter.DefaultAnimation;
 		Characters_RefreshModel(rCharacter);
-		RemoveCharacterEquip(rCharacter, GUN_ITEM_TYPE); // cнимем мушкет
+		RemoveCharacterEquip(rCharacter, GUN_ITEM_TYPE); 
 		if(rCharacter.IsMushketer.LastGunID != "" && GetCharacterItem(rCharacter, rCharacter.IsMushketer.LastGunID) > 0)
 		{
-			EquipCharacterByItem(rCharacter, rCharacter.IsMushketer.LastGunID); // Оденем прошлый пистоль
+			EquipCharacterByItem(rCharacter, rCharacter.IsMushketer.LastGunID); 
 		}
 		DeleteAttribute(rCharacter, "IsMushketer");
 		DeleteAttribute(rCharacter, "Equip.TempGunID");

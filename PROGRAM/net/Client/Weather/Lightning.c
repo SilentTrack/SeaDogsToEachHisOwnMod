@@ -54,7 +54,7 @@ void NetClient_LightningAdd(int iMsg)
 	if (iTime2Lightning < 0) { iTime2Lightning = 0;	}
 
 	PostEvent("NetClient_LightningDoIt", iTime2Lightning, "flfff", fLightningTime, iSubTexture, x, y, z);
-	//Trace("Client lightning doit : " + x + ", " + y + ", " + z + ", iTime2Lightning = " + iTime2Lightning);
+	
 }
 
 void NetClient_LightningSound()
@@ -99,3 +99,4 @@ void NetClient_MoveLightningToLayers(string sExecuteLayer, string sRealizeLayer)
 	LayerAddObject(sExecuteLayer, &NCLightning, -2);
 	LayerAddObject(sRealizeLayer, &NCLightning, -2);
 }
+

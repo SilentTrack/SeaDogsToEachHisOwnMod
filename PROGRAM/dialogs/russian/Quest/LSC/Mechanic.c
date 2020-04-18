@@ -1,4 +1,4 @@
-// Хенрик Ведекер. Он же Механик.
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -34,7 +34,7 @@ void ProcessDialogEvent()
 					link.l1.go = "exit";
 					break;
 				}
-				// возвращение блудного скафандра
+				
 				if (pchar.questTemp.LSC == "return" && !CheckAttribute(npchar, "quest.return_isl"))
 				{
 					dialog.text = "Ah! Just look at that! The drowned man is back from the other world! Now, tell me, how were you able to do such a trick? They have performed a funeral for you and buried you in your absence, just in case you didn't know...";
@@ -43,8 +43,8 @@ void ProcessDialogEvent()
 					break;
 				}
 				
-				dialog.text = "Аh, "+GetFullName(pchar)+"! "+TimeGreeting()+"!";
-				// квестовые ветки
+				dialog.text = "пїЅh, "+GetFullName(pchar)+"! "+TimeGreeting()+"!";
+				
 				if(pchar.questTemp.LSC == "mechanic")
 				{
 					link.l4 = "Henrik, I have got a business for you. A very important business. Ole Christiansen has told me about you. They also call him the White Boy.";
@@ -85,7 +85,7 @@ void ProcessDialogEvent()
 					link.l5 = "I want to return your suit.";
 					link.l5.go = "immersion_next_2";
 				}
-				// квестовые ветки				
+				
 				link.l1 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
 				link.l1.go = "rumours_LSC";
 				link.l3 = "I just wanted to know how are you doing.";
@@ -94,7 +94,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		case "meeting": // первая встреча
+		case "meeting": 
 			dialog.text = "And I am Henrik Vedecker. Though, the majority of locals know me as the Mechanic and it is a very true definition actually.";
 			if(pchar.questTemp.LSC == "mechanic")
 			{
@@ -240,7 +240,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			pchar.questTemp.LSC = "platinum_wait";
 			AddQuestRecord("LSC", "8");
-			SetFunctionTimerCondition("LSC_PrepareUnderwater_Check", 0, 0, 5, false); // таймер
+			SetFunctionTimerCondition("LSC_PrepareUnderwater_Check", 0, 0, 5, false); 
 			AddCharacterExpToSkill(pchar, "Fortune", 300);
 		break;
 		
@@ -294,7 +294,7 @@ void ProcessDialogEvent()
 				iTemp = 1;
 				sTemp = "tomorrow";
 			}
-			if (!CheckAttribute(pchar, "questTemp.LSC.NatanTalk")) string sText = "But I have to find Nathaniel Hawk first before I dive."; //не было разговора с Натаном
+			if (!CheckAttribute(pchar, "questTemp.LSC.NatanTalk")) string sText = "But I have to find Nathaniel Hawk first before I dive."; 
 			else sText = "";
 			AddQuestRecord("LSC", "10");
 			AddQuestUserData("LSC", "sText1", sTemp);
@@ -310,7 +310,7 @@ void ProcessDialogEvent()
 		
 		case "immersion":
 			dialog.text = "Yes, the suit is ready and filled with air. You can dive.";
-			if (!CheckAttribute(pchar, "questTemp.LSC.NatanTalk")) // не было разговора с Натаном
+			if (!CheckAttribute(pchar, "questTemp.LSC.NatanTalk")) 
 			{
 				link.l1 = "Good. But I can't dive now, I need to solve one problem about my... friend, Nathan Hawk. I can't find him. Can the suit wait a bit?";
 				link.l1.go = "natan";
@@ -361,19 +361,19 @@ void ProcessDialogEvent()
 		
 		case "immersion_6":
 			DialogExit();
-			pchar.questTemp.LSC = "first_immersion"; // флаг на первое погружение
-			pchar.questTemp.LSC.immersion = "true"; // погружение возможно
+			pchar.questTemp.LSC = "first_immersion"; 
+			pchar.questTemp.LSC.immersion = "true"; 
 			pchar.quest.LSC_takeUnderwater.win_condition.l1 = "locator";
 			pchar.quest.LSC_takeUnderwater.win_condition.l1.location = "FenixPlatform";
 			pchar.quest.LSC_takeUnderwater.win_condition.l1.locator_group = "item";
 			pchar.quest.LSC_takeUnderwater.win_condition.l1.locator = "armor";
-			pchar.quest.LSC_takeUnderwater.function = "LSC_takeUnderwater"; // выдача костюма
+			pchar.quest.LSC_takeUnderwater.function = "LSC_takeUnderwater"; 
 			pchar.quest.LSC_UnderwaterDolly.win_condition.l1 = "locator";
 			pchar.quest.LSC_UnderwaterDolly.win_condition.l1.location = "Underwater";
 			pchar.quest.LSC_UnderwaterDolly.win_condition.l1.locator_group = "quest";
 			pchar.quest.LSC_UnderwaterDolly.win_condition.l1.locator = "dolly";
-			pchar.quest.LSC_UnderwaterDolly.function = "LSC_FindUnderwaterDolly"; // нашли статую
-			NextDiag.CurrentNode = "after_first_immersion"; // нода после первого погружения
+			pchar.quest.LSC_UnderwaterDolly.function = "LSC_FindUnderwaterDolly"; 
+			NextDiag.CurrentNode = "after_first_immersion"; 
 			AddQuestRecord("LSC", "11");
 		break;
 		
@@ -445,7 +445,7 @@ void ProcessDialogEvent()
 			LocatorReloadEnterDisable("SanGabrielMechanic", "reload3", false);
 			SetFunctionTimerCondition("LSC_ReadyUnderwater", 0, 0, 1, false);
 			NextDiag.CurrentNode = "First time";
-			// даем старт мини-квестам с крабикусами
+			
 			sld = characterFromId("Carpentero");
 			sld.quest.crab = "begin";
 			if (GetCharacterIndex("LSC_Jacklin") != -1)
@@ -455,9 +455,9 @@ void ProcessDialogEvent()
 			}
 		break;
 		
-		// блок погружений, за искл. первого
+		
 		case "immersion_next":
-			if (CheckAttribute(npchar, "quest.guarantee")) // требует залог
+			if (CheckAttribute(npchar, "quest.guarantee")) 
 			{
 				dialog.text = "Yes, sure. The suit was tested and filled with air. Have you got the pledge with you? 500 000 pesos?";
 				if (sti(pchar.money) >= 500000)
@@ -482,13 +482,13 @@ void ProcessDialogEvent()
 		case "immersion_next_1":
 			DialogExit();
 			DeleteAttribute(pchar, "questTemp.LSC.UW_ready"); 
-			LocatorReloadEnterDisable("LostShipsCity_town", "reload72", false); //открываем вход в Феникс
-			pchar.questTemp.LSC.immersion = "true"; // погружение возможно
+			LocatorReloadEnterDisable("LostShipsCity_town", "reload72", false); 
+			pchar.questTemp.LSC.immersion = "true"; 
 			pchar.quest.LSC_takeUnderwater.win_condition.l1 = "locator";
 			pchar.quest.LSC_takeUnderwater.win_condition.l1.location = "FenixPlatform";
 			pchar.quest.LSC_takeUnderwater.win_condition.l1.locator_group = "item";
 			pchar.quest.LSC_takeUnderwater.win_condition.l1.locator = "armor";
-			pchar.quest.LSC_takeUnderwater.function = "LSC_takeUnderwater"; // выдача костюма
+			pchar.quest.LSC_takeUnderwater.function = "LSC_takeUnderwater"; 
 		break;
 		
 		case "immersion_next_2":
@@ -502,7 +502,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(pchar, "questTemp.LSC.UW_end"); 
 			RemoveCharacterEquip(pchar, CIRASS_ITEM_TYPE);
 			RemoveItems(pchar, "underwater", 1);
-			if (CheckAttribute(npchar, "quest.guarantee")) AddMoneyToCharacter(pchar, 500000); // возврат залога
+			if (CheckAttribute(npchar, "quest.guarantee")) AddMoneyToCharacter(pchar, 500000); 
 			LocatorReloadEnterDisable("SanGabrielMechanic", "reload3", false);
 			SetFunctionTimerCondition("LSC_ReadyUnderwater", 0, 0, 1, false);
 		break;
@@ -513,9 +513,9 @@ void ProcessDialogEvent()
 			link.l1 = "Thanks, Mechanic! I am going to dive now.";
 			link.l1.go = "immersion_next_1";
 		break;
-		// блок погружений
 		
-	//--------------------------------------вернулся на Остров---------------------------------------------
+		
+	
 		case "return":
 			dialog.text = "Wait a second please! What statue? A-ah, I get it now. You mean that idol in the sunken ship San-Geronimo, do you? So those Rivados tales are true?";
 			link.l1 = "Exactly! And there are no tales. I know two more idols at the archipelago which teleport people who touch them by circle.";
@@ -612,11 +612,11 @@ void ProcessDialogEvent()
 			DialogExit();
 			AddQuestRecord("LSC", "26");
 			npchar.quest.return_isl = "true";
-			npchar.quest.guarantee = "true"; // залог за скафандр
+			npchar.quest.guarantee = "true"; 
 			NextDiag.CurrentNode = "First time";
 		break;
-//----------------------------------------- специальные реакции -----------------------------------------------
-		//обнаружение ГГ в сундуках
+
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
 			link.l1 = "Damn it!";
@@ -644,7 +644,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//замечание по обнаженному оружию
+		
 		case "LSCNotBlade":
 			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
 			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
@@ -666,7 +666,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;
-// <-- специальные реакции
+
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

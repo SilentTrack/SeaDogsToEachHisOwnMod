@@ -50,7 +50,7 @@ void ProcessDialogEvent()
     			arDis = GetAttributeN(arRld, i);
     			if (arDis.go == npchar.location)
     			{
-					arDis.disable = true; //закрываем вход в дом
+					arDis.disable = true; 
 					break;
     			}
     		}
@@ -70,7 +70,7 @@ void ProcessDialogEvent()
     			arDis = GetAttributeN(arRld, i);
     			if (arDis.go == npchar.location)
     			{
-					arDis.disable = true; //закрываем вход в дом
+					arDis.disable = true; 
 					break;
     			}
     		}
@@ -79,7 +79,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 
-		//--------------------------------- мужик ---------------------------------
+		
 		case "HouseMan":
 			NextDiag.TempNode = "HouseMan";
 			if (LAi_grp_playeralarm > 0)
@@ -145,7 +145,7 @@ void ProcessDialogEvent()
 			link.l1 = "Aaaah, devil!!!";
 			link.l1.go = "fight";
 		break;
-		// --------------------------------- баба ---------------------------------
+		
 		case "HouseWoman":
 			NextDiag.TempNode = "HouseWoman";
 			if (LAi_grp_playeralarm > 0)
@@ -220,7 +220,7 @@ void ProcessDialogEvent()
 			LAi_group_Attack(NPChar, Pchar);
 			if (rand(3) != 1) SetNationRelation2MainCharacter(sti(npchar.nation), RELATION_ENEMY);
 		break; 
-		//--------------------------------- завсклад ---------------------------------		
+		
 		case "SkladMan":
 			NextDiag.TempNode = "SkladMan1";
 			if (LAi_grp_playeralarm > 0)
@@ -267,14 +267,14 @@ void ProcessDialogEvent()
 				"I see...", 
 				"Yeah, that sounds like a problem.", npchar, Dialog.CurrentNode);	
 			link.l1.go = DialogGoNodeRepeat("exit", "exit", "exit", "exit", npchar, Dialog.CurrentNode);				
-			//открывание двери верфи по квесту промышленного шпионажа
+			
 			if (CheckAttribute(pchar, "questTemp.different.ShipyardsMap") && pchar.questTemp.different.ShipyardsMap == "toTarget" && npchar.city == pchar.questTemp.different.ShipyardsMap.city && locations[reload_cur_location_index].type == "shipyard")
 			{
 				link.l2 = "Listen, buddy, I wanted to talk to you openly.";
 				link.l2.go = "ShipyardsMap_1";
 				pchar.questTemp.different.ShipyardsMap = "toResult";					
 			}
-			// ugeen --> склад товаров для ГГ				
+			
 			if(CheckAttribute(NPChar,"Storage"))
 			{
 				if(!CheckAttribute(NPChar, "Storage.Speak"))
@@ -301,11 +301,11 @@ void ProcessDialogEvent()
 						}						
 					}
 				}		
-			// <-- ugeen
+			
 			}		
 		break;
 		
-		//--------------------------------- Аренда склада ---------------------------------
+		
 		case "storage_rent":
 			NPChar.Storage.Speak = true;
 			dialog.text = "We have an area suitable as a storehouse? Would you like to rent it for a reasonable price. Just think - you'd have your own storehouse...";
@@ -460,7 +460,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;		
 
-		//--------------------------------- Аренда склада ---------------------------------
+		
 		
 		case "ShipyardsMap_1":
 			dialog.text = "Heh! Alright, let's talk.";
@@ -508,7 +508,7 @@ void ProcessDialogEvent()
 			AddMoneyToCharacter(pchar, -sti(pchar.questTemp.different.ShipyardsMap.sklad)*1000);
 			AddQuestRecord("ShipyardsMap", "5");
 			AddQuestUserData("ShipyardsMap", "sCity", XI_ConvertString("Colony" + npchar.city + "Gen"));
-			//снимаем close_for_night
+			
 			string  sName;
 			int location_index = FindLocation(npchar.city + "_town");
     		makearef(arRld, Locations[location_index].reload);
@@ -524,9 +524,10 @@ void ProcessDialogEvent()
     			}
     		}
 			LocatorReloadEnterDisable(npchar.city + "_shipyard", "reload2", true);
-			//ставим таймер на возврат close_for_night
+			
 			SetTimerFunction("ShipyardsMap_returnCFN", 0, 0, 2);
 		break;
 
 	}
 }
+

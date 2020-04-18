@@ -1,4 +1,4 @@
-// Соукинс в Пуэрто-Принсипе
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -13,7 +13,7 @@ void ProcessDialogEvent()
 
 	switch(Dialog.CurrentNode)
 	{
-		// ----------------------------------- Диалог первый - первая встреча
+		
 		case "First time":
             dialog.text = "Got any work for me?";
 			link.l1 = "I am leaving already.";
@@ -61,7 +61,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
 
-		//zagolski. начальный квест за пирата ===================================
+		
 		case "pirateStartQuest":
 			dialog.text = "Hm.. A work, you've said? Actually it's good that you have asked me. I need a man from aside. I want to find out something in the nearest town but my men are known there. Can't promise you a lot but you will get something.";
 			link.l1 = "Nice. What's the mission?";
@@ -115,7 +115,7 @@ void ProcessDialogEvent()
 			pchar.questTemp.pirateStartQuest.many = "";
 		break;
 
-		//------------------------------------
+		
 		case "pirateStartQuest_info_1":
 			dialog.text = "Ha! An excellent news! I was sure that you'll make it. I have got some intriguing information.";
 			link.l1 = "I have done my work. I want to have my ten thousands.";
@@ -162,3 +162,4 @@ void ProcessDialogEvent()
 
 	}
 }
+

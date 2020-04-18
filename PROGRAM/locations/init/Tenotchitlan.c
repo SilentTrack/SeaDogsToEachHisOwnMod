@@ -1,22 +1,22 @@
 
 int LocationInitTenotchitlan(int n)
 {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Теночтитлан
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли  ----------- ход к пирамиде и жемчужным промыслам из бухты Аматике (shore9)
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Tenotchitlan_Jungle_01";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Tenotchitlan";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle1\";
 	Locations[n].models.always.jungle = "jungle1";
 	Locations[n].models.always.locators = "jungle1_locators";		
@@ -31,16 +31,16 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle1_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
-	locations[n].reload.l1.go = "Pearl_Jungle_04"; //жемчужный берег
+	locations[n].reload.l1.go = "Pearl_Jungle_04"; 
 	locations[n].reload.l1.emerge = "reload1";
 	locations[n].reload.l1.autoreload = "1";
 	locations[n].reload.l1.label = "Jungle";
@@ -53,19 +53,19 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l2.label = "Jungle";
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Tenotchitlan_Jungle_02";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Tenotchitlan";
 	locations[n].questflower = 1;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle3";
 	Locations[n].models.always.jungle = "jungle3";	
 	Locations[n].models.always.locators = "jungle3_locators";		
@@ -80,14 +80,14 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle3_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle3_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Tenotchitlan_Jungle_01";
 	locations[n].reload.l1.emerge = "reload2";
@@ -96,7 +96,7 @@ int LocationInitTenotchitlan(int n)
 	locations[n].locators_radius.reload.reload1_back = 2.0;
 
 	locations[n].reload.l2.name = "reload2_back";
-	locations[n].reload.l2.go = "Tenotchitlan_Jungle_03";       // на Shore9
+	locations[n].reload.l2.go = "Tenotchitlan_Jungle_03";       
 	locations[n].reload.l2.emerge = "reload2";
 	locations[n].reload.l2.autoreload = "1";
 	locations[n].reload.l2.label = "Jungle";
@@ -109,18 +109,18 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l3.label = "Jungle";
 	locations[n].locators_radius.reload.reload3_back = 2.0;
 	n = n + 1;
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Пирамида
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	Locations[n].id = "Temple";
 	Locations[n].image = "loading\outside\temple.tga";
-	//Sound
+	
 	locations[n].type = "teno";
 	locations[n].id.label = "Incas Temple";
  	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Tenotchitlan";
-	//Models
-	//Always
+	
+	
 	Locations[n].filespath.models = "locations\Outside\pyramid1\";
 	Locations[n].models.always.pyramid1 = "pyramid1";
 	locations[n].models.always.pyramid1.sea_reflection = 1;
@@ -142,7 +142,7 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l4 = "plan4";
 	Locations[n].models.always.l4.level = 99945;
 	Locations[n].models.always.l4.tech = "LocationModelBlend";	
-	//Waterfall
+	
 	Locations[n].models.always.Waterfall1 = "waterfall1";
 	Locations[n].models.always.Waterfall1.uvslide.v0 = 0.2;
     Locations[n].models.always.Waterfall1.uvslide.v1 = 0.0;
@@ -154,14 +154,14 @@ int LocationInitTenotchitlan(int n)
     Locations[n].models.always.Waterfall2.uvslide.v1 = 0.0;
 	Locations[n].models.always.Waterfall2.tech = "LocationWaterFall";
 	Locations[n].models.always.Waterfall2.level = 99949;	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "pyramid1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "pyramid1_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	Locations[n].reload.l1.name = "reload1_back";
 	Locations[n].reload.l1.go = "Tenotchitlan_Jungle_02";
 	Locations[n].reload.l1.emerge = "reload3";
@@ -175,34 +175,34 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].reload.l2.disable = true;
 	Locations[n].locators_radius.item.item1 = 0.9;
 	n = n + 1;
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Пирамида Старая Изнутри
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	Locations[n].id = "Temple_Inside";
 	locations[n].id.label = "Pyramid1Inside";
 	Locations[n].image = "loading\outside\TempleInside.tga";	
-	//Sound
+	
 	locations[n].type = "teno_inside";
 	locations[n].id.label = "Incas Temple";
  	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Tenotchitlan";
-	//Models
-	//Always
+	
+	
 	Locations[n].filespath.models = "Locations\Inside\Pyramid1Inside\";
-	//Always	
+	
 	Locations[n].models.always.pyramid1 = "Pyramid1Inside";
 	Locations[n].models.always.locators = "Pyramid1Inside_locators";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Pyramid1Inside_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Pyramid1Inside_patch";			
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	Locations[n].reload.l1.name = "reload1";
 	Locations[n].reload.l1.go = "Temple";
 	Locations[n].reload.l1.emerge = "reload2";
@@ -210,18 +210,18 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].locators_radius.item.item1 = 1.1;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Tenotchitlan_Jungle_03";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Tenotchitlan";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle7";
 	Locations[n].models.always.jungle = "jungle7";	
 	Locations[n].models.always.locators = "jungle7_locators";		
@@ -236,16 +236,16 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle7_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle7_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
-	locations[n].reload.l1.go = "Beliz_jungle_02"; //из Белиза от бухты Аматике
+	locations[n].reload.l1.go = "Beliz_jungle_02"; 
 	locations[n].reload.l1.emerge = "reload2";
 	locations[n].reload.l1.autoreload = "1";
 	locations[n].reload.l1.label = "Jungle";
@@ -266,18 +266,18 @@ int LocationInitTenotchitlan(int n)
 	locations[n].locators_radius.reload.reload3_back = 2;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Вход в пещеру
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Tenotchitlan_CaveEntrance";
 	locations[n].id.label = "Cave entrance";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Tenotchitlan";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt2";
 	Locations[n].models.always.caveEnt2 = "caveEnt2";	
 	Locations[n].models.always.locators = "caveEnt2_locators";		
@@ -295,14 +295,14 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l4 = "plan4";
 	Locations[n].models.always.l4.level = 6;
 	Locations[n].models.always.l4.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "caveEnt2_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "caveEnt2_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l3.name = "reload1_back";
 	locations[n].reload.l3.go = "Tenotchitlan_Cave";
 	locations[n].reload.l3.emerge = "reload1";
@@ -318,18 +318,18 @@ int LocationInitTenotchitlan(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Пещера
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Tenotchitlan_Cave";
 	locations[n].id.label = "Cave";
 	locations[n].image = "loading\inside\cave.tga";
-	//Sound
+	
 	locations[n].type = "cave";
  	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Tenotchitlan";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\cavernMedium1";
 	locations[n].models.always.cavernMedium1 = "cavernMedium1";
 	locations[n].models.always.cavernMedium1.sea_reflection = 1;
@@ -337,43 +337,37 @@ int LocationInitTenotchitlan(int n)
 	locations[n].models.always.locators = "cavernMedium1_locators";	
 
 	locations[n].locators_radius.item.duhi1 = 0.0;
-/*	
-	Locations[n].models.always.rays = "cavernMedium1_rays";
-	Locations[n].models.always.rays.level = 49;
-	Locations[n].models.always.rays.tech= "LocVisRays";
-	Locations[n].models.always.rays.uvslide.u1 = -0.03;
-	Locations[n].models.always.rays.uvslide.v1 = -0.03;	
-*/	
-	//Day
+ 	
+	
 	locations[n].models.day.charactersPatch = "cavernMedium1_patch";
 	Locations[n].models.day.jumpPatch = "CavernMedium1_jump";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "cavernMedium1_patch";
 	Locations[n].models.night.jumpPatch = "CavernMedium1_jump";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "true";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Tenotchitlan_CaveEntrance";
 	locations[n].reload.l1.emerge = "reload1";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Tenotchitlan_Jungle_05";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Tenotchitlan";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle1\";
 	Locations[n].models.always.jungle = "jungle1";
 	Locations[n].models.always.locators = "jungle1_locators";		
@@ -388,15 +382,15 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle1_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
-	locations[n].reload.l1.name = "reload1_back";    //на мыс Перлас
+	
+	locations[n].reload.l1.name = "reload1_back";    
 	locations[n].reload.l1.go = "Shore53";
 	locations[n].reload.l1.emerge = "reload1";
 	locations[n].reload.l1.autoreload = "1";
@@ -411,18 +405,18 @@ int LocationInitTenotchitlan(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
     locations[n].id = "Tenotchitlan_Jungle_06";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
- 	//Sound
+ 	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Tenotchitlan";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle8";
 	Locations[n].models.always.jungle = "jungle8";	
 	Locations[n].models.always.locators = "jungle8_locators";		
@@ -437,16 +431,16 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle8_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle8_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
-//	locations[n].reload.l1.go = "Tenochtitlan";
+
 	locations[n].reload.l1.go = "Mine_03";
 	locations[n].reload.l1.emerge = "reload1";
 	locations[n].reload.l1.autoreload = "1";
@@ -461,20 +455,20 @@ int LocationInitTenotchitlan(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Тайясаль
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Tenochtitlan";
 	locations[n].id.label = "Tenochtitlan";
 	locations[n].filespath.models = "locations\Tenochtitlan";
 	locations[n].image = "loading\outside\TenochtitlanCity.tga";
-	//Sound
+	
 	locations[n].type = "teno";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Tenotchitlan";
-	locations[n].changeAnimation = "man_A"; //сменить анимацию на обычную
-	//Models
-	//Always
+	locations[n].changeAnimation = "man_A"; 
+	
+	
 	locations[n].models.always.Tenochtitlan = "Tenochtitlan";
 	locations[n].models.always.reflect = "Tenochtitlan_reflect";
 	locations[n].models.always.reflect.sea_reflection = 1;
@@ -491,22 +485,22 @@ int LocationInitTenotchitlan(int n)
 	locations[n].models.always.plan.level = 10;
 	locations[n].models.always.plan = "plan4";
 	locations[n].models.always.plan.level = 9;	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Tenochtitlan_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Tenochtitlan_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l99.name = "reload1_back";
 	locations[n].reload.l99.go = "Tayasal_jungle_11";
 	locations[n].reload.l99.emerge = "reload3";
 	locations[n].reload.l99.autoreload = "1";
 	locations[n].locators_radius.reload.reload1_back = 2.0;
 	
-	// храмы богов майя
-	//---------- храм Тохила ----------
+	
+	
 	locations[n].reload.l1.name = "reloadTemple1";
 	locations[n].reload.l1.go = "Temple_1";
 	locations[n].reload.l1.emerge = "reload1";
@@ -523,7 +517,7 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l5.go = "Temple_1";
 	locations[n].reload.l5.emerge = "reload5";
 	
-	//---------- храм Кавиля ----------
+	
 	locations[n].reload.l6.name = "reloadTemple6";
 	locations[n].reload.l6.go = "Temple_2";
 	locations[n].reload.l6.emerge = "reload1";
@@ -540,7 +534,7 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l10.go = "Temple_2";
 	locations[n].reload.l10.emerge = "reload5";
 	
-	//---------- храм Чака ----------
+	
 	locations[n].reload.l11.name = "reloadTemple11";
 	locations[n].reload.l11.go = "Temple_3";
 	locations[n].reload.l11.emerge = "reload1";
@@ -557,7 +551,7 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l15.go = "Temple_3";
 	locations[n].reload.l15.emerge = "reload5";
 	
-	//---------- храм Кинич-Ахау ----------
+	
 	locations[n].reload.l16.name = "reloadTemple16";
 	locations[n].reload.l16.go = "Temple_4";
 	locations[n].reload.l16.emerge = "reload1";
@@ -574,7 +568,7 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l20.go = "Temple_4";
 	locations[n].reload.l20.emerge = "reload5";
 	
-	//---------- храм Ицамны ----------
+	
 	locations[n].reload.l21.name = "reloadTemple21";
 	locations[n].reload.l21.go = "Temple_5";
 	locations[n].reload.l21.emerge = "reload1";
@@ -591,7 +585,7 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l25.go = "Temple_5";
 	locations[n].reload.l25.emerge = "reload5";
 	
-	//---------- храм Эк-Чуах ----------
+	
 	locations[n].reload.l26.name = "reloadTemple26";
 	locations[n].reload.l26.go = "Temple_6";
 	locations[n].reload.l26.emerge = "reload1";
@@ -608,14 +602,14 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l30.go = "Temple_6";
 	locations[n].reload.l30.emerge = "reload5";
 	
-	//---------- круглый храм Кукулькана ----------
+	
 	locations[n].reload.l31.name = "reloadTemple31";
 	locations[n].reload.l31.go = "Temple_round";
 	locations[n].reload.l31.emerge = "reload1";
 	locations[n].reload.l31.disable = true;
 
-	//---------- храм большой ----------
-	// верхний вход
+	
+	
 	locations[n].reload.l32.name = "reloadTemple32";
 	locations[n].reload.l32.go = "Temple_great";
 	locations[n].reload.l32.emerge = "reload1";
@@ -628,7 +622,7 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l34.go = "Temple_great";
 	locations[n].reload.l34.emerge = "reload3";
 	locations[n].reload.l34.disable = true;
-	// нижний правый вход
+	
 	locations[n].reload.l35.name = "reloadTemple41";
 	locations[n].reload.l35.go = "Temple_great";
 	locations[n].reload.l35.emerge = "reload4";
@@ -638,7 +632,7 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l37.name = "reloadTemple43";
 	locations[n].reload.l37.go = "Temple_great";
 	locations[n].reload.l37.emerge = "reload6";
-	// нижний левый вход
+	
 	locations[n].reload.l38.name = "reloadTemple38";
 	locations[n].reload.l38.go = "Temple_great";
 	locations[n].reload.l38.emerge = "reload11";
@@ -649,7 +643,7 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l40.go = "Temple_great";
 	locations[n].reload.l40.emerge = "reload7";
 	
-	//---------- сокровищница ----------
+	
 	locations[n].reload.l41.name = "reloadTemple35";
 	locations[n].reload.l41.go = "Temple_Treasure";
 	locations[n].reload.l41.emerge = "reload1";
@@ -663,7 +657,7 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l43.emerge = "reload1";
 	locations[n].reload.l43.disable = true;
 	
-	//---------- подводные лабиринты ----------
+	
 	locations[n].reload.l44.name = "reloadU1_back";
 	locations[n].reload.l44.go = "Temple_Underwater_right";
 	locations[n].reload.l44.emerge = "reload1";
@@ -679,31 +673,31 @@ int LocationInitTenotchitlan(int n)
 	locations[n].DisableOfficers = "1";
 	
 	n = n + 1;
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Храмы богов
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//----------------- Храм Кавиля ------------------------	
+	
+	
+	
+	
 	locations[n].id = "Temple_1";
 	locations[n].id.label = "Temple_1";
 	locations[n].filespath.models = "locations\TenochtitlanInside\TemplePointInside";
 	locations[n].image = "loading\outside\TempleInside.tga";
-	//Sound
+	
 	locations[n].type = "teno_inside";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.TemplePointInside = "TemplePointInside";
 	locations[n].models.always.locators = "TemplePointInside_locators";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "TemplePointInside_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "TemplePointInside_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Tenochtitlan";
 	locations[n].reload.l1.emerge = "reloadTemple1";
@@ -723,28 +717,28 @@ int LocationInitTenotchitlan(int n)
 	locations[n].DisableOfficers = "1";
 	n = n + 1;
 	
-	//----------------- Храм Тохила ------------------------
+	
 	locations[n].id = "Temple_2";
 	locations[n].id.label = "Temple_2";
 	locations[n].filespath.models = "locations\TenochtitlanInside\TemplePointInside";
 	locations[n].image = "loading\outside\TempleInside.tga";
-	//Sound
+	
 	locations[n].type = "teno_inside";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.TemplePointInside = "TemplePointInside";
 	locations[n].models.always.locators = "TemplePointInside_locators";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "TemplePointInside_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "TemplePointInside_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Tenochtitlan";
 	locations[n].reload.l1.emerge = "reloadTemple6";
@@ -764,28 +758,28 @@ int LocationInitTenotchitlan(int n)
 	locations[n].DisableOfficers = "1";
 	n = n + 1;
 	
-	//----------------- Храм Чака ------------------------
+	
 	locations[n].id = "Temple_3";
 	locations[n].id.label = "Temple_3";
 	locations[n].filespath.models = "locations\TenochtitlanInside\TemplePointInside";
 	locations[n].image = "loading\outside\TempleInside.tga";
-	//Sound
+	
 	locations[n].type = "teno_inside";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.TemplePointInside = "TemplePointInside";
 	locations[n].models.always.locators = "TemplePointInside_locators";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "TemplePointInside_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "TemplePointInside_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Tenochtitlan";
 	locations[n].reload.l1.emerge = "reloadTemple11";
@@ -805,28 +799,28 @@ int LocationInitTenotchitlan(int n)
 	locations[n].DisableOfficers = "1";
 	n = n + 1;
 	
-	//----------------- Храм Кинич-Ахау ------------------------
+	
 	locations[n].id = "Temple_4";
 	locations[n].id.label = "Temple_4";
 	locations[n].filespath.models = "locations\TenochtitlanInside\TemplePointInside";
 	locations[n].image = "loading\outside\TempleInside.tga";
-	//Sound
+	
 	locations[n].type = "teno_inside";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.TemplePointInside = "TemplePointInside";
 	locations[n].models.always.locators = "TemplePointInside_locators";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "TemplePointInside_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "TemplePointInside_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Tenochtitlan";
 	locations[n].reload.l1.emerge = "reloadTemple16";
@@ -846,28 +840,28 @@ int LocationInitTenotchitlan(int n)
 	locations[n].DisableOfficers = "1";
 	n = n + 1;
 	
-	//----------------- Храм Ицамны ------------------------
+	
 	locations[n].id = "Temple_5";
 	locations[n].id.label = "Temple_5";
 	locations[n].filespath.models = "locations\TenochtitlanInside\TemplePointInside";
 	locations[n].image = "loading\outside\TempleInside.tga";
-	//Sound
+	
 	locations[n].type = "teno_inside";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.TemplePointInside = "TemplePointInside";
 	locations[n].models.always.locators = "TemplePointInside_locators";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "TemplePointInside_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "TemplePointInside_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Tenochtitlan";
 	locations[n].reload.l1.emerge = "reloadTemple21";
@@ -887,28 +881,28 @@ int LocationInitTenotchitlan(int n)
 	locations[n].DisableOfficers = "1";
 	n = n + 1;
 	
-	//----------------- Храм Эк-Чуах ------------------------
+	
 	locations[n].id = "Temple_6";
 	locations[n].id.label = "Temple_6";
 	locations[n].filespath.models = "locations\TenochtitlanInside\TemplePointInside";
 	locations[n].image = "loading\outside\TempleInside.tga";
-	//Sound
+	
 	locations[n].type = "teno_inside";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.TemplePointInside = "TemplePointInside";
 	locations[n].models.always.locators = "TemplePointInside_locators";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "TemplePointInside_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "TemplePointInside_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Tenochtitlan";
 	locations[n].reload.l1.emerge = "reloadTemple26";
@@ -927,35 +921,35 @@ int LocationInitTenotchitlan(int n)
 	
 	locations[n].DisableOfficers = "1";
 	n = n + 1;
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Большой Храм
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Temple_great";
 	locations[n].id.label = "TempleGreatInside";
 	locations[n].filespath.models = "locations\TenochtitlanInside\TempleGreatInside";
 	locations[n].image = "loading\outside\TempleInside.tga";
-	//Sound
+	
 	locations[n].type = "teno_inside";
-	locations[n].changeAnimation = "man_A"; //сменить анимацию на обычную
-	//Models
-	//Always
+	locations[n].changeAnimation = "man_A"; 
+	
+	
 	locations[n].models.always.TemplePointInside = "TempleGreatInside";
 	locations[n].models.always.locators = "TempleGreatInside_locators";	
 	Locations[n].models.always.disk = "destroyer";	
 	locations[n].models.always.disk.locator.group = "item";
 	locations[n].models.always.disk.locator.name = "button04";
 	Locations[n].models.always.button = "button03_border";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "TempleGreatInside_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "TempleGreatInside_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "true";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Tenochtitlan";
 	locations[n].reload.l1.emerge = "reloadTemple32";
@@ -978,7 +972,7 @@ int LocationInitTenotchitlan(int n)
 
 	locations[n].reload.l7.name = "reload11";
 	locations[n].reload.l7.go = "Tenochtitlan";
-	locations[n].reload.l7.emerge = "reloadTemple38"; // 090912
+	locations[n].reload.l7.emerge = "reloadTemple38"; 
 	locations[n].reload.l8.name = "reload8";
 	locations[n].reload.l8.go = "Tenochtitlan";
 	locations[n].reload.l8.emerge = "reloadTemple39";
@@ -1006,7 +1000,7 @@ int LocationInitTenotchitlan(int n)
 	locations[n].locators_radius.quest.detector3 = 2.0;
 	locations[n].locators_radius.item.item1 = 0.9;
 	
-	//каменные сундуки
+	
 	locations[n].private1.key = "stonekey";
 	locations[n].private1.items.talisman1 = 1;
 	locations[n].private1.items.totem_12 = 1;
@@ -1017,43 +1011,43 @@ int LocationInitTenotchitlan(int n)
 	locations[n].private1.items.cannabis1 = 20;
 	locations[n].private1.items.cannabis4 = 20;
 	locations[n].private1.items.cannabis7 = 5;
-	locations[n].private1.items.jewelry22 = 100; // всякое уже не очень нужное барахло
+	locations[n].private1.items.jewelry22 = 100; 
 	
 	locations[n].private2.key = "stonekey";
-	locations[n].private2.items.Tablet_1 = 1; // скрижаль Ицамны
+	locations[n].private2.items.Tablet_1 = 1; 
 
 	locations[n].private3.key = "stonekey";
-	locations[n].private3.items.Tablet_3 = 1; // скрижаль Чака
+	locations[n].private3.items.Tablet_3 = 1; 
 	
 	locations[n].DisableOfficers = "1";
 	n = n + 1;
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Круглый Храм Кукулькана - телепортатор в прошлое
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Temple_round";
 	locations[n].id.label = "TempleRoundInside";
 	locations[n].filespath.models = "locations\TenochtitlanInside\TempleRoundInside";
 	locations[n].image = "loading\outside\TempleInside.tga";	
-	//Sound
+	
 	locations[n].type = "teno_inside";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.TempleRoundInside = "TempleRoundInside";
 	locations[n].models.always.locators = "TempleRoundInside_locators";	
 	locations[n].models.always.dolly = "dolly_5";
 	locations[n].models.always.dolly.locator.group = "item";
 	locations[n].models.always.dolly.locator.name = "dolly";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "TempleRoundInside_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "TempleRoundInside_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Tenochtitlan";
 	locations[n].reload.l1.emerge = "reloadTemple31";
@@ -1063,18 +1057,18 @@ int LocationInitTenotchitlan(int n)
 	
 	locations[n].DisableOfficers = "1";
 	n = n + 1;
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Тайясаль сокровищница
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	Locations[n].id = "Temple_Treasure";
 	locations[n].id.label = "TempleTreasure";
 	Locations[n].image = "loading\outside\TempleInside.tga";
-	//Sound
+	
 	locations[n].type = "teno_inside";
-	//Models
-	//Always
+	
+	
 	Locations[n].filespath.models = "Locations\Inside\Pyramid1Inside\";
-	//Always
+	
 	Locations[n].models.always.pyramid1 = "Pyramid1Inside";
 	Locations[n].models.always.pyramid2 = "Pyramid1_treasure";
 	Locations[n].models.always.pyramid3 = "Pyramid1_other";
@@ -1082,22 +1076,22 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.pyramid1gold = "Pyramid1_gold";
 	Locations[n].models.always.pyramid1gold.reflection = 0.15;
 	Locations[n].models.always.pyramid1gold.tech = "EnvironmentShader";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Pyramid1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Pyramid1_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Tenochtitlan";
 	locations[n].reload.l1.emerge = "reloadTemple36";
 	
-	// лари, сундуки
+	
 	locations[n].private1.key = "stonekey";
 	locations[n].private1.items.icollection = 10;
 	locations[n].private1.items.jewelry14 = 500;
@@ -1188,35 +1182,35 @@ int LocationInitTenotchitlan(int n)
 	
 	locations[n].DisableOfficers = "1";
 	n = n + 1;
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Тайясаль Затопленный Храм левый
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	Locations[n].id = "Temple_Underwater_left";
 	locations[n].id.label = "TempleUnderwater";
 	Locations[n].image = "loading\outside\TempleInside.tga";
-	//Sound	
+	
 	locations[n].type = "underwater";
-	locations[n].changeAnimation = "swim"; //сменить анимацию на плавание
+	locations[n].changeAnimation = "swim"; 
 	locations[n].watertemple = true;
-	//Models
-	//Always
+	
+	
 	Locations[n].filespath.models = "Locations\TenochtitlanInside\TempleUnderwater\";
 	Locations[n].models.always.Temple = "TempleUnderwater";
 	Locations[n].models.always.reflect = "TempleUnderwater_reflect";
 	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.locators = "TempleUnderwater_locators";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "TempleUnderwater_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "TempleUnderwater_patch";			
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
 	locations[n].environment.weather.rain = false;
 	locations[n].underwater = true;
 	Locations[n].QuestlockWeather = "Underwater";
 	Locations[n].lockWeather = "Inside";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Tenochtitlan";
 	locations[n].reload.l1.emerge = "reloadU2";
@@ -1232,35 +1226,35 @@ int LocationInitTenotchitlan(int n)
 	
 	locations[n].DisableOfficers = "1";
 	n = n + 1;
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Тайясаль Затопленный Храм правый
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	Locations[n].id = "Temple_Underwater_right";
 	locations[n].id.label = "TempleUnderwater";
 	Locations[n].image = "loading\outside\TempleInside.tga";
-	//Sound	
+	
 	locations[n].type = "underwater";
-	locations[n].changeAnimation = "swim"; //сменить анимацию на плавание
+	locations[n].changeAnimation = "swim"; 
 	locations[n].watertemple = true;
-	//Models
-	//Always
+	
+	
 	Locations[n].filespath.models = "Locations\TenochtitlanInside\TempleUnderwater\";
 	Locations[n].models.always.Temple = "TempleUnderwater";
 	Locations[n].models.always.reflect = "TempleUnderwater_reflect";
 	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.locators = "TempleUnderwater_locators";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "TempleUnderwater_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "TempleUnderwater_patch";			
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
 	locations[n].environment.weather.rain = false;
 	locations[n].underwater = true;
 	Locations[n].QuestlockWeather = "Underwater";
 	Locations[n].lockWeather = "Inside";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Tenochtitlan";
 	locations[n].reload.l1.emerge = "reloadU1";
@@ -1276,20 +1270,20 @@ int LocationInitTenotchitlan(int n)
 	
 	locations[n].DisableOfficers = "1";
 	n = n + 1;
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли шахты
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
     locations[n].id = "Mine_01";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
- 	//Sound
+ 	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Tenotchitlan";
 	locations[n].DisableEncounters = true;
 	locations[n].mine_bandits = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle3";
 	Locations[n].models.always.jungle = "jungle3";	
 	Locations[n].models.always.locators = "Jungle3_mine_locators";		
@@ -1305,14 +1299,14 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	Locations[n].models.always.l4 = "Jungle3_wall";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle3_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle3_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload2_back";
 	locations[n].reload.l1.go = "Mine_04";
 	locations[n].reload.l1.emerge = "reload3";
@@ -1326,22 +1320,22 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l2.autoreload = "0";
 	locations[n].reload.l2.label = "Jungle";
 	locations[n].locators_radius.reload.reload3_back = 2.0;
-	Locations[n].reload.l2.disable = true; // закрыто до поры
+	Locations[n].reload.l2.disable = true; 
 	locations[n].locators_radius.item.detector1 = 5.0;
 	n = n + 1;
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
     locations[n].id = "Mine_02";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
- 	//Sound
+ 	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Tenotchitlan";
 	locations[n].DisableEncounters = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle4";
 	Locations[n].models.always.jungle = "jungle4";	
 	Locations[n].models.always.locators = "jungle4_locators";		
@@ -1356,14 +1350,14 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle4_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle4_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Mine_03"; 
 	locations[n].reload.l1.emerge = "reload2";
@@ -1385,19 +1379,19 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l3.label = "Jungle";
 	locations[n].locators_radius.reload.reload3_back = 2.0;
 	n = n + 1;
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
     locations[n].id = "Mine_03";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
- 	//Sound
+ 	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Tenotchitlan";
 	locations[n].DisableEncounters = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle3";
 	Locations[n].models.always.jungle = "jungle3";	
 	Locations[n].models.always.locators = "jungle3_locators";		
@@ -1412,14 +1406,14 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle3_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle3_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Tenotchitlan_Jungle_06"; 
@@ -1442,19 +1436,19 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l3.label = "Jungle";
 	locations[n].locators_radius.reload.reload3_back = 2.0;
 	n = n + 1;	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Mine_04";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Tenotchitlan";
 	locations[n].DisableEncounters = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle2";
 	Locations[n].models.always.jungle = "jungle2";	
 	Locations[n].models.always.locators = "jungle2_lSentMartin02";		
@@ -1474,14 +1468,14 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l4.locator.group = "reload";
 	Locations[n].models.always.l4.locator.name ="reloadW_back";	
 	Locations[n].models.always.l4.tech = "DLightModel";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle2_pSentMartin02";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle2_pSentMartin02";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Mine_02";  
 	locations[n].reload.l1.emerge = "reload2";
@@ -1503,9 +1497,9 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l3.label = "Jungle";
 	locations[n].locators_radius.reload.reload3_back = 2;
 	n = n + 1;
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Выход к шахте
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Mine_exit";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
@@ -1513,10 +1507,10 @@ int LocationInitTenotchitlan(int n)
 	locations[n].islandIdAreal = "Tenotchitlan";
 	locations[n].DisableEncounters = true;
 	locations[n].mine_bandits = true;
-	//Sound
+	
 	locations[n].type = "jungle";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\DuelField";
 	Locations[n].models.always.Mine_exit = "DuelField";	
 	Locations[n].models.always.locators = "duelfield_locators";		
@@ -1533,7 +1527,7 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	locations[n].models.always.l4 = "DuelField_plan";
 	locations[n].models.always.l5 = "duelfield_gate";
-	// пушки
+	
 	locations[n].models.always.Gun1 = "mortair";
 	Locations[n].models.always.Gun1.locator.group = "quest";
 	Locations[n].models.always.Gun1.locator.name = "gun1";
@@ -1555,23 +1549,23 @@ int LocationInitTenotchitlan(int n)
 	locations[n].models.always.I5 = "barrel";
 	Locations[n].models.always.I5.locator.group = "item";
 	Locations[n].models.always.I5.locator.name = "item5";
-	//Day
+	
 	locations[n].models.day.fonar = "duelfield_fd";
 	locations[n].models.day.charactersPatch = "duelfield_mortair_patch";
-	//Night
+	
 	locations[n].models.night.fonar = "duelfield_fn";
 	locations[n].models.night.charactersPatch = "duelfield_mortair_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Mine";  
 	locations[n].reload.l1.emerge = "reload1";
 	locations[n].reload.l1.autoreload = "0";
 	locations[n].reload.l1.label = "jungle";
 	locations[n].locators_radius.reload.reload1_back = 2;
-	Locations[n].reload.l1.disable = true; // закрыто до поры
+	Locations[n].reload.l1.disable = true; 
 
 	locations[n].reload.l2.name = "reload2_back";
 	locations[n].reload.l2.go = "Mine_02"; 
@@ -1580,19 +1574,19 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l2.label = "jungle";
 	locations[n].locators_radius.reload.reload2_back = 2;
 	n = n + 1;
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Шахта бандитов
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Mine";
     locations[n].id.label = "mines";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Tenotchitlan";
     Locations[n].image = "loading\Mine.tga";
-    //Sound
+    
     locations[n].type = "jungle";
-    //Models
+    
 	locations[n].filespath.models = "Locations\Outside\Canyon";
-    //Always
+    
 	locations[n].models.always.Canyon = "Canyon";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
@@ -1604,16 +1598,16 @@ int LocationInitTenotchitlan(int n)
     locations[n].models.always.locators = "canyon_locators";
     locations[n].models.always.grassPatch = "canyon_grass";
 	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "canyon_patch";
 	locations[n].models.day.fonar = "canyon_fd";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "canyon_patch";
 	locations[n].models.night.fonar = "canyon_fn";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-    //Reload map	
+    
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Mine_exit";
     locations[n].reload.l1.emerge = "reload1";  
@@ -1655,38 +1649,32 @@ int LocationInitTenotchitlan(int n)
 	
 	n = n + 1;
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////
-	// шахта
-	///////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Mine_mines";
 	locations[n].id.label = "mines";
     locations[n].image = "loading\Mine.tga";
-	//Sound
+	
 	locations[n].type = "cave";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\DungeonDuffer2";
 	locations[n].models.always.DungeonDuffer2 = "DungeonDuffer2";
 	locations[n].models.always.locators = "MinentownMine_locators";
-/*	
-	Locations[n].models.always.rays = "DungeonDuffer2_rays";
-	Locations[n].models.always.rays.level = 49;
-	Locations[n].models.always.rays.tech= "LocVisRays";
-	Locations[n].models.always.rays.uvslide.u1 = -0.03;
-	Locations[n].models.always.rays.uvslide.v1 = -0.03;	
-*/	
-	//Day
+ 	
+	
 	locations[n].models.day.charactersPatch = "DungeonDuffer2_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "DungeonDuffer2_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "mine";
 	locations[n].reload.l1.emerge = "reload4";
@@ -1694,20 +1682,20 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l1.label = "mines";
 	n = n + 1;
 
-	/////////////////// Резиденция ////////////////////////////////////////////////////////////////////////////////////////////
+	
 	locations[n].id = "Mine_residence";
 	locations[n].id.label = "House";
 	locations[n].MustSetReloadBack = true;
 	locations[n].image = "loading\inside\SmallResidence.tga";
-	//Town sack
+	
 	locations[n].townsack = "";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "";
-	//Models
+	
 	locations[n].filespath.models = "locations\inside\SmallResidence";
-	//Always
+	
 	locations[n].models.always.house = "SmallResidence";
 	locations[n].models.always.house.level = 65538;
 	locations[n].models.always.window = "SmallResidence_windows";
@@ -1717,14 +1705,14 @@ int LocationInitTenotchitlan(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "SmallResidence_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "SmallResidence_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Mine";
 	locations[n].reload.l1.emerge = "reload5";
@@ -1735,3 +1723,4 @@ int LocationInitTenotchitlan(int n)
 	
 	return n;
 }
+

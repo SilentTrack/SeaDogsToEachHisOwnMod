@@ -1,4 +1,4 @@
-// Джон Мердок, он же Йохан ван Мерден, соратник Роденбурга
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -23,7 +23,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			break;
 		}
-		// продажа алхимического набора, если провалил гамбит
+		
 		if (CheckAttribute(pchar, "questTemp.HWIC.Detector") && !CheckAttribute(npchar, "quest.alchemy"))
 		{
 			bOk = (findsubstr(pchar.questTemp.HWIC.Detector, "_fail" , 0) != -1) || (pchar.questTemp.HWIC.Detector == "eng_win_half");
@@ -35,7 +35,7 @@ void ProcessDialogEvent()
 				break;
 			}
 		}
-		// Страж Истины
+		
 		if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "merdok1")
 		{
 			dialog.text = "Good afternoon. I am happy to welcome you in my drugstore. I have medicines to treat most diseases and infirmities. What can I offer you?";
@@ -43,7 +43,7 @@ void ProcessDialogEvent()
 			link.l1.go = "guardoftruth";
 			break;
 		}
-//-----------------------------------------за Голландию------------------------------------------------
+
 		if (CheckAttribute(pchar, "questTemp.HWIC.Holl"))
 		{
 			if (pchar.location.from_sea == "SentJons_town" && pchar.questTemp.HWIC.Holl == "toAntigua")
@@ -72,7 +72,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			break;
 		}
-//----------------------------------------------за Англию---------------------------------------------------
+
 			if (CheckAttribute(pchar, "questTemp.HWIC.Eng") && pchar.questTemp.HWIC.Eng == "MerdokMeeteng")
 			{
 			dialog.text = "Hello, uninvited guest. You do not cover your face with a mask and are not swift to attack. Therefore I come to a conclusion that you need something else from a poor druggist. Maybe, a diarrhoea mixture?";
@@ -80,7 +80,7 @@ void ProcessDialogEvent()
 			link.l1.go = "Merdok_talk";
 			break;
 			}
-//--------------------------------------------против всех--------------------------------------------------
+
 			if (CheckAttribute(pchar, "questTemp.HWIC.Self"))
 			{
 				if (pchar.questTemp.HWIC.Self == "HuntFleetwood")
@@ -95,7 +95,7 @@ void ProcessDialogEvent()
 					dialog.text = "Hello! I am glad to see you, " + pchar.name + "!";
 					link.l1 = "Hello, John. Did you dig any dirt on Fleetwood?";
 					link.l1.go = "About_Fleetwood_9";
-					pchar.quest.Wait_FleetwoodOver.over = "yes"; //снять таймер
+					pchar.quest.Wait_FleetwoodOver.over = "yes"; 
 					break;
 				}
 				if (pchar.questTemp.HWIC.Self == "HWICSelf_fail")
@@ -179,7 +179,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 
-//--------------------------------------------за Голландию-----------------------------------------------------
+
 		case "Knippel_exit":
 			dialog.text = "I have no idea what you are talking about, sir. What Lucas Rodenburg? I have no dealings with the Dutch. You must have been mistaken.";
 			link.l1 = "How come? Mynheer Rodenburg sent me to you...";
@@ -217,24 +217,24 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Merdok_fight":
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешим драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			LAi_SetWarriorType(npchar);
 			LAi_group_MoveCharacter(npchar, "EnemyFight");
 			sld = characterFromId("Tonzag");
 			PlaySound("VOICE\Russian\hambit\Ercule Tongzag-04.wav");
 			LAi_SetWarriorType(sld);
 			LAi_group_MoveCharacter(sld, "EnemyFight");
-			//а вот и китаец нарисовался
+			
 			sld = characterFromId("Longway");
 			LAi_SetWarriorType(sld);
 			FantomMakeCoolFighter(sld, 18, 40, 40, "blade_08", "pistol1", "bullet", 70);
-			if (CheckAttribute(pchar, "questTemp.HWIC.Holl.LongwayEnemy"))//враг
+			if (CheckAttribute(pchar, "questTemp.HWIC.Holl.LongwayEnemy"))
 			{
 				ChangeCharacterAddressGroup(sld, "SentJons_TownCave", "monsters", "monster8");
 				LAi_group_MoveCharacter(sld, "EnemyFight");
 				PlaySound("VOICE\Russian\hambit\Longway-02.wav");
 			}
-			if (CheckAttribute(pchar, "questTemp.HWIC.Holl.LongwayFriend"))//друг
+			if (CheckAttribute(pchar, "questTemp.HWIC.Holl.LongwayFriend"))
 			{
 				LAi_warrior_DialogEnable(sld, true);
 				sld.Dialog.Filename = "Quest\HollandGambit\Longway.c";
@@ -243,7 +243,7 @@ void ProcessDialogEvent()
 				LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 				PlaySound("VOICE\Russian\hambit\Longway-02.wav");
 			}
-			if (CheckAttribute(pchar, "questTemp.HWIC.Holl.LongwayNeutral")) sld.lifeday = 0;//нейтрал - просто нет
+			if (CheckAttribute(pchar, "questTemp.HWIC.Holl.LongwayNeutral")) sld.lifeday = 0;
             LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
             LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
             LAi_group_SetCheck("EnemyFight", "Merdok_AfterBattle");
@@ -251,7 +251,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");	
 		break;
 		
-//-------------------------------------------------за Англию-----------------------------------------------------
+
 		case "Merdok_talk":
 			dialog.text = "Really? I thought that poor Gaston has been burning in hell for quite some time now.";
 			link.l1 = "Could well be. I found his head in a chest of an old Jew on the secret island. But he still managed to say hi to you and he also mentioned that we both have a common enemy since quite recently. Namely, Mr. Rodenburg. Tonzag said that you might have papers important to Lucas, which could lure him out of Curacao.";
@@ -278,7 +278,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Merdok_fightEng":
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешим драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			LAi_SetWarriorType(npchar);
 			LAi_group_MoveCharacter(npchar, "EnemyFight");	
 			sld = characterFromId("Longway");
@@ -294,7 +294,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");	
 		break;
 		
-//----------------------------------------против всех-------------------------------------------------------
+
 		case "MC_InHouse":
 			PlaySound("VOICE\Russian\hambit\John Mardock-02.wav");
 			dialog.text = "Finally, you've gotten on your feet. I feared that it was not going to happen any time soon.";
@@ -339,15 +339,15 @@ void ProcessDialogEvent()
 			DialogExit();
 			npchar.greeting = "merdok_2";
 			AddQuestRecord("Holl_Gambit", "3-12");
-			pchar.questTemp.HWIC.Self = "MainBegin";//новый флаг квеста
+			pchar.questTemp.HWIC.Self = "MainBegin";
 			sld = characterFromId("Bridgetown_tavernkeeper");
 			sld.model = "barmen_3";
 			sld.greeting = "barmen_1";
 			sld.name = "Harry";
-			sld.lastname = "Fletcher";//перерисуем бармена Бриджтауна
-			LocatorReloadEnterDisable("SentJons_HouseF3", "reload1", true);//закрыть выход из аптеки через дверь
-			LocatorReloadEnterDisable("SentJons_HouseF3", "reload2", false);//открыть подземелье из дома
-			LocatorReloadEnterDisable("SentJons_TownCave", "reload1_back", false);//открыть дом из подземелья
+			sld.lastname = "Fletcher";
+			LocatorReloadEnterDisable("SentJons_HouseF3", "reload1", true);
+			LocatorReloadEnterDisable("SentJons_HouseF3", "reload2", false);
+			LocatorReloadEnterDisable("SentJons_TownCave", "reload1_back", false);
 			pchar.quest.Tonzag_Meeting.win_condition.l1 = "location";
 			pchar.quest.Tonzag_Meeting.win_condition.l1.location = "SentJons_town";
 			pchar.quest.Tonzag_Meeting.win_condition.l2 = "Night";
@@ -408,8 +408,8 @@ void ProcessDialogEvent()
 			DialogExit();
 			pchar.questTemp.HWIC.Self = "WaitFleetwood";
 			SaveCurrentQuestDateParam("questTemp.Wait_Fleetwood");
-			SetFunctionTimerCondition("Wait_FleetwoodOver", 0, 0, 12, false);//чтобы не опаздывал
-			LocatorReloadEnterDisable("SentJons_HouseF3", "reload1", false);//открыть выход из аптеки
+			SetFunctionTimerCondition("Wait_FleetwoodOver", 0, 0, 12, false);
+			LocatorReloadEnterDisable("SentJons_HouseF3", "reload1", false);
 			AddQuestRecord("Holl_Gambit", "3-14");
 		break;
 		
@@ -463,7 +463,7 @@ void ProcessDialogEvent()
 			pchar.quest.Hunt_Knippel.win_condition.l1 = "location";
 			pchar.quest.Hunt_Knippel.win_condition.l1.location = "Curacao";
 			pchar.quest.Hunt_Knippel.function = "CreateKnippelShip";
-			LocatorReloadEnterDisable("SentJons_town", "houseH1", true);//закрыть хижину Чарли
+			LocatorReloadEnterDisable("SentJons_town", "houseH1", true);
 		break;
 		
 		case "About_Fleetwood_17":
@@ -521,9 +521,9 @@ void ProcessDialogEvent()
 			link.l1 = "Thank you John. I knew I could count on you.";
 			link.l1.go = "exit";
 			pchar.questTemp.HWIC.Self = "AbigileInCabin";
-			DoQuestCheckDelay("SetAbigileToCabin", 1.0); // fix 180812
+			DoQuestCheckDelay("SetAbigileToCabin", 1.0); 
 			AddQuestRecord("Holl_Gambit", "3-24");
-			//поставим табурет
+			
 			sld = ItemsFromID("lcheer");
 			sld.shown = true;
 			sld.startLocation = "SentJons_HouseF3";
@@ -582,7 +582,7 @@ void ProcessDialogEvent()
 		
 		case "Abigile_15":
 			dialog.text = "When are you going to hand him the letter? Are you really going to watch the delivery in progress?";
-			link.l1 = "Sure. Richard is not a fool, but I doubt that he will take chances. At least, I hope so. I don't want to hurt the girl. Well, it is time to find the drunkard you mentioned. Jack… what was his full name?";
+			link.l1 = "Sure. Richard is not a fool, but I doubt that he will take chances. At least, I hope so. I don't want to hurt the girl. Well, it is time to find the drunkard you mentioned. JackпїЅ what was his full name?";
 			link.l1.go = "Abigile_20";
 		break;
 		
@@ -631,7 +631,7 @@ void ProcessDialogEvent()
 				sld = GetCharacter(iTemp);
 				if(sti(RealShips[sti(sld.ship.type)].basetype) == SHIP_VALCIRIA) iVal = 1;
 				}
-			}//установили признак наличия Валькирии в эскадре.
+			}
 			if (iVal != 0)
 			{
 				dialog.text = "I am speechless! An excellent combination, a great idea and masterful implementation! My congratulations, " + pchar.name + "! And you've also managed to take his brig as a prize!";
@@ -712,7 +712,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Lucas_7":
-			dialog.text = "Hm… I do not posses such information. Wait! I know for sure that one military vessel of the Company is doing a fast voyage between Philipsburg and Willemstad one time in a month. She delivers business papers. A brigantine named Hoop.\nShe will leave Philipsburg today or tomorrow.";
+			dialog.text = "HmпїЅ I do not posses such information. Wait! I know for sure that one military vessel of the Company is doing a fast voyage between Philipsburg and Willemstad one time in a month. She delivers business papers. A brigantine named Hoop.\nShe will leave Philipsburg today or tomorrow.";
 			link.l1 = "Great! All I'll need to go to the shores of Saint Christopher. The naval route to Curacao lies right there.";
 			link.l1.go = "Lucas_8";
 		break;
@@ -737,14 +737,14 @@ void ProcessDialogEvent()
 			LAi_SetActorType(sld);
 			LAi_ActorDialog(sld, pchar, "", -1, 0);
 			AddQuestRecord("Holl_Gambit", "3-36");
-			//установим таймер на генерацию энкаунтера
+			
 			pchar.quest.HWIC_Cureer.win_condition.l1 = "Timer";
 			pchar.quest.HWIC_Cureer.win_condition.l1.date.hour  = sti(GetTime());
 			pchar.quest.HWIC_Cureer.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 1);
 			pchar.quest.HWIC_Cureer.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 1);
 			pchar.quest.HWIC_Cureer.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
 			pchar.quest.HWIC_Cureer.function = "CreateHWICCureerOnMap";
-			SetFunctionTimerCondition("HWICCureerOnMapOver", 0, 0, 16, false);//таймер
+			SetFunctionTimerCondition("HWICCureerOnMapOver", 0, 0, 16, false);
 		break;
 		
 		case "Lucas_10":
@@ -810,10 +810,10 @@ void ProcessDialogEvent()
 		case "Lucas_20":
 			DialogExit();
 			sld = characterFromId("Abigile");
-			ChangeCharacterAddressGroup(sld, "SentJons_church", "goto", "goto1");//Аби - в церковь
+			ChangeCharacterAddressGroup(sld, "SentJons_church", "goto", "goto1");
 			AddQuestRecord("Holl_Gambit", "3-56");
 			pchar.questTemp.HWIC.Self = "AbiReturnHome";
-			LocatorReloadEnterDisable("SentJons_town", "HouseF3", true);//закрыть аптеку
+			LocatorReloadEnterDisable("SentJons_town", "HouseF3", true);
 		break;
 		
 		case "Final":
@@ -835,17 +835,17 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Final_3":
-			GiveItem2Character(pchar, "Drugstore_keys");//ключ
+			GiveItem2Character(pchar, "Drugstore_keys");
 			dialog.text = "And also please accept this modest sum of 100 000 pesos and this musket. It faithfully served me once, and it will serve you well, too.";
 			link.l1 = "I am not rejecting such gifts!";
 			link.l1.go = "Final_4";
-			LocatorReloadEnterDisable("SentJons_town", "HouseF3", false);//открыть аптеку
-			LocatorReloadEnterDisable("SentJons_HouseF3", "reload3", false); // открыть комнату
+			LocatorReloadEnterDisable("SentJons_town", "HouseF3", false);
+			LocatorReloadEnterDisable("SentJons_HouseF3", "reload3", false); 
 			pchar.quest.Jino_Door.win_condition.l1 = "locator";
 			pchar.quest.Jino_Door.win_condition.l1.location = "SentJons_HouseF3";
 			pchar.quest.Jino_Door.win_condition.l1.locator_group = "reload";
 			pchar.quest.Jino_Door.win_condition.l1.locator = "reload4";
-			pchar.quest.Jino_Door.function = "OpenRoomDoor";//на локатор комнаты Джино
+			pchar.quest.Jino_Door.function = "OpenRoomDoor";
 			Achievment_SetStat(pchar, 10, 1);
 		break;
 		
@@ -880,7 +880,7 @@ void ProcessDialogEvent()
 			pchar.questTemp.HWIC.Detector = "self_win";
 		break;
 		
-		// Страж Истины
+		
 		case "guardoftruth":
 			dialog.text = "Ah, mister, don't listen to these foolish talks. There is nobody there. There is my laboratory, mixtures are being prepared, you know...";
 			link.l1 = "All kidding aside, John. Does the name of Gino Gvineili ring a bell?";
@@ -924,7 +924,7 @@ void ProcessDialogEvent()
 			LocatorReloadEnterDisable(pchar.location, "reload4", false);
 		break;
 		
-		// алхимический набор
+		
 		case "alchemy":
 			dialog.text = "Captain, wouldn't you like to become familiar with hermetic arts? This could come quite useful for you.";
 			link.l1 = "I am sorry, but my occupation is somewhat different. I am used to holding a sword hilt in my hand - not flasks or test tubes.";
@@ -990,13 +990,13 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//--> блок реагирования на попытку залезть в сундук
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("You are a "+ GetSexPhrase("thief, mister! Guards, take him","thief, girl! Guards, take her") +"!!!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest! Take the thief!!!", "Guards! Robbery! Take the thief!!!");
 			link.l1 = "Damn it!";
 			link.l1.go = "exit";
 			LAi_group_Attack(NPChar, Pchar);
 		break;
-		//<-- блок реагирования на попытку залезть в сундук
+		
 	}
 }

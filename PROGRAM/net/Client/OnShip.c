@@ -317,9 +317,9 @@ void NetClient_OnShipDead(int iMsg)
 	switch (iKillStatus)
 	{
 		case NETKILL_BY_BALL:
-			// if (bCriticalHit)
-			//	NetClient_ChatAddGameMessage("Net_ShipDieFromCriticalHit", rgbGameMessage, 2, wKillerID, wDeadID);
-			// else
+			
+			
+			
 			NetClient_ChatAddGameMessage("Net_ShipDieFromPlayer", rgbGameMessage, 2, wKillerID, wDeadID);
 		break;
 		case NETKILL_BY_ISLAND:
@@ -382,9 +382,9 @@ void NetClient_OnShipInfo(int iMsg)
 	float y = NMGetFloat(iMsg);
 	float z = NMGetFloat(iMsg);
 
-	//float sx = NMGetWord(iMsg) / 255.0;
-	//float sy = NMGetWord(iMsg) / (65535.0);
-	//float sz = NMGetWord(iMsg) / 255.0;
+	
+	
+	
 
 	float sx = NMGetFloat(iMsg);
 	float sy = NMGetFloat(iMsg);
@@ -395,20 +395,20 @@ void NetClient_OnShipInfo(int iMsg)
 	float fCrew = NMGetWord(iMsg);
 	int iBallsNum = NMGetWord(iMsg);
 
-	// statistic
+	
 	int iHits = NMGetWord(iMsg);
 	int iMisses = NMGetWord(iMsg);
 	float fDamageInflicted = NMGetFloat(iMsg);
 
-	// repair
+	
 	int iTotalCooldownTime = 0;
 	int iCurrentRepairTime = 0;
 	int iRepairActive = NMGetByte(iMsg);
-	//if (iRepairActive > 0)
-	//{
+	
+	
 		iTotalCooldownTime = NMGetWord(iMsg);
 		iCurrentRepairTime = NMGetWord(iMsg);
-	//}
+	
 
 	rClient.Ship.HP = fHP;
 	rClient.Ship.Crew.Quantity = fCrew;
@@ -438,7 +438,7 @@ void NetClient_OnShipInfo(int iMsg)
 
 void NetClient_Ship_PlaySound3DComplex(ref rClient, string sSoundID, float fVolume, float fX, float fY, float fZ)
 {
-	//return;
+	
 	float x = stf(rClient.Ship.Pos.x);
 	float y = stf(rClient.Ship.Pos.y);
 	float z = stf(rClient.Ship.Pos.z);
@@ -462,10 +462,10 @@ void NetClient_ShipUpdateSounds()
 
 	float fSailState = stf(rClient.Ship.SailState);
 
-	// start random sounds :: SAILS
+	
 	if (rand(40) <= fSailState * 5.0) { NetClient_Ship_PlaySound3DComplex(rClient, "sails_ambient" + sSeaSoundPostfix, fSailState * 0.5, 0.0, 0.0, 0.5 + frnd() * 0.0); }
 
-	// start random sounds :: SHIPS
+	
 	if (rand(2) == 1) { NetClient_Ship_PlaySound3DComplex(rClient, "squeak_sea" + sSeaSoundPostfix, 0.9, frnd() * 1.2 - 0.6, 0.0, frnd() * 1.6 - 0.8); }
 }
 
@@ -527,11 +527,11 @@ void NetClient_ShipDetonateSmall()
 		y1 = 1.0 + y + frnd() * 3.0;
 		Ship_Serious_Boom(x1 + x, y1, z1 + z);
 
-		//CreateParticleSystem("blast", x1 + x, y1, z1 + z, 0.0, 0.0, 0.0, 0);
+		
 	}
 }
 
-// Big Boom on ship
+
 void NetClient_ShipDetonate(ref rClient, bool bMakeSmallBoom)
 {
 	aref arClientShip; makearef(arClientShip, rClient.Ship);

@@ -1,11 +1,11 @@
 
-// Set characters initial data
+
 void CreateCharacters()
 {
  	ref ch;
 	int n;
 
-	//InitBio();
+	
 	
 
 	for(n=0; n<TOTAL_CHARACTERS; n++)
@@ -16,13 +16,13 @@ void CreateCharacters()
 
 	ReloadProgressUpdate();
 
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ПЕРВЫЙ ПЕРСОНАЖ - ПАРЕНЬ
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	makeref(ch,Characters[1]);		//Blaze Sharp
-	ch.name 	= "Блэйз";
-	ch.lastname = "Шарп";
+	
+	
+	
+	makeref(ch,Characters[1]);		
+	ch.name 	= "пїЅпїЅпїЅпїЅпїЅ";
+	ch.lastname = "пїЅпїЅпїЅпїЅ";
 	ch.id		= "Blaze";
 	ch.nation	= ENGLAND;
 	ch.model	= "devlin";
@@ -38,14 +38,14 @@ void CreateCharacters()
 	ch.reputation.authority = COMPLEX_REPUTATION_NEUTRAL;
 	ch.experience = 0;
 
-	ch.skill.freeskill = 0;// нет, все сам
+	ch.skill.freeskill = 0;
 	ch.perks.freepoints = 0;
 	ch.money = "0";
 	ch.timescale = 1;
 	ch.pause = 0;
 	ch.shotgun = "0";
-	ch.Ship.Type = GenerateShipExt(SHIP_LUGGER, 0, ch); // переопределяется ниже по коду от выбора гг
-	ch.Ship.Name = "Быстрый вепрь";
+	ch.Ship.Type = GenerateShipExt(SHIP_LUGGER, 0, ch); 
+	ch.Ship.Name = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ";
 	ch.Ship.Stopped = true;
 	ch.FaceId = 1;
 	ch.ShipSlot1.Type=SHIP_NOTUSED;
@@ -54,10 +54,10 @@ void CreateCharacters()
 	ch.ShipSlot2.Name="NoName";
 	ch.ShipSlot3.Type=SHIP_NOTUSED;
 	ch.ShipSlot3.Name="NoName";
-	ch.paymenttype = 50;  // to_do del
+	ch.paymenttype = 50;  
 	ch.repair = "0";
-	//ch.stealmoney = 0;
-	//ch.month.money = "0";
+	
+	
 	ch.colony_quantity = "0";
 	ch.quest.work = "0";
 	ch.quest.DeliveryTradeWork = "0";
@@ -73,15 +73,15 @@ void CreateCharacters()
 	ch.abordage = 0;
 	ch.isSmuggPossible = 1;
 	
-	// Награда за голову -->
+	
     ch.reputation.Enghunter = "-5";
     ch.reputation.Frahunter = "-5";
     ch.reputation.Spahunter = "-5";
     ch.reputation.Holhunter = "-5";
-    // Награда за голову <--
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ОСТАЛЬНЫЕ ПЕРСОНАЖИ
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+	
+	
+	
 
 	ReloadProgressUpdate();
 
@@ -199,20 +199,20 @@ void CreateCharacters()
 	Trace("Story: " + n);
 	
 	n = CreateOtherCharacters(n);
-	globalCharacters = n; //eddy. если лодочник выведен из конкурса, то и инкремент не нужен. иначе болтается левый нпс
+	globalCharacters = n; 
 	MAX_CHARACTERS = globalCharacters;
 	
-    trace("ВСЕГО НПС В ИГРЕ (статиков) = " + MAX_CHARACTERS);
+    trace("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ) = " + MAX_CHARACTERS);
     trace("Version = " + GetVerNum());
 	ReloadProgressUpdate();
 
-	SetMainCharacterIndex(1); // boal fix
+	SetMainCharacterIndex(1); 
 
-	//SetAllShipData();
-	//SetAllFellows();
+	
+	
 
-	//Post init
-	for(n=0; n<TOTAL_CHARACTERS; n++) // 1
+	
+	for(n=0; n<TOTAL_CHARACTERS; n++) 
 	{
 		ref rCharacter = GetCharacter(n);
 
@@ -234,21 +234,21 @@ void CreateCharacters()
 				rCharacter.model.height = 1.8;
 			}
 		}
-		// boal -->
+		
 		if (CheckAttribute(rCharacter, "City"))
         {
-			rCharacter.reputation = (1 + rand(44) + rand(44));// репа всем горожанам
+			rCharacter.reputation = (1 + rand(44) + rand(44));
         }
         if (CheckAttribute(rCharacter, "Dialog.Filename") && rCharacter.Dialog.Filename == "Common_Shipyard.c")
 		{
 			rCharacter.ShipCostRate = 0.8 + frnd()*0.4;
 		}
-        // boal <--
+        
 		rCharacter.FaceGroup = 0;
 
-		// set fellows
+		
 		if (CheckAttribute(rCharacter,"fellows")) { SetBaseFellows(rCharacter); }
-		// set base ship data
+		
 		SetBaseShipData(rCharacter);
 
 		if(n > 1) rCharacter.FaceId = 0;
@@ -295,20 +295,20 @@ void CreateCharacters()
 
 	ReloadProgressUpdate();
 	
-	//Characters[GetCharacterIndex("Beatriss")].model.animation = "woman";
+	
 	Characters[GetCharacterIndex("Blaze")].model.animation = "Blaze";
 
-	// boal -->
-	initStartState2Character(pchar); // заполнение всяких инитов
 	
-	NullCharacter.id       = "none"; // заглушка
+	initStartState2Character(pchar); 
+	
+	NullCharacter.id       = "none"; 
 	NullCharacter.location = "none";
 	NullCharacter.BaseCRC = 1 + rand(5);
 	NullCharacter.SystemInfo.itemsCRC = CheckItemsCRC(&NullCharacter);
 
-	NullCharacter.SalayPayMonth = STARTGAME_MONTH; //месяц когда ЗП уже плотили
+	NullCharacter.SalayPayMonth = STARTGAME_MONTH; 
 	
-	// карты, деньги, два ствола... boal 16/05/05
+	
 	NullCharacter.Cards.c1.pic = "hearts_A";
 	NullCharacter.Cards.c1.count = 11;
 	NullCharacter.Cards.c2.pic = "hearts_K";
@@ -385,7 +385,7 @@ void CreateCharacters()
 	NullCharacter.Cards.c35.pic = "clubs_6";
 	NullCharacter.Cards.c35.count = 6;
 	
-	// ограничения по типам ГГ в специал
+	
 	NullCharacter.HeroLimitSPEC.SecretAgent.Max_Strength = 8;
 	NullCharacter.HeroLimitSPEC.SecretAgent.Max_Perception = 8;
 	NullCharacter.HeroLimitSPEC.SecretAgent.Max_Endurance = 8;
@@ -410,8 +410,8 @@ void CreateCharacters()
 	NullCharacter.HeroLimitSPEC.Inquisitor.Max_Intellect = 8;
 	
 	InitRPGType();
-	// boal <--
-	// зават городов -->
+	
+	
     NullCharacter.GenQuestFort.Bridgetown.how        = 3;
     NullCharacter.GenQuestFort.Bridgetown.howSolder  = 3;
 	NullCharacter.GenQuestFort.Bridgetown.next0  = "Bridgetown_town";
@@ -568,7 +568,7 @@ void CreateCharacters()
     NullCharacter.GenQuestFort.SanAndres.next1  = "SanAndres_townhall";
     NullCharacter.GenQuestFort.SanAndres.next2  = "SanAndres_ExitTown";
 
-	// зават городов <--
+	
 }
 
 void SetAllShipData()

@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,7 +9,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Not now. There is no time."), "True... But later, not now...",
                       "I'll ask, I'll ask... a bit later though...", "I am sorry, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);			  
 			link.l1.go = "exit";
-			//Португалец
+			
 			if (CheckAttribute(pchar, "questTemp.Portugal.Villemstad"))
 			{
 				link.l1 = "I know that the Dutch West India Company has assigned a good price for the head of the one pirate - Bartolomeo the Portuguese. I was able to capture him. He is currently in my ship's cargo and I am ready to hand him over to the authorities.";
@@ -24,7 +24,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             NextDiag.TempNode = "Cupture_after";
 		break;
 		
-		//Португалец
+		
 		case "Portugeze":
 			dialog.text = "Bart the Portuguese?! Do you have him? Alive?";
 			link.l1 = "I know that you doesn't need him dead. He is alive. And, damn, I have had to put a lot of effort to keep him that way!";
@@ -58,5 +58,5 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			DeleteAttribute(pchar, "questTemp.Portugal.Villemstad");
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }

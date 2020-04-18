@@ -528,7 +528,7 @@ string FindRussianMoneyString(int imoney)
 	return sMoney;
 }
 
-// eddy. такой код наверное лучше, чем выше на три экрана :)
+
 string FindRussianQtyString(int _iQty)
 {
     string sTemp;
@@ -550,7 +550,7 @@ string FindRussianQtyString(int _iQty)
     sTemp = _iQty + " " + sTemp;
     return sTemp;
 }
-//eddy. мес€цы
+
 string FindRussianMonthString(int _Month)
 {
     string sTemp;

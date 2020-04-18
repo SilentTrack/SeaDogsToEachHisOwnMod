@@ -1,4 +1,4 @@
-// аббат Бенуа
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -14,7 +14,7 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			if (CheckAttribute(pchar, "questTemp.Sharlie.BenuaLoan.Late")) // Addon 2016-1 Jason пиратская линейка 1
+			if (CheckAttribute(pchar, "questTemp.Sharlie.BenuaLoan.Late")) 
 			{
 				dialog.text = "It`s good to see you, my son.  You are here to wipe away your debt?";
 				if (GetCharacterItem(pchar, "gold_dublon") >= 100 && sti(pchar.money) >= 50000)
@@ -37,12 +37,12 @@ void ProcessDialogEvent()
 				break;
 			}
 			dialog.text = "Is there something you need, my son?";
-			if (CheckAttribute(pchar, "questTemp.Sharlie.FastStart") && !CheckAttribute(npchar, "quest.FastStart") && !CheckAttribute(npchar, "quest.meet")) // еще не виделись
+			if (CheckAttribute(pchar, "questTemp.Sharlie.FastStart") && !CheckAttribute(npchar, "quest.FastStart") && !CheckAttribute(npchar, "quest.meet")) 
 			{
 				link.l1 = "Yes, pater. I need your help. My name is "+GetFullName(pchar)+". Michelle de Monper advised me to talk to you.";
 				link.l1.go = "FastStart";
 			}
-			if (CheckAttribute(npchar, "quest.help") && !CheckAttribute(npchar, "quest.meet")) // еще не виделись
+			if (CheckAttribute(npchar, "quest.help") && !CheckAttribute(npchar, "quest.meet")) 
 			{
 				link.l1 = "Yes, father. I need your help.  My name is "+GetFullName(pchar)+". I was advised to talk to you by my brother, Michel de Monper.";
 				link.l1.go = "meet";
@@ -194,7 +194,7 @@ void ProcessDialogEvent()
 			CloseQuestHeader("Sharlie");
 			AddQuestRecord("Guardoftruth", "1");
 			pchar.questTemp.Guardoftruth = "begin";
-			// ставим пленного испанца
+			
 			sld = GetCharacter(NPC_GenerateCharacter("spa_baseprisoner", "q_spa_off_1", "man", "man", 30, SPAIN, -1, true, "quest"));
 			FantomMakeCoolFighter(sld, 30, 80, 80, "blade_13", "pistol1", "bullet", 150);
 			sld.dialog.FileName = "Quest\Sharlie\Guardoftruth.c";
@@ -203,10 +203,10 @@ void ProcessDialogEvent()
 			LAi_SetStayType(sld);
 			LAi_SetImmortal(sld, true);
 			ChangeCharacterAddressGroup(sld, "Fortfrance_dungeon", "quest", "quest1");
-			LAi_CharacterDisableDialog(sld);//запрет диалога
+			LAi_CharacterDisableDialog(sld);
 		break;
 		
-		// уменьшение награды за голову
+		
 		case "meet":
 			dialog.text = "Michel de Monper's brother? De Maure? How strange...";
 			link.l1 = "I understand your doubts, father. We simply have different fathers. My father is Henry de Monper.";
@@ -249,7 +249,7 @@ void ProcessDialogEvent()
 			link.l9.go = "exit";
 		break;
 		
-		case "relation_spa": // patch-10
+		case "relation_spa": 
 			pchar.GenQuest.BenuaNation = SPAIN;
 			dialog.text = "So, the noble seniors are eager to put you inside Havana's dungeons...";
 			link.l1 = "Exactly so, father...";
@@ -322,7 +322,7 @@ void ProcessDialogEvent()
 			npchar.quest.relation = "true";
 		break;
 		
-		// Addon 2016-1 Jason пиратская линейка 1
+		
 		case "FastStart":
 			dialog.text = "De Maure? And you are a brother of Michelle de Monper? Odd...";
 			link.l1 = "I understand your doubts, padre. My father is Henri de Monper.";
@@ -330,7 +330,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "FastStart_1":
-			dialog.text = "A-ah, I see. I knew Henri de Monper personally. Turn to the light, young man… Right! Same eyes, same noble features! I am pleased to see a son of Henri de Monper in my church. Hope you will help you brother out… He had a bad luck recently.";
+			dialog.text = "A-ah, I see. I knew Henri de Monper personally. Turn to the light, young manпїЅ Right! Same eyes, same noble features! I am pleased to see a son of Henri de Monper in my church. Hope you will help you brother outпїЅ He had a bad luck recently.";
 			link.l1 = "Yes, pater. I need a ship to help Michelle yet I have just recently arrived to the Caribbean and my purse is empty. My brother told me you could lend me some money...";
 			link.l1.go = "FastStart_2";	
 			npchar.quest.meet = true;

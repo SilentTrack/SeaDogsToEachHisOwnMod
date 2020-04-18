@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,13 +9,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Not now. There is no time."), "True... But later, not now...",
                       "I'll ask, I'll ask... a bit later though...", "I am sorry, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//--> Бремя гасконца
+			
 			if (CheckAttribute(pchar, "questTemp.Sharlie") && pchar.questTemp.Sharlie == "saga" && !CheckAttribute(npchar, "quest.saga"))
 			{
 				link.l1 = "I want to see chevalier de Poincy. It's about my brothers' debt.";
                 link.l1.go = "puancie";
 			}
-			//<-- Бремя гасконца
+			
 		break;
 		
 		case "puancie":
@@ -47,15 +47,16 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "puancie_2":
 			DialogExit();
 			npchar.quest.saga = "true";
-			bDisableFastReload = true;//закрыть переход
-			LocatorReloadEnterDisable("Charles_townhall", "reload1_back", true);//чтобы не вышел
-			LocatorReloadEnterDisable("Charles_townhall", "reload3", false);//откроем вход к Пуанси
+			bDisableFastReload = true;
+			LocatorReloadEnterDisable("Charles_townhall", "reload1_back", true);
+			LocatorReloadEnterDisable("Charles_townhall", "reload3", false);
 			ref sld = characterFromId("Puancie");
 			ChangeCharacterAddressGroup(sld, "Charles_Roomtownhall", "sit", "sit1");
 			LAi_SetHuberType(sld);
 			sld.dialog.currentnode = "saga";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

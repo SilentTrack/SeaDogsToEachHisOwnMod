@@ -1,4 +1,4 @@
-// дон Хуан де Кордова - генерал-губернатор испанских колоний
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;

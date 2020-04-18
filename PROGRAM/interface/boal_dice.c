@@ -1,5 +1,5 @@
-// boal 10.06.05
-//   DICE GAME
+
+
 int scx, scy, spx, spy, sgxy, ssxy, smxy;
 int move_i, dir_i, dir_i_start;
 bool openExit;
@@ -11,12 +11,12 @@ ref npchar;
 int iRate, iMoneyP, iMoneyN, iChest, iExpRate;
 int bStartGame;
 int iHeroLose, iHeroWin;
-int iTurnGame; // count for time
+int iTurnGame; 
 
 object  DiceState;
 
 bool  bLockClick;
-bool  bSetRandDice; // ����� �����
+bool  bSetRandDice; 
 
 string ResultStr;
 
@@ -35,21 +35,7 @@ void InitInterface(string iniName)
 	SetEventHandler("My_eNewNextGame","NewNextGame",0);
 	SetEventHandler("My_eCompTurn","CompTurn",0);
 	SetEventHandler("My_eCheckGame","CheckGame",0);
-	/*
-	gold, silver   - 100x100
-	screen: -40..680 x -30..510  (720x540)
-	cup: 219x178
-	dice: 92x84
-	������� (� �������� �������� ����������)
-	1) ����� - 5 ����������
-	2) ����� ���.����� - 2,3,4,5,6 ���.����� - 1,2,3,4,5
-	3) ���� - 4 ����������
-	4) ��� - 3 + 2
-	5) ������ - 3 ����������
-	6) ��� ���� 2 + 2
-	7) ���� ���� 2- ����������
-	8) ������ ���
-	*/
+	 
 	
     sgxy = 50;
     ssxy = 70;
@@ -60,11 +46,11 @@ void InitInterface(string iniName)
     spx = 274;
     spy = 222;
     
-    openExit = false;  // ����� �� �������� ����
+    openExit = false;  
     
     pchar = GetMainCharacter();
     
-    iRate  = sti(pchar.GenQuest.Dice.iRate); // ������ �������
+    iRate  = sti(pchar.GenQuest.Dice.iRate); 
     
     npchar = GetCharacter(sti(pchar.GenQuest.Dice.npcharIdx));
     
@@ -100,7 +86,7 @@ void InitInterface(string iniName)
     {
         smxy = ssxy;
     }
-	CreateImage("DiceCup","DICE","cup", 460, 40, 460 + spx, 40 + spy); // ���� ����
+	CreateImage("DiceCup","DICE","cup", 460, 40, 460 + spx, 40 + spy); 
 	
 	CreateImage("GOLD","GOLD","GOLD", 482,444,524,486);
 	
@@ -111,13 +97,13 @@ void InitInterface(string iniName)
     
     if (rand(1) == 1)
     {
-        dir_i  = -1;  // ��� ����� - ����
+        dir_i  = -1;  
     }
     else
     {
-        dir_i  = 1;  // ��� ����� - ��
+        dir_i  = 1;  
     }
-    dir_i_start = dir_i; // �������� ��� �����
+    dir_i_start = dir_i; 
     
     CreateString(true,"Beta_MoneyN", "", "INTERFACE_ULTRASMALL",COLOR_NORMAL, 530, 250, SCRIPT_ALIGN_LEFT,1.0);
     CreateString(true,"Beta_DiceN", "", "INTERFACE_ULTRASMALL",COLOR_NORMAL, 80, 170, SCRIPT_ALIGN_LEFT,1.0);
@@ -127,7 +113,7 @@ void InitInterface(string iniName)
     iHeroLose = 0;
     iHeroWin  = 0;
     iTurnGame = 1;
-    // ����� ����
+    
     NewGameBegin(true);
 }
 
@@ -167,7 +153,7 @@ void Exit()
     	AddCharacterExpToSkill(Pchar, SKILL_FORTUNE, iExpRate*2*iHeroLose);
     	Statistic_AddValue(Pchar, "GameDice_Lose", iHeroLose);
 		Achievment_SetStat(pchar, 26, iHeroLose * 50);
-		NPChar.Quest.HeroLose = (iHeroWin < iHeroLose); //navy -- � ����� �������� ��� �������. (�� �� �������.)
+		NPChar.Quest.HeroLose = (iHeroWin < iHeroLose); 
 
     	bQuestCheckProcessFreeze = true;
     	WaitDate("",0,0,0, 0, iTurnGame*15);
@@ -197,7 +183,7 @@ void ProcessCommandExecute()
     		if(comName=="activate" || comName=="click")
     		{
                 if (openExit == true)
-                {   // ��� ���� ����
+                {   
                 	dir_i = -dir_i_start;
                 	dir_i_start = dir_i;
                     ClearDiceOnTable();
@@ -206,8 +192,8 @@ void ProcessCommandExecute()
                 }
                 else
                 {
-					// �� ������������� ����� �������
-					// �� ������� ������ ������ ��� �������
+					
+					
 					if (dir_i == 1 && CheckCupForDice())
 					{
                         bLockClick = true;
@@ -226,12 +212,12 @@ void ProcessCommandExecute()
     	case "B_ICON_1":
     		if(comName=="activate" || comName=="click")
     		{
-				if (dir_i_start == 1 && bStartGame == 2)  // ������� ����
+				if (dir_i_start == 1 && bStartGame == 2)  
 				{
 				    CheckGame();
 				    break;
 				}
-				if (dir_i_start == -1 && bStartGame == 3)  // ������� ����
+				if (dir_i_start == -1 && bStartGame == 3)  
 				{
 				    CheckGame();
 				    break;
@@ -243,7 +229,7 @@ void ProcessCommandExecute()
     	case "B_ICON_2":
     		if(comName=="activate" || comName=="click")
     		{
-                //PlaySound("interface\knock.wav");
+                
     		}
     	break;
     	
@@ -295,7 +281,7 @@ void MoveImg()
         {
             CreateImage("DiceCup","DICE","cup", 460 - (20 - move_i)*25, 40 + (20 - move_i)*15, 460 - (20 - move_i)*15 + spx, 40 +(20 - move_i)*25 + spy);
             
-            if (move_i == 20) // ��� - ������� ������ � ������
+            if (move_i == 20) 
 			{
             	PostEvent("My_eventMoveImg", 2000);
             }
@@ -304,13 +290,13 @@ void MoveImg()
             	PostEvent("My_eventMoveImg", 100);
             }
         }
-        // �����
+        
         if (move_i == 12)
         {
             PlaySound("interface\dice_end.wav");
 			if (bSetRandDice)
 			{
-            	SetDiceForTableRand(); // ��������, 2� ��� ����� ����� �������!!!
+            	SetDiceForTableRand(); 
             }
             else
             {
@@ -318,7 +304,7 @@ void MoveImg()
             }
             PutDiceOnTable();
         }
-		// ��� - ������� ������ � ������
+		
         if (move_i == 21)
         {
             SetLineAfterDeck();
@@ -337,7 +323,7 @@ void PutNextCoinOp()
 
 void RedrawDeck(bool _newGame, bool _clearDice)
 {
-    // ������� � �������
+    
     int i;
     if (_newGame)
     {
@@ -345,11 +331,11 @@ void RedrawDeck(bool _newGame, bool _clearDice)
 		{
 	        CreateImage("Money_"+i,"","", 0, 0, 0, 0);
 		}
-		money_i = 0; // ������ �������
+		money_i = 0; 
 	    moneyOp_i = 0;
-	    iChest = 0; // �� ����
+	    iChest = 0; 
     }
-	// ����� ��� ������
+	
 	if (_clearDice)
 	{
 		CreateImage("HeroDice1","DICE","", 60, 486, 60 + scx, 486 + scy);
@@ -395,14 +381,14 @@ void BetaInfo()
     }
 }
 
-// ����� �����
+
 void StartGame()
 {
 	int i;
 	move_i = 0;
 
     PlaySound("interface\took_item.wav");
-	if (dir_i == -1) // ���� ������
+	if (dir_i == -1) 
 	{
         PlaySound("interface\dice_mix.wav");
 		SetFormatedText("INFO_TEXT","I start.");
@@ -413,7 +399,7 @@ void StartGame()
 	    SetFormatedText("INFO_TEXT","You first. Roll dammit!");
 	    bLockClick = false;
 	}
-	// ��� ������
+	
 	for (i=0; i<5; i++)
 	{
 		PutNextCoin();
@@ -440,7 +426,7 @@ void ShowMoney()
 void NewGameBegin(bool _newGame)
 {
     InitDiceState();
-	RedrawDeck(_newGame, true); // ����� ����
+	RedrawDeck(_newGame, true); 
     bStartGame = 0;
     if (_newGame)
     {
@@ -456,11 +442,11 @@ void NewGameBegin(bool _newGame)
     openExit = false;
     BetaInfo();
 }
-// ������ � ������
+
 void EndGameCount(int who)
 {
-    //openExit = true;
-    if (who == 1) // ��
+    
+    if (who == 1) 
     {
         AddMoneyToCharacter(pchar, iChest - (sti(pchar.Money) - iMoneyP));
         AddMoneyToCharacter(npchar,  -(sti(npchar.Money) - iMoneyN));
@@ -470,7 +456,7 @@ void EndGameCount(int who)
         AddMoneyToCharacter(pchar, -(sti(pchar.Money) - iMoneyP));
         AddMoneyToCharacter(npchar, iChest - (sti(npchar.Money) - iMoneyN));
     }
-    if (who == 0)// �����
+    if (who == 0)
     {
         AddMoneyToCharacter(pchar, -(sti(pchar.Money) - iMoneyP));
         AddMoneyToCharacter(npchar, -(sti(npchar.Money) - iMoneyN));
@@ -479,7 +465,7 @@ void EndGameCount(int who)
     iMoneyN = sti(npchar.Money);
 }
 
-// ��������� ������ ��� ���� ����
+
 bool CheckNextGame()
 {
     bool ret = true;
@@ -543,7 +529,7 @@ void InitDiceState()
     DiceState.Desk.d4 = "";
     DiceState.Desk.d5 = "";
     
-    DiceState.Desk.d1.Mix = true; //�����
+    DiceState.Desk.d1.Mix = true; 
     DiceState.Desk.d2.Mix = true;
     DiceState.Desk.d3.Mix = true;
     DiceState.Desk.d4.Mix = true;
@@ -554,8 +540,8 @@ void InitDiceState()
     DiceState.Hero.d3 = "";
     DiceState.Hero.d4 = "";
     DiceState.Hero.d5 = "";
-    DiceState.Hero.Result.Type  = ""; // ��� ����������
-    DiceState.Hero.Result.Rate1 = ""; // �������� ������� ����
+    DiceState.Hero.Result.Type  = ""; 
+    DiceState.Hero.Result.Rate1 = ""; 
     DiceState.Hero.Result.Rate2 = "";
     
     DiceState.Hero.d1.Mix = false;
@@ -569,10 +555,10 @@ void InitDiceState()
     DiceState.Comp.d3 = "";
     DiceState.Comp.d4 = "";
     DiceState.Comp.d5 = "";
-    DiceState.Comp.Result.Type  = ""; // ��� ����������
-    DiceState.Comp.Result.Rate1 = ""; // �������� ������� ����
-    DiceState.Comp.Result.Rate2 = ""; // �������� ������� ���� (���� ����, ��� ��������� ��� � ��� ����, ����� ������� �����)
-    DiceState.Comp.Result.d1 = ""; // 1-6 ����� �����
+    DiceState.Comp.Result.Type  = ""; 
+    DiceState.Comp.Result.Rate1 = ""; 
+    DiceState.Comp.Result.Rate2 = ""; 
+    DiceState.Comp.Result.d1 = ""; 
     
     DiceState.Comp.d1.Mix = false;
     DiceState.Comp.d2.Mix = false;
@@ -609,7 +595,7 @@ void SetLineAfterDeck()
     int i;
     ClearDiceOnTable();
 
-	if (dir_i == -1) // ���� ������
+	if (dir_i == -1) 
 	{
         for (i = 1; i<=5; i++)
 		{
@@ -651,11 +637,11 @@ bool CheckGame()
 {
     int i;
 
-	if (dir_i == -1) // ���� ������
+	if (dir_i == -1) 
 	{
 		dir_i = 1;
 		bLockClick = false;
-		if (bStartGame <1 )// ������ �����
+		if (bStartGame <1 )
 		{
 			SetFormatedText("INFO_TEXT","Your turn. ");
 		}
@@ -668,7 +654,7 @@ bool CheckGame()
 	{
         dir_i = -1;
         bLockClick = true;
-		if (bStartGame <1 )// ������ �����
+		if (bStartGame <1 )
 		{
 			SetFormatedText("INFO_TEXT","My turn.");
 			move_i = 0;
@@ -679,7 +665,7 @@ bool CheckGame()
         {
 			if (bStartGame <3)
 			{
-				// ������ ������ �� ������
+				
 	            SetFormatedText("INFO_TEXT","Hm... I'll re-roll these...");
 	            PostEvent("My_eCompTurn", 800);
             }
@@ -688,7 +674,7 @@ bool CheckGame()
 	bStartGame++;
 	if (bStartGame > 3)
 	{
-		// ������ �����
+		
 		openExit = false;
 		bLockClick = true;
 		if (EndTurnGame())
@@ -743,13 +729,13 @@ bool CheckCupForDice()
 	}
 	return false;
 }
-// ��������� ����������
+
 void RecalcDiceOnHand(string _whom)
 {
 	int    i, k, iOk;
 	string sTemp;
 	bool   ok;
-	// 1) ����� - 5 ����������
+	
 	ok = true;
 	for (i = 2; i<=5; i++)
 	{
@@ -767,7 +753,7 @@ void RecalcDiceOnHand(string _whom)
         DiceState.(_whom).Result.Rate2  = sti(DiceState.(_whom).d1);
 		return;
 	}
-    // 2) ����� ���.����� - 2,3,4,5,6 ���.����� - 1,2,3,4,5
+    
 	ok = true;
 	for (i = 1; i<=4; i++)
 	{
@@ -786,7 +772,7 @@ void RecalcDiceOnHand(string _whom)
         DiceState.(_whom).Result.Rate2  = sti(DiceState.(_whom).d5);
 		return;
 	}
-	// 3) ���� - 4 ����������
+	
 	ok = true;
     for (k = 1; k<=5; k++)
 	{
@@ -808,7 +794,7 @@ void RecalcDiceOnHand(string _whom)
 			return;
 		}
 	}
-	// 4) ��� - 3 + 2
+	
 	ok = false;
     for (k = 1; k<=5; k++)
 	{
@@ -859,7 +845,7 @@ void RecalcDiceOnHand(string _whom)
         DiceState.(_whom).Result.Type  = 4;
 		return;
 	}
-	// 5) ������ - 3 ����������
+	
 	ok = false;
     for (k = 1; k<=5; k++)
 	{
@@ -886,7 +872,7 @@ void RecalcDiceOnHand(string _whom)
         DiceState.(_whom).Result.Rate2 = DiceState.(_whom).Result.Rate1;
 		return;
 	}
-	// 6) ��� ���� 2 + 2
+	
 	ok = false;
     for (k = 1; k<=5; k++)
 	{
@@ -902,7 +888,7 @@ void RecalcDiceOnHand(string _whom)
 		}
 	 	if (iOk >= 2)
 		{
-	        DiceState.(_whom).Result.Rate2  = sti(DiceState.(_whom).(sTemp)); // �������
+	        DiceState.(_whom).Result.Rate2  = sti(DiceState.(_whom).(sTemp)); 
 	        ok = true;
 	        break;
 		}
@@ -926,7 +912,7 @@ void RecalcDiceOnHand(string _whom)
 			}
 		 	if (iOk >= 2)
 			{
-		        DiceState.(_whom).Result.Rate1  = sti(DiceState.(_whom).(sTemp)); // �������
+		        DiceState.(_whom).Result.Rate1  = sti(DiceState.(_whom).(sTemp)); 
 		        ok = true;
 		        break;
 			}
@@ -937,7 +923,7 @@ void RecalcDiceOnHand(string _whom)
         DiceState.(_whom).Result.Type  = 6;
 		return;
 	}
-	// 7) ���� ���� 2- ����������
+	
 	ok = false;
     for (k = 1; k<=5; k++)
 	{
@@ -964,22 +950,17 @@ void RecalcDiceOnHand(string _whom)
         DiceState.(_whom).Result.Rate2 = DiceState.(_whom).Result.Rate1;
 		return;
 	}
-	// 8) ������ ���
+	
 	DiceState.(_whom).Result.Type  = 8;
     DiceState.(_whom).Result.Rate1 = 0;
 	DiceState.(_whom).Result.Rate2 = 0;
 }
-// ��������� �� �����������, ����� ��� ������������ � ��������� ���������� ����������
+
 void SortDiceOnHand(string _whom)
 {
     int  j,k,w,m;
     string sTemp;
-    /*
-	����� ����������� (������� �����).
-
-  ��� ������ ������� ������� ���������� ������� � ������ ��� �� ������ �����,
-����� ���������� �� ����������...
-	*/
+     
 	
 	for (k = 1; k<=4; k++)
 	{
@@ -1001,7 +982,7 @@ void SortDiceOnHand(string _whom)
 		DiceState.(_whom).(sTemp) = w;
 	}
 }
-// ��������� ����������
+
 int GetResult()
 {
 	if (sti(DiceState.Hero.Result.Type) < sti(DiceState.Comp.Result.Type))
@@ -1028,7 +1009,7 @@ int GetResult()
 	{
 	    return -1;
 	}
-	return 0; // �����
+	return 0; 
 }
 
 
@@ -1078,7 +1059,7 @@ void ContinueGame()
     	    EndGameCount(-1);
     	    iHeroLose++;
     	}
-		else//if (iRate*6 > iMoneyN)
+		else
 	    {
 	        ResultStr = "You won!" + NewStr() + "Fuck! I am out.";
 	        SetFormatedText("INFO_TEXT",ResultStr);
@@ -1095,7 +1076,7 @@ void NewNextGame()
 {
     RedrawDeck(true, false);
     openExit = true;
-	if (CheckNextGame() && rand(10) < 10) // ���� ������ �� ����
+	if (CheckNextGame() && rand(10) < 10) 
     {
         ResultStr += NewStr() + "One more roll?";
 		bLockClick = false;
@@ -1158,15 +1139,15 @@ void SetDiceForTableRand()
 		}
 	}
 }
-/////////////////////////// AI //////////////////////////////////
+
 void CompTurn()
 {
     int i, d, j;
     bool ok, ok2, ok3, b;
     
-	// ���� ���� ����� ��������� � � ���� ��� ������, �� ����� ��� �������???
+	
 	ok = true;
-	if (GetResult() == -1 && dir_i_start == 1 && bStartGame == 3) // ������� ����
+	if (GetResult() == -1 && dir_i_start == 1 && bStartGame == 3) 
 	{
         ok = false;
 	}
@@ -1174,9 +1155,9 @@ void CompTurn()
 	{
     	if (sti(DiceState.Comp.Result.Type) == 8 && sti(DiceState.Hero.Result.Type) >= 2)
     	{
-            //���������� ������ ������ ����� (��� 100% 1)
+            
             SetFormatedText("INFO_TEXT","I transferred one die...");
-    		// for test
+    		
     		ClickCompDice(1);
     		move_i = 0;
             PlaySound("interface\dice_mix.wav");
@@ -1184,14 +1165,14 @@ void CompTurn()
             return;
     	}
 
-    	// ��� ���� ������� �� ��� (���� �����)
+    	
         ok3 = (sti(DiceState.Comp.Result.Type) == 6) && (sti(DiceState.Hero.Result.Type) >= 5);
         ok  = (sti(DiceState.Comp.Result.Type) == 6) && (sti(DiceState.Hero.Result.Type) == 4) && (sti(DiceState.Hero.Result.Rate1) <= sti(DiceState.Comp.Result.Rate2));
         ok3 = ok3 || ok;
-        // ���� ������� ������, ���� ��� ��� ����, � ����� ����??
+        
         ok = (sti(DiceState.Comp.Result.Type) == 7) || (sti(DiceState.Comp.Result.Type) == 5);
         ok = ok && (sti(DiceState.Hero.Result.Type) >= 3);
-        // ����, �� � �� ������
+        
         ok2 = (sti(DiceState.Hero.Result.Type) == 3) && (sti(DiceState.Hero.Result.Rate1) > sti(DiceState.Comp.Result.Rate1));
         b   = (sti(DiceState.Hero.Result.Type) == 1) && (sti(DiceState.Hero.Result.Rate1) <= sti(DiceState.Comp.Result.Rate1));
         ok2 = ok2 || b;
@@ -1205,7 +1186,7 @@ void CompTurn()
     	        sGlobalTemp = "d"+i;
     	        if (sti(DiceState.Comp.Result.(sGlobalTemp)) == 1)
     	        {
-                    d = i; // �� �� �����
+                    d = i; 
                     for (j = 1; j<=5; j++)
             		{
             	        sGlobalTemp = "d"+j;
@@ -1228,13 +1209,13 @@ void CompTurn()
     		}
         }
 
-        // ����� �����!!!!! -->
+        
         if (sti(DiceState.Comp.Result.Type) > sti(DiceState.Hero.Result.Type) && GetCharacterSkillToOld(pchar, SKILL_FORTUNE) < rand(12) && rand(4) > 1)
         {
-			//navy --> ������� �����������
+			
 			if (!CheckAttribute(npchar, "Quest.DiceCheats")) npchar.Quest.DiceCheats = 0;
 			npchar.Quest.DiceCheats = sti(npchar.Quest.DiceCheats) + 1;
-			//navy <--
+			
             SetFormatedText("INFO_TEXT","Re-rolling...");
             ok = false;
             if (sti(DiceState.Hero.Result.Type) == 1)
@@ -1265,9 +1246,9 @@ void CompTurn()
                 return;
             }
         }
-        // �����!!!!! <--
+        
     }
-	// ������ �� �������������
+	
 	SetFormatedText("INFO_TEXT","I am good.");
 	PostEvent("My_eCheckGame", 800);
 }
@@ -1292,7 +1273,7 @@ bool ClickCompDice(int d)
     }
     return false;
 }
-// ��������� ������ �������� �����
+
 void RecalcAIDice(string _whom)
 {
     int    i;

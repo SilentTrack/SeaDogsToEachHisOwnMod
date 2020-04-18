@@ -21,7 +21,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		//Найти помощника в магазин
+		
 		case "Storehelper":
 			dialog.text = "Is there something you need, monsieur?";
 			link.l1 = "Are you Gralam Lavoie. Am I correct?";
@@ -100,7 +100,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("SharlieA", "2");
 			pchar.questTemp.Sharlie.Storehelper = "return";
 			LAi_CharacterDisableDialog(npchar);
-			pchar.quest.StorehelperOver.over = "yes"; //снять таймер
+			pchar.quest.StorehelperOver.over = "yes"; 
 		break;
 		
 		case "Newstorehelper_1":
@@ -192,7 +192,7 @@ void ProcessDialogEvent()
 		
 		case "Newstorehelper_exit":
 			DialogExit();
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			pchar.questTemp.Sharlie.Storehelper.id = npchar.id;
 			DeleteAttribute(npchar, "LifeDay")
 			chrDisableReloadToLocation = true;
@@ -207,7 +207,7 @@ void ProcessDialogEvent()
 			pchar.quest.storehelper2.function = "NewstorehelperAdd";
 			AddQuestRecord("SharlieA", "4");
 			pchar.questTemp.Sharlie.Storehelper = "choise";
-			pchar.quest.storehelper.over = "yes"; //снять прерывание
+			pchar.quest.storehelper.over = "yes"; 
 		break;
 		
 		case "Newstorehelper_regard":
@@ -238,7 +238,7 @@ void ProcessDialogEvent()
 			}
 		break;
 		
-		//контрабанда рома
+		
 		case "Rum_Cap_Over":
 			dialog.text = "Monsieur, I ask you to leave my ship immediately. I am rising my anchor and drifting off any minute!";
 			link.l1 = "Okay...";
@@ -250,8 +250,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Rum_Cap":
-			pchar.quest.Sharlie_rum2.over = "yes"; //снять таймер
-			chrDisableReloadToLocation = false; // patch-4
+			pchar.quest.Sharlie_rum2.over = "yes"; 
+			chrDisableReloadToLocation = false; 
 			dialog.text = "Well? Who are you, buddy?";
 			link.l1.edit = 1;			
 			link.l1 = "";
@@ -341,7 +341,7 @@ void ProcessDialogEvent()
 		    setWDMPointXZ(GetCityFrom_Sea(locations[i].fastreload));
 		break;
 		
-		//доставить девочку из борделя
+		
 		case "GigoloMan":
 			dialog.text = "Good afternoon, monsieur! I swear you don't look like these raggedy appleknockers hanging around here in our colony. And as I see, you must've come a long way... Arrive from Europe, did you?";
 			link.l1 = "Exactly, monsieur. "+GetFullName(pchar)+", at your service. What do you need?";
@@ -452,9 +452,9 @@ void ProcessDialogEvent()
 			LAi_ActorGoToLocation(npchar, "reload", "houseSp1", "none", "", "", "GigoloGirl_Remove", 5.0);
 		break;
 		
-		//пираты с пленным испанцем
+		
 		case "CaptivePirate":
-			pchar.quest.Captive_CreatePiratesOver.over = "yes";//снять таймер
+			pchar.quest.Captive_CreatePiratesOver.over = "yes";
 			dialog.text = "Who are you? What do you want here? Come on, get the hell out of here!";
 			link.l1 = "You're not very polite, sir.";
 			link.l1.go = "CaptivePirate_1";
@@ -485,7 +485,7 @@ void ProcessDialogEvent()
 			LAi_SetImmortal(sld, true);
 			sld.lifeday = 0;
 			pchar.quest.Sharlie_captive1.over = "yes";
-			pchar.quest.Sharlie_captive2.over = "yes";//снять прерывание
+			pchar.quest.Sharlie_captive2.over = "yes";
 			AddQuestRecord("SharlieD", "5");
 			CloseQuestHeader("SharlieD");
 			DeleteAttribute(pchar, "questTemp.Sharlie.Captive");
@@ -517,7 +517,7 @@ void ProcessDialogEvent()
 			LAi_SetCitizenType(sld);
 		break;
 		
-		//пленный испанец
+		
 		case "CaptiveSpain":
 			dialog.text = "Caramba! You're a Frenchman? You fended off those scumbags in style. But don't think that I'll give up just like that!";
 			link.l1 = "Stop... Listen, I didn't...";
@@ -569,7 +569,7 @@ void ProcessDialogEvent()
 		
 		case "CaptiveSpain_7":
 			chrDisableReloadToLocation = false;
-			DeleteAttribute(pchar, "GenQuest.Notsearchbody"); // 170712
+			DeleteAttribute(pchar, "GenQuest.Notsearchbody"); 
 			DialogExit();
 			AddQuestRecord("SharlieD", "6");
 			LAi_group_Register("TempFriends");
@@ -586,13 +586,13 @@ void ProcessDialogEvent()
 			pchar.quest.Sharlie_captive3.win_condition.l3 = "Alarm";
 			pchar.quest.Sharlie_captive3.win_condition.l3.value = 0;
 			pchar.quest.Sharlie_captive3.win_condition.l3.operation = "=";
-			pchar.quest.Sharlie_captive3.function = "CaptiveSpain_reload";//вход ночью
+			pchar.quest.Sharlie_captive3.function = "CaptiveSpain_reload";
 			pchar.questTemp.Sharlie = "bankskipercaptive";
 		break;
 		
-		//горожанин с пропавшей дочерью
+		
 		case "Prosper":
-			pchar.quest.Sharlie_RescueDaughter.over = "yes"; //снять прерывание
+			pchar.quest.Sharlie_RescueDaughter.over = "yes"; 
 			dialog.text = "What do you need, monsieur? I've got absolutely no time for conversation, so be brief.";
 			link.l1 = "You are Prosper Troubale, aren't you?";
 			link.l1.go = "Prosper_1";
@@ -807,13 +807,13 @@ void ProcessDialogEvent()
 			LAi_ActorGoToLocation(sld, "reload", "reload10_back", "none", "", "", "", 10.0);
 			ChangeCharacterComplexReputation(pchar, "nobility", 3);
 			ChangeCharacterComplexReputation(pchar,"authority", 2);
-			AddCharacterExpToSkill(pchar, "Leadership", 120);//авторитет
-			AddCharacterExpToSkill(pchar, "Fortune", 70);//везение
-			AddCharacterExpToSkill(pchar, "Sneak", 70);//скрытность
+			AddCharacterExpToSkill(pchar, "Leadership", 120);
+			AddCharacterExpToSkill(pchar, "Fortune", 70);
+			AddCharacterExpToSkill(pchar, "Sneak", 70);
 			AddQuestRecord("SharlieF", "7");
 			CloseQuestHeader("SharlieF");
 			DeleteAttribute(pchar, "questTemp.SMQ");
-			pchar.questTemp.Prosper_fmql = "true"; // Addon-2016 Jason, французские миниквесты (ФМК)
+			pchar.questTemp.Prosper_fmql = "true"; 
 		break;
 		
 		case "Selina":
@@ -917,9 +917,9 @@ void ProcessDialogEvent()
 			npchar.lifeday = 0;
 			ChangeCharacterComplexReputation(pchar, "nobility", 3);
 			ChangeCharacterComplexReputation(pchar,"authority", 1);
-			AddCharacterExpToSkill(pchar, "Leadership", 100);//авторитет
-			AddCharacterExpToSkill(pchar, "Fortune", 50);//везение
-			AddCharacterExpToSkill(pchar, "Sneak", 50);//скрытность
+			AddCharacterExpToSkill(pchar, "Leadership", 100);
+			AddCharacterExpToSkill(pchar, "Fortune", 50);
+			AddCharacterExpToSkill(pchar, "Sneak", 50);
 			AddQuestRecord("SharlieF", "8");
 			CloseQuestHeader("SharlieF");
 		break;
@@ -977,7 +977,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(pchar, "questTemp.Sharlie.RescueDaughter");
 		break;
 		
-		//замечание по обнаженному оружию от персонажей типа citizen
+		
 		case "CitizenNotBlade":
 			dialog.text = NPCharSexPhrase(NPChar, "Listen, I, as a citizen of this city, do request that you do not walk around with your blade exposed.", "You know, I, as a citizen of this city, request that you do not walk around with your blade exposed.");
 			link.l1 = LinkRandPhrase("All right.", "Okay.", "As you wish...");

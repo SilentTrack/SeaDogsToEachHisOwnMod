@@ -3,11 +3,11 @@ int CreateTortugaCharacters(int n)
 {
 	ref ch;
 	
-	///////////////////////////////////////////////////////////////////////////////
-	// ОСНОВНЫЕ ПЕРСОНАЖИ
-	///////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 
-	makeref(ch,Characters[n]);			//Губернатор
+	makeref(ch,Characters[n]);			
 	ch.id = "Tortuga_Mayor";
 	ch.model	= "huber_6";
 	ch.sex = "man";
@@ -20,7 +20,7 @@ int CreateTortugaCharacters(int n)
 	ch.Dialog.Filename = "Common_Mayor.c";
 	ch.greeting = "fra_gov_common";
 	ch.nation = FRANCE;
-	//ch.quest.type = "hovernor";
+	
 	GiveItem2Character(ch, "blade_19");
 	EquipCharacterbyItem(ch, "blade_19");
 	GiveItem2Character(ch, "pistol4"); 
@@ -28,9 +28,9 @@ int CreateTortugaCharacters(int n)
 	ch.rank = 42;
 	SetSPECIAL(ch, 6, 5, 6, 6, 6, 10, 6);
     SetSelfSkill(ch, 100, 100, 100, 100, 100);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetHP(ch, 300+MOD_SKILL_ENEMY_RATE*40, 300+MOD_SKILL_ENEMY_RATE*40);
-	ch.MultiFighter = 1.0+MOD_SKILL_ENEMY_RATE/10; // мультифайтер
+	ch.MultiFighter = 1.0+MOD_SKILL_ENEMY_RATE/10; 
 	ch.SuperShooter = true; 
 	ch.cirassId = Items_FindItemIdx("cirass1");
 	TakeNItems(ch, "potion2", 3+MOD_SKILL_ENEMY_RATE);
@@ -46,7 +46,7 @@ int CreateTortugaCharacters(int n)
 	LAi_LoginInCaptureTown(ch, false);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Священик
+	makeref(ch,Characters[n]);			
 	ch.id = "Tortuga_Priest";
 	ch.model	= "priest_1";
 	ch.model.animation	= "man";
@@ -58,13 +58,13 @@ int CreateTortugaCharacters(int n)
 	ch.Dialog.Filename = "Common_church.c";
 	ch.greeting = "padre_2";
 	ch.nation = FRANCE;
-//	LAi_SetLoginTime(ch, 6.0, 21.99);
+
 	LAi_SetPriestType(ch);
 	LAi_group_MoveCharacter(ch, "FRANCE_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);		// ОФициантка
+	makeref(ch,Characters[n]);		
 	ch.id = "Tortuga_waitress";
 	ch.model	= "women_14";
 	ch.sex = "woman";
@@ -81,7 +81,7 @@ int CreateTortugaCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Трактирщик
+	makeref(ch,Characters[n]);			
 	ch.id = "Tortuga_tavernkeeper";
 	ch.model	= "barmen_9";
 	ch.greeting = "barmen_2";
@@ -100,7 +100,7 @@ int CreateTortugaCharacters(int n)
 	n = n + 1;
 
 
-	makeref(ch,Characters[n]);			//Торговец
+	makeref(ch,Characters[n]);			
 	ch.id = "Tortuga_trader";
 	ch.model	= "trader_9";
 	ch.greeting = "store_2";
@@ -118,7 +118,7 @@ int CreateTortugaCharacters(int n)
 	ch.item_date = "";
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Корабел
+	makeref(ch,Characters[n]);			
 	ch.id = "Tortuga_shipyarder";
 	ch.model	= "shipowner_9";
 	ch.greeting = "shipyarder_1";
@@ -136,14 +136,14 @@ int CreateTortugaCharacters(int n)
 	EquipCharacterbyItem(ch, "topor_02"); 
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetLoginTime(ch, 6.0, 21.99);
 	LAi_SetHuberType(ch);
 	LAi_group_MoveCharacter(ch, "FRANCE_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Банкир
+	makeref(ch,Characters[n]);			
 	ch.id		= "Tortuga_usurer";
 	ch.model	= "banker_9";
 	ch.sex = "man";
@@ -156,13 +156,13 @@ int CreateTortugaCharacters(int n)
 	ch.nation = FRANCE;
 	ch.greeting = "usurer_3";
 	ch.quest.shiping = "0";
-	ch.UsurerDeposit = 10000; // *1000 денег
+	ch.UsurerDeposit = 10000; 
 	ch.money = USURER_MIN_MONEY + rand(USURER_NORM);
 	LAi_SetOwnerType(ch);
 	LAi_group_MoveCharacter(ch, "FRANCE_CITIZENS");
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Начальник порта
+	makeref(ch,Characters[n]);			
 	ch.id		= "Tortuga_PortMan";
 	ch.model	= "citiz_2";
 	ch.sex = "man";
@@ -179,7 +179,7 @@ int CreateTortugaCharacters(int n)
 	ch.item_date = "";
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Хозяйка борделя
+	makeref(ch,Characters[n]);			
 	ch.id		= "Tortuga_Hostess";
 	ch.name		= "Janetta"
 	ch.lastname = "";
@@ -193,7 +193,7 @@ int CreateTortugaCharacters(int n)
 	ch.Dialog.Filename = "Common_Brothel.c";
 	ch.nation = FRANCE;
 	ch.greeting = "maman_2";
-	ch.questChurch = ""; //флаг для пожертвований
+	ch.questChurch = ""; 
 	LAi_SetOwnerType(ch);
 	LAi_group_MoveCharacter(ch, "FRANCE_CITIZENS");
 	n = n + 1;
@@ -208,14 +208,14 @@ int CreateTortugaCharacters(int n)
 	ch.nation = PIRATE;
 	GiveItem2Character(ch, BLADE_SABER);
 	EquipCharacterbyItem(ch, BLADE_SABER);
-	// посадим в генераторе
+	
 	ch.Dialog.Filename = "Smuggler Agent_dialog.c";
 	LAi_SetSitType(ch);
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.greeting = "smuggler";
 	n = n + 1;
 	
-	makeref(ch,Characters[n]);			//Смотритель маяка
+	makeref(ch,Characters[n]);			
 	ch.id		= "Tortuga_Lightman";
 	ch.model	= "keeper_5";
 	ch.model.animation = "man_B";
@@ -237,3 +237,4 @@ int CreateTortugaCharacters(int n)
 	
 	return n;
 }
+

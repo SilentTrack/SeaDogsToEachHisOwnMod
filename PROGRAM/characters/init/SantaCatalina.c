@@ -3,11 +3,11 @@ int CreateSantaCatalinaCharacters(int n)
 {
 	ref ch;
 	
-	///////////////////////////////////////////////////////////////////////////////
-	// ОСНОВНЫЕ ПЕРСОНАЖИ
-	///////////////////////////////////////////////////////////////////////////////
 	
-	makeref(ch,Characters[n]);			//Губернатор
+	
+	
+	
+	makeref(ch,Characters[n]);			
 	ch.id = "SantaCatalina_Mayor";
 	ch.model	= "huber_12";
 	ch.sex = "man";
@@ -27,7 +27,7 @@ int CreateSantaCatalinaCharacters(int n)
 	EquipCharacterbyItem(ch, BLADE_LONG); 
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetImmortal(ch, true);
 	LAi_SetHuberType(ch);
 	LAi_RemoveLoginTime(ch);
@@ -35,7 +35,7 @@ int CreateSantaCatalinaCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Священик
+	makeref(ch,Characters[n]);			
 	ch.id = "SantaCatalina_Priest";
 	ch.model	= "priest_2";
 	ch.model.animation = "man";
@@ -47,13 +47,13 @@ int CreateSantaCatalinaCharacters(int n)
 	ch.Dialog.Filename = "Common_church.c";
 	ch.greeting = "padre_2";
 	ch.nation = ENGLAND;
-//	LAi_SetLoginTime(ch, 6.0, 21.99);
+
 	LAi_SetPriestType(ch);
 	LAi_group_MoveCharacter(ch, "ENGLAND_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);		// ОФициантка
+	makeref(ch,Characters[n]);		
 	ch.id = "SantaCatalina_waitress";
 	ch.model	= "women_16";
 	ch.sex = "woman";
@@ -70,7 +70,7 @@ int CreateSantaCatalinaCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Трактирщик
+	makeref(ch,Characters[n]);			
 	ch.id = "SantaCatalina_tavernkeeper";
 	ch.model	= "barmen_10";
 	ch.greeting = "barmen_2";
@@ -88,7 +88,7 @@ int CreateSantaCatalinaCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Торговец
+	makeref(ch,Characters[n]);			
 	ch.id = "SantaCatalina_trader";
 	ch.model	= "trader_10";
 	ch.greeting = "store_1";
@@ -106,7 +106,7 @@ int CreateSantaCatalinaCharacters(int n)
 	ch.item_date = "";
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Корабел
+	makeref(ch,Characters[n]);			
 	ch.id = "SantaCatalina_shipyarder";
 	ch.model	= "shipowner_10";
 	ch.greeting = "shipyarder_3";
@@ -124,14 +124,14 @@ int CreateSantaCatalinaCharacters(int n)
 	EquipCharacterbyItem(ch, "topor_02"); 
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetLoginTime(ch, 6.0, 21.99);
 	LAi_SetHuberType(ch);
 	LAi_group_MoveCharacter(ch, "ENGLAND_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Банкир
+	makeref(ch,Characters[n]);			
 	ch.id		= "SantaCatalina_usurer";
 	ch.model	= "banker_10";
 	ch.sex = "man";
@@ -144,14 +144,14 @@ int CreateSantaCatalinaCharacters(int n)
 	ch.nation = ENGLAND;
 	ch.greeting = "usurer_3";
 	ch.quest.shiping = "0";
-	ch.UsurerDeposit = 7000; // *1000 денег
+	ch.UsurerDeposit = 7000; 
 	ch.money = USURER_MIN_MONEY + rand(USURER_NORM);
 	LAi_SetOwnerType(ch);
 	LAi_group_MoveCharacter(ch, "ENGLAND_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Начальник порта
+	makeref(ch,Characters[n]);			
 	ch.id		= "SantaCatalina_PortMan";
 	ch.model	= "citiz_7";
 	ch.sex = "man";
@@ -178,7 +178,7 @@ int CreateSantaCatalinaCharacters(int n)
 	ch.nation = PIRATE;
 	GiveItem2Character(ch, BLADE_SABER);
 	EquipCharacterbyItem(ch, BLADE_SABER);
-	// посадим в генераторе
+	
 	ch.Dialog.Filename = "Smuggler Agent_dialog.c";
 	LAi_SetSitType(ch);
 	LAi_SetHP(ch, 80.0, 80.0);
@@ -187,3 +187,4 @@ int CreateSantaCatalinaCharacters(int n)
 	
 	return n;
 }
+

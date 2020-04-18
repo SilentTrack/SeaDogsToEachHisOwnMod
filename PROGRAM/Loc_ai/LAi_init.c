@@ -21,7 +21,7 @@ bool LAi_IsCapturedLocation = false;
 bool LAi_restoreStates = false;
 bool LAi_IsBoarding = false;
 
-//Инициализация интелекта
+
 void LocAi_Init(ref loc)
 {
 	LAi_numloginedcharacters = 0;
@@ -47,7 +47,7 @@ void LocAi_Init(ref loc)
 	LAi_IsCapturedLocation = IsLocationCaptured(loc.id);
 	if(!actLoadFlag)
 	{
-		//Очистим фантомных персонажей
+		
 		for(int i = 0; i < MAX_CHARS_IN_LOC; i++)
 		{
 			DeleteAttribute(&Characters[LOC_FANTOM_CHARACTERS + i], "");
@@ -58,12 +58,12 @@ void LocAi_Init(ref loc)
 			Characters[LOC_FANTOM_CHARACTERS + i].location.group = "";
 		}
 	}
-	//Выставим адреса офицерам главного персонажа
+	
 	bool isBoarding = false;
 	if(CheckAttribute(loc, "boarding") == true)
 	{
 		if(loc.boarding == "true") isBoarding = true;
-		if(loc.boarding == "fort") isBoarding = true; // boal 21.01.05 fix!!!
+		if(loc.boarding == "fort") isBoarding = true; 
 	}
 	LAi_IsBoarding = isBoarding;
 	if(!isBoarding)
@@ -75,12 +75,12 @@ void LocAi_Init(ref loc)
 			LAi_UseAtidoteBottle(pchar);
 		}
 		int idx;
-		//проверяем таймер запрета генерации офицеров в локацию. eddy
+		
 		if (CheckAttribute(loc, "DisableOfficers.QtyDays") && GetNpcQuestPastDayParam(loc, "DisableOfficers") > sti(loc.DisableOfficers.QtyDays))
 		{
-			DeleteAttribute(loc, "DisableOfficers"); //если есть и истек срок - сносим флаг запрета
+			DeleteAttribute(loc, "DisableOfficers"); 
 		}
-		if (!CheckAttribute(loc, "DisableOfficers")) //eddy. офицерский флаг
+		if (!CheckAttribute(loc, "DisableOfficers")) 
 		{
 			for(i = 1; i < 4; i++)
 			{
@@ -92,7 +92,7 @@ void LocAi_Init(ref loc)
 					LAi_UseAtidoteBottle(&Characters[idx]);
 				}
 
-				if (Characters[idx].location == pchar.location)) continue; // fix
+				if (Characters[idx].location == pchar.location)) continue; 
 				DeleteAttribute(&Characters[idx], "location");
 				Characters[idx].location = pchar.location;
 				Characters[idx].location.group = "officers";
@@ -126,7 +126,7 @@ void LocAi_Init(ref loc)
 	LAi_IsCapturedLocation = IsLocationCaptured(loc.id);
 }
 
-//Инициализация интелекта
+
 void LocAi_Release()
 {
 	for(int i = 0; i < LAi_numloginedcharacters; i++)
@@ -157,7 +157,7 @@ void LocAi_Release()
 	DelEventHandler("Location_CharacterColThreshold", "LAi_CharacterColThreshold");
 	DelEventHandler("Location_Character_EndAction", "LAi_Character_EndAction");	
 	DelEventHandler("Location_CharacterItemAction", "LAi_CharacterItemAction");
-	//Очистим фантомных персонажей
+	
 	for(i = 0; i < MAX_CHARS_IN_LOC; i++)
 	{
 		DeleteAttribute(&Characters[LOC_FANTOM_CHARACTERS + i], "");
@@ -166,7 +166,7 @@ void LocAi_Release()
 		Characters[LOC_FANTOM_CHARACTERS + i].location = "none";
 		Characters[LOC_FANTOM_CHARACTERS + i].location.locator = "";
 		Characters[LOC_FANTOM_CHARACTERS + i].location.group = "";
-		// убираем остатки захвата в городе boal
+		
 		LAi_LoginInCaptureTown(&Characters[LOC_FANTOM_CHARACTERS + i], false);
 	}
 }
@@ -186,22 +186,22 @@ void LocAi_PostInit(ref loc)
 	LAi_restoreStates = false;
 }
 
-//Сохранение информации
+
 void LAi_SaveInfo()
 {
 	LAi_group_SaveInfo();
 }
 
-//Инициализация перед новой игрой
+
 void LAi_NewGame()
 {
-	//Задержанные квесты
+	
 	DeleteAttribute(&Lai_questdelays, "");
-	//Группы
+	
 	DeleteAttribute(&LAi_grp_relations, "");
 	LAi_grp_playeralarm = 0;
 	LAi_grp_alarmactive = false;
-	//Абордаж
+	
 	boarding_location = -1;
 	boarding_location_type = -1;
 	boarding_enemy_crew = 0;
@@ -210,14 +210,15 @@ void LAi_NewGame()
 	boarding_player_crew_per_chr = 1.0;
 	boarding_exp = 0;
 	LAi_boarding_process = false;
-	//Разное
+	
 	LAi_IsInitedAI = false;
 	LAi_IsCapturedLocation = false;
 	LAi_restoreStates = true;
-	//DeleteAttribute(&LAi_MonsterInfo, "");
+	
 	LAi_numloginedcharacters = 0;
 	DeleteAttribute(&LAi_QuestFader, "");
 	globalSGMode = false;
-	//Ставим тип игрока главному персонажу
+	
 	LAi_SetPlayerType(pchar);
 }
+

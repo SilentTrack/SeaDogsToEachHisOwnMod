@@ -25,7 +25,7 @@ void InitInterface(string iniName)
 	SetControlsTabMode(1);
 
 	SetEventHandler("exitCancel","ProcessCancelExit",0);
-	SetEventHandler("InterfaceBreak","ProcessCancelExit",0);  // boal
+	SetEventHandler("InterfaceBreak","ProcessCancelExit",0);  
 	SetEventHandler("eTabControlPress","procTabChange",0);
 	SetEventHandler("eventBtnAction","procBtnAction",0);
 	SetEventHandler("eventKeyChange","procKeyChange",0);
@@ -60,13 +60,13 @@ void InitInterface(string iniName)
 		SetSelectable("DIALOG_SLIDE",false);
 	}
 	
-	// Warship 07.07.09 Ёффект свечени€
+	
 	if(!CheckAttribute(&InterfaceStates, "GlowEffect"))
 	{
 		InterfaceStates.GlowEffect = 50;
 	}
 	
-	glowEffect = sti(InterfaceStates.GlowEffect) / 250.0; // ≈сли делить на 250, то хер, т.к. целое, а если на 250.0 - все гуд
+	glowEffect = sti(InterfaceStates.GlowEffect) / 250.0; 
 	
 	GameInterface.nodes.GLOW_SLIDE.value = glowEffect;
 	SendMessage(&GameInterface, "lslf", MSG_INTERFACE_MSG_TO_NODE, "GLOW_SLIDE", 0, glowEffect);
@@ -80,14 +80,14 @@ void ProcessCancelExit()
 
 void ProcessOkExit()
 {
-	// Warship 07.07.09 Ёффект свечени€
+	
 	SetGlowParams(1.0, sti(InterfaceStates.GlowEffect), 2));
 
 	SaveGameOptions();
 	ProcessExit();
 	Event("eventChangeOption");
 
-	// change sea settings
+	
 	SetSeaGridStep(stf(InterfaceStates.SeaDetails));
 }
 
@@ -117,7 +117,7 @@ void IDoExit(int exitCode)
 	DelEventHandler("ShowInfo", "ShowInfo");
 	DelEventHandler("MouseRClickUP","HideInfo");
 	DelEventHandler("evFaderFrame","FaderFrame");
-	DelEventHandler("InterfaceBreak","ProcessCancelExit");  // boal
+	DelEventHandler("InterfaceBreak","ProcessCancelExit");  
 
 	LanguageCloseFile( g_ControlsLngFile );
 
@@ -189,19 +189,19 @@ void SetControlsTabMode(int nMode)
 
 	switch( nMode )
 	{
-	case 1: // море от первого лица
+	case 1: 
 		sPic1 = "TabSelected";
 		nColor1 = argb(255,255,255,255);
 	break;
-	case 2: // режим путешествий на земле
+	case 2: 
 		sPic2 = "TabSelected";
 		nColor2 = argb(255,255,255,255);
 	break;
-	case 3: // море от 3-го лица
+	case 3: 
 		sPic3 = "TabSelected";
 		nColor3 = argb(255,255,255,255);
 	break;
-	case 4: // режим бо€ на земле
+	case 4: 
 		sPic4 = "TabSelected";
 		nColor4 = argb(255,255,255,255);
 	break;
@@ -278,46 +278,46 @@ void procCheckBoxChange()
 	}
 	if( sNodName == "ALWAYS_RUN_CHECKBOX" ) 
 	{
-		{ // always run
+		{ 
 			SetAlwaysRun( bBtnState );
 		}
 	}
 	if( sNodName == "INVERT_MOUSE_CHECKBOX" ) 
 	{
-		{ // invert mouse
+		{ 
 			InterfaceStates.InvertCameras = bBtnState;
 		}
 	}
 	if( sNodName == "BATTLE_MODE_CHECKBOX" ) 
 	{
-		{ // Show battle mode border
+		{ 
 			InterfaceStates.ShowBattleMode = bBtnState;
 		}
 	}
 	if( sNodName == "AUTOSAVE_CHECKBOX" ) 
 	{
-		{ // Show battle mode border
+		{ 
 			InterfaceStates.EnabledAutoSaveMode = bBtnState;
 		}
 	}
 
 	if( sNodName == "QUESTMARK_CHECKBOX" ) 
 	{
-		{ // Show battle mode border
+		{ 
 			InterfaceStates.EnabledQuestsMarks = bBtnState;
 		}
 	}
 
 	if( sNodName == "SHIPMARK_CHECKBOX" ) 
 	{
-		{ // Show battle mode border
+		{ 
 			InterfaceStates.EnabledShipMarks = bBtnState;
 		}
 	}
 
 	if( sNodName == "SIMPLESEA_CHECKBOX" ) 
 	{
-		{ // Show battle mode border
+		{ 
 			InterfaceStates.SimpleSea = bBtnState;
 		}
 	}
@@ -334,7 +334,7 @@ void procSlideChange()
 		return;
 	}
 	
-	// Warship 07.07.09 Ёффект свечени€
+	
 	if(sNodeName == "GLOW_SLIDE")
 	{
 		InterfaceStates.GlowEffect = fVal*250;
@@ -419,7 +419,7 @@ void FillControlsList(int nMode)
 		for( n=0; n<qC; n++ ) {
 			arC = GetAttributeN(arGrp,n);
 			if( false==CheckAttribute(arC,"invisible") || arC.invisible!="1" ) {
-			//if( CheckAttribute(arC,"remapping") && arC.remapping=="1" ) {
+			
 				if( AddToControlsList( idx, GetAttributeName(arC), GetAttributeValue(arC), CheckAttribute(arC,"remapping") && arC.remapping=="1" ) ) {
 					idx++;
 				}
@@ -439,7 +439,7 @@ bool AddToControlsList(int row, string sControl, string sKey, bool bRemapable)
 	if( GameInterface.controls_list.(rowname).td2.str == "" ) {
 		trace("Warning!!! " + sControl + " hav`t translate value");
 	}
-	if( !bRemapable ) { // выделение контролок которые нельз€ помен€ть
+	if( !bRemapable ) { 
 		GameInterface.controls_list.(rowname).td2.color = argb(255,128,128,128);
 	}
 	if( CheckAttribute(&objControlsState,"key_codes."+sKey+".img") ) {
@@ -539,11 +539,11 @@ void ISetColorCorrection(float fContrast, float fGamma, float fBright, float fSe
 	SendMessage(&GameInterface,"lslf",MSG_INTERFACE_MSG_TO_NODE,"SEA_DETAILS_SLIDE", 0, fCurSeaDetails);
 
 	XI_SetColorCorrection(fContrast,fGamma,fBright);
-	//Set sea detail
+	
 }
 
 float ConvertContrast(float fContrast, bool Real2Slider)
-{ // контрастность от 0.75 до 1.25
+{ 
 	if(Real2Slider) {
 		return fContrast*2.0-1.5;
 	}
@@ -551,7 +551,7 @@ float ConvertContrast(float fContrast, bool Real2Slider)
 }
 
 float ConvertGamma(float fGamma, bool Real2Slider)
-{ // гамма от 0.5 до 2.0
+{ 
 	if(Real2Slider)
 	{
 		if(fGamma<=1.0) {return fGamma-0.5;}
@@ -607,7 +607,7 @@ void SetAlwaysRun(bool bRun)
 
 void procKeyChange()
 {
-	//FillControlsList();
+	
 	string srow = "tr" + GameInterface.controls_list.select;
 	if( !CheckAttribute(&GameInterface,"controls_list."+srow) ) {return;}
 	if( sti(GameInterface.controls_list.(srow).userdata.remapable)!=1 ) {return;}
@@ -675,7 +675,7 @@ bool DoMapToOtherKey(int keyIdx,int stickUp)
 
 	if( stickUp )
 	{
-		//SetStickNotAvailable();
+		
 		return false;
 	}
 
@@ -684,14 +684,14 @@ bool DoMapToOtherKey(int keyIdx,int stickUp)
 	arKey = GetAttributeN(arKeyRoot,keyIdx);
 	keyCode = sti(GetAttributeValue(arKey));
 
-	// check for not allowed keys
-	if( //keyCode==sti(objControlsState.key_codes.VK_F1) ||
+	
+	if( 
 		keyCode==sti(objControlsState.key_codes.VK_F2) ||
-		//keyCode==sti(objControlsState.key_codes.VK_F3) ||
-		//keyCode==sti(objControlsState.key_codes.VK_F4) ||
-		//keyCode==sti(objControlsState.key_codes.VK_F5) ||
+		
+		
+		
 		keyCode==sti(objControlsState.key_codes.VK_F6) ||
-		//keyCode==sti(objControlsState.key_codes.VK_F7) ||
+		
 		keyCode==sti(objControlsState.key_codes.VK_F8) ||
 		keyCode==sti(objControlsState.key_codes.VK_F9) )
 	{
@@ -790,7 +790,7 @@ void ShowInfo()
 			sHeader = XI_ConvertString("Herb Quantity");
 			sText1 = XI_ConvertString("Herb Quantity_descr");
 			sText2 = XI_ConvertString("ItCanRedusePerfomance");
-			//sText3 = XI_ConvertString("NeedToExitFromSea");
+			
 		break;
 
 		case "MUSIC_SLIDE":
@@ -875,7 +875,7 @@ bool KeyAlreadyUsed(string sGrpName, string sControl, string sKey)
 	int n,q, i,grp;
 	aref arGrp,arCntrl, arGrpList;
 
-	// проверка на совпадение в той же группе
+	
 	makearef(arGrp,objControlsState.keygroups.(sGrpName));
 	q = GetAttributesNum(arGrp);
 	for(n=0; n<q; n++)
@@ -889,7 +889,7 @@ bool KeyAlreadyUsed(string sGrpName, string sControl, string sKey)
 
 	if( bAlreadyUsed ) {return bAlreadyUsed;}
 
-	// найдем группу в которой эта контролка также отображаетс€
+	
 	makearef(arGrpList, objControlsState.keygroups);
 	grp = GetAttributesNum(arGrpList);
 	for( i=0; i<grp; i++ )
@@ -936,3 +936,4 @@ void FaderFrame()
 		PostEvent("evFaderFrame",nDeltaTime,"lll",nTotalTime,nCurTime,nDeltaTime);
 	}
 }
+

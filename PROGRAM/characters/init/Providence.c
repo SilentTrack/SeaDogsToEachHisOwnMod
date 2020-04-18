@@ -3,11 +3,11 @@ int CreateProvidenceCharacters(int n)
 {
 	ref ch;
 	
-	///////////////////////////////////////////////////////////////////////////////
-	// ОСНОВНЫЕ ПЕРСОНАЖИ
-	///////////////////////////////////////////////////////////////////////////////
 	
-	makeref(ch,Characters[n]);			//губернатор
+	
+	
+	
+	makeref(ch,Characters[n]);			
 	ch.id		= "SanAndres_Mayor";
 	ch.model	= "huber_19";
 	ch.sex = "man";
@@ -27,7 +27,7 @@ int CreateProvidenceCharacters(int n)
 	EquipCharacterbyItem(ch, BLADE_LONG); 
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetImmortal(ch, true);
 	LAi_SetHuberType(ch);
 	LAi_RemoveLoginTime(ch);
@@ -35,7 +35,7 @@ int CreateProvidenceCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Священик
+	makeref(ch,Characters[n]);			
 	ch.id		= "SanAndres_Priest";
 	ch.model	= "priest_2";
 	ch.model.animation = "man";
@@ -47,13 +47,13 @@ int CreateProvidenceCharacters(int n)
 	ch.Dialog.Filename = "Common_church.c";
 	ch.greeting = "padre_2";
 	ch.nation = SPAIN;
-//	LAi_SetLoginTime(ch, 6.0, 21.99);
+
 	LAi_SetPriestType(ch);
 	LAi_group_MoveCharacter(ch, "SPAIN_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);		// ОФициантка
+	makeref(ch,Characters[n]);		
 	ch.id		= "SanAndres_waitress";
 	ch.model	= "women_16";
 	ch.sex = "woman";
@@ -70,7 +70,7 @@ int CreateProvidenceCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Трактирщик
+	makeref(ch,Characters[n]);			
 	ch.id		= "SanAndres_tavernkeeper";
 	ch.model	= "barmen_5";
 	ch.sex = "man";
@@ -88,7 +88,7 @@ int CreateProvidenceCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Торговец
+	makeref(ch,Characters[n]);			
 	ch.id		= "SanAndres_trader";
 	ch.model	= "trader_5";
 	ch.greeting = "store_2";
@@ -104,13 +104,13 @@ int CreateProvidenceCharacters(int n)
 	LAi_group_MoveCharacter(ch, "SPAIN_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	ch.item_date = "";
-	// настройка магазина -->
+	
 	ch.StoreNum   = SanAndres_STORE;
 	ch.from_sea   = "SanAndres_town";
-	// настройка магазина <--
+	
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Корабел
+	makeref(ch,Characters[n]);			
 	ch.id		= "SanAndres_shipyarder";
 	ch.model	= "shipowner_5";
 	ch.greeting = "shipyarder_1";
@@ -128,14 +128,14 @@ int CreateProvidenceCharacters(int n)
 	EquipCharacterbyItem(ch, "topor_02"); 
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetHuberType(ch);
 	LAi_SetLoginTime(ch, 6.0, 21.99);
 	LAi_group_MoveCharacter(ch, "SPAIN_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Банкир
+	makeref(ch,Characters[n]);			
 	ch.id		= "SanAndres_usurer";
 	ch.model	= "banker_5";
 	ch.sex = "man";
@@ -148,14 +148,14 @@ int CreateProvidenceCharacters(int n)
 	ch.nation = SPAIN;
 	ch.greeting = "usurer_1";
 	ch.quest.shiping = "0";
-	ch.UsurerDeposit = 10000; // *1000 денег
+	ch.UsurerDeposit = 10000; 
 	ch.money = USURER_MIN_MONEY + rand(USURER_NORM);
 	LAi_SetOwnerType(ch);
 	LAi_group_MoveCharacter(ch, "SPAIN_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Начальник порта
+	makeref(ch,Characters[n]);			
 	ch.id		= "SanAndres_PortMan";
 	ch.model	= "citiz_2";
 	ch.sex = "man";
@@ -182,7 +182,7 @@ int CreateProvidenceCharacters(int n)
 	ch.nation = PIRATE;
 	GiveItem2Character(ch, BLADE_SABER);
 	EquipCharacterbyItem(ch, BLADE_SABER);
-	// посадим в генераторе
+	
 	ch.Dialog.Filename = "Smuggler Agent_dialog.c";
 	LAi_SetSitType(ch);
 	LAi_SetHP(ch, 80.0, 80.0);
@@ -191,3 +191,4 @@ int CreateProvidenceCharacters(int n)
 	
 	return n;
 }
+

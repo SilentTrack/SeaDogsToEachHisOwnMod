@@ -7,7 +7,7 @@ void InitInterface(string iniName)
 	SetEventHandler("EditExit", "ChatS_Enter", 0);
 	SetEventHandler("OnSend", "ChatS_OnSend", 0);
 
-	// set string say mode
+	
 	SetFormatedText("CAPTION_STRING", XI_ConvertString("NetSay_Mode_" + NCSay.Mode));
 
 	FreezeGroupControls("BattleInterfaceControls", true);

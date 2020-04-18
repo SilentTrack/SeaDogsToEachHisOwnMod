@@ -1,15 +1,15 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me a question a little while ago...", "At his dock, and you know whatЦI've never seen such flat, curious people before in town.",
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me a question a little while ago...", "At his dock, and you know whatпњљI've never seen such flat, curious people before in town.",
                           "What's with all the questions? My job is to build ships. Let's take care about that.", "block", 1, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where did my memory go...",
                       "Hm, well...", "Go ahead...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			// Addon 2016-1 Jason пиратская линейка
+			
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "silk_2")
             {
                 link.l1 = "Listen, master, you're building ships here, right?.. And changing sails as well... have you ever thought of... some better sailcloth fabric?";
@@ -17,7 +17,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		
-		// Addon 2016-1 Jason пиратская линейка
+		
 		case "mtraxx":
             dialog.text = "You are talking in riddles, sir... Speak frankly - what brought you here? Nothing to worry, I am no pen pusher and this here ain't customs.";
 			link.l1 = "Ah, I'm glad we're on the same page! Silk sailcloth, sir. As I understand, there is no better material for the sails if speed is your concern.";
@@ -36,6 +36,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.questTemp.Mtraxx = "silk_3";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

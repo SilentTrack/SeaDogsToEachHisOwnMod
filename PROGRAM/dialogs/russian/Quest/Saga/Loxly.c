@@ -1,4 +1,4 @@
-// Альберт Локсли - адвокат
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -18,8 +18,8 @@ void ProcessDialogEvent()
 	if (findsubstr(attrLoc, "RelationTo_" , 0) != -1)
 	{
 		i = findsubstr(attrLoc, "_" , 0);
-		npchar.quest.relation = strcut(attrLoc, i+1, strlen(attrLoc)-1); // индех в конце
-		// проверка на уже договор
+		npchar.quest.relation = strcut(attrLoc, i+1, strlen(attrLoc)-1); 
+		
 		attrLoc = "RelationAgent" + GetNationNameByType(sti(npchar.quest.relation));
 		if (CheckAttribute(Pchar, "GenQuest." + attrLoc) && sti(Pchar.GenQuest.(attrLoc)) == true)
 		{
@@ -51,7 +51,7 @@ void ProcessDialogEvent()
 			{
 				if (CheckAttribute(pchar, "questTemp.Saga"))
 				{
-					if (pchar.questTemp.Saga == "loxly") // первое обращение по саге
+					if (pchar.questTemp.Saga == "loxly") 
 					{
 						dialog.text = "Do you need my services, sir? You will be satisfied, I assure you.";
 						link.l1 = "Yes, I need them.  I am an authorized delegate of one young lady named Helen McArthur, she is a granddaughter of famous Nicolas Sharp. She is the only heir at law left after death of her mother and uncle. She have a claim on Isla Tesoro according to her father's testament. How much would you ask for helping Helen to become a rightful mistress of the island?";
@@ -66,15 +66,15 @@ void ProcessDialogEvent()
 						break;
 					}
 					if (pchar.questTemp.Saga == "molligan" || pchar.questTemp.Saga == "sellbakaut")
-					{ // если не выполнил до конца квест по бакауту
+					{ 
 						dialog.text = "Sir, unfortunately, I need more time to search all needed papers in the archives. I am not ready yet. Please, see me later.";
 						link.l1 = "Fine.";
 						link.l1.go = "exit";
 						break;
 					}
-					if (pchar.questTemp.Saga == "removebakaut") // с бакаутом разобрались
+					if (pchar.questTemp.Saga == "removebakaut") 
 					{
-						// четвертая проверка времени
+						
 						if (CheckAttribute(pchar, "questTemp.Saga.Late"))
 						{
 							RemoveItems(pchar, "map_sharp_full", 1);
@@ -100,7 +100,7 @@ void ProcessDialogEvent()
 					}
 					if (pchar.questTemp.Saga == "shadow")
 					{
-						// пятая проверка времени
+						
 						if (CheckAttribute(pchar, "questTemp.Saga.Late"))
 						{
 							dialog.text = "Mister, why have you been so slow?! It's all over for your principal. The period of the testament has elapsed and Isla Tesoro belongs to the English crown. It will become a military base soon."
@@ -156,7 +156,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "saga":
-			// третья проверка времени. Отбираем Элен, чистим квестовый лут, даем флаг на Свенсона, вызываем перемены
+			
 			if (CheckAttribute(pchar, "questTemp.Saga.Late"))
 			{
 				RemoveItems(pchar, "map_sharp_full", 1);
@@ -192,7 +192,7 @@ void ProcessDialogEvent()
 		
 		case "saga_4":
 			DialogExit();
-			pchar.questTemp.Saga = "bakaut"; // обновляем флаг
+			pchar.questTemp.Saga = "bakaut"; 
 			AddQuestRecord("Testament", "2");
 		break;
 		
@@ -269,7 +269,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "saga_16":
-			if (CheckAttribute(pchar, "questTemp.Saga.Beltrop_die")) // Белтроп убит
+			if (CheckAttribute(pchar, "questTemp.Saga.Beltrop_die")) 
 			{
 				dialog.text = "Wait a minute! Captain Butcher, the evil pirate and the killer of English subjects was hanged in the fort of St. John's twenty years ago. And Laurence Beltrope, a close friend to Richard Doyle, tragically died not long ago. Most of all, Doyle wanted to make him a new governor of Sharptown!";
 				link.l1 = "Ha! Sure, nobody knew that... I have got written testimonies of Raymond Baker, the ex hanger of St, John's, that he was forced under the threat of death to fake Butcher's execution! Here, take a look...";
@@ -325,7 +325,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "saga_23":
-			// шестая проверка времени
+			
 			if (CheckAttribute(pchar, "questTemp.Saga.Late"))
 			{
 				dialog.text = "Sir, you have staggered me! You have done so much, the island was almost in our hands but it is over now because of your delay with my fee! The testament was expired and Isla Tesoro belongs to the English crown now. There will be a military base."
@@ -350,7 +350,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "saga_22":
-			dialog.text = "But this… This changes everything! Publishing Beatrice's letter will mean that Lawrence Beltrope must be arrested immediately and appeared in court for his past crimes!\nAnd Baker's testimony will completely destroy any reasons against! This is great! With such aces in the hand we will beat Doyle fair and square!";
+			dialog.text = "But thisпїЅ This changes everything! Publishing Beatrice's letter will mean that Lawrence Beltrope must be arrested immediately and appeared in court for his past crimes!\nAnd Baker's testimony will completely destroy any reasons against! This is great! With such aces in the hand we will beat Doyle fair and square!";
 			link.l1 = "I am very glad. When will the trial happen?";
 			link.l1.go = "saga_21";
 		break;
@@ -367,15 +367,15 @@ void ProcessDialogEvent()
 		case "saga_25":
 			DialogExit();
 			SaveCurrentNpcQuestDateParam(npchar, "court_date");
-			pchar.questTemp.Saga = "court"; // обновляем флаг
+			pchar.questTemp.Saga = "court"; 
 			AddQuestRecord("Testament", "10");
 			NextDiag.CurrentNode = "First time";
-			// закрываем выходы из города
+			
 			LocatorReloadEnterDisable("PortRoyal_town", "reload1_back", true);
 			LocatorReloadEnterDisable("PortRoyal_town", "reload2_back", true);
 			LocatorReloadEnterDisable("PortRoyal_town", "gate_back", true);
-			pchar.GenQuest.CannotWait = true;//запрет ожидания
-			// снимаем общий таймер Саги!
+			pchar.GenQuest.CannotWait = true;
+			
 			pchar.quest.Saga_TimeOver.over = "yes";
 		break;
 		
@@ -396,11 +396,11 @@ void ProcessDialogEvent()
 			LAi_ActorFollow(pchar, npchar, "", -1);
 			LAi_ActorFollow(sld, npchar, "", -1);
 			NextDiag.CurrentNode = "saga_28";
-			// открываем выходы из города
+			
 			LocatorReloadEnterDisable("PortRoyal_town", "reload1_back", false);
 			LocatorReloadEnterDisable("PortRoyal_town", "reload2_back", false);
 			LocatorReloadEnterDisable("PortRoyal_town", "gate_back", false);
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
 		break;
 		
 		case "saga_28":
@@ -455,7 +455,7 @@ void ProcessDialogEvent()
 		
 		case "saga_35":
 			DialogExit();
-			SetFunctionTimerCondition("Saga_RemainGoldLoxly", 0, 0, 10, false); // таймер на оплату услуг
+			SetFunctionTimerCondition("Saga_RemainGoldLoxly", 0, 0, 10, false); 
 			DoQuestReloadToLocation("PortRoyal_town", "quest", "quest3", "Saga_HelenaIslaTesoro");
 			npchar.quest.waitgold = "true";
 			pchar.questTemp.Saga = "lastpages";
@@ -473,8 +473,8 @@ void ProcessDialogEvent()
 		
 		case "saga_37":
 			DialogExit();
-			pchar.quest.Saga_RemainGoldLoxly.over = "yes"; //снять таймер
-			NextDiag.CurrentNode = "Loxly"; // услуги адвоката
+			pchar.quest.Saga_RemainGoldLoxly.over = "yes"; 
+			NextDiag.CurrentNode = "Loxly"; 
 		break;
 		
 		case "saga_38":
@@ -488,8 +488,8 @@ void ProcessDialogEvent()
 			link.l1 = "And I am going to do that. Farewell, mister Loxley.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "saga_40";
-			pchar.quest.Saga_RemainGoldLoxly.over = "yes"; //снять таймер
-			LocatorReloadEnterDisable("PortRoyal_town", "houseSp4", true); // закроем вход к Локсли
+			pchar.quest.Saga_RemainGoldLoxly.over = "yes"; 
+			LocatorReloadEnterDisable("PortRoyal_town", "houseSp4", true); 
 			ChangeCharacterNationReputation(pchar, ENGLAND, -10);
 		break;
 		
@@ -500,12 +500,12 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "saga_40";
 		break;
 		
-		// провалы Саги
+		
 		case "saga_l3":
 			dialog.text = "Sir, we would win your case if you'd come see earlier. The testament has expired recently. I am sorry.";
 			link.l1 = "Eh, I am sorry too! Whatever, farewell, mister Loxley.";
 			link.l1.go = "saga_l3_1";
-			// Элен - к разговору
+			
 			sld = characterFromId("Helena");
 			sld.quest.talk = "late_l3";
 		break;
@@ -515,11 +515,11 @@ void ProcessDialogEvent()
 			pchar.quest.Saga_Late_3.win_condition.l1 = "Location_Type";
 			pchar.quest.Saga_Late_3.win_condition.l1.location_type = "town";
 			pchar.quest.Saga_Late_3.function = "Saga_HelenaTalk";
-			Saga_ChangesIslatesoro(); // вызов перестановки на Исла-Тесоро
-			pchar.questTemp.Saga = "late_l3"; // для Свенсона
+			Saga_ChangesIslatesoro(); 
+			pchar.questTemp.Saga = "late_l3"; 
 		break;
 		
-	//-------------------------------------- адвокатские услуги ------------------------------------------------
+	
 		case "Loxly":
 			dialog.text = TimeGreeting()+", sir. Glad to see you. Do you need my services?";
 			link.l1 = "Yes. That is why I am here.";
@@ -563,14 +563,14 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Loxly";
 		break;
 		
-		case "RelationYet": // уже оплачено
+		case "RelationYet": 
 			dialog.text = "I am already working on your matter. It will be alright, I assure you.";
 			Link.l1 = "Thank you. I'll be waiting.";
 			Link.l1.go = "exit";
 			NextDiag.TempNode = "Loxly";
 		break;
 		
-		// --> снятие НЗГ
+		
 		case "RelationAny_Done":
 			iSumm = sti(npchar.quest.relation.summ);
 			int iRate = abs(ChangeCharacterNationReputation(pchar, sti(npchar.quest.relation), 0));
@@ -601,7 +601,7 @@ void ProcessDialogEvent()
 			Pchar.GenQuest.(attrLoc).loyer = "true";
 			NextDiag.TempNode = "Loxly";
 		break;
-		// <-- снятие НЗГ
+		
 		
 		case "contraband":
 			npchar.quest.contrasum = makeint(0.3*stf(Pchar.rank)/stf(Pchar.reputation.nobility)*60000);

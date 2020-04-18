@@ -1,6 +1,6 @@
-// ����� �� ���
 
-//  ����� ��������  ��������� -->
+
+
 string GetIslandForTreasure()
 {
 	int iNum, m;
@@ -13,7 +13,7 @@ string GetIslandForTreasure()
 	makearef(arDest, NullCharacter.TravelMap.Islands);
 	iNum = GetAttributesNum(arDest);
 	
-	string sArray[50]; // ������������ ������� � ������ �� ����������� :(
+	string sArray[50]; 
 	for (int i = 0; i<iNum; i++)
 	{
 		arImt = GetAttributeN(arDest, i);
@@ -74,7 +74,7 @@ string GetBoxForTreasure(string island, string location)
     iNum = rand(iNum-1);
     
     arImt = GetAttributeN(arDest, iNum);
-	return GetAttributeValue(arImt);  // ��� �� �������, � �������
+	return GetAttributeValue(arImt);  
 }
 
 void GenerateMapsTreasure(ref item, int iProbability1, int iProbability2)
@@ -106,7 +106,7 @@ void GenerateMapsTreasure(ref item, int iProbability1, int iProbability2)
 	if(rand(iProbability1) == 1 && !CheckMainHeroMap("map_cumana")) 	item.BoxTreasure.map_cumana 	= 1;
 }
 
-void GenerateAdmiralMapsTreasure(ref item, int abl) // Jason, ������������ ����� �� 1 �� 240912
+void GenerateAdmiralMapsTreasure(ref item, int abl) 
 {
 	if (!CheckAttribute(pchar, "questTemp.AdmiralMap")) return;
 	if (rand(abl) == 1)
@@ -124,7 +124,7 @@ void FillMapForTreasure(ref item)
     item.MapBoxId   = GetBoxForTreasure(item.MapIslId, item.MapLocId);
     item.MapTypeIdx = rand(2);
 
-    // ������� ����
+    
     DeleteAttribute(item, "BoxTreasure");
     FillBoxForTreasure(item, rand(3));
     FillBoxForTreasureAddition(item);
@@ -137,7 +137,7 @@ void FillMapForTreasure(ref item)
     {
        FillBoxForTreasureSuper(item);
     }
-    DeleteAttribute(Pchar, "GenQuest.TreasureBuild"); //�������
+    DeleteAttribute(Pchar, "GenQuest.TreasureBuild"); 
 
     if (sti(item.MapTypeIdx) != -1)
     {
@@ -145,16 +145,16 @@ void FillMapForTreasure(ref item)
         Pchar.quest.SetTreasureFromMap.win_condition.l1.location = item.MapLocId;
         Pchar.quest.SetTreasureFromMap.win_condition             = "SetTreasureFromMap";
 		
-		pchar.GenQuest.Treasure.Vario = rand(5); // ���������� �������
-		locations[FindLocation(item.MapLocId)].DisableEncounters = true; //��������� �������
+		pchar.GenQuest.Treasure.Vario = rand(5); 
+		locations[FindLocation(item.MapLocId)].DisableEncounters = true; 
     }
 }
 void FillBoxForTreasure(ref item, int i)
 {
-	// ���������� ���
+	
 	switch (i)
 	{
-		// good
+		
 		case 0:
 		    if (rand(1) == 1)
 	        {
@@ -217,9 +217,9 @@ void FillBoxForTreasure(ref item, int i)
             	item.BoxTreasure.cirass7 = 1;
 	        }
 			GenerateMapsTreasure(item, 35, 70);
-			GenerateAdmiralMapsTreasure(item, 40); // 240912
+			GenerateAdmiralMapsTreasure(item, 40); 
 	    break;
-	    // best
+	    
 	    case 1:
             if (rand(2) == 1)
 	        {
@@ -262,9 +262,9 @@ void FillBoxForTreasure(ref item, int i)
 				item.BoxTreasure.rat_poison = 1;
 			}
 			GenerateMapsTreasure(item, 25, 50);
-			GenerateAdmiralMapsTreasure(item, 20); // 240912
+			GenerateAdmiralMapsTreasure(item, 20); 
 	    break;
-	    // bad
+	    
 	    case 2:
 	        if (rand(2) == 1)
 	        {
@@ -272,7 +272,7 @@ void FillBoxForTreasure(ref item, int i)
 	        }
 	        else
 	        {
-                item.BoxTreasure.blade_05 = 5 + rand(100);//fix
+                item.BoxTreasure.blade_05 = 5 + rand(100);
 	        }
 	        if (rand(2) == 1)
 	        {
@@ -376,11 +376,11 @@ void FillBoxForTreasureAddition(ref item)
 		    }
 	    }
 	}
-	// +1 ����
+	
 	switch (rand(40))
 	{
 		case 1:
-		    item.BoxTreasure.gold_dublon = rand(40) + 20; // 160912
+		    item.BoxTreasure.gold_dublon = rand(40) + 20; 
 		break;
 		case 2:
 		    item.BoxTreasure.jewelry10 = 1;
@@ -449,7 +449,7 @@ void FillBoxForTreasureAddition(ref item)
 		    item.BoxTreasure.Mineral15 = 1;
 		break;
 		case 24:
-		    item.BoxTreasure.gold_dublon = rand(40) + 20; // 160912
+		    item.BoxTreasure.gold_dublon = rand(40) + 20; 
 		break;
 		case 25:
 		    item.BoxTreasure.amulet_6 = 1;
@@ -474,13 +474,13 @@ void FillBoxForTreasureSuper(ref item)
 	int     i;
 	string  itmName;
 
-    if (3*nLuck > rand(21))// ��� ���� ����� 2 �����
+    if (3*nLuck > rand(21))
     {
 		i = 0;
 		itmName = "";
 		while (itmName == "" && i < 15)
 		{
-            switch (rand(17)) // 170912
+            switch (rand(17)) 
 			{
                 case 0:
         			itmName = "pistol4";
@@ -547,7 +547,7 @@ void FillBoxForTreasureSuper(ref item)
 	    {
 	        item.BoxTreasure.(itmName) = 1;
 	    }
-		GenerateAdmiralMapsTreasure(item, 15); // 240912
+		GenerateAdmiralMapsTreasure(item, 15); 
 	}
 }
 
@@ -565,12 +565,12 @@ void SetTreasureBoxFromMap()
         PlaySound("interface\notebook.wav");
 		Statistic_AddValue(Pchar, "Treasure", 1);
 		Achievment_SetStat(Pchar, 8, 10);
-        // ������� ������� �����
+        
         if (rand(1) == 0) TraderHunterOnMap();
 		else CoolTraderHunterOnMap();
         if( CheckAttribute(Pchar,"location.from_sea") )
         {
-            if (rand(2) == 1) //33%
+            if (rand(2) == 1) 
             {
                 Pchar.quest.SetTreasureHunter.win_condition.l1          = "location";
                 Pchar.quest.SetTreasureHunter.win_condition.l1.location = Pchar.location.from_sea;
@@ -591,18 +591,18 @@ void SetTreasureBoxFromMap()
         CopyAttributes(arToBox, arFromBox);
 
         loc.(box) = Items_MakeTime(GetTime(), GetDataDay(), GetDataMonth(), GetDataYear());
-        loc.(box).Treasure =  true; // ������� ��������� � �������
+        loc.(box).Treasure =  true; 
 
         DeleteAttribute(item, "MapIslId");
         TakeNItems(Pchar, "map_full", -1);
     }
 }
-//  ����� ��������  ��������� <--
 
-// ������� �� �� �� �����
+
+
 void  TraderHunterOnMap()
 {
-    // ������� ������� �����
+    
     ref  sld;
     int  i;
 
@@ -615,7 +615,7 @@ void  TraderHunterOnMap()
     {
         sld = GetCharacter(NPC_GenerateCharacter(sCapId + i, "off_hol_2", "man", "man", sti(PChar.rank) + 5, PIRATE, 15, true, "hunter"));
         SetShipHunter(sld);
-        SetFantomParamHunter(sld); //������ �����
+        SetFantomParamHunter(sld); 
         SetCaptanModelByEncType(sld, "war");
         sld.AlwaysEnemy = true;
         sld.DontRansackCaptain = true;
@@ -631,7 +631,7 @@ void  TraderHunterOnMap()
     Map_CreateWarrior("", sCapId + "1", 8);
 }
 
-void CoolTraderHunterOnMap()//Jason, ������� ��
+void CoolTraderHunterOnMap()
 {
     ref  sld;
     int  i;
@@ -645,7 +645,7 @@ void CoolTraderHunterOnMap()//Jason, ������� ��
     {
         sld = GetCharacter(NPC_GenerateCharacter(sCapId + i, "off_hol_2", "man", "man", sti(PChar.rank) + 8, PIRATE, 15, true, "hunter"));
         SetShipHunter(sld);
-        SetFantomParamHunter(sld); //������ �����
+        SetFantomParamHunter(sld); 
         SetCaptanModelByEncType(sld, "war");
         sld.AlwaysEnemy = true;
         sld.DontRansackCaptain = true;
@@ -668,7 +668,7 @@ void SetTreasureHunter(string temp)
 	ref    sld;
 	bool   ok;
 
-	if (chrDisableReloadToLocation) return; // ���� ����� ������ ����� � �������� ������
+	if (chrDisableReloadToLocation) return; 
 	
     Pchar.GenQuest.Hunter2Pause            = true;
     
@@ -681,11 +681,11 @@ void SetTreasureHunter(string temp)
     for (i = 1; i <= j; i++)
     {
         sld = GetCharacter(NPC_GenerateCharacter(sCapId + i, "off_hol_2", "man", "man", sti(PChar.rank) + 5, PIRATE, 0, true, "hunter"));
-        SetFantomParamHunter(sld); //������ �����
+        SetFantomParamHunter(sld); 
         sld.Dialog.CurrentNode = "TreasureHunter";
         sld.dialog.filename = "Hunter_dialog.c";
         sld.greeting = "hunter";
-        sld.location = "none"; // ��� ��� �������� ������!!!!!!!!!!!
+        sld.location = "none"; 
 
         SetModelPirate(sld);
         k = 0;
@@ -699,13 +699,13 @@ void SetTreasureHunter(string temp)
 		
         LAi_SetActorTypeNoGroup(sld);
         LAi_SetCheckMinHP(sld, (LAi_GetCharacterHP(sld) - 1), false, "Battle_Hunters_Land");
-        if (PlaceCharacter(sld, "goto", "random_must_be_near") == "" && i == 1) // fix ���� ����� ��� � �������
+        if (PlaceCharacter(sld, "goto", "random_must_be_near") == "" && i == 1) 
         {
             ok = false;
             break;
         }
         LAi_ActorFollow(sld, pchar, "", 8.0);
-        //LAi_Actor2WaitDialog(sld, pchar); // ����� ������, �� ������
+        
         LAi_group_MoveCharacter(sld, sTemp);
     }
 
@@ -716,7 +716,7 @@ void SetTreasureHunter(string temp)
 	LAi_SetFightModeForOfficers(false);
 	if (ok)
     {
-        PChar.HunterCost = makeint(sti(Pchar.money) / 5) + rand(20)*1000; //����� �������
+        PChar.HunterCost = makeint(sti(Pchar.money) / 5) + rand(20)*1000; 
         PChar.HunterCost.Qty = i;
         PChar.HunterCost.TempHunterType = "";
         sld = characterFromID(sCapId + "1");
@@ -728,7 +728,7 @@ void SetTreasureHunter(string temp)
 }
 
 ref SetFantomSkeletForts(string group, string locator, string enemygroup, string _type)
-// _type = "GhostShipCrew"   _type = "ParamHunter"  _type = "none"
+
 {
     string emodel;
     ref    Cr;
@@ -749,11 +749,11 @@ ref SetFantomSkeletForts(string group, string locator, string enemygroup, string
 		}
 		LAi_SetWarriorType(Cr);
 	    LAi_group_MoveCharacter(Cr, enemygroup);
-	    LAi_NoRebirthEnable(Cr); //�� ���������� ������ ��� ����� � �������
-	    LAi_LoginInCaptureTown(Cr, true); // ��� ������ ����
+	    LAi_NoRebirthEnable(Cr); 
+	    LAi_LoginInCaptureTown(Cr, true); 
 	    if (_type == "GhostShipCrew")
 	    {
-		    // �������� ���� ������ �� ������ ������ Cr.DontClearDead = true;
+		    
 		    Cr.GhostShipCrew = true;
 	    }
     }

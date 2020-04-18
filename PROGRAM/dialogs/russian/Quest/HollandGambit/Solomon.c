@@ -1,4 +1,4 @@
-// Соломон Шнеур - старый еврей
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -13,7 +13,7 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-//--------------------------------------за Голландию------------------------------------------------
+
 			if (CheckAttribute(pchar, "questTemp.HWIC.Holl"))
 			{
 				if (pchar.questTemp.HWIC.Holl == "AbbyFather")
@@ -49,7 +49,7 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				break;
 			}
-//----------------------------------------за Англию-----------------------------------------------
+
 			if (CheckAttribute(pchar, "questTemp.HWIC.Eng"))
 			{
 				if (pchar.questTemp.HWIC.Eng == "toAbigile")
@@ -64,7 +64,7 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				break;
 			}
-//-----------------------------------------против всех-------------------------------------------------
+
 			if (CheckAttribute(pchar, "questTemp.HWIC.Self"))
 			{
 				if (pchar.questTemp.HWIC.Self == "toVillemstad")
@@ -107,7 +107,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 
-//-----------------------------------------------За Голландию-----------------------------------
+
 		case "SolomonBonanza":
 			PlaySound("VOICE\Russian\hambit\Solomon Shneur-03.wav");
 			dialog.text = "And what do you want from me? Do I look like a man who knows something extra? How could I know on that scary-scary day that some piece of ground among the waves has fooditude and other goldinates? Or how those, who want to look smarter than an old Jew, call it?\nIsland. Not a single decent man there, except Abi and me. Not a single. No one at all. There was a grotto in the middle of it. I put my chest there to save it from that pirate fucker. Everything I had earned with a hard work is there. Plus, my granddad's skull... Trust me, that thingy saved us, yes-yes\nOh-ho-ho, an ancient thingy! God save us! It is difficult to start over in this age! I wish you knew, young man! Oh, I wish you knew!";
@@ -123,7 +123,7 @@ void ProcessDialogEvent()
 			pchar.quest.Joakim_meeteng.function = "Create_Joakim";
 		break;
 		
-		case "SolomonBonanza_2"://отдаем всё
+		case "SolomonBonanza_2":
 			dialog.text = "Oh, gratitude, young man! Not only you have brought back my money - you have cleansed the Shneur's name! Mynheer Rodenburg can be rightfully proud that he has captains like you under his command. I will give the skull to mynheer Rodenburg - he promised to pay a significant sum for it. And I also would like to thank you personally - please accept this amulet as a memento.";
 			link.l1 = "I am happy for you. Thank you for the gift!";
 			link.l1.go = "SolomonBonanza_4";
@@ -132,7 +132,7 @@ void ProcessDialogEvent()
 			GiveItem2Character(pchar, "amulet_7"); 
 			AddDialogExitQuestFunction("DeleteJoakimFromRoom");
 			ChangeCharacterComplexReputation(pchar, "nobility", 5);
-			SetFunctionTimerCondition("Caleuche_StartTotal", 0, 0, 180, false); // таймер на Калеуче
+			SetFunctionTimerCondition("Caleuche_StartTotal", 0, 0, 180, false); 
 		break;
 		
 		case "SolomonBonanza_3":
@@ -141,13 +141,13 @@ void ProcessDialogEvent()
 			link.l1.go = "SolomonBonanza_4";
 			AddMoneyToCharacter(pchar, -200000);
 			GiveItem2Character(pchar, "obereg_10");
-			pchar.questTemp.HWIC.Holl.ScullnotReturn = "true";//признак для Лукаса
+			pchar.questTemp.HWIC.Holl.ScullnotReturn = "true";
 			ChangeCharacterComplexReputation(pchar, "nobility", -8);
 		break;
 		
 		case "SolomonBonanza_4":
 			DialogExit();
-			pchar.questTemp.HWIC.Holl = "AbbyLeavesMarried";//теперь можно говорить с Аби
+			pchar.questTemp.HWIC.Holl = "AbbyLeavesMarried";
 			AddQuestRecord("Holl_Gambit", "1-32");
 		break;
 		
@@ -163,11 +163,11 @@ void ProcessDialogEvent()
 			dialog.text = "Oh, money, yes, money... It does not look like my money, though... Does not smell like my shiny coins. But then again - moneys are all the same, young man, aren't they? Do not bother to answer - I know. Thank you so much for returning my savings. I would like to thank you too - please accept this amulet. Now go and tell Abi the good news!";
 			link.l1 = "Thank you, Solomon.";
 			link.l1.go = "SolomonBonanza_4";
-			pchar.questTemp.HWIC.Holl.LucasMoney = "true";//признак для Лукаса
+			pchar.questTemp.HWIC.Holl.LucasMoney = "true";
 			ChangeCharacterComplexReputation(pchar, "nobility", 1);
 		break;
 
-//-------------------------------------------за Англию------------------------------------------------
+
 		
 		case "Solomon_treasure":
 			dialog.text = "Oh, don't tell me! Mynheer Rodenburg is a step away from being my son-in-law. Blow! I like him! All soldiers from the garrison will be here in a second, should I cry for help!";
@@ -187,10 +187,10 @@ void ProcessDialogEvent()
 			pchar.questTemp.HWIC.Eng = "AbigileInChurch";
 			sld = characterFromId("Abigile");
 			sld.greeting = "abigile_3";
-			ChangeCharacterAddressGroup(sld, "Villemstad_church", "goto", "goto1");//Аби в церковь
+			ChangeCharacterAddressGroup(sld, "Villemstad_church", "goto", "goto1");
 		break;
 		
-//----------------------------------------------против всех---------------------------------------------	
+
 		
 		case "Abigile_kidnap":
 			dialog.text = "A letter? You don't say! Mynheer Rodenburg is a step away from being my son-in-law. Blow! I like him!";
@@ -314,13 +314,13 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//--> блок реагирования на попытку залезть в сундук
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("You are a "+ GetSexPhrase("thief, mister! Guards, take him","thief, girl! Guards, take her") +"!!!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest! Take the thief!!!", "Guards! Robbery! Take the thief!!!");
 			link.l1 = "Damn it!";
 			link.l1.go = "exit";
 			LAi_group_Attack(NPChar, Pchar);
 		break;
-		//<-- блок реагирования на попытку залезть в сундук
+		
 	}
 }

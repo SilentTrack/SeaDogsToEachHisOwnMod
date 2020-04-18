@@ -51,12 +51,12 @@ ref NetClient_procGetSailTextureData()
 	aref arClient = GetEventData();
 
 	DeleteAttribute(&BI_objRetValue, "");
-	// sails upgrade
+	
 	BI_objRetValue.normalTex = "ships\parus_" + NetShipSailUpgrade[sti(arClient.ship.Upgrades.Sails) - 1].str + ".tga";
 
 	BI_objRetValue.sailscolor = argb(255,255,255,255);
-	//BI_objRetValue.geraldTex = "Net\Sails\france.tga";
-	//BI_objRetValue.geraldTexPointer = 0; // (IDirect3DTexture8*)
+	
+	
 
 	string nationFileName = "ships\parus_common.tga";
 	string tmpStr;
@@ -87,9 +87,9 @@ ref NetClient_procGetSailTextureData()
 			else	{BI_objRetValue.(attrName) = tmpStr;}
 		}
 	}
-	// проставляем гербовый знак (в текстуре или при помощи поинтера на текстуру)
-	//BI_objRetValue.geraldTex = "ships\gerald\8ball1.tga";
-	//BI_objRetValue.geraldTexPointer = 0; // (IDirect3DTexture8*)
+	
+	
+	
 
 	BI_objRetValue.geraldTexPointer = arClient.UserData.Sail.Texture;
 
@@ -151,8 +151,9 @@ void NetClient_OnShipSailDamageSound()
 void NetClient_OnShipSailDamage(int iMsg)
 {
 	int wOurClientID = NMGetClientID(iMsg);
-	int iSailIndex = NMGetDword(iMsg);		// OPTIMIZATION
+	int iSailIndex = NMGetDword(iMsg);		
 	int iSailState = NMGetDword(iMsg);
 
 	SendMessage(&NCSail, "lslll", MSG_SAIL_SCRIPT_PROCESSING, "SailMakeHole", wOurClientID, iSailIndex, iSailState);
 }
+

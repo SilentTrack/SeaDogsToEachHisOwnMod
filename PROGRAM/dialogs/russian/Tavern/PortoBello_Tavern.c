@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -14,13 +14,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                 link.l1 = "Listen, have you happened to have seen a privateer by the name Francois Gontier? He was recently in your city.";
                 link.l1.go = "Portobello_rat_1";
             }			
-			// карибские нравы
+			
 			if (CheckAttribute(pchar, "questTemp.Trial") && pchar.questTemp.Trial == "spy" && !CheckAttribute(npchar, "quest.trial"))
             {
                 link.l1 = "Listen, would you be able to tell me where to find a merchant named Jaime Silicio? He was supposedly supposed to come and see you...";
                 link.l1.go = "trial";
             }
-			// Addon-2016 Jason ФМК-Гваделупа
+			
 			if (CheckAttribute(pchar, "questTemp.FMQG") && pchar.questTemp.FMQG == "headhunter_portobello" && !CheckAttribute(npchar, "quest.FMQG"))
             {
                 link.l1 = "Look, I am in a search of a man named Bertrand Pinette, have you heard of him? He arrived to Portobello not long ago. An imposing gentleman in a curving wig. A trader. He might had been here...";
@@ -42,7 +42,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddDialogExitQuestFunction("Trial_TavernEnterSoldiers");
 		break;
 		
-		// Addon-2016 Jason ФМК-Гваделупа
+		
 		case "FMQG":
 			dialog.text = "Never heard of him, pal.";
 			link.l1 = "He is an acquaintance of don Carlos de Milyar. You sure you never heard of him?";
@@ -61,6 +61,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.FMQG = true;
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

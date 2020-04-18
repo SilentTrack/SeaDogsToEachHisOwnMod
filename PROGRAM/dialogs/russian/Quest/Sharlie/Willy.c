@@ -1,4 +1,4 @@
-// Вильям Патерсон
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -147,7 +147,7 @@ void ProcessDialogEvent()
 		
 		case "isladevieques_7":
 			DialogExit();
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться patch-8
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			LAi_ActorRunToLocation(npchar, "quest", "teleport", "IslaDeVieques_HouseEntrance", "quest", "mushketer", "GuardOT_WillyGetReady", 10.0);
 			for(i=1; i<=5; i++)
 			{

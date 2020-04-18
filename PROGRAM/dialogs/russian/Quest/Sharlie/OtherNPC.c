@@ -1,4 +1,4 @@
-// диалог прочих и малозначимых НПС
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -21,7 +21,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// --> матрос на корабле, прибытие в Сен-Пьер
+		
 		case "Startsailor":
 			dialog.text = "Erm, first of all, as soon as I get down to the bay I'm getting drunk!... Wake up, monsieur... whatever your name is... We have arrived!";
 			link.l1 = "A-ah! What, already? God damn heat!...";
@@ -66,9 +66,9 @@ void ProcessDialogEvent()
 		    setWDMPointXZ(GetCityFrom_Sea(locations[i].fastreload));
 			DoQuestReloadToLocation("Fortfrance_town", "reload", "reload1", "Sharlie_onLand");
 		break;
-		// <-- матрос на корабле, прибытие в Сен-Пьер
 		
-		// --> арест в резиденции
+		
+		
 		case "Sharlie_arest":
 			dialog.text = "Yield your weapons right away, monsieur, and follow us!";
 			link.l1 = "Well, I'm up the creek...";
@@ -79,7 +79,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			chrDisableReloadToLocation = false;
 			DoFunctionReloadToLocation("FortFrance_prison", "goto", "goto9", "");
-			WaitDate("", 0, 0, 2, 0, 10); //крутим время
+			WaitDate("", 0, 0, 2, 0, 10); 
 			RecalculateJumpTable();
 			RemoveAllCharacterItems(PChar, true);
 			sld = characterFromId("Puancie");
@@ -88,9 +88,9 @@ void ProcessDialogEvent()
 			ChangeCharacterAddressGroup(sld, "FortFrance_prison", "goto", "goto13");
 			DoQuestFunctionDelay("Puancie_InJail", 10.0);
 		break;
-		// арест в резиденции
 		
-		// --> офицер базы
+		
+		
 		case "Maltie_officer":
 			ref location = &Locations[FindLocation(pchar.location)];
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "begin")
@@ -129,18 +129,18 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Maltie_officer";
 		break;
-		// офицер базы
 		
-		// --> солдаты базы
+		
+		
 		case "Maltie_soldier":
 			dialog.text = "Hello, monsieur. Can I help you with anything?";
 			link.l1 = "Thank you, soldier. Alas, you are not able to render me any assistance...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Maltie_soldier";
 		break;
-		// --> солдаты базы
 		
-		// --> мальтиец-проводник
+		
+		
 		case "Sharlie_maltie":
 			dialog.text = "I'm here, monsieur. So you were searching for Michel de Monper? And you are his brother?";
 			link.l1 = "Yes, that's correct. I am his brother Charles. I need to see him right away. He's gotten into trouble, has he?";
@@ -178,13 +178,13 @@ void ProcessDialogEvent()
 		
 		case "Sharlie_maltie_4":
 			DialogExit();
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			npchar.lifeday = 0;
 			LAi_ActorGoToLocator(npchar, "goto", "goto1", "none", -1);
 		break;
-		// мальтиец-проводник
 		
-		// --> найм матросов
+		
+		
 		case "Sharlie_sailor":
 			dialog.text = "Good health, monsieur. Is there something you needed?";
 			link.l1 = "Yes. I have a ship in my property, but no crew. The bartender advised that I speak with you on this subject, you and your lads have supposedly been dismissed from some ship and you need a work...";
@@ -252,7 +252,7 @@ void ProcessDialogEvent()
 			pchar.Ship.Crew.Exp.Soldiers = 50;
 			AddQuestRecord("Sharlie", "7");
 			pchar.questTemp.Sharlie = "skiper";
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//снимаем запрет, если не был снят раньше
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
 		break;
 		
 		case "Sharlie_sailor_nomoney":
@@ -276,9 +276,9 @@ void ProcessDialogEvent()
 				link.l1.go = "Sharlie_sailor_5";
 			}
 		break;
-		// найм матросов
 		
-		// наводчик на штурмана
+		
+		
 		case "skipertalker":
 			dialog.text = LinkRandPhrase("Greetings, captain! What do you need?","Hello, sir. What can I do for you?","Good afternoon. What would you like?");
 			link.l1 = RandPhraseSimple("I've got a question for you.", "I need information on the business of this colony.");
@@ -310,7 +310,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("Sharlie", "8");
 		break;
 		
-		// --> штурман
+		
 		case "Folke":
 			dialog.text = "What do I owe such an honour, monsieur?";
 			link.l1 = "Hello, Folke. It's simple, I've got a ship, but no navigator. And I need one. So I've bought you out of your debt hole...";
@@ -343,15 +343,15 @@ void ProcessDialogEvent()
 		
 		case "Folke_5":
 			DialogExit();
-			chrDisableReloadToLocation = false;//открыть локацию
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
+			chrDisableReloadToLocation = false;
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			AddQuestRecord("Sharlie", "10");
 			LAi_SetActorType(npchar);
 			LAi_ActorFollowEverywhere(npchar, "", -1);
 			pchar.quest.Sharlie_skiper.win_condition.l1 = "location";
 			pchar.quest.Sharlie_skiper.win_condition.l1.location = "My_Cabin_Small";
 			pchar.quest.Sharlie_skiper.function = "Sharlie_SkiperTalk";
-			//прерывание на засаду пиратов - принудительный квест
+			
 			pchar.quest.Sharlie_seabattle.win_condition.l1 = "location";
 			pchar.quest.Sharlie_seabattle.win_condition.l1.location = "Fortfrance_town";
 			pchar.quest.Sharlie_seabattle.function = "SharlieSeabattle_agent";
@@ -359,7 +359,7 @@ void ProcessDialogEvent()
 		
 		case "Folke_6":
 			pchar.GenQuest.StoreGoods.StoreIdx = Fortfrance_STORE;
-			pchar.GenQuest.StoreGoods.Starting = true; // заполняем магазин 250912
+			pchar.GenQuest.StoreGoods.Starting = true; 
 			dialog.text = "Great lugger, captain! Quite a decent ship. With a ship like this you're good not only to make it to Guadeloupe, but even across the whole Caribbean sea.";
 			link.l1 = "Excellent. At least I didn't throw my money away for nothing... Will you have any advice before we set sail, Folke?";
 			link.l1.go = "Folke_8";
@@ -511,12 +511,12 @@ void ProcessDialogEvent()
 			npchar.Dialog.Filename = "Enc_Officer_dialog.c";
 			npchar.quest.meeting = true;
 			AddDialogExitQuestFunction("LandEnc_OfficerHired");
-			pchar.questTemp.Sharlie = "seabattle";//в Ле Франсуа
-			DeleteAttribute(pchar, "NoNavyPenalty"); // штрафуем за нехватку навигации
+			pchar.questTemp.Sharlie = "seabattle";
+			DeleteAttribute(pchar, "NoNavyPenalty"); 
 		break;
-		// штурман
 		
-		// --> пират-обманщик
+		
+		
 		case "Seabattle_pirate":
 			dialog.text = "My apologies. "+GetFullName(pchar)+"?";
 			link.l1 = "Correct. What do I owe for this occasion, sir?";
@@ -559,16 +559,16 @@ void ProcessDialogEvent()
 			LAi_ActorRunToLocation(npchar, "reload", "gate_back", "none", "", "", "Seabattle_pirate_open", -1);
 			AddQuestRecord("Sharlie", "11");
 		break;
-		// пират-обманщик
 		
-		// офицер Гриффондора
+		
+		
 		case "griffondor_officer":
 			dialog.text = "";
 			link.l1 = "";
 			link.l1.go = "exit";
 		break;
 		
-		// командир абордажной роты по защите Сен-Пьера
+		
 		case "rosetti":
 			PlaySound("VOICE\Russian\EvilPirates01.wav");
 			dialog.text = "Captain, the boarding company is built and in full military promptitude! Awaiting orders!";
@@ -578,7 +578,7 @@ void ProcessDialogEvent()
 		
 		case "rosetti_1":
 			DialogExit();
-			bDisableCharacterMenu = true;//лоченые интерфейсы
+			bDisableCharacterMenu = true;
 			ChangeShowIntarface();
 			LAi_SetActorType(pchar);
 			SetMainCharacterIndex(GetCharacterIndex("DefendSP_soldier_0"));
@@ -601,7 +601,7 @@ void ProcessDialogEvent()
 		case "rosetti_3":
 			DialogExit();
 			PlaySound("interface\abordage_wining.wav");
-			bDisableCharacterMenu = false;//лоченые интерфейсы
+			bDisableCharacterMenu = false;
 			ChangeShowIntarface();
 			for (i=0; i<=12; i++)
 			{
@@ -610,7 +610,7 @@ void ProcessDialogEvent()
 				LAi_ActorFollowEverywhere(sld, "", -1);
 				LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			}
-			// прерывание на джунгли перед выходом из города
+			
 			pchar.quest.DefendSP_jungle1.win_condition.l1 = "location";
 			pchar.quest.DefendSP_jungle1.win_condition.l1.location = "Martinique_jungle_01";
 			pchar.quest.DefendSP_jungle1.function = "DefendSP_SpainPatrol";
@@ -624,7 +624,7 @@ void ProcessDialogEvent()
 		
 		case "spain_patrol_1":
 			DialogExit();
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			for (i=1; i<=4; i++)
 			{
 				sld = CharacterFromID("DefendSP_spapatrol_"+i);
@@ -639,7 +639,7 @@ void ProcessDialogEvent()
 			LAi_ActorRunToLocation(sld, "reload", "reload2_back", "none", "", "", "DefendSP_GateAlarm", -1);
 		break;
 		
-		// страж истины
+		
 		case "spanish":
 			dialog.text = "Do you understand that I am not authorized to disseminate such information?";
 			link.l1 = "Do you understand that its only thanks to my opportune assistance that St. Pierre wasn't ripped apart by the Spanish? My brother has hidden himself, leaving service to the Society. He did that for a reason. I, as a representative of Philippe de Poincy's interests, am obliged to investigate!";
@@ -701,7 +701,7 @@ void ProcessDialogEvent()
 			pchar.questTemp.Guardoftruth = "prisoner";
 			sld = characterFromId("spa_baseprisoner");
 			LAi_CharacterEnableDialog(sld);
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 		break;
 		
 		case "spanish_10":
@@ -750,7 +750,7 @@ void ProcessDialogEvent()
 			LAi_CharacterEnableDialog(sld);
 		break;
 		
-		// монах-посланник от Винсенто
+		
 		case "monk_vinsento":
 			dialog.text = TimeGreeting()+"! Are you captain "+GetFullName(pchar)+"?";
 			link.l1 = "Yes, it is me. What can I do for you?";
@@ -789,12 +789,12 @@ void ProcessDialogEvent()
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload4_back", "none", "", "", "", 30.0);
-			ReOpenQuestHeader("Sharlie"); // patch-8
+			ReOpenQuestHeader("Sharlie"); 
 			AddQuestRecord("Sharlie", "40");
 			CloseQuestHeader("Ksochitam");
 		break;
 		
-		// падре Адриан
+		
 		case "adrian":
 			dialog.text = "Greetings, my son. May the Lord bless all of your doings...";
 			link.l1 = "Hello, father Adrian. His Grace has told me that you are can equip me with amulets and medicines...";
@@ -936,7 +936,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "adrian_3";
 		break;
 		
-		// посланец Дичозо
+		
 		case "Dichoso_agent":
 			dialog.text = "Captain "+GetFullName(pchar)+"?";
 			link.l1 = "Yes, it is me. What do I owe for this visit?";
@@ -979,7 +979,7 @@ void ProcessDialogEvent()
 			LAi_ActorRunToLocation(npchar, "reload", "reload4_back", "none", "", "", "Tieyasal_PrepareDichosoTrap", -1);
 		break;
 		
-		// агент Дичозо
+		
 		case "Dichoso_crypt_agent":
 			dialog.text = "Well, finally we meet, captain "+GetFullName(pchar)+"...";
 			if (CheckAttribute(pchar, "questTemp.Tieyasal.MigelKnow")) 
@@ -996,7 +996,7 @@ void ProcessDialogEvent()
 		
 		case "Dichoso_crypt_agent_1":
 			dialog.text = "You suppose correctly, captain. We have been on each other's heals for a long time, haven't we?";
-			if (CheckAttribute(pchar, "questTemp.Ksochitam.SQCapBookRead")) // прочел журнал Санта-Квитерии
+			if (CheckAttribute(pchar, "questTemp.Ksochitam.SQCapBookRead")) 
 			{
 				link.l1 = "I look at you right now, buddy, and I can tell that you're lying. You're no Dichoso. I've read the stern notebook entries by the captain of the Santa Quiteria and also asked around about his appearance. You don't really look like him. You don't even have a scar on your face from a cavalry sword.";
 				link.l1.go = "Dichoso_crypt_agent_2";
@@ -1051,7 +1051,7 @@ void ProcessDialogEvent()
 			link.l1.go = "Dichoso_crypt_agent_5";
 		break;
 		
-		// командир абордажников
+		
 		case "newcastle_officer":
 			dialog.text = "Awaiting your orders, captain!";
 			link.l1 = "We move out through the jungle toward the St. Christopher cemetery. Don't enter the cemetery itself, assume your position along the trail and follow what goes on. In the case of danger, attack.";
@@ -1073,11 +1073,11 @@ void ProcessDialogEvent()
 		case "newcastle_officer_2":
 			DialogExit();
 			chrDisableReloadToLocation = false;
-			locations[FindLocation("Charles_exittown")].DisableEncounters = true; //энкаутеры закрыть
-			locations[FindLocation("Charles_CaveEntrance")].DisableEncounters = true; //энкаутеры закрыть
+			locations[FindLocation("Charles_exittown")].DisableEncounters = true; 
+			locations[FindLocation("Charles_CaveEntrance")].DisableEncounters = true; 
 			for(i=2; i<=4; i++)
 			{
-				locations[FindLocation("Charles_Jungle_0"+i)].DisableEncounters = true; //энкаутеры закрыть
+				locations[FindLocation("Charles_Jungle_0"+i)].DisableEncounters = true; 
 			}
 			LocatorReloadEnterDisable("Shore42", "boat", true);
 			for(i=1; i<=iTotalTemp; i++)
@@ -1087,11 +1087,11 @@ void ProcessDialogEvent()
 				LAi_ActorFollowEverywhere(sld, "", -1);
 				LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			}
-			// на локацию перед кладбищем
+			
 			pchar.quest.Tieyasal_newcastle.win_condition.l1 = "location";
 			pchar.quest.Tieyasal_newcastle.win_condition.l1.location = "Charles_exittown";
 			pchar.quest.Tieyasal_newcastle.function = "Tieyasal_NewcastleGoJungle";
-			// на крипту
+			
 			pchar.quest.Tieyasal_graveyard.win_condition.l1 = "location";
 			pchar.quest.Tieyasal_graveyard.win_condition.l1.location = "Charles_CryptBig2";
 			pchar.quest.Tieyasal_graveyard.function = "Tieyasal_InGraveyardCrypt";
@@ -1111,7 +1111,7 @@ void ProcessDialogEvent()
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "Europe_SharlieFinal_1", 5);
 		break;
 		
-		//замечание по обнаженному оружию от персонажей типа citizen
+		
 		case "CitizenNotBlade":
 			dialog.text = NPCharSexPhrase(NPChar, "Listen. I ,as a citizen of this city, do request that you do not walk around here with exposed blades.", "You know, I, as a citizen of this city, do request that you do not walk around here with exposed blades.");
 			link.l1 = LinkRandPhrase("All right.", "Fine.", "As you wish...");

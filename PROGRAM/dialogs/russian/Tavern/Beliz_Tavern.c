@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -10,13 +10,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat("You know, " + NPChar.name + ", maybe next time.", "Right, I've forgotten for some reason...",
                       "Yes, it really is the third time...", "Yep...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			// Страж Истины
+			
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "merdok" && !CheckAttribute(npchar, "quest.jino"))
 			{
 				link.l1 = "Listen, has there been an alchemist that arrived here in this town, a physician? He's Italian, about thirty years old, his name is Gino Gvineili. Have you heard anything about that?";
 				link.l1.go = "guardoftruth";
 			}
-			// Калеуче
+			
 			if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "hunting" && !CheckAttribute(npchar, "quest.Caleuche"))
 			{
 				link.l1 = "Listen, I need hunted called Fergus Hooper. I was told that he lives here. Where can I find him?";
@@ -31,7 +31,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.jino = "true";
 		break;
 		
-		// Калеуче
+		
 		case "caleuche":
 			dialog.text = "Fergus? He often visits my place. But he is in the selva since yesterday. Don't worry, he'll be back in a week, bragging about his sea adventures. Though, I admit, he is a hell of a hunter. Don't know anyone who can catch snakes as good as he can.";
 			link.l1 = "Snakes? Hm. When should I come back here in order to find him?";
@@ -58,6 +58,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.Caleuche = "true";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

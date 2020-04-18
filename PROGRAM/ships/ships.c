@@ -15,7 +15,7 @@ void ShipsInit()
 		UnloadSegment("ships\ships_init.c");
 	}
 
-	// init sails color
+	
 	if (LoadSegment("ships\sails_init.c"))
 	{
 		InitSailsColors();
@@ -82,13 +82,13 @@ string GetShipLocationID(ref chref)
 		aref ar_FindLoc = FindIslandReloadLocator(chref.location,chref.location.locator);
 		if( CheckAttribute(ar_FindLoc,"go") ) 
 		{
-			MakeCloneFortBoarding(ar_FindLoc.go); // инитим локацию из разных городов
-            return "BOARDING_FORT"; // всегда клонова€ локаци€
+			MakeCloneFortBoarding(ar_FindLoc.go); 
+            return "BOARDING_FORT"; 
 		}
 		return "";
 	}
-	// в данный метод на вход всегда идет враг √√, метод только на абордаже
-	// решаем, что за палуба
+	
+	
 	bool bBig1 = (ShipsTypes[iShipType].DeckType == "Big");
 	bool bBig2 = (RealShips[sti(pchar.ship.type)].DeckType == "Big");
 	bool bMed1 = (ShipsTypes[iShipType].DeckType == "Medium");
@@ -108,14 +108,9 @@ string GetShipLocationID(ref chref)
 	}
     return "BOARDING_SMALL_DECK";
 
-	/*if(!CheckAttribute(&RealShips[st],"AbordageLocation"))
-	{
-		trace("WARNING!!! Ship ("+st+") " + ShipsTypes[st].name + " hav`t attribute AbordageLocation");
-		return "";
-	}
-	return RealShips[st].AbordageLocation;*/
+	 
 }
-// boal
+
 string GetShipCabinID(ref chref)
 {
 

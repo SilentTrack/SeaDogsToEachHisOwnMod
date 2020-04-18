@@ -1,6 +1,6 @@
 void InitRandomShipsNames()
 {
-	// Spain names
+	
 	int n = 0;
 	n = AddStr2Array(&sRndShpSpName, n, "Santisima Trinidad,San Pedro Apostol,Santissima Madre,Santiago,Salvador del Mundo,San Martin,La Concepcion,San Felipe");
 	n = AddStr2Array(&sRndShpSpName, n, "San Salvador,Nuestra Senora,La Salutacion,Santa Ana,San Rafael,La Natividad,San Mateo,Soberano,San Nicolas,San Pedro");
@@ -24,9 +24,9 @@ void InitRandomShipsNames()
 	n = AddStr2Array(&sRndShpSpName, n, "Glorioso,Atocha,Soledad,Castilla,Almudena,San Vicente");
 	n = AddStr2Array(&sRndShpSpName, n, "Firme,San Bernabe,Santa Rufina,Valiente,San Pablo,Serio,Terrible,Neptuno,Fama");
 	n = AddStr2Array(&sRndShpSpName, n, "Conquistador,Santa Rosalia,Rey Fernando,Feliz,Reina Isabel,Segura,San Juan,Hercules,Vencejo,Sirena,Atlante,Valioso");
-    //22
     
-	// England names
+    
+	
 	n = 0;
 	n = AddStr2Array(&sRndShpEnName, n, "Golden Phoenix,Prince,Sovereign,Resolution,Saint Andrew,James,Triumph,Vanguard,Charles,Victory,Speaker,Fairfax,Unicorn");
 	n = AddStr2Array(&sRndShpEnName, n, "Phoenix,Lion,Kentish,Leopard,Tredagh,Henry,Richard and Martha,Plymouth,Essex,Torrington,Weymouth,Yarmouth,Lyme,Gloucester,Marston Moor");
@@ -49,9 +49,9 @@ void InitRandomShipsNames()
 	n = AddStr2Array(&sRndShpEnName, n, "Deptford,Ann and Joyce,Angel,Chase,Warspite,Thomas Bonaventure,Richard,Stork,Selby,Viper,Humber,Ann Percy,Red Lion,Cardiff,Kingfisher");
 	n = AddStr2Array(&sRndShpEnName, n, "Elephant,Resistance,Society,Andrew,Seahorse,King Ferdinand,Defiance,Lewis,Susan,Crow,Bradford,Newark,Chester,Liberty,Giles,Medway,White Bear,Edgar");
 	n = AddStr2Array(&sRndShpEnName, n, "Basing,Mayflower,Golden Cock,Satisfaction,Little Mary,Norfolk,Mary Prize,Repulse,Intrepid,Old James,George,Terrible,Audacious,Half Moon,Constant Warwick,Great Charity,Estridge,Arms of Holland");
-    //21
     
-	// France names
+    
+	
 	n = 0;
 	n = AddStr2Array(&sRndShpFrName, n, "Vendome,Jupiter,Cesar,Cardinal,Mazarin,Saint Louis,Triomphant,Bourbon,Conquerant,Invincible,Victoire,Couronne,Lune,Eminent,Colosse,Regine");
 	n = AddStr2Array(&sRndShpFrName, n, "Monarque,Parfait,Toulon,Intrepide,Inflexible,Royal Duc,Terrible,Bretagne,Glorieux,Hercule,Redoutable,Aventurier,Magnifique,Tigre");
@@ -67,9 +67,9 @@ void InitRandomShipsNames()
 	n = AddStr2Array(&sRndShpFrName, n, "Lutine,Joli,Mechante,Duc,Turbulente,Agathe,Petite Infante,Curieuse,Diligente,Gracieuse,Discrete,Entreprenant,Sorciere,Bravoure");
 	n = AddStr2Array(&sRndShpFrName, n, "Beaufort,Insensee,Suffisante,Effrontee,Comte,Saint Michel,Superbe,Furieuse,Reine,Esperance,Topaze,Moqueuse,Volage,Rusee,Flatteuse,Courtisan");
 	n = AddStr2Array(&sRndShpFrName, n, "Trompette,Railleuse,Boussole,Mercure,Brusque,Arche de Noe,Foudroyant,Levrette,Maure,Jalouse");
-	//14
 	
-	// Pirate names
+	
+	
 	n = 0;
 	n = AddStr2Array(&sRndShpPiName, n, "Roebuck,Ghost,Revenge,Dolphin,Dragon,Sea Devil,Margaret,Destiny,Hirondelle,Pearl,Cobra,Jacob,Spider,Coquette Sue,Tornado,Victory,Horror of Main,Fancy");
 	n = AddStr2Array(&sRndShpPiName, n, "Snake,Demon,Hurricane,Liberty,Pegasus,Shark,Wheel of Fortune,Wolverine,Shooter,Prophet,Lightning,Warrior,Pilgrim,Prude,Widowmaker,Delilah,Lucky Hugh,Predator");
@@ -80,9 +80,9 @@ void InitRandomShipsNames()
 	n = AddStr2Array(&sRndShpPiName, n, "Spanker,Hound Dog,Tiger,Black Bull,Racehorse,Sea Hawk,Falcon,Black Diamond,Swallow,Adventurer,Ranger,Nightmare,Diamond,Chasseur,Sea Horse,Aquilon,Sea Witch,Hellion");
 	n = AddStr2Array(&sRndShpPiName, n, "Belle Poule,Surprise,Fatal Beauty,Black Cuttlefish,Raging Bill,Wanderer,Blackadder,Black Dragon,Postilion,Jupiter,Medusa,Angry Lion,Black Swan,Black Witch,Phenix,Bloodhound,Omnipresent,Sea Snake");
 	n = AddStr2Array(&sRndShpPiName, n, "Phantom,Thunderbird,Venerable,William,Serpents Venimeux,Meurtrier,Gabriel,Clotho,Black Lightning,Griffin,Trompeur,Trinity,Striking Arrow,Bachelor's Delight,Swan,Misogynist,Old Roger,Black Raven,Great Ranger");
-    //9
     
-	// Holland names
+    
+	
 	n = 0;
 	n = AddStr2Array(&sRndShpHoName, n, "Akerboom,Deventer,Friesland,Zon,Oostergo,Prinses Louise,Beschermer,Oranje,Wapen van Nassau,Gouda,Zeven Provincien,Reigersbergen,Wapen van Enkhuizen,Groot Frisia,Utrecht,Gerechtigheid,Vrede");
 	n = AddStr2Array(&sRndShpHoName, n, "Mars,Hollandia,Vrijheid,Brederode,Vlissingen,Zwarte Leeuw,Groningen,Witte Lam,Jaarsveld,Eendracht,Gelderland,Zwarte Bul,Mercurius,Kameel,Vereenigde Provincien,Zutphen,Graaf Willem,Vogelstruis");
@@ -94,5 +94,6 @@ void InitRandomShipsNames()
 	n = AddStr2Array(&sRndShpHoName, n, "Vergulde Phoenix,Leiden,Jager,Tijger,Walvis,Zwarte Arend,Zeepaard,Heemskerck,Avonturier,Vlieland,Gloeiende Oven,Zon van Enkhuizen,Batavia,Stad Medemblik,Amersfoort,Kemphaan,Sint Vincent,Vliegende Faam,Vergulde Draak");
 	n = AddStr2Array(&sRndShpHoName, n, "Julius Caesar,Ochtendster,Faam van Middelburg,Halve Maan,Westkapelle,Kasteel van Medemblik,Westergo,Hector van Troje,Wapen van Amsterdam,Vergulde Haan,Zierikzee,Liefde,Gouden Ruiter,Reiger,Dordrecht");
 	n = AddStr2Array(&sRndShpHoName, n, "Avondster,Gouden Zaal,Delft,Enkhuizen,Wapen van Hoorn,Rozenkrans van Holland,Sint Jan,Witte Eenhoorn,Zwarte Reiger,David en Goliath,Sint Laurens,Roode Haas,Zeemeeuw,Gouden Ster,Zuiderhuis,Maagd van Dordrecht,Vliegende Hert,Zwarte Lam,Vergulde Fortuin,Fazant");
-	//10
+	
 }
+

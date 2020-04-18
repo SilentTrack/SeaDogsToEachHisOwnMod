@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -13,13 +13,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                 link.l1 = "Good day to you. I'd like to learn about a corvette '" + pchar.questTemp.Slavetrader.ShipName + "' under the command of Francois Gontier.";
                 link.l1.go = "Havana_ratP_1";
 			}
-			// калеуче
+			
 			if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "graveyard" && !CheckAttribute(npchar, "quest.caleuche"))
 			{
 				link.l1 = "Excuse me - has a man by the name of Joachim Merryman arrived at your port? A middle-aged senor, Portuguese, with moustache and imperial beard and piercing eyes?";
 				link.l1.go = "caleuche";
 			}
-			// Addon 2016-1 Jason пиратская линейка
+			
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "jewelry_3" && !CheckAttribute(npchar, "quest.Mtraxx"))
 			{
 				link.l1 = "The ship, 'Cantavro'. I am looking for her captain, one Esberdo Cabanas, on a private matter. Could you lend me a hand here?";
@@ -33,7 +33,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1.go = "exit";
 		break;
 		
-		// калеуче
+		
 		case "caleuche":
 			dialog.text = "Can't tell you anything about him. Even if he arrived there, he never go registered anywhere.";
 			link.l1 = "I see. Pity. Alright, I'll continue my search ...";
@@ -41,7 +41,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.caleuche = "true";
 		break;
 		
-		// Addon 2016-1 Jason пиратская линейка
+		
 		case "mtraxx":
 			dialog.text = "Let's see... Schooner the 'Cantavro' set sail two days. Mission - patrolling... however, the location is not listed. She is a military vessel, so it will be known only to her captain and the fort commandant. I would suggest you to talk with the commandant directly, at the fort, if you wish to know more. Unfortunately, that is all I can do for you.";
 			link.l1 = "I see. Well, thank you for your time...";
@@ -50,5 +50,6 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddQuestRecord("Roger_1", "5");
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+

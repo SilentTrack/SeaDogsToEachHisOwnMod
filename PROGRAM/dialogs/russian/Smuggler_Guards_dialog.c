@@ -10,8 +10,8 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(Diag, NPChar.Dialog);
 	
-    int iTemp, i; // нужно для вычислений любых целых (нации)
-	string attrName; // любые строки для вычислений
+    int iTemp, i; 
+	string attrName; 
 	ref sld;
 
     switch(Dialog.CurrentNode)
@@ -76,7 +76,7 @@ void ProcessDialogEvent()
 		break;
 
 		case "ThisTimeFree_fight":	
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться 130313
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			ChangeCharacterNationReputation(pchar, sti(NPChar.Nation), -1);
 			Diag.CurrentNode = Diag.TempNode;
 			NPChar.quest.meeting = NPC_Meeting;
@@ -115,7 +115,7 @@ void ProcessDialogEvent()
 			LAi_group_SetRelation(pchar.GenQuest.Smugglers_Group, "CoastalGuards", LAI_GROUP_ENEMY);			
 			LAi_group_FightGroups(pchar.GenQuest.Smugglers_Group, "CoastalGuards", true);
 			LAi_SetPlayerType(Pchar);
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться 130313
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 		break;
 
 		case "IDontBelieveYou":
@@ -219,7 +219,7 @@ void ProcessDialogEvent()
                 LAi_ActorRunToLocation(&Characters[sti(Pchar.quest.contraband.(attrName))], "reload", "Reload1", "none", "", "", "", 40);
 			}
 			LAi_SetPlayerType(Pchar);
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться 130313
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 		break;
 
 		case "howDareYou":
@@ -230,3 +230,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

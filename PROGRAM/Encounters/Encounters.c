@@ -2,7 +2,7 @@
 #include "encounters\encounters_map.c"
 #include "encounters\encounters_quest.c"
 
-//#include "scripts\utils.c"
+
 
 #define MAX_MAP_ENCOUNTERS		128
 object MapEncounters[MAX_MAP_ENCOUNTERS];
@@ -28,16 +28,16 @@ int FindWarEncounter()
 	ref rCharacter = GetMainCharacter();
 	int iCharacterRank = sti(rCharacter.rank);
 
-	int iChance = rand(250);// boal 13.03.2004
+	int iChance = rand(250);
 
 	for (int i=0; i<MAX_ENCOUNTER_TYPES; i++)
 	{
 		if (sti(EncountersTypes[i].Type) == ENCOUNTER_WAR)
 		{
 			if (sti(EncountersTypes[i].Skip)) { continue; }
-			// check chance
+			
 			if (iChance > sti(EncountersTypes[i].Chance)) { continue; }
-			// check MinRank / MaxRank
+			
 			if (sti(EncountersTypes[i].MinRank) <= iCharacterRank && sti(EncountersTypes[i].MaxRank) >= iCharacterRank)
 			{
 				iTypes[iNumTypes] = i;
@@ -47,7 +47,7 @@ int FindWarEncounter()
 	}
 	if (iNumTypes == 0) 
 	{
-		//Trace("FindWarEncounter: not find any war encounters!");
+		
 		return -1;
 	}
 	return iTypes[rand(iNumTypes-1)];
@@ -61,16 +61,16 @@ int FindMerchantEncounter()
 	ref rCharacter = GetMainCharacter();
 	int iCharacterRank = sti(rCharacter.rank);
 
-	int iChance = rand(250);// boal 13.03.2004
+	int iChance = rand(250);
 
 	for (int i=0; i<MAX_ENCOUNTER_TYPES; i++)
 	{
 		if (sti(EncountersTypes[i].Type) == ENCOUNTER_TRADE)
 		{
-            if (sti(EncountersTypes[i].Skip)) { continue; } // fix
-			// check chance
+            if (sti(EncountersTypes[i].Skip)) { continue; } 
+			
 			if (iChance > sti(EncountersTypes[i].Chance)) continue;
-			// check MinRank / MaxRank
+			
 			if (sti(EncountersTypes[i].MinRank) <= iCharacterRank && sti(EncountersTypes[i].MaxRank) >= iCharacterRank)
 			{
 				iTypes[iNumTypes] = i;
@@ -80,7 +80,7 @@ int FindMerchantEncounter()
 	}
 	if (iNumTypes == 0) 
 	{
-		//Trace("FindMerchantEncounter: not find any merchant!");
+		
 		return -1;
 	}
 	return iTypes[rand(iNumTypes - 1)];
@@ -94,16 +94,16 @@ int FindSpecialEncounter()
 	ref rCharacter = GetMainCharacter();
 	int iCharacterRank = sti(rCharacter.rank);
 	
-	int iChance = rand(200);// boal 13.03.2004
+	int iChance = rand(200);
 	
 	for (int i=0; i<MAX_ENCOUNTER_TYPES; i++)
 	{
 		if (sti(EncountersTypes[i].Type) == ENCOUNTER_SPECIAL)	
 		{
-            if (sti(EncountersTypes[i].Skip)) { continue; } // fix
-			// check chance
+            if (sti(EncountersTypes[i].Skip)) { continue; } 
+			
 			if (iChance > sti(EncountersTypes[i].Chance)) continue;
-			// check MinRank / MaxRank
+			
 			if (sti(EncountersTypes[i].MinRank) <= iCharacterRank && sti(EncountersTypes[i].MaxRank) >= iCharacterRank)
 			{
 				iTypes[iNumTypes] = i;
@@ -135,7 +135,7 @@ bool Encounter_GetClassesFromRank(int iEncounter, int iRank, ref rMClassMin, ref
 	string sRank = "Rank." + iRank;
 	if (!CheckAttribute(rEnc, sRank))
 	{
-		// find nearest rank 
+		
 		if (CheckAttribute(rEnc, "Rank"))
 		{
 			int iLastRank = -1;

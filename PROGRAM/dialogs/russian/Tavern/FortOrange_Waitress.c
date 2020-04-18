@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -51,7 +51,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "Jamaica_ratW_4":
             dialog.text = "Ew, how disgusting. I don't need any money. Francois promised to give me some pendant with gems. I've already bragged about it to my friends and he's straight darted off... Bring me the pendant and I'll tell you where he left.";
-            link.l1 = "Oh, you saucy bagged! You sure know what to ask for –you can't even get a decoration like that from a merchant. All right, you'll get your pendant.";
+            link.l1 = "Oh, you saucy bagged! You sure know what to ask for пїЅyou can't even get a decoration like that from a merchant. All right, you'll get your pendant.";
             link.l1.go = "exit";
 			AddQuestRecord("Slavetrader", "21_5");
 			pchar.questTemp.Slavetrader = "FindRatJamaica_WP";
@@ -74,6 +74,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

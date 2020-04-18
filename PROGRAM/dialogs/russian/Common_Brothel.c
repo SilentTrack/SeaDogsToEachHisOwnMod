@@ -11,20 +11,20 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 		
-    // ����� ������� �� ������� -->
+    
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Brothel\" + NPChar.City + "_Brothel.c";
     if (LoadSegment(NPChar.FileDialog2))
 	{
         ProcessCommonDialog(NPChar, Link, NextDiag);
 		UnloadSegment(NPChar.FileDialog2);
 	}
-    // ����� ������� �� ������� <--
+    
 	crewWhoreCost = 50 + 7 * MOD_SKILL_ENEMY_RATE - drand(40);
 	charWhoreCost = 2460 + sti(pchar.rank) * 40;
 	
 	switch(Dialog.CurrentNode)
 	{
-		// ============= ������� ������� =============
+		
 		case "First time":
 			if (LAi_grp_playeralarm > 0)
 			{
@@ -37,7 +37,7 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				break;
 			}
-			//Jason --> ���������� ����������
+			
 			if (!CheckAttribute(pchar, "GenQuest.Badboy") && !CheckAttribute(npchar, "quest.Badboy") && makeint(environment.time) > 15.0 && makeint(environment.time) < 21.0 && sti(pchar.questTemp.HorseQty) > 4)
 			{
 				dialog.text = "You're such a stately man. Moreover, my girls like you very much. I would like to ask you for a small favor for my establishment.";
@@ -59,9 +59,9 @@ void ProcessDialogEvent()
 				break;
 				}
 			}
-			// <-- ���������� ����������
 			
-			//--> Jason ����������
+			
+			
 			if (CheckAttribute(pchar, "questTemp.HWIC.Detector"))
 			{
 				bool bOk = (pchar.questTemp.HWIC.Detector == "holl_win") || (pchar.questTemp.HWIC.Detector == "eng_win") || (pchar.questTemp.HWIC.Detector == "self_win");
@@ -91,8 +91,8 @@ void ProcessDialogEvent()
 				}
 				break;
 			}
-			//<--����������
-			// Addon 2016-1 Jason ��������� �������
+			
+			
 			if (CheckAttribute(pchar, "questTemp.Mtraxx.Retribution") && pchar.questTemp.Mtraxx.Retribution == "brothel" && npchar.location == "Tortuga_SecBrRoom")
 			{
 				dialog.text = "Oh my, look at this! Charley Prince, a famous corsair! In flesh!";
@@ -127,15 +127,15 @@ void ProcessDialogEvent()
 				dialog.text = RandPhraseSimple(TimeGreeting() + ". How can I help you, " + GetAddress_Form(NPChar) + "?",
 				TimeGreeting() + ". What can I do for you, " + GetAddress_Form(NPChar) + "?");
 			}
-			if (!CheckAttribute(pchar, "questTemp.Sharlie.Gigolo"))//�� ���� ����� �������
+			if (!CheckAttribute(pchar, "questTemp.Sharlie.Gigolo"))
 			{
-				if (!CheckAttribute(pchar, "GenQuest.BrothelLock"))// ��� ������� �� ���� 280313
+				if (!CheckAttribute(pchar, "GenQuest.BrothelLock"))
 				{
 					link.l2 = npchar.name + ", I want to spend some quality time with one of your girls.";
 					link.l2.go = "Hostess_1";
 				}
 			}
-			if (!CheckAttribute(pchar, "questTemp.Sharlie.Lock")) // �� ���� ����� �����
+			if (!CheckAttribute(pchar, "questTemp.Sharlie.Lock")) 
 			{
 				link.l3 = "It's been a while since I spoiled my men. Savvy?";
 				link.l3.go = "ForCrew";
@@ -145,7 +145,7 @@ void ProcessDialogEvent()
 			{
 				if((pchar.questTemp.different.GiveShipLetters.city == npchar.city) && CheckAttribute(pchar, "questTemp.different.GiveShipLetters"))
 				{
-					link.l4.go = "ShipLetters_1";// ���������  "��������� ���������"
+					link.l4.go = "ShipLetters_1";
 				}
 				else
 				{
@@ -154,16 +154,16 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				link.l4.go = "quests";//(���������� � ���� ������)
+				link.l4.go = "quests";
 			}	
-			//-->> ����� ������ ������ ����
+			
 			if (pchar.questTemp.different == "TakeMayorsRing" && pchar.questTemp.different.TakeMayorsRing.city == npchar.city && GetNpcQuestPastDayWOInit(npchar, "TakeMayorsRing") > 7)
 			{
 				link.l5 = "Listen, " + npchar.name + ", I am looking for the ring of the governor. He was on a spree at your place rather recently and must have lost it here.";
 				link.l5.go = "TakeMayorsRing_H1";
 				SaveCurrentNpcQuestDateParam(npchar, "TakeMayorsRing");
 			}
-			//<<-- ����� ������ ������ ����
+			
 			link.l9 = "Nevermind, I was already leaving.";
 			link.l9.go = "exit";
 			NextDiag.TempNode = "First time";
@@ -196,7 +196,7 @@ void ProcessDialogEvent()
 		case "ShipLetters_3":
 			TakeItemFromCharacter(pchar, "CaptainBook"); 
 			pchar.questTemp.different = "free";
-			pchar.quest.GiveShipLetters_null.over = "yes"; //������� ������ 
+			pchar.quest.GiveShipLetters_null.over = "yes"; 
 			AddQuestRecord("GiveShipLetters", "2");			
 			CloseQuestHeader("GiveShipLetters");
 			DeleteAttribute(pchar, "questTemp.different.GiveShipLetters"); 
@@ -267,7 +267,7 @@ void ProcessDialogEvent()
 				Link.l1.go = "exit";
 				AddMoneyToCharacter(pchar, -(sti(sld.quest.price) + charWhoreCost));
 				sld.dialog.currentnode = "Horse_ReadyFack";			
-				//--> ������ �� �������, ����� �� ����� �����
+				
 				str = npchar.city;
 				pchar.quest.(str).win_condition.l1            = "Timer";
 				pchar.quest.(str).win_condition.l1.date.day   = GetAddingDataDay(0, 0, 1);
@@ -276,11 +276,11 @@ void ProcessDialogEvent()
 				pchar.quest.(str).win_condition               = "Brothel_checkVisitTime";	
 				pchar.quest.(str).HorseId = sld.id;
 				pchar.quest.(str).locator = sld.location.locator;
-				//<-- ������ �� �������, ����� �� ����� �����
+				
 				ChangeCharacterAddressGroup(sld, npchar.city + "_Brothel_room", "goto", "goto"+(rand(2)+1));
-				LocatorReloadEnterDisable(npchar.city + "_Brothel", "reload2_back", false); //��������� �������
-				npchar.quest.selected = true; //���� ���� ����� � �������
-				SetNPCQuestDate(npchar, "quest.date"); //���� ������ �������
+				LocatorReloadEnterDisable(npchar.city + "_Brothel", "reload2_back", false); 
+				npchar.quest.selected = true; 
+				SetNPCQuestDate(npchar, "quest.date"); 
 				for(int n=0; n<MAX_CHARACTERS; n++)
 				{
 					makeref(sld, Characters[n]);
@@ -290,7 +290,7 @@ void ProcessDialogEvent()
 					}
 				}
 				
-				// ��������� ��������� �����
+				
 				if ((rand(4) == 1) && (pchar.questTemp.different == "free") && (!CheckCharacterItem(pchar, "CaptainBook")) && GetNpcQuestPastDayWOInit(npchar, "questShipLetters") > 10) 
 				{					
 					pchar.questTemp.different = "GiveShipLetters";
@@ -298,7 +298,7 @@ void ProcessDialogEvent()
 					pchar.questTemp.different.GiveShipLetters.Id = GetFullName(npchar);
 					pchar.questTemp.different.GiveShipLetters.city = npchar.city;	
 					pchar.questTemp.different.GiveShipLetters.variant = rand(2);
-					p1 = rand(20 - MOD_SKILL_ENEMY_RATE) + 1; // ���� ���� �� ���� ����
+					p1 = rand(20 - MOD_SKILL_ENEMY_RATE) + 1; 
 					s1 = rand(80 - pchar.rank - p1) * 50 + rand(100);
 					s2 = s1 * 2;
 					s3 = s1 * rand(GetCharacterSPECIAL(pchar, "Luck")) + s1;
@@ -312,25 +312,25 @@ void ProcessDialogEvent()
 										
 					sld = ItemsFromID("CaptainBook");
 					sld.CityName = XI_ConvertString("Colony" + npchar.city + "Gen");
-					//����� ������ � ����								
+					
 					sTemp = "_Brothel_room";	
 					sTemp1 = "_town";					
 					sld.shown = true;
 					sld.startLocation = pchar.questTemp.different.GiveShipLetters.city + sTemp;
 					sld.startLocator = "item" + (rand(4)+1);
 					sld.endLocation = pchar.questTemp.different.GiveShipLetters.city + sTemp1;
-					pchar.questTemp.different.GiveShipLetters.item = true; //���� -  ������ �������� � ������
+					pchar.questTemp.different.GiveShipLetters.item = true; 
 					Log_QuestInfo("The papers are in location " + sld.startLocation + ", in locator " + sld.startLocator + " p1 : " + p1);
 					
 					pchar.quest.CheckShipLetters.win_condition.l1 = "location";
 					pchar.quest.CheckShipLetters.win_condition.l1.location = sld.endLocation;
 					pchar.quest.CheckShipLetters.function = "CheckShipLetters";
 					
-					SetTimerFunction("GiveShipLetters_null", 0, 0, p1); //����������� ���������� �� ���������� 
+					SetTimerFunction("GiveShipLetters_null", 0, 0, p1); 
 					SaveCurrentNpcQuestDateParam(npchar, "questShipLetters");					
 				}
-				// ��������� - "����� ��� ������"
-				if((rand(5) == 2) && !CheckAttribute(pchar, "questTemp.ReasonToFast") && GetNpcQuestPastDayWOInit(npchar, "questReasonToFast") > 20 && !CheckAttribute(pchar, "questTemp.Sharlie.Lock")) // Addon-2016 Jason
+				
+				if((rand(5) == 2) && !CheckAttribute(pchar, "questTemp.ReasonToFast") && GetNpcQuestPastDayWOInit(npchar, "questReasonToFast") > 20 && !CheckAttribute(pchar, "questTemp.Sharlie.Lock")) 
 				{
 					iColony = FindColony(npchar.city);	
 					if( sti(Colonies[iColony].HeroOwn) == false && npchar.city != "Panama" && npchar.city != "Charles")
@@ -389,7 +389,7 @@ void ProcessDialogEvent()
 			Link.l2 = "Perhaps it is best to double-check her name just to be sure. I will talk to you later about this.";
 			Link.l2.go = "exit";	
 		break;
-		//==> �������
+		
 		case "ForCrew":
 			dialog.text = "Hmm... Help your guys 'let off some steam'? You see, this establishment of mine is a reputable one, and I have the best girls around. But I know several port wenches, and they'll be happy to please all your sailors not on the watch. That will cost you " + FindRussianMoneyString(GetCrewQuantity(pchar)*crewWhoreCost) + ".";			
 			link.l1 = "Fine, I agree.";
@@ -424,7 +424,7 @@ void ProcessDialogEvent()
 			if (rand(3) != 1) SetNationRelation2MainCharacter(sti(npchar.nation), RELATION_ENEMY);
 		break;
 		
-		//������ ������ �����������
+		
 		case "TakeMayorsRing_H1":
 			dialog.text = "I haven't found no ring.";
 			link.l1 = "And your girls?";
@@ -447,14 +447,14 @@ void ProcessDialogEvent()
 			dialog.text = "Oh, here you are...";
 			link.l1 = "That I am, my lady!";
 			link.l1.go = "exit";
-			pchar.quest.SexWithHostess_null.over = "yes"; //����� ������ �� �� ������
+			pchar.quest.SexWithHostess_null.over = "yes"; 
 			NextDiag.TempNode = "First time";
 			AddDialogExitQuestFunction("SexWithHostess_fack");
 			AddCharacterExpToSkill(pchar, "Leadership", 100);
             AddCharacterHealth(pchar, 5);
 		break;
 		
-		// ================================== ������� ������ =======================================
+		
         case "Horse_talk":
 			if (LAi_grp_playeralarm > 0)
 			{
@@ -485,7 +485,7 @@ void ProcessDialogEvent()
 			{
 				Link.l3.go = "HorseChoice_" + npchar.quest.choice;
 			}
-			//-->> ����� ������ ������ ����
+			
 			if (pchar.questTemp.different == "TakeMayorsRing" && pchar.questTemp.different.TakeMayorsRing.city == npchar.city && GetNpcQuestPastDayWOInit(npchar, "TakeMayorsRing") > 7)
 			{
 				link.l5 = LinkRandPhrase("Listen, "+ GetSexPhrase("beauty","deary") +", haven't you found a wedding ring here, by a chance? One man seems to have lost it...", 
@@ -494,9 +494,9 @@ void ProcessDialogEvent()
 				link.l5.go = "TakeMayorsRing_S1";
 				SaveCurrentNpcQuestDateParam(npchar, "TakeMayorsRing");
 			}
-			//<<-- ����� ������ ������ ����
 			
-			// Addon 2016-1 Jason ��������� �������
+			
+			
 			if (pchar.location == "santodomingo_brothel" && CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "jewelry_1" && npchar.id == "HorseGen_"+reload_location_index+"_2")
 			{
 				link.l6 = "Hey there, sweetheart. Marcus Tyrex sent me, take a look at this amber necklace...";
@@ -519,14 +519,14 @@ void ProcessDialogEvent()
 				Link.l1.go = "Horse_3";		
 				Link.l2 = ""+ GetSexPhrase("No, that was just a compliment to a nice lady","That was just a compliment") +".";
 				Link.l2.go = "exit";
-				npchar.quest.choice = 0; //��� �����, �� �� ����� ���������
+				npchar.quest.choice = 0; 
 			}
 			else
 			{
 				dialog.text = LinkRandPhrase(""+ GetSexPhrase("You know what I say, sweetie? I have little need of your chatter. Do business - or leave!","That's all I needed! Compliments from women!") +"", ""+ GetSexPhrase("Are you one of those who think that women love with their ears? Well, darling, that's just not true. If you want me - pay to the madam and save me your chatter.","Lass, don't squander yourself on hollow talk. If you mean business - then pay...") +"", ""+ GetSexPhrase("Oh, another lover of sensuality... You just pay - and I am yours. It's all that simple, without all this gentle nonsense!","What's up with you, darling? If you want to indulge yourself in pleasures, then just pay and stop all that nonsense!") +"");
 				link.l1 = "Oh, what a grasp!";
 				Link.l1.go = "exit";
-				npchar.quest.choice = 2; //�� �������
+				npchar.quest.choice = 2; 
 			}
 		break;
 		
@@ -534,7 +534,7 @@ void ProcessDialogEvent()
 			dialog.text = characters[GetCharacterIndex(npchar.city + "_Hostess")].name + " completes all formalities in her study. Go see her"+ GetSexPhrase(", my hero,","") +" and call my name - " + npchar.name + ". I'll be waiting for you...";
 			Link.l1 = "I see, darling, I'll be back soon...";
 			Link.l1.go = "exit";
-			npchar.quest.choice = 1; //��� ���������
+			npchar.quest.choice = 1; 
 			SetNPCQuestDate(npchar, "quest.choice");
 		break;
 		
@@ -549,7 +549,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Horse_4";
 		break;
 		
-		//===>> ������� �� ������� ������������, ���� ����� ��� ���
+		
         case "HorseChoice_0": 
 			if (!CheckAttribute(npchar, "quest.sexHappend"))
 			{
@@ -587,7 +587,7 @@ void ProcessDialogEvent()
 					dialog.text = "I was waiting for you, but you never took me...";
 					Link.l1 = "You see, it's just happened that way...";
 					Link.l1.go = "exit";
-					npchar.quest.choice = 0; //��� �����, �� �� ����� ���������
+					npchar.quest.choice = 0; 
 				}
 			}
 			else
@@ -626,9 +626,9 @@ void ProcessDialogEvent()
 			npchar.quest.choice = 0;
 		break;
 		
-		//===>> ����
+		
         case "Horse_ReadyFack":
-			// Addon 2016-1 Jason ��������� �������
+			
 			if (pchar.location == "SantoDomingo_Brothel_room" && CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "jewelry_2" && npchar.name == "Gabriela")
 			{
 				dialog.text = "Ah, you've finally arrived! Great! We can speak freely, nobody's listening...";
@@ -653,27 +653,27 @@ void ProcessDialogEvent()
 				break;
 			}
 			Link.l1.go = "exit";
-			//--> ���-�� ���������
+			
 			if (!CheckAttribute(npchar, "quest.sexHappend")) npchar.quest.sexHappend = 1;
 			else npchar.quest.sexHappend = sti(npchar.quest.sexHappend) + 1;
-			pchar.GenQuest.BrothelCount = sti(pchar.GenQuest.BrothelCount) + 1; // ��� �����
+			pchar.GenQuest.BrothelCount = sti(pchar.GenQuest.BrothelCount) + 1; 
 			Achievment_SetStat(pchar, 23, 10);
-			//<-- ���-�� ���������
+			
 			str = npchar.city;
 			pchar.quest.(str).win_condition.l1 = "ExitFromLocation";
 			pchar.quest.(str).win_condition.l1.location = pchar.location;
 			pchar.quest.(str).win_condition = "Brothel_checkVisitTime";
-			pchar.questTemp.HorseQty = sti(pchar.questTemp.HorseQty) + 1; //�������
+			pchar.questTemp.HorseQty = sti(pchar.questTemp.HorseQty) + 1; 
 			NextDiag.TempNode = "Horse_AfterSex";
 			AddDialogExitQuest("PlaySex_1");
-			// ��� �� �������
+			
 			if (CheckNPCQuestDate(pchar, "BrothelSex"))
 			{
 				if(IsEquipCharacterByArtefact(pchar, "totem_03")) 	AddCharacterHealth(pchar, 10);
 				else 												AddCharacterHealth(pchar, 5);
 				SetNPCQuestDate(pchar, "BrothelSex");
 			}
-			// ��������� ��������
+			
 			ChangeCharacterComplexReputation(pchar,"nobility", -1);
 			AddCharacterExpToSkill(pchar, "Leadership", 30);
 			AddCharacterExpToSkill(pchar, "FencingS", -15);
@@ -744,7 +744,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Horse_AfterSex_2";
 		break;
 		
-		// --> ��������� - "A reason to hurry"
+		
 		case "Horse_ReasonToFast_1":
 			dialog.text = "Then drop in anytime, I'll always be glad to see you. You're so"+ GetSexPhrase("nice - not like those others","nice - not like those rednecks") +" - no hello, no goodbye, not to mention that they always aim to hurt you.";
 			link.l1 = "What do you mean by that?..";
@@ -778,7 +778,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();		
 		break;
-		// <-- ��������� "A reason to hurry"
+		
 		
 		case "exit_setOwner":
 			LAi_SetOwnerTypeNoGroup(npchar);
@@ -791,9 +791,9 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//������ ������ ����
+		
 		case "TakeMayorsRing_S1":
-			if (CheckAttribute(pchar, "questTemp.different.TakeMayorsRing.item")) //���� �������� � ������
+			if (CheckAttribute(pchar, "questTemp.different.TakeMayorsRing.item")) 
 			{
 				dialog.text = LinkRandPhrase("No, darling, sorry, but no. I would gladly help you - but I can't.", 
 					"No, "+ GetSexPhrase("handsome","young lady") +", I haven't seen any ring...", 
@@ -870,10 +870,10 @@ void ProcessDialogEvent()
 			AddQuestUserData("SeekMayorsRing", "sName", GetFullName(npchar));
 		break;
 		
-		//Jason --> ���������� ����������
+		
 		case "Badboy":
-			pchar.GenQuest.Badboy.Brothel.City = npchar.city; //����� ������������
-			//log_info(pchar.GenQuest.Badboy.Brothel.City); // patch-6
+			pchar.GenQuest.Badboy.Brothel.City = npchar.city; 
+			
 			pchar.GenQuest.Badboy.Brothel.nation = npchar.nation;
 			pchar.GenQuest.Badboy.Brothel.Name = GenerateRandomName_Generator(sti(npchar.nation), "man");
 			dialog.text = "You see, there is one nasty customer we have - "+pchar.GenQuest.Badboy.Brothel.Name+". First he would load up at the tavern, and then he would come over here, pick up a girl and make a violent uproar. And the worst thing about it is that he is of noble descent - he's a distant relative of our governor, so we are forced to suffer all his escapades. Maybe you could make that young brazen man see reason... so that he would stop visiting my establishment?";
@@ -887,7 +887,7 @@ void ProcessDialogEvent()
 			dialog.text = "By this time usually he would already at the tavern. He gets loaded up there and then comes over to visit.";
 			link.l1 = "I see. Well, I'll probably meet him there.";
 			link.l1.go = "exit";
-			//������� ��������
+			
 			int iRank, iType, b;
 			string sBlade, sPistol;
 			if (sti(pchar.rank) < 6) iType = 0;
@@ -920,12 +920,12 @@ void ProcessDialogEvent()
 			sld.lastname = "";
 			sld.dialog.FileName = "Quest\Other_quests_NPC.c";
 			sld.dialog.currentnode = "Badboy";
-			sld.greeting = "noble_male"; // patch-6
+			sld.greeting = "noble_male"; 
 			LAi_SetLoginTime(sld, 15, 22);
 			LAi_SetSitType(sld);
 			FreeSitLocator(pchar.GenQuest.Badboy.Brothel.City + "_tavern", "sit1");
 			ChangeCharacterAddressGroup(sld, pchar.GenQuest.Badboy.Brothel.City + "_tavern", "sit", "sit1");
-			pchar.GenQuest.Badboy.Brothel.Type = iType; //�������� ���
+			pchar.GenQuest.Badboy.Brothel.Type = iType; 
 			pchar.GenQuest.Badboy.Brothel = "true";
 		break;
 		
@@ -955,13 +955,13 @@ void ProcessDialogEvent()
 				pchar.quest.Badboy_Brothel.win_condition.l1 = "location";
 				pchar.quest.Badboy_Brothel.win_condition.l1.location = pchar.GenQuest.Badboy.Brothel.City +"_town";
 				pchar.quest.Badboy_Brothel.function = "Badboy_friends";
-				DeleteAttribute(pchar, "GenQuest.Badboy.Continue"); // patch-6
+				DeleteAttribute(pchar, "GenQuest.Badboy.Continue"); 
 			}
 			SaveCurrentQuestDateParam("questTemp.Badboy");
 		break;
-		// <-- ���������� ����������
 		
-		//����������
+		
+		
 		case "Portugal":
 			dialog.text = "There is one man and he owes me some money... I don't know how to put it...";
 			link.l1 = "No words! I'll find him and shake him out to the last peso just for one look of your fathomless eyes! Just tell me his name!";
@@ -976,7 +976,7 @@ void ProcessDialogEvent()
 		
 		case "Portugal_2":
 			DialogExit();
-			//������� �����
+			
 			sld = GetCharacter(NPC_GenerateCharacter("Avendel", "Hugh", "man", "man", 10, HOLLAND, -1, true, "quest"));
 			FantomMakeCoolFighter(sld, 20, 50, 50, "blade_04", "pistol1", "bullet", 50);
 			sld.name = "Hugo";
@@ -1040,7 +1040,7 @@ void ProcessDialogEvent()
 			pchar.questTemp.Portugal = "AvendelTavern";
 		break;
 		
-		// Addon 2016-1 Jason ��������� �������
+		
 		case "mtraxx":
             dialog.text = "Shush, keep your voice low... Go ask Madame Lolita to have a date with me. Then come upstairs, where we can talk freely. And not a word until then!.. Hey, sailor, go pay to Madame before getting all handsy! (giggles)";
 			link.l1 = "On my way, sweetheart...";
@@ -1053,7 +1053,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_2":
-			pchar.quest.Mtraxx_JewelrySDMOver.over = "yes"; //����� ������
+			pchar.quest.Mtraxx_JewelrySDMOver.over = "yes"; 
             dialog.text = "Nah, not me. I'll tell you the whole story, just don't interrupt me.";
 			link.l1 = "I am all ears!";
 			link.l1.go = "mtraxx_3";
@@ -1088,23 +1088,23 @@ void ProcessDialogEvent()
 			link.l1 = "Good point, hun. Two hours won't make much of a difference...";
 			link.l1.go = "exit";
 			sTotalTemp = npchar.id;
-			pchar.GenQuest.BrothelCount = sti(pchar.GenQuest.BrothelCount) + 1; // ��� �����
+			pchar.GenQuest.BrothelCount = sti(pchar.GenQuest.BrothelCount) + 1; 
 			Achievment_SetStat(pchar, 23, 10);
-			//<-- ���-�� ���������
+			
 			str = npchar.city;
 			pchar.quest.(str).win_condition.l1 = "ExitFromLocation";
 			pchar.quest.(str).win_condition.l1.location = pchar.location;
 			pchar.quest.(str).win_condition = "Brothel_checkVisitTime";
-			pchar.questTemp.HorseQty = sti(pchar.questTemp.HorseQty) + 1; //�������
+			pchar.questTemp.HorseQty = sti(pchar.questTemp.HorseQty) + 1; 
 			AddDialogExitQuest("PlaySex_1");
-			// ��� �� �������
+			
 			if (CheckNPCQuestDate(pchar, "BrothelSex"))
 			{
 				if(IsEquipCharacterByArtefact(pchar, "totem_03")) 	AddCharacterHealth(pchar, 10);
 				else 												AddCharacterHealth(pchar, 5);
 				SetNPCQuestDate(pchar, "BrothelSex");
 			}
-			// ��������� ��������
+			
 			ChangeCharacterComplexReputation(pchar,"nobility", -1);
 			AddCharacterExpToSkill(pchar, "Leadership", 30);
 			AddCharacterExpToSkill(pchar, "FencingS", -15);

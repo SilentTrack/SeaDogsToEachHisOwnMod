@@ -1,7 +1,7 @@
 void InitSailsColors()
 {
-	// в КВЛ 1.2.3 переделано использование  icon и texture не используются, принцип радуга + белый и черный
-	// нужно только name и color 
+	
+	
 	SailsColors[0].icon = "interfaces\sails\blue.tga";
 	SailsColors[0].texture = "parus_blue";
 	SailsColors[0].name  = "White";
@@ -47,3 +47,4 @@ void InitSailsColors()
 	SailsColors[8].name  = "Black";
 	SailsColors[8].color = argb(255, 60, 60, 60);
 }
+

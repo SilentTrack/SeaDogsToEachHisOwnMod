@@ -1,4 +1,4 @@
-// Warship 17.07.08 Свободное плавание компаньонов
+
 
 void CompanionTravel_SetTraveller(ref _NPChar)
 {
@@ -8,101 +8,97 @@ void CompanionTravel_SetTraveller(ref _NPChar)
 	sld = &characters[sti(_NPChar.realcompanionidx)];
 
 	if(!CheckAttribute(PChar, "CompanionTravel")) PChar.CompanionTravel = 0;
-	PChar.CompanionTravel = sti(PChar.CompanionTravel) + 1; // Сколько компаньонов уже отправили
-	for(iTemp=1; iTemp<=3; iTemp++) // Нужно, чтоб была свободная группа
+	PChar.CompanionTravel = sti(PChar.CompanionTravel) + 1; 
+	for(iTemp=1; iTemp<=3; iTemp++) 
 	{
 		if(Group_IsDead("CompanionTravel_Companion"+iTemp))
 			attr = "Companion" + iTemp;
 	}
 	
 	CompanionTravel_SetSpecialShipAttributes(sld);
-	sld.CompanionTravel.GroupID = "CompanionTravel_" + attr; // Это группа. Ее потом нужно будет потереть
+	sld.CompanionTravel.GroupID = "CompanionTravel_" + attr; 
 	
 	sTemp = _NPChar.ID;
-	PChar.CompanionTravel.(attr).ID = sld.ID ; // Запомним ID
-	PChar.CompanionTravel.(attr).Days = sti(sld.CompanionTravel.Days); // Сколько дней будет путешествовать
-	PChar.CompanionTravel.(attr).ToColonyID = sld.CompanionTravel.ToColonyID; // Где с ним назначена встреча
+	PChar.CompanionTravel.(attr).ID = sld.ID ; 
+	PChar.CompanionTravel.(attr).Days = sti(sld.CompanionTravel.Days); 
+	PChar.CompanionTravel.(attr).ToColonyID = sld.CompanionTravel.ToColonyID; 
 	
 	fChance = CompanionTravel_CalculateSinkChance(sld, PChar.CompanionTravel.(attr).ToColonyID);
-	if(fChance > rand(100)) // Не дойдет до места назначения
+	if(fChance > rand(100)) 
 	{
 		PChar.CompanionTravel.(attr).Sink = true;
 	}
 	
-	attrLoc = "CompanionTravel_" + attr; // Заносим в группу
+	attrLoc = "CompanionTravel_" + attr; 
 	
 	Group_FindOrCreateGroup(attrLoc);
 	Group_SetType(attrLoc, "pirate");
 	Group_AddCharacter(attrLoc, PChar.CompanionTravel.(attr).ID);
 	Group_SetGroupCommander(attrLoc, PChar.CompanionTravel.(attr).ID);
-	Group_SetTaskRunaway(attrLoc, PLAYER_GROUP); // Уходим
+	Group_SetTaskRunaway(attrLoc, PLAYER_GROUP); 
 	Group_LockTask(attrLoc);
 	
-	// Записи в СЖ
-	/*ReOpenQuestHeader("CompanionTravel");
-	AddQuestRecord("CompanionTravel", "1");
-	AddQuestUserData("CompanionTravel", "sDays", PChar.CompanionTravel.(attr).Days);
-	AddQuestUserData("CompanionTravel", "sShipInfo", XI_ConvertString(RealShips[sti(sld.Ship.Type)].Basename + "Dat") + " '" + sld.Ship.name + "'");
-	AddQuestUserData("CompanionTravel", "sColony", XI_ConvertString("Colony" + sld.CompanionTravel.ToColonyID + "Dat"));*/
+	
+	 
 	
 	Log_TestInfo("=====" + attr + "=====");
-	Log_TestInfo("ID компаньона, отправившегося в плавание - " + PChar.CompanionTravel.(attr).ID);
-	Log_TestInfo("Сколько будет в свободном плавании - " + PChar.CompanionTravel.(attr).Days + " дней");
-	Log_TestInfo("Назначена встреча в колонии с ID - " + PChar.CompanionTravel.(attr).ToColonyID);
-	Log_TestInfo("Шанс, что компаньон не дойдет до места назначения - "+fChance);
-	Log_TestInfo("Дойдет ли компаньон до места назначения (0 - не дойдет, 1 - дойдет) - "+!CheckAttribute(PChar, "CompanionTravel."+(attr)+".Sink"));
+	Log_TestInfo("ID пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - " + PChar.CompanionTravel.(attr).ID);
+	Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - " + PChar.CompanionTravel.(attr).Days + " пїЅпїЅпїЅпїЅ");
+	Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ ID - " + PChar.CompanionTravel.(attr).ToColonyID);
+	Log_TestInfo("пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - "+fChance);
+	Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (0 - пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, 1 - пїЅпїЅпїЅпїЅпїЅпїЅ) - "+!CheckAttribute(PChar, "CompanionTravel."+(attr)+".Sink"));
 	RemoveCharacterCompanion(PChar, sld);
 }
 
-void CompanionTravel_ProcessAllTravellers() // Этот метод вызывается каждый день из QuestActions()
+void CompanionTravel_ProcessAllTravellers() 
 {
 	aref arTravellers;
 	makearef(arTravellers, PChar.CompanionTravel);
 	int iTravellersCount = GetAttributesNum(arTravellers);
 	if(iTravellersCount == 0) return;
 	
-	Log_TestInfo("Всего компаньонов-путешественников - "+iTravellersCount);
+	Log_TestInfo("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - "+iTravellersCount);
 		
 	string sCompanionTraveller;
 	for(int i=0; i<iTravellersCount; i++)
 	{
 		sCompanionTraveller = GetAttributeName(GetAttributeN(arTravellers, i));
-		Log_TestInfo("Обработка компаньона-путешественника "+sCompanionTraveller);
+		Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "+sCompanionTraveller);
 		CompanionTravel_DayUpdate(sCompanionTraveller);
 	}
 }
 
-void CompanionTravel_DayUpdate(string sCompanion) // Обработка конкретного компаньона-путешественника
+void CompanionTravel_DayUpdate(string sCompanion) 
 {
 	string sID = PChar.CompanionTravel.(sCompanion).ID;
 	int iDays = sti(PChar.CompanionTravel.(sCompanion).Days);
 	ref rCompanion = CharacterFromID(sID);
-	CompanionTravel_SetExperienceToTraveller(rCompanion); // Начисляем экспу
+	CompanionTravel_SetExperienceToTraveller(rCompanion); 
 	if(!bNoEatNoRats)
 	{
 		DailyEatCrewUpdateForShip(rCompanion, true);
 	}
-	CompanionTravel_SetRandomEvent(rCompanion); // Случайное событие по типу покоцался корпус или паруса и т.д.
+	CompanionTravel_SetRandomEvent(rCompanion); 
 	iDays--;
 	PChar.CompanionTravel.(sCompanion).Days = iDays;
-	Log_TestInfo(sCompanion+" - осталось дней (если < 0, значит ждет в порту) - "+iDays);
-	if(iDays == 0) // Если дней < 0, хначит он уже ждет в колонии
+	Log_TestInfo(sCompanion+" - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅ < 0, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ) - "+iDays);
+	if(iDays == 0) 
 	{
-		CompanionTravel_TimerToSetInColony(sCompanion); // Доехал - ставим в колонию или топим
+		CompanionTravel_TimerToSetInColony(sCompanion); 
 	}
 	
-	if(iDays == -30) // Убираем его из колонии - слишком долго игрок не мог добраться до него
+	if(iDays == -30) 
 	{
 		CompanionTravel_DeleteCompanion(sID, sCompanion, true);
 	}
 }
 
-void CompanionTravel_TimerToSetInColony(string sCompanion) // Таймер вышел (т.е. компаньона нужно потавить в колонию или потопить)
+void CompanionTravel_TimerToSetInColony(string sCompanion) 
 {
 	if(!CheckAttribute(PChar, "CompanionTravel."+sCompanion+".ToColonyID")
 	|| !CheckAttribute(PChar, "CompanionTravel."+sCompanion+".ID") || !CheckAttribute(PChar, "CompanionTravel."+sCompanion+".Days"))
 	{
-		Log_Info("Критический баг: не найден один из атрибутов у компаньона-путешественника "+sCompanion+". Немедленно сообщите Warship'у.");
+		Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ: пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "+sCompanion+". пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Warship'пїЅ.");
 		return;
 	}
 	
@@ -111,13 +107,13 @@ void CompanionTravel_TimerToSetInColony(string sCompanion) // Таймер вышел (т.е.
 	int iDays = sti(PChar.CompanionTravel.(sCompanion).Days);
 	ref sld = CharacterFromID(sID);
 	
-	if(CheckAttribute(PChar, "CompanionTravel."+sCompanion+".Sink")) // Не дошел до места назначения
+	if(CheckAttribute(PChar, "CompanionTravel."+sCompanion+".Sink")) 
 	{
 		CompanionTravel_DeleteCompanion(sID, sCompanion, false);
 		return;
 	}
 	
-	CompanionTravel_SetCompanionToColony(sColony, "CompanionTravel_"+sCompanion, sID); // Ставим его в колонию
+	CompanionTravel_SetCompanionToColony(sColony, "CompanionTravel_"+sCompanion, sID); 
 }
 
 void CompanionTravel_DeleteCompanion(string sID, string sCompanion, bool WaitInColony)
@@ -128,22 +124,22 @@ void CompanionTravel_DeleteCompanion(string sID, string sCompanion, bool WaitInC
 	DeleteAttribute(PChar, "CompanionTravel."+sCompanion);
 	if(WaitInColony)
 	{
-		Log_TestInfo("Кэпа группы CompanionTravel_"+sCompanion+" слишком долго ждал в колонии и свалил.");
+		Log_TestInfo("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ CompanionTravel_"+sCompanion+" пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.");
 	}
 	else
 	{
-		Log_TestInfo("Судно кэпа группы CompanionTravel_"+sCompanion+" не дошло до места назначения.");
+		Log_TestInfo("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ CompanionTravel_"+sCompanion+" пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
 	}
-	// Поставить соответствующую ноду диалога
+	
 	
 	Group_DeleteAtEnd("CompanionTravel_"+sCompanion);
-	PChar.CompanionTravel = sti(PChar.CompanionTravel) - 1; // Тут счетчик уменьшаем
+	PChar.CompanionTravel = sti(PChar.CompanionTravel) - 1; 
 }
 
-void CompanionTravel_SetCompanionToColony(string sColony, string sGroupID, string sID) // Поставим компаньона в колонию
+void CompanionTravel_SetCompanionToColony(string sColony, string sGroupID, string sID) 
 {
 	string sIsland = colonies[FindColony(sColony)].Island;
-	Log_TestInfo("Поставлен корабль кэпа - " + sID + ", группы - " + sGroupID + " в колонию - " + sColony + " (" + sIsland + ")");
+	Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ - " + sID + ", пїЅпїЅпїЅпїЅпїЅпїЅ - " + sGroupID + " пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - " + sColony + " (" + sIsland + ")");
 	ref sld = CharacterFromID(sID);
 	sld.CompanionTravel.WaitOnColony = true;
 	sld.DeckDialogNode = "hired";
@@ -161,7 +157,7 @@ void CompanionTravel_SetCompanionToColony(string sColony, string sGroupID, strin
 
 float CompanionTravel_CalculateSinkChance(ref _NPC, String _sColony)
 {
-	Log_TestInfo("=============== Рассчитываем шанс потопления ===============");
+	Log_TestInfo("=============== пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ===============");
 	
 	float fChance = 5;
 	int iHPPercent = GetHullPercent(_NPC);
@@ -171,21 +167,21 @@ float CompanionTravel_CalculateSinkChance(ref _NPC, String _sColony)
 	int iSailSkill = GetSummonSkillFromNameSimple(_NPC, SKILL_SAILING);
 	int iShipClass = GetCharacterShipClass(_NPC);
 	int iNeedSailSkill = GetShipClassNavySkill(iShipClass);
-	int iDays = makeint(GetDistanceToColony2D(_sColony)/100); // Сколько дней идти до колонии
+	int iDays = makeint(GetDistanceToColony2D(_sColony)/100); 
 	
-	Log_TestInfo("База - "+fChance);
-	if(iHPPercent < 50) fChance = fChance+(50-iHPPercent)*1.5; // Проценты потопления за состояние корпуса
-	Log_TestInfo("База + учет корпуса - "+fChance);
+	Log_TestInfo("пїЅпїЅпїЅпїЅ - "+fChance);
+	if(iHPPercent < 50) fChance = fChance+(50-iHPPercent)*1.5; 
+	Log_TestInfo("пїЅпїЅпїЅпїЅ + пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - "+fChance);
 	
-	if(iSPPercent < 50) fChance = fChance+(50-iSPPercent)*0.5; // За состояние парусов
-	Log_TestInfo("База + учет корпуса + учет парусов - "+fChance);
+	if(iSPPercent < 50) fChance = fChance+(50-iSPPercent)*0.5; 
+	Log_TestInfo("пїЅпїЅпїЅпїЅ + пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ + пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - "+fChance);
 	
-	if(iSailSkill < iNeedSailSkill) fChance = fChance+(iNeedSailSkill-iSailSkill)*0.8; // Учитываем скилл навигации
-	Log_TestInfo("База + учет корпуса + учет парусов + учет навы - "+fChance);
+	if(iSailSkill < iNeedSailSkill) fChance = fChance+(iNeedSailSkill-iSailSkill)*0.8; 
+	Log_TestInfo("пїЅпїЅпїЅпїЅ + пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ + пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ + пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ - "+fChance);
 	
 	if(iDays > 7) fChance = fChance*((iDays-7)*0.1+1);
-	Log_TestInfo("( База + учет корпуса + учет парусов + учет навы ) * учет дней - "+fChance);
-	Log_TestInfo("=============== Шанс потопления рассчитан. Шанс - "+fChance+" ===============");
+	Log_TestInfo("( пїЅпїЅпїЅпїЅ + пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ + пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ + пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ ) * пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ - "+fChance);
+	Log_TestInfo("=============== пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅ - "+fChance+" ===============");
 	
 	return fChance;
 }
@@ -217,43 +213,9 @@ void CompanionTravel_SetExperienceToTraveller(ref _NPC)
 	AddCharacterExpToSkill(_NPC, "Cannons", iExp/2);
 }
 
-/*void CompanionTravel_SetEatFood(ref _NPC) // to_do del
-{
-	int iCrew = GetCrewQuantity(_NPC);
-	int iSlaves = GetCargoGoods(_NPC, GOOD_SLAVES);
-	int iCrewEat = makeint((iCrew+6) / 10);
-	int iSlavesEat = makeint((iCrew+6) / 20);
-	int iRumQty = GetCargoGoods(_NPC, GOOD_RUM);
-	int iMedicamentQty = GetCargoGoods(_NPC, GOOD_MEDICAMENT);
-	int iTemp = iCrew/30;
-	RemoveCharacterGoodsSelf(_NPC, GOOD_FOOD, iCrewEat); // Съела команда
-	RemoveCharacterGoodsSelf(_NPC, GOOD_FOOD, iSlavesEat); // Съели рабы
-	if(iTemp < 5) iTemp=5;
-	if(iMedicamentQty < iTemp)
-	{
-		if(iCrew > 10)
-		{
-			_NPC.Ship.Crew.Quantity = iCrew - rand(9);
-			_NPC.Ship.Crew.Morale = sti(_NPC.Ship.Crew.Morale)-1;
-		}
-	}
-	else
-	{
-		RemoveCharacterGoodsSelf(_NPC, GOOD_MEDICAMENT, iTemp);
-	}
-	
-	if(iRumQty >= iTemp)
-	{
-		RemoveCharacterGoodsSelf(_NPC, GOOD_RUM, iTemp);
-		_NPC.Ship.Crew.Morale = sti(_NPC.Ship.Crew.Morale)+1;
-	}
-	else
-	{
-		_NPC.Ship.Crew.Morale = sti(_NPC.Ship.Crew.Morale)-1;
-	}
-}*/
+ 
 
-void CompanionTravel_SetRandomEvent(ref _NPC) // Просто случайные события для компаньона
+void CompanionTravel_SetRandomEvent(ref _NPC) 
 {
 	int iRand = rand(4);
 	int iShipHP = sti(_NPC.Ship.HP);
@@ -264,17 +226,16 @@ void CompanionTravel_SetRandomEvent(ref _NPC) // Просто случайные события для ко
 	
 	switch(iRand)
 	{
-		case 0: // Покоцался корпус
+		case 0: 
 			if(iShipHP <= iShipHPMax/10) break;
 			_NPC.Ship.HP = sti(_NPC.Ship.HP) - (iShipHPMax/30);
 		break;
 		
-		case 1: // Покоцались паруса
-			/*if(iShipSP <= 10) break;
-			_NPC.Ship.SP = iShipSP-5;*/ // не работает
+		case 1: 
+			  
 		break;
 		
-		case 2: // Минусуем команду
+		case 2: 
 			if(iCrew <= iMinCrew) break;
 			_NPC.Ship.Crew.Quantity = iCrew-(rand(4)+2);
 		break;

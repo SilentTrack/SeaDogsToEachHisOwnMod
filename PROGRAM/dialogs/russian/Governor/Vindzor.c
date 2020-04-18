@@ -1,4 +1,4 @@
-// лорд Виндзор - генерал-губернатор английских колоний
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;

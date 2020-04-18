@@ -16,22 +16,22 @@ void ProcessDialogEvent()
 	string sAttr, sGun, sBullet, attrL;
 	aref rType;
     
-	// генератор ИДХ по кейсу -->
+	
 	sAttr = Dialog.CurrentNode;
   	if (findsubstr(sAttr, "CabinCompanionTalk_" , 0) != -1)
  	{
         i = findsubstr(sAttr, "_" , 0);
-	 	PChar.GenQuest.CabinCompanionNum = strcut(sAttr, i+1, strlen(sAttr)-1); // индекс в конце
+	 	PChar.GenQuest.CabinCompanionNum = strcut(sAttr, i+1, strlen(sAttr)-1); 
  	    Dialog.CurrentNode = "Cabin_Companion_Talk";
  	}
 	
 	if (findsubstr(sAttr, "SetGunBullets1_" , 0) != -1)
  	{
         i = findsubstr(sAttr, "_" , 0);
-	 	PChar.GenQuest.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); // индекс в конце
+	 	PChar.GenQuest.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); 
  	    Dialog.CurrentNode = "SetGunBullets2";
  	}
- 	// генератор ИДХ по кейсу <--
+ 	
 
 	switch(Dialog.CurrentNode)
 	{
@@ -46,7 +46,7 @@ void ProcessDialogEvent()
 	        Dialog.Text = "If you're reading this line, it's a bug in the code";
 			Link.l1 = "Exit";
 			Link.l1.go = "exit";
-			//--> Голландский гамбит
+			
 			if (CheckAttribute(pchar, "questTemp.HWIC_FindIsland"))
     		{
     		    dialog.text = "So, we have found this place on the map. I shall mark it, and we're good to go searching.";
@@ -63,9 +63,9 @@ void ProcessDialogEvent()
 				pchar.quest.Fleetwood_repeatShore.win_condition.l1.location = pchar.location;
 				pchar.quest.Fleetwood_repeatShore.function = "Fleetwood_repeatShore";
     		}
-			//<-- Голландский гамбит
 			
-			//--> Ложный след
+			
+			
 			if(CheckAttribute(pchar, "questTemp.FalseTrace") && pchar.questTemp.FalseTrace == "TalkCabinWoman" && PChar.location == Get_My_Cabin()) 
 	        {
 				dialog.text = "Hm... Trusting this rascal is a dangerous thing, although his story seems genuine. Perhaps he's not lying this time. But, anyway, I guess I should talk to his wife... Bosun! Bring me that captive woman!";
@@ -76,9 +76,9 @@ void ProcessDialogEvent()
 				pchar.questTemp.FalseTrace.CharID = "FalseTraceWife";
 				AddDialogExitQuest("SetFalseTraceCharToCabin");
 	    	}
-			//<-- Ложный след
 			
-			//--> Португалец
+			
+			
 			if (CheckAttribute(pchar, "questTemp.Portugal") && pchar.questTemp.Portugal == "DigGems")
     		{
     		    dialog.text = "This place looks like it. It's the only sapless tree in the vicinity. I should dig there.";
@@ -86,8 +86,8 @@ void ProcessDialogEvent()
     			link.l1.go = "exit";
 				AddDialogExitQuest("FindPortugalGems");
     		}
-			//<-- Португалец
-			// Сага
+			
+			
 			if (CheckAttribute(pchar, "questTemp.Saga.JessSoul"))
     		{
     		    dialog.text = "What's up? Where am I?! What kind of place is it?";
@@ -95,7 +95,7 @@ void ProcessDialogEvent()
     			link.l1.go = "exit";
 				AddDialogExitQuest("Saga_JessikaSoul_2");
     		}
-            //--> приколы со стуком в дверь Диффиндура, LSC
+            
 			if (CheckAttribute(pchar, "questTemp.LSC.DiffIndoor"))
     		{
     		    dialog.text = "This is the door which leads to the inner premises of the ship. It's locked... Hawk must be there. What did Ole say? I should use a secret knock.";
@@ -110,17 +110,17 @@ void ProcessDialogEvent()
 				link.l5 = "Knock three times, pause, knock once.";
     			link.l5.go = "knock_3_1";
     		}
-			//<-- приколы со стуком в дверь Диффиндура, LSC
 			
-			//--> напялили водолазный скафандр, для перехода в режим шага
+			
+			
 			if (pchar.model == "protocusto")
     		{
     		    dialog.text = "Wow! That thing is really heavy!";
     			link.l1 = "";
     			link.l1.go = "exit";
     		}
-			//<-- водолазный скафандр
-			// отказ от телепортации
+			
+			
 			if (IsCharacterInLocator(pchar, "item", "dolly1") || IsCharacterInLocator(pchar, "item", "dolly2") || IsCharacterInLocator(pchar, "item", "dolly3"))
     		{
     		    dialog.text = "No-no-no! No way! Three times already was more than enough!..";
@@ -129,7 +129,7 @@ void ProcessDialogEvent()
     		}
 			if (CheckAttribute(pchar, "questTemp.Terrapin") && pchar.questTemp.Terrapin == "roof")
     		{
-    		    dialog.text = "It is done. Levasseur is dead. It turned to be much easier than I thought… But something isn't right. Thibaut didn't even speak to Martene! It means that either Robert betrayed me or it is an accident\nBut where could that bastard Thibaut run? He must be moving towards Catherine. I must act quickly if I want to take the girl from him...";
+    		    dialog.text = "It is done. Levasseur is dead. It turned to be much easier than I thoughtпїЅ But something isn't right. Thibaut didn't even speak to Martene! It means that either Robert betrayed me or it is an accident\nBut where could that bastard Thibaut run? He must be moving towards Catherine. I must act quickly if I want to take the girl from him...";
     			link.l1 = "";
     			link.l1.go = "terrapin";
     		}
@@ -158,7 +158,7 @@ void ProcessDialogEvent()
     			link.l1.go = "exit";
 				AddDialogExitQuest("GuardOT_FindWayToRoom");
     		}
-			// Поиски Ксочитэма
+			
 			if (CheckAttribute(pchar, "questTemp.Ksochitam_Dolly") && pchar.questTemp.Ksochitam_Dolly == "half_pearl")
     		{
     		    dialog.text = "Finally! I have located the spot, indicated by the 'manifestation': it's an Indian idol. Near to it the Arrow of the Way is no longer oscillating and points exactly in one direction, no matter what. Well, it seems logical - Indian magic and an Indian idol. Now I should mark on the map the direction indicated by the Arrow of the Way, and then I can go to Dominica.";
@@ -180,7 +180,7 @@ void ProcessDialogEvent()
     			link.l1.go = "exit";
 				AddDialogExitQuest("Ksochitam_FindFullWay");
     		}
-			// рассуждения по Тайясалю
+			
 			if (CheckAttribute(pchar, "questTemp.Tieyasal_CabinTalk"))
     		{
 				if (pchar.questTemp.Tieyasal_CabinTalk == "calendar")
@@ -197,7 +197,7 @@ void ProcessDialogEvent()
 				}
 				AddDialogExitQuest("Tieyasal_AfterCabinTalk");
     		}
-			// решаем - титры или фриплей 010912
+			
 			if (CheckAttribute(pchar, "questTemp.Tieyasal_final"))
     		{
 				dialog.text = "It is done. The end of my long journey. Could I even imagine that saving my brother from prison meant preparing myself for the final fight against him? That I had almost doomed our world? Thank God, it is over\nNothing holds me in the Caribbean any longer. Time to return home, to France. But... Do I really want that?";
@@ -206,7 +206,7 @@ void ProcessDialogEvent()
 				link.l2 = "No, I am staying here in the Caribbean.";
 				link.l2.go = "final_2";
     		}
-			// фэйловый финал 040912
+			
 			if (CheckAttribute(pchar, "questTemp.Europe"))
     		{
 				PlaySound("VOICE\Russian\military02.wav");
@@ -215,7 +215,7 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				AddDialogExitQuest("Europe_SharlieFinal_2");
     		}
-			// Addon-2016 Jason, французские миниквесты (ФМК) Гваделупа
+			
 			if (CheckAttribute(pchar, "questTemp.FMQG.Info") && pchar.location == "Bridgetown_Plantation")
     		{
     		    dialog.text = "This is the best place for an ambush. I should wait here for Pinette's arrival.";
@@ -223,7 +223,7 @@ void ProcessDialogEvent()
     			link.l1.go = "exit";
 				AddDialogExitQuest("FMQG_KidnappingInfo");
     		}
-			// Addon-2016 Jason, французские миниквесты (ФМК) Сент-Кристофер
+			
 			if (CheckAttribute(pchar, "questTemp.FMQN.Choose") && pchar.location == "shore40")
     		{
 				dialog.text = "Hm. This story doesn't feel right. I believe that lugger from St. Jones was never meant to exist. The lieutenant is dragging me in his military operation. Why would I need that? I am not in war with the Dutch... What should I do? Should I leave and let Brits to have fun on their own? Or should I stay?";
@@ -232,7 +232,7 @@ void ProcessDialogEvent()
 				link.l2 = "Stay.";
 				link.l2.go = "FMQN_2";
     		}
-			// Addon 2016-1 Jason пиратская линейка
+			
 			if (CheckAttribute(pchar, "questTemp.Mtraxx.Chest") && pchar.location == "shore37")
     		{
     		    dialog.text = "So, the chest is prepared. We should put there 30 handguns and 2 muskets. Every handgun will need at least on full charge, however every musket will need 20 to be effective. A few healing potions for every fighter too, three flasks per a man would do.";
@@ -274,10 +274,10 @@ void ProcessDialogEvent()
     		}
 		break;
 		
-		// boal -->
+		
 		case "TalkSelf_Main":
 	   		NextDiag.TempNode = "First time";
-//navy --> after duel in tavern
+
 			if (CheckAttribute(pchar, "questTemp.LocationClone"))
 			{
 				Dialog.Text = RandPhraseSimple("Now that was surely a hot fight... Now we can call those cowards who had run away...", "Ha! That was easy. And these landlumbers just scattered!");
@@ -286,20 +286,20 @@ void ProcessDialogEvent()
 				DeleteAttribute(pchar, "questTemp.LocationClone");
 				break;
 			}
-//navy <--
+
 	        Dialog.Text = RandPhraseSimple("Hmm... So what would I like to do now?", "What to do now?");
 	        if (!bDisableMapEnter && pchar.location == Get_My_Cabin())
 	        {
-				//navy --> 13.02.08
+				
 				if (!bDisableMapEnter && GetCompanionQuantity(PChar) > 1)
 				{
     				link.l3 = "Call for the companion.";
     				link.l3.go = "Cabin_CompanionSelect";
 				}
-				//navy <--
+				
 			}
 			else 
-			{   //исп.линейка, квест №6, возможность переночевать в оплаченной комнате
+			{   
 				if (CheckAttribute(pchar, "questTemp.State.Open") && pchar.location == "Tortuga_tavern_upstairs")
 				{
 					if (makeint(environment.time) >= 22.0 || makeint(environment.time) < 10.0)
@@ -316,7 +316,7 @@ void ProcessDialogEvent()
 	    			}
 				}
 			}
-	        if (!bDisableMapEnter)//боя в море нет
+	        if (!bDisableMapEnter)
 	        {
 	            if (GetCargoGoods(pchar, GOOD_SLAVES) > 0)
 	            {
@@ -324,7 +324,7 @@ void ProcessDialogEvent()
 	        		Link.l5.go = "TalkSelf_SlavesToCrew";
 	    		}
 	        }
-	        // захват города
+	        
 	        if (GetCharIDXForTownAttack(pchar.location) != -1 && !CheckAttribute(Pchar, "GenQuestFort.StartAttack") && !CheckAttribute(Pchar, "questTemp.Sharlie.DefendSP"))
 	        {
 	            Link.l6 = "Start capturing the nearest town.";
@@ -353,15 +353,15 @@ void ProcessDialogEvent()
 			
 			
 			
-			//--> Голландский гамбит
+			
 			if(CheckAttribute(pchar, "questTemp.HWIC_Coordinates") && PChar.location == Get_My_Cabin()) 
 	        {
 	        	Link.l9 = "Try to find the island by the coordinates on the map.";
 	    		Link.l9.go = "Seek_AbyIsland";
 	    	}
-			//<-- Голландский гамбит
 			
-			//--> Ложный след
+			
+			
 			if(CheckAttribute(pchar, "questTemp.FalseTrace") && pchar.questTemp.FalseTrace == "TalkCabin" && PChar.location == Get_My_Cabin()) 
 	        {
 	        	Link.l11 = "Summon Adam Rayner.Summon Adam Rayner.";
@@ -372,9 +372,9 @@ void ProcessDialogEvent()
 	        	Link.l11 = "Arrest Adam Rayner.";
 	    		Link.l11.go = "FalseTrace_Cabin";
 	    	}
-			//<-- Ложный след
-			// Addon 2016-1 Jason Пиратская линейка
-			if(CheckAttribute(pchar, "questTemp.Mtraxx.Ammo") && PChar.location == "Shore37") // прогон 3
+			
+			
+			if(CheckAttribute(pchar, "questTemp.Mtraxx.Ammo") && PChar.location == "Shore37") 
 	        {
 	        	Link.l15 = "Tally up chest's contents and make a decision on finishing munition gathering for Picard.";
 	    		Link.l15.go = "mtraxx_ammo";
@@ -394,20 +394,20 @@ void ProcessDialogEvent()
 	        	Link.l15 = "Order to deliver the gunpowder to the dead abatis.";
 	    		Link.l15.go = "mtraxx_powder";
 	    	}
-			// -->Авторемонт			
+			
 			if(Pchar.Location == Pchar.location.from_sea && CheckOfficersPerk(pchar, "SelfRepair") && CheckSelfRepairConditions()) 
 			{
 				Link.l12 = "Start repairing ships";
 				Link.l12.go = "StartSelfRepair";
 			}			
-			// <--Авторемонт
-			//--> завершение игры
-			if(CheckAttribute(pchar, "questTemp.Tieyasal_WinEnd")) // patch-9
+			
+			
+			if(CheckAttribute(pchar, "questTemp.Tieyasal_WinEnd")) 
 	        {
 	        	Link.l13 = "Finish the business on the Caribbean and sail to Europe.";
 	    		Link.l13.go = "final_1";
 	    	}
-			//<-- завершение игры
+			
 			Link.l10 = RandPhraseSimple("Not now. There is no time.", "No time for that, too much to do.");
 			Link.l10.go = "exit";
 		break;
@@ -520,23 +520,23 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit_Self();
 			PChar.GenQuest.CallFunctionParam = "LaunchTavernWaitScreen";
-			DoQuestCheckDelay("CallFunctionParam", 0.1); // Нужно с задержкой, иначе - ГГ начинает крутиться
+			DoQuestCheckDelay("CallFunctionParam", 0.1); 
 		break;
 		
 		case "TalkSelf_room_night":
 			NextDiag.CurrentNode = NextDiag.TempNode;
-			//AddDialogExitQuestFunction("TavernWaitDate_Night");
+			
 			TavernWaitDate("wait_night");
 			DialogExit_Self();
 		break;
 
 		case "TalkSelf_room_day":
 			NextDiag.CurrentNode = NextDiag.TempNode;
-			//AddDialogExitQuestFunction("TavernWaitDate_Day");
+			
 			TavernWaitDate("wait_day");
 			DialogExit_Self();
 		break;
-		//  захват города
+		
 		case "TalkSelf_TownAttack":
             bOk = (GetPartyCrewQuantity(Pchar, true) >= 500) || bBettaTestMode;
 			if (sti(Pchar.Ship.Type) != SHIP_NOTUSED && bOk)
@@ -550,7 +550,7 @@ void ProcessDialogEvent()
 	            }
 	            else
 	            {
-	                if (pchar.location == "Panama_ExitTown" || pchar.location == "Tortuga_ExitTown") // patch-5
+	                if (pchar.location == "Panama_ExitTown" || pchar.location == "Tortuga_ExitTown") 
 					{
 						Dialog.Text = "Noo, I am not that crazy yet..";
 	    				Link.l1 = "...";
@@ -567,13 +567,13 @@ void ProcessDialogEvent()
 						else
 						{
 							Dialog.Text = "Attack " + GetCityName(chr.City) + ".";
-							if (CheckAttribute(pchar, "questTemp.Patria.SanJoseAttack") && pchar.location == "PortSpein_ExitTown") // Jason НСО
+							if (CheckAttribute(pchar, "questTemp.Patria.SanJoseAttack") && pchar.location == "PortSpein_ExitTown") 
 							{
 								Link.l1 = "Quit messing around! Halt!";
 								Link.l1.go = "exit";
 								break;
 							}
-							if (CheckAttribute(pchar, "questTemp.Patria")) // Jason НСО
+							if (CheckAttribute(pchar, "questTemp.Patria")) 
 							{
 								if (pchar.questTemp.Patria != "fail" || pchar.questTemp.Patria != "complete")
 								{
@@ -623,13 +623,13 @@ void ProcessDialogEvent()
 	        }
 	        else
 	        {
-	            SetLocationCapturedState(chr.Default, true); // для сухопутных
+	            SetLocationCapturedState(chr.Default, true); 
 	        }
 	        AddDialogExitQuest("Capture_Forts");
 	        Ship_NationAgressive(chr, chr);
 	        DialogExit_Self();
 	    break;
-	    // Зачислить рабов в команду  -->
+	    
 		case "TalkSelf_SlavesToCrew":
 	        if (GetCurCrewEscadr() >= GetMaxCrewAble())
 	        {
@@ -674,7 +674,7 @@ void ProcessDialogEvent()
 	            AddCrewMorale(pchar, -makeint(sti(pchar.GenQuest.SlavesToCrew) / 3.0))
 	        }
 			ChangeCharacterComplexReputation(pchar,"authority", -0.5);
-	        // падение опыта -->
+	        
 	        fTemp =  stf(GetCrewQuantity(pchar) + sti(pchar.GenQuest.SlavesToCrew));
 	        pchar.Ship.Crew.Exp.Sailors   = (stf(pchar.Ship.Crew.Exp.Sailors)*GetCrewQuantity(pchar) + 
 			                                        stf(pchar.Ship.Crew.Exp.Sailors)*0.3*sti(pchar.GenQuest.SlavesToCrew)) / fTemp;
@@ -682,17 +682,17 @@ void ProcessDialogEvent()
 			                                        stf(pchar.Ship.Crew.Exp.Cannoners)*0.3*sti(pchar.GenQuest.SlavesToCrew)) / fTemp;
 			pchar.Ship.Crew.Exp.Soldiers   = (stf(pchar.Ship.Crew.Exp.Soldiers)*GetCrewQuantity(pchar) + 
 			                                        stf(pchar.Ship.Crew.Exp.Soldiers)*0.3*sti(pchar.GenQuest.SlavesToCrew)) / fTemp;
-			// падение опыта <-- 
+			
 			pchar.Ship.Crew.Quantity = sti(pchar.Ship.Crew.Quantity) + sti(pchar.GenQuest.SlavesToCrew); 
 	        RemoveCharacterGoodsSelf(pchar, GOOD_SLAVES, sti(pchar.GenQuest.SlavesToCrew));       
 			                            
 	        NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit_Self();
 		break;
-		// Зачислить рабов в команду  <--
-		// boal <--
+		
+		
 
-//navy CONTRABAND METRO -->
+
 		case "GenTravel_Main":
 			NextDiag.TempNode = "First time";
 			dialog.Text = "This nice ship is mine now, and I am the captain here! Pity that I had to kill the entire crew, though.";
@@ -704,7 +704,7 @@ void ProcessDialogEvent()
 			SeaExchangeCharactersShips(PChar, chr, false, false);
 			SetCrewQuantity(PChar, 0);
 
-			//грузим ГГ куда нужно...
+			
 			SetAnyReloadToLocation(pchar.GenQuest.contraTravel.destination.loc, pchar.GenQuest.contraTravel.destination.group, pchar.GenQuest.contraTravel.destination.locator, "", 0, 0, 0, 0);
 			AddDialogExitQuest("AnyReloadToLocation");
             chrDisableReloadToLocation = false;
@@ -713,12 +713,12 @@ void ProcessDialogEvent()
 			setCharacterShipLocation(PChar, pchar.GenQuest.contraTravel.destination.loc);
 			setWDMPointXZ(pchar.GenQuest.contraTravel.destination.loc);
 
-			//трем аттрибуты
+			
 			DeleteAttribute(PChar, "GenQuest.contraTravel");
 			break;
-//navy CONTRABAND METRO <--
 
-//navy --> 13.02.08
+
+
 		case "Cabin_CompanionSelect":
 			Dialog.Text = "Which companion to summon?";
 			for (i = 1; i < GetCompanionQuantity(PChar); i++)
@@ -743,9 +743,9 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit_Self();
 			break;
-//navy <--
 
-		//--> Голландский гамбит
+
+		
 		case "Seek_AbyIsland":
 			bOk = CheckCharacterItem(pchar, "bussol") && CheckCharacterItem(pchar, "clock2");
 			bool bOk1 = CheckCharacterItem(pchar, "sextant2");
@@ -763,9 +763,9 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 			}
 		break;
-		//<-- Голландский гамбит
 		
-		//--> Ложный след
+		
+		
 		case "FalseTrace_Cabin":
 			dialog.text = "Bosun! Bring Adam Rayner to me immediately!";
 			link.l1 = "Right away, captain!";
@@ -784,9 +784,9 @@ void ProcessDialogEvent()
 			pchar.questTemp.FalseTrace.CharID = "FalseTraceWife";
 			AddDialogExitQuest("SetFalseTraceCharToCabin");
 		break;
-		//<-- Ложный след
 		
-		//--> LSC, приколы со стуком в дверь
+		
+		
 		case "knock_2":
 			PlaySound("interface\knock_2.wav");
 			dialog.text = "So, I knocked, now let's wait for the answer...";
@@ -837,9 +837,9 @@ void ProcessDialogEvent()
 			DeleteAttribute(pchar, "questTemp.LSC.DiffIndoor");
 			LocatorReloadEnterDisable("LostShipsCity_town", "reload74", false);
 		break;
-		//<-- LSC, приколы со стуком в дверь
 		
-		// суп из черепахи
+		
+		
 		case "terrapin":
 			PlaySound("Interface\Door_Kick.wav");
 			PlaySound("voice\russian\EvilPirates02.wav");
@@ -849,7 +849,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("Terrapin_GoWindow");
 		break;
 		
-		// защита Сен-Пьера
+		
 		case "SP_defend":
 			PlaySound("VOICE\Russian\military02.wav");
 			dialog.text = "So, our mission is to repulse an attack of the blasted Spanish and save Sent Pierre. The fort is captured, a battle is being fought in the streets. There is a powerful squadron in Sent Pierre's bay and they have got a ship of the line as their flagship. Attacking it now is pointless, the fort and the city is under enemy control, so they won't let us to land in port\nTherefore, I have decided to move through the jungles and to strike them from behind through the city gates. Once the fort and the city are cleared from the Spanish, we deal with the squadron. It will become much more weaker without a fire support of the fort\nI won't be easy, so I have given orders to pay extra one hundred thousand pesos for the whole crew in addition to your normal salary. Let's move!";
@@ -858,9 +858,9 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("DefendSP_GoJungle");
 		break;
 		
-		// финал игры
-		case "final_1": // Jason НСО
-			if (CheckAttribute(pchar, "questTemp.Patria.GenGovernor")) // генерал-губернатор никуда не уедет
+		
+		case "final_1": 
+			if (CheckAttribute(pchar, "questTemp.Patria.GenGovernor")) 
 			{
 				dialog.text = "Hold on, where am I going? I can not leave the position of Governor-General without permission from Paris! Otherwise I will be most definitely arrested for the unauthorized abandonment of the entrusted colonies when I come back to France. Paris, I will miss you ...";
 				link.l1 = "";
@@ -879,11 +879,11 @@ void ProcessDialogEvent()
 			dialog.text = "And I think this is the right decision! What is left in good old Europe waiting for me, if I found myself here? Besides, I can get back to France whenever I choose, anyway!";
 			link.l1 = "";
 			link.l1.go = "exit";
-			AddDialogExitQuest("Final_StayInCarribean"); // 010912
+			AddDialogExitQuest("Final_StayInCarribean"); 
 			DeleteAttribute(pchar, "questTemp.Tieyasal_final");
 		break;
 		
-		// Addon-2016 Jason, французские миниквесты (ФМК) Сент-Кристофер
+		
 		case "FMQN_1":
 			dialog.text = "That's the best way. I should come on board and sail away from here.";
 			link.l1 = "";
@@ -898,10 +898,10 @@ void ProcessDialogEvent()
 			AddDialogExitQuestFunction("FMQN_ChooseContinue");
 		break;
 		
-		// Addon 2016-1 Jason Пиратская линейка
+		
 		case "mtraxx_ammo":
-			Mtraxx_PlantCheckShoreBox(); // анализируем содержимое сундука
-			if (CheckAttribute(pchar, "questTemp.Mtraxx.Weapon.Blade") && !CheckAttribute(pchar, "questTemp.Mtraxx.Weapon.NoBlade")) // собрали 30 сабель
+			Mtraxx_PlantCheckShoreBox(); 
+			if (CheckAttribute(pchar, "questTemp.Mtraxx.Weapon.Blade") && !CheckAttribute(pchar, "questTemp.Mtraxx.Weapon.NoBlade")) 
 			{
 				dialog.text = "Thirty pieces of cold steel arms are in the chest! Should I stop now, or should I gather more firearms, charges, and potions?";
 				link.l1 = "This is done!";
@@ -932,9 +932,9 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_boats":
-            if (GetSquadronGoods(pchar, GOOD_PLANKS) >= 20 && GetSquadronGoods(pchar, GOOD_LEATHER) >= 10) // наличие материалов
+            if (GetSquadronGoods(pchar, GOOD_PLANKS) >= 20 && GetSquadronGoods(pchar, GOOD_LEATHER) >= 10) 
 			{
-				if (Mtraxx_MeridaCheckCarpenter()) // наличие плотника
+				if (Mtraxx_MeridaCheckCarpenter()) 
 				{
 					dialog.text = "All required materials are prepared, we should start building the long boats right away.";
 					link.l1 = "";
@@ -957,9 +957,9 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mtraxx_powder":
-            if (GetSquadronGoods(pchar, GOOD_POWDER) >= 300) // наличие пороха
+            if (GetSquadronGoods(pchar, GOOD_POWDER) >= 300) 
 			{
-				if (GetCrewQuantity(pchar) >= 20) // наличие команды
+				if (GetCrewQuantity(pchar) >= 20) 
 				{
 					dialog.text = "Everything`s ready for a blast!";
 					link.l1 = "";
@@ -1001,5 +1001,5 @@ void ProcessDialogEvent()
 void  DialogExit_Self()
 {
     DialogExit();
-	locCameraSleep(false); //boal
+	locCameraSleep(false); 
 }

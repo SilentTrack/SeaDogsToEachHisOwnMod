@@ -1,12 +1,12 @@
-//подготовка к бою, клонирование локаций, инит аи и прочее
-//------- СУША ----------
+
+
 void Duel_Prepare_Fight()
 {
 	int i, idx, iTemp;
 	ref npchar, rLoc, sld;
 
 	npchar = CharacterFromID(pchar.questTemp.duel.enemy);
-	DeleteAttribute(npchar, "City"); // чтоб не было ругани с нацией
+	DeleteAttribute(npchar, "City"); 
 	makeref(rLoc, Locations[FindLoadedLocation()]);
 
 	if (CheckAttribute(npchar, "LifeDay") && npchar.LifeDay >= 0)
@@ -27,12 +27,12 @@ void Duel_Prepare_Fight()
 
 		LocationMakeClone(pchar.location);
 		Locations[FindLocation("Clone_location")].image = "loading\tavern_fight.tga";
-//		DoQuestReloadToLocation("Clone_location", pchar.location.group, pchar.location.locator, "Duel_Fight_Right_Now");
+
 		DoReloadCharacterToLocation("Clone_location", pchar.location.group, pchar.location.locator);
 		
-		if(CheckAttribute(PChar,"questTemp.duel.enemyQty")) // не один !!
+		if(CheckAttribute(PChar,"questTemp.duel.enemyQty")) 
 		{
-			iTemp = sti(pchar.rank) + rand(MOD_SKILL_ENEMY_RATE); // Addon-2016 Jason
+			iTemp = sti(pchar.rank) + rand(MOD_SKILL_ENEMY_RATE); 
 			for(i = 0; i < sti(PChar.questTemp.duel.enemyQty); i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("Berglar_Duel"+i, "citiz_"+(rand(9)+21), "man", "man", iTemp, PIRATE, 1, true, "hunter"));				
@@ -42,15 +42,15 @@ void Duel_Prepare_Fight()
 				LAi_group_MoveCharacter(sld, "DUEL_FIGHTER");
 			}
 		}		
-		Log_TestInfo("Ставим дуэлянтa(ов) в локатор " + PlaceCharacter(npchar, "tables", "Clone_location") + " группы " + "tables");
+		Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅa(пїЅпїЅ) пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + PlaceCharacter(npchar, "tables", "Clone_location") + " пїЅпїЅпїЅпїЅпїЅпїЅ " + "tables");
 	}
 	else
 	{
-//		DoQuestCheckDelay("Duel_Fight_Right_Now", 0.5);
+
 		DoQuestFunctionDelay("Duel_Fight_Right_Now", 0.5);
 	}
 
-	//офицеры не участвуют.
+	
 	for(i=1; i<4; i++)
 	{
 		idx = GetOfficersIndex(pchar, i);
@@ -71,7 +71,7 @@ void Duel_Prepare_Fight()
 	LAi_group_MoveCharacter(npchar, "DUEL_FIGHTER");
 }
 
-//поместить оппонента за пределы города, чтобы ждал ГГ
+
 void Duel_Move_Opponent2Place(string qName)
 {
 	ref npchar, sld;
@@ -101,7 +101,7 @@ void Duel_Move_Opponent2Place(string qName)
 	npchar.BackUp.DialogNode = npchar.Dialog.CurrentNode;
 
 	npchar.Dialog.CurrentNode = "talk_off_town";
-	//чтобы в таверну не вернулся, а то может..
+	
 	if (CheckAttribute(npchar, "PGGAi") && sti(npchar.PGGAi.IsPGG))
 	{
 		npchar.BackUp.town = npchar.PGGAi.location.town;
@@ -114,7 +114,7 @@ void Duel_Move_Opponent2Place(string qName)
 	makearef(arAll, sld.(attrName));
 	attrName = GetAttributeName(GetAttributeN(arAll, rand(0)));
 	ChangeCharacterAddressGroup(npchar, pchar.questTemp.duel.place, sTemp, attrName); 
-	//прерывание на попадание в локатор
+	
 	pchar.quest.Duel_Talk_Off_Town.win_condition.l1        = "locator";
 	pchar.quest.Duel_Talk_Off_Town.win_condition.l1.location = sld.id;
 	pchar.quest.Duel_Talk_Off_Town.win_condition.l1.locator_group = "Encdetector";
@@ -123,7 +123,7 @@ void Duel_Move_Opponent2Place(string qName)
 	pchar.quest.Duel_Talk_Off_Town.EncQty = 1; 
 	pchar.quest.Duel_Talk_Off_Town.LocIdx = sld.index; 
 
-	//чтобы не сидел ;) а стоял на месте
+	
 	LAi_SetGuardianType(npchar);
 }
 
@@ -144,7 +144,7 @@ void Duel_CheckSituation(string qName)
 	}
 }
 
-//по входу в локатор, последний разговор перед боем
+
 void Duel_Talk_Off_Town(string qName)
 {	
 	ref sld;
@@ -153,13 +153,13 @@ void Duel_Talk_Off_Town(string qName)
 	LAi_ActorDialog(sld, pchar, "", -1, 0);
 }
 
-//начать дуэль!
+
 void Duel_Fight_Right_Now(string qName)
 {
 	bool bOk = false;
 	ref sld = &Locations[FindLocation(pchar.location)];
 
-	//запоминаем запрет на оружие в локации
+	
 	if (CheckAttribute(sld, "noFight"))
 	{
 		bOk = sti(sld.noFight);
@@ -169,7 +169,7 @@ void Duel_Fight_Right_Now(string qName)
 		LAi_LocationFightDisable(sld, !bOk);
 		pchar.questTemp.LocFightEnable = bOk;
 	}
-	//достать саблю
+	
 	LAi_SetFightMode(pchar, true);
 	LAi_group_SetRelation("DUEL_FIGHTER", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 	LAi_group_FightGroups("DUEL_FIGHTER", LAI_GROUP_PLAYER, true);
@@ -179,7 +179,7 @@ void Duel_Fight_Right_Now(string qName)
 	PChar.questTemp.Duel.Enemy.GrpId = "DUEL_FIGHTER";
 }
 
-//убили противника
+
 void Duel_Kill_Enemy()
 {
 	ref sld;
@@ -187,27 +187,27 @@ void Duel_Kill_Enemy()
 	if (sGroup != PChar.questTemp.Duel.Enemy.GrpId) return;
 
     DelEventHandler("LAi_event_GroupKill", "Duel_Kill_Enemy");
-	//убираем из локации, чтобы не респаунился.
+	
 	pchar.quest.Duel_Clear_Enemy.win_condition.l1 = "ExitFromLocation";
 	pchar.quest.Duel_Clear_Enemy.win_condition.l1.location = pchar.location;
 	pchar.quest.Duel_Clear_Enemy.function = "Duel_Clear_Enemy";
-	//убить группу
-	// опасно тереть на лету LAi_group_Delete("DUEL_FIGHTER");
 	
-	// считаем общее кол-во дуэлей
+	
+	
+	
 	if(CheckAttribute(PChar,"questTemp.duelQty")) 	
 	{	
 		pchar.questTemp.duelQty = sti(pchar.questTemp.duelQty) + 1;
 		if(sti(pchar.questTemp.duelQty) == 7 + rand(2))
 		{
-			pchar.questTemp.HabitueSpeakDisable = true; // дуэлянта посылаем нафик в таверне 2 месяца
+			pchar.questTemp.HabitueSpeakDisable = true; 
 			SetTimerCondition("HabitueSpeakDisable_End", 0, 2, rand(10), false);
 		}
 	}	
 	else pchar.questTemp.duelQty = 1;
 	
 	if(CheckAttribute(PChar,"questTemp.duel.enemyQty")) DeleteAttribute(PChar,"questTemp.duel.enemyQty");	
-	//восстанавливаем запрет на оружие, если был
+	
 	if (CheckAttribute(pchar, "questTemp.LocFightEnable") && sti(pchar.questTemp.LocFightEnable))
 	{
 		sld = &Locations[FindLocation(pchar.location)];
@@ -215,29 +215,29 @@ void Duel_Kill_Enemy()
 		DeleteAttribute(pchar, "questTemp.LocFightEnable");
 	}
 
-	//если в локации клоне, то объясняем куда все делись
+	
 	if (CheckAttribute(pchar, "questTemp.LocationClone") && sti(pchar.questTemp.LocationClone))
 	{
 		DoQuestCheckDelay("TalkSelf_Start", 0.2);
 	}
 
-	//убрать оружие, нефиг :)
+	
 	DoQuestCheckDelay("hide_weapon", 2.0);
-	//статистика
+	
 	if (Statistic_AddValue(PChar, "DuelKills", 1) > 20)
 	{
-		//и слухи
+		
 		AddTemplRumour("DuelHero", id_counter+1) ;
 	}
 }
 
-//убираем тело из локации, а то зомби будет...
+
 void Duel_Clear_Enemy(string qName)
 {
-	// Addon-2016 Jason, французские миниквесты (ФМК) Тортуга
+	
 	if (CheckAttribute(pchar, "questTemp.FMQT") && pchar.questTemp.FMQT == "duel")
 	{
-		if (!CheckCharacterItem(pchar, "kaleuche_key")) // не взял ключ
+		if (!CheckCharacterItem(pchar, "kaleuche_key")) 
 		{
 			sld = CharacterFromID("FMQT_wife");
 			sld.lifeday = 0;
@@ -256,7 +256,7 @@ void Duel_Clear_Enemy(string qName)
 	}
 }
 
-//вернуть оппонента назад, где был с его параметрами. Если ГГ не приходил, минус в репу!
+
 void Duel_Move_OpponentBack(string qName)
 {
 	ref npchar = CharacterFromID(pchar.questTemp.duel.enemy);
@@ -279,22 +279,22 @@ void Duel_Move_OpponentBack(string qName)
 		npchar.Dialog.CurrentNode = npchar.BackUp.DialogNode;
 	}
 	Locations[FindLocation(pchar.questTemp.duel.place)].DisableEncounters = false;
-	//чистим аттрибуты
+	
 	Log_TestInfo("Duel: POST CHECK!");
 	DeleteAttribute(pchar, "questTemp.Duel");
 	DeleteAttribute(npchar, "BackUp");
 }
 
-//------- Море -------
+
 void Duel_Sea_Prepare()
 {
 	string sTemp = "DUEL_SEA";
 	ref NPChar = characterFromID(pchar.questTemp.duel.enemy);
-	//
-	//TODO: Нужно убрать все малусы за тех у кого аттрибут AlwaysEnemy = true
-	//		это квестовые персы...
+	
+	
+	
 	NPChar.AlwaysEnemy = true;		  
-	NPChar.Coastal_Captain = true;  // не ругать нации
+	NPChar.Coastal_Captain = true;  
 	NPChar.Abordage.Enable = false;
 	NPChar.Nation.Bak = NPChar.Nation;
 	NPChar.Nation = GetCityNation(GetCurrentTown());
@@ -330,7 +330,7 @@ void Duel_Sea_End(string qName)
 	Group_DeleteGroup("DUEL_SEA");
 }
 
-//=========== слухи ================
+
 void OnInit_DuelCoward(ref rTmpl)
 {
 	object oPrm;
@@ -348,8 +348,8 @@ string Event_DuelHero(ref rRum)
 	return GetAssembledString(rRum.text, &oPrm);
 }
 
-//=========== диалоги ================
-//случайный порядок фраз ответа
+
+
 void MakeRandomLinkOrderTwo(aref link, string l1, string l1_go, string l2, string l2_go)
 {
 	link.l1 = l1;
@@ -364,7 +364,7 @@ void MakeRandomLinkOrderTwo(aref link, string l1, string l1_go, string l2, strin
 		link.l2.go = l1_go;
 	}
 }
-//шесть вариантов %)
+
 void MakeRandomLinkOrderThree(aref link, string l1, string l1_go, string l2, string l2_go, string l3, string l3_go)
 {
 	switch (rand(5))
@@ -424,33 +424,9 @@ void MakeRandomLinkOrderThree(aref link, string l1, string l1_go, string l2, str
 		break;
 	}
 }
-/*
-//не работает :(
-void CheckLinkFunction(ref Dialog)
-{
-	int i, iNum;
-	string func;
-	aref link, links; 
-	makearef(links, Dialog.Links);
-
-	iNum = GetAttributesNum(links);
-	trace(Dialog.CurrentNode);
-	for (i = 0; i < iNum; i++)
-	{
-		link = GetAttributeN(links, i);
-		DumpAttributes(link);
-		trace(link.go + " " + CheckAttribute(link, "go.function"));
-		trace("=================");
-		if (CheckAttribute(link, "go.function") && link.go == Dialog.CurrentNode)
-		{
-			func = link.go.function;
-			call func();
-		}
-	}
-}
-*/
+ 
 void TestFnc()
 {
 	Log_TestInfo("TestFnc Works");
 }
-/**/
+ 

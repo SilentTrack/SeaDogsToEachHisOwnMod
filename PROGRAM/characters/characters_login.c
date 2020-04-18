@@ -2,16 +2,16 @@
 
 void LoginCharactersInLocation(ref loc)
 {
-    // boal 01.02.2004 -->
+    
 	SetTimeScale(1.0);
     TimeScaleCounter = 0;
-    DelPerkFromActiveList("TimeSpeed");
-	// boal 01.02.2004 <--
+пїЅ пїЅ DelPerkFromActiveList("TimeSpeed");
+	
 	LocAi_Init(loc);
 	string locID = loc.id;
 	for(int i = 0; i < MAX_CHARACTERS; i++)
 	{
-        DelBakSkillAttr(&Characters[i]); // boal оптимизация скилов
+        DelBakSkillAttr(&Characters[i]); 
         ClearCharacterExpRate(&Characters[i]);
 		LoginCharacter(&Characters[i], locID);
 	}
@@ -19,23 +19,23 @@ void LoginCharactersInLocation(ref loc)
 	{
 		for(i = 0; i < MAX_CHARS_IN_LOC; i++)
 		{
-            DelBakSkillAttr(&Characters[LOC_FANTOM_CHARACTERS + i]); // boal оптимизация скилов
+            DelBakSkillAttr(&Characters[LOC_FANTOM_CHARACTERS + i]); 
             ClearCharacterExpRate(&Characters[LOC_FANTOM_CHARACTERS + i]);
 			LoginCharacter(&Characters[LOC_FANTOM_CHARACTERS + i], locID);
 		}
 	}
 	
-	// boal пленники в трюм  и фантомы на палубе
+	
 	for(i = FANTOM_CHARACTERS; i < TOTAL_CHARACTERS; i++)
 	{
-        DelBakSkillAttr(&Characters[i]); // boal оптимизация скилов
+        DelBakSkillAttr(&Characters[i]); 
         ClearCharacterExpRate(&Characters[i]);
         LoginCharacter(&Characters[i], locID);
 	}
 	LocAi_PostInit(loc);
-	// boal dead can be searched 14.12.2003 -->
-	Dead_Char_num = 0; // трупов нет
-	// boal dead can be searched 14.12.2003 <--
+	
+	Dead_Char_num = 0; 
+	
 }
 
 void LoginCharacter(aref chr, string locID)
@@ -73,7 +73,7 @@ void LogoffCharacter(aref chr)
 {
 	if(IsEntity(chr))
 	{
-        DelBakSkillAttr(chr); // fix
+        DelBakSkillAttr(chr); 
 		LAi_CharacterLogoff(chr);
 		CharacterExitFromLocation(chr);
 	}
@@ -94,7 +94,7 @@ string GetCharacterShipLocation(ref rCharacter)
 
 bool SetCharacterShipLocation(ref character, string location_id)
 {
-	if (location_id == "")  // для пусто свой подход, это не баг, это нужно занулить
+	if (location_id == "")  
 	{
 		character.location.from_sea = location_id;	
 		return true;
@@ -132,11 +132,11 @@ bool SetCharacterIslandLocation(ref character, string location_id, string group,
 
 bool ChangeCharacterAddressGroup(ref character, string location_id, string group, string locator)
 {
-	//Trace("Change character address id = " + character.id + "; location = " + location_id + "; group = " + group + "; locator = " + locator);
+	
 	int lindex = FindLocation(location_id);
 	if(lindex < 0)
 	{
-		//Переходим в морскую часть
+		
 		LogoffCharacter(character);
 		lindex = FindIsland(location_id);
 		if(lindex < 0)
@@ -149,7 +149,7 @@ bool ChangeCharacterAddressGroup(ref character, string location_id, string group
 		character.location.locator = locator;
 		return true;
 	}
-	//Если перемещаемся в нутри одной локации, то просто телепортимся
+	
 	if (!CheckAttribute(character, "location"))
 	{
 	    trace ("character " + character.id + " have no location field");
@@ -157,7 +157,7 @@ bool ChangeCharacterAddressGroup(ref character, string location_id, string group
 	}
 	else
 	{
-		if (location_id == character.location && IsEntity(character)) //boal fix 26/06/05
+		if (location_id == character.location && IsEntity(character)) 
 		{
 			TeleportCharacterToLocator(character, group, locator);
 			character.location = location_id;
@@ -166,14 +166,14 @@ bool ChangeCharacterAddressGroup(ref character, string location_id, string group
 			return true;
 		}
 	}
-	//Если загруженны, то выйдем из локации
+	
 	LogoffCharacter(character);
-	//Перемещаемся в другую локацию
+	
 	string oldLocation = character.location;
 	character.location = location_id;
 	character.location.group = group;
 	character.location.locator = locator;
-	//Если локация загруженна, то логинемся
+	
 	if(IsEntity(&Locations[lindex]))
 	{
 		LoginCharacter(character, Locations[lindex].id);
@@ -181,5 +181,6 @@ bool ChangeCharacterAddressGroup(ref character, string location_id, string group
 	}
 	return true;
 }
+
 
 

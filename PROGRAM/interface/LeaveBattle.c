@@ -1,4 +1,4 @@
-// покинуть поле боя
+
 string totalInfo = "";
 
 void InitInterface(string iniName)
@@ -15,10 +15,10 @@ void InitInterface(string iniName)
 
 	SetFormatedText("INFO_TEXT",totalInfo);
 
-	SetEventHandler("InterfaceBreak","ProcessBreakExit",0); // Выход на море
-	SetEventHandler("exitCancel","ProcessCancelExit",0); // Выход на море по крестику или Esc
-	SetEventHandler("ievnt_command","ProcCommand",0); // выход на карту только тут (по НЕТ)
-	SetEventHandler("evntDoPostExit","DoPostExit",0); // выход из интерфейса
+	SetEventHandler("InterfaceBreak","ProcessBreakExit",0); 
+	SetEventHandler("exitCancel","ProcessCancelExit",0); 
+	SetEventHandler("ievnt_command","ProcCommand",0); 
+	SetEventHandler("evntDoPostExit","DoPostExit",0); 
 	
 	EI_CreateFrame("INFO_BORDERS", 250,152,550,342);
 	PlaySound("interface\_EvShip1.wav");
@@ -57,7 +57,7 @@ void ProcCommand()
 	case "B_OK":
 		if(comName=="activate" || comName=="click")
 		{
-			// бросить
+			
 			KillCompanions();
    			IDoExit(RC_INTERFACE_ANY_EXIT);
 		}
@@ -70,7 +70,7 @@ void ProcCommand()
 	case "B_CANCEL":
 		if(comName=="activate" || comName=="click")
 		{
-			// вернутся
+			
 			IDoExit(RC_INTERFACE_ANY_EXIT);
 		}
 		if(comName=="upstep")
@@ -94,7 +94,7 @@ void CalculateInfoData()
 	int     cn, i;
 	ref     chr;
 	
-	makearef(rootItems, pchar.CheckEnemyCompanionDistance);  // допущение, что один есть точно иначе форму не вызвать
+	makearef(rootItems, pchar.CheckEnemyCompanionDistance);  
 	
 	if (GetAttributesNum(rootItems) > 1)
 	{
@@ -130,7 +130,7 @@ void KillCompanions()
 	int     cn, i;
 	ref     chr;
 	
-	makearef(rootItems, pchar.CheckEnemyCompanionDistance);  // допущение, что один есть точно иначе форму не вызвать
+	makearef(rootItems, pchar.CheckEnemyCompanionDistance);  
 	for (i = 0; i < GetAttributesNum(rootItems); i++)
 	{
 		cn = sti(GetAttributeValue(GetAttributeN(rootItems, i)));
@@ -138,10 +138,10 @@ void KillCompanions()
 		{
 			chr = GetCharacter(cn);
 			RemoveCharacterCompanion(PChar, chr);
-			//ПГГ
+			
 			if (!CheckAttribute(chr, "PGGAi"))
 			{
-		        chr.LifeDay = 0; // стереть при выходе
+		        chr.LifeDay = 0; 
 			}
 			else
 			{
@@ -150,7 +150,7 @@ void KillCompanions()
 				chr.PGGAi.location.town = PGG_FindRandomTownByNation(sti(chr.nation));
 				PGG_ChangeRelation2MainCharacter(chr, -40);
 			}
-	        chr.location = ""; // нафиг, нафиг..а то в таверне появлялся...
+	        chr.location = ""; 
 	        chr.location.group = "";
 	        chr.location.locator = "";
 		}	
