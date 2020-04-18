@@ -405,7 +405,7 @@ ref BI_CommandEndChecking()
 				if(sSpyGlass != "")
 				{
 					ref rItm = ItemsFromID(sSpyGlass);
-					BattleInterface.Commands.SailTo.EffectRadius	= 5000 + sti(rItm.radius);
+					BattleInterface.Commands.SailTo.EffectRadius	= 5000 + 10 * sti(rItm.radius);
 				}
 				else BattleInterface.Commands.SailTo.EffectRadius	= 5000; //boal
 			}	
