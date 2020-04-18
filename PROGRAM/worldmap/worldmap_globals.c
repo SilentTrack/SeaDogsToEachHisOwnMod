@@ -1,5 +1,5 @@
 #define WDM_MAP_TO_SEA_SCALE				50
-#define WDM_MAP_ENCOUNTERS_TO_SEA_SCALE		25	// boal	18.02.06 80 - это много, нужно обязательнй бой, когда догнали	// 80 VANO был тут, чисто для того чтобы корабли ближе появлялись в море, а то они на горизонте тусуются
+#define WDM_MAP_ENCOUNTERS_TO_SEA_SCALE		25	
 
 #define WDM_NONE_ISLAND				""
 
@@ -11,20 +11,20 @@
 
 object worldMap;
 
-//=========================================================================================
-//Quest functions  - Квестовые энкаунтеры. Все эвенты приходят с параметром characterID
-//=========================================================================================
 
-//военный (догоняющий). TimeOut в днях, если -1, то неиспользуеться.
-//торговец - в случае успешного достижения пункта назначения придёт эвент Map_TraderSucces
-void Map_CreateTrader(string beginlocator, string endLocator, string characterID, int TimeOut)  //boal
+
+
+
+
+
+void Map_CreateTrader(string beginlocator, string endLocator, string characterID, int TimeOut)  
 {
-	aref encField = wdmFindOrCreateQuestEncounter(characterID); //boal fix
+	aref encField = wdmFindOrCreateQuestEncounter(characterID); 
 	encField.type = "trader";
 	encField.characterID = characterID;
 	encField.beginlocator = beginlocator;
 	encField.endLocator = endLocator;
-	encField.TimeOut = TimeOut; //boal
+	encField.TimeOut = TimeOut; 
 	worldMap.addQuestEncounters = "updateQuest";
 	if(!CheckAttribute(pchar, "worldmap.shipcounter"))
 	{
@@ -33,9 +33,9 @@ void Map_CreateTrader(string beginlocator, string endLocator, string characterID
 	pchar.worldmap.shipcounter = sti(pchar.worldmap.shipcounter) + 1;
 }
 
-// boal 04/10/06
-//военный (догоняющий). TimeOut в днях, если -1, то неиспользуеться.
-//торговец - в случае успешного достижения пункта назначения придёт эвент Map_TraderSucces
+
+
+
 void Map_CreateTraderXZ(float x1, float z1, float x2, float z2, string characterID, int TimeOut)  
 {
 	aref encField = wdmFindOrCreateQuestEncounter(characterID); 
@@ -46,7 +46,7 @@ void Map_CreateTraderXZ(float x1, float z1, float x2, float z2, string character
 	encField.z1 = z1;
 	encField.x2 = x2;
 	encField.z2 = z2;
-	encField.TimeOut = TimeOut; //boal
+	encField.TimeOut = TimeOut; 
 	worldMap.addQuestEncounters = "updateQuest";
 	if(!CheckAttribute(pchar, "worldmap.shipcounter"))
 	{
@@ -55,15 +55,15 @@ void Map_CreateTraderXZ(float x1, float z1, float x2, float z2, string character
 	pchar.worldmap.shipcounter = sti(pchar.worldmap.shipcounter) + 1;
 }
 
-// Jason - скоростной торговец
-void Map_CreateCoolTrader(string beginlocator, string endLocator, string characterID, int TimeOut, float sp)  //boal
+
+void Map_CreateCoolTrader(string beginlocator, string endLocator, string characterID, int TimeOut, float sp)  
 {
-	aref encField = wdmFindOrCreateQuestEncounter(characterID); //boal fix
+	aref encField = wdmFindOrCreateQuestEncounter(characterID); 
 	encField.type = "cooltrader";
 	encField.characterID = characterID;
 	encField.beginlocator = beginlocator;
 	encField.endLocator = endLocator;
-	encField.TimeOut = TimeOut; //boal
+	encField.TimeOut = TimeOut; 
 	encField.speed = sp;
 	worldMap.addQuestEncounters = "updateQuest";
 	if(!CheckAttribute(pchar, "worldmap.shipcounter"))
@@ -73,8 +73,8 @@ void Map_CreateCoolTrader(string beginlocator, string endLocator, string charact
 	pchar.worldmap.shipcounter = sti(pchar.worldmap.shipcounter) + 1;
 }
 
-//военный (догоняющий). TimeOut в днях, если -1, то неиспользуеться.
-//При таймауте придёт эвент Map_WarriorEnd
+
+
 void Map_CreateWarrior(string beginLocator, string characterID, int TimeOut)
 {
 	aref encField = wdmFindOrCreateQuestEncounter(characterID);
@@ -90,7 +90,7 @@ void Map_CreateWarrior(string beginLocator, string characterID, int TimeOut)
 	pchar.worldmap.shipcounter = sti(pchar.worldmap.shipcounter) + 1;
 }
 
-//Jason Квестовый скоростной энкаунтер. Уйти от него невозможно.
+
 void Map_CreateCoolWarrior(string beginLocator, string characterID, int TimeOut)
 {
 	aref encField = wdmFindOrCreateQuestEncounter(characterID);
@@ -106,8 +106,8 @@ void Map_CreateCoolWarrior(string beginLocator, string characterID, int TimeOut)
 	pchar.worldmap.shipcounter = sti(pchar.worldmap.shipcounter) + 1;
 }
 
-//воюющий. TimeOut в днях. При таймауте придёт эвент Map_BattleEnd
-//если же игрок вошел в этот энкаунтер до истечения таймаута удалиться энкоунтер из карты
+
+
 void Map_CreateBattle(string characterID, int iEnemyNation, int TimeOut)
 {
 	aref encField = wdmFindOrCreateQuestEncounter(characterID);
@@ -123,10 +123,10 @@ void Map_CreateBattle(string characterID, int iEnemyNation, int TimeOut)
 	pchar.worldmap.shipcounter = sti(pchar.worldmap.shipcounter) + 1;
 }
 
-//Удалить квестового энкоунтера
+
 void Map_ReleaseQuestEncounter(string characterID)
 {
-	//Просматриваем список создаваемых
+	
 	aref encs, at;
 	string aname;
 	makearef(encs, worldMap.addQuestEncounters);
@@ -149,7 +149,7 @@ void Map_ReleaseQuestEncounter(string characterID)
 			break;
 		}
 	}
-	//Просматриваем список созданных
+	
 	makearef(encs, worldMap.encounters);
 	num = GetAttributesNum(encs);
 	for(i = 0; i < num; i++)
@@ -160,24 +160,24 @@ void Map_ReleaseQuestEncounter(string characterID)
 		{
 			wdmDeleteLoginEncounter(GetAttributeName(enc));
 		}
-        num--; //fix
+        num--; 
         i--;
 	}
 	worldMap.deleteUpdate = "";
 }
 
-//=========================================================================================
-//Util functions
-//=========================================================================================
 
-//Storm functions
+
+
+
+
 
 int wdmGetNumberStorms()
 {
 	return MakeInt(worldMap.storm.num);
 }
 
-//Ship encounter functions
+
 
 int wdmGetNumberShipEncounters()
 {
@@ -192,183 +192,178 @@ bool wdmSetCurrentShipData(int shipIndex)
 	return 1;
 }
 
-//Создание энкоунтеров...
 
-// Специальный энкоунтер (сундук или кораблекрушенец)
+
+
 bool wdmCreateSpecial(float kSpeed)
 {
-	//Получим описание энкоунтера в море
+	
 	int i1 = -1;
 	int i2 = -1;
-	//Создаём энкоунтера
+	
 	if(GenerateMapEncounter(WDM_ETYPE_SPECIAL, worldMap.island, &i1, &i2) == false) return false;
 	string encID = "";
-	bool res = wdmCreateSpecialByIndex(kSpeed, i1, &encID, "", "", 5+rand(5)); //boal new //homo 07/10/06
-	//Очищаем массив энкоунтеров
-	//Log_TestInfo("Create Special Encounter");
+	bool res = wdmCreateSpecialByIndex(kSpeed, i1, &encID, "", "", 5+rand(5)); 
+	
+	
 	ReleaseMapEncounters();
 	return res;
 }
 
-//Бочонок или кораблекрушенец
-bool wdmCreateSpecialByIndex(float kSpeed, int index, ref encID, string from, string to, int timeOutInDays)  // boal
+
+bool wdmCreateSpecialByIndex(float kSpeed, int index, ref encID, string from, string to, int timeOutInDays)  
 {
-	//Нация энкоунтера (моделька)
+	
 	string nationShipName = wdmEncounterModelName(index);
-	//Создадим ссылку на атрибуты
+	
 	ref mapEncSlotRef = GetMapEncounterRef(index);
-	// boal правки в ядре -->
+	
 	float daysPerSec = 24.0/stf(worldMap.date.hourPerSec); 
 	float timeOutInSec = daysPerSec*timeOutInDays;
-	//Создаём реального энкоунтера
+	
 	bool res = SendMessage(&worldMap, "lsssff", MSG_WORLDMAP_CREATEENC_MER, nationShipName, from, to, kSpeed, timeOutInSec);
-	// boal <--
-	//Копируем данные
+	
+	
 	WdmCopyEncounterData(mapEncSlotRef, worldMap.EncounterID1);
-	//Вернём идентификатор
+	
 	encID = worldMap.EncounterID1;
 	return res;
 }
 
-//Торговец
+
 bool wdmCreateMerchantShip(float kSpeed)
 {
-	//Получим описание энкоунтера в море
+	
 	int i1 = -1;
 	int i2 = -1;
 	if(GenerateMapEncounter(WDM_ETYPE_MERCHANT, worldMap.island, &i1, &i2) == false) return false;
-	//Создаём энкоунтера
+	
 	string encID = "";
-	bool res = wdmCreateMerchantShipByIndex(kSpeed, i1, &encID, "", "", 5+rand(5)); //boal new //homo 07/10/06
-	//Очищаем массив энкоунтеров
+	bool res = wdmCreateMerchantShipByIndex(kSpeed, i1, &encID, "", "", 5+rand(5)); 
+	
 	ReleaseMapEncounters();
 	return res;
 }
 
-//Торговец
-bool wdmCreateMerchantShipByIndex(float kSpeed, int index, ref encID, string from, string to, int timeOutInDays)  // boal
+
+bool wdmCreateMerchantShipByIndex(float kSpeed, int index, ref encID, string from, string to, int timeOutInDays)  
 {
-	//Нация энкоунтера (моделька)
+	
 	string nationShipName = wdmEncounterModelName(index);
-	//Создадим ссылку на атрибуты
+	
 	ref mapEncSlotRef = GetMapEncounterRef(index);
-	// boal правки в ядре -->
+	
 	float daysPerSec = 24.0/stf(worldMap.date.hourPerSec); 
 	float timeOutInSec = daysPerSec*timeOutInDays;
-	//Создаём реального энкоунтера
+	
 	bool res = SendMessage(&worldMap, "lsssff", MSG_WORLDMAP_CREATEENC_MER, nationShipName, from, to, kSpeed, timeOutInSec);
-	// boal <--
-	//Копируем данные
+	
+	
 	WdmCopyEncounterData(mapEncSlotRef, worldMap.EncounterID1);
-	//Вернём идентификатор
-	encID = worldMap.EncounterID1;
-	return res;
-}
-// boal 04/10/06
-bool wdmCreateMerchantShipXZByIndex(float kSpeed, int index, ref encID, float x1, float z1, float x2, float z2, int timeOutInDays)  
-{
-	//Нация энкоунтера (моделька)
-	string nationShipName = wdmEncounterModelName(index);
-	//Создадим ссылку на атрибуты
-	ref mapEncSlotRef = GetMapEncounterRef(index);
-	float daysPerSec = 24.0/stf(worldMap.date.hourPerSec); 
-	float timeOutInSec = daysPerSec*timeOutInDays;
-	//Создаём реального энкоунтера
-	bool res = SendMessage(&worldMap, "lsffffff", MSG_WORLDMAP_CREATEENC_MER_XZ, nationShipName, x1, z1, x2, z2, kSpeed, timeOutInSec);
-	//Копируем данные
-	WdmCopyEncounterData(mapEncSlotRef, worldMap.EncounterID1);
-	//Вернём идентификатор
+	
 	encID = worldMap.EncounterID1;
 	return res;
 }
 
-//Преследователь
+bool wdmCreateMerchantShipXZByIndex(float kSpeed, int index, ref encID, float x1, float z1, float x2, float z2, int timeOutInDays)  
+{
+	
+	string nationShipName = wdmEncounterModelName(index);
+	
+	ref mapEncSlotRef = GetMapEncounterRef(index);
+	float daysPerSec = 24.0/stf(worldMap.date.hourPerSec); 
+	float timeOutInSec = daysPerSec*timeOutInDays;
+	
+	bool res = SendMessage(&worldMap, "lsffffff", MSG_WORLDMAP_CREATEENC_MER_XZ, nationShipName, x1, z1, x2, z2, kSpeed, timeOutInSec);
+	
+	WdmCopyEncounterData(mapEncSlotRef, worldMap.EncounterID1);
+	
+	encID = worldMap.EncounterID1;
+	return res;
+}
+
+
 bool wdmCreateFollowShip(float kSpeed)
 {
-	//Получим описание энкоунтера в море
+	
 	int i1 = -1;
 	int i2 = -1;
 	if(GenerateMapEncounter(WDM_ETYPE_FOLLOW, worldMap.island, &i1, &i2) == false) return false;
-	//Создаём энкоунтера
+	
 	string encID = "";
-	bool res = wdmCreateFollowShipByIndex(kSpeed, i1, &encID, 5+rand(5)); //homo 07/10/06
-	//Очищаем массив энкоунтеров
+	bool res = wdmCreateFollowShipByIndex(kSpeed, i1, &encID, 5+rand(5)); 
+	
 	ReleaseMapEncounters();
 	return res;
 }
 
-//Преследователь
+
 bool wdmCreateFollowShipByIndex(float kSpeed, int index, ref encID, int timeOutInDays)
 {
-	//Нация энкоунтера
+	
 	string nationShipName = wdmEncounterModelName(index);
-	//проверим нацию
+	
 	ref n = GetMapEncounterRef(index);
 	int iNation = PIRATE;
 	if(CheckAttribute(n, "nation"))
 	{
 		iNation = sti(n.Nation);
 	}
-	//Создадим ссылку на атрибуты
+	
 	ref mapEncSlotRef = GetMapEncounterRef(index);
-	//Время жизни в секундах
-	float daysPerSec = 24.0/stf(worldMap.date.hourPerSec); // Boal супер бага была - делили на 24. Математику в школе прогуливали?
+	
+	float daysPerSec = 24.0/stf(worldMap.date.hourPerSec); 
 	float timeOutInSec = daysPerSec*timeOutInDays;
-	//Создаём реального энкоунтера
+	
 	bool res = false;
 	bool klas = (IsCharacterPerkOn(pchar,"SeaDogProfessional")) && (GetCharacterShipClass(pchar) < 5);
 	if (klas || (GetNationRelation2MainCharacter(iNation) != RELATION_ENEMY))
 	{
-		res = SendMessage(&worldMap, "lsssff", MSG_WORLDMAP_CREATEENC_MER, nationShipName, "", "", kSpeed, timeOutInSec); // boal new
+		res = SendMessage(&worldMap, "lsssff", MSG_WORLDMAP_CREATEENC_MER, nationShipName, "", "", kSpeed, timeOutInSec); 
 	}
 	else
-	{   // boal - код этот полный абзац, я Вам, господа акеловцы, аплодирую - метод Следовать дает убегание - и так весь код. плакаль
-		// погано, что метод имеет право быть, но название должно быть иным, нужно чтоб мирные не доставали патрулями.
+	{   
+		
 		res = SendMessage(&worldMap, "lsff", MSG_WORLDMAP_CREATEENC_FLW, nationShipName, kSpeed, timeOutInSec);
 	}
-	//Копируем данные
+	
 	WdmCopyEncounterData(mapEncSlotRef, worldMap.EncounterID1);
 	encID = worldMap.EncounterID1;
 	return res;
 }
 
-//Преследователь НАСТОЯЩИЙ
+
 bool wdmCreateRealFollowShipByIndex(float kSpeed, int index, ref encID, int timeOutInDays)
 {
-	//Нация энкоунтера
+	
 	string nationShipName = wdmEncounterModelName(index);
-	//проверим нацию
+	
 	ref n = GetMapEncounterRef(index);
 	int iNation = PIRATE;
 	if(CheckAttribute(n, "nation"))
 	{
 		iNation = sti(n.Nation);
 	}
-	//Создадим ссылку на атрибуты
+	
 	ref mapEncSlotRef = GetMapEncounterRef(index);
-	//Время жизни в секундах
-	float daysPerSec = 24.0/stf(worldMap.date.hourPerSec); // Boal супер бага была - делили на 24. Математику в школе прогуливали?
+	
+	float daysPerSec = 24.0/stf(worldMap.date.hourPerSec); 
 	float timeOutInSec = daysPerSec*timeOutInDays;
-	//Создаём реального энкоунтера
+	
 	bool res = false;
-	/*if(GetNationRelation2MainCharacter(iNation) != RELATION_ENEMY)
-	{
-		res = SendMessage(&worldMap, "lsssf", MSG_WORLDMAP_CREATEENC_MER, nationShipName, "", "", kSpeed);
-	}
-	else
-	{ */  // boal - код этот полный абзац, я Вам, господа акеловцы, аплодирую - метод Следовать дает убегание - и так весь код. плакаль
+	   
 		res = SendMessage(&worldMap, "lsff", MSG_WORLDMAP_CREATEENC_FLW, nationShipName, kSpeed, timeOutInSec);
-	//}
-	//Копируем данные
+	
+	
 	WdmCopyEncounterData(mapEncSlotRef, worldMap.EncounterID1);
 	encID = worldMap.EncounterID1;
 	return res;
 }
 
-//Воюющие корабли
+
 bool wdmCreateWarringShips()
 {
-	//Получим описание энкоунтера в море
+	
 	int i1 = -1;
 	int i2 = -1;
 	if(GenerateMapEncounter(WDM_ETYPE_WARRING, worldMap.island, &i1, &i2) == false) 
@@ -376,30 +371,30 @@ bool wdmCreateWarringShips()
 		ReleaseMapEncounters();
 		return false;
 	}
-	//Создаём энкоунтера
+	
 	string encID1 = "";
 	string encID2 = "";
-	bool res = wdmCreateWarringShipsByIndex(i1, i2, &encID1, &encID2, 5+rand(5));  //homo 07/10/06
-	//Очищаем массив энкоунтеров
+	bool res = wdmCreateWarringShipsByIndex(i1, i2, &encID1, &encID2, 5+rand(5));  
+	
 	ReleaseMapEncounters();
 	return res;
 }
 
-//Воюющие корабли
+
 bool wdmCreateWarringShipsByIndex(int index1, int index2, ref encID1, ref encID2, int timeOutInDays)
 {
-	//Нации энкоунтера
+	
 	string nationShipName1 = wdmEncounterModelName(index1);
 	string nationShipName2 = wdmEncounterModelName(index2);
-	//Создадим ссылки на атрибуты
+	
 	ref mapEncSlotRef1 = GetMapEncounterRef(index1);
 	ref mapEncSlotRef2 = GetMapEncounterRef(index2);
-	//Время жизни в секундах
-	float daysPerSec = 24.0/stf(worldMap.date.hourPerSec); // Boal супер бага была - делили на 24. Математику в школе прогуливали?
+	
+	float daysPerSec = 24.0/stf(worldMap.date.hourPerSec); 
 	float timeOutInSec = daysPerSec*timeOutInDays;
-	//Создаём реального энкоунтера
+	
 	bool res = SendMessage(&worldMap, "lssf", MSG_WORLDMAP_CREATEENC_WAR, nationShipName1, nationShipName2, timeOutInSec);
-	//Копируем данные
+	
 	WdmCopyEncounterData(mapEncSlotRef1, worldMap.EncounterID1);
 	WdmCopyEncounterData(mapEncSlotRef2, worldMap.EncounterID2);
 	encID1 = worldMap.EncounterID1;
@@ -407,11 +402,11 @@ bool wdmCreateWarringShipsByIndex(int index1, int index2, ref encID1, ref encID2
 	return res;
 }
 
-//Шторм
+
 void wdmCreateStorm()
 {
     if(CheckAttribute(pchar,"worldmapencountersoff") == 1)
-	{  // boal убиралка шторма
+	{  
 		if(sti(pchar.worldmapencountersoff)) return;
 	}
 	int isTornado = 0;
@@ -426,13 +421,13 @@ void wdmCreateStorm()
 			}
 		}
 	}
-	// тест торнадор
+	
 	isTornado = 1;
-	// конец теста
+	
 	SendMessage(&worldMap, "ll", MSG_WORLDMAP_CREATESTORM, isTornado);
 }
 
-//Получить модельку кораблика по индексу нации
+
 string wdmEncounterModelName(int encIndex)
 {
 	ref n = GetMapEncounterRef(encIndex);
@@ -443,7 +438,7 @@ string wdmEncounterModelName(int encIndex)
 	return "ship";
 }
 
-//Скопировать данные об энкоутере
+
 void WdmCopyEncounterData(ref mapEncSlotRef, string encStringID)
 {
 	encStringID = "encounters." + encStringID + ".encdata";
@@ -453,7 +448,7 @@ void WdmCopyEncounterData(ref mapEncSlotRef, string encStringID)
 	CopyAttributes(destRef, mapEncSlotRef);
 }
 
-//Зарезервировать место для добавления нового энкоунтера
+
 aref wdmCreateNewQuestEncDescription()
 {
 	string gname, aname;
@@ -482,7 +477,7 @@ aref wdmCreateNewQuestEncDescription()
 	return retVal;
 }
 
-//// boal & homosapienz
+
 void  wdmEmptyAllDeadQuestEncounter()
 {
     aref encs;
@@ -535,7 +530,7 @@ void  wdmEmptyAllDeadQuestEncounter()
     }
 }
 
-// чистка энкоутеров на карте homosapienz
+
 void  wdmEmptyAllOldEncounter()
 {
     aref encs;
@@ -555,13 +550,13 @@ void  wdmEmptyAllOldEncounter()
         {
 	        sdel  = "encounters."+GetAttributeName(enc);
 			DeleteAttribute(&worldMap, sdel);
-	        num--; //fix
+	        num--; 
 	        i--;
 	        if (CheckAttribute(enc, "quest")) pchar.worldmap.shipcounter = sti(pchar.worldmap.shipcounter) - 1;
         }
     }
 }
-// время жизни на карте для квестовых энкоутеров
+
 void  wdmUpdateAllEncounterLivetime()
 {
     aref encs;
@@ -573,7 +568,7 @@ void  wdmUpdateAllEncounterLivetime()
 		ihours = GetQuestPastTimeParam("WordMapEncounters_DailyUpdate");
 		if (ihours > 0)
 		{
-            Log_TestInfo("Прошло дней : "+makeint(ihours/24.0));
+            Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ : "+makeint(ihours/24.0));
             float timeOutInSec = ihours/stf(worldMap.date.hourPerSec);
 
             makearef(encs, worldMap.encounters);
@@ -583,22 +578,18 @@ void  wdmUpdateAllEncounterLivetime()
 
             for (i = 0; i < num; i++)
             {
-                enc = GetAttributeN(encs, i);          // только квестовые
+                enc = GetAttributeN(encs, i);          
                 if (CheckAttribute(enc, "livetime") && CheckAttribute(enc, "quest"))
                 {
                     Log_TestInfo(enc.livetime+" - "+timeOutInSec+" : "+stf(stf(enc.livetime) - timeOutInSec));
-                    /* По идее можно и координату приращивтаь, чтоб не просто время шло, но еще и плыли.
-                    k = (enc.gotoz - enc.z)/(enc.gotox - enc.x);
-                    b = enc.z - k*enc.x
-                    ...
-                    */
+                     
                     enc.livetime = stf(stf(enc.livetime) - timeOutInSec);
-                    DeleteAttribute(enc, "quest.event"); // удаляем  event = Map_TraderSucces
+                    DeleteAttribute(enc, "quest.event"); 
 
                     if (sti(enc.livetime)<=0)
                     {
-                        //Map_ReleaseQuestEncounter(enc.quest.chrID);
-						Map_TraderSucces_quest(enc.quest.chrID); //на обрабоку нпс-кэпов eddy
+                        
+						Map_TraderSucces_quest(enc.quest.chrID); 
                	        sdel  = "encounters."+GetAttributeName(enc);
                         DeleteAttribute(&worldMap, sdel);
 						pchar.worldmap.shipcounter = sti(pchar.worldmap.shipcounter) - 1;
@@ -611,7 +602,7 @@ void  wdmUpdateAllEncounterLivetime()
 	}
 }
 
-// найти сущ случайку для НПС
+
 
 aref  wdmFindOrCreateQuestEncounter(string _chrId)
 {

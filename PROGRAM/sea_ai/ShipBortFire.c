@@ -15,15 +15,15 @@ void Ship_BortFire()
 	d2x = GetEventData();
 	d2y = GetEventData();
 	d2z = GetEventData();
-    // boal fix charge 29.11.03 -->
+    
     if (bortName == "cannonr" || bortName == "cannonl")
-    { // только для бортов проверяем.
+    { 
         rCharacter.BOAL_ReadyCharge = "0";
     }
-    //Log_SetStringToLog("Ship_BortFire " + rCharacter.id + " "+ bortName);
-	// boal fix charge 29.11.03 <--
+    
 	
-	// boal  05.12.03 check skill -->
+	
+	
 	bool  bTempNotEnoughBalls = false;
 	if (sti(rCharacter.index) == GetMainCharacterIndex())
 	{
@@ -31,8 +31,8 @@ void Ship_BortFire()
         bTempNotEnoughBalls = bNotEnoughBalls;
 	}
 	bool bOfficer;
-	bOfficer = (sti(rCharacter.index) == GetMainCharacterIndex()) || CheckAttribute(rCharacter, "Payment"); // аналог IsCompanion(rCharacter) только без цикла и кучи иф
-	if (bDisableMapEnter && bOfficer && !bTempNotEnoughBalls) // use only in battle
+	bOfficer = (sti(rCharacter.index) == GetMainCharacterIndex()) || CheckAttribute(rCharacter, "Payment"); 
+	if (bDisableMapEnter && bOfficer && !bTempNotEnoughBalls) 
 	{
         if (bortName == "cannonr" || bortName == "cannonl")
         {
@@ -44,7 +44,7 @@ void Ship_BortFire()
             AddCharacterExpToSkill(rCharacter, "Cannons", 1);
             ChangeCrewExp(rCharacter, "Cannoners", 0.1);
         }
-        //AddCharacterExpToSkill(rCharacter, "Accuracy", 1);
+        
     }
     else
     {
@@ -57,20 +57,10 @@ void Ship_BortFire()
             ChangeCrewExp(rCharacter, "Cannoners", 0.03);
         }
     }
-    // boal <--
+    
 
 	SendMessage(&SeaOperator, "lisffffff", MSG_SEA_OPERATOR_FIRE, firedShip, bortName, dx, dy, dz, d2x, d2y, d2z);
-/*	
-	SetHeel_XZ(rCharacter,  &ax, &az);
-	if (bortName == "cannonr" || bortName == "cannonl")
-	{
-		vz = MAX_VOLLEY_HEEL_ANGLE + sti(RealShips[sti(rCharacter.Ship.Type)].Class) * 0.04;
-		if(bortName == "cannonr") az = az - vz;
-		if(bortName == "cannonl") az = az + vz;
-		SendMessage(rCharacter, "lff", MSG_SHIP_SET_HEEL_XZ, ax, az); 
-		PostEvent("Ship_VolleyHeelEnd", 6000, "a", rCharacter);
-	}
-*/	
+ 	
 }
 
 void Ship_VolleyHeelEnd()
@@ -85,3 +75,4 @@ void Ship_VolleyHeelEnd()
 		SendMessage(aCharacter, "lff", MSG_SHIP_SET_HEEL_XZ, ax, az); 	
 	}	
 }
+

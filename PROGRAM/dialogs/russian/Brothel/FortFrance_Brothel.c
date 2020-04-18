@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     ref sld;   
@@ -10,16 +10,16 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind.", "Well, it is nothing."), "I can't... no questions...",
                       "You're right it the third time already. Pardon me.", "Not now... next time...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//--> Бремя гасконца
+			
 			if (CheckAttribute(pchar, "questTemp.Sharlie.Gigolo") && pchar.questTemp.Sharlie.Gigolo == "start")
 			{
 				link.l1 = "Listen, Aurora, I need a girl for this night. And I want to take her to my place. Can you help me with that?";
                 link.l1.go = "Gigolo";
 			}	
-			//<-- Бремя гасконца
+			
 		break;
 		
-		//--> Бремя гасконца
+		
 		case "Gigolo":
 			dialog.text = "Sure, darling. What kind of girl do you need? Have you already found the girl for yourself or you don't care?";
 			link.l1 = "I do care. I need a girl named Lutess.";
@@ -121,6 +121,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			Sharlie_CreateGigoloGirl();
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

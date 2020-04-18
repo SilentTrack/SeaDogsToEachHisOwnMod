@@ -1,4 +1,4 @@
-//  интерфейс смены владельца города
+
 string totalInfo;
 string sCity;
 int    iNation, iDay;
@@ -6,21 +6,21 @@ int    iNation, iDay;
 void InitInterface(string iniName)
 {
     StartAboveForm(true);
-    // лочим квест и карту
+    
     bQuestCheckProcessFreeze = true;
     
     SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
 
     if (CheckAttribute(Pchar, "GenQuestFort.ColonySiegeId"))
     {
-        // режим осады
+        
         sCity    = pchar.GenQuestFort.ColonySiegeId;
 		iNation  = sti(pchar.GenQuestFort.ColonySiegeNation);
 		DeleteAttribute(Pchar, "GenQuestFort.ColonySiegeId");
 		DeleteAttribute(Pchar, "GenQuestFort.ColonySiegeNation");
 		
 		if (CheckAttribute(Pchar, "GenQuestFort.ColonySiegeEnd"))
-		{// конец осады
+		{
             DeleteAttribute(Pchar, "GenQuestFort.ColonySiegeEnd");
 			CalculateEndSiegeCity();
 		}
@@ -33,7 +33,7 @@ void InitInterface(string iniName)
     }
     else
     {
-		// режим захвата города, не используется
+		
 		sCity    = pchar.GenQuest.CapturedCity;
 		iNation  = sti(pchar.GenQuest.CaptureNation);
 		CalculateCapturedCity();
@@ -67,7 +67,7 @@ void IDoExit(int exitCode)
 
 	interfaceResultCommand = exitCode;
 	EndCancelInterface(true);
-    PostEvent("StopQuestCheckProcessFreeze", 100);//заморозка проверки квестов
+    PostEvent("StopQuestCheckProcessFreeze", 100);
 }
 
 void ProcCommand()
@@ -100,7 +100,7 @@ void CalculateSiegeCity()
 {
     string sTemp =  GetNationNameByType(iNation);
     
-	if (!isCityHasFort(sCity)) // сухопутный город
+	if (!isCityHasFort(sCity)) 
 	{
 	    totalInfo = "Troopers "+ XI_ConvertString (sTemp +" Gen ") +" besieged city "+GetCityName(sCity)+". Do you have a "+ FindRussianDaysString (iDay) +" for the siege.";
 	}

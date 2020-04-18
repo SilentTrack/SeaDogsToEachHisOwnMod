@@ -10,7 +10,7 @@ native string LanguageGetFaderPic(string faderPicName);
 native string DialogAssembleStr(string idStr, string paramStr);
 native string DialogAddParamToStr(string oldParamStr, string paramID, string paramValue);
 
-//native int NFFindFiles(ref rObject, string sDirectory, string sMask, bool bRecursive);
+
 
 native void XI_SetColorCorrection(float fContrast, float fGamma, float fBrightness);
 native void XI_SetMouseSensitivity( float fMouseXSens, float fMouseYSens );
@@ -27,7 +27,7 @@ native bool XI_DeleteFolder(string sFolderName);
 native bool XI_FindFolders(string sFindTemplate,aref arFoldersList);
 native int XI_StoreNodeLocksWithOff();
 native void XI_RestoreNodeLocks(int nStoreCode);
-native bool XI_IsKeyPressed(string key_name); // key_name = {"shift","control","alt"}
+native bool XI_IsKeyPressed(string key_name); 
 native void XI_RegistryExitKey(string key_name);
 
 #libriary "script_interface_functions"
@@ -220,53 +220,53 @@ string GetFacePictureName(int charIdx)
 	if(charIdx<0) return "emptyface";
 	return "face";
 }
-//-------------------------------------------------------------------------------------------------------------
-// FormatedText
-//-------------------------------------------------------------------------------------------------------------
+
+
+
 void SetFormatedText(string sNodeName, string sText)
 {
 	SendMessage(&GameInterface,"lss",MSG_INTERFACE_SET_FORMATEDTEXT,sNodeName,sText);
 }
-//-------------------------------------------------------------------------------------------------------------
+
 void AddLineToFormatedText(string sNodeName, string sText)
 {
 	SendMessage(&GameInterface,"lsle",MSG_INTERFACE_MSG_TO_NODE, sNodeName, 0, &sText);
 }
-//-------------------------------------------------------------------------------------------------------------
+
 void SelectLineInFormatedText(string sNodeName, int line)
 {
 	SendMessage(&GameInterface,"lsll",MSG_INTERFACE_MSG_TO_NODE,sNodeName, 1, line);
 }
-//-------------------------------------------------------------------------------------------------------------
+
 int SelectedLineInFormatedText(string sNodeName)
 {
 	return SendMessage(&GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,sNodeName, 11);
 }
 
-int SetVAligmentFormatedText(string sNodeName)  // boal нарыл в ядре, что можно
+int SetVAligmentFormatedText(string sNodeName)  
 {
 	return SendMessage(&GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,sNodeName, 5);
 }
-//-------------------------------------------------------------------------------------------------------------
-// Warship -->
+
+
 void SetFormattedTextLastLineColor(string _sNodeName, int _iColor)
 {
-	SendMessage(&GameInterface, "lslll", MSG_INTERFACE_MSG_TO_NODE, _sNodeName, 8, -1, _iColor); // -1 = последняя лини, как я понял
+	SendMessage(&GameInterface, "lslll", MSG_INTERFACE_MSG_TO_NODE, _sNodeName, 8, -1, _iColor); 
 }
-// <--
-//-------------------------------------------------------------------------------------------------------------
+
+
 
 string FloatToString(float fl,int nDigAfterPoint)
 {
-	//float fmul = pow(10.0,nDigAfterPoint);
-	//fl = fl + 0.5/fmul;
-	//int p1 = makeint(fl);
-	//int p2 = makeint((fl-p1)*fmul);
-	//return p1+"."+p2;
+	
+	
+	
+	
+	
 
-	fl= fl + 0.5/pow(10.0,nDigAfterPoint); // округление
-	int p1 = makeint(fl); // целая часть
-	string str = p1 + "."; // строка
+	fl= fl + 0.5/pow(10.0,nDigAfterPoint); 
+	int p1 = makeint(fl); 
+	string str = p1 + "."; 
 	for(int n=0; n<nDigAfterPoint; n++)
 	{
 		fl = (fl - p1)*10.0;
@@ -364,9 +364,9 @@ void FillFaceList(string strAccess, ref chref, int fillCode)
 
 	AddFaceGroup(strAccess,"FACE128_"+chref.faceID);
 
-	if(fillCode==0) // officers
+	if(fillCode==0) 
 	{
-		//officers
+		
 		if (chref.Fellows.Passengers.navigator == "-1")
 		{
 			AddFaceGroup(strAccess,"FACE128_NAVIGATOR");
@@ -421,7 +421,7 @@ void FillFaceList(string strAccess, ref chref, int fillCode)
 			AddFaceGroup(strAccess,"FACE128_"+Characters[sti(chref.Fellows.Passengers.carpenter)].faceID);
 		}
 		
-		//fighters
+		
 		for(n=1; n<4; n++)
 		{
 			cn = GetOfficersIndex(chref,n);
@@ -435,7 +435,7 @@ void FillFaceList(string strAccess, ref chref, int fillCode)
 		}
 	}
 
-	if(fillCode==1) // companions
+	if(fillCode==1) 
 	{
 		for(n=1; n<COMPANION_MAX; n++)
 		{
@@ -446,7 +446,7 @@ void FillFaceList(string strAccess, ref chref, int fillCode)
 		}
 	}
 
-	if(fillCode==2) // passengers
+	if(fillCode==2) 
 	{
 		q = GetPassengersQuantity(chref);
 		for(n=0; n<q; n++)
@@ -459,11 +459,11 @@ void FillFaceList(string strAccess, ref chref, int fillCode)
 		}
 	}
 	
-	if(fillCode==3) // officer for hire
+	if(fillCode==3) 
 	{
 		
 	}
-	if(fillCode==4) // free passengers
+	if(fillCode==4) 
 	{
 		q = GetPassengersQuantity(chref);
 		for(n=0; n<q; n++)
@@ -475,7 +475,7 @@ void FillFaceList(string strAccess, ref chref, int fillCode)
 				{
 					if(!CheckAttribute(&characters[cn], "isfree"))
 					{
-						if(!CheckAttribute(&characters[cn], "isquest")) // to_do
+						if(!CheckAttribute(&characters[cn], "isquest")) 
 						{
 							AddFaceGroup(strAccess,"FACE128_"+Characters[cn].faceID);
 						}
@@ -488,26 +488,7 @@ void FillFaceList(string strAccess, ref chref, int fillCode)
 
 void FillShipList(string strAccess, ref chref)
 {
-	/*
-	aref ar;
-	makearef(ar, GameInterface.(strAccess));
-
-	int n, cn, q;
-	int iShipType;
-	string sShip;
-
-	for(n=0; n<COMPANION_MAX; n++)
-	{
-		cn = GetCompanionIndex(chref, n);
-		if(cn != -1)
-		{
-			iShipType = GetCharacterShipType(/*&*//*characters[cn]);
-			iShipType = sti(RealShips[iShipType].basetype);
-			sShip = ShipsTypes[iShipType].name;
-			AddFaceGroup(strAccess,"SHIPS_"+sShip);
-		}
-	}
-	*/
+	  
 
 	aref ar;
 	makearef(ar, GameInterface.(strAccess));
@@ -522,18 +503,13 @@ void FillShipList(string strAccess, ref chref)
 	}
 }
 
-void FillItemsPicturesList(string strAccess, ref chref)  // to_do del
+void FillItemsPicturesList(string strAccess, ref chref)  
 {
 	AddFaceGroup(strAccess, "WEAPONS");
-	/*
-	AddFaceGroup(strAccess, "ITEMS_1");
-	AddFaceGroup(strAccess, "ITEMS_2");
-	AddFaceGroup(strAccess, "ITEMS_3");
-	AddFaceGroup(strAccess, "ITEMS_4");
-	*/
+	 
 	return;
 }
-void FillUpgradesList(string strAccess, string smode, int iCannonMaterial)  // to_do del
+void FillUpgradesList(string strAccess, string smode, int iCannonMaterial)  
 {
 	aref ar;
 	makearef(ar, GameInterface.(strAccess));
@@ -609,46 +585,46 @@ void EnumerateIcons(string sDirectory, string sFileMask, string sControlName, in
 		Trace("Find file : " + oTmp.(sFile).FileName);
 	}
 	GameInterface.(sControlName).ListSize = iNumFiles + iAddListSize;
-	//SendMessage(&GameInterface,"lsl",MSG_INTERFACE_SCROLL_CHANGE,sControlName,-1);
+	
 }
 
 void CreateTooltip(string header, string text1, int color1, string text2, int color2, string text3, int color3, string text4, int color4, string picTexture, string picGroup, string picImage, int nPicWidth, int nPicHeight)
 {
-	// сохранить состояния окон и элементов
+	
 	int nSaveNodeState = -1;
 	nSaveNodeState = XI_StoreNodeLocksWithOff();
 	InterfaceStates.tooltip.savestate = nSaveNodeState;
 	InterfaceStates.tooltip.oldcurrentnode = GetCurrentNode();
-	// создать элементы тултипа:
-	XI_MakeNode( "", "TOOLTIP_FADER", "tooltip_fader", 30000 ); // fader
-	XI_MakeNode( "", "TOOLTIP_FRAME", "tooltip_frame", 30000 ); // окно
-	XI_MakeNode( "", "TOOLTIP_TITLERECT", "tooltip_titlerect", 30001 ); // заголовок
-	XI_MakeNode( "", "TOOLTIP_PICTURE", "tooltip_picture", 30001 ); // картинка
-	XI_MakeNode( "", "TOOLTIP_TEXTRECT", "tooltip_textborder2", 30001 ); // окно для техт2
-	XI_MakeNode( "", "TOOLTIP_TEXTRECT", "tooltip_textborder4", 30001 ); // окно для техт4
-	XI_MakeNode( "", "TOOLTIP_TITLE", "tooltip_titile", 30002 ); // заголовок
-	XI_MakeNode( "", "TOOLTIP_TEXT1", "tooltip_text1", 30002 ); //
-	XI_MakeNode( "", "TOOLTIP_TEXT2", "tooltip_text2", 30002 ); //
-	XI_MakeNode( "", "TOOLTIP_TEXT3", "tooltip_text3", 30002 ); //
-	XI_MakeNode( "", "TOOLTIP_TEXT4", "tooltip_text4", 30002 ); //
+	
+	XI_MakeNode( "", "TOOLTIP_FADER", "tooltip_fader", 30000 ); 
+	XI_MakeNode( "", "TOOLTIP_FRAME", "tooltip_frame", 30000 ); 
+	XI_MakeNode( "", "TOOLTIP_TITLERECT", "tooltip_titlerect", 30001 ); 
+	XI_MakeNode( "", "TOOLTIP_PICTURE", "tooltip_picture", 30001 ); 
+	XI_MakeNode( "", "TOOLTIP_TEXTRECT", "tooltip_textborder2", 30001 ); 
+	XI_MakeNode( "", "TOOLTIP_TEXTRECT", "tooltip_textborder4", 30001 ); 
+	XI_MakeNode( "", "TOOLTIP_TITLE", "tooltip_titile", 30002 ); 
+	XI_MakeNode( "", "TOOLTIP_TEXT1", "tooltip_text1", 30002 ); 
+	XI_MakeNode( "", "TOOLTIP_TEXT2", "tooltip_text2", 30002 ); 
+	XI_MakeNode( "", "TOOLTIP_TEXT3", "tooltip_text3", 30002 ); 
+	XI_MakeNode( "", "TOOLTIP_TEXT4", "tooltip_text4", 30002 ); 
 	SendMessage(&GameInterface,"lsslslslslsssll",MSG_INTERFACE_SET_TOOLTIP, header, text1,color1, text2,color2, text3,color3, text4,color4, picTexture, picGroup, picImage, nPicWidth, nPicHeight );
 }
 
 void CloseTooltip()
 {
-	// удалить элементы тултипа:
-	XI_DeleteNode( "tooltip_fader" ); // окно
-	XI_DeleteNode( "tooltip_frame" ); // окно
-	XI_DeleteNode( "tooltip_titlerect" ); // заголовок
-	XI_DeleteNode( "tooltip_picture" ); // картинка
-	XI_DeleteNode( "tooltip_textborder2" ); // окно
-	XI_DeleteNode( "tooltip_textborder4" ); // окно
-	XI_DeleteNode( "tooltip_titile" ); // заголовок
-	XI_DeleteNode( "tooltip_text1" ); //
-	XI_DeleteNode( "tooltip_text2" ); //
-	XI_DeleteNode( "tooltip_text3" ); //
-	XI_DeleteNode( "tooltip_text4" ); //
-	// воccтановить состояния окон и элементов
+	
+	XI_DeleteNode( "tooltip_fader" ); 
+	XI_DeleteNode( "tooltip_frame" ); 
+	XI_DeleteNode( "tooltip_titlerect" ); 
+	XI_DeleteNode( "tooltip_picture" ); 
+	XI_DeleteNode( "tooltip_textborder2" ); 
+	XI_DeleteNode( "tooltip_textborder4" ); 
+	XI_DeleteNode( "tooltip_titile" ); 
+	XI_DeleteNode( "tooltip_text1" ); 
+	XI_DeleteNode( "tooltip_text2" ); 
+	XI_DeleteNode( "tooltip_text3" ); 
+	XI_DeleteNode( "tooltip_text4" ); 
+	
 	if( CheckAttribute(&InterfaceStates,"tooltip.oldcurrentnode") ) {
 		SetCurrentNode(InterfaceStates.tooltip.oldcurrentnode);
 	}
@@ -701,7 +677,7 @@ bool XI_FindFoldersWithoutNetsave(string sFindTemplate,aref arFoldersList)
 
 	return bRetVal;
 }
-// boal -->
+
 void ReadSavedOptionsEx(ref gopt)
 {
 	string sFileName = "options";
@@ -722,7 +698,7 @@ void SaveStartGameParam()
 
 	ref optref = &gopt;
 
-    optref.StartGameParam.PlayerProfile    		 = GameInterface.PROFILE_NAME.str;//PlayerProfile.name;
+    optref.StartGameParam.PlayerProfile    		 = GameInterface.PROFILE_NAME.str;
     optref.StartGameParam.MOD_SKILL_ENEMY_RATE   = MOD_SKILL_ENEMY_RATE;
     optref.StartGameParam.bHardcoreGame          = bHardcoreGame;
     optref.StartGameParam.bRechargePistolOnLine  = bRechargePistolOnLine;
@@ -800,22 +776,22 @@ void LoadPlayerProfileDefault()
     }
 }
 
-// boal сложность -->
+
 string GetLevelComplexity(int _Level_Complexity)
 {
 	switch (_Level_Complexity)
 	{
 	    case 1 :
-            return XI_ConvertString("m_Complexity_1"); //Матрос "Халява";
+            return XI_ConvertString("m_Complexity_1"); 
             break;
         case 2 :
-            return XI_ConvertString("m_Complexity_2"); // Боцман "Юнга";
+            return XI_ConvertString("m_Complexity_2"); 
             break;
         case 3 :
-            return XI_ConvertString("m_Complexity_3");//Шкипер "Матрос";
+            return XI_ConvertString("m_Complexity_3");
             break;
         case 4 :
-            return XI_ConvertString("m_Complexity_4");//Лейтенант "Боцман";
+            return XI_ConvertString("m_Complexity_4");
             break;
         case 5 :
             return XI_ConvertString("m_Complexity_5");
@@ -824,7 +800,7 @@ string GetLevelComplexity(int _Level_Complexity)
             return XI_ConvertString("m_Complexity_6");
             break;
         case 7 :
-            return XI_ConvertString("m_Complexity_7");//Командор "Пират";
+            return XI_ConvertString("m_Complexity_7");
             break;
         case 8 :
             return XI_ConvertString("m_Complexity_8");
@@ -892,4 +868,4 @@ string GetItemDescribe(int iGoodIndex)
 	
 	return describeStr;
 }
-// boal <--
+

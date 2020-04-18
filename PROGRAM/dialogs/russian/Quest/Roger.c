@@ -1,4 +1,4 @@
-// диалоги персонажей по пиратской линейке // Addon 2016-1 Jason пиратская линейка
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -17,7 +17,7 @@ void ProcessDialogEvent()
 	if(HasSubStr(attrL, "ShipStockManBack_"))
  	{
         i = findsubstr(attrL, "_" , 0);
-	 	NPChar.ShipToStoreIdx = strcut(attrL, i+1, strlen(attrL)-1); // индех в конце
+	 	NPChar.ShipToStoreIdx = strcut(attrL, i+1, strlen(attrL)-1); 
  	    Dialog.CurrentNode = "ShipStockManBack";
  	}
 
@@ -34,11 +34,11 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 		break;
 		
-		// Лопе Монторо
+		
 		case "Mtr_officer":
 			if (pchar.questTemp.Mtraxx != "fail" && pchar.questTemp.Mtraxx == "jewelry_5")
 			{
-				pchar.quest.Mtraxx_JewelryHavanaOver.over = "yes"; //снять таймер
+				pchar.quest.Mtraxx_JewelryHavanaOver.over = "yes"; 
 				dialog.text = "For fuck's sake, who the hell are you?";
 				link.l1 = "Good day, don Lope. Though we haven't been acquainted yet, now would be as good time as any. Especially now that I'm so eager to help you get out of this difficult situation...";
 				link.l1.go = "Mtr_officer_1";
@@ -86,11 +86,11 @@ void ProcessDialogEvent()
 			pchar.questTemp.Mtraxx = "jewelry_6";
 			LAi_CharacterDisableDialog(npchar);
 			AddQuestRecord("Roger_1", "8");
-			SetFunctionTimerCondition("Mtraxx_TimeclearPrison", 0, 0, 4, false); // таймер
+			SetFunctionTimerCondition("Mtraxx_TimeclearPrison", 0, 0, 4, false); 
 		break;
 		
 		case "Mtr_officer_7":
-			pchar.quest.Mtraxx_TimeclearPrison.over = "yes"; //снять таймер
+			pchar.quest.Mtraxx_TimeclearPrison.over = "yes"; 
             dialog.text = "So, the huckster and his clocking hen got their revenge, and I am done with this hole. You have my gratitude, senior, you have done your part. Now allow me to do mine.";
 			link.l1 = "I am all ears!";
 			link.l1.go = "Mtr_officer_8";
@@ -108,14 +108,14 @@ void ProcessDialogEvent()
 			LAi_CharacterDisableDialog(npchar);
 			npchar.lifeday = 0;
 			AddQuestRecord("Roger_1", "12");
-			SetFunctionTimerCondition("Mtraxx_TimeclearGulf", 0, 0, 5, false); // таймер
+			SetFunctionTimerCondition("Mtraxx_TimeclearGulf", 0, 0, 5, false); 
 			pchar.quest.mtr_jewelry_gulf.win_condition.l1 = "location";
 			pchar.quest.mtr_jewelry_gulf.win_condition.l1.location = "Santacatalina";
 			pchar.quest.mtr_jewelry_gulf.function = "Mtraxx_JewelryGulf";
 			DeleteAttribute(pchar, "GenQuest.PrisonQuestLock");
 		break;
 		
-		// Росарио Гусман
+		
 		case "Mtr_rosario":
             dialog.text = "Anything you need, sir?";
 			link.l1 = "Concerning don Montoro. We are old acquaintances and I was really upset when I learnt about his misfortunes. Don Diego de Toledo has sent me to you, said that you have already tried to set our mutual friend free...";
@@ -208,9 +208,9 @@ void ProcessDialogEvent()
 			npchar.dialog.currentnode = "Mtr_rosario_10";
 		break;
 		
-		// Лысый Джеффри
+		
 		case "Jeffry":
-			pchar.quest.Mtraxx_SilkCPVOver.over = "yes"; //снять прерывание
+			pchar.quest.Mtraxx_SilkCPVOver.over = "yes"; 
             dialog.text = "Hey, what the hell are you doing on my ship? I don't think you have got my invitation, huh?";
 			link.l1 = "Quite, Geffrey. I am from Tyrex regarding the ship silk business.";
 			link.l1.go = "Jeffry_1";
@@ -259,7 +259,7 @@ void ProcessDialogEvent()
 			npchar.dialog.currentnode = "Jeffry_8";
 			pchar.questTemp.Mtraxx = "silk_2";
 			AddCharacterGoods(pchar, GOOD_SHIPSILK, 1);
-			SetFunctionTimerCondition("Mtraxx_SilkTimeOver", 0, 0, 61, false); // таймер
+			SetFunctionTimerCondition("Mtraxx_SilkTimeOver", 0, 0, 61, false); 
 		break;
 		
 		case "Jeffry_8":
@@ -308,7 +308,7 @@ void ProcessDialogEvent()
 		case "Jeffry_14":
             DialogExit();
             AddQuestRecord("Roger_2", "22");
-			pchar.questTemp.Mtraxx = "silk_14"; // к Тираксу
+			pchar.questTemp.Mtraxx = "silk_14"; 
 			sld = characterFromId("Terrax");
 			sld.dialog.currentnode = "mtraxx_12";
 			pchar.quest.mtraxx_hide_jeffry.win_condition.l1 = "MapEnter";
@@ -346,7 +346,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Jeffry_18":
-            dialog.text = "Hey-hey! Prince you should… calm down a bit. The man is untouchable here. Dare to plunder him - Marcus will be there for your ass. Tell me was it Tyrex who send you to Lavoisier?";
+            dialog.text = "Hey-hey! Prince you shouldпїЅ calm down a bit. The man is untouchable here. Dare to plunder him - Marcus will be there for your ass. Tell me was it Tyrex who send you to Lavoisier?";
 			link.l1 = "Hm. Yeah...";
 			link.l1.go = "Jeffry_19";
 		break;
@@ -372,7 +372,7 @@ void ProcessDialogEvent()
 			sld = characterFromId("Terrax");
 		    sld.dialog.currentnode = "mtraxx_34";
 			bDisableFastReload = false;
-			pchar.questTemp.Mtraxx.CharleePrince = "true"; // атрибут - ГГ известный пират
+			pchar.questTemp.Mtraxx.CharleePrince = "true"; 
 		break;
 		
 		case "Jeffry_22":
@@ -437,7 +437,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Jeffry_32":
-            dialog.text = "What a spectacular! A pile of gold! I can see now why Cutlass gone mad… We are very fortunate Prince! How much is here do you think?";
+            dialog.text = "What a spectacular! A pile of gold! I can see now why Cutlass gone madпїЅ We are very fortunate Prince! How much is here do you think?";
 			link.l1 = "Plenty. We know for sure when we will take care of these bars.";
 			link.l1.go = "Jeffry_33";
 		break;
@@ -461,9 +461,9 @@ void ProcessDialogEvent()
 			AddDialogExitQuestFunction("Mtraxx_RetributionJeffryFight");
 		break;
 		
-		// Билли Сипатый
+		
 		case "Billy":
-			pchar.quest.Mtraxx_BillySeaTimeOver.over = "yes"; //снять таймер
+			pchar.quest.Mtraxx_BillySeaTimeOver.over = "yes"; 
 			PlaySound("VOICE\Russian\citizen\Moryaki v Gorode-10.wav");
             dialog.text = "Shark swallow me if it ever happened on the Fly Fish this year... we have a guest here! What is so wrong in you life, pal, that you decided to pay a visit to my old tub?";
 			link.l1 = "Greetings! You are the one they call Husky Billy?";
@@ -511,11 +511,11 @@ void ProcessDialogEvent()
 			AddQuestRecord("Roger_2", "8");
 			npchar.dialog.currentnode = "Billy_8";
 			pchar.questTemp.Mtraxx = "silk_7";
-			SetFunctionTimerCondition("Mtraxx_BillyTimeOver", 0, 0, 3, false); // таймер
+			SetFunctionTimerCondition("Mtraxx_BillyTimeOver", 0, 0, 3, false); 
 			pchar.quest.mtr_billy_coast.win_condition.l1 = "ExitFromLocation";
 			pchar.quest.mtr_billy_coast.win_condition.l1.location = pchar.location;
 			pchar.quest.mtr_billy_coast.function = "Mtraxx_BillyOnCoast";
-			locations[FindLocation("shore35")].DisableEncounters = true; //энкаутеры закрыть
+			locations[FindLocation("shore35")].DisableEncounters = true; 
 			npchar.DontDeskTalk = true;
 		break;
 		
@@ -546,7 +546,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Billy_11":
-			pchar.quest.Mtraxx_BillyTimeOver.over = "yes"; //снять прерывание
+			pchar.quest.Mtraxx_BillyTimeOver.over = "yes"; 
             dialog.text = "Hear, hear, this is the very best news for the last five years of Billy's life! Heh, a good reason to crack this bottle...";
 			link.l1 = "I'll pass. What about the silk supplier?";
 			link.l1.go = "Billy_12";
@@ -574,13 +574,13 @@ void ProcessDialogEvent()
             DialogExit();
 			npchar.lifeday = 0;
 			pchar.questTemp.Mtraxx = "silk_8";
-			chrDisableReloadToLocation = true;//закрыть локацию
-			locations[FindLocation("shore35")].DisableEncounters = false; //энкаутеры открыть
+			chrDisableReloadToLocation = true;
+			locations[FindLocation("shore35")].DisableEncounters = false; 
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "sea", "none", "", "", "OpenTheDoors", 20.0);
 			AddDialogExitQuestFunction("Mtraxx_BillyTakeShip");
 			AddQuestRecord("Roger_2", "9");
-			// ставим прерывание на 10-15 число
+			
 			int month = 0;
 			pchar.questTemp.Mtraxx.month = 0;
 			if (GetDataDay() > 12)
@@ -598,7 +598,7 @@ void ProcessDialogEvent()
 			pchar.quest.mtr_silk_smuggler.win_condition.l2 = "location";
 			pchar.quest.mtr_silk_smuggler.win_condition.l2.location = "Jamaica";
 			pchar.quest.mtr_silk_smuggler.function = "Mtraxx_SilkCreateSmuggler";
-			// таймер
+			
 			pchar.quest.mtr_silk_smuggler_over.win_condition.l1 = "Timer";
 			pchar.quest.mtr_silk_smuggler_over.win_condition.l1.date.hour  = hour+2;
 			pchar.quest.mtr_silk_smuggler_over.win_condition.l1.date.day   = day;
@@ -607,7 +607,7 @@ void ProcessDialogEvent()
 			pchar.quest.mtr_silk_smuggler_over.function = "Mtraxx_SilkSmugglerOver";
 		break;
 		
-		// мастеровой с верфи Порт-Рояля
+		
 		case "Mtr_acceptor_fight":
             LAi_group_Delete("EnemyFight");
 			DialogExit();
@@ -727,8 +727,8 @@ void ProcessDialogEvent()
 			link.l1 = "...";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("Mtraxx_CargoSilk");
-			AddCharacterExpToSkill(pchar, "Fortune", 300);//везение
-			AddCharacterExpToSkill(pchar, "Sneak", 300);//скрытность
+			AddCharacterExpToSkill(pchar, "Fortune", 300);
+			AddCharacterExpToSkill(pchar, "Sneak", 300);
 		break;
 		
 		case "Mtr_acceptor_4_11":
@@ -862,10 +862,10 @@ void ProcessDialogEvent()
 			link.l1 = "I will. Godspeed, friend.";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("Mtraxx_CargoSilkWin");
-			AddCharacterExpToSkill(pchar, "Sneak", 300);//скрытность
+			AddCharacterExpToSkill(pchar, "Sneak", 300);
 		break;
 		
-		// Тесак Пелли
+		
 		case "Pelly":
             dialog.text = "What brings you aboard of my vessel, friend?";
 			link.l1 = "Hey, Cutlass. Marcus Tyrex sent me. A march to Maracaibo awaits us.";
@@ -948,7 +948,7 @@ void ProcessDialogEvent()
 			npchar.dialog.currentnode = "Pelly_7";
 			pchar.questTemp.Mtraxx = "plant_4";
 			pchar.questTemp.Mtraxx.Chest = "true";
-			// подгружаем сундук в локу и меняем локаторы
+			
 			int n = Findlocation("Shore37");
 			Locations[n].models.always.locators = "shore03_q_locators";
 			locations[n].models.always.chest = "chest_quest";
@@ -986,7 +986,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Pelly_15":
-            dialog.text = "Admiral, Marcus will be mad at you… Don't go to him right now. I am leaving. You should too.";
+            dialog.text = "Admiral, Marcus will be mad at youпїЅ Don't go to him right now. I am leaving. You should too.";
 			link.l1 = "Yeah...";
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("Mtraxx_PlantFailFinal");
@@ -1090,7 +1090,7 @@ void ProcessDialogEvent()
 		
 		case "Pelly_31":
             dialog.text = "No you! You are always around! Tyrex must had sent you for this treasure, right? Carramba, I am late, again...";
-			link.l1 = "Tyrex? No... I bought a map from one wench. She must had a sold a copy to you, huh? On Tortuga? What a cunning bitch… He didn't lie though - look at this pile of gold!";
+			link.l1 = "Tyrex? No... I bought a map from one wench. She must had a sold a copy to you, huh? On Tortuga? What a cunning bitchпїЅ He didn't lie though - look at this pile of gold!";
 			link.l1.go = "Pelly_32";
 		break;
 		
@@ -1113,7 +1113,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuestFunction("Mtraxx_RetributionPellyFight");
 		break;
 		
-		// Жан Пикар
+		
 		case "rocur":
             dialog.text = "What do you want from me?";
 			link.l1 = "My friend, I am looking for Jean Picard. Any chance you bear the same name?";
@@ -1234,8 +1234,8 @@ void ProcessDialogEvent()
 			AddQuestRecord("Roger_3", "7");
 			npchar.dialog.currentnode = "rocur_wait";
 			pchar.questTemp.Mtraxx = "plant_3";
-			pchar.quest.Mtraxx_PlantPrepareTimeOver.over = "yes"; //снять таймер
-			SetFunctionTimerCondition("Mtraxx_SeekWeaponOver", 0, 0, 30, false); // таймер
+			pchar.quest.Mtraxx_PlantPrepareTimeOver.over = "yes"; 
+			SetFunctionTimerCondition("Mtraxx_SeekWeaponOver", 0, 0, 30, false); 
 		break;
 		
 		case "rocur_wait":
@@ -1471,7 +1471,7 @@ void ProcessDialogEvent()
 			TakeNItems(pchar, "jewelry4", 116);
 			TakeNItems(pchar, "jewelry16", 81);
 			TakeNItems(pchar, "jewelry14", 21);
-            dialog.text = "Thank you friend. I thought you would ask no less than a half… I do need money now. Here, take the gems.";
+            dialog.text = "Thank you friend. I thought you would ask no less than a halfпїЅ I do need money now. Here, take the gems.";
 			link.l1 = "What a raid Jan! Let's head to Hispaniola, to Tyrex.";
 			link.l1.go = "rocur_47";
 		break;
@@ -1483,7 +1483,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("Roger_5", "18");
 			sld = characterFromId("Mrt_Rocur");
 			LAi_SetWarriorType(sld);
-			LAi_CharacterDisableDialog(sld); // релиз-правка
+			LAi_CharacterDisableDialog(sld); 
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			AddPassenger(pchar, sld, false);
 			SetCharacterRemovable(sld, false);
@@ -1497,20 +1497,20 @@ void ProcessDialogEvent()
 			pchar.quest.mtraxx_merida_lavega.win_condition.l1 = "location";
 			pchar.quest.mtraxx_merida_lavega.win_condition.l1.location = "Hispaniola1";
 			pchar.quest.mtraxx_merida_lavega.function = "Mtraxx_IgnasioKitty";
-			// таймер на доплыть домой 40 дней
+			
 			SetFunctionTimerCondition("Mtraxx_MeridaReturnLate", 0, 0, 40, false);
 			DeleteAttribute(pchar, "GenQuest.HunterLongPause");
 		break;
 		
 		case "rocur_48":
             dialog.text = "Oh, what a meeting! Pleasure to see you, "+pchar.name+". How are you doing?";
-			link.l1 = "Pretty good. Found Red Wolf's treasures just recently. Now heading to Martinique to meet one… common friend of ours. You want to see Tyrex?";
+			link.l1 = "Pretty good. Found Red Wolf's treasures just recently. Now heading to Martinique to meet oneпїЅ common friend of ours. You want to see Tyrex?";
 			link.l1.go = "rocur_49";
 		break;
 		
 		case "rocur_49":
             dialog.text = "Yeah. Want to talk with him regarding Pasquale Lavoisier. Marcus sent me to that half bandit-half merchant. I did what he asked and he paid with some shit claiming it to be a bloody good payment. I would kill the fucker right where he was standing but Marcus asked treat him with respect... then it is him to deal with this trouble.";
-			link.l1 = "Right, right… Marcus will do nothing. Four-eyes is in business with him.";
+			link.l1 = "Right, rightпїЅ Marcus will do nothing. Four-eyes is in business with him.";
 			link.l1.go = "rocur_50";
 		break;
 		
@@ -1521,7 +1521,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "rocur_51":
-            dialog.text = "I see… You too got screwed by those two then?";
+            dialog.text = "I seeпїЅ You too got screwed by those two then?";
 			link.l1 = "Well yes. I was thinking to make some troubles to the four-eyes too before I learnt more about him. It doesn't worth it.";
 			link.l1.go = "rocur_52";
 		break;
@@ -1567,7 +1567,7 @@ void ProcessDialogEvent()
 			pchar.quest.mtraxx_pasq_gonaiv.win_condition.l2 = "location";
 			pchar.quest.mtraxx_pasq_gonaiv.win_condition.l2.location = "Shore34";
 			pchar.quest.mtraxx_pasq_gonaiv.function = "Mtraxx_PasqualeJanGonaiv";
-			SetFunctionTimerCondition("Mtraxx_PasqualeJanTimer", 0, 0, 10, false); // правки прогона 3
+			SetFunctionTimerCondition("Mtraxx_PasqualeJanTimer", 0, 0, 10, false); 
 			SetFunctionTimerCondition("Mtraxx_PasqualeJanTimeOver", 0, 0, 15, false);
 			pchar.questTemp.Mtraxx.Pasquale.Grabbing = "true";
 		break;
@@ -1649,7 +1649,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "rocur_65":
-            dialog.text = "What for? This house must be a base of Lavoisier in La Vega. I didn't see much through the windows but there are goods stored there… I think that the four-eyes has the means to repay what he owes us.";
+            dialog.text = "What for? This house must be a base of Lavoisier in La Vega. I didn't see much through the windows but there are goods stored thereпїЅ I think that the four-eyes has the means to repay what he owes us.";
 			link.l1 = "Well-well... Do you want to break in? What about the closed door? It's heavy and sturdy, no way we are breaking it in quite.";
 			link.l1.go = "rocur_66";
 		break;
@@ -1798,7 +1798,7 @@ void ProcessDialogEvent()
 			Log_Info("You have received two treasure collections.");
 			PlaySound("interface\important_item.wav");
 			TakeNItems(pchar, "icollection", 2);
-            dialog.text = "More luck on my side. Here, take you cut. I would never manage to take it all with me to the shore… The four-eyes paid us in full.";
+            dialog.text = "More luck on my side. Here, take you cut. I would never manage to take it all with me to the shoreпїЅ The four-eyes paid us in full.";
 			link.l1 = "Splendid! Well done Jan!";
 			link.l1.go = "rocur_88";
 		break;
@@ -1855,7 +1855,7 @@ void ProcessDialogEvent()
 		
 		case "rocur_96":
             dialog.text = ""+pchar.name+", don't you see that Tyrex make others to do the dirty work? You think that he would give you a task to find this treasure if he could do it on his own? Hell no, I swear, he tried to do it himself first and when he fucked it up, he called you to do the job. While you were doing the thinking, spending weeks in the sea, fighting and risking your life, this bastard along his four-eyed fried were screwing the whore in La Vega. And for this he also got a quarter of million pesos. Just like that\nYou think he sent his dog Leprechaun to help us in our raid for Merida? No, he wanted to make sure his interests are safe. Everything Marcus can do on his own, he does, either alone or with the help from Cutlasses, Bolds, Leprechauns and other dumb idiots who works for him for pennies. People like you and I get leads that Marcus is too stupid to execute on his own\nRemember all tasks you did for him? Count how much did he make on you. I had enough of this. Now I have money, a great corvette and loyal crew. From now own I am a freelancer. Heading to Jamaica, perhaps I will receive a letter of marque there.";
-			link.l1 = "I don't think you are quite right about Tyrex… But I wish you luck Jan! Hope you find success at Jamaica.";
+			link.l1 = "I don't think you are quite right about TyrexпїЅ But I wish you luck Jan! Hope you find success at Jamaica.";
 			link.l1.go = "rocur_97";
 		break;
 		
@@ -1867,7 +1867,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "rocur_98":
-            dialog.text = ""+pchar.name+", tell me, how did we spend so much time in the jungles? Now my plan is screwed. Eh… Farewell, pal...";
+            dialog.text = ""+pchar.name+", tell me, how did we spend so much time in the jungles? Now my plan is screwed. EhпїЅ Farewell, pal...";
 			link.l1 = "Heh...";
 			link.l1.go = "rocur_99";
 		break;
@@ -1882,7 +1882,7 @@ void ProcessDialogEvent()
 			CloseQuestHeader("Roger_4");
 		break;
 		
-		// Люк Лепрекон
+		
 		case "lepricon":
             dialog.text = "Greetings captain "+GetFullName(pchar)+". Luke Lepricon is at your service! Marcus told me that we are to go to the jungles of Southern Maine.";
 			link.l1 = "Precisely. Embark on long boats, we are leaving at once.";
@@ -1946,10 +1946,10 @@ void ProcessDialogEvent()
 		   AddQuestRecord("Roger_5", "8");
 		   sld = characterFromId("Hayamee");
 		   LAi_CharacterEnableDialog(sld);
-		  // LocatorReloadEnterDisable("Shore_ship3", "boat", false); 
+		  
 		   bQuestDisableMapEnter = false;
-		   DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");// выпустим в море
-		   SetFunctionTimerCondition("Mtraxx_MeridaPotionLate", 0, 0, 10, false); // таймер, чтобы не ходил долго
+		   DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
+		   SetFunctionTimerCondition("Mtraxx_MeridaPotionLate", 0, 0, 10, false); 
 		break;
 		
 		case "lepricon_6":
@@ -2043,7 +2043,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuestFunction("Mtraxx_RetributionLepriconFight");
 		break;
 		
-		// Тагофа - проводник к Мериде
+		
 		case "tagofa":
             dialog.text = "Tagofa greets you, son of the sea. Do you want me to show you a way to the Spanish settlement at mountains?";
 			link.l1 = "Correct. I see that you are good with our language unlike others of your people.";
@@ -2096,13 +2096,13 @@ void ProcessDialogEvent()
 			pchar.questTemp.Mtraxx.Boats = "true";
 			chrDisableReloadToLocation = false;
 			DoQuestCheckDelay("TalkSelf_Quest", 2.0);
-			// Лепрекона - гулять
+			
 			sld = characterFromId("Lepricon");
 			sld.dialog.currentnode = "lepricon_3";
 			LAi_SetWarriorType(sld);
 			LAi_warrior_DialogEnable(sld, true);
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
-			SetFunctionTimerCondition("Mtraxx_MeridaBoatLate", 0, 0, 10, false); // таймер, чтобы не ходил долго
+			SetFunctionTimerCondition("Mtraxx_MeridaBoatLate", 0, 0, 10, false); 
 		break;
 		
 		case "tagofa_8":
@@ -2223,7 +2223,7 @@ void ProcessDialogEvent()
 			ChangeIndianRelation(7.0);
 		break;
 		
-		// дозорный у Мериды
+		
 		case "merida_guard":
             dialog.text = "Hey! Who are you and what do you want?";
 			link.l1 = "We need to get to Merida and have a chat with your governor or whoever do you have instead of him...";
@@ -2255,10 +2255,10 @@ void ProcessDialogEvent()
 			DoQuestFunctionDelay("Mtraxx_MeridaHouseGuards", 5.0);
 		break;
 		
-		// мэр Мериды
+		
 		case "merida_head":
             dialog.text = "Damned ladrones!..";
-			link.l1 = "Stop the swearing senor. I was the one who offered to solve this matter peacefully but your officer decided otherwise… What happened on the streets of Merida is, in a great degree, his fault.";
+			link.l1 = "Stop the swearing senor. I was the one who offered to solve this matter peacefully but your officer decided otherwiseпїЅ What happened on the streets of Merida is, in a great degree, his fault.";
 			link.l1.go = "merida_head_1";
 		break;
 		
@@ -2312,7 +2312,7 @@ void ProcessDialogEvent()
 		
 		case "merida_head_9":
             dialog.text = "Grab your bloody prize and know that you are leaving a whole town to poverty.";
-			link.l1 = "Are you serious? Just mine some more fucking gems, the mountains are still there… Jan go check the don's chests.";
+			link.l1 = "Are you serious? Just mine some more fucking gems, the mountains are still thereпїЅ Jan go check the don's chests.";
 			link.l1.go = "merida_head_10";
 		break;
 		
@@ -2330,7 +2330,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("Mtraxx_RetributionSleep2");
 		break;
 		
-		// капитан пинаса Китти
+		
 		case "kittycap":
             dialog.text = TimeGreeting()+", kind sir. What's your purpose here?";
 			link.l1 = "I am from Tyrex. I was told to escort your vessel to Bridgetown. Are you ready?";
@@ -2348,7 +2348,7 @@ void ProcessDialogEvent()
             LAi_CharacterDisableDialog(npchar);
 			Group_DelCharacter("Mtr_Kitty", "Mtr_KittyCap");
 			SetCharacterRemovable(npchar, false);
-			npchar.CompanionEnemyEnable = false; //всегда друзья
+			npchar.CompanionEnemyEnable = false; 
 			LAi_SetImmortal(npchar, false);
 			SetCompanionIndex(pchar, -1, sti(npchar.index));
 			npchar.loyality = MAX_LOYALITY;
@@ -2359,7 +2359,7 @@ void ProcessDialogEvent()
 			pchar.quest.mtraxx_ignasio_sinkkitty.win_condition.l1 = "NPC_Death";
 			pchar.quest.mtraxx_ignasio_sinkkitty.win_condition.l1.character = "Mtr_KittyCap";
 			pchar.quest.mtraxx_ignasio_sinkkitty.function = "Mtraxx_IgnasioKittySink";
-			bQuestDisableMapEnter = false;//открыть карту
+			bQuestDisableMapEnter = false;
 			DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
 		break;
 		
@@ -2379,7 +2379,7 @@ void ProcessDialogEvent()
 			AddCharacterExpToSkill(pchar, "Sailing", 200);
 		break;
 		
-		// Игнасио Марко
+		
 		case "ignasio":
             dialog.text = "Greetings to the brave captain! Let me introduce myself - a privateer of England, Ignacio Marco of the Torero.";
 			link.l1 = TimeGreeting()+", my good man. Captain "+GetFullName(pchar)+" at your service. How can I help you?";
@@ -2387,7 +2387,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ignasio_1":
-            dialog.text = "Oh, I know who you are! Monseniour "+GetFullName(pchar)+"! Rumors of your… resources and patrons had been reaching me throughout the Archipelago. I believe my offer would be an interest to you.";
+            dialog.text = "Oh, I know who you are! Monseniour "+GetFullName(pchar)+"! Rumors of yourпїЅ resources and patrons had been reaching me throughout the Archipelago. I believe my offer would be an interest to you.";
 			link.l1 = "What offer?";
 			link.l1.go = "ignasio_2";
 		break;
@@ -2426,7 +2426,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ignasio_7":
-            dialog.text = "No need to explain them. Being an English privateer I am fighting this war on their side. You are a freelancer… mostly. Which makes you indifferent in what side to fight against...";
+            dialog.text = "No need to explain them. Being an English privateer I am fighting this war on their side. You are a freelancerпїЅ mostly. Which makes you indifferent in what side to fight against...";
 			link.l1 = "Almost. I don't cross France, I am sorry.";
 			link.l1.go = "ignasio_8";
 		break;
@@ -2563,7 +2563,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ignasio_boarding_2":
-            dialog.text = RandSwear()+" Didn't see it coming… Don't even think of it: Barbason will learn about my treason in no time. You better don't know what he does to people who betrayed him. I saw it.";
+            dialog.text = RandSwear()+" Didn't see it comingпїЅ Don't even think of it: Barbason will learn about my treason in no time. You better don't know what he does to people who betrayed him. I saw it.";
 			link.l1 = "So being hanged is a better option?";
 			link.l1.go = "ignasio_boarding_3";
 		break;
@@ -2597,7 +2597,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuestFunction("Mtraxx_IgnasioOurEscape");
 		break;
 		
-		// индей-кариб в гроте Порто-Белло
+		
 		case "grot_canib":
             dialog.text = "Haya! Damn yalanaui come our forest! Kill him!";
 			link.l1 = "...";
@@ -2605,7 +2605,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuestFunction("Mtraxx_WolfreekGrotFight");
 		break;
 		
-		// бандит у пещеры Панамы
+		
 		case "cave_bandit":
             dialog.text = "Hey! What the hell are you doing here? A-ah, stealing others' belongings? Well cutie you are screwed!";
 			link.l1 = "...";
@@ -2678,7 +2678,7 @@ void ProcessDialogEvent()
 			npchar.dialog.currentnode = "carpenter_11";
 			LAi_SetActorType(npchar);
 			LAi_ActorDialog(npchar, pchar, "", -1, 0);
-			for (i=1; i<=2; i++) // 
+			for (i=1; i<=2; i++) 
 			{
 				sld = CharacterFromID("Islamona_fort_pirate_"+i);
 				LAi_SetActorType(sld);
@@ -3016,7 +3016,7 @@ void ProcessDialogEvent()
 			LaunchStorage(29);
 		break;
 		
-		// Мирабель
+		
 		case "mirabelle":
 			PlaySound("VOICE\Russian\Girl_Q.wav");
             dialog.text = "Ah...";
@@ -3123,9 +3123,9 @@ void ProcessDialogEvent()
 			pchar.quest.mtraxx_pasq_mirabella1.win_condition.l1 = "location";
 			pchar.quest.mtraxx_pasq_mirabella1.win_condition.l1.location = "Shore77";
 			pchar.quest.mtraxx_pasq_mirabella1.function = "Mtraxx_PasqualeMirabella";
-			AddPassenger(pchar, npchar, false);//добавить пассажира
+			AddPassenger(pchar, npchar, false);
 			SetCharacterRemovable(npchar, false);
-			SetFunctionTimerCondition("Mtraxx_MirabellaSailOver", 0, 0, 30, false); // месяц на доплыть до Исла Моны
+			SetFunctionTimerCondition("Mtraxx_MirabellaSailOver", 0, 0, 30, false); 
 		break;
 		
 		case "mirabelle_14":
@@ -3215,7 +3215,7 @@ void ProcessDialogEvent()
 		    chrDisableReloadToLocation = false;
 			pchar.quest.mtraxx_mirabella_setlife.win_condition.l1 = "MapEnter";
 			pchar.quest.mtraxx_mirabella_setlife.function = "Mtraxx_MirabellaSetLife";
-			bQuestDisableMapEnter = false;//открыть карту
+			bQuestDisableMapEnter = false;
 			DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
 		break;
 		
@@ -3356,7 +3356,7 @@ void ProcessDialogEvent()
             dialog.text = TimeGreeting()+", senor "+pchar.name+"! I am so happy to see you! How are you doing?";
 			link.l1 = ""+LinkRandPhrase("Glad to see you too, my girl.", "HI, Mirabelle. You are always the same - joyful and beautiful, what a pleasant sight.","Hello, pretty one. You look stunning!")+"I am doing just fine. Hope you too.";
 			link.l1.go = "mirabelle_42x";
-			if (!bMary && !bHelena) // прогона 3
+			if (!bMary && !bHelena) 
 			{
 				if (!CheckAttribute(npchar, "sex_date") || GetNpcQuestPastDayParam(npchar, "sex_date") >= 1)
 				{
@@ -3377,7 +3377,7 @@ void ProcessDialogEvent()
 			link.l1.go = "mirabelle_39";
 		break;
 		
-		// губернатор Картахены
+		
 		case "CartahenaMayor":
             dialog.text = "Fucking ladrones! Whatever, our courier is already on the way to Porto Bello. Soon our squadron will arrive and...";
 			link.l1 = TimeGreeting()+", your highness. Pleasure to see you in good state. I hope you will keep it after we leave. If I were you I wouldn't count on the squadron, plus we are not staying here for more than three days. I bet you understand that noble dons of Cartagena won't arrive here to help you that soon. Let's go straight to business, shall we?";
@@ -3476,7 +3476,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuestFunction("Mtraxx_CartahenaToFort");
 		break;
 		
-		// Камилла
+		
 		case "camilla":
 			PlaySound("VOICE\Russian\hambit\Girls_3.wav");
             dialog.text = "Oh, this is the Charley Prince, the famous pirate, the terror of the Spanish South Maine!";
@@ -3708,7 +3708,7 @@ void ProcessDialogEvent()
 			npchar.lifeday = 0;
 			LAi_CharacterDisableDialog(npchar);
 			AddQuestRecord("Roger_10", "2");
-			bQuestDisableMapEnter = false;//открыть карту
+			bQuestDisableMapEnter = false;
 			DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
 			pchar.quest.mtraxx_retribution_carataska.win_condition.l1 = "location";
 			pchar.quest.mtraxx_retribution_carataska.win_condition.l1.location = "shore10";
@@ -3723,7 +3723,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("Mtraxx_RetributionSleep4");
 		break;
 		
-		// дон Энрико - народный мститель
+		
 		case "enrico":
 			PlaySound("VOICE\Russian\OliverTrast01.wav");
             dialog.text = "So few things in this world joy me as much as watching rats in the box tearing each other!\nOnly the strongest and the most disgusting rat survives. Then all you have to do is to squeeze it...";
@@ -3797,3 +3797,4 @@ void ProcessDialogEvent()
 		break;
 	}
 } 
+

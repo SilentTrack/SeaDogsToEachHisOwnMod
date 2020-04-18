@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
  	switch(Dialog.CurrentNode)
@@ -7,7 +7,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             dialog.text = "Speak, I am listening";
 			link.l1 = "I was mistaken. Farewell.";
 			link.l1.go = "Exit";
-			// Addon 2016-1 Jason пиратская линейка
+			
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "jewelry_4")
 			{
 				link.l1 = "Officer, it has come to my attention that an officer of the vessel 'Cantavro' is being held here. Is that correct?";
@@ -20,7 +20,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		
-		// Addon 2016-1 Jason пиратская линейка
+		
 		case "Mtraxx":
             dialog.text = "The 'Cantavro' officer? Don Lope Montoro? Yes, he is detained here. What's in it for you?";
 			link.l1 = "I would like a permission to visit him.";
@@ -63,5 +63,6 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.questTemp.Mtraxx = "jewelry_9";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+

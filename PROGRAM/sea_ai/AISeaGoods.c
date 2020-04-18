@@ -1,4 +1,4 @@
-#define MINE_POWDER          200 // 07.07.07 мины
+#define MINE_POWDER          200 
 
 object	AISeaGoods;
 
@@ -30,7 +30,7 @@ void AISeaGoods_ShipDead()
 
 	aref aGoods; makearef(aGoods, rCharacter.Ship.Cargo.Goods);
 	int iNumGoods;
-	iNumGoods = GetAttributesNum(aGoods); // оптимизация
+	iNumGoods = GetAttributesNum(aGoods); 
 	for (int i=0; i<iNumGoods; i++)
 	{
 		aref aGood = GetAttributeN(aGoods, i);
@@ -59,7 +59,7 @@ void AISeaGoods_ShipDead()
 		else
 		{
 			AISeaGoods_AddGood(rCharacter, GetAttributeName(aGood), sModel, fTime * 60.0, makeint(iSwimQuantity / 2));
-			AISeaGoods_AddGood(rCharacter, GetAttributeName(aGood), sModel, fTime * 60.0, makeint(iSwimQuantity / 2)); // две бочки на один товар
+			AISeaGoods_AddGood(rCharacter, GetAttributeName(aGood), sModel, fTime * 60.0, makeint(iSwimQuantity / 2)); 
 		}
 	}
 }
@@ -68,14 +68,14 @@ void AISeaGoods_AddGood(ref rCharacter, string sGood, string sModel, float fTime
 {
 	if (!bSeaActive) return;
 
-	//Trace("Add good : " + sGood + ", rCharacter.id = " + rCharacter.id + ", iQuantity = " + iQuantity);
+	
 
-	// calculate random position
+	
 		float fAng = stf(rCharacter.Ship.Ang.y) + PI + (frnd() - 0.5) * PI;
 		float fDist = stf(rCharacter.Ship.BoxSize.z) / 2.0 + frnd() * 10.0;
-		//float x = (frnd() - 0.5) * 20.0;
-		//float z = (frnd() - 0.5) * 40.0;
-		//RotateAroundY(&x, &z, cos(fAng), sin(fAng));
+		
+		
+		
 
 	AISeaGoods.Good = sGood;
 	AISeaGoods.Pos.x = stf(rCharacter.Ship.Pos.x) + fDist * sin(fAng);
@@ -87,7 +87,7 @@ void AISeaGoods_AddGood(ref rCharacter, string sGood, string sModel, float fTime
 	AISeaGoods.Add = "";
 }
 
-// ugeen --> выкидываем либо бочку со спецпредметом либо шлюпку с кораблекрушенцем
+
 void AISeaGoods_AddGood_Special(ref rCharacter, string sGood, string sModel, float fTime, int iQuantity)
 {
 	if (!bSeaActive) return;
@@ -104,14 +104,14 @@ void AISeaGoods_AddGood_Special(ref rCharacter, string sGood, string sModel, flo
 	AISeaGoods.Model = sModel;
 	AISeaGoods.Add = "";
 }
-// <-- ugeen
+
 
 bool AISeaGoods_ShipEatGood()
 {
 	object oRes;
 
 	int iCharacterIndex = GetEventData();
-	int iGoodCharacterIndex = GetEventData();  // с кого товар
+	int iGoodCharacterIndex = GetEventData();  
 	string sGood = GetEventData();
 	int iQuantity = GetEventData();
 
@@ -124,7 +124,7 @@ bool AISeaGoods_ShipEatGood()
 	
 	switch (sGood)
 	{
-		case "boat":   //homo 22/06/07 если подобрали шлюпку и ГГ
+		case "boat":   
 			if (iCharacterIndex == sti(pchar.index))
 			{
 				pchar.GenQuest.Survive_In_SeaOfficerIdx = iGoodCharacterIndex;
@@ -138,7 +138,7 @@ bool AISeaGoods_ShipEatGood()
 			}
 		break;
 		
-		case "enemy_boat":   //homo 22/06/07 если подобрали шлюпку
+		case "enemy_boat":   
 	        if (iCharacterIndex == sti(pchar.index))
 			{
 				pchar.GenQuest.Survive_In_SeaPrisonerIdx = iGoodCharacterIndex;
@@ -161,7 +161,7 @@ bool AISeaGoods_ShipEatGood()
 			}	
 			return true;
 		break;
-		// мины 07.07.07
+		
 		case "powder1":
 		    MakeMineBoom(iCharacterIndex, iGoodCharacterIndex, 600.0);
 			return true;
@@ -197,26 +197,22 @@ bool AISeaGoods_ShipEatGood()
 		return false;
 	}
 
-	//trace("character " + rCharacter.id + " eat good");
+	
 
 	ref rShip = GetRealShip(sti(rCharacter.Ship.Type));
 	int iGood = FindGood(sGood);
 
 	ref rGood = &Goods[iGood];
 
-	//int iLoad = GetCargoLoad(rCharacter);
-	//int iCapacity = sti(rShip.Capacity);
+	
+	
 	int iGoodWeight = sti(rGood.Weight);
 	int iGoodUnits = sti(rGood.Units);
 
 	int iMaxGoodAllow = GetCharacterFreeSpace(rCharacter, iGood);
-	//int iMaxGoodAllow = (iCapacity - iLoad) / iGoodWeight;
+	
 
-	/*if(iCapacity < iGoodWeight)
-	{
-		return false;
-	}
-	*/
+	 
 
 	if(iMaxGoodAllow == 0)
 	{
@@ -240,7 +236,7 @@ bool AISeaGoods_ShipEatGood()
 
 	if (iCharacterIndex == nMainCharacterIndex)
 	{
-        PlaySound("INTERFACE\_Gotcha.wav"); // boal
+        PlaySound("INTERFACE\_Gotcha.wav"); 
 		string sGoodQuantity = iQuantity * iGoodWeight;
 		string sShipGotGood = LanguageConvertString(iSeaSectionLang, "Ship_got_good");
 		Event(PARSE_STRING, "aslss", &oRes, sShipGotGood, 2, sGoodQuantity, sGoodName);
@@ -253,15 +249,15 @@ bool AISeaGoods_ShipEatGood()
 	
 	return true;
 }
-// мины boal 07.07.07
+
 void MakeMineBoom(int iCharacterIndex, int iGoodCharacterIndex, float damg)
 {
     ref rCharacter = GetCharacter(iCharacterIndex);
 
-    // если ГГ или компаньон пустили бочку и был мир
+    
     if (isCompanion(GetCharacter(iGoodCharacterIndex)) && GetNationRelation2MainCharacter(sti(rCharacter.nation)) != RELATION_ENEMY)
     {
-        if (!isCompanion(rCharacter) && !CheckAttribute(rCharacter, "Coastal_Captain")) // по своим можно палить таможня пофиг
+        if (!isCompanion(rCharacter) && !CheckAttribute(rCharacter, "Coastal_Captain")) 
         {
             Ship_NationAgressive(rCharacter, rCharacter);
             DoQuestCheckDelay("NationUpdate", 0.7);
@@ -269,14 +265,14 @@ void MakeMineBoom(int iCharacterIndex, int iGoodCharacterIndex, float damg)
     }
     Ship_ApplyHullHitpoints(rCharacter, damg, KILL_BY_BALL, iGoodCharacterIndex);
     
-    if (bBettaTestMode)  // дает вылет :(
+    if (bBettaTestMode)  
     {
 		int iRandStartTime = rand(1000);
 		float fTotalFireTime = Ship_GetTotalFireTime(rCharacter);
 
 		PostEvent(SHIP_ACTIVATE_FIRE_PLACE, iRandStartTime, "ialsfl", rCharacter, rCharacter, 0, "ship_onfire", fTotalFireTime, iGoodCharacterIndex);
 		PostEvent(SHIP_FIRE_DAMAGE, iRandStartTime, "lllf", iCharacterIndex, iGoodCharacterIndex, 0, fTotalFireTime);
-		//    PlaySound("Sea Battles\vzriv_pogreb_002.wav");
+		
 	}
 	Ship_Detonate(rCharacter, false, false);
 }
@@ -286,7 +282,7 @@ void SetMineFree(ref xi_refCharacter, int type)
     AISeaGoods_AddGood(xi_refCharacter, "powder" + type, "barrel", 600.0, 1);
     PlaySound("Ships\jakor_002.wav");
     RemoveCharacterGoods(xi_refCharacter, GOOD_POWDER, type * MINE_POWDER);
-    xi_refCharacter.Tmp.SpeedRecall = 0;  // чтоб пересчитались скорость и маневр
+    xi_refCharacter.Tmp.SpeedRecall = 0;  
 	Achievment_SetStat(xi_refCharacter, 61, 1);
 	if (!CheckAttribute(pchar, "questTemp.Sharlie.DelTerGuard") && pchar.location == "tortuga" && sti(xi_refCharacter.index) == GetMainCharacterIndex() && !bDisableMapEnter) Tortuga_ShipGuardAttack();
 }

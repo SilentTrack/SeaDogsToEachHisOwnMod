@@ -1,4 +1,4 @@
-// BOAL диалог пленников - в трюме
+
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -17,9 +17,9 @@ void ProcessDialogEvent()
     
 	switch(Dialog.CurrentNode)
 	{
-		// -----------------------------------Диалог первый - первая встреча
+		
 		case "First time":
-		//--> Jason, Ложный след
+		
 		if (CheckAttribute(pchar, "questTemp.FalseTrace.Prisoner") && GetFullName(npchar) == pchar.questTemp.FalseTrace.CapName)
 		{
 			dialog.text = "What do you want, captain? Discuss my ransom? I'd like you to know that I care about the girl's fate...";
@@ -27,9 +27,9 @@ void ProcessDialogEvent()
 			link.l1.go = "FalseTrace_Prisoner";
 			break;	
 		}
-		//<-- Ложный след
 		
-		// Addon-2016 Jason ”ЊЉ-ѓваделупа
+		
+		
 		if (CheckAttribute(pchar, "questTemp.FMQG") && pchar.questTemp.FMQG != "fail" && CheckAttribute(pchar, "questTemp.FMQG.Prisoner") && GetFullName(npchar) == pchar.questTemp.FMQG.Prisoner)
 		{
 			dialog.text = "";
@@ -82,7 +82,7 @@ void ProcessDialogEvent()
 			{
 				switch(sti(NPChar.Hold_GenQuest.variant))
 				{				
-					case 0: // "tip-off"
+					case 0: 
 						dialog.text = RandPhraseSimple("Captain, would you like to hear my proposal about more profitable variant of my ransom?",
 							"I understand that there is no room for barter in my place but would you like to hear my proposal?");
 						link.l1 = "I am listening.";	
@@ -109,7 +109,7 @@ void ProcessDialogEvent()
 						link.l3.go = "exit";	
 					break;
 					
-					case 2: // "ransom"
+					case 2: 
 						dialog.text = "Captain, this uncertainty is killing me. May I know about your plans you have on me?";
 						link.l1 = "Have you got anything to offer me?";
 						link.l1.go = "free_buyout";
@@ -246,14 +246,14 @@ void ProcessDialogEvent()
 		    {
 		        NPChar.alignment = "bad";
 		    }
-            ReleasePrisoner(NPChar); // освободили пленника
-            DeleteAttribute(NPChar, "LifeDay") // постоянный
+            ReleasePrisoner(NPChar); 
+            DeleteAttribute(NPChar, "LifeDay") 
 			Pchar.questTemp.HiringOfficerIDX = GetCharacterIndex(Npchar.id);
-			// тут трем накопивщиеся сабли и корабли 290704 BOAL -->
+			
 			DeleteAttribute(Npchar, "Ship");
 			Npchar.Ship.Type = SHIP_NOTUSED;
-            DeleteAttribute(Npchar, "Fellows"); // его офицеры
-            Npchar.Fellows.Passengers.id0 = Npchar.index; // свой пассажир
+            DeleteAttribute(Npchar, "Fellows"); 
+            Npchar.Fellows.Passengers.id0 = Npchar.index; 
 
 			Npchar.Fellows.Passengers.boatswain = "-1";
 			Npchar.Fellows.Passengers.navigator = "-1";
@@ -312,7 +312,7 @@ void ProcessDialogEvent()
 		break;
 
 		case "Slave_3":
-            ReleasePrisoner(NPChar); //  пленника в рабы
+            ReleasePrisoner(NPChar); 
         	LAi_SetActorType(NPChar);
         	LAi_ActorRunToLocation(NPChar, "reload", "reload1", "none", "", "", "", 4.0);
         	ChangeCharacterComplexReputation(pchar,"nobility", -6);
@@ -336,7 +336,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "free_withoutFee_3":
-            ReleasePrisoner(NPChar); // освободили пленника
+            ReleasePrisoner(NPChar); 
         	LAi_SetActorType(NPChar);
         	LAi_ActorRunToLocation(NPChar, "reload", "reload1", "none", "", "", "", 4.0);
         	ChangeCharacterComplexReputation(pchar,"nobility", 2);
@@ -364,7 +364,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "free_in_sea_battle_1":
-            ReleasePrisoner(NPChar); // освободили пленника        	
+            ReleasePrisoner(NPChar); 
         	LAi_LocationFightDisable(&Locations[FindLocation("My_Deck")], false);
             LAi_SetFightMode(Pchar, true);
             LAi_SetWarriorType(NPChar);
@@ -378,7 +378,7 @@ void ProcessDialogEvent()
         break;		
 
 		case "free_in_sea_battle_all":
-			//ugeen --> привет Сиварду !!! после релиза пленников кол-во пассажиров уменьшается и цикл нихрена дальше не срабатывал
+			
 			for(int j = GetPassengersQuantity(pchar) - 1; j > -1; j--)
             {
                 cn = GetPassenger(pchar, j);
@@ -387,9 +387,9 @@ void ProcessDialogEvent()
                     offref = GetCharacter(cn);
                     if (CheckAttribute(offref,"prisoned"))
                     {
-        	            if(sti(offref.prisoned)==true && GetRemovable(offref)) // ставим только фантомов
+        	            if(sti(offref.prisoned)==true && GetRemovable(offref)) 
         	            {
-                        	ReleasePrisoner(offref); // освободили пленника
+                        	ReleasePrisoner(offref); 
 							LAi_SetWarriorType(offref);
 							LAi_warrior_DialogEnable(offref, false);
                             LAi_group_MoveCharacter(offref, LAI_GROUP_TmpEnemy);
@@ -407,7 +407,7 @@ void ProcessDialogEvent()
         break;
 		
 		case "free_in_sea_4":
-        	ReleasePrisoner(NPChar); // освободили пленника
+        	ReleasePrisoner(NPChar); 
             NPChar.location = "";
 	        LAi_KillCharacter(NPChar);
         	DialogExit();
@@ -449,7 +449,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "PunishmentAction2":
-        	ReleasePrisoner(NPChar); // освободили пленника
+        	ReleasePrisoner(NPChar); 
             NPChar.location = "";		
 			NPChar.LifeDay = 0;
 			LAi_CharacterDisableDialog(NPChar);
@@ -522,7 +522,7 @@ void ProcessDialogEvent()
 			SetFunctionTimerCondition("Hold_GenQuest_SetMerchant_pre", 0, 0, 1+rand(2), false);
 			SetFunctionTimerCondition("Hold_GenQuest_MerchantOver", 0, 0, 30, false);
 			
-            ReleasePrisoner(NPChar); // освободили пленника
+            ReleasePrisoner(NPChar); 
         	LAi_SetActorType(NPChar);
 			NPChar.LifeDay = 0;
         	LAi_ActorRunToLocation(NPChar, "reload", "reload1", "none", "", "", "", 4.0);
@@ -615,7 +615,7 @@ void ProcessDialogEvent()
 			AddQuestUserData("HoldQuest", "sNameChar", pchar.GenQuest.Hold_GenQuest.Name);
 			AddQuestUserData("HoldQuest", "sPirateName", GetName( NAMETYPE_VIP, pchar.GenQuest.Hold_GenQuest.PirateName, NAME_ACC));
 			
-            ReleasePrisoner(NPChar); // освободили пленника
+            ReleasePrisoner(NPChar); 
         	LAi_SetActorType(NPChar);
 			NPChar.LifeDay = 0;
         	LAi_ActorRunToLocation(NPChar, "reload", "reload1", "none", "", "", "", 4.0);
@@ -630,7 +630,7 @@ void ProcessDialogEvent()
 			link.l2.go = "exit";
 		break;		
 		
-		//--> Jason, Ложный след
+		
 		case "FalseTrace_Prisoner":
 			dialog.text = "Katerine! She really asked you to come here? Such a wonderful girl...";
 			link.l1 = "Let's stay away from lyrics, captain, and talk about more serious things. I'm going to tell you about the current situation and I am expecting an answer from you. Your answer will determine your and Katerine's fate.";
@@ -675,7 +675,7 @@ void ProcessDialogEvent()
 		
 		case "FalseTrace_Prisoner_7":
 			dialog.text = "You will arrest Adam Rayner and put him in chains. Then you will take me and Katerine to "+XI_ConvertString("Colony"+pchar.questTemp.FalseTrace.TargetCity)+". Do not land in the city, after all, it was you who sunk my galleon, drop all three of us at " + XI_ConvertString(pchar.questTemp.FalseTrace.TargetShore+"Gen") + "\nI would also ask you for a weapon. We shall go to the city and I'll make sure that the scum pays not only for his crimes but for yours too. He deserves it\nYou have my word that your name won't come up. In return, I will give you true information concerning a ship with gold of enemy state\nIt won't be big of a challenge, you shall gain a fine booty. Much better than my ransom and ''so called'' Squint Eyed Solly's treasures. We have a deal?";
-			link.l1 = "I don't like your plan… I think, that they will organize a hunt for me as soon as I leave the shores of " + XI_ConvertString(pchar.questTemp.FalseTrace.TargetShore+"Gen") + ". No, captain, I am not going to risk my head. Our conversation is over.";
+			link.l1 = "I don't like your planпїЅ I think, that they will organize a hunt for me as soon as I leave the shores of " + XI_ConvertString(pchar.questTemp.FalseTrace.TargetShore+"Gen") + ". No, captain, I am not going to risk my head. Our conversation is over.";
 			link.l1.go = "FalseTrace_Prisoner_8";
 			link.l2 = "Well, it looks like Katerine was right. I like your proposal. Adam Rayner will be arrested. I'll make it done right now. You will be released after we will get Adam. See you, captain!";
 			link.l2.go = "FalseTrace_Prisoner_9";
@@ -694,15 +694,15 @@ void ProcessDialogEvent()
 		case "FalseTrace_Prisoner_9":
 			DialogExit();
 			AddQuestRecord("FalseTrace", "10");
-			pchar.quest.FalseTraceSollyOver.over = "yes"; //снять таймер
+			pchar.quest.FalseTraceSollyOver.over = "yes"; 
 			AddDialogExitQuestFunction("SetCheckForGoldShip");
 			LAi_CharacterDisableDialog(npchar);
 			pchar.questTemp.FalseTrace.PrisonerID = npchar.id;
 			Pchar.questTemp.FalseTrace.PrisonerIDX = GetCharacterIndex(npchar.id);
 		break;
-		//<-- Ложный след
 		
-		// Addon-2016 Jason ”ЊЉ-ѓваделупа
+		
+		
 		case "FMQG":
 			dialog.text = "You are here to preach or to do business?";
 			link.l1 = "The latter. I need your partner in crime - Bertrand Pinette. I am in a deep shit because of him. Where can I find him, huh?";
@@ -746,3 +746,4 @@ void ProcessDialogEvent()
 		
 	}
 }
+

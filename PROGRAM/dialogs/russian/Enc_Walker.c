@@ -1,6 +1,6 @@
-// диалог из ПКМ
+
 #include "DIALOGS\russian\Enc_Walker.h"
-#include "DIALOGS\russian\Rumours\Common_rumours.c"  //homo 25/06/06
+#include "DIALOGS\russian\Rumours\Common_rumours.c"  
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -14,7 +14,7 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(Diag, NPChar.Dialog);
 
-    ProcessCommonDialogRumors(NPChar, Link, Diag);//homo 16/06/06
+    ProcessCommonDialogRumors(NPChar, Link, Diag);
 
 	string iDay, iMonth;
 	iDay = environment.date.day;
@@ -24,7 +24,7 @@ void ProcessDialogEvent()
 	
 	switch(Dialog.CurrentNode)
 	{
-		// ----------------------------------- Диалог первый - первая встреча
+		
 		
 		case "First time":
 			if (NPChar.sex != "man")
@@ -38,7 +38,7 @@ void ProcessDialogEvent()
 			link.l10 = LinkRandPhrase ("Tell me, what are the popular gossips at the local tavern?",
 									"Would you rather tell me what's happening around here?",
 									"Hey, buddy, would you tell me how's life on dry land?");
-			link.l10.go = "rumours_citizen"; //повесил на горожанина, если нужны отедельные слухи, то пишем соответствующую реализацию
+			link.l10.go = "rumours_citizen"; 
 			if (npchar.quest.Meeting != LastSpeakDate() || bBettaTestMode)
 		    {
 				npchar.quest.last_theme = Rand(17);
@@ -176,7 +176,7 @@ void ProcessDialogEvent()
 					Link.l2 = DLG_TEXT[41];
 					Link.l2.go = "exit";
 				break;
-				// дубли
+				
 				case 12:
 					dialog.text = DLG_TEXT[39];
 					Link.l1 = DLG_TEXT[40];
@@ -970,7 +970,7 @@ void ProcessDialogEvent()
 		break;
 
 		case "sovet":
-			if (NPChar.sex != "man") //fix eddy. второй раз баба говорит как мужик
+			if (NPChar.sex != "man") 
 			{
                 dialog.text = RandPhraseSimple("My husband doesn't allow me to talk with strangers!",
                          "There is nothing we could talk about.");
@@ -981,7 +981,7 @@ void ProcessDialogEvent()
 			link.l10 = LinkRandPhrase ("Tell me, what are the popular gossips at the local tavern?",
 									"Would you rather tell me what's happening around here?",
 									"Hey, buddy, would you tell me how's life on dry land?");
-			link.l10.go = "rumours_citizen"; //повесил на горожанина, если нужны отедельные слухи, то пишем соответствующую реализацию
+			link.l10.go = "rumours_citizen"; 
 			dialog.text = DLG_TEXT[210];
 			Link.l1 = DLG_TEXT[211];
 			Link.l1.go = "advises";
@@ -1123,7 +1123,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 
-		//у горожанина должна быть эта ветка.
+		
 		case "new question":
             dialog.text = NPCharRepPhrase(npchar,
 		                PCharRepPhrase(LinkRandPhrase("Oh yeah, I am glad"+NPCharSexPhrase(NPChar, "", "")+" to see you almost like a cup of booze. Ask whatever you like.", "You like talking, captain? Well, me too... Especially over a cup of rum.", "Yes, " + PChar.name + "?"),
@@ -1135,7 +1135,7 @@ void ProcessDialogEvent()
                                                         "You're like chatting, captain? Well, me too..."))
                             );
 
-            // homo 25/06/06
+            
 			link.l1 = LinkRandPhrase ("What kinds of gossips are popular in the local tavern?",
                                     "What's going on in these lands?",
                                     "What's new on land down there?");
@@ -1144,7 +1144,7 @@ void ProcessDialogEvent()
                                         RandPhraseSimple("No, nothing. Best of luck to you!", "Just taking a stroll. Goodbye."));
 			link.l5.go = "exit";
 		break;
-		//замечение по обнаженному оружию
+		
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{
@@ -1161,3 +1161,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

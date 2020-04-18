@@ -1,4 +1,4 @@
-// старпом Акулы - Лейтон Декстер
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -43,7 +43,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// Акула погиб по варианту N
+		
 		case "admiral":
 			dialog.text = "I suppose you already know that Steven is dead. The Narwhals did it.";
 			link.l1 = "You are right, I know that... So you are the admiral now?";
@@ -70,7 +70,7 @@ void ProcessDialogEvent()
 			link.l1.go = "admiral_4";
 		break;
 		
-		// нода пересечения
+		
 		case "admiral_4":
 			dialog.text = "Wait. Steven told me that you are going to leave the Island somehow and to come back here on a ship?";
 			link.l1 = "That's the plan.";
@@ -91,7 +91,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Dexter_wait";
 			AddQuestRecord("LSC", "5");
 			CloseQuestHeader("SharkHunt");
-			// убираем квестовые предметы
+			
 			sld = ItemsFromID("key_capper");
 			sld.price = 10;
 			if (CheckCharacterItem(pchar, "letter_chad")) RemoveItems(pchar, "letter_chad", 1);
@@ -104,7 +104,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Dexter_wait";
 		break;
 		
-		// Акула погиб по варианту M
+		
 		case "admiral_7":
 			dialog.text = "Here you are, "+pchar.name+". I have a few things to discuss with you.";
 			link.l1 = "As far as I understood, you have taken Steven's position after his death. So are you the admiral now?";
@@ -136,7 +136,7 @@ void ProcessDialogEvent()
 			link.l1.go = "plan_1";
 		break;
 		
-		case "plan_1": // ноду Акуле
+		case "plan_1": 
 			DialogExit();
 			npchar.greeting = "dexter_1";
 			sld = characterFromId("Dodson");
@@ -185,7 +185,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(npchar, "quest.map");
 		break;
 		
-		// геймовер диким геймерам за издевательство над игрой
+		
 		case "LSC_GameOverPrison":
 			dialog.text = "Stop right there, psycho! Yes, Shark was right, this guy has gone crazy. So many men are dead because of him... Chain him, boys, make him still! He must be isolated immediately!";
 			link.l1 = "...";
@@ -220,7 +220,7 @@ void ProcessDialogEvent()
 			}
 			link.l2 = "Unfortunately, I have nothing to sell you now.";
 			link.l2.go = "return_2";
-			npchar.quest.foodqty = 0; // предел затарки складов = 15 000
+			npchar.quest.foodqty = 0; 
 		break;
 		
 		case "return_2":
@@ -276,7 +276,7 @@ void ProcessDialogEvent()
 			AddMoneyToCharacter(pchar, iMoney);
 			RemoveCharacterGoods(pchar, GOOD_FOOD, iTemp);
 			npchar.quest.foodqty = sti(npchar.quest.foodqty)+iTemp;
-			if (sti(npchar.quest.foodqty) >= 15000) // склады затарены на полгода
+			if (sti(npchar.quest.foodqty) >= 15000) 
 			{
 				SetFunctionTimerCondition("LSC_ClearFoodStorage", 0, 0, 180, false);
 				dialog.text = "Nice! My storehouse is full now. I won't need to buy provision for the next half a year.";
@@ -293,7 +293,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "head";
 		break;
 		
-		case "head": // стандартный диалог Декстера-адмирала
+		case "head": 
 			dialog.text = "A-ah, "+GetFullName(pchar)+"! Glad to see you! What do you want?";
 			if (iTrade > 0 && sti(npchar.quest.foodqty) < 15000)
 			{

@@ -1,4 +1,4 @@
-// Интерфейс закупки товара казначеем
+
 
 int iCurGoodIndex;
 int iCurCompanion = 0;
@@ -12,9 +12,9 @@ void InitInterface(string iniName)
 
 	GameInterface.title = "titleGoodsTransfer";
 
-	for(i = 0; i < GOODS_QUANTITY; i++)	// Картинки товаров
+	for(i = 0; i < GOODS_QUANTITY; i++)	
 	{
-		if(i == 6 || i == 12 || i == 18 || i == 24 || i == 30)	// Другой столбец
+		if(i == 6 || i == 12 || i == 18 || i == 24 || i == 30)	
 		{
 			X += 123;
 			Y = 95;
@@ -22,7 +22,7 @@ void InitInterface(string iniName)
 		
 		sGood = goods[i].name;
 				
-		// Это к магазину никакого отношения не имеет
+		
 		if(HasSubStr(sGood, "Cannon") || HasSubStr(sGood, "Culverine")) continue;
 				
 		GameInterface.GOODS_ICONS.imagelist.(sGood).group = "GOODS";
@@ -32,17 +32,17 @@ void InitInterface(string iniName)
 		GameInterface.GOODS_ICONS.imagelist.(sGood).y = Y;
 		GameInterface.GOODS_ICONS.imagelist.(sGood).pic = sGood;
 		
-		Y += 82; // Интервал между картинками
+		Y += 82; 
 	}
 	
 	SendMessage(&GameInterface, "ls", MSG_INTERFACE_INIT, iniName);
 	
 	EI_CreateFrame("BORDERS", 0,33,800,600);
 	
-	// Нужно после инициализации интерфейса
+	
 	CreateGoodNamesStrings();
 	
-	// Тут, т.к. изначально все по нулям и на кнопку можно не нажать
+	
 	if(!CheckAttribute(PChar, "TransferGoods.AllGoodsWeight")) PChar.TransferGoods.AllGoodsWeight = 0;
 		
 	SetCheckButtonsStates();
@@ -80,7 +80,7 @@ void CreateGoodNamesStrings()
 	String sGood;
 	String companionId = Characters[GetCompanionIndex(PChar, iCurCompanion)].Id;
 	
-	for(int i = 0; i < GOODS_QUANTITY; i++)	// Названия товаров
+	for(int i = 0; i < GOODS_QUANTITY; i++)	
 	{
 		sGood = Goods[i].name;
 		
@@ -98,7 +98,7 @@ void CreateGoodNamesStrings()
 				buyCount = 0;
 			}
 			
-			// Строки
+			
 			SendMessage(&GameInterface,"lslsssllllllfl",MSG_INTERFACE_MSG_TO_NODE, "GOODS_NAMES", 0, sGood, XI_ConvertString(sGood), FONT_CAPTION, X, Y, COLOR_NORMAL, COLOR_NORMAL, SCRIPT_ALIGN_CENTER, true, 1, 100);
 			SendMessage(&GameInterface,"lslsssllllllfl",MSG_INTERFACE_MSG_TO_NODE, "GOODS_NAMES", 0, "Transfer" + sGood, XI_ConvertString("BuyGoods") + buyCount, FONT_CAPTION, x, y + 52, COLOR_NORMAL, COLOR_NORMAL, SCRIPT_ALIGN_CENTER, true, 1, 100);
 		}
@@ -108,11 +108,11 @@ void CreateGoodNamesStrings()
 void RefreshGoodsCountStrings()
 {
 	int buyCount;
-	int curString = 2; // Со второй, т.к. первая - название
+	int curString = 2; 
 	String sGood;
 	String companionId = Characters[GetCompanionIndex(PChar, iCurCompanion)].Id;
 	
-	for(int i = 0; i < GOODS_QUANTITY; i++)	// Названия товаров
+	for(int i = 0; i < GOODS_QUANTITY; i++)	
 	{
 		sGood = Goods[i].name;
 		
@@ -133,7 +133,7 @@ void RefreshGoodsCountStrings()
 	}
 }
 
-void ShowItemsWindow()	// Принцип тот-же, что и в интерфейса отличной карты
+void ShowItemsWindow()	
 {
 	float offsetX, offsetY;
 	
@@ -142,7 +142,7 @@ void ShowItemsWindow()	// Принцип тот-же, что и в интерфейса отличной карты
 	float fMouseX = stf(GameInterface.mousepos.x) - 6.0 + 5;
 	float fMouseY = stf(GameInterface.mousepos.y) - 50.0 + 5;
 	
-	//определяем верхний левый угол картинки
+	
 	float fOffsetX = stf(GameInterface.GOODS_ICONS.offset.x);
 	float fOffsetY = stf(GameInterface.GOODS_ICONS.offset.y);
 
@@ -176,8 +176,8 @@ void ShowItemsWindow()	// Принцип тот-же, что и в интерфейса отличной карты
 void ShowMainWindow(bool _truefalse)
 {
 	if(_truefalse)
-	{	// Видим главное окно
-		CreateGoodNamesStrings(); // Обновим
+	{	
+		CreateGoodNamesStrings(); 
 		XI_WindowDisable("MAIN_WINDOW", false);
 		XI_WindowDisable("GOODS_TRANSFER_WINDOW", true);
 		XI_WindowShow("GOODS_TRANSFER_WINDOW", false);
@@ -204,7 +204,7 @@ void ShowTransferGoods(int iGood)
 	String companionId = Characters[GetCompanionIndex(PChar, iCurCompanion)].Id;
 	int buyCount;
 	
-	iCurGoodIndex = iGood; // Какой товар выбрали
+	iCurGoodIndex = iGood; 
 	
 	if(CheckAttribute(PChar, "TransferGoods." + companionId + "." + sGood))
 	{
@@ -217,11 +217,11 @@ void ShowTransferGoods(int iGood)
 	
 	GameInterface.TG_EDIT.str = buyCount;
 	
-	sText = XI_ConvertString("titleGoodsTransfer"); // Заголовок
+	sText = XI_ConvertString("titleGoodsTransfer"); 
 	SetFormatedText("TG_GOODS_CAPTION", sText);
 	
-	SendMessage(&GameInterface, "lslss", MSG_INTERFACE_MSG_TO_NODE, "TG_GOODS_PICTURE", 6, "GOODS", sGood); // Ставим картинку
-	sText = GetConvertStr(sGood, "GoodsDescribe.txt") + NewStr(); // описание товара
+	SendMessage(&GameInterface, "lslss", MSG_INTERFACE_MSG_TO_NODE, "TG_GOODS_PICTURE", 6, "GOODS", sGood); 
+	sText = GetConvertStr(sGood, "GoodsDescribe.txt") + NewStr(); 
 	sText = sText + GetAssembledString(GetConvertStr(sGood + "_descr", "GoodsDescribe.txt"), &Goods[iGood]);
 	SetFormatedText("TG_GOODS_INFO", sText);
 	
@@ -290,13 +290,13 @@ void ProcCommand()
 				sGood = rGood.name;
 				iNum =  sti(GameInterface.TG_EDIT.str);
 				
-				PChar.TransferGoods.(companionId).(sGood) = iNum; // Прибавим в список закупок
+				PChar.TransferGoods.(companionId).(sGood) = iNum; 
 				
 				UnShowTGWindow();	
 			}
 			break;
 		
-		// Warship 19.08.09 Выбор корабля, для кого запукаем
+		
 		case "BTN_CHOOSESHIP_LEFT":
 			SetCurrentCompanion(iCurCompanion - 1);
 		break;
@@ -372,3 +372,4 @@ void DoPostExit()
 	int exitCode = GetEventData();
 	IDoExit(exitCode);
 }
+

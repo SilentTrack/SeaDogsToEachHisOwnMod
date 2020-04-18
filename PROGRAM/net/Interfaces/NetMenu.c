@@ -31,3 +31,4 @@ void IReturnToGame()
 {
 	IDoExit( INTERFACE_NET_NETMENU );
 }
+

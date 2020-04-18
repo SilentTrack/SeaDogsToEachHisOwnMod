@@ -1,4 +1,4 @@
-// диалоги персонажей по квесту Мангароса
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -24,7 +24,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 		break;
 		
-		// Амелия - знахарка-цыганка
+		
 		case "amelia":
 			dialog.text = "What do you want in my house?";
 			if (CheckAttribute(pchar, "questTemp.Mangarosa") && pchar.questTemp.Mangarosa == "amelia")
@@ -200,3 +200,4 @@ void ProcessDialogEvent()
 		break;
 	}
 } 
+

@@ -1,4 +1,4 @@
-// диалоги прочих НПС
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -25,10 +25,10 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 	
-//---------------------------------------за Голландию--------------------------------------------------
-		//сопроводить торговца
+
+		
 		case "Baltazar":
-			pchar.quest.Create_BaltazarOver.over = "yes";//снять прерывание
+			pchar.quest.Create_BaltazarOver.over = "yes";
 			dialog.text = "What a stroke of luck! Captain, I just happen to need an escort to Philipsburg very urgently...";
 			link.l1 = "Are you Balthazar Ridderbock?";
 			link.l1.go = "Baltazar_1";			
@@ -57,15 +57,15 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload1", "none", "", "", "", 4);
 			SetCharacterRemovable(npchar, false);
-			npchar.CompanionEnemyEnable = false; //всегда друзья
+			npchar.CompanionEnemyEnable = false; 
 			SetCompanionIndex(pchar, -1, sti(npchar.index));
 			npchar.loyality = MAX_LOYALITY;
 			AddQuestRecord("Holl_Gambit", "1-3");
-			SetFunctionTimerCondition("Baltazar_ConvoyOver", 0, 0, 14, false); //таймер
-			pchar.quest.BaltazarConvoy_fail.win_condition.l1 = "NPC_Death";//прерывание на потопление сопровождаемого
+			SetFunctionTimerCondition("Baltazar_ConvoyOver", 0, 0, 14, false); 
+			pchar.quest.BaltazarConvoy_fail.win_condition.l1 = "NPC_Death";
 			pchar.quest.BaltazarConvoy_fail.win_condition.l1.character = "Baltazar";
 			pchar.quest.BaltazarConvoy_fail.function = "Baltazar_fail";
-			pchar.quest.BaltazarConvoy_complete.win_condition.l1 = "location";//прерывание на выполнение
+			pchar.quest.BaltazarConvoy_complete.win_condition.l1 = "location";
 			pchar.quest.BaltazarConvoy_complete.win_condition.l1.location = "Marigo_town";
 			pchar.quest.BaltazarConvoy_complete.function = "Baltazar_complete";
 			if (rand(1) == 0)
@@ -75,7 +75,7 @@ void ProcessDialogEvent()
 			else
 			{
 				pchar.questTemp.HWIC.Holl.BaltazarAttack = "true";
-				pchar.quest.BaltazarConvoy_Attack.win_condition.l1 = "location";//прерывание на выполнение
+				pchar.quest.BaltazarConvoy_Attack.win_condition.l1 = "location";
 				pchar.quest.BaltazarConvoy_Attack.win_condition.l1.location = "SentMartin";
 				pchar.quest.BaltazarConvoy_Attack.function = "BaltazarPirateSeaCreate";
 			}
@@ -107,7 +107,7 @@ void ProcessDialogEvent()
 			pchar.questTemp.HWIC.Holl = "BaltazarCom";
 		break;
 		
-		//командировка в Сантьяго
+		
 		case "Santiago_Trip":
 			dialog.text = "Senor! Wait... it looks like you've dropped something...";
 			link.l1 = "What? Ah?!";
@@ -119,7 +119,7 @@ void ProcessDialogEvent()
 			PlaySound("People Fight\Death_NPC_08.wav");
 			SetLaunchFrameFormParam("You were knocked senseless from behind", "", 0, 5);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 15, 10); //крутим время
+			WaitDate("", 0, 0, 0, 15, 10); 
 			RecalculateJumpTable();
 			DoQuestFunctionDelay("SantiagoTripInHouse", 5.0);
 		break;
@@ -197,7 +197,7 @@ void ProcessDialogEvent()
 		
 		case "Santiago_Trip_13":
 			DialogExit();
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			LAi_SetWarriorType(npchar);
 			LAi_group_MoveCharacter(npchar, "EnemyFight");
 			LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
@@ -214,7 +214,7 @@ void ProcessDialogEvent()
 		
 		case "Santiago_Trip_15":
 			DialogExit();
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			LAi_SetWarriorType(npchar);
 			LAi_group_MoveCharacter(npchar, "EnemyFight");
 			LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
@@ -223,7 +223,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");	
 		break;
 		
-		//офицер-посланник по 5 заданию
+		
 		case "HollQuest_Officer":
 			dialog.text = "Mynheer Lucas Rodenburg wants to see you right away. Come see him at once.";
 			link.l1 = "On my way.";
@@ -238,8 +238,8 @@ void ProcessDialogEvent()
 			AddQuestRecord("Holl_Gambit", "1-36");
 		break;
 		
-//---------------------------------------------против всех----------------------------------------------
-		//убрать испанского идальго
+
+		
 		case "Fernando":
 			dialog.text = "What do you want from me?";
 			link.l1 = "Your head!";
@@ -259,7 +259,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Fernando_fight":
-			chrDisableReloadToLocation = true;//выходы закроем
+			chrDisableReloadToLocation = true;
 			LAi_SetWarriorType(npchar);
             LAi_group_MoveCharacter(npchar, "SPAIN_CITIZENS");
 			LAi_group_Attack(NPChar, Pchar);
@@ -271,8 +271,8 @@ void ProcessDialogEvent()
 			pchar.quest.HWIC_Fernando.function = "Fernando_died";
 		break;
 		
-		//в доме Флитвуда
-		case "Fleetwood_soldier"://для любителей сунуть нос куда не надо
+		
+		case "Fleetwood_soldier":
 			if (CheckAttribute(npchar, "quest.talked"))
 			{
 			dialog.text = "It's you again? What are you sniffing out around here? I don't like it at all. Alright, I will arrest you and send you to the commandant's office for investigation. Boys, seize that type!";
@@ -307,7 +307,7 @@ void ProcessDialogEvent()
 			DoQuestReloadToLocation("SentJons_town", "reload", "houseSP3", "");
 			pchar.quest.Fleetwood_Soldier.win_condition.l1 = "location";
 			pchar.quest.Fleetwood_Soldier.win_condition.l1.location = "SentJons_houseSP3";
-			pchar.quest.Fleetwood_Soldier.function = "Fleetwood_Soldier";//для настырных
+			pchar.quest.Fleetwood_Soldier.function = "Fleetwood_Soldier";
 		break;
 		
 		case "Fleetwood_soldier_4":
@@ -339,7 +339,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Attack_soldier_fight":
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//снять запрет драки
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			LAi_group_Delete("EnemyFight");
 			for (i=1; i<=4; i++)
 			{
@@ -354,7 +354,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");	
 		break;
 		
-		//Книппель-пленник в трюме
+		
 		case "Sailor_deck":
 			chrDisableReloadToLocation = true;
 			dialog.text = "Captain, we've questioned this scoundrel, as you told us. We had to cauterize him a bit... He had this letter on him. Tried to eat it, but we didn't let him. Just as we thought, he was to take some girl in Willemstad and bring her to his boss.";
@@ -397,11 +397,11 @@ void ProcessDialogEvent()
 			pchar.questTemp.HWIC.Self = "toVillemstad";
 			sld = characterFromId("Solomon");
 			sld.greeting = "solomon_2";
-			LocatorReloadEnterDisable("Villemstad_town", "houseSP2", false);//откроем дом Аби
-			LocatorReloadEnterDisable("Villemstad_houseSP2", "reload2", true);//закроем комнату Аби
+			LocatorReloadEnterDisable("Villemstad_town", "houseSP2", false);
+			LocatorReloadEnterDisable("Villemstad_houseSP2", "reload2", true);
 		break;
 		
-		//Лонгвэй-пленник в трюме
+		
 		case "Sailor_deck_5":
 			chrDisableReloadToLocation = true;
 			dialog.text = "We have prepared the Chinese for questioning, just like you ordered, captain. He had nothing on him, no papers. A brazier has been prepared, and we are heating the handcuffs and tongs red-hot at the moment.";
@@ -441,7 +441,7 @@ void ProcessDialogEvent()
 			pchar.quest.Longway_Shore.function = "LongwayInShore";
 		break;
 		
-		//пьяница - передача письма Флитвуду
+		
 		case "Drunkard":
 			dialog.text = "H-ic! Good evening, sir! What would you like? Maybe you can buy an old drunkard a drink? And I'd...";
 			link.l1 = "Listen here, old drunkard... Are you Jack Harrison?";
@@ -521,15 +521,15 @@ void ProcessDialogEvent()
 		DialogExit();
 		AddQuestRecord("Holl_Gambit", "3-26");
 		LAi_SetStayType(npchar);
-		LAi_RemoveLoginTime(npchar);//удалить время загрузки
+		LAi_RemoveLoginTime(npchar);
 		GetCharacterPos(pchar, &locx, &locy, &locz);
 		ChangeCharacterAddressGroup(npchar, "sentjons_tavern", "goto", LAi_FindNearestFreeLocator("goto", locx, locy, locz));
 		LAi_SetActorType(npchar);
 		LAi_ActorGoToLocation(npchar, "reload", "reload1_back", "sentjons_town", "reload", "reload4_back", "DrunkardGoTown", -1);
-		chrDisableReloadToLocation = true;//закрыть локацию
+		chrDisableReloadToLocation = true;
 		LocatorReloadEnterDisable("SentJons_town", "reload1_back", true);
 		LocatorReloadEnterDisable("SentJons_town", "reload2_back", true);
-		LocatorReloadEnterDisable("SentJons_town", "gate_back", true);//чтобы не сбежал
+		LocatorReloadEnterDisable("SentJons_town", "gate_back", true);
 		break;
 		
 		case "Drunkard_9":
@@ -559,10 +559,10 @@ void ProcessDialogEvent()
 			npchar.lifeday = 0;
 			AddQuestRecord("Holl_Gambit", "3-27");
 			pchar.questTemp.HWIC.Self = "FleetwoodAgree";
-			AddCharacterExpToSkill(pchar, "Sneak", 300);//скрытность
+			AddCharacterExpToSkill(pchar, "Sneak", 300);
 		break;
 		
-		//кэп курьерского судна
+		
 		case "Cureer_abordage":
 			dialog.text = "Why the hell have you attacked my ship? I have neither valuables nor money - just papers, which are of no use to you, anyway!";
 			link.l1 = "Shut up. You've lost, so now you will listen to me. I do not need neither your ship, nor your papers. I need you to give this message to your boss, that dirty rat Lucas Rodenburg. Tell him that captain Fleetwood sends his regards.";
@@ -602,15 +602,15 @@ void ProcessDialogEvent()
 			AddComplexSelfExpToScill(30, 30, 30, 30);
 		break;
 		
-		//Матиас Бек в тюрьме
-		case "MatiasBek"://на случай если геймер захочет пообщаться
+		
+		case "MatiasBek":
 			dialog.text = "I was arrested illegally! I have no connection with the English! Those are all Rodenburg's intrigues. Nevermind. Peter Stuyvesant will arrive soon - he shall sort it all out!";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "MatiasBek";
 		break;
 		
-		//стражник у входа в резиденцию
+		
 		case "QuestGuard":
 			dialog.text = "Mynheer Lucas Rodenburg does not see anybody at the time. Be so kind to leave the residence at once.";
 			link.l1 = "Hm. I see. I will try to drop by in a week...";
@@ -618,7 +618,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "QuestGuard";		
 		break;
 		
-		//Питер Стайвесант
+		
 		case "Stivesant":
 			dialog.text = "We are going to the residence, captain. I've already sent my people to the fort in order to get information about Matthias Beck. If he is actually in prison, at this moment he already must have been released and accompanied to the town. Follow me!";
 			link.l1 = "Yes, mynheer Stuyvesant.";
@@ -726,7 +726,7 @@ void ProcessDialogEvent()
 			PChar.Dialog.Filename = "MainHero_dialog.c";
 			LAi_ActorTurnToCharacter(pchar, characterFromID("Lucas"));
 			sld = characterFromId("Lucas");
-			LAi_SetImmortal(sld, true);//защита от хитреца
+			LAi_SetImmortal(sld, true);
 			LAi_SetActorType(sld);
 			ChangeCharacterAddressGroup(sld, "Villemstad_townhall", "goto", "goto6");
 			LAi_ActorGoToLocation(sld, "reload", "reload1", "none", "", "", "LucasGoToPrison", -1);
@@ -754,14 +754,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Stivesant_12":
-		//удаляем Мейфенг
-		DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");//удаляем атрибут квестового корабля
+		
+		DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");
 		if(sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_MAYFANG)
 		{
 			pchar.Ship.Type = GenerateShipExt(SHIP_TARTANE, true, pchar);
 			pchar.Ship.name = "A boat";
 			SetBaseShipData(pchar);
-			SetCrewQuantityOverMax(PChar, 0);//сажаем на тартану
+			SetCrewQuantityOverMax(PChar, 0);
 		}
 		else
 		{
@@ -810,14 +810,14 @@ void ProcessDialogEvent()
 			bDisableFastReload = false;
 			LocatorReloadEnterDisable("Villemstad_town", "reload5_back", false);
 			LocatorReloadEnterDisable("Villemstad_town", "reload10_back", false);
-			LocatorReloadEnterDisable("Villemstad_town", "reload3_back", true);//закрыть вход в резиденцию
-			LocatorReloadEnterDisable("Villemstad_town", "reloadR1", true);//закрыть боковой вход в резиденцию
+			LocatorReloadEnterDisable("Villemstad_town", "reload3_back", true);
+			LocatorReloadEnterDisable("Villemstad_town", "reloadR1", true);
 			AddQuestRecord("Holl_Gambit", "3-53");
 			DoQuestReloadToLocation("Villemstad_prison", "goto", "goto23", "TalkWithLucasPrisoner");
 			for (i=4; i<=5; i++)
 			{
 				sld = characterFromId("StivesantGuard_"+i);
-				sld.lifeday = 0;//подчистим солдат
+				sld.lifeday = 0;
 			}
 		break;
 		
@@ -864,19 +864,19 @@ void ProcessDialogEvent()
 			link.l1.go = "Bek_6";			
 		break;
 		
-		case "Bek_6"://наведем порядок в городе
+		case "Bek_6":
 			DialogExit();
 			AddQuestRecord("Holl_Gambit", "3-54");
 			LAi_SetPlayerType(pchar);
 			sld = characterFromId("hol_guber");
 			LAi_SetHuberStayType(sld);
-			sld.Dialog.Filename = "Common_Mayor.c";//patch-8
+			sld.Dialog.Filename = "Common_Mayor.c";
 			sld.dialog.currentnode = "First time";
 			sld.quest.meeting = "1";
 			for (i=1; i<=3; i++)
 			{
 				sld = characterFromId("StivesantGuard_"+i);
-				sld.lifeday = 0;//подчистим солдат
+				sld.lifeday = 0;
 			}
 			sld = characterFromId("Stivesant");
 			LAi_ActorGoToLocator(sld, "goto", "goto6", "StivesantSitDown", -1);
@@ -884,7 +884,7 @@ void ProcessDialogEvent()
 			LocatorReloadEnterDisable("Villemstad_town", "reload1_back", false);
 			LocatorReloadEnterDisable("Villemstad_town", "reload2_back", false);
 			LocatorReloadEnterDisable("Villemstad_town", "gate_back", false);
-			AddCharacterExpToSkill(pchar, "Fortune", 100);//везение
+			AddCharacterExpToSkill(pchar, "Fortune", 100);
 		break;
 		
 		case "Bek_7":
@@ -911,7 +911,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Stivesant_18";
 		break;
 		
-		// Jason НСО
+		
 		case "Stivesant_19":
 			if (ChangeCharacterHunterScore(pchar, "holhunter", 0) > 10)
 			{
@@ -966,9 +966,9 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Stivesant_24":
-			chrDisableReloadToLocation = true;//закрыть локацию
-			pchar.quest.Patria_CureerTimeOver.over = "yes"; //снять таймер
-			pchar.quest.Patria_CureerFail.over = "yes"; //снять прерывание
+			chrDisableReloadToLocation = true;
+			pchar.quest.Patria_CureerTimeOver.over = "yes"; 
+			pchar.quest.Patria_CureerFail.over = "yes"; 
 			sld = characterFromId("Patria_FlautCap");
 			RemoveCharacterCompanion(pchar, sld);
 			sld.lifeday = 0;
@@ -1111,7 +1111,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Stivesant_41":
-			DialogExit(); // Стайвесант уходит, подходит Дойли
+			DialogExit(); 
 			Patria_CuracaoStivesantGo();
 		break;
 		
@@ -1197,7 +1197,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Stivesant_50":
-			pchar.quest.Patria_CondotierStivesantTimeOver.over = "yes"; // снять таймер
+			pchar.quest.Patria_CondotierStivesantTimeOver.over = "yes"; 
 			AddMoneyToCharacter(pchar, -1000000);
 			GiveItem2Character(pchar, "Reserve_item_01");
 			ref itm = ItemsFromID("Reserve_item_01");
@@ -1230,7 +1230,7 @@ void ProcessDialogEvent()
 		
 		case "vanberg_sold_1":
 			DialogExit();
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			for (i=1; i<=4; i++)
 			{
 				sld = characterFromId("vanberg_sold_"+i);
@@ -1267,15 +1267,15 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Abihouselady_3";
 		break;
 		
-		//удаление Мейфенг при провале квеста
+		
 		case "TempOffGuard":
-			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");//удаляем атрибут квестового корабля
+			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");
 			if(sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_MAYFANG)
 			{
 				pchar.Ship.Type = GenerateShipExt(SHIP_TARTANE, true, pchar);
 				pchar.Ship.name = "A boat";
 				SetBaseShipData(pchar);
-				SetCrewQuantityOverMax(PChar, 0);//сажаем на тартану
+				SetCrewQuantityOverMax(PChar, 0);
 			}
 			else
 			{
@@ -1309,11 +1309,11 @@ void ProcessDialogEvent()
 		case "TempOffGuard_2":
 			DialogExit();
 			LAi_ActorGoToLocation(npchar, "reload", "reload1_back", "none", "", "", "", 10.0);
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			DeleteAttribute(pchar, "questTemp.HWIC.TakeQuestShip");
 		break;
 		
-		// Jason НСО
+		
 		case "arest":
 			dialog.text = "Of course it's time to leave, you will even be accompanied. Guards! Get him!";
 		    link.l1 = "Make me!";
@@ -1327,17 +1327,17 @@ void ProcessDialogEvent()
 		    Pchar.quest.ArestInResidenceEnd.ResidenceLocation = Pchar.location;
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
-			LAi_LockFightMode(Pchar, true); // ножками путь убегает
+			LAi_LockFightMode(Pchar, true); 
 		    LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
-		    LAi_group_Attack(NPChar, Pchar); // не работает на бессмертного мера :(
-			i = GetCharIDXByParam("CityType", "location", Pchar.location); // фантом солдат
+		    LAi_group_Attack(NPChar, Pchar); 
+			i = GetCharIDXByParam("CityType", "location", Pchar.location); 
 			if (i != -1)
 			{
 			    LAi_group_Attack(&Characters[i], Pchar);
 			}
 		break;
 		
-		//замечание по обнаженному оружию от персонажей типа citizen
+		
 		case "CitizenNotBlade":
 			dialog.text = NPCharSexPhrase(NPChar, "Hey, listen up! As a citizen of this town, I kindly ask you not to walk around with an unsheathed blade.", "You know, as a citizen of this town, I kindly ask you not to walk around with an unsheathed blade.");
 			link.l1 = LinkRandPhrase("Fine.", "Alright.", "As you say...");

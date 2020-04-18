@@ -1,4 +1,4 @@
-// диалоги НПС по квесту НСО
+
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -24,7 +24,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 		break;
 		
-		// инспектор Ноэль Форже
+		
 		case "noel":
 			dialog.text = "Nice to meet you, captain!";
 			link.l1 = "I'm glad to meet you too, monsieur Forget. It's a rare occasion to meet a guest from the metropolis here in the wilderness...";
@@ -261,7 +261,7 @@ void ProcessDialogEvent()
 		case "noel_38":
 			dialog.text = "But not in Paris. There, the most influencial people are the King and the Minister of Finance ... my close friend. Monsieur de Maure, you are a brilliant military man, but I believe that Phillip de Poincy is using you for his own personal purposes. You are intelligent, so you must have suspicions. You can trust me. I guarantee you complete anonimity and support of the authorities of Paris. I swear by my title.";
 			link.l1 = "***REMAIN LOYAL TO POINCY***";
-			link.l1.go = "noel_39"; // развилка
+			link.l1.go = "noel_39"; 
 			link.l2 = "***SIDE WITH BARON FORGET***";
 			link.l2.go = "noel_53";
 		break;
@@ -588,13 +588,13 @@ void ProcessDialogEvent()
 		
 		case "noel_89":
 			DialogExit();
-			//chrDisableReloadToLocation = false; //17-add
+			
 			LAi_LocationFightDisable(&Locations[FindLocation("shore22")], false);
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "sea", "none", "", "", "", 10.0);
 			pchar.questTemp.Patria = "epizode_12_stivesant";
 			AddQuestRecord("Patria", "83");
-			SetFunctionTimerCondition("Patria_CondotierStivesantTimeOver", 0, 0, 30, false); // таймер на месяц
+			SetFunctionTimerCondition("Patria_CondotierStivesantTimeOver", 0, 0, 30, false); 
 		break;
 		
 		case "noel_90":
@@ -632,7 +632,7 @@ void ProcessDialogEvent()
 		case "noel_95":
 			DialogExit();
 			chrDisableReloadToLocation = false;
-			bQuestDisableMapEnter = false;//открыть карту
+			bQuestDisableMapEnter = false;
 			Island_SetReloadEnableGlobal("Curacao", true);
 			DeleteAttribute(pchar, "GenQuest.MapClosedNoBattle");
 			LAi_SetActorType(npchar);
@@ -655,7 +655,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("Patria", "86");
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload3_back", "none", "", "", "OpenTheDoors", 15.0);
-			SetFunctionTimerCondition("Patria_CondotierPuancieFinal", 0, 0, 1, false); // таймер
+			SetFunctionTimerCondition("Patria_CondotierPuancieFinal", 0, 0, 1, false); 
 		break;
 		
 		case "noel_98":
@@ -736,11 +736,11 @@ void ProcessDialogEvent()
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload3_back", "none", "", "", "OpenTheDoors", 20.0);
-			bDisableFastReload = false;//открыть переход
+			bDisableFastReload = false;
 			AddQuestRecord("Patria", "90");
 			CloseQuestHeader("Patria");
-			pchar.questTemp.Patria = "end"; // конец линейки
-			pchar.questTemp.Patria.GenGovernor = "true"; // Шарль генерал-губернатор
+			pchar.questTemp.Patria = "end"; 
+			pchar.questTemp.Patria.GenGovernor = "true"; 
 		break;
 		
 		case "noel_final":
@@ -754,10 +754,10 @@ void ProcessDialogEvent()
 			AddQuestRecord("Patria", "76");
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload3_back", "none", "", "", "OpenTheDoors", 15.0);
-			SetFunctionTimerCondition("Patria_CondotierPuancieFinal", 0, 0, 1, false); // таймер
+			SetFunctionTimerCondition("Patria_CondotierPuancieFinal", 0, 0, 1, false); 
 		break;
 		
-		// капитан Эклятона
+		
 		case "ecliaton_cap":
 			dialog.text = TimeGreeting()+", monsieur. What brings you onto the deck of the 'Eclatant'?";
 			link.l1 = TimeGreeting()+", monsieur. Allow me to introduce myself - Captain Charles de Maure, I come from the Governor General of the French colonies in the Archipelago, Chevalier de Poincy. I was ordered to take your ship into my squadron under my command. Here is the letter...";
@@ -922,7 +922,7 @@ void ProcessDialogEvent()
 			Patria_CuracaoAddEcliaton();
 		break;
 		
-		// Дойли на Антигуа
+		
 		case "doily":
 			if (CheckAttribute(pchar, "questTemp.Saga") && pchar.questTemp.Saga == "end" && colonies[FindColony("Pirates")].nation == PIRATE)
 			{
@@ -1081,7 +1081,7 @@ void ProcessDialogEvent()
 			SetMainCharacterIndex(GetCharacterIndex("Blaze"));
 			pchar = GetMainCharacter();			
 			LAi_SetPlayerType(pchar);
-			bDisableCharacterMenu = false;//лоченые интерфейсы
+			bDisableCharacterMenu = false;
 			sld = characterFromId("Doily_land");
 			sld.dialog.currentnode = "doily_17";
 			LAi_SetActorType(sld);
@@ -1102,7 +1102,7 @@ void ProcessDialogEvent()
 			Patria_CuracaoParlamenterGo();
 		break;
 		
-		case "doily_18": // Дойли на берегу
+		case "doily_18": 
 			dialog.text = "You've done a good job with the fort, monsieur de Maure. Now we will approach the city gates by land. I will take the cannons from here, the path here is shorter and easier, and you will disembark the company of marines on the Santa-Maria Cape and move to Willemstadt. If you meet enemies on the way, you know what to do. Nobody can be left behind us.";
 			link.l1 = "Of course, colonel. I will meet you at the gates!";
 			link.l1.go = "doily_19";
@@ -1146,7 +1146,7 @@ void ProcessDialogEvent()
 			Patria_CuracaoTownBombing();
 		break;
 		
-		// голландский парламентер под стенами Виллемстада
+		
 		case "holoff":
 			dialog.text = "I've arrived here to begin the negotiations. What are your demands?";
 			link.l1 = "We demand a meeting with the Company's Director, Peter Stuyvesant. Specifically, we want to talk about the fact that due to his company's fault, as well as his own, Willemstadt is currently under threat of destruction.";
@@ -1171,7 +1171,7 @@ void ProcessDialogEvent()
 			link.l1.go = "holoff_4";
 		break;
 		
-		case "holoff_4": // перекидываем pchar на офицера и говорим с Дойли
+		case "holoff_4": 
 			DialogExit();
 			LAi_SetActorType(pchar);
 			SetMainCharacterIndex(GetCharacterIndex("Curacao_parlamenter_1"));
@@ -1181,13 +1181,13 @@ void ProcessDialogEvent()
 			sld.dialog.currentnode = "doily_12";
 			LAi_SetActorType(sld);
 			LAi_ActorDialogDelay(sld, pchar, "", 1.2);
-			bDisableCharacterMenu = true;//лоченые интерфейсы
+			bDisableCharacterMenu = true;
 		break;
 		
-		// офицер-испанец на маяке Тринидада
+		
 		case "SanJoseSpanish":
 			dialog.text = "So, Captain, you've called the truce envoys because you wanted to dictate your demands?";
-			link.l1 = "You are absolutely correct, senor. Let me briefly explain to you my reason for arriving in Trinidad – this is our answer for your recent attack on Saint-Pierre. You've damaged the city considerably, and now you will be forced to compensate it. The price of compensation is three hundred thousand Peso. And that is not so much, considering the vile acts your soldiers have committed on Martinique.";
+			link.l1 = "You are absolutely correct, senor. Let me briefly explain to you my reason for arriving in Trinidad пїЅ this is our answer for your recent attack on Saint-Pierre. You've damaged the city considerably, and now you will be forced to compensate it. The price of compensation is three hundred thousand Peso. And that is not so much, considering the vile acts your soldiers have committed on Martinique.";
 			link.l1.go = "SanJoseSpanish_1";
 		break;
 		
@@ -1212,7 +1212,7 @@ void ProcessDialogEvent()
 		case "SanJoseSpanish_4":
 			AddMoneyToCharacter(pchar, 300000);
 			dialog.text = "Get your three hundred thousand and get out of our colony.";
-			link.l1 = "Excellent, senores. I assure you – this was the simpler way. I hope this will discourage the Dons of Mendos and others from attacking our colonies. Don't forget to send the message to Providence. I wish you well, gentlemen.";
+			link.l1 = "Excellent, senores. I assure you пїЅ this was the simpler way. I hope this will discourage the Dons of Mendos and others from attacking our colonies. Don't forget to send the message to Providence. I wish you well, gentlemen.";
 			link.l1.go = "SanJoseSpanish_5";
 		break;
 		
@@ -1221,7 +1221,7 @@ void ProcessDialogEvent()
 			Patria_SanJoseMayakSpanishFin();
 		break;
 		
-		// вестовой на 5 задание
+		
 		case "fraofficer":
 			dialog.text = "Captain Charles de Maure, allow me to report: Chevalier Philippe de Poincy wanted to notify you that Baron Noel Forget is ready to depart for Sint-Maarten and will await you on the pier.";
 			link.l1 = "Excellent! Thank you, monsieur.";
@@ -1249,7 +1249,7 @@ void ProcessDialogEvent()
 			Patria_SiegeHovernor();
 		break;
 		
-		// патруль у рудника
+		
 		case "engofficer":
 			dialog.text = "Who are you? What are you doing here?";
 			link.l1 = "Uhh...";
@@ -1269,7 +1269,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuestFunction("Patria_CondotierBeachFight");
 		break;
 		
-		// бывший управляющий рудника
+		
 		case "miner":
 			dialog.text = "";
 			link.l1 = "So, is everything clear?";
@@ -1296,7 +1296,7 @@ void ProcessDialogEvent()
 			ReleasePrisoner(npchar);
 		break;
 		
-		// курьер в Капстервиль
+		
 		case "cureer":
 			dialog.text = "Vice-admiral Charles de Maure, right?";
 			link.l1 = "Precisely. Who do I have the honour of speaking with?";
@@ -1347,3 +1347,4 @@ void ProcessDialogEvent()
 		break;
 	}
 } 
+

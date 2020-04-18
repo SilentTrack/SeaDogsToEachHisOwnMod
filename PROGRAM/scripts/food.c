@@ -1,16 +1,16 @@
 #define I_MIN_MORALE	10
 
-// boal -->
+
 #define FOOD_BY_CREW       10.0
 #define FOOD_BY_SLAVES     20.0
 #define FOOD_BY_PASSENGERS 10.0
 #define RUM_BY_CREW        60.0
-// boal <--
 
-//bool bInterfaceFood = false;
-//int iFoodQuantity = 0;
 
-// вернет число дней на сколько есть еда на всех кораблях
+
+
+
+
 int CalculateFood()
 {
 	int chrIndex;
@@ -47,7 +47,7 @@ int CalculateFood()
 	return iFoodQuantity;
 }
 
-// еды на одном корабле
+
 int CalculateShipFood(ref _chr)
 {
 	int iCrewQuantity = 0;
@@ -76,19 +76,19 @@ int CalculateShipFood(ref _chr)
 	return iFoodQuantity;
 }
 
-// Warship 11.07.09 Вернет кол-во дней, на сколько хватит рому на одном корабле
+
 int CalculateShipRum(ref _character)
 {
 	int crewQuantity 	= GetCrewQuantity(_character);
 	int rumQuantity     = GetCargoGoods(_character, GOOD_RUM);	
-	float rumNeeded 	= isEquippedArtefactUse(_character, "talisman4", 1.0, 0.2) * makefloat( (crewQuantity + 5.1) / (RUM_BY_CREW - MOD_SKILL_ENEMY_RATE * 2.5)); // Сколько жрут за день);
+	float rumNeeded 	= isEquippedArtefactUse(_character, "talisman4", 1.0, 0.2) * makefloat( (crewQuantity + 5.1) / (RUM_BY_CREW - MOD_SKILL_ENEMY_RATE * 2.5)); 
 	
 	if(rumNeeded < 1.0) rumNeeded = 1.0;	
 	rumQuantity = makeint(rumQuantity/rumNeeded + 0.2);		
 	return rumQuantity;
 }
 
-// Ugeen  29.10.10 вернет число дней на сколько есть рому на всех кораблях
+
 int CalculateRum()
 {
 	int 	chrIndex;
@@ -118,24 +118,24 @@ int CalculateRum()
 
 	return makeint(iRumCount/RumNeeded + 0.2);
 }
-// boal 21.04.04 крысы на корабле -->
+
 void DailyRatsEatGoodsUpdate(ref chref)
 {
-	if(IsCharacterEquippedArtefact(chref, "talisman1")) return; // крысобог
-	if(IsCharacterEquippedArtefact(chref, "rat_poison")) return; // мышьяк
-	if(CheckAttribute(pchar, "GenQuest.Ole")) return; // Оле Кристиансен
+	if(IsCharacterEquippedArtefact(chref, "talisman1")) return; 
+	if(IsCharacterEquippedArtefact(chref, "rat_poison")) return; 
+	if(CheckAttribute(pchar, "GenQuest.Ole")) return; 
     int iGoods = GOOD_FOOD + rand(GOOD_OIL - GOOD_FOOD);
 	if(iGoods == GOOD_BRICK) return;
     int iQuantity = GetCargoGoods(chref, iGoods);
     int iSeaGoods = LanguageOpenFile("ShipEatGood.txt");
-    if (iQuantity > 60 && rand(4) != 2) // шанс не жрать, если весь спектр
+    if (iQuantity > 60 && rand(4) != 2) 
     {
         float fSkill = GetSummonSkillFromNameToOld(chref, SKILL_REPAIR) + GetSummonSkillFromNameToOld(chref,SKILL_FORTUNE);
         
         iQuantity = 1+ rand(makeint(iQuantity / (10+fSkill)));
 		if (IsCharacterPerkOn(chref, "HT2")) iQuantity = makeint(iQuantity/2) + 1;
         RemoveCharacterGoodsSelf(chref, iGoods, iQuantity);
-        //PlaySound("interface\notebook.wav");
+        
         Log_SetStringToLog(RandSwear());
         Log_SetStringToLog("Rats on " +
                            chref.Ship.Name + LinkRandPhrase(" spoiled ", " damaged ", " destroyed ")+
@@ -151,56 +151,56 @@ void DailyRatsEatGoodsUpdate(ref chref)
     LanguageCloseFile(iSeaGoods);
 }
 
-// boal food for crew 20.01.2004 -->
-void DailyEatCrewUpdate()   // сюда пихаю все что в 1 день
+
+void DailyEatCrewUpdate()   
 {
     ref mainCh = GetMainCharacter();
     int i, cn, crew, morale;
     ref chref;
     int nMoraleDecreaseQ;
     
-    // to_do
-    // boal 030804 Начисление денег верфям -->
-    //DailyShipyardMoneyUpdate();
-    // boal 030804 Начисление денег верфям <--
+    
+    
+    
+    
 	
-	// ugeen Начисление денег торговцам -->
+	
 	DailyTradersMoneyUpdate();
-	// ugeen Начисление денег  торговцам<--
 	
-    mainCh.questTemp.abordage = 0; // fix квест потопить пирата второй абордаж
+	
+    mainCh.questTemp.abordage = 0; 
 
-    //таможня
-    //if(IsCharacterPerkOn(mainCh, "CustomsHouse"))
-    //{
-    //    AddGoverGoods();
-    //}
+    
+    
+    
+    
+    
 
-    SetNewDayHealth(); // здоровье за день
+    SetNewDayHealth(); 
   
-	// ОЗГи -->
-	//SetPortShoreEnter(mainCh);
-    DeleteAttribute(mainCh, "GenQuest.Hunter2Pause");  // boal бойня в форте кончилась - ОЗГи вернулись
-    // ОЗГи <--
+	
+	
+    DeleteAttribute(mainCh, "GenQuest.Hunter2Pause");  
+    
 
-    //  уже не нужно SetAllHabitueToNew(); // сменить всех пьяниц в тавернах
-	if (CheckAttribute(mainCh, "questTemp.ShipCapellan.Yes")) AddCrewMorale(mainCh, 2); //Jason, влияние корабельного капеллана на мораль
+    
+	if (CheckAttribute(mainCh, "questTemp.ShipCapellan.Yes")) AddCrewMorale(mainCh, 2); 
 
-	////////////////      ЕДА     /////////////////
-	if (bNoEatNoRats) return; // betatest
+	
+	if (bNoEatNoRats) return; 
     if (sti(mainCh.Ship.Type) == SHIP_NOTUSED ) return;
 
-	// снижение лояльности от долга 02.02.08 -->
-	if (CheckAttribute(pchar, "CrewPayment")) // Долг
+	
+	if (CheckAttribute(pchar, "CrewPayment")) 
 	{
 		ChangeCharacterComplexReputation(pchar,"authority", -0.1);
         cn = makeint(pchar.CrewPayment);
         if (cn > 32000) cn = 32000;
 		if (rand(cn) > 1000)
 		{
-            morale = 5 + CheckOfficersPerk(pchar, "IronWill");   // true = 1
+            morale = 5 + CheckOfficersPerk(pchar, "IronWill");   
 			for (i = 0; i<GetPassengersQuantity(pchar); i++)
-			{   // любой пассажир у кого есть пристрастие может свалить
+			{   
 				cn = GetPassenger(pchar, i);
 				if (cn != -1)
 				{
@@ -213,7 +213,7 @@ void DailyEatCrewUpdate()   // сюда пихаю все что в 1 день
 			}
 		}
 	}
-	// снижение лояльности от долга 02.02.08 <--
+	
 	
 	for(i=0; i<COMPANION_MAX; i++)
 	{
@@ -224,19 +224,19 @@ void DailyEatCrewUpdate()   // сюда пихаю все что в 1 день
 
 			if (!GetRemovable(chref)) continue;
 
-			// RATS -->
+			
 			DailyRatsEatGoodsUpdate(chref);
-			// RATS <--
+			
 			DailyEatCrewUpdateForShip(chref, false);
 			
 		}
 	}
 }
 
-// boal 20.01.2004 <--
 
-// Warship. Вынес в отдельный метод
-void DailyEatCrewUpdateForShip(ref rChar, bool IsCompanionTraveler) // IsCompanionTraveler - спец флаг для компаньонов-путешественников
+
+
+void DailyEatCrewUpdateForShip(ref rChar, bool IsCompanionTraveler) 
 {
 	int iCrewQty = GetCrewQuantity(rChar);
 	int cn, morale, nMoraleDecreaseQ, iDeadCrew;
@@ -245,10 +245,10 @@ void DailyEatCrewUpdateForShip(ref rChar, bool IsCompanionTraveler) // IsCompani
 	{
 		rChar.Ship.Crew.Morale = 50;
 	}
-	// расчет медицины -->
+	
 	if(rand(4) == 2)
 	{
-		// матросы
+		
 		cn = iCrewQty / 10;
 		if(cn > 30) cn = 30;
 		cn = rand(cn)+1;
@@ -262,12 +262,12 @@ void DailyEatCrewUpdateForShip(ref rChar, bool IsCompanionTraveler) // IsCompani
 				Statistic_AddValue(pchar, "Sailors_dead", cn);
 				Achievment_SetStat(pchar, 21, cn);
 				rChar.Ship.Crew.Quantity = iCrewQty;
-				// мораль в минус
+				
 				morale = sti(rChar.Ship.Crew.Morale);
 				
 				if(CheckOfficersPerk(rChar, "IronWill")) cn /= 1.5;
 				
-				AddCrewMorale(rChar, -makeint(cn / 2)); // до 15 пунктов за раз
+				AddCrewMorale(rChar, -makeint(cn / 2)); 
 				ChangeCharacterComplexReputation(pchar,"authority", -1);
 			}
 			else
@@ -282,7 +282,7 @@ void DailyEatCrewUpdateForShip(ref rChar, bool IsCompanionTraveler) // IsCompani
 				}
 			}
 		}
-		// рабы
+		
 		cn = GetCargoGoods(rChar, GOOD_SLAVES) / 10;
 		if(cn > 30) cn = 30;
 		cn = rand(cn)+1;
@@ -300,14 +300,14 @@ void DailyEatCrewUpdateForShip(ref rChar, bool IsCompanionTraveler) // IsCompani
 				RemoveCharacterGoodsSelf(rChar, GOOD_MEDICAMENT, cn);
 			}
 		}
-		// повторный контроль
+		
 		if(iCrewQty < 1 && GetCargoGoods(rChar, GOOD_SLAVES) < 1) return;
 	}
-	// расчет медицины <--
+	
 
-	// расчет рома	
+	
 	iCrewQty = GetCrewQuantity(rChar);
-	float rumNeeded = isEquippedArtefactUse(rChar, "talisman4", 1.0, 0.2) * makefloat( (iCrewQty + 5.1) / (RUM_BY_CREW - MOD_SKILL_ENEMY_RATE * 2.5)); // Сколько жрут за день);
+	float rumNeeded = isEquippedArtefactUse(rChar, "talisman4", 1.0, 0.2) * makefloat( (iCrewQty + 5.1) / (RUM_BY_CREW - MOD_SKILL_ENEMY_RATE * 2.5)); 
 	
 	if(rumNeeded < 1.0) rumNeeded = 1.0;
 	iCrewQty = makeint(rumNeeded);
@@ -317,13 +317,13 @@ void DailyEatCrewUpdateForShip(ref rChar, bool IsCompanionTraveler) // IsCompani
 		if(GetCargoGoods(rChar, GOOD_RUM) >= iCrewQty)
 		{
 			RemoveCharacterGoodsSelf(rChar, GOOD_RUM, iCrewQty);
-			// проверка на остатки
+			
 			cn = makeint(GetCargoGoods(rChar, GOOD_RUM) / iCrewQty);
 			if (cn < 1)
 			{
 				if(!IsCompanionTraveler) Log_Info("No rum left on " + rChar.Ship.Name + "");
 			}
-			// поднимем мораль
+			
 			if(CheckShipSituationDaily_GenQuest(rChar) == 1) AddCrewMorale(rChar, 2);
 		}
 		else
@@ -332,18 +332,18 @@ void DailyEatCrewUpdateForShip(ref rChar, bool IsCompanionTraveler) // IsCompani
 			RemoveCharacterGoodsSelf(rChar, GOOD_RUM, iCrewQty);
 		}
 	}
-	// расчет рома
+	
 	
 	iCrewQty = GetCrewQuantity(rChar);
-	// рассчет перегруза команды на мораль  и авторитет -->
+	
 	if(iCrewQty > GetOptCrewQuantity(rChar) && !IsCharacterEquippedArtefact(rChar, "talisman4"))
 	{
 		AddCrewMorale(rChar, -(1+rand(3)));
 		ChangeCharacterComplexReputation(pchar,"authority", -0.1);
 	} 
-	// рассчет перегруза команды на мораль <--
 	
-	// расчет долга на мораль
+	
+	
 	if(iCrewQty > 0 && CheckAttribute(PChar, "CrewPayment"))
 	{
 		cn = makeint(PChar.CrewPayment);
@@ -352,21 +352,21 @@ void DailyEatCrewUpdateForShip(ref rChar, bool IsCompanionTraveler) // IsCompani
 		{
 			ChangeCharacterComplexReputation(pchar,"authority", -0.2);
 			AddCrewMorale(rChar, -1);
-			cn = 5 + CheckOfficersPerk(PChar, "IronWill");  // перк у ГГ
+			cn = 5 + CheckOfficersPerk(PChar, "IronWill");  
 			if(i > 0 && rand(cn) == 2 && !CheckAttribute(rChar, "OfficerWantToGo.DontGo") && !IsEquipCharacterByArtefact(rChar, "totem_04"))
 			{
 				rChar.loyality = sti(rChar.loyality) - 1;
 			}
 		}
 	}
-	// расчет еды после Рома	
-	iCrewQty = makeint(isEquippedArtefactUse(rChar, "talisman6", 1.0, 0.75) * (iCrewQty+5.1) / FOOD_BY_CREW + GetPassengersQuantity(rChar) / FOOD_BY_PASSENGERS); // eat ratio
-	iCrewQty = iCrewQty + makeint((GetCargoGoods(rChar, GOOD_SLAVES)+6)/ FOOD_BY_SLAVES);  // учет рабов
+	
+	iCrewQty = makeint(isEquippedArtefactUse(rChar, "talisman6", 1.0, 0.75) * (iCrewQty+5.1) / FOOD_BY_CREW + GetPassengersQuantity(rChar) / FOOD_BY_PASSENGERS); 
+	iCrewQty = iCrewQty + makeint((GetCargoGoods(rChar, GOOD_SLAVES)+6)/ FOOD_BY_SLAVES);  
 	if(iCrewQty == 0) iCrewQty = 1;
 	if(GetCargoGoods(rChar, GOOD_FOOD) >= iCrewQty)
 	{
 		RemoveCharacterGoodsSelf(rChar, GOOD_FOOD, iCrewQty);
-		// проверка на остатки
+		
 		cn = makeint(GetCargoGoods(rChar, GOOD_FOOD) / iCrewQty);
 		if (cn < 4)
 		{
@@ -377,7 +377,7 @@ void DailyEatCrewUpdateForShip(ref rChar, bool IsCompanionTraveler) // IsCompani
 				PlaySound("interface\notebook.wav");
 			}
 		}
-		// возможный бунт рабов
+		
 		if (sti(rChar.index) == GetMainCharacterIndex() && GetCargoGoods(rChar, GOOD_SLAVES) > (GetCrewQuantity(rChar)*1.5 + sti(rChar.Ship.Crew.Morale)))
 		{
 			nMoraleDecreaseQ = 12 - GetSummonSkillFromNameToOld(rChar, SKILL_LEADERSHIP);
@@ -434,7 +434,7 @@ void DailyEatCrewUpdateForShip(ref rChar, bool IsCompanionTraveler) // IsCompani
 	{
 		if(sti(rChar.Ship.Crew.Morale) <= MORALE_MIN || makeint(rChar.reputation.authority) < 5)
 		{
-			//int locidx = FindLocation(rChar.location); // не используется
+			
 			if(IsEntity(worldMap) && GetCrewQuantity(rChar) > 0 && !IsCharacterEquippedArtefact(rChar, "totem_02"))
 			{
 				Log_Info("A mutiny on " + rChar.Ship.Name + "! ");
@@ -444,9 +444,9 @@ void DailyEatCrewUpdateForShip(ref rChar, bool IsCompanionTraveler) // IsCompani
 	}
 	else
 	{
-		if(GetShipRemovable(rChar) && !CheckAttribute(rChar, "OfficerWantToGo.DontGo") && !IsCompanionTraveler && !IsEquipCharacterByArtefact(rChar, "totem_04")) // ПГГ, квестовые оффы и компаньоны-путешественники не бунтуют
+		if(GetShipRemovable(rChar) && !CheckAttribute(rChar, "OfficerWantToGo.DontGo") && !IsCompanionTraveler && !IsEquipCharacterByArtefact(rChar, "totem_04")) 
 		{
-			if(sti(rChar.Ship.Crew.Morale) <= MORALE_MIN || sti(rChar.loyality) <= 0) // допуск, что лояльность есть у всех офов
+			if(sti(rChar.Ship.Crew.Morale) <= MORALE_MIN || sti(rChar.loyality) <= 0) 
 			{
 				if(GetCrewQuantity(rChar) > 0 && !IsCharacterEquippedArtefact(rChar, "totem_02"))
 				{
@@ -454,10 +454,10 @@ void DailyEatCrewUpdateForShip(ref rChar, bool IsCompanionTraveler) // IsCompani
 					Log_SetStringToLog("The ship is leaving from your squadron");
 					Statistic_AddValue(PChar, "ShipMunity", 1);
 					RemoveCharacterCompanion(PChar, rChar);
-					//fix  ПГГ
+					
 					if(!CheckAttribute(rChar, "PGGAi"))
 					{
-						rChar.LifeDay = 0; // стереть при выходе
+						rChar.LifeDay = 0; 
 					}
 					else
 					{
@@ -468,7 +468,7 @@ void DailyEatCrewUpdateForShip(ref rChar, bool IsCompanionTraveler) // IsCompani
 						rChar.Dialog.CurrentNode = "Second Time";
 						PGG_ChangeRelation2MainCharacter(rChar, -20);
 					}
-					rChar.location = ""; // нафиг, нафиг..а то в таверне появлялся...
+					rChar.location = ""; 
 					rChar.location.group = "";
 					rChar.location.locator = "";
 				}
@@ -484,7 +484,7 @@ void DailyTradersMoneyUpdate()
 	for(int n = 0; n < MAX_CHARACTERS; n++)
 	{
 		makeref(rCharacter,Characters[n]);
-		if (CheckAttribute(rCharacter, "Merchant.type")) // торговцы 
+		if (CheckAttribute(rCharacter, "Merchant.type")) 
 		{
 			if(rCharacter.Merchant.type != "jeweller")
 			{
@@ -503,4 +503,5 @@ void DailyTradersMoneyUpdate()
 		}
 	}
 }
+
 

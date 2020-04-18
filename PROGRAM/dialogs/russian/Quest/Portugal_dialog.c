@@ -155,7 +155,7 @@ void ProcessDialogEvent()
 		
 		case "Portugal_guard_2":
 			DialogExit();
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			for (i=1; i<=3; i++)
 			{
 			sld = characterFromId("PortugalGuard_"+i);
@@ -247,7 +247,7 @@ void ProcessDialogEvent()
 			pchar.quest.Portugal_Cloves.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 1);
 			pchar.quest.Portugal_Cloves.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 1);
 			pchar.quest.Portugal_Cloves.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
-			pchar.quest.Portugal_Cloves.function = "PortugalClovesOver";//1 сутки
+			pchar.quest.Portugal_Cloves.function = "PortugalClovesOver";
 			pchar.questTemp.Portugal = "Findcloves";
 			LAi_SetStayType(npchar);
 			npchar.dialog.currentnode = "Avendel_house_guard";
@@ -293,11 +293,11 @@ void ProcessDialogEvent()
 			SetCharacterRemovable(sld, false);
 			RemoveItems(PChar, "suit_1", 1);
 			sld = characterFromId("Portugal");
-			sld.model = "Port_B"; //меняем модель
+			sld.model = "Port_B"; 
 			ChangeCharacterAddressGroup(sld, "My_Deck", "goto", "goto6");
 			SetFunctionTimerCondition("Portugal_ToAntiguaOver", 0, 0, 4, false);
 			pchar.questTemp.Portugal = "ToAntigua";
-			//временно для тестов откроем комнату Джино, потом убрать
+			
 			LocatorReloadEnterDisable("SentJons_HouseF3", "reload4", false);
 		break;
 		
@@ -309,7 +309,7 @@ void ProcessDialogEvent()
 		
 		case "Avendel_goodbye_1":
 			DialogExit();
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			npchar.lifeday = 0;
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "", -1);
 		break;
@@ -335,14 +335,14 @@ void ProcessDialogEvent()
 			ChangeCharacterAddressGroup(sld, "SentJons_HouseF3_Room2", "quest", "quest1");
 			sld = characterFromId("Jino");
 			ChangeCharacterAddressGroup(sld, "SentJons_HouseF3_Room2", "goto", "goto3");
-			pchar.quest.Portugal_ToAntiguaOver.over = "yes";//снять таймер
+			pchar.quest.Portugal_ToAntiguaOver.over = "yes";
 			pchar.questTemp.Portugal = "TreatmentStart";
 			pchar.quest.Portugal_Ill.win_condition.l1 = "Timer";
 			pchar.quest.Portugal_Ill.win_condition.l1.date.hour  = sti(GetTime());
 			pchar.quest.Portugal_Ill.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 4);
 			pchar.quest.Portugal_Ill.win_condition.l1.date.month = GetAddingDataMonth(0, 0, 4);
 			pchar.quest.Portugal_Ill.win_condition.l1.date.year  = GetAddingDataYear(0, 0, 4);
-			pchar.quest.Portugal_Ill.function = "Portugal_ToAntiguaOver";//не придет через 4 дня - Португальцу капут
+			pchar.quest.Portugal_Ill.function = "Portugal_ToAntiguaOver";
 		break;
 		
 		case "Avendel_Room":
@@ -368,7 +368,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			chrDisableReloadToLocation = false;
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "", -1);
-			//ставим Португальца
+			
 			sld = characterFromId("Portugal");
 			ChangeCharacterAddressGroup(sld, "SentJons_HouseF3", "goto", "goto1");
 			LAi_SetActorType(sld);
@@ -388,7 +388,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Portugal_hunter_2":
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешим драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 		DialogExit();
 		sld = characterFromId("Portugal");
 		LAi_group_Register("Bart_Portugal");
@@ -486,7 +486,7 @@ void ProcessDialogEvent()
 		
 		case "Portugal_patrol_2":
 			DialogExit();
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			pchar.questTemp.Portugal = "MartiniqueGovernor";
 			LAi_ActorGoToLocation(npchar, "reload", "reload4_back", "none", "", "", "", -1);
 			AddQuestRecord("Portugal", "9");
@@ -520,8 +520,8 @@ void ProcessDialogEvent()
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload4_back", "none", "", "", "", 10.0);
-			chrDisableReloadToLocation = false;//открыть локацию
-			LocatorReloadEnterDisable("Fortfrance_town", "reload4_back", true);//закрыть таверну
+			chrDisableReloadToLocation = false;
+			LocatorReloadEnterDisable("Fortfrance_town", "reload4_back", true);
 		break;
 		
 		case "Avendel_seapatrol_5":
@@ -544,17 +544,17 @@ void ProcessDialogEvent()
 		
 		case "Avendel_seapatrol_8":
 			DialogExit();
-			bQuestDisableMapEnter = false;//открыть карту
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
+			bQuestDisableMapEnter = false;
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
 			chrDisableReloadToLocation = false;
 			LAi_ActorFollowEverywhere(npchar, "", -1);
-			SetFunctionTimerCondition("MartiniquePortugalOver", 0, 0, 2, false); //таймер
+			SetFunctionTimerCondition("MartiniquePortugalOver", 0, 0, 2, false); 
 			sld = characterFromId("PortugalDoctor");
-			sld.lifeday = 0;//убираем доктора
+			sld.lifeday = 0;
 			RemovePassenger(Pchar, sld);	
 			sld = characterFromId("Portugal");
-			ChangeCharacterAddressGroup(sld, "none", "", "");//Португальца спрячем
-			LocatorReloadEnterDisable("Fortfrance_tavern", "reload2_back", true);//комнату закроем
+			ChangeCharacterAddressGroup(sld, "none", "", "");
+			LocatorReloadEnterDisable("Fortfrance_tavern", "reload2_back", true);
 			AddQuestRecord("Portugal", "12");
 		break;
 		
@@ -566,10 +566,10 @@ void ProcessDialogEvent()
 		
 		case "Avendel_seapatrol_10":
 			DialogExit();
-			bDisableFastReload = false;//открыть быстрый переход
-			pchar.questTemp.Portugal = "PortugalLeFransua";//в Ле Франсуа
+			bDisableFastReload = false;
+			pchar.questTemp.Portugal = "PortugalLeFransua";
 			AddQuestRecord("Portugal", "13");
-			LAi_LocationDisableOfficersGen("LeFransua_tavern", true);//офицеров не пускать
+			LAi_LocationDisableOfficersGen("LeFransua_tavern", true);
 		break;
 		
 		case "LeFransua_pirate":
@@ -580,7 +580,7 @@ void ProcessDialogEvent()
 		
 		case "LeFransua_pirate_1":
 			DialogExit();
-			pchar.quest.MartiniquePortugalOver.over = "yes"; //снять таймер
+			pchar.quest.MartiniquePortugalOver.over = "yes"; 
 			chrDisableReloadToLocation = true;
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			for (i=1; i<=3; i++)
@@ -628,7 +628,7 @@ void ProcessDialogEvent()
 			pchar.quest.Portugal_LeFransua.win_condition.l1 = "location";
 			pchar.quest.Portugal_LeFransua.win_condition.l1.location = "LeFransua_town";
 			pchar.quest.Portugal_LeFransua.function = "CreateVaskezsPirates";
-			bDisableFastReload = true;//закрыть переход
+			bDisableFastReload = true;
 		break;
 		
 		case "Portugal_LFTalk_2":
@@ -672,7 +672,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Vaskezs_pirate_1":
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешим драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			DialogExit();
 			if (CheckAttribute(pchar, "questTemp.Portugal.Condition1"))
 			{
@@ -695,7 +695,7 @@ void ProcessDialogEvent()
 		
 		case "Avendel_LeFransua":
 			chrDisableReloadToLocation = false;
-			bDisableFastReload = false;//открыть переход
+			bDisableFastReload = false;
 			sld = characterFromId("Portugal");
 			if (LAi_GetCharacterHP(sld) > 0)
 			{
@@ -817,8 +817,8 @@ void ProcessDialogEvent()
 		
 		case "Portugal_treasure_3":
 			DialogExit();
-			LAi_CharacterDisableDialog(npchar);//запрет диалога
-			pchar.questTemp.Portugal.Villemstad = "true";//сдать губернатору
+			LAi_CharacterDisableDialog(npchar);
+			pchar.questTemp.Portugal.Villemstad = "true";
 			AddQuestRecord("Portugal", "21");
 		break;
 		
@@ -830,7 +830,7 @@ void ProcessDialogEvent()
 		
 		case "Portugal_treasure_5":
 			DialogExit();
-			LAi_CharacterDisableDialog(npchar);//запрет диалога
+			LAi_CharacterDisableDialog(npchar);
 			pchar.quest.Remove_Portugal.win_condition.l1 = "Location_Type";
 			pchar.quest.Remove_Portugal.win_condition.l1.location_type = "town";
 			pchar.quest.Remove_Portugal.function = "RemovePortugal";
@@ -897,7 +897,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Avendel_Marigo":
-			pchar.quest.SetAvendelMarigoOver.over = "yes"; //снять таймер
+			pchar.quest.SetAvendelMarigoOver.over = "yes"; 
 			dialog.text = "Oh, and who is this! Captain "+pchar.name+" himself! Want to drink?";
 			link.l1 = "You know, I am that happy to see you again. But perhaps I was to tough with you on Martinique.";
 			link.l1.go = "Avendel_Marigo_1";
@@ -1020,7 +1020,7 @@ void ProcessDialogEvent()
 		
 		case "Avendel_hire":
 			DialogExit();
-			LAi_SetImmortal(npchar, false); // patch-8
+			LAi_SetImmortal(npchar, false); 
 			SetCharacterRemovable(npchar, true);
 			npchar.quest.OfficerPrice = sti(pchar.rank)*1000;
 			Pchar.questTemp.HiringOfficerIDX = GetCharacterIndex(npchar.id);
@@ -1031,7 +1031,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Servant":
-			pchar.quest.InMarigoResidenceOver.over = "yes"; //снять таймер
+			pchar.quest.InMarigoResidenceOver.over = "yes"; 
 			dialog.text = "Good day, captain. Want something?";
 			link.l1 = "No-no, I am just waiting when mynheer Thomas will be free. Waiting for an audience... yes. Tell me, does his Excellency really consider a famous pirate Hernando Vasquez his friend?";
 			link.l1.go = "Servant_1";
@@ -1064,7 +1064,7 @@ void ProcessDialogEvent()
 			SetFunctionTimerCondition("InMarigoResidenceOver", 0, 0, 30, false);
 			colonies[FindColony("Villemstad")].jail = 0;
 			sld = characterFromId("Portugal");
-			sld.model = "Port_A"; //меняем модель
+			sld.model = "Port_A"; 
 			sld.dialog.currentnode = "Portugal_free";
 			LAi_SetStayType(sld);
 			ChangeCharacterAddressGroup(sld, "Villemstad_prison", "goto", "goto9");
@@ -1075,7 +1075,7 @@ void ProcessDialogEvent()
 			LAi_SetWarriorType(sld);
 			LAi_group_MoveCharacter(sld, "HOLLAND_CITIZENS");
 			ChangeCharacterAddressGroup(sld, "Villemstad_prison", "goto", "goto23");
-			LAi_LocationDisableOfficersGen("Villemstad_prison", true);//офицеров не пускать
+			LAi_LocationDisableOfficersGen("Villemstad_prison", true);
 		break;
 		
 		case "Vaskez":
@@ -1127,7 +1127,7 @@ void ProcessDialogEvent()
 		
 		case "Portugal_free_4":
 			DialogExit();
-			InterfaceStates.Buttons.Save.enable = true;//разрешить сохраняться
+			InterfaceStates.Buttons.Save.enable = true;
 			chrDisableReloadToLocation = false;
 			DoQuestReloadToLocation("Villemstad_Exittown", "rld", "loc17", "PortugalFree");
 		break;
@@ -1157,7 +1157,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			LAi_ActorRunToLocation(npchar, "reload", "reload1", "none", "", "", "", 10.0);
 			npchar.lifeday = 0;
-			LAi_LocationDisableOfficersGen("Villemstad_prison", false);//офицеров пускать
+			LAi_LocationDisableOfficersGen("Villemstad_prison", false);
 			AddQuestRecord("Portugal", "34");
 			CloseQuestHeader("Portugal");
 			pchar.questTemp.Portugal = "end";

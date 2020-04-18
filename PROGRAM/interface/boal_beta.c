@@ -1,4 +1,4 @@
-// boal установки игры BETATEST 20.08.04 -->
+
 
 void InitInterface(string iniName)
 {
@@ -156,7 +156,7 @@ void ProcessCommandExecute()
     	break;
 	}
 }
-// bNoEatNoRats
+
 void TmpI_ShowNoEatNoRats()
 {
 	if(!bNoEatNoRats) {
@@ -165,7 +165,7 @@ void TmpI_ShowNoEatNoRats()
 		CreateImage("iNoEatNoRats","icons","complete",560,70,592,102);
 	}
 }
-//  QuestLogShow
+
 void TmpI_ShowQuestLogShow()
 {
 	if(!bQuestLogShow) {
@@ -174,7 +174,7 @@ void TmpI_ShowQuestLogShow()
 		CreateImage("QuestLog","icons","complete",560,125,592,157);
 	}
 }
-// TestRansackCaptain
+
 void TmpI_ShowTestRansackCaptain()
 {
 	if(!TestRansackCaptain) {
@@ -183,7 +183,7 @@ void TmpI_ShowTestRansackCaptain()
 		CreateImage("TestRansack","icons","complete",560,180,592,212);
 	}
 }
-// LocatorShow
+
 void TmpI_ShowLocatorShow()
 {
 	if(!bLocatorShow) {
@@ -192,7 +192,7 @@ void TmpI_ShowLocatorShow()
 		CreateImage("bLocatorShow","icons","complete",560,235,592,267);
 	}
 }
-// ExpLogShow
+
 void TmpI_ShowExpLogShow()
 {
 	if(!bExpLogShow) {
@@ -202,7 +202,7 @@ void TmpI_ShowExpLogShow()
 	}
 }
 
-// PGGLogShow
+
 void TmpI_ShowPGGLogShow()
 {
 	if(!bPGGLogShow) {
@@ -212,7 +212,7 @@ void TmpI_ShowPGGLogShow()
 	}
 }
 
-// CameraEnableFree
+
 void TmpI_ShowCameraEnableFree()
 {
 	if(!locCameraEnableFree) {
@@ -222,7 +222,7 @@ void TmpI_ShowCameraEnableFree()
 	}
 }
 
-// WorldAlivePause
+
 void TmpI_ShowWorldAlivePause()
 {
 	if(!bWorldAlivePause) {
@@ -232,7 +232,7 @@ void TmpI_ShowWorldAlivePause()
 	}
 }
 
-// BETTAMODE
+
 void TmpI_ShowBettaTestMode()
 {
 	if(!bBettaTestMode) {
@@ -241,3 +241,4 @@ void TmpI_ShowBettaTestMode()
 		CreateImage("BettaTestMode","icons","complete",560,510,592,542);
 	}
 }
+

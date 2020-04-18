@@ -1,13 +1,4 @@
-/*
-Тип: воин, бьёт врагов, когда свободен, возвращается к лидеру или стоит
-
-	Используемые шаблоны:
-		fight
-		follow
-		walk
-		stay
-		dialog
-*/
+ 
 
 
 
@@ -15,25 +6,25 @@
 
 
 
-//Установить войну командира
+
 void LAi_warrior_SetCommander(aref chr, aref commander)
 {
 	chr.chr_ai.type.index = commander.index;
 }
 
-//Разрешить или запретить диалоги для война
+
 void LAi_warrior_DialogEnable(aref chr, bool isEnable)
 {
 	chr.chr_ai.type.dialog = isEnable;
 }
 
-//Сказать войну стоять при отсутствие целей
+
 void LAi_warrior_SetStay(aref chr, bool isStay)
 {
 	chr.chr_ai.type.stay = isStay;
 }
 
-//Инициализация
+
 void LAi_type_warrior_Init(aref chr)
 {
 	DeleteAttribute(chr, "location.follower");
@@ -46,7 +37,7 @@ void LAi_type_warrior_Init(aref chr)
 	}
 	if(isNew == true)
 	{
-		//Новый тип
+		
 		DeleteAttribute(chr, "chr_ai.type");
 		chr.chr_ai.type = LAI_TYPE_WARRIOR;
 		chr.chr_ai.type.stay = "0";
@@ -60,7 +51,7 @@ void LAi_type_warrior_Init(aref chr)
 		if(!CheckAttribute(chr, "chr_ai.type.index")) chr.chr_ai.type.index = "";
 		if(!CheckAttribute(chr, "chr_ai.type.dialog")) chr.chr_ai.type.dialog = "1"; 
 	}
-	//Установим анимацию персонажу
+	
 	if (chr.model.animation == "mushketer" && !CheckAttribute(chr, "isMusketer.weapon"))
 	{
 		LAi_NPC_MushketerEquip(chr);
@@ -72,15 +63,15 @@ void LAi_type_warrior_Init(aref chr)
 	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", false);
 }
 
-//Процессирование типа персонажа
+
 void LAi_type_warrior_CharacterUpdate(aref chr, float dltTime)
 {
 	int trg = -1;
-	//Ссылка на ветку с параметрами
+	
 	aref type;
 	makearef(type, chr.chr_ai.type);
 
-    // boal  лечимся -->
+    
 	float fCheck = stf(chr.chr_ai.type.bottle) - dltTime;
 	if(fCheck < 0)
 	{
@@ -99,11 +90,11 @@ void LAi_type_warrior_CharacterUpdate(aref chr, float dltTime)
 		}
 	}
 	else chr.chr_ai.type.bottle = fCheck;
-	// boal  лечимся <--
-	//Анализируем состояние
+	
+	
 	if(chr.chr_ai.tmpl == LAI_TMPL_FIGHT)
 	{
-		//Воюем
+		
 		bool isValidate = false;
 		trg = LAi_tmpl_fight_GetTarget(chr);
 		fCheck = stf(chr.chr_ai.type.checkTarget) - dltTime;
@@ -115,7 +106,7 @@ void LAi_type_warrior_CharacterUpdate(aref chr, float dltTime)
 				if(!LAi_tmpl_fight_LostTarget(chr))
 				{
 					isValidate = true;
-					if (stf(LAi_grp_relations.distance) > 2.0 && fCheck < 0) //цель далеко, попробуем сменить на ближайшую
+					if (stf(LAi_grp_relations.distance) > 2.0 && fCheck < 0) 
 					{
 						isValidate = false;
 					}				
@@ -124,17 +115,17 @@ void LAi_type_warrior_CharacterUpdate(aref chr, float dltTime)
 		}
 		if(!isValidate)
 		{
-			//Ищем новую цель
+			
 			trg = LAi_group_GetTarget(chr);
 			if(trg < 0)
 			{
-				//Переходим в режим ожидания
+				
 				LAi_tmpl_stay_InitTemplate(chr);
 				LAi_type_warrior_SetWateState(chr);
 			}else{
-				//Натравливаем на новую цель
+				
 				LAi_tmpl_SetFight(chr, &Characters[trg]);
-				chr.chr_ai.type.checkTarget = rand(3) + 2; //таймер на проверялку расстояния до таргета
+				chr.chr_ai.type.checkTarget = rand(3) + 2; 
 				if(rand(100) > 95)
 				{
 					LAi_type_warrior_PlaySound(chr);
@@ -142,13 +133,13 @@ void LAi_type_warrior_CharacterUpdate(aref chr, float dltTime)
 			}
 		}
 	}else{
-		//Ищем новую цель
+		
 		trg = LAi_group_GetTarget(chr);
 		if(trg >= 0)
 		{
-			//Нападаем на новую цель
+			
 			LAi_tmpl_SetFight(chr, &Characters[trg]);
-			chr.chr_ai.type.checkTarget = rand(3) + 2; //таймер на проверялку расстояния до таргета
+			chr.chr_ai.type.checkTarget = rand(3) + 2; 
 			if(rand(100) > 95)
 			{
 				LAi_type_warrior_PlaySound(chr);
@@ -156,10 +147,10 @@ void LAi_type_warrior_CharacterUpdate(aref chr, float dltTime)
 		}else{
 			if(chr.chr_ai.tmpl == LAI_TMPL_STAY)
 			{
-				//Стоим и ждём цели
+				
 				LAi_type_warrior_SetWateState(chr);
 			}
-			//слежение залезания ГГ в боксы
+			
 			if (CheckAttribute(chr, "watchBoxes")) 
 			{
 				int num = FindNearCharacters(chr, 10.0, -1.0, 180.0, 0.01, true, true);
@@ -167,10 +158,10 @@ void LAi_type_warrior_CharacterUpdate(aref chr, float dltTime)
 				{
 					if(nMainCharacterIndex == sti(chrFindNearCharacters[i].index))
 					{					
-						//нашли ГГ, проверяем, не в сундуке ли.						
+						
 						if (bMainCharacterInBox)
 						{
-							//Нападаем на новую цель
+							
 							LAi_group_Attack(chr, Pchar);
 							if(chr.chr_ai.group == "LSC_NARVAL") DoQuestCheckDelay("LSC_NarvalConflict", 0.5);
 							if(chr.chr_ai.group == "LSC_RIVADOS") DoQuestCheckDelay("LSC_RivadosConflict", 0.5);
@@ -187,49 +178,49 @@ void LAi_type_warrior_CharacterUpdate(aref chr, float dltTime)
 	}	
 }
 
-//Загрузка персонажа в локацию
+
 bool LAi_type_warrior_CharacterLogin(aref chr)
 {
 	return true;
 }
 
-//Выгрузка персонажа из локацию
+
 bool LAi_type_warrior_CharacterLogoff(aref chr)
 {
 	return true;
 }
 
-//Завершение работы темплейта
+
 void LAi_type_warrior_TemplateComplite(aref chr, string tmpl)
 {
 }
 
-//Сообщить о желании завести диалог
+
 void LAi_type_warrior_NeedDialog(aref chr, aref by)
 {
 }
 
-//Запрос на диалог, если возвратить true то в этот момент можно начать диалог
+
 bool LAi_type_warrior_CanDialog(aref chr, aref by)
 {	
 	if(sti(chr.chr_ai.type.dialog) == 0) return false;
-	//Если просто стоим, то согласимся
+	
 	if(chr.chr_ai.tmpl == LAI_TMPL_STAY) return true;
 	if(chr.chr_ai.tmpl == LAI_TMPL_FOLLOW) return true;
 	if(chr.chr_ai.tmpl == LAI_TMPL_WALK) return true;
 	return false;
 }
 
-//Начать диалог
+
 void LAi_type_warrior_StartDialog(aref chr, aref by)
 {
-	//Если мы пасивны, запускаем шаблон без времени завершения	
+	
 	LAi_CharacterSaveAy(chr);
 	CharacterTurnByChr(chr, by);
 	LAi_tmpl_SetActivatedDialog(chr, by);
 }
 
-//Закончить диалог
+
 void LAi_type_warrior_EndDialog(aref chr, aref by)
 {
 	LAi_tmpl_stay_InitTemplate(chr);
@@ -237,25 +228,25 @@ void LAi_type_warrior_EndDialog(aref chr, aref by)
 }
 
 
-//Персонаж выстрелил
+
 void LAi_type_warrior_Fire(aref attack, aref enemy, float kDist, bool isFindedEnemy)
 {
 }
 
 
-//Персонаж атакован
+
 void LAi_type_warrior_Attacked(aref chr, aref by)
 {
-	//если наносящий удар уже таргет, нефиг крутить код и переназначать цель
+	
 	if (LAi_tmpl_fight_GetTarget(chr) == sti(by.index)) return;
-	//Своих пропускаем
+	
 	if(!LAi_group_IsEnemy(chr, by)) return;
 	LAi_group_UpdateTargets(chr);
     float dist = -1.0;	
 	if(!GetCharacterDistByChr3D(chr, by, &dist)) return;
 	if(dist < 0.0) return;
 	if(dist > 20.0) return;
-	//Натравливаем
+	
 	LAi_tmpl_SetFight(chr, by);
 	chr.chr_ai.type.checkTarget = rand(3)+2;
 	if(rand(100) > 90)
@@ -264,7 +255,7 @@ void LAi_type_warrior_Attacked(aref chr, aref by)
 	}
 }
 
-//Переходим в режим ожидания
+
 void LAi_type_warrior_SetWateState(aref chr)
 {
 	if(sti(chr.chr_ai.type.stay) == 0)
@@ -274,18 +265,18 @@ void LAi_type_warrior_SetWateState(aref chr)
 			int cmd = sti(chr.chr_ai.type.index);
 			if(cmd >= 0)
 			{
-				//Возвращаемся к командиру
+				
 				LAi_tmpl_SetFollow(chr, &Characters[cmd], -1.0);
 			}else{
-				//Гуляем в поисках цели
+				
 				LAi_tmpl_walk_InitTemplate(chr);
 			}
 		}else{
-			//Гуляем в поисках цели
+			
 			LAi_tmpl_walk_InitTemplate(chr);
 		}
 	}else{
-		//Ожидаем цель стоя на месте
+		
 		if(chr.chr_ai.tmpl != LAI_TMPL_STAY)
 		{
 			LAi_tmpl_stay_InitTemplate(chr);
@@ -314,4 +305,5 @@ void LAi_type_warrior_PlaySound(aref chr)
 	if(sname == "") return;
 	LAi_CharacterPlaySound(chr, sname);
 }
+
 

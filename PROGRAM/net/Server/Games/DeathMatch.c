@@ -2,7 +2,7 @@ bool NetServer_CheckGameOver_DeathMatch()
 {
 	int i;
 	int iNumAlive = 0;
-	// if only one client alive - game over
+	
 	for (i=0; i<NET_MAXCLIENTS; i++) 
 	{ 
 		if (!sti(NSClients[i].Use)) { continue; } 
@@ -12,7 +12,7 @@ bool NetServer_CheckGameOver_DeathMatch()
 	}
 	if (iNumAlive == 1) { return true; }
 
-	if (iNumAlive == 0) // all dead - check one client who did most damage
+	if (iNumAlive == 0) 
 	{
 		int iMaxDamage = -1;
 		for (i=0; i<NET_MAXCLIENTS; i++) 

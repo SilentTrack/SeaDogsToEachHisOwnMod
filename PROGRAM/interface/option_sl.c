@@ -21,16 +21,7 @@ void PrepareDefaultOption(ref optref)
 	optref.volume.sound = 0.5;
 	optref.volume.dialog = 0.5;
 	optref.cameramode.follow_on = true;
-	/*
-	optref.arcademode.bArcadeSails = true;
-	optref.arcademode.bArcadeShipSpeed = true;
-	optref.arcademode.bArcadeCannonsReload = true;
-	optref.arcademode.bArcadeCannonsAccuracy = true;
-	optref.arcademode.bArcadeFencingAI = true;
-	optref.arcademode.bArcadeFencingDamage = true;
-	optref.arcademode.bArcadeFencingEquip = true;
-	optref.arcademode.bArcadeSailTo = true;
-	*/
+	 
 	optref.alwaysrun = true;
 	optref.video.grassquantity = 0;
 	optref.seadetails = 1.0;
@@ -55,16 +46,7 @@ void GetRealOptions(ref optref)
 	optref.volume.music = ftmp2;
 	optref.volume.dialog = ftmp3;
 
-	/*
-	optref.arcademode.bArcadeSails = bArcadeSails;
-	optref.arcademode.bArcadeShipSpeed = bArcadeShipSpeed;
-	optref.arcademode.bArcadeCannonsReload = bArcadeCannonsReload;
-	optref.arcademode.bArcadeCannonsAccuracy = bArcadeCannonsAccuracy;
-	optref.arcademode.bArcadeFencingAI = bArcadeFencingAI;
-	optref.arcademode.bArcadeFencingDamage = bArcadeFencingDamage;
-	optref.arcademode.bArcadeFencingEquip = bArcadeFencingEquip;
-	optref.arcademode.bArcadeSailTo = bArcadeSailTo;
-	*/
+	 
 
 	optref.cameramode.follow_on = !locCameraEnableSpecialMode;
 
@@ -112,7 +94,7 @@ void GetRealOptions(ref optref)
 
 	GetControlsOptions(optref);
 
-	// mouse
+	
 	if( CheckAttribute(&InterfaceStates,"mouse.x_sens") ) {
 		optref.mouse.x_sensitivity = InterfaceStates.mouse.x_sens;
 	} else {
@@ -123,7 +105,7 @@ void GetRealOptions(ref optref)
 	} else {
 		optref.mouse.y_sensitivity = 0.5;
 	}
-	// video colors
+	
 	if( CheckAttribute(&InterfaceStates,"video.contrast") ) {
 		optref.video.contrast = InterfaceStates.video.contrast;
 	} else {
@@ -140,7 +122,7 @@ void GetRealOptions(ref optref)
 		optref.video.brightness = 0.0;
 	}
 	
-	// Warship 07.07.09 Ёффект свечени€
+	
 	if(CheckAttribute(&InterfaceStates, "GlowEffect"))
 	{
 		optref.GlowEffect = InterfaceStates.GlowEffect;
@@ -157,7 +139,7 @@ void GetRealOptions(ref optref)
 	SeaParametrs.MaxWaveDistance = MaxWaveDistance;
 	SeaParametrs.LodScale = LodScale;
 
-	// always run
+	
 	if( CheckAttribute(&InterfaceStates,"alwaysrun") ) {
 		optref.alwaysrun = InterfaceStates.alwaysrun;
 	} else {
@@ -169,23 +151,10 @@ void SetCurentOptions(ref optref)
 {
 	SendMessage(&sound,"lfff", MSG_SOUND_SET_MASTER_VOLUME, stf(optref.volume.sound),	stf(optref.volume.music),	stf(optref.volume.dialog));
 
-	/*bArcadeSails = sti(optref.arcademode.bArcadeSails);
-	bArcadeShipSpeed = sti(optref.arcademode.bArcadeShipSpeed);
-	bArcadeCannonsReload = sti(optref.arcademode.bArcadeCannonsReload);
-	bArcadeCannonsAccuracy = sti(optref.arcademode.bArcadeCannonsAccuracy);
-	bArcadeFencingAI = sti(optref.arcademode.bArcadeFencingAI);
-	bArcadeFencingDamage = sti(optref.arcademode.bArcadeFencingDamage);
-	bArcadeFencingEquip = sti(optref.arcademode.bArcadeFencingEquip);
-	bArcadeSailTo = sti(optref.arcademode.bArcadeSailTo);
-	*/
+	 
 	locCameraEnableSpecialMode = !sti(optref.cameramode.follow_on);
 	
-	/*
-	SeaMaxVertices
-	SeaMaxIndices
-	SeaGridStep
-	SeaMaxWaveDistance
-	*/
+	 
 
 	if( CheckAttribute(optref,"cameramode.ShowBattleMode") ) {
 		InterfaceStates.ShowBattleMode = optref.cameramode.ShowBattleMode;
@@ -217,7 +186,7 @@ void SetCurentOptions(ref optref)
 		InterfaceStates.SimpleSea = false;
 	}
 
-	// mouse
+	
 	if( CheckAttribute(optref,"cameramode.InvertCameras") ) {
 		InterfaceStates.InvertCameras = optref.cameramode.InvertCameras;
 	} else {
@@ -233,7 +202,7 @@ void SetCurentOptions(ref optref)
 	} else {
 		InterfaceStates.mouse.y_sens = 0.5;
 	}
-	// video colors
+	
 	if( CheckAttribute(optref,"video.contrast") ) {
 		InterfaceStates.video.contrast = optref.video.contrast;
 	} else {
@@ -250,7 +219,7 @@ void SetCurentOptions(ref optref)
 		InterfaceStates.video.brightness = 0.0;
 	}
 	
-	// Warship 07.07.09 Ёффект свечени€
+	
 	if(CheckAttribute(optref, "GlowEffect"))
 	{
 		InterfaceStates.GlowEffect = optref.GlowEffect;
@@ -275,7 +244,7 @@ void SetCurentOptions(ref optref)
 	makearef(arControls,optref.controls);
 	RestoreKeysFromOptions(arControls);
 
-	// always run
+	
 	if( CheckAttribute(&optref,"alwaysrun") ) {
 		InterfaceStates.alwaysrun = optref.alwaysrun;
 	} else {
@@ -335,3 +304,4 @@ void GetControlsOptions(ref optref)
 		}
 	}
 }
+

@@ -42,15 +42,15 @@ bool ProcessCondition(aref condition)
 	float fx,fy,fz;
 
 	sConditionName = GetAttributeValue(condition);
-	// boal -->
+	
 	if(CheckAttribute(condition,"character"))
 	{
-  		//condition.characterIdx = "" + GetCharacterIndex(condition.character);
-		// совместимость с кодом акеллы, где в character хранят не ID (строка), а IDX (число) -->
+  		
+		
 		i = GetCharacterIndex(condition.character);
 		if (i != -1) condition.characterIdx = i;
-		else condition.characterIdx = sti(condition.character); // делаем вывод, что это число
-		// совместимость с кодом акеллы, где в character хранят не ID (строка), а IDX (число) <--
+		else condition.characterIdx = sti(condition.character); 
+		
 		DeleteAttribute(condition,"character");
 	}
 	if(CheckAttribute(condition,"characterIdx"))
@@ -61,11 +61,11 @@ bool ProcessCondition(aref condition)
 	{
 		refCharacter = GetMainCharacter();
 	}
-	// boal <--
+	
 
 	switch(sConditionName)
 	{
-		// boal оптимизация -->
+		
 		case "MapEnter":
     		return IsEntity(worldMap);
     	break;
@@ -89,7 +89,7 @@ bool ProcessCondition(aref condition)
     		if( GetDataMonth() < sti(condition.date.month) ) return false;
     		if( GetDataMonth() > sti(condition.date.month) ) return true;
     		if( GetDataDay() < sti(condition.date.day) ) return false;
-    		if (CheckAttribute(condition, "date.hour") && GetDataDay() <= sti(condition.date.day))  //fix
+    		if (CheckAttribute(condition, "date.hour") && GetDataDay() <= sti(condition.date.day))  
 			{				
 				if(GetHour() < stf(condition.date.hour)) return false;
 				if(GetHour() >= stf(condition.date.hour)) return true;
@@ -97,7 +97,7 @@ bool ProcessCondition(aref condition)
     		return true;
     	break;
 
-		//Jason --> прерывания на время суток - ночь и день
+		
 		case "Night":
     		return Whr_IsNight();
     	break;
@@ -106,25 +106,25 @@ bool ProcessCondition(aref condition)
     		return Whr_IsDay();
     	break;
 		
-		//Jason --> прерывание на промежуток времени
+		
 		case "Hour":
 			if (stf(environment.time) >= stf(condition.start.hour) && stf(environment.time) < stf(condition.finish.hour)) return true;
     		return false;
     	break;
 		
-		//Jason --> прерывание на заданный час
+		
 		case "HardHour":
 			if (stf(environment.time) >= stf(condition.hour)) return true;
     		return false;
     	break;
-		//<-- прерывания от времени суток и конкретного времени
+		
 
-		//Jason --> прерывание на нацию (поднятие флага) ГГ
+		
 		case "Nation":
 			if (sti(pchar.nation) == sti(condition.nation)) return true;
     		return false;
     	break;
-		//<-- прерывание на нацию
+		
 
     	case "locator":
     		if(refCharacter.location == condition.location)
@@ -157,7 +157,7 @@ bool ProcessCondition(aref condition)
     		return CharacterIsDead(refCharacter);
     	break;
 
-		//navy --> универсальное прерывание на тип локации.
+		
 		case "Location_Type":
 			if (IsEntity(loadedLocation))
 			{
@@ -165,7 +165,7 @@ bool ProcessCondition(aref condition)
 			}
 			return false;
 		break;
-		//navy <--
+		
 
 		case "Nation_City":
 			if (IsEntity(loadedLocation))
@@ -185,56 +185,32 @@ bool ProcessCondition(aref condition)
 			return false;
 		break;
 		
-        // boal  260804 -->  TO_DO
-        /*
-        case "location_port": // любая портовая локация
-            if (IsEntity(loadedLocation))
-            {
-    			if (loadedLocation.type == "port") return !CharacterIsDead(refCharacter);
-    		}
-    		return false;
-    	break;
-
-    	case "location_seashore": // любая бухта
-            if (IsEntity(loadedLocation))
-            {
-    			if (loadedLocation.type == "seashore") return !CharacterIsDead(refCharacter);
-    		}
-    		return false;
-    	break;
-
-    	case "Location_Coast": // любая бухта или порт
-            if (IsEntity(loadedLocation) && CheckAttribute(loadedLocation, "type"))
-            {
-    			if (loadedLocation.type == "seashore" || loadedLocation.type == "port") return !CharacterIsDead(refCharacter);
-    		}
-    		return false;
-    	break;
-    	*/
-        // boal <--
+        
+         
+        
 
         case "Goods":
     		return TestIntValue(GetCargoGoods(refCharacter,sti(condition.goods)),sti(condition.quantity),condition.operation);
     	break;
 
-		//Jason: вертаем методы К3; прерывание на ранг
+		
 		case "Rank":
 			return TestIntValue(sti(refCharacter.rank),sti(condition.value),condition.operation);
 		break;
 
-		//Jason --> прерывание с учетом аларма
+		
 		case "Alarm":
 			return TestIntValue(LAi_grp_playeralarm, sti(condition.value), condition.operation);
     	break;
 		
-		// Addon-2016 Jason, французские миниквесты прерывание на количество денег
+		
 		case "Money":
 			return TestIntValue(sti(pchar.money), sti(condition.value), condition.operation);
     	break;
 
-    	case "item":  // to_do  пока в квесте воровства  есть, но не используется
-			// Warship Для новой системы предметов это неприемлемо
-			// Ugeen -- > для новой системы предметов переписал функцию CheckCharacterItem(), теперь будет приемлимо
+    	case "item":  
+			
+			
     		return CheckCharacterItem(refCharacter,condition.item);
     	break;
 
@@ -243,12 +219,12 @@ bool ProcessCondition(aref condition)
     		return false;
     	break;
 
-        //a&m --> 03/02
+        
         case "Character_sink":
     		if( CheckAttribute(refCharacter,"Killer.status") && sti(refCharacter.Killer.status) != KILL_BY_ABORDAGE ) return true;
     		return false;
     	break;
-        //a&m <--  03/02
+        
         case "Ship_location":
     		if( CheckAttribute(refCharacter,"location.from_sea") && refCharacter.location.from_sea==condition.location ) return true;
     		return false;
@@ -257,7 +233,7 @@ bool ProcessCondition(aref condition)
 			sTmpString = condition.group;
 			return Group_isDead(sTmpString);
 		break;
-	// boal <--
+	
 	
 		case "ComeToIsland":
 			if(CheckAttribute(refCharacter,"ComeToIsland") && refCharacter.ComeToIsland=="1")
@@ -322,7 +298,7 @@ bool ProcessCondition(aref condition)
 		break;
 		
 		case "Coordinates":
-			if(IsEntity(worldMap)) // если на глобальной карте
+			if(IsEntity(worldMap)) 
 			{
 				if( GetMapCoordDegreeX(makefloat(worldMap.playerShipX)) == sti(condition.coordinate.degreeX) &&
 				    GetMapCoordDegreeZ(makefloat(worldMap.playerShipZ)) == sti(condition.coordinate.degreeZ) &&
@@ -335,7 +311,7 @@ bool ProcessCondition(aref condition)
 			}
 			else
 			{
-				if (bSeaActive && !bAbordageStarted) // если в режиме "море"
+				if (bSeaActive && !bAbordageStarted) 
 				{
 					if (CheckAttribute(pchar, "Ship.pos.x"))
 					{
@@ -357,11 +333,11 @@ bool ProcessCondition(aref condition)
 }
 
 bool bQuestCheckProcess = false;
-bool bQuestCheckProcessFreeze = false;// boal 230804 fix замораживать проверку квестов
+bool bQuestCheckProcessFreeze = false;
 
 void QuestsCheck()
 {
-	if(bQuestCheckProcess || bQuestCheckProcessFreeze || dialogRun) return;//boal
+	if(bQuestCheckProcess || bQuestCheckProcessFreeze || dialogRun) return;
 	bQuestCheckProcess = true;
 	aref quests;
 	aref quest;
@@ -380,7 +356,7 @@ void QuestsCheck()
 	
 	for(n = 0; n < nQuestsNum; n++)
 	{
-        if (bQuestCheckProcessFreeze || dialogRun) continue;  // boal 230804 fix замораживать проверку квестов
+        if (bQuestCheckProcessFreeze || dialogRun) continue;  
         
         quest = GetAttributeN(quests,n);
 
@@ -390,7 +366,7 @@ void QuestsCheck()
 		{
 			if(quest.win_condition == "no")
 			{
-				// quest with no win condition; completed on first check
+				
 				OnQuestComplete(quest, sQuestName);
 				nQuestsNum = GetAttributesNum(quests);
 				continue;
@@ -399,7 +375,7 @@ void QuestsCheck()
 			nConditionsNum = GetAttributesNum(conditions);
 			if(nConditionsNum == 0)
 			{
-				// quest with no win condition; completed on first check
+				
 				OnQuestComplete(quest, sQuestName);
 				nQuestsNum = GetAttributesNum(quests);
 				continue;
@@ -438,13 +414,13 @@ void QuestsCheck()
 			}
 		}
 	}
-    nQuestsNum = GetAttributesNum(quests); // оптимизация fix boal
+    nQuestsNum = GetAttributesNum(quests); 
 	for(n = 0; n < nQuestsNum; n++)
 	{
 		quest = GetAttributeN(quests,n);
 		if(CheckAttribute(quest,"over") && quest.over=="yes")
 		{
-			// delete quests already completed or failed
+			
 			DeleteAttribute(quests,GetAttributeName(quest));
 			n--;
 			nQuestsNum--;
@@ -457,7 +433,7 @@ void OnQuestComplete(aref quest, string sQuestname)
 {
 	if(!CheckAttribute(quest,"over") && CheckAttribute(quest,"win_condition"))
 	{
-		if(!CheckAttribute(quest,"again")) // boal 04.04.04  не заканчиваем прерывание, а вешаем на всегда, снять можно присвоением over = yes
+		if(!CheckAttribute(quest,"again")) 
         {
             quest.over = "yes";
         }
@@ -505,10 +481,11 @@ void SetPossibleAction(ref chref, aref condition, bool setting)
 	}
 }
 
-// Warship, 02.06.11. Установка прерывание на определенное время (час).
+
 void SetFunctionHourCondition(string _quest, int _targetHour)
 {
 	PChar.Quest.(_quest).win_condition.l1 = "HardHour";
 	PChar.Quest.(_quest).win_condition.l1.hour = _targetHour;
 	PChar.Quest.(_quest).function = _quest;
 }
+

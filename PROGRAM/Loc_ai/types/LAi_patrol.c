@@ -1,18 +1,11 @@
-/*
-Тип: стоячий, всегда стоит, отвечает на диалоги, никогда не боится
-
-	Используемые шаблоны:
-		stay
-		dialog
-		goto
-*/
+ 
 
 
 
 #define LAI_TYPE_PATROL		"patrol"
 
 
-//Инициализация
+
 void LAi_type_patrol_Init(aref chr)
 {
 	DeleteAttribute(chr, "location.follower");
@@ -44,7 +37,7 @@ void LAi_type_patrol_Init(aref chr)
 		if(!CheckAttribute(chr, "chr_ai.type.time")) chr.chr_ai.type.time = rand(5);
 		if(!CheckAttribute(chr, "chr_ai.type.player")) chr.chr_ai.type.player = "0";
 	}
-	//Установим анимацию персонажу
+	
 	if (chr.model.animation == "mushketer" && !CheckAttribute(chr, "isMusketer.weapon"))
 	{
 		LAi_NPC_MushketerEquip(chr);
@@ -56,14 +49,14 @@ void LAi_type_patrol_Init(aref chr)
 	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", false);
 }
 
-//Процессирование типа персонажа
+
 void LAi_type_patrol_CharacterUpdate(aref chr, float dltTime)
 {
 	int trg = -1;
-	//Если болтаем, то ничего пока не меняем
+	
 	if(chr.chr_ai.tmpl == LAI_TMPL_DIALOG) return;
 	
-    // boal  лечимся -->
+    
 	float fCheck = stf(chr.chr_ai.type.bottle) - dltTime;
 	if(fCheck < 0)
 	{
@@ -82,21 +75,21 @@ void LAi_type_patrol_CharacterUpdate(aref chr, float dltTime)
 		}
 	}
 	else chr.chr_ai.type.bottle = fCheck;
-	// boal  лечимся <--
+	
 	float radius;
 	if(chr.chr_ai.tmpl != LAI_TMPL_FIGHT && !LAi_grp_alarmactive)
 	{
-		//Ищем цель
+		
 		trg = LAi_group_GetTarget(chr);
 		if(trg < 0)
 		{
-			//Патрулирование
+			
 			float time = stf(chr.chr_ai.type.player) - dltTime;
 			chr.chr_ai.type.player = time;
 			if(time <= 0.0)
 			{
-				//Анализируем окружающих персонажей
-				if (isDay() || GetRelation2BaseNation(sti(chr.nation)) != RELATION_ENEMY) radius = 3.0; //eddy. дневной и начной патруль - разные, ночью смотрят дальше
+				
+				if (isDay() || GetRelation2BaseNation(sti(chr.nation)) != RELATION_ENEMY) radius = 3.0; 
 				else radius = 6.0;
 				int num = FindNearCharacters(chr, radius, -1.0, 180.0, 0.1, true, true);
 				if(num > 0)
@@ -110,7 +103,7 @@ void LAi_type_patrol_CharacterUpdate(aref chr, float dltTime)
 					}
 					if(i < num)
 					{
-						//Нашли главного персонажа
+						
 						if(stf(chr.chr_ai.type.player) <= 0.0 || LAi_CheckFightMode(pchar))
 						{
 							LAi_type_patrol_TestControl(chr);
@@ -123,7 +116,7 @@ void LAi_type_patrol_CharacterUpdate(aref chr, float dltTime)
 					}
 				}
 			}			
-			//Анализируем состояние ходьбы
+			
 			if(chr.chr_ai.tmpl == LAI_TMPL_GOTO)
 			{
 				if(LAi_tmpl_goto_IsWait(chr))
@@ -132,12 +125,12 @@ void LAi_type_patrol_CharacterUpdate(aref chr, float dltTime)
 				}
 				return;
 			}
-			//Иногда звучим
+			
 			if(rand(1000) == 125)
 			{
 				LAi_CharacterPlaySound(chr, "sigh");
 			}
-			//Стоим
+			
 			time = stf(chr.chr_ai.type.time) - dltTime;
 			chr.chr_ai.type.time = time;
 			if(time > 0.0)
@@ -150,17 +143,17 @@ void LAi_type_patrol_CharacterUpdate(aref chr, float dltTime)
 			}
 
 		}else{
-			//Начинаем атаку
+			
 			chr.chr_ai.type.state = "fight";
 			if(!LAi_tmpl_SetFight(chr, &Characters[trg]))
 			{
-				//Несмогли инициировать шаблон
+				
 				LAi_type_patrol_Stay(chr);
 			}
-			else chr.chr_ai.type.checkTarget = rand(4) + 3; //таймер на проверялку расстояния до таргета
+			else chr.chr_ai.type.checkTarget = rand(4) + 3; 
 		}
 	}else{
-		//Проверим на правильность цель
+		
 		bool isValidate = false;
 		trg = LAi_tmpl_fight_GetTarget(chr);
 		fCheck = stf(chr.chr_ai.type.checkTarget) - dltTime;
@@ -172,7 +165,7 @@ void LAi_type_patrol_CharacterUpdate(aref chr, float dltTime)
 				if(!LAi_tmpl_fight_LostTarget(chr))
 				{
 					isValidate = true;
-					if (stf(LAi_grp_relations.distance) > 2.0 && time < 0) //цель далеко, попробуем сменить на ближайшую
+					if (stf(LAi_grp_relations.distance) > 2.0 && time < 0) 
 					{
 						isValidate = false;
 					}
@@ -181,17 +174,17 @@ void LAi_type_patrol_CharacterUpdate(aref chr, float dltTime)
 		}
 		if(!isValidate)
 		{
-			//Ищем новую цель
+			
 			trg = LAi_group_GetTarget(chr);
 			if(trg >= 0)
 			{
 				chr.chr_ai.type.state = "fight";
 				if(!LAi_tmpl_SetFight(chr, &Characters[trg]))
 				{
-					//Несмогли инициировать шаблон
+					
 					LAi_type_patrol_Stay(chr);
 				}
-				else chr.chr_ai.type.checkTarget = rand(4) + 3; //таймер на проверялку расстояния до таргета
+				else chr.chr_ai.type.checkTarget = rand(4) + 3; 
 			}else{
 				LAi_type_patrol_Stay(chr);
 			}
@@ -199,19 +192,19 @@ void LAi_type_patrol_CharacterUpdate(aref chr, float dltTime)
 	}
 }
 
-//Загрузка персонажа в локацию
+
 bool LAi_type_patrol_CharacterLogin(aref chr)
 {
 	return true;
 }
 
-//Выгрузка персонажа из локацию
+
 bool LAi_type_patrol_CharacterLogoff(aref chr)
 {
 	return true;
 }
 
-//Завершение работы темплейта
+
 void LAi_type_patrol_TemplateComplite(aref chr, string tmpl)
 {
 	if(tmpl == "goto")
@@ -222,12 +215,12 @@ void LAi_type_patrol_TemplateComplite(aref chr, string tmpl)
 	}
 }
 
-//Сообщить о желании завести диалог
+
 void LAi_type_patrol_NeedDialog(aref chr, aref by)
 {
 }
 
-//Запрос на диалог, если возвратить true то в этот момент можно начать диалог
+
 bool LAi_type_patrol_CanDialog(aref chr, aref by)
 {
 	if(chr.chr_ai.type.state == "dialog")
@@ -252,16 +245,16 @@ bool LAi_type_patrol_CanDialog(aref chr, aref by)
 	return false;
 }
 
-//Начать диалог
+
 void LAi_type_patrol_StartDialog(aref chr, aref by)
 {
-	//Если мы пасивны, запускаем шаблон без времени завершения
+	
 	LAi_CharacterSaveAy(chr);
 	CharacterTurnByChr(chr, by);
 	LAi_tmpl_SetActivatedDialog(chr, by);
 }
 
-//Закончить диалог
+
 void LAi_type_patrol_EndDialog(aref chr, aref by)
 {
 	LAi_tmpl_stay_InitTemplate(chr);
@@ -283,36 +276,36 @@ void LAi_type_patrol_EndDialog(aref chr, aref by)
 }
 
 
-//Персонаж выстрелил
+
 void LAi_type_patrol_Fire(aref attack, aref enemy, float kDist, bool isFindedEnemy)
 {
 }
 
 
-//Персонаж атакован
+
 void LAi_type_patrol_Attacked(aref chr, aref by)
 {
 	if(chr.chr_ai.tmpl == LAI_TMPL_DIALOG)
 	{
 		LAi_tmpl_dialog_StopNPC(chr);
 	}
-	//если наносящий удар уже таргет, нефиг крутить код и переназначать цель
+	
 	if (LAi_tmpl_fight_GetTarget(chr) == sti(by.index)) return;
-	//Своих пропускаем
+	
 	if(!LAi_group_IsEnemy(chr, by)) return;
-    //boal fix ai -->
+    
     float dist = -1.0;
 	
 	if(!GetCharacterDistByChr3D(chr, by, &dist)) return;
 	if(dist < 0.0) return;
 	if(dist > 20.0) return;
-	//Натравливаем
+	
 	LAi_tmpl_SetFight(chr, by);
-    // boal <--
+    
 	if (rand(100) > 95 && !LAi_IsDead(chr) && !LAi_IsDead(pchar)) LAi_CharacterPlaySound(chr, "warrior");
 }
 
-//Проверить персонажа с заданной вероятностью
+
 void LAi_type_patrol_Stay(aref chr)
 {
 	chr.chr_ai.type.time = 2 + rand(20);
@@ -320,10 +313,10 @@ void LAi_type_patrol_Stay(aref chr)
 	LAi_tmpl_stay_InitTemplate(chr);
 }
 
-//Отправить персонажа в новую точку
+
 void LAi_type_patrol_Goto(aref chr)
 {
-	//Идём в новую точку
+	
 	string newloc;
 	if (!CheckAttribute(chr, "CityType")) Log_SetStringToLog("Ghf: " + chr.id);
 	if (chr.CityType == "fortPatrol") 
@@ -341,22 +334,22 @@ void LAi_type_patrol_Goto(aref chr)
 	}
 }
 
-//Проверить персонажа с заданной вероятностью
+
 void LAi_type_patrol_TestControl(aref chr)
 {
 	chr.chr_ai.type.player = 5 + rand(10);
 	int iRand;
 	bool bFightMode = LAi_CheckFightMode(pchar);
 	if (GetNationRelation2MainCharacter(sti(chr.nation)) == RELATION_ENEMY || GetNationRelation(sti(chr.nation), GetBaseHeroNation()) == RELATION_ENEMY) iRand = 2;
-	else iRand = GetRelation2BaseNation(sti(chr.nation)); // 0- друг 1- нейтрал 2- враг
+	else iRand = GetRelation2BaseNation(sti(chr.nation)); 
 	if (isDay()) 
 	{
-		// в друж. городе не цепляемся
+		
 		if (rand(iRand) < 2) 
 		{
-			//проверяем, нет ли обнаженки оружия
+			
 			if (bFightMode)	
-			{	//Пытаемся начать диалог
+			{	
 				LAi_SetFightMode(pchar, false);
 				if(LAi_Character_CanDialog(chr, pchar))
 				{
@@ -374,9 +367,9 @@ void LAi_type_patrol_TestControl(aref chr)
 		{
 			if (iRand == RELATION_NEUTRAL)
 			{
-				//проверяем, нет ли обнаженки оружия
+				
 				if (bFightMode)	
-				{	//Пытаемся начать диалог
+				{	
 					LAi_SetFightMode(pchar, false);
 					if(LAi_Character_CanDialog(chr, pchar))
 					{
@@ -391,7 +384,7 @@ void LAi_type_patrol_TestControl(aref chr)
 				iRand = 60;
 			}
 			else 
-			{	//враждебный
+			{	
 				if (bFightMode)	iRand = 500;
 				else iRand = 120;
 			}
@@ -401,9 +394,9 @@ void LAi_type_patrol_TestControl(aref chr)
 	{		
 		if (iRand == RELATION_FRIEND || iRand == RELATION_NEUTRAL) 
 		{
-			//проверяем, нет ли обнаженки оружия
+			
 			if (bFightMode)	
-			{	//Пытаемся начать диалог
+			{	
 				LAi_SetFightMode(pchar, false);
 				if(LAi_Character_CanDialog(chr, pchar))
 				{
@@ -412,9 +405,9 @@ void LAi_type_patrol_TestControl(aref chr)
 					LAi_tmpl_SetDialog(chr, pchar, -1.0);
 				}
 			}			
-			return; // в друж. городе не цепляемся
+			return; 
 		}
-		//eddy. ночной враг цепляется только так и шансов скрыться мало даже при супер прокачке скрытности.
+		
 		if (iRand == RELATION_ENEMY) 
 		{
 			if (bFightMode)	iRand = 500;
@@ -422,9 +415,9 @@ void LAi_type_patrol_TestControl(aref chr)
 		}
 		else 
 		{
-			//проверяем, нет ли обнаженки оружия
+			
 			if (bFightMode)	
-			{	//Пытаемся начать диалог
+			{	
 				LAi_SetFightMode(pchar, false);
 				if(LAi_Character_CanDialog(chr, pchar))
 				{
@@ -436,19 +429,19 @@ void LAi_type_patrol_TestControl(aref chr)
 				return;
 			}			
 			chr.chr_ai.type.player = 60;
-			iRand = 80; //ночью нейтрал
+			iRand = 80; 
 		}
 	}
-	//Проверим на начало диалога
+	
 	float luck = 0.0;
 	
 	luck = GetCharacterSkill(pchar, "Sneak");
 	if (rand(iRand) <= luck)
 	{
-		if (!dialogRun && !bFightMode) // кач в диалоге - фигвам. кто с обнаженкой бегает - тоже.
+		if (!dialogRun && !bFightMode) 
 		{
 			if (GetNationRelation2MainCharacter(sti(chr.nation)) == RELATION_ENEMY && sti(chr.nation) != PIRATE)
-			{  // враг, которго не узнали - скрылся - молодец!
+			{  
 				AddCharacterExpToSkill(pchar, SKILL_SNEAK, 15);
 			}
 			if (GetBaseHeroNation() == sti(chr.nation) && GetRelation2BaseNation(sti(chr.nation)) == RELATION_ENEMY)
@@ -458,13 +451,14 @@ void LAi_type_patrol_TestControl(aref chr)
 		}
 		return;
 	}		
-	//Пытаемся начать диалог
+	
 	LAi_SetFightMode(pchar, false);
 	if(LAi_Character_CanDialog(chr, pchar))
 	{
 		chr.chr_ai.type.state = "dialog";
 		LAi_tmpl_SetDialog(chr, pchar, -1.0);
-		//Следующий раз будет нескоро
+		
 		chr.chr_ai.type.player = "50";
 	}
 }
+

@@ -65,10 +65,10 @@ void Lightning_DoIt()
 {
 	if (!isEntity(&Lightning)) { return; }
 
-	// next lightning
+	
 	PostEvent(WHR_LIGHTNING_DOIT, 200 + rand(1200));
 	
-	// if interface launched, return
+	
 	if (sti(InterfaceStates.Launched) && CurrentInterface != INTERFACE_MAINMENU) { return; }
 
 	aref aCurWeather = GetCurrentWeather();
@@ -80,7 +80,7 @@ void Lightning_DoIt()
 	float cz = stf(Camera.Pos.z);
 
 	float fDist = 1000.0 + frnd() * 2000.0;
-	if (rand(30) == 15) { fDist = 20.0 + frnd() * 200.0; }	// nearest lightning
+	if (rand(30) == 15) { fDist = 20.0 + frnd() * 200.0; }	
 	float fAngle = frnd() * PIm2;
 	int iTimeSound = fDist / 333.0;
 
@@ -103,7 +103,7 @@ void Lightning_DoIt()
 		fLightningSize = 600.0 * fDist / 1000.0;
 		if (fLightningSize < 25) { fLightningSize = 25.0; }
 		y = fLightningSize - 10.0 * fDist / 1000.0;
-		//fScaleY = fScaleY * 600.0 / fLightningSize;
+		
 	}
 	
 	SendMessage(&Lightning, "llsflffffffsff", MSG_WHR_LIGHTNING_ADD, iSubTexture, "lightning", fTime, iFlickerTime, fLightningSize, fScaleX, fScaleY, x, y, z, "flash_lightning", fFlashSize, fTime / 2.0);
@@ -118,11 +118,12 @@ void Lightning_DoIt()
 }
 
 void Lightning_Sound()
-{	//if (rand(4) == 1)
-	//	{
+{	
+	
 			float x = GetEventData();
 			float y = GetEventData();
 			float z = GetEventData();
 			Play3DSound("thunder", x, y, z);
-	//	}
+	
 }
+

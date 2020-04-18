@@ -1,13 +1,13 @@
-//Создать фантома основываясь на характуристиках данного персонажа в самом дальнем углу
+
 void LAi_GenerateFantomFromMe(aref chr)
 {
-	//Проверяем возможность генерации фантома в данной локации
+	
 	if(!TestRef(loadedLocation)) return;
 	if(!IsEntity(loadedLocation)) return;
 	if(LAi_LocationIsFantomsGen(loadedLocation) == false) return;
-	//Проверяем возможность перерождения персонажа
+	
 	if(LAi_CharacterIsReincarnation(chr) == false) return;
-	//Проверяем какую модельку использовать для перерождения
+	
 	bool isGen = LAi_CharacterReincarnationMode(chr);
 	if(CheckAttribute(chr, "model") == false) isGen = true;
 	if(CheckAttribute(chr, "model.animation") == false) isGen = true;
@@ -45,10 +45,10 @@ void LAi_GenerateFantomFromMe(aref chr)
 		model = chr.model;
 		ani = chr.model.animation;
 	}
-	//Сохраняем параметры персонажа
+	
 	object tmp;
 	CopyAttributes(&tmp, chr);
-	//Создаём фантома	
+	
 	if(ani == "mushketer")
 	{
 		ref sld = GetCharacter(NPC_GenerateCharacter("GenChar_", model, "man", "mushketer", chr.rank, sti(chr.nation), sti(chr.lifeDay), false, "soldier"));
@@ -60,12 +60,12 @@ void LAi_GenerateFantomFromMe(aref chr)
 		sld.dialog.filename = "Common_Soldier.c";
 		sld.dialog.currentnode = "first time";
 		LAi_CharacterReincarnation(sld, true, true);
-		LAi_SetReincarnationRankStep(sld, MOD_SKILL_ENEMY_RATE+2); //задаем шаг на увеличение ранга фантомам на реинкарнацию
+		LAi_SetReincarnationRankStep(sld, MOD_SKILL_ENEMY_RATE+2); 
 		if (CheckAttribute(chr, "chr_ai.reincarnation.step"))
 		{
-			SetFantomParamFromRank(sld, sti(chr.rank) + sti(chr.chr_ai.reincarnation.step), true); // бравые орлы
+			SetFantomParamFromRank(sld, sti(chr.rank) + sti(chr.chr_ai.reincarnation.step), true); 
 		}
-		LAi_SetLoginTime(sld, 6.0, 23.0); //а ночью будет беготня от патруля :)		
+		LAi_SetLoginTime(sld, 6.0, 23.0); 
 		sld.dialog.filename = chr.dialog.filename;
 		sld.dialog.currentnode = chr.dialog.currentnode;
 		SetRandomNameToCharacter(sld);
@@ -77,32 +77,32 @@ void LAi_GenerateFantomFromMe(aref chr)
 	{
 		ref fnt = LAi_CreateFantomCharacterEx(model, ani, LAi_CharacterReincarnationGroup(chr), "");
 		string curidx = fnt.index;
-		//Устанавливаем параметры предыдущего персонажа
+		
 		CopyAttributes(fnt, &tmp);
-		// boal оружие дать! 19.01.2004 -->
-		// фантомы точные клоны SetFantomParam(fnt);  
-		//--> eddy. шаг на увеличение ранга фантома.
+		
+		
+		
 		if (CheckAttribute(chr, "chr_ai.reincarnation.step"))
 		{
-			SetFantomParamFromRank(fnt, sti(chr.rank) + sti(chr.chr_ai.reincarnation.step), true); // бравые орлы
-			characters[sti(fnt.baseIndex)].rank = fnt.rank; //в структуру прародителя ранг с наворотом
+			SetFantomParamFromRank(fnt, sti(chr.rank) + sti(chr.chr_ai.reincarnation.step), true); 
+			characters[sti(fnt.baseIndex)].rank = fnt.rank; 
 		}
-		else //не даем падать рангу от SetFantomParam
+		else 
 		{
 			LAi_NPC_Equip(fnt, sti(fnt.rank), true, true);
 			LAi_SetCurHPMax(fnt);
 		}
-		// boal 19.01.2004 <--
+		
 		if(CheckAttribute(fnt, "chr_ai.group"))
 		{
 			LAi_group_MoveCharacter(fnt, fnt.chr_ai.group);
 		}else{
 			LAi_group_MoveCharacter(fnt, "");
 		}
-		//Сохраняем модельку и анимацию
+		
 		fnt.model = model;
 		fnt.model.animation = ani;
-		//Инициализируем тип
+		
 		if(!CheckAttribute(fnt, "chr_ai.type")) fnt.chr_ai.type = "";
 		string chrtype = fnt.chr_ai.type;
 		SetRandomNameToCharacter(fnt);
@@ -115,12 +115,12 @@ void LAi_GenerateFantomFromMe(aref chr)
 			chrtype = "LAi_type_" + chrtype + "_Init";
 			call chrtype(fnt);
 		}
-		SetNewModelToChar(fnt);   // fix
+		SetNewModelToChar(fnt);   
 	}
 }
 
 bool LAi_CreateFlowers(ref location)
-{// выращивание травки: раз в 10 дней при заходе в локацию вырастает новый экземпляр - садовник Jason
+{
 	ref rItm;
 	if (CheckAttribute(location, "fastreload") && location.id.label != "exittown") return false;
 	if(!CheckAttribute(location, "locators.item") || location.id.label == "Cave entrance" || location.type == "seashore" || location.type == "cave") return false;
@@ -131,14 +131,14 @@ bool LAi_CreateFlowers(ref location)
 	if (!CheckAttribute(location, "growflower"))
 	{
 		int n = 1;
-		if(location.id.label == "exittown" && !CheckAttribute(location, "fastreload")) n = 2;// за городскими воротами выращиваем больше
+		if(location.id.label == "exittown" && !CheckAttribute(location, "fastreload")) n = 2;
 			for(int i = 0; i < n; i++)
 			{
 				rItm = ItemsFromID("cannabis"+(rand(5)+1));
 				rItm.shown = true;
 				rItm.startLocation = location.id;
 				rItm.startLocator = "flower" + (rand(9)+1);
-				//Log_TestInfo("Новая травка выросла в локаторе " + rItm.startLocator); // patch
+				
 			}
 		SaveCurrentNpcQuestDateParam(location, "Fl_date");
 		location.growflower = true;
@@ -146,7 +146,7 @@ bool LAi_CreateFlowers(ref location)
 	return true;
 }
 
-bool LAi_CreateQuestFlowers(ref location) // Jason рассада квестовой травки
+bool LAi_CreateQuestFlowers(ref location) 
 {
 	ref rItm;
 	int i;
@@ -157,13 +157,13 @@ bool LAi_CreateQuestFlowers(ref location) // Jason рассада квестовой травки
 		rItm.shown = true;
 		rItm.startLocation = location.id;
 		rItm.startLocator = "qflower"+i;
-		//Log_TestInfo("В этой локации произрастает Мангароса");// patch
+		
 		DeleteAttribute(location, "questflower");
 	}
 	return true;
 }
 
-bool LAi_CreateShoreChest(ref location) // Jason: выброшенные на берег сундуки - 5%
+bool LAi_CreateShoreChest(ref location) 
 {
 	string sTemp = location.id;
 	DeleteAttribute(location, "box1.NotChest");
@@ -174,8 +174,8 @@ bool LAi_CreateShoreChest(ref location) // Jason: выброшенные на берег сундуки -
 		location.box1.NotChest = true;
 		location.box2.NotChest = true;
 		if(CheckAttribute(location, "Chestgennot")) return false;
-		if (CheckAttribute(pchar, "questTemp.Sharlie.Lock")) return false; // 021012
-		if (!CheckAttribute(location, "shorechest") && drand(100) < 5) // нет сундука
+		if (CheckAttribute(pchar, "questTemp.Sharlie.Lock")) return false; 
+		if (!CheckAttribute(location, "shorechest") && drand(100) < 5) 
 		{
 			string sModel = "chest_"+(rand(2)+1);
 			location.num = drand(1)+1;
@@ -184,11 +184,11 @@ bool LAi_CreateShoreChest(ref location) // Jason: выброшенные на берег сундуки -
 			location.models.always.chest = sModel;
 			location.models.always.chest.locator.group = "box";
 			location.models.always.chest.locator.name = location.numbox;
-			location.models.always.chest.tech = "DLightModel"; // 280313
-			//log_testinfo("Сундук "+location.numbox+" "+sModel+" подготавливается!");// patch
+			location.models.always.chest.tech = "DLightModel"; 
+			
 			return true;
 		}
-		if(CheckAttribute(location, "shorechest")) // есть сундук
+		if(CheckAttribute(location, "shorechest")) 
 		{
 			
 			if (sti(location.num) == 1) DeleteAttribute(location, "box1.NotChest");
@@ -200,7 +200,7 @@ bool LAi_CreateShoreChest(ref location) // Jason: выброшенные на берег сундуки -
 				DeleteAttribute(location, "shorefill");
 				DeleteAttribute(location, "chest_date");
 				DeleteAttribute(location, "models.always.chest");
-				//log_testinfo("Сундук на берегу пуст!");// patch
+				
 			}
 			else 
 			{
@@ -209,11 +209,11 @@ bool LAi_CreateShoreChest(ref location) // Jason: выброшенные на берег сундуки -
 					FillShorechestBox(sTemp, sti(location.num), drand(5));
 					SaveCurrentNpcQuestDateParam(location, "chest_date");
 					location.shorefill = true;
-					//log_testinfo("Сундук на берегу!");// patch
+					
 				}
 				else
 				{
-					//log_testinfo("Сундук еще здесь и полон!");// patch
+					
 					return true;
 				}
 			}
@@ -222,7 +222,7 @@ bool LAi_CreateShoreChest(ref location) // Jason: выброшенные на берег сундуки -
 	return true;
 }
 
-bool LAi_CreateDolly(ref location) // Jason установка телепортационных статуй и их активация
+bool LAi_CreateDolly(ref location) 
 {
 	ref rItm = ItemsFromID("dolly0");
 	ref rItem = ItemsFromID("dolly5");
@@ -275,23 +275,23 @@ bool LAi_CreateEncounters(ref location)
 	string encGroup, str, locator, sAreal, sCity, sEncType;
 	int num, i, iChar, iNation, iRank, n, iTemp, iMassive, iRnd, iRand, iEncrnd;
 	string model[10];
-	if (!bLandEncountersGen) //если прерывание на локацию, энкаунтеров не генерим
+	if (!bLandEncountersGen) 
 	{		
 		bLandEncountersGen = true;
 		return false;
 	}
-	//Можем ли генерить
+	
 	if(CheckAttribute(location, "DisableEncounters")) return false;
 	if(!CheckAttribute(location, "locators.encdetector") || !CheckNPCQuestDate(location, "Enc_date") || bDisableLandEncounters) return false;
-	if (CheckAttribute(location, "fastreload")) return false; //отсекаем локации exitTown у пиратских городов
-    //boal 02.09.06 пауза случаек на один раз -->
+	if (CheckAttribute(location, "fastreload")) return false; 
+    
 	if (CheckAttribute(pchar, "GenQuest.Enc2Pause"))
 	{
 	    DeleteAttribute(pchar, "GenQuest.Enc2Pause");
 	    return false;
 	}
-	// boal <--
-	//--> если бухта и в ней контра, то не ставим никого
+	
+	
 	if (location.type == "seashore") 
 	{
 		makearef(st, location.models.always);
@@ -306,15 +306,15 @@ bool LAi_CreateEncounters(ref location)
 			}
 		}			
 	}
-	//<-- если бухта и в ней контра, то не ставим никого
-	SetNPCQuestDate(location, "Enc_date"); //запись на дату не сегодня
 	
-	//Установить нацию патруля 
+	SetNPCQuestDate(location, "Enc_date"); 
+	
+	
 	
 	sAreal = GiveArealByLocation(location);
 	if (sAreal == "none") return false;
 	
-	// На необитаемых этого всего нету, но там нету и этих квестов
+	
 	if(!CheckAttribute(location, "onUninhabitedIsland"))
 	{
 		sCity = GetCityNameByIsland(sAreal);
@@ -323,15 +323,15 @@ bool LAi_CreateEncounters(ref location)
 		if (iNation == -1 || iNation == PIRATE) return false;
 	}
 	
-	// земли Ица (дорога к Тайясалю), генерим воинов в другом месте
-	// "... трудна дорога и повсюду обман, но чтоб не сбиться у меня есть план ... найди попробуй сам, не буду я тебя учить..."
+	
+	
 	if(CheckAttribute(location, "ItzaLand")) return false;
 	
-	// Warship 10.08.09 Если прерывание на локацию - не генерим энкаунтеров, иначе погло накладываться, судя по всму
-	// bLandEncountersGen устанавливался вручную и не гарантиварол избежание пересечений квест-энкаункеры
+	
+	
 	if(!isLocationFreeForQuests(location.Id)) return false;
 	
-	//группа, куда будем помещать фантомов
+	
 	encGroup = LAi_FindRandomLocator("encdetector");
 	str = "locators." + encGroup;
 	makearef(grp, location.(str));
@@ -346,16 +346,16 @@ bool LAi_CreateEncounters(ref location)
 	}	
 	switch (iRand)
 	{
-		//------------------ Банда рейдеров типа дежурит на грабежах ----------------------
+		
 		case 0:
 			if (rand(10) > 6) return false;
 			if (CheckAttribute(pchar, "questTemp.Sharlie.Lock")) return false;
-			if(CheckAttribute(location, "onUninhabitedIsland") || location.type == "seashore" || location.type == "mayak" || location.type == "questisland") return false; // На необитаемых нельзя 300912
+			if(CheckAttribute(location, "onUninhabitedIsland") || location.type == "seashore" || location.type == "mayak" || location.type == "questisland") return false; 
 			if(location.id == "Curacao_jungle_03" || location.id == "Hispaniola_Jungle_02") return false;
-			num = GetAttributesNum(grp) - rand(2); //кол-во человек в банде
-			if (num <= 0 ) num = 1; //если локаторов меньше четырех
+			num = GetAttributesNum(grp) - rand(2); 
+			if (num <= 0 ) num = 1; 
 			str = "Gang"+ location.index + "_";
-			//--> генерим ранг 
+			
 			if (sti(pchar.rank) > 6) 
 			{
 				if (sti(pchar.rank) > 20) iRank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*2.5/num);
@@ -363,8 +363,8 @@ bool LAi_CreateEncounters(ref location)
 			}
 			else iRank = sti(pchar.rank); 
 	
-			//<-- генерим ранг 
-			//Начинаем перебирать локаторы и логинить фантомов
+			
+			
 			model[0] = "citiz_41";
 			model[1] = "citiz_42";
 			model[2] = "citiz_43";
@@ -388,7 +388,7 @@ bool LAi_CreateEncounters(ref location)
 				{
 					chr = GetCharacter(NPC_GenerateCharacter(str + i, model[iMassive], "man", "man", iRank, iNation, 1, true, "marginal"));
 					SetFantomParamFromRank(chr, iRank, true);
-					//Получим локатор для логина
+					
 					if (iEncrnd == 0)
 					{
 						rItm = ItemsFromID("fire");
@@ -415,8 +415,8 @@ bool LAi_CreateEncounters(ref location)
 					if (i == 0) 			
 					{
 						sAreal = "Raiders_" + location.index;
-						pchar.GenQuest.(sAreal).name = GetFullName(chr); //имя бандита, будет главарем
-						pchar.GenQuest.(sAreal).nation = iNation; //нация для слухов 
+						pchar.GenQuest.(sAreal).name = GetFullName(chr); 
+						pchar.GenQuest.(sAreal).nation = iNation; 
 					}
 					i++;
 					model[iMassive] = "";
@@ -428,7 +428,7 @@ bool LAi_CreateEncounters(ref location)
 			pchar.quest.(str).win_condition.l1.locator_group = "encdetector";
 			pchar.quest.(str).win_condition.l1.locator = encGroup;
 			pchar.quest.(str).win_condition = "LandEnc_RaidersBegin";
-			pchar.quest.(str).EncQty = num; //кол-во бандитов
+			pchar.quest.(str).EncQty = num; 
 			pchar.quest.(str).LocIdx = location.index; 
 			pchar.GenQuest.LandEnc.LocId = location.id;
 			str = "TimeRaiders_" + location.index;
@@ -440,28 +440,28 @@ bool LAi_CreateEncounters(ref location)
 			pchar.quest.(str).LocIdx = location.index;
 		break;
 		
-		//------------------ Банда индеев ----------------------
+		
 		case 1:				
 			if (rand(10) > 7) return false;
 			if (CheckAttribute(pchar, "questTemp.Sharlie.Lock")) return false;
 			if(location.type == "seashore" || location.type == "mayak") return false;
 			if(location.id == "Curacao_jungle_03" || location.id == "Hispaniola_Jungle_02") return false;
-			num = 4; //кол-во человек в банде
+			num = 4; 
 			str = "Carib"+ location.index + "_";
-			//--> генерим ранг 
+			
 			if (sti(pchar.rank) > 6) 
 			{
 				if (sti(pchar.rank) > 20) iRank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*2.5/num);
 				else iRank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*1.6/num);
 			}
 			else iRank = sti(pchar.rank)+3; 
-			//<-- генерим ранг 
 			
-			// определим тип энкаунтера
+			
+			
 			if (rand(1) == 0) sEncType = "war";
 			else sEncType = "peace";
 			
-			//Начинаем перебирать локаторы и логинить фантомов
+			
 			if (sEncType == "war")
 			{
 				model[0] = "canib_1";
@@ -501,7 +501,7 @@ bool LAi_CreateEncounters(ref location)
 				{
 					chr = GetCharacter(NPC_GenerateCharacter(str + i, model[iMassive], "man", "man", iRank, PIRATE, 1, true, "native"));
 					SetFantomParamFromRank(chr, iRank, true);
-					//Получим локатор для логина
+					
 					if (iEncrnd > 0)
 					{
 						rItm = ItemsFromID("fire");
@@ -520,14 +520,14 @@ bool LAi_CreateEncounters(ref location)
 						ChangeCharacterAddressGroup(chr, location.id, encGroup, locator);
 						LAi_SetStayType(chr);
 					}
-					// первый амулет Калеуче
+					
 					if (CheckAttribute(pchar, "questTemp.Caleuche.SeekAmulet") && i == 0 && drand(2) == 1) 
 					{
 						GiveItem2Character(chr, "kaleuche_amulet1");
 						chr.SaveItemsForDead = true;
 						chr.DontClearDead = true;
 					}
-					// <--
+					
 					chr.dialog.filename = "Enc_Carib_dialog.c";
 					chr.greeting = "indiano"; 
 					chr.name = GetIndianName(MAN);
@@ -556,7 +556,7 @@ bool LAi_CreateEncounters(ref location)
 			pchar.quest.(str).win_condition.l1.locator_group = "encdetector";
 			pchar.quest.(str).win_condition.l1.locator = encGroup;
 			pchar.quest.(str).win_condition = "LandEnc_CaribBegin";
-			pchar.quest.(str).EncQty = num; //кол-во бандитов
+			pchar.quest.(str).EncQty = num; 
 			pchar.quest.(str).LocIdx = location.index;
 			pchar.GenQuest.LandEnc.LocId = location.id;
 			str = "TimeCarib_" + location.index;
@@ -568,17 +568,17 @@ bool LAi_CreateEncounters(ref location)
 			pchar.quest.(str).LocIdx = location.index;
 		break;
 		
-		//------------------ Спасаем девку в пампасах ----------------------
+		
 		case 2:				
 			if(rand(12) > 6) return false;	
-			if(CheckAttribute(location, "onUninhabitedIsland") || location.type == "seashore" || location.type == "mayak") return false; // На необитаемых  островах, маяках и бухтах нельзя
-			num = GetAttributesNum(grp); //кол-во локаторов 
+			if(CheckAttribute(location, "onUninhabitedIsland") || location.type == "seashore" || location.type == "mayak") return false; 
+			num = GetAttributesNum(grp); 
 			if (num < 2) return false;
 			if(CheckAttribute(pchar, "GenQuest.EncGirl")) return false;		
 			if (CheckAttribute(pchar, "questTemp.Sharlie.Lock")) return false;
 			if (CheckAttribute(pchar, "questTemp.Sharlie.DefendSP")) return false;
 			if (!CheckAttribute(location, "locators.reload.reloadW_back"))
-			{//--------------- обычная девка в джунглях ---------------				
+			{
 				if (sti(pchar.rank) > 6) 
 				{
 					if (sti(pchar.rank) > 20) iRank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*2.5/num);
@@ -586,14 +586,14 @@ bool LAi_CreateEncounters(ref location)
 				}
 				else iRank = sti(pchar.rank);
 	
-				//<-- генерим ранг 
+				
 				LAi_group_Delete("EnemyFight");
 				LAi_group_Delete("LandEncGroup");
 				LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], true);
 				LAi_SetFightMode(pchar, false);
 				LAi_LockFightMode(pchar, true);
 				chrDisableReloadToLocation = true;
-				//Начинаем перебирать локаторы и логинить фантомов
+				
 				model[0] = "citiz_41";
 				model[1] = "citiz_42";
 				model[2] = "citiz_43";
@@ -610,14 +610,14 @@ bool LAi_CreateEncounters(ref location)
 					iMassive = rand(9);
 					if (model[iMassive] != "")
 					{
-						//Получим локатор для логина
+						
 						locator = GetAttributeName(GetAttributeN(grp, i));
 						if (i == 0)
 						{	
-							switch(rand(2)) // генерим один из вариантов начала квеста
+							switch(rand(2)) 
 							{
 								case 0:
-									Log_QuestInfo("Девица в джунглях : сгенерился вариант 1");
+									Log_QuestInfo("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1");
 									iChar =	NPC_GenerateCharacter("CangGirl", "women_"+(rand(5)+11), "woman", "towngirl", 5, iNation, -1, false, "citizen");
 									chr = &characters[iChar];
 									chr.dialog.filename = "Enc_RapersGirl_dialog.c";
@@ -625,7 +625,7 @@ bool LAi_CreateEncounters(ref location)
 									pchar.GenQuest.EncGirl = "Begin_1";
 								break;
 								case 1:	
-									Log_QuestInfo("Девица в джунглях : сгенерился вариант 2");	
+									Log_QuestInfo("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2");	
 									iChar =	NPC_GenerateCharacter("CangGirl", "women_"+(rand(5)+11), "woman", "towngirl", 5, iNation, -1, false, "citizen");
 									chr = &characters[iChar];
 									chr.dialog.filename = "Enc_RapersGirl_dialog.c";
@@ -634,7 +634,7 @@ bool LAi_CreateEncounters(ref location)
 									pchar.GenQuest.EncGirl.Horse = true;									
 								break;
 								case 2:								
-									Log_QuestInfo("Девица в джунглях : сгенерился вариант 3");
+									Log_QuestInfo("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ : пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 3");
 									iChar =	NPC_GenerateCharacter("CangGirl", "women_"+(rand(5)+11), "woman", "towngirl", 5, iNation, -1, false, "citizen");
 									chr = &characters[iChar];
 									chr.dialog.filename = "Enc_RapersGirl_dialog.c";
@@ -651,9 +651,9 @@ bool LAi_CreateEncounters(ref location)
 							LAi_ActorDialog(chr, pchar, "", -1, 0);  
 							LAi_SetCheckMinHP(chr, LAi_GetCharacterHP(chr)-1, false, "LandEnc_RapersBeforeDialog");
 							str = location.index;
-							pchar.GenQuest.EncGirl.city = sCity; //  город девицы
-							pchar.GenQuest.EncGirl.nation = iNation; //нация для слухов 
-							pchar.GenQuest.EncGirl.name = GetFullName(chr); //имя девицы
+							pchar.GenQuest.EncGirl.city = sCity; 
+							pchar.GenQuest.EncGirl.nation = iNation; 
+							pchar.GenQuest.EncGirl.name = GetFullName(chr); 
 							pchar.GenQuest.EncGirl.LocIdx = location.index; 
 							chr.city = sCity;
 							i++;
@@ -678,14 +678,14 @@ bool LAi_CreateEncounters(ref location)
 				pchar.GenQuest.EncGirl.variant = rand(iRnd);	
 				pchar.GenQuest.EncGirl.item = GenQuest_GenerateArtefact();
 				pchar.GenQuest.EncGirl.sum  =  500 * (sti(pchar.rank) + 10) + rand(5000);
-				sGlobalTemp = "";//состояние квеста на выходе из локации, нулим
-				//--> сюрприз для любителей просто свалить из локации
+				sGlobalTemp = "";
+				
 				pchar.quest.LandEnc_RapersBadExit.win_condition.l1 = "ExitFromLocation";
 				pchar.quest.LandEnc_RapersBadExit.win_condition.l1.location = pchar.location;
 				pchar.quest.LandEnc_RapersBadExit.win_condition = "LandEnc_RapersBadExit";
 			}
 			else
-			{//--------------- замануха в колодец -------------------
+			{
 				LAi_group_Delete("LandEncGroup");
     			aref arRld, arDis;
 				makearef(arRld, Locations[sti(location.index)].reload);
@@ -696,10 +696,10 @@ bool LAi_CreateEncounters(ref location)
     				arDis = GetAttributeN(arRld, a);
     				if (arDis.name == "reloadW_back")
     				{
-						str = arDis.go; //ID смежной локации, куда ведет колодец
+						str = arDis.go; 
     				}
     			}
-				if (str == "none") return false; //на всякий случай
+				if (str == "none") return false; 
 				
 				locator = GetAttributeName(GetAttributeN(grp, 1));
 				chr =	GetCharacter(NPC_GenerateCharacter("FriendGirl", "women_"+(rand(5)+11), "woman", "towngirl", 5, iNation, 0, false, "citizen"));
@@ -710,15 +710,15 @@ bool LAi_CreateEncounters(ref location)
 				LAi_SetActorType(chr);
 				LAi_group_MoveCharacter(chr, "LandEncGroup");
 				LAi_ActorDialog(chr, pchar, "", -1, 0); 
-				pchar.GenQuest.EncGirlF.locationId = str; //ID локации
-				pchar.GenQuest.EncGirlF.nation = iNation; //нация для слухов 
-				pchar.GenQuest.EncGirlF.name = GetFullName(chr); //имя девки
+				pchar.GenQuest.EncGirlF.locationId = str; 
+				pchar.GenQuest.EncGirlF.nation = iNation; 
+				pchar.GenQuest.EncGirlF.name = GetFullName(chr); 
 				pchar.quest.Enc_FriendGirl_after.win_condition.l1 = "NPC_Death";
 				pchar.quest.Enc_FriendGirl_after.win_condition.l1.character = "FriendGirl";
 				pchar.quest.Enc_FriendGirl_after.win_condition = "Enc_FriendGirl_after";				
 			}						
 		break;
-		//------------------ Праздношатающиеся индейцы ----------------------Jason
+		
 		case 3:
 			LAi_group_Delete("LandEncGroup");
 			if (rand(10) > 7) return false;	
@@ -737,21 +737,21 @@ bool LAi_CreateEncounters(ref location)
 			chr.Merchant.type = "indian";
 			chr.money = TRADER_MIN_MONEY;
 		break;
-		//------------------ Военный патруль ----------------------
+		
 		case 4:
 			if (rand(10) > 3) return false;
 			if (CheckAttribute(pchar, "questTemp.Sharlie.Lock")) return false;
 			if (CheckAttribute(pchar, "questTemp.Sharlie.DefendSP")) return false;
-			if(CheckAttribute(location, "onUninhabitedIsland")) return false; // На необитаемых нельзя
-			//--> генерим ранг. военному патрулю палец в рот не клади и на начальных уровнях.
-			num = GetAttributesNum(grp); //кол-во человек в патруле
+			if(CheckAttribute(location, "onUninhabitedIsland")) return false; 
+			
+			num = GetAttributesNum(grp); 
 			if (num <= 0) num = 1;
 			if (sti(pchar.rank) > 14) iRank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*2.5/num);
 			else iRank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*1.6/num);
-			//<-- генерим ранг 
-			//Начинаем перебирать локаторы и логинить фантомов
+			
+			
 			str = "Patrol"+ location.index + "_";
-			string sGroup = "PatrolGroup_" + location.index; //имя группы
+			string sGroup = "PatrolGroup_" + location.index; 
 			LAi_group_Register("PatrolGroup_" + location.index);
 			for(i = 0; i < num; i++)
 			{
@@ -765,7 +765,7 @@ bool LAi_CreateEncounters(ref location)
 					if (i == 3)
 					{
 						chr = GetCharacter(NPC_GenerateCharacter(str + i, "mush_" + NationShortName(iNation) + "_" +(rand(2)+1), "man", "mushketer", iRank, iNation, 1, false, "soldier"));
-						//SetFantomParamFromRank(chr, iRank, true);
+						
 					}
 					else
 					{
@@ -781,7 +781,7 @@ bool LAi_CreateEncounters(ref location)
 				LAi_SetStayType(chr);
 				LAi_SetCheckMinHP(chr, LAi_GetCharacterHP(chr)-1, false, "LandEnc_PatrolBeforeDialog");
 				LAi_group_MoveCharacter(chr, sGroup);
-				//Получим локатор для логина
+				
 				locator = GetAttributeName(GetAttributeN(grp, i));
 				ChangeCharacterAddressGroup(chr, location.id, encGroup, locator);
 			}
@@ -794,7 +794,7 @@ bool LAi_CreateEncounters(ref location)
 			pchar.quest.(str).win_condition.l1.locator_group = "encdetector";
 			pchar.quest.(str).win_condition.l1.locator = encGroup;
 			pchar.quest.(str).win_condition = "LandEnc_PatrolBegin";
-			pchar.quest.(str).EncQty = num; //кол-во патрульных
+			pchar.quest.(str).EncQty = num; 
 			pchar.quest.(str).LocIdx = location.index; 
 			str = "TimePatrol_" + location.index;
 			pchar.quest.(str).win_condition.l1            = "Timer";
@@ -804,19 +804,19 @@ bool LAi_CreateEncounters(ref location)
 			pchar.quest.(str).win_condition               = "LandEnc_PatrolOver";	
 			pchar.quest.(str).LocIdx = location.index;
 			str = location.index;
-			pchar.GenQuest.(str).nation = iNation; //нация патруля для слухов 
+			pchar.GenQuest.(str).nation = iNation; 
 		break;
 		
-		// --------------------------------- Беглые каторжники -------------------------------------
+		
 		case 5:
 			if(rand(15) > 3 || CheckAttribute(pchar, "GenQuest.Convict") || location.type == "seashore" || location.type == "mayak" ) return false;	
-			if(CheckAttribute(location, "onUninhabitedIsland")) return false; // На необитаемых нельзя		
+			if(CheckAttribute(location, "onUninhabitedIsland")) return false; 
 			if (sAreal == "Panama") return false;
 			if (CheckAttribute(pchar, "questTemp.Sharlie.Lock")) return false;
-			num = GetAttributesNum(grp); //кол-во человек в группе
+			num = GetAttributesNum(grp); 
 			if(num <= 1) return false;
 			if (num <= 2) num = 2;
-			iRank = 2 + rand(3); //ранг каторжан
+			iRank = 2 + rand(3); 
 						
 			model[0] = "prizon_1";
 			model[1] = "prizon_2";
@@ -849,7 +849,7 @@ bool LAi_CreateEncounters(ref location)
 					chr.dialog.currentnode = "First time";
 					chr.greeting = "convict"; 
 					chr.city = sCity;
-					LAi_SetImmortal(chr, true); // До поры нельзя убить
+					LAi_SetImmortal(chr, true); 
 					LAi_SetActorTypeNoGroup(chr);
 						
 					if(i == 0)
@@ -877,19 +877,19 @@ bool LAi_CreateEncounters(ref location)
 			if(iRnd > 5 && iRnd < 8) pchar.GenQuest.Convict.variant = 2;
 			if(iRnd >= 8) pchar.GenQuest.Convict.variant = 3;				
 			pchar.GenQuest.Convict.var = rand(2);
-			Log_TestInfo("Каторжане: сгенерился квест");			
+			Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");			
 		break
 				
-		// Warship, 15.05.11. Генер "Правосудие на продажу".
+		
 		case 6:
 			if (rand(10) > 6 && !bBettaTestMode) return false;
 			if(CheckAttribute(PChar, "GenQuest.JusticeOnSale")) return false;
 			if(CheckAttribute(PChar, "questTemp.Sharlie.Lock")) return false;
-			if(CheckAttribute(location, "onUninhabitedIsland") || location.type == "seashore" || location.type == "mayak") return false; // На необитаемых нельзя
-			num = GetAttributesNum(grp) - rand(2); //кол-во человек в банде
-			if (num <= 0 ) num = 1; //если локаторов меньше четырех
+			if(CheckAttribute(location, "onUninhabitedIsland") || location.type == "seashore" || location.type == "mayak") return false; 
+			num = GetAttributesNum(grp) - rand(2); 
+			if (num <= 0 ) num = 1; 
 			
-			//--> генерим ранг 
+			
 			if (sti(pchar.rank) > 6) 
 			{
 				if (sti(pchar.rank) > 20) iRank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*2.5/num);
@@ -897,8 +897,8 @@ bool LAi_CreateEncounters(ref location)
 			}
 			else iRank = sti(pchar.rank); 
 			
-			//<-- генерим ранг 
-			//Начинаем перебирать локаторы и логинить фантомов
+			
+			
 			model[0] = "citiz_41";
 			model[1] = "citiz_42";
 			model[2] = "citiz_43";
@@ -945,15 +945,15 @@ bool LAi_CreateEncounters(ref location)
 			PChar.Quest.JusticeOnSale_LocationExit.win_condition.l1.location = PChar.location;
 			PChar.Quest.JusticeOnSale_LocationExit.function = "JusticeOnSale_LocationExit";
 			
-			Log_TestInfo("Сгенерился квест 'Правосудие на продажу'");
-			Log_TestInfo("Имя контрика: " + PChar.GenQuest.JusticeOnSale.SmugglerName);
-			Log_TestInfo("Id бухты: " + PChar.GenQuest.JusticeOnSale.ShoreId);
+			Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ'");
+			Log_TestInfo("пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + PChar.GenQuest.JusticeOnSale.SmugglerName);
+			Log_TestInfo("Id пїЅпїЅпїЅпїЅпїЅ: " + PChar.GenQuest.JusticeOnSale.ShoreId);
 		break;
 		
-		// Warship 05.08.09 Генер "Пираты на необитайке"
-		// Pirates on a uninhabited island
+		
+		
 		case 7:
-			// Если reload_cur_island_index > -1 значит, ГГ пришел с моря
+			
 			if(num <= 0) return false;
 			if(rand(4) == 1 && CheckAttribute(location, "onUninhabitedIsland") && !CheckAttribute(location, "deadlocked") && !CheckAttribute(PChar, "GenQuest.PiratesOnUninhabited") && !CheckAttribute(pchar, "GenQuest.ShipWreck") && reload_cur_island_index > -1)
 			{
@@ -971,7 +971,7 @@ bool LAi_CreateEncounters(ref location)
 				i = 0;
 				iRank = sti(PChar.rank) + MOD_SKILL_ENEMY_RATE;
 				
-				num = 2 + makeint(MOD_SKILL_ENEMY_RATE / 3) + dRand(1); // Кол-во пиратов
+				num = 2 + makeint(MOD_SKILL_ENEMY_RATE / 3) + dRand(1); 
 				PChar.GenQuest.PiratesOnUninhabited.PiratesQty = num;
 				
 				while(i < num)
@@ -984,11 +984,11 @@ bool LAi_CreateEncounters(ref location)
 						SetFantomParamFromRank(chr, iRank, true);
 						locator = GetAttributeName(GetAttributeN(grp, i));
 						ChangeCharacterAddressGroup(chr, location.id, encGroup, locator);
-						//ChangeCharacterAddressGroup(chr, location.id, "goto", "goto" + (i + 1));
+						
 						chr.dialog.filename = "GenQuests_Dialog.c";
 						chr.dialog.currentnode = "First time";
-						chr.greeting = "robinzons_1"; // Enc_Raiders
-						LAi_SetImmortal(chr, true); // До поры нельзя убить
+						chr.greeting = "robinzons_1"; 
+						LAi_SetImmortal(chr, true); 
 						LAi_SetActorTypeNoGroup(chr);
 						
 						if(i == 0)
@@ -1012,11 +1012,11 @@ bool LAi_CreateEncounters(ref location)
 				PChar.quest.PiratesOnUninhabited_LocExit.win_condition.l1.location = PChar.location;
 				PChar.quest.PiratesOnUninhabited_LocExit.function = "PiratesOnUninhabited_LocationExit";
 				
-				Log_TestInfo("Пираты на необитайке: сгенерился квест");
+				Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");
 			}
 		break;
 		
-		// --------------------------------- Потерпевшие кораблекрушение -------------------------------------
+		
 		case 8:
 			if(num <= 0) return false;
 			if(rand(4) == 1 && !CheckAttribute(pchar, "GenQuest.PiratesOnUninhabited") && !CheckAttribute(pchar, "GenQuest.ShipWreck") && pchar.location == pchar.location.from_sea)
@@ -1035,9 +1035,9 @@ bool LAi_CreateEncounters(ref location)
 				i = 0;
 				iRank = sti(pchar.rank) + MOD_SKILL_ENEMY_RATE;
 				
-				num = 3 + dRand(5); // Кол-во кораблекрушенцев
+				num = 3 + dRand(5); 
 				pchar.GenQuest.ShipWreck.Qty = num;	
-				pchar.GenQuest.ShipWreck.Nation = drand(3); // нация
+				pchar.GenQuest.ShipWreck.Nation = drand(3); 
 				pchar.GenQuest.ShipWreck.Prize = GenQuest_GeneratePrize();
 				
 				while(i < num)
@@ -1050,13 +1050,13 @@ bool LAi_CreateEncounters(ref location)
 						SetFantomParamFromRank(chr, iRank, true);
 						locator = GetAttributeName(GetAttributeN(grp, i));
 						ChangeCharacterAddressGroup(chr, location.id, encGroup, locator);
-						//ChangeCharacterAddressGroup(chr, location.id, "goto", "goto" + (i + 1));
+						
 						FaceMaker(chr);
 						CirassMaker(chr);
 						chr.dialog.filename = "GenQuests_Dialog.c";
 						chr.dialog.currentnode = "First time";
-						chr.greeting = "robinzons_2"; // Enc_Raiders
-						LAi_SetImmortal(chr, true); // До поры нельзя убить
+						chr.greeting = "robinzons_2"; 
+						LAi_SetImmortal(chr, true); 
 						LAi_SetActorTypeNoGroup(chr);
 						
 						if(i == 0)
@@ -1079,18 +1079,18 @@ bool LAi_CreateEncounters(ref location)
 					}
 				}
 				SetFunctionExitFromLocationCondition("ShipWreck_LocationExit", pchar.location, false);				
-				Log_TestInfo("Кораблекрушенцы: сгенерился квест");				
+				Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");				
 			}
 		break;
 	}
 	return true;
 }
 
-bool LAi_CreateCaveEncounters(ref location) // Jason 061012 пещерные энкаунтеры
+bool LAi_CreateCaveEncounters(ref location) 
 {
 	if (CheckAttribute(location, "type") && location.type == "cave")
 	{
-		if (!bLandEncountersGen) //если прерывание на локацию, энкаунтеров не генерим
+		if (!bLandEncountersGen) 
 		{		
 			bLandEncountersGen = true;
 			return false;
@@ -1099,10 +1099,10 @@ bool LAi_CreateCaveEncounters(ref location) // Jason 061012 пещерные энкаунтеры
 		if (CheckAttribute(location, "enc") && GetNpcQuestPastDayParam(location, "enc") < 1) return false;
 		if (findsubstr(location.id, "Ksochitam_" , 0) != -1 || findsubstr(location.id, "mine_" , 0) != -1) return false;
 		if (CheckAttribute(pchar, "questTemp.Sharlie.Lock")) return false;
-		if (location.id == "Bermudes_Cavern" || location.id == "FortFrance_Dungeon") return false; // patch
+		if (location.id == "Bermudes_Cavern" || location.id == "FortFrance_Dungeon") return false; 
 		if (drand(12) > 5) return false;
 		
-		//log_Testinfo("Работают пещерные энкаунтеры");
+		
 		ref chr, rItm;
 		int i, num, iMassive;
 		string str, locator, sItm, sJew, sGem, sMin;
@@ -1111,7 +1111,7 @@ bool LAi_CreateCaveEncounters(ref location) // Jason 061012 пещерные энкаунтеры
 		int iRank = 8+sti(pchar.rank)+makeint(MOD_SKILL_ENEMY_RATE)/2;
 		switch(rand(4))
 		{
-			case 0: // бандюки
+			case 0: 
 				str = "CaveBandos"+ location.index + "_";
 				num = 4;
 				i = 0;
@@ -1136,7 +1136,7 @@ bool LAi_CreateCaveEncounters(ref location) // Jason 061012 пещерные энкаунтеры
 						chr.dialog.filename = "CaveEnc_dialog.c";
 						chr.greeting = "banditos";
 						LAi_SetCheckMinHP(chr, LAi_GetCharacterHP(chr)-1, false, "CaveEnc_RaidersBeforeDialog"); 
-						if(!CheckAttribute(location, "nofire")) // вокруг костра
+						if(!CheckAttribute(location, "nofire")) 
 						{
 							chr.dialog.currentnode = "CaveBanditosSit";
 							rItm = ItemsFromID("fire");
@@ -1149,7 +1149,7 @@ bool LAi_CreateCaveEncounters(ref location) // Jason 061012 пещерные энкаунтеры
 							ChangeCharacterAddressGroup(chr, location.id, "goto", locator);
 							LAi_SetGroundSitTypeNoGroup(chr);
 						}
-						else // стоймя
+						else 
 						{
 							chr.dialog.currentnode = "CaveBanditosStay";
 							GetCharacterPos(pchar, &locx, &locy, &locz);
@@ -1157,7 +1157,7 @@ bool LAi_CreateCaveEncounters(ref location) // Jason 061012 пещерные энкаунтеры
 							LAi_SetGuardianType(chr);
 							chr.protector = true;
 						}
-						if (drand(14) == 1) // кладокопатели
+						if (drand(14) == 1) 
 						{
 							chr.dialog.currentnode = "CaveBanditosTreasure";
 							chr.SaveItemsForDead = true;
@@ -1189,7 +1189,7 @@ bool LAi_CreateCaveEncounters(ref location) // Jason 061012 пещерные энкаунтеры
 				SaveCurrentNpcQuestDateParam(location, "enc");
 			break;
 			
-			case 1: // карибы
+			case 1: 
 				str = "CaveBandos"+ location.index + "_";
 				num = 4;
 				i = 0;
@@ -1216,7 +1216,7 @@ bool LAi_CreateCaveEncounters(ref location) // Jason 061012 пещерные энкаунтеры
 						chr.name = GetIndianName(MAN);
 						chr.lastname = "";
 						LAi_SetCheckMinHP(chr, LAi_GetCharacterHP(chr)-1, false, "CaveEnc_RaidersBeforeDialog"); 
-						if(!CheckAttribute(location, "nofire")) // вокруг костра
+						if(!CheckAttribute(location, "nofire")) 
 						{
 							chr.dialog.currentnode = "CaveCaribSit";
 							rItm = ItemsFromID("fire");
@@ -1229,7 +1229,7 @@ bool LAi_CreateCaveEncounters(ref location) // Jason 061012 пещерные энкаунтеры
 							ChangeCharacterAddressGroup(chr, location.id, "goto", locator);
 							LAi_SetGroundSitTypeNoGroup(chr);
 						}
-						else // стоймя
+						else 
 						{
 							chr.dialog.currentnode = "CaveCaribStay";
 							GetCharacterPos(pchar, &locx, &locy, &locz);
@@ -1237,7 +1237,7 @@ bool LAi_CreateCaveEncounters(ref location) // Jason 061012 пещерные энкаунтеры
 							LAi_SetGuardianType(chr);
 							chr.protector = true;
 						}
-						if (drand(10) == 0) // богатенькие
+						if (drand(10) == 0) 
 						{
 							chr.SaveItemsForDead = true;
 							if (drand(3) == 0) TakeNItems(chr, "jewelry5", drand(100));
@@ -1260,7 +1260,7 @@ bool LAi_CreateCaveEncounters(ref location) // Jason 061012 пещерные энкаунтеры
 				SaveCurrentNpcQuestDateParam(location, "enc");
 			break;
 			
-			case 2: // мирный индеец
+			case 2: 
 				str = "CaveWalker"+location.index;
 				chr = GetCharacter(NPC_GenerateCharacter(str, "miskito_"+(rand(5)+1), "man", "man", iRank, PIRATE, 1, true, "native"));
 				SetFantomParamFromRank(chr, iRank, true);
@@ -1277,7 +1277,7 @@ bool LAi_CreateCaveEncounters(ref location) // Jason 061012 пещерные энкаунтеры
 				SaveCurrentNpcQuestDateParam(location, "enc");
 			break;
 			
-			case 3: // скелеты с лутом
+			case 3: 
 				if(CheckAttribute(location, "id.label") && location.id.label == "Grot") return false;
 				str = "CaveSkelet"+ location.index + "_";
 				sTotalTemp = str;
@@ -1296,7 +1296,7 @@ bool LAi_CreateCaveEncounters(ref location) // Jason 061012 пещерные энкаунтеры
 				SaveCurrentNpcQuestDateParam(location, "enc");
 			break;
 			
-			case 4: // заполним сундук
+			case 4: 
 				str = location.id;
 				sJew = "jewelry"+(drand(11)+12);
 				sGem = "jewelry"+(drand(5)+1);

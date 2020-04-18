@@ -1,4 +1,4 @@
-// Жаклин Тьюрам - торговый капитан
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -32,29 +32,29 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				dialog.text = "Аh, "+GetFullName(pchar)+"! "+TimeGreeting()+"! Want something?";
+				dialog.text = "пїЅh, "+GetFullName(pchar)+"! "+TimeGreeting()+"! Want something?";
 				link.l1 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
 				link.l1.go = "rumours_LSC";
 				link.l2 = "I want to ask you a few questions about the island.";
-				link.l2.go = "int_quests"; //информационный блок
+				link.l2.go = "int_quests"; 
 				link.l5 = "Just wanted to know how are you doing. See you!";
 				link.l5.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
-		case "meeting": // первая встреча
+		case "meeting": 
 			dialog.text = "Jacqueline Turam. Two years ago I was a decent and wealthy merchant, an owner and a captain of my own flute. Alas, now I am as poor as a church mouse and I can't hope that my situation will change somehow\nSome people get lucky here - they find jewels, gold, ships filled with treasures, but I am not one of them. I found only a chest with doubloons and few trinkets\nAt least that's enough to buy food, so I don't starve... Pleasure to meet you, serah, I don't mind chatting...";
 			link.l1 = "I am glad to meet you too, Jacqueline. See you!";
 			link.l1.go = "exit";
 			link.l2 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
 			link.l2.go = "rumours_LSC";
 			link.l3 = "I want to ask you a few questions about the island.";
-			link.l3.go = "int_quests"; //информационный блок
+			link.l3.go = "int_quests"; 
 			NextDiag.TempNode = "First time";
 		break;
 		
-//--------------------------------------- блок вопросов и ответов ---------------------------------------------
+
 		case "int_quests":
 			dialog.text = "I am all ears.";
 			if (!CheckAttribute(npchar, "quest.answer_1"))
@@ -89,7 +89,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ansewer_2":
-			dialog.text = "I live like the rest of locals - I just live. I search valuables at the outer ring and exchange them for food. I dream about finding an Indian king's chest filled with treasures… Or at least a galleon with Spanish gold, he-he. Don't pay much attention, it's just me\nI dream about eating something different from corned beef and fish. Eh, there was a man here, he was hunting those giant crabs. I used to pay five doubloons for a claw and feed on it for several days\nPity that the hunter died... though I can't say that it wasn't expected - hunting those things is a very dangerous activity.";
+			dialog.text = "I live like the rest of locals - I just live. I search valuables at the outer ring and exchange them for food. I dream about finding an Indian king's chest filled with treasuresпїЅ Or at least a galleon with Spanish gold, he-he. Don't pay much attention, it's just me\nI dream about eating something different from corned beef and fish. Eh, there was a man here, he was hunting those giant crabs. I used to pay five doubloons for a claw and feed on it for several days\nPity that the hunter died... though I can't say that it wasn't expected - hunting those things is a very dangerous activity.";
 			link.l1 = "I see...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_2 = "true";
@@ -108,10 +108,10 @@ void ProcessDialogEvent()
 			link.l1.go = "int_quests";
 			npchar.quest.answer_4 = "true";
 		break;
-// <-- блок вопросов и ответов
+
 		
-//----------------------------------------- специальные реакции -----------------------------------------------
-		//обнаружение ГГ в сундуках
+
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
 			link.l1 = "Damn it!";
@@ -139,7 +139,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//замечание по обнаженному оружию
+		
 		case "LSCNotBlade":
 			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
 			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
@@ -161,7 +161,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;
-// <-- специальные реакции
+
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

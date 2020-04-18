@@ -1,4 +1,4 @@
-//Jason диалог индейцев в джунглях
+
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -36,10 +36,10 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		case "select_trade": //индейская торговля
+		case "select_trade": 
 			switch (drand(7))
 			{
-				case 0: // торговля через интерфейс
+				case 0: 
 					dialog.text = "You're in luck, white brother. "+npchar.name+" has some stuff for sale. Look here.";
 					link.l1 = "Show your goods...";
 					link.l1.go = "torg";
@@ -53,13 +53,13 @@ void ProcessDialogEvent()
 					}
 				break;
 				
-				case 1: // не торгует
+				case 1: 
 					dialog.text = "No, white brother. "+npchar.name+" doesn't trade. "+npchar.name+" -  is a warrior.";
 					link.l1 = "I see. Alright, farewell, red-skinned brother.";
 					link.l1.go = "exit";
 				break;
 				
-				case 2: // жемчуг большой
+				case 2: 
 					npchar.quest.item.qty = 25+drand(25);
 					npchar.quest.item.price = 30+drand(10);
 					dialog.text = ""+npchar.name+" has tears of gods. Big ones, white brother. In all "+FindRussianQtyString(sti(npchar.quest.item.qty))+". You want buy they? I will sell for "+FindRussianMoneyString(sti(npchar.quest.item.price))+" for one.";
@@ -77,7 +77,7 @@ void ProcessDialogEvent()
 					}
 				break;
 				
-				case 3: // жемчуг малый
+				case 3: 
 					npchar.quest.item.qty = 40+drand(40);
 					npchar.quest.item.price = 10+drand(5);
 					dialog.text = ""+npchar.name+" has tears of gods. Small ones, white brother. In all "+FindRussianQtyString(sti(npchar.quest.item.qty))+". You want buy they? I will sell for "+FindRussianMoneyString(sti(npchar.quest.item.price))+" for one.";
@@ -95,7 +95,7 @@ void ProcessDialogEvent()
 					}
 				break;
 				
-				case 4: //золотые самородки
+				case 4: 
 					npchar.quest.item.qty = 20+drand(20);
 					npchar.quest.item.price = 90+drand(20);
 					dialog.text = ""+npchar.name+" has yellow metal that you palefaces love a lot. In all "+FindRussianQtyString(sti(npchar.quest.item.qty))+". I sell cheap, just for "+FindRussianMoneyString(sti(npchar.quest.item.price))+" for one.";
@@ -113,7 +113,7 @@ void ProcessDialogEvent()
 					}
 				break;
 				
-				case 5: // серебряные самородки
+				case 5: 
 					npchar.quest.item.qty = 40+drand(40);
 					npchar.quest.item.price = 40+drand(10);
 					dialog.text = ""+npchar.name+" has white metal that you palefaces love a lot. In all "+FindRussianQtyString(sti(npchar.quest.item.qty))+". I sell cheap, just for "+FindRussianMoneyString(sti(npchar.quest.item.price))+"  for one.";
@@ -131,7 +131,7 @@ void ProcessDialogEvent()
 					}
 				break;
 				
-				case 6: // повтор через интерфейс
+				case 6: 
 					dialog.text = "You're in luck, white brother. "+npchar.name+" has some stuff for sale. Look here.";
 					link.l1 = "Show your goods...";
 					link.l1.go = "torg";
@@ -145,7 +145,7 @@ void ProcessDialogEvent()
 					}
 				break;
 				
-				case 7: // повтор не торгует
+				case 7: 
 					dialog.text = "No, white brother. "+npchar.name+"  doesn't trade. "+npchar.name+" -  is a warrior.";
 					link.l1 = "I see. Alright, farewell, red-skinned brother.";
 					link.l1.go = "exit";
@@ -165,7 +165,7 @@ void ProcessDialogEvent()
 			ChangeIndianRelation(0.25);
 		break;
 		
-		// большой жемчуг
+		
 		case "big_pearl":
 			dialog.text = "How many tears you want buy?";
 			link.l1 = "";
@@ -211,7 +211,7 @@ void ProcessDialogEvent()
 			ChangeIndianRelation(0.5);
 		break;
 		
-		// малый жемчуг
+		
 		case "small_pearl":
 			dialog.text = "How many tears you want buy?";
 			link.l1 = "";
@@ -257,7 +257,7 @@ void ProcessDialogEvent()
 			ChangeIndianRelation(0.5);
 		break;
 		
-		// золотые самородки
+		
 		case "gold":
 			dialog.text = "How many you want buy?";
 			link.l1 = "";
@@ -303,7 +303,7 @@ void ProcessDialogEvent()
 			ChangeIndianRelation(0.5);
 		break;
 		
-		// серебряные самородки
+		
 		case "silver":
 			dialog.text = "How many you want buy?";
 			link.l1 = "";
@@ -349,7 +349,7 @@ void ProcessDialogEvent()
 			ChangeIndianRelation(0.5);
 		break;
 		
-		// мангароса
+		
 		case "mangarosa":
 			dialog.text = "Manga Rosa? I want see it.";
 			link.l1 = "Here, take a look...";
@@ -381,7 +381,7 @@ void ProcessDialogEvent()
 			ChangeIndianRelation(0.5);
 		break;
 		
-		//замечание по обнаженному оружию от персонажей типа citizen
+		
 		case "CitizenNotBlade":
 			dialog.text = NPCharSexPhrase(NPChar, "You not tempt fate, paleface! Put away your sword!", "Listen - as a citizen of this town, I must ask you to restrain from walking around with an unsheathed blade.");
 			link.l1 = LinkRandPhrase("Fine.", "Okay.", "As you say...");
@@ -394,3 +394,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

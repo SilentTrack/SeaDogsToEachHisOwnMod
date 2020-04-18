@@ -1,4 +1,4 @@
-// Якоб ван Берг - злодей и пират, капитан Миража
+
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -45,7 +45,7 @@ void ProcessDialogEvent()
 		
 		case "HollJacob_inRoom_fight":
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.questTemp.HWIC.Holl.JacobCity+"_tavern_upstairs")], false);
-			pchar.quest.JacobOnMainOver.over = "yes";//снять таймер
+			pchar.quest.JacobOnMainOver.over = "yes";
 			chrDisableReloadToLocation = true;
 			LAi_group_MoveCharacter(npchar, "EnemyFight");
 			LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
@@ -102,7 +102,7 @@ void ProcessDialogEvent()
 			QuestAboardCabinDialogExitWithBattle("PrepareToBoom2"); 
 			DialogExit();	
 			AddDialogExitQuest("MainHeroFightModeOn");
-			pchar.GenQuest.Detonation = true; // patch-4
+			pchar.GenQuest.Detonation = true; 
 		break;
 }
 }

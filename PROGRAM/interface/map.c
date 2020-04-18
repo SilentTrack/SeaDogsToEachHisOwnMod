@@ -1,7 +1,7 @@
 string totalInfo = "";
 bool isSkipable = false;
 bool bEncType   = false;
-bool bShowVideo; // для показа квестовых роликов, если будут
+bool bShowVideo; 
 string  sQuestSeaCharId = "";
 
 void InitInterface(string iniName)
@@ -9,9 +9,9 @@ void InitInterface(string iniName)
 	EngineLayersOffOn(true);
 	SetTimeScale(0.0);
 	
-	// лочим квест и карту
+	
     bQuestCheckProcessFreeze = true;
-    bEncType = false; // обычный тип
+    bEncType = false; 
     bShowVideo = false;
     
     GameInterface.title = "title_map";
@@ -30,10 +30,10 @@ void InitInterface(string iniName)
 
 	SendMessage(&GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"INFO_TEXT",5);
 	
-	SetEventHandler("InterfaceBreak","ProcessBreakExit",0); // Выход на море
-	SetEventHandler("exitCancel","ProcessCancelExit",0); // Выход на море по крестику или Esc
-	SetEventHandler("ievnt_command","ProcCommand",0); // выход на карту только тут (по НЕТ)
-	SetEventHandler("evntDoPostExit","DoPostExit",0); // выход из интерфейса
+	SetEventHandler("InterfaceBreak","ProcessBreakExit",0); 
+	SetEventHandler("exitCancel","ProcessCancelExit",0); 
+	SetEventHandler("ievnt_command","ProcCommand",0); 
+	SetEventHandler("evntDoPostExit","DoPostExit",0); 
 	
 	EI_CreateFrame("INFO_BORDERS", 250,152,550,342);
 	PlaySound("interface\_EvShip"+rand(1)+".wav");
@@ -59,7 +59,7 @@ void IDoExit(int exitCode)
 	DelEventHandler("evntDoPostExit","DoPostExit");
 	
     SetTimeScale(1.0);
-	TimeScaleCounter = 0; //boal
+	TimeScaleCounter = 0; 
 	if(IsPerkIntoList("TimeSpeed"))
 	{	
 		DelPerkFromActiveList("TimeSpeed");
@@ -68,7 +68,7 @@ void IDoExit(int exitCode)
 	interfaceResultCommand = exitCode;
 	EndCancelInterface(true);
 	
-	PostEvent("StopQuestCheckProcessFreeze", 100);//boal 230804 заморозка проверки квестов
+	PostEvent("StopQuestCheckProcessFreeze", 100);
 }
 
 void ProcCommand()
@@ -85,7 +85,7 @@ void ProcCommand()
 				{
 					wdmEnterSeaQuest(sQuestSeaCharId);
 				}
-				// напасть
+				
 				IDoExit(RC_INTERFACE_MAP_EXIT);
 				wdmReloadToSea();
 			}
@@ -98,8 +98,8 @@ void ProcCommand()
 		case "B_CANCEL":
 			if(comName=="activate" || comName=="click")
 			{
-				//пропустить
-				//PostEvent("evntDoPostExit",1,"l",RC_INTERFACE_MAP_EXIT);
+				
+				
 				pchar.SkipEshipIndex = pchar.eshipIndex;
 				IDoExit(RC_INTERFACE_MAP_EXIT);
 			}	
@@ -116,10 +116,10 @@ void wdmRecalcReloadToSea()
 	totalInfo = "";
 	string loadScr = "";
 	int iRand;
-	//Encounters
+	
 	int numEncounters = wdmGetNumberShipEncounters();
 	int isShipEncounterType = 0;
-	//Log_TestInfo("Начинаем перебирать энкаунтеров");
+	
 	for(int i = 0; i < numEncounters; i++)
 	{
 		if(wdmSetCurrentShipData(i))
@@ -155,7 +155,7 @@ void wdmRecalcReloadToSea()
                 iNumWarShips = GetCharacterIndex(rEncounter.CharacterID);
                 if (iNumWarShips != -1)
                 {
-					sQuestSeaCharId = characters[iNumWarShips].id; // квестовый 
+					sQuestSeaCharId = characters[iNumWarShips].id; 
 					if (CheckAttribute(&characters[iNumWarShips], "mapEnc.Name"))
 					{
 						totalInfo = totalInfo + characters[iNumWarShips].mapEnc.Name;
@@ -237,7 +237,7 @@ void wdmRecalcReloadToSea()
 			
 			if(sti(rEncounter.Nation) < 0)
 			{
-        		totalInfo = totalInfo + "БАГА -1.";
+        		totalInfo = totalInfo + "пїЅпїЅпїЅпїЅ -1.";
       		}
 	        
 			if(iRealEncounterType != ENCOUNTER_TYPE_BARREL && iRealEncounterType != ENCOUNTER_TYPE_BOAT)
@@ -268,7 +268,7 @@ void wdmRecalcReloadToSea()
 			}
 		}
 	}
-	//Log_TestInfo("isShipEncounterType :" + isShipEncounterType);
+	
 	
 	if (isShipEncounterType > 1)
 	{
@@ -350,7 +350,7 @@ void CalculateInfoData()
 	}
 	if (pchar.space_press == "1") bEncType = false;
 	
-	if (bEncType && !bBettaTestMode) // спец тип не пропустить
+	if (bEncType && !bBettaTestMode) 
 	{
         SetSelectable("B_CANCEL",false);
 	}

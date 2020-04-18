@@ -18,7 +18,7 @@ void Island_Reload(string sIslandID, string sNewIslandModel)
 	}
 }
 
-//navy -->
+
 string Island_FindNearestLocator(string group, float x, float z)
 {
 	ref rIsland;
@@ -53,4 +53,4 @@ string Island_FindNearestLocator2PChar(string group)
 {
 	return Island_FindNearestLocator(group, stf(pchar.Ship.Pos.x), stf(pchar.Ship.Pos.z))
 }
-//navy <--
+

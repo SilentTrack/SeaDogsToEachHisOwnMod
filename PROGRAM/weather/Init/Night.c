@@ -1,13 +1,13 @@
 
-//0,1,2,3,4,5 - ночь
-//6,7,8,9,10 - утро
-//11,12,13,14,15,16,17,18 - день
+
+
+
 
 int Whr_InitNight(int n)
 {
 
-// ====================================================================
-// Night1
+
+
 
 	Weathers[n].id = "0 Hours";
 	Weathers[n].Hour.Min = 0;
@@ -141,7 +141,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea.SunRoad.Color1 = argb(0,50,10,0);
 	Weathers[n].Sea.SunRoad.Color2 = argb(0,50,50,50);
 	Weathers[n].Sea.SunRoad.Power = 0.0;
-	//угол, частота, высота волны в метрах, начальная позиция волны, скорость волны
+	
 	Weathers[n].Sea.Harmonics.h1 = "0.0, 2.0, 3.0, 0.0, 10.00";
 	Weathers[n].Sea.Harmonics.h2 = "90.0, 4.0, 1.5, 0.0, 50.00";
 	Weathers[n].Sea.Harmonics.h3 = "45.0, 7.0, 2.5, 0.0, 200.00";
@@ -155,8 +155,8 @@ int Whr_InitNight(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
-	Weathers[n].Sea2.PosShift = 1.0; //остроконечность волн
+	Weathers[n].Sea2.BumpScale = 0.05; 
+	Weathers[n].Sea2.PosShift = 1.0; 
 	
 	Weathers[n].Sea2.WaterColor = argb(0, 20, 30, 40);
 	Weathers[n].Sea2.SkyColor = argb(0, 155, 155, 155);
@@ -166,20 +166,20 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea2.Frenel = 0.3; 
 	Weathers[n].Sea2.Attenuation = 0.3;
 
-	Weathers[n].Sea2.Amp1 = 10.0; //амплитуда 1 волны
-	Weathers[n].Sea2.AnimSpeed1 = 0.5; //скорость анимации
-	Weathers[n].Sea2.Scale1 = 0.3; //размеры волны
-	Weathers[n].Sea2.MoveSpeed1 = "5.0, 0.0, 0.0"; //скорость движения
+	Weathers[n].Sea2.Amp1 = 10.0; 
+	Weathers[n].Sea2.AnimSpeed1 = 0.5; 
+	Weathers[n].Sea2.Scale1 = 0.3; 
+	Weathers[n].Sea2.MoveSpeed1 = "5.0, 0.0, 0.0"; 
 
 	Weathers[n].Sea2.Amp2 = 1.0;
 	Weathers[n].Sea2.AnimSpeed2 = 19.0;
 	Weathers[n].Sea2.Scale2 = 2.0;
 	Weathers[n].Sea2.MoveSpeed2 = "1.0, 0.0, 0.0";
 
-	Weathers[n].Sea2.FoamK = 0.03;//яркость пены по высоте 0.1 - пена яркая с 10 метров 1.0 через метр после начала
-	Weathers[n].Sea2.FoamV = 3.0;//высота с которой начинается пена
-	Weathers[n].Sea2.FoamUV = 1.0; //тайлинг пены
-	Weathers[n].Sea2.FoamTexDisturb = 0.7;//сдвиг по нормали. х.з. что это надо поюзать. значение от 0.0 до 1.0
+	Weathers[n].Sea2.FoamK = 0.03;
+	Weathers[n].Sea2.FoamV = 3.0;
+	Weathers[n].Sea2.FoamUV = 1.0; 
+	Weathers[n].Sea2.FoamTexDisturb = 0.7;
 
 	Weathers[n].Wind.Angle = 2.0;
 	Weathers[n].Wind.Speed.Min = 5.0;
@@ -187,8 +187,8 @@ int Whr_InitNight(int n)
 	
 	n++;
 
-// ====================================================================
-// Night1
+
+
 
 	Weathers[n].id = "1 hour";
 	Weathers[n].Hour.Min = 1;
@@ -322,7 +322,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea.SunRoad.Color1 = argb(0,50,10,0);
 	Weathers[n].Sea.SunRoad.Color2 = argb(0,50,50,50);
 	Weathers[n].Sea.SunRoad.Power = 0.0;
-	//угол, частота, высота волны в метрах, начальная позиция волны, скорость волны
+	
 	Weathers[n].Sea.Harmonics.h1 = "0.0, 2.0, 3.0, 0.0, 10.00";
 	Weathers[n].Sea.Harmonics.h2 = "90.0, 4.0, 1.5, 0.0, 50.00";
 	Weathers[n].Sea.Harmonics.h3 = "45.0, 7.0, 2.5, 0.0, 200.00";
@@ -336,8 +336,8 @@ int Whr_InitNight(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
-	Weathers[n].Sea2.PosShift = 1.0; //остроконечность волн
+	Weathers[n].Sea2.BumpScale = 0.05; 
+	Weathers[n].Sea2.PosShift = 1.0; 
 	
 	Weathers[n].Sea2.WaterColor = argb(0, 35, 30, 30);
 	Weathers[n].Sea2.SkyColor = argb(0, 155, 155, 155);
@@ -347,20 +347,20 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea2.Frenel = 0.3; 
 	Weathers[n].Sea2.Attenuation = 0.3;
 
-	Weathers[n].Sea2.Amp1 = 10.0; //амплитуда 1 волны
-	Weathers[n].Sea2.AnimSpeed1 = 0.5; //скорость анимации
-	Weathers[n].Sea2.Scale1 = 0.3; //размеры волны
-	Weathers[n].Sea2.MoveSpeed1 = "5.0, 0.0, 0.0"; //скорость движения
+	Weathers[n].Sea2.Amp1 = 10.0; 
+	Weathers[n].Sea2.AnimSpeed1 = 0.5; 
+	Weathers[n].Sea2.Scale1 = 0.3; 
+	Weathers[n].Sea2.MoveSpeed1 = "5.0, 0.0, 0.0"; 
 
 	Weathers[n].Sea2.Amp2 = 1.0;
 	Weathers[n].Sea2.AnimSpeed2 = 19.0;
 	Weathers[n].Sea2.Scale2 = 2.0;
 	Weathers[n].Sea2.MoveSpeed2 = "1.0, 0.0, 0.0";
 
-	Weathers[n].Sea2.FoamK = 0.035;//яркость пены по высоте 0.1 - пена яркая с 10 метров 1.0 через метр после начала
-	Weathers[n].Sea2.FoamV = 3.0;//высота с которой начинается пена
-	Weathers[n].Sea2.FoamUV = 1.0; //тайлинг пены
-	Weathers[n].Sea2.FoamTexDisturb = 0.7;//сдвиг по нормали. х.з. что это надо поюзать. значение от 0.0 до 1.0
+	Weathers[n].Sea2.FoamK = 0.035;
+	Weathers[n].Sea2.FoamV = 3.0;
+	Weathers[n].Sea2.FoamUV = 1.0; 
+	Weathers[n].Sea2.FoamTexDisturb = 0.7;
 
 	Weathers[n].Wind.Angle = 2.0;
 	Weathers[n].Wind.Speed.Min = 5.0;
@@ -368,8 +368,8 @@ int Whr_InitNight(int n)
 	
 	n++;
 
-// ====================================================================
-// Night2
+
+
 
 	Weathers[n].id = "2 Hours";
 	Weathers[n].Hour.Min = 2;
@@ -503,7 +503,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea.SunRoad.Color1 = argb(0,50,10,0);
 	Weathers[n].Sea.SunRoad.Color2 = argb(0,50,50,50);
 	Weathers[n].Sea.SunRoad.Power = 0.0;
-	//угол, частота, высота волны в метрах, начальная позиция волны, скорость волны
+	
 	Weathers[n].Sea.Harmonics.h1 = "0.0, 2.0, 3.0, 0.0, 10.00";
 	Weathers[n].Sea.Harmonics.h2 = "90.0, 4.0, 1.5, 0.0, 50.00";
 	Weathers[n].Sea.Harmonics.h3 = "45.0, 7.0, 2.5, 0.0, 200.00";
@@ -517,8 +517,8 @@ int Whr_InitNight(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
-	Weathers[n].Sea2.PosShift = 1.6; //остроконечность волн
+	Weathers[n].Sea2.BumpScale = 0.05; 
+	Weathers[n].Sea2.PosShift = 1.6; 
 	
 	Weathers[n].Sea2.WaterColor = argb(0, 25, 35, 40);
 	Weathers[n].Sea2.SkyColor = argb(0, 185, 155, 155);
@@ -528,20 +528,20 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea2.Frenel = 0.3; 
 	Weathers[n].Sea2.Attenuation = 0.3;
 
-	Weathers[n].Sea2.Amp1 = 30.0; //амплитуда 1 волны
-	Weathers[n].Sea2.AnimSpeed1 = 1.0; //скорость анимации
-	Weathers[n].Sea2.Scale1 = 0.15; //размеры волны
-	Weathers[n].Sea2.MoveSpeed1 = "10.0, 0.0, 0.0"; //скорость движения
+	Weathers[n].Sea2.Amp1 = 30.0; 
+	Weathers[n].Sea2.AnimSpeed1 = 1.0; 
+	Weathers[n].Sea2.Scale1 = 0.15; 
+	Weathers[n].Sea2.MoveSpeed1 = "10.0, 0.0, 0.0"; 
 
 	Weathers[n].Sea2.Amp2 = 1.0;
 	Weathers[n].Sea2.AnimSpeed2 = 4.0;
 	Weathers[n].Sea2.Scale2 = 2.0;
 	Weathers[n].Sea2.MoveSpeed2 = "-2.5, 0.0, 0.0";
 
-	Weathers[n].Sea2.FoamK = 0.01;//яркость пены по высоте 0.1 - пена яркая с 10 метров 1.0 через метр после начала
-	Weathers[n].Sea2.FoamV = 6.0;//высота с которой начинается пена
-	Weathers[n].Sea2.FoamUV = 0.5; //тайлинг пены
-	Weathers[n].Sea2.FoamTexDisturb = 0.2;//сдвиг по нормали. х.з. что это надо поюзать. значение от 0.0 до 1.0
+	Weathers[n].Sea2.FoamK = 0.01;
+	Weathers[n].Sea2.FoamV = 6.0;
+	Weathers[n].Sea2.FoamUV = 0.5; 
+	Weathers[n].Sea2.FoamTexDisturb = 0.2;
 
 	Weathers[n].Wind.Angle = 2.0;
 	Weathers[n].Wind.Speed.Min = 5.0;
@@ -549,8 +549,8 @@ int Whr_InitNight(int n)
 	
 	n++;
 
-// ====================================================================
-// Night3
+
+
 
 	Weathers[n].id = "3 Hours";
 	Weathers[n].Hour.Min = 3;
@@ -684,7 +684,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea.SunRoad.Color1 = argb(0,50,10,0);
 	Weathers[n].Sea.SunRoad.Color2 = argb(0,50,50,50);
 	Weathers[n].Sea.SunRoad.Power = 0.0;
-	//угол, частота, высота волны в метрах, начальная позиция волны, скорость волны
+	
 	Weathers[n].Sea.Harmonics.h1 = "0.0, 2.0, 3.0, 0.0, 10.00";
 	Weathers[n].Sea.Harmonics.h2 = "90.0, 4.0, 1.5, 0.0, 50.00";
 	Weathers[n].Sea.Harmonics.h3 = "45.0, 7.0, 2.5, 0.0, 200.00";
@@ -698,8 +698,8 @@ int Whr_InitNight(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
-	Weathers[n].Sea2.PosShift = 2.0; //остроконечность волн
+	Weathers[n].Sea2.BumpScale = 0.05; 
+	Weathers[n].Sea2.PosShift = 2.0; 
 	
 	Weathers[n].Sea2.WaterColor = argb(0, 15, 25, 35);
 	Weathers[n].Sea2.SkyColor = argb(0, 55, 55, 55);
@@ -709,20 +709,20 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea2.Frenel = 0.3; 
 	Weathers[n].Sea2.Attenuation = 0.3;
 
-	Weathers[n].Sea2.Amp1 = 25.0; //амплитуда 1 волны
-	Weathers[n].Sea2.AnimSpeed1 = 1.0; //скорость анимации
-	Weathers[n].Sea2.Scale1 = 0.15; //размеры волны
-	Weathers[n].Sea2.MoveSpeed1 = "1.0, 0.0, 6.0"; //скорость движения
+	Weathers[n].Sea2.Amp1 = 25.0; 
+	Weathers[n].Sea2.AnimSpeed1 = 1.0; 
+	Weathers[n].Sea2.Scale1 = 0.15; 
+	Weathers[n].Sea2.MoveSpeed1 = "1.0, 0.0, 6.0"; 
 
 	Weathers[n].Sea2.Amp2 = 1.0;
 	Weathers[n].Sea2.AnimSpeed2 = 19.0;
 	Weathers[n].Sea2.Scale2 = 4.0;
 	Weathers[n].Sea2.MoveSpeed2 = "0.0, 0.0, 1.0";
 
-	Weathers[n].Sea2.FoamK = 0.03;//яркость пены по высоте 0.1 - пена яркая с 10 метров 1.0 через метр после начала
-	Weathers[n].Sea2.FoamV = 7.0;//высота с которой начинается пена
-	Weathers[n].Sea2.FoamUV = 0.3; //тайлинг пены
-	Weathers[n].Sea2.FoamTexDisturb = 0.1;//сдвиг по нормали. х.з. что это надо поюзать. значение от 0.0 до 1.0
+	Weathers[n].Sea2.FoamK = 0.03;
+	Weathers[n].Sea2.FoamV = 7.0;
+	Weathers[n].Sea2.FoamUV = 0.3; 
+	Weathers[n].Sea2.FoamTexDisturb = 0.1;
 
 	Weathers[n].Wind.Angle = 2.0;
 	Weathers[n].Wind.Speed.Min = 5.0;
@@ -730,8 +730,8 @@ int Whr_InitNight(int n)
 	
 	n++;
 
-// ====================================================================
-// Night4
+
+
 
 	Weathers[n].id = "4 Hours";
 	Weathers[n].Hour.Min = 4;
@@ -865,7 +865,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea.SunRoad.Color1 = argb(0,50,10,0);
 	Weathers[n].Sea.SunRoad.Color2 = argb(0,50,50,50);
 	Weathers[n].Sea.SunRoad.Power = 0.0;
-	//угол, частота, высота волны в метрах, начальная позиция волны, скорость волны
+	
 	Weathers[n].Sea.Harmonics.h1 = "0.0, 2.0, 3.0, 0.0, 10.00";
 	Weathers[n].Sea.Harmonics.h2 = "90.0, 4.0, 1.5, 0.0, 50.00";
 	Weathers[n].Sea.Harmonics.h3 = "45.0, 7.0, 2.5, 0.0, 200.00";
@@ -879,8 +879,8 @@ int Whr_InitNight(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
-	Weathers[n].Sea2.PosShift = 1.0; //остроконечность волн
+	Weathers[n].Sea2.BumpScale = 0.05; 
+	Weathers[n].Sea2.PosShift = 1.0; 
 	
 	Weathers[n].Sea2.WaterColor = argb(0, 10, 30, 40);
 	Weathers[n].Sea2.SkyColor = argb(0, 175, 175, 175);
@@ -890,20 +890,20 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea2.Frenel = 0.3; 
 	Weathers[n].Sea2.Attenuation = 0.3;
 
-	Weathers[n].Sea2.Amp1 = 6.0; //амплитуда 1 волны
-	Weathers[n].Sea2.AnimSpeed1 = 10.0; //скорость анимации
-	Weathers[n].Sea2.Scale1 = 0.8; //размеры волны
-	Weathers[n].Sea2.MoveSpeed1 = "3.0, 0.0, 0.0"; //скорость движения
+	Weathers[n].Sea2.Amp1 = 6.0; 
+	Weathers[n].Sea2.AnimSpeed1 = 10.0; 
+	Weathers[n].Sea2.Scale1 = 0.8; 
+	Weathers[n].Sea2.MoveSpeed1 = "3.0, 0.0, 0.0"; 
 
 	Weathers[n].Sea2.Amp2 = 1.25;
 	Weathers[n].Sea2.AnimSpeed2 = 19.0;
 	Weathers[n].Sea2.Scale2 = 2.5;
 	Weathers[n].Sea2.MoveSpeed2 = "0.0, 0.0, -2.5";
 
-	Weathers[n].Sea2.FoamK = 0.1;//яркость пены по высоте 0.1 - пена яркая с 10 метров 1.0 через метр после начала
-	Weathers[n].Sea2.FoamV = 2.5;//высота с которой начинается пена
-	Weathers[n].Sea2.FoamUV = 1.0; //тайлинг пены
-	Weathers[n].Sea2.FoamTexDisturb = 0.1;//сдвиг по нормали. х.з. что это надо поюзать. значение от 0.0 до 1.0
+	Weathers[n].Sea2.FoamK = 0.1;
+	Weathers[n].Sea2.FoamV = 2.5;
+	Weathers[n].Sea2.FoamUV = 1.0; 
+	Weathers[n].Sea2.FoamTexDisturb = 0.1;
 
 	Weathers[n].Wind.Angle = 2.0;
 	Weathers[n].Wind.Speed.Min = 5.0;
@@ -911,8 +911,8 @@ int Whr_InitNight(int n)
 	
 	n++;
 
-// ====================================================================
-// Night4
+
+
 
 	Weathers[n].id = "5 Hours";
 	Weathers[n].Hour.Min = 5;
@@ -1046,7 +1046,7 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea.SunRoad.Color1 = argb(0,50,10,0);
 	Weathers[n].Sea.SunRoad.Color2 = argb(0,50,50,50);
 	Weathers[n].Sea.SunRoad.Power = 0.0;
-	//угол, частота, высота волны в метрах, начальная позиция волны, скорость волны
+	
 	Weathers[n].Sea.Harmonics.h1 = "0.0, 2.0, 3.0, 0.0, 10.00";
 	Weathers[n].Sea.Harmonics.h2 = "90.0, 4.0, 1.5, 0.0, 50.00";
 	Weathers[n].Sea.Harmonics.h3 = "45.0, 7.0, 2.5, 0.0, 200.00";
@@ -1060,8 +1060,8 @@ int Whr_InitNight(int n)
 	Weathers[n].Sun.Reflection.Size = 500.0;
 	Weathers[n].Sun.Reflection.Color = argb(200, 200, 200, 200);
 
-	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
-	Weathers[n].Sea2.PosShift = 1.0; //остроконечность волн
+	Weathers[n].Sea2.BumpScale = 0.05; 
+	Weathers[n].Sea2.PosShift = 1.0; 
 	
 	Weathers[n].Sea2.WaterColor = argb(0, 20, 30, 45);
 	Weathers[n].Sea2.SkyColor = argb(0, 175, 175, 175);
@@ -1071,20 +1071,20 @@ int Whr_InitNight(int n)
 	Weathers[n].Sea2.Frenel = 0.3; 
 	Weathers[n].Sea2.Attenuation = 0.3;
 
-	Weathers[n].Sea2.Amp1 = 6.0; //амплитуда 1 волны
-	Weathers[n].Sea2.AnimSpeed1 = 10.0; //скорость анимации
-	Weathers[n].Sea2.Scale1 = 0.8; //размеры волны
-	Weathers[n].Sea2.MoveSpeed1 = "3.0, 0.0, 0.0"; //скорость движения
+	Weathers[n].Sea2.Amp1 = 6.0; 
+	Weathers[n].Sea2.AnimSpeed1 = 10.0; 
+	Weathers[n].Sea2.Scale1 = 0.8; 
+	Weathers[n].Sea2.MoveSpeed1 = "3.0, 0.0, 0.0"; 
 
 	Weathers[n].Sea2.Amp2 = 1.25;
 	Weathers[n].Sea2.AnimSpeed2 = 19.0;
 	Weathers[n].Sea2.Scale2 = 2.5;
 	Weathers[n].Sea2.MoveSpeed2 = "0.0, 0.0, -2.5";
 
-	Weathers[n].Sea2.FoamK = 0.1;//яркость пены по высоте 0.1 - пена яркая с 10 метров 1.0 через метр после начала
-	Weathers[n].Sea2.FoamV = 3.0;//высота с которой начинается пена
-	Weathers[n].Sea2.FoamUV = 1.0; //тайлинг пены
-	Weathers[n].Sea2.FoamTexDisturb = 0.7;//сдвиг по нормали. х.з. что это надо поюзать. значение от 0.0 до 1.0
+	Weathers[n].Sea2.FoamK = 0.1;
+	Weathers[n].Sea2.FoamV = 3.0;
+	Weathers[n].Sea2.FoamUV = 1.0; 
+	Weathers[n].Sea2.FoamTexDisturb = 0.7;
 
 	Weathers[n].Wind.Angle = 2.0;
 	Weathers[n].Wind.Speed.Min = 5.0;
@@ -1094,3 +1094,4 @@ int Whr_InitNight(int n)
 
 	return n;
 }
+

@@ -1,54 +1,54 @@
-// Прочие квесты
 
-//=====================================================================================================================================
-// Warship, 26.05.11. Серия миниквестов "Дело чести" -->
-//=====================================================================================================================================
-// Функция вернет строковый идентификатор квеста из дел чести, который выполняется в данный момент.
+
+
+
+
+
 string AffairOfHonor_GetCurQuest()
 {
-	// "Навязчивый кавалер"
+	
 	if(CheckAttribute(PChar, "QuestTemp.AffairOfHonor.Cavalier.Started"))
 	{
 		return "Cavalier";
 	}
 	
-	// "Невольник чести"
+	
 	if(CheckAttribute(PChar, "QuestTemp.AffairOfHonor.HonorSlave.Started"))
 	{
 		return "HonorSlave";
 	}
 	
-	// "Красотка и пират"
+	
 	if(CheckAttribute(PChar, "QuestTemp.AffairOfHonor.BeautifulPirate.Started"))
 	{
 		return "BeautifulPirate";
 	}
 	
-	// "Заносчивый нахал"
+	
 	if(CheckAttribute(PChar, "QuestTemp.AffairOfHonor.Jackanapes.Started"))
 	{
 		return "Jackanapes";
 	}
 	
-	// "Волки и овцы"
+	
 	if(CheckAttribute(PChar, "QuestTemp.AffairOfHonor.WolvesAndSheeps.Started"))
 	{
 		return "WolvesAndSheeps";
 	}
 	
-	// "Трусливый фехтовальщик"
+	
 	if(CheckAttribute(PChar, "QuestTemp.AffairOfHonor.CowardFencer.Started"))
 	{
 		return "CowardFencer";
 	}
 	
-	// "Честь мундира"
+	
 	if(CheckAttribute(PChar, "QuestTemp.AffairOfHonor.CoatHonor.Started"))
 	{
 		return "CoatHonor";
 	}
 	
-	// "Божий суд"
+	
 	if(CheckAttribute(PChar, "QuestTemp.AffairOfHonor.GodJudgement.Started"))
 	{
 		return "GodJudgement";
@@ -57,20 +57,20 @@ string AffairOfHonor_GetCurQuest()
 	return "";
 }
 
-// Jason: отсрочка на два часа, раз уж в диалоге договорились
+
 void AffairOfHonor_LighthouseGotoMeeting(string _quest)
 {
 	SetFunctionLocationCondition("AffairOfHonor_LighthouseLocEnter", PChar.QuestTemp.AffairOfHonor.LighthouseId, false);
 }
 
-// Функция, вызываемая при заходе в локацию маяка, где должна происходить дуэль.
+
 void AffairOfHonor_LighthouseLocEnter(string _quest)
 {
 	string modelFirst, modelSecond;
 	
 	sld = &Locations[FindLocation(PChar.QuestTemp.AffairOfHonor.LighthouseId)];
 	DeleteAttribute(sld, "DisableEncounters");
-	LAi_LocationFightDisable(sld, true); // Пока-что низя рубиццо.
+	LAi_LocationFightDisable(sld, true); 
 	
 	sld = CharacterFromID("AffairOfHonor_" + AffairOfHonor_GetCurQuest() + "_Man");
 	
@@ -119,7 +119,7 @@ void AffairOfHonor_LighthouseLocEnter(string _quest)
 	
 	ChangeCharacterAddressGroup(sld, PChar.QuestTemp.AffairOfHonor.LighthouseId, "goto", "goto20");
 	LAi_SetGuardianType(sld);
-	sld.protector = true; // Начать диалог.
+	sld.protector = true; 
 	sld.Dialog.CurrentNode = "AffairOfHonor_BeforeFight_1";
 	LAi_SetImmortal(sld, false);
 	LAi_CharacterEnableDialog(sld);
@@ -147,7 +147,7 @@ void AffairOfHonor_LighthouseLocEnter(string _quest)
 	Log_Info("Time to cross blades");
 }
 
-// Функция, вызываемая по истечении двух часов с момента взятия квеста.
+
 void AffairOfHonor_TimeIsLeft(string _quest)
 {
 	int charIndex;
@@ -158,7 +158,7 @@ void AffairOfHonor_TimeIsLeft(string _quest)
 	
 	charIndex = GetCharacterIndex("AffairOfHonor_" + AffairOfHonor_GetCurQuest() + "_Man");
 	
-	// Вариант истечения времени при живом противнике
+	
 	if(charIndex != -1)
 	{
 		ChangeCharacterAddressGroup(GetCharacter(charIndex), "none", "", "");
@@ -171,7 +171,7 @@ void AffairOfHonor_TimeIsLeft(string _quest)
 				
 				AddQuestRecord("AffairOfHonor", "2_1");
 				sld.Dialog.CurrentNode = "AffairOfHonor_Cavalier_6";
-				// ChangeCharacterAddressGroup(sld, sld.City + "_church", "quest", "quest3");
+				
 			break;
 			
 			case "HonorSlave":
@@ -226,25 +226,25 @@ void AffairOfHonor_TimeIsLeft(string _quest)
 	
 	CloseQuestHeader("AffairOfHonor");
 	
-	Log_TestInfo("Дело чести: время вышло");
+	Log_TestInfo("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");
 }
 
-// Тоже, что и выше. Нужно было просто другое название, чтобы параллельно они могли работать (разное время стоит).
+
 void AffairOfHonor_TimeIsLeft2(string _quest)
 {
-	// В чем фича:
-	// Если делать как
-	//
-	// DeleteQuestCondition("AffairOfHonor_TimeIsLeft");
-	// SetFunctionTimerConditionParam("AffairOfHonor_TimeIsLeft", 0, 0, 0, 3, false);
-	//
-	// В один момент времени, то выйдет так, что прошлому квесту "AffairOfHonor_TimeIsLeft" присвоится ветка "завершен", но он не удалится,
-	// а затем на его место станет новый квест "AffairOfHonor_TimeIsLeft", который автоматом будет с пометкой "завершен". Поэтому вот так сделано.
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	AffairOfHonor_TimeIsLeft(_quest);
 }
 
-// Функция, вызываемая при убийстве персонажа, с которым дуэлимся.
+
 void AffairOfHonor_KillChar(string _quest)
 {
 	switch(AffairOfHonor_GetCurQuest())
@@ -300,13 +300,13 @@ void AffairOfHonor_KillChar(string _quest)
 	SetFunctionExitFromLocationCondition("AffairOfHonor_LocExitAfterFight", PChar.location, false);
 }
 
-// Функция, вызываемая по истечении одного дня с момента дуэли.
+
 void AffairOfHonor_DayAfterDuel(string quest)
 {
 	DeleteAttribute(PChar, "QuestTemp.AffairOfHonor.CowardFencer.CanTraderTalk");
 }
 
-// Функция, вызываемая при выходе из локации после дуэли.
+
 void AffairOfHonor_LocExitAfterFight(string _quest)
 {
 	sld = CharacterFromId("AffairOfHonor_QuestMan");
@@ -325,7 +325,7 @@ void AffairOfHonor_LocExitAfterFight(string _quest)
 		case "Cavalier":
 			LAi_CharacterEnableDialog(sld);
 			sld.Dialog.CurrentNode = "AffairOfHonor_Cavalier_5";
-			// ChangeCharacterAddressGroup(sld, sld.City + "_church", "quest", "quest3");
+			
 		break;
 		
 		case "HonorSlave":
@@ -336,19 +336,19 @@ void AffairOfHonor_LocExitAfterFight(string _quest)
 		case "WolvesAndSheeps":
 			LAi_CharacterEnableDialog(sld);
 			sld.Dialog.CurrentNode = "AffairOfHonor_WolvesAndSheeps_12";
-			// ChangeCharacterAddressGroup(sld, sld.City + "_church", "quest", "quest3");
+			
 		break;
 		
 		case "CowardFencer":
 			LAi_CharacterEnableDialog(sld);
 			sld.Dialog.CurrentNode = "AffairOfHonor_CowardFencer_5";
-			// ChangeCharacterAddressGroup(sld, sld.City + "_church", "quest", "quest3");
+			
 		break;
 		
 		case "GodJudgement":
 			LAi_CharacterEnableDialog(sld);
 			sld.Dialog.CurrentNode = "AffairOfHonor_GodJudgement_2";
-			// ChangeCharacterAddressGroup(sld, sld.City + "_church", "quest", "quest3");
+			
 		break;
 		
 		case "CoatHonor":
@@ -371,7 +371,7 @@ void AffairOfHonor_LocExitAfterFight(string _quest)
 	DeleteAttribute(PChar, "QuestTemp.AffairOfHonor." + AffairOfHonor_GetCurQuest() + ".Started");
 }
 
-// Функция, вызываемая при выходе из интерфекса карт, когда играем с челом по квесту "волки и овцы".
+
 void AffairOfHonor_AfterCards(string _quest)
 {
 	sld = characterFromID("AffairOfHonor_WolvesAndSheeps_Man");
@@ -381,6 +381,7 @@ void AffairOfHonor_AfterCards(string _quest)
 	LAi_ActorSetSitMode(sld);
 	LAi_ActorDialogNow(sld, PChar, "", -1);
 }
-//=====================================================================================================================================
-// <-- Серия миниквестов "Дело чести".
-//=====================================================================================================================================
+
+
+
+

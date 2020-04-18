@@ -25,7 +25,7 @@ int FindFreeMapEncounterSlot()
 		}
 
 	}
-	//Trace("FindFreeMapEncounterSlot: Can't find free slot!!!");
+	
 	return -1;
 }
 
@@ -53,7 +53,7 @@ void ReleaseMapEncounter(int iEncounterSlot)
 		MapEncounters[iEncounterSlot].bUse = false;
 		return;
 	}
-	//Trace("ReleaseMapEncounter: ERROR: Encounter not used idx = " + iEncounterSlot);
+	
 }
 
 ref GetMapEncounterRef(int iEncounterSlot)
@@ -67,7 +67,7 @@ ref GetMapEncounterNationRef(int iEncounterSlot)
 	{
 		return GetNationByType(sti(MapEncounters[iEncounterSlot].Nation));
 	}
-	//Trace("GetMapEncounterNationString: error: not found use slot iEncounterSlot = " + iEncounterSlot);
+	
 	return GetNationByType(ENGLAND);
 }
 
@@ -83,16 +83,16 @@ bool GenerateMapEncounter(int iMapEncounterType, string sIslandID, ref iEncounte
 
 	switch(iMapEncounterType)
 	{
-		case WDM_ETYPE_MERCHANT:		// merchant ship
+		case WDM_ETYPE_MERCHANT:		
 			bReturn = GenerateMapEncounter_Merchant(sIslandID, iEncounter1);
 		break;
-		case WDM_ETYPE_FOLLOW:			// war ship
+		case WDM_ETYPE_FOLLOW:			
 			bReturn = GenerateMapEncounter_War(sIslandID, iEncounter1, GetMainCharacterIndex());
 		break;
-		case WDM_ETYPE_WARRING:			// 2 war (or 1 war and 1 trade, or 2 trade) ships in battle
+		case WDM_ETYPE_WARRING:			
 			bReturn = GenerateMapEncounter_Battle(sIslandID, iEncounter1, iEncounter2);
 		break;
-		case WDM_ETYPE_SPECIAL:			// barrel or shipwreck
+		case WDM_ETYPE_SPECIAL:			
 			bReturn = GenerateMapEncounter_Special(sIslandID, iEncounter1);
 		break;
 	}
@@ -147,8 +147,8 @@ bool GenerateMapEncounter(int iMapEncounterType, string sIslandID, ref iEncounte
 	int i1 = iEncounter1;
 	int i2 = iEncounter2;
 
-	//Trace("Create encounter with slot " + iEncounter1 + ", Real = " + i1);
-	//Trace("Create encounter with slot " + iEncounter2 + ", Real = " + i2);
+	
+	
 
 	return true;
 }
@@ -158,7 +158,7 @@ bool GenerateMapEncounter_SetMapShipModel(ref rEncounter)
 	string sLastName;
 	if(!CheckAttribute(rEncounter, "Nation"))
 	{
-		trace("У ЭНКАУНТЕРА НЕТ НАЦИИИ!!!");
+		trace("пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ!!!");
 		return false;
 	}
 	string sFirstName = Nations[sti(rEncounter.Nation)].worldMapShip;
@@ -167,24 +167,24 @@ bool GenerateMapEncounter_SetMapShipModel(ref rEncounter)
 	{
 		if(!CheckAttribute(rEncounter, "CharacterID"))
 		{
-			trace("Квестовому энкаунтеру не назначен персонаж!");
+			trace("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
 			return false;
 		}
 		int iCharIndex = GetCharacterIndex(rEncounter.CharacterID);
 		if (iCharIndex < 0) 
 		{ 
-			trace("Квестовому энкаунтеру назначен персонаж, но его нет!");
+			trace("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ!");
 			return false; 
 		}
 
 		ref rCharacter = GetCharacter(iCharIndex);
-		if (CheckAttribute(rCharacter, "MapEnc.worldMapShip")) // boal fix
+		if (CheckAttribute(rCharacter, "MapEnc.worldMapShip")) 
 		{
 			rEncounter.worldMapShip = rCharacter.MapEnc.worldMapShip;
 		}
 		else
 		{
-		    rEncounter.worldMapShip = sFirstName + "_bark";  // boal new
+		    rEncounter.worldMapShip = sFirstName + "_bark";  
 		}
 	}
 	else
@@ -214,7 +214,7 @@ bool GenerateMapEncounter_WriteNumShips(ref rEncounter, int iEncounterType, int 
 	int iTotalShips = iNumMerchantShips + iNumWarShips;
 	if (iTotalShips == 0) 
 	{
-		//Trace("GenerateMapEncounter_WriteNumShips: iTotalShips = 0, iEncounterType = " + iEncounterType);
+		
 		return false;
 	}
 
@@ -259,58 +259,58 @@ bool GenerateMapEncounter_WriteNumShips(ref rEncounter, int iEncounterType, int 
 
 bool GenerateMapEncounter_Merchant(string sIslandID, ref iEncounter)
 {
-	// find free slot in dynamic encounter table for map
+	
 	int iEncounterSlot = FindFreeMapEncounterSlot();
 	if (iEncounterSlot == -1) return false;
 	ManualReleaseMapEncounter(iEncounterSlot);
 
 	ref rEncounter = &MapEncounters[iEncounterSlot];
 	
-	// find real encounter
+	
 	int iEncounterType = FindMerchantEncounter();
 	if (iEncounterType == -1) return false;
 	rEncounter.RealEncounterType = iEncounterType;
 
-	GenerateMapEncounter_WriteNumShips(rEncounter, iEncounterType, 8); //boal
+	GenerateMapEncounter_WriteNumShips(rEncounter, iEncounterType, 8); 
 
-	// nation find
+	
 	int iNation = GetRandomNationForMapEncounter(sIslandID, true);
 	if (iNation < 0) 
 	{ 
 		return false; 
 	}
 	rEncounter.nation = iNation;
-	//trace("iNation is " + iNation);
+	
 
 	iEncounter = iEncounterSlot;
 	rEncounter.bUse = true;
 	rEncounter.Type = "trade";
 
 	rEncounter.Task = AITASK_MOVE;
-	// create move point coordinates here
+	
 
 	return GenerateMapEncounter_SetMapShipModel(rEncounter);
 
-	//return true;
+	
 }
 
 bool GenerateMapEncounter_Special(string sIslandID, ref iEncounter)
 {
-	// find free slot in dynamic encounter table for map
+	
 	int iEncounterSlot = FindFreeMapEncounterSlot();
 	if (iEncounterSlot == -1) return false;
 	ManualReleaseMapEncounter(iEncounterSlot);
 
 	ref rEncounter = &MapEncounters[iEncounterSlot];
 
-	// find real encounter
+	
 	int iEncounterType = FindSpecialEncounter();
 	if (iEncounterType == -1) return false;
 	rEncounter.RealEncounterType = iEncounterType;
 
-	GenerateMapEncounter_WriteNumShips(rEncounter, iEncounterType, 8); //boal
+	GenerateMapEncounter_WriteNumShips(rEncounter, iEncounterType, 8); 
 	
-	// nation find
+	
 	int iNation = GetRandomNationForMapEncounter(sIslandID, true);
 	if (iNation < 0) 
 	{ 
@@ -331,17 +331,17 @@ bool GenerateMapEncounter_War(string sIslandID, ref iEncounter, int iCharacterIn
 {
 	int iEncounterType = -1;
 
-	// find free slot in dynamic encounter table for map
+	
 	int iEncounterSlot = FindFreeMapEncounterSlot();
 	if (iEncounterSlot == -1) return false;
 	ManualReleaseMapEncounter(iEncounterSlot);
 
 	ref rEncounter = &MapEncounters[iEncounterSlot];
 
-	// try to find quest encounters
+	
 	if (iCharacterIndexAsEnemy != -1)
 	{
-		// try to find Quest encounter
+		
 		int iQEncounter = Encounter_FindFirstQuestMapEncounter(ENCOUNTER_WAR);
 		if (iQEncounter >= 0)
 		{
@@ -367,7 +367,7 @@ bool GenerateMapEncounter_War(string sIslandID, ref iEncounter, int iCharacterIn
 	int iNation = -1;
 	
 
-	// find real encounter if not punitive
+	
 	if (iEncounterType == -1)
 	{
 		iEncounterType = FindWarEncounter(); if (iEncounterType == -1) return false;
@@ -375,9 +375,9 @@ bool GenerateMapEncounter_War(string sIslandID, ref iEncounter, int iCharacterIn
 
 	rEncounter.RealEncounterType = iEncounterType;
 
-	GenerateMapEncounter_WriteNumShips(rEncounter, iEncounterType, 8); //boal
+	GenerateMapEncounter_WriteNumShips(rEncounter, iEncounterType, 8); 
 
-	// nation find
+	
 	if (iNation == -1)
 	{
 		iNation = GetRandomNationForMapEncounter(sIslandID, false);
@@ -388,7 +388,7 @@ bool GenerateMapEncounter_War(string sIslandID, ref iEncounter, int iCharacterIn
 		return false; 
 	}
 
-	//trace("iNation is " + iNation);
+	
 
 	if(iEncounterType > ENCOUNTER_TYPE_PATROL_LARGE && iEncounterType < ENCOUNTER_TYPE_SQUADRON)
 	{
@@ -427,7 +427,7 @@ bool GenerateMapEncounter_Alone(string sCharacterID, ref iEncounterIndex)
 {
 	iEncounterIndex = -1;
 	int iCharIndex = GetCharacterIndex(sCharacterID);
-	if (iCharIndex < 1) { return false; }  //fix
+	if (iCharIndex < 1) { return false; }  
 
 	ref rCharacter = GetCharacter(iCharIndex);
 
@@ -474,7 +474,7 @@ bool GenerateMapEncounter_Alone(string sCharacterID, ref iEncounterIndex)
 
 	GenerateMapEncounter_SetMapShipModel(rEncounter);
 
-	// create move point coordinates here
+	
 
 	return true;
 	
@@ -482,10 +482,10 @@ bool GenerateMapEncounter_Alone(string sCharacterID, ref iEncounterIndex)
 
 bool GenerateMapEncounter_Battle(string sIslandID, ref iEncounter1, ref iEncounter2)
 {
-	//check for trade opposition
+	
 	int iIsTrade = rand(3);
 	
-	// generate first encounter
+	
 	if (iIsTrade != 0)
 	{
 		if (!GenerateMapEncounter_War(sIslandID, iEncounter1, -1))
@@ -507,7 +507,7 @@ bool GenerateMapEncounter_Battle(string sIslandID, ref iEncounter1, ref iEncount
 		MapEncounters[iEncounter1].Task.Pos.z = 10000.0 * cos(fAngle);
 	}
 
-	// generate second encounter
+	
 	if (!GenerateMapEncounter_War(-1, iEncounter2, -1))
 	{
 		ManualReleaseMapEncounter(iEncounter1);
@@ -521,7 +521,7 @@ bool GenerateMapEncounter_Battle(string sIslandID, ref iEncounter1, ref iEncount
 	int iRealEncounterType1 = rEncounter1.RealEncounterType;
 	int iRealEncounterType2 = rEncounter2.RealEncounterType;
 
-	// find nations for battle between two encounters
+	
 
 	int iNationsCanBe[MAX_NATIONS]; 
 	int iNumNationsCanBe = 0;
@@ -529,10 +529,10 @@ bool GenerateMapEncounter_Battle(string sIslandID, ref iEncounter1, ref iEncount
 	int iNation1 = sti(rEncounter1.Nation);
 	int iNation2 = sti(rEncounter2.Nation);
 	
-	// if we hit the target with nations - return
+	
 	if (GetNationRelation(iNation1, iNation2) != RELATION_ENEMY)
 	{
-		// search enemy for iNation1
+		
 		for (int i=0; i<MAX_NATIONS; i++)
 		{
 			bool bCanBe = Encounter_CanNation(iRealEncounterType2, i);

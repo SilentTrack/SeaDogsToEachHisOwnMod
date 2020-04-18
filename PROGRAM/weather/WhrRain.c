@@ -98,7 +98,7 @@ void FillRainData(int nw1, int nw2)
 		Rain.RainDrops.DropsFarRadius = Whr_BlendFloat( fBlend, Whr_GetFloat(aRain1, "DropsFarRadius"), Whr_GetFloat(aRain2, "DropsFarRadius"));
 		Rain.RainDrops.DropsLifeTime = Whr_BlendFloat( fBlend, Whr_GetFloat(aRain1, "DropsLifeTime"), Whr_GetFloat(aRain2, "DropsLifeTime"));
 		Rain.RainDrops.DropsSize = Whr_BlendFloat( fBlend, Whr_GetFloat(aRain1, "DropsSize"), Whr_GetFloat(aRain2, "DropsSize"));77
-		Rain.RainDrops.DropsColor = Whr_GetLong(aRain1, "DropsColor"); //Whr_BlendColor( fBlend, Whr_GetColor(aRain1, "DropsColor"), Whr_GetColor(aRain2, "DropsColor"));
+		Rain.RainDrops.DropsColor = Whr_GetLong(aRain1, "DropsColor"); 
 		Rain.RainDrops.DropsTexture = Whr_GetString(aRain1, "DropsTexture");
 
 		Rain.Rainbow.Enable = Whr_GetLong(aRainbow1,"Enable") || Whr_GetLong(aRainbow2,"Enable");
@@ -122,3 +122,4 @@ void ShowRain(int bShow)
 {
 	SendMessage(Rain,"ll",1,bShow);
 }
+

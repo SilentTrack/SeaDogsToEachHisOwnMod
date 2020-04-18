@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,7 +9,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
                       "Yes, it really is the third time...", "No, what questions?...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//Jason, суп из черепахи
+			
 			if (CheckAttribute(PChar, "questTemp.Terrapin") && pchar.questTemp.Terrapin == "baster" && !CheckAttribute(npchar, "quest.terrapin"))
 			{
 				link.l1 = "I'm looking for my old buddy Fernand Luc. I've got a couple of questions for him. I've heard he really enjoyed himself here a week ago...";
@@ -17,7 +17,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		
-		//суп из черепахи
+		
 		case "terrapin":
 			dialog.text = "He might still be enjoying himself here, but in deep water. Your friend's kicked the bucket. So you're a tad late, captain. That man over there, sitting at the farthest table over there, paid for his funeral, although I get the feeling that he's the same man that caused it. He's got a hell of a shady face. His name is Robert Martene. If you want, you can walk over and ask him your questions. ";
 			link.l1 = "Thanks, buddy. I'll go have a talk with monsieur Robert. We'll drink for the soul of poor old Luc that his soul may rest in peace...";
@@ -31,6 +31,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.questTemp.Terrapin = "rober";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

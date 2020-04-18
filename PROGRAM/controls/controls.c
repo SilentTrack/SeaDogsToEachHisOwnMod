@@ -1,7 +1,7 @@
 
 #event_handler("frame","procUpdateControlKeyGroup");
 
-// control flags
+
 #define USE_AXIS_AS_BUTTON				1
 #define USE_AXIS_AS_INVERSEBUTTON		2
 #define INVERSE_CONTROL					4
@@ -16,22 +16,12 @@ void ControlsTreeInit()
 {
 	int n;
 
-	// base controls: "ChrBlockBase","ChrAttackBase","ChrAltAttackBase"
+	
 
-	// out controls: *ChrBlock, ChrParry, *ChrAttackForce, *ChrAttackFast, *ChrAttackRound, *ChrAttackBreak,
-	// ------------- ChrAttackFient
+	
+	
 
-	/*n = AddControlTreeNode(-1,"ChrBlockBase","ChrBlock2",0.15);
-	if( n!=-1 ) {
-		AddControlTreeNode(n,"ChrAttackBase","ChrAttackRound2",0.0);
-	}
-
-	n = AddControlTreeNode(-1,"ChrAttackBase","ChrAttackForce2",0.0);
-
-	n = AddControlTreeNode(-1,"ChrAltAttackBase","ChrAttackFast2",0.15);
-	if( n!=-1 ) {
-		AddControlTreeNode(n,"ChrAttackBase","ChrAttackBreak2",0.0);
-	}*/
+	 
 	n = AddControlTreeNode(-1,"ChrAttackChoseBase","",0.05);
 	if( n!=-1 ) {
 		AddControlTreeNode(n,"ChrAttackBase","ChrParry",0.0);
@@ -194,7 +184,7 @@ void SetControlsByKey(string controlName, string keyName, int state)
 
 void MapControlToGroup(string controlName,string groupName)
 {
-	// Найдем использование контрола
+	
 	int i,nRootSize;
 	aref arRoot,arGroup;
 
@@ -269,7 +259,7 @@ string GetCurControlGroup()
 	if (bNetActive)	{ return Net_GetControlGroup();	}
 
 	if( IsEntity(&aviVideoObj) ) return "VideoPlayer";
-	//if( bRunHelpChooser ) return "HelpChooser";
+	
 
 	if( sti(InterfaceStates.Launched) == true ) return "MainInterface";
 
@@ -344,8 +334,8 @@ void AllControlsFreeze(bool bFreeze)
 object objControlsContainer;
 void RunControlsContainers()
 {
-	//CreateEntity(&objControlsContainer,"controls_container");
-	//LayerAddObject("iExecute",&objControlsContainer,1);
+	
+	
 }
 
 void ControlsMakeInvert()

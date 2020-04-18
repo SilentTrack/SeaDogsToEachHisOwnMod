@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,7 +9,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
                       "You've guessed it, I'm sorry...", "I understand...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//--> Ѕрем€ гасконца
+			
 			if (CheckAttribute(pchar, "questTemp.Sharlie.Junglejew") && !CheckAttribute(npchar, "quest.junglejew"))
 			{
 				link.l1 = "Take a look at these earrings, monsieur. I've found them in the pocket of a bandit in the jungle. This is clearly the work of a fine jeweler that couldn't have been out here in this armpit. What say you?";
@@ -30,7 +30,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1 = "I've completed your assignment, monsieur. Here is your... Spanish friend.";
                 link.l1.go = "Sharlie_14";
 			}
-			//<-- Ѕрем€ гасконца
+			
 		break;
 		
 		case "Sharlie":
@@ -54,7 +54,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 			link.l2 = "Hm... A hefty sum indeed. Listen, monsieur, maybe you and I should try and make a deal? For instance, you have something that I would be able to take care of and you could evaluate my favor at these ten thousand five hundred...";
 			if (CheckAttribute(pchar, "questTemp.Sharlie.FastStart")) link.l2.go = "Sharlie_5x";
-			else link.l2.go = "Sharlie_5"; // Addon 2016-1 Jason пиратская линейка 1
+			else link.l2.go = "Sharlie_5"; 
 		break;
 		
 		case "Sharlie_3":
@@ -73,7 +73,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.questTemp.Sharlie = "freeskiper";
 		break;
 		
-		case "Sharlie_5x": // Addon 2016-1 Jason пиратская линейка 1
+		case "Sharlie_5x": 
 			dialog.text = "A favor? Alas, I do not need any favors from you. At least now.";
 			link.l1 = "Pity. I should bring the coin for Fulka then. Bye!";
 			link.l1.go = "exit";
@@ -147,7 +147,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.questTemp.Sharlie = "bankskiperfight";
 			pchar.questTemp.Sharlie.Captive = "true";
 			pchar.questTemp.Sharlie.Captive.Name = GetFullName(npchar);
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать врем€
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
 		break;
 		
 		case "Sharlie_14":
@@ -204,6 +204,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			DeleteAttribute(pchar, "questTemp.Sharlie.Junglejew");
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

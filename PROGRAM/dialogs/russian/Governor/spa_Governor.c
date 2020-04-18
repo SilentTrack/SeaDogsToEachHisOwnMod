@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     ref sld;
@@ -11,7 +11,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		    link.l1.go = "exit";
 		break;
 
-		case "work_1":  // работа на благо короны - линейка нации
+		case "work_1":  
 			if (CheckAttribute(npchar, "notQuestLine"))
 			{
 				dialog.text = "Unfortunately I can offer you a job. You are not that type of people who I want to work with.";
@@ -21,5 +21,6 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}                   
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+

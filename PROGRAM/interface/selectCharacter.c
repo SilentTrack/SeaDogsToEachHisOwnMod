@@ -1,5 +1,5 @@
-///  BOAL переделка для SLib 02.07.06
-/// Ugeen --> переделка для ККС 23.08.10
+
+
 #define DEFAULT_NAME "Player"
 #define DEFAULT_PASS ""
 
@@ -32,9 +32,9 @@ void InitInterface(string iniName)
 	GameInterface.PROFILE_NAME.str = DEFAULT_NAME;
 	GameInterface.PROFILE_PASS.str = DEFAULT_PASS;
 	
-    LoadStartGameParam(); // boal
+    LoadStartGameParam(); 
     
-	startHeroType = 1; // fix
+	startHeroType = 1; 
     
 	SetEventHandler("exitCancel", "exitCancel", 0);
 	SetEventHandler("exitOk", "exitOk", 0);
@@ -73,7 +73,7 @@ void InitInterface(string iniName)
 	}
 	
     if (!CheckAttribute(&NullCharacter, "HeroParam.HeroType") || !CheckAttribute(&NullCharacter, "HeroParam.nation"))
-    {   // иначе уже загружен и выбран ГГ, смотрим настройки и идем обратно
+    {   
 		SetVariable(true);
 	}
 	else
@@ -88,7 +88,7 @@ void InitInterface(string iniName)
 
 void SetByDefault()
 {
-	if (iArcadeSails == 1)// 1 0
+	if (iArcadeSails == 1)
     {
     	CheckButton_SetState("CHECK_ARCADESAIL", 1, true);
     }
@@ -96,7 +96,7 @@ void SetByDefault()
     {
         CheckButton_SetState("CHECK_ARCADESAIL", 2, true);
     }
-    if (bRechargePistolOnLine)// 1 0
+    if (bRechargePistolOnLine)
     {
     	CheckButton_SetState("CHECK_PISTOL", 1, true);
     }
@@ -104,7 +104,7 @@ void SetByDefault()
     {
         CheckButton_SetState("CHECK_PISTOL", 1, false);
     }
-    if (bHardcoreGame)// 1 0
+    if (bHardcoreGame)
     {
     	CheckButton_SetState("CHECK_HARDCORE", 1, true);
     }
@@ -113,7 +113,7 @@ void SetByDefault()
         CheckButton_SetState("CHECK_HARDCORE", 1, false);
     }
 	
-	if (bSeaBattleSave)// 1 0
+	if (bSeaBattleSave)
     {
     	CheckButton_SetState("CHECK_SEABATTLESAVE", 1, true);
     }
@@ -122,7 +122,7 @@ void SetByDefault()
         CheckButton_SetState("CHECK_SEABATTLESAVE", 1, false);
     }	
 	
-	if (bRains)// 1 0
+	if (bRains)
     {
     	CheckButton_SetState("CHECK_RAINS", 1, true);
     }
@@ -131,7 +131,7 @@ void SetByDefault()
         CheckButton_SetState("CHECK_RAINS", 1, false);
     }		
 	
-	if (bPartitionSet)// 1 0
+	if (bPartitionSet)
     {
     	CheckButton_SetState("CHECK_PARTITION", 1, true);
     }
@@ -164,7 +164,7 @@ void IProcessFrame()
 	{
 		iArcadeSails = 0;
 	}
-	///
+	
  	if(SendMessage(&GameInterface,"lsll",MSG_INTERFACE_MSG_TO_NODE, "CHECK_PISTOL", 3, 1))
 	{
 		bRechargePistolOnLine = true;
@@ -173,7 +173,7 @@ void IProcessFrame()
 	{
 		bRechargePistolOnLine = false;
 	}
-	///
+	
  	if(SendMessage(&GameInterface,"lsll",MSG_INTERFACE_MSG_TO_NODE, "CHECK_HARDCORE", 3, 1))
 	{
 		bHardcoreGame = true;
@@ -325,7 +325,7 @@ void ProcessCommandExecute()
 			if (comName == "click" || comName == "activate")
 			{
 				isOkExit = true;
-				SaveStartGameParam(); // boal
+				SaveStartGameParam(); 
 				IDoExit(RC_INTERFACE_CHARACTER_SELECT_EXIT, true);
 			}
 
@@ -351,7 +351,7 @@ void ProcessCommandExecute()
 
 			break;
 			
-		////////////////////////////////
+		
 		case "OK_BUTTON":
     		if(comName=="leftstep")
     		{
@@ -439,9 +439,9 @@ void ShowConfirmWindow(bool show)
 	}
 }
 
-//----------------------------------------------------------------------------------------------------
-//
-//----------------------------------------------------------------------------------------------------
+
+
+
 void CreateProfileFolders()
 {
 	String folder = GameInterface.SavePath + "\";
@@ -452,7 +452,7 @@ void CreateProfileFolders()
 	if(!XI_CreateFolder(folder)) 
 		trace("Could not create profile folder");
 }
-//----------------------------------------------------------------------------------------------------
+
 void DeleteProfile()
 {
 	String folder;
@@ -475,7 +475,7 @@ void DeleteProfile()
 	GameInterface.SavePath = path;
 	XI_DeleteFolder(folder);
 }
-//----------------------------------------------------------------------------------------------------
+
 bool ProfileExists()
 {
 	String folder = GameInterface.SavePath + "\";
@@ -484,9 +484,9 @@ bool ProfileExists()
 
 	return (XI_CheckFolder(folder)); 
 }
-//----------------------------------------------------------------------------------------------------
-//
-//----------------------------------------------------------------------------------------------------
+
+
+
 
 void SelectNation()
 {
@@ -516,7 +516,7 @@ void IDoExit(int exitCode, bool bCode)
 	}
 	else
 	{
-		MOD_EXP_RATE = makeint(5 + MOD_SKILL_ENEMY_RATE);  // 0т 5 до 15
+		MOD_EXP_RATE = makeint(5 + MOD_SKILL_ENEMY_RATE);  
 		interfaceResultCommand = exitCode;
 		EndCancelInterface(bCode);
 	}
@@ -635,7 +635,7 @@ void ProcessCommandExecuteRight()
 
 void SetVariable(bool _init)
 {
-	if (startHeroType < 1) startHeroType = 1; // fix
+	if (startHeroType < 1) startHeroType = 1; 
 	CCS_SetNewMainCharacter(&NullCharacter, startHeroType);
 	SetFormatedText("HERO_NAME", GetFullName(&NullCharacter));
     SetFormatedText("HERO_TYPE", XI_ConvertString(nulChr.HeroParam.HeroType));
@@ -823,7 +823,7 @@ void SetSPECIALMiniTableCharSelect(string _tabName, ref _chr)
      	GameInterface.(_tabName).(row).(col).color = argb(255,255,255,255);		
 	}
 	
-	// прорисовка
+	
 	Table_UpdateWindow(_tabName);
 	SetEventHandler("frame", "RefreshTableByFrameEvent", 0);
 }
@@ -867,3 +867,4 @@ void CS_TableSelectChange()
 	CurRow   =  "tr" + (iSelected + 1);
 	Table_UpdateWindow(sControl);
 }
+

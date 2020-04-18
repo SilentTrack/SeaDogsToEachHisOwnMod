@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -14,7 +14,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1 = "I have got a delicate matter for you. No long ago one privateer has granted a golden cross with a lazurite on it to the parish of Basse-Terre. The problem is that the cross was stolen from the Santiago's parish and the servant was murdered during the theft...";
                 link.l1.go = "guardoftruth";
 			}
-			// Jason НСО
+			
 			if (CheckAttribute(pchar, "questTemp.Patria") && pchar.questTemp.Patria == "epizode_9_continue" && !CheckAttribute(npchar, "quest.frigate"))
 			{
 				link.l1 = "I arrived by the order of Governor General Philippe de Poincy to take command of your armed frigate.";
@@ -26,7 +26,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                 link.l1.go = "patria_2";
 			}
 		break;
-		//************************** Квестовые штрумы ************************
+		
 		case "Cupture_after":
             dialog.text = RandPhraseSimple("You have already taken everything. What else do you want?", "Haven't you taken already everything?");
             link.l1 = RandPhraseSimple("Just a final search for the loot...", "Just checking, I may have forgotten to take something...");
@@ -64,7 +64,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddQuestRecord("Guardoftruth", "28");
 		break;
 		
-		// Jason НСО
+		
 		case "patria":
 			if (GetCompanionQuantity(pchar) > 4)
 			{
@@ -95,9 +95,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "patria_3":
 			DialogExit();
 			npchar.quest.frigate = "true";
-			Patria_BastionFrigateGlp(); // присоединяем фрегат
+			Patria_BastionFrigateGlp(); 
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

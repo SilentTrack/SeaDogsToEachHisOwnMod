@@ -1,4 +1,4 @@
-// Джессика Роуз - нежить и супербосс
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -22,7 +22,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// бой на рифе
+		
 		case "reef":
 			PlaySound("VOICE\Russian\saga\Jessica Rose-06.wav");
 			dialog.text = "You! You have brought her here! She is his flesh and blood! She is her flesh and blood! The daughter of whore has come to her mother's grave! She'll die! And you won't stop it! Don't stay in Jessica's way! Let the vengeance commit!";
@@ -107,7 +107,7 @@ void ProcessDialogEvent()
 			dialog.text = "Enough... I am tired. I am defeated... Take pity upon the fate of unfortunate Jessica!";
 			link.l1 = "Sure... I will spare your poor soul from the weigh of this dead body!";
 			link.l1.go = "exit_battle";
-			if (CheckAttribute(sld, "quest.jessika_peace")) // выслушал историю Джессики
+			if (CheckAttribute(sld, "quest.jessika_peace")) 
 			{
 				link.l2 = "I know your story, Jessica. And I am sorry that your life was so sad and ended that silly. You want to talk to me, right? Well, I'll try to forget that you've recently been trying to kill me and I'll listen to you, though it won't be easy for me...";
 				link.l2.go = "exit_talk";
@@ -127,7 +127,7 @@ void ProcessDialogEvent()
 			LAi_group_SetCheck("EnemyFight", "Saga_JessikaDie");
 			AddDialogExitQuest("MainHeroFightModeOn");
 			pchar.questTemp.Saga.JessSeekTreatment = 0;
-			LAi_LocationDisableOfficersGen(pchar.location, false);//офицеров пускать
+			LAi_LocationDisableOfficersGen(pchar.location, false);
 		break;
 		
 		case "exit_talk":
@@ -206,12 +206,12 @@ void ProcessDialogEvent()
 			DeleteAttribute(chr, "hell_fire_1");
 			DeleteAttribute(chr, "hell_fire_2");
 			DeleteAttribute(chr, "hell_fire_3");
-			chrDisableReloadToLocation = false;//открыть локацию
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
+			chrDisableReloadToLocation = false;
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
 			AddQuestRecord("Shadows", "9");
 			AddPassenger(pchar, npchar, false);
 			SetCharacterRemovable(npchar, false);
-			pchar.questTemp.Saga.JessOnShip = "true"; // атрибут на отрицательные последствия
+			pchar.questTemp.Saga.JessOnShip = "true"; 
 			pchar.quest.Saga_Jessika_Travel.win_condition.l1 = "Hour";
 			pchar.quest.Saga_Jessika_Travel.win_condition.l1.start.hour = 0.00;
 			pchar.quest.Saga_Jessika_Travel.win_condition.l1.finish.hour = 2.00;
@@ -220,8 +220,8 @@ void ProcessDialogEvent()
 			pchar.quest.Saga_Jessika_Travel.function = "Saga_JessikaOnJamaica";
 			NextDiag.CurrentNode = "shore";
 			npchar.greeting = "jessika_2";
-			LAi_LocationDisableOfficersGen(pchar.location, false);//офицеров пускать
-			LAi_LocationDisableOfficersGen("shore36", true);//офицеров не пускать в бухту Портленд
+			LAi_LocationDisableOfficersGen(pchar.location, false);
+			LAi_LocationDisableOfficersGen("shore36", true);
 		break;
 		
 		case "shore":
@@ -236,7 +236,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(npchar, "SaveItemsForDead");
 			DeleteAttribute(npchar, "DontClearDead");
 			LAi_SetActorType(npchar);
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			LAi_ActorRunToLocation(npchar, "reload", "reload1", "none", "", "", "OpenTheDoors", -1);
 			AddQuestRecord("Shadows", "10");
 			SetFunctionTimerCondition("Saga_JessikaShoreWait", 0, 0, 1, false);
@@ -257,7 +257,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "shore_4":
-			GiveItem2Character(pchar, "letter_beatriss"); // дать письмо
+			GiveItem2Character(pchar, "letter_beatriss"); 
 			AddQuestRecordInfo("Letter_beatriss", "1");
 			dialog.text = "Yes. The last thing he has felt in his life was a horror. I don't feel pity for him.";
 			link.l1 = "Jesus... It seems that I will never meet him.";
@@ -302,12 +302,12 @@ void ProcessDialogEvent()
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			AddQuestRecord("Shadows", "11");
 			pchar.questTemp.Saga.JessTreatment = "true";
-			// вытираем Белтропа
+			
 			sld = characterFromId("Beltrop");
 			sld.lifeday = 0;
-			pchar.questTemp.Saga.Beltrop_die = "true"; // Белтроп убит
+			pchar.questTemp.Saga.Beltrop_die = "true"; 
 			sld = ItemsFromID("letter_jess");
-			sld.price = 1; // страницу можно выкладывать 270912 
+			sld.price = 1; 
 		break;
 		
 		case "soul":
@@ -352,17 +352,17 @@ void ProcessDialogEvent()
 			link.l1.go = "soul_7";
 		break;
 		
-		// здесь проверяем Мэри
+		
 		case "soul_7":
 			if (CheckAttribute(pchar, "questTemp.LSC.Mary_officer") && GetCharacterIndex("Mary") != -1)
-			{ // Мэри-офицер
+			{ 
 				dialog.text = "Don't... You also have a ginger talisman...";
 				link.l1 = "Yes? Who is that?";
 				link.l1.go = "mary_1";
 				break;
 			}
 			if (!CheckAttribute(pchar, "questTemp.LSC.Mary_officer") && CheckAttribute(pchar, "questTemp.LSC.marywait"))
-			{ // Мэри осталась на острове
+			{ 
 				dialog.text = "Don't... You also have a ginger talisman...";
 				link.l1 = "Yes? Who is that?";
 				link.l1.go = "mary_3";

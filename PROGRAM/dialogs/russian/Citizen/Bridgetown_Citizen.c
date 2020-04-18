@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -10,7 +10,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "info":
-        // заменить на описание неких НПС, по квестам
+        
 			dialog.text = "Do I work for the secret service of "+NationNameGenitive(sti(NPChar.nation))+"?";
 			link.l1 = "Well... farewell then.";
 			link.l1.go = "exit";
@@ -19,7 +19,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "town":
-        // заменить на описание как пройти, по квестам
+        
 			dialog.text = "Do I work on an enquiry position? Don't know. Don't know a thing.";
 
             link.l1 = "Such a muddle-head! See you.";
@@ -28,6 +28,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l2.go = "new question";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

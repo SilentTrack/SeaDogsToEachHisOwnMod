@@ -3,11 +3,11 @@ int CreateGuadeloupeCharacters(int n)
 {
 	ref ch;
 	
-	///////////////////////////////////////////////////////////////////////////////
-	// ОСНОВНЫЕ ПЕРСОНАЖИ
-	///////////////////////////////////////////////////////////////////////////////
 	
-	makeref(ch,Characters[n]);			//Губернатор
+	
+	
+	
+	makeref(ch,Characters[n]);			
 	ch.id		= "BasTer_Mayor";
 	ch.model	= "huber_5";
 	ch.sex = "man";
@@ -27,7 +27,7 @@ int CreateGuadeloupeCharacters(int n)
 	EquipCharacterbyItem(ch, BLADE_LONG); 
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetImmortal(ch, true);
 	LAi_SetHuberType(ch);
 	LAi_RemoveLoginTime(ch);
@@ -35,7 +35,7 @@ int CreateGuadeloupeCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Священик
+	makeref(ch,Characters[n]);			
 	ch.id		= "BasTer_Priest";
 	ch.model	= "priest_1";
 	ch.model.animation = "man";
@@ -47,13 +47,13 @@ int CreateGuadeloupeCharacters(int n)
 	ch.Dialog.Filename = "Common_church.c";
 	ch.greeting = "padre_2";
 	ch.nation = FRANCE;
-//	LAi_SetLoginTime(ch, 6.0, 21.99);
+
 	LAi_SetPriestType(ch);
 	LAi_group_MoveCharacter(ch, "FRANCE_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);		// ОФициантка
+	makeref(ch,Characters[n]);		
 	ch.id		= "BasTer_waitress";
 	ch.model	= "women_12";
 	ch.sex = "woman";
@@ -70,7 +70,7 @@ int CreateGuadeloupeCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Трактирщик
+	makeref(ch,Characters[n]);			
 	ch.id		= "BasTer_tavernkeeper";
 	ch.model	= "barmen_7";
 	ch.greeting = "barmen_3";
@@ -89,7 +89,7 @@ int CreateGuadeloupeCharacters(int n)
 	n = n + 1;
 
 
-	makeref(ch,Characters[n]);			//Торговец
+	makeref(ch,Characters[n]);			
 	ch.id		= "BasTer_trader";
 	ch.model	= "trader_7";
 	ch.greeting = "store_2";
@@ -107,7 +107,7 @@ int CreateGuadeloupeCharacters(int n)
 	ch.item_date = "";
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Корабел
+	makeref(ch,Characters[n]);			
 	ch.id		= "BasTer_shipyarder";
 	ch.model	= "shipowner_7";
 	ch.greeting = "shipyarder_2";
@@ -125,14 +125,14 @@ int CreateGuadeloupeCharacters(int n)
 	EquipCharacterbyItem(ch, "topor_02"); 
 	SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetLoginTime(ch, 6.0, 21.99);
 	LAi_SetHuberType(ch);
 	LAi_group_MoveCharacter(ch, "FRANCE_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Банкир
+	makeref(ch,Characters[n]);			
 	ch.id		= "BasTer_usurer";
 	ch.model	= "banker_7";
 	ch.sex = "man";
@@ -145,14 +145,14 @@ int CreateGuadeloupeCharacters(int n)
 	ch.nation = FRANCE;
 	ch.greeting = "usurer_4";
 	ch.quest.shiping = "0";
-	ch.UsurerDeposit = 10000; // *1000 денег
+	ch.UsurerDeposit = 10000; 
 	ch.money = USURER_MIN_MONEY + rand(USURER_NORM);
 	LAi_SetOwnerType(ch);
 	LAi_group_MoveCharacter(ch, "FRANCE_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Начальник порта
+	makeref(ch,Characters[n]);			
 	ch.id		= "BasTer_PortMan";
 	ch.model	= "citiz_4";
 	ch.sex = "man";
@@ -179,14 +179,14 @@ int CreateGuadeloupeCharacters(int n)
 	ch.nation = PIRATE;
 	GiveItem2Character(ch, BLADE_SABER);
 	EquipCharacterbyItem(ch, BLADE_SABER);
-	// посадим в генераторе
+	
 	ch.Dialog.Filename = "Smuggler Agent_dialog.c";
 	LAi_SetSitType(ch);
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.greeting = "smuggler";
 	n = n + 1;
 	
-	makeref(ch,Characters[n]);			//Смотритель маяка
+	makeref(ch,Characters[n]);			
 	ch.id		= "BasTer_Lightman";
 	ch.model	= "keeper_7";
 	ch.model.animation = "man_B";
@@ -209,3 +209,4 @@ int CreateGuadeloupeCharacters(int n)
 	
 	return n;
 }
+

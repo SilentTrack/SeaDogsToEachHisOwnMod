@@ -1,10 +1,10 @@
-// BOAL 07.09.03  Mods on_off mode -->
+
 #include "_LSC_on_off.h"
-// BOAL 07.09.03  Mods on_off mode <--
+
 #include "events.h"
 #include "globals.c"
 #include "animals.c"
-#include "NumberUtilities.c" // Warship 26.07.09. Работа с числами
+#include "NumberUtilities.c" 
 #include "sea_ai\sea.c"
 #include "ships\ships.c"
 #include "Encounters\Encounters.c"
@@ -48,15 +48,15 @@ extern void InitCharactersTables();
 extern void InitCharactersNames();
 extern void InitPiratesNames();
 extern void InitGeneratorNames();
-extern void InitIndianNames(); //Jason имена индейцев
+extern void InitIndianNames(); 
 extern void CreateCharacters();
 
-extern void ActiveF4Control(); // boal debuger
-extern void ActiveF5Control(); // boal debuger
-extern void ActiveF7Control(); // boal debuger
-extern void ActiveF10Control(); // boal debuger
-extern void ActiveF12Control(); // boal debuger
-extern void ActiveINSERTControl(); // boal debuger
+extern void ActiveF4Control(); 
+extern void ActiveF5Control(); 
+extern void ActiveF7Control(); 
+extern void ActiveF10Control(); 
+extern void ActiveF12Control(); 
+extern void ActiveINSERTControl(); 
 
 native float Bring2RangeNoCheck(float fMin1, float fMax1, float fMin2, float fMax2, float fValue);
 native float Bring2Range(float fMin1, float fMax1, float fMin2, float fMax2, float fValue);
@@ -81,46 +81,43 @@ native int RPrint(int x, int y, string sPrint);
 #event_handler("CameraPosAng","ProcessCameraPosAng");
 #event_handler("Cheat","ProcessCheat");
 #event_handler("SeaDogs_ClearSaveData", "ClearLocationsSaveData");
-#event_handler("StopQuestCheckProcessFreeze","ProcessStopQuestCheckProcessFreeze"); // boal 240804
+#event_handler("StopQuestCheckProcessFreeze","ProcessStopQuestCheckProcessFreeze"); 
 
 float fHighPrecisionDeltaTime;	
 
-void ProcessStopQuestCheckProcessFreeze() // boal 240804
+void ProcessStopQuestCheckProcessFreeze() 
 {
     bQuestCheckProcessFreeze = false;
     wdmLockReload            = false;
-    QuestsCheck(); // выполнить отложенные
+    QuestsCheck(); 
 
-    if (rand(20) == 10) // 16.01.06 не помню уже зачем разлочивал ГГ, но на деле мешает до квестам, но если где повиснет, то спасет ф2
+    if (rand(20) == 10) 
     {
-    	DoQuestCheckDelay("pchar_back_to_player", 0.5); // если в диалоге залочило, вернем управление
+    	DoQuestCheckDelay("pchar_back_to_player", 0.5); 
     }
 }
 
-void ProcessVersionCheck() // boal 271004
+void ProcessVersionCheck() 
 {
     ref mc = GetMainCharacter();
 
-    if (CheckAttribute(mc, "HeroParam")) // признак, что есть герой
+    if (CheckAttribute(mc, "HeroParam")) 
     {
-		/*Level_Complexity         = MOD_SKILL_ENEMY_RATE; // до новой игры из настроек, потом из сэйва
-        bHardcoreGameStart       = bHardcoreGame;
-        bPayForSaveLoadStart     = bPayForSaveLoad;
-        bWorldAlivePauseStart    = bWorldAlivePause;  */
+		 
         
         if (!CheckAttribute(mc, "VersionNumber"))
     	{
-            Log_Info("Загружена старая сохраненная запись.");
-            Log_Info("Возможна нестабильная работа программы.");
-			Log_Info("Желательно начать новую игру.");
+            Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.");
+            Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
+			Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.");
     	}
         else
         {
             if (sti(mc.VersionNumberCompatibility) < VERSION_NUM_PRE && mc.VersionNumber != GetVerNum())
             {
-                Log_Info("Загружена сохраненная запись версии " + mc.VersionNumber +".");
-                Log_Info("Возможна нестабильная работа программы.");
-				Log_Info("Желательно начать новую игру.");
+                Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ " + mc.VersionNumber +".");
+                Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.");
             }
         }
     }
@@ -226,8 +223,8 @@ void proc_break_video()
 	trace("proc_break_video()");
 	if (sti(InterfaceStates.videoIdx) != 1)
 	{
-		//InterfaceStates.videoIdx = -1;
-		//Event("ievntEndVideo");
+		
+		
 	}
 }
 
@@ -313,7 +310,7 @@ void Main_InitGame()
 	IslandsInit();
 	WeatherInit();
 	InitPerks();
-	// Init network, clear massives and load favorite list
+	
 	Net_Init();
 	Net_ClientFirstInit();
 	Net_ServerFirstInit();
@@ -388,9 +385,9 @@ void Main_Start()
 	Event("DoInfoShower","sl","game prepare",false);
 
 	StartLanguageSetting(LanguageGetLanguage());
- 	LoadPlayerProfileDefault(); // boal
+ 	LoadPlayerProfileDefault(); 
 	LaunchMainMenu();
-	//LaunchNetTopListScreen();
+	
 
 	CharacterIsDead(GetMainCharacter());
 	
@@ -407,14 +404,14 @@ void SaveGame()
 	aref arTmp;
 	if( !FindClass(arTmp,"fader") )
 	{
-		//implemet interface
-		//LaunchQuickSaveMenu();
+		
+		
 		pchar.version_number = 104;
 		SaveEngineState(saveName);
 		ISetSaveData(saveName,saveData);
 	}
 
-	//hide interface
+	
 	PostEvent("DoInfoShower",1,"sl","save game",false);
 	DeleteEntitiesByType("scrshoter");
 	HideQuickSaveMenu();
@@ -422,17 +419,17 @@ void SaveGame()
 
 void LoadGame()
 {
-    PauseParticles(true); //fix вылета у форта
-    // не помогло DeleteFortEnvironment();  //fix
+    PauseParticles(true); 
     
-	PauseAllSounds(); // boal fix
-    ResetSound();  // fix
-    // вылетам у форта НЕТ -->
+    
+	PauseAllSounds(); 
+    ResetSound();  
+    
     if (bSeaActive && !bAbordageStarted)
     {
 		SendMessage(&AIBalls, "l", MSG_MODEL_RELEASE);
 	}
-	// вылетам у форта НЕТ <--
+	
 	
 	string saveName = GetEventData();
 	DelEventHandler("evntLoad","LoadGame");
@@ -460,7 +457,7 @@ void LoadGame()
 	SetEventHandler("frame","LoadGame_continue",1);
 	
 	iCalculateSaveLoadCount("Load");
-	//isLoaded = true;
+	
 }
 
 void LoadGame_continue()
@@ -507,20 +504,16 @@ void InterfaceDoExit()
 		case RC_INTERFACE_DO_NEW_GAME:
 			InterfaceStates.doUnFreeze = false;
 			DeleteEntities();
-			//DeleteSeaEnvironment();
-			ResetSound();  // fix
-			/*musicName = "";
-			oldMusicName = "";
-			ResetSoundScheme();
-			StopSound(0,0);
-			ReleaseSound(0);*/
+			
+			ResetSound();  
+			 
 			ClearEvents();
 			ClearPostEvents();
 
-            if (CheckAttribute(pchar, "HeroParam")) // признак, что есть герой
+            if (CheckAttribute(pchar, "HeroParam")) 
             {
 				trace("Main_InitGame");
-				Main_InitGame(); // boal вынес все в одинметод, новая игра из страой глючит
+				Main_InitGame(); 
 			}
 			else
 			{
@@ -551,10 +544,7 @@ void InterfaceDoExit()
 		case RC_INTERFACE_DO_OPTIONS:
 			LaunchOptionScreen();
 			break;
-		/*case RC_INTERFACE_DO_CONTROLS:
-			LaunchControlsScreen();
-			break;
-			*/
+		 
 		case RC_INTERFACE_DO_CREDITS:
 		    LaunchAboutScreen();
 		break;
@@ -583,54 +573,27 @@ void InterfaceDoExit()
 			InterfaceStates.doUnFreeze = false;
 		break;
 		
-		/*case RC_INTERFACE_SPEAK_EXIT_AND_CAPTURE:
-			string sTargetChr = pchar.speakchr;
-			
-			pchar.abordage = 1;
-			
-			Sea_AbordageStartNow(SHIP_ABORDAGE, GetCharacterIndex(sTargetChr), true, true);
-			
-			
-			SetTimeScale(1.0);
-			TimeScaleCounter = 0;
-			DelPerkFromActiveList("TimeSpeed"); //boal
-			
-			pchar.speakchr = 0;
-			pchar.whospeak = 0;
-		break;
-		
-		case RC_INTERFACE_SPEAK_EXIT_AND_TRADE:
-			LaunchStore(SHIP_STORE);
-		break;  */
+		 
 		
 		case RC_INTERFACE_TO_CHAR:
 			pchar = GetMainCharacter();
 			LaunchCharacter(pchar);
 		break;
 		
-		/*
-		case RC_INTERFACE_TO_PASS:
-			pchar = GetMainCharacter();
-			LaunchPassengers(pchar);
-		break;
-		*/
+		 
 		
 		case RC_INTERFACE_TO_SHIP:
 			LaunchShipState();
 		break;
 		
-		/*
-		case RC_INTERFACE_TO_TRADEBOOK:
-			LaunchTradeBook();
-		break;
-		*/
+		 
 		
 		case RC_INTERFACE_TO_LOGBOOK:
 			LaunchQuestBook();
 		break;
 		
 		case RC_INTERFACE_TO_ITEMS:
-			LaunchItems(); // to_do
+			LaunchItems(); 
 		break;
 
 		case RC_INTERFACE_LAUNCH_GAMEMENU:
@@ -639,20 +602,20 @@ void InterfaceDoExit()
 		case INTERFACE_NET_ENDGAME:
 			ReturnToMainMenu();
 		break;
-		// boal -->
+		
   		case RC_INTERFACE_DO_BOAL_BETA:
 		     LaunchBoalBetaScreen();
         break;
-		// boal <--
 		
-		// Warship -->
+		
+		
 		case RC_INTERFACE_BEST_MAP:
-			LaunchBestMapScreen(); // Смотрим отличную карту
+			LaunchBestMapScreen(); 
 			break;
-		// <-- Warship
+		
 		
 		case RC_INTERFACE_MAPVIEW:
-			LaunchMapViewScreen(); // Смотрим атлас карт
+			LaunchMapViewScreen(); 
 			break;
 	}
 }
@@ -738,11 +701,11 @@ void OnLoad()
 	Nation_InitAfterLoading();
 	ResetSound();
 
-	//CreateClass("dummy");
+	
 
 	if(LoadSegment("Interface\BaseInterface.c"))
 	{
-		//InitBaseInterfaces_main();
+		
 		InitBaseInterfaces();
 		InitInterfaceTables();
 		UnloadSegment("Interface\BaseInterface.c");
@@ -751,8 +714,8 @@ void OnLoad()
 	ReloadProgressUpdate();
 	
 	DialogsInit();
-	//IslandsInit();
-	//LocationInit();
+	
+	
 
 	ReloadProgressUpdate();
 
@@ -767,7 +730,7 @@ void OnLoad()
 	
 	InitParticles();
 	ReloadProgressUpdate();
-	//ImportFuncTest();
+	
 
 	WeatherInit();
 	ReloadProgressUpdate();
@@ -780,7 +743,7 @@ void OnLoad()
 	{
 		ref mainchar;
 		mainchar = GetMainCharacter();
-		// boal: лажа это!!  есть actLoadFlag  //mainchar.isload = 1;
+		
 		LoadMainCharacterInFirstLocation(mainchar.location,"", mainchar.location.from_sea);
 		int ldLoc = FindLoadedLocation();
 		if(ldLoc >= 0)
@@ -807,9 +770,9 @@ void OnLoad()
 		}
 	}
 
-	//ReloadEndFade();
+	
 	EngineLayersOffOn(true);
-	//NewGame();
+	
 	DialogRun = false;
 	InterfaceStates.Launched = false;
 	
@@ -830,7 +793,7 @@ void OnLoad()
 	}
 
 	actLoadFlag = 0;
-	////
+	
 	ProcessVersionCheck();
 	
 	iCalculateSaveLoadCount("Load");
@@ -840,15 +803,15 @@ void OnLoad()
 	{
 		sCondition = GameModeConditions[i];
 		if(sCondition == "") continue;
-		SetEventHandler(sCondition, sCondition, 0); // Обновим евент, т.к. терся
-		Log_TestInfo("Обновлено прерывание - " + sCondition);
+		SetEventHandler(sCondition, sCondition, 0); 
+		Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - " + sCondition);
 		if(sCondition == "JunglesSitBand_InFlameLocator")
 		{
 			CreateFireParticles("Sit", "KosterFlame");
-			Log_TestInfo("Обновлен партикл огня");
+			Log_TestInfo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ");
 		}
 	}
-	//isLoaded = true;
+	
 }
 
 void NewGame()
@@ -859,7 +822,7 @@ void NewGame()
 	CreateEntity(&LanguageObject,"obj_strservice");
 	CreateEntity(&reload_fader, "fader");
 	SendMessage(&reload_fader, "ls", FADER_PICTURE0, "loading\ImgBack.tga");
-	//SendMessage(&reload_fader, "ls",FADER_PICTURE, RandPhraseSimple("loading\battle.tga", "loading\Start_Loading.tga"));
+	
 	SendMessage(&reload_fader, "ls",FADER_PICTURE, "loading\Start_Loading.tga");
 	SendMessage(&reload_fader, "lfl", FADER_IN, RELOAD_TIME_FADE_IN, true);
 
@@ -868,7 +831,7 @@ void NewGame()
 
 void NewGame_continue()
 {
-	DeleteAttribute( pchar, "abordage_active_count" );  // это тут не рабоатет :)  Но и не мешает Boal
+	DeleteAttribute( pchar, "abordage_active_count" );  
 
 	ReloadProgressStart();
 
@@ -895,7 +858,7 @@ void NewGame_continue()
 	Environment.date.hour = worldMap.date.hour;
 	Environment.date.min = worldMap.date.min;
 	Environment.date.sec = worldMap.date.sec;
-	Environment.time = stf(worldMap.date.hour) + stf(worldMap.date.min)/60.0 + stf(worldMap.date.sec)/3600.0; //boal
+	Environment.time = stf(worldMap.date.hour) + stf(worldMap.date.min)/60.0 + stf(worldMap.date.sec)/3600.0; 
 	Environment.date.year = worldMap.date.year;
 	Environment.date.month = worldMap.date.month;
 	Environment.date.day = worldMap.date.day;
@@ -905,16 +868,16 @@ void NewGame_continue()
 	InterfaceStates.Buttons.Save.enable = true;
 	InterfaceStates.Buttons.Load.enable = true;
 	
-	pchar = GetMainCharacter(); //fix
+	pchar = GetMainCharacter(); 
 		
-	initNewMainCharacter(); // все там
+	initNewMainCharacter(); 
 	
 	ReloadProgressUpdate();
 		
-	InitPsHeros();   // boal 05/07/06 ПГГ	
+	InitPsHeros();   
 	ReloadProgressUpdate();
 	
-    RumourInit();  //homo 23/06/06	
+    RumourInit();  
 	ReloadProgressUpdate();
 	
 	ActivateTimeEvents();
@@ -925,10 +888,10 @@ void NewGame_continue()
 	InterfaceStates.startGameWeather = FindWeather("11 Hour");
 	if (startHeroType != 1) LoadMainCharacterInFirstLocationGroup("Ship_deck_Low", "goto", "goto4");
     	
-	UpdateCrewInColonies(); // пересчет наемников в городах
+	UpdateCrewInColonies(); 
 	
 	ReloadProgressEnd();
-	//isLoaded = false;
+	
 }
 
 void InitGame()
@@ -944,7 +907,7 @@ void InitGame()
 	ReloadProgressUpdate();
 
 	DeleteSeaEnvironment();
-	//CharactersInit();
+	
 	if(LoadSegment("worldmap\worldmap_init.c"))
 	{
 		wdmInitWorldMap();
@@ -975,7 +938,7 @@ void InitGame()
 	}
 
 	ReloadProgressUpdate();
-	GenerateGenerableItems(); // <-- ugeen генерация предметов
+	GenerateGenerableItems(); 
 	
 	ReloadProgressUpdate();
 	
@@ -1002,10 +965,10 @@ void InitGame()
 	InitQuestMapEncounters();
 	ReloadProgressUpdate();
 	
-	//InitLandRandomEncounters();
-	//ReloadProgressUpdate();
+	
+	
 
-	//SetNextWeather("10 Hours");
+	
 
 	ResetQuestMovie();
 	ReloadProgressUpdate();
@@ -1016,7 +979,7 @@ void InitGame()
 	InfoShowSetting();
 
 	bAddonContent = GetDLCenabled(DLC_APPID_1);
-	//bAddonContent = true;
+	
 	trace("bAddonContent1 " + bAddonContent);
 }
 
@@ -1025,15 +988,15 @@ void ProcessControls()
 {
 	string ControlName;
 	ControlName = GetEventData();
-	// boal -->
+	
  	aref  arItm;
     int   itmIdx;
 	String itemID;
 	bool bOk, bOk1;
 	
-	//if (bBettaTestMode) Log_QuestInfo(ControlName);
-    // boal <--
-	//trace("ProcessControls() : " + ControlName);
+	
+    
+	
  	if( !IsNetActive() )
 	{
 		if (ControlName == "QuickSave") { MakeQuickSave(); }
@@ -1047,7 +1010,7 @@ void ProcessControls()
 	if (ControlName == "WhrNextWeather")	{ Whr_LoadNextWeather(1); }
 	if (ControlName == "WhrUpdateWeather")	{ Whr_UpdateWeather(); }
 	
-	//if (ControlName == "Help") RunHelpChooser();
+	
 
 	if(bSeaActive && !bAbordageStarted)
 	{
@@ -1075,23 +1038,23 @@ void ProcessControls()
 				break;
 			case "TeleBack": Teleport(-1); break;
 			case "Action":
-				//DumpAttributes(loadedLocation/*loadedLocation.reload.reload1.x*/);
-				//trace("Y: " + loadedLocation.reload.reload1.y);
-				//trace("Z: " + loadedLocation.reload.reload1.z);
+				
+				
+				
 			break;
 		}
 	}
 	
 	
 
-    // boal 27.11.03 time -->
-  	if (ControlName=="TimeScaleFaster" || ControlName == "TimeScaleSlower")
-  	{
-        if (loadedLocation.type == "underwater") return; //запрет ускорения под водой.
-		if (CheckAttribute(pchar, "questTemp.NoFast")) return; //запрет ускорения
+    
+пїЅ 	if (ControlName=="TimeScaleFaster" || ControlName == "TimeScaleSlower")
+пїЅ 	{
+        if (loadedLocation.type == "underwater") return; 
+		if (CheckAttribute(pchar, "questTemp.NoFast")) return; 
 		DeleteAttribute(pchar, "pause");
 		if (ControlName == "TimeScaleFaster")
-     	{
+пїЅ пїЅ пїЅ	{
 			if (TimeScaleCounter >= 12)
 			{
 			    TimeScaleCounter += 4;
@@ -1108,8 +1071,8 @@ void ProcessControls()
 				}
 			}
 		}
-     	else
-     	{
+пїЅ пїЅ пїЅ	else
+пїЅ пїЅ пїЅ	{
             if (TimeScaleCounter >= 16)
 			{
 			    TimeScaleCounter -= 4;
@@ -1126,7 +1089,7 @@ void ProcessControls()
 				}
 			}
 		}
-		if (true) // MOD_SKILL_ENEMY_RATE > 1) // запрет 0.25 скорости
+		if (true) 
         {
 		   if (!bBettaTestMode && TimeScaleCounter < -2) TimeScaleCounter = -2;
 		} 
@@ -1135,53 +1098,53 @@ void ProcessControls()
             if (TimeScaleCounter > 20) TimeScaleCounter = 20;
         }
         else
-        {   // без боя
+        {   
             if (bSeaActive && !bAbordageStarted )
             {
-            	if (TimeScaleCounter > 28) TimeScaleCounter = 28; // море
+            	if (TimeScaleCounter > 28) TimeScaleCounter = 28; 
             }
             else
             {
-            	if (TimeScaleCounter > 8) TimeScaleCounter = 8; // суша
+            	if (TimeScaleCounter > 8) TimeScaleCounter = 8; 
             }
         }
         if (IsEntity(worldMap))
         {
             if (TimeScaleCounter > 6) TimeScaleCounter = 6;
         }
-     	float newTimeScale = 1 + (TimeScaleCounter)*0.25; // GetSeaTimeScale()
-     	if (newTimeScale < 0) //don't wanna crash the game
-     	{
-        		TimeScaleCounter = -4;
-        		newTimeScale = 0;
-     	}
+пїЅ пїЅ пїЅ	float newTimeScale = 1 + (TimeScaleCounter)*0.25; 
+пїЅ пїЅ пїЅ	if (newTimeScale < 0) 
+пїЅ пїЅ пїЅ	{
+пїЅ пїЅ пїЅ пїЅ 		TimeScaleCounter = -4;
+пїЅ пїЅ пїЅ пїЅ 		newTimeScale = 0;
+пїЅ пїЅ пїЅ	}
 
-     	Log_SetStringToLog("x" + newTimeScale);
-     	if (TimeScaleCounter == 0) //back to normal
-     	{
+пїЅ пїЅ пїЅ	Log_SetStringToLog("x" + newTimeScale);
+пїЅ пїЅ пїЅ	if (TimeScaleCounter == 0) 
+пїЅ пїЅ пїЅ	{
 			if(IsPerkIntoList("TimeSpeed"))
-        	{
-        		SetTimeScale(1.0);
-        		DelPerkFromActiveList("TimeSpeed");
-        	}
-     	}
-     	else
-     	{
-        	SetTimeScale(newTimeScale);
-        	//if perk not in list
-        	if(!IsPerkIntoList("TimeSpeed"))
-        	{
+пїЅ пїЅ пїЅ пїЅ 	{
+пїЅ пїЅ пїЅ пїЅ 		SetTimeScale(1.0);
+пїЅ пїЅ пїЅ пїЅ 		DelPerkFromActiveList("TimeSpeed");
+пїЅ пїЅ пїЅ пїЅ 	}
+пїЅ пїЅ пїЅ	}
+пїЅ пїЅ пїЅ	else
+пїЅ пїЅ пїЅ	{
+пїЅ пїЅ пїЅ пїЅ 	SetTimeScale(newTimeScale);
+пїЅ пїЅ пїЅ пїЅ 	
+пїЅ пїЅ пїЅ пїЅ 	if(!IsPerkIntoList("TimeSpeed"))
+пїЅ пїЅ пїЅ пїЅ 	{
 				AddPerkToActiveList("TimeSpeed");
 			}
-     	}
+пїЅ пїЅ пїЅ	}
 	}
-	// boal <--
+	
 	switch(ControlName)
 	{
         case "TimeScale":
             DeleteAttribute(pchar, "pause");
-			if (loadedLocation.type == "Underwater") return; //запрет ускорения под водой.
-			if (CheckAttribute(pchar, "questTemp.NoFast")) return; //запрет ускорения
+			if (loadedLocation.type == "Underwater") return; 
+			if (CheckAttribute(pchar, "questTemp.NoFast")) return; 
 			if(IsPerkIntoList("TimeSpeed"))
 			{
 				SetTimeScale(1.0);
@@ -1193,7 +1156,7 @@ void ProcessControls()
 			{
 				SetTimeScale(GetSeaTimeScale());
 				TimeScaleCounter = 4;
-                Log_SetStringToLog(XI_ConvertString("Time x2"));
+            пїЅ пїЅ Log_SetStringToLog(XI_ConvertString("Time x2"));
 				AddPerkToActiveList("TimeSpeed");
 			}
 		break;
@@ -1208,17 +1171,17 @@ void ProcessControls()
 		break;
 		
 		case "TestShipCurrentSea":
-			// пока не вытирать - нужно для всяческих тестов !!!!						
-//			bOk = !bSeaActive;
-//			bOk1 = bLandInterfaceStart && !LAi_IsFightMode(pchar);			
-//			if(bOk || bOk1) 
-//			{
-//				pchar.chr_ai.energy = 0;
-//				MakeSailDmg(1, 15.0);
-//				GetAllSailsDamagePercent(pchar);
-//				LaunchRepair(pchar);
-//				TestShipInCurrentSea();
-//			}
+			
+
+
+
+
+
+
+
+
+
+
 		break;
 	
 		case "VK_PAUSETimePause":
@@ -1242,21 +1205,21 @@ void ProcessControls()
 			if(IsEntity(&worldMap))
 			{
 				pchar.space_press = 1;
-				DeleteAttribute(pchar, "SkipEshipIndex");// boal
+				DeleteAttribute(pchar, "SkipEshipIndex");
 			}
 		break;
 		
 		case "Map_Best":
-		//	if (bBettaTestMode) LaunchPaperMapScreen();
+		
 			if(CheckCharacterItem(PChar, "Map_Best") || bBettaTestMode) LaunchBestMapScreen();
 		break;
 
-		// --> ugeen
+		
 		case "MapView":
 			bOk = bSeaActive && !bAbordageStarted;
 			bOk1 = bLandInterfaceStart && !LAi_IsFightMode(pchar);			
 			if(bOk || bOk1) 
-			{ // изврат - но по другому никак :(
+			{ 
 				if(CheckCharacterItem(PChar, "MapsAtlas") && pchar.MapsAtlasCount > 0) LaunchMapViewScreen();
 			}	
 		break;
@@ -1267,7 +1230,7 @@ void ProcessControls()
 				LaunchAlchemyScreen();
 			}
 		break;
-		// <-- ugeen
+		
 
 		case "OfficersCharge":
 			if(GetOfficersQuantity(pchar) > 0)
@@ -1296,8 +1259,8 @@ void ProcessControls()
 			}	
 		break;
 		
-		// boal -->
-		case "ChrBackward": //ChrStrafeLeft ChrStrafeRight
+		
+		case "ChrBackward": 
             if (bLandInterfaceStart && LAi_IsFightMode(pchar))
             {
 				pchar.chr_ai.energy = stf(pchar.chr_ai.energy) - 3;
@@ -1321,7 +1284,7 @@ void ProcessControls()
 	        }
 		break;
 		
-		case "BOAL_UsePotion": // boal KEY_C
+		case "BOAL_UsePotion": 
             if (bLandInterfaceStart)
             {
 				if(LAi_IsPoison(pchar)) 
@@ -1347,11 +1310,11 @@ void ProcessControls()
 	        }
 		break;
 		
-		// Warship 13.06.09 Выпить противоядие KEY_V
+		
 		case "UseAntidote":
 			if(bLandInterfaceStart)
             {
-				if(FindCharacterAntidote(PChar, &itemID)) // В itemID запишется ID предмета, который можно использовать
+				if(FindCharacterAntidote(PChar, &itemID)) 
 				{
 					DoCharacterUsedItem(PChar, itemID);
 					Log_Info("Use antidote");
@@ -1376,7 +1339,7 @@ void ProcessControls()
 					}
 				}
 			}
-			if (CheckAttribute(location, "id") && location.id == "Treasure_Alcove") // калеуче
+			if (CheckAttribute(location, "id") && location.id == "Treasure_Alcove") 
 			{
 				bOk = (IsCharacterInLocator(pchar, "teleport", "teleport0")) || (IsCharacterInLocator(pchar, "teleport", "teleport1")) || (IsCharacterInLocator(pchar, "teleport", "teleport2")) || (IsCharacterInLocator(pchar, "teleport", "teleport3")) || (IsCharacterInLocator(pchar, "teleport", "teleport4")) || (IsCharacterInLocator(pchar, "teleport", "teleport5")) || (IsCharacterInLocator(pchar, "teleport", "teleport6"))
 				if (bOk)
@@ -1398,29 +1361,14 @@ void ProcessControls()
 		break;
 		
 		case "WMapGetCoords":
-			/*if(IsEntity(worldMap))
-			{		
-				Log_SetStringToLog("X = " + worldMap.playerShipX + " Z = " + worldMap.playerShipZ + " AY = " + worldMap.playerShipAY);
-				Log_SetStringToLog("Текущие координаты : " + Map_GetRealCoordZ(makefloat(worldMap.playerShipZ)) + "  " + Map_GetRealCoordX(makefloat(worldMap.playerShipX)));
-			}	*/
+			 
 		break;
 
 		case "Ship_GetPosition":
-/*		
-			if (bSeaActive && !bAbordageStarted)
-			{
-				if (CheckAttribute(pchar, "Ship.pos.x"))
-				{
-					//Log_SetStringToLog("X :" + pchar.ship.pos.x + " Y :" + pchar.ship.pos.y + " Z :" + pchar.ship.pos.z);
-					Log_SetStringToLog("aX :" + pchar.ship.ang.x + " aY :" + pchar.ship.ang.y + " aZ :" + pchar.ship.ang.z);
-					trace("aX :" + pchar.ship.ang.x + " aY :" + pchar.ship.ang.y + " aZ :" + pchar.ship.ang.z);
-					//Log_SetStringToLog("Текущие координаты : " + Sea_GetRealCoordZ(makefloat(pchar.Ship.pos.z)) + "  " + Sea_GetRealCoordX(makefloat(pchar.Ship.pos.x)));	
-				}	
-			}	
-*/			
+ 			
 		break;
 		
-        case "BOAL_ActivateRush":  // boal KEY_F
+        case "BOAL_ActivateRush":  
 			if (bLandInterfaceStart && GetCharacterPerkUsing(pchar, "Rush") && CheckCharacterItem(pchar, "berserker_potion"))
             {
 		        ActivateCharacterPerk(pchar, "Rush");
@@ -1435,7 +1383,7 @@ void ProcessControls()
             }
 	    break;
 
-	    case "BOAL_DeadSearch":  // boal KEY_1
+	    case "BOAL_DeadSearch":  
 			if (bLandInterfaceStart)
             {
                 itmIdx = Dead_FindCloseBody();
@@ -1451,8 +1399,8 @@ void ProcessControls()
 	    break;
 	    
 		case "BOAL_SetCamera":
-		    // по F10
-		    //CameraHoldPos();
+		    
+		    
 		    if (MOD_BETTATESTMODE == "On")
 		    {
                 if(LoadSegment("Debuger.c"))
@@ -1464,7 +1412,7 @@ void ProcessControls()
 		break;
 
         case "BOAL_Control":
-		    // по F11 вызывает окно отладчика
+		    
 		    if (MOD_BETTATESTMODE == "On" || MOD_BETTATESTMODE == "Test")
 		    {
 		       LaunchDebuderMenu();
@@ -1472,22 +1420,21 @@ void ProcessControls()
 		break;
 
 		case "BOAL_Control3":
-		    // по F9 вызывает окно отладчика			
+		    
 		    if (MOD_BETTATESTMODE == "On")
 		    {
-		       //LaunchBoalDebugScreenSecond();
+		       
 		    }
 		break;
 		
-	case "Person_Say": // KEY_T
-		// Интерфейс отдыха
-		/*if(bLandInterfaceStart) // В "Мыслях вслух"
-			LaunchTavernWaitScreen();*/
+	case "Person_Say": 
+		
+		 
 	break;
 		
-	case "Say": // KEY_Y
-		// Интерфейс автозакупки товаров
-		if(bLandInterfaceStart && IsPCharHaveTreasurer() && CheckAttribute(PChar, "TransferGoods.Enable")) // Если есть казначей, включена автозакупка и ГГ находится на суше
+	case "Say": 
+		
+		if(bLandInterfaceStart && IsPCharHaveTreasurer() && CheckAttribute(PChar, "TransferGoods.Enable")) 
 			LaunchTransferGoodsScreen();
 	break;
         
@@ -1518,7 +1465,7 @@ void ProcessControls()
 		break;
 
 		case "BOAL_ControF7":
-		    // по F7 вызывает окно отладчика
+		    
 		    if (MOD_BETTATESTMODE == "On")
 		    {
                 if(LoadSegment("Debuger.c"))
@@ -1533,16 +1480,16 @@ void ProcessControls()
 			}			
 		break;
 
-        case "BOAL_Control2": // F12
-            //Найти ближайшего видимого персонажа в заданном радиусе				
+        case "BOAL_Control2": 
+            
             if(LoadSegment("Debuger.c"))
         	{
-                ActiveF12Control(); // можно меять пряв в рабочей игре
+                ActiveF12Control(); 
         		UnloadSegment("Debuger.c");
         	}		
         break;
 
-        case "BOAL_ControlDebug": // VK_INSERT
+        case "BOAL_ControlDebug": 
             if (MOD_BETTATESTMODE == "On")
 		    {
                 if(LoadSegment("Debuger.c"))
@@ -1552,7 +1499,7 @@ void ProcessControls()
             	}
         	}
         break;
-        // boal <--
+        
 	}
 	
 }
@@ -1577,11 +1524,11 @@ void ProcessMainMenuKey()
 {
 	if (interfacestates.buttons.resume.enable == "1")
 	{
-		//LaunchMainMenu();
+		
 		LaunchGameMenuScreen();
 	}
 }
-// вызов меню по Ф2
+
 void ProcessInterfaceKey()
 {
 	if( CharacterIsDead(GetMainCharacter()) ) {return;}
@@ -1597,7 +1544,7 @@ void ProcessInterfaceKey()
 		if( CheckAttribute(&objLandInterface,"ComState") && sti(objLandInterface.ComState) != 0 )
 			{return;}
 	}
-	if (bDisableCharacterMenu) // boal
+	if (bDisableCharacterMenu) 
 	{
 		Log_SetStringToLog(XI_ConvertString("You can`t launch menu"));
 		return;
@@ -1612,13 +1559,13 @@ void ProcessInterfaceKey()
 
 void GameOverE()
 {
-	// вылетам у форта НЕТ -->
+	
     if (bSeaActive && !bAbordageStarted)
     {
-		PauseParticles(true); //fix вылета у форта
+		PauseParticles(true); 
 		SendMessage(&AIBalls, "l", MSG_MODEL_RELEASE);
 	}
-	// вылетам у форта НЕТ <--
+	
 	GameOver("sea");
 	DeleteSeaEnvironment();
 }
@@ -1628,7 +1575,7 @@ void GameOver(string sName)
 	ref mc;
 	int nSelect;
 	string sFileName;
-	//ResetSoundScheme();
+	
 	PauseAllSounds();
 	ResetSound();
 	EngineLayersOffOn(false);
@@ -1654,18 +1601,11 @@ void GameOver(string sName)
 
 	InitSound();
 	SetEventHandler(EVENT_END_VIDEO,"LaunchMainMenu_afterVideo",0);
-	//PlayStereoOGG("music_ship_dead");   // boal звук убиения
+	
 	switch(sName)
 	{
 		case "sea":
-			/*nSelect = rand(1);
-			sFileName = "skeleton_on_beach";
-			switch(nSelect)
-			{
-				case 0: sFileName = "skeleton_on_beach"; break;
-				case 1: sFileName = "undersea"; break;
-			}
-			StartPostVideo(sFileName,1);   */
+			 
 			StartPictureAsVideo( "loading\seadeath.tga", 5.3 );
 			PlayStereoOGG("music_ship_dead");
 		break;
@@ -1694,7 +1634,7 @@ void GameOver(string sName)
 			PlayStereoOGG("music_death");
 		break;
 		
-		case "complete": // 040912
+		case "complete": 
 			StartPostVideo("credits",1);
 		break;
 	}
@@ -1711,7 +1651,7 @@ string its(int iNumber)
 	return sText;
 }
 
-// тяжкая игра - сайв токо в церкви 17.03.05 boal
+
 bool QuickSaveGameEnabledHardcore()
 {
     bool TmpBool = false;
@@ -1777,7 +1717,7 @@ bool CheckSaveGameEnabled()
 		int idxLoadLoc = FindLoadedLocation();
 	    if (idxLoadLoc != -1 )
 	    {
-	        if (Locations[idxLoadLoc].id == "Ship_deck" || Locations[idxLoadLoc].id == "Deck_Near_Ship") // сайв на палубе глюкавый
+	        if (Locations[idxLoadLoc].id == "Ship_deck" || Locations[idxLoadLoc].id == "Deck_Near_Ship") 
 	        {
 	            TmpBool = false;
 	        }
@@ -1786,8 +1726,8 @@ bool CheckSaveGameEnabled()
     return TmpBool;
 }
 
-// Статистика по сэйвам/лоадам
-// Просто чтоб код был в одном месте. _SaveLoad - только "Save" или "Load". Метод вернет общее кол-во загрузок/сохранения
+
+
 int iCalculateSaveLoadCount(string _SaveLoad)
 {
 	int iCount;

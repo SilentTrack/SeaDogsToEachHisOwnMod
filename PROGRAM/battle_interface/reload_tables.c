@@ -11,7 +11,7 @@ void CreateReloadPaths(string groupID)
 	string outLocName,goLocName;
 	aref reloadList,curReload;
 
-	// запишем все переходы в локациях используемой группы
+	
 	for(i=0; i<MAX_LOCATIONS; i++)
 	{
 		if( !CheckAttribute(&Locations[i],"fastreload") ) 
@@ -25,7 +25,7 @@ void CreateReloadPaths(string groupID)
 		outLocName = Locations[i].id;
 		makearef(reloadList,Locations[i].reload);
 		tbl.(outLocName) = i;
-		iMax = GetAttributesNum(reloadList); //fix
+		iMax = GetAttributesNum(reloadList); 
 		for(j=0; j<iMax; j++)
 		{
 			curReload = GetAttributeN(reloadList,j);
@@ -43,7 +43,7 @@ void CreateReloadPaths(string groupID)
 		}
 	}
 
-	// заполним все пути перехода из одной локации в другую
+	
 	aref outLoc,goLoc, tmpLoc;
 	bool yesChange = true;
 	string tmpLocName;
@@ -55,7 +55,7 @@ void CreateReloadPaths(string groupID)
 		{
 			outLoc = GetAttributeN(tbl,i);
 			outLocName = GetAttributeName(outLoc);
-			//for(j=0; j<i; j++)
+			
 			for(j=0; j<iMax; j++)
 			{
 				if(j==i) 
@@ -68,7 +68,7 @@ void CreateReloadPaths(string groupID)
 				{
 					continue;
 				}
-				iMax2 = GetAttributesNum(outLoc); // fix
+				iMax2 = GetAttributesNum(outLoc); 
 				for(n=0; n<iMax2; n++)
 				{
 					tmpLoc = GetAttributeN(outLoc,n);
@@ -87,8 +87,8 @@ void CreateReloadPaths(string groupID)
 	}
 }
 
-// получить идентификатор следующей локации для перехода из одной локации в другую
-// возвращает true, если поиск пути завершен
+
+
 bool GetNextLocationForPath(string outLocName, string goLocName, ref nextLocName, ref reloadName)
 {
 	aref tbl; 
@@ -98,16 +98,11 @@ bool GetNextLocationForPath(string outLocName, string goLocName, ref nextLocName
 	nextLocName = "";
 	reloadName = "";
 
-// to_do
-/*	if(goLocName == "Duel_field")
-	{
-		nextLocName = "Duel_field";
-		reloadName = "reload1";
-		return true;
-	}              */
+
+ 
 	while(outLocName!=goLocName)
 	{
-		// Прописан прямой путь от стартовой локации до искомой
+		
 		if( CheckAttribute(tbl,outLocName+"."+goLocName) )
 		{
 			nextLocName = tbl.(outLocName).(goLocName);
@@ -115,13 +110,13 @@ bool GetNextLocationForPath(string outLocName, string goLocName, ref nextLocName
 			break;
 		}
 
-		// Обратный путь так же не прописан
+		
 		if( !CheckAttribute(tbl,goLocName+"."+outLocName) ) 
 		{
 			break;
 		}
 
-		// Из искомой локации мы можем непосредственно попасть в стартовую локацию
+		
 		if( tbl.(goLocName).(outLocName) == finalLocation )
 		{
 			nextLocName = goLocName;
@@ -247,14 +242,9 @@ void PlayerFastTravel(int startLocIdx, string finishLocName, string locatorname)
 
 	if(checkLocation!=Locations[startLocIdx].id)
 	{
-		/*if(checkLocation == "Duel_field")
-		{
-			reloadName = "reload1";
-		}
-		else
-		{ */
+		 
 		reloadName = GetFastReloadName(Locations[startLocIdx].id,checkLocation);
-		//}
+		
 		if( locatorname!="" ) {
 			reloadName = locatorname;
 		}

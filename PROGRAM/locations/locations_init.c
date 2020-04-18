@@ -89,14 +89,14 @@ void InitLocations()
 		loc.locators_radius.teleport = 1.0;
 		loc.locators_radius.quest = 1.0;
 		if (MOD_BETTATESTMODE == "On")
-		{// чтоб было видно в отладке Boal 18.08.06
+		{
 			loc.locators_radius.soldiers = 0.5;
 			loc.locators_radius.patrol = 0.5;
 			loc.locators_radius.Smugglers = 0.5;
 			loc.locators_radius.monsters = 0.5;
 		}
 		
-		//Day dynamic light
+		
 		loc.models.day.lights.candles = "candle";
 		loc.models.day.lights.candles_medium = "candelabrum";
 		loc.models.day.lights.chandeliers = "chandelier";
@@ -111,7 +111,7 @@ void InitLocations()
 		loc.models.day.lights.greenteleport = "greenteleport";
 		loc.models.day.lights.magsteleport = "magsteleport";
 
-		//Night dynamic light
+		
 		loc.models.night.lights.candles = "candle";
 		loc.models.night.lights.candles_medium = "candelabrum";
 		loc.models.night.lights.chandeliers = "chandelier";
@@ -132,24 +132,24 @@ void InitLocations()
 
 	ReloadProgressUpdate();
 
-	//Init locations
+	
 	int n = 0;
-	Locations[0].IslandsList.Antigua.begin = n;  //SentJons
+	Locations[0].IslandsList.Antigua.begin = n;  
 	n = LocationInitAntigua(n);
 	Locations[0].IslandsList.Antigua.end = n;
 	Trace("Antigua locations " + n);
 	
-	Locations[0].IslandsList.Barbados.begin = n;  //Bridgetown
+	Locations[0].IslandsList.Barbados.begin = n;  
 	n = LocationInitBarbados(n);
 	Locations[0].IslandsList.Barbados.end = n;
 	Trace("Barbados locations " + n);
 	
-	Locations[0].IslandsList.Curacao.begin = n;  //Villemstad
+	Locations[0].IslandsList.Curacao.begin = n;  
 	n = LocationInitCuracao(n);
 	Locations[0].IslandsList.Curacao.end = n;
 	Trace("Curacao locations " + n);
 
-	Locations[0].IslandsList.LostShipsIsland.begin = n;  //ГПК
+	Locations[0].IslandsList.LostShipsIsland.begin = n;  
 	n = LocationInitLostShipsCity(n);
 	Locations[0].IslandsList.LostShipsIsland.end = n;
 	Trace("LostShipsIsland locations " + n);	
@@ -226,7 +226,7 @@ void InitLocations()
 	
 	ReloadProgressUpdate();
 	
-	Locations[0].IslandsList.Martinique.begin = n; //FortFrance
+	Locations[0].IslandsList.Martinique.begin = n; 
 	n = LocationInitMartinique(n);
 	Locations[0].IslandsList.Martinique.end = n;
 	Trace("Martinique locations " + n);
@@ -270,7 +270,7 @@ void InitLocations()
 
 	ReloadProgressUpdate();
 	
-	Locations[0].IslandsList.Trinidad.begin = n; //PortSpein
+	Locations[0].IslandsList.Trinidad.begin = n; 
 	n = LocationInitTrinidad(n);
 	Locations[0].IslandsList.Trinidad.end = n;
  	Trace("Trinidad locations " + n);
@@ -300,12 +300,12 @@ void InitLocations()
 	Locations[0].IslandsList.Caiman.end = n;
 	Trace("Caiman locations " + n);
 	
-	// Старый свет -->
+	
 	Locations[0].IslandsList.OldWorld.begin = n;
 	n = LocationInitOldWorld(n);
 	Locations[0].IslandsList.OldWorld.end = n;
 	Trace("OldWorld locations " + n);
-	// <--
+	
 
 	Locations[0].IslandsList.KhaelRoa.begin = n;
 	n = LocationInitKhaelRoa(n);
@@ -358,3 +358,4 @@ void InitLocations()
 	Trace("Number of locations: " + nLocationsNum);
 
 }
+

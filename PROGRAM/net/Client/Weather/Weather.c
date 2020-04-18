@@ -15,9 +15,9 @@ bool	bClientWeatherIsRain = false;
 bool	bClientWeatherIsStorm = false;
 string	sClientLightingPath;
 
-//#event_handler("EWhr_GetWindAngle", "NetClient_WhrGetWindAngle");
-//#event_handler("EWhr_GetWindSpeed", "NetClient_WhrGetWindSpeed");
-//#event_handler("EWhr_GetFogDensity", "NetClient_WhrGetFogDensity");
+
+
+
 
 string NetClient_WhrGetCurrentFog()
 {
@@ -36,7 +36,7 @@ void NetClient_DeleteWeatherEnvironment()
 	NetClient_WhrDeleteSkyEnvironment();
 	NetClient_WhrDeleteSunGlowEnvironment();
 	NetClient_WhrDeleteLightningEnvironment();
-	//NetClient_WhrDeleteTornadoEnvironment();
+	
 	NetClient_WhrDeleteSeaEnvironment();
 	NetClient_WhrDeleteAstronomyEnvironment();
 
@@ -74,7 +74,7 @@ void NetClient_CreateWeatherEnvironment(int iMsg)
 		iClientCurWeatherNum = 0;
 	}
 
-	// create main module Weather
+	
 	DeleteAttribute(&NCWeather, "");
 	NCWeather.Server = false;
 	CreateEntity(&NCWeather, "NetWeather");
@@ -86,7 +86,7 @@ void NetClient_CreateWeatherEnvironment(int iMsg)
 	bClientWeatherIsNight = Whr_GetLong(aCurWeather, "Night");
 	bClientWeatherIsLight = Whr_GetLong(aCurWeather, "Lights");
 
-	NCWeather.WindAngle = frand(180.0);//Whr_GetFloat(aCurWeather,"Wind.Angle");
+	NCWeather.WindAngle = frand(180.0);
 	NCWeather.WindSpeed = Whr_GetFloat(aCurWeather, "Wind.Speed");
 
 	sClientCurrentFog = "Fog";
@@ -127,7 +127,7 @@ void NetClient_CreateWeatherEnvironment(int iMsg)
 	NetClient_WhrCreateSkyEnvironment();
 	NetClient_WhrCreateSeaEnvironment();
 	NetClient_WhrCreateAstronomyEnvironment();
-	//if (bWhrTornado) { NetClient_WhrCreateTornadoEnvironment(); }
+	
 
 	Particles.windpower = 0.05 * Clampf(Whr_GetWindSpeed() / WIND_NORMAL_POWER);
 	Particles.winddirection.x = sin(Whr_GetWindAngle());
@@ -159,7 +159,7 @@ int NetClient_WhrOnCalcFogColor()
 
 	iAlpha = 255 - MakeInt(255.0 * Clampf(y / stf(aCurWeather.(sClientCurrentFog).Height)));
 
-	//iColor = argb(0,0,0,0);
+	
 	int iFogColor = sti(NCWeather.Fog.Color);
 	iColor = or(shl(iAlpha, 24), iFogColor);
 	return iColor;

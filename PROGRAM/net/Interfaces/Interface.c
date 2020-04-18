@@ -51,9 +51,10 @@ void FreezeMainNetLayers(bool bFreeze)
 {
 	if( bFreeze ) {
 		LayerFreeze("Net_Realize",true);
-		//LayerFreeze("Net_Execute",true);
+		
 	} else {
 		LayerFreeze("Net_Realize",false);
-		//LayerFreeze("Net_Execute",false);
+		
 	}
 }
+

@@ -3,11 +3,11 @@ bool NetServer_CheckForBan(int dwIP, int wPort, int iMsg)
 {
 	string sBan = "b" + inet_ntoax(dwIP);
 
-	if (CheckAttribute(NSBanList, sBan))	// if ban exist
+	if (CheckAttribute(NSBanList, sBan))	
 	{
-		// check for time, maybe unBan?
+		
 
-		// check for code CONNECT
+		
 		if (NMGetByte(iMsg) == NC_CONNECT) 
 		{
 			int iSMsg = NMCreate();
@@ -31,11 +31,11 @@ void NetServer_OnNetMessage()
 	int iMsg = GetEventData();
 	int iPacketIndex = GetEventData();
 
-	if (NetServer_CheckForBan(dwIP, wPort, iMsg)) { return; }	// skip message if dwIP banned
+	if (NetServer_CheckForBan(dwIP, wPort, iMsg)) { return; }	
 
 	int wNetClientID = NMGetClientID(iMsg);
 
-	// callback garanted message
+	
 	if (iPacketIndex)
 	{
 		int iSMsg = NMCreate();
@@ -47,17 +47,17 @@ void NetServer_OnNetMessage()
 		if (wNetClientID != DST_INVALID)
 		{
 			rClient = NetServer_GetClient(wNetClientID);
-			if (iPacketIndex <= sti(rClient.LastPacketIndex)) { return; }	// check for 32767 << 1
+			if (iPacketIndex <= sti(rClient.LastPacketIndex)) { return; }	
 			rClient.LastPacketIndex = iPacketIndex;
 		}
 	}
 
 	int iCode = NMGetByte(iMsg);
 
-	if (wNetClientID < NET_MAXCLIENTS)	// update port for client, router can change this value on the fly
+	if (wNetClientID < NET_MAXCLIENTS)	
 	{
 		rClient = NetServer_GetClient(wNetClientID);
-		//rClient.dwIP = dwIP;
+		
 		rClient.wPort = wPort;
 	}
 
@@ -142,7 +142,7 @@ void NetServer_GetTotalPlayerStatistic(int wNetClientID, int iMsg)
 		return;
 	}
 
-	//int iRealPIndex = NSSortedPlayers[iPIndex];
+	
 	int iRealPIndex = NSSortedPlayers[iPIndex];
 
 	arPlayer = GetAttributeN(arPlayers, iRealPIndex);
@@ -163,4 +163,5 @@ void NetServer_GetTotalPlayerStatistic(int wNetClientID, int iMsg)
 	NetServer_SendMessage(wNetClientID, iSMsg, true);
 	NMDelete(iSMsg);
 }
+
 

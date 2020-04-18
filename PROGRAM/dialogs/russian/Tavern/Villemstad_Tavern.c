@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -10,13 +10,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat("You know, " + NPChar.name + ", maybe next time.", "Right, I've forgotten for some reason...",
                       "Yes, it really is the third time...", "Yep...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//работорговец
+			
 			if (pchar.questTemp.Slavetrader == "EscapeSlave_Villemstad")
             {
                 link.l1 = "I heard that there was a serious mess on the island... Slaves?";
                 link.l1.go = "EscapeSlaveVillemstad_T1";
             }
-			//Португалец
+			
 			if (CheckAttribute(pchar, "questTemp.Portugal") && pchar.questTemp.Portugal == "SeekPortVillemstad")
             {
                 link.l1 = "I've heard that distasteful scoundrel Bart the Portuguese has finally met colonel justice! Is he in your prison? When will his execution be, do you know? I'd come watch, I have some bones with that scumbag...";
@@ -24,7 +24,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             }
  		break;
 
-		//работорговец
+		
 		case "EscapeSlaveVillemstad_T1":
 			dialog.text = "Yep, there aint never been such an animal... More than a thousand slaves have participated in a mutiny. Two plantations been have burnt down to the ground and almost each of their masters were murdered. The commandant was worried that they'd come attack the city, so he has enforced martial law. And it all started because of the story of two slaves Tamango and Isauri...";
 			link.l1 = "Wow! Tell me the whole story! Who are they?";
@@ -93,6 +93,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddQuestRecord("Portugal", "32");
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

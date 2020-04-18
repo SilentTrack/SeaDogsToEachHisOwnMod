@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -14,7 +14,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                 link.l1 = "Has a man named Francois Gontier dropped by your city? I really need him.";
                 link.l1.go = "Jamaica_ratF_1";
             }
-			// Addon 2016-1 Jason пиратская линейка
+			
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "silk_4")
             {
                 link.l1 = "Listen, matey, there's a ship builded in Port Royal who is purchasing some silk for his shipyard... some very special silk, you surely've heard of it. They say a seller of such silk is residing somewhere in this settlement. Do you have any clues on how to find him? I have a business proposal for him.";
@@ -28,13 +28,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 
 		case "Jamaica_ratF_1":
-			dialog.text = "He has. He rented a room for me for a few days. Not the most pleasant fellow, I'll tell you. Besides that, he was obsessively paranoid of being searched for Цhe was always afraid and looking around. Are you the man that he was so afraid of?";
+			dialog.text = "He has. He rented a room for me for a few days. Not the most pleasant fellow, I'll tell you. Besides that, he was obsessively paranoid of being searched for пњљhe was always afraid and looking around. Are you the man that he was so afraid of?";
 			link.l1 = "No, it's not me. You know, privateers have a lot of enemies though. So, where can I find him? He and I decided to make an agreement, but he seems to have seeped right through the ground!";
 			link.l1.go = "Jamaica_ratF_2";
 		break;
 		
 		case "Jamaica_ratF_2":
-			dialog.text = "He's departed to sea on his own ship. Where to ЦI don't know. He didn't fill me in on that.";
+			dialog.text = "He's departed to sea on his own ship. Where to пњљI don't know. He didn't fill me in on that.";
 			link.l1 = "Ah, what a pity! Where am I going to look for him now?";
 			link.l1.go = "Jamaica_ratF_3";
 		break;
@@ -47,7 +47,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.questTemp.Slavetrader = "FindRatJamaica_H";
 		break;
 		
-		// Addon 2016-1 Jason пиратская линейка
+		
 		case "mtraxx":
             dialog.text = "Huh, if you suspect our merchant, the one that keeps the store, I can tell it's not him, he doesn't deal in silk sailcloth. Smugglers don't come here neither, no need for them when there's no customs. And besides those who would have a use for silk in Maroon Town anyways? Have a look around - we aren't the sort, ha-ha! No, you've been duped.";
 			link.l1 = "But someone is supplying the silk to Port Royal - that's irrefutable. Do you have any clue on who could be the supplier?";
@@ -114,5 +114,6 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			SetFunctionTimerCondition("Mtraxx_BillySeaTimeOver", 0, 0, 7, false);
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+

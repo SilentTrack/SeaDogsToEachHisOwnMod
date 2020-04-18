@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -18,7 +18,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "In the governor's palace, of course. She's on of Don Fernando de Villegas. You can look for her there after noon during a siesta –she usually has business to attend to in the mornings. She's into some trouble right now, so keep that in mind. But she won't mind speaking with you. Donna Belinda is a good woman.";
+			dialog.text = "In the governor's palace, of course. She's on of Don Fernando de Villegas. You can look for her there after noon during a siesta пїЅshe usually has business to attend to in the mornings. She's into some trouble right now, so keep that in mind. But she won't mind speaking with you. Donna Belinda is a good woman.";
 			link.l1 = "Thank you!";
 			link.l1.go = "guardoftruth_1";
 		break;
@@ -27,7 +27,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			DialogExit();
 			npchar.quest.utensil = "true";
 			pchar.questTemp.Guardoftruth.Belinda = "seek";
-			// ставим Белинду
+			
 			sld = GetCharacter(NPC_GenerateCharacter("GOT_Belinda", "Belinda", "woman", "towngirl", 3, SPAIN, -1, true, "quest"));
 			SetFantomParamFromRank(sld, 3, true);
 			sld.name = "Belinda";
@@ -42,6 +42,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

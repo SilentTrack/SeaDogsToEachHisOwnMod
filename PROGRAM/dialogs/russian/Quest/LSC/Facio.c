@@ -1,4 +1,4 @@
-// посредник-дипломат кланов Джузеппе Фацио
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -34,7 +34,7 @@ void ProcessDialogEvent()
 					link.l10 = "Fazio, I have got a serious conflict with one clan. I need to solve this problem.";
 					link.l10.go = "conflict";
 				}
-				// --> квестовые ветки
+				
 				if (CheckAttribute(pchar, "questTemp.Saga.SharkHunt") && pchar.questTemp.Saga.SharkHunt == "search_mush_3")
 				{
 					link.l4 = "Giuseppe, I am looking for a man by the name of Adolf Barbier. They told me that you had been drinking with him at the tavern recently...";
@@ -50,7 +50,7 @@ void ProcessDialogEvent()
 					link.l5 = "I am ready to play your game. Here is my stake.";
 					link.l5.go = "drink_4";
 				}
-				// <-- квестовые ветки
+				
 				if (CheckAttribute(npchar, "quest.parol"))
 				{
 					link.l1 = "I want to know the current password of the clans to enter their territories.";
@@ -71,7 +71,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// пароли
+		
 		case "parol_choice":
 			dialog.text = "What clan?";
 			link.l1 = "Narwhals.";
@@ -156,32 +156,32 @@ void ProcessDialogEvent()
 		
 		case "adolf_2":
 			DialogExit();
-			LSC_CreateAdolfClone(); // заменяем Адольфа клоном
-			pchar.questTemp.Saga.SharkHunt = "search_mush_4"; //флаг на Адольфа в каюте
+			LSC_CreateAdolfClone(); 
+			pchar.questTemp.Saga.SharkHunt = "search_mush_4"; 
 			AddQuestRecord("SharkHunt", "14");
 		break;
 		
 		case "whiskey":
 			switch (sti(npchar.quest.poisonnode))
 			{
-				case 1: // у себя
+				case 1: 
 					dialog.text = "Ah? Why are you invading my place like there is a fire? What liberties are you taking?";
 					link.l1 = "I will take even more liberties... poisoner!";
 					link.l1.go = "whiskey_1";
 				break;
 				
-				case 2: // на Эве
+				case 2: 
 					dialog.text = "Spare me! I swear, they have forced me! They have put a gun against my...";
 					link.l1 = "Shut up. I know that. Where is the last bastard? Where is Marcello Cyclops?!";
 					link.l1.go = "whiskey_3";
-					SetFunctionTimerCondition("LSC_FacioReturn", 0, 0, 1, false); // вертаем на место Фацио через сутки
+					SetFunctionTimerCondition("LSC_FacioReturn", 0, 0, 1, false); 
 				break;
 				
-				case 3: // у Акулы
+				case 3: 
 					dialog.text = "I swear, they have forced me! I have already told the admiral everything! I couldn't resist them, they would...";
 					link.l1 = "Shut up. I know that. Where is the last bastard? Where is Marcello Cyclops?!";
 					link.l1.go = "whiskey_3";
-					SetFunctionTimerCondition("LSC_FacioReturn", 0, 0, 1, false); // вертаем на место Фацио через сутки
+					SetFunctionTimerCondition("LSC_FacioReturn", 0, 0, 1, false); 
 				break;
 			}
 		break;
@@ -201,7 +201,7 @@ void ProcessDialogEvent()
 		case "whiskey_3":
 			dialog.text = "I... I.... I don't know!";
 			link.l1 = "You are lying, scum! I see that. Where is Cyclops?";
-			if (pchar.questTemp.LSC.Mary == "die") link.l1.go = "whiskey_10"; // ушел на Флерон
+			if (pchar.questTemp.LSC.Mary == "die") link.l1.go = "whiskey_10"; 
 			else link.l1.go = "whiskey_4";
 		break;
 		
@@ -237,7 +237,7 @@ void ProcessDialogEvent()
 		
 		case "whiskey_9":
 			DialogExit();
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			NextDiag.CurrentNode = "whiskey_repeat";
 			pchar.quest.LSC_RescueMary.win_condition.l1 = "location";
 			pchar.quest.LSC_RescueMary.win_condition.l1.location = "LostShipsCity_town";
@@ -262,7 +262,7 @@ void ProcessDialogEvent()
 		
 		case "whiskey_11":
 			DialogExit();
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			pchar.quest.LSC_FindCyclop.win_condition.l1 = "location";
 			pchar.quest.LSC_FindCyclop.win_condition.l1.location = "FleuronTavern";
 			pchar.quest.LSC_FindCyclop.function = "LSC_SetCyclop_Fl";
@@ -271,7 +271,7 @@ void ProcessDialogEvent()
 			
 		break;
 		
-		// --> конфликты
+		
 		case "conflict":
 			dialog.text = "Is that so? Well, my boy, what clan is troubling you?";
 			if (CheckAttribute(pchar, "GenQuest.NarvalConflict"))
@@ -364,7 +364,7 @@ void ProcessDialogEvent()
 			pchar.locz = locz;
 			SetLaunchFrameFormParam("One day later..."+ NewStr() +"Fazio has dealt with the conflict", "Reload_To_Location", 0.1, 5.0);
 			SetLaunchFrameReloadLocationParam(pchar.location, "goto", LAi_FindNearestFreeLocator2Pchar("goto"), "LocTeleport");
-			WaitDate("", 0, 0, 1, 3, 10); //крутим время
+			WaitDate("", 0, 0, 1, 3, 10); 
 			LaunchFrameForm();
 			RefreshLandTime();
 			RecalculateJumpTable();
@@ -372,21 +372,21 @@ void ProcessDialogEvent()
 			switch (npchar.quest.clan)
 			{
 				case "narval":
-					DeleteAttribute(pchar, "GenQuest.NarvalConflict"); // мирим
-					if (CheckAttribute(pchar, "questTemp.LSC.nrv_friend") || !CheckAttribute(pchar, "questTemp.LSC.rvd_friend")) LocatorReloadEnterDisable("LostShipsCity_town", "reload48", false);//открыть вход к Дональду
+					DeleteAttribute(pchar, "GenQuest.NarvalConflict"); 
+					if (CheckAttribute(pchar, "questTemp.LSC.nrv_friend") || !CheckAttribute(pchar, "questTemp.LSC.rvd_friend")) LocatorReloadEnterDisable("LostShipsCity_town", "reload48", false);
 					LAi_group_SetRelation("LSC_NARVAL", LAI_GROUP_PLAYER, LAI_GROUP_NEITRAL);
 				break;
 				
 				case "rivados":
-					DeleteAttribute(pchar, "GenQuest.RivadosConflict"); // мирим
-					if (CheckAttribute(pchar, "questTemp.LSC.rvd_friend") || !CheckAttribute(pchar, "questTemp.LSC.nrv_friend")) LocatorReloadEnterDisable("LostShipsCity_town", "reload33", false);//открыть вход к Эдди
+					DeleteAttribute(pchar, "GenQuest.RivadosConflict"); 
+					if (CheckAttribute(pchar, "questTemp.LSC.rvd_friend") || !CheckAttribute(pchar, "questTemp.LSC.nrv_friend")) LocatorReloadEnterDisable("LostShipsCity_town", "reload33", false);
 					LAi_group_SetRelation("LSC_RIVADOS", LAI_GROUP_PLAYER, LAI_GROUP_NEITRAL);
 				break;
 				
 				case "shark":
-					DeleteAttribute(pchar, "GenQuest.SharkConflict"); // мирим
-					LSC_OpenSanAvgustinDoors(); // открыть сан-августин
-					LSC_OpenTartarusDoors(); // открыть тартарус
+					DeleteAttribute(pchar, "GenQuest.SharkConflict"); 
+					LSC_OpenSanAvgustinDoors(); 
+					LSC_OpenTartarusDoors(); 
 					LAi_group_SetRelation("LSC_SHARK", LAI_GROUP_PLAYER, LAI_GROUP_NEITRAL);
 				break;
 			}
@@ -394,7 +394,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(npchar, "quest.price");
 		break;
 		
-		// --> пей до дна
+		
 		case "drink":
 			dialog.text = "Come on, my boy! Lying, they are all lying, he-he. My head is just a bit tougher than an average head, but I am a human being just like you are, so I also get drunk with rum. People drink rum to get drunk, that is it's only purpose. Have you ever thought about that, dear?";
 			link.l1 = "Quite true.";
@@ -449,7 +449,7 @@ void ProcessDialogEvent()
 		case "drink_6":
 			DialogExit();
 			pchar.questTemp.LSC.Drink = "start";
-			pchar.quest.LSC_DrinkOver.over = "yes"; //снять таймер
+			pchar.quest.LSC_DrinkOver.over = "yes"; 
 			pchar.quest.LSC_Drink.win_condition.l1 = "Timer";
 			pchar.quest.LSC_Drink.win_condition.l1.date.hour  = 21.0;
 			pchar.quest.LSC_Drink.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 0);
@@ -474,7 +474,7 @@ void ProcessDialogEvent()
 		case "drink_9":
 			DialogExit();
 			pchar.questTemp.LSC.Drink = "go";
-			pchar.quest.LSC_Drink_Over.over = "yes"; //снять таймер
+			pchar.quest.LSC_Drink_Over.over = "yes"; 
 			ChangeCharacterAddressGroup(pchar, "FleuronTavern", "quest", "sit1");
 			LAi_SetActorType(pchar);
 			LAi_ActorSetSitMode(pchar);
@@ -490,7 +490,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "drunk";
 		break;
-		// <-- пей до дна
+		
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

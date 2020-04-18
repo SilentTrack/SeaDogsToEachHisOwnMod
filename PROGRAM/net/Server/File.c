@@ -53,7 +53,7 @@ void NetServer_OnFileGetFile(int wNetClientID, int iFileID1, int iFileID2, int i
 	}
 	else
 	{
-		// Create Send File 
+		
 		iFileID1 = NFSCreateFile(wNetClientID, iFileID2, sFileName);
 	}
 	NMDelete(iSMsg);

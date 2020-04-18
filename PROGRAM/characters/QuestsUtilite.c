@@ -1,10 +1,10 @@
 
-// строковая дата, день_мес
+
 string LastSpeakDate()
 {
     return environment.date.day + " " + environment.date.month;
 }
-// Для диалогов НПС -->
+
 string GetNPCQuestDate(ref npchar, string _type)
 {
     if (!CheckAttribute(npchar, "QuestDate." + _type))
@@ -25,9 +25,9 @@ bool CheckNPCQuestDate(ref npchar, string _type)
     }
     return false;
 }
-// Для ГГ <--
+
 void SaveCurrentQuestDateParam(string _quest)
-{ // запись даты получения квеста
+{ 
     aref  arQ;
     makearef(arQ, PChar.(_quest));
     
@@ -63,8 +63,8 @@ int GetQuestPastTimeParam(string _quest)
 	}  
 	return 0;
 }
-//navy -->
-//Ввел еще одну функцию, т.к. нужны прошедшие минуты.
+
+
 int GetQuestPastMinutesParam(string _quest)
 {
     aref  arQ;
@@ -75,12 +75,12 @@ int GetQuestPastMinutesParam(string _quest)
 	}
 	return 0;
 }
-//navy <--
 
-// eddy
-// ************* для неписей.
+
+
+
 void SaveCurrentNpcQuestDateParam(ref _character, string _quest)
-{ // запись даты получения квеста
+{ 
     aref  arQ;
     makearef(arQ, _character.(_quest));
 
@@ -109,7 +109,7 @@ int GetNpcQuestPastDayWOInit(ref _character, string _quest)
     {
         return GetPastTime("day", sti(arQ.control_year), sti(arQ.control_month), sti(arQ.control_day), 0,GetDataYear(), GetDataMonth(), GetDataDay(), 0);
     }
-    else {return 1000;}  // если нет ветки, то это значит черти когда было дело
+    else {return 1000;}  
 }
 
 int GetNpcQuestPastTimeParam(ref _character, string _quest)
@@ -143,13 +143,13 @@ int GetNpcQuestPastMonthParam(ref _character, string _quest)
     }
     else {return 0;}
 }
-// *************
 
 
-// Поместить непися в компаньоны и тут же отправить его на выход из текущей локации.
+
+
 void CharacterIntoCompanionAndGoOut(ref _mainCharacter, ref _compCharacter, string _group, string _locator, int _timeToGoOut, bool _compRemove)
 {
-    if (!bDisableFastReload) //чтобы не снимать запрет, если он установлен другим методом
+    if (!bDisableFastReload) 
 	{
 		bDisableFastReload = true;
 		_mainCharacter.GenQuest.CallFunctionParam.CharacterIntoCompanion.FastReload = true;
@@ -168,12 +168,12 @@ void CharacterIntoCompanionAndGoOut(ref _mainCharacter, ref _compCharacter, stri
     DoQuestCheckDelay("CallFunctionParam", _timeToGoOut);
 }
 
-void Character_into_companion()    // относится к методу выше.
+void Character_into_companion()    
 {
     ref NPChar = characterFromID(PChar.GenQuest.CallFunctionParam.CharacterIntoCompanion.Id);
     SetCompanionIndex(pchar, -1, getcharacterIndex(PChar.GenQuest.CallFunctionParam.CharacterIntoCompanion.Id));
     if (PChar.GenQuest.CallFunctionParam.CharacterIntoCompanion.Remove == false)    {SetCharacterRemovable(npchar, false);}
-	//снимать запрет, только если он установлен этим методом
+	
 	if (CheckAttribute(PChar, "GenQuest.CallFunctionParam.CharacterIntoCompanion.FastReload")) bDisableFastReload = false;
 }
 
@@ -195,17 +195,17 @@ string GetBookData(int day, int mn, int year)
     return result;
 }
 
-// репутация плохого парня с границами
+
 bool isBadReputation(ref _pchar, int _rep)
 {
     if (GetCharacterPerkUsing(_pchar, "Trustworthy") || sti(_pchar.reputation.nobility) >= _rep)
     {
-        return false;// good guy
+        return false;
     }
-    return true;// bad guy
+    return true;
 }
 
-// --> ugeen  - генерация карт островов в сундуке каюты во время абордажа   07.07.09
+
 void FillCabinBoxMap(ref _location, int _probability)
 {
 	int 	i;
@@ -230,12 +230,12 @@ void FillCabinBoxMap(ref _location, int _probability)
 		}		
 	}
 }
-//<-- ugeen
 
-//ugeen --> заполнить сундук в трюме квестовым барахлом
+
+
 void FillQuestHoldBox(ref _location)
 {
-	_location.box1 = Items_MakeTime(GetTime(), GetDataDay(), GetDataMonth(), GetDataYear()); // нужно, чтоб не перетерлось
+	_location.box1 = Items_MakeTime(GetTime(), GetDataDay(), GetDataMonth(), GetDataYear()); 
 	
 	int nShipType = sti(pchar.ship.type);
 
@@ -250,9 +250,9 @@ void FillQuestHoldBox(ref _location)
 		}	
 	}
 }
-// <-- ugeen
 
-// заполнить сундук каюты во время абордажа
+
+
 void FillAboardCabinBox(ref _location, ref _npchar)
 {
     int     iTemp;
@@ -260,15 +260,15 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 	float   nLuck;
 	int 	iNation;
 	int     iRnd; 
-	string amap, amulet; // dlc
+	string amap, amulet; 
 	
-	_location.box1 = Items_MakeTime(GetTime(), GetDataDay(), GetDataMonth(), GetDataYear()); // нужно, чтоб не перетерлось
-	// нужно отметить, что в сундуке сгенерятся рандомные вещи, этот код срабатывает потом и правит токо деньги
+	_location.box1 = Items_MakeTime(GetTime(), GetDataDay(), GetDataMonth(), GetDataYear()); 
+	
 	
 	ok = true;
-	// заготовка под квест
+	
 
-	// маленькая пасхалка от меня -> ugeen  17.06.09
+	
 	if (CheckAttribute(_npchar, "Ship.Name") && _npchar.Ship.Name == "Wheel of Fortune" )
 	{
 		DeleteAttribute(_location, "box1");
@@ -310,13 +310,13 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		ok = false;
 	}
 		
-	// Осады  homo 22/10/06	 
+	
 	if (findsubstr(_npchar.id, "SiegeCap_" , 0) != -1)
 	{
 	    aref aData, itm;
 	    makearef(aData, NullCharacter.Siege);
 	    string sGroup = "Sea_"+NationShortName(sti(aData.nation))+"SiegeCap_1";
-	    ref rchar = Group_GetGroupCommander(sGroup);  //поиск текущего командера, он меняется от убиеня
+	    ref rchar = Group_GetGroupCommander(sGroup);  
 	    Log_TestInfo( _npchar.id +" == "+ rchar.id);
 		if (_npchar.id == rchar.id && CheckAttribute(aData, "loot"))
 		{
@@ -329,7 +329,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
             {
                 _location.box1.items.(idmap) = 1;
             }
-			if (drand(4) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты, 20% 250912
+			if (drand(4) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 			{
 				amap = SelectAdmiralMaps();
 				if (amap != "") _location.box1.items.(amap)	= 1;
@@ -338,7 +338,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 	        ok = false;
 		}
 	}
-	//homo =>
+	
     if (findsubstr(_npchar.id, "_QuestMerchant" , 0) != -1)
     {
         if (trap)
@@ -346,7 +346,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
             DeleteAttribute(_location, "box1");
             _location.box1.money = (cRand(30)+1) * 40;
             _location.box1.items.blade_13 = 1;
-			if (drand(4) == 2 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+			if (drand(4) == 2 && CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 			{
 				amap = SelectAdmiralMaps();
 				if (amap != "") _location.box1.items.(amap)	= 1;
@@ -369,7 +369,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 			if(rand(1) == 0) { _location.box1.items.jewelry4 = rand(346)  + 311; }
 			if(rand(1) == 0) { _location.box1.items.jewelry5 = rand(678)  + 420; }
 		}	
-		if (CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+		if (CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 		{
 			amap = SelectAdmiralMaps();
 			if (amap != "") _location.box1.items.(amap)	= 1;
@@ -377,10 +377,10 @@ void FillAboardCabinBox(ref _location, ref _npchar)
         ok = false;
 
     }
-    //homo <=
+    
 
-	// Jason: укладка важных предметов и просто вкусных пряников в сундуки квестовых кэпов.
-	//работорговец, 2 эпизод
+	
+	
 	if (_npchar.id == "CaptainSlaveAttack_2" && CheckAttribute(PChar, "questTemp.Slavetrader"))
 	{
         DeleteAttribute(_location, "box1");
@@ -388,7 +388,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box1.items.talisman8 = 1;
         ok = false;
 	}
-	//работорговец, письмо, 4 эпизод
+	
 	if (_npchar.id == "CapBrigAttack" && CheckAttribute(PChar, "questTemp.Slavetrader"))
 	{
         DeleteAttribute(_location, "box1");
@@ -397,13 +397,13 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		ChangeItemDescribe("letter_1", "itmdescr_letter_1");
         ok = false;
 	}
-	//работорговец, линкор
+	
 	if (_npchar.id == "GaleonCap" && CheckAttribute(PChar, "questTemp.Slavetrader"))
 	{
         DeleteAttribute(_location, "box1");
         _location.box1.money = 2350;
 		_location.box1.items.jewelry5 = 1000;
-		if (CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+		if (CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 		{
 			amap = SelectAdmiralMaps();
 			if (amap != "") _location.box1.items.(amap)	= 1;
@@ -415,18 +415,18 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box2.items.mineral18 = 3;
 		_location.box2.items.mineral20 = 31;
 		_location.box2.items.potion7 = 1;
-		_location.box2.items.mineral31 = 2; //заговоренная кость
+		_location.box2.items.mineral31 = 2; 
 		DeleteAttribute(_location, "box3");
 		_location.box3.items.mineral4 = 2;
 		_location.box3.items.mineral12 = 10;
 		_location.box3.items.mineral14 = 58;
-		_location.box3.items.jewelry30 = 1; //золотой нож
+		_location.box3.items.jewelry30 = 1; 
 		_location.box3.items.mineral1 = 12;
 		_location.box3.items.berserker_potion = 1;
         ok = false;
 	}
 	
-	//малява курьер
+	
 	if (_npchar.id == "CureerAttack")
 	{
         DeleteAttribute(_location, "box1");
@@ -466,7 +466,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 			}			
         ok = false;
 	}
-	// ложный след, галеон
+	
 	if (_npchar.id == "FalseTraceCap")
 	{
 		DeleteAttribute(_location, "box1");
@@ -476,32 +476,32 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box1.items.totem_01 = 1;
         ok = false;
 	}
-	// карибские нравы, пуэбла
+	
 	if (_npchar.id == "PueblaCap")
 	{
 		DeleteAttribute(_location, "box1");
 		_location.box1.money = 5000;
 		_location.box1.items.gold_dublon = 20;
 		_location.box1.items.spyglass2 = 1;
-		_location.box1.items.mushket1 = 1; // patch-6
+		_location.box1.items.mushket1 = 1; 
 		DeleteAttribute(_location, "box2");
 		_location.box2.items.recipe_totem_06 = 1;
 		_location.box2.items.totem_06 = 1;
         ok = false;
 	}
-	//Голландский Гамбит
-	//серебряный конвой по английскому варианту
+	
+	
 	if (_npchar.id == "SilverCap2" && CheckAttribute(PChar, "questTemp.HWIC.Eng"))
 	{
         DeleteAttribute(_location, "box1");
         _location.box1.money = 2000;
 		_location.box1.items.gold_dublon = 80;
 		_location.box1.items.clock1 = 1;
-		_location.box1.items.mushket3 = 1; // patch-5
+		_location.box1.items.mushket3 = 1; 
         ok = false;
 	}
 	
-	//Мейфенг по английскому варианту
+	
 	if (_npchar.id == "Lucas" && CheckAttribute(PChar, "questTemp.HWIC.Eng"))
 	{
         DeleteAttribute(_location, "box1");
@@ -517,11 +517,11 @@ void FillAboardCabinBox(ref _location, ref _npchar)
         ok = false;
 	}
 	
-	//Валькирия без Флитвуда - против всех
+	
 	if (_npchar.id == "ValCap" && CheckAttribute(PChar, "questTemp.HWIC.Self"))
 	{
         DeleteAttribute(_location, "box1");
-        _location.box1.money = 200000;//выкуп за Аби
+        _location.box1.money = 200000;
 		_location.box1.items.gold_dublon = 175;
 		_location.box1.items.obereg_7 = 1;
 		_location.box1.items.jewelry8 = 5;
@@ -530,12 +530,12 @@ void FillAboardCabinBox(ref _location, ref _npchar)
         ok = false;
 	}
 	
-	// Пиратская Сага
-	// корвет Донована
+	
+	
 	if (_npchar.id == "Donovan" && CheckAttribute(PChar, "questTemp.Saga"))
 	{
         DeleteAttribute(_location, "box1");
-        _location.box1.money = 25000;//
+        _location.box1.money = 25000;
 		_location.box1.items.gold_dublon = 250;
 		_location.box1.items.cirass7 = 1;
 		DeleteAttribute(_location, "box2");
@@ -544,7 +544,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box2.items.indian_7 = 1;
         ok = false;
 	}
-	// полакр Марлин
+	
 	if (_npchar.id == "Cap_Marlin" && CheckAttribute(PChar, "questTemp.Saga"))
 	{
         DeleteAttribute(_location, "box1");
@@ -554,7 +554,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box1.items.amulet_1 = 1;
 		_location.box1.items.recipe_totem_07 = 1;
 		_location.box1.items.totem_07 = 1;
-		if (drand(1) == 0 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+		if (drand(1) == 0 && CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 		{
 			amap = SelectAdmiralMaps();
 			if (amap != "") _location.box1.items.(amap)	= 1;
@@ -565,40 +565,40 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box2.items.jewelry1 = 10;
         ok = false;
 	}
-	// корвет Бродяги
+	
 	if (_npchar.id == "Saga_Vagrant" && CheckAttribute(PChar, "questTemp.Saga"))
 	{
         DeleteAttribute(_location, "box1");
-        _location.box1.money = 15000;//
+        _location.box1.money = 15000;
 		_location.box1.items.gold_dublon = 50;
 		_location.box1.items.letter_chad_1 = 1;
 		ChangeItemDescribe("letter_chad_1", "itmdescr_letter_vargant");
-		if (drand(2) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+		if (drand(2) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 		{
 			amap = SelectAdmiralMaps();
 			if (amap != "") _location.box1.items.(amap)	= 1;
 		}
         ok = false;
 	}
-	// Джекман, Центурион
+	
 	if (_npchar.id == "Jackman" && CheckAttribute(PChar, "questTemp.Saga"))
 	{
         DeleteAttribute(_location, "box1");
-        _location.box1.money = 50000;//
+        _location.box1.money = 50000;
 		_location.box1.items.gold_dublon = 100;
-		_location.box1.items.map_half_blaze = 1; // половинка карты
-		_location.box1.items.splinter_nh = 1; // осколок календаря
+		_location.box1.items.map_half_blaze = 1; 
+		_location.box1.items.splinter_nh = 1; 
 		_location.box1.items.recipe_totem_10 = 1;
 		_location.box1.items.map_normal = 1;
-		if (CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты 250912
+		if (CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 		{
 			amap = SelectAdmiralMaps();
 			if (amap != "") _location.box1.items.(amap)	= 1;
 		}
 		DeleteAttribute(_location, "box2");
 		_location.box2.items.gold_dublon = 250;
-		_location.box2.items.witches_hammer = 1; //молот ведьм
-		_location.box2.items.letter_parol = 1; // записка с паролем на рудник
+		_location.box2.items.witches_hammer = 1; 
+		_location.box2.items.letter_parol = 1; 
 		_location.box2.items.map_bermudas = 1;
 		_location.box2.items.map_jam = 1;
 		_location.box2.items.obereg_8 = 1;
@@ -607,15 +607,15 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box2.items.berserker_potion = 3;
         ok = false;
 	}
-	// Моллиган, Устрица
+	
 	if (_npchar.id == "Molligan" && CheckAttribute(PChar, "questTemp.Saga"))
 	{
 		DeleteAttribute(_location, "box1");
 		_location.box1.money = 5000;
 		_location.box1.items.gold_dublon = 100;
 		_location.box1.items.jewelry16 = 1;
-		_location.box1.items.tailor_tool = 1; // портняжный набор
-		if (drand(1) == 0 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+		_location.box1.items.tailor_tool = 1; 
+		if (drand(1) == 0 && CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 		{
 			amap = SelectAdmiralMaps();
 			if (amap != "") _location.box1.items.(amap)	= 1;
@@ -630,14 +630,14 @@ void FillAboardCabinBox(ref _location, ref _npchar)
         ok = false;
 	}
 	
-	// Суп из черепахи
-	// Мартэн, Вольтижер
+	
+	
 	if (_npchar.id == "Rober" && CheckAttribute(PChar, "questTemp.Terrapin"))
 	{
 		DeleteAttribute(_location, "box1");
 		_location.box1.money = 200000;
 		_location.box1.items.Cromvel_depeshe = 1;
-		if (CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+		if (CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 		{
 			amap = SelectAdmiralMaps();
 			if (amap != "") _location.box1.items.(amap)	= 1;
@@ -648,11 +648,11 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		ritm.Year = GetAddingDataYear(0,2,1);
 		DeleteAttribute(_location, "box2");
 		_location.box2.items.totem_04 = 1;
-		_location.box2.items.recipe_totem_04 = 1; // patch-9
+		_location.box2.items.recipe_totem_04 = 1; 
         ok = false;
 	}
 	
-	// Мартэн, Инфанта
+	
 	if (_npchar.id == "RoberCap2")
 	{
 		DeleteAttribute(_location, "box1");
@@ -662,18 +662,18 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		ritm.Day = GetAddingDataDay(0,1,1);
 		ritm.Month = GetAddingDataMonth(0,1,1);
 		ritm.Year = GetAddingDataYear(0,1,1);
-		if (CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+		if (CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 		{
 			amap = SelectAdmiralMaps();
 			if (amap != "") _location.box1.items.(amap)	= 1;
 		}
 		DeleteAttribute(_location, "box2");
 		_location.box2.items.totem_04 = 1;
-		_location.box2.items.recipe_totem_04 = 1; // patch-9
+		_location.box2.items.recipe_totem_04 = 1; 
         ok = false;
 	}
 	
-	// эскадра Кромвеля, мановар 141012
+	
 	if (_npchar.id == "Cromvel_cap_1")
 	{
 		DeleteAttribute(_location, "box1");
@@ -689,7 +689,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
         ok = false;
 	}
 	
-	// Защита Сен-Пьера, мановар
+	
 	if (_npchar.id == "SPsiege_cap_1")
 	{
         DeleteAttribute(_location, "box1");
@@ -699,7 +699,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box1.items.mushket3 = 1;
 		if (MOD_SKILL_ENEMY_RATE > 7) _location.box1.items.cirass4 = 1; 
 		if (MOD_SKILL_ENEMY_RATE < 7) _location.box1.items.cirass3 = 1; 
-		if (CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+		if (CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 		{
 			amap = SelectAdmiralMaps();
 			if (amap != "") _location.box1.items.(amap)	= 1;
@@ -707,13 +707,13 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		DeleteAttribute(_location, "box2");
 		_location.box2.items.bussol = 1;
 		_location.box2.items.clock2 = 1;
-		_location.box2.items.cannabis7 = 1; // мангароса
+		_location.box2.items.cannabis7 = 1; 
 		_location.box2.items.totem_11 = 1;
 		_location.box2.items.recipe_totem_11 = 1; 
         ok = false;
 	}
-	// Страж Истины
-	// ТГ у Сан-Антонио
+	
+	
 	if (_npchar.id == "Diegohaleon_cap")
 	{
         DeleteAttribute(_location, "box1");
@@ -721,7 +721,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box1.items.Chest = 1;
 		_location.box1.items.map_cuba = 1;
 		_location.box1.items.blade_17 = 1;
-		if (drand(2) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+		if (drand(2) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 		{
 			amap = SelectAdmiralMaps();
 			if (amap != "") _location.box1.items.(amap)	= 1;
@@ -732,7 +732,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box2.items.berserker_potion = 1;
         ok = false;
 	}
-	// флагман эскадры Диего
+	
 	if (_npchar.id == "GOT_catochecap_1")
 	{
         DeleteAttribute(_location, "box1");
@@ -741,7 +741,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box1.items.icollection = 2;
 		_location.box1.items.map_beliz = 1;
 		_location.box1.items.cirass7 = 1;
-		if (drand(1) == 0 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+		if (drand(1) == 0 && CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 		{
 			amap = SelectAdmiralMaps();
 			if (amap != "") _location.box1.items.(amap)	= 1;
@@ -750,12 +750,12 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box2.items.bussol = 1;
 		_location.box2.items.clock2 = 1;
 		_location.box2.items.jewelry2 = 100;
-		_location.box2.items.cannabis7 = 1; // мангароса
+		_location.box2.items.cannabis7 = 1; 
 		_location.box2.items.talisman6 = 1;
         ok = false;
 	}
 	
-	// фрегат Патерсона - Фортуна
+	
 	if (_npchar.id == "Willy")
 	{
         DeleteAttribute(_location, "box1");
@@ -763,7 +763,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box1.items.Chest = 5;
 		_location.box1.items.map_beliz = 1;
 		_location.box1.items.cirass7 = 1;
-		if (drand(1) == 0 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+		if (drand(1) == 0 && CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 		{
 			amap = SelectAdmiralMaps();
 			if (amap != "") _location.box1.items.(amap)	= 1;
@@ -772,12 +772,12 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box2.items.bussol = 1;
 		_location.box2.items.clock2 = 1;
 		_location.box2.items.jewelry2 = 100;
-		_location.box2.items.cannabis7 = 1; // мангароса
+		_location.box2.items.cannabis7 = 1; 
 		_location.box2.items.potion7 = 1;
         ok = false;
 	}
 	
-	//Контркурьер, губерский генер
+	
 	if (_npchar.id == "ContraCureerCap" && CheckAttribute(PChar, "GenQuest.TakePostcureer"))
 	{
 		 DeleteAttribute(_location, "box1");
@@ -790,7 +790,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
         ok = false;
 	}
 	
-	//Контрарсенал, губерский генер
+	
 	if (_npchar.id == "ContraCureerCap" && CheckAttribute(PChar, "GenQuest.TakeArsenalship"))
 	{
 		 DeleteAttribute(_location, "box1");
@@ -811,7 +811,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
         ok = false;
 	}
 	
-	//Контрпират, губерский генер
+	
 	if (_npchar.id == "ContraCureerCap" && CheckAttribute(PChar, "GenQuest.TakePirateship"))
 	{
 		 DeleteAttribute(_location, "box1");
@@ -825,7 +825,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
         ok = false;
 	}
 	
-	//Контрпассажир, губерский генер
+	
 	if (_npchar.id == "ContraPassCap" && CheckAttribute(PChar, "GenQuest.TakePassenger"))
 	{
 		 DeleteAttribute(_location, "box1");
@@ -841,7 +841,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
         ok = false;
 	}
 	
-	//Калеуче
+	
 	if (_npchar.id == "Kaleuche_khaelroacap")
 	{
 		 DeleteAttribute(_location, "box1");
@@ -852,7 +852,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
         ok = false;
 	}
 	
-	// Addon-2016 Jason, французские миниквесты (ФМК)
+	
 	if (_npchar.id == "OilCap2")
 	{
 		 DeleteAttribute(_location, "box1");
@@ -881,19 +881,19 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box1.items.obereg_2 = 1;
         ok = false;
 	}
-	// Addon 2016-1 Jason Пиратская линейка
-	// полакр Тореро
+	
+	
 	if (_npchar.id == "Ignasio" && CheckAttribute(PChar, "questTemp.Mtraxx.Corrida.Logbook"))
 	{
         DeleteAttribute(_location, "box1");
-        _location.box1.money = 25600;//
+        _location.box1.money = 25600;
 		_location.box1.items.gold_dublon = 155;
 		_location.box1.items.map_normal = 1;
 		_location.box1.items.map_part1 = 1;
 		_location.box1.items.wolfreeks_book = 1;
         ok = false;
 	}
-	// шхуна Кантавро
+	
 	if (_npchar.id == "Cabanos")
 	{
 		 DeleteAttribute(_location, "box1");
@@ -901,14 +901,14 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box1.items.gold_dublon = 10;
 		_location.box1.items.totem_09 = 1;
 		_location.box1.items.jewelry8 = 15;
-		_location.box1.items.jewelry41 = 1; // патч 17/1
+		_location.box1.items.jewelry41 = 1; 
 		
 		DeleteAttribute(_location, "box2");
 		_location.box2.items.clock1 = 1;
 		if (drand(2) == 2) _location.box2.items.cirass3 = 1;
         ok = false;
 	}
-	// бригантина Утрехт
+	
 	if (_npchar.id == "Cap_Utreht")
 	{
 		 DeleteAttribute(_location, "box1");
@@ -916,22 +916,22 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box1.items.gold_dublon = 30;
 		_location.box1.items.indian_11 = 1;
 		_location.box1.items.chest_open = 5;
-		_location.box1.items.pistol3 = 1; // патч 17/1
+		_location.box1.items.pistol3 = 1; 
 		
 		DeleteAttribute(_location, "box2");
 		_location.box2.items.purse1 = 1;
 		if (drand(4) == 1) _location.box2.items.pistol2 = 1;
         ok = false;
 	}
-	// Розбоом
+	
 	if (_npchar.id == "Mtr_PasqCap_2")
 	{
 		 DeleteAttribute(_location, "box1");
         _location.box1.money = 5300;
 		_location.box1.items.gold_dublon = 10;
 		_location.box1.items.obereg_8 = 1;
-		_location.box1.items.pistol5 = 1; // патч 17/1
-		_location.box1.items.jewelry42 = 1; // патч 17/1
+		_location.box1.items.pistol5 = 1; 
+		_location.box1.items.jewelry42 = 1; 
 		_location.box1.items.map_Curacao = 1;
 		
 		DeleteAttribute(_location, "box2");
@@ -939,7 +939,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		if (drand(3) == 1) _location.box2.items.blade_16 = 1;
         ok = false;
 	}
-	// голландец по Игнасио
+	
 	if (_npchar.id == "Mtr_IgnasioSeaCap_1")
 	{
 		 DeleteAttribute(_location, "box1");
@@ -951,7 +951,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		
         ok = false;
 	}
-	// Торо де Оро
+	
 	if (_npchar.id == "Mtr_GoldCap_2")
 	{
 		 DeleteAttribute(_location, "box1");
@@ -963,8 +963,8 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		
         ok = false;
 	}
-	// Jason НСО
-	// флагман испанской эскадры у Порт Пренса
+	
+	
 	if (_npchar.id == "PatriaPP_Seacap_1")
 	{
 		 DeleteAttribute(_location, "box1");
@@ -976,7 +976,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		
         ok = false;
 	}
-	// ТГ добавочный у Порт Пренса
+	
 	if (_npchar.id == "PatriaPP_Seacap_add")
 	{
 		 DeleteAttribute(_location, "box1");
@@ -986,17 +986,17 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		
         ok = false;
 	}
-	// флагман эскадры голландцев у сан-мартина
+	
 	if (_npchar.id == "Patria_SanMartinCap_1")
 	{
 		 DeleteAttribute(_location, "box1");
         _location.box1.money = 7000;
-		_location.box1.items.cannabis7 = 1; // мангароса
+		_location.box1.items.cannabis7 = 1; 
 		_location.box1.items.indian_10 = 1;
 		
         ok = false;
 	}
-	// флагман эскадры-погони голландцев 
+	
 	if (_npchar.id == "Patria_DiplomatCap_1")
 	{
 		 DeleteAttribute(_location, "box1");
@@ -1006,7 +1006,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		
         ok = false;
 	}
-	// Олифант 
+	
 	if (_npchar.id == "Patria_SiegeCap_1")
 	{
 		 DeleteAttribute(_location, "box1");
@@ -1015,7 +1015,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		_location.box1.items.map_nevis = 1;
 		_location.box1.items.cirass3 = 1;
 		_location.box1.items.berserker_potion = 2;
-		if (CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+		if (CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 		{
 			amap = SelectAdmiralMaps();
 			if (amap != "") _location.box1.items.(amap)	= 1;
@@ -1023,7 +1023,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		
         ok = false;
 	}
-	// флагман испанцев в осаде
+	
 	if (_npchar.id == "Patria_SiegeCap_4")
 	{
 		 DeleteAttribute(_location, "box1");
@@ -1035,7 +1035,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		
         ok = false;
 	}
-	// 1 ост-ндец с рабами
+	
 	if (_npchar.id == "PatriaSlaveCap2")
 	{
 		 DeleteAttribute(_location, "box1");
@@ -1046,7 +1046,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		
         ok = false;
 	}
-	// 2 ост-ндец с рабами
+	
 	if (_npchar.id == "PatriaSlaveCap3")
 	{
 		 DeleteAttribute(_location, "box1");
@@ -1057,22 +1057,22 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		
         ok = false;
 	}
-	// ТГ Стайвесанта Фредерик
+	
 	if (_npchar.id == "Patria_CuracaoCap1_1")
 	{
 		 DeleteAttribute(_location, "box1");
         _location.box1.money = 30000;
 		_location.box1.items.Chest = 2;
-		_location.box1.items.cannabis7 = 1; // мангароса
+		_location.box1.items.cannabis7 = 1; 
 		_location.box1.items.recipe_GunEchin = 1;
 		_location.box1.items.GunEchin = 100;
 		
         ok = false;
 	}
 	
-    if (ok) // не квестовый
+    if (ok) 
     {
-    	// код для всех
+    	
 		
     	iTemp = GetCharacterShipClass(_npchar);
 		iNation = sti(_npchar.nation);		
@@ -1080,7 +1080,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 		if(iNation == PIRATE)
 		{
 			nLuck   = GetCharacterSkillToOld(Pchar, SKILL_FORTUNE);			
-			if (nLuck > rand(250) && GetCharacterItem(pchar, "map_full") == 0)  // шанс 1/30 
+			if (nLuck > rand(250) && GetCharacterItem(pchar, "map_full") == 0)  
 			{
 				if (GetCharacterItem(pchar, "map_part1") == 0)
 				{
@@ -1102,7 +1102,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 			FillCabinBoxMap(_location, 250 - (7 - iTemp) * 5);
 		}
 		
-		if (CheckAttribute(_npchar, "Ship.Mode") && _npchar.Ship.Mode == "Trade")  // торговец
+		if (CheckAttribute(_npchar, "Ship.Mode") && _npchar.Ship.Mode == "Trade")  
 		{
 			_location.box1.money = (10 - iTemp) * 200 + rand(10 - iTemp) * 2000 + rand(10)*50 + rand(6 - iTemp) * 4000;
 			if(rand(5) > 2)
@@ -1111,7 +1111,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 				if(drand(20) == 15) _location.box1.items.rat_poison = 1;		
 			}	
 		}
-		else // все остальные
+		else 
 		{
 			if(rand(3) == 1) _location.box1.items.gunpowder = 5 + rand(10);
 			_location.box1.money = (10 - iTemp) * 90 + rand((10 - iTemp) * 2000);
@@ -1120,60 +1120,60 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 				_location.box1.items.gold_dublon = rand(5) + 2;			
 			}
 		}				
-		if (2-sti(RealShips[sti(_npchar.ship.type)].Class) > 0) // 1 класс
+		if (2-sti(RealShips[sti(_npchar.ship.type)].Class) > 0) 
 		{
-			if (drand(2) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+			if (drand(2) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 			{
 				amap = SelectAdmiralMaps();
 				if (amap != "") _location.box1.items.(amap)	= 1;
 			}
 		}
-		if (CheckAttribute(_npchar, "Ship.Mode") && _npchar.Ship.Mode == "war" && 2-sti(RealShips[sti(_npchar.ship.type)].Class) == 0) // военный 2 класс
+		if (CheckAttribute(_npchar, "Ship.Mode") && _npchar.Ship.Mode == "war" && 2-sti(RealShips[sti(_npchar.ship.type)].Class) == 0) 
 		{
-			if (drand(4) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+			if (drand(4) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 			{
 				amap = SelectAdmiralMaps();
 				if (amap != "") _location.box1.items.(amap)	= 1;
 			}
 		}
-		if (CheckAttribute(_npchar, "Ship.Mode") && _npchar.Ship.Mode == "war" && 3-sti(RealShips[sti(_npchar.ship.type)].Class) == 0) // военный 3 класс
+		if (CheckAttribute(_npchar, "Ship.Mode") && _npchar.Ship.Mode == "war" && 3-sti(RealShips[sti(_npchar.ship.type)].Class) == 0) 
 		{
-			if (drand(6) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) // адм.карты
+			if (drand(6) == 1 && CheckAttribute(pchar, "questTemp.AdmiralMap")) 
 			{
 				amap = SelectAdmiralMaps();
 				if (amap != "") _location.box1.items.(amap)	= 1;
 			}
 		}
-		if (CheckAttribute(pchar, "questTemp.Persian.skimitar") && drand(20) == 5 && 3-sti(RealShips[sti(_npchar.ship.type)].Class) >= 0) // 3 класс и выше. Скимитар - 5% 021012
+		if (CheckAttribute(pchar, "questTemp.Persian.skimitar") && drand(20) == 5 && 3-sti(RealShips[sti(_npchar.ship.type)].Class) >= 0) 
 		{
 			_location.box1.items.blade_23 = 1;
 		}
-		if (CheckAttribute(pchar, "questTemp.Caleuche.SeekAmulet") && drand(3) == 3) // первый амулет на Калеуче
+		if (CheckAttribute(pchar, "questTemp.Caleuche.SeekAmulet") && drand(3) == 3) 
 		{
 			_location.box1.items.kaleuche_amulet1 = 1;
 		}
     }
 }
 
-// ugeen --> вычисление ранга квестовых проитвников в зависимости от ранга ГГ и уровня сложности
+
 int SetQuestCharacterRank()
 {
 	int rank = 25 + makeint(sti(pchar.rank)*(0.1 + MOD_SKILL_ENEMY_RATE));
 
 	return rank;
 }
-// <-- ugeen
 
-// ==> две функции Эдди для крутизны невероятной.
+
+
 void FantomMakeCoolSailor(ref _Character, int _ShipType, string _ShipName, int _CannonsType, int _Sailing, int _Accuracy, int _Cannons)
 {
     _Character.Ship.Cannons.Type = _CannonsType;
 	_Character.skill.Sailing  = GetCoffDiff(_Sailing, SKILL_MAX);
 	_Character.skill.Accuracy = GetCoffDiff(_Accuracy, SKILL_MAX);
 	_Character.skill.Cannons  = GetCoffDiff(_Cannons, SKILL_MAX);
-    _Character.DontRansackCaptain = true; //квестовые не сдаются
-    _Character.SinkTenPercent     = false; // не тонуть при 10%, не убегать в бою
-    _Character.AboardToFinalDeck  = true; // абордаж всегда
+    _Character.DontRansackCaptain = true; 
+    _Character.SinkTenPercent     = false; 
+    _Character.AboardToFinalDeck  = true; 
 	_Character.DontClearDead      = true;
 	_Character.SaveItemsForDead   = true;
 	_Character.AlwaysSandbankManeuver = true;
@@ -1197,16 +1197,16 @@ void FantomMakeCoolSailor(ref _Character, int _ShipType, string _ShipName, int _
 	SetCharacterPerk(_Character, "ShipSpeedUp");
 	SetCharacterPerk(_Character, "ShipTurnRateUp");
 
-    DeleteAttribute(_Character, "ship.sails");// убрать дыры на парусах
+    DeleteAttribute(_Character, "ship.sails");
     DeleteAttribute(_Character, "ship.blots");
-    DeleteAttribute(_Character, "ship.masts");// вернуть сбытые мачты
-	DeleteAttribute(_Character, "ship.hulls");// вернуть сбитые элементы корпуса
-    DeleteAttribute(_Character, "Killer.status"); // снять аттрибут 'был захвачен на абордаж'
-    _Character.questTemp.abordage = 0; //снять аттрибут отказа повторного захвата
-   	DeleteAttribute(_Character, "Abordage.Enable"); //снять невозможноть абордажа
+    DeleteAttribute(_Character, "ship.masts");
+	DeleteAttribute(_Character, "ship.hulls");
+    DeleteAttribute(_Character, "Killer.status"); 
+    _Character.questTemp.abordage = 0; 
+   	DeleteAttribute(_Character, "Abordage.Enable"); 
 }
 
-//Jason, функция уменьшенного кулсейлора + скилл защиты и абордажа
+
 void FantomMakeSmallSailor(ref _Character, int _ShipType, string _ShipName, int _CannonsType, int _Sailing, int _Accuracy, int _Cannons, int _Grappling, int _Defence)
 {
     _Character.Ship.Cannons.Type = _CannonsType;
@@ -1216,9 +1216,9 @@ void FantomMakeSmallSailor(ref _Character, int _ShipType, string _ShipName, int 
 	_Character.skill.Grappling  = GetCoffDiff(_Grappling, SKILL_MAX);
 	_Character.skill.Defence  = GetCoffDiff(_Defence, SKILL_MAX);
 	
-    _Character.DontRansackCaptain = true; //квестовые не сдаются
-    _Character.SinkTenPercent     = false; // не тонуть при 10%, не убегать в бою
-    _Character.AboardToFinalDeck  = true; // абордаж всегда
+    _Character.DontRansackCaptain = true; 
+    _Character.SinkTenPercent     = false; 
+    _Character.AboardToFinalDeck  = true; 
 	_Character.AlwaysSandbankManeuver = true;
 
     _Character.Ship.Type = GenerateShipExt(_ShipType, true, _Character);
@@ -1238,13 +1238,13 @@ void FantomMakeSmallSailor(ref _Character, int _ShipType, string _ShipName, int 
 	SetCharacterPerk(_Character, "Doctor1");
 	SetCharacterPerk(_Character, "LongRangeGrappling");
 
-    DeleteAttribute(_Character, "ship.sails");// убрать дыры на парусах
+    DeleteAttribute(_Character, "ship.sails");
     DeleteAttribute(_Character, "ship.blots");
-    DeleteAttribute(_Character, "ship.masts");// вернуть сбытые мачты
-	DeleteAttribute(_Character, "ship.hulls");// вернуть сбытые элементы корпуса
-    DeleteAttribute(_Character, "Killer.status"); // снять аттрибут 'был захвачен на абордаж'
-    _Character.questTemp.abordage = 0; //снять аттрибут отказа повторного захвата
-   	DeleteAttribute(_Character, "Abordage.Enable"); //снять невозможноть абордажа
+    DeleteAttribute(_Character, "ship.masts");
+	DeleteAttribute(_Character, "ship.hulls");
+    DeleteAttribute(_Character, "Killer.status"); 
+    _Character.questTemp.abordage = 0; 
+   	DeleteAttribute(_Character, "Abordage.Enable"); 
 }
 
 void FantomMakeCoolFighter(ref _Character, int _Rank, int _Fencing, int _Pistol, string _Blade, string _Gun, string _Bullet, float _AddHP)
@@ -1254,10 +1254,10 @@ void FantomMakeCoolFighter(ref _Character, int _Rank, int _Fencing, int _Pistol,
     _Character.Skill.FencingL  = GetCoffDiff(sti(_Character.skill.FencingL), SKILL_MAX);
     _Character.Skill.FencingH  = GetCoffDiff(sti(_Character.skill.FencingH), SKILL_MAX); 
     _Character.skill.Pistol = GetCoffDiff(_Pistol, SKILL_MAX);
-    _Character.skill.Fortune = GetCoffDiff(_Pistol, SKILL_MAX); //zagolski. если умеет хорошо стрелять из пистоля, то умеет и хорошо от него защищаться
+    _Character.skill.Fortune = GetCoffDiff(_Pistol, SKILL_MAX); 
 	_Character.chr_ai.hp = stf(_Character.chr_ai.hp) + GetCoffDiff(_AddHP, 5000);
 	_Character.chr_ai.hp_max = stf(_Character.chr_ai.hp_max) + GetCoffDiff(_AddHP, 5000);
-	SetCharacterPerk(_Character, "Energaiser"); // скрытый перк дает 1.5 к приросту энергии, дается ГГ и боссам уровней
+	SetCharacterPerk(_Character, "Energaiser"); 
 	SetCharacterPerk(_Character, "AdvancedDefense");
 	SetCharacterPerk(_Character, "CriticalHit");
 	SetCharacterPerk(_Character, "Sliding");
@@ -1272,7 +1272,7 @@ void FantomMakeCoolFighter(ref _Character, int _Rank, int _Fencing, int _Pistol,
 	TakeNItems(_Character,"potion3", 2);
     if (_Gun != "")
 	{
-		if(HasSubStr(_Gun, "mushket")) // у мушкетеров отдельная логика экипировки
+		if(HasSubStr(_Gun, "mushket")) 
 		{
 			_Character.MushketType = _Gun;
 			_Character.MushketBulletType = _Bullet;
@@ -1286,7 +1286,7 @@ void FantomMakeCoolFighter(ref _Character, int _Rank, int _Fencing, int _Pistol,
 			string sGunpowder = LAi_GetCharacterGunpowderType(_Character);
 			if(sGunPowder != "")
 			{
-				AddItems(_Character, sGunpowder, 30 + rand(20)); // Warship. Порох
+				AddItems(_Character, sGunpowder, 30 + rand(20)); 
 			}	
 			LAi_SetCharacterUseBullet(_Character, _Bullet);
 		}
@@ -1294,7 +1294,7 @@ void FantomMakeCoolFighter(ref _Character, int _Rank, int _Fencing, int _Pistol,
 
     FaceMaker(_Character);
 	CirassMaker(_Character);
-    SetNewModelToChar(_Character);  // перерисуем модель на лету
+    SetNewModelToChar(_Character);  
 }
 
 int GetCoffDiff(float _num, int _maxRange)
@@ -1316,41 +1316,28 @@ int GetCoffDiff(float _num, int _maxRange)
 	if (_num > _maxRange) return _maxRange;
 	else return sti(_num);
 }
-// заполнение сундуков и рандитема по квесту
-bool SetLocationQuestRandItem(int _index, aref _location, string _locatorName, aref al) // al - ветка локатора из модели, остальное тоже из обратотки локации
-{   // метод редактировать не нужно - все задается в квестах
+
+bool SetLocationQuestRandItem(int _index, aref _location, string _locatorName, aref al) 
+{   
 	string  lastSpawnTimeString;
     int     n;
 	string  itemId;
 	aref checkAref
 
-	/* Пример
- 	pchar.GenQuestRandItem.QC_Port = true;
-    pchar.GenQuestRandItem.QC_Port.randitem1 = "pistol6";
-    // если нужно чтоб было всегда
-	pchar.GenQuestRandItem.QC_Port.stay = true; - тереть потом эту ветку самому по квесту
-	
-    QC_Port - локация где
-    randitem1 - локатор
-    pistol6 - предмет
-    
-    если нужно сразу несколько локаторов, то
-    pchar.GenQuestRandItem.QC_Port.randitem1 = "pistol6";
-    pchar.GenQuestRandItem.QC_Port.randitem2 = "pistol1";
- 	*/
+	 
 	lastSpawnTimeString = _location.id;
     if (CheckAttribute(pchar , "GenQuestRandItem." + lastSpawnTimeString) && CheckAttribute(pchar , "GenQuestRandItem." + lastSpawnTimeString +"."+_locatorName))
     {
         itemId = pchar.GenQuestRandItem.(lastSpawnTimeString).(_locatorName);
         if (!CheckAttribute(pchar , "GenQuestRandItem." + lastSpawnTimeString +".stay"))
         {
-			//--> fix eddy. нельзя было положить в несколько локаторов
-			DeleteAttribute(pchar , "GenQuestRandItem." + lastSpawnTimeString + "." + _locatorName); // если токо один раз
+			
+			DeleteAttribute(pchar , "GenQuestRandItem." + lastSpawnTimeString + "." + _locatorName); 
 			makearef(checkAref,  pchar.GenQuestRandItem.(lastSpawnTimeString));
 			if (GetAttributesNum(checkAref) == 0) DeleteAttribute(pchar , "GenQuestRandItem." + lastSpawnTimeString);
         }
-        // только один предмет!!!!!!!!!!!!
-        n = SetRandItemShow(_index, al, itemId); // вывести 3д модель в лакацию, если модель вообще есть
+        
+        n = SetRandItemShow(_index, al, itemId); 
 		if (n != -1)
 		{
             Log_TestInfo("SetLocationQuestRandItem");
@@ -1364,7 +1351,7 @@ bool SetLocationQuestRandItem(int _index, aref _location, string _locatorName, a
     
     return false;
 }
-// загрузить модель
+
 int SetRandItemShow(int _index, aref al, string _itemId)
 {
     int     n;
@@ -1386,30 +1373,15 @@ int SetRandItemShow(int _index, aref al, string _itemId)
     return n;
 }
 
-// заполнить сундук
+
 bool SetLocationQuestBox(ref _location, string _locatorName)
-{   // метод редактировать не нужно - все задается в квестах
+{   
     bool    ok = false;
     string  locId;
     aref    arToBox;
     aref    arFromBox;
 
-    /* Пример
- 	pchar.GenQuestBox.Havanna_town_04 = true;
-    pchar.GenQuestBox.Havanna_town_04.box1.items.jewelry1 = 4;
-    pchar.GenQuestBox.Havanna_town_04.box1.items.mineral2 = 10;
-    // если нужны деньги, иначе не заполнять
-	pchar.GenQuestBox.Havanna_town_04.box1.money          = 100;
-    // если нужно чтоб было всегда
-	pchar.GenQuestBox.Havanna_town_04.stay = true; - тереть потом эту ветку самому по квесту
-
-    Havanna_town_04 - локация где
-    box1 - локатор
-    items - список предметов
-    
-    если нужно сразу несколько локаторов, то
-    pchar.GenQuestBox.Havanna_town_04.box2.items.jewelry1 = 34;
- 	*/
+     
  	locId  = _location.id;
     if (CheckAttribute(pchar , "GenQuestBox." + locId) && CheckAttribute(pchar , "GenQuestBox." + locId + "." + _locatorName))
     {
@@ -1418,11 +1390,11 @@ bool SetLocationQuestBox(ref _location, string _locatorName)
         makearef(arToBox, _location.(_locatorName));
         makearef(arFromBox, pchar.GenQuestBox.(locId).(_locatorName));
         CopyAttributes(arToBox, arFromBox);
-        _location.(_locatorName) = Items_MakeTime(GetTime(), GetDataDay(), GetDataMonth(), GetDataYear()); // таймер, чтоб не затерлись рандомом при выходе из локации
+        _location.(_locatorName) = Items_MakeTime(GetTime(), GetDataDay(), GetDataMonth(), GetDataYear()); 
         if (!CheckAttribute(pchar , "GenQuestBox." + locId +".stay"))
         {
-			//--> fix eddy. нельзя было положить в несколько локаторов
-			DeleteAttribute(pchar , "GenQuestBox." + locId + "." + _locatorName); // если токо один раз
+			
+			DeleteAttribute(pchar , "GenQuestBox." + locId + "." + _locatorName); 
 			makearef(arToBox,  pchar.GenQuestBox.(locId));
 			if (GetAttributesNum(arToBox) == 0) DeleteAttribute(pchar , "GenQuestBox." + locId);
         }
@@ -1431,7 +1403,7 @@ bool SetLocationQuestBox(ref _location, string _locatorName)
     return false;
 }
 
-// ==> Метод открытия\закрытия локаторов релоад. Если _flag=true - закрыть локатор, если _flag=false - открыть.
+
 void LocatorReloadEnterDisable(string _locationID, string _locator, bool _flag)
 {
     aref arDis, arRld;
@@ -1449,19 +1421,19 @@ void LocatorReloadEnterDisable(string _locationID, string _locator, bool _flag)
 	}
 }
 
-//===>>> Функции по работе с диалоговыми файлами. Эдди. ================================================================
-// == _strNormal - обычная строка диалога
-// == _strBad1, _strBad2, _strBad3 - строки степени возмущения,  "" и "none" - базовый набор.
-// == _kind - вид возмущения: "repeat" - снимается на следующий день при условии, что НПС вконец не разозлился (не задействован анги-файл).
-//                            "quest"  - квестовые повторялки, не снимаются на следующий день, но может быть задан срок примирения после перевода на ангри.
-//                            "block"  - реакцию НПС на повторные клики без включения ангри, для того, чтобы обозначить интеллект, но не ругаться. Ангри вообще не делать.
-//                            "cycle"  - крутим цикл из повторялок, ангри не заряжать. На след. день все снимается.
-// == _terms для "repeat" и "quest" - сроки в днях примирения само-собой после задействоания ангри-файла, если == 0, то ругань навсегда (примерение только через подарки).
-//    _terms для "block" - сроки возврата в норму в днях, если 0 - навсегда.
-// == _character и _Node - npchar и Dialog.CurrentNode
+
+
+
+
+
+
+
+
+
+
 string NPCStringReactionRepeat(string _strNormal, string _strBad1, string _strBad2, string _strBad3, string _kind, int _terms, ref _character, string _Node)
 {
-    _Node = stripblank(_Node); //fix spaces
+    _Node = stripblank(_Node); 
 	string strBack;
     string strTemp = "quest.repeat." + _Node;
     if (!CheckAttribute(_character , strTemp))
@@ -1469,7 +1441,7 @@ string NPCStringReactionRepeat(string _strNormal, string _strBad1, string _strBa
         _character.quest.repeat.(_Node) = 0;
         _character.quest.repeat.(_Node).ans = 0;
     }
-    if (_kind == "cycle" || _kind == "repeat") //на след.день все снимается.
+    if (_kind == "cycle" || _kind == "repeat") 
     {
         if (GetNpcQuestPastDayParam(_character, strTemp) >= 1)
         {
@@ -1479,7 +1451,7 @@ string NPCStringReactionRepeat(string _strNormal, string _strBad1, string _strBa
     }
     else
     {
-        if (GetNpcQuestPastDayParam(_character, strTemp) >= _terms && _terms!=0 && _kind != "quest") //снятие по "block"
+        if (GetNpcQuestPastDayParam(_character, strTemp) >= _terms && _terms!=0 && _kind != "quest") 
         {
             _character.quest.repeat.(_Node) = 0;
             _character.quest.repeat.(_Node).ans = 0;
@@ -1532,14 +1504,14 @@ string NPCStringReactionRepeat(string _strNormal, string _strBad1, string _strBa
             {
                 strBack = _strBad3;
             }
-            // ==> Реакция на третье повторение.
-            if (_kind == "cycle") //снова на первую строку.
+            
+            if (_kind == "cycle") 
             {
 			    _character.quest.repeat.(_Node) = 0;
             }
 			else
             {
-                if(_kind != "block") //если block, то опять в последнюю строку
+                if(_kind != "block") 
                 {
                     _character.quest.repeat.(_Node) = 4;
                     CharacterAddAngry(_character, _Node, _kind, _terms);
@@ -1556,7 +1528,7 @@ string NPCStringReactionRepeat(string _strNormal, string _strBad1, string _strBa
 
 string HeroStringReactionRepeat(string _strNormal, string _strBad1, string _strBad2, string _strBad3, ref _character, string _Node)
 {
-    _Node = stripblank(_Node); //fix spaces
+    _Node = stripblank(_Node); 
 	string strBack;
     int Temp = sti(_character.quest.repeat.(_Node).ans);
     switch(Temp)
@@ -1607,11 +1579,11 @@ string HeroStringReactionRepeat(string _strNormal, string _strBad1, string _strB
     return strBack;
 }
 
-// возможны только две переходные ноды: _GoNode1 и _GoNode2, третья не нужна, т.к. идет сразу в ангри-файл.
-// неверно, оставил третью ноду для циклов и прочего.
+
+
 string DialogGoNodeRepeat(string _NormalNode, string _GoNode1, string _GoNode2, string _GoNode3, ref _character, string _Node)
 {
-    _Node = stripblank(_Node); //fix spaces
+    _Node = stripblank(_Node); 
 	string strBack, Temp;
     Temp = sti(_character.quest.repeat.(_Node).ans);
     switch(Temp)
@@ -1657,19 +1629,19 @@ string DialogGoNodeRepeat(string _NormalNode, string _GoNode1, string _GoNode2, 
     return strBack;
 }
 
-// _Node - имя ноды, идентификатор текущей ангри. Если метод вызывается не в диалоговом файле, то == "none".
+
 void CharacterAddAngry(ref _character, string _Node, string _kind, int _terms)
 {
     if (_kind == "repeat" || _kind == "quest")
     {
         DeleteAttribute(_character, "angry");
         _character.angry.kind = _kind;
-        _character.angry.name = _Node; //и имя ноды тоже, для расфасовки разных ангри
-        if (_terms != 0) // если == 0, то ссора непроходящая с течением времени.
+        _character.angry.name = _Node; 
+        if (_terms != 0) 
         {
             _character.angry.terms = _terms;
             SaveCurrentNpcQuestDateParam(_character, "angry.terms");
-            if (_terms < 10) // размер вознаграждения за примирение, анти с/л
+            if (_terms < 10) 
             {
                 _character.angry.QtyMoney = (rand(10)+1) * 500;
             }
@@ -1692,9 +1664,9 @@ void CharacterDelAngry(ref _character)
     DeleteAttribute(_character, "quest.repeat");
 }
 
-//В условиях возможного тотального применения ангри по квестам, нужно подстраховаться.
-//Если нода дается НПС в момет, когда у него задействован ангри, то нода будет возвращена после примирения.
-//Соотв. менять ноды желательно данным методом.
+
+
+
 void QuestSetCurrentNode(string _chID, string _Node)
 {
     ref chref = characterFromID(_chID);
@@ -1702,7 +1674,7 @@ void QuestSetCurrentNode(string _chID, string _Node)
     else chref.dialog.currentnode = _Node;
 }
 
-// фраза от пола НПС
+
 string NPCharSexPhrase(ref _character, string StrMan, string StrWoman)
 {
 	string strBack;
@@ -1716,13 +1688,13 @@ string NPCharSexPhrase(ref _character, string StrMan, string StrWoman)
     }
     return strBack;
 }
-// фраза от пола ГГ
+
 string GetSexPhrase(string StrMan, string StrWoman)
 {
     return NPCharSexPhrase(PChar, StrMan, StrWoman);
 }
 
-//Jason --> фраза от нации персонажа
+
 string GetNatPhrase(ref _character, string StrEng, string StrFra, string StrSpa, string StrHol)
 {
 	string strBack;
@@ -1750,12 +1722,12 @@ string GetNatPhrase(ref _character, string StrEng, string StrFra, string StrSpa,
 	}
     return strBack;
 }
-//<-- фраза от нации персонажа
-//<<<=== Функции по работе с диалоговыми файлами. =======================================================================
 
 
-// Временно сохранить все данные о нашем корабле в памяти
-//--------------------------------------------------------
+
+
+
+
 bool SetTempRemoveParam(ref _refCharacter, string _param)
 {
     string sParam = "TmpRemember" + _param;
@@ -1770,8 +1742,8 @@ bool SetTempRemoveParam(ref _refCharacter, string _param)
 	return true;
 }
 
-// Восстановить данные о нашем старом корабле из памяти
-//------------------------------------------------------
+
+
 bool RestoreTempRemoveParam(ref _refCharacter, string _param)
 {
     string sParam = "TmpRemember" + _param;
@@ -1782,19 +1754,19 @@ bool RestoreTempRemoveParam(ref _refCharacter, string _param)
 	aref srcRef; makearef(srcRef, _refCharacter.(sParam));
 
 	DeleteAttribute(_refCharacter, _param);
-	//--> eddy. структура быть должна, иначе вылет в винду.
+	
 	_refCharacter.(_param) = "";
 	CopyAttributes(dstRef,srcRef);
 	DeleteAttribute(_refCharacter, sParam);
 	return true;
 }
 
-// установка отмены боевки в резиденции при захвате города
-// ВАЖНО: работает только не в пиратском городе - иначе это просто мятеж и губернатора там нет вообще
+
+
 void SetCaptureResidenceQuest(string _city, string _method, bool _majorOff)
 {
     PChar.GenQuestFort.ResidenceQuest.(_city) = true;
-    // убирать ли губернатора из локации вообще, он пропадет, но потом обратно пропишется, чтоб не рушить мир игры.
+    
     PChar.GenQuestFort.ResidenceQuest.(_city).MayorOff = _majorOff;
     if (_method != "")
     {
@@ -1802,7 +1774,7 @@ void SetCaptureResidenceQuest(string _city, string _method, bool _majorOff)
 	}
 }
 
-// вернем диалог после разговора и спрячем
+
 void  SetReturn_Gover_Dialog_Exit(ref NPChar)
 {
 	LAi_LoginInCaptureTown(NPChar, false);
@@ -1832,13 +1804,13 @@ void SetNewModelToChar(ref chref)
         if(CheckAttribute(chref, "equip.blade"))
         {
 			ref rItem = ItemsFromID(chref.equip.blade);
-            //SendMessage(chref, "lsfll", MSG_CHARACTER_SETBLADE, chref.equip.blade, liveTime, colors, colore);
-            //SendMessage(chref, "llsfll", MSG_CHARACTER_SETBLADE, 0, chref.equip.blade, liveTime, colors, colore);
+            
+            
 			SendMessage(chref, "llsfll", MSG_CHARACTER_SETBLADE, 0, rItem.model, liveTime, colors, colore);
         }
     }
 }
-// функции из квест_реакшн
+
 void SetNationToOfficers(int _nat)
 {
     int j, cn;
@@ -1852,7 +1824,7 @@ void SetNationToOfficers(int _nat)
 	        officer = GetCharacter(cn);
 	        if (!GetRemovable(officer)) continue;
 	        officer.nation = _nat;
-	        Ship_FlagRefresh(officer); //флаг на лету
+	        Ship_FlagRefresh(officer); 
 	    }
 	}
 }
@@ -1874,9 +1846,9 @@ bool IsOfficerCompanion(ref _refCharacter)
 	}
 	return false;
 }
-///////////////////////////////////////////////////////////////////
+
 void SortItems(ref NPChar)
-{// отсортировать предметы в кармане, сундуке
+{
     aref   arToChar;
     aref   arFromChar;
     object objChar;
@@ -1899,27 +1871,27 @@ void SortItems(ref NPChar)
     DeleteAttribute(NPChar, "Items");
     NPChar.Items = "";
 
-    makearef(arFromChar, NPChar.equip); // экипировка
+    makearef(arFromChar, NPChar.equip); 
     int iMax = GetAttributesNum(arFromChar);
     for(i=0; i<iMax; i++)
     {
         curItem = GetAttributeN(arFromChar, i);
         attr = GetAttributeValue(curItem);
-        if (attr != "") //патенты клинит
+        if (attr != "") 
         {
         	NPChar.Items.(attr) = sti(rObj.Items.(attr));
         }
     }
-    // неоптимальная сортировка по индексу itm.SortIndex
-	// размерность индекса определяется автоматом - длжен быть непрерывен!!, начинается с 1 - целое число
+    
+	
 	ok = true;
 	iSortIndex = 1;
-	while (iSortIndex < 3)// 2 типа
+	while (iSortIndex < 3)
 	{
 		ok = false;
 		for (i=0; i<TOTAL_ITEMS; i++)
 		{
-			// Warship 11.05.09 fix для новой системы предметов
+			
 			if(!CheckAttribute(&Items[i], "ID"))
 			{
 				continue;
@@ -1935,10 +1907,10 @@ void SortItems(ref NPChar)
 	    }
 	    iSortIndex++;
     }
-    // все остальные
+    
     for (i=0; i<TOTAL_ITEMS; i++)
 	{
-		// Warship 11.05.09 fix для новой системы предметов
+		
 		if(!CheckAttribute(&Items[i], "ID"))
 		{
 			continue;
@@ -1953,29 +1925,19 @@ void SortItems(ref NPChar)
       	}
     }
 }
-// установка квестовых товаров и цен
+
 void SetQuestGoodsToStore(ref refStore)
 {
 	string    goodName;
-	// пример использования по квест_реакшн
-	/*
-	pchar.GenQuest.StoreGoods.StoreIdx = Bridgetown_STORE;
-	pchar.GenQuest.StoreGoods.NowNeedToBe = true;
-	*/
+	
+	 
 	if (CheckAttribute(pchar, "GenQuest.StoreGoods.StoreIdx") && refStore.index == pchar.GenQuest.StoreGoods.StoreIdx)
 	{
-        // пример обработки события pchar.GenQuest.StoreGoods.StoreIdx = LaVega_STORE;
-		/*if (CheckAttribute(pchar, "GenQuest.StoreGoods.NowNeedToBe")) // состояние говорящие, то нужно делать
+        
+		 
+		if (CheckAttribute(pchar, "GenQuest.StoreGoods.Starting")) 
 		{
-		    DeleteAttribute(pchar, "GenQuest.StoreGoods"); // одноразовая операция, трем обе ветки
-		    goodName = Goods[GOOD_RUM].Name;
-		    refStore.Goods.(goodName).Quantity       = 666;
-		    // цена из обратного вычисления 20 в модификатор
-			refStore.Goods.(goodName).RndPriceModify = GetStoreGoodsRndPriceModify(refStore, GOOD_RUM, PRICE_TYPE_BUY, pchar, 20);
-		}  */
-		if (CheckAttribute(pchar, "GenQuest.StoreGoods.Starting")) // заполнение магазина Сен-Пьера на старте
-		{
-		    DeleteAttribute(pchar, "GenQuest.StoreGoods"); // одноразовая операция, трем обе ветки
+		    DeleteAttribute(pchar, "GenQuest.StoreGoods"); 
 		    goodName = Goods[GOOD_BALLS].Name;
 		    refStore.Goods.(goodName).Quantity = 300;
 			goodName = Goods[GOOD_GRAPES].Name;
@@ -1993,238 +1955,232 @@ void SetQuestGoodsToStore(ref refStore)
 			goodName = Goods[GOOD_RUM].Name;
 			refStore.Goods.(goodName).Quantity = 100;
 		} 
-		if (CheckAttribute(pchar, "GenQuest.StoreGoods.Guardoftruth")) // ваниль на Гваделупе
+		if (CheckAttribute(pchar, "GenQuest.StoreGoods.Guardoftruth")) 
 		{
-			DeleteAttribute(pchar, "GenQuest.StoreGoods"); // одноразовая операция, трем обе ветки
+			DeleteAttribute(pchar, "GenQuest.StoreGoods"); 
 		    goodName = Goods[GOOD_CINNAMON].Name;
 		    refStore.Goods.(goodName).Quantity = 127;
 		}		
 	}
 }
 
-// метод обработки капитана в каюте на абордаже. Ставим проверку на минНР + дилог
-// refChar - это фантом, а не реальный кэп, он копия, диалог от настоящего, но ИД и индекс не его, а фантомный, поэтому управляем имено этим актером
-// CaptanId - реальный ИД кэпа, запомненный в момент копирования.
+
+
+
 void SetQuestAboardCabinDialog(ref refChar)
 {
-	// пример. тут задаю для теста, все это должно быть на изначальном капитане по квестам
-	//refChar.DontClearDead      = true;
-	//refChar.SaveItemsForDead   =   true;
-	//TakeNItems(refChar, "Chest", 1);
-	// пример. <--
+	
+	
+	
+	
+	
 
 	if (CheckAttribute(refChar, "CaptanId"))
 	{
         pchar.GenQuest.QuestAboardCabinDialogIdx = refChar.index;
-        // как использовать, пример
-		/*if (true) // true - для теста, должно быть это CheckAttribute(pchar, "квестовая ветка, если нужно") && refChar.CaptanId == "IdNPC")
-		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
-            refChar.Dialog.Filename    = "Capitans_dialog.c";   // это нужно задать на изначальном кэпе в др месте
-	    	refChar.Dialog.CurrentNode = "QuestAboardCabinDialog";
-	    	// все остальное в диалоге, по образцу
-		}*/
-		//капитан по квесту мэра на поиск и уничтожение пирата.
+        
+		 
+		
 		if (refChar.CaptanId == "MQPirate" && CheckAttribute(pchar, "GenQuest.DestroyPirate"))
 		{
-		    LAi_SetCheckMinHP(refChar, 5, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 5, true, "QuestAboardCabinDialog");  
 			refChar.dialog.currentnode = "DestroyPirate_Abordage";
 		}
-		//засада на ГГ по наводке на купца homo
+		
 		if (findsubstr(refChar.CaptanId, "_QuestMerchant" , 0) != -1  && trap)
 		{
-		    LAi_SetCheckMinHP(refChar, 30, true, "QuestAboardCabinDialog");  // сколько НР мин
-		    refChar.dialog.filename = "Capitans_dialog.c";  //fix homo 23/03/07
+		    LAi_SetCheckMinHP(refChar, 30, true, "QuestAboardCabinDialog");  
+		    refChar.dialog.filename = "Capitans_dialog.c";  
 			refChar.dialog.currentnode = "MerchantTrap_Abordage";
 		}
-		//квест возврата украденного корабля
+		
 		if (findsubstr(refChar.CaptanId, "SeekCap_" , 0) != -1)
 		{
-		    LAi_SetCheckMinHP(refChar, 5, true, "QuestAboardCabinDialog");  // сколько НР мин
-			refChar.Dialog.CurrentNode = "SeekCap"; //даем абордажную ноду
+		    LAi_SetCheckMinHP(refChar, 5, true, "QuestAboardCabinDialog");  
+			refChar.Dialog.CurrentNode = "SeekCap"; 
 		}
-		//поисковый генератор
+		
 		if (findsubstr(refChar.CaptanId, "SeekCitizCap_" , 0) != -1)
 		{
 			if (refChar.quest.SeekCap == "NM_battle")
 			{
-				LAi_SetCheckMinHP(refChar, 5, true, "QuestAboardCabinDialog");  // сколько НР мин
-				refChar.Dialog.CurrentNode = "NM_battleBoard"; //даем абордажную ноду
+				LAi_SetCheckMinHP(refChar, 5, true, "QuestAboardCabinDialog");  
+				refChar.Dialog.CurrentNode = "NM_battleBoard"; 
 			}
 			if (refChar.quest.SeekCap == "NM_prisoner")
 			{
-				LAi_SetCheckMinHP(refChar, 5, true, "QuestAboardCabinDialog");  // сколько НР мин
-				refChar.Dialog.CurrentNode = "NM_prisonerBoard"; //даем абордажную ноду
+				LAi_SetCheckMinHP(refChar, 5, true, "QuestAboardCabinDialog");  
+				refChar.Dialog.CurrentNode = "NM_prisonerBoard"; 
 			}
 			if (refChar.quest.SeekCap == "manRapeWife")
 			{
-				LAi_SetCheckMinHP(refChar, 5, true, "QuestAboardCabinDialog");  // сколько НР мин
-				refChar.Dialog.CurrentNode = "RapeWifeCap_Board"; //даем абордажную ноду
+				LAi_SetCheckMinHP(refChar, 5, true, "QuestAboardCabinDialog");  
+				refChar.Dialog.CurrentNode = "RapeWifeCap_Board"; 
 			}
 		    if (refChar.quest.SeekCap == "womanRevenge")
 			{
-				LAi_SetCheckMinHP(refChar, 5, true, "QuestAboardCabinDialog");  // сколько НР мин
-				refChar.Dialog.CurrentNode = "RevengeCap_board"; //даем абордажную ноду
+				LAi_SetCheckMinHP(refChar, 5, true, "QuestAboardCabinDialog");  
+				refChar.Dialog.CurrentNode = "RevengeCap_board"; 
 			}
 			if (refChar.quest.SeekCap == "womanPirates")
 			{
-				LAi_SetCheckMinHP(refChar, 5, true, "QuestAboardCabinDialog");  // сколько НР мин
-				refChar.Dialog.CurrentNode = "PiratesCap_Board"; //даем абордажную ноду
+				LAi_SetCheckMinHP(refChar, 5, true, "QuestAboardCabinDialog");  
+				refChar.Dialog.CurrentNode = "PiratesCap_Board"; 
 			}
 		}
-		//генератор "Продажный патруль" 
+		
 		if (refChar.CaptanId == "PirateCapt")
 		{
-			LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+			LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 		}
 		
-		// Warship Генер "Пираты на необитайке"
+		
 		if(refChar.CaptanId == "PiratesOnUninhabited_BadPirate")
 		{
-			LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+			LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "GenQuests_Dialog.c";
-			refChar.Dialog.CurrentNode = "PiratesOnUninhabited_46"; //даем абордажную ноду
+			refChar.Dialog.CurrentNode = "PiratesOnUninhabited_46"; 
 		}
 		
-		// Генерратор "Поручение капитана 'Выкуп' или 'Операция Галеон'"
+		
 		if(CheckAttribute(pchar,"GenQuest.CaptainComission") && pchar.GenQuest.CaptainComission == "Begin")
 		{
-			LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+			LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "GenQuests_Dialog.c";
-			refChar.Dialog.CurrentNode = "CaptainComission_1"; //даем абордажную ноду
+			refChar.Dialog.CurrentNode = "CaptainComission_1"; 
 		}
 		
 		if(refChar.CaptanId == "ShipWreck_BadPirate")
 		{
-			LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+			LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "GenQuests_Dialog.c";
-			refChar.Dialog.CurrentNode = "ShipWreck_50"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "ShipWreck_50"; 
 		}
 		if (refChar.CaptanId == "Slaveshorecap")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\Other_Quests_NPC.c";
-			refChar.Dialog.CurrentNode = "TakeShoreCap"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "TakeShoreCap"; 
 		}
 		if (refChar.CaptanId == "RatCaptain")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\Other_Quests_NPC.c";
-			refChar.Dialog.CurrentNode = "Rat_talk"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "Rat_talk"; 
 		}
 		if (refChar.CaptanId == "Jafar")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\Other_Quests_NPC.c";
-			refChar.Dialog.CurrentNode = "Ja_talk"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "Ja_talk"; 
 		}
 		if (refChar.CaptanId == "Fleetwood")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\HollandGambit\Fleetwood.c";
-			refChar.Dialog.CurrentNode = "Fleetwood_abordage"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "Fleetwood_abordage"; 
 		}
 		if (refChar.CaptanId == "JacobBerg")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\HollandGambit\JacobBerg.c";
-			refChar.Dialog.CurrentNode = "JacobBerg_abordage"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "JacobBerg_abordage"; 
 		}
 		if (refChar.CaptanId == "Lucas")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\HollandGambit\LucasRodenburg.c";
-			refChar.Dialog.CurrentNode = "Lucas_abordage"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "Lucas_abordage"; 
 		}
 		if (refChar.CaptanId == "Knippel")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\HollandGambit\Knippel.c";
-			refChar.Dialog.CurrentNode = "Knippel_abordage"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "Knippel_abordage"; 
 		}
 		if (refChar.CaptanId == "CureerCap")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\HollandGambit\OtherNPC.c";
-			refChar.Dialog.CurrentNode = "Cureer_abordage"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "Cureer_abordage"; 
 		}
 		if (refChar.CaptanId == "Longway")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\HollandGambit\Longway.c";
-			refChar.Dialog.CurrentNode = "Longway_abordage"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "Longway_abordage"; 
 		}
-		if (refChar.CaptanId == "FalseTraceCap")//ложный след
+		if (refChar.CaptanId == "FalseTraceCap")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\LineMiniQuests\FalseTrace.c";
-			refChar.Dialog.CurrentNode = "FalseTrace_abordage"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "FalseTrace_abordage"; 
 		}
-		if (refChar.CaptanId == "Vaskezs_helper")//португалец
+		if (refChar.CaptanId == "Vaskezs_helper")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\Portugal_dialog.c";
-			refChar.Dialog.CurrentNode = "VaskezsHelper_abordage"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "VaskezsHelper_abordage"; 
 		}
-		if (refChar.CaptanId == "ConJuan")//цена чахотки
+		if (refChar.CaptanId == "ConJuan")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\LineMiniQuests\Consumption.c";
-			refChar.Dialog.CurrentNode = "Juan_abordage"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "Juan_abordage"; 
 		}
-		if (refChar.CaptanId == "MarginCap")//захват пассажиров
+		if (refChar.CaptanId == "MarginCap")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\Marginpassenger.c";
-			refChar.Dialog.CurrentNode = "MarginCap_abordage"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "MarginCap_abordage"; 
 		}
-		if (refChar.CaptanId == "ContraPassCap")//генер губера - ОЗГ - пассажир
+		if (refChar.CaptanId == "ContraPassCap")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "MayorQuests_dialog.c";
-			refChar.Dialog.CurrentNode = "ContraPass_abordage"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "ContraPass_abordage"; 
 		}
-		if (refChar.CaptanId == "Donovan")//Сага, корвет Донована
+		if (refChar.CaptanId == "Donovan")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\Saga\OtherNPC.c";
-			refChar.Dialog.CurrentNode = "Donovan_abordage"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "Donovan_abordage"; 
 		}
-		if (refChar.CaptanId == "Jackman")//Сага, Джекман
+		if (refChar.CaptanId == "Jackman")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Mayor\Jackman.c";
-			refChar.Dialog.CurrentNode = "Jackman_abordage"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "Jackman_abordage"; 
 		}
-		if (refChar.CaptanId == "RoberCap2")//Черепаха, Мартэн
+		if (refChar.CaptanId == "RoberCap2")
 		{
-		    LAi_SetCheckMinHP(refChar, 100, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 100, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\Sharlie\Terrapin.c";
-			refChar.Dialog.CurrentNode = "rober_abordage"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "rober_abordage"; 
 		}
-		if (refChar.CaptanId == "Kaleuche_khaelroacap")//Калеуче
+		if (refChar.CaptanId == "Kaleuche_khaelroacap")
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\Caleuche_dialog.c";
-			refChar.Dialog.CurrentNode = "CaleucheCap_3"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "CaleucheCap_3"; 
 		}
-		if (refChar.CaptanId == "FMQG_Juan" && CheckAttribute(pchar,"questTemp.FMQG") && pchar.questTemp.FMQG != "fail") // Addon-2016 Jason ФМК-Гваделупа
+		if (refChar.CaptanId == "FMQG_Juan" && CheckAttribute(pchar,"questTemp.FMQG") && pchar.questTemp.FMQG != "fail") 
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\LineMiniQuests\FMQ_Guadeloupe.c";
-			refChar.Dialog.CurrentNode = "Juan"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "Juan"; 
 		}
-		// Addon 2016-1 Jason Пиратская линейка
+		
 		if (refChar.CaptanId == "Ignasio" && CheckAttribute(pchar, "questTemp.Mtraxx.Corrida.Logbook"))
 		{
-		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  // сколько НР мин
+		    LAi_SetCheckMinHP(refChar, 10, true, "QuestAboardCabinDialog");  
 			refChar.Dialog.FileName = "Quest\Roger.c";
-			refChar.Dialog.CurrentNode = "ignasio_boarding"; //даем абордажную ноду		
+			refChar.Dialog.CurrentNode = "ignasio_boarding"; 
 		}
 	}
 }
 
-// ugeen --> ситуации на абордаже в каюте вражеского кэпа (эпидемия или взрыв)
+
 void SetQuestAboardCabinDialogSituation(ref refChar)
 {
 	LAi_SetFightMode(pchar, false);
@@ -2232,23 +2188,23 @@ void SetQuestAboardCabinDialogSituation(ref refChar)
 	refChar.Dialog.FileName = "GenQuests_Dialog.c";	
 	switch(refChar.situation.type)
 	{
-		case "pirate": 	// пираты или ДУ	
+		case "pirate": 	
 			refChar.Dialog.CurrentNode = "ShipSituation11";
 		break;
-		case "hunter": 	// ОЗГ
+		case "hunter": 	
 			refChar.Dialog.CurrentNode = "ShipSituation31";
 		break;
-		case "war": 	// военные корабли
+		case "war": 	
 			refChar.Dialog.CurrentNode = "ShipSituation21";
 		break;
-		case "trade": 	// торговцы
+		case "trade": 	
 			refChar.Dialog.CurrentNode = "ShipEpidemy1";
 		break;		
 	}
 	LAi_SetActorType(refChar);
 	LAi_ActorDialog(refChar, pchar, "", -1, 0); 
 }
-// <-- ugeen
+
 
 void QuestAboardCabinDialogFree()
 {
@@ -2260,7 +2216,7 @@ void QuestAboardCabinDialogFree()
     LAi_SetWarriorType(sld);
     LAi_group_MoveCharacter(sld, LAI_GROUP_BRDENEMY);
 }
-//выход без боевки, но в плен не надо
+
 void QuestAboardCabinDialogNotBattle()
 {
 	ref sld;
@@ -2271,10 +2227,10 @@ void QuestAboardCabinDialogNotBattle()
     LAi_SetWarriorType(sld);
 	DoQuestCheckDelay("LAi_ReloadBoarding", 1.0);
 }
-// выход с боевкой
+
 void QuestAboardCabinDialogExitWithBattle(string _questName)
 {
-    QuestAboardCabinDialogFree(); // важный метод
+    QuestAboardCabinDialogFree(); 
 	ref sld;
 	sld = &Characters[sti(pchar.GenQuest.QuestAboardCabinDialogIdx)];
 	LAi_SetFightMode(pchar, true);
@@ -2282,10 +2238,10 @@ void QuestAboardCabinDialogExitWithBattle(string _questName)
 	LAi_group_SetRelation(LAI_GROUP_BRDENEMY, LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
     LAi_group_FightGroups(LAI_GROUP_BRDENEMY, LAI_GROUP_PLAYER, true);
 	LAi_group_SetCheck(LAI_GROUP_BRDENEMY, _questName);
-	// SetCharacterTask_Fight(sld, pchar);
+	
 }
 
-void QuestAboardCabinDialogExitWithBattleNoParam()// homo тоже самое, только без параметров
+void QuestAboardCabinDialogExitWithBattleNoParam()
 {
     QuestAboardCabinDialogExitWithBattle("");
 }
@@ -2294,33 +2250,33 @@ void QuestAboardCabinDialogSurrender()
 {
  	ref sld;
 	sld = &Characters[sti(pchar.GenQuest.QuestAboardCabinDialogIdx)];
-	DeleteAttribute(sld, "DontRansackCaptain"); // если было зачем-то
+	DeleteAttribute(sld, "DontRansackCaptain"); 
 	pchar.GenQuest.QuestAboardCaptanSurrender = true;
 	Lai_SetPlayerType(pchar);
 	LAi_RemoveCheckMinHP(sld);
 	LAi_SetImmortal(sld, false);
-	//на форме убиваем LAi_SetCurHP(characterFromId(sld.CaptanId), 0.0); 
-	//sld.LifeDay = 0;    это не фантом многодневка, а фантом локации, трется он сам при закрузке локации, но не при выгрузке
+	
+	
 	DoQuestCheckDelay("LAi_ReloadBoarding", 1.0);
 }
-//==> квестовое пленение с сохранением индекса пленного.
+
 void QuestAboardCabinDialogQuestSurrender()
 {
 	ref sld;
 	sld = &Characters[sti(pchar.GenQuest.QuestAboardCabinDialogIdx)];
-	sld.DontRansackCaptain = true; // чтоб не сдался второй раз
+	sld.DontRansackCaptain = true; 
 	Lai_SetPlayerType(pchar);
 	LAi_RemoveCheckMinHP(sld);
 	LAi_SetImmortal(sld, false);
-	//на форме убиваем LAi_SetCurHP(characterFromId(sld.CaptanId), 0.0); 
-	//sld.LifeDay = 0;
+	
+	
 	pchar.GenQuest.LastQuestPrisonerIdx = SetCharToPrisoner(sld);
 	SetCharacterRemovable(&characters[sti(pchar.GenQuest.LastQuestPrisonerIdx)], false);
 	DoQuestCheckDelay("LAi_ReloadBoarding", 1.0);
 }
 
-// eddy. лицензии торговых компаний. -->
-//дать лицензию
+
+
 void GiveNationLicence(int _nation, int _validity)
 {
 	string sTemp; 
@@ -2337,11 +2293,11 @@ void GiveNationLicence(int _nation, int _validity)
 		rItem = ItemsFromID(sTemp);
 		SaveCurrentNpcQuestDateParam(rItem, "Action_date");
 		rItem.Action_date = GetCurrentDate(); 
-		rItem.Validity = FindRussianDaysString(_validity); //строка для дескрайба
-		rItem.Validity.QtyDays = _validity; //время действия лицензии в днях для расчетов
+		rItem.Validity = FindRussianDaysString(_validity); 
+		rItem.Validity.QtyDays = _validity; 
 	}
 }
-//забрать лицензию 
+
 void TakeNationLicence(int _nation)
 {
 	string sTemp; 
@@ -2353,7 +2309,7 @@ void TakeNationLicence(int _nation)
 		DeleteAttribute(ItemsFromID(sTemp), "Validity");
 	}
 }
-//проверить наличие лицензии
+
 bool CheckNationLicence(int _nation)
 {
 	if (_nation != PIRATE) 
@@ -2362,7 +2318,7 @@ bool CheckNationLicence(int _nation)
 	}
 	return false;
 }
-//проверить сроки лицензии, сколько осталось дней. если -1, то просрочена или отсутствует
+
 int GetDaysContinueNationLicence(int _nation)
 {
 	int iTerms = -1;
@@ -2373,7 +2329,7 @@ int GetDaysContinueNationLicence(int _nation)
 		{
 			rItem = ItemsFromID(NationShortName(_nation)+"TradeLicence");
 			
-			if(!CheckAttribute(rItem, "Validity")) // Warship 10.07.09 fix - Судя по логам, могло не быть
+			if(!CheckAttribute(rItem, "Validity")) 
 			{
 				return -1;
 			}
@@ -2386,7 +2342,7 @@ int GetDaysContinueNationLicence(int _nation)
 	}
 	return iTerms;
 }
-//дать наименование лицензии, например 'Лицензия Голландской Вест-Индской компании'
+
 string GetRusNameNationLicence(int _nation)
 {
 	string sTemp, itmTitle;
@@ -2402,9 +2358,9 @@ string GetRusNameNationLicence(int _nation)
 	}
 	return itmTitle;
 }
-// eddy. лицензии торговых компаний. <--
 
-void SelectSlavetraderRendom() // работорговец, выбор города
+
+void SelectSlavetraderRendom() 
 {
 	if (CheckAttribute(&colonies[1], "nation"))
 	{
@@ -2424,10 +2380,10 @@ void SelectSlavetraderRendom() // работорговец, выбор города
 	}
 }
 
-void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по этому квесту здесь
+void HollandGambitNpcInit()
 {
-//--------------------------------штаб-квартира ГВИК в Виллемстаде--------------------------------------
-	//Лукас Роденбург
+
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Lucas", "Lucas", "man", "man", 30, HOLLAND, -1, false, "quest"));
 	sld.name = "Lucas";
 	sld.lastname = "Rodenburg";
@@ -2454,8 +2410,8 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
     SetSelfSkill(sld, 80, 80, 80, 80, 80);
 	LAi_SetHuberType(sld);
 	LAi_group_MoveCharacter(sld, "HOLLAND_CITIZENS");
-	LocatorReloadEnterDisable("Villemstad_houseS3", "reload2", true);//кабинет закроем до поры
-	//офицер-секретарь
+	LocatorReloadEnterDisable("Villemstad_houseS3", "reload2", true);
+	
 	sld = GetCharacter(NPC_GenerateCharacter("HWIC_officer", "off_hol_4", "man", "man", 25, HOLLAND, -1, false, "soldier"));
 	FantomMakeCoolFighter(sld, 35, 90, 90, "blade_07", "pistol2", "grapeshot", 200);
 	sld.greeting = "patrol";
@@ -2473,8 +2429,8 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 	pchar.quest.HWIC_officer.win_condition.l1.location = "Villemstad_houseS3";
 	pchar.quest.HWIC_officer.function = "HWICofficerTalk";
 	
-//----------------------------------------Дом Соломона и Абигайль Шнеур-------------------------------------
-	//Абигайль
+
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Abigile", "Aby", "woman", "woman_A2", 10, HOLLAND, -1, false, "quest"));
 	sld.name = "Abigail";
 	sld.lastname = "Shneur";
@@ -2490,7 +2446,7 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 	sld.money = 0;
 	LAi_SetOwnerType(sld);
  	LAi_group_MoveCharacter(sld, "HOLLAND_CITIZENS");
-	//Соломон
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Solomon", "Solomon", "man", "man_B", 10, HOLLAND, -1, false, "quest"));
 	sld.name = "Solomon";
 	sld.lastname = "Shneur";
@@ -2504,10 +2460,10 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 	sld.money = 1000;
 	LAi_SetOwnerType(sld);
  	LAi_group_MoveCharacter(sld, "HOLLAND_CITIZENS");
-	LocatorReloadEnterDisable("Villemstad_town", "houseSP2", true);//дом закроем до поры
+	LocatorReloadEnterDisable("Villemstad_town", "houseSP2", true);
 	
-//-----------------------------------------аптека мистера Мердока-------------------------------------------
-	//Джон Мердок
+
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Merdok", "Merdok", "man", "man", 30, ENGLAND, -1, false, "quest"));
 	sld.name = "John";
 	sld.lastname = "Murdock";
@@ -2528,8 +2484,8 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
     SetSelfSkill(sld, 80, 80, 80, 80, 80);
 	LAi_SetOwnerType(sld);
  	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
-	LocatorReloadEnterDisable("SentJons_HouseF3", "reload2", true);//подземелье закроем до поры
-	//Джино Гвинейли
+	LocatorReloadEnterDisable("SentJons_HouseF3", "reload2", true);
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Jino", "Gino", "man", "man", 20, ENGLAND, -1, false, "quest"));
 	sld.name = "Gino";
 	sld.lastname = "Gvineili";
@@ -2544,10 +2500,10 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 	sld.money = 5000;
 	LAi_SetCitizenType(sld);
  	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
-	LocatorReloadEnterDisable("SentJons_HouseF3", "reload4", true);//комнату закроем до поры
+	LocatorReloadEnterDisable("SentJons_HouseF3", "reload4", true);
 	
-//------------------------------------хижина Чарли Книппеля-------------------------------------------
-	//Чарли Книппель
+
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Knippel", "Kneepel", "man", "man_B", 20, ENGLAND, -1, false, "quest"));
 	sld.name = "Charlie";
 	sld.lastname = "Knippel";
@@ -2581,8 +2537,8 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 	LAi_SetOwnerType(sld);
  	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
 	
-//----------------прочие персонажи - расстановка в зависимости от варианта квеста в разных местах-----------
-	//Ричард Флитвуд
+
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Fleetwood", "Fleetwood", "man", "man", 20, ENGLAND, -1, true, "quest"));
 	sld.name = "Richard";
 	sld.lastname = "Fleetwood";
@@ -2607,7 +2563,7 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 	sld.money = 20000;
  	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
 	
-	//Якоб ван Берг
+	
 	sld = GetCharacter(NPC_GenerateCharacter("JacobBerg", "VanBerg", "man", "man", 35, PIRATE, -1, false, "quest"));
 	sld.name = "Jacob";
 	sld.lastname = "van Berg";
@@ -2620,7 +2576,7 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 	sld.money = 12000;
 	SetRandSPECIAL(sld);
 	
-	//Лонгвэй
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Longway", "Longway", "man", "man", 20, HOLLAND, -1, false, "quest"));
 	sld.name = "Longway";
 	sld.lastname = "";
@@ -2650,7 +2606,7 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 	AddItems(sld, "gunpowder", 50);
 	TakeNItems(sld, "potion2", 1);
 	
-	//Жоаким Мерриман
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Joakim", "Meriman_1", "man", "man_B", 25, HOLLAND, -1, false, "quest"));
 	sld.name = "Joachim";
 	sld.lastname = "Merriman";
@@ -2667,7 +2623,7 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 	AddItems(sld, "gunpowder", 50);
 	LAi_SetImmortal(sld, true);
 	
-	//Эркюль Тонзаг
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Tonzag", "Tonzag", "man", "man", 30, ENGLAND, -1, false, "quest"));
 	sld.name = "Hercule";
 	sld.lastname = "Tonzag";
@@ -2703,10 +2659,10 @@ void HollandGambitNpcInit()//оптимизация - создаем всех ключевых персонажей по э
 	TakeNItems(sld, "potion2", 2);
 }
 
-void SharlieNpcInit()//создаем всех ключевых персонажей по квестам Бремя Гасконца, Страж Истины здесь
+void SharlieNpcInit()
 {
 	string sBlade;
-	//Мишель де Монпе
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Mishelle", "Migel_1", "man", "man", 60, FRANCE, -1, false, "quest"));
 	sld.name = "Michel";
 	sld.lastname = "de Monper";
@@ -2717,14 +2673,14 @@ void SharlieNpcInit()//создаем всех ключевых персонажей по квестам Бремя Гасконц
 	SetSelfSkill(sld, 100, 100, 100, 100, 100);
     SetShipSkill(sld, 100, 100, 100, 100, 100, 100, 100, 100, 100);
 	LAi_SetHP(sld, 700, 700);
-	sld.PoisonResistent = true; // Addon 2016-1 Jason пиратская линейка
+	sld.PoisonResistent = true; 
 	GiveItem2Character(sld, "unarmed");
 	sld.equip.blade = "unarmed";
 	sld.equip.gun = "";
 	LAi_SetImmortal(sld, true);
 	LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
 	
-	//аббат Бенуа
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Benua", "abbat", "man", "man_B", 20, FRANCE, -1, false, "quest"));
 	sld.name = "abbot";
 	sld.lastname = "Benoit";
@@ -2742,7 +2698,7 @@ void SharlieNpcInit()//создаем всех ключевых персонажей по квестам Бремя Гасконц
 	sld.location.locator = "reload2_back";
 	LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
 	
-	//Фадей Московит
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Fadey", "moscovit", "man", "moscovit", 30, FRANCE, -1, false, "quest"));
 	sld.name = "Fadey";
 	sld.lastname = "";
@@ -2762,7 +2718,7 @@ void SharlieNpcInit()//создаем всех ключевых персонажей по квестам Бремя Гасконц
 	sld.equip.gun = "";
 	LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
 	
-	// Диего де Монтойя
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Diego", "diego_6", "man", "man_A", 1, SPAIN, -1, false, "quest"));
 	sld.name = "Diego";
 	sld.lastname = "de Montoya";
@@ -2815,7 +2771,7 @@ void SharlieNpcInit()//создаем всех ключевых персонажей по квестам Бремя Гасконц
 	sld.cirassId = Items_FindItemIdx("cirass1"); 
 	LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");
 	
-	// Алонсо де Мальдонадо
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Maldonado", "Alonso", "man", "man", 1, SPAIN, -1, false, "quest"));
 	sld.name = "Alonso";
 	sld.lastname = "de Maldonado";
@@ -2860,7 +2816,7 @@ void SharlieNpcInit()//создаем всех ключевых персонажей по квестам Бремя Гасконц
 	sld.cirassId = Items_FindItemIdx("cirass1"); 
 	LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");
 	
-	// Вильям Патерсон
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Willy", "willy_6", "man", "man_A", 1, ENGLAND, -1, false, "quest"));
 	sld.name = "William";
 	sld.lastname = "Patterson";
@@ -2910,11 +2866,11 @@ void SharlieNpcInit()//создаем всех ключевых персонажей по квестам Бремя Гасконц
 	TakeNItems(sld, "potion2", MOD_SKILL_ENEMY_RATE/2);
 	sld.SaveItemsForDead = true;
 	sld.DontClearDead = true;
-	sld.PoisonResistent = true; // Addon 2016-1 Jason пиратская линейка
+	sld.PoisonResistent = true; 
 	sld.cirassId = Items_FindItemIdx("cirass1"); 
 	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
 	
-	// Арчибальд Колхаун
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Archy", "archy", "man", "man", 1, ENGLAND, -1, false, "quest"));
 	sld.name = "Archibald";
 	sld.lastname = "Colhaun";
@@ -2960,9 +2916,9 @@ void SharlieNpcInit()//создаем всех ключевых персонажей по квестам Бремя Гасконц
 	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
 }
 
-void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага здесь
+void SagaNpcInit()
 {
-	//Ян Свенсон, Блювельд
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Svenson", "Svenson", "man", "man", 1, ENGLAND, -1, false, "quest"));
 	sld.name = "Jan";
 	sld.lastname = "Svensson";
@@ -3016,7 +2972,7 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	LAi_SetHuberType(sld);
 	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
 	
-	//жена Яна Свенсона - просто антураж дома
+	
 	sld = GetCharacter(NPC_GenerateCharacter("JS_girl", "Svenson_wife", "woman", "towngirl", 10, ENGLAND, -1, false, "quest"));
 	sld.name = "Joanna";
 	sld.lastname = "Svensson";
@@ -3030,7 +2986,7 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	LAi_SetOwnerType(sld);
 	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
 	
-	//Натаниэль Хоук
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Nathaniel", "Hawk_1", "man", "man_B", 25, PIRATE, -1, false, "quest"));
 	SetFantomParamFromRank(sld, 25, true);
 	sld.name = "Nathaniel";
@@ -3053,7 +3009,7 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	LAi_SetImmortal(sld, true);
 	LAi_group_MoveCharacter(sld, "PIRATE_CITIZENS");
 	
-	//Даниэль Хоук ... Данни, Данни...
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Danielle", "Danny", "woman", "danny", 1, ENGLAND, -1, false, "quest"));
 	sld.name = "Danielle";
 	sld.lastname = "Hawk";
@@ -3061,7 +3017,7 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
     sld.Dialog.Filename = "Quest\Saga\Danielle.c";
 	sld.dialog.currentnode = "First time";
 	sld.rank = 22;
-	LAi_SetImmortal(sld, true); // временно
+	LAi_SetImmortal(sld, true); 
 	LAi_SetHP(sld, 280, 280); 
 	SetSelfSkill(sld, 70, 85, 60, 55, 60);
 	SetShipSkill(sld, 50, 38, 41, 39, 85, 33, 44, 62, 63);
@@ -3091,11 +3047,11 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	TakeNItems(sld, "potion3", 2);
 	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
 
-	//Эдвард Дойли
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Doylie", "citiz_6", "man", "man", 35, ENGLAND, -1, false, "quest"));
 	sld.name = "Eduard";
 	sld.lastname = "Doylie";
-	//sld.greeting = "";
+	
     sld.Dialog.Filename = "Quest\Saga\Doylie.c";
 	sld.dialog.currentnode = "First time";
 	sld.rank = 35;
@@ -3108,7 +3064,7 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	AddItems(sld, "gunpowder", 50);
 	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
 	
-	//Лоуренс Белтроп
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Beltrop", "Balthrop", "man", "balthrop", 35, PIRATE, -1, false, "quest"));
 	sld.name = "Lawrence";
 	sld.lastname = "Beltrop";
@@ -3125,7 +3081,7 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	AddItems(sld, "gunpowder", 50);
 	LAi_group_MoveCharacter(sld, "PIRATE_CITIZENS");
 	
-	//Глэдис
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Gladis", "Gladys", "woman", "woman", 10, ENGLAND, -1, false, "quest"));
 	sld.name = "Gladys";
 	sld.lastname = "McArthur";
@@ -3136,7 +3092,7 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	LAi_SetImmortal(sld, true);
 	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
 	
-	//Элен
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Helena", "Rumba", "woman", "rumba", 1, ENGLAND, -1, false, "quest"));
 	sld.name = "Helen";
 	sld.lastname = "McArthur";
@@ -3147,7 +3103,7 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	LAi_SetHP(sld, 220, 220); 
 	sld.SaveItemsForDead = true;
 	sld.DontClearDead = true;
-	LAi_SetImmortal(sld, true); // временно
+	LAi_SetImmortal(sld, true); 
 	SetSelfSkill(sld, 70, 50, 5, 60, 20);
 	SetShipSkill(sld, 40, 30, 55, 55, 70, 50, 20, 50, 30);
 	SetSPECIAL(sld, 5, 6, 6, 6, 10, 10, 6);
@@ -3174,7 +3130,7 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	
 	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
 	
-	//Хосе Диос - картограф
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Dios", "Dios", "man", "man_B", 16, SPAIN, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 16, true);
 	sld.name = " Jose";
@@ -3191,7 +3147,7 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	LAi_SetOwnerType(sld);
 	LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");
 	
-	//Альберт Локсли - адвокат
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Loxly", "advocat", "man", "man", 20, ENGLAND, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 20, true);
 	sld.name = " Albert";
@@ -3209,9 +3165,9 @@ void SagaNpcInit()//создаем всех ключевых персонажей по квесту Пиратская Сага зд
 	LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
 }
 
-void LSC_NpcInit()// ключевые НПС LSC
+void LSC_NpcInit()
 {
-	//Акула Додсон
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Dodson", "Shark", "man", "man", 1, PIRATE, -1, false, "quest"));
 	sld.name = "Steven";
 	sld.lastname = "Dodson";
@@ -3255,7 +3211,7 @@ void LSC_NpcInit()// ключевые НПС LSC
 	LAi_SetImmortal(sld, true);
 	LAi_group_MoveCharacter(sld, "LSC_SHARK");
 
-	// Чад Каппер
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Capper", "Chad", "man", "man", 1, PIRATE, -1, false, "quest"));
 	sld.name = "Chad";
 	sld.lastname = "Kapper";
@@ -3296,7 +3252,7 @@ void LSC_NpcInit()// ключевые НПС LSC
 	sld.location.locator = "sit1";
 	LAi_SetHuberType(sld);
 	
-	//Лейтон Декстер
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Dexter", "Dexter", "man", "man", 1, PIRATE, -1, false, "quest"));
 	sld.name = "Layton";
 	sld.lastname = "Dexter";
@@ -3335,7 +3291,7 @@ void LSC_NpcInit()// ключевые НПС LSC
 	LAi_SetImmortal(sld, true);
 	LAi_group_MoveCharacter(sld, "LSC_SHARK");
 	
-	// Черный Эдди
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Eddy", "Black", "man", "man", 1, PIRATE, -1, false, "quest"));
 	sld.name = "Eduard";
 	sld.lastname = "Black";
@@ -3370,7 +3326,7 @@ void LSC_NpcInit()// ключевые НПС LSC
 	LAi_SetStayType(sld);
 	LAi_group_MoveCharacter(sld, "LSC_RIVADOS");
 	
-	// колдун ривадос Чимисет
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Chimiset", "Chimiset2", "man", "man_A1", 1, PIRATE, -1, false, "quest"));
 	sld.name = "Chimiset";
 	sld.lastname = "";
@@ -3391,7 +3347,7 @@ void LSC_NpcInit()// ключевые НПС LSC
 	EquipCharacterbyItem(sld, "unarmed");
 	LAi_group_MoveCharacter(sld, "LSC_RIVADOS");
 	
-	// Зикомо
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Zikomo", "Zikomo", "man", "man", 1, PIRATE, -1, false, "quest"));
 	sld.name = "Zicomo";
 	sld.lastname = "";
@@ -3426,14 +3382,14 @@ void LSC_NpcInit()// ключевые НПС LSC
 	LAi_SetStayType(sld);
 	LAi_group_MoveCharacter(sld, "LSC_RIVADOS");
 	
-	// Джузеппе Фацио - посредник
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Facio", "Facio", "man", "man_B", 1, PIRATE, -1, false, "quest"));
 	sld.name = "Giuseppe";
 	sld.lastname = "Fazio";
 	sld.greeting = "facio_1";
     sld.Dialog.Filename = "Quest\LSC\Facio.c";
 	sld.city = "LostShipsCity";
-	sld.cityTape = "diplomat"; //тип нпс
+	sld.cityTape = "diplomat"; 
 	sld.rank = 15;
 	LAi_SetHP(sld, 120, 120); 
 	SetSelfSkill(sld, 40, 25, 10, 30, 80);
@@ -3457,14 +3413,14 @@ void LSC_NpcInit()// ключевые НПС LSC
 	LAi_SetImmortal(sld, true);
 	LAi_group_MoveCharacter(sld, "LSC_CITIZEN");
 	
-	// Аксель Йост - торговец
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Axel", "Axel", "man", "man", 1, PIRATE, -1, false, "quest"));
 	sld.name = "Axel";
 	sld.lastname = "Yost";
 	sld.greeting = "Axel";
     sld.Dialog.Filename = "Quest\LSC\Axel.c";
 	sld.city = "LostShipsCity";
-	sld.cityTape = "trader"; //тип нпс
+	sld.cityTape = "trader"; 
 	sld.rank = 19;
 	LAi_SetHP(sld, 150, 150); 
 	SetSelfSkill(sld, 55, 35, 10, 35, 90);
@@ -3490,14 +3446,14 @@ void LSC_NpcInit()// ключевые НПС LSC
 	LAi_SetOwnerType(sld);
 	LAi_group_MoveCharacter(sld, "LSC_NARVAL");
 	
-	// Санчо Карпентеро - бармен ...Санчо Панса...
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Carpentero", "Carpentero", "man", "man", 1, PIRATE, -1, false, "quest"));
 	sld.name = "Sancho";
 	sld.lastname = "Carpentero";
 	sld.greeting = "Carpentero";
     sld.Dialog.Filename = "Quest\LSC\Carpentero.c";
 	sld.city = "LostShipsCity";
-	sld.cityTape = "barmen"; //тип нпс
+	sld.cityTape = "barmen"; 
 	sld.rank = 18;
 	LAi_SetHP(sld, 140, 140); 
 	SetSelfSkill(sld, 25, 25, 20, 25, 60);
@@ -3514,14 +3470,14 @@ void LSC_NpcInit()// ключевые НПС LSC
 	LAi_SetBarmanType(sld);
 	LAi_group_MoveCharacter(sld, "LSC_CITIZEN");
 	
-	// брат Юлиан - священник
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Julian", "priest_1", "man", "man", 1, PIRATE, -1, false, "quest"));
 	sld.name = "brother";
 	sld.lastname = "Julian";
 	sld.greeting = "padre_1";
     sld.Dialog.Filename = "Quest\LSC\Julian_priest.c";
 	sld.city = "LostShipsCity";
-	sld.cityTape = "priest"; //тип нпс
+	sld.cityTape = "priest"; 
 	sld.rank = 12;
 	LAi_SetHP(sld, 110, 110); 
 	SetSelfSkill(sld, 15, 25, 10, 15, 50);
@@ -3538,13 +3494,13 @@ void LSC_NpcInit()// ключевые НПС LSC
 	LAi_SetPriestType(sld);
 	LAi_group_MoveCharacter(sld, "LSC_CITIZEN");
 	
-	// Мэри Каспер ... Мэри... никому теперь не верит Мэри... лучшей подруги и любовницы для ГГ не будет :)
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Mary", "Mary", "woman", "mary", 1, PIRATE, -1, false, "quest"));
 	sld.name = "Mary";
 	sld.lastname = "Casper";
 	sld.Dialog.Filename = "Quest\LSC\Mary.c";
 	sld.dialog.currentnode = "First time";
-	sld.greeting = ""; // установим по нужным местам
+	sld.greeting = ""; 
 	sld.SaveItemsForDead = true;
 	sld.DontClearDead = true; 
 	sld.rank = 20;
@@ -3579,7 +3535,7 @@ void LSC_NpcInit()// ключевые НПС LSC
 	sld.location.locator = "stay";
 	LAi_SetOwnerType(sld);
 	
-	// Хенрик Ведекер - механик
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Mechanic", "Mechanic", "man", "man", 1, PIRATE, -1, false, "quest"));
 	sld.name = "Henrick";
 	sld.lastname = "Vedecker";
@@ -3600,7 +3556,7 @@ void LSC_NpcInit()// ключевые НПС LSC
 	LAi_SetOwnerType(sld);
 	LAi_group_MoveCharacter(sld, "LSC_NARVAL");
 	
-	// Юрген Шмидт - оружейник
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Schmidt", "Schmidt", "man", "man", 1, PIRATE, -1, false, "quest"));
 	sld.name = "Jurgen";
 	sld.lastname = "Schmidt";
@@ -3621,7 +3577,7 @@ void LSC_NpcInit()// ключевые НПС LSC
 	LAi_SetStayType(sld);
 	LAi_group_MoveCharacter(sld, "LSC_NARVAL");
 	
-	//Дональд Гринспи - лидер нарвалов
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Grinspy", "Donald", "man", "man", 1, PIRATE, -1, false, "quest"));
 	sld.name = "Donald";
 	sld.lastname = "Greenspen";
@@ -3660,7 +3616,7 @@ void LSC_NpcInit()// ключевые НПС LSC
 	LAi_SetHuberType(sld);
 	LAi_group_MoveCharacter(sld, "LSC_NARVAL");
 	
-	// Оле Кристиансен - Белый Мальчик ...Оле...оле-оле-оле... :)
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Ole", "Ole", "man", "man", 1, PIRATE, -1, false, "quest"));
 	sld.name = "Ole";
 	sld.lastname = "Christiansen";
@@ -3674,10 +3630,10 @@ void LSC_NpcInit()// ключевые НПС LSC
 	SetCharacterPerk(sld, "BasicDefense");
 	GiveItem2Character(sld, "unarmed");
 	EquipCharacterbyItem(sld, "unarmed");
-	LAi_SetImmortal(sld, true); // ключевой персонаж
+	LAi_SetImmortal(sld, true); 
 	LAi_group_MoveCharacter(sld, "LSC_CITIZEN");
 	
-	// Циклоп Марчелло ...Циклопус... или Суслопас :)
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Marchello", "Cyclop", "man", "man", 15, PIRATE, -1, false, "quest"));
 	sld.name = "Marcello";
 	sld.lastname = "";
@@ -3694,10 +3650,10 @@ void LSC_NpcInit()// ключевые НПС LSC
 	TakeNItems(sld, "potion2", 3);
 }
 
-void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
+void LSC_CreateStateCitizens() 
 {
-	// ------------------------ внешние горожане ------------------------	
-	// внешний горожанин Дугал Эбботт - дворянин
+	
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Dugal", "citiz_3", "man", "man", 25, PIRATE, -1, true, "soldier"));
 	SetFantomParamFromRank(sld, 25, true);
 	sld.name = "Dougall";
@@ -3706,13 +3662,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto02_1"; 
-	sld.location.baseShip = "02"; //базовый корабль в ГПК - Каролина
+	sld.location.baseShip = "02"; 
 	sld.location.baseLocator = sld.location.locator; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 2; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 2; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Dugal.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "noble_male";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetLSCoutType(sld);
@@ -3721,7 +3677,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 
-	// внешний горожанин Лайонел Маскетт - мещанин
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Lionel", "citiz_11", "man", "man", 20, PIRATE, -1, true, "citizen"));
 	SetFantomParamFromRank(sld, 20, true);
 	sld.name = "Lionell";
@@ -3730,13 +3686,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto09_3"; 
-	sld.location.baseShip = "09"; //базовый корабль в ГПК - Плуто
+	sld.location.baseShip = "09"; 
 	sld.location.baseLocator = sld.location.locator; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 4; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 4; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Lionel.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "citizen_male";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetLSCoutType(sld);
@@ -3745,7 +3701,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 
-	// внешний горожанин Гхерад Смиитс - матрос
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Gherad", "citiz_38", "man", "man", 18, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 18, true);
 	sld.name = "Gerard";
@@ -3754,13 +3710,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto05_1"; 
-	sld.location.baseShip = "05"; //базовый корабль в ГПК - Флерон
+	sld.location.baseShip = "05"; 
 	sld.location.baseLocator = sld.location.locator; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 3; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 3; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Gherad.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "town_sailor";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetLSCoutType(sld);
@@ -3769,7 +3725,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 
-	// внешний горожанин Ришард Шамбон - контрабандист
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Rishard", "Shambone", "man", "man", 17, PIRATE, -1, false, "marginal"));
 	SetFantomParamFromRank(sld, 17, true);
 	sld.name = "Richard";
@@ -3778,13 +3734,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto08_1"; 
-	sld.location.baseShip = "08"; //базовый корабль в ГПК - Глория
+	sld.location.baseShip = "08"; 
 	sld.location.baseLocator = sld.location.locator; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 4; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 4; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Rishard.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "marginal";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetLSCoutType(sld);
@@ -3793,7 +3749,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 
-	// внешний горожанин Альваро Гомец - капитан
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Alvaro", "mercen_23", "man", "man", 28, PIRATE, -1, false, "soldier"));
 	SetFantomParamFromRank(sld, 28, true);
 	sld.name = "Alvaro";
@@ -3802,13 +3758,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto09_1"; 
-	sld.location.baseShip = "09"; //базовый корабль в ГПК - Плуто
+	sld.location.baseShip = "09"; 
 	sld.location.baseLocator = sld.location.locator; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 4; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 4; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Alvaro.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "captain";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetLSCoutType(sld);
@@ -3817,7 +3773,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 
-	// внешний горожанин Виктор Кассель - бандит
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Victor", "mercen_20", "man", "man", 30, PIRATE, -1, true, "marginal"));
 	SetFantomParamFromRank(sld, 30, true);
 	sld.name = "Victor";
@@ -3826,13 +3782,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto11_1"; 
-	sld.location.baseShip = "11"; //базовый корабль в ГПК - Сан-Августин
+	sld.location.baseShip = "11"; 
 	sld.location.baseLocator = sld.location.locator; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 4; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 4; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Victor.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "town_pirate";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetLSCoutType(sld);
@@ -3841,7 +3797,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 	
-	// внешний горожанин Адольф Барбье - авантюрист
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Adolf", "Adolf", "man", "man", 22, PIRATE, -1, true, "marginal"));
 	SetFantomParamFromRank(sld, 22, true);
 	sld.name = "Adolf";
@@ -3850,13 +3806,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto05_3"; 
-	sld.location.baseShip = "05"; //базовый корабль в ГПК - Флерон
+	sld.location.baseShip = "05"; 
 	sld.location.baseLocator = sld.location.locator; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 5; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 5; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Adolf.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "town_pirate";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetLSCoutType(sld);
@@ -3865,7 +3821,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 	
-	// внешний горожанин Куранай - индеец
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Curanai", "miskito_4", "man", "man", 18, PIRATE, -1, true, "native"));
 	SetFantomParamFromRank(sld, 18, true);
 	sld.name = "Curanai";
@@ -3874,13 +3830,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto14_1"; 
-	sld.location.baseShip = "14"; //базовый корабль в ГПК - Санта-Флорентина
+	sld.location.baseShip = "14"; 
 	sld.location.baseLocator = sld.location.locator; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 4; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 4; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Curanai.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "indian_male";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetLSCoutType(sld);
@@ -3891,7 +3847,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.Merchant.type = "LSC_indian";
 	sld.money = 0;
 	
-	// внешняя горожанка Рамона Лоцано
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Ramona", "women_16", "woman", "towngirl", 14, PIRATE, -1, true, "citizen"));
 	SetFantomParamFromRank(sld, 14, true);
 	sld.name = "Ramona";
@@ -3901,13 +3857,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
 	sld.location.locator = "goto15_1"; 
-	sld.location.baseShip = "15"; //базовый корабль в ГПК - Эва
+	sld.location.baseShip = "15"; 
 	sld.location.baseLocator = sld.location.locator; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 4; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 4; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Ramona.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "Gr_Woman_Citizen";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetLSCoutType(sld);
@@ -3916,8 +3872,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 
-	// ------------------------ внешние горожане в таверне ------------------------
-	// в таверне Оеларт Котеел - канонир (возможный офицер)
+	
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Oelart", "mercen_3", "man", "man", 20, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 20, true);
 	sld.name = "Oelart";
@@ -3926,13 +3882,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "FleuronTavern";
 	sld.location.group = "sit";
 	sld.location.locator = "sit2"; 
-	sld.location.baseShip = "02"; //базовый корабль в ГПК - Каролина
+	sld.location.baseShip = "02"; 
 	sld.location.baseLocator = "goto02_2"; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 6; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 6; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Oelart.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "town_sailor";
 	LAi_SetSitType(sld);
 	LAi_SetCheckMinHP(sld, LAi_GetCharacterHP(sld)-1, false, "LSC_CitizenConflict");
@@ -3940,7 +3896,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 
-	// в таверне Джаспер Пратт - каторжник
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Jasper", "prizon_7", "man", "man_B", 15, PIRATE, -1, true, "slave"));
 	SetFantomParamFromRank(sld, 15, true);
 	sld.name = "Jasper";
@@ -3949,13 +3905,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "FleuronTavern";
 	sld.location.group = "sit";
 	sld.location.locator = "sit3"; 
-	sld.location.baseShip = "09"; //базовый корабль в ГПК - Плуто
+	sld.location.baseShip = "09"; 
 	sld.location.baseLocator = "goto09_2"; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 5; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 5; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Jasper.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "marginal";
 	LAi_SetSitType(sld);
 	LAi_SetCheckMinHP(sld, LAi_GetCharacterHP(sld)-1, false, "LSC_CitizenConflict");
@@ -3963,7 +3919,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 
-	// в таверне Леонард Маскетт - пьяница
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Leonard", "LeoMaskett", "man", "man", 12, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 12, true);
 	sld.name = "Leonard";
@@ -3972,13 +3928,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location = "FleuronTavern";
 	sld.location.group = "sit";
 	sld.location.locator = "sit5"; 
-	sld.location.baseShip = "05"; //базовый корабль в ГПК
+	sld.location.baseShip = "05"; 
 	sld.location.baseLocator = "goto05_2"; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 7; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 7; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Leonard.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "habitue";
 	LAi_SetSitType(sld);
 	LAi_SetCheckMinHP(sld, LAi_GetCharacterHP(sld)-1, false, "LSC_CitizenConflict");
@@ -3986,7 +3942,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 
-	// в таверне Джозеф Лодердэйл - английский военный офицер
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Josef", "off_eng_2", "man", "man", 35, PIRATE, -1, true, "soldier"));
 	SetFantomParamFromRank(sld, 35, true);
 	sld.name = "Josef";
@@ -3995,13 +3951,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location = "FleuronTavern";
 	sld.location.group = "sit";
 	sld.location.locator = "sit8"; 
-	sld.location.baseShip = "08"; //базовый корабль в ГПК - Глория
+	sld.location.baseShip = "08"; 
 	sld.location.baseLocator = "goto08_3";  
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 3; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 3; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Josef.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "captain";
 	LAi_SetSitType(sld);
 	LAi_SetCheckMinHP(sld, LAi_GetCharacterHP(sld)-1, false, "LSC_CitizenConflict");
@@ -4009,7 +3965,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 
-	// в таверне Лоренцо Сольдерра - испанский военный офицер
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Lorenzo", "off_spa_4", "man", "man", 35, PIRATE, -1, false, "soldier"));
 	SetFantomParamFromRank(sld, 35, true);
 	sld.name = "Lorenzo";
@@ -4018,13 +3974,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "FleuronTavern";
 	sld.location.group = "sit";
 	sld.location.locator = "sit6"; 
-	sld.location.baseShip = "14"; //базовый корабль в ГПК - Санта-Флорентина
+	sld.location.baseShip = "14"; 
 	sld.location.baseLocator = "goto14_2";  
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 3; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 3; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Lorenzo.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "captain";
 	LAi_SetSitType(sld);
 	LAi_SetCheckMinHP(sld, LAi_GetCharacterHP(sld)-1, false, "LSC_CitizenConflict");
@@ -4032,7 +3988,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 	
-	// в таверне Жаклин Тьюрам - торговый капитан
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Jacklin", "citiz_26", "man", "man", 20, PIRATE, -1, false, "soldier"));
 	SetFantomParamFromRank(sld, 20, true);
 	sld.name = "Jacqueline";
@@ -4041,13 +3997,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "FleuronTavern";
 	sld.location.group = "sit";
 	sld.location.locator = "sit7"; 
-	sld.location.baseShip = "11"; //базовый корабль в ГПК - Сан-Августин
+	sld.location.baseShip = "11"; 
 	sld.location.baseLocator = "goto11_2";  
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 4; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 4; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Jacklin.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "captain";
 	LAi_SetSitType(sld);
 	LAi_SetCheckMinHP(sld, LAi_GetCharacterHP(sld)-1, false, "LSC_CitizenConflict");
@@ -4055,8 +4011,8 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 
-	// ------------------------ внешние горожане в церкви -----------------------
-	// в церкви Джиллиан Стайнер
+	
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Jillian", "women_15", "woman", "towngirl", 12, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 12, true);
 	sld.name = "Jillian";
@@ -4066,13 +4022,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "GloriaChurch";
 	sld.location.group = "goto";
 	sld.location.locator = "goto1"; 
-	sld.location.baseShip = "08"; //базовый корабль в ГПК - Глория
+	sld.location.baseShip = "08"; 
 	sld.location.baseLocator = "goto08_3"; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 4; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 4; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Jillian.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "Gr_Woman_Citizen";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetCitizenType(sld);
@@ -4081,7 +4037,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 
-	// в церкви Таннеке Эверс
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Tanneke", "women_13", "woman", "towngirl", 13, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 13, true);
 	sld.name = "Tanneke";
@@ -4091,13 +4047,13 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "GloriaChurch";
 	sld.location.group = "goto";
 	sld.location.locator = "goto2"; 
-	sld.location.baseShip = "15"; //базовый корабль в ГПК - Эва
+	sld.location.baseShip = "15"; 
 	sld.location.baseLocator = "goto15_3"; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 5; //передвижения через .. часов
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 5; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Tanneke.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizen"; //тип нпс
+	sld.cityTape = "citizen"; 
 	sld.greeting = "Gr_Woman_Citizen";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetCitizenType(sld);
@@ -4106,9 +4062,9 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 
-	// ------------------------ внутренние горожане ------------------------
+	
 
-	// внутреняя горожанка Орели Бертин
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Oreli", "women_18", "woman", "towngirl", 11, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 11, true);
 	sld.name = "Orelie";
@@ -4118,14 +4074,14 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "PlutoStoreSmall";
 	sld.location.group = "barmen";
 	sld.location.locator = "stay"; 
-	sld.location.baseShip = "09"; //базовый корабль в ГПК - Плуто
+	sld.location.baseShip = "09"; 
 	sld.location.baseLocator = "goto09_0"; 
-	sld.location.baseLocation = "PlutoStoreSmall"; //базовая внутреняя локация
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 6; //передвижения через .. часов
+	sld.location.baseLocation = "PlutoStoreSmall"; 
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 6; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Oreli.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizenHome"; //тип нпс
+	sld.cityTape = "citizenHome"; 
 	sld.greeting = "Gr_Woman_Citizen";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetOwnerType(sld);
@@ -4134,7 +4090,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 
-	// внутрений горожанин Антонио Бетанкур
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Betancur", "Betancur", "man", "man", 20, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 20, true);
 	sld.name = "Antonio";
@@ -4144,14 +4100,14 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "PlutoStoreSmall";
 	sld.location.group = "barmen";
 	sld.location.locator = "bar1"; 
-	sld.location.baseShip = "09"; //базовый корабль в ГПК - Плуто
+	sld.location.baseShip = "09"; 
 	sld.location.baseLocator = "goto09_4"; 
-	sld.location.baseLocation = "PlutoStoreSmall"; //базовая внутреняя локация
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 5; //передвижения через .. часов
+	sld.location.baseLocation = "PlutoStoreSmall"; 
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 5; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Betancur.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizenHome"; //тип нпс
+	sld.cityTape = "citizenHome"; 
 	sld.greeting = "noble_male";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetOwnerType(sld);
@@ -4160,7 +4116,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 
-	// внутреняя горожанка Сесиль Галард
+	
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_Sesil", "women_17", "woman", "towngirl", 10, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 10, true);
 	sld.name = "Cecille";
@@ -4170,14 +4126,14 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location	= "AvaShipInside3";
 	sld.location.group = "barmen";
 	sld.location.locator = "stay"; 
-	sld.location.baseShip = "15"; //базовый корабль в ГПК - Эва
+	sld.location.baseShip = "15"; 
 	sld.location.baseLocator = "goto15_0"; 
-	sld.location.baseLocation = "AvaShipInside3"; //базовая внутреняя локация
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
-	sld.location.hours = 5; //передвижения через .. часов
+	sld.location.baseLocation = "AvaShipInside3"; 
+	sld.location.baseShip.going = true; 
+	sld.location.hours = 5; 
 	sld.dialog.filename   = "Quest\LSC\Citizen\LSC_Sesil.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "citizenHome"; //тип нпс
+	sld.cityTape = "citizenHome"; 
 	sld.greeting = "Gr_SesilGalard";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetOwnerType(sld);
@@ -4186,7 +4142,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	sld.LSC_clan = true;
 	
-	//официантка Наталия Бушелл
+	
 	sld = GetCharacter(NPC_GenerateCharacter("Natalie_Waitress", "women_11", "woman", "towngirl", 10, PIRATE, -1, false, "citizen"));
 	SetFantomParamFromRank(sld, 10, true);
 	sld.name = "Nathalie";
@@ -4197,7 +4153,7 @@ void LSC_CreateStateCitizens() // создание горожан-статиков LSC, 20 штук
 	sld.location.locator = "barmen";
 	sld.dialog.filename   = "Quest\LSC\Natalie_Waitress.c";
 	sld.dialog.currentnode   = "First time";
-	sld.cityTape = "tavern"; //тип нпс
+	sld.cityTape = "tavern"; 
 	sld.greeting = "waitress";
 	LAi_SetWaitressType(sld);
 	LAi_RemoveLoginTime(sld);
@@ -4216,36 +4172,36 @@ string GetStrSmallRegister(string sBase)
 		Simbol = GetSymbol(sBase, i);
 		switch (Simbol)
 		{
-			case "А": sResult += "а"; continue; break;
-			case "Б": sResult += "б"; continue; break;
-			case "В": sResult += "в"; continue; break;
-			case "Г": sResult += "г"; continue; break;
-			case "Д": sResult += "д"; continue; break;
-			case "Е": sResult += "е"; continue; break;
-			case "Ё": sResult += "ё"; continue; break;
-			case "Ж": sResult += "ж"; continue; break;
-			case "З": sResult += "з"; continue; break;
-			case "И": sResult += "и"; continue; break;
-			case "Й": sResult += "й"; continue; break;
-			case "К": sResult += "к"; continue; break;
-			case "Л": sResult += "л"; continue; break;
-			case "М": sResult += "м"; continue; break;
-			case "Н": sResult += "н"; continue; break;
-			case "О": sResult += "о"; continue; break;
-			case "П": sResult += "п"; continue; break;
-			case "Р": sResult += "р"; continue; break;
-			case "С": sResult += "с"; continue; break;
-			case "Т": sResult += "т"; continue; break;
-			case "У": sResult += "у"; continue; break;
-			case "Ф": sResult += "ф"; continue; break;
-			case "Х": sResult += "х"; continue; break;
-			case "Ц": sResult += "ц"; continue; break;
-			case "Ч": sResult += "ч"; continue; break;
-			case "Ш": sResult += "ш"; continue; break;
-			case "Щ": sResult += "щ"; continue; break;
-			case "Э": sResult += "э"; continue; break;
-			case "Ю": sResult += "ю"; continue; break;
-			case "Я": sResult += "я"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
+			case "пїЅ": sResult += "пїЅ"; continue; break;
 			
 			case "A": sResult += "a"; continue; break;
 			case "B": sResult += "b"; continue; break;
@@ -4279,8 +4235,8 @@ string GetStrSmallRegister(string sBase)
 	return sResult;
 }
 
-// Warship 15.08.09 -->
-// Перевод всей строки в верхний регистр
+
+
 String ToUpper(String _text)
 {
 	String retString, symbol;
@@ -4293,36 +4249,36 @@ String ToUpper(String _text)
 		
 		switch(symbol)
 		{
-			case "а": retString += "А"; continue; break;
-			case "б": retString += "Б"; continue; break;
-			case "в": retString += "В"; continue; break;
-			case "г": retString += "Г"; continue; break;
-			case "д": retString += "Д"; continue; break;
-			case "е": retString += "Е"; continue; break;
-			case "ё": retString += "Ё"; continue; break;
-			case "ж": retString += "Ж"; continue; break;
-			case "з": retString += "З"; continue; break;
-			case "и": retString += "И"; continue; break;
-			case "й": retString += "Й"; continue; break;
-			case "к": retString += "К"; continue; break;
-			case "л": retString += "Л"; continue; break;
-			case "м": retString += "М"; continue; break;
-			case "н": retString += "Н"; continue; break;
-			case "о": retString += "О"; continue; break;
-			case "п": retString += "П"; continue; break;
-			case "р": retString += "Р"; continue; break;
-			case "с": retString += "С"; continue; break;
-			case "т": retString += "Т"; continue; break;
-			case "у": retString += "У"; continue; break;
-			case "ф": retString += "Ф"; continue; break;
-			case "х": retString += "Х"; continue; break;
-			case "ц": retString += "Ц"; continue; break;
-			case "ч": retString += "Ч"; continue; break;
-			case "ш": retString += "Ш"; continue; break;
-			case "щ": retString += "Щ"; continue; break;
-			case "э": retString += "Э"; continue; break;
-			case "ю": retString += "Ю"; continue; break;
-			case "я": retString += "Я"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
+			case "пїЅ": retString += "пїЅ"; continue; break;
 			
 			case "a": retString += "A"; continue; break;
 			case "b": retString += "B"; continue; break;
@@ -4358,7 +4314,7 @@ String ToUpper(String _text)
 	return retString;
 }
 
-// Первый символ в верхний регистр
+
 String UpperFirst(String _text)
 {
 	String firstSymbol = GetSymbol(_text, 0);
@@ -4367,7 +4323,7 @@ String UpperFirst(String _text)
 	return firstSymbol + strcut(_text, 1, strlen(_text) - 1);
 }
 
-// Первый символ в нижний регистр
+
 String LowerFirst(String _text)
 {
 	String firstSymbol = GetSymbol(_text, 0);
@@ -4375,10 +4331,10 @@ String LowerFirst(String _text)
 	
 	return firstSymbol + strcut(_text, 1, strlen(_text) - 1);
 }
-// <--
 
 
-//домашние энкаунтеры. установка тамера 'покинуть дом'
+
+
 void HouseEnc_TimerGoUot(string qName)
 {
 	if (CheckAttribute(pchar, "questTemp.HouseEncTimer"))
@@ -4391,37 +4347,37 @@ void HouseEnc_TimerGoUot(string qName)
 	}
 }
 
-//удаления группы с задержкой
+
 void Delay_DeleteGroup(string GroupName)
 {	
 	pchar.quest.DeleteGroupOnExitLocation.GroupName = GroupName;
 	DoQuestCheckDelay("DeleteGroupOnExitLocation", 2.0);
 }
 
-//Перехват всех попыток ГГ залезть в боксы
+
 void QuestCheckTakeBoxes(ref itemsRef) 
 {	
-//	ref locLoad = &locations[reload_location_index];
-	ref locLoad = &LoadedLocation; // Warship fix - косило в каютах
+
+	ref locLoad = &LoadedLocation; 
     ref sld;
 	int i, num;
 	
 	String title;
 	
-	//--> флаг 'в сундуке'
+	
 	bMainCharacterInBox = true;
-	//<-- флаг 'в сундуке'
-	//-------------------- КЛАДЫ ------------>>>>>>>>>>>>>
+	
+	
 	if (CheckAttribute(itemsRef, "Treasure"))
 	{
 		Log_Info("It appears that this is a treasure you were looking for");
 		PlaySound("interface\notebook.wav");
 		DeleteAttribute(itemsRef, "Treasure");
-		//eddy. для безконфликтности квестов
-		locations[FindLocation(pchar.location)].DisableEncounters = false; //энкаутеры открыть
+		
+		locations[FindLocation(pchar.location)].DisableEncounters = false; 
 		if(!CheckAttribute(itemsRef, "PiratesOnUninhabitedTreasure"))
 		{
-			// ситуация
+			
 			switch (sti(pchar.GenQuest.Treasure.Vario))
 			{
 				case 0: 
@@ -4452,12 +4408,12 @@ void QuestCheckTakeBoxes(ref itemsRef)
 			if(CheckAttribute(PChar, "GenQuest.PiratesOnUninhabited.UseMainPiratename"))
 			{
 				AddQuestRecordEx(title, "PiratesOnUninhabited", "10");
-				AddQuestUserData(title, "sSex", GetSexPhrase("му","й"));
+				AddQuestUserData(title, "sSex", GetSexPhrase("пїЅпїЅ","пїЅ"));
 			}
 			else
 			{
 				AddQuestRecordEx(title, "PiratesOnUninhabited", "9");
-				AddQuestUserData(title, "sSex", GetSexPhrase("ел","ла"));
+				AddQuestUserData(title, "sSex", GetSexPhrase("пїЅпїЅ","пїЅпїЅ"));
 				AddQuestUserData(title, "shore", XI_ConvertString(PChar.location + "Dat"));
 			}
 			
@@ -4486,9 +4442,9 @@ void QuestCheckTakeBoxes(ref itemsRef)
 			DeleteAttribute(pchar,"GenQuest.Hold_GenQuest");
 		}
 	}
-	//<<<<<<<<<<---------- КЛАДЫ --------------------------
+	
 }
-//открытие дверей в локации города для коммонов. только на текущие сутки + еще одни, потом снимается само.
+
 void SetOpenDoorCommonLoc(string City, string locationId)
 {
 	aref arRld, arDis, arRld2, arDis2;
@@ -4525,7 +4481,7 @@ void SetOpenDoorCommonLoc(string City, string locationId)
     }
 }
 
-//для борьбы со взломом через ArtMoney
+
 int CheckItemsCRC(ref rChar)
 {
 	aref arItems;
@@ -4568,12 +4524,12 @@ int AddItemToCRC(ref rChar, string itemName, int n)
 	return BaseCRC;
 }
 
-///Jason ---------блок помещения ГГ в тюрьму, пребывания в ней, штрафа и выхода из тюрьмы----------------------
-void GoToPrison(string _sCity, int _iStraff, int _iDay)//поместить ГГ в тюрьму, забрать все предметы и положить в сундук, оштрафовать
+
+void GoToPrison(string _sCity, int _iStraff, int _iDay)
 {
 	DoFunctionReloadToLocation(_sCity+"_prison", "goto", "goto9", "");
-	//Время отсидки прокрутим ДО изъятия предметов - иначе при смене локи сундук и НПС вычистятся
-	WaitDate("", 0, 0, _iDay, 0, 10); //крутим время
+	
+	WaitDate("", 0, 0, _iDay, 0, 10); 
 	RecalculateJumpTable();
 
 	ref location = &Locations[FindLocation(_sCity+"_prison")];
@@ -4617,7 +4573,7 @@ void GoToPrison(string _sCity, int _iStraff, int _iDay)//поместить ГГ в тюрьму, 
 	DoQuestFunctionDelay("Jail_officer", 10.0);
 }
 
-void Hide_Interface(string qName)//скроем нашу махинацию с датами
+void Hide_Interface(string qName)
 {
 	ChangeShowIntarface();
 }
@@ -4637,7 +4593,7 @@ void Jail_officer_talk(string qName)
     LAi_ActorDialog(sld, pchar, "", 0, 0);
 }
 
-void InPrison(string qName)//отсидка
+void InPrison(string qName)
 {
 	SetLaunchFrameFormParam("Gone are the long days...", "", 0, 6);
 	LaunchFrameForm();
@@ -4647,24 +4603,24 @@ void InPrison(string qName)//отсидка
 	DoQuestFunctionDelay("Jail_officer", 10.0);
 }
 
-void GoFromPrison(string qName)//выход из тюрьмы
+void GoFromPrison(string qName)
 {
-	pchar.questTemp.jailCanMove = true; //разрешить пройти мимо стражи
+	pchar.questTemp.jailCanMove = true; 
 	DoQuestReloadToLocation(pchar.location, "goto", "goto23", "");
 	DeleteAttribute(pchar, "questTemp.JailTemp1");
 	DeleteAttribute(pchar, "questTemp.JailTemp2");
 	SetFunctionTimerCondition("LockPrisonBox", 0, 0, 1, false);
 }
 
-void LockPrisonBox(string qName)// закрыть сундук
+void LockPrisonBox(string qName)
 {
 	ref location = &Locations[FindLocation(pchar.questTemp.Jaillocation)];
 	location.box1.QuestClosed = true;
 	DeleteAttribute(pchar, "questTemp.Jaillocation");
 }
-//<-- блок помещения ГГ в тюрьму
 
-string DesIsland()//Jason выбор рандомной необитайки - вынес сюда
+
+string DesIsland()
 {
 	string sIsland;
 	switch (rand(2))
@@ -4682,7 +4638,7 @@ string DesIsland()//Jason выбор рандомной необитайки - вынес сюда
 	return sIsland;
 }
 
-string FindFriendCityToMC(bool bRand)//Jason выбрать радномный дружественный к ГГ город - вынес сюда
+string FindFriendCityToMC(bool bRand)
 {
 	int n, m, nation;
     int storeArray[MAX_COLONIES];
@@ -4695,7 +4651,7 @@ string FindFriendCityToMC(bool bRand)//Jason выбрать радномный дружественный к Г
 		if (m < 0)
 		{
 			if (nation != RELATION_ENEMY && nation != PIRATE && colonies[n].id != "Panama" && colonies[n].id != "Minentown" && colonies[n].id != "SanAndres" && colonies[n].nation != "none")
-			{ // may-16
+			{ 
 				storeArray[howStore] = n;
 				howStore++;
 			}
@@ -4715,7 +4671,7 @@ string FindFriendCityToMC(bool bRand)//Jason выбрать радномный дружественный к Г
 	return colonies[nation].id;
 }
 
-string FindEnemyCityToMC(bool bRand)//Jason выбрать радномный враждебный к ГГ город - вынес сюда
+string FindEnemyCityToMC(bool bRand)
 {
 	int n, m, nation;
     int storeArray[MAX_COLONIES];
@@ -4748,7 +4704,7 @@ string FindEnemyCityToMC(bool bRand)//Jason выбрать радномный враждебный к ГГ го
 	return colonies[nation].id;
 }
 
-void SelectLevelWarShipParameter()//Jason автолевеллинг на военные корабли противника
+void SelectLevelWarShipParameter()
 {
 	int iShipRank;
 	if(sti(pchar.rank) >= 30) iShipRank = 5;
@@ -4792,7 +4748,7 @@ void SelectLevelWarShipParameter()//Jason автолевеллинг на военные корабли проти
 	}
 }
 
-void SelectLevelTradeShipParameter()//Jason автолевеллинг на торговые корабли противника
+void SelectLevelTradeShipParameter()
 {
 	int iShipRank;
 	if(sti(pchar.rank) >= 30) iShipRank = 5;
@@ -4836,7 +4792,7 @@ void SelectLevelTradeShipParameter()//Jason автолевеллинг на торговые корабли пр
 	}
 }
 
-int SelectLevelCannonParameter(int iShipType)//Jason автолевеллинг на орудия - иногда надо
+int SelectLevelCannonParameter(int iShipType)
 {
 	int iCannon = CANNON_TYPE_CANNON_LBS12;
 	if (rand(1) == 1) iCannon = CANNON_TYPE_CANNON_LBS16;
@@ -4862,29 +4818,29 @@ int SelectLevelCannonParameter(int iShipType)//Jason автолевеллинг на орудия - и
 	return iCannon;
 }
 
-//Jason --> сделаю функции добавления боевых морских и личных скиллов комплексом - много где надо дать сразу по 4-6, а стопки экспы в функциях мешают
-//морские навыки, нужны для экспы после морских боев
+
+
 void AddComplexSeaExpToScill(int s, int a, int c, int g, int d, int r, int t)
 {
-	AddCharacterExpToSkill(pchar, "Sailing", s);//навигация
-	AddCharacterExpToSkill(pchar, "Accuracy", a);//меткость
-	AddCharacterExpToSkill(pchar, "Cannons", c);//орудия
-	AddCharacterExpToSkill(pchar, "Grappling", g);//абордаж
-	AddCharacterExpToSkill(pchar, "Defence", d);//защита
-	AddCharacterExpToSkill(pchar, "Repair", r);//починка
-	AddCharacterExpToSkill(pchar, "Commerce", t);//торговля
+	AddCharacterExpToSkill(pchar, "Sailing", s);
+	AddCharacterExpToSkill(pchar, "Accuracy", a);
+	AddCharacterExpToSkill(pchar, "Cannons", c);
+	AddCharacterExpToSkill(pchar, "Grappling", g);
+	AddCharacterExpToSkill(pchar, "Defence", d);
+	AddCharacterExpToSkill(pchar, "Repair", r);
+	AddCharacterExpToSkill(pchar, "Commerce", t);
 }
 
-//личные боевые навыки, нужны для экспы после сухопутных боев
+
 void AddComplexSelfExpToScill(int l, int m, int h, int p)
 {
-	AddCharacterExpToSkill(pchar, "FencingL", l);//легкое оружие
-	AddCharacterExpToSkill(pchar, "FencingS", m);//среднее оружие
-	AddCharacterExpToSkill(pchar, "FencingH", h);//тяжелое оружие
-	AddCharacterExpToSkill(pchar, "Pistol", p); //пистоли
+	AddCharacterExpToSkill(pchar, "FencingL", l);
+	AddCharacterExpToSkill(pchar, "FencingS", m);
+	AddCharacterExpToSkill(pchar, "FencingH", h);
+	AddCharacterExpToSkill(pchar, "Pistol", p); 
 }
 
-int CheckShipTypeInSquadron(int iShipType) //Jason, есть ли такой тип корабля в эскадре и сколько
+int CheckShipTypeInSquadron(int iShipType) 
 {
 	ref sld;
 	int iTemp;
@@ -4901,7 +4857,7 @@ int CheckShipTypeInSquadron(int iShipType) //Jason, есть ли такой тип корабля в 
 	return iShip;
 }
 
-bool LSC_CheckShips() // проверка, можно ли подойти к острову LSC // Addon-2016 Jason
+bool LSC_CheckShips() 
 {
 	ref sld;
 	int iTemp;
@@ -4918,19 +4874,19 @@ bool LSC_CheckShips() // проверка, можно ли подойти к острову LSC // Addon-2016 
 	return true;
 }
 
-void SetPassengerParameter(string _sIndex, bool bEnemy)//Jason, общие параметры пассажиров
+void SetPassengerParameter(string _sIndex, bool bEnemy)
 {
 	if (bEnemy)
 	{
 		pchar.GenQuest.(_sIndex).City = FindEnemyCityToMC(true);
 		pchar.GenQuest.(_sIndex).Enemycity = true;
 	}
-	else pchar.GenQuest.(_sIndex).City = FindFriendCityToMC(true); //целевой город
-	pchar.GenQuest.(_sIndex).StartCity = GetCurrentTown(); //стартовый город
+	else pchar.GenQuest.(_sIndex).City = FindFriendCityToMC(true); 
+	pchar.GenQuest.(_sIndex).StartCity = GetCurrentTown(); 
 	int DaysQty = GetMaxDaysFromIsland2Island(GetArealByCityName(pchar.GenQuest.(_sIndex).City), GetArealByCityName(pchar.GenQuest.(_sIndex).StartCity));
 	if (DaysQty > 16) DaysQty = 16;
-	if (DaysQty < 1) DaysQty = 10; // оставлю на всяк пожарный пока
-	pchar.GenQuest.(_sIndex).DaysQty = makeint(sti(DaysQty)*(frand(1.5)+1.0)); //дни
+	if (DaysQty < 1) DaysQty = 10; 
+	pchar.GenQuest.(_sIndex).DaysQty = makeint(sti(DaysQty)*(frand(1.5)+1.0)); 
 	float fShipIdx;
 	switch(6-sti(RealShips[sti(Pchar.Ship.Type)].Class))
 	{
@@ -4942,10 +4898,10 @@ void SetPassengerParameter(string _sIndex, bool bEnemy)//Jason, общие параметры 
 		case 5:	fShipIdx = 4.5; break;
 	}
 	pchar.GenQuest.(_sIndex).Money = (sti(DaysQty)*500*stf(fShipIdx)+rand(100))*sti(DaysQty)/sti(pchar.GenQuest.(_sIndex).DaysQty);
-	if (bEnemy) pchar.GenQuest.(_sIndex).Money = makeint(sti(pchar.GenQuest.(_sIndex).Money)*1.2); //оплата
+	if (bEnemy) pchar.GenQuest.(_sIndex).Money = makeint(sti(pchar.GenQuest.(_sIndex).Money)*1.2); 
 }
 
-string UpdateLSCClanParol() // Jason: обновление паролей кланов
+string UpdateLSCClanParol() 
 {
 	string sParol;
 	switch (rand(29))
@@ -4984,7 +4940,7 @@ string UpdateLSCClanParol() // Jason: обновление паролей кланов
 	return sParol;
 }
 
-void UltimatePotionEffect() // зелье команчей
+void UltimatePotionEffect() 
 {
 	RemoveItems(pchar, "Ultimate_potion", 1);
 	LAi_SetCurHPMax(PChar);
@@ -4995,22 +4951,17 @@ void UltimatePotionEffect() // зелье команчей
 	PlaySound("Ambient\Tavern\glotok_001.wav");
 }
 
-// ugeen --> 
-//--> расчет аренды склада
+
+
 int GetStoragePriceExt(ref NPChar, ref chref)
 {
-/*  --> оставим для хардкорного патча если он будет, не вытирать!!!! 
-	float fLeadership = 1.5 - GetSummonSkillFromName(pchar, SKILL_LEADERSHIP)/120.0; // учитываем авторитет
-	float fCommerce = 1.5 - GetSummonSkillFromName(pchar, SKILL_COMMERCE)/120.0; // учитываем торговлю
-	
-	int price = makeint(15000 * MOD_SKILL_ENEMY_RATE * fLeadership * fCommerce * 0.5);
-*/
+ 
 	int price = makeint( 10000 * (5 + MOD_SKILL_ENEMY_RATE) * (3 + GetNationRelation2MainCharacter(sti(NPChar.nation)))/360.0 );
 	
 	return price;
 }
-//<-- расчет аренды склада
-// --> перемещаем остатки груза со склада на корабль ГГ с перегрузом, пусть сам разбирается что делать со всем этим барахлом
+
+
 void SetStorageGoodsToShip(ref pStorage)
 {
 	int iStoreQ;
@@ -5018,10 +4969,10 @@ void SetStorageGoodsToShip(ref pStorage)
 	{
 		iStoreQ = GetStorageGoodsQuantity(pStorage, i); 
 		if (iStoreQ == 0) continue;
-		SetCharacterGoods(pchar, i, GetCargoGoods(pchar, i) + iStoreQ);// перегруз
+		SetCharacterGoods(pchar, i, GetCargoGoods(pchar, i) + iStoreQ);
 	}
 }
-// зануляем оставленные в ПУ корабли
+
 void SetNull2ShipInStockMan(string _city)
 {
 	int i;
@@ -5047,9 +4998,9 @@ void SetNull2ShipInStockMan(string _city)
 		}	
 	}	
 }
-// <-- ugeen
 
-bool Saga_CheckMarlinShip() // проверка полакра марлин - одинаковый юз в 2 местах
+
+bool Saga_CheckMarlinShip() 
 {
 	if(sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_POLACRE || GetCompanionQuantity(pchar) > 1) return false;
 	if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Marlin") && pchar.ship.name != "Marlin") return false;
@@ -5057,14 +5008,14 @@ bool Saga_CheckMarlinShip() // проверка полакра марлин - одинаковый юз в 2 места
 	return true;
 }
 
-bool bPincers() // можно ли добывать клешни крабов
+bool bPincers() 
 {
 	ref chr = characterFromId("Carpentero");
 	if (CheckAttribute(chr, "quest.crab")) return true;
 	return false;
 }
 
-// устанавливаем сторожевики на Тортугу, сеттим каждый день 2015
+
 void Tortuga_SetShipGuard()
 {
 	if (CheckAttribute(pchar, "questTemp.Sharlie.DelTerGuard")) return;
@@ -5097,11 +5048,11 @@ void Tortuga_SetShipGuard()
 		sld.Ship.Mode = "mercenary";
 		sld.DontRansackCaptain = true;
 		sld.AnalizeShips = true;
-		sld.DontHitInStorm = true; // не ломается в шторм
+		sld.DontHitInStorm = true; 
 		sld.SinkTenPercent = false;
-		sld.Abordage.Enable = false; // запрет абордажа
+		sld.Abordage.Enable = false; 
 		sld.AlwaysSandbankManeuver = true;
-		sld.MultiFighter = 2.5; // мультифайтер
+		sld.MultiFighter = 2.5; 
 		sld.ship.Crew.Morale = 100;
 		sld.Ship.Crew.Exp.Sailors = 100;
 		sld.Ship.Crew.Exp.Cannoners = 100;
@@ -5109,7 +5060,7 @@ void Tortuga_SetShipGuard()
 		Group_AddCharacter("Tortuga_Guard", "TortugaGuardCap_"+i);
 	}
 	Group_SetGroupCommander("Tortuga_Guard", "TortugaGuardCap_1");
-	Group_SetTaskNone("Tortuga_Guard");//нет задачи
+	Group_SetTaskNone("Tortuga_Guard");
 	Group_SetAddress("Tortuga_Guard", "Tortuga", "IslandShips1", "ship_1");
 	Group_LockTask("Tortuga_Guard");
 }
@@ -5128,7 +5079,7 @@ void Tortuga_DeleteShipGuard()
 	}
 }
 
-void Tortuga_ShipGuardAttack() // 2015
+void Tortuga_ShipGuardAttack() 
 {
 	int i;
 	for (i=1; i<=3; i++)
@@ -5143,7 +5094,7 @@ void Tortuga_ShipGuardAttack() // 2015
 	DoQuestFunctionDelay("Tortuga_BranderGo", 4.0);
 }
 
-void Tortuga_BranderGo(string qName) // 2015
+void Tortuga_BranderGo(string qName) 
 {
 	Group_FindOrCreateGroup("Tortuga_GuardAdd");
 	int iShipType, iCannonType;
@@ -5175,12 +5126,12 @@ void Tortuga_BranderGo(string qName) // 2015
 		sld.Ship.Mode = "mercenary";
 		sld.DontRansackCaptain = true;
 		sld.AnalizeShips = true;
-		sld.DontHitInStorm = true; // не ломается в шторм
+		sld.DontHitInStorm = true; 
 		sld.SinkTenPercent = false;
-		sld.Abordage.Enable = false; // запрет абордажа
+		sld.Abordage.Enable = false; 
 		sld.AlwaysSandbankManeuver = true;
 		sld.AlwaysEnemy = true;
-		sld.MultiFighter = 2.5; // мультифайтер
+		sld.MultiFighter = 2.5; 
 		sld.ship.Crew.Morale = 100;
 		sld.Ship.Crew.Exp.Sailors = 100;
 		sld.Ship.Crew.Exp.Cannoners = 100;
@@ -5193,7 +5144,7 @@ void Tortuga_BranderGo(string qName) // 2015
     Group_LockTask("Tortuga_GuardAdd");
 }
 
-void Map_NationQuestHunter(int Nation)//квестовый энкаунтер-охотник
+void Map_NationQuestHunter(int Nation)
 {
     ref  sld;
 	int iRank = sti(PChar.rank)+MOD_SKILL_ENEMY_RATE+5;
@@ -5225,7 +5176,7 @@ void Map_NationQuestHunter(int Nation)//квестовый энкаунтер-охотник
 	Map_CreateCoolWarrior("", sCapId + "1", 45);
 }
 
-void FillShorechestBox(string loc, int n, int i) // Jason: заполнение выброшенных на берег сундуков
+void FillShorechestBox(string loc, int n, int i) 
 {
 
 	pchar.GenQuestBox.(loc) = true;
@@ -5242,7 +5193,7 @@ void FillShorechestBox(string loc, int n, int i) // Jason: заполнение выброшенны
 	string srecd = "recipe_totem_"+(drand(3)+10);
 	switch (i)
 	{
-		// good
+		
 		case 0:
 			if (rand(1) == 1)
 	        {
@@ -5301,7 +5252,7 @@ void FillShorechestBox(string loc, int n, int i) // Jason: заполнение выброшенны
             	pchar.GenQuestBox.(loc).(boxx).items.cirass6 = 1;
 	        }
 	    break;
-	    // best
+	    
 	    case 1:
 			if (rand(1) == 1)
 	        {
@@ -5360,7 +5311,7 @@ void FillShorechestBox(string loc, int n, int i) // Jason: заполнение выброшенны
             	pchar.GenQuestBox.(loc).(boxx).items.potion4 = 5+drand(15);
 	        }
 	    break;
-	    // bad
+	    
 	    case 2:
 			if (rand(1) == 1)
 	        {
@@ -5447,7 +5398,7 @@ void FillShorechestBox(string loc, int n, int i) // Jason: заполнение выброшенны
             	pchar.GenQuestBox.(loc).(boxx).items.cirass6 = 1;
 	        }
 	    break;
-		// gold
+		
 		case 3:
 	        if (drand(1) == 1 && GetSummonSkillFromName(pchar, SKILL_FORTUNE) > 10+drand(50)+drand(50))
 	        {
@@ -5466,7 +5417,7 @@ void FillShorechestBox(string loc, int n, int i) // Jason: заполнение выброшенны
 				}
 			}
 	    break;
-		// silver
+		
 		case 4:
 	        if (drand(1) == 0 && GetSummonSkillFromName(pchar, SKILL_FORTUNE) > 10+drand(50)+drand(50))
 	        {
@@ -5485,7 +5436,7 @@ void FillShorechestBox(string loc, int n, int i) // Jason: заполнение выброшенны
 				}
 			}
 	    break;
-		// warrior
+		
 		case 5:
 			if (rand(1) == 1)
 			{
@@ -5535,7 +5486,7 @@ void FillShorechestBox(string loc, int n, int i) // Jason: заполнение выброшенны
 	}
 }
 
-bool CheckIndianGift() // Jason: есть ли подарок для индианки
+bool CheckIndianGift() 
 {
 	for (int i=47; i<=50; i++)
     {
@@ -5546,7 +5497,7 @@ bool CheckIndianGift() // Jason: есть ли подарок для индианки
 	return false;
 }
 
-bool CheckCaribGuns() // Jason: есть ли пистоли для продажи карибам
+bool CheckCaribGuns() 
 {
 	for (int i=1; i<=6; i++)
     {
@@ -5555,14 +5506,14 @@ bool CheckCaribGuns() // Jason: есть ли пистоли для продажи карибам
 	return false;
 }
 
-void MakeHellFireDamage() // Jason: урон огнем на рифе
+void MakeHellFireDamage() 
 {
 	LAi_ApplyCharacterDamage(pchar, 45+MOD_SKILL_ENEMY_RATE*3, "other");
 	LAi_CheckKillCharacter(pchar);
 	PlaySound("People Fight\Death_NPC_08.wav");
 }
 
-void MakeHellSplashDamage() // Jason: урон водой на рифе
+void MakeHellSplashDamage() 
 {
 	PlaySound("Sea Battles\bolshoy_vsplesk_001.wav");
 	CreateLocationParticles("Splash", "item", "splash"+iGlobalTemp, 0.5, 0, 0, "");
@@ -5572,7 +5523,7 @@ void MakeHellSplashDamage() // Jason: урон водой на рифе
 	PlaySound("People Fight\Death_NPC_08.wav");
 }
 
-bool Tieyasal_CheckTablets() // Jason: есть ли скрижали
+bool Tieyasal_CheckTablets() 
 {
 	for (int i=1; i<=6; i++)
     {
@@ -5581,9 +5532,9 @@ bool Tieyasal_CheckTablets() // Jason: есть ли скрижали
 	return false;
 }
 
-void ShowRipInscription(int i, string locId) // Jason: надписи на надгробиях - пасхалка
+void ShowRipInscription(int i, string locId) 
 {
-	return; // заглушка для англ. версии
+	return; 
 	if (LAi_grp_playeralarm > 0) return;
 	
 	if (locId == "Charles_graveyard")
@@ -5591,40 +5542,40 @@ void ShowRipInscription(int i, string locId) // Jason: надписи на надгробиях - п
 		switch (i)
 		{
 			case 1: 
-				Log_Info("Аврора Бардот, 1612-1637, подавальщица"); 
-				Log_Info("Вы заблевали весь стол, чертов пират!");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, 1612-1637, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!");
 			break;
 			case 2: 
-				Log_Info("Жюль Кувье, 1591-1640, кровельщик"); 
-				Log_Info("Кажется, поднимается сильный ветер..."); 
+				Log_Info("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, 1591-1640, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ..."); 
 			break;
 			case 3: 
-				Log_Info("Жерар Лесбро, 1555-1596, алхимик");
-				Log_Info("А теперь эту жидкость слегка нагреем...");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, 1555-1596, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
+				Log_Info("пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ...");
 			break;
 			case 4: 
-				Log_Info("Юдифь Бозон, 1589-1618, гувернантка");
-				Log_Info("Ну и дура же жена его светлости!"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, 1589-1618, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
+				Log_Info("пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!"); 
 			break;
 			case 5: 
-				Log_Info("Огюст Пуатье, 1567-1624, оружейник"); 
-				Log_Info("Так-так, этот пистоль неисправен. Посмотрим поближе..."); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, 1567-1624, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅ-пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ..."); 
 			break;
 			case 6: 
-				Log_Info("Марк Ромари, 1544-1599, ростовщик"); 
-				Log_Info("Месье, клянусь, меня и вправду ограбили!"); 
+				Log_Info("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, 1544-1599, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!"); 
 			break;
 			case 7: 
-				Log_Info("Марсель д'Обе, 1611-1650, грузчик"); 
-				Log_Info("Кажется, эти канаты действительно прогнили..."); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ'пїЅпїЅпїЅ, 1611-1650, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ..."); 
 			break;
 			case 8: 
-				Log_Info("Роз Дюплан, 1621-1649, служанка"); 
-				Log_Info("И что хозяин держит в этой шкатулке? Сейчас посмотрим, пока его нет..."); 
+				Log_Info("пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, 1621-1649, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ? пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ..."); 
 			break;
 			case 9: 
-				Log_Info("Виктор Марьон, 1577-1608, сторож"); 
-				Log_Info("Эй, кто там?"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, 1577-1608, пїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ?"); 
 			break;
 		}
 	}
@@ -5633,40 +5584,40 @@ void ShowRipInscription(int i, string locId) // Jason: надписи на надгробиях - п
 		switch (i)
 		{
 			case 1: 
-				Log_Info("Альваро Лопес, 1587-1633, ловец жемчуга"); 
-				Log_Info("В эту лагуну акулы отродясь не заплывали!");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, 1587-1633, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
 			break;
 			case 2: 
-				Log_Info("Гаспар Ибаньес, 1599-1640, плотник"); 
-				Log_Info("Хуан, кинь мне вон тот большой топор!");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 1599-1640, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!");
 			break;
 			case 3: 
-				Log_Info("Лоренцо Пердозо, 1581-1630, артиллерист"); 
-				Log_Info("Сыпь в жерло больше пороха! Еще больше! Вот так...");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 1581-1630, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅпїЅ пїЅпїЅпїЅ...");
 			break;
 			case 4: 
-				Log_Info("Симон Зоррита, 1602-1645, сыщик"); 
-				Log_Info("Комендант, я раскрыл преступление. Убийца - это вы!");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 1602-1645, пїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅ пїЅпїЅ!");
 			break;
 			case 5: 
-				Log_Info("Лолита Чека, 1610-1639, портниха"); 
-				Log_Info("Не беспокойся, дорогой, муж еще не скоро вернется из плавания...");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, 1610-1639, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...");
 			break;
 			case 6: 
-				Log_Info("Рикардо Казарес, 1590-1633, охотник"); 
-				Log_Info("Я знаю эту змею. Она совершенно безобидна!");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 1590-1633, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ. пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
 			break;
 			case 7: 
-				Log_Info("Исидро Давилла, 1588-1624, мельник"); 
-				Log_Info("Завтра же с утра меняю треснувшие ступени на этой лестнице..."); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 1588-1624, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ..."); 
 			break;
 			case 8: 
-				Log_Info("Теодоро Бельо, 1599-1646, адъютант"); 
-				Log_Info("Вы подлец, сударь! Извольте обнажить свою тупую ржавую железяку!"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, 1599-1646, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!"); 
 			break;
 			case 9: 
-				Log_Info("Гельвира Чека, 1605-1648, торговка"); 
-				Log_Info("Мои товары обмену и возврату не подлежат!"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, 1605-1648, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!"); 
 			break;
 		}
 	}
@@ -5675,40 +5626,40 @@ void ShowRipInscription(int i, string locId) // Jason: надписи на надгробиях - п
 		switch (i)
 		{
 		case 1: 
-				Log_Info("Якоб Блэк, 1608-1631, рыбак"); 
-				Log_Info("Отцовский баркас видал немало штормов. Выдержит и на этот раз...");
+				Log_Info("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, 1608-1631, пїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ...");
 			break;
 			case 2: 
-				Log_Info("Ральф Чаплин, 1602-1649, лесоруб"); 
-				Log_Info("Джон, ты надежно закрепил топор на топорище?");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, 1602-1649, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ?");
 			break;
 			case 3: 
-				Log_Info("Кермит Филлер, 1615-1653, бармен"); 
-				Log_Info("Морган, ром был неразбавленный, мамой клянусь!");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, 1615-1653, пїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
 			break;
 			case 4: 
-				Log_Info("Лаура Харт, 1605-1627, шлюха"); 
-				Log_Info("Да как вы смеете! Я проверяюсь у лекаря каждую неделю!");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, 1605-1627, пїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ! пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ!");
 			break;
 			case 5: 
-				Log_Info("Саймон Лютер, 1598-1639, лекарь"); 
-				Log_Info("Белый порошок, не имеет запаха... горький на вкус...");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, 1598-1639, пїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ... пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ...");
 			break;
 			case 6: 
-				Log_Info("Оскар Маркер, 1611-1642, вор"); 
-				Log_Info("Так, а вот сюда у собаки цепь не дотягивается...");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, 1611-1642, пїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...");
 			break;
 			case 7: 
-				Log_Info("Маколм Камли, 1545-1587, актер"); 
-				Log_Info("В этой маске с красным носом я просто вылитый комендант форта!"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, 1545-1587, пїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!"); 
 			break;
 			case 8: 
-				Log_Info("Тобиас Филлер, 1567-1599, зверолов"); 
-				Log_Info("Джон, этот ягуар кажется мне совсем ручным, открывай клетку..."); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, 1567-1599, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ..."); 
 			break;
 			case 9: 
-				Log_Info("Камилла Руттер, 1571-1596, крестьянка"); 
-				Log_Info("Что-то наш бычок беспокойный какой-то сегодня..."); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, 1571-1596, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ..."); 
 			break;
 		}
 	}
@@ -5717,47 +5668,47 @@ void ShowRipInscription(int i, string locId) // Jason: надписи на надгробиях - п
 		switch (i)
 		{
 			case 1: 
-				Log_Info("Фриц Лоотс, 1587-1631, кок"); 
-				Log_Info("Разносолы - для офицеров, а матросня будет жрать то, что дают!");
+				Log_Info("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, 1587-1631, пїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ!");
 			break;
 			case 2: 
-				Log_Info("Руперт Хофмейр, 1601-1649, писарь"); 
-				Log_Info("В десятый раз повторяю, вы, тупица! Минхер Герритц не принимет вас сегодня!");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 1601-1649, пїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
 			break;
 			case 3: 
-				Log_Info("Паул Влекке, 1577-1622, лоцман"); 
-				Log_Info("Не переживайте, кэп: я знаю проход через эти рифы как свои пять пальцев!");
+				Log_Info("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, 1577-1622, пїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ: пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
 			break;
 			case 4: 
-				Log_Info("Йедам Уустген, 1589-1635, кузнец"); 
-				Log_Info("Вам бы не саблю получше, а руки на наковальне подровнять следует!");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 1589-1635, пїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
 			break;
 			case 5: 
-				Log_Info("Катрина Эрб, 1610-1644, прачка"); 
-				Log_Info("Лизбет, да куда ты побежала? Это мирные индейцы, они не трогают белых...");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, 1610-1644, пїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ? пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ...");
 			break;
 			case 6: 
-				Log_Info("Петер Коннинк, 1561-1615, мушкетер"); 
-				Log_Info("Забью заряд я в дуло туго...");
+				Log_Info("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 1561-1615, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ...");
 			break;
 			case 7: 
-				Log_Info("Танна Грааф, 1588-1607, горничная"); 
-				Log_Info("Похоже, кто-то ходит внизу. И кого принесло посреди ночи? Пойду, гляну..."); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, 1588-1607, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ? пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ..."); 
 			break;
 			case 8: 
-				Log_Info("Крелис ван Екк, 1572-1611, боцман"); 
-				Log_Info("Всыпать по двадцать ударов плетью! Нет - по тридцать! Каждому!"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ, 1572-1611, пїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅпїЅ - пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!"); 
 			break;
 			case 9: 
-				Log_Info("Якоб де Хаез, 1611-1651, путешественник"); 
-				Log_Info("Кайманы не нападают на людей. Только когда очень голодны. А этот явно сыт..."); 
+				Log_Info("пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ, 1611-1651, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"); 
+				Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ..."); 
 			break;
 		}
 	}
 }
 
-//Jason 240912 ------------------------------- адмиральские карты ----------------------------------------------
-string SelectAdmiralMaps() // выбор случайной не повторяющейся
+
+string SelectAdmiralMaps() 
 {	
 	string sMap = "";
 	ref sld = characterFromId("Dios");
@@ -5798,16 +5749,16 @@ string SelectAdmiralMaps() // выбор случайной не повторяющейся
 			{
 				sld.quest.map.(sTemp) = true;
 				sMap = sTemp;
-				i = 24; // остановка цикла
+				i = 24; 
 			}
 			sTemp = "";
-			i++; // завершение цикла
+			i++; 
 		}
 	}
 	return sMap;
 }
 
-void GiveAdmiralMapToCharacter(ref chr, int abl) // дать случайную с рандомом
+void GiveAdmiralMapToCharacter(ref chr, int abl) 
 {
 	if (!CheckAttribute(pchar, "questTemp.AdmiralMap")) return;
 	if (drand(abl) == 0)
@@ -5817,7 +5768,7 @@ void GiveAdmiralMapToCharacter(ref chr, int abl) // дать случайную с рандомом
 	}
 }
 
-void TargetAdmiralMapToCharacter(ref chr, string amap) // дать конкретную, если такой еще нет
+void TargetAdmiralMapToCharacter(ref chr, string amap) 
 {
 	if (!CheckAttribute(pchar, "questTemp.AdmiralMap")) return;
 	ref sld = characterFromId("Dios");
@@ -5828,7 +5779,7 @@ void TargetAdmiralMapToCharacter(ref chr, string amap) // дать конкретную, если 
 	}
 }
 
-int CountAdmiralMapFromCharacter() // сосчитать
+int CountAdmiralMapFromCharacter() 
 {
 	aref arItems;
 	int amap = 0;
@@ -5843,7 +5794,7 @@ int CountAdmiralMapFromCharacter() // сосчитать
 	return amap;
 }
 
-string IdentifyAdmiralMapLast() // идентифицировать последнюю в списке
+string IdentifyAdmiralMapLast() 
 {
 	aref arItems;
 	string sName;
@@ -5857,10 +5808,10 @@ string IdentifyAdmiralMapLast() // идентифицировать последнюю в списке
 	}
 	return sMap;
 }
-// <-- адмиральские карты
 
-// --> персидские клинки Фадея
-int CheckNCountPersian() // patch-7
+
+
+int CheckNCountPersian() 
 {
 	int blade = 0;
 	
@@ -5887,14 +5838,14 @@ string CheckNIdentifyPersian()
 	}
 	return sBlade;
 }
-// <-- персидские клинки Фадея
 
-void CaveEnc_FillSkeleton(ref chr, int i) // лут для скелетов в пещерах
+
+void CaveEnc_FillSkeleton(ref chr, int i) 
 {
 	switch (i)
 	{
 		case 0:
-			if (drand(7) == 0) TakeNItems(chr, "gold_dublon", drand(50)); // Addon-2016 Jason
+			if (drand(7) == 0) TakeNItems(chr, "gold_dublon", drand(50)); 
 			if (drand(7) == 1) TakeNItems(chr, "chest", drand(2));
 			if (drand(7) == 2) TakeNItems(chr, "purse"+(drand(2)+1), 1);
 			if (drand(7) > 2) TakeNItems(chr, "mineral"+(drand(12)+1), drand(5));
@@ -5924,7 +5875,7 @@ void CaveEnc_FillSkeleton(ref chr, int i) // лут для скелетов в пещерах
 		break;
 	}
 }
-// поиск и определение линейных кораблей наций
+
 bool LineShips_FindCompanionShips(int Type)
 {
 	for(int i=1; i<COMPANION_MAX; i++)
@@ -5944,12 +5895,12 @@ bool LineShips_CheckAndIdentify(int Nation)
 	switch (Nation)
 	{
 		case ENGLAND:
-			if (sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LSHIP_ENG && LineShips_FindCompanionShips(SHIP_LSHIP_ENG) && Trafalgar_FindCompanionShip()) return false; // Jason НСО
+			if (sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LSHIP_ENG && LineShips_FindCompanionShips(SHIP_LSHIP_ENG) && Trafalgar_FindCompanionShip()) return false; 
 			if (sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_LSHIP_ENG || LineShips_FindCompanionShips(SHIP_LSHIP_ENG)) return true;
 		break;
 		
 		case FRANCE:
-			if (sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LSHIP_FRA && LineShips_FindCompanionShips(SHIP_LSHIP_FRA) && Ecliaton_FindCompanionShip()) return false; // Jason НСО
+			if (sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_LSHIP_FRA && LineShips_FindCompanionShips(SHIP_LSHIP_FRA) && Ecliaton_FindCompanionShip()) return false; 
 			if (sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_LSHIP_FRA || LineShips_FindCompanionShips(SHIP_LSHIP_FRA)) return true;
 		break;
 		
@@ -5964,7 +5915,7 @@ bool LineShips_CheckAndIdentify(int Nation)
 	return false;
 }
 
-bool Ecliaton_FindCompanionShip() // Jason НСО
+bool Ecliaton_FindCompanionShip() 
 {
 	for(int i=1; i<COMPANION_MAX; i++)
 	{
@@ -5978,7 +5929,7 @@ bool Ecliaton_FindCompanionShip() // Jason НСО
 	return false;
 }
 
-bool Trafalgar_FindCompanionShip() // Jason НСО
+bool Trafalgar_FindCompanionShip() 
 {
 	for(int i=1; i<COMPANION_MAX; i++)
 	{
@@ -5992,7 +5943,7 @@ bool Trafalgar_FindCompanionShip() // Jason НСО
 	return false;
 }
 
-bool Companion_CheckShipType(int iShipType) // поиск любого конкретного типа корабля у компаньона и запоминание индекса компаньона для дальнейшего использования
+bool Companion_CheckShipType(int iShipType) 
 {
 	int cn;
 	ref sld;
@@ -6048,7 +5999,7 @@ bool CheckTotalDepositsSum(ref _chref, int Sum)
 	return false;
 }
 
-bool Caleuche_CheckAmulet() // Калеуче, амулеты
+bool Caleuche_CheckAmulet() 
 {
 	int aml = 0;
 	if (CheckCharacterItem(pchar, "kaleuche_amulet2")) aml++;
@@ -6059,7 +6010,7 @@ bool Caleuche_CheckAmulet() // Калеуче, амулеты
 	return false;
 }
 
-void Capture_VillemstadCapture() // 280313
+void Capture_VillemstadCapture() 
 {
 	ref sld;
 	sld = GetCharacter(NPC_GenerateCharacter("Villemstad_mayor", "off_hol_6", "man", "man", 40, HOLLAND, 2, true, "officer"));
@@ -6068,7 +6019,7 @@ void Capture_VillemstadCapture() // 280313
 	sld.dialog.currentnode = "CAPTURE_Main";
 	sld.city = "Villemstad";
 	sld.quest.type = "hovernor";
-	//sld.greeting = "";
+	
 	LAi_SetStayType(sld);
 	LAi_SetImmortal(sld, true);
 	LAi_LoginInCaptureTown(sld, true);
@@ -6076,7 +6027,7 @@ void Capture_VillemstadCapture() // 280313
 	LAi_group_MoveCharacter(sld, "HOLLAND_CITIZENS");
 }
 
-string SelectRandomArtefact(int kind) // dlc
+string SelectRandomArtefact(int kind) 
 {
 	string prefix, suffix, amulet;
 	suffix = "_"+(drand(10)+1);
@@ -6090,8 +6041,8 @@ string SelectRandomArtefact(int kind) // dlc
 	return amulet;
 }
 
-// Addon 2016-1 Jason Пиратская линейка
-bool Mtraxx_MeridaCheckCarpenter() // проверка наличия плотника и его умений
+
+bool Mtraxx_MeridaCheckCarpenter() 
 {
 	if (GetSummonSkillFromName(pchar, SKILL_REPAIR) >= 30 && sti(pchar.TmpPerks.BasicBattleState)) return true;
 	if (sti(pchar.Fellows.Passengers.carpenter) > 0)
@@ -6102,7 +6053,7 @@ bool Mtraxx_MeridaCheckCarpenter() // проверка наличия плотника и его умений
 	return false;
 }
 
-string Mtraxx_RetributionSelectRanditem() // выбор рандитема
+string Mtraxx_RetributionSelectRanditem() 
 {
 	string sItem;
 	int iChance = rand(9);
@@ -6126,14 +6077,14 @@ string Mtraxx_RetributionSelectRanditem() // выбор рандитема
 	return sItem;
 }
 
-void MakeIndianPoisonAttack(ref chref, ref _attack) // яд индейцев таино
+void MakeIndianPoisonAttack(ref chref, ref _attack) 
 {
-	// исключения
+	
 	if (CheckAttribute(chref, "chr_ai.immortal")) return;
-	if (CheckAttribute(chref, "monster") || chref.chr_ai.group == LAI_GROUP_MONSTERS || chref.sex == "skeleton") return; // патч 17/1
+	if (CheckAttribute(chref, "monster") || chref.chr_ai.group == LAI_GROUP_MONSTERS || chref.sex == "skeleton") return; 
 	if (CheckAttribute(chref, "PoisonResistent"))
 	{
-		log_info("Яд не подействовал!");
+		log_info("пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
 		return;
 	}
 	if (LAi_GetCharacterHP(chref) < 15) 
@@ -6141,31 +6092,31 @@ void MakeIndianPoisonAttack(ref chref, ref _attack) // яд индейцев таино
 		if (CheckAttribute(chref, "chr_ai.immortal")) return;
 		bool isSetBalde = (CheckAttribute(chref, "equip.blade") == true);
 		LAi_SetImmortal(chref, true);
-		//log_info("Персонаж с ID = "+chref.id+" с индексом "+chref.index+" и именем "+GetFullName(chref)+" достиг 15 НР");
+		
 		DeleteAttribute(chref, "quest.indianpoisoned");
 		LAi_SetImmortal(chref, false);
 		LAi_KillCharacter(chref);
 		LAi_SetResultOfDeath(_attack, chref, isSetBalde);
 		return;
 	}
-	sGlobalTemp = _attack.id; // атакующий один и тот же
+	sGlobalTemp = _attack.id; 
 	chref.quest.indianpoisoned = true;
-	//log_info("Персонаж с ID = "+chref.id+" с индексом "+chref.index+" и именем "+GetFullName(chref)+" отравлен ядом таино");
+	
 	if (!CheckAttribute(chref, "quest.indianpoisoned.info"))
 	{
-		log_info(""+GetFullName(chref)+" отравлен ядом таино");
+		log_info(""+GetFullName(chref)+" пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");
 		chref.quest.indianpoisoned.info = true;
 	}
 	LAi_ApplyCharacterDamage(chref, 15, "other");
 	DoQuestFunctionDelay("MakeIndianPoisonAttackCycle", 0.5);
 }
 
-void MakeIndianPoisonAttackCycle(string qName) // к функции выше
+void MakeIndianPoisonAttackCycle(string qName) 
 {
 	DoQuestFunctionDelay("MakeTainoPoisonAttack", 0.5);
 }
 
-void MakeTainoPoisonAttack(string qName) // к функции выше
+void MakeTainoPoisonAttack(string qName) 
 {
 	ref chref, _attack;
 	_attack = characterFromId(sGlobalTemp);
@@ -6175,3 +6126,4 @@ void MakeTainoPoisonAttack(string qName) // к функции выше
 		if (CheckAttribute(chref, "quest.indianpoisoned")) MakeIndianPoisonAttack(chref, _attack);
 	}
 }
+

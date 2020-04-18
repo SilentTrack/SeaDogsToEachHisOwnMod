@@ -118,7 +118,7 @@ int FindCannonByText(string sId)
 
 string GetCannonType(int iCannon)
 {
-	if (iCannon != CANNON_TYPE_NONECANNON) //fix
+	if (iCannon != CANNON_TYPE_NONECANNON) 
 	{
 		int iCannonType = sti(Cannon[iCannon].type);
 
@@ -135,7 +135,7 @@ string GetCannonType(int iCannon)
 	return "NoneCannon";
 }
 
-// boal 09/02/05
+
 float GetCannonReloadTime(ref rCannon)
 {
 	if (!iArcadeSails)

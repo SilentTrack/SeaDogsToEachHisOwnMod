@@ -1,8 +1,8 @@
-//  Форма смены отношений наций
+
 string totalInfo;
 void InitInterface(string iniName)
 {
-    // лочим квест и карту
+    
     bQuestCheckProcessFreeze = true;
     if(IsEntity(worldMap))
     {
@@ -46,7 +46,7 @@ void IDoExit(int exitCode)
 
 	interfaceResultCommand = exitCode;
 	EndCancelInterface(true);
-    PostEvent("StopQuestCheckProcessFreeze", 500);//boal 230804 заморозка проверки квестов
+    PostEvent("StopQuestCheckProcessFreeze", 500);
 }
 
 void ProcCommand()
@@ -70,7 +70,7 @@ void CalculateNationRelat()
     ref mainCh = GetMainCharacter();
     int Nation1, Nation2, RelatNat;
 
-    // boal 04.04.04 навел марафет в коде - красота :)
+    
     bool ok1, ok2;
     
     Nation1 = 1;
@@ -115,11 +115,11 @@ void CalculateNationRelat()
 
 
     if (GetNationRelation(Nation1, Nation2) == RELATION_ENEMY || GetNationRelation(Nation1, Nation2) == RELATION_FRIEND)
-    {   // меняем крайние на середину
+    {   
         RelatNat = RELATION_NEUTRAL;
     }
     else
-    {   // нейтралы - случайно
+    {   
         switch(Rand(1))
         {
             case 0:
@@ -130,23 +130,10 @@ void CalculateNationRelat()
             break;
         }
     }
-//Фикс для эскадр, чтоб на время осады не поменялась на дружественные или нейтральные отношения.////////////////////////
- /*
-    ref FortCh, CaptEsc;
-    CaptEsc = GetCharacter(GetCharacterIndex("NatCapitan_1"));
 
-    FortCh = FindSiegeFortCommander();
-    if(FortCh.id != "none")
-    {
-        ok1 = (sti(FortCh.nation) == Nation1) && (sti(CaptEsc.nation) == Nation2);
-        ok2 = (sti(FortCh.nation) == Nation2) && (sti(CaptEsc.nation) == Nation1);
-        if (ok1 || ok2)
-        {
-            RelatNat = RELATION_ENEMY;
-        }
-    }     */
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	if (CheckAttribute(pchar, "questTemp.Patria.War")) // Jason НСО
+  
+
+	if (CheckAttribute(pchar, "questTemp.Patria.War")) 
 	{
 		RelatNat = RELATION_ENEMY;
 		Nation1 = FRANCE;
@@ -175,7 +162,7 @@ void CalculateNationRelat()
     {
         SetNationRelation2MainCharacter(Nation1, RelatNat);
     }
-    totalInfo = XI_ConvertString(GetNationNameByType(Nation1)) + " и " + XI_ConvertString(GetNationNameByType(Nation2));
+    totalInfo = XI_ConvertString(GetNationNameByType(Nation1)) + " пїЅ " + XI_ConvertString(GetNationNameByType(Nation2));
     if(RelatNat == RELATION_FRIEND)
     {
         totalInfo = totalInfo + " became allies.";
@@ -188,7 +175,7 @@ void CalculateNationRelat()
     {
         totalInfo = totalInfo + " moved to a neutral attitude.";
     }
-    Log_SetStringToLog(totalInfo); // boal fix tavern
+    Log_SetStringToLog(totalInfo); 
     SetNewGroupPicture("Nat1", "NATIONS",  GetNationNameByType(Nation1));
     SetNewGroupPicture("Nat2", "NATIONS", GetNationNameByType(Nation2));
     SetNewGroupPicture("RelNat", "relations", GetRelationName(GetNationRelation(Nation1, Nation2)));

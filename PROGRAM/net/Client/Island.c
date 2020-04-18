@@ -15,8 +15,8 @@ void NetClient_CreateIslandEnvironment(int iMsg)
 	NCIsland.Server = false;
 	CreateEntity(&NCIsland, "NetIsland");
 	NCIsland.LightingPath = NetClient_WhrGetLightingPath();
-	NCIsland.ImmersionDistance = Islands[iIslandIndex].ImmersionDistance;	// distance = fRadius * ImmersionDistance, from island begin immersion
-	NCIsland.ImmersionDepth = Islands[iIslandIndex].ImmersionDepth;			// immersion depth = (Distance2Camera / (fRadius * ImmersionDistance) - 1.0) * ImmersionDepth
+	NCIsland.ImmersionDistance = Islands[iIslandIndex].ImmersionDistance;	
+	NCIsland.ImmersionDepth = Islands[iIslandIndex].ImmersionDepth;			
 	string sTexturePath = "islands\" + Islands[iIslandIndex].TexturePath + "\";
 	SetTexturePath(0, sTexturePath);
 	NCIsland.FogDensity = NCWeather.Fog.IslandDensity;

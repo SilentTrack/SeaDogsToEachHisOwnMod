@@ -1,24 +1,24 @@
 
 int LocationInitIslaDeCoche(int n)
 {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Остров Исла-де-Коче
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Залив78 Буканьеров
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Shore78";
 	locations[n].id.label = "Shore78";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "IslaDeCoche";
-	//Sound
+	
 	locations[n].type = "questisland";
 	locations[n].islandId = "IslaDeCoche";
 	locations[n].onUninhabitedIsland = true;
 	locations[n].questflower = 1;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore05";
 	Locations[n].models.always.shore05 = "shore05";
 	locations[n].models.always.shore05.sea_reflection = 1;
@@ -37,14 +37,14 @@ int LocationInitIslaDeCoche(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore05_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore05_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";		
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "IslaDeCoche_Jungle_01";
 	locations[n].reload.l1.emerge = "reload1";
@@ -61,20 +61,20 @@ int LocationInitIslaDeCoche(int n)
 	
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "IslaDeCoche_Jungle_01";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "questisland";
 	locations[n].islandId = "IslaDeCoche";
 	locations[n].DisableEncounters = true;
 	locations[n].onUninhabitedIsland = true;
 	locations[n].questflower = 1;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle6";
 	Locations[n].models.always.jungle = "jungle6";	
 	Locations[n].models.always.locators = "jungle6_locators";		
@@ -89,14 +89,14 @@ int LocationInitIslaDeCoche(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle6_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle6_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Shore78";
 	locations[n].reload.l1.emerge = "reload1";
@@ -119,19 +119,19 @@ int LocationInitIslaDeCoche(int n)
 	locations[n].locators_radius.reload.reload3_back = 2;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Мыс79
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Shore79";
 	locations[n].id.label = "Shore79";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "IslaDeCoche";
-	//Sound
+	
 	locations[n].type = "questisland";
 	locations[n].islandId = "IslaDeCoche";
 	locations[n].onUninhabitedIsland = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore07";
 	Locations[n].models.always.shore07 = "shore07";
 	locations[n].models.always.shore07.sea_reflection = 1;
@@ -150,14 +150,14 @@ int LocationInitIslaDeCoche(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore07_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore07_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";					
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "IslaDeCoche_Jungle_01";
 	locations[n].reload.l1.emerge = "reload2";
@@ -174,20 +174,20 @@ int LocationInitIslaDeCoche(int n)
 	
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Вход в грот
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "IslaDeCoche_CaveEntrance";
 	locations[n].id.label = "Cave entrance";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "questisland";
 	locations[n].islandId = "IslaDeCoche";
 	locations[n].DisableEncounters = true;
 	locations[n].onUninhabitedIsland = true;
 	locations[n].questflower = 2;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt1";
 	Locations[n].models.always.caveEnt1 = "caveEnt1";	
 	Locations[n].models.always.locators = "caveEnt1_locators";		
@@ -202,14 +202,14 @@ int LocationInitIslaDeCoche(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "caveEnt1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "caveEnt1_patch";	
-	//Environment	
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l3.name = "reload1_back";
 	locations[n].reload.l3.go = "IslaDeCoche_Grot";
 	locations[n].reload.l3.emerge = "reload1";
@@ -225,19 +225,19 @@ int LocationInitIslaDeCoche(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Грот
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "IslaDeCoche_Grot";
 	locations[n].id.label = "Grot";
     locations[n].image = "loading\inside\cave.tga";
-	//Sound
+	
 	locations[n].type = "cave";
 	locations[n].islandId = "IslaDeCoche";
 	locations[n].onUninhabitedIsland = true;
 	locations[n].DisableEncounters = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\grotto1";
 	locations[n].models.always.grotto1 = "grotto1";
 	locations[n].models.always.grotto1alpha = "grotto1_alpha";
@@ -247,22 +247,16 @@ int LocationInitIslaDeCoche(int n)
 	locations[n].models.always.locators = "grotto1_locators";
 
 	locations[n].locators_radius.item.duhi1 = 0.0;
-/*	
-	Locations[n].models.always.rays = "grotto1_rays";
-	Locations[n].models.always.rays.level = 49;
-	Locations[n].models.always.rays.tech = "LocVisRays";
-	Locations[n].models.always.rays.uvslide.u1 = -0.03;
-	Locations[n].models.always.rays.uvslide.v1 = -0.03;	
-*/	
-	//Day
+ 	
+	
 	locations[n].models.day.charactersPatch = "grotto1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "grotto1_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "IslaDeCoche_CaveEntrance";
 	locations[n].reload.l1.emerge = "reload1";
@@ -273,3 +267,4 @@ int LocationInitIslaDeCoche(int n)
 
 	return n;
 }
+

@@ -18,7 +18,7 @@ void InitBaseInterfaces()
 	InitLogInterface();
 	InitBattleLandInterface();
 	InterfaceStates.Launched = false;
-	if( storeDayUpdateCnt>=0 ) // обновление магазина можно включить
+	if( storeDayUpdateCnt>=0 ) 
 	{
 		Event("EvStoreDayUpdate");
 	}
@@ -30,10 +30,10 @@ void InitBaseInterfaces()
 string questTextFileName[4];
 ref GetQuestTextFileName()
 {
-	questTextFileName[0] = "PROGRAM\QuestBook\QuestBook_Part1.txt"; //документ-квестбук - только записи в Документы
-	questTextFileName[1] = "PROGRAM\QuestBook\QuestBook_Part2.txt"; // квестбук на генераторы, мини- и мезоквесты
-	questTextFileName[2] = "PROGRAM\QuestBook\QuestBook_New.txt"; // Warship. Это наш квестбук
-	questTextFileName[3] = "PROGRAM\QuestBook\QuestBook_Part3.txt"; //отдельный квестбук на макроквесты
+	questTextFileName[0] = "PROGRAM\QuestBook\QuestBook_Part1.txt"; 
+	questTextFileName[1] = "PROGRAM\QuestBook\QuestBook_Part2.txt"; 
+	questTextFileName[2] = "PROGRAM\QuestBook\QuestBook_New.txt"; 
+	questTextFileName[3] = "PROGRAM\QuestBook\QuestBook_Part3.txt"; 
 	return &questTextFileName;
 }
 
@@ -97,12 +97,12 @@ void InitInterfaceTables()
 	Interfaces[INTERFACE_SAILSGERALD].IniFile = "RESOURCE\INI\INTERFACES\SailsGerald.ini";
 	Interfaces[INTERFACE_HIRECREW].SectionName = "interface\hirecrew.c";
 	Interfaces[INTERFACE_HIRECREW].IniFile = "RESOURCE\INI\INTERFACES\hirecrew.ini";
-	//Interfaces[INTERFACE_PASSENGERS].SectionName = "interface\passengers.c";
-	//Interfaces[INTERFACE_PASSENGERS].IniFile = "RESOURCE\INI\INTERFACES\passengers.ini";
+	
+	
 	Interfaces[INTERFACE_CHARACTER_SELECT].SectionName = "interface\selectCharacter.c";
 	Interfaces[INTERFACE_CHARACTER_SELECT].IniFile = "RESOURCE\INI\INTERFACES\selectCharacter.ini";
-	//Interfaces[INTERFACE_NATION_SELECT].SectionName = "interface\selectNation.c";
-	//Interfaces[INTERFACE_NATION_SELECT].IniFile = "RESOURCE\INI\INTERFACES\selectNation.ini";
+	
+	
 	Interfaces[INTERFACE_QUESTBOOK].SectionName = "interface\questbook.c";
 	Interfaces[INTERFACE_QUESTBOOK].IniFile = "RESOURCE\INI\INTERFACES\questbook.ini";
 	Interfaces[INTERFACE_TRADEBOOK].SectionName = "interface\tradebook.c";
@@ -123,7 +123,7 @@ void InitInterfaceTables()
 
 	Interfaces[INTERFACE_ITEMSTRADE].SectionName = "interface\itemstrade.c";
 	Interfaces[INTERFACE_ITEMSTRADE].IniFile = "RESOURCE\INI\INTERFACES\itemstrade.ini";
-	// boal -->
+	
 	Interfaces[INTERFACE_FOR_TEST].SectionName = "interface\for_test.c";
 	Interfaces[INTERFACE_FOR_TEST].IniFile     = "RESOURCE\INI\INTERFACES\for_test.ini";
 	
@@ -132,7 +132,7 @@ void InitInterfaceTables()
     
     Interfaces[INTERFACE_COLONY_CAPTURE].SectionName = "interface\ColonyCapture.c";
     Interfaces[INTERFACE_COLONY_CAPTURE].IniFile = "RESOURCE\INI\INTERFACES\ColonyCapture.ini";
-	// boal <--
+	
 	Interfaces[INTERFACE_SALARY].SectionName = "interface\salary.c";
 	Interfaces[INTERFACE_SALARY].IniFile = "RESOURCE\INI\INTERFACES\salary.ini";
 
@@ -169,10 +169,10 @@ void InitInterfaceTables()
 	Interfaces[INTERFACE_PAPER_MAP].SectionName = "interface\PaperMap.c";
 	Interfaces[INTERFACE_PAPER_MAP].IniFile = "RESOURCE\INI\INTERFACES\PaperMap.ini";
 
-	//Interfaces[INTERFACE_RANSACK_MAIN].SectionName = "interface\ransack_main.c";
-	//Interfaces[INTERFACE_RANSACK_MAIN].IniFile = "RESOURCE\INI\INTERFACES\ransack_main.ini";
+	
+	
 	Interfaces[INTERFACE_RANSACK_MAIN].SectionName = "interface\transfer_main.c";
-	Interfaces[INTERFACE_RANSACK_MAIN].IniFile = "RESOURCE\INI\INTERFACES\transfer_main.ini"; // теперь это одна форма, но разные вызовы, тк проверка на море и абордаж нужна
+	Interfaces[INTERFACE_RANSACK_MAIN].IniFile = "RESOURCE\INI\INTERFACES\transfer_main.ini"; 
 	
 	Interfaces[INTERFACE_TRANSFER_MAIN].SectionName = "interface\transfer_main.c";
 	Interfaces[INTERFACE_TRANSFER_MAIN].IniFile = "RESOURCE\INI\INTERFACES\transfer_main.ini";
@@ -191,7 +191,7 @@ void InitInterfaceTables()
 
 	Interfaces[INTERFACE_QUICK_SAVE].SectionName = "interface\quick_save.c";
 	Interfaces[INTERFACE_QUICK_SAVE].IniFile = "RESOURCE\INI\INTERFACES\quick_save.ini";
-	// boal -->
+	
 	Interfaces[INTERFACE_DEBUGER].SectionName = "interface\debuger.c";
 	Interfaces[INTERFACE_DEBUGER].IniFile     = "RESOURCE\INI\INTERFACES\debuger.ini";
 	
@@ -215,24 +215,24 @@ void InitInterfaceTables()
 	
 	Interfaces[INTERFACE_ABOUT].SectionName = "interface\about.c";
 	Interfaces[INTERFACE_ABOUT].IniFile = "RESOURCE\INI\INTERFACES\about.ini";
-	// boal <--
 	
-	// Warship -->
-	// Интерфейс отличной карты
+	
+	
+	
 	Interfaces[INTERFACE_BEST_MAP].SectionName = "interface\MapBest.c";
 	Interfaces[INTERFACE_BEST_MAP].IniFile = "RESOURCE\INI\INTERFACES\MapBest.ini";
 	
-	// Интерфейс отдыха в таверне
+	
 	Interfaces[INTERFACE_TAVERN_WAIT].SectionName = "interface\TavernWait.c";
 	Interfaces[INTERFACE_TAVERN_WAIT].IniFile = "RESOURCE\INI\INTERFACES\TavernWait.ini";
 	
-	// Интерфейс закупки товара казначеем
+	
 	Interfaces[INTERFACE_GOODS_TRANSFER].SectionName = "interface\GoodsTransfer.c";
 	Interfaces[INTERFACE_GOODS_TRANSFER].IniFile = "RESOURCE\INI\INTERFACES\GoodsTransfer.ini";
-	// Warship <--
 	
-	// ugeen --> 
-	// Интерфейс атласа карт
+	
+	
+	
 	Interfaces[INTERFACE_MAPVIEW].SectionName = "interface\mapview.c";
 	Interfaces[INTERFACE_MAPVIEW].IniFile = "RESOURCE\INI\INTERFACES\mapview.ini";	
 	
@@ -247,5 +247,5 @@ void InitInterfaceTables()
 	
 	Interfaces[INTERFACE_REPAIR].SectionName = "interface\repair.c";
 	Interfaces[INTERFACE_REPAIR].IniFile = "RESOURCE\INI\INTERFACES\repair.ini";
-	// ugeen <--
+	
 }

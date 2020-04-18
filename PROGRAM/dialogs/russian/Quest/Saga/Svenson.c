@@ -1,4 +1,4 @@
-// Ян Свенсон - пиратский барон Западного Мэйна
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -17,12 +17,12 @@ void ProcessDialogEvent()
 		case "First time":
 			if(CheckAttribute(pchar, "questTemp.Saga"))
 			{
-				if (CheckAttribute(pchar, "questTemp.Saga_Late")) // отсекание при провале по времени
+				if (CheckAttribute(pchar, "questTemp.Saga_Late")) 
 				{
 					dialog.text = "Oh, my friend "+pchar.name+"! Pleasure to see you!  What brings you here?";
 					link.l1 = "Just stopping by to see how you doing.";
 					link.l1.go = "exit";
-					if(CheckAttribute(npchar, "quest.trade_bakaut")) // торговля бакаутом
+					if(CheckAttribute(npchar, "quest.trade_bakaut")) 
 					{
 						if (GetDataDay() == 14 || GetDataDay() == 28)
 						{
@@ -60,9 +60,9 @@ void ProcessDialogEvent()
 					link.l1.go = "exit";
 					break;
 				}
-				if(pchar.questTemp.Saga == "baronsquests") // старт трех квестов баронов
+				if(pchar.questTemp.Saga == "baronsquests") 
 				{
-					// первая проверка времени. Свенсон очень недоволен растяпством ГГ. Счищаем Элен, к Свенсону доступ закроем
+					
 					if (CheckAttribute(pchar, "questTemp.Saga.Late"))
 					{
 						dialog.text = ""+pchar.name+", you have totally disappointed me. I thought that you are a serious man, but turned out that you are just a silly boy. Where have you been all this time, huh? The English claimed Isla Tesoro while you were doing who knows what!\nAll my plans are ruined! To be honest, I have almost forgot about your existence and I don't want to remember. Get lost!";
@@ -77,7 +77,7 @@ void ProcessDialogEvent()
 					}
 					break;
 				}
-				if(pchar.questTemp.Saga == "baronsquests_1") // идут три квеста баронов
+				if(pchar.questTemp.Saga == "baronsquests_1") 
 				{
 					dialog.text = "How are things coming along? Is there something I could assist you with?";
 					if (CheckAttribute(pchar, "questTemp.Saga.SharkHunt") && pchar.questTemp.Saga.SharkHunt == "after_marlow")
@@ -109,16 +109,16 @@ void ProcessDialogEvent()
 					link.l4.go = "exit";
 					break;
 				}
-				if(pchar.questTemp.Saga == "fail_centurion") // провал - потоплен Центурион
+				if(pchar.questTemp.Saga == "fail_centurion") 
 				{
 					dialog.text = "What's the good word, "+pchar.name+"? How are things?";
 					link.l1 = "Oh, couldn't be worse. I've done so much work... I tracked down Jackman, we threw away the scabbards, and I drowned him like the biggest imbecile along with everything that might've been inside his cabin.  Now I've got nothing to help me take the stink off of Shark's name and put the heat on Barbazon. I'm afraid it's a lost cause, Jan.";
 					link.l1.go = "saga_f_1";
 					break;
 				}
-				if(pchar.questTemp.Saga == "calendar") // квесты баронов завершены
+				if(pchar.questTemp.Saga == "calendar") 
 				{
-					// вторая проверка времени. Отбираем Элен, со Свенсоном нейтральные отношения - ну не выщло и не вышло, хоть попытались. Данни и Натана - в Марун-Таун
+					
 					if (CheckAttribute(pchar, "questTemp.Saga.Late"))
 					{
 						dialog.text = "I heard about your heroic deeds! Danny gave me the short version. By the way, we are friend now. And Nathan has changed completely! All his depression was blown away when he say his 'Centurion'\nBut I have bad news for you, "+pchar.name+". We've wasted so much time the inheritance rights in Sharp's will are long gone and Isla Tesoro is now an English military base. There's nothing I can do anymore to help you with Levasseur."
@@ -133,49 +133,49 @@ void ProcessDialogEvent()
 					}
 					break;
 				}
-				if(pchar.questTemp.Saga == "mine") // рудник взят
+				if(pchar.questTemp.Saga == "mine") 
 				{
 					dialog.text = "There you are, "+pchar.name+"! Now I've got something to tell you.";
 					link.l1 = "Hello, Jan. I'm overjoyed!  What's the good word. Hopefully, something positive?";
 					link.l1.go = "saga_32";
 					break;
 				}
-				if(pchar.questTemp.Saga == "mine_1") // рудник взят совместно
+				if(pchar.questTemp.Saga == "mine_1") 
 				{
 					dialog.text = "There you are, "+pchar.name+"! Got some rest?  And, I might conclude, once again ready for great adventures?";
 					link.l1 = "Hello, Jan. Yes, I'm ready.";
 					link.l1.go = "saga_32a";
 					break;
 				}
-				if(pchar.questTemp.Saga == "late_l3") // провал по времени у адвоката
+				if(pchar.questTemp.Saga == "late_l3") 
 				{
 					dialog.text = "What's the good word, "+pchar.name+"? How are things?";
 					link.l1 = "Oh. Things are absolutely awful.  I've gone tooth and nail, but still ended up losing. As you remember, Sharp's will had a time limit on it. Well, that time has run out and Isla Tesoro is now an English military base. It's a lost cause, Jan.";
 					link.l1.go = "saga_l3";
 					break;
 				}
-				if(pchar.questTemp.Saga == "bakaut") // пришел от адвоката за деньгами
+				if(pchar.questTemp.Saga == "bakaut") 
 				{
 					dialog.text = "Greetings, "+pchar.name+"! Good news: the Council meeting has been held and the Brethren of the Coast has a new head now.";
 					link.l1 = "Good afternoon, Jan. I'm happy for you.";
 					link.l1.go = "saga_44";
 					break;
 				}
-				if(pchar.questTemp.Saga == "sellbakaut" && GetSquadronGoods(pchar, GOOD_SANDAL) >= 1) // отдает бакаут
+				if(pchar.questTemp.Saga == "sellbakaut" && GetSquadronGoods(pchar, GOOD_SANDAL) >= 1) 
 				{
 					dialog.text = "Well, "+pchar.name+"? Did you catch up with Molligan?";
 					link.l1 = "I did. He was the one that stole your ironwood.";
 					link.l1.go = "saga_55";
 					break;
 				}
-				if(CheckAttribute(npchar, "quest.bakaut") && GetNpcQuestPastDayParam(npchar, "bakaut_date") >= 1) // за деньгами за бакаут
+				if(CheckAttribute(npchar, "quest.bakaut") && GetNpcQuestPastDayParam(npchar, "bakaut_date") >= 1) 
 				{
 					dialog.text = "On time as always, "+pchar.name+". I sold the ironwood you brought me.";
 					link.l1 = "Excellent. How much money did it end up costing you?";
 					link.l1.go = "saga_57";
 					break;
 				}
-				if(CheckAttribute(npchar, "quest.bakaut_sum")) // сам продал бакаут
+				if(CheckAttribute(npchar, "quest.bakaut_sum")) 
 				{
 					dialog.text = "Well, "+pchar.name+"? Did you catch up with Molligan?";
 					link.l1 = "I did. He was the one that stole your ironwood. I happened to come upon his buyer as well.  It was some Dutch military commander. I sold the product to him.";
@@ -184,7 +184,7 @@ void ProcessDialogEvent()
 					link.l2.go = "saga_59_1";
 					break;
 				}
-				if(CheckAttribute(npchar, "quest.jessika")) // информация о Джессике
+				if(CheckAttribute(npchar, "quest.jessika")) 
 				{
 					dialog.text = TimeGreeting()+", "+pchar.name+". What's new?";
 					link.l1 = "Jan, I would like to speak with you on one matter. I've been digging into Helen and Beatrice's mother's past and happened to stumble upon some one you know quite well. As far as I've been told...";
@@ -203,7 +203,7 @@ void ProcessDialogEvent()
 				dialog.text = sTemp;
 				link.l1 = "No, Jan. Nothing at the moment.";
 				link.l1.go = "exit";
-				if(CheckAttribute(npchar, "quest.trade_bakaut")) // торговля бакаутом
+				if(CheckAttribute(npchar, "quest.trade_bakaut")) 
 				{
 					if (GetDataDay() == 14 || GetDataDay() == 28)
 					{
@@ -286,12 +286,12 @@ void ProcessDialogEvent()
 			DialogExit();
 			GiveNationLicence(HOLLAND, 90);
 			AddQuestRecord("Saga", "14");
-			pchar.questTemp.Saga = "cartahena";//идем в Картахену
+			pchar.questTemp.Saga = "cartahena";
 			pchar.quest.Saga_Gonsales.win_condition.l1 = "location";
 			pchar.quest.Saga_Gonsales.win_condition.l1.location = "Cartahena_town";
 			pchar.quest.Saga_Gonsales.function = "Saga_CreateGonsalesB";
-			LocatorReloadEnterDisable("SantaCatalina_houseSp3", "reload2", false);//открыть спальню Элен
-			LocatorReloadEnterDisable("FortOrange_town", "reload6", true); // закрыть резиденцию Джекмана
+			LocatorReloadEnterDisable("SantaCatalina_houseSp3", "reload2", false);
+			LocatorReloadEnterDisable("FortOrange_town", "reload6", true); 
 			npchar.greeting = "svenson_3";
 		break;
 		
@@ -380,8 +380,8 @@ void ProcessDialogEvent()
 			pchar.questTemp.Saga = "helena1";
 			LocatorReloadEnterDisable("SantaCatalina_town", "reload1_back", true);
 			LocatorReloadEnterDisable("SantaCatalina_town", "reload2_back", true);
-			LocatorReloadEnterDisable("SantaCatalina_town", "gate_back", true);//закрыть выходы из города
-			LocatorReloadEnterDisable("SantaCatalina_houseSp3", "reload2", true);//закрыть спальню Элен
+			LocatorReloadEnterDisable("SantaCatalina_town", "gate_back", true);
+			LocatorReloadEnterDisable("SantaCatalina_houseSp3", "reload2", true);
 			AddQuestRecord("Saga", "23");
 		break;
 		
@@ -408,7 +408,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			AddQuestRecord("SharkHunt", "1");
 			pchar.questTemp.Saga.SharkHunt = "begin";
-			pchar.GenQuest.LigaAttack = "true"; // киллеры Лиги активированы
+			pchar.GenQuest.LigaAttack = "true"; 
 		break;
 		
 		case "shark_hunt_2":
@@ -619,19 +619,19 @@ void ProcessDialogEvent()
 		case "return_LSC_19":
 			DialogExit();
 			pchar.questTemp.Saga.BaronReturn = "return_LSC";
-			// LSC ждет своего героя!
+			
 			i = FindIsland("LostShipsCity");
 			Islands[i].visible = true;
 			Islands[i].reload_enable = true;
 			pchar.quest.return_LSC.win_condition.l1 = "location";
 			pchar.quest.return_LSC.win_condition.l1.location = "LostShipsCity";
-			pchar.quest.return_LSC.function = "LSC_ReturnCheckShips"; // проверка типов кораблей
+			pchar.quest.return_LSC.function = "LSC_ReturnCheckShips"; 
 			pchar.quest.return_LSC_attack.win_condition.l1 = "location";
 			pchar.quest.return_LSC_attack.win_condition.l1.location = "Beliz";
-			pchar.quest.return_LSC_attack.function = "LSC_ReturnJackmanAttack"; // атака наймитов Джекмана
+			pchar.quest.return_LSC_attack.function = "LSC_ReturnJackmanAttack"; 
 			pchar.quest.return_LSC_main.win_condition.l1 = "Ship_location";
 			pchar.quest.return_LSC_main.win_condition.l1.location = "LostShipsCity_town";
-			pchar.quest.return_LSC_main.function = "LSC_ReturnMain"; // основная функция возвращения
+			pchar.quest.return_LSC_main.function = "LSC_ReturnMain"; 
 		break;
 		
 		case "nathaniel":
@@ -648,9 +648,9 @@ void ProcessDialogEvent()
 		break;
 		
 		case "nathaniel_2":
-			if (!CheckAttribute(pchar, "questTemp.Saga.DodsonDie")) // Акула жив
+			if (!CheckAttribute(pchar, "questTemp.Saga.DodsonDie")) 
 			{
-				if (CheckAttribute(npchar, "quest.shark")) //и на месте
+				if (CheckAttribute(npchar, "quest.shark")) 
 				{
 					dialog.text = "Very well. Steven has already stopped by to see me. Now we can finally continue discussing our plans.";
 					link.l1 = "I'm all ears, Jan.";
@@ -696,7 +696,7 @@ void ProcessDialogEvent()
 		
 		case "barbazon":
 			dialog.text = "Black Pastor is clear, he is interested only in that theological book. I've send my men to search for it, they will find it eventually. Marcus Tyrex is not an issue, we shall have no problems persuading him. Jackman has left Maroon Town soon after you paid him a visit. He sailed somewhere on 'Centurion', the Hawks' frigate\nThere is only Barbazon left - he is also known as Jaques the Kindman. We must find a way to make him cooperate with us. I am not sure how to perform it so far. But one thing is obvious - you should sail to him.";
-			link.l1 = "Tell me about Barbason."; // Addon 2016-1 Jason пиратская линейка патч 17/1
+			link.l1 = "Tell me about Barbason."; 
 			link.l1.go = "barbazon_1";
 		break;
 		
@@ -732,12 +732,12 @@ void ProcessDialogEvent()
 			pchar.questTemp.Saga.BarbTemptation = "begin";
 			pchar.questTemp.Saga.BaronReturn = "barbazon";
 			NextDiag.CurrentNode = "First time";
-			// тут вычищаем квестовый мусор от LSC
+			
 			if (CheckCharacterItem(pchar, "letter_chad")) RemoveItems(pchar, "letter_chad", 1);
 			if (CheckCharacterItem(pchar, "letter_chad_1")) RemoveItems(pchar, "letter_chad_1", 1);
 		break;
 		
-		// Addon 2016-1 Jason пиратская линейка патч 17/1
+		
 		case "barbazon_5":
 			dialog.text = "Really? Shoot.";
 			link.l1 = "Ever heard of Charley Prince?"; 
@@ -805,7 +805,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "saga_28":
-			RemoveItems(pchar, "letter_parol", 1); // удалить записку
+			RemoveItems(pchar, "letter_parol", 1); 
 			dialog.text = "Well, let's have a look... Ha, so this is why the bandits listened to Jackman and ceased abducting Miskitos! Well I'll be! That scumbag planned it all out several steps ahead.";
 			link.l1 = "Yeah, and I can see why Hawke's men were clobbered too. There are two things I don't understand: first what are Jackman's accomplices doing in the mine and second why are you reacting so calmly to the fact that this whole monstrosity is going on your territory?";
 			link.l1.go = "saga_29";
@@ -839,7 +839,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "saga_31": 
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			DialogExit();
 			LAi_SetActorType(npchar);
 			ChangeCharacterAddressGroup(npchar, pchar.location, "goto", "goto1");
@@ -854,17 +854,17 @@ void ProcessDialogEvent()
 				pchar.quest.Saga_MinePrepareAttack.win_condition.l2.date.month = GetAddingDataMonth(0, 0, 3);
 				pchar.quest.Saga_MinePrepareAttack.win_condition.l2.date.year  = GetAddingDataYear(0, 0, 3);
 				pchar.quest.Saga_MinePrepareAttack.function = "Saga_MineBanditsPrepareAttack";
-				SetFunctionTimerCondition("Saga_MineBanditsAttackOver", 0, 0, 4, false); // таймер
+				SetFunctionTimerCondition("Saga_MineBanditsAttackOver", 0, 0, 4, false); 
 			}
-			else SetFunctionTimerCondition("Saga_MineBanditsDestroyed", 0, 0, 10, false); // таймер
+			else SetFunctionTimerCondition("Saga_MineBanditsDestroyed", 0, 0, 10, false); 
 			sld = characterFromId("Nathaniel");
 			sld.model = "Hawk_2";
-			Characters_RefreshModel(sld); // наверно не нужно
+			Characters_RefreshModel(sld); 
 			sld.greeting = "nathaniel_2";
 			sld.dialog.currentnode = "marun_town";
 			ChangeCharacterAddressGroup(sld, "FortOrange_townhall", "sit", "sit1");
 			LAi_SetHuberType(sld);
-			LocatorReloadEnterDisable("FortOrange_town", "reload6", false); // открыть резиденцию Хоука
+			LocatorReloadEnterDisable("FortOrange_town", "reload6", false); 
 			sld = characterFromId("Danielle");
 			sld.dialog.currentnode = "marun_town";
 			sld.greeting = "danny_2";
@@ -953,9 +953,9 @@ void ProcessDialogEvent()
 		case "saga_43":
 			DialogExit();
 			AddQuestRecord("Testament", "1");
-			pchar.questTemp.Saga = "loxly"; // обновляем флаг
-			LocatorReloadEnterDisable("SantaCatalina_houseS1", "reload2", true); // закрыть кабинет Свенсона
-			SetFunctionTimerCondition("Saga_GoldForLoxly", 0, 0, 10, false); // таймер
+			pchar.questTemp.Saga = "loxly"; 
+			LocatorReloadEnterDisable("SantaCatalina_houseS1", "reload2", true); 
+			SetFunctionTimerCondition("Saga_GoldForLoxly", 0, 0, 10, false); 
 		break;
 		
 		case "saga_44":
@@ -1022,9 +1022,9 @@ void ProcessDialogEvent()
 		
 		case "saga_54":
 			DialogExit();
-			pchar.questTemp.Saga = "molligan"; // обновляем флаг
+			pchar.questTemp.Saga = "molligan"; 
 			AddQuestRecord("Testament", "3");
-			Saga_CreateMolliganInWorld(); // ставим корабль Моллигана на карту
+			Saga_CreateMolliganInWorld(); 
 		break;
 		
 		case "saga_55":
@@ -1096,7 +1096,7 @@ void ProcessDialogEvent()
 					sld = GetCharacter(iTemp);
 					if(sti(RealShips[sti(sld.ship.type)].basetype) == SHIP_EASTINDIAMAN && sld.ship.name == "Oyster") iUst = 1;
 				}
-			} // есть ли у нас Устрица
+			} 
 			dialog.text = "Wait! Did you capture 'Oyster'?";
 			if (iUst == 1)
 			{
@@ -1123,16 +1123,16 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			AddDialogExitQuestFunction("Saga_RemoveOuster");
 			npchar.quest.ouster = "true";
-			SaveCurrentNpcQuestDateParam(npchar, "ouster_date"); // через 2 месяца
+			SaveCurrentNpcQuestDateParam(npchar, "ouster_date"); 
 			NextDiag.TempNode = "First time";
 		break;
 		
 		case "saga_57":
 			int idlt;
-			iTemp = sti(npchar.quest.bakaut)*30; // Ян за 1 шт бакаута дает 30 дублонов
+			iTemp = sti(npchar.quest.bakaut)*30; 
 			if (iTemp > 1600)
 			{
-				idlt = makeint(iTemp-1500)/2; // доля Бонса :)
+				idlt = makeint(iTemp-1500)/2; 
 				dialog.text = "I received "+iTemp+" coins for it. One thousand five hundred is for the lawyer, plus your share of doubloons - "+idlt+". Here you go.";
 				link.l1 = "Commendable! Now I can easily take off to Loxley.";
 				link.l1.go = "saga_58";
@@ -1175,7 +1175,7 @@ void ProcessDialogEvent()
 			dialog.text = "Full well. Then we'll split it down the middle.";
 			if (CheckCharacterItem(pchar, "gold_dublon"))
 			{
-				npchar.quest.bakaut_pay = GetCharacterItem(pchar, "gold_dublon"); // дублоны в кармане
+				npchar.quest.bakaut_pay = GetCharacterItem(pchar, "gold_dublon"); 
 				link.l1 = "Here you go. I've got "+FindRussianQtyString(sti(npchar.quest.bakaut_pay))+".";
 				link.l1.go = "bakaut_pay";
 			}
@@ -1191,7 +1191,7 @@ void ProcessDialogEvent()
 			dialog.text = "Jolly good. How much did you bring?";
 			if (CheckCharacterItem(pchar, "gold_dublon"))
 			{
-				npchar.quest.bakaut_pay = GetCharacterItem(pchar, "gold_dublon"); // дублоны в кармане
+				npchar.quest.bakaut_pay = GetCharacterItem(pchar, "gold_dublon"); 
 				link.l1 = "Here you go. I've got "+FindRussianQtyString(sti(npchar.quest.bakaut_pay))+".";
 				link.l1.go = "bakaut_pay";
 			}
@@ -1203,14 +1203,14 @@ void ProcessDialogEvent()
 			}
 		break;
 		
-		case "bakaut_pay": // оплата
-			if (sti(npchar.quest.bakaut_sum) < sti(npchar.quest.bakaut_pay)) // полная сумма
+		case "bakaut_pay": 
+			if (sti(npchar.quest.bakaut_sum) < sti(npchar.quest.bakaut_pay)) 
 			{
 				npchar.quest.bakaut_pay = sti(npchar.quest.bakaut_sum);
 				iTemp = 0;
 			}
 			else iTemp = sti(npchar.quest.bakaut_sum)-sti(npchar.quest.bakaut_pay);
-			npchar.quest.bakaut_sum = iTemp; // запоминаем остаток
+			npchar.quest.bakaut_sum = iTemp; 
 			RemoveItems(pchar, "gold_dublon", sti(npchar.quest.bakaut_pay));
 			Log_Info("You gave "+sti(npchar.quest.bakaut_pay)+" doubloons");
 			PlaySound("interface\important_item.wav");
@@ -1235,7 +1235,7 @@ void ProcessDialogEvent()
 			link.l1.go = "saga_61_1";
 		break;
 		
-		case "bakaut_done": // рассчитались
+		case "bakaut_done": 
 			dialog.text = "I've got a proposition for you. Since you were able to find a lucrative buyer, then I could sell you some ironwood. I used to get paid thirty doubloons a piece. If you want, you can buy it from me for that price. I'd rather sell it to you than to somebody else.";
 			link.l1 = "How much ironwood are you able to sell?";
 			link.l1.go = "bakaut_done_1";
@@ -1246,15 +1246,15 @@ void ProcessDialogEvent()
 			link.l1 = "You've got yourself a deal, Jan! Let's do that. Now, it's time for me to be going...";
 			link.l1.go = "saga_oust";
 			DeleteAttribute(npchar, "quest.bakaut_sum");
-			npchar.quest.trade_bakaut = "true"; // генератор купли-продажи бакаута
+			npchar.quest.trade_bakaut = "true"; 
 			AddQuestRecord("Unique_Goods", "1");
 		break;
 		
-		case "saga_59_1": // укрысил у Яна - нет генератора на бакаут, потерял больше
+		case "saga_59_1": 
 			dialog.text = "Ah, so either it wasn't him or he had already sold ironwood before... What a pity.  Well, you're my only hope now to get the money for the lawyer.";
 			link.l1 = "I'll be willing to take that responsibility. It isn't my first rodeo.";
 			link.l1.go = "exit";
-			// Ян расстроен и забыл про Устрицу - так что и Устрицы тоже не будет
+			
 			DeleteAttribute(npchar, "quest.bakaut_sum");
 		break;
 		
@@ -1315,7 +1315,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "saga_70":
-			dialog.text = "All pirates believed so, including Blaze Sharp, her brother. He couldn't stand Butcher… But let's get back to Jessica. I couldn't even think of her while she was on the Neptune, she would never leave her beloved captain. But when Butcher got rid of her in such a mean way...\nI had arrived to Barbados and became friends witch her. It wasn't easy for her, she loved the sea and dangerous adventures. That dull colony life was killing her. Besides, she had become very infamous person in the Caribbean while serving on the Neptune and Bridgetown's folk had reasons to consider her Butcher's partner in crime...";
+			dialog.text = "All pirates believed so, including Blaze Sharp, her brother. He couldn't stand ButcherпїЅ But let's get back to Jessica. I couldn't even think of her while she was on the Neptune, she would never leave her beloved captain. But when Butcher got rid of her in such a mean way...\nI had arrived to Barbados and became friends witch her. It wasn't easy for her, she loved the sea and dangerous adventures. That dull colony life was killing her. Besides, she had become very infamous person in the Caribbean while serving on the Neptune and Bridgetown's folk had reasons to consider her Butcher's partner in crime...";
 			link.l1 = "But they couldn't prove shit...";
 			link.l1.go = "saga_71";
 		break;
@@ -1339,7 +1339,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "saga_74":
-			dialog.text = "I had learned about that much later. A week after the Mask's arrival, Jess took her things, said farewells to me and sailed away on a military frigate in unknown direction. She had never returned… As hadn't Beatrice returned to Isla Tesoro\nSoon they hanged Butcher in St.John's, he was delivered there by the Mask himself. But he outlived Butcher only for a day.";
+			dialog.text = "I had learned about that much later. A week after the Mask's arrival, Jess took her things, said farewells to me and sailed away on a military frigate in unknown direction. She had never returnedпїЅ As hadn't Beatrice returned to Isla Tesoro\nSoon they hanged Butcher in St.John's, he was delivered there by the Mask himself. But he outlived Butcher only for a day.";
 			link.l1 = "Yes... Our Steven Dodson showed a class...";
 			link.l1.go = "saga_75";
 		break;
@@ -1393,7 +1393,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 			NextDiag.CurrentNode = "First time";
 			DeleteAttribute(npchar, "quest.jessika");
-			npchar.quest.jessika_peace = "true"; // атрибут на мирное разрешение после боя
+			npchar.quest.jessika_peace = "true"; 
 		break;
 		
 		case "saga_82":
@@ -1478,7 +1478,7 @@ void ProcessDialogEvent()
 			ChangeCharacterComplexReputation(pchar, "fame", 5);
 		break;
 		
-	// --> провалы Саги
+	
 		case "saga_f_1":
 			dialog.text = "Yep... It really looks like our plan has come crashing down. Now we won't be able to put who we wanted at the head of the Brethren.  Jackman's dead that's well and good. But alas, my plan isn't going to work out now. We'll have to elect the head of the Brethren the usual way and God knows what kind of a twist it's going to take...";
 			link.l1 = "That's unfortunate. Very unfortunate. And it looks like Helen is gonna be left without her inheritance.";
@@ -1500,23 +1500,23 @@ void ProcessDialogEvent()
 			CloseQuestHeader("Testament");
 		break;
 		
-		case "saga_l1": // проход первый - отбираем Элен и закрываем вход к Свенсону
+		case "saga_l1": 
 			DialogExit();
 			LAi_CharacterDisableDialog(npchar);
-			LocatorReloadEnterDisable("SantaCatalina_houseS1", "reload2", true); // закрыть кабинет Свенсона
+			LocatorReloadEnterDisable("SantaCatalina_houseS1", "reload2", true); 
 			pchar.questTemp.Saga = "end";
 			CloseQuestHeader("Saga");
-			// Элен - к разговору
+			
 			sld = characterFromId("Helena");
 			sld.quest.talk = "late_l1";
 			pchar.quest.Saga_Late_1.win_condition.l1 = "Location_Type";
 			pchar.quest.Saga_Late_1.win_condition.l1.location_type = "town";
 			pchar.quest.Saga_Late_1.function = "Saga_HelenaTalk";
 			pchar.questTemp.Saga.Jackman = "true";
-			Saga_ChangesIslatesoro(); // вызов перестановки на Исла-Тесоро
+			Saga_ChangesIslatesoro(); 
 		break;
 		
-		case "saga_l2": // проход второй - отбираем Элен, Натана и Данни в Марун-Таун, чистим квестовый лут
+		case "saga_l2": 
 			dialog.text = "But alas, it's too late to do anything now. Isla Tesoro is officially transferred into the authority of the English crown.  There's a garrison located there now. This is a heavy blow to the Coast Brethren, which I'm afraid we won't be able to recover from.";
 			link.l1 = "How awful... Ah, we should've acted more quickly. Then, you see, everything would've turned out fine.  All right, Jan, I'll go think about what to do next. See you later...";
 			link.l1.go = "saga_l2_1";
@@ -1540,36 +1540,36 @@ void ProcessDialogEvent()
 			RemoveItems(pchar, "map_sharp_full", 1);
 			sld = characterFromId("Nathaniel");
 			sld.model = "Hawk_2";
-			Characters_RefreshModel(sld); // наверно не нужно
+			Characters_RefreshModel(sld); 
 			sld.greeting = "nathaniel_2";
 			sld.dialog.currentnode = "marun_town";
 			ChangeCharacterAddressGroup(sld, "FortOrange_townhall", "sit", "sit1");
 			LAi_SetHuberType(sld);
-			LocatorReloadEnterDisable("FortOrange_town", "reload6", false); // открыть резиденцию Хоука
+			LocatorReloadEnterDisable("FortOrange_town", "reload6", false); 
 			sld = characterFromId("Danielle");
 			sld.dialog.currentnode = "marun_town";
 			sld.greeting = "danny_2";
 			ChangeCharacterAddressGroup(sld, "FortOrange_townhall", "goto", "goto1");
 			LAi_SetStayType(sld);
-			// Элен - к разговору
+			
 			sld = characterFromId("Helena");
 			sld.quest.talk = "late_l2";
 			pchar.quest.Saga_Late_2.win_condition.l1 = "Location_Type";
 			pchar.quest.Saga_Late_2.win_condition.l1.location_type = "town";
 			pchar.quest.Saga_Late_2.function = "Saga_HelenaTalk";
-			Saga_ChangesIslatesoro(); // вызов перестановки на Исла-Тесоро
-			pchar.questTemp.Saga_Late = true; // второй атрибут, отсекающий диалоги, на всякий пожарный
+			Saga_ChangesIslatesoro(); 
+			pchar.questTemp.Saga_Late = true; 
 		break;
 		
 		case "saga_l3":
 			dialog.text = "Yep... We really just suffered a harsh defeat. And the worst part of it is we were literally one step from victory. Caramba! How could this have happened, huh, "+pchar.name+"? You tried so hard, you did so much and... such tough luck!";
 			link.l1 = "I'm the imbecile who's responsible for this. I should've been on my toes. And thanks to me, Helen is gonna lose her inheritance. And the Tortuga plan is never gonna come to fruition.";
 			link.l1.go = "saga_f_2";
-			pchar.questTemp.Saga_Late = true; // второй атрибут, отсекающий диалоги, на всякий пожарный
+			pchar.questTemp.Saga_Late = true; 
 		break;
-	// <-- провалы Саги
+	
 		
-	//-----------------------------------генератор торговли бакаутом--------------------------------------------
+	
 		case "trade_bakaut":
 			dialog.text = "All right, I don't mind. I've got twenty five units in my warehouse. The price, as you remember, is thirty doubloons a piece.";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 750)
@@ -1599,12 +1599,12 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			AddCharacterGoods(pchar, GOOD_SANDAL, 25);
 			DeleteAttribute(npchar, "quest.trade_bakaut");
-			SetFunctionTimerCondition("Bakaut_SvensonAttrReturn", 0, 0, 1, false); // таймер
+			SetFunctionTimerCondition("Bakaut_SvensonAttrReturn", 0, 0, 1, false); 
 			AddCharacterExpToSkill(pchar, "Commerce", 100);
 		break;
-		// <-- генератор бакаута
 		
-	//----------------------------------- штурм рудника --------------------------------------------
+		
+	
 		case "mine_attack":
 			dialog.text = "Glad to see you, "+pchar.name+". My people are ready. Off to the selva?";
 			link.l1 = "Yes, Jan. My squad is ready for battle.";
@@ -1636,7 +1636,7 @@ void ProcessDialogEvent()
 				LAi_ActorFollowEverywhere(sld, "", -1);
 				LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 			}
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			LocatorReloadEnterDisable("shore53", "boat", true);
 			LocatorReloadEnterDisable("mine_03", "reload3_back", true);
 			LocatorReloadEnterDisable("mine_02", "reload3_back", true);
@@ -1674,15 +1674,15 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			npchar.quest.mine01 = "true";
 			LAi_ActorFollowEverywhere(npchar, "", -1);
-			chrDisableReloadToLocation = false;//открыть локацию
-			LAi_LocationDisableOfficersGen("mine_01", true);//офицеров не пускать
+			chrDisableReloadToLocation = false;
+			LAi_LocationDisableOfficersGen("mine_01", true);
 			pchar.quest.Saga_MineAttack_02.win_condition.l1 = "location";
 			pchar.quest.Saga_MineAttack_02.win_condition.l1.location = "Mine_04";
 			pchar.quest.Saga_MineAttack_02.function = "Saga_PrepareMineAttackTail";
 		break;
 		
 		case "mine_attack_8":
-			dialog.text = "Right, here we are… This is the path to bandit's fence. Now we need to decide how to deal with them. If we send there the whole squad, it will be too suspicious and they will sound an alarm\We should send a small group of three, not more, this group will be able to get close enough without causing suspicions and attack surprisingly. I can't lead the group, my face is too well known around\nSo it's up to you, "+pchar.name+", because you are the only one I can trust the command without risking the whole operation. I will give you Henry and a musketeer to assist...";
+			dialog.text = "Right, here we areпїЅ This is the path to bandit's fence. Now we need to decide how to deal with them. If we send there the whole squad, it will be too suspicious and they will sound an alarm\We should send a small group of three, not more, this group will be able to get close enough without causing suspicions and attack surprisingly. I can't lead the group, my face is too well known around\nSo it's up to you, "+pchar.name+", because you are the only one I can trust the command without risking the whole operation. I will give you Henry and a musketeer to assist...";
 			link.l1 = "How many guards are at the picket fence?";
 			link.l1.go = "mine_attack_9";
 		break;
@@ -1708,7 +1708,7 @@ void ProcessDialogEvent()
 		case "mine_attack_12":
 			DialogExit();
 			LAi_SetStayTypeNoGroup(npchar);
-			LAi_CharacterDisableDialog(npchar);//запрет диалога
+			LAi_CharacterDisableDialog(npchar);
 			for (i=1; i<=2; i++)
 			{
 				sld = characterFromId("Svensons_off_"+i);
@@ -1733,9 +1733,9 @@ void ProcessDialogEvent()
 			{
 				sld = characterFromId("Ourmine_sold_"+i);
 				LAi_SetStayTypeNoGroup(sld);
-				LAi_CharacterDisableDialog(sld);//запрет диалога
+				LAi_CharacterDisableDialog(sld);
 			}
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			DeleteAttribute(npchar, "quest.mine01");
 			npchar.quest.mine02 = "true";
 			pchar.questTemp.Saga.MineAttack = "true";
@@ -1811,9 +1811,9 @@ void ProcessDialogEvent()
 				LAi_SetActorType(sld);
 				LAi_ActorFollowEverywhere(sld, "", -1);
 			}
-			chrDisableReloadToLocation = false;//открыть локацию
-			LAi_LocationDisableOfficersGen("mine_01", false);//офицеров пускать
-			if (pchar.questTemp.Saga.MineAttack == "soldiers") LAi_LocationDisableOfficersGen("mine_exit", true);//офицеров не пускать
+			chrDisableReloadToLocation = false;
+			LAi_LocationDisableOfficersGen("mine_01", false);
+			if (pchar.questTemp.Saga.MineAttack == "soldiers") LAi_LocationDisableOfficersGen("mine_exit", true);
 			LocatorReloadEnterDisable("mine_03", "reload3_back", false);
 			LocatorReloadEnterDisable("mine_02", "reload3_back", false);
 			DeleteAttribute(npchar, "quest.mine02");
@@ -1838,7 +1838,7 @@ void ProcessDialogEvent()
 		case "mine_attack_19":
 			DialogExit();
 			LAi_SetStayTypeNoGroup(npchar);
-			LAi_CharacterDisableDialog(npchar);//запрет диалога
+			LAi_CharacterDisableDialog(npchar);
 			for (i=1; i<=2; i++)
 			{
 				if (GetCharacterIndex("Svensons_off_"+i) != -1)
@@ -1857,8 +1857,8 @@ void ProcessDialogEvent()
 				sld = characterFromId("Ourmine_sold_"+i);
 				LAi_SetStayTypeNoGroup(sld);
 			}
-			chrDisableReloadToLocation = false;//открыть локацию
-			LAi_LocationDisableOfficersGen("mine_01", false);//офицеров пускать
+			chrDisableReloadToLocation = false;
+			LAi_LocationDisableOfficersGen("mine_01", false);
 			DeleteAttribute(npchar, "quest.mine03");
 			pchar.quest.Saga_MineAttack_06.win_condition.l1 = "location";
 			pchar.quest.Saga_MineAttack_06.win_condition.l1.location = "Mine_exit";
@@ -1917,13 +1917,13 @@ void ProcessDialogEvent()
 			pchar.quest.Saga_MineAttack_07.win_condition.l1 = "location";
 			pchar.quest.Saga_MineAttack_07.win_condition.l1.location = "Mine";
 			pchar.quest.Saga_MineAttack_07.function = "Saga_MineGunAttack";
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			LocatorReloadEnterDisable("mine_exit", "reload2_back", true);
-			LAi_LocationDisableOfficersGen("mine_exit", false); // офицеров пускать
+			LAi_LocationDisableOfficersGen("mine_exit", false); 
 			n = Findlocation("mine");
 			locations[n].models.always.Gun = "mortair";
 			Locations[n].models.always.Gun.locator.group = "goto";
-			Locations[n].models.always.Gun.locator.name = "fire"; // орудие - к бою!
+			Locations[n].models.always.Gun.locator.name = "fire"; 
 			Locations[n].hidden_sound = true;
 		break;
 		
@@ -1959,7 +1959,7 @@ void ProcessDialogEvent()
 			TakeNItems(npchar, "potion2", 8); 
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload4", "Mine_mines", "reload", "reload1", "", -1);
-			LAi_LocationDisableOfficersGen("Mine_mines", true);//офицеров не пускать
+			LAi_LocationDisableOfficersGen("Mine_mines", true);
 			pchar.quest.Saga_MineAttack_08.win_condition.l1 = "locator";
 			pchar.quest.Saga_MineAttack_08.win_condition.l1.location = "mine";
 			pchar.quest.Saga_MineAttack_08.win_condition.l1.locator_group = "reload";
@@ -2004,9 +2004,9 @@ void ProcessDialogEvent()
 			LAi_SetImmortal(npchar, true);
 			LAi_SetWarriorType(npchar);
 			LAi_group_MoveCharacter(npchar, LAI_GROUP_PLAYER);
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			LocatorReloadEnterDisable("mine", "reload1", true);
-			LocatorReloadEnterDisable("mine", "reload6", true);//закрыть выходы с рудника
+			LocatorReloadEnterDisable("mine", "reload6", true);
 			pchar.quest.Saga_Mine_letter.win_condition.l1 = "item";
 			pchar.quest.Saga_Mine_letter.win_condition.l1.item = "letter_mine";
 			pchar.quest.Saga_Mine_letter.function = "Saga_FindMineLetter";
@@ -2106,14 +2106,14 @@ void ProcessDialogEvent()
 			LocatorReloadEnterDisable("mine", "reload1", false);
 			LocatorReloadEnterDisable("mine", "reload6", false);
 			LocatorReloadEnterDisable("mine_01", "reload3_back", false);
-			LocatorReloadEnterDisable("mine_exit", "reload2_back", false); //открыть выходы с рудника
-			LAi_LocationDisableOfficersGen("mine_mines", false); // офицеров пускать
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
-			SetFunctionTimerCondition("Saga_ReturnFromMine", 0, 0, 5, false); // таймер
-			pchar.questTemp.Saga.Mines = "true"; // после Саги рудник будет разрабатываться
+			LocatorReloadEnterDisable("mine_exit", "reload2_back", false); 
+			LAi_LocationDisableOfficersGen("mine_mines", false); 
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
+			SetFunctionTimerCondition("Saga_ReturnFromMine", 0, 0, 5, false); 
+			pchar.questTemp.Saga.Mines = "true"; 
 			ChangeCharacterComplexReputation(pchar, "fame", 2);
 		break;
-		// <-- штурм рудника
+		
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -20,7 +20,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                 link.l1 = "Tell me, buddy, where could I find Don Diego de Montoya? Am I late? Has he already departed to Main?";
                 link.l1.go = "guardoftruth";
             }
-			// калеуче
+			
 			if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "graveyard" && !CheckAttribute(npchar, "quest.caleuche"))
 			{
 				link.l1 = "Listen, did a man called Joachim Merriman arrive to your city? An elderly senior, Portuguese, eyes like gimlets, moustache?";
@@ -84,7 +84,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.quest.GuardOT_Batabano.function = "GuardOT_SanAntonioPrepare";
 		break;
 		
-		// калеуче
+		
 		case "caleuche":
 			dialog.text = "Hell if I know, pal. He might had arrived, but I don't know about it. Sorry.";
 			link.l1 = "I see. Pity. I shall continue my searches...";
@@ -92,6 +92,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.caleuche = "true";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

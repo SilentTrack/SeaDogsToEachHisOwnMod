@@ -1,5 +1,5 @@
-// Warship. ћетоды дл€ работы с числами
-// Ѕольшую часть попереносил из других файлов, чтобы все в одном месте было
+
+
 
 #define PI 3.14159265
 #define PIm2 6.28318530
@@ -10,24 +10,24 @@ float FRAND(float _x)
 	return rand(32768) / 32768.0 * _x;
 }
 
-// boal
+
 float frandSmall(float _x)
 {
 	return rand(32) / 32.0 * _x;
 }
 
-// Warship 30.07.09. -->
-// –андом 0.0 ... 1.0
+
+
 float Random()
 {
-	return rand(32768) / 32768.0; // 65536
+	return rand(32768) / 32768.0; 
 }
 
-//  оммент - не нравитс€ мне cRand() - он возвращает не псевдослучайное число,
-// а завис€щее от конкретного дн€ мес€ца, да еще и подр€д может быть несколько
-// одинаковых числе, например, cRand(5) будет давать 5 дней подр€д одно и тоже.
-// ‘ункци€ ниже вернет псевдослучайное число, потом запоминает его в PChar и пока не наступит
-// новый день будет возвращать его-же. PChar.dayRandom устанавливаетс€ в первом шаге обновлени€ дн€
+
+
+
+
+
 int dRand(int _max)
 {
 	float dayRandom;
@@ -35,7 +35,7 @@ int dRand(int _max)
 	if(CheckAttribute(PChar, "dayRandom"))
 	{
 		dayRandom = stf(PChar.dayRandom);
-		return MakeInt(dayRandom * _max + 1.0 / (_max + 1)); // 1.0 / (_max + 1) - дл€ округлени€, иначе _max не выпадет никогда
+		return MakeInt(dayRandom * _max + 1.0 / (_max + 1)); 
 	}
 	
 	dayRandom = Random();
@@ -43,10 +43,10 @@ int dRand(int _max)
 	
 	return MakeInt(dayRandom * _max + 1.0 / (_max + 1));
 }
-// <-- Warship 30.07.09
 
-// cRand() - античитовый рандом Ёдди. ёзать не рекомендуетс€, за место него - dRand()
-//античитовый рендом
+
+
+
 int cRand(int num)
 {
 	if (num < 1) return 0;
@@ -54,8 +54,8 @@ int cRand(int num)
 	int sResult = num;
 	int iData = GetDataDay();
 
-	int iDel = 30.0 / (num + 1) + 0.5; //делитель мес€ца
-	int step = iDel; //шаг увеличени€ уровн€ сравнени€ в мес€це
+	int iDel = 30.0 / (num + 1) + 0.5; 
+	int step = iDel; 
 
 	for (i=0; i<num; i++)
 	{
@@ -69,7 +69,7 @@ int cRand(int num)
 	return sResult;
 }
 
-// –адианы в градусы
+
 float Radian2Degree(float _rad) 
 {
 	return 180 / PI * _rad;

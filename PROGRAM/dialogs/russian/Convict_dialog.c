@@ -1,4 +1,4 @@
-// диалог каторжников в шахте
+
 void ProcessDialogEvent()
 {
 	ref NPChar;

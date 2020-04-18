@@ -1,4 +1,4 @@
-// Раймонд Бейкер - палач Сент-Джонса и возможный офицер
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld, rItm, rItem;
@@ -16,7 +16,7 @@ void ProcessDialogEvent()
 	if (findsubstr(sAttr, "SetGunBullets1_" , 0) != -1)
  	{
         i = findsubstr(sAttr, "_" , 0);
-	 	NPChar.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); // индекс в конце
+	 	NPChar.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); 
  	    Dialog.CurrentNode = "SetGunBullets2";
  	}
 	
@@ -72,7 +72,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "baker_7":
-			dialog.text = "That is his true name. I told you that he is called Lawrence Beltrope. I have been restless since he returned back to the Caribbean a year ago. And when I found out that some grumpy people are looking for me…\nI have even written a confession for the authorities just in case. I am keeping it with me all the time and I am too afraid to give it away. They might think that I was a willing abettor. Please, let me stay in your crew. I swear, I am an excellent physician and can help you a lot.";
+			dialog.text = "That is his true name. I told you that he is called Lawrence Beltrope. I have been restless since he returned back to the Caribbean a year ago. And when I found out that some grumpy people are looking for meпїЅ\nI have even written a confession for the authorities just in case. I am keeping it with me all the time and I am too afraid to give it away. They might think that I was a willing abettor. Please, let me stay in your crew. I swear, I am an excellent physician and can help you a lot.";
 			link.l1 = "Fine. And what about Butcher's... eh, Beltrope's things? Isn't he relative to Thomas Beltrope?";
 			link.l1.go = "baker_8";
 		break;
@@ -94,21 +94,21 @@ void ProcessDialogEvent()
 			sld = characterFromId("Baker_Cap");
 			LAi_SetImmortal(sld, false);
 			sld.lifeday = 0;
-			//sld.ship.hp = 0;
-			//sld.SinkTenPercent = true;
+			
+			
 			bQuestDisableMapEnter = false;
 			GiveItem2Character(pchar, "shark_teeth");
 			GiveItem2Character(pchar, "letter_jess");
-			GiveItem2Character(pchar, "letter_baker"); // показания бейкера
-			ChangeItemDescribe("letter_baker", "itmdescr_letter_baker"); // Addon-2016 Jason
+			GiveItem2Character(pchar, "letter_baker"); 
+			ChangeItemDescribe("letter_baker", "itmdescr_letter_baker"); 
 			AddQuestRecordInfo("Legend_CapBucher", "1");
 			AddQuestRecordInfo("Letter_jess", "1");
 			AddQuestRecord("Shadows", "5");
 			pchar.questTemp.Saga.Shadows = "islatesoro";
-			// в офицеры
+			
 			npchar.quest.OfficerPrice = sti(pchar.rank)*500;
-			npchar.OfficerWantToGo.DontGo = true; //не пытаться уйти
-			npchar.CompanionDisable = true; //нельзя в компаньоны
+			npchar.OfficerWantToGo.DontGo = true; 
+			npchar.CompanionDisable = true; 
 			npchar.loyality = MAX_LOYALITY;
 			AddPassenger(pchar, npchar, false);
 			SetCharacterRemovable(npchar, true);
@@ -121,7 +121,7 @@ void ProcessDialogEvent()
 			AddCharacterExpToSkill(pchar, "Fortune", 100);
 		break;
 		
-		//--> ----------------------------------- офицерский блок ------------------------------------------
+		
 		case "Baker_officer":
 			dialog.text = "Yes, captain?";
 			Link.l1 = "Listen to my order!";
@@ -193,7 +193,7 @@ void ProcessDialogEvent()
             Link.l1 = "Dismissed.";
             Link.l1.go = "Exit";
         break;
-	//<-- ----------------------------------- офицерский блок ----------------------------------------
+	
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

@@ -1,4 +1,4 @@
-// äèàëîã ïî ãîðîäàì
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,7 +9,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
                       "Yes, it really is the third time...", "No, what questions?...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//Öåíà ÷àõîòêè
+			
 			if (!CheckAttribute(npchar, "quest.Consumption") && CheckAttribute(pchar, "questTemp.Consumption") && pchar.questTemp.Consumption == "begin" && sti(pchar.money) >= 3000)
 			{
 				link.l1 = "I've heard that consumption is running rampant in your fort. What do you think, is that effect going to transfer over to the town?";
@@ -32,10 +32,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		
-		//--> Öåíà ÷àõîòêè
+		
 		case "Consumption":
-			dialog.text = "The commandant states that there is no danger. Only for those who have lucked into ending up in a casemate or those who are too curious. I'm not one of them, so –sorry.";
-			link.l1 = "Is that so? The owner of the port saloon has no desire of listening to rumors –that's something new! May it be that the clinking of pesos may return your curiosity?";
+			dialog.text = "The commandant states that there is no danger. Only for those who have lucked into ending up in a casemate or those who are too curious. I'm not one of them, so ï¿½sorry.";
+			link.l1 = "Is that so? The owner of the port saloon has no desire of listening to rumors ï¿½that's something new! May it be that the clinking of pesos may return your curiosity?";
 			link.l1.go = "Consumption_1";
 		break;
 		
@@ -59,7 +59,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "Consumption_4":
-			dialog.text = "It's hard for me to tell you, but there was this one fellow here. He was taken in for smuggling and was locked up for about half a year until his buddies bought him out. Well, you know –they measured off gold for whoever needed it, they waited as much as they were told, and the guy got out. But ever since then he's been two sandwiches short of a picnic.";
+			dialog.text = "It's hard for me to tell you, but there was this one fellow here. He was taken in for smuggling and was locked up for about half a year until his buddies bought him out. Well, you know ï¿½they measured off gold for whoever needed it, they waited as much as they were told, and the guy got out. But ever since then he's been two sandwiches short of a picnic.";
 			link.l1 = "Crazier than a soup sandwich?";
 			link.l1.go = "Consumption_5";
 		break;
@@ -79,7 +79,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 			else
 			{
-				dialog.text = "Nothing, other than the fact that he got gutsy and started talking more and more and then just like that somebody slits his throat and tosses him in the gutter... and whoever did it and what for is all the same to me. (raises his voice) Yes, the bays are so nice here, senior. You have to see both the storms come crashing in from the Greater Antilles an in an instant –see ya! Have a nice rest, senior, thanks for stopping by!";
+				dialog.text = "Nothing, other than the fact that he got gutsy and started talking more and more and then just like that somebody slits his throat and tosses him in the gutter... and whoever did it and what for is all the same to me. (raises his voice) Yes, the bays are so nice here, senior. You have to see both the storms come crashing in from the Greater Antilles an in an instant ï¿½see ya! Have a nice rest, senior, thanks for stopping by!";
 				link.l1 = "A storm... right. Thanks to you too.";
 				link.l1.go = "Consumption_7";
 			}
@@ -119,7 +119,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "Consumption_12":
-			dialog.text = "Juan? Which one? There's a lot of them here –people usually have last names too...or at least a nickname...";
+			dialog.text = "Juan? Which one? There's a lot of them here ï¿½people usually have last names too...or at least a nickname...";
 			link.l1 = "I was just thinking... Maybe his nickname is 'Consumption', ever heard that?";
 			link.l1.go = "Consumption_13";
 		break;
@@ -137,7 +137,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 			npchar.quest.Consumption_1 = "true";
 		break;
-		//<-- Öåíà ÷àõîòêè
+		
 		
 		case "guardoftruth":
 			dialog.text = "I remember him. Came at my tavern, didn't say much. Had a few shots of rum, shared a whisper with some customers and left. Very gloomy and serious like everyone on that frigate. Dangerous looking mercenaries who kept their blades ready\nThey said that the frigate was full of treasures, but I don't believe in such tales. Valuable cargo never being transported on a single ship absent convoy. They had spent a day here, then left to Europe. That's all I know.";
@@ -147,5 +147,5 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddQuestRecord("Guardoftruth", "40");
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // åñëè ãäå-òî âûõîä âíóòðè switch  ïî return íå çàáûòü ñäåëàòü àíëîä
+	UnloadSegment(NPChar.FileDialog2);  
 }

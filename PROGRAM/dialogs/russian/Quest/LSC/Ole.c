@@ -1,4 +1,4 @@
-// Оле Кристиансен - Белый Мальчик
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -21,7 +21,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// в магазине - первая встреча
+		
 		case "store":
 			dialog.text = "Oups... Hello, uncle. Do you have a white bead? Give me the white bead...";
 			link.l1 = "Hm. Good day. Are you... the White Boy?";
@@ -95,7 +95,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "store_7":
-			dialog.text = "No, it's fine. I found him and gave some fire rum. I swam inside the hole because there is food on that ship. Bad men lock the door, but I always open it. He-he-he… Silly bad men. They lure crabs, I know that. Bad men\nI got there and found Nathan. He wasn't feeling well. I had fire rum - I gave him to drink it, so he got better. Then I gave him the tincture, I always carry one of those, in case scary crab bites Ole. Good uncle Chimiset told me to do so...";
+			dialog.text = "No, it's fine. I found him and gave some fire rum. I swam inside the hole because there is food on that ship. Bad men lock the door, but I always open it. He-he-heпїЅ Silly bad men. They lure crabs, I know that. Bad men\nI got there and found Nathan. He wasn't feeling well. I had fire rum - I gave him to drink it, so he got better. Then I gave him the tincture, I always carry one of those, in case scary crab bites Ole. Good uncle Chimiset told me to do so...";
 			link.l1 = "Have you given him an antidote and rum? Heh, you are not a fool. Well done, Ole.";
 			link.l1.go = "store_8";
 		break;
@@ -131,7 +131,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "store_13":
-			dialog.text = "Оh, "+pchar.name+"  is very brave! Then you should go to uncle Henrick, he will teach you how to walk at the bottom and you will kill every crab there. You will also find there one more big bead for Ole. Right?";
+			dialog.text = "пїЅh, "+pchar.name+"  is very brave! Then you should go to uncle Henrick, he will teach you how to walk at the bottom and you will kill every crab there. You will also find there one more big bead for Ole. Right?";
 			link.l1 = "Sure, I will. But I need to find uncle Henrik first.";
 			link.l1.go = "store_14";
 		break;
@@ -167,9 +167,9 @@ void ProcessDialogEvent()
 			LAi_group_MoveCharacter(npchar, "LSC_CITIZEN");
 			sld = characterFromId("Nathaniel");
 			sld.dialog.currentnode = "diffindoor";
-			sld.greeting = "Nathaniel_ill"; // ноду и вякалку Натану
-			pchar.questTemp.LSC.DiffIndoor = "true"; //атрибут прохода к Натану
-			pchar.questTemp.LSC = "mechanic"; // флаг на разговор с Механиком
+			sld.greeting = "Nathaniel_ill"; 
+			pchar.questTemp.LSC.DiffIndoor = "true"; 
+			pchar.questTemp.LSC = "mechanic"; 
 			NextDiag.CurrentNode = "ole";
 			AddQuestRecord("LSC", "6");
 		break;
@@ -328,20 +328,20 @@ void ProcessDialogEvent()
 			LAi_ActorRunToLocation(npchar, "reload", "reload45", "none", "", "", "", 20.0);
 			ChangeCharacterComplexReputation(pchar, "nobility", -5);
 			ChangeCharacterComplexReputation(pchar, "authority", -3);
-			if (GetCharacterIndex("Mary") != -1) // Мэри
+			if (GetCharacterIndex("Mary") != -1) 
 			{
 				sld = characterFromId("Mary");
 				LAi_SetActorType(sld);
 				LAi_ActorDialog(sld, pchar, "", -1, 0);
 			}
-			else // иначе завершение
+			else 
 			{
 				chrDisableReloadToLocation = false;
 				LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			}
 		break;
 		
-		// Блудный сын
+		
 		case "givemepearl":
 			dialog.text = "Uncle, uncle... I need one more white bead. Please, give a white bead to Ole!";
 			if (CheckCharacterItem(pchar, "jewelry52"))
@@ -396,7 +396,7 @@ void ProcessDialogEvent()
 			link.l1.go = "givemepearl_exit";
 		break;
 		
-		case "givemepearl_exit": // Оле уходит - квест не довели до конца
+		case "givemepearl_exit": 
 			DialogExit();
 			RemovePassenger(Pchar, npchar);
 			npchar.lifeday = 0;
@@ -425,7 +425,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mother_2":
-			dialog.text = "Good uncle "+pchar.name+" has helped Ole to collect beads for his mama… Ole was small when he torn mama's necklace of white beads. They all fell into the water. Mama was so angry at Ole, and he cannot return home until he collects all of the lost beads\nI remember how many there were of them. Five times of ten beads. Now Ole has them all. Uncle "+pchar.name+", please, take me home! I want to make mama happy, to return beads. Take me home!";
+			dialog.text = "Good uncle "+pchar.name+" has helped Ole to collect beads for his mamaпїЅ Ole was small when he torn mama's necklace of white beads. They all fell into the water. Mama was so angry at Ole, and he cannot return home until he collects all of the lost beads\nI remember how many there were of them. Five times of ten beads. Now Ole has them all. Uncle "+pchar.name+", please, take me home! I want to make mama happy, to return beads. Take me home!";
 			link.l1 = "Jesus, what a incredible story... You got to the Island being as a kid. Were you driven away from yours, because you torn your mum's pearl necklace? Creepy...";
 			link.l1.go = "mother_3";
 		break;
@@ -456,7 +456,7 @@ void ProcessDialogEvent()
 		
 		case "mother_7":
 			dialog.text = "Thank you, uncle "+pchar.name+". You are very, very kind and good! Soon Ole will see mummy!";
-			link.l1 = "Оh...";
+			link.l1 = "пїЅh...";
 			link.l1.go = "mother_8";
 		break;
 		
@@ -465,7 +465,7 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "OpenTheDoors", 5.0);
 			DeleteAttribute(npchar, "pearl_date");
-			// ставим Агнес Кристиансен и открываем ее дом в Мариго
+			
 			LocatorReloadEnterDisable("Marigo_town", "houseSp2", false);
 			sld = GetCharacter(NPC_GenerateCharacter("Agnes", "women_18", "woman", "towngirl", 10, HOLLAND, -1, true, "quest"));
 			SetFantomParamFromRank(sld, 10, true);
@@ -473,7 +473,7 @@ void ProcessDialogEvent()
 			sld.lastname = "Christiansen";
 			sld.dialog.FileName = "Quest\LSC\OtherNPC.c";
 			sld.dialog.currentnode = "agnes";
-			//sld.greeting = "";
+			
 			LAi_SetOwnerType(sld);
 			LAi_SetImmortal(sld, true);
 			ChangeCharacterAddressGroup(sld, "Marigo_houseSp2", "barmen", "stay");
@@ -491,7 +491,7 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			LAi_SetActorType(pchar);
 			SetMusic("music_romantic");
-			bDisableCharacterMenu = true;//лоченые интерфейсы
+			bDisableCharacterMenu = true;
 			locCameraRotateAroundHero(0.0, 2.0, 0.0, 0.005, 0.0, 2.0, 0.0, 1000);
 			DoQuestFunctionDelay("LSC_OleReturnHome", 18.0);
 		break;
@@ -515,7 +515,7 @@ void ProcessDialogEvent()
 			link.l1.go = "home_5";
 		break;
 		
-		case "home_5": // перекидываем pchar
+		case "home_5": 
 			DialogExit();
 			LAi_SetStayType(pchar);
 			SetMainCharacterIndex(GetCharacterIndex("Blaze"));
@@ -534,8 +534,8 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "final";
 		break;
 		
-//----------------------------------------- специальные реакции -----------------------------------------------
-		//замечание по обнаженному оружию
+
+		
 		case "LSCNotBlade":
 			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
 			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
@@ -557,7 +557,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;
-// <-- специальные реакции
+
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

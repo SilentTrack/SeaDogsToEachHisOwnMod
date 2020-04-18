@@ -18,13 +18,13 @@ bool SetCharacterTask_Stay(ref character)
 bool SetCharacterTask_GotoPoint(ref character, string locatorGroup, string locatorName)
 {
 	float x, y, z;
-	//Get current location
+	
 	if(IsEntity(loadedLocation) == 0)
 	{
 		Trace("SetCharacterTask_GotoPoint -> location not created");
 		return false;
 	}
-	//Check locator by create
+	
 	string slocator = "locators." + locatorGroup + "." + locatorName;
 	if(CheckAttribute(loadedLocation, slocator) == 0)
 	{
@@ -34,39 +34,39 @@ bool SetCharacterTask_GotoPoint(ref character, string locatorGroup, string locat
 		}
 		return false;
 	}
-	//Get locator position
+	
 	aref locator;
 	MakeARef(locator, loadedLocation.(slocator));
 	x = MakeFloat(locator.x);
 	y = MakeFloat(locator.y);
 	z = MakeFloat(locator.z);
-	//Set task
+	
 	return SendMessage(character, "lsfff", MSG_NPCHARACTER_SETTASK, "Goto point", x, y, z);
 }
 
 bool SetCharacterTask_RuntoPoint(ref character, string locatorGroup, string locatorName)
 {
 	float x, y, z;
-	//Get current location
+	
 	if(IsEntity(loadedLocation) == 0)
 	{
 		Trace("SetCharacterTask_GotoPoint -> location not created");
 		return false;
 	}
-	//Check locator by create
+	
 	string slocator = "locators." + locatorGroup + "." + locatorName;
 	if(CheckAttribute(loadedLocation, slocator) == 0)
 	{
 		Trace("SetCharacterTask_GotoPoint -> locator '" + locatorName + "' in group '" + locatorGroup + "' not found");
 		return false;
 	}
-	//Get locator position
+	
 	aref locator;
 	MakeARef(locator, loadedLocation.(slocator));
 	x = MakeFloat(locator.x);
 	y = MakeFloat(locator.y);
 	z = MakeFloat(locator.z);
-	//Set task
+	
 	return SendMessage(character, "lsfff", MSG_NPCHARACTER_SETTASK, "Runto point", x, y, z);
 }
 
@@ -170,6 +170,7 @@ string CharacterGetTask(ref character)
 	if(SendMessage(character, "le", MSG_NPCHARACTER_GETTASK, &str) == 0) str = "";
 	return str;
 }
+
 
 
 

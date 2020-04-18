@@ -46,16 +46,16 @@ void SetShipRemovable(ref _refCharacter, bool bRemovable)
 	}
 }
 
-//ugeen --> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 bool IsMainCharacter(ref chr)
 {
 	if(CheckAttribute(chr,"chr_ai.type") && chr.chr_ai.type == LAI_TYPE_PLAYER) return true;
 	if(CheckAttribute(chr,"index") && sti(chr.index) == GetMainCharacterIndex()) return true;
 	return false;
 }
-// <-- ugeen
 
-//
+
+
 bool CharacterIsDead(ref _refCharacter)
 {
 	return LAi_IsDead(_refCharacter);
@@ -95,8 +95,8 @@ bool GetRemovable(ref _refCharacter)
 	return true;
 }
 
-// Cargo utilites
-//------------------------------------------
+
+
 int GetCargoLoad(ref _refCharacter)
 {
 	if(!CheckAttribute(_refCharacter,"Ship.Cargo.Load")) return 0;
@@ -111,7 +111,7 @@ int GetCargoLoadEx(ref _refCharacter, int addGoods, int iGoods)
 	{
 		iGoodsQ = -iGoodsQ;
 	}
-	iGoodsQ = GetGoodWeightByType(iGoods, iGoodsQ);//addGoods / sti(Goods[iGoods].units);
+	iGoodsQ = GetGoodWeightByType(iGoods, iGoodsQ);
 
 	int iLoad;
 	
@@ -130,16 +130,16 @@ int GetCargoLoadEx(ref _refCharacter, int addGoods, int iGoods)
 int RecalculateCargoLoad(ref _refCharacter)
 {
 	int loadSpace = 0;
-	// boal 27/07/06 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+	
 	if (sti(_refCharacter.Ship.Cannons.Type) != CANNON_TYPE_NONECANNON)
 	{
 		ref Cannon = GetCannonByType(sti(_refCharacter.Ship.Cannons.Type));
 		loadSpace = GetCannonsNum(_refCharacter) * sti(Cannon.Weight);
 	}
-	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ <--
-	// ugeen --> ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (1 ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ 1 ï¿½.)
+	
+	
 	loadSpace = loadSpace + GetCrewQuantity(_refCharacter);
-	// <-- ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	
 	for(int i=0; i<GOODS_QUANTITY; i++)
 	{
 		loadSpace = loadSpace + GetGoodWeightByType(i,GetCargoGoods(_refCharacter,i));
@@ -148,9 +148,9 @@ int RecalculateCargoLoad(ref _refCharacter)
 	return loadSpace;
 }
 
-///// --> Ugeen 13.11.10 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-//   0  -  ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-//   1  -  ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+
+
 
 float GetCargoCostCoeff(ref _refCharacter, int _goods)
 {
@@ -212,7 +212,7 @@ int AddCharacterGoodsCostCoeff(ref _refCharacter,int _Goods,int _Quantity, float
 	for (i=0; i<COMPANION_MAX; i++)
 	{
 		cn = GetCompanionIndex(_refCharacter,i);
-		if (cn!=-1 && GetRemovable(&Characters[cn]))//fix ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+		if (cn!=-1 && GetRemovable(&Characters[cn]))
 		{
 			freeQuantity = GetGoodQuantityByWeight( _Goods, GetCargoFreeSpace(&Characters[cn]) );
 			if(freeQuantity>=_Quantity)
@@ -232,7 +232,7 @@ int AddCharacterGoodsCostCoeff(ref _refCharacter,int _Goods,int _Quantity, float
 	return false;
 }
 
-///// <-- Ugeen 13.11.10 
+
 
 int RemoveCharacterGoods(ref _refCharacter,int _Goods,int _Quantity)
 {
@@ -242,9 +242,9 @@ int RemoveCharacterGoods(ref _refCharacter,int _Goods,int _Quantity)
 	for(i=0; i<COMPANION_MAX; i++)
 	{
 		cn = GetCompanionIndex(_refCharacter,i);
-		if (cn!=-1 && GetRemovable(&Characters[cn]))//fix ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+		if (cn!=-1 && GetRemovable(&Characters[cn]))
 		{
-            if (CheckAttribute(&Characters[cn], "Ship.Cargo.Goods."+goodsName)) // boal fix 230804
+            if (CheckAttribute(&Characters[cn], "Ship.Cargo.Goods."+goodsName)) 
             {
                 curQuantity = sti( Characters[cn].Ship.Cargo.Goods.(goodsName) );
     			if(curQuantity>=_Quantity)
@@ -267,7 +267,7 @@ int RemoveCharacterGoods(ref _refCharacter,int _Goods,int _Quantity)
 	return false;
 }
 
-// boal -->
+
 int RemoveCharacterGoodsSelf(ref _refCharacter,int _Goods,int _Quantity)
 {
 	int    curQuantity;
@@ -288,7 +288,7 @@ int RemoveCharacterGoodsSelf(ref _refCharacter,int _Goods,int _Quantity)
 int GetCargoFreeSpace(ref _refCharacter)
 {
 	int freeSpace = GetCargoMaxSpace(_refCharacter) - GetCargoLoad(_refCharacter);
-	if (freeSpace < 0) freeSpace = 0;  // fix
+	if (freeSpace < 0) freeSpace = 0;  
 	return freeSpace;
 }
 
@@ -306,7 +306,7 @@ int GetCargoSquadronFreeSpace(ref _refCharacter)
 			freeSpace += GetCargoMaxSpace(chref) - GetCargoLoad(chref);
 		}		
 	}
-	if (freeSpace < 0) freeSpace = 0;  // fix
+	if (freeSpace < 0) freeSpace = 0;  
 	return freeSpace;	
 }
 
@@ -322,7 +322,7 @@ int GetCargoMaxSpace(ref _refCharacter)
 int GetCharacterFreeSpace(ref _refCharacter,int _Goods)
 {
 	int g = GetGoodQuantityByWeight( _Goods, GetCargoFreeSpace(_refCharacter) );
-	if (g < 0) g = 0; // fix
+	if (g < 0) g = 0; 
 	return g;
 }
 
@@ -337,16 +337,16 @@ int GetSquadronFreeSpace(ref _refCharacter,int _Goods)
 	for(i=1; i<COMPANION_MAX; i++)
 	{
 		cn = GetCompanionIndex(_refCharacter,i);
-  		if(cn!=-1 && GetRemovable(&Characters[cn]))//fix ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+  		if(cn!=-1 && GetRemovable(&Characters[cn]))
 		{
 			chref = GetCharacter(cn);
-			//if(GetShipRemovableEx(chref))
-			//{
+			
+			
 				retVal = retVal + unitQ*(GetCargoFreeSpace(chref)/weight);
-			//}
+			
 		}
 	}	
-	if (retVal < 0) retVal = 0; // fix
+	if (retVal < 0) retVal = 0; 
 	return retVal;
 }
 
@@ -366,7 +366,7 @@ int GetSquadronGoods(ref _refCharacter,int _Goods)
 	for(i=1; i<COMPANION_MAX; i++)
 	{
 		cn = GetCompanionIndex(_refCharacter,i);
-		if(cn!=-1 && GetRemovable(&Characters[cn]))//fix ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+		if(cn!=-1 && GetRemovable(&Characters[cn]))
 		{
 			chref = GetCharacter(cn);
 			if( GetShipRemovableEx(chref) )
@@ -392,14 +392,14 @@ void SetCharacterGoods(ref _refCharacter,int _Goods,int _Quantity)
 }
 
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+
 int AddCharacterGoodsSimple(aref aCharacter, int iGood, int iQuantity)
 {
 	string sGoodName = Goods[iGood].name;
 	int    freeQuantity;
 
 	freeQuantity = GetGoodQuantityByWeight(iGood, GetCargoFreeSpace(aCharacter));
-	if (freeQuantity < 0) freeQuantity = 0; //fix
+	if (freeQuantity < 0) freeQuantity = 0; 
 	if (freeQuantity > iQuantity)
 	{
 		freeQuantity = iQuantity;
@@ -408,7 +408,7 @@ int AddCharacterGoodsSimple(aref aCharacter, int iGood, int iQuantity)
 	RecalculateCargoLoad(aCharacter);
 	return freeQuantity;
 }
-// boal <--
+
 
 int AddCharacterGoods(ref _refCharacter,int _Goods,int _Quantity)
 {
@@ -418,7 +418,7 @@ int AddCharacterGoods(ref _refCharacter,int _Goods,int _Quantity)
 	for (i=0; i<COMPANION_MAX; i++)
 	{
 		cn = GetCompanionIndex(_refCharacter,i);
-		if (cn!=-1 && GetRemovable(&Characters[cn]))//fix ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+		if (cn!=-1 && GetRemovable(&Characters[cn]))
 		{
 			freeQuantity = GetGoodQuantityByWeight( _Goods, GetCargoFreeSpace(&Characters[cn]) );
 			if(freeQuantity>=_Quantity)
@@ -436,7 +436,7 @@ int AddCharacterGoods(ref _refCharacter,int _Goods,int _Quantity)
 	return false;
 }
 
-// Cannons utilite
+
 int GetCaracterShipCannonsType(ref _refCharacter)
 {
 	if(!CheckAttribute(_refCharacter,"Ship.Cannons.Type")) return CANNON_TYPE_NONECANNON;
@@ -477,7 +477,7 @@ int GetMaximumCaliber(ref refCharacter)
 	return sti(rShip.MaxCaliber);
 }
 
-// Ship utilite
+
 int GetCharacterShipType(ref _refCharacter)
 {
 	if(CheckAttribute(_refCharacter,"Ship.Type"))
@@ -527,7 +527,7 @@ string GetShipTypeName(ref _refCharacter)
 int GetCharacterShipClass(ref _refCharacter)
 {
 	int nShipType = GetCharacterShipType(_refCharacter);
-	if( nShipType==SHIP_NOTUSED ) return 6; // -1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+	if( nShipType==SHIP_NOTUSED ) return 6; 
 	return sti(RealShips[nShipType].Class);
 }
 int GetMaxCrewQuantity(ref _refCharacter)
@@ -538,7 +538,7 @@ int GetMaxCrewQuantity(ref _refCharacter)
     if(shipType>=REAL_SHIPS_QUANTITY) return 0;
 	return sti(RealShips[shipType].MaxCrew);
 }
-//boal optimal crew
+
 int GetOptCrewQuantity(ref _refCharacter)
 {
 	if(!CheckAttribute(_refCharacter,"Ship.Type")) return 0;
@@ -577,7 +577,7 @@ int GetFreePartyCrewQuantity(ref _refCharacter)
 int GetCrewQuantity(ref _refCharacter)
 {
 	if(!CheckAttribute(_refCharacter,"Ship.Crew.Quantity")) return 0;
-	if (sti(_refCharacter.Ship.Crew.Quantity) < 0) _refCharacter.Ship.Crew.Quantity = 0; // boal FIX 21.04.05
+	if (sti(_refCharacter.Ship.Crew.Quantity) < 0) _refCharacter.Ship.Crew.Quantity = 0; 
 	
 	return sti(_refCharacter.Ship.Crew.Quantity);
 }
@@ -590,22 +590,22 @@ int SetCrewQuantity(ref _refCharacter,int num)
 		_refCharacter.Ship.Crew.Quantity = maxCrew;
 		return false;
 	}
-	if (num < 0) num = 0; // boal fix
+	if (num < 0) num = 0; 
 	_refCharacter.Ship.Crew.Quantity = num;
 	return true;
 }
 
-// --> Eddy, ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+
 void SetCrewQuantityFull(ref _refCharacter)
 {
-	SetCrewQuantity(_refCharacter, GetMaxCrewQuantity(_refCharacter)); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 01/08/06 boal
+	SetCrewQuantity(_refCharacter, GetMaxCrewQuantity(_refCharacter)); 
 }
-// <-- Eddy
 
-// boal
+
+
 int SetCrewQuantityOverMax(ref _refCharacter, int num)
 {
-    if (num < 0) num = 0; // boal fix
+    if (num < 0) num = 0; 
     _refCharacter.Ship.Crew.Quantity = num;
 	return true;
 }
@@ -618,14 +618,14 @@ int RemoveCharacterCrew(ref _refCharacter,int num)
 	int curCrew = GetCrewQuantity(_refCharacter);
 	if(curCrew<num)
 	{
-		//Trace("Error!!! Remove overup crew (character=" + _refCharacter.index + ")");
+		
 		SetCrewQuantity(_refCharacter,0);
 		return false;
 	}
-	SetCrewQuantityOverMax(_refCharacter,curCrew-num);//fix
+	SetCrewQuantityOverMax(_refCharacter,curCrew-num);
 	return true;
 }
-// Repair section
+
 float GetSailPercent(ref _refCharacter)
 {
 	if( !CheckAttribute(_refCharacter,"Ship.SP") ) return 100.0;
@@ -652,7 +652,7 @@ float GetHullPercentWithModifier(ref _refCharacter, int iModifier)
 	return fphp;
 }
 
-float GetSailRPD(ref _refCharacter) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½
+float GetSailRPD(ref _refCharacter) 
 {
 	float repairSkill = GetSummonSkillFromNameToOld(_refCharacter, SKILL_REPAIR);
 	
@@ -677,9 +677,9 @@ float GetSailRPD(ref _refCharacter) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï
 
 	float ret = repairSkill*15.0 / damagePercent;
 	if (ret > damagePercent) ret = damagePercent;
-	return ret;  //boal
+	return ret;  
 }
-float GetHullRPD(ref _refCharacter) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½
+float GetHullRPD(ref _refCharacter) 
 {
 	float repairSkill = GetSummonSkillFromNameToOld(_refCharacter, SKILL_REPAIR);
 	
@@ -704,22 +704,22 @@ float GetHullRPD(ref _refCharacter) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï
 
 	float ret = repairSkill*15.0 / damagePercent;
 	if (ret > damagePercent) ret = damagePercent;
-	return ret;  //boal
+	return ret;  
 }
-float GetSailSPP(ref _refCharacter) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+float GetSailSPP(ref _refCharacter) 
 {
 	float ret = 8-GetCharacterShipClass(_refCharacter);
 	
 	if (CheckOfficersPerk(_refCharacter, "Builder"))
 	{
-		ret = ret * 0.75; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		ret = ret * 0.75; 
 	}
 	ret = ret * isEquippedArtefactUse(_refCharacter, "obereg_2", 1.0, 0.85);
 	ret = ret * isEquippedArtefactUse(_refCharacter, "indian_6", 1.0, 1.10);
 	
 	return ret;
 }
-float GetHullPPP(ref _refCharacter) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+float GetHullPPP(ref _refCharacter) 
 {
 	float ret = 8-GetCharacterShipClass(_refCharacter);
 	
@@ -729,15 +729,15 @@ float GetHullPPP(ref _refCharacter) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï
 	
 	if (CheckOfficersPerk(_refCharacter, "Builder"))
 	{
-		ret = ret * 0.75; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		ret = ret * 0.75; 
 	}
 	ret = ret * isEquippedArtefactUse(_refCharacter, "obereg_1", 1.0, 0.85);
 	ret = ret * isEquippedArtefactUse(_refCharacter, "indian_5", 1.0, 1.10);
 	
 	return ret;
 }
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-float GetHullRepairDay(ref _refCharacter, bool _qty) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+float GetHullRepairDay(ref _refCharacter, bool _qty) 
 {
     float repPercent = 0.0;
     float matQ, tmpf;
@@ -764,7 +764,7 @@ float GetHullRepairDay(ref _refCharacter, bool _qty) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿
 	return repPercent;
 }
 
-float GetSailRepairDay(ref _refCharacter, bool _qty)			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+float GetSailRepairDay(ref _refCharacter, bool _qty)			
 {
     float repPercent = 0.0;
     float matQ, tmpf;
@@ -812,15 +812,15 @@ bool CheckSelfRepairConditions()
 }
 
 
-// Fellowtravels utilites
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+
 int GetPassengersQuantity(ref _refCharacter)
 {
 	if(!CheckAttribute(_refCharacter,"Fellows.Passengers.Quantity")) return 0;
 	return sti(_refCharacter.Fellows.Passengers.Quantity);
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ boal
+
 int GetOfficerPassengerQuantity(ref _refCharacter)
 {
 	int psgQuant = GetPassengersQuantity(_refCharacter);
@@ -914,7 +914,7 @@ int GetNotQuestFreePassengersQuantity(ref _refCharacter)
 		if (idx >0)
 		{
 			ok = !CheckAttribute(&characters[idx], "prisoned") || sti(characters[idx].prisoned) != true;
-			if (ok && !CheckAttribute(&characters[idx], "isquest") && !CheckAttribute(&characters[idx], "isfree"))   //to_do  isquest?
+			if (ok && !CheckAttribute(&characters[idx], "isquest") && !CheckAttribute(&characters[idx], "isfree"))   
 			{
 				result = result+1;
 			}
@@ -1079,7 +1079,7 @@ int RemovePassenger(ref _refCharacter,ref _refPassenger)
 {
  	if (sti(_refCharacter.index) == GetMainCharacterIndex())
 	{
-		CheckForReleaseOfficer(sti(_refPassenger.index));  // boal super fix
+		CheckForReleaseOfficer(sti(_refPassenger.index));  
 	}
 	else
 	{
@@ -1136,7 +1136,7 @@ int FindFellowtravellers(ref _refCharacter,ref _refFindCharacter)
 	return FELLOWTRAVEL_NO;
 }
 
-// ==> eddy
+
 bool CheckPassengerInCharacter(ref _refBaseChar, string _seekId)
 {
 	int psgQuant = GetPassengersQuantity(_refBaseChar);
@@ -1151,7 +1151,7 @@ bool CheckPassengerInCharacter(ref _refBaseChar, string _seekId)
 	return false;
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 int SetCompanionIndex(ref _refCharacter,int _CompanionNum, int _CompanionIdx)
 {
   if(_CompanionNum == -1)
@@ -1183,11 +1183,11 @@ int SetCompanionIndex(ref _refCharacter,int _CompanionNum, int _CompanionIdx)
 	if( _CompanionIdx>=0 && CheckAttribute(&Characters[_CompanionIdx],"nation") ) {
 		Characters[_CompanionIdx].prev_nation = Characters[_CompanionIdx].nation;
 		Characters[_CompanionIdx].nation = _refCharacter.nation;
-		Characters[_CompanionIdx].location = "none";//fix
+		Characters[_CompanionIdx].location = "none";
 	}
 	if( retVal>=0 && CheckAttribute(&Characters[retVal],"prev_nation") ) {
 		Characters[retVal].nation = Characters[retVal].prev_nation;
-		Characters[retVal].location = "none"; //fix
+		Characters[retVal].location = "none"; 
 	}
 
 	Event(EVENT_CHANGE_COMPANIONS,"");
@@ -1200,7 +1200,7 @@ int RemoveCharacterCompanion(ref _refCharacter, ref refCompanion)
 
 	aref refComps;
 	makearef(refComps,_refCharacter.Fellows.Companions);
-	for(i=1; i<COMPANION_MAX; i++)  // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½3
+	for(i=1; i<COMPANION_MAX; i++)  
 	{
 		compName = "id"+i;
 		if(CheckAttribute(refComps,compName) && refComps.(compName)==refCompanion.index)
@@ -1283,7 +1283,7 @@ int GetRemovableCompanionsNumber(ref _refCharacter)
 	return qn;
 }
 
-// ==> eddy
+
 bool CheckCompanionInCharacter(ref _refBaseChar, string _seekId)
 {
 	int cn;
@@ -1296,7 +1296,7 @@ bool CheckCompanionInCharacter(ref _refBaseChar, string _seekId)
 	return false;
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 int GetOfficersQuantity(ref _refCharacter)
 {
 	int idx=0;
@@ -1312,7 +1312,7 @@ int GetOfficersIndex(ref _refCharacter,int _OfficerNum)
 	if(_OfficerNum>3) return -1;
 	if(_OfficerNum==0)
     {
-        if(!CheckAttribute(_refCharacter,"index")) return -1; // boal fix
+        if(!CheckAttribute(_refCharacter,"index")) return -1; 
         return MakeInt(_refCharacter.index);
     }
 
@@ -1338,10 +1338,10 @@ int SetOfficersIndex(ref _refCharacter,int _OfficerNum, int _OfficerIdx)
 				break;
 			}
 		}
-        // fix
+        
         if (_OfficerNum == -1)
         {
-            _OfficerNum = 3; // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½?? ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+            _OfficerNum = 3; 
         }
 	}
 	if(_OfficerNum<1) return _OfficerIdx;
@@ -1389,18 +1389,18 @@ bool RemoveOfficersIndex(ref _refCharacter, int _OfficerIdx)
 
 int AddMoneyToCharacter(ref _refCharacter,int _Money)
 {
-	// boal -->
+	
 	if (_Money < 0 && sti(_refCharacter.Money) < abs(_Money))
 	{
 	    _Money = -sti(_refCharacter.Money);
 	}
-	// boal <--
+	
 	int newMoney = sti(_refCharacter.Money) + _Money;
 	if(newMoney<0) newMoney=0;
 	_refCharacter.Money = newMoney;
 
-    //boal -->
-	if (sti(_refCharacter.index) == GetMainCharacterIndex()) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    
+	if (sti(_refCharacter.index) == GetMainCharacterIndex()) 
 	{
 		if (_Money > 0)
 		{
@@ -1416,7 +1416,7 @@ int AddMoneyToCharacter(ref _refCharacter,int _Money)
 			}
 		}
 	}
-	// boal <--
+	
 	return newMoney;
 }
 
@@ -1459,7 +1459,7 @@ void SetBaseShipData(ref refCharacter)
 
 		if (!CheckAttribute(refShip,"Cannons.Type")) 
 		{ 
-			refShip.Cannons.Type = GetCannonByTypeAndCaliber("cannon", sti(refBaseShip.MaxCaliber)); // MakeInt(refBaseShip.Cannon);
+			refShip.Cannons.Type = GetCannonByTypeAndCaliber("cannon", sti(refBaseShip.MaxCaliber)); 
 		}
 
 		if (!CheckAttribute(refShip,"Crew.Morale"))	
@@ -1468,11 +1468,11 @@ void SetBaseShipData(ref refCharacter)
 		}
 		if (!CheckAttribute(refShip,"Crew.Quantity")) 
 		{ 
-			refShip.Crew.Quantity = refBaseShip.OptCrew; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+			refShip.Crew.Quantity = refBaseShip.OptCrew; 
 		}
         
-		SetGoodsInitNull(refCharacter); // boal ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		SetGoodsInitNull(refCharacter); 
+		
         if(!CheckAttribute(refCharacter, "ship.crew.Exp"))
 		{
 			refCharacter.Ship.Crew.Exp.Sailors   = 1 + rand(80);
@@ -1482,7 +1482,7 @@ void SetBaseShipData(ref refCharacter)
 		int iGoodN = 0;
 		int iGoodR = 0;
 
-		// boal -->
+		
 		i = GetCharacterFreeSpace(refCharacter,GOOD_POWDER) / 40;
         if(i>0)
         {
@@ -1494,8 +1494,8 @@ void SetBaseShipData(ref refCharacter)
 				SetCharacterGoods(refCharacter,GOOD_POWDER,i);
 			}
 		}
-		// boal <--
-		// bombs		
+		
+		
 		i = GetCharacterFreeSpace(refCharacter,GOOD_BOMBS) / 42;
 		if(i>0) 
 		{
@@ -1513,7 +1513,7 @@ void SetBaseShipData(ref refCharacter)
 			SetCharacterGoods(refCharacter,GOOD_BOMBS,iGoodN);
 		}
 
-		// grapes
+		
 		i = GetCharacterFreeSpace(refCharacter,GOOD_GRAPES) / 60;
 		if(i>0) 
 		{
@@ -1531,7 +1531,7 @@ void SetBaseShipData(ref refCharacter)
 			SetCharacterGoods(refCharacter,GOOD_GRAPES,iGoodN);
 		}
 
-		// knippels
+		
 		i = GetCharacterFreeSpace(refCharacter,GOOD_KNIPPELS) / 60;
 		if(i>0) 
 		{
@@ -1549,7 +1549,7 @@ void SetBaseShipData(ref refCharacter)
 			SetCharacterGoods(refCharacter,GOOD_KNIPPELS,iGoodN);
 		}
 
-		// cannonballs
+		
 		i = GetCharacterFreeSpace(refCharacter,GOOD_BALLS) / 42;
 		if(i>0) 
 		{
@@ -1567,7 +1567,7 @@ void SetBaseShipData(ref refCharacter)
 			SetCharacterGoods(refCharacter,GOOD_BALLS,iGoodN);
 		}
 
-		//food
+		
 		i = GetCharacterFreeSpace(refCharacter,GOOD_FOOD) / 20;
 		if(i>0) 
 		{
@@ -1584,7 +1584,7 @@ void SetBaseShipData(ref refCharacter)
 			iGoodN = iGoodN + iGoodR;
 			SetCharacterGoods(refCharacter,GOOD_FOOD,iGoodN);
 		}
-		//GOOD_WEAPON
+		
 		i = GetCharacterFreeSpace(refCharacter,GOOD_WEAPON) / 60;
 		if(i>0) 
 		{
@@ -1601,7 +1601,7 @@ void SetBaseShipData(ref refCharacter)
 			iGoodN = iGoodN + iGoodR;
 			SetCharacterGoods(refCharacter,GOOD_WEAPON,iGoodN);
 		}
-		//
+		
 		i = GetCharacterFreeSpace(refCharacter,GOOD_MEDICAMENT) / 100;
 		if(i>0) 
 		{
@@ -1627,7 +1627,7 @@ void SetGoodsInitNull(ref refCharacter)
 	NullCharacterGoods(refCharacter);
 }
 
-// Warship. ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 void NullCharacterGoods(ref rChar)
 {
 	string sGood;
@@ -1642,7 +1642,7 @@ void NullCharacterGoods(ref rChar)
 	}
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ :)
+
 void SetBaseFellows(object refCharacter)
 {
 	aref tmpRef;
@@ -1669,7 +1669,7 @@ void SetBaseFellows(object refCharacter)
 	tmpRef.id3 = -1;
 }
 
-// Items Utilite
+
 int GetChrItemQuantity(ref _refCharacter)
 {
 	aref ar; makearef(ar,_refCharacter.items);
@@ -1684,7 +1684,7 @@ void TakeItemFromCharacter(ref _refCharacter,string itemName)
 	TakeNItems(_refCharacter,itemName,-1);
 }
 
-// Warship. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+
 void AddItems(ref _Chr, string _ItemID, int _Num)
 {
 	TakeNItems(_Chr, _ItemID, _Num);
@@ -1694,9 +1694,9 @@ void RemoveItems(ref _Chr, string _ItemID, int _Num)
 {
 	TakeNItems(_Chr, _ItemID, -1*_Num);
 }
-// <-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-// Warship 11.05.09 ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+
 void GenerateAndAddItems(ref _chr, string _itemID, int _qty)
 {
 	int i;
@@ -1747,7 +1747,7 @@ int GetCharacterItem(ref _refCharacter,string itemName)
 	return 0;
 }
 
-int GetCharacterFreeGenerableItem(ref _refCharacter,string itemName) // patch-8
+int GetCharacterFreeGenerableItem(ref _refCharacter,string itemName) 
 {
 	ref tmpRef;
 	int iItemQ = 0;
@@ -1853,7 +1853,7 @@ bool TakeNItems(ref _refCharacter, string itemName, int n)
 		
 		_refCharacter.Money = q;
 		
-		//AddItemToCRC(_refCharacter, itemName, n);
+		
 		
 		return true;
 	}	
@@ -1865,7 +1865,7 @@ bool TakeNItems(ref _refCharacter, string itemName, int n)
 	
 	if(CheckAttribute(arItm, "price") && sti(arItm.price) == 0)
 	{
-		if(arItm.ID != "Gold") // Warship. ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		if(arItm.ID != "Gold") 
 		{
 			if(sti(_refCharacter.index) == GetMainCharacterIndex() && IsEntity(_refCharacter))
 			{
@@ -1883,12 +1883,9 @@ bool TakeNItems(ref _refCharacter, string itemName, int n)
 				PlayStereoSound("interface\important_item.wav");
 			}
 			
-			// Warship 08.05.09 - ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ ï¿½ ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
-			/*if(n > 0 && IsOfficer(_refCharacter) || IsCompanion(_refCharacter))
-			{
-				AddMsgToCharacter(_refCharacter, MSGICON_GETITEM);
-			}*/
+			
+			
+			 
 		}
 	}
 	
@@ -1934,7 +1931,7 @@ bool TakeNItems(ref _refCharacter, string itemName, int n)
 
 int GetCharacterCurrentIsland(ref _refCharacter)
 {
-	int curLocNum = FindLocation(_refCharacter.location);   // boal fix Characters[GetMainCharacterIndex()]    - ï¿½ï¿½-ï¿½ï¿½
+	int curLocNum = FindLocation(_refCharacter.location);   
 	if(curLocNum<0) return -1;
 	return GetIslandIdxByLocationIdx(curLocNum);
 }
@@ -1955,7 +1952,7 @@ int GetIslandIdxByLocationIdx(int locIdx)
 	for(int i=0; i<GetAttributesNum(rootar); i++)
 	{
 		ar = GetAttributeN(rootar,i);
-		if (locIdx >= sti(ar.begin) && locIdx < sti(ar.end) ) //fix boal 02.02.05
+		if (locIdx >= sti(ar.begin) && locIdx < sti(ar.end) ) 
 		{
 			return FindIsland(GetAttributeName(ar));
 		}
@@ -1977,11 +1974,11 @@ void SetRandomNameToCharacter(ref rCharacter)
 	while (iNation == PIRATE) { iNation = rand(MAX_NATIONS - 2); }
 	
 	ref rNames, rLastNames;
-    // fix -->
+    
     rNames = &sEnManNames;
 	if (rCharacter.sex != "man" && rCharacter.sex != "skeleton") rNames = &sEnWomenNames;
 	rLastNames = &sEnFamilies;
-	// fix <--
+	
 	switch(iNation)
 	{
 		case ENGLAND:
@@ -2065,11 +2062,11 @@ void SetRandomNameToCharacter_Generator(ref rCharacter)
 	while (iNation == PIRATE) { iNation = rand(MAX_NATIONS - 2); }
 	
 	ref rNames, rLastNames;
-    // fix -->
+    
     rNames = &sEnManGenNames;
 	if (rCharacter.sex != "man" && rCharacter.sex != "skeleton") rNames = &sEnWomenGenNames;
 	rLastNames = &sEnGenFamilies;
-	// fix <--
+	
 	switch(iNation)
 	{
 		case ENGLAND:
@@ -2146,9 +2143,9 @@ string GenerateRandomName_Generator(int iNation, string sSex)
 	return sName;
 }
 
-//=============================================================================
-//  EQUIP SECTION
-//=============================================================================
+
+
+
 string FindCharacterItemByGroup(ref chref, string groupID)
 {
  	int i,n;
@@ -2156,14 +2153,14 @@ string FindCharacterItemByGroup(ref chref, string groupID)
     float  maxBladeValue, curBladeValue;
     string resultItemId;
 	
-	if (CheckAttribute(chref, "CanTakeMushket") && CheckAttribute(chref, "IsMushketer")) return ""; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-    // boal 17.06.05 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+	if (CheckAttribute(chref, "CanTakeMushket") && CheckAttribute(chref, "IsMushketer")) return ""; 
+    
 	if (groupID == BLADE_ITEM_TYPE && IsOfficer(chref) && IsEquipCharacterByItem(chref, "unarmed") && !CheckAttribute(chref, "isMusketer"))
 	{
         RemoveCharacterEquip(chref, BLADE_ITEM_TYPE);
         TakeItemFromCharacter(chref, "unarmed");
 	}
-	// boal 17.06.05 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <--
+	
 	maxBladeValue = 0;
 	resultItemId  = "";
 	for(i=TOTAL_ITEMS-1; i>=0; i--)
@@ -2182,26 +2179,26 @@ string FindCharacterItemByGroup(ref chref, string groupID)
 				if( IsCharacterPerkOn(chref,"Gunman") ) {return refItm.id;}
 				else continue;
 			}
-            //boal -->
+            
             if( IsCharacterPerkOn(chref,"GunProfessional") )	{return refItm.id;}
-            // boal <--
+            
 			continue;
 		}
-		// boal 08.10.04 ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
-		// Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		
+		
 		if (groupID == CIRASS_ITEM_TYPE)
 		{
-          // if( IsCharacterPerkOn(chref, "Ciras") )	{return refItm.id;}
+          
 			if(refItm.Clothes == false)	return refItm.id;
            continue;
 		}
-		// boal 08.10.04 ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <--
+		
 
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+		
 		if (groupID == BLADE_ITEM_TYPE)
 		{
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-			//( 20 + ( 0.6 * bAttack + 0.4 * bAttack * GetCharacterSkill(chref, refItm.FencingType) * ( 1 + ( 1 - bBlnce ) * ( bBlnce - 1 ) / 5 ) ) / Wght
+			
+			
 			curBladeValue = (20.0 + (0.6 * stf(refItm.Attack) + 0.4 * stf(refItm.Attack) * (GetCharacterSkill(chref, refItm.FencingType) / SKILL_MAX) * (1.0 + (1.0 - stf(refItm.Balance)) * (stf(refItm.Balance) - 1.0)/5.0) ) ) / stf(refItm.Weight);
 			
 			if (curBladeValue > maxBladeValue)
@@ -2220,14 +2217,14 @@ string FindCharacterItemByGroup(ref chref, string groupID)
 	{
         return resultItemId;
 	}
-	// boal 17.06.05 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+	
 	if (groupID == BLADE_ITEM_TYPE && IsOfficer(chref) && sti(chref.index) != GetMainCharacterIndex() && !CheckAttribute(chref, "isMusketer"))
 	{
         GiveItem2Character(chref, "unarmed");
         EquipCharacterByItem(chref, "unarmed");
 	}
-	// boal 17.06.05 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <--
-	return "";  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+	
+	return "";  
 }
 
 bool IsEquipCharacterByItem(ref chref, string itemID)
@@ -2242,7 +2239,7 @@ bool IsEquipCharacterByItem(ref chref, string itemID)
 	return false;
 }
 
-// --> ugeen - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½     18.06.09
+
 bool IsEquipCharacterByMap(ref chref, string itemID)
 {
 	aref arEquip;
@@ -2258,7 +2255,7 @@ bool IsEquipCharacterByMap(ref chref, string itemID)
 	return false;
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -> ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+
 float GetEquippedItemsWeight(ref chref, string groupID)
 {	
 	int 	j;
@@ -2293,7 +2290,7 @@ float GetEquippedItemsWeight(ref chref, string groupID)
 	}		
 	return fEquipWeight;
 }
-// <-- ugeen
+
 
 string GetCharacterEquipByGroup(ref chref, string groupID)
 {
@@ -2340,12 +2337,12 @@ void SetEquipedItemToCharacter(ref chref, string groupID, string itemID)
 	aref arItm;
 	string modelName = "";
 	makearef(arItm,emptyItm);
- 	int itemNum; // boal 23.01.2004
+ 	int itemNum; 
 
 	if(itemID!="")
 	{
 		if( !CheckCharacterItem(chref,itemID) ) return;
-		itemNum = Items_FindItem(itemID,&arItm);// boal 23.01.2004
+		itemNum = Items_FindItem(itemID,&arItm);
 	}
 	
 	switch(groupID)
@@ -2359,9 +2356,9 @@ void SetEquipedItemToCharacter(ref chref, string groupID, string itemID)
 				setTelescopeInitParameters(arItm);
 			}
 		break;
-	    // boal -->
+	    
 	    case CIRASS_ITEM_TYPE:
-	        if (CheckAttribute(chref, "HeroModel")) // ï¿½ï¿½ï¿½, ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+	        if (CheckAttribute(chref, "HeroModel")) 
 	        {
 	            if (CheckAttribute(arItm, "model"))
 	            {
@@ -2376,7 +2373,7 @@ void SetEquipedItemToCharacter(ref chref, string groupID, string itemID)
 	        }
 	        else
 	        {
-	            // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	            
 	            if(CheckAttribute(arItm, "model"))
 	            {
 	                chref.cirassId = itemNum;
@@ -2386,22 +2383,22 @@ void SetEquipedItemToCharacter(ref chref, string groupID, string itemID)
 	                DeleteAttribute(chref, "cirassId");
 	            }
 	        }
-	        SetNewModelToChar(chref);//boal
-			if (chref.model == "protocusto") DoQuestCheckDelay("TalkSelf_Quest", 0.5); // Jason
+	        SetNewModelToChar(chref);
+			if (chref.model == "protocusto") DoQuestCheckDelay("TalkSelf_Quest", 0.5); 
 		break;
 
 		case PATENT_ITEM_TYPE:
 	        if(CheckAttribute(arItm,"quest"))
 	        {
 	            DoQuestCheckDelay(arItm.quest, 1.0);
-	            chref.EquipedPatentId = itemNum; // boal ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	            chref.EquipedPatentId = itemNum; 
 	        }
 	        else
 	        {
 	            DeleteAttribute(chref, "EquipedPatentId");
 	        }
 	    break;
-	    // boal <--
+	    
 		case GUN_ITEM_TYPE:		
 			if(CheckAttribute(arItm,"model"))	{modelName = arItm.model;}
 			SendMessage(chref,"ls",MSG_CHARACTER_SETGUN,modelName);
@@ -2443,37 +2440,37 @@ void SetEquipedItemToCharacter(ref chref, string groupID, string itemID)
 			if(CheckAttribute(arItm, "blade.colorstart"))	{colors = sti(arItm.blade.colorstart);}
 			if(CheckAttribute(arItm, "blade.colorend"))	{colore = sti(arItm.blade.colorend);}			
 			SendMessage(chref, "llsfll", MSG_CHARACTER_SETBLADE, 0, modelName, liveTime, colors, colore);
-			// boal -->
+			
 			if(CheckAttribute(arItm,"FencingType"))
 			{	LAi_BladeFencingType(chref, arItm.FencingType);
 			} else
 			{	LAi_BladeFencingType(chref, "FencingS");
 			}
-			if(CheckAttribute(arItm,"Weight")) //eddy.ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			if(CheckAttribute(arItm,"Weight")) 
 			{
-				LAi_BladeEnergyType(chref, GetEnergyBladeDrain(stf(arItm.Weight), arItm.FencingType ) );  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½
+				LAi_BladeEnergyType(chref, GetEnergyBladeDrain(stf(arItm.Weight), arItm.FencingType ) );  
 			}		
-			// boal <--
+			
 		break;
-		// --> ugeen 18.06.09   - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
+		
 		case MAPS_ITEM_TYPE:	
 			if(CheckAttribute(chref, "MapsAtlasCount"))
 			{
 				if(sti(arItm.Atlas) > 0)
 				{
 					chref.MapsAtlasCount = sti(chref.MapsAtlasCount) + 1;
-					if(sti(chref.MapsAtlasCount) == MAPS_IN_ATLAS && !CheckCharacterPerk(chref, "MapMaker"))  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					if(sti(chref.MapsAtlasCount) == MAPS_IN_ATLAS && !CheckCharacterPerk(chref, "MapMaker"))  
 					{
 						SetCharacterPerk(chref, "MapMaker");
 					}	
 				}	
 			}			
 		break;	
-	// <-- ugeen
+	
 	}
 }
 
-// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+
 float GetEnergyBladeDrain(float _weight, string _bladeType)
 {
 	float drain = 0.0;
@@ -2522,7 +2519,7 @@ void EquipCharacterByItem(ref chref, string itemID)
 	if( !CheckAttribute(arItm, "groupID") ) return;
 
 	string groupName = arItm.groupID;
-	if(groupName != MAPS_ITEM_TYPE) // ugeen - ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½  18.06.09
+	if(groupName != MAPS_ITEM_TYPE) 
 	{
 		string oldItemID = GetCharacterEquipByGroup(chref, groupName);
 		if(oldItemID == itemID) return;
@@ -2550,13 +2547,13 @@ void EquipCharacterByItem(ref chref, string itemID)
 			{
 				if (!IsCharacterPerkOn(chref,"GunProfessional")) return;
 			}
-			// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			
 			if(HasSubStr(arItm.id, "mushket") && !IsCharacterPerkOn(chref,"Gunman"))	return;		
 		}
 		if (groupName == GUN_ITEM_TYPE && HasSubStr(arItm.id, "mushket")) return;
 	}
 	
-	if(groupName != MAPS_ITEM_TYPE) // ugeen  18.06.09
+	if(groupName != MAPS_ITEM_TYPE) 
 	{
 		chref.equip.(groupName) = itemID;
 	}
@@ -2571,7 +2568,7 @@ void EquipCharacterByItem(ref chref, string itemID)
 	{	SetEquipedItemToCharacter(chref, groupName, itemID);
 	}
 }
- // to_do
+ 
 void EquipOfficerByItem(ref chref, string itemID)
 {
 	aref arItm;
@@ -2626,8 +2623,8 @@ void EnableEquip(ref chref, string equiping_group, bool enable)
 			stmp = GUN_ITEM_TYPE;		chref.equip.disabled_group.(stmp) = true;
 			stmp = BLADE_ITEM_TYPE;		chref.equip.disabled_group.(stmp) = true;
 			stmp = SPYGLASS_ITEM_TYPE;	chref.equip.disabled_group.(stmp) = true;
-			//
-			stmp = SPECIAL_ITEM_TYPE;	chref.equip.disabled_group.(stmp) = true; // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
+			stmp = SPECIAL_ITEM_TYPE;	chref.equip.disabled_group.(stmp) = true; 
 		}
 		else
 		{
@@ -2637,9 +2634,9 @@ void EnableEquip(ref chref, string equiping_group, bool enable)
 }
 
 
-//=============================================================================
-//  ARTEFACT ITEMS EQUIP SECTION
-//=============================================================================
+
+
+
 bool IsEquipCharacterByArtefact(ref chref, string itemID)
 {
 	aref 	arEquip;
@@ -2730,13 +2727,13 @@ bool IsCanArtefactBeEquipped(ref chref, string itemID)
 		if(sItem == SLOT_NOT_USED) continue;
 		else
 		{
-			ref rItem1 = ItemsFromID(sItem);  	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-			ref rItem2 = ItemsFromID(itemID); 	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+			ref rItem1 = ItemsFromID(sItem);  	
+			ref rItem2 = ItemsFromID(itemID); 	
 			if(!CheckAttribute(rItem1,"type") || !CheckAttribute(rItem2,"type")) return false;
 			if(rItem1.type == rItem2.type) continue;
 			if(rItem1.type == ITEM_OBEREG || rItem1.type == ITEM_TOTEM) continue;
 			if(rItem2.type == ITEM_OBEREG || rItem2.type == ITEM_TOTEM) continue;
-			else return false; 					// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ !!!!!
+			else return false; 					
 		}
 	}
 	return true;
@@ -2776,7 +2773,7 @@ void RemoveCharacterArtefactEquip(ref chref, string slotID)
 	if(sItem != "")
 	{
 		ref rItem = ItemsFromID(sItem);
-		if(CheckAttribute(rItem, "time") && sti(rItem.time) > -1) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		if(CheckAttribute(rItem, "time") && sti(rItem.time) > -1) 
 		{
 			TakeNItems(chref, sItem, -1);			
 		}
@@ -2795,7 +2792,7 @@ void EquipCharacterByArtefact(ref chref, string itemID)
 	if( !CheckAttribute(arItm, "groupID") ) return;
 	if(arItm.groupID == ITEM_SLOT_TYPE)
 	{
-		if(IsEquipCharacterByArtefact(chref, itemID)) return; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		if(IsEquipCharacterByArtefact(chref, itemID)) return; 
 		slotID = GetCharacterFreeSlot(chref);
 		if(slotID != SLOT_NOT_USED)
 		{
@@ -2870,8 +2867,8 @@ void CheckCharactersUpdateItems()
 	int iPassenger, cn;
 	ref sld;
 
-	UpdateCharacterEquipItem(pchar); // ï¿½ï¿½
-	for (int io = 0; io < GetPassengersQuantity(pchar); io++) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	UpdateCharacterEquipItem(pchar); 
+	for (int io = 0; io < GetPassengersQuantity(pchar); io++) 
 	{
 		iPassenger = GetPassenger(pchar, io);
 		if (iPassenger != -1)
@@ -2880,7 +2877,7 @@ void CheckCharactersUpdateItems()
 			UpdateCharacterEquipItem(sld);
 		}
 	}
-	for (int i=1; i<COMPANION_MAX; i++) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	for (int i=1; i<COMPANION_MAX; i++) 
 	{
 		cn = GetCompanionIndex(pchar, i);
 		if(cn != -1)
@@ -2897,7 +2894,7 @@ bool IsCharacterEquippedArtefact(ref rChar, string itemID)
 	ref 	rItem, sld;
 	string  sKind = "";
 	
-	if (IsMainCharacter(rChar)) // ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+	if (IsMainCharacter(rChar)) 
 	{
 		if(IsEquipCharacterByArtefact(pchar, itemID)) return true;
 		rItem = ItemsFromID(itemID);
@@ -2942,7 +2939,7 @@ bool IsCharacterEquippedArtefact(ref rChar, string itemID)
 			return false;
 		}	
 	}
-	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½.ï¿½.)
+	
 	return IsEquipCharacterByArtefact(rChar, itemID);
 }
 
@@ -2958,7 +2955,7 @@ float isEquippedAmuletUse(ref rChar, string sItem, float fOff, float fOn)
 	return fOff;
 }
 
-/// --> Ugeen 30.09.10  ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+
 int ChangeCharacterComplexReputationABS(ref chref, string repName, float incr)
 {
 	int curVal = COMPLEX_REPUTATION_NEUTRAL;
@@ -2991,7 +2988,7 @@ int ChangeCharacterComplexReputation(ref chref, string repName, float incr)
 	chref.reputation.(repName) = newVal;
 	if(!IsMainCharacter(chref)) return makeint(newVal);
 
-	if(repName != "authority") // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	if(repName != "authority") 
 	{
 		prevName 		= GetReputationComplexName(makeint(prevVal), repName);
 		newName 		= GetReputationComplexName(makeint(newVal),  repName);
@@ -3018,11 +3015,11 @@ int ChangeCharacterComplexReputation(ref chref, string repName, float incr)
 	
 	return makeint(newVal);
 }
-/// <-- ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 
-///  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 06/06/06 boal new concept -->
-//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
-//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½
+
+
+
+
 int ChangeCharacterReputationABS(ref chref, float incr)
 {
 	int curVal = REPUTATION_NEUTRAL;
@@ -3032,7 +3029,7 @@ int ChangeCharacterReputationABS(ref chref, float incr)
 	return ChangeCharacterReputation(chref , incr);
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 int ChangeCharacterReputationToNeutral(ref chref, float incr)
 {
 	int curVal = REPUTATION_NEUTRAL;
@@ -3044,7 +3041,7 @@ int ChangeCharacterReputationToNeutral(ref chref, float incr)
 
 int ChangeCharacterReputation(ref chref, float incr)
 {
-	if (CheckAttribute(chref, "GenQuest.ReputationNotChange")) return sti(chref.reputation); //eddy. ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	if (CheckAttribute(chref, "GenQuest.ReputationNotChange")) return sti(chref.reputation); 
 	float prevVal = REPUTATION_NEUTRAL;
 	if (CheckAttribute(chref,"reputation") )	prevVal = stf(chref.reputation);
 
@@ -3068,49 +3065,49 @@ int ChangeCharacterReputation(ref chref, float incr)
 
 	return makeint(newVal);
 }
-//    ChangeCharacterNationReputation(chref, iType, incr);
+
 
 void UpdateReputation()
 {
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
-	if (sti(pchar.reputation.nobility) < (COMPLEX_REPUTATION_NEUTRAL - 10))  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	
+	if (sti(pchar.reputation.nobility) < (COMPLEX_REPUTATION_NEUTRAL - 10))  
 	{
 		ChangeCharacterComplexReputation(pchar, "nobility", (MOD_SKILL_ENEMY_RATE / 50.0));
 	}
-	if (sti(pchar.reputation.nobility) > (COMPLEX_REPUTATION_NEUTRAL + 10))  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	if (sti(pchar.reputation.nobility) > (COMPLEX_REPUTATION_NEUTRAL + 10))  
 	{
 		ChangeCharacterComplexReputation(pchar, "nobility", (-MOD_SKILL_ENEMY_RATE / 25.0));
 	}
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	if (sti(pchar.reputation.fame) < (COMPLEX_REPUTATION_NEUTRAL - 10))  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	
+	if (sti(pchar.reputation.fame) < (COMPLEX_REPUTATION_NEUTRAL - 10))  
 	{
 		ChangeCharacterComplexReputation(pchar, "fame", (MOD_SKILL_ENEMY_RATE / 50.0));
 	}
-	if (sti(pchar.reputation.fame) > (COMPLEX_REPUTATION_NEUTRAL + 10))  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	if (sti(pchar.reputation.fame) > (COMPLEX_REPUTATION_NEUTRAL + 10))  
 	{
 		ChangeCharacterComplexReputation(pchar, "fame", (-MOD_SKILL_ENEMY_RATE / 25.0));
 	}
 	
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+
 void UpdateFame()
 {
-	if (sti(pchar.reputation) < (REPUTATION_NEUTRAL - 10))  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	if (sti(pchar.reputation) < (REPUTATION_NEUTRAL - 10))  
 	{
-		ChangeCharacterReputation(pchar, (MOD_SKILL_ENEMY_RATE / 40.0)); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		ChangeCharacterReputation(pchar, (MOD_SKILL_ENEMY_RATE / 40.0)); 
 	}
-	if (sti(pchar.reputation) > (REPUTATION_NEUTRAL + 10))  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	if (sti(pchar.reputation) > (REPUTATION_NEUTRAL + 10))  
 	{
 		ChangeCharacterReputation(pchar, (-MOD_SKILL_ENEMY_RATE / 20.0));
 	}
 }
-///  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 06/06/06 boal new concept <--
+
 
 bool Character_IsAbordageEnable(ref rCharacter)
 {
-	if (CheckAttribute(rCharacter, "AlwaysFriend")) return false; // boal
+	if (CheckAttribute(rCharacter, "AlwaysFriend")) return false; 
 	if (CheckAttribute(rCharacter, "Abordage.Enable")) { return sti(rCharacter.Abordage.Enable); }
 	return true;
 }
@@ -3163,7 +3160,7 @@ void proc_MsgIconTick()
 		DelMsgFromCharacter(chref,nMsg);
 	}
 }
- // to_do
+ 
 int GetCharacterReputation(aref chr, int iNation)
 {
 	int iVal = 0;
@@ -3225,7 +3222,7 @@ bool CheckForRank(aref chr, int iRank)
 	return false;
 }
 
-/////////////////////////
+
 string  Get_My_Cabin()
 {
 	return Pchar.SystemInfo.CabinType;
@@ -3271,14 +3268,14 @@ void  Set_My_Cabin()
 	else
 	{
 	    rShip = GetRealShip(nShipType);
-	    newCab = "My_" + rShip.CabinType;  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	    newCab = "My_" + rShip.CabinType;  
 	}
 
     if (Pchar.SystemInfo.CabinType != newCab)
     {
         if (Pchar.SystemInfo.CabinType != "")
         {
-            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            
             ref     loc, locTo;
             aref    arFromBox;
             aref    curItem;
@@ -3309,7 +3306,7 @@ void  Set_My_Cabin()
                         locTo.box1.items.(attr) = makeint(sti(locTo.box1.items.(attr)) + makeint(GetAttributeValue(curItem)));
                     }
                 }
-                // del
+                
         		DeleteAttribute(loc, sTemp + ".items");
         	    loc.(sTemp).items = "";
         	    loc.(sTemp) = Items_MakeTime(0, 0, 1, 2003);
@@ -3353,7 +3350,7 @@ void  Set_My_Cabin()
     }
 }
 
-int CheckItemInBox(string _itemID, string _locationID, string _box) // Addon 2016-1 Jason ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+int CheckItemInBox(string _itemID, string _locationID, string _box) 
 {
 	int Qty = 0; 
     string attr;
@@ -3499,7 +3496,7 @@ int GetItemMyCabin(string _itemID, int _qty)
 	return rQty;
 } 
  
-// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 bool isMainCharacterPatented()
 {
     if(CheckAttribute(pchar, "EquipedPatentId") && CheckCharacterItem(pchar, Items[sti(pchar.EquipedPatentId)].id))
@@ -3518,7 +3515,7 @@ int GetPatentNation()
     return -1;
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 void AddTitleNextRate(int nation, float num)
 {
     if (isMainCharacterPatented() && sti(Items[sti(pchar.EquipedPatentId)].Nation) == nation)
@@ -3529,7 +3526,7 @@ void AddTitleNextRate(int nation, float num)
         Log_TestInfo("TitleCurNext = " + stf(Items[sti(pchar.EquipedPatentId)].TitulCurNext));
     }
 }
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
+
 bool isReadyToNextTitle(int nation)
 {
     bool    ret = false;
@@ -3544,7 +3541,7 @@ bool isReadyToNextTitle(int nation)
 
     return ret;
 }
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+
 float GetCardsGameCheckRate()
 {
 	float k;
@@ -3616,10 +3613,10 @@ bool CheckDiceGameBigRate()
     }
 	return ret;
 }
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ <--
 
-// boal 08.01.05 -->
-int GetPartyCrewQuantity(ref _refCharacter, bool _removable) // true - ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+
+
+int GetPartyCrewQuantity(ref _refCharacter, bool _removable) 
 {
 	int cn;
 	int sumCrew = 0;
@@ -3631,7 +3628,7 @@ int GetPartyCrewQuantity(ref _refCharacter, bool _removable) // true - ï¿½ï¿½ï¿½
 		if (cn!=-1)
 		{
             officer = GetCharacter(cn);
-            if (!GetRemovable(officer) && _removable) continue; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ + ï¿½ï¿½
+            if (!GetRemovable(officer) && _removable) continue; 
 			sumCrew = sumCrew + GetCrewQuantity(officer);
 		}
 	}
@@ -3648,7 +3645,7 @@ int GetTroopersCrewQuantity(ref _refCharacter)
  	if (CheckOfficersPerk(_refCharacter, "Troopers"))
     {
         Log_TestInfo("-= GetTroopersCrewQuantit =-");
-        for (j=1; j<COMPANION_MAX; j++) // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        for (j=1; j<COMPANION_MAX; j++) 
         {
 	        cn = GetCompanionIndex(_refCharacter, j);
 	        if (cn>0)
@@ -3661,31 +3658,31 @@ int GetTroopersCrewQuantity(ref _refCharacter)
 		        {
 		           compCrew = 0;
 		        }
-				compCrew = GetWeaponCrew(officer, compCrew);  // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+				compCrew = GetWeaponCrew(officer, compCrew);  
 
                 if (compCrew > 0)
                 {
 	                RemoveCharacterGoodsSelf(officer, GOOD_WEAPON, makeint(compCrew/2 + 0.5));
 	                SetCrewQuantity(officer, GetCrewQuantity(officer) - compCrew);
                 	Log_SetStringToLog("A landing party of " + officer.Ship.Name + " has " + compCrew + " soldiers in it");
-                	AddCharacterExpToSkill(officer, "Defence", makeint(compCrew / 2 + 0.5)); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                	AddCharacterExpToSkill(officer, "Defence", makeint(compCrew / 2 + 0.5)); 
                 	AddCharacterExpToSkill(officer, "Grappling", makeint(compCrew / 2 + 0.5));
                 	sumCrew = sumCrew + compCrew;
                 }
 		    }
 		}
     }
-    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    
     if (CheckAttribute(_refCharacter, "TempPerks.QuestTroopers"))
 	{
         Log_TestInfo("-= QuestTroopers =-");
-		for (j=1; j<COMPANION_MAX; j++) // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		for (j=1; j<COMPANION_MAX; j++) 
         {
 	        cn = GetCompanionIndex(_refCharacter, j);
 	        if (cn>0)
 	        {
 		        officer = GetCharacter(cn);
-		        if (GetRemovable(officer)) continue;// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		        if (GetRemovable(officer)) continue;
 
 		        compCrew = GetCrewQuantity(officer);
 		        if (compCrew < 0)
@@ -3703,7 +3700,7 @@ int GetTroopersCrewQuantity(ref _refCharacter)
 	}
 	return sumCrew;
 }
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+
 void AddTroopersCrewToOther(ref _refCharacter)
 {
 	int cn, j;
@@ -3719,7 +3716,7 @@ void AddTroopersCrewToOther(ref _refCharacter)
     }
 	if (compCrew > 0)
 	{
-	    for (j=1; j<COMPANION_MAX; j++) // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	    for (j=1; j<COMPANION_MAX; j++) 
 	    {
 	        cn = GetCompanionIndex(_refCharacter, j);
 	        if (cn>0)
@@ -3730,7 +3727,7 @@ void AddTroopersCrewToOther(ref _refCharacter)
                 if (GetMaxCrewQuantity(officer) >= (GetCrewQuantity(officer) + compCrew))
                 {
                     SetCrewQuantity(officer, (GetCrewQuantity(officer) + compCrew));
-                    break;  // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    break;  
                 }
                 else
                 {
@@ -3741,7 +3738,7 @@ void AddTroopersCrewToOther(ref _refCharacter)
 		}
 	}
 }
-// boal 21.01.2004
+
 int GetWeaponCrew(ref _char, int _crew)
 {
     int weaponOnBoard = GetCargoGoods(_char, GOOD_WEAPON);
@@ -3751,27 +3748,27 @@ int GetWeaponCrew(ref _char, int _crew)
 	}
 	return _crew;
 }
-// boal 08.01.05 <--
 
-// ========================= eddy ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+
 int GenerateNationTrade(int nation)
 {
 	int i = -1;
-	// boal -->
+	
 	int   j = 0;
 	bool  ok;
 
 	while (i == -1 && j < 10)
 	{
 		i = rand(MAX_NATIONS - 1);
-		ok = (GetNationRelation2MainCharacter(i) == RELATION_ENEMY) && (i != PIRATE); //fix 12.05.05
-		if (ok || GetNationRelation(nation, i) == RELATION_ENEMY) // boal ï¿½ï¿½ï¿½ï¿½ nation == i || i == PIRATE- ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½!!!
+		ok = (GetNationRelation2MainCharacter(i) == RELATION_ENEMY) && (i != PIRATE); 
+		if (ok || GetNationRelation(nation, i) == RELATION_ENEMY) 
 		{
 			i = -1;
 		}
 		j++;
 	}
-    // boal <--
+    
 	return i;
 }
 
@@ -3791,7 +3788,7 @@ int RecalculateSquadronCargoLoad(ref _refCharacter)
 	return retVal;
 }
 
-// ï¿½ï¿½ ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 void LoansMoneyAvenger(ref _loan)
 {
     Log_SetStringToLog("Terms of your loan are expired");
@@ -3806,11 +3803,11 @@ void LoansMoneyAvengerAmount(ref _loan, int _sum)
     OfficersReaction("bad");
     if ( _loan.nation == PIRATE)
     {
-        typeHunter = "enghunter";  // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        typeHunter = "enghunter";  
     }
     ChangeCharacterHunterScore(PChar, typeHunter, _sum);
 }
-//homo ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 int GetCharacterbyLocation(string location, string group, string locator)
 {
     ref sld;
@@ -3822,42 +3819,42 @@ int GetCharacterbyLocation(string location, string group, string locator)
 	return -1;
 }
 
-// Warship -->
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-bool SetMainCharacterToMushketer(string sMushket, bool _ToMushketer) // ï¿½ï¿½ï¿½ï¿½ _ToMushketer == true, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+
+bool SetMainCharacterToMushketer(string sMushket, bool _ToMushketer) 
 {
 	int iItem;
 	string sLastGun = "";
 	
-	if(_ToMushketer && sMushket != "") // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	if(_ToMushketer && sMushket != "") 
 	{
 		iItem = GetItemIndex(sMushket);
 		if(iItem == -1) return false;
 		
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		
 		if(!CanEquipMushketOnLocation(PChar.Location)) return false;
 		
 		sLastGun = GetCharacterEquipByGroup(PChar, GUN_ITEM_TYPE);
 		PChar.DefaultAnimation = PChar.model.Animation;
-		PChar.IsMushketer = true; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ "ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
-		PChar.IsMushketer.MushketID = sMushket; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		PChar.IsMushketer.LastGunID = sLastGun; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ID ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		PChar.IsMushketer = true; 
+		PChar.IsMushketer.MushketID = sMushket; 
+		PChar.IsMushketer.LastGunID = sLastGun; 
 		PChar.model = PChar.model + "_mush";
-		PChar.model.animation = "mushketer"; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		Characters_RefreshModel(PChar); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		EquipCharacterByItem(PChar, sMushket); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		PChar.Equip.TempGunID = sLastGun; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		PChar.model.animation = "mushketer"; 
+		Characters_RefreshModel(PChar); 
+		EquipCharacterByItem(PChar, sMushket); 
+		PChar.Equip.TempGunID = sLastGun; 
 		
 	}
-	else // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else 
 	{
-		PChar.model = FindStringBeforeChar(PChar.model, "_mush"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		PChar.model = FindStringBeforeChar(PChar.model, "_mush"); 
 		PChar.model.Animation = PChar.DefaultAnimation;
 		Characters_RefreshModel(PChar);
-		RemoveCharacterEquip(PChar, GUN_ITEM_TYPE); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		RemoveCharacterEquip(PChar, GUN_ITEM_TYPE); 
 		if(PChar.IsMushketer.LastGunID != "" && GetCharacterItem(PChar, PChar.IsMushketer.LastGunID) > 0)
 		{
-			EquipCharacterByItem(PChar, PChar.IsMushketer.LastGunID); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			EquipCharacterByItem(PChar, PChar.IsMushketer.LastGunID); 
 		}
 		
 		DeleteAttribute(PChar, "IsMushketer");
@@ -3867,16 +3864,13 @@ bool SetMainCharacterToMushketer(string sMushket, bool _ToMushketer) // ï¿½ï¿½ï¿
 	return true;
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
+
 bool CanEquipMushketOnLocation(string LocationID)
 {
 	int iLocation = FindLocation(LocationID);
 	if(iLocation == -1) return false;
 	
-	/* if(HasSubStr(LocationID, "Tavern")) // ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	{
-		return false;
-	} */
+	 
 	
 	if(!IsPCharHaveMushketerModel())
 	{
@@ -3886,7 +3880,7 @@ bool CanEquipMushketOnLocation(string LocationID)
 	return true;
 }
 
-// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
+
 bool IsPCharHaveMushketerModel()
 {
 	String sModel = PChar.Model;
@@ -3902,7 +3896,7 @@ bool IsPCharHaveMushketerModel()
 	return false;
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 int CreateCharacterClone(ref Character, int iLifeDay)
 {
 	int iTemp = NPC_GeneratePhantomCharacter("citizen", sti(Character.Nation), MAN, iLifeDay);
@@ -3915,7 +3909,7 @@ int CreateCharacterClone(ref Character, int iLifeDay)
 	return iTemp;
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ID ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 String GetCharacterEquipSuitID(ref rChar)
 {
 	String sItem = GetCharacterEquipByGroup(rChar, CIRASS_ITEM_TYPE);
@@ -3923,8 +3917,8 @@ String GetCharacterEquipSuitID(ref rChar)
 	if(sItem == "") return INVALID_SUIT;
 	return sItem;
 }
-// <-- Warship
-// --> ugeen   16.02.09
+
+
 
 void EquipCharacterByAtlas(ref chref)
 {
@@ -3933,7 +3927,7 @@ void EquipCharacterByAtlas(ref chref)
 	chref.equip.(groupID) = rLoc.id;
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½
+
 bool CheckMapForEquipped(ref refCh, string itemID)
 {
 	int   idLngFile;
@@ -3944,11 +3938,11 @@ bool CheckMapForEquipped(ref refCh, string itemID)
 	
 	if(sti(refCh.index) == GetMainCharacterIndex() && CheckCharacterItem(refCh, arItem.id))	
 	{	
-		if(!CheckCharacterItem(refCh, "MapsAtlas")) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½,  ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		if(!CheckCharacterItem(refCh, "MapsAtlas")) { 
 			GiveItem2Character(refCh, "MapsAtlas");
 			EquipCharacterByAtlas(refCh);
 		}	
-		if(!IsEquipCharacterByMap(refCh, itemID)) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		if(!IsEquipCharacterByMap(refCh, itemID)) { 
 			EquipCharacterByItem(refCh, itemID); 			
 			Log_SetStringToLog(LanguageConvertString(idLngFile, arItem.name) +" is added to your atlas");
 			arItem = ItemsFromID("MapsAtlas");
@@ -3961,7 +3955,7 @@ bool CheckMapForEquipped(ref refCh, string itemID)
 	return true;
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+
 void RefreshEquippedMaps(ref chref)
 {
 	int 	i;
@@ -4003,7 +3997,7 @@ void StoreEquippedMaps(ref refCh)
 			if(groupID == MAPS_ITEM_TYPE)
 			{
 				if(IsEquipCharacterByMap(refCh, rLoc.id))  
-				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				
 				{
 					refCh.Stored.Maps.(sName) = refCh.items.(sName);
 				}
@@ -4029,7 +4023,7 @@ void RestoreEquippedMaps(ref refCh)
 	DeleteAttribute(refCh, "Stored.Maps");
 	RefreshEquippedMaps(refCh);
 }
-// <-- ugeen
+
 
 void OfficersHold()
 {
@@ -4057,7 +4051,7 @@ void OfficersFollow()
 	}
 }
 
-float ChangeIndianRelation(float _val) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+float ChangeIndianRelation(float _val) 
 {
    pchar.questTemp.Indian.relation = stf(pchar.questTemp.Indian.relation) + _val;
    if (stf(pchar.questTemp.Indian.relation) > 100.0) pchar.questTemp.Indian.relation = 100.0;
@@ -4066,4 +4060,5 @@ float ChangeIndianRelation(float _val) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½
    
    return stf(pchar.questTemp.Indian.relation);
 }
+
 

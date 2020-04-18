@@ -3,14 +3,14 @@
 #define LAI_TYPE_MONKEY		"monkey"
 
 
-//Инициализация
+
 void LAi_type_monkey_Init(aref chr)
 {
 	DeleteAttribute(chr, "location.follower");
 	DeleteAttribute(chr, "chr_ai.type");
 	chr.chr_ai.type = LAI_TYPE_MONKEY;
 	LAi_tmpl_stay_InitTemplate(chr);
-	//Установим анимацию персонажу
+	
 	BeginChangeCharacterActions(chr);
 	chr.actions.idle.i1 = "idle_1";
 	chr.actions.idle.i2 = "idle_2";
@@ -51,13 +51,13 @@ void LAi_type_monkey_Init(aref chr)
 	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", true);
 }
 
-//Процессирование типа персонажа
+
 void LAi_type_monkey_CharacterUpdate(aref chr, float dltTime)
 {
 	int trg = -1;
 	if(chr.chr_ai.tmpl == LAI_TMPL_FIGHT)
 	{
-		//Воюем
+		
 		bool isValidate = false;
 		trg = LAi_tmpl_fight_GetTarget(chr);
 		if(trg >= 0)
@@ -72,14 +72,14 @@ void LAi_type_monkey_CharacterUpdate(aref chr, float dltTime)
 		}
 		if(!isValidate)
 		{
-			//Ищем новую цель
+			
 			trg = LAi_group_GetTarget(chr);
 			if(trg < 0)
 			{
-				//Переходим в режим ожидания
+				
 				LAi_type_monkey_Return(chr);
 			}else{
-				//Натравливаем на новую цель
+				
 				LAi_tmpl_SetFight(chr, &Characters[trg]);
 				if(rand(100) < 50)
 				{
@@ -93,11 +93,11 @@ void LAi_type_monkey_CharacterUpdate(aref chr, float dltTime)
 			}
 		}
 	}else{
-		//Ищем новую цель
+		
 		trg = LAi_group_GetTarget(chr);
 		if(trg >= 0)
 		{
-			//Нападаем на новую цель
+			
 			LAi_tmpl_SetFight(chr, &Characters[trg]);
 			if(rand(100) < 90)
 			{
@@ -107,19 +107,19 @@ void LAi_type_monkey_CharacterUpdate(aref chr, float dltTime)
 	}
 }
 
-//Загрузка персонажа в локацию
+
 bool LAi_type_monkey_CharacterLogin(aref chr)
 {
 	return true;
 }
 
-//Выгрузка персонажа из локацию
+
 bool LAi_type_monkey_CharacterLogoff(aref chr)
 {
 	return true;
 }
 
-//Завершение работы темплейта
+
 void LAi_type_monkey_TemplateComplite(aref chr, string tmpl)
 {
 	if(tmpl == "goto")
@@ -135,33 +135,33 @@ void LAi_type_monkey_TemplateComplite(aref chr, string tmpl)
 	}
 }
 
-//Сообщить о желании завести диалог
+
 void LAi_type_monkey_NeedDialog(aref chr, aref by)
 {
 }
 
-//Запрос на диалог, если возвратить true то в этот момент можно начать диалог
+
 bool LAi_type_monkey_CanDialog(aref chr, aref by)
 {
 	return false;
 }
 
-//Начать диалог
+
 void LAi_type_monkey_StartDialog(aref chr, aref by)
 {
 }
 
-//Закончить диалог
+
 void LAi_type_monkey_EndDialog(aref chr, aref by)
 {
 }
 
-//Персонаж атаковал другого персонажа
+
 void LAi_type_monkey_Attack(aref attack, aref enemy, float attackDmg, float hitDmg)
 {
 	if(rand(1000) < 100)
 	{
-		//Отравляем персонажа
+		
 		float poison = 0.0;
 		if(CheckAttribute(enemy, "chr_ai.poison"))
 		{
@@ -173,18 +173,18 @@ void LAi_type_monkey_Attack(aref attack, aref enemy, float attackDmg, float hitD
 	}
 }
 
-//Персонаж атоковал заблокировавшегося персонажа
+
 void LAi_type_monkey_Block(aref attack, aref enemy, float attackDmg, float hitDmg)
 {
 }
 
-//Персонаж выстрелил
+
 void LAi_type_monkey_Fire(aref attack, aref enemy, float kDist, bool isFindedEnemy)
 {
 }
 
 
-//Персонаж атакован
+
 void LAi_type_monkey_Attacked(aref chr, aref by)
 {
 	

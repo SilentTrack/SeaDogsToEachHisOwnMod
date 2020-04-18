@@ -1,4 +1,4 @@
-//#include "DIALOGS\convoy_traider.h"
+
 void ProcessDialogEvent()
 {
 	ref NPChar, d;
@@ -71,7 +71,7 @@ void ProcessDialogEvent()
 			dialog.text = "Oh! Thank you. Under your protection I felt as safe as ever. Here's your well-deserved reward.";
 			Link.l1 = "You're welcome.";
 			link.l1.go = "exit";
-			//слухи
+			
 			AddSimpleRumour(LinkRandPhrase("A merchant captain by the name of " + GetFullName(npchar) + " says that captain " + GetMainCharacterNameDat() + " can be trusted when one needs an escort.", 
 				"Negociant named " + GetFullName(npchar) + " says that captain " + GetMainCharacterNameDat() + " can be trusted. "+ GetSexPhrase("He","She") +" protected his ship in a best possible way while escorting him to " + XI_ConvertString("Colony" + pchar.quest.destination + "Gen") + ".", 
 				"I heard that you keep the word escort ships, which give trading captains. A trader named " + GetFullName(npchar) + " is very good of you responds."), sti(npchar.nation), 40, 1);
@@ -83,7 +83,7 @@ void ProcessDialogEvent()
 	}
 } 
 
-// boal 03.05.04 квест сопроводить торговца -->
+
 void GenerateConvoyQuest(ref npchar)
 {
 	int iTradeMoney, iNation;
@@ -91,18 +91,18 @@ void GenerateConvoyQuest(ref npchar)
 	DeleteAttribute(NPChar, "Ship");
     SetShipToFantom(NPChar, "trade", true);
 
-	iNation = GetRelation2BaseNation(sti(npchar.nation)); //если привезти нужно во вражеский город
+	iNation = GetRelation2BaseNation(sti(npchar.nation)); 
 	int daysQty = GetMaxDaysFromIsland2Island(GetArealByCityName(pchar.ConvoyQuest.City), GetArealByCityName(pchar.quest.destination));
 	if (sti(daysQty) > 14) daysQty = 14;
 	pchar.ConvoyQuest.iDay = makeint(sti(daysQty)*(frand(1.3)+0.7));
 	iTradeMoney = (sti(daysQty)*600*sti(pchar.GenQuest.Convoy.Shipmod)+rand(100))*sti(daysQty)/sti(pchar.ConvoyQuest.iDay);
-	if (iNation == RELATION_ENEMY && sti(npchar.nation != PIRATE)) iTradeMoney = makeint(iTradeMoney * 1.4); //то размер награды увеличивается
+	if (iNation == RELATION_ENEMY && sti(npchar.nation != PIRATE)) iTradeMoney = makeint(iTradeMoney * 1.4); 
 	pchar.ConvoyQuest.convoymoney = iTradeMoney;			
 
 
-	//Log_Info(FindRussianDaysString(sti(daysQty)));
-	//Log_Info(pchar.quest.destination);
-	//Log_Info(pchar.ConvoyQuest.City);
+	
+	
+	
 
 	SetTimerCondition("generate_convoy_quest_timer", 0, 0, sti(pchar.ConvoyQuest.iDay), false);
 

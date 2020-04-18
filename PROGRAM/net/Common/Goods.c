@@ -28,7 +28,7 @@ void Net_InitGoods()
 	ref rG;
 	int n = 0;
 
-	// BALLS
+	
 	makeref(rG, NetGoods[n]); 
 	rG.Name = "Balls";
 	rG.Index = n;
@@ -40,7 +40,7 @@ void Net_InitGoods()
 	rG.DamageRig = 4.0;
 	rG.DamageCrew = 0.25;
 
-	// GRAPES
+	
 	n++; 
 	makeref(rG, NetGoods[n]);
 	rG.Name = "Grapes";
@@ -53,7 +53,7 @@ void Net_InitGoods()
 	rG.DamageRig = 1.5;
 	rG.DamageCrew = 2.0;
 
-	// KNIPPELS
+	
 	n++; 
 	makeref(rG, NetGoods[n]);
 	rG.Name = "Knippels";
@@ -66,7 +66,7 @@ void Net_InitGoods()
 	rG.DamageRig = 17.0;
 	rG.DamageCrew = 0.35;
 
-	// BOMBS
+	
 	n++; 
 	makeref(rG, NetGoods[n]); 
 	rG.Name = "Bombs";
@@ -79,7 +79,7 @@ void Net_InitGoods()
 	rG.DamageRig = 3.5;
 	rG.DamageCrew = 0.5;
 
-	// PLANKS
+	
 	n++; 
 	makeref(rG, NetGoods[n]); 
 	rG.Name = "Planks";
@@ -88,7 +88,7 @@ void Net_InitGoods()
 	rG.Weight = 3;
 	rG.Units = 10;
 
-	// SAILCLOTH
+	
 	n++; 
 	makeref(rG, NetGoods[n]); 
 	rG.Name = "Sailcloth";

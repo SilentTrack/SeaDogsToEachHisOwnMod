@@ -5,16 +5,16 @@ extern void InitNations();
 void Nation_InitAfterLoading()
 {
 	int i,j;
-	// check version
+	
 	int version_number = 099;
 	if( CheckAttribute(pchar,"version_number") ) {
 		version_number = pchar.version_number;
 	}
 
 	if( version_number < 104 )
-	// делаем ресайз наций для добавления новой нации
+	
 	{
-		// меняем таблицу наций
+		
 		SetArraySize(&Nations,MAX_NATIONS);
 		if(LoadSegment("nations\nations_init.c"))
 		{
@@ -22,7 +22,7 @@ void Nation_InitAfterLoading()
 			UnloadSegment("nations\nations_init.c");
 		}
 
-		// меняем таблицу отношений между нациями
+		
 		SetArraySize(&NationsRelations,MAX_NATIONS_SQR);
 		for(i=MAX_NATIONS-2;i>=0;i--) {
 			for(j=MAX_NATIONS-2;j>=0;j--) {
@@ -30,11 +30,11 @@ void Nation_InitAfterLoading()
 			}
 			NationsRelations[i * MAX_NATIONS + MAX_NATIONS-1] = RELATION_FRIEND;
 		}
-		//for(i=0; i<MAX_NATIONS; i++) {
-		//	NationsRelations[SMUGGLER * MAX_NATIONS + i] = RELATION_FRIEND;
-		//}
+		
+		
+		
 
-		// меняем таблицу отношений наций к главному персонажу
+		
 		SetArraySize(&NationsRelations2MainCharacter,MAX_NATIONS);
 	}
 }
@@ -72,7 +72,7 @@ void SetNationRelation2MainCharacter(int iNation, int iRelationType)
 
 void SetNationRelationBoth(int iNation1, int iNation2, int iRelationType)
 {
-    if (iNation1 != iNation2)//fix
+    if (iNation1 != iNation2)
     {
         NationsRelations[iNation1 * MAX_NATIONS + iNation2] = iRelationType;
     	NationsRelations[iNation2 * MAX_NATIONS + iNation1] = iRelationType;
@@ -84,9 +84,9 @@ void SetNationRelation(int iNation1, int iNation2, int iRelationType)
 	NationsRelations[iNation1 * MAX_NATIONS + iNation2] = iRelationType;
 }
 
-// =================================================================================================
-// Character Relation
-// =================================================================================================
+
+
+
 void SetCharacterRelationAsOtherCharacter(int iCharacterIndex1, int iCharacterIndex2)
 {
 	Characters[iCharacterIndex1].relation.UseOtherCharacter = iCharacterIndex2;
@@ -104,12 +104,12 @@ void SetCharacterRelation(int iCharacterIndex1, int iCharacterIndex2, int iRelat
 	Characters[iCharacterIndex1].relation.(sTemp1) = iRelationType;
 }
 
-// =================================================================================================
-// Get Relation Methods
-// =================================================================================================
+
+
+
 int GetNationRelation(int iNation1, int iNation2)
 {
-    // boal fix 171004 на всяк случай
+    
     if (iNation1 == iNation2) return RELATION_FRIEND;
     
     return NationsRelations[iNation1 * MAX_NATIONS + iNation2];
@@ -119,7 +119,7 @@ int GetNationRelation2MainCharacter(int iNation)
 {
 	return NationsRelations2MainCharacter[iNation];
 }
-// отношение к базе boal 05/07/06
+
 int GetRelation2BaseNation(int iNation)
 {
 	if (iNation == GetBaseHeroNation())
@@ -160,7 +160,7 @@ int GetRelation(int iCharacterIndex1, int iCharacterIndex2)
 	ref rCharacter1 = GetCharacter(iCharacterIndex1);
 	ref rCharacter2 = GetCharacter(iCharacterIndex2);
 
-	// if sea active, check groups first, if both have same group - they are friends
+	
 	if (bSeaActive)
 	{
 		if (CheckAttribute(rCharacter1, "SeaAI.Group.Name") && CheckAttribute(rCharacter2, "SeaAI.Group.Name"))
@@ -186,30 +186,30 @@ int GetRelation(int iCharacterIndex1, int iCharacterIndex2)
 
 	if (rCharacter1.index == rCharacter2.index) { return RELATION_FRIEND; }
 
-	// character 2 character relation
+	
 	string sTemp = "relation." + rCharacter2.index;
 	if (CheckAttribute(&rCharacter1,sTemp))
 	{
 		return sti(rCharacter1.(sTemp));
 	}
-	//Trace("iNation1 = " + iNation1 + ", iNation2 = " + iNation2);
+	
 
 	int iNation1 = sti(rCharacter1.nation);
 	int iNation2 = sti(rCharacter2.nation);
 
-	// nation 2 character relation
+	
 	if (iMCI == sti(rCharacter1.index))
 	{
-		//Trace("iMainCharacterRelation = " + NationsRelations2MainCharacter[iNation2]);
+		
 		return NationsRelations2MainCharacter[iNation2];
 	}
 	if (iMCI == sti(rCharacter2.index))
 	{
-		//Trace("iMainCharacterRelation = " + NationsRelations2MainCharacter[iNation1]);
+		
 		return NationsRelations2MainCharacter[iNation1];
 	}
 
-	// nation 2 nation relation
+	
 	return NationsRelations[iNation1 * MAX_NATIONS + iNation2];
 }
 
@@ -419,7 +419,7 @@ int GetEnemyNationToMainCharacter()
 
 	return iResult;
 }
-// boal
+
 void DelCharacterRelation(int iCharacterIndex1)
 {
 	DeleteAttribute(&Characters[iCharacterIndex1], "relation");

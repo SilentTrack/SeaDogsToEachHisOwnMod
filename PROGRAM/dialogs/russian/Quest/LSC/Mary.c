@@ -1,4 +1,4 @@
-// Мэри Каспер - взаимная любовь и офицер
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld, rItm, rItem;
@@ -17,7 +17,7 @@ void ProcessDialogEvent()
 	if (findsubstr(sAttr, "SetGunBullets1_" , 0) != -1)
  	{
         i = findsubstr(sAttr, "_" , 0);
-	 	NPChar.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); // индекс в конце
+	 	NPChar.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); 
  	    Dialog.CurrentNode = "SetGunBullets2";
  	}
 	
@@ -30,8 +30,8 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-	// ---------------------------------покушение на Акулу - вариант R --------------------------------
-		// разговор в каюте Адольфа
+	
+		
 		case "Cabin":
 			dialog.text = "Marcello, I know him. He is a friend of Rivados and the pirates. Adolf would never work with him. Smell the air... do you feel a sense of gun powder? And there is blood on the wall... He has killed Adolf and now trying to fool us! He must be working for the admiral! Kill him!";
 			link.l1 = "...";
@@ -39,8 +39,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Cabin_fight":
-			chrDisableReloadToLocation = true;//закрыть локацию
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
+			chrDisableReloadToLocation = true;
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			DialogExit();
 			sld = characterFromId("Marchello");
 			LAi_SetWarriorType(sld);
@@ -62,7 +62,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");	
 		break;
 		
-		// на улице
+		
 		case "Town":
 			dialog.text = "Oh, I am sorry... Can I ask you to help me?";
 			link.l1 = "Hm. I am always ready to help such a pretty lady. What's the problem?";
@@ -114,7 +114,7 @@ void ProcessDialogEvent()
 			link.l1.go = "Cabin_fight";
 		break;
 		
-	// ---------------------------------покушение на Акулу - вариант N --------------------------------
+	
 		case "caroline":
 			dialog.text = "Chad, that's him! Damn it, he has taken a helper here! Lads, kill them all!";
 			link.l1 = "...";
@@ -123,14 +123,14 @@ void ProcessDialogEvent()
 		
 		case "caroline_1":
 			DialogExit();
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
-			// Акулу к бою
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
+			
 			sld = characterFromId("Dodson");
 			LAi_SetImmortal(sld, false);
 			LAi_SetWarriorType(sld);
 			sld.cirassId = Items_FindItemIdx("cirass1");
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
-			// устанавливаем 4 толстых нарвалов
+			
 			int iRank = 20+MOD_SKILL_ENEMY_RATE*2;
 			int iScl = 65;
 			for (i=1; i<=4; i++)
@@ -142,7 +142,7 @@ void ProcessDialogEvent()
 				LAi_SetWarriorType(sld);
 				LAi_group_MoveCharacter(sld, "EnemyFight");
 			}
-			// Мэри и Чада к бою
+			
 			sld = characterFromId("Capper");
 			LAi_SetWarriorType(sld);
 			LAi_group_MoveCharacter(sld, "EnemyFight");
@@ -154,7 +154,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
 		
-	// ---------------------------------покушение на Акулу - вариант M --------------------------------
+	
 		case "mary":
 			dialog.text = "You are just in time... I would have never dealt with them myself... Fuh! To be honest, I thought that I am done!";
 			link.l1 = "You were fighting well. I have never seen such a beautiful girl with such skills in fencing...";
@@ -346,7 +346,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("SharkHunt", "31");
 			AddQuestRecordInfo("Chad_Mary_letter", "2");
 			LocatorReloadEnterDisable("CeresSmithy", "reload6", false);
-			LocatorReloadEnterDisable("CeresSmithy", "reload7", false); // открываем выходы
+			LocatorReloadEnterDisable("CeresSmithy", "reload7", false); 
 		break;
 		
 		case "mary_wait":
@@ -441,7 +441,7 @@ void ProcessDialogEvent()
 		case "letters_12":
 			DialogExit();
 			NextDiag.CurrentNode = "mary_wait";
-			pchar.questTemp.Saga.SharkHunt = "trader_whiskey"; // флаг на магазин - поиск виски
+			pchar.questTemp.Saga.SharkHunt = "trader_whiskey"; 
 			AddQuestRecord("SharkHunt", "35");
 		break;
 		
@@ -505,13 +505,13 @@ void ProcessDialogEvent()
 			LAi_SetActorType(pchar);
 			StartQuestMovie(true, true, true);
 			PlayStereoOGG("music_romantic");
-			bDisableCharacterMenu = true;//лоченые интерфейсы
-			InterfaceStates.Buttons.Save.enable = false;//запретить сохраняться
+			bDisableCharacterMenu = true;
+			InterfaceStates.Buttons.Save.enable = false;
 			locCameraRotateAroundHero(0.0, 2.0, 0.0, 0.005, 0.0, 2.0, 0.0, 1700);
 			DoQuestCheckDelay("LSC_MaryRomantic_1", 22.0);
-			pchar.questTemp.LSC.MaryBye = "true"; // атрибут обязательного прощания перед телепортацией
+			pchar.questTemp.LSC.MaryBye = "true"; 
 			LocatorReloadEnterDisable("LostShipsCity_town", "reload62", false);
-			LocatorReloadEnterDisable("LostShipsCity_town", "reload63", false); // открываем Церес снаружи
+			LocatorReloadEnterDisable("LostShipsCity_town", "reload63", false); 
 		break;
 		
 		case "happy_10":
@@ -540,9 +540,9 @@ void ProcessDialogEvent()
 			DoQuestCheckDelay("LSC_MaryRomantic_5", 4.0);
 		break;
 		
-	// ----------------------------------вместе с Мэри на Церес Смити------------------------------------------
+	
 		case "LSC_love":
-			if (pchar.questTemp.LSC.Mary == "return") // эта нода важнее даже ругани с нарвалами
+			if (pchar.questTemp.LSC.Mary == "return") 
 			{
 				dialog.text = ""+pchar.name+"! You are back... without her. So she failed to take your heart!";
 				link.l1 = "Mary, your suspicions were reasonless. You are the only one. I was always with you in my thoughts and in my dreams.";
@@ -556,7 +556,7 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				break;
 			}
-			if (CheckAttribute(pchar, "questTemp.LSC.FindDolly")) // нашел статую - прощается
+			if (CheckAttribute(pchar, "questTemp.LSC.FindDolly")) 
 			{
 				dialog.text = ""+pchar.name+", there is a mark of troubles on your face. Something is wrong?";
 				link.l1 = "You can say that. Mary, I want to talk with you.";
@@ -570,14 +570,14 @@ void ProcessDialogEvent()
 				link.l1.go = "donald";
 				break;
 			}
-			if (CheckAttribute(npchar, "quest.talisman")) // подарок
+			if (CheckAttribute(npchar, "quest.talisman")) 
 			{
 				dialog.text = ""+pchar.name+"! This broadsword is incredible! Thank you again!.. I want to give you a present too. Of course, it can not be compared to yours but I want you to take it, yes.";
 				link.l1 = "Mary, the value of present doesn't really matter...";
 				link.l1.go = "talisman";
 				break;
 			}
-			if (stf(environment.time) >= 5.0 && stf(environment.time) < 10.0) // утро
+			if (stf(environment.time) >= 5.0 && stf(environment.time) < 10.0) 
 			{
 				dialog.text = "Got a busy day ahead, "+pchar.name+"? Good luck!";
 				if (CheckAttribute(npchar, "quest.narval_blade"))
@@ -588,7 +588,7 @@ void ProcessDialogEvent()
 				link.l1 = "Thanks, Mary! I have no doubt in that.";
 				link.l1.go = "exit";
 				link.l2 = "No, Mary. I want to take a good rest here. Are you fine with that?";
-				link.l2.go = "rest_morning"; // отдых
+				link.l2.go = "rest_morning"; 
 			}
 			else
 			{
@@ -600,7 +600,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "LSC_love_1":
-			if (stf(environment.time) >= 18.0 && stf(environment.time) < 22.0) //вечер
+			if (stf(environment.time) >= 18.0 && stf(environment.time) < 22.0) 
 			{
 				dialog.text = "It is evening already, "+pchar.name+", what things are you talking about? Stay here, let's have some drinks and relax, yes! It all can wait until morning!";
 				link.l1 = "(laughing) Sure, love, you have persuaded me...";
@@ -614,7 +614,7 @@ void ProcessDialogEvent()
 				link.l3.go = "LSC_love_2";
 				break;
 			}
-			if (stf(environment.time) >= 10.0 && stf(environment.time) < 18.0) //день
+			if (stf(environment.time) >= 10.0 && stf(environment.time) < 18.0) 
 			{
 				dialog.text = "Don't forget to visit me in the evening. And don't even try to avoid it, yes!";
 				if (CheckAttribute(npchar, "quest.narval_blade"))
@@ -625,7 +625,7 @@ void ProcessDialogEvent()
 				link.l1 = "Sure, Mary, how can I? I will visit you for sure.";
 				link.l1.go = "exit";
 				link.l2 = "No, Mary. I want to take a good rest here. Are you fine with that?";
-				link.l2.go = "rest_afternoon"; // отдых
+				link.l2.go = "rest_afternoon"; 
 				NextDiag.TempNode = "LSC_love";
 				break;
 			}
@@ -642,14 +642,14 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "LSC_love";
 		break;
 		
-		// сходить в таверну
+		
 		case "LSC_tavern":
 			dialog.text = LinkRandPhrase("A great idea, "+pchar.name+", yes! I agree!","Sure, let's go, "+pchar.name+"! Sancho has a fine collection of wines, there is a great choice!","Oh, I would be glad, yes! There is always a fun in Sancho's tavern and a great choice of wines!");
 			link.l1 = "Let's go!";
 			link.l1.go = "LSC_love_tavern";
 		break;
 		
-		// --> отдых
+		
 		case "rest_morning":
 			dialog.text = "Of course, I am, "+pchar.name+"? Sure, have a rest, yes!";
 			link.l1 = "I will stay until the midday...";
@@ -685,17 +685,17 @@ void ProcessDialogEvent()
 			if (CheckAttribute(pchar, "questTemp.LSC.MaryBye")) NextDiag.CurrentNode = "LSC_love";
 			else NextDiag.CurrentNode = "LSC_love_3";
 		break;
-		// <-- отдых
 		
-	//--> если скоро уходит через портал
+		
+	
 		case "LSC_love_3": 
-			if (pchar.questTemp.LSC.Mary == "return") // эта нода важнее даже ругани с нарвалами
+			if (pchar.questTemp.LSC.Mary == "return") 
 			{
 				dialog.text = ""+pchar.name+"! You are back... without her. So she failed to take your heart!";
 				link.l1 = "Mary, your suspicions were reasonless. You are the only one. I was always with you in my thoughts and in my dreams.";
 				link.l1.go = "adversary_hire_return";
 				break;
-			} // 291112
+			} 
 			if (CheckAttribute(pchar, "GenQuest.NarvalConflict"))
 			{
 				dialog.text = ""+pchar.name+", why are you fighting with Narwhals? I live on their territories, actually, I am one of them. Please, go to Fazio and make peace, I ask you.";
@@ -703,14 +703,14 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				break;
 			}
-			if (CheckAttribute(npchar, "quest.talisman")) // подарок
+			if (CheckAttribute(npchar, "quest.talisman")) 
 			{
 				dialog.text = ""+pchar.name+"! This broadsword is incredible! Thank you again!.. I want to give you a present too. Of course, it can not be compared to yours, but I want you to take it, yes.";
 				link.l1 = "Mary, the value of present doesn't really matter...";
 				link.l1.go = "talisman";
 				break;
 			}
-			if (stf(environment.time) >= 5.0 && stf(environment.time) < 10.0) // утро
+			if (stf(environment.time) >= 5.0 && stf(environment.time) < 10.0) 
 			{
 				dialog.text = "Leaving already, "+pchar.name+"? Good luck and don't forget about me...";
 				if (CheckAttribute(npchar, "quest.narval_blade"))
@@ -721,7 +721,7 @@ void ProcessDialogEvent()
 				link.l1 = "Of course, Mary.";
 				link.l1.go = "exit";
 				link.l2 = "No, Mary. I want to have a good rest here. Are you fine with that?";
-				link.l2.go = "rest_morning"; // отдых
+				link.l2.go = "rest_morning"; 
 			}
 			else
 			{
@@ -733,7 +733,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "LSC_love_4":
-			if (stf(environment.time) >= 18.0 && stf(environment.time) < 22.0) //вечер
+			if (stf(environment.time) >= 18.0 && stf(environment.time) < 22.0) 
 			{
 				dialog.text = "It is evening already, "+pchar.name+". Why won't you stay here? I want to be with you.";
 				link.l1 = "All right, dear, I am staying...";
@@ -745,7 +745,7 @@ void ProcessDialogEvent()
 				}
 				break;
 			}
-			if (stf(environment.time) >= 10.0 && stf(environment.time) < 18.0) //день
+			if (stf(environment.time) >= 10.0 && stf(environment.time) < 18.0) 
 			{
 				dialog.text = "Good luck and don't forget about me... Come and see me in the evening if you can, yes!";
 				if (CheckAttribute(npchar, "quest.narval_blade"))
@@ -756,7 +756,7 @@ void ProcessDialogEvent()
 				link.l1 = "Very well, dear.";
 				link.l1.go = "exit";
 				link.l2 = "Mary, I want to have a rest here. Are you fine with that?";
-				link.l2.go = "rest_afternoon"; // отдых
+				link.l2.go = "rest_afternoon"; 
 				NextDiag.TempNode = "LSC_love_3";
 				break;
 			}
@@ -765,9 +765,9 @@ void ProcessDialogEvent()
 			link.l1.go = "LSC_love_night";
 			NextDiag.TempNode = "LSC_love_3";
 		break;
-		// <-- скоро уходит через портал
 		
-	// --> взаимоотношения - секс и прочее
+		
+	
 		case "LSC_love_tavern":
 			DialogExit();
 			sld = ItemsFromID("potionrum");
@@ -809,9 +809,9 @@ void ProcessDialogEvent()
 			if (CheckAttribute(pchar, "questTemp.LSC.MaryBye")) NextDiag.CurrentNode = "LSC_love";
 			else NextDiag.CurrentNode = "LSC_love_3";
 		break;
-		// <-- взаимоотношения
 		
-		// стал другом нарвалам
+		
+		
 		case "donald":
 			dialog.text = "Have you spoken to Donald? Is it true that admiral wanted to make an alliance with Rivados and fight against Narwhals? Is it true that you have persuaded him to don't do that? And there is a peace between pirates and Narwhals, right?";
 			link.l1 = "You are right, Mary.";
@@ -832,7 +832,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(npchar, "quest.donald");
 		break;
 		
-		// ноды прощания
+		
 		case "dolly":
 			dialog.text = "Let's talk! Are you in trouble?";
 			link.l1 = "No. Mary, do you remember the night we first met? After we dealt with those two bastards, I told you that I had arrived here on a long boat.";
@@ -933,19 +933,19 @@ void ProcessDialogEvent()
 		
 		case "dolly_16":
 			DialogExit();
-			DeleteAttribute(pchar, "questTemp.LSC.MaryBye"); // можно телепортироваться
+			DeleteAttribute(pchar, "questTemp.LSC.MaryBye"); 
 			DeleteAttribute(pchar, "questTemp.LSC.FindDolly");
 			SetMusic("music_romantic");
 			SetLaunchFrameFormParam("", "", 0, 15);
 			SetLaunchFrameFormPic("loading\inside\kiss.tga");
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 1, 10); //крутим время
+			WaitDate("", 0, 0, 0, 1, 10); 
 			RecalculateJumpTable();
 			NextDiag.CurrentNode = "LSC_love_3";
 			npchar.greeting = "mary_5"; 
 		break;
 		
-		// дарим Мэри палаш Нарвал
+		
 		case "narval":
 			dialog.text = "Jurgen? Why?";
 			link.l1 = "You'll see. This is going to be a pleasant surprise.";
@@ -1059,15 +1059,15 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload2", "CeresSmithy", "goto", "goto10", "LSC_MaryReturnNormal", -1);
 			LocatorReloadEnterDisable("CeresSmithy", "reload6", false);
-			LocatorReloadEnterDisable("CeresSmithy", "reload7", false); // открываем проход через трюм
-			// владение Нарвалом повышает скилл ТО у Мэри и открывает перк тяжелой руки
+			LocatorReloadEnterDisable("CeresSmithy", "reload7", false); 
+			
 			SetSelfSkill(npchar, 95, 50, 90, 90, 50);
 			SetCharacterPerk(npchar, "HardHitter");
 			npchar.quest.talisman = "true";
 			npchar.quest.blade31 = "true";
 		break;
 		
-		// Мэри дарит талисман
+		
 		case "talisman":
 			dialog.text = "Here, take a look. I have found it in one of the ships from the outer ring inside a captain's chest. Every sailor from the Island says that this item is extremely valuable for a navigator, it is able to protect a ship from any storm. Some of them were even eager to buy it, but I haven't sold it... I want you to have this amulet, yes. Take it.";
 			link.l1 = "Thank you, Mary! This is a really useful item for the sailor!";
@@ -1088,7 +1088,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(npchar, "quest.talisman");
 		break;
 		
-	// --------------------------------------вернулся на Остров---------------------------------------------
+	
 		case "return":
 			dialog.text = ""+pchar.name+"... You are back. I have been waiting for you, I was looking at horizon every day, yes! You are here...";
 			link.l1 = "Yes, Mary. I am here as I have promised. Let me hug you, darling!";
@@ -1096,7 +1096,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "return_1":
-			dialog.text = "Аh, "+pchar.name+"... You can't even imagine how I was feeling! All Narwhals were talking about your death, they said that you drowned. Everybody has been sure that you are dead. And I have told them that you are alive... Of course, nobody believed me, they thought that I have gone crazy because of Alan and you.";
+			dialog.text = "пїЅh, "+pchar.name+"... You can't even imagine how I was feeling! All Narwhals were talking about your death, they said that you drowned. Everybody has been sure that you are dead. And I have told them that you are alive... Of course, nobody believed me, they thought that I have gone crazy because of Alan and you.";
 			link.l1 = "Mary... My dear! What is wrong with you? You are trembling... Are you cold?";
 			link.l1.go = "return_2";
 		break;
@@ -1153,14 +1153,14 @@ void ProcessDialogEvent()
 			if (CheckAttribute(npchar, "quest.blade31")) sTemp = "I have been training hard with the broadsword you gave me, now I master it perfectly.";
 			else sTemp = "I have been training hard with rapiers and I master my bretta perfectly.";
 			dialog.text = "(sobbing) Officer... Then I also want to be your officer, yes! I can fight, you know that! "+sTemp+" And I shoot well! Yes, I don't have any naval skills but I learn fast, I am talented, yes!";
-			// проход первый - ГГ либо соглашается, либо нет, отказ ведет к полному разрыву
+			
 			link.l1 = "(agree) Mary... I wanted to offer you that myself. I can't imagine any better war girlfriend than you!";
 			link.l1.go = "adversary_hire";
 			link.l2 = "(deny) Mary! Being a boarding officer is too dangerous! You don't understand what are you asking for. I can't risk your life.";
 			link.l2.go = "adversary_fail";
 		break;
 		
-		// отказ
+		
 		case "adversary_fail":
 			dialog.text = "Can't you? So that blonde whore can be an officer and I can not? You are lying to me, "+pchar.name+", you simply don't want to be with me! (crying) Is that girl is better than me, yes?";
 			link.l1 = "Mary, you don't get it!";
@@ -1186,23 +1186,23 @@ void ProcessDialogEvent()
 			link.l1.go = "adversary_fail_4";
 		break;
 		
-		case "adversary_fail_4": // обидел Мэри - больше от нее ничего не получишь
+		case "adversary_fail_4": 
 			DialogExit();
-			LAi_CharacterDisableDialog(npchar);//запрет диалога
+			LAi_CharacterDisableDialog(npchar);
 			for (i=0; i<=3; i++)
 			{
-				LocatorReloadEnterDisable("LostShipsCity_town", "reload6"+i, true); // закрываем вход к Мэри
+				LocatorReloadEnterDisable("LostShipsCity_town", "reload6"+i, true); 
 			}
 			DoQuestReloadToLocation("LostShipsCity_town", "reload", "reload62", "");
 			pchar.questTemp.LSC.Mary = "fail";
 			AddQuestRecord("LSC", "23");
-			bQuestDisableMapEnter = false; //открыть карту
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
+			bQuestDisableMapEnter = false; 
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
 		break;
 		
-		// соглашаемся
+		
 		case "adversary_hire":
-			// проход второй - смотрим, Элен может стать подругой или нет
+			
 			if (CheckAttribute(pchar, "questTemp.Saga.Helena_friend"))
 			{
 				dialog.text = "Are you kidding me? Did you really want to offer me to be your officer? "+pchar.name+", damn it, you can't imagine how glad am I! I want to be your officer so much... but not on the same ship with that blonde!";
@@ -1217,7 +1217,7 @@ void ProcessDialogEvent()
 			}
 		break;
 		
-		case "adversary_hire_no": // Мэри не пойдет, пока не ГГ не расстанется с Элен. Выбирай, кто тебе милее...
+		case "adversary_hire_no": 
 			dialog.text = "You might consider her just an officer though she considers you not just her captain, I saw how she was looking at you, I know that look, yes!";
 			link.l1 = "Mary, dear, but I have already told you that I do not have feelings for her and that is it! There is nothing between us! I can swear, damn it! I need her to deal with mess about Brethren of the Coast. Jan Svensson will not help me to capture Tortuga, if I won't help her and I need that!";
 			link.l1.go = "adversary_hire_no_1";
@@ -1255,7 +1255,7 @@ void ProcessDialogEvent()
 		
 		case "adversary_hire_no_6":
 			dialog.text = "Return as soon as possible then... "+pchar.name+", dear, kiss me, please...";
-			link.l1 = "I will be back. I promise you!"; // ага, а мы посмотрим, обманешь или нет
+			link.l1 = "I will be back. I promise you!"; 
 			link.l1.go = "adversary_hire_no_7";
 		break;
 		
@@ -1265,16 +1265,16 @@ void ProcessDialogEvent()
 			SetLaunchFrameFormParam("", "", 0, 15);
 			SetLaunchFrameFormPic("loading\inside\kiss.tga");
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 1, 10); //крутим время
+			WaitDate("", 0, 0, 0, 1, 10); 
 			RecalculateJumpTable();
-			NextDiag.CurrentNode = "LSC_love"; // оставляем штучки с Мэри на Острове в силе
+			NextDiag.CurrentNode = "LSC_love"; 
 			pchar.questTemp.LSC.MaryWait = "true";
 			AddQuestRecord("LSC", "22");
-			bQuestDisableMapEnter = false; //открыть карту
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
+			bQuestDisableMapEnter = false; 
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
 		break;
 		
-		// повторный разговор после расставания с Элен
+		
 		case "adversary_hire_return":
 			dialog.text = "Are you joking on a poor girl? "+pchar.name+", have you really been thinking about me?";
 			link.l1 = "Of course! Have I ever cheated on you?.. I've been through a lot during our separation and I am not going to part with you again... my talisman.";
@@ -1282,9 +1282,9 @@ void ProcessDialogEvent()
 			DeleteAttribute(pchar, "questTemp.LSC.MaryWait");
 		break;
 		
-		case "adversary_hire_yes": // Элен заведомо не друг - Мэри идет сразу, либо если выбрал Мэри
+		case "adversary_hire_yes": 
 			dialog.text = "Really? "+pchar.name+"! I will always follow you! I will never lie to you, I will never betray you, I swear!";
-			link.l1 = "I believe you, my dear... Neither will I."; // а куда же ты денешься )
+			link.l1 = "I believe you, my dear... Neither will I."; 
 			link.l1.go = "adversary_hire_yes_1";
 		break;
 		
@@ -1319,8 +1319,8 @@ void ProcessDialogEvent()
 			LAi_SetActorType(pchar);
 			SetMusic("music_romantic");
 			DoQuestCheckDelay("LSC_LastNight_CS", 3.0);
-			bQuestDisableMapEnter = false; //открыть карту
-			DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
+			bQuestDisableMapEnter = false; 
+			DeleteAttribute(pchar, "GenQuest.CannotWait");
 		break;
 		
 		case "LSC_mary_hire":
@@ -1337,7 +1337,7 @@ void ProcessDialogEvent()
 			RemoveItems(pchar, "key_mary", 1);
 		break;
 		
-	// --> консультации по морским сражениям
+	
 		case "sea_bomb":
 			dialog.text = ""+pchar.name+"! I have got an idea...";
 			link.l1 = ""+npchar.name+"? It's not safe here and I have ordered you to stay on the ship...";
@@ -1351,7 +1351,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "sea_bomb_2":
-			dialog.text = "The pirate corvette and the frigate. They believe that we are one of their own… Knive, yes. This could be an opportunity for us. Let's take a few barrels of gunpowder, a fuse and sail to them.\nAfter they let us close, we light the fuse, drop the barrel and sail away as fast as we can. Sailing away fast is critical, yes. And then we will observe a spectacular explosion... What say you?";
+			dialog.text = "The pirate corvette and the frigate. They believe that we are one of their ownпїЅ Knive, yes. This could be an opportunity for us. Let's take a few barrels of gunpowder, a fuse and sail to them.\nAfter they let us close, we light the fuse, drop the barrel and sail away as fast as we can. Sailing away fast is critical, yes. And then we will observe a spectacular explosion... What say you?";
 			link.l1 = "You are such an inventor! Though, you plan might work... Only in case they won't recognize us.";
 			link.l1.go = "sea_bomb_3";
 		break;
@@ -1376,7 +1376,7 @@ void ProcessDialogEvent()
 			npchar.dialog.currentnode = "Mary_officer";
 			pchar.questTemp.Saga.BarbTemptation.Bomb = "true";
 			AddQuestRecord("BarbTemptation", "15");
-			AddQuestUserData("BarbTemptation", "sName", "Мэри");
+			AddQuestUserData("BarbTemptation", "sName", "пїЅпїЅпїЅпїЅ");
 			pchar.questTemp.Saga.BarbTemptation.adviser = "Mary";
 		break;
 		
@@ -1441,9 +1441,9 @@ void ProcessDialogEvent()
 			AddQuestRecord("BarbTemptation", "21");
 			DeleteAttribute(npchar, "quest.fugas");
 		break;
-		// <-- консультации по морским сражениям
 		
-		// --> суп из черепахи
+		
+		
 		case "terrapin_grot":
 			dialog.text = "Here you are! It wasn't easy to find you... That was amazing, my captain! I've never seen such a roof run and such a jump from a breathtaking height before! I was beside myself with delight!.. Though I almost had a heart attack\nOne day you will kill me with these tricks of yours, dear... Well now, and who the fuck is she? "+pchar.name+", just let him stay parted from me for a second and he is flirting already with some whore!..";
 			link.l1 = "Mary, this 'whore' is Catherine Fox, a daughter of colonel Fox, the commander of Sea Foxes. We will be taking her to Antigua.";
@@ -1463,23 +1463,23 @@ void ProcessDialogEvent()
 			LAi_group_MoveCharacter(npchar, LAI_GROUP_PLAYER);
 			Terrapin_GotoShip();
 		break;
-		// <-- суп из черепахи
 		
-		// --> калеуче
+		
+		
 		case "on_coast":
 			dialog.text = "Finally you woke up, my darling. What a load off my mind! Don't ever again scare me like that!";
-			link.l1 = "Mary… dear, what happened? My head is splitting...";
+			link.l1 = "MaryпїЅ dear, what happened? My head is splitting...";
 			link.l1.go = "on_coast_1";
 		break;
 		
 		case "on_coast_1":
 			dialog.text = "When we entered the captain's cabin, you were lying on the floor still. My heart was beating so fast! The guys picked you up and dragged you to our ship - and just in time, since the dead men lying on the deck began to rise again\nThat was a real nightmare! We couldn't do anything to them! We quickly cut the lines and tried to sail away, but a volley from their ship quickly turned our old tub into splinters. They were some real devils, I say! And then they hoisted sails and were gone in blink of an eye\nOur ship sank, and everyone who managed to survive, have reached the shore in a boat. I managed to take your chest from the cabin. And it was not that easy with all that bustle, I say!";
-			link.l1 = "You're a good girl, Mary… What would I have done without you?";
+			link.l1 = "You're a good girl, MaryпїЅ What would I have done without you?";
 			link.l1.go = "on_coast_2";
 		break;
 		
 		case "on_coast_2":
-			dialog.text = "Perhaps you'd go down or you would stay on that ship, and the dead would have ripped you apart… My hands are still shaking!";
+			dialog.text = "Perhaps you'd go down or you would stay on that ship, and the dead would have ripped you apartпїЅ My hands are still shaking!";
 			link.l1 = "Thank you, pretty one. I am indebted to you. How long had I been lying there, unconscious?";
 			link.l1.go = "on_coast_3";
 		break;
@@ -1491,7 +1491,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "on_coast_4":
-			dialog.text = "That's for sure... Was it the Flying Dutchman, cap? Why did they attack us? And why didn’t they shoot at us before the boarding, but sank the ship with just one salvo later?";
+			dialog.text = "That's for sure... Was it the Flying Dutchman, cap? Why did they attack us? And why didnпїЅt they shoot at us before the boarding, but sank the ship with just one salvo later?";
 			link.l1 = "Their captain needed the amulet, about which I had talked to Tuttuathapak, an Indian shaman. That's why they haven't sunk us immediately, but as their leader took the amulet, they quickly disposed of us... What a nightmare! A ship manned by the dead! Impossible to believe...";
 			link.l1.go = "on_coast_5";
 		break;
@@ -1504,7 +1504,7 @@ void ProcessDialogEvent()
 		
 		case "on_coast_6":
 			dialog.text = "Alright. But you must be careful - your wounds have barely healed.";
-			link.l1 = "But you will help me to heal, won't you? And… Mary, I love you...";
+			link.l1 = "But you will help me to heal, won't you? AndпїЅ Mary, I love you...";
 			link.l1.go = "on_coast_7";
 		break;
 		
@@ -1515,17 +1515,17 @@ void ProcessDialogEvent()
 		break;
 		
 		case "on_coast_8":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			DialogExit();
 			npchar.dialog.currentnode = "Mary_officer";
 			LAi_SetOfficerType(npchar);
 			LAi_group_MoveCharacter(npchar, LAI_GROUP_PLAYER);
 			AddQuestRecord("Caleuche", "5");
 		break;
-		// <-- калеуче
 		
-	// --> Мэри вне LSC
-		// секс - Мэри не отказывает никогда
+		
+	
+		
 		case "cabin_sex":
 			dialog.text = RandPhraseSimple(""+pchar.name+", there is no a greater happiness for me then being in your arms, yes... Let's go!",""+pchar.name+", I'd like to be with you every second if it would be possible. Let's go!");
 			link.l1 = RandPhraseSimple("You are the best, my girl...","You are wonderful, my beauty...");
@@ -1534,7 +1534,7 @@ void ProcessDialogEvent()
 		
 		case "cabin_sex_go":
 			DialogExit();
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			DoQuestCheckDelay("Mary_LoveSex", 1.0);
 			NextDiag.CurrentNode = "sex_after";
 			npchar.greeting = "mary_hire";
@@ -1545,7 +1545,7 @@ void ProcessDialogEvent()
 			link.l1 = RandPhraseSimple("I am glad that you are happy, my love...","I love you Mary...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Mary_officer";
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			npchar.quest.daily_sex = true;
 			SetFunctionTimerCondition("Mary_SexReady", 0, 0, 1, false);
 		break;
@@ -1565,7 +1565,7 @@ void ProcessDialogEvent()
 		
 		case "room_sex_go":
 			DialogExit();
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			if (sti(pchar.money) >= 10) AddMoneyToCharacter(pchar, -10);
 			if (npchar.chr_ai.type == "actor")
 			{
@@ -1576,20 +1576,20 @@ void ProcessDialogEvent()
 			{
 			DoQuestReloadToLocation(pchar.location+"_upstairs", "quest", "quest4", "");
 			ChangeCharacterAddressGroup(npchar, pchar.location+"_upstairs", "quest", "quest3");
-			} // patch-8
+			} 
 			DoQuestCheckDelay("Mary_LoveSex", 1.5);
 			NextDiag.CurrentNode = "sex_after";
 			npchar.greeting = "mary_hire";
 		break;
 		
-		// требует секса, если давно не давал
+		
 		case "givemesex":
 			dialog.text = RandPhraseSimple(""+pchar.name+", it's been too long since we had sex... You have completely forgotten about me, yes! Darling, I want to relax, let's take a room and retire from troubles!",""+pchar.name+", you have been too busy and I am starting to suspect that you have completely forgotten about me! Darling, I want to... stay with you in private. Let's take a room, yes!");
 			link.l1 = "Mary, dear, what are you talking about - 'completely forgotten about me'? Silly girl... But I have been really too busy, those problems are endless. Forgive me, my girl. Sure, let's go upstairs and the world can wait!";
 			link.l1.go = "room_sex_go";
 		break;
 		
-		// ругается за то, что ходил по борделям, ГГ изворачивается
+		
 		case "brothel":
 			dialog.text = "Yes, there is! You don't like me anymore, yes? Tell me!";
 			link.l1 = "What?! Mary, what nonsense are you talking about? Why do you think that?";
@@ -1643,11 +1643,11 @@ void ProcessDialogEvent()
 			SetLaunchFrameFormParam("", "", 0, 5);
 			SetLaunchFrameFormPic("loading\inside\kiss.tga");
 			LaunchFrameForm();
-			pchar.GenQuest.BrothelLock = true; // все, больше не походишь по борделям :)
+			pchar.GenQuest.BrothelLock = true; 
 			DeleteAttribute(pchar, "GenQuest.BrothelCount");
 		break;
 		
-		// на Тайясаль
+		
 		case "tieyasal":
 			dialog.text = ""+pchar.name+", what an odd question? I love you. You saved me. I am your red talisman - do you really think that I will let you go there alone? Don't even count on that, yes! I am with you! When shall we go?";
 			link.l1 = "You are right, dear, it was an odd question... I will tell you later when we are going. We need to prepare ourselves first.";
@@ -1666,9 +1666,9 @@ void ProcessDialogEvent()
 			npchar.quest.Tieyasal = "teleport";
 		break;
 		
-		//--> ----------------------------------- офицерский блок ------------------------------------------
+		
 		case "Mary_officer":
-			// если шлялся по борделям - устроит небольшой скандал 
+			
 			if (sti(pchar.GenQuest.BrothelCount) >= 3 && LAi_grp_playeralarm == 0)
 			{
 				dialog.Text = ""+pchar.name+"! I need to talk with you, yes! Seriously!";
@@ -1767,7 +1767,7 @@ void ProcessDialogEvent()
             Link.l1 = "...";
             Link.l1.go = "Exit";
         break;
-		//<-- ----------------------------------- офицерский блок ----------------------------------------
+		
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

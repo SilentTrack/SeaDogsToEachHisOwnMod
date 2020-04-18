@@ -24,7 +24,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Jail_officer_take":
-		//--> Сомнительное предложение
+		
 		if (CheckAttribute(pchar, "GenQuest.Contraoffer.Jail"))
 		{
 			dialog.text = "You were detained for trying to transfer and sell a contraband. Considering your help to the authorities and your position, you will spend in prison only "+FindRussianDaysString(sti(pchar.questTemp.JailTemp2))+". Besides, all money you've earned by smuggling -"+FindRussianMoneyString(sti(pchar.questTemp.JailTemp1))+" will be taken away and put in the town's treasury. Have a good time, captain!";
@@ -34,7 +34,7 @@ void ProcessDialogEvent()
 			NextDiag.currentnode = "Jail_officer_free";
 			break;
 		}
-		//<-- Сомнительное предложение
+		
 			dialog.text = "You were detained for committing a crime and you will be held in prison for "+FindRussianDaysString(sti(pchar.questTemp.JailTemp2))+". Besides you will be fined for "+FindRussianMoneyString(sti(pchar.questTemp.JailTemp1))+". Have a nice time, captain!";
 			link.l1 = "";
 			link.l1.go = "Jail_officer_take_1";
@@ -62,3 +62,4 @@ void ProcessDialogEvent()
 		break;
 	}
 } 
+

@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,13 +9,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind.", "Sorry!"), "Sorry!", "Pardon!", "Sorry!", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 
-			//работорговец
+			
 			if (pchar.questTemp.Slavetrader == "EscapeSlaveVillemstad_P")
             {
     			link.l1 = "I'd like to learn concerning the bark which was gone in the night after revolt of slaves.";
     			link.l1.go = "EscapeSlave_Villemstad_P1";
             }
-			//Голландский гамбит, против всех
+			
 			if (CheckAttribute(pchar, "questTemp.HWIC.Self") && pchar.questTemp.HWIC.Self == "SeekFleut")
             {
     			link.l1 = "I want to find a captain named Toff Keller. He owns a flute 'Leiden'. I am informed that he often visits Willemstad so it won't difficult for you to help me I suppose.";
@@ -23,7 +23,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             }
 		break;
 
-		//работорговец
+		
 		case "EscapeSlave_Villemstad_P1":
 				dialog.text = "Hm... And why are you interested in that?";
 				link.l1 = "I am here by the order of Mathias Beck, the governor. I have all reasons to suspect runaway slaves for the ship's disappear. So I ask you to give me all possible help in my searches.";
@@ -38,7 +38,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				AddQuestUserData("Slavetrader", "sShipName", pchar.questTemp.Slavetrader.ShipName);
 				pchar.questTemp.Slavetrader = "EscapeSlaveVillemstad_H";
 		break;				
-		//Голландский гамбит
+		
 		case "SeekTradeFleut":
 			dialog.text = "Toff Keller? Sure I know him! He regularly sails voyages to Cumana and San Jose which is on the Trinidad. He have sailed to Trinidad not long ago. I suppose that you can find him there.";
 			link.l1 = "Thanks!";
@@ -54,6 +54,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.quest.Seek_Fleut.function = "CreateTradeFleut";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

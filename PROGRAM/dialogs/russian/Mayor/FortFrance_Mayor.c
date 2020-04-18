@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,14 +9,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Not now. There is no time."), "True... But later, not now...",
                       "I'll ask, I'll ask... a bit later though...", "I am sorry, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);			  
 			link.l1.go = "exit";
-			//--> Бремя гасконца
+			
 			if (CheckAttribute(pchar, "questTemp.Sharlie.Junglejew"))
 			{
 				link.l1 = "Monsieur, I have found a bandit corpse in jungles. He was killed by the Indians. There were those earrings on his body, looks like they were brought here from Europe. Maybe they were belonging to one of the nobles in your town?";
                 link.l1.go = "Sharlie_junglejew";
 			}
-			//<-- Бремя гасконца
-			// Jason НСО
+			
+			
 			if (CheckAttribute(pchar, "questTemp.Patria") && pchar.questTemp.Patria == "epizode_9_continue" && !CheckAttribute(npchar, "quest.frigate"))
 			{
 				link.l1 = "I arrived by the order of Governor General Philippe de Poincy to take command of your armed frigate.";
@@ -45,7 +45,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			DeleteAttribute(pchar, "questTemp.Sharlie.Junglejew");
 		break;
 		
-		// Jason НСО
+		
 		case "patria":
 			if (GetCompanionQuantity(pchar) > 4)
 			{
@@ -76,9 +76,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "patria_3":
 			DialogExit();
 			npchar.quest.frigate = "true";
-			Patria_BastionFrigateMrt(); // присоединяем фрегат
+			Patria_BastionFrigateMrt(); 
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

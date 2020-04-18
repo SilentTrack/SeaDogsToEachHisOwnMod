@@ -1,4 +1,4 @@
-// колдун ривадос - Чимисет
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -20,13 +20,13 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		//-------------------------------------в тюрьме на Тартарусе-----------------------------
-		// вариант R
+		
+		
 		case "KillChad":
 			dialog.text = "Wait! Stop... I beg you to listen to me before you'd make a mistake.";
 			link.l1 = "I am listening... I hope that you have got a really weighty arguments to stop me from...";
 			link.l1.go = "KillChad_1";
-			LAi_RemoveCheckMinHP(npchar); //убираем проверяльщик, если еще есть
+			LAi_RemoveCheckMinHP(npchar); 
 		break;
 		
 		case "KillChad_1":
@@ -68,7 +68,7 @@ void ProcessDialogEvent()
 		
 		case "KillChad_5":
 			DialogExit();
-			pchar.quest.LSC_fightfail.over = "yes"; //снять прерывание
+			pchar.quest.LSC_fightfail.over = "yes"; 
 			LAi_SetImmortal(npchar, true);
 			ref location = &Locations[FindLocation(pchar.location)];
 			location.private1.key = "crowbar";
@@ -139,7 +139,7 @@ void ProcessDialogEvent()
 			AddSimpleRumourCityTip("So it was you who'd set Chimiset free! Interesting. Now you are a friend of Rivados but an enemy of Narwhals. I am not sure whether to congratulate you or sympathize...", "LostShipsCity", 5, 1, "LSC", "");
 		break;
 		
-		// вариант N
+		
 		case "prisoner":
 			dialog.text = "What do you want from me, stranger?";
 			link.l1 = "Your name is Chimiset, right?";
@@ -195,7 +195,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "prisoner_9":
-			dialog.text = "Not exactly… (lowering voice) I see that you are not one of Kapper's men. Do not trust him. He is a filthy scum. Not long ago, he killed unarmed Alan Milrow with a broadsword. He was a leader of Narwhal clan. I didn't see it coming, Chad just came close to his cell and cut the man\Plus, I have heard some talkings that admiral's own men plan to assassinate him. Tell Shark about it. And tell him that I will say more when we talk face to face.";
+			dialog.text = "Not exactlyпїЅ (lowering voice) I see that you are not one of Kapper's men. Do not trust him. He is a filthy scum. Not long ago, he killed unarmed Alan Milrow with a broadsword. He was a leader of Narwhal clan. I didn't see it coming, Chad just came close to his cell and cut the man\Plus, I have heard some talkings that admiral's own men plan to assassinate him. Tell Shark about it. And tell him that I will say more when we talk face to face.";
 			link.l1 = "Hm. Fine, I will tell Dodson about it. See you!";
 			link.l1.go = "prisoner_10";
 		break;
@@ -203,12 +203,12 @@ void ProcessDialogEvent()
 		case "prisoner_10":
 			DialogExit();
 			sld = characterFromId("Capper");
-			sld.quest.chimiset_talk = "true"; // разговор с Чимисетом состоялся
-			if (!CheckAttribute(npchar, "quest.capper_talk")) chrDisableReloadToLocation = true;//закрыть локацию
-			else chrDisableReloadToLocation = false;//открыть локацию
+			sld.quest.chimiset_talk = "true"; 
+			if (!CheckAttribute(npchar, "quest.capper_talk")) chrDisableReloadToLocation = true;
+			else chrDisableReloadToLocation = false;
 			sld = characterFromId("Dodson");
-			sld.dialog.currentnode = "entrance_10"; // ноду Акуле
-			LSC_SetWhiteBoy(); // поставим белого мальчика
+			sld.dialog.currentnode = "entrance_10"; 
+			LSC_SetWhiteBoy(); 
 			NextDiag.CurrentNode = "prisoner_11";
 			AddQuestRecord("SharkHunt", "20");
 		break;
@@ -220,7 +220,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "prisoner_11";
 		break;
 		
-		//------------------------беседа на Протекторе, если был старт через Тартарус-----------------
+		
 		case "Friend":
 			dialog.text = "There you are, my dear friend. Thanks again for saving me and trusting me, and not that bastard Kapper. I will give you these amulets to reward you. I am sure that you'll find them useful.";
 			link.l1 = "Thank you! I didn't expect that...";
@@ -237,7 +237,7 @@ void ProcessDialogEvent()
 			link.l1.go = "Friend_2";
 		break;
 		
-		// нода пересечения
+		
 		case "Friend_2":
 			dialog.text = "I see what you mean, my friend. I have seen this statue of Indian gods with my own eyes. Though it turns gold only under the beams of morning sun, and not the moon... many times we had sacrificed the wicked Narwhals and the god devoured all of them. But it is not on the Island anymore.";
 			link.l1 = "How come?! Did it suddenly disappear?!";
@@ -267,7 +267,7 @@ void ProcessDialogEvent()
 			}
 			AddQuestRecord("LSC", "4");
 		break;
-		// нода пересечения
+		
 		
 		case "Friend_6":
 			dialog.text = "I see that you have more questions. Feel free to ask, my friend.";
@@ -276,7 +276,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Friend_7":
-			dialog.text = "Hm. They are going to shoot the admiral? I need to think… Thing is that the admiral almost never leaves his residence, and when he does, he is protected by half a dozen of pirates. But he has one habit, he likes to walk around stern's gallery during late evenings\nThere are two positions for a sniper - a bow of the Santa Florentina and a mast pad of the Fury. But a sniper must be a crack shot. Plus, he would need an excellent weapon. You should ask around the island about people who has access to such firearms.";
+			dialog.text = "Hm. They are going to shoot the admiral? I need to thinkпїЅ Thing is that the admiral almost never leaves his residence, and when he does, he is protected by half a dozen of pirates. But he has one habit, he likes to walk around stern's gallery during late evenings\nThere are two positions for a sniper - a bow of the Santa Florentina and a mast pad of the Fury. But a sniper must be a crack shot. Plus, he would need an excellent weapon. You should ask around the island about people who has access to such firearms.";
 			link.l1 = "Heh, it looks like you are right, there is something about some gun in the letter... Have you seen anyone with such a gun?";
 			link.l1.go = "Friend_8";
 		break;
@@ -309,8 +309,8 @@ void ProcessDialogEvent()
 		case "Friend_12":
 			DialogExit();
 			NextDiag.CurrentNode = "Chimiset_wait";
-			LSC_SetWhiteBoy(); // ставим Белого Мальчика в магазин
-			pchar.questTemp.Saga.SharkHunt = "search_mush_1"; // флаг на магазин - поиск мушкета
+			LSC_SetWhiteBoy(); 
+			pchar.questTemp.Saga.SharkHunt = "search_mush_1"; 
 			AddQuestRecord("SharkHunt", "11");
 		break;
 		
@@ -329,11 +329,11 @@ void ProcessDialogEvent()
 		case "freedom_2":
 			DialogExit();
 			NextDiag.CurrentNode = "Chimiset_wait";
-			LSC_SetWhiteBoy(); // ставим Белого Мальчика в магазин
+			LSC_SetWhiteBoy(); 
 		break;
 		
-		//--> информационный блок
-		case "Chimiset_wait": // стал другом
+		
+		case "Chimiset_wait": 
 			if (pchar.questTemp.LSC == "return" && !CheckAttribute(npchar, "quest.return_isl"))
 			{
 				dialog.text = "Oh! My white friend "+pchar.name+"! Didn't you drown? The spirits saved you, I know that...";
@@ -343,11 +343,7 @@ void ProcessDialogEvent()
 				break;
 			}
 			dialog.text = "What brings you here, my good friend?";
-			/*if (!CheckAttribute(npchar, "quest.story"))
-			{
-				link.l1 = "Tell me how the leader of Narwhals died. You were the only one who saw that.";
-				link.l1.go = "story";
-			}*/
+			 
 			if (!CheckAttribute(npchar, "quest.crab"))
 			{
 				link.l2 = "You have mentioned the crabs at the bottom near the San Geronimo. Can you describe me those monsters?";
@@ -360,7 +356,7 @@ void ProcessDialogEvent()
 		
 		case "story":
 			dialog.text = "A story of the death of Alan Milrow will be written here.";
-			link.l1 = "ОК!";
+			link.l1 = "пїЅпїЅ!";
 			link.l1.go = "exit";
 			npchar.quest.story = "true";
 			NextDiag.TempNode = "Chimiset_wait";
@@ -379,7 +375,7 @@ void ProcessDialogEvent()
 			npchar.quest.crab = "true";
 			NextDiag.TempNode = "Chimiset_wait";
 		break;
-		//<-- информационный блок
+		
 		
 		case "":
 			dialog.text = "";

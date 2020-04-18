@@ -38,28 +38,28 @@ void NetClient_OnConnect(int iMsg)
 void NetClient_OnConnectReconnect()
 {
 	Net_DeleteClient();
-	//NetClient_TryConnect();
+	
 }
 
 void NetClient_OnConnectAccepted(int iMsg)
 {
 	wClientID = NMGetClientID(iMsg);
 
-	// create chat environment
+	
 	NetClient_CreateChatEnvironment();
 
-	// start ping
+	
 	NetClient_Ping();
 
 	Event("NCEvent_Client_Accepted");
-	//LaunchNetBuyScreen();
+	
 
 	SetEventHandler("NCEvent_Disconnect", "NetClient_OnDisconnect", 0);
 }
 
 void NetClient_OnConnectRejected(int iMsg)
 {
-	Event("NCEvent_Client_Rejected", "s", "");	// FIX-ME
+	Event("NCEvent_Client_Rejected", "s", "");	
 }
 
 void NetClient_OnConnectRejectedServerFull(int iMsg)
@@ -82,4 +82,5 @@ void NetClient_OnConnectNeedPassword(int iMsg)
 {
 	Event("NCEvent_Client_RejectedServerPassword");
 }
+
 

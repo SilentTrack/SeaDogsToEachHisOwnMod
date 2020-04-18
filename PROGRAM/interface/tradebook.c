@@ -1,9 +1,9 @@
-/// BOAL меню торговли
+
 string CurTable, CurRow;
 
 void InitInterface(string iniName)
 {
-    InterfaceStack.SelectMenu_node = "LaunchTradeBook"; // запоминаем, что звать по Ф2
+    InterfaceStack.SelectMenu_node = "LaunchTradeBook"; 
 	GameInterface.title = "titleTradeBook";
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
 
@@ -86,7 +86,7 @@ void ProcessCommandExecute()
 			}
 		break;
 	}
-	// boal new menu 31.12.04 -->
+	
 	if (nodName == "I_CHARACTER" || nodName == "I_SHIP" ||
 	    nodName == "I_QUESTBOOK" || nodName == "I_TRADEBOOK" ||
 		nodName == "I_NATIONS" || nodName == "I_ITEMS")
@@ -99,9 +99,9 @@ void ProcessCommandExecute()
 			return;
 		}
 	}
-	// boal new menu 31.12.04 -->
+	
 }
-//  таблица: город, местоположение, актуальность
+
 void FillPriceListTown(string _tabName)
 {
 	string  cityId, attr2, firstId;
@@ -112,7 +112,7 @@ void FillPriceListTown(string _tabName)
     aref    curItem;
     ref     rCity;
     
-    // шапка -->
+    
     GameInterface.(_tabName).select = 0;
     GameInterface.(_tabName).hr.td1.str = "Nation";
     GameInterface.(_tabName).hr.td1.scale = 0.77
@@ -122,9 +122,9 @@ void FillPriceListTown(string _tabName)
 	GameInterface.(_tabName).hr.td3.scale = 0.7;
 	GameInterface.(_tabName).hr.td4.str = "Relevance";
 	GameInterface.(_tabName).hr.td4.scale = 0.7;
-    // <--
+    
     nulChr = &NullCharacter;
-    makearef(rootItems, nulChr.PriceList);  // тут живут ИД города и служ. инфа.
+    makearef(rootItems, nulChr.PriceList);  
     n = 1;
     firstId = "";
     for (i=0; i<GetAttributesNum(rootItems); i++)
@@ -160,12 +160,12 @@ void FillPriceListTown(string _tabName)
 			n++;
 		}
 	}
-	//if (n > 1) GameInterface.(_tabName).select = 1;
+	
 	Table_UpdateWindow(_tabName);
 	FillPriceList("TABLE_GOODS", firstId);
 }
-//  таблица
-// картинка, название, картинка экспорта, продажа, покупка, колво, пачка, вес пачки
+
+
 void FillPriceList(string _tabName, string  attr1)
 {
     string  sGoods;
@@ -173,7 +173,7 @@ void FillPriceList(string _tabName, string  attr1)
     ref     nulChr;
     string  row;
     nulChr = &NullCharacter;
-    // шапка -->
+    
     GameInterface.(_tabName).select = 0;
     GameInterface.(_tabName).hr.td1.str = XI_ConvertString("Good name");
     GameInterface.(_tabName).hr.td1.scale = 0.8;
@@ -191,13 +191,13 @@ void FillPriceList(string _tabName, string  attr1)
 	GameInterface.(_tabName).hr.td7.scale = 0.8;
 	if (attr1 != "")
 	{
-	    // <--
+	    
 	    n = 1;
 	    for (i = 0; i < GOODS_QUANTITY; i++)
 	    {
 	        row = "tr" + n;
 	        sGoods = "Gidx" + i;			
-	        if (sti(nulChr.PriceList.(attr1).(sGoods).TradeType) == T_TYPE_CANNONS && !bBettaTestMode) continue; // не пушки
+	        if (sti(nulChr.PriceList.(attr1).(sGoods).TradeType) == T_TYPE_CANNONS && !bBettaTestMode) continue; 
 	        
             GameInterface.(_tabName).(row).UserData.ID = Goods[i].name;
             GameInterface.(_tabName).(row).UserData.IDX = i;
@@ -255,9 +255,9 @@ void TableSelectChange()
 	int iSelected = GetEventData();
     CurTable = sControl;
     CurRow   =  "tr" + (iSelected);
- 	//NullSelectTable("TABLE_CITY");
+ 	
     NullSelectTable("TABLE_GOODS");
-    // перерисуем "прайс"
+    
     if (CurTable == "TABLE_CITY")
     {
     	FillPriceList("TABLE_GOODS", GameInterface.(CurTable).(CurRow).UserData.CityID);

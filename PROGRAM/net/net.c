@@ -48,10 +48,10 @@ void Net_Stop()
 
 void Net_Init()
 {
-	// load favorites list
-	//Net_LoadFile(false, &INet_FavoritesServersList, "Favorites.srv");
+	
+	
 
-	// First interface parameters init
+	
 	iCurrentServersList = NET_FG_LAN;
 	
 	iNumLanServers = 0;
@@ -65,7 +65,7 @@ void Net_Init()
 	NetModes[NETGAME_CONVOY].Name = "DefendTheConvoy";
 	NetModes[NETGAME_FORT].Name = "CaptureTheFort";
 
-	// team colors
+	
 	NetTeamColor[0] = argb(255, 255, 0, 0);
 	NetTeamColor[1] = argb(255, 0, 255, 0);
 	NetTeamColor[2] = argb(255, 0, 0, 255);

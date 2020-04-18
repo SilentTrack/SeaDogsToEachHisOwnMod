@@ -14,15 +14,15 @@ void NetServer_CreateIslandEnvironment(int iSMsg)
 		NSIsland.Server = true;
 		CreateEntity(&NSIsland, "NetIsland");
 		NSIsland.LightingPath = NetServer_WhrGetLightingPath();
-		NSIsland.ImmersionDistance = Islands[iIslandIndex].ImmersionDistance;			// distance = fRadius * ImmersionDistance, from island begin immersion
-		NSIsland.ImmersionDepth = Islands[iIslandIndex].ImmersionDepth;			// immersion depth = (Distance2Camera / (fRadius * ImmersionDistance) - 1.0) * ImmersionDepth
+		NSIsland.ImmersionDistance = Islands[iIslandIndex].ImmersionDistance;			
+		NSIsland.ImmersionDepth = Islands[iIslandIndex].ImmersionDepth;			
 		string sTexturePath = "islands\" + Islands[iIslandIndex].TexturePath + "\";
 		SetTexturePath(0, sTexturePath);
 
 		SendMessage(&NSIsland, "lsss", MSG_ISLAND_LOAD_GEO, "islands", Islands[iIslandIndex].filespath.models, Islands[iIslandIndex].model);
 		LayerAddObject("mast_island_trace", &NSIsland, 1);
 
-		//Fort_Login(iIslandIndex);	
+		
 		SetTexturePath(0, "");
 	}
 

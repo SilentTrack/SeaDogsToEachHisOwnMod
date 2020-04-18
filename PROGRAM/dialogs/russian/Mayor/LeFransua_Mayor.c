@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -53,7 +53,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			else
 			{
 				pchar.quest.CaptainComission_SellSlave.over = "yes";
-				dialog.text = "Ah, at last. I was thinking to sell him away to that plantation owner from Barbados, he will be here in a week or two... Do you have a ransom"+ GetSexPhrase("ез","езла") +"?";
+				dialog.text = "Ah, at last. I was thinking to sell him away to that plantation owner from Barbados, he will be here in a week or two... Do you have a ransom"+ GetSexPhrase("пїЅпїЅ","пїЅпїЅпїЅпїЅ") +"?";
 				link.l1 = "Look, "+ NPChar.name +" , there is small problem... Actually, I don't have that much money. But I am ready to work.";
 				link.l1.go = "CapComission2_2";
 				if(makeint(pchar.money) > 150000)
@@ -117,7 +117,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.GenQuest.CaptainComission.ShipName1 = GenerateRandomNameToShip(sti(NPChar.nation));
 			pchar.GenQuest.CaptainComission.ShipName2 = GenerateRandomNameToShip(sti(NPChar.nation));
 			pchar.GenQuest.CaptainComission.UnknownPirateName = "l" + rand(GetNamesCount(NAMETYPE_ORIG) - 1);
-			dialog.text = "Hm.. Well " + GetName( NAMETYPE_ORIG, pchar.GenQuest.CaptainComission.UnknownPirateName, NAME_NOM) + " has convinced a part of pirates that in our stash not far from " + XI_ConvertString(pchar.GenQuest.CaptainComission.Island.Shore + "Gen") + " есть и их доля. Недавно они снялись с якоря и на двух судах '" + pchar.GenQuest.CaptainComission.ShipName1 + " and '" + pchar.GenQuest.CaptainComission.ShipName2 + "Fine, I am in. I'll try to catch them." + XI_ConvertString(pchar.GenQuest.CaptainComission.Island + "Abl") + ". Now you see why I can't trust my men to do that job?";
+			dialog.text = "Hm.. Well " + GetName( NAMETYPE_ORIG, pchar.GenQuest.CaptainComission.UnknownPirateName, NAME_NOM) + " has convinced a part of pirates that in our stash not far from " + XI_ConvertString(pchar.GenQuest.CaptainComission.Island.Shore + "Gen") + " пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ '" + pchar.GenQuest.CaptainComission.ShipName1 + " and '" + pchar.GenQuest.CaptainComission.ShipName2 + "Fine, I am in. I'll try to catch them." + XI_ConvertString(pchar.GenQuest.CaptainComission.Island + "Abl") + ". Now you see why I can't trust my men to do that job?";
 			link.l1 = "I do. How much time do I have?";
 			link.l1.go = "CapComission2_2_3";
 		break;
@@ -147,7 +147,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "CapComission2_31":
 			dialog.text = "Ah, that's fine. I was almost sorry for giving such a low price for your man. Ha-ha. Farewell.";
-			link.l1 = "Счастливо.";
+			link.l1 = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.";
 			link.l1.go = "exit";
 			AddQuestRecord("CaptainComission1", "9");
 			AddQuestUserData("CaptainComission1", "sSex", GetSexPhrase("",""));
@@ -210,7 +210,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "CapComission4_4":
 			ChangeCharacterComplexReputation(pchar,"nobility", -2);
 			AddQuestRecord("CaptainComission1", "28");
-			AddQuestUserData("CaptainComission1", "sSex", GetSexPhrase("","а"));
+			AddQuestUserData("CaptainComission1", "sSex", GetSexPhrase("","пїЅ"));
 			AddQuestUserData("CaptainComission1", "sName", ChangeNameCase(NAMETYPE_MAIN, pchar.GenQuest.CaptainComission.PirateName, NAME_NOM));
 			AddQuestUserData("CaptainComission1", "sCity", XI_ConvertString("Colony" + pchar.GenQuest.CaptainComission.City + "Gen"));
 			AddQuestUserData("CaptainComission1", "sCharName", pchar.GenQuest.CaptainComission.Name);
@@ -255,7 +255,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}			
 		break;
 		
-		//Захват пассажиров
+		
 		case "Marginpassenger":
 			dialog.text = "And why do you care about what I do? You know, you'd better go aw...";
 			link.l1 = "Tshh, calm down. I have a business for you. It's about your prisoner.";
@@ -315,7 +315,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.GenQuest.Marginpassenger.GoodsQty = 200+rand(10)*10;
 			switch (drand(1))
 			{
-				case 0: //бухта на южном мейне
+				case 0: 
 					SelectSouthshore();
 					while (!isLocationFreeForQuests(pchar.GenQuest.Marginpassenger.Shore)) SelectSouthshore();
 					dialog.text = "It is good to deal with a wise man. Not listen, in a few day there will be a ship at " + XI_ConvertString(pchar.GenQuest.Marginpassenger.Shore+"Dat") + " a Spanish expedition will arrive from Main, loaded with valuable woods. They will be waiting for a ship supposed to take the cargo. If you will make there for a week, you will have a chance to take the cargo for yourself\nIf I were you, I would be already moving to my ship. And bring the prisoner here.";
@@ -323,7 +323,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 					link.l1.go = "Marginpassenger_offer_1";
 				break;
 				
-				case 1: //просто кораблик
+				case 1: 
 					SelectSouthcity();
 					pchar.GenQuest.Marginpassenger.ShipName1 = GenerateRandomNameToShip(SPAIN);
 					dialog.text = "It is good to deal with a wise man. Not listen, in a week there will be the spanish ship '"+pchar.GenQuest.Marginpassenger.ShipName1+"' sailing from "+XI_ConvertString("Colony"+pchar.GenQuest.Marginpassenger.Southcity+"Gen")+" and loaded with the valuable wood and it will be heading to "+XI_ConvertString("Colony"+pchar.GenQuest.Marginpassenger.Southcity1+"Gen")+". If you hurry, you will intercept it easily\nYou are still here? If I were you, I would be already moving to my ship. And bring the prisoner here.";
@@ -356,7 +356,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			SetFunctionTimerCondition("Marginpassenger_SouthshipInWorld", 0, 0, 5+rand(2), false);
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
 
 void SelectSouthshore()
@@ -393,3 +393,4 @@ void SelectSouthcity()
 		break;
 	}
 }
+

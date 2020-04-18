@@ -92,7 +92,7 @@ void InitInterface(string iniName)
 
 	Buy_GetFullServerInfo();
 
-	// temporary disable
+	
 	for (i=0; i<Net_GetPerksNum(); i++)
 	{
 		CheckButton_SetDisable("CHECKBUTTONS_PERKS", i + 1, true);
@@ -123,7 +123,7 @@ void NetBuy_OnClickTeam()
 void NetBuy_SelectTeamUpdate()
 {
 	int i;
-	// fill current team colors
+	
 	for (i=0; i<4; i++)
 	{
 		string sTeam = "team" + i;
@@ -135,7 +135,7 @@ void NetBuy_SelectTeamUpdate()
 		if (i > sti(NCServer.NumTeams) - 1)
 		{
 			SendMessage(&GameInterface, "lslll", MSG_INTERFACE_MSG_TO_NODE, "PICTURES_SELECTTEAM", 3, i, argb(255, 30, 30, 30));
-			//SendMessage(&GameInterface, "lslss", MSG_INTERFACE_MSG_TO_NODE, "PICTURES_SELECTTEAM", 3, argb(0,0,0,0));	
+			
 			iFrameColor = argb(255, 28, 28, 28);
 		}
 
@@ -148,7 +148,7 @@ void NetBuy_SelectTeamUpdate()
 
 void NetBuy_SelectTeamOk()
 {
-	// send change team code to server
+	
 	int iSMsg = NMCreate();
 	NMAddClientID(iSMsg, wClientID);
 	NMAddByte(iSMsg, NC_BUY);
@@ -194,7 +194,7 @@ void NetBuy_OpenSelectTeam()
 
 	NetBuy_SelectTeamUpdate();
 
-	NetBuy_OnFrame();	// update some parameters
+	NetBuy_OnFrame();	
 }
 
 void NetBuy_OnFrame()
@@ -219,11 +219,11 @@ void NetBuy_OnFrame()
 	
 	Button_SetText("BTN_START", sValue);
 
-	// set selectteam button
+	
 	ref rOurClient = NetClient_GetThisClient();
 	Button_SetEnable("BTN_SELECTTEAM_OK", !(iSelectedTeam == sti(rOurClient.Team)));
 
-	// update team count
+	
 	for (i=0; i<4; i++) { iTeamQuantity[i] = 0;	}
 	for (i=0; i<NET_MAXCLIENTS; i++) 
 	{
@@ -342,7 +342,7 @@ void Buy_OnServerInfo()
 		XI_WindowShow("WND_NETBUY_WAITINFO", false);
 		XI_WindowDisable("WND_NETBUY_WAITINFO", true);
 
-		// update skills costs 
+		
 		for (i=0; i<5; i++)	
 		{ 
 			iSkillsQuantity[i] = 1;
@@ -350,14 +350,14 @@ void Buy_OnServerInfo()
 			StringCollection_SetTextValue("STRINGS_SKILLS_MONEY", i + 1, Net_GetSkillCost(i, 1)); 
 		}
 
-		// update perks costs 
+		
 		for (i=0; i<6; i++)	
 		{ 
 			iPerks[i] = 0; 
 			StringCollection_SetTextValue("STRINGS_PERKS_MONEY", i + 1, Net_GetPerkCost(i)); 
 		}
 
-		// update goods costs 
+		
 		for (i=0; i<6; i++)	
 		{ 
 			iNetGoodsQuantity[i] = 0;
@@ -397,8 +397,8 @@ void Buy_SetShipUpgradeHull(int iDirection)
 	for (int i=0; i<iNumUpgrades; i++)
 	{
 		iNextUpgrade = iNextUpgrade + iDirection;
-		if (iNextUpgrade >= iNumUpgrades) { return; }//iNextUpgrade = 0;
-		if (iNextUpgrade < 0) { return; }//iNextUpgrade = iNumUpgrades - 1;
+		if (iNextUpgrade >= iNumUpgrades) { return; }
+		if (iNextUpgrade < 0) { return; }
 
 		int iNewPrice = Net_GetShipUpgradeHullCost(iCurrentShipType, iNextUpgrade);
 
@@ -429,8 +429,8 @@ void Buy_SetShipUpgradeRigging(int iDirection)
 	for (int i=0; i<iNumUpgrades; i++)
 	{
 		iNextUpgrade = iNextUpgrade + iDirection;
-		if (iNextUpgrade >= iNumUpgrades) { return; }//iNextUpgrade = 0;
-		if (iNextUpgrade < 0) { return; }//iNextUpgrade = iNumUpgrades - 1;
+		if (iNextUpgrade >= iNumUpgrades) { return; }
+		if (iNextUpgrade < 0) { return; }
 
 		int iNewPrice = Net_GetShipUpgradeRiggingCost(iCurrentShipType, iNextUpgrade);
 
@@ -460,14 +460,14 @@ void Buy_SetShip(int iDirection)
 
 	int iMaxShipClass = sti(NCServer.MaxShipClass);
 
-	// find next ship
+	
 	int iNumShips = Net_GetShipsNum();
 	int iNextShipType = iCurrentShipType;
 	for (int i=0; i<iNumShips; i++)
 	{
 		iNextShipType = iNextShipType + iDirection;
-		if (iNextShipType >= iNumShips) { return; }//iNextShipType = 0;
-		if (iNextShipType < 0) { return; }//iNextShipType = iNumShips - 1;
+		if (iNextShipType >= iNumShips) { return; }
+		if (iNextShipType < 0) { return; }
 		
 		ref rShip = Net_GetShipByIndex(iNextShipType);
 		if (sti(rShip.TradeOff)) { continue; }
@@ -478,13 +478,13 @@ void Buy_SetShip(int iDirection)
 		{
 			if (iCurrentShipType >= 0)
 			{
-				// sell old cannons and cannons upgrade
+				
 				if (iCurrentCannonType >= 0)
 				{
 					iCurrentCredit = iCurrentCredit - iOldCannonsNum * Net_GetCannonCost(iCurrentCannonType);
 					iCurrentCannonType = -1;
 
-					// sell old cannon upgrade
+					
 					if (iCurrentCannonUpgrade >= 0)
 					{
 						iCurrentCredit = iCurrentCredit - iOldCannonsNum * Net_GetCannonUpgradeCost(iCurrentCannonType, iCurrentCannonUpgrade);
@@ -492,14 +492,14 @@ void Buy_SetShip(int iDirection)
 					}
 				}
 
-				// sell old hull upgrades
+				
 				if (iCurrentShipUpgradeHull >= 0)
 				{
 					iCurrentCredit = iCurrentCredit - Net_GetShipUpgradeHullCost(iCurrentShipType, iCurrentShipUpgradeHull);
 					iCurrentShipUpgradeHull = -1;
 				}
 
-				// sell old rigging upgrades
+				
 				if (iCurrentShipUpgradeRigging >= 0)
 				{
 					iCurrentCredit = iCurrentCredit - Net_GetShipUpgradeRiggingCost(iCurrentShipType, iCurrentShipUpgradeRigging);
@@ -507,16 +507,16 @@ void Buy_SetShip(int iDirection)
 				}
 		}
 
-			// buy new ship
+			
 			iCurrentShipType = iNextShipType;
 			iCurrentCredit = iCurrentCredit - iOldPrice + iNewPrice;
 
 			string sGroup = "SHIPS_" + rShip.Name;
 			Picture_SetGroupPicture("PICTURE_SHIP", sGroup, "ship");
 			
-			// buy new cannons
+			
 			iCurrentCannonType = -1; Buy_SetCannon(1);
-			// set price of cannons
+			
 			StringCollection_SetTextValue("STRINGS_SHIPCANNONS_MONEY", 1, iNewPrice);
 
 			iCurrentShipUpgradeHull = -1;
@@ -566,14 +566,14 @@ void Buy_SetCannon(int iDirection)
 
 	int iOldPrice = iNumShipCannons * Net_GetCannonCost(iCurrentCannonType);
 
-	// find next cannon
+	
 	int iNumCannons = Net_GetCannonsNum();
 	int iNextType = iCurrentCannonType;
 	for (int i=0; i<iNumCannons; i++)
 	{
 		iNextType = iNextType + iDirection;
-		if (iNextType >= iNumCannons) { return; }//iNextType = 0;
-		if (iNextType < 0) { return; }//iNextType = iNumCannons - 1;
+		if (iNextType >= iNumCannons) { return; }
+		if (iNextType < 0) { return; }
 
 		ref rCannon = Net_GetCannonByIndex(iNextType);
 		if (sti(rCannon.TradeOff)) { continue; }
@@ -582,7 +582,7 @@ void Buy_SetCannon(int iDirection)
 
 		if (iCurrentCredit - iOldPrice + iNewPrice < iMaxCredit)
 		{
-			// sell old cannon upgrade
+			
 			if (iCurrentCannonUpgrade >= 0)
 			{
 				iCurrentCredit = iCurrentCredit - iNumShipCannons * Net_GetCannonUpgradeCost(iCurrentCannonType, iCurrentCannonUpgrade);
@@ -593,7 +593,7 @@ void Buy_SetCannon(int iDirection)
 			iCurrentCredit = iCurrentCredit - iOldPrice + iNewPrice;
 			Picture_SetGroupPicture("PICTURE_CANNON", "CANNONS_UPGRADE_1", rCannon.picture);
 			
-			// set price of ship
+			
 			StringCollection_SetTextValue("STRINGS_SHIPCANNONS_MONEY", 2, iNewPrice);
 
 			string sCannonTypeText = XI_ConvertString(rCannon.Name);
@@ -604,7 +604,7 @@ void Buy_SetCannon(int iDirection)
 			StringCollection_SetText("STRINGS_CANNON_UPGRADE_MONEY", 2, "#" + iNumShipCannons * Net_GetCannonUpgradeCost(iCurrentCannonType, 1));
 			StringCollection_SetText("STRINGS_CANNON_UPGRADE_MONEY", 3, "#" + iNumShipCannons * Net_GetCannonUpgradeCost(iCurrentCannonType, 2));
 			
-			// set new cannon upgrade = Copper
+			
 			Buy_SetCannonUpgrade(0, true);
 			Picture_SetGroupPicture("PICTURE_CANNON_UPGRADE_COPPER", "CANNONS_UPGRADE_1", rCannon.picture);
 			Picture_SetGroupPicture("PICTURE_CANNON_UPGRADE_BRONZE", "CANNONS_UPGRADE_2", rCannon.picture);
@@ -626,7 +626,7 @@ void Buy_SetPerk(int iPerkIndex, bool bState)
 
 	if (iPerks[iPerkIndex])
 	{
-		// sell old perk
+		
 		iCurrentCredit = iCurrentCredit - iPerkCost;
 	}
 
@@ -647,7 +647,7 @@ void Buy_SortPlayers()
 
 	iNumClients = 0;
 
-	// create list
+	
 	for (i=0; i<NET_MAXCLIENTS; i++) 
 	{
 		if (!sti(NCClients[i].Use)) { continue; }
@@ -659,7 +659,7 @@ void Buy_SortPlayers()
 		iNumClients++;
 	}
 
-	// sort BuyClients
+	
 	for (i=0; i<iNumClients; i++) 
 	{
 		for (j=i + 1; j<iNumClients; j++) 
@@ -695,7 +695,7 @@ void Buy_FillPlayersTable(string sTable)
 
 	if (!bServerInfoReady) { return; }
 
-	// sort players: our player first and his team first too
+	
 	Buy_SortPlayers();
 
 	for (int i=0; i<iNumClients; i++)
@@ -720,11 +720,11 @@ void Buy_FillPlayersTable(string sTable)
 
 		GameInterface.(sTable).(sRow).ClientID = rClient.ID;
 
-		// face
+		
 		GameInterface.(sTable).(sRow).td1.icon.texturepointer = sti(rClient.UserData.Face.Texture);
 		GameInterface.(sTable).(sRow).td1.icon.cellsize = true;
 
-		// ship
+		
 		GameInterface.(sTable).(sRow).td2.icon.group = sShipGroup;
 		GameInterface.(sTable).(sRow).td2.icon.image = "ship";
 		GameInterface.(sTable).(sRow).td2.icon.cellsize = true;
@@ -784,7 +784,7 @@ void Buy_OnTableClick()
 	int iColumn = GetEventData();
 
 	if (sControl != "TABLE_PLAYERS") { return; } 
-	//if (iRow == 0) { return; } 
+	
 
 	string sRow = "tr" + (iRow + 1);
 	int wNetClientID = sti(GameInterface.TABLE_PLAYERS.(sRow).ClientID);
@@ -795,16 +795,16 @@ void Buy_OnTableClick()
 	int iSMsg;
 	switch (iColumn)
 	{
-		case 5:		// team click
+		case 5:		
 			if (!bClickHimself) { return; }
-			// try to change team and resort table
+			
 			if (sti(NCServer.NumTeams) > 1) NetBuy_OpenSelectTeam();
 		break;
-		case 6:		// ready click
+		case 6:		
 			if (!bClickHimself) { return; }
 			Buy_Server_UpdateReady();
 		break;
-		case 7:		// kick click
+		case 7:		
 			if (bClickHimself) { return; }
 			rClient.Kick = !sti(rClient.Kick);
 
@@ -890,7 +890,7 @@ void IDoExit(int exitCode)
 
 void Buy_Disconnect()
 {
-	//IDoExit(RC_INTERFACE_NET_FINDGAME);
+	
 }
 
 void Buy_StopCountdown()
@@ -904,7 +904,7 @@ void Buy_StartCountdown()
 	bStartCountDown = true;
 	iClientStartTimer = GetEventData() * 1000;
 
-	// drop team select interface
+	
 	if (bSelectNewTeamWindow) { NetBuy_SelectTeamCancel(); }
 }
 
@@ -959,8 +959,8 @@ void OnTmpStart()
 
 void Buy_UpdatePlayersQuantity()
 {
-	//int iNumClients = 0;
-	//for (int i=0; i<NET_MAXCLIENTS; i++) { if (sti(NCClients[i].Use)) { iNumClients++; } }
+	
+	
 
 	string sValue = "#" + iNumClients + " / " + NCServer.MaxClients;
 	StringCollection_SetText("STRINGS_MAP_INFO_VALUE", 3, sValue);
@@ -974,7 +974,7 @@ void Buy_UpdateCredit()
 	int i, bState;
 	bool bDisable;
 
-	// enable/disable cannons upgrade
+	
 	for (i=0; i<3; i++)
 	{
 		bDisable = false;
@@ -983,19 +983,13 @@ void Buy_UpdateCredit()
 		CheckButton_SetDisable("RADIO_CANNONS_UPGRADELIST", i + 1, bDisable);
 	}
 
-	// enable/disable perks
-	/*for (i=0; i<Net_GetPerksNum(); i++)
-	{
-		bDisable = false;
-		bState = CheckButton_GetState("CHECKBUTTONS_PERKS", i + 1);
-		if (!bState && (iCurrentCredit + Net_GetPerkCost(i) > iMaxCredit)) { bDisable = true; }
-		CheckButton_SetDisable("CHECKBUTTONS_PERKS", i + 1, bDisable);
-	}*/
+	
+	 
 }
 
-// ========================================
-//				SKILLS SECTION
-// ========================================
+
+
+
 
 int Clampi(int iValue, int iMin, int iMax)
 {
@@ -1043,9 +1037,9 @@ void Buy_DecDefence() { Buy_AddSkills(4, -1); }
 void Buy_AddRepair() { Buy_AddSkills(5, 1); }
 void Buy_DecRepair() { Buy_AddSkills(5, -1); }
 
-// ========================================
-//				GOODS SECTION
-// ========================================
+
+
+
 
 void Buy_AddGood(int iGoodIndex, int iGoodAddQuantity)
 {

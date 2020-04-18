@@ -2,9 +2,9 @@
 int LocationInitPortoBello(int n)
 {
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ГОРОД
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortoBello_town";
 	locations[n].id.label = "Street";
 	locations[n].worldmap = "PortoBello";
@@ -18,14 +18,14 @@ int LocationInitPortoBello(int n)
 	locations[n].citizens = true;
 	locations[n].soldiers = true;
 	locations[n].carrier = true;
-	//==> флаг генерации квестодателя по розыску кэпов, int значение - шанс что сам заговорит(1-10)
+	
 	locations[n].questSeekCap = 6; 
-	//Sound
+	
 	locations[n].type = "town";
 	LAi_LocationFantomsGen(&locations[n], true);
-	locations[n].houseEnc = true; //для энкаунтеров в домах
-	//Models
-	//Always
+	locations[n].houseEnc = true; 
+	
+	
 	locations[n].models.always.town = "PortoBello";
 	locations[n].models.always.town.sea_reflection = 1;
 	locations[n].models.always.L1 = "PortoBello_signsA";
@@ -36,7 +36,7 @@ int LocationInitPortoBello(int n)
 	locations[n].models.always.plan = "plan1";
 	locations[n].models.always.plan.level = 9;
 
-	//WindMill Fan
+	
 	locations[n].models.always.MillFan = "MillFan";
 	Locations[n].models.always.MillFan.locator.group = "WindMill";
 	Locations[n].models.always.MillFan.locator.name ="Fan";	
@@ -44,19 +44,19 @@ int LocationInitPortoBello(int n)
 	Locations[n].models.always.MillFan.rotate.y = 0.0;
 	Locations[n].models.always.MillFan.rotate.z = 0.22;
 
-	//Day
+	
 	locations[n].models.day.fonar = "PortoBello_fd";
 	locations[n].models.day.charactersPatch = "PortoBello_patch_day";
 	locations[n].models.day.rinok = "PortoBello_rinok";
-	//Night
+	
 	locations[n].models.night.fonar = "PortoBello_fn";
 	locations[n].models.night.charactersPatch = "PortoBello_patch_night";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 
-    // --> Типовые городские локации, четкая фиксация на 10 номеров.
+    
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortoBello";
 	locations[n].reload.l1.emerge = "reload_1";
@@ -116,7 +116,7 @@ int LocationInitPortoBello(int n)
 	locations[n].reload.l7.emerge = "reload1";
 	locations[n].reload.l7.autoreload = "0";
 	locations[n].reload.l7.label = "Church";
-	//locations[n].reload.l7.close_for_night = 1;
+	
 
 	locations[n].reload.l71.name = "reload71_back";
 	locations[n].reload.l71.go = "PortoBello_church";
@@ -151,9 +151,9 @@ int LocationInitPortoBello(int n)
 	locations[n].reload.jail.autoreload = "0";
 	locations[n].reload.jail.label = "Prison";
 
-    // --> Квестовые локации.
+    
 	
-	// --> Комоны, загрушки. Номера с начинаются с 20.
+	
  	locations[n].reload.l20.name = "houseH4";
 	locations[n].reload.l20.go = "CommonRoom_MH10";
 	locations[n].reload.l20.emerge = "reload1";
@@ -239,23 +239,23 @@ int LocationInitPortoBello(int n)
 	locations[n].reload.l33.label = "House";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ТАВЕРНА
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortoBello_tavern";
 	locations[n].id.label = "Tavern";
 	locations[n].filespath.models = "locations\inside\tavern02\";
 	locations[n].image = "loading\inside\tavern.tga";
 	locations[n].habitues = 1;
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "tavern";
 	locations[n].fastreload = "PortoBello";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.tavern = "tavern02";
 	locations[n].models.always.tavern.level = 65538;
 	locations[n].models.always.locators = "tavern02_locators";
@@ -264,14 +264,14 @@ int LocationInitPortoBello(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "tavern02_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "tavern02_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortoBello_town";
 	locations[n].reload.l1.emerge = "reload4";
@@ -283,9 +283,9 @@ int LocationInitPortoBello(int n)
 	locations[n].reload.l2.emerge = "reload1";
 	locations[n].reload.l2.autoreload = "0";
 	locations[n].reload.l2.label = "Tavern upstairs";
-	locations[n].reload.l2.disable = 1; // закроем, но связку сделаем для квестовых нужд.
+	locations[n].reload.l2.disable = 1; 
 
-    ////////////////////////==> подсобка таверны
+    
 	locations[n].reload.l3.name = "reload3";
 	locations[n].reload.l3.go = "CommonRoom_MH3";
 	locations[n].reload.l3.emerge = "reload1";
@@ -300,22 +300,22 @@ int LocationInitPortoBello(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// КОМНАТА В ТАВЕРНЕ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortoBello_tavern_upstairs";
 	locations[n].id.label = "Tavern upstairs";
 	locations[n].filespath.models = "locations\inside\Tavern_room";
 	locations[n].image = "loading\inside\tavern.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "PortoBello";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Tavern_room_locators";
 	locations[n].models.always.tavern = "Tavern_room";
 	locations[n].models.always.tavern.level = 65538;
@@ -325,14 +325,14 @@ int LocationInitPortoBello(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Tavern_room_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Tavern_room_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortoBello_tavern";
 	locations[n].reload.l1.emerge = "reload2";
@@ -341,22 +341,22 @@ int LocationInitPortoBello(int n)
 	locations[n].locators_radius.reload.reload1 = 0.8;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// МАГАЗИН
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "PortoBello_store";
 	locations[n].id.label = "Store";
 	locations[n].filespath.models = "locations\inside\Store04\";
 	locations[n].image = "loading\inside\shop.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shop";
 	locations[n].fastreload = "PortoBello";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Store04_locators";
 	locations[n].models.always.store = "Store04";
 	locations[n].models.always.window = "store04_window";
@@ -364,14 +364,14 @@ int LocationInitPortoBello(int n)
 	locations[n].models.always.window.level = 50;
 
 	locations[n].models.always.back = "..\inside_back";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Store04_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Store04_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortoBello_town";
 	locations[n].reload.l1.emerge = "reload6";
@@ -380,22 +380,22 @@ int LocationInitPortoBello(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// РОСТОВЩИК
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "PortoBello_bank";
 	locations[n].id.label = "Usurer House";
 	locations[n].filespath.models = "locations\inside\Bank01\";
 	locations[n].image = "loading\inside\bank.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shop";
 	locations[n].fastreload = "PortoBello";
  	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Bank01_locators";
 	locations[n].models.always.store = "Bank01";
 	locations[n].models.always.store.level = 65538;
@@ -404,14 +404,14 @@ int LocationInitPortoBello(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Bank01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Bank01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortoBello_town";
 	locations[n].reload.l1.emerge = "reload8";
@@ -426,22 +426,22 @@ int LocationInitPortoBello(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ВЕРФЬ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "PortoBello_Shipyard";
 	locations[n].id.label = "Shipyard";
 	locations[n].filespath.models = "locations\inside\Shipyard03\";
 	locations[n].image = "loading\inside\shipyard.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shipyard";
 	locations[n].fastreload = "PortoBello";
  	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Shipyard03_locators";
 	locations[n].models.always.shipyard = "Shipyard03";
 	locations[n].models.always.shipyard.level = 65538;
@@ -450,14 +450,14 @@ int LocationInitPortoBello(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Shipyard03_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Shipyard03_patch";
-    //Environment
+    
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortoBello_town";
 	locations[n].reload.l1.emerge = "reload5";
@@ -472,21 +472,21 @@ int LocationInitPortoBello(int n)
 	locations[n].locators_radius.item.item1 = 1.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// СКЛАД НА ВЕРФИ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	
+	
+	
 	locations[n].id = "PortoBello_Packhouse";
 	locations[n].id.label = "packhouse";
 	locations[n].image = "loading\inside\sklad.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "PortoBello";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\sklad03";
 	locations[n].models.always.locators = "sklad03_locators";
 	locations[n].models.always.modelSklad = "sklad03";
@@ -494,17 +494,17 @@ int LocationInitPortoBello(int n)
 	
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "sklad03_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "sklad03_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "PortoBello_Shipyard";
 	locations[n].reload.l1.emerge = "reload2";
@@ -513,25 +513,25 @@ int LocationInitPortoBello(int n)
 	n = n + 1;
 
 	
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// РЕЗИДЕНЦИЯ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "PortoBello_townhall";
 	locations[n].id.label = "Townhall";
 	locations[n].filespath.models = "locations\inside\Residence02";
 	locations[n].image = "loading\inside\residence.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "residence";
 	locations[n].fastreload = "PortoBello";
 	locations[n].islandId = "Mein";
-	// стража
+	
 	locations[n].soldiers = true;
 	LAi_LocationFantomsGen(&locations[n], true);
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Residence02_locators";
 	locations[n].models.always.l1 = "Residence02";
 	locations[n].models.always.l1.level = 65538;
@@ -540,40 +540,40 @@ int LocationInitPortoBello(int n)
 	locations[n].models.always.window.level = 65539;	
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Residence02_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Residence02_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortoBello_town";
 	locations[n].reload.l1.emerge = "reload3";
 	locations[n].reload.l1.autoreload = "0";
 	locations[n].reload.l1.label = "Street";
 
-	locations[n].reload.l2.name = "reload2"; //кабинет направо от входа
+	locations[n].reload.l2.name = "reload2"; 
 	locations[n].reload.l2.go = "PortoBello_TownhallRoom";
 	locations[n].reload.l2.emerge = "reload1";
 	locations[n].reload.l2.autoreload = "0";
 	locations[n].reload.l2.label = "TownhallRoom";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	locations[n].id = "PortoBello_TownhallRoom";
 	locations[n].id.label = "TownhallRoom";
 	locations[n].image = "loading\inside\BigHouse01.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "PortoBello";
  	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\BigHouse01_2Door";
 	locations[n].models.always.model = "BigHouse01_2Door";
 	locations[n].models.always.model.level = 65538;
@@ -585,14 +585,14 @@ int LocationInitPortoBello(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "BigHouse01_2Door_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "BigHouse01_2Door_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "PortoBello_townhall";
 	locations[n].reload.l1.emerge = "reload2";
@@ -607,22 +607,22 @@ int LocationInitPortoBello(int n)
 	locations[n].locators_radius.reload.locator1 = 0.8;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ЦЕРКОВЬ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortoBello_church";
 	locations[n].id.label = "Church";
 	locations[n].filespath.models = "locations\inside\Church01";
 	locations[n].image = "loading\inside\church.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "church";
 	locations[n].fastreload = "PortoBello";
  	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Church01_locators";
 	locations[n].models.always.tavern = "Church01";
 	locations[n].models.always.tavern.level = 65538;
@@ -631,14 +631,14 @@ int LocationInitPortoBello(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Church01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Church01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortoBello_town";
 	locations[n].reload.l1.emerge = "reload7";
@@ -653,21 +653,21 @@ int LocationInitPortoBello(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ПОРТОВЫЙ ОФИС
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "PortoBello_PortOffice";
 	locations[n].id.label = "PortOffice";
 	locations[n].image = "loading\inside\portoffice.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "PortoBello";
  	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\PortOffice";
 	locations[n].models.always.housePortOffice = "PortOffice";
 	locations[n].models.always.housePortOffice.level = 65538;
@@ -679,14 +679,14 @@ int LocationInitPortoBello(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "PortOffice_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "PortOffice_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "PortoBello_town";
 	locations[n].reload.l1.emerge = "reload10";
@@ -695,7 +695,7 @@ int LocationInitPortoBello(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 	
-	////////////////////// prison ////////////////////////////
+	
 	Locations[n].id = "PortoBello_prison";
 	locations[n].id.label = "Prison";
 	Locations[n].image = "loading\inside\prison.tga";
@@ -703,26 +703,26 @@ int LocationInitPortoBello(int n)
     locations[n].parent_colony = "PortoBello";
  	locations[n].fastreload = "PortoBello";
 	locations[n].islandId = "Mein";
-	//Sound
+	
 	locations[n].type = "jail";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\prison1";
 	locations[n].models.always.prison1 = "prison1";
 	locations[n].models.always.lamps = "prison1_lamps";
 	locations[n].models.always.locators = "prison1_locators";	
 	locations[n].models.always.chest = "chest1";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "prison1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "prison1_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-    //Reload map
+    
 	Locations[n].reload.l1.name = "reload1";
 	Locations[n].reload.l1.go = "PortoBello_town";
 	Locations[n].reload.l1.emerge = "reload_jail";
@@ -732,20 +732,20 @@ int LocationInitPortoBello(int n)
 	locations[n].box1.QuestClosed = true;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Выход из города
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortoBello_ExitTown";
 	locations[n].id.label = "ExitTown";
 	locations[n].image = "loading\Gate" + rand(1) + ".tga";
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "PortoBello";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\TownExitW";
 	Locations[n].models.always.townExit = "townExitW";
 	Locations[n].models.always.townWalls = "townExitW_stucco";
@@ -764,16 +764,16 @@ int LocationInitPortoBello(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "townExitW_patch";
 	locations[n].models.day.fonars = "townExitW_fd";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "townExitW_patch";
 	locations[n].models.night.fonars = "townExitW_fn";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortoBello_Jungle_01";
 	locations[n].reload.l1.emerge = "reload3";
@@ -802,23 +802,23 @@ int LocationInitPortoBello(int n)
 	locations[n].reload.l4.label = "PortoBello";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Плантация Порто-Белло
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortoBello_Plantation";
 	locations[n].id.label = "Plantation";
 	locations[n].image = "loading\Plantation.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "PortoBello";
 	locations[n].citizens = true;    
 	locations[n].soldiers = true;    
 	locations[n].carrier = true;
-	//Sound
+	
 	locations[n].type = "plantation";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\BarbadosPlantation";
 	locations[n].models.always.BarbadosPlantation = "BarbadosPlantation";	
 	locations[n].models.always.reflect = "BarbadosPlantation_reflect";
@@ -843,16 +843,16 @@ int LocationInitPortoBello(int n)
 	
 	locations[n].models.always.l1 = "BarbadosPlantation_wall";
 	Locations[n].models.always.l1.tech = "DLightModel";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "BarbadosPlantation_patchopen";
 	locations[n].models.day.fonar = "BarbadosPlantation_fd";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "BarbadosPlantation_patchopen";
 	locations[n].models.night.fonar = "BarbadosPlantation_fn";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	
 	locations[n].reload.l1.name = "reload2_back";
 	locations[n].reload.l1.go = "PortoBello_ExitTown";
@@ -861,7 +861,7 @@ int LocationInitPortoBello(int n)
 	locations[n].reload.l1.label = "ExitTown";
 	locations[n].locators_radius.reload.reload1_back = 2.5;
 
-	//дома
+	
 	locations[n].reload.l3.name = "houseSp1";
 	locations[n].reload.l3.go = "PortoBello_Plantation_Sp1";
 	locations[n].reload.l3.emerge = "reload1";
@@ -892,22 +892,22 @@ int LocationInitPortoBello(int n)
 	locations[n].reload.l7.autoreload = false;
 	locations[n].reload.l7.label = "house";
 
-    locations[n].locators_radius.quest.detector1 = 5.0; //homo
+    locations[n].locators_radius.quest.detector1 = 5.0; 
     n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	locations[n].id = "PortoBello_Plantation_Sp1";
 	locations[n].filespath.models = "locations\inside\StoneHouse";
 	locations[n].id.label = "House";
 	locations[n].image = "loading\inside\stonehouse.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "PortoBello";
-	//Sound
+	
 	locations[n].type = "house";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.tavern = "StoneHouse";
 	locations[n].models.always.tavern.level = 65538;
 	locations[n].models.always.window = "StoneHouse_window";
@@ -918,14 +918,14 @@ int LocationInitPortoBello(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-    //Day
+    
 	locations[n].models.day.charactersPatch = "StoneHouse_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "StoneHouse_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "PortoBello_Plantation";
 	locations[n].reload.l1.emerge = "houseSp1";
@@ -933,19 +933,19 @@ int LocationInitPortoBello(int n)
 	locations[n].reload.l1.label = "Plantation";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	locations[n].id = "PortoBello_Plantation_S1";
 	locations[n].filespath.models = "locations\inside\Hut";
 	locations[n].id.label = "House";
 	locations[n].image = "loading\inside\hut.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "PortoBello";
-	//Sound
+	
 	locations[n].type = "house";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Hut_locators";
 	locations[n].models.always.tavern = "Hut";
 	locations[n].models.always.tavern.level = 65538;
@@ -955,14 +955,14 @@ int LocationInitPortoBello(int n)
 
 	locations[n].models.always.back = "..\inside_back2";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Hut_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Hut_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "PortoBello_Plantation";
 	locations[n].reload.l1.emerge = "houseS1";
@@ -970,19 +970,19 @@ int LocationInitPortoBello(int n)
 	locations[n].reload.l1.label = "Plantation";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	locations[n].id = "PortoBello_Plantation_S2";
 	locations[n].filespath.models = "locations\inside\Hut";
 	locations[n].id.label = "House";
 	locations[n].image = "loading\inside\hut.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "PortoBello";
-	//Sound
+	
 	locations[n].type = "house";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Hut_locators";
 	locations[n].models.always.tavern = "Hut";
 	locations[n].models.always.tavern.level = 65538;
@@ -992,14 +992,14 @@ int LocationInitPortoBello(int n)
 
 	locations[n].models.always.back = "..\inside_back2";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Hut_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Hut_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload2";
 	locations[n].reload.l1.go = "PortoBello_Plantation";
 	locations[n].reload.l1.emerge = "houseS2";
@@ -1007,18 +1007,18 @@ int LocationInitPortoBello(int n)
 	locations[n].reload.l1.label = "Plantation";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	locations[n].id = "PortoBello_Plantation_F1";
 	locations[n].id.label = "Room";
 	locations[n].image = "loading\inside\mediumhouse10.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "PortoBello";
-	//Sound
+	
 	locations[n].type = "house";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\mediumhouse05";
 	locations[n].models.always.mediumhouse05 = "mediumhouse05";
 	locations[n].models.always.mediumhouse05.level = 65538;
@@ -1031,15 +1031,15 @@ int LocationInitPortoBello(int n)
 
 	locations[n].models.always.back = "..\inside_back2";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	Locations[n].models.day.mediumhouse05rand= "mediumhouse05_rand";
 	locations[n].models.day.charactersPatch = "mediumhouse05_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "mediumhouse05_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "PortoBello_Plantation";
 	locations[n].reload.l1.emerge = "houseF1";
@@ -1047,18 +1047,18 @@ int LocationInitPortoBello(int n)
 	locations[n].reload.l1.label = "Plantation";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	locations[n].id = "PortoBello_Plantation_F2";
 	locations[n].id.label = "House";
 	locations[n].image = "loading\inside\mediumhouse10.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortoBello";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "PortoBello";
-	//Sound
+	
 	locations[n].type = "house";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\mediumhouse09";
 	locations[n].models.always.house = "mediumhouse09";
 	locations[n].models.always.house.level = 65538;
@@ -1071,15 +1071,15 @@ int LocationInitPortoBello(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	Locations[n].models.day.mediumhouse09rand= "mediumhouse09_rand";
 	locations[n].models.day.charactersPatch = "mediumhouse09_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "mediumhouse09_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "PortoBello_Plantation";
 	locations[n].reload.l1.emerge = "houseF2";
@@ -1087,19 +1087,19 @@ int LocationInitPortoBello(int n)
 	locations[n].reload.l1.label = "Plantation";
 	n = n + 1;
 	
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "PortoBello_Jungle_01";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "PortoBello";
 	locations[n].questflower = 1;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle7";
 	Locations[n].models.always.jungle = "jungle7";	
 	Locations[n].models.always.locators = "jungle7_locators";		
@@ -1114,14 +1114,14 @@ int LocationInitPortoBello(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle7_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle7_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Panama_jungle_02";
 	locations[n].reload.l1.emerge = "reload2";
@@ -1144,18 +1144,18 @@ int LocationInitPortoBello(int n)
 	locations[n].locators_radius.reload.reload3_back = 1.5;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
     locations[n].id = "PortoBello_Jungle_02";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
- 	//Sound
+ 	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "PortoBello";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle4";
 	Locations[n].models.always.jungle = "jungle4";	
 	Locations[n].models.always.locators = "jungle4_locators";		
@@ -1170,14 +1170,14 @@ int LocationInitPortoBello(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle4_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle4_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortoBello_Jungle_01";
 	locations[n].reload.l1.emerge = "reload2";
@@ -1200,18 +1200,18 @@ int LocationInitPortoBello(int n)
 	locations[n].locators_radius.reload.reload3_back = 3;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Вход в грот
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortoBello_CaveEntrance";
 	locations[n].id.label = "Cave entrance";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "PortoBello";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt1";
 	Locations[n].models.always.caveEnt1 = "caveEnt1";	
 	Locations[n].models.always.locators = "caveEnt1_locators";		
@@ -1226,14 +1226,14 @@ int LocationInitPortoBello(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "caveEnt1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "caveEnt1_patch";	
-	//Environment	
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l3.name = "reload1_back";
 	locations[n].reload.l3.go = "PortoBello_Cave";
 	locations[n].reload.l3.emerge = "reload1";
@@ -1249,18 +1249,18 @@ int LocationInitPortoBello(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Грот	// Addon 2016-1 Jason Пиратская линейка
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortoBello_Cave";
 	locations[n].id.label = "Grot";
     locations[n].image = "loading\inside\cave.tga";
-	//Sound
+	
 	locations[n].type = "cave";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "PortoBello";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\grotto2";
 	locations[n].models.always.grotto2 = "grotto2";
 	locations[n].models.always.grotto2.sea_reflection = 1;
@@ -1268,15 +1268,15 @@ int LocationInitPortoBello(int n)
 	Locations[n].models.always.grotto2alpha.tech = "LocationWindows";	
 	locations[n].models.always.grotto2alpha.level = 65532;	
 	locations[n].models.always.locators = "grotto2_locators";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "grotto2_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "grotto2_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortoBello_CaveEntrance";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1284,19 +1284,19 @@ int LocationInitPortoBello(int n)
 	locations[n].locators_radius.reload.reload1_back = 2;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// залив Москитос
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Shore47";
 	locations[n].id.label = "Shore47";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "Shore47";
-	//Sound
+	
 	locations[n].type = "seashore";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "PortoBello";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore06";
 	Locations[n].models.always.shore06 = "shore06";
 	locations[n].models.always.shore06.sea_reflection = 1;
@@ -1315,14 +1315,14 @@ int LocationInitPortoBello(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore06_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore06_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortoBello_Jungle_02";
 	locations[n].reload.l1.emerge = "reload3";
@@ -1338,19 +1338,19 @@ int LocationInitPortoBello(int n)
     locations[n].locators_radius.reload.boat = 9.0;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Дарьенский залив
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Shore48";
 	locations[n].id.label = "Shore48";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "Shore48";
-	//Sound
+	
 	locations[n].type = "seashore";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "PortoBello";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore02";
 	Locations[n].models.always.shore02 = "shore02";
 	locations[n].models.always.shore02.sea_reflection = 1;
@@ -1369,14 +1369,14 @@ int LocationInitPortoBello(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore02_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore02_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Panama_jungle_05";
 	locations[n].reload.l1.emerge = "reload1_back";
@@ -1392,21 +1392,21 @@ int LocationInitPortoBello(int n)
     locations[n].locators_radius.reload.boat = 9.0;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// лагуна Чирики
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Shore46";   
 	locations[n].id.label = "Shore46";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "Shore46";
-	//Sound
+	
 	locations[n].type = "seashore";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "PortoBello";
 	locations[n].DisableEncounters = true;
 	locations[n].deadlocked = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore02";
 	Locations[n].models.always.shore02 = "shore02";
 	locations[n].models.always.shore02.sea_reflection = 1;
@@ -1425,14 +1425,14 @@ int LocationInitPortoBello(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore02_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore02_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Dunes";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1448,20 +1448,20 @@ int LocationInitPortoBello(int n)
     locations[n].locators_radius.reload.boat = 9.0;
 	n = n + 1;
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	////// дюны
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
     locations[n].id = "Dunes";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
 	locations[n].DisableEncounters = true;
-	locations[n].Chestgennot = true; // не генерить сундуки
- 	//Sound
+	locations[n].Chestgennot = true; 
+ 	
 	locations[n].type = "seashore";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Portobello";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Pirl";
 	Locations[n].models.always.pirl = "pirl";	
 	Locations[n].models.always.locators = "pirl_locators";		
@@ -1476,16 +1476,16 @@ int LocationInitPortoBello(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "pirl_patch";
 	locations[n].models.day.fonar = "pirl_fd";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "pirl_patch";	
 	locations[n].models.night.fonar = "pirl_fn";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Shore46";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1502,22 +1502,22 @@ int LocationInitPortoBello(int n)
 
 	n = n + 1;
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Дом Амелии
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Amelia_house";
 	locations[n].id.label = "Dunes house";
 	locations[n].image = "loading\inside\mediumhouse02.tga";
-	//Town sack
+	
 	locations[n].townsack = "";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Portobello";
-	//locations[n].fastreload = "";
-	//Models
-	//Always
+	
+	
+	
 	locations[n].filespath.models = "locations\inside\mediumhouse02";
 	locations[n].models.always.mediumhouse02 = "mediumhouse02";
 	locations[n].models.always.mediumhouse02.level = 65538;
@@ -1530,15 +1530,15 @@ int LocationInitPortoBello(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	Locations[n].models.day.mediumhouse02rand= "mediumhouse02_rand";
 	locations[n].models.day.charactersPatch = "mediumhouse02_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "mediumhouse02_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-    //Reload map
+    
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Dunes";
 	locations[n].reload.l1.emerge = "reload2";
@@ -1552,3 +1552,4 @@ int LocationInitPortoBello(int n)
 	
 	return n;
 }
+

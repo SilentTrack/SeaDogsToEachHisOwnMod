@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,15 +9,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Not now. There is no time."), "True... But later, not now...",
                       "I'll ask, I'll ask... a bit later though...", "I am sorry, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);			  
 			link.l1.go = "exit";
-			//Jason, Португалец
+			
 			if (CheckAttribute(PChar, "questTemp.Portugal") && pchar.questTemp.Portugal == "ToGovernor")
 			{
 				link.l1 = "Your Grace, I have absolutely excellent and urgent news for you! I have captured Bartolomeo the Portuguese, the bastard is under guard and looking for a fair trial! And I am looking for a modest gratitude of the Company...";
 				link.l1.go = "Portugal";
 			}
-			//Португалец
 			
-			// Addon-2016 Jason ФМК-Сент-Кристофер
+			
+			
 			if (CheckAttribute(PChar, "questTemp.FMQN") && pchar.questTemp.FMQN == "governor")
 			{
 				link.l1 = "You insisted on seeing me, mynheer governor...";
@@ -37,7 +37,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             NextDiag.TempNode = "Cupture_after";
 		break;
 		
-		//Jason, Португалец
+		
 		case "Portugal":
 			dialog.text = "Bartolomeo... Bart the Portuguese is in my town?! Alive?!!";
 			link.l1 = "He is, your Grace and he is under the reliable guard. I will give him to you after I receive a bill which was promised for the man's head by the Company. Golden doubloons would be fine too...";
@@ -67,7 +67,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			DoQuestReloadToLocation("Marigo_town", "reload", "reload3_back", "PortugalOutResidence");
 		break;
 		
-		// Addon-2016 Jason ФМК-Сент-Кристофер
+		
 		case "FMQN":
 			dialog.text = "Very well! Tell me captain, did you encounter any English military or trade vessels on you approach to our island?";
 			link.l1 = "No, mynheer. I saw neither military, nor trade vessels under English flag within your waters.";
@@ -128,7 +128,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddDialogExitQuestFunction("FMQN_HollandBattleComplete");
 		break;
 		
-		// Jason НСО
+		
 		case "tomas":
 			dialog.text = "We surrender! In the name of all that is holy, I beg you, do loot and pillage Philipsburg! I'm ready to listen to your demands!";
 			link.l1 = "Do not worry about the inhabitants, mynheer. Subjects of the French Crown need not be afraid of French soldiers.";
@@ -182,6 +182,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddQuestRecord("Patria", "50_1");
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

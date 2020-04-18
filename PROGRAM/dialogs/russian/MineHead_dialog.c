@@ -1,4 +1,4 @@
-// диалог начальника шахты
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld, location;
@@ -58,17 +58,17 @@ void ProcessDialogEvent()
 			location.quest.info = "true";
 		break;
 		
-		// генератор купли-продажи рабов
+		
 		case "slaves_0":
-			location.quest.slaves.qty = 200; // стартовая потребность
+			location.quest.slaves.qty = 200; 
 			dialog.text = "Of course, se?or! How many should do you have?";
 			link.l1 = "I have "+FindRussianQtyString(GetSquadronGoods(pchar, GOOD_SLAVES))+".";
 			link.l1.go = "slaves_1";
 		break;
 		
 		case "slaves":
-			location.quest.slaves.qty = sti(location.quest.slaves.qty)+GetNpcQuestPastDayParam(location, "slave_date"); // каждый день дает +1 потребности
-			if (sti(location.quest.slaves.qty) > 350) location.quest.slaves.qty = 350; // максимум потребности
+			location.quest.slaves.qty = sti(location.quest.slaves.qty)+GetNpcQuestPastDayParam(location, "slave_date"); 
+			if (sti(location.quest.slaves.qty) > 350) location.quest.slaves.qty = 350; 
 			if (sti(location.quest.slaves.qty) < 5)
 			{
 				dialog.text = "Se?or, unfortunately, right now we have no need in more slaves. But the situation can change anytime, so check back in a few weeks or some other time.";
@@ -176,7 +176,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
 		    LAi_group_Attack(NPChar, Pchar);
-			i = GetCharIDXByParam("CityType", "location", Pchar.location); // фантом солдат
+			i = GetCharIDXByParam("CityType", "location", Pchar.location); 
 			if (i != -1)
 			{
 			    LAi_group_Attack(&Characters[i], Pchar);
@@ -189,3 +189,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

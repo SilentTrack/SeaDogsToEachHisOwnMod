@@ -88,7 +88,7 @@ void NetClient_OnStartGame(int iMsg)
 			NetClient_CreateTimeEnvironment(iMsg);
 			NetClient_CreateShipFoamEnvironment(iMsg);
 
-			// particles init last because crashed if deleted first when ALT-F4 pressed
+			
 			InitParticles(); MoveParticlesToLayers("net_execute", "net_realize");
 
 			SetEventHandler("Control Activation", "NetClient_ControlActivation", 0);

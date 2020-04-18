@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,7 +9,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where did my memory go...",
                       "Hm, well...", "Go ahead...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//Цена чахотки
+			
 			if (!CheckAttribute(npchar, "quest.Consumption") && CheckAttribute(pchar, "questTemp.Consumption.AskJuan"))
 			{
 				link.l1 = "Tell me, does the name Juan mean anything to you?";
@@ -22,7 +22,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		
-		//Цена чахотки
+		
 		case "Consumption":
 			dialog.text = "No. Nothing at all.";
 			link.l1 = "Okay. Sorry for bothering you...";
@@ -37,6 +37,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.guardoftruth = "true";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

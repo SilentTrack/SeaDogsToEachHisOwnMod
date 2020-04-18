@@ -13,7 +13,7 @@ void InitShipLights()
 
     makearef(rlights, ShipLights.LightTypes);
 
-	// default light emitter for ship
+	
 	rlights.default.light.r = 1.0;
 	rlights.default.light.g = 0.9;
 	rlights.default.light.b = 0.0;
@@ -37,7 +37,7 @@ void InitShipLights()
 	rlights.default.corona.Size = 1.0;
 	rlights.default.SunRoadFlareFadeDistance = 600.0;
 
-	// cannon default light emitter
+	
 	rlights.cannondefault.light.r = 2.0;
 	rlights.cannondefault.light.g = 2.0;
 	rlights.cannondefault.light.b = 2.0;
@@ -50,7 +50,7 @@ void InitShipLights()
 	rlights.cannondefault.LifeTime = 0.2;
 	rlights.cannondefault.UpTime = 0.1;
 
-	// default flare for ship
+	
 	rlights.flare.light.r = 0.5;
 	rlights.flare.light.g = 0.25;
 	rlights.flare.light.b = 0.25;

@@ -1,4 +1,4 @@
-//Jason общий диалог уличных матросов
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -13,14 +13,14 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 	
-	// вызов диалога по городам -->
+	
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Citizen\" + NPChar.City + "_Citizen.c";
     if (LoadSegment(NPChar.FileDialog2))
 	{
         ProcessCommonDialog(NPChar, Link, NextDiag);
 		UnloadSegment(NPChar.FileDialog2);
 	}
-    // вызов диалога по городам <--
+    
 	
 	ProcessCommonDialogRumors(NPChar, Link, NextDiag);
 	
@@ -29,7 +29,7 @@ void ProcessDialogEvent()
 		case "First time":
 			if (npchar.quest.meeting == "0")
 			{
-				if (sti(Pchar.Ship.Type) != SHIP_NOTUSED && CheckAttribute(npchar, "quest.crew"))//найм в команду
+				if (sti(Pchar.Ship.Type) != SHIP_NOTUSED && CheckAttribute(npchar, "quest.crew"))
 				{
 					dialog.text = "Good day, "+GetAddress_Form(NPChar)+". I am aware that you are the captain of your own ship. I've got a deal for you.";
 					link.l1 = "I am listening, "+GetAddress_FormToNPC(NPChar)+". What this is all about?";
@@ -37,14 +37,14 @@ void ProcessDialogEvent()
 					link.l2 = "Sorry, "+GetAddress_FormToNPC(NPChar)+", but I am in hurry.";
 					link.l2.go = "exit";
 					npchar.quest.meeting = "1";
-					DeleteAttribute(npchar, "talker"); //снимаем говорилку
+					DeleteAttribute(npchar, "talker"); 
 					break;
 				}
 				dialog.text = LinkRandPhrase("Greeting, captain! What do you want from a common sailor?","Good day, sir. How can I help you?","Good day, sir. Do you want something?");
 				link.l1 = "Glad to meet you, pal! My name is "+GetFullName(pchar)+". Got a minute to talk?";
 				link.l1.go = "question";
 				link.l2 = RandPhraseSimple("I've got a question for you.", "I need some information about this colony.");
-				link.l2.go = "quests";//(перессылка в файл города)
+				link.l2.go = "quests";
 				link.l3 = "Just wanted to say hi. See you!";
 				link.l3.go = "exit";
 				npchar.quest.meeting = "1";
@@ -55,7 +55,7 @@ void ProcessDialogEvent()
 				link.l1 = "Got a minute to chat?";
 				link.l1.go = "question";
 				link.l2 = RandPhraseSimple("I have got a question for you.", "I need some information about this colony.");
-				link.l2.go = "quests";//(перессылка в файл города)
+				link.l2.go = "quests";
 				link.l3 = "No, pal, it's nothing. Good luck!";
 				link.l3.go = "exit";
 			}
@@ -133,7 +133,7 @@ void ProcessDialogEvent()
 		case "crew_4":
 			DialogExit();
 			AddCharacterCrew(pchar, sti(npchar.quest.crew.qty));
-			//увеличиваем опыт
+			
 			iTemp = makeint(sti(npchar.quest.crew.qty)*50/sti(pchar.ship.crew.quantity));
 			switch (sti(npchar.quest.crew.type))
 			{
@@ -141,7 +141,7 @@ void ProcessDialogEvent()
 				case 1: ChangeCrewExp(pchar, "Cannoners", iTemp); break;
 				case 2: ChangeCrewExp(pchar, "Soldiers", iTemp); break;
 			}
-			//увеличиваем мораль
+			
 			iTemp = makeint(sti(npchar.quest.crew.qty)/10)+1;
 			AddCrewMorale(pchar, iTemp);
 			LAi_SetActorType(npchar);
@@ -149,7 +149,7 @@ void ProcessDialogEvent()
 			npchar.lifeday = 0;
 		break;
 
-		//замечание по обнаженному оружию от персонажей типа citizen
+		
 		case "CitizenNotBlade":
 			dialog.text = NPCharSexPhrase(NPChar, "Listen, I am the citizen of this town and I'd ask you to hold down your blade.", "Listen, I am the citizen of this town and I'd ask you to hold down your blade.");
 			link.l1 = LinkRandPhrase("Fine.", "Whatever.", "Whatever you say...");
@@ -162,3 +162,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

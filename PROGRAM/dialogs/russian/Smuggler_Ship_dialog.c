@@ -79,20 +79,20 @@ void ProcessDialogEvent()
 			Link.l1.go = "exit";
 		break;
 
-////////////////////////////////////////////////////////////////////////////////
-//	Корсарское метро
-////////////////////////////////////////////////////////////////////////////////
+
+
+
 		case "Travel_talkStart":
-            NPChar.location = "none"; // чтоб на палубе не болтался
-			//Шанс на то что продадут на рудники.
+            NPChar.location = "none"; 
+			
 			int iRnd = (rand(100) == 30);
 			if (iRnd)
 			{
 				dialog.text = "We have an idea to sell you as a slave. Ha.. Money are always useful.";
 				link.l1 = "You don't say?";
-				//заглушка, пока нет рудников.
+				
 				link.l1.go = "Travel_fight";
-				//"Travel_mine"; //Собственно тоже можно боевку организовать, ГГ сопротивляется.
+				
 			}
 			else
 			{
@@ -111,7 +111,7 @@ void ProcessDialogEvent()
 			LAi_group_SetCheck("TmpEnemy", "Travel_AfterDeckFight");
 			LAi_group_FightGroups(LAI_GROUP_PLAYER, "TmpEnemy", true);
 			LAi_SetPlayerType(PChar);
-			//Вытащим саблю
+			
    			LAi_SetFightMode(Pchar, true);
 
 			NextDiag.CurrentNode = NextDiag.Tempnode;
@@ -122,13 +122,13 @@ void ProcessDialogEvent()
 		case "Travel_end":
 			NextDiag.CurrentNode = NextDiag.Tempnode;
 			DialogExit();
-			//Квест бук
+			
 			AddQuestRecord("Gen_ContrabandTravel", "4");
 			AddQuestUserData("Gen_ContrabandTravel", "sLocTo", GetConvertStr(pchar.GenQuest.contraTravel.destination.loc, "LocLables.txt")));
 
 
 			LAi_SetPlayerType(PChar);
-			//грузим ГГ куда нужно.... 
+			
 			setWDMPointXZ(pchar.GenQuest.contraTravel.destination.loc);
 			SetAnyReloadToLocation(pchar.GenQuest.contraTravel.destination.loc,
 									pchar.GenQuest.contraTravel.destination.group,
@@ -136,8 +136,9 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("AnyReloadToLocation");
             chrDisableReloadToLocation = false;
 			CloseQuestHeader("Gen_ContrabandTravel");
-			//трем аттрибуты
+			
 			DeleteAttribute(PChar, "GenQuest.contraTravel");
 		break;
 	}
 }
+

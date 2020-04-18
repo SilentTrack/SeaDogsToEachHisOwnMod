@@ -6,7 +6,7 @@ int LAi_numloginedcharacters = 0;
 bool LAi_CharacterLogin(aref chr, string locID)
 {
 	string func;
-	//Проверим адрес логина
+	
 	if(CheckAttribute(chr, "location") == false)
 	{
 		Trace("Character <" + chr.id + "> have not field [location]");
@@ -25,7 +25,7 @@ bool LAi_CharacterLogin(aref chr, string locID)
 		{
 			if(CheckAttribute(chr, "location.etime") != false)
 			{
-				//Проверям время логина
+				
 				if(LAi_login_CheckTime(stf(chr.location.stime), stf(chr.location.etime))) 
 				{
 					isLogin = true;
@@ -41,7 +41,7 @@ bool LAi_CharacterLogin(aref chr, string locID)
 			isLogin = true;
 		}
 	}
-	//Залогинем последователей
+	
 	if(!LAi_IsBoarding)
 	{
 		if(CheckAttribute(chr, "location.follower") != false)
@@ -56,12 +56,12 @@ bool LAi_CharacterLogin(aref chr, string locID)
 			}
 		}
 	}
-	//Проверим на захваченность локации
+	
 	if(LAi_IsCapturedLocation)
 	{
 		if(GetMainCharacterIndex() != sti(chr.index))
 		{
-   			// boal fix fort officers -->
+   			
 			if(!IsOfficer(chr))
 			{
 				if(CheckAttribute(chr, "location.loadcapture") == 0)
@@ -74,17 +74,17 @@ bool LAi_CharacterLogin(aref chr, string locID)
 					}
 				}
 			}
-			// boal fix fort officers <--
+			
 		}
 	}
 	if(!isLogin) return false;
-	//Если персонажей больше максимального числа, незагружаем больше
+	
 	if(LAi_numloginedcharacters >= MAX_CHARS_IN_LOC)
 	{
 		Trace("LAi_CharacterLogin -> many logined characters in location > " + MAX_CHARS_IN_LOC);
 		return false;
 	}
-	//Устанавливаем необходимые поля, если надо
+	
 	if(CheckAttribute(chr, "chr_ai.type") == false)
 	{
 		chr.chr_ai.type = LAI_DEFAULT_TYPE;
@@ -117,13 +117,10 @@ bool LAi_CharacterLogin(aref chr, string locID)
 	{
 		chr.chr_ai.charge = LAI_DEFAULT_CHARGE;
 	}
-	/*if(CheckAttribute(chr, "chr_ai.energy") == false)
-	{
-		chr.chr_ai.energy = LAI_DEFAULT_ENERGY; // to_do to max
-	}*/
-	SetEnergyToCharacter(chr);  // boal
+	 
+	SetEnergyToCharacter(chr);  
 	
-	//Проверяем хитпойнты
+	
 	float hp = stf(chr.chr_ai.hp);
 	float hpmax = stf(chr.chr_ai.hp_max);
 	if(hpmax < 1) hpmax = 1;
@@ -139,7 +136,7 @@ bool LAi_CharacterLogin(aref chr, string locID)
 			{
 				if(sti(chr.location.norebirth) != 0) return false;
 			}
-			//Надо возраждать персонажа
+			
 			chr.chr_ai.hp = hpmax;
 			hp = hpmax;
 			if (!CheckAttribute(chr, "location.rebirthOldName"))
@@ -157,12 +154,12 @@ bool LAi_CharacterLogin(aref chr, string locID)
 		}
 	}
 	if(hp < 1) return false;
-	//Проверяем персонажа
-	if(LAi_CheckCharacter(chr, "LAi_CharacterLogin") == false) return false;
-	//Выставляем скилл для сражения
-	//LAi_AdjustFencingSkill(chr);
 	
-	//Логиним персонажа
+	if(LAi_CheckCharacter(chr, "LAi_CharacterLogin") == false) return false;
+	
+	
+	
+	
 	func = chr.chr_ai.type;
 	bool res = true;
 	if(func != "")
@@ -174,17 +171,7 @@ bool LAi_CharacterLogin(aref chr, string locID)
 	chr.chr_ai.login = true;
 	LAi_AddLoginedCharacter(chr);
 
-	/*if(CheckAttribute(chr, "quest.type"))
-	{
-		if(chr.quest.type == "trader")
-		{
-			if(!CheckAttribute(chr, "quest.questflag") || sti(chr.quest.questflag) == -1)
-			{
-				GenerateTraderQuests(chr);
-			}
-		}
-	}
-	*/
+	 
 	if(CheckAttribute(chr, "quest.questflag"))
 	{
 		CheckQuestForCharacter(chr);
@@ -206,23 +193,23 @@ bool LAi_CharacterLogin(aref chr, string locID)
 
 void LAi_CharacterPostLogin(ref location)
 {
-	//Расставляем последователей
+	
 	for(int i = 0; i < LAi_numloginedcharacters; i++)
 	{
 		int idx = LAi_loginedcharacters[i];
 		if(idx >= 0)
 		{
-			//Просматриваем последователей
+			
 			ref chr = &Characters[idx];
 			if(CheckAttribute(chr, "location.follower") != false)
 			{
-				//Получим координаты игрока
+				
 				float x, y, z;
 				if(GetCharacterPos(pchar, &x, &y, &z) == false)
 				{
 					x = 0.0; y = 0.0; z = 0.0;
 				}
-				//Ищем свободный ближайший локатор
+				
 				string locator = LAi_FindNearestFreeLocator("goto", x, y, z);
 				if(locator != "")
 				{
@@ -236,23 +223,23 @@ void LAi_CharacterPostLogin(ref location)
 	}
 	if(!actLoadFlag)
 	{
-		QuestsCheck(); // в начале квесты, иначе нет перехвата
-		// заполнение фантомами локаций
+		QuestsCheck(); 
+		
 		CreateCitizens(location);
 		CreateTraders(location);
 		CreateHabitues(location);
 		CreateIncquisitio(location);
-		CreateMinentownMine(location); // Jason: шахта Минентауна
-		CreateMaltains(location); // Jason: база мальтийцев
-		CreateHWICOffice(location); // Jason: офис ГВИК
-		CreateLSCGuardClan(location); // Jason: клановая охрана в LSC
-		CreateLSCInsideClan(location); // Jason: кланы внутри кораблей в LSC
-		CreateLostShipsCity(location); // Jason: горожане-статики в LSC
-		CreateMineBandits(location); // Jason: бандиты у рудника
-		CreateIslatesoroEng(location); // Jason: английский Шарптаун
-		CreateAmmo(location); // Jason: оружейная
-		CreateKsochitamSkeletons(location) // Jason: монстры Ксочитэма
-		CreateKhaelRoaSkeletons(location) // Jason: монстры Хаэль Роа
+		CreateMinentownMine(location); 
+		CreateMaltains(location); 
+		CreateHWICOffice(location); 
+		CreateLSCGuardClan(location); 
+		CreateLSCInsideClan(location); 
+		CreateLostShipsCity(location); 
+		CreateMineBandits(location); 
+		CreateIslatesoroEng(location); 
+		CreateAmmo(location); 
+		CreateKsochitamSkeletons(location) 
+		CreateKhaelRoaSkeletons(location) 
 		CreateMayak(location);
 		CreateBrothels(location);
 		CreatePearlVillage(location);
@@ -265,17 +252,17 @@ void LAi_CharacterPostLogin(ref location)
 		CreatUnderwater(location);
 		CreatePlantation(location);
 		CreateItzaLand(location);
-		//Расставляем квестовых энкоунтеров
-		LAi_CreateEncounters(location); //eddy. монстры не нужны здесь
+		
+		LAi_CreateEncounters(location); 
 		LAi_CreateParticles(location);
-		LAi_CreateFlowers(location); // Jason: выращиваем травку
-		LAi_CreateQuestFlowers(location); // Jason: высаживаем квестовую травку
-		LAi_CreateDolly(location); //Jason: устанавливаем телепортационные статуи
-		LAi_CreateShoreChest(location); // Jason: выброшенные сундуки на берегу
+		LAi_CreateFlowers(location); 
+		LAi_CreateQuestFlowers(location); 
+		LAi_CreateDolly(location); 
+		LAi_CreateShoreChest(location); 
 		LAi_CreateCaveEncounters(location);
-		/// ОЗГи
+		
 		LandHunterReactionResult(location);
-		//обновить базу абордажников для нефритового черепа
+		
 		CopyPassForAztecSkull();
 
 	}
@@ -284,7 +271,7 @@ void LAi_CharacterPostLogin(ref location)
 bool LAi_CharacterLogoff(aref chr)
 {
 	chr.chr_ai.login = false;	
-	//chr.location = "none";
+	
 	if(LAi_CheckCharacter(chr, "LAi_CharacterLogoff") == false) return false;
 	LAi_DelLoginedCharacter(chr);
 	string func = chr.chr_ai.type;
@@ -335,9 +322,9 @@ bool LAi_login_CheckTime(float start, float end)
 void LAi_PostLoginInit(aref chr)
 {
 	if(!IsEntity(chr)) return;
-	//Добавляем в группу
+	
 	LAi_group_MoveCharacter(chr, chr.chr_ai.group);
-	//Инициализируем шаблон
+	
 	string func = chr.chr_ai.tmpl;
 	if(func != "")
 	{
@@ -348,7 +335,7 @@ void LAi_PostLoginInit(aref chr)
 			chr.chr_ai.tmpl = LAI_DEFAULT_TEMPLATE;
 		}
 	}
-	//Инициализируем тип
+	
 	func = chr.chr_ai.type;
 	if(func != "")
 	{

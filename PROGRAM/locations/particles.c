@@ -43,7 +43,7 @@ void CanonadaReSynchronization()
 
 void RainReSynchronization()
 {
-	//aref locator = GetEventData();
+	
 	float x = GetEventdata();
 	float y = GetEventdata();
 	float z = GetEventdata();
@@ -118,40 +118,14 @@ void CreateParticles(ref Location)
 	int n;
 	int num;
 	
-	// DumpAttributes(Location);
+	
 
 	if(!CheckAttribute(Location, "locators")) return;
 
     SendMessage(&Particles,"l", PS_CREATIONCAPTURE_BEG);
-	/*
-	if(CheckAttribute(Location, "locators.tavern_door"))
-	{
-		makearef(locator_group, location.locators.tavern_door);
-		num = GetAttributesNum(locator_group);
-		for(n = 0; n < num; n++)
-		{
-			locator = GetAttributeN(locator_group, n);
-			//if(frnd() < 0.3 ) 
-			CreateParticleSystem("signstar",stf(locator.x),stf(locator.y),stf(locator.z),-1.57,0,0,0);
-			
-			
+	 
 
-		}
-	}*/
-
-	/*if(CheckAttribute(Location, "locators.stream"))
-	{
-		if(!CheckAttribute(Location, "stream_disable"))
-		{
-			makearef(locator_group, location.locators.stream);
-			num = GetAttributesNum(locator_group);
-			for(n = 0; n < num; n++)
-			{
-				locator = GetAttributeN(locator_group, n);
-				CreateParticleSystem("stream",stf(locator.x),stf(locator.y),stf(locator.z),0.0,0.0,0.0,0);
-			}
-		}
-	}*/
+	 
 
 	if(CheckAttribute(Location, "locators.ship_foam"))
 	{
@@ -234,7 +208,7 @@ void CreateParticles(ref Location)
 		}
 	}
 
-//Ursus
+
 	if(CheckAttribute(Location, "locators.bubbles"))
 	{
 		makearef(locator_group, location.locators.bubbles);
@@ -270,23 +244,13 @@ void CreateParticles(ref Location)
 		}
 	}
 	
-//Ursus
 
 
 
 
 
-/*	if(CheckAttribute(Location, "locators.reload"))
-	{
-		makearef(locator_group, location.locators.reload);
-		num = GetAttributesNum(locator_group);
-		for(n = 0; n < num; n++)
-		{
-			locator = GetAttributeN(locator_group, n);
-			CreateParticleSystem("fire_mix",stf(locator.x),stf(locator.y),stf(locator.z),-1.57,0,0,0);
-		}
-	}
-*/
+
+ 
 	if(CheckAttribute(Location, "locators.fountains"))
 	{
 		makearef(locator_group, location.locators.fountains);
@@ -294,7 +258,7 @@ void CreateParticles(ref Location)
 		for(n = 0; n < num; n++)
 		{
 			locator = GetAttributeN(locator_group, n);
-			//CreateParticleSystem("fountain",stf(locator.x),stf(locator.y),stf(locator.z),-1.57,0,0,0);
+			
 			CreateParticleSystemX("fountain",stf(locator.x),stf(locator.y),stf(locator.z),
 				stf(locator.vz.x),stf(locator.vz.y),stf(locator.vz.z),0);
 		}
@@ -400,7 +364,7 @@ void CreateParticles(ref Location)
 		for(n = 0; n < num; n++)
 		{
 			locator = GetAttributeN(locator_group, n);
-			//Candles_p =   // boal нигде не используется
+			
 			CreateParticleSystem("candle",stf(locator.x),stf(locator.y) + 0.04,stf(locator.z),-1.57,0,0,0);
 		}
 	}
@@ -413,22 +377,12 @@ void CreateParticles(ref Location)
 		for(n = 0; n < num; n++)
 		{
 			locator = GetAttributeN(locator_group, n);
-			//Fortfire_p =   // boal
+			
 			CreateParticleSystemX("fortfire",stf(locator.x),stf(locator.y),stf(locator.z),
 				stf(locator.vz.x),stf(locator.vz.y),stf(locator.vz.z),0);
 		}
 	}
-		/* if(CheckAttribute(Location, "locators.fortsmoke"))
-	{
-		makearef(locator_group, location.locators.fortsmoke);
-		num = GetAttributesNum(locator_group);
-		for(n = 0; n < num; n++)
-		{
-			locator = GetAttributeN(locator_group, n);
-			CreateParticleSystemX("fire_from_hole",stf(locator.x),stf(locator.y),stf(locator.z),
-				stf(locator.vz.x),stf(locator.vz.y),stf(locator.vz.z),0);
-		}
-	} */
+		 
 	
 	if(CheckAttribute(Location, "locators.torch_deck"))
 	{
@@ -437,13 +391,13 @@ void CreateParticles(ref Location)
 		for(n = 0; n < num; n++)
 		{
 			locator = GetAttributeN(locator_group, n);
-			//Torch_deck_p =  // boal
+			
 			CreateParticleSystemX("torch",stf(locator.x),stf(locator.y),stf(locator.z),
 				stf(locator.vz.x),stf(locator.vz.y),stf(locator.vz.z),0);
-			//Trace("Torch_deck created");
+			
 		}
 	}
-	//eddy. новые партиклы
+	
 	if(CheckAttribute(Location, "locators.shipfire_big"))
 	{
 		makearef(locator_group, location.locators.shipfire_big);
@@ -453,7 +407,7 @@ void CreateParticles(ref Location)
 			locator = GetAttributeN(locator_group, n);
 			CreateParticleSystemX("shipfire1",stf(locator.x),stf(locator.y),stf(locator.z),
 				stf(locator.vz.x),stf(locator.vz.y),stf(locator.vz.z), 0);
-			//Trace("shipfire_deck created");
+			
 		}
 	}
 
@@ -501,7 +455,7 @@ void CreateParticles(ref Location)
 		}
 	}
 
-	if(CheckAttribute(Location, "locators.burn")) // Jason
+	if(CheckAttribute(Location, "locators.burn")) 
 	{
 		makearef(locator_group, location.locators.burn);
 		num = GetAttributesNum(locator_group);
@@ -517,7 +471,7 @@ void CreateParticles(ref Location)
 		}
 	}
 
-	if(CheckAttribute(Location, "locators.fire_incas")) // Tymofei & Jason
+	if(CheckAttribute(Location, "locators.fire_incas")) 
 	{
 		makearef(locator_group, location.locators.fire_incas);
 		num = GetAttributesNum(locator_group);
@@ -584,9 +538,9 @@ void CreateHeaters(aref Location)
 				
 				if(bLandfire)
 				{
-					CreateParticleSystem("Fire",  x, y + 0.15, z, -1.57, 0,  0,  0); // Огонь
-					CreateParticleSystem("Fire",  x, y + 0.30, z, -1.57, 0,  0,  0); // Для пущей красоты создаем два партикла
-					CreateParticleSystem("Smoke", x, y + 0.30, z, -1.57, 0,  0,  0); // Дым
+					CreateParticleSystem("Fire",  x, y + 0.15, z, -1.57, 0,  0,  0); 
+					CreateParticleSystem("Fire",  x, y + 0.30, z, -1.57, 0,  0,  0); 
+					CreateParticleSystem("Smoke", x, y + 0.30, z, -1.57, 0,  0,  0); 
 				}	
 				else
 				{
@@ -619,7 +573,7 @@ void LaunchCananada()
 	}
 }
 
-// Warship. Создаем партикл огня + дым
+
 bool CreateFireParticles(string sGroup, string sLocator)
 {
 	ref rLoc = &locations[FindLocation(PChar.location)];
@@ -628,13 +582,13 @@ bool CreateFireParticles(string sGroup, string sLocator)
 	float y = stf(rLoc.locators.(sGroup).(sLocator).y);
 	float z = stf(rLoc.locators.(sGroup).(sLocator).z);
 	
-	CreateParticleSystemX("Fire", x, y+0.15, z, x, y+0.15, z, 0); // Огонь
-	CreateParticleSystemX("Fire", x, y+0.3, z, x, y+0.3, z, 0); // Для пущей красоты создаем два партикла
-	CreateParticleSystemX("Smoke", x, y+1.15, z, x, y+1.15, z, 0); // Дым
+	CreateParticleSystemX("Fire", x, y+0.15, z, x, y+0.15, z, 0); 
+	CreateParticleSystemX("Fire", x, y+0.3, z, x, y+0.3, z, 0); 
+	CreateParticleSystemX("Smoke", x, y+1.15, z, x, y+1.15, z, 0); 
 	return true;
 }
 
-// Jason: универсальный создатель партиклов в локации ручным способом. Создает партикл в указанном локаторе или рядом с ним по оси Y и добавляет звук. up - на сколько над локатором должен быть поднят/опущен партикл. ax и az - корректировщики для соотв. осей при ориентировании направленных партиклов. Звуки брать из алиаса. Список некоторых партикловых схем: blood/blood_big - брызги крови, stream - ручеек, Splash - водный всплеск, item - фиолетовая крутящаяся звезда, Firering - мигающее желтое мистическое кольцо, Ship_cannon_fire - выстрел из пушки, blast_inv/Bombard - вспышка+дым, blast/blast_dirt - взрыв с летающими какашками, GunFire - выстрел из пистоля, fountain - фонтан, bubbles - пузыри, fishblue - косяк рыбок, shipfire - большой огонь, torch - факел, shadowstar - теневая звезда, large_smoke - большой дым, smoke - дым, ShipExplode - взрыв
+
 bool CreateLocationParticles(string sParticle, string sGroup, string sLocator, float up, float ax, float az, string sSound)
 {
 	ref rLoc = &locations[FindLocation(PChar.location)];

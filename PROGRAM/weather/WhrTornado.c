@@ -30,3 +30,4 @@ void WhrCreateTornadoEnvironment()
 	LayerAddObject(SEA_REALIZE, &Tornado, 65535);
 }
 
+

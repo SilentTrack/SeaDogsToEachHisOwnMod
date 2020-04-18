@@ -2,9 +2,9 @@
 int LocationInitMaracaibo(int n)
 {
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ГОРОД
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Maracaibo_town";
 	locations[n].id.label = "Street";
 	locations[n].worldmap = "Maracaibo";
@@ -18,14 +18,14 @@ int LocationInitMaracaibo(int n)
 	locations[n].citizens = true;
 	locations[n].soldiers = true;
 	locations[n].carrier = true;
-	//==> флаг генерации квестодателя по розыску кэпов, int значение - шанс что сам заговорит(1-10)
+	
 	locations[n].questSeekCap = 4; 
-	//Sound
+	
 	locations[n].type = "town";
 	LAi_LocationFantomsGen(&locations[n], true);
-	locations[n].houseEnc = true; //для энкаунтеров в домах
-	//Models
-	//Always
+	locations[n].houseEnc = true; 
+	
+	
 	locations[n].models.always.town = "Maracaibo";
 	locations[n].models.always.town.sea_reflection = 1;
 	locations[n].models.always.L1 = "Maracaibo_signsA";
@@ -36,7 +36,7 @@ int LocationInitMaracaibo(int n)
 	locations[n].models.always.plan = "plan1";
 	locations[n].models.always.plan.level = 9;
 		
-	//Fontain
+	
 	Locations[n].models.always.Waterfall1 = "fontain1";
 	Locations[n].models.always.Waterfall1.uvslide.v0 = 0.5;
     Locations[n].models.always.Waterfall1.uvslide.v1 = 0.0;
@@ -49,7 +49,7 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.Waterfall2.tech = "LocationWaterFall";
 	Locations[n].models.always.Waterfall2.level = 49;
 
-	//WindMill Fan
+	
 	locations[n].models.always.MillFan = "MillFan";
 	Locations[n].models.always.MillFan.locator.group = "WindMill";
 	Locations[n].models.always.MillFan.locator.name ="Fan";	
@@ -60,19 +60,19 @@ int LocationInitMaracaibo(int n)
 	locations[n].models.always.L2 = "Barracks_Door3";
     locations[n].models.always.L2.tech = "DLightModel";
 
-	//Day
+	
 	locations[n].models.day.fonar = "Maracaibo_fd";
 	locations[n].models.day.charactersPatch = "Maracaibo_patch_day";
 	locations[n].models.day.rinok = "Maracaibo_rinok";
-	//Night
+	
 	locations[n].models.night.fonar = "Maracaibo_fn";
 	locations[n].models.night.charactersPatch = "Maracaibo_patch_night";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 
-    // --> Типовые городские локации, четкая фиксация на 10 номеров.
+    
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Maracaibo";
 	locations[n].reload.l1.emerge = "reload_1";
@@ -112,7 +112,7 @@ int LocationInitMaracaibo(int n)
 	locations[n].reload.l7.emerge = "reload1";
 	locations[n].reload.l7.autoreload = "0";
 	locations[n].reload.l7.label = "Church";
-	//Locations[n].reload.l7.close_for_night = 1;
+	
 
 	locations[n].reload.l8.name = "reload8_back";
 	locations[n].reload.l8.go = "Maracaibo_Bank";
@@ -140,7 +140,7 @@ int LocationInitMaracaibo(int n)
 	locations[n].reload.jail.autoreload = "0";
 	locations[n].reload.jail.label = "Prison";
 
-    // --> Комоны, загрушки. Номера с начинаются с 20.
+    
 	locations[n].reload.l20.name = "houseSp3";
 	locations[n].reload.l20.go = "CommonDoubleflourHouse_1";
 	locations[n].reload.l20.emerge = "reload1";
@@ -220,37 +220,37 @@ int LocationInitMaracaibo(int n)
 	locations[n].reload.l32.label = "House";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ТАВЕРНА
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Maracaibo_tavern";
 	locations[n].id.label = "Tavern";
 	locations[n].filespath.models = "locations\inside\tavern01\";
 	locations[n].image = "loading\inside\tavern.tga";
 	locations[n].habitues = 1;
-	//Town sack
+	
 	locations[n].townsack = "Maracaibo";
 	Locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "tavern";
 	locations[n].fastreload = "Maracaibo";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.tavern = "tavern01";
 	locations[n].models.always.locators = "tavern01_locators";
 	locations[n].models.always.window = "tavern01_windows";
 	locations[n].models.always.window.tech = "LocationWindows";
 	locations[n].models.always.window.level = 50;
  	locations[n].models.always.back = "..\inside_back";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "tavern01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "tavern01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Maracaibo_town";
 	locations[n].reload.l1.emerge = "reload4";
@@ -262,26 +262,26 @@ int LocationInitMaracaibo(int n)
 	locations[n].reload.l2.emerge = "reload1";
 	locations[n].reload.l2.autoreload = "0";
 	locations[n].reload.l2.label = "Tavern upstairs";
-	locations[n].reload.l2.disable = 1; // закроем, но связку сделаем для квестовых нужд.
+	locations[n].reload.l2.disable = 1; 
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// КОМНАТА В ТАВЕРНЕ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Maracaibo_tavern_upstairs";
 	locations[n].id.label = "Tavern upstairs";
 	locations[n].filespath.models = "locations\inside\Tavern_room";
 	locations[n].image = "loading\inside\tavern.tga";
-	//Town sack
+	
 	locations[n].townsack = "Maracaibo";
 	Locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "Maracaibo";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Tavern_room_locators";
 	locations[n].models.always.tavern = "Tavern_room";
 	locations[n].models.always.tavern.level = 65538;
@@ -291,14 +291,14 @@ int LocationInitMaracaibo(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Tavern_room_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Tavern_room_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Maracaibo_tavern";
 	locations[n].reload.l1.emerge = "reload2";
@@ -307,22 +307,22 @@ int LocationInitMaracaibo(int n)
 	locations[n].locators_radius.reload.reload1 = 0.8;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// МАГАЗИН
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Maracaibo_store";
 	locations[n].id.label = "Store";
 	locations[n].filespath.models = "locations\inside\Store03\";
 	locations[n].image = "loading\inside\shop.tga";
-	//Town sack
+	
 	locations[n].townsack = "Maracaibo";
 	Locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shop";
 	locations[n].fastreload = "Maracaibo";
  	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Store03_locators";
 	locations[n].models.always.store = "Store03";
 	locations[n].models.always.store.level = 65538;
@@ -331,22 +331,22 @@ int LocationInitMaracaibo(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Store03_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Store03_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//locations[n].models.back = "back\redms_";
-	//Reload map
+	
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Maracaibo_town";
 	locations[n].reload.l1.emerge = "reload6";
 	locations[n].reload.l1.autoreload = "0";
 	locations[n].reload.l1.label = "Street";
 	locations[n].locators_radius.camdetector.camera1 = 5;
-    ////////////////////////==> комната в магазине
+    
 	locations[n].reload.l2.name = "reload2";
 	locations[n].reload.l2.go = "CommonPackhouse_1";
 	locations[n].reload.l2.emerge = "reload1";
@@ -355,22 +355,22 @@ int LocationInitMaracaibo(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// РОСТОВЩИК
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Maracaibo_Bank";
 	locations[n].id.label = "Usurer House";
 	locations[n].filespath.models = "locations\inside\Bank01\";
 	locations[n].image = "loading\inside\bank.tga";
-	//Town sack
+	
 	locations[n].townsack = "Maracaibo";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shop";
 	locations[n].fastreload = "Maracaibo";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Bank01_locators";
 	locations[n].models.always.store = "Bank01";
 	locations[n].models.always.store.level = 65538;
@@ -379,14 +379,14 @@ int LocationInitMaracaibo(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Bank01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Bank01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Maracaibo_town";
 	locations[n].reload.l1.emerge = "reload8";
@@ -401,22 +401,22 @@ int LocationInitMaracaibo(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ВЕРФЬ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Maracaibo_Shipyard";
 	locations[n].id.label = "Shipyard";
 	locations[n].filespath.models = "locations\inside\Shipyard01\";
 	locations[n].image = "loading\inside\shipyard.tga";
-	//Town sack
+	
 	locations[n].townsack = "Maracaibo";
 	Locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shipyard";
 	locations[n].fastreload = "Maracaibo";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Shipyard01_locators";
 	locations[n].models.always.shipyard = "Shipyard01";
 	locations[n].models.always.shipyard.level = 65538;
@@ -425,14 +425,14 @@ int LocationInitMaracaibo(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Shipyard01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Shipyard01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Maracaibo_town";
 	locations[n].reload.l1.emerge = "reload5";
@@ -447,25 +447,25 @@ int LocationInitMaracaibo(int n)
 	locations[n].locators_radius.item.item1 = 1.0;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// РЕЗИДЕНЦИЯ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Maracaibo_townhall";
 	locations[n].id.label = "Townhall";
 	locations[n].filespath.models = "locations\inside\Residence06";
 	locations[n].image = "loading\inside\residence.tga";
-	//Town sack
+	
 	locations[n].townsack = "Maracaibo";
 	Locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "residence";
 	locations[n].fastreload = "Maracaibo";
 	locations[n].islandId = "Mein";
-	// стража
+	
 	locations[n].soldiers = true;
 	LAi_LocationFantomsGen(&locations[n], true);
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Residence06_locators";
 	locations[n].models.always.l1 = "Residence06";
 	locations[n].models.always.l1.level = 65538;
@@ -474,14 +474,14 @@ int LocationInitMaracaibo(int n)
 	locations[n].models.always.window.level = 65539;	
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Residence06_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Residence06_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Maracaibo_town";
 	locations[n].reload.l1.emerge = "reload3";
@@ -489,22 +489,22 @@ int LocationInitMaracaibo(int n)
 	locations[n].reload.l1.label = "Street";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ЦЕРКОВЬ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Maracaibo_church";
 	locations[n].id.label = "Church";
 	locations[n].filespath.models = "locations\inside\Church01";
 	locations[n].image = "loading\inside\church.tga";
-	//Town sack
+	
 	locations[n].townsack = "Maracaibo";
 	Locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "church";
 	locations[n].fastreload = "Maracaibo";
  	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Church01_locators";
 	locations[n].models.always.tavern = "Church01";
 	locations[n].models.always.tavern.level = 65538;
@@ -513,14 +513,14 @@ int LocationInitMaracaibo(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Church01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Church01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Maracaibo_town";
 	locations[n].reload.l1.emerge = "reload7";
@@ -529,21 +529,21 @@ int LocationInitMaracaibo(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ПОРТОВЫЙ ОФИС
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Maracaibo_PortOffice";
 	locations[n].id.label = "PortOffice";
 	locations[n].image = "loading\inside\portoffice.tga";
-	//Town sack
+	
 	locations[n].townsack = "Maracaibo";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "Maracaibo";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\PortOffice";
 	locations[n].models.always.housePortOffice = "PortOffice";
 	locations[n].models.always.housePortOffice.level = 65538;
@@ -555,14 +555,14 @@ int LocationInitMaracaibo(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "PortOffice_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "PortOffice_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Maracaibo_town";
 	locations[n].reload.l1.emerge = "reload10";
@@ -571,7 +571,7 @@ int LocationInitMaracaibo(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 	
-	////////////////////// prison ////////////////////////////
+	
 	Locations[n].id = "Maracaibo_prison";
 	locations[n].id.label = "Prison";
 	Locations[n].image = "loading\inside\prison.tga";
@@ -579,26 +579,26 @@ int LocationInitMaracaibo(int n)
     locations[n].parent_colony = "Maracaibo";
  	locations[n].fastreload = "Maracaibo";
 	locations[n].islandId = "Mein";
-	//Sound
+	
 	locations[n].type = "jail";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\prison1";
 	locations[n].models.always.prison1 = "prison1";
 	locations[n].models.always.lamps = "prison1_lamps";
 	locations[n].models.always.locators = "prison1_locators";	
 	locations[n].models.always.chest = "chest1";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "prison1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "prison1_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-    //Reload map
+    
 	Locations[n].reload.l1.name = "reload1";
 	Locations[n].reload.l1.go = "Maracaibo_town";
 	Locations[n].reload.l1.emerge = "reload_jail";
@@ -609,20 +609,20 @@ int LocationInitMaracaibo(int n)
 	n = n + 1;
 
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Выход в джунгли Маракайбо
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Maracaibo_ExitTown";
 	locations[n].id.label = "ExitTown";
 	locations[n].image = "loading\Gate" + rand(1) + ".tga";
-	//Town sack
+	
 	locations[n].townsack = "Maracaibo";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\TownExitW";
 	Locations[n].models.always.townExit = "townExitW";
 	Locations[n].models.always.townWalls = "townExitW_stucco";
@@ -641,16 +641,16 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "townExitW_patch";
 	locations[n].models.day.fonars = "townExitW_fd";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "townExitW_patch";
 	locations[n].models.night.fonars = "townExitW_fn";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";	
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload4";
 	locations[n].reload.l1.go = "Maracaibo_town";
 	locations[n].reload.l1.emerge = "gate_back";
@@ -679,18 +679,18 @@ int LocationInitMaracaibo(int n)
 	locations[n].locators_radius.reload.reload3_back = 2;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
     locations[n].id = "Maracaibo_jungle_01";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
- 	//Sound
+ 	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle8\";
 	Locations[n].models.always.jungle = "jungle8";	
 	Locations[n].models.always.locators = "jungle8_locators";		
@@ -705,14 +705,14 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle8_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle8_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Maracaibo_CaveEntrance";
 	locations[n].reload.l1.emerge = "reload2";
@@ -728,18 +728,18 @@ int LocationInitMaracaibo(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Вход в пещеру
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Maracaibo_CaveEntrance";
 	locations[n].id.label = "Cave entrance";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt2";
 	Locations[n].models.always.caveEnt2 = "caveEnt2";	
 	Locations[n].models.always.locators = "caveEnt2_locators";		
@@ -757,14 +757,14 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.l4 = "plan4";
 	Locations[n].models.always.l4.level = 6;
 	Locations[n].models.always.l4.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "caveEnt2_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "caveEnt2_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Maracaibo_Cave";
 	locations[n].reload.l1.emerge = "reload1";
@@ -780,35 +780,35 @@ int LocationInitMaracaibo(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Пещера
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Maracaibo_Cave";
 	locations[n].image = "loading\inside\cave.tga";
 	locations[n].id.label = "Cave";
-	//Sound
+	
 	locations[n].type = "cave";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\cavernMedium2";
 	locations[n].models.always.cavernMedium2 = "cavernMedium2";
 	locations[n].models.always.lamps = "cavernMedium2_lamps";	
 	locations[n].models.always.locators = "cavernMedium2_locators";	
 
 	locations[n].locators_radius.item.duhi1 = 0.0;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "cavernMedium2_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "cavernMedium2_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
- 	//Reload map
+ 	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Maracaibo_CaveEntrance";
 	locations[n].reload.l1.emerge = "reload1";
@@ -819,20 +819,20 @@ int LocationInitMaracaibo(int n)
 	locations[n].locators_radius.reload.reload2 = 2.0;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// бухта Гуахира
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Shore37";
 	locations[n].id.label = "Shore37";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "Shore37";
-	locations[n].Chestgennot = true; // не генерить сундуки
-	//Sound
+	locations[n].Chestgennot = true; 
+	
 	locations[n].type = "seashore";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore03";
 	Locations[n].models.always.shore03 = "shore03";
 	locations[n].models.always.shore03.sea_reflection = 1;
@@ -851,14 +851,14 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore03_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore03_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Maracaibo_jungle_02";
 	locations[n].reload.l1.emerge = "reload1";
@@ -874,19 +874,19 @@ int LocationInitMaracaibo(int n)
     locations[n].locators_radius.reload.boat = 9.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
     locations[n].id = "Maracaibo_jungle_02";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
- 	//Sound
+ 	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
 	locations[n].questflower = 2;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle1\";
 	Locations[n].models.always.jungle = "jungle1";
 	Locations[n].models.always.locators = "jungle1_locators";		
@@ -901,14 +901,14 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle1_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Shore37";
 	locations[n].reload.l1.emerge = "reload1";
@@ -924,18 +924,18 @@ int LocationInitMaracaibo(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Вход в пещеру
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Maracaibo_CaveEntrance_02";
 	locations[n].id.label = "Cave entrance";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt1";
 	Locations[n].models.always.caveEnt1 = "caveEnt1";	
 	Locations[n].models.always.locators = "caveEnt1_locators";		
@@ -950,14 +950,14 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "caveEnt1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "caveEnt1_patch";	
-	//Environment	
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Maracaibo_Cave";
 	locations[n].reload.l1.emerge = "reload2";
@@ -973,23 +973,23 @@ int LocationInitMaracaibo(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Плантация Маракайбо
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Maracaibo_Plantation";
 	locations[n].id.label = "Plantation";
 	locations[n].image = "loading\Plantation.tga";
-	//Town sack
+	
 	locations[n].townsack = "Maracaibo";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
 	locations[n].citizens = true;    
 	locations[n].soldiers = true;   
 	locations[n].carrier = true;
-	//Sound
+	
 	locations[n].type = "plantation";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\BarbadosPlantation";
 	locations[n].models.always.BarbadosPlantation = "BarbadosPlantation";	
 	locations[n].models.always.reflect = "BarbadosPlantation_reflect";
@@ -1015,16 +1015,16 @@ int LocationInitMaracaibo(int n)
 	locations[n].models.always.l1 = "BarbadosPlantation_wall";
 	Locations[n].models.always.l1.tech = "DLightModel";
 	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "BarbadosPlantation_patchopen";
 	locations[n].models.day.fonar = "BarbadosPlantation_fd";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "BarbadosPlantation_patchopen";
 	locations[n].models.night.fonar = "BarbadosPlantation_fn";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	
 	locations[n].reload.l1.name = "reload2_back";
 	locations[n].reload.l1.go = "Maracaibo_ExitTown";
@@ -1033,7 +1033,7 @@ int LocationInitMaracaibo(int n)
 	locations[n].reload.l1.label = "ExitTown";
 	locations[n].locators_radius.reload.reload1_back = 2.5;
 	
-	//дома
+	
 	locations[n].reload.l3.name = "houseSp1";
 	locations[n].reload.l3.go = "Maracaibo_Plantation_Sp1";
 	locations[n].reload.l3.emerge = "reload1";
@@ -1064,25 +1064,25 @@ int LocationInitMaracaibo(int n)
 	locations[n].reload.l7.autoreload = false;
 	locations[n].reload.l7.label = "house";
 
-    locations[n].locators_radius.quest.detector1 = 5.0; //homo
+    locations[n].locators_radius.quest.detector1 = 5.0; 
 	locations[n].locators_radius.quest.detector3 = 5.0;
     n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/////// дом управляющего
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Maracaibo_Plantation_Sp1";
 	locations[n].filespath.models = "locations\inside\StoneHouse";
 	locations[n].id.label = "House";
 	locations[n].image = "loading\inside\stonehouse.tga";
-	//Town sack
+	
 	locations[n].townsack = "Maracaibo";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Sound
+	
 	locations[n].type = "house";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.tavern = "StoneHouse";
 	locations[n].models.always.tavern.level = 65538;
 	locations[n].models.always.window = "StoneHouse_window";
@@ -1093,14 +1093,14 @@ int LocationInitMaracaibo(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-    //Day
+    
 	locations[n].models.day.charactersPatch = "StoneHouse_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "StoneHouse_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Maracaibo_Plantation";
 	locations[n].reload.l1.emerge = "houseSp1";
@@ -1111,19 +1111,19 @@ int LocationInitMaracaibo(int n)
 	locations[n].box2.QuestClosed = true;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	locations[n].id = "Maracaibo_Plantation_S1";
 	locations[n].filespath.models = "locations\inside\Hut";
 	locations[n].id.label = "House";
 	locations[n].image = "loading\inside\hut.tga";
-	//Town sack
+	
 	locations[n].townsack = "Maracaibo";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Sound
+	
 	locations[n].type = "house";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Hut_locators";
 	locations[n].models.always.tavern = "Hut";
 	locations[n].models.always.tavern.level = 65538;
@@ -1133,14 +1133,14 @@ int LocationInitMaracaibo(int n)
 
 	locations[n].models.always.back = "..\inside_back2";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Hut_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Hut_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Maracaibo_Plantation";
 	locations[n].reload.l1.emerge = "houseS1";
@@ -1148,19 +1148,19 @@ int LocationInitMaracaibo(int n)
 	locations[n].reload.l1.label = "Plantation";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	locations[n].id = "Maracaibo_Plantation_S2";
 	locations[n].filespath.models = "locations\inside\Hut";
 	locations[n].id.label = "House";
 	locations[n].image = "loading\inside\hut.tga";
-	//Town sack
+	
 	locations[n].townsack = "Maracaibo";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Sound
+	
 	locations[n].type = "house";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Hut_locators";
 	locations[n].models.always.tavern = "Hut";
 	locations[n].models.always.tavern.level = 65538;
@@ -1170,14 +1170,14 @@ int LocationInitMaracaibo(int n)
 
 	locations[n].models.always.back = "..\inside_back2";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Hut_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Hut_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload2";
 	locations[n].reload.l1.go = "Maracaibo_Plantation";
 	locations[n].reload.l1.emerge = "houseS2";
@@ -1185,18 +1185,18 @@ int LocationInitMaracaibo(int n)
 	locations[n].reload.l1.label = "Plantation";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	locations[n].id = "Maracaibo_Plantation_F1";
 	locations[n].id.label = "Room";
 	locations[n].image = "loading\inside\mediumhouse10.tga";
-	//Town sack
+	
 	locations[n].townsack = "Maracaibo";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Sound
+	
 	locations[n].type = "house";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\mediumhouse05";
 	locations[n].models.always.mediumhouse05 = "mediumhouse05";
 	locations[n].models.always.mediumhouse05.level = 65538;
@@ -1209,15 +1209,15 @@ int LocationInitMaracaibo(int n)
 
 	locations[n].models.always.back = "..\inside_back2";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	Locations[n].models.day.mediumhouse05rand= "mediumhouse05_rand";
 	locations[n].models.day.charactersPatch = "mediumhouse05_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "mediumhouse05_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Maracaibo_Plantation";
 	locations[n].reload.l1.emerge = "houseF1";
@@ -1225,18 +1225,18 @@ int LocationInitMaracaibo(int n)
 	locations[n].reload.l1.label = "Plantation";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	locations[n].id = "Maracaibo_Plantation_F2";
 	locations[n].id.label = "House";
 	locations[n].image = "loading\inside\mediumhouse10.tga";
-	//Town sack
+	
 	locations[n].townsack = "Maracaibo";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Sound
+	
 	locations[n].type = "house";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\mediumhouse09";
 	locations[n].models.always.house = "mediumhouse09";
 	locations[n].models.always.house.level = 65538;
@@ -1249,15 +1249,15 @@ int LocationInitMaracaibo(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	Locations[n].models.day.mediumhouse09rand= "mediumhouse09_rand";
 	locations[n].models.day.charactersPatch = "mediumhouse09_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "mediumhouse09_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Maracaibo_Plantation";
 	locations[n].reload.l1.emerge = "houseF2";
@@ -1265,20 +1265,20 @@ int LocationInitMaracaibo(int n)
 	locations[n].reload.l1.label = "Plantation";
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// бухта с останками корабля (с заглушкой джунглей)
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Shore_ship3";
 	locations[n].id.label = "Shore_ship3";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "Shore_ship3";
-	locations[n].Chestgennot = true; // не генерить сундуки
-	//Sound
+	locations[n].Chestgennot = true; 
+	
 	locations[n].type = "seashore";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\ShoreShip1";
 	Locations[n].models.always.shore = "shoreShip1";
 	locations[n].models.always.shore.sea_reflection = 1;
@@ -1293,14 +1293,14 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shoreShip1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shoreShip1_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Maracaibo_jungle_03";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1316,19 +1316,19 @@ int LocationInitMaracaibo(int n)
     locations[n].locators_radius.reload.boat = 9.0;
 	n = n + 1;
 
-	// Addon 2016-1 Jason Пиратская линейка
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли развилка 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
     Locations[n].id = "Maracaibo_jungle_03";
 	locations[n].id.label = "jungle";
 	Locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle5";
 	Locations[n].models.always.jungle = "jungle5";	
 	Locations[n].models.always.locators = "jungle5_locators";		
@@ -1343,14 +1343,14 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle5_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle5_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Shore_ship3";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1375,19 +1375,19 @@ int LocationInitMaracaibo(int n)
 	Locations[n].DisableEncounters = true;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Деревня индейцев араваков
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	Locations[n].id = "Locono_village";
 	locations[n].id.label = "Village";
 	Locations[n].image = "loading\Village.tga";
 	locations[n].pearlVillage = 3;
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Models
-	//Always
+	
+	
 	Locations[n].filespath.models = "locations\Outside\IndianVillage";
 	Locations[n].models.always.village = "village";	
 	Locations[n].models.always.locators = "village_locators";
@@ -1402,14 +1402,14 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "village_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "village_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	Locations[n].reload.l1.name = "reload1_back";
 	Locations[n].reload.l1.go = "Maracaibo_jungle_03";
 	Locations[n].reload.l1.emerge = "reload2";
@@ -1437,20 +1437,20 @@ int LocationInitMaracaibo(int n)
 
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////
-	//// хижина №1 - большая 
-	/////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Locono_shack1";
 	locations[n].id.label = "shack";
 	locations[n].image = "loading\inside\Vigwam.tga";
-	//Town sack
+	
 	locations[n].townsack = "Locono_village";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\Hut_1_inside";
 	locations[n].models.always.Hut_1_inside = "Hut_1_inside";
 	locations[n].models.always.Hut_1_inside.level = 65538;
@@ -1458,14 +1458,14 @@ int LocationInitMaracaibo(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Hut_1_inside_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Hut_1_inside_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Locono_village";
 	locations[n].reload.l1.emerge = "reload2";
@@ -1475,20 +1475,20 @@ int LocationInitMaracaibo(int n)
 	
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////
-	//// хижина №2 
-	/////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Locono_shack2";
 	locations[n].id.label = "shack";
 	locations[n].image = "loading\inside\Vigwam.tga";
-	//Town sack
+	
 	locations[n].townsack = "Locono_village";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\Hut_2_inside";
 	locations[n].models.always.Hut_2_inside = "Hut_2_inside";
 	locations[n].models.always.Hut_2_inside.level = 65538;
@@ -1497,16 +1497,16 @@ int LocationInitMaracaibo(int n)
 	locations[n].models.always.Hut_2_back.level = 65538; 
 	locations[n].models.always.back = "..\inside_back2";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Hut_2_inside_patch";
 	locations[n].models.day.locators = "Hut_2_inside_locators";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Hut_2_inside_patch";
 	locations[n].models.night.locators = "Hut_2_inside_locators";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Locono_village";
 	locations[n].reload.l1.emerge = "reload3";
@@ -1516,20 +1516,20 @@ int LocationInitMaracaibo(int n)
 	
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////
-	//// хижина №3
-	/////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Locono_shack3";
 	locations[n].id.label = "shack";
 	locations[n].image = "loading\inside\Vigwam.tga";
-	//Town sack
+	
 	locations[n].townsack = "Locono_village";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\Hut_2_inside";
 	locations[n].models.always.Hut_2_inside = "Hut_2_inside";
 	locations[n].models.always.Hut_2_inside.level = 65538;
@@ -1538,16 +1538,16 @@ int LocationInitMaracaibo(int n)
 	locations[n].models.always.Hut_2_back.level = 65538; 
 	locations[n].models.always.back = "..\inside_back2";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.locators = "Hut_2_inside_locators";
 	locations[n].models.day.charactersPatch = "Hut_2_inside_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Hut_2_inside_patch";
 	locations[n].models.night.locators = "Hut_2_inside_locators";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Locono_village";
 	locations[n].reload.l1.emerge = "reload4";
@@ -1557,18 +1557,18 @@ int LocationInitMaracaibo(int n)
 	
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли к реке
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	 Locations[n].id = "Maracaibo_jungle_04";
 	locations[n].id.label = "jungle";
 	Locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle1\";
 	Locations[n].models.always.jungle = "jungle1";
 	Locations[n].models.always.locators = "jungle1_locators";		
@@ -1583,14 +1583,14 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle1_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Maracaibo_jungle_03";
 	locations[n].reload.l1.emerge = "reload3";
@@ -1608,18 +1608,18 @@ int LocationInitMaracaibo(int n)
 	Locations[n].DisableEncounters = true;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Берег реки - путь на Мериду
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
     Locations[n].id = "Maracaibo_river";
 	locations[n].id.label = "River";
 	Locations[n].image = "loading\River_Bank.tga";
-	//Sound
+	
 	locations[n].type = "questisland";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore14";
 	Locations[n].models.always.shore = "shore14";	
 	Locations[n].models.always.seabed = "Shore14_Sb";
@@ -1633,14 +1633,14 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.l4 = "plan4";
 	Locations[n].models.always.l4.level = 6;
 	Locations[n].models.always.l4.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Shore14_p";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Shore14_p";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Maracaibo_jungle_04";
 	locations[n].reload.l1.emerge = "reload2";
@@ -1651,18 +1651,18 @@ int LocationInitMaracaibo(int n)
 	Locations[n].DisableEncounters = true;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Берег реки серпантин - путь на Мериду
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
     Locations[n].id = "Serpentine1";
 	locations[n].id.label = "River";
 	Locations[n].image = "loading\River_Bank.tga";
-	//Sound
+	
 	locations[n].type = "questisland";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Serpentine";
 	Locations[n].models.always.Serpentine = "pass1";
 	locations[n].models.always.Serpentine.sea_reflection = 1;
@@ -1676,14 +1676,14 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.l4 = "plan4";
 	Locations[n].models.always.l4.level = 6;
 	Locations[n].models.always.l4.tech = "LocationModelBlend";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "pass1_p";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "pass1_p";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	Locations[n].reload.l1.name = "reload1_back";
 	Locations[n].reload.l1.go = "Serpentine_cave";
 	Locations[n].reload.l1.emerge = "reload1";
@@ -1695,18 +1695,18 @@ int LocationInitMaracaibo(int n)
 	Locations[n].DisableEncounters = true;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Сквозная пещера
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	
 	locations[n].id = "Serpentine_cave";
 	locations[n].id.label = "Cave";
 	locations[n].image = "loading\inside\cave.tga";
-	//Sound
+	
 	locations[n].type = "cave";
  	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\cavernLow1";
 	locations[n].models.always.cavernLow1 = "cavernLow1";
 		
@@ -1731,17 +1731,17 @@ int LocationInitMaracaibo(int n)
 
 	locations[n].locators_radius.item.duhi1 = 0.0;
 	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "cavernLow1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "cavernLow1_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Serpentine1";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1756,18 +1756,18 @@ int LocationInitMaracaibo(int n)
 	Locations[n].DisableEncounters = true;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Cерпантин - путь на Мериду
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
     Locations[n].id = "Serpentine2";
 	locations[n].id.label = "jungle";
 	Locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "questisland";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Serpentine";
 	Locations[n].models.always.Serpentine = "pass2";
 	locations[n].models.always.Serpentine.sea_reflection = 1;
@@ -1781,14 +1781,14 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.l4 = "plan4";
 	Locations[n].models.always.l4.level = 6;
 	Locations[n].models.always.l4.tech = "LocationModelBlend";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "pass2_p";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "pass2_p";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	Locations[n].reload.l1.name = "reload1_back";
 	Locations[n].reload.l1.go = "Serpentine_cave";
 	Locations[n].reload.l1.emerge = "reload2";
@@ -1807,18 +1807,18 @@ int LocationInitMaracaibo(int n)
 	Locations[n].DisableEncounters = true;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли - путь на Мериду
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	 Locations[n].id = "Merida_jungle_01";
 	locations[n].id.label = "jungle";
 	Locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "questisland";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle11";
 	Locations[n].models.always.jungle = "jungle11";	
 	Locations[n].models.always.locators = "jungle11_locators";		
@@ -1833,14 +1833,14 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle11_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle11_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Serpentine2";
 	locations[n].reload.l1.emerge = "reload2";
@@ -1858,18 +1858,18 @@ int LocationInitMaracaibo(int n)
 	Locations[n].DisableEncounters = true;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Выход к Мериде
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Merida_ExitTown";
 	locations[n].id.label = "ExitTown";
 	locations[n].image = "loading\Gate" + rand(1) + ".tga";
-	//Sound
+	
 	locations[n].type = "questisland";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\TownExitM";
 	Locations[n].models.always.townExit = "douexit";
 	Locations[n].models.always.dno = "DouExit_dno";
@@ -1918,16 +1918,16 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.l4 = "plan4";
 	Locations[n].models.always.l4.level = 6;
 	Locations[n].models.always.l4.tech = "LocationModelBlend";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "DouExit_p";
 	locations[n].models.day.fonars = "DouExit_fd";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "DouExit_p";
 	locations[n].models.night.fonars = "DouExit_fn";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";	
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload2";
 	locations[n].reload.l1.go = "Merida_town";
 	locations[n].reload.l1.emerge = "gate_back";
@@ -1944,18 +1944,18 @@ int LocationInitMaracaibo(int n)
 	Locations[n].DisableEncounters = true;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Мерида
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Merida_town";
 	locations[n].id.label = "Street";
 	locations[n].image = "loading\Town.tga";
-	//Sound
+	
 	locations[n].type = "questisland";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Maracaibo";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Merida";
 	Locations[n].models.always.town = "Doutown";
 	
@@ -1976,16 +1976,16 @@ int LocationInitMaracaibo(int n)
 	Locations[n].models.always.l4 = "plan4";
 	Locations[n].models.always.l4.level = 6;
 	Locations[n].models.always.l4.tech = "LocationModelBlend";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Doutown_p";
 	locations[n].models.day.fonars = "Doutown_fd";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Doutown_p";
 	locations[n].models.night.fonars = "Doutown_fn";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";	
-	//Reload map
+	
 	locations[n].reload.l1.name = "gate_back";
 	locations[n].reload.l1.go = "Merida_ExitTown";
 	locations[n].reload.l1.emerge = "reload2";
@@ -1999,20 +1999,20 @@ int LocationInitMaracaibo(int n)
 	locations[n].reload.l2.label = "townhall";
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Резиденция Мериды
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Merida_townhall";
 	locations[n].id.label = "Townhall";
 	locations[n].filespath.models = "locations\inside\Residence07";
 	locations[n].image = "loading\inside\residence.tga";
-	//Town sack
+	
 	Locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Res07_l";
 	locations[n].models.always.l1 = "Res07";
 	locations[n].models.always.l1.level = 65538;
@@ -2022,14 +2022,14 @@ int LocationInitMaracaibo(int n)
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
 
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Res07_p";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Res07_p";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Merida_town";
 	locations[n].reload.l1.emerge = "reload3";
@@ -2044,3 +2044,4 @@ int LocationInitMaracaibo(int n)
 	
 	return n;
 }
+

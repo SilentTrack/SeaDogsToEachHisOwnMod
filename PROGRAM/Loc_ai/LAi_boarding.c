@@ -1,5 +1,5 @@
-//  логика абордажа, переработка boal 28.04.06
-// многопалубный абордаж, Jason
+
+
 #define BRDLT_SHIP	0
 #define BRDLT_FORT	1
 
@@ -18,14 +18,14 @@ object boarding_fader;
 
 int   boarding_player_crew = 0;
 int   boarding_officers    = 0;
-float boarding_player_base_crew    = 0.0; //boal
+float boarding_player_base_crew    = 0.0; 
 float boarding_player_crew_per_chr = 1.0;
-int   boarding_player_crew_start   = 0; //sd
+int   boarding_player_crew_start   = 0; 
 
 int   boarding_enemy_crew = 0;
 float boarding_enemy_base_crew    = 0.0;
 float boarding_enemy_crew_per_chr = 1.0;
-int   boarding_enemy_crew_start   = 0; //sd
+int   boarding_enemy_crew_start   = 0; 
 
 ref    boarding_enemy;
 object boarding_adr[4];
@@ -35,22 +35,22 @@ float  boarding_enemy_hp = 40;
 int    boarding_echr_index = -1;
 int    boarding_erank = 10;
 bool   LAi_boarding_process = false;
-bool   Surrendered = false; // сдача в плен
+bool   Surrendered = false; 
 
 int inside_ecrew_1, inside_ecrew_2;
 
-//Процес абордажа
+
 bool LAi_IsBoardingProcess()
 {
 	return LAi_boarding_process;
 }
 
-//Получить картинку для перехода в абордаж
+
 string LAi_GetBoardingImage(ref echr, bool isMCAttack)
 {
 	ref mchr = GetMainCharacter();
 	string deckID = "";
-	isMCAttack   = true;// boal 110804 fix всегда герой
+	isMCAttack   = true;
 	if(isMCAttack)
 	{
 		deckID = GetShipLocationID(echr);
@@ -80,19 +80,19 @@ string LAi_GetBoardingImage(ref echr, bool isMCAttack)
 	return "loading\battle.tga";
 }
 
-//Начать абордаж с главным персонажем
+
 void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 {
-    SendMessage(&Particles,"l", PS_CLEAR_CAPTURED); // повторное удаление партиклов, фикс огней в море.
-	//ResetSoundScheme();
-	ResetSound(); // new
+    SendMessage(&Particles,"l", PS_CLEAR_CAPTURED); 
+	
+	ResetSound(); 
 	PauseAllSounds();
 	
-	bQuestCheckProcessFreeze = true;//fix
+	bQuestCheckProcessFreeze = true;
 	
 	EmptyAbordageCharacters();
 	
-	// NK -->
+	
 	if(locType == BRDLT_FORT)
     {
         isMCAttack = true;
@@ -102,43 +102,43 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
     {
         IsFort = false;
     }
-    // NK <--
-	//Установим обработчик на убийство группы
+    
+	
 	SetEventHandler("LAi_event_GroupKill", "LAi_BoardingGroupKill", 1);
-	//Настроим интерфейс
+	
 	DeleteBattleInterface();
 	InitBattleLandInterface();
-	//StartBattleLandInterface();
-	//Сохраним индекс врага
-	boarding_echr_index = sti(echr.index);
-	//Параметры сражающихся сторон
-	ref mchr = GetMainCharacter();
-	int mclass = GetCharacterShipClass(mchr); // класс корабля ГГ
-	int mcrew = GetCrewQuantity(mchr); // число команды ГГ
 	
-	// Saving enemy captain rank for future use in CalculateAppropriateSkills (Gray 12.02.2005)
+	
+	boarding_echr_index = sti(echr.index);
+	
+	ref mchr = GetMainCharacter();
+	int mclass = GetCharacterShipClass(mchr); 
+	int mcrew = GetCrewQuantity(mchr); 
+	
+	
 	mchr.EnemyRank = echr.rank
 	
 	DeleteAttribute(pchar, "abordage_active");
-	// boal учет оружия 21.01.2004 -->
-	Log_TestInfo("Наших до оружия " + mcrew);
+	
+	Log_TestInfo("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ " + mcrew);
 	mcrew = GetWeaponCrew(mchr, mcrew);
 	
-	// boal 21.01.2004 <--
-	int eclass = GetCharacterShipClass(echr); // класс корабля НПС
-	int ecrew = GetCrewQuantity(echr); // число команды НПС
+	
+	int eclass = GetCharacterShipClass(echr); 
+	int ecrew = GetCrewQuantity(echr); 
 	int ecrewBak;
 	int mcrewBak;
 
-    Log_TestInfo("Наших с оружием " + mcrew + " Врагов " + ecrew);
+    Log_TestInfo("пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + mcrew + " пїЅпїЅпїЅпїЅпїЅпїЅ " + ecrew);
     
     boarding_location_type = locType;
 	
 	if (echr.id == "WorldMarchCap1" || echr.id == "WorldMarchCap2" || echr.id == "WorldMarchCap3")
 	{
-		if (!CheckAttribute(pchar, "GenQuest.MarchCap.Battlestart")) DoQuestFunctionDelay("MarchCap2_CheckBattle", 0.5); //Jason
+		if (!CheckAttribute(pchar, "GenQuest.MarchCap.Battlestart")) DoQuestFunctionDelay("MarchCap2_CheckBattle", 0.5); 
 	}
-	//Jason, изъятие лицензии
+	
 	bool blic = (CheckAttribute(echr, "Ship.Mode")) && (echr.Ship.Mode == "trade");
 	if (CheckCharacterItem(pchar, "HolTradeLicence"))
 	{
@@ -149,13 +149,13 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 		}
 	}
 	
-	// Сдача в плен -->
+	
 	bool ok = (TestRansackCaptain) && (boarding_location_type != BRDLT_FORT);
-    if (!CheckAttribute(echr, "DontRansackCaptain")) //квестовые не сдаются
+    if (!CheckAttribute(echr, "DontRansackCaptain")) 
     {
-    	if (CheckForSurrender(mchr, echr, 1) || ok) // 1 - это учет первый раз, до битвы на палубе
+    	if (CheckForSurrender(mchr, echr, 1) || ok) 
     	{
-    		echr.ship.crew.morale = 5;// после захвата у них мораль такая
+    		echr.ship.crew.morale = 5;
 
     		if (mclass < eclass)
 			{
@@ -165,32 +165,32 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 			{
 				AddCrewMorale(mchr, 3);
 			}
-			SendMessage(&Particles,"l", PS_CLEAR_CAPTURED); // повторное удаление партиклов, фикс огней в море.
-            //Следующей локации нет
+			SendMessage(&Particles,"l", PS_CLEAR_CAPTURED); 
+            
 			DelEventHandler("LAi_event_GroupKill", "LAi_BoardingGroupKill");
 			boarding_location = -1;
 			
-			// Saved value is not needed anymore... (Gray 14.02.2005)
+			
 			DeleteAttribute(GetMainCharacter(), "EnemyRank");
-		    bQuestCheckProcessFreeze = false;//fix
+		    bQuestCheckProcessFreeze = false;
 		    
-			//Настроим интерфейс
+			
 			Log_SetActiveAction("Nothing");
 			EndBattleLandInterface();
-            //Выгружаемся в интерфейс
+            
             
 			ChangeCrewExp(pchar, "Soldiers", 1);
 			LaunchRansackMain(pchar, echr, "crew"); 
-			// на деле параметры LaunchRansackMain не важны совсем - все определеятеся от реалий - жив кэп и сколько у него матросов - их и обрабатываем
-			// но они используются в сообщениях  crew - это сдался сразу
+			
+			
     		LAi_boarding_process = false;  
 			Event(SHIP_CAPTURED, "l", sti(echr.index));
     		return;
     	}
 	}
-	// Сдача в плен <--
 	
-	// --> ugeen  Мушкетный залп
+	
+	
 	float 	mShipClassCoeff, eShipClassCoeff;
 	int   	mCrewShot = 0;
 	int	  	eCrewShot = 0;
@@ -198,19 +198,19 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 	float   mCoeff 	= 0.0;	
 	bool	bOk = false;
 	
-	if (CheckOfficersPerk(mchr, "MusketsShoot") && IsFort == false) // для ГГ
+	if (CheckOfficersPerk(mchr, "MusketsShoot") && IsFort == false) 
 	{
 		bOk = true;
 		int OffQty = GetOfficersQuantity(mchr); 
 		if (OffQty < 0) OffQty = 1;
 		
-		mShipClassCoeff = (eclass - mclass) * 0.15; // считаем коэффицент классности для ГГ
-		mCrewShot = makeint(mcrew / 4);				// количество стрелков ГГ
+		mShipClassCoeff = (eclass - mclass) * 0.15; 
+		mCrewShot = makeint(mcrew / 4);				
 
 		if(IsCharacterEquippedArtefact(mchr, "indian_5")) ecrew = makeint(ecrew / 1.1);
 		
 		mCoeff = 0.5 + 0.1 * OffQty;
-		// это базовая величина потенциального урона, который может нанести команда протагониста.
+		
 		mDamage = mcrew * mCoeff/4 + rand( makeint(mcrew * (1 - mCoeff)/4 ) );
 		
 		mDamage = mDamage * (1 + mShipClassCoeff);
@@ -224,14 +224,14 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 		
 		Log_SetStringToLog("A musket salvo eliminated " + ecrewBak + " enemy's crewmen");
 	}
-	if (CheckOfficersPerk(echr, "MusketsShoot") && IsFort == false) // для противника
+	if (CheckOfficersPerk(echr, "MusketsShoot") && IsFort == false) 
 	{
 		bOk = true;
 		if(IsCharacterEquippedArtefact(ecrew, "indian_5")) mcrew = makeint(mcrew / 1.1);
 	
-		eShipClassCoeff = (mclass - eclass) * 0.15; 				// считаем коэффицент классности для противника
-		eCrewShot = makeint(ecrew / 4);								// количество стрелков противника
-		eDamage = ecrew * 0.2 + rand(makeint(ecrew/20)); 			// базовая величина потенциального урона, который может нанести противник
+		eShipClassCoeff = (mclass - eclass) * 0.15; 				
+		eCrewShot = makeint(ecrew / 4);								
+		eDamage = ecrew * 0.2 + rand(makeint(ecrew/20)); 			
 		
 		eDamage = eDamage * (1 + eShipClassCoeff);
 		if(eDamage > mcrew * 0.75) eDamage = mcrew * 0.75;
@@ -258,24 +258,24 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 		}
 	}
 	
-	// <-- ugeen Мушкетный залп
+	
 
 	if(ecrew < 0) ecrew = 0;
 	if(mcrew < 0) mcrew = 0;
 	boarding_erank = sti(echr.rank);
 
-	// база для расчета
+	
 	boarding_enemy_base_crew = ecrew;
 	boarding_player_base_crew = mcrew;
 	
-	//Количество хитпойнтов для бонуса - учет опыта солдат
+	
 	GetBoardingHP(mchr, echr, &boarding_player_hp, &boarding_enemy_hp);
 	
-	//Определяем цепь локаций для абордажа
+	
 	boarding_location = -1;
 
 	string deckID = "";
-	isMCAttack   = true;// boal 110804 fix всегда герой
+	isMCAttack   = true;
 	if(isMCAttack)
 	{
 		deckID = GetShipLocationID(echr);
@@ -303,28 +303,28 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 		locID = FindLocation(deckID);
 	}
 	if (locID < 0)
-	{   // исключительная ситуация
+	{   
 		Trace("Boarding: ship location not found <" + deckID + ">, no start boarding");
-		// Saved value is not needed anymore... (Gray 14.02.2005)
+		
 		DeleteAttribute(GetMainCharacter(), "EnemyRank");
-	    bQuestCheckProcessFreeze = false;//fix
+	    bQuestCheckProcessFreeze = false;
 		    
 		if(boarding_location_type == BRDLT_SHIP)
 		{
             ChangeCrewExp(pchar, "Soldiers", 1);
-            SendMessage(&Particles,"l", PS_CLEAR_CAPTURED); // повторное удаление партиклов, фикс огней в море.
-			LaunchRansackMain(GetMainCharacter(), echr, "captain");	  // на деле параметры LaunchRansackMain не важны совсем - все определеятеся от реалий
+            SendMessage(&Particles,"l", PS_CLEAR_CAPTURED); 
+			LaunchRansackMain(GetMainCharacter(), echr, "captain");	  
             LAi_boarding_process = false;
-			Event(SHIP_CAPTURED, "l", sti(echr.index)); // to_do can be harmfull
+			Event(SHIP_CAPTURED, "l", sti(echr.index)); 
 		}
 		else
 		{
 			if (boarding_location_type == BRDLT_FORT)
 			{
                 ChangeCrewExp(pchar, "Soldiers", 1);
-                SendMessage(&Particles,"l", PS_CLEAR_CAPTURED); // повторное удаление партиклов, фикс огней в море.
+                SendMessage(&Particles,"l", PS_CLEAR_CAPTURED); 
 				Event(FORT_CAPTURED, "l", sti(echr.index));
-				echr.Ship.Crew.Quantity = 10 + rand(350); // рабы (остатки выживших)
+				echr.Ship.Crew.Quantity = 10 + rand(350); 
                 LaunchFortCapture(echr);
                 LAi_boarding_process = false;
 			}else{
@@ -335,17 +335,17 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 	}
 
 	pchar.abordage = 0;
-	//Определяем размеры команд
+	
 	boarding_enemy = echr;
-	//Максимальное количество человек на корабле
+	
 	int maxcrew = MAX_GROUP_SIZE;
 	
     if(CheckAttribute(&Locations[locID], "boarding.locatorNum"))
 	{
 		maxcrew = sti(Locations[locID].boarding.locatorNum);
 	}
-    //  модифицируем от класса корабля тут
-    int iMaxcrew  = func_min(mclass, eclass); // класс 1 - сама круть 7 - хрень
+    
+    int iMaxcrew  = func_min(mclass, eclass); 
     switch (iMaxcrew)
     {
         case 7:
@@ -372,38 +372,38 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
     }
     if (iMaxcrew < maxcrew) maxcrew = iMaxcrew;
     
-	if (boarding_location_type == BRDLT_SHIP && eclass != 6)  // на тартане каюты нет
+	if (boarding_location_type == BRDLT_SHIP && eclass != 6)  
 	{
     	boarding_enemy.ShipCabinLocationId = GetShipCabinID(echr);
 	}
 
-	// boal check -->
+	
 	if(maxcrew > BRDLT_MAXCREW)
 	{
 	    maxcrew = BRDLT_MAXCREW;
 	}
-	// boal check <--
+	
 
-	//Отношение сторон
+	
 
-	// fort -->
-	// boal 21.01.2004 -->
+	
+	
 	int cn, j, compCrew;
     ref officer;
     if(IsFort)
     {
-        mcrew = mcrew + GetTroopersCrewQuantity(GetMainCharacter()); // если нет перка, то нолик
-        boarding_player_base_crew = mcrew;// учет всех кораблей
-        //Максимальное количество человек
-        Log_TestInfo("Итого: До расчета mcrew = "+mcrew+ " ecrew = "+ ecrew + " boarding_enemy_hp = "+ boarding_enemy_hp + " boarding_player_hp = "+boarding_player_hp);
+        mcrew = mcrew + GetTroopersCrewQuantity(GetMainCharacter()); 
+        boarding_player_base_crew = mcrew;
+        
+        Log_TestInfo("пїЅпїЅпїЅпїЅпїЅ: пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ mcrew = "+mcrew+ " ecrew = "+ ecrew + " boarding_enemy_hp = "+ boarding_enemy_hp + " boarding_player_hp = "+boarding_player_hp);
     }
-    // boal 21.01.2004 <--
-    // fort <--
+    
+    
 	
 	float rel;
 	if(mcrew > ecrew)
 	{
-        // нам бонуc boal
+        
         boarding_player_hp = boarding_player_hp + GetBoarding_player_hp_Bonus(mcrew, ecrew);
 		if (boarding_player_hp > 1000) boarding_player_hp = 1000;
 		
@@ -416,10 +416,10 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 	}
 	else
 	{
-		// boal 30.01.2004 -->
+		
 		boarding_enemy_hp = boarding_enemy_hp + GetBoarding_enemy_hp_Bonus(mcrew, ecrew);
 		if (boarding_enemy_hp > 1500) boarding_enemy_hp = 1500;
-		// boal 30.01.2004 <--
+		
         if(ecrew > maxcrew)
 		{       
 			rel = makefloat(ecrew) / makefloat(maxcrew);
@@ -430,31 +430,31 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 	if(mcrew < 1) mcrew = 1;
 	if(ecrew < 1) ecrew = 1;
 	
-    Log_TestInfo("После приведения mcrew = "+mcrew+ " ecrew = "+ ecrew + " boarding_enemy_hp = "+ boarding_enemy_hp + " boarding_player_hp = "+boarding_player_hp);
+    Log_TestInfo("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ mcrew = "+mcrew+ " ecrew = "+ ecrew + " boarding_enemy_hp = "+ boarding_enemy_hp + " boarding_player_hp = "+boarding_player_hp);
 
-	//boarding_enemy_crew_start  = ecrew;
 	
-	//Jason: устанавливаем число тушек по разным палубам
-	// верхнюю палубу оставляем без изменений по количеству, но срезаем 15% HP у воинов противника, на нижних палубах будут добавочные враги, но это компенсация за разделенность сил противника относительно сил героя
-	inside_ecrew_1 = makeint(ecrew*0.3+0.5); // 30% - инсайд первого прохода
-	inside_ecrew_2 = makeint(ecrew*0.2+0.5); // 20% - инсайд второго прохода
+	
+	
+	
+	inside_ecrew_1 = makeint(ecrew*0.3+0.5); 
+	inside_ecrew_2 = makeint(ecrew*0.2+0.5); 
 	if (inside_ecrew_1 < 1) inside_ecrew_1 = 1;
 	if (inside_ecrew_2 < 1) inside_ecrew_2 = 1;
-	if(IsFort) // на двор и бастион - поровну, по рез. тестов будем решать пропорции
+	if(IsFort) 
 	{
-		inside_ecrew_1 = ecrew*0.3+0.5; // 30% - инсайд первого прохода
-		inside_ecrew_2 = ecrew*0.3+0.5; // 30% - инсайд второго прохода
+		inside_ecrew_1 = ecrew*0.3+0.5; 
+		inside_ecrew_2 = ecrew*0.3+0.5; 
 		ecrew = ecrew*0.6+0.5;
 	}
 	
-	//ecrew = ecrew*0.7+1;
+	
 	
 	boarding_enemy_crew        = ecrew;
 	boarding_enemy_crew_start  = ecrew;
 	boarding_player_crew       = mcrew;
 	boarding_player_crew_start = mcrew;
 	
-	//Количество офицеров
+	
 	boarding_officers = 0;
 	int passq;
 	for(int i = 1; i < 4; i++)
@@ -462,21 +462,21 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 		passq = GetOfficersIndex(pchar, i);
 		if (passq >= 0)
 		{
-            // boal 05.09.03 offecer need to go to abordage -->
-		    // to_do if(makeint(Characters[GetOfficersIndex(GetMainCharacter(), i)].AbordageMode) == 0) continue;	// не берем
-			// boal 05.09.03 offecer need to go to abordage <--
+            
+		    
+			
 			boarding_officers = boarding_officers + 1;   
 			LAi_SetOfficerType(&characters[passq]);
 		}
 	}
   
-    //boarding_player_crew_per_chr = (curplayercrew + boarding_officers)/(mcrew + boarding_officers);
-    boarding_player_crew_per_chr = makefloat(boarding_player_base_crew / makefloat(mcrew)); //приведение типа
-	// START MOD Code by Stone-D : 30/07/2003
-	boarding_enemy_crew_per_chr = makefloat(boarding_enemy_base_crew / makefloat(ecrew)); // Stone-D : For calculating final crew numbers
-	// END MOD Code by Stone-D : 30/07/2003
+    
+    boarding_player_crew_per_chr = makefloat(boarding_player_base_crew / makefloat(mcrew)); 
+	
+	boarding_enemy_crew_per_chr = makefloat(boarding_enemy_base_crew / makefloat(ecrew)); 
+	
 
-	//Выставим игроку и офицерам максимальную жизнь и запомним адреса
+	
 	LAi_SetCurHPMax(mchr);
 	boarding_adr[0].location = mchr.location;
 	boarding_adr[0].group    = mchr.location.group;
@@ -496,29 +496,29 @@ void LAi_StartBoarding(int locType, ref echr, bool isMCAttack)
 		boarding_adr[i].group    = Characters[idx].location.group;
 		boarding_adr[i].locator  = Characters[idx].location.locator;
 	}
-	//Стартуем
+	
 	LAi_boarding_process = true;
 	LAi_LoadLocation(deckID, locType);
 	CreateEntity(&boarding_fader, "fader");
 	SendMessage(&boarding_fader, "lfl", FADER_IN, RELOAD_TIME_FADE_IN, true);
 }
 
-//Загрузить локацию абордажа
+
 void LAi_LoadLocation(string locationID, int locType)
 {
-//	Log_TestInfo("LoadLocation()");
+
 	ReloadProgressStart();
-	//Ищем локацию
+	
 	int locIndex = FindLocation(locationID);
 	Log_SetActiveAction("Nothing");
-    Dead_Char_num = 0; // boal dead body
+    Dead_Char_num = 0; 
 	if(locIndex >= 0)
 	{
-		//Устанавливаем главного персонажа
+		
 		ref mchr = GetMainCharacter();
 		mchr.location = locationID;
 		mchr.location.group = "rld";
-		// boal random place to star battle 28/11/03 -->
+		
 		int locNum[20];
 		int locI;
 		int maxLocators = 2;
@@ -530,42 +530,42 @@ void LAi_LoadLocation(string locationID, int locType)
 		locI = 0;
 		locNum[locI] = rand(maxLocators-1);
 		string sLocType = "loc";
-		// определение стороны на палубе
+		
 		if (CheckAttribute(&Locations[locIndex], "UpDeckType"))
 		{
 		    sLocType = ChooseShipUpDeck(mchr, boarding_enemy);
 		}
 
 		mchr.location.locator = sLocType + locNum[locI];
-		// для каюты перекрыть
+		
 		if (CheckAttribute(&Locations[locIndex], "CabinType") && CheckAttribute(&Locations[locIndex], "boarding.Loc.Hero"))
 		{
 		    mchr.location.locator = Locations[locIndex].boarding.Loc.Hero;
 		}
 		bool   okLoc;
 		int iLoc, j;
-		// boal random place to star battle 28/11/03 <--
+		
 		if (!CheckAttribute(&Locations[locIndex], "CabinType"))
-		{ // не грузим офов, если каюту
-	        //Устанавливаем офицеров, если такие есть
+		{ 
+	        
 	        int logined = 1;
 			for(int i = 1; i < 4; i++)
 			{
 				int idx = GetOfficersIndex(mchr, i);
 				if(idx < 0) continue;
-				//Log_TestInfo("Load Off " + Characters[idx].id);
+				
 				if (logined > maxLocators) break;
 
-	            // boal 05.09.03 offecer need to go to abordage -->
-//			    if(makeint(Characters[idx].AbordageMode) == 0) continue;	// не берем
-				// boal 05.09.03 offecer need to go to abordage <--
+	            
+
+				
 				DeleteAttribute(&Characters[idx], "location");
-				//Characters[idx].location = locationID;
-				// boal чтоб грузились в фортах -->
+				
+				
 				Characters[idx].location.loadcapture = true;
-			    // boal чтоб грузились в фортах <--
-				//Characters[idx].location.group = "rld";
-				// boal random place to star battle 28/11/03 -->
+			    
+				
+				
 				iLoc = rand(3);
 
 				okLoc = false;
@@ -584,28 +584,28 @@ void LAi_LoadLocation(string locationID, int locType)
 				}
 				locI++;
 			    locNum[locI] = iLoc;
-				//Characters[idx].location.locator = sLocType + locNum[locI];
-				// boal random place to star battle 28/11/03 <--
+				
+				
 				ChangeCharacterAddressGroup(&Characters[idx], locationID, "rld", sLocType + locNum[locI]);
 				logined = logined + 1;
 			}
 		}
-		//Перегружаемся в локацию
+		
 		boarding_location = locIndex;
 				
 		if(LoadLocation(&Locations[boarding_location]))
 		{
-			//работа с сундуком в каюте boal -->
+			
 			if (CheckAttribute(&Locations[boarding_location], "CabinType"))
 			{
 				FillAboardCabinBox(&Locations[boarding_location], boarding_enemy);
 			}  
-			//Расставляем персонажей
+			
 			LAi_SetBoardingActors(locationID);
-			// boal <--
-			//Вытащим саблю
+			
+			
 			SendMessage(&mchr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightMode", 1);
-			//Запретим диалог
+			
 			dialogDisable = true;
 		}else{
 			Trace("Boarding: Boarding location not loaded, current loc <" + locationID + ">");
@@ -617,23 +617,23 @@ void LAi_LoadLocation(string locationID, int locType)
 	PostEvent("LoadSceneSound", 500);
 }
 
-//Перегрузиться в следующую локации
+
 void LAi_ReloadBoarding()
 {
-//	Log_TestInfo("ReloadBoarding()");
-	//Разрешим диалоги
+
+	
 	dialogDisable = false;
-	//Проверим предыдущую локацию
+	
 	if(boarding_location < 0)
 	{
 		Trace("Boarding: No loaded current boarding location");
 		LAi_boarding_process = false;
 		return;
 	}
-	//Установить хендлеры для обработки
+	
 	SetEventHandler("FaderEvent_StartFade", "LAi_ReloadStartFade", 0);
 	SetEventHandler("FaderEvent_EndFade", "LAi_ReloadEndFade", 0);
-	//Создаём фейдер и запускаем
+	
 	CreateEntity(&boarding_fader, "fader");
 	string nextDeck = Locations[boarding_location].boarding.nextdeck;
 	if (nextDeck != "")
@@ -651,9 +651,9 @@ void LAi_ReloadBoarding()
 
 void LAi_ReloadStartFade()
 {
-	//Выгружаем локацию
- //ResetSoundScheme();
-	ResetSound(); // new
+	
+ 
+	ResetSound(); 
 	PauseAllSounds();
 	SendMessage(&Particles,"l", PS_CLEAR_CAPTURED);
 	DelEventHandler("FaderEvent_StartFade", "LAi_ReloadStartFade");
@@ -663,28 +663,28 @@ void LAi_ReloadStartFade()
 void LAi_ReloadEndFade()
 {        
 	bool bCaptanSurrender = false;
-	//Загружаем следующую локацию
+	
 	DelEventHandler("FaderEvent_EndFade", "LAi_ReloadEndFade");
 	SendMessage(&boarding_fader, "lfl", FADER_IN, RELOAD_TIME_FADE_IN, true);
-	//Определим возможность продолжения перегрузок
+	
 	bool canReload = true;
-	// Jason: во всех инсайдах и добавочных локациях форта число расчетных тушек х2, по рез.тестов возможно, будет дифференциация по типам инсайдов.
+	
 	if(CheckAttribute(&Locations[boarding_location], "UpDeckType"))
 	{
-		boarding_enemy_crew = inside_ecrew_1*2; // увеличиваем внутри число тушек вдвое
+		boarding_enemy_crew = inside_ecrew_1*2; 
 	}
-	else boarding_enemy_crew = inside_ecrew_2*2; // увеличиваем внутри число тушек вдвое
+	else boarding_enemy_crew = inside_ecrew_2*2; 
 	
 	if(IsFort)
     {
 		if(CheckAttribute(&Locations[boarding_location], "insidenext")) boarding_enemy_crew = inside_ecrew_2*2;
 		else boarding_enemy_crew = inside_ecrew_1*2;
 	}
-	//if(boarding_enemy_crew <= 0) canReload = false;
+	
 	if(!CheckAttribute(&Locations[boarding_location], "boarding.nextdeck")) canReload = false;
 	if(Locations[boarding_location].boarding.nextdeck == "") canReload = false;
 	
- 	if(canReload) //Jason Продолжаем абордаж
+ 	if(canReload) 
 	{
 		Trace("Boarding: go to inside location");
 		LAi_LoadLocation(Locations[boarding_location].boarding.nextdeck, -1); 
@@ -693,12 +693,12 @@ void LAi_ReloadEndFade()
     {
 		if (CheckAttribute(boarding_enemy, "ShipCabinLocationId"))
 		{
-            if (!CheckAttribute(boarding_enemy, "DontRansackCaptain")) //квестовые не сдаются
+            if (!CheckAttribute(boarding_enemy, "DontRansackCaptain")) 
 	        {
 	            Surrendered = (Surrendered) || (TestRansackCaptain);
 	    		if (Surrendered && (boarding_location_type == BRDLT_SHIP))
 	    		{
-	    		    bCaptanSurrender = true;    // это уже не первая палуба точно, значит потери были
+	    		    bCaptanSurrender = true;    
 	   			}
 	    	}
     		if (!bCaptanSurrender)
@@ -710,39 +710,39 @@ void LAi_ReloadEndFade()
 					SendMessage(&boarding_fader, "ls", FADER_PICTURE, Locations[FindLocation(boarding_enemy.ShipCabinLocationId)].image);
 				}
 				LAi_LoadLocation(boarding_enemy.ShipCabinLocationId, -1);
-				DeleteAttribute(boarding_enemy, "ShipCabinLocationId"); // чтоб не зациклилось
+				DeleteAttribute(boarding_enemy, "ShipCabinLocationId"); 
 				return;
 			}
 		}
-  		if (CheckAttribute(pchar, "GenQuest.QuestAboardCaptanSurrender")) // квестовая сдача в плен кэпа
+  		if (CheckAttribute(pchar, "GenQuest.QuestAboardCaptanSurrender")) 
 		{
-		    DeleteAttribute(pchar, "GenQuest.QuestAboardCaptanSurrender"); // разово
+		    DeleteAttribute(pchar, "GenQuest.QuestAboardCaptanSurrender"); 
 		    bCaptanSurrender = true;
 		}
-		SendMessage(&Particles,"l", PS_CLEAR_CAPTURED); // повторное удаление партиклов, фикс огней в море.
-		//Следующей локации нет
+		SendMessage(&Particles,"l", PS_CLEAR_CAPTURED); 
+		
 		DelEventHandler("LAi_event_GroupKill", "LAi_BoardingGroupKill");
 		boarding_location = -1;
-		//Пересчитываем команду игрока
+		
 
-		float crew = boarding_player_crew * boarding_player_crew_per_chr; // ВЫЖИВШИЕ офицеры - это не мартросы не должны влиять
-		// boal 22.01.2004 -->
+		float crew = boarding_player_crew * boarding_player_crew_per_chr; 
+		
 		ref mchar       = GetMainCharacter();
 		float fDefenceSkill = 0.9 + MakeFloat(GetSummonSkillFromName(mchar, SKILL_DEFENCE)) / SKILL_MAX;
-		int deadCrew    = makeint((boarding_player_base_crew - crew) / fDefenceSkill + 0.3); // бонус выжившим
-		if (CheckAttribute(pchar, "questTemp.ShipCapellan.Yes")) deadCrew = makeint(deadCrew/2); //Jason, капеллан на борту - потери в 2 раза меньше
-		int deadCrewWOMedic = makeint(boarding_player_base_crew - crew); // без бонуса
+		int deadCrew    = makeint((boarding_player_base_crew - crew) / fDefenceSkill + 0.3); 
+		if (CheckAttribute(pchar, "questTemp.ShipCapellan.Yes")) deadCrew = makeint(deadCrew/2); 
+		int deadCrewWOMedic = makeint(boarding_player_base_crew - crew); 
 		float leaderSkill = GetSummonSkillFromNameToOld(mchar, SKILL_LEADERSHIP);
 		int iTemp;
-		if (leaderSkill < 1) leaderSkill = 1; //fix
+		if (leaderSkill < 1) leaderSkill = 1; 
 		
-		// расчет медицины -->
+		
 		iTemp = deadCrewWOMedic - deadCrew;
 		if(CheckShipSituationDaily_GenQuest(pchar) > 1) 
 		{
 			if(iTemp > 0) 
 			{
-				deadCrew += deadCrewWOMedic; // если эпидемия - матросы не лечатся, лекарство не потребляется
+				deadCrew += deadCrewWOMedic; 
 			}	
 		}	
 		else
@@ -751,9 +751,9 @@ void LAi_ReloadEndFade()
 			{
 				if (GetCargoGoods(mchar, GOOD_MEDICAMENT) < iTemp)
 				{
-					deadCrewWOMedic = iTemp - GetCargoGoods(mchar, GOOD_MEDICAMENT); // умерли от ран
-					RemoveCharacterGoodsSelf(mchar, GOOD_MEDICAMENT, GetCargoGoods(mchar, GOOD_MEDICAMENT)); // все нулим
-					deadCrew += deadCrewWOMedic; // трупов больше
+					deadCrewWOMedic = iTemp - GetCargoGoods(mchar, GOOD_MEDICAMENT); 
+					RemoveCharacterGoodsSelf(mchar, GOOD_MEDICAMENT, GetCargoGoods(mchar, GOOD_MEDICAMENT)); 
+					deadCrew += deadCrewWOMedic; 
 					Log_Info("" + deadCrewWOMedic + " crewmen died due to the lack of medicines");
 				}
 				else
@@ -766,52 +766,52 @@ void LAi_ReloadEndFade()
 				}
 			}
 		}
-		// расчет медицины <--
-		// Saved value is not needed anymore... (Gray 14.02.2005)
+		
+		
 		DeleteAttribute(mchar, "EnemyRank");
-        bQuestCheckProcessFreeze = false;//fix
+        bQuestCheckProcessFreeze = false;
         
 		RemoveCharacterGoodsSelf(mchar, GOOD_WEAPON, deadCrew);
 		
-		crew = boarding_player_base_crew - deadCrew; // выжившие с бонусом
+		crew = boarding_player_base_crew - deadCrew; 
 		Statistic_AddValue(mchar, "Sailors_dead", deadCrew);
 		Statistic_AddValue(mchar, "DeadCrewBoard", deadCrew);
 		
 		Achievment_SetStat(mchar, 21, deadCrew);
 		
-		AddCharacterExpToSkill(mchar, "Defence", makeint(deadCrew / 3 + 0.5)); //качаем защиту
+		AddCharacterExpToSkill(mchar, "Defence", makeint(deadCrew / 3 + 0.5)); 
         AddCharacterExpToSkill(mchar, "Grappling", makeint(deadCrew / 3 + 0.5));
                 	
-		// после боя падает мораль
-		if (deadCrew > makeint(crew+0.3)) // погибло больше, чем выжило
+		
+		if (deadCrew > makeint(crew+0.3)) 
 		{
       		AddCrewMorale(mchar, sti(-20 / leaderSkill));
 			ChangeCharacterComplexReputation(pchar,"authority", -0.5);
 		}
 		else
-		{  //растет, если потерь мало
+		{  
 			AddCrewMorale(mchar, sti(leaderSkill));
 			ChangeCharacterComplexReputation(pchar,"authority", 0.5);
 		}
 
-		// boal 22.01.2004 <--
-		SetCrewQuantityOverMax(GetMainCharacter(), MakeInt(crew + 0.3)); // десант весь ГГ как перегруз команды
-		Log_TestInfo("----- в конце стало " + crew +" матросов ---");
-		//Пересчитываем команду соперника
-		crew = 0;// какие еще люди? все трупы! boarding_enemy_base_crew*(0.1 + rand(20)*0.01);
+		
+		SetCrewQuantityOverMax(GetMainCharacter(), MakeInt(crew + 0.3)); 
+		Log_TestInfo("----- пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ " + crew +" пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ---");
+		
+		crew = 0;
 		if (boarding_echr_index >= 0)
 		{
 			SetCrewQuantity(&Characters[boarding_echr_index], MakeInt(crew + 0.3));
 			boarding_echr_index = -1;
 		}
 
-		//Начислим опыт
-		//AddCharacterExp(GetMainCharacter(), MakeInt(boarding_exp));
+		
+		
                 
-		//Настроим интерфейс
+		
 		Log_SetActiveAction("Nothing");
 		EndBattleLandInterface();
-		//Востановим адреса
+		
 		ref mchr = GetMainCharacter();
 		mchr.location         = boarding_adr[0].location;
 		mchr.location.group   = boarding_adr[0].group;
@@ -825,25 +825,25 @@ void LAi_ReloadEndFade()
 			Characters[idx].location.group   = boarding_adr[i].group;
 			Characters[idx].location.locator = boarding_adr[i].locator;
 		}
-		//Выгружаемся в интерфейс
+		
 		LAi_boarding_process = false;
-		// START MOD Code by Stone-D : 27/07/2003
+		
         if (bCaptanSurrender)
         {
 			ChangeCrewExp(pchar, "Soldiers", 4);
-			LAi_SetCurHPMax(boarding_enemy);  // нужно, чтоб был живой!!!
-			SetCrewQuantity(boarding_enemy, MakeInt(boarding_enemy_base_crew*(rand(20)*0.01))); // раз кэп живой, то можно раненых воскресить
-			LaunchRansackMain(pchar, boarding_enemy, "captain"); //капитан в плен
+			LAi_SetCurHPMax(boarding_enemy);  
+			SetCrewQuantity(boarding_enemy, MakeInt(boarding_enemy_base_crew*(rand(20)*0.01))); 
+			LaunchRansackMain(pchar, boarding_enemy, "captain"); 
 			LAi_boarding_process = false;
 			Event(SHIP_CAPTURED, "l", sti(boarding_enemy.index));
 			return;
 		}
-		// END MOD Code by Stone-D : 27/07/2003
+		
 		if(boarding_location_type == BRDLT_SHIP)
 		{       
 		    ChangeCrewExp(pchar, "Soldiers", 5);
-		    // нельзя это делать до формы, критерий будет "" LAi_SetCurHP(boarding_enemy, 0.0); // умер, чтоб на форме обмена не жил
-			LaunchRansackMain(pchar, boarding_enemy, ""); //не сдался
+		    
+			LaunchRansackMain(pchar, boarding_enemy, ""); 
 			LAi_boarding_process = false;	 
 			Event(SHIP_CAPTURED, "l", sti(boarding_enemy.index));
 			return;
@@ -852,7 +852,7 @@ void LAi_ReloadEndFade()
 		{
             ChangeCrewExp(pchar, "Soldiers", 7);
 			Event(FORT_CAPTURED, "l", sti(boarding_enemy.index));
-			boarding_enemy.Ship.Crew.Quantity = 10 + rand(350); // рабы (остатки выживших)
+			boarding_enemy.Ship.Crew.Quantity = 10 + rand(350); 
 			LaunchFortCapture(boarding_enemy);
 			LAi_boarding_process = false;
 			return;
@@ -862,37 +862,37 @@ void LAi_ReloadEndFade()
 	}
 }
 
-//Разрешить перегрузку на следующую палубу
+
 #event_handler("LAi_event_boarding_EnableReload", "LAi_EnableReload");
 void LAi_EnableReload()
 {
-    //Log_Testinfo("LAi_BoardingGroupKill boardM = " + boardM);
+    
 	if (boardM == 1)
 	{
-	//	Trace("Выключить шума абордажа");
-		//ResetSound();
-		ResetSoundScheme(); //надо гасить только Scheme, иначе партиклы звука на кострах, факелах, и прочем - не пашут
-		//StopSound(abordageSoundID, 0);
-		SetSoundScheme("deck"); // обычная схема
-		//SetMusicAlarm("music_bitva");
+	
+		
+		ResetSoundScheme(); 
+		
+		SetSoundScheme("deck"); 
+		
 		SetMusic("music_abordage");
 		boardM = -1;
-		//Log_Testinfo("Выключить шума абордажа " + abordageSoundID);
+		
 	}
-	Surrendered = CheckForSurrender(GetMainCharacter(), boarding_enemy, 2); // проверка сдачи в плен, перед каютой 2 - второй учет метода
+	Surrendered = CheckForSurrender(GetMainCharacter(), boarding_enemy, 2); 
 
 	SetEventHandler("Control Activation","LAi_ActivateReload",1);
 	Log_SetActiveAction("Reload");
-	//Уберём саблю
+	
 	ref mchr = GetMainCharacter();
 	SendMessage(&mchr, "lsl", MSG_CHARACTER_EX_MSG, "ChangeFightMode", 0);
 	
-	// sd -->
+	
 	Log_TestInfo("Start boarding_enemy_crew_start: " + boarding_enemy_crew_start + " boarding_enemy_crew: " + boarding_enemy_crew);
 	Log_TestInfo("Start boarding_player_crew_start: " + boarding_player_crew_start + " boarding_player_crew: " + boarding_player_crew);
-	// sd <--
 	
-	//Вернём выживших обратно в кучу
+	
+	
 	for(int i = 0; i < LAi_numloginedcharacters; i++)
 	{
 		int index = LAi_loginedcharacters[i];
@@ -901,21 +901,21 @@ void LAi_EnableReload()
 			if(index != GetMainCharacterIndex())
 			{
 				ref chr = &Characters[index];
-				if(!LAi_IsDead(chr) && !IsOfficer(chr) && chr.model.animation != "mushketer") // boal && sd не нужны офицеры для матросов
+				if(!LAi_IsDead(chr) && !IsOfficer(chr) && chr.model.animation != "mushketer") 
 				{
 					if(chr.chr_ai.group == LAI_GROUP_PLAYER)
 					{
 						boarding_player_crew = boarding_player_crew + 1;
-						//LAi_tmpl_stay_InitTemplate(chr);  // 05.02.08 требует локаторов ГОТО, что б не ходили за ГГ матросы толпой - нихрена это не работает, все равно ходят !
-						//LAi_SetStayType(chr); // а вот так не ходят !!  <-- ugeen
-						LAi_SetHuberStayTypeNoGroup(chr); //нефиг им стоять, все-равно мешаются ! пущай расходятся по палубе Jason: а вот тут и дыра с прокачкой вылезла. Зачем из группы игрока надо было выводить? Фикс.
+						
+						
+						LAi_SetHuberStayTypeNoGroup(chr); 
 					}
 				}
 			}
 		}
 	}
-	// Jason: перебираем классы кораблей и определяем следующую палубу
-	int eclass = sti(GetCharacterShipClass(boarding_enemy)); // класс корабля противника
+	
+	int eclass = sti(GetCharacterShipClass(boarding_enemy)); 
 	if (CheckAttribute(&Locations[boarding_location], "UpDeckType"))
 	{
 		switch (eclass)
@@ -932,25 +932,25 @@ void LAi_EnableReload()
 	{
 		Locations[boarding_location].boarding.nextdeck = "Boarding_bastion"+(drand(1)+1);
 	}
-	// END MOD Code by Stone-D : 01/08/2003 -->
+	
 	Log_TestInfo("New boarding_player_crew: " + boarding_player_crew);
 	Log_TestInfo("Next Location: " + Locations[boarding_location].boarding.nextdeck);
 	Log_TestInfo("Enemy ship class: " + eclass);
-	// END MOD Code by Stone-D : 01/08/2003 <--
+	
 }
 
-//Активация перегрузки на следующую палубу
+
 void LAi_ActivateReload()
 {
 	string controlName = GetEventData();
 	if(controlName != "ChrAction") return;
-	if (CheckAttribute(pchar, "GenQuest.CannotReloadBoarding")) return; // Jason
+	if (CheckAttribute(pchar, "GenQuest.CannotReloadBoarding")) return; 
 	DelEventHandler("Control Activation", "LAi_ActivateReload");
 	Log_SetActiveAction("Nothing");
 	LAi_ReloadBoarding();
 }
 
-//Расставить персонажей для боя
+
 void LAi_SetBoardingActors(string locID)
 {
     int    limit, i, iQty;
@@ -960,54 +960,54 @@ void LAi_SetBoardingActors(string locID)
 	int    locIndex = FindLocation(locID);
 	int    mclass = GetCharacterShipClass(GetMainCharacter());
 	int    eclass = GetCharacterShipClass(boarding_enemy);
-	ref    mchr = GetMainCharacter(); // boal star with new loc always
+	ref    mchr = GetMainCharacter(); 
     int    locMChar;
     
 	limit = MAX_GROUP_SIZE;
-	// локаторов разное число на моделях :( Переделал все на инфу из кода boal 01.01.05  +1 всегда для ГГ
+	
 	chr = &Locations[locIndex];
 	
 	if(CheckAttribute(chr, "boarding.locatorNum")) limit = sti(chr.boarding.locatorNum);
 
 	Log_TestInfo("Location: " + locID + " Limit: " + limit);
-	Log_TestInfo("Player: " + boarding_player_crew + " х " + boarding_player_crew_per_chr + " Enemy: " + boarding_enemy_crew + " х " + boarding_enemy_crew_per_chr);
+	Log_TestInfo("Player: " + boarding_player_crew + " пїЅ " + boarding_player_crew_per_chr + " Enemy: " + boarding_enemy_crew + " пїЅ " + boarding_enemy_crew_per_chr);
 
     string sLocType = "loc";
-	// определение стороны на палубе
+	
 	if (CheckAttribute(&Locations[locIndex], "UpDeckType"))
 	{
 	    sLocType = ChooseShipUpDeck(mchr, boarding_enemy);
 	}
 	if (!CheckAttribute(&Locations[locIndex], "CabinType"))
-	{ // не грузим матросов в каюту
+	{ 
 		for(i = LAi_numloginedcharacters; i < limit; i++)
 		{
 			if(boarding_player_crew <= 0) break;
 			model = LAi_GetBoardingModel(mchr, &ani);
-			// boal star with new loc always  -->
+			
 			if (mchr.location.locator == (sLocType + i))
-			{ // искодим из того, что наша локация всегда < 4 офицеры пусть накладываются а матросик идет к противнику.
+			{ 
 	           locMChar = rand(3);
 	           while (mchr.location.locator == (sLocType + locMChar))
 	           {
 	               locMChar = rand(3);
 	           }
-		       chr = LAi_CreateFantomCharacterEx(model, ani, "rld", sLocType+locMChar);// 0-всегда свободен, если офицеров нет, а i != 0, тк мы точно есть
+		       chr = LAi_CreateFantomCharacterEx(model, ani, "rld", sLocType+locMChar);
 			}
 			else
 			{
 			   chr = LAi_CreateFantomCharacterEx(model, ani, "rld", sLocType + i);
 			}
-			// boal star with new loc always  <--
+			
 
 			LAi_group_MoveCharacter(chr, LAI_GROUP_PLAYER);
 
 			boarding_player_crew = boarding_player_crew - 1;
-			// boal расчет как у нормальных фантомов -->
-			//LAi_SetAdjustFencingSkill(chr, 3.0, 6.0);
-			//LAi_AdjustFencingSkill(chr);
+			
+			
+			
 
-			// boal <--
+			
 			if (!IsFort)
 			{
 	            SetFantomParamAbordOur(chr);
@@ -1016,16 +1016,12 @@ void LAi_SetBoardingActors(string locID)
 			{
 			    SetFantomParamFortOur(chr);
 			}
-			SetNewModelToChar(chr); //иначе сабли не те, что реально
+			SetNewModelToChar(chr); 
 			chr.AboardFantom = true;
-			AddCharHP(chr, boarding_player_hp); // влияение опыта и морали в НР
-			/*if (!bNewFantomGenerator)
-	        {
-				xhp = GetBoarding_player_hp(boarding_player_hp);
-				LAi_SetHP(chr, xhp, xhp);
-			}*/
+			AddCharHP(chr, boarding_player_hp); 
+			 
 		}
-		//ставим своих мушкетеров -->
+		
 		if (CheckOfficersPerk(mchr, "MusketsShoot") && CheckAttribute(&Locations[locIndex], "UpDeckType") && !CheckAttribute(boarding_enemy, "GenQuest.CrewSkelMode"))
 		{
 			if (!IsFort) iQty = 2;
@@ -1037,7 +1033,7 @@ void LAi_SetBoardingActors(string locID)
 					model = LAi_GetBoardingMushketerModel(mchr);
 					chr = GetCharacter(NPC_GenerateCharacter("GenChar_", model, "man", "mushketer", 5, sti(mchr.nation), 0, false, "soldier"));					
 					chr.id = "GenChar_" + chr.index;
-					if(i == iQty && mclass <= 3) chr.MushketType = "mushket3"; // 280313
+					if(i == iQty && mclass <= 3) chr.MushketType = "mushket3"; 
 					chr.AboardFantom = true;
 					if (!IsFort) chr.MusketerDistance = 0;
 					LAi_SetWarriorType(chr);
@@ -1053,11 +1049,11 @@ void LAi_SetBoardingActors(string locID)
 			{
 			    SetMushketerParamFortOur(chr);
 			}
-			AddCharHP(chr, boarding_player_hp); // влияение опыта и морали в НР
+			AddCharHP(chr, boarding_player_hp); 
 		}
-		//<-- ставим своих мушкетеров
+		
 	}
-	//Установим врагов
+	
 	if (sLocType == "loc")
 	{
 	    sLocType = "aloc";
@@ -1067,11 +1063,11 @@ void LAi_SetBoardingActors(string locID)
 	    sLocType = "loc";
 	}
 	trace("sLocType = " + sLocType);
-	for(i = 0; i < limit; i++) // <= тк loc0 .. loc4 = 5
+	for(i = 0; i < limit; i++) 
 	{
 		if(boarding_enemy_crew <= 0) break;
 		model = LAi_GetBoardingModel(boarding_enemy, &ani);
-		if (i == 0 && CheckAttribute(&Locations[locIndex], "boarding.Loc.Capt")) //локатор каюты
+		if (i == 0 && CheckAttribute(&Locations[locIndex], "boarding.Loc.Capt")) 
 		{
 		    chr = LAi_CreateFantomCharacterEx(model, ani, "rld", Locations[locIndex].boarding.Loc.Capt);
 		}
@@ -1083,9 +1079,9 @@ void LAi_SetBoardingActors(string locID)
 		LAi_group_MoveCharacter(chr, LAI_GROUP_BRDENEMY);
 
 		boarding_enemy_crew = boarding_enemy_crew - 1;
-		// boal расчет как у нормальных фантомов -->
-		//LAi_SetAdjustFencingSkill(chr, 2.0, 6.0);
-		//LAi_AdjustFencingSkill(chr);
+		
+		
+		
 
 		if (!IsFort)
 		{
@@ -1094,17 +1090,17 @@ void LAi_SetBoardingActors(string locID)
 		else
 		{
             SetFantomParamFortEnemy(chr);
-			//xhp = GetBoarding_enemy_hp(LAi_GetCharacterMaxHP(chr));
+			
 		}
-		// капитана в рубку!!! boal
+		
 		if (i == 0 && CheckAttribute(&Locations[locIndex], "CabinType"))
 		{
 			ChangeAttributesFromCharacter(chr, boarding_enemy, true);
-			chr.CaptanId = boarding_enemy.id; // иначе у фантома свой ИД   // to_do поправить опечатку
+			chr.CaptanId = boarding_enemy.id; 
 			boarding_enemy.CaptanId = boarding_enemy.id;
-			chr.SuperShooter = true; // супер стрелок (вероятность пальбы выше, от сложности, если еще и пистоль есть) Jason: однако сей супершутер глубоко пох, ибо пистоль у кэпа на момент генерации разряжен. Не работает это и никогда не работало тут.
+			chr.SuperShooter = true; 
 			if (boarding_enemy.sex == "man") chr.greeting = "CapSinkShip";
-			SetCharacterPerk(chr, "Energaiser"); // скрытый перк дает 1.5 к приросту энергии, дается ГГ и боссам уровней
+			SetCharacterPerk(chr, "Energaiser"); 
 			if (CheckAttribute(chr,"Situation"))
 			{
 				if(bSeaCanGenerateShipSituation) SetQuestAboardCabinDialogSituation(chr);
@@ -1113,47 +1109,47 @@ void LAi_SetBoardingActors(string locID)
 			else
 			{
 				CaptainComission_GenerateSituation(chr);
-				SetQuestAboardCabinDialog(chr); /// проверка на минНр
+				SetQuestAboardCabinDialog(chr); 
 			}	
-			// если это место отработало, то кэп либо убит, либо по квестам сдается в плен
 			
-			// эффект кирасы
-			// Jason: а кирасы-то - новые! И №5 теперь не самая круть, а самое г... Поменял.
+			
+			
+			
 		    xhp = makeint((MOD_SKILL_ENEMY_RATE*2+sti(chr.rank))/10.0);
 		    if (xhp > 0)
 		    {
-		        if (xhp >= 5) xhp = 4; // миланский
+		        if (xhp >= 5) xhp = 4; 
 				else
 				{
-					if (xhp >= 3) xhp = 2; // рейтарский
-					else xhp = 1; // траншейный
+					if (xhp >= 3) xhp = 2; 
+					else xhp = 1; 
 				}
 			
-			// Jason: хотя счас неясно, что для неписи круче - рейтар или траншейник. Даже миланский может быть хуже траншейника. До выяснения оставлю так.
+			
 				model = "cirass" + xhp;
 				chr.cirassId  = Items_FindItemIdx(model);
-				Log_TestInfo("На капитане кираса " + model);
+				Log_TestInfo("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ " + model);
 		    }
 		}
-		SetNewModelToChar(chr); //иначе сабли не те, что реально
+		SetNewModelToChar(chr); 
 		chr.AboardFantom = true;
-		/// 	
-		AddCharHP(chr, boarding_enemy_hp); // влияение опыта и морали в НР
 		
-		// Jason: на палубе уменьшаем хитпоинты вражеским тушкам до 85% от расчетного
+		AddCharHP(chr, boarding_enemy_hp); 
+		
+		
 		if (CheckAttribute(&Locations[locIndex], "UpDeckType"))
 		{
 			int ihp = LAi_GetCharacterHP(chr)*0.85+0.5;
 			LAi_SetHP(chr, ihp, ihp);
 		}
-		// Jason: в инсайдах уменьшаем хитпоинты вражеским тушкам, т.к. возросло вдвое их количество
+		
 		if (CheckAttribute(&Locations[locIndex], "InsideDeckType") || CheckAttribute(&Locations[locIndex], "AddFortType"))
 		{
 			ihp = LAi_GetCharacterHP(chr)/1.5;
 			LAi_SetHP(chr, ihp, ihp);
 		}
 	}
-	//ставим вражеских мушкетеров -->
+	
 	if (CheckCharacterPerk(boarding_enemy, "MusketsShoot") || IsFort)
 	{
 		if (CheckAttribute(&Locations[locIndex], "UpDeckType") && !CheckAttribute(boarding_enemy, "GenQuest.CrewSkelMode"))
@@ -1167,7 +1163,7 @@ void LAi_SetBoardingActors(string locID)
 					model = LAi_GetBoardingMushketerModel(boarding_enemy);		
 					chr = GetCharacter(NPC_GenerateCharacter("GenChar_", model, "man", "mushketer", 5, sti(boarding_enemy.nation), 0, false, "soldier"));					
 					chr.id = "GenChar_" + chr.index;
-					if(i == iQty && eclass <= 3) chr.MushketType = "mushket3"; // 280313
+					if(i == iQty && eclass <= 3) chr.MushketType = "mushket3"; 
 					chr.AboardFantom = true;
 					chr.MusketerDistance = 0;
 					LAi_SetWarriorType(chr);
@@ -1184,26 +1180,26 @@ void LAi_SetBoardingActors(string locID)
 			{
 				SetMushketerParamFortEnemy(chr);
 			}
-			AddCharHP(chr, boarding_enemy_hp); // влияение опыта и морали в НР			
+			AddCharHP(chr, boarding_enemy_hp); 
 		}
 	}
-	//<-- ставим вражеских мушкетеров
-	//Заставим драться эти 2 группы
+	
+	
 	LAi_group_FightGroupsEx(LAI_GROUP_PLAYER, LAI_GROUP_BRDENEMY, true, GetMainCharacterIndex(), -1, false, false);
 	LAi_group_SetCheckEvent(LAI_GROUP_BRDENEMY);
 }
 
-//Убийство группы
+
 void LAi_BoardingGroupKill()
 {
 	string group = GetEventData();
 	if(group != LAI_GROUP_BRDENEMY) return;
-	// отключим шум абордажа (который включается при аларме в sound.c)
+	
 
 	PostEvent("LAi_event_boarding_EnableReload", 5000);
 }
 
-//Моделька для абордажного персонажа
+
 string LAi_GetBoardingModel(ref rCharacter, ref ani)
 {
 	ani = "man";
@@ -1221,14 +1217,14 @@ string LAi_GetBoardingModel(ref rCharacter, ref ani)
 
 	if(sti(rCharacter.index) == GetMainCharacterIndex())
 	{
-        // boal 290904 форма солдат -->
+        
         if (CheckAttribute(rCharacter, "GenQuest.CrewSkelMode"))
         {
             model = GetRandSkelModel();
 			ani = "man";
 			return model;
         }
-	//--> Jason - национальная форма солдат на квестовиках по мультиквесту
+	
 	if (CheckAttribute(rCharacter, "questTemp.HWIC.HollEquip") && sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_MAYFANG)
         {
             model = GetRandQuestSoldierModel(HOLLAND);
@@ -1241,8 +1237,8 @@ string LAi_GetBoardingModel(ref rCharacter, ref ani)
 			ani = "man";
 			return model;
         }
-	//<-- форма солдат на квестовиках
-        if (isMainCharacterPatented() && sti(Items[sti(rCharacter.EquipedPatentId)].TitulCur) > 1) //форма только со звания капитан
+	
+        if (isMainCharacterPatented() && sti(Items[sti(rCharacter.EquipedPatentId)].TitulCur) > 1) 
         {
             atr = "boardingModel.enemy";
             iNation = sti(Items[sti(rCharacter.EquipedPatentId)].Nation);
@@ -1251,18 +1247,18 @@ string LAi_GetBoardingModel(ref rCharacter, ref ani)
         {
             atr = "boardingModel.player";
         }
-        // boal 290904 форма солдат <--
+        
 	}
 	else
-    {   //boal -->
+    {   
 		if (CheckAttribute(rCharacter, "Ship.Mode") && rCharacter.Ship.Mode == "Trade")
 		{
             atr = "boardingModel.merchant";
         }
 		else
-        {//boal <--
+        {
 			if (CheckAttribute(rCharacter, "Ship.Mode") && rCharacter.Ship.Mode == "mercenary")
-			{ // Jason
+			{ 
 				model = GetRandQuestMercenaryModel();
 				ani = "man";
 				return model;
@@ -1275,7 +1271,7 @@ string LAi_GetBoardingModel(ref rCharacter, ref ani)
 	}
 	
 	if (iNation < 0) iNation = PIRATE;
-	//eddy. замаскировавшися пиратов тоже надо учитывать
+	
 	if (CheckAttribute(rCharacter, "Ship.Mode") && rCharacter.Ship.Mode == "Pirate" && !IsMainCharacter(rCharacter)) iNation = PIRATE;
 	Nations[iNation].boardingModel.player = "";
 	Nations[iNation].boardingModel.enemy = "";
@@ -1298,15 +1294,15 @@ string LAi_GetBoardingModel(ref rCharacter, ref ani)
 	return model;
 }
 
-// Jason: полностью переписал метод в свете введения большого количества новых моделей
+
 string LAi_GetBoardingMushketerModel(ref rCharacter)
 {
 	string model;
 	int iNation = sti(rCharacter.nation);
 	
-	if(sti(rCharacter.index) == GetMainCharacterIndex()) // для ГГ
+	if(sti(rCharacter.index) == GetMainCharacterIndex()) 
 	{
-		//национальная форма солдат на квестовиках по мультиквесту
+		
 		if (CheckAttribute(rCharacter, "questTemp.HWIC.HollEquip") && sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_MAYFANG)
         {
             model = "mush_hol_"+(rand(5)+1);
@@ -1317,17 +1313,17 @@ string LAi_GetBoardingMushketerModel(ref rCharacter)
             model = "mush_eng_"+(rand(5)+1);
 			return model;
         }
-		//<-- форма солдат на квестовиках
-        if (isMainCharacterPatented() && sti(Items[sti(rCharacter.EquipedPatentId)].TitulCur) > 1) //если есть патент, оставлю, хотя рудимент, форма только со звания капитан
+		
+        if (isMainCharacterPatented() && sti(Items[sti(rCharacter.EquipedPatentId)].TitulCur) > 1) 
         {
             iNation = sti(Items[sti(rCharacter.EquipedPatentId)].Nation);
-			model = "mush_"+NationShortName(iNation)+"_"+(rand(5)+1); // 6 моделей
+			model = "mush_"+NationShortName(iNation)+"_"+(rand(5)+1); 
         }
-        else model = "mush_ctz_"+(rand(2)+4); // три модели
+        else model = "mush_ctz_"+(rand(2)+4); 
 	}
-	else // для НПС
+	else 
     {   
-		if (CheckAttribute(rCharacter, "Ship.Mode")) // если прописан тип команды
+		if (CheckAttribute(rCharacter, "Ship.Mode")) 
 		{
 			switch (rCharacter.Ship.Mode)
 			{
@@ -1340,39 +1336,39 @@ string LAi_GetBoardingMushketerModel(ref rCharacter)
 				{		
 					model = "mush_"+NationShortName(iNation)+"_"+(rand(5)+1); 
 				}	
-				break; // военные
-				case "trade": 		model = "mush_ctz_"+(rand(2)+1); break; // торговцы
-				case "pirate": 		model = "mush_ctz_"+(rand(2)+7); break; // пираты
-				case "hunter": 		model = "mush_ctz_"+(rand(2)+7); break; // ОЗГ
-				case "mercenary": 	model = "mush_ctz_"+(rand(2)+10); break; // наемники на квестовиках
+				break; 
+				case "trade": 		model = "mush_ctz_"+(rand(2)+1); break; 
+				case "pirate": 		model = "mush_ctz_"+(rand(2)+7); break; 
+				case "hunter": 		model = "mush_ctz_"+(rand(2)+7); break; 
+				case "mercenary": 	model = "mush_ctz_"+(rand(2)+10); break; 
 			}
         }
-		else // если не прописан - выставляем согласно нации
+		else 
         {
 			if (iNation == PIRATE) model = "mush_ctz_"+(rand(2)+7);
-			else model = "mush_"+NationShortName(iNation)+"_"+(rand(5)+1); // 6 моделей
+			else model = "mush_"+NationShortName(iNation)+"_"+(rand(5)+1); 
         }
 	}
 	return model;
 }
 
-// boal 03/08/06 полностью переписал метод Stone-D от 27/07/2003
+
 bool CheckForSurrender(ref mchr, ref echr, int _deck)
 {
-    if(boarding_location_type == BRDLT_FORT) return false; // Forts don't surrender.
+    if(boarding_location_type == BRDLT_FORT) return false; 
     
-    if (GetPrisonerQty() > PRISONER_MAX) return false; // очень много пленых
+    if (GetPrisonerQty() > PRISONER_MAX) return false; 
     
-	if (sti(echr.rank) > (50 - MOD_SKILL_ENEMY_RATE)) return false; //max уровень кэпов
+	if (sti(echr.rank) > (50 - MOD_SKILL_ENEMY_RATE)) return false; 
 
-	if (!IsCharacterPerkOn(mchr,"SeaDogProfessional")) //скрытая фича-пасхалка
+	if (!IsCharacterPerkOn(mchr,"SeaDogProfessional")) 
 	{
-		if (sti(mchr.rank) < (sti(echr.rank) - MOD_SKILL_ENEMY_RATE / 2))  return false; // 26/06/07 Проверка на ранг
+		if (sti(mchr.rank) < (sti(echr.rank) - MOD_SKILL_ENEMY_RATE / 2))  return false; 
 	}
     
 	int eclass = GetCharacterShipClass(echr);
 	int mclass = GetCharacterShipClass(mchr);
-	if (eclass == 1) return false; // 1 класс не сдается в принципе
+	if (eclass == 1) return false; 
 	
 	float fCrewRate = 0.5;  
 	if (sti(echr.Nation) == PIRATE)
@@ -1381,29 +1377,29 @@ bool CheckForSurrender(ref mchr, ref echr, int _deck)
 	}
 	else
 	{
-		if (CheckAttribute(echr, "Ship.Mode") && echr.Ship.Mode == "Trade") // торговцы склонны сдаться
+		if (CheckAttribute(echr, "Ship.Mode") && echr.Ship.Mode == "Trade") 
 		{
 			fCrewRate = 0.9; 
 		}
 	}
 	
-	float mcrew = stf(GetWeaponCrew(mchr, GetCrewQuantity(mchr))); // честный учет с оружием
+	float mcrew = stf(GetWeaponCrew(mchr, GetCrewQuantity(mchr))); 
 	float ecrew = stf(GetCrewQuantity(echr));
 	
-	float fRep    = abs(REPUTATION_NEUTRAL - sti(mchr.reputation.nobility)) / 50.0; // приведение к 0..1
-	float emorale = stf(echr.ship.crew.morale) / MORALE_MAX; // 0..1  это рандом
-	float mmorale = stf(mchr.ship.crew.morale) / MORALE_MAX; // 0..1
-	float mskill  = (GetSummonSkillFromNameToOld(mchr, "Leadership") + GetSummonSkillFromNameToOld(mchr, "Grappling")) / 20.0;  // 0..10
-	float eskill  = (GetCharacterSkillToOld(echr, "Leadership") + GetCharacterSkillToOld(echr, "Defence")) / 20.0;    // 0..10
+	float fRep    = abs(REPUTATION_NEUTRAL - sti(mchr.reputation.nobility)) / 50.0; 
+	float emorale = stf(echr.ship.crew.morale) / MORALE_MAX; 
+	float mmorale = stf(mchr.ship.crew.morale) / MORALE_MAX; 
+	float mskill  = (GetSummonSkillFromNameToOld(mchr, "Leadership") + GetSummonSkillFromNameToOld(mchr, "Grappling")) / 20.0;  
+	float eskill  = (GetCharacterSkillToOld(echr, "Leadership") + GetCharacterSkillToOld(echr, "Defence")) / 20.0;    
 
     mcrew = mcrew * (mcrew * GetCrewExp(mchr, "Soldiers")) / (GetOptCrewQuantity(mchr) * GetCrewExpRate()); 
-    ecrew = ecrew * (ecrew * GetCrewExp(echr, "Soldiers")) / (GetOptCrewQuantity(echr) * GetCrewExpRate());  // это рандом, а значит случайность
+    ecrew = ecrew * (ecrew * GetCrewExp(echr, "Soldiers")) / (GetOptCrewQuantity(echr) * GetCrewExpRate());  
     mcrew = mcrew *(0.5 + mmorale);
-    ecrew = ecrew *(0.5 + emorale); // рандом в  emorale - она ранд
+    ecrew = ecrew *(0.5 + emorale); 
     
     mcrew = mcrew * (0.2 + mskill)*(0.05 + fRep)*fCrewRate;
     ecrew = ecrew * (0.2 + eskill);
-	// подсчет компаньенов у сторон  -->
+	
     int mShip = GetCompanionQuantity(mchr);
     int eShip;
     string sGroupID = Ship_GetGroupID(echr);
@@ -1415,29 +1411,29 @@ bool CheckForSurrender(ref mchr, ref echr, int _deck)
     {
     	eShip = 1;
     }
-	// <--
+	
 	float fStep = 1;
 	if (_deck == 2)
 	{
 		fStep = 1.4;
 	}
-    mcrew = mcrew * (1.0 + mclass / 20.0) * fStep; // влияние класса минимально, тк есть в экипаже
-    ecrew = ecrew * (1.0 + eclass / 20.0);  // класс также влияет наоборот, дает бонус мелким
+    mcrew = mcrew * (1.0 + mclass / 20.0) * fStep; 
+    ecrew = ecrew * (1.0 + eclass / 20.0);  
     
     mcrew = mcrew * (1.0 + (mShip-1) / 5.0);
     ecrew = ecrew * (1.0 + (eShip-1) / 5.0);
-    if (bBettaTestMode) // иначе плодил компил.лог в подзорку
+    if (bBettaTestMode) 
     {
     	Log_Info("Surrender Hero = "+ mcrew + "    Enemy = " + ecrew + " eShipQty = " + eShip);
     }
     if (mcrew > ecrew)
 	{
-		return true; // Yay! Surrender!
+		return true; 
 	}
-	return false; // не сдался
+	return false; 
 }
 
-// boal 03/12/05 выбор локатора от корабля лок - маленькие, алок - большие-->
+
 string ChooseShipUpDeck(ref _mchar, ref _enemy)
 {
     string sLoc = "loc";
@@ -1449,4 +1445,4 @@ string ChooseShipUpDeck(ref _mchar, ref _enemy)
 	
     return sLoc;
 }
-// boal 03/12/05 <--
+

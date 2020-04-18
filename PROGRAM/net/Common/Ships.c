@@ -128,9 +128,9 @@ void Net_InitShips()
 		cannonl.FireAngMax	= 0.60;
 	}
 
-	///////////////////////////////////////////////////////////////////////////
-	//// War Tartane
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name							= "WarTartane";
 	refShip.Class							= 7;
@@ -160,7 +160,7 @@ void Net_InitShips()
 	refShip.Massa = 50000.0;
 	refShip.Volume = 100.0;
 
-	//refShip.Rocking.factor = 0.008;
+	
 	refship.Rocking.y = 0.5;
 	refship.Rocking.az = 0.05;
 
@@ -186,9 +186,9 @@ void Net_InitShips()
 	refship.Track2.Speed	= "0.15, 0.25";
 
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Lugger
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Lugger";
 	refShip.Class					= 6;
@@ -215,7 +215,7 @@ void Net_InitShips()
 	refShip.sea_enchantment					= 2.0;
 	refShip.lowpolycrew = 8;
 
-	//refShip.Rocking.factor = 0.012;
+	
 	refship.Rocking.y = 0.5;
 	refship.Rocking.az = 0.035;
 	
@@ -246,9 +246,9 @@ void Net_InitShips()
 
 	refShip.GeraldSails.rey_a3		= 1;
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Sloop 
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Sloop";
 	refShip.Class					= 6;
@@ -275,7 +275,7 @@ void Net_InitShips()
 	refShip.sea_enchantment					= 2.0;
 	refShip.lowpolycrew = 8;
 	
-	//refShip.Rocking.factor = 0.015;
+	
 	refship.Rocking.y = 0.25;
 	refship.Rocking.az = 0.05;
 	
@@ -302,9 +302,9 @@ void Net_InitShips()
 
 	refShip.GeraldSails.rey_a2		= 1;
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Schooner
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Schooner";
 	refShip.Class					= 5;
@@ -363,9 +363,9 @@ void Net_InitShips()
 	refShip.GeraldSails.rey_b2		= 1;
 	refShip.GeraldSails.rey_a2		= 1;
 
-	///////////////////////////////////////////////////////////////////////////
-	/// Barque
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Barque";
 	refShip.Class					= 5;
@@ -418,9 +418,9 @@ void Net_InitShips()
 	refShip.GeraldSails.rey_b2		= 1;
 	refShip.GeraldSails.rey_b3		= 1;
 
-	///////////////////////////////////////////////////////////////////////////
-	/// Caravel
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Caravel";
 	refShip.Class					= 5;
@@ -479,9 +479,9 @@ void Net_InitShips()
 	refShip.GeraldSails.rey_a3		= 1;
 	
 
-	///////////////////////////////////////////////////////////////////////////
-	/// Fleut 
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Fleut";
 	refShip.Class					= 4;
@@ -534,9 +534,9 @@ void Net_InitShips()
 	refShip.GeraldSails.rey_a3		= 1;
 	refShip.GeraldSails.rey_a2		= 1;
 
-	///////////////////////////////////////////////////////////////////////////
-	/// Brig
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Brig";
 	refShip.Class					= 4;
@@ -594,9 +594,9 @@ void Net_InitShips()
 	refship.Track2.Width	= "4.0, 6.0";
 	refship.Track2.Speed	= "0.15, 0.25";
 
-	///////////////////////////////////////////////////////////////////////////
-	/// Galeon LIGHT
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Galeon_l";
 	refShip.Class					= 4;
@@ -651,9 +651,9 @@ void Net_InitShips()
 	
 	refShip.GeraldSails.rey_a2		= 1;
 
-	///////////////////////////////////////////////////////////////////////////
-	/// Corvette
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Corvette";
 	refShip.Class					= 3;
@@ -708,9 +708,9 @@ void Net_InitShips()
 
 	refShip.GeraldSails.rey_a2		= 1;
 
-	///////////////////////////////////////////////////////////////////////////
-	/// Galeon HEAVY
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Galeon_h";
 	refShip.Class					= 3;
@@ -765,9 +765,9 @@ void Net_InitShips()
 	refship.Track2.Width	= "6.0, 8.0";
 	refship.Track2.Speed	= "0.15, 0.25";
 
-	///////////////////////////////////////////////////////////////////////////
-	/// Pinnace 
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Pinnace";
 	refShip.Class					= 3;
@@ -820,9 +820,9 @@ void Net_InitShips()
 	refship.Track2.Width	= "10.0, 12.0";
 	refship.Track2.Speed	= "0.15, 0.25";
 	
-	///////////////////////////////////////////////////////////////////////////
-	/// Frigate 
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Frigate";
 	refShip.Class					= 2;
@@ -882,9 +882,9 @@ void Net_InitShips()
 	refship.Track2.Width	= "8.0, 9.0";
 	refship.Track2.Speed	= "0.15, 0.25";
 	
-	///////////////////////////////////////////////////////////////////////////
-	/// Lineship 
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Lineship";
 	refShip.Class					= 1;
@@ -938,9 +938,9 @@ void Net_InitShips()
 	refship.Track2.Width	= "6.0, 7.0";
 	refship.Track2.Speed	= "0.15, 0.25";
 
-	///////////////////////////////////////////////////////////////////////////
-	/// Warship 
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Warship";
 	refShip.Class					= 1;
@@ -993,9 +993,9 @@ void Net_InitShips()
 	refship.Track2.LifeTime = 7.5;
 	refship.Track2.Width	= "8.0, 10.0";
 	refship.Track2.Speed	= "1.0, 2.0";
-	///////////////////////////////////////////////////////////////////////////
-	/// Battleship 
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Battleship";
 	refShip.Class					= 1;
@@ -1049,9 +1049,9 @@ void Net_InitShips()
 	refship.Track2.Width	= "8.0, 9.0";
 	refship.Track2.Speed	= "0.15, 0.25";
 	
-	///////////////////////////////////////////////////////////////////////////
-	/// Manowar
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Manowar";
 	refShip.Class					= 1;
@@ -1104,9 +1104,9 @@ void Net_InitShips()
 	refship.Track2.Width	= "16.0, 18.0";
 	refship.Track2.Speed	= "0.15, 0.25";
 
-	///////////////////////////////////////////////////////////////////////////
-	/// FORT
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            		= "FORT";
 	refShip.Class           		= 1;
@@ -1132,7 +1132,7 @@ void Net_InitShips()
 	refship.TurnDependWeight		= 0.8;
 	refShip.TradeOff				= true;
 
-	// Check
+	
 	for (int i=0; i<n; i++)
 	{
 	    makeref(refShip, NetShips[i]);

@@ -1,4 +1,4 @@
-// Антонио Бетанкур - потомок Франциско Бетанкура
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -32,24 +32,24 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				dialog.text = "Аh, "+GetFullName(pchar)+"! "+TimeGreeting()+"! What do you want this time?";
+				dialog.text = "пїЅh, "+GetFullName(pchar)+"! "+TimeGreeting()+"! What do you want this time?";
 				if(CheckAttribute(pchar, "questTemp.LSC.Betancur"))
 				{
 					link.l4 = "Antonio, they say that you know the Island's history well. I have got a question for you about it.";
 					link.l4.go = "dolly";
 				}
-				dialog.text = "Аh, "+GetFullName(pchar)+"! "+TimeGreeting()+"! Want something?";
+				dialog.text = "пїЅh, "+GetFullName(pchar)+"! "+TimeGreeting()+"! Want something?";
 				link.l1 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
 				link.l1.go = "rumours_LSC";
 				link.l2 = "I want to ask you a few questions about the island.";
-				link.l2.go = "int_quests"; //информационный блок
+				link.l2.go = "int_quests"; 
 				link.l5 = "Just wanted to know how are you doing. See you!";
 				link.l5.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
-		case "meeting": // первая встреча
+		case "meeting": 
 			dialog.text = "Splendid. And you will do well, because we are all a big family here. Except for Narwhals and filthy Rivados of course. My name is Antonio, Antonio Betancourt. I am the grandson of Francisco Betancourt in case this name means anything to you.";
 			link.l1 = "Francisco Betancourt? I have heard this name before... Ah, sure! Dios told me about him and I read about him in the Alvarado's notes...";
 			link.l1.go = "meeting_1";
@@ -68,7 +68,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// квестовая часть
+		
 		case "dolly":
 			dialog.text = "Hm... Sure, friend, ask me. I will answer your questions, of course but only if I know the answers.";
 			link.l1 = "Tell me, do you remember the time when galleon San Geronimo was still here?";
@@ -107,7 +107,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("LSC", "16");
 		break;
 		
-//--------------------------------------- блок вопросов и ответов ---------------------------------------------
+
 		case "int_quests":
 			dialog.text = "I am listening, pal.";
 			if (!CheckAttribute(npchar, "quest.answer_1"))
@@ -161,10 +161,10 @@ void ProcessDialogEvent()
 			link.l1.go = "int_quests";
 			npchar.quest.answer_4 = "true";
 		break;
-// <-- блок вопросов и ответов
+
 		
-//----------------------------------------- специальные реакции -----------------------------------------------
-		//обнаружение ГГ в сундуках
+
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
 			link.l1 = "Damn it!";
@@ -192,7 +192,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//замечание по обнаженному оружию
+		
 		case "LSCNotBlade":
 			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
 			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
@@ -214,7 +214,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;
-// <-- специальные реакции
+
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

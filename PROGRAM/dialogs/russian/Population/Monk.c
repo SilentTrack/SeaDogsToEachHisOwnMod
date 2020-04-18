@@ -1,4 +1,4 @@
-//Jason общий диалог уличных монахов
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -13,14 +13,14 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 	
-	// вызов диалога по городам -->
+	
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Citizen\" + NPChar.City + "_Citizen.c";
     if (LoadSegment(NPChar.FileDialog2))
 	{
         ProcessCommonDialog(NPChar, Link, NextDiag);
 		UnloadSegment(NPChar.FileDialog2);
 	}
-    // вызов диалога по городам <--
+    
 	
 	ProcessCommonDialogRumors(NPChar, Link, NextDiag);
 	
@@ -34,10 +34,10 @@ void ProcessDialogEvent()
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			//--> диалог первой встречи
+			
 			if (npchar.quest.meeting == "0")
 			{
-				if (CheckAttribute(npchar, "quest.donation"))//пожертвования
+				if (CheckAttribute(npchar, "quest.donation"))
 				{
 					dialog.text = "Good day to you, my son. I ask you to show some favor and to donate a few silver coins for a good deed.";
 					link.l1 = "Well, I suppose that we all have to donate for good deeds... The Church learns us to help each other. And can you tell me some details about that deed of yours?";
@@ -45,11 +45,11 @@ void ProcessDialogEvent()
 					link.l2 = "Forgive me, holy father, but my purse won't survive this.";
 					link.l2.go = "exit";
 					npchar.quest.meeting = "1";
-					DeleteAttribute(npchar, "talker"); //снимаем говорилку
+					DeleteAttribute(npchar, "talker"); 
 					break;
 				}
 				bool ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
-				if (ok && sti(Pchar.Ship.Type) != SHIP_NOTUSED && CheckAttribute(npchar, "quest.passenger") && !CheckAttribute(pchar, "GenQuest.Monkpassenger") && 6-sti(RealShips[sti(Pchar.Ship.Type)].Class) > 0 && 6-sti(RealShips[sti(Pchar.Ship.Type)].Class) < 3)//монах-пассажир
+				if (ok && sti(Pchar.Ship.Type) != SHIP_NOTUSED && CheckAttribute(npchar, "quest.passenger") && !CheckAttribute(pchar, "GenQuest.Monkpassenger") && 6-sti(RealShips[sti(Pchar.Ship.Type)].Class) > 0 && 6-sti(RealShips[sti(Pchar.Ship.Type)].Class) < 3)
 				{
 					dialog.text = "Good day to, my son. I'd like to ask you to do a favor. It will be paid.";
 					link.l1 = "I am listening to you, holy father. What do you need?";
@@ -57,23 +57,23 @@ void ProcessDialogEvent()
 					link.l2 = "I am so sorry, padre, but I have to go.";
 					link.l2.go = "exit";
 					npchar.quest.meeting = "1";
-					DeleteAttribute(npchar, "talker"); //снимаем говорилку
+					DeleteAttribute(npchar, "talker"); 
 					break;
 				}
-				if (sti(Pchar.Ship.Type) != SHIP_NOTUSED && CheckAttribute(npchar, "quest.capellan") && !CheckAttribute(pchar, "questTemp.ShipCapellan"))//корабельный капеллан
+				if (sti(Pchar.Ship.Type) != SHIP_NOTUSED && CheckAttribute(npchar, "quest.capellan") && !CheckAttribute(pchar, "questTemp.ShipCapellan"))
 				{
 					dialog.text = "Greetings, my son. I take it that you are a captain. So I have got a proposal for you.";
 					link.l1 = "I am listening, holy father.";
 					link.l1.go = "capellan";
 					npchar.quest.meeting = "1";
-					DeleteAttribute(npchar, "talker"); //снимаем говорилку
+					DeleteAttribute(npchar, "talker"); 
 					break;
 				}
 				dialog.text = PCharRepPhrase(LinkRandPhrase("Greetings, my son. What troubles have brought you to me?","Greetings, my son. See the head of church if you want to confess.","Greetings, my son. Face the God until it's too late."),LinkRandPhrase("Greetings, my son. What troubles have brought you to me?","Good day to you, my son, let your deeds to be blessed by the God!","Good day to you, my son, let the God's blessings to sign you!"));
 				link.l1 = LinkRandPhrase("Same to you, holy father. How are you doing?","Good day to you, holy father. How is your parish?","How are you, holy father?");
-				link.l1.go = "check";//на возможную выдачу квестов
+				link.l1.go = "check";
 				link.l2 = RandPhraseSimple("I have got a question for you, holy father.", "I need an information.");
-				link.l2.go = "quests";//(перессылка в файл города)
+				link.l2.go = "quests";
 				if (GetSquadronGoods(pchar, GOOD_SLAVES) > 0 && sti(pchar.money) >= GetSquadronGoods(pchar, GOOD_SLAVES)*10)
 				{
 					link.l3 = "Holy father, I've got people on my ship. They are enslaved Christians and unbaptized. I want you to baptize the unbaptized and to administer communion to Christians.  I will free them all after that for the glory of our Church.";
@@ -90,12 +90,12 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				//--> диалог второй встречи
+				
 				dialog.text = LinkRandPhrase("You again, my son? What do you want?","Got anything more to tell me, my son?","It is good to see you again, my son.");
 				link.l1 = LinkRandPhrase("Same to you, holy father. How are you doing?","Good day to you, holy father. How is your parish?","How are you, holy father?");
-				link.l1.go = "check";//на возможную выдачу квестов
+				link.l1.go = "check";
 				link.l2 = RandPhraseSimple("I have got a question for you, holy father.", "I need an information.");
-				link.l2.go = "quests";//(перессылка в файл города)
+				link.l2.go = "quests";
 				if (GetSquadronGoods(pchar, GOOD_SLAVES) > 0 && sti(pchar.money) >= GetSquadronGoods(pchar, GOOD_SLAVES)*10 && !CheckAttribute(npchar, "quest.slaves"))
 					{
 						link.l3 = "Holy father, I've got people on my ship. They are enslaved Christians and unbaptized. I want you to baptize the unbaptized and to administer communion to Christians.  I will free them all after that for the glory of our Church.";
@@ -113,10 +113,10 @@ void ProcessDialogEvent()
 		break;
 		
 		case "check":
-			if (sti(Pchar.Ship.Type) != SHIP_NOTUSED && rand(8) < 3 && !CheckAttribute(npchar, "quest.monkletter") && !CheckAttribute(pchar, "GenQuest.Monkletter") && !CheckAttribute(npchar, "quest.passenger")) //церковная депеша
+			if (sti(Pchar.Ship.Type) != SHIP_NOTUSED && rand(8) < 3 && !CheckAttribute(npchar, "quest.monkletter") && !CheckAttribute(pchar, "GenQuest.Monkletter") && !CheckAttribute(npchar, "quest.passenger")) 
 			{
 				pchar.GenQuest.Monkletter.City = FindFriendCityToMC(false);
-				pchar.GenQuest.Monkletter.StartCity = npchar.city;//город квестодателя
+				pchar.GenQuest.Monkletter.StartCity = npchar.city;
 				dialog.text = "I've got an ask for you, my son. I need to deliver these papers to the head of church of  "+XI_ConvertString("Colony"+pchar.GenQuest.Monkletter.City+"Gen")+". Do you sail in that direction? The documents must be delivered in two weeks...";
 				link.l1 = "Easy enough, holy father. Give me those papers and I will deliver them to "+XI_ConvertString("Colony"+pchar.GenQuest.Monkletter.City+"Gen")+".";
 				link.l1.go = "Monkletter";
@@ -125,9 +125,9 @@ void ProcessDialogEvent()
 				npchar.quest.monkletter = "true";
 				break;
 			}
-			if (sti(Pchar.Ship.Type) != SHIP_NOTUSED && rand(8) > 5 && sti(pchar.rank < 11) && !CheckAttribute(npchar, "quest.churchbooks") && !CheckAttribute(pchar, "GenQuest.Churchbooks") && !CheckAttribute(npchar, "quest.passenger")) //привезти молитвенники
+			if (sti(Pchar.Ship.Type) != SHIP_NOTUSED && rand(8) > 5 && sti(pchar.rank < 11) && !CheckAttribute(npchar, "quest.churchbooks") && !CheckAttribute(pchar, "GenQuest.Churchbooks") && !CheckAttribute(npchar, "quest.passenger")) 
 			{
-				pchar.GenQuest.Churchbooks.StartCity = npchar.city;//город квестодателя
+				pchar.GenQuest.Churchbooks.StartCity = npchar.city;
 				pchar.GenQuest.Churchbooks.Nation = npchar.nation;
 				dialog.text = "My son, would you agree to help me in an urgent matter? Our church is running low on prayer books which we giveaway to all who need them\nCould you sail to the nearest colony "+NationNameGenitive(sti(npchar.nation))+", to take a few prayer books from the local church and bring them here? And try to do that in one month - we don't have many our prayer books left.";
 				link.l1 = "I'll help your church with pleasure. Can I get these books from any head of church?";
@@ -143,7 +143,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 		break;
 		
-//-------------------------------------------------пожертвования------------------------------------------------
+
 		case "donation":
 			sTemp = DonationType();
 			dialog.text = "Sure, my son."+sTemp+"";
@@ -163,7 +163,7 @@ void ProcessDialogEvent()
 			link.l4.go = "donation_rate_4";
 		break;
 		
-		case "donation_rate_1"://никаких плюшек
+		case "donation_rate_1":
 			if (sti(pchar.money) >= 100)
 			{
 				AddMoneyToCharacter(pchar, -100);
@@ -250,7 +250,7 @@ void ProcessDialogEvent()
 			LAi_CharacterDisableDialog(npchar);
 		break;
 		
-//-------------------------------------------отпустить рабов---------------------------------------------------
+
 		case "slaves":
 			dialog.text = "Sure , my son. It's our duty to help the sufferers. I will do what you ask for.";
 			link.l1 = "Thank you , holy father. I will donate ten silver coins for each baptized and administered prisoner.";
@@ -269,14 +269,14 @@ void ProcessDialogEvent()
 			DialogExit();
 			SetLaunchFrameFormParam("Two hours later"+ NewStr() +"Slaves were freed", "Monk_RemoveSlaves", 0, 4);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, 2, 10); //крутим время
+			WaitDate("", 0, 0, 0, 2, 10); 
 			RecalculateJumpTable();
 		break;
-//<-- отпустить рабов
 
-//----------------------------------------------освятить корабль------------------------------------------------
+
+
 		case "shipshine":
-			//поиск старшего класса
+			
 			iTemp = 6;
 			for (i=0; i<COMPANION_MAX; i++)
 			{
@@ -337,7 +337,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			SetLaunchFrameFormParam("Several hours later"+ NewStr() +"Padre has committed a consecration", "Monk_Shipshine", 0, 4);
 			LaunchFrameForm();
-			WaitDate("", 0, 0, 0, GetCompanionQuantity(pchar), 10); //крутим время
+			WaitDate("", 0, 0, 0, GetCompanionQuantity(pchar), 10); 
 			RecalculateJumpTable();
 		break;
 		
@@ -345,9 +345,9 @@ void ProcessDialogEvent()
 			DialogExit();
 			DeleteAttribute(Pchar, "GenQuest.Shipshine");
 		break;
-//<-- освятить корабль
 
-//------------------------------------------корабельный капеллан-----------------------------------------------
+
+
 		case "capellan":
 			dialog.text = "I am the ship's chaplain and I have got some experience in this. I have retired from my last job because of my moral concerns. I am looking for a new ship to employ. Do you want to take me in your crew?";
 			link.l1 = "Priest of the ship? Tell me, padre, what would be your job like on my ship?";
@@ -373,7 +373,7 @@ void ProcessDialogEvent()
 		
 		case "capellan_2":
 			AddMoneyToCharacter(pchar, -50000);
-			chrDisableReloadToLocation = true;//закрыть локацию
+			chrDisableReloadToLocation = true;
 			dialog.text = "Thank you for your trust, my son. You have spent your money wisely. But I warn you, I serve only worthy captains, either trader or caper, no matter. But I will never preach aboard of pirate ship!\nSo if you will ever raise Jolly Roger I will immediately leave your vessel in the very first port.";
 			link.l1 = "I will consider that, holy father, and I'll try to don't disappoint you. Now, would you be kindly to go aboard on my ship!";
 			link.l1.go = "capellan_3";
@@ -385,10 +385,10 @@ void ProcessDialogEvent()
 			LAi_ActorGoToLocation(npchar, "reload", "reload1_back", "My_Campus", "rld", "loc1", "Monk_Capellan", -1);
 			pchar.questTemp.ShipCapellan.id = npchar.id;
 			DeleteAttribute(npchar, "LifeDay");
-			DeleteAttribute(npchar, "CityType");//удалить признак фантома
+			DeleteAttribute(npchar, "CityType");
 			AddPassenger(pchar, npchar, false);
 			SetCharacterRemovable(npchar, false);
-			pchar.questTemp.ShipCapellan.Yes = "true";//капеллан в команде
+			pchar.questTemp.ShipCapellan.Yes = "true";
 			ChangeCharacterComplexReputation(pchar, "authority", 5);
 			npchar.reputation = 60;
 		break;
@@ -420,13 +420,13 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "capellan_7";
 		break;
-//<-- капеллан
+
 	
-//--------------------------------------------монах-пассажир---------------------------------------------------
+
 		case "passenger":
 			if (drand(19) < 15) SetPassengerParameter("Monkpassenger", false);
 			else SetPassengerParameter("Monkpassenger", true);
-			dialog.text = "My son, I have to get to " + XI_ConvertString("Colony"+pchar.GenQuest.Monkpassenger.City)+" it is on "+XI_ConvertString(GetIslandByCityName(pchar.GenQuest.Monkpassenger.City)+"Dat")+", за "+FindRussianDaysString(sti(pchar.GenQuest.Monkpassenger.DaysQty))+". I'll pay you "+FindRussianMoneyString(sti(pchar.GenQuest.Monkpassenger.Money))+"for that. What are going to say?";
+			dialog.text = "My son, I have to get to " + XI_ConvertString("Colony"+pchar.GenQuest.Monkpassenger.City)+" it is on "+XI_ConvertString(GetIslandByCityName(pchar.GenQuest.Monkpassenger.City)+"Dat")+", пїЅпїЅ "+FindRussianDaysString(sti(pchar.GenQuest.Monkpassenger.DaysQty))+". I'll pay you "+FindRussianMoneyString(sti(pchar.GenQuest.Monkpassenger.Money))+"for that. What are going to say?";
 			link.l1 = "I agree, holy father.";
 			link.l1.go = "passenger_1";
 			link.l2 = "I am sorry, holy father, but I am sailing in a different direction. Can't help you.";
@@ -452,7 +452,7 @@ void ProcessDialogEvent()
 			pchar.GenQuest.Monkpassenger.id = npchar.id;
 			DeleteAttribute(npchar, "LifeDay");
 			LAi_RemoveLoginTime(npchar);
-			DeleteAttribute(npchar, "CityType");//удалить признак фантома, иначе - пустые города
+			DeleteAttribute(npchar, "CityType");
 			LAi_SetImmortal(npchar, true);
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload1_back", "none", "", "", "", 20.0);
@@ -476,7 +476,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "passenger_3":
-			pchar.quest.Monkpassenger_Over.over = "yes"; //снять таймер
+			pchar.quest.Monkpassenger_Over.over = "yes"; 
 			dialog.text = "Thank you, my son. You have fulfilled your promise and it's my turn now. Take your money as I've promised.";
 			link.l1 = "Thank you. Good luck, holy father.";
 			link.l1.go = "passenger_4";
@@ -500,9 +500,9 @@ void ProcessDialogEvent()
 			CloseQuestHeader(sTitle);
 			DeleteAttribute(Pchar, "GenQuest.Monkpassenger");
 		break;
-//<-- монах-пассажир
+
 		
-//---------------------------------------------церковная депеша-------------------------------------------------
+
 		case "exit_monkletter":
 			DialogExit();
 			DeleteAttribute(pchar, "GenQuest.Monkletter");
@@ -524,9 +524,9 @@ void ProcessDialogEvent()
 			SetFunctionTimerCondition("Monkletter_Over", 0, 0, 15, false);
 			OfficersReaction("good");
 		break;
-//<-- Церковная депеша
+
 		
-//-------------------------------------------доставить молитвенники---------------------------------------------
+
 		case "exit_churchbooks":
 			DialogExit();
 			DeleteAttribute(pchar, "GenQuest.Churchbooks");
@@ -556,7 +556,7 @@ void ProcessDialogEvent()
 			}
 			OfficersReaction("good");
 		break;
-//<-- доставить молитвенники
+
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

@@ -18,15 +18,15 @@ void InitIslands()
 	}
 	
 
-	// ==================================================================================================
-	// Create temp module for enumerate locators
+	
+	
 		object	locator;
 		CreateEntity(&locator,"locator");
 
 
-	/////////////////////////////////////////////////////////////////////////
-	/// Barbados (Bridgetown)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = 0;
 		Islands[n].id = "Barbados";
 		Islands[n].model = "barbados";
@@ -38,8 +38,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Barbados_jungle";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 12.5;
-		//Islands[n].ImmersionDistance = 3500;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "BARBADOS";
 
 		Islands[n].reload.l1.label = "Bridgetown Port";
@@ -113,9 +113,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 
-	/////////////////////////////////////////////////////////////////////////
-	/// Jamaica (PortRoyal)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Jamaica";
 		Islands[n].model = "Jamaica";
@@ -126,13 +126,13 @@ void InitIslands()
 		Islands[n].jungle.patch = "Jamaica_jungle";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 12.5;
-		//Islands[n].ImmersionDistance = 3500;
-		//Islands[n].ImmersionDepth = 0;
+		
+		
 		Islands[n].maxviewdist = 11000.0;
 		Islands[n].TexturePath = "Jamaica";
 		Islands[n].LoadGroup.g1 = "IslandShips1";
-		Islands[n].mayak.model_day = "Jamaica_dayLight";     //день на маяке 
-		Islands[n].mayak.model_night = "Jamaica_nightLight"; //ночь на маяке 
+		Islands[n].mayak.model_day = "Jamaica_dayLight";     
+		Islands[n].mayak.model_night = "Jamaica_nightLight"; 
 
 		Islands[n].reload.l1.label = "PortRoyal Port";
 		Islands[n].reload.l1.name = "reload_1";
@@ -215,9 +215,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 
-	/////////////////////////////////////////////////////////////////////////
-	/// PuertoRico  (SanJuan)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "PuertoRico";
 		Islands[n].model = "PuertoRico";
@@ -229,8 +229,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "PuertoRico_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 20;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "PuertoRico";
 
 		Islands[n].reload.l1.label = "SanJuan Port";
@@ -296,9 +296,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 		
-	/////////////////////////////////////////////////////////////////////////
-	/// Cuba1 (Santiago, PuertoPrincipe)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Cuba1";
 		Islands[n].model = "Cuba1";
@@ -310,8 +310,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Cuba1_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 10;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "Cuba1";
 
 		Islands[n].reload.l1.label = "Santiago Port";
@@ -393,9 +393,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);	
 
-	/////////////////////////////////////////////////////////////////////////
-	/// Cuba2 (Havana)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Cuba2";
 		Islands[n].model = "Cuba2";
@@ -407,8 +407,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Cuba2_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 10;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "Cuba2";
 
 		Islands[n].reload.l1.label = "Havana Port";
@@ -501,9 +501,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 
-	/////////////////////////////////////////////////////////////////////////
-	/// Curacao (Villemstad)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Curacao";
 		Islands[n].model = "Curacao";
@@ -515,8 +515,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Curacao_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 12.5;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "Curacao";
 
 		Islands[n].reload.l1.label = "Villemstad Port";
@@ -600,9 +600,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);	
 		
-	/////////////////////////////////////////////////////////////////////////
-	/// Tortuga
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Tortuga";
 		Islands[n].model = "Tortuga";
@@ -614,8 +614,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Tortuga_jungle";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 10;
-		//Islands[n].ImmersionDistance = 6000;
-		//Islands[n].ImmersionDepth = 100;
+		
+		
 		Islands[n].TexturePath = "Tortuga";
 
 		Islands[n].reload.l1.label = "Tortuga Port";
@@ -681,24 +681,24 @@ void InitIslands()
 		
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);		
 
-		/////////////////////////////////////////////////////////////////////////
-		/// SentMartin (Marigo)
-		/////////////////////////////////////////////////////////////////////////
+		
+		
+		
 		n = n + 1;
 		Islands[n].id = "SentMartin";
-		Islands[n].model = "SentMartin"; // меняем название модели на новое
-		Islands[n].filespath.models = "islands\SentMartin"; // меняем путь к модели на новый
-		Islands[n].refl_model = "SentMartin_refl"; // меняем название модели на новое
-		Islands[n].locators = "SentMartin_locators"; // меняем название модели на новое
+		Islands[n].model = "SentMartin"; 
+		Islands[n].filespath.models = "islands\SentMartin"; 
+		Islands[n].refl_model = "SentMartin_refl"; 
+		Islands[n].locators = "SentMartin_locators"; 
 		Islands[n].visible = true;
-		Islands[n].jungle.patch = "SentMartin_jungle";// сажаем джунгли
-		Islands[n].jungle.texture = "junglesprites"; // указываем текстуру джунглей
-		Islands[n].jungle.scale = 10; // указываем масштаб для джунглей
+		Islands[n].jungle.patch = "SentMartin_jungle";
+		Islands[n].jungle.texture = "junglesprites"; 
+		Islands[n].jungle.scale = 10; 
 		Islands[n].LoadGroup.g1 = "IslandShips1";
 		Islands[n].ImmersionDistance = 4000;
-		Islands[n].ImmersionDepth = 0;// ставим глубину погружения =0
-		Islands[n].maxviewdist = 5000.0; //ставим максимальную дистанцию видимости, кстати она считается от корабля, в отличие от утопления
-		Islands[n].TexturePath = "StMartin"; // хотя там теперь ничего нет
+		Islands[n].ImmersionDepth = 0;
+		Islands[n].maxviewdist = 5000.0; 
+		Islands[n].TexturePath = "StMartin"; 
 
 		Islands[n].reload.l1.label = "Marigo Port";
 		Islands[n].reload.l1.name = "reload_1";
@@ -717,8 +717,8 @@ void InitIslands()
 		Islands[n].reload.l2.radius = 600.0;
 		Islands[n].reload.l2.fortname = "fort_Marigo";
 		Islands[n].reload.l2.colonyname = "Marigo";
-		Islands[n].reload.l2.fort.model = "SentMartin_fort1";// меняем название модели на новое
-		Islands[n].reload.l2.fort.locators = "SentMartin_fort1_locators"; // меняем название модели на новое
+		Islands[n].reload.l2.fort.model = "SentMartin_fort1";
+		Islands[n].reload.l2.fort.locators = "SentMartin_fort1_locators"; 
 		Islands[n].reload.l2.pic = 1;
 		Islands[n].reload.l2.tex = "t1";
 
@@ -765,9 +765,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);		
 
-	/////////////////////////////////////////////////////////////////////////
-	/// Trinidad  (PortSpein)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Trinidad";
 		Islands[n].model = "Trinidad";
@@ -779,8 +779,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Trinidad_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 12.5;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "Trinidad";
 
 		Islands[n].reload.l1.label = "PortSpein Port";
@@ -854,9 +854,9 @@ void InitIslands()
 	
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 
-	/////////////////////////////////////////////////////////////////////////
-	/// Nevis   (Charles)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Nevis";
 		Islands[n].model = "Nevis";
@@ -868,8 +868,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Nevis_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 10;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "Nevis";
 
 		Islands[n].reload.l1.label = "Charles Port";
@@ -952,9 +952,9 @@ void InitIslands()
 	
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 		
-	/////////////////////////////////////////////////////////////////////////
-	/// Antigua  (SentJons)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Antigua";
 		Islands[n].model = "Antigua";
@@ -966,8 +966,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Antigua_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 12.5;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "Antigua";
 
 		Islands[n].reload.l1.label = "SentJons Port";
@@ -1032,9 +1032,9 @@ void InitIslands()
 	
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 
-	/////////////////////////////////////////////////////////////////////////
-	/// Guadeloupe  (BasTer)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Guadeloupe";
 		Islands[n].model = "Guadeloupe";
@@ -1046,8 +1046,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Guadeloupe_jungle";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 12.5;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "Guadeloupe";
 
 		Islands[n].reload.l1.label = "BasTer Port";
@@ -1137,9 +1137,9 @@ void InitIslands()
 	
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 		
-	/////////////////////////////////////////////////////////////////////////
-	/// Martinique (FortFrance, LeFransua)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Martinique";
 		Islands[n].model = "Martinique";
@@ -1151,8 +1151,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Martinique_jungle";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 12.5;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "Martinique";
 
 		Islands[n].reload.l1.label = "FortFrance Port";
@@ -1227,9 +1227,9 @@ void InitIslands()
 		
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 
-	/////////////////////////////////////////////////////////////////////////
-	/// Hispaniola1
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Hispaniola1";
 		Islands[n].model = "Hispaniola1";
@@ -1239,9 +1239,9 @@ void InitIslands()
 		Islands[n].visible = true;
 		Islands[n].colonyquantity = 2;
 		Islands[n].LoadGroup.g1 = "IslandShips1";
-		//Islands[n].LoadGroup.g2 = "IslandShips2";
-		//Islands[n].ImmersionDistance = 5000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
+		
 		Islands[n].jungle.patch = "Hispaniola1_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 20;
@@ -1327,9 +1327,9 @@ void InitIslands()
 	
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 		
-	/////////////////////////////////////////////////////////////////////////
-	/// Hispaniola2
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Hispaniola2";
 		Islands[n].model = "Hispaniola2";
@@ -1341,8 +1341,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Hispaniola2_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 20;
-		//Islands[n].ImmersionDistance = 6000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "Hispaniola2";
 
 		Islands[n].reload.l1.label = "PortPax Port";
@@ -1408,24 +1408,24 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 
-	/////////////////////////////////////////////////////////////////////////
-	/// Bermudes (Pirates Town)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Bermudes";
 		Islands[n].model = "Bermudes";
 		Islands[n].filespath.models = "islands\Bermudes";
 		Islands[n].refl_model = "Bermudes_refl";
-		Islands[n].locators = "Bermudes_locators";// прописываем пути к новой модели
+		Islands[n].locators = "Bermudes_locators";
 		Islands[n].visible = true;
-		Islands[n].jungle.patch = "Bermudes_jungle";// сажаем джунгли
+		Islands[n].jungle.patch = "Bermudes_jungle";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 12.5;  
 		Islands[n].colonyquantity = 0;
 		Islands[n].LoadGroup.g1 = "IslandShips1";
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 0;// ставим глубину погружения =0
-		Islands[n].maxviewdist = 5000.0; //ставим максимальную дистанцию видимости
+		
+		
+		Islands[n].maxviewdist = 5000.0; 
 		Islands[n].TexturePath = "Bermudes"
 
 		Islands[n].reload.l1.label = "Pirates Port";
@@ -1481,9 +1481,9 @@ void InitIslands()
 		
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 
-	/////////////////////////////////////////////////////////////////////////
-	/// Dominica
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Dominica";
 		Islands[n].model = "Dominica";
@@ -1496,8 +1496,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Dominica_jungle";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 12.5;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "Dominica";
 
 		Islands[n].reload.l1.label = "Shore27";
@@ -1522,9 +1522,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 
-	/////////////////////////////////////////////////////////////////////////
-	/// Terks
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Terks";
 		Islands[n].model = "Terks";
@@ -1537,8 +1537,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Terks_jungle";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 10;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "IslaMona";
 
 		Islands[n].reload.l1.label = "Shore57";
@@ -1564,9 +1564,9 @@ void InitIslands()
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 
 
-	/////////////////////////////////////////////////////////////////////////
-	/// Caiman
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Caiman";
 		Islands[n].model = "Caiman";
@@ -1579,8 +1579,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Caiman_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 12.5;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "Caiman";
 
 		Islands[n].reload.l1.label = "Shore17";
@@ -1606,9 +1606,9 @@ void InitIslands()
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 
 
-	/////////////////////////////////////////////////////////////////////////
-	/// PortoBello   (Mein)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "PortoBello";
 		Islands[n].model = "PortoBello";
@@ -1620,8 +1620,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "PortoBello_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 12.5;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "PortoBello";
 
 		Islands[n].reload.l1.label = "PortoBello Port";
@@ -1706,9 +1706,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 		
-	/////////////////////////////////////////////////////////////////////////
-	/// Cartahena   (Mein)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Cartahena";
 		Islands[n].model = "Cartahena";
@@ -1720,8 +1720,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Cartahena_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 10.0;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "Cartahena";
 
 		Islands[n].reload.l1.label = "Cartahena Port";
@@ -1789,9 +1789,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 		
-	/////////////////////////////////////////////////////////////////////////
-	/// Maracaibo   (Mein)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Maracaibo";
 		Islands[n].model = "Maracaibo";
@@ -1803,8 +1803,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Maracaibo_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 10.0;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "Maracaibo";
 
 		Islands[n].reload.l1.label = "Maracaibo Port";
@@ -1869,9 +1869,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 		
-	/////////////////////////////////////////////////////////////////////////
-	/// Caracas   (Mein)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Caracas";
 		Islands[n].model = "Caracas";
@@ -1883,8 +1883,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Caracas_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 10.0;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "Caracas";
 
 		Islands[n].reload.l1.label = "Caracas Port";
@@ -1942,9 +1942,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 		
-	/////////////////////////////////////////////////////////////////////////
-	/// Cumana   (Mein)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Cumana";
 		Islands[n].model = "Cumana";
@@ -1956,8 +1956,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Cumana_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 10.0;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "Cumana";
 
 		Islands[n].reload.l1.label = "Cumana Port";
@@ -2031,9 +2031,9 @@ void InitIslands()
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 		
 		
-	/////////////////////////////////////////////////////////////////////////
-	/// SantaCatalina   (Mein)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "SantaCatalina";
 		Islands[n].model = "SantaCatalina";
@@ -2045,8 +2045,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "SantaCatalina_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 16.0;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "SantaCatalina";
 
 		Islands[n].reload.l1.label = "SantaCatalina Port";
@@ -2120,9 +2120,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 		
-	/////////////////////////////////////////////////////////////////////////
-	/// Beliz   (Mein)
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Beliz";
 		Islands[n].model = "Beliz";
@@ -2134,8 +2134,8 @@ void InitIslands()
 		Islands[n].jungle.patch = "Beliz_jungles";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 16;
-		//Islands[n].ImmersionDistance = 4000;
-		//Islands[n].ImmersionDepth = 250;
+		
+		
 		Islands[n].TexturePath = "Beliz";
 
 		Islands[n].reload.l1.label = "Beliz Port";
@@ -2234,9 +2234,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 
-	/////////////////////////////////////////////////////////////////////////
-	/// ГПК
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 
 		n = n + 1;
 		Islands[n].id = "LostShipsCity";
@@ -2244,7 +2244,7 @@ void InitIslands()
 		Islands[n].filespath.models = "islands\LostShipsCity";
 		Islands[n].refl_model = "LostShipsCity_refl";
 		Islands[n].locators = "LostShipsCity_locators";
-		//Islands[n].LoadGroup.g1 = "IslandShips1";
+		
 		Islands[n].TexturePath = "LostShipsCity";
 		Islands[n].visible = false;
 		Islands[n].reload_enable = false;
@@ -2296,9 +2296,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 
-	/////////////////////////////////////////////////////////////////////////
-	/// Исла де Муэрте
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "KhaelRoa";
 		Islands[n].model = "KhaelRoa";
@@ -2324,9 +2324,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 
-	/////////////////////////////////////////////////////////////////////////
-	/// Ksochitam
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Ksochitam";
 		Islands[n].model = "Ksochitam";
@@ -2337,7 +2337,7 @@ void InitIslands()
 		Islands[n].reload_enable = false;
 		Islands[n].hidden = true;
 		Islands[n].colonyquantity = 0;
-		//Islands[n].LoadGroup.g1 = "IslandShips1";
+		
 		Islands[n].jungle.patch = "Ksochitam_jungle";
 		Islands[n].jungle.texture = "junglesprites";
 		Islands[n].jungle.scale = 10;
@@ -2366,9 +2366,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);
 				
-	/////////////////////////////////////////////////////////////////////////
-	/// RockIsland
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "RockIsland";
 		Islands[n].model = "RockIsland";
@@ -2404,9 +2404,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);		
 
-	/////////////////////////////////////////////////////////////////////////
-	/// Providence
-	/////////////////////////////////////////////////////////////////////////
+	
+	
+	
 		n = n + 1;
 		Islands[n].id = "Providence";
 		Islands[n].model = "Providence";
@@ -2485,9 +2485,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);		
 
-	/////////////////////////////////////////////////////////////////////////
-	/// SantaQuiteria
-	/////////////////////////////////////////////////////////////////////////	
+	
+	
+	
 	
 		n = n + 1;
 		Islands[n].id = "SantaQuiteria";
@@ -2534,9 +2534,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);		
 
-	/////////////////////////////////////////////////////////////////////////
-	/// IslaDeVieques
-	/////////////////////////////////////////////////////////////////////////	
+	
+	
+	
 	
 		n = n + 1;
 		Islands[n].id = "IslaDeVieques";
@@ -2567,9 +2567,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);		
 
-	/////////////////////////////////////////////////////////////////////////
-	/// IslaMona
-	/////////////////////////////////////////////////////////////////////////	
+	
+	
+	
 	
 		n = n + 1;
 		Islands[n].id = "IslaMona";
@@ -2594,7 +2594,7 @@ void InitIslands()
 		Islands[n].reload.l1.pic = 0;
 		Islands[n].reload.l1.tex = "t1";
 
-		Islands[n].reload.l2.label = "Shore76"; // Addon 2016-1 Jason Пиратская линейка
+		Islands[n].reload.l2.label = "Shore76"; 
 		Islands[n].reload.l2.name = "reload_2";
 		Islands[n].reload.l2.go = "";
 		Islands[n].reload.l2.emerge = "";
@@ -2616,9 +2616,9 @@ void InitIslands()
 
 		SendMessage(&locator,"le",LM_LOCATE_I,&Islands[n]);		
 
-	/////////////////////////////////////////////////////////////////////////
-	/// IslaDeCoche
-	/////////////////////////////////////////////////////////////////////////	
+	
+	
+	
 	
 		n = n + 1;
 		Islands[n].id = "IslaDeCoche";
@@ -2659,9 +2659,10 @@ void InitIslands()
        
 		iNumIslands = n;
 		Trace("How islands = " + iNumIslands);
-		/////////////////////////////////////////////////////////////////////////////////////////
-		/////////////////////////////////////////////////////////////////////////////////////////
-		/////////////////////////////////////////////////////////////////////////////////////////
+		
+		
+		
 		
 		DeleteClass(&locator);		
 }
+

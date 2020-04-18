@@ -1,4 +1,4 @@
-// Эркюль Тонзаг, он же Плешивый Гастон
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld, rItm, rItem;
@@ -16,7 +16,7 @@ void ProcessDialogEvent()
 	if (findsubstr(sAttr, "SetGunBullets1_" , 0) != -1)
  	{
         i = findsubstr(sAttr, "_" , 0);
-	 	NPChar.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); // индекс в конце
+	 	NPChar.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); 
  	    Dialog.CurrentNode = "SetGunBullets2";
  	}
 	
@@ -150,7 +150,7 @@ void ProcessDialogEvent()
 		
 		case "SJ_talk_12":
 			DialogExit();
-			GiveItem2Character(pchar, "cirass7");//дать вещь
+			GiveItem2Character(pchar, "cirass7");
 			sld = characterFromId("Merdok");
 			LAi_SetOwnerType(sld);
 			LAi_SetActorType(npchar);
@@ -166,7 +166,7 @@ void ProcessDialogEvent()
 			link.l2.go = "Tonzag_exit";
 		break;
 		
-		case "Tonzag_hired_1"://Тонзага - в офицеры
+		case "Tonzag_hired_1":
 			DialogExit();
 			DeleteAttribute(npchar, "LifeDay");
 			npchar.quest.OfficerPrice = sti(pchar.rank)*500;
@@ -198,7 +198,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//--> ----------------------------------- офицерский блок ------------------------------------------
+		
 		case "tonzag_officer":
 			dialog.text = "I am listening to you, captain. What do you have to say?";
 			if (CheckAttribute(pchar, "questTemp.Dolly_Tieyasal") && !CheckAttribute(npchar, "quest.Tieyasal"))
@@ -275,9 +275,9 @@ void ProcessDialogEvent()
             Link.l1 = "At ease.";
             Link.l1.go = "Exit";
         break;
-	//<-- ----------------------------------- офицерский блок ----------------------------------------
 	
-	// на Тайясаль
+	
+	
 		case "tieyasal":
 			dialog.text = "You are lucky son of bitch, captain. I am glad I've joined you back then in John's. May a shark swallow me, if I won't support you in this undertaking!";
 			link.l1 = "Thank you, Hercule! I am glad that I was right about you.";

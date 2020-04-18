@@ -101,7 +101,7 @@ void Log_SetActiveAction(string actionName)
 		RefreshBattleInterface();
 	}
 	g_ActiveActionName = actionName;
-	// change text
+	
 	if( CheckAttribute(&ILogAndActions,"ActiveActions."+actionName+".Text") ) {
 		ILogAndActions.ActiveActions.text2.text = ILogAndActions.ActiveActions.(actionName).Text;
 	} else {
@@ -153,7 +153,7 @@ void CreateSeaActionsEnvironment()
 	ILogAndActions.ActiveActions.text2.font = "interface_normal";
 	ILogAndActions.ActiveActions.text2.scale = 1.0;
 	ILogAndActions.ActiveActions.text2.pos.x = sti(showWindow.right) - RecalculateHIcon(272);
-	ILogAndActions.ActiveActions.text2.pos.y = sti(showWindow.top) + RecalculateVIcon(86);//RecalculateVIcon(102);
+	ILogAndActions.ActiveActions.text2.pos.y = sti(showWindow.top) + RecalculateVIcon(86);
 	ILogAndActions.ActiveActions.text2.text = XI_ConvertString("for_quick_action");
 
 	ILogAndActions.ActiveActions.Moor.IconNum		= 29;
@@ -190,7 +190,7 @@ void CreateLandActionsEnvironment()
 	ILogAndActions.ActiveActions.text2.font = "interface_normal";
 	ILogAndActions.ActiveActions.text2.scale = 1.0;
 	ILogAndActions.ActiveActions.text2.pos.x = sti(showWindow.right) - RecalculateHIcon(260);
-	ILogAndActions.ActiveActions.text2.pos.y = sti(showWindow.top) + RecalculateVIcon(86);//RecalculateVIcon(102);
+	ILogAndActions.ActiveActions.text2.pos.y = sti(showWindow.top) + RecalculateVIcon(86);
 	ILogAndActions.ActiveActions.text2.text = XI_ConvertString("for_quick_action");
 
 	ILogAndActions.ActiveActions.ToSea.IconNum		= 13;
@@ -233,7 +233,7 @@ void CreateWorldMapActionsEnvironment()
 	ILogAndActions.ActiveActions.text2.font = "interface_normal";
 	ILogAndActions.ActiveActions.text2.scale = 1.0;
 	ILogAndActions.ActiveActions.text2.pos.x = sti(showWindow.right) - RecalculateHIcon(260);
-	ILogAndActions.ActiveActions.text2.pos.y = sti(showWindow.top) + RecalculateVIcon(86);//RecalculateVIcon(102);
+	ILogAndActions.ActiveActions.text2.pos.y = sti(showWindow.top) + RecalculateVIcon(86);
 	ILogAndActions.ActiveActions.text2.text = XI_ConvertString("for_quick_action");
 
 	ILogAndActions.ActiveActions.EnterToSea.IconNum	= 1;
@@ -300,7 +300,7 @@ void BI_FastCommand()
 		case "Moor":		bEC = true; Sea_LandLoad(); break;
 		case "Board":		bEC = true; Sea_AbordageLoad(SHIP_ABORDAGE,true); break;
 		case "LandTroops":	bEC = true; Sea_AbordageLoad(FORT_ABORDAGE,true); break;
-		case "Map":			bEC = true; Sea_MapLoad(); break; //  pchar.location = ""; тут нах не нужно
+		case "Map":			bEC = true; Sea_MapLoad(); break; 
 		case "Reload":
 			if(bi_nReloadTarget!=-1)
 			{
@@ -320,7 +320,7 @@ void BI_FastCommand()
 		switch(FComName)
 		{
 			case "OpenBox":	
-				if (!LAi_IsFightMode(pchar)) // в бою быстрой командой низя открыть сундук
+				if (!LAi_IsFightMode(pchar)) 
 				{
 					bEC = true; 
 					OpenBoxProcedure();	
@@ -336,9 +336,9 @@ void BI_FastCommand()
 			break;
 			case "Reload":
 				bEC = true;
-				if (bCabinStarted)   // boal
+				if (bCabinStarted)   
 	            {
-	                // раставление НПС при переходах - миниквесты
+	                
 	                BOAL_ReloadToLoc(chrWaitReloadRef, chrWaitReloadLocator);
 	            }
 	            else
@@ -429,7 +429,7 @@ void BI_GetMsgIconRoot()
 
 void LoadLIStates()
 {
-	pchar = GetMainCharacter();//нужно, чтобы не ругалось
+	pchar = GetMainCharacter();
 	if(!CheckAttribute(pchar, "id")) return;
 	int i,cn;
 	ref chref;

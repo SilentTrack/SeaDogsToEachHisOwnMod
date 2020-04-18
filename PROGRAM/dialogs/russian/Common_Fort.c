@@ -1,4 +1,4 @@
-// boal 25/04/04 общий диалог солдат форта
+
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -10,17 +10,17 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 
-    // вызов диалога по городам -->
+    
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Fort\" + NPChar.City + "_Fort.c";
     if (LoadSegment(NPChar.FileDialog2))
 	{
         ProcessCommonDialog(NPChar, Link, NextDiag);
 		UnloadSegment(NPChar.FileDialog2);
 	}
-    // вызов диалога по городам <--
+    
     int iTest, iTemp;
 	string sTemp;
-    iTest = FindColony(NPChar.City); // город
+    iTest = FindColony(NPChar.City); 
     ref rColony;
 	if (iTest != -1)
 	{
@@ -53,11 +53,11 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				// eddy. проверяем, не казачок ли. -->
+				
 				if (GetRelation2BaseNation(sti(npchar.nation)) == RELATION_ENEMY && sti(NPChar.nation) != PIRATE)
 				{
 					dialog.text = RandPhraseSimple("Who are you and what are you doing here?", "Hold still! Who are you? For shat reason are you trying to enter the fort?");
-					//==> по лицензии
+					
 					if (CheckNationLicence(HOLLAND))
 					{
 						link.l1 = "Officer, I have " + GetRusNameNationLicence(sti(npchar.nation)) + ", so I am here on legal grounds. Here, please take a look...";
@@ -65,8 +65,8 @@ void ProcessDialogEvent()
 					}
 					else
 					{
-						//==> по флагу
-						// заглушка на пирата
+						
+						
 						if (sti(pchar.nation) == PIRATE)
 						{
     						dialog.text = RandPhraseSimple("Pirates in the fort?! Seize"+ GetSexPhrase("him","her") +"!!", "It is a pirate, sniffs up something here!! To arrest!!!!");
@@ -74,11 +74,11 @@ void ProcessDialogEvent()
 							link.l1.go = "fight"; 
 							break;
 						}
-						if (findsubstr(pchar.location.from_sea, "_town" , 0) != -1) //если причалил в городе
+						if (findsubstr(pchar.location.from_sea, "_town" , 0) != -1) 
 						{
 							link.l1 = "Don't you see on the mast of my ship the flag" + NationNameGenitive(sti(pchar.nation)) + "?!";
 						}
-						else //если причалил не в городе
+						else 
 						{
 							link.l1 = "I cast anchor at " + XI_ConvertString(GetIslandByCityName(npchar.city)+"Gen") + " under the flag" + NationNameGenitive(sti(pchar.nation)) + ". For crying out loud!";
 						}
@@ -92,12 +92,12 @@ void ProcessDialogEvent()
 						}
 					}
 				}
-				// <-- eddy. проверяем, не казачок ли.
+				
 				else
 				{
 					if (sti(NPChar.nation) == PIRATE)
 					{
-						if (sti(rColony.HeroOwn)) // наш горожанин
+						if (sti(rColony.HeroOwn)) 
 						{
 			         		switch (rand(10))
 							{
@@ -168,14 +168,14 @@ void ProcessDialogEvent()
 								break;
 							}
 							link.l2 = RandPhraseSimple("I've got an important business!", "I have business with you.");
-							link.l2.go = "quests";//(перессылка в файл города)
+							link.l2.go = "quests";
 							break;
 						}
 					}
 					
-					//Jason --> мини-квест Дефицитный товар
+					
 					if (!CheckAttribute(pchar, "questTemp.Sharlie.FastStart") && sti(pchar.rank) < 4 && !CheckAttribute(pchar, "questTemp.Wine") && npchar.location.group == "soldiers")
-					{// Addon 2016-1 Jason пиратская линейка
+					{
 						if (npchar.location.locator == "protector1" || npchar.location.locator == "protector2")
 						{
 							dialog.text = "Hey, buddy! Can you make me a small favor?";
@@ -187,11 +187,11 @@ void ProcessDialogEvent()
 							break;
 						}
 					}
-					// <-- мини-квест Дефицитный товар
+					
 					
 					switch (rand(10))
 					{
-						case 0: ////////////////////////////////////////
+						case 0: 
 							dialog.text = "Can't you see? I'm on duty. Stop bothering me.";
 							link.l1 = "Alright, alright...";
 							link.l1.go = "exit";
@@ -203,7 +203,7 @@ void ProcessDialogEvent()
 							link.l1.go = "exit";
 						break;
 
-						case 2: ///////////////////////////////////////////
+						case 2: 
 							dialog.text = "This is a military objective, so keep quiet there.";
 							link.l1 = "Alright, I'll keep that in mind.";
 							link.l1.go = "exit";
@@ -215,19 +215,19 @@ void ProcessDialogEvent()
 							link.l1.go = "exit";
 						break;
 
-						case 4: ///////////////////////////////////////////
+						case 4: 
 							dialog.text = "If you like to chat, find someone else. I must keep order here, and I have no time for chit-chat.";
 							link.l1 = "Oh, no, I was just "+ GetSexPhrase("checking","checking") +", if you're still alive - you were standing just like a statue.";
 							link.l1.go = "exit";
 						break;
 
-						case 5: ////////////////////////////////////////////
+						case 5: 
 							dialog.text = "You probably think that garrison working days are a cakewalk? Says you! It's a hard and important work. I remember... ";
 							link.l1 = "You tall me that story some other time - I am in a bit of hurry today.";
 							link.l1.go = "exit";
 						break;
 
-						case 6: ////////////////////////////////////////////
+						case 6: 
 							dialog.text = "Careful here, you're in a fort! Be quiet as a lamb!";
 							link.l1 = "As you say, soldier.";
 							link.l1.go = "exit";
@@ -239,13 +239,13 @@ void ProcessDialogEvent()
 							link.l1.go = "exit";
 						break;
 
-						case 8://///////////////////////////////////////////
+						case 8:
 							dialog.text = "How boring is the garrison life - only rednecks like you around! Now the town garrison surely has better time...";
 							link.l1 = "And you are calling this 'being on duty'? This way you'll surely let a spy slip past you!";
 							link.l1.go = "exit";
 						break;
 
-						case 9://///////////////////////////////////////////
+						case 9:
 							dialog.text = ""+ GetSexPhrase("You look like a stout guy, don't you? Would you like to sign up for duty at the fort's garrison? We have roomy barracks, two meals a day - and booze for free.","Oh, young lady, you have no idea, how pleasant it is to meet such a nice damsel in this back of beyond!") +"";
 							link.l1 = ""+ GetSexPhrase("That's certainly tempting, but I still must refuse. All that drill is just not for me.","Thank you for a compliment, soldier.") +".";
 							link.l1.go = "exit";
@@ -258,12 +258,12 @@ void ProcessDialogEvent()
 						break;
 					}
 					link.l3 = "I see... You know, I "+ GetSexPhrase("wanted to") +" ask you something...";
-					link.l3.go = "quests";//(перессылка в файл города)
+					link.l3.go = "quests";
 				}
 			}
 		break;
 		
-		//Jason --> мини-квест Дефицитный товар
+		
 		case "Wine_soldier":
 			dialog.text = "You see, I badly want some wine... But not the local swill made of rotten fruits, which sells for two pesos per barrel - I want a bottle of real European wine. You can get it in the town from merchants. The price is quite steep, but I will pay in full and will even add three hundred pesos on top of it. So, will you bring me some?";
 			link.l1 = "And why can't you het it yourself? You won't need to overpay - just wait until you're relieved and go for it. What's the catch?";
@@ -292,9 +292,9 @@ void ProcessDialogEvent()
 			SaveCurrentQuestDateParam("questTemp.Wine_bottle");
 			AddQuestRecord("Wine", "0");
 		break;
-		// <-- мини-квест Дефицитный товар
 		
-		//============================== ноды на разборки при распознавании =========================
+		
+		
 		case "PegYou":
 			dialog.text = RandPhraseSimple("It seems to me some trickery is afoot. Let's go see the commandant, "+ GetSexPhrase("buddy","deary") +", and figure it all out...", "Hmm... Something tells me that you're not "+ GetSexPhrase("the one","the one") +", who you're pretending to be... Now surrender your weapons, " + GetAddress_Form(npchar) + ", and follow me for further investigation!");
 			link.l1 = RandPhraseSimple("Says you!", "When two Sundays come in one week...");
@@ -325,7 +325,7 @@ void ProcessDialogEvent()
 				TakeNationLicence(HOLLAND);
 				break;
 			}
-			if (findsubstr(pchar.location.from_sea, "_town" , 0) == -1) //если причалил не в городе
+			if (findsubstr(pchar.location.from_sea, "_town" , 0) == -1) 
 			{
 				dialog.text = "You have come to trade here? Might I ask how? Where is your ship? You know, it all looks very suspicious, and I am forced to detain you until we figure it all out. Surrender your weapons and follow me!";
 				link.l1 = RandPhraseSimple("Says you!", "When two Sundays come in one week...");
@@ -361,7 +361,7 @@ void ProcessDialogEvent()
 			}
 		break;
 
-		//замечение по обнаженному оружию
+		
 		case "SoldierNotBlade":
 			dialog.text = LinkRandPhrase("Why the hell are you running around with an unsheathed blade? Put away your weapon at once!", "I am ordering you to sheathe your weapon at once!", "Hey, "+ GetSexPhrase("buddy","lass") +", stop scaring the folks! Sheathe your weapon.");
 			link.l1 = LinkRandPhrase("Fine.", "Okay.", "As you say...");

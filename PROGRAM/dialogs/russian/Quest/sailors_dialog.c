@@ -1,5 +1,5 @@
-// реплики солдат на палубе при разговоре в море
-// форт-стража и комендант форта
+
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -25,54 +25,27 @@ void ProcessDialogEvent()
 			
 			NextDiag.TempNode = "first time";
 		break;
-		//  на палубе -->
+		
 		case "On_Deck":
 			dialog.text = "Talk with our captain. I have got nothing to say to you.";
 			Link.l1 = "Fine.";
 			Link.l1.go = "exit";
 
 			NextDiag.TempNode = "On_Deck";
-/*			
-			// Первый церковный генератор
-			if(CheckAttribute(PChar, "GenQuest.ChurchQuest_1.CapWaitOnTavern"))
-			{
-				if(CheckAttribute(PChar, "GenQuest.ChurchQuest_1.NeedToDialogWithSailors"))
-				{
-					dialog.text = "Sir, are you looking for somebody?";
-					Link.l1 = "Yes. Can I see the captain?";
-					Link.l1.go = "ChurchQuest1_Node1";
-				}
-				else
-				{
-					dialog.text = "All questions to our captain. He has recently landed.";
-					Link.l1 = "Fine";
-					Link.l1.go = "exit";
-				}
-				break;
-			}
-*/			
-			//--> eddy. квест мэра, закрываем выход с палубы и ноду даем нужную
+ 			
+			
 			if (CheckAttribute(pchar, "GenQuest.DestroyPirate") && pchar.GenQuest.CaptainId == "MQPirate")
 			{
 	    		dialog.text = RandPhraseSimple("Go to our captain. Tell him about your sad deeds...", "Go to our captain and he will talk with you.");
 				Link.l1 = "Too bad...";
 				Link.l1.go = "exit";
 			}
-			//<-- eddy. квест мэра, закрываем выход с палубы
+			
 		break;
-/*		
-		case "ChurchQuest1_Node1":
-			dialog.text = "You'd better look for him in the port.";
-			Link.l1 = "Thank you, my good man.";
-			Link.l1.go = "exit";
-			NextDiag.TempNode = "On_Deck";
-			PChar.GenQuest.ChurchQuest_1.CapWaitOnTavern = true; 
-			DeleteAttribute(PChar, "GenQuest.ChurchQuest_1.NeedToDialogWithSailors"); // Не спрашиваем моряков
-		break;
-*/		
-        //  на палубе <--
+ 		
+        
 				
-		// ugeen --> разговор с боцманом по генератору "Повод для спешки"
+		
 		case "On_MyShip_Deck":
 			dialog.text = "Well, that was a serious mess, cap! We were in the tavern, drinking as we usually do when we heard screaming. Then we heard that they are trying to put you under the heel. Fuck them! So we decided to leave this unfriendly harbour.";
 			link.l1 = "Yeah, certainly some people have a bit strange perception of justice.";
@@ -82,12 +55,12 @@ void ProcessDialogEvent()
 		case "On_MyShip_Deck_1":
 		    if(pchar.questTemp.ReasonToFast == "speakSuccess_chain_A") 
 			{
-				// карты не было
+				
 				dialog.text = "Captain! Don't you worry like that! It was clear that there were no way to flee in peace, so we have decided to visit the local banker in order to check his chests. He is your share - " + sti(pchar.questTemp.ReasonToFast.p9) + " pesos...";
 			}
 			if(pchar.questTemp.ReasonToFast == "speakSuccess_chain_B")
 			{
-				// карту отобрали
+				
 				GiveItem2Character(pchar, pchar.questTemp.ReasonToFast.p6);
 				dialog.text = "Captain! Don't you worry like that! It was clear that there were no way to flee in peace, so we have decided to visit the local banker and to check his chests. There was also a fine sword in the pawn box. He is your share - " + sti(pchar.questTemp.ReasonToFast.p9) + " pesos and a sword...";
 			}		
@@ -95,7 +68,7 @@ void ProcessDialogEvent()
 			link.l1.go = "On_MyShip_Deck_End";
 			AddMoneyToCharacter(pchar, sti(pchar.questTemp.ReasonToFast.p9));			
 			pchar.Ship.Crew.Morale = MORALE_MAX;
-			chrDisableReloadToLocation = false; // Откроем выход
+			chrDisableReloadToLocation = false; 
 			AddQuestRecord("ReasonToFast", "17");		
 			AddQuestUserData("ReasonToFast", "sSex", GetSexPhrase("",""));		
 			CloseQuestHeader("ReasonToFast");
@@ -109,7 +82,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("CanEnterToMap");
 		break;
 		
-		// разговор с боцманом по генератору 'Операция Галеон'
+		
 		case "CapComission_OnShipDeck":
 			dialog.text = "Captain, your friend has escaped.";
 			link.l1 = "What friend?";
@@ -129,9 +102,9 @@ void ProcessDialogEvent()
 		break;
 		
 		case "CapComission_OnShipDeck3":
-			chrDisableReloadToLocation = false; // Откроем выход
+			chrDisableReloadToLocation = false; 
 			AddQuestRecord("CaptainComission2", "25");	
-			AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","а"));			
+			AddQuestUserData("CaptainComission2", "sSex", GetSexPhrase("","пїЅ"));			
 			AddQuestUserData("CaptainComission2", "sName", pchar.GenQuest.CaptainComission.Name);
 			CloseQuestHeader("CaptainComission2");	
 			ChangeOfficersLoyality("bad_all", 1);
@@ -143,9 +116,9 @@ void ProcessDialogEvent()
 			DialogExit();
 			AddDialogExitQuest("CanEnterToMap");
 		break;
-		// <-- ugeen
 		
-		// разговор с боцманом по ситуациям в трюме
+		
+		
 		case "Hold_GenQuest_OnShipDeck":
 			dialog.text = "Captain, forgive us, it was our fault - the prisoner has escaped.";
 			link.l1 = "What prisoner? Who has escaped?";
@@ -165,7 +138,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Hold_GenQuest_OnShipDeck3":
-			chrDisableReloadToLocation = false; // Откроем выход
+			chrDisableReloadToLocation = false; 
 			sld = characterFromId(pchar.GenQuest.Hold_GenQuest.CapId);
 			ReleasePrisoner(sld);			
 			CloseQuestHeader("HoldQuest");	
@@ -189,7 +162,7 @@ void ProcessDialogEvent()
 			link.l1.go = "Hold_GenQuest_OnShipDeck3";
 		break;
 		
-		// Warship 09.07.09 Базар с нашим матросом на палубе Мэри Селест -->
+		
 		case "On_MaryCeleste_Deck":
 			Dialog.text = "Captain, there are no people at all on the ship! Something is very wrong here... Tommy said that he has seen a cat in the cockpit and it was the one living soul...";
 			Link.l1 = "Idiot, cats don't have souls. It looks like he has not visited a church for a long time already or he has never been there at all. Have you been in the captain's cabin? I need a logbook.";
@@ -212,12 +185,12 @@ void ProcessDialogEvent()
 		case "On_MaryCeleste_Last":
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
-			LAi_SetCitizenType(NPChar); // Чтоб по палубе ходил
+			LAi_SetCitizenType(NPChar); 
 			
 			NPChar = GetRealShip(GetCharacterShipType(CharacterFromID("MaryCelesteCapitan")));
-			NPChar.TurnRate = sti(PChar.QuestTemp.MaryCeleste.TurnRate); // Вернем маневренность, для интерфейса
+			NPChar.TurnRate = sti(PChar.QuestTemp.MaryCeleste.TurnRate); 
 			
-			chrDisableReloadToLocation = false; // Откроем выход
+			chrDisableReloadToLocation = false; 
 			
 			LaunchTransferMain(PChar, CharacterFromID("MaryCelesteCapitan"), "MaryCelesteTransfer");
 		break;
@@ -252,9 +225,9 @@ void ProcessDialogEvent()
 			Link.l1 = "Don't go pale, I was joking... Go to the ship's boat. And I guess you are right after all, cats do have souls. Or they don't?";
 			Link.l1.go = "exit";
 		break;
-		// <-- Базар с нашим матросом на палубе Мэри Селест
 		
-        //  на палубе <--
+		
+        
         case "On_Fort":
 			dialog.text = RandPhraseSimple("Talk with the boss. I have got nothing to say you.", "I am at my post. All questions go to the commandant of fort.");
 			Link.l1 = "Fine.";
@@ -290,3 +263,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

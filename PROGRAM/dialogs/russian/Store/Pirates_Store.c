@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
 	bool bOk;
@@ -16,7 +16,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1 = "Listen, "+npchar.name+", have you seen Miguel Dichoso on Isla Tesoro lately?";
 				link.l1.go = "tieyasal";
 			}
-			// Addon 2016-1 Jason пиратская линейка
+			
 			if(CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "pasq_start")
 			{
 				link.l1 = ""+npchar.name+", I am here on behalf of Marcus Tyrex. He said that you need a man for a job.";
@@ -29,7 +29,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 				
-		// город май€
+		
 		case "tieyasal":
 			dialog.text = "Yes, I have. He was stocking up on ammunition for his ship here. It was very recently by the way. You literally missed each other by a few days. By the way, he might still be in this settlement. I don't spy for people, you know. Ask around some more and who knows you just might find your don.";
 			link.l1 = "All right. Thanks for the info!";
@@ -41,7 +41,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.tieyasal = "true";
 		break;
 		
-		// Addon 2016-1 Jason пиратская линейка
+		
 		case "mtraxx":
 			pchar.quest.Mtraxx_PasqualeLate.over = "yes";
             dialog.text = "Precisely! It's good you arrived in time. Now let me tell you the crux of the matter...";

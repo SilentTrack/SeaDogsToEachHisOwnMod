@@ -1,14 +1,14 @@
-//navy 26.07.06
-//генератор дуэлей...
-//в диалоге НПС делаем линк с проверкой флага оскорбления... по нему переход на "outraged"
-//если НПС сделал что-то ГГ (продажа фальшивки) или ГГ наехал на НПС, вешаем на него флаг.
-//для некоторых, например ПГГ, можно делать переход сразу на вызов: "let_s_duel"
+
+
+
+
+
 void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 {
 	int iHour;
 	string sLocation;
 
-	//флаг убираем
+	
 	DeleteAttribute(NPChar, "Outrage");
     switch (Dialog.CurrentNode)
 	{
@@ -17,7 +17,7 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 				RandPhraseSimple("How dare you to insult me, rascal?!", "These words will cost you dearly!"), 
 				RandPhraseSimple("My honor is at the stake, " + GetAddress_Form(NPChar) + "! And you will have to pay for that.", "How you dare? Take back your words this instant!"));
 
-		//это такая засада.. чтобы читали текст :)
+		
 		MakeRandomLinkOrderTwo(link, 
 					NPCharRepPhrase(pchar, 
 				RandPhraseSimple("Ha?! I would not even want to stain my sword with your blood!", "Ha?! I would not even want to stain my sword with your blood!"), 
@@ -42,7 +42,7 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 		break;
 
 	case "let_s_duel":
-		//проверка на начатые дуэли.
+		
 		if (CheckAttribute(PChar, "questTemp.duel.Start") && sti(PChar.questTemp.duel.Start))
 		{
 			Dialog.Text = "First you settle your business with others, and then we'll talk.";
@@ -54,24 +54,24 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 			link.l1.go = "exit";
 			break
 		}
-		//может отказаться.
+		
 		if (rand(100) < 30)
 		{
 			Dialog.Text = RandPhraseSimple("Duel?! Get lost, you're not worth of wasting time on you.", "Duel? You don't deserve the honor! Get lost!");
 			link.l1 = RandPhraseSimple("Alright...", "Guess I can wait...");
 			link.l1.go = "exit";
-/**/
-			//можно дать возможность драться полюбому :)			
+ 
+			
 			if (rand(100) < 30)
 			{
 				link.l1 = RandPhraseSimple("Well, we'll see about that!!!", "Oh really?! I'll see what color your blood is!");
 				link.l1.go = "fight_right_now";
 			}
-/**/
+ 
 			break;
 		}
 
-		//согласен.
+		
 		Dialog.Text = RandPhraseSimple("A duel, you say? That's fine with me. Swords and pistols shall be our weapons.", 
 			"Can you even wield a sword?");
 		link.l1 = RandPhraseSimple("You will be for mercy, standing on your knees.", "I will strangle you with these bare hands, you scoundrel!");
@@ -87,7 +87,7 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 		link.l3.go = "change_mind";
 		break;
 
-	//дуэль на подводных лодках :))))
+	
 	case "sea_duel":
 		Dialog.Text = RandPhraseSimple("I don't see your ship in the harbor...", "Get lost until you find a crappy old tub at the least!");
 		link.l1 = RandPhraseSimple("My mistake...", "...Then I am leaving you.");
@@ -104,12 +104,12 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 
 		break;
 
-	//на суше
+	
 	case "land_duel":
 		iHour = 1 + rand(2);
 		if (GetTime() > 4.0 && GetTime() < 17.0)
 		{
-//			iHour = MakeInt(18.0 - GetTime()) + rand(2); //раскоментировать для дуэлей только по ночам
+
 		}
 		pchar.questTemp.Duel.WaitTime = iHour;
 		Dialog.Text = RandSwear() + RandPhraseSimple("Draw steel, and let's see what color your blood is!", "Well, if you have a death wish...");
@@ -132,7 +132,7 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 		}
 		break;
 
-	//предложение "пойдем выйдем" рассматривается
+	
 	case "fight_off_town":
 		Dialog.Text = RandPhraseSimple("You don't deserve the honor! Defend yourself!", "I have no time! Right here and now!");
 		link.l1 = RandPhraseSimple("Well, if you are longing to die that much...", "Damn it! I'll help you to go straight to hell!");
@@ -145,7 +145,7 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 		}
 		break;
 
-	//что ж, пойдем выйдем
+	
 	case "fight_off_town_prep":
 		SaveCurrentQuestDateParam("questTemp.Duel.StartTime");
 		PChar.questTemp.duel.Start = true;
@@ -153,26 +153,26 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 		sLocation = GetCurrentTown();
 		if (sLocation != "")
 		{
-			//где?
+			
 			sLocation += "_ExitTown";
 			pchar.questTemp.duel.place = sLocation;
 
 			Locations[FindLocation(sLocation)].DisableEncounters = true;
-			//приходит ко времени.
+			
 			pchar.quest.duel_move_opponent2place.win_condition.l1 = "Location";
 			pchar.quest.duel_move_opponent2place.win_condition.l1.location = pchar.questTemp.duel.place;
 			pchar.quest.duel_move_opponent2place.function = "Duel_Move_Opponent2Place";
-			//на случай, если не дождется, часа вполне достаточно
+			
 			SetTimerConditionParam("duel_move_opponentBack", "Duel_Move_OpponentBack", 0, 0, 0, sti(GetTime() + 0.5) + sti(pchar.questTemp.Duel.WaitTime) + 1, false);
 			pchar.quest.duel_move_opponentBack.function = "Duel_Move_OpponentBack";
 			if (CheckAttribute(NPChar, "CityType"))
 			{
-				DeleteAttribute(NPChar, "City"); // чтоб не было ругани с нацией
+				DeleteAttribute(NPChar, "City"); 
 	    		DeleteAttribute(NPChar, "CityType");
 				if (!CheckAttribute(NPChar, "PGGAi")) 
 				{
 					if (!CheckAttribute(NPChar, "LifeDay")) npchar.LifeDay = 0;
-					npchar.LifeDay = sti(npchar.LifeDay) + 3; // чтоб до дуэли не помер
+					npchar.LifeDay = sti(npchar.LifeDay) + 3; 
 				}
     		}
 		}
@@ -180,7 +180,7 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 		DialogExit();
 		break;
 
-	//последнее слово перед боем
+	
 	case "talk_off_town":
 		Dialog.Text = "So, are you ready?";
 		link.l1 = "Yeah. Let's see who's a better person!";
@@ -204,7 +204,7 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 		pchar.questTemp.Duel.End = true;
 		break;
 
-	//дуэли быть!
+	
 	case "fight_right_now":
 		PChar.questTemp.duel.enemy = NPChar.id;
 		AddDialogExitQuestFunction("Duel_Prepare_Fight");
@@ -220,7 +220,7 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 		DialogExit();	
 		break;
 		
-	//передумал, э... не хорошо ;)
+	
 	case "change_mind":
 		if (CheckAttribute(pchar, "questTemp.Duel.End")) LAi_SetWarriorType(NPChar);
 		Dialog.Text = NPCharRepPhrase(NPChar, RandSwear() + 
@@ -238,7 +238,7 @@ void ProcessDuelDialog(ref NPChar, aref Link, aref NextDiag)
 		link.l1.go = "peace";
 		break;
 
-	//мир и все такое.
+	
 	case "peace":
 		LAi_SetWarriorType(NPChar);
 		NextDiag.CurrentNode = "after_peace";

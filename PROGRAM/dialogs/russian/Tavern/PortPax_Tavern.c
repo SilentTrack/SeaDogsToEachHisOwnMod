@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -18,13 +18,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "Buddy, it pretty rare that anybody stops by our colony with prizes and we haven't had a galleon with a name like that. We're a small colony, quiet. We mostly do bull carcasses. Privateers don't usually hang around here –we don't have any brothels here and we've got the Spanish in close proximity. So search for your galleon in some other place.";
+			dialog.text = "Buddy, it pretty rare that anybody stops by our colony with prizes and we haven't had a galleon with a name like that. We're a small colony, quiet. We mostly do bull carcasses. Privateers don't usually hang around here пїЅwe don't have any brothels here and we've got the Spanish in close proximity. So search for your galleon in some other place.";
 			link.l1 = "I see. Thanks for the advice!";
 			link.l1.go = "exit";
 			AddQuestRecord("Guardoftruth", "7");
 			pchar.questTemp.Guardoftruth = "tortuga";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

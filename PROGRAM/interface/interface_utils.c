@@ -1,7 +1,7 @@
 
-//---------------------------------------------------------------------------------------------------
-// scrollimage
-//---------------------------------------------------------------------------------------------------
+
+
+
 void FillScrollImageWithCompanionShips(string sNodeName, int iNotUsed)
 {
 
@@ -25,14 +25,9 @@ void FillScrollImageWithCompanionShips(string sNodeName, int iNotUsed)
 
 		if(cn!= -1)
 		{
-			/*if(GetShipRemovable(&characters[cn]) == 0 && cn != nMainCharacterIndex)
-			{
-				isPossibleToFill = 0;
-			}
-			else
-			{  */
+			 
 				isPossibleToFill = 1;
-			//}
+			
 			if(isPossibleToFill == 1)
 			{
 				iShipType = sti(characters[cn].ship.type);
@@ -53,26 +48,18 @@ void FillScrollImageWithCompanionShips(string sNodeName, int iNotUsed)
 					}
 				}
 			}
-			/*else 
-			{
-				attributeName = "pic" + (i+1);
-				GameInterface.(sNodeName).(attributeName).tex1= 0;
-			}  */
+			 
 		} 
-		/*else 
-		{
-			attributeName = "pic" + (i+1);
-			GameInterface.(sNodeName).(attributeName).tex1= 0;
-		} */
+		 
 	}
 
 	GameInterface.(sNodeName).ListSize = iListSize;
-	//GameInterface.(sNodeName).NotUsed = iNotUsed;	
+	
 	GameInterface.SHIPS_SCROLL.NotUsed = iNotUsed - iListSize + 1;
 
 	SendMessage(&GameInterface, "lsl", MSG_INTERFACE_SCROLL_CHANGE, sNodeName, -1);
 }
-//---------------------------------------------------------------------------------------------------
+
 void FillScrollImageWithFaces(string sNodeName, int iNotUsed, bool bCompanions, bool bPassengers)
 {
 
@@ -94,7 +81,7 @@ void FillScrollImageWithFaces(string sNodeName, int iNotUsed, bool bCompanions, 
 
 	if (bCompanions){
 
-		FillFaceList(sNodeName + ".ImagesGroup", refCharacter, 1); // companions
+		FillFaceList(sNodeName + ".ImagesGroup", refCharacter, 1); 
 
 		for(int n= 0; n< COMPANION_MAX; n++)
 		{
@@ -116,7 +103,7 @@ void FillScrollImageWithFaces(string sNodeName, int iNotUsed, bool bCompanions, 
 
 
 		makearef(pRef,refCharacter.Fellows.Passengers);
-		FillFaceList(sNodeName + ".ImagesGroup", refCharacter, 2); // passengers
+		FillFaceList(sNodeName + ".ImagesGroup", refCharacter, 2); 
 
 		for(int i= 0; i< GetPassengersQuantity(refCharacter); i++)
 		{
@@ -134,34 +121,13 @@ void FillScrollImageWithFaces(string sNodeName, int iNotUsed, bool bCompanions, 
 			}
 		}
 	}
-	/*
-	if (bOfficers)
-	{
-	makearef(pRef,refCharacter.Fellows.Passengers);
-
-	FillFaceList(sNodeName + ".ImagesGroup", refCharacter, 0); // officers
-
-	for(int o= 0; o< 4; o++)
-	{
-	attributeName = "pic" + (iListSize+1);
-	cn = sti(pRef.(PsgAttrName));
-	if(cn!=-1)
-	{
-	GameInterface.(sNodeName).(attributeName).character = cn;
-	GameInterface.(sNodeName).(attributeName).img1 = GetFacePicName(GetCharacter(cn));
-	GameInterface.(sNodeName).(attributeName).tex1 = FindFaceGroupNum(sNodeName+ ".ImagesGroup","FACE128_"+ characters[cn].FaceID);
-
-	iListSize++;		
-	}
-	}
-	}
-	*/
+	 
 	GameInterface.(sNodeName).ListSize = iListSize;
 	GameInterface.(sNodeName).NotUsed = iNotUsed;	
 
 	SendMessage(&GameInterface, "lsl", MSG_INTERFACE_SCROLL_CHANGE, sNodeName, -1);
 }
-/// boal -->
+
 void StartAboveForm(bool _pauseTime)
 {
     ChangeShowIntarface();
@@ -213,7 +179,7 @@ void ChangeShowIntarface()
         }
     }
 }
-// вернуть тип по номеру скрола в ф2 персонаж
+
 string GetOfficerTypeByNum(int nCurScrollNum)
 {
     string ret = "";
@@ -259,7 +225,7 @@ string GetOfficerTypeByNum(int nCurScrollNum)
 	return ret;
 }
 
-////////////////////////////// общие методы для форм
+
 void SetOTHERMiniTable(string _tabName, ref _chr)
 {
     int     i;
@@ -326,7 +292,7 @@ void SetOTHERMiniTable(string _tabName, ref _chr)
 	GameInterface.(_tabName).tr5.td2.str = XI_ConvertString("weight");
 	GameInterface.(_tabName).tr5.td3.str = FloatToString(GetItemsWeight(_chr), 1) + " / "+GetMaxItemsWeight(_chr);
 	
-	// прорисовка
+	
 	Table_UpdateWindow(_tabName);
 }
 void SetSPECIALMiniTable(string _tabName, ref _chr)
@@ -453,11 +419,11 @@ void SetSPECIALMiniTable(string _tabName, ref _chr)
 	       }
 		}
 	}
-	// прорисовка
+	
 	Table_UpdateWindow(_tabName);
 }
 
-// опыт команды нпс _chr
+
 void SetCrewExpTable(ref _chr, string _tabName, string _bar1, string _bar2, string _bar3)
 {
     int     i;
@@ -517,10 +483,10 @@ void SetCrewExpTable(ref _chr, string _tabName, string _bar1, string _bar2, stri
 	{
 		GameInterface.(_tabName).tr3.td3.str = "";
 	}
-	// прорисовка
+	
 	Table_UpdateWindow(_tabName);
 	
-	///  прогресбары
+	
 	GameInterface.StatusLine.(_bar1).Max   = 100;
     GameInterface.StatusLine.(_bar1).Min   = 1;
     if (GetCrewQuantity(_chr) > 0)
@@ -695,7 +661,7 @@ void SetShipOTHERTable(string _tabName, ref _chr)
 	GameInterface.(_tabName).tr8.UserData.ID = "sCannons";
 	GameInterface.(_tabName).tr8.td1.icon.group = "ICONS_CHAR";
     GameInterface.(_tabName).tr8.td1.icon.image = "Caliber";
-	GameInterface.(_tabName).tr8.td2.str = XI_ConvertString("sCannons"); //XI_ConvertString("Caliber");
+	GameInterface.(_tabName).tr8.td2.str = XI_ConvertString("sCannons"); 
 	GameInterface.(_tabName).tr8.td3.str = XI_ConvertString("caliber" + refBaseShip.MaxCaliber) + " / " + sti(refBaseShip.CannonsQuantity);
 	
 	if (!CheckAttribute(&RealShips[iShip], "Tuning.Cannon")) 
@@ -727,7 +693,7 @@ void SetShipOTHERTable(string _tabName, ref _chr)
 	{
 	    GameInterface.(_tabName).tr9.td3.str = "";
 	}
-	// прорисовка
+	
 	Table_UpdateWindow(_tabName);
 }
 
@@ -759,7 +725,7 @@ void SetFoodShipInfo(ref chr, string _textName)
 	}
 }
 
-// Warship 11.07.09 Вывести в текстовое поле инфу о количестве дней, на сколько хватит рому на судне
+
 void SetRumShipInfo(ref _character, String _node)
 {
 	int color, rum;

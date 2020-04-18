@@ -1,4 +1,4 @@
-// Чарли Книппель - старый артиллерист
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld, rItm, rItem;
@@ -16,14 +16,14 @@ void ProcessDialogEvent()
 	if (findsubstr(sAttr, "SetGunBullets1_" , 0) != -1)
  	{
         i = findsubstr(sAttr, "_" , 0);
-	 	NPChar.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); // индекс в конце
+	 	NPChar.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); 
  	    Dialog.CurrentNode = "SetGunBullets2";
  	}
 	
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-		//ветка на взятие 2 варианта прохождения - за Англию
+		
 		if(CheckAttribute(pchar, "questTemp.HWIC.CanTake") && !CheckAttribute(pchar, "questTemp.HWIC.CanTake.Eng") && !CheckAttribute(npchar, "quest.HWICTake") && !CheckAttribute(pchar, "questTemp.HWIC.Holl") && !CheckAttribute(pchar, "questTemp.HWIC.Self"))
 		{
 			dialog.text = "Good day, mister, chain shot to my back! What brings you here?";
@@ -33,7 +33,7 @@ void ProcessDialogEvent()
 			link.l2.go = "Knippel_check";
 			break;
 		}
-		//за Голландию
+		
 		if (CheckAttribute(pchar, "questTemp.HWIC.Holl"))
 		{
 			if (pchar.questTemp.HWIC.Holl == "toKnippel")
@@ -48,7 +48,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			break;
 		}
-		//за Англию
+		
 		if (CheckAttribute(pchar, "questTemp.HWIC.Eng"))
 		{
 			if (pchar.questTemp.HWIC.Eng == "TakeHollConvoy")
@@ -76,7 +76,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 
-//-------------------------------------------за Голландию--------------------------------------------------	
+
 		case "Dominica":
 			dialog.text = "Heh! And how can the old sailor who was grounded long time ago help you, mister?";
 			link.l1 = "See... I am just a common captain and I do regular voyages between Martinique and Curacao. So I had been attacked twice by the ghost ship not far from Martinique... Though she is not the ghost ship, I was able to tear her sails!";
@@ -122,9 +122,9 @@ void ProcessDialogEvent()
 			pchar.quest.toDominica.function = "PrepareToFleetwoodAttack";
 		break;
 
-//----------------------------------------------за Англию--------------------------------------------------	
-		case "Knippel_check"://начинаем проверять нашего ГГ по всем статьям
-			if(makeint(PChar.reputation.nobility) < 41)//низкая репа
+
+		case "Knippel_check":
+			if(makeint(PChar.reputation.nobility) < 41)
 			{
 				PlaySound("VOICE\Russian\hambit\Charlie Knippel-04.wav");
 				dialog.text = "England don't need services from rogues, chain shot to my arse! I can't give you any advice.";
@@ -132,14 +132,14 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				break;
 			}
-			if(GetSummonSkillFromName(pchar, SKILL_SAILING) < 30)//низкая навигация
+			if(GetSummonSkillFromName(pchar, SKILL_SAILING) < 30)
 			{
 				dialog.text = "Captain, our fleet needs more experienced captains. Come back when you will have more skills in navigating.";
 				link.l1 = "I see... Then I will see you later.";
 				link.l1.go = "exit";
 				break;
 			}
-			if(sti(Pchar.rank) > 15)//высокий ранг
+			if(sti(Pchar.rank) > 15)
 			{
 				PlaySound("VOICE\Russian\hambit\Charlie Knippel-03.wav");
 				dialog.text = "You are too famous at the archipelago, captain. I doubt that you would be interested in my missions, though I don't have any missions anyway.";
@@ -152,7 +152,7 @@ void ProcessDialogEvent()
 			link.l1.go = "Knippel_task";
 		break;
 		
-		case "Knippel_task"://первое задание
+		case "Knippel_task":
 			dialog.text = "The silver caravan of the Dutch West India Company left Willemstad of Curacao one or two days ago. It is sailing to Philipsburg. There are only a few ships in the caravan. Ost-indian with the silver in her cargo hold and one or two patrol ships. Intercept this caravan, capture the Ost-indian with the silver in her and bring her at Antigua. You can sink the escort though, chain shot to their livers!";
 			link.l1 = "Fine, I am on my way!";
 			link.l1.go = "Knippel_task_1";			
@@ -167,14 +167,14 @@ void ProcessDialogEvent()
 		case "Knippel_task_2":
 			DialogExit();
 			npchar.quest.HWICTake = "true";
-			pchar.questTemp.HWIC.CanTake.Eng = "true";//признак, что английка уже бралась
+			pchar.questTemp.HWIC.CanTake.Eng = "true";
 			HWICSilverConvoyInWorld();
 			AddQuestRecord("Holl_Gambit", "2-1");
 			pchar.questTemp.HWIC.Eng = "begin";
 			SetFunctionTimerCondition("HollConvoy_Over", 0, 0, 15, false);
 		break;
 		
-		case "HollConvoy_Check"://начинаем проверять
+		case "HollConvoy_Check":
 			int iHal = 0;
 			for(i = 0; i < COMPANION_MAX; i++)
 			{
@@ -185,7 +185,7 @@ void ProcessDialogEvent()
 					pchar.questTemp.HWIC.Eng.CompanionIndex = sld.Index;
 					if(sti(RealShips[sti(sld.ship.type)].basetype) == SHIP_EASTINDIAMAN) iHal++;
 				}
-			}//признак наличия ТГ в компаньонах
+			}
 			if (iHal > 0)
 			{
 				amount = sti(pchar.questTemp.HWIC.Eng.SlvQty) - GetSquadronGoods(pchar, GOOD_SILVER);
@@ -220,7 +220,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			AddQuestRecord("Holl_Gambit", "2-3");
 			CloseQuestHeader("Holl_Gambit");
-			DeleteAttribute(pchar, "questTemp.HWIC.Eng");//зачищаем для возможности отката к голландскому варианту
+			DeleteAttribute(pchar, "questTemp.HWIC.Eng");
 			pchar.questTemp.HWIC.Fail2 = "true";
 		break;
 		
@@ -237,7 +237,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Fleetwood_house":
-			dialog.text = "I've been asking myself the same thing… Some bastard had thrown pepper in patron's eyes and stabbed him in the chest, before Richard managed to grab his blade. Assassin was planning to end Richard with one hit, since he didn't have time for another, but he failed - commander always carry an armour under his clothes\Filthy scum, chain shot to his liver, managed to flee. It looks like he has friends in the city. The only detail we have about him - he has only one eye. It won't help us much though, there are plenty of Cyclops like him these days\nRichard has lost a lot of blood and didn't washed his eyes immediately, so he is almost blind now...";
+			dialog.text = "I've been asking myself the same thingпїЅ Some bastard had thrown pepper in patron's eyes and stabbed him in the chest, before Richard managed to grab his blade. Assassin was planning to end Richard with one hit, since he didn't have time for another, but he failed - commander always carry an armour under his clothes\Filthy scum, chain shot to his liver, managed to flee. It looks like he has friends in the city. The only detail we have about him - he has only one eye. It won't help us much though, there are plenty of Cyclops like him these days\nRichard has lost a lot of blood and didn't washed his eyes immediately, so he is almost blind now...";
 			link.l1 = "Well, I am sorry for your commander. Did they search for the attacker?";
 			link.l1.go = "Fleetwood_house_1";
 		break;
@@ -249,11 +249,11 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Fleetwood_house_2":
-			chrDisableReloadToLocation = true;//закрыть локацию
-			bDisableFastReload = true;//закроем быстрый переход
+			chrDisableReloadToLocation = true;
+			bDisableFastReload = true;
 			LocatorReloadEnterDisable("SentJons_town", "reload1_back", true);
 			LocatorReloadEnterDisable("SentJons_town", "reload2_back", true);
-			LocatorReloadEnterDisable("SentJons_town", "gate_back", true);//чтобы не сбежал
+			LocatorReloadEnterDisable("SentJons_town", "gate_back", true);
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "SentJons_town", "reload", "houseH1", "OpenTheDoors", -1);
@@ -283,17 +283,17 @@ void ProcessDialogEvent()
 		case "Knippel_ToOfficer_1":
 			LocatorReloadEnterDisable("SentJons_town", "reload1_back", false);
 			LocatorReloadEnterDisable("SentJons_town", "reload2_back", false);
-			LocatorReloadEnterDisable("SentJons_town", "gate_back", false);//откроем локаторы
-			//Книппеля - в офицеры
+			LocatorReloadEnterDisable("SentJons_town", "gate_back", false);
+			
 			npchar.quest.OfficerPrice = sti(pchar.rank)*500;
 			Pchar.questTemp.HiringOfficerIDX = GetCharacterIndex(npchar.id);
-			npchar.OfficerWantToGo.DontGo = true; //не пытаться уйти
-			npchar.HalfImmortal = true;//полубессмертен
+			npchar.OfficerWantToGo.DontGo = true; 
+			npchar.HalfImmortal = true;
 			npchar.loyality = 20;
 			AddDialogExitQuestFunction("LandEnc_OfficerHired");
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
-			SetFunctionTimerCondition("GotoBridgetownOver", 0, 0, 30, false);//на все дела - 1 месяц
+			SetFunctionTimerCondition("GotoBridgetownOver", 0, 0, 30, false);
 			AddSimpleRumourCity("They say, captain, that Richard Fleetwood himself is very interested in you. You are a very important person in our town, I can tell you.", "SentJons", 10, 3, "");
 		break;
 		
@@ -332,7 +332,7 @@ void ProcessDialogEvent()
 			}
 			PChar.quest.Munity = "Deads";
 			LAi_LocationFightDisable(&Locations[FindLocation("Ship_deck")], false);
-			if(sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_VALCIRIA)//если сам на Валькирии
+			if(sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_VALCIRIA)
 			{
 				pchar.Ship.Type = GenerateShipExt(SHIP_TARTANE, true, pchar);
 				pchar.Ship.name = "Boat";
@@ -359,14 +359,14 @@ void ProcessDialogEvent()
 			}
 			LAi_CharacterDisableDialog(npchar);
 			LAi_SetImmortal(npchar, true);
-			ChangeCharacterAddressGroup(npchar, "SentJons_houseH1", "goto", "goto1");//Книппеля домой
+			ChangeCharacterAddressGroup(npchar, "SentJons_houseH1", "goto", "goto1");
 			pchar.questTemp.HWIC.Eng = "end";
 			pchar.questTemp.HWIC.Detector = "eng_fail";
 			CloseQuestHeader("Holl_Gambit");
 		break;
 		
 		case "OnCuracao":
-			pchar.quest.HWICEng_toBarbadosOver.over = "yes";//снять прерывание
+			pchar.quest.HWICEng_toBarbadosOver.over = "yes";
 			dialog.text = "Greetings, captain. Glad to see you!";
 			link.l1 = "Greetings, Charlie. Do you have the money? Give them to me and let's go to Willemstad for Abigail. Will you join me?";
 			link.l1.go = "OnCuracao_1";	
@@ -389,11 +389,11 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = "OnCuracao_4";
 			AddMoneyToCharacter(pchar, 200000);
 			LAi_SetCitizenType(npchar);
-			npchar.lifeday = 1;//еще денек пусть погуляет по пляжу
+			npchar.lifeday = 1;
 			pchar.quest.Holland_ShoreAttack.win_condition.l1 = "location";
 			pchar.quest.Holland_ShoreAttack.win_condition.l1.location = "Curacao";
-			pchar.quest.Holland_ShoreAttack.function = "CreateHollandShorePatrol";//патруль в прибрежных водах
-			LocatorReloadEnterDisable("SentJons_town", "basement1_back", false);//открыть подземелье
+			pchar.quest.Holland_ShoreAttack.function = "CreateHollandShorePatrol";
+			LocatorReloadEnterDisable("SentJons_town", "basement1_back", false);
 			pchar.questTemp.HWIC.Eng = "MerdokMeeteng";
 			AddQuestRecordInfo("LetterFromFleetwood", "1");
 			AddQuestRecord("Holl_Gambit", "2-23");
@@ -412,7 +412,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(npchar, "LifeDay");
 			npchar.quest.OfficerPrice = sti(pchar.rank)*200;
 			npchar.OfficerWantToGo.DontGo = true;
-			DeleteAttribute(npchar, "CompanionDisable");//теперь можем и в компаньоны
+			DeleteAttribute(npchar, "CompanionDisable");
 			DeleteAttribute(npchar, "HalfImmortal");
 			npchar.loyality = MAX_LOYALITY;
 			AddPassenger(pchar, npchar, false);
@@ -434,7 +434,7 @@ void ProcessDialogEvent()
 			LAi_ActorRunToLocation(npchar, "reload", "reload2", "none", "", "", "", -1);
 		break;
 		
-//------------------------------------------------против всех-----------------------------------------------
+
 		case "Knippel_abordage":
 			dialog.text = "Filthy bastard! Why have you attacked this peaceful Dutch ship? I don't have any valuable goods or gold, chain shot to my back!";
 			link.l1 = "Dutch ship? Ha-ha! Don't make me laugh, 'Dutch'. I have attacked your brigantine in order to capture you, dear Charlie. Welcome to my cargo hold. We will have a talk about where to you were sailing and why...";
@@ -449,7 +449,7 @@ void ProcessDialogEvent()
 			LAi_SetPlayerType(pchar);
 			pchar.questTemp.HWIC.Self = "KnippelPrisoner";
 			npchar.lifeday = 0;
-			SetFunctionTimerCondition("RemoveKnippelOver", 0, 0, 1, false);//таймер до конца суток, ибо нефиг
+			SetFunctionTimerCondition("RemoveKnippelOver", 0, 0, 1, false);
 		break;
 		
 		case "Knippel_prisoner":
@@ -477,10 +477,10 @@ void ProcessDialogEvent()
 			sld = characterFromId("KnippelClone");
 			LAi_SetActorType(sld);
 			LAi_ActorAnimation(sld, "Ground_StandUp", "Kill_Knippel", 3.5);
-			pchar.quest.RemoveKnippelOver.over = "yes";//снять таймер
+			pchar.quest.RemoveKnippelOver.over = "yes";
 		break;
 		
-		//--> ----------------------------------- офицерский блок ------------------------------------------
+		
 		case "Knippel_officer":
 			dialog.text = "I am listening to you, captain, chain shot to my cave!";
 			if (CheckAttribute(pchar, "questTemp.Dolly_Tieyasal") && !CheckAttribute(npchar, "quest.Tieyasal"))
@@ -557,9 +557,9 @@ void ProcessDialogEvent()
             Link.l1 = "Dismissed.";
             Link.l1.go = "Exit";
         break;
-	//<-- ----------------------------------- офицерский блок ----------------------------------------
 	
-	// на Тайясаль
+	
+	
 		case "tieyasal":
 			dialog.text = "I have become really attached to you during my service, "+pchar.name+", and I don't leave my captains. I am with you!";
 			link.l1 = "Thank you, Charlie! I am glad that I was right about you.";
@@ -583,13 +583,13 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//--> блок реагирования на попытку залезть в сундук
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("You are a "+ GetSexPhrase("thief, mister! Guards, take him","thief, girl! Guards, take her") +"!!!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest! Take the thief!!!", "Guards! Robbery! Take the thief!!!");
 			link.l1 = "Damn it!";
 			link.l1.go = "exit";
 			LAi_group_Attack(NPChar, Pchar);
 		break;
-		//<-- блок реагирования на попытку залезть в сундук
+		
 	}
 }

@@ -29,8 +29,8 @@ void InitShips()
 		refShip.Height.Knippels.Y	= 25.0;		refShip.Height.Knippels.DY	= 15.0;
 		refShip.Height.Balls.Y		= 3.0;		refShip.Height.Balls.DY		= 1.0;
 
-        refship.WindAgainstSpeed   	= 1.0;//boal
-		refship.CabinType          	= "Cabin_Small"; // потом припишем слово My_ и будет каютой для ГГ
+        refship.WindAgainstSpeed   	= 1.0;
+		refship.CabinType          	= "Cabin_Small"; 
         refShip.AbordageLocation	= "BOARDING_SMALL_DECK";
         refship.DeckType          	= "Low";
         
@@ -87,9 +87,9 @@ void InitShips()
 		cannonl.FireAngMax	= 0.60;
 	}
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// Лодка
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_BOAT]);
 	refShip.Name									= "Boat";
 	refship.Soundtype								= "lugger";
@@ -125,12 +125,12 @@ void InitShips()
 	refship.InertiaAccelerationY	= 0.4;	refship.InertiaBrakingY		= 0.2;
 	refship.InertiaAccelerationZ	= 0.15;	refship.InertiaBrakingZ		= 0.05;
 	
-	//////////////////////////////////////////////////////////////////////////
-	//// ОРДИНАРНЫЕ КОРАБЛИ
-	//////////////////////////////////////////////////////////////////////////		
-	///////////////////////////////////////////////////////////////////////////
-	//// Баркас
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_TARTANE]);
 	refShip.Name									= "Tartane";
 	refship.Soundtype								= "lugger";
@@ -188,9 +188,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// Тартана
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_WAR_TARTANE]);
 	refShip.Name								= "WarTartane";
 	refship.Soundtype							= "lugger";
@@ -199,7 +199,7 @@ void InitShips()
 	refShip.MaxCaliber							= 3;
 	refShip.Weight								= Tonnes2CWT(30);
 	refShip.Capacity							= 210;
-	refShip.CannonsQuantity						= 6; // 0,0,3,3
+	refShip.CannonsQuantity						= 6; 
 	refShip.CannonsQuantityMin					= 6;
 	refShip.rcannon 							= 3; 
 	refShip.lcannon 							= 3; 
@@ -253,9 +253,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= true;
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Барк
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_BARQUE]);
 	refShip.Name            			= "Barque";
 	refship.Soundtype					= "lugger";
@@ -264,7 +264,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 6;
 	refShip.Weight						= Tonnes2CWT(350);
 	refShip.Capacity       				= 1500;
-	refShip.CannonsQuantity				= 14; // 0,2,6,6    0,2,5,5
+	refShip.CannonsQuantity				= 14; 
 	refShip.CannonsQuantityMin			= 12;
 	refShip.rcannon 					= 6;
 	refShip.lcannon 					= 6;
@@ -317,9 +317,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// Торговая шхуна
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_SCHOONER]);
 	refShip.Name            			= "Schooner";
 	refship.Soundtype					= "lugger";
@@ -329,7 +329,7 @@ void InitShips()
 	refShip.Weight						= Tonnes2CWT(250);
 	refShip.Capacity        			= 1700;	
 
-	refShip.CannonsQuantity				= 12; //	нуна буит 5/5/0/2
+	refShip.CannonsQuantity				= 12; 
 	refShip.CannonsQuantityMin			= 10;
 	refShip.rcannon 					= 5;
 	refShip.lcannon 					= 5;
@@ -385,9 +385,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// Баркентина
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_BARKENTINE]);
 	refShip.Name            			= "Barkentine";
 	refship.Soundtype					= "lugger";
@@ -396,7 +396,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 16;
 	refShip.Weight						= Tonnes2CWT(300);
 	refShip.Capacity       				= 2000;
-	refShip.CannonsQuantity				= 14; // 2,2,5,5     2,2,4,4
+	refShip.CannonsQuantity				= 14; 
 	refShip.CannonsQuantityMin			= 12;
 	refShip.rcannon 					= 5;
 	refShip.lcannon 					= 5;
@@ -456,9 +456,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Шнява
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_SHNYAVA]);
 	refShip.Name            			= "Shnyava";
 	refship.Soundtype					= "lugger";
@@ -467,7 +467,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 18;
 	refShip.Weight						= Tonnes2CWT(350);
 	refShip.Capacity       				= 2250;
-	refShip.CannonsQuantity				= 16;	// 2,0,7,7	2,0,6,6
+	refShip.CannonsQuantity				= 16;	
 	refShip.CannonsQuantityMin			= 14;
 	refShip.rcannon 					= 7;
 	refShip.lcannon 					= 7;
@@ -527,9 +527,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// Флейт  
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_FLEUT]);
 	refShip.Name            			= "Fleut";
 	refship.Soundtype					= "corvette";
@@ -538,7 +538,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 16;	
 	refShip.Weight						= Tonnes2CWT(450);	
 	refShip.Capacity        			= 3000;	
-	refShip.CannonsQuantity				= 16; // 2,2,6,6     2,2,5,5
+	refShip.CannonsQuantity				= 16; 
 	refShip.CannonsQuantityMin			= 14;
 	refShip.rcannon 					= 6;
 	refShip.lcannon 					= 6;
@@ -595,9 +595,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 		
-	///////////////////////////////////////////////////////////////////////////
-	//// Каравелла
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_CARAVEL]);
 	refShip.Name            			= "Caravel";
 	refship.Soundtype					= "corvette";
@@ -606,7 +606,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 20;
 	refShip.Weight						= Tonnes2CWT(850);
 	refShip.Capacity        			= 3500;
-	refShip.CannonsQuantity				= 20; // 2,2,8,8    2,2,7,7
+	refShip.CannonsQuantity				= 20; 
 	refShip.CannonsQuantityMin			= 18;
 	refShip.rcannon 					= 8;
 	refShip.lcannon 					= 8;
@@ -662,9 +662,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// Пинас
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_PINNACE]);
 	refShip.Name            			= "Pinnace";
 	refship.Soundtype					= "frigate";
@@ -673,7 +673,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 18;	
 	refShip.Weight						= Tonnes2CWT(800);	
 	refShip.Capacity        			= 4500;	
-	refShip.CannonsQuantity				= 18; // 2,4,6,6	2,4,5,5
+	refShip.CannonsQuantity				= 18; 
 	refShip.CannonsQuantityMin			= 16;
 	refShip.rcannon 					= 6;
 	refShip.lcannon 					= 6;
@@ -736,9 +736,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Каракка
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_CARACCA]);
 	refShip.Name            			= "Caracca";
 	refship.Soundtype					= "corvette";
@@ -747,7 +747,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 18;	
 	refShip.Weight						= Tonnes2CWT(750);
 	refShip.Capacity        			= 4000;
-	refShip.CannonsQuantity				= 20; // 2,2,8,8	2,2,7,7
+	refShip.CannonsQuantity				= 20; 
 	refShip.CannonsQuantityMin			= 18;
 	refShip.rcannon 					= 8;
 	refShip.lcannon 					= 8;
@@ -775,7 +775,7 @@ void InitShips()
 	refship.TurnDependWeight			= 0.2;
 	refship.WindAgainstSpeed   			= 0.75;
 	
-	refship.CabinType          			= "Cabin_Medium2"; // boal 28.03.05
+	refship.CabinType          			= "Cabin_Medium2"; 
 	refship.DeckType           			= "Medium";
 		
 	refship.InertiaAccelerationX	= 4.0;	refship.InertiaBrakingX		= 4.0;
@@ -809,9 +809,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Навио
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_NAVIO]);
 	refShip.Name            			= "Navio";
 	refship.Soundtype					= "frigate";
@@ -820,7 +820,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 20;
 	refShip.Weight						= Tonnes2CWT(1100);
 	refShip.Capacity        			= 5000;
-	refShip.CannonsQuantity				= 36; // 2,4,14,14	2,4,13,13	2,4,12,12
+	refShip.CannonsQuantity				= 36; 
 	refShip.CannonsQuantityMin			= 32;
 	refShip.rcannon 					= 15;
 	refShip.lcannon 					= 15;
@@ -883,9 +883,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// Ост-Индец
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_EASTINDIAMAN]);
 	refShip.Name            			= "EastIndiaMan";
 	refship.Soundtype					= "frigate";
@@ -894,7 +894,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 24;
 	refShip.Weight						= Tonnes2CWT(1000);
 	refShip.Capacity        			= 5800;
-	refShip.CannonsQuantity				= 36;	// 0,6,15,15	0,6,14,14	0,6,13,13
+	refShip.CannonsQuantity				= 36;	
 	refShip.CannonsQuantityMin			= 32;
 	refShip.rcannon 					= 15;
 	refShip.lcannon 					= 15;
@@ -957,9 +957,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// Курьерский люггер
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_CAREERLUGGER]);
 	refShip.Name            			= "LuggerQuest";
 	refship.Soundtype					= "lugger";
@@ -968,7 +968,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 12;
 	refShip.Weight						= Tonnes2CWT(120);	
 	refShip.Capacity        			= 550;
-	refShip.CannonsQuantity				= 10; // 0,2,4,4	0,2,3,3
+	refShip.CannonsQuantity				= 10; 
 	refShip.CannonsQuantityMin			= 8;
 	refShip.rcannon 					= 4;
 	refShip.lcannon 					= 4;
@@ -1022,9 +1022,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Люггер
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_LUGGER]);
 	refShip.Name            			= "Lugger";
 	refship.Soundtype					= "lugger";
@@ -1033,7 +1033,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 6;
 	refShip.Weight						= Tonnes2CWT(150);
 	refShip.Capacity        			= 670;
-	refShip.CannonsQuantity				= 12;	//2,2,4,4	2,2,3,3
+	refShip.CannonsQuantity				= 12;	
 	refShip.CannonsQuantityMin			= 10;
 	refShip.rcannon 					= 4;
 	refShip.lcannon 					= 4;
@@ -1087,9 +1087,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= true;
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// Шлюп
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_SLOOP]);
 	refShip.Name            			= "Sloop";
 	refship.Soundtype					= "lugger";
@@ -1098,7 +1098,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 12;
 	refShip.Weight						= Tonnes2CWT(170);
 	refShip.Capacity        			= 900;	
-	refShip.CannonsQuantity				= 14; // 2,2,5,5	2,2,4,4
+	refShip.CannonsQuantity				= 14; 
 	refShip.CannonsQuantityMin			= 12;
 	refShip.rcannon 					= 5;
 	refShip.lcannon 					= 5;
@@ -1155,9 +1155,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= true;
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// Бригантина 
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_BRIGANTINE]);
 	refShip.Name            			= "Brigantine";
 	refship.Soundtype					= "corvette";
@@ -1166,7 +1166,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 18;	
 	refShip.Weight						= Tonnes2CWT(320);	
 	refShip.Capacity        			= 1800;
-	refShip.CannonsQuantity				= 16; // 2,0,7,7	2,0,6,6
+	refShip.CannonsQuantity				= 16; 
 	refShip.CannonsQuantityMin			= 14;
 	refShip.rcannon 					= 7;
 	refShip.lcannon 					= 7;
@@ -1227,9 +1227,9 @@ void InitShips()
 	refship.nation.holland	= false;
 	refship.nation.pirate	= true;
     	
-	///////////////////////////////////////////////////////////////////////////
-	//// Бриг
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_BRIG]);
 	refShip.Name            			= "Brig";
 	refship.Soundtype					= "lugger";
@@ -1238,7 +1238,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 18;
 	refShip.Weight						= Tonnes2CWT(300);
 	refShip.Capacity        			= 1350;
-	refShip.CannonsQuantity				= 16; // 2,2,6,6	2,2,5,5
+	refShip.CannonsQuantity				= 16; 
 	refShip.CannonsQuantityMin			= 14;
 	refShip.rcannon 					= 6;
 	refShip.lcannon 					= 6;
@@ -1266,7 +1266,7 @@ void InitShips()
 	refship.SubSeaDependWeight			= 0.6;
 	refship.TurnDependWeight			= 0.3;
 	refship.WindAgainstSpeed   			= 0.55;
-	refship.CabinType          			= "Cabin_Medium"; // boal 28.03.05
+	refship.CabinType          			= "Cabin_Medium"; 
 	
 	refship.InertiaAccelerationX	= 5.5;	refship.InertiaBrakingX		= 5.5;
 	refship.InertiaAccelerationY	= 8;	refship.InertiaBrakingY		= 8;
@@ -1299,9 +1299,9 @@ void InitShips()
 	refship.nation.holland	= false;
 	refship.nation.pirate	= true;
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Военная шхуна
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_SCHOONER_W]);
 	refShip.Name            			= "Schooner_W";
 	refship.Soundtype					= "lugger";
@@ -1311,7 +1311,7 @@ void InitShips()
 	
 	refShip.Weight						= Tonnes2CWT(220);
 	refShip.Capacity        			= 1350;
-	refShip.CannonsQuantity				= 18; // 2,2,7,7	2,2,6,6
+	refShip.CannonsQuantity				= 18; 
 	refShip.CannonsQuantityMin			= 16;
 	refShip.rcannon 					= 7;
 	refShip.lcannon 					= 7;
@@ -1368,9 +1368,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= true;
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// Галеон 
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_GALEON_L]);
 	refShip.Name            			= "Galeon_l";
 	refship.Soundtype					= "corvette";
@@ -1379,7 +1379,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 20;
 	refShip.Weight						= Tonnes2CWT(720);
 	refShip.Capacity        			= 3000;
-	refShip.CannonsQuantity				= 20; // 2,2,9,9	2,2,8,8
+	refShip.CannonsQuantity				= 20; 
 	refShip.CannonsQuantityMin			= 18;
 	refShip.rcannon 					= 8;
 	refShip.lcannon 					= 8;
@@ -1440,9 +1440,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= true;
 		
-	///////////////////////////////////////////////////////////////////////////
-	//// Корвет
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_CORVETTE]);
 	refShip.Name            			= "Corvette";
 	refship.Soundtype					= "corvette";
@@ -1451,7 +1451,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 20;
 	refShip.Weight						= Tonnes2CWT(600);
 	refShip.Capacity        			= 2700;
-	refShip.CannonsQuantity				= 20; // 2,2,8,8	2,2,7,7
+	refShip.CannonsQuantity				= 20; 
 	refShip.CannonsQuantityMin			= 18;
 	refShip.rcannon 					= 8;
 	refShip.lcannon 					= 8;
@@ -1513,9 +1513,9 @@ void InitShips()
 	refship.nation.holland	= false;
 	refship.nation.pirate	= true;
 
-	//////////////////////////////////////////////////////////////////////////
-	//// Шебека
-	//////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_XebekVML]);
 	refShip.Name						= "XebekVML";
 	refship.Soundtype					= "lugger";
@@ -1524,7 +1524,7 @@ void InitShips()
 	refShip.MaxCaliber  				= 20;
 	refShip.Weight						= Tonnes2CWT(500);
 	refShip.Capacity   					= 2500;
-	refShip.CannonsQuantity				= 22; // 4,2,6,6	4,2,5,5	4,2,4,4
+	refShip.CannonsQuantity				= 22; 
 	refShip.CannonsQuantityMin			= 20;
 	refShip.rcannon 					= 8;
 	refShip.lcannon 					= 8;
@@ -1587,9 +1587,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// Полакр
-	///////////////////////////////////////////////////////////////////////////	
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_POLACRE]);
 	refShip.Name						= "Polacre";
 	refship.Soundtype					= "lugger";
@@ -1598,7 +1598,7 @@ void InitShips()
 	refShip.MaxCaliber  				= 20;
 	refShip.Weight						= Tonnes2CWT(550);
 	refShip.Capacity   					= 2750;
-	refShip.CannonsQuantity				= 22; // 2,2,9,9    2,2,8,8	2,2,7,7 
+	refShip.CannonsQuantity				= 22; 
 	refShip.CannonsQuantityMin			= 18;
 	refShip.rcannon 					= 9;
 	refShip.lcannon 					= 9;
@@ -1662,9 +1662,9 @@ void InitShips()
 	refship.nation.pirate	= false;
 		
 		
-	///////////////////////////////////////////////////////////////////////////
-	//// Тяжелый Галеон
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_GALEON_H]);
 	refShip.Name            			= "Galeon_h";
 	refship.Soundtype					= "frigate";
@@ -1674,7 +1674,7 @@ void InitShips()
 	refShip.Weight						= Tonnes2CWT(1050);
 	refShip.Capacity        			= 5100;
 	
-	refShip.CannonsQuantity				= 54;	// 4,6,22,22	4,6,21,21	4,6,20,20	4,6,19,19    4,6,18,18
+	refShip.CannonsQuantity				= 54;	
 	refShip.CannonsQuantityMin			= 48;
 	refShip.rcannon 					= 22;
 	refShip.lcannon 					= 22;
@@ -1737,9 +1737,9 @@ void InitShips()
 	refship.nation.holland	= false;
 	refship.nation.pirate	= true;
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// Фрегат 
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_FRIGATE]);
 	refShip.Name            			= "Frigate";
 	refship.Soundtype					= "frigate";
@@ -1811,9 +1811,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Тяжелый фрегат
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_FRIGATE_H]);
 	refShip.Name            			= "Frigate_h";
 	refship.Soundtype					= "frigate";
@@ -1822,7 +1822,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 32;
 	refShip.Weight						= Tonnes2CWT(1200);
 	refShip.Capacity        			= 4250;
-	refShip.CannonsQuantity				= 50;	// 4,6,20,20	4,6,19,19	4,6,18,18
+	refShip.CannonsQuantity				= 50;	
 	refShip.CannonsQuantityMin			= 46;
 	refShip.rcannon 					= 20;
 	refShip.lcannon 					= 20;
@@ -1851,7 +1851,7 @@ void InitShips()
 	refship.SubSeaDependWeight			= 1.0;
 	refship.TurnDependWeight			= 0.3;
 	refship.WindAgainstSpeed   			= 0.45;
-	refship.CabinType          			= "Cabin"; // boal 28.03.05
+	refship.CabinType          			= "Cabin"; 
 	refship.DeckType           			= "Big";
 		
 	refship.InertiaAccelerationX	= 5.0;	refship.InertiaBrakingX		= 5.0;
@@ -1887,18 +1887,18 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Военный корабль
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_LINESHIP]);
 	refShip.Name            			= "Lineship";
 	refship.Soundtype					= "lineship";
-	refShip.Class						= 1;   // на деле это воен кор
+	refShip.Class						= 1;   
 	refShip.Cannon          			= CANNON_TYPE_CANNON_LBS24;
 	refShip.MaxCaliber      			= 32;
 	refShip.Weight						= Tonnes2CWT(2000);
 	refShip.Capacity        			= 5700;
-	refShip.CannonsQuantity				= 56;	// 2,4,25,25	2,4,24,24	2,4,23,23	2,4,22,22
+	refShip.CannonsQuantity				= 56;	
 	refShip.CannonsQuantityMin			= 48;
 	refShip.rcannon 					= 25;
 	refShip.lcannon 					= 25;
@@ -1961,9 +1961,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= true;
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Французский линейный корабль
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_LSHIP_FRA]);
 	refShip.Name            			= "Warship";  
 	refship.Soundtype					= "lineship";
@@ -2035,9 +2035,9 @@ void InitShips()
 	refship.nation.holland	= false;
 	refship.nation.pirate	= false;
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Голландский линейный корабль 
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_LSHIP_HOL]);
 	refShip.Name            			= "Battleship";
 	refship.Soundtype					= "lineship";
@@ -2046,7 +2046,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 42;
 	refShip.Weight						= Tonnes2CWT(3200);
 	refShip.Capacity        			= 7400;
-	refShip.CannonsQuantity				= 80;	// 2,6,35,35      2,6,34,34     2,6,33,33     2,6,32,32     2,6,31,31      2,6,30,30
+	refShip.CannonsQuantity				= 80;	
 	refShip.CannonsQuantityMin			= 72;
 	refShip.rcannon 					= 36;
 	refShip.lcannon 					= 36;
@@ -2109,9 +2109,9 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Испанский линейный корабль
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_LSHIP_SPA]);
 	refShip.Name            			= "Manowar";
 	refship.Soundtype					= "manowar";
@@ -2120,7 +2120,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 42;
 	refShip.Weight						= Tonnes2CWT(3700);
 	refShip.Capacity        			= 8600;
-	refShip.CannonsQuantity				= 102; // 4,4,40,40   4,4,39,39    4,4,38,38     4,4,37,37    4,4,36,36     4,4,35,35
+	refShip.CannonsQuantity				= 102; 
 	refShip.CannonsQuantityMin			= 92;
 	refShip.rcannon 					= 45;
 	refShip.lcannon 					= 45;
@@ -2183,9 +2183,9 @@ void InitShips()
 	refship.nation.holland	= false;
 	refship.nation.pirate	= false;
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Английский линейный корабль
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_LSHIP_ENG]);
 	refShip.Name            			= "Manowar_e";
 	refship.Soundtype					= "manowar";
@@ -2196,7 +2196,7 @@ void InitShips()
 	refShip.Capacity        			= 9200;
 	refShip.CannonsQuantity				= 112;
 	refShip.CannonsQuantityMin			= 102;
-	refShip.rcannon 					= 50; // 6,8,40,40	6,8,39,39	6,8,38,38	6,8,37,37	6,8,36,36	6,8,35,35
+	refShip.rcannon 					= 50; 
 	refShip.lcannon 					= 50;
 	refShip.fcannon 					= 4;
 	refShip.bcannon 					= 8;		
@@ -2220,7 +2220,7 @@ void InitShips()
 	refship.SubSeaDependWeight			= 1.8;
 	refship.TurnDependWeight			= 0.45;
 	refship.WindAgainstSpeed   			= 0.25;
-	refship.CabinType          			= "Cabin_Huge"; // boal 28.03.05
+	refship.CabinType          			= "Cabin_Huge"; 
 	refship.DeckType           			= "Big";
 	
 	refship.InertiaAccelerationX	= 1.5;	refship.InertiaBrakingX		= 1.5;
@@ -2256,12 +2256,12 @@ void InitShips()
 	refship.nation.holland	= false;
 	refship.nation.pirate	= false;
 	
-	//////////////////////////////////////////////////////////////////////////
-	//// КВЕСТОВЫЕ КОРАБЛИ
-	//////////////////////////////////////////////////////////////////////////	
-	//////////////////////////////////////////////////////////////////////////
-	//// Легкая шебека "Мэйфэнг" -квестовый
-	//////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_MAYFANG]);
 	refShip.Name					= "Mayfang";
 	refship.Soundtype				= "lugger";
@@ -2270,7 +2270,7 @@ void InitShips()
 	refShip.MaxCaliber  			= 20;
 	refShip.Weight					= Tonnes2CWT(270);
 	refShip.Capacity   				= 1900;
-	refShip.CannonsQuantity			= 20;	// 4,2,7,7
+	refShip.CannonsQuantity			= 20;	
 	refShip.CannonsQuantityMin		= 20;
 	refShip.rcannon 				= 7;
 	refShip.lcannon 				= 7;
@@ -2326,9 +2326,9 @@ void InitShips()
 	refship.Track2.Width	= "4.0, 6.0";
 	refship.Track2.Speed	= "0.15, 0.25";
 	
-	//////////////////////////////////////////////////////////////////////////
-	//// Приватирский кеч "Мираж" - квестовый
-	//////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_MIRAGE]);
 	refShip.Name				= "Mirage";
 	refship.Soundtype			= "lugger";
@@ -2337,7 +2337,7 @@ void InitShips()
 	refShip.MaxCaliber  		= 20;
 	refShip.Weight				= Tonnes2CWT(290);
 	refShip.Capacity   			= 2300;
-	refShip.CannonsQuantity		= 22;	//	4,2,6,6
+	refShip.CannonsQuantity		= 22;	
 	refShip.CannonsQuantityMin	= 22;
 	refShip.rcannon 			= 8;
 	refShip.lcannon 			= 8
@@ -2391,9 +2391,9 @@ void InitShips()
 	refship.Track2.Width	= "4.0, 6.0";
 	refship.Track2.Speed	= "0.15, 0.25";
 
-	//////////////////////////////////////////////////////////////////////////
-	//// Патрульный бриг "Валькирия"  - квестовый
-	//////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_VALCIRIA]);
 	refShip.Name				= "Valciria";
 	refship.Soundtype			= "lugger";
@@ -2402,7 +2402,7 @@ void InitShips()
 	refShip.MaxCaliber  		= 20;
 	refShip.Weight				= Tonnes2CWT(310);
 	refShip.Capacity   			= 2000;
-	refShip.CannonsQuantity		= 20;	// 2,2,8,8
+	refShip.CannonsQuantity		= 20;	
 	refShip.CannonsQuantityMin	= 20;
 	refShip.rcannon 			= 8;
 	refShip.lcannon 			= 8;
@@ -2459,9 +2459,9 @@ void InitShips()
 	refship.Track2.Width	= "4.0, 6.0";
 	refship.Track2.Speed	= "0.15, 0.25";
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Малый фрегат "Гриффондор" - квестовый
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_CORVETTE_QUEST]);
 	refShip.Name            			= "Corvette_quest";
 	refship.Soundtype					= "corvette";
@@ -2470,7 +2470,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 24;
 	refShip.Weight						= Tonnes2CWT(780);
 	refShip.Capacity        			= 3800;
-	refShip.CannonsQuantity				= 34;	// 2,4,14,14
+	refShip.CannonsQuantity				= 34;	
 	refShip.CannonsQuantityMin			= 34;
 	refShip.rcannon 					= 14;
 	refShip.lcannon 					= 14;
@@ -2526,9 +2526,9 @@ void InitShips()
 	refship.Track2.Width	= "5.0, 7.0";
 	refship.Track2.Speed	= "0.15, 0.25";
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// Полакр Тореро - квестовый
-	///////////////////////////////////////////////////////////////////////////	
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_POLACRE_QUEST]);
 	refShip.Name						= "Polacre_q";
 	refship.Soundtype					= "lugger";
@@ -2595,9 +2595,9 @@ void InitShips()
 	refship.Track2.Width	= "4.0, 6.0";
 	refship.Track2.Speed	= "0.15, 0.25";	
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// Быстрый фрегат "Фортуна" - квестовый
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_FRIGATE_L]);
 	refShip.Name            			= "ArabellaShip";
 	refship.Soundtype					= "frigate";
@@ -2606,7 +2606,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 24;
 	refShip.Weight						= Tonnes2CWT(920);
 	refShip.Capacity        			= 4000;
-	refShip.CannonsQuantity				= 42;	// 4,4,17,17
+	refShip.CannonsQuantity				= 42;	
 	refShip.CannonsQuantityMin			= 42;
 	refShip.rcannon 					= 17;
 	refShip.lcannon 					= 17;
@@ -2667,10 +2667,10 @@ void InitShips()
 	refship.Track2.Width	= "8.0, 9.0";
 	refship.Track2.Speed	= "0.15, 0.25";	
 
-	// --> квестовые корабли - заглушки
-	///////////////////////////////////////////////////////////////////////////
-	//// квестовый корабль №0 - 6-ый класс
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_QUEST0]);
 	refShip.Name									= "QuestShip0";
 	refship.Soundtype								= "lugger";
@@ -2729,9 +2729,9 @@ void InitShips()
 	refship.nation.pirate	= false;
 
 
-	///////////////////////////////////////////////////////////////////////////
-	//// квестовый корабль №1 - 5-ый класс
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_QUEST1]);
 	refShip.Name            			= "QuestShip1";
 	refship.Soundtype					= "lugger";
@@ -2740,7 +2740,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 12;
 	refShip.Weight						= Tonnes2CWT(170);
 	refShip.Capacity        			= 900;	
-	refShip.CannonsQuantity				= 14; // 2,2,5,5	2,2,4,4
+	refShip.CannonsQuantity				= 14; 
 	refShip.CannonsQuantityMin			= 12;
 	refShip.rcannon 					= 5;
 	refShip.lcannon 					= 5;
@@ -2798,9 +2798,9 @@ void InitShips()
 	refship.nation.pirate	= true;
 	
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// квестовый корабль №2 - 4-ый класс
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_QUEST3]);
 	refShip.Name				= "QuestShip2";
 	refship.Soundtype			= "lugger";
@@ -2809,7 +2809,7 @@ void InitShips()
 	refShip.MaxCaliber  		= 20;
 	refShip.Weight				= Tonnes2CWT(310);
 	refShip.Capacity   			= 2000;
-	refShip.CannonsQuantity		= 20;	// 2,2,8,8
+	refShip.CannonsQuantity		= 20;	
 	refShip.CannonsQuantityMin	= 20;
 	refShip.rcannon 			= 8;
 	refShip.lcannon 			= 8;
@@ -2867,9 +2867,9 @@ void InitShips()
 	refship.Track2.Speed	= "0.15, 0.25";
 	
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// квестовый корабль №3 - 4-ый класс
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_QUEST3]);
 	refShip.Name            			= "QuestShip2";
 	refship.Soundtype					= "corvette";
@@ -2878,7 +2878,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 18;	
 	refShip.Weight						= Tonnes2CWT(320);	
 	refShip.Capacity        			= 1800;
-	refShip.CannonsQuantity				= 16; // 2,0,7,7	2,0,6,6
+	refShip.CannonsQuantity				= 16; 
 	refShip.CannonsQuantityMin			= 14;
 	refShip.rcannon 					= 7;
 	refShip.lcannon 					= 7;
@@ -2940,9 +2940,9 @@ void InitShips()
 	refship.nation.pirate	= true;
 	
 		
-	///////////////////////////////////////////////////////////////////////////
-	//// квестовый корабль №4 - 3-ый класс
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_QUEST4]);
 	refShip.Name						= "QuestShip4";
 	refship.Soundtype					= "lugger";
@@ -3009,9 +3009,9 @@ void InitShips()
 	refship.Track2.Width	= "4.0, 6.0";
 	refship.Track2.Speed	= "0.15, 0.25";	
 
-	///////////////////////////////////////////////////////////////////////////
-	//// квестовый корабль №5 - 3-ый класс
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_QUEST5]);
 	refShip.Name            			= "QuestShip5";
 	refship.Soundtype					= "corvette";
@@ -3020,7 +3020,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 20;
 	refShip.Weight						= Tonnes2CWT(600);
 	refShip.Capacity        			= 2700;
-	refShip.CannonsQuantity				= 20; // 2,2,8,8	2,2,7,7
+	refShip.CannonsQuantity				= 20; 
 	refShip.CannonsQuantityMin			= 18;
 	refShip.rcannon 					= 8;
 	refShip.lcannon 					= 8;
@@ -3082,9 +3082,9 @@ void InitShips()
 	refship.nation.holland	= false;
 	refship.nation.pirate	= true;
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// квестовый корабль №6 - 2-ый класс
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_QUEST6]);
 	refShip.Name            			= "QuestShip6";
 	refship.Soundtype					= "frigate";
@@ -3093,7 +3093,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 24;
 	refShip.Weight						= Tonnes2CWT(920);
 	refShip.Capacity        			= 4000;
-	refShip.CannonsQuantity				= 42;	// 4,4,17,17
+	refShip.CannonsQuantity				= 42;	
 	refShip.CannonsQuantityMin			= 42;
 	refShip.rcannon 					= 17;
 	refShip.lcannon 					= 17;
@@ -3154,9 +3154,9 @@ void InitShips()
 	refship.Track2.Width	= "8.0, 9.0";
 	refship.Track2.Speed	= "0.15, 0.25";	
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// квестовый корабль №7 - 2-ый класс
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_QUEST7]);
 	refShip.Name            			= "QuestShip7";
 	refship.Soundtype					= "frigate";
@@ -3165,7 +3165,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 32;
 	refShip.Weight						= Tonnes2CWT(1200);
 	refShip.Capacity        			= 4250;
-	refShip.CannonsQuantity				= 50;	// 4,6,20,20	4,6,19,19	4,6,18,18
+	refShip.CannonsQuantity				= 50;	
 	refShip.CannonsQuantityMin			= 46;
 	refShip.rcannon 					= 20;
 	refShip.lcannon 					= 20;
@@ -3194,7 +3194,7 @@ void InitShips()
 	refship.SubSeaDependWeight			= 1.0;
 	refship.TurnDependWeight			= 0.3;
 	refship.WindAgainstSpeed   			= 0.45;
-	refship.CabinType          			= "Cabin"; // boal 28.03.05
+	refship.CabinType          			= "Cabin"; 
 	refship.DeckType           			= "Big";
 		
 	refship.InertiaAccelerationX	= 5.0;	refship.InertiaBrakingX		= 5.0;
@@ -3230,18 +3230,18 @@ void InitShips()
 	refship.nation.holland	= true;
 	refship.nation.pirate	= false;
 
-	///////////////////////////////////////////////////////////////////////////
-	//// квестовый корабль №8 - 1-ый класс
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_QUEST8]);
 	refShip.Name            			= "QuestShip8";
 	refship.Soundtype					= "lineship";
-	refShip.Class						= 1;   // на деле это воен кор
+	refShip.Class						= 1;   
 	refShip.Cannon          			= CANNON_TYPE_CANNON_LBS24;
 	refShip.MaxCaliber      			= 32;
 	refShip.Weight						= Tonnes2CWT(2000);
 	refShip.Capacity        			= 5700;
-	refShip.CannonsQuantity				= 56;	// 2,4,25,25	2,4,24,24	2,4,23,23	2,4,22,22
+	refShip.CannonsQuantity				= 56;	
 	refShip.CannonsQuantityMin			= 48;
 	refShip.rcannon 					= 25;
 	refShip.lcannon 					= 25;
@@ -3305,11 +3305,11 @@ void InitShips()
 	refship.nation.pirate	= true;
 	
 	
-	// <-- квестовые корабли - заглушки
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// Проклятый "Калеуче" - квестовый
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_CURSED_FDM]);
 	refShip.Name            			= "Flyingdutchman";  
 	refship.Soundtype					= "lineship";
@@ -3318,7 +3318,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 36;
 	refShip.Weight						= Tonnes2CWT(1500);
 	refShip.Capacity        			= 5000;
-	refShip.CannonsQuantity				= 56;	// 6,4,23,23
+	refShip.CannonsQuantity				= 56;	
 	refShip.CannonsQuantityMin			= 56;
 	refShip.rcannon 					= 23;
 	refShip.lcannon 					= 23;
@@ -3378,9 +3378,9 @@ void InitShips()
 	refship.Track2.Width	= "8.0, 10.0";
 	refship.Track2.Speed	= "1.0, 2.0";
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Копия "Калеуче" - квестовый
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_FDM]);
 	refShip.Name            			= "Flyingdutchman_l";  
 	refship.Soundtype					= "lineship";
@@ -3389,7 +3389,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 32;
 	refShip.Weight						= Tonnes2CWT(1500);
 	refShip.Capacity        			= 5000;
-	refShip.CannonsQuantity				= 56;	// 6,4,23,23
+	refShip.CannonsQuantity				= 56;	
 	refShip.CannonsQuantityMin			= 56;
 	refShip.rcannon 					= 23;
 	refShip.lcannon 					= 23;
@@ -3449,9 +3449,9 @@ void InitShips()
 	refship.Track2.Width	= "8.0, 10.0";
 	refship.Track2.Speed	= "1.0, 2.0";
 
-	///////////////////////////////////////////////////////////////////////////
-	//// Линейный корабль "Реус де Сан-Педро" - квестовый
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_LSHIP_QUEST]);
 	refShip.Name            			= "Santisima";
 	refship.Soundtype					= "manowar";
@@ -3460,7 +3460,7 @@ void InitShips()
 	refShip.MaxCaliber      			= 42;
 	refShip.Weight						= Tonnes2CWT(3500);
 	refShip.Capacity        			= 8500;
-	refShip.CannonsQuantity				= 106; // 6,8,38,38
+	refShip.CannonsQuantity				= 106; 
 	refShip.CannonsQuantityMin			= 106;
 	refShip.rcannon 					= 46;
 	refShip.lcannon 					= 46;
@@ -3491,7 +3491,7 @@ void InitShips()
 	refship.SubSeaDependWeight			= 1.8;
 	refship.TurnDependWeight			= 0.45;
 	refship.WindAgainstSpeed   			= 0.30;
-	refship.CabinType          			= "Cabin_Huge"; // boal 28.03.05
+	refship.CabinType          			= "Cabin_Huge"; 
 	refship.DeckType           			= "Big";
 	
 	refship.InertiaAccelerationX	= 2.0;	refship.InertiaBrakingX		= 2.0;
@@ -3521,12 +3521,12 @@ void InitShips()
 	refship.Track2.Width	= "16.0, 18.0";
 	refship.Track2.Speed	= "0.15, 0.25";
 	
-	///////////////////////////////////////////////////////////////////////////
-	//// FORT
-	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	makeref(refShip,ShipsTypes[SHIP_FORT]);
 	refShip.Name								= "Fort";
-	refShip.isFort      						= true; // для удобства проверок на rRealShip
+	refShip.isFort      						= true; 
 	refShip.Class								= 1;
 	refShip.Cannon          					= CANNON_TYPE_CANNON_LBS36;
 	refShip.MaxCaliber							= 48;
@@ -3548,7 +3548,7 @@ void InitShips()
 	refShip.SP									= 100;
 	refShip.CanEncounter						= false;
 
-	/// Check
+	
 	for (int i=0; i<SHIP_TYPES_QUANTITY_WITH_FORT-1; i++)
 	{
 	  	makeref(refShip, ShipsTypes[i]);
@@ -3572,10 +3572,10 @@ void InitShips()
 			if (iClass < 1) { Trace("ERROR: Ship " + i + " class < 1"); }
 		}
 		refship.InertiaAccelerationY = stf(refship.InertiaAccelerationY) / 6.0;
-		// boal 10/11/05 пробить оптимальный экипаж
-		//refShip.OptCrew = sti(refShip.MaxCrew);
-		//refShip.MaxCrew = makeint(sti(refShip.MaxCrew) * 1.25 + 0.5); // перегруз
-		/// как говаривал мой папа - нахрена попу гармонь?  Приходится приводить к каноническому виду, править все буковки по файлу мне лень
+		
+		
+		
+		
 		refShip.cannonr  = refShip.rcannon;
 		refShip.cannonl  = refShip.lcannon;
 		refShip.cannonf  = refShip.fcannon;

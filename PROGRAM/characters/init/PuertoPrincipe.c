@@ -3,11 +3,11 @@ int CreatePuertoPrincipeCharacters(int n)
 {
 	ref ch;
 	
-	///////////////////////////////////////////////////////////////////////////////
-	// ОСНОВНЫЕ ПЕРСОНАЖИ
-	///////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 
-	makeref(ch,Characters[n]);			//Губернатор
+	makeref(ch,Characters[n]);			
 	ch.id		= "Marlow";
 	ch.sex = "man";
 	ch.model = "Marlow";
@@ -45,14 +45,14 @@ int CreatePuertoPrincipeCharacters(int n)
 	SetCharacterPerk(ch, "AdvancedDefense");
 	SetCharacterPerk(ch, "CriticalHit");
 	SetCharacterPerk(ch, "Sliding");
-	ch.standUp = true; //вставать и нападать на врага
+	ch.standUp = true; 
 	LAi_SetHuberType(ch);
 	LAi_SetLoginTime(ch, 6.0, 21.99);
 	LAi_group_MoveCharacter(ch, "PIRATE_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);		// ОФициантка
+	makeref(ch,Characters[n]);		
 	ch.id		= "PuertoPrincipe_waitress";
 	ch.model	= "women_9";
 	ch.sex = "woman";
@@ -69,7 +69,7 @@ int CreatePuertoPrincipeCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Трактирщик
+	makeref(ch,Characters[n]);			
 	ch.id		= "PuertoPrincipe_tavernkeeper";
 	ch.model	= "barmen_13";
 	ch.greeting = "barmen_2";
@@ -87,7 +87,7 @@ int CreatePuertoPrincipeCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
 
-	makeref(ch,Characters[n]);			//Торговец
+	makeref(ch,Characters[n]);			
 	ch.id		= "PuertoPrincipe_trader";
 	ch.model	= "trader_13";
 	ch.greeting = "store_1";
@@ -107,3 +107,4 @@ int CreatePuertoPrincipeCharacters(int n)
 
 	return n;
 }
+

@@ -6,10 +6,10 @@ int NetBI_retComValue;
 
 object NetBInterface;
 
-//chref.skills.repair.active > 0
-//chref.skills.repair.totalcooldowntime = int max (>=0)
-//chref.skills.repair.currentcooldowntime = int cur (>=0)
-//NetClient_ShipStartRepair()
+
+
+
+
 
 void NetBI_CreateShipPointer()
 {
@@ -93,7 +93,7 @@ void NetClient_CreateBattleInterface()
 	NetBI_InitBattleInterface();
 	InterfaceSpyGlassInit(true);
 
-	// log interface
+	
 	Log_RemoveFromSingleLayers();
 
 	LayerAddObject("Net_Execute",&ILogAndActions,-257);
@@ -179,12 +179,12 @@ void NetBI_SetParameterData()
 	NetBInterface.navigation.chargeTextureGreed		= "8,8";
 	NetBInterface.navigation.chargePos				= "0,"+RecalculateVIcon(270);
 	NetBInterface.navigation.chargePictureSize		= RecalculateHIcon(48)+","+RecalculateVIcon(48);
-	//
+	
 	NetBInterface.navigation.sailstateTexture		= "battle_interface\list_icon2.tga";
 	NetBInterface.navigation.sailstateTextureGreed	= "8,8";
 	NetBInterface.navigation.sailstatePos			= RecalculateHIcon(30)+","+RecalculateVIcon(170);
 	NetBInterface.navigation.sailstatePictureSize	= RecalculateHIcon(48)+","+RecalculateVIcon(48);
-	//
+	
 	NetBInterface.navigation.windStateTexture		= "battle_interface\list_icon2.tga";
 	NetBInterface.navigation.windTextureGreed		= "8,8";
 	NetBInterface.navigation.windPos				= RecalculateHIcon(-30)+","+RecalculateVIcon(170);
@@ -195,13 +195,13 @@ void NetBI_SetParameterData()
 	NetBInterface.textinfo.Date.pos.x = sti(showWindow.right) - RecalculateHIcon(104);
 	NetBInterface.textinfo.Date.pos.y = RecalculateVIcon(200);
 	NetBInterface.textinfo.Date.text = XI_convertString("Date:")+GetDataDay()+" "+XI_ConvertString("target_month_" + GetDataMonth())+" "+GetDataYear();
-	//
+	
 	NetBInterface.textinfo.Location.font = "interface_normal";
 	NetBInterface.textinfo.Location.scale = 1.1;
 	NetBInterface.textinfo.Location.pos.x = sti(showWindow.right) - RecalculateHIcon(104);
 	NetBInterface.textinfo.Location.pos.y = RecalculateVIcon(218);
 	NetBInterface.textinfo.Location.text = XI_convertString("Open Sea");
-	//
+	
 	NetBInterface.textinfo.Speed.font = "interface_normal";
 	NetBInterface.textinfo.Speed.scale = 0.9;
 	NetBInterface.textinfo.Speed.color = argb(255,255,255,255);
@@ -209,7 +209,7 @@ void NetBI_SetParameterData()
 	NetBInterface.textinfo.Speed.pos.x = sti(showWindow.right) - RecalculateHIcon(104);
 	NetBInterface.textinfo.Speed.pos.y = RecalculateVIcon(315);
 	NetBInterface.textinfo.Speed.text = XI_convertString("Speed");
-	//
+	
 	NetBInterface.textinfo.Ammo.font = "interface_normal";
 	NetBInterface.textinfo.Ammo.scale = 0.9;
 	NetBInterface.textinfo.Ammo.color = argb(255,255,255,255);
@@ -224,7 +224,7 @@ void NetBI_SetParameterData()
 	NetBInterface.LineInfo.speed.begin.y = RecalculateVIcon(334);
 	NetBInterface.LineInfo.speed.end.x = RecalculateHIcon(128);
 	NetBInterface.LineInfo.speed.end.y = 0;
-	//
+	
 	NetBInterface.LineInfo.Ammo.color = argb(255,0,0,0);
 	NetBInterface.LineInfo.Ammo.begin.x = sti(showWindow.right) - RecalculateHIcon(168);
 	NetBInterface.LineInfo.Ammo.begin.y = RecalculateVIcon(418);
@@ -307,21 +307,21 @@ void NetBI_InitializeCommands()
 	NetBInterface.Commands.Cancel.texNum	= 0;
 	NetBInterface.Commands.Cancel.event		= "Cancel";
 	NetBInterface.Commands.Cancel.note		= LanguageConvertString(idLngFile, "sea_Cancel");
-	//
+	
 	NetBInterface.Commands.Charge.enable	= false;
 	NetBInterface.Commands.Charge.picNum	= 21;
 	NetBInterface.Commands.Charge.selPicNum	= 29;
 	NetBInterface.Commands.Charge.texNum	= 0;
 	NetBInterface.Commands.Charge.event		= "BI_Charge";
 	NetBInterface.Commands.Charge.note		= LanguageConvertString(idLngFile, "sea_Charge");
-	//
+	
 	NetBInterface.Commands.Speed.enable		= false;
 	NetBInterface.Commands.Speed.picNum		= 17;
 	NetBInterface.Commands.Speed.selPicNum	= 25;
 	NetBInterface.Commands.Speed.texNum		= 0;
 	NetBInterface.Commands.Speed.event		= "BI_Speed";
 	NetBInterface.Commands.Speed.note		= LanguageConvertString(idLngFile, "sea_Speed");
-	//
+	
 	NetBInterface.Commands.Repair.enable	= false;
 	NetBInterface.Commands.Repair.picNum	= 55;
 	NetBInterface.Commands.Repair.selPicNum	= 63;
@@ -330,13 +330,13 @@ void NetBI_InitializeCommands()
 	NetBInterface.Commands.Repair.event		= "BI_Repair";
 	NetBInterface.Commands.Repair.note		= LanguageConvertString(idLngFile, "sea_Repair");
 
-	NetBInterface.charge.charge1.picNum		= 32; // balls
+	NetBInterface.charge.charge1.picNum		= 32; 
 	NetBInterface.charge.charge1.selPicNum	= 40;
-	NetBInterface.charge.charge2.picNum		= 35; // grapes
+	NetBInterface.charge.charge2.picNum		= 35; 
 	NetBInterface.charge.charge2.selPicNum	= 43;
-	NetBInterface.charge.charge3.picNum		= 34; // "Knippels"
+	NetBInterface.charge.charge3.picNum		= 34; 
 	NetBInterface.charge.charge3.selPicNum	= 42;
-	NetBInterface.charge.charge4.picNum		= 33; // bombs
+	NetBInterface.charge.charge4.picNum		= 33; 
 	NetBInterface.charge.charge4.selPicNum	= 41;
 
 	NetBInterface.UserIcons.ui1.enable	= true;
@@ -344,13 +344,13 @@ void NetBI_InitializeCommands()
 	NetBInterface.UserIcons.ui1.selpic	= 28;
 	NetBInterface.UserIcons.ui1.tex		= 0;
 	NetBInterface.UserIcons.ui1.name	= "sail_none";
-	//----------------------------------------------
+	
 	NetBInterface.UserIcons.ui2.enable	= true;
 	NetBInterface.UserIcons.ui2.pic		= 19;
 	NetBInterface.UserIcons.ui2.selpic	= 27;
 	NetBInterface.UserIcons.ui2.tex		= 0;
 	NetBInterface.UserIcons.ui2.name	= "sail_midi";
-	//----------------------------------------------
+	
 	NetBInterface.UserIcons.ui3.enable	= true;
 	NetBInterface.UserIcons.ui3.pic		= 18;
 	NetBInterface.UserIcons.ui3.selpic	= 26;
@@ -406,14 +406,14 @@ void NetBI_InitBattleInterface()
 	SendMessage( &NetBInterface, "l", BI_MSG_REFRESH );
 
 	SetEventHandler("DoSailHole","Net_ProcessSailDamage",0);
-	//SetEventHandler("BI_CallUpdateShip","BI_UpdateShip",0);
-	//SetEventHandler("evntPerkAgainUsable","BI_PerkAgainUsable",0);
-	//SetEventHandler("evntSetUsingAbility","procSetUsingAbility",0);
+	
+	
+	
 }
 
 void NetBI_ReleaseBattleInterface()
 {
-	DeleteClass( &NetBInterface );// BattleInterface
+	DeleteClass( &NetBInterface );
 	DeleteClass( &objShipPointer );
 
 	DelEventHandler(BI_EVENT_GET_DATA,"NetBI_GetData");
@@ -448,7 +448,7 @@ ref Net_GetCooldownFactor()
 		if( f1>0.0 && f2<f1 ) {
 			BI_g_fRetVal = f2 / f1;
 		}
-		//trace("Repair Cooldown = "+ f2 + " / " + f1);
+		
 	}
 	return &BI_g_fRetVal;
 }
@@ -514,13 +514,13 @@ void NetBI_CreateShipPrivate(int wNetClientID)
 
 	ref shipRef = Net_GetShipByIndex( sti(rc.ship.type) );
 
-	int iColor = argb(255,255,0,0); // enemy ship
+	int iColor = argb(255,255,0,0); 
 	if( CheckAttribute(&NetBInterface,"navigation.argbEnemyShipColor") ) {
 		iColor = sti(NetBInterface.navigation.argbEnemyShipColor);
 	}
 	if (sti(NCServer.GameType) == NETGAME_DEATHMATCH)
 	{
-		if (wNetClientID == wNetThisClient) { // our ship
+		if (wNetClientID == wNetThisClient) { 
 			iColor = argb(255,0,255,0);
 			if( CheckAttribute(&NetBInterface,"navigation.argbFrendShipColor") ) {
 				iColor = sti(NetBInterface.navigation.argbFrendShipColor);
@@ -561,8 +561,8 @@ void NetBI_SetPossibleCommands()
 {
 	int chIdx = GetEventData();
 
-	// для главного персонажа
-	NetBInterface.Commands.Charge.enable	= true;//CheckAttribute(mainCh,"Ship.Cannons.Charge.Type");
+	
+	NetBInterface.Commands.Charge.enable	= true;
 	NetBInterface.Commands.Speed.enable		= true;
 	NetBInterface.Commands.Repair.enable	= true;
 }
@@ -609,22 +609,22 @@ void NetBI_LaunchCommand()
 		switch(targetNum)
 		{
 		case 1:
-			//Log_SetStringToLog("Cannonballs");
+			
 			PlaySound("interface\_balls.wav");
 			sChargeType="Balls";
 			break;
 		case 2:
-			//Log_SetStringToLog("Grapes");
+			
 			PlaySound("interface\_grapes.wav");
 			sChargeType="Grapes";
 			break;
 		case 3:
-			//Log_SetStringToLog("Knippels");
+			
 			PlaySound("interface\_chain.wav");
 			sChargeType="Knippels";
 			break;
 		case 4:
-			//Log_SetStringToLog("Bombs");
+			
 			PlaySound("interface\_bombs.wav");
 			sChargeType="Bombs";
 			break;
@@ -655,10 +655,10 @@ ref NetBI_GetChargeQuantity()
 {
 	int chIdx = GetEventData();
 	NetBI_ChargeState[0] = 4;
-	NetBI_ChargeState[1] = 100;//GetCargoGoods(refChar,GOOD_BALLS);
-	NetBI_ChargeState[2] = 100;//GetCargoGoods(refChar,GOOD_GRAPES);
-	NetBI_ChargeState[3] = 100;//GetCargoGoods(refChar,GOOD_KNIPPELS);
-	NetBI_ChargeState[4] = 100;//GetCargoGoods(refChar,GOOD_BOMBS);
+	NetBI_ChargeState[1] = 100;
+	NetBI_ChargeState[2] = 100;
+	NetBI_ChargeState[3] = 100;
+	NetBI_ChargeState[4] = 100;
 
 	return &NetBI_ChargeState;
 }
@@ -671,12 +671,12 @@ ref NetBI_GetData()
 
 	switch(dataType)
 	{
-		// Получаем номер картинки корабля
+		
 	case BIDT_SHIPPICTURE:
 		wNetClientID = GetEventData();
 		chRef = NetClient_GetClient(wNetClientID);
 		int st = sti(chRef.ship.type);
-		//st = sti(RealShips[st].basetype);
+		
 		SetShipPictureDataByShipType( st );
 		break;
 	}
@@ -685,23 +685,23 @@ ref NetBI_GetData()
 
 ref Net_ProcessSailDamage()
 {
-	// от кого удар
+	
 	int shootIdx = GetEventData();
-	// перс
+	
 	int wNetClientID = GetEventData();
 
 	string sMastName = GetEventData();
-	// координаты паруса
+	
 	string reyName = GetEventData();
 	int groupNum = GetEventData();
-	// данные о дырках
+	
 	int holeCount = GetEventData();
 	int holeData = GetEventData();
 	int maxHoleCount = GetEventData();
-	// мощность паруса
+	
 	float sailPower = GetEventData();
 
-	ref chref = NetServer_GetClient(wNetClientID);//NetClient_GetClient(wNetClientID);
+	ref chref = NetServer_GetClient(wNetClientID);
 
 	if (LAi_IsImmortal(chref)) 
 	{ 
@@ -741,10 +741,7 @@ ref Net_ProcessSailDamage()
 		sailDmg = sailDmgMax;
 	}
 
-/*	if (sailDmg < 0.5)
-	{
-		Log_SetStringtoLog("MUST DIE!!! " + sailDmg);
-	}*/
+ 
 
 	arSail.hc = holeCount;
 	arSail.hd = holeData;
@@ -765,12 +762,12 @@ float Net_GetRigDamage(int shootIdx, int iBallType, ref damage_chr)
 	return fDmgRig;
 }
 
-//================================================================
-// Посчитать состояние парусов
-//================================================================
+
+
+
 float Net_CalculateShipSP(ref chref)
 {
-	float fSP = 100;//GetCharacterShipSP(chref);
+	float fSP = 100;
 	aref arRoot,arGroup,arSail;
 	int q,n,i,j;
 

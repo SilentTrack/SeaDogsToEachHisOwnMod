@@ -3,7 +3,7 @@
 #define LOCCAMERA_TOPOS		2
 #define LOCCAMERA_FREE		3
 
-// Warship 20.07.09 Новое
+
 #define LOCCAMERA_MAX_STATES 15
 #define LOCCAMERA_ROTATE "Rotate"
 #define LOCCAMERA_FLYTOPOS "FlyToPosition"
@@ -22,17 +22,13 @@ void locCameraInit()
 {
 	locCameraEnableFree = false;
 	locCameraEnableSpecialMode = false;
-	//locCameraEnableFree = true;
+	
 	locCameraCurMode = LOCCAMERA_FOLLOW;
 }
 
-// нет в ядре to_do
-/*void locCameraSetRadius(float fRadius)
-{
-	SendMessage(&locCamera, "lf", MSG_CAMERA_SET_RADIUS, fRadius);
-}
-*/
-//Set camera follow mode
+
+ 
+
 bool locCameraFollow()
 {
 	if(IsEntity(&locCamera) == 0) return false;
@@ -41,7 +37,7 @@ bool locCameraFollow()
 	return res;
 }
 
-//Set camera toPos mode
+
 bool locCameraToPos(float x, float y, float z, bool isTeleport)
 {
 	if(IsEntity(&locCamera) == 0) return false;
@@ -51,7 +47,7 @@ bool locCameraToPos(float x, float y, float z, bool isTeleport)
 	return res;
 }
 
-//Set camera move mode (speed meter per second)
+
 bool locCameraFree()
 {
 	if(IsEntity(&locCamera) == 0) return false;
@@ -60,7 +56,7 @@ bool locCameraFree()
 	return res;
 }
 
-//
+
 bool locCameraLock(float ax)
 {
 	if(IsEntity(&locCamera) == 0) return false;
@@ -106,13 +102,13 @@ void TurnOffTrackCamera()
 {
 	SendMessage(&locCamera, "l", -3);
 }
-// boal -->
+
 void locCameraTarget(ref _char)
 {
     SendMessage(&locCamera, "li", MSG_CAMERA_SETTARGET, _char);
 }
-// boal <--	 
-// to_do нет в ядре  
+
+
 bool locCameraFromToPos(float from_x,float from_y,float from_z, bool isTeleport, float to_x,float to_y,float to_z)
 {
 	if(IsEntity(&locCamera) == 0)
@@ -128,18 +124,18 @@ bool locCameraFromToPos(float from_x,float from_y,float from_z, bool isTeleport,
 	return res;
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////
-//							Warship 20.07.09 НОВОЕ - СНИМАЕМ КИНО
-/////////////////////////////////////////////////////////////////////////////////////////
 
-// Функция запуска вращения камеры вокруг персонажа.
-// Параметры:
-// float  _offsetX ... _offsetZ - смещение камеры относительно текущей позиции персонажа
-// float _rotateX, _rotateY - скорость фращения по данной оси, от 0.01 и меньше до 0.3, может быть отрицательна
-// float _radius - радиус, он же дистанция от начальных точек до камеры
-// float _startAngle- начальный угол, откуда крутим
-// int _time - время вращения В КАДРАХ. Она секунда - в среднем 30 кадров, но если учитывать тормоза, то может быть и 10
-// bool _teleport - если true, переместится в заданную точку мгновенно, иначе - плавный полет
+
+
+
+
+
+
+
+
+
+
+
 bool locCameraRotateAroundHero(float _offsetX, float _offsetY, float _offsetZ, float _rotateX, float _rotateY,  float _radius, float _startAngle, int _time)
 {
 	ref curCameraState;
@@ -160,17 +156,17 @@ bool locCameraRotateAroundHero(float _offsetX, float _offsetY, float _offsetZ, f
 	curCameraState.rotateRadius = _radius;
 	curCameraState.time = _time;
 	curCameraState.angle = _startAngle;
-	curCameraState.type = LOCCAMERA_ROTATE; // Тип камеры
+	curCameraState.type = LOCCAMERA_ROTATE; 
 	
 	if(iLocCameraCurState == -1) iLocCameraCurState = 0;
 	
 	return true;
 }
 
-// Полет камеры от начальных точек _startX ... _startZ до конечных точек _endX ... _endZ
-// float _speed - множитель скорости в режиме полета _time == -1. Если _speed == 1, то это станрадтрая скорость
-// int _time - кол-во кадров, за которое должно долететь. Если -1, то высчитывается исходя из расстояния
-// bool _fromCurCameraPos - если true, то при переходе на эту функци полета, начальная позиция будет считаться как текущая позиция камеры
+
+
+
+
 bool locCameraFlyToPosition(float _startX, float _startY, float _startZ, float _endX, float _endY, float _endZ, float _speed, int _time)
 {
 	ref curCameraState;
@@ -204,17 +200,17 @@ bool locCameraFlyToPosition(float _startX, float _startY, float _startZ, float _
 	
 	curCameraState.speed = _speed;
 	curCameraState.time = _time;
-	curCameraState.type = LOCCAMERA_FLYTOPOS; // Тип камеры
+	curCameraState.type = LOCCAMERA_FLYTOPOS; 
 	
 	if(iLocCameraCurState == -1) iLocCameraCurState = 0;
 	
 	return true;
 }
 
-// Фиксирование камеры в определенной точке относительно ГГ
-// float _offsetX ... _offsetZ - смещение относительно координат ГГ, для определения точки, где будет находиться камера
-// int _time - кол-во кадров, сколько будет висеть. Если -1 - будет висеть вечно
-// bool _canRotate - если true, то камера будет крутиться вместе с персонажем
+
+
+
+
 bool locCameraLockNearHero(float _offsetX, float _offsetY, float _offsetZ, int _time, bool _canRotate)
 {
 	ref curCameraState;
@@ -240,7 +236,7 @@ bool locCameraLockNearHero(float _offsetX, float _offsetY, float _offsetZ, int _
 	curCameraState.time = _time;
 	curCameraState.canRotate = _canRotate;
 	curCameraState.offsetAY = offsetAY;
-	curCameraState.type = LOCCAMERA_NEARHERO; // Тип камеры
+	curCameraState.type = LOCCAMERA_NEARHERO; 
 	
 	if(iLocCameraCurState == -1) iLocCameraCurState = 0;
 	
@@ -260,12 +256,12 @@ int locCameraGetFirstEmptyState()
 	return -1;
 }
 
-// Переход к следующей функции установки камеры
-// Последовательность методов задается, например, так:
-// locCameraRotateAroundHero(0.0, 1.0, 0.0, 0.03, 0.0, 3.0, 0.0, 200);
-// locCameraRotateAroundHero(0.0, 1.0, 0.0, 0.0, 0.01, 5.0, 0.0, 150);
-// locCameraRotateAroundHero(0.0, 1.0, 0.0, -0.03, 0.03, 7.0, 0.0, 225);
-// В результате получаем последовательные полеты камеры
+
+
+
+
+
+
 void locCameraNextState()
 {
 	ref prevCamera, curCamera, nextCamera;
@@ -273,7 +269,7 @@ void locCameraNextState()
 	int time;
 	
 	prevCamera = &objLocCameraStates[iLocCameraCurState];
-	DeleteAttribute(prevCamera, "time"); // Критерий ненужность
+	DeleteAttribute(prevCamera, "time"); 
 	iLocCameraCurState++;
 	
 	curCamera = &objLocCameraStates[iLocCameraCurState];
@@ -289,14 +285,14 @@ void locCameraNextState()
 	Log_TestInfo("locCameraNextState() == " + curCamera.type); 
 }
 
-// Сброс специальных состояний камеры - привязывание к персонажу
+
 void locCameraResetState()
 {
 	locCameraFollow();
 	
 	iLocCameraCurState = -1;
 	
-	// Потрем все
+	
 	for(int i = 0; i < LOCCAMERA_MAX_STATES; i++)
 	{
 		DeleteAttribute(&objLocCameraStates[i], "");
@@ -305,16 +301,16 @@ void locCameraResetState()
 	Log_TestInfo("locCameraResetState()");
 }
 
-// Обновление позиции камеры при входе в кадр
+
 void locCameraUpdate()
 {
 	ref curCameraState; 
 	float charX, charY, charZ, charAY;
 	float offsetX, offsetZ;
 	float rotateRadius, rotateAngle;
-	float time; // Здесь время дробное, т.к. учитывается еще ускорение времени
+	float time; 
 	
-	float timeScale = 1 + TimeScaleCounter * 0.25; // Текущее ускорение времени
+	float timeScale = 1 + TimeScaleCounter * 0.25; 
 	
 	if(iLocCameraCurState != -1 && !sti(InterfaceStates.Launched))
 	{
@@ -330,20 +326,20 @@ void locCameraUpdate()
 					rotateRadius = stf(curCameraState.rotateRadius);
 					rotateAngle = stf(curCameraState.angle);
 					
-					// X rotation
+					
 					if(stf(curCameraState.rotateX) != 0.0)
 					{
 						curCameraState.curCameraX = charX + sin(rotateAngle) * rotateRadius + stf(curCameraState.offsetX);
 						curCameraState.curCameraZ = charZ + cos(rotateAngle) * rotateRadius + stf(curCameraState.offsetZ);
 						curCameraState.angle = rotateAngle + stf(curCameraState.rotateX) * timeScale;
 					}
-					else // Иначе просто обновление
+					else 
 					{
 						curCameraState.curCameraX = charX + stf(curCameraState.offsetX);
 						curCameraState.curCameraZ = charZ + stf(curCameraState.offsetZ);
 					}
 					
-					// Y rotation
+					
 					if(stf(curCameraState.rotateY) != 0.0)
 					{
 						curCameraState.curCameraY = charY + cos(rotateAngle) * rotateRadius + stf(curCameraState.offsetY);
@@ -385,7 +381,7 @@ void locCameraUpdate()
 			
 			if(time != -1.0)
 			{
-				time -= 1 * timeScale; // Учет ускорения времени
+				time -= 1 * timeScale; 
 				curCameraState.time = time;
 			}
 			
@@ -394,7 +390,7 @@ void locCameraUpdate()
 				locCameraNextState();
 			}
 			
-			// Тут высчитываем попадание в нужную точку
+			
 			if(time == -1.0 && curCameraState.type == LOCCAMERA_FLYTOPOS)
 			{
 				if(stf(curCameraState.curCameraX) + stf(curCameraState.speedX) * timeScale >= stf(curCameraState.endCameraX) &&

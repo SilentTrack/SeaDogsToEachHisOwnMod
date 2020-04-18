@@ -1,4 +1,4 @@
-// Warship. Доведенный до ума интерфейс бумажной карты из К3. Теперь это интерфейс отличной карты.
+
 
 void InitInterface(string iniName)
 {
@@ -46,7 +46,7 @@ void InitInterface(string iniName)
 			Y = -makefloat(worldMap.islands.(sColonyIslandID).(sColonyTown).position.z)+1000;
 		}
 		
-		// Оранж и Ла-Вегу придется выставлять ручками
+		
 		if(sColony == "FortOrange")
 		{
 			X = 600;
@@ -59,21 +59,7 @@ void InitInterface(string iniName)
 			Y = 350;
 		}
 		
-		/*if(sColony == "Tenotchitlan")
-		{
-			sPicGroup = "ICONS_SPEC";
-			Width = 30;
-			Height = 30;
-			sPic = "fencing skill icon";
-		}
-		
-		if(sColony == "Pearl")
-		{
-			sPicGroup = "GOODS";
-			Width = 30;
-			Height = 30;
-			sPic = "Grapes";
-		}*/
+		 
 		
 		GameInterface.MAP.imagelist.(sColony).group = sPicGroup;
 		GameInterface.MAP.imagelist.(sColony).width = Width;
@@ -149,15 +135,15 @@ void IDoExit(int exitCode)
 	DelEventHandler("SelectRColony","SelectRColony");
 	DelEventHandler("MouseRClickUP", "HideRColony");
 
-	// По всему файлу мне лень править, а здесь оно тоже будет работать прекрасно
-	if(CheckAttribute(PChar, "ShowBestMap")) // Смотрим из меню
+	
+	if(CheckAttribute(PChar, "ShowBestMap")) 
 	{
 		DeleteAttribute(PChar, "ShowBestMap");
 		interfaceResultCommand = RC_INTERFACE_TO_ITEMS;
 	}
-	else // Warship fix 09.07.09 Надо так, иначе выходило не в интерфейс
+	else 
 	{
-	if(CheckAttribute(PChar, "ShowBestMapAtlas")) // Смотрим из атласа
+	if(CheckAttribute(PChar, "ShowBestMapAtlas")) 
 	{
 		DeleteAttribute(PChar, "ShowBestMap");
 		interfaceResultCommand = RC_INTERFACE_MAPVIEW;
@@ -187,7 +173,7 @@ void SelectRColony()
 	float fMouseX = stf(GameInterface.mousepos.x) - 6.0 + 5;
 	float fMouseY = stf(GameInterface.mousepos.y) - 50.0 + 5;
 
-	//определяем верхний левый угол картинки
+	
 	float fOffsetX = stf(GameInterface.MAP.offset.x);
 	float fOffsetY = stf(GameInterface.MAP.offset.y);
 
@@ -232,7 +218,7 @@ void HideRColony()
 
 void ShowColonyInfo(int iColony)
 {
-	// "COLONY_INFO_TEXT" - названия, "COLONY_INFO_TEXT2" - значения
+	
 	string sText;
 	ref sld, rColony;
 	rColony = &colonies[iColony];
@@ -259,8 +245,8 @@ void ShowColonyInfo(int iColony)
 	sText = XI_ConvertString("ColonyDistance") + " - " + iDays + " " + XI_ConvertString("day1") + ".";
 	SetFormatedText("COLONY_TRAVEL_INFO", sText);
 	
-//	ref rFC = CharacterFromID(sColony + " Fort Commander");
-//	DumpAttributes(rColony);
+
+
 
 	sText = XI_ConvertString("ColonyInfo");
 	AddLineToFormatedText("COLONY_INFO_LABEL", sText);
@@ -310,7 +296,7 @@ void ShowColonyInfo(int iColony)
 	for(int i=1; i<=3; i++)
 	{
 		string sGoodNum = "id" + i;
-		// Импорт
+		
 		if(CheckAttribute(colonies[iColony], "Trade.Import." + sGoodNum))
 		{
 			iColor = argb(255,196,196,255);
@@ -327,8 +313,8 @@ void ShowColonyInfo(int iColony)
 			SetNewGroupPicture("IMPORT" + i + "_PICTURE", "", "");
 		}
 		
-		// Экспорт
-		if(CheckAttribute(colonies[iColony], "Trade.Export." + sGoodNum)) // Если есть. На Бермудах третьего товара нету.
+		
+		if(CheckAttribute(colonies[iColony], "Trade.Export." + sGoodNum)) 
 		{
 			iColor = argb(255,196,255,196);
 			iGood = islands[iIsland].Trade.Export.(sGoodNum);

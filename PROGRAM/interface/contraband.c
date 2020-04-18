@@ -1,4 +1,4 @@
-////    контрабанда
+
 string 	totalInfo = "";
 int  	TableSelect = 0;
 int		nCurScrollNum = 0;
@@ -8,13 +8,13 @@ float 	fShipWeight, fStoreWeight;
 int 	iMaxGoodsStore = 50000;
 
 bool 	bShowChangeWin = false;
-int  	BuyOrSell = 0; // 1-buy -1 sell
+int  	BuyOrSell = 0; 
 string 	sChrId;
 ref 	refStore, refCharacter, refShipChar, refContraChar;
 int 	iShipQty, iStoreQty, iShipPrice, iStorePrice, iUnits;
 float 	fWeight;
 int  	iCurGoodsIdx;
-bool 	ok; // for if
+bool 	ok; 
 
 void InitInterface_RR(string iniName, ref ContraTrader , ref pStore)
 {
@@ -104,7 +104,7 @@ void AddToTable()
 		{
 			sStoreQ = 0; refGoods.quantity = 0;
 		}
-		if (sStoreQ == 0 && sShipQ == 0) continue; // только не нули
+		if (sStoreQ == 0 && sShipQ == 0) continue; 
 
 		GameInterface.TABLE_LIST.(row).td1.str = sShipQ;
 		GameInterface.TABLE_LIST.(row).td2.str = GetGoodWeightByType(i, sti(sShipQ));
@@ -151,7 +151,7 @@ void TransactionOK()
 	}
     if (!GetRemovable(refCharacter)) return;
     
- 	if (BuyOrSell == 1) // BUY
+ 	if (BuyOrSell == 1) 
 	{
 		SetContraGoods(refContraChar, iCurGoodsIdx, iStoreQty - nTradeQuantity);
 		AddCharacterGoods(refCharacter, iCurGoodsIdx, nTradeQuantity);
@@ -163,7 +163,7 @@ void TransactionOK()
 		Pchar.quest.Contraband.Counter = 1;
 	}
  	else
-	{ // SELL
+	{ 
         SetContraGoods(refContraChar, iCurGoodsIdx, iStoreQty + nTradeQuantity);
 		RemoveCharacterGoods(refCharacter, iCurGoodsIdx, nTradeQuantity);
 		moneyback = makeint(iStorePrice*stf(GameInterface.qty_edit.str) / iUnits + 0.5);
@@ -179,7 +179,7 @@ void TransactionOK()
 	}
 	AddToTable();
 	EndTooltip();
-	ShowGoodsInfo(iCurGoodsIdx); //сбросим все состо€ни€
+	ShowGoodsInfo(iCurGoodsIdx); 
 }
 
 void ShowGoodsInfo(int iGoodIndex)
@@ -331,7 +331,7 @@ void ShowHelpHint()
 	sGroupPicture = "none";
 	
 	if (!bShowChangeWin)
-	{// покажем помощь по работе с формой
+	{
         sHeader = "Trading";
 		sText1 = "";
 				 
@@ -495,7 +495,7 @@ void RefreshTable()
 
 void EndTooltip()
 {
-	CloseTooltip(); // всегда убирать, если был
+	CloseTooltip(); 
     GameInterface.qty_edit.str = 0;
 	SetShipWeight();
 	SetVariable();
@@ -507,7 +507,7 @@ void EndTooltip()
 
 void ShowItemInfo()
 {
-	if (bShowChangeWin) // жмем окей, когда курсор на таблице
+	if (bShowChangeWin) 
 	{
 	    TransactionOK();
 	}
@@ -534,7 +534,7 @@ void ShowItemInfo()
 void SetShipWeight()
 {
     if (CheckAttribute(refCharacter, "Ship.Cargo.RecalculateCargoLoad") && sti(refCharacter.Ship.Cargo.RecalculateCargoLoad))
-	{   // остатки с мор€
+	{   
 		RecalculateCargoLoad(refCharacter);
 		refCharacter.Ship.Cargo.RecalculateCargoLoad = 0;
 	}
@@ -591,16 +591,16 @@ void ShowFoodInfo()
 {
 	if(iCurGoodsIdx == GOOD_FOOD)
 	{
-		// чтоб прикинуть как оно будет, скинем на врем€ колво на продажное
+		
 		SetCharacterGoods(refCharacter, GOOD_FOOD, iShipQty + BuyOrSell*sti(GameInterface.qty_edit.str));
 		SetFoodShipInfo(refCharacter, "FOOD_SHIP");
 		SetCharacterGoods(refCharacter, GOOD_FOOD, iShipQty);
 	}
 	else
 	{
-		if(iCurGoodsIdx == GOOD_RUM) // Warship 11.07.09 Ќа сколько хватит рому
+		if(iCurGoodsIdx == GOOD_RUM) 
 		{
-			// чтоб прикинуть как оно будет, скинем на врем€ колво на продажное
+			
 			SetCharacterGoods(refCharacter, GOOD_RUM, iShipQty + BuyOrSell*sti(GameInterface.qty_edit.str));
 			SetRumShipInfo(refCharacter, "FOOD_SHIP");
 			SetCharacterGoods(refCharacter, GOOD_RUM, iShipQty);
@@ -641,7 +641,7 @@ void ChangeQTY_EDIT()
 		    	GameInterface.qty_edit.str = -sti(GameInterface.qty_edit.str);
 		    }
             BuyOrSell = -1;
-		    // проверка на колво доступное -->
+		    
 		    if (sti(GameInterface.qty_edit.str) > iShipQty)
 		    {
 		        GameInterface.qty_edit.str = iShipQty;
@@ -652,9 +652,9 @@ void ChangeQTY_EDIT()
 		        iWeight = iTotalSpace - fStoreWeight - fWeight;
 		        GameInterface.qty_edit.str = makeint(iWeight / fWeight * iUnits );
 		        iWeight = GetGoodWeightByType(iCurGoodsIdx, sti(GameInterface.qty_edit.str));
-		        GameInterface.qty_edit.str = makeint(iWeight / fWeight * iUnits ); // округдение
+		        GameInterface.qty_edit.str = makeint(iWeight / fWeight * iUnits ); 
 		    }
-		    // проверка на колво доступное <--
+		    
 		    SetFormatedText("QTY_TypeOperation", "Sell");
 		    SetFormatedText("QTY_Result", "Money " + makeint(iStorePrice*stf(GameInterface.qty_edit.str) / iUnits + 0.5) +
 			                ", weight " + iWeight + " cent.");
@@ -662,7 +662,7 @@ void ChangeQTY_EDIT()
 		else
 		{
 			BuyOrSell = 1;
-         	// проверка на колво доступное -->
+         	
 		    if (sti(GameInterface.qty_edit.str) > iStoreQty)
 		    {
 		        GameInterface.qty_edit.str = iStoreQty;
@@ -674,21 +674,21 @@ void ChangeQTY_EDIT()
 				if (iWeight < 0) iWeight = 0;
 		        GameInterface.qty_edit.str = makeint(iWeight / fWeight * iUnits );
 		        iWeight = GetGoodWeightByType(iCurGoodsIdx, sti(GameInterface.qty_edit.str));
-		        GameInterface.qty_edit.str = makeint(iWeight / fWeight * iUnits ); // округдение
+		        GameInterface.qty_edit.str = makeint(iWeight / fWeight * iUnits ); 
 		    }
 		    if (makeint(iShipPrice*stf(GameInterface.qty_edit.str) / iUnits + 0.5) > sti(pchar.money))
 		    {
 		        GameInterface.qty_edit.str = makeint(sti(pchar.money)*iUnits / iShipPrice);
 		        iWeight = GetGoodWeightByType(iCurGoodsIdx, sti(GameInterface.qty_edit.str));
 		    }
-		    // проверка на колво доступное <--
+		    
 
 			SetFormatedText("QTY_TypeOperation", "Buy");
 			SetFormatedText("QTY_Result", "Money " + makeint(iShipPrice*stf(GameInterface.qty_edit.str) / iUnits + 0.5) +
 			                ", weight " + iWeight + " cent.");
 		}
 	}
-	// если получили ноль Jason: или особо хитрожопые ввели минус
+	
 	if (sti(GameInterface.qty_edit.str) <= 0)
 	{
 	    SetFormatedText("QTY_TypeOperation", "");
@@ -704,7 +704,7 @@ void ChangeQTY_EDIT()
     ShowFoodInfo();
 }
 
-void REMOVE_ALL_BUTTON()  // продать все
+void REMOVE_ALL_BUTTON()  
 {
     if (!GetRemovable(refCharacter)) return;
 	if (!bShowChangeWin)
@@ -717,7 +717,7 @@ void REMOVE_ALL_BUTTON()  // продать все
 	ChangeQTY_EDIT();
 }
 
-void ADD_ALL_BUTTON()  // купить все
+void ADD_ALL_BUTTON()  
 {
     if (!GetRemovable(refCharacter)) return;
 	if (!bShowChangeWin)
@@ -730,7 +730,7 @@ void ADD_ALL_BUTTON()  // купить все
 	ChangeQTY_EDIT();
 }
 
-void REMOVE_BUTTON()  // продать
+void REMOVE_BUTTON()  
 {
     if (!GetRemovable(refCharacter)) return;
 	if (!bShowChangeWin) return;
@@ -753,7 +753,7 @@ void REMOVE_BUTTON()  // продать
 	ChangeQTY_EDIT();
 }
 
-void ADD_BUTTON()  // купить
+void ADD_BUTTON()  
 {
     if (!GetRemovable(refCharacter)) return;
 	if (!bShowChangeWin) return;

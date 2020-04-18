@@ -36,13 +36,13 @@ void FillStoreGoods(ref pRef)
 	float 	RndPriceModify;
 	float 	RndPriceModifySign = -1.0;
 
-	int iColony 	= FindColony(pRef.Colony); 		// город магазина
+	int iColony 	= FindColony(pRef.Colony); 		
 
 	aref arTypes, arCurType;
 	if (iColony != -1)
 	{
 		ref rColony = GetColonyByIndex(iColony);
-		int islandIdx 	= FindIsland(rColony.island); 	// остров города
+		int islandIdx 	= FindIsland(rColony.island); 	
 		if (islandIdx!=-1)
 		{
 			ref rIsland = GetIslandByIndex(islandIdx);
@@ -60,7 +60,7 @@ void FillStoreGoods(ref pRef)
 				   sti(rColony.nation) == PIRATE) RndPriceModifySign = 1.0;
 				rIsland.RndPriceModifySign = RndPriceModifySign;
 			}
-			makearef(arTypes, rIsland.Trade); // вся инфа как и в ПКМ по островам
+			makearef(arTypes, rIsland.Trade); 
 			nq = GetAttributesNum(arTypes);
 			for(i=0; i<nq; i++)
 			{
@@ -68,10 +68,10 @@ void FillStoreGoods(ref pRef)
 				tt = T_TYPE_NORMAL;
 				switch(GetAttributeName(arCurType))
 				{
-					case "Export":		tt=T_TYPE_EXPORT;		break; // экспортные товары
-					case "Import":		tt=T_TYPE_IMPORT;		break; // импортные товары
-					case "Aggressive":	tt=T_TYPE_AGGRESSIVE;	break; // товары агрессивного спроса
-					case "Contraband":	tt=T_TYPE_CONTRABAND;	break; // контрабанда
+					case "Export":		tt=T_TYPE_EXPORT;		break; 
+					case "Import":		tt=T_TYPE_IMPORT;		break; 
+					case "Aggressive":	tt=T_TYPE_AGGRESSIVE;	break; 
+					case "Contraband":	tt=T_TYPE_CONTRABAND;	break; 
 				}
 				n = GetAttributesNum(arCurType);
 				for(j=0; j<n; j++)
@@ -95,7 +95,7 @@ void FillStoreGoods(ref pRef)
 	for (i=0; i<GOODS_QUANTITY; i++)
 	{
 	   	goodName = Goods[i].Name;
-	   	// boal 22.01.2004 -->
+	   	
 		switch(sti(pRef.Goods.(goodName).TradeType))
 		{
 			case T_TYPE_NORMAL:
@@ -123,13 +123,13 @@ void FillStoreGoods(ref pRef)
 				pRef.Goods.(goodName).RndPriceModify = RndPriceModify * RndPriceModifySign;
 				break;
 				
-			case T_TYPE_AMMUNITION:  //делаю все тоже, что и для нормального товара, а тип нужен, чтоб на корабле не скупали лишнее.				
+			case T_TYPE_AMMUNITION:  
 				pRef.Goods.(goodName).Quantity = sti(sti(Goods[i].Norm)*0.75 + rand(sti(sti(Goods[i].Norm)*0.1)));				
 				pRef.Goods.(goodName).RndPriceModify = RndPriceModify * RndPriceModifySign;
 				break;
 				
 			case T_TYPE_CANNONS: 
-				if(sti(Goods[i].NotSale) == 1) // 1.2.5 --> старшие калибры не продаем !!!
+				if(sti(Goods[i].NotSale) == 1) 
 				{
 					pRef.Goods.(goodName).Quantity = 0;
 				}
@@ -138,11 +138,11 @@ void FillStoreGoods(ref pRef)
 					pRef.Goods.(goodName).Quantity = sti(sti(Goods[i].Norm)*0.4 + rand(sti(sti(Goods[i].Norm)*0.4)));
 				}	
 				pRef.Goods.(goodName).RndPriceModify = (frnd() * 0.03 + RndPriceModify + 0.10) * RndPriceModifySign; 
-				pRef.Goods.(goodName).canbecontraband = CONTRA_SELL;			// все орудия можем продавать контрабандистам !!
+				pRef.Goods.(goodName).canbecontraband = CONTRA_SELL;			
 				break;	
 		}
 
-		// ?????? ????? ????????
+		
 		if (pRef.StoreSize == "medium")
 		{
 		    pRef.Goods.(goodName).Quantity = makeint(sti(pRef.Goods.(goodName).Quantity) * stf(Goods[i].MediumNorm)); 
@@ -151,12 +151,12 @@ void FillStoreGoods(ref pRef)
 		{
 		    pRef.Goods.(goodName).Quantity = makeint(sti(pRef.Goods.(goodName).Quantity) * stf(Goods[i].SmallNorm)); 
 		}
-		// 24/01/08
-		pRef.Goods.(goodName).Norm            = pRef.Goods.(goodName).Quantity; 		// колво в начале, это норма магазина навсегда
-		pRef.Goods.(goodName).NormPriceModify = pRef.Goods.(goodName).RndPriceModify; 	// начальная цена - тоже limit стремлений
+		
+		pRef.Goods.(goodName).Norm            = pRef.Goods.(goodName).Quantity; 		
+		pRef.Goods.(goodName).NormPriceModify = pRef.Goods.(goodName).RndPriceModify; 	
 		pRef.Goods.(goodName).AddPriceModify  = 1.0;
 		
-//		trace("FillStoreGoods    colony : " + pRef.Colony + " good : " + goodName + " RndPriceModify : " + pRef.Goods.(goodName).RndPriceModify);
+
 	}
 	UpdateStore(pRef);
 }
@@ -173,7 +173,7 @@ void StoreVoidFill(ref pRef)
 		    pRef.Goods.(goodName).TradeType = Goods[i].trade_type;
 		}
 		else
-		{ // boal fix <--
+		{ 
 			pRef.Goods.(goodName).TradeType = T_TYPE_NORMAL;
 		}
 		
@@ -182,7 +182,7 @@ void StoreVoidFill(ref pRef)
 		    pRef.Goods.(goodName).Type = Goods[i].type;
 		}
 		else
-		{ // boal fix <--
+		{ 
 			pRef.Goods.(goodName).Type = T_TYPE_NORMAL;
 		}
 		

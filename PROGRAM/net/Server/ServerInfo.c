@@ -25,7 +25,7 @@ void NetServer_GetFullServerInfo(int wNetClientID)
 	NetServer_OnServerInfo_SendGoodsInfo(wNetClientID);
 }
 
-// NSC_SERVERINFO_COMMON
+
 void NetServer_OnServerInfo_SendCommonServerInfo(int wNetClientID)
 {
 	int iSMsg = NMCreate();
@@ -44,7 +44,7 @@ void NetServer_OnServerInfo_SendCommonServerInfo(int wNetClientID)
 	NMDelete(iSMsg);
 }
 
-// NSC_SERVERINFO_PLAYER 
+
 void NetServer_OnServerInfo_SendClientsInfo(int wNetClientID)
 {
 	for (int i=0; i<NetServer_GetClientsNum(); i++)
@@ -65,7 +65,7 @@ void NetServer_OnServerInfo_SendClientsInfo(int wNetClientID)
 	}
 }
 
-// NSC_SERVERINFO_SHIPS
+
 void NetServer_OnServerInfo_SendShipsInfo(int wNetClientID)
 {
 	for (int i=0; i<Net_GetShipsNum(); i++)
@@ -96,7 +96,7 @@ void NetServer_OnServerInfo_SendShipsInfo(int wNetClientID)
 	}
 }
 
-// NSC_SERVERINFO_CANNONS
+
 void NetServer_OnServerInfo_SendCannonsInfo(int wNetClientID)
 {
 	int iSMsg = NMCreate();
@@ -115,7 +115,7 @@ void NetServer_OnServerInfo_SendCannonsInfo(int wNetClientID)
 	NMDelete(iSMsg);
 }
 
-// NSC_SERVERINFO_SKILLS
+
 void NetServer_OnServerInfo_SendSkillsInfo(int wNetClientID)
 {
 	int iSMsg = NMCreate();
@@ -131,7 +131,7 @@ void NetServer_OnServerInfo_SendSkillsInfo(int wNetClientID)
 	NMDelete(iSMsg);
 }
 
-// NSC_SERVERINFO_PERKS
+
 void NetServer_OnServerInfo_SendPerksInfo(int wNetClientID)
 {
 	int iSMsg = NMCreate();
@@ -146,7 +146,7 @@ void NetServer_OnServerInfo_SendPerksInfo(int wNetClientID)
 	NMDelete(iSMsg);
 }
 
-// NSC_SERVERINFO_GOODS
+
 void NetServer_OnServerInfo_SendGoodsInfo(int wNetClientID)
 {
 	int iSMsg = NMCreate();
@@ -177,7 +177,7 @@ void NetServer_OnServerInfo_SendTopListInfo(int wNetClientID, int iMsg)
 		iSMsg = NMCreate();
 		NMAddByte(iSMsg, NC_SERVERINFO);
 		NMAddByte(iSMsg, NSC_SERVERINFO_TOPLIST_PLAYER);
-		NMAddWord(iSMsg, 0);	// players num in table
+		NMAddWord(iSMsg, 0);	
 		NetServer_SendMessage(wNetClientID, iSMsg, true);
 		NMDelete(iSMsg);
 		return;
@@ -203,3 +203,4 @@ void NetServer_OnServerInfo_SendTopListInfo(int wNetClientID, int iMsg)
 	NetServer_SendMessage(wNetClientID, iSMsg, true);
 	NMDelete(iSMsg);
 }
+

@@ -9,7 +9,7 @@ void GoldFleet()
 	string sName = GenerateRandomNameToShip(SPAIN); 	
 	chref = GetCharacter(NPC_GenerateCharacter("Head_of_Gold_Squadron", "off_spa_2", "man", "man", 5, SPAIN, 31, true, "governor"));
 	FantomMakeCoolSailor(chref, SHIP_LSHIP_SPA, sName, CANNON_TYPE_CANNON_LBS36, 105, 105, 105);
-	FantomMakeCoolFighter(chref, 45, 100, 100, "blade_21", "pistol5", "bullet", 100); // 170912
+	FantomMakeCoolFighter(chref, 45, 100, 100, "blade_21", "pistol5", "bullet", 100); 
 	SetCaptanModelByEncType(chref, "war");
 	chref.ship.Crew.Morale = 100;
 	ChangeCrewExp(chref, "Sailors",   100);
@@ -21,8 +21,8 @@ void GoldFleet()
 	SetCharacterPerk(chref, "Tireless");
 	SetCharacterPerk(chref, "HardHitter");
 	SetCharacterPerk(chref, "MusketsShoot");
-	UpgradeShipParameter(chref, "SpeedRate");	//апгрейдить скорость
-	UpgradeShipParameter(chref, "TurnRate");	//маневренность 
+	UpgradeShipParameter(chref, "SpeedRate");	
+	UpgradeShipParameter(chref, "TurnRate");	
 	
 	string sGroup = "Sea_"+chref.id
 	Group_FindOrCreateGroup(sGroup);
@@ -31,8 +31,8 @@ void GoldFleet()
     Group_LockTask(sGroup);
 	Group_AddCharacter(sGroup, chref.id);
 	Group_SetGroupCommander(sGroup, chref.id);
-	SetRandGeraldSail(chref, sti(chref.Nation)); // homo Гербы
-	chref.dialog.filename = "Capitans_dialog.c"; // homo 20/01/07
+	SetRandGeraldSail(chref, sti(chref.Nation)); 
+	chref.dialog.filename = "Capitans_dialog.c"; 
 	chref.dialog.currentnode = "GoldSquadron";
 	chref.DeckDialogNode = "GoldSquadron";
  
@@ -85,14 +85,14 @@ void GoldFleet()
 		}
 		
         sld.AlwaysEnemy = true;
-		sld.DontRansackCaptain = true; //квестовые не сдаются
-        sld.dialog.filename = "Capitans_dialog.c"; // homo 20/01/07
+		sld.DontRansackCaptain = true; 
+        sld.dialog.filename = "Capitans_dialog.c"; 
 	    sld.dialog.currentnode = "GoldSquadron";
 	    sld.DeckDialogNode = "GoldSquadron";
 		Group_AddCharacter(sGroup, sld.id);
 	}	
     chref.AlwaysEnemy = true;
-    chref.DontRansackCaptain = true; //квестовые не сдаются
+    chref.DontRansackCaptain = true; 
 	chref.mapEnc.type = "trade";
 	chref.mapEnc.worldMapShip = "Manowar_gold";
 	chref.mapEnc.Name = XI_ConvertString("GoldConvoy");
@@ -124,13 +124,13 @@ void LeaveGoldleet(string temp)
     {
         if (NumDeadCapitan() > 0)
         {
-            //конвой атакован
+            
             DefeatRumour(1);
             AddQuestRecord("Rumour_GoldFleet", 13+rand(2));
         }
         else
         {
-            // конвой не тронули
+            
             isGoldFleet = true;       
         }
         if ( temp == "CheckHavanaGoldFleet" )
@@ -145,7 +145,7 @@ void LeaveGoldleet(string temp)
     }
     else
     {
-        // конвой погиб
+        
         Map_ReleaseQuestEncounter("Head_of_Gold_Squadron");
     	igoldpos = 0;
     	DefeatRumour(0);
@@ -161,10 +161,10 @@ void DefeatGoldFleet(string temp)
     AddQuestRecord("Rumour_GoldFleet", 4 + rand(2));
     CloseQuestHeader("Rumour_GoldFleet");
     Pchar.quest.EndOfGoldFleet.over = "yes";
-    Pchar.quest.HeadGoldFleetInHavana.over = "yes"; //fix
-    Pchar.quest.CheckHavanaGoldFleet.over = "yes"; //fix
-    Pchar.quest.LeaveGoldleet.over = "yes"; //fix
-    Pchar.GoldfleetInHavana.over = "yes"; //fix
+    Pchar.quest.HeadGoldFleetInHavana.over = "yes"; 
+    Pchar.quest.CheckHavanaGoldFleet.over = "yes"; 
+    Pchar.quest.LeaveGoldleet.over = "yes"; 
+    Pchar.GoldfleetInHavana.over = "yes"; 
     isGoldFleet = false;
     Log_TestInfo("Defeat GoldFleet");
 	ChangeCharacterComplexReputation(pchar,"fame", 10); 
@@ -189,14 +189,14 @@ void RouteGoldFleet()
             case 1 :
                 ClearIslandShips("Havana");
                 Colonies[FindColony("Havana")].DontSetShipInPort = true;
-                sld = CharacterFromID("Head_of_Gold_Squadron"); //По прибытию в Гавану конвой расслабляется =)
+                sld = CharacterFromID("Head_of_Gold_Squadron"); 
                 DeleteAttribute(sld, "AlwaysEnemy");
                 for(int k = 1; k <= GoldCapNum ; k++)
                 {
                     sld = CharacterFromID("GoldCap_"+k);
                     DeleteAttribute(sld, "AlwaysEnemy");
-                }                                        //
-                Group_SetAddress("Sea_Head_of_Gold_Squadron", "Cuba2", "Quest_ships", "reload_fort1_siege");//fix 1
+                }                                        
+                Group_SetAddress("Sea_Head_of_Gold_Squadron", "Cuba2", "Quest_ships", "reload_fort1_siege");
                 string sQuest = "HeadGoldFleetInHavana";
                 pchar.quest.(sQuest).win_condition.l1 = "location";
                 pchar.quest.(sQuest).win_condition.l1.location = "Cuba2";
@@ -228,12 +228,12 @@ void EndOfGoldFleet(string temp)
     CloseQuestHeader("Rumour_GoldFleet");
     Group_DeleteGroup(sGroupID);
     Pchar.quest.HeadGoldFleetInHavana.over = "yes";
-    Pchar.quest.CheckHavanaGoldFleet.over = "yes"; //fix
-    Pchar.quest.LeaveGoldleet.over = "yes"; //fix
-    Pchar.GoldfleetInHavana.over = "yes"; //fix
+    Pchar.quest.CheckHavanaGoldFleet.over = "yes"; 
+    Pchar.quest.LeaveGoldleet.over = "yes"; 
+    Pchar.GoldfleetInHavana.over = "yes"; 
     igoldpos = 0;
     isGoldFleet = false;
-    DeleteAttribute (&colonies[FindColony("Havana")], "DontSetShipInPort"); //возвращаем жизнь
+    DeleteAttribute (&colonies[FindColony("Havana")], "DontSetShipInPort"); 
 }
 
 void StartGoldFleet(string temp);
@@ -317,7 +317,7 @@ void DefeatRumour(int noall)
     }
 }
 
-//OnInit_GoldFleet
+
 void OnInit_GoldFleet(ref rTmpl)
 {
     object 	Prm;

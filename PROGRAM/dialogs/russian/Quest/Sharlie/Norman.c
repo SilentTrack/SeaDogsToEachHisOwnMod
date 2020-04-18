@@ -1,4 +1,4 @@
-// Абрахам Норман
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -338,7 +338,7 @@ void ProcessDialogEvent()
 			link.l2.go = "tieyasal_2";
 			link.l3 = "I want him to haul along a new vessel for me just like he did once before for Shark Dodson.";
 			link.l3.go = "tieyasal_3";
-			if (CheckAttribute(pchar, "questTemp.Ksochitam.SQCapBookRead")) // прочел журнал Санта-Квитерии
+			if (CheckAttribute(pchar, "questTemp.Ksochitam.SQCapBookRead")) 
 			{
 				link.l4 = "Miguel Dichoso has killed a man. That's why I'm searching for him.";
 				link.l4.go = "tieyasal_4";

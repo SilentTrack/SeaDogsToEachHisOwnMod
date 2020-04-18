@@ -2,14 +2,7 @@
 
 #define LAI_TMPL_FOLLOW		"follow"
 
-/*
-	Возможные состояния:
-		"wait"		ждёт цели
-		"go"		идёт к цели
-		"stay"		стоит у цели
-		"pause"		ждёт возможности пройти к цели
-		"falure"	дальше шаблон работать не может
-*/
+ 
 
 
 bool LAi_tmpl_SetFollow(aref chr, aref follow, float timeout)
@@ -65,7 +58,7 @@ bool LAi_tmpl_follow_InitTemplate(aref chr)
 	return true;
 }
 
-//Процессирование шаблона персонажа
+
 void LAi_tmpl_follow_CharacterUpdate(aref chr, float dltTime)
 {
 	aref tmpl;
@@ -80,7 +73,7 @@ void LAi_tmpl_follow_CharacterUpdate(aref chr, float dltTime)
 		{
 			tmpl.time = time + dltTime;
 		}else{
-			//Trace("Template <follow> -> timeout chr.id = " + chr.id);
+			
 			SetCharacterTask_Stay(chr);
 			LAi_tmpl_follow_Teleport(chr);			
 			tmpl.state = "stay";			
@@ -112,130 +105,130 @@ void LAi_tmpl_follow_CharacterUpdate(aref chr, float dltTime)
 	}
 }
 
-//Персонаж выполнил команду  go to point
+
 void LAi_tmpl_follow_EndGoToPoint(aref chr)
 {
 	LAi_tmpl_follow_updatetemplate(chr);
 }
 
-//Персонаж провалил команду  go to point
+
 void LAi_tmpl_follow_FailureGoToPoint(aref chr)
 {
 	LAi_tmpl_follow_updatetemplate(chr);
 }
 
-//Персонаж выполнил команду  run to point
+
 void LAi_tmpl_follow_EndRunToPoint(aref chr)
 {	
 	LAi_tmpl_follow_updatetemplate(chr);
 }
 
-//Персонаж провалил команду  run to point
+
 void LAi_tmpl_follow_FailureRunToPoint(aref chr)
 {	
 	LAi_tmpl_follow_updatetemplate(chr);
 }
 
-//Персонаж не может добраться до точки назначения
+
 void LAi_tmpl_follow_BusyPos(aref chr, float x, float y, float z)
 {
 	LAi_tmpl_follow_Stop(chr, 1.0 + rand(3));
 }
 
-//Персонаж начал перемещение за другим
+
 void LAi_tmpl_follow_FollowGo(aref chr)
 {
 	chr.chr_ai.tmpl.state = "go";
 }
 
-//Персонаж начал дошёл до другого персонажа
+
 void LAi_tmpl_follow_FollowStay(aref chr)
 {	
 	chr.chr_ai.tmpl.state = "stay";
 	LAi_tmpl_follow_Complite(chr);
 }
 
-//Персонаж провалил команду  follow character
+
 void LAi_tmpl_follow_FailureFollow(aref chr)
 {	
 	LAi_tmpl_follow_updatetemplate(chr);
 }
 
 
-//Персонаж начал перемещение за другим
+
 void LAi_tmpl_follow_FightGo(aref chr)
 {
 	LAi_tmpl_follow_updatetemplate(chr);
 }
 
-//Персонаж начал дошёл до другого персонажа
+
 void LAi_tmpl_follow_FightStay(aref chr)
 {
 	LAi_tmpl_follow_updatetemplate(chr);
 }
 
-//Персонаж провалил команду  Fight
+
 void LAi_tmpl_follow_FailureFight(aref chr)
 {
 	LAi_tmpl_follow_updatetemplate(chr);
 }
 
-//Можно ли стрелять
+
 bool LAi_tmpl_follow_IsFire(aref chr)
 {	
 	return false;
 }
 
-//Можно ли использовать оружие
+
 bool LAi_tmpl_follow_IsFight(aref chr)
 {
 	return false;
 }
 
-//Персонаж выполнил команду  escape
+
 void LAi_tmpl_follow_EndEscape(aref chr)
 {
 	LAi_tmpl_follow_updatetemplate(chr);
 }
 
-//Персонаж скользит вдоль патча
+
 void LAi_tmpl_follow_EscapeSlide(aref chr)
 {
 	LAi_tmpl_follow_updatetemplate(chr);
 }
 
-//Персонаж провалил команду  escape
+
 void LAi_tmpl_follow_FailureEscape(aref chr)
 {
 	LAi_tmpl_follow_updatetemplate(chr);
 }
 
 
-//Персонаж толкается с другими персонажами
+
 void LAi_tmpl_follow_ColThreshold(aref chr)
 {
 	LAi_tmpl_follow_Stop(chr, 1.0 + rand(3));
 }
 
-//Персонаж закончил проигрывать анимацию
+
 void LAi_tmpl_follow_EndAction(aref chr)
 {
 	LAi_tmpl_follow_updatetemplate(chr);
 }
 
 
-//Персонажа просят освободить место
+
 void LAi_tmpl_follow_FreePos(aref chr, aref who)
 {
 	LAi_tmpl_follow_Go(chr);
 }
 
-//------------------------------------------------------------------------------------------
-//Внутреннии функции
-//------------------------------------------------------------------------------------------
 
 
-//Установить за кем следовать
+
+
+
+
 bool LAi_tmpl_follow_SetFollow(aref chr, aref follow, float timeout)
 {
 	chr.chr_ai.tmpl.follow = follow.index;
@@ -283,7 +276,7 @@ bool LAi_tmpl_follow_Teleport(aref chr)
 		int idx = sti(chr.chr_ai.tmpl.follow);
 		float x, y, z;
 		if(!GetCharacterPos(chr, &x, &y, &z)) return false;
-		//Trace("Template <follow> -> teleport chr.id = " + chr.id + " to pos(" + x + ", " + y + ", " + z + ")");
+		
 		TeleportCharacterToPos(chr, x, y, z);
 		return true;
 	}
@@ -308,3 +301,4 @@ void LAi_tmpl_follow_updatetemplate(aref chr)
 		SetCharacterTask_Stay(chr);
 	}
 }
+

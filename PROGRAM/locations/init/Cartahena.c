@@ -2,9 +2,9 @@
 int LocationInitCartahena(int n)
 {
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ГОРОД
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Cartahena_town";
 	locations[n].id.label = "Street";
 	locations[n].worldmap = "Cartahena";
@@ -18,14 +18,14 @@ int LocationInitCartahena(int n)
 	locations[n].citizens = true;
 	locations[n].soldiers = true;
 	locations[n].carrier = true;
-	//==> флаг генерации квестодателя по розыску кэпов, int значение - шанс что сам заговорит(1-10)
+	
 	locations[n].questSeekCap = 4; 
-	//Sound
+	
 	locations[n].type = "town";
 	LAi_LocationFantomsGen(&locations[n], true);
-	locations[n].houseEnc = true; //для энкаунтеров в домах
-	//Models
-	//Always
+	locations[n].houseEnc = true; 
+	
+	
 	locations[n].models.always.town = "Cartahena";
 	locations[n].models.always.town.sea_reflection = 1;
 	locations[n].models.always.L1 = "Cartahena_signsA";
@@ -33,7 +33,7 @@ int LocationInitCartahena(int n)
 	locations[n].models.always.locators = "Cartahena_locators";
 	locations[n].models.always.grassPatch = "Cartahena_grass";
 	
-	//River
+	
 	locations[n].models.always.Waterfall1 = "river1";
 	locations[n].models.always.Waterfall1.uvslide.v0 = 0.2;
     locations[n].models.always.Waterfall1.uvslide.v1 = 0.0;
@@ -49,7 +49,7 @@ int LocationInitCartahena(int n)
 	locations[n].models.always.plan = "plan1";
 	locations[n].models.always.plan.level = 9;
 
-	//WindMill Fan
+	
 	locations[n].models.always.MillFan = "MillFan";
 	Locations[n].models.always.MillFan.locator.group = "WindMill";
 	Locations[n].models.always.MillFan.locator.name ="Fan";	
@@ -57,19 +57,19 @@ int LocationInitCartahena(int n)
 	Locations[n].models.always.MillFan.rotate.y = 0.0;
 	Locations[n].models.always.MillFan.rotate.z = 0.3;
 
-	//Day
+	
 	locations[n].models.day.fonar = "Cartahena_fd";
 	locations[n].models.day.charactersPatch = "Cartahena_patch_day";
 	locations[n].models.day.rinok = "Cartahena_rinok";
-	//Night
+	
 	locations[n].models.night.fonar = "Cartahena_fn";
 	locations[n].models.night.charactersPatch = "Cartahena_patch_night";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 
-    // --> Типовые городские локации, четкаљ фиксациљ на 10 номеров.
+    
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Cartahena";
 	locations[n].reload.l1.emerge = "reload_1";
@@ -116,7 +116,7 @@ int LocationInitCartahena(int n)
 	locations[n].reload.l7.emerge = "reload1";
 	locations[n].reload.l7.autoreload = "0";
 	locations[n].reload.l7.label = "Church";
-	//locations[n].reload.l7.close_for_night = 1;
+	
 
 	locations[n].reload.l8.name = "reload8_back";
 	locations[n].reload.l8.go = "Cartahena_bank";
@@ -144,14 +144,14 @@ int LocationInitCartahena(int n)
 	locations[n].reload.jail.autoreload = "0";
 	locations[n].reload.jail.label = "Prison";
 
-	// --> квестовые локации
+	
 	locations[n].reload.l11.name = "houseF2";
 	locations[n].reload.l11.go = "Cartahena_houseF2";
 	locations[n].reload.l11.emerge = "reload1";
 	locations[n].reload.l11.autoreload = "0";
 	locations[n].reload.l11.label = "Gonsales_house";
 
-    // --> Комоны, загрушки. Номера с начинаютсљ с 20.
+    
 	locations[n].reload.l20.name = "houseS1";
 	locations[n].reload.l20.go = "CommonCobHouse";
 	locations[n].reload.l20.emerge = "reload1";
@@ -201,11 +201,7 @@ int LocationInitCartahena(int n)
 	locations[n].reload.l27.autoreload = "0";
 	locations[n].reload.l27.label = "House";
 	
-	/*locations[n].reload.l28.name = "houseF2";
-	locations[n].reload.l28.go = "CommonRoom_MH9";
-	locations[n].reload.l28.emerge = "reload1";
-	locations[n].reload.l28.autoreload = "0";
-	locations[n].reload.l28.label = "House";*/
+	 
 	
 	locations[n].reload.l29.name = "houseF1";
 	locations[n].reload.l29.go = "CommonRoom_MH7";
@@ -220,23 +216,23 @@ int LocationInitCartahena(int n)
 	locations[n].reload.l30.label = "House";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ТАВЕРНА
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Cartahena_tavern";
 	locations[n].id.label = "Tavern";
 	locations[n].filespath.models = "locations\inside\tavern01\";
 	locations[n].image = "loading\inside\tavern.tga";
 	locations[n].habitues = 1;
-	//Town sack
+	
 	locations[n].townsack = "Cartahena";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "tavern";
 	locations[n].fastreload = "Cartahena";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.tavern = "Tavern01";
 	locations[n].models.always.tavern.level = 65538;
 	locations[n].models.always.locators = "Tavern01_locators";
@@ -245,14 +241,14 @@ int LocationInitCartahena(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.window.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "tavern01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "tavern01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Cartahena_town";
 	locations[n].reload.l1.emerge = "reload4";
@@ -264,26 +260,26 @@ int LocationInitCartahena(int n)
 	locations[n].reload.l2.emerge = "reload1";
 	locations[n].reload.l2.autoreload = "0";
 	locations[n].reload.l2.label = "Tavern upstairs";
-	locations[n].reload.l2.disable = 1; // закроем, но свљзку сделаем длљ квестовых нужд.
+	locations[n].reload.l2.disable = 1; 
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// КОМНАТА В ТАВЕРНЕ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Cartahena_tavern_upstairs";
 	locations[n].id.label = "Tavern upstairs";
 	locations[n].filespath.models = "locations\inside\Tavern_room";
 	locations[n].image = "loading\inside\tavern.tga";
-	//Town sack
+	
 	locations[n].townsack = "Cartahena";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "Cartahena";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Tavern_room_locators";
 	locations[n].models.always.tavern = "Tavern_room";
 	locations[n].models.always.tavern.level = 65538;
@@ -293,14 +289,14 @@ int LocationInitCartahena(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Tavern_room_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Tavern_room_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Cartahena_tavern";
 	locations[n].reload.l1.emerge = "reload2";
@@ -309,22 +305,22 @@ int LocationInitCartahena(int n)
 	locations[n].locators_radius.reload.reload1 = 0.8;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// МАГАЗИН
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Cartahena_store";
 	locations[n].id.label = "Store";
 	locations[n].filespath.models = "locations\inside\store02\";
 	locations[n].image = "loading\inside\shop.tga";
-	//Town sack
+	
 	locations[n].townsack = "Cartahena";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shop";
 	locations[n].fastreload = "Cartahena";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Store02_locators";
 	locations[n].models.always.store = "Store02";
 	locations[n].models.always.store.level = 65538;
@@ -333,20 +329,20 @@ int LocationInitCartahena(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "store02_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "store02_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Cartahena_town";
 	locations[n].reload.l1.emerge = "reload6";
 	locations[n].reload.l1.autoreload = "0";
 	locations[n].reload.l1.label = "Street";
-    ////////////////////////==> комната в магазине
+    
 	locations[n].reload.l2.name = "reload2";
 	locations[n].reload.l2.go = "CommonPackhouse_1";
 	locations[n].reload.l2.emerge = "reload1";
@@ -355,22 +351,22 @@ int LocationInitCartahena(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// РОСТОВЩИК
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Cartahena_bank";
 	locations[n].id.label = "Usurer House";
 	locations[n].filespath.models = "locations\inside\Bank01\";
 	locations[n].image = "loading\inside\bank.tga";
-	//Town sack
+	
 	locations[n].townsack = "Cartahena";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shop";
 	locations[n].fastreload = "Cartahena";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Bank01_locators";
 	locations[n].models.always.store = "Bank01";
 	locations[n].models.always.store.level = 65538;
@@ -379,15 +375,15 @@ int LocationInitCartahena(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Bank01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Bank01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//locations[n].models.back = "back\redss_";
-	//Reload map
+	
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Cartahena_town";
 	locations[n].reload.l1.emerge = "reload8";
@@ -402,22 +398,22 @@ int LocationInitCartahena(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ВЕРФЬ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Cartahena_Shipyard";
 	locations[n].id.label = "Shipyard";
 	locations[n].filespath.models = "locations\inside\Shipyard02\";
 	locations[n].image = "loading\inside\shipyard.tga";
-	//Town sack
+	
 	locations[n].townsack = "Cartahena";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shipyard";
 	locations[n].fastreload = "Cartahena";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Shipyard02_locators";
 	locations[n].models.always.shipyard = "Shipyard02";
 	locations[n].models.always.shipyard.level = 65538;
@@ -426,14 +422,14 @@ int LocationInitCartahena(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Shipyard02_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Shipyard02_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Cartahena_town";
 	locations[n].reload.l1.emerge = "reload5";
@@ -448,25 +444,25 @@ int LocationInitCartahena(int n)
 	locations[n].locators_radius.item.item1 = 1.0;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// РЕЗИДЕНЦИЯ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Cartahena_townhall";
 	locations[n].id.label = "Townhall";
 	locations[n].filespath.models = "locations\inside\Residence01";
 	locations[n].image = "loading\inside\residence.tga";
-	//Town sack
+	
 	locations[n].townsack = "Cartahena";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "residence";
 	locations[n].fastreload = "Cartahena";
 	locations[n].islandId = "Mein";
-	// стража
+	
 	locations[n].soldiers = true;
 	LAi_LocationFantomsGen(&locations[n], true);
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Residence01_locators";
 	locations[n].models.always.l1 = "Residence01";
 	locations[n].models.always.l1.level = 65538;
@@ -475,14 +471,14 @@ int LocationInitCartahena(int n)
 	locations[n].models.always.window.level = 65539;	
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Residence01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Residence01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Cartahena_town";
 	locations[n].reload.l1.emerge = "reload3";
@@ -502,25 +498,25 @@ int LocationInitCartahena(int n)
 	locations[n].reload.l3.label = "Room";
 	n = n + 1;
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////
-//				приемная вице-короля новой Гранады - Хуан де Кордова
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+
+
 	locations[n].id = "Cartahena_Roomtownhall";
 	locations[n].id.label = "TownhallRoom";
 	locations[n].filespath.models = "locations\inside\Residence06";
 	locations[n].image = "loading\inside\BigHouse02.tga";
- 	//Town sack
+ 	
 	locations[n].townsack = "Cartahena";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "Residence";
 	locations[n].fastreload = "Cartahena";
  	locations[n].islandId = "Cartahena";
-	// стража
+	
 	locations[n].soldiers = true;
 	LAi_LocationFantomsGen(&locations[n], true);
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Residence06_locators";
 	locations[n].models.always.l1 = "Residence06";
 	locations[n].models.always.l1.level = 65538;
@@ -529,14 +525,14 @@ int LocationInitCartahena(int n)
 	locations[n].models.always.window.level = 65539;	
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Residence06_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Residence06_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].locators_radius.reload.dialog_event = 0.2;
 	locations[n].locators_radius.camdetector.dialog_event = 2.2;
 
@@ -547,22 +543,22 @@ int LocationInitCartahena(int n)
 	locations[n].reload.l1.label = "Room";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ЦЕРКОВЬ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Cartahena_church";
 	locations[n].id.label = "Church";
 	locations[n].filespath.models = "locations\inside\Church01";
 	locations[n].image = "loading\inside\church.tga";
-	//Town sack
+	
 	locations[n].townsack = "Cartahena";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "church";
 	locations[n].fastreload = "Cartahena";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Church01_locators";
 	locations[n].models.always.tavern = "Church01";
 	locations[n].models.always.tavern.level = 65538;
@@ -571,14 +567,14 @@ int LocationInitCartahena(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Church01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Church01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Cartahena_town";
 	locations[n].reload.l1.emerge = "reload7";
@@ -587,21 +583,21 @@ int LocationInitCartahena(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ПОРТОВЫЙ ОФИС
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Cartahena_PortOffice";
 	locations[n].id.label = "PortOffice";
 	locations[n].image = "loading\inside\portoffice.tga";
-	//Town sack
+	
 	locations[n].townsack = "Cartahena";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "Cartahena";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\PortOffice";
 	locations[n].models.always.housePortOffice = "PortOffice";
 	locations[n].models.always.housePortOffice.level = 65538;
@@ -613,14 +609,14 @@ int LocationInitCartahena(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "PortOffice_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "PortOffice_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Cartahena_town";
 	locations[n].reload.l1.emerge = "reload10";
@@ -629,21 +625,21 @@ int LocationInitCartahena(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//   Дом Энрике Гонсалеса
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 	locations[n].id = "Cartahena_houseF2";
 	locations[n].id.label = "Gonsales_house";
 	locations[n].image = "loading\inside\mediumhouse01.tga";
 	locations[n].MustSetReloadBack = true;
-	//Town sack
+	
 	locations[n].townsack = "Cartahena";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\mediumhouse01";
 	locations[n].models.always.mediumhouse01 = "mediumhouse01";
 	locations[n].models.always.mediumhouse01.level = 65538;
@@ -656,18 +652,18 @@ int LocationInitCartahena(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	Locations[n].models.day.mediumhouse01rand= "mediumhouse01_rand";
 	locations[n].models.day.charactersPatch = "mediumhouse01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "mediumhouse01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-    //Reload map
+    
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Cartahena_town";
 	locations[n].reload.l1.emerge = "houseF2";
@@ -677,7 +673,7 @@ int LocationInitCartahena(int n)
 
 	n = n + 1;
 	
-	////////////////////// prison ////////////////////////////
+	
 	Locations[n].id = "Cartahena_prison";
 	locations[n].id.label = "Prison";
 	Locations[n].image = "loading\inside\prison.tga";
@@ -685,26 +681,26 @@ int LocationInitCartahena(int n)
     locations[n].parent_colony = "Cartahena";
  	locations[n].fastreload = "Cartahena";
 	locations[n].islandId = "Mein";
-	//Sound
+	
 	locations[n].type = "jail";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\prison1";
 	locations[n].models.always.prison1 = "prison1";
 	locations[n].models.always.lamps = "prison1_lamps";
 	locations[n].models.always.locators = "prison1_locators";	
 	locations[n].models.always.chest = "chest1";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "prison1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "prison1_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-    //Reload map
+    
 	Locations[n].reload.l1.name = "reload1";
 	Locations[n].reload.l1.go = "Cartahena_town";
 	Locations[n].reload.l1.emerge = "reload_jail";
@@ -715,20 +711,20 @@ int LocationInitCartahena(int n)
 	n = n + 1;
 
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Выход из города
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Cartahena_ExitTown";
 	locations[n].id.label = "ExitTown";
 	locations[n].image = "loading\Gate" + rand(1) + ".tga";
-	//Town sack
+	
 	locations[n].townsack = "Cartahena";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Cartahena";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\TownExitW";
 	Locations[n].models.always.townExit = "townExitW";
 	Locations[n].models.always.townWalls = "townExitW_stucco";
@@ -747,16 +743,16 @@ int LocationInitCartahena(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "townExitW_patch";
 	locations[n].models.day.fonars = "townExitW_fd";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "townExitW_patch";
 	locations[n].models.night.fonars = "townExitW_fn";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload4";
 	locations[n].reload.l1.go = "Cartahena_town";
 	locations[n].reload.l1.emerge = "gate_back";
@@ -785,19 +781,19 @@ int LocationInitCartahena(int n)
 	locations[n].locators_radius.reload.reload3_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Маяк Картахены
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Mayak11";
 	locations[n].id.label = "Mayak11";
 	locations[n].worldmap = "Mayak11";
 	locations[n].image = "loading\outside\lighthouse.tga";
-	//Sound
+	
 	locations[n].type = "mayak";
  	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Cartahena";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Lighthouse";
 	Locations[n].models.always.lighthouse = "lighthouse";
 	locations[n].models.always.lighthouse.sea_reflection = 1;
@@ -820,7 +816,7 @@ int LocationInitCartahena(int n)
 	Locations[n].models.always.l2 = "plan2";
 	Locations[n].models.always.l2.level = 8;
 	Locations[n].models.always.l2.tech = "LocationModelBlend";		
-	//Day
+	
 	locations[n].models.day.winday = "lighthouse_winday";
 	locations[n].models.day.fonar = "lighthouse_fd";
 	locations[n].models.day.charactersPatch = "lighthouse_patch";
@@ -833,7 +829,7 @@ int LocationInitCartahena(int n)
 	locations[n].models.day.glassonday = "lighthouse_glassonday";
 	Locations[n].models.day.glassonday.tech = "LocationWindows";
 	locations[n].models.day.glassonday.level = 66532;	
-	//Night
+	
 	locations[n].models.night.volumeLight= "lighthouse_volumeLight";
 	locations[n].models.night.volumeLight.tech = "LighthouseLight";
 	locations[n].models.night.volumeLight.level = 66529;	
@@ -854,10 +850,10 @@ int LocationInitCartahena(int n)
 	locations[n].models.night.glassonnight.level = 66532;
 	
 	locations[n].models.night.fonaronnight = "lighthouse_fonaronnight";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Cartahena_ExitTown";
 	locations[n].reload.l1.emerge = "reload2";
@@ -878,20 +874,20 @@ int LocationInitCartahena(int n)
 	locations[n].locators_radius.reload.reload2 = 1.0;
 	n = n + 1;
 	
-	////////////////////////////////////////////////////////////////////////////////
-	//////////комната на маяке
-	////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	
 	locations[n].id = "Mayak11_Lighthouseroom";
 	locations[n].id.label = "House";
 	locations[n].image = "loading\inside\mediumhouse10.tga";
-	//Town sack
+	
 	locations[n].townsack = "Cartahena";
 	locations[n].islandId = "Cartahena";
-	//Sound
+	
 	locations[n].type = "house";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\mediumhouse05";
 	locations[n].models.always.mediumhouse05 = "mediumhouse05";
 	locations[n].models.always.mediumhouse05.level = 65538;
@@ -904,15 +900,15 @@ int LocationInitCartahena(int n)
 
 	locations[n].models.always.back = "..\inside_back2";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	Locations[n].models.day.mediumhouse05rand= "mediumhouse05_rand";
 	locations[n].models.day.charactersPatch = "mediumhouse05_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "mediumhouse05_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Mayak11";
 	locations[n].reload.l1.emerge = "reload2";
@@ -922,18 +918,18 @@ int LocationInitCartahena(int n)
 	locations[n].box2.QuestClosed = true;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Cartahena_jungle_01";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
  	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Cartahena";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle5";
 	Locations[n].models.always.jungle = "jungle5";	
 	Locations[n].models.always.locators = "jungle5_locators";		
@@ -948,14 +944,14 @@ int LocationInitCartahena(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle5_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle5_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Cartahena_jungle_02";
 	locations[n].reload.l1.emerge = "reload2";
@@ -978,18 +974,18 @@ int LocationInitCartahena(int n)
 	locations[n].locators_radius.reload.Reload3_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Вход в пещеру
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Cartahena_CaveEntrance";
 	locations[n].id.label = "Cave entrance";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Cartahena";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt2";
 	Locations[n].models.always.caveEnt2 = "caveEnt2";	
 	Locations[n].models.always.locators = "caveEnt2_locators";		
@@ -1007,14 +1003,14 @@ int LocationInitCartahena(int n)
 	Locations[n].models.always.l4 = "plan4";
 	Locations[n].models.always.l4.level = 6;
 	Locations[n].models.always.l4.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "caveEnt2_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "caveEnt2_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Cartahena_Cave";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1030,42 +1026,36 @@ int LocationInitCartahena(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Пещера
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Cartahena_Cave";
 	locations[n].image = "loading\inside\cave.tga";
 	locations[n].id.label = "Cave";
-	//Sound
+	
 	locations[n].type = "cave";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Cartahena";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\cavernMedium2";
 	locations[n].models.always.cavernMedium2 = "cavernMedium2";
 	locations[n].models.always.lamps = "cavernMedium2_lamps";	
 	locations[n].models.always.locators = "cavernMedium2_locators";	
 
 	locations[n].locators_radius.item.duhi1 = 0.0;
-/*	
-	Locations[n].models.always.rays = "cavernMedium2_rays";
-	Locations[n].models.always.rays.level = 49;
-	Locations[n].models.always.rays.tech= "LocVisRays";
-	Locations[n].models.always.rays.uvslide.u1 = -0.03;
-	Locations[n].models.always.rays.uvslide.v1 = -0.03;	
-*/	
-	//Day
+ 	
+	
 	locations[n].models.day.charactersPatch = "cavernMedium2_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "cavernMedium2_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
- 	//Reload map
+ 	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Cartahena_CaveEntrance";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1079,18 +1069,18 @@ int LocationInitCartahena(int n)
 	locations[n].locators_radius.item.CheckReload1 = 3.5;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
     locations[n].id = "Cartahena_jungle_02";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
- 	//Sound
+ 	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Cartahena";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle8\";
 	Locations[n].models.always.jungle = "jungle8";	
 	Locations[n].models.always.locators = "jungle8_lCartahena02";		
@@ -1110,14 +1100,14 @@ int LocationInitCartahena(int n)
 	Locations[n].models.always.well_small.locator.group = "reload";
 	Locations[n].models.always.well_small.locator.name ="reloadW_back";	
 	Locations[n].models.always.well_small.tech = "DLightModel";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle8_pCartahena02";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle8_pCartahena02";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Shore25";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1140,20 +1130,20 @@ int LocationInitCartahena(int n)
 	locations[n].locators_radius.reload.reloadW_back = 2.3;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// бухта Ковеньяс
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Shore25";
 	locations[n].id.label = "Shore25";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "Shore25";
 	locations[n].questflower = 1;
-	//Sound
+	
 	locations[n].type = "seashore";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "Cartahena";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore10";
 	Locations[n].models.always.shore10 = "shore10";
 	locations[n].models.always.shore10.sea_reflection = 1;
@@ -1172,14 +1162,14 @@ int LocationInitCartahena(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore10_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore10_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Cartahena_jungle_02";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1197,3 +1187,4 @@ int LocationInitCartahena(int n)
 	
 	return n;
 }
+

@@ -1,27 +1,26 @@
-// BOAL нажатие на F12 вызывает этот код. Его можно править с alt-tab в игре, изменения будут сразу
-//native string GetHello();
-//#libriary "b_engine"
+
+
+
 
 void ActiveINSERTControl()
 {
-    //DoReloadCharacterToLocation(Pchar.location, "goto", "goto2");
-    //DoReloadCharacterToLocation("PlutoStoreSmall", "reload", "reload1");
-	//DoReloadCharacterToLocation("Panama_TownhallRoom", "reload", "reload1");
+    
+    
+	
 }
 
 void ActiveF4Control()
 {
-	/*Log_Info("Test F4 button");
-    SetRandGeraldSail(pchar, rand(4));*/
+	 
 	
-	/////////////////////////////////////
+	
 	
 	Rat_GenerateRat();
 	
-	Log_Info("Сгенерили крысу!");
+	Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!");
 }
 
-// Warship. Сюда повесил дамп аттрибутов - по Ф12 не нужно это
+
 void ActiveF5Control()
 {
 	int characterIndex = LAi_FindNearestVisCharacter(PChar, 15);
@@ -45,12 +44,12 @@ void ActiveF5Control()
 		}	
 	}
 
-	Log_Info("Дамп аттрибутов ближайшего персонажа");
+	Log_Info("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 }
 
 void ActiveF7Control()
 {
-	// Warship. Убить боижайшего персонажа
+	
 	int characterIndex = LAi_FindNearestVisCharacter(PChar, 25);
 	ref characterRef;
 	
@@ -58,42 +57,35 @@ void ActiveF7Control()
 	{
 		characterRef = &Characters[characterIndex];
 		
-		if(!LAi_IsImmortal(characterRef)) // Квестовые
+		if(!LAi_IsImmortal(characterRef)) 
 		{
 			LAi_KillCharacter(characterRef);
-			Log_Info("Убили персонажа с ID == " + characterRef.Id);
+			Log_Info("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ ID == " + characterRef.Id);
 		}
 		else
 		{
-			Log_Info("Нельзя убить персонажа с ID == " + characterRef.Id);
+			Log_Info("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ ID == " + characterRef.Id);
 		}
 	}
 }
 
 void ActiveF10Control()
 {
-	/*Log_Info("Test F10 button");
-    LaunchPsHeroScreen();
-    trace("===================RUMOURS=======================");
-    for(int i = 0; i < MAX_RUMOURS; i++)
-	{
-        DumpAttributes(&Rumour[i]);
-    	trace("===================");
-	}*/
+	 
 	
-	// Log_Info(GetStrSmallRegister(GetRussianNumberString(rand(999) - rand(999))));
 	
-	//Log_Info("PChar.curIslandId = '" + PChar.curIslandId + "'");
-	//Log_Info("LoadedLocation.islandId = '" + LoadedLocation.islandId + "'");
-	//Log_Info("Lighthouse Id = '" + Island_GetLighthouseId(PChar.curIslandId) + "'");
+	
+	
+	
+	
 }
 
-///  статы персонажа в близи
+
 void ActiveF12Control()
 {
     ref mainCh = GetMainCharacter();
     
-    //Найти ближайшего видимого персонажа в заданном радиусе
+    
     int res = LAi_FindNearestVisCharacter(mainCh, 15);
     if (res != -1)
     {
@@ -131,7 +123,7 @@ void ActiveF12Control()
             }
             else
             {
-                Log_SetStringToLog("Нет брони");
+                Log_SetStringToLog("пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");
             }
             if (CheckAttribute(findCh, "chr_ai.FencingType"))
             {
@@ -139,23 +131,16 @@ void ActiveF12Control()
             }
             else
             {
-                Log_SetStringToLog("Нет FencingType - error");
+                Log_SetStringToLog("пїЅпїЅпїЅ FencingType - error");
             }
-            /*int dchr_index;
-            ref deadCh;
-            dchr_index = Dead_FindCloseBody();
-            if (dchr_index != -1)
-            {
-                deadCh = &Dead_Characters[dchr_index];
-                Log_SetStringToLog("Dead=" + deadCh.id);
-            } */
-			Log_SetStringToLog("Нация: " + findCh.nation);
-			Log_SetStringToLog("Пол: " + findCh.sex);
-			Log_SetStringToLog("Группа: " + findCh.chr_ai.group);
-			Log_SetStringToLog("Темплейт: " + findCh.chr_ai.tmpl);
+             
+			Log_SetStringToLog("пїЅпїЅпїЅпїЅпїЅ: " + findCh.nation);
+			Log_SetStringToLog("пїЅпїЅпїЅ: " + findCh.sex);
+			Log_SetStringToLog("пїЅпїЅпїЅпїЅпїЅпїЅ: " + findCh.chr_ai.group);
+			Log_SetStringToLog("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + findCh.chr_ai.tmpl);
 
-			//Log_SetStringToLog("Стейт: " + findCh.chr_ai.tmpl.state);
-		//	dumpattributes(findCh);
+			
+		
 
             mainCh.SystemInfo.OnlyShowCharacter = true;
 			LaunchCharacter(findCh);
@@ -170,7 +155,7 @@ void ActiveF12Control()
     }
 }
 
-///////////////////////////// test //////////////
+
 void TestColonyCommanders()
 {
 	int iChar;
@@ -178,22 +163,22 @@ void TestColonyCommanders()
 	string sColony;
 
 	int i;
-	float x, y, z;  // boal
+	float x, y, z;  
 
 	for (i=0; i<MAX_COLONIES; i++)
 	{
-		if (colonies[i].nation == "none") continue; // необитайки
-		// зададим базовых мэров городов
+		if (colonies[i].nation == "none") continue; 
+		
 		iChar = GetCharacterIndex(colonies[i].id + "_Mayor");
 		if (iChar != -1)
-		{   // мэр есть
+		{   
         	Log_Info("M: " + characters[iChar].id + " L:" + characters[iChar].location +
         	" " + characters[iChar].City + "  " + characters[iChar].nation);
         	trace("M: " + characters[iChar].id + " L:" + characters[iChar].location +
         	" " + characters[iChar].City + "  " + characters[iChar].nation);
         }
 
-		// добавить проверку на пиратов, у них нет фортов, нафиг им коммандер?
+		
 		if (CheckAttribute(&colonies[i], "HasNoFort"))
 		{
 			continue;
@@ -205,7 +190,7 @@ void TestColonyCommanders()
   		" " + characters[iChar].City + "  " + characters[iChar].nation);
 	}
 }
-// проверка ликвидности товара - цена-вес, что выгоднее - выводим в компил.лог список, строим заполняя трюм товаром по одной пачке
+
 void TestGoodsLiquidity()
 {
 	int i, j, idx;
@@ -240,3 +225,4 @@ void TestGoodsLiquidity()
 	}
 	trace("======= TestGoodsLiquidity ======== end ");
 }
+

@@ -28,13 +28,13 @@ ref GetColonyByIndex(int iColony);
 	return &Colonies[iColony];
 }
 
-// Warship -->
+
 ref GetColonyRefByID(string sColony)
 {
 	return GetColonyByIndex(FindColony(sColony));
 }
 
-int GetDistanceToColony2D(string _sColony) // Дистанция до колонии
+int GetDistanceToColony2D(string _sColony) 
 {
 	ref rColony = GetColonyRefByID(_sColony);
 	string sColonyIslandID = rColony.Island;
@@ -51,7 +51,7 @@ int GetDistanceToColony2D(string _sColony) // Дистанция до колонии
 	return makeint(GetDistance2D(X1, Z1, X2, Z2));
 }
 
-// Jason: функция возвращает id маяка на текущем острове. Работает только в городских локациях.
+
 string Colony_GetLighthouseId(string _colony) 
 {
 	string sMayak;
@@ -71,4 +71,4 @@ string Colony_GetLighthouseId(string _colony)
 	}
 	return sMayak;
 }
-// <--
+

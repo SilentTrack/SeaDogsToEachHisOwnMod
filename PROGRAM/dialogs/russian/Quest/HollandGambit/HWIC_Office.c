@@ -1,4 +1,4 @@
-// НПС офиса ГВИК
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -20,7 +20,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// офицер
+		
 		case "HWIC_officer":
 			if (LAi_grp_playeralarm > 0)
 			{
@@ -66,7 +66,7 @@ void ProcessDialogEvent()
 			dialog.text = "Then go upstairs to mynheer Rodenburg's office.";
 			link.l1 = "Thanks, I am on my way.";
 			link.l1.go = "HWIC_officer_exit";
-			LocatorReloadEnterDisable("Villemstad_houseS3", "reload2", false);//кабинет откроем
+			LocatorReloadEnterDisable("Villemstad_houseS3", "reload2", false);
 		break;
 		
 		case "HWIC_officer_2":
@@ -84,11 +84,11 @@ void ProcessDialogEvent()
 		case "HWIC_officer_exit":
 			DialogExit();
 			LAi_ActorGoToLocation(npchar, "reload", "reload3", "Villemstad_houseS3", "reload", "reload3", "", 5);
-			DoQuestCheckDelay("ReturnTalkerToOfficer", 5.0); // 140313
+			DoQuestCheckDelay("ReturnTalkerToOfficer", 5.0); 
 			NextDiag.TempNode = "HWIC_officer";
 		break;
 		
-		// солдаты
+		
 		case "HWIC_soldier":
 			if (LAi_grp_playeralarm > 0)
 			{
@@ -110,7 +110,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "HWIC_soldier";
 		break;
 		
-		// клерки
+		
 		case "HWIC_clerk":
 			if (LAi_grp_playeralarm > 0)
 			{
@@ -125,7 +125,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "HWIC_clerk";
 		break;
 		
-		// главный клерк - минхер Герритц
+		
 		case "HWIC_headclerk":
 			if (LAi_grp_playeralarm > 0)
 			{
@@ -162,7 +162,7 @@ void ProcessDialogEvent()
 				link.l3 = "I have got an interesting document for you, mynheer. Read it's beginning. It concerns the security of Holland. I will give it to you in case you are interested. There are coordinates of meeting. Not for free of course.";
 				link.l3.go = "depeshe";	
 			}
-			// калеуче
+			
 			if (CheckAttribute(pchar, "questTemp.Caleuche.Garpiya") && pchar.questTemp.Caleuche.Garpiya == "gwik")
 			{
 				link.l4 = "A captain by the name of Reginald Jackson must be working for you. He sails a xebec called Harpy. Could you tell me how can I meet him? I have important business with him.";
@@ -173,7 +173,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "HWIC_headclerk";
 		break;
 		
-		// торговые лицензии
+		
 		case "licence":
 			if (!CheckAttribute(npchar, "quest.licence"))
 			{
@@ -269,7 +269,7 @@ void ProcessDialogEvent()
 			LaunchItemsTrade(npchar, 0);
 		break;
 		
-		// депеша Кромвеля
+		
 		case "depeshe":
 			dialog.text = "Hm, show me...(reading) Well, well... Cromwell's appetites in their best. Bastards! Where did you get this dispatch?";
 			link.l1 = "I took it from one English courier. So would you like to buy it?";
@@ -302,7 +302,7 @@ void ProcessDialogEvent()
 		
 		case "depeshe_exit":
 			RemoveItems(pchar, "Cromvel_depeshe", 1);
-			pchar.quest.Terrapin_CromvelScuadron.over = "yes"; //снять прерывание
+			pchar.quest.Terrapin_CromvelScuadron.over = "yes"; 
 			ChangeCharacterNationReputation(pchar, HOLLAND, 15);
 			ChangeCharacterComplexReputation(pchar, "authority", 3);
 			ChangeCharacterComplexReputation(pchar, "nobility", 2);
@@ -311,7 +311,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 		break;
 		
-		// калеуче
+		
 		case "caleuche":
 			dialog.text = "Mynheer Reginald Jackson is performing regular shipping operations between Port Royal and Philipsburg. Look for him on that route. But I must warn you in advance - if you're brewing trouble, you'd better not, because that captain is under our protection. I hope we have understood each other, mynheer?";
 			link.l1 = "I just have business with him. A common trade. I don't mean to hurt him in absolutely any way.";
@@ -332,7 +332,7 @@ void ProcessDialogEvent()
 			DoQuestFunctionDelay("Caleuche_CreateGarpiyaInWorld", 1.0);
 		break;
 		
-		// новый босс ГВИК
+		
 		case "HWIC_Boss":
 			if (!CheckAttribute(npchar, "quest.silk_info") && sti(pchar.reputation.nobility) > 60)
 			{
@@ -342,7 +342,7 @@ void ProcessDialogEvent()
 				break;
 			}
 			dialog.text = "Good day, captain " + GetFullName(pchar) + "! How can I be of service?";
-			if(CheckAttribute(npchar, "quest.silk")) // торговля шелком
+			if(CheckAttribute(npchar, "quest.silk")) 
 			{
 				if (GetDataDay() == 1 || GetDataDay() == 15)
 				{
@@ -377,7 +377,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("Unique_Goods", "3");
 		break;
 		
-		// торговля шелком
+		
 		case "trade_silk":
 			dialog.text = "Sure, captain. Your silk is waiting for you. Are you ready to pay for it?";
 			if (GetCharacterItem(pchar, "gold_dublon") >= 600)
@@ -408,7 +408,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			AddCharacterGoods(pchar, GOOD_SHIPSILK, 30);
 			DeleteAttribute(npchar, "quest.silk");
-			SetFunctionTimerCondition("Silk_TraderAttrReturn", 0, 0, 1, false); // таймер
+			SetFunctionTimerCondition("Silk_TraderAttrReturn", 0, 0, 1, false); 
 			AddCharacterExpToSkill(pchar, "Commerce", 150);
 			NextDiag.TempNode = "HWIC_Boss";
 		break;

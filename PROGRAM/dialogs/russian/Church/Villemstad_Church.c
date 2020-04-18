@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,15 +9,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "Not now, padre..."), "Have nothing to say really...",
                       "I'll ask, I'll ask... a bit later though...", "Pardon me, holy father...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			// калеуче
+			
 			if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "priest")
 			{
-				link.l1 = "One of the clergymen of your parish asked me to investigate the house, where a Joachim Merryman was renting a room…";
+				link.l1 = "One of the clergymen of your parish asked me to investigate the house, where a Joachim Merryman was renting a roomпїЅ";
 				link.l1.go = "caleuche";
 			}
 		break;
 		
-		// калеуче
+		
 		case "caleuche":
 			dialog.text = "So? Have you been there, my son? Tell me!";
 			link.l1 = "Yes, I have. Although, I reckon, I'd better not. In the upper room I was attacked by a skeleton with a huge axe. I managed to come out victorious, although it certainly was not easy.";
@@ -44,7 +44,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "caleuche_4":
 			dialog.text = "I did. Back then I was just a humble canon in one of Lisbon's parishes. Joachim Merryman was a wealthy nobleman. At some point he has taken interest in old manuscripts and scrolls brought by the sailors from the distant lands. Also he began to study alchemy. After some time he went into seclusion.\nPeople have seen flashes of light in his house; at times they could also smell something strange. Then they have seen him in the cemetery in the nights. Once they have seen him digging out a fresh corpse and bringing it to his home. That was just too much to bear, and the father superior contacted the inquisition.\nWhen the guards breached the door of Merryman's house, Joachim was not there - he had fled via a secret passage. They found a lab in the basement, and even the seasoned soldiers were deeply shocked by what they saw. Rotting whole and dismembered bodies, human and animal skeletons, strange things... Fear and hatred for Merryman were so great that his house was demolished completely.\nMerryman disappeared without a trace. The inquisition began to search for him, sentencing him in his absence to burning at a stake as a dangerous warlock. But they never found him. And now, after all these years, I saw him again on the streets of Willemstad.";
-			link.l1 = "And why didn’t you tell the inquisitors?";
+			link.l1 = "And why didnпїЅt you tell the inquisitors?";
 			link.l1.go = "caleuche_5";
 		break;
 		
@@ -69,7 +69,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			GiveItem2Character(pchar, "amulet_10"); 
 			ref sld = characterFromId("Havana_Priest");
 			dialog.text = "But that was not the end of our troubles, my son. Recently I have received a letter from "+sld.name+", father superior of a church in Havana. He is telling terrible news. In a cave, in the jungle of Cuba, hunters have seen frightening abominations, the walking dead. And it is all the more bothersome considering the fact that recently people have gone missing in Havana after going into the jungle on their business.";
-			link.l1 = "Hmm… You imply that this is Merryman's work, too?";
+			link.l1 = "HmmпїЅ You imply that this is Merryman's work, too?";
 			if (CheckCharacterItem(pchar, "HolTradeLicence") && GetDaysContinueNationLicence(HOLLAND) >= 30) link.l1.go = "caleuche_8_1";
 			else link.l1.go = "caleuche_8";
 		break;
@@ -109,6 +109,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			Caleuche_PrepareCubaGrot();
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

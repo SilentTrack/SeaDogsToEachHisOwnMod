@@ -12,7 +12,7 @@ void NetServer_OnCamera(int wNetClientID, int iMsg)
 			rClient.Camera.Dir.z = NMGetFloat(iMsg);
 			EntityUpdate(1);
 
-			rClient.IsCanFire = "";	// IsCanFire and CurrentTargetRelation updated here
+			rClient.IsCanFire = "";	
 
 			int iOurTeam = sti(rClient.Team);
 			int iCurrentTargetTeam = sti(rClient.CurrentTargetTeam);
@@ -30,8 +30,8 @@ void NetServer_OnCamera(int wNetClientID, int iMsg)
 
 int NetServer_GetTeamRelation(int iOurTeam, int iCurrentTargetTeam)
 {
-	if (iCurrentTargetTeam == -1) return 0;							// nothing selected
-	if (sti(NetServer.GameType) == NETGAME_DEATHMATCH) return 2;	// enemy
-	if (iOurTeam != iCurrentTargetTeam) return 2;					// enemy
-	return 1;														// friend
+	if (iCurrentTargetTeam == -1) return 0;							
+	if (sti(NetServer.GameType) == NETGAME_DEATHMATCH) return 2;	
+	if (iOurTeam != iCurrentTargetTeam) return 2;					
+	return 1;														
 }

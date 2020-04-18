@@ -18,9 +18,9 @@ void InitWmInterface()
 
 	SetEventHandler("BI_UpdateWmInterface","BI_UpdateWmInterface",0);
 	PostEvent("BI_UpdateWmInterface",1000);
-	SetEventHandler("Control Activation","WM_ProcessControlPress",0); // boal
+	SetEventHandler("Control Activation","WM_ProcessControlPress",0); 
 }
-// boal -->
+
 void WM_ProcessControlPress()
 {
 	string ControlName = GetEventData();
@@ -29,11 +29,11 @@ void WM_ProcessControlPress()
 	switch(ControlName)
 	{
 		case "BICommandsActivate": 
-			PlaySound("interface\ok.wav"); // boal даешь звуки!
+			PlaySound("interface\ok.wav"); 
 		break;
 	}
 }
-// boal <--
+
 
 void BI_UpdateWmInterface()
 {
@@ -50,7 +50,7 @@ void DeleteWmInterface()
 	DelEventHandler("WM_UpdateCurrentAction","WM_UpdateCurrentAction");
 
 	DelEventHandler("BI_UpdateWmInterface","BI_UpdateWmInterface");
-	DelEventHandler("Control Activation","WM_ProcessControlPress"); // boal
+	DelEventHandler("Control Activation","WM_ProcessControlPress"); 
 }
 
 ref WM_CommandEndChecking()
@@ -122,7 +122,7 @@ void WM_SetPossibleCommands()
 
 	if( chIdx<0 || CharacterIsDead(GetCharacter(chIdx)) )
 	{
-		// отключим все команды
+		
 		aref aroot,arcur;
 		makearef(aroot,BattleInterface.Commands);
 		int q = GetAttributesNum(aroot);
@@ -147,8 +147,8 @@ void WM_SetPossibleCommands()
 	{
 	case 0:
 		BattleInterface.Commands.EnterToIsland.enable = true;
-		//Log_SetActiveAction("EnterToIsland");
-		Log_SetActiveAction("EnterToSea");  //boal
+		
+		Log_SetActiveAction("EnterToSea");  
 		bDefault = false;
 		break;
 	case 1:
@@ -177,8 +177,8 @@ void WM_SetPossibleCommands()
 	{
 		if( sti(worldMap.encounter_island) ) {
 			BattleInterface.Commands.EnterToIsland.enable = true;
-			//Log_SetActiveAction("EnterToIsland");
-			Log_SetActiveAction("EnterToSea");  //boal
+			
+			Log_SetActiveAction("EnterToSea");  
 		} else {
 			BattleInterface.Commands.EnterToSea.enable = true;
 			Log_SetActiveAction("EnterToSea");
@@ -192,8 +192,8 @@ void WM_UpdateCurrentAction()
 	switch( sti(worldMap.encounter_type) )
 	{
 	case 0:
-		//Log_SetActiveAction("EnterToIsland");
-		Log_SetActiveAction("EnterToSea");  //boal
+		
+		Log_SetActiveAction("EnterToSea");  
 		bDefault = false;
 		break;
 	case 1:
@@ -215,8 +215,8 @@ void WM_UpdateCurrentAction()
 	}
 	if( bDefault ) {
 		if( sti(worldMap.encounter_island) ) {
-			//Log_SetActiveAction("EnterToIsland");
-			Log_SetActiveAction("EnterToSea");  //boal
+			
+			Log_SetActiveAction("EnterToSea");  
 		} else {
 			Log_SetActiveAction("EnterToSea");
 		}
@@ -243,8 +243,8 @@ void WM_InitializeCommands()
 	BattleInterface.Commands.EnterToSea.note		= LanguageConvertString(idLngFile, "worldmap_sea");
 
 	BattleInterface.Commands.EnterToIsland.enable		= false;
-	BattleInterface.Commands.EnterToIsland.picNum		= 1;//0;
-	BattleInterface.Commands.EnterToIsland.selPicNum	= 9;//8;
+	BattleInterface.Commands.EnterToIsland.picNum		= 1;
+	BattleInterface.Commands.EnterToIsland.selPicNum	= 9;
 	BattleInterface.Commands.EnterToIsland.texNum		= 1;
 	BattleInterface.Commands.EnterToIsland.event		= "EnterToIsland";
 	BattleInterface.Commands.EnterToIsland.note			= LanguageConvertString(idLngFile, "worldmap_sea");
@@ -293,7 +293,7 @@ void WM_SetParameterData()
 	BattleInterface.CommandTextures.list.t1.ysize = 2;
 
 	BattleInterface.wm_sign.fontid			= "interface_normal";
-	BattleInterface.wm_sign.fontcolor		= argb(255,255,255,168) //argb(255,255,255,255);
+	BattleInterface.wm_sign.fontcolor		= argb(255,255,255,168) 
 	BattleInterface.wm_sign.fontscale		= 1.1;
 
 	BattleInterface.wm_sign.shipnamefontid			= "interface_normal";
@@ -303,7 +303,7 @@ void WM_SetParameterData()
 	BattleInterface.wm_sign.backtexturename		= "battle_interface\ShipBackIcon.tga";
 	BattleInterface.wm_sign.backcolor				= argb(255,128,128,128);
 	BattleInterface.wm_sign.backuv					= "0.0,0.0,1.0,1.0";
-	BattleInterface.wm_sign.backoffset				= "-2,-2"; //"0.0,0.0";
+	BattleInterface.wm_sign.backoffset				= "-2,-2"; 
 	BattleInterface.wm_sign.backiconsize			= "128,128";
 
 	BattleInterface.wm_sign.shipstatetexturename	= "battle_interface\ShipState.tga";
@@ -316,9 +316,9 @@ void WM_SetParameterData()
 	BattleInterface.wm_sign.shipspiconsize			= "64,74";
 
 	BattleInterface.wm_sign.shipclasstexturename	= "battle_interface\ShipClass.tga";
-	BattleInterface.wm_sign.shipclasscolor			= argb(255,102,102,102); //argb(255,128,128,128);
+	BattleInterface.wm_sign.shipclasscolor			= argb(255,102,102,102); 
 	BattleInterface.wm_sign.shipclassuv			= "0.0,0.0,1.0,1.0";
-	BattleInterface.wm_sign.shipclassoffset		= "-14,-52";//"-14,-50";
+	BattleInterface.wm_sign.shipclassoffset		= "-14,-52";
 	BattleInterface.wm_sign.shipclassiconsize		= "64,16";
 	BattleInterface.wm_sign.gunchargeprogress		= "0.0625, 0.219, 0.359, 0.5, 0.641, 0.781, 0.983";
 
@@ -337,7 +337,7 @@ void WM_SetParameterData()
 
 	BattleInterface.CommandList.CommandMaxIconQuantity = 8;
 	BattleInterface.CommandList.CommandIconSpace = 1;
-	BattleInterface.CommandList.CommandIconLeft = 108;//157; boal
+	BattleInterface.CommandList.CommandIconLeft = 108;
 	BattleInterface.CommandList.CommandIconWidth = RecalculateHIcon(48);
 	BattleInterface.CommandList.CommandIconHeight = RecalculateVIcon(48);
 
@@ -358,12 +358,7 @@ void WM_SetParameterData()
 	BattleInterface.CommandList.UDArrow_Offset_Up = RecalculateHIcon(-41) + "," + RecalculateVIcon(-30);
 	BattleInterface.CommandList.UDArrow_Offset_Down = RecalculateHIcon(-41) + "," + RecalculateVIcon(46);
 
-	/*BattleInterface.CommandList.ActiveIcon_Texture = "battle_interface\enter_list.tga";
-	BattleInterface.CommandList.ActiveIcon_Offset = RecalculateHIcon(-49) + ",0";
-	BattleInterface.CommandList.ActiveIcon_Size = RecalculateHIcon(48) + "," + RecalculateVIcon(48);
-	BattleInterface.CommandList.ActiveIcon_UV1 = "0.5,0.0,1.0,1.0";
-	BattleInterface.CommandList.ActiveIcon_UV2 = "0.0,0.0,0.5,1.0";
-	BattleInterface.CommandList.ActiveIcon_Note = XI_ConvertString("MenuNote"); */
+	 
 
 	BattleInterface.maincharindex = pchar.index;
 

@@ -73,7 +73,7 @@ void ProcessDialogEvent()
 				LAi_type_actor_Reset(sld);
 				LAi_RemoveCheckMinHP(sld);
 			}
-//			Diag.TempNode = "OnceAgain";
+
 			if(pchar.GenQuest.EncGirl == "Begin_1")
 			{
 				dialog.text = LinkRandPhrase("Go your own way, "+ GetSexPhrase("buddy","lass") +". She will thank us in the end, you know.",
@@ -151,11 +151,11 @@ void ProcessDialogEvent()
 			link.l2.go = "Node_Fight";
 		break;
 		
-		case "Node_4": // бандюки уходят, девица остается - ГГ ее выкупил у бандюков
+		case "Node_4": 
 			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
 			AddMoneyToCharacter(pchar, -makeint(sti(pchar.GenQuest.EncGirl.price))); 
 			ChangeCharacterComplexReputation(pchar,"nobility", 7);
-			//pchar.quest.LandEnc_RapersBadExit.over = "yes";
+			
 			sGlobalTemp = "Saved_CangGirl";
 			pchar.GenQuest.EncGirl.Ransom = true;
 			sTemp = LAi_FindNearestFreeLocator2Pchar("reload");			
@@ -277,7 +277,7 @@ void ProcessDialogEvent()
 				break;
 			}
 			dialog.text = "What is your money compared to the treasures of " + GetName(pchar.GenQuest.EncGirl.PirateIdx , pchar.GenQuest.EncGirl.PirateName1, NAME_GEN) + "? " +
-							"He was so greedy that he didn't marry his own daughter because he wanted to avoid extra expenses…\nBut there is our share in his chests! "+ 
+							"He was so greedy that he didn't marry his own daughter because he wanted to avoid extra expensesпїЅ\nBut there is our share in his chests! "+ 
 							GetName(NAMETYPE_ORIG, pchar.GenQuest.EncGirl.PirateName2, NAME_NOM) +" has lost at boarding " + sTemp +"! Also what have instead? " + 
 							"Pitiful handful of silver? " + GetName(pchar.GenQuest.EncGirl.PirateIdx , pchar.GenQuest.EncGirl.PirateName1, NAME_NOM) + " take all the booty in the hiding place. But now we are not going to give up! Shows where his the chests!";
 			link.l1 = "Well, I surely didn't apply for guarding the treasures of your captain, but I cannot show you the place... Because I do not know where is this place.";

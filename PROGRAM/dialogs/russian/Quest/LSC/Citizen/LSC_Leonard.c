@@ -1,4 +1,4 @@
-// Леонард Маскетт - пьяница
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -25,7 +25,7 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				break;
 			}
-			// --> пей до дна
+			
 			if (CheckAttribute(pchar, "questTemp.Saga.SharkHunt") && pchar.questTemp.Saga.SharkHunt == "find" && CheckAttribute(npchar, "quest.answer_3") && GetNpcQuestPastDayParam(npchar, "quest_date") >= 3 && !CheckAttribute(npchar, "quest.facio"))
 			{
 				dialog.text = "Pal, you are just in time... I want to talk with you... about a business. An important one.";
@@ -33,7 +33,7 @@ void ProcessDialogEvent()
 				link.l1.go = "facio";
 				break;
 			}
-			// <-- пей до дна
+			
 			if (npchar.quest.meeting == "0")
 			{
 				dialog.text = "A-a... hic! Hello, pal...";
@@ -43,18 +43,18 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				dialog.text = "Аh, "+GetFullName(pchar)+"! Hic! What do you want?";
+				dialog.text = "пїЅh, "+GetFullName(pchar)+"! Hic! What do you want?";
 				link.l1 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
 				link.l1.go = "rumours_LSC";
 				link.l2 = "I want to ask you a few questions about the island.";
-				link.l2.go = "int_quests"; //информационный блок
+				link.l2.go = "int_quests"; 
 				link.l5 = "Just wanted to know how are you doing. See you!";
 				link.l5.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
 		
-		case "meeting": // первая встреча
+		case "meeting": 
 			dialog.text = "Yeah! Enough? N-ope! I am a crazy drunk, hi-hic! Yes, Leonard Musket is drunk and that is a right thing!";
 			link.l1 = "Fond of drinks, huh? Yes, my name is "+GetFullName(pchar)+". Nice to meet you.";
 			link.l1.go = "meeting_1";
@@ -67,11 +67,11 @@ void ProcessDialogEvent()
 			link.l2 = LinkRandPhrase("Got anything interesting to say?", "Has something new happened on the island?", "Will you tell me the last gossips?");
 			link.l2.go = "rumours_LSC";
 			link.l3 = "I want to ask you a few questions about the island.";
-			link.l3.go = "int_quests"; //информационный блок
+			link.l3.go = "int_quests"; 
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// --> пей до дна
+		
 		case "facio":
 			dialog.text = "Yes, pal, I am almost sober. And that's because I have got a business for you, am important one. And it seems that you can do that...";
 			link.l1 = "What? What is on you mind? Speak and don't waste my time for nothing!";
@@ -129,9 +129,9 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.CurrentNode = "facio_wait";
 			pchar.questTemp.LSC.Drink = "begin";
-			pchar.questTemp.LSC.Drink.Chance = drand(100); // итог бухалова
+			pchar.questTemp.LSC.Drink.Chance = drand(100); 
 			if (CheckAttribute(pchar, "questTemp.CanDrink")) pchar.questTemp.LSC.Drink.Chance = sti(pchar.questTemp.LSC.Drink.Chance)+50;
-			SetFunctionTimerCondition("LSC_DrinkOver", 0, 0, 3, false); // 3 дня
+			SetFunctionTimerCondition("LSC_DrinkOver", 0, 0, 3, false); 
 			AddQuestRecord("LSC_Drink", "1");
 		break;
 		
@@ -175,7 +175,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "result_win_2":
-			pchar.quest.LSC_Drink1.over = "yes"; //снять таймер
+			pchar.quest.LSC_Drink1.over = "yes"; 
 			dialog.text = "Here. Take the key. The chest you need is on the left from the entrance. Take as much as you can quickly. Don't forget to lock it back. If I will see something I will knock the door three times. Run away through the rear gallery in that case.";
 			link.l1 = "Fine. Be on your guard!";
 			link.l1.go = "result_win_3";
@@ -190,7 +190,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "result_grabbing":
-			// считаем деньги и дублоны взятые из сундука
+			
 			iPeso = sti(pchar.money)-sti(pchar.questTemp.LSC.Drink.Money);
 			iDubl = GetCharacterItem(pchar, "gold_dublon")-sti(pchar.questTemp.LSC.Drink.Dublon);
 			if (iPeso <= 0) sPeso = "not a single peso";
@@ -222,7 +222,7 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				link.l1 = "I have taken from the chest "+sPeso+" и "+sDubl+"";
+				link.l1 = "I have taken from the chest "+sPeso+" пїЅ "+sDubl+"";
 				link.l1.go = "grabbing_1";
 			}
 		break;
@@ -260,8 +260,8 @@ void ProcessDialogEvent()
 			DialogExit();
 			RemoveItems(pchar, "key_facioQ", 1);
 			int n = Findlocation("CarolineBank");
-			locations[n].private2.QuestClosed = true; // запираем сундук
-			LocatorReloadEnterDisable("CarolineBank", "reload1", false); // на галерею
+			locations[n].private2.QuestClosed = true; 
+			LocatorReloadEnterDisable("CarolineBank", "reload1", false); 
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload38", "FleuronTavern", "goto", "goto2", "OpenTheDoors", 15.0);
 			pchar.quest.LSC_Drink4.win_condition.l1 = "Timer";
@@ -276,9 +276,9 @@ void ProcessDialogEvent()
 			DialogExit();
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload1", "LostShipsCity_town", "goto", "goto05_2", "", 10);
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			n = Findlocation("CarolineBank");
-			locations[n].private2.QuestClosed = true; // запираем сундук
+			locations[n].private2.QuestClosed = true; 
 			pchar.quest.LSC_Drink4.win_condition.l1 = "Timer";
 			pchar.quest.LSC_Drink4.win_condition.l1.date.hour  = sti(GetTime()+5);
 			pchar.quest.LSC_Drink4.win_condition.l1.date.day   = GetAddingDataDay(0, 0, 0);
@@ -287,9 +287,9 @@ void ProcessDialogEvent()
 			pchar.quest.LSC_Drink4.function = "LSC_DrinkDelete";
 			AddQuestRecord("LSC_Drink", "4");
 		break;
-		// <-- пей до дна
 		
-//--------------------------------------- блок вопросов и ответов ---------------------------------------------
+		
+
 		case "int_quests":
 			dialog.text = "You don't say... hic! I am listening...";
 			if (!CheckAttribute(npchar, "quest.answer_1"))
@@ -324,14 +324,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "ansewer_2":
-			dialog.text = "Yes, I am a drunkard… Drinking, damn it, because I have nothing left to do… You see, pal, I am done. The bottle of rum is the only thing I want. So I will continue drinking. And money... he-he, rum doesn't cost much. Anyway, I don't even have to buy it\nThere is a place filled with rum, but you need to swim if you want to get it, that is why I buy rum only when I am too drunk to swim... hic! Jizjezezejizeze, no, I won't tell you where to swim, he-he, don't even ask...";
+			dialog.text = "Yes, I am a drunkardпїЅ Drinking, damn it, because I have nothing left to doпїЅ You see, pal, I am done. The bottle of rum is the only thing I want. So I will continue drinking. And money... he-he, rum doesn't cost much. Anyway, I don't even have to buy it\nThere is a place filled with rum, but you need to swim if you want to get it, that is why I buy rum only when I am too drunk to swim... hic! Jizjezezejizeze, no, I won't tell you where to swim, he-he, don't even ask...";
 			link.l1 = "Wonderful.";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_2 = "true";
 		break;
 		
 		case "ansewer_3":
-			dialog.text = "What can I say, hic... about them? Good people to talk and to drink. Giuseppe Fazio is such an important man, a local bigwig, his chests are filled with gold… and yet he respects old Leo, buying him drinks at the tavern. Though, sometimes he also ask something in return, but it's nothing, hic!\nHeh, don't you know how many doubloons Fazio owns, aha-ha-ha! Enough to spend the rest of your life in the best house of all the Caribbean not working and drinking the best rum in the world. But he stays here, on the Island. Still not enough coins for him it seems...";
+			dialog.text = "What can I say, hic... about them? Good people to talk and to drink. Giuseppe Fazio is such an important man, a local bigwig, his chests are filled with goldпїЅ and yet he respects old Leo, buying him drinks at the tavern. Though, sometimes he also ask something in return, but it's nothing, hic!\nHeh, don't you know how many doubloons Fazio owns, aha-ha-ha! Enough to spend the rest of your life in the best house of all the Caribbean not working and drinking the best rum in the world. But he stays here, on the Island. Still not enough coins for him it seems...";
 			link.l1 = "Got it...";
 			link.l1.go = "int_quests";
 			npchar.quest.answer_3 = "true";
@@ -344,10 +344,10 @@ void ProcessDialogEvent()
 			link.l1.go = "int_quests";
 			npchar.quest.answer_4 = "true";
 		break;
-// <-- блок вопросов и ответов
+
 		
-//----------------------------------------- специальные реакции -----------------------------------------------
-		//обнаружение ГГ в сундуках
+
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
 			link.l1 = "Damn it!";
@@ -375,7 +375,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//замечание по обнаженному оружию
+		
 		case "LSCNotBlade":
 			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
 			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
@@ -397,7 +397,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;
-// <-- специальные реакции
+
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

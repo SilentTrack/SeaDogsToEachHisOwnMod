@@ -61,10 +61,10 @@ void CharacterDeadProcess()
 			RemoveCharacterCompanion(pchar,chref);
 		break;
 		case FELLOWTRAVEL_OFFICER:
-			//Log_testInfo("CharacterDeadProcess " + chref.id);
-			CheckForReleaseOfficer(sti(chref.index)); // boal 25/06/06 убираем совместителя  RemoveOfficersIndex(pchar,sti(chref.index));
+			
+			CheckForReleaseOfficer(sti(chref.index)); 
 			RemovePassenger(pchar,chref);
-			//PostEvent(EVENT_CHANGE_OFFICERS, 300);  //fix повторно
+			
 		break;
 		case FELLOWTRAVEL_PASSENGER:
 			RemovePassenger(pchar,chref);
@@ -76,9 +76,9 @@ void CharacterDeadProcess()
 	QuestsCheck();
 }
 
-//*****************************************************
-// Quest information utilite
-//*****************************************************
+
+
+
 aref GetQuestData(string idQuest)
 {
 	aref qdat;
@@ -166,7 +166,7 @@ void SetQuestHeaderColor(string idQuest,int color)
 		pchar.QuestInfo.(idQuest).color = color;
 	}
 }
-// boal ->
+
 void DeleteQuestHeaderColor(string idQuest)
 {
 	if( CheckAttribute(pchar,"QuestInfo."+idQuest) )
@@ -174,7 +174,7 @@ void DeleteQuestHeaderColor(string idQuest)
 		DeleteAttribute(pchar,"QuestInfo."+idQuest+ ".color");
 	}
 }
-// boal <-
+
 void SetQuestHeaderEx(string idQuest, string logName)
 {
 	if(!CheckAttribute(pchar,"QuestInfo."+idQuest))
@@ -187,7 +187,7 @@ void SetQuestHeaderEx(string idQuest, string logName)
 		aref refOldAttr; makearef(refOldAttr,pchar.QuestInfo);
 		string qName;
 		aref curQ, newQ,oldQ;
-		int iMax = GetAttributesNum(refOldAttr); //fix
+		int iMax = GetAttributesNum(refOldAttr); 
 		for(int i=0; i<iMax; i++)
 		{
 			curQ = GetAttributeN(refOldAttr,i);
@@ -207,11 +207,11 @@ string GetQuestBookData()
 	string sResult = sData + " " + GetTimeString();
 	return sResult;
 }
-// boal -->	  
+
 void ReOpenQuestHeader(string idQuest)
 {
 	ref mainCh = GetMainCharacter();
-	if (CheckAttribute(mainCh,"QuestInfo."+idQuest))// && sti(mainCh.QuestInfo.(idQuest).Complete) == true)
+	if (CheckAttribute(mainCh,"QuestInfo."+idQuest))
 	{
         object refNewAttr;
         aref   curQ, newQ,oldQ;
@@ -238,7 +238,7 @@ void ReOpenQuestHeader(string idQuest)
 		CopyAttributes(refOldAttr,&refNewAttr);
 	}
 }
-//выдать дату в формате dd.mm.yyyy
+
 string GetCurrentDate()
 {
 	return GetStringDate(GetDataDay(), GetDataMonth(), GetDataYear());
@@ -300,7 +300,7 @@ string GetTimeString()
 	sTime = sHour + ":" + sMinuts;
 	return sTime;
 }
-// boal <--
+
 void AddQuestUserDataForTitle(string idQuest, string strID, string strData)
 {
 	if(CheckAttribute(pchar,"QuestInfo."+idQuest)==false)
@@ -334,16 +334,16 @@ ref GetQuestUserData()
 	string questID = GetEventData();
 	int nRecordNum = GetEventData();
 	usrQuestData = "";
-	// not found quest - empty user data
+	
 	if( !CheckAttribute(pchar,"QuestInfo."+questID) ) {return &usrQuestData;}
-	// title user data
+	
 	if( nRecordNum<0 ) {
 		if( CheckAttribute(pchar,"QuestInfo."+questID+".UserData") ) {
 			usrQuestData = pchar.QuestInfo.(questID).UserData;
 		}
 		return &usrQuestData;
 	}
-	// record user data
+	
 	string sRecLbl = "l" + nRecordNum;
 	if( CheckAttribute(pchar,"QuestInfo."+questID+".Text."+sRecLbl+".UserData") ) {
 		usrQuestData = pchar.QuestInfo.(questID).Text.(sRecLbl).UserData;
@@ -377,22 +377,16 @@ void AddQuestRecordEx(string idQuest,string idReferenceQuest,string idText)
 		SetQuestHeaderEx(idQuest,idReferenceQuest);
 	}
 	string sTextLbl = "l0";
-	//trace("Second Check");
+	
 	if( CheckAttribute(pchar,"QuestInfo."+idQuest+".Text") )
 	{
 		aref arTmp; makearef( arTmp, pchar.QuestInfo.(idQuest) );
-		//trace("check: is sTextLbl empty?");
-		/*if( CheckQuestRecordEx(arTmp,idText,idReferenceQuest) == true)
-		{
-			sTextLbl = "";
-			//trace("sTextLbl is empty!");
-		}
-		else
-		{*/
+		
+		 
 			makearef(arTmp,pchar.QuestInfo.(idQuest).Text);
 			sTextLbl = "l" + GetAttributesNum(arTmp);
-			//trace("sTextLbl is NOT empty!");
-		//}
+			
+		
 	}
 	if( sTextLbl != "" )
 	{
@@ -400,13 +394,13 @@ void AddQuestRecordEx(string idQuest,string idReferenceQuest,string idText)
 		Log_SetStringToLog(XI_ConvertString("Logbook Update"));
 		AddMsgToCharacter(pchar,MSGICON_LOGBOOK);
 		PlayStereoSound("notebook");
-		//trace("Quest ADDED");
+		
 	}
-	// покраска новой СЖ
+	
 	SetQuestHeaderColor(idQuest, argb(255,255,128,255));
 }
 
-// boal метод для инфы  -->
+
 void SetQuestHeaderInfo(string idQuest)
 {
     string logName = idQuest;
@@ -441,11 +435,11 @@ void AddQuestRecordInfo(string idQuest, string idText)
 		AddMsgToCharacter(pchar,MSGICON_LOGBOOK);
                 PlaySound("interface\notebook.wav");
 	}
-	// покраска новой СЖ
+	
         SetQuestHeaderColor(idQuest, argb(255, 60, 140, 255));
 
 }
-// boal метод для инфы <--
+
 void AddQuestRecord(string idQuest,string idText)
 {
 	AddQuestRecordEx(idQuest, idQuest, idText);
@@ -470,29 +464,29 @@ void DeleteQuestHeader(string idQuest)
 	DeleteAttribute(pchar, "QuestInfo."+idQuest);
 }
 
-//**********************************************************************************
-// Утилиты для работы с квестами
-//==================================================================================
 
-// проверить флаг состояния квеста
-//-----------------------------------------
+
+
+
+
+
 bool CheckQuestAttribute(string attributeName, string attributeValue)
 {
 	if( CheckAttribute(pchar,"quest."+attributeName) )
 		return (pchar.quest.(attributeName)==attributeValue);
 	return false;
 }
-// boal -->
+
 bool CheckNPCharQuestAttribute(ref _pchar, string attributeName, string attributeValue)
 {
 	if( CheckAttribute(_pchar,"quest."+attributeName) )
 		return (_pchar.quest.(attributeName)==attributeValue);
 	return false;
 }
-// boal <--
 
-// удалить флаг состояния квеста
-//------------------------------------------
+
+
+
 void DeleteQuestAttribute(string attributeName)
 {
 	if( CheckAttribute(pchar,"quest."+attributeName) )
@@ -534,8 +528,8 @@ bool GetNearLocator(string groupName, ref float_dist, ref findedLocator, float m
 	return bYesFind;
 }
 
-// установить персонажа в ближайший локатор группы goto (но не ближе минимальной дистанции)
-//--------------------------------------------------------------------------------------------
+
+
 bool SetCharacterToNearLocatorFromMe(string characterID, float minDistance)
 {
 	int loadLocationIndex = FindLoadedLocation();
@@ -551,15 +545,15 @@ bool SetCharacterToNearLocatorFromMe(string characterID, float minDistance)
 	return true;
 }
 
-// получить ссылку на персонаж через его ID-шник
-//------------------------------------------------------
+
+
 ref CharacterFromID(string characterID)
 {
     int i = GetCharacterIndex(characterID);
     if (i < 0 && MOD_BETTATESTMODE == "On")
 	{
-		Log_Info("Error: Не найдет НПС с characterID = "+characterID);
-		trace("Error: Не найдет НПС с characterID = "+characterID);
+		Log_Info("Error: пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ characterID = "+characterID);
+		trace("Error: пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ characterID = "+characterID);
 	}
     if (i>=0)
     {
@@ -581,8 +575,8 @@ void WaitDatePostEventControl()
 	QuestsCheck();
 }
 
-// пропустить некоторое время с фэйдом экрана
-//----------------------------------------------------
+
+
 void WaitDate(string postName,int year, int month, int day, int hour, int minute)
 {
 	sPostWaitName = postName;
@@ -594,8 +588,8 @@ void WaitDate(string postName,int year, int month, int day, int hour, int minute
 	WaitDatePostEventControl();
 }
 
-// установить камеру на просмотр корабля персонажа и вызвать квест через заданное число секунд
-//---------------------------------------------------------------------------------------------
+
+
 bool SetCameraToShipView(string characterName, string questCheckName, float viewTimeInSec)
 {
 	int chrIdx = GetCharacterIndex(characterName);
@@ -633,8 +627,8 @@ void QuestCameraRestore()
 	}
 }
 
-// Закрыть все выходы на море в районе расположения своего корабля
-//-----------------------------------------------------------------
+
+
 bool QuestCloseSeaExit()
 {
 	int locIdx = FindLocation(pchar.location.from_sea);
@@ -656,8 +650,8 @@ bool QuestCloseSeaExit()
 	return true;
 }
 
-// Открыть все выходы на море в районе расположения своего корабля
-//-----------------------------------------------------------------
+
+
 bool QuestOpenSeaExit()
 {
 	int locIdx = FindLocation(pchar.location.from_sea);
@@ -676,8 +670,8 @@ bool QuestOpenSeaExit()
 	return true;
 }
 
-// найти локатор в локации по имени
-//-----------------------------------
+
+
 bool FindLocator(string locationName, string locatorName, ref locatorRef, bool fromRealLoadedLocators)
 {
 	int i,j,n,m,locIdx;
@@ -725,7 +719,7 @@ bool FindLocator(string locationName, string locatorName, ref locatorRef, bool f
 	return false;
 }
 
-// проверить попадает ли координата в заданный локатор в текущей локации
+
 bool CheckCurLocator(string group,string locator,float x,float y,float z)
 {
 	int locIdx = FindLoadedLocation();
@@ -740,8 +734,8 @@ bool CheckCurLocator(string group,string locator,float x,float y,float z)
 	else return false;
 }
 
-// заменить один локатор на новый адрес перегрузкии
-//---------------------------------------------------
+
+
 bool ChangeReloadData(string locationName,string locatorName, string toLocationName,string toLocatorName)
 {
 	aref locRef;
@@ -761,7 +755,7 @@ bool ChangeReloadData(string locationName,string locatorName, string toLocationN
 	return true;
 }
 
-// вернуть локатору старый адрес перегрузки
+
 bool ChangeBackReloadData(string locationName,string locatorName)
 {
 	aref locRef;
@@ -774,15 +768,15 @@ bool ChangeBackReloadData(string locationName,string locatorName)
 	return true;
 }
 
-// вызвать проверку квеста через заданное число секунд
-//------------------------------------------------------
-//navy --> отложеный вызов квестовой функции
+
+
+
 void DoQuestFunctionDelay(string questFunctionName, float delayInSecond)
 {
 	pchar.PostEventQuest.questDelay.(questFunctionName).function = questFunctionName;
 	DoQuestCheckDelay(questFunctionName, delayInSecond);
 }
-//navy <--
+
 
 void DoQuestCheckDelay(string questCheckName, float delayInSecond)
 {
@@ -798,7 +792,7 @@ void DoQuestDelayExit()
 	string stmp = GetEventData();
 	bool deleteOldQuest = GetEventData();
 	
-	if (CheckAttribute(pchar, "PostEventQuest.questDelay."+stmp)) //fix boal, возможность удалить обработку
+	if (CheckAttribute(pchar, "PostEventQuest.questDelay."+stmp)) 
 	{
 		if(stmp!="")
 		{
@@ -813,7 +807,7 @@ void DoQuestDelayExit()
 					return;
 				}
 			}
-//navy --> отложеный вызов квестовой функции
+
 			if (CheckAttribute(pchar, "PostEventQuest.questDelay." + stmp + ".function"))
 			{
 				string sFunction = pchar.PostEventQuest.questDelay.(stmp).function;
@@ -821,7 +815,7 @@ void DoQuestDelayExit()
 			}
 			else
 			{
-//navy <--
+
 				CompleteQuestName(stmp, "");
 				QuestsCheck();
 			}
@@ -845,8 +839,8 @@ void ExitActAnimation()
 	}
 }
 
-// Временно сохранить все данные о нашем корабле в памяти
-//--------------------------------------------------------
+
+
 bool ShipTempRemove(ref _refCharacter)
 {
 	if( CheckAttribute(_refCharacter,"TmpShipHolder") ) return false;
@@ -859,8 +853,8 @@ bool ShipTempRemove(ref _refCharacter)
 	return true;
 }
 
-// Восстановить данные о нашем старом корабле из памяти
-//------------------------------------------------------
+
+
 bool RestoreTempRemovedShip(ref _refCharacter)
 {
 	if( !CheckAttribute(_refCharacter,"TmpShipHolder") ) return false;
@@ -874,9 +868,9 @@ bool RestoreTempRemovedShip(ref _refCharacter)
 	return true;
 }
 
-// Обменять двух персонажей кораблями
-//------------------------------------
-void ExchangeCharacterShip(ref oneCharacter, ref twoCharacter) // to_do
+
+
+void ExchangeCharacterShip(ref oneCharacter, ref twoCharacter) 
 {
 	object tmpObj;
 	aref oneShip; makearef(oneShip,oneCharacter.Ship);
@@ -896,8 +890,8 @@ void QuestProcessDialogExit()
 	DeleteAttribute(two_aref,"act.disableDialog");
 }
 
-// Задать квест, выполняемый после выхода из диалога
-//---------------------------------------------------
+
+
 void AddDialogExitQuest(string questName)
 {
 	string attrName;
@@ -915,7 +909,7 @@ void AddDialogExitQuest(string questName)
 	pchar.DialogExitQuests.(attrName) = questName;
 }
 
-void AddDialogExitQuestFunction(string questName) // boal new
+void AddDialogExitQuestFunction(string questName) 
 {
 	string attrName;
 	aref ar;
@@ -930,7 +924,7 @@ void AddDialogExitQuestFunction(string questName) // boal new
 		attrName = "l0";
 	}
 	pchar.DialogExitQuests.(attrName) = questName;
-	pchar.DialogExitQuests.(attrName).function = questName; // вызов функции, а не кэйса
+	pchar.DialogExitQuests.(attrName).function = questName; 
 }
 
 void QuestDialogExitProcedure()
@@ -940,31 +934,28 @@ void QuestDialogExitProcedure()
 	aref ar, lref;
 	string attrName, Lname;
 
-	// может быть выполним какую нибудь задачу
+	
 	ExecuteAfterDialogTask(othepchar);
 	ExecuteAfterDialogTask(pchar);
 
 	if( CheckAttribute(pchar,"DialogExitQuests") )
 	{
 		makearef(ar,pchar.DialogExitQuests);
-		int iMax = GetAttributesNum(ar); //fix
+		int iMax = GetAttributesNum(ar); 
 		for(i=0; i<iMax; i++)
 		{
 			lref = GetAttributeN(ar,i);
 			attrName = GetAttributeValue(lref);
-			// boal -->
+			
 			Lname = GetAttributeName(lref);
 			if (CheckAttribute(pchar, "DialogExitQuests." + Lname + ".function"))
 			{
 				call attrName();
-				/*pchar.quest.(attrName).function = attrName;
-			    CompleteQuestName(attrName, attrName);
-			    pchar.quest.(attrName).over = "yes"; // стереть за собой
-			    */
+				 
 			}
 			else
 			{
-			// boal <--
+			
 				CompleteQuestName(attrName, "");
 			}
 			if( CheckAttribute(pchar,"quest."+attrName+".win_condition") )	pchar.quest.(attrName).over = "yes";
@@ -991,18 +982,18 @@ void DoDeleteFakeLocation()
 	}
 }
 
-// Перегрузить главного персонажа в другую локацию и по завершению вызвать квест
-//-------------------------------------------------------------------------------
+
+
 bool DoQuestReloadToLocation(string idLocation, string idGroup, string idLocator, string questName)
 {
 	if(sQuestNameAfterReload!="_") return false;
 	sQuestNameAfterReload = questName;
-	// boal -->
-    if (bSeaActive && bAbordageStarted) // это палубы в море и каюта
+	
+    if (bSeaActive && bAbordageStarted) 
 	{
 		return DoReloadFromDeckToLocation(idLocation,idGroup,idLocator);
 	}
-	// boal <--
+	
 	if(bSeaActive)
 	{
 		idxOldLocation = -1;
@@ -1018,7 +1009,7 @@ bool DoQuestReloadToLocation(string idLocation, string idGroup, string idLocator
 	return DoReloadCharacterToLocation(idLocation,idGroup,idLocator);
 }
 
-// Warship -->
+
 bool DoFunctionReloadToLocation(string idLocation, string idGroup, string idLocator, string functionName)
 {
 	if(sQuestNameAfterReload!="_") return false;
@@ -1027,12 +1018,12 @@ bool DoFunctionReloadToLocation(string idLocation, string idGroup, string idLoca
 		PChar.GenQuest.CallFunctionParam = functionName;
 		sQuestNameAfterReload = "CallFunctionParam";
 	}
-	// boal -->
-	if (bSeaActive && bAbordageStarted) // это палубы в море и каюта
+	
+	if (bSeaActive && bAbordageStarted) 
 	{
 		return DoReloadFromDeckToLocation(idLocation,idGroup,idLocator);
 	}
-	// boal <--
+	
 	if(bSeaActive)
 	{
 		idxOldLocation = -1;
@@ -1047,10 +1038,10 @@ bool DoFunctionReloadToLocation(string idLocation, string idGroup, string idLoca
 	}
 	return DoReloadCharacterToLocation(idLocation,idGroup,idLocator);
 }
-// Warship <--
 
-// Перегрузить главного персонажа в другую локацию
-//-------------------------------------------------------------------------------
+
+
+
 bool DoReloadCharacterToLocation(string idLocation, string idGroup, string idLocator)
 {
 	idxOldLocation = FindLoadedLocation();
@@ -1082,17 +1073,17 @@ bool DoReloadCharacterToLocation(string idLocation, string idGroup, string idLoc
 	return TeleportCharacterFromCurLocationToLocation("fakeReload",idGroup,idLocator);
 }
 
-// Перегрузить главного персонажа в другую локацию из карты мира
-//-------------------------------------------------------------------------------
+
+
 bool DoReloadFromWorldMapToLocation(string idLocation, string idGroup, string idLocator)
 {
-	// новые фичи к3 -->
+	
 	worldMap.old = "";
 	aref arOldMapPos;
 	makearef(arOldMapPos, worldMap.old);
 
 	WdmPrepareMapForAbordage(arOldMapPos);
-	// новые фичи к3 <--
+	
 	
 	if(FindLocation(idLocation)==-1) return false;
 	pchar.tmpWDMtoLand.location = idLocation;
@@ -1104,9 +1095,9 @@ bool DoReloadFromWorldMapToLocation(string idLocation, string idGroup, string id
 void ReloadFromWMtoL_complete()
 {
 	if( !CheckAttribute(pchar,"tmpWDMtoLand") ) return;
-	//ChangeCharacterAddressGroup( pchar, pchar.tmpWDMtoLand.location, pchar.tmpWDMtoLand.group, pchar.tmpWDMtoLand.locator );
-	//LoadLocation(&Locations[FindLocation(pchar.tmpWDMtoLand.location)]);
-	DoReloadCharacterToLocation(pchar.tmpWDMtoLand.location, pchar.tmpWDMtoLand.group, pchar.tmpWDMtoLand.locator);  // boal чтоб была заставка
+	
+	
+	DoReloadCharacterToLocation(pchar.tmpWDMtoLand.location, pchar.tmpWDMtoLand.group, pchar.tmpWDMtoLand.locator);  
 
 	if(CheckAttribute(pchar, "tmpWDMtoLand"))
 	{
@@ -1116,11 +1107,11 @@ void ReloadFromWMtoL_complete()
 			QuestsCheck();
 		}
 	}
-	DeleteAttribute(pchar,"tmpWDMtoLand");   //fix boal
+	DeleteAttribute(pchar,"tmpWDMtoLand");   
 }
 
-// Перегрузить главного персонажа в другую локацию из моря
-//-------------------------------------------------------------------------------
+
+
 bool DoReloadFromSeaToLocation(string idLocation, string idGroup, string idLocator)
 {
 	
@@ -1144,30 +1135,30 @@ void EndReloadToLocation()
 	DelEventHandler("FaderEvent_EndFade", "EndReloadToLocation");
 	ReloadFromWMtoL_complete();
 }
-// boal 02.09.06 перегруз и кают и палуб в море на сушу -->
+
 void DoReloadFromDeckToLocation(string idLocation, string idGroup, string idLocator)
 {
 	if(idLocation != "")
 	{
         Return2SeaClearNPC();
-        ResetSound(); // new
+        ResetSound(); 
 		PauseAllSounds();
         if(boarding_location >= 0) UnloadLocation(&Locations[boarding_location]);
         boarding_location = -1;
-		//Настроим интерфейс
+		
 		Log_SetActiveAction("Nothing");
 		EndBattleLandInterface();
 		
-		//Выгружаемся в интерфейс
+		
 		LAi_boarding_process = false;
 	
 		Go2LocationAfterAbordage();
         DoReloadFromSeaToLocation(idLocation, idGroup, idLocator);
 	}
 }
-// boal <--
-// Удалить квест из списка проверяемых квестов
-//---------------------------------------------
+
+
+
 void DeleteQuestCheck(string sQuestName)
 {
 	if(sQuestName=="") return;
@@ -1177,8 +1168,8 @@ void DeleteQuestCheck(string sQuestName)
 	}
 }
 
-// Получить полное имя персонажа
-//----------------------------------
+
+
 string GetCharacterFullName(string idCharacter)
 {
 	int idxCh = GetCharacterIndex(idCharacter);
@@ -1187,7 +1178,7 @@ string GetCharacterFullName(string idCharacter)
 
 	return GetFullName(chref);
 }
-// boal -->
+
 string GetFullName(ref chref)
 {
 	string retStr = "";
@@ -1207,22 +1198,22 @@ string GetFullName(ref chref)
 	
 	return retStr;
 }
-// boal <--
-// Сохранить состояние о пассажирах во временной переменной и временно удалить их всех
-//-------------------------------------------------------------------------------------
-// to_do метод опасен, применять осторожно, не трет компаньонов, обязательно проверить работу и вернуть всех обратно RestorePassengers, иначе квесты провалятся с НПС
+
+
+
+
 bool StorePassengers(string idCharacter)
 {
 	int idxCh = GetCharacterIndex(idCharacter);
 	if(idxCh==-1) return false;
 	ref refCh = GetCharacter(idxCh);
- 	// чтоб терлись второй раз if(CheckAttribute(refCh,"Fellows.Old")) return false;
+ 	
     DeleteAttribute(refCh,"Fellows.Old");
 
 	string sTmp;
 	aref arTmp;
 	int i,idx;
-	// сохраним офицеров
+	
 	makearef(arTmp,refCh.Fellows.Old.Officers);
 	for(i=1; i<4; i++)
 	{
@@ -1231,7 +1222,7 @@ bool StorePassengers(string idCharacter)
 		sTmp = "id"+i;
 		arTmp.(sTmp) = idx;
 	}
-	// сохраним пассажиров
+	
 	makearef(arTmp,refCh.Fellows.Old.Passengers);
 	for(i=0; GetPassengersQuantity(refCh)>0; i++)
 	{
@@ -1245,8 +1236,8 @@ bool StorePassengers(string idCharacter)
 	return true;
 }
 
-// Восстановить запомненных ранее пассажиров и по возможности офицеров
-//----------------------------------------------------------------------
+
+
 bool RestorePassengers(string idCharacter)
 {
 	int idxCh = GetCharacterIndex(idCharacter);
@@ -1256,7 +1247,7 @@ bool RestorePassengers(string idCharacter)
 
 	int i,idx;
 	aref arTmp,arCur;
-	// Восстановление пассажиров
+	
 	makearef(arTmp,refCh.Fellows.Old.Passengers);
 	for(i=0; i<GetAttributesNum(arTmp); i++)
 	{
@@ -1264,7 +1255,7 @@ bool RestorePassengers(string idCharacter)
 		idx = sti(GetAttributeValue(arCur));
 		AddPassenger(refCh,GetCharacter(idx),false);
 	}
-	// Восстановление офицеров
+	
 	makearef(arTmp,refCh.Fellows.Old.Officers);
 	for(i=0; i<GetAttributesNum(arTmp); i++)
 	{
@@ -1274,13 +1265,13 @@ bool RestorePassengers(string idCharacter)
 		SetOfficersIndex(refCh,-1,idx);
 	}
 
-	// удаление временного хранилища пассажиров
+	
 	DeleteAttribute(refCh,"Fellows.Old");
 	return true;
 }
 
-// Смотрим на какого нибудь персонажа
-//--------------------------------------
+
+
 bool StartLookAfterCharacter(string idCharacter)
 {
 	int chIdx = GetCharacterIndex(idCharacter);
@@ -1298,14 +1289,14 @@ void LookAfterCharacterProc()
 	PostEvent("evntLookAfterCharacter",100,"l",idxCh);
 }
 
-// Прекратили смотреть на персонаж
-//-----------------------------------
+
+
 void EndLookAfterCharacter()
 {
 	DelEventHandler("evntLookAfterCharacter","LookAfterCharacterProc");
 }
 
-// восстановить персонаж (на случай, если он был до этого убит)
+
 bool ReanimateCharacter(string characterID)
 {
 	int idx = GetCharacterIndex(characterID);
@@ -1319,8 +1310,8 @@ bool ReanimateCharacter(string characterID)
 	return true;
 }
 
-//extern void SetRandomNameToCharacter(ref chref);
-// установить случайное имя для персонажа
+
+
 bool SetCharacterRandomName(string characterID)
 {
 	int idx = GetCharacterIndex(characterID);
@@ -1334,7 +1325,7 @@ bool SetCharacterRandomName(string characterID)
 }
 
 
-// обработка события об уничтожении форта
+
 void QuestFortDestroyed()
 {
 	int idx = GetEventData();
@@ -1370,7 +1361,7 @@ void QuestGroupDeath()
 	pchar.GroupDeath.(groupName) = "1";
 }
 
-// подготовиться к выгрузке в море по квесту
+
 object questToSeaLoginer;
 void QuestToSeaLogin_PrepareLoc(string islandID, string locGroup, string locName, bool sailUP)
 {
@@ -1412,7 +1403,7 @@ void QuestToSeaLogin_Prepare(float x, float z, string islandID)
 	questToSeaLoginer.PlayerGroup.z = z;
 	questToSeaLoginer.Island = islandID;
 }
-// подготовить персонажа для выгрузки в море по квесту
+
 void QuestToSeaLogin_Add(string groupName)
 {
 	aref arql,ar;
@@ -1435,7 +1426,7 @@ void QuestToSeaLogin_Add(string groupName)
 		}
 	}
 }
-// запустить квестовую выгрузку в море
+
 void QuestToSeaLogin_Launch()
 {
 	SetEventHandler("FaderEvent_EndFade", "QuestToSeaLoginFade", 0);
@@ -1456,32 +1447,14 @@ void QuestToSeaLoginFade()
 	SeaLogin(&questToSeaLoginer);
 }
 
-// Получить следующего персонажа одной группы
+
 int	GetCharacterFromFantom(ref chref)
 {
-	/*int tmpi = FindLoadedLocation();
-	if(tmpi==-1) return -1;
-	string locID = Locations[tmpi].id;
-	int retVal = -1;
-	ref fantRef;
-	int startVal = sti(chref.index)+1;
-	if ( startVal < FANTOM_CHARACTERS ) startVal = FANTOM_CHARACTERS;
-	for(int i=startVal; i<BOARDING_CHARACTERS; i++)
-	{
-		fantRef = GetCharacter(i);
-		if(fantRef.location!=locID) continue;
-		if(CharacterIsDead(fantRef)) continue;
-		if ( CheckAttribute(fantRef,"act.team") && fantRef.act.team==chref.act.team )
-		{
-			retVal = sti(fantRef.index);
-			break;
-		}
-	}
-	return retVal;*/
+	 
 	return -1;
 }
 
-// убрать из локации всех персов указанного типа
+
 void RemoveCharactersFromLocation(string idLocation, string modelName, string type)
 {
 	for(int i=0; i<MAX_CHARACTERS; i++)
@@ -1527,75 +1500,38 @@ void procEvntQuestComplete()
 	}
 }
 
-///////////////////////////////////
-///  Это старая фигня - за использование буду бить морду... сильно
-///////////////////////////////////
 
-// Проиграть анимацию и по ее завершению вызвать квест
-//------------------------------------------------------------
+
+
+
+
+
 void ActAnimation(ref chref, string action, string questName)
 {
-//	chref.activity.endAnimationQuest.Name = questName;
-//	actAction(chref, action, "ExitActAnimation");
+
+
 }
 
-// Всем воюющим персам убрать оружие, солдатам вернуться на свои позиции.
+
 void BreakAllAttack()
 {
-//	actAllarm = 0.0;
-//	int idxCurLoc = FindLoadedLocation();
-//	if(idxCurLoc==-1) return;
-//	string curLocName = Locations[idxCurLoc].id;
-//
-//	for(int n=0; n<MAX_CHARACTERS; n++)
-//	{
-//		if(Characters[n].location == curLocName)
-//		{
-//			actReset(&Characters[n]);
-//			if( Characters[n].act.type == "soldier" ) SetCharacterTask_GotoPoint(&Characters[n],Characters[n].location.group,Characters[n].location.locator);
-//		}
-//	}
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
-/*
-void FoundAndDeleteAllQuestForQuestNumberExceptCurrentQuest(int iQuest, string sCurrentQuest)
-{
+ 
 
-	aref aQuests, aQuestsDetailed;
-	makearef(aQuests, pchar.quest);
-	int q = GetAttributesNum(aQuests);
-	string sCheckQuest;
-	for(int i=0; i < q; i++)
-	{
-		aQuestsDetailed = GetAttributeN(aQuests,i);
-		sCheckQuest = GetAttributeName(aQuestsDetailed);
-		if(sti(aQuestsDetailed.quest) == iQuest && sCheckQuest != sCurrentQuest)
-		{
-			aQuestsDetailed.over = "yes";
-		}
-	}
-}
-
-void FoundAndDeleteAllQuestForQuestNumber(int iQuest)
-{
-
-	aref aQuests, aQuestsDetailed;
-	makearef(aQuests, pchar.quest);
-	int q = GetAttributesNum(aQuests);
-	for(int i=0; i<q; i++)
-	{
-		aQuestsDetailed = GetAttributeN(aQuests,i);
-		if(CheckAttribute(aQuestsDetailed, "quest"))
-		{
-			if(sti(aQuestsDetailed.quest) == iQuest)
-			{
-				aQuestsDetailed.over = "yes";
-			}
-		}
-	}
-}
-*/
-// boal -->
 void SetTimerCondition(string _name, int _year, int _month, int _day, bool _again)
 {
     PChar.quest.(_name).win_condition.l1            = "Timer";
@@ -1644,7 +1580,7 @@ void SetTimerConditionParam(string _name, string _quest, int _year, int _month, 
         DeleteAttribute(Pchar, "quest."+_name+".again");
     }
 }
-// проверка локации на зянятость по квестам, нужно для выбора локации без конфликта с др. квестами (генераторы)
+
 bool isLocationFreeForQuests(string loc_id)
 {
 	aref quests, quest;
@@ -1659,27 +1595,27 @@ bool isLocationFreeForQuests(string loc_id)
 	{
         quest = GetAttributeN(quests, i);
         if (CheckAttribute(quest, "over")) continue;
-        // допущение: проверяем только ветку Л1, тк сложные квесты (не л1) на локацию редкость, а тормоза не нужны.
+        
 		if (CheckAttribute(quest, "win_condition.l1") && quest.win_condition.l1 == "Location" && quest.win_condition.l1.Location == loc_id)
-		{   // уже висят квесты на эту локацию
+		{   
 			bEnableEncounters = false;
 			break;
 		}
 		if (CheckAttribute(quest, "win_condition.l1") && quest.win_condition.l1 == "locator" && quest.win_condition.l1.Location == loc_id)
-		{   // уже висят квесты на эту локацию
+		{   
 			bEnableEncounters = false;
 			break;
 		}
 	}
 	if (bEnableEncounters)
-	{ // проверяем НПС, обычно там никого нет, если есть - зянято
+	{ 
 		for(i = 0; i<TOTAL_CHARACTERS; i++)
 		{
 			chr = &characters[i];
 			if (CheckAttribute(chr, "location")	 && chr.location == loc_id)
 			{
 				if (!IsOfficer(chr))
-				{   // это не ГГ и офы
+				{   
 					bEnableEncounters = false;
 					break;	
 				}
@@ -1688,10 +1624,10 @@ bool isLocationFreeForQuests(string loc_id)
 	}
 	return bEnableEncounters;
 }
-// boal <--
 
-// Warship -->
-// Запустить евент с параметром "s" через определенное игровое время
+
+
+
 void SetTimerEvent_String(string _event, int _year, int _month, int _day, string _string)
 {
 	int iMax = 30;
@@ -1702,13 +1638,13 @@ void SetTimerEvent_String(string _event, int _year, int _month, int _day, string
 		sQuestStr = _event+"_"+i;
 		if(!CheckAttribute(PChar, "Quest."+sQuestStr))
 		{
-			Log_TestInfo("SetTimerEvent_String: Найдено свободное прерывание - "+sQuestStr);
+			Log_TestInfo("SetTimerEvent_String: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - "+sQuestStr);
 			break;
 		}
 		
 		if(i==iMax)
 		{
-			Log_TestInfo("SetTimerEvent_String: Свободных прерываний нету, поставить событие невозможно");
+			Log_TestInfo("SetTimerEvent_String: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 			return;
 		}
 	}
@@ -1723,7 +1659,7 @@ void SetTimerEvent_String(string _event, int _year, int _month, int _day, string
 	PChar.Quest.(sQuestStr).Event.Param = _string;
 }
 
-// Прерывание на таймер с функцией
+
 void SetFunctionTimerCondition(string _name, int _year, int _month, int _day, bool _again)
 {
 	PChar.quest.(_name).win_condition.l1            = "Timer";
@@ -1741,7 +1677,7 @@ void SetFunctionTimerCondition(string _name, int _year, int _month, int _day, bo
 	}
 }
 
-// Прерывание на таймер с функцией с учетом часов <-- ugeen
+
 void SetFunctionTimerConditionParam(string _name, int _year, int _month, int _day, int _hour, bool _again)
 {
     while (_hour > 23)
@@ -1764,7 +1700,7 @@ void SetFunctionTimerConditionParam(string _name, int _year, int _month, int _da
 		DeleteAttribute(Pchar, "quest."+_name+".again");
 	}
 }
-// -- > ugeen
+
 
 void SetFunctionLocationCondition(string _name, string _location, bool _again)
 {
@@ -1844,7 +1780,7 @@ void SetFunctionLocatorCondition(string _name, string _location, string _group, 
 	}
 }
 
-// Для универсализации -->
+
 void SetFunctionInterruptionToShips(string _GroupID, string _GroupDeath, string _EnterMap)
 {
 	if(_GroupDeath != "")
@@ -1878,14 +1814,14 @@ void EnterMapFunction(string sQuest)
 	PChar.Quest.(_GroupDeath).over = "yes";
 	DoQuestFunctionDelay(_EnterMap, 0.1);
 }
-// Для универсализации <--
+
 
 void DeleteQuestCondition(string sQuest)
 {
 	PChar.Quest.(sQuest).over = "yes";
 }
 
-void CalculateCheatsInfo() // Для статистики по читам. Используется в интерфейсе Debuger
+void CalculateCheatsInfo() 
 {
 	int i;
 	string sCheat;
@@ -1905,31 +1841,31 @@ void CalculateCheatsInfo() // Для статистики по читам. Используется в интерфейсе
 	int iAllCheats = GetAttributesNum(arAllCheats);
 	int iAllCheatsCount = 0;
 	
-	SetFormatedText("INFO_TEXT2", "Использовавшиеся читы:");
+	SetFormatedText("INFO_TEXT2", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ:");
 	
 	for(i=0; i<iAllCheats; i++)
 	{
 		sCheat = GetAttributeName(GetAttributeN(arAllCheats, i));
 		int iCurCheatCount = Statistic_AddValue(PChar, "Cheats." + sCheat, 0);
-		if(iCurCheatCount == 0) continue; // Если чит не юзался - пропускаем
+		if(iCurCheatCount == 0) continue; 
 		if(HasSubStr(sCheat, "F"))
-			AddLineToFormatedText("INFO_TEXT2", XI_ConvertString("D_" + sCheat) + " - " + iCurCheatCount + " раз.");
+			AddLineToFormatedText("INFO_TEXT2", XI_ConvertString("D_" + sCheat) + " - " + iCurCheatCount + " пїЅпїЅпїЅ.");
 		else
-			AddLineToFormatedText("INFO_TEXT2", sCheat + " - " + iCurCheatCount + " раз.");
+			AddLineToFormatedText("INFO_TEXT2", sCheat + " - " + iCurCheatCount + " пїЅпїЅпїЅ.");
 			
 		iAllCheatsCount = iAllCheatsCount + iCurCheatCount;
 	}
 	
 	PChar.Statistic.Cheats = iAllCheatsCount;
-	AddLineToFormatedText("INFO_TEXT2", XI_ConvertString("Total") + " " + iAllCheatsCount + " раз.");
+	AddLineToFormatedText("INFO_TEXT2", XI_ConvertString("Total") + " " + iAllCheatsCount + " пїЅпїЅпїЅ.");
 	
-	if(iAllCheatsCount == 0) // Исли 0, значит читов не юзали
-		SetFormatedText("INFO_TEXT2", "Читов не использовалось!");
+	if(iAllCheatsCount == 0) 
+		SetFormatedText("INFO_TEXT2", "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
 }
 
-// Два метода для закупки товара 10.07.08
 
-// 20.08.09 Метод полностью переписан - вернет, сколько веса реально будет добавляться при закупке
+
+
 int TransferGoods_CalculateWeight(ref _character)
 {
 	int weight = 0;
@@ -1949,8 +1885,8 @@ int TransferGoods_CalculateWeight(ref _character)
 	return weight;
 }
 
-// Относится к методу выше
-int TransferGoods_StartTransfer(ref rChar, string sColony) // rChar - кому будет ложить товар в трюм, sColony - в какой колонии закупаем
+
+int TransferGoods_StartTransfer(ref rChar, string sColony) 
 {
 	int i, iNeedGood, iCost, iStoreGoodQty;
 	ref rGood, rTreasurer;
@@ -1962,7 +1898,7 @@ int TransferGoods_StartTransfer(ref rChar, string sColony) // rChar - кому будет
 	int iCurGoodQty, iNeedGoodsQty
 	int iMoneyQty = 0;
 	
-	rTreasurer = GetPCharTreasurerRef(); // Казначей. Ему даем экспу
+	rTreasurer = GetPCharTreasurerRef(); 
 	
 	for(i = 0; i < GOODS_QUANTITY; i++)
 	{
@@ -1974,52 +1910,52 @@ int TransferGoods_StartTransfer(ref rChar, string sColony) // rChar - кому будет
 			PChar.TransferGoods.(characterId).(sGood) = 0;
 		}
 		
-		iCurGoodQty = GetCargoGoods(rChar, i); // Сколько этого товара есть сейчас
-		iNeedGoodsQty = sti(PChar.TransferGoods.(characterId).(sGood)); // Сколько нужно ВСЕГО данного товара (не докупить!)
+		iCurGoodQty = GetCargoGoods(rChar, i); 
+		iNeedGoodsQty = sti(PChar.TransferGoods.(characterId).(sGood)); 
 			
-		if(iCurGoodQty == iNeedGoodsQty) continue; // ничего не нужно 
+		if(iCurGoodQty == iNeedGoodsQty) continue; 
 			
-		if(iCurGoodQty > iNeedGoodsQty) // продаем
+		if(iCurGoodQty > iNeedGoodsQty) 
 		{
 			if(CheckAttribute(rStore, "goods." + sGood + ".tradetype"))
 			{	
 				if(rStore.goods.(sGood).tradetype == T_TYPE_CONTRABAND || rStore.goods.(sGood).tradetype == T_TYPE_CANNONS) continue;
 			}	
-			iNeedGood = iCurGoodQty - iNeedGoodsQty; // Столько нужно продать
-			iCost = GetStoreGoodsPrice(rStore, i, 1, PChar, 1)*iNeedGood/sti(rGood.Units); // Цена товара для продажи
-			RemoveCharacterGoodsSelf(rChar, i, iNeedGood); // Забираем только у этого перса
-			AddStoreGoods(rStore, i, iNeedGood); // Прибавляем товар в магаз
+			iNeedGood = iCurGoodQty - iNeedGoodsQty; 
+			iCost = GetStoreGoodsPrice(rStore, i, 1, PChar, 1)*iNeedGood/sti(rGood.Units); 
+			RemoveCharacterGoodsSelf(rChar, i, iNeedGood); 
+			AddStoreGoods(rStore, i, iNeedGood); 
 			iMoneyQty+=iCost;
 			buyGoodsWeight -= iNeedGood;
 		}
 			
-		if(iCurGoodQty < iNeedGoodsQty) // докупаем
+		if(iCurGoodQty < iNeedGoodsQty) 
 		{
 			if(CheckAttribute(rStore, "goods." + sGood + ".tradetype") && rStore.goods.(sGood).tradetype == T_TYPE_CONTRABAND)
 			{
 				if(!CheckAttribute(PChar, "TransferGoods." + characterId + ".BuyContraband")) continue;
 			}
 			
-			iNeedGood = iNeedGoodsQty - iCurGoodQty; // Столько нужно купить
-			iStoreGoodQty = GetStoreGoodsQuantity(rStore, i); // Сколько можем купить (скоко есть в магазе)
-			if(iNeedGood > iStoreGoodQty) iNeedGood = iStoreGoodQty; // Хотим купить больше, чем есть в магазе
-			iCost = GetStoreGoodsPrice(rStore, i, 0, PChar, 1)*iNeedGood/sti(rGood.Units); // Цена товара для покупки
+			iNeedGood = iNeedGoodsQty - iCurGoodQty; 
+			iStoreGoodQty = GetStoreGoodsQuantity(rStore, i); 
+			if(iNeedGood > iStoreGoodQty) iNeedGood = iStoreGoodQty; 
+			iCost = GetStoreGoodsPrice(rStore, i, 0, PChar, 1)*iNeedGood/sti(rGood.Units); 
 			if(sti(PChar.Money) >= iCost)
 			{
-				AddCharacterGoodsSimple(rChar, i, iNeedGood); // Даем только в этот корабль
-				RemoveStoreGoods(rStore, i, iNeedGood); // Изымаем из магаза
+				AddCharacterGoodsSimple(rChar, i, iNeedGood); 
+				RemoveStoreGoods(rStore, i, iNeedGood); 
 				iMoneyQty-=iCost;
 				buyGoodsWeight += iNeedGood;
 			}
 		}
 	}
 	
-	if(iMoneyQty != 0) // Если хоть что-то продали или купили
+	if(iMoneyQty != 0) 
 	{
 		AddmoneyToCharacter(PChar, iMoneyQty);
-		AddCharacterExpToSkill(rTreasurer, "Commerce", MakeInt(abs(iMoneyQty) / 800) + rand(1) + 2) // Экспа в навык торговли
+		AddCharacterExpToSkill(rTreasurer, "Commerce", MakeInt(abs(iMoneyQty) / 800) + rand(1) + 2) 
 	}
 	
 	return buyGoodsWeight;
 }
-// Warship <--
+

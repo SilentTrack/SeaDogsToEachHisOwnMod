@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -7,7 +7,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             dialog.text = RandPhraseSimple("What kind of questions?", "What would you like?");
 			link.l1 = RandPhraseSimple("I have changed my mind...", "I have got nothing to say now.");
 		    link.l1.go = "exit";
-			//Цена чахотки
+			
 			if (!CheckAttribute(npchar, "quest.Consumption") && CheckAttribute(pchar, "questTemp.Consumption.AskJuan"))
 			{
 				link.l1 = "Tell me, does the name 'Juan' mean anything for you?";
@@ -21,7 +21,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "info":
-        // заменить на описание неких НПС, по квестам
+        
 			dialog.text = "Do I work for the secret service of "+NationNameGenitive(sti(NPChar.nation))+"?";
 			link.l1 = "Well... farewell then.";
 			link.l1.go = "exit";
@@ -30,7 +30,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "town":
-        // заменить на описание как пройти, по квестам
+        
 			dialog.text = "Do I work on an enquiry position? Don't know. Don't know a thing.";
 
             link.l1 = "Such a muddle-head! See you.";
@@ -39,7 +39,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l2.go = "new question";
 		break;
 		
-		//Цена чахотки
+		
 		case "Consumption":
 			dialog.text = "Are you kidding me? There are Juans in every colony...";
 			link.l1 = "I see. Sorry for troubling you...";
@@ -47,7 +47,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.Consumption = "true";
 		break;
 		
-		// Страж Истины
+		
 		case "guardoftruth":
 			dialog.text = LinkRandPhrase("Come on, captain! Do you think that I remember such things?","Forgive me, senor, I can't help you.","Sir, do you really think that remember such a rubbish? I have got enough of my own problems.");
 			link.l1 = LinkRandPhrase("I see. Sorry for troubling you...","What a shame. See you.","");
@@ -55,6 +55,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.guardoftruth = "true";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

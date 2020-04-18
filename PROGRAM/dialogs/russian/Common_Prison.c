@@ -1,4 +1,4 @@
-// городские тюрьмы
+
 void ProcessDialogEvent()
 {
 	int amount, iGunQty, iGunGoods, iGunPrice, iTemp;
@@ -17,14 +17,14 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 
-    // вызов диалога по городам -->
+    
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Prison\" + NPChar.City + "_Prison.c";
     if (LoadSegment(NPChar.FileDialog2))
 	{
         ProcessCommonDialog(NPChar, Link, NextDiag);
 		UnloadSegment(NPChar.FileDialog2);
 	}
-    // вызов диалога по городам <--
+    
 
 	switch(Dialog.CurrentNode)
 	{
@@ -45,7 +45,7 @@ void ProcessDialogEvent()
 			LAi_CharacterDisableDialog(npchar);
 			DialogExit();
 		break;
-		//---------------- Начальник тюрьмы ------------------
+		
 		case "First_officer":
 			dialog.text = RandPhraseSimple("I am the prison warden. What do you need here?", "What do you need? Why have you come to the prison?");
 			link.l1 = "Oh, nothing special, you know - just looking around the city. I just wandered here on occasion.";
@@ -89,7 +89,7 @@ void ProcessDialogEvent()
 				if(!CheckAttribute(pchar,"GenQuest.CaptainComission.PrisonFree"))
 				{
 					bool zMsm = (CheckAttribute(pchar,"GenQuest.CaptainComission.GetRumour")) && (!CheckAttribute(pchar,"GenQuest.CaptainComission.SpeakMayor"));
-					if(pchar.GenQuest.CaptainComission == "MayorTalkBad" || zMsm) //говорил с губером и отказался или узнал слухи, но не говорил с губером
+					if(pchar.GenQuest.CaptainComission == "MayorTalkBad" || zMsm) 
 					{
 						link.l6 = "I've heard that former captain of a patrol " + GetStrSmallRegister(XI_ConvertString(GetBaseShipParamFromType(sti(pchar.GenQuest.CaptainComission.ShipType),"Name") + "Acc")) + " " + pchar.GenQuest.CaptainComission.Name + " is contained there in custody. Can I talk to him?";
 						link.l6.go = "CapComission_PrisonBad1";
@@ -112,7 +112,7 @@ void ProcessDialogEvent()
 					}
 				}
 			}
-			//Jason --> Бесчестный конкурент
+			
 			if (CheckAttribute(pchar, "questTemp.Shadowtrader.Fort") && NPChar.location == pchar.questTemp.Shadowtrader.City + "_prison")
 			{
 				link.l10 = "I have come to you on request of the local store owner, his name is "+pchar.questTemp.Shadowtrader.Tradername+". He asked me to give you this letter.";
@@ -124,7 +124,7 @@ void ProcessDialogEvent()
 				link.l10 = "That's me again. I have substantional evidence that "+pchar.questTemp.Shadowtrader.Tradername+" is right.";
 				link.l10.go = "Shadowtrader_prison2";
 			}
-			//Jason <-- Бесчестный конкурент
+			
 			
 			if (CheckAttribute(pchar, "GenQuest.Marginpassenger") && pchar.GenQuest.Marginpassenger == "begin" && NPChar.location == pchar.GenQuest.Marginpassenger.City + "_prison")
 			{
@@ -132,7 +132,7 @@ void ProcessDialogEvent()
 				link.l12.go = "Marginpassenger";
 			}
 			
-			// Warship, 16.05.11. Генер "Justice for sale".
+			
 			if(CheckAttribute(PChar, "GenQuest.JusticeOnSale.PrisonWait") && CheckAttribute(PChar, "GenQuest.JusticeOnSale.CityId") && NPChar.location == PChar.GenQuest.JusticeOnSale.CityId + "_prison")
 			{
 				link.l13 = "I was going to talk to you about one certain man - " + PChar.GenQuest.JusticeOnSale.SmugglerName + ". He is your inmate, if I am not mistaken.";
@@ -142,7 +142,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First_officer";
 		break;
 
-		//Jason --> мини-квест Бесчестный конкурент
+		
 		case "Shadowtrader_prison":
 			dialog.text = "Again that "+pchar.questTemp.Shadowtrader.Tradername+" with his complaints! Alright, let's see what it is this time... (reads through)";
 			link.l1 = "...";
@@ -171,7 +171,7 @@ void ProcessDialogEvent()
 			link.l1.go = "Shadowtrader_prison2_1";
 			DeleteAttribute(pchar, "questTemp.Shadowtrader.SeekTrader");
 			pchar.quest.ShadowtraderTimeSmugglers_Over.over = "yes";
-			pchar.quest.Shadowtrader_SMG.over = "yes";//снять оба прерывания
+			pchar.quest.Shadowtrader_SMG.over = "yes";
 			sld = characterFromID("ShadowAgent_1");
 			sld.lifeday = 0;
 		break;
@@ -183,14 +183,14 @@ void ProcessDialogEvent()
 			pchar.questTemp.Shadowtrader.End.Fort = "true";
 			AddQuestRecord("Shadowtrader", "7");
 			SaveCurrentQuestDateParam("pchar.questTemp.Shadowtrader.EndFort");
-			AddCharacterExpToSkill(pchar, "Leadership", 50);//авторитет
-			AddCharacterExpToSkill(pchar, "Fortune", 100);//везение
-			AddCharacterExpToSkill(pchar, "Sneak", 100);//скрытность
+			AddCharacterExpToSkill(pchar, "Leadership", 50);
+			AddCharacterExpToSkill(pchar, "Fortune", 100);
+			AddCharacterExpToSkill(pchar, "Sneak", 100);
 			NextDiag.TempNode = "First_officer";
 		break;
-		// <-- мини-квест Бесчестный конкурент
 		
-		// --> Jason Похититель
+		
+		
 		case "Marginpassenger":
 			dialog.text = "Yes? What is it that you're willing to tell me?";
 			link.l1 = "Recently I was stopped on the street by a "+pchar.GenQuest.Marginpassenger.Name+" who offered me to arrange a dirty deed: capturing and then ransoming a person by the name of "+pchar.GenQuest.Marginpassenger.q1Name+". It's "+pchar.GenQuest.Marginpassenger.Text+"...";
@@ -227,11 +227,11 @@ void ProcessDialogEvent()
 			AddQuestRecord("Marginpassenger", "20");
 			AddQuestUserData("Marginpassenger", "sName", pchar.GenQuest.Marginpassenger.Name);
 			CloseQuestHeader("Marginpassenger");
-			pchar.quest.Marginpassenger_InWorld.over = "yes"; //снять таймер
+			pchar.quest.Marginpassenger_InWorld.over = "yes"; 
 			DeleteAttribute(Pchar, "GenQuest.Marginpassenger");
 			ChangeCharacterComplexReputation(pchar, "nobility", 3);
 			ChangeCharacterNationReputation(pchar, sti(npchar.Nation), 5);
-			AddCharacterExpToSkill(pchar, "Leadership", 100);//авторитет
+			AddCharacterExpToSkill(pchar, "Leadership", 100);
 			ChangeContrabandRelation(pchar, -25);
 			if (GetCharacterIndex("MarginCap") != -1)
 			{
@@ -241,7 +241,7 @@ void ProcessDialogEvent()
 				Group_DeleteGroup("Sea_MarginCap1");
 			}
 		break;
-		//<-- Похититель
+		
 
 		case "EncGirl_1":
 			dialog.text = "I am all ears.";
@@ -262,7 +262,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuestFunction("EncGirl_ToLoverParentsExit");
 		break;
 		
-		// ------------------------- Повод для спешки -----------------------------
+		
 		case "ReasonToFast_Prison1":
 			pchar.questTemp.ReasonToFast.SpeakOther = true;
 			dialog.text = "I am all ears, captain.";
@@ -279,7 +279,7 @@ void ProcessDialogEvent()
 		case "ReasonToFast_Prison_GoodRep":
 			if(pchar.questTemp.ReasonToFast == "PatrolSuccess_1") 
 			{ 
-				// вилка_А
+				
 				dialog.text = "Thank you,"+ GetSexPhrase("mister","miss") +"! I immediately give the order to arrest the villain.\nHowever, you have incurred costs and municipal coffers, alas, empty...";
 				link.l1 = "Your Highness! I did it for the money...";
 				link.l1.go = "ReasonToFast_Prison_GoodRep_11";
@@ -289,14 +289,14 @@ void ProcessDialogEvent()
 			}
 			if(pchar.questTemp.ReasonToFast == "PatrolSuccess_2") 
 			{ 
-				// получена карта
+				
 				dialog.text = "Thank you, "+ GetSexPhrase("mister","miss") +"! I immediately give the order to arrest the villain.\nThink of it! We wanted to reward his personal weapon for the excellent service. How nice that all cleared up, and I got nothing this embarrassment!";
 				link.l1 = "Always glad to serve justice.";
 				link.l1.go = "ReasonToFast_Prison_GoodRep_21";			
 			}
 			if(pchar.questTemp.ReasonToFast == "PatrolDied") 
 			{ 
-				// патруль перебит
+				
 				dialog.text = "Mi"+ GetSexPhrase("ster","ss") +"! We had been suspecting that officer and his scum for quite some time, but I think that you made a rash move, heaving dealt with them without witnesses.";
 				link.l1 = "Your Highness! But I had to defend...";
 				link.l1.go = "ReasonToFast_Prison_GoodRep_31";	
@@ -308,7 +308,7 @@ void ProcessDialogEvent()
 		case "ReasonToFast_Prison_BadRep":
 			if(pchar.questTemp.ReasonToFast == "PatrolSuccess_1") 
 			{ 
-				// вилка_А
+				
 				dialog.text = "Captain, do you realize what you've done?!! We've been attempting to set up this trap for over a month! And now, just for your entertainment, you've wrecked the meeting of our patrol with messenger " + GetName( NAMETYPE_MAIN, pchar.questTemp.ReasonToFast.p3, NAME_GEN) + " and now you're coming here to boast?!! Perhaps you can tell me now, how should I explain all expenses and costs of this operation?!";
 				link.l1 = "Your Grace! You're just refusing to see the point...";
 				link.l1.go = "ReasonToFast_Prison_BadRep1";
@@ -319,7 +319,7 @@ void ProcessDialogEvent()
 			}
 			if(pchar.questTemp.ReasonToFast == "PatrolSuccess_2") 
 			{ 
-				// получена карта
+				
 				dialog.text = "Let me look at this map...\nYou kidding me? This tattered piece of parchment - proof?";
 				link.l1 = "Your Grace! You're just refusing to see the point...";
 				link.l1.go = "ReasonToFast_Prison_BadRep1";
@@ -328,7 +328,7 @@ void ProcessDialogEvent()
 			}
 			if(pchar.questTemp.ReasonToFast == "PatrolDied") 
 			{ 
-				// патруль перебит
+				
 				dialog.text = "Now that's an original justification of the destruction of the entire patrolling party. Well, at least by coming here you spared us the need to look for the murderer.";
 				link.l1 = "Your Grace! You're just refusing to see the point...";
 				link.l1.go = "ReasonToFast_Prison_BadRep1";			
@@ -346,7 +346,7 @@ void ProcessDialogEvent()
 			GiveItem2Character(pchar, "mapQuest"); 
 			arItem = ItemsFromID("mapQuest");
 			ReasonToFast_GenerateTreasureMap(arItem);
-			pchar.questTemp.ReasonToFast.state = "chain_A"; // вилка_А, наводки не генерим
+			pchar.questTemp.ReasonToFast.state = "chain_A"; 
 			pchar.questTemp.ReasonToFast = "GetMap";			
 			ReasonToFast_SetHunterCoastal();
 		break;
@@ -357,7 +357,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("ReasonToFast", "14");
 			ChangeCharacterComplexReputation(pchar,"nobility", 1); 
 			GiveItem2Character(pchar, pchar.questTemp.ReasonToFast.p6);
-			pchar.questTemp.ReasonToFast.state = "chain_B"; // была получена карта
+			pchar.questTemp.ReasonToFast.state = "chain_B"; 
 			pchar.questTemp.ReasonToFast = "GetMap";			
 			ReasonToFast_SetHunterCoastal();
 		break;
@@ -382,9 +382,9 @@ void ProcessDialogEvent()
 			pchar.TownEscape = true;
 			Flag_PIRATE();
 		break;
-		// ------------------------- Повод для спешки -----------------------------
 		
-		// -------------------------- Операция 'Галеон' ----------------------------
+		
+		
 		case "CapComission_PrisonBad1":
 			dialog.text = "And what business do you have with him?";
 			link.l1 = "I have several private affairs to discuss with him.";
@@ -432,7 +432,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode; 
 			AddDialogExitQuest("OpenTheDoors");
 		break;
-		// -------------------------- Операция 'Галеон' ----------------------------
+		
 		
 		case "F_ShipLetters_1":
 			dialog.text = "Speak now, I'm listening.";
@@ -517,7 +517,7 @@ void ProcessDialogEvent()
 				OfficersReaction("bad"); 
 			}	
 			pchar.questTemp.different = "free";
-			pchar.quest.GiveShipLetters_null.over = "yes"; //снимаем таймер 
+			pchar.quest.GiveShipLetters_null.over = "yes"; 
 			AddQuestRecord("GiveShipLetters", "8");			
 			CloseQuestHeader("GiveShipLetters");
 			DeleteAttribute(pchar, "questTemp.different.GiveShipLetters");
@@ -663,7 +663,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//---------------- Протектор ------------------
+		
         case "First_protector":
 			if (sti(pchar.questTemp.jailCanMove))
 			{
@@ -680,25 +680,25 @@ void ProcessDialogEvent()
 			}
 			NextDiag.TempNode = "First_protector";
 		break;
-		//---------------- Солдаты ------------------
+		
         case "First_soldier":
             dialog.text = RandPhraseSimple("I am on duty, don't bother me.", "Come along, I am not allowed to talk to you.");
 			link.l1 = "Fine, soldier.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First_soldier";
 		break;
-		//---------------- Заключенные ------------------
+		
         case "First_prisoner": 
 			if (GetNationRelation2MainCharacter(sti(npchar.nation)) == RELATION_ENEMY)
 			{
 				dialog.text = LinkRandPhrase("Ho-ho, isn't that a great time!", "Cut them, "+ GetSexPhrase("buddy","lass") +", cut!!!", "Oh, hell! I have lost all hope to see the corpse of my jailer!");
 				link.l1 = RandPhraseSimple("Heh!", "Arrgh!");
 				link.l1.go = "NoMoreTalkExit";
-				if (rand(10) > 6 && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && !CheckAttribute(pchar, "GenQuest.PrisonQuestLock") && !CheckAttribute(pchar, "quest.GivePrisonFree") && !CheckAttribute(pchar, "quest.GivePrisonFree_Over") && !CheckAttribute(pchar, "quest.DeliverToBander")) // Addon 2016-1 Jason пиратская линейка
+				if (rand(10) > 6 && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && !CheckAttribute(pchar, "GenQuest.PrisonQuestLock") && !CheckAttribute(pchar, "quest.GivePrisonFree") && !CheckAttribute(pchar, "quest.GivePrisonFree_Over") && !CheckAttribute(pchar, "quest.DeliverToBander")) 
 				{
 					dialog.text = RandPhraseSimple("Hold on, "+ GetSexPhrase("buddy","lass") +"!! Release me!", "Listen, "+ GetSexPhrase("buddy","lass") +", kindly open the cell.");
 					link.l1 = "For what reason?";
-					link.l1.go = "Prisoner_1"; // на квест освобождения заключенного
+					link.l1.go = "Prisoner_1"; 
 				}
 			}
 			else
@@ -706,32 +706,32 @@ void ProcessDialogEvent()
 				dialog.text = LinkRandPhrase("I am accused of robbery, but I'm not guilty!", "Arrgh, you well-groomed scum... Would you like to sit in my cell a bit?! Kheh-heh-heh...", "I am not guilty!");
 				link.l1 = RandPhraseSimple("Shut up!", "I don't give a shit about you...");
 				link.l1.go = "NoMoreTalkExit";
-				if (rand(10) > 6 && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && !CheckAttribute(pchar, "GenQuest.PrisonQuestLock") && !CheckAttribute(pchar, "quest.GivePrisonFree_Over") && !CheckAttribute(pchar, "quest.GivePrisonFree") && !CheckAttribute(pchar, "quest.DeliverToBander") && !sti(colonies[FindColony(npchar.city)].HeroOwn)) // Addon 2016-1 Jason пиратская линейка
+				if (rand(10) > 6 && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && !CheckAttribute(pchar, "GenQuest.PrisonQuestLock") && !CheckAttribute(pchar, "quest.GivePrisonFree_Over") && !CheckAttribute(pchar, "quest.GivePrisonFree") && !CheckAttribute(pchar, "quest.DeliverToBander") && !sti(colonies[FindColony(npchar.city)].HeroOwn)) 
 				{
 					dialog.text = RandPhraseSimple("Hold on, "+ GetSexPhrase("buddy","lass") +", don't come by so fast!", "Don't hurry, "+ GetSexPhrase("buddy","lass") +", let's talk.");
 					link.l1 = "For what reason?";
 					if (rand(1))
 					{
-						link.l1.go = "Prisoner_1"; // на квест освобождения заключенного
+						link.l1.go = "Prisoner_1"; 
 					}
 					else
 					{
-						link.l1.go = "Deliver_1"; // на квест передачу весточки
+						link.l1.go = "Deliver_1"; 
 					}
 				}
 			}
 		break;
-		// -------------------- освобождение заключенного --------------------
+		
         case "Prisoner_1":
             dialog.text = "To listen to me. Don't think that I'm not looking good and stuff. I just need to get out of here...";
 			link.l1 = "What?!";
 			link.l1.go = "Prisoner_2";
 			GetChestPlaceName();
-			pchar.questTemp.jailCanMove.prisonerId = npchar.id; //запомним Id
-			pchar.questTemp.jailCanMove.IsTrue = rand(4); //вид клада
+			pchar.questTemp.jailCanMove.prisonerId = npchar.id; 
+			pchar.questTemp.jailCanMove.IsTrue = rand(4); 
 			pchar.questTemp.jailCanMove.Item1 = GenQuestPrison_GenerateArtefact();
 			pchar.questTemp.jailCanMove.Item2 = GenQuestPrison_GenerateBlade();
-			pchar.questTemp.jailCanMove.Name = GetFullName(npchar); //имя перца
+			pchar.questTemp.jailCanMove.Name = GetFullName(npchar); 
 		break;
         case "Prisoner_2":
             dialog.text = "I heard! Help me out, and I'll be able to repay...";
@@ -750,14 +750,14 @@ void ProcessDialogEvent()
 			if (GetNationRelation2MainCharacter(sti(npchar.nation)) != RELATION_ENEMY)
 			{			
 				link.l2 = "Well, it might be worth taking a risk... I suggest the following: I can eliminate the guards in the prison and take you to my ship. If everything works out, I want you to stay at my side all the time until we get to the grotto on  " + XI_ConvertString(pchar.questTemp.jailCanMove.islandId + "Dat") + ". Deal?";
-				link.l2.go = "Prisoner_agree"; //силовой способ вызволения
+				link.l2.go = "Prisoner_agree"; 
 				link.l3 = "Alright, I'll try to help you. I'll speak to the prison warden. Perhaps I'll be able to bail you out.";
-				link.l3.go = "ToPrisonHead_agree"; //мирный способ вызволения
+				link.l3.go = "ToPrisonHead_agree"; 
 			}
 			else
 			{
 				link.l2 = "Okay, I'll believe you and open your cell. I want you to stay at my side all the time until we get to the grotto on " + XI_ConvertString(pchar.questTemp.jailCanMove.islandId + "Dat") + ". Deal?";
-				link.l2.go = "Prisoner_agree_3"; //силовой способ вызволения, когда тюремщики убиты
+				link.l2.go = "Prisoner_agree_3"; 
 			}
 		break;
         case "Prisoner_5":
@@ -798,7 +798,7 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			LAi_group_Register("DeliveQuest_Prison");
 			LAi_group_SetRelation("DeliveQuest_Prison", LAI_GROUP_PLAYER, LAI_GROUP_FRIEND);
-			//LAi_group_SetAlarmReaction(LAI_GROUP_PLAYER, "DeliveQuest_Prison", LAI_GROUP_ENEMY, LAI_GROUP_FRIEND);
+			
 			LAi_group_MoveCharacter(npchar, "DeliveQuest_Prison");
 			LAi_ActorFollowEverywhere(npchar, "", -1);
 			DialogExit();
@@ -830,7 +830,7 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			LAi_group_Register("DeliveQuest_Prison");
 			LAi_group_SetRelation("DeliveQuest_Prison", LAI_GROUP_PLAYER, LAI_GROUP_FRIEND);
-			//LAi_group_SetAlarmReaction(LAI_GROUP_PLAYER, "DeliveQuest_Prison", LAI_GROUP_ENEMY, LAI_GROUP_FRIEND);
+			
 			LAi_group_MoveCharacter(npchar, "DeliveQuest_Prison");
 			LAi_ActorFollowEverywhere(npchar, "", -1);
 			DialogExit();
@@ -840,8 +840,8 @@ void ProcessDialogEvent()
             dialog.text = "Well, you can try. Hope we'll pull it through! But do not waste time - in a couple of days I will be out of here...";
 			link.l1 = "Wait here, I'll arrange everything.";
 			link.l1.go = "NoMoreTalkExit";
-			pchar.questTemp.jailCanMove.City = npchar.City; //город
-			pchar.questTemp.jailCanMove.ownerPrison = rand(6); //характер преступления
+			pchar.questTemp.jailCanMove.City = npchar.City; 
+			pchar.questTemp.jailCanMove.ownerPrison = rand(6); 
 			SetTimerCondition("GivePrisonFree_Over", 0, 0, 2, false);
 			AddQuestRecord("GivePrisonFree", "5");
 			AddQuestUserData("GivePrisonFree", "sSex", GetSexPhrase("",""));
@@ -885,7 +885,7 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			LAi_group_Register("DeliveQuest_Prison");
 			LAi_group_SetRelation("DeliveQuest_Prison", LAI_GROUP_PLAYER, LAI_GROUP_FRIEND);
-			//LAi_group_SetAlarmReaction(LAI_GROUP_PLAYER, "DeliveQuest_Prison", LAI_GROUP_ENEMY, LAI_GROUP_FRIEND);
+			
 			LAi_group_MoveCharacter(npchar, "DeliveQuest_Prison");
 			LAi_ActorFollowEverywhere(npchar, "", -1);
 			DialogExit();
@@ -934,7 +934,7 @@ void ProcessDialogEvent()
 			link.l1.go = "ToPrisonHead_notFree_2";
 			pchar.quest.GivePrisonFree_Over.over = "yes";
 		break;
-		//==> в месте, где клад припрятан
+		
         case "PrisonerInPlace":
 			switch (sti(pchar.questTemp.jailCanMove.IsTrue))
 			{
@@ -1096,14 +1096,14 @@ void ProcessDialogEvent()
 			link.l1.go = "PrisonerInPlace_2";
 			AddQuestRecord("GivePrisonFree", "3_4");
             AddQuestUserData("GivePrisonFree", "sName", pchar.questTemp.jailCanMove.Name);
-			AddQuestUserData("GivePrisonFree", "sSex", GetSexPhrase("","а"));
+			AddQuestUserData("GivePrisonFree", "sSex", GetSexPhrase("","пїЅ"));
 			CloseQuestHeader("GivePrisonFree");
 			DeleteAttribute(pchar, "questTemp.jailCanMove.Item1");
 			DeleteAttribute(pchar, "questTemp.jailCanMove.Item2");
 		break;
         
-		// -------------------- освобождение заключенного --------------------
-		// ------------------------ передать маляву --------------------------
+		
+		
         case "Deliver_1":
 			dialog.text = "I am called " + GetFullName(npchar) + ". I have a request to you, he-he...";
 			link.l1 = "What's up?";
@@ -1132,7 +1132,7 @@ void ProcessDialogEvent()
 			link.l1.go = "Deliver_5";
 		break;
         case "Deliver_5":
-			pchar.questTemp.jailCanMove.Deliver.locationId = GetBanderLocation(npchar); //Id коммона
+			pchar.questTemp.jailCanMove.Deliver.locationId = GetBanderLocation(npchar); 
 			if (pchar.questTemp.jailCanMove.Deliver.locationId == "none")
 			{
 				dialog.text = "Hmm, you know, I just don't like you. I crossed my mind. Come along, don't stand there!";
@@ -1146,11 +1146,11 @@ void ProcessDialogEvent()
 				link.l1 = "Not at all.";
 				link.l1.go = "NoMoreTalkExit";
 				GiveItem2Character(Pchar, "Malyava");
-				pchar.questTemp.jailCanMove.Deliver.Id = npchar.id; //Id зэка
-				pchar.questTemp.jailCanMove.Deliver.name = GetFullName(npchar); //имя зэка
-				pchar.questTemp.jailCanMove.Deliver.City = npchar.city; //город (Id колонии)
-				pchar.questTemp.jailCanMove.Deliver.good = rand(3); //опрокинут или нет
-				pchar.questTemp.jailCanMove.Deliver.price = rand(6)*500+500; //цена услуги
+				pchar.questTemp.jailCanMove.Deliver.Id = npchar.id; 
+				pchar.questTemp.jailCanMove.Deliver.name = GetFullName(npchar); 
+				pchar.questTemp.jailCanMove.Deliver.City = npchar.city; 
+				pchar.questTemp.jailCanMove.Deliver.good = rand(3); 
+				pchar.questTemp.jailCanMove.Deliver.price = rand(6)*500+500; 
 				pchar.quest.DeliverToBander.win_condition.l1 = "location";
 				pchar.quest.DeliverToBander.win_condition.l1.location = pchar.questTemp.jailCanMove.Deliver.locationId;
 				pchar.quest.DeliverToBander.win_condition = "DeliverToBander";
@@ -1164,7 +1164,7 @@ void ProcessDialogEvent()
 			}
 		break;
 		
-		// Warship, 16.05.11. Генер "Justice for sale".
+		
 		case "JusticeOnSale_1":
 			dialog.text = "Yes, he was arrested on a charge of smuggling. But why do you care about that gallows-bird, " + GetAddress_Form(NPChar) + "?";
 			link.l1 = "His gang is planning to arrange his escape and continue their dirty deeds.";
@@ -1244,7 +1244,7 @@ void ProcessDialogEvent()
 			Log_Info("Smuggler's captain on a board");
 			PlaySound("interface\notebook.wav");
 			LAi_Fade("", "");
-			WaitDate("",0,0,0,2,5); // 280313
+			WaitDate("",0,0,0,2,5); 
 		break;
 	}
 }
@@ -1283,7 +1283,7 @@ string GetBanderLocation(ref npchar)
 	int howStore = 0;
     makearef(arRld, Locations[FindLocation(npchar.city + "_town")].reload);
 	Qty = GetAttributesNum(arRld);
-    if (CheckAttribute(pchar, "GenQuest.SeekSpy.Location")) //если взят квест мэра по поиску шпиона
+    if (CheckAttribute(pchar, "GenQuest.SeekSpy.Location")) 
 	{
 		for (i=0; i<Qty; i++)
 		{
@@ -1341,7 +1341,7 @@ string GetBanderLocation(ref npchar)
 	}
 	if (howStore == 0) return "none";
 	LocId = storeArray[rand(howStore-1)];
-	SetOpenDoorCommonLoc(npchar.city, LocId); //открываем дверь
+	SetOpenDoorCommonLoc(npchar.city, LocId); 
 	for(n=0; n<MAX_CHARACTERS; n++)
 	{
 		if (CheckAttribute(&characters[n], "locations") && characters[n].locations == LocId) 
@@ -1352,7 +1352,7 @@ string GetBanderLocation(ref npchar)
 	return LocId;
 }
 
-string GenQuestPrison_GenerateArtefact() // артефакты
+string GenQuestPrison_GenerateArtefact() 
 {
 	string itemID;
 	switch(rand(7))
@@ -1385,7 +1385,7 @@ string GenQuestPrison_GenerateArtefact() // артефакты
 	return itemID;
 }
 
-string GenQuestPrison_GenerateBlade() // клинки и другое
+string GenQuestPrison_GenerateBlade() 
 {
 	string itemID;
 	switch(rand(8))

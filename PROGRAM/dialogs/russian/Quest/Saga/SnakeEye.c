@@ -1,4 +1,4 @@
-// шаман команчей Змеиный Глаз
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -28,7 +28,7 @@ void ProcessDialogEvent()
 				link.l2 = "I brought you the amulets you've asked. Let's trade.";
 				link.l2.go = "SnakeEye_potion";
 			}
-			if (CheckAttribute(pchar, "questTemp.LSC")) // был в LSC
+			if (CheckAttribute(pchar, "questTemp.LSC")) 
 			{
 				if (CheckAttribute(npchar, "quest.LSC_hello") && CheckCharacterItem(pchar, "buben"))
 				{
@@ -54,7 +54,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-	//---------------------------------------- первая встреча------------------------------------------------
+	
 		case "SnakeEye":
 			dialog.text = "Greetings, my pale friend.";
 			link.l1 = "Hello, shaman. And why do you think that I am a friend of yours?";
@@ -139,7 +139,7 @@ void ProcessDialogEvent()
 			pchar.quest.BaronReturn_out.function = "Saga_DannyTalk";
 		break;
 		
-		// дает зелья - идем на телепортацию
+		
 		case "SnakeEye_potion":
 			dialog.text = "Good, my friend. You bring me amulets so you ready to go to Kukulcan?";
 			link.l1 = "Yes. I am ready to do the same as Nathaniel, the chained captain, did.";
@@ -169,8 +169,8 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.CurrentNode = "First time";
 			pchar.questTemp.Saga.BaronReturn = "first_teleport";
-			pchar.questTemp.Dolly = true; // телепорты работают!
-			LAi_LocationDisableOfficersGen("Pearl_jungle_03", true); // не пускать офицеров в локу телепорта
+			pchar.questTemp.Dolly = true; 
+			LAi_LocationDisableOfficersGen("Pearl_jungle_03", true); 
 			DeleteAttribute(npchar, "quest.amulet");
 			AddQuestRecord("BaronReturn", "4");
 			sld = characterFromId("Danielle");
@@ -180,7 +180,7 @@ void ProcessDialogEvent()
 			pchar.quest.BaronReturn_out1.function = "Saga_DannyTalk";
 		break;
 		
-		// пришел из LSC
+		
 		case "LSC_hello":
 			dialog.text = "I am glad, my friend. How you return back from canoe cemetery?";
 			link.l1 = "I've found there the statue of Kukulcan as you've told me. White Boy has helped me - Ole Christiansen. The statue was sunk but I was able to reach it. It moved me to Carib village.";
@@ -314,7 +314,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 		break;
 		
-		// лечение Натаниэля
+		
 		case "Saga_nathaniel":
 			dialog.text = "I am listen you, paleface brother.";
 			link.l1 = "I have brought white captain who I was looking for. He is very ill. I know that only you can heal him...";
@@ -583,7 +583,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = "First time";
 			AddQuestRecord("Tieyasal", "17");
 			sld = ItemsFromID("skinmap");
-			sld.price = 100; // кожаную карту можно выкладывать 270912 
+			sld.price = 100; 
 		break;
 		
 		case "Exit":

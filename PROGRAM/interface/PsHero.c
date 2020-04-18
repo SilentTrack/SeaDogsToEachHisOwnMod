@@ -10,8 +10,8 @@ void InitInterface(string iniName)
 
 	SetEventHandler("InterfaceBreak","ProcessBreakExit",0);
 	SetEventHandler("exitCancel","ProcessCancelExit",0);
-	//SetEventHandler("ievnt_command","ProcCommand",0);
-	SetEventHandler("evntDoPostExit","DoPostExit",0); // выход из интерфейса
+	
+	SetEventHandler("evntDoPostExit","DoPostExit",0); 
 	FillTable();
 }
 
@@ -30,7 +30,7 @@ void IDoExit(int exitCode)
     EndAboveForm(true);
 	DelEventHandler("InterfaceBreak","ProcessBreakExit");
 	DelEventHandler("exitCancel","ProcessCancelExit");
-	//DelEventHandler("ievnt_command","ProcCommand");
+	
 	DelEventHandler("evntDoPostExit","DoPostExit");
 
 	interfaceResultCommand = exitCode;
@@ -63,31 +63,31 @@ void FillTable()
 	
 	
 	n = 1;
-	// шапка -->
+	
     GameInterface.TABLE_HERO.select = 0;
     GameInterface.TABLE_HERO.hr.td1.str = "chr.id";
     GameInterface.TABLE_HERO.hr.td1.scale = 0.8;
-    GameInterface.TABLE_HERO.hr.td2.str = "ФИО";
+    GameInterface.TABLE_HERO.hr.td2.str = "пїЅпїЅпїЅ";
     GameInterface.TABLE_HERO.hr.td2.scale = 0.85;
 	GameInterface.TABLE_HERO.hr.td3.str = "chr.rank";
 	GameInterface.TABLE_HERO.hr.td3.scale = 0.8;
 	GameInterface.TABLE_HERO).hr.td4.str = "nation";
 	GameInterface.TABLE_HERO.hr.td4.scale = 0.8;
-	GameInterface.TABLE_HERO.hr.td5.str = "корабль";
+	GameInterface.TABLE_HERO.hr.td5.str = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
 	GameInterface.TABLE_HERO.hr.td5.scale = 0.8;
-	GameInterface.TABLE_HERO.hr.td6.str = "местоположение";
+	GameInterface.TABLE_HERO.hr.td6.str = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
 	GameInterface.TABLE_HERO).hr.td6.scale = 0.8;
-	GameInterface.TABLE_HERO.hr.td7.str = "направление";
+	GameInterface.TABLE_HERO.hr.td7.str = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
 	GameInterface.TABLE_HERO.hr.td7.scale = 0.8;
 
 	for (i = 1; i <= PsHeroQty; i++)
 	{
 		chr = CharacterFromID("PsHero_" + i);
 
-		//временно либо офицер, либо компаньон... не работаем с ним.
-		//if (!sti(chr.PGGAi.IsPGG)) continue;
-		//помер, нефиг мертвых качать.
-		//if (LAi_IsDead(chr)) continue;
+		
+		
+		
+		
 		
 		row = "tr" + n;
 		GameInterface.TABLE_HERO.(row).td1.icon.texture = "INTERFACES\PORTRAITS\128\face_" + chr.faceId + ".tga";

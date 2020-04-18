@@ -1,4 +1,4 @@
-// диалоги обитателей плантаций
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -34,28 +34,28 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
 		
-		// рабы
+		
 		case "plantation_slave":
 			dialog.text = RandPhraseSimple(RandPhraseSimple("I am so tired.", "Can't go on like that!"), RandPhraseSimple("This work is killing me.", "Guards want us all dead!"));				
 			link.l1 = RandPhraseSimple("What a shame", "I am sorry.");
 			link.l1.go = "exit";				
 		break;
 		
-		// рабы-пираты по пиратской линейке
+		
 		case "pirate_slave":
 			dialog.text = RandPhraseSimple(RandPhraseSimple("Look go away!", "Get lost."), RandPhraseSimple("What do you want?!", "Get the hell out of here!"));				
 			link.l1 = RandPhraseSimple("Hm...", "Well...");
 			link.l1.go = "exit";				
 		break;
 		
-		// охрана - солдаты
+		
 		case "plantation_soldier":
             dialog.text = RandPhraseSimple(RandPhraseSimple("Go bother the head of plantation", "Don't distract slaves pal."), RandPhraseSimple("My job is to motivate these lazy bastards", "Hell of a heat here."));
 			link.l1 = RandPhraseSimple("I see...", "Go it...");
 			link.l1.go = "exit";
 		break;
 		
-		// охрана - протектор
+		
 		case "plantation_protector":
             if (GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY && sti(NPChar.nation) != PIRATE)
 			{
@@ -113,7 +113,7 @@ void ProcessDialogEvent()
 			if (ChangeCharacterNationReputation(pchar, sti(NPChar.nation), 0) <= -12)
 			{
 				PlaySound("VOICE\Russian\soldier_arest_2.wav");
-				dialog.text = "A license? Wait a second… Ha-ha, this is funny! You are wanted pal! Seize him!";
+				dialog.text = "A license? Wait a secondпїЅ Ha-ha, this is funny! You are wanted pal! Seize him!";
 				link.l1 = RandPhraseSimple("Say hello to my blade", "Fuck you.");
 				link.l1.go = "fight";	
 				break;
@@ -156,7 +156,7 @@ void ProcessDialogEvent()
 			link.l1.go = "plantation_exit";
 		break;
 		
-		// управляющий в Маракайбо // Addon 2016-1 Jason
+		
 		case "Plantator":
 			if (CheckAttribute(pchar, "questTemp.Mtraxx") && pchar.questTemp.Mtraxx == "plant_2" && GetSquadronGoods(pchar, GOOD_SLAVES) >= 50)
 			{
@@ -251,8 +251,8 @@ void ProcessDialogEvent()
 			pchar.questTemp.Mtraxx.PlantGood.Cargo = 11;
 			pchar.questTemp.Mtraxx.PlantGood.Sugar = i * 100;
 			pchar.questTemp.Mtraxx.PlantGood.Cocoa = n * 100;
-            dialog.text = "Five hundred boxes of coffee? Well-well... Let's see… (counting) I am ready to exchange your coffee for "+sti(pchar.questTemp.Mtraxx.PlantGood.Sugar)+" sacks of sugar and "+sti(pchar.questTemp.Mtraxx.PlantGood.Cocoa)+"  boxes of cacao. Deal?";
-			link.l1 = "M-m-m.. I was hoping for better terms… Whatever. Deal!";
+            dialog.text = "Five hundred boxes of coffee? Well-well... Let's seeпїЅ (counting) I am ready to exchange your coffee for "+sti(pchar.questTemp.Mtraxx.PlantGood.Sugar)+" sacks of sugar and "+sti(pchar.questTemp.Mtraxx.PlantGood.Cocoa)+"  boxes of cacao. Deal?";
+			link.l1 = "M-m-m.. I was hoping for better termsпїЅ Whatever. Deal!";
 			link.l1.go = "mtraxx_6";
 		break;
 		
@@ -262,8 +262,8 @@ void ProcessDialogEvent()
 			pchar.questTemp.Mtraxx.PlantGood.Cargo = 19;
 			pchar.questTemp.Mtraxx.PlantGood.Sugar = i * 106;
 			pchar.questTemp.Mtraxx.PlantGood.Cocoa = n * 106;
-            dialog.text = "Five hundred boxes of vanilla? Well-well... Let's see… (counting) I am ready to exchange your vanilla for "+sti(pchar.questTemp.Mtraxx.PlantGood.Sugar)+" sacks of sugar and "+sti(pchar.questTemp.Mtraxx.PlantGood.Cocoa)+"  boxes of cacao. Deal?";
-			link.l1 = "M-m-m.. I was hoping for better terms… Whatever. Deal!";
+            dialog.text = "Five hundred boxes of vanilla? Well-well... Let's seeпїЅ (counting) I am ready to exchange your vanilla for "+sti(pchar.questTemp.Mtraxx.PlantGood.Sugar)+" sacks of sugar and "+sti(pchar.questTemp.Mtraxx.PlantGood.Cocoa)+"  boxes of cacao. Deal?";
+			link.l1 = "M-m-m.. I was hoping for better termsпїЅ Whatever. Deal!";
 			link.l1.go = "mtraxx_6";
 		break;
 		
@@ -273,8 +273,8 @@ void ProcessDialogEvent()
 			pchar.questTemp.Mtraxx.PlantGood.Cargo = 20;
 			pchar.questTemp.Mtraxx.PlantGood.Sugar = i * 100;
 			pchar.questTemp.Mtraxx.PlantGood.Cocoa = n * 100;
-            dialog.text = "Five hundred boxes of copra? Well-well... Let's see… (counting) I am ready to exchange your copra for "+sti(pchar.questTemp.Mtraxx.PlantGood.Sugar)+" sacks of sugar and "+sti(pchar.questTemp.Mtraxx.PlantGood.Cocoa)+"  boxes of cacao. Deal?";
-			link.l1 = "M-m-m.. I was hoping for better terms… Whatever. Deal!";
+            dialog.text = "Five hundred boxes of copra? Well-well... Let's seeпїЅ (counting) I am ready to exchange your copra for "+sti(pchar.questTemp.Mtraxx.PlantGood.Sugar)+" sacks of sugar and "+sti(pchar.questTemp.Mtraxx.PlantGood.Cocoa)+"  boxes of cacao. Deal?";
+			link.l1 = "M-m-m.. I was hoping for better termsпїЅ Whatever. Deal!";
 			link.l1.go = "mtraxx_6";
 		break;
 		
@@ -296,7 +296,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = "plantator_1";
 			AddQuestRecord("Roger_3", "10");
 			pchar.questTemp.Mtraxx = "plant_7";
-			pchar.GenQuest.CannotWait = true;//запрет ожидания
+			pchar.GenQuest.CannotWait = true;
 			pchar.quest.mtraxx_plant_goods.win_condition.l1 = "ExitFromLocation";
 			pchar.quest.mtraxx_plant_goods.win_condition.l1.location = pchar.location;
 			pchar.quest.mtraxx_plant_goods.function = "Mtraxx_PlantFindRocurDay";
@@ -317,3 +317,4 @@ void ProcessDialogEvent()
 		break;
 	}
 } 
+

@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,7 +9,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Not now. There is no time."), "True... But later, not now...",
                       "I'll ask, I'll ask... a bit later though...", "I am sorry, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			// Jason НСО
+			
 			if (CheckAttribute(pchar, "questTemp.Patria") && pchar.questTemp.Patria == "epizode_2" && !CheckAttribute(npchar, "quest.patria") && !CheckAttribute(pchar, "questTemp.Patria.Visiter_Late"))
 			{
 				link.l1 = TimeGreeting()+" monseigneur. I am here as ordered by the Governor General Chevalier da Poincy. My task is to deliver a baron by the name of Noel Forget to Tortuga, who arrived from the parent state with a task to inspect the colonies, with the aim to establish French West-Indies trading Company. Let me itroduce him to you... He will explain all the details himself.";
@@ -24,7 +24,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             NextDiag.TempNode = "Cupture_after";
 		break;
 		
-		// Jason НСО
+		
 		case "patria_portpax":
 			dialog.text = "I am very glad to meet with you, Captain Charles de Maure, and with the baron. I will do everything possible to ensure that the stay of Monsieur Forget in our colony was as comfortable as possible. And taking advantage of the fact that such high-ranking people paid me a visit, I will petition you for a cause.";
 			link.l1 = "Most interesting! Get to it, captain.";
@@ -59,6 +59,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.patria = "true";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

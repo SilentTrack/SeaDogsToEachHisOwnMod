@@ -1,15 +1,15 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me a question a little while ago...", "At his dock, and you know whatЦI've never seen such flat, curious people before in town.",
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me a question a little while ago...", "At his dock, and you know whatпњљI've never seen such flat, curious people before in town.",
                           "What's with all the questions? My job is to build ships. Let's take care about that.", "block", 1, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where did my memory go...",
                       "Hm, well...", "Go ahead...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			// Addon-2016 Jason ФМК-Мартиника
+			
 			if (CheckAttribute(pchar, "questTemp.FMQM") && pchar.questTemp.FMQM == "begin")
             {
                 link.l1 = "Your man told me that you want to see me. I am all ears.";
@@ -22,7 +22,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             }
 		break;
 		
-		// Addon-2016 Jason ФМК-Мартиника
+		
 		case "FMQM":
 			pchar.quest.FMQM_Denial.over = "yes";
 			dialog.text = "Yes-yes, captain "+GetFullName(pchar)+". I saw your vessel entering our port and immediately sent my worker to you. Straight to the business: you are a newcomer, but they say that you have already become a seasoned sailor and the fortune is on your side. This is why I have a business proposal to you.";
@@ -59,8 +59,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "FMQM_3":
 			string sTemp = "barquentine";
-			if (MOD_SKILL_ENEMY_RATE < 7) sTemp = "barque";// Addon 2016-1 Jason пиратская линейка
-			dialog.text = "Then listen: the convoy of three vessels, the resin will be among other goods on a "+sTemp+" called the Benseсho. This is your target. As I've said before, the Spanish are sailing from Port-of-Spain, Trinidad, to San Juan, Puerto Rico. They will set sail tomorrow, so you are free to choose where to attack them.";
+			if (MOD_SKILL_ENEMY_RATE < 7) sTemp = "barque";
+			dialog.text = "Then listen: the convoy of three vessels, the resin will be among other goods on a "+sTemp+" called the Benseпњљho. This is your target. As I've said before, the Spanish are sailing from Port-of-Spain, Trinidad, to San Juan, Puerto Rico. They will set sail tomorrow, so you are free to choose where to attack them.";
 			link.l1 = "Got it. What about a reward?";
 			link.l1.go = "FMQM_4";
 		break;
@@ -116,6 +116,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			RemoveCharacterGoods(pchar, GOOD_OIL, GetSquadronGoods(pchar, GOOD_OIL));
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

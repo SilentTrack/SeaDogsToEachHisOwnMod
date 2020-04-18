@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,7 +9,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
                       "You've guessed it, I'm sorry...", "I understand...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			// Addon-2016 Jason ФМК-Гваделупа
+			
 			if (CheckAttribute(pchar, "questTemp.FMQG") && pchar.questTemp.FMQG == "continue")
             {
                 link.l1 = "I am captain "+GetFullName(pchar)+".. Your man told me you want to see me. I am all ears.";
@@ -37,7 +37,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             }
 		break;
 		
-		// Addon-2016 Jason ФМК-Гваделупа
+		
 		case "FMQG":
 			dialog.text = "A-ah, captain "+GetFullName(pchar)+"! Pleasure to meet you. I've been waiting for you for quite a while... Good. I have a question to ask. Some time ago, a man called Bertrand Pinette approached you in the port in order to get onboard of your vessel. Wealthy looking fellow in a wig. Does it ring a bell?";
 			link.l1 = "Yes, it does. He really did approached me with a very exact purpose.";
@@ -123,7 +123,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			DialogExit();
 			LocatorReloadEnterDisable("Baster_town", "reload1_back", false);
 			LocatorReloadEnterDisable("Baster_town", "reload2_back", false);
-			LocatorReloadEnterDisable("Baster_town", "gate_back", false);//открыть выходы из города
+			LocatorReloadEnterDisable("Baster_town", "gate_back", false);
 			pchar.questTemp.FMQG = "headhunter_panama";
 			ReOpenQuestHeader("FMQ_Guadeloupe");
 			AddQuestRecord("FMQ_Guadeloupe", "7");
@@ -201,12 +201,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			DialogExit();
 			pchar.quest.FMQG_UsurerTimeOut.over = "yes";
 			pchar.questTemp.FMQG = "cave";
-			bQuestDisableMapEnter = true;//закрыть карту
+			bQuestDisableMapEnter = true;
 			pchar.GenQuest.MapClosedNoBattle = true;
 			pchar.quest.FMQG_cave.win_condition.l1 = "location";
 			pchar.quest.FMQG_cave.win_condition.l1.location = "Guadeloupe_Cave";
 			pchar.quest.FMQG_cave.function = "FMQG_InCave";
-			// заполним сундук
+			
 			pchar.GenQuestBox.Guadeloupe_Cave = true;
 			pchar.GenQuestBox.Guadeloupe_Cave.box3.items.purse1 = 5;
 			pchar.GenQuestBox.Guadeloupe_Cave.box3.items.purse2 = 2;
@@ -239,6 +239,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1.go = "FMQG_21";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

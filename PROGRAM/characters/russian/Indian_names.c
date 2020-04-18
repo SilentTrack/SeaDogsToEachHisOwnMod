@@ -1,6 +1,6 @@
 void InitIndianNames()
 {
-	// мужские имена
+	
 	Names.Indian.l0 = "Apurimaq";
 	Names.Indian.l1 = "Intiwaman";
 	Names.Indian.l2 = "Aripaj";
@@ -101,7 +101,7 @@ void InitIndianNames()
 	Names.Indian.l97 = "Yanamayu";
 	Names.Indian.l98 = "Yawarwaqaq";
 	Names.Indian.l99 = "Kateki";
-	// женские имена
+	
 	Names.Indian.l100 = "Aliqora";
 	Names.Indian.l101 = "Awankay";
 	Names.Indian.l102 = "Auka";

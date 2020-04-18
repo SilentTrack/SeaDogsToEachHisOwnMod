@@ -85,7 +85,7 @@ void Net_CreateClient()
 		NCClients[i].index = i;
 		NCClients[i].ID = i;
 		NCClients[i].Use = false;
-		NCClients[i].Server = false;			// netclient clients
+		NCClients[i].Server = false;			
 		
 		NCClients[i].BuyReady = false;
 		NCClients[i].StartReady = false;
@@ -129,7 +129,7 @@ void Net_CreateClient()
 	SetEventHandler("NetClient_OnNetMessage", "NetClient_OnNetMessage", 0);
 	SetEventHandler("NetClient_Ping", "NetClient_Ping", 0);
 
-	// init NCServer object with fake values
+	
 	NCServer.NumClients = 0;
 	NCServer.MaxClients = NET_MAXCLIENTS;
 	NCServer.NumTeams = 4;
@@ -140,7 +140,7 @@ void Net_CreateClient()
 
 	iLangNetClient = LanguageOpenFile("NetSection.txt");
 
-	// load client profiles
+	
 	DeleteAttribute(&NCProfiles, "");
 	Net_LoadFile(false, &NCProfiles, "Profiles.nsv");
 
@@ -155,7 +155,7 @@ void Net_CreateClient()
 		NetClient.SailImage = NCProfiles.LastProfile.SailImage;
 	}
 
-	// load client inet servers list
+	
 	DeleteAttribute(&NCInetServers, "");
 	Net_LoadFile(false, &NCInetServers, "InetServers.nsv");
 }
@@ -185,14 +185,14 @@ void NetClient_TryConnect(string sServerIP, int wPort)
 	NMAddByte(iSMsg, NC_CONNECT);
 	NMAdd24(iSMsg, NET_TEST_DWORD);
 	NMAddByte(iSMsg, NET_SCRIPT_VERSION);
-	NMAddString(iSMsg, NetClient.NickName, 24);			// nick name
-	NMAddString(iSMsg, NetClient.Password, 12);			// nick password
-	NMAddString(iSMsg, NetClient.ServerPassword, 12);	// nick password
-	NMAddString(iSMsg, NetClient.ShipName, 24);			// ship name
-	NMAddString(iSMsg, NetClient.FaceImage, 12);		// client face
-	NMAddString(iSMsg, NetClient.FlagImage, 12);		// client flag
-	NMAddString(iSMsg, NetClient.SailImage, 12);		// client sail emblem
-	NMAddDword(iSMsg, sti(NetClient.SailColor));		// client sail color
+	NMAddString(iSMsg, NetClient.NickName, 24);			
+	NMAddString(iSMsg, NetClient.Password, 12);			
+	NMAddString(iSMsg, NetClient.ServerPassword, 12);	
+	NMAddString(iSMsg, NetClient.ShipName, 24);			
+	NMAddString(iSMsg, NetClient.FaceImage, 12);		
+	NMAddString(iSMsg, NetClient.FlagImage, 12);		
+	NMAddString(iSMsg, NetClient.SailImage, 12);		
+	NMAddDword(iSMsg, sti(NetClient.SailColor));		
 	NetClient_SendMessage(iSMsg, false);
 	NMDelete(iSMsg);
 }

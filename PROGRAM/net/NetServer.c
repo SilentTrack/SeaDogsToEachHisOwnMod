@@ -24,8 +24,8 @@
 #include "Net\Server\Games\Fort.c"
 #include "Net\Server\Games\Naval.c"
 
-#define NET_TOTALCLIENTS			255		// total massive
-#define NET_MAXCLIENTS				16		// absolute maximum is 254
+#define NET_TOTALCLIENTS			255		
+#define NET_MAXCLIENTS				16		
 #define NET_FORTCLIENT				253
 
 #define MAX_TOPPLAYERS				100
@@ -33,10 +33,10 @@
 #define MASTERSERVER_UPDATETIME		60000
 
 int		NSSortedPlayers[MAX_TOPPLAYERS];
-object	NSClients[NET_TOTALCLIENTS];	// current game clients
-object	NSBanList;						// server ban list
+object	NSClients[NET_TOTALCLIENTS];	
+object	NSBanList;						
 
-object NSPlayers;						// All players in server for last month
+object NSPlayers;						
 
 int iServerTime;
 int iPingTime;
@@ -61,11 +61,11 @@ void Net_DeleteServer()
 
 	NetServer_EndGame(false);
 
-	// save global server massives
+	
 	Net_SaveFile(true, &NSBanList, "BanList.nsv");
 	Net_SaveFile(true, &NSPlayers, "Players.nsv");
 
-	// clear all server massives
+	
 	DeleteAttribute(&NSBanList, "");
 	DeleteAttribute(&NSClients, "");
 	DeleteAttribute(&NSPlayers, "");
@@ -111,7 +111,7 @@ void Net_CreateServer(ref rSrvParams)
 		NSClients[i].Use = false;
 		NSClients[i].BuyReady = false;
 		NSClients[i].StartReady = false;
-		NSClients[i].Server = true;			// netserver clients
+		NSClients[i].Server = true;			
 		NSClients[i].Team = 0;
 		NSClients[i].LastPacketIndex = 0;
 
@@ -129,7 +129,7 @@ void Net_CreateServer(ref rSrvParams)
 	NetServer.ServerName = rSrvParams.ServerName;
 	NetServer.ServerPort = sti(rSrvParams.ServerPort);
 	NetServer.ServerPassword = rSrvParams.ServerPassword;
-	//NetServer.AdminPassword = "yupi";
+	
 	NetServer.Dedicated = sti(rSrvParams.Dedicated);
 	NetServer.MaxClients = sti(rSrvParams.MaxPlayers);
 	NetServer.LanServer = sti(rSrvParams.LanServer);
@@ -169,10 +169,10 @@ void Net_CreateServer(ref rSrvParams)
 	NetServer.wWinnerClientID = DST_INVALID;
 	NetServer.iWinnerTeam = -1;
 
-	// sort NSPlayers
+	
 	NetServer_SortPlayers();
 
-	// send to master server message
+	
 	if (sti(NetServer.InetServer))
 	{
 		int iSMsg = NMCreate();
@@ -249,7 +249,7 @@ void NetServer_SortPlayers()
 	
 	int iRealDays = iRealYear * (iRealMonth * 31 + iRealDay);
 
-	// kill players who offline > 30 days, fake counting ofcourse, but who care?
+	
 	for (i=0; i<iNumPlayers; i++)
 	{
 		aref arPlayer = GetAttributeN(arPlayers, i);
@@ -273,11 +273,11 @@ void NetServer_SortPlayers()
 		NSSortedPlayers[i] = i; 
 	}
 
-	// sort players using rank and (second condition) Ship Sunks
+	
 	Net_Sort2i(arPlayers, &NSSortedPlayers, 1, 100, "Rank", "ShipsSunk");
 }
 
-// update global player statistics
+
 void NetServer_UpdateGlobalPlayerStatistics(ref rPlayer)
 {
 	aref arPlayers; makearef(arPlayers, NSPlayers.Players);
@@ -286,7 +286,7 @@ void NetServer_UpdateGlobalPlayerStatistics(ref rPlayer)
 	string sNickName = rPlayer.NickName;
 	string sNickPassword = rPlayer.NickPassword;
 	
-	// add new player if not exist
+	
 	if (!CheckAttribute(arPlayers, sNickName)) 
 	{ 
 		arPlayers.(sNickName) = ""; 

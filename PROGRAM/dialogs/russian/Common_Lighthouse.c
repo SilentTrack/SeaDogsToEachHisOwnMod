@@ -1,5 +1,5 @@
-#include "DIALOGS\russian\Rumours\Common_rumours.c" //Jason
-// Jason общий диалог смотрителей маяков
+#include "DIALOGS\russian\Rumours\Common_rumours.c" 
+
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -11,20 +11,20 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 
-    // вызов диалога по городам -->
+    
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Lighthouse\" + NPChar.City + "_Lighthouse.c";
     if (LoadSegment(NPChar.FileDialog2))
 	{
         ProcessCommonDialog(NPChar, Link, NextDiag);
 		UnloadSegment(NPChar.FileDialog2);
 	}
-    // вызов диалога по городам <--
+    
 	ProcessCommonDialogRumors(NPChar, Link, NextDiag);
 	
     int iTest, iTemp;
 	string sTemp;
 	bool ok;
-    iTest = FindColony(NPChar.City); // город
+    iTest = FindColony(NPChar.City); 
     ref rColony;
 	if (iTest != -1)
 	{
@@ -83,13 +83,13 @@ void ProcessDialogEvent()
 					link.l3 = ""+npchar.name+", I want to order an amulet from you.";
 					link.l3.go = "Trade_artefact_1";
 				}
-				// калеуче
+				
 				if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "amulet" && !CheckAttribute(npchar, "quest.Caleuche"))
 				{
 					link.l5 = "Listen, "+npchar.name+", I know that you engage in delivery of amulets under an order. So, you certainly understand them well. Look, please, on this little thing - that you can say about her?";
 					link.l5.go = "Caleuche";
 				}
-//				if (npchar.id == pchar.questTemp.Caleuche.Amuletmaster && CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "mayak")
+
 				if (CheckAttribute(pchar, "questTemp.Caleuche") && npchar.id == pchar.questTemp.Caleuche.Amuletmaster && pchar.questTemp.Caleuche == "mayak")
 				{
 					link.l5 = "Friend, I again to you concerning those strange amulets";
@@ -108,12 +108,12 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Trade_lighthouse":
-			//иногда продает корабельные товары // Addon-2016 Jason
+			
 			npchar.quest.goods = GOOD_COFFEE + drand(sti(GOOD_PAPRIKA - GOOD_COFFEE));
 			npchar.quest.goodsqty = 50+drand(100);
 			if (sti(npchar.quest.goods) == GOOD_EBONY || sti(npchar.quest.goods) == GOOD_MAHOGANY) npchar.quest.goodsqty = 25+drand(50);
-			npchar.quest.goodsprice = makeint(sti(Goods[sti(npchar.quest.goods)].Cost)/4);//цена единицы товара
-			npchar.quest.goodscost = sti(npchar.quest.goodsprice)*sti(npchar.quest.goodsqty);//стоимость товара
+			npchar.quest.goodsprice = makeint(sti(Goods[sti(npchar.quest.goods)].Cost)/4);
+			npchar.quest.goodscost = sti(npchar.quest.goodsprice)*sti(npchar.quest.goodsqty);
 			ok = (!CheckAttribute(npchar, "goods_date")) || (GetNpcQuestPastDayParam(npchar, "goods_date") >= 10)
 			if (drand(2) == 1 && makeint(GetCharacterFreeSpace(pchar, sti(npchar.quest.goods))) > sti(npchar.quest.goodsqty) && sti(pchar.money) >= sti(npchar.quest.goodscost) && ok)
 			{
@@ -154,9 +154,9 @@ void ProcessDialogEvent()
 			link.l1 = "Alright, then. I'll send the sailors right away. Now show me what you've gathered for sale.";
 			link.l1.go = "Trade_lighthouse_double";
 		break;
-//------------------------------------------------заказ артефактов------------------------------------------------
+
 		case "Trade_artefact":
-			if (CheckAttribute(npchar, "artefact")) // Addon-2016 Jason за дублоны
+			if (CheckAttribute(npchar, "artefact")) 
 			{
 				dialog.text = "Well, not all of them, but several trinkets are coming in more often that others, so I guess I'd be able to help you. But I warn you: all amulets you would order in this way will cost you 100 doubloons. You should understand...";
 				link.l1 = "Price is no problem. What amulets can you fetch in this matter?";
@@ -203,7 +203,7 @@ void ProcessDialogEvent()
 			link.l12.go = "exit";
 		break;
 		
-		//группа indian
+		
 		case "indian_1":
 			dialog.text = "A voodoo doll? You're fond of firearms? Good...";
 			link.l1 = "When should I come back to pick up my order?";
@@ -281,7 +281,7 @@ void ProcessDialogEvent()
 			npchar.quest.art = "indian_11";
 		break;
 		
-		//группа amulet
+		
 		case "amulet_1":
 			dialog.text = "Ngombo shield? If you didn't manage to dodge a bullet, this amulet can save your live. Good...";
 			link.l1 = "When should I come back to pick up my order?";
@@ -359,7 +359,7 @@ void ProcessDialogEvent()
 			npchar.quest.art = "amulet_11";
 		break;
 		
-		//группа obereg
+		
 		case "obereg_1":
 			dialog.text = "Teredo? Every shipwright dreams of that one. Good...";
 			link.l1 = "When should I come back to pick up my order?";
@@ -446,13 +446,13 @@ void ProcessDialogEvent()
 			sTemp = "Amulet_"+npchar.location;
 			AddQuestRecord(sTemp, "1");
 			ReOpenQuestHeader(sTemp);
-			AddQuestUserData(sTemp, "sAml", XI_ConvertString(npchar.quest.art)); // dlc
+			AddQuestUserData(sTemp, "sAml", XI_ConvertString(npchar.quest.art)); 
 		break;
 		
 		case "Trade_artefact_3":
 			if (CheckAttribute(npchar, "art_date") && GetNpcQuestPastDayParam(npchar, "art_date") >= sti(npchar.quest.artday))
 			{
-			dialog.text = "Yeah, I have it. Have you prepared 100 doubloons, captain?"; // Addon-2016 Jason
+			dialog.text = "Yeah, I have it. Have you prepared 100 doubloons, captain?"; 
 				if(GetCharacterItem(pchar, "gold_dublon") >= 100)
 				{
 					link.l1 = "Sure! Here you go, as agreed.";
@@ -473,7 +473,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Trade_artefact_4":
-			RemoveItems(pchar, "gold_dublon", 100); // Addon-2016 Jason
+			RemoveItems(pchar, "gold_dublon", 100); 
 			Log_Info("You have given 100 doubloons");
 			dialog.text = "Everything seems fine. Here is your amulet. Good luck with it!";
 			link.l1 = "Thank you, "+npchar.name+"!";
@@ -491,7 +491,7 @@ void ProcessDialogEvent()
 			CloseQuestHeader(sTemp);
 		break;
 		
-		// --> калеуче
+		
 		case "caleuche":
 			PlaySound("interface\important_item.wav");
 			dialog.text = "Show that there for you.";
@@ -503,7 +503,7 @@ void ProcessDialogEvent()
 		case "caleuche_1":
 			if (npchar.id == pchar.questTemp.Caleuche.Amuletmaster)
 			{
-				dialog.text = "Well-well… You are already the third man who shows me such thing. Pal, this amulet was brought here from the wild selva of Southern Main. There are Indians, not far from Panama, who wear trinkets like this one. The redskins say that this is a legacy of their 'great ancestors'\nI have no idea who were their ancestors and what kind legacy did they left. But I can give you an advice where to ask. Interested?";
+				dialog.text = "Well-wellпїЅ You are already the third man who shows me such thing. Pal, this amulet was brought here from the wild selva of Southern Main. There are Indians, not far from Panama, who wear trinkets like this one. The redskins say that this is a legacy of their 'great ancestors'\nI have no idea who were their ancestors and what kind legacy did they left. But I can give you an advice where to ask. Interested?";
 				link.l1 = "Certainly!";
 				link.l1.go = "caleuche_2";
 			}
@@ -617,7 +617,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		case "Man_FackYou"://реакция на попытку залезть в сундук
+		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("You're "+ GetSexPhrase("thief, my dear! Sentinel, keep it "," thief! Guards keep her") +"!!!", "Wow! I gazed a little, and you're right in the chest with his head! Hold the thief!", "Guards! Rob! Stop thief!");
 			link.l1 = "behold, the devil!";
 			link.l1.go = "fight";

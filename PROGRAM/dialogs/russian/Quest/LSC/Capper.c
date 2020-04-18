@@ -1,4 +1,4 @@
-// Чад Каппер - боцман Акулы и тюремщик
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -19,7 +19,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		// вариант R
+		
 		case "Chimiset":
 			dialog.text = "Well-well... So you are the mysterious thief? Hm... You don't look like a miserable pilferer.";
 			link.l1 = "Listen, mister, you are mistaken. I am a newcomer here, so how could I know that the cargo hold where your people caught me, was the secure area?";
@@ -77,7 +77,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Chimiset_9";
 			LAi_SetPlayerType(pchar);
-			bDisableCharacterMenu = false;//разлочим Ф2
+			bDisableCharacterMenu = false;
 		break;
 		
 		case "Chimiset_9":
@@ -104,7 +104,7 @@ void ProcessDialogEvent()
 			DoQuestCheckDelay("LSC_ChadGuardAttack_Fail", 0.1);
 		break;
 		
-		// вариант N
+		
 		case "prisoner":
 			dialog.text = "Ha! Just look at this. What are you doing here in my prison?";
 			link.l1 = "Your name is Chad Kapper, right? My name is "+GetFullName(pchar)+" and I am here on behalf of Shark Dodson. He gave me the keys.";
@@ -145,9 +145,9 @@ void ProcessDialogEvent()
 		case "prisoner_6":
 			DialogExit();
 			sld = characterFromId("Chimiset");
-			sld.quest.capper_talk = "true"; // разговор с Каппером состоялся
-			if (!CheckAttribute(npchar, "quest.chimiset_talk")) chrDisableReloadToLocation = true;//закрыть локацию
-			else chrDisableReloadToLocation = false;//открыть локацию
+			sld.quest.capper_talk = "true"; 
+			if (!CheckAttribute(npchar, "quest.chimiset_talk")) chrDisableReloadToLocation = true;
+			else chrDisableReloadToLocation = false;
 			NextDiag.CurrentNode = "prisoner_7";
 		break;
 		
@@ -158,7 +158,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "prisoner_7";
 		break;
 		
-		// вариант M
+		
 		case "Aeva_attack":
 			dialog.text = "...he must have already started to drink from the barrel, I am sure. This is his favorite whiskey, damn Irish. It will be over soon, I've put so much arsenic in it that the horse herd will die in a second... Ah? Damn it, what are you doing here? Get lost!";
 			link.l1 = "I'd been looking for you for a long time... poisoner. That is odd, but I don't see the second bastard - the Cyclops. Wanted to take Shark's position, right?";

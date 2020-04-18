@@ -20,7 +20,7 @@ void WhrCreateAstronomyEnvironment()
 	if (!isEntity(&Astronomy))
 	{
 		CreateEntity(&Astronomy, "Astronomy");
-		//LayerAddObject("sea_reflection", &Astronomy, -1);
+		
 	}
 
 	Astronomy.TimeScale = 1.0;
@@ -55,12 +55,7 @@ void WhrCreateAstronomyEnvironment()
 	}
 
 	FillAstronomyFadeValue();
-	/*Astronomy.Planets.Enable = Whr_GetLong(aPlanets, "Enable");
-	if (sti(Astronomy.Planets.Enable))
-	{
-		Astronomy.Planets.Scale = 1.0;
-		Astronomy.Planets.Speed = 10.0;
-	}*/
+	 
 
 	Astronomy.Planets.Planet.Mercury.Distance = 0.38710;	
 	Astronomy.Planets.Planet.Mercury.Speed = 48.8;			
@@ -117,12 +112,12 @@ void WhrCreateAstronomyEnvironment()
 	Astronomy.Planets.Planet.Neptune.Mag.Min = 7.7;
 	Astronomy.Planets.Planet.Neptune.Mag.Max = 7.6;
 
-	//Astronomy.Planets.Planet.Pluto.Distance = 39.23107;	
-	//Astronomy.Planets.Planet.Pluto.Speed = 4.73;			
-	//Astronomy.Planets.Planet.Pluto.Inclination = 17.2;	
-	//Astronomy.Planets.Planet.Pluto.Diameter = 2324.0;
-	//Astronomy.Planets.Planet.Pluto.Mag.Min = 14.3;
-	//Astronomy.Planets.Planet.Pluto.Mag.Max = 14.3;
+	
+	
+	
+	
+	
+	
 
 	Astronomy.isDone = true;
 }
@@ -183,11 +178,5 @@ void FillAstronomyFadeValue()
 
 void MoveAstronomyToLayers(string sExecuteLayer, string sRealizeLayer)
 {
-/*	LayerDelObject("execute", &Astronomy);
-	LayerDelObject("realize", &Astronomy);
-	LayerDelObject(SEA_EXECUTE, &Astronomy);
-	LayerDelObject(SEA_REALIZE, &Astronomy);
-
-	LayerAddObject(sExecuteLayer, &Astronomy, -1);
-	LayerAddObject(sRealizeLayer, &Astronomy, 2);*/
+ 
 }

@@ -33,7 +33,7 @@ void NetServer_OnShipSailChangeState()
 	NMAddByte(iSMsg, NC_SHIP);
 	NMAddByte(iSMsg, NSC_SHIP_SAIL_STATE);
 	NMAddClientID(iSMsg, wOurClientID);
-	NMAddDword(iSMsg, iSailIndex);	// OPTIMIZATION
+	NMAddDword(iSMsg, iSailIndex);	
 	NMAddDword(iSMsg, iSailState);
 	NetServer_SendMessage(DST_ALL, iSMsg, false);
 	NMDelete(iSMsg);
@@ -47,19 +47,7 @@ void NetServer_OnShipSailDamage()
 	ref rBallClient = NetServer_GetCLient(wBallClientID);
 	rBallClient.Stat.Hits = sti(rBallClient.Stat.Hits) + 1;
 
-	/*int wOurClientID = GetEventData();
-	int wBallClientID = GetEventData();
-	int iSailIndex = GetEventData();
-	int iSailState = GetEventData();
-
-	int iSMsg = NMCreate();
-	NMAddByte(iSMsg, NC_SHIP);
-	NMAddByte(iSMsg, NSC_SHIP_SAIL_STATE);
-	NMAddClientID(iSMsg, wOurClientID);
-	NMAddDword(iSMsg, iSailIndex);	// OPTIMIZATION
-	NMAddDword(iSMsg, iSailState);
-	NetServer_SendMessage(DST_ALL, iSMsg, false);
-	NMDelete(iSMsg);*/
+	 
 }
 
 bool NetServer_OnShipSailRepair( int wOurClientID )
@@ -141,7 +129,7 @@ float Net_OneSailDmgRepair(ref chref, aref arSailNode, aref arSail, float fDmgRe
 	}
 
 	fSailDmg -= fDmgRepair;
-	float sailDmgMax = 100.0 * stf(arSail.sp);//GetCharacterShipSP(chref);
+	float sailDmgMax = 100.0 * stf(arSail.sp);
 	int iAfterHole = GetNeedHoleFromDmg( fSailDmg, sailDmgMax, sti(arSail.mhc) );
 	if( sti(arSail.hc) > iAfterHole )
 	{
@@ -151,3 +139,4 @@ float Net_OneSailDmgRepair(ref chref, aref arSailNode, aref arSail, float fDmgRe
 	arSail.dmg = fSailDmg;
 	return fDmgRepair;
 }
+

@@ -40,16 +40,7 @@ void LocationInit()
 	locDisableUpdateTime = false;
 	locTmpTime = 0.0;
 }
-/*
-void LocationTestProcess()
-{
-	SetReloadProgressBackImage("Loading\initialization.tga.tx");
-	ReloadProgressStart();
-	LocationInit();
-	Locations_TestAll();
-	ReloadProgressEnd();
-}
-*/
+ 
 
 int FindLoadedLocation()
 {
@@ -122,7 +113,7 @@ void LocationWaitNihgtEndFadeIn()
 	}	
 }
 
-//navy -->
+
 void LocationMakeClone(string _locId)
 {
 	ref rOrg, rClone;
@@ -139,36 +130,36 @@ void LocationMakeClone(string _locId)
 	rClone.id = "Clone_location";
 	rClone.type = "clone";
 	rClone.index = iClone;
-//а так не работает... :) проверка только на аттрибут ;)	
-//	rClone.habitues = false;
+
+
 	DeleteAttribute(rClone, "habitues");
 
 	pchar.questTemp.LocationClone = true;
 	pchar.questTemp.LocationClone.id = rOrg.id;
 }
-//navy <--
 
-// Warship -->
-// Подключить к локации еще одну модельку
-// Ввел доп. проверки в иф, чтобы можно было этим методом "прилеплять" к локации модели еще при инициализации
+
+
+
+
 bool Location_AddNewModel(String _LocID, String _GroupName, String _LocatorName, String _Model, String _Type, String _Tech, int _Level, bool _Now)
 {
 	int iLoc =  FindLocation(_LocID);
 	if(iLoc == -1) return false;
 	ref rLoc = &locations[iLoc];
-	rLoc.models.(_Type).(_Model) = _Model; // Название модели
+	rLoc.models.(_Type).(_Model) = _Model; 
 	if(_GroupName != "" && _LocatorName != "")
 	{
-		rLoc.models.(_Type).(_Model).locator.group = _GroupName; // Название группы локаторов, куда грузим модель
-		rLoc.models.(_Type).(_Model).locator.name = _LocatorName; // Название локатора, где будет модель
+		rLoc.models.(_Type).(_Model).locator.group = _GroupName; 
+		rLoc.models.(_Type).(_Model).locator.name = _LocatorName; 
 	}
-	if(_Tech != "") rLoc.models.(_Type).(_Model).tech = _Tech; // Техника
-	if(_Level > 0) rLoc.models.(_Type).(_Model).level = _Level; // Порядок загрузки
-	if(_Now) LocLoadModel(rLoc, "models." + _Type + "." +_Model, ""); // Грузим модель динамически!
+	if(_Tech != "") rLoc.models.(_Type).(_Model).tech = _Tech; 
+	if(_Level > 0) rLoc.models.(_Type).(_Model).level = _Level; 
+	if(_Now) LocLoadModel(rLoc, "models." + _Type + "." +_Model, ""); 
 	return true;
 }
 
-// Удалить модель из локации (удалится токо позле перегруза локации)
+
 bool Location_DeleteModel(String _LocID, String sType, String _Model)
 {
 	int iLoc =  FindLocation(_LocID);
@@ -178,7 +169,7 @@ bool Location_DeleteModel(String _LocID, String sType, String _Model)
 	return true;
 }
 
-// Находится ли перс в заданном локаторе?
+
 bool IsCharacterInLocator(ref rChar, string LocGroup, string LocName)
 {
 	float fx, fy, fz;
@@ -206,4 +197,4 @@ bool Location_AddReload(string _LocID, int iNum, string _name, string _go, strin
 	rLoc.locators_radius.reload.(_name) = _radius;
 	return true;
 }
-// <-- Warship
+

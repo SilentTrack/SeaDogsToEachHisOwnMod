@@ -1,4 +1,4 @@
-// Даниэль Хоук - жена Натаниэля Хоука
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld, rItm, rItem;
@@ -16,13 +16,13 @@ void ProcessDialogEvent()
 	if (findsubstr(sAttr, "SetGunBullets1_" , 0) != -1)
  	{
         i = findsubstr(sAttr, "_" , 0);
-	 	NPChar.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); // индекс в конце
+	 	NPChar.SetGunBullets = strcut(sAttr, i + 1, strlen(sAttr) - 1); 
  	    Dialog.CurrentNode = "SetGunBullets2";
  	}
 	
 	switch(Dialog.CurrentNode)
 	{
-		case "First time": //первая встреча - знакомство
+		case "First time": 
 			PlaySound("VOICE\Russian\saga\Denny Hawk-02.wav");
 			dialog.text = "Wait, handsome! I think that we can have a talk.";
 			link.l1 = "Do I know you? Anyway, I have always got few extra hours for a lady.";
@@ -75,12 +75,12 @@ void ProcessDialogEvent()
 		
 		case "meeting_7":
 			DialogExit();
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			npchar.quest.OfficerPrice = sti(pchar.rank)*700;
-			npchar.OfficerWantToGo.DontGo = true; //не пытаться уйти
-			npchar.CompanionDisable = true; //нельзя в компаньоны - чтобы не утонула
+			npchar.OfficerWantToGo.DontGo = true; 
+			npchar.CompanionDisable = true; 
 			LAi_SetImmortal(npchar, false);
-			npchar.HalfImmortal = true; //чтобы не убили в сухопутном бою
+			npchar.HalfImmortal = true; 
 			npchar.loyality = MAX_LOYALITY;
 			AddPassenger(pchar, npchar, false);
 			SetCharacterRemovable(npchar, true);
@@ -91,21 +91,21 @@ void ProcessDialogEvent()
 			LAi_group_MoveCharacter(npchar, LAI_GROUP_PLAYER);
 			AddQuestRecord("BaronReturn", "2");
 			Saga_CreateSnakeEye();
-			//выбираем амулеты
+			
 			pchar.questTemp.Saga.BaronReturn.Indian = "indian_"+(rand(10)+1);
 			pchar.questTemp.Saga.BaronReturn.Amulet = "amulet_"+(rand(10)+1);
 			pchar.questTemp.Saga.BaronReturn.Obereg = "obereg_"+(rand(10)+1);
-			// на локацию с истуканом
+			
 			npchar.quest.talk = "dolly";
 			pchar.quest.Saga_Dolly.win_condition.l1 = "location";
 			pchar.quest.Saga_Dolly.win_condition.l1.location = "Pearl_jungle_03";
 			pchar.quest.Saga_Dolly.function = "Saga_DannyTalk";
-			AddCharacterExpToSkill(pchar, "Fortune", 50);//везение
+			AddCharacterExpToSkill(pchar, "Fortune", 50);
 			AddCharacterExpToSkill(pchar, "Leadership", 50);
 			npchar.greeting = "danny_1";
 		break;
 		
-		// у истукана в джунглях
+		
 		case "Dolly":
 			dialog.text = ""+pchar.name+"! Come on! I will show you that stone idol which the Indian mage has been talking about. Just a usual stone pillar. Let's go!";
 			link.l1 = "...";
@@ -131,14 +131,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Dolly_4":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			DialogExit();
 			LAi_SetOfficerType(npchar);
 			LAi_group_MoveCharacter(npchar, LAI_GROUP_PLAYER);
 			npchar.dialog.currentnode = "Danielle_officer";
 		break;
 		
-		// у мискито
+		
 		case "SnakeEye":
 			dialog.text = "So, what say you, "+pchar.name+"? What did that redskin ventriloquist tell you? Did you understand anything from his philosophizing?";
 			link.l1 = "Were you eavesdropping again, Dannie?";
@@ -211,7 +211,7 @@ void ProcessDialogEvent()
 			link.l1.go = "Dolly_4";
 		break;
 		
-		// перед походом к истукану
+		
 		case "teleport":
 			dialog.text = "So what? Did you get potions?";
 			link.l1 = "Yes. I got potions and instructions. The one thing is left - to go to the idol at midnight and touch it.";
@@ -261,7 +261,7 @@ void ProcessDialogEvent()
 			pchar.quest.Saga_Dolly1.function = "Saga_DannyTalk";
 		break;
 		
-		// перед телепортацией
+		
 		case "shadowstar":
 			dialog.text = "Look, "+pchar.name+"! I swear by all saints, there is an odd light above the statue!";
 			link.l1 = "It seems that shaman wasn't lying. And, if the dark doesn't deceive me, the top of the statue doesn't look that stony anymore.";
@@ -286,7 +286,7 @@ void ProcessDialogEvent()
 			DoQuestReloadToLocation(pchar.location, pchar.location.group, pchar.location.locator, "");
 		break;
 		
-		// прибыл назад 
+		
 		case "arrive":
 			dialog.text = "A-a-ah?! FUCK! What is this monster, God damn it?! Screw you! I have seen worse creatures in my life including Van der Decken! Now I'll give you what you're asking for!";
 			link.l1 = "(faintly) Dannie, wait! Stop it! Now!";
@@ -382,14 +382,14 @@ void ProcessDialogEvent()
 			link.l1 = "Sure, Dannie. And I will tell you about my adventures. Let's go!";
 			link.l1.go = "Dolly_4";
 			AddQuestRecord("BaronReturn", "9");
-			LAi_LocationDisableOfficersGen("Pearl_jungle_03", false); // пускать офицеров в локу телепорта
-			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);//разрешить драться
-			setCharacterShipLocation(pchar, "Shore9"); // калеуче
-			setWDMPointXZ("Shore9"); // корабль в бухту Аматике
-			bNoEatNoRats  = false; // еду и крыс включить
+			LAi_LocationDisableOfficersGen("Pearl_jungle_03", false); 
+			LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
+			setCharacterShipLocation(pchar, "Shore9"); 
+			setWDMPointXZ("Shore9"); 
+			bNoEatNoRats  = false; 
 		break;
 		
-		// в LSC у причала
+		
 		case "nathaniel":
 			dialog.text = "Yes, I have never seen any place like that before. This is a whole island made of ships!";
 			link.l1 = "I have told you about it, Dannie...";
@@ -428,8 +428,8 @@ void ProcessDialogEvent()
 			pchar.quest.LSC_Danny_Natan.win_condition.l1.location = "FernandaDiffIndoor";
 			pchar.quest.LSC_Danny_Natan.function = "LSC_DannyAndNatan";
 			AddQuestRecord("LSC", "15");
-			// следующая нода
-			if (CheckCharacterItem(pchar, "keys_skel")) // идет Оле
+			
+			if (CheckCharacterItem(pchar, "keys_skel")) 
 			{
 				sld = characterFromId("Ole");
 				LAi_SetActorType(sld);
@@ -437,13 +437,13 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				if (GetCharacterIndex("Mary") != -1) // иначе Мэри
+				if (GetCharacterIndex("Mary") != -1) 
 				{
 					sld = characterFromId("Mary");
 					LAi_SetActorType(sld);
 					LAi_ActorDialog(sld, pchar, "", -1, 0);
 				}
-				else // иначе завершение
+				else 
 				{
 					chrDisableReloadToLocation = false;
 					LAi_LocationFightDisable(&Locations[FindLocation(pchar.location)], false);
@@ -462,7 +462,7 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			LAi_SetActorType(pchar);
 			SetMusic("music_romantic");
-			bDisableCharacterMenu = true;//лоченые интерфейсы
+			bDisableCharacterMenu = true;
 			locCameraRotateAroundHero(0.0, 2.0, 0.0, 0.005, 0.0, 2.0, 0.0, 1000);
 			DoQuestCheckDelay("LSC_DanielleRomantic", 15.0);
 		break;
@@ -486,7 +486,7 @@ void ProcessDialogEvent()
 			link.l1.go = "nathaniel_11";
 		break;
 		
-		case "nathaniel_11": // перекидываем pchar
+		case "nathaniel_11": 
 			DialogExit();
 			LAi_SetStayType(pchar);
 			DeleteAttribute(pchar, "GenQuest.MusicContinue");
@@ -530,8 +530,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "nathaniel_17":
-			chrDisableReloadToLocation = false;//открыть локацию
-			bDisableCharacterMenu = false;//лоченые интерфейсы
+			chrDisableReloadToLocation = false;
+			bDisableCharacterMenu = false;
 			EndQuestMovie();
 			DialogExit();
 			pchar.quest.LSC_NatanPassenger.win_condition.l1 = "ExitFromLocation";
@@ -542,7 +542,7 @@ void ProcessDialogEvent()
 			pchar.quest.Saga_NatanTreatment.function = "Saga_NatanPrepareTreatment";
 			pchar.questTemp.Saga.BaronReturn = "shamane";
 			AddQuestRecord("BaronReturn", "11");
-			// открываем вход к Мэри
+			
 			if (GetCharacterIndex("Mary") != -1)
 			{
 				for (i=0; i<=3; i++)
@@ -552,8 +552,8 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				bQuestDisableMapEnter = false; //открыть карту
-				DeleteAttribute(pchar, "GenQuest.CannotWait");//можно мотать время
+				bQuestDisableMapEnter = false; 
+				DeleteAttribute(pchar, "GenQuest.CannotWait");
 			}
 		break;
 		
@@ -631,7 +631,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			AddQuestRecord("BarbTemptation", "18");
 			pchar.questTemp.Saga.BarbTemptation = "islatesoro";
-			// ставим прерывание на Исла-Тесоро
+			
 			pchar.quest.Saga_AttackJackman.win_condition.l1 = "location";
 			pchar.quest.Saga_AttackJackman.win_condition.l1.location = "Bermudes";
 			pchar.quest.Saga_AttackJackman.function = "Saga_CheckJackmanBermudes";
@@ -697,13 +697,13 @@ void ProcessDialogEvent()
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "OpenTheDoors", -1);
 			LAi_SetHP(npchar, 280, 280); 
-			LAi_SetImmortal(npchar, false); // если сработало
-			pchar.GenQuest.CannotTakeShip = true; // нельзя захватить
-			DoQuestFunctionDelay("Saga_CheckJackmanCabinItems", 5.0); // первая проверка через 5 сек
+			LAi_SetImmortal(npchar, false); 
+			pchar.GenQuest.CannotTakeShip = true; 
+			DoQuestFunctionDelay("Saga_CheckJackmanCabinItems", 5.0); 
 			AddCharacterExpToSkill(pchar, "Leadership", 300);
 		break;
 		
-		// в Марун-Тауне
+		
 		case "marun_town":
 			dialog.text = ""+pchar.name+", I am very glad to see you! We are back at Maroon Town and Nathan is on his rightful place again. Actually, everyone in the village are happy about it. Now it all will go well as it used to! I am very grateful for your unselfish help!\nI want to give you a gift. Here, take it. This talisman can make the fight much easier for you. The formula will allow you to make more of those yourself.";
 			link.l1 = "Thanks, Dannie!";
@@ -738,7 +738,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "marun_town_3";
 		break;
 		
-	// ------------------------------------------- провалы Саги ------------------------------------------------
+	
 		case "failcenturion":
 			dialog.text = "At last me and Nathan can breath freely!  This  damn bastard Jackman is dead!.. I feel bad for 'Centurion'  but I have already taken its leave when that scum has stolen it from me. So I don't worry much.";
 			link.l1 = "Though I do. I am an idiot! All evidences has gone at the bottom with the ship. They could help us in voting for the new head of Brethren of the Coast. Now... it's all gone.";
@@ -746,7 +746,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "failcenturion_1":
-			dialog.text = "Don't get so upset! It happens. Next time you will get lucky… Whatever. I want to thank you for what you've done for me and Nathan. You saved my husband's life. I owe you a great deal\nI want you to know that Maroon Town will always be glad to see you. Check me and Nate there when you have time. We will find a way to repay you.";
+			dialog.text = "Don't get so upset! It happens. Next time you will get luckyпїЅ Whatever. I want to thank you for what you've done for me and Nathan. You saved my husband's life. I owe you a great deal\nI want you to know that Maroon Town will always be glad to see you. Check me and Nate there when you have time. We will find a way to repay you.";
 			link.l1 = "Fine, Dannie. I will visit you for sure. Are you leaving already?";
 			link.l1.go = "failcenturion_2";
 		break;
@@ -765,7 +765,7 @@ void ProcessDialogEvent()
 			npchar.greeting = "danny_2";
 		break;
 		
-		//--> ----------------------------------- офицерский блок ------------------------------------------
+		
 		case "Danielle_officer":
 			dialog.text = "What do you want, captain?";
 			if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation") && pchar.questTemp.Saga.BarbTemptation == "danielle")
@@ -842,7 +842,7 @@ void ProcessDialogEvent()
             Link.l1 = "Dismissed.";
             Link.l1.go = "Exit";
         break;
-		//<-- ----------------------------------- офицерский блок ----------------------------------------
+		
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

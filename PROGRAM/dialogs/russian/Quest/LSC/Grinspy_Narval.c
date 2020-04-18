@@ -1,4 +1,4 @@
-// Дональд Гринспи - лидер нарвалов
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -33,14 +33,14 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		
-		case "meeting": // первая встреча
+		case "meeting": 
 			dialog.text = "Now you know me. My name is Donald Greenspen and don't make me or my men angry. And don't try to visit the San Gabriel until you have got a password. Shop is free to visit, everyone need to trade. Any questions?";
 			link.l2 = "No, I got it. See you.";
 			link.l2.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
 		
-	// ----------------------------------после разгрома Чада и Мэри на Каролине---------------------------
+	
 		case "shark":
 			dialog.text = "What business do you have for me?";
 			link.l1 = "A very unpleasant one, Donald. There was an attempt on Steven's life last night. Fighters of your clan participated.";
@@ -134,7 +134,7 @@ void ProcessDialogEvent()
 		case "shark_15":
 			DialogExit();
 			sld = characterFromId("Dodson");
-			sld.dialog.currentnode = "narval"; // ноду Акуле
+			sld.dialog.currentnode = "narval"; 
 			AddQuestRecord("SharkHunt", "26");
 			NextDiag.CurrentNode = "narval_wait";
 		break;
@@ -172,7 +172,7 @@ void ProcessDialogEvent()
 			link.l1 = "Got it. See you!";
 			link.l1.go = "exit";
 			CloseQuestHeader("SharkHunt");
-			pchar.questTemp.LSC.nrv_friend = "true"; //флаг на проход по кораблям нарвалов
+			pchar.questTemp.LSC.nrv_friend = "true"; 
 			NextDiag.TempNode = "grinspy_wait";
 			AddSimpleRumourCityTip("They say that you are a friend of Donald, Greenspen, the leader of Narwhals. Well, Rivados hate you now...", "LostShipsCity", 5, 2, "LSC", "");
 			AddSimpleRumourCityTip("They say that you are Narwhal now. Or do you serve under admiral's command? I don't get it...", "LostShipsCity", 5, 2, "LSC", "");
@@ -180,7 +180,7 @@ void ProcessDialogEvent()
 			AddSimpleRumourCityTip("So Chad Kapper was a murderer of Alan Milrow! That is surprising!", "LostShipsCity", 5, 2, "LSC", "");
 		break;
 		
-		case "grinspy_wait": // стал другом
+		case "grinspy_wait": 
 			if (pchar.questTemp.LSC == "return" && !CheckAttribute(npchar, "quest.return_isl"))
 			{
 				dialog.text = "Ho! "+GetFullName(pchar)+"! You are... no, it is impossible! Are you alive?!";
@@ -298,7 +298,7 @@ void ProcessDialogEvent()
 		case "negotiations_15":
 			DialogExit();
 			sld = characterFromId("Dodson");
-			sld.dialog.currentnode = "peace"; // ноду Акуле
+			sld.dialog.currentnode = "peace"; 
 			sld = characterFromId("Dexter");
 			sld.dialog.currentnode = "First time"; 
 			LAi_SetStayTypeNoGroup(sld);
@@ -347,14 +347,14 @@ void ProcessDialogEvent()
 			link.l1 = "Fine. Good bye!";
 			link.l1.go = "exit";
 			CloseQuestHeader("SharkHunt");
-			pchar.questTemp.LSC.nrv_friend = "true"; //флаг на проход по кораблям нарвалов
+			pchar.questTemp.LSC.nrv_friend = "true"; 
 			NextDiag.TempNode = "grinspy_wait";
 			sld = characterFromId("Mary");
 			sld.quest.donald = "true";
 			LocatorReloadEnterDisable("CeresSmithy", "reload3", false);
-			LocatorReloadEnterDisable("CeresSmithy", "reload4", false); // открываем Церес изнутри
-			// здесь почищу весь хлам, который накопился
-			DeleteAttribute(pchar, "questTemp.LSC.Donald_enter"); // атрибут гардов
+			LocatorReloadEnterDisable("CeresSmithy", "reload4", false); 
+			
+			DeleteAttribute(pchar, "questTemp.LSC.Donald_enter"); 
 			DeleteAttribute(pchar, "questTemp.LSC.Florentina");
 			DeleteAttribute(pchar, "questTemp.LSC.Dodson_poison");
 			DeleteAttribute(pchar, "questTemp.LSC.Dodson_warning");
@@ -366,8 +366,8 @@ void ProcessDialogEvent()
 			AddSimpleRumourCityTip("So Chad Kapper was a murderer of Alan Milrow! That is surprising!", "LostShipsCity", 5, 2, "LSC", "");
 			AddSimpleRumourCityTip("Take care of Red Mary cause you are lucky to be with her - she is so reckless! She always gets in trouble...", "LostShipsCity", 20, 5, "LSC", "");
 		break;
-//----------------------------------------- специальные реакции -----------------------------------------------
-		//обнаружение ГГ в сундуках
+
+		
 		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("What are you doing there, ah? Thief!", "Just look at that! As soon as I was lost in contemplation, you decided to check my chest!", "Decided to check my chests? You won't get away with it!");
 			link.l1 = "Damn it!";
@@ -395,7 +395,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		//замечание по обнаженному оружию
+		
 		case "LSCNotBlade":
 			dialog.text = LinkRandPhrase("Listen, you'd better take your weapon away. It makes me nervous.", "You know, running with blade is not tolerated here. Take it away.", "Listen, don't play a kid running with a rapier around. Take it away it doesn't suit you...");
 			link.l1 = LinkRandPhrase("Fine.", "Whatever then.", "As you say...");
@@ -417,7 +417,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
 		break;
-// <-- специальные реакции
+
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

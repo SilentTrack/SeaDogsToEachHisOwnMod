@@ -1,4 +1,4 @@
-// Addon-2016 Jason, французские миниквесты (ФМК) Сент-Кристофер
+
 void ProcessDialogEvent()
 {
 	ref sld, NPChar;
@@ -506,3 +506,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

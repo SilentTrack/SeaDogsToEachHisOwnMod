@@ -8,22 +8,22 @@ string CreateMerchant(int ination)
 
     makearef(MerPrm, MerchantParam);
 
-    //for (int n = 0; n<=4; n++ )
-    //{
+    
+    
 
-        //Map_ReleaseQuestEncounter( NationShortName(sti(MerPrm.nation))+"_QuestMerchant");
-        //Group_DeleteGroup("Sea_"+NationShortName(sti(MerPrm.nation))+"_QuestMerchant");
-    //}
+        
+        
+    
     
     int iChar = NPC_GenerateCharacter(NationShortName(sti(MerPrm.nation))+"_QuestMerchant", "off_spa_2", "man", "man", 5, sti(MerPrm.nation), 6, true, "hunter"));
     makeref(chref, Characters[iChar]);
     SetMerchantShip(chref, sti(MerPrm.QuestGoodsIdx));
-	SetFantomParamHunter(chref); //крутые парни
+	SetFantomParamHunter(chref); 
 	string sGroup = "Sea_"+chref.id
 	Group_DeleteGroup(sGroup);
 	Group_FindOrCreateGroup(sGroup);
     Group_SetType(sGroup,"trade");
-    //Group_SetTaskAttackInMap(sGroup, PLAYER_GROUP);
+    
     
     ref rGroup = Group_GetGroupByID(sGroup);
     rGroup.Task = AITASK_MOVE;
@@ -34,7 +34,7 @@ string CreateMerchant(int ination)
 
     chref.mapEnc.type = "trade";
     chref.mapEnc.Name = "trader";
-    //chref.mapEnc.Task = AITASK_MOVE; // ?
+    
 
     Map_CreateTrader(MerPrm.sColony, MerPrm.sNextColony, chref.id, 5);
     MerPrm.CapIndex = iChar;
@@ -58,7 +58,7 @@ string CreateMerchant(int ination)
         iChar = NPC_GenerateCharacter(NationShortName(sti(MerPrm.nation))+"_QuestMerchantGuard_"+i, "off_spa_2", "man", "man", 5, sti(MerPrm.nation), 20, true, "hunter"));
         makeref(sld, Characters[iChar]);
         SetShipHunter(sld);
-        SetFantomParamHunter(sld); //крутые парни
+        SetFantomParamHunter(sld); 
         SetCaptanModelByEncType(sld, "war");
         sld.Ship.Mode = "war";
         Group_AddCharacter(sGroup, sld.id);
@@ -88,7 +88,7 @@ bool MerchantPrepare(int Mnation)
         MerPrm.nation = PIRATE;
     }
     
-     // goods
+     
     switch (rand(12))
     {
         case 0 :
@@ -252,7 +252,7 @@ int SetShipTypeMerchant(ref Cap)
     DeleteAttribute(Cap,"ship.blots");
 	DeleteAttribute(Cap,"ship.hulls");
 	
-    if (sti(Cap.nation == PIRATE)) //navy fix -- приведение типов.
+    if (sti(Cap.nation == PIRATE)) 
     {
         Fantom_SetCannons(Cap, "pirate");
         Fantom_SetBalls(Cap, "pirate");
@@ -273,13 +273,13 @@ void SetMerchantShip(ref Cap, int igoods)
 
     irank = SetShipTypeMerchant(Cap);
     SetRandomNameToCharacter(Cap);
-    SetCaptanModelByEncType(Cap, "trade");//
+    SetCaptanModelByEncType(Cap, "trade");
     Cap.Ship.Mode = "Trade";
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
     ref MerPrm;
     makeref(MerPrm, MerchantParam);
     int killM = Statistic_AddValue(GetMainCharacter(), "Rob"+NationShortName(sti(MerPrm.nation))+"MerchantOnMap", 0)
-    if (MOD_SKILL_ENEMY_RATE > 5) // 20/01/07 homo
+    if (MOD_SKILL_ENEMY_RATE > 5) 
     {
         killMax = makeint(3+(10 - MOD_SKILL_ENEMY_RATE)/2);
     }
@@ -289,33 +289,33 @@ void SetMerchantShip(ref Cap, int igoods)
     }
     if  (killM >= killMax && rand(1)== 0 )
     {
-        //Cap.AlwaysEnemy = true;
-        //на тест
+        
+        
         SetCaptanModelByEncType(Cap, "war");
-        //Cap.Ship.Mode = "war";
+        
         Cap.greeting = "soldier_arest";
-        Cap.DontRansackCaptain = true; //квестовые не сдаются
+        Cap.DontRansackCaptain = true; 
         Cap.dialog.filename = "Capitans_dialog.c";
 		Cap.dialog.currentnode = "MerchantTrap_Abordage";
 		Cap.DeckDialogNode = "First time";
         Statistic_AddValue(GetMainCharacter(), "Rob"+NationShortName(sti(MerPrm.nation))+"MerchantOnMap", -( killM + 1));
 
         hcrew = GetMaxCrewQuantity(Cap);
-        ChangeCrewExp(pchar, "Soldiers", 90);  // за счет солдат - засада для ГГ
+        ChangeCrewExp(pchar, "Soldiers", 90);  
         SetCrewQuantityOverMax(Cap, 2*hcrew);
         trap = true;
     }
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 
     if (!trap)
     {
         int iSpace = GetCharacterFreeSpace(Cap, igoods);
     
         Log_TestInfo("irank = "+irank);
-        float del = makefloat(7-irank+rand(1))/10; //eddy. товаров меньше
+        float del = makefloat(7-irank+rand(1))/10; 
         if (del > 1.0 ) del = 1;
         Log_TestInfo("goods load = "+iSpace+"/"+makeint(iSpace*del));
-        iSpace = makeint(iSpace*del); // чтоб не так жирно было
+        iSpace = makeint(iSpace*del); 
         Fantom_SetCharacterGoods(Cap, igoods, iSpace, 1);
     }
 }
@@ -325,23 +325,23 @@ string All_GetColony();
     int locnum = FindLocation(pchar.location);
     if (locnum != -1 )
     {
-		if(CheckAttribute(locations[locnum],"townsack")) // если в городе <-- ugeen fix
+		if(CheckAttribute(locations[locnum],"townsack")) 
 		{
 			return locations[locnum].townsack;
 		}	
-		else // а если в джунглях или на побережье?
+		else 
 		{
-			if(CheckAttribute(locations[locnum],"islandIdAreal")) // если на острове или Мэйне несколько городов 
+			if(CheckAttribute(locations[locnum],"islandIdAreal")) 
 			{
 				return GetCityNameByIsland(locations[locnum].islandIdAreal);
 			}	
-			else // остров с одним городом
+			else 
 			{	
 				return GetCityNameByIsland(locations[locnum].islandId); 
 			}	
 		}
     }
-    if (!IsEntity(worldMap)) // в море
+    if (!IsEntity(worldMap)) 
     {
         return Sea_FindNearColony();
     }
@@ -363,10 +363,10 @@ void CaptureMerchant(string temp)
     {
         qind = 6;
         Log_TestInfo("TRADER_TRAP!!!");
-        //string stext1 = "Прошел слух, что лих"+ GetSexPhrase("ой пират","ая морская разбойница") +" - "+GetFullName(pchar)+", угодил"+ GetSexPhrase("","а") +" в западню, в которую е"+ GetSexPhrase("го","е") +" заманили "+NationNameSK(sti(MerPrm.ination))+"ие власти. Они подослали к не"+ GetSexPhrase("му","й") +" ''торговое'' судно, в трюме которого спрятались вооруженные до зубов "+NationNameSK(sti(MerPrm.ination))+"ие  солдаты. Но "+pchar.name+" не растерял"+ GetSexPhrase("ся","ась") +", он"+ GetSexPhrase("","а") +" их попросту перебил"+ GetSexPhrase("","а") +" - всех до единого! Вот как"+ GetSexPhrase("ой","ая") +" удал"+ GetSexPhrase("ой пират наш","ая деваха наша") +" "+GetFullName(pchar)+".";
-        //string stext2 = "Люди говорят, что дерзк"+ GetSexPhrase("ий пират","ая морская разбойница") +" - "+GetFullName(pchar)+", повадил"+ GetSexPhrase("ся","ась") +" грабить "+NationNameSK(sti(MerPrm.ination))+"ие торговые корабли. И тогда наш Генерал-губернатор решил покончить с ним. Он снарядил  корабль, замаскированный под торговца с несколькими десятками хорошо обученных солдат, из Европы, и подослал к нему. Но "+ GetSexPhrase("кровожадный пират перебил","эта отчаянная деваха перебила") +" их всех и вновь улизнул"+ GetSexPhrase("","а") +" от правосудия!";
-        //AddSimpleRumour(stext1, sti(MerPrm.ination)+10, 30, 3);
-        //AddSimpleRumour(stext2, sti(MerPrm.ination), 30, 3);
+        
+        
+        
+        
 
     }
     else
@@ -388,15 +388,15 @@ void DieMerchant(int qind)
     }
 
     AddQuestRecord("MerchantOnMap", qind);
-    AddQuestUserData("MerchantOnMap", "sSex", GetSexPhrase("","а"));	
+    AddQuestUserData("MerchantOnMap", "sSex", GetSexPhrase("","пїЅ"));	
     AddQuestUserData("MerchantOnMap", "sShipName", MerPrm.ShipName);
     AddQuestUserData("MerchantOnMap", "sQuestGoodsIdx", MerPrm.QuestGoodsIdx);
     AddQuestUserData("MerchantOnMap", "snation", MerPrm.nation);
 
     CloseQuestHeader("MerchantOnMap");
     Map_ReleaseQuestEncounter(NationShortName(sti(MerPrm.ination))+"_QuestMerchant");
-    //fix homo
-    trap = false; //fix
+    
+    trap = false; 
     MerPrm.active = false;
 }
 
@@ -436,7 +436,7 @@ string GenerateMerchant()
             lngFileID = LanguageOpenFile("RumourTexts.txt");
             string tid = CurTpl.name+sdirect+"_t"+rand(sti(CurTpl.texts)-1);
             reztext = LanguageConvertString(lngFileID, tid);
-            MerPrm.ination = MerPrm.nation; // fix
+            MerPrm.ination = MerPrm.nation; 
             MerPrm.nation = NationNameGenitive(sti(MerPrm.nation));
             string GoodName = "seg_"+goods[sti(MerPrm.QuestGoodsIdx)].name;
             MerPrm.QuestGoodsIdx = GetConvertStr(GoodName, "ShipEatGood.txt");
@@ -452,15 +452,15 @@ string GenerateMerchant()
     		AddQuestUserData("MerchantOnMap", "sColony", MerPrm.sColony);
     		AddQuestUserData("MerchantOnMap", "sNextColony", MerPrm.sNextColony);
     		AddQuestUserData("MerchantOnMap", "sShipName", MerPrm.ShipName);
-		AddQuestUserData("MerchantOnMap", "sSex", GetSexPhrase("","а"));
+		AddQuestUserData("MerchantOnMap", "sSex", GetSexPhrase("","пїЅ"));
     		
             string sQuest = "ClearMerchant";
             SetTimerCondition(sQuest, 0, 0, 6, false);
             pchar.quest.(sQuest).win_condition = "ClearMerchant";
             pchar.quest.(sQuest).function= "ClearMerchant";
             MerPrm.active = true;
-            //AddQuestRecord();
-            //CloseQuestHeader();
+            
+            
             return tresult;
         }
         else

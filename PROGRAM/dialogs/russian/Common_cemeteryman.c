@@ -1,4 +1,4 @@
-// Jason общий диалог смотрителей кладбищ
+
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -10,14 +10,14 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 
-    // вызов диалога по городам -->
+    
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Cemetery\" + NPChar.City + "_cemetery.c";
     if (LoadSegment(NPChar.FileDialog2))
 	{
         ProcessCommonDialog(NPChar, Link, NextDiag);
 		UnloadSegment(NPChar.FileDialog2);
 	}
-    // вызов диалога по городам <--
+    
 	
     int iTemp;
 	string sTemp;
@@ -45,7 +45,7 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				dialog.text = "А-а, my old friend, captain "+GetFullName(pchar)+"! Call, call!";
+				dialog.text = "пїЅ-пїЅ, my old friend, captain "+GetFullName(pchar)+"! Call, call!";
 				link.l1 = "I welcome, friend! Very glad to see you. Do not at nights dancing skeletons and dead persons yet dream you with copper coins on eyes?";
 				link.l1.go = "talk";
 			}
@@ -119,7 +119,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 		
-		case "Man_FackYou"://реакция на попытку залезть в сундук
+		case "Man_FackYou":
 			dialog.text = LinkRandPhrase("And you, "+GetFullName(pchar)+" thief, the nicest!!!", "Blimey! I gazed hardly, and you at once on trunks! Hold a thief!!!", "Guard! Rob!!! Catch a thief!!!");
 			link.l1 = "Did not drive me!!!";
 			link.l1.go = "fight";

@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,19 +9,19 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
                       "Yes, it really is the third time...", "No, what questions?...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//Jason, Сага, Тени прошлого
+			
 			if (CheckAttribute(PChar, "questTemp.Saga.Shadows") && pchar.questTemp.Saga.Shadows == "sentjons")
 			{
 				link.l1 = "I've searching for a Raymond Baker, a former executioner. Do you know if he's alive and where I can find him?";
 				link.l1.go = "baker";
 			}
-			//Jason, суп из черепахи
+			
 			if (CheckAttribute(PChar, "questTemp.Terrapin") && pchar.questTemp.Terrapin == "baster" && !CheckAttribute(npchar, "quest.terrapin"))
 			{
 				link.l1 = "I'm looking for Mr. Jones. Can you help my in my search, pal?";
 				link.l1.go = "terrapin";
 			}
-			// Страж Истины
+			
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "merdok")
 			{
 				link.l1 = "Listen, has there been an alchemist that arrived here in this town, a physician? He's Italian, about thirty years old, his name is Gino Gvineili. Have you heard anything about that?";
@@ -29,7 +29,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		
-		//Сага, Тени прошлого
+		
 		case "baker":
 			dialog.text = "Our fatso has become more popular than Colonel Fox! He's alive, the poor guy. Only he's not in town right now. After Raymond found out that serious people like you are taking an interest in him, he hurried up and sold his hovel for peanuts and was gone with the wind.";
 			link.l1 = "Gone with the wind where?";
@@ -57,9 +57,9 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.quest.Saga_ShadowsMaggy.function = "Saga_SetBaldMaggy";
 		break;
 		
-		//суп из черепахи
+		
 		case "terrapin":
-			dialog.text = "Mr. Jones? You're taking it a little far, buddy. I don't really recall a Mr. Jones, but simple Joneses –solicitors, hunkies, and soldiers we have up to our necks. Tell me, who is it specifically that you need?";
+			dialog.text = "Mr. Jones? You're taking it a little far, buddy. I don't really recall a Mr. Jones, but simple Joneses пїЅsolicitors, hunkies, and soldiers we have up to our necks. Tell me, who is it specifically that you need?";
 			link.l1 = "He's got an adult sister Molly. They say she's amazingly beautiful.";
 			link.l1.go = "terrapin_1";
 		break;
@@ -72,7 +72,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "guardoftruth":
-			dialog.text = "No, I haven't heard. And we've only got one alchemist in the town, pharmacist John Murdock. He's got remarkable potions –they heal any ailments.";
+			dialog.text = "No, I haven't heard. And we've only got one alchemist in the town, pharmacist John Murdock. He's got remarkable potions пїЅthey heal any ailments.";
 			link.l1 = "Do you think he prepares these potions himself?";
 			link.l1.go = "guardoftruth_1";
 		break;
@@ -90,5 +90,5 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.questTemp.Guardoftruth = "merdok1";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }

@@ -21,7 +21,7 @@ void NetServer_OnSay(int wNetClientID, int iMsg)
 		case NSC_SAY_TEAM:
 			ref rClient = NetServer_GetClient(wNetClientID);
 			int iTeam = sti(rClient.Team);
-			// find team clients and send say message
+			
 			for (int i=0; i<NET_MAXCLIENTS; i++)
 			{
 				if (!sti(NSClients[i].Use) || sti(NSClients[i].Team) != iTeam) { continue; }

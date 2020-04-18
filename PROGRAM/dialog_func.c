@@ -1,11 +1,11 @@
 #include "scripts\utils.c"
 
-// boal -->
+
 #define CARDS_RULE  "The rules are simple.  Blackjack. 36 cards, from sixes to aces. Ace goes for 11 points, kings - 4, Lord (horse knight) - 3, Nobile (foot soldier) - 2, the rest has the same value as written. Your goal is to get 21 points\nClick a deck to take one more card. Each card is a stake. Click a portrait at top right in order to finish your turn. You need enough money for at least three stakes if you want to play. Press esc or a cross if you are done."
 #define DICE_RULE   "Craps. Five to each players. You can overthrow all five or any of them but only once. Each dice is a stake. Your goal is to get the maximum score.\nHere goes combinations: duo (2), two duos (2+2), triad (3), full (3+2), square (4), street (dices in a row) and poker (5). \nClick a cup to throw, click a dice to overthrow this particular dice, click a portrait in order to finish your turn (in case you don't need to overthrow or don't have enough money to do so)."
-#define MAX_TITLENEXTRATE   13 // счетчик для званий
+#define MAX_TITLENEXTRATE   13 
 #define MAX_TITLE           5
-// boal <--
+
 
 object Address_Form;
 
@@ -71,33 +71,10 @@ void Set_inDialog_Attributes()
 	Address_Form.Eng.man = "sir";
 	Address_Form.Hol.man = "mynheer";
 	Address_Form.Pir.man = "sir";
-	/*switch (The_Character_is.id)
-	{	
-		case "Blaze":
-			
-			Address_Form.Spa = GlobalStringConvert("Address_Form_Spa");
-			Address_Form.Fra = GlobalStringConvert("Address_Form_Fra");
-			Address_Form.Eng = GlobalStringConvert("Address_Form_Eng");
-			Address_Form.Por = GlobalStringConvert("Address_Form_Por");
-			Address_Form.Hol = GlobalStringConvert("Address_Form_Hol");
-			return;
-		break;
-
-		case "Beatriss":
-
-			Address_Form.Spa = "Senorita";
-			Address_Form.Fra = "Mademoiselle";
-			Address_Form.Eng = "Miss";
-			Address_Form.Por = "Senhorita";
-			Address_Form.Hol = "Juffrouw";
-			return;
-		break;
-	}
-	trace("ERROR: Player Character is not defined - can't select address form");
-	*/
+	 
 }
 
-// boal -->
+
 
 string RandSwear()
 {
@@ -136,7 +113,7 @@ string RandSwear()
 		break;	 
 		
 		case 8:
-			return "Alle hagel! ";	// стандартное пиратское "твою мать"
+			return "Alle hagel! ";	
 		break;
 		
 		case 9:
@@ -165,8 +142,8 @@ string RandSwear()
 	}
 }
 
-//navy --> вынес простые восклицания,
-//т.к. "О, Боже!!! Я вырежу тебе сердце" звучит мягко говоря странно :)
+
+
 string RandExclamation()
 {
 	switch(rand(2))
@@ -184,11 +161,11 @@ string RandExclamation()
 		break;
 	}
 }
-//navy <--
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                Выбор фраз для диалога
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-// boal 13.03.2004 -->
+
+
+
+
+
 string RandPhraseSimple(string Var1, string Var2);
 {
 	int RandP;
@@ -196,16 +173,16 @@ string RandPhraseSimple(string Var1, string Var2);
 	switch(RandP)
 	{
 		case 0:
-			return /*"First phrase selected" + */ Var1;
+			return   Var1;
 		break;
 
 		case 1:
-			return /*"Second phrase selected" + */Var2;
+			return  Var2;
 		break;
 	}
 	return "ERROR";
 }
-// выбор фразы из трех
+
 string LinkRandPhrase (string Var1, string Var2, string Var3)
 {
 	int RandP;
@@ -214,19 +191,19 @@ string LinkRandPhrase (string Var1, string Var2, string Var3)
 	{
 		case 0:
 
-			return /*"First phrase selected" + */ Var1;
+			return   Var1;
 
 		break;
 
 		case 1:
 
-			return /*"Second phrase selected" + */Var2;
+			return  Var2;
 
 		break;
 
 		case 2:
 
-			return /*"Third phrase selected" + */Var3;
+			return  Var3;
 
 		break;
 	}
@@ -297,7 +274,7 @@ string NationNameMan(int pNation)
 		break;
 	}
 }
-// boal 13.03.2004 <--
+
 string NationNamePeople(int pNation)
 {
     switch(pNation)
@@ -342,7 +319,7 @@ string NationNamePeopleAcc(int pNation)
 	}
 }
 
-string NationNameAblative(int iNation) //творительный падеж
+string NationNameAblative(int iNation) 
 {
     switch(iNation)
 	{
@@ -364,7 +341,7 @@ string NationNameAblative(int iNation) //творительный падеж
 	}
 }
 
-string NationNameNominative(int iNation) //именительный падеж
+string NationNameNominative(int iNation) 
 {
     switch(iNation)
 	{
@@ -386,7 +363,7 @@ string NationNameNominative(int iNation) //именительный падеж
 	}
 }
 
-string NationNameGenitive(int iNation) // родительный падеж
+string NationNameGenitive(int iNation) 
 {
     switch(iNation)
 	{
@@ -408,7 +385,7 @@ string NationNameGenitive(int iNation) // родительный падеж
 	}
 }
 
-///////Часто будет использоваться поэтому заношу сюда
+
 string NationEuropaTown(int iNation)
 {
     switch(iNation)
@@ -430,7 +407,7 @@ string NationEuropaTown(int iNation)
 		break;
 	}
 }
-string GetCityName(string city) // имена городов по аттрибуту char.city
+string GetCityName(string city) 
 {
     string ret;
     int nFile = LanguageOpenFile("LocLables.txt");
@@ -441,7 +418,7 @@ string GetCityName(string city) // имена городов по аттрибуту char.city
 	return  ret;
 }
 
-string GetPortByCityName(string city) // имена портов по городов по аттрибуту char.city
+string GetPortByCityName(string city) 
 {
     switch(city)
 	{
@@ -536,7 +513,7 @@ string GetPortByCityName(string city) // имена портов по городов по аттрибуту ch
 	return "";
 }
 
-string GetMayakByCityName(string city) // получить id маяка по названию города
+string GetMayakByCityName(string city) 
 {
     switch(city)
 	{
@@ -577,7 +554,7 @@ string GetMayakByCityName(string city) // получить id маяка по названию города
 	return "";
 }
 
-string GetCityNameByMayak(string mayak) // получить id города по маяку
+string GetCityNameByMayak(string mayak) 
 {
     switch(mayak)
 	{
@@ -630,7 +607,7 @@ string GetIslandByArealName(string areal)
 	return sAreal;
 }
 
-string GetIslandByCityName(string city) // имена острова по городу по аттрибуту char.city
+string GetIslandByCityName(string city) 
 {
     switch(city)
 	{
@@ -725,7 +702,7 @@ string GetIslandByCityName(string city) // имена острова по городу по аттрибуту 
 	return "";
 }
 
-string GetArealByCityName(string city) // ареал по городу по аттрибуту char.city
+string GetArealByCityName(string city) 
 {
     switch(city)
 	{
@@ -844,7 +821,7 @@ string GiveArealByLocation(ref location)
 	return sAreal;
 }
 
-// выбор куда идти  по острову даем город (главный город острова с портом)
+
 string GetCityNameByIsland(string CurIslandId)
 {
 	string TargetLocation;
@@ -965,7 +942,7 @@ string TimeGreeting()
     return "Hallo!";
 }
 
-// выбор фразы от репутации
+
 string PCharRepPhrase (string bad, string good)
 {
 	if(makeint(pchar.reputation.nobility) < 41)
@@ -977,7 +954,7 @@ string PCharRepPhrase (string bad, string good)
 		return good;
 	}
 }
-// boal для НПС
+
 string NPCharRepPhrase(ref _pchar, string bad, string good)
 {
 	if(makeint(_pchar.reputation) < 41)
@@ -990,10 +967,10 @@ string NPCharRepPhrase(ref _pchar, string bad, string good)
 	}
 }
 
-////////// поиск нужного перса для диалога
+
 string GetCharIDByParam(string attrPresent1, string attr2, string val2)
 {
-    ref rCharacter; //ищем
+    ref rCharacter; 
 	int n = GetCharIDXByParam(attrPresent1, attr2, val2);
 
     if (n > 0)
@@ -1005,7 +982,7 @@ string GetCharIDByParam(string attrPresent1, string attr2, string val2)
 }
 int GetCharIDXByParam(string attrPresent1, string attr2, string val2)
 {
-    ref rCharacter; //ищем
+    ref rCharacter; 
 	int n;
 
 	for(n=0; n<MAX_CHARACTERS; n++)
@@ -1021,7 +998,7 @@ int GetCharIDXByParam(string attrPresent1, string attr2, string val2)
 }
 int GetCharIDXForTownAttack(string attrPresent1)
 {
-    ref   rColony; //ищем
+    ref   rColony; 
 	int   n;
 	bool  ok;
 
@@ -1045,18 +1022,18 @@ int GetCharIDXForTownAttack(string attrPresent1)
     }
     return  -1;
 }
-// обращение НПС к ГГ, зависит от нации НПС
+
 string GetAddress_Form(ref NPChar)
 {
     string attr = NationShortName(sti(NPChar.nation));
     return address_form.(attr);
 }
-// обращение ГГ к НПС, зависит от нации НПС и его пола
+
 string GetAddress_FormToNPC(ref NPChar)
 {
     string attr  = NationShortName(sti(NPChar.nation));
     string attr2 = NPChar.sex;
-    // проверка на скелетов
+    
     if (attr2 != "woman")
     {
         attr2 = "man";
@@ -1077,7 +1054,7 @@ string GetAddress_FormTitle(int nation, int num)
 
 bool isCityHasFort(string _city)
 {
-    int iTest = FindColony(_city); // город
+    int iTest = FindColony(_city); 
     ref rColony;
 	if (iTest != -1)
 	{
@@ -1089,7 +1066,7 @@ bool isCityHasFort(string _city)
 
 string GetCityFrom_Sea(string _city)
 {
-    int iTest = FindColony(_city); // город
+    int iTest = FindColony(_city); 
     ref rColony;
 	if (iTest != -1)
 	{
@@ -1098,9 +1075,9 @@ string GetCityFrom_Sea(string _city)
 	}
 	return "";
 }
-// boal <--
 
-// eddy. кто по профессии (только для типовых статиков, не фантомов). sPrefix - приставка для падежей: Gen, Dat..
+
+
 string GetWorkTypeOfMan(ref NPChar, string sPrefix)
 {
 	string sCity, sTemp;
@@ -1114,8 +1091,8 @@ string GetWorkTypeOfMan(ref NPChar, string sPrefix)
 	return XI_ConvertString("Who" + sTemp + sPrefix);
 }
 
-// Warship 07.08.09 -->
-// Количество имен в группе
+
+
 int GetNamesCount(String _nameType)
 {
 	aref typeNames;
@@ -1124,7 +1101,7 @@ int GetNamesCount(String _nameType)
 	return GetAttributesNum(typeNames);
 }
 
-// Случайное имя из определенной группы в определенном падеже
+
 String GetRandName(String _nameType, String _case)
 {
 	String nameId;
@@ -1134,13 +1111,13 @@ String GetRandName(String _nameType, String _case)
 	return GetName(_nameType, nameId, _case);
 }
 
-// Вернет имя из группы с указаным Id и в указанном падеже
+
 String GetName(String _nameType, String _nameId, String _nameCase)
 {
 	return Names.Pirates.(_nameType).(_nameId).(_nameCase);
 }
 
-// Вернет указанное имя в другом падеже, поиск по именам группы _nameType
+
 String ChangeNameCaseEx(String _nameType, String _name, String _fromCase, String _toCase)
 {
 	aref typeNames;
@@ -1161,7 +1138,7 @@ String ChangeNameCaseEx(String _nameType, String _name, String _fromCase, String
 	return "";
 }
 
-// Тоже самое, что и выше, только меньше параметров - ищет само
+
 String ChangeNameCase(String _nameType, String _name, String _toCase)
 {
 	aref typeNames;
@@ -1182,8 +1159,8 @@ String ChangeNameCase(String _nameType, String _name, String _toCase)
 	
 	return "";
 }
-// <-- Warship 07.08.09
-string GetIndianName(int Sex) //Jason имена индейцев
+
+string GetIndianName(int Sex) 
 {
 	string nameid;
 	

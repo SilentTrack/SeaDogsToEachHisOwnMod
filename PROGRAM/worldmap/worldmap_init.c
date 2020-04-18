@@ -1,16 +1,16 @@
 
 void wdmInitWorldMap()
 {
-	// Open language file for lables
+	
 	int idLngFile = LanguageOpenFile("LocLables.txt");
 
-	//Init world map object
-	//Debug info
+	
+	
 	worldMap.debug = "false";
 	worldMap.evwin = "false";
 	worldMap.noenc = "false";
 	
-	//Start date
+	
 	worldMap.date.hour = 11;
 	worldMap.date.min = 14;
 	worldMap.date.sec = 42;	
@@ -20,29 +20,29 @@ void wdmInitWorldMap()
 	worldMap.date.hourPerSec = 1.5;
 
 
-	//==========================================================================
-	//Labels
-	//=========================================================================
-	//Icons description
-	// 0----------->
-	// 1-----------> frames
-	// 2----------->
-	// ...
-	// icons
-	//
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	worldMap.icon.width = 32;
 	worldMap.icon.height = 32;
 	worldMap.icon.num = 8;
 	worldMap.icon.frames = 8;
 	worldMap.icon.fps = 45;
 	worldMap.icon.texture = "icons.tga";
-	//Label types description
-	worldMap.labeltype.Island.icon = -1;				//Default icon
-	worldMap.labeltype.Island.font = "ISLANDS_MAPS";			//Default font
-	worldMap.labeltype.Island.pivotX = -0.5;			//Default label shifting left-upper point by X (1 -> full width)
-	worldMap.labeltype.Island.pivotY = -0.5;			//Default label shifting left-upper point by Y (1 -> full height)
-	worldMap.labeltype.Island.heightView = 1000.0;		//Default camera height when hide this labels
-	worldMap.labeltype.Island.weight = 100;				//Weight is use when shake intersection labels
+	
+	worldMap.labeltype.Island.icon = -1;				
+	worldMap.labeltype.Island.font = "ISLANDS_MAPS";			
+	worldMap.labeltype.Island.pivotX = -0.5;			
+	worldMap.labeltype.Island.pivotY = -0.5;			
+	worldMap.labeltype.Island.heightView = 1000.0;		
+	worldMap.labeltype.Island.weight = 100;				
 	worldMap.labeltype.Town.icon = -1;
 	worldMap.labeltype.Town.font = "LABELS_MAPS";	
 	worldMap.labeltype.Town.pivotX = -0.5;
@@ -57,30 +57,30 @@ void wdmInitWorldMap()
 	worldMap.labeltype.Shore.weight = 1;
 
 
-	//=========================================================================
-	//Island BugFix
-	//=========================================================================
-	worldMap.labels.BugFix.type = "Island";       // без этой хрени первые метки идут левым шрифтом или не видны
+	
+	
+	
+	worldMap.labels.BugFix.type = "Island";       
 	worldMap.labels.BugFix.id = "Island BugFix";
-	worldMap.labels.BugFix.locator = "Barbados";//"BugFix";
-	worldMap.labels.BugFix.text = "";//CheckingTranslate(idLngFile,"Antigua");
+	worldMap.labels.BugFix.locator = "Barbados";
+	worldMap.labels.BugFix.text = "";
 
-	//worldMap.labels.Antigua.icon = 0;
-	//-----------------------------------------------------------
+	
+	
 	worldMap.labels.BugFixTown.type = "Town";
 	worldMap.labels.BugFixTown.id = "BugFix_town";
-	worldMap.labels.BugFixTown.locator = "Barbados";//"BugFix_town";
-	worldMap.labels.BugFixTown.text = "";//CheckingTranslate(idLngFile,"Antigua Port");
-	//worldMap.labels.BugFixTown.icon = SPAIN;
+	worldMap.labels.BugFixTown.locator = "Barbados";
+	worldMap.labels.BugFixTown.text = "";
+	
 	
 	worldMap.labels.BugFixShore.type = "Shore";
 	worldMap.labels.BugFixShore.id = "BugFix_Shore";
 	worldMap.labels.BugFixShore.locator = "Barbados";
 	worldMap.labels.BugFixShore.text = "";
 
-	//=========================================================================
-	//Island Antigua
-	//=========================================================================
+	
+	
+	
 	worldMap.labels.Barbados.type = "Island";
 	worldMap.labels.Barbados.id = "Barbados";
 	worldMap.labels.Barbados.locator = "Barbados";
@@ -151,12 +151,7 @@ void wdmInitWorldMap()
 	worldMap.labels.Hispaniola1.locator = "Hispaniola1";
 	worldMap.labels.Hispaniola1.text = CheckingTranslate(idLngFile,"Hispaniola1");
 
-	/* Для Испаньолы хватит и одной метки на остров
-	worldMap.labels.Hispaniola2.type = "Island";
-	worldMap.labels.Hispaniola2.id = "Hispaniola2";
-	worldMap.labels.Hispaniola2.locator = "Hispaniola2";
-	worldMap.labels.Hispaniola2.text = CheckingTranslate(idLngFile,"Hispaniola2");
-	*/
+	 
 	
 	worldMap.labels.Jamaica.type = "Island";
 	worldMap.labels.Jamaica.id = "Jamaica";
@@ -228,50 +223,9 @@ void wdmInitWorldMap()
 	worldMap.labels.Tenotchitlan.locator = "Tenotchitlan";
 	worldMap.labels.Tenotchitlan.text = CheckingTranslate(idLngFile,"Tenotchitlan");
 
-	// ugeen --> временно для тестов
-/*	
-	worldMap.labels.RockIsland.type = "Island";
-	worldMap.labels.RockIsland.id = "RockIsland";
-	worldMap.labels.RockIsland.locator = "RockIsland";
-	worldMap.labels.RockIsland.text = CheckingTranslate(idLngFile,"RockIsland");
-
-	worldMap.labels.Ksochitam.type = "Island";
-	worldMap.labels.Ksochitam.id = "Ksochitam";
-	worldMap.labels.Ksochitam.locator = "Ksochitam";
-	worldMap.labels.Ksochitam.text = CheckingTranslate(idLngFile,"Ksochitam");
-
-	worldMap.labels.KhaelRoa.type = "Island";
-	worldMap.labels.KhaelRoa.id = "KhaelRoa";
-	worldMap.labels.KhaelRoa.locator = "KhaelRoa";
-	worldMap.labels.KhaelRoa.text = CheckingTranslate(idLngFile,"KhaelRoa");
-.
-	worldMap.labels.Providence.type = "Island";
-	worldMap.labels.Providence.id = "Providence";
-	worldMap.labels.Providence.locator = "Providence";
-	worldMap.labels.Providence.text = CheckingTranslate(idLngFile,"Providence");
-
-	worldMap.labels.SantaQuiteria.type = "Island";
-	worldMap.labels.SantaQuiteria.id = "SantaQuiteria";
-	worldMap.labels.SantaQuiteria.locator = "SantaQuiteria";
-	worldMap.labels.SantaQuiteria.text = CheckingTranslate(idLngFile,"SantaQuiteria");
 	
-	worldMap.labels.IslaDeVieques.type = "Island";
-	worldMap.labels.IslaDeVieques.id = "IslaDeVieques";
-	worldMap.labels.IslaDeVieques.locator = "IslaDeVieques";
-	worldMap.labels.IslaDeVieques.text = CheckingTranslate(idLngFile,"IslaDeVieques");
+ 		
 	
-	worldMap.labels.IslaMona.type = "Island";
-	worldMap.labels.IslaMona.id = "IslaMona";
-	worldMap.labels.IslaMona.locator = "IslaMona";
-	worldMap.labels.IslaMona.text = CheckingTranslate(idLngFile,"IslaMona");
-	
-	worldMap.labels.IslaDeCoche.type = "Island";
-	worldMap.labels.IslaDeCoche.id = "IslaDeCoche";
-	worldMap.labels.IslaDeCoche.locator = "IslaDeCoche";
-	worldMap.labels.IslaDeCoche.text = CheckingTranslate(idLngFile,"IslaDeCoche");
-	// ugeen <-- временно для тестов
-*/		
-	//-------  TOWN ----------------------------------------------------
 	
 	worldMap.labels.Bridgetown_town.type = "Town";
 	worldMap.labels.Bridgetown_town.id = "Bridgetown_town";
@@ -445,9 +399,9 @@ void wdmInitWorldMap()
 	worldMap.labels.Tenotchitlan_town.id = "Tenotchitlan_town";
 	worldMap.labels.Tenotchitlan_town.locator = "Tenotchitlan_town";
 	worldMap.labels.Tenotchitlan_town.text = CheckingTranslate(idLngFile,"Tenotchitlan_town");
-	//worldMap.labels.Tenotchitlan_town.icon = ENGLAND;
 	
-	////  SHORE /////////////////////////////
+	
+	
 	worldMap.labels.Shore1.type = "Shore";
 	worldMap.labels.Shore1.id = "Shore1";
 	worldMap.labels.Shore1.locator = "Shore1";
@@ -762,47 +716,7 @@ void wdmInitWorldMap()
 	worldMap.labels.Shore63.id = "Shore63";
 	worldMap.labels.Shore63.locator = "Shore63";
 	worldMap.labels.Shore63.text = CheckingTranslate(idLngFile,"Shore63");
-/*							
-	worldMap.labels.Shore64.type = "Shore";
-	worldMap.labels.Shore64.id = "Shore64";
-	worldMap.labels.Shore64.locator = "Shore64";
-	worldMap.labels.Shore64.text = CheckingTranslate(idLngFile,"Shore64");						
-							
-	worldMap.labels.Shore65.type = "Shore";
-	worldMap.labels.Shore65.id = "Shore65";
-	worldMap.labels.Shore65.locator = "Shore65";
-	worldMap.labels.Shore65.text = CheckingTranslate(idLngFile,"Shore65");							
-
-	worldMap.labels.Shore67.type = "Shore";
-	worldMap.labels.Shore67.id = "Shore67";
-	worldMap.labels.Shore67.locator = "Shore67";
-	worldMap.labels.Shore67.text = CheckingTranslate(idLngFile,"Shore67");							
-	
-	worldMap.labels.Shore68.type = "Shore";
-	worldMap.labels.Shore68.id = "Shore68";
-	worldMap.labels.Shore68.locator = "Shore68";
-	worldMap.labels.Shore68.text = CheckingTranslate(idLngFile,"Shore68");							
-	
-	worldMap.labels.Shore72.type = "Shore";
-	worldMap.labels.Shore72.id = "Shore72";
-	worldMap.labels.Shore72.locator = "Shore72";
-	worldMap.labels.Shore72.text = CheckingTranslate(idLngFile,"Shore72");							
-	
-	worldMap.labels.Shore73.type = "Shore";
-	worldMap.labels.Shore73.id = "Shore73";
-	worldMap.labels.Shore73.locator = "Shore73";
-	worldMap.labels.Shore73.text = CheckingTranslate(idLngFile,"Shore73");		
-	
-	worldMap.labels.Shore75.type = "Shore";
-	worldMap.labels.Shore75.id = "Shore75";
-	worldMap.labels.Shore75.locator = "Shore75";
-	worldMap.labels.Shore75.text = CheckingTranslate(idLngFile,"Shore75");		
-	
-	worldMap.labels.Shore78.type = "Shore";
-	worldMap.labels.Shore78.id = "Shore78";
-	worldMap.labels.Shore78.locator = "Shore78";
-	worldMap.labels.Shore78.text = CheckingTranslate(idLngFile,"Shore78");		
-*/							
+ 							
 	worldMap.labels.Shore_ship1.type = "Shore";
 	worldMap.labels.Shore_ship1.id = "Shore_ship1";
 	worldMap.labels.Shore_ship1.locator = "Shoreship1";
@@ -873,40 +787,40 @@ void wdmInitWorldMap()
 	worldMap.labels.Mayak11.locator = "Mayak11";
 	worldMap.labels.Mayak11.text = CheckingTranslate(idLngFile,"Mayak11");
 
-	//=========================================================================
-	//Внутреняя информация - !!!Осторожно, ни каких проверок!!!
-	//=========================================================================
-	//Прараметры влияния ветра на скорость коробля (относительная скорость)
+	
+	
+	
+	
 	worldMap.shipSpeedOppositeWind = 0.3;
 	worldMap.shipSpeedOverWind = 0.8;
 
-	//Player ship
+	
 	worldMap.playerShipActionRadius = 20.0;
 	worldMap.playerShipX = -1000.0;
 	worldMap.playerShipZ = -300.0;
 	worldMap.playerShipAy = 0.0;
-	//Camera
-	worldMap.wdmCameraAY = 10.0;					//Угол поворота камеры
-	worldMap.wdmCameraY = 130.0;				//Высота камеры
-	worldMap.wdmCameraRotLock = 1;				//Заблокировать вращение камеры
-	//Enemy ship	
-	worldMap.enemyshipViewDistMin = 60.0;		//Растояние на котором корабль начинает исчезать
-	worldMap.enemyshipViewDistMax = 120.0;		//Растояние на котором корабль исчезает полностью
-    worldMap.enemyshipDistKill = 3000;          // homo 07/10/06
-    //worldMap.enemyshipDistKill = 150.0;			//Расстояние на котором убиваем корабль
-	worldMap.enemyshipBrnDistMin = 80.0;		//Минимальное растояние на котором рожается корабль
-	worldMap.enemyshipBrnDistMax = 130.0;		//Максимальное растояние на котором рожается корабль
-	//storm
-	worldMap.stormViewDistMin = 90.0;			//Растояние на котором шторм начинает исчезать
-	worldMap.stormViewDistMax = 180.0;			//Растояние на котором шторм исчезает полностью
-	worldMap.stormDistKill = 190.0;				//Расстояние на котором убиваем шторм
-	worldMap.stormBrnDistMin = 100.0;			//Минимальное растояние на котором рожается шторм
-	worldMap.stormBrnDistMax = 140.0;			//Максимальное растояние на котором рожается шторм
-	worldMap.stormZone = 90.0;// 120					//Общий радиус действия шторма
+	
+	worldMap.wdmCameraAY = 10.0;					
+	worldMap.wdmCameraY = 130.0;				
+	worldMap.wdmCameraRotLock = 1;				
+	
+	worldMap.enemyshipViewDistMin = 60.0;		
+	worldMap.enemyshipViewDistMax = 120.0;		
+    worldMap.enemyshipDistKill = 3000;          
+    
+	worldMap.enemyshipBrnDistMin = 80.0;		
+	worldMap.enemyshipBrnDistMax = 130.0;		
+	
+	worldMap.stormViewDistMin = 90.0;			
+	worldMap.stormViewDistMax = 180.0;			
+	worldMap.stormDistKill = 190.0;				
+	worldMap.stormBrnDistMin = 100.0;			
+	worldMap.stormBrnDistMax = 140.0;			
+	worldMap.stormZone = 90.0;
 
-	//=========================================================================
-	//Storm interface
-	//=========================================================================
+	
+	
+	
 	worldMap.storm.num = 0;
 	worldMap.storm.cur = 0;
 	worldMap.storm.x = 0;
@@ -914,9 +828,9 @@ void wdmInitWorldMap()
 	worldMap.storm.time = 0;
 	worldMap.playerInStorm = 0;
 	worldMap.stormWhithTornado = 0;
-	//=========================================================================
-	//Encounter interface
-	//=========================================================================
+	
+	
+	
 	worldMap.encounter.num = 0;
 	worldMap.encounter.cur = 0;
 	worldMap.encounter.x = 0;
@@ -926,42 +840,42 @@ void wdmInitWorldMap()
 	worldMap.encounter.type = -1;
 	worldMap.encounter.attack = -1;
 	worldMap.encounter.id = "";
-	//=========================================================================
-	//System, NOT FOR EDIT!!!
-	//=========================================================================
+	
+	
+	
 	DeleteAttribute(&worldMap, "encounters");
 	DeleteAttribute(&worldMap, "addQuestEncounters");
 	worldMap.encounters = "";
 	worldMap.addQuestEncounters = "";
-	//=========================================================================
-	//Current island
-	//=========================================================================
+	
+	
+	
 	worldMap.island = WDM_NONE_ISLAND;
 	worldMap.island.x = 0;
 	worldMap.island.z = 0;
 	worldMap.zeroX = 0;
 	worldMap.zeroZ = 0;
-	//=========================================================================
-	//Wind (read only)
-	//=========================================================================
-	worldMap.WindX = 0.0;//Нормализованное направление
-	worldMap.WindZ = 1.0;//ветра
-	worldMap.WindF = 0.5;//Нормализованая сила ветра 0..1
-	//=========================================================================
-	//Old internal GUI params
-	//=========================================================================
+	
+	
+	
+	worldMap.WindX = 0.0;
+	worldMap.WindZ = 1.0;
+	worldMap.WindF = 0.5;
+	
+	
+	
 	worldMap.eventWindow.font.header = "normal";
 	worldMap.eventWindow.font.text = "normal";
 	worldMap.eventWindow.font.button = "normal";
 	worldMap.date.font = "normal";
 
-	//=========================================================================
-	//Initialization labels
-	//=========================================================================
+	
+	
+	
 	InitializationLabels();
 	DeleteAttribute(&worldMap, "labeltype");
-	//==========================================================================
-	// координаты для начала игры, городов на бумажной карте и телепортов
+	
+	
 	worldMap.islands.Barbados.position.x = 946.0062;
 	worldMap.islands.Barbados.position.z = -486.9014;
 	worldMap.islands.Barbados.Bridgetown_town.position.x = 903.6217;
@@ -993,9 +907,9 @@ void wdmInitWorldMap()
 	worldMap.islands.Curacao.Shore24.position.x = 455.427;
 	worldMap.islands.Curacao.Shore24.position.z = -740.655;
 	
-	//worldMap.islands.SentMartin.position.x = 926.4412;
-	//worldMap.islands.SentMartin.position.z = 478.7172;
-	//у меня по другому. Что правильно??
+	
+	
+	
 	worldMap.islands.SentMartin.position.x = 921.559;
 	worldMap.islands.SentMartin.position.z = 523.596;
 	worldMap.islands.SentMartin.Marigo_town.position.x = 900.0994;
@@ -1005,8 +919,8 @@ void wdmInitWorldMap()
 	worldMap.islands.SentMartin.Shore41.position.x = 898.877;
 	worldMap.islands.SentMartin.Shore41.position.z = 522.703;
 	
-	//worldMap.islands.Guadeloupe.position.x = 469.6634;
-	//worldMap.islands.Guadeloupe.position.z = -4.893611;
+	
+	
 	worldMap.islands.Guadeloupe.position.x = 537.114;
 	worldMap.islands.Guadeloupe.position.z = -25.3853;
 	worldMap.islands.Guadeloupe.BasTer_town.position.x = 462.2107;
@@ -1022,8 +936,8 @@ void wdmInitWorldMap()
 	worldMap.islands.Guadeloupe.Shore31.position.x = 589.889;
 	worldMap.islands.Guadeloupe.Shore31.position.z = -65.0601;
 	
-	//worldMap.islands.Martinique.position.x = 511.8408;
-	//worldMap.islands.Martinique.position.z = -355.744;
+	
+	
 	worldMap.islands.Martinique.position.x = 538.524;
 	worldMap.islands.Martinique.position.z = -385.567;
 	worldMap.islands.Martinique.FortFrance_town.position.x = 513.51;
@@ -1035,8 +949,8 @@ void wdmInitWorldMap()
 	worldMap.islands.Martinique.Shore39.position.x = 557.181;
 	worldMap.islands.Martinique.Shore39.position.z = -422.987;
 	
-	//worldMap.islands.Bermudes.position.x = 947.57;
-	//worldMap.islands.Bermudes.position.z = 947.607;
+	
+	
 	worldMap.islands.Bermudes.position.x = 920.738;
 	worldMap.islands.Bermudes.position.z = 920.767;
 	worldMap.islands.Bermudes.Pirates_town.position.x = 931.059;
@@ -1071,7 +985,7 @@ void wdmInitWorldMap()
 	worldMap.islands.Beliz.Shore9.position.z = -33.7293;
 	worldMap.islands.Beliz.Shore10.position.x = -818.198;
 	worldMap.islands.Beliz.Shore10.position.z = -177.208;
-	//  не сделано -->
+	
 	worldMap.islands.Jamaica.position.x = -298.0;
 	worldMap.islands.Jamaica.position.z = -128.0;
 	worldMap.islands.Jamaica.PortRoyal_town.position.x = -250.157;
@@ -1293,46 +1207,46 @@ void wdmInitWorldMap()
 	worldMap.islands.IslaDeCoche.position.z = -640.0;
 	worldMap.islands.IslaDeCoche.Shore78.position.x = 640.0;
 	worldMap.islands.IslaDeCoche.Shore78.position.z = -640.0;
-// Не знаю- нужно или пока нет.
-	//worldMap.islands.Tenotchitlan.position.x = -966.062;
-	//worldMap.islands.Tenotchitlan.position.z = -294.232;
-	//worldMap.islands.Tenotchitlan.Tenotchitlan_town.position.x = -969.194;
-	//worldMap.islands.Tenotchitlan.Tenotchitlan_town.position.z = -305.237;
-	//worldMap.islands.Tenotchitlan.Shore61.position.x = -955.553;
-	//worldMap.islands.Tenotchitlan.Shore61.position.z = -281.197;
-	//worldMap.islands.Tenotchitlan.Shore62.position.x = -935.811;
-	//worldMap.islands.Tenotchitlan.Shore62.position.z = -316.162;
 
-	////////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
 	wdmReset();
 	LanguageCloseFile(idLngFile);
 }
 
 void InitializationLabels()
 {
-	//Переберём все острова
+	
 	aref arrayLabels;
 	makearef(arrayLabels, worldMap.labels);
 	int num = GetAttributesNum(arrayLabels);
 	for(int i = 0; i < num; i++)
 	{
-		//Ссылка на описание метки
+		
 		aref label = GetAttributeN(arrayLabels, i);
-		//Получаем тип метки
+		
 		if(!CheckAttribute(label, "type")) continue;
 		string typeName = label.type;
-		//Параметры типа метки
+		
 		aref typeParams;
 		makearef(typeParams, worldMap.labeltype.(typeName));
-		//Перебераем параметры типа метки и добавляем к метке
+		
 		int numParams = GetAttributesNum(typeParams);
 		for(int j = 0; j < numParams; j++)
 		{
-			//Имя параметра
+			
 			string param = GetAttributeName(GetAttributeN(typeParams, j));
-			//Проверяем наличие в метке
+			
 			if(CheckAttribute(label, param) != 0) continue;
-			//Копируем параметр
+			
 			label.(param) = typeParams.(param);
 		}
 	}

@@ -28,15 +28,15 @@ void LoadActivePerkShower()
 	DeleteAttribute(&objActivePerkShower,"PerkList.list");
 	DeleteAttribute(&objActivePerkShower,"Textures");
 
-	// информация о текстурах
+	
 	if(bSeaActive && !bAbordageStarted)
-	{	// морская часть
+	{	
 		objActivePerkShower.Textures.t0.file = "battle_interface\list_icons.tga";
 		objActivePerkShower.Textures.t0.horz = 16;
 		objActivePerkShower.Textures.t0.vert = 8;
 	}
 	else
-	{	// земная часть
+	{	
 		objActivePerkShower.Textures.t0.file = "battle_interface\LandCommands.tga";
 		objActivePerkShower.Textures.t0.horz = 16;
 		objActivePerkShower.Textures.t0.vert = 4;
@@ -62,7 +62,7 @@ void LoadActivePerkShower()
 
 	CreateEntity(&objActivePerkShower,"ActivePerkShower");
 	if(bSeaActive && !bAbordageStarted)
-	{	// морская часть
+	{	
 		LayerAddObject(SEA_EXECUTE,&objActivePerkShower,-1);
 		LayerAddObject(SEA_REALIZE,&objActivePerkShower,-1);
 	}
@@ -113,13 +113,13 @@ int GetPerkPictureIndex(string perkName)
 		break;
 		case "Sink":			return 43; break;
 		case "Repair":			return 55; break;
-		// boal зачем же так игру кастрировать? Грустно, однако :( -->
+		
 		case "Rush":	        return 28;	break;
 		case "LightRepair":		return 54; break;
 		case "InstantRepair":	return 55; break;
 		case "ImmediateReload":	return 53; break;
 		case "Turn180":			return 56; break;
-		// boal <--
+		
 	}
 	trace("WARNING!!! Perk name - "+perkName+" hav`t picture");
 	return 0;

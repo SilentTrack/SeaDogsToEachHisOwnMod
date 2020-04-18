@@ -21,8 +21,8 @@ void ProcessDialogEvent()
 		break;
 		
 		case "First time":
-			dialog.text = "Явный баг. Сообщите Jason'у, как и при каких обстоятельствах его получили.";
-			link.l1 = "Обязательно сообщу!";
+			dialog.text = "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Jason'пїЅ, пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.";
+			link.l1 = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ!";
 			link.l1.go = "exit";
 			Diag.TempNode = "First time";
 		break;
@@ -58,7 +58,7 @@ void ProcessDialogEvent()
 			ChangeIndianRelation(0.25);
 		break;
 		
-		// военные индеи - карибы
+		
 		case "war_indian":
 			for(i = 0; i < iTemp; i++)
 			{
@@ -346,7 +346,7 @@ void ProcessDialogEvent()
 			}
 		break;
 		
-		// мирные индеи - мискито
+		
 		case "peace_indian":
 			for(i = 0; i < iTemp; i++)
 			{

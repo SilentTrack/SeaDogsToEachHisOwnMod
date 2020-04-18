@@ -3,7 +3,7 @@ int nMoraleDecreaseQ;
 
 void InitInterface(string iniName)
 {
-    // лочим квест и карту
+    
     bQuestCheckProcessFreeze = true;
     if(IsEntity(worldMap))
     {
@@ -19,7 +19,7 @@ void InitInterface(string iniName)
 
 	int tmpLangFileID = LanguageOpenFile("interface_strings.txt");
 	SetFormatedText("INFO_TEXT1",LanguageConvertString(tmpLangFileID,"Salary info"));
-	//SetFormatedText("INFO_TEXT2",LanguageConvertString(tmpLangFileID,"Officer info"));
+	
 	SetFormatedText("INFO_TEXT3",LanguageConvertString(tmpLangFileID,"All info"));
 	LanguageCloseFile(tmpLangFileID);
 	SendMessage(&GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"INFO_TEXT",5);
@@ -57,7 +57,7 @@ void IDoExit(int exitCode)
 
 	interfaceResultCommand = exitCode;
 	EndCancelInterface(true);
-	PostEvent("StopQuestCheckProcessFreeze", 1000);//boal 230804 заморозка проверки квестов
+	PostEvent("StopQuestCheckProcessFreeze", 1000);
 }
 
 void ProcCommand()
@@ -123,7 +123,7 @@ void SkipSailorPayment()
 	}
 	int iPassenger;
     for (int io = 0; io<GetPassengersQuantity(pchar); io++)
-	{   // любой пассажир у кого есть пристрастие может свалить если наши дела ему не по душе
+	{   
 		iPassenger = GetPassenger(pchar, io);
 		if (iPassenger != -1)
 		{
@@ -165,13 +165,13 @@ void CalculateInfoData()
 	nPaymentQ = 0;
 	if( CheckAttribute(mchref,"CrewPayment") )
     {
-		nPaymentQ += makeint(mchref.CrewPayment); // а тут помним все до копейки!
+		nPaymentQ += makeint(mchref.CrewPayment); 
 	}
 	
 	nMoraleDecreaseQ = 40-nLeaderShip;
-	if( CheckOfficersPerk(mchref,"IronWill") ) nMoraleDecreaseQ /= 2; // у офицеров тоже нужно смотреть!!!
+	if( CheckOfficersPerk(mchref,"IronWill") ) nMoraleDecreaseQ /= 2; 
 
-	//CreateString(true,"payment",""+nPaymentQ,FONT_NORMAL,COLOR_NORMAL,320,390,SCRIPT_ALIGN_CENTER,1.0);
+	
     SetFormatedText("INFO_TEXT3",MakeMoneyShow(nPaymentQ, MONEY_SIGN,MONEY_DELIVER));
 	if( sti(mchref.Money) < nPaymentQ )
 	{

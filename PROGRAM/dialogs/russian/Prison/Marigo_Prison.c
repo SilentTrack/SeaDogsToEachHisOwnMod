@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
  	switch(Dialog.CurrentNode)
@@ -7,14 +7,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             dialog.text = "Speak, I am listening";
 			link.l1 = "I was mistaken. Farewell.";
 			link.l1.go = "Exit";
-			//искушение барбазона
+			
 			if (CheckAttribute(pchar, "questTemp.Saga.BarbTemptation.Prison"))
             { 
                 link.l1 = "You have Simon Morelle under arrest here. He is a smuggler whose schooner was sunk by a patrol not long ago. Can I see him?";
                 link.l1.go = "BarbTemptation";
 				DeleteAttribute(pchar, "questTemp.Saga.BarbTemptation.Prison");
             }
-			// Addon-2016 Jason ФМК-Сент-Кристофер
+			
 			if (CheckAttribute(PChar, "questTemp.FMQN") && pchar.questTemp.FMQN == "way_div")
 			{
 				link.l1 = "Officer, I was sent here by mynheer governor of Philipsburg. He asked me to raid the island and it's waters in a search of English spies. His Excellence has also told me that you can provide me with useful information.";
@@ -32,7 +32,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		
-		//искушение барбазона
+		
 		case "BarbTemptation":
 			dialog.text = "And why do you need him, sir?";
 			link.l1 = "I want to tell him that he is a damn bastard and scoundrel. I hope that it will help him standing on gallows.";
@@ -64,7 +64,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1.go = "exit";
 		break;
 		
-		// Addon-2016 Jason ФМК-Сент-Кристофер
+		
 		case "FMQN":
 			dialog.text = "Useful? Ha! On the second thought, wait. I do have something useful to tell you. One of our patrols gone missing in the jungles. They were supposed to be back in their barracks by now but it seems that they prefer a company of parrots instead. Or something really has happened. If you find them during your searches, please tell them to make up a decent justification of their delay or otherwise I'll ground them. The patrol's commander is called Jannes Hoffman.";
 			link.l1 = "That will be all officer?";
@@ -145,5 +145,6 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddDialogExitQuestFunction("FMQN_HollandBattle");
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+

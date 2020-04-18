@@ -111,7 +111,7 @@ void ProcessDialogEvent()
 			dialog.text = "I am very glad that you agree, white brother!";
 			link.l1 = "Let's talk about the details, Canauri. Where are your people? You said that you'd already found them...";
 			link.l1.go = "RedChieftain_5";
-			pchar.quest.RedChieftainDelete.over = "yes"; //снять таймер
+			pchar.quest.RedChieftainDelete.over = "yes"; 
 		break;
 		
 		case "RedChieftain_5":
@@ -211,7 +211,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "RedChieftain_final":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			dialog.text = "Canauri thank you again, paleface brother! I hope that tears of gods will be enough reward for life of Indians. Now goodbye, we go to native village.";
 			link.l1 = "Good luck, Cunauri! Don't you ever fall into slavery again!";
 			link.l1.go = "RedChieftain_final_1";
@@ -228,10 +228,10 @@ void ProcessDialogEvent()
 				sld = characterFromId("RC_Indian_"+i);
 				LAi_ActorRunToLocation(sld, "reload", "reload1_back", "none", "", "", "", -1);
 			}
-			InterfaceStates.Buttons.Save.enable = true;//разрешить сохраняться
-			locations[FindLocation(pchar.questTemp.RedChieftain.Shore)].DisableEncounters = false; //энкаутеры открыть
+			InterfaceStates.Buttons.Save.enable = true;
+			locations[FindLocation(pchar.questTemp.RedChieftain.Shore)].DisableEncounters = false; 
 			AddComplexSelfExpToScill(50, 50, 50, 50);
-			AddCharacterExpToSkill(pchar, "Fortune", 50);//везение
+			AddCharacterExpToSkill(pchar, "Fortune", 50);
 			AddQuestRecord("RedChieftain", "8");
 			CloseQuestHeader("RedChieftain");
 			DeleteAttribute(pchar, "questTemp.RedChieftain");
@@ -243,3 +243,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+

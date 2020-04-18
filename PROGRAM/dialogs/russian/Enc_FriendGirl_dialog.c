@@ -49,11 +49,11 @@ void ProcessDialogEvent()
 		case "Step_agree":
 			pchar.quest.Enc_FriendGirl_after.over = "yes";
 			if (rand(1))
-			{ //бандюганы
-				LAi_LocationDisableMonGenTimer(pchar.GenQuest.EncGirlF.locationId, 1); //монстров не генерить 1 день
-				LAi_LocationDisableOffGenTimer(pchar.GenQuest.EncGirlF.locationId, 1); //офицеров не пускать 1 день
+			{ 
+				LAi_LocationDisableMonGenTimer(pchar.GenQuest.EncGirlF.locationId, 1); 
+				LAi_LocationDisableOffGenTimer(pchar.GenQuest.EncGirlF.locationId, 1); 
 				LocatorReloadEnterDisable(pchar.GenQuest.EncGirlF.locationId, "reload2", true);
-				pchar.GenQuest.OpenTheRopeExit = pchar.GenQuest.EncGirlF.locationId; //флаг для открытия релоада
+				pchar.GenQuest.OpenTheRopeExit = pchar.GenQuest.EncGirlF.locationId; 
 				string model[10];
 				model[0] = "citiz_41";
 				model[1] = "citiz_42";
@@ -88,12 +88,12 @@ void ProcessDialogEvent()
 				}
 			}
 			else
-			{ //и правда девка 
+			{ 
 				sld = GetCharacter(NPC_GenerateCharacter("UndergroundGirl", "women_"+(rand(5)+11), "woman", "towngirl", 5, PIRATE, 1, false, "citizen"));
 				sld.dialog.filename = "Enc_FriendGirl_dialog.c";
 				int iTemp = rand(1);
-				sld.dialog.currentnode = "Underground1";//+ iTemp; //здесь рендом поведения девки: 0-помогите, 1-сама крутая
-				sld.greeting = "Enc_RapersGirl_" + (iTemp+1); //соотв. озвучка
+				sld.dialog.currentnode = "Underground1";
+				sld.greeting = "Enc_RapersGirl_" + (iTemp+1); 
 				LAi_SetStayType(sld);
 				LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
 				ChangeCharacterAddressGroup(sld, pchar.GenQuest.EncGirlF.locationId, "monsters", "monster"+(rand(9)+1));
@@ -118,7 +118,7 @@ void ProcessDialogEvent()
 			Link.l1.go = "exit";
 		break;
 
-		case "Underground0": //девка реально заблудилась
+		case "Underground0": 
             dialog.text = "Oh my God, I am so glad to see you!";
 			Link.l1 = "What's up, beauty?";
 			Link.l1.go = "Underground0_1";
@@ -138,7 +138,7 @@ void ProcessDialogEvent()
 			ChangeCharacterComplexReputation(pchar,"nobility", 4);
 		break;
 
-		case "Underground1": //крутая мочалка
+		case "Underground1": 
             dialog.text = "Wow, it seems that someone else took interest in this dungeon!";
 			Link.l1 = "Beauty, what you are doing here?";
 			Link.l1.go = "Underground1_1";

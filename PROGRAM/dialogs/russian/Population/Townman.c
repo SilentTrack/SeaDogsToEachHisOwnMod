@@ -1,4 +1,4 @@
-//Jason общий диалог мещан
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -11,14 +11,14 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 
-    // вызов диалога по городам -->
+    
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Citizen\" + NPChar.City + "_Citizen.c";
     if (LoadSegment(NPChar.FileDialog2))
 	{
         ProcessCommonDialog(NPChar, Link, NextDiag);
 		UnloadSegment(NPChar.FileDialog2);
 	}
-    // вызов диалога по городам <--
+    
     ProcessCommonDialogRumors(NPChar, Link, NextDiag);
     int iTest, iTemp;
     iTest = FindColony(NPChar.City);
@@ -53,25 +53,25 @@ void ProcessDialogEvent()
 		case "First time":
 			if (sti(NPChar.nation) == PIRATE)
 			{
-				if (sti(rColony.HeroOwn) == true) // наш горожанин
+				if (sti(rColony.HeroOwn) == true) 
 				{
 				    dialog.text = RandPhraseSimple("They say that you own"+ " this town, "+ GetSexPhrase("sir","miss") + ".", " Such a nice meeting, "+ GetSexPhrase("sir","miss") + "!");
 					link.l1 = RandPhraseSimple("I have changed my mind"+ ". Good luck!", "Just walking around the city. Farewell.");
 					link.l1.go = "exit";
 					link.l2 = RandPhraseSimple("I've got a question for you.", "I need some information.");
-					link.l2.go = "quests";//(перессылка в файл города)
+					link.l2.go = "quests";
 					if (CheckAttribute(pchar, "GenQuest.Loan.FindCitizen") && !CheckAttribute(pchar, "GenQuest.Loan.FindCitizenDone") && !CheckAttribute(pchar, "GenQuest.Loan.FindCitizenFalied"))
 		            {
 		                if (Characters[sti(pchar.GenQuest.Loan.FindCitizenIdx)].id == Npchar.id)
 		                {
 							link.l3 = RandPhraseSimple("I want to discuss financial matters.", "About financials...");
-							link.l3.go = "LoanForAll";//(перессылка в кредитный генератор)
+							link.l3.go = "LoanForAll";
 						}
 					}
 					break;
 				}
 				else
-				{ // пираты, не наши
+				{ 
 					if (sti(pchar.GenQuest.Piratekill) > 20)
 					{
 						dialog.text = RandPhraseSimple("Alarm! An armed loony here! To arms!", "To arms! An armed loony here!");
@@ -84,13 +84,13 @@ void ProcessDialogEvent()
 					link.l1 = RandPhraseSimple("Don't bark!", "Calm yourself down. I will do it myself!");
 					link.l1.go = "exit";
 					link.l2 = RandPhraseSimple("I want to ask you.", "Just a minute of your attention, please. One question.");
-					link.l2.go = "quests";//(перессылка в файл города)
+					link.l2.go = "quests";
 					if (CheckAttribute(pchar, "GenQuest.Loan.FindCitizen") && !CheckAttribute(pchar, "GenQuest.Loan.FindCitizenDone") && !CheckAttribute(pchar, "GenQuest.Loan.FindCitizenFalied"))
 		            {
 		                if (Characters[sti(pchar.GenQuest.Loan.FindCitizenIdx)].id == Npchar.id)
 		                {
 							link.l3 = RandPhraseSimple("I want to discuss financial matters.", "About financials...");
-							link.l3.go = "LoanForAll";//(перессылка в кредитный генератор)
+							link.l3.go = "LoanForAll";
 						}
 					}
 					}
@@ -100,9 +100,9 @@ void ProcessDialogEvent()
             if(NPChar.quest.meeting == "0")
 			{
 				NPChar.quest.meeting = "1";
-				// проверка наличия корабля в порту
+				
 				bool ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
-				if (ok && sti(Pchar.Ship.Type) != SHIP_NOTUSED && CheckAttribute(npchar, "quest.passenger") && !CheckAttribute(pchar, "GenQuest.Townpassenger") && 6-sti(RealShips[sti(Pchar.Ship.Type)].Class) > 0)//горожанин-пассажир
+				if (ok && sti(Pchar.Ship.Type) != SHIP_NOTUSED && CheckAttribute(npchar, "quest.passenger") && !CheckAttribute(pchar, "GenQuest.Townpassenger") && 6-sti(RealShips[sti(Pchar.Ship.Type)].Class) > 0)
 				{
 					dialog.text = "Good day, "+GetAddress_Form(NPChar)+". I see that you are a captain of your own ship. I have got something to ask you...";
 					link.l1 = "I am listening, "+GetAddress_FormToNPC(NPChar)+". What do you want?";
@@ -110,11 +110,11 @@ void ProcessDialogEvent()
 					link.l2 = "I am sorry, "+GetAddress_FormToNPC(NPChar)+", but I am in a hurry.";
 					link.l2.go = "exit";
 					npchar.quest.meeting = "1";
-					DeleteAttribute(npchar, "talker"); //снимаем говорилку
+					DeleteAttribute(npchar, "talker"); 
 					break;
 				}
 
-                // homo 05/08/06
+                
 				dialog.Text =NPCharRepPhrase(npchar,
 				LinkRandPhrase("I am ", "My name is ", "You can call me ")
 				+GetFullName(npchar)
@@ -138,7 +138,7 @@ void ProcessDialogEvent()
 				{
 					if((pchar.questTemp.different.GiveShipLetters.city == npchar.city) && CheckAttribute(pchar, "questTemp.different.GiveShipLetters"))
 					{
-						link.l2.go = "ShipLetters_7";// генератор  "Найденные документы"
+						link.l2.go = "ShipLetters_7";
 					}
 					else
 					{
@@ -147,32 +147,32 @@ void ProcessDialogEvent()
 				}
 				else
 				{
-					link.l2.go = "quests";//(перессылка в файл города)
+					link.l2.go = "quests";
 				}	
 				if (CheckAttribute(pchar, "GenQuest.Loan.FindCitizen") && !CheckAttribute(pchar, "GenQuest.Loan.FindCitizenDone") && !CheckAttribute(pchar, "GenQuest.Loan.FindCitizenFalied"))
 	            {
 	                if (Characters[sti(pchar.GenQuest.Loan.FindCitizenIdx)].id == Npchar.id)
 	                {
 						link.l3 = RandPhraseSimple("I want to discuss financial matters.", "About financials...");
-						link.l3.go = "LoanForAll";//(перессылка в кредитный генератор)
+						link.l3.go = "LoanForAll";
 					}
 				}
 				
-				//Jason --> генератор Неудачливый вор
+				
 				if (CheckAttribute(pchar, "GenQuest.Device.Shipyarder") && NPChar.location == pchar.GenQuest.Device.Shipyarder.City + "_town" && pchar.GenQuest.Device.Shipyarder == "begin" && !CheckAttribute(npchar, "quest.Device"))
 				{
 					link.l16 = "Listen, I hope that you can help me. I want to buy a "+pchar.GenQuest.Device.Shipyarder.Type+", and they have told me that this thing was been sold in your town. Well, someone was selling it on streets. Do you know something?";
 					link.l16.go = "Device_Citizen";
 				}
-				// <-- генератор Неудачливый вор
 				
-				// Квестовый генератор священника. Квест №2. Warship -->
+				
+				
 				if(CheckAttribute(PChar, "GenQuest.ChurchQuest_2.AskPeople") && !CheckAttribute(NPChar, "GenQuest.ChurchQuest_2.AskedPeople") && NPChar.location == PChar.GenQuest.ChurchQuest_2.QuestTown + "_town")
 	            {
 					link.l5 = LinkRandPhrase("Do you know", "Are you aware", "Do you anything about") + " the local church was robbed recently?";
 					link.l5.go = "Citiz_GenQuest_Church_2_1";
 				}
-				// <-- Квестовый генератор священника. Квест №2.
+				
 				
                 dialog.Text = NPCharRepPhrase(npchar,
 		                PCharRepPhrase(LinkRandPhrase("Ah, it's you "+GetFullName(Pchar)
@@ -229,7 +229,7 @@ void ProcessDialogEvent()
 			{
 				if((pchar.questTemp.different.GiveShipLetters.city == npchar.city) && CheckAttribute(pchar, "questTemp.different.GiveShipLetters"))
 				{
-					link.l2.go = "ShipLetters_7";// генератор  "Найденные документы"
+					link.l2.go = "ShipLetters_7";
 				}
 				else
 				{
@@ -238,32 +238,32 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-					link.l2.go = "quests";//(перессылка в файл города)
+					link.l2.go = "quests";
 			}			
 			if (CheckAttribute(pchar, "GenQuest.Loan.FindCitizen") && !CheckAttribute(pchar, "GenQuest.Loan.FindCitizenDone") && !CheckAttribute(pchar, "GenQuest.Loan.FindCitizenFalied"))
             {
                 if (Characters[sti(pchar.GenQuest.Loan.FindCitizenIdx)].id == Npchar.id)
                 {
 					link.l3 = RandPhraseSimple("I want to discuss financial matters.", "About financials...");
-					link.l3.go = "LoanForAll";//(перессылка в кредитный генератор)
+					link.l3.go = "LoanForAll";
 				}
 			}
 			
-			//Jason --> генератор Неудачливый вор
+			
 			if (CheckAttribute(pchar, "GenQuest.Device.Shipyarder") && NPChar.location == pchar.GenQuest.Device.Shipyarder.City + "_town" && pchar.GenQuest.Device.Shipyarder == "begin" && !CheckAttribute(npchar, "quest.Device"))
 			{
    				link.l16 = "Listen, I hope that you can help me. I want to buy a "+pchar.GenQuest.Device.Shipyarder.Type+", and they have told me that this thing was been sold in your town. Well, someone was selling it on streets. Do you know something?";
 				link.l16.go = "Device_Citizen";
 			}
-			// <-- генератор Неудачливый вор
 			
-			// Квестовый генератор священника. Квест №2. Warship -->
+			
+			
 			if(CheckAttribute(PChar, "GenQuest.ChurchQuest_2.AskPeople") && !CheckAttribute(NPChar, "GenQuest.ChurchQuest_2.AskedPeople") && NPChar.location == PChar.GenQuest.ChurchQuest_2.QuestTown + "_town")
 	        {
 				link.l5 = LinkRandPhrase("Do you know", "Are you aware", "Do you anything about") + " the local church was robbed recently?";
 				link.l5.go = "Citiz_GenQuest_Church_2_1";
 			}
-			// <-- Квестовый генератор священника. Квест №2.
+			
 			
 			Link.l6 = PCharRepPhrase(RandPhraseSimple("Your ears deceive you. I have to go.", "No, it's nothing I was on my way to the tavern."),
                                         RandPhraseSimple("Well, whatever, Good luck!", "Just walking around the city. Farewell."));
@@ -281,9 +281,9 @@ void ProcessDialogEvent()
 			link.l1 = LinkRandPhrase ("What gossips are around in this tavern?","Any news in this land?","How is going the land life?");
 			link.l1.go = "rumours_townman";
 			link.l2 = LinkRandPhrase("Can you show me the road?", "I can't find the road to somewhere...", "Help me to get somewhere...");
-			link.l2.go = "town";  //(перессылка в файл города)
+			link.l2.go = "town";  
 			link.l3 = RandPhraseSimple("I want to know what they say about one person.", "Do you know what people say about one person?");
-			link.l3.go = "info"; //(перессылка в файл города)
+			link.l3.go = "info"; 
 			link.l4 = RandPhraseSimple("I want to know more about the locals.", "Can you tell me something about the locals?");
 			link.l4.go = "RumourAboutOwners";
 			link.l5 = PCharRepPhrase(RandPhraseSimple("Your ears deceive you. I have to go.", "No, it's nothing I was on my way to the tavern."),
@@ -322,11 +322,11 @@ void ProcessDialogEvent()
 			Dialog.Text = sTemp;
 			link.l1 = "Thanks.";
 			link.l1.go = "exit";
-			// Здесь можно делать проверка по квестам, какой слух выпал
+			
 			DeleteAttribute(PChar, "QuestTemp.RumoursAboutOwners");
 		break;
 		
-		//Jason --> генератор Неудачливый вор
+		
 		case "Device_Citizen":
            dialog.text = "Hm, "+pchar.GenQuest.Device.Shipyarder.Type+"? Never heard about it... I've been living for a long time and have never seen anything like that.";
 			link.l1 = "Well, that is a shipbuilding tool, "+pchar.GenQuest.Device.Shipyarder.Describe+". Have anyone been selling something like that in the town? Or perhaps carrying it around and you've noticed?";
@@ -349,7 +349,7 @@ void ProcessDialogEvent()
 			}
 		break;
 		
-		//=================== ноды квеста священника. поиск грабителей (квест №2)==================
+		
 		case "Citiz_GenQuest_Church_2_1":
 			if(rand(3) != 1)
 			{
@@ -367,7 +367,7 @@ void ProcessDialogEvent()
 			NPChar.GenQuest.ChurchQuest_2.AskedPeople = true;
 		break;		
 		
-		//-------------------------------горожанин-пассажир----------------------------------------------
+		
 		case "passenger":
 			if (crand(19) > 9) SetPassengerParameter("Townpassenger", false);
 			else SetPassengerParameter("Townpassenger", true);
@@ -397,7 +397,7 @@ void ProcessDialogEvent()
 			LAi_SetImmortal(npchar, true);
 			DeleteAttribute(npchar, "LifeDay");
 			LAi_RemoveLoginTime(npchar);
-			DeleteAttribute(npchar, "CityType");//удалить признак фантома, иначе - пустые города
+			DeleteAttribute(npchar, "CityType");
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload1_back", "none", "", "", "", 20.0);
 			AddPassenger(pchar, npchar, false);
@@ -419,14 +419,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "passenger_3":
-			pchar.quest.Townpassenger_Over.over = "yes"; //снять таймер
+			pchar.quest.Townpassenger_Over.over = "yes"; 
 			dialog.text = "Here we are, most excellent! This travel on your ship was quite satisfying. My thanks. Take your money, sir.";
 			link.l1 = "Good luck, "+GetAddress_FormToNPC(NPChar)+"! Farewell.";
 			link.l1.go = "passenger_4";
 		break;
 		
 		case "passenger_4":
-			chrDisableReloadToLocation = false;//открыть локацию
+			chrDisableReloadToLocation = false;
 			DialogExit();
 			npchar.lifeday = 0;
 			RemovePassenger(Pchar, npchar);
@@ -444,9 +444,9 @@ void ProcessDialogEvent()
 			CloseQuestHeader(sTitle);
 			DeleteAttribute(Pchar, "GenQuest.Townpassenger");
 		break;
-//<-- горожанин-пассажир
+
 		
-		//замечение по обнаженному оружию
+		
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{

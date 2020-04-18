@@ -1,4 +1,4 @@
-// Ѕесчестный конкурент
+
 void ProcessDialogEvent()
 {
 	ref sld, NPChar;
@@ -105,7 +105,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
 	
-		case "ShadowTrader_escape"://напугали
+		case "ShadowTrader_escape":
 			AddMoneyToCharacter(pchar, 10000);
 			LAi_SetPlayerType(pchar);
 			for (i=1; i<=2; i++)
@@ -121,9 +121,9 @@ void ProcessDialogEvent()
 			DoQuestFunctionDelay("ShadowTrader_final", 9.0);
 			pchar.questTemp.Shadowtrader.End.Escape = "true";
 			AddQuestRecord("Shadowtrader", "8");
-			AddCharacterExpToSkill(pchar, "Leadership", 200);//авторитет
-			AddCharacterExpToSkill(pchar, "Fortune", 250);//везение
-			AddCharacterExpToSkill(pchar, "Sneak", 300);//скрытность
+			AddCharacterExpToSkill(pchar, "Leadership", 200);
+			AddCharacterExpToSkill(pchar, "Fortune", 250);
+			AddCharacterExpToSkill(pchar, "Sneak", 300);
 		break;
 	
 		case "ShadowTrader_6":
@@ -140,7 +140,7 @@ void ProcessDialogEvent()
 			link.l2.go = "ShadowTrader_killed";
 		break;
 		
-		case "ShadowTrader_free"://отпустили
+		case "ShadowTrader_free":
 			AddMoneyToCharacter(pchar, 20550);
 			TakeNItems(pchar, "jewelry1", rand(5));
 			TakeNItems(pchar, "jewelry2", rand(20));
@@ -157,8 +157,8 @@ void ProcessDialogEvent()
 			AddQuestRecord("Shadowtrader", "9");
 			ChangeCharacterComplexReputation(pchar,"nobility", 5); 
 			AddComplexSelfExpToScill(70, 70, 70, 70);
-			AddCharacterExpToSkill(pchar, "Leadership", 100);//авторитет
-			AddCharacterExpToSkill(pchar, "Fortune", 100);//везение
+			AddCharacterExpToSkill(pchar, "Leadership", 100);
+			AddCharacterExpToSkill(pchar, "Fortune", 100);
 		break;
 	
 		case "ShadowTrader_killed":

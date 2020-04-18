@@ -1,10 +1,10 @@
-// диалог по городам
-// Это мастер тюнинга
+
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     string 	sTemp;
 	int 	amount, iSan, iOil, iSil, iRop;
-	int iTemp, iSum; // 280912
+	int iTemp, iSum; 
 	ref 	shTo;
 	string 	s1;
 	
@@ -23,8 +23,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
  
 	switch (Dialog.CurrentNode)
 	{		
-		// -----------------------------------Диалог первый - первая встреча
-		case "First time":  // перехват основного диалога, только один раз
+		
+		case "First time":  
 			if(NPChar.quest.meeting == "0")
 			{
 				Dialog.Text = "Phew... What kind of a disgraceful climate is this... My name is " + GetFullName(npchar) + ", and God damn me, I'm the best shipwright on these God-forgotten islands. But this humidity is just taking me by the knees...";
@@ -33,7 +33,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				Link.l1.go = "node_1";
 				npchar.quest.meeting = "1";
 			}
-			else // нужно, если по квестам будет сброс на  "First time"
+			else 
 			{
 				dialog.text = "Oh, you again, always talking about your problems... phew... phew.";
 				link.l1 = pcharrepphrase("You're right, it's me again. But let's talk about business while you still haven't given God your soul away yet.",
@@ -48,7 +48,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "Master_Ship":
-		//Jason ----------------------------------- Хронометр Алекса ------------------------------------------
+		
 			if (CheckAttribute(npchar, "quest.sextant") && CheckAttribute(pchar, "questTemp.AlexClock") && pchar.location == "Pirates_shipyard" && !CheckAttribute(npchar, "quest.clock"))
 			{
 				dialog.text = "Aha, captain "+GetFullName(pchar)+"! How nice, that you've stopped by!";
@@ -59,11 +59,11 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			if (CheckAttribute(pchar, "questTemp.AlexClock") && pchar.questTemp.AlexClock == "clock" && pchar.location == "Pirates_shipyard")
 			{
 				dialog.text = "I see you've returned to me with empty hands, captain! What happened to the...guests?";
-				Link.l1 = "They've left. I asked them –and they left.";
+				Link.l1 = "They've left. I asked them пїЅand they left.";
 				Link.l1.go = "clock_complete";
 				break;
 			}
-		//<-- хронометр Алекса
+		
 			dialog.text = "Oh, you again, always talking about your problems... phew... phew.";
 			link.l1 = pcharrepphrase("You're right, it's me again. But let's talk about business while you still haven't given God your soul away yet.",
 	            "Your memory serves you well, and now if we may,  let's get down to some more specific questions.");
@@ -96,12 +96,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = pcharrepphrase("I need to use the services of the dockyard.","I want to use the services of the dockyard.");
 			link.l1.go = "shipyard_dlg";
             Link.l2 = "I have a question.";
-			Link.l2.go = "quests"; //(пересылка в файл города)
-			// -->
+			Link.l2.go = "quests"; 
+			
 			if (CheckAttribute(pchar, "GenQuest.LoanChest.TakeChest") && sti(pchar.GenQuest.LoanChest.TargetIdx) == sti(NPChar.index))
 			{
 				link.l3 = "I'd like to talk numbers.";
-				link.l3.go = "LoanForAll";//(перессылка в файл города)
+				link.l3.go = "LoanForAll";
 			}
 			link.l9 = pcharrepphrase("Shit, I have a couple of urgent matters to attend to, goodbye.", "It's time for me to go. Sorry.");
 			link.l9.go = "exit";
@@ -175,12 +175,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 					link.l50.go = "FDM_cabin_pay";
 			}
             Link.l4 = "I have a question.";
-			Link.l4.go = "quests"; //(пересылка в файл города)
-			// -->
+			Link.l4.go = "quests"; 
+			
 			if (CheckAttribute(pchar, "GenQuest.LoanChest.TakeChest") && sti(pchar.GenQuest.LoanChest.TargetIdx) == sti(NPChar.index))
 			{
 				link.l5 = "I'd like to talk numbers.";
-				link.l5.go = "LoanForAll";//(пересылка в файл города)
+				link.l5.go = "LoanForAll";
 			}
 			Link.l9 = "No. I'm happy with what I have.";
 			Link.l9.go = "ship_tunning_not_now_2";
@@ -246,7 +246,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			
 			s1 = "Let's have a look here at what we can do. At the moment, the ship's frame is " + shipCurHP + ". . The highest possible value is " + shipBaseHP;			
 			s1 = s1 + ". In order to make a full repair, I need: ironwood - "+ Matherial1 + ", pitch - " + Matherial2 + ", ship silk - " + Matherial3 + " ropes - " + Matherial4 + ".";
-			s1 = s1 + " For the work I will charge: "+ HPPrice + " doubloons for the labor... My grandchildren has been calling me back  to Europe for a long time. I don't want to come back empty-handed you know... So, that'll be all. And oh yes –the money up front.";
+			s1 = s1 + " For the work I will charge: "+ HPPrice + " doubloons for the labor... My grandchildren has been calling me back  to Europe for a long time. I don't want to come back empty-handed you know... So, that'll be all. And oh yes пїЅthe money up front.";
             dialog.Text = s1;
 			Link.l1 = "Sounds good. I'll accept the conditions. Everything will be delivered as agreed.";
 			if(CheckItemMyCabin("gold_dublon") >= HPPrice)
@@ -390,14 +390,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			DeleteAttribute(pchar, "ship.blots");		
 			
             NextDiag.TempNode = "node_3";
-			dialog.Text = "... Well that's about it... I guarantee you –it'll be pretty tough to wreck this ship now!";
+			dialog.Text = "... Well that's about it... I guarantee you пїЅit'll be pretty tough to wreck this ship now!";
 			Link.l1 = "Thank you! I'll rather not experiment with that.";
 			Link.l1.go = "Exit";
 			AddQuestRecord("ShipRepair", "End");
 			CloseQuestHeader("ShipRepair");
 		break;		
 		
-		///////////////////////////////  квестовые ветки
+		
 		case "quests":
 			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me a question a little while ago...", "I have never met people with such one-sided curiosity in my place or anywhere else in this town.",
                           "What's with all the questions? My job is to build ships. Let's take care about that.", "block", 1, npchar, Dialog.CurrentNode);
@@ -413,10 +413,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			if ((pchar.questTemp.different == "GiveShipLetters") && !CheckAttribute(pchar, "questTemp.different.GiveShipLetters.speakAlexus"))
 			{
 				link.l1 = "I'd like to propose a deal.";
-				link.l1.go = "Al_ShipLetters_1";// генератор  "Найденные документы"
+				link.l1.go = "Al_ShipLetters_1";
 				pchar.questTemp.different.GiveShipLetters.speakAlexus = true;
 			}
-			if(CheckAttribute(pchar, "questTemp.AlexClock") && pchar.questTemp.AlexClock == "go") // 280912
+			if(CheckAttribute(pchar, "questTemp.AlexClock") && pchar.questTemp.AlexClock == "go") 
 			{
 				link.l1 = "I'm here concerning the materials for the frigate.";
 				link.l1.go = "clock";
@@ -427,7 +427,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1.go = "tieyasal";
 			}
 		break;
-//*************************** Генератор - "Найденные судовые документы" **************
+
 		
 		case "Al_ShipLetters_1":
 			dialog.text = "State you terms.";
@@ -451,7 +451,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			ChangeCharacterComplexReputation(pchar,"nobility", -1); 
 			OfficersReaction("bad"); 
 			pchar.questTemp.different = "free";
-			pchar.quest.GiveShipLetters_null.over = "yes"; //снимаем таймер 
+			pchar.quest.GiveShipLetters_null.over = "yes"; 
 			AddQuestRecord("GiveShipLetters", "9");			
 			CloseQuestHeader("GiveShipLetters");
 			DeleteAttribute(pchar, "questTemp.different.GiveShipLetters");
@@ -460,7 +460,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 
-//*************************** Открывание двери ***************************
+
  		case "Step_Door_1":
 			dialog.text = "That's correct. To pass through here, you're going to have to pay me 20000 coins. If you don't pay, I won't open. This isn't a soup kitchen. And I don't advise you to dawdle around anyway. It's for the best that you don't...";
 			if(sti(pchar.money) >= 20000)
@@ -478,7 +478,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
  		case "Step_Door_2":
-			npchar.Step_Door = true; // fix
+			npchar.Step_Door = true; 
 			dialog.text = "Go on in. There door is open. Don't worry about thanking me!";
 			link.l1 = "No, why not. Thank you, " + npchar.name + "...";
 			link.l1.go = "exit";
@@ -494,7 +494,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1.go = "exit";
 		break;
 		
-	// ------------------------------------------- хронометр Ђлекса ----------------------------------------------// Addon-2016 Jason замена дублонов на песо везде
+	
 		case "clock_begin":
 			dialog.text = "Come on, don't be so severe with an old man... I really need your help, captain.";
 			link.l1 = "Out with it, craftsman. What happened to you?";
@@ -558,9 +558,9 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			DialogExit();
 			pchar.questTemp.AlexClock = "go";
 			npchar.quest.clock = "true";
-			SetFunctionTimerCondition("AlexClock_Over", 0, 0, 122, false); // таймер
+			SetFunctionTimerCondition("AlexClock_Over", 0, 0, 122, false); 
 			AddQuestRecord("alex_clock", "1");
-			// запоминаем переменные
+			
 			pchar.questTemp.AlexClock.Sandal = 100;
 			pchar.questTemp.AlexClock.Oil = 150;
 			pchar.questTemp.AlexClock.Shipsilk = 110;
@@ -598,7 +598,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "clock_1":
-			if (CheckAttribute(npchar, "quest.sandal") && CheckAttribute(npchar, "quest.oil") && CheckAttribute(npchar, "quest.shipsilk") && CheckAttribute(npchar, "quest.ropes")) // все привез
+			if (CheckAttribute(npchar, "quest.sandal") && CheckAttribute(npchar, "quest.oil") && CheckAttribute(npchar, "quest.shipsilk") && CheckAttribute(npchar, "quest.ropes")) 
 			{
 				dialog.text = "Wonderful! I've got all the materials in the amount I need. Thanks a million for your help, captain. You've helped me out big time.";
 				link.l1 = "Yes, any time, craftsman. I'm quite pleased as well: I both helped a friend out and I made some good money. And now let's get back to our conversation about your mysterious item that you promised me.";
@@ -614,17 +614,17 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		
-		case "sandal": // бакаут
+		case "sandal": 
 			amount = sti(pchar.questTemp.AlexClock.Sandal);
 			iTemp = amount-iSan;
-			if (iTemp > 0) // еще не все привез
+			if (iTemp > 0) 
 			{
 				iSum = 4000*iSan;
 				dialog.text = "Okay, okay. I'm also going to need "+FindRussianQtyString(amount)+" of ironwood. You've brought me "+FindRussianQtyString(iSan)+". . So, what's left for you to bring me is "+FindRussianQtyString(iTemp)+". All right, at the rate of 4000 pesos a piece, your reward totals at "+FindRussianMoneyString(iSum)+". Please, take it.";
 				link.l1 = "Thank you! Soon you'll have the rest.";
 				link.l1.go = "clock_1";
 				RemoveCharacterGoods(pchar, GOOD_SANDAL, iSan);
-				pchar.questTemp.AlexClock.Sandal = iTemp; // столько осталось довезти
+				pchar.questTemp.AlexClock.Sandal = iTemp; 
 				AddQuestRecord("alex_clock", "2");
 				AddQuestUserData("alex_clock", "sGood", "ironwood");
 				AddQuestUserData("alex_clock", "sQty", FindRussianQtyString(iTemp));
@@ -643,17 +643,17 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddMoneyToCharacter(pchar, iSum);
 		break;
 		
-		case "oil": // смолы
+		case "oil": 
 			amount = sti(pchar.questTemp.AlexClock.Oil);
 			iTemp = amount-iOil;
-			if (iTemp > 0) // еще не все привез
+			if (iTemp > 0) 
 			{
 				iSum = 1400*iOil;
 				dialog.text = "Okay, okay. I'm also going to need "+FindRussianQtyString(amount)+" resins. You've brought me "+FindRussianQtyString(iOil)+". So, what's left for you to bring me is "+FindRussianQtyString(iTemp)+". All right, at the rate of 1400 pesos a piece, your reward totals at "+FindRussianMoneyString(iSum)+". Please, take it.";
 				link.l1 = "Thank you! You'll have the rest soon.";
 				link.l1.go = "clock_1";
 				RemoveCharacterGoods(pchar, GOOD_OIL, iOil);
-				pchar.questTemp.AlexClock.Oil = iTemp; // столько осталось довезти
+				pchar.questTemp.AlexClock.Oil = iTemp; 
 				AddQuestRecord("alex_clock", "2");
 				AddQuestUserData("alex_clock", "sGood", "resins");
 				AddQuestUserData("alex_clock", "sQty", FindRussianQtyString(iTemp));
@@ -672,17 +672,17 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddMoneyToCharacter(pchar, iSum);
 		break;
 		
-		case "shipsilk": // шелк
+		case "shipsilk": 
 			amount = sti(pchar.questTemp.AlexClock.Shipsilk);
 			iTemp = amount-iSil;
-			if (iTemp > 0) // еще не все привез
+			if (iTemp > 0) 
 			{
 				iSum = 2600*iSil;
 				dialog.text = "Okay, okay. I'm also going to need "+FindRussianQtyString(amount)+" silk. You've brought me "+FindRussianQtyString(iSil)+". So, what's left for you to bring me is "+FindRussianQtyString(iTemp)+". All right, at the rate of 2600 pesos a piece, your reward totals at "+FindRussianMoneyString(iSum)+". Please, take it.";
 				link.l1 = "Thank you! Soon you'll have the rest.";
 				link.l1.go = "clock_1";
 				RemoveCharacterGoods(pchar, GOOD_SHIPSILK, iSil);
-				pchar.questTemp.AlexClock.Shipsilk = iTemp; // столько осталось довезти
+				pchar.questTemp.AlexClock.Shipsilk = iTemp; 
 				AddQuestRecord("alex_clock", "2");
 				AddQuestUserData("alex_clock", "sGood", "silk");
 				AddQuestUserData("alex_clock", "sQty", FindRussianQtyString(iTemp));
@@ -701,17 +701,17 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddMoneyToCharacter(pchar, iSum);
 		break;
 		
-		case "ropes": // канаты
+		case "ropes": 
 			amount = sti(pchar.questTemp.AlexClock.Ropes);
 			iTemp = amount-iRop;
-			if (iTemp > 0) // еще не все привез
+			if (iTemp > 0) 
 			{
 				iSum = 1500*iRop;
 				dialog.text = "Okay, okay. I'm also going to need "+FindRussianQtyString(amount)+" ropes. You've brought me "+FindRussianQtyString(iRop)+". So, what's left for you to bring me is "+FindRussianQtyString(iTemp)+". So, at the rate of 1500 pesos a piece, your reward totals at "+FindRussianMoneyString(iSum)+". Please, take it.";
 				link.l1 = "Thank you! You'll have the rest soon.";
 				link.l1.go = "clock_1";
 				RemoveCharacterGoods(pchar, GOOD_ROPES, iRop);
-				pchar.questTemp.AlexClock.Ropes = iTemp; // столько осталось довезти
+				pchar.questTemp.AlexClock.Ropes = iTemp; 
 				AddQuestRecord("alex_clock", "2");
 				AddQuestUserData("alex_clock", "sGood", "ropes");
 				AddQuestUserData("alex_clock", "sQty", FindRussianQtyString(iTemp));
@@ -738,7 +738,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "clock_3":
 			dialog.text = "Precisely. Problems. Recent ones. Damn those treasure hunters...";
-			link.l1 = "Calm down, calm down. It's not good at your age to be worrying like that. God forbid, you could be one beat away. Who would build the frigate for the president of the Brethren then? Calm down and explain to me –who are these treasure diggers?";
+			link.l1 = "Calm down, calm down. It's not good at your age to be worrying like that. God forbid, you could be one beat away. Who would build the frigate for the president of the Brethren then? Calm down and explain to me пїЅwho are these treasure diggers?";
 			link.l1.go = "clock_4";
 		break;
 		
@@ -749,7 +749,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "clock_5":
-			dialog.text = "Ah, sorry for my fantasies. Being old is not easy, young man. Pardon… But it's irrelevant. What's relevant is that a box with a gift for you is in the chest which is lying in the dungeon currently occupied by some scum. They are not of our not, not from Isla Tesoro\nTreasure hunters, someone must had told them that this place is full of treasures. They won't dare to show themselves right here, however I am too scared to visit them, see? Their faces...";
+			dialog.text = "Ah, sorry for my fantasies. Being old is not easy, young man. PardonпїЅ But it's irrelevant. What's relevant is that a box with a gift for you is in the chest which is lying in the dungeon currently occupied by some scum. They are not of our not, not from Isla Tesoro\nTreasure hunters, someone must had told them that this place is full of treasures. They won't dare to show themselves right here, however I am too scared to visit them, see? Their faces...";
 			link.l1 = "I see. Open your door. I'll go smoke out your uninvited guests.";
 			link.l1.go = "clock_6";
 		break;
@@ -769,14 +769,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "clock_8":
 			DialogExit();
 			GiveItem2Character(pchar, "key3"); 
-			bDisableFastReload = true;//закрыть переход
+			bDisableFastReload = true;
 			LocatorReloadEnterDisable("Pirates_Shipyard", "reload1_back", true);
 			LocatorReloadEnterDisable("Pirates_Shipyard", "reload2", false);
-			LAi_LocationDisableOfficersGen("Bermudes_Dungeon", true);//офицеров не пускать
+			LAi_LocationDisableOfficersGen("Bermudes_Dungeon", true);
 			pchar.quest.Alex_Chest.win_condition.l1 = "location";
 			pchar.quest.Alex_Chest.win_condition.l1.location = "Bermudes_Dungeon";
 			pchar.quest.Alex_Chest.function = "AlexClock_Chest";
-			pchar.quest.AlexClock_Over.over = "yes"; //снять прерывание
+			pchar.quest.AlexClock_Over.over = "yes"; 
 			pchar.questTemp.AlexClock = "chest";
 			AddQuestRecord("alex_clock", "3");
 		break;
@@ -827,9 +827,9 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			CloseQuestHeader("alex_clock");
 			DeleteAttribute(pchar, "questTemp.AlexClock");
 		break;
-	// <-- хронометр Алекса
+	
 		
-		// город майя
+		
 		case "tieyasal":
 			dialog.text = "Aha, Miguel! My old acquaintance. I remember him. He asked me about every little detail over and over. But how am I going to explain to him how a radio is built on the inside when he hasn't even set his eyes on a simple telegraph?";
 			link.l1 = "What?.. What are you talking about, craftsman?";
@@ -853,9 +853,9 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.tieyasal = "true";
 		break;
 		
-		// Калеуче
+		
 		case "FDM":
-			dialog.text = "A-ha, the ghost ship! Moms scares their bad kids with it. Why would you need this damned vessel! Sailors get frightened when they see her at the horizon… What do you want to do with her?";
+			dialog.text = "A-ha, the ghost ship! Moms scares their bad kids with it. Why would you need this damned vessel! Sailors get frightened when they see her at the horizonпїЅ What do you want to do with her?";
 			if (!CheckAttribute(npchar, "quest.FDM_cabin"))
 			{
 				link.l1 = "I like the idea of little cowards who scared shitless. But the interior makes me sad. Have you seen the cabin? It feels like a coffin. All this mold and dust. I want to fix it. Can you do that, master?";
@@ -863,7 +863,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 			if (!CheckAttribute(npchar, "quest.FDM_sails"))
 			{
-				link.l2 = "I am fed up with these torn black rags. I admit, they catch the wind as good as the normal sails but the view… Disgusting. I want ordinary snow white sails. Are you in, master?";
+				link.l2 = "I am fed up with these torn black rags. I admit, they catch the wind as good as the normal sails but the viewпїЅ Disgusting. I want ordinary snow white sails. Are you in, master?";
 				link.l2.go = "FDM_sails";
 			}
 		break;
@@ -886,7 +886,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "FDM_cabin_s":
 			dialog.text = "Fine. Seven chests of doubloons and I will see it done in five days.";
-			link.l1 = "Договорились.";
+			link.l1 = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.";
 			link.l1.go = "FDM_cabin_s1";
 			link.l2 = "Seven chests? More than a thousand doubloons? Hm, I need time to consider such expenses...";
 			link.l2.go = "exit";
@@ -936,7 +936,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			amount = sti(npchar.quest.FDM_cabin)-iTemp;
 			Log_Info("You have given chests to master Alexus ");
 			PlaySound("interface\important_item.wav");
-			if (amount <= 0) // всё принес
+			if (amount <= 0) 
 			{
 				RemoveItems(pchar, "chest", sti(npchar.quest.FDM_cabin));
 				dialog.text = "So, you had to bring me "+FindRussianQtyString(sti(npchar.quest.FDM_cabin))+" more chests, you have brought "+FindRussianQtyString(iTemp)+". I have the payment. Now it's my turn. Go and walk around. Don't worry, I shall do my best.";
@@ -956,7 +956,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "FDM_cabin_do":
 			DialogExit();
 			SetLaunchFrameFormParam("Five days later..."+ NewStr() +"Master Alexus has done his job", "", 0, 5);
-			WaitDate("", 0, 0, 5, 0, 10); //крутим время
+			WaitDate("", 0, 0, 5, 0, 10); 
 			LaunchFrameForm();
 			RefreshLandTime();
 			RecalculateJumpTable();
@@ -968,7 +968,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "FDM_sails":
-			dialog.text = "Sure, I can do that! Well, well… This means that we have to throw away every dirty old rag and place new and clear sails made of cotton. A lot of work to be done here. Hundred thousand pesos for work and materials. Deal?";
+			dialog.text = "Sure, I can do that! Well, wellпїЅ This means that we have to throw away every dirty old rag and place new and clear sails made of cotton. A lot of work to be done here. Hundred thousand pesos for work and materials. Deal?";
 			if (sti(Pchar.money) >= 100000)
 			{
 				link.l1 = "Sure, I am fine with that. Deal!";
@@ -988,18 +988,18 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "FDM_sails_done":
 			DialogExit();
 			SetLaunchFrameFormParam("Two days later..."+ NewStr() +"Master Alexus has done his job", "", 0, 5);
-			WaitDate("", 0, 0, 2, 0, 10); //крутим время
+			WaitDate("", 0, 0, 2, 0, 10); 
 			LaunchFrameForm();
 			RefreshLandTime();
 			RecalculateJumpTable();
 			Whr_UpdateWeather();
 			SetShipSailsFromFile(pchar, "ships/parus_silk.tga");
-			SetSailsColor(pchar, 0);//белый хлопковый парус
+			SetSailsColor(pchar, 0);
 			npchar.quest.FDM_sails = "true";
 			if (CheckAttribute(npchar, "quest.FDM_cabin")) npchar.quest.FDM_full = "done";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
 
 void checkMatherial_repair(ref Pchar, ref NPChar, int good, int goodType)
@@ -1051,3 +1051,4 @@ int GetMaterialQtyRepair( ref _chr, int MaterialNum )
 	
 	return 0;
 }
+

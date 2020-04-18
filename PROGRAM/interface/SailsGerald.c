@@ -1,11 +1,11 @@
-//  интерфейс Выбора герба на парус (boal 08.02.08)
+
 ref    shref;
 int    price;
 
 void InitInterface_R(string iniName, ref _shipyarder)
 {
     StartAboveForm(true);
-    // лочим квест и карту
+    
     bQuestCheckProcessFreeze = true;
     int    st = GetCharacterShipType(pchar);
     shref = GetRealShip(st);
@@ -55,7 +55,7 @@ void IDoExit(int exitCode)
     
 	interfaceResultCommand = exitCode;
 	EndCancelInterface(true);
-    PostEvent("StopQuestCheckProcessFreeze", 100);//заморозка проверки квестов
+    PostEvent("StopQuestCheckProcessFreeze", 100);
 }
 
 void ProcCommand()
@@ -93,7 +93,7 @@ int ScrollGetTexture()
 	int iPicIndex = GetEventData();
 	string sScrollID = GetEventData();
 	int iTexture = NFGetTexture(sScrollID, sName);
-	//Trace("ScrollGetTexture: " + iTexture + ", " + sName);
+	
 
 	return iTexture;
 }

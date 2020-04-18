@@ -1,8 +1,8 @@
 void InitCharactersNames()
 {
 	int		n;
-// English
-// man names
+
+
 	n = AddStr2Array(&sEnManNames, n, "Allan,Adam,Anthony,Alan,Albert,Alfred,Andrew,Arthur");
 	n = AddStr2Array(&sEnManNames, n, "Bernard,Bertram,Brendan,Bruce,Brian,Basil,Benjamin,Cecil,Charles,Christian,Claude");
 	n = AddStr2Array(&sEnManNames, n, "Cyril,Cyrus,Daniel,David,Donald,Dougal,Duncan,Dwain,Dylan,Edgar,Edmund,Edward,Edwin,Egbert,Elias");
@@ -15,7 +15,7 @@ void InitCharactersNames()
 	n = AddStr2Array(&sEnManNames, n, "Richard,Robert,Robin,Roger,Roland,Ronald,Ronan,Samson,Samuel,Shawn,Silas,Simon,Solomon,Stephen");
 	n = AddStr2Array(&sEnManNames, n, "Terence,Thomas,Timothy,Tobias,Tristan,Walter,Wilbert,Wilfred,William,Winfred,Zachary");
 	
-// women names
+
 	n = 0;
 	n = AddStr2Array(&sEnWomenNames, n, "Agatha,Alice,Alvina,Amanda,Amelia,Amy,Anne,Annabel,Arabella,Audrey,Aurora,Avis");
 	n = AddStr2Array(&sEnWomenNames, n, "Bridget,Camilla,Catherine,Cecily,Clare,Cora,Diana,Dorothy,Edith,Elizabeth,Emily");
@@ -23,7 +23,7 @@ void InitCharactersNames()
 	n = AddStr2Array(&sEnWomenNames, n, "Mabel,Margaret,Margery,Martha,Mary,Matilda,Molly,Monica,Nora,Prudence,Rose,Sarah,Serena,Silvia");
 	n = AddStr2Array(&sEnWomenNames, n, "Stella,Susan,Theresa,Ursula,Valerie,Violet,Vivien,Yvonne");	
 
-// families
+
 	n = 0;
 	n = AddStr2Array(&sEnFamilies, n, "Abbot,Abrams,Adams,Addison,Irons,Adrian,Adkins,Acton,Addington,Adderley,Allen,Aldridge,Adney,Albury");
 	n = AddStr2Array(&sEnFamilies, n, "Almond,Archer,Argent,Underwood,Anderson,Armstrong,Atkinson,Attridge,Ackroyd,Attwood,Arkwright");
@@ -137,8 +137,8 @@ void InitCharactersNames()
 	
 	
 
-// Holland
-// man names
+
+
 	n = 0;
 	n = AddStr2Array(&sHoManNames, n, "Albert,Albrecht,Abraham,Adam,Aalrik,Arjen,Aart,Abe,Aldert,Abel,Adalbert");
 	n = AddStr2Array(&sHoManNames, n, "Aaldrik,Adelbrecht,Adelmar,Adelrik,Adelwijn,Adriaan,Aegidius,Aemilius,Andreas,Alard,Ansem");
@@ -182,7 +182,7 @@ void InitCharactersNames()
 	n = AddStr2Array(&sHoManNames, n, "Willem,Willemus,Willibrord,Willie,Winandus,Wolfert,Wouter,Xander,Zacharias,Zeger");	
 		
 
-// women names
+
 	n = 0;
 	n = AddStr2Array(&sHoWomenNames, n, "Abigail,Ada,Adela,Adelheid,Adelina,Adolfine,Adriana,Aemilia,Agatha,Agnes,Alberta,Albertina,Aldegonda,Aleida,Aletta");
 	n = AddStr2Array(&sHoWomenNames, n, "Alexandra,Algonda,Alida,Alina,Aloisia,Amalia,Amanda,Amelia,Angela,Angelica,Anna");
@@ -200,7 +200,7 @@ void InitCharactersNames()
 	n = AddStr2Array(&sHoWomenNames, n, "Sofia,Stephanie,Sterre,Susanna,Tessa,Thecla,Theresa,Theresia,Titia,Valentina,Veronica,Victoria");
 	n = AddStr2Array(&sHoWomenNames, n, "Vincenta,Vincentia,Wijnanda,Willemina");	
 	
-// families
+
 	n = 0;
 	n = AddStr2Array(&sHoFamilies, n, "Aalbers,Abrahams,Acker,Ackerman,Ackersdijk,Adriaens,Aerents,Aerts");
 	n = AddStr2Array(&sHoFamilies, n, "Alberts,Alderink,Alderts,Alers,Ameling,Andries,Appelman,Arents,Ariaens,Ariens");
@@ -299,8 +299,8 @@ void InitCharactersNames()
 	n = AddStr2Array(&sHoFamilies, n, "Witsen,Witteman,Woertman,Wouters,Wuytiers");
 	n = AddStr2Array(&sHoFamilies, n, "Wybrants,Wynants,Wyncoop,Wyngaert,Ysbrants,Zaaijman,Zeedijk,Zegers");
 
-// French
-// man names
+
+
 	n = 0;
 	n = AddStr2Array(&sFrManNames, n, "Adalbert,Adelmar,Adrien,Agnel,Aimard,Alain,Alban,Albert,Albin,Alexandre,Amable,Amaury,Amos,Andre");
 	n = AddStr2Array(&sFrManNames, n, "Anatole,Ange,Annibal,Anselme,Antoine,Apollinaire,Aquilin,Archambaud,Ariel,Aristide,Armand");
@@ -324,7 +324,7 @@ void InitCharactersNames()
 	
 	
 
-// women names
+
 	n = 0;
 	n = AddStr2Array(&sFrWomenNames, n, "Adelaide,Adele,Agathe,Agnes,Albine,Alexandrine,Alice,Amande,Amandine,Amelie,Anastasie");
 	n = AddStr2Array(&sFrWomenNames, n, "Angelique,Anne,Antoinette,Arabelle,Ariane,Armande,Artemise,Audeline");
@@ -346,7 +346,7 @@ void InitCharactersNames()
 	n = AddStr2Array(&sFrWomenNames, n, "Valentine,Valerie,Veronique,Victorine,Virginie,Vivienne,Yolande,Yvette,Yvonne");	
 	
 	
-// families
+
 	n = 0;
 	n = AddStr2Array(&sFrFamilies, n, "Abadie,Abeille,Adam,Agard,Aguillard,Aime,Airoldi,Alary,Alibert");
 	n = AddStr2Array(&sFrFamilies, n, "Allaire,Allais,Allard,Allier,Alphonse,Amar,Amaury,Ambre");
@@ -508,8 +508,8 @@ void InitCharactersNames()
 	n = AddStr2Array(&sFrFamilies, n, "Vinet,Violet,Violette,Vivier,Voirol");
 	n = AddStr2Array(&sFrFamilies, n, "Voisard,Voisier,Voisin,Voisinet,Voyer,Vuitton");
 
-// Spain
-// man names
+
+
 	n = 0;
 	n = AddStr2Array(&sSpManNames, n, "Abel,Abelardo,Abrahan,Acacio,Adalbaldo,Adalberto");
 	n = AddStr2Array(&sSpManNames, n, "Adan,Adelardo,Adolfo,Adrian,Agilberto,Agofredo,Agustin,Albano,Alberto,Albino,Alcides");
@@ -556,7 +556,7 @@ void InitCharactersNames()
 	n = AddStr2Array(&sSpManNames, n, "Victoriano,Victorino,Vinicio,Virgilio,Virginio,Vito,Viviano,Zacarias,Zeferino,Zenobio");	
 	
 	
-// women names
+
 	n = 0;
 	n = AddStr2Array(&sSpWomenNames, n, "Adela,Adelaida,Adelina,Adelita,Agustina,Alba,Alberta,Amalia,Amanda,Ana,Angela,Antonia,Ariadna");
 	n = AddStr2Array(&sSpWomenNames, n, "Arsenia,Asuncion,Augusta,Aurelia,Aurora,Barbara,Beatriz,Belen,Belinda,Benigna,Benita");
@@ -576,7 +576,7 @@ void InitCharactersNames()
 	n = AddStr2Array(&sSpWomenNames, n, "Serena,Sibila,Silvia,Sofia,Sol,Soledad,Susana,Tabita,Teodora,Teodosia,Teresa,Ticiana,Ursula,Veronica");
 	n = AddStr2Array(&sSpWomenNames, n, "Viola,Violeta,Virginia,Viviana,Yolanda,Zenobia");	
 	
-// families
+
 	n = 0;
 	n = AddStr2Array(&sSpFamilies, n, "Abalos,Abarca,Abrego,Acedo,Acevedo,Acosta,Agosto,Aguero,Aguila,Aguilar,Alameda,Alamo");
 	n = AddStr2Array(&sSpFamilies, n, "Alatorre,Albo,Alcantar,Alcazar,Alegre");
@@ -595,7 +595,7 @@ void InitCharactersNames()
 	n = AddStr2Array(&sSpFamilies, n, "Carrion,Casado,Casares,Casas,Cascos,Castano");
 	n = AddStr2Array(&sSpFamilies, n, "Castro,Catalano,Cayetano,Cazarez,Ceballos,Cedillo,Centeno,Cerrato,Chapado,Chaparro");
 	n = AddStr2Array(&sSpFamilies, n, "Chavera,Chavez,Chirinos,Ciervo,Cifuentes,Clavijo,Cobo,Colindres,Colmenares,Contreras");
-	n = AddStr2Array(&sSpFamilies, n, "Cordero,Кордона,Cordova,Cornejo,Coronado,Corrales,Correa,Cortez,Corzo");
+	n = AddStr2Array(&sSpFamilies, n, "Cordero,пїЅпїЅпїЅпїЅпїЅпїЅпїЅ,Cordova,Cornejo,Coronado,Corrales,Correa,Cortez,Corzo");
 	n = AddStr2Array(&sSpFamilies, n, "Costales,Costillas,Crespo,Criado,Cruz,Cubero,Cuellar,Cuello,Cuervo,Cuesta,Cuevas");
 	n = AddStr2Array(&sSpFamilies, n, "Custodio,Damaso,Davalos,Davila,Davinio,Daza");
 	n = AddStr2Array(&sSpFamilies, n, "Delgado,Deliz,Delgadillo,Demara,Diaz,Dieguez,Disla,Dominguez");

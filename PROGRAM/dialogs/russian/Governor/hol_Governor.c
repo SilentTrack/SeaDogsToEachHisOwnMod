@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     ref sld;
@@ -7,7 +7,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			//Португалец
+			
 			if (CheckAttribute(pchar, "questTemp.Portugal.Villemstad") && pchar.location == "villemstad_townhall")
 			{
 				dialog.text = RandPhraseSimple("What kind of questions?", "What would you like?");
@@ -20,7 +20,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		    link.l1.go = "exit";
 		break;
 		
-		case "work_1":  // работа на благо короны - линейка нации
+		case "work_1":  
 			if (CheckAttribute(npchar, "notQuestLine"))
 			{
                 dialog.text = "Unfortunately I can offer you a job. You are not that type of people who I want to work with. Farewell.";
@@ -30,7 +30,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}                   
 		break;
 		
-		//Португалец
+		
 		case "Portugal":
 			dialog.text = "Bart the Portuguese?! Do you have him? Alive?";
 			link.l1 = "I know that you doesn't need him dead. He is alive. And, damn, I have had to put a lot of effort to keep him that way!";
@@ -64,5 +64,6 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			DeleteAttribute(pchar, "questTemp.Portugal.Villemstad");
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+

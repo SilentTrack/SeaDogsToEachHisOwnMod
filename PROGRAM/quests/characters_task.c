@@ -1,6 +1,6 @@
-//*******************************************************************
-//  —≈ ÷»я ”—“јЌќ¬ » ѕ≈–—јћ «јƒј„» ѕќ—Ћ≈ ƒ»јЋќ√ј
-//*******************************************************************
+
+
+
 
 #define ADA_FIGHT			"fight"
 #define ADA_GROUP_FIGHT		"group_fight"
@@ -51,103 +51,13 @@ void SetAfterDialog_Task_Point(ref _refCharacter, string taskID, string group, s
 
 void ExecuteAfterDialogTask(ref _refCharacter)
 {
-/*	if( CheckAttribute(_refCharacter,"activity.afterDialog_task") )
-	{
-		int i,j;
-		string s1;
-		ref chref;
-		aref rTask,rootTask;
-
-		makearef(rootTask,_refCharacter.activity.afterDialog_task);
-		for(int n=0; n<GetAttributesNum(rootTask); n++)
-		{
-			rTask = GetAttributeN(rootTask,n);
-			chref = _refCharacter;
-			if( CheckAttribute(rTask,"character") )
-			{
-				i = GetCharacterIndex(rTask.character);
-				if(i!=-1) chref = GetCharacter(i);
-				else trace("WARNING! After dialog task: Not found character wish ID = "+rTask.character);
-			}
-
-			switch(GetAttributeValue(rTask))
-			{
-
-			case ADA_FIGHT:
-				SetCharacterTask_Fight(_refCharacter,chref);
-				trace("After dialog task: SetCharacterTask_Fight("+_refCharacter.id+", "+chref.id+")");
-			break;
-
-			case ADA_GROUP_FIGHT:
-				if(CheckAttribute(rTask,"group"))	s1 = rTask.group;
-				else	s1 = "player";
-				actAttackGroup(_refCharacter,s1);
-				trace("After dialog task: actAttackGroup("+_refCharacter.id+", "+s1+")");
-			break;
-
-			case ADA_KILL:
-				actKill(_refCharacter,chref);
-			break;
-
-			case ADA_GOTO:
-				if(CheckAttribute(rTask,"group")) s1 = rTask.group;
-				else s1 = "goto";
-				SetCharacterTask_GotoPoint(_refCharacter,s1,rTask.locator);
-				trace("After dialog task: SetCharacterTask_GotoPoint("+_refCharacter.id+", "+s1+", "+rTask.locator+")");
-			break;
-
-			case ADA_RUNTO:
-				if(CheckAttribute(rTask,"group")) s1 = rTask.group;
-				else s1 = "goto";
-				SetCharacterTask_RuntoPoint(_refCharacter,s1,rTask.locator);
-				trace("After dialog task: SetCharacterTask_RuntoPoint("+_refCharacter.id+", "+s1+", "+rTask.locator+")");
-			break;
-
-			case ADA_FOLLOW:
-				SetCharacterTask_FollowCharacter(_refCharacter,chref);
-				trace("After dialog task: SetCharacterTask_FollowCharacter("+_refCharacter.id+", "+chref.id+")");
-			break;
-
-			case ADA_ENDQUESTMOVIE:
-				if(CheckAttribute(rTask,"Num")) j = sti(rTask.Num);
-				else j=1;
-				for(i=0; i<j; i++)
-				{
-					EndQuestMovie();
-				}
-				trace("After dialog task: EndQuestMovie() " + j +" numbers");
-			break;
-
-			case ADA_DISAPPEAR:
-				ChangeCharacterAddress(_refCharacter,"none","");
-				WaitNightPause(false);
-				trace("After dialog task: Disappear("+_refCharacter.id+")");
-			break;
-
-			case ADA_DIALOG:
-				actDialog(chref,pchar,"",0);
-				trace("After dialog task: dialog wish main character ("+chref.id+")");
-			break;
-
-			case ADA_STARTQUESTMOVIE:
-				StartQuestMovie(true,true,true);
-				trace("After dialog task: StartQuestMovie(true,true,true)");
-			break;
-
-			}
-			if( CheckAttribute(rTask,"expendable") )
-			{
-				DeleteAttribute(rootTask,GetAttributeName(rTask));
-				n--;
-			}
-		}
-	}*/
+ 
 }
 
 
-//*****************************************************************************
-//  —≈ ÷»я попадани€ в помеченные локации
-//*****************************************************************************
+
+
+
 bool SetEnterLocationQuest(string locationID, string ActivityCheckName, bool expendable)
 {
 	int idx = FindLocation(locationID);
@@ -173,9 +83,9 @@ bool DeleteEnterLocationQuest(string locationID, string ActivityCheckName)
 	return true;
 }
 
-//*****************************************************************************
-//  —≈ ÷»я обработки попадани€ в локацию к ативным персонажам
-//*****************************************************************************
+
+
+
 bool SetActivityCharacter(string idCharacter, string ActivityCheckName, bool expendable)
 {
 	int idx = GetCharacterIndex(idCharacter);
@@ -212,9 +122,9 @@ void ExecuteLocationEntryActivity()
 
 
 
-//*****************************************************************************
-//  —≈ ÷»я обработки активных действий при выходе в другую локацию
-//*****************************************************************************
+
+
+
 bool SetCharacterActivity_FollowMe(string idCharacter, bool followMe, float minDist)
 {
 	int idx = GetCharacterIndex(idCharacter);
@@ -225,3 +135,4 @@ bool SetCharacterActivity_FollowMe(string idCharacter, bool followMe, float minD
 	else DeleteAttribute(chref,"Activity.GoForMainCharacter");
 	return true;
 }
+

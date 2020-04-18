@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,13 +9,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind...", "Not now. There is no time."), "True... But later, not now...",
                       "I'll ask, I'll ask... a bit later though...", "I am sorry, " + GetAddress_FormToNPC(NPChar) + "...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			// Addon-2016 Jason, французские миниквесты (ФМК) Тортуга
+			
 			if (CheckAttribute(pchar, "questTemp.FMQT") && pchar.questTemp.FMQT == "huber")
 			{
 				link.l1 = "Monsieur governor, I have terrible news for you. I'll be brief: your wife wants to rob you. She tried to persuade me to lock pick one of your cabinet chests. I feel my duty is to tell you about this.";
                 link.l1.go = "FMQT";
 			}
-			// Jason НСО
+			
 			if (CheckAttribute(pchar, "questTemp.Patria") && pchar.questTemp.Patria == "epizode_2" && !CheckAttribute(npchar, "quest.patria") && !CheckAttribute(pchar, "questTemp.Patria.Visiter_Late"))
 			{
 				link.l1 = TimeGreeting()+", monseigneur. I am here as ordered by the Governor General Chevalier da Poincy. My task is to deliver a baron by the name of Noel Forget to Tortuga, who arrived from the parent state with a task to inspect the colonies, with the aim to establish French West-Indies trading Company. Let me itroduce him to you... He will explain all the details himself.";
@@ -59,7 +59,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			FMQT_ClearChest();
 		break;
 		
-		// Jason НСО
+		
 		case "patria_tortuga":
 			dialog.text = "Fine, captain Charles de Maure. The baron will be treated properly and I shall do what I can to aid him with his task.";
 			link.l1 = "";
@@ -76,6 +76,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.patria = "true";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

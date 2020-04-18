@@ -1,8 +1,8 @@
 string ttttstr;
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-int DateToInt(int plus)// Функция преводит дату в количество дней
-                                    // если указать 0 - получим текущую дату
+
+int DateToInt(int plus)
+                                    
 {
 
       int  yy = sti(Environment.date.year);
@@ -13,27 +13,27 @@ int DateToInt(int plus)// Функция преводит дату в количество дней
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-void SelectAction(ref rid) //CASE с действиями для слухов
+
+void SelectAction(ref rid) 
 {
 	ref CurrentRumour;
 	int pos, sid;
 	string other,sled,att;
 	pos = FindRumour(rid.id);
 	makeref(CurrentRumour, Rumour[pos]);
-	switch(CurrentRumour.event) // если слух с действием, то выполняем:
+	switch(CurrentRumour.event) 
 	{
 		case "GoldFleet":
 		{
-			//////////////////////////////////////////
+			
 			EndTime_GoldFleet(rid.id);
-			///////////////////////////////////////////
+			
 		}
 		break;
 
 		case "GoldFleetMonth":
 		{
-			//////////////////////////////////////////
+			
 			if (CurrentRumour.actualtime >= DateToInt(0))
 			{
 				ReOpenQuestHeader("Rumour_GoldFleet");
@@ -41,29 +41,29 @@ void SelectAction(ref rid) //CASE с действиями для слухов
 				AddQuestUserData("Rumour_GoldFleet", "smonth", GoldMonth);
 				CurrentRumour.event = "none";
 			}
-			///////////////////////////////////////////
+			
 		}
 		break;
 
 		case "MerchantOnMap":
 		{
-			//////////////////////////////////////////
+			
 			rid.text = GenerateMerchant();
-			///////////////////////////////////////////
+			
 		}
 		break;
 		
 		case "OnMerchantDie":
 		{
-			//////////////////////////////////////////
+			
 			rid.text = AfteMerchantRumour();
-			///////////////////////////////////////////
+			
 		}
 		break;
 		
 		case "GetPrices":
 		{
-			//////////////////////////////////////////
+			
 			string HomeColony = All_GetColony();
             int iNation = sti(Colonies[FindColony(HomeColony)].nation);
 			int icnum = FindNonEnemyColonyForAdventure(iNation, HomeColony, false);
@@ -78,48 +78,48 @@ void SelectAction(ref rid) //CASE с действиями для слухов
         	    rtmp.colony = GetConvertStr(rcolony.id+" Town", "LocLables.txt");
                 rid.text = GetAssembledString( rid.text, rtmp);
             }
-            else rid.text = NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)]; // нету слухов				           
-			///////////////////////////////////////////
+            else rid.text = NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)]; 
+			
 		}
 		break;
-//============ Осады ===============
+
 		case "OnSiege_1":
-		//////////////////////////////////////////
+		
 		rid.text = SiegeRumourText(1);
-		///////////////////////////////////////////
+		
 		break;
 		
 		case "OnSiege_2":
-		//////////////////////////////////////////
+		
 		rid.text = SiegeRumourText(2);
-		///////////////////////////////////////////
+		
 		break;
 		
 		case "OnSiege_3":
-		//////////////////////////////////////////
+		
 		rid.text = SiegeRumourText(3);
-		///////////////////////////////////////////
+		
 		break;
 		
 		
-//============ Дуэли ===============
+
 		case "DuelHero":
 			rid.text = Event_DuelHero(rid);
 			break;
 
-//============= ПГГ ===============
+
 		case "PGG_WorkWithContra":
 			rid.text = PGG_Event_WorkWithContra(rid);
 			break;
-		//квест рассеянных кэпов
+		
 		case "PortmansBook_DeliveryToCap":
 			PortmansBook_writeQuestBook(rid);
 		break;
-		//квест найти украденный корабль
+		
 		case "Portmans_SeekShip_rum":
 			PortmansSeekShip_writeQuestBook(rid);
 		break;
-		//квест по поиску кэпов от горожан
+		
 		case "Citiz_SeekCap_rum":
 			CitizSeekCap_writeQuestBook(rid);
 		break;		
@@ -132,17 +132,17 @@ void SelectAction(ref rid) //CASE с действиями для слухов
 		break;
 	}
 
-	if (CurrentRumour.next != "none" ) // если слух с продолжением
+	if (CurrentRumour.next != "none" ) 
 	{
-		//////////////////////////////////////////
+		
 		sled = CurrentRumour.next;
 		sid = sti(CurrentRumour.id);
-		DeleteRumor(pos);           // сам слух удаляем
-		AddTemplRumour(sled, sid);  // и добавляем продолжение согласно шаблону
-		///////////////////////////////////////////
+		DeleteRumor(pos);           
+		AddTemplRumour(sled, sid);  
+		
 	}
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 void AddRumourLogInfo(int rid)
 {
     ref CurrentRumour;
@@ -167,8 +167,8 @@ void AddRumourLogInfo(int rid)
     }
 
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-string SelectRumour() // Получить рандомный слух из очереди
+
+string SelectRumour() 
 {
     string rez;
     int Rumour_Index;
@@ -181,65 +181,65 @@ string SelectRumour() // Получить рандомный слух из очереди
         st=sti(CurrentRumour.state);
 
         if ((sti(CurrentRumour.actualtime) >= DateToInt(0))
-        && (st > 0) && CurrentRumour.text != "") // Слух не просрочен
-        {                                                                    // Не выпадал до этого несколько раз
+        && (st > 0) && CurrentRumour.text != "") 
+        {                                                                    
 
             if (sti(CurrentRumour.starttime) <= DateToInt(0))
             {
                 st--;
-                CurrentRumour.state = st;  //n раз сказал и все!
+                CurrentRumour.state = st;  
                 rez = CurrentRumour.text;
-                AddRumourLogInfo(CurrentRumour.id); // fix
-                SelectAction(CurrentRumour); // если слух с действием, то выполняем:
-                if (CurrentRumour.text!= "" && CurrentRumour.text!="error") rez = CurrentRumour.text; //fix
+                AddRumourLogInfo(CurrentRumour.id); 
+                SelectAction(CurrentRumour); 
+                if (CurrentRumour.text!= "" && CurrentRumour.text!="error") rez = CurrentRumour.text; 
                 return rez;
             }
             else
             {
-                 return NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)]; // нету слухов
+                 return NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)]; 
             }
         }
         else
         {
             if (CheckAttribute(CurrentRumour, "care") && CurrentRumour.care > 0) SelectAction(CurrentRumour);
-            DeleteRumor(FindRumour(CurrentRumour.id)); // просроченные сразу трем
+            DeleteRumor(FindRumour(CurrentRumour.id)); 
         }
 
     }
-    return NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)]; // нету слухов
+    return NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)]; 
 
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 bool RumourCheker(ref rRumour, string key, aref arPrm)
 {
 	int iNation = sti(arPrm.nation);
-	bool a = true; // по нации и городам
+	bool a = true; 
 	if (CheckAttribute(rRumour, "nonation"))
 	{
-		//--> fix eddy. аргумент функции и цикл
+		
 		aref aNation;
 		makearef(aNation, rRumour.nonation);
 		for (int i = 1 ; i <= GetAttributesNum(aNation) ; i++)
 		{
 			string svar = "n"+i;
-            if (CheckAttribute(aNation, svar) && sti(aNation.(svar)) == iNation ) //fix
+            if (CheckAttribute(aNation, svar) && sti(aNation.(svar)) == iNation ) 
 			{
                 a = false;
 				break;
 			}
 		}
 	}
-//homo вынес сюда
-    if (sti(rRumour.starttime) > DateToInt(0)) //не подходят по времени
+
+    if (sti(rRumour.starttime) > DateToInt(0)) 
     {
       a = false;
     }
 
-//navy --> проверка по городам...
-    if (CheckAttribute(rRumour, "City"))  // homo 06/11/06 Теперь можно задавать отрицание "!город"
-	{                                    // т.е. слух ходит во всех городах кроме заданного
 
-        if (CheckAttribute(arPrm, "City"))  // fix homo 15/03/07 (homo перенес из КВЛ 06/02/08)
+    if (CheckAttribute(rRumour, "City"))  
+	{                                    
+
+        if (CheckAttribute(arPrm, "City"))  
         {
             if (findsubstr(rRumour.City, "!" , 0) != -1)
             {
@@ -252,20 +252,20 @@ bool RumourCheker(ref rRumour, string key, aref arPrm)
                 a = false;
             }
         }
-        else a = false; // fix homo 15/03/07 (homo перенес из КВЛ 06/02/08)
+        else a = false; 
 
 	}
-//navy <--
+
 	if ((CheckAttribute(rRumour, "onlynation")) && sti(rRumour.onlynation) != iNation ){ a = false;}
     bool taverncheat = (key == "tavern") && (rand(1)== 1);
-	bool b = (rRumour.rep == "none") || (PCharRepPhrase ("bad", "good") == rRumour.rep) || (taverncheat);// и по репутации
+	bool b = (rRumour.rep == "none") || (PCharRepPhrase ("bad", "good") == rRumour.rep) || (taverncheat);
 	bool rez = (a) && (b);
 	return rez;
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-string SelectRumourEx(string key, aref arChr) // Получить рандомный слух по типажу из очереди
-{                              // key - ключ спец. слуха
+
+string SelectRumourEx(string key, aref arChr) 
+{                              
     int Rumour_Index,i,rnd;
     int st;
     ref CurrentRumour;
@@ -278,12 +278,12 @@ string SelectRumourEx(string key, aref arChr) // Получить рандомный слух по типа
         string tip = CurrentRumour.tip;
         st =  CurrentRumour.state;
 
-        //15/09/06 homo теперь можно перечислять несколько типажей через запятую
-        if( findsubstr(tip, key , 0) != -1 || findsubstr(tip, "all" , 0) != -1)  // слух специальный или общий
+        
+        if( findsubstr(tip, key , 0) != -1 || findsubstr(tip, "all" , 0) != -1)  
         {
-            if (sti(CurrentRumour.actualtime) >= DateToInt(0) && st > 0 && CurrentRumour.text != "" )  // непросроченный
+            if (sti(CurrentRumour.actualtime) >= DateToInt(0) && st > 0 && CurrentRumour.text != "" )  
             {
-                // homo 03/09/06 fix В массив идут только валидные слухи!
+                
                 if (RumourCheker(CurrentRumour, key, arChr))
                 {
                     TEMP[i] = CurrentRumour;
@@ -294,14 +294,14 @@ string SelectRumourEx(string key, aref arChr) // Получить рандомный слух по типа
             else
             {
                 if (CheckAttribute(CurrentRumour, "care") && CurrentRumour.care > 0) SelectAction(CurrentRumour);
-                DeleteRumor(FindRumour(CurrentRumour.id)); // просроченные сразу трем
+                DeleteRumor(FindRumour(CurrentRumour.id)); 
             }
         }
     }
-    if (i > 0)// есть ли подходящие слухи
+    if (i > 0)
     {
         rnd=rand(i - 1);
-        //-> homo чтоб одинаковые слухи подряд не выпадали
+        
         int it =0;
         
         while (it < 7 && CheckAttribute(&TEMP[rnd], "LastNPC") && TEMP[rnd].LastNPC == arChr.id)
@@ -312,18 +312,18 @@ string SelectRumourEx(string key, aref arChr) // Получить рандомный слух по типа
         if (it == 7) 
 		{
 			if (key == "LSC")
-				return NO_RUMOUR_LSC_TEXT[rand(4)];// нету слухов
+				return NO_RUMOUR_LSC_TEXT[rand(4)];
 			else
 				return NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)];
 		}
         int pin = FindRumour(TEMP[rnd].id);
         Rumour[pin].LastNPC = arChr.id;
-        //<-
+        
         AddRumourLogInfo(TEMP[rnd].id);
-        SelectAction(&TEMP[rnd]); // если слух с действием, то выполняем
+        SelectAction(&TEMP[rnd]); 
         st = TEMP[rnd].state;
 
-        st--;  //n раз сказал и все!
+        st--;  
         makeref(CurrentRumour, Rumour[pin]);
         CurrentRumour.state = st;
         return TEMP[rnd].text;
@@ -343,9 +343,9 @@ string SelectRumourEx(string key, aref arChr) // Получить рандомный слух по типа
 	}
 	return NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)];
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-string SelectRumourExSpecial(string key, aref arChr) // Получить рандомный слух по типажу из очереди
-{                              // key - ключ спец. слуха
+
+string SelectRumourExSpecial(string key, aref arChr) 
+{                              
     int Rumour_Index,i,rnd;
     int st;
     ref CurrentRumour;
@@ -357,12 +357,12 @@ string SelectRumourExSpecial(string key, aref arChr) // Получить рандомный слух 
         string tip = CurrentRumour.tip;
         st =  CurrentRumour.state;
 
-        //15/09/06 homo теперь можно перечислять несколько типажей через запятую
-        if( findsubstr(tip, key , 0) != -1)  // слух только специальный 
+        
+        if( findsubstr(tip, key , 0) != -1)  
         {
-            if (sti(CurrentRumour.actualtime) >= DateToInt(0) && st > 0 && CurrentRumour.text != "" )  // непросроченный
+            if (sti(CurrentRumour.actualtime) >= DateToInt(0) && st > 0 && CurrentRumour.text != "" )  
             {
-                // homo 03/09/06 fix В массив идут только валидные слухи!
+                
                 if (RumourCheker(CurrentRumour, key, arChr))
                 {
                     TEMP[i] = CurrentRumour;
@@ -373,14 +373,14 @@ string SelectRumourExSpecial(string key, aref arChr) // Получить рандомный слух 
             else
             {
                 if (CheckAttribute(CurrentRumour, "care") && CurrentRumour.care > 0) SelectAction(CurrentRumour);
-                DeleteRumor(FindRumour(CurrentRumour.id)); // просроченные сразу трем
+                DeleteRumor(FindRumour(CurrentRumour.id)); 
             }
         }
     }
-    if (i > 0)// есть ли подходящие слухи
+    if (i > 0)
     {
         rnd=rand(i - 1);
-        //-> homo чтоб одинаковые слухи подряд не выпадали
+        
         int it =0;
         
         while (it < 7 && CheckAttribute(&TEMP[rnd], "LastNPC") && TEMP[rnd].LastNPC == arChr.id)
@@ -391,30 +391,30 @@ string SelectRumourExSpecial(string key, aref arChr) // Получить рандомный слух 
         if (it == 7) 
 		{
 			if (key == "LSC")
-				return NO_RUMOUR_LSC_TEXT[rand(4)];// нету слухов
+				return NO_RUMOUR_LSC_TEXT[rand(4)];
 			else
 				return NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)];
 		}
         int pin = FindRumour(TEMP[rnd].id);
         Rumour[pin].LastNPC = arChr.id;
-        //<-
+        
         AddRumourLogInfo(TEMP[rnd].id);
-        SelectAction(&TEMP[rnd]); // если слух с действием, то выполняем
+        SelectAction(&TEMP[rnd]); 
         st = TEMP[rnd].state;
 
-        st--;  //n раз сказал и все!
+        st--;  
         makeref(CurrentRumour, Rumour[pin]);
         CurrentRumour.state = st;
         return TEMP[rnd].text;
 
     }
     if (key == "LSC")
-		return NO_RUMOUR_LSC_TEXT[rand(4)];// нету слухов
+		return NO_RUMOUR_LSC_TEXT[rand(4)];
 	else
-		return NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)];// нету слухов
+		return NO_RUMOUR_TEXT[rand(SIMPLE_RUMOUR_NUM - 1)];
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-int AddRumor(string Text, string Status, string Key, string Repa, string Start, string Period, string action, string Next)//Добавляем слух в очередь слухов
+
+int AddRumor(string Text, string Status, string Key, string Repa, string Start, string Period, string action, string Next)
 {
  ref tmp1;
 
@@ -439,8 +439,8 @@ int AddRumorR(ref rum)
 
 	tmp1 = rum;
 	tmp1.starttime = DateToInt(sti(rum.starttime));
-	tmp1.actualtime = DateToInt(sti(rum.starttime)+sti(rum.actualtime)); //fix
-	id_counter++; // счетчик слухов ++
+	tmp1.actualtime = DateToInt(sti(rum.starttime)+sti(rum.actualtime)); 
+	id_counter++; 
 
 	tmp1.id = id_counter;
 
@@ -460,20 +460,20 @@ int AddRumorR(ref rum)
 		makeref(CurrentRumour, Rumour[Rumour_Index]);
 		nextORevent = (CurrentRumour.next != "none")||(CurrentRumour.event != "none");
 
-		// если слух с продолжением или с действием и на вылет, то выполняем (!!!!)
+		
 		if (nextORevent == true &&	CheckAttribute(CurrentRumour, "care") && 
 			sti(CurrentRumour.care) > 0 && Rumour_Index == ( MAX_RUMOURS - 1 )) 
-			//navy -- CurrentRumour.care > 0, тоже не стработает, т.к. строка с целым.. приводим типы!
+			
 		{
 			SelectAction(sti(CurrentRumour.id)); 
 		}
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		//navy -- а вот это не понял? .tip строка!!! никогда не сработает
-		if (sti(CurrentRumour.tip) != 0  &&				//если слух специальный 
-			sti(tmp1.tip) > sti(CurrentRumour.tip) &&	//и свежий 
-			Rumour_Index == ( MAX_RUMOURS-1 ) )			//и на вылет
+		
+		
+		if (sti(CurrentRumour.tip) != 0  &&				
+			sti(tmp1.tip) > sti(CurrentRumour.tip) &&	
+			Rumour_Index == ( MAX_RUMOURS-1 ) )			
 		{
-			tmp1 = CurrentRumour;  //то один специальный слух оставляем
+			tmp1 = CurrentRumour;  
 		}
 
 		tmp2 = CurrentRumour;
@@ -484,16 +484,16 @@ int AddRumorR(ref rum)
 	return id_counter;
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-int AddTemplRumour(string stName, int nid )//добавляет шаблонный слух и его продолжения
-{                                      // tName -  шаблона  //nid - ID первого слуха в цепочке
-	object CurTpl; //navy -- делаем локальную копию шаблона
+
+int AddTemplRumour(string stName, int nid )
+{                                      
+	object CurTpl; 
 	ref tmpref;
 	string att, Next;
 	int lngFileID, ishods, tNum;
 
 	tNum = TplNameToNum(stName);
-//navy fix --> может не оказаться шаблона!!! должен пропускать.
+
 	if (tNum == -1)
 	{
 		if (bBettaTestMode)
@@ -502,7 +502,7 @@ int AddTemplRumour(string stName, int nid )//добавляет шаблонный слух и его прод
 		}
 		return -1;
 	}
-//navy fix <--
+
 
 	CurTpl = templat[tNum];
 	lngFileID = LanguageOpenFile("RumourTexts.txt");
@@ -510,30 +510,30 @@ int AddTemplRumour(string stName, int nid )//добавляет шаблонный слух и его прод
 	string tid = CurTpl.name+"_t"+rand(sti(CurTpl.texts)-1);
 	ttttstr = LanguageConvertString(lngFileID, tid);
 
-//navy --> изменил вызов функции, параметр ссылка на копию шаблона, можно вешать аттрибуты какие нужны при вызове инита.
+
 	CurTpl.id = nid;
 	string sTemp = CurTpl.function;
 	if (sTemp != "")
 	{
 		call sTemp(&CurTpl);
 	}
-//navy <--
+
 	ishods = sti(CurTpl.next);
-	if (ishods > 0)   // если есть несколько вариантов развития
+	if (ishods > 0)   
 	{   ishods--;
 		att = "n" + ishods;
 		Next = CurTpl.next.(att);
 
 	}
 	else  Next = CurTpl.next;
-	// добавляем в стек
+	
 	CurTpl.text = ttttstr;
 	int rez = AddRumorR(&CurTpl);
 	return rez;
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-int ReplaceTemlpRumour(int rNum, string stName, int nid )//заменяет шаблонный слух и его продолжения
-{                                      // tName -  шаблона  //nid - ID первого слуха в цепочке
+
+int ReplaceTemlpRumour(int rNum, string stName, int nid )
+{                                      
     ref CurTpl;
     string att, Next;
     int lngFileID, ishods, tNum;
@@ -550,15 +550,15 @@ int ReplaceTemlpRumour(int rNum, string stName, int nid )//заменяет шаблонный сл
         call sTemp(nid);
     }
     ishods = sti(CurTpl.next);
-    if (ishods > 0)   // если есть несколько вариантов развития
+    if (ishods > 0)   
     {   ishods--;
         att = "n" + ishods;
         Next = CurTpl.next.(att);
 
     }
     else  Next = CurTpl.next;
-    // добавляем в стек
-    //int rez = ReplaceRumor(rid ,ttttstr, CurTpl.state, CurTpl.tip, CurTpl.rep, CurTpl.starttime, CurTpl.actualtime, CurTpl.event, Next );
+    
+    
     CurTpl.text = ttttstr;
     ReplaceRumorR(rNum, CurTpl);
     return ;
@@ -566,7 +566,7 @@ int ReplaceTemlpRumour(int rNum, string stName, int nid )//заменяет шаблонный сл
 
 
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 int TplNameToNum(string stName)
 {
     int i;
@@ -585,8 +585,8 @@ int TplNameToNum(string stName)
     return -1;
 
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-void  DeleteRumor(int del)  //    Удаляет   слух (по номеру) из очереди со сдвигом верхних
+
+void  DeleteRumor(int del)  
 {
     object tmp1,tmp2;
     int R_Index;
@@ -611,7 +611,7 @@ void  DeleteRumor(int del)  //    Удаляет   слух (по номеру) из очереди со сдвиг
     }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 void  ReplaceRumorR(int rep, ref rum);
 {
 	ref CurRumour;
@@ -625,8 +625,8 @@ void  ReplaceRumorR(int rep, ref rum);
 		id_counter++;
 	}
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-//Заменяет слух (по номеру)
+
+
 void  ReplaceRumor(int rep, string Text, string Status, string Key, string Repa, string Start, string Period, string action, string Next)
 {
 	ref CurRumour;
@@ -646,8 +646,8 @@ void  ReplaceRumor(int rep, string Text, string Status, string Key, string Repa,
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-int FindRumour(int Id)  // Возвращает номер искомого слуха, если нет то -1 (поиск по ID)
+
+int FindRumour(int Id)  
 {
 	int Rumour_Index;
 	ref CurrentRumour;
@@ -656,7 +656,7 @@ int FindRumour(int Id)  // Возвращает номер искомого слуха, если нет то -1 (поис
 	{
 		makeref(CurrentRumour, Rumour[Rumour_Index]);
 
-		if ( CurrentRumour.id == Id  )// Если указн Id то ищем только по нему
+		if ( CurrentRumour.id == Id  )
 		{
 			return Rumour_Index;
 		}
@@ -664,7 +664,7 @@ int FindRumour(int Id)  // Возвращает номер искомого слуха, если нет то -1 (поис
 	return -1;
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 int AddSimpleRumour(string stext, int nation, int terms, int qty)
 {
     object tmp;
@@ -672,19 +672,19 @@ int AddSimpleRumour(string stext, int nation, int terms, int qty)
 	mc = GetMainCharacter();
 
     tmp.text = stext;
-    tmp.state = qty;//кол-во раз
+    tmp.state = qty;
     tmp.tip = "all";
     tmp.rep = "none";
-	//10, 11, 12, 13 - исключить эти нации из слухов 
+	
 	if (nation > 5) tmp.nonation = nation - 10; 
-	else tmp.onlynation = nation; //локализация
+	else tmp.onlynation = nation; 
     tmp.starttime = 0;
-    tmp.actualtime = terms; //сроки
+    tmp.actualtime = terms; 
     tmp.event = "none";
     tmp.next = "none";
     return AddRumorR(&tmp)
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 int AddSimpleRumourEx(string stext, int City, int terms, int qty, string sEvent, string AddString)
 {
     object tmp;
@@ -692,18 +692,18 @@ int AddSimpleRumourEx(string stext, int City, int terms, int qty, string sEvent,
 	mc = GetMainCharacter();
 
     tmp.text = stext;
-    tmp.state = qty;//кол-во раз
+    tmp.state = qty;
     tmp.tip = "all";
     tmp.rep = "none";
-	tmp.City = City; //локализация
+	tmp.City = City; 
     tmp.starttime = 0;
-    tmp.actualtime = terms; //сроки
+    tmp.actualtime = terms; 
     tmp.event = sEvent;
     tmp.next = "none";
-	tmp.addString = AddString; //строка с параметрами, дополнительно
+	tmp.addString = AddString; 
     return AddRumorR(&tmp)
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 int AddSimpleRumourCity(string stext, string City, int terms, int qty, string sEvent)
 {
     object tmp;
@@ -711,17 +711,17 @@ int AddSimpleRumourCity(string stext, string City, int terms, int qty, string sE
 	mc = GetMainCharacter();
 
     tmp.text = stext;
-    tmp.state = qty;//кол-во раз
+    tmp.state = qty;
     tmp.tip = "all";
     tmp.rep = "none";
 	tmp.City = City;
     tmp.starttime = 0;
-    tmp.actualtime = terms; //сроки
+    tmp.actualtime = terms; 
     tmp.next = "none";
 	tmp.event = sEvent;
     return AddRumorR(&tmp)
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 int AddSimpleRumourCityTip(string stext, string City, int terms, int qty, string Tip, string sEvent)
 {
     object tmp;
@@ -729,18 +729,18 @@ int AddSimpleRumourCityTip(string stext, string City, int terms, int qty, string
 	mc = GetMainCharacter();
 
     tmp.text = stext;
-    tmp.state = qty;//кол-во раз
+    tmp.state = qty;
     tmp.tip = Tip;
     tmp.rep = "none";
 	tmp.City = City;
     tmp.starttime = 0;
-    tmp.actualtime = terms; //сроки
+    tmp.actualtime = terms; 
     tmp.event = "none";
     tmp.next = "none";
 	tmp.event = sEvent;
     return AddRumorR(&tmp)
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 int AddSimpleRumourTip(string stext, int terms, int qty, string Tip, string sEvent)
 {
     object tmp;
@@ -748,17 +748,17 @@ int AddSimpleRumourTip(string stext, int terms, int qty, string Tip, string sEve
 	mc = GetMainCharacter();
 
     tmp.text = stext;
-    tmp.state = qty;//кол-во раз
+    tmp.state = qty;
     tmp.tip = Tip;
     tmp.rep = "none";
     tmp.starttime = 0;
-    tmp.actualtime = terms; //сроки
+    tmp.actualtime = terms; 
     tmp.event = "none";
     tmp.next = "none";
 	tmp.event = sEvent;
     return AddRumorR(&tmp)
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 bool RumourHasInformation(string RumText)
 {
 	for(int i = 0; i < SIMPLE_RUMOUR_NUM - 1; i++)

@@ -12,9 +12,9 @@ void InitPiratesNames()
 	String AblCase = NAME_ABL;
 	String VocCase = NAME_VOC;
 	
-	// Warship Весь список ниже я генерил на флаше, юзая имена по старым инитам
 	
-	// Orig
+	
+	
 	Names.Pirates.(OrigType).l0.(NomCase) = "Alan the Butcher";
 	Names.Pirates.(OrigType).l0.(GenCase) = "Alan the Butcher";
 	Names.Pirates.(OrigType).l0.(DatCase) = "Alan the Butcher";
@@ -122,7 +122,7 @@ void InitPiratesNames()
 	
 	Names.Pirates.(OrigType).l15.(NomCase) = "Kristof the Two Pairs";
 	Names.Pirates.(OrigType).l15.(GenCase) = "Kristof the Two Pairs";
-	Names.Pirates.(OrigType).l15.(DatCase) = "Кristof the Two Pairs";
+	Names.Pirates.(OrigType).l15.(DatCase) = "пїЅristof the Two Pairs";
 	Names.Pirates.(OrigType).l15.(AccCase) = "Kristof the Two Pairs";
 	Names.Pirates.(OrigType).l15.(AblCase) = "Kristof the Two Pairs";
 	Names.Pirates.(OrigType).l15.(VocCase) = "Kristof the Two Pairs";
@@ -143,7 +143,7 @@ void InitPiratesNames()
 	
 	Names.Pirates.(OrigType).l18.(NomCase) = "Matt the Pin";
 	Names.Pirates.(OrigType).l18.(GenCase) = "Matt the Pin";
-	Names.Pirates.(OrigType).l18.(DatCase) = "Мatt the Pin";
+	Names.Pirates.(OrigType).l18.(DatCase) = "пїЅatt the Pin";
 	Names.Pirates.(OrigType).l18.(AccCase) = "Matt the Pin";
 	Names.Pirates.(OrigType).l18.(AblCase) = "Matt the Pin";
 	Names.Pirates.(OrigType).l18.(VocCase) = "Matt the Pin";
@@ -253,7 +253,7 @@ void InitPiratesNames()
 	Names.Pirates.(OrigType).l33.(AblCase) = "Henrique the Apron";
 	Names.Pirates.(OrigType).l33.(VocCase) = "Henrique the Apron";
 	
-	// Nick
+	
 	Names.Pirates.(NickType).l0.(NomCase) = "boatswain Billy";
 	Names.Pirates.(NickType).l0.(GenCase) = "boatswain Billy";
 	Names.Pirates.(NickType).l0.(DatCase) = "boatswain Billy";
@@ -331,7 +331,7 @@ void InitPiratesNames()
 	Names.Pirates.(NickType).l10.(AblCase) = "skipper Willy";
 	Names.Pirates.(NickType).l10.(VocCase) = "skipper Willy";
 	
-	// Vip
+	
 	Names.Pirates.(VipType).l0.(NomCase) = "Michael Smith";
 	Names.Pirates.(VipType).l0.(GenCase) = "Michael Smith";
 	Names.Pirates.(VipType).l0.(DatCase) = "Michael Smith";
@@ -395,7 +395,7 @@ void InitPiratesNames()
 	Names.Pirates.(VipType).l8.(AblCase) = "Skinny Jack";
 	Names.Pirates.(VipType).l8.(VocCase) = "Skinny Jack";
 	
-	// Main
+	
 	Names.Pirates.(MainType).l0.(NomCase) = "Morgan";
 	Names.Pirates.(MainType).l0.(GenCase) = "Morgan";
 	Names.Pirates.(MainType).l0.(DatCase) = "Morgan";
@@ -407,7 +407,7 @@ void InitPiratesNames()
 	Names.Pirates.(MainType).l1.(GenCase) = "Morris";
 	Names.Pirates.(MainType).l1.(DatCase) = "Morris";
 	Names.Pirates.(MainType).l1.(AccCase) = "Morris";
-	Names.Pirates.(MainType).l1.(AblCase) = "Мorris";
+	Names.Pirates.(MainType).l1.(AblCase) = "пїЅorris";
 	Names.Pirates.(MainType).l1.(VocCase) = "Morris";
 	
 	Names.Pirates.(MainType).l2.(NomCase) = "Sharp";

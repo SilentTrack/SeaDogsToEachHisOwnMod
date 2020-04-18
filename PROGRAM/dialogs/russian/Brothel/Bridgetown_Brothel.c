@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     ref sld;
@@ -27,15 +27,16 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			if (sti(pchar.questTemp.HWIC.Eng.BridgeCounter) == 7) 
 			{
 			AddQuestRecord("Holl_Gambit", "2-6");
-			pchar.quest.GotoBridgetownOver.over = "yes";//снять таймер
+			pchar.quest.GotoBridgetownOver.over = "yes";
 			pchar.questTemp.HWIC.Eng = "SeekVanBerg";
 				pchar.quest.VanBergAttack_Check.win_condition.l1 = "MapEnter";
 				pchar.quest.VanBergAttack_Check.function = "VanBergAttackCheck";
-				//if(sti(RealShips[sti(pchar.ship.type)].basetype) != SHIP_VALCIRIA || GetCompanionQuantity(pchar) > 1) AddDialogExitQuestFunction("FailVanBergInWorld");
-				//else AddDialogExitQuestFunction("CreateVanBergInWorld");
+				
+				
 			}
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

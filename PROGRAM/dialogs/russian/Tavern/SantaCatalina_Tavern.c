@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -14,8 +14,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1 = "Listen, "+npchar.name+", who is Jan Svenson and how do I find him?";
                 link.l1.go = "Svenson";
 			}	
-			//<-- Бремя гасконца
-			// Страж Истины
+			
+			
 			if (CheckAttribute(pchar, "questTemp.Guardoftruth") && pchar.questTemp.Guardoftruth == "merdok" && !CheckAttribute(npchar, "quest.jino"))
 			{
 				link.l1 = "Listen, has there been an alchemist that arrived here in this town, a physician? He's Italian, about thirty years old, his name is Gino Gvineili. Have you heard anything about that?";
@@ -42,7 +42,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "Svenson_3":
-			dialog.text = "His favoгite Helen, also known as Rumba, a daughter of his late old friend Shawn McArthur, has disappeared. Rest in piece, old man... Jan treats the young devil as his own daughter, since he doesn't have kids of his own. So, the girl has vanished along with her schooner 'Rainbow' and a crew\nI feel bad for the girl. A rare beauty, smart too. Hot as fire, that's why they had called her Rumba! Her father taught her everything he knew, she inherited the ship and every single crewman stayed  on her side. Even the eldest sea wolves recognized her as a captain...";
+			dialog.text = "His favoпїЅite Helen, also known as Rumba, a daughter of his late old friend Shawn McArthur, has disappeared. Rest in piece, old man... Jan treats the young devil as his own daughter, since he doesn't have kids of his own. So, the girl has vanished along with her schooner 'Rainbow' and a crew\nI feel bad for the girl. A rare beauty, smart too. Hot as fire, that's why they had called her Rumba! Her father taught her everything he knew, she inherited the ship and every single crewman stayed  on her side. Even the eldest sea wolves recognized her as a captain...";
 			link.l1 = "What could have happened with her?";
 			link.l1.go = "Svenson_4";			
 		break;
@@ -68,7 +68,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1.go = "Svenson_6";			
 		break;
 		
-		case "Svenson_6"://устанавливаем Глэдис на форт
+		case "Svenson_6":
 			DialogExit();
 			ref sld = characterFromId("Gladis");
 			ChangeCharacterAddressGroup(sld, "SantaCatalina_fort", "goto", "goto53");
@@ -86,5 +86,5 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.jino = "true";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }

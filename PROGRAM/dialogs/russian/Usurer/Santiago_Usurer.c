@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -9,7 +9,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where has my memory gone...",
                       "You've guessed it, I'm sorry...", "I understand...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//Голландский гамбит, Голландия
+			
 			if (CheckAttribute(pchar, "questTemp.HWIC.Holl") && pchar.questTemp.HWIC.Holl == "SantiagoTripBegin")
 			{
 				link.l1 = "Senior, I'm captain " + GetFullName(pchar) + ", and I'm here on an errand for Lucas Rodenburg. I have a package from him to you.";
@@ -20,13 +20,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				link.l1 = "I've come for Senior Lucas Rodenburg's reply.";
 				link.l1.go = "SantiagoTripBank_3";	
 			}
-			//Голландский гамбит, Голландия
+			
 		break;
 		
 		case "SantiagoTripBank":
 			if (GetCharacterItem(pchar, "Chest") >= 5)
 			{
-			dialog.text = "You don't say… a package! Well, give it, senior.";
+			dialog.text = "You don't sayпїЅ a package! Well, give it, senior.";
 			link.l1 = "Also, Senior Rodenburg asked to tell you this...";
 			link.l1.go = "SantiagoTripBank_1";
 			RemoveItems(PChar, "NPC_Letter", 1);
@@ -48,17 +48,17 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "SantiagoTripBank_2":
 			DialogExit();
-			pchar.quest.SantiagoTripOver.over = "yes"; //снять таймер
+			pchar.quest.SantiagoTripOver.over = "yes"; 
 			bDisableFastReload = true;
 			pchar.quest.Santiago_Trip.win_condition.l1 = "location";
 			pchar.quest.Santiago_Trip.win_condition.l1.location = "Santiago_town";
 			pchar.quest.Santiago_Trip.function = "SantiagoTrip_Attack";
 			pchar.questTemp.HWIC.Holl = "SantiagoTripAttack";
-			LAi_LocationDisableOfficersGen("Santiago_town", true);//офицеров не пускать // 291112
+			LAi_LocationDisableOfficersGen("Santiago_town", true);
 		break;
 		
 		case "SantiagoTripBank_3":
-			dialog.text = "Yes, of course... but I believe we can do without written conventionalities. Just tell him these words – 'this man must die'. That would be fair and we won't have any problems as far as a loud written apology.";
+			dialog.text = "Yes, of course... but I believe we can do without written conventionalities. Just tell him these words пїЅ 'this man must die'. That would be fair and we won't have any problems as far as a loud written apology.";
 			link.l1 = "Fine, I shall remember that, senior. Anything else?";
 			link.l1.go = "SantiagoTripBank_4";
 		break;
@@ -72,9 +72,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "SantiagoTripBank_5":
 			DialogExit();
 			pchar.questTemp.HWIC.Holl = "SantiagoTripFinal";
-			LAi_LocationDisableOfficersGen("Santiago_town", false);//офицеров пускать // 291112
+			LAi_LocationDisableOfficersGen("Santiago_town", false);
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

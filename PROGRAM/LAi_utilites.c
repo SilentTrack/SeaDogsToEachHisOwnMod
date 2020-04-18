@@ -1,9 +1,9 @@
 string arrayNPCModel[64];
-int    arrayNPCModelHow; // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+int    arrayNPCModelHow; 
 
 void CreateTraders(aref loc)
 {
-	if(CheckAttribute(loc, "QuestCapture")) return; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+	if(CheckAttribute(loc, "QuestCapture")) return; 
 	if (loc.type == "town" && !LAi_IsCapturedLocation)
 	{
 		int iColony = -1;
@@ -89,7 +89,7 @@ void CreateTraders(aref loc)
 				
 				chr.City = Colonies[iColony].id;
 				chr.CityType = "citizen";
-				chr.Merchant = true; // ï¿½ï¿½ï¿½ï¿½ "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
+				chr.Merchant = true; 
 				chr.Merchant.type = sTraderType; 
 				chr.money = TRADER_MIN_MONEY + rand(TRADER_NORM);
 				
@@ -114,22 +114,22 @@ void CreateTraders(aref loc)
 	}	
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ + ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ 48ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ boal 13.05.06
+
 void CreateCitizens(aref loc)
 {
 	bool generateAffairOfHonor = true;
 	
-	if (loc.type != "town" && loc.type != "church" && loc.type != "residence") return; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
-	if(LAi_IsCapturedLocation) // fix ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	if (loc.type != "town" && loc.type != "church" && loc.type != "residence") return; 
+	if(LAi_IsCapturedLocation) 
 	{
 		return;
 	}
-	if(CheckAttribute(loc, "QuestCapture")) return; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+	if(CheckAttribute(loc, "QuestCapture")) return; 
 	
 	int iColony = -1;
 	int iNation = -1;
 
-	if (isLocationHasCitizens(loc.id)) return; // boal  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+	if (isLocationHasCitizens(loc.id)) return; 
 	
 	if(CheckAttribute(loc, "fastreload"))
 	{
@@ -156,7 +156,7 @@ void CreateCitizens(aref loc)
 	string slai_group, locatorName, sType;
     slai_group = GetNationNameByType(iNation)  + "_citizens"; 
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+	
 	if (loc.type == "town")
 	{
 		int iPoorIdx = GetCharacterIndex(colonies[iColony].id + "_Poorman");
@@ -181,9 +181,9 @@ void CreateCitizens(aref loc)
 
 		}
 	}
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ <--
+	
 
-    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ --> Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+    
 	iSailorQty = rand(2)+2;
 	iContraQty = rand(1)+1;
 	iCapQty = rand(1);
@@ -195,7 +195,7 @@ void CreateCitizens(aref loc)
 	iConvQty = 0;
 	iCitizensQuantity = rand(8)+6;
 	if (loc.type == "church")
-	{//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	{
 		iSailorQty = 0;
 		iCapQty = 0;
 		iNobleQty = 0;
@@ -220,10 +220,10 @@ void CreateCitizens(aref loc)
     arrayNPCModelHow = 0;
 	if (checkAttribute(loc, "citizens") || loc.type == "church")
 	{
-		if(iNation != PIRATE || sti(Colonies[iColony].HeroOwn) == true)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		if(iNation != PIRATE || sti(Colonies[iColony].HeroOwn) == true)
 		{
-			if (Colonies[iColony].id == "Pirates") return; // ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
-			for(i=0; i<iSailorQty; i++)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			if (Colonies[iColony].id == "Pirates") return; 
+			for(i=0; i<iSailorQty; i++)
 			{
                 iSex = MAN;
 				sType = "sailor";
@@ -242,7 +242,7 @@ void CreateCitizens(aref loc)
 				chr.dialog.filename    = "Population\Sailor.c";
 				chr.dialog.currentnode = "first time";
 				chr.greeting = "town_sailor";
-				if (rand(5) == 1 && !CheckAttribute(pchar, "questTemp.Sharlie.Lock")) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				if (rand(5) == 1 && !CheckAttribute(pchar, "questTemp.Sharlie.Lock")) 
 				{
 					chr.quest.crew = "true";
 					chr.quest.crew.qty = 5+rand(150);
@@ -251,7 +251,7 @@ void CreateCitizens(aref loc)
 					chr.talker = rand(9);
 				}
 			}
-			for(i=0; i<iGipsyQty; i++)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			for(i=0; i<iGipsyQty; i++)
 			{
                 iSex = WOMAN;
 				sType = "gipsy";
@@ -270,7 +270,7 @@ void CreateCitizens(aref loc)
 				chr.greeting = "gipsy";
 				chr.talker = 5;
 			}
-			for(i=0; i<iContraQty; i++)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			for(i=0; i<iContraQty; i++)
 			{
                 iSex = MAN;
 				sType = "marginal";
@@ -283,7 +283,7 @@ void CreateCitizens(aref loc)
 				LAi_SetCitizenType(chr);
 				GiveItem2Character(chr, RandPhraseSimple("blade_04","blade_06"));
 				EquipCharacterbyItem(chr, RandPhraseSimple("blade_04","blade_06"));
-				if (rand(7) < 2 && !CheckAttribute(pchar, "GenQuest.Marginpassenger") && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && chr.City != "Minentown" && chr.City != "Panama") //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				if (rand(7) < 2 && !CheckAttribute(pchar, "GenQuest.Marginpassenger") && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && chr.City != "Minentown" && chr.City != "Panama") 
 				{
 					chr.quest.passenger = "true";
 					chr.talker = rand(3);
@@ -295,7 +295,7 @@ void CreateCitizens(aref loc)
 				chr.dialog.currentnode = "first time";
 				chr.greeting = "marginal";
 			}
-			for(i=0; i<iCapQty; i++)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			for(i=0; i<iCapQty; i++)
 			{
 				iSex = MAN;
 				sType = "captain";
@@ -308,7 +308,7 @@ void CreateCitizens(aref loc)
 				LAi_SetCitizenType(chr);
 				GiveItem2Character(chr, RandPhraseSimple("blade_10","blade_13"));
 				EquipCharacterbyItem(chr, RandPhraseSimple("blade_10","blade_13"));
-				if (rand(3) < 1 && !CheckAttribute(pchar, "GenQuest.MarchCap") && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && chr.City != "Panama") //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ patch-5
+				if (rand(3) < 1 && !CheckAttribute(pchar, "GenQuest.MarchCap") && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && chr.City != "Panama") 
 				{
 					chr.quest.march = "true";
 					chr.talker = rand(1);
@@ -320,7 +320,7 @@ void CreateCitizens(aref loc)
 				chr.dialog.currentnode = "first time";
 				chr.greeting = "captain";
 			}
-			for(i=0; i<iCitizQty; i++)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ + ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			for(i=0; i<iCitizQty; i++)
 			{
 				if (loc.type == "church") iSex = MAN;
 				else iSex = rand(WOMAN);
@@ -351,7 +351,7 @@ void CreateCitizens(aref loc)
 				{
 					chr.dialog.filename = "Population\Townman.c";
 					chr.greeting = "citizen_male";
-					if (rand(6) > 4 && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && loc.type != "church" && chr.City != "Panama") //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ patch-5
+					if (rand(6) > 4 && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && loc.type != "church" && chr.City != "Panama") 
 					{
 						chr.quest.passenger = "true";
 						chr.talker = rand(3);
@@ -362,14 +362,14 @@ void CreateCitizens(aref loc)
 					chr.dialog.filename = "Population\Towngirl.c";
 					chr.greeting = "citizen_female";
 				}
-				// Warship, 25.05.11. "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½" -->
+				
 				bool bAh = (drand(11) == 5) && (!CheckAttribute(pchar, "questTemp.Sharlie.Lock")) && (!CheckAttribute(pchar, "GenQuest.Escort.Trader"))
 				if(bAh || bBettaTestMode)
 				{
 					if(generateAffairOfHonor)
 					{
 						if(!CheckAttribute(PChar, "QuestTemp.AffairOfHonor.FinishCount")) PChar.QuestTemp.AffairOfHonor.FinishCount = 0;
-						//pchar.questTemp.AffairOfHonor.LighthouseId = Island_GetLighthouseId(loc.islandId);
+						
 						pchar.questTemp.AffairOfHonor.LighthouseId = Colony_GetLighthouseId(loc.fastreload);
 						
 						if(loc.type == "town" && chr.City != "PortRoyal" && chr.City != "FortOrange" && PChar.QuestTemp.AffairOfHonor.LighthouseId != "" && AffairOfHonor_GetCurQuest() == "")
@@ -378,7 +378,7 @@ void CreateCitizens(aref loc)
 							{
 								if(chr.sex == "man" || !CheckAttribute(PChar, "QuestTemp.AffairOfHonor.Cavalier"))
 								{
-									// Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+									
 									int Rank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+10;
 									int Scl = 30+2*sti(pchar.rank);
 									chr.id = "AffairOfHonor_QuestMan";
@@ -387,22 +387,22 @@ void CreateCitizens(aref loc)
 				{
 										FantomMakeCoolFighter(chr, Rank, Scl, Scl, RandPhraseSimple("blade_08","blade_09"), RandPhraseSimple("pistol1","pistol5"), "bullet", Scl*3);
 										float Mft = MOD_SKILL_ENEMY_RATE/20;
-										chr.MultiFighter = 1.0+Mft; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+										chr.MultiFighter = 1.0+Mft; 
 									}
 									chr.dialog.filename = "Quest\ForAll_dialog.c";
 									chr.dialog.currentnode = "AffairOfHonor_1";
 									chr.talker = rand(3);
 									LAi_SetImmortal(chr, true);
-									generateAffairOfHonor = false; // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+									generateAffairOfHonor = false; 
 									Log_TestInfo("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½");
 								}
 							}
 						}
 					}
 				}
-				// <--
+				
 			}
-			for(i=0; i<iNobleQty; i++)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			for(i=0; i<iNobleQty; i++)
 			{
 				iSex = rand(WOMAN);
 				sType = "noble";
@@ -425,21 +425,21 @@ void CreateCitizens(aref loc)
 					if (!CheckAttribute(pchar, "questTemp.Sharlie.Lock"))
 					{
 						if (rand(11) > 9 && GetCharacterIndex("QuestCitiz_" + loc.fastreload) == -1  && !CheckAttribute(pchar, "questTemp.Sharlie.Lock"))
-						{//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+						{
 							chr.id = "QuestCitiz_" + loc.fastreload;
 							chr.dialog.filename = "Quest\ForAll_dialog.c";
 							chr.dialog.currentnode = "SCQ_Nobleman";
-							chr.talker = rand(3); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-							chr.quest.SeekCap.numQuest = rand(1); //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+							chr.talker = rand(3); 
+							chr.quest.SeekCap.numQuest = rand(1); 
 						}
-						if (rand(11) < 2  && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && chr.City != "Panama") //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ patch-5
+						if (rand(11) < 2  && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && chr.City != "Panama") 
 						{
 							chr.quest.passenger = "true";
 							chr.talker = rand(3);
 						}
-						if (rand(11) == 3) chr.quest.donation = "true"; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-						if (rand(11) == 5) chr.quest.lombard = "true"; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-						if (rand(11) == 7) chr.quest.slaves = "true"; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+						if (rand(11) == 3) chr.quest.donation = "true"; 
+						if (rand(11) == 5) chr.quest.lombard = "true"; 
+						if (rand(11) == 7) chr.quest.slaves = "true"; 
 					}
 				}
 				else
@@ -448,7 +448,7 @@ void CreateCitizens(aref loc)
 					chr.greeting = "noble_female";
 				}
 			}
-			for(i=0; i<iIndianQty; i++)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			for(i=0; i<iIndianQty; i++)
 			{
                 if (i < 9) iSex = MAN;
 				else iSex = WOMAN;
@@ -473,7 +473,7 @@ void CreateCitizens(aref loc)
 					chr.name = GetIndianName(WOMAN);
 					chr.lastname = "";
 					RemoveAllCharacterItems(chr, true);
-					//chr.greeting = "Gr_Woman_Citizen";
+					
 				}
 				if (sti(Colonies[iColony].HeroOwn) == true) LAi_group_MoveCharacter(chr, LAI_GROUP_PLAYER_OWN);
 				else LAi_group_MoveCharacter(chr, slai_group);
@@ -481,7 +481,7 @@ void CreateCitizens(aref loc)
 				chr.dialog.filename    = "Population\Indian.c";
 				chr.dialog.currentnode = "first time";
 			}
-			for(i=0; i<iConvQty; i++)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			for(i=0; i<iConvQty; i++)
 			{
                 iSex = MAN;
 				sType = "convict";
@@ -501,7 +501,7 @@ void CreateCitizens(aref loc)
 				chr.dialog.currentnode = "first time";
 				chr.greeting = "convict";
 			}
-			for(i=0; i<iMonkQty; i++)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			for(i=0; i<iMonkQty; i++)
 			{
                 iSex = MAN;
 				sType = "monk";
@@ -516,17 +516,17 @@ void CreateCitizens(aref loc)
 				else LAi_group_MoveCharacter(chr, slai_group);
 				if (!CheckAttribute(pchar, "questTemp.Sharlie.Lock"))
 				{
-					if (rand(4) == 1) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					if (rand(4) == 1) 
 				{
 					chr.quest.donation = "true";
 					chr.talker = rand(3);
 				}
-					if (rand(4) == 0 && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && chr.City != "Panama") //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ patch-5
+					if (rand(4) == 0 && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && chr.City != "Panama") 
 				{
 					chr.quest.passenger = "true";
 					chr.talker = rand(3);
 				}
-					if (rand(4) == 4 && !CheckAttribute(pchar, "questTemp.ShipCapellan") && 5-sti(RealShips[sti(Pchar.Ship.Type)].Class) > 0) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					if (rand(4) == 4 && !CheckAttribute(pchar, "questTemp.ShipCapellan") && 5-sti(RealShips[sti(Pchar.Ship.Type)].Class) > 0) 
 				{
 					chr.quest.capellan = "true";
 					chr.talker = 9;
@@ -540,7 +540,7 @@ void CreateCitizens(aref loc)
 		}
 		else
 		{
-			for(i=0; i<iCitizensQuantity; i++)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			for(i=0; i<iCitizensQuantity; i++)
 			{
 				iSex = MAN;
 				sType = "pirate";
@@ -561,9 +561,9 @@ void CreateCitizens(aref loc)
 			}
 		}
 	}
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <--    
 	
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+	
+	
 	if (checkAttribute(loc, "soldiers") && CheckAttribute(loc, "locators.soldiers"))
 	{
 		aref solderLoc;
@@ -587,22 +587,22 @@ void CreateCitizens(aref loc)
             chr.CityType = "soldier";
 			chr.RebirthPhantom = true; 
 			LAi_CharacterReincarnation(chr, true, true);
-			LAi_SetReincarnationRankStep(chr, MOD_SKILL_ENEMY_RATE+2); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-            SetFantomParamFromRank(chr, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE, true); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-			LAi_SetLoginTime(chr, 6.0, 23.0); //ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ :)
+			LAi_SetReincarnationRankStep(chr, MOD_SKILL_ENEMY_RATE+2); 
+            SetFantomParamFromRank(chr, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE, true); 
+			LAi_SetLoginTime(chr, 6.0, 23.0); 
 
-			//locatorName = PlaceCharacter(chr, "soldiers", "random_free"); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½-ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			solderLoc = GetAttributeN(st, i);
 			locatorName = GetAttributeName(solderLoc);
 			ChangeCharacterAddressGroup(chr, pchar.location, "soldiers", locatorName);
-			// eddy. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+			
 			if (findsubstr(locatorName, "protector" , 0) != -1 && iNation != PIRATE) 
 			{
 				chr.protector = true;
 				chr.greeting = "protector";
 			}
 			else chr.greeting = "soldier";
-			// <-- eddy. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			
 			chr.dialog.filename = "Common_Soldier.c";
 			chr.dialog.currentnode = "first time";
@@ -620,8 +620,8 @@ void CreateCitizens(aref loc)
 			}
 		}
 	}
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <--
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+	
+	
 	if (checkAttribute(loc, "soldiers") && CheckAttribute(loc, "locators.patrol"))
 	{
 		makearef(st, loc.locators.patrol);
@@ -646,10 +646,10 @@ void CreateCitizens(aref loc)
 			SetNPCModelUniq(chr, sType, MAN);
 			chr.City = Colonies[iColony].id;
             chr.CityType = "soldier";
-            SetFantomParamFromRank(chr, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE, true); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            SetFantomParamFromRank(chr, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE, true); 
 			chr.RebirthPhantom = true; 
 			LAi_CharacterReincarnation(chr, true, true);
-			LAi_SetReincarnationRankStep(chr, MOD_SKILL_ENEMY_RATE+2); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			LAi_SetReincarnationRankStep(chr, MOD_SKILL_ENEMY_RATE+2); 
 			LAi_SetLoginTime(chr, 0.0, 24.0);
 			
 			chr.dialog.filename = "Common_Soldier.c";
@@ -669,7 +669,7 @@ void CreateCitizens(aref loc)
 			}
 			PlaceCharacter(chr, "patrol", "random_free");
 		}
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		
 		for (i=1; i<=3; i++)
 		{
 			if(iNation == PIRATE)
@@ -682,15 +682,15 @@ void CreateCitizens(aref loc)
 			}
 			chr = GetCharacter(NPC_GenerateCharacter("GenChar_", sType, "man", "mushketer", sti(pchar.rank), iNation, 2, false, "soldier"));
 			chr.id = "GenChar_" + chr.index;	
-			chr.reputation = (1 + rand(44) + rand(44));// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			chr.reputation = (1 + rand(44) + rand(44));
 			chr.City = Colonies[iColony].id;
             chr.CityType = "soldier";
 			chr.greeting = "soldier";
 			chr.RebirthPhantom = true; 
 			LAi_CharacterReincarnation(chr, true, true);
-			LAi_SetReincarnationRankStep(chr, MOD_SKILL_ENEMY_RATE+2); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-            SetFantomParamFromRank(chr, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE, true); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-			LAi_SetLoginTime(chr, 0.0, 24.0); //ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ :)
+			LAi_SetReincarnationRankStep(chr, MOD_SKILL_ENEMY_RATE+2); 
+            SetFantomParamFromRank(chr, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE, true); 
+			LAi_SetLoginTime(chr, 0.0, 24.0); 
 
 			PlaceCharacter(chr, "patrol", "random_free");
 
@@ -710,8 +710,8 @@ void CreateCitizens(aref loc)
 			}
 		}
 	}
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <--
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+	
+	
 	if (loc.type == "town" && CheckAttribute(loc, "carrier") && IsLoginTime())
 	{
 		int iTemp;
@@ -737,7 +737,7 @@ void CreateCitizens(aref loc)
 		CarrierName[9] = "GenresChest2";
 		for (i=iQtyCarrier; i>0; i--)
 		{
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			iSex = 1;
 			while (iSex == 1)
 			{
@@ -748,7 +748,7 @@ void CreateCitizens(aref loc)
 			chr.id = chr.id + "_" + chr.index;
 			aref aLocator;
 			makearef(aLocator, loc.locators.reload);
-			CarrierName[iTemp] = ""; //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			CarrierName[iTemp] = ""; 
 			LAi_SetImmortal(chr, true);
 			LAi_SetLoginTime(chr, 7.0, 20.0);
 			iSex = 1;
@@ -768,10 +768,10 @@ void CreateCitizens(aref loc)
 			LAi_group_MoveCharacter(chr, slai_group);
 		}
 	}
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <--
+	
 }
 
-void CreateIslatesoroEng(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+void CreateIslatesoroEng(aref loc)
 {
 	if (loc.id == "Pirates_town" && CheckAttribute(loc, "EngBase"))
 	{
@@ -780,7 +780,7 @@ void CreateIslatesoroEng(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿
 		if(iNation == -1) return;
 		if(iNation != ENGLAND) return;
 		int iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE;
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+		
 		for (i=1; i<=4; i++)
 		{
 			sld = GetCharacter(NPC_GenerateCharacter("Eng_IT_Prot_"+i, "sold_eng_"+(rand(5)+1), "man", "man", iRank, ENGLAND, 1, false, "soldier"));
@@ -796,13 +796,13 @@ void CreateIslatesoroEng(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿
 			if (i < 3) 
 			{
 				sld.protector = true;
-				sld.protector.CheckAlways = true; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				sld.protector.CheckAlways = true; 
 				sld.greeting = "protector"; 
 			}
 			LAi_SetGuardianType(sld);
 			LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
 		}
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		
 		for (i=1; i<=10; i++)
 		{
 			if (i < 8)
@@ -833,7 +833,7 @@ void CreateIslatesoroEng(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿
 	}
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (24ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ boal 13.05.06
+
 void CreateHabitues(aref loc)
 {
 	int iColony = -1;
@@ -843,11 +843,11 @@ void CreateHabitues(aref loc)
 	
 	if (!checkAttribute(loc, "habitues")) return;
 	if(LAi_IsCapturedLocation) return;
-	if (CheckAttribute(pchar, "questTemp.Mtraxx.InTavern") && loc.id == "LaVega_tavern") return; // Addon 2016-1 Jason ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	if (CheckAttribute(pchar, "questTemp.Mtraxx.InTavern") && loc.id == "LaVega_tavern") return; 
 	
-	OfficersReactionResult(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	OfficersReactionResult(); 
 
-	if (!isLocationHasCitizens(loc.id))  // boal  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+	if (!isLocationHasCitizens(loc.id))  
 	{
 		if (CheckAttribute(loc, "fastreload"))
 		{
@@ -914,7 +914,7 @@ void CreateHabitues(aref loc)
 					SetNPCModelUniq(chr, "spa_soldier", MAN);
 					chr.City = Colonies[iColony].id;
 					chr.CityType = "citizen";
-					sTemp = PlaceCharacter(chr, "sit", "random_free"); // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					sTemp = PlaceCharacter(chr, "sit", "random_free"); 
                     ReSitCharacterOnFree(chr, loc.id, sTemp);
 
 					LAi_SetLoginTime(chr, 0.0 + rand(6), 24.0 - rand(10));
@@ -934,9 +934,9 @@ void CreateHabitues(aref loc)
 				}
 				return;
 			}
-			 //Jason --> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ - 33%, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			 
 			if (rand(11) < 4 && loc.id != "Panama_tavern" && !CheckAttribute(pchar, "questTemp.Sharlie.Lock"))
-			{ // 170712
+			{ 
 				i = rand(3)+1;
 				if (CheckFreeLocator(loc.id, "sit_base"+i, -1))
 				{
@@ -964,8 +964,8 @@ void CreateHabitues(aref loc)
 					}
 				}
 			}
-			//<-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½
+			
+			
 			for (i = 1; i <=4; i++)
 			{
                 if (CheckFreeLocator(loc.id, "sit_base" + i, -1))
@@ -995,10 +995,10 @@ void CreateHabitues(aref loc)
 					chr.quest.last_theme_game = rand(1);
 					chr.dialog.filename = "Habitue_dialog.c";
 					chr.dialog.currentnode = "first time";
-					if (chr.quest.last_theme == 0) chr.greeting = "habitue"; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-					else chr.greeting = "player"; // ï¿½ï¿½ï¿½ï¿½ï¿½
+					if (chr.quest.last_theme == 0) chr.greeting = "habitue"; 
+					else chr.greeting = "player"; 
 					
-					// Warship, 30.05.11. "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½" -->
+					
 					bool bAh = (drand(11) == 5) && (!CheckAttribute(pchar, "questTemp.Sharlie.Lock")) && (!CheckAttribute(pchar, "GenQuest.Escort.Trader"))
 					if(bAh || bBettaTestMode)
 					{
@@ -1015,24 +1015,24 @@ void CreateHabitues(aref loc)
 									chr.dialog.currentnode = "AffairOfHonor_1";
 									LAi_SetImmortal(chr, true);
 									SetRandNationSoldierModel(chr);
-									Characters_RefreshModel(chr); // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-									generateAffairOfHonor = false; // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+									Characters_RefreshModel(chr); 
+									generateAffairOfHonor = false; 
 									Log_TestInfo("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½");
 								}
 							}
 						}
 					}
-					// <--
+					
 				}
 			}
 			iChar = GetCharacterIndex(Colonies[iColony].id + "_Smuggler");
-			if (iChar != -1) // ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			if (iChar != -1) 
 			{
 		        chr = &characters[iChar];
 				if (sti(Colonies[iColony].HeroOwn) != true)
-				{ // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
-		            chr.City = Colonies[iColony].id;  // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 20 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
-		            chr.nation = iNation; // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+				{ 
+		            chr.City = Colonies[iColony].id;  
+		            chr.nation = iNation; 
 					CreateModel(iChar, "pirate", MAN);
 					sTemp = PlaceCharacter(chr, "sit", "random_free");
 					ReSitCharacterOnFree(chr, loc.id, sTemp);
@@ -1042,10 +1042,10 @@ void CreateHabitues(aref loc)
 				{
 				    ChangeCharacterAddressGroup(chr, "none", "none", "none");
 				}
-				// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				
 			}
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
-			if (!CheckAttribute(pchar, "questTemp.Sharlie.Lock"))//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+			
+			if (!CheckAttribute(pchar, "questTemp.Sharlie.Lock"))
 			{
 				iCitizensQuantity = rand(8)-6;
 				for (i = 0; i <iCitizensQuantity; i++)
@@ -1058,7 +1058,7 @@ void CreateHabitues(aref loc)
 					ReSitCharacterOnFree(chr, loc.id, sTemp);
 
 					LAi_SetSitType(chr);
-					// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					
 					chr.dialog.filename = "Enc_Officer_dialog.c";
 					chr.dialog.currentnode = "first time";
 					chr.greeting = "officer_hire";
@@ -1072,15 +1072,15 @@ void CreateHabitues(aref loc)
 					}
 				}
 			}
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <--
-			if (rand(15) == 3 || TestRansackCaptain) // ugeen --> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 1/20
-			{ // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
+			if (rand(15) == 3 || TestRansackCaptain) 
+			{ 
                 iChar = NPC_GeneratePhantomCharacter("pirate", iNation, MAN, 1);
 				chr = &characters[iChar];
 				SetNPCModelUniq(chr, "pirate", MAN);
 				chr.City = Colonies[iColony].id;
 				chr.CityType = "citizen";
-				sTemp = PlaceCharacter(chr, "sit", "random_free"); // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				sTemp = PlaceCharacter(chr, "sit", "random_free"); 
 				ReSitCharacterOnFree(chr, loc.id, sTemp);
 
 				LAi_SetSitType(chr);
@@ -1089,13 +1089,13 @@ void CreateHabitues(aref loc)
 				chr.dialog.currentnode = "first time";
 				chr.greeting = "map_trader";
 				
-		        if (GetCharacterItem(pchar, "map_full") == 0) // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+		        if (GetCharacterItem(pchar, "map_full") == 0) 
 		        {
 		            aref item;
 		            Items_FindItem("map_full", &item);
 					FillMapForTreasure(item);
-					//pchar.GenQuest.TreasureMoney = 5000 + rand(30)*500 + rand(30)*500;
-					pchar.GenQuest.TreasureMoney = 100 + rand(50)*5; // Addon-2016 Jason
+					
+					pchar.GenQuest.TreasureMoney = 100 + rand(50)*5; 
 		        }
           		if (sti(Colonies[iColony].HeroOwn) == true)
 				{
@@ -1108,7 +1108,7 @@ void CreateHabitues(aref loc)
 			}
 			else
 			{
-				iCitizensQuantity = rand(3) - 1 ; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				iCitizensQuantity = rand(3) - 1 ; 
 				for (i = 0; i <iCitizensQuantity; i++)
 				{
 				    iChar = NPC_GeneratePhantomCharacter(sType, iNation, MAN, 1);
@@ -1116,7 +1116,7 @@ void CreateHabitues(aref loc)
 					SetNPCModelUniq(chr, sType, MAN);
 					chr.City = Colonies[iColony].id;
 					chr.CityType = "citizen";
-					sTemp = PlaceCharacter(chr, "sit", "random_free"); // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					sTemp = PlaceCharacter(chr, "sit", "random_free"); 
                     ReSitCharacterOnFree(chr, loc.id, sTemp);
 
 					LAi_SetLoginTime(chr, 0.0 + rand(6), 24.0 - rand(10));
@@ -1137,14 +1137,14 @@ void CreateHabitues(aref loc)
 			}
 		}
 	}
-	//PGG_TavernCheckIsPGGHere(); //Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	if (CheckAttribute(pchar, "GenQuest.Ole")) LSC_CheckOlePearl(); // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	
+	if (CheckAttribute(pchar, "GenQuest.Ole")) LSC_CheckOlePearl(); 
 }
 
-void CreateMaltains(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½
+void CreateMaltains(aref loc)
 {	
 	if (GetCityNation("FortFrance") != FRANCE) return; 
-	if(CheckAttribute(loc, "QuestCapture")) return; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+	if(CheckAttribute(loc, "QuestCapture")) return; 
 	
 	if (CheckAttribute(loc, "Maltains"))
 	{
@@ -1153,9 +1153,9 @@ void CreateMaltains(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿
 		if (!CheckAttribute(loc, "Maltains_date") || GetNpcQuestPastDayParam(loc, "Maltains_date") >= 2)
 		{
 			SaveCurrentNpcQuestDateParam(loc, "Maltains_date");
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			sld = GetCharacter(NPC_GenerateCharacter("Maltie_officer", "off_Malt_1", "man", "man", 35, FRANCE, 2, false, "soldier"));
-			FantomMakeCoolFighter(sld, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+10, 100, 100, "blade_07", "pistol5", "bullet", 150);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			FantomMakeCoolFighter(sld, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+10, 100, 100, "blade_07", "pistol5", "bullet", 150);
 			sld.greeting = "patrol";
 			sld.Dialog.Filename = "Quest\Sharlie\OtherNPC.c";
 			sld.dialog.currentnode = "Maltie_officer";
@@ -1163,11 +1163,11 @@ void CreateMaltains(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿
 			LAi_SetHuberType(sld);
 			sld.standUp = true;
 			LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			for (i=1; i<=4; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("MaltainsPro_"+i, "sold_fra_"+(i+8), "man", "man", 25, FRANCE, 2, false, "soldier"));
-				FantomMakeCoolFighter(sld, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+10, 90, 90, "blade_08", "pistol6", "bullet", 100);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				FantomMakeCoolFighter(sld, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+10, 90, 90, "blade_08", "pistol6", "bullet", 100);
 				sld.greeting = "protector";
 				sld.Dialog.Filename = "Quest\Sharlie\OtherNPC.c";
 				sld.dialog.currentnode = "Maltie_soldier";
@@ -1175,11 +1175,11 @@ void CreateMaltains(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿
 				LAi_SetGuardianType(sld);
 				LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
 			}
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 3 ï¿½ï¿½
+			
 			for (i=1; i<=4; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("MaltainsSit_"+i, "sold_fra_"+(rand(7)+9), "man", "man", 20, FRANCE, 2, false, "soldier"));
-				FantomMakeCoolFighter(sld, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+10, 70, 70, "blade_08", "pistol7", "bullet", 100);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				FantomMakeCoolFighter(sld, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+10, 70, 70, "blade_08", "pistol7", "bullet", 100);
 				sld.Dialog.Filename = "Quest\Sharlie\OtherNPC.c";
 				sld.dialog.currentnode = "Maltie_soldier";	
 				sld.greeting = "soldier";
@@ -1190,11 +1190,11 @@ void CreateMaltains(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿
 				PlaceCharacter(sld, "sit", "random_free");
 				LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
 			}
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 4 ï¿½ï¿½
+			
 			for (i=1; i<=5; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("MaltainsStay_"+i, "sold_fra_"+(rand(7)+9), "man", "man", 20, FRANCE, 2, false, "soldier"));
-				FantomMakeCoolFighter(sld, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+10, 70, 70, "blade_08", "pistol7", "bullet", 100);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				FantomMakeCoolFighter(sld, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+10, 70, 70, "blade_08", "pistol7", "bullet", 100);
 				sld.Dialog.Filename = "Quest\Sharlie\OtherNPC.c";
 				sld.dialog.currentnode = "Maltie_soldier";	
 				sld.greeting = "soldier";
@@ -1204,11 +1204,11 @@ void CreateMaltains(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿
 				PlaceCharacter(sld, "soldiers", "random_free");
 				LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
 			}
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 4 ï¿½ï¿½
+			
 			for (i=1; i<=5; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("MaltainsGo_"+i, "sold_fra_"+(rand(7)+9), "man", "man", 20, FRANCE, 2, false, "soldier"));
-				FantomMakeCoolFighter(sld, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+10, 70, 70, "blade_08", "pistol7", "bullet", 100);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				FantomMakeCoolFighter(sld, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+10, 70, 70, "blade_08", "pistol7", "bullet", 100);
 				sld.Dialog.Filename = "Quest\Sharlie\OtherNPC.c";
 				sld.dialog.currentnode = "Maltie_soldier";	
 				sld.greeting = "soldier";
@@ -1221,7 +1221,7 @@ void CreateMaltains(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿
 				LAi_group_MoveCharacter(sld, "FRANCE_CITIZENS");
 			}
 		}
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		
 		if (!CheckAttribute(loc, "Maltaprisoner_date") || GetNpcQuestPastDayParam(loc, "Maltaprisoner_date") > 15)
 		{
 			SaveCurrentNpcQuestDateParam(loc, "Maltaprisoner_date");
@@ -1241,7 +1241,7 @@ void CreateMaltains(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿
 	}
 }
 
-void CreateHWICOffice(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+void CreateHWICOffice(aref loc)
 {	
 	if (GetCityNation("Villemstad") != HOLLAND) return; 
 	
@@ -1252,7 +1252,7 @@ void CreateHWICOffice(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		if (!CheckAttribute(loc, "HWIC_date") || GetNpcQuestPastDayParam(loc, "HWIC_date") >= 30)
 		{
 			SaveCurrentNpcQuestDateParam(loc, "HWIC_date");
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 6 ï¿½ï¿½
+			
 			for (i=1; i<=6; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("HWIC_sold_"+i, "sold_hol_"+(i+9), "man", "man", 25, HOLLAND, 30, false, "soldier"));
@@ -1264,7 +1264,7 @@ void CreateHWICOffice(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 				LAi_SetGuardianType(sld);
 				LAi_group_MoveCharacter(sld, "HOLLAND_CITIZENS");
 			}
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 2 ï¿½ï¿½
+			
 			for (i=1; i<=2; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter("HWIC_clerk_"+i, "citiz_"+(rand(9)+11), "man", "man", 10, HOLLAND, 30, false, "citizen"));
@@ -1279,7 +1279,7 @@ void CreateHWICOffice(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 				LAi_group_MoveCharacter(sld, "HOLLAND_CITIZENS");
 			}
 		}
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		
 		sld = GetCharacter(NPC_GenerateCharacter("HWIC_headclerk", "citiz_9", "man", "man", 20, HOLLAND, -1, false, "citizen"));
 		SetFantomParamFromRank(sld, 20, true);
 		sld.name = "Corice";
@@ -1289,19 +1289,19 @@ void CreateHWICOffice(aref loc)//Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		sld.greeting = "official";
 		LAi_SetLoginTime(sld, 6.0, 21.99);
 		RemoveAllCharacterItems(sld, true);
-		sld.standUp = true; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+		sld.standUp = true; 
 		LAi_SetImmortal(sld, true);
 		LAi_SetHuberType(sld);
 		ChangeCharacterAddressGroup(sld, "Villemstad_houseS3", "sit", "sit3");
 		LAi_group_MoveCharacter(sld, "HOLLAND_CITIZENS");
-		// 230912 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		
 		sld.Merchant = true;
 		sld.Merchant.type = "company";
 		sld.money = TRADER_MIN_MONEY;
 	}
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ LSC - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 void CreateLSCGuardClan(aref loc)
 {	
 	if (loc.id == "LostShipsCity_town")
@@ -1312,23 +1312,23 @@ void CreateLSCGuardClan(aref loc)
 		int iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+15;
 		int iScl = 30 + 3*sti(pchar.rank);
 		
-		int imush = 17; // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		int isold = 15; // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		int iprot = 10; // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		int imush = 17; 
+		int isold = 15; 
+		int iprot = 10; 
 		if (CheckNPCQuestDate(loc, "LSCGuard_date"))
 		{
 			SetNPCQuestDate(loc, "LSCGuard_date");
 			LocatorGroup = "soldiers";
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			for (i=1; i<=imush; i++)
 			{
 				LocatorGroup = "soldiers";
 				LocatorName = "mushketer"+i;	
-				if (i <= 7) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 7 ï¿½ï¿½
+				if (i <= 7) 
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("NarvalMush_"+i, "mush_ctz_"+(rand(2)+10), "man", "mushketer", iRank, PIRATE, 1, false, "soldier"));
 					FantomMakeCoolFighter(sld, iRank, iScl, iScl, "", "mushket2", "cartridge", iScl+100);
-					sld.dialog.Filename = "Quest\LSC\Guardian.c"; // 170912
+					sld.dialog.Filename = "Quest\LSC\Guardian.c"; 
 					sld.dialog.currentnode = "Narval_soldier";	
 					sld.greeting = "Narval";
 					sld.RebirthPhantom = true; 
@@ -1342,7 +1342,7 @@ void CreateLSCGuardClan(aref loc)
 					LAi_group_MoveCharacter(sld, "LSC_NARVAL");
 					sld.LSC_clan = true;
 				}
-				if (i >= 8 && i <= 14) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 7 ï¿½ï¿½
+				if (i >= 8 && i <= 14) 
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("RivadosMush_"+i, "mush_rvd_"+(rand(2)+1), "man", "mushketer", iRank, PIRATE, 1, false, "soldier"));
 					FantomMakeCoolFighter(sld, iRank, iScl, iScl, "", "mushket1", "bullet", iScl+100);
@@ -1360,7 +1360,7 @@ void CreateLSCGuardClan(aref loc)
 					LAi_group_MoveCharacter(sld, "LSC_RIVADOS");
 					sld.LSC_clan = true;
 				}
-				if (i >= 15) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+				if (i >= 15) 
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("SharkMush_"+i, "mush_ctz_"+(rand(2)+7), "man", "mushketer", iRank, PIRATE, 1, false, "soldier"));
 					FantomMakeCoolFighter(sld, iRank, iScl, iScl, "", "mushket1", "bullet", iScl+100);
@@ -1379,12 +1379,12 @@ void CreateLSCGuardClan(aref loc)
 					sld.LSC_clan = true;
 				}
 			}
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			for (i=1; i<=isold; i++)
 			{
 				LocatorGroup = "soldiers";
 				LocatorName = "soldier"+i;	
-				if (i <= 6) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				if (i <= 6) 
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("NarvalSold_"+i, "citiz_"+(rand(9)+51), "man", "man", iRank, PIRATE, 1, false, "soldier"));
 					FantomMakeCoolFighter(sld, iRank, iScl, iScl, LinkRandPhrase("blade_15","blade_16","blade_13"), RandPhraseSimple("pistol6","pistol4"), "bullet", iScl+100);
@@ -1401,7 +1401,7 @@ void CreateLSCGuardClan(aref loc)
 					LAi_group_MoveCharacter(sld, "LSC_NARVAL");
 					sld.LSC_clan = true;
 				}
-				if (i >= 7 && i <= 12) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				if (i >= 7 && i <= 12) 
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("RivadosSold_"+i, "rivados_"+(rand(6)+1), "man", "man", iRank, PIRATE, 1, false, "soldier"));
 					FantomMakeCoolFighter(sld, iRank, iScl, iScl, LinkRandPhrase("blade_08","blade_04","blade_06"), RandPhraseSimple("pistol6","pistol5"), "bullet", iScl+100);
@@ -1418,7 +1418,7 @@ void CreateLSCGuardClan(aref loc)
 					LAi_group_MoveCharacter(sld, "LSC_RIVADOS");
 					sld.LSC_clan = true;
 				}
-				if (i >= 13) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+				if (i >= 13) 
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("SharkSold_"+i, "citiz_"+(rand(9)+41), "man", "man", iRank, PIRATE, 1, false, "soldier"));
 					FantomMakeCoolFighter(sld, iRank, iScl, iScl, LinkRandPhrase("blade_15","blade_10","blade_13"), RandPhraseSimple("pistol6","pistol5"), "bullet", iScl+100);
@@ -1436,12 +1436,12 @@ void CreateLSCGuardClan(aref loc)
 					sld.LSC_clan = true;
 				}
 			}
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			for (i=1; i<=iprot; i++)
 			{
 				LocatorGroup = "soldiers";
 				LocatorName = "protector"+i;	
-				if (i <= 3) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				if (i <= 3) 
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("NarvalProt_"+i, "citiz_"+(rand(9)+51), "man", "man", iRank, PIRATE, 1, false, "soldier"));
 					FantomMakeCoolFighter(sld, iRank, iScl, iScl, LinkRandPhrase("blade_15","blade_16","blade_13"), "pistol4", "bullet", iScl+100);
@@ -1457,12 +1457,12 @@ void CreateLSCGuardClan(aref loc)
 					ChangeCharacterAddressGroup(sld, "LostShipsCity_town", LocatorGroup, LocatorName);
 					LAi_SetLoginTime(sld, 0.0, 24.0);
 					sld.protector = true;
-					if (i != 2) sld.protector.CheckAlways = true; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					if (i != 2) sld.protector.CheckAlways = true; 
 					LAi_SetGuardianType(sld);
 					LAi_group_MoveCharacter(sld, "LSC_NARVAL");
 					sld.LSC_clan = true;
 				}
-				if (i >= 4 && i <= 8) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				if (i >= 4 && i <= 8) 
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("RivadosProt_"+i, "rivados_"+(rand(6)+1), "man", "man", iRank, PIRATE, 1, false, "soldier"));
 					FantomMakeCoolFighter(sld, iRank, iScl, iScl, LinkRandPhrase("blade_08","blade_04","blade_06"), "pistol4", "bullet", iScl+100);
@@ -1479,12 +1479,12 @@ void CreateLSCGuardClan(aref loc)
 					LAi_SetLoginTime(sld, 0.0, 24.0);
 					LAi_SetGuardianType(sld);
 					sld.protector = true;
-					if (i != 6 ) sld.protector.CheckAlways = true; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-					if (i != 8) sld.protector.CheckAlways = true; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					if (i != 6 ) sld.protector.CheckAlways = true; 
+					if (i != 8) sld.protector.CheckAlways = true; 
 					LAi_group_MoveCharacter(sld, "LSC_RIVADOS");
 					sld.LSC_clan = true;
 				}
-				if (i >= 9) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+				if (i >= 9) 
 				{
 					sld = GetCharacter(NPC_GenerateCharacter("SharkProt_"+i, "citiz_"+(rand(9)+41), "man", "man", iRank, PIRATE, 1, false, "soldier"));
 					FantomMakeCoolFighter(sld, iRank, iScl, iScl, LinkRandPhrase("blade_15","blade_10","blade_13"), "pistol4", "bullet", iScl+100);
@@ -1500,7 +1500,7 @@ void CreateLSCGuardClan(aref loc)
 					LAi_SetLoginTime(sld, 0.0, 24.0);
 					LAi_SetGuardianType(sld);
 					sld.protector = true;
-					sld.protector.CheckAlways = true; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					sld.protector.CheckAlways = true; 
 					LAi_group_MoveCharacter(sld, "LSC_SHARK");
 					sld.LSC_clan = true;
 				}
@@ -1509,7 +1509,7 @@ void CreateLSCGuardClan(aref loc)
 	}
 }
 
-void CreateLSCInsideClan(aref loc) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+void CreateLSCInsideClan(aref loc) 
 {
 	if (CheckAttribute(loc, "lsc_inside"))
 	{
@@ -1526,7 +1526,7 @@ void CreateLSCInsideClan(aref loc) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï
 			LocatorName = "goto"+i;	
 			switch (loc.lsc_inside)
 			{
-				case "narval": // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				case "narval": 
 					for (i=1; i<=10; i++)
 					{
 						LocatorGroup = "goto";
@@ -1550,7 +1550,7 @@ void CreateLSCInsideClan(aref loc) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï
 					}
 				break;
 				
-				case "rivados": // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				case "rivados": 
 					for (i=1; i<=8; i++)
 					{
 						LocatorGroup = "goto";
@@ -1574,7 +1574,7 @@ void CreateLSCInsideClan(aref loc) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï
 					}
 				break;
 				
-				case "shark": // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+				case "shark": 
 					for (i=1; i<=10; i++)
 					{
 						LocatorGroup = "goto";
@@ -1602,8 +1602,8 @@ void CreateLSCInsideClan(aref loc) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï
 	}
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-void CreateKsochitamSkeletons(aref loc) //Jason
+
+void CreateKsochitamSkeletons(aref loc) 
 {	
 	if (CheckAttribute(loc, "KsochitamSkeletons"))
 	{
@@ -1625,7 +1625,7 @@ void CreateKsochitamSkeletons(aref loc) //Jason
 			{
 				sld = GetCharacter(NPC_GenerateCharacter(sIdf+"_skeleton_"+i, sModel, "skeleton", "skeleton", iRank, PIRATE, 2, false, "soldier"));
 				FantomMakeCoolFighter(sld, iRank, iScl, iScl, sBlade, sPistol, "bullet", iScl*2+100);
-				sld.MultiFighter = 0.9+fMft; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				sld.MultiFighter = 0.9+fMft; 
 				ChangeCharacterAddressGroup(sld, sIdf, "monsters", "monster"+i);
 				LAi_SetWarriorType(sld);
 				LAi_warrior_SetStay(sld, true);
@@ -1635,8 +1635,8 @@ void CreateKsochitamSkeletons(aref loc) //Jason
 	}
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-void CreateKhaelRoaSkeletons(aref loc) //Jason
+
+void CreateKhaelRoaSkeletons(aref loc) 
 {	
 	if (CheckAttribute(loc, "id.label"))
 	{
@@ -1663,7 +1663,7 @@ void CreateKhaelRoaSkeletons(aref loc) //Jason
 				SaveCurrentNpcQuestDateParam(loc, "KhaelRoa_date");
 				for (i=0; i<n; i++)
 				{
-					if (rand(1) == 0 || loc.id.label == "Alcove") // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					if (rand(1) == 0 || loc.id.label == "Alcove") 
 					{
 						sld = GetCharacter(NPC_GenerateCharacter(sIdf+"_skeleton_"+i, "Chavinavi_1", "skeleton", "skeleton", iRank+5, PIRATE, 1, false, "soldier"));
 						FantomMakeCoolFighter(sld, iRank+5, 80, 80, "topor_01", "", "", 50);
@@ -1671,9 +1671,9 @@ void CreateKhaelRoaSkeletons(aref loc) //Jason
 						sld.KhaelRoaMonster = true;
 						sld.name = "Chavinavy";
 						sld.lastname = "";
-						sld.MultiFighter = fMft; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+						sld.MultiFighter = fMft; 
 					}
-					else // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					else 
 					{
 						sld = GetCharacter(NPC_GenerateCharacter(sIdf+"_skeleton_"+i, "skel"+(rand(3)+1), "skeleton", "skeleton", iRank, PIRATE, 1, false, "soldier"));
 						FantomMakeCoolFighter(sld, iRank, 60, 60, LinkRandPhrase("blade_10","blade_06","blade_04"), sPistol, "bullet", 50);
@@ -1681,7 +1681,7 @@ void CreateKhaelRoaSkeletons(aref loc) //Jason
 						sld.name = "temple undead";
 						sld.lastname = "";
 					}
-					sld.LSC_clan = true; // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					sld.LSC_clan = true; 
 					ChangeCharacterAddressGroup(sld, sIdf, "monsters", GetAttributeName(GetAttributeN(grp, i)));
 					LAi_SetWarriorType(sld);
 					LAi_warrior_SetStay(sld, true);
@@ -1693,7 +1693,7 @@ void CreateKhaelRoaSkeletons(aref loc) //Jason
 	}
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. eddy
+
 void CreateIncquisitio(aref loc)
 {	
 	if (GetCityNation("Santiago") != SPAIN) return; 
@@ -1703,7 +1703,7 @@ void CreateIncquisitio(aref loc)
 		ref sld;
 		string LocatorGroup, LocatorName;
 		int i, nSit;
-		//====> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		
 		if (CheckNPCQuestDate(loc, "Incquisitor_date"))
 		{
 			SetNPCQuestDate(loc, "Incquisitor_date");
@@ -1728,7 +1728,7 @@ void CreateIncquisitio(aref loc)
 				ChangeCharacterAddressGroup(sld, "Santiago_Incquisitio", LocatorGroup, LocatorName);
 			}
 		}
-		//====> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+		
 		if (CheckNPCQuestDate(loc, "Guard_date"))
 		{
 			SetNPCQuestDate(loc, "Guard_date");
@@ -1738,15 +1738,15 @@ void CreateIncquisitio(aref loc)
 				sld.City = "Santiago";
 				sld.CityType = "soldier";
 				LAi_LoginInCaptureTown(sld, true);
-				FantomMakeCoolFighter(sld, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+15, 100, 90, BLADE_LONG, "pistol3", "grapeshot", 100);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				FantomMakeCoolFighter(sld, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+15, 100, 90, BLADE_LONG, "pistol3", "grapeshot", 100);
 				LAi_SetLoginTime(sld, 0.0, 24.0);
 				LAi_SetGuardianType(sld);
 				LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");	
 				locatorName = PlaceCharacter(sld, "soldiers", "random");
-				// eddy. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->				
+				
 				if (locatorName == "soldier1" || locatorName == "soldier2")
 				{
-					sld.protector.CheckAlways = true; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					sld.protector.CheckAlways = true; 
 					sld.Dialog.Filename = "Incquistors.c";
 					sld.greeting = "protector";
 				}
@@ -1756,10 +1756,10 @@ void CreateIncquisitio(aref loc)
 					sld.Dialog.Filename = "Common_Soldier.c";
 					sld.greeting = "soldier";
 				}
-				// <-- eddy. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				
 			}
 		}
-		//====> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
+		
 		if (!CheckAttribute(loc, "Prison_date") || GetNpcQuestPastDayParam(loc, "Prison_date") > 30)
 		{
 			SaveCurrentNpcQuestDateParam(loc, "Prison_date");
@@ -1778,14 +1778,14 @@ void CreateIncquisitio(aref loc)
 					{
 						LAi_SetGroundSitType(sld);
 					}				
-					//ChangeCharacterAddressGroup(sld, "Santiago_Incquisitio", "prison", "prison"+i);
+					
 					PlaceCharacter(sld, "prison", "random_free");
 				}
 			}
 		}
 	}
 }
-//eddy. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+
 void CreateMayak(aref loc)
 {
 	if (loc.type == "mayak")
@@ -1813,7 +1813,7 @@ void CreateMayak(aref loc)
 			int iChar, i;
 			string slai_group, locatorName;
 			slai_group = GetNationNameByType(iNation)  + "_mayak"; 
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+			
 			if (checkAttribute(loc, "soldiers") && CheckAttribute(loc, "locators.soldiers"))
 			{
 				makearef(st, loc.locators.soldiers);
@@ -1836,32 +1836,32 @@ void CreateMayak(aref loc)
 					chr.City = Colonies[iColony].id;
 					chr.CityType = "soldier";
 					chr.greeting = "soldier_common";
-					SetFantomParamFromRank(chr, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+6, true); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+					SetFantomParamFromRank(chr, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+6, true); 
 					LAi_SetLoginTime(chr, 0.0, 24.0);
 					solderLoc = GetAttributeN(st, i);
 					locatorName = GetAttributeName(solderLoc);
 					ChangeCharacterAddressGroup(chr, pchar.location, "soldiers", locatorName);
-					// eddy. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+					
 					if (findsubstr(locatorName, "protector" , 0) != -1) 
 					{
 						chr.protector = true;
 						chr.greeting = "protector";
 						if (locatorName != "protector1" && locatorName != "protector2") 
 						{
-							chr.protector.CheckAlways = 1; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+							chr.protector.CheckAlways = 1; 
 							if (locatorName == "protector11") chr.dialog.currentnode = "PortRoyal_Mayak";
 							else chr.dialog.currentnode = "PortRoyal_Gans";
 						}
 					}
 					else chr.greeting = "soldier";
-					// <-- eddy. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					
 					chr.dialog.filename = "Common_Soldier.c";
 					LAi_SetGuardianType(chr);
 					LAi_group_MoveCharacter(chr, slai_group);
 				}
 			}
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <--
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+			
+			
 			if (checkAttribute(loc, "soldiers") && CheckAttribute(loc, "locators.patrol"))
 			{
 				makearef(st, loc.locators.patrol);
@@ -1872,7 +1872,7 @@ void CreateMayak(aref loc)
 					chr = &characters[iChar];
 					chr.City = Colonies[iColony].id;
 					chr.CityType = "soldier";
-					SetFantomParamFromRank(chr, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE, true); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+					SetFantomParamFromRank(chr, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE, true); 
 					LAi_SetLoginTime(chr, 0.0, 24.0);
 					LAi_SetPatrolType(chr);
 					LAi_group_MoveCharacter(chr, slai_group);
@@ -1882,7 +1882,7 @@ void CreateMayak(aref loc)
 					chr.dialog.currentnode = "first time";
 				}
 			}
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <--
+			
 			LAi_group_SetLookRadius(slai_group, 80);
 			LAi_group_SetHearRadius(slai_group, 80);
 		}
@@ -1906,7 +1906,7 @@ void CreateBrothels(aref loc)
 		{
 			ref sld;
 			int iColony, iNation, qty, num, qtyAll;
-			// ==>  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			string horse[8];
 			horse[0] = "women_19";
 			horse[1] = "women_20";
@@ -1959,7 +1959,7 @@ void CreateBrothels(aref loc)
 	}
 }
 
-void CreatePearlVillage(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+void CreatePearlVillage(aref loc) 
 {
 	if (CheckAttribute(loc, "pearlVillage"))
 	{
@@ -1969,7 +1969,7 @@ void CreatePearlVillage(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿
 			int i, iMassive;
 			int iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+5;
 			int grp = sti(loc.pearlVillage);
-			int num = rand(2)+6; //ï¿½ï¿½ï¿½-ï¿½ï¿½ 
+			int num = rand(2)+6; 
 			ref chr;
 			string model[10];		
 			model[0] = "Miskito_1";
@@ -2001,8 +2001,8 @@ void CreatePearlVillage(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿
 					chr.greeting = "indian_male";
 					GiveItem2Character(chr, LinkRandPhrase("slave_01","slave_02","topor_05"));
 					EquipCharacterbyItem(chr, LinkRandPhrase("slave_01","slave_02","topor_05"));
-					chr.city = "SantaCatalina"; //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-					if (grp == 3) chr.city = "Maracaibo"; // Addon 2016-1 Jason ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					chr.city = "SantaCatalina"; 
+					if (grp == 3) chr.city = "Maracaibo"; 
 					PlaceCharacter(chr, "goto", "random");
 					LAi_SetWarriorType(chr);
 					LAi_group_MoveCharacter(chr, "MiskitoGroup"+grp);
@@ -2010,7 +2010,7 @@ void CreatePearlVillage(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿
 					model[iMassive] = "";
 				}
 			}
-			if (rand(1) == 1) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			if (rand(1) == 1) 
 			{
 				for (i=1; i<=2; i++)
 				{
@@ -2023,14 +2023,14 @@ void CreatePearlVillage(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿
 					chr.greeting = "indian_male";
 					GiveItem2Character(chr, LinkRandPhrase("slave_01","slave_02","topor_05"));
 					EquipCharacterbyItem(chr, LinkRandPhrase("slave_01","slave_02","topor_05"));
-					chr.city = "SantaCatalina"; //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-					if (grp == 3) chr.city = "Maracaibo"; // Addon 2016-1 Jason ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					chr.city = "SantaCatalina"; 
+					if (grp == 3) chr.city = "Maracaibo"; 
 					ChangeCharacterAddressGroup(chr, loc.id, "sit", "ground"+i);
 					LAi_SetGroundSitType(chr);
 					LAi_group_MoveCharacter(chr, "MiskitoGroup"+grp);
 				}
 			}
-			for (i=1; i<=3; i++) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			for (i=1; i<=3; i++) 
 			{
 				chr = GetCharacter(NPC_GenerateCharacter("MiskitoWoman"+grp+"_"+i, "squaw_"+i, "woman", "woman_B", 10, ENGLAND, 1, true, "citizen"));
 				SetFantomParamFromRank(chr, 10, true);
@@ -2039,10 +2039,10 @@ void CreatePearlVillage(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿
 				LAi_SetLoginTime(chr, 6.0, 21.99);
 				chr.dialog.Filename = "Indian_dialog.c";
 				chr.dialog.currentnode = "IndianWoman";
-				//chr.greeting = "cit_common";
+				
 				RemoveAllCharacterItems(chr, true);
-				chr.city = "SantaCatalina"; //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-				if (grp == 3) chr.city = "Maracaibo"; // Addon 2016-1 Jason ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				chr.city = "SantaCatalina"; 
+				if (grp == 3) chr.city = "Maracaibo"; 
 				PlaceCharacter(chr, "goto", "random");
 				LAi_SetCitizenType(chr);
 				LAi_group_MoveCharacter(chr, "MiskitoGroup"+grp);
@@ -2053,7 +2053,7 @@ void CreatePearlVillage(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿
 	}
 }
 
-void CreateIndianVillage(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+void CreateIndianVillage(aref loc) 
 {
 	if (CheckAttribute(loc, "indianVillage"))
 	{	
@@ -2062,7 +2062,7 @@ void CreateIndianVillage(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï
 			SetNPCQuestDate(loc, "canib_date");
 			int i, iMassive;
 			int iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+5;
-			int num = rand(2)+6; //ï¿½ï¿½ï¿½-ï¿½ï¿½ 
+			int num = rand(2)+6; 
 			ref chr;
 			string model[10];
 				
@@ -2102,7 +2102,7 @@ void CreateIndianVillage(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï
 				model[iMassive] = "";
 			}
 		}
-			if (rand(1) == 1) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			if (rand(1) == 1) 
 			{
 				for (i=1; i<=2; i++)
 				{
@@ -2120,7 +2120,7 @@ void CreateIndianVillage(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï
 					LAi_group_MoveCharacter(chr, "IndianGroup");
 				}
 			}
-			for (i=1; i<=3; i++) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			for (i=1; i<=3; i++) 
 			{
 				chr = GetCharacter(NPC_GenerateCharacter("CanibWoman_"+i, "squaw_"+i, "woman", "woman_B", 10, PIRATE, 1, true, "citizen"));
 				SetFantomParamFromRank(chr, 10, true);
@@ -2129,7 +2129,7 @@ void CreateIndianVillage(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï
 				LAi_SetLoginTime(chr, 6.0, 21.99);
 				chr.dialog.Filename = "Indian_dialog.c";
 				chr.dialog.currentnode = "IndianWoman";
-				//chr.greeting = "cit_common";
+				
 				RemoveAllCharacterItems(chr, true);
 				PlaceCharacter(chr, "goto", "random");
 				LAi_SetCitizenType(chr);
@@ -2141,7 +2141,7 @@ void CreateIndianVillage(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï
 	}
 }
 
-void CreateMinentownMine(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+void CreateMinentownMine(aref loc) 
 {
 	if (loc.id == "Minentown_mine")
 	{
@@ -2151,7 +2151,7 @@ void CreateMinentownMine(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			int i;
 			int iRank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+5;
 			ref chr;
-			for (i=1; i<=21; i++) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			for (i=1; i<=21; i++) 
 			{
 				chr = GetCharacter(NPC_GenerateCharacter("MineConvict_"+i, "prizon_"+(rand(7)+1), "man", "man_B", iRank, PIRATE, 30, true, "native"));
 				SetFantomParamFromRank(chr, iRank, true);
@@ -2165,7 +2165,7 @@ void CreateMinentownMine(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				LAi_SetStayType(chr);
 				LAi_group_MoveCharacter(chr, "SPAIN_CITIZENS");
 			}
-			for (i=1; i<=7; i++) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			for (i=1; i<=7; i++) 
 			{
 				chr = GetCharacter(NPC_GenerateCharacter("MineSoldier_"+i, "sold_spa_"+(rand(7)+1), "man", "man", iRank+5, SPAIN, 30, true, "soldier"));
 				SetFantomParamFromRank(chr, iRank+5, true);
@@ -2179,7 +2179,7 @@ void CreateMinentownMine(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				LAi_SetPatrolType(chr);
 				LAi_group_MoveCharacter(chr, "SPAIN_CITIZENS");
 			}
-			for (i=1; i<=4; i++) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			for (i=1; i<=4; i++) 
 			{
 				chr = GetCharacter(NPC_GenerateCharacter("MineProtector_"+i, "sold_spa_"+(rand(7)+1), "man", "man", iRank+10, SPAIN, 30, true, "soldier"));
 				SetFantomParamFromRank(chr, iRank+10, true);
@@ -2204,7 +2204,7 @@ void CreateMinentownMine(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	}
 }
 
-void CreateMineBandits(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+void CreateMineBandits(aref loc) 
 {
 	ref chr;
 	int i;
@@ -2214,8 +2214,8 @@ void CreateMineBandits(aref loc) // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿
 	{
 		if (loc.id == "Mine_exit")
 		{
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-			chrDisableReloadToLocation = true;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
+			chrDisableReloadToLocation = true;
 			DoQuestCheckDelay("Saga_MineBanditsTalk", 2.0);
 			if (CheckNPCQuestDate(loc, "bandits_date"))
 			{
@@ -2284,17 +2284,17 @@ void CreateInsideHouseEncounters(aref loc)
 {	
 	if (CheckAttribute(loc, "MustSetReloadBack") && loc.id.label == "house" && CheckAttribute(loc,"fastreload") && !IsLocationCaptured(loc.fastreload+"_town"))
 	{
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		
 		int iBaseCity = FindLocation(loc.fastreload+"_town");
 		if (!CheckAttribute(&locations[iBaseCity], "houseEnc")) return;
-		if (CheckAttribute(&locations[iBaseCity], "QuestCapture")) return; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
-		//==> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		if (CheckAttribute(&locations[iBaseCity], "QuestCapture")) return; 
+		
 		if (CheckAttribute(pchar, "GenQuest.SeekSpy.Location") && pchar.GenQuest.SeekSpy.Location == loc.id) return;
-		//==> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		
 		if (CheckAttribute(pchar, "questTemp.jailCanMove.Deliver.locationId") && pchar.questTemp.jailCanMove.Deliver.locationId == loc.id) return;
-		if (CheckAttribute(pchar, "questTemp.Shadowtrader.ClearHouse")) return; // 240912
-		if (CheckAttribute(pchar, "questTemp.FMQP") && pchar.questTemp.FMQP == "sdm" && loc.id == "CommonPirateHouse") return; // Addon-2016 Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½)
-		//--> ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		if (CheckAttribute(pchar, "questTemp.Shadowtrader.ClearHouse")) return; 
+		if (CheckAttribute(pchar, "questTemp.FMQP") && pchar.questTemp.FMQP == "sdm" && loc.id == "CommonPirateHouse") return; 
+		
 		bool bDN = IsDay();
     	aref arRld, arDis;
 		makearef(arRld, loc.reload);
@@ -2306,11 +2306,11 @@ void CreateInsideHouseEncounters(aref loc)
     		if (arDis.name != "reload1")
     		{
 				if (bDN && !isBadReputation(pchar, 40)) DeleteAttribute(arDis, "disable");
-				else arDis.disable = true; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				else arDis.disable = true; 
     		}
     	}
-		//<-- ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		//==> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½		
+		
+		
 		if (locations[reload_cur_location_index].type == "town")
 		{
 			ref chr, npchar;
@@ -2325,7 +2325,7 @@ void CreateInsideHouseEncounters(aref loc)
 			int iWomanIdx = GetCharacterIndex("HouseWoman_"+iBaseCity+"_"+loc.index);
 			if (iWomanIdx != -1 || iManIdx != -1) 
 			{				
-				if (!CheckAttribute(rCity, sTemp)) //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½!!! ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				if (!CheckAttribute(rCity, sTemp)) 
 				{
 					if (iWomanIdx != -1) 
 					{
@@ -2334,15 +2334,15 @@ void CreateInsideHouseEncounters(aref loc)
 						npchar.model = "women_"+(rand(3)+7);
 						FaceMaker(npchar);
 						CirassMaker(npchar);
-						SetNewModelToChar(npchar);  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½			
+						SetNewModelToChar(npchar);  
 						LAi_SetActorType(npchar);
 						LAi_ActorDialog(npchar, pchar, "", 1.0, 0); 
 						LAi_group_MoveCharacter(npchar, slai_group);
-						rCity.(sTemp) = "woman"; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+						rCity.(sTemp) = "woman"; 
 						rCity.(sTemp).woman.model = npchar.model;
 						rCity.(sTemp).woman.name = npchar.name;
 						rCity.(sTemp).woman.lastname = npchar.lastname;
-						//<-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+						
 					}
 					else 
 					{
@@ -2351,25 +2351,25 @@ void CreateInsideHouseEncounters(aref loc)
 						npchar.model = "citiz_"+(rand(9)+1);
 						FaceMaker(npchar);
 						CirassMaker(npchar);
-						SetNewModelToChar(npchar);  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½			
+						SetNewModelToChar(npchar);  
 						LAi_SetActorType(npchar);
 						LAi_ActorDialog(npchar, pchar, "", 1.0, 0); 
 						LAi_group_MoveCharacter(npchar, slai_group);
-						//--> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-						rCity.(sTemp) = "man"; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+						
+						rCity.(sTemp) = "man"; 
 						rCity.(sTemp).man.model = npchar.model;
 						rCity.(sTemp).man.name = npchar.name;
 						rCity.(sTemp).man.lastname = npchar.lastname;
-						//<-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+						
 					}
 				}
-				else //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				else 
 				{
 					if (iWomanIdx != -1) npchar = &characters[iWomanIdx];
 					else npchar =  &characters[iManIdx];
 					string sSex = sTemp + "." + rCity.(sTemp);
 					if (rCity.(sSex).model != npchar.model) 
-					{	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
+					{	
 						npchar.model = rCity.(sSex).model;
 						if (rCity.(sTemp) == "man") 
 						{
@@ -2391,7 +2391,7 @@ void CreateInsideHouseEncounters(aref loc)
 						npchar.lastname = rCity.(sSex).lastname;
 						FaceMaker(npchar);
 						CirassMaker(npchar);
-						SetNewModelToChar(npchar);  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½					
+						SetNewModelToChar(npchar);  
 					}
 				}
 				return;
@@ -2399,13 +2399,13 @@ void CreateInsideHouseEncounters(aref loc)
 			Model = "";
 			Name = "";
 			LastName = "";
-			//-->> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½		
+			
 			if (CheckAttribute(rCity, sTemp))
 			{
 				if (GetNpcQuestPastDayParam(rCity, sTemp) < 30)
 				{
 					if (rCity.(sTemp) == "man") 
-					{//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. - ï¿½ï¿½ï¿½ï¿½
+					{
 						bMW = true;
 						if (CheckAttribute(rCity, sTemp + ".woman.model"))
 						{
@@ -2422,7 +2422,7 @@ void CreateInsideHouseEncounters(aref loc)
 						}
 					}
 					else 
-					{//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. - ï¿½ï¿½ï¿½ï¿½ï¿½
+					{
 						bMW = false;
 						if (CheckAttribute(rCity, sTemp + ".man.model"))
 						{
@@ -2439,12 +2439,12 @@ void CreateInsideHouseEncounters(aref loc)
 						}
 					}
 				}
-				else //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½
+				else 
 				{
-					if (rand(10) > 8) //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½.
+					if (rand(10) > 8) 
 					{
 						for (i=0; i<Qty; i++) 
-    					{//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) 
+    					{
     						arDis = GetAttributeN(arRld, i);
     						if (arDis.name != "reload1")
     						{
@@ -2453,15 +2453,15 @@ void CreateInsideHouseEncounters(aref loc)
     					}
 						return; 
 					}
-					SaveCurrentNpcQuestDateParam(rCity, sTemp); //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					SaveCurrentNpcQuestDateParam(rCity, sTemp); 
 				}
 			}
 			else 
 			{
-				if (rand(10) > 8) //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½.
+				if (rand(10) > 8) 
 				{
 					for (i=0; i<Qty; i++) 
-    				{//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) 
+    				{
     					arDis = GetAttributeN(arRld, i);
     					if (arDis.name != "reload1")
     					{
@@ -2470,11 +2470,11 @@ void CreateInsideHouseEncounters(aref loc)
     				}
 					return; 
 				}
-				SaveCurrentNpcQuestDateParam(rCity, sTemp); //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				SaveCurrentNpcQuestDateParam(rCity, sTemp); 
 			}
-			//<<-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			if (bMW)
-			{//============= ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ====================
+			{
 				if (Model == "") Model = "women_"+(rand(3)+7);
 				sName = "HouseWoman_"+reload_cur_location_index+"_"+loc.index;
 				chr = GetCharacter(NPC_GenerateCharacter(sName, Model, "woman", "towngirl", rand(2)+4, iNation, 3, false, "citizen"));
@@ -2483,21 +2483,21 @@ void CreateInsideHouseEncounters(aref loc)
 				chr.dialog.Filename = "HouseEnc_dialog.c"; 
 				chr.dialog.currentnode = "HouseWoman";
 				chr.CityType = "citizen";
-				chr.city = loc.fastreload; //ï¿½ï¿½ï¿½
+				chr.city = loc.fastreload; 
 				chr.greeting = "citizen_female";			
 				ChangeCharacterAddressGroup(chr, loc.id, "barmen", "stay");
 				LAi_SetActorType(chr);
 				LAi_ActorDialog(chr, pchar, "", 1.0, 0); 
 				LAi_group_MoveCharacter(chr, slai_group);
-				//--> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-				rCity.(sTemp) = "woman"; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				
+				rCity.(sTemp) = "woman"; 
 				rCity.(sTemp).woman.model = chr.model;
 				rCity.(sTemp).woman.name = chr.name;
 				rCity.(sTemp).woman.lastname = chr.lastname;
-				//<-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				
 			}
 			else
-			{//============ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ==================
+			{
 				if (Model == "") Model = "citiz_"+(rand(9)+11);
 				sName = "HouseMan_"+reload_cur_location_index+"_"+loc.index;
 				chr = GetCharacter(NPC_GenerateCharacter(sName, Model, "man", "man", rand(10)+4, iNation, 3, true, "citizen"));
@@ -2506,20 +2506,20 @@ void CreateInsideHouseEncounters(aref loc)
 				chr.dialog.Filename = "HouseEnc_dialog.c"; 
 				chr.dialog.currentnode = "HouseMan";
 				chr.CityType = "citizen";
-				chr.city = loc.fastreload; //ï¿½ï¿½ï¿½
+				chr.city = loc.fastreload; 
 				chr.greeting = "citizen_male";
 				ChangeCharacterAddressGroup(chr, loc.id, "barmen", "stay");
 				LAi_SetActorType(chr);
 				LAi_ActorDialog(chr, pchar, "", 1.0, 0); 
 				LAi_group_MoveCharacter(chr, slai_group);
-				//--> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-				rCity.(sTemp) = "man"; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				
+				rCity.(sTemp) = "man"; 
 				rCity.(sTemp).man.model = chr.model;
 				rCity.(sTemp).man.name = chr.name;
 				rCity.(sTemp).man.lastname = chr.lastname;
-				//<-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				
-				// --> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				
+				
 				if(CheckAttribute(PChar, "questTemp.Caleuche.Bandos") && pchar.questTemp.Caleuche.Bandos == "seek" && chr.city == "Beliz")
 				{
 					chr.id = "Beliz_townbandos";
@@ -2528,7 +2528,7 @@ void CreateInsideHouseEncounters(aref loc)
 					Rank = 20+MOD_SKILL_ENEMY_RATE*3;
 					FantomMakeCoolFighter(chr, Rank, 60, 60, RandPhraseSimple("blade_12","blade_13"), RandPhraseSimple("pistol6","pistol4"), "bullet", 250);
 					Mft = MOD_SKILL_ENEMY_RATE/20;
-					chr.MultiFighter = 1.0+Mft; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					chr.MultiFighter = 1.0+Mft; 
 					chr.dialog.filename = "Quest\Caleuche_dialog.c";
 					chr.dialog.currentnode = "Beliz_townbandos";
 					chr.greeting = "marginal";
@@ -2537,22 +2537,22 @@ void CreateInsideHouseEncounters(aref loc)
 					chr.SaveItemsForDead = true;
 					chr.DontClearDead = true;
 					pchar.questTemp.Caleuche.Bandos = "find";
-					chrDisableReloadToLocation = true;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					chrDisableReloadToLocation = true;
 					return;
 				}
-				// <-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				
 				
 				if(CheckAttribute(PChar, "QuestTemp.AffairOfHonor.CoatHonor.NeedGenerateDuelMan"))
 				{
 					chr.id = "AffairOfHonor_CoatHonor_Man";
 					SetRandNationOfficerModel(chr);
-					Characters_RefreshModel(chr); // Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-					// Jason: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					Characters_RefreshModel(chr); 
+					
 					int Rank = sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+10;
 					int Scl = 35+2*sti(pchar.rank);
 					FantomMakeCoolFighter(chr, Rank, Scl, Scl, RandPhraseSimple("blade_12","blade_13"), RandPhraseSimple("pistol6","pistol5"), "bullet", Scl*3);
 					float Mft = MOD_SKILL_ENEMY_RATE/20;
-					chr.MultiFighter = 1.0+Mft; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					chr.MultiFighter = 1.0+Mft; 
 					chr.dialog.filename = "Quest\ForAll_dialog.c";
 					chr.dialog.currentnode = "AffairOfHonor_CoatHonor_4";
 					LAi_SetWarriorType(chr);
@@ -2561,10 +2561,10 @@ void CreateInsideHouseEncounters(aref loc)
 				}
 			}
 		}
-		//==> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		
 		else
 		{
-			//ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½-ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			
 			for(int n=0; n<MAX_CHARACTERS; n++)
 			{
 				if (characters[n].location == pchar.location && characters[n].id != "Blaze")
@@ -2572,7 +2572,7 @@ void CreateInsideHouseEncounters(aref loc)
 					return;
 				}
 			}
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½				
+			
 			int iLocIndexEnc;
 			if (pchar.location.locator == "reload1") iLocIndexEnc = reload_cur_location_index;
 			else iLocIndexEnc = reload_location_index;
@@ -2594,12 +2594,12 @@ void CreateInsideHouseEncounters(aref loc)
 	}
 }
 
-//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 void CreateInsideResidenceEncounters(aref loc)
 {	
 	bool bOk;
 	if (CheckAttribute(loc, "MustSetReloadBack"))
-	{ //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	{ 
 		if (loc.id.label == "TownhallRoom" || loc.id.label == "Townhall")
 		{
 			bOk = CreateQuestResidenceNPC(loc);
@@ -2610,7 +2610,7 @@ void CreateInsideResidenceEncounters(aref loc)
 		}	
 	}
 	else
-	{ //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	{ 
 		if (loc.id.label == "TownhallRoom")
 		{
 			bOk = CreateQuestResidenceNPC(loc);
@@ -2621,7 +2621,7 @@ void CreateInsideResidenceEncounters(aref loc)
 		}	
 	}
 }
-//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+
 void CreateResidenceNpc(aref loc)
 {
 	ref chr;
@@ -2630,15 +2630,15 @@ void CreateResidenceNpc(aref loc)
 	bool bWeapon;
 	int iBaseCity = FindLocation(loc.fastreload + "_town");
 	if (!CheckAttribute(&locations[iBaseCity], "houseEnc")) return;
-	if (rand(10) > 8) return; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	if (CheckAttribute(pchar, "questTemp.FMQT.Common")) return; // Addon-2016 Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	//==> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
-	int iEncType = rand(3); //0 - ï¿½ï¿½ï¿½ï¿½, 1 - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 2 - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+	if (rand(10) > 8) return; 
+	if (CheckAttribute(pchar, "questTemp.FMQT.Common")) return; 
+	
+	int iEncType = rand(3); 
 	if (loc.id.label  == "TownhallRoom") iEncType = 2;
 	if (CheckAttribute(loc, "Bedroom"))  iEncType = 0;	
 	if (CheckAttribute(loc, "PlayHall")) iEncType = 1;	
 	int iNation = GetCityNation(loc.fastreload);
-	if (iNation == PIRATE) return; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+	if (iNation == PIRATE) return; 
 	switch (iEncType)
 	{
 	case 0:
@@ -2669,15 +2669,15 @@ void CreateResidenceNpc(aref loc)
 		sGreeting = "soldier_guard";
 		break;
 	}
-	//==> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	
 	string slai_group = GetNationNameByType(iNation) + "_citizens";		
 	string sName = "EncResidence_" + iBaseCity + "_" + loc.index;
-	if (GetCharacterIndex(sName) > 0) return; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	if (GetCharacterIndex(sName) > 0) return; 
 	chr = GetCharacter(NPC_GenerateCharacter(sName, sModel, sSex, sAni, Rank, iNation, 1, bWeapon, "citizen"));
 	chr.dialog.Filename = "ResidenceEnc_dialog.c"; 
 	chr.dialog.currentnode = sNode;
 	chr.CityType = "citizen";
-	chr.city = loc.fastreload; //ï¿½ï¿½ï¿½
+	chr.city = loc.fastreload; 
 	chr.greeting = sGreeting;
 	ChangeCharacterAddressGroup(chr, loc.id, "barmen", "stay");
 	LAi_SetOwnerType(chr);
@@ -2691,7 +2691,7 @@ bool CreateQuestResidenceNPC(aref loc)
 	{
 		if(!CheckAttribute(pchar,"questTemp.ReasonToFast.GenerateLakey") && (pchar.questTemp.ReasonToFast.chain == "A1"))
 		{
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			if(CheckAttribute(pchar,"questTemp.ReasonToFast.SpeakOther")) return false;
 			bOk = ReasonToFast_CreateResidenceNPC(loc);
 			if(bOk) 
@@ -2705,7 +2705,7 @@ bool CreateQuestResidenceNPC(aref loc)
 	return false;
 }
 
-//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 void CreateSkladInsideEncounters(aref loc)
 {
 	if (CheckAttribute(loc, "packhouse") && !IsLocationCaptured(loc.id))
@@ -2714,7 +2714,7 @@ void CreateSkladInsideEncounters(aref loc)
 		int iNation = GetCityNation(loc.fastreload);
 		string slai_group = GetNationNameByType(iNation) + "_citizens";		
 		string sName = "SkladMan_"+reload_cur_location_index;
-		if (GetCharacterIndex(sName) > 0) return; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		if (GetCharacterIndex(sName) > 0) return; 
 		int Rank = sti(pchar.rank) + rand(6);
 		if (Rank < 10) Rank += 10;
 		if (Rank > 30) Rank -= 10;
@@ -2722,7 +2722,7 @@ void CreateSkladInsideEncounters(aref loc)
 		chr.dialog.Filename = "HouseEnc_dialog.c"; 
 		chr.dialog.currentnode = "SkladMan";
 		chr.CityType = "citizen";
-		chr.city = loc.fastreload; //ï¿½ï¿½ï¿½
+		chr.city = loc.fastreload; 
 		chr.greeting = "citizen_male";
 		LAi_LoginInCaptureTown(chr, false);
 		ChangeCharacterAddressGroup(chr, loc.id, "barmen", "stay");
@@ -2731,7 +2731,7 @@ void CreateSkladInsideEncounters(aref loc)
 	}
 }
 
-//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 void CreateJail(aref loc)
 {
 	if (loc.type == "jail")
@@ -2753,20 +2753,20 @@ void CreateJail(aref loc)
 			iRank = sti(pchar.rank) + rand(4);
 			if (iRank < 10) iRank = 10;
 			if (iRank > 20) iRank = 20;
-			//====> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			sld = GetCharacter(NPC_GenerateCharacter(loc.parent_colony+"JailOff", "off_"+nShortName+"_"+(rand(1)+1), "man", "man", iRank+5, iNation, 2, true, "governor"));
 			sld.City = loc.parent_colony;
 			sld.CityType = "soldier";
-			sld.standUp = true; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+			sld.standUp = true; 
  			sld.Dialog.Filename = "Common_prison.c";
 			sld.dialog.currentnode = "First_officer";
 			sld.greeting = "prisonboss_"+(rand(3)+1);
-			FantomMakeCoolFighter(sld, iRank+5, 70, 50, BLADE_LONG, "pistol3", "grapeshot", 30);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			FantomMakeCoolFighter(sld, iRank+5, 70, 50, BLADE_LONG, "pistol3", "grapeshot", 30);
 			LAi_SetLoginTime(sld, 0.0, 24.0);
 			LAi_SetHuberType(sld);
 			LAi_group_MoveCharacter(sld, slai_group);
 			ChangeCharacterAddressGroup(sld, loc.id, "sit", "sit1");
-			//====> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			for (i=1; i<=4; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter(loc.parent_colony+"JailSold_"+i, "sold_"+nShortName+"_"+(rand(7)+1), "man", "man", iRank, iNation, 2, true, "soldier"));
@@ -2778,11 +2778,11 @@ void CreateJail(aref loc)
 				LAi_SetGuardianType(sld);
 				LAi_group_MoveCharacter(sld, slai_group);
 				locatorName = PlaceCharacter(sld, "soldiers", "random_free");
-				// eddy. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->				
+				
 				if (locatorName == "protector1")
 				{
 					sld.protector = true;
-					sld.protector.CheckAlways = 1; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					sld.protector.CheckAlways = 1; 
 					sld.dialog.currentnode = "First_protector";
 					sld.greeting = "protector";
 				}
@@ -2791,9 +2791,9 @@ void CreateJail(aref loc)
 					sld.dialog.currentnode = "First_soldier";
 					sld.greeting = "soldier";
 				}
-				// <-- eddy. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				
 			}
-			//====> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			for (i=1; i<=10; i++)
 			{
 				if (rand(100)<70)
@@ -2803,7 +2803,7 @@ void CreateJail(aref loc)
 					sld.dialog.currentnode = "First_prisoner";
 					sld.City = loc.parent_colony;
 					sld.greeting = "convict";
-					//LAi_LoginInCaptureTown(sld, true);
+					
 					LAi_SetLoginTime(sld, 0.0, 24.0);
 					LAi_SetActorType(sld);
 					locatorName = "prison"+i;
@@ -2821,7 +2821,7 @@ void CreateJail(aref loc)
 	}
 }
 
-//ï¿½ï¿½ï¿½ï¿½ï¿½
+
 void CreateFortsNPC(aref loc)
 {	
 	if (loc.type == "fort")
@@ -2835,9 +2835,9 @@ void CreateFortsNPC(aref loc)
 			LAi_group_AttackGroup(slai_group, LAI_GROUP_PLAYER);
 			return;
 		}
-		DeleteAttribute(loc, "loginNpc"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		DeleteAttribute(loc, "loginNpc"); 
 		if (GetNpcQuestPastDayWOInit(loc, "Fort_date") < 2) return;
-		if(CheckAttribute(loc, "QuestCapture")) return; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+		if(CheckAttribute(loc, "QuestCapture")) return; 
 		ref chr;
 		int iCitizensQuantity, iChar, i;
 		string locatorName, sType;
@@ -2846,7 +2846,7 @@ void CreateFortsNPC(aref loc)
 		if(CheckAttribute(loc, "parent_colony")) iColony = FindColony(loc.parent_colony);
 		if(iColony == -1) return;		
 		arrayNPCModelHow = 0;
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+		
 		if (checkAttribute(loc, "soldiers") && CheckAttribute(loc, "locators.soldiers"))
 		{
 			aref solderLoc, st;
@@ -2870,19 +2870,19 @@ void CreateFortsNPC(aref loc)
 				chr.CityType = "soldier";
 				chr.RebirthPhantom = true; 
 				LAi_CharacterReincarnation(chr, true, true);
-				LAi_SetReincarnationRankStep(chr, MOD_SKILL_ENEMY_RATE+2); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-				SetFantomParamFromRank(chr, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE, true); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+				LAi_SetReincarnationRankStep(chr, MOD_SKILL_ENEMY_RATE+2); 
+				SetFantomParamFromRank(chr, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE, true); 
 				solderLoc = GetAttributeN(st, i);
 				locatorName = GetAttributeName(solderLoc);
 				ChangeCharacterAddressGroup(chr, pchar.location, "soldiers", locatorName);
-				// eddy. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+				
 				if (findsubstr(locatorName, "protector" , 0) != -1 && iNation != PIRATE) 
 				{
 					chr.protector = true;
 					chr.greeting = "protector";
 				}
 				else chr.greeting = "soldier";
-				// <-- eddy. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				
 				LAi_SetLoginTime(chr, 0.0, 24.0);
 				LAi_SetGuardianType(chr);
 				if (sti(Colonies[iColony].HeroOwn) == true)
@@ -2897,8 +2897,8 @@ void CreateFortsNPC(aref loc)
 				chr.dialog.currentnode = "First time";
 			}
 		}
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <--
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
+		
+		
 		if (checkAttribute(loc, "soldiers") && CheckAttribute(loc, "locators.patrol"))
 		{			
 			makearef(st, loc.locators.patrol);
@@ -2919,10 +2919,10 @@ void CreateFortsNPC(aref loc)
 				SetNPCModelUniq(chr, sType, MAN);
 				chr.City = Colonies[iColony].id;
 				chr.CityType = "fortPatrol";
-				SetFantomParamFromRank(chr, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE, true); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+				SetFantomParamFromRank(chr, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE, true); 
 				chr.RebirthPhantom = true; 
 				LAi_CharacterReincarnation(chr, true, true);
-				LAi_SetReincarnationRankStep(chr, MOD_SKILL_ENEMY_RATE+2); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				LAi_SetReincarnationRankStep(chr, MOD_SKILL_ENEMY_RATE+2); 
 				LAi_SetLoginTime(chr, 0.0, 24.0);
 				LAi_SetPatrolType(chr);
 
@@ -2941,11 +2941,11 @@ void CreateFortsNPC(aref loc)
 				chr.dialog.currentnode = "First time";
 			}
 		}
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <--
+		
 	}
 }
 
-void CreateAmmo(aref loc) // Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+void CreateAmmo(aref loc) 
 {
 	if (loc.type == "ammo")
 	{
@@ -2958,12 +2958,12 @@ void CreateAmmo(aref loc) // Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			iNation = GetCityNation(loc.parent_colony);
 			string slai_group = GetNationNameByType(iNation)  + "_citizens";
 			iRank = sti(pchar.rank)+5+MOD_SKILL_ENEMY_RATE*2;
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			sld = GetCharacter(NPC_GenerateCharacter(loc.parent_colony+"AmmoOff", "off_"+NationShortName(iNation)+"_"+(rand(1)+1), "man", "man", iRank, iNation, 2, true, "governor"));
 			FantomMakeCoolFighter(sld, iRank+5, 70, 70, "blade_13", "pistol3", "grapeshot", 100);
 			sld.City = loc.parent_colony;
 			sld.CityType = "soldier";
-			sld.standUp = true; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+			sld.standUp = true; 
 			sld.Dialog.Filename = "Common_Ammo.c";
 			sld.dialog.currentnode = "First time";
 			sld.greeting = "comandante";
@@ -2971,7 +2971,7 @@ void CreateAmmo(aref loc) // Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			LAi_SetHuberType(sld);
 			LAi_group_MoveCharacter(sld, slai_group);
 			ChangeCharacterAddressGroup(sld, loc.id, "sit", "sit1");
-			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			
 			for (i=1; i<=3; i++)
 			{
 				sld = GetCharacter(NPC_GenerateCharacter(loc.parent_colony+"AmmoSold_"+i, "sold_"+NationShortName(iNation)+"_"+(rand(7)+1), "man", "man", iRank, iNation, 2, true, "soldier"));
@@ -2990,7 +2990,7 @@ void CreateAmmo(aref loc) // Jason, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 }
 
-int GetCityNation(string _sColony) // boal ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+int GetCityNation(string _sColony) 
 {
     int iColony = FindColony(_sColony)
 	if (colonies[iColony].nation == "none")
@@ -3000,24 +3000,24 @@ int GetCityNation(string _sColony) // boal ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿
 	return sti(Colonies[iColony].nation);
 }
 
-/// boal
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+
 bool isLocationHasCitizens(string _locId)
 {
-    ref rCharacter; //ï¿½ï¿½ï¿½ï¿½
+    ref rCharacter; 
 	int n, Qty;
 	bool bOk = false;
 
 	for(n=0; n<MAX_CHARACTERS; n++)
 	{
 		makeref(rCharacter,Characters[n]);
-		if (CheckAttribute(rCharacter, "CityType") && !CheckAttribute(rCharacter, "Merchant.type")) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		if (CheckAttribute(rCharacter, "CityType") && !CheckAttribute(rCharacter, "Merchant.type")) 
 		{
             if (rCharacter.location == _locId)
 			{
 				bOk = true;
 				if (rCharacter.chr_ai.type == "patrol")
-					PlaceCharacter(rCharacter, "patrol", "random_free"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					PlaceCharacter(rCharacter, "patrol", "random_free"); 
 			}
 		}
     }
@@ -3037,7 +3037,7 @@ void ReSitCharacterOnFree(ref chr, string _locId, string sTemp)
 	
 	n = 0;
 	while (findsubstr(sTemp, "sit_front" , 0) != -1 && n < 20)
-	{    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	{    
 	    sTemp = PlaceCharacter(chr, "sit", "random_free");
 	    k = 0;
 	    while (!CheckFreeLocator(_locId, sTemp, sti(chr.index)) && k < 10)
@@ -3080,4 +3080,5 @@ void SetNPCModelUniq(ref chr, string sType, int iSex)
 	arrayNPCModel[arrayNPCModelHow] = chr.model;
 	arrayNPCModelHow++;
 }
+
 

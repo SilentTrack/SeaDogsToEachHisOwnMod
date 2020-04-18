@@ -1,4 +1,4 @@
-// Эдвард Мэнсфилд, глава буканьеров и авторитетный пират, английская линейка
+
 void ProcessDialogEvent()
 {
 	ref NPChar;
@@ -10,12 +10,12 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
     
-// ============================================================================
-// ============================= блок angry ==========>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
     if (CheckAttribute(npchar, "angry") && !CheckAttribute(npchar, "angry.ok"))
     {
         npchar.angry.ok = 1;
-        if (!CheckAttribute(npchar, "angry.first")) //ловушка первого срабатывания
+        if (!CheckAttribute(npchar, "angry.first")) 
         {
             NextDiag.TempNode = NextDiag.CurrentNode;
             Dialog.CurrentNode = "AngryExitAgain";
@@ -23,7 +23,7 @@ void ProcessDialogEvent()
         }
         else
         {
-            switch (npchar.angry.kind) //сюда расписываем реакцию ангри. В npchar.angry.name пробелы удалены!!!
+            switch (npchar.angry.kind) 
             {
                 case "repeat":
                     if (npchar.angry.name == "Firsttime") Dialog.CurrentNode = "AngryRepeat_1";
@@ -31,8 +31,8 @@ void ProcessDialogEvent()
             }
         }
     }
-// <<<<<<<<<<<<<<<<<<<<<<======= блок angry ===================================
-// ============================================================================
+
+
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
@@ -99,7 +99,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 		break;
 		
-		//zagolski. начальный квест за пирата ===================================
+		
 		case "pirateStartQuest":
 			dialog.text = "Hm.. A work, you've said? Actually it's good that you have asked me. I need a man from aside. I want to find out something in the nearest town but my men are known there. Can't promise you a lot but you will get something.";
 			link.l1 = "Nice. What's the mission?";
@@ -153,7 +153,7 @@ void ProcessDialogEvent()
 			pchar.questTemp.pirateStartQuest.many = "";
 		break;
 
-		//------------------------------------
+		
 		case "pirateStartQuest_info_1":
 			dialog.text = "Ha! An excellent news! I was sure that you'll make it. I have got some intriguing information.";
 			link.l1 = "I have done my work. I want to have my ten thousands.";
@@ -210,12 +210,12 @@ void ProcessDialogEvent()
   		break;
 		
 
-// ======================== блок нод angry ===============>>>>>>>>>>>>>>>
+
 		case "AngryRepeat_1":
             dialog.text = RandPhraseSimple(""+ GetSexPhrase("Get away","Get") +" out!", "Go away from my home!");
 			link.l1 = "Oups..";
 		    link.l1.go = "AngryExitAgainWithOut";
-            if (CheckAttribute(npchar, "angry.terms")) //примиряемся с Мэнсфилдом через 30 дней.
+            if (CheckAttribute(npchar, "angry.terms")) 
             {
                 if (GetNpcQuestPastDayParam(npchar, "angry.terms") > sti(npchar.angry.terms))
                 {
@@ -235,6 +235,7 @@ void ProcessDialogEvent()
             DeleteAttribute(npchar, "angry.ok");
             DoReloadCharacterToLocation("LaVega_town","reload","reload6");
 		break;
-// <<<<<<<<<<<<============= блок нод angry =============================
+
 	}
 }
+

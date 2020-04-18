@@ -23,7 +23,7 @@ ref GetIslandByID(string sIslandID)
 	{
 		if (Islands[i].id == sIslandID) return &Islands[i];
 	}
-	//Trace("Invalid island ID: " + sIslandID);
+	
 	return &Islands[0];
 }
 
@@ -135,8 +135,8 @@ int FindIslandBySeaLocation(string locID)
 	}
 	return -1;
 }
-// boal -->
-////////////
+
+
 bool FindIslandLocatorXYZ(string _islandId, string _locator, ref float_x, ref float_y, ref float_z)
 {
     int   i;
@@ -162,7 +162,7 @@ bool FindIslandLocatorXYZ(string _islandId, string _locator, ref float_x, ref fl
 				}
 				else
 				{
-				    trace("!!!!!! FindIslandLocatorXYZ  нет локатора " + _locator + " остров " + _islandId);
+				    trace("!!!!!! FindIslandLocatorXYZ  пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + _locator + " пїЅпїЅпїЅпїЅпїЅпїЅ " + _islandId);
 				}
 				return true;
 			}
@@ -170,10 +170,10 @@ bool FindIslandLocatorXYZ(string _islandId, string _locator, ref float_x, ref fl
 	}
 	return false;
 }
-// boal <--
 
-// Warship, 17.05.11.
-// Функция вернет локатор перехода, который используется для перехода ИЗ МОРЯ указанного острова в указанную локацию.
+
+
+
 string Island_GetLocationReloadLocator(string _island, string _location)
 {
 	int i, reloadsCount;
@@ -203,27 +203,6 @@ string Island_GetLocationReloadLocator(string _island, string _location)
 	return "";
 }
 
-// Warship, 25.05.11
-// Метод возвращает идентификатор локации маяка, которая расположена на острове с указанной колонией.
-/*string Island_GetLighthouseId(string _islandId)
-{
-	int i, reloadsCount;
-	ref island = GetIslandByID(_islandId);
-	aref reloadNode, reloadLocator;
-	
-	makearef(reloadNode, island.reload);
-	
-	reloadsCount = GetAttributesNum(reloadNode);
-	
-	for(i = 0; i < reloadsCount; i++)
-	{
-		reloadLocator = GetAttributeN(reloadNode, i);
-		
-		if(HasSubStr(reloadLocator.go, "mayak"))
-		{
-			return reloadLocator.go;
-		}
-	}
-	
-	return "";
-}*/ // Jason: функция работает некорректно, сделал более надежным способом через иниты. Функция в colonies.c
+
+
+  

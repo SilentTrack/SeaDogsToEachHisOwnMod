@@ -62,7 +62,7 @@ void InitInterface(string iniName)
 	GameInterface.SavePath = "SAVE";
 
 	ResetSound(); 
-	// ВВОД СВОИХ СХЕМ В ЗАВИСИМОСТИ ОТ ПОГОДЫ (BY LOKK)
+	
 	if (Whr_IsRain())
 	{ 
 		if (Whr_IsNight())
@@ -125,7 +125,7 @@ void UpdatesPress()
 {
 	if(DLCAppID > 0 && bSteamAchievements)
 	{
-		DLCState = DLCStartOverlay(MAIN_APPID); // открываем окошко в стиме для главной игры а не для дополнения
+		DLCState = DLCStartOverlay(MAIN_APPID); 
 	}
 }
 
@@ -195,22 +195,22 @@ void UpdateInterface()
 	arMenu.l4.locname = "menu05";	arMenu.l4.sel = "mainmenu\menu05_active";	arMenu.l4.norm = "mainmenu\menu05_passive"; arMenu.l4.event = "Credits";		arMenu.l4.path = LanguageGetLanguage();
 	arMenu.l5.locname = "menu06";	arMenu.l5.sel = "mainmenu\menu06_active";	arMenu.l5.norm = "mainmenu\menu06_passive"; arMenu.l5.event = "Exit";
 	
-	if(!isSteamOverlayEnabled) // оверлей закрыт
+	if(!isSteamOverlayEnabled) 
 	{
 		DLCAppID = CheckUpdates();	
 		if(DLCAppID > 0) 
-		{   // есть обновления
+		{   
 			arMenu.l6.locname = "menu07";	arMenu.l6.sel = "mainmenu\menu07_active";	arMenu.l6.norm = "mainmenu\menu07_passive"; arMenu.l6.event = "Updates"; arMenu.l6.path = LanguageGetLanguage();			
 		}
 		else
-		{	// обновлений нет
+		{	
 			arMenu.l6.locname = "menu07";	arMenu.l6.sel = "mainmenu\menu07_none";		arMenu.l6.norm = "mainmenu\menu07_none"; 	arMenu.l6.event = "Updates"; arMenu.l6.path = LanguageGetLanguage();
 		}
 	}
-	else // оверлей открыт, ничего не делаем
+	else 
 	{
 	}
-	SendMessage(&InterfaceBackScene, "lla", 3, 1, arMenu ); // set menu
+	SendMessage(&InterfaceBackScene, "lla", 3, 1, arMenu ); 
 }
 
 object InterfaceBackScene;
@@ -224,16 +224,16 @@ void CreateBackEnvironment()
 		return;
 	}
 
-	// сбрасываем цвет фона на 0
+	
 	Render.BackColor = 0;
-	// выключаем эффект моря
+	
 	Render.SeaEffect = false;
-	// 14.07.2007 - отключаем подводную часть
+	
 	Sea.UnderWater = false;
 	bMainCharacterInFire = false;
 	bMainMenu = true;
 
-	// create weather
+	
 	ICreateWeather();
 
 	CreateEntity(&InterfaceBackScene,"InterfaceBackScene");
@@ -242,8 +242,8 @@ void CreateBackEnvironment()
 	
 	SetEventHandler("evntSteamOverlayActivated","UpdateInterface",0);
 
-	SendMessage(&InterfaceBackScene, "ls", 0, "MainMenu\MainMenu"); // set model
-	SendMessage(&InterfaceBackScene, "ls", 1, "camera"); // set camera
+	SendMessage(&InterfaceBackScene, "ls", 0, "MainMenu\MainMenu"); 
+	SendMessage(&InterfaceBackScene, "ls", 1, "camera"); 
 
 	aref arMenu;
 	makearef(arMenu,InterfaceBackScene.menu);
@@ -260,58 +260,24 @@ void CreateBackEnvironment()
 	{
 		arMenu.l6.locname = "menu07";	arMenu.l6.sel = "mainmenu\menu07_none";		arMenu.l6.norm = "mainmenu\menu07_none"; 	arMenu.l6.event = "Updates"; arMenu.l6.path = LanguageGetLanguage();
 	}
-	SendMessage(&InterfaceBackScene, "lla", 3, 1, arMenu ); // set menu
+	SendMessage(&InterfaceBackScene, "lla", 3, 1, arMenu ); 
 
-	// create ship
+	
 	MainMenu_CreateShip();
-/*
-	if( Whr_IsNight() ) 
-	{
-		InterfaceBackScene.light.turnon = true;
-		InterfaceBackScene.light.model = "mainmenu\Fonar_night";
-		InterfaceBackScene.light.lightcolormin = argb(0,200,200,120);//argb(255,114,114,80);
-		InterfaceBackScene.light.lightcolormax = argb(48,255,255,180);
-		InterfaceBackScene.light.colorperiod = 0.4;
-		InterfaceBackScene.light.addcolorperiod = 1.0;
-		InterfaceBackScene.light.rangemin = 10.0;
-		InterfaceBackScene.light.rangemax = 14.0;
-		InterfaceBackScene.light.rangeperiod = 1.5;
-		InterfaceBackScene.light.locator = "Light";
-		InterfaceBackScene.light.lightlocator = "fonar";
-		InterfaceBackScene.light.flarelocator = "fire";
-		InterfaceBackScene.light.flaresize = 0.5;
-		InterfaceBackScene.light.minflarecolor = 120.0;
-		InterfaceBackScene.light.maxflarecolor = 200.0;
-	} else {
-		MainMenu_CreateAnimals();
-
-		InterfaceBackScene.light.turnon = false;
-		InterfaceBackScene.light.model = "mainmenu\Fonar_day";
-		InterfaceBackScene.light.locator = "Light";
-		InterfaceBackScene.light.lightlocator = "fonar";
-	}
-	SendMessage(&InterfaceBackScene, "ls", 8, "light" );
-
-	if( Whr_IsNight() )
-	{
-		// create particles
-		InitParticles();
-		CreateParticleSystem("candle", stf(InterfaceBackScene.lightpos.x),stf(InterfaceBackScene.lightpos.y),stf(InterfaceBackScene.lightpos.z), 0.0,0.0,0.0, 0);
-	}
-*/	
+ 	
 	bMainMenu = false;
 }
 
 void MainMenu_CreateShip()
 {
-	//int
-	iChar = GenerateCharacter(rand(4), WITHOUT_SHIP, "citizen", MAN, 0, WARRIOR);   //PIRATE
+	
+	iChar = GenerateCharacter(rand(4), WITHOUT_SHIP, "citizen", MAN, 0, WARRIOR);   
 	ref	rCharacter = &characters[iChar];
-	int nChoosedBaseShipType = rand(SHIP_LUGGER) + 1;//SHIP_TARTANE;SHIP_LUGGER;SHIP_CARAVEL;
+	int nChoosedBaseShipType = rand(SHIP_LUGGER) + 1;
 	rCharacter.ship.type = GenerateShip(nChoosedBaseShipType, false);
 	SetBaseShipData( rCharacter );
 	ref refBaseShip = GetRealShip( sti(rCharacter.ship.type) );
-	refBaseShip.SpeedRate = 1.0; // чтоб не летал
+	refBaseShip.SpeedRate = 1.0; 
 	Ship_SetFantomData( rCharacter );
 	Ship_ClearImpulseStrength( rCharacter );
 	Ship_SetLightsAndFlares( rCharacter );
@@ -319,7 +285,7 @@ void MainMenu_CreateShip()
 
 	rCharacter.Features.GeraldSails = true;
 	rCharacter.Ship.Speed.z = 1.0;
-	//rCharacter.Ship.Stopped = true;
+	
 	rCharacter.Ship.Pos.Mode = SHIP_WAR;
 	rCharacter.Ship.Pos.x = 38.175;
 	rCharacter.Ship.Pos.z = -69.56;
@@ -334,7 +300,7 @@ void MainMenu_CreateShip()
 	aref aTmpPerks; makearef(aTmpPerks, rCharacter.TmpPerks);
 	aTmpPerks.StormProfessional		= 0;
 	
-	SendMessage(&InterfaceBackScene, "lsa", 2, "ship", &rCharacter); // set ship position
+	SendMessage(&InterfaceBackScene, "lsa", 2, "ship", &rCharacter); 
 	CreateEntity( rCharacter, "ship" );
 	ref rBaseShip = GetRealShip(sti(rCharacter.ship.type));
 	SendMessage( rCharacter, "laa", MSG_SHIP_CREATE, &rCharacter, &rBaseShip );
@@ -347,8 +313,8 @@ void DeleteBackEnvironment()
 
 	DelEventHandler("evntSteamOverlayActivated","UpdateInterface");
 	
-//	MainMenu_DeleteAnimals();
-	DeleteClass( GetCharacter(iChar));//  boal fix FANTOM_CHARACTERS) );
+
+	DeleteClass( GetCharacter(iChar));
 	DeleteShipEnvironment();
 	DeleteWeather();
 	DeleteSea();
@@ -386,7 +352,7 @@ void MainMenu_DeleteAnimals()
 
 void ICreateWeather()
 {
-	// choose random weather
+	
 	int n = 0;
 	if( CheckAttribute(&InterfaceStates,"mainmenuweather") )
 	{
@@ -402,7 +368,7 @@ void ICreateWeather()
 			{
 				break;
 			}
-			//candle
+			
 			n++;
 			if( n==iTotalNumWeathers ) {n = 0;}
 			if( n==oldN ) {break;}
@@ -410,9 +376,9 @@ void ICreateWeather()
 	}
 	if (n < 0 || n >= iTotalNumWeathers) n = 0;
 	SetNextWeather(Weathers[n].id);
-	iBlendWeatherNum = -1; // залоченная погода
+	iBlendWeatherNum = -1; 
 	Whr_LoadNextWeather(0);
-	iBlendWeatherNum = -1; // залоченная погода
+	iBlendWeatherNum = -1; 
 	InterfaceBackScene.current_weather = n;
 	InterfaceStates.mainmenuweather    = n;
 
@@ -423,7 +389,7 @@ void ICreateWeather()
 	Sea.isDone = "";
 
 	CreateCoastFoamEnvironment("MainMenu", "execute", "realize");
-	iBlendWeatherNum = -1; // залоченная погода
+	iBlendWeatherNum = -1; 
 }
 
 int CheckUpdates()

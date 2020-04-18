@@ -1,5 +1,5 @@
-//Jason общий диалог цыганок
-// ugeen <-- добавил продажу мышьяка из под полы
+
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -14,14 +14,14 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 	
-	// вызов диалога по городам -->
+	
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Citizen\" + NPChar.City + "_Citizen.c";
     if (LoadSegment(NPChar.FileDialog2))
 	{
         ProcessCommonDialog(NPChar, Link, NextDiag);
 		UnloadSegment(NPChar.FileDialog2);
 	}
-    // вызов диалога по городам <--
+    
 	
 	ProcessCommonDialogRumors(NPChar, Link, NextDiag);
 	
@@ -32,14 +32,14 @@ void ProcessDialogEvent()
 			link.l1 = "Nothing I suppose.";
 			link.l1.go = "exit";
 			link.l2 = RandPhraseSimple("I have got a question for you.", "I need an information.");
-			link.l2.go = "quests";//(перессылка в файл города)
+			link.l2.go = "quests";
 			
 			if (npchar.quest.meeting == "0")
 			{
 				dialog.text = LinkRandPhrase("Darling, would you be kindly to spare some gold? I'll tell you the truth.","Hey, sailor, don't hurry like that! Do you want to know the truth?","Give me some tobacco and a few silver coins, brave young man. And I will take a look at your future.");
 				link.l1 = "Sorry but I have to go.";
 				link.l1.go = "exit";
-				// --> мангароса
+				
 				if (CheckCharacterItem(pchar, "cannabis7") && CheckAttribute(pchar, "questTemp.Mangarosa") && pchar.questTemp.Mangarosa == "gipsy" && !CheckAttribute(npchar, "quest.mangarosa"))
 				{
 					link.l5 = "Listen, kind lady, I know that your people are experts in potions. I was told that you could be interested in this plant. Take a look.";
@@ -50,11 +50,11 @@ void ProcessDialogEvent()
 					link.l5 = "Hey, dark-browed, I have got something for you... This is Manga Rosa. Want to buy some?Hey, dark-browed, I have got something for you... This is Manga Rosa. Want to buy some?";
 					link.l5.go = "mangarosa_trade1";
 				}
-				// <-- мангароса
+				
 				link.l2 = "Can you tell fortunes for me?";
 				link.l2.go = "guess";
 				link.l3 = RandPhraseSimple("I have got a question for you.", "I need an information.");
-				link.l3.go = "quests";//(перессылка в файл города)
+				link.l3.go = "quests";
 				npchar.quest.meeting = "1";
 			}
 			if (!CheckAttribute(npchar, "quest.poison_price") && !CheckAttribute(pchar, "questTemp.Sharlie.Lock") && rand(2) == 0)
@@ -65,7 +65,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 
-//-------------------------------------------------гадание-------------------------------------------------
+
 		case "guess":
 			dialog.text = "Sure, brave young man. Give me some coins and show your right hand. I'll tell you about your future with no cheating!";
 			link.l1 = "Actually I have changed my mind. I am not in the mood...";
@@ -87,7 +87,7 @@ void ProcessDialogEvent()
 		break;
 		
 		sTemp = GuessText();
-		case "guess_rate_1"://никаких плюшек
+		case "guess_rate_1":
 			if (sti(pchar.money) >= 100)
 			{
 				AddMoneyToCharacter(pchar, -100);
@@ -103,15 +103,15 @@ void ProcessDialogEvent()
 			}
 		break;
 		
-		case "guess_rate_2"://немного в везение или скрытность
+		case "guess_rate_2":
 			if (sti(pchar.money) >= 500)
 			{
 				AddMoneyToCharacter(pchar, -500);
 				dialog.text = "Ah, thank you, brave young man! Now listen:"+sTemp+"";
 				link.l1 = LinkRandPhrase("Heh! That's very interesting. I'll consider that...","Really? I'll consider that...","Oh, really? Are you serious? Well, I'll remember that...");
 				link.l1.go = "exit";
-				if (drand(1) == 0) AddCharacterExpToSkill(pchar, "Fortune", 30+rand(10));//везение
-				else AddCharacterExpToSkill(pchar, "Sneak", 30+rand(10));//скрытность
+				if (drand(1) == 0) AddCharacterExpToSkill(pchar, "Fortune", 30+rand(10));
+				else AddCharacterExpToSkill(pchar, "Sneak", 30+rand(10));
 			}
 			else
 			{
@@ -121,7 +121,7 @@ void ProcessDialogEvent()
 			}
 		break;
 		
-		case "guess_rate_3"://здоровье + везение или скрытность, харизма
+		case "guess_rate_3":
 			if (sti(pchar.money) >= 1000)
 			{
 				AddMoneyToCharacter(pchar, -1000);
@@ -130,8 +130,8 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				AddCharacterHealth(pchar, 1);
 				AddCharacterExpToSkill(pchar, "Leadership", 20);
-				if (drand(1) == 0) AddCharacterExpToSkill(pchar, "Fortune", 50+rand(20));//везение
-				else AddCharacterExpToSkill(pchar, "Sneak", 50+rand(20));//скрытность
+				if (drand(1) == 0) AddCharacterExpToSkill(pchar, "Fortune", 50+rand(20));
+				else AddCharacterExpToSkill(pchar, "Sneak", 50+rand(20));
 			}
 			else
 			{
@@ -141,7 +141,7 @@ void ProcessDialogEvent()
 			}
 		break;
 		
-		case "guess_rate_4"://умения в оружие, везение+скрытность, здоровье, харизма
+		case "guess_rate_4":
 			if (sti(pchar.money) >= 5000)
 			{
 				AddMoneyToCharacter(pchar, -5000);
@@ -150,8 +150,8 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				AddCharacterHealth(pchar, 2);
 				AddCharacterExpToSkill(pchar, "Leadership", 40);
-				AddCharacterExpToSkill(pchar, "Fortune", 50+rand(100));//везение
-				AddCharacterExpToSkill(pchar, "Sneak", 50+rand(50));//скрытность
+				AddCharacterExpToSkill(pchar, "Fortune", 50+rand(100));
+				AddCharacterExpToSkill(pchar, "Sneak", 50+rand(50));
 				AddComplexSelfExpToScill(20, 20, 20, 20);
 			}
 			else
@@ -167,9 +167,9 @@ void ProcessDialogEvent()
 			AddCharacterHealth(pchar, -10);
 			LAi_CharacterDisableDialog(npchar);
 		break;
-//<-- гадание
 
-// --> продажа мышьяка
+
+
 		case "get_poison_1" :
 			npchar.quest.poison_price = (drand(3) + 1) * 10;
 			if(drand(10) == 3)
@@ -214,9 +214,9 @@ void ProcessDialogEvent()
 			TakeNItems(pchar, "rat_poison", 1);
 			DialogExit();
 		break;
-// <-- продажа мышьяка
 
-	// --> Мангароса
+
+	
 		case "mangarosa":
 			dialog.text = LinkRandPhrase("Show me your plant, sweetie... Hm... I suppose that I can buy it from you. Three hundred pesos?","Show me it, friend... Heh... Well I can pay two hundred and a half for it.","Let's see... Oh! An interesting example! Two hundred pesos! Deal?")"";
 			link.l1 = LinkRandPhrase("Here are we go... Dark-browed, I am not some fool from the village. I know this plant. It is Manga Rosa...","Oh, really?! This is Manga Rosa and it's a perfect plant. Don't try to cheat on me.","Aha, and you suppose that I will give you the Manga Rosa for a few coins...");
@@ -230,7 +230,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "mangarosa_2":
-			// тут работает харизма
+			
 			if (sti(pchar.questTemp.Mangarosa.g_count) == 5 || GetSummonSkillFromName(pchar, SKILL_LEADERSHIP) > 10+drand(25)+drand(30))
 			{
 				dialog.text = "Hm... I suppose that it won't be bad if I'll tell you a bit about her. You won't be able to do anything with the plant without some special skills.";
@@ -333,22 +333,22 @@ void ProcessDialogEvent()
 			npchar.quest.mangarosa = "true";
 			DeleteAttribute(pchar, "questTemp.Mangarosa.g_count");
 			pchar.questTemp.Mangarosa = "amelia";
-			pchar.questTemp.Mangarosa.Tell = "true"; // калеуче
+			pchar.questTemp.Mangarosa.Tell = "true"; 
 			AddQuestRecord("Mangarosa", "4");
-			// создаем и ставим Амелию
+			
 			sld = GetCharacter(NPC_GenerateCharacter("Amelia", "gipsy_3", "woman", "towngirl", 10, PIRATE, -1, true, "citizen"));
 			SetFantomParamFromRank(sld, 10, true);
 			sld.name = "Amelia";
 			sld.lastname = "";
 			sld.dialog.FileName = "Quest\Mangarosa.c";
 			sld.dialog.currentnode = "amelia";
-			//sld.greeting = "";
+			
 			LAi_SetOwnerType(sld);
 			LAi_SetImmortal(sld, true);
 			ChangeCharacterAddressGroup(sld, "Amelia_house", "barmen", "stay");
 		break;
 		
-		//замечание по обнаженному оружию от персонажей типа citizen
+		
 		case "CitizenNotBlade":
 			dialog.text = NPCharSexPhrase(NPChar, "Listen, I am the citizen of this town and I'd ask you to hold down your blade.", "Listen, I am the citizen of this town and I'd ask you to hold down your blade.");
 			link.l1 = LinkRandPhrase("Fine.", "Whatever.", "As you say...");
@@ -391,3 +391,4 @@ string GuessText()
 	}
 	return sText;
 }
+

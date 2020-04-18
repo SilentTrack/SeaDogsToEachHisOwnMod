@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
 
@@ -15,4 +15,5 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 	}
 	UnloadSegment(NPChar.FileDialog2);
 }
+
 

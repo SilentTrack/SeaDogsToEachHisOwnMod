@@ -1,30 +1,30 @@
-#define PERK_TEMPLATE_SHIPDEFENCE	0	// 3 perks
-#define PERK_TEMPLATE_REPAIR		1	// 2 perks
-#define PERK_TEMPLATE_CANNONS		2	// 8 perks
-#define PERK_TEMPLATE_COMMERCE		3	// 5 perks
-#define PERK_TEMPLATE_SAILING		4	// 5 perks
-#define PERK_TEMPLATE_GRAPPLING		5	// 3 perks
-#define PERK_TEMPLATE_MELEE		    6	// 9 perks
-#define PERK_TEMPLATE_PERSONAL		7	// 6 perks
+#define PERK_TEMPLATE_SHIPDEFENCE	0	
+#define PERK_TEMPLATE_REPAIR		1	
+#define PERK_TEMPLATE_CANNONS		2	
+#define PERK_TEMPLATE_COMMERCE		3	
+#define PERK_TEMPLATE_SAILING		4	
+#define PERK_TEMPLATE_GRAPPLING		5	
+#define PERK_TEMPLATE_MELEE		    6	
+#define PERK_TEMPLATE_PERSONAL		7	
 #define PERK_TEMPLATE_LAST          8
 
-//Экипировать NPC оружием и перками (переделал полнсотью 11/11/04 boal)
+
 void LAi_NPC_Equip(ref chr, int rank, bool isWeapons, bool isGun)
 {
-	// boal не нужно - ранг и так точно расчитан r = rank + rand(3) - 1;
+	
 	string sBullet = "bullet";
 	string sGunPowder;
 	
 	DeleteAttribute(chr, "equip");
-	DeleteAttribute(chr, "perks.list"); // FIX 101104 убрать накопивщиеся умения
-	DelBakSkillAttr(chr); // fix
+	DeleteAttribute(chr, "perks.list"); 
+	DelBakSkillAttr(chr); 
 	
 	if (chr.model.animation == "mushketer") return;
 	if (chr.sex == "woman") return;
 	
 	if (CheckAttribute(chr, "quest.officertype"))
 	{
-		// наши офицеры
+		
 		LAi_NPC_EquipPerk(chr, chr.quest.officertype);
 	}
 	else
@@ -32,12 +32,12 @@ void LAi_NPC_Equip(ref chr, int rank, bool isWeapons, bool isGun)
 		LAi_NPC_EquipPerk(chr, "fantom");
 	}
 	
-	//Подберём саблю
+	
 	if(isWeapons)
 	{
 		string blade;
 		if (CheckAttribute(chr, "CityType") && chr.CityType == "soldier")
-		{   // у солдат в городе свои сабли
+		{   
 			blade = LAi_Soldier_EquipBlade();
 		}
 		else
@@ -45,31 +45,31 @@ void LAi_NPC_Equip(ref chr, int rank, bool isWeapons, bool isGun)
             blade = LAi_NPC_EquipBladeSelection(chr);
 		}
 		
-		DeleteAttribute(chr, "items"); // это можно не делать, но так наверняка (идет проверка на колво предметов, и сабель может стать вагон)
-		//DeleteAttribute(chr, "cirassId"); // трем броню
+		DeleteAttribute(chr, "items"); 
 		
-		// Warship Нет, не генерим все-таки, с отображением жопа - ищет models/ammo/blade4_xxx :(
-		// Ugeen -- > и все-таки генерим !! :)
-		blade = GetGeneratedItem(blade); // Генерим оружие
+		
+		
+		
+		blade = GetGeneratedItem(blade); 
 		
 		GiveItem2Character(chr, blade);
 		EquipCharacterByItem(chr, blade);
-		// boal -->
+		
 		if(rand(1500) < MOD_SKILL_ENEMY_RATE*100)
         {
-		   TakeNItems(chr, "potion1", rand(makeint(rank/(11-MOD_SKILL_ENEMY_RATE) +0.5))); // даю меньше
+		   TakeNItems(chr, "potion1", rand(makeint(rank/(11-MOD_SKILL_ENEMY_RATE) +0.5))); 
 		}
-		// boal <--
+		
 	}
     else
     {
 		isGun = false;
 	}
-	// boal выдаем пистоль -->
+	
 	if(isGun)
 	{
-		if(CheckAttribute(chr, "PhantomType") && chr.PhantomType == "native") return; //Jason
-		if(CheckAttribute(chr, "PhantomType") && chr.PhantomType == "slave") return; //Jason
+		if(CheckAttribute(chr, "PhantomType") && chr.PhantomType == "native") return; 
+		if(CheckAttribute(chr, "PhantomType") && chr.PhantomType == "slave") return; 
 		
 		if(rand(1000) < MOD_SKILL_ENEMY_RATE * sti(chr.rank) * 8)
 		{
@@ -134,16 +134,16 @@ void LAi_NPC_Equip(ref chr, int rank, bool isWeapons, bool isGun)
 					}	
 				break;
 			}
-			TakeNItems(chr, sBullet, 5 + rand(10));// boal gun bullet
+			TakeNItems(chr, sBullet, 5 + rand(10));
 			LAi_SetCharacterUseBullet(chr, sBullet);
 			sGunPowder = LAi_GetCharacterGunpowderType(chr);
 			if(sGunPowder != "")
 			{
-				AddItems(chr, sGunPowder, 5 + rand(10)); // Warship. Порох
+				AddItems(chr, sGunPowder, 5 + rand(10)); 
 			}	
 		}
 	}
-	// boal выдаем пистоль <--
+	
 }
 
 void LAi_NPC_MushketerEquip(ref chr)
@@ -268,7 +268,7 @@ void LAi_NPC_MushketerEquip(ref chr)
 	}
 			
 	chr.isMusketer = true;
-	chr.isMusketer.weapon = true; // Jason: а пули с порохом кто удалять будет? И вообще, что за муть - менять мушкет при каждой установке типа?
+	chr.isMusketer.weapon = true; 
 	if (!CheckAttribute(chr, "MusketerDistance")) chr.MusketerDistance = 10.0 + frand(10.0);
 }
 
@@ -331,13 +331,13 @@ string LAi_NPC_EquipBladeSelection(ref chr)
 	else blade = SelectGeneratedItem(TGT_MARGINAL, B_ORDINARY, "");	
 	return blade;
 }
-// казенная сабля солдат в городе
+
 string LAi_Soldier_EquipBlade()
 {	
 	return SelectGeneratedItem(TGT_SOLDIER, "", "");
 }
 
-// new perks generator, more specialized (Gray 12.11.2004)
+
 void LAi_NPC_EquipPerk(ref chr, string kind)
 {
 	int  i;
@@ -352,7 +352,7 @@ void LAi_NPC_EquipPerk(ref chr, string kind)
 		PerkTemplates[i] = 0;
 	}
 
-	switch (kind)        // to_do
+	switch (kind)        
 	{
 		 case "boatswain" :
 			PerkTemplates[PERK_TEMPLATE_SHIPDEFENCE] = makeint((rank + rand(4)) / 7.0 + 1);
@@ -420,7 +420,7 @@ void LAi_NPC_EquipPerk(ref chr, string kind)
 		rest = rest - PerkTemplates[i];
 	}
 
-	// the rest perks (like half usually) distributed randomly among templates
+	
 	while (rest > 0)
 	{
 		i = rand(PERK_TEMPLATE_LAST - 1);

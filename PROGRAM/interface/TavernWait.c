@@ -60,8 +60,8 @@ void ProcCommand()
 void ProcSlideChange()
 {
 	string 	sNodeName 	= GetEventData();
-	int 	iVal 		= GetEventData(); // int GameInterface.nodes.<node_name>.value
-	float 	fVal 		= GetEventData(); // float GameInterface.nodes.<node_name>.value
+	int 	iVal 		= GetEventData(); 
+	float 	fVal 		= GetEventData(); 
 
 	if(sNodeName == "HOURS_SLIDE")
 	{

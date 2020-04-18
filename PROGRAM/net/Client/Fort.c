@@ -31,7 +31,7 @@ void NetClient_CreateFortEnvironment(int iMsg)
 	LayerAddObject("net_realize", rFort, 10000);
 	LayerAddObject("sun_trace", rFort, 1);
 
-	// create fort model
+	
 	CreateEntity(&NCFortModel, "MODELR");
 	string sNCFortModel = rIsland.filespath.models + "\" + arLocator.fort.model;
 
@@ -44,11 +44,8 @@ void NetClient_CreateFortEnvironment(int iMsg)
 
 	SetTexturePath(0, "");
 
-	// create fort blot
-	/*CreateEntity(&NCFortBlots, "blots");
-	SendMessage(&NCFortBlots, "lia", MSG_BLOTS_SETMODEL, &NCFortModel, NCFort);
-	LayerAddObject("net_execute", &NCFortBlots, 10001);
-	LayerAddObject("net_realize", &NCFortBlots, 10001);*/
+	
+	 
 
 	SendMessage(rFort, "laaii", MSG_NET_ADD_FORT, rIsland, arLocator, &NCFortModel, &NCFortBlots);
 }
@@ -59,11 +56,11 @@ void NetClient_OnFortCannonDestroy(int iMsg)
 	float y = NMGetFloat(iMsg);
 	float z = NMGetFloat(iMsg);
 
-	//string sFortFireParticle = "FortFire";
-	//if (rand(2) == 1) { sFortFireParticle = "ShipFire"; }
-	//CreateParticleSystem(sFortFireParticle, x, y, z, NetClient_WhrGetWindSpeed() / 48.0, NetClient_WhrGetWindAngle(), 0.0, 0);
+	
+	
+	
 
-	//CreateParticleSystem("fort_fire" + rand(2), x, y, z, NetClient_WhrGetWindSpeed() / 48.0, NetClient_WhrGetWindAngle(), 0.0, 0);
+	
 
 	string sFortFireParticle = "FortFire_net1";
 	int iRand = rand(6);

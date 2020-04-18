@@ -20,7 +20,7 @@ void NetClient_TimeFrame()
 	int iFullDeltaTime = MakeInt(fHighPrecisionDeltaTime * 1000000.0);
 	int iDeltaTime = iFullDeltaTime / 1000;
 	iClientDeltaTimeFraction = iClientDeltaTimeFraction + (iFullDeltaTime - iDeltaTime * 1000);
-	//Trace("dt = " + GetDeltaTime() + ", iD2 = " + iD2 + ", iD3 = " + iD3);
+	
 
 	iClientTime = iClientTime + iDeltaTime;
 	iClientServerTime = iClientServerTime + iDeltaTime;
@@ -43,13 +43,13 @@ void NetClient_TimeFrame()
 		int iDelta = iClientTime - iClientServerTime;
 		if (iDelta)
 		{
-			//if (abs(iDelta) <= 2) iClientTime = iClientTime - iDelta;
+			
 			if (iDelta > 2) { iClientTime = iClientTime - 2; }
 			if (iDelta < -2) { iClientTime = iClientTime + 2; }
 		}
 	}
 
-	//Trace("ClientTime = " + iClientTime + ", ClientServerTime = " + iClientServerTime);
+	
 
 	iClientDeltaTime = iClientTime - iPrevClientTime;
 	if (iClientDeltaTime < 0) { iClientDeltaTime = 0; }

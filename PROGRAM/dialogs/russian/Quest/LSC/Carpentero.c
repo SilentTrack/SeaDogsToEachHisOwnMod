@@ -1,4 +1,4 @@
-// Санчо Карпентеро - бармен
+
 #include "DIALOGS\russian\Rumours\Common_rumours.c"
 void ProcessDialogEvent()
 {
@@ -31,7 +31,7 @@ void ProcessDialogEvent()
 				npchar.quest.return_isl = "true";
 				break;
 			}
-			// пей до дна
+			
 			if (CheckAttribute(npchar, "quest.drink") && npchar.quest.drink == "fail")
 			{
 				dialog.text = ""+pchar.name+", I am sorry about your failure. Only a few were able to beat the fat man. How is your head?";
@@ -46,7 +46,7 @@ void ProcessDialogEvent()
 				link.l1.go = "drunk_win";
 				break;
 			}
-			// крабовый салат
+			
 			if (CheckAttribute(npchar, "quest.drink") && npchar.quest.crab == "begin")
 			{
 				dialog.text = ""+pchar.name+"? They say that you dove to the bottom in a suit made by a Narwhal mechanic. Is it true or just gossips, as usual?";
@@ -64,7 +64,7 @@ void ProcessDialogEvent()
 			else
 			{
 				dialog.text = "Ah, my friend "+pchar.name+"! Glad to see you in my tavern! Want to drink something?";
-				// квестовые ветки
+				
 				if (CheckAttribute(pchar, "questTemp.Saga.SharkHunt") && pchar.questTemp.Saga.SharkHunt == "search_mush_1" && !CheckAttribute(npchar, "quest.mushket"))
 				{
 					link.l6 = "Listen, Sancho, don't you know where can I get a good musket? Not a casual soldier's gun, but something for sniping, accurate and long-range?";
@@ -108,7 +108,7 @@ void ProcessDialogEvent()
 					link.l10.go = "crab_trade";
 				}
 				link.l4 = "Sancho, I want to ask you something about the Island.";
-				link.l4.go = "int_quests"; //информационный блок
+				link.l4.go = "int_quests"; 
 				link.l5 = "No, pal. Just wanted to check how you are doing here.";
 				link.l5.go = "exit";
 			}
@@ -128,7 +128,7 @@ void ProcessDialogEvent()
 				link.l2.go = "room";
 			}
 			link.l3 = "Sancho, I want to ask you something about the island.";
-			link.l3.go = "int_quests"; //информационный блок
+			link.l3.go = "int_quests"; 
 			link.l4 = "See you, Sancho!";
 			link.l4.go = "exit";
 			NextDiag.TempNode = "First time";
@@ -179,11 +179,11 @@ void ProcessDialogEvent()
 		
 		case "adolf_6":
 			DialogExit();
-			pchar.questTemp.Saga.SharkHunt = "search_mush_3"; //флаг на Джузеппе
+			pchar.questTemp.Saga.SharkHunt = "search_mush_3"; 
 			AddQuestRecord("SharkHunt", "13");
 		break;
 		
-		// виски для Акулы
+		
 		case "whiskey":
 			dialog.text = "Kapper? No. He even hadn't visited me recently. Marcello Cyclops bought a flask of arsenic just an hour ago - he is also plagued by rats. I perfectly understand him... Damn rats.";
 			link.l1 = "Marcello Cyclops?!";
@@ -210,29 +210,29 @@ void ProcessDialogEvent()
 		
 		case "whiskey_4":
 			DialogExit();
-			pchar.questTemp.Saga.SharkHunt = "whiskey_poison"; // флаг - виски травят
+			pchar.questTemp.Saga.SharkHunt = "whiskey_poison"; 
 			AddQuestRecord("SharkHunt", "37");
 			sld = CharacterFromID("LSC_Adolf");
 			LAi_SetActorType(sld);
 			ChangeCharacterAddressGroup(sld, "SantaFlorentinaShipInside4", "goto", "goto2");
 			sld = CharacterFromID("Dodson");
-			sld.dialog.currentnode = "whiskey"; // ноду Акуле
-			// важный момент! От дальнейшего поведения геймера зависит результат
+			sld.dialog.currentnode = "whiskey"; 
+			
 			pchar.quest.LSC_Whiskeypoison_SF.win_condition.l1 = "location";
 			pchar.quest.LSC_Whiskeypoison_SF.win_condition.l1.location = "SantaFlorentinaShipInside4";
-			pchar.quest.LSC_Whiskeypoison_SF.function = "LSC_WhiskeyPoison_SF"; // прерывание на Санта-Флорентину
+			pchar.quest.LSC_Whiskeypoison_SF.function = "LSC_WhiskeyPoison_SF"; 
 			pchar.quest.LSC_Whiskeypoison_AE.win_condition.l1 = "location";
 			pchar.quest.LSC_Whiskeypoison_AE.win_condition.l1.location = "AvaShipInside3";
-			pchar.quest.LSC_Whiskeypoison_AE.function = "LSC_WhiskeyPoison_AE"; // прерывание на Эву
+			pchar.quest.LSC_Whiskeypoison_AE.function = "LSC_WhiskeyPoison_AE"; 
 			pchar.quest.LSC_Whiskeypoison_exit.win_condition.l1 = "location";
 			pchar.quest.LSC_Whiskeypoison_exit.win_condition.l1.location = "LostShipsCity_town";
-			pchar.quest.LSC_Whiskeypoison_exit.function = "LSC_Whiskeypoison_exit"; // прерывание на выход из таверны
-			// закрываем вход к Фацио
+			pchar.quest.LSC_Whiskeypoison_exit.function = "LSC_Whiskeypoison_exit"; 
+			
 			LocatorReloadEnterDisable("LostShipsCity_town", "reload20", true);
 			LocatorReloadEnterDisable("LostShipsCity_town", "reload24", true);
 		break;
 		
-		// пей до дна
+		
 		case "drunk_fail":
 			dialog.text = "Come on, pal! You don't owe me a thing.  You've already lost a hundred doubloons. It was a mistake to deal with Fazio...";
 			if (sti(pchar.money) >= 500)
@@ -253,7 +253,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(npchar, "quest.drink");
 		break;
 		
-		// крабовый салат
+		
 		case "crab":
 			dialog.text = "Hm... then I have a proposal for you. Have you seen giant crabs there?";
 			link.l1 = "Have I seen crabs? There were hordes of them! And what proposal are you talking about?";
@@ -298,7 +298,7 @@ void ProcessDialogEvent()
 			Log_Info("You have received "+iTotalTemp*5+" doubloons");
 		break;
 		
-		// крыс
+		
 		case "rat":
 			dialog.text = "What?! Show me! Let me see it!";
 			link.l1 = "Sure.";
@@ -344,7 +344,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(npchar, "quest.rat");
 		break;
 		
-		//--> информационный блок
+		
 		case "int_quests":
 			dialog.text = "I am listening.";
 			if (!CheckAttribute(npchar, "quest.answer_1"))
@@ -405,9 +405,9 @@ void ProcessDialogEvent()
 			npchar.quest.answer_4 = "true";
 			npchar.quest.rat = "true";
 		break;
-		//<-- информационный блок
 		
-		//--> выпивка
+		
+		
 		case "drink":
 			if (CheckAttribute(pchar, "questTemp.Rum") && sti(pchar.questTemp.Rum) > 4)
 			{
@@ -449,14 +449,14 @@ void ProcessDialogEvent()
 		break;
 		
 		case "drink_sit":
-			if (chrDisableReloadToLocation || pchar.questTemp.Saga.SharkHunt == "barmen_whiskey" || pchar.questTemp.Saga.SharkHunt == "whiskey_poison") //идет квест
+			if (chrDisableReloadToLocation || pchar.questTemp.Saga.SharkHunt == "barmen_whiskey" || pchar.questTemp.Saga.SharkHunt == "whiskey_poison") 
 			{
 				dialog.text = "I think that you should not drink now. Trust me...";
 				link.l1 = "Whatever.";
 				link.l1.go = "exit";
 				break;
 			}
-			if (CheckAttribute(pchar, "questTemp.LSC.MaryBye") || CheckAttribute(pchar, "questTemp.LSC.MaryWait")) // подружился с Мэри
+			if (CheckAttribute(pchar, "questTemp.LSC.MaryBye") || CheckAttribute(pchar, "questTemp.LSC.MaryWait")) 
 			{
 				dialog.text = "Heh, you are a strange man... Don't you have no one to hang out with here, on the Island? Buddy, Mary will kill me if I let you stay here and get drunk alone. Come here together in the evening and have fun until dawn, if you wish.";
 				link.l1 = "Fine...";
@@ -478,18 +478,18 @@ void ProcessDialogEvent()
 			sld.startLocator = "bottle";
 			DoQuestReloadToLocation("FleuronTavern", "quest", "sit2", "LSC_DrinkSit");
 		break;
-		//<-- выпивка
 		
-		//--> сон в таверне
+		
+		
 		case "room":
-   			if (chrDisableReloadToLocation || pchar.questTemp.Saga.SharkHunt == "barmen_whiskey" || pchar.questTemp.Saga.SharkHunt == "whiskey_poison") //идет квест
+   			if (chrDisableReloadToLocation || pchar.questTemp.Saga.SharkHunt == "barmen_whiskey" || pchar.questTemp.Saga.SharkHunt == "whiskey_poison") 
 			{
 				dialog.text = "I think that you should not sleep right now. Trust me...";
 				link.l1 = "Fine.";
 				link.l1.go = "exit";
 				break;
 			}
-			if (CheckAttribute(pchar, "questTemp.LSC.MaryBye") || CheckAttribute(pchar, "questTemp.LSC.MaryWait")) // подружился с Мэри
+			if (CheckAttribute(pchar, "questTemp.LSC.MaryBye") || CheckAttribute(pchar, "questTemp.LSC.MaryWait")) 
 			{
 				if(!isDay())
 				{
@@ -537,7 +537,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			TavernWaitDate_LSC("wait_day");
 		break;
-		//<-- сон в таверне
+		
 		
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;

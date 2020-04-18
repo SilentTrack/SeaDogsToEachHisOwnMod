@@ -1,4 +1,4 @@
-// √лэдис ћак јртур - приемна€ мать Ёлен
+
 void ProcessDialogEvent()
 {
 	ref NPChar, sld;
@@ -92,7 +92,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.CurrentNode = "FindHelena_wait";
 			AddQuestRecord("Saga", "1");
-			pchar.questTemp.Saga = "maruntown";//идем к ƒжекману
+			pchar.questTemp.Saga = "maruntown";
 			SetFunctionTimerCondition("Gladis_SetHome", 0, 0, 1, false);
 			int iTime = 25-MOD_SKILL_ENEMY_RATE;
 			SetFunctionTimerCondition("Helena_AntiguaOver", 0, 0, iTime, false);
@@ -128,7 +128,7 @@ void ProcessDialogEvent()
 			sld = characterFromId("Helena");
 			LAi_SetStayType(sld);
 			AddCharacterExpToSkill(pchar, "Leadership", 50);
-			// открыть город
+			
 			LocatorReloadEnterDisable("SantaCatalina_town", "reload1_back", false);
 			LocatorReloadEnterDisable("SantaCatalina_town", "reload2_back", false);
 			LocatorReloadEnterDisable("SantaCatalina_town", "gate_back", false);
@@ -147,7 +147,7 @@ void ProcessDialogEvent()
 			link.l1 = "Thank you, miss McArthur. I will visit you and Helen when I will have an opportunity.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "Gladis_wait";
-			pchar.questTemp.Saga.Helena_friend = "true";//атрибут поведени€ Ёлен в будущем
+			pchar.questTemp.Saga.Helena_friend = "true";
 		break;
 		
 		case "Gladis_wait":
@@ -196,7 +196,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Gladis_history_6":
-			GiveItem2Character(pchar, "map_half_beatriss"); //половинка карты
+			GiveItem2Character(pchar, "map_half_beatriss"); 
 			PlaySound("interface\important_item.wav");
 			dialog.text = "You are helping us again, monsieur de Maure! And I don't have any idea how to thank you. At least, take my husband's pistol. He was always being proud of it and told me that it is very rare. It was just lying here for a long time. Let it serve you! Take it, take it!";
 			link.l1 = "Thanks, Gladys. This pistol is really excellent. Thank you and farewell.";
@@ -254,7 +254,7 @@ void ProcessDialogEvent()
 			dialog.text = "Ah, that is so good! I wouldn't dare to ask you for this myself. It will be the very best protection for my girl. Helen will be so glad to sail again!";
 			link.l1 = "Thank you for your compliment, miss McArthur. And now I have to see your... stepdaughter.";
 			link.l1.go = "exit";
-			LocatorReloadEnterDisable("SantaCatalina_houseSp3", "reload2", false);//открыть спальню Ёлен
+			LocatorReloadEnterDisable("SantaCatalina_houseSp3", "reload2", false);
 			sld = characterFromId("Helena");
 			sld.dialog.currentnode = "Helena_hire";
 			pchar.questTemp.Saga = "helena2";

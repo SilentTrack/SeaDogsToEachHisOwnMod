@@ -1,4 +1,4 @@
-// äèàëîã ïî ãîðîäàì
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -8,7 +8,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I crossed my mind...", "I've got nothing to say to you"), "Oh, my bad, indeed... I am sorry",
                       "You're right it the third time already. Pardon me...", "Oh, my bad, indeed... I am sorry...", npchar, Dialog.CurrentNode);		
 			link.l1.go = "exit";
-			// êàëåó÷å
+			
 			if (CheckAttribute(pchar, "questTemp.Caleuche") && pchar.questTemp.Caleuche == "graveyard" && !CheckAttribute(npchar, "quest.caleuche"))
 			{
 				link.l1 = "Listen - have you met in Havana or in its vicinity a man by the name Joachim Merriman. A middle-aged senor, Portuguese, with moustache and imperial beard and piercing eyes? In a cove or in the jungle? Have you seen him?";
@@ -16,10 +16,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		
-		// êàëåó÷å
+		
 		case "caleuche":
 			dialog.text = "N-no, sailor, certainly not. This place is rarely visited by anyone, and I h-haven't seen anyone like the man you described...";
-			link.l1 = "Hmm… And why are you stuttering and looking down? You know, I think that you're lying to me. Now tell me - have you seen that man?";
+			link.l1 = "Hmmï¿½ And why are you stuttering and looking down? You know, I think that you're lying to me. Now tell me - have you seen that man?";
 			link.l1.go = "caleuche_1";
 		break;
 		
@@ -31,7 +31,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "caleuche_2":
 			dialog.text = "I don't know no Merryman! And if you hurt me, the commandant will hang you in the fort, just so that you know!";
-			link.l1 = "Oh, really? Alright… Listen now and pay attention: Joachim Merryman is a warlock. The Holy Inquisition is looking for him. Many years ago, in Europe, he was sentenced to burning at the stake for grave digging, defilement of the dead and witchcraft. And I know for certain that now he's hiding somewhere in the vicinity of Havana...";
+			link.l1 = "Oh, really? Alrightï¿½ Listen now and pay attention: Joachim Merryman is a warlock. The Holy Inquisition is looking for him. Many years ago, in Europe, he was sentenced to burning at the stake for grave digging, defilement of the dead and witchcraft. And I know for certain that now he's hiding somewhere in the vicinity of Havana...";
 			link.l1.go = "caleuche_3";
 		break;
 		
@@ -48,7 +48,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "caleuche_5":
-			dialog.text = "Please, senor! I am not partaking in any of this, I swear! I… I just couldn't do anything... How could I stand against him? He's a terrible man, he can... you have no idea what he can do! Mercy!";
+			dialog.text = "Please, senor! I am not partaking in any of this, I swear! Iï¿½ I just couldn't do anything... How could I stand against him? He's a terrible man, he can... you have no idea what he can do! Mercy!";
 			link.l1 = "I know what he can do. I've seen it with my own eyes. So? Where is he? Tell me, and I promise that I will not get you entangled in this affair.";
 			link.l1.go = "caleuche_6";
 		break;
@@ -60,14 +60,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "caleuche_7":
-			dialog.text = "I am bringing him food and healing potions from town… and whatever else he demands. He gets out once or twice in a month… when the moon is full. He leaves a note at the door where he tells me what he needs, I bring it from town and put it at the door, and he takes it.";
+			dialog.text = "I am bringing him food and healing potions from townï¿½ and whatever else he demands. He gets out once or twice in a monthï¿½ when the moon is full. He leaves a note at the door where he tells me what he needs, I bring it from town and put it at the door, and he takes it.";
 			link.l1 = "I see. And that door to his den - is it locked?";
 			link.l1.go = "caleuche_8";
 		break;
 		
 		case "caleuche_8":
 			dialog.text = "Always locked. It's very sturdy, and the lock is massive and safe.";
-			link.l1 = "Hmm… Merryman is no fool, and surely he must have another exit from his lair, like in his house in Europe. If we start to force the door open, he'd sneak away, and we'll never find him. Hmmm...";
+			link.l1 = "Hmmï¿½ Merryman is no fool, and surely he must have another exit from his lair, like in his house in Europe. If we start to force the door open, he'd sneak away, and we'll never find him. Hmmm...";
 			link.l1.go = "caleuche_9";
 		break;
 		
@@ -78,7 +78,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		
 		case "caleuche_10":
-			dialog.text = "I know how to get there. There is another key… I have it. Merryman didn't know that there were two keys to that lock. I would never dare to enter, but you..";
+			dialog.text = "I know how to get there. There is another keyï¿½ I have it. Merryman didn't know that there were two keys to that lock. I would never dare to enter, but you..";
 			link.l1 = "Give me that key, and I will relieve you from that nightmare.";
 			link.l1.go = "caleuche_11";
 		break;
@@ -109,13 +109,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.quest.caleuche_merriman_cave1.win_condition.l1 = "location";
 			pchar.quest.caleuche_merriman_cave1.win_condition.l1.location = "Havana_CryptDungeon";
 			pchar.quest.caleuche_merriman_cave1.function = "Caleuche_InMerrimanCave";
-			SetFunctionTimerCondition("Caleuche_MerrimanCaveOver", 0, 0, 3, false); // òàéìåð
+			SetFunctionTimerCondition("Caleuche_MerrimanCaveOver", 0, 0, 3, false); 
 			npchar.quest.caleuche = "true";
-			// ëîãîâî Ìåððèìàíà
+			
 			int n = Findlocation("Havana_CryptDungeon");
 			locations[n].id.label = "Merrimancave";
 		break;
 	}
 	UnloadSegment(NPChar.FileDialog2); 
 }
+
 

@@ -1,15 +1,15 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
 	{
 		case "quests":
-			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me a question a little while ago...", "At his dock, and you know whatЦI've never seen such flat, curious people before in town.",
+			dialog.text = NPCStringReactionRepeat(RandPhraseSimple("What questions do you have?", "How can I help you?"), "You tried to ask me a question a little while ago...", "At his dock, and you know whatпњљI've never seen such flat, curious people before in town.",
                           "What's with all the questions? My job is to build ships. Let's take care about that.", "block", 1, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I've changed my mind...", "I've got nothing to talk about at the moment."), "Umph, where did my memory go...",
                       "Hm, well...", "Go ahead...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			// Addon 2016-1 Jason пиратская линейка
+			
 			if (CheckAttribute(pchar, "questTemp.Mtraxx"))
             {
 				if (pchar.questTemp.Mtraxx == "silk_2" || pchar.questTemp.Mtraxx == "silk_3")
@@ -20,7 +20,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		
-		// Addon 2016-1 Jason пиратская линейка
+		
 		case "mtraxx":
             dialog.text = "Could you be more clear, young man? What exactly brought you here? If you want to improve your ship - let's get to business.";
 			link.l1 = "Not entirely. The type of services you perform require goods not freely available in the store. I would like to offer you the type of materials you might require.";
@@ -45,6 +45,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.questTemp.Mtraxx = "silk_4";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

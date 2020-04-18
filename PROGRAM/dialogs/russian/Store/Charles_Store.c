@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
 
@@ -11,7 +11,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = HeroStringReactionRepeat("You know, " + NPChar.name + ", maybe next time.", "Right, I've forgotten for some reason...",
                       "Yes, it really is the third time...", "Hm, I wont...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			// Jason НСО
+			
 			if (CheckAttribute(pchar, "questTemp.Patria.Goods"))
 			{
 				link.l1 = "You have my goods stored in your warehouse. Tea, cocoa and guayacan wood. I want to take it.";
@@ -40,7 +40,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "patria_goods_2":
 			DialogExit();
-			WaitDate("", 0, 0, 0, 4, 10); //крутим время
+			WaitDate("", 0, 0, 0, 4, 10); 
 			RecalculateJumpTable();
 			StoreDayUpdate();
 			RefreshWeather();
@@ -67,12 +67,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		
 		case "patria_goods_5":
 			DialogExit();
-			WaitDate("", 0, 0, 0, 4, 10); //крутим время
+			WaitDate("", 0, 0, 0, 4, 10); 
 			RecalculateJumpTable();
 			StoreDayUpdate();
 			RefreshWeather();
 			RefreshLandTime();
-			DeleteAttribute(pchar, "questTemp.Patria.GoodsSM"); // 17-add
+			DeleteAttribute(pchar, "questTemp.Patria.GoodsSM"); 
 			SetCharacterGoods(pchar, GOOD_TOBACCO, GetCargoGoods(pchar, GOOD_TOBACCO) + 500);
 			SetCharacterGoods(pchar, GOOD_EBONY, GetCargoGoods(pchar, GOOD_EBONY) + 200);
 			SetCharacterGoods(pchar, GOOD_MAHOGANY, GetCargoGoods(pchar, GOOD_MAHOGANY) + 250);
@@ -83,4 +83,5 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 	}
 	UnloadSegment(NPChar.FileDialog2);
 }
+
 

@@ -1,4 +1,4 @@
-//«апретить сражатьс€ персонажам в заданной локации
+
 void LAi_LocationFightDisable(ref location, bool isDisable)
 {
 	if(isDisable)
@@ -9,7 +9,7 @@ void LAi_LocationFightDisable(ref location, bool isDisable)
 	}
 }
 
-//–азрешить или запретить генерации монстров 
+
 void LAi_LocationDisableMonstersGen(string locationId, bool isDisable)
 {
 	ref location = &locations[FindLocation(locationId)];
@@ -21,7 +21,7 @@ void LAi_LocationDisableMonstersGen(string locationId, bool isDisable)
 	}
 }
 
-//«апретить генерации монстров в локации locationId на Days дней
+
 void LAi_LocationDisableMonGenTimer(string locationId, int Days)
 {
 	ref location = &locations[FindLocation(locationId)];
@@ -29,7 +29,7 @@ void LAi_LocationDisableMonGenTimer(string locationId, int Days)
 	location.monstersTimer = Days;
 }
 
-//сброс таймера на генерацию монстров
+
 void LAi_LocationResetMonGenTimer(string locationId)
 {
 	ref location = &locations[FindLocation(locationId)];
@@ -45,7 +45,7 @@ void LAi_LocationResetMonGenTimer(string locationId)
 	}	
 }
 
-//”становить врем€ генерации монстров
+
 void LAi_LocationSetMonstersTime(ref location, float start, float end)
 {
 	if(!CheckAttribute(location, "monsters"))
@@ -58,7 +58,7 @@ void LAi_LocationSetMonstersTime(ref location, float start, float end)
 
 bool LAi_LocationIsMonstersGen(ref location)
 {
-	//ѕроверим таймер на запрет генерации монстров
+	
 	if(CheckAttribute(location, "monstersTimer"))
 	{
 		if (GetNpcQuestPastDayParam(location, "monstersTimer") <= sti(location.monstersTimer))
@@ -66,9 +66,9 @@ bool LAi_LocationIsMonstersGen(ref location)
 		else
 			DeleteAttribute(location, "monstersTimer");
 	}
-	//ѕроверим разрешение на генерацию монстров
+	
 	if(!CheckAttribute(location, "monsters")) return true;
-	//ѕроверим врем€ логина
+	
 	if(CheckAttribute(location, "monsters.stime"))
 	{
 		if(CheckAttribute(location, "monsters.etime"))
@@ -81,7 +81,7 @@ bool LAi_LocationIsMonstersGen(ref location)
 	return false;
 }
 
-//–азрешить или запретить генерации фантомов при убийстве в данной локации
+
 void LAi_LocationFantomsGen(ref location, bool isEnable)
 {
 	if(isEnable)
@@ -99,7 +99,7 @@ bool LAi_LocationIsFantomsGen(ref location)
 	return true;
 }
 
-//«апретить генерацию офицеров в локации, или разрешить после запрещени€.
+
 void LAi_LocationDisableOfficersGen(string locationId, bool isDisable)
 {
 	ref location = &locations[FindLocation(locationId)];
@@ -111,7 +111,7 @@ void LAi_LocationDisableOfficersGen(string locationId, bool isDisable)
 	}
 }
 
-//«апретить генерацию офицеров в локации locationId на Days дней.
+
 void LAi_LocationDisableOffGenTimer(string locationId, int Days)
 {
 	ref location = &locations[FindLocation(locationId)];

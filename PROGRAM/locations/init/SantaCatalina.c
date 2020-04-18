@@ -2,9 +2,9 @@
 int LocationInitSantaCatalina(int n)
 {
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ГОРОД
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "SantaCatalina_town";
 	locations[n].id.label = "Street";
 	locations[n].worldmap = "SantaCatalina";
@@ -18,14 +18,14 @@ int LocationInitSantaCatalina(int n)
 	locations[n].citizens = true;
 	locations[n].soldiers = true;
 	locations[n].carrier = true;
-	//==> флаг генерации квестодателя по розыску кэпов, int значение - шанс что сам заговорит(1-10)
+	
 	locations[n].questSeekCap = 4; 
-	//Sound
+	
 	locations[n].type = "town";
 	LAi_LocationFantomsGen(&locations[n], true);
-	locations[n].houseEnc = true; //для энкаунтеров в домах
-	//Models
-	//Always
+	locations[n].houseEnc = true; 
+	
+	
 	locations[n].models.always.town = "SantaCatalina";
 	locations[n].models.always.town.sea_reflection = 1;
 	locations[n].models.always.L1 = "SantaCatalina_signsA";
@@ -36,7 +36,7 @@ int LocationInitSantaCatalina(int n)
 	locations[n].models.always.plan = "plan1";
 	locations[n].models.always.plan.level = 9;
 
-	//Fontain
+	
 	locations[n].models.always.Waterfall1 = "fontain1";
 	locations[n].models.always.Waterfall1.uvslide.v0 = 0.5;
     locations[n].models.always.Waterfall1.uvslide.v1 = 0.0;
@@ -49,7 +49,7 @@ int LocationInitSantaCatalina(int n)
 	locations[n].models.always.Waterfall2.tech = "LocationWaterFall";
 	locations[n].models.always.Waterfall2.level = 49;
 
-	//WindMill Fan
+	
 	locations[n].models.always.MillFan = "MillFan";
 	Locations[n].models.always.MillFan.locator.group = "WindMill";
 	Locations[n].models.always.MillFan.locator.name ="Fan";	
@@ -57,19 +57,19 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.MillFan.rotate.y = 0.0;
 	Locations[n].models.always.MillFan.rotate.z = 0.5;
 
-	//Day
+	
 	locations[n].models.day.fonar = "SantaCatalina_fd";
 	locations[n].models.day.charactersPatch = "SantaCatalina_patch_day";
 	locations[n].models.day.rinok = "SantaCatalina_rinok";
-	//Night
+	
 	locations[n].models.night.fonar = "SantaCatalina_fn";
 	locations[n].models.night.charactersPatch = "SantaCatalina_patch_night";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 
-    // --> Типовые городские локации, четкая фиксация на 10 номеров.
+    
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina";
 	locations[n].reload.l1.emerge = "reload_1";
@@ -123,7 +123,7 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.l7.emerge = "reload1";
 	locations[n].reload.l7.autoreload = "0";
 	locations[n].reload.l7.label = "Church";
-	//locations[n].reload.l7.close_for_night = 1;
+	
 
 	locations[n].reload.l8.name = "reload8_back";
 	locations[n].reload.l8.go = "SantaCatalina_bank";
@@ -151,7 +151,7 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.jail.autoreload = "0";
 	locations[n].reload.jail.label = "Prison";
 	
-	//--> Квестовые локации
+	
 	locations[n].reload.l11.name = "houseS1";
 	locations[n].reload.l11.go = "SantaCatalina_houseS1";
 	locations[n].reload.l11.emerge = "reload1";
@@ -166,18 +166,14 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.l12.label = "Gladis_house";
 	locations[n].reload.l11.close_for_night = 1;
 	
-    // --> Комоны, загрушки. Номера с начинаются с 20.
+    
 	locations[n].reload.l20.name = "houseS4";
 	locations[n].reload.l20.go = "CommonStoneHouse";
 	locations[n].reload.l20.emerge = "reload1";
 	locations[n].reload.l20.autoreload = "0";
 	locations[n].reload.l20.label = "House";
 
-	/*locations[n].reload.l21.name = "houseS1";
-	locations[n].reload.l21.go = "CommonCobHouse";
-	locations[n].reload.l21.emerge = "reload1";
-	locations[n].reload.l21.autoreload = "0";
-	locations[n].reload.l21.label = "House";*/
+	 
 
 	locations[n].reload.l22.name = "houseS3";
 	locations[n].reload.l22.go = "CommonFlamHouse";
@@ -185,11 +181,7 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.l22.autoreload = "0";
 	locations[n].reload.l22.label = "House";
 
-	/*locations[n].reload.l23.name = "houseSp3";
-	locations[n].reload.l23.go = "CommonPirateHouse";
-	locations[n].reload.l23.emerge = "reload1";
-	locations[n].reload.l23.autoreload = "0";
-	locations[n].reload.l23.label = "House";*/
+	 
 
 	locations[n].reload.l24.name = "houseSp21";
 	locations[n].reload.l24.go = "CommonDoubleflourHouse_1";
@@ -222,23 +214,23 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.l28.label = "House";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ТАВЕРНА
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "SantaCatalina_tavern";
 	locations[n].id.label = "Tavern";
 	locations[n].filespath.models = "locations\inside\tavern01\";
 	locations[n].image = "loading\inside\tavern.tga";
 	locations[n].habitues = 1;
-	//Town sack
+	
 	locations[n].townsack = "SantaCatalina";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "tavern";
 	locations[n].fastreload = "SantaCatalina";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.tavern = "Tavern01";
 	locations[n].models.always.tavern.level = 65538;
 	locations[n].models.always.locators = "Tavern01_locators";
@@ -247,14 +239,14 @@ int LocationInitSantaCatalina(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.window.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "tavern01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "tavern01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_town";
 	locations[n].reload.l1.emerge = "reload4";
@@ -266,26 +258,26 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.l2.emerge = "reload1";
 	locations[n].reload.l2.autoreload = "0";
 	locations[n].reload.l2.label = "Martinique Tavern upstairs";
-	locations[n].reload.l2.disable = 1; // закроем, но связку сделаем для квестовых нужд.
+	locations[n].reload.l2.disable = 1; 
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// КОМНАТА В ТАВЕРНЕ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "SantaCatalina_tavern_upstairs";
 	locations[n].filespath.models = "locations\inside\Tavern_room";
 	locations[n].id.label = "Tavern upstairs";
 	locations[n].image = "loading\inside\tavern.tga";
-	//Town sack
+	
 	locations[n].townsack = "SantaCatalina";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "SantaCatalina";
  	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Tavern_room_locators";
 	locations[n].models.always.tavern = "Tavern_room";
 	locations[n].models.always.tavern.level = 65538;
@@ -295,14 +287,14 @@ int LocationInitSantaCatalina(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Tavern_room_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Tavern_room_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_tavern";
 	locations[n].reload.l1.emerge = "reload2";
@@ -311,22 +303,22 @@ int LocationInitSantaCatalina(int n)
 	locations[n].locators_radius.reload.reload1 = 0.8;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// МАГАЗИН
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "SantaCatalina_store";
 	locations[n].id.label = "Store";
 	locations[n].filespath.models = "locations\inside\store01\";
 	locations[n].image = "loading\inside\shop.tga";
-	//Town sack
+	
 	locations[n].townsack = "SantaCatalina";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shop";
 	locations[n].fastreload = "SantaCatalina";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Store01_locators";
 	locations[n].models.always.store = "Store01";
 	locations[n].models.always.store.level = 65538;
@@ -335,21 +327,21 @@ int LocationInitSantaCatalina(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "store01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "store01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_town";
 	locations[n].reload.l1.emerge = "reload6";
 	locations[n].reload.l1.autoreload = "0";
 	locations[n].reload.l1.label = "Street";
 	locations[n].locators_radius.camdetector.camera1 = 5;
-    ////////////////////////==> комната в магазине
+    
 	locations[n].reload.l2.name = "reload2";
 	locations[n].reload.l2.go = "CommonPackhouse_1";
 	locations[n].reload.l2.emerge = "reload1";
@@ -358,22 +350,22 @@ int LocationInitSantaCatalina(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// РОСТОВЩИК
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "SantaCatalina_Bank";
 	locations[n].id.label = "Usurer House";
 	locations[n].filespath.models = "locations\inside\Bank01\";
 	locations[n].image = "loading\inside\bank.tga";
-	//Town sack
+	
 	locations[n].townsack = "SantaCatalina";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shop";
 	locations[n].fastreload = "SantaCatalina";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Bank01_locators";
 	locations[n].models.always.store = "Bank01";
 	locations[n].models.always.store.level = 65538;
@@ -382,14 +374,14 @@ int LocationInitSantaCatalina(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Bank01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Bank01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_town";
 	locations[n].reload.l1.emerge = "reload8";
@@ -404,22 +396,22 @@ int LocationInitSantaCatalina(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ВЕРФЬ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "SantaCatalina_Shipyard";
 	locations[n].id.label = "Shipyard";
 	locations[n].filespath.models = "locations\inside\Shipyard01\";
 	locations[n].image = "loading\inside\shipyard.tga";
-	//Town sack
+	
 	locations[n].townsack = "SantaCatalina";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shipyard";
 	locations[n].fastreload = "SantaCatalina";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Shipyard01_locators";
 	locations[n].models.always.shipyard = "Shipyard01";
 	locations[n].models.always.shipyard.level = 65538;
@@ -428,14 +420,14 @@ int LocationInitSantaCatalina(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Shipyard01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Shipyard01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_town";
 	locations[n].reload.l1.emerge = "reload5";
@@ -450,25 +442,25 @@ int LocationInitSantaCatalina(int n)
 	locations[n].locators_radius.item.item1 = 1.0;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// РЕЗИДЕНЦИЯ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "SantaCatalina_townhall";
 	locations[n].id.label = "Townhall";
 	locations[n].filespath.models = "locations\inside\Residence01";
 	locations[n].image = "loading\inside\residence.tga";
-	//Town sack
+	
 	locations[n].townsack = "SantaCatalina";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "residence";
 	locations[n].fastreload = "SantaCatalina";
  	locations[n].islandId = "Mein";
- 	// стража
+ 	
 	locations[n].soldiers = true;
 	LAi_LocationFantomsGen(&locations[n], true);
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Residence01_locators";
 	locations[n].models.always.l1 = "Residence01";
 	locations[n].models.always.l1.level = 65538;
@@ -477,14 +469,14 @@ int LocationInitSantaCatalina(int n)
 	locations[n].models.always.window.level = 65539;	
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Residence01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Residence01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_town";
 	locations[n].reload.l1.emerge = "reload3";
@@ -497,26 +489,26 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.l2.autoreload = "0";
 	locations[n].reload.l2.label = "Room";
 
-	locations[n].reload.l3.name = "reload3"; //кабинет направо от входа
+	locations[n].reload.l3.name = "reload3"; 
 	locations[n].reload.l3.go = "SantaCatalina_TownhallRoom";
 	locations[n].reload.l3.emerge = "reload1";
 	locations[n].reload.l3.autoreload = "0";
 	locations[n].reload.l3.label = "TownhallRoom";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	locations[n].id = "SantaCatalina_TownhallRoom"; //кабинет со спальней и выходом в город сбоку
+	
+	locations[n].id = "SantaCatalina_TownhallRoom"; 
 	locations[n].id.label = "TownhallRoom";
 	locations[n].image = "loading\inside\BigHouseBack.tga";
-	//Town sack
+	
 	locations[n].townsack = "SantaCatalina";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "SantaCatalina";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\BigHouseBack";
 	locations[n].models.always.house = "BigHouseBack";
 	locations[n].models.always.house.level = 65538;
@@ -526,16 +518,16 @@ int LocationInitSantaCatalina(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "BigHouseBack_patch";
 	locations[n].models.day.locators = "BigHouseBack_locators";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "BigHouseBack_patch";
 	locations[n].models.night.locators = "BigHouseBack_Nlocators";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "SantaCatalina_townhall";
 	locations[n].reload.l1.emerge = "reload3";
@@ -555,22 +547,22 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.l3.label = "Street";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ЦЕРКОВЬ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "SantaCatalina_church";
 	locations[n].filespath.models = "locations\inside\Church01";
 	locations[n].id.label = "Church";
 	locations[n].image = "loading\inside\church.tga";
-	//Town sack
+	
 	locations[n].townsack = "SantaCatalina";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "church";
 	locations[n].fastreload = "SantaCatalina";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Church01_locators";
 	locations[n].models.always.tavern = "Church01";
 	locations[n].models.always.tavern.level = 65538;
@@ -579,14 +571,14 @@ int LocationInitSantaCatalina(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Church01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Church01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_town";
 	locations[n].reload.l1.emerge = "reload7";
@@ -595,21 +587,21 @@ int LocationInitSantaCatalina(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ПОРТОВЫЙ ОФИС
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "SantaCatalina_PortOffice";
 	locations[n].id.label = "PortOffice";
 	locations[n].image = "loading\inside\portoffice.tga";
-	//Town sack
+	
 	locations[n].townsack = "SantaCatalina";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "SantaCatalina";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\PortOffice";
 	locations[n].models.always.housePortOffice = "PortOffice";
 	locations[n].models.always.housePortOffice.level = 65538;
@@ -621,14 +613,14 @@ int LocationInitSantaCatalina(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "PortOffice_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "PortOffice_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "SantaCatalina_town";
 	locations[n].reload.l1.emerge = "reload10";
@@ -637,22 +629,22 @@ int LocationInitSantaCatalina(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Дом F3
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "SantaCatalina_HouseSp2";
 	locations[n].filespath.models = "locations\inside\FlamHouse";
 	locations[n].id.label = "House";
 	locations[n].image = "loading\inside\flamhouse.tga";
-	//Town sack
+	
 	locations[n].townsack = "SantaCatalina";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "SantaCatalina";
  	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.tavern = "FlamHouse";
 	locations[n].models.always.tavern.level = 65538;
 	locations[n].models.always.window = "FlamHouse_window";
@@ -663,14 +655,14 @@ int LocationInitSantaCatalina(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "FlamHouse_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "FlamHouse_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "SantaCatalina_town";
 	locations[n].reload.l1.emerge = "houseSp2";
@@ -696,38 +688,38 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.l4.label = "Street";
 	n = n + 1;
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//  Дом Яна Свенсона
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 	locations[n].id = "SantaCatalina_houseS1";
 	locations[n].filespath.models = "locations\inside\SwensonHouse";
 	locations[n].id.label = "Svensons_house";
 	locations[n].image = "loading\inside\CobHouse.tga";
-	//Town sack
+	
 	locations[n].townsack = "SantaCatalina";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "SantaCatalina";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.SwensonHouse = "SwensonHouse";
 	locations[n].models.always.window = "SwensonHouse_window";
 	locations[n].models.always.window.tech = "LocationWindows";
 	locations[n].models.always.window.level = 65539;	
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.locators = "SwensonHouse_ld";
 	locations[n].models.day.charactersPatch = "SwensonHouse_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "SwensonHouse_patch";
 	locations[n].models.night.locators = "SwensonHouse_ln";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "SantaCatalina_town";
 	locations[n].reload.l1.emerge = "houseS1";
@@ -742,20 +734,20 @@ int LocationInitSantaCatalina(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
-	/////////////////////////////////////////////////////////////////////////////////////////
-	////////// кабинет Свенсона
-	////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "SantaCatalina_houseS1_residence";
 	locations[n].id.label = "Cabinet";
 	locations[n].image = "loading\inside\smallresidence.tga";
-	//Town sack
+	
 	locations[n].townsack = "SantaCatalina";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\SwensonRoom";
 	locations[n].models.always.house = "SwensonRoom";
 	locations[n].models.always.house.level = 65538;
@@ -765,16 +757,16 @@ int LocationInitSantaCatalina(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "SwensonRoom_patch";
 	locations[n].models.day.locators = "SwensonRoom_ld";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "SwensonRoom_patch";
 	locations[n].models.night.locators = "SwensonRoom_ln";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "SantaCatalina_houseS1";
 	locations[n].reload.l1.emerge = "reload2";
@@ -782,23 +774,23 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.l1.label = "Cabinet";
 	LAi_LocationFightDisable(&locations[n], true);
 	
-	locations[n].private1.key = "key3"; // закрыто, ага!
+	locations[n].private1.key = "key3"; 
 	n = n + 1;
 	
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//   Дом Глэдис Мак Артур
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	locations[n].id = "SantaCatalina_houseSp3"; //с комнатой на втором этаже
+
+
+
+	locations[n].id = "SantaCatalina_houseSp3"; 
 	locations[n].id.label = "Gladis_house";
 	locations[n].image = "loading\inside\largehouse01.tga";
-	//Town sack
+	
 	locations[n].townsack = "SantaCatalina";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\largehouse01";
 	locations[n].models.always.largehouse01 = "largehouse01";
 	locations[n].models.always.largehouse01.level = 65538;
@@ -811,15 +803,15 @@ int LocationInitSantaCatalina(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	Locations[n].models.day.largehouse01rand= "largehouse01_rand";
 	locations[n].models.day.charactersPatch = "largehouse01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "largehouse01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "SantaCatalina_town";
 	locations[n].reload.l1.emerge = "houseSp3";
@@ -836,18 +828,18 @@ int LocationInitSantaCatalina(int n)
 	
 	n = n + 1;
 	
-	///////спальня
+	
 	locations[n].id = "SantaCatalina_houseSp3_bedroom";
 	locations[n].id.label = "Room";
 	locations[n].image = "loading\inside\largehouse02.tga";
-	//Town sack
+	
 	locations[n].townsack = "SantaCatalina";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].islandId = "Mein";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\largehouse02";
 	locations[n].models.always.largehouse02 = "largehouse02";
 	locations[n].models.always.largehouse02.level = 65538;
@@ -859,18 +851,18 @@ int LocationInitSantaCatalina(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	Locations[n].models.always.largehouse02rand= "largehouse02_rand";
 	locations[n].models.day.charactersPatch = "largehouse02_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "largehouse02_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "SantaCatalina_houseSp3";
 	locations[n].reload.l1.emerge = "reload2";
@@ -881,7 +873,7 @@ int LocationInitSantaCatalina(int n)
 	
 	n = n + 1;
 	
-	////////////////////// prison ////////////////////////////
+	
 	Locations[n].id = "SantaCatalina_prison";
 	locations[n].id.label = "Prison";
 	Locations[n].image = "loading\inside\prison.tga";
@@ -889,26 +881,26 @@ int LocationInitSantaCatalina(int n)
     locations[n].parent_colony = "SantaCatalina";
  	locations[n].fastreload = "SantaCatalina";
 	locations[n].islandId = "Mein";
-	//Sound
+	
 	locations[n].type = "jail";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\prison1";
 	locations[n].models.always.prison1 = "prison1";
 	locations[n].models.always.lamps = "prison1_lamps";
 	locations[n].models.always.locators = "prison1_locators";	
 	locations[n].models.always.chest = "chest1";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "prison1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "prison1_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-    //Reload map
+    
 	Locations[n].reload.l1.name = "reload1";
 	Locations[n].reload.l1.go = "SantaCatalina_town";
 	Locations[n].reload.l1.emerge = "reload_jail";
@@ -919,20 +911,20 @@ int LocationInitSantaCatalina(int n)
 	n = n + 1;
 
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Выход из города
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	Locations[n].id = "SantaCatalina_ExitTown";
 	locations[n].id.label = "ExitTown";
 	locations[n].image = "loading\Gate" + rand(1) + ".tga";
-	//Town sack
+	
 	Locations[n].townsack = "SantaCatalina";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "SantaCatalina";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\TownExitT";
 	Locations[n].models.always.townExit = "townExitT";
 	Locations[n].models.always.townWalls = "townExitT_wood";
@@ -956,16 +948,16 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.well_small.locator.group = "reload";
 	Locations[n].models.always.well_small.locator.name ="reloadW_back";	
 	Locations[n].models.always.well_small.tech = "DLightModel";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "townExitT_pSantaCatalina";
 	locations[n].models.day.fonars = "townExitT_fd";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "townExitT_pSantaCatalina";
 	locations[n].models.night.fonars = "townExitT_fn";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload3";
 	locations[n].reload.l1.go = "SantaCatalina_town";
 	locations[n].reload.l1.emerge = "gate_back";
@@ -994,18 +986,18 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "SantaCatalina_Jungle_01";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "SantaCatalina";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle4";
 	Locations[n].models.always.jungle = "jungle4";	
 	Locations[n].models.always.locators = "jungle4_locators";		
@@ -1020,14 +1012,14 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle4_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle4_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_CaveEntrance";
 	locations[n].reload.l1.emerge = "reload2";
@@ -1050,18 +1042,18 @@ int LocationInitSantaCatalina(int n)
 	locations[n].locators_radius.reload.reload3_back = 3;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Вход в пещеру
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "SantaCatalina_CaveEntrance";
 	locations[n].id.label = "Cave entrance";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "SantaCatalina";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt1";
 	Locations[n].models.always.caveEnt1 = "caveEnt1";	
 	Locations[n].models.always.locators = "caveEnt1_locators";		
@@ -1076,14 +1068,14 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "caveEnt1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "caveEnt1_patch";	
-	//Environment	
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l3.name = "reload1_back";
 	locations[n].reload.l3.go = "SantaCatalina_Cave";
 	locations[n].reload.l3.emerge = "reload1";
@@ -1099,42 +1091,36 @@ int LocationInitSantaCatalina(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Пещера
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "SantaCatalina_Cave";
 	locations[n].id.label = "Cave";
 	locations[n].image = "loading\inside\cave.tga";
-	//Sound
+	
 	locations[n].type = "cave";
  	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "SantaCatalina";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\cavernMedium2";
 	locations[n].models.always.cavernMedium2 = "cavernMedium2";
 	locations[n].models.always.lamps = "cavernMedium2_lamps";	
 	locations[n].models.always.locators = "cavernMedium2_locators";	
 
 	locations[n].locators_radius.item.duhi1 = 0.0;
-/*	
-	Locations[n].models.always.rays = "cavernMedium2_rays";
-	Locations[n].models.always.rays.level = 49;
-	Locations[n].models.always.rays.tech= "LocVisRays";
-	Locations[n].models.always.rays.uvslide.u1 = -0.03;
-	Locations[n].models.always.rays.uvslide.v1 = -0.03;	
-*/	
-	//Day
+ 	
+	
 	locations[n].models.day.charactersPatch = "cavernMedium2_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "cavernMedium2_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_CaveEntrance";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1148,19 +1134,19 @@ int LocationInitSantaCatalina(int n)
 	locations[n].locators_radius.item.CheckReload1 = 3.5;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// мыс Перлас
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Shore54";
 	locations[n].id.label = "Shore54";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "Shore54";
-	//Sound
+	
 	locations[n].type = "seashore";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "SantaCatalina";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore09";
 	Locations[n].models.always.shore09 = "shore09";
 	locations[n].models.always.shore09.sea_reflection = 1;
@@ -1179,14 +1165,14 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore09_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore09_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_Jungle_01";
 	locations[n].reload.l1.emerge = "reload2";
@@ -1202,21 +1188,21 @@ int LocationInitSantaCatalina(int n)
     locations[n].locators_radius.reload.boat = 9.0;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Берег Москитов   (с заглушкой на джунгли)
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Shore53";
 	locations[n].id.label = "Shore53";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "Shore53";
-	//Sound
+	
 	locations[n].type = "seashore";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "SantaCatalina";
 	locations[n].DisableEncounters = true;
 	locations[n].deadlocked = true;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore01";
 	Locations[n].models.always.shore01 = "shore01";
 	locations[n].models.always.shore01.sea_reflection = 1;
@@ -1235,14 +1221,14 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore01_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Tenotchitlan_Jungle_05";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1258,28 +1244,28 @@ int LocationInitSantaCatalina(int n)
     locations[n].locators_radius.reload.boat = 9.0;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// залив Сан-Хуан дель Норте, начало хода к жемчужному промыслу залива Коронадо.
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "Shore55";
 	locations[n].id.label = "Shore55";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "Shore55";
-	//Sound
+	
 	locations[n].type = "seashore";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "SantaCatalina";
 	locations[n].deadlocked = true;
 	locations[n].questflower = 1;
-	locations[n].Chestgennot = true; // не генерить сундуки
-	//Models
-	//Always
+	locations[n].Chestgennot = true; 
+	
+	
 	locations[n].filespath.models = "locations\outside\Shores\grottoBig1";
 	locations[n].models.always.grottoBig1 = "grottoBig1";
 	locations[n].models.always.grottoBig1.sea_reflection = 1;
 	Locations[n].models.always.seabed = "grottoBig1_sb";
 	Locations[n].models.always.grassPatch = "grottoBig1_grass";
-	//Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
+	
 
 	locations[n].models.always.plan1 = "plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
@@ -1298,15 +1284,15 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.Waterfall2.tech = "LocationWaterFall";
 	Locations[n].models.always.Waterfall2.level = 49;
 	locations[n].models.always.locators = "grottoBig1_locators";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "grottoBig1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "grottoBig1_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_jungle_02";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1323,18 +1309,18 @@ int LocationInitSantaCatalina(int n)
 	locations[n].locators_radius.quest.SharpSeekSpy = 7.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
     locations[n].id = "SantaCatalina_jungle_02";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
- 	//Sound
+ 	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "SantaCatalina";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle8\";
 	Locations[n].models.always.jungle = "jungle8";	
 	Locations[n].models.always.locators = "jungle8_locators";		
@@ -1349,14 +1335,14 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle8_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle8_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Shore55";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1372,18 +1358,18 @@ int LocationInitSantaCatalina(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "SantaCatalina_jungle_03";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
  	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "SantaCatalina";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle5";
 	Locations[n].models.always.jungle = "jungle5";	
 	Locations[n].models.always.locators = "jungle5_locators";		
@@ -1398,14 +1384,14 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle5_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle5_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_jungle_02";
 	locations[n].reload.l1.emerge = "reload2";
@@ -1428,18 +1414,18 @@ int LocationInitSantaCatalina(int n)
 	locations[n].locators_radius.reload.Reload3_back = 2.0;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "SantaCatalina_jungle_04";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "SantaCatalina";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle1\";
 	Locations[n].models.always.jungle = "jungle1";
 	Locations[n].models.always.locators = "jungle1_locators";		
@@ -1454,14 +1440,14 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle1_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_GrotEntrance";
 	locations[n].reload.l1.emerge = "reload2";
@@ -1477,19 +1463,19 @@ int LocationInitSantaCatalina(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Вход в грот
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "SantaCatalina_GrotEntrance";
 	locations[n].id.label = "Cave entrance";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "SantaCatalina";
 	locations[n].questflower = 1;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt1";
 	Locations[n].models.always.caveEnt1 = "caveEnt1";	
 	Locations[n].models.always.locators = "caveEnt1_locators";		
@@ -1504,14 +1490,14 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "caveEnt1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "caveEnt1_patch";	
-	//Environment	
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_Grot";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1527,18 +1513,18 @@ int LocationInitSantaCatalina(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Грот
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "SantaCatalina_Grot";
 	locations[n].id.label = "Grot";
     locations[n].image = "loading\inside\cave.tga";
-	//Sound
+	
 	locations[n].type = "cave";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "SantaCatalina";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\grotto2";
 	locations[n].models.always.grotto2 = "grotto2";
 	locations[n].models.always.grotto2.sea_reflection = 1;
@@ -1549,15 +1535,15 @@ int LocationInitSantaCatalina(int n)
 
 	locations[n].locators_radius.item.duhi1 = 0.0;
 
-	//Day
+	
 	locations[n].models.day.charactersPatch = "grotto2_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "grotto2_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_GrotEntrance";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1566,18 +1552,18 @@ int LocationInitSantaCatalina(int n)
 	locations[n].locators_radius.reload.reload1_back = 2;
 	n = n + 1;
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Вход в пещеру
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "SantaCatalina_PearlCaveEntrance";
 	locations[n].id.label = "Cave entrance";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "SantaCatalina";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt2";
 	Locations[n].models.always.caveEnt2 = "caveEnt2";	
 	Locations[n].models.always.locators = "caveEnt2_locators";		
@@ -1595,14 +1581,14 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l4 = "plan4";
 	Locations[n].models.always.l4.level = 6;
 	Locations[n].models.always.l4.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "caveEnt2_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "caveEnt2_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_PearlCave";
 	locations[n].reload.l1.emerge = "reload1";
@@ -1618,19 +1604,19 @@ int LocationInitSantaCatalina(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Пещера
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "SantaCatalina_PearlCave";
 	locations[n].image = "loading\inside\cave.tga";
 	locations[n].id.label = "Cave";
-	//Sound
+	
 	locations[n].type = "cave";
 	locations[n].islandId = "Mein";
 	locations[n].islandIdAreal = "SantaCatalina";
 	locations[n].questflower = 1;
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\cavernMedium1";
 	locations[n].models.always.cavernMedium1 = "cavernMedium1";
 	locations[n].models.always.cavernMedium1.sea_reflection = 1;
@@ -1638,34 +1624,29 @@ int LocationInitSantaCatalina(int n)
 	locations[n].models.always.locators = "CavernMedium1_lSCPearls";
 
 	locations[n].locators_radius.item.duhi1 = 0.0;
-/*	
-	Locations[n].models.always.rays = "cavernMedium1_raysPearls";
-	Locations[n].models.always.rays.level = 49;
-	Locations[n].models.always.rays.tech= "LocVisRays";
-	Locations[n].models.always.rays.uvslide.u1 = -0.03;
-	Locations[n].models.always.rays.uvslide.v1 = -0.03;	
-*/	
-	//Day
+ 	
+	
 	locations[n].models.day.charactersPatch = "cavernMedium1_patch";
 	Locations[n].models.day.jumpPatch = "CavernMedium1_jump";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "cavernMedium1_patch";
 	Locations[n].models.night.jumpPatch = "CavernMedium1_jump";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "true";
 	locations[n].environment.weather.rain = false;
- 	//Reload map
+ 	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "SantaCatalina_PearlCaveEntrance";
 	locations[n].reload.l1.emerge = "reload1";
 
 	locations[n].reload.l2.name = "reload2";
-	locations[n].reload.l2.go = "Pearl_CaveEntrance"; //выход на жемчужный промысел
+	locations[n].reload.l2.go = "Pearl_CaveEntrance"; 
 	locations[n].reload.l2.emerge = "reload1";
 	n = n + 1;
 	
 	return n;
 }
+

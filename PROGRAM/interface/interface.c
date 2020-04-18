@@ -15,21 +15,21 @@
 #define COLOR_MONEY		4292915296
 #define COLOR_RED		4294901760
 
-#define BLIND_MIN	4282400832 //argb(255,96,96,96)
-#define BLIND_MAX	4286611584 //argb(255,128,128,128)
+#define BLIND_MIN	4282400832 
+#define BLIND_MAX	4286611584 
 
 #define MONEY_SIGN		""
 #define MONEY_DELIVER	" "
 
-#define MAX_CHARACTER_SKILL		10 // to_do del
+#define MAX_CHARACTER_SKILL		10 
 
 #define DISEASE_ON_SHIP	0
 #define DISEASE_ON_COLONY	1
 
 
 
-//extern string FindRussianDaysString(int idays); 
-//extern string FindRussianMoneyString(int imoney);
+
+
 
 
 #event_handler("LaunchIAfterFrame","ILaunchAfterFrame");
@@ -78,8 +78,8 @@ bool bGamePadChangeEnable = false;
 bool bPlayVideoNow = false;
 bool bMainMenuLaunchAfterVideo = false;
 
-// Warship -->
-void LaunchBestMapScreen()	// Интерфейс отличной карты
+
+void LaunchBestMapScreen()	
 {
 	if(procInterfacePrepare(INTERFACE_BEST_MAP))
 	{
@@ -89,7 +89,7 @@ void LaunchBestMapScreen()	// Интерфейс отличной карты
 	}
 }
 
-void LaunchTavernWaitScreen() // Интерфейс отдыха
+void LaunchTavernWaitScreen() 
 {
 	if(procInterfacePrepare(INTERFACE_TAVERN_WAIT))
 	{
@@ -99,7 +99,7 @@ void LaunchTavernWaitScreen() // Интерфейс отдыха
 	}
 }
 
-void LaunchTransferGoodsScreen() // Интерфейс закупки товара казначеем
+void LaunchTransferGoodsScreen() 
 {
 	if(procInterfacePrepare(INTERFACE_GOODS_TRANSFER))
 	{
@@ -108,10 +108,10 @@ void LaunchTransferGoodsScreen() // Интерфейс закупки товара казначеем
 		InitInterface(Interfaces[CurrentInterface].IniFile);
 	}
 }
-// <-- Warship
 
-// ugeen -->
-void LaunchMapViewScreen()	// Интерфейс атласа карт
+
+
+void LaunchMapViewScreen()	
 {
 	if(procInterfacePrepare(INTERFACE_MAPVIEW))
 	{
@@ -121,7 +121,7 @@ void LaunchMapViewScreen()	// Интерфейс атласа карт
 	}
 }
 
-void LaunchStorage(int storageNum) // интерфейс склада
+void LaunchStorage(int storageNum) 
 {
 	if(storageNum < 0)	return;
 	if(storageNum > STORE_QUANTITY - 1)	return;
@@ -134,7 +134,7 @@ void LaunchStorage(int storageNum) // интерфейс склада
 	}
 }
 
-void LaunchAlchemyScreen() // Интерфейс мультиобъектов
+void LaunchAlchemyScreen() 
 {
 	if(procInterfacePrepare(INTERFACE_ALCHEMY))
 	{
@@ -143,20 +143,15 @@ void LaunchAlchemyScreen() // Интерфейс мультиобъектов
 		InitInterface(Interfaces[CurrentInterface].IniFile);
 	}
 }
-// <-- ugeen
 
-// boal -->
+
+
 void LaunchAboutScreen()
 {	
 	SetEventHandler(EVENT_END_VIDEO,"LaunchMainMenu_afterVideo",0);
 	bMainMenuLaunchAfterVideo = true;
 	StartPostVideo("credits",1);
-	/*if(procInterfacePrepare(INTERFACE_ABOUT))
-	{
-		nPrevInterface = -1;
-		CurrentInterface = INTERFACE_ABOUT;
-		InitInterface(Interfaces[CurrentInterface].IniFile);
-	}*/
+	 
 }
 
 void LaunchNationLegend()
@@ -188,7 +183,7 @@ void LaunchLeaveBattleScreen()
 		InitInterface(Interfaces[CurrentInterface].IniFile);
 	}
 }
-// boal 15.01.06 -->
+
 void LaunchFrameForm()
 {
 	if(procInterfacePrepare(INTERFACE_FRAMEFORM))
@@ -198,9 +193,9 @@ void LaunchFrameForm()
 		InitInterface(Interfaces[CurrentInterface].IniFile);
 	}
 }
-// boal 15.01.06 <--
 
-// boal 13.05.05 -->
+
+
 void LaunchCardsGame()
 {
 	if(procInterfacePrepare(INTERFACE_CARDSGAME))
@@ -210,9 +205,9 @@ void LaunchCardsGame()
 		InitInterface(Interfaces[CurrentInterface].IniFile);
 	}
 }
-// boal 13.05.05 <--
 
-// boal 10.06.05 -->
+
+
 void LaunchDiceGame()
 {
 	if(procInterfacePrepare(INTERFACE_DICE_GAME))
@@ -222,7 +217,7 @@ void LaunchDiceGame()
 		InitInterface(Interfaces[CurrentInterface].IniFile);
 	}
 }
-// boal 10.06.05 <--
+
 void LaunchDebuderMenu()
 {
 	if(procInterfacePrepare(INTERFACE_DEBUGER))
@@ -242,19 +237,9 @@ void LaunchBoalBetaScreen()
 		InitInterface(Interfaces[CurrentInterface].IniFile);
 	}
 }
-// boal <--
 
-/*
-void LaunchEndGameMenu()
-{
-	if(procInterfacePrepare(INTERFACE_ENDGAME))
-	{
-		nPrevInterface = -1;
-		CurrentInterface = INTERFACE_ENDGAME;
-		InitInterface(Interfaces[CurrentInterface].IniFile);
-	}
-}
-*/
+
+ 
 void LaunchQuickSaveMenu()
 {
 	if(procInterfacePrepare(INTERFACE_QUICK_SAVE))
@@ -267,14 +252,11 @@ void LaunchQuickSaveMenu()
 
 void HideQuickSaveMenu()
 {
-	/*DelEventHandler("InterfaceBreak","ProcessBreakExit");
-	DelEventHandler("exitCancel","ProcessCancelExit");
-	DelEventHandler("evntDoPostExit","DoPostExit");
-	*/
+	 
 
 	interfaceResultCommand = RC_INTERFACE_QUICK_SAVE;
 	EndCancelInterface(true);
-	//SetTimeScale(1.0);
+	
 }
 
 void LaunchSalaryScreen(string _tmp)
@@ -407,7 +389,7 @@ void LaunchColonyInfoScreen()
 	}
 }
 
-// Дележ добычи
+
 void LaunchSailsGeraldScreen(ref chref)
 {
 	if(procInterfacePrepare(INTERFACE_SAILSGERALD))
@@ -438,7 +420,7 @@ void LaunchItemsTrade(ref chref, int mode)
 		InitInterface_RI(Interfaces[CurrentInterface].IniFile,chref, mode);
 	}
 }
-// boal -->
+
 
 void LaunchColonyCapture(ref city)
 {
@@ -462,7 +444,7 @@ void LaunchSelectMenu()
 	    LaunchMainCharacter();
 	}
 }
-// boal <--
+
 void LaunchOptionScreen()
 {
 	if(procInterfacePrepare(INTERFACE_OPTIONSCREEN))
@@ -501,7 +483,7 @@ void LaunchGameMenuContinue()
 		{
 			InitInterface_GM(Interfaces[CurrentInterface].IniFile);
 		}
-		//InitInterface_GM(Interfaces[CurrentInterface].IniFile);
+		
 	}
 }
 
@@ -520,17 +502,7 @@ void CreateScreenShoter()
 }
 
 
-/*
-void LaunchHelpScreen(string help_section)
-{
-	if(procInterfacePrepare(INTERFACE_HELPSCREEN))
-	{
-		nPrevInterface = -1;
-		CurrentInterface = INTERFACE_HELPSCREEN;
-		InitInterface_S(Interfaces[CurrentInterface].IniFile,help_section);
-	}
-}
-*/
+ 
 
 void LaunchCharacterItemChange(ref chref)
 {
@@ -606,7 +578,7 @@ void LaunchStore(int storeNum)
 	}
 }
 
-// --> ugeen
+
 void LaunchContrabandTrade(ref ContraTrader, int storeNum)
 {
 	if(storeNum<0)	return;
@@ -629,7 +601,7 @@ void LaunchRepair(ref refCharacter)
 		InitInterface_R(Interfaces[CurrentInterface].IniFile,refCharacter);
 	}
 }
-// <-- ugeen
+
 
 void LaunchShipyard(ref shipmaster)
 {
@@ -652,7 +624,7 @@ void LaunchDiseaseAlert(int iMode)
 }
 
 
-void LaunchCannons(int storeNum) // boal 31.08.06
+void LaunchCannons(int storeNum) 
 {
     if(storeNum<0)	return;
   	if(storeNum>STORE_QUANTITY-1)	return;
@@ -687,11 +659,8 @@ void LaunchMainCharacter()
 void LaunchMainMenu_afterVideo()
 {
 	DelEventHandler(EVENT_END_VIDEO,"LaunchMainMenu_afterVideo");
-	/*InterfaceStates.LaunchAnyway = true;
-	InterfaceStates.Launched = false;
-	ResetSound();   // fix
-	LaunchMainMenu();*/
-	LaunchNewMainMenu(); // Переделка
+	 
+	LaunchNewMainMenu(); 
 }
 
 void LaunchNewMainMenu()
@@ -732,9 +701,9 @@ void LaunchMainMenu()
 	LoadSegment(Interfaces[CurrentInterface].SectionName);
 	InitInterface(Interfaces[CurrentInterface].IniFile);
 	SetTimeScale(1.0);
-	// fix
+	
 	TimeScaleCounter = 0;
-    DelPerkFromActiveList("TimeSpeed");
+пїЅ пїЅ DelPerkFromActiveList("TimeSpeed");
 }
 
 void LaunchSaveGame()
@@ -757,17 +726,7 @@ void LaunchLoadGame(bool isMainMenu)
 	}
 }
 
-/*
-void LaunchShipHold()
-{
-	if(procInterfacePrepare(INTERFACE_SHIPHOLD))
-	{
-		nPrevInterface = -1;
-		CurrentInterface = INTERFACE_SHIPHOLD;
-		InitInterface(Interfaces[CurrentInterface].IniFile);
-	}
-}
-*/
+ 
 
 void LaunchHireCrew()
 {
@@ -779,49 +738,9 @@ void LaunchHireCrew()
 	}
 }
 
-/*
-void LaunchPassengers(ref _refCharacter)
-{
-	if(procInterfacePrepare(INTERFACE_PASSENGERS))
-	{
-		nPrevInterface = -1;
-		CurrentInterface = INTERFACE_PASSENGERS;
-		InitInterface_R(Interfaces[CurrentInterface].IniFile,_refCharacter);
-	}
-}
-*/
+ 
 
-/*
-void LaunchRansackJoin(ref _refMy,ref _refEnemy)
-{
-	if(procInterfacePrepare(INTERFACE_RANSACK_JOIN))
-	{
-		nPrevInterface = -1;
-		CurrentInterface = INTERFACE_RANSACK_JOIN;
-		InitInterface_RR(Interfaces[CurrentInterface].IniFile,_refMy,_refEnemy);
-	}
-}
-
-void LaunchRansackCrew(ref _refMy,ref _refEnemy)
-{
-	if(procInterfacePrepare(INTERFACE_RANSACK_CREW))
-	{
-		nPrevInterface = -1;
-		CurrentInterface = INTERFACE_RANSACK_CREW;
-		InitInterface_RR(Interfaces[CurrentInterface].IniFile,_refMy,_refEnemy);
-	}
-}
-
-void LaunchRansackCaptain(ref _refMy,ref _refEnemy)
-{
-	if(procInterfacePrepare(INTERFACE_RANSACK_CAPTAIN))
-	{
-		nPrevInterface = -1;
-		CurrentInterface = INTERFACE_RANSACK_CAPTAIN;
-		InitInterface_RR(Interfaces[CurrentInterface].IniFile,_refMy,_refEnemy);
-	}
-}
-*/
+ 
 
 void LaunchRansackMain(ref _refMy,ref _refEnemy,string captureState)
 {
@@ -829,9 +748,9 @@ void LaunchRansackMain(ref _refMy,ref _refEnemy,string captureState)
 	{
 		nPrevInterface = -1;
 		CurrentInterface = INTERFACE_RANSACK_MAIN;
-		InitInterface_RS(Interfaces[CurrentInterface].IniFile,_refEnemy,captureState); // что характерно, _refMy не при делах вообще :) Забавно, право слово. Ну да, совместимости для.
+		InitInterface_RS(Interfaces[CurrentInterface].IniFile,_refEnemy,captureState); 
 	}
-	// Это по сути вызов LaunchTransferMain(_refMy, _refEnemy, captureState); , но нужна проверка на	INTERFACE_RANSACK_MAIN 
+	
 }
 
 void LaunchTransferMain(ref _refMy,ref _refEnemy, string newCurNod)
@@ -844,37 +763,7 @@ void LaunchTransferMain(ref _refMy,ref _refEnemy, string newCurNod)
 	}
 }
 
-/*
-void LaunchTransferGoods(ref _refMy,ref _refOther)
-{
-	if(procInterfacePrepare(INTERFACE_TRANSFER_GOODS))
-	{
-		nPrevInterface = CurrentInterface;
-		CurrentInterface = INTERFACE_TRANSFER_GOODS;
-		InitInterface_RR(Interfaces[CurrentInterface].IniFile,_refMy,_refOther);
-	}
-}
-
-void LaunchTransferCharacter(ref _refMy,ref _refEnemy)
-{
-	if(procInterfacePrepare(INTERFACE_TRANSFER_CHARACTER))
-	{
-		nPrevInterface = CurrentInterface;
-		CurrentInterface = INTERFACE_TRANSFER_CHARACTER;
-		InitInterface_RR(Interfaces[CurrentInterface].IniFile,_refMy,_refEnemy);
-	}
-}
-
-void LaunchTransferCrew(ref _refMy,ref _refEnemy)
-{
-	if(procInterfacePrepare(INTERFACE_TRANSFER_CREW))
-	{
-		nPrevInterface = CurrentInterface;
-		CurrentInterface = INTERFACE_TRANSFER_CREW;
-		InitInterface_RR(Interfaces[CurrentInterface].IniFile,_refMy,_refEnemy);
-	}
-}
-*/
+ 
 
 void LaunchQuestBook()
 {
@@ -919,26 +808,26 @@ void LaunchItems()
 
 void LaunchSelectCharacter()
 {
-	//if(procEnableInterfaceLaunch(INTERFACE_CHARACTER_SELECT)==false) return;
-	//InterfaceStates.Launched = true;
-	//InterfaceStates.doUnFreeze = false;
-	//EngineLayersOffOn(false);
+	
+	
+	
+	
 
 	SetEventHandler(EVENT_END_VIDEO,"ISTART_SelCharacter",0);
 	PostEvent(EVENT_END_VIDEO,0);
-	//StartVideo("3Ship");
+	
 }
 
 void LaunchSelectNation()
 {
-	//if(procEnableInterfaceLaunch(INTERFACE_CHARACTER_SELECT)==false) return;
-	//InterfaceStates.Launched = true;
-	//InterfaceStates.doUnFreeze = false;
-	//EngineLayersOffOn(false);
+	
+	
+	
+	
 
 	SetEventHandler(EVENT_END_VIDEO,"ISTART_SelNation",0);
 	PostEvent(EVENT_END_VIDEO,0);
-	//StartVideo("3Ship");
+	
 }
 
 void ISTART_SelCharacter()
@@ -950,25 +839,12 @@ void ISTART_SelCharacter()
 	CurrentInterface = INTERFACE_CHARACTER_SELECT;
 	LoadSegment(Interfaces[CurrentInterface].SectionName);
 	InitInterface(Interfaces[CurrentInterface].IniFile);
-	//SetMainCharacterIndex(0);
-	//interfaceResultCommand = RC_INTERFACE_CHARACTER_SELECT_EXIT;
-	//Start_InterfaceDoExit();
+	
+	
+	
 }
 
-/*
-void ISTART_SelNation()
-{
-	DelEventHandler(EVENT_END_VIDEO,"ISTART_SelNation");
-	ISetSoundEvents();
-	nPrevInterface = -1;
-     CurrentInterface = INTERFACE_NATION_SELECT;
-     LoadSegment(Interfaces[CurrentInterface].SectionName);
-     InitInterface(Interfaces[CurrentInterface].IniFile);
-	//SetMainCharacterIndex(0);
-	//interfaceResultCommand = RC_INTERFACE_CHARACTER_SELECT_EXIT;
-	//Start_InterfaceDoExit();
-}
-*/
+ 
 
 void EndOkInterface()
 {
@@ -982,7 +858,7 @@ void EndOkInterface()
 			DeleteAttribute(&GameInterface,"");
 			CurrentInterface = INTERFACE_STORE;
 			LoadSegment(Interfaces[CurrentInterface].SectionName);
-			InitInterface_RR(Interfaces[CurrentInterface].IniFile,GetCharacter(cn),&stores[gStoreNum]);  // to_do рудимент?
+			InitInterface_RR(Interfaces[CurrentInterface].IniFile,GetCharacter(cn),&stores[gStoreNum]);  
 		}
 		else
 		{
@@ -1006,127 +882,24 @@ void EndCancelInterface(bool bYesRelease)
 	bGamePadChangeEnable = false;
 	switch(interfaceResultCommand)
 	{
-		/*
-		case RC_INTERFACE_RANSACK_JOIN_EXIT: 
-			refObj1 = GetMyCharacterRef(); 
-			refObj2 = GetEnemyCharacterRef(); 
-		break;
-
-		case RC_INTERFACE_RANSACK_CREW_EXIT: 
-			refObj1 = GetMyCharacterRef(); 
-			refObj2 = GetEnemyCharacterRef(); 
-		break;
-
-		case RC_INTERFACE_RANSACK_CAPTAIN_EXIT: 
-			refObj1 = GetMyCharacterRef(); 
-			refObj2 = GetEnemyCharacterRef(); 
-		break;
-		
-
-		case RC_INTERFACE_TRANSFER_START_GOODS: 
-			refObj1 = GetMyCharacterRef(); 
-			refObj2 = GetEnemyCharacterRef(); 
-			ICurNode = GetCurrentNode(); 
-		break;
-
-		case RC_INTERFACE_TRANSFER_START_CHARACTERS: 
-			refObj1 = GetMyCharacterRef(); 
-			refObj2 = GetEnemyCharacterRef(); 
-			ICurNode = GetCurrentNode(); 
-		break;
-
-		case RC_INTERFACE_TRANSFER_START_CREW: 
-			refObj1 = GetMyCharacterRef(); 
-			refObj2 = GetEnemyCharacterRef(); 
-			ICurNode = GetCurrentNode(); 
-		break;
-
-		case RC_INTERFACE_TRANSFER_MAIN_RETURN: 
-			refObj1 = GetMyCharacterRef(); 
-			refObj2 = GetEnemyCharacterRef(); 
-		break;
-        */
-		/*
-		case RC_INTERFACE_CHARACTER_SELECT_EXIT:
-			DeleteEntities();
-			ClearEvents();
-			SetEventHandler("frame","NewGame",1);
-			InterfaceStates.doUnFreeze = false;
-		break;
-		*/
+		 
+		 
 	}
 	InterfaceStates.doUnFreeze = bYesRelease;
    UnloadSegment(Interfaces[CurrentInterface].SectionName);
 	IDeleteSoundEvents();
 	switch(interfaceResultCommand)
 	{
-		/*
-		case RC_INTERFACE_RANSACK_JOIN_EXIT: 
-			InterfaceStates.Launched=false; 
-			LaunchRansackCrew(refObj1,refObj2); 
-			return; 
-		break;
+		 
 		
-		case RC_INTERFACE_RANSACK_CREW_EXIT: 
-			if (!CheckAttribute(refObj2, "cannotsurrender"))
-			{
-				InterfaceStates.Launched=false; 
-				LaunchRansackCaptain(refObj1,refObj2); 
-				return; 
-			}
-			else
-			{
-				InterfaceStates.Launched=false; 
-				LaunchRansackMain(refObj1,refObj2,""); 
-				return;
-			}
-		break;
-
-		case RC_INTERFACE_RANSACK_CAPTAIN_EXIT: 
-			InterfaceStates.Launched=false; 
-			LaunchRansackMain(refObj1,refObj2,""); 
-			return; 
-		break;
-		*/
-		
-		/*
-		case RC_INTERFACE_TRANSFER_START_GOODS: 
-			InterfaceStates.Launched=false; 
-			LaunchTransferGoods(&Characters[sti(refObj1.index)],&Characters[sti(refObj2.index)]); 
-			return; 
-		break;
-
-		case RC_INTERFACE_TRANSFER_START_CHARACTERS: 
-			InterfaceStates.Launched=false; 
-			LaunchTransferCharacter(refObj1,refObj2); 
-			return; 
-		break;
-
-		case RC_INTERFACE_TRANSFER_START_CREW: 
-			InterfaceStates.Launched=false; 
-			LaunchTransferCrew(refObj1,refObj2); 
-			return; 
-		break;
-		
-		case RC_INTERFACE_TRANSFER_MAIN_RETURN:
-			if(nPrevInterface==INTERFACE_RANSACK_MAIN)
-			{
-				InterfaceStates.Launched=false; LaunchRansackMain(refObj1,refObj2,ICurNode);
-			}
-			else
-			{
-				InterfaceStates.Launched=false; LaunchTransferMain(refObj1,refObj2,ICurNode);
-			}
-			return;
-		break;
-		*/
+		 
 	}
 	
     Start_InterfaceDoExit();
 	if(bYesRelease)	PostEvent("evntQuestsCheck",1);
 }
 
-// стек для вложенных интерфейсов
+
 object InterfaceStack;
 void ClearInterfaceStack()
 {
@@ -1149,15 +922,7 @@ bool PopInterface()
 	InterfaceStack.size = sti(InterfaceStack.size)-1;
 	string StackSlot = "Slot"+InterfaceStack.size;
 	CurrentInterface = sti(InterfaceStack.(StackSlot).index);
-	/*switch(CurrentInterface)
-	{
-	case INTERFACE_STORE:
-		break;
-	case INTERFACE_RANSACK_MAIN:
-		break;
-	case INTERFACE_TRANSFER_MAIN:
-		break;
-	} */
+	 
 	DeleteAttribute(&InterfaceStack,StackSlot);
 	return true;
 }
@@ -1194,8 +959,8 @@ void IDoSoundEvent()
 	int comCode = GetEventData();
 	switch( comCode )
 	{
-	case 1: PlaySound("interface\ok.wav"); break; // любая клавиша
-	case 2: PlaySound("interface\menu_select_01.wav"); break; // выбор элемента
+	case 1: PlaySound("interface\ok.wav"); break; 
+	case 2: PlaySound("interface\menu_select_01.wav"); break; 
 	}
 }
 
@@ -1209,7 +974,7 @@ void StartPictureAsVideo( string picname, float time )
 }
 void PictureAsVideoBreak()
 {
-    ResetSound(); //fix boal
+    ResetSound(); 
 	DelEventHandler("PictureAsVideoBreak","PictureAsVideoBreak");
 	Event( "DoInfoShower", "sl", "Game Over Picture", false );
 	Event( EVENT_END_VIDEO );
@@ -1242,8 +1007,8 @@ void StartVideo(string vidName)
 	}
 	g_ibVideoExecuting = true;
 	PauseAllSounds();
- //ResetSoundScheme();
-	ResetSound(); // new
+ 
+	ResetSound(); 
 	if(sti(InterfaceStates.Launched))
 	{
 		InterfaceStates.InstantExit = true;
@@ -1316,7 +1081,7 @@ void _Procedure_EndVideoPlay()
 	bBreakVideoDisable = false;
 	DelEventHandler("Control Activation","IVideoBreakPrepare");
 	DelEventHandler("Control Deactivation","IVideoBreak");
-	//ResumeAllSounds();
+	
 	DeleteClass(&aviVideoObj);
 	if(bMainMenuLaunchAfterVideo)
 	{
@@ -1340,8 +1105,8 @@ void _Procedure_EndVideoPlay()
 	if(CheckAttribute(&aviVideoObj,"afterQuestName"))
 	{
 		DoQuestCheckDelay(aviVideoObj.afterQuestName,0.1);
-		//QuestComplete(aviVideoObj.afterQuestName);
-		//QuestsCheck();
+		
+		
 		DeleteAttribute(&aviVideoObj,"afterQuestName");
 	}
 	PostEvent(EVENT_END_VIDEO,1);
@@ -1358,70 +1123,19 @@ bool procEnableInterfaceLaunch(int _interfaceCode)
 	if(IsEntity(reload_fader)) return false;
 	if(DialogRun!=0)
 	{
-		//if(_interfaceCode!=INTERFACE_HELPSCREEN)	return false;
+		
 		return false;
 	}
 	return true;
 }
 
-/*
-bool bRunHelpChooser = false;
-void RunHelpChooser()
-{
-	string chooserName = "";
-	if(bSeaActive && !bAbordageStarted)	chooserName = "sea_interface";
-	else if( IsEntity(worldMap) )	chooserName = "world_map";
-	else if( DialogRun )	chooserName = "Dialog_window";
-	else chooserName = "land_interface";
+ 
 
-	if(chooserName=="")
-	{
-		LaunchHelpScreen("");
-		return;
-	}
-
-	DeleteEntitiesByType("HELPCHOOSER");
-	SetEventHandler("EventEndHelpChooser","ProcEndHelpChooser",0);
-	object objHelpChooser;
-	CreateEntity(&objHelpChooser,"HELPCHOOSER");
-	if( !IsEntity(&objHelpChooser) )
-	{
-		Event("EventEndHelpChooser","s","");
-		return;
-	}
-	if( !SendMessage(&objHelpChooser,"ls",MSG_HELPCHOOSER_START,chooserName) )
-	{
-		Event("EventEndHelpChooser","s","");
-	}
-	bRunHelpChooser = true;
-	EngineLayersOffOn(false);
-	InterfaceStates.Launched=true;
-	LayerAddObject("iExecute",&objHelpChooser,10000);
-	LayerAddObject("iRealize",&objHelpChooser,10000);
-}
-*/
-
-/*
-void ProcEndHelpChooser()
-{
-	string HelpSectionName = GetEventData();
-	DelEventHandler("EventEndHelpChooser","ProcEndHelpChooser");
-	DeleteEntitiesByType("HELPCHOOSER");
-	//bRunHelpChooser = false;
-	InterfaceStates.Launched=false;
-	if(HelpSectionName!="")	LaunchHelpScreen(HelpSectionName);
-	else EngineLayersOffOn(true);
-}
-*/
+ 
 
 void ReturnToMainMenu()
 {
-	/*if(sti(InterfaceStates.Buttons.Resume.enable)==true)
-	{
-		if(bSeaActive) return;
-		if(IsEntity(&worldMap)) return;
-		if(FindLoadedLocation()!=-1) return;
-	}*/
+	 
 	DelEventHandler("frame","InterfaceDoExit");
 	EngineLayersOffOn(false);
 	InterfaceStates.Launched = false;
@@ -1450,7 +1164,7 @@ void ILaunchAfterFrame()
 		case "I_TRADEBOOK":		LaunchTradeBook();	return; break;
 		case "I_NATIONS":		LaunchNationRelation();	return; break;
 		case "I_ITEMS":			LaunchItems();	return; break;
-		// boal 220904 <--
+		
 		case "TransferMain":
 			if( CheckAttribute(pchar,"TransferChar") )
 			{
@@ -1466,7 +1180,7 @@ bool procInterfacePrepare(int interfaceCode)
 {
 	if(procEnableInterfaceLaunch(interfaceCode)==false) return false;
 	if(g_ibVideoExecuting) return false;
-	//if(IsEntity(wdm_fader)!=0) return false;
+	
 
 	if(interfaceCode != INTERFACE_FORTCAPTURE && interfaceCode != INTERFACE_RANSACK_MAIN)
 	{
@@ -1526,7 +1240,7 @@ void SaveGameOptions()
 
 void ReloadAfterFortCapture()
 {
-    // debug
+    
 	if (!CheckAttribute(pchar,"from_interface"))
 	{
 		if (MOD_BETTATESTMODE == "On") Log_Info("Error: ReloadAfterFortCapture miss from_interface.fortCharacterIdx");
@@ -1534,14 +1248,14 @@ void ReloadAfterFortCapture()
 	}
 	
 	int fortChr = sti(pchar.from_interface.fortCharacterIdx);
-	// boal -->
-	AfterTownBattle();//трем неоконченый захват
+	
+	AfterTownBattle();
 
-    // перезапомним
+    
     pchar.GenQuestFort.fortCharacterIdx = fortChr;
 
-    bool ExitToSea = CheckAttribute(pchar, "from_interface.Exit_to_Sea"); // выход в море to_do
-	// boal <--
+    bool ExitToSea = CheckAttribute(pchar, "from_interface.Exit_to_Sea"); 
+	
 	ref chref = GetCharacter(fortChr);
 
 	string sToLocation = "";
@@ -1559,22 +1273,22 @@ void ReloadAfterFortCapture()
 		}
 	}
 
-	//sToLocation = pchar.from_interface.town + "_town";
-	//sToLocator = "reload1";
+	
+	
 
 	DeleteAttribute(pchar,"from_interface");
 
 	chref.Fort.Mode = FORT_DEAD;
-	// data of frot die
+	
 	chref.Fort.DieTime.Year = GetDataYear();
 	chref.Fort.DieTime.Month = GetDataMonth();
 	chref.Fort.DieTime.Day = GetDataDay();
 	chref.Fort.DieTime.Time = GetTime();
 
-    pchar.GenQuest.Hunter2Pause = true;  // boal бойня в форте
-	// опыт
-	// boal -->
-    AddCharacterExpToSkillSquadron(GetMainCharacter(), "Leadership", 500);//добавка в городе, если  бой непрерывен
+    pchar.GenQuest.Hunter2Pause = true;  
+	
+	
+    AddCharacterExpToSkillSquadron(GetMainCharacter(), "Leadership", 500);
     AddCharacterExpToSkillSquadron(GetMainCharacter(), "Sailing", 500);
     AddCharacterExpToSkillSquadron(GetMainCharacter(), "Sneak", 300);
 
@@ -1582,30 +1296,18 @@ void ReloadAfterFortCapture()
     Statistic_AddValue(GetMainCharacter(), NationShortName(sti(chref.nation)) + "_KillFort", 1);
 	
 	Achievment_SetStat(GetMainCharacter(), 22, 1);
-    fOldMaxSeaHeight = 0.6; // fix потоп в порту ФФ boal 03.01.05
-    // boal <--
+    fOldMaxSeaHeight = 0.6; 
+    
 	if(sToLocation != "")
 	{
 		string sColony = Locations[FindLocation(sToLocation)].fastreload;
 		SetTownCapturedState(sColony,true);
 		Log_TestInfo("ReloadAfterFortCapture");
-		/*  //to_do boal
-		int iColony = FindColony(sColony);
-		if(sti(Colonies[iColony].capture_flag) == 1)
-		{
-			SetTownCapturedState(sColony,false);
-			//SetLocationCapturedState(sToLocation,false);
-		}
-		else
-		{
-			SetTownCapturedState(sColony,true);
-			//SetLocationCapturedState(sToLocation,true);
-		}
-		*/
+		 
 		Go2LocationAfterAbordage();
 		pchar.location.from_sea = sToLocation;
-		// boal -->
-		if (true)//!ExitToSea)
+		
+		if (true)
 	    {
 	        DoQuestReloadToLocation(sToLocation, "reload", sToLocator, "Capture_Forts");
 	    }
@@ -1613,7 +1315,7 @@ void ReloadAfterFortCapture()
 	    {
 	        DoQuestReloadToLocation(sToLocation, "reload", sToLocator, "Capture_Forts_ExitToSea");
 	    }
-	    // boal <--
+	    
 	}
 	else
 	{
@@ -1646,9 +1348,9 @@ void IProcEventSetGameTime()
 	InterfaceStates.GameTime.sec = itmp;
 }
 
-//==============================================================
-//	Секция Показывающая какую либо инфо на экране
-//==============================================================
+
+
+
 #event_handler("DoInfoShower", "procInfoShow");
 object objInfoList[10];
 
@@ -1691,7 +1393,7 @@ void procInfoShow()
 			objInfoList[nInfoIdx].backColor = 0;
 			objInfoList[nInfoIdx].foreColor = 0;
 			objInfoList[nInfoIdx].borderWidth = 32;
-			//objInfoList[nInfoIdx].scale = 1.0;
+			
 			objInfoList[nInfoIdx].offset = 30;
 			objInfoList[nInfoIdx].picbackfilename = "loading\ImgBack.tga";
 
@@ -1855,7 +1557,7 @@ void SetShowWindowParameters(bool TVused, int w,int h, int l,int t,int r,int b)
 	showWindow.TVused = TVused;
 	showWindow.width = w;
 	showWindow.height = h;
-	//showWindow.aspectRatio = (h*4.0)/(w*3.0);
+	
 	showWindow.aspectRatio = 1.0;
 	showWindow.left = RecalculateHIcon(l);
 	showWindow.top = RecalculateVIcon(t);
@@ -1961,11 +1663,7 @@ void ProcBreakInterface()
 		sti(InterfaceStates.Launched)==true )
 	{
 		if( CurrentInterface == INTERFACE_RANSACK_MAIN || CurrentInterface == INTERFACE_FORTCAPTURE)
-			/*
-			CurrentInterface==INTERFACE_TRANSFER_GOODS ||
-			CurrentInterface==INTERFACE_TRANSFER_CHARACTER ||
-			CurrentInterface==INTERFACE_TRANSFER_CREW )
-			*/
+			 
 		{
 			return;
 		}
@@ -2049,7 +1747,7 @@ void StartLanguageSetting(string lngID)
 
 	segmentName = LanguageGetLanguage() + "\Greetings_alias.ini";
 	SendMessage( &Sound, "ls", MSG_SOUND_ALIAS_ADD,  segmentName);
-	//SendMessage( &Sound, "ls", MSG_SOUND_ALIAS_ADD, LanguageGetLanguage() + "\talk_" + LanguageGetLanguage() + ".lng" );
+	
 }
 
 int nWeelStep = 0;
@@ -2073,15 +1771,15 @@ void SetSkillShow(string skillName, int skillVal)
 	GameInterface.strings.(skillName) = skillVal;
 	int color = COLOR_NORMAL;
 	if(skillVal==SKILL_MAX)	color = COLOR_MONEY;
-	//ChangeStringColor(skillName,SetAlphaIntoColor(color,GetAlphaFromSkill(skillVal)));
-	ChangeStringColor(skillName,SetAlphaIntoColor(color, 55 + skillVal*2)); // 55-255
+	
+	ChangeStringColor(skillName,SetAlphaIntoColor(color, 55 + skillVal*2)); 
 }
 
 void SetSkillShowEx(aref xi_refCharacter, string skillName, int skillVal, int skillTempVal, int skillUpVal, int iX, int iY)
 {
-	//GameInterface.strings.(skillName) = skillVal;
+	
 	string sReal = skillName+"real";
-	//GameInterface.strings.(sReal) = skillTempVal;
+	
 	int color = COLOR_NORMAL;
 	
 	if(skillVal >= MAX_CHARACTER_SKILL) color = COLOR_MONEY;
@@ -2109,7 +1807,7 @@ void SetSkillShowEx(aref xi_refCharacter, string skillName, int skillVal, int sk
 		}
 		else
 		{
-			iResult = skillUPVal;// - skillVal;
+			iResult = skillUPVal;
 		}
 	}
 	
@@ -2126,26 +1824,7 @@ void SetSkillShowEx(aref xi_refCharacter, string skillName, int skillVal, int sk
 		SCRIPT_ALIGN_RIGHT, true, 0.7, 420);
 }
 
-/*int GetAlphaFromSkill(int nskill)
-{
-	switch(nskill)
-	{
-	case 0:		return 75;	break;
-	case 1:		return 90;	break;
-	case 2:		return 105;	break;
-	case 3:		return 120;	break;
-	case 4:		return 135;	break;
-	case 5:		return 150;	break;
-	case 6:		return 165;	break;
-	case 7:		return 180;	break;
-	case 8:		return 195;	break;
-	case 9:		return 210;	break;
-	case 10:		return 225;	break;
-	case 11:		return 240;	break;
-	case 12:		return 255;	break;
-	}
-	return 0;
-}  */
+ 
 
 int GetAlphaFromSkill(int nskill)
 {
@@ -2168,20 +1847,20 @@ int GetAlphaFromSkill(int nskill)
 	return 55;
 }
 
-//==============================
-// save load section
-//==============================
+
+
+
 void MakeQuickLoad()
 {
-	// boal лишнее if( InterfaceStates.Launched != 0 ) {return;}
+	
 	if( bPlayVideoNow ) {return;}
-	// ugeen 2017 -->
+	
 	int QuickSaveIndex = 1;
 	if( CheckAttribute(&PlayerProfile,"QuickSaveIndex") ) {
 		QuickSaveIndex = sti(PlayerProfile.QuickSaveIndex);
 	}	
 	string curSave = PlayerProfile.name + " QuickSave " + QuickSaveIndex;
-	// <-- ugeen 2017
+	
 	SetEventHandler("evntLoad","LoadGame",0);
 	PostEvent("evntLoad",0,"s", "SAVE\"+PlayerProfile.name+"\"+curSave);
 }
@@ -2198,7 +1877,7 @@ void MakeQuickSave()
 
 	if( InterfaceStates.Launched != 0 ) {return;}
 
-	// boal 09.07.06 -->
+	
 	if (!QuickSaveGameEnabledHardcore())
 	{
         Log_Info("In his game mode you can save only in churches");
@@ -2210,7 +1889,7 @@ void MakeQuickSave()
 	DelPerkFromActiveList("TimeSpeed");
 	DeleteAttribute(pchar, "pause");
 	
-	// boal 09.07.06 <--
+	
 	aref arScrShoter;
 	if( !FindClass(&arScrShoter,"scrshoter") ) {
 		SetEventHandler("makescrshot","QuickSaveContinue",0);
@@ -2224,7 +1903,7 @@ void QuickSaveContinue()
 	DelEventHandler("makescrshot","QuickSaveContinue");
 
 	LaunchQuickSaveMenu();
-	//ugeen 2017 -->
+	
 	int QuickSaveIndex = 1;
 	if( CheckAttribute(&PlayerProfile,"QuickSaveIndex") ) {
 		QuickSaveIndex = sti(PlayerProfile.QuickSaveIndex);
@@ -2238,7 +1917,7 @@ void QuickSaveContinue()
 	PlayerProfile.QuickSaveIndex = QuickSaveIndex;
 	
 	string curSave = PlayerProfile.name + " QuickSave " + QuickSaveIndex;
-	// <-- ugeen 2017
+	
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_DELETE_SAVE_FILE,curSave);
 	string sSaveDescriber = GetSaveDataString(GetCurLocationName());
 
@@ -2274,7 +1953,7 @@ string GetSaveDataString(string label)
 {
 	string fighter1, fighter2, fighter3, fighter4, navigator, boatswain, cannoner, doctor, treasurer, carpenter;
 
-	// officers pictures
+	
 	if( GetOfficersIndex(pchar,0) < 0 ) { fighter1 = "*";
 	} else { fighter1 = GetFaceGroupName( GetOfficersIndex(pchar,0) );
 	}
@@ -2287,7 +1966,7 @@ string GetSaveDataString(string label)
 	if( GetOfficersIndex(pchar,3) < 0 ) { fighter4 = "*";
 	} else { fighter4 = GetFaceGroupName( GetOfficersIndex(pchar,3) );
 	}
-	// specials pictures
+	
 	if( !CheckAttribute(pchar,"Fellows.Passengers.navigator") || sti(pchar.Fellows.Passengers.navigator)<0 ) { navigator = "*";
 	} else { navigator = GetFaceGroupName( sti(pchar.Fellows.Passengers.navigator) );
 	}
@@ -2306,12 +1985,12 @@ string GetSaveDataString(string label)
 	if( !CheckAttribute(pchar,"Fellows.Passengers.carpenter") || sti(pchar.Fellows.Passengers.carpenter)<0 ) { carpenter = "*";
 	} else { carpenter = GetFaceGroupName( sti(pchar.Fellows.Passengers.carpenter) );
 	}
-//GetCurLocationName()
+
 	string savedata = label +
 		"@" + fighter1 + "," + fighter2 + "," + fighter3 + "," + fighter4 + "," +
 		navigator + "," + boatswain + "," + cannoner + "," +
 		doctor + "," + treasurer + "," + carpenter +
-		"@" + GetStringTime(GetTime()) + "  " + GetStringDate( GetDataDay(),GetDataMonth(),GetDataYear() ) + // boal FIX
+		"@" + GetStringTime(GetTime()) + "  " + GetStringDate( GetDataDay(),GetDataMonth(),GetDataYear() ) + 
 		"@" + GetPlayTime() +
 		"@" + LanguageGetLanguage();
 
@@ -2326,13 +2005,13 @@ string GetCurLocationName()
 	int locidx = FindLocation(pchar.location);
 	if( locidx>=0 )
 	{
-		// boal -->
+		
 		int nLablesFileID = LanguageOpenFile("LocLables.txt");
         locLabel = "";
-       // if (CheckAttribute(&locations[locidx], "islandId"))
-		//{
-		//	locLabel = LanguageConvertString(nLablesFileID, Locations[locidx].islandId) + " ";
-		//}
+       
+		
+		
+		
 		if (CheckAttribute(&locations[locidx], "fastreload"))
 		{
 			locLabel += LanguageConvertString(nLablesFileID, Locations[locidx].fastreload + " Town") + " ";
@@ -2361,7 +2040,7 @@ string GetCurLocationName()
 		{
 			locLabel = XI_ConvertString("Open Sea");
 		}
-		// boal <--
+		
 	}
 	return locLabel;
 }
@@ -2380,11 +2059,11 @@ string GetPlayTime()
 	return sPlayTime;
 }
 
-int GetPlayTimeHours() // ugeen 2016 - нужно для ачивки
+int GetPlayTimeHours() 
 {
 	int hours = sti( InterfaceStates.GameTime.hour );
-//	int days = hours / 24;
-//	hours = hours - days*24;
+
+
 	
 	return hours;
 }
@@ -2404,7 +2083,7 @@ string GetStringTime(float time)
 
 string GetStringDate(int day, int month, int year)
 {
-	// boal -->
+	
 	string result;
 	if (day < 10)
 	{
@@ -2416,7 +2095,7 @@ string GetStringDate(int day, int month, int year)
 	    result = result + "0";
 	}
 	result = result + month + "." + year;
-	// boal <--
+	
 	return result;
 }
 
@@ -2432,7 +2111,7 @@ string IGetSaveString(string saveName)
 	return retStr;
 }
 
-// boal -->
+
 string GetConvertStr(string _param, string _file)
 {
     int    idLngFile = -1;
@@ -2444,3 +2123,4 @@ string GetConvertStr(string _param, string _file)
 
     return totalInfo;
 }
+

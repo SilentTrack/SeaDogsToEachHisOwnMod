@@ -1,4 +1,4 @@
-// диалог по городам
+
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
     switch (Dialog.CurrentNode)
@@ -8,23 +8,23 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                           "Look, if you have nothing to tell me about the port's matters then don't bother me with your questions.", "block", 1, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat(RandPhraseSimple("I have changed my mind.", "Sorry!"), "Sorry!", "Sorry!", "Sorry!", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
-			//--> Бремя гасконца
+			
 		if (CheckAttribute(pchar, "questTemp.Sharlie") && pchar.questTemp.Sharlie == "ship" && !CheckAttribute(npchar, "quest.RescueDaughter"))
 		{
 			link.l1 = "Sir, I am looking for a job. But not a porter job, something more suitable for my rank. Mission, service, help in the delicate matter... I will take any assignment you have got.";
 			link.l1.go = "Sharlie";
 		}
-		//<-- Бремя гасконца
+		
 		break;
 		
 		case "Sharlie":
-			dialog.text = "Help? Hm. I am doing fine, thank God. But one my friend is really in need of help and it's urgent. He intends to go the jungles alone to fight the Indians, this is madness!\nI tried to reason him but he didn't listen… He worries to much about his daughter and even ready to give his life for her!";
+			dialog.text = "Help? Hm. I am doing fine, thank God. But one my friend is really in need of help and it's urgent. He intends to go the jungles alone to fight the Indians, this is madness!\nI tried to reason him but he didn't listenпїЅ He worries to much about his daughter and even ready to give his life for her!";
 			link.l1 = "Listen, I don't get it. Let's start again: who is your friend, where can I find him and what kind of help does he need?";
 			link.l1.go = "Sharlie_1";			
 		break;
 		
 		case "Sharlie_1":
-			dialog.text = "Ah, pardon me, I am just too anxious… Prosper… He is going to die for sure! And I can't help him - I am not a soldier. His name? Prosper Troubale. His daughter is missing and he believes that the Indians are responsible\nImagine that, he plans to kill some Indian band on his own! They will cut him in pieces... At this moment he is buying a musket and getting ready to go to the selva!";
+			dialog.text = "Ah, pardon me, I am just too anxiousпїЅ ProsperпїЅ He is going to die for sure! And I can't help him - I am not a soldier. His name? Prosper Troubale. His daughter is missing and he believes that the Indians are responsible\nImagine that, he plans to kill some Indian band on his own! They will cut him in pieces... At this moment he is buying a musket and getting ready to go to the selva!";
 			link.l1 = "Oh, you are not the best talker... Where can I find your friend...what was his name... Prosper?";
 			link.l1.go = "Sharlie_2";			
 		break;
@@ -42,6 +42,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			npchar.quest.RescueDaughter = "true";
 		break;
 	}
-	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
+	UnloadSegment(NPChar.FileDialog2);  
 }
+
 

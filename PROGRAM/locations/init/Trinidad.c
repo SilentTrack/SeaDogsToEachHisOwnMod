@@ -2,9 +2,9 @@
 int LocationInitTrinidad(int n)
 {
 	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ГОРОД
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortSpein_town";
 	locations[n].id.label = "Street";
 	locations[n].worldmap = "Trinidad";
@@ -18,14 +18,14 @@ int LocationInitTrinidad(int n)
 	locations[n].citizens = true;
 	locations[n].soldiers = true;
 	locations[n].carrier = true;
-	//==> флаг генерации квестодателя по розыску кэпов, int значение - шанс что сам заговорит(1-10)
+	
 	locations[n].questSeekCap = 3; 
-	//Sound
+	
 	locations[n].type = "town";
 	LAi_LocationFantomsGen(&locations[n], true);
-	locations[n].houseEnc = true; //для энкаунтеров в домах
-	//Models
-	//Always
+	locations[n].houseEnc = true; 
+	
+	
 	locations[n].models.always.town = "PortSpein";
 	locations[n].models.always.town.sea_reflection = 1;
 	locations[n].models.always.L1 = "PortSpein_signsA";
@@ -33,7 +33,7 @@ int LocationInitTrinidad(int n)
 	locations[n].models.always.locators = "PortSpein_locators";
 	locations[n].models.always.grassPatch = "PortSpein_grass";
 	
-	//River
+	
 	locations[n].models.always.Waterfall1 = "river1";
 	locations[n].models.always.Waterfall1.uvslide.v0 = 0.2;
     locations[n].models.always.Waterfall1.uvslide.v1 = 0.0;
@@ -49,7 +49,7 @@ int LocationInitTrinidad(int n)
 	locations[n].models.always.plan = "plan1";
 	locations[n].models.always.plan.level = 9;
 
-	//WindMill Fan
+	
 	locations[n].models.always.MillFan = "MillFan";
 	Locations[n].models.always.MillFan.locator.group = "WindMill";
 	Locations[n].models.always.MillFan.locator.name ="Fan";	
@@ -57,19 +57,19 @@ int LocationInitTrinidad(int n)
 	Locations[n].models.always.MillFan.rotate.y = 0.0;
 	Locations[n].models.always.MillFan.rotate.z = 0.3;
 
-	//Day
+	
 	locations[n].models.day.fonar = "PortSpein_fd";
 	locations[n].models.day.charactersPatch = "PortSpein_patch_day";
 	locations[n].models.day.rinok = "PortSpein_rinok";
-	//Night
+	
 	locations[n].models.night.fonar = "PortSpein_fn";
 	locations[n].models.night.charactersPatch = "PortSpein_patch_night";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 
-    // --> Типовые городские локации, четкая фиксация на 10 номеров.
+    
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Trinidad";
 	locations[n].reload.l1.emerge = "reload_1";
@@ -116,7 +116,7 @@ int LocationInitTrinidad(int n)
 	locations[n].reload.l7.emerge = "reload1";
 	locations[n].reload.l7.autoreload = "0";
 	locations[n].reload.l7.label = "Church";
-	//locations[n].reload.l7.close_for_night = 1;
+	
 
 	locations[n].reload.l8.name = "reload8_back";
 	locations[n].reload.l8.go = "PortSpein_bank";
@@ -144,7 +144,7 @@ int LocationInitTrinidad(int n)
 	locations[n].reload.jail.autoreload = "0";
 	locations[n].reload.jail.label = "Prison";
 	
-    // --> Квестовые локации, четкая фиксация на 9 едениц
+    
 	locations[n].reload.l11.name = "houseF2";
 	locations[n].reload.l11.go = "PortSpein_houseF2";
 	locations[n].reload.l11.emerge = "reload1";
@@ -152,7 +152,7 @@ int LocationInitTrinidad(int n)
 	locations[n].reload.l11.label = "Comendant_House";
 	locations[n].reload.l11.close_for_night = 1;
 
-    // --> Комоны, загрушки. Номера с начинаются с 20.
+    
 	locations[n].reload.l20.name = "houseS1";
 	locations[n].reload.l20.go = "CommonCobHouse";
 	locations[n].reload.l20.emerge = "reload1";
@@ -232,23 +232,23 @@ int LocationInitTrinidad(int n)
 	locations[n].reload.l33.label = "House";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ТАВЕРНА
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortSpein_tavern";
 	locations[n].id.label = "Tavern";
 	locations[n].filespath.models = "locations\inside\tavern01\";
 	locations[n].image = "loading\inside\tavern.tga";
 	locations[n].habitues = 1;
-	//Town sack
+	
 	locations[n].townsack = "PortSpein";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "tavern";
 	locations[n].fastreload = "PortSpein";
  	locations[n].islandId = "Trinidad";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.tavern = "Tavern01";
 	locations[n].models.always.tavern.level = 65538;
 	locations[n].models.always.locators = "Tavern01_locators";
@@ -257,14 +257,14 @@ int LocationInitTrinidad(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.window.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "tavern01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "tavern01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortSpein_town";
 	locations[n].reload.l1.emerge = "reload4";
@@ -276,26 +276,26 @@ int LocationInitTrinidad(int n)
 	locations[n].reload.l2.emerge = "reload1";
 	locations[n].reload.l2.autoreload = "0";
 	locations[n].reload.l2.label = "Tavern upstairs";
-	locations[n].reload.l2.disable = 1; // закроем, но связку сделаем для квестовых нужд.
+	locations[n].reload.l2.disable = 1; 
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// КОМНАТА В ТАВЕРНЕ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortSpein_tavern_upstairs";
 	locations[n].id.label = "Tavern upstairs";
 	locations[n].filespath.models = "locations\inside\Tavern_room";
 	locations[n].image = "loading\inside\tavern.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortSpein";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "PortSpein";
  	locations[n].islandId = "Trinidad";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Tavern_room_locators";
 	locations[n].models.always.tavern = "Tavern_room";
 	locations[n].models.always.tavern.level = 65538;
@@ -305,14 +305,14 @@ int LocationInitTrinidad(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Tavern_room_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Tavern_room_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortSpein_tavern";
 	locations[n].reload.l1.emerge = "reload2";
@@ -321,22 +321,22 @@ int LocationInitTrinidad(int n)
 	locations[n].locators_radius.reload.reload1 = 0.8;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// МАГАЗИН
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "PortSpein_store";
 	locations[n].id.label = "Store";
 	locations[n].filespath.models = "locations\inside\store02\";
 	locations[n].image = "loading\inside\shop.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortSpein";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shop";
 	locations[n].fastreload = "PortSpein";
   	locations[n].islandId = "Trinidad";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Store02_locators";
 	locations[n].models.always.store = "Store02";
 	locations[n].models.always.store.level = 65538;
@@ -345,20 +345,20 @@ int LocationInitTrinidad(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "store02_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "store02_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortSpein_town";
 	locations[n].reload.l1.emerge = "reload6";
 	locations[n].reload.l1.autoreload = "0";
 	locations[n].reload.l1.label = "Street";
-    ////////////////////////==> комната в магазине
+    
 	locations[n].reload.l2.name = "reload2";
 	locations[n].reload.l2.go = "CommonPackhouse_1";
 	locations[n].reload.l2.emerge = "reload1";
@@ -367,22 +367,22 @@ int LocationInitTrinidad(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// РОСТОВЩИК
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "PortSpein_bank";
 	locations[n].id.label = "Usurer House";
 	locations[n].filespath.models = "locations\inside\Bank01\";
 	locations[n].image = "loading\inside\bank.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortSpein";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shop";
 	locations[n].fastreload = "PortSpein";
   	locations[n].islandId = "Trinidad";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Bank01_locators";
 	locations[n].models.always.store = "Bank01";
 	locations[n].models.always.store.level = 65538;
@@ -391,15 +391,15 @@ int LocationInitTrinidad(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Bank01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Bank01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//locations[n].models.back = "back\redss_";
-	//Reload map
+	
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortSpein_town";
 	locations[n].reload.l1.emerge = "reload8";
@@ -414,22 +414,22 @@ int LocationInitTrinidad(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ВЕРФЬ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "PortSpein_Shipyard";
 	locations[n].id.label = "Shipyard";
 	locations[n].filespath.models = "locations\inside\Shipyard01\";
 	locations[n].image = "loading\inside\shipyard.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortSpein";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "shipyard";
 	locations[n].fastreload = "PortSpein";
   	locations[n].islandId = "Trinidad";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Shipyard01_locators";
 	locations[n].models.always.shipyard = "Shipyard01";
 	locations[n].models.always.shipyard.level = 65538;
@@ -438,14 +438,14 @@ int LocationInitTrinidad(int n)
 	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Shipyard01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Shipyard01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortSpein_town";
 	locations[n].reload.l1.emerge = "reload5";
@@ -460,25 +460,25 @@ int LocationInitTrinidad(int n)
 	locations[n].locators_radius.item.item1 = 1.0;
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// РЕЗИДЕНЦИЯ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "PortSpein_townhall";
 	locations[n].id.label = "Townhall";
 	locations[n].filespath.models = "locations\inside\Residence01";
 	locations[n].image = "loading\inside\residence.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortSpein";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "residence";
 	locations[n].fastreload = "PortSpein";
  	locations[n].islandId = "Trinidad";
- 	// стража
+ 	
 	locations[n].soldiers = true;
 	LAi_LocationFantomsGen(&locations[n], true);
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.locators = "Residence01_locators";
 	locations[n].models.always.l1 = "Residence01";
 	locations[n].models.always.l1.level = 65538;
@@ -487,14 +487,14 @@ int LocationInitTrinidad(int n)
 	locations[n].models.always.window.level = 65539;	
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "Residence01_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "Residence01_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortSpein_town";
 	locations[n].reload.l1.emerge = "reload3";
@@ -514,21 +514,21 @@ int LocationInitTrinidad(int n)
 	locations[n].reload.l3.label = "Room";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ЦЕРКОВЬ
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortSpein_church";
 	locations[n].id.label = "Church";
 	locations[n].image = "loading\inside\church.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortSpein";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "church";
 	locations[n].fastreload = "PortSpein";
  	locations[n].islandId = "Trinidad";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\churchInside2";
 	locations[n].models.always.churchInside2 = "churchInside2";
 	locations[n].models.always.churchInside2.level = 65538;
@@ -549,14 +549,14 @@ int LocationInitTrinidad(int n)
 	Locations[n].models.always.churchInside2gold.reflection = 0.6;
 	Locations[n].models.always.churchInside2gold.tech = "EnvironmentShader";
 	locations[n].models.always.churchInside2gold.level = 65541;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "churchInside2_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "churchInside2_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "PortSpein_town";
 	locations[n].reload.l1.emerge = "reload7";
@@ -565,21 +565,21 @@ int LocationInitTrinidad(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
- 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// ПОРТОВЫЙ ОФИС
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+	
+	
 	locations[n].id = "PortSpein_PortOffice";
 	locations[n].id.label = "PortOffice";
 	locations[n].image = "loading\inside\portoffice.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortSpein";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
 	locations[n].fastreload = "PortSpein";
  	locations[n].islandId = "Trinidad";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\PortOffice";
 	locations[n].models.always.housePortOffice = "PortOffice";
 	locations[n].models.always.housePortOffice.level = 65538;
@@ -591,14 +591,14 @@ int LocationInitTrinidad(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "PortOffice_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "PortOffice_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "PortSpein_town";
 	locations[n].reload.l1.emerge = "reload10";
@@ -607,21 +607,21 @@ int LocationInitTrinidad(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
-	////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Дом коменданта Сан-Хосе
-	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortSpein_houseF2";
 	locations[n].filespath.models = "locations\inside\CobHouse";
 	locations[n].id.label = "Comendant_House";
 	locations[n].image = "loading\inside\CobHouse.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortSpein";
 	locations[n].lockWeather = "Inside";
-	//Sound
+	
 	locations[n].type = "house";
  	locations[n].islandId = "Trinidad";
-	//Models
-	//Always
+	
+	
 	locations[n].models.always.tavern = "CobHouse";
 	locations[n].models.always.tavern.level = 65538;
 	locations[n].models.always.window = "CobHouse_window";
@@ -632,14 +632,14 @@ int LocationInitTrinidad(int n)
 
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	locations[n].models.day.charactersPatch = "CobHouse_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "CobHouse_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "PortSpein_town";
 	locations[n].reload.l1.emerge = "houseF2";
@@ -648,7 +648,7 @@ int LocationInitTrinidad(int n)
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 	
-	////////////////////// prison ////////////////////////////
+	
 	Locations[n].id = "PortSpein_prison";
 	locations[n].id.label = "Prison";
 	Locations[n].image = "loading\inside\prison.tga";
@@ -656,26 +656,26 @@ int LocationInitTrinidad(int n)
     locations[n].parent_colony = "PortSpein";
  	locations[n].fastreload = "PortSpein";
 	locations[n].islandId = "Trinidad";
-	//Sound
+	
 	locations[n].type = "jail";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\prison1";
 	locations[n].models.always.prison1 = "prison1";
 	locations[n].models.always.lamps = "prison1_lamps";
 	locations[n].models.always.locators = "prison1_locators";	
 	locations[n].models.always.chest = "chest1";
-	//Day
+	
 	locations[n].models.day.charactersPatch = "prison1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "prison1_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
 	Locations[n].QuestlockWeather = "23 Hour";
 	locations[n].environment.sea = "false";
 	locations[n].environment.weather.rain = false;
-    //Reload map
+    
 	Locations[n].reload.l1.name = "reload1";
 	Locations[n].reload.l1.go = "PortSpein_town";
 	Locations[n].reload.l1.emerge = "reload_jail";
@@ -685,19 +685,19 @@ int LocationInitTrinidad(int n)
 	locations[n].box1.QuestClosed = true;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Выход из города
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "PortSpein_ExitTown";
 	locations[n].id.label = "ExitTown";
 	locations[n].image = "loading\Gate" + rand(1) + ".tga";
-	//Town sack
+	
 	locations[n].townsack = "PortSpein";
-	//Sound
+	
 	locations[n].type = "jungle";
  	locations[n].islandId = "Trinidad";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\TownExitW";
 	Locations[n].models.always.townExit = "townExitW";
 	Locations[n].models.always.townWalls = "townExitW_stucco";
@@ -716,16 +716,16 @@ int LocationInitTrinidad(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "townExitW_patch";
 	locations[n].models.day.fonars = "townExitW_fd";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "townExitW_patch";
 	locations[n].models.night.fonars = "townExitW_fn";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload4";
 	locations[n].reload.l1.go = "PortSpein_town";
 	locations[n].reload.l1.emerge = "gate_back";
@@ -754,17 +754,17 @@ int LocationInitTrinidad(int n)
 	locations[n].locators_radius.reload.reload1_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Trinidad_Jungle_01";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
  	locations[n].islandId = "Trinidad";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle5";
 	Locations[n].models.always.jungle = "jungle5";	
 	Locations[n].models.always.locators = "jungle5_locators";		
@@ -779,14 +779,14 @@ int LocationInitTrinidad(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle5_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle5_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortSpein_ExitTown";
 	locations[n].reload.l1.emerge = "reload2";
@@ -809,18 +809,18 @@ int LocationInitTrinidad(int n)
 	locations[n].locators_radius.reload.Reload3_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Маяк Тринидада и Тобаго
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Mayak1";
 	locations[n].id.label = "Mayak1";
 	locations[n].worldmap = "Mayak1";
 	locations[n].image = "loading\outside\lighthouse.tga";
-	//Sound
+	
 	locations[n].type = "mayak";
  	locations[n].islandId = "Trinidad";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Lighthouse";
 	Locations[n].models.always.lighthouse = "lighthouse";
 	locations[n].models.always.lighthouse.sea_reflection = 1;
@@ -843,7 +843,7 @@ int LocationInitTrinidad(int n)
 	Locations[n].models.always.l2 = "plan2";
 	Locations[n].models.always.l2.level = 8;
 	Locations[n].models.always.l2.tech = "LocationModelBlend";		
-	//Day
+	
 	locations[n].models.day.winday = "lighthouse_winday";
 	locations[n].models.day.fonar = "lighthouse_fd";
 	locations[n].models.day.charactersPatch = "lighthouse_patch";
@@ -856,7 +856,7 @@ int LocationInitTrinidad(int n)
 	locations[n].models.day.glassonday = "lighthouse_glassonday";
 	Locations[n].models.day.glassonday.tech = "LocationWindows";
 	locations[n].models.day.glassonday.level = 66532;	
-	//Night
+	
 	locations[n].models.night.volumeLight= "lighthouse_volumeLight";
 	locations[n].models.night.volumeLight.tech = "LighthouseLight";
 	locations[n].models.night.volumeLight.level = 66529;	
@@ -877,10 +877,10 @@ int LocationInitTrinidad(int n)
 	locations[n].models.night.glassonnight.level = 66532;
 	
 	locations[n].models.night.fonaronnight = "lighthouse_fonaronnight";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Trinidad_Jungle_01";
 	locations[n].reload.l1.emerge = "reload3";
@@ -901,20 +901,20 @@ int LocationInitTrinidad(int n)
 	locations[n].locators_radius.reload.reload2 = 1.0;
 	n = n + 1;
 	
-	////////////////////////////////////////////////////////////////////////////////
-	//////////комната на маяке
-	////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	
 	locations[n].id = "Mayak1_Lighthouseroom";
 	locations[n].id.label = "House";
 	locations[n].image = "loading\inside\mediumhouse10.tga";
-	//Town sack
+	
 	locations[n].townsack = "PortSpein";
 	locations[n].islandId = "Trinidad";
-	//Sound
+	
 	locations[n].type = "house";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\mediumhouse05";
 	locations[n].models.always.mediumhouse05 = "mediumhouse05";
 	locations[n].models.always.mediumhouse05.level = 65538;
@@ -927,15 +927,15 @@ int LocationInitTrinidad(int n)
 
 	locations[n].models.always.back = "..\inside_back2";
 	locations[n].models.always.back.level = 65529;
-	//Day
+	
 	Locations[n].models.day.mediumhouse05rand= "mediumhouse05_rand";
 	locations[n].models.day.charactersPatch = "mediumhouse05_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "mediumhouse05_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "Mayak1";
 	locations[n].reload.l1.emerge = "reload2";
@@ -943,17 +943,17 @@ int LocationInitTrinidad(int n)
 	locations[n].reload.l1.label = "Mayak1";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Вход в пещеру
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Trinidad_CaveEntrance";
 	locations[n].id.label = "Cave entrance";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
  	locations[n].islandId = "Trinidad";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt1";
 	Locations[n].models.always.caveEnt1 = "caveEnt1";	
 	Locations[n].models.always.locators = "caveEnt1_locators";		
@@ -968,14 +968,14 @@ int LocationInitTrinidad(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "caveEnt1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "caveEnt1_patch";	
-	//Environment	
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Trinidad_Grot";
 	locations[n].reload.l1.emerge = "reload1";
@@ -991,17 +991,17 @@ int LocationInitTrinidad(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Грот
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Trinidad_Grot";
 	locations[n].id.label = "Grot";
 	locations[n].image = "loading\inside\cave.tga";
-	//Sound
+	
 	locations[n].type = "cave";
  	locations[n].islandId = "Trinidad";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\inside\grotto2";
 	locations[n].models.always.grotto2 = "grotto2";
 	locations[n].models.always.grotto2.sea_reflection = 1;
@@ -1011,38 +1011,32 @@ int LocationInitTrinidad(int n)
 	locations[n].models.always.locators = "grotto2_locators";	
 
 	locations[n].locators_radius.item.duhi1 = 0.0;
-/*	
-	Locations[n].models.always.rays = "grotto2_rays";
-	Locations[n].models.always.rays.level = 49;
-	Locations[n].models.always.rays.tech= "LocVisRays";
-	Locations[n].models.always.rays.uvslide.u1 = -0.03;
-	Locations[n].models.always.rays.uvslide.v1 = -0.03;
-*/	
-	//Day
+ 	
+	
 	locations[n].models.day.charactersPatch = "grotto2_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "grotto2_patch";
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
 	locations[n].environment.weather.rain = false;
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Trinidad_CaveEntrance";
 	locations[n].reload.l1.emerge = "reload1";
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Джунгли
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Trinidad_Jungle_02";
 	locations[n].id.label = "Jungle";
 	locations[n].image = "loading\outside\jungle_" + rand(3) + ".tga";
-	//Sound
+	
 	locations[n].type = "jungle";
  	locations[n].islandId = "Trinidad";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle1\";
 	Locations[n].models.always.jungle = "jungle1";
 	Locations[n].models.always.locators = "jungle1_locators";		
@@ -1057,14 +1051,14 @@ int LocationInitTrinidad(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "jungle1_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "jungle1_patch";	
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "PortSpein_ExitTown";
 	locations[n].reload.l1.emerge = "reload3";
@@ -1080,18 +1074,18 @@ int LocationInitTrinidad(int n)
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Мыс Галлера
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Shore60";
 	locations[n].id.label = "Shore60";
 	locations[n].image = "loading\outside\harbor3.tga";
 	locations[n].worldmap = "Shore60";
-	//Sound
+	
 	locations[n].type = "seashore";
  	locations[n].islandId = "Trinidad";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore07";
 	Locations[n].models.always.shore07 = "shore07";
 	locations[n].models.always.shore07.sea_reflection = 1;
@@ -1110,14 +1104,14 @@ int LocationInitTrinidad(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore07_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore07_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Trinidad_Jungle_02";
 	locations[n].reload.l1.emerge = "reload2";
@@ -1133,17 +1127,17 @@ int LocationInitTrinidad(int n)
     locations[n].locators_radius.reload.boat = 9.0;
 	n = n + 1;
 
-	//////////////////////////////////////////////////////////////////////////////////////////
-	//Бухта Скарборо
-	//////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	locations[n].id = "Shore59";
 	locations[n].id.label = "Shore59";
 	locations[n].image = "loading\outside\harbor3.tga";
-	//Sound
+	
 	locations[n].type = "seashore";
  	locations[n].islandId = "Trinidad";
-	//Models
-	//Always
+	
+	
 	locations[n].filespath.models = "locations\Outside\Shores\Shore08";
 	Locations[n].models.always.shore = "shore08";
 	locations[n].models.always.shore.sea_reflection = 1;
@@ -1160,14 +1154,14 @@ int LocationInitTrinidad(int n)
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
 	Locations[n].models.always.l3.tech = "LocationModelBlend";	
-	//Day
+	
 	locations[n].models.day.charactersPatch = "shore08_patch";
-	//Night
+	
 	locations[n].models.night.charactersPatch = "shore08_patch";		
-	//Environment
+	
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
-	//Reload map
+	
 	locations[n].reload.l1.name = "reload1_back";
 	locations[n].reload.l1.go = "Common_jungle_01";
 	locations[n].reload.l1.emerge = "reload1";

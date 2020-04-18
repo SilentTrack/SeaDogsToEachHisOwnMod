@@ -1,6 +1,6 @@
-//--------------------------------------------------------------------
-// Environment section
-//--------------------------------------------------------------------
+
+
+
 #define DAY_TIME_NIGHT		"Night"
 #define DAY_TIME_MORNING	"Morning"
 #define DAY_TIME_DAY		"Day"
@@ -135,17 +135,16 @@ int AddTimeToCurrent(int hour,int minute)
 	{		
 		AddDataToCurrent(0,0,addingDays);			
 	}
-    /*if(addingDays>0) PostEvent("NextDay",0); Нах.. оно нужно не знаю, если до этого вызывается метод
-                              AddDataToCurrent() с соответствующим вызовом события. navy. */
+     
 	Environment.time = nexttime;
 	Environment.date.hour = makeint(nexttime);
 	worldMap.date.hour = makeint(nexttime);
 	nexttime = (nexttime - stf(Environment.date.hour))*60.0;
 	Environment.date.min = makeint(nexttime);
 	worldMap.date.min = makeint(nexttime);
-    Weather.Time.time = GetTime(); // новая погода
+    Weather.Time.time = GetTime(); 
     
-	return addingDays; // boal верунть число дней, чтоб понять, что новый наступил
+	return addingDays; 
 }
 void AddDataToCurrent(int addYear,int addMonth,int addDay)
 {
@@ -170,10 +169,10 @@ void AddDataToCurrent(int addYear,int addMonth,int addDay)
 	worldMap.date.month = nextMonth;
 	worldMap.date.day = nextDay;
 	
-//	if(addYear!=0 || addMonth!=0 || addDay!=0)
-//	{
-//		for (int i=0; i<addDay; i++) Event("NextDay");
-//	}
+
+
+
+
 	
 	if(addYear!=0 || addMonth!=0 || addDay!=0)	
 	{
@@ -181,12 +180,12 @@ void AddDataToCurrent(int addYear,int addMonth,int addDay)
 		{
 			AchievmentsDayUpdateCnt = 0;
 		}
-		PostEvent("NextDay",500); // fix boal Отложить время, чтоб успеть выйти из форм
+		PostEvent("NextDay",500); 
 	}	
-	//  for (int i=0; i<addDay; i++) PostEvent("NextDay",0);
+	
 }
 
-// "year","month","day","hour","minute"
+
 int GetPastTime(string timeUnit,
 				int pastYear,int pastMonth,int pastDay, float pastTime,
 				int currentYear,int currentMonth,int currentDay, float currentTime)
@@ -228,7 +227,7 @@ int GetPastTime(string timeUnit,
 		pastMonth++;
 		if(pastMonth>12) pastMonth = 1;
 	}
-	//if(timeUnit=="day")	return dayCount;
+	
 
 	if(timeUnit=="hour") return dayCount*24 + makeint(dtime);
 	if(timeUnit=="minute") return dayCount*1440 + makeint(dtime*60.0);
@@ -243,52 +242,5 @@ void SetCurrentTime(int hour, int minutes)
 	worldMap.date.hour = makefloat(hour);
 	worldMap.date.min = makefloat(minutes);
 }
-// boal этот метод дублирует  GetPastTime и нигде е используется
-/*
-int GetFuterTime(string timeUnit,
-				int pastYear,int pastMonth,int pastDay, float pastTime,
-				int currentYear,int currentMonth,int currentDay, float currentTime)
-{
-	float dtime = pastTime - currentTime;
-	int dyear = pastYear - currentYear;
-	int dmonth = pastMonth - currentMonth;
-	int dday = pastDay - currentDay;
 
-	if(dtime<0.0)
-	{
-		dday--;
-		dtime = dtime + 24.0;
-	}
-	if(dday<0)
-	{
-		dmonth--;
-		if(pastMonth>1) dday = dday + GetMonthDays(pastMonth-1);
-		else dday = dday + GetMonthDays(12);
-	}
-	if(dmonth<0)
-	{
-		dyear--;
-		dmonth = dmonth+12;
-	}
-
-	if(dyear<0) return 0;
-	if(timeUnit=="year") return dyear;
-
-	if(timeUnit=="month")
-	{
-		return dmonth+dyear*12;
-	}
-	
-	int dayCount = dday + dyear*365;
-	for(int i=0; i<dmonth; i++)
-	{
-		dayCount = dayCount + GetMonthDays(pastMonth);
-		pastMonth++;
-		if(pastMonth>12) pastMonth = 1;
-	}
-	//if(timeUnit=="day")	return dayCount;
-
-	if(timeUnit=="hour") return dayCount*24 + makeint(dtime);
-	if(timeUnit=="minute") return dayCount*1440 + makeint(dtime*60.0);
-	return dayCount;
-} */
+ 

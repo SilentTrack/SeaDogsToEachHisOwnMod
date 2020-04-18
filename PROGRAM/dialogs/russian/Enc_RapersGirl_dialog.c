@@ -386,7 +386,7 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				dialog.text = "No, "+ GetSexPhrase("Captain","young lady") +". Не стану я её продавать. I will not sell it. I shall marry a good man, and then we'll claim the treasure together.";
+				dialog.text = "No, "+ GetSexPhrase("Captain","young lady") +". пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. I will not sell it. I shall marry a good man, and then we'll claim the treasure together.";
 				link.l1 = "Well, that's up to you to decide. Your piece of paper is not worth more, anyway.";
 				link.l1.go = "Node_132_2End";
 			}	
@@ -853,7 +853,7 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				if (CheckAttribute(pchar, "questTemp.FMQP") && pchar.questTemp.FMQP == "begin") // Addon-2016 Jason, французские миниквесты (ФМК)
+				if (CheckAttribute(pchar, "questTemp.FMQP") && pchar.questTemp.FMQP == "begin") 
 				{
 					dialog.text = "Thanks a lot for your help, fair lass. I will not forget it.";
 					link.l1 = "Oh, don't bother. Just try to be more careful in the future.";
@@ -902,7 +902,7 @@ void ProcessDialogEvent()
 		break;
 		
 		case "Node_228":
-			if(CheckAttribute(pchar, "GenQuest.EncGirl.Horse") && CheckAttribute(pchar,"GenQuest.EncGirl.BrothelCity") && sti(pchar.rank) > 15) // душещипательная история о невинной девочке попавшей в бордель
+			if(CheckAttribute(pchar, "GenQuest.EncGirl.Horse") && CheckAttribute(pchar,"GenQuest.EncGirl.BrothelCity") && sti(pchar.rank) > 15) 
 			{
 				DeleteAttribute(pchar, "GenQuest.EncGirl.BrothelCity");
 				dialog.text = "So do you still want to hear out my story?";
@@ -915,9 +915,9 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Oh, my noble savior, finally I can thank you enough as it is able to do only women\nWhen I see you in the jungle, everything had changed inside me. I forgot about the rapists and an acute palm leaves that whipped down my cheeks. Forgot where to run, why run ... I only see you. And just wanted to you ... And after what you've done for me...";
 				link.l1 = "Wow! What a temper! Your chasers surely knew whom they were chasing...";
-				link.l1.go = "Node_229"; // ГГ допрыгался - щас его попросту трахнут
+				link.l1.go = "Node_229"; 
 				link.l2 = "Listen, beauty, I can perfectly understand it, but please keep your temper to yourself.";
-				link.l2.go = "Node_230"; // Послал в пешее эротическое путешествие
+				link.l2.go = "Node_230"; 
 			}
 		break;
 		
@@ -1318,3 +1318,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
+
