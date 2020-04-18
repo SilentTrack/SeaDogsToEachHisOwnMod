@@ -1912,16 +1912,16 @@ void Ship_CheckFlagEnemy(ref rCharacter)
 		UpdateRelations();
 	    RefreshBattleInterface();
 	}
-	if (LineShips_CheckAndIdentify(sti(rCharacter.nation))) // если пришел на линейнике этой нации
-	{
-		Log_Info("Alarm, "+ NationNamePeople(sti(rCharacter.nation)) + " recognized their ship of the line which you captured from them!");
-		SetNationRelation2MainCharacter(sti(rCharacter.nation), RELATION_ENEMY);
-		LAi_group_ClearAllTargets();
-		DoQuestCheckDelay("NationUpdate", 3.0);
-		UpdateRelations();
-	    RefreshBattleInterface();
-		ChangeCharacterNationReputation(pchar, sti(rCharacter.nation), -3);
-	}
+	// if (LineShips_CheckAndIdentify(sti(rCharacter.nation))) // если пришел на линейнике этой нации
+	// {
+	// 	Log_Info("Alarm, "+ NationNamePeople(sti(rCharacter.nation)) + " recognized their ship of the line which you captured from them!");
+	// 	SetNationRelation2MainCharacter(sti(rCharacter.nation), RELATION_ENEMY);
+	// 	LAi_group_ClearAllTargets();
+	// 	DoQuestCheckDelay("NationUpdate", 3.0);
+	// 	UpdateRelations();
+	//     RefreshBattleInterface();
+	// 	ChangeCharacterNationReputation(pchar, sti(rCharacter.nation), -3);
+	// }
 }
 
 void Ship_ActivateFirePlace()

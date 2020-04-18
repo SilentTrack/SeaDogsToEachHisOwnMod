@@ -1608,7 +1608,7 @@ int GetMaxItemsWeight(ref _chref)
 	if (CheckAttribute(_chref, "Skill.FencingS"))
     {
         int iBonus = 0;
-        if (IsCharacterPerkOn(_chref, "Grus")) iBonus = 30;
+        if (IsCharacterPerkOn(_chref, "Grus")) iBonus = 5000;
                                   //опасная рекурсия  если писать GetCharacterSPECIAL
         iBonus = iBonus + CHAR_ITEMS_WEIGHT + GetCharacterSPECIALSimple(_chref, SPECIAL_S)*(GetCharacterSPECIALSimple(_chref, SPECIAL_E) + 12 - MOD_SKILL_ENEMY_RATE);
 		if(IsEquipCharacterByArtefact(_chref, "obereg_3")) iBonus = makeint(iBonus * 1.15);

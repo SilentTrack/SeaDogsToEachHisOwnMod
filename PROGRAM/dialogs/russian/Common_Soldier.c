@@ -93,7 +93,7 @@ void ProcessDialogEvent()
 						{
 							link.l2 = "I dropped anchor off the " + XI_ConvertString(GetIslandByCityName(npchar.city)+"Gen") + " under the flag " + NationNameGenitive(sti(pchar.nation)) + ". What do not you understand?";
 						}
-						if (GetSummonSkillFromName(pchar, SKILL_SNEAK) < (10+rand(50)+rand(50)))
+						if (GetSummonSkillFromName(pchar, SKILL_SNEAK) < (10 + rand(2)))
 						{
 							link.l2.go = "PegYou";
 						}

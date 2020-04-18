@@ -491,6 +491,8 @@ void ProcessDialogEvent()
             		if (GetCharacterShipClass(sld) < ((MOD_SKILL_ENEMY_RATE/5.0) + 1.5)) iTmp = true;
 				}
 			}
+
+			iTmp = false;
 			
 			if (iTmp)
 			{
